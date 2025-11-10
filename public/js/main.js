@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
     initAnimations();
     initMobileMenu();
+    initScrollProgress();
+    initNavbarScroll();
 });
 
 // ============================================
@@ -212,53 +214,91 @@ function initAnimations() {
 }
 
 // ============================================
-// Mobile Menu Toggle
+// Mobile Menu Toggle - Enhanced
 // ============================================
 function initMobileMenu() {
-    // Check if we need mobile menu (on small screens)
-    if (window.innerWidth <= 768) {
-        const navMenu = document.querySelector('.nav-menu');
-        if (navMenu) {
-            // Create mobile menu toggle button
-            const toggleButton = document.createElement('button');
-            toggleButton.className = 'mobile-menu-toggle';
+    const nav = document.querySelector('.main-nav');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (!nav || !navLinks) return;
+
+    // Create mobile menu toggle button
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'mobile-menu-toggle';
+    toggleButton.innerHTML = '☰';
+    toggleButton.setAttribute('aria-label', 'Toggle navigation menu');
+
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+
+    // Insert button and overlay
+    const container = nav.querySelector('.container-nav');
+    container.appendChild(toggleButton);
+    document.body.appendChild(overlay);
+
+    // Toggle menu function
+    function toggleMenu() {
+        const isActive = navLinks.classList.contains('active');
+
+        if (isActive) {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
             toggleButton.innerHTML = '☰';
-            toggleButton.style.cssText = `
-                display: block;
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-                padding: 0.5rem;
-                color: var(--text-primary);
-            `;
-
-            // Insert toggle button before menu
-            navMenu.parentNode.insertBefore(toggleButton, navMenu);
-
-            // Hide menu by default on mobile
-            navMenu.style.display = 'none';
-
-            // Toggle menu on button click
-            toggleButton.addEventListener('click', function() {
-                if (navMenu.style.display === 'none') {
-                    navMenu.style.display = 'flex';
-                    toggleButton.innerHTML = '✕';
-                } else {
-                    navMenu.style.display = 'none';
-                    toggleButton.innerHTML = '☰';
-                }
-            });
-
-            // Close menu when clicking a link
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function() {
-                    navMenu.style.display = 'none';
-                    toggleButton.innerHTML = '☰';
-                });
-            });
+            document.body.style.overflow = '';
+        } else {
+            navLinks.classList.add('active');
+            overlay.classList.add('active');
+            toggleButton.innerHTML = '✕';
+            document.body.style.overflow = 'hidden';
         }
     }
+
+    // Event listeners
+    toggleButton.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        }, 250);
+    });
+}
+
+// ============================================
+// Navbar Scroll Effect
+// ============================================
+function initNavbarScroll() {
+    const nav = document.querySelector('.main-nav');
+    if (!nav) return;
+
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    });
 }
 
 // ============================================

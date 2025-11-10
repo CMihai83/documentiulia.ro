@@ -1538,6 +1538,35 @@ img {
 }
 
 /* ============================================
+   Mobile Navigation
+   ============================================ */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.mobile-nav-overlay.active {
+    display: block;
+}
+
+/* ============================================
    Responsive Design - Enhanced
    ============================================ */
 @media (max-width: 1024px) {
@@ -1549,54 +1578,337 @@ img {
     .demo-grid {
         grid-template-columns: 1fr;
     }
+
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .hero-simple {
+        padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+    }
+
+    .dashboard-preview {
+        padding: var(--spacing-md);
+    }
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    /* Mobile Navigation */
+    .mobile-menu-toggle {
+        display: block;
     }
 
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        box-shadow: var(--shadow-2xl);
+        transition: right var(--transition-base);
+        z-index: 1000;
+        gap: var(--spacing-md);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: var(--spacing-md);
+        font-size: 1.125rem;
+    }
+
+    .btn-nav {
+        width: 100%;
+        text-align: center;
+        padding: var(--spacing-md) !important;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 2.25rem !important;
+    }
+
+    h2 {
+        font-size: 1.875rem !important;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    /* Hero Section */
+    .hero-simple {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .hero-simple h1 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-lead {
+        font-size: 1rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .btn-primary-large,
+    .btn-secondary-large {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Dashboard Preview */
+    .dashboard-preview {
+        padding: var(--spacing-md);
+    }
+
+    .preview-tabs {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .preview-tabs .tab {
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .metric-value {
+        font-size: 1.5rem;
+    }
+
+    /* Cards and Grids */
     .comparison-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 
     .steps-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 
     .features-grid-simple {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 
     .pricing-grid-simple {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 
+    .step-card,
+    .feature-simple-card,
+    .price-card {
+        padding: var(--spacing-md);
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    /* Scenario Flow */
     .scenario-flow {
         flex-direction: column;
     }
 
     .flow-arrow {
         transform: rotate(90deg);
+        margin: var(--spacing-sm) 0;
     }
 
+    .flow-step {
+        min-width: 100%;
+    }
+
+    /* Financial Snapshot */
     .financial-snapshot {
         grid-template-columns: 1fr;
     }
-}
 
-@media (max-width: 480px) {
-    .hero-cta {
-        flex-direction: column;
+    /* Demo Section */
+    .demo-grid {
+        gap: var(--spacing-xl);
     }
 
-    .btn-primary-large,
-    .btn-secondary-large {
-        width: 100%;
+    .demo-content h2 {
+        font-size: 2rem;
+    }
+
+    /* Footer */
+    .footer-grid-simple {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
     }
 
     .footer-brand {
         grid-column: span 1;
+    }
+
+    /* Spacing Adjustments */
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra Small Mobile */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .main-nav {
+        padding: 0.75rem 0;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .logo-icon {
+        font-size: 1.5rem;
+    }
+
+    .hero-simple {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero-simple h1 {
+        font-size: 1.75rem;
+        line-height: 1.2;
+    }
+
+    .hero-lead {
+        font-size: 0.95rem;
+    }
+
+    .benefit-item {
+        font-size: 0.95rem;
+    }
+
+    .hero-note {
+        font-size: 0.8rem;
+    }
+
+    .btn-primary-large,
+    .btn-secondary-large {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .dashboard-preview {
+        padding: var(--spacing-sm);
+    }
+
+    .smart-prompt {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .prompt-icon {
+        font-size: 2rem;
+    }
+
+    .prompt-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-prompt-primary,
+    .btn-prompt-secondary {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .step-card,
+    .feature-simple-card,
+    .comparison-card,
+    .scenario-card {
+        padding: var(--spacing-sm);
+    }
+
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+    }
+
+    .feature-icon-simple {
+        font-size: 2.5rem;
+    }
+
+    .price-amount .amount {
+        font-size: 2.75rem;
+    }
+
+    .popular-badge {
+        font-size: 0.75rem;
+        padding: 0.375rem 1rem;
+    }
+
+    .demo-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .demo-lead {
+        font-size: 1rem;
+    }
+
+    .form-group-simple input,
+    .form-group-simple select {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+    .btn-form-submit {
+        font-size: 1rem;
+        padding: 0.875rem;
+    }
+
+    .footer-logo .logo-text {
+        font-size: 1.25rem;
+    }
+
+    /* Touch-friendly adjustments */
+    button,
+    a,
+    input,
+    select {
+        min-height: 44px;
+    }
+
+    .prompt-actions button {
+        min-height: 44px;
+        font-size: 0.95rem;
     }
 }
 
