@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Dashboard - AccounTech AI</title>
+    <link rel="stylesheet" href="/css/style.css?v=20251110b">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        .demo-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 0;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .summary-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .summary-change {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .positive { color: #10b981; }
+        .negative { color: #ef4444; }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 2rem 0;
+        }
+
+        .transaction-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-income { color: #10b981; font-weight: bold; }
+        .transaction-expense { color: #ef4444; font-weight: bold; }
+
+        .invoice-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-paid { background: #d1fae5; color: #065f46; }
+        .badge-pending { background: #fef3c7; color: #92400e; }
+        .badge-overdue { background: #fee2e2; color: #991b1b; }
+
+        .insight-card {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+        }
+
+        .insight-warning { background: #fef3c7; border-color: #f59e0b; }
+        .insight-success { background: #d1fae5; border-color: #10b981; }
+        .insight-info { background: #dbeafe; border-color: #3b82f6; }
+        .insight-opportunity { background: #fce7f3; border-color: #ec4899; }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .login-modal {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.25rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-modal">
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">Demo Login</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 1.5rem;">
+                Use demo credentials to explore the platform
+            </p>
+            <form id="loginForm" class="login-form">
+                <input type="email" id="username" placeholder="Email" value="demo@business.com" required>
+                <input type="password" id="password" placeholder="Password" value="Demo2025" required>
+                <button type="submit" class="login-btn">Login to Demo</button>
+                <div id="loginError" class="error-message" style="display: none;"></div>
+            </form>
+            <p style="text-align: center; color: #9ca3af; font-size: 0.875rem; margin-top: 1rem;">
+                <strong>Demo Credentials:</strong><br>
+                Email: demo@business.com<br>
+                Password: Demo2025
+            </p>
+        </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div id="dashboardContent" style="display: none;">
+        <div class="demo-container">
+            <div class="container" style="max-width: 1400px; margin: 0 auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h1 style="color: white; font-size: 2rem;">📊 Business Dashboard</h1>
+                    <button onclick="logout()" style="padding: 0.75rem 1.5rem; background: white; color: #667eea; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">
+                        Logout
+                    </button>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div style="opacity: 0.9;">Cash Balance</div>
+                        <div class="summary-value" id="cashBalance">$0</div>
+                    </div>
+                    <div class="summary-item">
+                        <div style="opacity: 0.9;">Revenue (This Month)</div>
+                        <div class="summary-value" id="revenue">$0</div>
+                        <div class="summary-change" id="revenueChange"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div style="opacity: 0.9;">Expenses (This Month)</div>
+                        <div class="summary-value" id="expenses">$0</div>
+                        <div class="summary-change" id="expenseChange"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div style="opacity: 0.9;">Profit (This Month)</div>
+                        <div class="summary-value" id="profit">$0</div>
+                        <div class="summary-change" id="profitChange"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div style="opacity: 0.9;">Customers</div>
+                        <div class="summary-value" id="customers">0</div>
+                    </div>
+                    <div class="summary-item">
+                        <div style="opacity: 0.9;">Cash Runway</div>
+                        <div class="summary-value" id="runway">0</div>
+                        <div style="opacity: 0.9; font-size: 0.875rem;">months</div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="demo-card">
+                    <h2 style="margin-bottom: 1.5rem;">📈 Financial Trends (12 Months)</h2>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h2 style="margin-bottom: 1.5rem;">👥 Customer Growth</h2>
+                    <div class="chart-container">
+                        <canvas id="customerChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Insights Section -->
+                <div class="demo-card">
+                    <h2 style="margin-bottom: 1.5rem;">💡 Smart Insights</h2>
+                    <div id="insightsContainer"></div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="demo-card">
+                    <h2 style="margin-bottom: 1.5rem;">💰 Recent Transactions</h2>
+                    <div class="transaction-list" id="transactionsList"></div>
+                </div>
+
+                <!-- Invoices -->
+                <div class="demo-card">
+                    <h2 style="margin-bottom: 1.5rem;">📄 Invoices</h2>
+                    <div id="invoicesList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = null;
+        let dashboardData = null;
+
+        // Login Handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('loginError');
+
+            try {
+                const response = await fetch('/demo/api/auth.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    authToken = result.token;
+                    document.getElementById('loginOverlay').style.display = 'none';
+                    document.getElementById('dashboardContent').style.display = 'block';
+                    loadDashboard();
+                } else {
+                    errorDiv.textContent = result.message || 'Login failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Connection error. Please try again.';
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        // Load Dashboard Data
+        async function loadDashboard() {
+            try {
+                const response = await fetch('/demo/api/dashboard.php', {
+                    headers: { 'Authorization': authToken }
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    dashboardData = result.data;
+                    renderDashboard();
+                }
+            } catch (error) {
+                console.error('Failed to load dashboard:', error);
+            }
+        }
+
+        // Render Dashboard
+        function renderDashboard() {
+            const { summary, charts, transactions, invoices, insights } = dashboardData;
+
+            // Summary Cards
+            document.getElementById('cashBalance').textContent = `$${summary.cashBalance.toLocaleString()}`;
+            document.getElementById('revenue').textContent = `$${summary.revenue.toLocaleString()}`;
+            document.getElementById('expenses').textContent = `$${summary.expenses.toLocaleString()}`;
+            document.getElementById('profit').textContent = `$${summary.profit.toLocaleString()}`;
+            document.getElementById('customers').textContent = summary.customers;
+            document.getElementById('runway').textContent = summary.runway === 999 ? '∞' : summary.runway;
+
+            // Change indicators
+            document.getElementById('revenueChange').innerHTML = `${summary.revenueChange > 0 ? '↑' : '↓'} ${Math.abs(summary.revenueChange)}% vs last month`;
+            document.getElementById('expenseChange').innerHTML = `${summary.expenseChange > 0 ? '↑' : '↓'} ${Math.abs(summary.expenseChange)}% vs last month`;
+            document.getElementById('profitChange').innerHTML = `${summary.profitChange > 0 ? '↑' : '↓'} ${Math.abs(summary.profitChange)}% vs last month`;
+
+            // Revenue Chart
+            new Chart(document.getElementById('revenueChart'), {
+                type: 'line',
+                data: {
+                    labels: charts.revenue.map(d => d.label),
+                    datasets: [
+                        {
+                            label: 'Revenue',
+                            data: charts.revenue.map(d => d.revenue),
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Expenses',
+                            data: charts.expenses.map(d => d.expenses),
+                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Profit',
+                            data: charts.profit.map(d => d.profit),
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' }
+                    }
+                }
+            });
+
+            // Customer Chart
+            new Chart(document.getElementById('customerChart'), {
+                type: 'bar',
+                data: {
+                    labels: charts.customers.map(d => d.label),
+                    datasets: [{
+                        label: 'Customers',
+                        data: charts.customers.map(d => d.count),
+                        backgroundColor: 'rgba(99, 102, 241, 0.8)',
+                        borderColor: '#6366f1',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // Insights
+            const insightsContainer = document.getElementById('insightsContainer');
+            insights.forEach(insight => {
+                const className = `insight-${insight.type}`;
+                insightsContainer.innerHTML += `
+                    <div class="insight-card ${className}">
+                        <strong>${insight.title}</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #4b5563;">${insight.message}</p>
+                    </div>
+                `;
+            });
+
+            // Transactions
+            const transactionsList = document.getElementById('transactionsList');
+            transactions.forEach(tx => {
+                const className = tx.type === 'income' ? 'transaction-income' : 'transaction-expense';
+                transactionsList.innerHTML += `
+                    <div class="transaction-item">
+                        <div>
+                            <strong>${tx.description}</strong>
+                            <div style="font-size: 0.875rem; color: #6b7280;">${tx.date} • ${tx.category}</div>
+                        </div>
+                        <div class="${className}">
+                            ${tx.amount > 0 ? '+' : ''}$${Math.abs(tx.amount).toLocaleString()}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Invoices
+            const invoicesList = document.getElementById('invoicesList');
+            invoices.forEach(inv => {
+                const badgeClass = `badge-${inv.status}`;
+                invoicesList.innerHTML += `
+                    <div class="transaction-item">
+                        <div>
+                            <strong>${inv.id}</strong> - ${inv.client}
+                            <div style="font-size: 0.875rem; color: #6b7280;">
+                                Issued: ${inv.date} • Due: ${inv.dueDate}
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-weight: bold;">$${inv.amount.toLocaleString()}</div>
+                            <span class="invoice-badge ${badgeClass}">${inv.status.toUpperCase()}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Logout
+        function logout() {
+            authToken = null;
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.getElementById('dashboardContent').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
