@@ -397,46 +397,417 @@ All endpoints may return error responses:
 
 ---
 
+## AI Insights & Decision Support
+
+### List Insights
+**GET** `/insights/list`
+
+Get active AI-generated insights for your business.
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Query Parameters:**
+- `limit` - Number of results (default: 10)
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "insights": [
+      {
+        "id": "uuid",
+        "insight_type": "warning",
+        "category": "cash_flow",
+        "priority": "critical",
+        "title": "Critical Cash Runway",
+        "message": "You have only 3.5 months of cash runway at current burn rate. Immediate action needed to reduce expenses or increase revenue.",
+        "action_label": "Create Action Plan",
+        "action_url": "/dashboard/cash-flow",
+        "is_dismissed": false,
+        "created_at": "2025-11-10T10:30:00Z"
+      }
+    ],
+    "total": 1
+  }
+}
+```
+
+**Insight Types:**
+- `warning` - Critical business issues
+- `success` - Positive trends and achievements
+- `info` - Informational insights
+
+**Categories:**
+- `cash_flow` - Cash runway and burn rate
+- `invoice` - Receivables and collections
+- `bill` - Payables and vendor payments
+- `revenue` - Revenue trends
+- `expense` - Expense patterns
+
+---
+
+### Generate Insights
+**POST** `/insights/generate`
+
+Regenerate all AI insights based on current financial data.
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "insights": [...],
+    "total_generated": 5,
+    "generated_at": "2025-11-10 10:30:00"
+  },
+  "message": "5 insights generated successfully"
+}
+```
+
+---
+
+### Dismiss Insight
+**POST** `/insights/dismiss`
+
+Dismiss an insight (won't show again for 7 days).
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Request Body:**
+```json
+{
+  "insight_id": "uuid"
+}
+```
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "message": "Insight dismissed successfully"
+}
+```
+
+---
+
+## AI Cash Flow Forecasting
+
+### Get Cash Flow Forecast
+**GET** `/forecasting/cash-flow`
+
+Get stored cash flow forecast.
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Query Parameters:**
+- `from_date` - Start date (YYYY-MM-DD, optional)
+- `to_date` - End date (YYYY-MM-DD, optional)
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "forecast": [
+      {
+        "forecast_date": "2025-12-01",
+        "period": "2025-12",
+        "forecasted_inflow": 15000.00,
+        "forecasted_outflow": 12000.00,
+        "forecasted_net": 3000.00,
+        "forecasted_balance": 28000.00,
+        "confidence_level": 95
+      },
+      {
+        "forecast_date": "2026-01-01",
+        "period": "2026-01",
+        "forecasted_inflow": 15450.00,
+        "forecasted_outflow": 12300.00,
+        "forecasted_net": 3150.00,
+        "forecasted_balance": 31150.00,
+        "confidence_level": 92
+      }
+    ],
+    "total_periods": 12,
+    "date_range": {
+      "from": null,
+      "to": null
+    }
+  }
+}
+```
+
+---
+
+### Generate Cash Flow Forecast
+**POST** `/forecasting/generate`
+
+Generate a new AI-powered cash flow forecast.
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Request Body:**
+```json
+{
+  "periods": 12,
+  "period_type": "monthly"
+}
+```
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "forecast": [...],
+    "periods": 12,
+    "period_type": "monthly",
+    "generated_at": "2025-11-10 10:30:00"
+  },
+  "message": "Forecast generated successfully"
+}
+```
+
+**Algorithm:**
+- Uses 12 months of historical data
+- Linear regression for trend analysis
+- Seasonality detection for patterns
+- Confidence scoring (95% → 50% over 12 months)
+
+---
+
+### Get Cash Runway
+**GET** `/forecasting/runway`
+
+Calculate months of runway at current burn rate.
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "runway_months": 14.5,
+    "current_balance": 25000.00,
+    "monthly_burn": 1724.14,
+    "avg_monthly_inflow": 15000.00,
+    "avg_monthly_outflow": 16724.14,
+    "status": "healthy",
+    "message": "Healthy: 14.5 months of runway. Cash position is strong."
+  }
+}
+```
+
+**Status Levels:**
+- `positive` - Profitable, infinite runway
+- `healthy` - 12+ months runway
+- `warning` - 6-12 months runway
+- `critical` - <6 months runway
+
+---
+
+## AI Decision Support
+
+### Create Decision Scenario
+**POST** `/decisions/create`
+
+Generate AI-powered decision analysis.
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Request Body:**
+```json
+{
+  "scenario_type": "hiring",
+  "context": {
+    "salary": 5000
+  }
+}
+```
+
+**Scenario Types:**
+- `hiring` - Should you hire? (full-time vs contractor vs wait)
+- `pricing` - Pricing strategy analysis (coming soon)
+- `expansion` - Business expansion analysis (coming soon)
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "scenario_type": "hiring",
+    "title": "Should you hire a new team member?",
+    "context": "Current runway: 14.5 months, Monthly revenue: $15,000.00",
+    "options": [
+      {
+        "title": "Hire Full-Time",
+        "pros": [
+          "Long-term capacity increase",
+          "Better team cohesion",
+          "Knowledge retention"
+        ],
+        "cons": [
+          "Fixed cost increase: $5,000.00/month",
+          "Longer hiring process",
+          "Commitment risk"
+        ],
+        "impact": "Reduces runway from 14.5 to 11.2 months",
+        "recommendation": "Recommended if revenue trend continues"
+      },
+      {
+        "title": "Hire Contractor",
+        "pros": [
+          "Flexible commitment",
+          "Quick start",
+          "Lower fixed costs"
+        ],
+        "cons": [
+          "Higher hourly rate",
+          "Less integration",
+          "Knowledge transfer risk"
+        ],
+        "impact": "Variable cost, minimal runway impact",
+        "recommendation": "Safe option for testing demand"
+      },
+      {
+        "title": "Wait 2-3 Months",
+        "pros": [
+          "More data on revenue trend",
+          "Better cash position",
+          "Reduced risk"
+        ],
+        "cons": [
+          "Potential opportunity cost",
+          "Team burnout risk",
+          "Market timing risk"
+        ],
+        "impact": "Extends runway, preserves capital",
+        "recommendation": "Conservative approach"
+      }
+    ],
+    "ai_recommendation": "Based on your financials, hiring is viable. Recommend starting with a contractor to validate need."
+  },
+  "message": "Decision scenario generated successfully"
+}
+```
+
+---
+
+### List Decision Scenarios
+**GET** `/decisions/list`
+
+Get previously generated decision scenarios.
+
+**Headers:**
+```
+Authorization: Bearer <token>
+X-Company-ID: <company_uuid>
+```
+
+**Query Parameters:**
+- `scenario_type` - Filter by type (optional)
+- `limit` - Number of results (default: 10)
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "scenarios": [
+      {
+        "id": "uuid",
+        "scenario_type": "hiring",
+        "title": "Should you hire a new team member?",
+        "context": "Current runway: 14.5 months, Monthly revenue: $15,000.00",
+        "options": [...],
+        "ai_recommendation": "...",
+        "created_at": "2025-11-10T10:30:00Z"
+      }
+    ],
+    "total": 1
+  }
+}
+```
+
+---
+
 ## Coming Soon
 
 ### Bills & Payables
-- Create/list/update bills
-- Record vendor payments
-- Aged payables report
+- ✅ Create/list/update bills (COMPLETED)
+- ✅ Record vendor payments (COMPLETED)
+- ✅ Aged payables report (COMPLETED)
 
 ### Payments
-- Record invoice payments
-- Payment allocation
-- Payment methods
+- ✅ Record invoice payments (COMPLETED)
+- ✅ Payment allocation (COMPLETED)
+- Payment methods integration
 
 ### Expenses
-- Create expenses with receipt upload
+- ✅ Create expenses with receipt upload (COMPLETED)
 - OCR for receipt data extraction
-- Expense categorization (AI-powered)
+- ✅ Expense categorization (AI-powered) (COMPLETED)
 - Billable expenses
 
 ### Reports
-- Profit & Loss
-- Balance Sheet
-- Cash Flow Statement
-- Aged Receivables/Payables
+- ✅ Profit & Loss (COMPLETED)
+- ✅ Balance Sheet (COMPLETED)
+- ✅ Cash Flow Statement (COMPLETED)
+- ✅ Aged Receivables/Payables (COMPLETED)
 - Custom report builder
 
 ### Bank Reconciliation
-- Bank account connections
+- Bank account connections (Plaid integration)
 - Transaction import
 - Auto-matching
 - Reconciliation reports
 
-### AI Features
-- Cash flow forecasting
-- Smart prompts
-- Decision support
-- Anomaly detection
-- Predictive insights
+### Payment Integrations
+- Stripe integration
+- PayPal integration
+- Direct bank transfers
+
+### React Frontend
+- Dashboard with charts
+- Invoice management UI
+- Expense management UI
+- Financial reports UI
+- AI insights interface
 
 ---
 
 **API Version:** 1.0
 **Last Updated:** 2025-11-10
-**Status:** Active Development
+**Status:** Active Development - 50% Complete
