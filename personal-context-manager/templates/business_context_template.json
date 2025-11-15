@@ -1,0 +1,276 @@
+{
+  "basic_info": {
+    "business_name": "[Your Business Name]",
+    "owner_name": "[Your Name]",
+    "business_type": "microenterprise|pfa|srl|sa",
+    "industry": "[Your Industry]",
+    "founding_date": "[Date Founded]",
+    "current_stage": "startup|growth|mature|scaling|pivoting",
+    "business_goals": [
+      "Increase revenue by [X]% in [timeframe]",
+      "Expand to new market segments",
+      "Improve operational efficiency",
+      "Build sustainable cash flow"
+    ],
+    "current_challenges": [
+      "Challenge 1",
+      "Challenge 2"
+    ]
+  },
+
+  "business_profile": {
+    "the_5_parts": {
+      "value_creation": {
+        "products_services": [
+          {
+            "name": "[Product/Service Name]",
+            "description": "[Description]",
+            "value_form": "product|service|subscription|resale|lease|agency|aggregation|loan|option|insurance|capital",
+            "target_customer": "[Customer Segment]",
+            "pricing_strategy": "cost_plus|value_based|competitive|penetration|premium"
+          }
+        ],
+        "unique_value_proposition": "[What makes your business unique]",
+        "competitive_advantages": ["Advantage 1", "Advantage 2"]
+      },
+
+      "marketing": {
+        "target_market": {
+          "market_size": "[Estimated market size]",
+          "probable_purchasers": "[Description of ideal customers]",
+          "customer_segments": ["Segment 1", "Segment 2"]
+        },
+        "marketing_channels": [
+          {
+            "channel": "social_media|email|seo|paid_ads|referral|direct",
+            "effectiveness": "high|medium|low",
+            "cost_per_acquisition": "[Amount]",
+            "notes": "[Any observations]"
+          }
+        ],
+        "brand_positioning": "[How you want to be perceived]",
+        "marketing_budget": "[Monthly/Annual budget]"
+      },
+
+      "sales": {
+        "sales_process": [
+          "Step 1: Lead generation",
+          "Step 2: Qualification",
+          "Step 3: Presentation",
+          "Step 4: Closing"
+        ],
+        "conversion_rates": {
+          "leads_to_prospects": "[X]%",
+          "prospects_to_customers": "[Y]%",
+          "overall_conversion": "[Z]%"
+        },
+        "average_deal_size": "[Amount]",
+        "sales_cycle_length": "[Days/Weeks]",
+        "pricing_model": "fixed|hourly|subscription|commission|freemium"
+      },
+
+      "value_delivery": {
+        "delivery_method": "physical|digital|hybrid|in_person|remote",
+        "fulfillment_process": [
+          "Step 1",
+          "Step 2",
+          "Step 3"
+        ],
+        "quality_standards": ["Standard 1", "Standard 2"],
+        "customer_satisfaction_score": "[Score or description]",
+        "delivery_speed": "[Timeframe]"
+      },
+
+      "finance": {
+        "revenue_model": "one_time|recurring|hybrid",
+        "monthly_revenue": "[Amount]",
+        "monthly_costs": "[Amount]",
+        "profit_margin": "[X]%",
+        "cash_flow_cycle": "[Days]",
+        "runway_months": "[Number of months]",
+        "key_financial_metrics": {
+          "customer_lifetime_value": "[Amount]",
+          "customer_acquisition_cost": "[Amount]",
+          "ltv_to_cac_ratio": "[Ratio]",
+          "burn_rate": "[Amount per month]"
+        }
+      }
+    },
+
+    "resources": {
+      "team": [
+        {
+          "role": "[Role]",
+          "count": "[Number]",
+          "type": "full_time|part_time|contractor|founder"
+        }
+      ],
+      "capital": {
+        "available_cash": "[Amount]",
+        "credit_lines": "[Amount]",
+        "investments_received": "[Amount]",
+        "revenue_generated": "[Amount]"
+      },
+      "infrastructure": {
+        "physical_assets": ["Asset 1", "Asset 2"],
+        "digital_assets": ["Website", "Software", "IP"],
+        "partnerships": ["Partner 1", "Partner 2"]
+      }
+    },
+
+    "risk_profile": {
+      "risk_tolerance": "conservative|moderate|aggressive",
+      "growth_priority": "slow_steady|moderate|aggressive",
+      "financial_resilience": "low|medium|high",
+      "key_risks": [
+        {
+          "risk": "[Risk Description]",
+          "probability": "low|medium|high",
+          "impact": "low|medium|high",
+          "mitigation": "[Mitigation strategy]"
+        }
+      ]
+    }
+  },
+
+  "business_intelligence": {
+    "personal_mba_concepts": {
+      "mastered_concepts": ["Concept 1", "Concept 2"],
+      "learning_concepts": ["Concept 3", "Concept 4"],
+      "concepts_to_explore": ["Concept 5", "Concept 6"]
+    },
+
+    "frameworks_applied": [
+      {
+        "framework": "5_parts_analysis|market_evaluation|revenue_methods",
+        "date_applied": "[Date]",
+        "results": "[Outcomes and insights]",
+        "next_steps": ["Action 1", "Action 2"]
+      }
+    ],
+
+    "decision_history": [
+      {
+        "decision": "[What was decided]",
+        "date": "[Date]",
+        "reasoning": "[Why this decision was made]",
+        "concepts_used": ["Concept 1", "Concept 2"],
+        "outcome": "[What happened]",
+        "lessons_learned": ["Lesson 1", "Lesson 2"]
+      }
+    ],
+
+    "ai_insights_received": [
+      {
+        "date": "[Date]",
+        "question": "[Question asked]",
+        "insight": "[Key insight received]",
+        "action_taken": "[What you did with this insight]",
+        "result": "[Outcome]"
+      }
+    ]
+  },
+
+  "performance_tracking": {
+    "current_metrics": {
+      "updated": "[Last Update Date]",
+      "revenue": "[Amount]",
+      "costs": "[Amount]",
+      "profit": "[Amount]",
+      "customers": "[Count]",
+      "growth_rate": "[X]%"
+    },
+
+    "goals_and_milestones": [
+      {
+        "goal": "[Goal Description]",
+        "target_date": "[Date]",
+        "target_metric": "[Metric and value]",
+        "status": "not_started|in_progress|achieved|missed",
+        "progress_notes": "[Current status and observations]"
+      }
+    ],
+
+    "quarterly_reviews": [
+      {
+        "quarter": "Q1 2025",
+        "highlights": ["Achievement 1", "Achievement 2"],
+        "challenges": ["Challenge 1", "Challenge 2"],
+        "key_learnings": ["Learning 1", "Learning 2"],
+        "adjustments_made": ["Adjustment 1", "Adjustment 2"]
+      }
+    ]
+  },
+
+  "market_intelligence": {
+    "market_evaluation": {
+      "urgency": "[1-10 score]",
+      "market_size": "[Description]",
+      "pricing_potential": "[Amount]",
+      "customer_acquisition_cost": "[Amount]",
+      "delivery_cost": "[Amount]",
+      "uniqueness": "[1-10 score]",
+      "speed_to_market": "[Timeframe]",
+      "upfront_investment": "[Amount]",
+      "upsell_potential": "[1-10 score]",
+      "evergreen_potential": "[1-10 score]",
+      "total_score": "[Sum of above scores]"
+    },
+
+    "competitive_landscape": [
+      {
+        "competitor": "[Competitor Name]",
+        "strengths": ["Strength 1", "Strength 2"],
+        "weaknesses": ["Weakness 1", "Weakness 2"],
+        "market_position": "[Position description]",
+        "our_differentiation": "[How we differ]"
+      }
+    ],
+
+    "customer_insights": {
+      "feedback_themes": ["Theme 1", "Theme 2"],
+      "pain_points": ["Pain 1", "Pain 2"],
+      "satisfaction_drivers": ["Driver 1", "Driver 2"],
+      "feature_requests": ["Request 1", "Request 2"]
+    }
+  },
+
+  "instruction": {
+    "primary": "Use this business context to provide personalized business intelligence and strategic guidance based on Personal MBA principles. Understand my business model, current stage, challenges, and goals to offer actionable advice that accounts for my specific situation and risk profile.",
+
+    "consultation_approach": {
+      "strategic_advice": "Provide recommendations that align with my business stage, industry, and risk tolerance",
+      "concept_application": "Apply relevant Personal MBA concepts and frameworks to my specific business challenges",
+      "metrics_focus": "Help me identify and track the most important metrics for my business model",
+      "decision_support": "Assist in making data-driven decisions using appropriate frameworks and my historical context"
+    },
+
+    "personalization_rules": {
+      "context_awareness": "Always consider my business stage, available resources, and current challenges when providing advice",
+      "priority_alignment": "Recommendations should align with my stated goals and growth priorities",
+      "risk_appropriate": "Suggestions should match my risk tolerance and financial resilience",
+      "actionable": "Provide concrete, implementable steps rather than abstract concepts"
+    },
+
+    "context_update": "After each consultation, suggest specific updates to this context file to maintain accuracy. Ask clarifying questions about new developments, metrics changes, or strategic shifts. Help me track decision outcomes and learnings.",
+
+    "learning_integration": "Help me understand and apply Personal MBA concepts progressively. Connect new concepts to those I've already mastered. Suggest which concepts to explore next based on my current challenges.",
+
+    "accountability": "Track my progress toward goals and milestones. Remind me of past decisions and their outcomes. Help me learn from both successes and failures."
+  },
+
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-11-14",
+    "last_updated": "2025-11-14",
+    "update_history": [
+      {
+        "date": "2025-11-14",
+        "changes": "Initial business context creation",
+        "updated_by": "User"
+      }
+    ],
+    "next_review_date": "[Date]",
+    "review_frequency": "monthly|quarterly|as_needed"
+  }
+}

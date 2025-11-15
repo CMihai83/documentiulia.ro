@@ -17,8 +17,10 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
+                <li><a href="#fiscal-law">🇷🇴 Legislație Fiscală</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="/frontend/dist/" class="btn-nav-login">Login</a></li>
                 <li><a href="#demo" class="btn-nav">Try Demo</a></li>
             </ul>
         </div>
@@ -208,6 +210,396 @@
                         <div class="example-note">Actionable, not just informational</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Romanian Fiscal Law Section -->
+    <section id="fiscal-law" class="fiscal-law-section">
+        <div class="container">
+            <div class="fiscal-law-header">
+                <div class="header-flag">🇷🇴</div>
+                <h2 class="section-title">Legislație Fiscală Română</h2>
+                <p class="section-subtitle">Ghid complet pentru obligațiile fiscale - Hot Topics, Template-uri, Pași de Urmat și AI Consultant Fiscal</p>
+            </div>
+
+            <!-- AI Fiscal Consultant Highlight -->
+            <div class="ai-consultant-banner">
+                <div class="ai-icon-large">🤖</div>
+                <div class="ai-content">
+                    <h3>AI Consultant Fiscal cu Acces la Legislație</h3>
+                    <p>Pune întrebări despre situații fiscale complexe. AI-ul nostru interpretează legislația și oferă consultanță personalizată pentru cazul tău specific.</p>
+                    <button class="btn-ai-consultant" onclick="openFiscalAIChat()">Întreabă Consultantul AI</button>
+                </div>
+            </div>
+
+            <!-- Hot Topics -->
+            <div class="fiscal-hot-topics">
+                <h3 class="subsection-title">📌 Hot Topics - Actualizări Legislative</h3>
+                <div class="hot-topics-grid">
+                    <div class="topic-card urgent">
+                        <span class="topic-badge urgent">URGENT</span>
+                        <h4>Modificări Cod Fiscal 2025</h4>
+                        <p>Noi praguri de TVA și modificări ale cotelor de impozitare pentru PFA și microîntreprinderi.</p>
+                        <div class="topic-meta">
+                            <span class="topic-date">📅 15 Noiembrie 2024</span>
+                            <span class="topic-deadline">⏰ Aplicabil din: 1 Ianuarie 2025</span>
+                        </div>
+                        <a href="/fiscal/topics/modificari-cod-fiscal-2025" class="btn-topic">Citește Detalii</a>
+                    </div>
+
+                    <div class="topic-card important">
+                        <span class="topic-badge important">IMPORTANT</span>
+                        <h4>Declarația Unică 2025 - Termene</h4>
+                        <p>Termene și modificări pentru depunerea Declarației Unice anul fiscal 2024.</p>
+                        <div class="topic-meta">
+                            <span class="topic-date">📅 10 Noiembrie 2024</span>
+                            <span class="topic-deadline">⏰ Termen: 25 Mai 2025</span>
+                        </div>
+                        <a href="/fiscal/topics/declaratia-unica-2025" class="btn-topic">Vezi Ghid Complet</a>
+                    </div>
+
+                    <div class="topic-card info">
+                        <span class="topic-badge info">INFORMARE</span>
+                        <h4>TVA Split Payment - Detalii</h4>
+                        <p>Cum funcționează sistemul de plată divizată și care sunt obligațiile tale.</p>
+                        <div class="topic-meta">
+                            <span class="topic-date">📅 5 Noiembrie 2024</span>
+                        </div>
+                        <a href="/fiscal/topics/tva-split-payment" class="btn-topic">Află Mai Mult</a>
+                    </div>
+
+                    <div class="topic-card info">
+                        <span class="topic-badge info">INFORMARE</span>
+                        <h4>e-Factura - Ghid Implementare</h4>
+                        <p>Tot ce trebuie să știi despre facturarea electronică obligatorie.</p>
+                        <div class="topic-meta">
+                            <span class="topic-date">📅 1 Noiembrie 2024</span>
+                        </div>
+                        <a href="/fiscal/topics/e-factura" class="btn-topic">Vezi Ghidul</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Templates -->
+            <div class="fiscal-templates">
+                <h3 class="subsection-title">📄 Template-uri Formulare Fiscale</h3>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="template-icon">📋</div>
+                        <h4>Declarația Unică (D212)</h4>
+                        <p>Template complet cu instrucțiuni pas cu pas</p>
+                        <div class="template-actions">
+                            <a href="/templates/d212.pdf" class="btn-template-download">⬇️ Descarcă PDF</a>
+                            <a href="/fiscal/guide/d212" class="btn-template-guide">📖 Ghid Completare</a>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-icon">📊</div>
+                        <h4>Declarație TVA (D300)</h4>
+                        <p>Pentru plătitori de TVA</p>
+                        <div class="template-actions">
+                            <a href="/templates/d300.pdf" class="btn-template-download">⬇️ Descarcă PDF</a>
+                            <a href="/fiscal/guide/d300" class="btn-template-guide">📖 Ghid Completare</a>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-icon">🏢</div>
+                        <h4>Bilanț Contabil (D101)</h4>
+                        <p>Pentru societăți comerciale</p>
+                        <div class="template-actions">
+                            <a href="/templates/d101.pdf" class="btn-template-download">⬇️ Descarcă PDF</a>
+                            <a href="/fiscal/guide/d101" class="btn-template-guide">📖 Ghid Completare</a>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-icon">👥</div>
+                        <h4>Declarație REVISAL</h4>
+                        <p>Evidența salariaților</p>
+                        <div class="template-actions">
+                            <a href="/templates/revisal.pdf" class="btn-template-download">⬇️ Descarcă PDF</a>
+                            <a href="/fiscal/guide/revisal" class="btn-template-guide">📖 Ghid Completare</a>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-icon">💰</div>
+                        <h4>Declarație CAS/CASS</h4>
+                        <p>Contribuții sociale</p>
+                        <div class="template-actions">
+                            <a href="/templates/cas-cass.pdf" class="btn-template-download">⬇️ Descarcă PDF</a>
+                            <a href="/fiscal/guide/cas-cass" class="btn-template-guide">📖 Ghid Completare</a>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-icon">📝</div>
+                        <h4>Cerere Înregistrare PFA</h4>
+                        <p>Pentru persoane fizice autorizate</p>
+                        <div class="template-actions">
+                            <a href="/templates/pfa.pdf" class="btn-template-download">⬇️ Descarcă PDF</a>
+                            <a href="/fiscal/guide/pfa" class="btn-template-guide">📖 Ghid Completare</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Steps to Follow -->
+            <div class="fiscal-steps">
+                <h3 class="subsection-title">✅ Pași de Urmat - Obligații Fiscale</h3>
+                <div class="steps-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker monthly">Lunar</div>
+                        <div class="timeline-content">
+                            <h4>Obligații Lunare</h4>
+                            <ul class="obligations-list">
+                                <li>
+                                    <span class="deadline">Până la 25</span>
+                                    <span class="obligation">Declarație TVA (D300) - dacă ești plătitor TVA</span>
+                                </li>
+                                <li>
+                                    <span class="deadline">Până la 25</span>
+                                    <span class="obligation">Plata TVA aferentă lunii anterioare</span>
+                                </li>
+                                <li>
+                                    <span class="deadline">Până la 25</span>
+                                    <span class="obligation">Declarație privind obligațiile de plată (D112)</span>
+                                </li>
+                                <li>
+                                    <span class="deadline">Până la 25</span>
+                                    <span class="obligation">Plata contribuțiilor CAS și CASS pentru angajați</span>
+                                </li>
+                            </ul>
+                            <button class="btn-calendar" onclick="addToCalendar('monthly')">➕ Adaugă în Calendar</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker quarterly">Trimestrial</div>
+                        <div class="timeline-content">
+                            <h4>Obligații Trimestriale</h4>
+                            <ul class="obligations-list">
+                                <li>
+                                    <span class="deadline">Până la 25</span>
+                                    <span class="obligation">Declarație privind impozitul pe profit (D101) - trimestrial</span>
+                                </li>
+                                <li>
+                                    <span class="deadline">Până la 25</span>
+                                    <span class="obligation">Plata impozitului pe profit (pentru microîntreprinderi)</span>
+                                </li>
+                            </ul>
+                            <button class="btn-calendar" onclick="addToCalendar('quarterly')">➕ Adaugă în Calendar</button>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker annual">Anual</div>
+                        <div class="timeline-content">
+                            <h4>Obligații Anuale</h4>
+                            <ul class="obligations-list">
+                                <li>
+                                    <span class="deadline">Până la 31 Martie</span>
+                                    <span class="obligation">Bilanț contabil și situații financiare anuale</span>
+                                </li>
+                                <li>
+                                    <span class="deadline">Până la 25 Mai</span>
+                                    <span class="obligation">Declarația Unică (D212) pentru persoane fizice</span>
+                                </li>
+                                <li>
+                                    <span class="deadline">Până la 31 Mai</span>
+                                    <span class="obligation">Declarația de impozit pe profit (D101) - anuală</span>
+                                </li>
+                                <li>
+                                    <span class="deadline">Până la 30 Iunie</span>
+                                    <span class="obligation">Raportare tranzacții intracomunitare</span>
+                                </li>
+                            </ul>
+                            <button class="btn-calendar" onclick="addToCalendar('annual')">➕ Adaugă în Calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q&A Knowledge Base -->
+            <div class="fiscal-qna">
+                <h3 class="subsection-title">❓ Întrebări Frecvente - Knowledge Base</h3>
+                <div class="qna-categories">
+                    <button class="qna-category active" onclick="filterQnA('all')">Toate</button>
+                    <button class="qna-category" onclick="filterQnA('tva')">TVA</button>
+                    <button class="qna-category" onclick="filterQnA('impozit')">Impozit Profit</button>
+                    <button class="qna-category" onclick="filterQnA('pfa')">PFA</button>
+                    <button class="qna-category" onclick="filterQnA('salarii')">Salarii</button>
+                    <button class="qna-category" onclick="filterQnA('microintreprindere')">Microîntreprindere</button>
+                </div>
+
+                <div class="qna-list">
+                    <div class="qna-item" data-category="tva">
+                        <div class="qna-question" onclick="toggleAnswer(this)">
+                            <span class="q-icon">Q:</span>
+                            <span class="q-text">Când trebuie să mă înregistrez ca plătitor de TVA?</span>
+                            <span class="q-toggle">▼</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-icon">A:</span>
+                            <div class="a-text">
+                                <p>Înregistrarea ca plătitor de TVA este <strong>obligatorie</strong> când cifra de afaceri depășește <strong>300.000 lei</strong> (aproximativ 60.000 EUR) în ultimele 12 luni.</p>
+                                <p><strong>Pași de urmat:</strong></p>
+                                <ol>
+                                    <li>Depui formularul 010 la ANAF în termen de 10 zile de la depășirea plafonului</li>
+                                    <li>Aștepți certificatul de înregistrare (cod de TVA)</li>
+                                    <li>Începi să facturezi cu TVA din luna următoare înregistrării</li>
+                                </ol>
+                                <p><em>Poți opta pentru înregistrare voluntară și sub acest plafon.</em></p>
+                                <button class="btn-ask-ai" onclick="askAI('TVA registration')">🤖 Întreabă AI pentru cazul tău</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qna-item" data-category="microintreprindere">
+                        <div class="qna-question" onclick="toggleAnswer(this)">
+                            <span class="q-icon">Q:</span>
+                            <span class="q-text">Care sunt condițiile pentru microîntreprindere în 2025?</span>
+                            <span class="q-toggle">▼</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-icon">A:</span>
+                            <div class="a-text">
+                                <p>Pentru a beneficia de regimul de microîntreprindere în 2025:</p>
+                                <ul>
+                                    <li>Cifră de afaceri <strong>sub 500.000 EUR</strong></li>
+                                    <li>Capitalul social să fie deținut de persoane fizice sau juridice cu maximum 25% participare de la stat</li>
+                                    <li>Minimum 1 angajat cu contract de muncă</li>
+                                    <li>Cota de impozit: <strong>1%</strong> din cifra de afaceri (3% dacă nu ai angajați)</li>
+                                </ul>
+                                <p><strong>Atenție:</strong> Dacă depășești 500.000 EUR, treci automat la impozit pe profit de 16%.</p>
+                                <button class="btn-ask-ai" onclick="askAI('Microintreprindere conditions')">🤖 Verifică eligibilitatea cu AI</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qna-item" data-category="pfa">
+                        <div class="qna-question" onclick="toggleAnswer(this)">
+                            <span class="q-icon">Q:</span>
+                            <span class="q-text">Cum se calculează contribuțiile sociale pentru PFA?</span>
+                            <span class="q-toggle">▼</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-icon">A:</span>
+                            <div class="a-text">
+                                <p>Pentru PFA, contribuțiile sociale se calculează astfel:</p>
+                                <ul>
+                                    <li><strong>CAS (pensie):</strong> 25% din venitul net anual (obligatorie dacă venitul > 12 salarii minime brute)</li>
+                                    <li><strong>CASS (sănătate):</strong> 10% din venitul net anual (obligatorie)</li>
+                                </ul>
+                                <p><strong>Exemplu calcul 2025:</strong></p>
+                                <p>Venit brut: 100.000 lei<br>
+                                Cheltuieli deductibile: 30.000 lei<br>
+                                Venit net: 70.000 lei</p>
+                                <p>CAS = 70.000 × 25% = 17.500 lei<br>
+                                CASS = 70.000 × 10% = 7.000 lei</p>
+                                <button class="btn-ask-ai" onclick="askAI('PFA contributions calculation')">🤖 Calculează cu AI pentru situația ta</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qna-item" data-category="salarii">
+                        <div class="qna-question" onclick="toggleAnswer(this)">
+                            <span class="q-icon">Q:</span>
+                            <span class="q-text">Care sunt obligațiile fiscale pentru angajatori?</span>
+                            <span class="q-toggle">▼</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-icon">A:</span>
+                            <div class="a-text">
+                                <p>Ca angajator, ai următoarele obligații:</p>
+                                <p><strong>Lunar (până la 25):</strong></p>
+                                <ul>
+                                    <li>Declarație D112 (obligații de plată salarii)</li>
+                                    <li>Plata CAS, CASS, impozit salariat</li>
+                                    <li>Contribuție asigurări sociale (2.25% pentru condiții normale)</li>
+                                </ul>
+                                <p><strong>La angajare:</strong></p>
+                                <ul>
+                                    <li>Înregistrare în REVISAL (înainte de începerea activității)</li>
+                                    <li>Contract individual de muncă (2 exemplare, 1 pentru ITM)</li>
+                                </ul>
+                                <button class="btn-ask-ai" onclick="askAI('Employer obligations')">🤖 Întreabă AI despre situația ta</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qna-item" data-category="impozit">
+                        <div class="qna-question" onclick="toggleAnswer(this)">
+                            <span class="q-icon">Q:</span>
+                            <span class="q-text">Ce cheltuieli sunt deductibile fiscal?</span>
+                            <span class="q-toggle">▼</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-icon">A:</span>
+                            <div class="a-text">
+                                <p>Sunt deductibile cheltuielile care îndeplinesc cumulativ:</p>
+                                <ul>
+                                    <li>Sunt efectuate în scopul desfășurării activității</li>
+                                    <li>Sunt justificate cu documente (facturi, bonuri fiscale)</li>
+                                    <li>Nu sunt în lista cheltuielilor nedeductibile din Codul Fiscal</li>
+                                </ul>
+                                <p><strong>Exemple cheltuieli deductibile:</strong></p>
+                                <ul>
+                                    <li>Chirii spații comerciale</li>
+                                    <li>Utilități (curent, apă, internet)</li>
+                                    <li>Materii prime și materiale</li>
+                                    <li>Salarii și contribuții</li>
+                                    <li>Amortizare imobilizări</li>
+                                    <li>Protocol în limita 2% din cheltuielile cu salariile</li>
+                                </ul>
+                                <p><strong>Cheltuieli nedeductibile:</strong> amenzi, penalități, TVA, impozit pe profit, sponsorizări peste limită</p>
+                                <button class="btn-ask-ai" onclick="askAI('Deductible expenses')">🤖 Verifică deductibilitatea cu AI</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qna-item" data-category="tva">
+                        <div class="qna-question" onclick="toggleAnswer(this)">
+                            <span class="q-icon">Q:</span>
+                            <span class="q-text">Cum funcționează sistemul de TVA la încasare?</span>
+                            <span class="q-toggle">▼</span>
+                        </div>
+                        <div class="qna-answer">
+                            <span class="a-icon">A:</span>
+                            <div class="a-text">
+                                <p>TVA la încasare permite amânarea plății TVA până la încasarea efectivă a facturii.</p>
+                                <p><strong>Condiții:</strong></p>
+                                <ul>
+                                    <li>Cifră de afaceri <strong>sub 4.500.000 lei</strong></li>
+                                    <li>Opțiune validă pentru 2 ani fiscali</li>
+                                    <li>Nu se aplică pentru facturi intracomunitare</li>
+                                </ul>
+                                <p><strong>Avantaje:</strong></p>
+                                <ul>
+                                    <li>Îmbunătățești cash-flow-ul</li>
+                                    <li>Nu plătești TVA pentru facturi neîncasate</li>
+                                </ul>
+                                <p><strong>Atenție:</strong> La încasare, TVA devine exigibil indiferent de moment!</p>
+                                <button class="btn-ask-ai" onclick="askAI('TVA la incasare')">🤖 Analizează cu AI dacă este avantajos pentru tine</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qna-load-more">
+                    <button class="btn-load-more">Vezi Mai Multe Întrebări</button>
+                </div>
+            </div>
+
+            <!-- AI Fiscal Consultant Call-to-Action -->
+            <div class="ai-final-cta">
+                <h3>Ai o situație fiscală specifică?</h3>
+                <p>Consultantul nostru AI are acces la întreaga legislație fiscală română și poate interpreta cazuri complexe.</p>
+                <button class="btn-ai-large" onclick="openFiscalAIChat()">🤖 Consultă AI-ul Acum - Gratuit</button>
+                <p class="ai-note">AI-ul analizează situația ta și oferă recomandări bazate pe legislația în vigoare</p>
             </div>
         </div>
     </section>

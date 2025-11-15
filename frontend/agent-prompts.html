@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Prompts - Documentiulia Parallel Tree Creation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #718096;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .status-bar {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .status-bar h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        .progress {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .agent-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        .agent-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+            transform: translateY(-4px);
+        }
+        .agent-card h3 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .agent-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .agent-card ul {
+            list-style: none;
+            margin: 12px 0;
+        }
+        .agent-card li {
+            padding: 8px 0;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .agent-card li:before {
+            content: "▪️";
+        }
+        .download-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+            text-align: center;
+        }
+        .download-btn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+        .big-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-align: center;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+        }
+        .big-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4);
+        }
+        .instructions {
+            background: #fffbf0;
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            color: #744210;
+            margin-bottom: 12px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+            color: #744210;
+        }
+        .instructions li {
+            margin: 8px 0;
+        }
+        .footer {
+            text-align: center;
+            color: #718096;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Agent Prompts Download Center</h1>
+        <p class="subtitle">Parallel Decision Tree Creation via claude.ai/code</p>
+
+        <div class="status-bar">
+            <h3>📊 Current Progress</h3>
+            <div class="progress">0 / 20 trees (0%)</div>
+            <p style="color: #718096; margin-top: 10px;">
+                ⏱️ Start all 5 agents simultaneously at <strong>https://claude.ai/code</strong> to complete in ~40 minutes!
+            </p>
+        </div>
+
+        <a href="/AGENT_COORDINATION.md" class="big-btn" target="_blank">
+            📋 OPEN LIVE COORDINATION CENTER
+        </a>
+
+        <div class="instructions">
+            <h3>⚡ Quick Start (3 Steps)</h3>
+            <ol>
+                <li>Download all 5 prompt files below</li>
+                <li>Go to <a href="https://claude.ai/code" target="_blank"><strong>https://claude.ai/code</strong></a> and open 5 new chats</li>
+                <li>Copy-paste each prompt file into a separate chat → Press Enter → Watch magic happen!</li>
+            </ol>
+        </div>
+
+        <h2 style="color: #2d3748; margin: 30px 0 20px 0;">📥 Download Agent Prompts</h2>
+
+        <div class="agent-grid">
+            <div class="agent-card">
+                <h3>
+                    <span class="agent-badge">AGENT 1</span>
+                    Funding & Finance
+                </h3>
+                <ul>
+                    <li>EU Grants & Fonduri Europene</li>
+                    <li>Angel Investors vs VC</li>
+                    <li>Crowdfunding</li>
+                    <li>Bank Loan vs Leasing</li>
+                </ul>
+                <a href="/downloads/agent-prompts/AGENT_1_FUNDING_FINANCE.md" class="download-btn" download>
+                    ⬇️ Download Agent 1 Prompt
+                </a>
+            </div>
+
+            <div class="agent-card">
+                <h3>
+                    <span class="agent-badge">AGENT 2</span>
+                    Growth & Scaling
+                </h3>
+                <ul>
+                    <li>Export - First Steps</li>
+                    <li>Franchising</li>
+                    <li>Scaling Team (10→100)</li>
+                    <li>Multi-Location Expansion</li>
+                </ul>
+                <a href="/downloads/agent-prompts/AGENT_2_GROWTH_SCALING.md" class="download-btn" download>
+                    ⬇️ Download Agent 2 Prompt
+                </a>
+            </div>
+
+            <div class="agent-card">
+                <h3>
+                    <span class="agent-badge">AGENT 3</span>
+                    Operational
+                </h3>
+                <ul>
+                    <li>Business Licenses & Permits</li>
+                    <li>Contract Types (B2B, B2C, B2G)</li>
+                    <li>Business Insurance</li>
+                    <li>Intellectual Property (OSIM)</li>
+                </ul>
+                <a href="/downloads/agent-prompts/AGENT_3_OPERATIONAL.md" class="download-btn" download>
+                    ⬇️ Download Agent 3 Prompt
+                </a>
+            </div>
+
+            <div class="agent-card">
+                <h3>
+                    <span class="agent-badge">AGENT 4</span>
+                    Industry-Specific
+                </h3>
+                <ul>
+                    <li>E-commerce Setup</li>
+                    <li>HoReCa (Restaurant/Cafe/Bar)</li>
+                    <li>Construction Business</li>
+                    <li>IT/Software Business</li>
+                </ul>
+                <a href="/downloads/agent-prompts/AGENT_4_INDUSTRY.md" class="download-btn" download>
+                    ⬇️ Download Agent 4 Prompt
+                </a>
+            </div>
+
+            <div class="agent-card">
+                <h3>
+                    <span class="agent-badge">AGENT 5</span>
+                    Crisis Management
+                </h3>
+                <ul>
+                    <li>Insolvency</li>
+                    <li>Business Restructuring</li>
+                    <li>Selling Your Business</li>
+                    <li>Closing Company (Radierea SRL)</li>
+                </ul>
+                <a href="/downloads/agent-prompts/AGENT_5_CRISIS.md" class="download-btn" download>
+                    ⬇️ Download Agent 5 Prompt
+                </a>
+            </div>
+        </div>
+
+        <a href="/CLAUDE_AI_CODE_USAGE_GUIDE.md" class="big-btn" target="_blank">
+            📖 READ FULL USAGE GUIDE
+        </a>
+
+        <div class="footer">
+            <p><strong>Documentiulia</strong> - Romania's Most Comprehensive Business Education Platform</p>
+            <p style="margin-top: 10px;">🤖 Powered by Claude Code (claude.ai/code)</p>
+        </div>
+    </div>
+</body>
+</html>

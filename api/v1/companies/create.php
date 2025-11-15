@@ -10,6 +10,7 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 require_once __DIR__ . '/../../auth/AuthService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -24,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 try {
     // Get authorization token
-    $headers = getallheaders();
-    $authHeader = $headers['Authorization'] ?? '';
+    // Use case-insensitive header lookup
+    $authHeader = getHeader('authorization', '') ?? '';
 
     if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
         throw new Exception('Authorization token required');

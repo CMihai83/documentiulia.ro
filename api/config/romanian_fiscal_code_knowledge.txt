@@ -1,0 +1,196 @@
+LEGISLATIE FISCALA ROMANA - BAZA DE CUNOSTINTE 2025
+CONFORMITATE LEGALA: Cod Fiscal (Legea 227/2015), OMFP 1802/2014, Legea 190/2018
+
+=== TAXA PE VALOAREA ADAUGATA (TVA) - Art. 316 Cod Fiscal ===
+
+TVA (Taxa pe Valoarea Adăugată) = impozit pe consum aplicat în toate tranzacțiile comerciale
+- TVA se colectează la fiecare etapă a lanțului valoric
+- Se calculează ca procent din prețul de vânzare
+- Mecanism: Colectezi TVA de la clienți, deduci TVA plătit furnizorilor, plătești diferența la stat
+
+PRAG INREGISTRARE TVA 2025 (Art. 316 Cod Fiscal):
+- 300.000 lei cifra de afaceri în ultimele 12 luni consecutive
+- ATENȚIE: Se calculează din ultimele 12 luni, NU an calendar
+- Inregistrare obligatorie în 10 zile lucrătoare de la depășirea pragului
+- Formular: Declarația 010 depusă la ANAF (online sau la ghișeu)
+- Primești certificat de înregistrare cu cod de TVA (prefix RO)
+- Înregistrare voluntară: posibilă chiar sub prag (dacă ai clienți platitori TVA)
+
+Cote TVA in Romania:
+- Cota standard: 19%
+- Cota redusa: 9% (alimente, medicamente, cazare)
+- Cota super-redusa: 5% (manuale scolare, proteze)
+
+Obligatii lunare TVA:
+- Declaratie D300 pana pe 25 a lunii urmatoare
+- Plata TVA diferenta (TVA incasat - TVA deductibil)
+- Split payment: peste 15.000 lei/factura
+
+=== MICROINTREPRINDERE ===
+
+Conditii eligibilitate 2025:
+- Cifra de afaceri sub 500.000 EUR anual
+- Capital social detinut de persoane fizice
+- Minimum 1 angajat cu norma intreaga (pentru cota 1%)
+
+Cote impozit:
+- 1% din cifra de afaceri (cu minimum 1 angajat)
+- 3% din cifra de afaceri (fara angajati)
+
+Obligatii:
+- Declaratie D101 trimestrial (pana pe 25)
+- Bilant anual pana pe 31 martie
+
+Tranzitie la impozit profit:
+- Automat daca depasesti 500.000 EUR
+- Treci la 16% impozit pe profit
+- Nu mai poti reveni la microintreprindere
+
+=== PERSOANA FIZICA AUTORIZATA (PFA) ===
+
+Contribu tii sociale obligatorii:
+- CAS (pensie): 25% din venitul net anual
+- CASS (sanatate): 10% din venitul net anual
+- Impozit venit: 10% din venitul net anual
+
+Baza de calcul:
+- Venit net = Venit brut - Cheltuieli deductibile
+- CAS obligatoriu daca venitul depaseste 12 salarii minime pe economie
+- CASS obligatoriu pentru toti
+
+Salariu minim 2025: 3.700 lei
+Prag CAS: 12 × 3.700 = 44.400 lei anual
+
+Formula finala:
+- Total contributii = (Venit net × 25%) + (Venit net × 10%) + (Venit net × 10%)
+- Total = Venit net × 45%
+
+=== CHELTUIELI DEDUCTIBILE ===
+
+Intotdeauna deductibile (100%):
+- Chirii spatii comerciale
+- Utilitati (curent, apa, gaz, internet)
+- Materii prime si materiale
+- Salarii si contributii sociale
+- Amortizare imobilizari
+- Transporturi si deplasari justificate
+
+Deductibile cu limita:
+- Protocol: 2% din cheltuielile cu salariile
+- Sponsorizari: 0.5% din cifra de afaceri sau 20% din impozit
+- Reclame si marketing: necesita justificare economica
+
+Nedeductibile:
+- Amenzi si penalitati
+- TVA (daca esti platitor TVA)
+- Impozit pe profit
+- Cheltuieli fara justificativ
+- Cheltuieli personale
+
+=== OBLIGATII ANGAJATOR ===
+
+Contributii angajat (retinute din salariu):
+- CAS (pensie): 25% din salariul brut
+- CASS (sanatate): 10% din salariul brut
+- Impozit venit: 10% din (salariu brut - CAS - CASS)
+
+Contributii angajator (plata de firma):
+- CAM (asigurari sociale): 2.25% din salariul brut
+
+Obligatii lunare (pana pe 25):
+- Declaratie D112
+- Plata tuturor contributiilor
+- Virement catre bugetul de stat
+
+Obligatii la angajare (INAINTE de start):
+- Inregistrare in REVISAL
+- Contract individual de munca (2 exemplare)
+- Fisa postului
+- ROPD (Regulament organizare si protectie date)
+
+Exemplu calcul:
+Salariu brut: 5.000 lei
+- CAS (25%): -1.250 lei
+- CASS (10%): -500 lei
+- Baza impozit: 3.250 lei
+- Impozit (10%): -325 lei
+= Salariu net: 2.925 lei
+
+Cost angajator:
+- Salariu brut: 5.000 lei
+- CAM (2.25%): +113 lei
+= Cost total: 5.113 lei
+
+=== DECLARATII FISCALE ===
+
+Lunare (pana pe 25):
+- D300: Declaratie TVA (pentru platitori TVA)
+- D112: Obligatii plata salarii (pentru angajatori)
+
+Trimestriale (pana pe 25):
+- D101: Declaratie impozit profit (pentru firme pe profit)
+- D101: Impozit microintreprindere
+
+Anuale:
+- D212: Declaratia Unica (pana pe 25 mai) - pentru PFA, venituri chirii, dividende
+- D101: Bilant anual (pana pe 31 martie) - pentru firme
+
+=== IMPOZIT PE PROFIT ===
+
+Cota: 16% pe profitul net
+Perioada fiscala: trimestrial sau anual
+Declaratie: D101 trimestrial (pana pe 25)
+Bilant anual: pana pe 31 martie
+
+Calcul:
+- Profit net = Venituri - Cheltuieli deductibile
+- Impozit = Profit net × 16%
+
+Plata trimestrial:
+- T1: pana pe 25 aprilie
+- T2: pana pe 25 iulie
+- T3: pana pe 25 octombrie
+- T4: pana pe 25 ianuarie (anul urmator)
+
+=== REGULI IMPORTANTE ===
+
+1. Termenele fiscale sunt FERME - depasirea inseamna penalitati
+2. Penalitati: 0.01% pe zi intarziere + dobanzi
+3. Toate cheltuielile trebuie justificate cu documente
+4. TVA se deduce doar cu facturi valide
+5. Evidenta contabila obligatorie pentru toate formele de organizare
+6. ANAF poate controla 5 ani retroactiv
+7. Declaratiile false = sanctiuni penale
+8. Optimizare fiscala = LEGAL | Evaziune fiscala = ILEGAL
+
+=== SFATURI PRACTICE ===
+
+Pentru microintreprinderi:
+- Angajeaza macar 1 persoana part-time pentru cota 1%
+- Diferenta intre 1% si 3% = 2% din cifra de afaceri
+- La 100.000 lei/an = economisesti 2.000 lei
+
+Pentru PFA:
+- Tine evidenta stricta a cheltuielilor deductibile
+- Pastreaza toate facturile si bonurile
+- 40-60% din venituri pot fi cheltuieli deductibile
+- Plateste contributiile la timp pentru evitarea penalitatilor
+
+Pentru TVA:
+- Analizeaza daca iti convine inregistrarea voluntara
+- Daca lucrezi cu firme mari, TVA poate fi avantaj
+- TVA deductibil poate compensa TVA colectat
+
+Pentru angajatori:
+- REVISAL INAINTE de start (amenzi 5.000-10.000 lei)
+- Contractele trebuie depuse la ITM in 20 zile
+- Tine evidenta prezentei (pontaj obligatoriu)
+- Asigura-te ca ai regulament intern
+
+=== RESURSE OFICIALE ===
+
+1. Codul Fiscal - Legea 227/2015 (actualizata)
+2. ANAF - www.anaf.ro
+3. Formulare: https://www.anaf.ro/formulare
+4. Ghid declaratii: https://static.anaf.ro/static/10/Anaf/Declaratii_R/
+5. Contact ANAF: InfoCenter 0800.503.803

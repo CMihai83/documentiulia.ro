@@ -261,14 +261,12 @@ class ForecastingService {
                     UPDATE cash_flow_forecasts
                     SET forecasted_inflow = :inflow,
                         forecasted_outflow = :outflow,
-                        forecasted_net = :net,
                         forecasted_balance = :balance,
                         confidence_level = :confidence
                     WHERE id = :id
                 ", [
                     'inflow' => $period['forecasted_inflow'],
                     'outflow' => $period['forecasted_outflow'],
-                    'net' => $period['forecasted_net'],
                     'balance' => $period['forecasted_balance'],
                     'confidence' => $period['confidence_level'],
                     'id' => $existing['id']
@@ -280,7 +278,6 @@ class ForecastingService {
                     'forecast_date' => $period['forecast_date'],
                     'forecasted_inflow' => $period['forecasted_inflow'],
                     'forecasted_outflow' => $period['forecasted_outflow'],
-                    'forecasted_net' => $period['forecasted_net'],
                     'forecasted_balance' => $period['forecasted_balance'],
                     'confidence_level' => $period['confidence_level']
                 ]);

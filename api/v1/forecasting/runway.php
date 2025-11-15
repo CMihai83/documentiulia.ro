@@ -16,11 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 require_once __DIR__ . '/../../auth/AuthService.php';
 require_once __DIR__ . '/../../services/ForecastingService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
 
 try {
     // Authenticate
-    $headers = getallheaders();
-    $authHeader = $headers['Authorization'] ?? '';
+    // Use case-insensitive header lookup
+    $authHeader = getHeader('authorization', '') ?? '';
 
     if (!preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization token required');
@@ -30,7 +31,7 @@ try {
     $userData = $auth->verifyToken($matches[1]);
 
     // Get company context
-    $companyId = $headers['X-Company-ID'] ?? null;
+    $companyId = getHeader('x-company-id') ?? null;
     if (!$companyId) {
         throw new Exception('Company context required (X-Company-ID header)');
     }

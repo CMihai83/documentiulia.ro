@@ -8,11 +8,11 @@ class Database {
     private static $instance = null;
     private $connection;
 
-    private $host = 'localhost';
+    private $host = '127.0.0.1';
     private $port = '5432';
     private $database = 'accountech_production';
-    private $username = 'postgres';
-    private $password = '';  // Will be set via environment variable
+    private $username = 'accountech_app';
+    private $password = 'AccTech2025Prod@Secure';
 
     private function __construct() {
         try {
@@ -65,7 +65,21 @@ class Database {
                 RETURNING id";
 
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute($data);
+
+        // Bind all parameters with correct types
+        foreach ($data as $key => $value) {
+            if (is_bool($value)) {
+                $stmt->bindValue(":$key", $value, PDO::PARAM_BOOL);
+            } elseif (is_int($value)) {
+                $stmt->bindValue(":$key", $value, PDO::PARAM_INT);
+            } elseif (is_null($value)) {
+                $stmt->bindValue(":$key", $value, PDO::PARAM_NULL);
+            } else {
+                $stmt->bindValue(":$key", $value, PDO::PARAM_STR);
+            }
+        }
+
+        $stmt->execute();
         return $stmt->fetch()['id'];
     }
 

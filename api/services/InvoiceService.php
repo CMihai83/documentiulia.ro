@@ -116,26 +116,26 @@ class InvoiceService {
      * List invoices for a company
      */
     public function listInvoices($companyId, $filters = []) {
-        $where = ['company_id = :company_id'];
+        $where = ['i.company_id = :company_id'];
         $params = ['company_id' => $companyId];
 
         if (!empty($filters['status'])) {
-            $where[] = 'status = :status';
+            $where[] = 'i.status = :status';
             $params['status'] = $filters['status'];
         }
 
         if (!empty($filters['customer_id'])) {
-            $where[] = 'customer_id = :customer_id';
+            $where[] = 'i.customer_id = :customer_id';
             $params['customer_id'] = $filters['customer_id'];
         }
 
         if (!empty($filters['from_date'])) {
-            $where[] = 'invoice_date >= :from_date';
+            $where[] = 'i.invoice_date >= :from_date';
             $params['from_date'] = $filters['from_date'];
         }
 
         if (!empty($filters['to_date'])) {
-            $where[] = 'invoice_date <= :to_date';
+            $where[] = 'i.invoice_date <= :to_date';
             $params['to_date'] = $filters['to_date'];
         }
 
@@ -342,16 +342,16 @@ class InvoiceService {
      * Get invoice statistics for dashboard
      */
     public function getStats($companyId, $fromDate = null, $toDate = null) {
-        $where = ['company_id = :company_id'];
+        $where = ['i.company_id = :company_id'];
         $params = ['company_id' => $companyId];
 
         if ($fromDate) {
-            $where[] = 'invoice_date >= :from_date';
+            $where[] = 'i.invoice_date >= :from_date';
             $params['from_date'] = $fromDate;
         }
 
         if ($toDate) {
-            $where[] = 'invoice_date <= :to_date';
+            $where[] = 'i.invoice_date <= :to_date';
             $params['to_date'] = $toDate;
         }
 
@@ -360,15 +360,15 @@ class InvoiceService {
         $stats = $this->db->fetchOne("
             SELECT
                 COUNT(*) as total_invoices,
-                COUNT(CASE WHEN status = 'draft' THEN 1 END) as draft_count,
-                COUNT(CASE WHEN status = 'sent' THEN 1 END) as sent_count,
-                COUNT(CASE WHEN status = 'partial' THEN 1 END) as partial_count,
-                COUNT(CASE WHEN status = 'paid' THEN 1 END) as paid_count,
-                COUNT(CASE WHEN status = 'overdue' THEN 1 END) as overdue_count,
-                COALESCE(SUM(total_amount), 0) as total_billed,
-                COALESCE(SUM(amount_paid), 0) as total_paid,
-                COALESCE(SUM(amount_due), 0) as total_outstanding
-            FROM invoices
+                COUNT(CASE WHEN i.status = 'draft' THEN 1 END) as draft_count,
+                COUNT(CASE WHEN i.status = 'sent' THEN 1 END) as sent_count,
+                COUNT(CASE WHEN i.status = 'partial' THEN 1 END) as partial_count,
+                COUNT(CASE WHEN i.status = 'paid' THEN 1 END) as paid_count,
+                COUNT(CASE WHEN i.status = 'overdue' THEN 1 END) as overdue_count,
+                COALESCE(SUM(i.total_amount), 0) as total_billed,
+                COALESCE(SUM(i.amount_paid), 0) as total_paid,
+                COALESCE(SUM(i.amount_due), 0) as total_outstanding
+            FROM invoices i
             WHERE $whereClause
         ", $params);
 

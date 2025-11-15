@@ -15,7 +15,7 @@ class ExpenseService {
 
         // Create upload directory if it doesn't exist
         if (!is_dir($this->uploadDir)) {
-            mkdir($this->uploadDir, 0755, true);
+            @mkdir($this->uploadDir, 0755, true);
         }
     }
 
@@ -109,31 +109,31 @@ class ExpenseService {
      * List expenses
      */
     public function listExpenses($companyId, $filters = []) {
-        $where = ['company_id = :company_id'];
+        $where = ['e.company_id = :company_id'];
         $params = ['company_id' => $companyId];
 
         if (!empty($filters['status'])) {
-            $where[] = 'status = :status';
+            $where[] = 'e.status = :status';
             $params['status'] = $filters['status'];
         }
 
         if (!empty($filters['category'])) {
-            $where[] = 'category = :category';
+            $where[] = 'e.category = :category';
             $params['category'] = $filters['category'];
         }
 
         if (!empty($filters['vendor_id'])) {
-            $where[] = 'vendor_id = :vendor_id';
+            $where[] = 'e.vendor_id = :vendor_id';
             $params['vendor_id'] = $filters['vendor_id'];
         }
 
         if (!empty($filters['from_date'])) {
-            $where[] = 'expense_date >= :from_date';
+            $where[] = 'e.expense_date >= :from_date';
             $params['from_date'] = $filters['from_date'];
         }
 
         if (!empty($filters['to_date'])) {
-            $where[] = 'expense_date <= :to_date';
+            $where[] = 'e.expense_date <= :to_date';
             $params['to_date'] = $filters['to_date'];
         }
 

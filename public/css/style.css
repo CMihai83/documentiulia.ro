@@ -1937,3 +1937,649 @@ img {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ============================================
+   ROMANIAN FISCAL LAW SECTION STYLES
+   ============================================ */
+
+/* Fiscal Law Section - Main Container */
+.fiscal-law-section {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    padding: 80px 20px;
+}
+
+.fiscal-law-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header-flag {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+/* AI Consultant Banner */
+.ai-consultant-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4); }
+    50% { box-shadow: 0 20px 80px rgba(102, 126, 234, 0.6); }
+}
+
+.ai-icon-large {
+    font-size: 80px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.ai-content h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.ai-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.btn-ai-consultant {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-ai-consultant:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Login Button */
+.btn-nav-login {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-nav-login:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Hot Topics Section */
+.fiscal-hot-topics {
+    margin-bottom: 80px;
+}
+
+.subsection-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+.hot-topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.topic-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.topic-card.urgent {
+    border-left-color: #ef4444;
+}
+
+.topic-card.important {
+    border-left-color: #f59e0b;
+}
+
+.topic-card.info {
+    border-left-color: #06b6d4;
+}
+
+.topic-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.topic-badge.urgent {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.topic-badge.important {
+    background: #fef3c7;
+    color: #f59e0b;
+}
+
+.topic-badge.info {
+    background: #cffafe;
+    color: #06b6d4;
+}
+
+.topic-card h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.topic-card p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.topic-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.btn-topic {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-topic:hover {
+    background: var(--primary-dark);
+    transform: translateX(5px);
+}
+
+/* Form Templates Section */
+.fiscal-templates {
+    margin-bottom: 80px;
+}
+
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.template-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.template-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.template-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.template-card h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.template-card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.template-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-template-download,
+.btn-template-guide {
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-template-download {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-template-download:hover {
+    background: #16a34a;
+}
+
+.btn-template-guide {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.btn-template-guide:hover {
+    background: var(--bg-secondary);
+}
+
+/* Fiscal Steps Timeline */
+.fiscal-steps {
+    margin-bottom: 80px;
+}
+
+.steps-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.timeline-marker {
+    flex-shrink: 0;
+    width: 120px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.timeline-marker.monthly {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.timeline-marker.quarterly {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.timeline-marker.annual {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.timeline-content {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+}
+
+.timeline-content h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.obligations-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.obligations-list li {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    align-items: center;
+}
+
+.deadline {
+    flex-shrink: 0;
+    background: var(--danger-color);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.obligation {
+    flex: 1;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.btn-calendar {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-calendar:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Q&A Knowledge Base */
+.fiscal-qna {
+    margin-bottom: 80px;
+}
+
+.qna-categories {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.qna-category {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid var(--border-color);
+    background: white;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.qna-category:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.qna-category.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.qna-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.qna-item {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.qna-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.qna-question {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--bg-secondary);
+    transition: all 0.3s ease;
+}
+
+.qna-question:hover {
+    background: #e0e7ff;
+}
+
+.q-icon {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+.q-text {
+    flex: 1;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.q-toggle {
+    flex-shrink: 0;
+    color: var(--text-light);
+    transition: transform 0.3s ease;
+}
+
+.qna-question.active .q-toggle {
+    transform: rotate(180deg);
+}
+
+.qna-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.qna-answer.open {
+    padding: 25px;
+    max-height: 1000px;
+}
+
+.a-icon {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--success-color);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.a-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.a-text p {
+    margin-bottom: 15px;
+}
+
+.a-text ul, .a-text ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.a-text li {
+    margin-bottom: 8px;
+}
+
+.a-text strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.btn-ask-ai {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-ask-ai:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.qna-load-more {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-load-more {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-load-more:hover {
+    background: white;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* AI Final CTA */
+.ai-final-cta {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    padding: 60px 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--text-primary);
+    box-shadow: 0 20px 60px rgba(67, 233, 123, 0.3);
+}
+
+.ai-final-cta h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.ai-final-cta p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.btn-ai-large {
+    background: white;
+    color: #43e97b;
+    border: none;
+    padding: 20px 50px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn-ai-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ai-note {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ai-consultant-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ai-icon-large {
+        font-size: 60px;
+    }
+    
+    .hot-topics-grid,
+    .templates-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-marker {
+        width: 100%;
+    }
+    
+    .qna-categories {
+        justify-content: center;
+    }
+    
+    .fiscal-law-section {
+        padding: 40px 15px;
+    }
+}
+

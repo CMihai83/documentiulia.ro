@@ -207,6 +207,21 @@ class AuthService {
     }
 
     /**
+     * Check if user has access to company
+     * @param string $userId UUID
+     * @param string $companyId UUID
+     * @return bool
+     */
+    public function userHasAccessToCompany($userId, $companyId) {
+        $result = $this->db->fetchOne(
+            "SELECT 1 FROM company_users
+             WHERE user_id = $1 AND company_id = $2",
+            [$userId, $companyId]
+        );
+        return $result !== null;
+    }
+
+    /**
      * Create default chart of accounts for a new company
      */
     private function createDefaultAccounts($companyId) {
