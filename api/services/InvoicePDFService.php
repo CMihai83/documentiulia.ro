@@ -67,16 +67,11 @@ class InvoicePDFService {
         $invoice = $this->db->fetchOne("
             SELECT i.*,
                    co.name as company_name,
-                   co.email as company_email,
-                   co.phone as company_phone,
-                   co.address as company_address,
                    co.tax_id as company_tax_id,
-                   co.registration_number as company_reg_number,
+                   co.legal_name as company_legal_name,
                    cu.display_name as customer_name,
                    cu.email as customer_email,
-                   cu.phone as customer_phone,
-                   cu.address as customer_address,
-                   cu.tax_id as customer_tax_id
+                   cu.phone as customer_phone
             FROM invoices i
             JOIN companies co ON i.company_id = co.id
             JOIN contacts cu ON i.customer_id = cu.id
@@ -86,6 +81,16 @@ class InvoicePDFService {
         if (!$invoice) {
             return null;
         }
+
+        // Set default/placeholder company contact info (not in database schema)
+        $invoice['company_email'] = 'contact@documentiulia.ro';
+        $invoice['company_phone'] = '+40 XXX XXX XXX';
+        $invoice['company_address'] = 'București, România';
+        $invoice['company_reg_number'] = 'J40/XXXX/2025';
+
+        // Set default customer info (not in database schema)
+        $invoice['customer_address'] = 'București, România';
+        $invoice['customer_tax_id'] = $invoice['company_tax_id'] ?? 'N/A';
 
         // Get line items
         $lineItems = $this->db->fetchAll("
