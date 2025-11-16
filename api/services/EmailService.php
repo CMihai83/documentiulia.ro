@@ -1,19 +1,20 @@
 <?php
 /**
  * Email Service
- * Handles all email sending operations
- *
- * TODO: Install SendGrid PHP SDK
- * composer require sendgrid/sendgrid
+ * Handles all email sending operations using SendGrid
  */
+
+require_once __DIR__ . '/../config/env.php';
 
 class EmailService {
     private $from_email;
     private $from_name;
+    private $enabled;
 
     public function __construct() {
-        $this->from_email = $_ENV['SENDGRID_FROM_EMAIL'] ?? 'noreply@documentiulia.ro';
-        $this->from_name = $_ENV['SENDGRID_FROM_NAME'] ?? 'Documentiulia';
+        $this->from_email = Env::get('SENDGRID_FROM_EMAIL', 'noreply@documentiulia.ro');
+        $this->from_name = Env::get('SENDGRID_FROM_NAME', 'Documentiulia');
+        $this->enabled = Env::getBool('ENABLE_EMAIL_SENDING', false);
     }
 
     /**
@@ -63,7 +64,7 @@ class EmailService {
      * Generic email sending function
      */
     private function sendEmail($to, $subject, $html, $attachmentPath = null) {
-        // FOR NOW: Log email instead of sending (until SendGrid is configured)
+        // Log email attempt
         $logEntry = [
             'timestamp' => date('Y-m-d H:i:s'),
             'to' => $to,
@@ -71,9 +72,28 @@ class EmailService {
             'has_attachment' => $attachmentPath !== null
         ];
 
-        error_log('EMAIL QUEUED: ' . json_encode($logEntry));
+        // If email sending is disabled, just log
+        if (!$this->enabled) {
+            error_log('EMAIL QUEUED (disabled): ' . json_encode($logEntry));
+            return [
+                'success' => true,
+                'message' => 'Email logged (sending disabled in config)',
+                'details' => $logEntry
+            ];
+        }
 
-        /* WHEN SENDGRID IS INSTALLED, USE THIS:
+        // Check if SendGrid API key is configured
+        $apiKey = Env::get('SENDGRID_API_KEY');
+        if (!$apiKey || strpos($apiKey, 'REPLACE') !== false) {
+            error_log('EMAIL QUEUED (no API key): ' . json_encode($logEntry));
+            return [
+                'success' => true,
+                'message' => 'Email logged (SendGrid API key not configured)',
+                'details' => $logEntry
+            ];
+        }
+
+        // Use SendGrid to send email
         require_once __DIR__ . '/../../vendor/autoload.php';
 
         $email = new \SendGrid\Mail\Mail();
@@ -92,10 +112,11 @@ class EmailService {
             );
         }
 
-        $sendgrid = new \SendGrid($_ENV['SENDGRID_API_KEY']);
+        $sendgrid = new \SendGrid($apiKey);
 
         try {
             $response = $sendgrid->send($email);
+            error_log('EMAIL SENT: ' . json_encode($logEntry));
             return [
                 'success' => true,
                 'status_code' => $response->statusCode()
@@ -107,14 +128,6 @@ class EmailService {
                 'error' => $e->getMessage()
             ];
         }
-        */
-
-        // Mock success response
-        return [
-            'success' => true,
-            'message' => 'Email logged (SendGrid not yet configured)',
-            'details' => $logEntry
-        ];
     }
 
     /**

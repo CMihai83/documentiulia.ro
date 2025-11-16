@@ -32,18 +32,12 @@ class InvoicePDFService {
         // Generate HTML content
         $html = $this->generateInvoiceHTML($invoice);
 
-        // FOR NOW: Save HTML to file (until mPDF is installed)
-        $filename = "invoice_{$invoice['invoice_number']}_" . time() . ".html";
-        $filepath = __DIR__ . "/../../storage/invoices/" . $filename;
-
         // Create directory if it doesn't exist
         if (!is_dir(__DIR__ . "/../../storage/invoices")) {
             mkdir(__DIR__ . "/../../storage/invoices", 0755, true);
         }
 
-        file_put_contents($filepath, $html);
-
-        /* WHEN mPDF IS INSTALLED, USE THIS:
+        // Use mPDF to generate PDF
         require_once __DIR__ . '/../../vendor/autoload.php';
 
         $mpdf = new \Mpdf\Mpdf([
@@ -61,7 +55,6 @@ class InvoicePDFService {
         $filename = "invoice_{$invoice['invoice_number']}_" . time() . ".pdf";
         $filepath = __DIR__ . "/../../storage/invoices/" . $filename;
         $mpdf->Output($filepath, 'F');
-        */
 
         return $filepath;
     }

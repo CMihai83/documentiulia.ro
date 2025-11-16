@@ -1,20 +1,26 @@
-# OS files
+# Environment and secrets
+.env
+.env.*
+
+# Dependencies
+/vendor/
+
+# Storage and cache
+/storage/invoices/*.pdf
+/storage/invoices/*.html
+/storage/temp/
+/storage/logs/
+
+# System files
 .DS_Store
 Thumbs.db
+*.log
 
-# Editor files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
-
-# Environment files (if you add them later)
-.env
-.env.local
+# Composer
+composer.phar
