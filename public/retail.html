@@ -1,0 +1,637 @@
+<?php
+$page_title = "Gestionare Stoc pentru Retail - DocumentiUlia.ro";
+$page_description = "Platformă românească pentru controlul stocului în magazine. Sincronizare automată online + fizic. Alerte stoc scăzut. Încearcă GRATUIT 30 zile.";
+?>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $page_title ?></title>
+    <meta name="description" content="<?= $page_description ?>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold text-blue-600">DocumentiUlia</a>
+                    <div class="hidden md:block ml-10">
+                        <div class="flex space-x-4">
+                            <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2">Funcționalități</a>
+                            <a href="#pricing" class="text-gray-700 hover:text-blue-600 px-3 py-2">Prețuri</a>
+                            <a href="#testimonials" class="text-gray-700 hover:text-blue-600 px-3 py-2">Clienți</a>
+                            <a href="#faq" class="text-gray-700 hover:text-blue-600 px-3 py-2">FAQ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="text-gray-700 hover:text-blue-600">Login</a>
+                    <a href="/beta-application.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold">
+                        Program Beta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    Oprește Vânzările Pierdute
+                </h1>
+                <p class="text-2xl md:text-3xl mb-4">
+                    Controlează-ți Stocul în Timp Real
+                </p>
+                <p class="text-xl mb-8 text-blue-100">
+                    Online și în Magazine Fizice
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                    <a href="/beta-application.html" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg shadow-xl transform transition hover:scale-105">
+                        🎉 Program Beta - GRATUIT 60 Zile
+                    </a>
+                    <a href="#demo" class="bg-blue-500 hover:bg-blue-400 text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white shadow-xl">
+                        📺 Vezi Demo
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-12">
+                    <div>
+                        <div class="text-3xl font-bold">✓</div>
+                        <div class="text-sm">Sincronizare<br/>automată online</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">✓</div>
+                        <div class="text-sm">Alerte când<br/>stocul scade</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">✓</div>
+                        <div class="text-sm">Multi-depozit +<br/>Multi-magazin</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">✓</div>
+                        <div class="text-sm">Made in Romania<br/>pentru afaceri românești</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem/Solution Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Probleme Familiare?</h2>
+                <p class="text-xl text-gray-600">Majoritatea retailerilor se confruntă cu aceste provocări:</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Problem 1 -->
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                    <h3 class="text-lg font-bold text-red-900 mb-2">❌ Vânzări Pierdute</h3>
+                    <p class="text-red-800 mb-3">"Am pierdut clienți pentru că nu știam că produsul s-a terminat"</p>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r">
+                        <p class="text-green-800 font-semibold">✅ Soluția DocumentiUlia:</p>
+                        <p class="text-green-700">Alerte automate când stocul scade + Comenzi sugerate la furnizori</p>
+                        <p class="text-green-600 text-sm mt-2">💰 Previi pierderi de €500-2,000/lună</p>
+                    </div>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                    <h3 class="text-lg font-bold text-red-900 mb-2">❌ Stoc Blocat</h3>
+                    <p class="text-red-800 mb-3">"Am €10,000 blocați în produse care stau pe raft de luni"</p>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r">
+                        <p class="text-green-800 font-semibold">✅ Soluția DocumentiUlia:</p>
+                        <p class="text-green-700">Rapoarte rotație stoc + Identificare produse cu vânzare lentă</p>
+                        <p class="text-green-600 text-sm mt-2">💰 Eliberezi capital pentru produse profitabile</p>
+                    </div>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                    <h3 class="text-lg font-bold text-red-900 mb-2">❌ Haos Online + Fizic</h3>
+                    <p class="text-red-800 mb-3">"Vindem același produs online și în magazin, dar nu știm ce stoc avem"</p>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r">
+                        <p class="text-green-800 font-semibold">✅ Soluția DocumentiUlia:</p>
+                        <p class="text-green-700">Sincronizare automată între magazine fizice și WooCommerce/PrestaShop</p>
+                        <p class="text-green-600 text-sm mt-2">💰 Zero comenzi anulate pentru produse epuizate</p>
+                    </div>
+                </div>
+
+                <!-- Problem 4 -->
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                    <h3 class="text-lg font-bold text-red-900 mb-2">❌ Inventar Manual Lent</h3>
+                    <p class="text-red-800 mb-3">"Facem inventar manual o dată pe lună și durează o zi întreagă"</p>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r">
+                        <p class="text-green-800 font-semibold">✅ Soluția DocumentiUlia:</p>
+                        <p class="text-green-700">Scanare barcode + Import Excel + Istoric mișcări automat</p>
+                        <p class="text-green-600 text-sm mt-2">⏱️ Inventar complet în 30 minute, nu 8 ore</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Ce Poți Face cu DocumentiUlia</h2>
+                <p class="text-xl text-gray-600">Totul într-o singură platformă, simplă și intuitivă</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 feature-card">
+                    <div class="text-4xl mb-4">📦</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Stoc în Timp Real</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Vizualizare stoc instant</li>
+                        <li>✓ Stoc disponibil vs. rezervat</li>
+                        <li>✓ Istoric complet mișcări</li>
+                        <li>✓ Scanare barcode</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 feature-card">
+                    <div class="text-4xl mb-4">🏪</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Multi-Magazin & Multi-Depozit</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Gestionează 1-100 locații</li>
+                        <li>✓ Transferuri între magazine</li>
+                        <li>✓ Vizibilitate pe fiecare locație</li>
+                        <li>✓ Rapoarte consolidate</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 feature-card">
+                    <div class="text-4xl mb-4">🔔</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Alerte Automate</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Email/SMS când stocul scade</li>
+                        <li>✓ Comenzi sugerate automat</li>
+                        <li>✓ Zile până la epuizare</li>
+                        <li>✓ Produse cu rotație lentă</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 feature-card">
+                    <div class="text-4xl mb-4">🛍️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Integrare E-Commerce</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ WooCommerce & PrestaShop</li>
+                        <li>✓ Actualizare stoc automată</li>
+                        <li>✓ Import comenzi automat</li>
+                        <li>✓ Preț actualizat real-time</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 feature-card">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Rapoarte & Analiză</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Best & worst sellers</li>
+                        <li>✓ Rotație stoc & zile</li>
+                        <li>✓ Marjă de profit pe produs</li>
+                        <li>✓ Export Excel/PDF</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 feature-card">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Gestionare Furnizori</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Bază de date furnizori</li>
+                        <li>✓ Comenzi aprovizionare</li>
+                        <li>✓ Urmărire livrări</li>
+                        <li>✓ Istoric achiziții</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Proof Section -->
+    <div id="testimonials" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Ce Spun Clienții Noștri</h2>
+                <p class="text-xl text-gray-600">Rezultate reale de la retaileri ca tine</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border-l-4 border-blue-600">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">M</div>
+                        <div class="ml-3">
+                            <div class="font-bold text-gray-900">Maria P.</div>
+                            <div class="text-sm text-gray-600">Magazin Îmbrăcăminte, București</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Am redus vânzările pierdute cu 80% în prima lună. Alertele automate mă anunță exact când trebuie să comand."
+                    </p>
+                    <div class="text-yellow-500">★★★★★</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border-l-4 border-green-600">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
+                        <div class="ml-3">
+                            <div class="font-bold text-gray-900">Andrei M.</div>
+                            <div class="text-sm text-gray-600">3 Magazine Electronice, Cluj</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "În sfârșit știu exact ce stoc am în toate cele 3 magazine. Transferurile se fac în 2 click-uri."
+                    </p>
+                    <div class="text-yellow-500">★★★★★</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 border-l-4 border-purple-600">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">E</div>
+                        <div class="ml-3">
+                            <div class="font-bold text-gray-900">Elena R.</div>
+                            <div class="text-sm text-gray-600">Librărie, Iași</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Inventarul care dura 8 ore acum durează 30 minute. Scanez codurile de bare și gata!"
+                    </p>
+                    <div class="text-yellow-500">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Prețuri Simple și Transparente</h2>
+                <p class="text-xl text-gray-600">Alege planul potrivit pentru business-ul tău</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter Plan -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-gray-100 px-6 py-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Retail Starter</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-gray-900">€29</span>
+                            <span class="text-gray-600">/lună</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>1 locație (magazin/depozit)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Până la 500 produse</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Alerte stoc scăzut</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Rapoarte de bază</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>1 utilizator</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Suport email</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <a href="/beta-application.html" class="block w-full bg-gray-600 hover:bg-gray-700 text-white text-center font-bold py-3 rounded-lg">
+                                Încearcă Gratuit
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-600 text-center mt-4">
+                            Ideal pentru: Magazine mici, PFA-uri
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Growth Plan (Popular) -->
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden border-4 border-blue-600 transform scale-105">
+                    <div class="bg-blue-600 px-6 py-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-2xl font-bold text-white">Retail Growth</h3>
+                            <span class="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">CEL MAI POPULAR</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-white">€59</span>
+                            <span class="text-blue-100">/lună</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>3 locații</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span><strong>Produse NELIMITATE</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span><strong>1 Integrare E-commerce</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Rapoarte avansate</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>3 utilizatori</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Aplicație mobilă</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Suport prioritar</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <a href="/beta-application.html" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 rounded-lg">
+                                Încearcă Gratuit
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-600 text-center mt-4">
+                            Ideal pentru: Magazine în creștere, retail online
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-purple-100 px-6 py-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Retail Professional</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-gray-900">€99</span>
+                            <span class="text-gray-600">/lună</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span><strong>Locații NELIMITATE</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span><strong>3 Integrări E-commerce</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span><strong>Integrare POS</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Analiză avansată profitabilitate</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>10 utilizatori</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>API pentru integrări</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Suport telefonic prioritar</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <a href="/beta-application.html" class="block w-full bg-purple-600 hover:bg-purple-700 text-white text-center font-bold py-3 rounded-lg">
+                                Încearcă Gratuit
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-600 text-center mt-4">
+                            Ideal pentru: Lanțuri retail, multi-locații
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">Toate planurile includ:</p>
+                <div class="flex justify-center gap-8 flex-wrap">
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Training gratuit</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Import date gratuit</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Anulare oricând</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faq" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Întrebări Frecvente</h2>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">❓ Cât de greu este să încep să folosesc sistemul?</h3>
+                    <p class="text-gray-700">
+                        Foarte simplu! Import date din Excel + training 30 min + ești gata. Majoritatea clienților sunt operaționali în prima zi.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">❓ Funcționează și pentru magazin fizic fără online?</h3>
+                    <p class="text-gray-700">
+                        DA! Poți folosi doar pentru magazine fizice, fără să ai magazin online. Multe din clienții noștri folosesc doar pentru retail fizic.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">❓ Pot să sincronizez mai multe magazine online?</h3>
+                    <p class="text-gray-700">
+                        Da, planul Professional include până la 3 integrări e-commerce (WooCommerce, PrestaShop, Shopify).
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">❓ Ce se întâmplă cu datele mele dacă anulez?</h3>
+                    <p class="text-gray-700">
+                        Îți poți exporta toate datele în Excel/CSV oricând. Datele tale rămân ale tale.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">❓ Oferiți suport în limba română?</h3>
+                    <p class="text-gray-700">
+                        DA! Suport complet în limba română prin email, chat și telefon (pentru planurile superioare).
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">❓ Funcționează pe mobil/tabletă?</h3>
+                    <p class="text-gray-700">
+                        Da! Aplicație mobilă nativă pentru iOS și Android + versiune web responsive.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="gradient-bg text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-4">Gata să Controlezi Stocul?</h2>
+            <p class="text-xl mb-8">Fii printre primii 10 retaileri în programul beta - GRATUIT 60 zile</p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                <a href="/beta-application.html" class="bg-white text-blue-600 hover:bg-gray-100 px-12 py-4 rounded-lg font-bold text-lg shadow-xl transform transition hover:scale-105">
+                    🎉 Înscrie-te în Beta
+                </a>
+                <a href="#demo" class="bg-blue-500 hover:bg-blue-400 text-white px-12 py-4 rounded-lg font-bold text-lg border-2 border-white shadow-xl">
+                    📞 Programează Demo
+                </a>
+            </div>
+
+            <p class="text-blue-100 text-sm">
+                ⏰ Doar 10 locuri disponibile • ✓ Fără card necesar • ✓ Setup gratuit
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">DocumentiUlia</h3>
+                    <p class="text-gray-400">Platforma românească #1 pentru gestionarea stocurilor</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Produs</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-white">Funcționalități</a></li>
+                        <li><a href="#pricing" class="hover:text-white">Prețuri</a></li>
+                        <li><a href="/beta-application.html" class="hover:text-white">Program Beta</a></li>
+                        <li><a href="/demo" class="hover:text-white">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Companie</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/about" class="hover:text-white">Despre Noi</a></li>
+                        <li><a href="/blog" class="hover:text-white">Blog</a></li>
+                        <li><a href="/contact" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/privacy" class="hover:text-white">Confidențialitate</a></li>
+                        <li><a href="/terms" class="hover:text-white">Termeni și Condiții</a></li>
+                        <li><a href="/gdpr" class="hover:text-white">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 DocumentiUlia.ro - Toate drepturile rezervate</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+# DocumentIulia ML Service - Docker Compose
+version: '3.8'
+
+services:
+  ml-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: documentiulia-ml
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=false
+      - ENVIRONMENT=production
+      - DATABASE_URL=postgresql://accountech_app:AccTech2025Prod%40Secure@host.docker.internal:5432/documentiulia_v2
+      - REDIS_URL=redis://host.docker.internal:6379/0
+    volumes:
+      - ./logs:/app/logs
+      - ./models:/app/models
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Redis for caching (optional - can use external)
+  redis:
+    image: redis:7-alpine
+    container_name: documentiulia-ml-redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+volumes:
+  redis-data:
+
+networks:
+  default:
+    name: documentiulia-network
+    external: true

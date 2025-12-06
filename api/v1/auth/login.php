@@ -6,16 +6,21 @@
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
-
-require_once __DIR__ . '/../../auth/AuthService.php';
-require_once __DIR__ . '/../../helpers/headers.php';
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
+
+// CRITICAL: Read input BEFORE any includes
+$rawInput = file_get_contents('php://input');
+$input = json_decode($rawInput, true);
+
+// Load dependencies AFTER reading input
+require_once __DIR__ . '/../../auth/AuthService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -24,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 try {
-    $input = json_decode(file_get_contents('php://input'), true);
-
     if (empty($input['email']) || empty($input['password'])) {
         throw new Exception('Email and password are required');
     }

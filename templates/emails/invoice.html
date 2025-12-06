@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; background: #f3f4f6; }
+        .container { background: white; }
+        .header { background: #2563eb; padding: 30px; text-align: center; color: white; }
+        .content { padding: 30px; }
+        .invoice-details { background: #f3f4f6; padding: 15px; margin: 20px 0; border-radius: 6px; }
+        .footer { padding: 20px; background: #f9fafb; text-align: center; font-size: 12px; color: #6b7280; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Factură #{{invoice_number}}</h1>
+        </div>
+        <div class="content">
+            <p>Bună ziua {{customer_name}},</p>
+            <p>Vă mulțumim pentru colaborare! Vă transmitem factura în atașament.</p>
+            <div class="invoice-details">
+                <p><strong>Număr factură:</strong> {{invoice_number}}</p>
+                <p><strong>Data:</strong> {{invoice_date}}</p>
+                <p><strong>Total:</strong> {{total_amount}} {{currency}}</p>
+                <p><strong>Scadență:</strong> {{due_date}}</p>
+            </div>
+            <p>Factura este atașată la acest email în format PDF.</p>
+            <p>Cu stimă,<br><strong>Echipa DocumentIulia</strong></p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 DocumentIulia | <a href="https://documentiulia.ro">Website</a></p>
+        </div>
+    </div>
+</body>
+</html>

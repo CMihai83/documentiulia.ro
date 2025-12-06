@@ -478,7 +478,7 @@ class MBAKnowledgeService {
                     FROM user_mba_progress ump
                     JOIN mba_books mb ON ump.book_id = mb.id
                     WHERE ump.user_id = :user_id
-                    ORDER BY ump.updated_at DESC";
+                    ORDER BY COALESCE(ump.completed_at, ump.started_at, ump.created_at) DESC";
 
             $progress = $this->db->fetchAll($sql, ['user_id' => $userId]);
 

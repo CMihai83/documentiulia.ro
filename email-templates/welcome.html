@@ -1,0 +1,138 @@
+<!-- SUBJECT: Bun venit la DocumentiUlia, {{first_name}}! -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bun venit la DocumentiUlia</title>
+    <style>
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        body { margin: 0; padding: 0; width: 100% !important; background-color: #f4f7fa; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+        .email-container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        .email-header { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); padding: 40px 30px; text-align: center; }
+        .logo { font-size: 32px; font-weight: 700; color: #ffffff; text-decoration: none; }
+        .email-content { padding: 40px 30px; color: #333333; line-height: 1.6; }
+        h1 { margin: 0 0 20px 0; font-size: 24px; font-weight: 600; color: #1f2937; }
+        p { margin: 0 0 15px 0; font-size: 16px; color: #4b5563; }
+        .button { display: inline-block; padding: 14px 32px; margin: 20px 0; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; }
+        .feature-list { margin: 30px 0; }
+        .feature-item { padding: 15px 0; border-bottom: 1px solid #e5e7eb; }
+        .feature-item:last-child { border-bottom: none; }
+        .feature-icon { font-size: 24px; margin-right: 10px; }
+        .email-footer { background-color: #f9fafb; padding: 30px; text-align: center; border-top: 1px solid #e5e7eb; }
+        .email-footer p { margin: 5px 0; font-size: 14px; color: #6b7280; }
+        @media only screen and (max-width: 600px) {
+            .email-content { padding: 30px 20px !important; }
+            .button { display: block !important; width: 100% !important; }
+        }
+    </style>
+</head>
+<body>
+    <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f4f7fa;">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table class="email-container" role="presentation" width="600" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="email-header">
+                            <a href="https://documentiulia.ro" class="logo">DocumentiUlia</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="email-content">
+                            <h1>🎉 Bine ai venit, {{first_name}}!</h1>
+
+                            <p>Suntem încântați să te avem alături în comunitatea DocumentiUlia!</p>
+
+                            <p>Contul tău a fost creat cu succes și acum ai acces la o platformă completă de management pentru afacerea ta.</p>
+
+                            <div style="text-align: center;">
+                                <a href="{{login_url}}" class="button">📊 Accesează Dashboard-ul</a>
+                            </div>
+
+                            <div class="feature-list">
+                                <h2 style="margin-bottom: 20px;">Ce poți face cu DocumentiUlia:</h2>
+
+                                <div class="feature-item">
+                                    <span class="feature-icon">📦</span>
+                                    <strong>Gestionare Inventar</strong>
+                                    <p style="margin: 5px 0 0 34px; color: #6b7280;">
+                                        Controlează stocurile în timp real, cu alertă la stoc scăzut și rapoarte detaliate.
+                                    </p>
+                                </div>
+
+                                <div class="feature-item">
+                                    <span class="feature-icon">🧾</span>
+                                    <strong>Facturare Inteligentă</strong>
+                                    <p style="margin: 5px 0 0 34px; color: #6b7280;">
+                                        Generează facturi profesionale în secunde, cu raportare ANAF automată.
+                                    </p>
+                                </div>
+
+                                <div class="feature-item">
+                                    <span class="feature-icon">👥</span>
+                                    <strong>CRM Complet</strong>
+                                    <p style="margin: 5px 0 0 34px; color: #6b7280;">
+                                        Gestionează clienții, urmărește vânzările și automatizează follow-up-urile.
+                                    </p>
+                                </div>
+
+                                <div class="feature-item">
+                                    <span class="feature-icon">📊</span>
+                                    <strong>Rapoarte & Analytics</strong>
+                                    <p style="margin: 5px 0 0 34px; color: #6b7280;">
+                                        Vizualizează performanța afacerii cu dashboard-uri interactive și rapoarte detaliate.
+                                    </p>
+                                </div>
+
+                                <div class="feature-item">
+                                    <span class="feature-icon">🛒</span>
+                                    <strong>Integrare E-commerce</strong>
+                                    <p style="margin: 5px 0 0 34px; color: #6b7280;">
+                                        Sincronizează automat cu WooCommerce, PrestaShop și alte platforme.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h2 style="margin-top: 40px;">Primii pași:</h2>
+                            <ol style="color: #4b5563; line-height: 1.8;">
+                                <li><strong>Completează profilul companiei</strong> - Adaugă logo-ul și detaliile de contact</li>
+                                <li><strong>Importă produsele</strong> - Încarcă lista de produse din Excel sau creează manual</li>
+                                <li><strong>Creează prima factură</strong> - Testează sistemul de facturare</li>
+                                <li><strong>Explorează rapoartele</strong> - Vezi cum arată dashboard-ul tău</li>
+                            </ol>
+
+                            <div style="background-color: #eff6ff; border-left: 4px solid #3b82f6; padding: 20px; margin: 30px 0; border-radius: 4px;">
+                                <h3 style="margin: 0 0 10px 0; color: #1e40af; font-size: 16px;">💡 Ai nevoie de ajutor?</h3>
+                                <p style="margin: 0; color: #1e40af;">
+                                    Echipa noastră este disponibilă 24/7 pentru a te ajuta!<br>
+                                    <strong>Email:</strong> <a href="mailto:{{support_email}}" style="color: #2563eb;">{{support_email}}</a><br>
+                                    <strong>Documentație:</strong> <a href="https://documentiulia.ro/docs" style="color: #2563eb;">documentiulia.ro/docs</a>
+                                </p>
+                            </div>
+
+                            <p style="margin-top: 30px;">
+                                Cu respect și entuziasm,<br>
+                                <strong>Echipa DocumentiUlia</strong>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="email-footer">
+                            <p><strong>DocumentiUlia</strong></p>
+                            <p>Platforma completă de management al afacerii</p>
+                            <p style="margin-top: 15px;">
+                                <a href="https://documentiulia.ro" style="color: #3b82f6; text-decoration: none;">Website</a> |
+                                <a href="https://documentiulia.ro/docs" style="color: #3b82f6; text-decoration: none;">Documentație</a> |
+                                <a href="mailto:support@documentiulia.ro" style="color: #3b82f6; text-decoration: none;">Suport</a>
+                            </p>
+                            <p style="font-size: 12px; color: #9ca3af; margin-top: 20px;">
+                                © 2025 DocumentiUlia. Toate drepturile rezervate.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

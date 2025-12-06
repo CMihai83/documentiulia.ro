@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Diagnostic</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #0f0; }
+        .error { color: #f00; }
+        .success { color: #0f0; }
+        .warning { color: #ff0; }
+    </style>
+</head>
+<body>
+    <h1>Authentication Diagnostic</h1>
+    <div id="output"></div>
+    <script>
+        const output = document.getElementById('output');
+        const token = localStorage.getItem('auth_token');
+        const companyId = localStorage.getItem('company_id');
+        
+        output.innerHTML = `
+            <p><strong>Auth Token:</strong> <span class="${token ? 'success' : 'error'}">${token ? 'Present (' + token.substring(0, 20) + '...)' : 'MISSING'}</span></p>
+            <p><strong>Company ID:</strong> <span class="${companyId ? 'success' : 'error'}">${companyId || 'MISSING'}</span></p>
+            <hr>
+            <p class="warning">If Company ID is MISSING, you need to:</p>
+            <ol>
+                <li>Logout from the application</li>
+                <li>Login again</li>
+                <li>This will set the company_id properly</li>
+            </ol>
+        `;
+    </script>
+</body>
+</html>

@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -41,20 +41,31 @@ try {
         throw new Exception('Company ID required');
     }
 
-    // Get contact ID from URL path
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $pathParts = explode('/', trim($path, '/'));
-    $contactId = end($pathParts);
-
-    if (!is_numeric($contactId)) {
-        throw new Exception('Invalid contact ID');
-    }
-
-    // Get request data
+    // Get request data first
     $input = json_decode(file_get_contents('php://input'), true);
 
     if (empty($input)) {
         throw new Exception('No data provided');
+    }
+
+    // Get contact ID from JSON body or URL path (backward compatibility)
+    $contactId = null;
+    if (!empty($input['id'])) {
+        $contactId = $input['id'];
+    } else {
+        // Try to get from URL path
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $pathParts = explode('/', trim($path, '/'));
+        $contactId = end($pathParts);
+    }
+
+    if (empty($contactId)) {
+        throw new Exception('Contact ID is required');
+    }
+
+    // Accept 'name' as alias for 'display_name'
+    if (!empty($input['name']) && empty($input['display_name'])) {
+        $input['display_name'] = $input['name'];
     }
 
     $contactService = new ContactService();

@@ -24,3 +24,10 @@ Thumbs.db
 
 # Composer
 composer.phar
+
+# Large binary files
+*.node
+.next/cache/
+node_modules/
+apps/node_modules/
+apps/web/node_modules/

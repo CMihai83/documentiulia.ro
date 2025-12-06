@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentiulia API Tester</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2563eb; margin-bottom: 30px; }
+        .section { margin-bottom: 30px; padding: 20px; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb; }
+        h2 { color: #1f2937; margin-bottom: 15px; font-size: 1.25rem; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 500; color: #374151; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+        button { background: #2563eb; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; }
+        button:hover { background: #1d4ed8; }
+        button:disabled { background: #9ca3af; cursor: not-allowed; }
+        .response { margin-top: 15px; padding: 15px; background: #1f2937; color: #10b981; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 13px; max-height: 400px; overflow: auto; }
+        .error { color: #ef4444 !important; }
+        .success { color: #10b981 !important; }
+        .token-display { background: #fef3c7; border: 1px solid #fbbf24; padding: 10px; border-radius: 6px; margin-top: 10px; word-break: break-all; font-size: 12px; }
+        .endpoints { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 20px; }
+        .endpoint-card { background: white; padding: 15px; border-radius: 6px; border: 1px solid #e5e7eb; cursor: pointer; transition: all 0.2s; }
+        .endpoint-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(37,99,235,0.1); }
+        .endpoint-method { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 8px; }
+        .method-get { background: #dbeafe; color: #1e40af; }
+        .method-post { background: #d1fae5; color: #065f46; }
+        .method-put { background: #fef3c7; color: #92400e; }
+        .method-delete { background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Documentiulia.ro API Tester</h1>
+
+        <!-- Login Section -->
+        <div class="section">
+            <h2>🔐 Authentication</h2>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="loginEmail" value="test_admin@accountech.com">
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="loginPassword" value="TestPass123!">
+            </div>
+            <button onclick="login()">Login</button>
+            <div id="loginResponse" class="response" style="display:none;"></div>
+            <div id="tokenDisplay" class="token-display" style="display:none;">
+                <strong>Token:</strong> <span id="tokenValue"></span>
+            </div>
+        </div>
+
+        <!-- Quick Tests -->
+        <div class="section">
+            <h2>⚡ Quick API Tests</h2>
+            <div class="endpoints">
+                <div class="endpoint-card" onclick="testEndpoint('GET', '/api/v1/time/entries.php', 'Time Entries')">
+                    <div><span class="endpoint-method method-get">GET</span> <strong>Time Entries</strong></div>
+                    <small>List all time entries</small>
+                </div>
+                <div class="endpoint-card" onclick="testEndpoint('GET', '/api/v1/time/projects.php', 'Projects')">
+                    <div><span class="endpoint-method method-get">GET</span> <strong>Projects</strong></div>
+                    <small>List all projects</small>
+                </div>
+                <div class="endpoint-card" onclick="testEndpoint('GET', '/api/v1/time/tasks.php', 'Tasks')">
+                    <div><span class="endpoint-method method-get">GET</span> <strong>Tasks</strong></div>
+                    <small>List all tasks</small>
+                </div>
+                <div class="endpoint-card" onclick="testEndpoint('GET', '/api/v1/analytics/kpis.php', 'Business KPIs')">
+                    <div><span class="endpoint-method method-get">GET</span> <strong>KPIs</strong></div>
+                    <small>Business performance metrics</small>
+                </div>
+                <div class="endpoint-card" onclick="testEndpoint('GET', '/api/v1/accounting/trial-balance.php', 'Trial Balance')">
+                    <div><span class="endpoint-method method-get">GET</span> <strong>Trial Balance</strong></div>
+                    <small>Accounting trial balance</small>
+                </div>
+                <div class="endpoint-card" onclick="testEndpoint('GET', '/api/v1/analytics/revenue-trend.php?group_by=month', 'Revenue Trend')">
+                    <div><span class="endpoint-method method-get">GET</span> <strong>Revenue Trend</strong></div>
+                    <small>Monthly revenue analysis</small>
+                </div>
+            </div>
+            <div id="quickTestResponse" class="response" style="display:none; margin-top: 20px;"></div>
+        </div>
+
+        <!-- Custom Request -->
+        <div class="section">
+            <h2>🔧 Custom API Request</h2>
+            <div class="form-group">
+                <label>Method:</label>
+                <select id="customMethod">
+                    <option>GET</option>
+                    <option>POST</option>
+                    <option>PUT</option>
+                    <option>DELETE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Endpoint:</label>
+                <input type="text" id="customEndpoint" placeholder="/api/v1/time/entries.php">
+            </div>
+            <div class="form-group">
+                <label>Request Body (JSON):</label>
+                <textarea id="customBody" rows="5" placeholder='{"key": "value"}'></textarea>
+            </div>
+            <button onclick="customRequest()">Send Request</button>
+            <div id="customResponse" class="response" style="display:none;"></div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = '';
+        let companyId = '';
+
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const responseDiv = document.getElementById('loginResponse');
+            const tokenDiv = document.getElementById('tokenDisplay');
+
+            try {
+                const response = await fetch('/api/v1/auth/login.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                responseDiv.style.display = 'block';
+                responseDiv.innerHTML = JSON.stringify(data, null, 2);
+
+                if (data.success) {
+                    authToken = data.data.token;
+                    companyId = data.data.companies[0].id;
+                    responseDiv.className = 'response success';
+
+                    tokenDiv.style.display = 'block';
+                    document.getElementById('tokenValue').textContent = authToken.substring(0, 50) + '...';
+                } else {
+                    responseDiv.className = 'response error';
+                }
+            } catch (error) {
+                responseDiv.style.display = 'block';
+                responseDiv.className = 'response error';
+                responseDiv.textContent = 'Error: ' + error.message;
+            }
+        }
+
+        async function testEndpoint(method, endpoint, name) {
+            if (!authToken) {
+                alert('Please login first!');
+                return;
+            }
+
+            const responseDiv = document.getElementById('quickTestResponse');
+            responseDiv.style.display = 'block';
+            responseDiv.innerHTML = `Testing ${name}...\n`;
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: method,
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                        'X-Company-ID': companyId,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                responseDiv.className = data.success ? 'response success' : 'response error';
+                responseDiv.innerHTML = `=== ${name} (${method} ${endpoint}) ===\n\n` + JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseDiv.className = 'response error';
+                responseDiv.textContent = 'Error: ' + error.message;
+            }
+        }
+
+        async function customRequest() {
+            if (!authToken) {
+                alert('Please login first!');
+                return;
+            }
+
+            const method = document.getElementById('customMethod').value;
+            const endpoint = document.getElementById('customEndpoint').value;
+            const body = document.getElementById('customBody').value;
+            const responseDiv = document.getElementById('customResponse');
+
+            const options = {
+                method: method,
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'X-Company-ID': companyId,
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            if (body && method !== 'GET') {
+                options.body = body;
+            }
+
+            try {
+                const response = await fetch(endpoint, options);
+                const data = await response.json();
+
+                responseDiv.style.display = 'block';
+                responseDiv.className = data.success ? 'response success' : 'response error';
+                responseDiv.innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseDiv.style.display = 'block';
+                responseDiv.className = 'response error';
+                responseDiv.textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

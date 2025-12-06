@@ -13,11 +13,33 @@
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Company-ID');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
+    exit();
+}
+
+// Allow GET for simple recommendations list
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Return available fiscal situations for recommendations
+    echo json_encode([
+        'success' => true,
+        'data' => [
+            'available_situations' => [
+                'Starting business',
+                'Scaling operations',
+                'Tax optimization',
+                'Investment planning',
+                'Risk management',
+                'Cash flow management',
+                'International expansion',
+                'Regulatory compliance'
+            ],
+            'instructions' => 'POST with {"fiscal_situation": "your situation"} to get specific recommendations'
+        ]
+    ]);
     exit();
 }
 

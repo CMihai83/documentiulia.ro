@@ -1,0 +1,188 @@
+import { Response } from 'express';
+import { EfacturaService } from './efactura.service';
+import { UpdateEfacturaConfigDto, UpdateInvoiceEfacturaDto } from './dto/efactura.dto';
+export declare class EfacturaController {
+    private readonly efacturaService;
+    constructor(efacturaService: EfacturaService);
+    getConfig(companyId: string, user: any): Promise<{
+        certificatePassword: string | null;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        isEnabled: boolean;
+        certificateFile: string | null;
+        autoUpload: boolean;
+        autoDownload: boolean;
+        lastUploadAt: Date | null;
+        lastDownloadAt: Date | null;
+    }>;
+    updateConfig(companyId: string, dto: UpdateEfacturaConfigDto, user: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        isEnabled: boolean;
+        certificateFile: string | null;
+        certificatePassword: string | null;
+        autoUpload: boolean;
+        autoDownload: boolean;
+        lastUploadAt: Date | null;
+        lastDownloadAt: Date | null;
+    }>;
+    generateXml(companyId: string, invoiceId: string, user: any, res: Response): Promise<void>;
+    validate(companyId: string, invoiceId: string, user: any): Promise<{
+        valid: boolean;
+        errors: string[];
+        warnings: string[];
+    }>;
+    sendToAnaf(companyId: string, invoiceId: string, user: any): Promise<{
+        success: boolean;
+        uploadId: string;
+        message: string;
+    }>;
+    checkStatus(companyId: string, invoiceId: string, user: any): Promise<{
+        invoiceId: string;
+        status: import(".prisma/client").$Enums.EfacturaStatus | null;
+        uploadId: string;
+        indexId: string | null;
+        sentAt: Date | null;
+    }>;
+    updateStatus(companyId: string, invoiceId: string, dto: UpdateInvoiceEfacturaDto, user: any): Promise<{
+        number: number;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        currency: string;
+        status: import(".prisma/client").$Enums.InvoiceStatus;
+        type: import(".prisma/client").$Enums.InvoiceType;
+        total: import("@prisma/client/runtime/library").Decimal;
+        exchangeRate: import("@prisma/client/runtime/library").Decimal;
+        subtotal: import("@prisma/client/runtime/library").Decimal;
+        vatAmount: import("@prisma/client/runtime/library").Decimal;
+        discount: import("@prisma/client/runtime/library").Decimal;
+        subtotalRon: import("@prisma/client/runtime/library").Decimal;
+        vatAmountRon: import("@prisma/client/runtime/library").Decimal;
+        totalRon: import("@prisma/client/runtime/library").Decimal;
+        paidAmount: import("@prisma/client/runtime/library").Decimal;
+        notes: string | null;
+        issueDate: Date;
+        clientId: string;
+        paymentStatus: import(".prisma/client").$Enums.PaymentStatus;
+        series: string;
+        invoiceNumber: string;
+        dueDate: Date;
+        deliveryDate: Date | null;
+        paymentMethod: string | null;
+        paidAt: Date | null;
+        internalNotes: string | null;
+        termsConditions: string | null;
+        efacturaStatus: import(".prisma/client").$Enums.EfacturaStatus | null;
+        efacturaIndexId: string | null;
+        efacturaUploadId: string | null;
+        efacturaXml: string | null;
+        efacturaSentAt: Date | null;
+    }>;
+    getStatusSummary(companyId: string, user: any): Promise<{
+        pending: number;
+        processing: number;
+        accepted: number;
+        rejected: number;
+        notSent: number;
+    }>;
+    getHistory(companyId: string, user: any): Promise<{
+        client: {
+            name: string;
+        };
+        id: string;
+        currency: string;
+        total: import("@prisma/client/runtime/library").Decimal;
+        invoiceNumber: string;
+        efacturaStatus: import(".prisma/client").$Enums.EfacturaStatus | null;
+        efacturaIndexId: string | null;
+        efacturaUploadId: string | null;
+        efacturaSentAt: Date | null;
+    }[]>;
+    getPending(companyId: string, user: any): Promise<({
+        client: {
+            name: string;
+        };
+    } & {
+        number: number;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        currency: string;
+        status: import(".prisma/client").$Enums.InvoiceStatus;
+        type: import(".prisma/client").$Enums.InvoiceType;
+        total: import("@prisma/client/runtime/library").Decimal;
+        exchangeRate: import("@prisma/client/runtime/library").Decimal;
+        subtotal: import("@prisma/client/runtime/library").Decimal;
+        vatAmount: import("@prisma/client/runtime/library").Decimal;
+        discount: import("@prisma/client/runtime/library").Decimal;
+        subtotalRon: import("@prisma/client/runtime/library").Decimal;
+        vatAmountRon: import("@prisma/client/runtime/library").Decimal;
+        totalRon: import("@prisma/client/runtime/library").Decimal;
+        paidAmount: import("@prisma/client/runtime/library").Decimal;
+        notes: string | null;
+        issueDate: Date;
+        clientId: string;
+        paymentStatus: import(".prisma/client").$Enums.PaymentStatus;
+        series: string;
+        invoiceNumber: string;
+        dueDate: Date;
+        deliveryDate: Date | null;
+        paymentMethod: string | null;
+        paidAt: Date | null;
+        internalNotes: string | null;
+        termsConditions: string | null;
+        efacturaStatus: import(".prisma/client").$Enums.EfacturaStatus | null;
+        efacturaIndexId: string | null;
+        efacturaUploadId: string | null;
+        efacturaXml: string | null;
+        efacturaSentAt: Date | null;
+    })[]>;
+    getFailed(companyId: string, user: any): Promise<({
+        client: {
+            name: string;
+        };
+    } & {
+        number: number;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        currency: string;
+        status: import(".prisma/client").$Enums.InvoiceStatus;
+        type: import(".prisma/client").$Enums.InvoiceType;
+        total: import("@prisma/client/runtime/library").Decimal;
+        exchangeRate: import("@prisma/client/runtime/library").Decimal;
+        subtotal: import("@prisma/client/runtime/library").Decimal;
+        vatAmount: import("@prisma/client/runtime/library").Decimal;
+        discount: import("@prisma/client/runtime/library").Decimal;
+        subtotalRon: import("@prisma/client/runtime/library").Decimal;
+        vatAmountRon: import("@prisma/client/runtime/library").Decimal;
+        totalRon: import("@prisma/client/runtime/library").Decimal;
+        paidAmount: import("@prisma/client/runtime/library").Decimal;
+        notes: string | null;
+        issueDate: Date;
+        clientId: string;
+        paymentStatus: import(".prisma/client").$Enums.PaymentStatus;
+        series: string;
+        invoiceNumber: string;
+        dueDate: Date;
+        deliveryDate: Date | null;
+        paymentMethod: string | null;
+        paidAt: Date | null;
+        internalNotes: string | null;
+        termsConditions: string | null;
+        efacturaStatus: import(".prisma/client").$Enums.EfacturaStatus | null;
+        efacturaIndexId: string | null;
+        efacturaUploadId: string | null;
+        efacturaXml: string | null;
+        efacturaSentAt: Date | null;
+    })[]>;
+}
+//# sourceMappingURL=efactura.controller.d.ts.map

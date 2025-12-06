@@ -26,7 +26,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         </header>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto">
+        <main id="main-content" className="flex-1 overflow-y-auto" role="main" aria-label="Conținut principal">
           <div className="max-w-7xl mx-auto p-4 sm:p-6">
             {children}
           </div>

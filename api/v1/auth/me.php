@@ -47,7 +47,18 @@ try {
         exit;
     }
 
-    // Return user data
+    // Get user's companies
+    require_once __DIR__ . '/../../config/database.php';
+    $db = Database::getInstance();
+    $companies = $db->fetchAll(
+        "SELECT c.id, c.name, cu.role
+         FROM companies c
+         JOIN company_users cu ON c.id = cu.company_id
+         WHERE cu.user_id = $1",
+        [$user['user_id']]
+    );
+
+    // Return user data with companies
     echo json_encode([
         'success' => true,
         'user' => [
@@ -57,7 +68,8 @@ try {
             'last_name' => $user['last_name'] ?? '',
             'role' => $user['role'] ?? 'user',
             'status' => 'active'
-        ]
+        ],
+        'companies' => $companies
     ]);
 
 } catch (Exception $e) {

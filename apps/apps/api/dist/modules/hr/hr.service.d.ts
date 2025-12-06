@@ -1,0 +1,333 @@
+import { PrismaService } from '../../common/prisma/prisma.service';
+import { CreateCandidateDto, UpdateCandidateDto, CreateJobDto, UpdateJobDto, CreateEmployeeDto, UpdateEmployeeDto, CreatePerformanceReviewDto, WellnessSurveyDto, ATSMatchRequestDto, ATSMatchResultDto, HRAnalyticsDto, CandidateStatus, JobStatus } from './dto/hr.dto';
+export declare class HrService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    createCandidate(companyId: string, dto: CreateCandidateDto): Promise<{
+        id: string;
+        email: string;
+        phone: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        status: import(".prisma/client").$Enums.CandidateStatus;
+        notes: string | null;
+        position: string;
+        skills: string[];
+        experienceYears: number | null;
+        education: string | null;
+        linkedinUrl: string | null;
+        cvUrl: string | null;
+        jobId: string;
+        matchScore: number;
+        interviewFeedback: string | null;
+        appliedAt: Date;
+    }>;
+    getCandidates(companyId: string, options?: {
+        status?: CandidateStatus;
+        jobId?: string;
+        minScore?: number;
+        search?: string;
+        page?: number;
+        limit?: number;
+    }): Promise<{
+        data: ({
+            job: {
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                companyId: string;
+                status: import(".prisma/client").$Enums.JobPostingStatus;
+                description: string;
+                type: import(".prisma/client").$Enums.JobType;
+                title: string;
+                salary: import("@prisma/client/runtime/library").JsonValue | null;
+                department: string;
+                location: string;
+                requirements: string[];
+                benefits: string[];
+                applicants: number;
+                postedAt: Date;
+                closesAt: Date | null;
+            };
+        } & {
+            id: string;
+            email: string;
+            phone: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            companyId: string;
+            status: import(".prisma/client").$Enums.CandidateStatus;
+            notes: string | null;
+            position: string;
+            skills: string[];
+            experienceYears: number | null;
+            education: string | null;
+            linkedinUrl: string | null;
+            cvUrl: string | null;
+            jobId: string;
+            matchScore: number;
+            interviewFeedback: string | null;
+            appliedAt: Date;
+        })[];
+        pagination: {
+            page: number;
+            limit: number;
+            total: number;
+            totalPages: number;
+        };
+    }>;
+    updateCandidate(companyId: string, candidateId: string, dto: UpdateCandidateDto): Promise<{
+        id: string;
+        email: string;
+        phone: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        status: import(".prisma/client").$Enums.CandidateStatus;
+        notes: string | null;
+        position: string;
+        skills: string[];
+        experienceYears: number | null;
+        education: string | null;
+        linkedinUrl: string | null;
+        cvUrl: string | null;
+        jobId: string;
+        matchScore: number;
+        interviewFeedback: string | null;
+        appliedAt: Date;
+    }>;
+    deleteCandidate(companyId: string, candidateId: string): Promise<{
+        id: string;
+        email: string;
+        phone: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        status: import(".prisma/client").$Enums.CandidateStatus;
+        notes: string | null;
+        position: string;
+        skills: string[];
+        experienceYears: number | null;
+        education: string | null;
+        linkedinUrl: string | null;
+        cvUrl: string | null;
+        jobId: string;
+        matchScore: number;
+        interviewFeedback: string | null;
+        appliedAt: Date;
+    }>;
+    createJob(companyId: string, dto: CreateJobDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.JobPostingStatus;
+        description: string;
+        type: import(".prisma/client").$Enums.JobType;
+        title: string;
+        salary: import("@prisma/client/runtime/library").JsonValue | null;
+        department: string;
+        location: string;
+        requirements: string[];
+        benefits: string[];
+        applicants: number;
+        postedAt: Date;
+        closesAt: Date | null;
+    }>;
+    getJobs(companyId: string, options?: {
+        status?: JobStatus;
+        department?: string;
+    }): Promise<({
+        _count: {
+            candidates: number;
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.JobPostingStatus;
+        description: string;
+        type: import(".prisma/client").$Enums.JobType;
+        title: string;
+        salary: import("@prisma/client/runtime/library").JsonValue | null;
+        department: string;
+        location: string;
+        requirements: string[];
+        benefits: string[];
+        applicants: number;
+        postedAt: Date;
+        closesAt: Date | null;
+    })[]>;
+    updateJob(companyId: string, jobId: string, dto: UpdateJobDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.JobPostingStatus;
+        description: string;
+        type: import(".prisma/client").$Enums.JobType;
+        title: string;
+        salary: import("@prisma/client/runtime/library").JsonValue | null;
+        department: string;
+        location: string;
+        requirements: string[];
+        benefits: string[];
+        applicants: number;
+        postedAt: Date;
+        closesAt: Date | null;
+    }>;
+    deleteJob(companyId: string, jobId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.JobPostingStatus;
+        description: string;
+        type: import(".prisma/client").$Enums.JobType;
+        title: string;
+        salary: import("@prisma/client/runtime/library").JsonValue | null;
+        department: string;
+        location: string;
+        requirements: string[];
+        benefits: string[];
+        applicants: number;
+        postedAt: Date;
+        closesAt: Date | null;
+    }>;
+    matchCandidates(companyId: string, dto: ATSMatchRequestDto): Promise<ATSMatchResultDto[]>;
+    createEmployee(companyId: string, dto: CreateEmployeeDto): Promise<{
+        id: string;
+        email: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        salary: import("@prisma/client/runtime/library").Decimal | null;
+        position: string;
+        department: string;
+        hireDate: Date;
+        managerId: string | null;
+        wellnessScore: number;
+        performanceScore: number;
+        trainingCompleted: number;
+    }>;
+    getEmployees(companyId: string, department?: string): Promise<({
+        goals: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            description: string | null;
+            title: string;
+            dueDate: Date | null;
+            progress: number;
+            employeeId: string;
+        }[];
+        performanceReviews: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            period: string;
+            rating: number;
+            employeeId: string;
+            reviewerId: string;
+            feedback: string | null;
+        }[];
+    } & {
+        id: string;
+        email: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        salary: import("@prisma/client/runtime/library").Decimal | null;
+        position: string;
+        department: string;
+        hireDate: Date;
+        managerId: string | null;
+        wellnessScore: number;
+        performanceScore: number;
+        trainingCompleted: number;
+    })[]>;
+    updateEmployee(companyId: string, employeeId: string, dto: UpdateEmployeeDto): Promise<{
+        id: string;
+        email: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        salary: import("@prisma/client/runtime/library").Decimal | null;
+        position: string;
+        department: string;
+        hireDate: Date;
+        managerId: string | null;
+        wellnessScore: number;
+        performanceScore: number;
+        trainingCompleted: number;
+    }>;
+    createPerformanceReview(companyId: string, dto: CreatePerformanceReviewDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        period: string;
+        rating: number;
+        employeeId: string;
+        reviewerId: string;
+        feedback: string | null;
+    }>;
+    getPerformanceReviews(companyId: string, employeeId: string): Promise<({
+        employee: {
+            id: string;
+            email: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            companyId: string;
+            salary: import("@prisma/client/runtime/library").Decimal | null;
+            position: string;
+            department: string;
+            hireDate: Date;
+            managerId: string | null;
+            wellnessScore: number;
+            performanceScore: number;
+            trainingCompleted: number;
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        period: string;
+        rating: number;
+        employeeId: string;
+        reviewerId: string;
+        feedback: string | null;
+    })[]>;
+    submitWellnessSurvey(companyId: string, employeeId: string, dto: WellnessSurveyDto): Promise<{
+        overallScore: number;
+        trend: string;
+    }>;
+    getWellnessAnalytics(companyId: string): Promise<{
+        averageScore: number;
+        atRiskCount: number;
+        healthyCount: number;
+        byDepartment: Record<string, number>;
+        atRiskEmployees: {
+            id: string;
+            name: string;
+            score: number;
+        }[];
+    }>;
+    getAnalytics(companyId: string): Promise<HRAnalyticsDto>;
+    private calculateMatchScore;
+    private findMatchedSkills;
+    private findMissingSkills;
+    private generateRecommendation;
+    private updateEmployeePerformanceScore;
+    private groupByDepartment;
+}
+//# sourceMappingURL=hr.service.d.ts.map

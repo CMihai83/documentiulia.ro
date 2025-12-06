@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { LogIn, Mail, Lock, AlertCircle } from 'lucide-react';
+import TestCredentials from '../components/auth/TestCredentials';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -120,14 +121,15 @@ const LoginPage: React.FC = () => {
             </button>
           </form>
 
-          {/* Demo Account */}
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-blue-800 font-medium mb-2">Cont Demo:</p>
-            <p className="text-xs text-blue-700">
-              Email: demo@business.com<br />
-              Parolă: Demo2025
-            </p>
-          </div>
+          {/* Test Credentials - Multiple Scenarios */}
+          <TestCredentials
+            compact={true}
+            locale="ro"
+            onSelectAccount={(email, password) => {
+              setEmail(email);
+              setPassword(password);
+            }}
+          />
 
           {/* Register Link */}
           <div className="mt-6 text-center">

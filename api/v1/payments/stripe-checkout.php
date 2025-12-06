@@ -32,7 +32,7 @@ require_once __DIR__ . '/../../helpers/headers.php';
 try {
     // Authenticate user
     $authHeader = getHeader('authorization', '') ?? '';
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -61,10 +61,8 @@ try {
         throw new Exception('Amount must be greater than 0');
     }
 
-    // TODO: Install Stripe PHP SDK with composer
-    // composer require stripe/stripe-php
-    //
-    // For now, return structured response for manual Stripe integration
+    // Load Stripe SDK
+    require_once __DIR__ . '/../../../vendor/autoload.php';
 
     $db = Database::getInstance();
 
@@ -83,11 +81,35 @@ try {
     $successUrl = $input['success_url'] ?? 'https://documentiulia.ro/payment/success';
     $cancelUrl = $input['cancel_url'] ?? 'https://documentiulia.ro/payment/cancel';
 
-    // STRIPE INTEGRATION PLACEHOLDER
-    // When Stripe SDK is installed, use:
-    /*
-    \Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET_KEY']);
+    // Get Stripe API key from environment
+    $stripeSecretKey = getenv('STRIPE_SECRET_KEY');
 
+    if (!$stripeSecretKey || strpos($stripeSecretKey, 'REPLACE') !== false) {
+        // Stripe not configured yet - return placeholder response
+        echo json_encode([
+            'success' => true,
+            'message' => 'Payment intent created (Stripe not configured)',
+            'payment_intent_id' => $paymentIntentId,
+            'configured' => false,
+            'next_steps' => [
+                'Get Stripe API keys from https://dashboard.stripe.com/apikeys',
+                'Update STRIPE_SECRET_KEY in .env file',
+                'Restart PHP-FPM to reload environment variables'
+            ],
+            'data' => [
+                'payment_type' => $paymentType,
+                'amount' => $amount,
+                'currency' => $currency,
+                'status' => 'pending'
+            ]
+        ]);
+        exit;
+    }
+
+    // Initialize Stripe with API key
+    \Stripe\Stripe::setApiKey($stripeSecretKey);
+
+    // Create Stripe Checkout Session
     $session = \Stripe\Checkout\Session::create([
         'payment_method_types' => ['card'],
         'line_items' => [[
@@ -106,7 +128,8 @@ try {
         'metadata' => array_merge($metadata, [
             'payment_intent_id' => $paymentIntentId,
             'user_id' => $userData['id']
-        ])
+        ]),
+        'customer_email' => $userData['email'] ?? null
     ]);
 
     // Update payment intent with Stripe session ID
@@ -119,27 +142,8 @@ try {
         'success' => true,
         'checkout_url' => $session->url,
         'session_id' => $session->id,
-        'payment_intent_id' => $paymentIntentId
-    ]);
-    */
-
-    // FOR NOW: Return mock response
-    echo json_encode([
-        'success' => true,
-        'message' => 'Payment intent created successfully',
         'payment_intent_id' => $paymentIntentId,
-        'next_steps' => [
-            'Install Stripe SDK: composer require stripe/stripe-php',
-            'Set STRIPE_SECRET_KEY in .env file',
-            'Uncomment Stripe integration code above'
-        ],
-        'data' => [
-            'payment_type' => $paymentType,
-            'amount' => $amount,
-            'currency' => $currency,
-            'status' => 'pending',
-            'mock_checkout_url' => 'https://checkout.stripe.com/mock-session'
-        ]
+        'configured' => true
     ]);
 
 } catch (Exception $e) {

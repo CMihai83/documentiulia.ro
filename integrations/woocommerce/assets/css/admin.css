@@ -1,0 +1,457 @@
+/**
+ * DocumentiUlia WooCommerce Admin Styles
+ */
+
+/* Main Settings Container */
+.documentiulia-settings {
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+.documentiulia-settings h1 {
+    margin-bottom: 20px;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* Tab Navigation */
+.nav-tab-wrapper {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-tab {
+    font-size: 14px;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background: #f1f1f1;
+    color: #555;
+    transition: all 0.2s ease;
+}
+
+.nav-tab:hover {
+    background: #fff;
+    color: #2271b1;
+}
+
+.nav-tab-active {
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.status-badge.status-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-badge.status-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.status-badge.status-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-badge.status-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Status Cards */
+.status-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.status-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.status-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-card .card-icon {
+    font-size: 20px;
+}
+
+.status-card .card-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2271b1;
+    margin: 10px 0;
+}
+
+.status-card .card-label {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Sync Log Table */
+.sync-log-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.sync-log-table th {
+    background: #f9f9f9;
+    border-bottom: 2px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    color: #333;
+}
+
+.sync-log-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    color: #555;
+}
+
+.sync-log-table tr:hover {
+    background: #f9f9f9;
+}
+
+.sync-log-table .log-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.sync-log-table .log-status.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.sync-log-table .log-status.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.sync-log-table .log-status.skipped {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Direction Icons */
+.direction-icon {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+/* Empty State */
+.empty-logs {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.empty-logs .dashicons {
+    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.empty-logs h3 {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.empty-logs p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Progress Bar */
+.sync-progress {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.sync-progress .progress-bar {
+    width: 100%;
+    height: 30px;
+    background: #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.sync-progress .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2271b1, #135e96);
+    border-radius: 15px;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sync-progress .progress-text {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+
+/* Connection Test Result */
+#connection-test-result,
+#sync-result {
+    margin-top: 15px;
+}
+
+/* Warehouse Select */
+.warehouse-select {
+    max-width: 400px;
+}
+
+/* Form Table Enhancements */
+.form-table th {
+    width: 200px;
+    padding: 20px 10px 20px 0;
+    vertical-align: top;
+}
+
+.form-table td {
+    padding: 15px 10px;
+}
+
+.form-table td p.description {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Buttons */
+.button-primary.sync-button {
+    padding: 8px 20px;
+    height: auto;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.button-secondary.clear-logs {
+    color: #d63638;
+    border-color: #d63638;
+}
+
+.button-secondary.clear-logs:hover {
+    background: #d63638;
+    color: #fff;
+    border-color: #d63638;
+}
+
+/* Info Box */
+.info-box {
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.info-box h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2271b1;
+}
+
+.info-box p {
+    margin: 5px 0;
+    font-size: 13px;
+    color: #555;
+}
+
+.info-box ul {
+    margin: 10px 0 0 20px;
+    font-size: 13px;
+    color: #555;
+}
+
+.info-box ul li {
+    margin: 5px 0;
+}
+
+/* Warning Box */
+.warning-box {
+    background: #fff8e6;
+    border-left: 4px solid #f59e0b;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.warning-box h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #f59e0b;
+}
+
+.warning-box p {
+    margin: 5px 0;
+    font-size: 13px;
+    color: #555;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .status-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .sync-log-table {
+        font-size: 12px;
+    }
+
+    .sync-log-table th,
+    .sync-log-table td {
+        padding: 8px;
+    }
+
+    .form-table th,
+    .form-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .form-table th {
+        padding-bottom: 5px;
+    }
+
+    .form-table td {
+        padding-top: 5px;
+    }
+}
+
+/* Loading Spinner */
+.documentiulia-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #2271b1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Pagination */
+.tablenav {
+    margin: 20px 0;
+}
+
+.tablenav .tablenav-pages {
+    float: right;
+}
+
+.tablenav-pages .displaying-num {
+    font-size: 13px;
+    color: #666;
+    margin-right: 15px;
+}
+
+/* Last Sync Info */
+.last-sync-info {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.last-sync-info .sync-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.last-sync-info .sync-item:last-child {
+    border-bottom: none;
+}
+
+.last-sync-info .sync-label {
+    font-weight: 600;
+    color: #333;
+    font-size: 13px;
+}
+
+.last-sync-info .sync-value {
+    color: #666;
+    font-size: 13px;
+}
+
+/* Success Message Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notice {
+    animation: fadeIn 0.3s ease;
+}

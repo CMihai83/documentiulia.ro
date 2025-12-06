@@ -1,0 +1,318 @@
+import { PrismaService } from '../../common/prisma/prisma.service';
+import { EligibilityCheckDto, EligibilityResultDto, CreateApplicationDto, UpdateApplicationDto, UpdateMilestoneDto, FundsAnalyticsDto, InvestEUVoucherDto, FundSource, ProgramStatus, ApplicationStatus } from './dto/eu-funds.dto';
+export declare class EuFundsService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    getPrograms(options?: {
+        source?: FundSource;
+        status?: ProgramStatus;
+        sector?: string;
+        minFunding?: number;
+        maxFunding?: number;
+    }): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        status: import(".prisma/client").$Enums.FundingProgramStatus;
+        description: string;
+        totalBudget: number;
+        source: import(".prisma/client").$Enums.FundSource;
+        availableBudget: number;
+        deadline: string;
+        minFunding: number;
+        maxFunding: number;
+        cofinancing: number;
+        eligibility: string[];
+        sectors: string[];
+        successRate: number;
+        documentsRequired: string[];
+    }[]>;
+    getProgram(programId: string): Promise<{
+        _count: {
+            applications: number;
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        status: import(".prisma/client").$Enums.FundingProgramStatus;
+        description: string;
+        totalBudget: number;
+        source: import(".prisma/client").$Enums.FundSource;
+        availableBudget: number;
+        deadline: string;
+        minFunding: number;
+        maxFunding: number;
+        cofinancing: number;
+        eligibility: string[];
+        sectors: string[];
+        successRate: number;
+        documentsRequired: string[];
+    }>;
+    checkEligibility(dto: EligibilityCheckDto): Promise<EligibilityResultDto[]>;
+    private calculateEligibility;
+    private determineCompanySize;
+    private generateRecommendation;
+    createApplication(companyId: string, dto: CreateApplicationDto): Promise<{
+        program: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            status: import(".prisma/client").$Enums.FundingProgramStatus;
+            description: string;
+            totalBudget: number;
+            source: import(".prisma/client").$Enums.FundSource;
+            availableBudget: number;
+            deadline: string;
+            minFunding: number;
+            maxFunding: number;
+            cofinancing: number;
+            eligibility: string[];
+            sectors: string[];
+            successRate: number;
+            documentsRequired: string[];
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.ApplicationStatus;
+        companyProfile: import("@prisma/client/runtime/library").JsonValue;
+        requestedAmount: number;
+        programId: string;
+        projectDescription: string;
+        projectObjectives: string[];
+        newJobsCreated: number;
+        cofinancingAmount: number;
+        eligibilityScore: number;
+        submittedAt: Date;
+        lastUpdated: Date;
+    }>;
+    getApplications(companyId: string, options?: {
+        status?: ApplicationStatus;
+        programId?: string;
+    }): Promise<({
+        program: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            status: import(".prisma/client").$Enums.FundingProgramStatus;
+            description: string;
+            totalBudget: number;
+            source: import(".prisma/client").$Enums.FundSource;
+            availableBudget: number;
+            deadline: string;
+            minFunding: number;
+            maxFunding: number;
+            cofinancing: number;
+            eligibility: string[];
+            sectors: string[];
+            successRate: number;
+            documentsRequired: string[];
+        };
+        milestones: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            status: import(".prisma/client").$Enums.MilestoneStatus;
+            description: string | null;
+            notes: string | null;
+            date: string;
+            applicationId: string;
+        }[];
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.ApplicationStatus;
+        companyProfile: import("@prisma/client/runtime/library").JsonValue;
+        requestedAmount: number;
+        programId: string;
+        projectDescription: string;
+        projectObjectives: string[];
+        newJobsCreated: number;
+        cofinancingAmount: number;
+        eligibilityScore: number;
+        submittedAt: Date;
+        lastUpdated: Date;
+    })[]>;
+    getApplication(companyId: string, applicationId: string): Promise<{
+        program: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            status: import(".prisma/client").$Enums.FundingProgramStatus;
+            description: string;
+            totalBudget: number;
+            source: import(".prisma/client").$Enums.FundSource;
+            availableBudget: number;
+            deadline: string;
+            minFunding: number;
+            maxFunding: number;
+            cofinancing: number;
+            eligibility: string[];
+            sectors: string[];
+            successRate: number;
+            documentsRequired: string[];
+        };
+        milestones: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            status: import(".prisma/client").$Enums.MilestoneStatus;
+            description: string | null;
+            notes: string | null;
+            date: string;
+            applicationId: string;
+        }[];
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.ApplicationStatus;
+        companyProfile: import("@prisma/client/runtime/library").JsonValue;
+        requestedAmount: number;
+        programId: string;
+        projectDescription: string;
+        projectObjectives: string[];
+        newJobsCreated: number;
+        cofinancingAmount: number;
+        eligibilityScore: number;
+        submittedAt: Date;
+        lastUpdated: Date;
+    }>;
+    updateApplication(companyId: string, applicationId: string, dto: UpdateApplicationDto): Promise<{
+        program: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            status: import(".prisma/client").$Enums.FundingProgramStatus;
+            description: string;
+            totalBudget: number;
+            source: import(".prisma/client").$Enums.FundSource;
+            availableBudget: number;
+            deadline: string;
+            minFunding: number;
+            maxFunding: number;
+            cofinancing: number;
+            eligibility: string[];
+            sectors: string[];
+            successRate: number;
+            documentsRequired: string[];
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.ApplicationStatus;
+        companyProfile: import("@prisma/client/runtime/library").JsonValue;
+        requestedAmount: number;
+        programId: string;
+        projectDescription: string;
+        projectObjectives: string[];
+        newJobsCreated: number;
+        cofinancingAmount: number;
+        eligibilityScore: number;
+        submittedAt: Date;
+        lastUpdated: Date;
+    }>;
+    submitApplication(companyId: string, applicationId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.ApplicationStatus;
+        companyProfile: import("@prisma/client/runtime/library").JsonValue;
+        requestedAmount: number;
+        programId: string;
+        projectDescription: string;
+        projectObjectives: string[];
+        newJobsCreated: number;
+        cofinancingAmount: number;
+        eligibilityScore: number;
+        submittedAt: Date;
+        lastUpdated: Date;
+    }>;
+    deleteApplication(companyId: string, applicationId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.ApplicationStatus;
+        companyProfile: import("@prisma/client/runtime/library").JsonValue;
+        requestedAmount: number;
+        programId: string;
+        projectDescription: string;
+        projectObjectives: string[];
+        newJobsCreated: number;
+        cofinancingAmount: number;
+        eligibilityScore: number;
+        submittedAt: Date;
+        lastUpdated: Date;
+    }>;
+    updateMilestone(companyId: string, applicationId: string, milestoneId: string, dto: UpdateMilestoneDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        status: import(".prisma/client").$Enums.MilestoneStatus;
+        description: string | null;
+        notes: string | null;
+        date: string;
+        applicationId: string;
+    }>;
+    getAnalytics(companyId: string): Promise<FundsAnalyticsDto>;
+    applyForVoucher(companyId: string, dto: InvestEUVoucherDto): Promise<{
+        program: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            status: import(".prisma/client").$Enums.FundingProgramStatus;
+            description: string;
+            totalBudget: number;
+            source: import(".prisma/client").$Enums.FundSource;
+            availableBudget: number;
+            deadline: string;
+            minFunding: number;
+            maxFunding: number;
+            cofinancing: number;
+            eligibility: string[];
+            sectors: string[];
+            successRate: number;
+            documentsRequired: string[];
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        companyId: string;
+        status: import(".prisma/client").$Enums.ApplicationStatus;
+        companyProfile: import("@prisma/client/runtime/library").JsonValue;
+        requestedAmount: number;
+        programId: string;
+        projectDescription: string;
+        projectObjectives: string[];
+        newJobsCreated: number;
+        cofinancingAmount: number;
+        eligibilityScore: number;
+        submittedAt: Date;
+        lastUpdated: Date;
+    }>;
+    seedPrograms(): Promise<{
+        seeded: number;
+    }>;
+}
+//# sourceMappingURL=eu-funds.service.d.ts.map

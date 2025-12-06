@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -41,13 +41,27 @@ try {
         throw new Exception('Company ID required');
     }
 
-    // Get expense ID from URL path
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $pathParts = explode('/', trim($path, '/'));
-    $expenseId = end($pathParts);
+    // Get expense ID from JSON body, query string, or URL path
+    $input = json_decode(file_get_contents('php://input'), true);
+    $expenseId = null;
 
-    if (!is_numeric($expenseId)) {
-        throw new Exception('Invalid expense ID');
+    if (!empty($input['id'])) {
+        $expenseId = $input['id'];
+    } elseif (!empty($_GET['id'])) {
+        $expenseId = $_GET['id'];
+    } else {
+        // Try to get from URL path (but not if it's delete.php)
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $pathParts = explode('/', trim($path, '/'));
+        $lastPart = end($pathParts);
+        // Only use if it looks like a UUID, not a filename
+        if (!str_contains($lastPart, '.php') && preg_match('/^[a-f0-9-]{36}$/i', $lastPart)) {
+            $expenseId = $lastPart;
+        }
+    }
+
+    if (empty($expenseId)) {
+        throw new Exception('Expense ID is required (provide in body as "id" or query string ?id=UUID)');
     }
 
     $expenseService = new ExpenseService();

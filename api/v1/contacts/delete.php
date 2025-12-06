@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -41,13 +41,28 @@ try {
         throw new Exception('Company ID required');
     }
 
-    // Get contact ID from URL path
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $pathParts = explode('/', trim($path, '/'));
-    $contactId = end($pathParts);
+    // Get contact ID from JSON body or URL path (backward compatibility)
+    $input = json_decode(file_get_contents('php://input'), true);
+    $contactId = null;
 
-    if (!is_numeric($contactId)) {
-        throw new Exception('Invalid contact ID');
+    if (!empty($input['id'])) {
+        $contactId = $input['id'];
+    } elseif (!empty($_GET['id'])) {
+        // Accept ID from query string
+        $contactId = $_GET['id'];
+    } else {
+        // Try to get from URL path (but not if it's delete.php)
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $pathParts = explode('/', trim($path, '/'));
+        $lastPart = end($pathParts);
+        // Only use if it looks like a UUID, not a filename
+        if (!str_contains($lastPart, '.php') && preg_match('/^[a-f0-9-]{36}$/i', $lastPart)) {
+            $contactId = $lastPart;
+        }
+    }
+
+    if (empty($contactId)) {
+        throw new Exception('Contact ID is required (provide in body as "id" or query string ?id=UUID)');
     }
 
     $contactService = new ContactService();

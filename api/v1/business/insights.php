@@ -9,9 +9,11 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Company-ID');
 
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../auth/AuthService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
 require_once __DIR__ . '/../../services/BusinessIntelligenceService.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -26,9 +28,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 try {
-    // Get parameters
-    $userId = $_GET['user_id'] ?? null;
-    $companyId = $_GET['company_id'] ?? null;
+    // Authenticate and get user_id from JWT
+    $authHeader = getHeader('authorization', '') ?? '';
+    $userId = null;
+    if (!empty($authHeader) && preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
+        $auth = new AuthService();
+        $userData = $auth->verifyToken($matches[1]);
+        $userId = $userData['user_id'] ?? null;
+    }
+
+    // Fall back to query param
+    if (!$userId) {
+        $userId = $_GET['user_id'] ?? null;
+    }
+
+    $companyId = getHeader('x-company-id') ?? $_GET['company_id'] ?? null;
 
     if (!$userId) {
         throw new Exception('User ID is required');

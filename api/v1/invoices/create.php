@@ -29,7 +29,7 @@ try {
     // Use case-insensitive header lookup
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -45,9 +45,39 @@ try {
     // Get request data
     $input = json_decode(file_get_contents('php://input'), true);
 
+    // Accept 'client_name' as alias for 'customer_name'
+    if (!empty($input['client_name']) && empty($input['customer_name'])) {
+        $input['customer_name'] = $input['client_name'];
+    }
+
+    // If customer_name provided without customer_id, create or find customer
+    if (empty($input['customer_id']) && !empty($input['customer_name'])) {
+        require_once __DIR__ . '/../../config/database.php';
+        $db = Database::getInstance()->getConnection();
+
+        // Check if customer exists
+        $stmt = $db->prepare("SELECT id FROM contacts WHERE company_id = :company_id AND display_name = :name AND contact_type = 'customer' LIMIT 1");
+        $stmt->execute(['company_id' => $companyId, 'name' => $input['customer_name']]);
+        $customer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($customer) {
+            $input['customer_id'] = $customer['id'];
+        } else {
+            // Create new customer
+            $stmt = $db->prepare("INSERT INTO contacts (company_id, display_name, contact_type) VALUES (:company_id, :name, 'customer') RETURNING id");
+            $stmt->execute(['company_id' => $companyId, 'name' => $input['customer_name']]);
+            $input['customer_id'] = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+        }
+    }
+
     // Validate required fields
     if (empty($input['customer_id'])) {
-        throw new Exception('Customer ID is required');
+        throw new Exception('Customer ID or customer_name is required');
+    }
+
+    // Accept 'items' as alias for 'line_items'
+    if (empty($input['line_items']) && !empty($input['items'])) {
+        $input['line_items'] = $input['items'];
     }
 
     if (empty($input['line_items']) || !is_array($input['line_items'])) {

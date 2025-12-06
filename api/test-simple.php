@@ -1,1 +1,3 @@
-<?php echo json_encode(["test" => "working", "time" => date("Y-m-d H:i:s")]); ?>
+<?php
+header('Content-Type: application/json');
+echo json_encode(['status' => 'working', 'method' => $_SERVER['REQUEST_METHOD'] ?? 'unknown']);

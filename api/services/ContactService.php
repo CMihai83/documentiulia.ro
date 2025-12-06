@@ -17,10 +17,27 @@ class ContactService {
      * Create a new contact
      */
     public function createContact($companyId, $data) {
-        // Validate contact type
+        // Normalize contact type aliases for common naming conventions
+        $typeAliases = [
+            'business' => 'customer',
+            'individual' => 'customer',
+            'company' => 'customer',
+            'client' => 'customer',
+            'supplier' => 'vendor',
+            'provider' => 'vendor'
+        ];
+
+        // Apply alias normalization (case-insensitive)
+        $contactType = strtolower($data['contact_type'] ?? '');
+        if (isset($typeAliases[$contactType])) {
+            $data['contact_type'] = $typeAliases[$contactType];
+        }
+
+        // Validate contact type against allowed values
         $validTypes = ['customer', 'vendor', 'employee', 'contractor'];
-        if (!in_array($data['contact_type'], $validTypes)) {
-            throw new Exception('Invalid contact type');
+        if (!isset($data['contact_type']) || !in_array($data['contact_type'], $validTypes)) {
+            throw new Exception('Invalid contact type. Accepted values: ' . implode(', ', $validTypes) .
+                '. Aliases also accepted: business, individual, company, client, supplier, provider');
         }
 
         $contactId = $this->db->insert('contacts', [

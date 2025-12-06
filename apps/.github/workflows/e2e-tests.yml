@@ -1,0 +1,131 @@
+name: E2E Tests - Romanian Accounting Compliance
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'apps/api/**'
+      - 'packages/database/**'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'apps/api/**'
+      - 'packages/database/**'
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '22'
+
+jobs:
+  e2e-romanian-compliance:
+    name: Romanian Compliance Tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: accountech_app
+          POSTGRES_PASSWORD: AccTech2025Test
+          POSTGRES_DB: documentiulia_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup database
+        run: |
+          npx prisma generate
+          npx prisma db push
+        working-directory: packages/database
+        env:
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+
+      - name: Build API
+        run: npm run build
+        working-directory: apps/api
+
+      - name: Start API
+        run: |
+          nohup npm run start:prod > /tmp/api.log 2>&1 &
+          sleep 10
+          curl -f http://localhost:3001/api/v1/companies -H "Authorization: Bearer dev_test_token" || cat /tmp/api.log
+        working-directory: apps/api
+        env:
+          NODE_ENV: test
+          PORT: 3001
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+          CLERK_SECRET_KEY: test_secret
+
+      - name: Run Auth Tests
+        run: npm run test:e2e:auth
+        working-directory: apps/api
+        env:
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+
+      - name: Run Companies Tests
+        run: npm run test:e2e:companies
+        working-directory: apps/api
+        env:
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+
+      - name: Run Invoices Tests (VAT Compliance)
+        run: npm run test:e2e:invoices
+        working-directory: apps/api
+        env:
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+
+      - name: Run e-Factura Tests (ANAF Compliance)
+        run: npm run test:e2e:efactura
+        working-directory: apps/api
+        env:
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+
+      - name: Run SAF-T Tests (D406 Compliance)
+        run: npm run test:e2e:saft
+        working-directory: apps/api
+        env:
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+
+      - name: Run All Module Tests
+        run: npm run test:e2e:all
+        working-directory: apps/api
+        env:
+          DATABASE_URL: postgresql://accountech_app:AccTech2025Test@localhost:5432/documentiulia_test
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-test-results
+          path: |
+            apps/api/coverage-e2e/
+            /tmp/api.log
+
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '## Romanian Compliance E2E Tests\n\nAll Romanian accounting compliance tests passed:\n- Auth & Users\n- Companies (CUI/CIF validation)\n- Invoices (VAT calculation)\n- e-Factura (ANAF UBL 2.1)\n- SAF-T (D406 format)\n\nReady for review!'
+            })

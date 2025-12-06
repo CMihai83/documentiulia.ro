@@ -52,17 +52,17 @@ api.interceptors.response.use(
 // Auth API
 export const authAPI = {
   login: async (email: string, password: string): Promise<AuthResponse> => {
-    const response = await api.post('/auth/login', { email, password });
+    const response = await api.post('/auth/login.php', { email, password });
     return response.data;
   },
 
   register: async (email: string, password: string, name: string): Promise<AuthResponse> => {
-    const response = await api.post('/auth/register', { email, password, name });
+    const response = await api.post('/auth/register.php', { email, password, name });
     return response.data;
   },
 
   getCurrentUser: async (): Promise<User> => {
-    const response = await api.get('/auth/me');
+    const response = await api.get('/auth/me.php');
     return response.data;
   },
 };
@@ -101,26 +101,73 @@ export const invoiceAPI = {
   },
 };
 
-// Contact API
+// Contact API - Updated to use new CRM endpoint
 export const contactAPI = {
   list: async (type?: string): Promise<Contact[]> => {
     const params = type ? { type } : {};
-    const response = await api.get('/contacts/list', { params });
-    return response.data.data?.contacts || [];
+    const response = await api.get('/crm/contacts.php', { params });
+    return response.data.data || [];
   },
 
-  create: async (data: Partial<Contact>): Promise<Contact> => {
-    const response = await api.post('/contacts/create', data);
-    return response.data.contact;
+  create: async (data: any): Promise<Contact> => {
+    // Map form data to API format
+    const payload = {
+      display_name: data.name || data.display_name,
+      contact_type: data.type || data.contact_type || 'customer',
+      email: data.email || null,
+      phone: data.phone || null,
+      payment_terms: data.payment_terms || 30,
+      currency: data.currency || 'RON',
+      is_active: data.is_active !== undefined ? data.is_active : true
+    };
+    const response = await api.post('/crm/contacts.php', payload);
+    return response.data.data;
   },
 
-  update: async (id: number, data: Partial<Contact>): Promise<Contact> => {
-    const response = await api.put(`/contacts/${id}`, data);
-    return response.data.contact;
+  update: async (id: string | number, data: any): Promise<Contact> => {
+    const payload = {
+      id: id,
+      display_name: data.name || data.display_name,
+      contact_type: data.type || data.contact_type,
+      email: data.email,
+      phone: data.phone,
+      payment_terms: data.payment_terms,
+      currency: data.currency,
+      is_active: data.is_active
+    };
+    const response = await api.put('/crm/contacts.php', payload);
+    return response.data.data;
   },
 
-  delete: async (id: number): Promise<void> => {
-    await api.delete(`/contacts/${id}`);
+  delete: async (id: string | number): Promise<void> => {
+    await api.delete('/crm/contacts.php', { data: { id: id.toString() } });
+  },
+
+  getById: async (id: string): Promise<Contact> => {
+    const response = await api.get(`/crm/contacts.php?id=${id}`);
+    return response.data.data;
+  },
+};
+
+// Bill API
+export const billAPI = {
+  list: async (): Promise<any[]> => {
+    const response = await api.get('/bills/list');
+    return response.data.data || [];
+  },
+
+  create: async (data: any): Promise<any> => {
+    const response = await api.post('/bills/create', data);
+    return response.data.bill;
+  },
+
+  update: async (id: string, data: any): Promise<any> => {
+    const response = await api.put('/bills/update', { ...data, id });
+    return response.data.bill;
+  },
+
+  delete: async (id: string): Promise<void> => {
+    await api.delete(`/bills/delete`, { data: { id } });
   },
 };
 
@@ -211,6 +258,73 @@ export const reportsAPI = {
     const response = await api.get('/reports/cash-flow', {
       params: { start_date: startDate, end_date: endDate },
     });
+    return response.data;
+  },
+};
+
+// Smart Customization APIs
+export const customizationAPI = {
+  // Smart Expense Suggestions (ML-based)
+  getExpenseSuggestions: async (vendorId: string, amount?: number) => {
+    const params = amount ? { vendor_id: vendorId, amount } : { vendor_id: vendorId };
+    const response = await api.get('/expenses/smart-suggestions.php', { params });
+    return response.data;
+  },
+
+  // Custom Chart of Accounts
+  listAccounts: async (customOnly = false) => {
+    const response = await api.get('/accounting/custom-accounts.php', {
+      params: { custom_only: customOnly },
+    });
+    return response.data;
+  },
+
+  createCustomAccount: async (data: {
+    account_code: string;
+    account_name: string;
+    category: string;
+    subcategory?: string;
+  }) => {
+    const response = await api.post('/accounting/custom-accounts.php', data);
+    return response.data;
+  },
+
+  updateCustomAccount: async (id: string, data: any) => {
+    const response = await api.put('/accounting/custom-accounts.php', { id, ...data });
+    return response.data;
+  },
+
+  deleteCustomAccount: async (id: string) => {
+    const response = await api.delete(`/accounting/custom-accounts.php?id=${id}`);
+    return response.data;
+  },
+
+  // Custom Expense Categories
+  listCategories: async (customOnly = false, withHierarchy = false) => {
+    const response = await api.get('/expenses/custom-categories.php', {
+      params: { custom_only: customOnly, hierarchy: withHierarchy },
+    });
+    return response.data;
+  },
+
+  createCustomCategory: async (data: {
+    category_name: string;
+    parent_category?: string;
+    description?: string;
+    is_tax_deductible?: boolean;
+    requires_receipt?: boolean;
+  }) => {
+    const response = await api.post('/expenses/custom-categories.php', data);
+    return response.data;
+  },
+
+  updateCustomCategory: async (id: string, data: any) => {
+    const response = await api.put('/expenses/custom-categories.php', { id, ...data });
+    return response.data;
+  },
+
+  deleteCustomCategory: async (id: string) => {
+    const response = await api.delete(`/expenses/custom-categories.php?id=${id}`);
     return response.data;
   },
 };

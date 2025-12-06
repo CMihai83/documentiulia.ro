@@ -1,0 +1,62 @@
+<!-- SUBJECT: Factură nouă #{{invoice_number}} de la {{company_name}} -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; padding: 0; background-color: #f4f7fa; font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: 20px auto; background: #fff; }
+        .header { background: linear-gradient(135deg, #3b82f6, #2563eb); padding: 40px; text-align: center; color: #fff; }
+        .content { padding: 40px 30px; }
+        .button { display: inline-block; padding: 14px 32px; margin: 20px 0; background: #3b82f6; color: #fff !important; text-decoration: none; border-radius: 6px; }
+        table.invoice-details { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table.invoice-details td { padding: 12px; border-bottom: 1px solid #e5e7eb; }
+        .total-row { font-weight: bold; font-size: 18px; color: #3b82f6; }
+        .footer { background: #f9fafb; padding: 30px; text-align: center; color: #6b7280; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="margin: 0;">📄 Factură Nouă</h1>
+        </div>
+        <div class="content">
+            <p>Bună, {{customer_name}}!</p>
+            <p>Am generat o factură nouă pentru serviciile/produsele tale.</p>
+
+            <table class="invoice-details">
+                <tr>
+                    <td><strong>Număr Factură:</strong></td>
+                    <td>{{invoice_number}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Scadență:</strong></td>
+                    <td>{{due_date}}</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Total de Plată:</strong></td>
+                    <td>{{total_amount}} RON</td>
+                </tr>
+            </table>
+
+            <div style="text-align: center;">
+                <a href="{{invoice_url}}" class="button">📥 Vezi Factura Completă</a>
+            </div>
+
+            <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 20px; margin: 30px 0;">
+                <p style="margin: 0; color: #1e40af;">
+                    <strong>💳 Metode de plată:</strong><br>
+                    - Transfer bancar<br>
+                    - Card online<br>
+                    - Ordin de plată
+                </p>
+            </div>
+
+            <p>Dacă ai întrebări, contactează-ne oricând la support@documentiulia.ro</p>
+        </div>
+        <div class="footer">
+            <p>© 2025 DocumentiUlia. Toate drepturile rezervate.</p>
+        </div>
+    </div>
+</body>
+</html>

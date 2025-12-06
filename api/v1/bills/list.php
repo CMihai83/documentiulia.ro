@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 

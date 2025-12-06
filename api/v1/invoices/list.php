@@ -9,9 +9,9 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Company-ID');
 
+require_once __DIR__ . '/../../helpers/headers.php';
 require_once __DIR__ . '/../../auth/AuthService.php';
 require_once __DIR__ . '/../../services/InvoiceService.php';
-require_once __DIR__ . '/../../helpers/headers.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -28,16 +28,26 @@ try {
     // Use case-insensitive header lookup
     $authHeader = getHeader('authorization', '');
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
-        throw new Exception('Authorization required');
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'message' => 'Authorization required']);
+        exit();
     }
 
     $auth = new AuthService();
-    $userData = $auth->verifyToken($matches[1]);
+    try {
+        $userData = $auth->verifyToken($matches[1]);
+    } catch (Exception $e) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'message' => 'Invalid or expired token']);
+        exit();
+    }
 
     $companyId = getHeader('x-company-id');
     if (!$companyId) {
-        throw new Exception('Company ID required');
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Company ID required']);
+        exit();
     }
 
     // Get filters from query string

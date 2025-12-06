@@ -1,0 +1,46 @@
+{
+  "name": "invoice",
+  "document_type": "invoice",
+  "created_at": "2025-11-29T20:16:58.674703",
+  "regions": {
+    "header": {
+      "name": "header",
+      "coordinates": [
+        0,
+        0,
+        100,
+        20
+      ],
+      "confidence_threshold": 0.6,
+      "data_type": "text",
+      "preprocessing": "standard",
+      "tesseract_config": ""
+    },
+    "details": {
+      "name": "details",
+      "coordinates": [
+        0,
+        20,
+        100,
+        70
+      ],
+      "confidence_threshold": 0.5,
+      "data_type": "text",
+      "preprocessing": "standard",
+      "tesseract_config": ""
+    },
+    "totals": {
+      "name": "totals",
+      "coordinates": [
+        50,
+        70,
+        100,
+        100
+      ],
+      "confidence_threshold": 0.6,
+      "data_type": "currency",
+      "preprocessing": "standard",
+      "tesseract_config": ""
+    }
+  }
+}

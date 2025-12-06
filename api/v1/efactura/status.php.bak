@@ -1,0 +1,122 @@
+<?php
+/**
+ * e-Factura Status Check Endpoint
+ * Checks invoice status at ANAF and syncs database
+ */
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Company-ID');
+
+require_once __DIR__ . '/../../services/DatabaseService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
+require_once __DIR__ . '/../../auth/AuthService.php';
+require_once __DIR__ . '/../../../includes/services/efactura/EFacturaService.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+try {
+    // Verify authentication
+    $user = verifyAuth();
+    if (!$user) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+        exit();
+    }
+
+    // Get parameters (support both GET and POST)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $input = json_decode(file_get_contents('php://input'), true);
+        $invoiceId = $input['invoice_id'] ?? null;
+        $syncAll = $input['sync_all'] ?? false;
+    } else {
+        $invoiceId = $_GET['invoice_id'] ?? null;
+        $syncAll = isset($_GET['sync_all']) && $_GET['sync_all'] === 'true';
+    }
+
+    // Initialize service
+    $service = new \DocumentIulia\Services\EFactura\EFacturaService($pdo);
+
+    if ($syncAll) {
+        // Sync all pending invoices for user's companies
+        $stmt = $pdo->prepare("
+            SELECT DISTINCT cu.company_id
+            FROM company_users cu
+            WHERE cu.user_id = ?
+        ");
+        $stmt->execute([$user['id']]);
+        $companies = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        $totalSynced = 0;
+        $totalUpdated = 0;
+
+        foreach ($companies as $companyId) {
+            $result = $service->syncAllInvoiceStatuses($companyId);
+            $totalSynced += $result['synced'];
+            $totalUpdated += $result['updated'];
+        }
+
+        echo json_encode([
+            'success' => true,
+            'synced' => $totalSynced,
+            'updated' => $totalUpdated,
+            'message' => "Synced $totalSynced invoices, $totalUpdated updated"
+        ]);
+
+    } elseif ($invoiceId) {
+        // Check specific invoice
+        $stmt = $pdo->prepare("
+            SELECT ei.upload_index, i.company_id
+            FROM efactura_invoices ei
+            JOIN invoices i ON ei.invoice_id = i.id
+            JOIN company_users cu ON i.company_id = cu.company_id
+            WHERE ei.invoice_id = ? AND cu.user_id = ?
+        ");
+        $stmt->execute([$invoiceId, $user['id']]);
+        $efacturaInvoice = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$efacturaInvoice) {
+            http_response_code(404);
+            echo json_encode(['success' => false, 'message' => 'Invoice not found']);
+            exit();
+        }
+
+        if (!$efacturaInvoice['upload_index']) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Invoice not yet uploaded to ANAF'
+            ]);
+            exit();
+        }
+
+        $result = $service->checkInvoiceStatus(
+            $efacturaInvoice['upload_index'],
+            $efacturaInvoice['company_id']
+        );
+
+        echo json_encode([
+            'success' => true,
+            'status' => $result
+        ]);
+
+    } else {
+        http_response_code(400);
+        echo json_encode([
+            'success' => false,
+            'message' => 'invoice_id or sync_all parameter required'
+        ]);
+    }
+
+} catch (Exception $e) {
+    error_log("e-Factura Status Check Error: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Status check failed',
+        'error' => $e->getMessage()
+    ]);
+}

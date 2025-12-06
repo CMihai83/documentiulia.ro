@@ -1,0 +1,87 @@
+<?php
+/**
+ * e-Factura Upload Invoice Endpoint
+ * Uploads invoice to ANAF SPV system
+ */
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Company-ID');
+
+require_once __DIR__ . '/../../services/DatabaseService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
+require_once __DIR__ . '/../../auth/AuthService.php';
+require_once __DIR__ . '/../../../includes/services/efactura/EFacturaService.php';
+
+// Handle preflight
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+// Only allow POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+    exit();
+}
+
+try {
+    // Verify authentication
+    $user = verifyAuth();
+    if (!$user) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+        exit();
+    }
+
+    // Get request data
+    $input = json_decode(file_get_contents('php://input'), true);
+    $invoiceId = $input['invoice_id'] ?? null;
+    $forceReupload = $input['force_reupload'] ?? false;
+
+    if (!$invoiceId) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Invoice ID is required']);
+        exit();
+    }
+
+    // Get invoice to verify access and get company ID
+    $stmt = $pdo->prepare("
+        SELECT i.*, cu.company_id
+        FROM invoices i
+        JOIN company_users cu ON i.company_id = cu.company_id
+        WHERE i.id = ? AND cu.user_id = ?
+    ");
+    $stmt->execute([$invoiceId, $user['id']]);
+    $invoice = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$invoice) {
+        http_response_code(404);
+        echo json_encode(['success' => false, 'message' => 'Invoice not found or access denied']);
+        exit();
+    }
+
+    $companyId = $invoice['company_id'];
+
+    // Initialize e-Factura service
+    $service = new \DocumentIulia\Services\EFactura\EFacturaService($pdo);
+
+    // Upload invoice
+    $result = $service->uploadInvoice($invoiceId, $companyId, [
+        'force_reupload' => $forceReupload
+    ]);
+
+    // Return result
+    echo json_encode($result);
+
+} catch (Exception $e) {
+    error_log("e-Factura Upload Error: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Upload failed',
+        'error' => $e->getMessage()
+    ]);
+}

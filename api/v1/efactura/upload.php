@@ -1,0 +1,90 @@
+<?php
+/**
+ * e-Factura Upload Invoice Endpoint
+ * POST /api/v1/efactura/upload.php
+ * Uploads invoice to ANAF SPV system
+ */
+
+require_once __DIR__ . '/../../config/cors.php';
+require_once __DIR__ . '/../../middleware/auth.php';
+require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../services/EFacturaService.php';
+
+header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'error' => 'Method not allowed']);
+    exit();
+}
+
+try {
+    $auth = authenticate();
+    $pdo = Database::getInstance()->getConnection();
+
+    $input = json_decode(file_get_contents('php://input'), true);
+    $invoiceId = $input['invoice_id'] ?? null;
+    $forceReupload = $input['force_reupload'] ?? false;
+
+    if (!$invoiceId) {
+        throw new Exception('Invoice ID is required', 400);
+    }
+
+    // Get company ID from header or verify access
+    $companyId = $_SERVER['HTTP_X_COMPANY_ID'] ?? null;
+    if (!$companyId) {
+        throw new Exception('Company ID required', 400);
+    }
+
+    // Verify user has access to this invoice
+    $stmt = $pdo->prepare("
+        SELECT i.id FROM invoices i
+        JOIN company_users cu ON i.company_id = cu.company_id
+        WHERE i.id = :invoice_id AND cu.user_id = :user_id AND i.company_id = :company_id
+    ");
+    $stmt->execute([
+        'invoice_id' => $invoiceId,
+        'user_id' => $auth['user_id'],
+        'company_id' => $companyId
+    ]);
+
+    if (!$stmt->fetch()) {
+        throw new Exception('Invoice not found or access denied', 404);
+    }
+
+    $service = EFacturaService::getInstance();
+
+    // Validate invoice first
+    $validation = $service->validateInvoice($invoiceId);
+    if (!$validation['valid']) {
+        echo json_encode([
+            'success' => false,
+            'error' => 'Invoice validation failed',
+            'validation_errors' => $validation['errors'],
+            'validation_warnings' => $validation['warnings']
+        ]);
+        exit();
+    }
+
+    // Submit to ANAF
+    $result = $service->submitToANAF($invoiceId, $companyId);
+
+    echo json_encode([
+        'success' => $result['success'],
+        'data' => $result,
+        'validation_warnings' => $validation['warnings'] ?? []
+    ]);
+
+} catch (Exception $e) {
+    $code = $e->getCode() ?: 500;
+    http_response_code($code > 99 && $code < 600 ? $code : 500);
+    echo json_encode([
+        'success' => false,
+        'error' => $e->getMessage()
+    ]);
+}

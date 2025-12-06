@@ -52,16 +52,11 @@ class InvoiceService {
                 'invoice_number' => $data['invoice_number'],
                 'invoice_date' => $data['invoice_date'] ?? date('Y-m-d'),
                 'due_date' => $data['due_date'] ?? date('Y-m-d', strtotime('+30 days')),
-                'payment_terms' => $data['payment_terms'] ?? 30,
                 'status' => 'draft',
-                'subtotal' => $subtotal,
-                'tax_amount' => $taxAmount,
-                'discount_amount' => $discountAmount,
                 'total_amount' => $totalAmount,
                 'amount_paid' => 0,
                 'amount_due' => $totalAmount,
-                'currency' => $data['currency'] ?? 'USD',
-                'notes' => $data['notes'] ?? null
+                'currency' => $data['currency'] ?? 'USD'
             ]);
 
             // Create line items
@@ -174,7 +169,7 @@ class InvoiceService {
             }
 
             $updateData = [];
-            $allowedFields = ['invoice_date', 'due_date', 'payment_terms', 'notes'];
+            $allowedFields = ['invoice_date', 'due_date', 'status', 'currency'];
 
             foreach ($allowedFields as $field) {
                 if (isset($data[$field])) {

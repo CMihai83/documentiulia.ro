@@ -3,29 +3,43 @@
  * MBA Progress Tracking API Endpoint
  * Track user's reading progress through MBA books
  *
- * GET /api/v1/mba/progress?user_id=xxx - Get user's progress
+ * GET /api/v1/mba/progress - Get user's progress (uses JWT)
  * POST /api/v1/mba/progress - Update reading status
  */
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Company-ID');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
+require_once __DIR__ . '/../../auth/AuthService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
 require_once __DIR__ . '/../../services/MBAKnowledgeService.php';
 
 try {
+    // Authenticate and get user_id from JWT
+    $authHeader = getHeader('authorization', '') ?? '';
+    $userId = null;
+    if (!empty($authHeader) && preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
+        $auth = new AuthService();
+        $userData = $auth->verifyToken($matches[1]);
+        $userId = $userData['user_id'] ?? null;
+    }
+
+    // Fall back to query param
+    if (!$userId) {
+        $userId = $_GET['user_id'] ?? null;
+    }
+
     $mbaService = new MBAKnowledgeService();
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         // Get user progress
-        $userId = $_GET['user_id'] ?? null;
-
         if (!$userId) {
             throw new Exception('user_id is required');
         }

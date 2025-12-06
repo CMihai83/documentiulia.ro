@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); padding: 30px; text-align: center; color: white; }
+        .content { padding: 30px; background: white; }
+        .button { display: inline-block; padding: 12px 24px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; margin: 15px 0; }
+        .footer { padding: 20px; background: #f3f4f6; text-align: center; font-size: 12px; color: #6b7280; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bun venit la DocumentIulia!</h1>
+    </div>
+    <div class="content">
+        <p>Salut {{first_name}},</p>
+        <p>Suntem încântați să te avem în comunitatea DocumentIulia!</p>
+        <p>Contul tău a fost creat cu succes. Poți începe să folosești platforma pentru:</p>
+        <ul>
+            <li>✅ Facturare electronică automată</li>
+            <li>✅ Integrare e-Factura ANAF</li>
+            <li>✅ Contabilitate simplificată</li>
+            <li>✅ Raportare financiară</li>
+            <li>✅ Consultanță AI fiscală</li>
+        </ul>
+        <p>
+            <a href="{{login_url}}" class="button">Intră în cont</a>
+        </p>
+        <p>Dacă ai întrebări, echipa noastră de suport este disponibilă 24/7.</p>
+        <p>Mult succes,<br><strong>Echipa DocumentIulia</strong></p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 DocumentIulia | <a href="https://documentiulia.ro">Website</a></p>
+    </div>
+</body>
+</html>

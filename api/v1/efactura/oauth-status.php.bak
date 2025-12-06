@@ -1,0 +1,107 @@
+<?php
+/**
+ * e-Factura OAuth Status Check Endpoint
+ * Returns OAuth connection status for a company
+ */
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Company-ID');
+
+require_once __DIR__ . '/../../services/DatabaseService.php';
+require_once __DIR__ . '/../../helpers/headers.php';
+require_once __DIR__ . '/../../auth/AuthService.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+    exit();
+}
+
+try {
+    // Verify authentication
+    $user = verifyAuth();
+    if (!$user) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+        exit();
+    }
+
+    $companyId = $_GET['company_id'] ?? null;
+
+    if (!$companyId) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Company ID is required']);
+        exit();
+    }
+
+    // Verify user has access to company
+    $stmt = $pdo->prepare("
+        SELECT 1 FROM company_users
+        WHERE company_id = ? AND user_id = ?
+    ");
+    $stmt->execute([$companyId, $user['id']]);
+    if (!$stmt->fetch()) {
+        http_response_code(403);
+        echo json_encode(['success' => false, 'message' => 'Access denied']);
+        exit();
+    }
+
+    // Check if OAuth tokens exist and are valid
+    $stmt = $pdo->prepare("
+        SELECT
+            company_id,
+            created_at,
+            expires_at,
+            last_refreshed_at
+        FROM efactura_oauth_tokens
+        WHERE company_id = ?
+        AND expires_at > NOW()
+    ");
+    $stmt->execute([$companyId]);
+    $token = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($token) {
+        // Get last sync time from sync log
+        $stmt = $pdo->prepare("
+            SELECT MAX(synced_at) as last_sync
+            FROM efactura_sync_log
+            WHERE company_id = ?
+        ");
+        $stmt->execute([$companyId]);
+        $syncInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        echo json_encode([
+            'success' => true,
+            'status' => [
+                'connected' => true,
+                'company_id' => $token['company_id'],
+                'connected_at' => $token['created_at'],
+                'expires_at' => $token['expires_at'],
+                'last_sync' => $syncInfo['last_sync']
+            ]
+        ]);
+    } else {
+        echo json_encode([
+            'success' => true,
+            'status' => [
+                'connected' => false
+            ]
+        ]);
+    }
+
+} catch (Exception $e) {
+    error_log("e-Factura OAuth Status Error: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Failed to check OAuth status',
+        'error' => $e->getMessage()
+    ]);
+}

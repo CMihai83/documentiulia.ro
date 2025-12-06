@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -41,13 +41,27 @@ try {
         throw new Exception('Company ID required');
     }
 
-    // Get invoice ID from URL path
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $pathParts = explode('/', trim($path, '/'));
-    $invoiceId = end($pathParts);
+    // Get invoice ID from JSON body, query string, or URL path
+    $input = json_decode(file_get_contents('php://input'), true);
+    $invoiceId = null;
 
-    if (!is_numeric($invoiceId)) {
-        throw new Exception('Invalid invoice ID');
+    if (!empty($input['id'])) {
+        $invoiceId = $input['id'];
+    } elseif (!empty($_GET['id'])) {
+        $invoiceId = $_GET['id'];
+    } else {
+        // Try to get from URL path (but not if it's delete.php)
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $pathParts = explode('/', trim($path, '/'));
+        $lastPart = end($pathParts);
+        // Only use if it looks like a UUID, not a filename
+        if (!str_contains($lastPart, '.php') && preg_match('/^[a-f0-9-]{36}$/i', $lastPart)) {
+            $invoiceId = $lastPart;
+        }
+    }
+
+    if (empty($invoiceId)) {
+        throw new Exception('Invoice ID is required (provide in body as "id" or query string ?id=UUID)');
     }
 
     $invoiceService = new InvoiceService();

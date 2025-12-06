@@ -1,0 +1,1684 @@
+// DocumentIulia.ro Database Schema
+// Romanian Accounting Platform
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  clerkId       String    @unique @map("clerk_id")
+  email         String    @unique
+  firstName     String?   @map("first_name")
+  lastName      String?   @map("last_name")
+  phone         String?
+  avatarUrl     String?   @map("avatar_url")
+  locale        String    @default("ro")
+  timezone      String    @default("Europe/Bucharest")
+
+  // Settings
+  emailNotifications Boolean @default(true) @map("email_notifications")
+  pushNotifications  Boolean @default(true) @map("push_notifications")
+
+  // Timestamps
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  lastLoginAt   DateTime? @map("last_login_at")
+
+  // Relations
+  companies     CompanyUser[]
+  activities    ActivityLog[]
+  notifications Notification[]
+
+  // Forum Relations
+  forumTopics   ForumTopic[]   @relation("TopicAuthor")
+  forumReplies  ForumReply[]   @relation("ReplyAuthor")
+
+  // Course Relations
+  coursesCreated Course[]           @relation("CourseInstructor")
+  enrollments    CourseEnrollment[] @relation("UserEnrollments")
+  courseReviews  CourseReview[]     @relation("UserReviews")
+
+  // Blog Relations
+  blogPosts      BlogPost[]         @relation("BlogPostAuthor")
+  blogComments   BlogComment[]      @relation("BlogCommentAuthor")
+
+  @@map("users")
+}
+
+model Company {
+  id              String   @id @default(cuid())
+
+  // Basic Info
+  name            String
+  cui             String   @unique // Romanian Tax ID (CUI/CIF)
+  regCom          String?  @map("reg_com") // J12/123/2020
+  euid            String?  // European Unique Identifier
+
+  // Address
+  address         String?
+  city            String?
+  county          String?
+  postalCode      String?  @map("postal_code")
+  country         String   @default("RO")
+
+  // Contact
+  email           String?
+  phone           String?
+  website         String?
+
+  // Banking
+  bankName        String?  @map("bank_name")
+  iban            String?
+  swift           String?
+
+  // Tax Settings
+  vatPayer        Boolean  @default(false) @map("vat_payer")
+  vatNumber       String?  @map("vat_number") // RO12345678
+  vatRate         Decimal  @default(19) @map("vat_rate") @db.Decimal(5, 2)
+
+  // Fiscal Settings
+  fiscalYear      Int      @default(1) @map("fiscal_year") // 1 = Calendar year
+  currency        String   @default("RON")
+
+  // Subscription
+  subscriptionPlan   String    @default("free") @map("subscription_plan")
+  subscriptionEndsAt DateTime? @map("subscription_ends_at")
+
+  // Timestamps
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  users           CompanyUser[]
+  clients         Client[]
+  products        Product[]
+  invoices        Invoice[]
+  expenses        Expense[]
+  receipts        Receipt[]
+  bankAccounts    BankAccount[]
+  taxCodes        TaxCode[]
+  projects        Project[]
+  documents       Document[]
+  efacturaConfig  EfacturaConfig?
+  integrations    CompanyIntegration[]
+
+  @@map("companies")
+}
+
+model CompanyUser {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  companyId String   @map("company_id")
+  role      CompanyRole @default(MEMBER)
+
+  // Permissions
+  canManageUsers    Boolean @default(false) @map("can_manage_users")
+  canManageFinances Boolean @default(false) @map("can_manage_finances")
+  canManageSettings Boolean @default(false) @map("can_manage_settings")
+  canViewReports    Boolean @default(true) @map("can_view_reports")
+
+  // Timestamps
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, companyId])
+  @@map("company_users")
+}
+
+enum CompanyRole {
+  OWNER
+  ADMIN
+  ACCOUNTANT
+  MEMBER
+  VIEWER
+}
+
+// ============================================
+// CLIENTS & CONTACTS
+// ============================================
+
+model Client {
+  id            String      @id @default(cuid())
+  companyId     String      @map("company_id")
+
+  // Client Type
+  type          ClientType  @default(BUSINESS)
+
+  // Basic Info
+  name          String
+  cui           String?     // For business clients
+  regCom        String?     @map("reg_com")
+
+  // Contact Person
+  contactName   String?     @map("contact_name")
+  contactEmail  String?     @map("contact_email")
+  contactPhone  String?     @map("contact_phone")
+
+  // Address
+  address       String?
+  city          String?
+  county        String?
+  postalCode    String?     @map("postal_code")
+  country       String      @default("RO")
+
+  // Banking
+  bankName      String?     @map("bank_name")
+  iban          String?
+
+  // Settings
+  defaultPaymentTerms Int   @default(30) @map("default_payment_terms") // Days
+  creditLimit   Decimal?    @map("credit_limit") @db.Decimal(15, 2)
+
+  // Notes
+  notes         String?
+  tags          String[]
+
+  // Timestamps
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  company       Company     @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invoices      Invoice[]
+  projects      Project[]
+
+  @@map("clients")
+}
+
+enum ClientType {
+  BUSINESS
+  INDIVIDUAL
+  GOVERNMENT
+}
+
+// ============================================
+// PRODUCTS & SERVICES
+// ============================================
+
+model Product {
+  id            String      @id @default(cuid())
+  companyId     String      @map("company_id")
+
+  // Basic Info
+  name          String
+  description   String?
+  sku           String?     // Stock Keeping Unit
+  barcode       String?
+
+  // Type
+  type          ProductType @default(SERVICE)
+
+  // Pricing
+  unitPrice     Decimal     @map("unit_price") @db.Decimal(15, 2)
+  currency      String      @default("RON")
+  unit          String      @default("buc") // buc, ora, kg, m, etc.
+
+  // Tax
+  vatRate       Decimal     @default(19) @map("vat_rate") @db.Decimal(5, 2)
+  vatExempt     Boolean     @default(false) @map("vat_exempt")
+
+  // Inventory (for physical products)
+  trackInventory Boolean    @default(false) @map("track_inventory")
+  stockQuantity  Int        @default(0) @map("stock_quantity")
+  lowStockAlert  Int?       @map("low_stock_alert")
+
+  // SAF-T Classification
+  ncCode        String?     @map("nc_code") // Nomenclatura Combinată
+
+  // Status
+  isActive      Boolean     @default(true) @map("is_active")
+
+  // Timestamps
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  company       Company     @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invoiceItems  InvoiceItem[]
+
+  @@map("products")
+}
+
+enum ProductType {
+  PRODUCT
+  SERVICE
+}
+
+// ============================================
+// INVOICES
+// ============================================
+
+model Invoice {
+  id              String        @id @default(cuid())
+  companyId       String        @map("company_id")
+  clientId        String        @map("client_id")
+
+  // Invoice Details
+  type            InvoiceType   @default(STANDARD)
+  series          String        // FA, FC, etc.
+  number          Int
+  invoiceNumber   String        @map("invoice_number") // FA-2024-0001
+
+  // Dates
+  issueDate       DateTime      @map("issue_date")
+  dueDate         DateTime      @map("due_date")
+  deliveryDate    DateTime?     @map("delivery_date")
+
+  // Currency
+  currency        String        @default("RON")
+  exchangeRate    Decimal       @default(1) @map("exchange_rate") @db.Decimal(10, 4)
+
+  // Amounts (in invoice currency)
+  subtotal        Decimal       @db.Decimal(15, 2)
+  vatAmount       Decimal       @map("vat_amount") @db.Decimal(15, 2)
+  discount        Decimal       @default(0) @db.Decimal(15, 2)
+  total           Decimal       @db.Decimal(15, 2)
+
+  // Amounts in RON (for reporting)
+  subtotalRon     Decimal       @map("subtotal_ron") @db.Decimal(15, 2)
+  vatAmountRon    Decimal       @map("vat_amount_ron") @db.Decimal(15, 2)
+  totalRon        Decimal       @map("total_ron") @db.Decimal(15, 2)
+
+  // Payment
+  paymentMethod   String?       @map("payment_method")
+  paymentStatus   PaymentStatus @default(UNPAID) @map("payment_status")
+  paidAmount      Decimal       @default(0) @map("paid_amount") @db.Decimal(15, 2)
+  paidAt          DateTime?     @map("paid_at")
+
+  // Notes
+  notes           String?
+  internalNotes   String?       @map("internal_notes")
+  termsConditions String?       @map("terms_conditions")
+
+  // e-Factura
+  efacturaStatus  EfacturaStatus? @map("efactura_status")
+  efacturaIndexId String?       @map("efactura_index_id")
+  efacturaUploadId String?      @map("efactura_upload_id")
+  efacturaXml     String?       @map("efactura_xml")
+  efacturaSentAt  DateTime?     @map("efactura_sent_at")
+
+  // Status
+  status          InvoiceStatus @default(DRAFT)
+
+  // Timestamps
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  company         Company       @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  client          Client        @relation(fields: [clientId], references: [id])
+  items           InvoiceItem[]
+  payments        Payment[]
+  documents       Document[]
+
+  @@unique([companyId, series, number])
+  @@index([companyId, status])
+  @@index([clientId])
+  @@index([issueDate])
+  @@map("invoices")
+}
+
+model InvoiceItem {
+  id          String   @id @default(cuid())
+  invoiceId   String   @map("invoice_id")
+  productId   String?  @map("product_id")
+
+  // Item Details
+  description String
+  unit        String   @default("buc")
+  quantity    Decimal  @db.Decimal(15, 4)
+  unitPrice   Decimal  @map("unit_price") @db.Decimal(15, 2)
+
+  // Tax
+  vatRate     Decimal  @map("vat_rate") @db.Decimal(5, 2)
+  vatAmount   Decimal  @map("vat_amount") @db.Decimal(15, 2)
+
+  // Discount
+  discount    Decimal  @default(0) @db.Decimal(15, 2)
+  discountType String  @default("percent") @map("discount_type") // percent, fixed
+
+  // Totals
+  subtotal    Decimal  @db.Decimal(15, 2)
+  total       Decimal  @db.Decimal(15, 2)
+
+  // Order
+  sortOrder   Int      @default(0) @map("sort_order")
+
+  // Relations
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  product     Product? @relation(fields: [productId], references: [id])
+
+  @@map("invoice_items")
+}
+
+enum InvoiceType {
+  STANDARD
+  PROFORMA
+  STORNO
+  AVIZ
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  VIEWED
+  PAID
+  PARTIALLY_PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PARTIALLY_PAID
+  PAID
+  REFUNDED
+}
+
+enum EfacturaStatus {
+  PENDING
+  UPLOADED
+  PROCESSING
+  VALIDATED
+  REJECTED
+  ERROR
+}
+
+// ============================================
+// EXPENSES & RECEIPTS
+// ============================================
+
+model Expense {
+  id            String        @id @default(cuid())
+  companyId     String        @map("company_id")
+
+  // Expense Details
+  description   String
+  category      ExpenseCategory
+
+  // Vendor
+  vendorName    String?       @map("vendor_name")
+  vendorCui     String?       @map("vendor_cui")
+
+  // Amount
+  amount        Decimal       @db.Decimal(15, 2)
+  vatAmount     Decimal       @default(0) @map("vat_amount") @db.Decimal(15, 2)
+  vatRate       Decimal       @default(19) @map("vat_rate") @db.Decimal(5, 2)
+  currency      String        @default("RON")
+
+  // Tax Deductibility
+  isDeductible  Boolean       @default(true) @map("is_deductible")
+  deductiblePercent Decimal   @default(100) @map("deductible_percent") @db.Decimal(5, 2)
+
+  // Date
+  expenseDate   DateTime      @map("expense_date")
+
+  // Payment
+  paymentMethod String?       @map("payment_method")
+  isPaid        Boolean       @default(true) @map("is_paid")
+
+  // Reference
+  invoiceNumber String?       @map("invoice_number")
+
+  // Notes
+  notes         String?
+  tags          String[]
+
+  // Timestamps
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  company       Company       @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  receipts      Receipt[]
+  documents     Document[]
+
+  @@index([companyId, category])
+  @@index([expenseDate])
+  @@map("expenses")
+}
+
+model Receipt {
+  id            String        @id @default(cuid())
+  companyId     String        @map("company_id")
+  expenseId     String?       @map("expense_id")
+
+  // Receipt Details
+  vendorName    String?       @map("vendor_name")
+  receiptDate   DateTime?     @map("receipt_date")
+  total         Decimal?      @db.Decimal(15, 2)
+  vatAmount     Decimal?      @map("vat_amount") @db.Decimal(15, 2)
+  currency      String        @default("RON")
+
+  // OCR Data
+  ocrStatus     OcrStatus     @default(PENDING) @map("ocr_status")
+  ocrConfidence Decimal?      @map("ocr_confidence") @db.Decimal(5, 2)
+  ocrRawData    Json?         @map("ocr_raw_data")
+  ocrItems      Json?         @map("ocr_items") // Extracted line items
+
+  // File
+  fileUrl       String        @map("file_url")
+  fileName      String        @map("file_name")
+  fileSize      Int           @map("file_size")
+  mimeType      String        @map("mime_type")
+
+  // Review
+  isReviewed    Boolean       @default(false) @map("is_reviewed")
+  reviewedAt    DateTime?     @map("reviewed_at")
+
+  // Timestamps
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  company       Company       @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  expense       Expense?      @relation(fields: [expenseId], references: [id])
+
+  @@map("receipts")
+}
+
+enum ExpenseCategory {
+  OFFICE
+  TRAVEL
+  UTILITIES
+  MARKETING
+  SALARIES
+  SUPPLIES
+  SERVICES
+  EQUIPMENT
+  RENT
+  INSURANCE
+  TAXES
+  BANK_FEES
+  OTHER
+}
+
+enum OcrStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REVIEW_NEEDED
+}
+
+// ============================================
+// BANKING
+// ============================================
+
+model BankAccount {
+  id            String   @id @default(cuid())
+  companyId     String   @map("company_id")
+
+  // Account Details
+  name          String
+  bankName      String   @map("bank_name")
+  iban          String
+  swift         String?
+  currency      String   @default("RON")
+
+  // Balance (cached)
+  balance       Decimal  @default(0) @db.Decimal(15, 2)
+  balanceDate   DateTime? @map("balance_date")
+
+  // Integration
+  isConnected   Boolean  @default(false) @map("is_connected")
+  connectionId  String?  @map("connection_id")
+  lastSyncAt    DateTime? @map("last_sync_at")
+
+  // Status
+  isActive      Boolean  @default(true) @map("is_active")
+  isDefault     Boolean  @default(false) @map("is_default")
+
+  // Timestamps
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  company       Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  transactions  BankTransaction[]
+
+  @@map("bank_accounts")
+}
+
+model BankTransaction {
+  id              String   @id @default(cuid())
+  bankAccountId   String   @map("bank_account_id")
+
+  // Transaction Details
+  transactionDate DateTime @map("transaction_date")
+  valueDate       DateTime? @map("value_date")
+  description     String
+  reference       String?
+
+  // Amount
+  amount          Decimal  @db.Decimal(15, 2)
+  currency        String   @default("RON")
+  type            TransactionType
+
+  // Balance
+  runningBalance  Decimal? @map("running_balance") @db.Decimal(15, 2)
+
+  // Categorization
+  category        String?
+  isReconciled    Boolean  @default(false) @map("is_reconciled")
+
+  // Timestamps
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  bankAccount     BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
+
+  @@index([bankAccountId, transactionDate])
+  @@map("bank_transactions")
+}
+
+model Payment {
+  id          String   @id @default(cuid())
+  invoiceId   String   @map("invoice_id")
+
+  // Payment Details
+  amount      Decimal  @db.Decimal(15, 2)
+  currency    String   @default("RON")
+  paymentDate DateTime @map("payment_date")
+  method      String   // cash, transfer, card
+  reference   String?
+
+  // Notes
+  notes       String?
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+enum TransactionType {
+  CREDIT
+  DEBIT
+}
+
+// ============================================
+// TAX & FISCAL
+// ============================================
+
+model TaxCode {
+  id          String   @id @default(cuid())
+  companyId   String   @map("company_id")
+
+  // Tax Code Details
+  code        String
+  name        String
+  rate        Decimal  @db.Decimal(5, 2)
+  type        TaxType
+
+  // SAF-T
+  saftCode    String?  @map("saft_code")
+
+  // Status
+  isActive    Boolean  @default(true) @map("is_active")
+  isDefault   Boolean  @default(false) @map("is_default")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  company     Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, code])
+  @@map("tax_codes")
+}
+
+enum TaxType {
+  VAT_STANDARD     // 19% (until Aug 2025) / 21% (from Aug 2025)
+  VAT_STANDARD_21  // 21% - 2026 standard rate
+  VAT_REDUCED_9    // 9% (until Aug 2025) - legacy
+  VAT_REDUCED_11   // 11% - 2026 reduced rate
+  VAT_REDUCED_5    // 5% - super-reduced rate
+  VAT_ZERO         // 0%
+  VAT_EXEMPT
+  INCOME_TAX
+  SOCIAL_CONTRIB
+  DIVIDEND_TAX     // 8% (until 2026) / 10% (from Jan 2026)
+}
+
+model EfacturaConfig {
+  id          String   @id @default(cuid())
+  companyId   String   @unique @map("company_id")
+
+  // ANAF Credentials
+  isEnabled   Boolean  @default(false) @map("is_enabled")
+  certificateFile String? @map("certificate_file")
+  certificatePassword String? @map("certificate_password") // Encrypted
+
+  // Auto Settings
+  autoUpload  Boolean  @default(false) @map("auto_upload")
+  autoDownload Boolean @default(false) @map("auto_download")
+
+  // Last Activity
+  lastUploadAt   DateTime? @map("last_upload_at")
+  lastDownloadAt DateTime? @map("last_download_at")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  company     Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@map("efactura_configs")
+}
+
+// ============================================
+// COMPANY INTEGRATIONS (SAGA, etc.)
+// ============================================
+
+model CompanyIntegration {
+  id           String    @id @default(cuid())
+  companyId    String    @map("company_id")
+  type         String    // SAGA, SMARTBILL, OBLIO, etc.
+
+  // OAuth Tokens (encrypted in production)
+  accessToken  String    @map("access_token")
+  refreshToken String?   @map("refresh_token")
+  expiresAt    DateTime? @map("expires_at")
+
+  // Status
+  isActive     Boolean   @default(true) @map("is_active")
+  lastSyncAt   DateTime? @map("last_sync_at")
+
+  // Flexible metadata for integration-specific data
+  metadata     Json?
+
+  // Timestamps
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  company      Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, type], name: "companyId_type")
+  @@map("company_integrations")
+}
+
+// ============================================
+// PROJECTS
+// ============================================
+
+model Project {
+  id          String        @id @default(cuid())
+  companyId   String        @map("company_id")
+  clientId    String?       @map("client_id")
+
+  // Project Details
+  name        String
+  description String?
+  code        String?       // Project code
+
+  // Dates
+  startDate   DateTime?     @map("start_date")
+  endDate     DateTime?     @map("end_date")
+
+  // Budget
+  budget      Decimal?      @db.Decimal(15, 2)
+  currency    String        @default("RON")
+
+  // Status
+  status      ProjectStatus @default(PLANNING)
+
+  // Timestamps
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  company     Company       @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  client      Client?       @relation(fields: [clientId], references: [id])
+
+  @@map("projects")
+}
+
+enum ProjectStatus {
+  PLANNING
+  IN_PROGRESS
+  ON_HOLD
+  COMPLETED
+  CANCELLED
+}
+
+// ============================================
+// DOCUMENTS & FILES
+// ============================================
+
+model Document {
+  id          String       @id @default(cuid())
+  companyId   String       @map("company_id")
+
+  // Reference
+  invoiceId   String?      @map("invoice_id")
+  expenseId   String?      @map("expense_id")
+
+  // File Details
+  name        String
+  description String?
+  fileUrl     String       @map("file_url")
+  fileName    String       @map("file_name")
+  fileSize    Int          @map("file_size")
+  mimeType    String       @map("mime_type")
+
+  // Type
+  type        DocumentType @default(OTHER)
+
+  // Timestamps
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  // Relations
+  company     Company      @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invoice     Invoice?     @relation(fields: [invoiceId], references: [id])
+  expense     Expense?     @relation(fields: [expenseId], references: [id])
+
+  @@map("documents")
+}
+
+enum DocumentType {
+  INVOICE_PDF
+  RECEIPT
+  CONTRACT
+  REPORT
+  EFACTURA_XML
+  SAFT_XML
+  OTHER
+}
+
+// ============================================
+// NOTIFICATIONS & ACTIVITY
+// ============================================
+
+model Notification {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id")
+
+  // Notification Details
+  type        String
+  title       String
+  message     String
+  link        String?
+
+  // Status
+  isRead      Boolean  @default(false) @map("is_read")
+  readAt      DateTime? @map("read_at")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@map("notifications")
+}
+
+model ActivityLog {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id")
+
+  // Activity Details
+  action      String   // create, update, delete, view
+  entityType  String   @map("entity_type") // invoice, expense, etc.
+  entityId    String   @map("entity_id")
+
+  // Context
+  description String?
+  metadata    Json?
+  ipAddress   String?  @map("ip_address")
+  userAgent   String?  @map("user_agent")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([entityType, entityId])
+  @@map("activity_logs")
+}
+
+// ============================================
+// COMMUNITY - FORUM
+// ============================================
+
+model ForumCategory {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  icon        String?
+  color       String   @default("#3b82f6")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isActive    Boolean  @default(true) @map("is_active")
+
+  // Stats (cached)
+  topicCount  Int      @default(0) @map("topic_count")
+  postCount   Int      @default(0) @map("post_count")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  topics      ForumTopic[]
+
+  @@map("forum_categories")
+}
+
+model ForumTopic {
+  id          String       @id @default(cuid())
+  categoryId  String       @map("category_id")
+  authorId    String       @map("author_id")
+
+  // Topic Details
+  title       String
+  slug        String
+  content     String       @db.Text
+
+  // Status
+  isPinned    Boolean      @default(false) @map("is_pinned")
+  isLocked    Boolean      @default(false) @map("is_locked")
+  isSolved    Boolean      @default(false) @map("is_solved")
+
+  // Stats
+  viewCount   Int          @default(0) @map("view_count")
+  replyCount  Int          @default(0) @map("reply_count")
+  likeCount   Int          @default(0) @map("like_count")
+
+  // Last Activity
+  lastReplyAt DateTime?    @map("last_reply_at")
+  lastReplyBy String?      @map("last_reply_by")
+
+  // Tags
+  tags        String[]
+
+  // Timestamps
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  // Relations
+  category    ForumCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  author      User          @relation("TopicAuthor", fields: [authorId], references: [id])
+  replies     ForumReply[]
+
+  @@unique([categoryId, slug])
+  @@index([categoryId, isPinned, createdAt])
+  @@map("forum_topics")
+}
+
+model ForumReply {
+  id          String   @id @default(cuid())
+  topicId     String   @map("topic_id")
+  authorId    String   @map("author_id")
+  parentId    String?  @map("parent_id") // For nested replies
+
+  // Reply Content
+  content     String   @db.Text
+
+  // Status
+  isAccepted  Boolean  @default(false) @map("is_accepted") // Marked as solution
+  isHidden    Boolean  @default(false) @map("is_hidden")
+
+  // Stats
+  likeCount   Int      @default(0) @map("like_count")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  topic       ForumTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  author      User       @relation("ReplyAuthor", fields: [authorId], references: [id])
+  parent      ForumReply? @relation("ReplyReplies", fields: [parentId], references: [id])
+  children    ForumReply[] @relation("ReplyReplies")
+
+  @@index([topicId, createdAt])
+  @@map("forum_replies")
+}
+
+// ============================================
+// COMMUNITY - COURSES & EDUCATION
+// ============================================
+
+model Course {
+  id              String   @id @default(cuid())
+
+  // Course Details
+  title           String
+  slug            String   @unique
+  description     String   @db.Text
+  shortDescription String? @map("short_description")
+  thumbnail       String?
+
+  // Instructor
+  instructorId    String   @map("instructor_id")
+
+  // Settings
+  difficulty      CourseDifficulty @default(BEGINNER)
+  duration        Int      @default(0) // Minutes
+  language        String   @default("ro")
+
+  // Pricing
+  isFree          Boolean  @default(true) @map("is_free")
+  price           Decimal? @db.Decimal(10, 2)
+  currency        String   @default("RON")
+
+  // Status
+  isPublished     Boolean  @default(false) @map("is_published")
+  publishedAt     DateTime? @map("published_at")
+
+  // Stats
+  enrollmentCount Int      @default(0) @map("enrollment_count")
+  ratingAvg       Decimal  @default(0) @map("rating_avg") @db.Decimal(3, 2)
+  ratingCount     Int      @default(0) @map("rating_count")
+  completionRate  Decimal  @default(0) @map("completion_rate") @db.Decimal(5, 2)
+
+  // Tags & Categories
+  category        String?
+  tags            String[]
+
+  // Timestamps
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  instructor      User      @relation("CourseInstructor", fields: [instructorId], references: [id])
+  lessons         CourseLesson[]
+  enrollments     CourseEnrollment[]
+  reviews         CourseReview[]
+
+  @@map("courses")
+}
+
+model CourseLesson {
+  id          String   @id @default(cuid())
+  courseId    String   @map("course_id")
+
+  // Lesson Details
+  title       String
+  slug        String
+  description String?
+  content     String   @db.Text // Markdown or HTML
+
+  // Media
+  videoUrl    String?  @map("video_url")
+  duration    Int      @default(0) // Minutes
+
+  // Order
+  sortOrder   Int      @default(0) @map("sort_order")
+
+  // Status
+  isPublished Boolean  @default(false) @map("is_published")
+  isFree      Boolean  @default(false) @map("is_free") // Free preview
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  progress    LessonProgress[]
+  quizzes     LessonQuiz[]
+
+  @@unique([courseId, slug])
+  @@index([courseId, sortOrder])
+  @@map("course_lessons")
+}
+
+model CourseEnrollment {
+  id          String   @id @default(cuid())
+  courseId    String   @map("course_id")
+  userId      String   @map("user_id")
+
+  // Progress
+  progress    Decimal  @default(0) @db.Decimal(5, 2) // 0-100%
+  completedAt DateTime? @map("completed_at")
+
+  // Certificate
+  certificateId String? @map("certificate_id")
+  certificateUrl String? @map("certificate_url")
+
+  // Timestamps
+  enrolledAt  DateTime @default(now()) @map("enrolled_at")
+  lastAccessAt DateTime? @map("last_access_at")
+
+  // Relations
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  user        User     @relation("UserEnrollments", fields: [userId], references: [id])
+  lessonProgress LessonProgress[]
+
+  @@unique([courseId, userId])
+  @@map("course_enrollments")
+}
+
+model LessonProgress {
+  id           String   @id @default(cuid())
+  enrollmentId String   @map("enrollment_id")
+  lessonId     String   @map("lesson_id")
+
+  // Progress
+  isCompleted  Boolean  @default(false) @map("is_completed")
+  completedAt  DateTime? @map("completed_at")
+
+  // Video Progress
+  watchedSeconds Int    @default(0) @map("watched_seconds")
+
+  // Quiz
+  quizPassed   Boolean? @map("quiz_passed")
+  quizScore    Decimal? @map("quiz_score") @db.Decimal(5, 2)
+
+  // Timestamps
+  startedAt    DateTime @default(now()) @map("started_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  enrollment   CourseEnrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  lesson       CourseLesson     @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([enrollmentId, lessonId])
+  @@map("lesson_progress")
+}
+
+model LessonQuiz {
+  id          String   @id @default(cuid())
+  lessonId    String   @map("lesson_id")
+
+  // Quiz Details
+  question    String
+  options     Json     // Array of options
+  correctAnswer Int    @map("correct_answer") // Index of correct option
+  explanation String?
+
+  // Order
+  sortOrder   Int      @default(0) @map("sort_order")
+
+  // Relations
+  lesson      CourseLesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@map("lesson_quizzes")
+}
+
+model CourseReview {
+  id          String   @id @default(cuid())
+  courseId    String   @map("course_id")
+  userId      String   @map("user_id")
+
+  // Review
+  rating      Int      // 1-5
+  title       String?
+  content     String?  @db.Text
+
+  // Status
+  isVerified  Boolean  @default(false) @map("is_verified") // User completed course
+  isHidden    Boolean  @default(false) @map("is_hidden")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  user        User     @relation("UserReviews", fields: [userId], references: [id])
+
+  @@unique([courseId, userId])
+  @@map("course_reviews")
+}
+
+enum CourseDifficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+// ============================================
+// WEBHOOKS & INTEGRATIONS
+// ============================================
+
+model Webhook {
+  id          String   @id @default(cuid())
+  companyId   String   @map("company_id")
+
+  // Webhook Details
+  name        String
+  url         String
+  events      Json     // Array of event types
+  secret      String   // For signature verification
+
+  // Status
+  isActive    Boolean  @default(true) @map("is_active")
+
+  // Stats
+  lastTriggeredAt DateTime? @map("last_triggered_at")
+  failureCount    Int       @default(0) @map("failure_count")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  logs        WebhookLog[]
+
+  @@map("webhooks")
+}
+
+model WebhookLog {
+  id          String   @id @default(cuid())
+  webhookId   String   @map("webhook_id")
+
+  // Delivery Details
+  event       String
+  payload     Json
+  statusCode  Int      @map("status_code")
+  response    String?  @db.Text
+  success     Boolean
+
+  // Timing
+  duration    Int?     // Milliseconds
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  webhook     Webhook  @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId, createdAt])
+  @@map("webhook_logs")
+}
+
+// ============================================
+// COMMUNITY - BLOG
+// ============================================
+
+model BlogPost {
+  id              String       @id @default(cuid())
+
+  // Post Details
+  title           String
+  slug            String       @unique
+  excerpt         String?      @db.Text
+  content         String       @db.Text
+  coverImage      String?      @map("cover_image")
+
+  // Author
+  authorId        String?      @map("author_id")
+
+  // SEO Metadata
+  metaTitle       String?      @map("meta_title")
+  metaDescription String?      @map("meta_description") @db.Text
+  metaKeywords    String[]     @map("meta_keywords")
+  canonicalUrl    String?      @map("canonical_url")
+
+  // AI Generation
+  isAiGenerated   Boolean      @default(false) @map("is_ai_generated")
+  aiPrompt        String?      @map("ai_prompt") @db.Text
+  aiModel         String?      @map("ai_model")
+  sourceUrls      String[]     @map("source_urls") // News sources for AI
+
+  // Status & Workflow
+  status          BlogPostStatus @default(DRAFT)
+  reviewedBy      String?      @map("reviewed_by")
+  reviewedAt      DateTime?    @map("reviewed_at")
+  rejectionReason String?      @map("rejection_reason")
+
+  // Publishing
+  publishedAt     DateTime?    @map("published_at")
+  scheduledAt     DateTime?    @map("scheduled_at")
+
+  // Categorization
+  categoryId      String?      @map("category_id")
+  tags            String[]
+
+  // Stats
+  viewCount       Int          @default(0) @map("view_count")
+  likeCount       Int          @default(0) @map("like_count")
+  commentCount    Int          @default(0) @map("comment_count")
+  shareCount      Int          @default(0) @map("share_count")
+
+  // Reading
+  readingTime     Int          @default(0) @map("reading_time") // Minutes
+  wordCount       Int          @default(0) @map("word_count")
+
+  // Language
+  language        String       @default("ro")
+
+  // Timestamps
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+
+  // Relations
+  author          User?        @relation("BlogPostAuthor", fields: [authorId], references: [id])
+  category        BlogCategory? @relation(fields: [categoryId], references: [id])
+  comments        BlogComment[]
+
+  @@index([status, publishedAt])
+  @@index([categoryId, publishedAt])
+  @@map("blog_posts")
+}
+
+model BlogCategory {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  icon        String?
+  color       String   @default("#3b82f6")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isActive    Boolean  @default(true) @map("is_active")
+
+  // Stats (cached)
+  postCount   Int      @default(0) @map("post_count")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  posts       BlogPost[]
+
+  @@map("blog_categories")
+}
+
+model BlogComment {
+  id          String   @id @default(cuid())
+  postId      String   @map("post_id")
+  authorId    String?  @map("author_id")
+  parentId    String?  @map("parent_id")
+
+  // Comment Content
+  authorName  String?  @map("author_name") // For guest comments
+  authorEmail String?  @map("author_email")
+  content     String   @db.Text
+
+  // Moderation
+  status      CommentStatus @default(PENDING)
+  isSpam      Boolean  @default(false) @map("is_spam")
+  spamScore   Decimal? @map("spam_score") @db.Decimal(5, 2)
+  moderatedBy String?  @map("moderated_by")
+  moderatedAt DateTime? @map("moderated_at")
+
+  // AI Moderation
+  aiModerated     Boolean  @default(false) @map("ai_moderated")
+  aiModerationResult Json? @map("ai_moderation_result")
+
+  // Stats
+  likeCount   Int      @default(0) @map("like_count")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  post        BlogPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author      User?        @relation("BlogCommentAuthor", fields: [authorId], references: [id])
+  parent      BlogComment? @relation("CommentReplies", fields: [parentId], references: [id])
+  children    BlogComment[] @relation("CommentReplies")
+
+  @@index([postId, status, createdAt])
+  @@map("blog_comments")
+}
+
+enum BlogPostStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  PUBLISHED
+  SCHEDULED
+  REJECTED
+  ARCHIVED
+}
+
+enum CommentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SPAM
+}
+
+// ============================================
+// HR INTELLIGENCE MODULE
+// ============================================
+
+model JobPosting {
+  id            String      @id @default(cuid())
+  companyId     String      @map("company_id")
+
+  // Job Details
+  title         String
+  department    String
+  location      String
+  type          JobType     @default(FULL_TIME)
+  description   String      @db.Text
+
+  // Salary
+  salary        Json?       // { min, max, currency }
+
+  // Requirements
+  requirements  String[]
+  benefits      String[]
+
+  // Status
+  status        JobPostingStatus @default(DRAFT)
+  applicants    Int         @default(0)
+
+  // Dates
+  postedAt      DateTime    @default(now()) @map("posted_at")
+  closesAt      DateTime?   @map("closes_at")
+
+  // Timestamps
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  candidates    Candidate[]
+
+  @@map("job_postings")
+}
+
+model Candidate {
+  id              String          @id @default(cuid())
+  companyId       String          @map("company_id")
+  jobId           String          @map("job_id")
+
+  // Personal Info
+  name            String
+  email           String
+  phone           String?
+  position        String
+
+  // Professional Info
+  skills          String[]
+  experienceYears Int?            @map("experience_years")
+  education       String?
+  linkedinUrl     String?         @map("linkedin_url")
+  cvUrl           String?         @map("cv_url")
+
+  // AI Scoring
+  matchScore      Int             @default(0) @map("match_score") // 0-100
+
+  // Status
+  status          CandidateStatus @default(NEW)
+  notes           String?
+  interviewFeedback String?       @map("interview_feedback")
+
+  // Dates
+  appliedAt       DateTime        @default(now()) @map("applied_at")
+
+  // Timestamps
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+
+  // Relations
+  job             JobPosting      @relation(fields: [jobId], references: [id])
+
+  @@map("candidates")
+}
+
+model Employee {
+  id              String    @id @default(cuid())
+  companyId       String    @map("company_id")
+
+  // Personal Info
+  name            String
+  email           String
+  department      String
+  position        String
+  hireDate        DateTime  @map("hire_date")
+  salary          Decimal?  @db.Decimal(15, 2)
+  managerId       String?   @map("manager_id")
+
+  // Scores
+  wellnessScore       Int   @default(75) @map("wellness_score") // 0-100
+  performanceScore    Int   @default(0) @map("performance_score") // 0-100
+  trainingCompleted   Int   @default(0) @map("training_completed")
+
+  // Timestamps
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  performanceReviews PerformanceReview[] @relation("EmployeeReviews")
+  wellnessSurveys    WellnessSurvey[]
+  goals              EmployeeGoal[]
+
+  @@map("employees")
+}
+
+model PerformanceReview {
+  id          String    @id @default(cuid())
+  employeeId  String    @map("employee_id")
+  reviewerId  String    @map("reviewer_id")
+
+  // Review Details
+  rating      Int       // 1-5
+  feedback    String?   @db.Text
+  period      String    // Q1 2025, etc.
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  employee    Employee  @relation("EmployeeReviews", fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@map("performance_reviews")
+}
+
+model EmployeeGoal {
+  id          String    @id @default(cuid())
+  employeeId  String    @map("employee_id")
+
+  // Goal Details
+  title       String
+  description String?
+  progress    Int       @default(0) // 0-100
+  dueDate     DateTime? @map("due_date")
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  employee    Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@map("employee_goals")
+}
+
+model WellnessSurvey {
+  id              String    @id @default(cuid())
+  employeeId      String    @map("employee_id")
+
+  // Survey Responses (1-5)
+  workLifeBalance     Int   @map("work_life_balance")
+  jobSatisfaction     Int   @map("job_satisfaction")
+  stressLevel         Int   @map("stress_level")
+  teamCollaboration   Int   @map("team_collaboration")
+  overallScore        Int   @map("overall_score") // Calculated
+
+  // Feedback
+  feedback        String?
+
+  // Timestamps
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  // Relations
+  employee        Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@map("wellness_surveys")
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+}
+
+enum JobPostingStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  CLOSED
+}
+
+enum CandidateStatus {
+  NEW
+  SCREENING
+  INTERVIEW
+  OFFER
+  HIRED
+  REJECTED
+}
+
+// ============================================
+// EU FUNDS MODULE
+// ============================================
+
+model FundingProgram {
+  id              String        @id @default(cuid())
+
+  // Program Details
+  name            String        @unique
+  source          FundSource
+  description     String        @db.Text
+
+  // Budget
+  totalBudget     Float         @map("total_budget") // EUR
+  availableBudget Float         @map("available_budget")
+
+  // Funding Limits
+  minFunding      Float         @map("min_funding")
+  maxFunding      Float         @map("max_funding")
+  cofinancing     Int           @default(0) // Percentage required
+
+  // Eligibility
+  eligibility     String[]
+  sectors         String[]
+  documentsRequired String[]    @map("documents_required")
+
+  // Dates
+  deadline        String
+  status          FundingProgramStatus @default(OPEN)
+
+  // Stats
+  successRate     Int           @default(0) @map("success_rate") // Percentage
+
+  // Timestamps
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  applications    FundApplication[]
+
+  @@map("funding_programs")
+}
+
+model FundApplication {
+  id              String            @id @default(cuid())
+  companyId       String            @map("company_id")
+  programId       String            @map("program_id")
+
+  // Application Details
+  requestedAmount Float             @map("requested_amount")
+  cofinancingAmount Float           @map("cofinancing_amount")
+  projectDescription String         @map("project_description") @db.Text
+  projectObjectives String[]        @map("project_objectives")
+  newJobsCreated  Int               @default(0) @map("new_jobs_created")
+
+  // Company Profile (snapshot)
+  companyProfile  Json              @map("company_profile")
+
+  // Scoring
+  eligibilityScore Int              @default(0) @map("eligibility_score") // 0-100
+
+  // Status
+  status          ApplicationStatus @default(DRAFT)
+
+  // Dates
+  submittedAt     DateTime          @map("submitted_at")
+  lastUpdated     DateTime          @map("last_updated")
+
+  // Timestamps
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+
+  // Relations
+  program         FundingProgram    @relation(fields: [programId], references: [id])
+  milestones      ApplicationMilestone[]
+
+  @@map("fund_applications")
+}
+
+model ApplicationMilestone {
+  id              String    @id @default(cuid())
+  applicationId   String    @map("application_id")
+
+  // Milestone Details
+  name            String
+  date            String
+  status          MilestoneStatus @default(UPCOMING)
+  description     String?
+  notes           String?
+
+  // Timestamps
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  application     FundApplication @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@map("application_milestones")
+}
+
+enum FundSource {
+  PNRR
+  COHESION
+  INVESTEU
+  HORIZON
+  DIGITAL
+}
+
+enum FundingProgramStatus {
+  OPEN
+  UPCOMING
+  CLOSED
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  CONTRACTED
+}
+
+enum MilestoneStatus {
+  COMPLETED
+  CURRENT
+  UPCOMING
+}

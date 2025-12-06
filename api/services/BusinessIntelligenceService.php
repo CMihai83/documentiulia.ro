@@ -61,12 +61,11 @@ class BusinessIntelligenceService {
         // Try AI-powered response with PCT
         if ($this->useAI) {
             try {
-                // Build prompt with Personal Context if available
-                $enhancedPrompt = $personalContext
-                    ? $this->contextService->buildContextAwarePrompt($question, $userId, $companyId)
-                    : $this->buildBusinessPrompt($question, $userContext, $relevantConcepts, $relevantFrameworks);
+                // Build simpler business prompt (avoid MBA massive prompt that timeouts)
+                $businessPrompt = $this->buildSimpleBusinessPrompt($question, $userContext, $relevantConcepts, $relevantFrameworks);
 
-                $aiResponse = $this->ollamaService->generateResponse($enhancedPrompt);
+                // Use the working Ollama service (qwen2.5:14b model)
+                $aiResponse = $this->ollamaService->generateResponse($businessPrompt, []);
 
                 if ($aiResponse['success']) {
                     $response = [
@@ -74,20 +73,11 @@ class BusinessIntelligenceService {
                         'answer' => $aiResponse['answer'],
                         'concepts' => $this->formatConceptReferences($relevantConcepts),
                         'frameworks' => $this->formatFrameworkReferences($relevantFrameworks),
-                        'confidence' => $personalContext ? 0.95 : 0.90, // Higher confidence with PCT
-                        'source' => $personalContext ? 'ai-strategic-advisor-pct' : 'ai-strategic-advisor',
+                        'confidence' => 0.90,
+                        'source' => 'ai-business-advisor',
                         'model' => $aiResponse['model'],
                         'context_used' => $personalContext ? true : false
                     ];
-
-                    // Suggest context updates if using PCT
-                    if ($personalContext) {
-                        $contextData = $personalContext['context_data'];
-                        $contextUpdates = $this->contextService->suggestContextUpdates($question, $response['answer'], $contextData);
-                        if (!empty($contextUpdates)) {
-                            $response['suggested_context_updates'] = $contextUpdates;
-                        }
-                    }
 
                     // Log consultation (with context awareness)
                     if ($userId) {
@@ -224,6 +214,46 @@ class BusinessIntelligenceService {
         }
 
         return 'value_creation'; // Default category
+    }
+
+    /**
+     * Build simple business prompt (avoid timeout from massive MBA prompt)
+     * Uses concise business principles instead of full 99-book MBA knowledge
+     */
+    private function buildSimpleBusinessPrompt($question, $userContext, $concepts, $frameworks) {
+        $prompt = "Ești un consultant business expert pentru afaceri românești.\n\n";
+
+        $prompt .= "PRINCIPII FUNDAMENTALE:\n";
+        $prompt .= "1. Crearea de Valoare - oferă produse/servicii pe care clienții le doresc\n";
+        $prompt .= "2. Marketing - atrage atenția și construiește cerere\n";
+        $prompt .= "3. Vânzări - transformă potențialii clienți în clienți plătitori\n";
+        $prompt .= "4. Livrare - oferă ceea ce ai promis cu calitate excelentă\n";
+        $prompt .= "5. Finanțe - generează profit sustenabil\n\n";
+
+        // Add relevant concepts if found
+        if (!empty($concepts)) {
+            $prompt .= "CONCEPTE RELEVANTE:\n";
+            foreach (array_slice($concepts, 0, 3) as $concept) {
+                $prompt .= "- {$concept['concept_name']}: {$concept['description']}\n";
+            }
+            $prompt .= "\n";
+        }
+
+        // Add user context if available
+        if ($userContext && isset($userContext['profile'])) {
+            $profile = $userContext['profile'];
+            $prompt .= "CONTEXT AFACERE:\n";
+            $prompt .= "- Tip: " . ($profile['business_type'] ?? 'General') . "\n";
+            $prompt .= "- Industrie: " . ($profile['industry'] ?? 'General') . "\n";
+            $prompt .= "- Etapă: " . ($profile['business_stage'] ?? 'Creștere') . "\n\n";
+        }
+
+        $prompt .= "ÎNTREBARE: {$question}\n\n";
+        $prompt .= "Răspunde în limba română, concis, profesional și cu sfaturi practice acționabile. ";
+        $prompt .= "Include exemple concrete și pași concreți pe care antreprenorul îi poate implementa. ";
+        $prompt .= "Formatează răspunsul cu HTML (<p>, <strong>, <ul>, <li>).";
+
+        return $prompt;
     }
 
     /**

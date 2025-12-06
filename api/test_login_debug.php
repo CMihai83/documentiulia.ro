@@ -1,39 +1,22 @@
 <?php
+/**
+ * Login Debug Test
+ */
+
 header('Content-Type: application/json');
-require_once __DIR__ . '/auth/AuthService.php';
-require_once __DIR__ . '/helpers/headers.php';
 
-$rawInput = file_get_contents('php://input');
-$input = json_decode($rawInput, true);
+// Get raw input
+$raw_input = file_get_contents('php://input');
 
-$debug = [
-    'raw_input' => $rawInput,
+// Decode JSON
+$input = json_decode($raw_input, true);
+
+// Debug output
+echo json_encode([
+    'raw_input' => $raw_input,
     'decoded_input' => $input,
-    'email_present' => isset($input['email']),
-    'password_present' => isset($input['password']),
     'email_empty' => empty($input['email']),
-    'password_empty' => empty($input['password'])
-];
-
-if (empty($input['email']) || empty($input['password'])) {
-    echo json_encode([
-        'error' => 'Email and password are required',
-        'debug' => $debug
-    ], JSON_PRETTY_PRINT);
-    exit;
-}
-
-try {
-    $auth = new AuthService();
-    $result = $auth->login($input['email'], $input['password']);
-    echo json_encode([
-        'success' => true,
-        'data' => $result
-    ], JSON_PRETTY_PRINT);
-} catch (Exception $e) {
-    echo json_encode([
-        'success' => false,
-        'message' => $e->getMessage(),
-        'debug' => $debug
-    ], JSON_PRETTY_PRINT);
-}
+    'password_empty' => empty($input['password']),
+    'method' => $_SERVER['REQUEST_METHOD'],
+    'content_type' => $_SERVER['CONTENT_TYPE'] ?? 'not set'
+], JSON_PRETTY_PRINT);

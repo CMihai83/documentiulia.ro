@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -41,15 +41,6 @@ try {
         throw new Exception('Company ID required');
     }
 
-    // Get bill ID from URL path
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $pathParts = explode('/', trim($path, '/'));
-    $billId = end($pathParts);
-
-    if (!is_numeric($billId)) {
-        throw new Exception('Invalid bill ID');
-    }
-
     // Get request data
     $input = json_decode(file_get_contents('php://input'), true);
 
@@ -57,11 +48,18 @@ try {
         throw new Exception('No data provided');
     }
 
+    // Get bill ID from request body
+    if (empty($input['id'])) {
+        throw new Exception('Bill ID is required');
+    }
+
+    $billId = $input['id'];
+
     $billService = new BillService();
 
     // Verify bill belongs to company
     $existingBill = $billService->getBill($billId);
-    if ($existingBill['company_id'] !== $companyId) {
+    if (!$existingBill || $existingBill['company_id'] !== $companyId) {
         throw new Exception('Bill not found');
     }
 

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentiulia - Frontend Integration Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background: #0052a3;
+        }
+
+        .button.secondary {
+            background: #6c757d;
+        }
+
+        .button.success {
+            background: #28a745;
+        }
+
+        .result {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #0066cc;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .tree-nav {
+            margin-top: 20px;
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-button:hover {
+            background: #e9ecef;
+            border-color: #0066cc;
+        }
+
+        .plan-card {
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            background: white;
+        }
+
+        .plan-card.featured {
+            border-color: #0066cc;
+            background: #f0f7ff;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0066cc;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Documentiulia - Frontend Integration Examples</h1>
+
+        <!-- Authentication Section -->
+        <div class="section">
+            <h2>1. Autentificare (Authentication)</h2>
+            <div class="input-group">
+                <label>Email:</label>
+                <input type="email" id="loginEmail" value="test_admin@accountech.com">
+            </div>
+            <div class="input-group">
+                <label>Parolă:</label>
+                <input type="password" id="loginPassword" value="TestPass123!">
+            </div>
+            <button class="button" onclick="login()">Login</button>
+            <button class="button secondary" onclick="logout()">Logout</button>
+            <div id="authResult" class="result"></div>
+        </div>
+
+        <!-- Decision Trees Section -->
+        <div class="section">
+            <h2>2. Arbori Decizionali (Decision Trees)</h2>
+            <button class="button" onclick="loadTrees()">Încarcă Arbori Decizionali</button>
+            <div id="treesResult" class="result"></div>
+
+            <div id="treeNavigation" style="display:none; margin-top:20px;">
+                <h3>Navigare Arbore</h3>
+                <select id="treeSelect" onchange="loadTree()">
+                    <option value="">Selectează un arbore...</option>
+                </select>
+                <div id="treeContent" class="tree-nav"></div>
+            </div>
+        </div>
+
+        <!-- Subscription Plans Section -->
+        <div class="section">
+            <h2>3. Planuri Abonament (Subscription Plans)</h2>
+            <button class="button" onclick="loadPlans()">Încarcă Planuri</button>
+            <div id="plansResult" class="result"></div>
+            <div id="plansDisplay"></div>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="section">
+            <h2>4. Procesare Plată (Payment Processing)</h2>
+            <div class="input-group">
+                <label>Tip Plată:</label>
+                <select id="paymentType">
+                    <option value="subscription">Abonament</option>
+                    <option value="course">Curs</option>
+                    <option value="invoice">Factură</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Sumă (EUR):</label>
+                <input type="number" id="paymentAmount" value="49.00" step="0.01">
+            </div>
+            <button class="button success" onclick="createCheckout()">Creează Checkout Stripe</button>
+            <div id="paymentResult" class="result"></div>
+        </div>
+
+        <!-- Fiscal Consultant Section -->
+        <div class="section">
+            <h2>5. Consultant Fiscal AI</h2>
+            <div class="input-group">
+                <label>Întrebare:</label>
+                <textarea id="fiscalQuestion" rows="3" placeholder="Ex: Care este pragul de înregistrare pentru TVA în 2025?">Care este pragul de înregistrare pentru TVA în 2025?</textarea>
+            </div>
+            <button class="button" onclick="askFiscalConsultant()">Întreabă Consultantul</button>
+            <div id="fiscalResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_BASE = 'https://documentiulia.ro/api/v1';
+        let authToken = localStorage.getItem('auth_token');
+
+        // Helper: Show result
+        function showResult(elementId, data, isError = false) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            element.className = isError ? 'result error show' : 'result show';
+        }
+
+        // Helper: API Request
+        async function apiRequest(endpoint, options = {}) {
+            const headers = {
+                'Content-Type': 'application/json',
+                ...options.headers
+            };
+
+            if (authToken) {
+                headers['Authorization'] = `Bearer ${authToken}`;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`, {
+                    ...options,
+                    headers
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error?.message || 'Request failed');
+                }
+
+                return data;
+            } catch (error) {
+                throw error;
+            }
+        }
+
+        // 1. Authentication
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const data = await apiRequest('/auth/login.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password })
+                });
+
+                authToken = data.token;
+                localStorage.setItem('auth_token', authToken);
+                showResult('authResult', {
+                    success: true,
+                    message: 'Autentificare reușită!',
+                    user: data.user
+                });
+            } catch (error) {
+                showResult('authResult', {
+                    success: false,
+                    error: error.message
+                }, true);
+            }
+        }
+
+        function logout() {
+            authToken = null;
+            localStorage.removeItem('auth_token');
+            showResult('authResult', {
+                success: true,
+                message: 'Deconectare reușită!'
+            });
+        }
+
+        // 2. Decision Trees
+        async function loadTrees() {
+            try {
+                const data = await apiRequest('/decisions/trees.php');
+                showResult('treesResult', data);
+
+                // Populate select
+                const select = document.getElementById('treeSelect');
+                select.innerHTML = '<option value="">Selectează un arbore...</option>';
+                data.trees.forEach(tree => {
+                    const option = document.createElement('option');
+                    option.value = tree.tree_key;
+                    option.textContent = tree.tree_name;
+                    select.appendChild(option);
+                });
+
+                document.getElementById('treeNavigation').style.display = 'block';
+            } catch (error) {
+                showResult('treesResult', { error: error.message }, true);
+            }
+        }
+
+        async function loadTree() {
+            const treeKey = document.getElementById('treeSelect').value;
+            if (!treeKey) return;
+
+            try {
+                const data = await apiRequest(`/fiscal/decision-tree-navigator.php?tree_key=${treeKey}`);
+                displayTreeNode(data);
+            } catch (error) {
+                document.getElementById('treeContent').innerHTML = `
+                    <div class="error">Error: ${error.message}</div>
+                `;
+            }
+        }
+
+        function displayTreeNode(data) {
+            const container = document.getElementById('treeContent');
+
+            if (data.answer) {
+                container.innerHTML = `
+                    <h3>${data.answer.title || 'Răspuns'}</h3>
+                    <div style="margin: 20px 0;">
+                        ${data.answer.content ? data.answer.content.substring(0, 500) + '...' : 'Content not available'}
+                    </div>
+                    <button class="button secondary" onclick="loadTree()">Înapoi</button>
+                `;
+            } else if (data.current_node) {
+                const node = data.current_node;
+                let html = `
+                    <h3>${node.question}</h3>
+                    <p style="color: #6c757d; margin: 10px 0;">${node.help_text || ''}</p>
+                `;
+
+                if (node.options) {
+                    node.options.forEach(option => {
+                        html += `
+                            <button class="option-button" onclick="navigateTree('${option.path_key}')">
+                                ${option.answer_option}
+                            </button>
+                        `;
+                    });
+                }
+
+                container.innerHTML = html;
+            }
+        }
+
+        async function navigateTree(pathKey) {
+            const treeKey = document.getElementById('treeSelect').value;
+            try {
+                const data = await apiRequest(`/fiscal/decision-tree-navigator.php?tree_key=${treeKey}&path_key=${pathKey}`);
+                displayTreeNode(data);
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // 3. Subscription Plans
+        async function loadPlans() {
+            try {
+                const data = await apiRequest('/payments/subscription-plans.php');
+                showResult('plansResult', data);
+
+                // Display plans
+                const display = document.getElementById('plansDisplay');
+                display.innerHTML = data.plans.map(plan => `
+                    <div class="plan-card ${plan.plan_key === 'premium' ? 'featured' : ''}">
+                        <h3>${plan.plan_name}</h3>
+                        <div class="price">€${plan.price_monthly}<span style="font-size:16px">/lună</span></div>
+                        <ul>
+                            ${plan.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                        <button class="button" onclick="subscribeToPlan(${plan.id})">Abonează-te</button>
+                    </div>
+                `).join('');
+            } catch (error) {
+                showResult('plansResult', { error: error.message }, true);
+            }
+        }
+
+        async function subscribeToPlan(planId) {
+            if (!authToken) {
+                alert('Te rugăm să te autentifici mai întâi!');
+                return;
+            }
+
+            try {
+                const data = await apiRequest('/payments/stripe-checkout.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        payment_type: 'subscription',
+                        plan_id: planId,
+                        success_url: window.location.origin + '/success',
+                        cancel_url: window.location.origin + '/cancel'
+                    })
+                });
+
+                if (data.checkout_url) {
+                    window.location.href = data.checkout_url;
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // 4. Payment Processing
+        async function createCheckout() {
+            if (!authToken) {
+                alert('Te rugăm să te autentifici mai întâi!');
+                return;
+            }
+
+            const paymentType = document.getElementById('paymentType').value;
+            const amount = parseFloat(document.getElementById('paymentAmount').value);
+
+            try {
+                const data = await apiRequest('/payments/stripe-checkout.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        payment_type: paymentType,
+                        amount: amount,
+                        success_url: window.location.origin + '/success',
+                        cancel_url: window.location.origin + '/cancel'
+                    })
+                });
+
+                showResult('paymentResult', data);
+
+                if (data.checkout_url) {
+                    setTimeout(() => {
+                        if (confirm('Redirecționăm către Stripe Checkout?')) {
+                            window.location.href = data.checkout_url;
+                        }
+                    }, 1000);
+                }
+            } catch (error) {
+                showResult('paymentResult', { error: error.message }, true);
+            }
+        }
+
+        // 5. Fiscal Consultant
+        async function askFiscalConsultant() {
+            const question = document.getElementById('fiscalQuestion').value;
+
+            try {
+                const data = await apiRequest('/fiscal/ai-consultant.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ question })
+                });
+
+                showResult('fiscalResult', data);
+            } catch (error) {
+                showResult('fiscalResult', { error: error.message }, true);
+            }
+        }
+
+        // Auto-load on page load
+        window.addEventListener('load', () => {
+            if (authToken) {
+                document.getElementById('authResult').innerHTML = `
+                    <p style="color: #28a745;">✓ Autentificat (Token salvat în localStorage)</p>
+                `;
+                document.getElementById('authResult').className = 'result show';
+            }
+        });
+    </script>
+</body>
+</html>

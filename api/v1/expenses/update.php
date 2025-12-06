@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -41,15 +41,6 @@ try {
         throw new Exception('Company ID required');
     }
 
-    // Get expense ID from URL path
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $pathParts = explode('/', trim($path, '/'));
-    $expenseId = end($pathParts);
-
-    if (!is_numeric($expenseId)) {
-        throw new Exception('Invalid expense ID');
-    }
-
     // Get request data
     $input = json_decode(file_get_contents('php://input'), true);
 
@@ -57,11 +48,18 @@ try {
         throw new Exception('No data provided');
     }
 
+    // Get expense ID from request body
+    if (empty($input['id'])) {
+        throw new Exception('Expense ID is required');
+    }
+
+    $expenseId = $input['id'];
+
     $expenseService = new ExpenseService();
 
     // Verify expense belongs to company
     $existingExpense = $expenseService->getExpense($expenseId);
-    if ($existingExpense['company_id'] !== $companyId) {
+    if (!$existingExpense || $existingExpense['company_id'] !== $companyId) {
         throw new Exception('Expense not found');
     }
 

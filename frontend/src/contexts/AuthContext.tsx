@@ -9,6 +9,8 @@ interface AuthContextType {
   register: (email: string, password: string, name: string) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
+  token: string | null;
+  companyId: string | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -16,6 +18,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState<string | null>(localStorage.getItem('auth_token'));
+  const [companyId, setCompanyId] = useState<string | null>(localStorage.getItem('company_id'));
 
   useEffect(() => {
     // Check if user is already logged in
@@ -23,8 +27,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (token) {
       authAPI
         .getCurrentUser()
-        .then((userData) => {
-          setUser(userData);
+        .then((response: any) => {
+          setUser(response.user);
+          // Store company_id if not already set
+          const currentCompanyId = localStorage.getItem('company_id');
+          if (!currentCompanyId && response.companies && response.companies.length > 0) {
+            localStorage.setItem('company_id', response.companies[0].id);
+          }
         })
         .catch(() => {
           localStorage.removeItem('auth_token');
@@ -43,9 +52,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const response = await authAPI.login(email, password);
       if (response.success && response.data?.token && response.data?.user) {
         localStorage.setItem('auth_token', response.data.token);
+        setToken(response.data.token);
         // Store first company ID from companies array
         if (response.data.companies && response.data.companies.length > 0) {
-          localStorage.setItem('company_id', response.data.companies[0].id);
+          const compId = response.data.companies[0].id;
+          localStorage.setItem('company_id', compId);
+          setCompanyId(compId);
         }
         setUser(response.data.user);
       } else {
@@ -61,9 +73,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const response = await authAPI.register(email, password, name);
       if (response.success && response.data?.token && response.data?.user) {
         localStorage.setItem('auth_token', response.data.token);
+        setToken(response.data.token);
         // Store first company ID from companies array
         if (response.data.companies && response.data.companies.length > 0) {
-          localStorage.setItem('company_id', response.data.companies[0].id);
+          const compId = response.data.companies[0].id;
+          localStorage.setItem('company_id', compId);
+          setCompanyId(compId);
         }
         setUser(response.data.user);
       } else {
@@ -78,6 +93,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem('auth_token');
     localStorage.removeItem('company_id');
     setUser(null);
+    setToken(null);
+    setCompanyId(null);
   };
 
   return (
@@ -89,6 +106,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         register,
         logout,
         isAuthenticated: !!user,
+        token,
+        companyId,
       }}
     >
       {children}

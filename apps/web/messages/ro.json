@@ -1,0 +1,532 @@
+{
+  "common": {
+    "appName": "DocumentIulia",
+    "tagline": "Contabilitate Inteligentă pentru România",
+    "loading": "Se încarcă...",
+    "error": "Eroare",
+    "success": "Succes",
+    "cancel": "Anulează",
+    "save": "Salvează",
+    "delete": "Șterge",
+    "edit": "Editează",
+    "view": "Vizualizează",
+    "search": "Caută",
+    "filter": "Filtrează",
+    "export": "Exportă",
+    "import": "Importă",
+    "download": "Descarcă",
+    "upload": "Încarcă",
+    "back": "Înapoi",
+    "next": "Următorul",
+    "previous": "Anterior",
+    "confirm": "Confirmă",
+    "close": "Închide",
+    "yes": "Da",
+    "no": "Nu",
+    "all": "Toate",
+    "none": "Niciunul",
+    "select": "Selectează",
+    "required": "Obligatoriu",
+    "optional": "Opțional",
+    "actions": "Acțiuni",
+    "status": "Status",
+    "date": "Dată",
+    "amount": "Sumă",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "currency": "Monedă",
+    "ron": "RON",
+    "eur": "EUR",
+    "usd": "USD"
+  },
+  "navigation": {
+    "dashboard": "Panou de Control",
+    "invoices": "Facturi",
+    "bills": "Facturi Primite",
+    "expenses": "Cheltuieli",
+    "receipts": "Bonuri",
+    "banking": "Conturi Bancare",
+    "contacts": "Contacte",
+    "products": "Produse",
+    "reports": "Rapoarte",
+    "settings": "Setări",
+    "help": "Ajutor",
+    "efactura": "e-Factura",
+    "saft": "SAF-T",
+    "aiConsultant": "Consultant AI",
+    "fiscalAlerts": "Alerte Fiscale",
+    "forum": "Forum",
+    "courses": "Cursuri",
+    "grants": "Granturi",
+    "sustainability": "Sustenabilitate"
+  },
+  "landing": {
+    "hero": {
+      "title": "Contabilitate Simplă pentru Afaceri Inteligente",
+      "subtitle": "Platforma all-in-one pentru facturare, cheltuieli și conformitate fiscală românească",
+      "cta": "Începe Gratuit",
+      "demo": "Vezi Demo"
+    },
+    "stats": {
+      "users": "Utilizatori Activi",
+      "invoices": "Facturi Procesate",
+      "savings": "Economii de Timp",
+      "accuracy": "Acuratețe OCR"
+    },
+    "features": {
+      "title": "Tot ce ai nevoie pentru contabilitate",
+      "efactura": {
+        "title": "e-Factura ANAF",
+        "description": "Integrare completă cu sistemul ANAF. Trimite și primește facturi electronic automat."
+      },
+      "ocr": {
+        "title": "OCR Inteligent",
+        "description": "Scanează bonuri și facturi cu AI. Extracție automată a datelor cu acuratețe de 98%."
+      },
+      "saft": {
+        "title": "SAF-T D406",
+        "description": "Generare automată a fișierelor SAF-T conforme cu cerințele ANAF."
+      },
+      "forecast": {
+        "title": "Prognoze Financiare",
+        "description": "Predicții cash-flow bazate pe AI. Planifică-ți finanțele cu încredere."
+      },
+      "bank": {
+        "title": "Conectare Bancară",
+        "description": "Sincronizare automată cu conturile bancare românești. Reconciliere inteligentă."
+      },
+      "reports": {
+        "title": "Rapoarte Avansate",
+        "description": "Dashboard-uri interactive și rapoarte fiscale complete pentru business-ul tău."
+      }
+    },
+    "pricing": {
+      "title": "Prețuri Transparente",
+      "subtitle": "Alege planul potrivit pentru afacerea ta",
+      "free": {
+        "name": "Gratuit",
+        "price": "0",
+        "description": "Pentru freelanceri și start-up-uri",
+        "features": [
+          "Până la 10 facturi/lună",
+          "OCR bonuri (5/lună)",
+          "e-Factura basic",
+          "Rapoarte standard"
+        ]
+      },
+      "pro": {
+        "name": "Profesional",
+        "price": "49",
+        "description": "Pentru IMM-uri în creștere",
+        "features": [
+          "Facturi nelimitate",
+          "OCR nelimitat",
+          "e-Factura complet",
+          "SAF-T D406",
+          "Prognoze AI",
+          "Conectare bancară"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Soluții personalizate pentru corporații",
+        "features": [
+          "Tot din Profesional",
+          "API dedicat",
+          "SSO/SAML",
+          "SLA garantat",
+          "Manager de cont dedicat",
+          "Training personalizat"
+        ]
+      },
+      "perMonth": "/lună",
+      "startTrial": "Începe Perioada de Probă"
+    },
+    "compliance": {
+      "title": "100% Conformitate Românească",
+      "anaf": "Partener ANAF",
+      "gdpr": "Conform GDPR",
+      "iso": "ISO 27001"
+    },
+    "cta": {
+      "title": "Gata să îți transformi contabilitatea?",
+      "subtitle": "Alătură-te celor peste 10,000 de afaceri românești care folosesc DocumentIulia",
+      "button": "Creează Cont Gratuit"
+    }
+  },
+  "dashboard": {
+    "welcome": "Bun venit înapoi",
+    "overview": "Prezentare Generală",
+    "quickActions": "Acțiuni Rapide",
+    "recentActivity": "Activitate Recentă",
+    "stats": {
+      "revenue": "Venituri Luna Aceasta",
+      "expenses": "Cheltuieli Luna Aceasta",
+      "profit": "Profit Net",
+      "outstanding": "Facturi Neîncasate",
+      "overdue": "Facturi Restante",
+      "vatDue": "TVA de Plată"
+    },
+    "charts": {
+      "cashFlow": "Flux de Numerar",
+      "revenueVsExpenses": "Venituri vs Cheltuieli",
+      "topClients": "Top Clienți",
+      "expenseCategories": "Categorii Cheltuieli"
+    },
+    "alerts": {
+      "title": "Alerte",
+      "vatDeadline": "Termen TVA în {days} zile",
+      "invoiceOverdue": "{count} facturi restante",
+      "lowCash": "Cash-flow scăzut prevăzut"
+    }
+  },
+  "invoices": {
+    "title": "Facturi",
+    "new": "Factură Nouă",
+    "draft": "Ciornă",
+    "sent": "Trimisă",
+    "paid": "Plătită",
+    "overdue": "Restantă",
+    "cancelled": "Anulată",
+    "fields": {
+      "number": "Număr Factură",
+      "date": "Data Emiterii",
+      "dueDate": "Data Scadenței",
+      "client": "Client",
+      "items": "Articole",
+      "quantity": "Cantitate",
+      "unitPrice": "Preț Unitar",
+      "vat": "TVA",
+      "discount": "Reducere",
+      "notes": "Note",
+      "terms": "Termeni și Condiții"
+    },
+    "actions": {
+      "send": "Trimite",
+      "sendEfactura": "Trimite la e-Factura",
+      "markPaid": "Marchează Plătită",
+      "duplicate": "Duplică",
+      "downloadPdf": "Descarcă PDF",
+      "sendReminder": "Trimite Reminder"
+    },
+    "efactura": {
+      "status": "Status e-Factura",
+      "pending": "În Așteptare",
+      "uploaded": "Încărcată",
+      "validated": "Validată",
+      "rejected": "Respinsă",
+      "indexId": "ID Index"
+    }
+  },
+  "expenses": {
+    "title": "Cheltuieli",
+    "new": "Cheltuială Nouă",
+    "categories": {
+      "office": "Birou",
+      "travel": "Deplasări",
+      "utilities": "Utilități",
+      "marketing": "Marketing",
+      "salaries": "Salarii",
+      "supplies": "Consumabile",
+      "services": "Servicii",
+      "other": "Altele"
+    },
+    "fields": {
+      "description": "Descriere",
+      "amount": "Sumă",
+      "category": "Categorie",
+      "date": "Data",
+      "vendor": "Furnizor",
+      "receipt": "Bon/Factură",
+      "deductible": "Deductibilă Fiscal"
+    }
+  },
+  "receipts": {
+    "title": "Bonuri și Chitanțe",
+    "upload": "Încarcă Bon",
+    "scan": "Scanează",
+    "processing": "Se procesează...",
+    "extracted": "Date Extrase",
+    "review": "Verifică și Confirmă",
+    "fields": {
+      "vendor": "Comerciant",
+      "date": "Data",
+      "total": "Total",
+      "items": "Articole",
+      "vat": "TVA",
+      "paymentMethod": "Metodă Plată"
+    },
+    "ocr": {
+      "confidence": "Încredere",
+      "manual": "Editare Manuală",
+      "autoFill": "Completare Automată"
+    }
+  },
+  "reports": {
+    "title": "Rapoarte",
+    "generate": "Generează Raport",
+    "types": {
+      "profitLoss": "Profit și Pierdere",
+      "balanceSheet": "Bilanț",
+      "cashFlow": "Flux de Numerar",
+      "vatReport": "Decont TVA",
+      "clientReport": "Raport Clienți",
+      "expenseReport": "Raport Cheltuieli"
+    },
+    "period": {
+      "thisMonth": "Luna Aceasta",
+      "lastMonth": "Luna Trecută",
+      "thisQuarter": "Trimestrul Acesta",
+      "thisYear": "Anul Acesta",
+      "custom": "Perioadă Personalizată"
+    },
+    "export": {
+      "pdf": "Export PDF",
+      "excel": "Export Excel",
+      "csv": "Export CSV"
+    }
+  },
+  "efactura": {
+    "title": "e-Factura ANAF",
+    "description": "Gestionează facturarea electronică conformă cu cerințele ANAF",
+    "upload": "Încarcă Factură",
+    "download": "Descarcă Facturi",
+    "status": {
+      "title": "Status Conexiune",
+      "connected": "Conectat la ANAF",
+      "disconnected": "Neconectat",
+      "lastSync": "Ultima Sincronizare"
+    },
+    "sent": {
+      "title": "Facturi Trimise",
+      "pending": "În Procesare",
+      "accepted": "Acceptate",
+      "rejected": "Respinse"
+    },
+    "received": {
+      "title": "Facturi Primite",
+      "new": "Noi",
+      "processed": "Procesate"
+    },
+    "errors": {
+      "validation": "Eroare de Validare",
+      "connection": "Eroare de Conexiune",
+      "authentication": "Eroare de Autentificare"
+    }
+  },
+  "saft": {
+    "title": "SAF-T D406",
+    "description": "Generează și trimite rapoarte SAF-T conform legislației",
+    "generate": "Generează SAF-T",
+    "preview": "Previzualizează",
+    "submit": "Trimite la ANAF",
+    "status": {
+      "draft": "Ciornă",
+      "generated": "Generat",
+      "submitted": "Trimis",
+      "accepted": "Acceptat",
+      "rejected": "Respins"
+    },
+    "sections": {
+      "header": "Date Generale",
+      "masterFiles": "Date Master",
+      "transactions": "Tranzacții",
+      "sourceDocuments": "Documente Sursă"
+    },
+    "period": "Perioada de Raportare",
+    "validation": {
+      "running": "Validare în curs...",
+      "passed": "Validare Trecută",
+      "failed": "Validare Eșuată",
+      "warnings": "Avertismente"
+    }
+  },
+  "aiConsultant": {
+    "title": "Consultant AI Fiscal",
+    "description": "Întreabă orice despre contabilitate și fiscalitate românească",
+    "placeholder": "Pune o întrebare despre fiscalitate...",
+    "examples": {
+      "title": "Exemple de Întrebări",
+      "vat": "Care este cota TVA pentru servicii de catering?",
+      "deductible": "Ce cheltuieli sunt deductibile pentru un PFA?",
+      "deadline": "Când trebuie depus decont ul TVA?",
+      "efactura": "Cum funcționează e-Factura?"
+    },
+    "disclaimer": "Răspunsurile sunt orientative. Consultă un contabil pentru decizii importante.",
+    "sources": "Surse",
+    "confidence": "Nivel de Încredere"
+  },
+  "fiscalAlerts": {
+    "title": "Alerte Fiscale",
+    "description": "Nu rata niciodată un termen fiscal important",
+    "upcoming": "Termene Apropiate",
+    "overdue": "Restante",
+    "completed": "Completate",
+    "types": {
+      "vatPayment": "Plată TVA",
+      "vatDeclaration": "Declarație TVA",
+      "profitTax": "Impozit Profit",
+      "salaryTax": "Contribuții Salariale",
+      "safT": "Raport SAF-T",
+      "annualReport": "Bilanț Anual"
+    },
+    "reminder": {
+      "set": "Setează Reminder",
+      "email": "Email",
+      "sms": "SMS",
+      "push": "Notificare"
+    }
+  },
+  "settings": {
+    "title": "Setări",
+    "profile": {
+      "title": "Profil",
+      "name": "Nume",
+      "email": "Email",
+      "phone": "Telefon",
+      "avatar": "Poză Profil"
+    },
+    "company": {
+      "title": "Date Firmă",
+      "name": "Denumire",
+      "cui": "CUI",
+      "regCom": "Nr. Reg. Comerț",
+      "address": "Adresă",
+      "city": "Oraș",
+      "county": "Județ",
+      "country": "Țară",
+      "vatPayer": "Plătitor TVA",
+      "bank": "Bancă",
+      "iban": "IBAN"
+    },
+    "preferences": {
+      "title": "Preferințe",
+      "language": "Limbă",
+      "currency": "Monedă Implicită",
+      "dateFormat": "Format Dată",
+      "theme": "Temă",
+      "themeLight": "Luminoasă",
+      "themeDark": "Întunecată",
+      "themeSystem": "Sistem"
+    },
+    "notifications": {
+      "title": "Notificări",
+      "email": "Notificări Email",
+      "push": "Notificări Push",
+      "invoicePaid": "Factură Plătită",
+      "invoiceOverdue": "Factură Restantă",
+      "fiscalDeadline": "Termene Fiscale"
+    },
+    "integrations": {
+      "title": "Integrări",
+      "anaf": "ANAF e-Factura",
+      "bank": "Conectare Bancară",
+      "ecommerce": "E-commerce"
+    },
+    "billing": {
+      "title": "Abonament",
+      "plan": "Plan Curent",
+      "upgrade": "Upgrade",
+      "invoiceHistory": "Istoric Facturi"
+    }
+  },
+  "forum": {
+    "title": "Forum Comunitate",
+    "description": "Discută cu alți antreprenori și contabili",
+    "newTopic": "Subiect Nou",
+    "categories": {
+      "general": "Discuții Generale",
+      "fiscal": "Întrebări Fiscale",
+      "software": "Ajutor Software",
+      "business": "Sfaturi Business"
+    },
+    "topic": {
+      "replies": "Răspunsuri",
+      "views": "Vizualizări",
+      "lastReply": "Ultimul Răspuns"
+    }
+  },
+  "courses": {
+    "title": "Cursuri",
+    "description": "Învață contabilitate și fiscalitate pas cu pas",
+    "enrolled": "Cursuri Înscrise",
+    "completed": "Finalizate",
+    "certificate": "Certificat",
+    "progress": "Progres"
+  },
+  "grants": {
+    "title": "Granturi și Finanțări",
+    "description": "Descoperă oportunități de finanțare pentru afacerea ta",
+    "available": "Disponibile",
+    "applied": "Aplicate",
+    "deadline": "Termen Limită",
+    "eligibility": "Eligibilitate",
+    "amount": "Sumă Disponibilă"
+  },
+  "sustainability": {
+    "title": "Sustenabilitate",
+    "description": "Monitorizează impactul de mediu al afacerii tale",
+    "carbonFootprint": "Amprentă de Carbon",
+    "emissions": "Emisii CO2",
+    "reduction": "Reducere",
+    "tips": "Sfaturi pentru Reducere"
+  },
+  "auth": {
+    "signIn": "Autentificare",
+    "signUp": "Înregistrare",
+    "signOut": "Deconectare",
+    "forgotPassword": "Am Uitat Parola",
+    "resetPassword": "Resetare Parolă",
+    "email": "Email",
+    "password": "Parolă",
+    "confirmPassword": "Confirmă Parola",
+    "rememberMe": "Ține-mă Minte",
+    "or": "sau",
+    "continueWith": "Continuă cu",
+    "google": "Google",
+    "terms": "Termeni și Condiții",
+    "privacy": "Politica de Confidențialitate",
+    "agreeTerms": "Sunt de acord cu {terms} și {privacy}"
+  },
+  "company": {
+    "selectCompany": "Selectează Firma",
+    "myCompanies": "Firmele Mele",
+    "addCompany": "Adaugă Firmă",
+    "addNewCompany": "Adaugă Firmă Nouă",
+    "noCompanies": "Nu ai nicio firmă",
+    "loadingCompanies": "Se încarcă firmele...",
+    "errorLoading": "Eroare la încărcarea firmelor",
+    "switchCompany": "Schimbă Firma"
+  },
+  "errors": {
+    "generic": "A apărut o eroare. Încearcă din nou.",
+    "notFound": "Pagina nu a fost găsită",
+    "unauthorized": "Nu ai permisiunea să accesezi această resursă",
+    "validation": "Verifică datele introduse",
+    "network": "Eroare de conexiune. Verifică internetul.",
+    "server": "Eroare de server. Încearcă mai târziu."
+  },
+  "fiscal": {
+    "vatRates": {
+      "standard": "TVA Standard (19%)",
+      "reduced1": "TVA Redus (9%)",
+      "reduced2": "TVA Redus (5%)",
+      "zero": "TVA 0%",
+      "exempt": "Scutit TVA"
+    },
+    "invoiceTypes": {
+      "standard": "Factură",
+      "proforma": "Factură Proforma",
+      "storno": "Factură Storno",
+      "aviz": "Aviz de Însoțire"
+    },
+    "paymentTerms": {
+      "immediate": "Plată Imediată",
+      "net15": "Net 15 Zile",
+      "net30": "Net 30 Zile",
+      "net60": "Net 60 Zile",
+      "custom": "Termen Personalizat"
+    }
+  }
+}

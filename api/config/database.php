@@ -41,8 +41,32 @@ class Database {
     }
 
     public function query($sql, $params = []) {
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute($params);
+        // PostgreSQL uses $1, $2, $3 placeholders, but PDO expects ? or :name
+        // Convert PostgreSQL-style $N placeholders to PDO question marks
+        if (!empty($params) && preg_match('/\$\d+/', $sql)) {
+            // Count occurrences of $N placeholders
+            $convertedSql = preg_replace('/\$\d+/', '?', $sql);
+            $stmt = $this->connection->prepare($convertedSql);
+
+            // Bind parameters with proper types
+            $values = array_values($params);
+            foreach ($values as $index => $value) {
+                $paramIndex = $index + 1; // PDO uses 1-based indexing
+                if (is_bool($value)) {
+                    $stmt->bindValue($paramIndex, $value, PDO::PARAM_BOOL);
+                } elseif (is_int($value)) {
+                    $stmt->bindValue($paramIndex, $value, PDO::PARAM_INT);
+                } elseif (is_null($value)) {
+                    $stmt->bindValue($paramIndex, $value, PDO::PARAM_NULL);
+                } else {
+                    $stmt->bindValue($paramIndex, $value, PDO::PARAM_STR);
+                }
+            }
+            $stmt->execute();
+        } else {
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($params);
+        }
         return $stmt;
     }
 

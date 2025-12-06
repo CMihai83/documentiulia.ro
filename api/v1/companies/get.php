@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -63,9 +63,14 @@ try {
         throw new Exception('Access denied');
     }
 
-    // Get company details
+    // Get company details including address and tax fields
     $company = $db->fetchOne(
-        "SELECT id, name, industry, currency, is_active, created_at FROM companies WHERE id = :id",
+        "SELECT id, name, legal_name, tax_id, industry, base_currency,
+                trade_register_number, vat_registered,
+                address_street, address_city, address_county, address_postal_code, address_country,
+                bank_account, bank_name, contact_email, contact_phone,
+                default_language, default_currency, default_timezone,
+                created_at FROM companies WHERE id = :id",
         ['id' => $companyId]
     );
 

@@ -13,6 +13,7 @@
 header('Content-Type: application/json');
 
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 // Get raw webhook payload
 $payload = @file_get_contents('php://input');
@@ -21,21 +22,32 @@ $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? '';
 try {
     $db = Database::getInstance();
 
-    // TODO: When Stripe SDK is installed, verify webhook signature
-    /*
-    \Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET_KEY']);
-    $endpoint_secret = $_ENV['STRIPE_WEBHOOK_SECRET'];
+    // Get Stripe configuration from environment
+    $stripeSecretKey = getenv('STRIPE_SECRET_KEY');
+    $webhookSecret = getenv('STRIPE_WEBHOOK_SECRET');
 
-    $event = \Stripe\Webhook::constructEvent(
-        $payload, $sig_header, $endpoint_secret
-    );
-    */
+    // Initialize Stripe
+    \Stripe\Stripe::setApiKey($stripeSecretKey);
 
-    // FOR NOW: Parse JSON payload directly (INSECURE - MUST ADD SIGNATURE VERIFICATION)
-    $event = json_decode($payload, true);
+    // Verify webhook signature if configured
+    if ($webhookSecret && strpos($webhookSecret, 'REPLACE') === false) {
+        try {
+            $event = \Stripe\Webhook::constructEvent(
+                $payload, $sig_header, $webhookSecret
+            );
+        } catch (\Stripe\Exception\SignatureVerificationException $e) {
+            // Invalid signature
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Invalid signature']);
+            exit;
+        }
+    } else {
+        // Webhook secret not configured - parse JSON directly (less secure)
+        $event = json_decode($payload, true);
 
-    if (!$event || !isset($event['type'])) {
-        throw new Exception('Invalid webhook payload');
+        if (!$event || !isset($event['type'])) {
+            throw new Exception('Invalid webhook payload');
+        }
     }
 
     // Log webhook event

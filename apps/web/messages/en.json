@@ -1,0 +1,291 @@
+{
+  "common": {
+    "appName": "DocumentIulia",
+    "tagline": "Smart Accounting for Romania",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "download": "Download",
+    "upload": "Upload",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "all": "All",
+    "none": "None",
+    "select": "Select",
+    "required": "Required",
+    "optional": "Optional",
+    "actions": "Actions",
+    "status": "Status",
+    "date": "Date",
+    "amount": "Amount",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "currency": "Currency",
+    "ron": "RON",
+    "eur": "EUR",
+    "usd": "USD"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "invoices": "Invoices",
+    "bills": "Bills",
+    "expenses": "Expenses",
+    "receipts": "Receipts",
+    "banking": "Banking",
+    "contacts": "Contacts",
+    "products": "Products",
+    "reports": "Reports",
+    "settings": "Settings",
+    "help": "Help",
+    "efactura": "e-Invoice",
+    "saft": "SAF-T",
+    "aiConsultant": "AI Consultant",
+    "fiscalAlerts": "Fiscal Alerts",
+    "forum": "Forum",
+    "courses": "Courses",
+    "grants": "Grants",
+    "sustainability": "Sustainability"
+  },
+  "landing": {
+    "hero": {
+      "title": "Simple Accounting for Smart Businesses",
+      "subtitle": "All-in-one platform for invoicing, expenses, and Romanian fiscal compliance",
+      "cta": "Start for Free",
+      "demo": "Watch Demo"
+    },
+    "stats": {
+      "users": "Active Users",
+      "invoices": "Invoices Processed",
+      "savings": "Time Savings",
+      "accuracy": "OCR Accuracy"
+    },
+    "features": {
+      "title": "Everything you need for accounting",
+      "efactura": {
+        "title": "ANAF e-Invoice",
+        "description": "Complete integration with ANAF system. Send and receive electronic invoices automatically."
+      },
+      "ocr": {
+        "title": "Smart OCR",
+        "description": "Scan receipts and invoices with AI. Automatic data extraction with 98% accuracy."
+      },
+      "saft": {
+        "title": "SAF-T D406",
+        "description": "Automatic generation of SAF-T files compliant with ANAF requirements."
+      },
+      "forecast": {
+        "title": "Financial Forecasts",
+        "description": "AI-powered cash flow predictions. Plan your finances with confidence."
+      },
+      "bank": {
+        "title": "Bank Connection",
+        "description": "Automatic sync with Romanian bank accounts. Smart reconciliation."
+      },
+      "reports": {
+        "title": "Advanced Reports",
+        "description": "Interactive dashboards and complete fiscal reports for your business."
+      }
+    },
+    "pricing": {
+      "title": "Transparent Pricing",
+      "subtitle": "Choose the right plan for your business",
+      "free": {
+        "name": "Free",
+        "price": "0",
+        "description": "For freelancers and startups",
+        "features": [
+          "Up to 10 invoices/month",
+          "Receipt OCR (5/month)",
+          "Basic e-Invoice",
+          "Standard reports"
+        ]
+      },
+      "pro": {
+        "name": "Professional",
+        "price": "49",
+        "description": "For growing SMEs",
+        "features": [
+          "Unlimited invoices",
+          "Unlimited OCR",
+          "Full e-Invoice",
+          "SAF-T D406",
+          "AI forecasts",
+          "Bank connection"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "Custom solutions for corporations",
+        "features": [
+          "Everything in Professional",
+          "Dedicated API",
+          "SSO/SAML",
+          "Guaranteed SLA",
+          "Dedicated account manager",
+          "Custom training"
+        ]
+      },
+      "perMonth": "/month",
+      "startTrial": "Start Free Trial"
+    },
+    "compliance": {
+      "title": "100% Romanian Compliance",
+      "anaf": "ANAF Partner",
+      "gdpr": "GDPR Compliant",
+      "iso": "ISO 27001"
+    },
+    "cta": {
+      "title": "Ready to transform your accounting?",
+      "subtitle": "Join over 10,000 Romanian businesses using DocumentIulia",
+      "button": "Create Free Account"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "quickActions": "Quick Actions",
+    "recentActivity": "Recent Activity",
+    "stats": {
+      "revenue": "Revenue This Month",
+      "expenses": "Expenses This Month",
+      "profit": "Net Profit",
+      "outstanding": "Outstanding Invoices",
+      "overdue": "Overdue Invoices",
+      "vatDue": "VAT Due"
+    },
+    "charts": {
+      "cashFlow": "Cash Flow",
+      "revenueVsExpenses": "Revenue vs Expenses",
+      "topClients": "Top Clients",
+      "expenseCategories": "Expense Categories"
+    },
+    "alerts": {
+      "title": "Alerts",
+      "vatDeadline": "VAT deadline in {days} days",
+      "invoiceOverdue": "{count} overdue invoices",
+      "lowCash": "Low cash flow predicted"
+    }
+  },
+  "invoices": {
+    "title": "Invoices",
+    "new": "New Invoice",
+    "draft": "Draft",
+    "sent": "Sent",
+    "paid": "Paid",
+    "overdue": "Overdue",
+    "cancelled": "Cancelled",
+    "fields": {
+      "number": "Invoice Number",
+      "date": "Issue Date",
+      "dueDate": "Due Date",
+      "client": "Client",
+      "items": "Items",
+      "quantity": "Quantity",
+      "unitPrice": "Unit Price",
+      "vat": "VAT",
+      "discount": "Discount",
+      "notes": "Notes",
+      "terms": "Terms and Conditions"
+    },
+    "actions": {
+      "send": "Send",
+      "sendEfactura": "Send to e-Invoice",
+      "markPaid": "Mark as Paid",
+      "duplicate": "Duplicate",
+      "downloadPdf": "Download PDF",
+      "sendReminder": "Send Reminder"
+    },
+    "efactura": {
+      "status": "e-Invoice Status",
+      "pending": "Pending",
+      "uploaded": "Uploaded",
+      "validated": "Validated",
+      "rejected": "Rejected",
+      "indexId": "Index ID"
+    }
+  },
+  "expenses": {
+    "title": "Expenses",
+    "new": "New Expense",
+    "categories": {
+      "office": "Office",
+      "travel": "Travel",
+      "utilities": "Utilities",
+      "marketing": "Marketing",
+      "salaries": "Salaries",
+      "supplies": "Supplies",
+      "services": "Services",
+      "other": "Other"
+    },
+    "fields": {
+      "description": "Description",
+      "amount": "Amount",
+      "category": "Category",
+      "date": "Date",
+      "vendor": "Vendor",
+      "receipt": "Receipt/Invoice",
+      "deductible": "Tax Deductible"
+    }
+  },
+  "receipts": {
+    "title": "Receipts",
+    "upload": "Upload Receipt",
+    "scan": "Scan",
+    "processing": "Processing...",
+    "extracted": "Extracted Data",
+    "review": "Review and Confirm",
+    "fields": {
+      "vendor": "Vendor",
+      "date": "Date",
+      "total": "Total",
+      "items": "Items",
+      "vat": "VAT",
+      "paymentMethod": "Payment Method"
+    },
+    "ocr": {
+      "confidence": "Confidence",
+      "manual": "Manual Edit",
+      "autoFill": "Auto Fill"
+    }
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "forgotPassword": "Forgot Password",
+    "resetPassword": "Reset Password",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "rememberMe": "Remember Me",
+    "or": "or",
+    "continueWith": "Continue with",
+    "google": "Google",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "agreeTerms": "I agree to the {terms} and {privacy}"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found",
+    "unauthorized": "You don't have permission to access this resource",
+    "validation": "Please check the entered data",
+    "network": "Connection error. Check your internet.",
+    "server": "Server error. Please try later."
+  }
+}

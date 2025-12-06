@@ -1,0 +1,193 @@
+import { ProductsService } from './products.service';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
+export declare class ProductsController {
+    private readonly productsService;
+    constructor(productsService: ProductsService);
+    create(companyId: string, dto: CreateProductDto, user: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        vatRate: import("@prisma/client/runtime/library").Decimal;
+        currency: string;
+        description: string | null;
+        type: import(".prisma/client").$Enums.ProductType;
+        isActive: boolean;
+        sku: string | null;
+        barcode: string | null;
+        unitPrice: import("@prisma/client/runtime/library").Decimal;
+        unit: string;
+        vatExempt: boolean;
+        trackInventory: boolean;
+        stockQuantity: number;
+        lowStockAlert: number | null;
+        ncCode: string | null;
+    }>;
+    findAll(companyId: string, user: any, search?: string, type?: string, active?: string, page?: number, limit?: number): Promise<{
+        data: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            companyId: string;
+            vatRate: import("@prisma/client/runtime/library").Decimal;
+            currency: string;
+            description: string | null;
+            type: import(".prisma/client").$Enums.ProductType;
+            isActive: boolean;
+            sku: string | null;
+            barcode: string | null;
+            unitPrice: import("@prisma/client/runtime/library").Decimal;
+            unit: string;
+            vatExempt: boolean;
+            trackInventory: boolean;
+            stockQuantity: number;
+            lowStockAlert: number | null;
+            ncCode: string | null;
+        }[];
+        meta: {
+            total: number;
+            page: number;
+            limit: number;
+            totalPages: number;
+        };
+    }>;
+    getLowStock(companyId: string, user: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        vatRate: import("@prisma/client/runtime/library").Decimal;
+        currency: string;
+        description: string | null;
+        type: import(".prisma/client").$Enums.ProductType;
+        isActive: boolean;
+        sku: string | null;
+        barcode: string | null;
+        unitPrice: import("@prisma/client/runtime/library").Decimal;
+        unit: string;
+        vatExempt: boolean;
+        trackInventory: boolean;
+        stockQuantity: number;
+        lowStockAlert: number | null;
+        ncCode: string | null;
+    }[]>;
+    findOne(companyId: string, id: string, user: any): Promise<{
+        invoiceItems: ({
+            invoice: {
+                id: string;
+                status: import(".prisma/client").$Enums.InvoiceStatus;
+                issueDate: Date;
+                invoiceNumber: string;
+            };
+        } & {
+            id: string;
+            vatRate: import("@prisma/client/runtime/library").Decimal;
+            description: string;
+            total: import("@prisma/client/runtime/library").Decimal;
+            subtotal: import("@prisma/client/runtime/library").Decimal;
+            vatAmount: import("@prisma/client/runtime/library").Decimal;
+            discount: import("@prisma/client/runtime/library").Decimal;
+            unitPrice: import("@prisma/client/runtime/library").Decimal;
+            unit: string;
+            invoiceId: string;
+            productId: string | null;
+            quantity: import("@prisma/client/runtime/library").Decimal;
+            discountType: string;
+            sortOrder: number;
+        })[];
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        vatRate: import("@prisma/client/runtime/library").Decimal;
+        currency: string;
+        description: string | null;
+        type: import(".prisma/client").$Enums.ProductType;
+        isActive: boolean;
+        sku: string | null;
+        barcode: string | null;
+        unitPrice: import("@prisma/client/runtime/library").Decimal;
+        unit: string;
+        vatExempt: boolean;
+        trackInventory: boolean;
+        stockQuantity: number;
+        lowStockAlert: number | null;
+        ncCode: string | null;
+    }>;
+    update(companyId: string, id: string, dto: UpdateProductDto, user: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        vatRate: import("@prisma/client/runtime/library").Decimal;
+        currency: string;
+        description: string | null;
+        type: import(".prisma/client").$Enums.ProductType;
+        isActive: boolean;
+        sku: string | null;
+        barcode: string | null;
+        unitPrice: import("@prisma/client/runtime/library").Decimal;
+        unit: string;
+        vatExempt: boolean;
+        trackInventory: boolean;
+        stockQuantity: number;
+        lowStockAlert: number | null;
+        ncCode: string | null;
+    }>;
+    updateStock(companyId: string, id: string, quantity: number, user: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        vatRate: import("@prisma/client/runtime/library").Decimal;
+        currency: string;
+        description: string | null;
+        type: import(".prisma/client").$Enums.ProductType;
+        isActive: boolean;
+        sku: string | null;
+        barcode: string | null;
+        unitPrice: import("@prisma/client/runtime/library").Decimal;
+        unit: string;
+        vatExempt: boolean;
+        trackInventory: boolean;
+        stockQuantity: number;
+        lowStockAlert: number | null;
+        ncCode: string | null;
+    }>;
+    delete(companyId: string, id: string, user: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        companyId: string;
+        vatRate: import("@prisma/client/runtime/library").Decimal;
+        currency: string;
+        description: string | null;
+        type: import(".prisma/client").$Enums.ProductType;
+        isActive: boolean;
+        sku: string | null;
+        barcode: string | null;
+        unitPrice: import("@prisma/client/runtime/library").Decimal;
+        unit: string;
+        vatExempt: boolean;
+        trackInventory: boolean;
+        stockQuantity: number;
+        lowStockAlert: number | null;
+        ncCode: string | null;
+    }>;
+    bulkUpdatePrices(companyId: string, updates: {
+        id: string;
+        unitPrice: number;
+    }[], user: any): Promise<{
+        updated: number;
+    }>;
+}
+//# sourceMappingURL=products.controller.d.ts.map

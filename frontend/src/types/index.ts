@@ -64,10 +64,13 @@ export interface Contact {
   display_name: string;
   email: string;
   phone?: string;
-  contact_type: 'customer' | 'vendor' | 'employee' | 'contractor';
+  contact_type: 'customer' | 'vendor' | 'employee' | 'contractor' | 'lead' | 'partner';
   company_name?: string;
   tax_id?: string;
   address?: string;
+  city?: string;
+  country?: string;
+  notes?: string;
   created_at: string;
 }
 

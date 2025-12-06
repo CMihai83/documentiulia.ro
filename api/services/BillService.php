@@ -104,26 +104,26 @@ class BillService {
      * List bills for a company
      */
     public function listBills($companyId, $filters = []) {
-        $where = ['company_id = :company_id'];
+        $where = ['b.company_id = :company_id'];
         $params = ['company_id' => $companyId];
 
         if (!empty($filters['status'])) {
-            $where[] = 'status = :status';
+            $where[] = 'b.status = :status';
             $params['status'] = $filters['status'];
         }
 
         if (!empty($filters['vendor_id'])) {
-            $where[] = 'vendor_id = :vendor_id';
+            $where[] = 'b.vendor_id = :vendor_id';
             $params['vendor_id'] = $filters['vendor_id'];
         }
 
         if (!empty($filters['from_date'])) {
-            $where[] = 'bill_date >= :from_date';
+            $where[] = 'b.bill_date >= :from_date';
             $params['from_date'] = $filters['from_date'];
         }
 
         if (!empty($filters['to_date'])) {
-            $where[] = 'bill_date <= :to_date';
+            $where[] = 'b.bill_date <= :to_date';
             $params['to_date'] = $filters['to_date'];
         }
 
@@ -162,7 +162,7 @@ class BillService {
             }
 
             $updateData = [];
-            $allowedFields = ['bill_number', 'bill_date', 'due_date', 'notes'];
+            $allowedFields = ['bill_number', 'bill_date', 'due_date', 'status'];
 
             foreach ($allowedFields as $field) {
                 if (isset($data[$field])) {
@@ -307,16 +307,16 @@ class BillService {
      * Get bill statistics
      */
     public function getStats($companyId, $fromDate = null, $toDate = null) {
-        $where = ['company_id = :company_id'];
+        $where = ['bills.company_id = :company_id'];
         $params = ['company_id' => $companyId];
 
         if ($fromDate) {
-            $where[] = 'bill_date >= :from_date';
+            $where[] = 'bills.bill_date >= :from_date';
             $params['from_date'] = $fromDate;
         }
 
         if ($toDate) {
-            $where[] = 'bill_date <= :to_date';
+            $where[] = 'bills.bill_date <= :to_date';
             $params['to_date'] = $toDate;
         }
 
@@ -325,14 +325,14 @@ class BillService {
         $stats = $this->db->fetchOne("
             SELECT
                 COUNT(*) as total_bills,
-                COUNT(CASE WHEN status = 'draft' THEN 1 END) as draft_count,
-                COUNT(CASE WHEN status = 'open' THEN 1 END) as open_count,
-                COUNT(CASE WHEN status = 'partial' THEN 1 END) as partial_count,
-                COUNT(CASE WHEN status = 'paid' THEN 1 END) as paid_count,
-                COUNT(CASE WHEN status = 'overdue' THEN 1 END) as overdue_count,
-                COALESCE(SUM(total_amount), 0) as total_billed,
-                COALESCE(SUM(amount_paid), 0) as total_paid,
-                COALESCE(SUM(amount_due), 0) as total_outstanding
+                COUNT(CASE WHEN bills.status = 'draft' THEN 1 END) as draft_count,
+                COUNT(CASE WHEN bills.status = 'open' THEN 1 END) as open_count,
+                COUNT(CASE WHEN bills.status = 'partial' THEN 1 END) as partial_count,
+                COUNT(CASE WHEN bills.status = 'paid' THEN 1 END) as paid_count,
+                COUNT(CASE WHEN bills.status = 'overdue' THEN 1 END) as overdue_count,
+                COALESCE(SUM(bills.total_amount), 0) as total_billed,
+                COALESCE(SUM(bills.amount_paid), 0) as total_paid,
+                COALESCE(SUM(bills.amount_due), 0) as total_outstanding
             FROM bills
             WHERE $whereClause
         ", $params);

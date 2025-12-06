@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 0 auto; }
+        .header { background: #f59e0b; padding: 20px; color: white; text-align: center; }
+        .content { padding: 30px; }
+        .warning { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; margin: 20px 0; }
+        .button { display: inline-block; padding: 12px 24px; background: #f59e0b; color: white; text-decoration: none; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <div class="header"><h1>⚠️ Abonamentul Expiră</h1></div>
+    <div class="content">
+        <p>Salut {{first_name}},</p>
+        <div class="warning">
+            <p><strong>Abonamentul tău DocumentIulia expiră în {{days_remaining}} zile!</strong></p>
+        </div>
+        <p><a href="{{renew_url}}" class="button">Reînnoire Abonament</a></p>
+    </div>
+</body>
+</html>

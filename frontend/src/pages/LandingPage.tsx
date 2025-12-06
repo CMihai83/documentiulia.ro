@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   TrendingUp,
@@ -9,10 +9,14 @@ import {
   DollarSign,
   CheckCircle,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  Menu,
+  X
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-100">
       {/* Navigation */}
@@ -25,18 +29,84 @@ const LandingPage: React.FC = () => {
               </div>
               <span className="text-xl font-bold text-gray-900">DocumentIulia</span>
             </div>
-            <div className="flex items-center gap-4">
-              <Link to="/fiscal-law" className="text-gray-700 hover:text-primary-600 font-medium">
-                🇷🇴 Legislație Fiscală
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-4">
+              <Link to="/courses" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                Cursuri
               </Link>
-              <Link to="/login" className="text-gray-700 hover:text-primary-600 font-medium">
+              <Link to="/forum" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                Forum
+              </Link>
+              <Link to="/fiscal-law" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                Legislație Fiscală
+              </Link>
+              <Link to="/login" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
                 Conectare
               </Link>
               <Link to="/register" className="btn-primary">
                 Începe Gratuit
               </Link>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? 'Închide meniul' : 'Deschide meniul'}
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden py-4 border-t border-gray-200 animate-slide-up">
+              <div className="flex flex-col gap-2">
+                <Link
+                  to="/courses"
+                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Cursuri
+                </Link>
+                <Link
+                  to="/forum"
+                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Forum
+                </Link>
+                <Link
+                  to="/fiscal-law"
+                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Legislație Fiscală
+                </Link>
+                <Link
+                  to="/login"
+                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Conectare
+                </Link>
+                <Link
+                  to="/register"
+                  className="btn-primary mx-4 text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Începe Gratuit
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -176,6 +246,46 @@ const LandingPage: React.FC = () => {
               Datele tale criptate 256-bit end-to-end. Conformitate totală GDPR
               și legislație fiscală românească. Datele tale sunt în siguranță.
             </p>
+          </div>
+
+          <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow border-2 border-primary-200">
+            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Forum Comunitate
+              <span className="ml-2 px-2 py-1 text-xs bg-primary-100 text-primary-700 rounded-full">NOU</span>
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Pune întrebări, primește răspunsuri de la experți, împărtășește cunoștințe.
+              Sistem de reputație, badge-uri și leaderboard - învață împreună!
+            </p>
+            <Link to="/forum" className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium">
+              Explorează forumul
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow border-2 border-primary-200">
+            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Cursuri Finance
+              <span className="ml-2 px-2 py-1 text-xs bg-primary-100 text-primary-700 rounded-full">NOU</span>
+            </h3>
+            <p className="text-gray-600 mb-4">
+              40 de lecții interactive despre contabilitate și fiscalitate românească.
+              Învață cu flashcard-uri, quizuri și aplicații practice.
+            </p>
+            <Link to="/courses" className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium">
+              Vezi cursurile
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
           </div>
         </div>
       </section>

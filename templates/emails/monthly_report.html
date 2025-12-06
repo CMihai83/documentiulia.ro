@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 0 auto; }
+        .header { background: #2563eb; padding: 20px; color: white; text-align: center; }
+        .content { padding: 30px; }
+        .stats { background: #f3f4f6; padding: 20px; margin: 20px 0; border-radius: 6px; }
+        .stat-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e5e7eb; }
+    </style>
+</head>
+<body>
+    <div class="header"><h1>📊 Raport Lunar {{month}}</h1></div>
+    <div class="content">
+        <p>Salut {{first_name}},</p>
+        <div class="stats">
+            <div class="stat-row"><span>Facturi emise:</span><strong>{{invoices_count}}</strong></div>
+            <div class="stat-row"><span>Venituri totale:</span><strong>{{total_revenue}} RON</strong></div>
+            <div class="stat-row"><span>Total cheltuieli:</span><strong>{{total_expenses}} RON</strong></div>
+            <div class="stat-row"><span>Profit net:</span><strong style="color:#10b981">{{profit}} RON</strong></div>
+        </div>
+    </div>
+</body>
+</html>

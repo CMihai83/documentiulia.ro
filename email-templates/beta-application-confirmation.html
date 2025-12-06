@@ -1,0 +1,200 @@
+<!-- SUBJECT: ✅ Aplicația ta pentru Program Beta DocumentiUlia -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            margin: -30px -30px 30px -30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        .status-accepted {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+        }
+        .status-waitlist {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+        .score-display {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .score-circle {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            line-height: 100px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .benefits {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .benefit-item {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .benefit-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .next-steps {
+            background-color: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Mulțumim pentru aplicație!</h1>
+        </div>
+
+        <p>Bună {{contact_name}},</p>
+
+        <p>Am primit aplicația ta pentru <strong>{{company_name}}</strong> în Programul Beta DocumentiUlia!</p>
+
+        <div class="score-display">
+            <div class="score-circle">{{application_score}}</div>
+            <p style="margin-top: 10px; color: #666;">Scor aplicație din 100</p>
+        </div>
+
+        <div style="text-align: center;">
+            <span class="status-badge status-{{status}}">
+                {{status_message}}
+            </span>
+        </div>
+
+        {{#if_accepted}}
+        <div class="next-steps">
+            <h3 style="margin-top: 0;">🚀 Următorii pași:</h3>
+            <ol>
+                <li>Vei primi în următoarele 24-48 ore un email cu instrucțiuni de setup</li>
+                <li>Îți vom oferi un training 1-on-1 personalizat (60 minute)</li>
+                <li>Vei avea acces complet la platformă pentru 60 zile GRATUIT</li>
+                <li>Support prioritar - răspundem în max 4 ore</li>
+            </ol>
+        </div>
+
+        <div class="benefits">
+            <h3>🎁 Ce primești în Program Beta:</h3>
+            <div class="benefit-item">60 zile acces GRATUIT (valoare €118)</div>
+            <div class="benefit-item">Setup complet asistat (valoare €150)</div>
+            <div class="benefit-item">Training personal 1-on-1 (valoare €100)</div>
+            <div class="benefit-item">Import date gratuit din Excel (valoare €50)</div>
+            <div class="benefit-item">Suport prioritar - răspuns în 4 ore</div>
+            <div class="benefit-item">Influențezi dezvoltarea produsului</div>
+        </div>
+        {{/if_accepted}}
+
+        {{#if_pending}}
+        <div class="next-steps">
+            <h3 style="margin-top: 0;">📋 Ce urmează:</h3>
+            <p>Aplicația ta este în revizie manuală. Echipa noastră va analiza detaliile și vei primi un răspuns în maxim 48 ore.</p>
+            <p><strong>Cum poți îmbunătăți șansele de acceptare:</strong></p>
+            <ul>
+                <li>Completează mai multe detalii despre provocările afacerii tale</li>
+                <li>Descrie cum DocumentiUlia te-ar putea ajuta</li>
+            </ul>
+        </div>
+        {{/if_pending}}
+
+        {{#if_waitlist}}
+        <div class="next-steps">
+            <h3 style="margin-top: 0;">⏳ Pe lista de așteptare</h3>
+            <p>Din păcate, toate cele 10 locuri din prima rundă beta sunt ocupate. Te-am adăugat pe lista de așteptare și vei fi anunțat când vom deschide noi locuri!</p>
+            <p><strong>Până atunci:</strong></p>
+            <ul>
+                <li>Urmărește-ne pe social media pentru update-uri</li>
+                <li>Pregătește datele pentru import (factuni, produse, clienți)</li>
+                <li>Gândește-te la funcționalități de care ai nevoie</li>
+            </ul>
+        </div>
+        {{/if_waitlist}}
+
+        <p>Dacă ai întrebări, nu ezita să ne contactezi la <a href="mailto:support@documentiulia.ro">support@documentiulia.ro</a></p>
+
+        <p>Cu respect,<br>
+        <strong>Echipa DocumentiUlia</strong></p>
+
+        <div class="footer">
+            <p><strong>DocumentiUlia</strong> - Platforma de contabilitate inteligentă cu AI</p>
+            <p>📧 support@documentiulia.ro | 🌐 <a href="https://documentiulia.ro">documentiulia.ro</a></p>
+            <p style="font-size: 12px; color: #999;">
+                Acest email a fost trimis automat. Te rugăm să nu răspunzi direct la acest mesaj.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

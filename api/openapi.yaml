@@ -1,0 +1,676 @@
+openapi: 3.0.3
+info:
+  title: Documentiulia.ro API
+  description: |
+    Complete business management platform API for Romanian companies.
+    Features include invoicing, CRM, project management, accounting, and AI-powered services.
+  version: 1.0.0
+  contact:
+    name: Documentiulia Support
+    email: support@documentiulia.ro
+    url: https://documentiulia.ro
+  license:
+    name: Proprietary
+    url: https://documentiulia.ro/terms
+
+servers:
+  - url: https://documentiulia.ro/api/v1
+    description: Production server
+  - url: http://127.0.0.1/api/v1
+    description: Development server
+
+tags:
+  - name: Authentication
+    description: User authentication and authorization
+  - name: Contacts
+    description: Contact/customer management (CRM)
+  - name: Invoices
+    description: Invoice management and generation
+  - name: Expenses
+    description: Expense tracking
+  - name: Projects
+    description: Project management
+  - name: Tasks
+    description: Task management (Scrum/Agile)
+  - name: Receipts
+    description: Receipt OCR and processing
+  - name: Accounting
+    description: Chart of accounts and reports
+  - name: Bank
+    description: Bank connections and transactions
+  - name: HR
+    description: HR and payroll management
+  - name: AI
+    description: AI-powered features
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token from /auth/login
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: "Error description"
+
+    Success:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        company_name:
+          type: string
+        type:
+          type: string
+          enum: [customer, supplier, both]
+        cui:
+          type: string
+          description: Romanian fiscal code (CUI/CIF)
+
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        invoice_number:
+          type: string
+        customer_id:
+          type: string
+          format: uuid
+        invoice_date:
+          type: string
+          format: date
+        due_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [draft, sent, paid, overdue, cancelled]
+        subtotal:
+          type: number
+        vat_amount:
+          type: number
+        total_amount:
+          type: number
+        currency:
+          type: string
+          default: RON
+
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [planning, active, on_hold, completed, cancelled]
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        project_id:
+          type: string
+          format: uuid
+        assignee_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [backlog, todo, in_progress, review, done]
+        priority:
+          type: string
+          enum: [low, medium, high, urgent]
+        story_points:
+          type: integer
+
+    Receipt:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        vendor_name:
+          type: string
+        date:
+          type: string
+          format: date
+        total:
+          type: number
+        currency:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+        ocr_confidence:
+          type: number
+
+  parameters:
+    CompanyId:
+      name: X-Company-ID
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Company UUID for multi-tenant operations
+
+security:
+  - BearerAuth: []
+
+paths:
+  # Authentication
+  /auth/login.php:
+    post:
+      tags: [Authentication]
+      summary: Login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  token:
+                    type: string
+                  user:
+                    type: object
+
+  /auth/register.php:
+    post:
+      tags: [Authentication]
+      summary: Register new user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, first_name, last_name]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 8
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+      responses:
+        '201':
+          description: User created
+        '400':
+          description: Validation error
+
+  /auth/me.php:
+    get:
+      tags: [Authentication]
+      summary: Get current user info
+      responses:
+        '200':
+          description: Current user data
+
+  # Contacts
+  /contacts/list.php:
+    get:
+      tags: [Contacts]
+      summary: List all contacts
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [customer, supplier, both]
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Contact'
+
+  /contacts/create.php:
+    post:
+      tags: [Contacts]
+      summary: Create contact
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '201':
+          description: Contact created
+
+  /contacts/get.php:
+    get:
+      tags: [Contacts]
+      summary: Get contact by ID
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Contact details
+
+  /contacts/update.php:
+    put:
+      tags: [Contacts]
+      summary: Update contact
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '200':
+          description: Contact updated
+
+  /contacts/delete.php:
+    delete:
+      tags: [Contacts]
+      summary: Delete contact
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Contact deleted
+
+  # Invoices
+  /invoices/list.php:
+    get:
+      tags: [Invoices]
+      summary: List invoices
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [draft, sent, paid, overdue]
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of invoices
+
+  /invoices/create.php:
+    post:
+      tags: [Invoices]
+      summary: Create invoice
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '201':
+          description: Invoice created
+
+  /invoices/pdf.php:
+    get:
+      tags: [Invoices]
+      summary: Download invoice PDF
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: PDF file
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+
+  # Projects
+  /projects/list.php:
+    get:
+      tags: [Projects]
+      summary: List projects
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: List of projects
+
+  /projects/projects.php:
+    post:
+      tags: [Projects]
+      summary: Create project
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        '201':
+          description: Project created
+    put:
+      tags: [Projects]
+      summary: Update project
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        '200':
+          description: Project updated
+
+  # Tasks
+  /tasks/list.php:
+    get:
+      tags: [Tasks]
+      summary: List tasks
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: project_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: sprint_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of tasks
+
+  /tasks/create.php:
+    post:
+      tags: [Tasks]
+      summary: Create task
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          description: Task created
+
+  # Receipts
+  /receipts/upload.php:
+    post:
+      tags: [Receipts]
+      summary: Upload receipt for OCR
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                receipt:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OCR results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Receipt'
+
+  /receipts/list.php:
+    get:
+      tags: [Receipts]
+      summary: List receipts
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: List of receipts
+
+  # Accounting
+  /accounting/chart-of-accounts.php:
+    get:
+      tags: [Accounting]
+      summary: Get chart of accounts
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: Chart of accounts
+
+  /accounting/reports.php:
+    get:
+      tags: [Accounting]
+      summary: Get accounting report
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [trial_balance, balance_sheet, income_statement, cash_flow]
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Report data
+
+  # Bank
+  /bank/connections.php:
+    get:
+      tags: [Bank]
+      summary: List bank connections
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: List of connected bank accounts
+
+  /bank/transactions.php:
+    get:
+      tags: [Bank]
+      summary: Get bank transactions
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: account_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: List of transactions
+
+  # AI Services
+  /fiscal/ai-consultant.php:
+    post:
+      tags: [AI]
+      summary: AI Fiscal Consultant
+      description: Ask questions about Romanian fiscal regulations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [question]
+              properties:
+                question:
+                  type: string
+                  example: "Care este pragul de inregistrare TVA?"
+      responses:
+        '200':
+          description: AI response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  answer:
+                    type: string
+                  sources:
+                    type: array
+                    items:
+                      type: string
+
+  /ai/smart-suggestions.php:
+    get:
+      tags: [AI]
+      summary: Get smart suggestions
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+        - name: context
+          in: query
+          schema:
+            type: string
+            enum: [invoice, expense, contact, task]
+      responses:
+        '200':
+          description: AI-powered suggestions

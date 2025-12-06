@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 0 auto; }
+        .header { background: #2563eb; padding: 20px; color: white; text-align: center; }
+        .content { padding: 30px; }
+        .status-badge { display: inline-block; padding: 8px 16px; border-radius: 6px; font-weight: bold; color: white; }
+    </style>
+</head>
+<body>
+    <div class="header"><h1>e-Factura - Update Status</h1></div>
+    <div class="content">
+        <p>Factura #{{invoice_number}} a fost <span class="status-badge" style="background-color:{{status_color}}">{{status_text}}</span> de ANAF.</p>
+        <p><strong>Index încărcare:</strong> {{upload_index}}</p>
+        <p><strong>Mesaj ANAF:</strong> {{message}}</p>
+    </div>
+</body>
+</html>

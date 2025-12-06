@@ -169,7 +169,7 @@ class ExpenseService {
         }
 
         $updateData = [];
-        $allowedFields = ['expense_date', 'vendor_id', 'amount', 'description', 'category'];
+        $allowedFields = ['expense_date', 'vendor_id', 'amount', 'description', 'category', 'status'];
 
         foreach ($allowedFields as $field) {
             if (isset($data[$field])) {

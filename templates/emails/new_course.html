@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 0 auto; }
+        .header { background: #10b981; padding: 20px; color: white; text-align: center; }
+        .content { padding: 30px; }
+        .course-box { background: #d1fae5; border-left: 4px solid #10b981; padding: 20px; margin: 20px 0; border-radius: 6px; }
+        .button { display: inline-block; padding: 12px 24px; background: #10b981; color: white; text-decoration: none; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <div class="header"><h1>🎓 Curs Nou Disponibil!</h1></div>
+    <div class="content">
+        <p>Salut {{first_name}},</p>
+        <div class="course-box">
+            <h2 style="margin-top:0">{{course_title}}</h2>
+            <p>{{course_description}}</p>
+            <p><strong>Instructor:</strong> {{instructor}}</p>
+        </div>
+        <p><a href="{{course_url}}" class="button">Începe Cursul</a></p>
+    </div>
+</body>
+</html>

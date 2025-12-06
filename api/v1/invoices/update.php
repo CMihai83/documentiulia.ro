@@ -28,7 +28,7 @@ try {
     // Authenticate
     $authHeader = getHeader('authorization', '') ?? '';
 
-    if (empty($authHeader) || !preg_match('/Bearer\s+(.+)/', $authHeader, $matches)) {
+    if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
         throw new Exception('Authorization required');
     }
 
@@ -41,15 +41,6 @@ try {
         throw new Exception('Company ID required');
     }
 
-    // Get invoice ID from URL path
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $pathParts = explode('/', trim($path, '/'));
-    $invoiceId = end($pathParts);
-
-    if (!is_numeric($invoiceId)) {
-        throw new Exception('Invalid invoice ID');
-    }
-
     // Get request data
     $input = json_decode(file_get_contents('php://input'), true);
 
@@ -57,11 +48,18 @@ try {
         throw new Exception('No data provided');
     }
 
+    // Get invoice ID from request body
+    if (empty($input['id'])) {
+        throw new Exception('Invoice ID is required');
+    }
+
+    $invoiceId = $input['id'];
+
     $invoiceService = new InvoiceService();
 
     // Verify invoice belongs to company
     $existingInvoice = $invoiceService->getInvoice($invoiceId);
-    if ($existingInvoice['company_id'] !== $companyId) {
+    if (!$existingInvoice || $existingInvoice['company_id'] !== $companyId) {
         throw new Exception('Invoice not found');
     }
 

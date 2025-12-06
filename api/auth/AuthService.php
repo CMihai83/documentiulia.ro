@@ -109,6 +109,33 @@ class AuthService {
     }
 
     /**
+     * Authenticate request using Authorization header
+     * Extracts Bearer token and verifies it
+     */
+    public function authenticate() {
+        // Get Authorization header
+        $headers = getallheaders();
+        $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+
+        if (empty($authHeader)) {
+            return null;
+        }
+
+        // Extract token from "Bearer TOKEN" format
+        if (!preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
+            return null;
+        }
+
+        $token = $matches[1];
+
+        try {
+            return $this->verifyToken($token);
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
+    /**
      * Verify JWT token and return user data
      */
     public function verifyToken($token) {
@@ -215,10 +242,22 @@ class AuthService {
     public function userHasAccessToCompany($userId, $companyId) {
         $result = $this->db->fetchOne(
             "SELECT 1 FROM company_users
-             WHERE user_id = $1 AND company_id = $2",
-            [$userId, $companyId]
+             WHERE user_id = :user_id AND company_id = :company_id",
+            ['user_id' => $userId, 'company_id' => $companyId]
         );
-        return $result !== null;
+        return $result !== null && $result !== false;
+    }
+
+    /**
+     * Generate a new JWT token for an authenticated user
+     */
+    public function generateToken($userId, $email, $role) {
+        $user = [
+            'id' => $userId,
+            'email' => $email,
+            'role' => $role
+        ];
+        return $this->generateJWT($user);
     }
 
     /**

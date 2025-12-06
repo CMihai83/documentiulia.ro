@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { TrendingUp, DollarSign, FileText, AlertCircle } from 'lucide-react';
+import { TrendingUp, DollarSign, FileText, AlertCircle, MessageCircle, BookOpen, Award } from 'lucide-react';
 import { dashboardAPI, forecastingAPI, insightsAPI } from '../services/api';
 import type { DashboardStats, CashFlowForecast, Insight } from '../types';
 import DashboardLayout from '../components/layout/DashboardLayout';
@@ -86,7 +87,7 @@ const DashboardPage: React.FC = () => {
         {/* Header */}
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600 mt-1">Welcome back! Here's what's happening with your business.</p>
+          <p className="text-gray-600 mt-1">Bine ai revenit! Iată ce se întâmplă cu afacerea ta.</p>
         </div>
 
         {/* Stats Cards */}
@@ -158,6 +159,117 @@ const DashboardPage: React.FC = () => {
                   <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
                 </PieChart>
               </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+
+        {/* Community & Learning Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Forum Quick Access */}
+          <div className="card bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-100">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                  <MessageCircle className="w-5 h-5 text-indigo-600" />
+                  Forum Comunitate
+                </h2>
+                <p className="text-sm text-gray-600">Pune întrebări și primește răspunsuri de la experți</p>
+              </div>
+              <Link
+                to="/forum"
+                className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+              >
+                Vezi tot
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+            <div className="space-y-3">
+              <Link
+                to="/forum/category/legislation-tax"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-white transition-colors"
+              >
+                <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                  <span className="text-lg">📋</span>
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-gray-900">Legislație & TVA</div>
+                  <div className="text-sm text-gray-500">Discuții despre legi fiscale</div>
+                </div>
+              </Link>
+              <Link
+                to="/forum/category/accounting-basics"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-white transition-colors"
+              >
+                <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                  <span className="text-lg">💼</span>
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-gray-900">Bază Contabilă</div>
+                  <div className="text-sm text-gray-500">Întrebări pentru începători</div>
+                </div>
+              </Link>
+              <Link
+                to="/forum/new-thread"
+                className="block w-full text-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors mt-4"
+              >
+                Pune o Întrebare
+              </Link>
+            </div>
+          </div>
+
+          {/* Courses Quick Access */}
+          <div className="card bg-gradient-to-br from-purple-50 to-white border-2 border-purple-100">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-purple-600" />
+                  Cursuri Finance
+                </h2>
+                <p className="text-sm text-gray-600">40 de lecții interactive despre contabilitate</p>
+              </div>
+              <Link
+                to="/courses"
+                className="text-sm text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1"
+              >
+                Vezi tot
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-white">
+                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <Award className="w-5 h-5 text-purple-600" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-gray-900">Progresul tău</div>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                    <div className="bg-purple-600 h-2 rounded-full" style={{ width: '35%' }}></div>
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">35% complet</div>
+                </div>
+              </div>
+              <Link
+                to="/courses/romanian-accounting-basics"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-white transition-colors"
+              >
+                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <span className="text-lg">📚</span>
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-gray-900">Bazele Contabilității</div>
+                  <div className="text-sm text-gray-500">Modulul 1 • 8 lecții</div>
+                </div>
+              </Link>
+              <Link
+                to="/my-courses"
+                className="block w-full text-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors mt-4"
+              >
+                Continuă Învățarea
+              </Link>
             </div>
           </div>
         </div>

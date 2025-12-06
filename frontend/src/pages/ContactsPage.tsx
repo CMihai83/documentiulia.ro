@@ -3,6 +3,7 @@ import { Plus, Search, Filter, Users, Mail, Phone, Building2, Edit, Trash2, User
 import { contactAPI } from '../services/api';
 import type { Contact } from '../types';
 import DashboardLayout from '../components/layout/DashboardLayout';
+import CUIValidation from '../components/CUIValidation';
 
 const ContactsPage: React.FC = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -10,6 +11,7 @@ const ContactsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [editingContact, setEditingContact] = useState<Contact | null>(null);
 
   useEffect(() => {
     loadContacts();
@@ -214,7 +216,10 @@ const ContactsPage: React.FC = () => {
 
                 <div className="flex items-center gap-2 pt-4 border-t border-gray-200">
                   <button
-                    onClick={() => alert('Funcționalitatea de editare vine în curând!')}
+                    onClick={() => {
+                      setEditingContact(contact);
+                      setShowCreateModal(true);
+                    }}
                     className="flex-1 btn-secondary text-sm py-2 flex items-center justify-center gap-2"
                   >
                     <Edit className="w-4 h-4" />
@@ -233,12 +238,17 @@ const ContactsPage: React.FC = () => {
           )}
         </div>
 
-        {/* Create Contact Modal */}
+        {/* Create/Edit Contact Modal */}
         {showCreateModal && (
           <ContactCreateModal
-            onClose={() => setShowCreateModal(false)}
+            contact={editingContact}
+            onClose={() => {
+              setShowCreateModal(false);
+              setEditingContact(null);
+            }}
             onSuccess={() => {
               setShowCreateModal(false);
+              setEditingContact(null);
               loadContacts();
             }}
           />
@@ -248,42 +258,64 @@ const ContactsPage: React.FC = () => {
   );
 };
 
-// Contact Create Modal Component
-const ContactCreateModal: React.FC<{ onClose: () => void; onSuccess: () => void }> = ({ onClose, onSuccess }) => {
+// Contact Create/Edit Modal Component
+const ContactCreateModal: React.FC<{ contact?: Contact | null; onClose: () => void; onSuccess: () => void }> = ({ contact, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
+  const isEditing = !!contact;
+
   const [formData, setFormData] = useState<{
-    type: 'customer' | 'vendor' | 'employee' | 'contractor';
+    type: 'customer' | 'vendor' | 'employee' | 'contractor' | 'lead' | 'partner';
     name: string;
     email: string;
     phone: string;
     company_name: string;
+    cui: string;
+    registration_number: string;
     address: string;
     city: string;
     country: string;
     notes: string;
   }>({
-    type: 'customer',
-    name: '',
-    email: '',
-    phone: '',
-    company_name: '',
-    address: '',
-    city: '',
-    country: '',
-    notes: '',
+    type: contact?.contact_type || 'customer',
+    name: contact?.display_name || '',
+    email: contact?.email || '',
+    phone: contact?.phone || '',
+    company_name: contact?.company_name || '',
+    cui: (contact as any)?.cui || '',
+    registration_number: (contact as any)?.registration_number || '',
+    address: contact?.address || '',
+    city: contact?.city || '',
+    country: contact?.country || '',
+    notes: contact?.notes || '',
   });
+
+  const handleCompanyFound = (company: any) => {
+    setFormData(prev => ({
+      ...prev,
+      company_name: company.name || prev.company_name,
+      cui: company.cui || prev.cui,
+      registration_number: company.registration_number || prev.registration_number,
+      address: company.address || prev.address,
+      phone: company.phone || prev.phone,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      await contactAPI.create(formData);
-      alert('Contact creat cu succes!');
+      if (isEditing) {
+        await contactAPI.update(contact.id, formData);
+        alert('Contact actualizat cu succes!');
+      } else {
+        await contactAPI.create(formData);
+        alert('Contact creat cu succes!');
+      }
       onSuccess();
     } catch (error) {
-      console.error('Failed to create contact:', error);
-      alert('Crearea contactului a eșuat');
+      console.error(`Failed to ${isEditing ? 'update' : 'create'} contact:`, error);
+      alert(`${isEditing ? 'Actualizarea' : 'Crearea'} contactului a eșuat`);
     } finally {
       setLoading(false);
     }
@@ -293,7 +325,9 @@ const ContactCreateModal: React.FC<{ onClose: () => void; onSuccess: () => void 
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Adaugă Contact Nou</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            {isEditing ? 'Editează Contact' : 'Adaugă Contact Nou'}
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Tip Contact *</label>
@@ -305,8 +339,9 @@ const ContactCreateModal: React.FC<{ onClose: () => void; onSuccess: () => void 
               >
                 <option value="customer">Client</option>
                 <option value="vendor">Furnizor</option>
+                <option value="lead">Lead</option>
+                <option value="partner">Partener</option>
                 <option value="employee">Angajat</option>
-                <option value="contractor">Colaborator</option>
               </select>
             </div>
 
@@ -353,6 +388,30 @@ const ContactCreateModal: React.FC<{ onClose: () => void; onSuccess: () => void 
                 />
               </div>
             </div>
+
+            {/* CUI/CIF Validation - Only show for business contacts */}
+            {(formData.type === 'customer' || formData.type === 'vendor' || formData.type === 'partner') && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">CUI / CIF</label>
+                  <CUIValidation
+                    value={formData.cui}
+                    onChange={(value) => setFormData({ ...formData, cui: value })}
+                    onCompanyFound={handleCompanyFound}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Nr. Registru Comert</label>
+                  <input
+                    type="text"
+                    value={formData.registration_number}
+                    onChange={(e) => setFormData({ ...formData, registration_number: e.target.value })}
+                    className="input"
+                    placeholder="J40/1234/2024"
+                  />
+                </div>
+              </div>
+            )}
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Adresă</label>
@@ -412,7 +471,7 @@ const ContactCreateModal: React.FC<{ onClose: () => void; onSuccess: () => void 
                 className="btn-primary flex-1 disabled:opacity-50"
                 disabled={loading}
               >
-                {loading ? 'Se creează...' : 'Creează Contact'}
+                {loading ? (isEditing ? 'Se actualizează...' : 'Se creează...') : (isEditing ? 'Actualizează Contact' : 'Creează Contact')}
               </button>
             </div>
           </form>

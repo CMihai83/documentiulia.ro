@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { UserPlus, Mail, Lock, User, AlertCircle } from 'lucide-react';
+import { UserPlus, Mail, Lock, User, AlertCircle, FlaskConical } from 'lucide-react';
 
 const RegisterPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -178,12 +178,29 @@ const RegisterPage: React.FC = () => {
             </button>
           </form>
 
+          {/* Test Accounts Info */}
+          <div className="mt-6 p-4 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl">
+            <div className="flex items-center gap-2 mb-2">
+              <FlaskConical className="w-5 h-5 text-amber-600" />
+              <span className="font-semibold text-amber-900">Preferi să testezi fără înregistrare?</span>
+            </div>
+            <p className="text-sm text-amber-700 mb-3">
+              Avem conturi de test pregătite pentru tine cu acces la toate funcționalitățile.
+            </p>
+            <Link
+              to="/login"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-white text-sm font-medium rounded-lg hover:bg-amber-700 transition-colors"
+            >
+              Vezi conturile de test
+            </Link>
+          </div>
+
           {/* Login Link */}
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              Already have an account?{' '}
+              Ai deja cont?{' '}
               <Link to="/login" className="font-medium text-primary-600 hover:text-primary-700">
-                Sign in
+                Conectează-te
               </Link>
             </p>
           </div>
