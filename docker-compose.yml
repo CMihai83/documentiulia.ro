@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: documentiulia-db
+    environment:
+      POSTGRES_USER: documentiulia
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-securepassword}
+      POSTGRES_DB: documentiulia
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U documentiulia"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: documentiulia-redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: documentiulia-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:3001
+      - NEXT_PUBLIC_AI_URL=http://ai-service:8001
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: documentiulia-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://documentiulia:${DB_PASSWORD:-securepassword}@postgres:5432/documentiulia
+      - REDIS_URL=redis://redis:6379
+      - SAGA_API_KEY=${SAGA_API_KEY}
+      - ANAF_API_KEY=${ANAF_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: documentiulia-ai
+    ports:
+      - "8001:8001"
+    environment:
+      - GROK_API_KEY=${GROK_API_KEY}
+      - DATABASE_URL=postgresql://documentiulia:${DB_PASSWORD:-securepassword}@postgres:5432/documentiulia
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "DocumentIulia.ro - Contabilitate cu Inteligență Artificială",
+    "description": "Platformă ERP/contabilitate pentru afaceri românești cu AI, conformitate ANAF, TVA 21%/11%, SAF-T D406, e-Factura SPV"
+  },
+  "nav": {
+    "home": "Acasă",
+    "dashboard": "Panou de Control",
+    "forum": "Forum",
+    "courses": "Cursuri",
+    "blog": "Blog",
+    "pricing": "Prețuri",
+    "hr": "Resurse Umane",
+    "funds": "Fonduri",
+    "contact": "Contact",
+    "help": "Ajutor",
+    "login": "Autentificare",
+    "signup": "Înregistrare"
+  },
+  "hero": {
+    "title": "Contabilitate cu Inteligență Artificială",
+    "subtitle": "Platformă completă ERP/contabilitate pentru afaceri românești. Conformitate 100% ANAF, TVA 21%/11%, SAF-T D406, e-Factura SPV.",
+    "cta": "Începe Gratuit",
+    "demo": "Vezi Demo"
+  },
+  "features": {
+    "title": "Funcționalități",
+    "vat": {
+      "title": "Calcul TVA Automat",
+      "description": "TVA 21%/11% conform Legea 141/2025, calcul automat și raportare ANAF"
+    },
+    "ocr": {
+      "title": "OCR Inteligent",
+      "description": "Extracție automată date din facturi cu precizie 99% optimizat pentru limba română"
+    },
+    "saft": {
+      "title": "SAF-T D406",
+      "description": "Generare XML lunar conform Ordin 1783/2021, validare DUKIntegrator, transmitere SPV"
+    },
+    "efactura": {
+      "title": "e-Factura B2B",
+      "description": "Integrare completă cu sistemul e-Factura ANAF, sincronizare automată"
+    },
+    "ai": {
+      "title": "Asistent AI",
+      "description": "Întrebări și răspunsuri despre TVA, deduceri, conformitate cu Grok AI"
+    },
+    "hr": {
+      "title": "Modul HR",
+      "description": "Recrutare, salarizare, wellbeing, training - totul integrat"
+    }
+  },
+  "pricing": {
+    "title": "Prețuri",
+    "free": {
+      "name": "Gratuit",
+      "price": "0 RON",
+      "period": "/lună",
+      "features": ["Calcul TVA de bază", "OCR 10 documente/lună", "Rapoarte simple"]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "49 RON",
+      "period": "/lună",
+      "features": ["TVA nelimitat", "OCR nelimitat", "Modul HR", "Suport prioritar", "Export SAF-T"]
+    },
+    "business": {
+      "name": "Business",
+      "price": "149 RON",
+      "period": "/lună",
+      "features": ["Tot din Pro", "API personalizat", "Integrare SAGA", "Manager dedicat", "SLA garantat"]
+    }
+  },
+  "dashboard": {
+    "welcome": "Bun venit",
+    "overview": "Privire de Ansamblu",
+    "vatSummary": "Sumar TVA",
+    "cashFlow": "Flux Numerar",
+    "invoices": "Facturi",
+    "compliance": "Conformitate",
+    "uploadDoc": "Încarcă Document",
+    "dragDrop": "Trage și plasează sau click pentru a încărca"
+  },
+  "compliance": {
+    "anafBadge": "Conformitate ANAF 100%",
+    "gdprBadge": "GDPR Compliant",
+    "vatLaw": "Legea 141/2025 - TVA 21%/11%",
+    "saftOrder": "Ordin 1783/2021 - SAF-T D406"
+  },
+  "footer": {
+    "terms": "Termeni și Condiții",
+    "privacy": "Politica de Confidențialitate",
+    "copyright": "© 2025 DocumentIulia.ro. Toate drepturile rezervate."
+  }
+}

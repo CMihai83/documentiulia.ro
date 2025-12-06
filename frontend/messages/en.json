@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "DocumentIulia.ro - AI-Powered Accounting",
+    "description": "ERP/Accounting platform for Romanian businesses with AI, ANAF compliance, VAT 21%/11%, SAF-T D406, e-Invoice SPV"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "forum": "Forum",
+    "courses": "Courses",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "hr": "Human Resources",
+    "funds": "Funds",
+    "contact": "Contact",
+    "help": "Help",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "hero": {
+    "title": "AI-Powered Accounting",
+    "subtitle": "Complete ERP/accounting platform for Romanian businesses. 100% ANAF compliant, VAT 21%/11%, SAF-T D406, e-Invoice SPV.",
+    "cta": "Start Free",
+    "demo": "View Demo"
+  },
+  "features": {
+    "title": "Features",
+    "vat": {
+      "title": "Automatic VAT Calculation",
+      "description": "VAT 21%/11% per Law 141/2025, automatic calculation and ANAF reporting"
+    },
+    "ocr": {
+      "title": "Intelligent OCR",
+      "description": "Automatic data extraction from invoices with 99% accuracy optimized for Romanian"
+    },
+    "saft": {
+      "title": "SAF-T D406",
+      "description": "Monthly XML generation per Order 1783/2021, DUKIntegrator validation, SPV submission"
+    },
+    "efactura": {
+      "title": "e-Invoice B2B",
+      "description": "Complete integration with ANAF e-Invoice system, automatic synchronization"
+    },
+    "ai": {
+      "title": "AI Assistant",
+      "description": "Questions and answers about VAT, deductions, compliance with Grok AI"
+    },
+    "hr": {
+      "title": "HR Module",
+      "description": "Recruitment, payroll, wellbeing, training - all integrated"
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "free": {
+      "name": "Free",
+      "price": "0 RON",
+      "period": "/month",
+      "features": ["Basic VAT calculation", "10 documents/month OCR", "Simple reports"]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "49 RON",
+      "period": "/month",
+      "features": ["Unlimited VAT", "Unlimited OCR", "HR Module", "Priority support", "SAF-T Export"]
+    },
+    "business": {
+      "name": "Business",
+      "price": "149 RON",
+      "period": "/month",
+      "features": ["Everything in Pro", "Custom API", "SAGA integration", "Dedicated manager", "SLA guaranteed"]
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "overview": "Overview",
+    "vatSummary": "VAT Summary",
+    "cashFlow": "Cash Flow",
+    "invoices": "Invoices",
+    "compliance": "Compliance",
+    "uploadDoc": "Upload Document",
+    "dragDrop": "Drag and drop or click to upload"
+  },
+  "compliance": {
+    "anafBadge": "100% ANAF Compliant",
+    "gdprBadge": "GDPR Compliant",
+    "vatLaw": "Law 141/2025 - VAT 21%/11%",
+    "saftOrder": "Order 1783/2021 - SAF-T D406"
+  },
+  "footer": {
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "copyright": "© 2025 DocumentIulia.ro. All rights reserved."
+  }
+}
