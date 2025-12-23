@@ -258,7 +258,21 @@
     "rule2": "Search before posting",
     "rule3": "Use descriptive titles",
     "rule4": "Mark discussion as resolved",
-    "rule5": "Do not post confidential information"
+    "rule5": "Do not post confidential information",
+    "loginRequired": "Login Required",
+    "loginToPostDescription": "To start a new discussion, you need to be logged in.",
+    "loginToPost": "Login to start a discussion",
+    "loginToReply": "Login to reply",
+    "backToForum": "Back to Forum",
+    "allDiscussions": "All Discussions",
+    "threadNotFound": "Discussion Not Found",
+    "threadNotFoundDesc": "This discussion does not exist or has been deleted.",
+    "views": "views",
+    "replies": "replies",
+    "addReply": "Add a Reply",
+    "threadLocked": "This discussion is closed for new replies.",
+    "noThreadsInCategory": "No discussions in this category.",
+    "startFirst": "Be the first to start a discussion"
   },
   "contact": {
     "title": "Contact",
