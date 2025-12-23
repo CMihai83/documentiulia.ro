@@ -8,10 +8,12 @@ import { FleetService } from './fleet.service';
 import { FleetGateway } from './fleet.gateway';
 import { FleetAnalyticsService } from './fleet-analytics.service';
 import { RouteOptimizationService } from './route-optimization.service';
+import { RouteOptimizationController } from './route-optimization.controller';
 import { GpsTrackingService } from './gps-tracking.service';
 import { GpsTrackingGateway } from './gps-tracking.gateway';
 import { ReportingService } from './reporting.service';
 import { MaintenanceSchedulingService } from './maintenance-scheduling.service';
+import { MaintenanceSchedulingController } from './maintenance-scheduling.controller';
 import { ProofOfDeliveryService } from './proof-of-delivery.service';
 import { DriverPerformanceService } from './driver-performance.service';
 import { RouteHistoryService } from './route-history.service';
@@ -55,7 +57,7 @@ import { FinanceModule } from '../finance/finance.module';
       }),
     }),
   ],
-  controllers: [FleetController, DriverMobileController, CustomerTrackingController, TachographController, FleetAnalyticsController],
+  controllers: [FleetController, DriverMobileController, CustomerTrackingController, TachographController, FleetAnalyticsController, RouteOptimizationController, MaintenanceSchedulingController],
   providers: [
     FleetService,
     FleetGateway,
