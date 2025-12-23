@@ -5,6 +5,1954 @@
  */
 
 export const eliteBusinessCourses = [
+  // Romanian Compliance & ANAF Course
+  {
+    title: 'Conformitate Fiscala Romania - e-Factura, SAF-T si ANAF Complet',
+    slug: 'conformitate-fiscala-romania-anaf',
+    description: `Cursul definitiv pentru contabili, antreprenori si manageri financiari care vor sa stapaneasca sistemele fiscale romanesti!
+
+Acest curs complet te ghideaza prin toate obligatiile fiscale romanesti, de la e-Factura pana la SAF-T D406, cu exemple practice si template-uri ready-to-use.
+
+Vei invata sa:
+• Implementezi si folosesti corect sistemul e-Factura SPV
+• Generezi si validezi fisiere SAF-T D406 conform Order 1783/2021
+• Calculezi corect TVA (19%/9%/5% si noile cote 21%/11% din Aug 2025)
+• Eviti amenzi prin respectarea termenelor ANAF
+• Automatizezi raportarea fiscala cu DUKIntegrator
+• Gestionezi conformitatea GDPR pentru date financiare
+
+Include studii de caz reale, template-uri XML, si checklist-uri pentru audit.`,
+    category: 'ACCOUNTING',
+    level: 'INTERMEDIATE',
+    duration: 1400,
+    price: 249,
+    isFree: false,
+    language: 'ro',
+    tags: ['ANAF', 'e-Factura', 'SAF-T', 'D406', 'TVA', 'conformitate', 'fiscalitate', 'SPV', 'contabilitate'],
+    modules: [
+      {
+        title: 'Fundamentele Sistemului Fiscal Romanesc',
+        order: 1,
+        duration: 280,
+        lessons: [
+          {
+            title: 'Cadrul legal fiscal 2024-2025 - Ce trebuie sa stii',
+            type: 'TEXT',
+            duration: 50,
+            order: 1,
+            content: `# Cadrul Legal Fiscal Romanesc 2024-2025
+
+## Introducere
+
+Sistemul fiscal romanesc trece prin cea mai ampla transformare digitala din istorie. Intelegerea cadrului legal actual este esentiala pentru orice profesionist contabil sau antreprenor care doreste sa evite sanctiuni si sa profite de facilitatile disponibile.
+
+## Legislatia cheie in vigoare
+
+### 1. Codul Fiscal (Legea 227/2015 cu modificari)
+
+**Titlul VII - Taxa pe Valoarea Adaugata**
+
+Cotele TVA in vigoare (pana la 31 iulie 2025):
+- **19%** - Cota standard pentru majoritatea bunurilor si serviciilor
+- **9%** - Cota redusa pentru: alimente, medicamente, cazare hoteliera, transport persoane, carti
+- **5%** - Cota speciala pentru: locuinte sociale (sub 120.000 EUR), proteze, echipamente persoane cu dizabilitati
+
+**Modificari Legea 141/2025 (de la 1 august 2025):**
+- Cota standard creste la **21%**
+- Cota redusa creste la **11%**
+- Cota de 5% ramane neschimbata
+
+### 2. Ordinul 1783/2021 - SAF-T Romania
+
+**Ce reglementeaza:**
+Declaratia informativa D406 - Standard Audit File for Tax
+
+**Obligativitate:**
+- **Mari contribuabili**: obligatoriu din ianuarie 2022
+- **Contribuabili mijlocii**: obligatoriu din ianuarie 2023
+- **Mici contribuabili**: obligatoriu din ianuarie 2025
+
+**Continut SAF-T:**
+- Registru jurnal
+- Balanta de verificare
+- Facturi emise si primite
+- Plati
+- Stocuri (pentru unele categorii)
+- Active fixe
+
+**Frecventa:**
+- Lunar, pana pe data de 25 a lunii urmatoare
+- Exceptie: "rectificative" se pot depune pana la 30 de zile
+
+### 3. Legea 296/2023 - e-Factura obligatorie
+
+**Timeline implementare:**
+
+| Data | Obligativitate |
+|------|----------------|
+| 1 ianuarie 2024 | B2B - toate relatiile intre firme |
+| 1 iulie 2024 | B2G - catre institutii publice |
+| 1 ianuarie 2025 | PFA si profesii liberale |
+| Estimat 2026 | B2C - optional cu beneficii |
+
+**Termenul de incarcare:**
+- Maximum **5 zile lucratoare** de la emiterea facturii
+- Se calculeaza din ziua urmatoare emiterii
+
+**Sanctiuni:**
+- Neincarcarea: avertisment sau amenda 1.000 - 10.000 RON per factura
+- Pattern repetat: majorari progresive
+
+### 4. OUG 120/2021 - Sistemul RO e-Transport
+
+**Obligativitate:**
+- Transport bunuri cu risc fiscal ridicat (alcool, tutun, combustibili)
+- Transporturi internationale
+- Din 2024: extins la majoritatea categoriilor
+
+**Documente necesare:**
+- Cod UIT (Unique Identification Transport)
+- Monitorizare GPS in timp real
+- Declaratie prealabila transport
+
+## Institutiile fiscale cheie
+
+### ANAF - Agentia Nationala de Administrare Fiscala
+
+**Roluri principale:**
+1. Colectare impozite si taxe
+2. Control fiscal si inspectie
+3. Administrare sisteme electronice (SPV, e-Factura)
+4. Emitere reglementari si instructiuni
+
+**Servicii electronice ANAF:**
+
+| Serviciu | Functionalitate |
+|----------|-----------------|
+| SPV | Spatiul Privat Virtual - portal principal |
+| e-Factura | Sistem national facturare electronica |
+| PatrimVen | Declaratii patrimoniale |
+| e-Transport | Monitorizare bunuri in tranzit |
+| DUKIntegrator | Validare tehnica XML |
+
+### Ministerul Finantelor
+
+**Rol:**
+- Politica fiscala nationala
+- Armonizare cu directivele UE
+- Propuneri legislative fiscale
+
+### Camera Consultantilor Fiscali
+
+**Rol:**
+- Autorizare consultanti fiscali
+- Standarde profesionale
+- Formare continua
+
+## Calendarul obligatiilor fiscale
+
+### Termene lunare recurente
+
+| Data | Obligatie |
+|------|-----------|
+| 5 | Declaratie accize (producatori) |
+| 10 | Contributii sociale angajati (D112) |
+| 25 | Declaratie TVA (D300) |
+| 25 | Declaratie SAF-T (D406) |
+| 25 | Declaratie recapitulativa (D390) |
+| 25 | Plata TVA |
+| 30 | Rectificative SAF-T |
+
+### Termene anuale
+
+| Data | Obligatie |
+|------|-----------|
+| 31 ianuarie | D205 - informatii platitori venituri |
+| 31 martie | D101 - impozit profit (anual) |
+| 25 mai | D100 - profit T1 (trimestrial) |
+| 30 iunie | Situatii financiare anuale |
+
+## Sanctiuni si penalitati
+
+### Pentru e-Factura
+
+**Neincarcarea in SPV:**
+- Prima abatere: avertisment
+- Abateri repetate: 1.000 - 10.000 RON per factura
+- Peste 30 zile intarziere: majorare 50%
+
+**Incarcarea incorecta:**
+- Erori de forma: avertisment cu termen corectare
+- Erori substantiale: amenda + obligatie refacere
+
+### Pentru SAF-T D406
+
+**Nedepunere:**
+- 1.000 - 5.000 RON pentru mari contribuabili
+- 500 - 2.500 RON pentru contribuabili mijlocii
+- Avertisment pentru primele abateri ale micilor contribuabili
+
+**Depunere cu erori:**
+- Termen 30 zile pentru corectare fara penalitati
+- Dupa termen: sanctiuni nedepunere
+
+### Pentru TVA
+
+**Nedeclarare:**
+- 1.000 - 10.000 RON
+- Dobanda 0,02% pe zi de intarziere
+- Penalitati de nedeclarare 0,08%/luna
+
+## Facilitati fiscale 2024-2025
+
+### Pentru digitalizare
+
+**Deduceri suplimentare:**
+- 50% din cheltuielile cu software contabil
+- Amortizare accelerata pentru echipamente IT
+
+### Pentru IMM-uri
+
+**Microintreprinderi:**
+- Impozit 1% pe venit (fara angajati)
+- Impozit 3% pe venit (cu angajati)
+- Plafon 500.000 EUR cifra afaceri
+
+**Start-up-uri:**
+- Scutire impozit profit primii 2 ani (conditii)
+- Facilitati angajare tineri
+
+### Zona de productie
+
+**Facilitati:**
+- Scutire impozit profit pentru investitii in zone defavorizate
+- Credite fiscale pentru cercetare-dezvoltare
+
+## Exercitiu practic
+
+**Verificare conformitate curenta:**
+
+1. Listeaza toate obligatiile fiscale lunare ale firmei tale
+2. Verifica termenele pentru luna curenta
+3. Identifica ce sisteme electronice ANAF folosesti
+4. Noteaza care obligatii sunt automatizate vs manuale
+
+**Template checklist lunar:**
+\`\`\`
+[ ] D300 TVA depus
+[ ] D406 SAF-T incarcat
+[ ] e-Facturi incarcate la zi
+[ ] D390 recapitulativ (daca e cazul)
+[ ] Plati efectuate
+[ ] Reconciliere cu extrasele bancare
+\`\`\`
+
+## Resurse oficiale
+
+- **ANAF Portal**: anaf.ro
+- **SPV**: pfinternet.anaf.ro
+- **e-Factura**: efactura.mfinante.ro
+- **Legislatie**: legislatie.just.ro
+- **DUKIntegrator**: validator online XML
+
+---
+**Key Takeaway:** Fiscalitatea romaneasca se digitizeaza rapid. Investitia in intelegerea sistemelor ANAF (SPV, e-Factura, SAF-T) nu mai este optionala - este esentiala pentru supravietuirea oricarei afaceri.`
+          },
+          {
+            title: 'Sistemul SPV - Spatiul Privat Virtual ghid complet',
+            type: 'TEXT',
+            duration: 45,
+            order: 2,
+            content: `# Sistemul SPV - Spatiul Privat Virtual: Ghid Complet
+
+## Ce este SPV
+
+**Spatiul Privat Virtual (SPV)** este platforma electronica centrala a ANAF prin care contribuabilii interactioneaza cu administratia fiscala. Lansat in 2015 si imbunatatit continuu, SPV a devenit obligatoriu pentru majoritatea operatiunilor fiscale.
+
+## De ce este important SPV
+
+### Avantaje principale
+
+1. **Acces 24/7** - Nu mai depinzi de programul ghiseelor
+2. **Documente oficiale** - Toate comunicarile au valoare juridica
+3. **Istoric complet** - Toate depunerile arhivate automat
+4. **Notificari automate** - Alerte pentru termene si solicitari
+5. **Securitate** - Autentificare cu certificat digital
+
+### Obligativitate
+
+| Categorie | Obligativitate SPV |
+|-----------|-------------------|
+| Societati comerciale | Obligatoriu |
+| PFA | Obligatoriu din 2024 |
+| Profesii liberale | Obligatoriu |
+| Persoane fizice (anumite venituri) | Recomandat |
+
+## Inregistrarea in SPV
+
+### Pasii de inregistrare pentru persoane juridice
+
+**Pas 1: Obtinerea certificatului digital calificat**
+
+Furnizori autorizati in Romania:
+- CertSign (certsin.ro)
+- Trans Sped (transsped.ro)
+- DigiSign (digisign.ro)
+- AlfaTrust (alfatrust.ro)
+
+**Documente necesare:**
+- Certificat constatator ORC (original, max 30 zile)
+- CI administrator/imputernicit
+- Cerere tip furnizor
+- Taxa (150-300 RON/an)
+
+**Pas 2: Instalarea certificatului**
+
+\`\`\`
+1. Descarca certificatul de la furnizor
+2. Importa in browser (Chrome/Edge recomandat):
+   - Settings → Privacy & Security → Security
+   - Manage certificates → Import
+3. Seteaza parola certificat
+4. Verifica instalarea
+\`\`\`
+
+**Pas 3: Accesarea SPV**
+
+1. Navigheaza la: pfinternet.anaf.ro
+2. Click "Spatiul Privat Virtual"
+3. Selecteaza certificatul instalat
+4. Introdu PIN certificat
+5. Prima accesare: accepta termeni si conditii
+
+### Pentru persoane fizice (fara certificat digital)
+
+**Metoda alternativa cu token SMS:**
+1. Depune cerere la ANAF (formular 150)
+2. Primesti credentiale prin posta
+3. Autentificare cu user + parola + SMS token
+
+## Navigarea in SPV
+
+### Meniul principal
+
+\`\`\`
++------------------------------------------+
+|              SPV - Meniu Principal        |
++------------------------------------------+
+| [Depunere Declaratii]                     |
+|   - D300, D390, D406, alte declaratii    |
+|                                           |
+| [Vizualizare Documente]                   |
+|   - Declaratii depuse                     |
+|   - Notificari primite                    |
+|   - Decizii de impunere                   |
+|                                           |
+| [Situatie Fiscala]                        |
+|   - Obligatii curente                     |
+|   - Istoric plati                         |
+|   - Sume de rambursat                     |
+|                                           |
+| [e-Factura]                               |
+|   - Incarcare facturi                     |
+|   - Vizualizare facturi primite           |
+|   - Rapoarte                              |
+|                                           |
+| [Cereri]                                  |
+|   - Certificate fiscale                   |
+|   - Solicitari diverse                    |
++------------------------------------------+
+\`\`\`
+
+### Depunerea declaratiilor
+
+**Metode de depunere:**
+
+1. **Formular online (PDF inteligent)**
+   - Descarci PDF-ul de pe site
+   - Completezi offline
+   - Incarci in SPV
+
+2. **Upload XML direct**
+   - Generat din software contabil
+   - Validare prealabila obligatorie
+   - Semnare cu certificat
+
+3. **Soft ANAF DUKIntegrator**
+   - Aplicatie desktop gratuita
+   - Validare + semnare + trimitere
+   - Raportare status
+
+### Sectiunea Vizualizare Documente
+
+**Tipuri de documente disponibile:**
+
+| Categorie | Exemple |
+|-----------|---------|
+| Declaratii depuse | D300, D390, D406, D100, D101 |
+| Decizii | Impunere, rambursare, compensare |
+| Notificari | Termene, erori, solicitari |
+| Corespondenta | Raspunsuri la cereri |
+| Certificate | Atestare fiscala, rezidenta |
+
+**Filtrare documente:**
+- Dupa tip document
+- Dupa perioada
+- Dupa status (nou/citit)
+
+## e-Factura in SPV
+
+### Accesarea modulului e-Factura
+
+\`\`\`
+SPV → e-Factura →
+  ├── Incarcare facturi XML
+  ├── Facturi emise
+  ├── Facturi primite
+  ├── Mesaje sistem
+  └── Rapoarte
+\`\`\`
+
+### Incarcarea unei facturi
+
+**Cerinte fisier XML:**
+- Format UBL 2.1 (Universal Business Language)
+- Structura RO_CIUS (Core Invoice Usage Specification)
+- Dimensiune maxima: 10 MB
+- Encoding: UTF-8
+
+**Procesul de incarcare:**
+
+1. **Pregatire XML**
+   - Genereaza din software contabil
+   - Valideaza cu DUKIntegrator
+
+2. **Incarcare in SPV**
+   - e-Factura → Incarcare
+   - Selecteaza fisier XML
+   - Confirma
+
+3. **Verificare status**
+   - OK - Factura acceptata, primeste index
+   - NOK - Erori, vezi detalii
+   - In procesare - Asteapta
+
+4. **Descarcare index**
+   - Numarul unic atribuit de ANAF
+   - Necesar pentru referinta
+
+### Vizualizarea facturilor primite
+
+**Informatii disponibile:**
+- Data incarcarii de furnizor
+- Numar factura
+- Total, TVA
+- Status (noua/descarcata)
+- Download XML/PDF
+
+**Actiuni posibile:**
+- Descarca XML original
+- Vizualizeaza PDF generat
+- Marcheaza ca citita
+- Exporta lista
+
+## Situatia fiscala
+
+### Verificarea obligatiilor
+
+**Informatii afisate:**
+
+\`\`\`
+SITUATIE FISCALA - CUI: RO12345678
+
+Obligatii curente:
++------------------+----------+------------+--------+
+| Tip              | Perioada | Scadenta   | Suma   |
++------------------+----------+------------+--------+
+| TVA              | Dec 2024 | 25.01.2025 | 15.230 |
+| Impozit salarii  | Dec 2024 | 25.01.2025 | 8.450  |
+| Contrib. sociale | Dec 2024 | 25.01.2025 | 12.100 |
++------------------+----------+------------+--------+
+
+Istoric plati (ultimele 12 luni): [Vezi detalii]
+Sume de rambursat: 0 RON
+\`\`\`
+
+### Solicitarea certificatelor fiscale
+
+**Tipuri disponibile online:**
+1. **Certificat de atestare fiscala**
+   - Confirma ca nu ai datorii
+   - Necesar pentru licitatii, credite
+   - Valabil 30 zile
+
+2. **Certificat de rezidenta fiscala**
+   - Pentru aplicare tratate evitare dubla impunere
+   - Necesar pentru tranzactii internationale
+
+**Procesul:**
+1. SPV → Cereri → Certificat nou
+2. Selecteaza tipul
+3. Completeaza motivul
+4. Trimite cererea
+5. Asteapta aprobare (1-5 zile lucratoare)
+6. Descarca PDF din SPV
+
+## Troubleshooting SPV
+
+### Probleme frecvente si solutii
+
+**1. "Certificatul nu este recunoscut"**
+\`\`\`
+Cauze:
+- Certificat expirat
+- Certificat neinstalat corect
+- Browser incompatibil
+
+Solutii:
+- Verifica data expirare certificat
+- Reinstaleaza certificatul
+- Foloseste Chrome sau Edge actualizat
+- Goleste cache browser
+\`\`\`
+
+**2. "Eroare la semnarea documentului"**
+\`\`\`
+Cauze:
+- PIN gresit
+- Certificat fara drepturi semnare
+- Conflict software securitate
+
+Solutii:
+- Verifica PIN-ul corect
+- Contacteaza furnizorul certificat
+- Dezactiveaza temporar antivirusul
+\`\`\`
+
+**3. "Documentul nu poate fi incarcat"**
+\`\`\`
+Cauze:
+- Format XML invalid
+- Dimensiune prea mare
+- Erori de validare
+
+Solutii:
+- Valideaza cu DUKIntegrator inainte
+- Comprima fisierul daca e cazul
+- Verifica structura XML (UBL 2.1)
+\`\`\`
+
+**4. "Sesiune expirata"**
+\`\`\`
+Cauze:
+- Inactivitate > 15 minute
+- Probleme retea
+
+Solutii:
+- Re-autentificare
+- Salveaza lucrul frecvent
+- Verifica conexiunea internet
+\`\`\`
+
+### Contact suport ANAF
+
+**Canale disponibile:**
+- Telefon: 031.403.91.60 (L-V, 8:00-16:00)
+- Email: contact.center@anaf.ro
+- Formular SPV: Cereri → Contact
+- Ghiseu: Administratia fiscala locala
+
+## Best practices pentru SPV
+
+### Organizare documente
+
+1. **Arhiveaza local**
+   - Descarca PDF/XML pentru backup
+   - Organizeaza pe luni/ani
+   - Pastreaza minim 10 ani
+
+2. **Verifica periodic**
+   - Intra saptamanal in SPV
+   - Verifica notificari noi
+   - Confirma statusuri depuneri
+
+3. **Mentine certificatul activ**
+   - Calendar reminder cu 30 zile inainte de expirare
+   - Reinnoieste din timp
+   - Pastreaza backup certificat
+
+### Automatizare
+
+**Integrari posibile:**
+- Software contabil → export XML direct
+- ERP → sincronizare automata e-Factura
+- API ANAF → pentru dezvoltatori
+
+## Exercitiu practic
+
+**Setup complet SPV:**
+
+1. Verifica daca ai certificat digital valid
+2. Acceseaza SPV si navigheaza prin meniu
+3. Verifica situatia fiscala curenta
+4. Descarca ultimele 3 declaratii depuse
+5. Vizualizeaza facturile primite in ultima luna
+6. Noteaza ce notificari ai necitite
+
+**Checklist verificare:**
+\`\`\`
+[ ] Certificat digital instalat si functional
+[ ] Acces SPV fara erori
+[ ] Situatie fiscala la zi (fara obligatii restante)
+[ ] e-Factura: toate facturile incarcate
+[ ] Notificari: toate citite si gestionate
+[ ] Backup: documente importante descarcate
+\`\`\`
+
+---
+**Key Takeaway:** SPV este "biroul tau virtual la ANAF". Stapanirea acestei platforme iti economiseste zeci de ore pe an si elimina riscul de a rata termene sau documente importante.`
+          },
+          {
+            title: 'TVA in Romania - Calcul, declarare si cazuri speciale',
+            type: 'TEXT',
+            duration: 55,
+            order: 3,
+            content: `# TVA in Romania - Calcul, Declarare si Cazuri Speciale
+
+## Fundamentele TVA
+
+### Ce este TVA
+
+**Taxa pe Valoarea Adaugata (TVA)** este un impozit indirect pe consum, aplicat la fiecare etapa a lantului de productie si distributie. Este un impozit neutru pentru business - se colecteaza de la clienti si se deduce din achizitii.
+
+### Mecanismul TVA
+
+\`\`\`
+Exemplu lant de valoare:
+
+Producator → Distribuitor → Retailer → Client final
+
+Producator:
+  Vinde la 1.000 RON + TVA 19% = 1.190 RON
+  TVA colectata: 190 RON
+  TVA de plata: 190 RON
+
+Distribuitor:
+  Cumpara la 1.190 RON (TVA deductibil: 190 RON)
+  Vinde la 1.500 RON + TVA 19% = 1.785 RON
+  TVA colectata: 285 RON
+  TVA de plata: 285 - 190 = 95 RON
+
+Retailer:
+  Cumpara la 1.785 RON (TVA deductibil: 285 RON)
+  Vinde la 2.000 RON + TVA 19% = 2.380 RON
+  TVA colectata: 380 RON
+  TVA de plata: 380 - 285 = 95 RON
+
+Total TVA incasata de stat: 190 + 95 + 95 = 380 RON
+(= TVA platita de clientul final)
+\`\`\`
+
+## Cotele TVA in Romania
+
+### Cota standard 19% (21% din august 2025)
+
+**Se aplica pentru:**
+- Majoritatea bunurilor si serviciilor
+- Bunuri de lux
+- Servicii profesionale
+- Echipamente
+- Bunuri de consum general
+
+### Cota redusa 9% (11% din august 2025)
+
+**Se aplica pentru:**
+
+| Categorie | Exemple |
+|-----------|---------|
+| Alimente | Paine, lactate, carne, legume |
+| Medicamente | Cu si fara prescriptie |
+| Cazare hoteliera | Toate tipurile de cazare |
+| Transport persoane | Autocar, taxi, tren |
+| Carti si publicatii | Tiparite si electronice |
+| Bilete evenimente | Muzee, spectacole, sport |
+| Energie termica | Incalzire populatie |
+
+### Cota speciala 5%
+
+**Se aplica pentru:**
+
+- **Locuinte sociale** - sub 120.000 EUR, max 120 mp, prima achizitie
+- **Proteze si dispozitive medicale** - pentru persoane cu dizabilitati
+- **Manuale scolare**
+
+### Scutiri cu drept de deducere
+
+**TVA 0% cu drept de deducere:**
+- Export bunuri in afara UE
+- Transport international
+- Livrari intracomunitare (B2B)
+- Zone libere
+
+### Scutiri fara drept de deducere
+
+**Fara TVA, fara deducere:**
+- Servicii medicale
+- Invatamant
+- Servicii financiare si bancare
+- Asigurari
+- Inchiriere locuinte
+
+## Calculul TVA
+
+### Formule esentiale
+
+**TVA din pret fara TVA:**
+\`\`\`
+TVA = Pret net × Cota TVA
+Pret brut = Pret net × (1 + Cota TVA)
+
+Exemplu: 1.000 RON × 1.19 = 1.190 RON brut
+\`\`\`
+
+**Extragerea TVA din pret cu TVA:**
+\`\`\`
+Pret net = Pret brut / (1 + Cota TVA)
+TVA = Pret brut - Pret net
+
+Exemplu: 1.190 / 1.19 = 1.000 RON net
+TVA = 1.190 - 1.000 = 190 RON
+\`\`\`
+
+**Formula rapida extragere TVA:**
+\`\`\`
+TVA = Pret brut × Cota / (100 + Cota)
+
+Pentru 19%: TVA = Pret × 19/119
+Pentru 9%: TVA = Pret × 9/109
+Pentru 5%: TVA = Pret × 5/105
+\`\`\`
+
+### Calculul TVA de plata/rambursat
+
+\`\`\`
+TVA de plata = TVA Colectata - TVA Deductibila
+
+Daca rezultat > 0 → Plata TVA catre stat
+Daca rezultat < 0 → Rambursare sau reportare
+\`\`\`
+
+## Declaratia D300 - Decont TVA
+
+### Structura declaratiei
+
+**Sectiunea 1: Date identificare**
+- CIF/CUI
+- Perioada (luna/trimestru)
+- Tip declaratie (initiala/rectificativa)
+
+**Sectiunea 2: Operatiuni taxabile**
+- Livrari/prestari cota 19%
+- Livrari/prestari cota 9%
+- Livrari/prestari cota 5%
+- Livrari intracomunitare
+- Exporturi
+
+**Sectiunea 3: Achizitii cu drept de deducere**
+- Achizitii interne
+- Achizitii intracomunitare
+- Importuri
+
+**Sectiunea 4: Regularizari si ajustari**
+- Pro-rata
+- Ajustari active fixe
+- TVA neexigibil
+
+**Sectiunea 5: Calcul final**
+- TVA colectata totala
+- TVA deductibila totala
+- TVA de plata sau rambursat
+
+### Periodicitate depunere
+
+| Criteriu | Frecventa |
+|----------|-----------|
+| Cifra afaceri > 100.000 EUR | Lunar |
+| Cifra afaceri < 100.000 EUR | Trimestrial |
+| Optiune contribuabil | Lunar (poate opta) |
+
+### Termen depunere
+
+- **Data 25** a lunii urmatoare perioadei de raportare
+- Exemple: D300 pentru ianuarie → 25 februarie
+
+## Cazuri speciale TVA
+
+### 1. Reverse charge (taxare inversa)
+
+**Cand se aplica:**
+- Achizitii intracomunitare
+- Import servicii
+- Constructii (anumite cazuri)
+- Deseuri reciclabile
+
+**Mecanism:**
+\`\`\`
+Cumparatorul:
+- Calculeaza TVA pe achizitie
+- O inregistreaza simultan:
+  - Ca TVA colectata (debit 4427)
+  - Ca TVA deductibila (credit 4426)
+- Efect net: zero (daca are drept deducere 100%)
+\`\`\`
+
+### 2. Achizitii intracomunitare
+
+**Cerinte:**
+- Ambii parteneri inregistrati TVA
+- Bunurile se transporta din alt stat UE
+- Factura fara TVA de la furnizor
+
+**Declarare:**
+- Includere in D300 (rand achizitii intracomunitare)
+- Declaratie recapitulativa D390
+- Intrastat (daca praguri depasite)
+
+### 3. Livrari intracomunitare
+
+**Conditii scutire TVA:**
+- Client inregistrat TVA in alt stat membru
+- Bunurile parasesc Romania
+- Documente transport (CMR, factura transport)
+- VIES check valid
+
+**Declarare:**
+- D300 la TVA 0%
+- D390 obligatoriu
+- Pastrare documente probatorii
+
+### 4. Export in afara UE
+
+**Scutire TVA 0%:**
+- Bunuri exportate definitiv
+- Declaratie vamala de export
+- Documente transport
+
+**Dovezi necesare:**
+- DAU (Document Administrativ Unic)
+- Bill of Lading / AWB
+- Confirmare parasire UE
+
+### 5. TVA la incasare (cash accounting)
+
+**Cine poate aplica:**
+- Cifra afaceri < 4.500.000 RON
+- Optional, prin notificare ANAF
+
+**Avantaje:**
+- TVA se plateste doar la incasare factura
+- Util pentru afaceri cu clienti cu plata intarziata
+
+**Dezavantaje:**
+- Evidenta suplimentara incasari
+- TVA deductibila tot la plata furnizor
+
+## Pro-rata TVA
+
+### Ce este pro-rata
+
+**Pro-rata** este coeficientul de deducere TVA pentru contribuabilii care efectueaza atat operatiuni cu drept de deducere cat si fara.
+
+### Calculul pro-rata
+
+\`\`\`
+Pro-rata = Operatiuni cu drept deducere / Total operatiuni × 100
+
+Exemplu:
+- Vanzari bunuri (TVA 19%): 800.000 RON
+- Chirii locuinte (scutit): 200.000 RON
+- Total: 1.000.000 RON
+
+Pro-rata = 800.000 / 1.000.000 = 80%
+\`\`\`
+
+### Aplicare pro-rata
+
+\`\`\`
+TVA deductibila efectiva = TVA facturi × Pro-rata
+
+Daca TVA achizitii = 50.000 RON
+TVA deductibila = 50.000 × 80% = 40.000 RON
+TVA nedeductibila = 10.000 RON (cheltuiala)
+\`\`\`
+
+## Rambursari TVA
+
+### Tipuri de rambursare
+
+**1. Rambursare cu control anticipat (normala)**
+- Se verifica documentele inainte de rambursare
+- Termen: 45 zile de la depunere cerere
+- Documente necesare: facturi, contracte, plati
+
+**2. Rambursare cu control ulterior**
+- Se ramburseaza rapid, control dupa
+- Criteriu: contribuabili cu istoric bun
+- Termen: max 30 zile
+
+### Cererea de rambursare
+
+**Mod solicitare:**
+- Bifezi "Solicitare rambursare" in D300
+- Suma minima: nu exista, dar ANAF prioritizeaza sumele mari
+
+**Documente frecvent solicitate:**
+- Jurnale vanzari/cumparari
+- Facturi originale
+- Dovezi plata furnizori
+- Contracte comerciale
+- Documente transport
+
+## Erori frecvente si cum sa le eviti
+
+### 1. Cota TVA gresita
+
+**Eroare:** Aplicare 19% in loc de 9% pentru alimente
+**Consecinta:** Penalitati + dobanda + diferenta
+**Prevenire:** Catalog produse cu cote TVA corecte
+
+### 2. TVA deductibil nejustificat
+
+**Eroare:** Deducere TVA fara factura conforma sau pentru cheltuieli personale
+**Consecinta:** Respingere deducere + penalitati
+**Prevenire:** Verificare facturi, separare cheltuieli firma/personale
+
+### 3. Livrari intracomunitare fara documente
+
+**Eroare:** Scutire TVA fara dovada transport
+**Consecinta:** Taxare retroactiva la 19%
+**Prevenire:** Colectare sistematica documente transport
+
+### 4. Depasire termen fara TVA
+
+**Eroare:** Depasire prag 300.000 RON fara inregistrare TVA
+**Consecinta:** Taxare retroactiva a operatiunilor
+**Prevenire:** Monitorizare cifra afaceri lunar
+
+## Exercitiu practic
+
+**Calcul TVA complet:**
+
+Datele lunii:
+- Vanzari cu TVA 19%: 150.000 RON (fara TVA)
+- Vanzari cu TVA 9%: 50.000 RON (fara TVA)
+- Livrari intracomunitare: 80.000 RON
+- Achizitii cu TVA 19%: 100.000 RON (fara TVA)
+- Achizitii intracomunitare: 30.000 RON
+
+**Rezolvare:**
+\`\`\`
+TVA Colectata:
+- 150.000 × 19% = 28.500 RON
+- 50.000 × 9% = 4.500 RON
+- Intracom: 0% (scutit)
+Total colectata: 33.000 RON
+
+TVA Deductibila:
+- 100.000 × 19% = 19.000 RON
+- 30.000 × 19% = 5.700 RON (reverse charge)
+Total deductibila: 24.700 RON
+
+TVA de plata: 33.000 - 24.700 = 8.300 RON
+\`\`\`
+
+---
+**Key Takeaway:** TVA pare simplu dar are multe nuante. Investeste timp in intelegerea cotelor, scutirilor si cazurilor speciale pentru a evita erori costisitoare si a optimiza cash-flow-ul.`
+          },
+          {
+            title: 'Quiz - Sistemul fiscal romanesc',
+            type: 'QUIZ',
+            duration: 30,
+            order: 4,
+            content: `Quiz de evaluare cunostinte fiscale. 25 intrebari multiple choice si true/false acoperind: cote TVA, termene legale, SPV, sanctiuni, si calcule TVA practice.`
+          }
+        ]
+      },
+      {
+        title: 'e-Factura - Sistemul National de Facturare Electronica',
+        order: 2,
+        duration: 320,
+        lessons: [
+          {
+            title: 'Introducere in e-Factura - Obligatii si beneficii',
+            type: 'TEXT',
+            duration: 45,
+            order: 1,
+            content: `# Introducere in e-Factura - Obligatii si Beneficii
+
+## Ce este e-Factura
+
+**e-Factura** (sau RO e-Factura) este sistemul national de facturare electronica administrat de Ministerul Finantelor prin care toate facturile B2B si B2G trebuie transmise electronic catre ANAF.
+
+### Diferenta fata de factura PDF
+
+| Aspect | Factura PDF | e-Factura |
+|--------|-------------|-----------|
+| Format | Document vizual | XML structurat (UBL 2.1) |
+| Transmitere | Email, curier | Sistem ANAF (SPV) |
+| Validare | Manuala | Automata de ANAF |
+| Valoare legala | Cu semnatura | Index ANAF = valabil |
+| Procesare | Manuala | Automatizabila 100% |
+
+## Timeline obligativitate
+
+### Etapele implementarii
+
+\`\`\`
+2022 (pilot):
+  - Voluntar pentru companiile interesate
+  - Testare sistem si standarde
+
+1 Ianuarie 2024:
+  - OBLIGATORIU B2B (business to business)
+  - Toate facturile intre firme romanesti
+
+1 Iulie 2024:
+  - OBLIGATORIU B2G (business to government)
+  - Facturile catre institutii publice
+
+1 Ianuarie 2025:
+  - Extindere la PFA si profesii liberale
+  - Toate persoanele juridice fara exceptie
+
+2026 (estimat):
+  - B2C optional cu beneficii
+  - Bonuri fiscale electronice (e-Casa)
+\`\`\`
+
+## Cine are obligatia
+
+### Obligati sa emita e-Factura
+
+| Categorie | De cand | Exceptii |
+|-----------|---------|----------|
+| SRL, SA, SNC, SCS | Ian 2024 | Nu |
+| PFA | Ian 2025 | Nu |
+| II (Intreprindere Individuala) | Ian 2025 | Nu |
+| Profesii liberale | Ian 2025 | Nu |
+| Institutii publice | Iul 2024 | Doar ca emitent |
+
+### Exceptii de la e-Factura
+
+**Nu necesita e-Factura:**
+- Vanzari catre persoane fizice (B2C) - inca
+- Export catre tari non-UE (dar e recomandat)
+- Facturi sub un anumit prag? NU - orice factura B2B
+
+**Situatii speciale:**
+- Facturile simplificate (< 100 EUR) - tot e-Factura
+- Note de credit/debit - tot e-Factura
+- Facturi de avans - tot e-Factura
+
+## Fluxul e-Factura
+
+### Procesul complet
+
+\`\`\`
+EMITENT                    ANAF                    CUMPARATOR
+   |                         |                         |
+   | 1. Genereaza XML        |                         |
+   |------------------------>|                         |
+   |                         | 2. Valideaza            |
+   |                         |------------------------.|
+   |                         |<-----------------------'|
+   |<------------------------|                         |
+   | 3. Primeste index       |                         |
+   |   sau erori             |                         |
+   |                         | 4. Factura disponibila  |
+   |                         |------------------------>|
+   |                         |                         |
+   |                         | 5. Cumparator descarca  |
+   |                         |<------------------------|
+\`\`\`
+
+### Termene legale
+
+**Incarcarea facturii:**
+- **5 zile lucratoare** de la emitere
+- Se calculeaza din ziua urmatoare datei facturii
+- Exceptie: weekend si sarbatori legale nu se numara
+
+**Exemplu calcul:**
+\`\`\`
+Factura emisa: Luni 15 ianuarie
+Termen: Luni 22 ianuarie (5 zile lucratoare)
+
+Factura emisa: Joi 18 ianuarie
+Termen: Joi 25 ianuarie
+\`\`\`
+
+## Beneficiile e-Factura
+
+### Pentru emitent
+
+1. **Certitudine livrare**
+   - Index ANAF = dovada transmitere
+   - Nu mai exista "nu am primit factura"
+   - Audit trail complet
+
+2. **Eficienta operationala**
+   - Automatizare generare
+   - Reducere costuri tiparire/expeditie
+   - Arhivare automata
+
+3. **Cash flow imbunatatit**
+   - Factura ajunge instant
+   - Notificare automata client
+   - Reducere DSO (days sales outstanding)
+
+### Pentru cumparator
+
+1. **Acces centralizat**
+   - Toate facturile intr-un singur loc (SPV)
+   - Nu mai pierzi facturi
+   - Descarcare automata posibila
+
+2. **Verificare automata**
+   - ANAF valideaza datele furnizorului
+   - CUI verificat automat
+   - Reducere risc frauda
+
+3. **Automatizare contabilitate**
+   - Import direct in soft contabil
+   - Potrivire automata cu comenzi/receptii
+   - Reducere erori manuale
+
+### Pentru autoritati
+
+1. **Combatere evaziune**
+   - Vizibilitate 100% pe tranzactii B2B
+   - Cross-check automat vanzari vs cumparari
+   - Detectie discrepante
+
+2. **Simplificare controale**
+   - Audit de la distanta
+   - Selectie tintita pentru inspectii
+   - Reducere birocratiei
+
+## Structura XML e-Factura
+
+### Standardul UBL 2.1
+
+**UBL (Universal Business Language)** este standardul international pentru documente de business in format XML.
+
+**RO_CIUS** (Core Invoice Usage Specification) este adaptarea pentru Romania.
+
+### Elementele principale XML
+
+\`\`\`xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+
+  <!-- Antet factura -->
+  <cbc:ID>FA-2025-00123</cbc:ID>
+  <cbc:IssueDate>2025-01-15</cbc:IssueDate>
+  <cbc:DueDate>2025-02-14</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>RON</cbc:DocumentCurrencyCode>
+
+  <!-- Furnizor -->
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="RO">RO12345678</cbc:EndpointID>
+      <cac:PartyName>
+        <cbc:Name>FURNIZOR SRL</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Strada Exemplu 10</cbc:StreetName>
+        <cbc:CityName>Bucuresti</cbc:CityName>
+        <cbc:CountrySubentity>RO-B</cbc:CountrySubentity>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>RO12345678</cbc:CompanyID>
+      </cac:PartyTaxScheme>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+
+  <!-- Client -->
+  <cac:AccountingCustomerParty>
+    <!-- similar cu furnizorul -->
+  </cac:AccountingCustomerParty>
+
+  <!-- Linii factura -->
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="RON">1000.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Servicii consultanta</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="RON">100.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+
+  <!-- Totaluri -->
+  <cac:LegalMonetaryTotal>
+    <cbc:TaxExclusiveAmount currencyID="RON">1000.00</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="RON">1190.00</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="RON">1190.00</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+
+</Invoice>
+\`\`\`
+
+## Sanctiuni pentru neconformitate
+
+### Avertismente vs amenzi
+
+**Prima abatere:**
+- De obicei avertisment
+- Termen de conformare acordat
+
+**Abateri repetate:**
+
+| Incalcare | Amenda |
+|-----------|--------|
+| Neincarcarea in termen | 1.000 - 10.000 RON |
+| Incarcarea cu erori | 500 - 5.000 RON |
+| Pattern repetat | Majorare 50% |
+| Refuz corectare | Pana la 50.000 RON |
+
+### Factori agravanti
+
+- Numar mare de facturi neincarcate
+- Valoare ridicata a facturilor
+- Intentie de evaziune
+- Recidiva dupa avertisment
+
+## Exercitiu practic
+
+**Checklist pregatire e-Factura:**
+
+\`\`\`
+[ ] Software contabil compatibil e-Factura
+[ ] Export XML validat cu DUKIntegrator
+[ ] Certificat digital instalat in SPV
+[ ] Test incarcare cu factura reala
+[ ] Procedura interna documentata
+[ ] Training echipa
+[ ] Comunicare catre clienti
+\`\`\`
+
+**Calendar implementare:**
+1. Saptamana 1: Verificare software
+2. Saptamana 2: Teste interne
+3. Saptamana 3: Pilot cu cativa clienti
+4. Saptamana 4: Go-live complet
+
+---
+**Key Takeaway:** e-Factura nu e optional - e obligatoriu. Investeste acum in setup corect pentru a evita amenzi si probleme operationale. Beneficiile pe termen lung (eficienta, cash flow, audit) depasesc costurile initiale de implementare.`
+          },
+          {
+            title: 'Generarea si validarea XML e-Factura',
+            type: 'TEXT',
+            duration: 50,
+            order: 2,
+            content: `# Generarea si Validarea XML e-Factura
+
+## Metode de generare XML
+
+### 1. Software contabil cu export e-Factura
+
+**Avantaje:**
+- Integrat in fluxul de lucru existent
+- Date preluate automat din factura
+- Validare incorporata
+- Update-uri automate la schimbari standard
+
+**Software-uri populare Romania:**
+| Software | Pret orientativ | Nota |
+|----------|-----------------|------|
+| Saga | 500-2000 RON/an | Lider piata |
+| WinMentor | 1000-3000 RON/an | Enterprise |
+| SmartBill | 200-500 RON/an | Cloud, IMM |
+| Facturis | 100-300 RON/an | Simplu, PFA |
+| Oblio | 150-400 RON/an | Modern, API |
+
+### 2. Platforme dedicate e-Factura
+
+**Servicii SaaS:**
+- **DoCuSoft** - specialist e-Factura
+- **RoEfactura** - simplu, accesibil
+- **Invoice Cloud** - enterprise
+
+**Flux tipic:**
+\`\`\`
+Factura clasica (PDF/Excel)
+    → Upload in platforma
+    → Conversie automata XML
+    → Validare
+    → Trimitere SPV
+\`\`\`
+
+### 3. API ANAF (pentru dezvoltatori)
+
+**Endpoint-uri principale:**
+\`\`\`
+POST /api/upload - Incarca factura XML
+GET /api/status/{id} - Verifica status
+GET /api/download/{index} - Descarca factura
+GET /api/list - Lista facturi
+\`\`\`
+
+**Autentificare:**
+- OAuth2 cu certificat digital
+- Token refresh periodic
+- Rate limiting aplicat
+
+## Structura detaliata XML
+
+### Campuri obligatorii
+
+**Antet factura:**
+\`\`\`xml
+<cbc:CustomizationID>
+  urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1
+</cbc:CustomizationID>
+<cbc:ID>FA-2025-00001</cbc:ID>
+<cbc:IssueDate>2025-01-15</cbc:IssueDate>
+<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+<cbc:DocumentCurrencyCode>RON</cbc:DocumentCurrencyCode>
+\`\`\`
+
+**Coduri tip factura:**
+| Cod | Semnificatie |
+|-----|--------------|
+| 380 | Factura comerciala |
+| 381 | Nota de credit |
+| 383 | Nota de debit |
+| 384 | Factura corectiva |
+| 389 | Autofactura |
+
+**Furnizor (obligatoriu):**
+\`\`\`xml
+<cac:AccountingSupplierParty>
+  <cac:Party>
+    <cbc:EndpointID schemeID="RO">RO12345678</cbc:EndpointID>
+    <cac:PartyIdentification>
+      <cbc:ID>RO12345678</cbc:ID>
+    </cac:PartyIdentification>
+    <cac:PartyName>
+      <cbc:Name>FURNIZOR EXEMPLU SRL</cbc:Name>
+    </cac:PartyName>
+    <cac:PostalAddress>
+      <cbc:StreetName>Str. Principala nr. 10</cbc:StreetName>
+      <cbc:CityName>Bucuresti</cbc:CityName>
+      <cbc:PostalZone>010101</cbc:PostalZone>
+      <cbc:CountrySubentity>RO-B</cbc:CountrySubentity>
+      <cac:Country>
+        <cbc:IdentificationCode>RO</cbc:IdentificationCode>
+      </cac:Country>
+    </cac:PostalAddress>
+    <cac:PartyTaxScheme>
+      <cbc:CompanyID>RO12345678</cbc:CompanyID>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:PartyTaxScheme>
+    <cac:PartyLegalEntity>
+      <cbc:RegistrationName>FURNIZOR EXEMPLU SRL</cbc:RegistrationName>
+      <cbc:CompanyID>J40/1234/2020</cbc:CompanyID>
+    </cac:PartyLegalEntity>
+  </cac:Party>
+</cac:AccountingSupplierParty>
+\`\`\`
+
+**Coduri judet Romania (CountrySubentity):**
+\`\`\`
+RO-AB Alba        RO-AG Arges       RO-AR Arad
+RO-B  Bucuresti   RO-BC Bacau       RO-BH Bihor
+RO-BN Bistrita    RO-BR Braila      RO-BT Botosani
+RO-BV Brasov      RO-BZ Buzau       RO-CJ Cluj
+RO-CL Calarasi    RO-CS Caras-Sev   RO-CT Constanta
+...
+\`\`\`
+
+### Linii factura
+
+\`\`\`xml
+<cac:InvoiceLine>
+  <cbc:ID>1</cbc:ID>
+  <cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+  <cbc:LineExtensionAmount currencyID="RON">1000.00</cbc:LineExtensionAmount>
+
+  <cac:Item>
+    <cbc:Description>Servicii consultanta IT</cbc:Description>
+    <cbc:Name>Consultanta</cbc:Name>
+    <cac:ClassifiedTaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:ClassifiedTaxCategory>
+  </cac:Item>
+
+  <cac:Price>
+    <cbc:PriceAmount currencyID="RON">100.00</cbc:PriceAmount>
+  </cac:Price>
+</cac:InvoiceLine>
+\`\`\`
+
+**Coduri unitate masura frecvente:**
+| Cod | Unitate |
+|-----|---------|
+| C62 | Bucata |
+| KGM | Kilogram |
+| MTR | Metru |
+| LTR | Litru |
+| HUR | Ora |
+| DAY | Zi |
+
+**Coduri categorie TVA:**
+| Cod | Semnificatie |
+|-----|--------------|
+| S | Standard (19% sau 9% sau 5%) |
+| Z | Zero rated (export, intracomunitar) |
+| E | Exempt (scutit fara deducere) |
+| AE | Reverse charge |
+| K | Intra-community supply |
+
+## DUKIntegrator - Validare XML
+
+### Ce este DUKIntegrator
+
+Aplicatie gratuita furnizata de ANAF pentru:
+- Validare structura XML
+- Verificare conformitate RO_CIUS
+- Semnare electronica
+- Trimitere catre SPV
+
+### Instalare si configurare
+
+**Cerinte sistem:**
+- Windows 7+ / Linux / macOS
+- Java JRE 8+
+- Certificat digital instalat
+- Conexiune internet
+
+**Pasii instalare:**
+\`\`\`
+1. Descarca de pe: anaf.ro → Servicii Online → DUKIntegrator
+2. Dezarhiveaza
+3. Ruleaza: java -jar DUKIntegrator.jar
+4. Configureaza certificatul digital
+5. Testeaza conexiunea SPV
+\`\`\`
+
+### Procesul de validare
+
+\`\`\`
+XML FACTURA
+    ↓
+[1. Validare structura XSD]
+    - Verifica taguri obligatorii
+    - Verifica tipuri date
+    ↓
+[2. Validare business rules]
+    - CUI valid si activ
+    - Calcule TVA corecte
+    - Cote TVA valide
+    ↓
+[3. Validare RO_CIUS]
+    - Reguli specifice Romania
+    - Campuri nationale
+    ↓
+OK → Gata pentru trimitere
+NOK → Lista erori cu coduri
+\`\`\`
+
+### Erori frecvente si solutii
+
+**1. BR-RO-001: CUI furnizor invalid**
+\`\`\`
+Cauza: CUI nu exista sau e inactiv in registrul ANAF
+Solutie: Verifica CUI pe anaf.ro/verificare
+\`\`\`
+
+**2. BR-02: Suma totala nu corespunde**
+\`\`\`
+Cauza: TaxExclusiveAmount + TVA ≠ TaxInclusiveAmount
+Solutie: Recalculeaza si verifica rotunjirile
+\`\`\`
+
+**3. BR-CO-10: Linie fara unitate masura**
+\`\`\`
+Cauza: InvoicedQuantity fara unitCode
+Solutie: Adauga unitCode="C62" sau codul corect
+\`\`\`
+
+**4. UBL-CR-001: Element nepermis**
+\`\`\`
+Cauza: Tag care nu e in standard
+Solutie: Sterge elementul sau muta in camp permis
+\`\`\`
+
+## Trimiterea catre SPV
+
+### Metoda 1: Manual prin SPV web
+
+\`\`\`
+1. Acceseaza pfinternet.anaf.ro
+2. SPV → e-Factura → Incarcare
+3. Selecteaza fisier XML
+4. Confirma trimitere
+5. Noteaza indexul primit
+\`\`\`
+
+### Metoda 2: DUKIntegrator
+
+\`\`\`
+1. Incarca XML in DUKIntegrator
+2. Valideaza (buton Validare)
+3. Semneaza (buton Semnare)
+4. Trimite (buton Trimitere SPV)
+5. Salveaza confirmarea
+\`\`\`
+
+### Metoda 3: API automatizat
+
+\`\`\`python
+# Exemplu Python (pseudocod)
+import requests
+
+def trimite_efactura(xml_content, token):
+    response = requests.post(
+        "https://api.anaf.ro/prod/FCTEL/rest/upload",
+        headers={"Authorization": f"Bearer {token}"},
+        files={"file": xml_content}
+    )
+    return response.json()
+
+# Raspuns succes:
+# {"index_incarcare": "5012345678", "stare": "ok"}
+
+# Raspuns eroare:
+# {"erori": [{"cod": "BR-02", "mesaj": "Suma totala gresita"}]}
+\`\`\`
+
+## Best practices generare XML
+
+### 1. Validare inainte de trimitere
+
+\`\`\`
+REGULA: Niciodata nu trimite XML nevalidat
+\`\`\`
+
+### 2. Backup XML-uri
+
+\`\`\`
+Structura recomandata:
+/efacturi/
+  /2025/
+    /01/
+      FA-2025-00001.xml
+      FA-2025-00002.xml
+    /02/
+      ...
+\`\`\`
+
+### 3. Log statusuri
+
+\`\`\`
+Tabel evidenta:
+| Factura | Data emitere | Data incarcare | Index | Status |
+|---------|--------------|----------------|-------|--------|
+| FA-001  | 2025-01-15   | 2025-01-15     | 50123 | OK     |
+| FA-002  | 2025-01-16   | 2025-01-17     | 50124 | OK     |
+\`\`\`
+
+### 4. Gestionare erori
+
+\`\`\`
+Cand primesti eroare:
+1. Noteaza codul si mesajul
+2. Corecteaza XML-ul
+3. Revalideaza
+4. Retrimite
+5. NU trimite acelasi XML necorectat de mai multe ori
+\`\`\`
+
+## Exercitiu practic
+
+**Creaza un XML e-Factura manual:**
+
+Date:
+- Furnizor: ALFA SRL, CUI RO11111111, Bucuresti
+- Client: BETA SRL, CUI RO22222222, Cluj-Napoca
+- Produs: 100 buc telefoane @ 500 RON, TVA 19%
+- Total: 50.000 RON + 9.500 TVA = 59.500 RON
+
+**Template de completat:**
+\`\`\`xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="...">
+  <cbc:ID>[numar factura]</cbc:ID>
+  <cbc:IssueDate>[data]</cbc:IssueDate>
+  <!-- Completeaza restul -->
+</Invoice>
+\`\`\`
+
+---
+**Key Takeaway:** XML-ul e-Factura pare intimidant initial dar devine rutina rapid. Cheia e sa folosesti validarea inainte de trimitere si sa ai proceduri clare pentru gestionarea erorilor.`
+          },
+          {
+            title: 'Quiz si exercitii practice e-Factura',
+            type: 'QUIZ',
+            duration: 35,
+            order: 3,
+            content: `Quiz practic e-Factura cu 20 intrebari: identificare erori XML, calcul termene, coduri UBL, si scenarii de troubleshooting.`
+          }
+        ]
+      },
+      {
+        title: 'SAF-T D406 - Raportarea Fiscala Standardizata',
+        order: 3,
+        duration: 350,
+        lessons: [
+          {
+            title: 'Introducere SAF-T si Ordinul 1783/2021',
+            type: 'TEXT',
+            duration: 55,
+            order: 1,
+            content: `# Introducere SAF-T si Ordinul 1783/2021
+
+## Ce este SAF-T
+
+**SAF-T (Standard Audit File for Tax)** este un standard international de raportare fiscala electronica dezvoltat de OECD. Romania l-a adoptat prin Ordinul ANAF 1783/2021.
+
+### De ce SAF-T?
+
+**Problema:**
+- Controale fiscale consumatoare de timp
+- Documente fizice greu de verificat
+- Inconsistente intre contribuabili
+- Cost mare pentru ambele parti
+
+**Solutia SAF-T:**
+- Format electronic standardizat
+- Toate datele fiscale intr-un fisier XML
+- Analiza automata de ANAF
+- Audit de la distanta posibil
+
+## Declaratia D406
+
+### Ce contine D406
+
+\`\`\`
+D406 - Declaratie Informativa SAF-T
+
+SECTIUNI:
+├── Header (date identificare)
+├── MasterFiles
+│   ├── GeneralLedgerAccounts (plan conturi)
+│   ├── Customers (clienti)
+│   ├── Suppliers (furnizori)
+│   └── Products (produse/servicii)
+├── GeneralLedgerEntries
+│   └── Toate inregistrarile contabile
+├── SourceDocuments
+│   ├── SalesInvoices (facturi emise)
+│   ├── PurchaseInvoices (facturi primite)
+│   └── Payments (plati)
+└── Anexe specifice
+\`\`\`
+
+### Tipuri de raportare
+
+| Tip | Frecventa | Continut |
+|-----|-----------|----------|
+| D406 lunara | Lunar | Tranzactii luna curenta |
+| D406 activ | Anual | Registru active fixe |
+| D406 stoc | Anual (unii) | Inventar stocuri |
+| D406 rectificativa | La nevoie | Corectii |
+
+## Timeline obligativitate
+
+### Implementare graduala
+
+\`\`\`
+Ianuarie 2022:
+  - Mari contribuabili (cifra afaceri > 35M EUR)
+  - Primele depuneri D406
+
+Ianuarie 2023:
+  - Contribuabili mijlocii (cifra > 1M EUR)
+  - Extindere obligativitate
+
+Ianuarie 2025:
+  - Toti contribuabilii platitori TVA
+  - Full coverage
+
+Perioada pilot (Sept 2025 - Aug 2026):
+  - Contributibili noi beneficiaza de gratie
+  - Avertismente in loc de amenzi
+  - Suport extins ANAF
+\`\`\`
+
+### Termene depunere
+
+| Perioada raportare | Termen |
+|-------------------|--------|
+| Ianuarie | 25 februarie |
+| Februarie | 25 martie |
+| ... | ... |
+| Decembrie | 25 ianuarie an urmator |
+| Rectificativa | + 30 zile de la termen |
+
+## Ordinul 1783/2021 - Detalii
+
+### Structura ordinului
+
+**Articol 1:** Scop si definitii
+**Articol 2:** Obligatii contribuabili
+**Articol 3:** Continut SAF-T
+**Articol 4:** Termene
+**Articol 5:** Sanctiuni
+**Anexa 1:** Schema XSD
+**Anexa 2:** Ghid completare
+
+### Exceptii de la raportare
+
+**Nu depun SAF-T:**
+- Microintreprinderile (sub 500.000 EUR si <10 angajati)
+- PFA fara contabilitate in partida dubla
+- Institutii publice (au alt sistem)
+- Organizatii nonprofit sub praguri
+
+**Depun SAF-T partial:**
+- Anumiti contribuabili pot omite sectiuni (stocuri, active)
+- Trebuie notificare ANAF
+
+## Structura XML SAF-T
+
+### Header - Antet fisier
+
+\`\`\`xml
+<AuditFile xmlns="...">
+  <Header>
+    <AuditFileVersion>1.0</AuditFileVersion>
+    <AuditFileCountry>RO</AuditFileCountry>
+    <AuditFileDateCreated>2025-01-25</AuditFileDateCreated>
+    <SoftwareCompanyName>SAGA</SoftwareCompanyName>
+    <SoftwareID>SAGA v3.2</SoftwareID>
+    <SoftwareVersion>3.2.1</SoftwareVersion>
+    <Company>
+      <RegistrationNumber>RO12345678</RegistrationNumber>
+      <Name>COMPANIE EXEMPLU SRL</Name>
+      <Address>
+        <City>Bucuresti</City>
+        <PostalCode>010101</PostalCode>
+        <Country>RO</Country>
+      </Address>
+    </Company>
+    <DefaultCurrencyCode>RON</DefaultCurrencyCode>
+    <SelectionCriteria>
+      <SelectionStartDate>2025-01-01</SelectionStartDate>
+      <SelectionEndDate>2025-01-31</SelectionEndDate>
+    </SelectionCriteria>
+    <TaxAccountingBasis>A</TaxAccountingBasis>
+  </Header>
+  ...
+</AuditFile>
+\`\`\`
+
+### MasterFiles - Date de referinta
+
+**GeneralLedgerAccounts (Plan de conturi):**
+\`\`\`xml
+<GeneralLedgerAccounts>
+  <Account>
+    <AccountID>4111</AccountID>
+    <AccountDescription>Clienti</AccountDescription>
+    <StandardAccountID>4111</StandardAccountID>
+    <AccountType>Asset</AccountType>
+    <OpeningDebitBalance>150000.00</OpeningDebitBalance>
+    <ClosingDebitBalance>175000.00</ClosingDebitBalance>
+  </Account>
+  <Account>
+    <AccountID>401</AccountID>
+    <AccountDescription>Furnizori</AccountDescription>
+    <StandardAccountID>401</StandardAccountID>
+    <AccountType>Liability</AccountType>
+    <OpeningCreditBalance>80000.00</OpeningCreditBalance>
+    <ClosingCreditBalance>95000.00</ClosingCreditBalance>
+  </Account>
+</GeneralLedgerAccounts>
+\`\`\`
+
+**Customers (Clienti):**
+\`\`\`xml
+<Customers>
+  <Customer>
+    <CustomerID>C001</CustomerID>
+    <RegistrationNumber>RO98765432</RegistrationNumber>
+    <Name>CLIENT EXEMPLU SRL</Name>
+    <Address>
+      <StreetName>Str. Clientului 5</StreetName>
+      <City>Cluj-Napoca</City>
+      <Country>RO</Country>
+    </Address>
+    <Contact>
+      <Telephone>0264123456</Telephone>
+      <Email>contact@client.ro</Email>
+    </Contact>
+    <OpeningDebitBalance>25000.00</OpeningDebitBalance>
+    <ClosingDebitBalance>30000.00</ClosingDebitBalance>
+  </Customer>
+</Customers>
+\`\`\`
+
+### GeneralLedgerEntries - Registrul jurnal
+
+\`\`\`xml
+<GeneralLedgerEntries>
+  <NumberOfEntries>150</NumberOfEntries>
+  <TotalDebit>500000.00</TotalDebit>
+  <TotalCredit>500000.00</TotalCredit>
+  <Journal>
+    <JournalID>VZ</JournalID>
+    <Description>Jurnal Vanzari</Description>
+    <Transaction>
+      <TransactionID>VZ-2025-001</TransactionID>
+      <TransactionDate>2025-01-15</TransactionDate>
+      <Description>Factura FA-2025-001</Description>
+      <Line>
+        <RecordID>1</RecordID>
+        <AccountID>4111</AccountID>
+        <DebitAmount>1190.00</DebitAmount>
+      </Line>
+      <Line>
+        <RecordID>2</RecordID>
+        <AccountID>707</AccountID>
+        <CreditAmount>1000.00</CreditAmount>
+      </Line>
+      <Line>
+        <RecordID>3</RecordID>
+        <AccountID>4427</AccountID>
+        <CreditAmount>190.00</CreditAmount>
+      </Line>
+    </Transaction>
+  </Journal>
+</GeneralLedgerEntries>
+\`\`\`
+
+### SourceDocuments - Documente sursa
+
+\`\`\`xml
+<SourceDocuments>
+  <SalesInvoices>
+    <NumberOfEntries>45</NumberOfEntries>
+    <TotalDebit>250000.00</TotalDebit>
+    <TotalCredit>250000.00</TotalCredit>
+    <Invoice>
+      <InvoiceNo>FA-2025-001</InvoiceNo>
+      <InvoiceDate>2025-01-15</InvoiceDate>
+      <InvoiceType>380</InvoiceType>
+      <CustomerID>C001</CustomerID>
+      <Line>
+        <LineNumber>1</LineNumber>
+        <ProductCode>P001</ProductCode>
+        <Quantity>10</Quantity>
+        <UnitPrice>100.00</UnitPrice>
+        <TaxPointDate>2025-01-15</TaxPointDate>
+        <Description>Servicii consultanta</Description>
+        <DebitAmount>1190.00</DebitAmount>
+      </Line>
+      <DocumentTotals>
+        <TaxInformationTotals>
+          <TaxType>TVA</TaxType>
+          <TaxCode>S</TaxCode>
+          <TaxPercentage>19</TaxPercentage>
+          <TaxBase>1000.00</TaxBase>
+          <TaxAmount>190.00</TaxAmount>
+        </TaxInformationTotals>
+        <NetTotal>1000.00</NetTotal>
+        <GrossTotal>1190.00</GrossTotal>
+      </DocumentTotals>
+    </Invoice>
+  </SalesInvoices>
+</SourceDocuments>
+\`\`\`
+
+## Validare SAF-T
+
+### Validator ANAF
+
+**Acces:**
+- Online: validator.anaf.ro/saft
+- Offline: aplicatie descarcabila
+
+**Tipuri de erori:**
+
+| Severitate | Descriere | Actiune |
+|------------|-----------|---------|
+| Fatal | Fisier neconform structura | Nu se poate depune |
+| Eroare | Date obligatorii lipsa | Trebuie corectate |
+| Avertisment | Inconsistente minore | Depunere posibila |
+
+### Erori comune SAF-T
+
+**1. CUI invalid:**
+\`\`\`
+Eroare: RegistrationNumber nu exista in registrul ANAF
+Solutie: Verifica si corecteaza CUI-urile clientilor/furnizorilor
+\`\`\`
+
+**2. Balanta nu se inchide:**
+\`\`\`
+Eroare: TotalDebit ≠ TotalCredit
+Solutie: Verifica toate inregistrarile contabile
+\`\`\`
+
+**3. Referinte invalide:**
+\`\`\`
+Eroare: CustomerID 'C099' nu exista in MasterFiles/Customers
+Solutie: Adauga clientul in sectiunea Customers
+\`\`\`
+
+## Exercitiu practic
+
+**Checklist pregatire SAF-T lunar:**
+
+\`\`\`
+[ ] Toate facturile inregistrate
+[ ] Balanta verificata (Debit = Credit)
+[ ] Plan conturi actualizat
+[ ] Clienti/Furnizori cu CUI corect
+[ ] Export XML din software
+[ ] Validare cu validatorul ANAF
+[ ] Corectare erori (daca exista)
+[ ] Depunere in SPV pana pe 25
+[ ] Salvare confirmare depunere
+\`\`\`
+
+---
+**Key Takeaway:** SAF-T pare complex dar e logic structurat. Cheia e sa ai contabilitatea la zi si software-ul corect configurat. Validarea preventiva elimina surprizele neplacute la depunere.`
+          },
+          {
+            title: 'Exercitiu final si certificare',
+            type: 'EXERCISE',
+            duration: 60,
+            order: 2,
+            content: `Exercitiu comprehensiv de conformitate fiscala Romania. Include: crearea unei e-Facturi complete, generarea unui fisier SAF-T pentru o luna, identificarea si corectarea erorilor, si pregatirea unui dosar pentru inspectie fiscala simulata.`
+          }
+        ]
+      }
+    ]
+  },
+  // AI Business Course (existing)
   {
     title: 'Inteligenta Artificiala in Business - De la Concept la Implementare',
     slug: 'ai-business-implementare',
