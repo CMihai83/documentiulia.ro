@@ -235,8 +235,13 @@ export default function LMSCourseDetailPage() {
   };
 
   const handleStartLesson = (lessonId: string) => {
-    // In real app, would navigate to lesson player
-    alert(`Starting lesson: ${lessonId}`);
+    // Navigate to the lesson page
+    // Use the learn route for database courses, or the old mock route for mock courses
+    if (course && course.slug) {
+      router.push(`/dashboard/lms/learn/${course.slug}/${lessonId}`);
+    } else if (course && mockCourses[course.id]) {
+      router.push(`/dashboard/lms/courses/${course.id}/lessons/${lessonId}`);
+    }
   };
 
   if (loading) {
