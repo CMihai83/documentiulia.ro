@@ -33,7 +33,17 @@ export class CashFlowForecastController {
     @Query('months') months?: string,
     @Query('startingBalance') startingBalance?: string,
   ) {
-    const clerkId = req.user.sub;
+    const clerkId = req.user?.sub;
+
+    if (!clerkId) {
+      return {
+        startDate: new Date().toISOString(),
+        endDate: new Date().toISOString(),
+        periods: [],
+        summary: { totalInflows: 0, totalOutflows: 0, netCashFlow: 0 },
+      };
+    }
+
     const user = await this.prisma.user.findUnique({
       where: { clerkId },
       select: { id: true, activeOrganizationId: true },
@@ -61,7 +71,18 @@ export class CashFlowForecastController {
   @ApiOperation({ summary: 'Get cash flow forecast for dashboard widget' })
   @ApiResponse({ status: 200, description: 'Returns simplified forecast for dashboard' })
   async getDashboardForecast(@Request() req: any) {
-    const clerkId = req.user.sub;
+    const clerkId = req.user?.sub;
+
+    if (!clerkId) {
+      return {
+        currentBalance: 0,
+        forecastedBalance: 0,
+        trend: 'stable',
+        alerts: [],
+        chartData: [],
+      };
+    }
+
     const user = await this.prisma.user.findUnique({
       where: { clerkId },
       select: { id: true, activeOrganizationId: true },
@@ -84,7 +105,16 @@ export class CashFlowForecastController {
     @Request() req: any,
     @Query('months') months?: string,
   ) {
-    const clerkId = req.user.sub;
+    const clerkId = req.user?.sub;
+
+    if (!clerkId) {
+      return {
+        summary: { totalIncome: 0, totalExpenses: 0, netForecast: 0, riskLevel: 'low' },
+        chartData: { labels: [], income: [], expenses: [], netCashFlow: [], cumulativeBalance: [], confidence: [] },
+        recommendations: [],
+      };
+    }
+
     const user = await this.prisma.user.findUnique({
       where: { clerkId },
       select: { id: true, activeOrganizationId: true },
