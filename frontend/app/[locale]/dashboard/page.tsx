@@ -1,160 +1,183 @@
-'use client';
+import { Suspense } from 'react';
+import { getTranslations } from 'next-intl/server';
+import dynamic from 'next/dynamic';
+import { LoadingState, PageSkeleton, LOADING_MESSAGES } from '@/components/ui/LoadingState';
 
-import { useTranslations } from 'next-intl';
-import { useUser } from '@clerk/nextjs';
-import { useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  BarChart, Bar, PieChart, Pie, Cell,
-} from 'recharts';
-import { Upload, FileText, TrendingUp, Shield, AlertCircle, CheckCircle } from 'lucide-react';
+// Static imports for above-the-fold server-compatible components
+import { ComplianceDeadlines } from '@/components/dashboard/ComplianceDeadlines';
 import { VATCalculator } from '@/components/dashboard/VATCalculator';
-import { AIAssistant } from '@/components/dashboard/AIAssistant';
+import { EUVATWidget } from '@/components/dashboard/EUVATWidget';
+import { ExchangeRateWidget } from '@/components/dashboard/ExchangeRateWidget';
 
-const cashFlowData = [
-  { month: 'Ian', income: 45000, expenses: 32000 },
-  { month: 'Feb', income: 52000, expenses: 35000 },
-  { month: 'Mar', income: 48000, expenses: 30000 },
-  { month: 'Apr', income: 61000, expenses: 42000 },
-  { month: 'Mai', income: 55000, expenses: 38000 },
-  { month: 'Iun', income: 67000, expenses: 45000 },
-];
+// Client component for interactive dashboard content
+import { DashboardClient } from './DashboardClient';
 
-const vatData = [
-  { name: 'TVA Colectat', value: 12600, color: '#3b82f6' },
-  { name: 'TVA Deductibil', value: 8400, color: '#22c55e' },
-  { name: 'TVA de Plată', value: 4200, color: '#f59e0b' },
-];
+// Dynamic imports for heavy/interactive components - reduces initial bundle
+// Note: ssr: false not allowed in Server Components, using Suspense for loading states
+const AIAssistant = dynamic(
+  () => import('@/components/dashboard/AIAssistant').then(mod => ({ default: mod.AIAssistant })),
+  {
+    loading: () => <LoadingState message="Se încarcă asistentul AI..." size="lg" />,
+  }
+);
 
-const complianceStatus = [
-  { name: 'SAF-T D406', status: 'ok', date: '2025-01-15' },
-  { name: 'e-Factura SPV', status: 'ok', date: '2025-01-10' },
-  { name: 'Declarație TVA', status: 'pending', date: '2025-01-25' },
-];
+const BusinessWidgets = dynamic(
+  () => import('@/components/dashboard/BusinessWidgets').then(mod => ({ default: mod.BusinessWidgets })),
+  {
+    loading: () => <LoadingState message="Se încarcă widget-urile..." />,
+  }
+);
 
-export default function DashboardPage() {
-  const t = useTranslations('dashboard');
-  const { user } = useUser();
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+const AIInsightsWidget = dynamic(
+  () => import('@/components/dashboard/AIInsightsWidget').then(mod => ({ default: mod.AIInsightsWidget })),
+  {
+    loading: () => <LoadingState message="Se încarcă insights AI..." size="sm" />,
+  }
+);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: { 'application/pdf': ['.pdf'], 'image/*': ['.png', '.jpg', '.jpeg'] },
-    onDrop: (files) => setUploadedFiles((prev) => [...prev, ...files]),
-  });
+const CashFlowForecastWidget = dynamic(
+  () => import('@/components/dashboard/CashFlowForecastWidget').then(mod => ({ default: mod.CashFlowForecastWidget })),
+  {
+    loading: () => <LoadingState message="Se calculează prognoza cash flow..." />,
+  }
+);
+
+const OverdueInvoiceWidget = dynamic(
+  () => import('@/components/dashboard/OverdueInvoiceWidget').then(mod => ({ default: mod.OverdueInvoiceWidget })),
+  {
+    loading: () => <LoadingState message={LOADING_MESSAGES.invoices} />,
+  }
+);
+
+const EFacturaStatusWidget = dynamic(
+  () => import('@/components/dashboard/EFacturaStatusWidget').then(mod => ({ default: mod.EFacturaStatusWidget })),
+  {
+    loading: () => <LoadingState message={LOADING_MESSAGES.efactura} variant="dots" />,
+  }
+);
+
+const QuickActionsPanel = dynamic(
+  () => import('@/components/dashboard/QuickActionsPanel').then(mod => ({ default: mod.QuickActionsPanel })),
+  {
+    loading: () => <LoadingState message="Se încarcă acțiunile rapide..." size="sm" />,
+  }
+);
+
+const NotificationsWidget = dynamic(
+  () => import('@/components/dashboard/NotificationsWidget').then(mod => ({ default: mod.NotificationsWidget })),
+  {
+    loading: () => <LoadingState message="Se încarcă notificările..." size="sm" />,
+  }
+);
+
+const RecentActivity = dynamic(
+  () => import('@/components/dashboard/RecentActivity'),
+  {
+    loading: () => <LoadingState message="Se încarcă activitatea recentă..." />,
+  }
+);
+
+// Enable ISR for dashboard - revalidate every 5 minutes for semi-static data
+export const revalidate = 300;
+
+// Generate metadata for dashboard page
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'dashboard' });
+
+  return {
+    title: t('pageTitle') || 'Dashboard',
+    description: t('pageDescription') || 'Panou de control pentru afacerea ta',
+  };
+}
+
+export default async function DashboardPage() {
+  const t = await getTranslations('dashboard');
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">{t('welcome')}, {user?.firstName || 'User'}!</h1>
-        <p className="text-gray-600">{t('overview')}</p>
-      </div>
+    <div className="p-3 sm:p-4 md:p-6 max-w-7xl mx-auto">
+      {/* Header - Server Component (static content) */}
+      <header className="mb-4 sm:mb-6 md:mb-8">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">{t('welcome')}!</h1>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">{t('overview')}</p>
+      </header>
 
-      <div className="grid lg:grid-cols-3 gap-6 mb-8">
-        {/* Cash Flow Chart */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-primary-600" />
-            {t('cashFlow')}
-          </h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={cashFlowData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip formatter={(value) => `${value.toLocaleString()} RON`} />
-              <Line type="monotone" dataKey="income" stroke="#22c55e" strokeWidth={2} name="Venituri" />
-              <Line type="monotone" dataKey="expenses" stroke="#ef4444" strokeWidth={2} name="Cheltuieli" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+      {/* Main Dashboard Content - Client Component with data fetching */}
+      <Suspense fallback={<PageSkeleton />}>
+        <DashboardClient />
+      </Suspense>
 
-        {/* VAT Summary */}
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <h2 className="text-xl font-semibold mb-4">{t('vatSummary')}</h2>
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie data={vatData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80}>
-                {vatData.map((entry, i) => (
-                  <Cell key={i} fill={entry.color} />
-                ))}
-              </Pie>
-              <Tooltip formatter={(value) => `${value.toLocaleString()} RON`} />
-            </PieChart>
-          </ResponsiveContainer>
-          <div className="space-y-2 mt-4">
-            {vatData.map((item) => (
-              <div key={item.name} className="flex justify-between text-sm">
-                <span className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                  {item.name}
-                </span>
-                <span className="font-semibold">{item.value.toLocaleString()} RON</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Quick Actions and Notifications - Interactive widgets */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+        <Suspense fallback={<LoadingState message="Se încarcă acțiunile rapide..." />}>
+          <QuickActionsPanel />
+        </Suspense>
+        <Suspense fallback={<LoadingState message="Se încarcă notificările..." />}>
+          <NotificationsWidget />
+        </Suspense>
+      </section>
 
-      <div className="grid lg:grid-cols-2 gap-6 mb-8">
-        {/* Document Upload */}
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <Upload className="w-5 h-5 text-primary-600" />
-            {t('uploadDoc')}
-          </h2>
-          <div
-            {...getRootProps()}
-            className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition ${
-              isDragActive ? 'border-primary-500 bg-primary-50' : 'border-gray-300 hover:border-primary-400'
-            }`}
-          >
-            <input {...getInputProps()} />
-            <FileText className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-            <p className="text-gray-600">{t('dragDrop')}</p>
-            <p className="text-sm text-gray-400 mt-2">PDF, PNG, JPG (max 10MB)</p>
-          </div>
-          {uploadedFiles.length > 0 && (
-            <div className="mt-4 space-y-2">
-              {uploadedFiles.map((file, i) => (
-                <div key={i} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-                  <FileText className="w-4 h-4 text-primary-600" />
-                  <span className="text-sm">{file.name}</span>
-                  <span className="text-xs text-gray-400 ml-auto">{(file.size / 1024).toFixed(1)} KB</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+      {/* Business-specific widgets - Lazy loaded */}
+      <section className="mb-4 sm:mb-6 md:mb-8">
+        <Suspense fallback={<LoadingState message="Se încarcă widget-urile de business..." size="lg" />}>
+          <BusinessWidgets />
+        </Suspense>
+      </section>
 
-        {/* Compliance Status */}
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <Shield className="w-5 h-5 text-primary-600" />
-            {t('compliance')}
-          </h2>
-          <div className="space-y-4">
-            {complianceStatus.map((item) => (
-              <div key={item.name} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div className="flex items-center gap-3">
-                  {item.status === 'ok' ? (
-                    <CheckCircle className="w-5 h-5 text-success" />
-                  ) : (
-                    <AlertCircle className="w-5 h-5 text-warning" />
-                  )}
-                  <span className="font-medium">{item.name}</span>
-                </div>
-                <span className="text-sm text-gray-500">{item.date}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Cash Flow Forecast and Overdue Invoices */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+        <Suspense fallback={<LoadingState message="Se calculează prognoza..." />}>
+          <CashFlowForecastWidget />
+        </Suspense>
+        <Suspense fallback={<LoadingState message={LOADING_MESSAGES.invoices} />}>
+          <OverdueInvoiceWidget />
+        </Suspense>
+      </section>
 
-      <div className="grid lg:grid-cols-2 gap-6">
-        <VATCalculator />
-        <AIAssistant />
-      </div>
+      {/* e-Factura Status - Romanian Compliance Critical */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+        <Suspense fallback={<LoadingState message={LOADING_MESSAGES.efactura} variant="dots" />}>
+          <EFacturaStatusWidget />
+        </Suspense>
+      </section>
+
+      {/* Recent Activity */}
+      <section className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+        <Suspense fallback={<LoadingState message="Se încarcă activitatea recentă..." />}>
+          <RecentActivity activities={[]} locale="ro" />
+        </Suspense>
+      </section>
+
+      {/* Bottom Widgets Grid - Mix of server and client components */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+        {/* Static widgets - can render on server */}
+        <Suspense fallback={<LoadingState message="Se încarcă cursul valutar..." size="sm" />}>
+          <ExchangeRateWidget />
+        </Suspense>
+        <Suspense fallback={<LoadingState message={LOADING_MESSAGES.vat} size="sm" />}>
+          <VATCalculator />
+        </Suspense>
+        <Suspense fallback={<LoadingState message="Se încarcă TVA UE..." size="sm" />}>
+          <EUVATWidget />
+        </Suspense>
+        <Suspense fallback={<LoadingState message="Se încarcă insights AI..." size="sm" />}>
+          <AIInsightsWidget />
+        </Suspense>
+      </section>
+
+      {/* AI Assistant - Full width, heavy component loaded last */}
+      <section className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-6">
+        <Suspense fallback={<LoadingState message="Se încarcă asistentul AI..." size="lg" />}>
+          <AIAssistant />
+        </Suspense>
+      </section>
+
+      {/* Compliance Deadlines - Important for Romanian businesses */}
+      <section className="mt-4 sm:mt-6 md:mt-8">
+        <Suspense fallback={<LoadingState message="Se încarcă termenele de conformitate..." />}>
+          <ComplianceDeadlines />
+        </Suspense>
+      </section>
     </div>
   );
 }
