@@ -1,0 +1,34 @@
+# DocumentIulia.ro - Kustomize Configuration
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: documentiulia
+
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - secrets.yaml
+  - postgres-deployment.yaml
+  - redis-deployment.yaml
+  - backend-deployment.yaml
+  - frontend-deployment.yaml
+  - services.yaml
+  - ingress.yaml
+  - hpa.yaml
+
+commonLabels:
+  app: documentiulia
+  managed-by: kustomize
+
+images:
+  - name: ghcr.io/documentiulia/backend
+    newTag: latest
+  - name: ghcr.io/documentiulia/frontend
+    newTag: latest
+
+# Patches for environment-specific configuration
+# patches:
+#   - path: patches/backend-resources.yaml
+#     target:
+#       kind: Deployment
+#       name: backend

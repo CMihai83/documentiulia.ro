@@ -1,0 +1,81 @@
+# DocumentIulia.ro - Kubernetes Services
+---
+# Backend Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: documentiulia
+  labels:
+    app: documentiulia
+    component: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: documentiulia
+    component: backend
+  ports:
+    - name: http
+      port: 3001
+      targetPort: 3001
+      protocol: TCP
+---
+# Frontend Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: documentiulia
+  labels:
+    app: documentiulia
+    component: frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: documentiulia
+    component: frontend
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+      protocol: TCP
+---
+# PostgreSQL Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: documentiulia
+  labels:
+    app: documentiulia
+    component: postgres
+spec:
+  type: ClusterIP
+  selector:
+    app: documentiulia
+    component: postgres
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: 5432
+      protocol: TCP
+---
+# Redis Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: documentiulia
+  labels:
+    app: documentiulia
+    component: redis
+spec:
+  type: ClusterIP
+  selector:
+    app: documentiulia
+    component: redis
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+      protocol: TCP

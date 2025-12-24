@@ -1,0 +1,30 @@
+# DocumentIulia.ro - Kubernetes ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: documentiulia-config
+  namespace: documentiulia
+  labels:
+    app: documentiulia
+data:
+  NODE_ENV: "production"
+  # Backend config
+  BACKEND_PORT: "3001"
+  # Frontend config
+  FRONTEND_PORT: "3000"
+  NEXT_PUBLIC_API_URL: "https://documentiulia.ro/api"
+  # Database config
+  POSTGRES_USER: "documentiulia"
+  POSTGRES_DB: "documentiulia"
+  # Redis config
+  REDIS_URL: "redis://redis-service:6379"
+  # ANAF config (public URLs only)
+  ANAF_API_URL: "https://api.anaf.ro"
+  ANAF_CUI_API_URL: "https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva"
+  # Compliance settings
+  VAT_RATE_STANDARD: "19"
+  VAT_RATE_REDUCED: "9"
+  VAT_RATE_SPECIAL: "5"
+  # Performance settings
+  RATE_LIMIT_TTL: "60000"
+  RATE_LIMIT_MAX: "1000"

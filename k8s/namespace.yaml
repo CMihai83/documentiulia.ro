@@ -1,0 +1,8 @@
+# DocumentIulia.ro - Kubernetes Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: documentiulia
+  labels:
+    app: documentiulia
+    environment: production

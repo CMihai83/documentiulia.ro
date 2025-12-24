@@ -1,0 +1,81 @@
+# DocumentIulia.ro - Cloudflare Workers Configuration
+# For 99.999% uptime with edge caching and failover
+
+name = "documentiulia-edge"
+main = "src/worker.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Account and zone configuration
+# account_id = "YOUR_ACCOUNT_ID"
+# zone_id = "YOUR_ZONE_ID"
+
+# Routes
+routes = [
+  { pattern = "documentiulia.ro/*", zone_name = "documentiulia.ro" },
+  { pattern = "www.documentiulia.ro/*", zone_name = "documentiulia.ro" },
+  { pattern = "api.documentiulia.ro/*", zone_name = "documentiulia.ro" }
+]
+
+# Custom domain
+# [env.production.custom_domain]
+# name = "edge.documentiulia.ro"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+CACHE_TTL = "3600"
+ORIGIN_URL = "https://origin.documentiulia.ro"
+FAILOVER_URL = "https://failover.documentiulia.ro"
+
+# KV Namespaces for caching
+[[kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-namespace-id"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "your-rate-limit-kv-id"
+
+# Durable Objects for state
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiter"
+
+[[durable_objects.bindings]]
+name = "SESSION"
+class_name = "SessionManager"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["RateLimiter", "SessionManager"]
+
+# Analytics Engine for logging
+[[analytics_engine_datasets]]
+binding = "ANALYTICS"
+
+# R2 bucket for static assets
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "documentiulia-assets"
+
+# Development environment
+[env.development]
+name = "documentiulia-edge-dev"
+vars = { ENVIRONMENT = "development", CACHE_TTL = "60" }
+
+# Staging environment
+[env.staging]
+name = "documentiulia-edge-staging"
+routes = [
+  { pattern = "staging.documentiulia.ro/*", zone_name = "documentiulia.ro" }
+]
+vars = { ENVIRONMENT = "staging", CACHE_TTL = "300" }
+
+# Build configuration
+[build]
+command = "npm run build"
+
+[build.upload]
+format = "modules"
+main = "./dist/worker.mjs"
