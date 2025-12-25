@@ -12,6 +12,7 @@ import { ClientClerkProvider } from '@/components/providers/ClientClerkProvider'
 import { AuthProvider } from '@/contexts/AuthContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { ToastProvider } from '@/components/ui/Toast';
+import { OrganizationProvider } from '@/contexts/OrganizationContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -52,11 +53,13 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
               <ThemeProvider>
                 <ToastProvider>
                   <AuthProvider>
-                    <div className="min-h-screen flex flex-col">
-                      <Navbar />
-                      <main className="flex-1">{children}</main>
-                      <Footer />
-                    </div>
+                    <OrganizationProvider>
+                      <div className="min-h-screen flex flex-col">
+                        <Navbar />
+                        <main className="flex-1">{children}</main>
+                        <Footer />
+                      </div>
+                    </OrganizationProvider>
                   </AuthProvider>
                 </ToastProvider>
               </ThemeProvider>
