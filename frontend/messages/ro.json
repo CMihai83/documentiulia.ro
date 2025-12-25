@@ -217,6 +217,33 @@
     "modules": "module",
     "lessons": "lecții",
     "viewCourse": "Vezi cursul",
+    "oneTimePayment": "Plată unică, acces pe viață",
+    "enrollNow": "Înscrie-te Acum",
+    "enrollFree": "Înscrie-te Gratuit",
+    "aboutCourse": "Despre acest curs",
+    "whatYouLearn": "Ce vei învăța",
+    "curriculum": "Curriculum",
+    "instructor": "Instructor",
+    "reviews": "Recenzii",
+    "students": "studenți",
+    "rating": "rating",
+    "lastUpdated": "Ultima actualizare",
+    "language": "Limba",
+    "level": "Nivel",
+    "duration": "Durată",
+    "benefits": {
+      "lifetime": "Acces pe viață",
+      "mobile": "Acces pe mobil și tabletă",
+      "certificate": "Certificat de absolvire",
+      "updates": "Actualizări gratuite",
+      "support": "Suport din partea instructorului",
+      "resources": "Materiale descărcabile"
+    },
+    "levels": {
+      "beginner": "Începător",
+      "intermediate": "Intermediar",
+      "advanced": "Avansat"
+    },
     "cta": {
       "title": "Obține Certificare Profesională",
       "subtitle": "Completează cursurile și primește certificate recunoscute în industrie",

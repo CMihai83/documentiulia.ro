@@ -216,6 +216,33 @@
     "modules": "modules",
     "lessons": "lessons",
     "viewCourse": "View Course",
+    "oneTimePayment": "One-time payment, lifetime access",
+    "enrollNow": "Enroll Now",
+    "enrollFree": "Enroll for Free",
+    "aboutCourse": "About this course",
+    "whatYouLearn": "What you will learn",
+    "curriculum": "Curriculum",
+    "instructor": "Instructor",
+    "reviews": "Reviews",
+    "students": "students",
+    "rating": "rating",
+    "lastUpdated": "Last updated",
+    "language": "Language",
+    "level": "Level",
+    "duration": "Duration",
+    "benefits": {
+      "lifetime": "Lifetime access",
+      "mobile": "Access on mobile and tablet",
+      "certificate": "Certificate of completion",
+      "updates": "Free updates",
+      "support": "Instructor support",
+      "resources": "Downloadable resources"
+    },
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
     "cta": {
       "title": "Get Professional Certification",
       "subtitle": "Complete courses and receive industry-recognized certificates",
