@@ -280,11 +280,16 @@
     "getInTouch": "Get In Touch",
     "sendMessage": "Send a Message",
     "phone": "Phone",
+    "phoneHint": "Mon-Fri, 9:00-18:00",
     "address": "Address",
+    "businessHours": "Business Hours",
     "name": "Name",
     "email": "Email",
+    "company": "Company",
+    "subject": "Subject",
     "message": "Message",
-    "send": "Send"
+    "send": "Send",
+    "gdprNote": "By submitting this form, you agree to our privacy policy and consent to the processing of your personal data."
   },
   "terms": {
     "title": "Terms of Service",

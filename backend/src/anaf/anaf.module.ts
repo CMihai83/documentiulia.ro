@@ -7,6 +7,7 @@ import { SaftService } from './saft.service';
 import { SaftValidatorService } from './saft-validator.service';
 import { SaftD406MonthlyService } from './saft-d406-monthly.service';
 import { SaftD406Controller } from './saft-d406.controller';
+import { SaftController } from './saft.controller';
 import { EfacturaService } from './efactura.service';
 import { EfacturaSyncService } from './efactura-sync.service';
 import { EfacturaValidatorService } from './efactura-validator.service';
@@ -29,6 +30,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     SpvController,
     ETransportController,
     SaftD406Controller,
+    SaftController,
     EfacturaB2BController,
     EfacturaB2CController,
     DeadlineReminderController,

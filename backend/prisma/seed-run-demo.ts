@@ -47,6 +47,7 @@ function mapCourseCategory(category: string): LMSCourseCategory {
     'DATA_ANALYTICS': LMSCourseCategory.EXCEL_VBA,
     'E_COMMERCE': LMSCourseCategory.LEAN_OPERATIONS,
     'FREELANCER': LMSCourseCategory.SOFT_SKILLS,
+    'FREELANCER_GUIDE': LMSCourseCategory.SOFT_SKILLS, // Freelancer complete guides
     'LEGAL': LMSCourseCategory.TAX_COMPLIANCE,
   };
   return mapping[category] || LMSCourseCategory.SOFT_SKILLS;
@@ -209,7 +210,9 @@ async function seedEliteCourses() {
   let moduleCount = 0;
   let lessonCount = 0;
 
-  for (const course of eliteBusinessCourses) {
+  for (const courseData of eliteBusinessCourses) {
+    // Cast to any for flexible access to varying course structures
+    const course = courseData as any;
     const slug = course.slug || slugify(course.title);
 
     try {
@@ -235,12 +238,12 @@ async function seedEliteCourses() {
         data: {
           title: course.title,
           slug,
-          description: course.description,
+          description: course.description || course.shortDescription || '',
           category: mapCourseCategory(course.category),
           level: mapCourseLevel(course.level),
-          duration: course.duration,
+          duration: course.duration || 60,
           price: course.price > 0 ? course.price : null,
-          isFree: course.isFree || course.price === 0,
+          isFree: course.isFree === true || course.price === 0,
           language: course.language || 'ro',
           tags: course.tags || [],
           status: LMSCourseStatus.LMS_PUBLISHED,
@@ -252,28 +255,38 @@ async function seedEliteCourses() {
 
       // Add modules with lessons containing full content
       if (course.modules) {
-        for (const mod of course.modules) {
+        for (const modData of course.modules) {
+          const mod = modData as any;
+          // Calculate module duration from lessons if not provided
+          let moduleDuration = mod.duration || 60;
+          if (!mod.duration && mod.lessons && Array.isArray(mod.lessons)) {
+            moduleDuration = mod.lessons.reduce((sum: number, l: any) => sum + (l.duration || 30), 0);
+          }
+
           const createdModule = await prisma.lMSCourseModule.create({
             data: {
               courseId: createdCourse.id,
               title: mod.title,
-              order: mod.order,
-              duration: mod.duration,
+              description: mod.description || '',
+              order: mod.order || 0,
+              duration: moduleDuration,
             },
           });
           moduleCount++;
 
           // Add lessons with FULL content from the comprehensive data
-          if (mod.lessons) {
-            for (const lesson of mod.lessons) {
+          if (mod.lessons && Array.isArray(mod.lessons)) {
+            for (const lessonData of mod.lessons) {
+              const lesson = lessonData as any;
               await prisma.lMSLesson.create({
                 data: {
                   moduleId: createdModule.id,
                   title: lesson.title,
-                  content: lesson.content, // Full comprehensive content
-                  order: lesson.order,
-                  duration: lesson.duration,
-                  type: lesson.type as any,
+                  description: lesson.slug ? `Slug: ${lesson.slug}` : undefined, // Store slug in description if available
+                  content: lesson.content || '', // Full comprehensive content
+                  order: lesson.order || 0,
+                  duration: lesson.duration || 30,
+                  type: (lesson.type as any) || 'TEXT',
                 },
               });
               lessonCount++;

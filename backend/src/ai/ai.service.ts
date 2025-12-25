@@ -51,6 +51,15 @@ Nu inventa informații. Dacă nu știi, spune-o.`;
 
   async ask(userId: string, question: string): Promise<{ answer: string; tokens: number }> {
     const startTime = Date.now();
+    const apiKey = this.configService.get('GROK_API_KEY');
+
+    if (!apiKey || apiKey === 'your_grok_key' || apiKey.length < 10) {
+      this.logger.warn('GROK_API_KEY not configured, returning fallback response');
+      return {
+        answer: 'Serviciul AI nu este configurat momentan. Vă rugăm să contactați administratorul.',
+        tokens: 0,
+      };
+    }
 
     try {
       const response = await axios.post<GrokResponse>(
@@ -77,16 +86,18 @@ Nu inventa informații. Dacă nu știi, spune-o.`;
       const latencyMs = Date.now() - startTime;
 
       // Log the query
-      await this.prisma.aIQuery.create({
-        data: {
-          userId,
-          question,
-          answer,
-          model: 'grok-2-latest',
-          tokens,
-          latencyMs,
-        },
-      });
+      if (userId && userId !== 'system') {
+        await this.prisma.aIQuery.create({
+          data: {
+            user: { connect: { id: userId } },
+            question,
+            answer,
+            model: 'grok-2-latest',
+            tokens,
+            latencyMs,
+          },
+        });
+      }
 
       this.logger.log(`AI query processed in ${latencyMs}ms, ${tokens} tokens`);
       return { answer, tokens };

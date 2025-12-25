@@ -15,12 +15,26 @@ export class AnafService {
       name: string;
       address: string;
       vatPayer: boolean;
+      roEfactura?: boolean;
     };
+    error?: string;
   }> {
+    const cuiApiUrl = this.configService.get('ANAF_CUI_API_URL') || 'https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva';
+    const cleanCui = parseInt(cui.replace(/\D/g, ''));
+    const today = new Date().toISOString().split('T')[0];
+
     try {
       const response = await axios.post(
-        'https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva',
-        [{ cui: parseInt(cui.replace(/\D/g, '')), data: new Date().toISOString().split('T')[0] }],
+        cuiApiUrl,
+        [{ cui: cleanCui, data: today }],
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'User-Agent': 'DocumentIulia-ERP/1.0',
+          },
+          timeout: 10000,
+        },
       );
 
       const data = response.data.found?.[0];
@@ -30,15 +44,27 @@ export class AnafService {
           company: {
             name: data.denumire,
             address: data.adresa,
-            vatPayer: data.scpTVA,
+            vatPayer: data.scpTVA === true,
+            roEfactura: data.statusRO_e_Factura === true,
           },
         };
       }
 
+      // Check notfound array
+      if (response.data.notfound?.length > 0) {
+        return { valid: false, error: 'CUI not found in ANAF database' };
+      }
+
       return { valid: false };
-    } catch (error) {
-      this.logger.error('Failed to validate CUI', error);
-      return { valid: false };
+    } catch (error: any) {
+      this.logger.error('Failed to validate CUI', error.message);
+      // Return graceful error instead of throwing
+      return {
+        valid: false,
+        error: error.response?.status === 404
+          ? 'ANAF API temporarily unavailable'
+          : `Validation failed: ${error.message}`,
+      };
     }
   }
 

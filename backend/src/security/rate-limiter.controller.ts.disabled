@@ -1,0 +1,415 @@
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
+  Query,
+  UseGuards,
+  Req,
+  Headers,
+} from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+  ApiBody,
+  ApiQuery,
+  ApiHeader,
+} from '@nestjs/swagger';
+import {
+  RateLimiterService,
+  RateLimitScope,
+  RateLimitStrategy,
+  RateLimitTier,
+} from './rate-limiter.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Request } from 'express';
+
+@ApiTags('Rate Limiting')
+@Controller('rate-limit')
+@UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
+export class RateLimiterController {
+  constructor(private readonly rateLimiterService: RateLimiterService) {}
+
+  // =================== CONFIG MANAGEMENT ===================
+
+  @Post('configs')
+  @ApiOperation({ summary: 'Create rate limit config' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        scope: { type: 'string', enum: ['global', 'tenant', 'user', 'ip', 'api_key', 'endpoint'] },
+        strategy: { type: 'string', enum: ['token_bucket', 'sliding_window', 'fixed_window'] },
+        requests: { type: 'number' },
+        windowMs: { type: 'number' },
+        tier: { type: 'string', enum: ['free', 'basic', 'pro', 'enterprise', 'unlimited'] },
+        burstLimit: { type: 'number' },
+        endpoints: { type: 'array', items: { type: 'string' } },
+        skipPaths: { type: 'array', items: { type: 'string' } },
+        penaltyMs: { type: 'number' },
+      },
+      required: ['name', 'scope', 'strategy', 'requests', 'windowMs', 'tier'],
+    },
+  })
+  @ApiResponse({ status: 201, description: 'Config created' })
+  async createConfig(
+    @Body('name') name: string,
+    @Body('scope') scope: RateLimitScope,
+    @Body('strategy') strategy: RateLimitStrategy,
+    @Body('requests') requests: number,
+    @Body('windowMs') windowMs: number,
+    @Body('tier') tier: RateLimitTier,
+    @Body('burstLimit') burstLimit?: number,
+    @Body('endpoints') endpoints?: string[],
+    @Body('skipPaths') skipPaths?: string[],
+    @Body('penaltyMs') penaltyMs?: number,
+  ) {
+    return this.rateLimiterService.createConfig(
+      name,
+      scope,
+      strategy,
+      requests,
+      windowMs,
+      tier,
+      { burstLimit, endpoints, skipPaths, penaltyMs },
+    );
+  }
+
+  @Get('configs/:configId')
+  @ApiOperation({ summary: 'Get config by ID' })
+  @ApiResponse({ status: 200, description: 'Config details' })
+  async getConfig(@Param('configId') configId: string) {
+    const config = await this.rateLimiterService.getConfig(configId);
+    if (!config) return { error: 'Config not found' };
+    return config;
+  }
+
+  @Get('configs')
+  @ApiOperation({ summary: 'Get all configs' })
+  @ApiQuery({ name: 'scope', required: false })
+  @ApiQuery({ name: 'tier', required: false })
+  @ApiQuery({ name: 'enabled', required: false })
+  @ApiResponse({ status: 200, description: 'List of configs' })
+  async getConfigs(
+    @Query('scope') scope?: RateLimitScope,
+    @Query('tier') tier?: RateLimitTier,
+    @Query('enabled') enabled?: string,
+  ) {
+    return {
+      configs: await this.rateLimiterService.getConfigs({
+        scope,
+        tier,
+        enabled: enabled !== undefined ? enabled === 'true' : undefined,
+      }),
+    };
+  }
+
+  @Put('configs/:configId')
+  @ApiOperation({ summary: 'Update config' })
+  @ApiResponse({ status: 200, description: 'Config updated' })
+  async updateConfig(
+    @Param('configId') configId: string,
+    @Body() updates: Record<string, any>,
+  ) {
+    const config = await this.rateLimiterService.updateConfig(configId, updates);
+    if (!config) return { error: 'Config not found' };
+    return config;
+  }
+
+  @Delete('configs/:configId')
+  @ApiOperation({ summary: 'Delete config' })
+  @ApiResponse({ status: 200, description: 'Config deleted' })
+  async deleteConfig(@Param('configId') configId: string) {
+    const success = await this.rateLimiterService.deleteConfig(configId);
+    return { success };
+  }
+
+  @Put('configs/:configId/toggle')
+  @ApiOperation({ summary: 'Toggle config enabled/disabled' })
+  @ApiResponse({ status: 200, description: 'Config toggled' })
+  async toggleConfig(
+    @Param('configId') configId: string,
+    @Body('enabled') enabled: boolean,
+  ) {
+    const config = await this.rateLimiterService.toggleConfig(configId, enabled);
+    if (!config) return { error: 'Config not found' };
+    return config;
+  }
+
+  // =================== RATE LIMITING ===================
+
+  @Post('check')
+  @ApiOperation({ summary: 'Check rate limit' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        key: { type: 'string' },
+        configId: { type: 'string' },
+        cost: { type: 'number' },
+      },
+      required: ['key', 'configId'],
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Rate limit result' })
+  async checkRateLimit(
+    @Body('key') key: string,
+    @Body('configId') configId: string,
+    @Body('cost') cost?: number,
+  ) {
+    return this.rateLimiterService.checkRateLimit(key, configId, cost);
+  }
+
+  @Post('consume')
+  @ApiOperation({ summary: 'Consume rate limit tokens' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        key: { type: 'string' },
+        configId: { type: 'string' },
+        cost: { type: 'number' },
+      },
+      required: ['key', 'configId'],
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Consumption result' })
+  async consumeRateLimit(
+    @Body('key') key: string,
+    @Body('configId') configId: string,
+    @Body('cost') cost?: number,
+  ) {
+    return this.rateLimiterService.consumeRateLimit(key, configId, cost);
+  }
+
+  @Get('status/:key/:configId')
+  @ApiOperation({ summary: 'Get rate limit status' })
+  @ApiResponse({ status: 200, description: 'Current status' })
+  async getRateLimitStatus(
+    @Param('key') key: string,
+    @Param('configId') configId: string,
+  ) {
+    return this.rateLimiterService.getRateLimitStatus(key, configId);
+  }
+
+  @Delete('reset/:key/:configId')
+  @ApiOperation({ summary: 'Reset rate limit for key' })
+  @ApiResponse({ status: 200, description: 'Rate limit reset' })
+  async resetRateLimit(
+    @Param('key') key: string,
+    @Param('configId') configId: string,
+  ) {
+    await this.rateLimiterService.resetRateLimit(key, configId);
+    return { success: true };
+  }
+
+  // =================== TIER MANAGEMENT ===================
+
+  @Get('tiers/:tier/limits')
+  @ApiOperation({ summary: 'Get tier limits' })
+  @ApiResponse({ status: 200, description: 'Tier limits' })
+  async getTierLimits(@Param('tier') tier: RateLimitTier) {
+    return this.rateLimiterService.getTierLimits(tier);
+  }
+
+  @Put('tiers/:tier/limits')
+  @ApiOperation({ summary: 'Set tier limits' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        requestsPerMinute: { type: 'number' },
+        requestsPerHour: { type: 'number' },
+        requestsPerDay: { type: 'number' },
+        burstLimit: { type: 'number' },
+      },
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Tier limits updated' })
+  async setTierLimits(
+    @Param('tier') tier: RateLimitTier,
+    @Body() limits: {
+      requestsPerMinute?: number;
+      requestsPerHour?: number;
+      requestsPerDay?: number;
+      burstLimit?: number;
+    },
+  ) {
+    this.rateLimiterService.setTierLimits(tier, limits);
+    return { success: true, limits: this.rateLimiterService.getTierLimits(tier) };
+  }
+
+  // =================== QUOTAS ===================
+
+  @Get('quotas/:tenantId')
+  @ApiOperation({ summary: 'Get tenant quota' })
+  @ApiResponse({ status: 200, description: 'Quota details' })
+  async getQuota(@Param('tenantId') tenantId: string) {
+    const quota = await this.rateLimiterService.getQuota(tenantId);
+    if (!quota) return { error: 'Quota not found' };
+    return quota;
+  }
+
+  @Put('quotas/:tenantId')
+  @ApiOperation({ summary: 'Set tenant quota' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        tier: { type: 'string' },
+        dailyLimit: { type: 'number' },
+        monthlyLimit: { type: 'number' },
+        customLimits: { type: 'object' },
+      },
+      required: ['tier', 'dailyLimit', 'monthlyLimit'],
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Quota set' })
+  async setQuota(
+    @Param('tenantId') tenantId: string,
+    @Body('tier') tier: RateLimitTier,
+    @Body('dailyLimit') dailyLimit: number,
+    @Body('monthlyLimit') monthlyLimit: number,
+    @Body('customLimits') customLimits?: Record<string, number>,
+  ) {
+    return this.rateLimiterService.setQuota(tenantId, tier, dailyLimit, monthlyLimit, customLimits);
+  }
+
+  @Post('quotas/:tenantId/consume')
+  @ApiOperation({ summary: 'Consume quota' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        amount: { type: 'number' },
+      },
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Quota consumed' })
+  async consumeQuota(
+    @Param('tenantId') tenantId: string,
+    @Body('amount') amount?: number,
+  ) {
+    return this.rateLimiterService.consumeQuota(tenantId, amount || 1);
+  }
+
+  @Get('quotas/:tenantId/usage')
+  @ApiOperation({ summary: 'Get quota usage' })
+  @ApiResponse({ status: 200, description: 'Usage stats' })
+  async getQuotaUsage(@Param('tenantId') tenantId: string) {
+    return this.rateLimiterService.getQuotaUsage(tenantId);
+  }
+
+  @Delete('quotas/:tenantId/reset')
+  @ApiOperation({ summary: 'Reset quota' })
+  @ApiQuery({ name: 'period', required: false, enum: ['daily', 'monthly'] })
+  @ApiResponse({ status: 200, description: 'Quota reset' })
+  async resetQuota(
+    @Param('tenantId') tenantId: string,
+    @Query('period') period?: 'daily' | 'monthly',
+  ) {
+    await this.rateLimiterService.resetQuota(tenantId, period);
+    return { success: true };
+  }
+
+  // =================== BLOCKED REQUESTS ===================
+
+  @Get('blocked/:key')
+  @ApiOperation({ summary: 'Get blocked requests for key' })
+  @ApiResponse({ status: 200, description: 'Blocked requests' })
+  async getBlockedRequests(@Param('key') key: string) {
+    return { requests: await this.rateLimiterService.getBlockedRequests(key) };
+  }
+
+  @Delete('blocked/:key')
+  @ApiOperation({ summary: 'Clear blocked requests for key' })
+  @ApiResponse({ status: 200, description: 'Blocked requests cleared' })
+  async clearBlockedRequests(@Param('key') key: string) {
+    await this.rateLimiterService.clearBlockedRequests(key);
+    return { success: true };
+  }
+
+  // =================== HEADERS & MIDDLEWARE ===================
+
+  @Get('headers/:key/:configId')
+  @ApiOperation({ summary: 'Get rate limit headers' })
+  @ApiResponse({ status: 200, description: 'Rate limit headers' })
+  async getRateLimitHeaders(
+    @Param('key') key: string,
+    @Param('configId') configId: string,
+  ) {
+    return this.rateLimiterService.getRateLimitHeaders(key, configId);
+  }
+
+  @Post('middleware/check')
+  @ApiOperation({ summary: 'Middleware-style rate limit check' })
+  @ApiHeader({ name: 'x-tenant-id', required: false })
+  @ApiHeader({ name: 'x-user-id', required: false })
+  @ApiHeader({ name: 'x-api-key', required: false })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        endpoint: { type: 'string' },
+        method: { type: 'string' },
+      },
+      required: ['endpoint', 'method'],
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Middleware check result' })
+  async middlewareCheck(
+    @Req() req: Request,
+    @Headers('x-tenant-id') tenantId?: string,
+    @Headers('x-user-id') userId?: string,
+    @Headers('x-api-key') apiKey?: string,
+    @Body('endpoint') endpoint?: string,
+    @Body('method') method?: string,
+  ) {
+    const ip = req.ip || req.socket.remoteAddress || 'unknown';
+    return this.rateLimiterService.middlewareCheck({
+      ip,
+      tenantId,
+      userId,
+      apiKey,
+      endpoint,
+      method,
+    });
+  }
+
+  // =================== STATISTICS ===================
+
+  @Get('stats')
+  @ApiOperation({ summary: 'Get rate limiting statistics' })
+  @ApiQuery({ name: 'configId', required: false })
+  @ApiResponse({ status: 200, description: 'Rate limiting stats' })
+  async getStats(@Query('configId') configId?: string) {
+    return { stats: await this.rateLimiterService.getStats(configId) };
+  }
+
+  // =================== METADATA ===================
+
+  @Get('metadata/scopes')
+  @ApiOperation({ summary: 'Get available scopes' })
+  async getScopes() {
+    return { scopes: this.rateLimiterService.getScopes() };
+  }
+
+  @Get('metadata/strategies')
+  @ApiOperation({ summary: 'Get available strategies' })
+  async getStrategies() {
+    return { strategies: this.rateLimiterService.getStrategies() };
+  }
+
+  @Get('metadata/tiers')
+  @ApiOperation({ summary: 'Get available tiers' })
+  async getTiers() {
+    return { tiers: this.rateLimiterService.getTiers() };
+  }
+}

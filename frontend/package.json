@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
-    "postbuild": "cp -r .next/static .next/standalone/frontend/.next/ && cp -r public .next/standalone/frontend/ && cp .next/server/middleware-manifest.json .next/standalone/frontend/.next/server/",
+    "postbuild": "cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/ && mkdir -p .next/standalone/.next/server && cp .next/server/middleware-manifest.json .next/standalone/.next/server/",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "test:e2e": "playwright test",
     "test:links": "npx ts-node scripts/link-checker.ts",
     "audit:links": "BASE_URL=https://documentiulia.ro npx ts-node scripts/link-checker.ts"
@@ -43,6 +45,7 @@
     "react-virtualized-auto-sizer": "^1.0.26",
     "react-window": "^1.8.10",
     "recharts": "^2.15.4",
+    "remark-gfm": "^4.0.1",
     "swr": "^2.3.7",
     "tailwind-merge": "^2.6.0",
     "zod": "^3.25.76",

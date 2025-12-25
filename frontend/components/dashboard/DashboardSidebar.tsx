@@ -17,6 +17,7 @@ import {
   FileType,
   Map,
   Building,
+  Building2,
   CreditCard,
   PieChart,
   Shield,
@@ -37,6 +38,8 @@ import {
   MessageSquare,
   Code,
   Cog,
+  Rocket,
+  Scale,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { OrganizationSelector } from '@/components/organization/OrganizationSelector';
@@ -64,6 +67,17 @@ const navSections: NavSection[] = [
     ],
   },
   {
+    title: 'Servicii Business',
+    titleKey: 'sectionServices',
+    items: [
+      { href: '/dashboard/services', icon: Rocket, labelKey: 'services', defaultLabel: 'Înființare Firme' },
+      { href: '/dashboard/services/srl', icon: Building2, labelKey: 'srl', defaultLabel: 'Înființare SRL' },
+      { href: '/dashboard/services/pfa', icon: Briefcase, labelKey: 'pfa', defaultLabel: 'Înregistrare PFA' },
+      { href: '/dashboard/services/legal-forms', icon: Scale, labelKey: 'legalForms', defaultLabel: 'Alte Forme Juridice' },
+      { href: '/dashboard/services/templates', icon: FileText, labelKey: 'templates', defaultLabel: 'Șabloane Documente' },
+    ],
+  },
+  {
     title: 'Documente',
     titleKey: 'sectionDocuments',
     items: [
@@ -78,10 +92,18 @@ const navSections: NavSection[] = [
     titleKey: 'sectionFinance',
     items: [
       { href: '/dashboard/finance', icon: Wallet, labelKey: 'finance', defaultLabel: 'Finanțe' },
+      { href: '/dashboard/accounting', icon: Calculator, labelKey: 'accounting', defaultLabel: 'Contabilitate' },
       { href: '/dashboard/payments', icon: CreditCard, labelKey: 'payments', defaultLabel: 'Plăți' },
       { href: '/dashboard/vat', icon: Calculator, labelKey: 'vat', defaultLabel: 'Rapoarte TVA' },
       { href: '/dashboard/saft', icon: FileSpreadsheet, labelKey: 'saft', defaultLabel: 'SAF-T D406' },
       { href: '/dashboard/reports', icon: PieChart, labelKey: 'reports', defaultLabel: 'Rapoarte' },
+    ],
+  },
+  {
+    title: 'Proiecte',
+    titleKey: 'sectionProjects',
+    items: [
+      { href: '/dashboard/projects', icon: Briefcase, labelKey: 'projects', defaultLabel: 'Management Proiecte' },
     ],
   },
   {

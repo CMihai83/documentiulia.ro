@@ -10,7 +10,7 @@
  */
 
 // Import elite courses with comprehensive content
-import { eliteBusinessCourses } from './seed-data/courses-comprehensive-content';
+import { allEliteCourses as eliteBusinessCourses } from './seed-data/all-elite-courses';
 
 // ===== DEMO BUSINESSES =====
 export const demoBusinesses = [

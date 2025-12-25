@@ -33,9 +33,10 @@ export class CashFlowForecastController {
     @Query('months') months?: string,
     @Query('startingBalance') startingBalance?: string,
   ) {
-    const clerkId = req.user?.sub;
+    // JWT strategy returns full user object with id
+    const userId = req.user?.id;
 
-    if (!clerkId) {
+    if (!userId) {
       return {
         startDate: new Date().toISOString(),
         endDate: new Date().toISOString(),
@@ -45,12 +46,11 @@ export class CashFlowForecastController {
     }
 
     const user = await this.prisma.user.findUnique({
-      where: { clerkId },
+      where: { id: userId },
       select: { id: true, activeOrganizationId: true },
     });
 
     const orgId = user?.activeOrganizationId || '';
-    const userId = user?.id || '';
     const monthsNum = months ? Math.min(parseInt(months), 12) : 3;
     const balance = startingBalance ? parseFloat(startingBalance) : 0;
 
@@ -71,9 +71,10 @@ export class CashFlowForecastController {
   @ApiOperation({ summary: 'Get cash flow forecast for dashboard widget' })
   @ApiResponse({ status: 200, description: 'Returns simplified forecast for dashboard' })
   async getDashboardForecast(@Request() req: any) {
-    const clerkId = req.user?.sub;
+    // JWT strategy returns full user object with id
+    const userId = req.user?.id;
 
-    if (!clerkId) {
+    if (!userId) {
       return {
         currentBalance: 0,
         forecastedBalance: 0,
@@ -84,12 +85,11 @@ export class CashFlowForecastController {
     }
 
     const user = await this.prisma.user.findUnique({
-      where: { clerkId },
+      where: { id: userId },
       select: { id: true, activeOrganizationId: true },
     });
 
     const orgId = user?.activeOrganizationId || '';
-    const userId = user?.id || '';
 
     return this.forecastService.getDashboardForecast(orgId, userId);
   }
@@ -105,9 +105,10 @@ export class CashFlowForecastController {
     @Request() req: any,
     @Query('months') months?: string,
   ) {
-    const clerkId = req.user?.sub;
+    // JWT strategy returns full user object with id
+    const userId = req.user?.id;
 
-    if (!clerkId) {
+    if (!userId) {
       return {
         summary: { totalIncome: 0, totalExpenses: 0, netForecast: 0, riskLevel: 'low' },
         chartData: { labels: [], income: [], expenses: [], netCashFlow: [], cumulativeBalance: [], confidence: [] },
@@ -116,12 +117,11 @@ export class CashFlowForecastController {
     }
 
     const user = await this.prisma.user.findUnique({
-      where: { clerkId },
+      where: { id: userId },
       select: { id: true, activeOrganizationId: true },
     });
 
     const orgId = user?.activeOrganizationId || '';
-    const userId = user?.id || '';
     const monthsNum = months ? Math.min(parseInt(months), 12) : 6;
 
     const forecast = await this.forecastService.generateForecast(orgId, userId, monthsNum);
@@ -158,11 +158,12 @@ export class CashFlowForecastController {
   @ApiOperation({ summary: 'Get receivables and payables aging analysis' })
   @ApiResponse({ status: 200, description: 'Returns aging buckets for receivables and payables' })
   async getAgingAnalysis(@Request() req: any) {
-    const clerkId = req.user.sub;
-    const user = await this.prisma.user.findUnique({
-      where: { clerkId },
+    // JWT strategy returns full user object with id
+    const userId = req.user?.id;
+    const user = userId ? await this.prisma.user.findUnique({
+      where: { id: userId },
       select: { id: true, activeOrganizationId: true },
-    });
+    }) : null;
 
     if (!user?.activeOrganizationId) {
       return { receivables: [], payables: [] };
@@ -272,14 +273,14 @@ export class CashFlowForecastController {
     @Query('months') months?: string,
     @Query('startingBalance') startingBalance?: string,
   ) {
-    const clerkId = req.user.sub;
-    const user = await this.prisma.user.findUnique({
-      where: { clerkId },
+    // JWT strategy returns full user object with id
+    const userId = req.user?.id || '';
+    const user = userId ? await this.prisma.user.findUnique({
+      where: { id: userId },
       select: { id: true, activeOrganizationId: true },
-    });
+    }) : null;
 
     const orgId = user?.activeOrganizationId || '';
-    const userId = user?.id || '';
     const monthsNum = months ? Math.min(parseInt(months), 12) : 3;
     const balance = startingBalance ? parseFloat(startingBalance) : 0;
 

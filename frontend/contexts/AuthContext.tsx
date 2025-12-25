@@ -9,6 +9,7 @@ interface User {
   email: string;
   name: string;
   role: 'USER' | 'ADMIN' | 'ACCOUNTANT';
+  tier?: 'FREE' | 'PRO' | 'BUSINESS';
   company?: string;
   cui?: string;
 }
@@ -52,7 +53,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (storedToken && storedUser) {
         setToken(storedToken);
-        setUser(JSON.parse(storedUser));
+        const parsedUser = JSON.parse(storedUser);
+        // Migrate old user data: add default tier if missing
+        if (!parsedUser.tier) {
+          parsedUser.tier = 'FREE';
+          localStorage.setItem('auth_user', JSON.stringify(parsedUser));
+        }
+        setUser(parsedUser);
       }
     } catch (error) {
       console.error('Error reading auth from localStorage:', error);
@@ -92,7 +99,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       localStorage.setItem('auth_user', JSON.stringify(data.user));
 
       // Store in cookie for middleware access (7 days expiry)
-      document.cookie = `auth_token=${data.accessToken}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
+      // Secure flag required for HTTPS, SameSite=Lax for CSRF protection
+      const isSecure = window.location.protocol === 'https:';
+      document.cookie = `auth_token=${data.accessToken}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax${isSecure ? '; Secure' : ''}`;
 
       router.push(returnUrl || '/dashboard');
     } catch (error) {
@@ -152,7 +161,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       // Store in cookie for middleware access (7 days expiry)
-      document.cookie = `auth_token=${result.access_token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
+      const isSecure = window.location.protocol === 'https:';
+      document.cookie = `auth_token=${result.access_token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax${isSecure ? '; Secure' : ''}`;
 
       router.push(redirectUrl || '/dashboard');
     } finally {

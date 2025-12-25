@@ -1,45 +1,42 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, LogOut, User } from 'lucide-react';
 import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+import { LanguageSelector } from '@/components/ui/LanguageSelector';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 export function Navbar() {
   const t = useTranslations('nav');
-  const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
-  const { isSignedIn } = useUser();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const switchLocale = (newLocale: string) => {
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath || `/${newLocale}`);
-  };
+  const { user, isAuthenticated, logout, isLoading } = useAuth();
 
   const navLinks = [
     { href: '/', label: t('home') },
-    { href: '/forum', label: t('forum') },
-    { href: '/courses', label: t('courses') },
-    { href: '/blog', label: t('blog') },
+    { href: '/features', label: t('features') || 'Funcționalități' },
     { href: '/pricing', label: t('pricing') },
-    { href: '/hr', label: t('hr') },
-    { href: '/funds', label: t('funds') },
+    { href: '/courses', label: t('courses') || 'Cursuri' },
+    { href: '/blog', label: t('blog') || 'Blog' },
+    { href: '/forum', label: t('forum') || 'Forum' },
+    { href: '/demo', label: t('demo') || 'Demo' },
     { href: '/contact', label: t('contact') },
-    { href: '/help', label: t('help') },
   ];
 
+  const handleLogout = () => {
+    logout();
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-800/50 sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-primary-600">DocumentIulia</span>
-            <span className="text-sm text-gray-500">.ro</span>
+            <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">DocumentIulia</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">.ro</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -48,7 +45,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-primary-600 transition text-sm font-medium"
+                className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition text-sm font-medium"
               >
                 {link.label}
               </Link>
@@ -56,48 +53,59 @@ export function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center gap-4">
-            {/* Language Switcher */}
-            <button
-              onClick={() => switchLocale(locale === 'ro' ? 'en' : 'ro')}
-              className="flex items-center gap-1 text-sm text-gray-600 hover:text-primary-600"
-              aria-label="Switch language"
-            >
-              <Globe className="w-4 h-4" />
-              <span className="uppercase">{locale === 'ro' ? 'EN' : 'RO'}</span>
-            </button>
+          <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <ThemeToggle size="md" showDropdown={true} />
 
-            {/* Auth */}
-            {isSignedIn ? (
-              <div className="flex items-center gap-4">
-                <Link
-                  href="/dashboard"
-                  className="text-sm font-medium text-primary-600 hover:text-primary-700"
-                >
-                  {t('dashboard')}
-                </Link>
-                <UserButton afterSignOutUrl="/" />
-              </div>
-            ) : (
-              <div className="hidden sm:flex items-center gap-3">
-                <SignInButton mode="modal">
-                  <button className="text-sm font-medium text-gray-600 hover:text-primary-600">
+            {/* Language Switcher */}
+            <LanguageSelector />
+
+            {/* Auth Buttons */}
+            <div className="hidden sm:flex items-center gap-3">
+              {isLoading ? (
+                <span className="text-sm text-gray-400">...</span>
+              ) : isAuthenticated && user ? (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 flex items-center gap-1"
+                  >
+                    <User className="w-4 h-4" />
+                    {t('dashboard')}
+                  </Link>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">{user.name}</span>
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                  >
                     {t('login')}
-                  </button>
-                </SignInButton>
-                <SignUpButton mode="modal">
-                  <button className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition">
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="bg-primary-600 dark:bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 dark:hover:bg-primary-600 transition"
+                  >
                     {t('signup')}
-                  </button>
-                </SignUpButton>
-              </div>
-            )}
+                  </Link>
+                </>
+              )}
+            </div>
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2"
-              aria-label="Toggle menu"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -106,30 +114,56 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t">
+          <div id="mobile-nav-menu" className="lg:hidden py-4 border-t border-gray-200 dark:border-gray-800" role="navigation" aria-label="Mobile navigation">
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-gray-600 hover:text-primary-600 py-2"
+                  className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              {!isSignedIn && (
-                <div className="flex gap-3 pt-4 border-t">
-                  <SignInButton mode="modal">
-                    <button className="flex-1 py-2 text-center border rounded-lg">{t('login')}</button>
-                  </SignInButton>
-                  <SignUpButton mode="modal">
-                    <button className="flex-1 py-2 text-center bg-primary-600 text-white rounded-lg">
-                      {t('signup')}
+
+              <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+                {isAuthenticated && user ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="flex-1 py-2 text-center bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t('dashboard')}
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="flex-1 py-2 text-center border border-red-500 dark:border-red-400 text-red-500 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition"
+                    >
+                      <LogOut className="w-4 h-4 inline mr-1" />
+                      Logout
                     </button>
-                  </SignUpButton>
-                </div>
-              )}
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="flex-1 py-2 text-center border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t('login')}
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="flex-1 py-2 text-center bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t('signup')}
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         )}

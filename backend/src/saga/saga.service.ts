@@ -53,7 +53,7 @@ export class SagaService {
   // OAuth2 authentication for SAGA v3.2
   async authenticate(): Promise<string> {
     if (this.accessToken && this.tokenExpiry && new Date() < this.tokenExpiry) {
-      return this.accessToken;
+      return this.accessToken!;
     }
 
     try {
@@ -66,7 +66,7 @@ export class SagaService {
       this.accessToken = response.data.access_token;
       this.tokenExpiry = new Date(Date.now() + response.data.expires_in * 1000);
 
-      return this.accessToken;
+      return this.accessToken!;
     } catch (error) {
       this.logger.error('SAGA authentication failed', error);
       throw new Error('Failed to authenticate with SAGA');
@@ -181,5 +181,36 @@ export class SagaService {
       valid: response.data.valid,
       errors: response.data.errors || [],
     };
+  }
+
+  // Get connection status
+  async getConnectionStatus(): Promise<{
+    connected: boolean;
+    apiVersion: string;
+    lastSync: string | null;
+    error?: string;
+  }> {
+    try {
+      await this.authenticate();
+
+      // Try to ping SAGA API
+      const response = await this.client.get('/status', {
+        headers: { Authorization: `Bearer ${this.accessToken}` },
+      });
+
+      return {
+        connected: true,
+        apiVersion: response.data.version || 'v3.2',
+        lastSync: response.data.lastSync || new Date().toISOString(),
+      };
+    } catch (error: any) {
+      this.logger.error('SAGA connection check failed', error);
+      return {
+        connected: false,
+        apiVersion: 'v3.2',
+        lastSync: null,
+        error: error.message || 'Connection failed',
+      };
+    }
   }
 }

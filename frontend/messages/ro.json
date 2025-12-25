@@ -189,11 +189,16 @@
     "getInTouch": "Ia Legătura cu Noi",
     "sendMessage": "Trimite un Mesaj",
     "phone": "Telefon",
+    "phoneHint": "Luni-Vineri, 9:00-18:00",
     "address": "Adresă",
+    "businessHours": "Program de Lucru",
     "name": "Nume",
     "email": "Email",
+    "company": "Companie",
+    "subject": "Subiect",
     "message": "Mesaj",
-    "send": "Trimite"
+    "send": "Trimite",
+    "gdprNote": "Prin trimiterea acestui formular, sunteți de acord cu politica noastră de confidențialitate și consimțiți la procesarea datelor dumneavoastră personale."
   },
   "courses": {
     "title": "Cursuri LMS",

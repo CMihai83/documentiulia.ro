@@ -1,12 +1,18 @@
-import { Controller, Post, Get, Body, Query, Param } from '@nestjs/common';
+import { Controller, Post, Get, Body, Query, Param, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { AnafService } from './anaf.service';
 import { SaftService } from './saft.service';
 import { EfacturaService } from './efactura.service';
+import { UserRole } from '@prisma/client';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { RolesGuard } from '../auth/roles.guard';
+import { Roles } from '../auth/roles.decorator';
 
 @ApiTags('anaf')
 @ApiBearerAuth()
 @Controller('anaf')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.USER, UserRole.ADMIN, UserRole.ACCOUNTANT)
 export class AnafController {
   constructor(
     private readonly anafService: AnafService,
@@ -28,6 +34,16 @@ export class AnafController {
     const xml = await this.saftService.generateD406(body.userId, body.period);
     const sizeValidation = this.saftService.validateXmlSize(xml);
     return { xml, ...sizeValidation };
+  }
+
+  @Post('saft/generate-with-payroll')
+  @ApiOperation({ summary: 'Generate SAF-T D406 XML with Salaries section per Order 1783/2021' })
+  async generateSAFTWithPayroll(
+    @Body() body: { userId: string; period: string },
+  ) {
+    const xml = await this.saftService.generateD406WithPayroll(body.userId, body.period);
+    const sizeValidation = this.saftService.validateXmlSize(xml);
+    return { xml, ...sizeValidation, includesPayroll: true };
   }
 
   @Post('saft/submit')
