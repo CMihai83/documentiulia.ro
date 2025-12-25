@@ -18,6 +18,7 @@ export function Navbar() {
     { href: '/features', label: t('features') || 'Funcționalități' },
     { href: '/services/business-formation', label: t('services') || 'Servicii' },
     { href: '/templates', label: t('templates') || 'Șabloane' },
+    { href: '/simulation', label: t('simulation') || 'Simulator' },
     { href: '/pricing', label: t('pricing') },
     { href: '/courses', label: t('courses') || 'Cursuri' },
     { href: '/blog', label: t('blog') || 'Blog' },

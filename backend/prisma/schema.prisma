@@ -2860,11 +2860,267 @@ model ErrorLog {
   userId        String?  @default("anonymous")
   source        String   @default("frontend") // frontend, backend, mobile
   metadata      String?  @default("{}") // JSON string for additional context
-  
+
   createdAt     DateTime @default(now())
 
   @@index([createdAt])
   @@index([type])
   @@index([userId])
   @@index([source])
+}
+
+// ===== SPRINT 25: BUSINESS SIMULATION MODULE =====
+
+model SimulationGame {
+  id              String   @id @default(cuid())
+  userId          String
+  businessId      String?  // Link to real business for data import
+  name            String
+  description     String?
+
+  // Game State
+  currentMonth    Int      @default(1)
+  currentYear     Int      @default(2025)
+  status          SimulationStatus @default(SIM_ACTIVE)
+  difficulty      SimulationDifficulty @default(SIM_NORMAL)
+
+  // Scores (0-100)
+  healthScore     Float    @default(100)
+  financialScore  Float    @default(100)
+  operationsScore Float    @default(100)
+  complianceScore Float    @default(100)
+  growthScore     Float    @default(100)
+
+  // Scenario reference
+  scenarioId      String?
+  scenario        SimulationScenario? @relation(fields: [scenarioId], references: [id])
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  states          SimulationState[]
+  decisions       SimulationDecision[]
+  events          SimulationEvent[]
+  achievements    SimulationAchievement[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([scenarioId])
+}
+
+model SimulationState {
+  id              String   @id @default(cuid())
+  gameId          String
+  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  month           Int
+  year            Int
+
+  // Financial State (in RON)
+  cash            Decimal  @db.Decimal(14, 2) @default(50000)
+  revenue         Decimal  @db.Decimal(14, 2) @default(0)
+  expenses        Decimal  @db.Decimal(14, 2) @default(0)
+  profit          Decimal  @db.Decimal(14, 2) @default(0)
+  receivables     Decimal  @db.Decimal(14, 2) @default(0)
+  payables        Decimal  @db.Decimal(14, 2) @default(0)
+  inventory       Decimal  @db.Decimal(14, 2) @default(0)
+  equipment       Decimal  @db.Decimal(14, 2) @default(0)
+  loans           Decimal  @db.Decimal(14, 2) @default(0)
+
+  // Operations State
+  employees       Int      @default(1)
+  capacity        Float    @default(100) // Production capacity %
+  utilization     Float    @default(50)  // How much capacity is used %
+  quality         Float    @default(80)  // Product/service quality %
+
+  // Market State
+  marketShare     Float    @default(0.1) // 0-100%
+  customerCount   Int      @default(10)
+  reputation      Float    @default(50)  // 0-100
+
+  // Compliance State (Romanian)
+  taxOwed         Decimal  @db.Decimal(12, 2) @default(0)
+  vatBalance      Decimal  @db.Decimal(12, 2) @default(0)
+  penaltiesRisk   Float    @default(0)   // Penalty probability 0-100
+  auditRisk       Float    @default(5)   // Audit probability 0-100
+
+  // Snapshot of key metrics
+  metricsSnapshot Json?    // Store additional metrics
+
+  createdAt       DateTime @default(now())
+
+  @@unique([gameId, month, year])
+  @@index([gameId])
+}
+
+model SimulationDecision {
+  id              String   @id @default(cuid())
+  gameId          String
+  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  month           Int
+  year            Int
+  category        SimDecisionCategory
+  type            String   // Specific decision type within category
+  parameters      Json     // Decision parameters
+
+  // Impact tracking
+  impactSummary   String?  @db.Text
+  impactMetrics   Json?    // { revenue: +5000, cash: -10000, employees: +1 }
+
+  // Learning connection
+  relatedCourseId String?
+  relatedLessonId String?
+  aiRecommendation String? @db.Text
+
+  // Outcome
+  wasSuccessful   Boolean?
+  outcomeNotes    String?  @db.Text
+
+  createdAt       DateTime @default(now())
+
+  @@index([gameId])
+  @@index([category])
+}
+
+model SimulationEvent {
+  id              String   @id @default(cuid())
+  gameId          String
+  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  month           Int
+  year            Int
+  type            SimEventType
+  severity        SimEventSeverity @default(SEVERITY_MEDIUM)
+  title           String
+  description     String   @db.Text
+  impact          Json     // Expected impacts if not handled
+
+  // Player response
+  responseOptions Json?    // Available choices
+  playerChoice    String?
+  outcome         String?  @db.Text
+  outcomeImpact   Json?    // Actual impact after player choice
+
+  // Timing
+  deadline        Int?     // Turns to respond, null = immediate
+  expiresAt       DateTime?
+
+  createdAt       DateTime @default(now())
+
+  @@index([gameId])
+  @@index([type])
+}
+
+model SimulationAchievement {
+  id              String   @id @default(cuid())
+  gameId          String
+  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  achievementId   String   // Reference to achievement definition
+  title           String
+  description     String?
+  icon            String?  // Emoji or icon name
+  xpReward        Int      @default(100)
+
+  unlockedAt      DateTime @default(now())
+
+  @@unique([gameId, achievementId])
+  @@index([gameId])
+}
+
+model SimulationScenario {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  titleEn         String?
+  description     String   @db.Text
+  descriptionEn   String?  @db.Text
+  difficulty      SimulationDifficulty
+
+  // Starting conditions
+  initialState    Json     // Initial SimulationState values
+  objectives      Json     // Array of objectives with conditions
+  timeLimit       Int?     // Max months to complete
+
+  // Challenge type
+  type            SimScenarioType
+
+  // Rewards
+  xpReward        Int      @default(500)
+  badgeId         String?
+
+  // Related courses
+  relatedCourseIds String[] @default([])
+
+  isActive        Boolean  @default(true)
+  isFeatured      Boolean  @default(false)
+  sortOrder       Int      @default(0)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  games           SimulationGame[]
+
+  @@index([type])
+  @@index([difficulty])
+  @@index([isActive])
+}
+
+// Simulation Enums
+
+enum SimulationStatus {
+  SIM_ACTIVE
+  SIM_PAUSED
+  SIM_COMPLETED
+  SIM_FAILED
+  SIM_ABANDONED
+}
+
+enum SimulationDifficulty {
+  SIM_TUTORIAL
+  SIM_EASY
+  SIM_NORMAL
+  SIM_HARD
+  SIM_EXPERT
+}
+
+enum SimDecisionCategory {
+  SIM_FINANCIAL
+  SIM_OPERATIONS
+  SIM_HR
+  SIM_MARKETING
+  SIM_COMPLIANCE
+  SIM_GROWTH
+  SIM_RISK
+}
+
+enum SimEventType {
+  SIM_MARKET_CHANGE
+  SIM_REGULATION_CHANGE
+  SIM_ECONOMIC_SHOCK
+  SIM_OPPORTUNITY
+  SIM_CRISIS
+  SIM_AUDIT
+  SIM_CUSTOMER_EVENT
+  SIM_EMPLOYEE_EVENT
+  SIM_SUPPLIER_EVENT
+  SIM_COMPETITION
+}
+
+enum SimEventSeverity {
+  SEVERITY_LOW
+  SEVERITY_MEDIUM
+  SEVERITY_HIGH
+  SEVERITY_CRITICAL
+}
+
+enum SimScenarioType {
+  SCENARIO_FREEPLAY
+  SCENARIO_TUTORIAL
+  SCENARIO_CHALLENGE
+  SCENARIO_CRISIS_SURVIVAL
+  SCENARIO_GROWTH_RACE
+  SCENARIO_COMPLIANCE_TEST
 }

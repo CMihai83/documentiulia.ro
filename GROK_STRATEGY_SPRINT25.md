@@ -119,6 +119,29 @@
 5. ✅ **Add 10 New Blog Articles** on business formation - DONE (38 total articles)
 6. ✅ **Add 5 New LMS Courses** on starting a business - DONE (72 total courses, 1,856 lessons)
 7. ✅ **Create Templates Library** for contracts/invoices - DONE (17 templates)
+8. ✅ **Business Simulation Module** `/simulation` - DONE (6 scenarios, gamified learning)
+
+---
+
+## 4. SIMULATION MODULE - Learn by Doing
+
+### Overview
+Game-like business simulation that integrates LMS course knowledge with real company data.
+
+### Features
+- **6 Scenarios**: Tutorial, Crisis Survival, Growth, ANAF Audit, Free Play
+- **Decision Categories**: Financial, Operations, Marketing, Compliance, HR, Risk
+- **Gamification**: Health scores, achievements, XP rewards
+- **AI Advisor**: Recommendations linked to course content
+- **Romanian Market**: VAT rates, ANAF compliance, labor law integrated
+
+### Database Models
+- SimulationGame: Active user games
+- SimulationState: Monthly snapshots
+- SimulationDecision: User decisions with impact tracking
+- SimulationEvent: Random events
+- SimulationScenario: Pre-built scenarios
+- SimulationAchievement: Unlocked badges
 
 ---
 
