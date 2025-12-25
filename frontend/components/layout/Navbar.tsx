@@ -17,10 +17,10 @@ export function Navbar() {
     { href: '/', label: t('home') },
     { href: '/features', label: t('features') || 'Funcționalități' },
     { href: '/services/business-formation', label: t('services') || 'Servicii' },
+    { href: '/templates', label: t('templates') || 'Șabloane' },
     { href: '/pricing', label: t('pricing') },
     { href: '/courses', label: t('courses') || 'Cursuri' },
     { href: '/blog', label: t('blog') || 'Blog' },
-    { href: '/forum', label: t('forum') || 'Forum' },
     { href: '/contact', label: t('contact') },
   ];
 

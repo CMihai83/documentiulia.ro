@@ -19,7 +19,7 @@
 - [x] Task 2.5: Write 20+ blog articles (SEO optimized) ✅ DONE - 38 articles (10 business formation)
 - [ ] Task 2.6: Create forum content
 - [ ] Task 2.7: Produce video tutorials
-- [ ] Task 2.8: Design templates (contracts, invoices, declarations)
+- [x] Task 2.8: Design templates (contracts, invoices, declarations) ✅ DONE - 17 templates library
 
 ### **Phase 3: Review and Testing (Weeks 9-10)**
 - [ ] Task 3.1: Internal review
@@ -118,7 +118,7 @@
 4. ✅ **Create Other Legal Forms Page** `/services/forme-juridice` - DONE
 5. ✅ **Add 10 New Blog Articles** on business formation - DONE (38 total articles)
 6. [ ] **Add 5 New LMS Courses** on starting a business
-7. [ ] **Create Templates Library** for contracts/invoices
+7. ✅ **Create Templates Library** for contracts/invoices - DONE (17 templates)
 
 ---
 
