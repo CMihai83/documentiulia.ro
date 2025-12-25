@@ -1,21 +1,26 @@
 /**
  * Seeder to populate course modules and lessons
- * Links content from courses-additional-complete.ts to existing courses
+ * Links content from courses-additional-complete.ts and part2 to existing courses
  */
 
 import { PrismaClient } from '@prisma/client';
 import { additionalCoursesComplete } from './seed-data/courses-additional-complete';
+import { additionalCoursesCompletePart2 } from './seed-data/courses-additional-complete-part2';
 
 const prisma = new PrismaClient();
 
+// Combine both parts
+const allCourseContent = [...additionalCoursesComplete, ...additionalCoursesCompletePart2];
+
 async function seedCourseContent() {
   console.log('📚 Seeding Course Content (Modules & Lessons)...\n');
+  console.log(`📋 Processing ${allCourseContent.length} courses with content\n`);
 
   let coursesUpdated = 0;
   let modulesCreated = 0;
   let lessonsCreated = 0;
 
-  for (const courseContent of additionalCoursesComplete) {
+  for (const courseContent of allCourseContent) {
     console.log(`\n🔍 Processing: ${courseContent.slug}`);
 
     // Find the course by slug
