@@ -16,11 +16,11 @@ export function Navbar() {
   const navLinks = [
     { href: '/', label: t('home') },
     { href: '/features', label: t('features') || 'Funcționalități' },
+    { href: '/services/business-formation', label: t('services') || 'Servicii' },
     { href: '/pricing', label: t('pricing') },
     { href: '/courses', label: t('courses') || 'Cursuri' },
     { href: '/blog', label: t('blog') || 'Blog' },
     { href: '/forum', label: t('forum') || 'Forum' },
-    { href: '/demo', label: t('demo') || 'Demo' },
     { href: '/contact', label: t('contact') },
   ];
 
