@@ -355,6 +355,13 @@ export default function LMSCourseDetailPage() {
           {/* Curriculum */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-semibold mb-4">Conținut curs</h2>
+            {course.modules.length === 0 ? (
+              <div className="text-center py-8 bg-yellow-50 rounded-lg border border-yellow-200">
+                <BookOpen className="h-12 w-12 mx-auto mb-3 text-yellow-500" />
+                <p className="text-yellow-700 font-medium">Conținutul cursului este în pregătire</p>
+                <p className="text-yellow-600 text-sm mt-1">Lecțiile vor fi disponibile în curând!</p>
+              </div>
+            ) : (
             <div className="space-y-3">
               {course.modules
                 .sort((a, b) => a.order - b.order)
@@ -406,6 +413,7 @@ export default function LMSCourseDetailPage() {
                   </div>
                 ))}
             </div>
+            )}
           </div>
         </div>
 
@@ -427,12 +435,18 @@ export default function LMSCourseDetailPage() {
                   <CheckCircle className="h-5 w-5" />
                   Înscris
                 </button>
-                <button
-                  onClick={() => handleStartLesson(course.modules[0]?.lessons?.[0]?.id || '')}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700"
-                >
-                  Continuă cursul
-                </button>
+                {totalLessons > 0 ? (
+                  <button
+                    onClick={() => handleStartLesson(course.modules[0]?.lessons?.[0]?.id || '')}
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700"
+                  >
+                    Continuă cursul
+                  </button>
+                ) : (
+                  <div className="w-full bg-yellow-50 text-yellow-700 py-3 rounded-lg font-medium text-center border border-yellow-200">
+                    Conținut în pregătire
+                  </div>
+                )}
               </div>
             ) : (
               <button
