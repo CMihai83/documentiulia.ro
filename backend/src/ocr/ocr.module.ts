@@ -5,13 +5,14 @@ import { OCRController } from './ocr.controller';
 import { TemplateService } from './templates/template.service';
 import { TemplateController } from './templates/template.controller';
 import { PreprocessingService } from './preprocessing.service';
+import { RomanianOCREnhancerService } from './romanian-ocr-enhancer.service';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [ConfigModule, PrismaModule],
   controllers: [OCRController, TemplateController],
-  providers: [OCRService, TemplateService, PreprocessingService],
-  exports: [OCRService, TemplateService, PreprocessingService],
+  providers: [OCRService, TemplateService, PreprocessingService, RomanianOCREnhancerService],
+  exports: [OCRService, TemplateService, PreprocessingService, RomanianOCREnhancerService],
 })
 export class OcrModule implements OnModuleInit {
   private readonly logger = new Logger(OcrModule.name);

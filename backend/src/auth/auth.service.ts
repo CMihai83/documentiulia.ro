@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
 import { NotificationsService, NotificationType } from '../notifications/notifications.service';
+import { MfaService } from '../mfa/mfa.service';
 import * as bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -68,11 +69,15 @@ export class AuthService {
   // In-memory storage for verification tokens
   private verificationTokens: Map<string, StoredVerificationToken> = new Map();
 
+  // Temporary MFA tokens for pending verification
+  private pendingMfaTokens: Map<string, { userId: string; email: string; expiresAt: Date }> = new Map();
+
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
     private notificationsService: NotificationsService,
     private configService: ConfigService,
+    private mfaService: MfaService,
   ) {
     // Cleanup expired tokens every hour
     setInterval(() => this.cleanupExpiredTokens(), 60 * 60 * 1000);
@@ -154,7 +159,39 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    // Generate tokens with metadata for session tracking
+    // Check if MFA is enabled for this user
+    if (user.mfaEnabled) {
+      // Generate temporary MFA token
+      const mfaToken = uuidv4();
+      const expiresAt = new Date();
+      expiresAt.setMinutes(expiresAt.getMinutes() + 5); // 5 minute expiry
+
+      this.pendingMfaTokens.set(mfaToken, {
+        userId: user.id,
+        email: user.email,
+        expiresAt,
+      });
+
+      // Log audit for MFA required
+      await this.prisma.auditLog.create({
+        data: {
+          userId: user.id,
+          action: 'LOGIN_MFA_REQUIRED',
+          entity: 'User',
+          entityId: user.id,
+          details: { userAgent: metadata?.userAgent },
+        },
+      });
+
+      return {
+        requiresMfa: true,
+        mfaToken,
+        message: 'MFA verification required',
+        messageRo: 'Verificare MFA necesară',
+      };
+    }
+
+    // No MFA - generate tokens directly
     const tokens = await this.generateTokens(user.id, user.email, metadata);
 
     // Log audit
@@ -165,6 +202,65 @@ export class AuthService {
         entity: 'User',
         entityId: user.id,
         details: { method: 'jwt', tokenId: tokens.tokenId, userAgent: metadata?.userAgent },
+      },
+    });
+
+    return {
+      requiresMfa: false,
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        company: user.company,
+        tier: user.tier,
+        role: user.role,
+      },
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken,
+      expiresIn: tokens.expiresIn,
+    };
+  }
+
+  async verifyLoginMfa(mfaToken: string, code: string, backupCode?: string, metadata?: { userAgent?: string; ipAddress?: string }) {
+    const pending = this.pendingMfaTokens.get(mfaToken);
+
+    if (!pending) {
+      throw new UnauthorizedException('Invalid or expired MFA session');
+    }
+
+    if (new Date() > pending.expiresAt) {
+      this.pendingMfaTokens.delete(mfaToken);
+      throw new UnauthorizedException('MFA session expired. Please login again.');
+    }
+
+    // Verify MFA code
+    try {
+      await this.mfaService.verifyMfaToken(pending.userId, code, backupCode);
+    } catch (error) {
+      throw new UnauthorizedException('Invalid MFA code');
+    }
+
+    // MFA verified - remove pending token and generate session
+    this.pendingMfaTokens.delete(mfaToken);
+
+    const user = await this.prisma.user.findUnique({
+      where: { id: pending.userId },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    const tokens = await this.generateTokens(user.id, user.email, metadata);
+
+    // Log audit
+    await this.prisma.auditLog.create({
+      data: {
+        userId: user.id,
+        action: 'USER_LOGIN',
+        entity: 'User',
+        entityId: user.id,
+        details: { method: 'jwt+mfa', tokenId: tokens.tokenId, userAgent: metadata?.userAgent },
       },
     });
 

@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -14,11 +14,13 @@ import { BiometricAuthService } from './biometric-auth.service';
 import { BiometricAuthController } from './biometric-auth.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 import { NotificationsModule } from '../notifications/notifications.module';
+import { MfaModule } from '../mfa/mfa.module';
 
 @Module({
   imports: [
     PrismaModule,
     NotificationsModule,
+    forwardRef(() => MfaModule),
     EventEmitterModule.forRoot(),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({

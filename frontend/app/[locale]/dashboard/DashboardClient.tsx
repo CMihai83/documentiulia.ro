@@ -69,19 +69,41 @@ const fallbackVatData: VatSummaryItem[] = [
 const CashFlowChart = memo(function CashFlowChart({
   data,
   title,
+  onDataClick,
+  onTitleClick,
 }: {
   data: CashFlowItem[];
   title: string;
+  onDataClick?: (dataPoint: CashFlowItem) => void;
+  onTitleClick?: () => void;
 }) {
   return (
     <div className="lg:col-span-2 bg-white dark:bg-gray-800 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-sm">
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 flex items-center gap-2 dark:text-white">
+      <h2
+        className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 flex items-center gap-2 dark:text-white cursor-pointer hover:text-primary-600 transition-colors group"
+        onClick={onTitleClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && onTitleClick?.()}
+      >
         <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-primary-600" />
         {title}
+        <span className="text-xs text-gray-400 ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+          Vezi detalii →
+        </span>
       </h2>
       <div className="h-48 sm:h-64 md:h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+          <LineChart
+            data={data}
+            margin={{ top: 5, right: 5, left: -20, bottom: 5 }}
+            onClick={(e) => {
+              if (e?.activePayload?.[0]?.payload && onDataClick) {
+                onDataClick(e.activePayload[0].payload as CashFlowItem);
+              }
+            }}
+            style={{ cursor: 'pointer' }}
+          >
             <CartesianGrid strokeDasharray="3 3" className="dark:stroke-gray-600" />
             <XAxis
               dataKey="month"
@@ -97,6 +119,7 @@ const CashFlowChart = memo(function CashFlowChart({
             <Tooltip
               formatter={(value) => `${Number(value).toLocaleString()} RON`}
               contentStyle={{ backgroundColor: 'var(--bg-tooltip)', borderColor: 'var(--border-tooltip)' }}
+              labelFormatter={(label) => `Click pentru detalii: ${label}`}
             />
             <Line
               type="monotone"
@@ -104,7 +127,8 @@ const CashFlowChart = memo(function CashFlowChart({
               stroke="#22c55e"
               strokeWidth={2}
               name="Venituri"
-              dot={{ r: 2 }}
+              dot={{ r: 3, cursor: 'pointer' }}
+              activeDot={{ r: 6, cursor: 'pointer' }}
             />
             <Line
               type="monotone"
@@ -112,7 +136,8 @@ const CashFlowChart = memo(function CashFlowChart({
               stroke="#ef4444"
               strokeWidth={2}
               name="Cheltuieli"
-              dot={{ r: 2 }}
+              dot={{ r: 3, cursor: 'pointer' }}
+              activeDot={{ r: 6, cursor: 'pointer' }}
             />
           </LineChart>
         </ResponsiveContainer>
@@ -124,30 +149,62 @@ const CashFlowChart = memo(function CashFlowChart({
 const VatPieChart = memo(function VatPieChart({
   data,
   title,
+  onSegmentClick,
+  onTitleClick,
 }: {
   data: VatSummaryItem[];
   title: string;
+  onSegmentClick?: (segment: string) => void;
+  onTitleClick?: () => void;
 }) {
   return (
     <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-sm">
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 dark:text-white">
+      <h2
+        className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 dark:text-white cursor-pointer hover:text-primary-600 transition-colors group"
+        onClick={onTitleClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && onTitleClick?.()}
+      >
         {title}
+        <span className="text-xs text-gray-400 ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          Vezi detalii →
+        </span>
       </h2>
       <div className="h-36 sm:h-48 md:h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
-            <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="70%">
+            <Pie
+              data={data}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius="70%"
+              onClick={(entry) => onSegmentClick?.(entry.name)}
+              style={{ cursor: 'pointer' }}
+            >
               {data.map((entry, i) => (
-                <Cell key={i} fill={entry.color} />
+                <Cell key={i} fill={entry.color} className="hover:opacity-80 transition-opacity cursor-pointer" />
               ))}
             </Pie>
-            <Tooltip formatter={(value) => `${Number(value).toLocaleString()} RON`} />
+            <Tooltip
+              formatter={(value) => `${Number(value).toLocaleString()} RON`}
+              labelFormatter={(label) => `Click pentru detalii: ${label}`}
+            />
           </PieChart>
         </ResponsiveContainer>
       </div>
       <div className="space-y-1 sm:space-y-2 mt-3 sm:mt-4">
         {data.map((item) => (
-          <div key={item.name} className="flex justify-between text-xs sm:text-sm dark:text-gray-300">
+          <div
+            key={item.name}
+            className="flex justify-between text-xs sm:text-sm dark:text-gray-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 rounded px-2 py-1 -mx-2 transition-colors"
+            onClick={() => onSegmentClick?.(item.name)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && onSegmentClick?.(item.name)}
+          >
             <span className="flex items-center gap-1 sm:gap-2">
               <span
                 className="w-2 h-2 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
@@ -568,8 +625,18 @@ export function DashboardClient() {
 
       {/* Main Charts Grid - Stack on mobile, side-by-side on larger screens */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
-        <CashFlowChart data={cashFlowData} title={t('cashFlow')} />
-        <VatPieChart data={vatData} title={t('vatSummary')} />
+        <CashFlowChart
+          data={cashFlowData}
+          title={t('cashFlow')}
+          onDataClick={handleCashFlowClick}
+          onTitleClick={() => handleCashFlowClick()}
+        />
+        <VatPieChart
+          data={vatData}
+          title={t('vatSummary')}
+          onSegmentClick={handleVatClick}
+          onTitleClick={() => handleVatClick()}
+        />
       </div>
 
       {/* Document Upload */}

@@ -553,7 +553,7 @@ export class ConsultingService {
    * Get available packages for a tier
    */
   getPackagesForTier(tier: Tier): ConsultingPackage[] {
-    const tierPriority = { [Tier.FREE]: 0, [Tier.PRO]: 1, [Tier.BUSINESS]: 2 };
+    const tierPriority = { [Tier.FREE]: 0, [Tier.PRO]: 1, [Tier.BUSINESS]: 2, [Tier.ENTERPRISE]: 3 };
     const userTierLevel = tierPriority[tier];
 
     return Array.from(this.packages.values()).filter(pkg => {
@@ -581,7 +581,7 @@ export class ConsultingService {
       return { canBook: false, reason: 'Organization not found' };
     }
 
-    const tierPriority = { [Tier.FREE]: 0, [Tier.PRO]: 1, [Tier.BUSINESS]: 2 };
+    const tierPriority = { [Tier.FREE]: 0, [Tier.PRO]: 1, [Tier.BUSINESS]: 2, [Tier.ENTERPRISE]: 3 };
     const userTierLevel = tierPriority[org.tier];
     const requiredLevel = tierPriority[pkg.requiredTier];
 

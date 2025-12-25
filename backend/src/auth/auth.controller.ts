@@ -84,6 +84,20 @@ class ResendVerificationDto {
   email: string;
 }
 
+class VerifyLoginMfaDto {
+  @IsString()
+  @IsNotEmpty()
+  mfaToken: string;
+
+  @IsString()
+  @IsNotEmpty()
+  code: string;
+
+  @IsOptional()
+  @IsString()
+  backupCode?: string;
+}
+
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
@@ -107,7 +121,7 @@ export class AuthController {
   @Throttle({ default: { limit: 5, ttl: 60000 } }) // 5 login attempts per minute (brute force protection)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Login with email and password' })
-  @ApiResponse({ status: 200, description: 'Login successful' })
+  @ApiResponse({ status: 200, description: 'Login successful or MFA required' })
   @ApiResponse({ status: 401, description: 'Invalid credentials' })
   @ApiResponse({ status: 429, description: 'Too many login attempts' })
   async login(
@@ -116,6 +130,22 @@ export class AuthController {
     @Ip() ipAddress: string,
   ) {
     return this.authService.login(dto, { userAgent, ipAddress });
+  }
+
+  @Post('login/verify-mfa')
+  @Throttle({ default: { limit: 5, ttl: 60000 } }) // 5 MFA attempts per minute
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Verify MFA code after login' })
+  @ApiBody({ type: VerifyLoginMfaDto })
+  @ApiResponse({ status: 200, description: 'MFA verified, login complete' })
+  @ApiResponse({ status: 401, description: 'Invalid MFA code or expired session' })
+  @ApiResponse({ status: 429, description: 'Too many attempts' })
+  async verifyLoginMfa(
+    @Body() dto: VerifyLoginMfaDto,
+    @Headers('user-agent') userAgent: string,
+    @Ip() ipAddress: string,
+  ) {
+    return this.authService.verifyLoginMfa(dto.mfaToken, dto.code, dto.backupCode, { userAgent, ipAddress });
   }
 
   @Post('refresh')

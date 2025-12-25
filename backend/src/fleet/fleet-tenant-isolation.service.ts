@@ -102,6 +102,14 @@ export class FleetTenantIsolationService {
       maxApiCallsPerHour: -1,
       allowedFeatures: ['*'], // All features
     },
+    [Tier.ENTERPRISE]: {
+      maxVehicles: -1, // Unlimited
+      maxDrivers: -1,
+      maxRoutesPerDay: -1,
+      maxSubcontractors: -1,
+      maxApiCallsPerHour: -1,
+      allowedFeatures: ['*'], // All features including enterprise-only
+    },
   };
 
   constructor(

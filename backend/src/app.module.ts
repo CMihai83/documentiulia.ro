@@ -45,6 +45,7 @@ import { ATSModule } from './ats/ats.module';
 import { HSEModule } from './hse/hse.module';
 import { FreelancerModule } from './freelancer/freelancer.module';
 import { LMSModule } from './lms/lms.module';
+import { SimulationModule } from './simulation/simulation.module';
 import { LogisticsModule } from './logistics/logistics.module';
 import { MicroservicesModule } from './microservices/microservices.module';
 import { CloudInfrastructureModule } from './cloud-infrastructure/cloud-infrastructure.module';
@@ -91,6 +92,7 @@ import { ProcurementModule } from './procurement/procurement.module';
 import { PublicContactModule } from './public-contact/public-contact.module';
 import { BillingModule } from './billing/billing.module';
 import { SettingsModule } from './settings/settings.module';
+import { UsersModule } from './users/users.module';
 import { ReportingModule } from './reporting/reporting.module';
 import { ApiKeysModule } from './api-keys/api-keys.module';
 import { BatchModule } from './batch/batch.module';
@@ -197,6 +199,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     // Content & LMS
     ContentModule,
     LMSModule,
+    SimulationModule,
     HelpModule,
     // Other
     TenantModule,
@@ -224,6 +227,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     // Billing & Settings
     BillingModule,
     SettingsModule,
+    UsersModule,
     ReportingModule,
     // API Platform & Keys
     ApiKeysModule,

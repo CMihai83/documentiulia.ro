@@ -41,8 +41,10 @@ import {
   Rocket,
   Scale,
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { OrganizationSelector } from '@/components/organization/OrganizationSelector';
+import { ModuleConfigModal } from './ModuleConfigModal';
+import { useDashboardPreferences } from '@/hooks/useDashboardPreferences';
 
 interface NavItem {
   href: string;
@@ -172,11 +174,82 @@ const navSections: NavSection[] = [
 // Flat list for backward compatibility
 const navItems: NavItem[] = navSections.flatMap(section => section.items);
 
+// Map href to module ID for filtering
+const hrefToModuleId: Record<string, string> = {
+  '/dashboard': 'dashboard',
+  '/dashboard/analytics': 'analytics',
+  '/dashboard/services': 'services',
+  '/dashboard/services/srl': 'srl',
+  '/dashboard/services/pfa': 'pfa',
+  '/dashboard/services/legal-forms': 'legal-forms',
+  '/dashboard/services/templates': 'templates',
+  '/dashboard/documents': 'documents',
+  '/dashboard/ocr': 'ocr',
+  '/dashboard/invoices': 'invoices',
+  '/dashboard/efactura': 'efactura',
+  '/dashboard/finance': 'finance',
+  '/dashboard/accounting': 'accounting',
+  '/dashboard/payments': 'payments',
+  '/dashboard/vat': 'vat',
+  '/dashboard/saft': 'saft',
+  '/dashboard/reports': 'reports',
+  '/dashboard/projects': 'projects',
+  '/dashboard/ecommerce': 'ecommerce',
+  '/dashboard/crm': 'crm',
+  '/dashboard/partners': 'partners',
+  '/dashboard/warehouse': 'warehouse',
+  '/dashboard/procurement': 'procurement',
+  '/dashboard/logistics': 'logistics',
+  '/dashboard/fleet': 'fleet',
+  '/dashboard/quality': 'quality',
+  '/dashboard/hse': 'hse',
+  '/dashboard/audit': 'audit',
+  '/dashboard/hr': 'hr',
+  '/dashboard/payroll': 'payroll',
+  '/dashboard/contracts': 'contracts',
+  '/dashboard/freelancer': 'freelancer',
+  '/dashboard/lms': 'lms',
+  '/dashboard/employee-portal': 'employee-portal',
+  '/dashboard/scheduling': 'scheduling',
+  '/dashboard/forum': 'forum',
+  '/dashboard/blog': 'blog',
+  '/dashboard/developer': 'developer',
+  '/dashboard/integrations': 'integrations',
+  '/dashboard/webhooks': 'webhooks',
+  '/dashboard/roadmap': 'roadmap',
+  '/dashboard/tutorials': 'tutorials',
+  '/dashboard/help': 'help',
+  '/dashboard/ai-assistant': 'ai-assistant',
+  '/dashboard/settings': 'settings',
+  '/dashboard/admin': 'admin',
+  '/dashboard/monitoring': 'monitoring',
+  '/dashboard/simulation': 'simulation',
+  '/dashboard/client-portal': 'client-portal',
+  '/dashboard/workflow': 'workflow',
+};
+
 export function DashboardSidebar() {
   const t = useTranslations('sidebar');
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showConfigModal, setShowConfigModal] = useState(false);
+
+  // Dashboard preferences hook
+  const { preferences, isModuleEnabled } = useDashboardPreferences();
+
+  // Filter nav items based on user preferences
+  const filteredNavItems = useMemo(() => {
+    if (!preferences) return navItems;
+
+    return navItems.filter(item => {
+      const moduleId = hrefToModuleId[item.href];
+      // Always show dashboard and settings
+      if (moduleId === 'dashboard' || moduleId === 'settings') return true;
+      // Check if module is enabled
+      return moduleId ? isModuleEnabled(moduleId) : true;
+    });
+  }, [preferences, isModuleEnabled]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -257,7 +330,7 @@ export function DashboardSidebar() {
 
       {/* Navigation */}
       <nav className="flex-1 p-2 space-y-0.5 sm:space-y-1 overflow-y-auto">
-        {navItems.map((item) => {
+        {filteredNavItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.href);
           const fullHref = `/${locale}${item.href}`;
@@ -287,7 +360,24 @@ export function DashboardSidebar() {
       </nav>
 
       {/* Settings at bottom */}
-      <div className="p-2 border-t border-gray-200">
+      <div className="p-2 border-t border-gray-200 space-y-1">
+        {/* Module Configuration Button */}
+        <button
+          onClick={() => setShowConfigModal(true)}
+          className={`
+            w-full flex items-center gap-2 sm:gap-3 px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-lg transition-colors
+            text-gray-600 hover:bg-blue-50 hover:text-blue-700 active:bg-blue-100
+            ${!isMobile && collapsed ? 'justify-center' : ''}
+          `}
+          title={!isMobile && collapsed ? (t('configureModules') || 'Configurează Module') : undefined}
+        >
+          <Cog className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+          {(isMobile || !collapsed) && (
+            <span className="truncate text-sm sm:text-base">{t('configureModules') || 'Configurează Module'}</span>
+          )}
+        </button>
+
+        {/* Settings Link */}
         <a
           href={`/${locale}/dashboard/settings`}
           onClick={() => isMobile && setMobileOpen(false)}
@@ -356,6 +446,12 @@ export function DashboardSidebar() {
       >
         <SidebarContent isMobile={false} />
       </aside>
+
+      {/* Module Configuration Modal */}
+      <ModuleConfigModal
+        isOpen={showConfigModal}
+        onClose={() => setShowConfigModal(false)}
+      />
     </>
   );
 }

@@ -25,10 +25,13 @@ import { InvoiceAnalyticsService } from './invoice-analytics.service';
 import { InvoiceAnalyticsController } from './invoice-analytics.controller';
 import { ExchangeRateService } from './exchange-rate.service';
 import { ExchangeRateController } from './exchange-rate.controller';
+import { VatSimulatorService } from './vat-simulator.service';
+import { VatSimulatorController } from './vat-simulator.controller';
 import { PrismaModule } from '../prisma/prisma.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [PrismaModule, EventEmitterModule.forRoot()],
+  imports: [PrismaModule, EventEmitterModule.forRoot(), AuthModule],
   controllers: [
     FinanceController,
     VatController,
@@ -42,6 +45,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     ReconciliationController,
     InvoiceAnalyticsController,
     ExchangeRateController,
+    VatSimulatorController,
   ],
   providers: [
     FinanceService,
@@ -57,6 +61,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     ReconciliationService,
     InvoiceAnalyticsService,
     ExchangeRateService,
+    VatSimulatorService,
   ],
   exports: [
     FinanceService,
@@ -72,6 +77,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     ReconciliationService,
     InvoiceAnalyticsService,
     ExchangeRateService,
+    VatSimulatorService,
   ],
 })
 export class FinanceModule {}

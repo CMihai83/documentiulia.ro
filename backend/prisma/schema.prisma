@@ -206,15 +206,48 @@ model User {
   products      Product[]
   contracts     Contract[]
 
+  // Dashboard customization preferences
+  dashboardPreferences DashboardPreferences?
+
   @@index([clerkId])
   @@index([email])
   @@index([activeOrganizationId])
+}
+
+// Dashboard Module Customization Preferences
+model DashboardPreferences {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Enabled modules (JSON array of module IDs)
+  enabledModules  Json      @default("[\"dashboard\",\"analytics\",\"invoices\",\"finance\",\"crm\",\"hr\"]")
+
+  // Module order (JSON array for drag-drop reordering)
+  moduleOrder     Json      @default("[]")
+
+  // Collapsed sections (JSON array of section IDs)
+  collapsedSections Json    @default("[]")
+
+  // Dashboard layout preferences
+  sidebarCollapsed Boolean  @default(false)
+  compactMode      Boolean  @default(false)
+  darkMode         Boolean  @default(false)
+
+  // Widget preferences for main dashboard
+  dashboardWidgets Json     @default("[\"overview\",\"cashFlow\",\"vatChart\",\"recentInvoices\",\"alerts\"]")
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId])
 }
 
 enum Tier {
   FREE
   PRO
   BUSINESS
+  ENTERPRISE
 }
 
 enum UserRole {
