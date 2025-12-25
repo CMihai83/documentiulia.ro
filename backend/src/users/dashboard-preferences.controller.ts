@@ -7,6 +7,7 @@
 import { Controller, Get, Put, Post, Delete, Body, Param, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Public } from '../auth/public.decorator';
 import { DashboardPreferencesService, DashboardPreferencesDto, ALL_DASHBOARD_MODULES } from './dashboard-preferences.service';
 
 class UpdatePreferencesDto implements Partial<DashboardPreferencesDto> {
@@ -69,6 +70,7 @@ export class DashboardPreferencesController {
   }
 
   @Get('all-modules')
+  @Public()
   @ApiOperation({ summary: 'Get list of all dashboard modules' })
   @ApiResponse({ status: 200, description: 'All dashboard modules' })
   getAllModules() {
