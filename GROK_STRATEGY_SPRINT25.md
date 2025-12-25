@@ -15,7 +15,7 @@
 - [x] Task 2.1: Develop complete SRL formation services ✅ DONE Dec 25
 - [x] Task 2.2: Create PFA registration services ✅ DONE Dec 25
 - [x] Task 2.3: Develop services for SA, SNC, SCS, ONG ✅ DONE Dec 25
-- [x] Task 2.4: Produce 50+ LMS lessons ✅ DONE - 1,808 lessons across 67 courses
+- [x] Task 2.4: Produce 50+ LMS lessons ✅ DONE - 1,856 lessons across 72 courses
 - [x] Task 2.5: Write 20+ blog articles (SEO optimized) ✅ DONE - 38 articles (10 business formation)
 - [ ] Task 2.6: Create forum content
 - [ ] Task 2.7: Produce video tutorials
@@ -117,7 +117,7 @@
 3. ✅ **Create PFA Formation Page** `/services/inregistrare-pfa` - DONE
 4. ✅ **Create Other Legal Forms Page** `/services/forme-juridice` - DONE
 5. ✅ **Add 10 New Blog Articles** on business formation - DONE (38 total articles)
-6. [ ] **Add 5 New LMS Courses** on starting a business
+6. ✅ **Add 5 New LMS Courses** on starting a business - DONE (72 total courses, 1,856 lessons)
 7. ✅ **Create Templates Library** for contracts/invoices - DONE (17 templates)
 
 ---
