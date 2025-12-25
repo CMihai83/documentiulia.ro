@@ -11,6 +11,7 @@ import { QueryProvider } from '@/components/QueryProvider';
 import { ClientClerkProvider } from '@/components/providers/ClientClerkProvider';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { ToastProvider } from '@/components/ui/Toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -49,13 +50,15 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
           <NextIntlClientProvider messages={messages}>
             <QueryProvider>
               <ThemeProvider>
-                <AuthProvider>
-                  <div className="min-h-screen flex flex-col">
-                    <Navbar />
-                    <main className="flex-1">{children}</main>
-                    <Footer />
-                  </div>
-                </AuthProvider>
+                <ToastProvider>
+                  <AuthProvider>
+                    <div className="min-h-screen flex flex-col">
+                      <Navbar />
+                      <main className="flex-1">{children}</main>
+                      <Footer />
+                    </div>
+                  </AuthProvider>
+                </ToastProvider>
               </ThemeProvider>
             </QueryProvider>
           </NextIntlClientProvider>
