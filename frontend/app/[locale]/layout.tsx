@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { ClerkProvider } from '@clerk/nextjs';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -9,6 +8,9 @@ import '../globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { QueryProvider } from '@/components/QueryProvider';
+import { ClientClerkProvider } from '@/components/providers/ClientClerkProvider';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -41,20 +43,24 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   const messages = await getMessages();
 
   return (
-    <ClerkProvider>
+    <ClientClerkProvider>
       <html lang={locale}>
         <body className={inter.className}>
           <NextIntlClientProvider messages={messages}>
             <QueryProvider>
-              <div className="min-h-screen flex flex-col">
-                <Navbar />
-                <main className="flex-1">{children}</main>
-                <Footer />
-              </div>
+              <ThemeProvider>
+                <AuthProvider>
+                  <div className="min-h-screen flex flex-col">
+                    <Navbar />
+                    <main className="flex-1">{children}</main>
+                    <Footer />
+                  </div>
+                </AuthProvider>
+              </ThemeProvider>
             </QueryProvider>
           </NextIntlClientProvider>
         </body>
       </html>
-    </ClerkProvider>
+    </ClientClerkProvider>
   );
 }
