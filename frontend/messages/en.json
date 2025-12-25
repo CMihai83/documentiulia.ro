@@ -444,6 +444,7 @@
     "cancel": "Cancel",
     "save": "Save",
     "saving": "Saving...",
+    "saveChanges": "Save Changes",
     "enabledModules": "Enabled Modules",
     "disabledModules": "Disabled Modules",
     "moduleSettings": "Module Settings",
