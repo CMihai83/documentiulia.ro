@@ -8,6 +8,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { FinanceModule } from './finance/finance.module';
 import { SagaModule } from './saga/saga.module';
 import { AnafModule } from './anaf/anaf.module';
+import { VatModule } from './vat/vat.module';
+import { ServicesModule } from './services/services.module';
 import { HrModule } from './hr/hr.module';
 import { AiModule } from './ai/ai.module';
 import { AIAssistantModule } from './ai-assistant/ai-assistant.module';
@@ -150,6 +152,8 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     ExpenseManagementModule,
     // ANAF Compliance
     AnafModule,
+    VatModule,
+    ServicesModule,
     ComplianceModule,
     AuditModule,
     GdprModule,

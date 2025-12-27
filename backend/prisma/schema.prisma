@@ -198,6 +198,10 @@ model User {
   invoices      Invoice[]
   vatReports    VATReport[]
   saftReports   SAFTReport[]
+  vatD300Declarations VatD300Declaration[]
+  vatD394Declarations VatD394Declaration[]
+  srlRegistrations SrlRegistration[]
+  pfaRegistrations PfaRegistration[]
   employees     Employee[]
   aiQueries     AIQuery[]
   auditLogs     AuditLog[]
@@ -515,6 +519,296 @@ enum ReportStatus {
   SUBMITTED
   ACCEPTED
   REJECTED
+}
+
+// VAT D300 Monthly Declarations
+model VatD300Declaration {
+  id              String        @id @default(cuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id])
+
+  cui             String
+  companyName     String
+  month           Int           // 1-12
+  year            Int
+
+  // Section A - Output VAT
+  outputTaxableBase19       Decimal @db.Decimal(14, 2)
+  outputVat19               Decimal @db.Decimal(14, 2)
+  outputTaxableBase9        Decimal @db.Decimal(14, 2)
+  outputVat9                Decimal @db.Decimal(14, 2)
+  outputTaxableBase5        Decimal @db.Decimal(14, 2)
+  outputVat5                Decimal @db.Decimal(14, 2)
+  exemptWithDeduction       Decimal @db.Decimal(14, 2)
+  exemptWithoutDeduction    Decimal @db.Decimal(14, 2)
+  reverseChargeBase         Decimal @db.Decimal(14, 2)
+  intraCommunityDeliveries  Decimal @db.Decimal(14, 2)
+  exports                   Decimal @db.Decimal(14, 2)
+
+  // Section B - Input VAT
+  inputVat19                        Decimal @db.Decimal(14, 2)
+  inputVat9                         Decimal @db.Decimal(14, 2)
+  inputVat5                         Decimal @db.Decimal(14, 2)
+  importVat                         Decimal @db.Decimal(14, 2)
+  intraCommunityAcquisitionsBase    Decimal @db.Decimal(14, 2)
+  intraCommunityAcquisitionsVat     Decimal @db.Decimal(14, 2)
+  reverseChargeInputVat             Decimal @db.Decimal(14, 2)
+
+  // Section C - Calculated totals
+  totalOutputVat            Decimal @db.Decimal(14, 2)
+  totalInputVat             Decimal @db.Decimal(14, 2)
+  vatPayable                Decimal @db.Decimal(14, 2)
+
+  // Section D - Intra-community transactions
+  intraCommunityTransactions Json?
+
+  // Additional data
+  notes                     String? @db.Text
+  legalRepresentativeName   String?
+  legalRepresentativeCnp    String?
+
+  // Status and submission
+  status                    String  @default("DRAFT") // DRAFT, SUBMITTED, ACCEPTED, REJECTED
+  submittedAt               DateTime?
+  anafReferenceNumber       String?
+
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+
+  @@unique([userId, cui, month, year])
+  @@index([userId])
+  @@index([cui])
+  @@index([year, month])
+  @@index([status])
+}
+
+// VAT D394 Quarterly Declarations
+model VatD394Declaration {
+  id              String        @id @default(cuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id])
+
+  cui             String
+  companyName     String
+  quarter         Int           // 1-4
+  year            Int
+
+  // Section 1 - Acquisitions
+  acquisitions              Json? // Array of EuTransactionDto
+  totalAcquisitionsBase     Decimal @db.Decimal(14, 2)
+  totalAcquisitionsVat      Decimal @db.Decimal(14, 2)
+
+  // Section 2 - Deliveries
+  deliveries                Json? // Array of EuTransactionDto
+  totalDeliveriesValue      Decimal @db.Decimal(14, 2)
+
+  // Section 3 - Services
+  servicesProvided          Json? // Array of EuTransactionDto
+  totalServicesProvidedValue Decimal @db.Decimal(14, 2)
+  servicesReceived          Json? // Array of EuTransactionDto
+  totalServicesReceivedBase Decimal @db.Decimal(14, 2)
+  totalServicesReceivedVat  Decimal @db.Decimal(14, 2)
+
+  // Section 4 - Triangular operations
+  triangularSimplification  Decimal? @db.Decimal(14, 2)
+  triangularDeliveries      Decimal? @db.Decimal(14, 2)
+  triangularAcquisitions    Decimal? @db.Decimal(14, 2)
+
+  // Section 5 - Corrections
+  acquisitionsCorrectionsBase   Decimal? @db.Decimal(14, 2)
+  acquisitionsCorrectionsVat    Decimal? @db.Decimal(14, 2)
+  deliveriesCorrectionsValue    Decimal? @db.Decimal(14, 2)
+  servicesProvidedCorrectionsValue Decimal? @db.Decimal(14, 2)
+  servicesReceivedCorrectionsBase  Decimal? @db.Decimal(14, 2)
+  servicesReceivedCorrectionsVat   Decimal? @db.Decimal(14, 2)
+
+  // VIES validation
+  viesValidated             Boolean @default(false)
+  viesValidationDate        String?
+  invalidVatIds             String[] @default([])
+
+  // References to monthly D300
+  monthlyD300Ids            String[] @default([])
+  isReconciled              Boolean @default(false)
+
+  // Additional data
+  notes                     String? @db.Text
+  isAmendment               Boolean @default(false)
+  originalDeclarationNumber String?
+  legalRepresentativeName   String?
+  legalRepresentativeCnp    String?
+
+  // Status and submission
+  status                    String  @default("DRAFT") // DRAFT, SUBMITTED, ACCEPTED, REJECTED
+  submittedAt               DateTime?
+  anafReferenceNumber       String?
+
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+
+  @@unique([userId, cui, quarter, year])
+  @@index([userId])
+  @@index([cui])
+  @@index([year, quarter])
+  @@index([status])
+}
+
+// Services Module - Business Registration
+model SrlRegistration {
+  id                   String   @id @default(cuid())
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id])
+
+  status               String   // DRAFT, SUBMITTED, UNDER_REVIEW, APPROVED, COMPLETED, REJECTED, CANCELLED
+  companyType          String
+  companyName          String
+  alternativeName1     String?
+  alternativeName2     String?
+  county               String
+  city                 String
+  sector               String?
+  street               String
+  streetNumber         String
+  building             String?
+  staircase            String?
+  floor                String?
+  apartment            String?
+  postalCode           String
+  shareCapital         Decimal  @db.Decimal(14, 2)
+  totalShares          Int
+  shareNominalValue    Decimal  @db.Decimal(14, 2)
+  businessPurpose      String   @db.Text
+  companyDuration      Int      @default(99)
+  contactEmail         String
+  contactPhone         String
+  notes                String?  @db.Text
+  registrationFee      Decimal  @db.Decimal(10, 2)
+  onrcFee              Decimal  @db.Decimal(10, 2)
+  serviceFee           Decimal  @db.Decimal(10, 2)
+  cui                  String?
+  registrationNumber   String?
+  onrcReferenceNumber  String?
+  submittedAt          DateTime?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  shareholders         Shareholder[]
+  administrators       Administrator[]
+  activities           CompanyActivity[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([cui])
+}
+
+model Shareholder {
+  id                 String   @id @default(cuid())
+  registrationId     String
+  registration       SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  type               String   // INDIVIDUAL, COMPANY
+  name               String
+  cnp                String?
+  cui                String?
+  address            String
+  email              String
+  phone              String?
+  shares             Int
+  contribution       Decimal  @db.Decimal(14, 2)
+  percentage         Decimal  @db.Decimal(5, 2)
+  createdAt          DateTime @default(now())
+
+  @@index([registrationId])
+}
+
+model Administrator {
+  id                     String   @id @default(cuid())
+  registrationId         String
+  registration           SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  name                   String
+  cnp                    String
+  address                String
+  email                  String
+  phone                  String?
+  isSoleAdministrator    Boolean  @default(false)
+  createdAt              DateTime @default(now())
+
+  @@index([registrationId])
+}
+
+model CompanyActivity {
+  id                 String   @id @default(cuid())
+  registrationId     String
+  registration       SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  caenCode           String
+  description        String
+  isPrimary          Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  @@index([registrationId])
+  @@index([caenCode])
+}
+
+model PfaRegistration {
+  id                   String   @id @default(cuid())
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id])
+
+  status               String   // DRAFT, SUBMITTED, UNDER_REVIEW, APPROVED, COMPLETED, REJECTED, CANCELLED
+  fullName             String
+  cnp                  String   @unique
+  idCardNumber         String
+  idCardIssuedBy       String
+  idCardIssuedDate     DateTime
+  county               String
+  city                 String
+  sector               String?
+  street               String
+  streetNumber         String
+  building             String?
+  staircase            String?
+  floor                String?
+  apartment            String?
+  postalCode           String
+  email                String
+  phone                String
+  tradeName            String?
+  activityType         String
+  activityDescription  String   @db.Text
+  businessAddress      String?
+  needsCommercialSpace Boolean  @default(false)
+  expectedEmployees    Int      @default(0)
+  notes                String?  @db.Text
+  registrationFee      Decimal  @db.Decimal(10, 2)
+  anafFee              Decimal  @db.Decimal(10, 2)
+  serviceFee           Decimal  @db.Decimal(10, 2)
+  cui                  String?
+  anafReferenceNumber  String?
+  submittedAt          DateTime?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  activities           PfaActivity[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([cnp])
+  @@index([cui])
+}
+
+model PfaActivity {
+  id                 String   @id @default(cuid())
+  registrationId     String
+  registration       PfaRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  caenCode           String
+  description        String
+  isPrimary          Boolean  @default(false)
+  createdAt          DateTime @default(now())
+
+  @@index([registrationId])
 }
 
 // HR Module
