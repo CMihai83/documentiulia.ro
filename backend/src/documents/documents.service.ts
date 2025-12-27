@@ -1,5 +1,7 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { createReadStream } from 'fs';
+import { stat } from 'fs/promises';
 
 @Injectable()
 export class DocumentsService {
@@ -54,6 +56,42 @@ export class DocumentsService {
     return this.prisma.document.findUnique({
       where: { id },
     });
+  }
+
+  async downloadDocument(documentId: string, userId?: string) {
+    const document = await this.prisma.document.findUnique({
+      where: { id: documentId },
+    });
+
+    if (!document) {
+      throw new NotFoundException('Document not found');
+    }
+
+    // Verify user has access to this document
+    if (userId && document.userId !== userId) {
+      throw new ForbiddenException('You do not have permission to download this document');
+    }
+
+    // Extract file path from fileUrl (format: /uploads/documents/filename.ext)
+    const filePath = document.fileUrl.startsWith('/')
+      ? `.${document.fileUrl}`
+      : document.fileUrl;
+
+    // Check if file exists
+    try {
+      await stat(filePath);
+    } catch (error) {
+      this.logger.error(`File not found at path: ${filePath}`, error);
+      throw new NotFoundException('Document file not found on server');
+    }
+
+    const file = createReadStream(filePath);
+
+    return {
+      file,
+      filename: document.filename,
+      mimetype: document.fileType,
+    };
   }
 
   async deleteDocument(id: string) {

@@ -12,6 +12,8 @@ import {
   UploadedFile,
   UploadedFiles,
   Request,
+  Response,
+  StreamableFile,
   BadRequestException,
   NotFoundException,
 } from '@nestjs/common';
@@ -117,6 +119,24 @@ export class DocumentsController {
   @ApiOperation({ summary: 'Get all documents' })
   async getDocuments(@Query('userId') userId: string) {
     return this.documentsService.getDocuments(userId);
+  }
+
+  @Get(':id/download')
+  @ApiOperation({ summary: 'Download document file' })
+  async downloadDocument(
+    @Param('id') id: string,
+    @Request() req: any,
+    @Response({ passthrough: true }) res: any,
+  ) {
+    const userId = req.user?.id;
+    const { file, filename, mimetype } = await this.documentsService.downloadDocument(id, userId);
+
+    res.set({
+      'Content-Type': mimetype,
+      'Content-Disposition': `attachment; filename="${filename}"`,
+    });
+
+    return new StreamableFile(file);
   }
 
   @Get(':id')
