@@ -6,6 +6,8 @@ import { KanbanService } from './kanban.service';
 import { KanbanController } from './kanban.controller';
 import { TimeTrackingService } from './time-tracking.service';
 import { TimeTrackingController } from './time-tracking.controller';
+import { EpicsService } from './epics.service';
+import { EpicsController } from './epics.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
@@ -14,16 +16,19 @@ import { PrismaModule } from '../prisma/prisma.module';
     TasksController,
     KanbanController,
     TimeTrackingController,
+    EpicsController,
   ],
   providers: [
     TasksService,
     KanbanService,
     TimeTrackingService,
+    EpicsService,
   ],
   exports: [
     TasksService,
     KanbanService,
     TimeTrackingService,
+    EpicsService,
   ],
 })
 export class ProjectManagementModule {}
