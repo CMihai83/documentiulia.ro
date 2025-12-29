@@ -1,12 +1,16 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { RateLimiterService } from '../security/rate-limiter.service';
 import axios from 'axios';
 
 @Injectable()
 export class AnafService {
   private readonly logger = new Logger(AnafService.name);
 
-  constructor(private configService: ConfigService) {}
+  constructor(
+    private configService: ConfigService,
+    private rateLimiter: RateLimiterService,
+  ) {}
 
   // Validate CUI (Romanian company ID)
   async validateCUI(cui: string): Promise<{
@@ -19,6 +23,20 @@ export class AnafService {
     };
     error?: string;
   }> {
+    // Check rate limit for ANAF API calls
+    const rateLimitKey = `anaf:cui:${cui.substring(0, 4)}`; // Group by first 4 digits to avoid too many keys
+    const rateLimitResult = await this.rateLimiter.consumeRateLimit('INTEGRATION', rateLimitKey, {
+      integrationType: 'ANAF'
+    });
+
+    if (!rateLimitResult.allowed) {
+      this.logger.warn(`ANAF CUI validation rate limited for CUI ${cui}`);
+      return {
+        valid: false,
+        error: `Rate limit exceeded. Try again in ${Math.ceil((rateLimitResult.retryAfterMs || 5000) / 1000)} seconds.`,
+      };
+    }
+
     const cuiApiUrl = this.configService.get('ANAF_CUI_API_URL') || 'https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva';
     const cleanCui = parseInt(cui.replace(/\D/g, ''));
     const today = new Date().toISOString().split('T')[0];
@@ -74,6 +92,17 @@ export class AnafService {
     cui: string,
     period: string,
   ): Promise<{ reference: string; status: string }> {
+    // Check rate limit for ANAF API calls
+    const rateLimitKey = `anaf:saft:${cui}`;
+    const rateLimitResult = await this.rateLimiter.consumeRateLimit('INTEGRATION', rateLimitKey, {
+      integrationType: 'ANAF'
+    });
+
+    if (!rateLimitResult.allowed) {
+      this.logger.warn(`ANAF SAF-T submission rate limited for CUI ${cui}`);
+      throw new Error(`Rate limit exceeded. Try again in ${Math.ceil((rateLimitResult.retryAfterMs || 5000) / 1000)} seconds.`);
+    }
+
     const apiKey = this.configService.get('ANAF_API_KEY');
 
     try {

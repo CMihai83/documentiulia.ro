@@ -2,6 +2,7 @@ import { Injectable, Logger, UnauthorizedException, BadRequestException } from '
 import { ConfigService } from '@nestjs/config';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { PrismaService } from '../prisma/prisma.service';
+import { RateLimiterService } from '../security/rate-limiter.service';
 import { SpvStatus, SpvMessageType, SpvMessageStatus, SpvSubmissionType, SpvSubmissionStatus } from '@prisma/client';
 import axios, { AxiosInstance } from 'axios';
 import * as crypto from 'crypto';
@@ -44,6 +45,7 @@ export class SpvService {
   constructor(
     private configService: ConfigService,
     private prisma: PrismaService,
+    private rateLimiter: RateLimiterService,
   ) {
     this.client = axios.create({
       timeout: 30000,
@@ -108,6 +110,17 @@ export class SpvService {
       const clientSecret = this.configService.get('ANAF_CLIENT_SECRET');
       const redirectUri = this.configService.get('ANAF_REDIRECT_URI') ||
         `${this.configService.get('APP_URL')}/api/v1/spv/oauth/callback`;
+
+      // Check rate limit for ANAF OAuth calls
+      const rateLimitKey = `anaf:oauth:${userId}`;
+      const rateLimitResult = await this.rateLimiter.consumeRateLimit('INTEGRATION', rateLimitKey, {
+        integrationType: 'ANAF'
+      });
+
+      if (!rateLimitResult.allowed) {
+        this.logger.warn(`ANAF OAuth rate limited for user ${userId}`);
+        throw new BadRequestException(`Rate limit exceeded. Try again in ${Math.ceil((rateLimitResult.retryAfterMs || 5000) / 1000)} seconds.`);
+      }
 
       // Exchange code for token
       const response = await this.client.post<AnafOAuthTokenResponse>(
@@ -190,6 +203,17 @@ export class SpvService {
     }
 
     try {
+      // Check rate limit for ANAF OAuth refresh calls
+      const rateLimitKey = `anaf:oauth-refresh:${userId}`;
+      const rateLimitResult = await this.rateLimiter.consumeRateLimit('INTEGRATION', rateLimitKey, {
+        integrationType: 'ANAF'
+      });
+
+      if (!rateLimitResult.allowed) {
+        this.logger.warn(`ANAF OAuth refresh rate limited for user ${userId}`);
+        return false;
+      }
+
       const clientId = this.configService.get('ANAF_CLIENT_ID');
       const clientSecret = this.configService.get('ANAF_CLIENT_SECRET');
 

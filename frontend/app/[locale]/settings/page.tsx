@@ -17,6 +17,8 @@ import {
   requestDataDeletion,
   type GdprExportData
 } from '@/lib/gdpr-export';
+import { MFASetup } from '@/components/auth/MFASetup';
+import { BackupCodes } from '@/components/auth/BackupCodes';
 
 interface SagaStatus {
   connected: boolean;
@@ -53,6 +55,13 @@ interface SpvDeadlines {
     currentStatus: string;
     daysUntilMandatory: number;
   };
+}
+
+interface MfaStatus {
+  enabled: boolean;
+  method: 'totp' | null;
+  backupCodesCount: number;
+  lastUsed: string | null;
 }
 
 interface SyncResult {
@@ -103,11 +112,19 @@ export default function SettingsPage() {
   const [spvDisconnecting, setSpvDisconnecting] = useState(false);
   const [spvMessage, setSpvMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
+  // MFA State
+  const [mfaStatus, setMfaStatus] = useState<MfaStatus | null>(null);
+  const [mfaLoading, setMfaLoading] = useState(true);
+  const [showMfaSetup, setShowMfaSetup] = useState(false);
+  const [showBackupCodes, setShowBackupCodes] = useState(false);
+  const [backupCodes, setBackupCodes] = useState<string[]>([]);
+
   useEffect(() => {
     fetchSagaStatus();
     fetchSpvStatus();
     fetchSpvDeadlines();
     fetchNotificationPreferences();
+    fetchMfaStatus();
   }, [token]);
 
   // Handle SPV OAuth callback
@@ -240,6 +257,38 @@ export default function SettingsPage() {
       });
     } finally {
       setNotifPrefsLoading(false);
+    }
+  };
+
+  const fetchMfaStatus = async () => {
+    if (!token) return;
+
+    try {
+      const response = await fetch(`${API_URL}/auth/mfa/status`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setMfaStatus(data);
+      } else {
+        setMfaStatus({
+          enabled: false,
+          method: null,
+          backupCodesCount: 0,
+          lastUsed: null,
+        });
+      }
+    } catch (error) {
+      console.error('Failed to fetch MFA status:', error);
+      setMfaStatus({
+        enabled: false,
+        method: null,
+        backupCodesCount: 0,
+        lastUsed: null,
+      });
+    } finally {
+      setMfaLoading(false);
     }
   };
 
@@ -561,6 +610,50 @@ export default function SettingsPage() {
     if (success) {
       setDeletionRequested(true);
       setShowDeleteConfirm(false);
+    }
+  };
+
+  const handleMfaSetupComplete = async (codes: string[]) => {
+    setBackupCodes(codes);
+    setShowMfaSetup(false);
+    setShowBackupCodes(true);
+    await fetchMfaStatus(); // Refresh MFA status
+  };
+
+  const handleRegenerateBackupCodes = async () => {
+    if (!token) return;
+
+    try {
+      const response = await fetch(`${API_URL}/auth/mfa/regenerate-backup-codes`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setBackupCodes(data.backupCodes);
+        setShowBackupCodes(true);
+        await fetchMfaStatus(); // Refresh MFA status
+      }
+    } catch (error) {
+      console.error('Failed to regenerate backup codes:', error);
+    }
+  };
+
+  const handleDisableMfa = async () => {
+    if (!token) return;
+
+    try {
+      const response = await fetch(`${API_URL}/auth/mfa/disable`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (response.ok) {
+        await fetchMfaStatus(); // Refresh MFA status
+      }
+    } catch (error) {
+      console.error('Failed to disable MFA:', error);
     }
   };
 
@@ -953,6 +1046,108 @@ export default function SettingsPage() {
                   <div className="text-xs text-gray-500">Generează și trimite raportul D406</div>
                 </div>
               </a>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Security Section */}
+      <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Shield className="w-5 h-5 text-green-600" />
+          Securitate și Autentificare
+        </h2>
+
+        {/* MFA Status */}
+        <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+          <h3 className="font-medium mb-3">Autentificare Multi-Factor (MFA)</h3>
+          {mfaLoading ? (
+            <div className="flex items-center gap-2 text-gray-500">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Se încarcă statusul MFA...
+            </div>
+          ) : mfaStatus ? (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  {mfaStatus.enabled ? (
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                  ) : (
+                    <XCircle className="w-5 h-5 text-red-500" />
+                  )}
+                  <span className={mfaStatus.enabled ? 'text-green-700' : 'text-red-700'}>
+                    {mfaStatus.enabled ? 'MFA Activată' : 'MFA Dezactivată'}
+                  </span>
+                </div>
+                {mfaStatus.enabled && mfaStatus.lastUsed && (
+                  <div className="text-sm text-gray-600">
+                    Ultima utilizare: {new Date(mfaStatus.lastUsed).toLocaleDateString('ro-RO')}
+                  </div>
+                )}
+              </div>
+
+              {mfaStatus.enabled && (
+                <div className="text-sm text-gray-600">
+                  <div>Coduri de rezervă disponibile: {mfaStatus.backupCodesCount}</div>
+                  <div className="mt-2 flex gap-2">
+                    <button
+                      onClick={handleRegenerateBackupCodes}
+                      className="px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm"
+                    >
+                      Regenerează Coduri
+                    </button>
+                    <button
+                      onClick={handleDisableMfa}
+                      className="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 text-sm"
+                    >
+                      Dezactivează MFA
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {!mfaStatus.enabled && (
+                <button
+                  onClick={() => setShowMfaSetup(true)}
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm font-medium"
+                >
+                  Activează MFA
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="text-gray-500">Nu se poate încărca statusul MFA</div>
+          )}
+        </div>
+
+        {/* MFA Setup Modal */}
+        {showMfaSetup && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+              <MFASetup
+                onComplete={handleMfaSetupComplete}
+                onCancel={() => setShowMfaSetup(false)}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Backup Codes Modal */}
+        {showBackupCodes && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+              <BackupCodes
+                codes={backupCodes}
+                onRegenerate={handleRegenerateBackupCodes}
+              />
+              <div className="mt-4 flex justify-end">
+                <button
+                  onClick={() => setShowBackupCodes(false)}
+                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+                >
+                  Închide
+                </button>
+              </div>
             </div>
           </div>
         )}

@@ -9,6 +9,7 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiQuery, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import {
   EuVatService,
@@ -53,6 +54,7 @@ class MultiCurrencyVATDto {
 }
 
 @Controller('eu-vat')
+@ApiTags('EU VAT')
 export class EuVatController {
   constructor(private readonly euVatService: EuVatService) {}
 
@@ -60,6 +62,8 @@ export class EuVatController {
    * Get all EU member states with VAT rates (public)
    */
   @Get('countries')
+  @ApiOperation({ summary: 'Get all EU countries with VAT rates' })
+  @ApiResponse({ status: 200, description: 'List of EU countries with their VAT rates' })
   getAllCountries(): EUCountryVATRates[] {
     return this.euVatService.getAllCountries();
   }
@@ -68,6 +72,10 @@ export class EuVatController {
    * Get VAT rates for a specific EU country (public)
    */
   @Get('countries/:countryCode')
+  @ApiOperation({ summary: 'Get VAT rates for a specific EU country' })
+  @ApiParam({ name: 'countryCode', description: 'Two-letter country code (e.g., RO, DE, FR)' })
+  @ApiResponse({ status: 200, description: 'VAT rates for the specified country' })
+  @ApiResponse({ status: 404, description: 'Country not found' })
   async getCountryRates(@Param('countryCode') countryCode: string): Promise<EUCountryVATRates> {
     return await this.euVatService.getCountryRates(countryCode);
   }
@@ -109,6 +117,9 @@ export class EuVatController {
    */
   @Post('calculate')
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Calculate VAT amount for EU transactions' })
+  @ApiResponse({ status: 200, description: 'VAT calculation result' })
+  @ApiResponse({ status: 400, description: 'Invalid input parameters' })
   async calculateVAT(@Body() dto: CalculateVATDto): Promise<EUVATCalculation> {
     return await this.euVatService.calculateVAT(
       dto.countryCode,
@@ -133,6 +144,11 @@ export class EuVatController {
   @Post('validate/vies')
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Validate VAT number against VIES database' })
+  @ApiResponse({ status: 200, description: 'VIES validation result' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 400, description: 'Invalid VAT number format' })
   async validateVIES(@Body() dto: ValidateVATDto): Promise<VIESValidationResult> {
     return this.euVatService.validateVIES(dto.vatNumber);
   }
