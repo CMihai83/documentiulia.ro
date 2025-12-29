@@ -67,10 +67,12 @@ import {
   endGame,
   getAvailableDecisions,
   getPendingEvents,
+  getAIRecommendations,
   type GameDetails,
   type SimulationEvent,
   type AvailableDecision,
-  type HealthScores
+  type HealthScores,
+  type AIRecommendation
 } from '@/lib/api/simulation';
 
 // Decision categories with icons
@@ -117,6 +119,7 @@ export default function SimulationGamePage() {
   const [gameDetails, setGameDetails] = useState<GameDetails | null>(null);
   const [decisions, setDecisions] = useState<AvailableDecision[]>([]);
   const [pendingEvents, setPendingEvents] = useState<SimulationEvent[]>([]);
+  const [aiRecommendations, setAiRecommendations] = useState<AIRecommendation[]>([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -124,6 +127,7 @@ export default function SimulationGamePage() {
   const [decisionParams, setDecisionParams] = useState<Record<string, unknown>>({});
   const [showEventModal, setShowEventModal] = useState(false);
   const [currentEvent, setCurrentEvent] = useState<SimulationEvent | null>(null);
+  const [showAIRecommendations, setShowAIRecommendations] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -165,6 +169,18 @@ export default function SimulationGamePage() {
 
       // Update game details
       await loadGameData();
+
+      // Fetch AI recommendations after advancing month
+      try {
+        const recommendations = await getAIRecommendations(gameId);
+        if (recommendations && recommendations.length > 0) {
+          setAiRecommendations(recommendations);
+          setShowAIRecommendations(true);
+        }
+      } catch (aiErr) {
+        console.error('Failed to load AI recommendations:', aiErr);
+        // Don't show error to user, AI recommendations are optional
+      }
 
       // Show triggered events
       if (result.events.length > 0) {
@@ -424,6 +440,141 @@ export default function SimulationGamePage() {
                   Continuă
                 </button>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* AI Recommendations Modal */}
+      {showAIRecommendations && aiRecommendations.length > 0 && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-slate-800 rounded-2xl max-w-2xl w-full border border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                    <Lightbulb className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Recomandări AI</h3>
+                    <p className="text-sm text-slate-400">Decizii sugerate bazate pe situația actuală</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowAIRecommendations(false)}
+                  className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
+                >
+                  <span className="text-slate-400 text-2xl">×</span>
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {aiRecommendations.map((rec, idx) => {
+                  const categoryInfo = decisionCategoryInfo[rec.decision.category] || decisionCategoryInfo['FINANCIAL'];
+                  const Icon = categoryInfo.icon;
+                  const priorityColors = {
+                    high: 'border-red-500/50 bg-red-500/10',
+                    medium: 'border-yellow-500/50 bg-yellow-500/10',
+                    low: 'border-blue-500/50 bg-blue-500/10',
+                  };
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`border rounded-xl p-4 ${priorityColors[rec.priority]}`}
+                    >
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className={`w-10 h-10 ${categoryInfo.bgColor} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                          <Icon className={`w-5 h-5 ${categoryInfo.color}`} />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-bold text-white">{rec.decision.nameRo}</span>
+                            <span className={`text-xs px-2 py-0.5 rounded ${
+                              rec.priority === 'high' ? 'bg-red-500/20 text-red-300' :
+                              rec.priority === 'medium' ? 'bg-yellow-500/20 text-yellow-300' :
+                              'bg-blue-500/20 text-blue-300'
+                            }`}>
+                              {rec.priority === 'high' ? 'Prioritate Mare' : rec.priority === 'medium' ? 'Prioritate Medie' : 'Prioritate Mică'}
+                            </span>
+                            <span className="text-xs text-slate-500 ml-auto">Încredere: {Math.round(rec.confidence * 100)}%</span>
+                          </div>
+                          <p className="text-sm text-slate-300 mb-2">{rec.reasoning}</p>
+
+                          {/* Expected Impact */}
+                          {(Object.keys(rec.expectedImpact.shortTerm).length > 0 || Object.keys(rec.expectedImpact.longTerm).length > 0) && (
+                            <div className="mt-3 p-3 bg-slate-700/30 rounded-lg">
+                              <div className="text-xs font-medium text-slate-400 mb-2">Impact Estimat:</div>
+                              <div className="grid grid-cols-2 gap-2 text-xs">
+                                {Object.entries(rec.expectedImpact.shortTerm).length > 0 && (
+                                  <div>
+                                    <span className="text-green-400">Termen Scurt:</span>
+                                    <div className="text-slate-300">
+                                      {Object.entries(rec.expectedImpact.shortTerm).map(([key, value]) => (
+                                        <div key={key}>{key}: {value > 0 ? '+' : ''}{value}%</div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                                {Object.entries(rec.expectedImpact.longTerm).length > 0 && (
+                                  <div>
+                                    <span className="text-blue-400">Termen Lung:</span>
+                                    <div className="text-slate-300">
+                                      {Object.entries(rec.expectedImpact.longTerm).map(([key, value]) => (
+                                        <div key={key}>{key}: {value > 0 ? '+' : ''}{value}%</div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Risk Assessment */}
+                          {rec.riskAssessment && (
+                            <div className="mt-2 flex items-center gap-2">
+                              <span className="text-xs text-slate-400">Risc:</span>
+                              <span className={`text-xs px-2 py-0.5 rounded ${
+                                rec.riskAssessment.level === 'high' ? 'bg-red-500/20 text-red-300' :
+                                rec.riskAssessment.level === 'medium' ? 'bg-yellow-500/20 text-yellow-300' :
+                                'bg-green-500/20 text-green-300'
+                              }`}>
+                                {rec.riskAssessment.level === 'high' ? 'Mare' : rec.riskAssessment.level === 'medium' ? 'Mediu' : 'Mic'}
+                              </span>
+                            </div>
+                          )}
+
+                          {/* Related Courses */}
+                          {rec.relatedCourses && rec.relatedCourses.length > 0 && (
+                            <div className="mt-3 pt-3 border-t border-slate-600">
+                              <div className="flex items-center gap-2 mb-2">
+                                <BookOpen className="w-4 h-4 text-purple-400" />
+                                <span className="text-xs font-medium text-purple-300">Cursuri Recomandate:</span>
+                              </div>
+                              <div className="space-y-1">
+                                {rec.relatedCourses.slice(0, 2).map((course, cidx) => (
+                                  <div key={cidx} className="text-xs text-slate-400">
+                                    • {course.title} <span className="text-purple-400">({Math.round(course.relevance * 100)}% relevant)</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="mt-6 flex justify-end">
+                <button
+                  onClick={() => setShowAIRecommendations(false)}
+                  className="px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-xl font-medium transition-colors"
+                >
+                  Am Înțeles
+                </button>
+              </div>
             </div>
           </div>
         </div>
