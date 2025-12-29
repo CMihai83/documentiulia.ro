@@ -339,7 +339,7 @@ export class KanbanController {
   }
 
   @Get('boards/:boardId/sprints/active')
-  @ApiOperation({ summary: 'Get active sprint' })
+  @ApiOperation({ summary: 'Get active sprint for a specific board' })
   @ApiResponse({ status: 200, description: 'Active sprint' })
   async getActiveSprint(@Param('boardId') boardId: string) {
     const sprint = await this.kanbanService.getActiveSprint(boardId);
@@ -347,6 +347,18 @@ export class KanbanController {
       return { error: 'No active sprint' };
     }
     return sprint;
+  }
+
+  @Get('sprints/active')
+  @ApiOperation({ summary: 'Get all active sprints for the tenant (project_id optional)' })
+  @ApiQuery({ name: 'projectId', required: false, description: 'Filter by project ID (optional)' })
+  @ApiResponse({ status: 200, description: 'Active sprints across all or specific projects' })
+  async getAllActiveSprints(
+    @Request() req: any,
+    @Query('projectId') projectId?: string,
+  ) {
+    const sprints = await this.kanbanService.getAllActiveSprints(req.user.tenantId, projectId);
+    return { sprints, total: sprints.length };
   }
 
   @Post('sprints/:sprintId/start')
@@ -420,6 +432,42 @@ export class KanbanController {
       limit ? parseInt(limit) : 50,
     );
     return { activities, total: activities.length };
+  }
+
+  // =================== BACKLOG & BOARD VIEWS ===================
+
+  @Get('backlog')
+  @ApiOperation({ summary: 'Get backlog tasks (project_id optional)' })
+  @ApiQuery({ name: 'projectId', required: false, description: 'Filter by project ID (optional)' })
+  @ApiQuery({ name: 'limit', required: false, type: Number })
+  @ApiQuery({ name: 'offset', required: false, type: Number })
+  @ApiResponse({ status: 200, description: 'Backlog tasks across all or specific projects' })
+  async getBacklog(
+    @Request() req: any,
+    @Query('projectId') projectId?: string,
+    @Query('limit') limit?: string,
+    @Query('offset') offset?: string,
+  ) {
+    const tasks = await this.kanbanService.getBacklogTasks(
+      req.user.tenantId,
+      projectId,
+      limit ? parseInt(limit) : undefined,
+      offset ? parseInt(offset) : undefined,
+    );
+    return { tasks, total: tasks.length };
+  }
+
+  @Get('board')
+  @ApiOperation({ summary: 'Get board view (sprint_id optional - defaults to active sprint)' })
+  @ApiQuery({ name: 'sprintId', required: false, description: 'Filter by sprint ID (defaults to active sprint)' })
+  @ApiQuery({ name: 'projectId', required: false, description: 'Filter by project ID' })
+  @ApiResponse({ status: 200, description: 'Board view with tasks organized by columns' })
+  async getBoardView(
+    @Request() req: any,
+    @Query('sprintId') sprintId?: string,
+    @Query('projectId') projectId?: string,
+  ) {
+    return this.kanbanService.getBoardView(req.user.tenantId, sprintId, projectId);
   }
 
   // =================== STATS ===================

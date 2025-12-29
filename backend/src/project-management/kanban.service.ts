@@ -732,4 +732,131 @@ export class KanbanService {
       boardsByType,
     };
   }
+
+  // =================== NEW FLEXIBLE ENDPOINTS ===================
+
+  /**
+   * Get all active sprints across tenant (with optional project filtering)
+   */
+  async getAllActiveSprints(tenantId: string, projectId?: string): Promise<SprintConfig[]> {
+    const boards = Array.from(this.boards.values())
+      .filter(b => b.tenantId === tenantId && (!projectId || b.projectId === projectId));
+
+    const boardIds = new Set(boards.map(b => b.id));
+
+    return Array.from(this.sprints.values())
+      .filter(s => boardIds.has(s.boardId) && s.status === 'active')
+      .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+  }
+
+  /**
+   * Get backlog tasks across tenant (with optional project filtering)
+   * Returns all cards in backlog status
+   */
+  async getBacklogTasks(
+    tenantId: string,
+    projectId?: string,
+    limit?: number,
+    offset = 0,
+  ): Promise<any[]> {
+    const boards = Array.from(this.boards.values())
+      .filter(b => b.tenantId === tenantId && (!projectId || b.projectId === projectId));
+
+    const backlogCards: any[] = [];
+
+    for (const board of boards) {
+      const backlogColumn = board.columns.find(c => c.status === 'backlog');
+      if (!backlogColumn) continue;
+
+      const cards = Array.from(this.cards.values())
+        .filter(c => c.boardId === board.id && c.columnId === backlogColumn.id)
+        .map(c => ({
+          ...c,
+          boardName: board.name,
+          projectId: board.projectId,
+          columnName: backlogColumn.name,
+        }));
+
+      backlogCards.push(...cards);
+    }
+
+    // Sort by position
+    backlogCards.sort((a, b) => a.position - b.position);
+
+    // Apply pagination
+    const start = offset;
+    const end = limit ? start + limit : undefined;
+    return backlogCards.slice(start, end);
+  }
+
+  /**
+   * Get board view with tasks organized by columns
+   * If no sprintId provided, defaults to active sprint
+   */
+  async getBoardView(
+    tenantId: string,
+    sprintId?: string,
+    projectId?: string,
+  ): Promise<{
+    board: KanbanBoard | null;
+    sprint: SprintConfig | null;
+    columns: Array<{
+      id: string;
+      name: string;
+      status: string;
+      color: string;
+      wipLimit?: number;
+      cards: KanbanCard[];
+    }>;
+    totalCards: number;
+  }> {
+    // Get boards for tenant/project
+    const boards = Array.from(this.boards.values())
+      .filter(b => b.tenantId === tenantId && (!projectId || b.projectId === projectId));
+
+    if (boards.length === 0) {
+      return { board: null, sprint: null, columns: [], totalCards: 0 };
+    }
+
+    // Use first board (or could filter by isDefault)
+    const board = boards.find(b => b.isDefault) || boards[0];
+
+    // Find sprint - either specified or active
+    let sprint: SprintConfig | null = null;
+    if (sprintId) {
+      sprint = this.sprints.get(sprintId) || null;
+    } else {
+      // Find active sprint for this board
+      sprint = await this.getActiveSprint(board.id);
+    }
+
+    // Get cards for this board
+    const allCards = Array.from(this.cards.values())
+      .filter(c => c.boardId === board.id);
+
+    // Filter by sprint if active
+    const sprintTaskIds = sprint ? new Set(sprint.taskIds) : null;
+    const relevantCards = sprintTaskIds
+      ? allCards.filter(c => sprintTaskIds.has(c.taskId))
+      : allCards;
+
+    // Organize by columns
+    const columns = board.columns.map(col => ({
+      id: col.id,
+      name: col.name,
+      status: col.status,
+      color: col.color,
+      wipLimit: col.wipLimit,
+      cards: relevantCards
+        .filter(c => c.columnId === col.id)
+        .sort((a, b) => a.position - b.position),
+    }));
+
+    return {
+      board,
+      sprint,
+      columns,
+      totalCards: relevantCards.length,
+    };
+  }
 }
