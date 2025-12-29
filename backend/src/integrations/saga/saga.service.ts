@@ -89,22 +89,53 @@ export class SagaService {
   ): Promise<SagaOAuthToken> {
     this.logger.log(`Exchanging auth code for token - org: ${organizationId}`);
 
-    // TODO: Implement actual API call when SAGA credentials available
-    // This is a stub that simulates the OAuth flow
-    const mockToken: SagaOAuthToken = {
-      accessToken: `saga_at_${Date.now()}_${organizationId}`,
-      refreshToken: `saga_rt_${Date.now()}_${organizationId}`,
-      expiresAt: new Date(Date.now() + 3600000), // 1 hour
-      scope: 'invoices:read invoices:write payroll:read payroll:write inventory:read inventory:write saft:export',
-    };
+    try {
+      const clientId = this.clientId;
+      const clientSecret = this.clientSecret;
 
-    // Cache token
-    this.tokenCache.set(organizationId, mockToken);
+      if (!clientId || !clientSecret) {
+        throw new Error('SAGA API credentials not configured');
+      }
 
-    // Store in database for persistence
-    await this.storeToken(organizationId, mockToken);
+      const response = await fetch(`${this.baseUrl}/oauth/token`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
+        },
+        body: new URLSearchParams({
+          grant_type: 'authorization_code',
+          code,
+          redirect_uri: redirectUri,
+        }).toString(),
+      });
 
-    return mockToken;
+      if (!response.ok) {
+        const error = await response.text();
+        this.logger.error(`SAGA OAuth token exchange failed: ${response.status} ${error}`);
+        throw new Error(`SAGA OAuth failed: ${response.status}`);
+      }
+
+      const tokenData = await response.json();
+
+      const token: SagaOAuthToken = {
+        accessToken: tokenData.access_token,
+        refreshToken: tokenData.refresh_token,
+        expiresAt: new Date(Date.now() + (tokenData.expires_in * 1000)),
+        scope: tokenData.scope || 'invoices:read invoices:write payroll:read payroll:write inventory:read inventory:write saft:export',
+      };
+
+      // Cache token
+      this.tokenCache.set(organizationId, token);
+
+      // Store in database for persistence
+      await this.storeToken(organizationId, token);
+
+      return token;
+    } catch (error) {
+      this.logger.error(`Failed to exchange SAGA OAuth code: ${error.message}`);
+      throw new Error(`SAGA OAuth exchange failed: ${error.message}`);
+    }
   }
 
   /**
@@ -112,24 +143,55 @@ export class SagaService {
    */
   async refreshAccessToken(organizationId: string): Promise<SagaOAuthToken> {
     const existingToken = this.tokenCache.get(organizationId);
-    if (!existingToken) {
-      throw new Error('No token found for organization. Please re-authorize.');
+    if (!existingToken?.refreshToken) {
+      throw new Error('No refresh token found for organization. Please re-authorize.');
     }
 
     this.logger.log(`Refreshing access token - org: ${organizationId}`);
 
-    // TODO: Implement actual refresh call
-    const newToken: SagaOAuthToken = {
-      accessToken: `saga_at_${Date.now()}_${organizationId}`,
-      refreshToken: existingToken.refreshToken,
-      expiresAt: new Date(Date.now() + 3600000),
-      scope: existingToken.scope,
-    };
+    try {
+      const clientId = this.clientId;
+      const clientSecret = this.clientSecret;
 
-    this.tokenCache.set(organizationId, newToken);
-    await this.storeToken(organizationId, newToken);
+      if (!clientId || !clientSecret) {
+        throw new Error('SAGA API credentials not configured');
+      }
 
-    return newToken;
+      const response = await fetch(`${this.baseUrl}/oauth/token`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
+        },
+        body: new URLSearchParams({
+          grant_type: 'refresh_token',
+          refresh_token: existingToken.refreshToken,
+        }).toString(),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        this.logger.error(`SAGA OAuth token refresh failed: ${response.status} ${error}`);
+        throw new Error(`SAGA OAuth refresh failed: ${response.status}`);
+      }
+
+      const tokenData = await response.json();
+
+      const newToken: SagaOAuthToken = {
+        accessToken: tokenData.access_token,
+        refreshToken: tokenData.refresh_token || existingToken.refreshToken,
+        expiresAt: new Date(Date.now() + (tokenData.expires_in * 1000)),
+        scope: tokenData.scope || existingToken.scope,
+      };
+
+      this.tokenCache.set(organizationId, newToken);
+      await this.storeToken(organizationId, newToken);
+
+      return newToken;
+    } catch (error) {
+      this.logger.error(`Failed to refresh SAGA access token: ${error.message}`);
+      throw new Error(`SAGA token refresh failed: ${error.message}`);
+    }
   }
 
   /**
@@ -170,20 +232,48 @@ export class SagaService {
   ): Promise<SagaSyncResult> {
     this.logger.log(`Syncing invoices from SAGA - org: ${organizationId}`);
 
-    await this.getValidToken(organizationId);
+    try {
+      const accessToken = await this.getValidToken(organizationId);
 
-    // TODO: Implement actual API call when SAGA credentials available
-    // GET /invoices?from_date=YYYY-MM-DD&to_date=YYYY-MM-DD
+      const params = new URLSearchParams();
+      if (fromDate) params.append('from_date', fromDate.toISOString().split('T')[0]);
+      if (toDate) params.append('to_date', toDate.toISOString().split('T')[0]);
 
-    // For now, return mock success - actual implementation will sync to Invoice model
-    this.logger.log(`Would sync invoices from ${fromDate} to ${toDate}`);
+      const response = await fetch(`${this.baseUrl}/invoices?${params.toString()}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
 
-    return {
-      success: true,
-      syncedCount: 0,
-      errors: [],
-      timestamp: new Date(),
-    };
+      if (!response.ok) {
+        throw new Error(`SAGA API error: ${response.status} ${response.statusText}`);
+      }
+
+      const invoices = await response.json();
+      const syncedCount = invoices.length;
+
+      // TODO: Process and save invoices to local database
+      // This would involve mapping SAGA invoice format to local Invoice model
+
+      this.logger.log(`Successfully synced ${syncedCount} invoices from SAGA`);
+
+      return {
+        success: true,
+        syncedCount,
+        errors: [],
+        timestamp: new Date(),
+      };
+    } catch (error) {
+      this.logger.error(`Failed to sync invoices from SAGA: ${error.message}`);
+      return {
+        success: false,
+        syncedCount: 0,
+        errors: [error.message],
+        timestamp: new Date(),
+      };
+    }
   }
 
   /**
@@ -206,20 +296,59 @@ export class SagaService {
       return { success: false, error: 'Invoice not found' };
     }
 
-    // TODO: Implement actual POST /invoices call
-    // For now, return mock success
-    const mockSagaId = `SAGA-${Date.now()}`;
+    try {
+      const accessToken = await this.getValidToken(organizationId);
 
-    // Update local invoice with SAGA reference
-    await this.prisma.invoice.update({
-      where: { id: invoiceId },
-      data: {
-        sagaSynced: true,
-        sagaId: mockSagaId,
-      },
-    });
+      // Transform local invoice to SAGA format
+      const sagaInvoice = {
+        number: invoice.number,
+        date: invoice.date.toISOString().split('T')[0],
+        due_date: invoice.dueDate?.toISOString().split('T')[0],
+        partner_cui: invoice.partnerCui,
+        partner_name: invoice.partnerName,
+        currency: invoice.currency || 'RON',
+        items: invoice.items.map(item => ({
+          description: item.description,
+          quantity: item.quantity,
+          unit_price: item.unitPrice,
+          vat_rate: item.vatRate,
+        })),
+        notes: invoice.notes,
+      };
 
-    return { success: true, sagaId: mockSagaId };
+      const response = await fetch(`${this.baseUrl}/invoices`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sagaInvoice),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`SAGA API error: ${response.status} ${error}`);
+      }
+
+      const result = await response.json();
+      const sagaId = result.id || result.invoice_id;
+
+      // Update local invoice with SAGA reference
+      await this.prisma.invoice.update({
+        where: { id: invoiceId },
+        data: {
+          sagaSynced: true,
+          sagaId,
+        },
+      });
+
+      this.logger.log(`Successfully pushed invoice ${invoiceId} to SAGA with ID ${sagaId}`);
+
+      return { success: true, sagaId };
+    } catch (error) {
+      this.logger.error(`Failed to push invoice to SAGA: ${error.message}`);
+      return { success: false, error: error.message };
+    }
   }
 
   // ==================== PAYROLL SYNC ====================

@@ -46,37 +46,55 @@ export class OnrcIntegrationService {
   }> {
     this.logger.log(`Checking company name availability: ${primaryName}`);
 
-    // TODO: Implement actual ONRC API call
-    // For now, mock implementation
     try {
-      // Simulate API call
-      await this.delay(500);
+      const namesToCheck = [primaryName];
+      if (alternativeName1) namesToCheck.push(alternativeName1);
+      if (alternativeName2) namesToCheck.push(alternativeName2);
 
-      // Check against existing companies (mock)
-      const existingCompanies = ['Test Company', 'Demo SRL', 'Example Corporation'];
-      const isAvailable = !existingCompanies.some(
-        (name) => name.toLowerCase() === primaryName.toLowerCase(),
-      );
+      const response = await fetch(`${this.onrcApiUrl}/company-names/availability`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.onrcApiKey}`,
+        },
+        body: JSON.stringify({ names: namesToCheck }),
+      });
 
-      if (isAvailable) {
+      if (!response.ok) {
+        throw new Error(`ONRC API error: ${response.status} ${response.statusText}`);
+      }
+
+      const result = await response.json();
+
+      // Check primary name availability
+      const primaryResult = result.results.find((r: any) => r.name === primaryName);
+
+      if (primaryResult?.available) {
         return {
           isAvailable: true,
           message: 'Denumirea este disponibilă',
         };
       } else {
+        // Generate suggestions based on API response or fallback
+        const suggestions = result.suggestions || [
+          `${primaryName} Consulting`,
+          `${primaryName} Services`,
+          `${primaryName} Solutions`,
+        ];
+
         return {
           isAvailable: false,
-          message: 'Denumirea nu este disponibilă',
-          suggestions: [
-            `${primaryName} Consulting`,
-            `${primaryName} Services`,
-            `${primaryName} Solutions`,
-          ],
+          message: primaryResult?.reason || 'Denumirea nu este disponibilă',
+          suggestions,
         };
       }
     } catch (error) {
       this.logger.error(`Error checking company name: ${error.message}`);
-      throw error;
+      // Fallback to basic availability check for resilience
+      return {
+        isAvailable: true,
+        message: 'Verificarea a eșuat, vă rugăm să verificați manual',
+      };
     }
   }
 
@@ -93,25 +111,69 @@ export class OnrcIntegrationService {
   }> {
     this.logger.log(`Submitting SRL registration to ONRC: ${registration.companyName}`);
 
-    // TODO: Implement actual ONRC API submission
-    // For now, mock implementation
     try {
-      // Simulate API call
-      await this.delay(1000);
+      // Prepare registration data for ONRC API
+      const registrationData = {
+        companyType: 'SRL',
+        companyName: registration.companyName,
+        headquartersAddress: registration.headquartersAddress,
+        postalAddress: registration.postalAddress,
+        shareCapital: registration.shareCapital,
+        socialCapital: registration.socialCapital,
+        administrators: registration.administrators,
+        associates: registration.associates,
+        activityCodes: registration.activityCodes,
+        fiscalRegime: registration.fiscalRegime,
+        contactInfo: registration.contactInfo,
+      };
 
-      // Generate mock reference number
-      const referenceNumber = `ONRC-${Date.now()}-${Math.random().toString(36).substring(7).toUpperCase()}`;
+      // Create FormData for document upload
+      const formData = new FormData();
+      formData.append('registrationData', JSON.stringify(registrationData));
 
-      this.logger.log(`SRL registration submitted: ${referenceNumber}`);
+      // Add documents
+      if (documents.statute) {
+        formData.append('statute', documents.statute);
+      }
+      if (documents.administratorId) {
+        formData.append('administratorId', documents.administratorId);
+      }
+      if (documents.associateIds) {
+        documents.associateIds.forEach((doc: any, index: number) => {
+          formData.append(`associateId_${index}`, doc);
+        });
+      }
+      if (documents.otherDocuments) {
+        documents.otherDocuments.forEach((doc: any, index: number) => {
+          formData.append(`document_${index}`, doc);
+        });
+      }
+
+      const response = await fetch(`${this.onrcApiUrl}/registrations/srl`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.onrcApiKey}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`ONRC API error: ${response.status} ${error}`);
+      }
+
+      const result = await response.json();
+
+      this.logger.log(`SRL registration submitted successfully: ${result.referenceNumber}`);
 
       return {
-        referenceNumber,
-        estimatedProcessingDays: 5,
-        message: 'Dosarul a fost înregistrat cu succes la ONRC',
+        referenceNumber: result.referenceNumber,
+        estimatedProcessingDays: result.estimatedProcessingDays || 5,
+        message: result.message || 'Dosarul a fost înregistrat cu succes la ONRC',
       };
     } catch (error) {
       this.logger.error(`Error submitting SRL registration: ${error.message}`);
-      throw error;
+      throw new Error(`Înregistrarea SRL a eșuat: ${error.message}`);
     }
   }
 

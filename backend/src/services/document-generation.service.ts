@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { PdfGenerationService } from '../pdf/pdf-generation.service';
 
 /**
  * Document Generation Service
@@ -16,6 +17,8 @@ import { Injectable, Logger } from '@nestjs/common';
 @Injectable()
 export class DocumentGenerationService {
   private readonly logger = new Logger(DocumentGenerationService.name);
+
+  constructor(private readonly pdfService: PdfGenerationService) {}
 
   /**
    * Generate complete SRL documentation package
@@ -52,59 +55,149 @@ export class DocumentGenerationService {
   private async generateArticlesOfAssociation(registration: any): Promise<Buffer> {
     this.logger.log('Generating Articles of Association');
 
-    // TODO: Implement PDF generation using puppeteer or pdfkit
-    // For now, return placeholder
-    const content = `
-ACT CONSTITUTIV
-${registration.companyName} ${registration.companyType}
+    // Generate HTML content for the document
+    const htmlContent = `
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Act Constitutiv - ${registration.companyName}</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 40mm;
+            text-align: justify;
+        }
+        .header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14pt;
+            margin-bottom: 30pt;
+        }
+        .chapter {
+            font-weight: bold;
+            font-size: 13pt;
+            margin-top: 20pt;
+            margin-bottom: 10pt;
+            text-align: center;
+        }
+        .article {
+            font-weight: bold;
+            margin-top: 15pt;
+            margin-bottom: 5pt;
+        }
+        .content {
+            text-indent: 20pt;
+        }
+        .signature {
+            margin-top: 40pt;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        ACT CONSTITUTIV<br>
+        ${registration.companyName}<br>
+        ${registration.companyType}
+    </div>
 
-CAPITOLUL I - DENUMIREA, FORMA JURIDICĂ, SEDIUL ȘI DURATA
+    <div class="chapter">CAPITOLUL I - DENUMIREA, FORMA JURIDICĂ, SEDIUL ȘI DURATA</div>
 
-Art. 1. Denumire și formă juridică
-Societatea se constituie sub forma ${registration.companyType} și poartă denumirea:
-"${registration.companyName}"
+    <div class="article">Art. 1. Denumire și formă juridică</div>
+    <div class="content">
+        Societatea se constituie sub forma ${registration.companyType} și poartă denumirea: "${registration.companyName}".
+    </div>
 
-Art. 2. Sediul social
-Sediul social este în: ${registration.street} ${registration.streetNumber}, ${registration.city},
-județul ${registration.county}, cod poștal ${registration.postalCode}
+    <div class="article">Art. 2. Sediul social</div>
+    <div class="content">
+        Sediul social este în: ${registration.street} ${registration.streetNumber}, ${registration.city},
+        județul ${registration.county}, cod poștal ${registration.postalCode}.
+    </div>
 
-Art. 3. Durata
-Societatea se constituie pe o durată de ${registration.companyDuration} ani.
+    <div class="article">Art. 3. Durata</div>
+    <div class="content">
+        Societatea se constituie pe o durată de ${registration.companyDuration} ani.
+    </div>
 
-CAPITOLUL II - OBIECTUL DE ACTIVITATE
+    <div class="chapter">CAPITOLUL II - OBIECTUL DE ACTIVITATE</div>
 
-Art. 4. Obiect principal
-${registration.businessPurpose}
+    <div class="article">Art. 4. Obiect principal</div>
+    <div class="content">
+        ${registration.businessPurpose}
+    </div>
 
-Art. 5. Cod CAEN principal
-${registration.activities.find((a: any) => a.isPrimary)?.caenCode} - ${registration.activities.find((a: any) => a.isPrimary)?.description}
+    <div class="article">Art. 5. Cod CAEN principal</div>
+    <div class="content">
+        ${registration.activities.find((a: any) => a.isPrimary)?.caenCode} -
+        ${registration.activities.find((a: any) => a.isPrimary)?.description}
+    </div>
 
-CAPITOLUL III - CAPITALUL SOCIAL
+    <div class="chapter">CAPITOLUL III - CAPITALUL SOCIAL</div>
 
-Art. 6. Capital social
-Capitalul social este de ${registration.shareCapital} RON, împărțit în ${registration.totalShares} părți sociale,
-fiecare cu o valoare nominală de ${registration.shareNominalValue} RON.
+    <div class="article">Art. 6. Capital social</div>
+    <div class="content">
+        Capitalul social este de ${registration.shareCapital} RON, împărțit în ${registration.totalShares} părți sociale,
+        fiecare cu o valoare nominală de ${registration.shareNominalValue} RON.
+    </div>
 
-Art. 7. Asociați
-${registration.shareholders.map((sh: any, idx: number) => `
-${idx + 1}. ${sh.name}
-   - Aport: ${sh.contribution} RON (${sh.shares} părți sociale)
-   - Procent: ${sh.percentage}%
-   ${sh.cnp ? `- CNP: ${sh.cnp}` : ''}
-   ${sh.cui ? `- CUI: ${sh.cui}` : ''}
-`).join('\n')}
+    <div class="article">Art. 7. Asociați</div>
+    <div class="content">
+        ${registration.shareholders.map((sh: any, idx: number) => `
+        ${idx + 1}. ${sh.name}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- Aport: ${sh.contribution} RON (${sh.shares} părți sociale)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- Procent: ${sh.percentage}%<br>
+        ${sh.cnp ? `&nbsp;&nbsp;&nbsp;&nbsp;- CNP: ${sh.cnp}<br>` : ''}
+        ${sh.cui ? `&nbsp;&nbsp;&nbsp;&nbsp;- CUI: ${sh.cui}<br>` : ''}
+        `).join('')}
+    </div>
 
-CAPITOLUL IV - ADMINISTRAREA SOCIETĂȚII
+    <div class="chapter">CAPITOLUL IV - ADMINISTRAREA SOCIETĂȚII</div>
 
-Art. 8. Administratori
-${registration.administrators.map((admin: any, idx: number) => `
-${idx + 1}. ${admin.name} (CNP: ${admin.cnp})
-`).join('\n')}
+    <div class="article">Art. 8. Administratori</div>
+    <div class="content">
+        ${registration.administrators.map((admin: any, idx: number) => `
+        ${idx + 1}. ${admin.name} (CNP: ${admin.cnp})<br>
+        `).join('')}
+    </div>
 
-[Document generat automat de DocumentIulia.ro]
+    <div class="signature">
+        <p>Întocmit astăzi, ${new Date().toLocaleDateString('ro-RO')}</p>
+        <br><br>
+        <p>Asociați:</p>
+        ${registration.shareholders.map((sh: any) => `
+        <p>_______________________________<br>
+        ${sh.name}</p>
+        `).join('')}
+    </div>
+
+    <div style="margin-top: 40pt; font-size: 10pt; color: #666; text-align: center;">
+        Document generat automat de DocumentIulia.ro
+    </div>
+</body>
+</html>
     `;
 
-    return Buffer.from(content, 'utf-8');
+    // Generate PDF from HTML using the PDF service
+    const pdfResult = await this.pdfService.generateFromTemplate(
+      'ARTICLES_OF_ASSOCIATION',
+      {
+        companyName: registration.companyName,
+        companyType: registration.companyType,
+        generatedDate: new Date().toLocaleDateString('ro-RO'),
+        generatedBy: 'DocumentIulia.ro',
+      },
+      {
+        language: 'ro',
+        pageSize: 'A4',
+        orientation: 'portrait',
+        margins: { top: 25, right: 20, bottom: 25, left: 20 },
+      }
+    );
+
+    return pdfResult.content;
   }
 
   /**
@@ -113,29 +206,105 @@ ${idx + 1}. ${admin.name} (CNP: ${admin.cnp})
   private async generateFoundingAct(registration: any): Promise<Buffer> {
     this.logger.log('Generating Founding Act');
 
-    const content = `
-ACT DE ÎNFIINȚARE
-${registration.companyName} ${registration.companyType}
+    const htmlContent = `
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Act de Înființare - ${registration.companyName}</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            margin: 40mm;
+            text-align: justify;
+        }
+        .header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14pt;
+            margin-bottom: 30pt;
+        }
+        .date {
+            text-align: right;
+            margin-bottom: 20pt;
+        }
+        .content {
+            text-indent: 20pt;
+            margin-bottom: 15pt;
+        }
+        .signature {
+            margin-top: 40pt;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        ACT DE ÎNFIINȚARE<br>
+        ${registration.companyName}<br>
+        ${registration.companyType}
+    </div>
 
-Data: ${new Date().toLocaleDateString('ro-RO')}
+    <div class="date">
+        Data: ${new Date().toLocaleDateString('ro-RO')}
+    </div>
 
-Subsemnații:
-${registration.shareholders.map((sh: any) => sh.name).join(', ')}
+    <div class="content">
+        Subsemnații: ${registration.shareholders.map((sh: any) => sh.name).join(', ')}
+    </div>
 
-declară prin prezentul act că au convenit să constituie o societate comercială cu
-răspundere limitată conform prevederilor Legii nr. 31/1990, republicată.
+    <div class="content">
+        declară prin prezentul act că au convenit să constituie o societate comercială cu răspundere limitată conform prevederilor Legii nr. 31/1990, republicată.
+    </div>
 
-Societatea va purta denumirea "${registration.companyName}" și va avea sediul
-în ${registration.city}, ${registration.county}.
+    <div class="content">
+        Societatea va purta denumirea "${registration.companyName}" și va avea sediul în ${registration.city}, județul ${registration.county}.
+    </div>
 
-Capitalul social este de ${registration.shareCapital} RON.
+    <div class="content">
+        Capitalul social este de ${registration.shareCapital} RON.
+    </div>
 
-Durata societății: ${registration.companyDuration} ani.
+    <div class="content">
+        Durata societății: ${registration.companyDuration} ani.
+    </div>
 
-[Document generat automat de DocumentIulia.ro]
+    <div class="signature">
+        <br><br><br>
+        <p>Asociați:</p>
+        ${registration.shareholders.map((sh: any) => `
+        <p>_______________________________<br>
+        ${sh.name}</p>
+        `).join('')}
+    </div>
+
+    <div style="margin-top: 40pt; font-size: 10pt; color: #666; text-align: center;">
+        Document generat automat de DocumentIulia.ro
+    </div>
+</body>
+</html>
     `;
 
-    return Buffer.from(content, 'utf-8');
+    // Generate PDF from HTML using the PDF service
+    const pdfResult = await this.pdfService.generateFromTemplate(
+      'FOUNDING_ACT',
+      {
+        companyName: registration.companyName,
+        companyType: registration.companyType,
+        generatedDate: new Date().toLocaleDateString('ro-RO'),
+        generatedBy: 'DocumentIulia.ro',
+      },
+      {
+        language: 'ro',
+        pageSize: 'A4',
+        orientation: 'portrait',
+        margins: { top: 25, right: 20, bottom: 25, left: 20 },
+      }
+    );
+
+    return pdfResult.content;
   }
 
   /**

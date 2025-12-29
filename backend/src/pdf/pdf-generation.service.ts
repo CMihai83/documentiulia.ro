@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
+import puppeteer, { Browser, Page } from 'puppeteer';
 
 export type PdfTemplateType =
   | 'INVOICE'
@@ -1136,27 +1137,92 @@ export class PdfGenerationService {
     htmlContent: string,
     options: PdfGenerationOptions,
   ): Promise<{ content: Buffer; size: number; pageCount: number }> {
-    // Simulate processing time
-    await new Promise((resolve) => setTimeout(resolve, 20));
+    let browser: Browser | null = null;
+    let page: Page | null = null;
 
-    // Simulate failure for testing
-    if (htmlContent.includes('SIMULATE_FAILURE')) {
-      throw new Error('Simulated PDF generation failure');
+    try {
+      // Launch Puppeteer browser
+      browser = await puppeteer.launch({
+        headless: true,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--no-first-run',
+          '--no-zygote',
+          '--single-process',
+          '--disable-gpu'
+        ]
+      });
+
+      // Create new page
+      page = await browser.newPage();
+
+      // Set content
+      await page.setContent(htmlContent, {
+        waitUntil: 'networkidle0',
+        timeout: 30000
+      });
+
+      // Configure PDF options
+      const pdfOptions: any = {
+        format: options.pageSize || 'A4',
+        orientation: options.orientation || 'portrait',
+        printBackground: true,
+        margin: options.margins ? {
+          top: `${options.margins.top}mm`,
+          right: `${options.margins.right}mm`,
+          bottom: `${options.margins.bottom}mm`,
+          left: `${options.margins.left}mm`,
+        } : {
+          top: '20mm',
+          right: '15mm',
+          bottom: '20mm',
+          left: '15mm',
+        },
+        displayHeaderFooter: !!(options.header || options.footer),
+      };
+
+      // Add header if specified
+      if (options.header) {
+        pdfOptions.headerTemplate = options.header.content || '';
+        pdfOptions.displayHeaderFooter = true;
+      }
+
+      // Add footer if specified
+      if (options.footer) {
+        pdfOptions.footerTemplate = options.footer.content || '';
+        pdfOptions.displayHeaderFooter = true;
+      }
+
+      // Generate PDF
+      const pdfBuffer = await page.pdf(pdfOptions);
+
+      // Calculate page count (rough estimate based on buffer size and typical page size)
+      const averagePageSize = 50000; // bytes per page
+      const pageCount = Math.max(1, Math.ceil(pdfBuffer.length / averagePageSize));
+
+      this.logger.log(`PDF generated successfully: ${pdfBuffer.length} bytes, ~${pageCount} pages`);
+
+      return {
+        content: pdfBuffer,
+        size: pdfBuffer.length,
+        pageCount
+      };
+
+    } catch (error) {
+      this.logger.error(`PDF generation failed: ${error.message}`);
+      throw new Error(`PDF generation failed: ${error.message}`);
+    } finally {
+      // Clean up resources
+      if (page) {
+        await page.close().catch(err => this.logger.warn(`Failed to close page: ${err.message}`));
+      }
+      if (browser) {
+        await browser.close().catch(err => this.logger.warn(`Failed to close browser: ${err.message}`));
+      }
     }
-
-    // Calculate approximate size and pages
-    const baseSize = htmlContent.length * 2;
-    const compressionFactor = options.compression ? 0.7 : 1;
-    const encryptionOverhead = options.encrypt ? 500 : 0;
-    const size = Math.floor(baseSize * compressionFactor + encryptionOverhead);
-
-    const pageHeight = options.orientation === 'LANDSCAPE' ? 595 : 842; // A4
-    const contentHeight = htmlContent.length * 0.5; // Rough estimate
-    const pageCount = Math.max(1, Math.ceil(contentHeight / pageHeight));
-
-    const content = Buffer.from(`PDF content for: ${htmlContent.substring(0, 100)}...`);
-
-    return { content, size, pageCount };
   }
 
   private renderTemplate(template: string, data: Record<string, any>): string {
