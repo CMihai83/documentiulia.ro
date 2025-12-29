@@ -43,10 +43,16 @@ export class ContactsController {
   async createContact(
     @Request() req: any,
     @Body() body: {
-      type: Contact['type'];
+      // Support both 'type' and 'contact_type' for backward compatibility
+      type?: Contact['type'];
+      contact_type?: Contact['type'];
+      // Support 'name' as alias for display name (firstName + lastName or companyName)
+      name?: string;
       firstName?: string;
       lastName?: string;
       companyName?: string;
+      // Support 'display_name' as alias
+      display_name?: string;
       jobTitle?: string;
       department?: string;
       email: string;
@@ -61,10 +67,45 @@ export class ContactsController {
       companyId?: string;
     },
   ) {
+    // Normalize field names for backward compatibility
+    const normalizedData: any = { ...body };
+
+    // Handle type/contact_type alias
+    if (!normalizedData.type && normalizedData.contact_type) {
+      normalizedData.type = normalizedData.contact_type;
+    }
+
+    // Handle name/display_name aliases
+    if (normalizedData.name && !normalizedData.firstName && !normalizedData.companyName) {
+      // Split name into firstName and lastName if it contains a space
+      const nameParts = normalizedData.name.split(' ');
+      if (nameParts.length > 1) {
+        normalizedData.firstName = nameParts[0];
+        normalizedData.lastName = nameParts.slice(1).join(' ');
+      } else {
+        normalizedData.firstName = normalizedData.name;
+      }
+    }
+
+    if (normalizedData.display_name && !normalizedData.firstName && !normalizedData.companyName) {
+      const nameParts = normalizedData.display_name.split(' ');
+      if (nameParts.length > 1) {
+        normalizedData.firstName = nameParts[0];
+        normalizedData.lastName = nameParts.slice(1).join(' ');
+      } else {
+        normalizedData.firstName = normalizedData.display_name;
+      }
+    }
+
+    // Remove aliases before passing to service
+    delete normalizedData.contact_type;
+    delete normalizedData.name;
+    delete normalizedData.display_name;
+
     return this.contactsService.createContact({
       tenantId: req.user.tenantId,
       createdBy: req.user.id,
-      ...body,
+      ...normalizedData,
     });
   }
 

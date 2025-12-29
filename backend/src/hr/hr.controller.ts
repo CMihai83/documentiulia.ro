@@ -23,7 +23,21 @@ export class HrController {
   @Post('employees')
   @ApiOperation({ summary: 'Create new employee' })
   async createEmployee(@Body() body: { userId: string; data: any }) {
-    return this.hrService.createEmployee(body.userId, body.data);
+    // Normalize employee data - auto-generate display_name if not provided
+    const employeeData = { ...body.data };
+
+    // If display_name is not provided, construct it from firstName and lastName
+    if (!employeeData.display_name && employeeData.firstName && employeeData.lastName) {
+      employeeData.display_name = `${employeeData.firstName} ${employeeData.lastName}`;
+    }
+
+    const employee = await this.hrService.createEmployee(body.userId, employeeData);
+
+    // Add display_name to response if not already present
+    return {
+      ...employee,
+      display_name: employee.display_name || `${employee.firstName} ${employee.lastName}`,
+    };
   }
 
   @Get('employees')
@@ -32,13 +46,24 @@ export class HrController {
     @Query('userId') userId: string,
     @Query('department') department?: string,
   ) {
-    return this.hrService.getEmployees(userId, department);
+    const employees = await this.hrService.getEmployees(userId, department);
+    // Add display_name to each employee for consistency
+    return employees.map((emp: any) => ({
+      ...emp,
+      display_name: emp.display_name || `${emp.firstName} ${emp.lastName}`,
+    }));
   }
 
   @Get('employees/:id')
   @ApiOperation({ summary: 'Get employee by ID' })
   async getEmployee(@Param('id') id: string) {
-    return this.hrService.getEmployee(id);
+    const employee = await this.hrService.getEmployee(id);
+    if (!employee) return null;
+    // Add display_name for consistency
+    return {
+      ...employee,
+      display_name: (employee as any).display_name || `${employee.firstName} ${employee.lastName}`,
+    };
   }
 
   @Put('employees/:id')

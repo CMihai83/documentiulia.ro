@@ -26,7 +26,19 @@ export class CreateInvoiceDto {
 
   @ApiProperty({ description: 'Partner/Customer name', example: 'Client Alpha SRL' })
   @IsString()
-  partnerName: string;
+  @IsOptional()
+  partnerName?: string;
+
+  // Alias fields for backward compatibility
+  @ApiPropertyOptional({ description: 'Customer name (alias for partnerName)', example: 'Client Alpha SRL' })
+  @IsString()
+  @IsOptional()
+  customer_name?: string;
+
+  @ApiPropertyOptional({ description: 'Customer ID (for future use with CRM integration)' })
+  @IsString()
+  @IsOptional()
+  customer_id?: string;
 
   @ApiPropertyOptional({ description: 'Partner CUI (Romanian company ID)', example: 'RO12345678' })
   @IsString()

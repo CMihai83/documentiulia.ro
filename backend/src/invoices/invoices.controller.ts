@@ -51,12 +51,39 @@ export class InvoicesController {
   @Post()
   @ApiOperation({ summary: 'Create a new invoice' })
   @ApiResponse({ status: 201, description: 'Invoice created successfully' })
-  create(
+  async create(
     @Req() req: any,
     @Body() dto: CreateInvoiceDto,
   ) {
     const userId = this.getUserId(req);
-    return this.invoicesService.create(userId, dto);
+
+    // Normalize customer fields for backward compatibility
+    const normalizedDto = { ...dto };
+
+    // Handle customer_name alias
+    if (normalizedDto.customer_name && !normalizedDto.partnerName) {
+      normalizedDto.partnerName = normalizedDto.customer_name;
+    }
+
+    // If customer_id is provided, we could look up customer details from CRM
+    // For now, just ensure partnerName is set
+    if (normalizedDto.customer_id && !normalizedDto.partnerName) {
+      // TODO: When Customer/CRM integration is ready, look up customer by ID
+      // const customer = await this.contactsService.getContact(normalizedDto.customer_id);
+      // if (customer) {
+      //   normalizedDto.partnerName = customer.companyName || `${customer.firstName} ${customer.lastName}`;
+      //   normalizedDto.partnerCui = customer.customFields?.cui;
+      //   normalizedDto.partnerAddress = customer.address?.street;
+      // }
+      normalizedDto.partnerName = `Customer ${normalizedDto.customer_id}`;
+    }
+
+    // Ensure partnerName is set (required for invoice creation)
+    if (!normalizedDto.partnerName) {
+      throw new Error('Either partnerName, customer_name, or customer_id must be provided');
+    }
+
+    return this.invoicesService.create(userId, normalizedDto);
   }
 
   @Get()
