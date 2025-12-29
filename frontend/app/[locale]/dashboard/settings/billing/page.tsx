@@ -72,6 +72,21 @@ const plans = [
     ],
     highlighted: false,
   },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    price: 299,
+    period: 'luna',
+    features: [
+      'Tot din Business +',
+      'Utilizatori nelimitati',
+      'SSO & SAML',
+      'SLA dedicat 99.9%',
+      'Implementare on-premise',
+      'Training personalizat',
+    ],
+    highlighted: false,
+  },
 ];
 
 export default function BillingSettingsPage() {
@@ -88,27 +103,78 @@ export default function BillingSettingsPage() {
   }, []);
 
   const fetchBillingInfo = async () => {
-    // Simulate API call
-    setTimeout(() => {
-      setBilling({
-        plan: 'pro',
-        status: 'active',
-        nextBillingDate: '2025-01-13',
-        amount: 49,
-        currency: 'RON',
-        paymentMethod: {
-          type: 'card',
-          last4: '4242',
-          expiry: '12/26',
+    try {
+      const token = localStorage.getItem('auth_token');
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+
+      // Fetch real subscription status from backend
+      const response = await fetch(`${API_URL}/subscription/status`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
       });
-      setInvoices([
-        { id: 'INV-001', date: '2024-12-13', amount: 49, status: 'paid', downloadUrl: '#' },
-        { id: 'INV-002', date: '2024-11-13', amount: 49, status: 'paid', downloadUrl: '#' },
-        { id: 'INV-003', date: '2024-10-13', amount: 49, status: 'paid', downloadUrl: '#' },
-      ]);
+
+      if (response.ok) {
+        const data = await response.json();
+        const tierPricing: Record<string, number> = {
+          FREE: 0,
+          PRO: 49,
+          BUSINESS: 149,
+          ENTERPRISE: 299,
+        };
+
+        setBilling({
+          plan: data.currentTier?.toLowerCase() || 'free',
+          status: 'active',
+          nextBillingDate: data.nextBillingDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          amount: tierPricing[data.currentTier] || 0,
+          currency: 'RON',
+          paymentMethod: undefined,
+        });
+      } else {
+        // Fallback: Try to get tier from localStorage user data
+        const storedUser = localStorage.getItem('auth_user');
+        if (storedUser) {
+          const user = JSON.parse(storedUser);
+          const tierPricing: Record<string, number> = {
+            FREE: 0,
+            PRO: 49,
+            BUSINESS: 149,
+            ENTERPRISE: 299,
+          };
+          setBilling({
+            plan: user.tier?.toLowerCase() || 'free',
+            status: 'active',
+            nextBillingDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            amount: tierPricing[user.tier] || 0,
+            currency: 'RON',
+            paymentMethod: undefined,
+          });
+        }
+      }
+
+      // Invoices will be fetched from a billing service when integrated
+      setInvoices([]);
+    } catch (error) {
+      console.error('Failed to fetch billing info:', error);
+      // Fallback to localStorage
+      const storedUser = localStorage.getItem('auth_user');
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        setBilling({
+          plan: user.tier?.toLowerCase() || 'free',
+          status: 'active',
+          nextBillingDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          amount: 0,
+          currency: 'RON',
+          paymentMethod: undefined,
+        });
+      }
+      setInvoices([]);
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
   const handleChangePlan = async (planId: string) => {

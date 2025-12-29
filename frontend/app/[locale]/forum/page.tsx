@@ -1,67 +1,44 @@
 import { getTranslations } from 'next-intl/server';
-import { MessageSquare, Users, TrendingUp, Clock, Eye } from 'lucide-react';
+import { MessageSquare, Users, TrendingUp, Clock, Eye, Pin } from 'lucide-react';
 import Link from 'next/link';
-
-interface ForumCategory {
-  id: string;
-  name: string;
-  nameEn: string | null;
-  slug: string;
-  description: string;
-  icon: string;
-  threadCount: number;
-  postCount: number;
-  _count: { threads: number };
-}
+import fs from 'fs';
+import path from 'path';
 
 interface ForumThread {
-  id: string;
   title: string;
-  slug: string;
-  content: string;
-  isPinned: boolean;
-  isLocked: boolean;
-  viewCount: number;
-  replyCount: number;
-  authorName: string;
-  category: { name: string; slug: string };
+  slug?: string;
+  category: string;
+  initialPost: string;
+  replies: Array<{
+    author: string;
+    role?: string;
+    content: string;
+    createdAt: string;
+    helpful?: boolean;
+  }>;
+  tags: string[];
+  views: number;
+  sticky?: boolean;
   createdAt: string;
-  updatedAt: string;
+  lastActivity: string;
 }
 
-const iconMap: Record<string, string> = {
-  Calculator: '📊',
-  Shield: '🛡️',
-  Table: '📈',
-  Users: '👥',
-  TrendingUp: '📈',
-  Truck: '🚚',
-  HardHat: '⚠️',
-  Target: '🎯',
-  MessageSquare: '💬',
-  Laptop: '💻',
-};
-
 async function getForumData() {
-  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
-
   try {
-    const [categoriesRes, threadsRes] = await Promise.all([
-      fetch(`${BACKEND_URL}/api/v1/forum/categories`, {
-        next: { revalidate: 10, tags: ['forum'] },
-      }),
-      fetch(`${BACKEND_URL}/api/v1/forum/threads?limit=10`, {
-        next: { revalidate: 10, tags: ['forum'] },
-      })
-    ]);
+    const filePath = path.join(process.cwd(), 'public', 'data', 'forum.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const threads = JSON.parse(fileContents);
 
-    const categories = categoriesRes.ok ? await categoriesRes.json() : [];
-    const threads = threadsRes.ok ? await threadsRes.json() : [];
+    // Group by category
+    const categories = threads.reduce((acc: Record<string, number>, thread: ForumThread) => {
+      acc[thread.category] = (acc[thread.category] || 0) + 1;
+      return acc;
+    }, {});
 
-    return { categories, threads };
+    return { threads, categories };
   } catch (error) {
-    console.error('Error fetching forum data:', error);
-    return { categories: [], threads: [] };
+    console.error('Error loading forum data:', error);
+    return { threads: [], categories: {} };
   }
 }
 
@@ -73,192 +50,248 @@ function formatDate(dateStr: string) {
   });
 }
 
+function timeAgo(dateStr: string) {
+  const now = new Date();
+  const date = new Date(dateStr);
+  const diffMs = now.getTime() - date.getTime();
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMins / 60);
+  const diffDays = Math.floor(diffHours / 24);
+
+  if (diffMins < 60) return `acum ${diffMins} minute`;
+  if (diffHours < 24) return `acum ${diffHours} ore`;
+  if (diffDays < 7) return `acum ${diffDays} zile`;
+  return formatDate(dateStr);
+}
+
+const categoryColors: Record<string, string> = {
+  'Întrebări Frecvente': 'bg-blue-50 text-blue-700 border-blue-200',
+  'Rezolvare Probleme': 'bg-red-50 text-red-700 border-red-200',
+  'Best Practices': 'bg-green-50 text-green-700 border-green-200',
+  'Discuții Generale': 'bg-purple-50 text-purple-700 border-purple-200',
+  'Noutăți': 'bg-orange-50 text-orange-700 border-orange-200',
+};
+
 export default async function ForumPage() {
   const t = await getTranslations();
-  const { categories, threads } = await getForumData();
+  const { threads, categories } = await getForumData();
 
-  const topContributors = [
-    { name: 'Maria Ionescu', posts: 234, badge: 'Expert' },
-    { name: 'Andrei Popescu', posts: 189, badge: 'Expert' },
-    { name: 'Elena Dumitrescu', posts: 156, badge: 'Pro' },
-    { name: 'Ion Gheorghe', posts: 134, badge: 'Pro' },
-    { name: 'Ana Marin', posts: 98, badge: 'Activ' },
-  ];
+  // Sort threads: pinned first, then by last activity
+  const sortedThreads = [...threads].sort((a, b) => {
+    if (a.sticky && !b.sticky) return -1;
+    if (!a.sticky && b.sticky) return 1;
+    return new Date(b.lastActivity).getTime() - new Date(a.lastActivity).getTime();
+  });
 
-  const totalThreads = categories.reduce((sum: number, cat: ForumCategory) => sum + cat.threadCount, 0);
-  const totalPosts = categories.reduce((sum: number, cat: ForumCategory) => sum + cat.postCount, 0);
+  const totalReplies = threads.reduce((sum: number, thread: ForumThread) =>
+    sum + (thread.replies?.length || 0), 0
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-16 px-4">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('forum.title')}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Forum Comunitate
+          </h1>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
-            {t('forum.subtitle')}
+            Pune întrebări, împărtășește experiențe și învață de la profesioniști în contabilitate și afaceri
           </p>
-          <div className="flex justify-center gap-8 mt-8">
+          <div className="flex justify-center gap-8 mt-8 flex-wrap">
             <div className="text-center">
-              <div className="text-3xl font-bold">5,200+</div>
-              <div className="text-sm opacity-80">{t('forum.members')}</div>
+              <div className="text-3xl font-bold">{threads.length}</div>
+              <div className="text-sm opacity-80">Discuții</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">{totalThreads || threads.length}</div>
-              <div className="text-sm opacity-80">{t('forum.discussions')}</div>
+              <div className="text-3xl font-bold">{totalReplies}</div>
+              <div className="text-sm opacity-80">Răspunsuri</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">{totalPosts || '2,800'}</div>
-              <div className="text-sm opacity-80">{t('forum.posts')}</div>
+              <div className="text-3xl font-bold">{Object.keys(categories).length}</div>
+              <div className="text-sm opacity-80">Categorii</div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto py-12 px-4">
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Categories */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-xl font-semibold mb-4">{t('forum.categories')} ({categories.length})</h2>
-              {categories.length === 0 ? (
-                <p className="text-gray-500 text-center py-8">{t('forum.noCategories')}</p>
-              ) : (
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {categories.map((category: ForumCategory) => (
-                    <Link
-                      key={category.id}
-                      href={`/forum/category/${category.slug}`}
-                      className="flex items-center gap-3 p-4 rounded-lg border hover:border-primary-500 hover:bg-primary-50 transition"
-                    >
-                      <span className="text-2xl">{iconMap[category.icon] || '📁'}</span>
-                      <div className="flex-1">
-                        <h3 className="font-medium">{category.name}</h3>
-                        <p className="text-sm text-gray-500">{category.threadCount} {t('forum.discussions')} · {category.postCount} {t('forum.posts')}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+      {/* Categories */}
+      <section className="py-8 px-4 border-b bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <span className="px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white">
+              Toate Discuțiile ({threads.length})
+            </span>
+            {Object.entries(categories).map(([cat, count]) => (
+              <span
+                key={cat}
+                className="px-4 py-2 rounded-full border transition text-sm font-medium border-gray-200 text-gray-700"
+              >
+                {cat} ({count as number})
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Recent Topics */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold">{t('forum.recentDiscussions')}</h2>
-                <Link href="/forum/new" className="text-primary-600 text-sm font-medium hover:underline">
-                  + {t('forum.startDiscussion')}
+      {/* Threads List */}
+      <section className="py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Main Content */}
+            <div className="md:col-span-2">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Discuții Recente</h2>
+                <Link
+                  href="/forum/new"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
+                >
+                  Discuție Nouă
                 </Link>
               </div>
-              {threads.length === 0 ? (
-                <p className="text-gray-500 text-center py-8">{t('forum.noThreads')}</p>
+
+              {sortedThreads.length === 0 ? (
+                <p className="text-center text-gray-500 py-16 bg-white rounded-xl">
+                  Nu există discuții disponibile.
+                </p>
               ) : (
                 <div className="space-y-4">
-                  {threads.map((thread: ForumThread) => (
-                    <div key={thread.id} className="p-4 border rounded-lg hover:border-primary-300 transition">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            {thread.isPinned && (
-                              <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded">
-                                📌 {t('forum.pinned')}
-                              </span>
-                            )}
-                            {thread.isLocked && (
-                              <span className="text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded">
-                                🔒 {t('forum.locked')}
-                              </span>
-                            )}
-                            <span className="text-xs text-gray-500">{thread.category?.name}</span>
+                  {sortedThreads.map((thread: ForumThread, index) => {
+                    const slug = thread.slug || thread.title.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^a-z0-9]+/g, '-')
+                      .replace(/^-+|-+$/g, '');
+
+                    return (
+                      <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                        <div className="flex items-start gap-4">
+                          <div className="flex-shrink-0">
+                            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                              <MessageSquare className="w-6 h-6 text-blue-600" />
+                            </div>
                           </div>
-                          <Link
-                            href={`/forum/thread/${thread.slug}`}
-                            className="font-medium hover:text-primary-600"
-                          >
-                            {thread.title}
-                          </Link>
-                          <p className="text-sm text-gray-600 mt-1 line-clamp-2">{thread.content}</p>
-                          <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
-                            <span>{thread.authorName}</span>
-                            <span className="flex items-center gap-1">
-                              <MessageSquare className="w-4 h-4" />
-                              {thread.replyCount}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Eye className="w-4 h-4" />
-                              {thread.viewCount}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
-                              {formatDate(thread.createdAt)}
-                            </span>
+
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-2 flex-wrap">
+                              {thread.sticky && (
+                                <Pin className="w-4 h-4 text-yellow-500" />
+                              )}
+                              <span className={`px-2 py-1 rounded-full text-xs font-medium border ${categoryColors[thread.category] || 'bg-gray-50 text-gray-700'}`}>
+                                {thread.category}
+                              </span>
+                            </div>
+
+                            <Link
+                              href={`/forum/thread/${slug}`}
+                              className="text-lg font-bold hover:text-blue-600 transition line-clamp-2"
+                            >
+                              {thread.title}
+                            </Link>
+
+                            <p className="text-gray-600 mt-2 line-clamp-2">
+                              {thread.initialPost}
+                            </p>
+
+                            <div className="flex items-center gap-4 mt-4 text-sm text-gray-500 flex-wrap">
+                              <span className="flex items-center gap-1">
+                                <Users className="w-4 h-4" />
+                                {thread.replies?.length || 0} răspunsuri
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Eye className="w-4 h-4" />
+                                {thread.views || 0} vizualizări
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                {timeAgo(thread.lastActivity)}
+                              </span>
+                            </div>
+
+                            {thread.tags && thread.tags.length > 0 && (
+                              <div className="flex flex-wrap gap-2 mt-3">
+                                {thread.tags.slice(0, 3).map((tag, tagIndex) => (
+                                  <span key={tagIndex} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                                    #{tag}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
-              <Link
-                href="/forum/all"
-                className="block text-center mt-6 text-primary-600 font-medium hover:underline"
-              >
-                {t('forum.viewAll')} →
-              </Link>
             </div>
-          </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* New Topic Button */}
-            <Link
-              href="/forum/new"
-              className="block w-full bg-primary-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-primary-700 transition"
-            >
-              {t('forum.newDiscussion')}
-            </Link>
-
-            {/* Top Contributors */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-primary-600" />
-                {t('forum.topContributors')}
-              </h3>
-              <div className="space-y-3">
-                {topContributors.map((user, index) => (
-                  <div key={user.name} className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-sm font-medium">
-                        {index + 1}
-                      </span>
-                      <span className="font-medium">{user.name}</span>
-                    </div>
-                    <span className={`text-xs px-2 py-1 rounded ${
-                      user.badge === 'Expert' ? 'bg-yellow-100 text-yellow-700' :
-                      user.badge === 'Pro' ? 'bg-blue-100 text-blue-700' :
-                      'bg-gray-100 text-gray-700'
-                    }`}>
-                      {user.badge}
-                    </span>
+            {/* Sidebar */}
+            <div className="space-y-6">
+              {/* Forum Stats */}
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="font-bold mb-4 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-blue-600" />
+                  Statistici Forum
+                </h3>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Total Discuții:</span>
+                    <span className="font-semibold">{threads.length}</span>
                   </div>
-                ))}
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Total Răspunsuri:</span>
+                    <span className="font-semibold">{totalReplies}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Membri Activi:</span>
+                    <span className="font-semibold">250+</span>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Forum Rules */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="font-semibold mb-4">{t('forum.rules')}</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>• {t('forum.rule1')}</li>
-                <li>• {t('forum.rule2')}</li>
-                <li>• {t('forum.rule3')}</li>
-                <li>• {t('forum.rule4')}</li>
-                <li>• {t('forum.rule5')}</li>
-              </ul>
+              {/* Popular Tags */}
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="font-bold mb-4">Taguri Populare</h3>
+                <div className="flex flex-wrap gap-2">
+                  {['ANAF', 'e-Factura', 'TVA', 'SAF-T', 'REVISAL', 'HR', 'Declarații'].map((tag, index) => (
+                    <span key={index} className="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Forum Guidelines */}
+              <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                <h3 className="font-bold mb-3 text-blue-900">Reguli Forum</h3>
+                <ul className="text-sm text-blue-800 space-y-2">
+                  <li>• Respectă ceilalți membri</li>
+                  <li>• Caută înainte de a posta</li>
+                  <li>• Fii constructiv și util</li>
+                  <li>• Nu face spam sau publicitate</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-blue-600 text-white py-12 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Ai nevoie de ajutor?</h2>
+          <p className="text-lg opacity-90 mb-8">
+            Comunitatea noastră de profesioniști este gata să te ajute cu întrebările tale.
+          </p>
+          <Link
+            href="/forum/new"
+            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+          >
+            Pune o Întrebare
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

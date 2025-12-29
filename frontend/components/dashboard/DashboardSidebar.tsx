@@ -40,6 +40,7 @@ import {
   Cog,
   Rocket,
   Scale,
+  FileCheck,
 } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
 import { OrganizationSelector } from '@/components/organization/OrganizationSelector';
@@ -134,6 +135,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/quality', icon: ClipboardCheck, labelKey: 'quality', defaultLabel: 'Management Calitate' },
       { href: '/dashboard/hse', icon: HeartPulse, labelKey: 'hse', defaultLabel: 'HSE' },
       { href: '/dashboard/audit', icon: Shield, labelKey: 'audit', defaultLabel: 'Jurnal Audit' },
+      { href: '/dashboard/compliance/anaf-status', icon: FileCheck, labelKey: 'anafStatus', defaultLabel: 'Status ANAF' },
     ],
   },
   {
@@ -143,6 +145,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/hr', icon: Users, labelKey: 'hr', defaultLabel: 'HR & Salarizare' },
       { href: '/dashboard/freelancer', icon: Briefcase, labelKey: 'freelancer', defaultLabel: 'Hub Freelanceri' },
       { href: '/dashboard/lms', icon: GraduationCap, labelKey: 'lms', defaultLabel: 'Training (LMS)' },
+      { href: '/simulation', icon: Target, labelKey: 'simulation', defaultLabel: 'Simulator Business' },
     ],
   },
   {
@@ -223,7 +226,7 @@ const hrefToModuleId: Record<string, string> = {
   '/dashboard/settings': 'settings',
   '/dashboard/admin': 'admin',
   '/dashboard/monitoring': 'monitoring',
-  '/dashboard/simulation': 'simulation',
+  '/simulation': 'simulation',
   '/dashboard/client-portal': 'client-portal',
   '/dashboard/workflow': 'workflow',
 };

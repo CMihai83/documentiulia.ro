@@ -1,0 +1,116 @@
+{
+  "name": "DocumentIulia.ro - ERP Contabilitate",
+  "short_name": "DocIulia",
+  "description": "Platforma ERP de contabilitate cu inteligenta artificiala pentru afaceri din Romania",
+  "start_url": "/ro/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "categories": ["business", "finance", "productivity"],
+  "lang": "ro",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard principal"
+    },
+    {
+      "src": "/screenshots/invoices.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Gestionare facturi"
+    },
+    {
+      "src": "/screenshots/mobile-dashboard.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Dashboard mobil"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Factura Noua",
+      "short_name": "Factura",
+      "description": "Creeaza o factura noua",
+      "url": "/ro/dashboard/invoices/new",
+      "icons": [{ "src": "/icons/invoice-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Acasa",
+      "description": "Mergi la dashboard",
+      "url": "/ro/dashboard",
+      "icons": [{ "src": "/icons/dashboard-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "e-Factura",
+      "short_name": "ANAF",
+      "description": "Trimite facturi la ANAF",
+      "url": "/ro/dashboard/efactura",
+      "icons": [{ "src": "/icons/efactura-icon.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

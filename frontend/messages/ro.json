@@ -69,7 +69,8 @@
       "tierDescriptions": {
         "free": "Pentru freelanceri și micro-întreprinderi",
         "pro": "Pentru IMM-uri în creștere",
-        "business": "Pentru companii mari și întreprinderi"
+        "business": "Pentru companii mari și întreprinderi",
+        "enterprise": "Soluție completă pentru corporații"
       },
       "ctaFree": "Începe Gratuit",
       "ctaPaid": "Începe Acum",
@@ -184,6 +185,12 @@
       "price": "149 RON",
       "period": "/lună",
       "features": ["Tot din Pro", "API personalizat", "Integrare SAGA", "Manager dedicat", "SLA garantat"]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "299 RON",
+      "period": "/lună",
+      "features": ["Tot din Business", "Utilizatori nelimitați", "SSO & SAML", "SLA 99.9%", "On-Premise", "Training personalizat"]
     }
   },
   "contact": {
@@ -555,6 +562,7 @@
     "hr": "HR & Salarizare",
     "freelancer": "Hub Freelanceri",
     "lms": "Training (LMS)",
+    "simulation": "Simulator Business",
     "forum": "Forum",
     "blog": "Blog",
     "developer": "API & Integrări",
@@ -562,6 +570,7 @@
     "fleet": "Flotă",
     "courierPayments": "Plăți Curierat",
     "audit": "Jurnal Audit",
+    "anafStatus": "Status ANAF",
     "roadmap": "Roadmap Produs",
     "settings": "Setări",
     "help": "Ghid Utilizare",

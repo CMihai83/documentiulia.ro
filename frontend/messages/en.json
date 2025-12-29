@@ -69,7 +69,8 @@
       "tierDescriptions": {
         "free": "For freelancers and micro-enterprises",
         "pro": "For growing SMBs",
-        "business": "For large companies and enterprises"
+        "business": "For large companies and enterprises",
+        "enterprise": "Complete solution for corporations"
       },
       "ctaFree": "Start Free",
       "ctaPaid": "Get Started",
@@ -199,6 +200,19 @@
         "SAGA integration",
         "Dedicated manager",
         "SLA guaranteed"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "299 RON",
+      "period": "/month",
+      "features": [
+        "Everything in Business",
+        "Unlimited users",
+        "SSO & SAML",
+        "99.9% SLA",
+        "On-Premise option",
+        "Custom training"
       ]
     }
   },
@@ -574,6 +588,7 @@
     "saft": "SAF-T D406",
     "hr": "HR & Payroll",
     "audit": "Audit Logs",
+    "anafStatus": "ANAF Status",
     "roadmap": "Product Roadmap",
     "settings": "Settings",
     "developer": "Developer",
@@ -591,6 +606,7 @@
     "hse": "HSE",
     "freelancer": "Freelancer",
     "lms": "LMS",
+    "simulation": "Business Simulator",
     "forum": "Forum",
     "blog": "Blog",
     "system": "System",

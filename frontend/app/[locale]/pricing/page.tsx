@@ -7,11 +7,11 @@ import Link from 'next/link';
 export default function PricingPage() {
   const t = useTranslations();
 
-  const tiers = ['free', 'pro', 'business'] as const;
+  const tiers = ['free', 'pro', 'business', 'enterprise'] as const;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             {t('home.pricing.badge')}
@@ -20,7 +20,7 @@ export default function PricingPage() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('home.pricing.subtitle')}</p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3 lg:gap-8">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {tiers.map((tier) => (
             <div
               key={tier}

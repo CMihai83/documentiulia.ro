@@ -1,0 +1,79 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "name": "documentiulia-frontend",
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "regions": ["fra1"],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "https://documentiulia.ro" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css|woff2|png|jpg|jpeg|gif|ico|svg)$",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/v1/:path*",
+      "destination": "https://api.documentiulia.ro/api/v1/:path*"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/dashboard",
+      "destination": "/ro/dashboard",
+      "permanent": false
+    },
+    {
+      "source": "/login",
+      "destination": "/ro/login",
+      "permanent": false
+    },
+    {
+      "source": "/register",
+      "destination": "/ro/register",
+      "permanent": false
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/compliance-check",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/email-reminders",
+      "schedule": "0 9 * * 1"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_API_URL": "@api_url",
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "@clerk_publishable_key"
+  },
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  }
+}

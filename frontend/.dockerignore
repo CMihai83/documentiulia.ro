@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+
+# Build output
+.next
+
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Test files
+coverage
+.nyc_output
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Storybook
+.storybook
+storybook-static
+
+# Temporary files
+tmp
+temp

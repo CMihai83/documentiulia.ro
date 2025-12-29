@@ -21,6 +21,13 @@ const AIAssistant = dynamic(
   }
 );
 
+const SimulationWidget = dynamic(
+  () => import('@/components/dashboard/SimulationWidget').then(mod => ({ default: mod.SimulationWidget })),
+  {
+    loading: () => <LoadingState message="Se încarcă simulatorul..." />,
+  }
+);
+
 const BusinessWidgets = dynamic(
   () => import('@/components/dashboard/BusinessWidgets').then(mod => ({ default: mod.BusinessWidgets })),
   {
@@ -122,6 +129,20 @@ export default async function DashboardPage() {
         <Suspense fallback={<LoadingState message="Se încarcă widget-urile de business..." size="lg" />}>
           <BusinessWidgets />
         </Suspense>
+      </section>
+
+      {/* Simulation Widget - Learning Integration */}
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+        <div className="lg:col-span-1">
+          <Suspense fallback={<LoadingState message="Se încarcă simulatorul..." />}>
+            <SimulationWidget />
+          </Suspense>
+        </div>
+        <div className="lg:col-span-2">
+          <Suspense fallback={<LoadingState message="Se încarcă AI Insights..." size="sm" />}>
+            <AIInsightsWidget />
+          </Suspense>
+        </div>
       </section>
 
       {/* Cash Flow Forecast and Overdue Invoices */}

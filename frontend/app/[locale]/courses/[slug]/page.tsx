@@ -5,94 +5,54 @@ import {
   BookOpen, Clock, Award, Play, ChevronDown, ChevronRight,
   Users, Star, CheckCircle, Lock, ArrowLeft
 } from 'lucide-react';
+import fs from 'fs';
+import path from 'path';
 
 interface Lesson {
-  id: string;
   title: string;
-  duration: number;
-  order: number;
-  isFree?: boolean;
+  duration?: number;
 }
 
 interface CourseModule {
-  id: string;
   title: string;
-  description?: string;
-  order: number;
-  duration: number;
-  lessons?: Lesson[];
-  _count?: { lessons: number };
+  duration?: string;
+  lessons: string[];
 }
 
 interface Course {
-  id: string;
   title: string;
   slug: string;
   description: string;
   category: string;
-  level: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+  level: string;
   duration: number;
-  price: string | null;
-  currency: string;
-  isFree: boolean;
-  language: string;
-  tags: string[];
-  status: string;
-  hasCertificate: boolean;
+  price: number;
+  currency?: string;
   modules: CourseModule[];
-  _count?: { enrollments: number };
+  objectives?: string[];
+  prerequisites?: string[];
+  instructor?: string;
+  students?: number;
+  rating?: number;
+  tags?: string[];
 }
 
 const levelMap: Record<string, { label: string; color: string }> = {
-  BEGINNER: { label: 'Beginner', color: 'bg-green-100 text-green-700' },
-  INTERMEDIATE: { label: 'Intermediate', color: 'bg-yellow-100 text-yellow-700' },
-  ADVANCED: { label: 'Advanced', color: 'bg-orange-100 text-orange-700' },
-  EXPERT: { label: 'Expert', color: 'bg-red-100 text-red-700' },
-};
-
-const categoryMap: Record<string, string> = {
-  EXCEL_VBA: 'Excel & VBA',
-  PM_AGILE: 'Project Management',
-  PROJECT_MANAGEMENT: 'Project Management',
-  FINANCE_OPS: 'Finance & Operations',
-  LEADERSHIP: 'Leadership',
-  TAX_COMPLIANCE: 'Tax & Compliance',
-  HR_TRAINING: 'HR & Training',
-  HR_COMPLIANCE: 'HR & Compliance',
-  LEAN_OPERATIONS: 'Operations',
-  MBA_STRATEGY: 'MBA & Strategy',
-  HSE_SAFETY: 'Health & Safety',
-  MARKETING: 'Marketing',
-  SOFT_SKILLS: 'Soft Skills',
-  TECHNOLOGY: 'Technology',
+  'Începător': { label: 'Începător', color: 'bg-green-100 text-green-700' },
+  'Intermediar': { label: 'Intermediar', color: 'bg-yellow-100 text-yellow-700' },
+  'Avansat': { label: 'Avansat', color: 'bg-orange-100 text-orange-700' },
 };
 
 async function getCourse(slug: string): Promise<Course | null> {
-  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
-
   try {
-    const res = await fetch(`${BACKEND_URL}/api/v1/courses/${slug}`, {
-      next: { revalidate: 60 },
-      cache: 'no-store',
-    });
+    const filePath = path.join(process.cwd(), 'public', 'data', 'courses.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const courses: Course[] = JSON.parse(fileContents);
 
-    if (!res.ok) {
-      // Try to find by slug in all courses if direct fetch fails
-      const allRes = await fetch(`${BACKEND_URL}/api/v1/courses`, {
-        next: { revalidate: 60 },
-        cache: 'no-store',
-      });
-      if (allRes.ok) {
-        const courses = await allRes.json();
-        const course = courses.find((c: Course) => c.slug === slug);
-        if (course) return course;
-      }
-      return null;
-    }
-
-    return await res.json();
+    const course = courses.find(c => c.slug === slug);
+    return course || null;
   } catch (error) {
-    console.error('Error fetching course:', error);
+    console.error('Error loading course:', error);
     return null;
   }
 }
@@ -119,10 +79,11 @@ export default async function CourseDetailPage({
   }
 
   const totalLessons = course.modules.reduce(
-    (sum, m) => sum + (m._count?.lessons || m.lessons?.length || 0),
+    (sum, m) => sum + (m.lessons?.length || 0),
     0
   );
   const levelInfo = levelMap[course.level] || { label: course.level, color: 'bg-gray-100 text-gray-700' };
+  const isFree = !course.price || course.price === 0;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -146,12 +107,12 @@ export default async function CourseDetailPage({
             <div className="lg:col-span-2">
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
-                  {categoryMap[course.category] || course.category}
+                  {course.category}
                 </span>
                 <span className={`text-sm px-3 py-1 rounded-full ${levelInfo.color}`}>
                   {levelInfo.label}
                 </span>
-                {course.isFree && (
+                {isFree && (
                   <span className="text-sm font-bold bg-green-500 px-3 py-1 rounded-full">
                     {t('courses.free') || 'GRATUIT'}
                   </span>
@@ -177,16 +138,14 @@ export default async function CourseDetailPage({
                   <Play className="w-5 h-5" />
                   {totalLessons} {t('courses.lessons') || 'lectii'}
                 </span>
-                {course.hasCertificate && (
-                  <span className="flex items-center gap-2">
-                    <Award className="w-5 h-5" />
-                    {t('courses.certificate') || 'Certificat'}
-                  </span>
-                )}
-                {course._count?.enrollments !== undefined && course._count.enrollments > 0 && (
+                <span className="flex items-center gap-2">
+                  <Award className="w-5 h-5" />
+                  {t('courses.certificate') || 'Certificat'}
+                </span>
+                {course.students !== undefined && course.students > 0 && (
                   <span className="flex items-center gap-2">
                     <Users className="w-5 h-5" />
-                    {course._count.enrollments} {t('courses.enrolled') || 'inscrisi'}
+                    {course.students} {t('courses.enrolled') || 'inscrisi'}
                   </span>
                 )}
               </div>
@@ -197,13 +156,13 @@ export default async function CourseDetailPage({
               <div className="bg-white text-gray-900 rounded-xl p-6 shadow-lg">
                 <div className="text-center mb-6">
                   <div className="text-3xl font-bold text-primary-600 mb-2">
-                    {course.isFree ? (
+                    {isFree ? (
                       t('courses.free') || 'GRATUIT'
                     ) : (
-                      `${course.price} ${course.currency}`
+                      `${course.price} ${course.currency || 'RON'}`
                     )}
                   </div>
-                  {!course.isFree && (
+                  {!isFree && (
                     <p className="text-sm text-gray-500">
                       {t('courses.oneTimePayment') || 'Plata unica, acces pe viata'}
                     </p>
@@ -214,7 +173,7 @@ export default async function CourseDetailPage({
                   href={`/${locale}/register?redirect=/dashboard/lms/${course.slug}`}
                   className="block w-full bg-primary-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-primary-700 transition mb-4"
                 >
-                  {course.isFree
+                  {isFree
                     ? (t('courses.startFree') || 'Incepe Gratuit')
                     : (t('courses.enrollNow') || 'Inscrie-te Acum')
                   }
@@ -229,12 +188,10 @@ export default async function CourseDetailPage({
                     <CheckCircle className="w-4 h-4 text-green-500" />
                     {t('courses.benefits.mobile') || 'Acces mobil'}
                   </li>
-                  {course.hasCertificate && (
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('courses.benefits.certificate') || 'Certificat de absolvire'}
-                    </li>
-                  )}
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    {t('courses.benefits.certificate') || 'Certificat de absolvire'}
+                  </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500" />
                     {t('courses.benefits.updates') || 'Actualizari gratuite'}
@@ -285,11 +242,9 @@ export default async function CourseDetailPage({
                   {t('courses.curriculum') || 'Continut curs'}
                 </h2>
                 <div className="space-y-4">
-                  {course.modules
-                    .sort((a, b) => a.order - b.order)
-                    .map((module, idx) => (
+                  {course.modules.map((module, idx) => (
                       <div
-                        key={module.id}
+                        key={idx}
                         className="border rounded-lg overflow-hidden"
                       >
                         <div className="bg-gray-50 px-4 py-3 flex items-center justify-between">
@@ -300,7 +255,7 @@ export default async function CourseDetailPage({
                             <div>
                               <h3 className="font-semibold">{module.title}</h3>
                               <p className="text-sm text-gray-500">
-                                {module._count?.lessons || module.lessons?.length || 0} {t('courses.lessons') || 'lectii'} • {formatDuration(module.duration)}
+                                {module.lessons?.length || 0} {t('courses.lessons') || 'lectii'} • {module.duration || 'N/A'}
                               </p>
                             </div>
                           </div>
@@ -308,15 +263,13 @@ export default async function CourseDetailPage({
                         </div>
                         {module.lessons && module.lessons.length > 0 && (
                           <div className="px-4 py-2 border-t">
-                            {module.lessons.slice(0, 3).map((lesson) => (
+                            {module.lessons.slice(0, 3).map((lesson, lessonIdx) => (
                               <div
-                                key={lesson.id}
+                                key={lessonIdx}
                                 className="flex items-center gap-3 py-2 text-sm text-gray-600"
                               >
                                 <Play className="w-4 h-4 text-gray-400" />
-                                <span className="flex-1">{lesson.title}</span>
-                                <span className="text-gray-400">{lesson.duration}m</span>
-                                {!lesson.isFree && <Lock className="w-4 h-4 text-gray-300" />}
+                                <span className="flex-1">{lesson}</span>
                               </div>
                             ))}
                             {module.lessons.length > 3 && (
@@ -352,12 +305,10 @@ export default async function CourseDetailPage({
                     <Award className="w-5 h-5 text-primary-600" />
                     <span>{course.modules.length} {t('courses.modules') || 'module'}</span>
                   </li>
-                  {course.hasCertificate && (
-                    <li className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary-600" />
-                      <span>{t('courses.completionCertificate') || 'Certificat de absolvire'}</span>
-                    </li>
-                  )}
+                  <li className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary-600" />
+                    <span>{t('courses.completionCertificate') || 'Certificat de absolvire'}</span>
+                  </li>
                 </ul>
 
                 <div className="mt-6 pt-6 border-t">
@@ -393,7 +344,7 @@ export default async function CourseDetailPage({
             href={`/${locale}/register?redirect=/dashboard/lms/${course.slug}`}
             className="inline-block bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
           >
-            {course.isFree
+            {isFree
               ? (t('courses.startFree') || 'Incepe Gratuit')
               : (t('courses.enrollNow') || 'Inscrie-te Acum')
             }

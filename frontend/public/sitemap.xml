@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
+  <url>
+    <loc>https://documentiulia.ro</loc>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://documentiulia.ro/ro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://documentiulia.ro/en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://documentiulia.ro/de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://documentiulia.ro/fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://documentiulia.ro/es"/>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Features -->
+  <url>
+    <loc>https://documentiulia.ro/features</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Pricing -->
+  <url>
+    <loc>https://documentiulia.ro/pricing</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Authentication -->
+  <url>
+    <loc>https://documentiulia.ro/login</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://documentiulia.ro/register</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://documentiulia.ro/contact</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://documentiulia.ro/blog</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Forum -->
+  <url>
+    <loc>https://documentiulia.ro/forum</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://documentiulia.ro/forum/all</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://documentiulia.ro/forum/new</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Help & Support -->
+  <url>
+    <loc>https://documentiulia.ro/help</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Legal -->
+  <url>
+    <loc>https://documentiulia.ro/terms</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://documentiulia.ro/privacy</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://documentiulia.ro/gdpr</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

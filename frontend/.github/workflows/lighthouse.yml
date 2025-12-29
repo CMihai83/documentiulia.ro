@@ -1,0 +1,146 @@
+name: Lighthouse CI - Performance Budget
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  lighthouse:
+    name: Lighthouse Performance Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          SKIP_ENV_VALIDATION: true
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+
+      - name: Start application
+        run: npm run start &
+        env:
+          PORT: 3000
+
+      - name: Wait for app to be ready
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
+      - name: Run Lighthouse CI
+        run: lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 14
+
+      - name: Comment PR with Lighthouse scores
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            // Find the latest manifest
+            const lhciDir = '.lighthouseci';
+            const files = fs.readdirSync(lhciDir);
+            const manifestFile = files.find(f => f.includes('manifest'));
+
+            if (manifestFile) {
+              const manifest = JSON.parse(fs.readFileSync(path.join(lhciDir, manifestFile), 'utf8'));
+              const results = manifest[0];
+
+              if (results && results.summary) {
+                const scores = results.summary;
+                const comment = `## Lighthouse Performance Report
+
+                | Metric | Score |
+                |--------|-------|
+                | Performance | ${Math.round(scores.performance * 100)}% |
+                | Accessibility | ${Math.round(scores.accessibility * 100)}% |
+                | Best Practices | ${Math.round(scores['best-practices'] * 100)}% |
+                | SEO | ${Math.round(scores.seo * 100)}% |
+
+                [View full report](${results.htmlReportPath || 'See artifacts'})
+                `;
+
+                github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: comment
+                });
+              }
+            }
+
+  bundle-size:
+    name: Bundle Size Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with bundle analyzer
+        run: ANALYZE=true npm run build
+        env:
+          SKIP_ENV_VALIDATION: true
+
+      - name: Check bundle sizes
+        run: |
+          echo "Checking bundle sizes..."
+
+          # Check if any chunk exceeds 500KB
+          find .next -name "*.js" -size +500k | while read file; do
+            size=$(du -h "$file" | cut -f1)
+            echo "WARNING: Large bundle detected: $file ($size)"
+          done
+
+          # Calculate total JS size
+          total_size=$(find .next -name "*.js" -exec du -cb {} + | grep total | cut -f1)
+          total_mb=$((total_size / 1024 / 1024))
+
+          echo "Total JavaScript size: ${total_mb}MB"
+
+          if [ $total_mb -gt 5 ]; then
+            echo "ERROR: Total bundle size exceeds 5MB limit"
+            exit 1
+          fi
+
+      - name: Upload bundle analysis
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bundle-analysis
+          path: .next/analyze/
+          retention-days: 7

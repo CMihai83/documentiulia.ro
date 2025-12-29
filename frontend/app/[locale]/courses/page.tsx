@@ -1,109 +1,70 @@
 import { getTranslations } from 'next-intl/server';
 import { BookOpen, Clock, Award, Play } from 'lucide-react';
 import Link from 'next/link';
-
-interface Lesson {
-  id: string;
-  title: string;
-  duration: number;
-}
-
-interface CourseModule {
-  id: string;
-  title: string;
-  order: number;
-  duration: number;
-  lessons: Lesson[];
-  isFree: boolean;
-}
-
-interface Instructor {
-  id: string;
-  name: string;
-  title: string;
-  avatar?: string;
-}
-
-interface CategoryCount {
-  category: string;
-  count: number;
-}
+import fs from 'fs';
+import path from 'path';
 
 interface Course {
-  id: string;
   title: string;
   slug: string;
   description: string;
-  shortDescription: string;
   category: string;
-  level: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+  level: string;
   duration: number;
   price: number;
-  currency: string;
-  isFree: boolean;
-  language: string;
-  tags: string[];
-  status: string;
-  certificateEnabled: boolean;
-  modules: CourseModule[];
-  instructor: Instructor;
-  enrollmentCount: number;
-  rating: number;
+  currency?: string;
+  modules: Array<{
+    title: string;
+    duration?: string;
+    lessons: string[];
+  }>;
+  objectives?: string[];
+  prerequisites?: string[];
+  instructor?: string;
+  students?: number;
+  rating?: number;
+  seo?: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
 }
 
-const levelMap: Record<string, string> = {
-  BEGINNER: 'Beginner',
-  INTERMEDIATE: 'Intermediate',
-  ADVANCED: 'Advanced',
-  EXPERT: 'Expert',
+const levelMap: Record<string, { label: string; color: string }> = {
+  'Începător': { label: 'Începător', color: 'bg-green-100 text-green-700' },
+  'Intermediar': { label: 'Intermediar', color: 'bg-yellow-100 text-yellow-700' },
+  'Avansat': { label: 'Avansat', color: 'bg-red-100 text-red-700' },
 };
 
-const categoryMap: Record<string, string> = {
-  EXCEL_VBA: 'Excel & VBA',
-  PM_AGILE: 'Project Management',
-  PROJECT_MANAGEMENT: 'Project Management',
-  FINANCE_OPS: 'Finance & Operations',
-  LEADERSHIP: 'Leadership',
-  TAX_COMPLIANCE: 'Tax & Compliance',
-  HR_TRAINING: 'HR & Training',
-  HR_COMPLIANCE: 'HR & Compliance',
-  LEAN_OPERATIONS: 'Operations',
-  MBA_STRATEGY: 'MBA & Strategy',
-  HSE_SAFETY: 'Health & Safety',
-  MARKETING: 'Marketing',
-  SOFT_SKILLS: 'Soft Skills',
-  TECHNOLOGY: 'Technology',
+const categoryColors: Record<string, string> = {
+  'Contabilitate & Fiscalitate': 'bg-blue-50 text-blue-700',
+  'HR & Legislația Muncii': 'bg-purple-50 text-purple-700',
+  'Business & Operațiuni': 'bg-green-50 text-green-700',
+  'Tehnologie & Automatizare': 'bg-orange-50 text-orange-700',
 };
 
 async function getCoursesData() {
-  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
-
   try {
-    const [coursesRes, categoriesRes] = await Promise.all([
-      fetch(`${BACKEND_URL}/api/v1/courses?limit=100`, {
-        next: { revalidate: 10, tags: ['courses'] },
-      }),
-      fetch(`${BACKEND_URL}/api/v1/courses/categories`, {
-        next: { revalidate: 10, tags: ['courses'] },
-      })
-    ]);
+    const filePath = path.join(process.cwd(), 'public', 'data', 'courses.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const courses = JSON.parse(fileContents);
 
-    const courses = coursesRes.ok ? await coursesRes.json() : [];
-    const categories = categoriesRes.ok ? await categoriesRes.json() : [];
+    // Group by category for filters
+    const categories = courses.reduce((acc: Record<string, number>, course: Course) => {
+      acc[course.category] = (acc[course.category] || 0) + 1;
+      return acc;
+    }, {});
 
     return { courses, categories };
   } catch (error) {
-    console.error('Error fetching courses data:', error);
-    return { courses: [], categories: [] };
+    console.error('Error loading courses:', error);
+    return { courses: [], categories: {} };
   }
 }
 
-function formatDuration(minutes: number) {
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
-  if (hours === 0) return `${mins} min`;
-  if (mins === 0) return `${hours}h`;
-  return `${hours}h ${mins}m`;
+function formatDuration(hours: number) {
+  if (hours < 1) return `${hours * 60} min`;
+  return `${hours}h`;
 }
 
 export default async function CoursesPage() {
@@ -111,36 +72,38 @@ export default async function CoursesPage() {
   const { courses, categories } = await getCoursesData();
 
   const totalLessons = courses.reduce((sum: number, course: Course) =>
-    sum + course.modules.reduce((mSum: number, m: CourseModule) => mSum + (m.lessons?.length || 0), 0), 0
+    sum + course.modules.reduce((mSum: number, m) => mSum + m.lessons.length, 0), 0
   );
   const totalDuration = courses.reduce((sum: number, course: Course) => sum + course.duration, 0);
-  const freeCourses = courses.filter((c: Course) => c.isFree).length;
+  const freeCourses = courses.filter((c: Course) => !c.price || c.price === 0).length;
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-16 px-4">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('courses.title')}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Cursuri Contabilitate și Afaceri
+          </h1>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
-            {t('courses.subtitle')}
+            Învață contabilitate, fiscalitate, HR și tehnologie de la experți. Cursuri practice pentru profesioniști români.
           </p>
-          <div className="flex justify-center gap-8 mt-8">
+          <div className="flex justify-center gap-8 mt-8 flex-wrap">
             <div className="text-center">
               <div className="text-3xl font-bold">{courses.length}</div>
-              <div className="text-sm opacity-80">{t('courses.coursesCount')}</div>
+              <div className="text-sm opacity-80">Cursuri</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold">{totalLessons}</div>
-              <div className="text-sm opacity-80">{t('courses.lessonsCount')}</div>
+              <div className="text-sm opacity-80">Lecții</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">{Math.floor(totalDuration / 60)}h</div>
-              <div className="text-sm opacity-80">{t('courses.contentHours')}</div>
+              <div className="text-3xl font-bold">{Math.floor(totalDuration)}h</div>
+              <div className="text-sm opacity-80">Ore de conținut</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold">{freeCourses}</div>
-              <div className="text-sm opacity-80">{t('courses.freeCourses')}</div>
+              <div className="text-sm opacity-80">Cursuri gratuite</div>
             </div>
           </div>
         </div>
@@ -150,20 +113,16 @@ export default async function CoursesPage() {
       <section className="py-8 px-4 border-b bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link
-              href="/courses"
-              className="px-4 py-2 rounded-full border transition text-sm font-medium bg-primary-600 text-white border-primary-600"
-            >
-              {t('courses.allCourses')} ({courses.length})
-            </Link>
-            {categories.slice(0, 6).map((cat: CategoryCount) => (
-              <Link
-                key={cat.category}
-                href={`/courses?category=${cat.category}`}
-                className="px-4 py-2 rounded-full border transition text-sm font-medium border-gray-200 hover:border-primary-500 hover:text-primary-600"
+            <span className="px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white">
+              Toate Cursurile ({courses.length})
+            </span>
+            {Object.entries(categories).map(([cat, count]) => (
+              <span
+                key={cat}
+                className="px-4 py-2 rounded-full border transition text-sm font-medium border-gray-200 text-gray-700"
               >
-                {categoryMap[cat.category] || cat.category} ({cat.count})
-              </Link>
+                {cat} ({count as number})
+              </span>
             ))}
           </div>
         </div>
@@ -173,74 +132,71 @@ export default async function CoursesPage() {
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
           {courses.length === 0 ? (
-            <p className="text-center text-gray-500 py-16">{t('courses.noCourses')}</p>
+            <p className="text-center text-gray-500 py-16">Nu există cursuri disponibile.</p>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {courses.map((course: Course) => {
-                const totalModuleLessons = course.modules.reduce((sum, m) => sum + (m.lessons?.length || 0), 0);
+                const totalModuleLessons = course.modules.reduce((sum, m) => sum + m.lessons.length, 0);
+                const isFree = !course.price || course.price === 0;
+                const levelInfo = levelMap[course.level] || { label: course.level, color: 'bg-gray-100 text-gray-700' };
+
                 return (
-                  <div key={course.id} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden group">
-                    <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center relative">
-                      <BookOpen className="w-16 h-16 text-primary-600" />
-                      {course.isFree && (
+                  <div key={course.slug} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden group">
+                    <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center relative">
+                      <BookOpen className="w-16 h-16 text-blue-600" />
+                      {isFree && (
                         <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-                          {t('courses.free')}
+                          GRATUIT
                         </span>
                       )}
-                      {course.certificateEnabled && (
-                        <span className="absolute top-3 right-3 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
-                          <Award className="w-3 h-3" /> {t('courses.certificate')}
-                        </span>
-                      )}
+                      <span className="absolute top-3 right-3 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
+                        <Award className="w-3 h-3" /> Certificat
+                      </span>
                     </div>
                     <div className="p-6">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-1 rounded">
-                          {categoryMap[course.category] || course.category}
+                      <div className="flex items-center gap-2 mb-2 flex-wrap">
+                        <span className={`text-xs font-medium px-2 py-1 rounded ${categoryColors[course.category] || 'bg-gray-100 text-gray-700'}`}>
+                          {course.category}
                         </span>
-                        <span className={`text-xs px-2 py-1 rounded ${
-                          course.level === 'BEGINNER' ? 'bg-green-100 text-green-700' :
-                          course.level === 'INTERMEDIATE' ? 'bg-yellow-100 text-yellow-700' :
-                          'bg-red-100 text-red-700'
-                        }`}>
-                          {levelMap[course.level]}
+                        <span className={`text-xs px-2 py-1 rounded ${levelInfo.color}`}>
+                          {levelInfo.label}
                         </span>
                       </div>
-                      <h3 className="text-lg font-semibold mt-3 mb-2 group-hover:text-primary-600 transition line-clamp-2">
+                      <h3 className="text-lg font-semibold mt-3 mb-2 group-hover:text-blue-600 transition line-clamp-2">
                         {course.title}
                       </h3>
                       <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                         {course.description}
                       </p>
-                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4 flex-wrap">
                         <span className="flex items-center gap-1">
                           <Clock className="w-4 h-4" />
                           {formatDuration(course.duration)}
                         </span>
                         <span className="flex items-center gap-1">
                           <BookOpen className="w-4 h-4" />
-                          {course.modules.length} {t('courses.modules')}
+                          {course.modules.length} module
                         </span>
                         <span className="flex items-center gap-1">
                           <Play className="w-4 h-4" />
-                          {totalModuleLessons} {t('courses.lessons')}
+                          {totalModuleLessons} lecții
                         </span>
                       </div>
                       <div className="flex items-center justify-between pt-4 border-t">
-                        <div className="text-lg font-bold text-primary-600">
-                          {course.isFree ? (
-                            t('courses.free')
+                        <div className="text-lg font-bold text-blue-600">
+                          {isFree ? (
+                            'GRATUIT'
                           ) : (
                             <span className="flex items-center gap-1">
-                              {course.price} {course.currency}
+                              {course.price} {course.currency || 'RON'}
                             </span>
                           )}
                         </div>
                         <Link
                           href={`/courses/${course.slug}`}
-                          className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition"
+                          className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
                         >
-                          {t('courses.viewCourse')}
+                          Vezi Cursul
                         </Link>
                       </div>
                     </div>
@@ -253,25 +209,25 @@ export default async function CoursesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-primary-600 text-white">
+      <section className="py-16 px-4 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <Award className="w-16 h-16 mx-auto mb-4 opacity-80" />
-          <h2 className="text-3xl font-bold mb-4">{t('courses.cta.title')}</h2>
+          <h2 className="text-3xl font-bold mb-4">Începe să Înveți Astăzi</h2>
           <p className="text-lg opacity-90 mb-8">
-            {t('courses.cta.subtitle')}
+            Dobândește competențe valoroase în contabilitate, fiscalitate și business. Certificări recunoscute.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/register"
-              className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
             >
-              {t('courses.cta.startFree')}
+              Înregistrează-te Gratuit
             </Link>
             <Link
               href="/pricing"
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
             >
-              {t('courses.cta.viewPlans')}
+              Vezi Planuri
             </Link>
           </div>
         </div>

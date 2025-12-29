@@ -9,9 +9,11 @@ interface User {
   email: string;
   name: string;
   role: 'USER' | 'ADMIN' | 'ACCOUNTANT';
-  tier?: 'FREE' | 'PRO' | 'BUSINESS';
+  tier?: 'FREE' | 'PRO' | 'BUSINESS' | 'ENTERPRISE';
   company?: string;
   cui?: string;
+  organizationId?: string;
+  organizationName?: string;
 }
 
 interface AuthContextType {

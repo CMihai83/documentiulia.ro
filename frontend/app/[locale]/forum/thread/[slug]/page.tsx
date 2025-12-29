@@ -1,39 +1,46 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { MessageSquare, Eye, Clock, ArrowLeft, User, LogIn } from 'lucide-react';
+import fs from 'fs';
+import path from 'path';
 
 interface ForumThread {
-  id: string;
   title: string;
-  slug: string;
-  content: string;
-  isPinned: boolean;
-  isLocked: boolean;
-  viewCount: number;
-  replyCount: number;
-  authorName: string;
-  category: { name: string; slug: string };
+  slug?: string;
+  category: string;
+  initialPost: string;
+  replies: Array<{
+    author: string;
+    role?: string;
+    content: string;
+    createdAt: string;
+    helpful?: boolean;
+  }>;
+  tags: string[];
+  views: number;
+  sticky?: boolean;
   createdAt: string;
-  replies?: ForumReply[];
+  lastActivity: string;
 }
 
-interface ForumReply {
-  id: string;
-  content: string;
-  authorName: string;
-  createdAt: string;
-}
-
-async function getThreadData(slug: string) {
-  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
-
+async function getThreadData(slug: string): Promise<ForumThread | null> {
   try {
-    const res = await fetch(`${BACKEND_URL}/api/v1/forum/threads/${slug}`, {
-      next: { revalidate: 60 },
-      cache: 'no-store'
+    const filePath = path.join(process.cwd(), 'public', 'data', 'forum.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const threads: ForumThread[] = JSON.parse(fileContents);
+
+    const thread = threads.find(t => {
+      const threadSlug = t.slug || t.title.toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      return threadSlug === slug;
     });
-    return res.ok ? await res.json() : null;
-  } catch {
+
+    return thread || null;
+  } catch (error) {
+    console.error('Error loading thread:', error);
     return null;
   }
 }
@@ -78,29 +85,21 @@ export default async function ForumThreadPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-8 px-4">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <Link href="/forum" className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4">
             <ArrowLeft className="w-4 h-4" />
             {t('forum.backToForum') || 'Înapoi la forum'}
           </Link>
           <div className="flex items-center gap-2 mb-2">
-            {thread.isPinned && (
+            {thread.sticky && (
               <span className="text-xs bg-yellow-400 text-yellow-900 px-2 py-0.5 rounded">
                 📌 {t('forum.pinned') || 'Fixat'}
               </span>
             )}
-            {thread.isLocked && (
-              <span className="text-xs bg-gray-200 text-gray-700 px-2 py-0.5 rounded">
-                🔒 {t('forum.locked') || 'Închis'}
-              </span>
-            )}
-            <Link
-              href={`/forum/category/${thread.category?.slug}`}
-              className="text-sm bg-white/20 px-2 py-0.5 rounded hover:bg-white/30"
-            >
-              {thread.category?.name}
-            </Link>
+            <span className="text-sm bg-white/20 px-2 py-0.5 rounded">
+              {thread.category}
+            </span>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold">{thread.title}</h1>
         </div>
@@ -110,27 +109,36 @@ export default async function ForumThreadPage({
         {/* Original Post */}
         <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-              <User className="w-6 h-6 text-primary-600" />
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+              <User className="w-6 h-6 text-blue-600" />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
-                <span className="font-semibold">{thread.authorName}</span>
+                <span className="font-semibold">Autor Original</span>
                 <span className="text-sm text-gray-500">{formatDate(thread.createdAt)}</span>
               </div>
               <div className="prose prose-sm max-w-none">
-                <p className="text-gray-700 whitespace-pre-wrap">{thread.content}</p>
+                <p className="text-gray-700 whitespace-pre-wrap">{thread.initialPost}</p>
               </div>
               <div className="flex items-center gap-4 mt-4 text-sm text-gray-500">
                 <span className="flex items-center gap-1">
                   <Eye className="w-4 h-4" />
-                  {thread.viewCount} {t('forum.views') || 'vizualizări'}
+                  {thread.views} {t('forum.views') || 'vizualizări'}
                 </span>
                 <span className="flex items-center gap-1">
                   <MessageSquare className="w-4 h-4" />
-                  {thread.replyCount} {t('forum.replies') || 'răspunsuri'}
+                  {thread.replies?.length || 0} {t('forum.replies') || 'răspunsuri'}
                 </span>
               </div>
+              {thread.tags && thread.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {thread.tags.map((tag, index) => (
+                    <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -138,17 +146,27 @@ export default async function ForumThreadPage({
         {/* Replies */}
         {thread.replies && thread.replies.length > 0 && (
           <div className="space-y-4 mb-6">
-            <h2 className="text-lg font-semibold">{t('forum.replies') || 'Răspunsuri'}</h2>
-            {thread.replies.map((reply: ForumReply) => (
-              <div key={reply.id} className="bg-white rounded-xl shadow-sm p-6">
+            <h2 className="text-lg font-semibold">{t('forum.replies') || 'Răspunsuri'} ({thread.replies.length})</h2>
+            {thread.replies.map((reply, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-sm p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
                     <User className="w-5 h-5 text-gray-500" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="font-medium">{reply.authorName}</span>
+                      <span className="font-medium">{reply.author}</span>
+                      {reply.role && (
+                        <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
+                          {reply.role}
+                        </span>
+                      )}
                       <span className="text-sm text-gray-500">{formatDate(reply.createdAt)}</span>
+                      {reply.helpful && (
+                        <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">
+                          ✓ Util
+                        </span>
+                      )}
                     </div>
                     <p className="text-gray-700 whitespace-pre-wrap">{reply.content}</p>
                   </div>
@@ -159,29 +177,21 @@ export default async function ForumThreadPage({
         )}
 
         {/* Reply Box */}
-        {!thread.isLocked ? (
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h3 className="font-semibold mb-4">{t('forum.addReply') || 'Adaugă un răspuns'}</h3>
-            <div className="text-center py-8">
-              <LogIn className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-              <p className="text-gray-500 mb-4">
-                {t('forum.loginToReply') || 'Autentifică-te pentru a răspunde'}
-              </p>
-              <Link
-                href="/login"
-                className="inline-block bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700"
-              >
-                {t('auth.login') || 'Autentificare'}
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <div className="bg-gray-100 rounded-xl p-6 text-center">
-            <p className="text-gray-500">
-              🔒 {t('forum.threadLocked') || 'Această discuție este închisă pentru răspunsuri noi.'}
+        <div className="bg-white rounded-xl shadow-sm p-6">
+          <h3 className="font-semibold mb-4">{t('forum.addReply') || 'Adaugă un răspuns'}</h3>
+          <div className="text-center py-8">
+            <LogIn className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+            <p className="text-gray-500 mb-4">
+              {t('forum.loginToReply') || 'Autentifică-te pentru a răspunde'}
             </p>
+            <Link
+              href="/login"
+              className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700"
+            >
+              {t('auth.login') || 'Autentificare'}
+            </Link>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

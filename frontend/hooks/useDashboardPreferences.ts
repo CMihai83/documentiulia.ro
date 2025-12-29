@@ -51,42 +51,55 @@ export function useDashboardPreferences(): UseDashboardPreferencesReturn {
   const [error, setError] = useState<string | null>(null);
 
   const fetchPreferences = useCallback(async () => {
-    if (!token) {
-      setIsLoading(false);
-      return;
-    }
-
     try {
       setIsLoading(true);
       setError(null);
 
-      // Fetch preferences
-      const prefsResponse = await fetch(`${API_BASE}/users/dashboard-preferences`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!prefsResponse.ok) {
-        throw new Error('Failed to fetch preferences');
-      }
-
-      const prefsData = await prefsResponse.json();
-      setPreferences(prefsData);
-
-      // Fetch available modules
-      const modulesResponse = await fetch(`${API_BASE}/users/dashboard-preferences/modules`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
+      // Always fetch available modules (public endpoint)
+      const modulesResponse = await fetch(`${API_BASE}/users/dashboard-preferences/all-modules`);
       if (modulesResponse.ok) {
         const modulesData = await modulesResponse.json();
-        setAvailableModules(modulesData.modules || []);
-        setUserTier(modulesData.tier || 'FREE');
+        setAvailableModules(Array.isArray(modulesData) ? modulesData : modulesData.modules || []);
+      }
+
+      // Fetch user preferences if authenticated
+      if (token) {
+        const prefsResponse = await fetch(`${API_BASE}/users/dashboard-preferences`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (prefsResponse.ok) {
+          const prefsData = await prefsResponse.json();
+          setPreferences(prefsData);
+          setUserTier(prefsData.tier || 'ENTERPRISE');
+        } else {
+          // Set defaults if preferences fetch fails
+          setPreferences({
+            enabledModules: ['dashboard', 'analytics', 'invoices', 'finance', 'crm', 'hr'],
+            moduleOrder: [],
+            collapsedSections: [],
+            sidebarCollapsed: false,
+            compactMode: false,
+            darkMode: false,
+            dashboardWidgets: ['overview', 'cashFlow', 'vatChart', 'recentInvoices', 'alerts'],
+          });
+          setUserTier('FREE');
+        }
+      } else {
+        // No token - use defaults
+        setPreferences({
+          enabledModules: ['dashboard', 'analytics', 'invoices', 'finance', 'crm', 'hr'],
+          moduleOrder: [],
+          collapsedSections: [],
+          sidebarCollapsed: false,
+          compactMode: false,
+          darkMode: false,
+          dashboardWidgets: ['overview', 'cashFlow', 'vatChart', 'recentInvoices', 'alerts'],
+        });
+        setUserTier('FREE');
       }
     } catch (err) {
       console.error('Error fetching dashboard preferences:', err);
@@ -102,6 +115,7 @@ export function useDashboardPreferences(): UseDashboardPreferencesReturn {
         darkMode: false,
         dashboardWidgets: ['overview', 'cashFlow', 'vatChart', 'recentInvoices', 'alerts'],
       });
+      setUserTier('FREE');
     } finally {
       setIsLoading(false);
     }

@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Cum depun D112 pentru prima dată?",
+    "category": "Întrebări Frecvente",
+    "initialPost": "Bună ziua, sunt nou în domeniul contabilității și am nevoie de ajutor cu depunerea declarației D112. Am încercat să o fac online, dar nu sunt sigur de pașii corecți. Poate cineva să-mi explice pas cu pas cum să completez și să depun această declarație? Mulțumesc anticipat!",
+    "replies": [
+      {
+        "author": "Maria Popescu",
+        "role": "Contabil",
+        "content": "Salut! Pentru a depune D112, intră pe site-ul ANAF, accesează secțiunea 'Depunere declarații' și selectează D112. Completează datele angajaților și ale companiei, verifică totul și apoi apasă pe 'Depune'. Dacă ai nevoie de mai multe detalii, te pot ghida și prin telefon.",
+        "createdAt": "2024-11-16T09:45:00Z",
+        "helpful": true
+      },
+      {
+        "author": "Ion Ionescu",
+        "role": "Utilizator",
+        "content": "Mulțumesc, Maria! Am reușit să depun declarația cu ajutorul tău. Totuși, am avut o problemă cu autentificarea în portal. Ați avut și alții această problemă?",
+        "createdAt": "2024-11-17T14:20:00Z",
+        "helpful": true
+      }
+    ],
+    "tags": [
+      "D112",
+      "declarații",
+      "ANAF"
+    ],
+    "views": 250,
+    "sticky": false,
+    "createdAt": "2024-11-15T10:00:00Z",
+    "lastActivity": "2024-11-17T14:20:00Z"
+  },
+  {
+    "title": "Care este diferența dintre PFA și SRL?",
+    "category": "Întrebări Frecvente",
+    "initialPost": "Bună tuturor, am o afacere mică și mă gândesc să o formalizez. Care este diferența principală între a înființa un PFA și un SRL? În ce situații este mai avantajos să aleg unul față de celălalt? Mulțumesc!",
+    "replies": [
+      {
+        "author": "Andrei Radu",
+        "role": "Expert",
+        "content": "Bună! Principala diferență este că PFA-ul este mai simplu de administrat și mai puțin costisitor la înființare, dar are și limitări în ceea ce privește veniturile și răspunderea. SRL-ul oferă mai multă protecție juridică și posibilitatea de a avea mai mulți acționari, dar necesită mai multe formalități și costuri mai mari. Pentru afaceri mici, PFA este adesea mai potrivit.",
+        "createdAt": "2024-11-16T11:30:00Z",
+        "helpful": true
+      },
+      {
+        "author": "Elena Munteanu",
+        "role": "Antreprenor",
+        "content": "Eu am început cu un PFA și apoi am trecut la SRL când afacerea a crescut. PFA a fost perfect pentru început, dar SRL mi-a oferit mai multă siguranță și posibilități de dezvoltare.",
+        "createdAt": "2024-11-17T08:15:00Z",
+        "helpful": true
+      }
+    ],
+    "tags": [
+      "PFA",
+      "SRL",
+      "antreprenoriat"
+    ],
+    "views": 300,
+    "sticky": false,
+    "createdAt": "2024-11-15T10:30:00Z",
+    "lastActivity": "2024-11-17T08:15:00Z"
+  },
+  {
+    "title": "Cum funcționează e-Factura?",
+    "category": "Întrebări Frecvente",
+    "initialPost": "Bună, am auzit despre e-Factura și aș vrea să știu mai multe. Cum funcționează și care sunt avantajele utilizării acesteia? Este obligatorie pentru toate companiile?",
+    "replies": [
+      {
+        "author": "Cristina Popa",
+        "role": "Contabil",
+        "content": "Salut! E-Factura este un sistem electronic de facturare implementat de ANAF. Funcționează prin intermediul unei platforme online unde poți emite și primi facturi în format electronic. Avantajele includ reducerea timpului și costurilor, precum și conformitatea cu legislația. Nu este încă obligatorie pentru toate companiile, dar se discută despre extinderea obligativității.",
+        "createdAt": "2024-11-16T12:00:00Z",
+        "helpful": true
+      },
+      {
+        "author": "Mihai Dumitrescu",
+        "role": "Antreprenor",
+        "content": "Eu am trecut deja la e-Factura și pot spune că este foarte eficient. Am redus semnificativ timpul dedicat facturării și am eliminat riscul de a pierde documente fizice.",
+        "createdAt": "2024-11-17T10:45:00Z",
+        "helpful": true
+      }
+    ],
+    "tags": [
+      "e-Factura",
+      "facturare",
+      "ANAF"
+    ],
+    "views": 200,
+    "sticky": false,
+    "createdAt": "2024-11-15T11:00:00Z",
+    "lastActivity": "2024-11-17T10:45:00Z"
+  },
+  {
+    "title": "SAF-T D406 - De unde încep?",
+    "category": "Întrebări Frecvente",
+    "initialPost": "Bună ziua, am nevoie de ajutor cu SAF-T D406. Sunt la început și nu știu de unde să încep. Care sunt pașii de urmat și ce informații trebuie să pregătesc?",
+    "replies": [
+      {
+        "author": "Daniela Stoica",
+        "role": "Expert",
+        "content": "Bună! Pentru a începe cu SAF-T D406, trebuie să te familiarizezi cu formatul și cerințele acestuia. Începe prin a-ți organiza datele contabile în formatul cerut de ANAF. Apoi, folosește un software compatibil pentru a genera fișierul SAF-T. Dacă ai nevoie de mai multe detalii, te pot ghida pas cu pas.",
+        "createdAt": "2024-11-16T13:30:00Z",
+        "helpful": true
+      },
+      {
+        "author": "Alexandra Marin",
+        "role": "Contabil",
+        "content": "Eu am folosit un program specializat pentru generarea SAF-T D406 și m-a ajutat foarte mult. Asigură-te că ai toate datele actualizate și verificate înainte de a începe procesul.",
+        "createdAt": "2024-11-17T12:15:00Z",
+        "helpful": true
+      }
+    ],
+    "tags": [
+      "SAF-T",
+      "D406",
+      "ANAF"
+    ],
+    "views": 150,
+    "sticky": false,
+    "createdAt": "2024-11-15T11:30:00Z",
+    "lastActivity": "2024-11-17T12:15:00Z"
+  },
+  {
+    "title": "TVA 21% vs 11% - Când aplic fiecare?",
+    "category": "Întrebări Frecvente",
+    "initialPost": "Bună, am nevoie de clarificări privind aplicarea TVA. Când se aplică TVA de 21% și când se aplică TVA de 11%? Există anumite categorii de produse sau servicii care se încadrează în aceste cote?",
+    "replies": [
+      {
+        "author": "Ioana Vasilescu",
+        "role": "Expert",
+        "content": "Bună! TVA de 21% se aplică în mod standard pentru majoritatea produselor și serviciilor. TVA de 11% se aplică pentru anumite categorii de produse, cum ar fi alimentele de bază, medicamentele și serviciile de restaurante. Verifică lista completă a categoriilor pe site-ul ANAF.",
+        "createdAt": "2024-11-16T14:00:00Z",
+        "helpful": true
+      },
+      {
+        "author": "Bogdan Ionescu",
+        "role": "Contabil",
+        "content": "Da, Ioana are dreptate. De asemenea, este important să verifici periodic actualizările legislative, deoarece categoriile de produse și servicii care se încadrează în TVA de 11% pot suferi modificări.",
+        "createdAt": "2024-11-17T13:00:00Z",
+        "helpful": true
+      }
+    ],
+    "tags": [
+      "TVA",
+      "cote TVA",
+      "legislație"
+    ],
+    "views": 250,
+    "sticky": false,
+    "createdAt": "2024-11-15T12:00:00Z",
+    "lastActivity": "2024-11-17T13:00:00Z"
+  }
+]
