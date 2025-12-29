@@ -1238,6 +1238,398 @@ export const PRODUCTION_DECISIONS: Decision[] = [
 ];
 
 // =====================================================
+// DIGITAL TRANSFORMATION DECISIONS
+// =====================================================
+
+export const DIGITAL_DECISIONS: Decision[] = [
+  {
+    id: 'IMPLEMENT_ERP',
+    name: 'Implement ERP System',
+    nameRo: 'Implementează Sistem ERP',
+    description: 'Deploy enterprise resource planning software',
+    descriptionRo: 'Implementează software de planificare resurse întreprindere',
+    category: 'GROWTH',
+    icon: '💻',
+    parameters: [
+      {
+        name: 'systemType',
+        type: 'select',
+        options: ['basic', 'premium', 'cloud'],
+        default: 'basic',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - (systemType === "basic" ? 30000 : systemType === "premium" ? 80000 : 120000)',
+    },
+    monthlyImpacts: {
+      quality: 'min(100, quality + 5)',
+      capacity: 'capacity + 10',
+      expenses: 'expenses * 0.98', // Efficiency gains
+    },
+    risks: [
+      {
+        condition: 'systemType === "cloud"',
+        probability: 0.1,
+        impact: { auditRisk: 3 }, // Data security concerns
+      },
+    ],
+    cooldown: 12,
+    relatedCourseId: 'digitalizare-afaceri',
+  },
+  {
+    id: 'E_COMMERCE_PLATFORM',
+    name: 'Launch E-commerce Platform',
+    nameRo: 'Lansează Platformă E-commerce',
+    description: 'Build online sales platform',
+    descriptionRo: 'Construiește platformă de vânzări online',
+    category: 'MARKETING',
+    icon: '🛒',
+    parameters: [
+      {
+        name: 'platform',
+        type: 'select',
+        options: ['shopify', 'woocommerce', 'custom'],
+        default: 'shopify',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - (platform === "shopify" ? 15000 : platform === "woocommerce" ? 25000 : 75000)',
+    },
+    monthlyImpacts: {
+      revenue: 'revenue * 1.15', // 15% increase from online sales
+      marketShare: 'marketShare + 2',
+      reputation: 'reputation + 3',
+    },
+    risks: [
+      {
+        condition: 'platform === "custom"',
+        probability: 0.3,
+        impact: { cash: -20000 }, // Development delays
+      },
+    ],
+    cooldown: 6,
+  },
+  {
+    id: 'CRM_IMPLEMENTATION',
+    name: 'Implement CRM System',
+    nameRo: 'Implementează Sistem CRM',
+    description: 'Deploy customer relationship management software',
+    descriptionRo: 'Implementează software de management relații clienți',
+    category: 'MARKETING',
+    icon: '👥',
+    parameters: [],
+    immediateImpacts: {
+      cash: 'cash - 20000',
+    },
+    monthlyImpacts: {
+      customerCount: 'customerCount * 1.05',
+      customerSatisfaction: 'min(100, customerSatisfaction + 8)',
+      reputation: 'reputation + 2',
+    },
+    risks: [],
+    cooldown: 6,
+  },
+  {
+    id: 'DATA_ANALYTICS',
+    name: 'Implement Data Analytics',
+    nameRo: 'Implementează Analiză Date',
+    description: 'Deploy business intelligence and analytics tools',
+    descriptionRo: 'Implementează instrumente de business intelligence și analiză',
+    category: 'OPERATIONS',
+    icon: '📊',
+    parameters: [
+      {
+        name: 'scope',
+        type: 'select',
+        options: ['sales', 'operations', 'full'],
+        default: 'sales',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - 25000',
+    },
+    monthlyImpacts: {
+      quality: 'min(100, quality + 3)',
+      utilization: 'min(100, utilization + 5)',
+      expenses: 'expenses * (scope === "full" ? 0.97 : 0.98)',
+    },
+    risks: [],
+    cooldown: 6,
+  },
+  {
+    id: 'CLOUD_MIGRATION',
+    name: 'Cloud Infrastructure Migration',
+    nameRo: 'Migrare Infrastructură Cloud',
+    description: 'Move systems to cloud infrastructure',
+    descriptionRo: 'Mută sistemele la infrastructura cloud',
+    category: 'GROWTH',
+    icon: '☁️',
+    parameters: [],
+    immediateImpacts: {
+      cash: 'cash - 15000',
+    },
+    monthlyImpacts: {
+      capacity: 'capacity + 8',
+      expenses: 'expenses * 0.92', // Cost savings
+      quality: 'min(100, quality + 2)',
+    },
+    risks: [
+      {
+        condition: 'true',
+        probability: 0.15,
+        impact: { utilization: -10 }, // Temporary downtime
+      },
+    ],
+    cooldown: 12,
+  },
+];
+
+// =====================================================
+// SUSTAINABILITY DECISIONS
+// =====================================================
+
+export const SUSTAINABILITY_DECISIONS: Decision[] = [
+  {
+    id: 'GREEN_ENERGY',
+    name: 'Switch to Green Energy',
+    nameRo: 'Trece la Energie Verde',
+    description: 'Install solar panels and renewable energy sources',
+    descriptionRo: 'Instalează panouri solare și surse de energie regenerabilă',
+    category: 'GROWTH',
+    icon: '🌱',
+    parameters: [
+      {
+        name: 'investment',
+        type: 'number',
+        min: 50000,
+        max: 200000,
+        default: 80000,
+        unit: 'RON',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - investment',
+    },
+    monthlyImpacts: {
+      expenses: 'expenses * 0.88', // Energy cost reduction
+      reputation: 'reputation + 8',
+      complianceScore: 'min(100, complianceScore + 5)',
+    },
+    risks: [],
+    cooldown: 24,
+    relatedCourseId: 'sustainability-business',
+  },
+  {
+    id: 'RECYCLING_PROGRAM',
+    name: 'Implement Recycling Program',
+    nameRo: 'Implementează Program Reciclare',
+    description: 'Set up waste recycling and reduction program',
+    descriptionRo: 'Configurează program de reciclare și reducere deșeuri',
+    category: 'COMPLIANCE',
+    icon: '♻️',
+    parameters: [],
+    immediateImpacts: {
+      cash: 'cash - 8000',
+    },
+    monthlyImpacts: {
+      reputation: 'reputation + 5',
+      complianceScore: 'min(100, complianceScore + 3)',
+      expenses: 'expenses * 0.98', // Waste disposal savings
+    },
+    risks: [],
+    cooldown: 6,
+  },
+  {
+    id: 'CARBON_FOOTPRINT_AUDIT',
+    name: 'Carbon Footprint Audit',
+    nameRo: 'Audit Amprentă Carbon',
+    description: 'Conduct comprehensive carbon emissions audit',
+    descriptionRo: 'Realizează audit cuprinzător al emisiilor de carbon',
+    category: 'COMPLIANCE',
+    icon: '🌍',
+    parameters: [],
+    immediateImpacts: {
+      cash: 'cash - 12000',
+    },
+    monthlyImpacts: {
+      complianceScore: 'min(100, complianceScore + 4)',
+      reputation: 'reputation + 3',
+    },
+    risks: [],
+    cooldown: 12,
+  },
+];
+
+// =====================================================
+// RISK MANAGEMENT DECISIONS
+// =====================================================
+
+export const RISK_DECISIONS: Decision[] = [
+  {
+    id: 'CYBERSECURITY_UPGRADE',
+    name: 'Upgrade Cybersecurity',
+    nameRo: 'Modernizează Securitatea Cibernetică',
+    description: 'Implement advanced security measures and training',
+    descriptionRo: 'Implementează măsuri avansate de securitate și instruire',
+    category: 'RISK',
+    icon: '🔒',
+    parameters: [
+      {
+        name: 'level',
+        type: 'select',
+        options: ['basic', 'advanced', 'enterprise'],
+        default: 'advanced',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - (level === "basic" ? 10000 : level === "advanced" ? 30000 : 60000)',
+    },
+    monthlyImpacts: {
+      complianceScore: 'min(100, complianceScore + 3)',
+      auditRisk: 'max(5, auditRisk - 5)',
+    },
+    risks: [],
+    cooldown: 12,
+  },
+  {
+    id: 'BUSINESS_CONTINUITY',
+    name: 'Business Continuity Plan',
+    nameRo: 'Plan Continuitate Afaceri',
+    description: 'Develop comprehensive business continuity strategy',
+    descriptionRo: 'Dezvoltă strategie cuprinzătoare de continuitate afaceri',
+    category: 'RISK',
+    icon: '🛡️',
+    parameters: [],
+    immediateImpacts: {
+      cash: 'cash - 18000',
+    },
+    monthlyImpacts: {
+      complianceScore: 'min(100, complianceScore + 5)',
+      auditRisk: 'max(5, auditRisk - 3)',
+    },
+    risks: [],
+    cooldown: 24,
+  },
+  {
+    id: 'INSURANCE_OPTIMIZATION',
+    name: 'Optimize Insurance Coverage',
+    nameRo: 'Optimizează Acoperirea Asigurări',
+    description: 'Review and optimize business insurance policies',
+    descriptionRo: 'Revizuiește și optimizează polițele de asigurare afaceri',
+    category: 'RISK',
+    icon: '📋',
+    parameters: [
+      {
+        name: 'coverage',
+        type: 'select',
+        options: ['basic', 'comprehensive', 'premium'],
+        default: 'comprehensive',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - (coverage === "basic" ? 5000 : coverage === "comprehensive" ? 12000 : 25000)',
+    },
+    monthlyImpacts: {
+      expenses: 'expenses * (coverage === "premium" ? 1.02 : 1.01)', // Premium coverage costs more
+    },
+    risks: [
+      {
+        condition: 'coverage === "basic"',
+        probability: 0.2,
+        impact: { penaltiesRisk: 15 }, // Inadequate coverage penalties
+      },
+    ],
+    cooldown: 12,
+  },
+];
+
+// =====================================================
+// INTERNATIONAL EXPANSION DECISIONS
+// =====================================================
+
+export const INTERNATIONAL_DECISIONS: Decision[] = [
+  {
+    id: 'EXPORT_MARKET_RESEARCH',
+    name: 'Export Market Research',
+    nameRo: 'Cercetare Piață Export',
+    description: 'Research and analyze potential export markets',
+    descriptionRo: 'Cercetează și analizează piețe de export potențiale',
+    category: 'GROWTH',
+    icon: '🌍',
+    parameters: [
+      {
+        name: 'targetMarket',
+        type: 'select',
+        options: ['EU', 'US', 'Asia', 'Other'],
+        default: 'EU',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - 15000',
+    },
+    monthlyImpacts: {
+      reputation: 'reputation + 2',
+      marketShare: 'marketShare + 1',
+    },
+    risks: [],
+    cooldown: 6,
+  },
+  {
+    id: 'INTERNATIONAL_CERTIFICATION',
+    name: 'Obtain International Certification',
+    nameRo: 'Obține Certificare Internațională',
+    description: 'Pursue ISO or other international quality certifications',
+    descriptionRo: 'Obține certificări ISO sau alte certificări internaționale de calitate',
+    category: 'GROWTH',
+    icon: '🏆',
+    parameters: [
+      {
+        name: 'certification',
+        type: 'select',
+        options: ['ISO9001', 'ISO14001', 'ISO27001'],
+        default: 'ISO9001',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - 25000',
+    },
+    monthlyImpacts: {
+      reputation: 'reputation + 6',
+      complianceScore: 'min(100, complianceScore + 4)',
+      quality: 'min(100, quality + 3)',
+    },
+    risks: [],
+    cooldown: 18,
+  },
+  {
+    id: 'TRADE_FAIR_PARTICIPATION',
+    name: 'International Trade Fair',
+    nameRo: 'Participare Târg Internațional',
+    description: 'Participate in international trade exhibitions',
+    descriptionRo: 'Participă la expoziții comerciale internaționale',
+    category: 'MARKETING',
+    icon: '🎪',
+    parameters: [
+      {
+        name: 'scale',
+        type: 'select',
+        options: ['regional', 'international', 'world_class'],
+        default: 'international',
+      },
+    ],
+    immediateImpacts: {
+      cash: 'cash - (scale === "regional" ? 8000 : scale === "international" ? 25000 : 50000)',
+    },
+    monthlyImpacts: {
+      reputation: 'reputation + (scale === "world_class" ? 8 : 4)',
+      marketShare: 'marketShare + (scale === "world_class" ? 3 : 1)',
+    },
+    risks: [],
+    cooldown: 6,
+  },
+];
+
+// =====================================================
 // ALL DECISIONS
 // =====================================================
 
@@ -1250,6 +1642,10 @@ export const ALL_DECISIONS: Decision[] = [
   ...EU_FUNDS_DECISIONS,
   ...STOCK_DECISIONS,
   ...PRODUCTION_DECISIONS,
+  ...DIGITAL_DECISIONS,
+  ...SUSTAINABILITY_DECISIONS,
+  ...RISK_DECISIONS,
+  ...INTERNATIONAL_DECISIONS,
 ];
 
 /**

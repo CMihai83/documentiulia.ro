@@ -37,6 +37,41 @@ export interface SimulationGame {
   updatedAt: string;
 }
 
+export interface AIRecommendation {
+  decision: {
+    id: string;
+    name: string;
+    nameRo: string;
+    description: string;
+    category: string;
+    icon: string;
+  };
+  confidence: number;
+  priority: 'high' | 'medium' | 'low';
+  reasoning: string;
+  expectedImpact: {
+    shortTerm: Record<string, number>;
+    longTerm: Record<string, number>;
+  };
+  relatedCourses: Array<{
+    id: string;
+    title: string;
+    relevance: number;
+    keyLessons: string[];
+  }>;
+  riskAssessment: {
+    level: 'low' | 'medium' | 'high';
+    factors: string[];
+  };
+}
+
+export interface LearningPathItem {
+  courseId: string;
+  title: string;
+  priority: 'high' | 'medium' | 'low';
+  reason: string;
+}
+
 export interface SimulationState {
   cash: number;
   revenue: number;
@@ -395,4 +430,22 @@ export async function getMarketData(): Promise<{
 }> {
   const response = await apiRequest('/simulation/market-data');
   return response.data as any;
+}
+
+/**
+ * Get AI recommendations for current game state
+ */
+export async function getAIRecommendations(gameId: string): Promise<AIRecommendation[]> {
+  const response = await apiRequest<AIRecommendation[]>(`/simulation/games/${gameId}/recommendations`);
+  if (response.error) throw new Error(response.error);
+  return response.data || [];
+}
+
+/**
+ * Get personalized learning path recommendations
+ */
+export async function getLearningPath(gameId: string): Promise<LearningPathItem[]> {
+  const response = await apiRequest<LearningPathItem[]>(`/simulation/games/${gameId}/learning-path`);
+  if (response.error) throw new Error(response.error);
+  return response.data || [];
 }

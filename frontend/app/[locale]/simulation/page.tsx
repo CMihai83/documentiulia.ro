@@ -96,6 +96,19 @@ export default function SimulationPage() {
   const [selectedType, setSelectedType] = useState<string>('all');
   const [error, setError] = useState<string | null>(null);
 
+  // Check if user is authenticated
+  const isAuthenticated = () => {
+    if (typeof window === 'undefined') return false;
+    const token = localStorage.getItem('auth_token') || document.cookie.includes('auth_token=');
+    return !!token;
+  };
+
+  const redirectToLogin = () => {
+    const locale = window.location.pathname.split('/')[1] || 'ro';
+    const returnUrl = encodeURIComponent(window.location.pathname);
+    router.push(`/${locale}/login?returnUrl=${returnUrl}`);
+  };
+
   useEffect(() => {
     loadData();
   }, []);
@@ -124,10 +137,15 @@ export default function SimulationPage() {
   async function handleStartScenario(scenarioId: string, scenarioSlug: string) {
     setStartingGame(scenarioId);
     try {
+      console.log('Starting game with scenario:', scenarioId);
       const game = await startGame({ scenarioId });
+      console.log('Game started:', game);
       router.push(`/simulation/${game.id}`);
     } catch (err) {
-      setError('Nu s-a putut porni jocul.');
+      console.error('Error starting game:', err);
+      const errorMessage = err instanceof Error ? err.message : 'Nu s-a putut porni jocul.';
+      setError(errorMessage);
+      alert(`Eroare: ${errorMessage}`); // Show alert for debugging
       setStartingGame(null);
     }
   }
@@ -156,10 +174,15 @@ export default function SimulationPage() {
   async function handleQuickStart() {
     setStartingGame('quick');
     try {
+      console.log('Starting quick game...');
       const game = await startGame({ name: 'Joc Rapid' });
+      console.log('Quick game started:', game);
       router.push(`/simulation/${game.id}`);
     } catch (err) {
-      setError('Nu s-a putut porni jocul.');
+      console.error('Error starting quick game:', err);
+      const errorMessage = err instanceof Error ? err.message : 'Nu s-a putut porni jocul.';
+      setError(errorMessage);
+      alert(`Eroare Quick Start: ${errorMessage}`); // Show alert for debugging
       setStartingGame(null);
     }
   }

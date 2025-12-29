@@ -25,6 +25,7 @@ import {
   INDUSTRY_SCENARIOS,
 } from './company-data-import';
 import { ROMANIAN_MARKET_2025, getIndustryMargin } from './romanian-market.model';
+import { AIRecommendationsService, AIRecommendation } from './ai-recommendations.service';
 
 // Convert Prisma Decimal to number
 function toNumber(val: Prisma.Decimal | number | null | undefined): number {
@@ -67,7 +68,10 @@ export interface ScenarioInfo {
 
 @Injectable()
 export class SimulationService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private aiRecommendations: AIRecommendationsService
+  ) {}
 
   // =====================================================
   // SCENARIO MANAGEMENT
@@ -98,6 +102,75 @@ export class SimulationService {
 
   getWhatIfPresets() {
     return WHAT_IF_PRESETS;
+  }
+
+  /**
+   * Get AI recommendations for current game state
+   */
+  async getAIRecommendations(gameId: string): Promise<AIRecommendation[]> {
+    const game = await this.prisma.simulationGame.findUnique({
+      where: { id: gameId },
+      include: { states: { orderBy: { month: 'desc' }, take: 1 } },
+    });
+
+    if (!game || !game.states[0]) {
+      throw new NotFoundException('Game or game state not found');
+    }
+
+    const latestState = game.states[0];
+    const engineState: SimulationState = {
+      cash: toNumber(latestState.cash),
+      revenue: toNumber(latestState.revenue),
+      expenses: toNumber(latestState.expenses),
+      profit: toNumber(latestState.profit),
+      receivables: toNumber(latestState.receivables),
+      payables: toNumber(latestState.payables),
+      inventory: toNumber(latestState.inventory),
+      equipment: toNumber(latestState.equipment),
+      loans: toNumber(latestState.loans),
+      employees: latestState.employees,
+      averageSalary: 5000, // Estimate
+      capacity: latestState.capacity,
+      utilization: latestState.utilization,
+      quality: latestState.quality,
+      morale: 70, // Estimate
+      price: 100, // Estimate
+      basePrice: 100,
+      marketSize: 1000, // Estimate
+      marketShare: latestState.marketShare,
+      customerCount: latestState.customerCount,
+      reputation: latestState.reputation,
+      customerSatisfaction: 70, // Estimate
+      taxOwed: toNumber(latestState.taxOwed),
+      vatBalance: toNumber(latestState.vatBalance),
+      penaltiesRisk: latestState.penaltiesRisk,
+      auditRisk: latestState.auditRisk,
+      complianceScore: 70, // Estimate
+      month: game.currentMonth,
+      year: game.currentYear,
+      industry: 'Services', // Estimate
+      isMicro: true,
+      hasEmployees: latestState.employees > 0,
+      loanPayments: toNumber(latestState.loans) * 0.01, // Estimate
+    };
+
+    const healthScores: HealthScores = {
+      overall: game.healthScore,
+      financial: game.financialScore,
+      operations: game.operationsScore,
+      compliance: game.complianceScore,
+      growth: game.growthScore,
+    };
+
+    return this.aiRecommendations.generateRecommendations(gameId, engineState, healthScores);
+  }
+
+  /**
+   * Get learning path recommendations
+   */
+  async getLearningPath(gameId: string) {
+    return this.aiRecommendations.getLearningPath(gameId);
+  }
   }
 
   getIndustryScenarios() {

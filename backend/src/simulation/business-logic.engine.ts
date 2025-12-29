@@ -67,6 +67,17 @@ export interface CalculatedMetrics {
   qualityImpact: number;
   reputationChange: number;
   healthScores: HealthScores;
+  // Enhanced metrics
+  roi: number;
+  customerAcquisitionCost: number;
+  employeeTurnoverRate: number;
+  inventoryTurnover: number;
+  debtToEquityRatio: number;
+  workingCapital: number;
+  grossMargin: number;
+  operatingMargin: number;
+  marketPenetration: number;
+  competitiveAdvantage: number;
 }
 
 export interface HealthScores {
@@ -544,4 +555,143 @@ function calculateVATBalance(revenue: number, expenses: number): number {
   const vatCollected = revenue * (ROMANIAN_MARKET_2025.vatRates.standard / 100);
   const vatPaid = expenses * 0.5 * (ROMANIAN_MARKET_2025.vatRates.standard / 100); // Assume 50% of expenses have VAT
   return vatCollected - vatPaid;
+}
+
+// =====================================================
+// ENHANCED METRICS CALCULATIONS
+// =====================================================
+
+/**
+ * Calculate Return on Investment (ROI)
+ */
+export function calculateROI(investment: number, returns: number): number {
+  return investment > 0 ? ((returns - investment) / investment) * 100 : 0;
+}
+
+/**
+ * Calculate Customer Acquisition Cost (CAC)
+ */
+export function calculateCAC(marketingSpend: number, newCustomers: number): number {
+  return newCustomers > 0 ? marketingSpend / newCustomers : 0;
+}
+
+/**
+ * Calculate Employee Turnover Rate
+ */
+export function calculateEmployeeTurnover(employeesLeft: number, totalEmployees: number): number {
+  return totalEmployees > 0 ? (employeesLeft / totalEmployees) * 100 : 0;
+}
+
+/**
+ * Calculate Inventory Turnover Ratio
+ */
+export function calculateInventoryTurnover(costOfGoodsSold: number, averageInventory: number): number {
+  return averageInventory > 0 ? costOfGoodsSold / averageInventory : 0;
+}
+
+/**
+ * Calculate Debt-to-Equity Ratio
+ */
+export function calculateDebtToEquity(totalDebt: number, equity: number): number {
+  return equity > 0 ? totalDebt / equity : 0;
+}
+
+/**
+ * Calculate Working Capital
+ */
+export function calculateWorkingCapital(currentAssets: number, currentLiabilities: number): number {
+  return currentAssets - currentLiabilities;
+}
+
+/**
+ * Calculate Gross Margin
+ */
+export function calculateGrossMargin(revenue: number, costOfGoodsSold: number): number {
+  return revenue > 0 ? ((revenue - costOfGoodsSold) / revenue) * 100 : 0;
+}
+
+/**
+ * Calculate Operating Margin
+ */
+export function calculateOperatingMargin(operatingIncome: number, revenue: number): number {
+  return revenue > 0 ? (operatingIncome / revenue) * 100 : 0;
+}
+
+/**
+ * Calculate Market Penetration
+ */
+export function calculateMarketPenetration(companyCustomers: number, totalMarket: number): number {
+  return totalMarket > 0 ? (companyCustomers / totalMarket) * 100 : 0;
+}
+
+/**
+ * Calculate Competitive Advantage Score
+ */
+export function calculateCompetitiveAdvantage(
+  quality: number,
+  reputation: number,
+  marketShare: number,
+  innovation: number
+): number {
+  return (quality * 0.3 + reputation * 0.3 + marketShare * 0.2 + innovation * 0.2);
+}
+
+/**
+ * Calculate advanced metrics for a simulation state
+ */
+export function calculateAdvancedMetrics(state: SimulationState): Omit<CalculatedMetrics, 'monthlyRevenue' | 'monthlyExpenses' | 'netProfit' | 'cashFlow' | 'employeeProductivity' | 'marketDemand' | 'qualityImpact' | 'reputationChange' | 'healthScores'> {
+  const revenue = calculateMonthlyRevenue(state);
+  const expenses = calculateMonthlyExpenses(state);
+  const profit = revenue - expenses;
+
+  // ROI (simplified - would need investment tracking)
+  const roi = calculateROI(state.equipment, revenue * 0.1); // Assume 10% of revenue from equipment
+
+  // Customer Acquisition Cost (simplified)
+  const customerAcquisitionCost = calculateCAC(expenses * 0.1, Math.max(1, state.customerCount * 0.1));
+
+  // Employee Turnover (simplified - random for now)
+  const employeeTurnoverRate = calculateEmployeeTurnover(Math.floor(Math.random() * 2), state.employees);
+
+  // Inventory Turnover
+  const inventoryTurnover = calculateInventoryTurnover(expenses * 0.6, state.inventory);
+
+  // Debt-to-Equity
+  const equity = state.cash + state.equipment - state.loans; // Simplified
+  const debtToEquityRatio = calculateDebtToEquity(state.loans, Math.max(1, equity));
+
+  // Working Capital
+  const currentAssets = state.cash + state.receivables + state.inventory;
+  const currentLiabilities = state.payables + state.loanPayments;
+  const workingCapital = calculateWorkingCapital(currentAssets, currentLiabilities);
+
+  // Gross Margin (assume COGS is 60% of revenue)
+  const grossMargin = calculateGrossMargin(revenue, revenue * 0.6);
+
+  // Operating Margin
+  const operatingMargin = calculateOperatingMargin(profit, revenue);
+
+  // Market Penetration
+  const marketPenetration = calculateMarketPenetration(state.customerCount, state.marketSize * 100);
+
+  // Competitive Advantage
+  const competitiveAdvantage = calculateCompetitiveAdvantage(
+    state.quality,
+    state.reputation,
+    state.marketShare,
+    state.capacity / 100 // Innovation proxy
+  );
+
+  return {
+    roi,
+    customerAcquisitionCost,
+    employeeTurnoverRate,
+    inventoryTurnover,
+    debtToEquityRatio,
+    workingCapital,
+    grossMargin,
+    operatingMargin,
+    marketPenetration,
+    competitiveAdvantage,
+  };
 }

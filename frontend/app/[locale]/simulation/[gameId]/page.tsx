@@ -41,6 +41,23 @@ import {
   LineChart
 } from 'lucide-react';
 import {
+  LineChart as RechartsLineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  PieChart as RechartsPieChart,
+  Pie,
+  Cell,
+  Area,
+  AreaChart
+} from 'recharts';
+import {
   getGameDetails,
   advanceMonth,
   makeDecision,
@@ -565,6 +582,114 @@ export default function SimulationGamePage() {
                 </div>
               </div>
             )}
+
+            {/* Advanced Charts */}
+            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+              <h3 className="text-sm font-medium text-slate-400 mb-4 flex items-center gap-2">
+                <TrendingUp className="w-4 h-4" />
+                Analize Avansate
+              </h3>
+
+              {/* Financial Trend Chart */}
+              <div className="mb-6">
+                <h4 className="text-xs font-medium text-slate-300 mb-3">Evoluție Financiară</h4>
+                <div className="h-32">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={[
+                      { month: 'Curent', cash: state?.cash || 0, revenue: state?.revenue || 0, expenses: state?.expenses || 0 },
+                    ]}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                      <XAxis dataKey="month" stroke="#9CA3AF" fontSize={10} />
+                      <YAxis stroke="#9CA3AF" fontSize={10} />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: '#1F2937',
+                          border: '1px solid #374151',
+                          borderRadius: '8px'
+                        }}
+                      />
+                      <Area type="monotone" dataKey="revenue" stackId="1" stroke="#10B981" fill="#10B981" fillOpacity={0.3} />
+                      <Area type="monotone" dataKey="expenses" stackId="2" stroke="#EF4444" fill="#EF4444" fillOpacity={0.3} />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              {/* Operational Metrics */}
+              <div className="mb-6">
+                <h4 className="text-xs font-medium text-slate-300 mb-3">Metrici Operaționale</h4>
+                <div className="h-32">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={[
+                      {
+                        name: 'Performanță',
+                        utilizare: state?.utilization || 0,
+                        calitate: state?.quality || 0,
+                        reputatie: state?.reputation || 0
+                      }
+                    ]}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                      <XAxis dataKey="name" stroke="#9CA3AF" fontSize={10} />
+                      <YAxis stroke="#9CA3AF" fontSize={10} />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: '#1F2937',
+                          border: '1px solid #374151',
+                          borderRadius: '8px'
+                        }}
+                      />
+                      <Bar dataKey="utilizare" fill="#3B82F6" />
+                      <Bar dataKey="calitate" fill="#10B981" />
+                      <Bar dataKey="reputatie" fill="#F59E0B" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              {/* Health Score Breakdown */}
+              <div>
+                <h4 className="text-xs font-medium text-slate-300 mb-3">Ponderi Scor Sănătate</h4>
+                <div className="h-32">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RechartsPieChart>
+                      <Pie
+                        data={[
+                          { name: 'Financiar', value: gameDetails.financialScore, fill: '#10B981' },
+                          { name: 'Operațiuni', value: gameDetails.operationsScore, fill: '#3B82F6' },
+                          { name: 'Conformitate', value: gameDetails.complianceScore, fill: '#F59E0B' },
+                          { name: 'Creștere', value: gameDetails.growthScore, fill: '#8B5CF6' },
+                        ]}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={20}
+                        outerRadius={50}
+                        paddingAngle={5}
+                        dataKey="value"
+                      >
+                        {[
+                          { name: 'Financiar', value: gameDetails.financialScore, fill: '#10B981' },
+                          { name: 'Operațiuni', value: gameDetails.operationsScore, fill: '#3B82F6' },
+                          { name: 'Conformitate', value: gameDetails.complianceScore, fill: '#F59E0B' },
+                          { name: 'Creștere', value: gameDetails.growthScore, fill: '#8B5CF6' },
+                        ].map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.fill} />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: '#1F2937',
+                          border: '1px solid #374151',
+                          borderRadius: '8px'
+                        }}
+                      />
+                      <Legend
+                        wrapperStyle={{ fontSize: '10px', color: '#9CA3AF' }}
+                      />
+                    </RechartsPieChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Center - Main Dashboard */}
