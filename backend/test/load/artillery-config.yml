@@ -1,0 +1,213 @@
+# DocumentIulia.ro Artillery Load Test Configuration
+# Run with: artillery run artillery-config.yml
+
+config:
+  target: "http://localhost:3001"
+  phases:
+    # Warm up phase
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm up"
+
+    # Ramp up to normal load
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+      name: "Ramp up"
+
+    # Sustained load
+    - duration: 300
+      arrivalRate: 50
+      name: "Sustained load"
+
+    # Spike test
+    - duration: 60
+      arrivalRate: 100
+      name: "Spike"
+
+    # Cool down
+    - duration: 60
+      arrivalRate: 50
+      rampTo: 5
+      name: "Cool down"
+
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+  plugins:
+    expect: {}
+
+  # Variables for test data
+  variables:
+    testEmail: "demo@documentiulia.ro"
+    testPassword: "demo123"
+
+  # Ensure thresholds
+  ensure:
+    p95: 500
+    p99: 1000
+    maxErrorRate: 1
+
+scenarios:
+  # Health check scenario
+  - name: "Health Check"
+    weight: 3
+    flow:
+      - get:
+          url: "/health"
+          capture:
+            - json: "$.status"
+              as: "healthStatus"
+          expect:
+            - statusCode: 200
+            - contentType: "application/json"
+
+  # Dashboard scenario
+  - name: "Dashboard Analytics"
+    weight: 5
+    flow:
+      - post:
+          url: "/api/v1/auth/login"
+          json:
+            email: "{{ testEmail }}"
+            password: "{{ testPassword }}"
+          capture:
+            - json: "$.accessToken"
+              as: "token"
+          expect:
+            - statusCode:
+                - 200
+                - 401
+
+      - get:
+          url: "/api/v1/analytics/dashboard/metrics?range=30d"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode:
+                - 200
+                - 401
+
+      - get:
+          url: "/api/v1/analytics/dashboard/activity?limit=10"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode:
+                - 200
+                - 401
+
+      - think: 2
+
+  # Invoice listing scenario
+  - name: "Invoice Operations"
+    weight: 4
+    flow:
+      - post:
+          url: "/api/v1/auth/login"
+          json:
+            email: "{{ testEmail }}"
+            password: "{{ testPassword }}"
+          capture:
+            - json: "$.accessToken"
+              as: "token"
+
+      - get:
+          url: "/api/v1/invoices?page=1&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode:
+                - 200
+                - 401
+
+      - think: 1
+
+      - get:
+          url: "/api/v1/invoices?page=2&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode:
+                - 200
+                - 401
+
+  # Document listing scenario
+  - name: "Document Operations"
+    weight: 3
+    flow:
+      - post:
+          url: "/api/v1/auth/login"
+          json:
+            email: "{{ testEmail }}"
+            password: "{{ testPassword }}"
+          capture:
+            - json: "$.accessToken"
+              as: "token"
+
+      - get:
+          url: "/api/v1/documents?page=1&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode:
+                - 200
+                - 401
+
+      - think: 1
+
+  # Partner/Client listing
+  - name: "Partner Operations"
+    weight: 2
+    flow:
+      - post:
+          url: "/api/v1/auth/login"
+          json:
+            email: "{{ testEmail }}"
+            password: "{{ testPassword }}"
+          capture:
+            - json: "$.accessToken"
+              as: "token"
+
+      - get:
+          url: "/api/v1/partners?page=1&limit=50"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode:
+                - 200
+                - 401
+
+  # Mixed API calls
+  - name: "Mixed Workload"
+    weight: 3
+    flow:
+      - post:
+          url: "/api/v1/auth/login"
+          json:
+            email: "{{ testEmail }}"
+            password: "{{ testPassword }}"
+          capture:
+            - json: "$.accessToken"
+              as: "token"
+
+      - loop:
+          - get:
+              url: "/api/v1/analytics/dashboard/metrics?range={{ $randomString(2) }}d"
+              headers:
+                Authorization: "Bearer {{ token }}"
+          - think: 0.5
+        count: 3
+
+      - get:
+          url: "/api/v1/invoices?page=1&limit=10"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+      - get:
+          url: "/api/v1/documents?page=1&limit=10"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+      - think: 2

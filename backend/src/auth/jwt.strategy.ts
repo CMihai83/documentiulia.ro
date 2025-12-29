@@ -47,7 +47,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         cui: true,
         tier: true,
         role: true,
+        activeOrganizationId: true,
         organizationMemberships: {
+          where: { isActive: true },
           select: {
             id: true,
             organizationId: true,
@@ -61,6 +63,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
               },
             },
           },
+          take: 1,
         },
       },
     });
@@ -78,10 +81,15 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       role: m.role,
     }));
 
+    // Get primary organization ID
+    const primaryOrg = user.organizationMemberships[0];
+    const organizationId = user.activeOrganizationId || primaryOrg?.organizationId;
+
     return {
       ...user,
       sub: user.id, // Required for controllers using req.user.sub
       organizations,
+      organizationId, // Add organizationId for subscription/other services
     };
   }
 }

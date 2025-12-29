@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { ConfigModule } from '@nestjs/config';
 import { AiService } from './ai.service';
 import { AiController } from './ai.controller';
 import { AiChatAssistantService } from './ai-chat-assistant.service';
@@ -12,9 +13,11 @@ import { AiInsightsService } from './ai-insights.service';
 import { AiInsightsController } from './ai-insights.controller';
 import { VoiceCommandsService } from './voice-commands.service';
 import { VoiceCommandsController } from './voice-commands.controller';
+import { GrokConversationService } from './grok-conversation.service';
+import { GrokConversationController } from './grok-conversation.controller';
 
 @Module({
-  imports: [EventEmitterModule.forRoot()],
+  imports: [EventEmitterModule.forRoot(), ConfigModule],
   controllers: [
     AiController,
     AiChatAssistantController,
@@ -22,6 +25,7 @@ import { VoiceCommandsController } from './voice-commands.controller';
     ContractAnalysisController,
     AiInsightsController,
     VoiceCommandsController,
+    GrokConversationController,
   ],
   providers: [
     AiService,
@@ -30,6 +34,7 @@ import { VoiceCommandsController } from './voice-commands.controller';
     ContractAnalysisService,
     AiInsightsService,
     VoiceCommandsService,
+    GrokConversationService,
   ],
   exports: [
     AiService,
@@ -38,6 +43,7 @@ import { VoiceCommandsController } from './voice-commands.controller';
     ContractAnalysisService,
     AiInsightsService,
     VoiceCommandsService,
+    GrokConversationService,
   ],
 })
 export class AiModule {}

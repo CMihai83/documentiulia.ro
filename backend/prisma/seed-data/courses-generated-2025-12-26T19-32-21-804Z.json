@@ -1,0 +1,2054 @@
+[
+  {
+    "title": "Contabilitate pentru Începători - Bazele contabilității",
+    "slug": "contabilitate-pentru-incepatori-bazele-contabilitatii",
+    "description": "Acest curs este destinat celor care doresc să învețe contabilitatea de la zero. Veți învăța principiile fundamentale ale contabilității, cum să înregistrați tranzacțiile financiare și să înțelegeți principalele rapoarte contabile. Este perfect pentru antreprenori, studenți și oricine dorește să dobândească cunoștințe de bază în contabilitate. Cursul vă va ajuta să înțelegeți mai bine gestionarea financiară a unei afaceri și să luați decizii informate.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Începător",
+    "duration": 20,
+    "price": 499,
+    "modules": [
+      {
+        "title": "Introducere în Contabilitate",
+        "duration": "2h 30m",
+        "lessons": [
+          "Ce este contabilitatea?",
+          "Rolul contabilității în afaceri",
+          "Principiile contabilității"
+        ]
+      },
+      {
+        "title": "Înregistrarea Tranzacțiilor",
+        "duration": "3h",
+        "lessons": [
+          "Conturi și jurnalizare",
+          "Registre contabile",
+          "Balanța de verificare"
+        ]
+      },
+      {
+        "title": "Raportare Financiară de Bază",
+        "duration": "2h 30m",
+        "lessons": [
+          "Bilanțul contabil",
+          "Contul de profit și pierdere",
+          "Fluxul de numerar"
+        ]
+      },
+      {
+        "title": "Gestionarea Documentelor Contabile",
+        "duration": "2h 30m",
+        "lessons": [
+          "Facturi și chitanțe",
+          "Registre obligatorii",
+          "Arhivarea documentelor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice",
+        "duration": "3h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea principiilor de bază ale contabilității",
+      "Înregistrarea corectă a tranzacțiilor financiare",
+      "Citirea și interpretarea rapoartelor financiare",
+      "Gestionarea eficientă a documentelor contabile",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Nivel de educație mediu",
+      "Interes în domeniul contabilității"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 300,
+    "rating": 4.7,
+    "seo": {
+      "title": "Contabilitate pentru Începători",
+      "description": "Învățați bazele contabilității cu DocumentIulia.ro. Curs perfect pentru antreprenori și studenți.",
+      "keywords": [
+        "contabilitate",
+        "începători",
+        "bazele contabilității",
+        "curs contabilitate",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Declarații Fiscale ANAF - Ghid Complet D112, D394, SAF-T",
+    "slug": "declaratii-fiscale-anaf-ghid-complet-d112-d394-saft",
+    "description": "Acest curs vă oferă un ghid complet pentru completarea și depunerea declarațiilor fiscale D112, D394 și SAF-T. Veți învăța cum să gestionați corect aceste declarații, evitând erorile comune și asigurându-vă conformitatea cu legislația fiscală din 2025. Cursul este destinat contabililor, managerilor financiari și antreprenorilor care doresc să își îmbunătățească abilitățile în gestionarea fiscală. La finalul cursului, veți fi capabil să completați și să depuneți aceste declarații cu încredere.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Intermediar",
+    "duration": 15,
+    "price": 599,
+    "modules": [
+      {
+        "title": "Introducere în Declarațiile Fiscale",
+        "duration": "2h",
+        "lessons": [
+          "Rolul declarațiilor fiscale",
+          "Tipuri de declarații fiscale",
+          "Legislația fiscală 2025"
+        ]
+      },
+      {
+        "title": "Declarația D112",
+        "duration": "2h 30m",
+        "lessons": [
+          "Structura declarației D112",
+          "Completarea corectă a D112",
+          "Depunerea declarației D112"
+        ]
+      },
+      {
+        "title": "Declarația D394",
+        "duration": "2h 30m",
+        "lessons": [
+          "Structura declarației D394",
+          "Completarea corectă a D394",
+          "Depunerea declarației D394"
+        ]
+      },
+      {
+        "title": "Declarația SAF-T",
+        "duration": "2h 30m",
+        "lessons": [
+          "Structura declarației SAF-T",
+          "Completarea corectă a SAF-T",
+          "Depunerea declarației SAF-T"
+        ]
+      },
+      {
+        "title": "Erori Comune și Soluții",
+        "duration": "2h",
+        "lessons": [
+          "Erori frecvente în declarații",
+          "Cum să evitați erorile",
+          "Soluții pentru corectarea erorilor"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea rolului și tipurilor de declarații fiscale",
+      "Completarea corectă a declarațiilor D112, D394 și SAF-T",
+      "Depunerea declarațiilor fiscale conform legislației 2025",
+      "Identificarea și evitarea erorilor comune",
+      "Gestionarea eficientă a declarațiilor fiscale"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în contabilitate",
+      "Familiaritate cu legislația fiscală"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 250,
+    "rating": 4.6,
+    "seo": {
+      "title": "Declarații Fiscale ANAF",
+      "description": "Ghid complet pentru D112, D394 și SAF-T. Învață să gestionezi declarațiile fiscale cu DocumentIulia.ro.",
+      "keywords": [
+        "declarații fiscale",
+        "ANAF",
+        "D112",
+        "D394",
+        "SAF-T",
+        "curs fiscalitate"
+      ]
+    }
+  },
+  {
+    "title": "e-Factura - Implementare și Utilizare Practică",
+    "slug": "e-factura-implementare-si-utilizare-practica",
+    "description": "Acest curs vă va ghida prin procesul de implementare și utilizare a sistemului e-Factura, conform cerințelor legislative din 2025. Veți învăța cum să emiteți și să primiți facturi electronice, gestionându-le eficient. Cursul este ideal pentru contabili, manageri financiari și antreprenori care doresc să își digitalizeze procesele de facturare. La finalul cursului, veți avea abilitățile necesare pentru a implementa și utiliza e-Factura cu succes.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Intermediar",
+    "duration": 12,
+    "price": 399,
+    "modules": [
+      {
+        "title": "Introducere în e-Factura",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce este e-Factura?",
+          "Beneficiile e-Factura",
+          "Legislația e-Factura 2025"
+        ]
+      },
+      {
+        "title": "Implementarea e-Factura",
+        "duration": "2h",
+        "lessons": [
+          "Pași pentru implementare",
+          "Configurarea sistemului",
+          "Integrarea cu software-ul existent"
+        ]
+      },
+      {
+        "title": "Emiterea Facturilor Electronice",
+        "duration": "2h",
+        "lessons": [
+          "Cum să emiți facturi electronice",
+          "Formatul facturilor electronice",
+          "Validarea și semnătura electronică"
+        ]
+      },
+      {
+        "title": "Primirea și Gestionarea Facturilor Electronice",
+        "duration": "2h",
+        "lessons": [
+          "Primirea facturilor electronice",
+          "Gestionarea facturilor primite",
+          "Arhivarea facturilor electronice"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea sistemului e-Factura și a beneficiilor sale",
+      "Implementarea corectă a e-Factura conform legislației 2025",
+      "Emiterea și primirea facturilor electronice",
+      "Gestionarea eficientă a facturilor electronice",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în contabilitate",
+      "Familiaritate cu tehnologia digitală"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.8,
+    "seo": {
+      "title": "e-Factura - Implementare",
+      "description": "Învață să implementezi și să utilizezi e-Factura cu DocumentIulia.ro. Curs practic pentru 2025.",
+      "keywords": [
+        "e-Factura",
+        "facturi electronice",
+        "implementare e-Factura",
+        "curs e-Factura",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "TVA 2025 - Noile Rate 21% și 11% (Legea 141/2025)",
+    "slug": "tva-2025-noile-rate-21-si-11-legea-141-2025",
+    "description": "Acest curs vă va familiariza cu noile rate ale TVA-ului de 21% și 11%, conform Legii 141/2025. Veți învăța cum să aplicați corect aceste rate în diferite scenarii și să gestionați declarațiile fiscale aferente. Cursul este destinat contabililor, managerilor financiari și antreprenorilor care doresc să rămână la curent cu modificările legislative. La finalul cursului, veți fi capabil să aplicați noile rate ale TVA-ului cu încredere și precizie.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Intermediar",
+    "duration": 10,
+    "price": 349,
+    "modules": [
+      {
+        "title": "Introducere în Noile Rate ale TVA",
+        "duration": "1h 30m",
+        "lessons": [
+          "Modificările aduse de Legea 141/2025",
+          "Ratele de 21% și 11%",
+          "Impactul asupra afacerilor"
+        ]
+      },
+      {
+        "title": "Aplicarea Ratei de 21%",
+        "duration": "2h",
+        "lessons": [
+          "Categorii de produse și servicii",
+          "Exemple practice",
+          "Declarații fiscale aferente"
+        ]
+      },
+      {
+        "title": "Aplicarea Ratei de 11%",
+        "duration": "2h",
+        "lessons": [
+          "Categorii de produse și servicii",
+          "Exemple practice",
+          "Declarații fiscale aferente"
+        ]
+      },
+      {
+        "title": "Gestionarea Declarațiilor TVA",
+        "duration": "2h",
+        "lessons": [
+          "Completarea declarațiilor TVA",
+          "Depunerea declarațiilor TVA",
+          "Verificarea și corectarea erorilor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Evaluare",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea modificărilor aduse de Legea 141/2025",
+      "Aplicarea corectă a ratelor de 21% și 11%",
+      "Gestionarea declarațiilor fiscale aferente TVA",
+      "Identificarea și corectarea erorilor în declarații",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în contabilitate și fiscalitate",
+      "Familiaritate cu legislația TVA"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 250,
+    "rating": 4.7,
+    "seo": {
+      "title": "TVA 2025 - Noile Rate",
+      "description": "Învață despre noile rate ale TVA de 21% și 11% cu DocumentIulia.ro. Curs conform Legii 141/2025.",
+      "keywords": [
+        "TVA 2025",
+        "rate TVA",
+        "Legea 141/2025",
+        "curs TVA",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Închiderea Exercițiului Financiar - Proceduri Complete",
+    "slug": "inchiderea-exercitiului-financiar-proceduri-complete",
+    "description": "Acest curs vă va ghida prin toate procedurile necesare pentru închiderea exercițiului financiar. Veți învăța cum să pregătiți și să verificați documentele contabile, să efectuați ajustările necesare și să întocmiți rapoartele finale. Cursul este destinat contabililor și managerilor financiari care doresc să asigure o închidere corectă și eficientă a exercițiului financiar. La finalul cursului, veți avea abilitățile necesare pentru a gestiona acest proces cu succes.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Avansat",
+    "duration": 18,
+    "price": 699,
+    "modules": [
+      {
+        "title": "Introducere în Închiderea Exercițiului Financiar",
+        "duration": "2h",
+        "lessons": [
+          "Ce înseamnă închiderea exercițiului financiar?",
+          "Importanța închiderii corecte",
+          "Legislația relevantă"
+        ]
+      },
+      {
+        "title": "Pregătirea Documentelor Contabile",
+        "duration": "3h",
+        "lessons": [
+          "Inventarierea activelor și pasivelor",
+          "Verificarea și ajustarea conturilor",
+          "Înregistrarea ajustărilor"
+        ]
+      },
+      {
+        "title": "Întocmirea Rapoartelor Financiare",
+        "duration": "3h",
+        "lessons": [
+          "Bilanțul contabil",
+          "Contul de profit și pierdere",
+          "Alte rapoarte financiare"
+        ]
+      },
+      {
+        "title": "Verificarea și Ajustarea Declarațiilor Fiscale",
+        "duration": "3h",
+        "lessons": [
+          "Revizuirea declarațiilor fiscale",
+          "Ajustarea declarațiilor fiscale",
+          "Depunerea declarațiilor finale"
+        ]
+      },
+      {
+        "title": "Închiderea Finală și Arhive",
+        "duration": "3h",
+        "lessons": [
+          "Închiderea conturilor",
+          "Arhivarea documentelor",
+          "Evaluarea finală a procesului"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "3h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea procedurilor de închidere a exercițiului financiar",
+      "Pregătirea corectă a documentelor contabile",
+      "Întocmirea rapoartelor financiare finale",
+      "Verificarea și ajustarea declarațiilor fiscale",
+      "Închiderea finală și arhivarea documentelor"
+    ],
+    "prerequisites": [
+      "Cunoștințe avansate în contabilitate și fiscalitate",
+      "Experiență în gestionarea exercițiilor financiare"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 150,
+    "rating": 4.8,
+    "seo": {
+      "title": "Închiderea Exercițiului Financiar",
+      "description": "Proceduri complete pentru închiderea exercițiului financiar cu DocumentIulia.ro. Curs avansat.",
+      "keywords": [
+        "închiderea exercițiului financiar",
+        "proceduri contabile",
+        "rapoarte financiare",
+        "curs contabilitate",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Raportări Financiare - Bilanț, Profit & Pierdere",
+    "slug": "raportari-financiare-bilant-profit-si-pierdere",
+    "description": "Acest curs vă va învăța cum să întocmiți și să interpretați rapoartele financiare esențiale, precum bilanțul contabil și contul de profit și pierdere. Veți afla cum să analizați aceste rapoarte pentru a lua decizii informate în gestionarea afacerii. Cursul este destinat contabililor, managerilor financiari și antreprenorilor care doresc să își îmbunătățească abilitățile în raportarea financiară. La finalul cursului, veți fi capabil să pregătiți și să analizați rapoartele financiare cu încredere.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Intermediar",
+    "duration": 15,
+    "price": 549,
+    "modules": [
+      {
+        "title": "Introducere în Raportările Financiare",
+        "duration": "2h",
+        "lessons": [
+          "Ce sunt raportările financiare?",
+          "Importanța raportărilor financiare",
+          "Tipuri de raportări financiare"
+        ]
+      },
+      {
+        "title": "Întocmirea Bilanțului Contabil",
+        "duration": "3h",
+        "lessons": [
+          "Structura bilanțului contabil",
+          "Elemente ale bilanțului contabil",
+          "Exemple practice"
+        ]
+      },
+      {
+        "title": "Întocmirea Contului de Profit și Pierdere",
+        "duration": "3h",
+        "lessons": [
+          "Structura contului de profit și pierdere",
+          "Elemente ale contului de profit și pierdere",
+          "Exemple practice"
+        ]
+      },
+      {
+        "title": "Analiza Rapoartelor Financiare",
+        "duration": "3h",
+        "lessons": [
+          "Analiza bilanțului contabil",
+          "Analiza contului de profit și pierdere",
+          "Indicatori financiari"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "3h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea raportărilor financiare și a importanței lor",
+      "Întocmirea corectă a bilanțului contabil",
+      "Întocmirea corectă a contului de profit și pierdere",
+      "Analizarea rapoartelor financiare pentru decizii informate",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în contabilitate",
+      "Familiaritate cu termenii financiari"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.7,
+    "seo": {
+      "title": "Raportări Financiare",
+      "description": "Învață să întocmești și să analizezi bilanțul și contul de profit și pierdere cu DocumentIulia.ro.",
+      "keywords": [
+        "raportări financiare",
+        "bilanț contabil",
+        "profit și pierdere",
+        "curs contabilitate",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Optimizare Fiscală Legală pentru IMM-uri",
+    "slug": "optimizare-fiscala-legala-pentru-imm-uri",
+    "description": "Acest curs vă va învăța cum să optimizați fiscalitatea pentru întreprinderile mici și mijlocii, respectând legislația din 2025. Veți afla strategii legale de reducere a impozitelor și contribuțiilor, precum și cum să gestionați eficient resursele financiare. Cursul este destinat antreprenorilor și managerilor financiari din IMM-uri care doresc să își maximizeze profiturile. La finalul cursului, veți avea cunoștințele necesare pentru a implementa strategii de optimizare fiscală eficiente.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Intermediar",
+    "duration": 12,
+    "price": 499,
+    "modules": [
+      {
+        "title": "Introducere în Optimizarea Fiscală",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce înseamnă optimizarea fiscală?",
+          "Importanța optimizării fiscale",
+          "Legislația fiscală 2025"
+        ]
+      },
+      {
+        "title": "Strategii de Optimizare Fiscală",
+        "duration": "2h",
+        "lessons": [
+          "Deductibilități și scutiri",
+          "Planificarea fiscală",
+          "Structurarea afacerii"
+        ]
+      },
+      {
+        "title": "Gestionarea Resurselor Financiare",
+        "duration": "2h",
+        "lessons": [
+          "Bugetarea eficientă",
+          "Controlul costurilor",
+          "Investiții inteligente"
+        ]
+      },
+      {
+        "title": "Optimizarea Contribuțiilor Sociale",
+        "duration": "2h",
+        "lessons": [
+          "Contribuții sociale și impozite",
+          "Strategii de reducere a contribuțiilor",
+          "Exemple practice"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea conceptului de optimizare fiscală",
+      "Aplicarea strategiilor legale de reducere a impozitelor",
+      "Gestionarea eficientă a resurselor financiare",
+      "Optimizarea contribuțiilor sociale",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în contabilitate și fiscalitate",
+      "Familiaritate cu gestionarea financiară a IMM-urilor"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 150,
+    "rating": 4.6,
+    "seo": {
+      "title": "Optimizare Fiscală IMM",
+      "description": "Învață strategii legale de optimizare fiscală pentru IMM-uri cu DocumentIulia.ro. Curs practic.",
+      "keywords": [
+        "optimizare fiscală",
+        "IMM-uri",
+        "reducere impozite",
+        "curs fiscalitate",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Contabilitate Avansată - Active Fixe și Amortizări",
+    "slug": "contabilitate-avansata-active-fixe-si-amortizari",
+    "description": "Acest curs vă va aprofunda cunoștințele în contabilitatea activelor fixe și a amortizărilor, conform legislației din 2025. Veți învăța cum să înregistrați, să gestionați și să amortizezi activele fixe, precum și să aplicați metodele corecte de calcul al amortizărilor. Cursul este destinat contabililor și managerilor financiari care doresc să își îmbunătățească abilitățile în contabilitatea avansată. La finalul cursului, veți avea competențele necesare pentru a gestiona eficient activele fixe și amortizările.",
+    "category": "Contabilitate & Fiscalitate",
+    "level": "Avansat",
+    "duration": 20,
+    "price": 799,
+    "modules": [
+      {
+        "title": "Introducere în Contabilitatea Activelor Fixe",
+        "duration": "2h 30m",
+        "lessons": [
+          "Ce sunt activele fixe?",
+          "Clasificarea activelor fixe",
+          "Legislația activelor fixe 2025"
+        ]
+      },
+      {
+        "title": "Înregistrarea Activelor Fixe",
+        "duration": "3h",
+        "lessons": [
+          "Înregistrarea inițială",
+          "Înregistrarea ulterioară",
+          "Documente necesare"
+        ]
+      },
+      {
+        "title": "Amortizarea Activelor Fixe",
+        "duration": "3h",
+        "lessons": [
+          "Metode de amortizare",
+          "Calculul amortizării",
+          "Înregistrarea amortizării"
+        ]
+      },
+      {
+        "title": "Gestionarea și Evaluarea Activelor Fixe",
+        "duration": "3h",
+        "lessons": [
+          "Inventarierea activelor fixe",
+          "Evaluarea activelor fixe",
+          "Reevaluarea activelor fixe"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "3h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      },
+      {
+        "title": "Închiderea Conturilor Activelor Fixe",
+        "duration": "3h",
+        "lessons": [
+          "Închiderea conturilor",
+          "Raportarea activelor fixe",
+          "Arhivarea documentelor"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea contabilității activelor fixe și a amortizărilor",
+      "Înregistrarea corectă a activelor fixe",
+      "Aplicarea metodelor de amortizare conform legislației 2025",
+      "Gestionarea și evaluarea activelor fixe",
+      "Închiderea corectă a conturilor activelor fixe"
+    ],
+    "prerequisites": [
+      "Cunoștințe avansate în contabilitate",
+      "Experiență în gestionarea activelor fixe"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 100,
+    "rating": 4.9,
+    "seo": {
+      "title": "Contabilitate Avansată",
+      "description": "Curs avansat despre active fixe și amortizări conform legislației 2025 cu DocumentIulia.ro.",
+      "keywords": [
+        "contabilitate avansată",
+        "active fixe",
+        "amortizări",
+        "curs contabilitate",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "REVISAL - Registrul Electronic de Evidență a Salariaților",
+    "slug": "revisal-registrul-electronic-de-evidenta-a-salariatilor",
+    "description": "Acest curs vă va ghida prin utilizarea corectă a Registrului Electronic de Evidență a Salariaților (REVISAL), conform legislației din 2025. Veți învăța cum să înregistrați, să modificați și să gestionați datele salariaților, precum și să respectați termenele de raportare. Cursul este destinat specialiștilor HR, contabililor și managerilor care doresc să își îmbunătățească abilitățile în gestionarea resurselor umane. La finalul cursului, veți fi capabil să utilizați REVISAL cu încredere și precizie.",
+    "category": "HR & Legislația Muncii",
+    "level": "Intermediar",
+    "duration": 10,
+    "price": 399,
+    "modules": [
+      {
+        "title": "Introducere în REVISAL",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce este REVISAL?",
+          "Importanța REVISAL",
+          "Legislația REVISAL 2025"
+        ]
+      },
+      {
+        "title": "Înregistrarea Salariaților",
+        "duration": "2h",
+        "lessons": [
+          "Procesul de înregistrare",
+          "Documentele necesare",
+          "Termenele de raportare"
+        ]
+      },
+      {
+        "title": "Modificarea Datelor Salariaților",
+        "duration": "2h",
+        "lessons": [
+          "Tipuri de modificări",
+          "Procedura de modificare",
+          "Termenele de raportare"
+        ]
+      },
+      {
+        "title": "Gestionarea și Raportarea Datelor",
+        "duration": "2h",
+        "lessons": [
+          "Gestionarea datelor",
+          "Raportarea datelor",
+          "Verificarea și corectarea erorilor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea rolului și importanței REVISAL",
+      "Înregistrarea corectă a salariaților",
+      "Modificarea datelor salariaților conform legislației 2025",
+      "Gestionarea și raportarea eficientă a datelor",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea resurselor umane",
+      "Familiaritate cu legislația muncii"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 250,
+    "rating": 4.7,
+    "seo": {
+      "title": "REVISAL - Registrul Salariaților",
+      "description": "Învață să utilizezi REVISAL conform legislației 2025 cu DocumentIulia.ro. Curs practic.",
+      "keywords": [
+        "REVISAL",
+        "registrul electronic",
+        "evidența salariaților",
+        "curs HR",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Calcul Salariu și Contribuții Sociale 2025",
+    "slug": "calcul-salariu-si-contributii-sociale-2025",
+    "description": "Acest curs vă va învăța cum să calculați corect salariile și contribuțiile sociale, conform legislației din 2025. Veți afla despre diferitele componente ale salariului, cum să aplicați corect contribuțiile sociale și să gestionați declarațiile aferente. Cursul este destinat specialiștilor HR, contabililor și managerilor care doresc să își îmbunătățească abilitățile în gestionarea salarială. La finalul cursului, veți avea competențele necesare pentru a calcula salariile și contribuțiile sociale cu precizie.",
+    "category": "HR & Legislația Muncii",
+    "level": "Intermediar",
+    "duration": 12,
+    "price": 449,
+    "modules": [
+      {
+        "title": "Introducere în Calculul Salarial",
+        "duration": "1h 30m",
+        "lessons": [
+          "Componentele salariului",
+          "Importanța calculului corect",
+          "Legislația salarială 2025"
+        ]
+      },
+      {
+        "title": "Calculul Salariului Brut",
+        "duration": "2h",
+        "lessons": [
+          "Elementele salariului brut",
+          "Metode de calcul",
+          "Exemple practice"
+        ]
+      },
+      {
+        "title": "Calculul Contribuțiilor Sociale",
+        "duration": "2h",
+        "lessons": [
+          "Tipuri de contribuții sociale",
+          "Aplicarea contribuțiilor sociale",
+          "Declarațiile aferente"
+        ]
+      },
+      {
+        "title": "Calculul Salariului Net",
+        "duration": "2h",
+        "lessons": [
+          "Deducerea contribuțiilor",
+          "Calculul salariului net",
+          "Exemple practice"
+        ]
+      },
+      {
+        "title": "Gestionarea Declarațiilor Salariale",
+        "duration": "2h",
+        "lessons": [
+          "Completarea declarațiilor",
+          "Depunerea declarațiilor",
+          "Verificarea și corectarea erorilor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea componentelor salariului și a contribuțiilor sociale",
+      "Calculul corect al salariului brut",
+      "Aplicarea contribuțiilor sociale conform legislației 2025",
+      "Calculul salariului net",
+      "Gestionarea eficientă a declarațiilor salariale"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea resurselor umane",
+      "Familiaritate cu legislația salarială"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.6,
+    "seo": {
+      "title": "Calcul Salariu 2025",
+      "description": "Învață să calculezi salariile și contribuțiile sociale conform legislației 2025 cu DocumentIulia.ro.",
+      "keywords": [
+        "calcul salariu",
+        "contribuții sociale",
+        "legislația 2025",
+        "curs HR",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Contracte de Muncă - Tipuri și Clauze Esențiale",
+    "slug": "contracte-de-munca-tipuri-si-clauze-esentiale",
+    "description": "Acest curs vă va familiariza cu diferitele tipuri de contracte de muncă și clauzele esențiale, conform legislației din 2025. Veți învăța cum să redactați, să negociați și să gestionați contractele de muncă, asigurându-vă conformitatea cu legislația muncii. Cursul este destinat specialiștilor HR, managerilor și antreprenorilor care doresc să își îmbunătățească abilitățile în gestionarea contractelor de muncă. La finalul cursului, veți avea competențele necesare pentru a gestiona eficient contractele de muncă.",
+    "category": "HR & Legislația Muncii",
+    "level": "Intermediar",
+    "duration": 10,
+    "price": 399,
+    "modules": [
+      {
+        "title": "Introducere în Contractele de Muncă",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce sunt contractele de muncă?",
+          "Importanța contractelor de muncă",
+          "Legislația contractelor de muncă 2025"
+        ]
+      },
+      {
+        "title": "Tipuri de Contracte de Muncă",
+        "duration": "2h",
+        "lessons": [
+          "Contracte pe durată determinată",
+          "Contracte pe durată nedeterminată",
+          "Contracte de muncă temporară"
+        ]
+      },
+      {
+        "title": "Clauze Esențiale ale Contractelor de Muncă",
+        "duration": "2h",
+        "lessons": [
+          "Clauza de confidențialitate",
+          "Clauza de neconcurență",
+          "Clauza de mobilitate"
+        ]
+      },
+      {
+        "title": "Redactarea și Negocierea Contractelor de Muncă",
+        "duration": "2h",
+        "lessons": [
+          "Procesul de redactare",
+          "Negocierea contractelor",
+          "Modificarea contractelor"
+        ]
+      },
+      {
+        "title": "Gestionarea Contractelor de Muncă",
+        "duration": "2h",
+        "lessons": [
+          "Arhivarea contractelor",
+          "Respectarea termenelor",
+          "Verificarea și corectarea erorilor"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea diferitelor tipuri de contracte de muncă",
+      "Identificarea clauzelor esențiale ale contractelor de muncă",
+      "Redactarea și negocierea contractelor de muncă",
+      "Gestionarea eficientă a contractelor de muncă",
+      "Asigurarea conformității cu legislația muncii 2025"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea resurselor umane",
+      "Familiaritate cu legislația muncii"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.7,
+    "seo": {
+      "title": "Contracte de Muncă",
+      "description": "Învață despre tipurile de contracte de muncă și clauze esențiale cu DocumentIulia.ro. Curs practic.",
+      "keywords": [
+        "contracte de muncă",
+        "tipuri de contracte",
+        "clauze esențiale",
+        "curs HR",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Legislația Muncii 2025 - Noutăți și Modificări",
+    "slug": "legislatia-muncii-2025-noutati-si-modificari",
+    "description": "Acest curs vă va actualiza cu cele mai recente modificări și noutăți din legislația muncii pentru anul 2025. Veți afla despre noile reglementări privind contractele de muncă, salarizarea, concediile și alte aspecte importante. Cursul este destinat specialiștilor HR, managerilor și antreprenorilor care doresc să rămână la curent cu legislația muncii. La finalul cursului, veți avea cunoștințele necesare pentru a aplica corect noile reglementări în gestionarea resurselor umane.",
+    "category": "HR & Legislația Muncii",
+    "level": "Intermediar",
+    "duration": 8,
+    "price": 299,
+    "modules": [
+      {
+        "title": "Introducere în Legislația Muncii 2025",
+        "duration": "1h",
+        "lessons": [
+          "Importanța cunoașterii legislației muncii",
+          "Modificările legislative din 2025",
+          "Impactul asupra afacerilor"
+        ]
+      },
+      {
+        "title": "Modificările Contractelor de Muncă",
+        "duration": "1h 30m",
+        "lessons": [
+          "Noile tipuri de contracte",
+          "Clauze noi și modificate",
+          "Proceduri de încheiere și modificare"
+        ]
+      },
+      {
+        "title": "Salarizarea și Contribuțiile Sociale",
+        "duration": "1h 30m",
+        "lessons": [
+          "Modificările salarizării",
+          "Noile contribuții sociale",
+          "Declarațiile aferente"
+        ]
+      },
+      {
+        "title": "Concedii și Absențe",
+        "duration": "1h 30m",
+        "lessons": [
+          "Noile reglementări privind concediile",
+          "Gestionarea absențelor",
+          "Proceduri administrative"
+        ]
+      },
+      {
+        "title": "Alte Noutăți și Modificări",
+        "duration": "1h 30m",
+        "lessons": [
+          "Reglementări privind timpul de lucru",
+          "Noi obligații ale angajatorilor",
+          "Drepturile angajaților"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea modificărilor legislative din 2025",
+      "Aplicarea noilor reglementări privind contractele de muncă",
+      "Gestionarea salarizării și a contribuțiilor sociale conform noilor reguli",
+      "Gestionarea concediilor și absențelor",
+      "Rămânerea la curent cu alte noutăți și modificări legislative"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea resurselor umane",
+      "Familiaritate cu legislația muncii"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 300,
+    "rating": 4.8,
+    "seo": {
+      "title": "Legislația Muncii 2025",
+      "description": "Învață despre noutățile și modificările din legislația muncii 2025 cu DocumentIulia.ro. Curs actualizat.",
+      "keywords": [
+        "legislația muncii",
+        "noutăți 2025",
+        "modificări legislative",
+        "curs HR",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Concedii și Absențe - Proceduri Administrative",
+    "slug": "concedii-si-absente-proceduri-administrative",
+    "description": "Acest curs vă va ghida prin procedurile administrative necesare pentru gestionarea concediilor și absențelor, conform legislației din 2025. Veți învăța cum să planificați, să aprobați și să gestionați concediile, precum și să gestionați absențele nejustificate. Cursul este destinat specialiștilor HR, managerilor și antreprenorilor care doresc să își îmbunătățească abilitățile în gestionarea resurselor umane. La finalul cursului, veți avea competențele necesare pentru a gestiona eficient concediile și absențele.",
+    "category": "HR & Legislația Muncii",
+    "level": "Intermediar",
+    "duration": 10,
+    "price": 349,
+    "modules": [
+      {
+        "title": "Introducere în Concedii și Absențe",
+        "duration": "1h 30m",
+        "lessons": [
+          "Tipuri de concedii",
+          "Importanța gestionării concediilor",
+          "Legislația concediilor 2025"
+        ]
+      },
+      {
+        "title": "Planificarea Concediilor",
+        "duration": "2h",
+        "lessons": [
+          "Procesul de planificare",
+          "Aprobarea concediilor",
+          "Gestionarea cererilor de concediu"
+        ]
+      },
+      {
+        "title": "Gestionarea Concediilor",
+        "duration": "2h",
+        "lessons": [
+          "Înregistrarea concediilor",
+          "Calculul concediilor",
+          "Raportarea concediilor"
+        ]
+      },
+      {
+        "title": "Gestionarea Absențelor",
+        "duration": "2h",
+        "lessons": [
+          "Tipuri de absențe",
+          "Proceduri pentru absențele justificate",
+          "Proceduri pentru absențele nejustificate"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea tipurilor de concedii și absențe",
+      "Planificarea și aprobarea concediilor conform legislației 2025",
+      "Gestionarea eficientă a concediilor",
+      "Gestionarea absențelor justificate și nejustificate",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea resurselor umane",
+      "Familiaritate cu legislația muncii"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.7,
+    "seo": {
+      "title": "Concedii și Absențe",
+      "description": "Învață procedurile administrative pentru gestionarea concediilor și absențelor cu DocumentIulia.ro.",
+      "keywords": [
+        "concedii",
+        "absențe",
+        "proceduri administrative",
+        "curs HR",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Pontaje și Foi de Prezență - Evidență Corectă",
+    "slug": "pontaje-si-foi-de-prezenta-evidenta-corecta",
+    "description": "Acest curs vă va învăța cum să gestionați corect pontajele și foile de prezență, conform legislației din 2025. Veți afla despre diferitele metode de evidență a timpului de lucru, cum să completați și să gestionați pontajele, precum și să respectați termenele de raportare. Cursul este destinat specialiștilor HR, contabililor și managerilor care doresc să își îmbunătățească abilitățile în gestionarea resurselor umane. La finalul cursului, veți avea competențele necesare pentru a gestiona eficient pontajele și foile de prezență.",
+    "category": "HR & Legislația Muncii",
+    "level": "Intermediar",
+    "duration": 8,
+    "price": 299,
+    "modules": [
+      {
+        "title": "Introducere în Pontaje și Foi de Prezență",
+        "duration": "1h",
+        "lessons": [
+          "Ce sunt pontajele și foile de prezență?",
+          "Importanța evidenței corecte",
+          "Legislația pontajelor 2025"
+        ]
+      },
+      {
+        "title": "Metode de Evidență a Timpului de Lucru",
+        "duration": "1h 30m",
+        "lessons": [
+          "Metode manuale",
+          "Metode electronice",
+          "Alegerea metodei potrivite"
+        ]
+      },
+      {
+        "title": "Completarea Pontajelor",
+        "duration": "1h 30m",
+        "lessons": [
+          "Procedura de completare",
+          "Elementele pontajului",
+          "Termenele de raportare"
+        ]
+      },
+      {
+        "title": "Gestionarea Pontajelor și a Foilor de Prezență",
+        "duration": "1h 30m",
+        "lessons": [
+          "Arhivarea pontajelor",
+          "Verificarea și corectarea erorilor",
+          "Raportarea datelor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "1h 30m",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea importanței evidenței corecte a timpului de lucru",
+      "Aplicarea diferitelor metode de evidență a timpului de lucru",
+      "Completarea corectă a pontajelor conform legislației 2025",
+      "Gestionarea eficientă a pontajelor și a foilor de prezență",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea resurselor umane",
+      "Familiaritate cu legislația muncii"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.6,
+    "seo": {
+      "title": "Pontaje și Foi de Prezență",
+      "description": "Învață să gestionezi corect pontajele și foile de prezență cu DocumentIulia.ro. Curs practic.",
+      "keywords": [
+        "pontaje",
+        "foi de prezență",
+        "evidență timp de lucru",
+        "curs HR",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "ERP pentru IMM-uri - Digitalizare Completă",
+    "slug": "erp-pentru-imm-uri-digitalizare-completa",
+    "description": "Acest curs vă va ghida prin procesul de implementare și utilizare a unui sistem ERP pentru întreprinderile mici și mijlocii. Veți învăța cum să digitalizați toate procesele de afaceri, de la contabilitate și resurse umane până la gestionarea stocurilor și vânzărilor. Cursul este destinat antreprenorilor și managerilor din IMM-uri care doresc să își îmbunătățească eficiența operațională. La finalul cursului, veți avea abilitățile necesare pentru a implementa și utiliza un sistem ERP cu succes.",
+    "category": "Business & Operațiuni",
+    "level": "Intermediar",
+    "duration": 15,
+    "price": 599,
+    "modules": [
+      {
+        "title": "Introducere în Sistemele ERP",
+        "duration": "2h",
+        "lessons": [
+          "Ce este un sistem ERP?",
+          "Beneficiile unui sistem ERP",
+          "Alegerea sistemului ERP potrivit"
+        ]
+      },
+      {
+        "title": "Implementarea Sistemului ERP",
+        "duration": "3h",
+        "lessons": [
+          "Pași pentru implementare",
+          "Configurarea sistemului",
+          "Integrarea cu alte sisteme"
+        ]
+      },
+      {
+        "title": "Gestionarea Contabilității cu ERP",
+        "duration": "2h 30m",
+        "lessons": [
+          "Module contabile",
+          "Înregistrarea tranzacțiilor",
+          "Raportarea financiară"
+        ]
+      },
+      {
+        "title": "Gestionarea Resurselor Umane cu ERP",
+        "duration": "2h 30m",
+        "lessons": [
+          "Module HR",
+          "Gestionarea salariaților",
+          "Raportarea HR"
+        ]
+      },
+      {
+        "title": "Gestionarea Stocurilor și Vânzărilor cu ERP",
+        "duration": "2h 30m",
+        "lessons": [
+          "Module de gestionare a stocurilor",
+          "Module de vânzări",
+          "Raportarea stocurilor și vânzărilor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h 30m",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea sistemelor ERP și a beneficiilor lor",
+      "Implementarea corectă a unui sistem ERP",
+      "Gestionarea contabilității cu ajutorul ERP",
+      "Gestionarea resurselor umane cu ajutorul ERP",
+      "Gestionarea stocurilor și vânzărilor cu ajutorul ERP"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea afacerilor",
+      "Familiaritate cu tehnologia digitală"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.7,
+    "seo": {
+      "title": "ERP pentru IMM-uri",
+      "description": "Învață să implementezi și să utilizezi un sistem ERP pentru IMM-uri cu DocumentIulia.ro. Curs practic.",
+      "keywords": [
+        "ERP",
+        "IMM-uri",
+        "digitalizare",
+        "curs business",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Freelancing în România - Ghid Complet PFA",
+    "slug": "freelancing-in-romania-ghid-complet-pfa",
+    "description": "Acest curs vă oferă un ghid complet pentru a deveni freelancer în România și a înființa o Persoană Fizică Autorizată (PFA). Veți învăța despre procedurile de înregistrare, obligațiile fiscale și contabile, precum și despre gestionarea eficientă a activității de freelancer. Cursul este destinat persoanelor care doresc să își înceapă propria afacere ca freelanceri. La finalul cursului, veți avea cunoștințele necesare pentru a deveni un freelancer de succes.",
+    "category": "Business & Operațiuni",
+    "level": "Începător",
+    "duration": 12,
+    "price": 399,
+    "modules": [
+      {
+        "title": "Introducere în Freelancing",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce înseamnă freelancing?",
+          "Avantajele și dezavantajele freelancingului",
+          "Tipuri de activități freelance"
+        ]
+      },
+      {
+        "title": "Înființarea PFA",
+        "duration": "2h",
+        "lessons": [
+          "Procedura de înregistrare",
+          "Documentele necesare",
+          "Termenele de înregistrare"
+        ]
+      },
+      {
+        "title": "Obligații Fiscale și Contabile",
+        "duration": "2h",
+        "lessons": [
+          "Impozite și contribuții",
+          "Declarații fiscale",
+          "Evidența contabilă"
+        ]
+      },
+      {
+        "title": "Gestionarea Activității de Freelancer",
+        "duration": "2h",
+        "lessons": [
+          "Gestionarea timpului",
+          "Gestionarea clienților",
+          "Marketing și promovare"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      },
+      {
+        "title": "Sfaturi și Resurse",
+        "duration": "2h",
+        "lessons": [
+          "Sfaturi pentru succes",
+          "Resurse utile",
+          "Comunități de freelanceri"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea freelancingului și a beneficiilor sale",
+      "Înființarea corectă a unei PFA",
+      "Gestionarea obligațiilor fiscale și contabile",
+      "Gestionarea eficientă a activității de freelancer",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Interes în freelancing",
+      "Disponibilitate de a învăța despre procedurile de înregistrare"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 300,
+    "rating": 4.8,
+    "seo": {
+      "title": "Freelancing în România",
+      "description": "Ghid complet pentru a deveni freelancer și a înființa o PFA cu DocumentIulia.ro. Curs pentru începători.",
+      "keywords": [
+        "freelancing",
+        "PFA",
+        "ghid freelancer",
+        "curs business",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "PFA vs SRL - Analiza Comparativă 2025",
+    "slug": "pfa-vs-srl-analiza-comparativa-2025",
+    "description": "Acest curs vă va oferi o analiză comparativă detaliată între Persoana Fizică Autorizată (PFA) și Societatea cu Răspundere Limitată (SRL), conform legislației din 2025. Veți afla despre avantajele și dezavantajele fiecărei forme juridice, obligațiile fiscale și contabile, precum și despre procedurile de înființare și gestionare. Cursul este destinat antreprenorilor care doresc să aleagă cea mai potrivită formă juridică pentru afacerea lor. La finalul cursului, veți avea cunoștințele necesare pentru a lua o decizie informată.",
+    "category": "Business & Operațiuni",
+    "level": "Intermediar",
+    "duration": 10,
+    "price": 349,
+    "modules": [
+      {
+        "title": "Introducere în PFA și SRL",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce este PFA?",
+          "Ce este SRL?",
+          "Legislația 2025"
+        ]
+      },
+      {
+        "title": "Avantajele și Dezavantajele PFA",
+        "duration": "2h",
+        "lessons": [
+          "Avantajele PFA",
+          "Dezavantajele PFA",
+          "Cazuri practice"
+        ]
+      },
+      {
+        "title": "Avantajele și Dezavantajele SRL",
+        "duration": "2h",
+        "lessons": [
+          "Avantajele SRL",
+          "Dezavantajele SRL",
+          "Cazuri practice"
+        ]
+      },
+      {
+        "title": "Obligații Fiscale și Contabile",
+        "duration": "2h",
+        "lessons": [
+          "Obligațiile PFA",
+          "Obligațiile SRL",
+          "Comparație fiscală și contabilă"
+        ]
+      },
+      {
+        "title": "Proceduri de Înființare și Gestionare",
+        "duration": "2h",
+        "lessons": [
+          "Înființarea PFA",
+          "Înființarea SRL",
+          "Gestionarea PFA vs SRL"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea diferențelor între PFA și SRL",
+      "Identificarea avantajelor și dezavantajelor fiecărei forme juridice",
+      "Compararea obligațiilor fiscale și contabile",
+      "Înțelegerea procedurilor de înființare și gestionare",
+      "Luarea unei decizii informate privind forma juridică"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea afacerilor",
+      "Familiaritate cu legislația fiscală"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 250,
+    "rating": 4.7,
+    "seo": {
+      "title": "PFA vs SRL 2025",
+      "description": "Analiză comparativă detaliată între PFA și SRL conform legislației 2025 cu DocumentIulia.ro.",
+      "keywords": [
+        "PFA",
+        "SRL",
+        "analiză comparativă",
+        "curs business",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "GDPR și Protecția Datelor Personale",
+    "slug": "gdpr-si-protectia-datelor-personale",
+    "description": "Acest curs vă va familiariza cu Regulamentul General privind Protecția Datelor (GDPR) și cu modul în care să gestionați datele personale conform legislației din 2025. Veți învăța despre drepturile persoanelor vizate, obligațiile operatorilor de date, precum și despre procedurile de securitate și raportare. Cursul este destinat managerilor, specialiștilor IT și oricui gestionează date personale în activitatea sa profesională. La finalul cursului, veți avea cunoștințele necesare pentru a asigura conformitatea cu GDPR.",
+    "category": "Business & Operațiuni",
+    "level": "Intermediar",
+    "duration": 12,
+    "price": 499,
+    "modules": [
+      {
+        "title": "Introducere în GDPR",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce este GDPR?",
+          "Importanța GDPR",
+          "Legislația GDPR 2025"
+        ]
+      },
+      {
+        "title": "Drepturile Persoanelor Vizate",
+        "duration": "2h",
+        "lessons": [
+          "Dreptul la informare",
+          "Dreptul de acces",
+          "Dreptul la ștergere"
+        ]
+      },
+      {
+        "title": "Obligațiile Operatorilor de Date",
+        "duration": "2h",
+        "lessons": [
+          "Înregistrarea operatorilor de date",
+          "Notificarea încălcărilor de securitate",
+          "Evaluarea impactului asupra protecției datelor"
+        ]
+      },
+      {
+        "title": "Proceduri de Securitate și Raportare",
+        "duration": "2h",
+        "lessons": [
+          "Măsuri de securitate",
+          "Proceduri de raportare",
+          "Audituri și verificări"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      },
+      {
+        "title": "Sfaturi și Resurse",
+        "duration": "2h",
+        "lessons": [
+          "Sfaturi pentru conformitate",
+          "Resurse utile",
+          "Instrumente de gestionare a datelor"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea Regulamentului General privind Protecția Datelor (GDPR)",
+      "Cunoașterea drepturilor persoanelor vizate",
+      "Identificarea obligațiilor operatorilor de date",
+      "Aplicarea procedurilor de securitate și raportare",
+      "Asigurarea conformității cu GDPR conform legislației 2025"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea datelor",
+      "Familiaritate cu legislația privind protecția datelor"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.6,
+    "seo": {
+      "title": "GDPR și Protecția Datelor",
+      "description": "Învață despre GDPR și gestionarea datelor personale conform legislației 2025 cu DocumentIulia.ro.",
+      "keywords": [
+        "GDPR",
+        "protecția datelor",
+        "legislația 2025",
+        "curs business",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "E-commerce și Facturare Electronică",
+    "slug": "e-commerce-si-facturare-electronica",
+    "description": "Acest curs vă va ghida prin procesul de înființare și gestionare a unei afaceri de comerț electronic, precum și prin utilizarea facturării electronice. Veți învăța despre platformele de e-commerce, metodele de plată, gestionarea stocurilor și implementarea facturării electronice. Cursul este destinat antreprenorilor și managerilor care doresc să își dezvolte o afacere online. La finalul cursului, veți avea competențele necesare pentru a gestiona eficient o afacere de e-commerce și a implementa facturarea electronică.",
+    "category": "Business & Operațiuni",
+    "level": "Intermediar",
+    "duration": 15,
+    "price": 549,
+    "modules": [
+      {
+        "title": "Introducere în E-commerce",
+        "duration": "2h",
+        "lessons": [
+          "Ce este e-commerce?",
+          "Avantajele și dezavantajele e-commerce",
+          "Tipuri de afaceri e-commerce"
+        ]
+      },
+      {
+        "title": "Platforme de E-commerce",
+        "duration": "2h 30m",
+        "lessons": [
+          "Alegerea platformei potrivite",
+          "Configurarea platformei",
+          "Integrarea cu alte sisteme"
+        ]
+      },
+      {
+        "title": "Metode de Plată și Securitate",
+        "duration": "2h 30m",
+        "lessons": [
+          "Metode de plată online",
+          "Securitatea tranzacțiilor",
+          "Proceduri de verificare"
+        ]
+      },
+      {
+        "title": "Gestionarea Stocurilor",
+        "duration": "2h 30m",
+        "lessons": [
+          "Gestionarea stocurilor",
+          "Inventarierea",
+          "Raportarea stocurilor"
+        ]
+      },
+      {
+        "title": "Facturare Electronică",
+        "duration": "2h 30m",
+        "lessons": [
+          "Implementarea facturării electronice",
+          "Formatul facturilor electronice",
+          "Gestionarea facturilor electronice"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h 30m",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea conceptului de e-commerce",
+      "Alegerea și configurarea unei platforme de e-commerce",
+      "Implementarea metodelor de plată și asigurarea securității",
+      "Gestionarea eficientă a stocurilor",
+      "Implementarea și gestionarea facturării electronice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea afacerilor",
+      "Familiaritate cu tehnologia digitală"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.7,
+    "seo": {
+      "title": "E-commerce și Facturare",
+      "description": "Învață să gestionezi o afacere de e-commerce și să implementezi facturarea electronică cu DocumentIulia.ro.",
+      "keywords": [
+        "e-commerce",
+        "facturare electronică",
+        "curs business",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Managementul Stocurilor și Inventar",
+    "slug": "managementul-stocurilor-si-inventar",
+    "description": "Acest curs vă va învăța cum să gestionați eficient stocurile și să efectuați inventarul, conform celor mai bune practici din 2025. Veți afla despre metodele de gestionare a stocurilor, procedurile de inventariere, precum și despre utilizarea tehnologiei pentru a optimiza aceste procese. Cursul este destinat managerilor de stocuri, contabililor și antreprenorilor care doresc să își îmbunătățească abilitățile în gestionarea stocurilor. La finalul cursului, veți avea competențele necesare pentru a gestiona eficient stocurile și a efectua inventarul cu succes.",
+    "category": "Business & Operațiuni",
+    "level": "Intermediar",
+    "duration": 12,
+    "price": 449,
+    "modules": [
+      {
+        "title": "Introducere în Managementul Stocurilor",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce este managementul stocurilor?",
+          "Importanța gestionării stocurilor",
+          "Tendințele din 2025"
+        ]
+      },
+      {
+        "title": "Metode de Gestionare a Stocurilor",
+        "duration": "2h",
+        "lessons": [
+          "Metoda FIFO",
+          "Metoda LIFO",
+          "Metoda ABC"
+        ]
+      },
+      {
+        "title": "Proceduri de Inventariere",
+        "duration": "2h",
+        "lessons": [
+          "Pregătirea inventarului",
+          "Efectuarea inventarului",
+          "Raportarea inventarului"
+        ]
+      },
+      {
+        "title": "Utilizarea Tehnologiei în Gestionarea Stocurilor",
+        "duration": "2h",
+        "lessons": [
+          "Sisteme de gestionare a stocurilor",
+          "Tehnologia RFID",
+          "Automatizarea proceselor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      },
+      {
+        "title": "Optimizarea Stocurilor",
+        "duration": "2h",
+        "lessons": [
+          "Strategii de optimizare",
+          "Reducerea costurilor",
+          "Îmbunătățirea eficienței"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea importanței managementului stocurilor",
+      "Aplicarea metodelor de gestionare a stocurilor",
+      "Efectuarea corectă a inventarului",
+      "Utilizarea tehnologiei pentru a optimiza gestionarea stocurilor",
+      "Optimizarea stocurilor pentru a reduce costurile și a îmbunătăți eficiența"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în gestionarea afacerilor",
+      "Familiaritate cu gestionarea stocurilor"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.6,
+    "seo": {
+      "title": "Managementul Stocurilor",
+      "description": "Învață să gestionezi eficient stocurile și să efectuezi inventarul cu DocumentIulia.ro. Curs practic.",
+      "keywords": [
+        "managementul stocurilor",
+        "inventar",
+        "curs business",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Automatizare Procese Contabile cu AI",
+    "slug": "automatizare-procese-contabile-cu-ai",
+    "description": "Acest curs vă va ghida prin utilizarea inteligenței artificiale (AI) pentru automatizarea proceselor contabile. Veți învăța despre tehnologiile AI disponibile, cum să implementați și să utilizați aceste soluții, precum și despre beneficiile și provocările automatizării. Cursul este destinat contabililor și managerilor financiari care doresc să își îmbunătățească eficiența operațională. La finalul cursului, veți avea competențele necesare pentru a automatiza procesele contabile cu succes.",
+    "category": "Tehnologie & Automatizare",
+    "level": "Avansat",
+    "duration": 15,
+    "price": 699,
+    "modules": [
+      {
+        "title": "Introducere în Automatizarea Contabilă cu AI",
+        "duration": "2h",
+        "lessons": [
+          "Ce este automatizarea contabilă?",
+          "Beneficiile automatizării cu AI",
+          "Tehnologii AI disponibile"
+        ]
+      },
+      {
+        "title": "Implementarea Soluțiilor AI",
+        "duration": "3h",
+        "lessons": [
+          "Alegerea soluției potrivite",
+          "Configurarea sistemului",
+          "Integrarea cu alte sisteme"
+        ]
+      },
+      {
+        "title": "Utilizarea AI în Contabilitate",
+        "duration": "3h",
+        "lessons": [
+          "Automatizarea înregistrării tranzacțiilor",
+          "Automatizarea raportărilor financiare",
+          "Analiza datelor cu AI"
+        ]
+      },
+      {
+        "title": "Beneficii și Provocări",
+        "duration": "2h 30m",
+        "lessons": [
+          "Beneficiile automatizării",
+          "Provocările automatizării",
+          "Strategii de depășire a provocărilor"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "3h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      },
+      {
+        "title": "Viitorul Automatizării Contabile",
+        "duration": "1h 30m",
+        "lessons": [
+          "Tendințe în automatizare",
+          "Evoluția tehnologiei AI",
+          "Pregătirea pentru viitor"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea automatizării contabile cu ajutorul AI",
+      "Implementarea soluțiilor AI pentru automatizarea contabilă",
+      "Utilizarea AI pentru înregistrarea tranzacțiilor și raportările financiare",
+      "Identificarea beneficiilor și provocărilor automatizării",
+      "Pregătirea pentru viitorul automatizării contabile"
+    ],
+    "prerequisites": [
+      "Cunoștințe avansate în contabilitate",
+      "Familiaritate cu tehnologia digitală și AI"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 150,
+    "rating": 4.8,
+    "seo": {
+      "title": "Automatizare Contabilă cu AI",
+      "description": "Învață să automatizezi procesele contabile cu inteligența artificială cu DocumentIulia.ro. Curs avansat.",
+      "keywords": [
+        "automatizare contabilă",
+        "AI",
+        "inteligență artificială",
+        "curs tehnologie",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "OCR pentru Facturi - Digitalizare Rapidă",
+    "slug": "ocr-pentru-facturi-digitalizare-rapida",
+    "description": "Acest curs vă va învăța cum să utilizați tehnologia Optical Character Recognition (OCR) pentru digitalizarea rapidă a facturilor. Veți afla despre funcționarea OCR, cum să implementați și să utilizați această tehnologie, precum și despre beneficiile și provocările digitalizării facturilor. Cursul este destinat contabililor, managerilor financiari și antreprenorilor care doresc să își îmbunătățească eficiența operațională. La finalul cursului, veți avea competențele necesare pentru a digitaliza facturile cu succes.",
+    "category": "Tehnologie & Automatizare",
+    "level": "Intermediar",
+    "duration": 10,
+    "price": 399,
+    "modules": [
+      {
+        "title": "Introducere în OCR pentru Facturi",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce este OCR?",
+          "Beneficiile OCR",
+          "Aplicații ale OCR în contabilitate"
+        ]
+      },
+      {
+        "title": "Funcționarea OCR",
+        "duration": "2h",
+        "lessons": [
+          "Cum funcționează OCR?",
+          "Tehnologii OCR disponibile",
+          "Acuratețea și limitările OCR"
+        ]
+      },
+      {
+        "title": "Implementarea OCR",
+        "duration": "2h",
+        "lessons": [
+          "Alegerea soluției OCR",
+          "Configurarea sistemului",
+          "Integrarea cu alte sisteme"
+        ]
+      },
+      {
+        "title": "Utilizarea OCR pentru Facturi",
+        "duration": "2h",
+        "lessons": [
+          "Digitalizarea facturilor",
+          "Validarea și verificarea datelor",
+          "Gestionarea facturilor digitalizate"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea tehnologiei OCR și a beneficiilor sale",
+      "Cunoașterea funcționării OCR",
+      "Implementarea soluțiilor OCR pentru digitalizarea facturilor",
+      "Utilizarea OCR pentru gestionarea eficientă a facturilor",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în contabilitate",
+      "Familiaritate cu tehnologia digitală"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.7,
+    "seo": {
+      "title": "OCR pentru Facturi",
+      "description": "Învață să digitalizezi rapid facturile cu tehnologia OCR cu DocumentIulia.ro. Curs practic.",
+      "keywords": [
+        "OCR",
+        "facturi",
+        "digitalizare",
+        "curs tehnologie",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Excel Avansat pentru Contabili",
+    "slug": "excel-avansat-pentru-contabili",
+    "description": "Acest curs vă va aprofunda cunoștințele în utilizarea avansată a programului Excel pentru contabili. Veți învăța despre funcții complexe, pivot tables, macro-uri și alte instrumente utile în gestionarea datelor financiare. Cursul este destinat contabililor și managerilor financiari care doresc să își îmbunătățească abilitățile în utilizarea Excel. La finalul cursului, veți avea competențele necesare pentru a gestiona eficient datele financiare cu ajutorul Excel.",
+    "category": "Tehnologie & Automatizare",
+    "level": "Avansat",
+    "duration": 18,
+    "price": 599,
+    "modules": [
+      {
+        "title": "Introducere în Excel Avansat",
+        "duration": "2h",
+        "lessons": [
+          "Importanța Excel în contabilitate",
+          "Funcții de bază și avansate",
+          "Configurarea Excel pentru contabilitate"
+        ]
+      },
+      {
+        "title": "Funcții Complexe",
+        "duration": "3h",
+        "lessons": [
+          "Funcții financiare",
+          "Funcții logice",
+          "Funcții de căutare"
+        ]
+      },
+      {
+        "title": "Pivot Tables și Analize",
+        "duration": "3h",
+        "lessons": [
+          "Crearea pivot tables",
+          "Analiza datelor cu pivot tables",
+          "Raportarea cu pivot tables"
+        ]
+      },
+      {
+        "title": "Macro-uri și Automatizare",
+        "duration": "3h",
+        "lessons": [
+          "Crearea macro-urilor",
+          "Automatizarea proceselor repetitive",
+          "Depanarea macro-urilor"
+        ]
+      },
+      {
+        "title": "Instrumente Avansate",
+        "duration": "3h",
+        "lessons": [
+          "Instrumente de validare a datelor",
+          "Instrumente de protecție a foilor",
+          "Instrumente de analiză avansată"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "3h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      },
+      {
+        "title": "Sfaturi și Resurse",
+        "duration": "1h",
+        "lessons": [
+          "Sfaturi pentru utilizarea eficientă a Excel",
+          "Resurse utile",
+          "Comunități și forumuri Excel"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea importanței Excel în contabilitate",
+      "Utilizarea funcțiilor complexe pentru gestionarea datelor financiare",
+      "Crearea și utilizarea pivot tables pentru analiza datelor",
+      "Automatizarea proceselor repetitive cu macro-uri",
+      "Aplicarea instrumentelor avansate pentru a îmbunătăți eficiența"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în utilizarea Excel",
+      "Familiaritate cu termenii financiari"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 250,
+    "rating": 4.8,
+    "seo": {
+      "title": "Excel Avansat Contabili",
+      "description": "Învață să utilizezi Excel avansat pentru gestionarea datelor financiare cu DocumentIulia.ro. Curs avansat.",
+      "keywords": [
+        "Excel avansat",
+        "contabilitate",
+        "pivot tables",
+        "macro-uri",
+        "curs tehnologie",
+        "DocumentIulia.ro"
+      ]
+    }
+  },
+  {
+    "title": "Integrare SAGA v3.2 - Sincronizare Automată",
+    "slug": "integrare-saga-v3-2-sincronizare-automata",
+    "description": "Acest curs vă va ghida prin procesul de integrare a soluției SAGA v3.2 și de sincronizare automată a datelor. Veți învăța despre funcționalitățile SAGA, cum să configurați și să utilizați această soluție, precum și despre beneficiile și provocările integrării. Cursul este destinat contabililor, managerilor financiari și antreprenorilor care doresc să își îmbunătățească eficiența operațională. La finalul cursului, veți avea competențele necesare pentru a integra și a utiliza SAGA v3.2 cu succes.",
+    "category": "Tehnologie & Automatizare",
+    "level": "Intermediar",
+    "duration": 12,
+    "price": 499,
+    "modules": [
+      {
+        "title": "Introducere în SAGA v3.2",
+        "duration": "1h 30m",
+        "lessons": [
+          "Ce este SAGA v3.2?",
+          "Beneficiile SAGA",
+          "Funcționalități SAGA"
+        ]
+      },
+      {
+        "title": "Configurarea SAGA v3.2",
+        "duration": "2h",
+        "lessons": [
+          "Instalarea SAGA",
+          "Configurarea inițială",
+          "Integrarea cu alte sisteme"
+        ]
+      },
+      {
+        "title": "Utilizarea SAGA v3.2",
+        "duration": "2h",
+        "lessons": [
+          "Înregistrarea tranzacțiilor",
+          "Raportarea financiară",
+          "Gestionarea stocurilor"
+        ]
+      },
+      {
+        "title": "Sincronizare Automată",
+        "duration": "2h",
+        "lessons": [
+          "Configurarea sincronizării automate",
+          "Beneficiile sincronizării",
+          "Provocările sincronizării"
+        ]
+      },
+      {
+        "title": "Cazuri Practice și Exerciții",
+        "duration": "2h",
+        "lessons": [
+          "Studii de caz",
+          "Exerciții practice",
+          "Evaluare finală"
+        ]
+      },
+      {
+        "title": "Sfaturi și Resurse",
+        "duration": "2h",
+        "lessons": [
+          "Sfaturi pentru utilizarea eficientă a SAGA",
+          "Resurse utile",
+          "Suport și comunități SAGA"
+        ]
+      }
+    ],
+    "objectives": [
+      "Înțelegerea funcționalităților SAGA v3.2",
+      "Configurarea corectă a SAGA v3.2",
+      "Utilizarea eficientă a SAGA pentru gestionarea datelor financiare",
+      "Implementarea sincronizării automate a datelor",
+      "Aplicarea cunoștințelor prin studii de caz practice"
+    ],
+    "prerequisites": [
+      "Cunoștințe de bază în contabilitate",
+      "Familiaritate cu tehnologia digitală"
+    ],
+    "instructor": "Echipa DocumentIulia.ro",
+    "students": 200,
+    "rating": 4.7,
+    "seo": {
+      "title": "Integrare SAGA v3.2",
+      "description": "Învață să integrezi și să utilizezi SAGA v3.2 pentru sincronizare automată cu DocumentIulia.ro.",
+      "keywords": [
+        "SAGA v3.2",
+        "integrare",
+        "sincronizare automată",
+        "curs tehnologie",
+        "DocumentIulia.ro"
+      ]
+    }
+  }
+]

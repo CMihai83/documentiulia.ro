@@ -57,7 +57,7 @@ import { AuthModule } from '../auth/auth.module';
     TaxComplianceService,
     MultiCurrencyService,
     EuVatService,
-    EuVatConfigService,
+    // EuVatConfigService, // Temporarily disabled
     ReconciliationService,
     InvoiceAnalyticsService,
     ExchangeRateService,

@@ -353,6 +353,508 @@ Folosește acest mod pentru a te pregăti pentru provocările reale sau pur și 
     isFeatured: false,
     sortOrder: 100,
   },
+
+  // Advanced Romanian Market Scenarios
+  {
+    slug: 'criza-energetica-2025',
+    title: 'Criza Energetică 2025',
+    titleEn: 'Energy Crisis 2025',
+    description: `ALERTĂ: Cea mai mare criză energetică din ultimii 30 de ani lovește România!
+
+**Context:**
+- Prețurile la energie cresc cu 300%
+- Inflația ajunge la 15%
+- Clienții reduc comenzile
+- Furnizorii cer plăți anticipate
+
+**Provocarea ta:**
+- Redu costurile cu energia cu 50%
+- Menține marjele de profit
+- Nu concedia angajați
+- Treci la surse regenerabile
+
+**Obiective:**
+- Energie regenerabilă implementată
+- Costuri reduse cu 40%
+- Profitabilitate menținută
+- Zero concedieri`,
+    descriptionEn: 'Romania faces its biggest energy crisis in 30 years. Adapt your business to survive skyrocketing energy costs.',
+    difficulty: 'SIM_HARD',
+    type: 'SCENARIO_CRISIS_SURVIVAL',
+    initialState: {
+      cash: 80000,
+      revenue: 55000,
+      expenses: 45000,
+      profit: 10000,
+      receivables: 22000,
+      payables: 15000,
+      inventory: 25000,
+      equipment: 60000,
+      loans: 20000,
+      employees: 8,
+      capacity: 120,
+      utilization: 75,
+      quality: 82,
+      marketShare: 3.2,
+      customerCount: 85,
+      reputation: 72,
+      taxOwed: 3200,
+      vatBalance: 4800,
+      penaltiesRisk: 5,
+      auditRisk: 12,
+    },
+    objectives: [
+      { id: 'green_energy', description: 'Energie verde implementată', condition: 'greenEnergy == true', xp: 400 },
+      { id: 'cost_reduction', description: 'Costuri reduse 40%', condition: 'energyCosts < initialEnergyCosts * 0.6', xp: 350 },
+      { id: 'maintain_profit', description: 'Profit > 5000/lună', condition: 'profit >= 5000', xp: 300 },
+      { id: 'no_layoffs', description: 'Zero concedieri', condition: 'employees >= initialEmployees', xp: 250 },
+    ],
+    timeLimit: 9,
+    xpReward: 1300,
+    badgeId: 'badge-sustainability-pioneer',
+    relatedCourseIds: ['sustainability-business'],
+    isActive: true,
+    isFeatured: true,
+    sortOrder: 13,
+  },
+
+  {
+    slug: 'digitalizare-obligatorie',
+    title: 'Digitalizare Obligatoratorie',
+    titleEn: 'Mandatory Digitalization',
+    description: `Legea digitalizării intră în vigoare! Toate firmele trebuie să fie 100% digitale până în 6 luni.
+
+**Cerințe:**
+- Facturare electronică (e-Factura)
+- Sistem de gestiune digital
+- Semnătură electronică
+- Arhivare digitală
+
+**Provocarea:**
+- Buget limitat pentru digitalizare
+- Angajați rezistenți la schimbare
+- Procese actuale ineficiente
+- Termen strâns
+
+**Obiective:**
+- Sistem ERP implementat
+- e-Factura activ
+- Productivitate +30%
+- Costuri administrative -25%`,
+    descriptionEn: 'New Romanian law requires all businesses to go fully digital within 6 months. Transform your operations.',
+    difficulty: 'SIM_NORMAL',
+    type: 'SCENARIO_CHALLENGE',
+    initialState: {
+      cash: 70000,
+      revenue: 48000,
+      expenses: 40000,
+      profit: 8000,
+      receivables: 16000,
+      payables: 12000,
+      inventory: 18000,
+      equipment: 45000,
+      loans: 0,
+      employees: 7,
+      capacity: 110,
+      utilization: 68,
+      quality: 78,
+      marketShare: 2.8,
+      customerCount: 72,
+      reputation: 68,
+      taxOwed: 2400,
+      vatBalance: 3600,
+      penaltiesRisk: 8,
+      auditRisk: 15,
+    },
+    objectives: [
+      { id: 'erp_system', description: 'ERP implementat', condition: 'erpSystem == true', xp: 350 },
+      { id: 'e_invoice', description: 'e-Factura activ', condition: 'eInvoiceActive == true', xp: 300 },
+      { id: 'productivity_boost', description: 'Productivitate +30%', condition: 'productivity >= initialProductivity * 1.3', xp: 350 },
+      { id: 'cost_reduction', description: 'Costuri admin -25%', condition: 'adminCosts < initialAdminCosts * 0.75', xp: 250 },
+    ],
+    timeLimit: 6,
+    xpReward: 1250,
+    badgeId: 'badge-digital-champion',
+    relatedCourseIds: ['digitalizare-afaceri'],
+    isActive: true,
+    isFeatured: true,
+    sortOrder: 14,
+  },
+
+  {
+    slug: 'fonduri-ue-agricultura',
+    title: 'Fonduri UE pentru Agricultură',
+    titleEn: 'EU Funds for Agriculture',
+    description: `AFIR lansează programul "Dezvoltare Rurală 2025" cu fonduri nerambursabile!
+
+**Oportunități:**
+- Subvenții până la 500.000€
+- Investiții în echipamente moderne
+- Dezvoltare durabilă
+- Creșterea competitivității
+
+**Provocarea:**
+- Aplicație complexă (200+ pagini)
+- Criterii stricte de eligibilitate
+- Verificări ample post-aprobare
+- Implementare în termen de 2 ani
+
+**Obiective:**
+- Aplicație completată și depusă
+- Finanțare aprobată
+- Proiect implementat cu succes
+- Raportare conformă`,
+    descriptionEn: 'Apply for substantial EU agricultural development funds. Master the complex application and implementation process.',
+    difficulty: 'SIM_NORMAL',
+    type: 'SCENARIO_CHALLENGE',
+    initialState: {
+      cash: 60000,
+      revenue: 42000,
+      expenses: 38000,
+      profit: 4000,
+      receivables: 14000,
+      payables: 10000,
+      inventory: 12000,
+      equipment: 80000,
+      loans: 15000,
+      employees: 6,
+      capacity: 95,
+      utilization: 72,
+      quality: 75,
+      marketShare: 1.9,
+      customerCount: 58,
+      reputation: 65,
+      taxOwed: 1800,
+      vatBalance: 2800,
+      penaltiesRisk: 3,
+      auditRisk: 8,
+    },
+    objectives: [
+      { id: 'application_complete', description: 'Aplicație depusă', condition: 'applicationSubmitted == true', xp: 300 },
+      { id: 'funding_approved', description: 'Finanțare aprobată', condition: 'fundingApproved == true', xp: 400 },
+      { id: 'project_implemented', description: 'Proiect implementat', condition: 'projectCompleted == true', xp: 350 },
+      { id: 'reporting_compliant', description: 'Raportare conformă', condition: 'reportingComplete == true', xp: 250 },
+    ],
+    timeLimit: 18,
+    xpReward: 1300,
+    badgeId: 'badge-eu-funds-expert',
+    relatedCourseIds: ['fonduri-europene'],
+    isActive: true,
+    isFeatured: false,
+    sortOrder: 15,
+  },
+
+  {
+    slug: 'pandemia-sanatate',
+    title: 'Management în Pandemie',
+    titleEn: 'Pandemic Management',
+    description: `ALERTĂ SANITARĂ: Pandemie globală! Economia se închide, clienții dispar.
+
+**Criza:**
+- 80% din clienți își suspendă comenzile
+- Lucru de acasă obligatoriu
+- Costuri sanitare cresc
+- Supply chain întrerupt
+
+**Provocarea:**
+- Menține 50% din venituri
+- Protejează angajații
+- Treci la digital complet
+- Supraviețuiește 12 luni
+
+**Obiective:**
+- Venituri menținute > 50%
+- Zero îmbolnăviri la muncă
+- Digitalizare completă
+- Profit pozitiv în Q4`,
+    descriptionEn: 'Global pandemic hits! Adapt your business to remote work, supply chain disruptions, and changing customer behavior.',
+    difficulty: 'SIM_EXPERT',
+    type: 'SCENARIO_CRISIS_SURVIVAL',
+    initialState: {
+      cash: 120000,
+      revenue: 65000,
+      expenses: 52000,
+      profit: 13000,
+      receivables: 28000,
+      payables: 18000,
+      inventory: 35000,
+      equipment: 75000,
+      loans: 0,
+      employees: 12,
+      capacity: 140,
+      utilization: 78,
+      quality: 85,
+      marketShare: 4.1,
+      customerCount: 110,
+      reputation: 78,
+      taxOwed: 3900,
+      vatBalance: 5800,
+      penaltiesRisk: 2,
+      auditRisk: 6,
+    },
+    objectives: [
+      { id: 'revenue_maintained', description: 'Venituri > 50%', condition: 'revenue >= initialRevenue * 0.5', xp: 400 },
+      { id: 'employee_safety', description: 'Siguranța angajaților', condition: 'employeeSafetyScore >= 95', xp: 350 },
+      { id: 'digital_transformation', description: 'Digitalizare completă', condition: 'digitalReadiness == 100', xp: 400 },
+      { id: 'profit_recovery', description: 'Profit pozitiv Q4', condition: 'quarterlyProfit > 0', xp: 350 },
+    ],
+    timeLimit: 12,
+    xpReward: 1500,
+    badgeId: 'badge-crisis-manager',
+    relatedCourseIds: ['managementul-productiei'],
+    isActive: true,
+    isFeatured: true,
+    sortOrder: 16,
+  },
+
+  {
+    slug: 'expansiune-internationala',
+    title: 'Expansiune Internațională',
+    titleEn: 'International Expansion',
+    description: `Primul contract internațional! Export în Germania valorează 200.000€.
+
+**Provocări:**
+- Incoterms și logistică internațională
+- Vamă și accize
+- Plăți în valută străină
+- Certificate de origine
+- Standarde europene de calitate
+
+**Obiective:**
+- Contract semnat și onorat
+- Marje de profit menținute
+- Conformitate vamală perfectă
+- Poziționare pentru export viitor
+
+**Bonus:** Dacă reușești, deschizi piața europeană!`,
+    descriptionEn: 'Your first international contract! Export to Germany worth €200,000. Master international trade, customs, and foreign currency.',
+    difficulty: 'SIM_HARD',
+    type: 'SCENARIO_CHALLENGE',
+    initialState: {
+      cash: 90000,
+      revenue: 58000,
+      expenses: 48000,
+      profit: 10000,
+      receivables: 24000,
+      payables: 16000,
+      inventory: 22000,
+      equipment: 55000,
+      loans: 0,
+      employees: 9,
+      capacity: 125,
+      utilization: 80,
+      quality: 88,
+      marketShare: 3.5,
+      customerCount: 95,
+      reputation: 75,
+      taxOwed: 3000,
+      vatBalance: 4500,
+      penaltiesRisk: 4,
+      auditRisk: 10,
+    },
+    objectives: [
+      { id: 'contract_signed', description: 'Contract semnat', condition: 'internationalContract == true', xp: 350 },
+      { id: 'export_delivered', description: 'Export livrat', condition: 'exportDelivered == true', xp: 400 },
+      { id: 'customs_compliant', description: 'Conformitate vamală', condition: 'customsCompliant == true', xp: 300 },
+      { id: 'profit_maintained', description: 'Profit menținut', condition: 'profit >= initialProfit * 0.9', xp: 300 },
+    ],
+    timeLimit: 8,
+    xpReward: 1350,
+    badgeId: 'badge-international-trader',
+    relatedCourseIds: ['export-romania-2025'],
+    isActive: true,
+    isFeatured: true,
+    sortOrder: 17,
+  },
+
+  {
+    slug: 'achizitie-concurent',
+    title: 'Achiziție Concurent',
+    titleEn: 'Competitor Acquisition',
+    description: `Oportunitate unică: Concurentul principal vrea să vândă! Preț: 800.000 RON.
+
+**Analiza concurentului:**
+- Cota de piață: 8%
+- 45 angajați
+- Tehnologie superioară
+- Probleme financiare
+
+**Provocarea:**
+- Due diligence complet
+- Finanțare achiziție
+- Integrare echipelor
+- Sinergii operaționale
+
+**Obiective:**
+- Achiziție finalizată
+- Integrare reușită
+- Costuri optimizate
+- Cota de piață mărită`,
+    descriptionEn: 'Your main competitor is for sale! Acquire them to double your market share, but manage the integration challenges.',
+    difficulty: 'SIM_EXPERT',
+    type: 'SCENARIO_CHALLENGE',
+    initialState: {
+      cash: 150000,
+      revenue: 75000,
+      expenses: 60000,
+      profit: 15000,
+      receivables: 32000,
+      payables: 24000,
+      inventory: 28000,
+      equipment: 90000,
+      loans: 0,
+      employees: 15,
+      capacity: 160,
+      utilization: 82,
+      quality: 87,
+      marketShare: 5.2,
+      customerCount: 125,
+      reputation: 80,
+      taxOwed: 4500,
+      vatBalance: 6800,
+      penaltiesRisk: 2,
+      auditRisk: 7,
+    },
+    objectives: [
+      { id: 'due_diligence', description: 'Due diligence complet', condition: 'dueDiligenceComplete == true', xp: 400 },
+      { id: 'acquisition_complete', description: 'Achiziție finalizată', condition: 'acquisitionComplete == true', xp: 500 },
+      { id: 'integration_success', description: 'Integrare reușită', condition: 'integrationScore >= 85', xp: 450 },
+      { id: 'synergies_realized', description: 'Sinergii realizate', condition: 'costSynergies >= 20000', xp: 350 },
+    ],
+    timeLimit: 15,
+    xpReward: 1700,
+    badgeId: 'badge-maestro',
+    relatedCourseIds: ['strategie-afaceri'],
+    isActive: true,
+    isFeatured: false,
+    sortOrder: 18,
+  },
+
+  {
+    slug: 'inovatii-tehnologice',
+    title: 'Revoluție Tehnologică',
+    titleEn: 'Technology Revolution',
+    description: `IA generativă transformă industria! Concurenții investesc masiv în tech.
+
+**Trenduri:**
+- ChatGPT pentru customer service
+- RPA pentru procese administrative
+- IoT pentru supply chain
+- Blockchain pentru trasabilitate
+
+**Provocarea:**
+- Buget R&D limitat
+- Echipă tehnică insuficientă
+- Rezistență la schimbare
+- ROI incert
+
+**Obiective:**
+- Sistem IA implementat
+- Productivitate +50%
+- Costuri -30%
+- Leadership tehnologic`,
+    descriptionEn: 'AI revolution hits your industry! Invest in cutting-edge technology or risk being left behind.',
+    difficulty: 'SIM_HARD',
+    type: 'SCENARIO_CHALLENGE',
+    initialState: {
+      cash: 100000,
+      revenue: 62000,
+      expenses: 51000,
+      profit: 11000,
+      receivables: 26000,
+      payables: 17000,
+      inventory: 20000,
+      equipment: 65000,
+      loans: 0,
+      employees: 10,
+      capacity: 130,
+      utilization: 76,
+      quality: 83,
+      marketShare: 3.8,
+      customerCount: 98,
+      reputation: 74,
+      taxOwed: 3300,
+      vatBalance: 4900,
+      penaltiesRisk: 3,
+      auditRisk: 9,
+    },
+    objectives: [
+      { id: 'ai_system', description: 'Sistem IA implementat', condition: 'aiSystemActive == true', xp: 400 },
+      { id: 'productivity_boost', description: 'Productivitate +50%', condition: 'productivity >= initialProductivity * 1.5', xp: 450 },
+      { id: 'cost_reduction', description: 'Costuri -30%', condition: 'costs < initialCosts * 0.7', xp: 400 },
+      { id: 'innovation_leadership', description: 'Leadership inovativ', condition: 'innovationScore >= 90', xp: 350 },
+    ],
+    timeLimit: 10,
+    xpReward: 1600,
+    badgeId: 'badge-innovation-leader',
+    relatedCourseIds: ['digitalizare-afaceri'],
+    isActive: true,
+    isFeatured: true,
+    sortOrder: 19,
+  },
+
+  {
+    slug: 'schimbari-climaterice',
+    title: 'Schimbări Climaterice',
+    titleEn: 'Climate Change Impact',
+    description: `Evenimente meteo extreme lovesc România! Inundații, secetă, furtuni.
+
+**Impacturi:**
+- Supply chain întrerupt
+- Costuri transport cresc 200%
+- Asigurări mai scumpe
+- Cerere schimbată (produse eco)
+
+**Provocarea:**
+- Reziliență operațională
+- Supply chain alternativ
+- Produse sustenabile
+- Management riscuri
+
+**Obiective:**
+- Continuity plan activ
+- Supply chain rezilient
+- Produse eco lansate
+- Riscuri reduse 80%`,
+    descriptionEn: 'Extreme weather events disrupt your operations. Build climate resilience and adapt to changing market demands.',
+    difficulty: 'SIM_NORMAL',
+    type: 'SCENARIO_CHALLENGE',
+    initialState: {
+      cash: 85000,
+      revenue: 53000,
+      expenses: 44000,
+      profit: 9000,
+      receivables: 20000,
+      payables: 14000,
+      inventory: 18000,
+      equipment: 58000,
+      loans: 10000,
+      employees: 8,
+      capacity: 115,
+      utilization: 74,
+      quality: 80,
+      marketShare: 3.1,
+      customerCount: 78,
+      reputation: 71,
+      taxOwed: 2700,
+      vatBalance: 4000,
+      penaltiesRisk: 4,
+      auditRisk: 11,
+    },
+    objectives: [
+      { id: 'continuity_plan', description: 'Plan continuitate activ', condition: 'continuityPlanActive == true', xp: 350 },
+      { id: 'supply_chain_backup', description: 'Supply chain alternativ', condition: 'backupSupplyChain == true', xp: 400 },
+      { id: 'eco_products', description: 'Produse eco lansate', condition: 'ecoProductsLaunched == true', xp: 350 },
+      { id: 'risk_reduction', description: 'Riscuri reduse 80%', condition: 'climateRisk < initialRisk * 0.2', xp: 300 },
+    ],
+    timeLimit: 12,
+    xpReward: 1400,
+    badgeId: 'badge-climate-resilient',
+    relatedCourseIds: ['sustainability-business'],
+    isActive: true,
+    isFeatured: false,
+    sortOrder: 20,
+  },
 ];
 
 async function seedSimulationScenarios() {
@@ -367,7 +869,12 @@ async function seedSimulationScenarios() {
     });
 
     if (existing) {
-      console.log(`  ⏭️  Skipping existing: ${scenario.title}`);
+      // Force update isActive to true for all existing scenarios
+      await prisma.simulationScenario.update({
+        where: { slug: scenario.slug },
+        data: { isActive: true },
+      });
+      console.log(`  ✅ Ensured active: ${scenario.title}`);
       skipped++;
       continue;
     }

@@ -7,112 +7,83 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ===== MULTI-TENANT SUPPORT =====
-
-// Organization - represents a company/tenant
 model Organization {
-  id              String              @id @default(cuid())
-  name            String
-  slug            String              @unique  // URL-friendly identifier
-  cui             String?             @unique  // Romanian company ID (CUI/CIF)
-  regCom          String?             // Trade registry number (J40/1234/2024)
-
-  // Company details
-  address         String?
-  city            String?
-  county          String?
-  country         String              @default("Romania")
-  postalCode      String?
-  phone           String?
-  email           String?
-  website         String?
-
-  // Banking info
-  bankName        String?
-  bankAccount     String?             // IBAN
-
-  // Subscription & limits
-  tier            Tier                @default(FREE)
-  maxUsers        Int                 @default(1)
-  maxInvoices     Int                 @default(10)  // Per month
-  maxDocuments    Int                 @default(50)  // Per month
-
-  // Settings
-  defaultVatRate  Decimal             @default(21) @db.Decimal(5, 2)
-  defaultCurrency String              @default("RON")
-  invoicePrefix   String?             // e.g., "FV" for "Factura Vânzare"
-  invoiceCounter  Int                 @default(0)
-
-  // Status
-  isActive        Boolean             @default(true)
-  activatedAt     DateTime?
-  deactivatedAt   DateTime?
-
-  // ANAF integration
-  spvConnected    Boolean             @default(false)
-
-  // SAGA integration
-  sagaConnected       Boolean         @default(false)
-  sagaAccessToken     String?         // Encrypted OAuth access token
-  sagaRefreshToken    String?         // Encrypted OAuth refresh token
-  sagaTokenExpiresAt  DateTime?       // Token expiration time
-  sagaTokenScope      String?         // OAuth scopes
-
-  // Flexible settings (JSON) for AI add-ons, preferences, etc.
-  settings            Json?           @default("{}")
-
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @updatedAt
-
-  // Relations
-  members         OrganizationMember[]
-  invitations     OrganizationInvitation[]
-  documents       Document[]
-  invoices        Invoice[]
-  partners        Partner[]
-  vatReports      VATReport[]
-  saftReports     SAFTReport[]
-  employees       Employee[]
-  ocrTemplates    OCRTemplate[]
-  spvTokens       SpvToken[]
-  spvMessages     SpvMessage[]
-  spvSubmissions  SpvSubmission[]
-  auditLogs       AuditLog[]
-  integrations    OrganizationIntegration[]
-  recurringInvoices RecurringInvoice[]
-  products        Product[]
-  contracts       Contract[]
+  id                 String                    @id @default(cuid())
+  name               String
+  slug               String                    @unique
+  cui                String?                   @unique
+  regCom             String?
+  address            String?
+  city               String?
+  county             String?
+  country            String                    @default("Romania")
+  postalCode         String?
+  phone              String?
+  email              String?
+  website            String?
+  bankName           String?
+  bankAccount        String?
+  tier               Tier                      @default(FREE)
+  maxUsers           Int                       @default(1)
+  maxInvoices        Int                       @default(10)
+  maxDocuments       Int                       @default(50)
+  defaultVatRate     Decimal                   @default(21) @db.Decimal(5, 2)
+  defaultCurrency    String                    @default("RON")
+  invoicePrefix      String?
+  invoiceCounter     Int                       @default(0)
+  isActive           Boolean                   @default(true)
+  activatedAt        DateTime?
+  deactivatedAt      DateTime?
+  spvConnected       Boolean                   @default(false)
+  sagaConnected      Boolean                   @default(false)
+  sagaAccessToken    String?
+  sagaRefreshToken   String?
+  sagaTokenExpiresAt DateTime?
+  sagaTokenScope     String?
+  settings           Json?                     @default("{}")
+  createdAt          DateTime                  @default(now())
+  updatedAt          DateTime                  @updatedAt
+  auditLogs          AuditLog[]
+  contracts          Contract[]
+  documents          Document[]
+  employees          Employee[]
+  invoices           Invoice[]
+  ocrTemplates       OCRTemplate[]
+  integrations       OrganizationIntegration[]
+  invitations        OrganizationInvitation[]
+  members            OrganizationMember[]
+  partners           Partner[]
+  products           Product[]
+  recurringInvoices  RecurringInvoice[]
+  saftReports        SAFTReport[]
+  spvMessages        SpvMessage[]
+  spvSubmissions     SpvSubmission[]
+  spvTokens          SpvToken[]
+  vatReports         VATReport[]
 
   @@index([slug])
   @@index([cui])
   @@index([isActive])
 }
 
-// OrganizationMember - links users to organizations with roles
 model OrganizationMember {
-  id              String              @id @default(cuid())
-  userId          String
-  user            User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  organizationId  String
-  organization    Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-
-  role            OrgRole             @default(MEMBER)
-
-  // Permissions (can override role defaults)
-  canManageUsers  Boolean             @default(false)
-  canManageInvoices Boolean           @default(true)
-  canManageDocuments Boolean          @default(true)
-  canViewReports  Boolean             @default(true)
-  canSubmitAnaf   Boolean             @default(false)
-  canExportData   Boolean             @default(true)
-
-  // Status
-  isActive        Boolean             @default(true)
-  joinedAt        DateTime            @default(now())
-  invitedBy       String?
-
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @updatedAt
+  id                 String       @id @default(cuid())
+  userId             String
+  organizationId     String
+  role               OrgRole      @default(MEMBER)
+  canManageUsers     Boolean      @default(false)
+  canManageInvoices  Boolean      @default(true)
+  canManageDocuments Boolean      @default(true)
+  canViewReports     Boolean      @default(true)
+  canSubmitAnaf      Boolean      @default(false)
+  canExportData      Boolean      @default(true)
+  isActive           Boolean      @default(true)
+  joinedAt           DateTime     @default(now())
+  invitedBy          String?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  organization       Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user               User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, organizationId])
   @@index([userId])
@@ -120,35 +91,2080 @@ model OrganizationMember {
   @@index([role])
 }
 
-// Organization invitation for new members
 model OrganizationInvitation {
-  id              String              @id @default(cuid())
-  organizationId  String
-  organization    Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-
-  email           String
-  role            OrgRole             @default(MEMBER)
-  token           String              @unique @default(cuid())
-
-  invitedBy       String              // User ID who sent invitation
-  expiresAt       DateTime
-
-  status          InvitationStatus    @default(PENDING)
-  acceptedAt      DateTime?
-
-  createdAt       DateTime            @default(now())
+  id             String           @id @default(cuid())
+  organizationId String
+  email          String
+  role           OrgRole          @default(MEMBER)
+  token          String           @unique @default(cuid())
+  invitedBy      String
+  expiresAt      DateTime
+  status         InvitationStatus @default(PENDING)
+  acceptedAt     DateTime?
+  createdAt      DateTime         @default(now())
+  organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@unique([organizationId, email])
   @@index([token])
   @@index([status])
 }
 
+model User {
+  id                      String                @id @default(cuid())
+  clerkId                 String?               @unique
+  email                   String                @unique
+  name                    String?
+  company                 String?
+  cui                     String?
+  tier                    Tier                  @default(FREE)
+  language                String                @default("ro")
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+  password                String?
+  role                    UserRole              @default(USER)
+  activeOrganizationId    String?
+  address                 String?
+  emailVerified           Boolean               @default(false)
+  emailVerifiedAt         DateTime?
+  mfaBackupCodes          String[]
+  mfaEnabled              Boolean               @default(false)
+  mfaEnabledAt            DateTime?
+  mfaSecret               String?
+  notificationPreferences Json                  @default("{\"email\": {\"systemAlerts\": true, \"overdueAlerts\": true, \"weeklyReports\": true, \"invoiceReminders\": true, \"complianceDeadlines\": true}}")
+  aiQueries               AIQuery[]
+  auditLogs               AuditLog[]
+  contracts               Contract[]
+  dsrRequests             DSRRequest[]
+  dashboardPreferences    DashboardPreferences?
+  documents               Document[]
+  employees               Employee[]
+  invoices                Invoice[]
+  organizationMemberships OrganizationMember[]
+  pfaRegistrations        PfaRegistration[]
+  products                Product[]
+  saftReports             SAFTReport[]
+  srlRegistrations        SrlRegistration[]
+  syncLogs                SyncLog[]
+  vatReports              VATReport[]
+  vatD300Declarations     VatD300Declaration[]
+  vatD394Declarations     VatD394Declaration[]
+
+  @@index([clerkId])
+  @@index([email])
+  @@index([activeOrganizationId])
+}
+
+model DashboardPreferences {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  enabledModules    Json     @default("[\"dashboard\", \"analytics\", \"invoices\", \"finance\", \"crm\", \"hr\"]")
+  moduleOrder       Json     @default("[]")
+  collapsedSections Json     @default("[]")
+  sidebarCollapsed  Boolean  @default(false)
+  compactMode       Boolean  @default(false)
+  darkMode          Boolean  @default(false)
+  dashboardWidgets  Json     @default("[\"overview\", \"cashFlow\", \"vatChart\", \"recentInvoices\", \"alerts\"]")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Document {
+  id              String           @id @default(cuid())
+  userId          String
+  filename        String
+  fileUrl         String
+  fileType        String
+  fileSize        Int
+  status          DocStatus        @default(PENDING)
+  ocrData         Json?
+  extractedText   String?
+  confidence      Float?
+  createdAt       DateTime         @default(now())
+  processedAt     DateTime?
+  organizationId  String?
+  contract        Contract?
+  organization    Organization?    @relation(fields: [organizationId], references: [id])
+  user            User             @relation(fields: [userId], references: [id])
+  extractedFields ExtractedField[]
+  invoice         Invoice?
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([status])
+}
+
+model Invoice {
+  id                 String            @id @default(cuid())
+  userId             String
+  documentId         String?           @unique
+  invoiceNumber      String
+  invoiceDate        DateTime
+  dueDate            DateTime?
+  type               InvoiceType       @default(RECEIVED)
+  status             InvoiceStatus     @default(DRAFT)
+  partnerName        String
+  partnerCui         String?
+  partnerAddress     String?
+  netAmount          Decimal           @db.Decimal(12, 2)
+  vatRate            Decimal           @db.Decimal(5, 2)
+  vatAmount          Decimal           @db.Decimal(12, 2)
+  grossAmount        Decimal           @db.Decimal(12, 2)
+  currency           String            @default("RON")
+  efacturaId         String?
+  efacturaStatus     String?
+  spvSubmitted       Boolean           @default(false)
+  spvSubmittedAt     DateTime?
+  sagaSynced         Boolean           @default(false)
+  sagaId             String?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  baseCurrency       String            @default("RON")
+  baseGrossAmount    Decimal?          @db.Decimal(12, 2)
+  baseNetAmount      Decimal?          @db.Decimal(12, 2)
+  baseVatAmount      Decimal?          @db.Decimal(12, 2)
+  exchangeRate       Decimal?          @db.Decimal(12, 6)
+  externalRef        String?
+  isRecurring        Boolean           @default(false)
+  metadata           Json?
+  notes              String?
+  organizationId     String?
+  paidAmount         Decimal           @default(0) @db.Decimal(12, 2)
+  paidAt             DateTime?
+  partnerId          String?
+  paymentStatus      PaymentStatus     @default(UNPAID)
+  recurringInvoiceId String?
+  document           Document?         @relation(fields: [documentId], references: [id])
+  organization       Organization?     @relation(fields: [organizationId], references: [id])
+  partner            Partner?          @relation(fields: [partnerId], references: [id])
+  recurringInvoice   RecurringInvoice? @relation("RecurringInvoiceInvoices", fields: [recurringInvoiceId], references: [id])
+  user               User              @relation(fields: [userId], references: [id])
+  items              InvoiceItem[]
+  payments           Payment[]
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([invoiceDate])
+  @@index([type])
+  @@index([paymentStatus])
+  @@index([userId, type, invoiceDate])
+  @@index([userId, invoiceDate, type])
+  @@index([userId, type, partnerName])
+  @@index([userId, paymentStatus, invoiceDate])
+  @@index([currency, userId, invoiceDate])
+}
+
+model Payment {
+  id          String              @id @default(cuid())
+  invoiceId   String
+  amount      Decimal             @db.Decimal(12, 2)
+  currency    String              @default("RON")
+  paymentDate DateTime            @default(now())
+  method      PaymentMethod
+  reference   String?
+  description String?
+  bankName    String?
+  bankAccount String?
+  status      PaymentRecordStatus @default(COMPLETED)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  invoice     Invoice             @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceId])
+  @@index([paymentDate])
+  @@index([method])
+  @@index([paymentDate, invoiceId])
+  @@index([status, paymentDate])
+}
+
+model VATReport {
+  id             String        @id @default(cuid())
+  userId         String
+  period         String
+  vatCollected   Decimal       @db.Decimal(12, 2)
+  vatDeductible  Decimal       @db.Decimal(12, 2)
+  vatPayable     Decimal       @db.Decimal(12, 2)
+  vatRate        Decimal       @default(21) @db.Decimal(5, 2)
+  status         ReportStatus  @default(DRAFT)
+  submittedAt    DateTime?
+  anafRef        String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  user           User          @relation(fields: [userId], references: [id])
+
+  @@unique([userId, period])
+  @@index([userId])
+  @@index([organizationId])
+  @@index([period, userId])
+}
+
+model SAFTReport {
+  id               String        @id @default(cuid())
+  userId           String
+  period           String
+  reportType       String        @default("D406")
+  xmlUrl           String?
+  xmlSize          Int?
+  validated        Boolean       @default(false)
+  validatedAt      DateTime?
+  validationResult Json?
+  status           ReportStatus  @default(DRAFT)
+  submittedAt      DateTime?
+  spvRef           String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  organizationId   String?
+  organization     Organization? @relation(fields: [organizationId], references: [id])
+  user             User          @relation(fields: [userId], references: [id])
+
+  @@unique([userId, period])
+  @@index([userId])
+  @@index([organizationId])
+  @@index([status, period])
+  @@index([userId, status, submittedAt])
+  @@index([organizationId, period, status])
+  @@index([reportType, status])
+}
+
+model VatD300Declaration {
+  id                             String    @id @default(cuid())
+  userId                         String
+  cui                            String
+  companyName                    String
+  month                          Int
+  year                           Int
+  outputTaxableBase19            Decimal   @db.Decimal(14, 2)
+  outputVat19                    Decimal   @db.Decimal(14, 2)
+  outputTaxableBase9             Decimal   @db.Decimal(14, 2)
+  outputVat9                     Decimal   @db.Decimal(14, 2)
+  outputTaxableBase5             Decimal   @db.Decimal(14, 2)
+  outputVat5                     Decimal   @db.Decimal(14, 2)
+  exemptWithDeduction            Decimal   @db.Decimal(14, 2)
+  exemptWithoutDeduction         Decimal   @db.Decimal(14, 2)
+  reverseChargeBase              Decimal   @db.Decimal(14, 2)
+  intraCommunityDeliveries       Decimal   @db.Decimal(14, 2)
+  exports                        Decimal   @db.Decimal(14, 2)
+  inputVat19                     Decimal   @db.Decimal(14, 2)
+  inputVat9                      Decimal   @db.Decimal(14, 2)
+  inputVat5                      Decimal   @db.Decimal(14, 2)
+  importVat                      Decimal   @db.Decimal(14, 2)
+  intraCommunityAcquisitionsBase Decimal   @db.Decimal(14, 2)
+  intraCommunityAcquisitionsVat  Decimal   @db.Decimal(14, 2)
+  reverseChargeInputVat          Decimal   @db.Decimal(14, 2)
+  totalOutputVat                 Decimal   @db.Decimal(14, 2)
+  totalInputVat                  Decimal   @db.Decimal(14, 2)
+  vatPayable                     Decimal   @db.Decimal(14, 2)
+  intraCommunityTransactions     Json?
+  notes                          String?
+  legalRepresentativeName        String?
+  legalRepresentativeCnp         String?
+  status                         String    @default("DRAFT")
+  submittedAt                    DateTime?
+  anafReferenceNumber            String?
+  createdAt                      DateTime  @default(now())
+  updatedAt                      DateTime  @updatedAt
+  user                           User      @relation(fields: [userId], references: [id])
+
+  @@unique([userId, cui, month, year])
+  @@index([userId])
+  @@index([cui])
+  @@index([year, month])
+  @@index([status])
+}
+
+model VatD394Declaration {
+  id                               String    @id @default(cuid())
+  userId                           String
+  cui                              String
+  companyName                      String
+  quarter                          Int
+  year                             Int
+  acquisitions                     Json?
+  totalAcquisitionsBase            Decimal   @db.Decimal(14, 2)
+  totalAcquisitionsVat             Decimal   @db.Decimal(14, 2)
+  deliveries                       Json?
+  totalDeliveriesValue             Decimal   @db.Decimal(14, 2)
+  servicesProvided                 Json?
+  totalServicesProvidedValue       Decimal   @db.Decimal(14, 2)
+  servicesReceived                 Json?
+  totalServicesReceivedBase        Decimal   @db.Decimal(14, 2)
+  totalServicesReceivedVat         Decimal   @db.Decimal(14, 2)
+  triangularSimplification         Decimal?  @db.Decimal(14, 2)
+  triangularDeliveries             Decimal?  @db.Decimal(14, 2)
+  triangularAcquisitions           Decimal?  @db.Decimal(14, 2)
+  acquisitionsCorrectionsBase      Decimal?  @db.Decimal(14, 2)
+  acquisitionsCorrectionsVat       Decimal?  @db.Decimal(14, 2)
+  deliveriesCorrectionsValue       Decimal?  @db.Decimal(14, 2)
+  servicesProvidedCorrectionsValue Decimal?  @db.Decimal(14, 2)
+  servicesReceivedCorrectionsBase  Decimal?  @db.Decimal(14, 2)
+  servicesReceivedCorrectionsVat   Decimal?  @db.Decimal(14, 2)
+  viesValidated                    Boolean   @default(false)
+  viesValidationDate               String?
+  invalidVatIds                    String[]  @default([])
+  monthlyD300Ids                   String[]  @default([])
+  isReconciled                     Boolean   @default(false)
+  notes                            String?
+  isAmendment                      Boolean   @default(false)
+  originalDeclarationNumber        String?
+  legalRepresentativeName          String?
+  legalRepresentativeCnp           String?
+  status                           String    @default("DRAFT")
+  submittedAt                      DateTime?
+  anafReferenceNumber              String?
+  createdAt                        DateTime  @default(now())
+  updatedAt                        DateTime  @updatedAt
+  user                             User      @relation(fields: [userId], references: [id])
+
+  @@unique([userId, cui, quarter, year])
+  @@index([userId])
+  @@index([cui])
+  @@index([year, quarter])
+  @@index([status])
+}
+
+model SrlRegistration {
+  id                  String            @id @default(cuid())
+  userId              String
+  status              String
+  companyType         String
+  companyName         String
+  alternativeName1    String?
+  alternativeName2    String?
+  county              String
+  city                String
+  sector              String?
+  street              String
+  streetNumber        String
+  building            String?
+  staircase           String?
+  floor               String?
+  apartment           String?
+  postalCode          String
+  shareCapital        Decimal           @db.Decimal(14, 2)
+  totalShares         Int
+  shareNominalValue   Decimal           @db.Decimal(14, 2)
+  businessPurpose     String
+  companyDuration     Int               @default(99)
+  contactEmail        String
+  contactPhone        String
+  notes               String?
+  registrationFee     Decimal           @db.Decimal(10, 2)
+  onrcFee             Decimal           @db.Decimal(10, 2)
+  serviceFee          Decimal           @db.Decimal(10, 2)
+  cui                 String?
+  registrationNumber  String?
+  onrcReferenceNumber String?
+  submittedAt         DateTime?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  administrators      Administrator[]
+  activities          CompanyActivity[]
+  shareholders        Shareholder[]
+  user                User              @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+  @@index([cui])
+}
+
+model Shareholder {
+  id             String          @id @default(cuid())
+  registrationId String
+  type           String
+  name           String
+  cnp            String?
+  cui            String?
+  address        String
+  email          String
+  phone          String?
+  shares         Int
+  contribution   Decimal         @db.Decimal(14, 2)
+  percentage     Decimal         @db.Decimal(5, 2)
+  createdAt      DateTime        @default(now())
+  registration   SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model Administrator {
+  id                  String          @id @default(cuid())
+  registrationId      String
+  name                String
+  cnp                 String
+  address             String
+  email               String
+  phone               String?
+  isSoleAdministrator Boolean         @default(false)
+  createdAt           DateTime        @default(now())
+  registration        SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model CompanyActivity {
+  id             String          @id @default(cuid())
+  registrationId String
+  caenCode       String
+  description    String
+  isPrimary      Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  registration   SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+  @@index([caenCode])
+}
+
+model PfaRegistration {
+  id                   String        @id @default(cuid())
+  userId               String
+  status               String
+  fullName             String
+  cnp                  String        @unique
+  idCardNumber         String
+  idCardIssuedBy       String
+  idCardIssuedDate     DateTime
+  county               String
+  city                 String
+  sector               String?
+  street               String
+  streetNumber         String
+  building             String?
+  staircase            String?
+  floor                String?
+  apartment            String?
+  postalCode           String
+  email                String
+  phone                String
+  tradeName            String?
+  activityType         String
+  activityDescription  String
+  businessAddress      String?
+  needsCommercialSpace Boolean       @default(false)
+  expectedEmployees    Int           @default(0)
+  notes                String?
+  registrationFee      Decimal       @db.Decimal(10, 2)
+  anafFee              Decimal       @db.Decimal(10, 2)
+  serviceFee           Decimal       @db.Decimal(10, 2)
+  cui                  String?
+  anafReferenceNumber  String?
+  submittedAt          DateTime?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  activities           PfaActivity[]
+  user                 User          @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+  @@index([cnp])
+  @@index([cui])
+}
+
+model PfaActivity {
+  id             String          @id @default(cuid())
+  registrationId String
+  caenCode       String
+  description    String
+  isPrimary      Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  registration   PfaRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model Employee {
+  id                 String              @id @default(cuid())
+  userId             String
+  firstName          String
+  lastName           String
+  email              String
+  cnp                String?
+  position           String
+  department         String?
+  hireDate           DateTime
+  salary             Decimal             @db.Decimal(10, 2)
+  contractType       String              @default("FULL_TIME")
+  status             EmployeeStatus      @default(ACTIVE)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  organizationId     String?
+  driverRoutes       DeliveryRoute[]     @relation("DriverRoutes")
+  organization       Organization?       @relation(fields: [organizationId], references: [id])
+  user               User                @relation(fields: [userId], references: [id])
+  hrContracts        HRContract[]
+  hrForms            HRForm[]
+  hseIncidents       HSEIncident[]
+  hseSafetyTrainings HSESafetyTraining[]
+  payrolls           Payroll[]
+  timesheets         Timesheet[]
+  assignedVehicles   Vehicle[]           @relation("AssignedVehicle")
+
+  @@index([userId])
+  @@index([organizationId])
+}
+
+model Payroll {
+  id            String        @id @default(cuid())
+  employeeId    String
+  period        String
+  grossSalary   Decimal       @db.Decimal(10, 2)
+  netSalary     Decimal       @db.Decimal(10, 2)
+  taxes         Decimal       @db.Decimal(10, 2)
+  contributions Decimal       @db.Decimal(10, 2)
+  status        PayrollStatus @default(PENDING)
+  paidAt        DateTime?
+  createdAt     DateTime      @default(now())
+  employee      Employee      @relation(fields: [employeeId], references: [id])
+
+  @@unique([employeeId, period])
+  @@index([employeeId])
+}
+
+model Timesheet {
+  id           String          @id @default(cuid())
+  employeeId   String
+  date         DateTime
+  startTime    DateTime
+  endTime      DateTime
+  breakMinutes Int             @default(0)
+  workedHours  Float           @default(0)
+  routeId      String?
+  notes        String?
+  status       TimesheetStatus @default(PENDING)
+  approvedAt   DateTime?
+  approvedBy   String?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  employee     Employee        @relation(fields: [employeeId], references: [id])
+
+  @@index([employeeId])
+  @@index([date])
+  @@index([status])
+}
+
+model Partner {
+  id                String             @id @default(cuid())
+  userId            String
+  organizationId    String?
+  name              String
+  cui               String?
+  regCom            String?
+  address           String?
+  city              String?
+  county            String?
+  country           String             @default("Romania")
+  postalCode        String?
+  email             String?
+  phone             String?
+  contactPerson     String?
+  bankName          String?
+  bankAccount       String?
+  type              PartnerType        @default(CUSTOMER)
+  isActive          Boolean            @default(true)
+  invoiceCount      Int                @default(0)
+  totalRevenue      Decimal            @default(0) @db.Decimal(14, 2)
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  contracts         Contract[]
+  invoices          Invoice[]
+  organization      Organization?      @relation(fields: [organizationId], references: [id])
+  recurringInvoices RecurringInvoice[]
+
+  @@unique([userId, cui])
+  @@index([userId])
+  @@index([organizationId])
+  @@index([type])
+  @@index([name])
+}
+
+model AIQuery {
+  id        String   @id @default(cuid())
+  userId    String
+  question  String
+  answer    String
+  model     String   @default("grok")
+  tokens    Int?
+  latencyMs Int?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model AuditLog {
+  id             String        @id @default(cuid())
+  userId         String
+  action         String
+  entity         String
+  entityId       String?
+  details        Json?
+  ipAddress      String?
+  createdAt      DateTime      @default(now())
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  user           User          @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([action])
+  @@index([createdAt])
+  @@index([userId, entity, createdAt])
+  @@index([entity, entityId])
+  @@index([organizationId, action, createdAt])
+}
+
+model Consent {
+  id        String   @id @default(cuid())
+  userId    String
+  purpose   String
+  granted   Boolean
+  ipAddress String?
+  userAgent String?
+  timestamp DateTime @default(now())
+
+  @@unique([userId, purpose])
+  @@index([userId])
+  @@index([purpose])
+}
+
+model DSRRequest {
+  id                String    @id @default(cuid())
+  userId            String
+  type              String
+  status            String    @default("PENDING")
+  reason            String?
+  additionalDetails String?
+  ipAddress         String?
+  adminNotes        String?
+  rejectionReason   String?
+  processedBy       String?
+  processedAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  user              User      @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+}
+
+model OCRTemplate {
+  id              String           @id @default(cuid())
+  name            String
+  description     String?
+  documentType    DocumentType
+  language        String           @default("ro")
+  zones           Json
+  aiPrompt        String?
+  matchPatterns   Json?
+  createdById     String?
+  isSystem        Boolean          @default(false)
+  usageCount      Int              @default(0)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  organizationId  String?
+  extractedFields ExtractedField[]
+  organization    Organization?    @relation(fields: [organizationId], references: [id])
+
+  @@index([organizationId])
+  @@index([documentType])
+  @@index([language])
+}
+
+model ExtractedField {
+  id                String       @id @default(cuid())
+  documentId        String
+  templateId        String?
+  invoiceNumber     String?
+  invoiceDate       DateTime?
+  dueDate           DateTime?
+  partnerName       String?
+  partnerCui        String?
+  partnerAddress    String?
+  netAmount         Decimal?     @db.Decimal(12, 2)
+  vatRate           Decimal?     @db.Decimal(5, 2)
+  vatAmount         Decimal?     @db.Decimal(12, 2)
+  grossAmount       Decimal?     @db.Decimal(12, 2)
+  currency          String?
+  receiptNumber     String?
+  cashRegisterNo    String?
+  contractNumber    String?
+  parties           Json?
+  effectiveDate     DateTime?
+  confidences       Json
+  overallConfidence Float
+  rawText           String?
+  boundingBoxes     Json?
+  wasManuallyEdited Boolean      @default(false)
+  editedFields      Json?
+  createdAt         DateTime     @default(now())
+  document          Document     @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  template          OCRTemplate? @relation(fields: [templateId], references: [id])
+
+  @@index([documentId])
+  @@index([templateId])
+  @@index([overallConfidence])
+}
+
+model Epic {
+  id          String     @id @default(cuid())
+  code        String     @unique
+  name        String
+  description String?
+  color       String     @default("#3B82F6")
+  icon        String?
+  module      ModuleType
+  priority    Int        @default(0)
+  status      EpicStatus @default(PLANNED)
+  progress    Int        @default(0)
+  startDate   DateTime?
+  targetDate  DateTime?
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  sprints     Sprint[]
+  tasks       Task[]
+
+  @@index([module])
+  @@index([status])
+}
+
+model Sprint {
+  id              String       @id @default(cuid())
+  name            String
+  goal            String?
+  epicId          String
+  startDate       DateTime
+  endDate         DateTime
+  status          SprintStatus @default(PLANNED)
+  plannedPoints   Int          @default(0)
+  completedPoints Int          @default(0)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  epic            Epic         @relation(fields: [epicId], references: [id])
+  tasks           Task[]
+
+  @@index([epicId])
+  @@index([status])
+  @@index([startDate])
+}
+
+model Task {
+  id             String        @id @default(cuid())
+  code           String        @unique
+  title          String
+  description    String?
+  epicId         String
+  sprintId       String?
+  type           TaskType      @default(TASK)
+  priority       TaskPriority  @default(MEDIUM)
+  status         TaskStatus    @default(BACKLOG)
+  storyPoints    Int?
+  estimatedHours Float?
+  actualHours    Float?
+  assigneeId     String?
+  blockedById    String?
+  labels         String[]      @default([])
+  complianceRef  String?
+  dueDate        DateTime?
+  startedAt      DateTime?
+  completedAt    DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  blockedBy      Task?         @relation("TaskBlocks", fields: [blockedById], references: [id])
+  blocks         Task[]        @relation("TaskBlocks")
+  epic           Epic          @relation(fields: [epicId], references: [id])
+  sprint         Sprint?       @relation(fields: [sprintId], references: [id])
+  comments       TaskComment[]
+
+  @@index([epicId])
+  @@index([sprintId])
+  @@index([status])
+  @@index([priority])
+  @@index([type])
+}
+
+model TaskComment {
+  id        String   @id @default(cuid())
+  taskId    String
+  authorId  String?
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@index([taskId])
+}
+
+model SpvToken {
+  id               String        @id @default(cuid())
+  userId           String        @unique
+  organizationId   String?
+  cui              String
+  accessToken      String
+  refreshToken     String?
+  tokenType        String        @default("Bearer")
+  expiresAt        DateTime
+  refreshExpiresAt DateTime?
+  scope            String?
+  status           SpvStatus     @default(PENDING)
+  lastUsedAt       DateTime?
+  lastError        String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  organization     Organization? @relation(fields: [organizationId], references: [id])
+
+  @@index([organizationId])
+  @@index([cui])
+  @@index([status])
+}
+
+model SpvMessage {
+  id             String           @id @default(cuid())
+  userId         String
+  organizationId String?
+  cui            String
+  messageId      String           @unique
+  messageType    SpvMessageType
+  subject        String
+  content        String?
+  xmlContent     String?
+  relatedInvoice String?
+  relatedSaft    String?
+  uploadIndex    String?
+  status         SpvMessageStatus @default(UNREAD)
+  readAt         DateTime?
+  processedAt    DateTime?
+  anafCreatedAt  DateTime
+  receivedAt     DateTime         @default(now())
+  organization   Organization?    @relation(fields: [organizationId], references: [id])
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([cui])
+  @@index([status])
+  @@index([messageType])
+  @@index([anafCreatedAt])
+}
+
+model SpvSubmission {
+  id             String              @id @default(cuid())
+  userId         String
+  organizationId String?
+  cui            String
+  submissionType SpvSubmissionType
+  uploadIndex    String              @unique
+  documentId     String?
+  documentType   String?
+  period         String?
+  xmlHash        String?
+  xmlSize        Int?
+  status         SpvSubmissionStatus @default(PENDING)
+  anafStatus     String?
+  anafMessages   Json?
+  submittedAt    DateTime            @default(now())
+  lastCheckedAt  DateTime?
+  completedAt    DateTime?
+  errorCode      String?
+  errorMessage   String?
+  retryCount     Int                 @default(0)
+  organization   Organization?       @relation(fields: [organizationId], references: [id])
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([cui])
+  @@index([status])
+  @@index([submissionType])
+  @@index([uploadIndex])
+  @@index([submittedAt])
+}
+
+model Vehicle {
+  id               String            @id @default(cuid())
+  userId           String
+  organizationId   String?
+  licensePlate     String            @unique
+  vin              String?           @unique
+  make             String
+  model            String
+  year             Int?
+  type             VehicleType       @default(VAN)
+  maxPayloadKg     Decimal?          @db.Decimal(10, 2)
+  cargoVolumeM3    Decimal?          @db.Decimal(10, 2)
+  fuelType         FuelType          @default(DIESEL)
+  currentLat       Decimal?          @db.Decimal(10, 7)
+  currentLng       Decimal?          @db.Decimal(10, 7)
+  lastLocationAt   DateTime?
+  status           VehicleStatus     @default(AVAILABLE)
+  mileage          Int?
+  nextServiceDate  DateTime?
+  lastServiceDate  DateTime?
+  insuranceExpiry  DateTime?
+  tuvExpiry        DateTime?
+  assignedDriverId String?
+  monthlyLeaseCost Decimal?          @db.Decimal(10, 2)
+  insuranceCost    Decimal?          @db.Decimal(10, 2)
+  notes            String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  deliveryRoutes   DeliveryRoute[]
+  fuelLogs         FuelLog[]
+  maintenanceLogs  MaintenanceLog[]
+  assignedDriver   Employee?         @relation("AssignedVehicle", fields: [assignedDriverId], references: [id])
+  positions        VehiclePosition[]
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([licensePlate])
+  @@index([status])
+  @@index([assignedDriverId])
+}
+
+model DeliveryRoute {
+  id                 String         @id @default(cuid())
+  userId             String
+  organizationId     String?
+  routeName          String?
+  routeDate          DateTime       @db.Date
+  vehicleId          String
+  driverId           String?
+  totalStops         Int            @default(0)
+  completedStops     Int            @default(0)
+  totalParcels       Int            @default(0)
+  deliveredParcels   Int            @default(0)
+  failedDeliveries   Int            @default(0)
+  plannedDistanceKm  Decimal?       @db.Decimal(10, 2)
+  actualDistanceKm   Decimal?       @db.Decimal(10, 2)
+  plannedDurationMin Int?
+  actualDurationMin  Int?
+  plannedStartTime   DateTime?
+  actualStartTime    DateTime?
+  plannedEndTime     DateTime?
+  actualEndTime      DateTime?
+  status             RouteStatus    @default(PLANNED)
+  deliveryZone       String?
+  notes              String?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  driver             Employee?      @relation("DriverRoutes", fields: [driverId], references: [id])
+  vehicle            Vehicle        @relation(fields: [vehicleId], references: [id])
+  stops              DeliveryStop[]
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([vehicleId])
+  @@index([driverId])
+  @@index([routeDate])
+  @@index([status])
+}
+
+model DeliveryStop {
+  id               String                 @id @default(cuid())
+  routeId          String
+  stopOrder        Int
+  recipientName    String
+  recipientPhone   String?
+  recipientEmail   String?
+  streetAddress    String
+  postalCode       String
+  city             String                 @default("München")
+  latitude         Decimal?               @db.Decimal(10, 7)
+  longitude        Decimal?               @db.Decimal(10, 7)
+  parcelCount      Int                    @default(1)
+  trackingNumbers  String[]
+  status           DeliveryStopStatus     @default(PENDING)
+  attemptCount     Int                    @default(0)
+  estimatedArrival DateTime?
+  actualArrival    DateTime?
+  completedAt      DateTime?
+  signature        String?
+  photoUrl         String?
+  recipientNote    String?
+  failureReason    DeliveryFailureReason?
+  failureNote      String?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+  route            DeliveryRoute          @relation(fields: [routeId], references: [id], onDelete: Cascade)
+
+  @@index([routeId])
+  @@index([status])
+  @@index([postalCode])
+}
+
+model FuelLog {
+  id              String   @id @default(cuid())
+  vehicleId       String
+  driverId        String?
+  fuelType        FuelType
+  liters          Decimal  @db.Decimal(10, 2)
+  pricePerLiter   Decimal  @db.Decimal(10, 3)
+  totalCost       Decimal  @db.Decimal(10, 2)
+  odometerReading Int
+  stationName     String?
+  stationAddress  String?
+  fueledAt        DateTime @default(now())
+  createdAt       DateTime @default(now())
+  vehicle         Vehicle  @relation(fields: [vehicleId], references: [id])
+
+  @@index([vehicleId])
+  @@index([fueledAt])
+}
+
+model MaintenanceLog {
+  id              String          @id @default(cuid())
+  vehicleId       String
+  type            MaintenanceType
+  description     String
+  odometerReading Int?
+  partsCost       Decimal?        @db.Decimal(10, 2)
+  laborCost       Decimal?        @db.Decimal(10, 2)
+  totalCost       Decimal?        @db.Decimal(10, 2)
+  vendorName      String?
+  vendorAddress   String?
+  invoiceNumber   String?
+  serviceDate     DateTime        @default(now())
+  nextServiceDate DateTime?
+  notes           String?
+  createdAt       DateTime        @default(now())
+  vehicle         Vehicle         @relation(fields: [vehicleId], references: [id])
+
+  @@index([vehicleId])
+  @@index([serviceDate])
+  @@index([type])
+}
+
+model CourierDelivery {
+  id               String          @id @default(cuid())
+  userId           String
+  trackingNumber   String
+  provider         CourierProvider
+  status           String
+  recipientName    String?
+  recipientAddress String?
+  deliveredAt      DateTime?
+  amount           Decimal?        @db.Decimal(10, 2)
+  currency         String          @default("EUR")
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@unique([trackingNumber, provider])
+  @@index([userId])
+  @@index([provider])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model VehiclePosition {
+  id            String   @id @default(cuid())
+  vehicleId     String
+  latitude      Decimal  @db.Decimal(10, 7)
+  longitude     Decimal  @db.Decimal(10, 7)
+  altitude      Decimal? @db.Decimal(10, 2)
+  speed         Decimal? @db.Decimal(10, 2)
+  heading       Int?
+  accuracy      Decimal? @db.Decimal(10, 2)
+  ignition      Boolean  @default(true)
+  engineRunning Boolean  @default(true)
+  routeId       String?
+  recordedAt    DateTime @default(now())
+  receivedAt    DateTime @default(now())
+  vehicle       Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId])
+  @@index([recordedAt])
+  @@index([routeId])
+}
+
+model Geofence {
+  id             String          @id @default(cuid())
+  userId         String
+  organizationId String?
+  name           String
+  description    String?
+  type           GeofenceType    @default(CIRCLE)
+  centerLat      Decimal?        @db.Decimal(10, 7)
+  centerLng      Decimal?        @db.Decimal(10, 7)
+  radiusMeters   Int?
+  polygonPoints  Json?
+  alertOnEntry   Boolean         @default(true)
+  alertOnExit    Boolean         @default(true)
+  isActive       Boolean         @default(true)
+  deliveryZone   String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  events         GeofenceEvent[]
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([isActive])
+}
+
+model GeofenceEvent {
+  id         String            @id @default(cuid())
+  geofenceId String
+  vehicleId  String
+  eventType  GeofenceEventType
+  latitude   Decimal           @db.Decimal(10, 7)
+  longitude  Decimal           @db.Decimal(10, 7)
+  occurredAt DateTime          @default(now())
+  geofence   Geofence          @relation(fields: [geofenceId], references: [id], onDelete: Cascade)
+
+  @@index([geofenceId])
+  @@index([vehicleId])
+  @@index([occurredAt])
+}
+
+model HRContract {
+  id               String                @id @default(cuid())
+  userId           String
+  employeeId       String
+  type             HRContractType
+  status           HRContractStatus      @default(DRAFT)
+  startDate        DateTime
+  endDate          DateTime?
+  probationEnd     DateTime?
+  salary           Decimal               @db.Decimal(10, 2)
+  currency         String                @default("RON")
+  workHours        Int                   @default(40)
+  position         String
+  department       String?
+  nonCompete       Boolean               @default(false)
+  telework         Boolean               @default(false)
+  teleworkDays     Int?
+  signedAt         DateTime?
+  signatureUrl     String?
+  signedByEmployee Boolean               @default(false)
+  signedByEmployer Boolean               @default(false)
+  revisalSubmitted Boolean               @default(false)
+  revisalId        String?
+  revisalStatus    String?
+  templateId       String?
+  templateVersion  Int?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+  employee         Employee              @relation(fields: [employeeId], references: [id])
+  amendments       HRContractAmendment[]
+
+  @@index([userId])
+  @@index([employeeId])
+  @@index([status])
+}
+
+model HRContractAmendment {
+  id            String     @id @default(cuid())
+  contractId    String
+  reason        String
+  changes       Json
+  effectiveDate DateTime
+  signedAt      DateTime?
+  createdAt     DateTime   @default(now())
+  contract      HRContract @relation(fields: [contractId], references: [id])
+
+  @@index([contractId])
+}
+
+model HRForm {
+  id              String       @id @default(cuid())
+  userId          String
+  employeeId      String?
+  type            HRFormType
+  title           String
+  status          HRFormStatus @default(DRAFT)
+  data            Json
+  submittedAt     DateTime?
+  approvedAt      DateTime?
+  approvedBy      String?
+  rejectedAt      DateTime?
+  rejectedBy      String?
+  rejectionReason String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  employee        Employee?    @relation(fields: [employeeId], references: [id])
+
+  @@index([userId])
+  @@index([type])
+  @@index([status])
+}
+
+model HSEIncident {
+  id                String              @id @default(cuid())
+  userId            String
+  reporterId        String
+  type              HSEIncidentType
+  severity          HSEIncidentSeverity
+  status            HSEIncidentStatus   @default(REPORTED)
+  title             String
+  description       String
+  location          String
+  latitude          Float?
+  longitude         Float?
+  siteId            String?
+  photoUrls         String[]
+  videoUrls         String[]
+  occurredAt        DateTime
+  reportedAt        DateTime            @default(now())
+  resolvedAt        DateTime?
+  rootCause         String?
+  correctiveActions String?
+  preventiveActions String?
+  employeeId        String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  employee          Employee?           @relation(fields: [employeeId], references: [id])
+
+  @@index([userId])
+  @@index([severity])
+  @@index([status])
+}
+
+model HSERiskAssessment {
+  id               String        @id @default(cuid())
+  userId           String
+  title            String
+  description      String?
+  location         String
+  department       String?
+  processArea      String?
+  hazards          Json
+  riskLevel        HSERiskLevel
+  likelihood       Int
+  impact           Int
+  riskScore        Int
+  existingControls String?
+  proposedControls String?
+  residualRisk     HSERiskLevel?
+  assessedAt       DateTime      @default(now())
+  reviewDueAt      DateTime
+  reviewedAt       DateTime?
+  reviewedBy       String?
+  status           HSERiskStatus @default(RISK_DRAFT)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([userId])
+  @@index([riskLevel])
+  @@index([status])
+}
+
+model HSESafetyTraining {
+  id              String                @id @default(cuid())
+  userId          String
+  employeeId      String
+  trainingType    HSESafetyTrainingType
+  title           String
+  description     String?
+  scheduledAt     DateTime
+  completedAt     DateTime?
+  expiresAt       DateTime?
+  certificateUrl  String?
+  score           Float?
+  passed          Boolean?
+  linkedToPayroll Boolean               @default(false)
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  employee        Employee              @relation(fields: [employeeId], references: [id])
+
+  @@index([userId])
+  @@index([employeeId])
+}
+
+model LMSCourse {
+  id                  String            @id @default(cuid())
+  title               String
+  slug                String            @unique
+  description         String
+  category            LMSCourseCategory
+  level               LMSCourseLevel    @default(BEGINNER)
+  thumbnailUrl        String?
+  duration            Int
+  price               Decimal?          @db.Decimal(10, 2)
+  currency            String            @default("EUR")
+  isFree              Boolean           @default(false)
+  language            String            @default("ro")
+  tags                String[]
+  status              LMSCourseStatus   @default(LMS_DRAFT)
+  publishedAt         DateTime?
+  hasCertificate      Boolean           @default(true)
+  certificateTemplate String?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  modules             LMSCourseModule[]
+  enrollments         LMSEnrollment[]
+
+  @@index([category])
+  @@index([status])
+}
+
+model LMSCourseModule {
+  id          String      @id @default(cuid())
+  courseId    String
+  title       String
+  description String?
+  order       Int
+  duration    Int
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  course      LMSCourse   @relation(fields: [courseId], references: [id])
+  lessons     LMSLesson[]
+
+  @@index([courseId])
+}
+
+model LMSLesson {
+  id          String              @id @default(cuid())
+  moduleId    String
+  title       String
+  description String?
+  order       Int
+  type        LMSLessonType
+  videoUrl    String?
+  content     String?
+  duration    Int
+  attachments String[]
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  module      LMSCourseModule     @relation(fields: [moduleId], references: [id])
+  progress    LMSLessonProgress[]
+
+  @@index([moduleId])
+}
+
+model LMSEnrollment {
+  id                  String              @id @default(cuid())
+  userId              String
+  courseId            String
+  progress            Float               @default(0)
+  startedAt           DateTime            @default(now())
+  completedAt         DateTime?
+  certificateUrl      String?
+  certificateIssuedAt DateTime?
+  quizScore           Float?
+  passed              Boolean?
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  course              LMSCourse           @relation(fields: [courseId], references: [id])
+  lessonProgress      LMSLessonProgress[]
+
+  @@unique([userId, courseId])
+  @@index([userId])
+  @@index([courseId])
+}
+
+model LMSLessonProgress {
+  id              String        @id @default(cuid())
+  enrollmentId    String
+  lessonId        String
+  completed       Boolean       @default(false)
+  completedAt     DateTime?
+  watchedDuration Int?
+  lastPosition    Int?
+  attempts        Int           @default(0)
+  bestScore       Float?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  enrollment      LMSEnrollment @relation(fields: [enrollmentId], references: [id])
+  lesson          LMSLesson     @relation(fields: [lessonId], references: [id])
+
+  @@unique([enrollmentId, lessonId])
+}
+
+model FreelancerProfile {
+  id                String                       @id @default(cuid())
+  userId            String?
+  name              String
+  email             String                       @unique
+  phone             String?
+  skills            String[]
+  categories        String[]
+  experience        Int?
+  portfolioUrl      String?
+  linkedinUrl       String?
+  bio               String?
+  availability      FreelancerAvailability       @default(AVAILABLE)
+  hourlyRate        Decimal?                     @db.Decimal(10, 2)
+  currency          String                       @default("EUR")
+  preferredWorkType String[]
+  rating            Float?                       @default(0)
+  reviewCount       Int                          @default(0)
+  verified          Boolean                      @default(false)
+  verifiedAt        DateTime?
+  pfaNumber         String?
+  cui               String?
+  createdAt         DateTime                     @default(now())
+  updatedAt         DateTime                     @updatedAt
+  projects          FreelanceProjectAssignment[]
+  contracts         FreelancerContract[]
+
+  @@index([userId])
+  @@index([availability])
+}
+
+model FreelanceProjectAssignment {
+  id           String                      @id @default(cuid())
+  userId       String
+  title        String
+  description  String
+  skills       String[]
+  budget       Decimal?                    @db.Decimal(10, 2)
+  budgetType   FreelanceBudgetType         @default(FIXED)
+  currency     String                      @default("EUR")
+  startDate    DateTime?
+  endDate      DateTime?
+  status       FreelanceProjectStatus      @default(PROJECT_DRAFT)
+  freelancerId String?
+  createdAt    DateTime                    @default(now())
+  updatedAt    DateTime                    @updatedAt
+  freelancer   FreelancerProfile?          @relation(fields: [freelancerId], references: [id])
+  milestones   FreelanceProjectMilestone[]
+  timeEntries  FreelanceTimeEntry[]
+
+  @@index([userId])
+  @@index([freelancerId])
+  @@index([status])
+}
+
+model FreelanceProjectMilestone {
+  id          String                     @id @default(cuid())
+  projectId   String
+  title       String
+  description String?
+  amount      Decimal                    @db.Decimal(10, 2)
+  dueDate     DateTime?
+  completedAt DateTime?
+  status      FreelanceMilestoneStatus   @default(MILESTONE_PENDING)
+  escrowHeld  Boolean                    @default(false)
+  releasedAt  DateTime?
+  createdAt   DateTime                   @default(now())
+  project     FreelanceProjectAssignment @relation(fields: [projectId], references: [id])
+
+  @@index([projectId])
+}
+
+model FreelancerContract {
+  id           String                 @id @default(cuid())
+  freelancerId String
+  type         FreelancerContractType
+  startDate    DateTime
+  endDate      DateTime?
+  rate         Decimal                @db.Decimal(10, 2)
+  rateType     FreelanceBudgetType
+  currency     String                 @default("EUR")
+  ndaSigned    Boolean                @default(false)
+  ndaSignedAt  DateTime?
+  ipClause     Boolean                @default(false)
+  status       HRContractStatus       @default(DRAFT)
+  signedAt     DateTime?
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+  freelancer   FreelancerProfile      @relation(fields: [freelancerId], references: [id])
+
+  @@index([freelancerId])
+}
+
+model FreelanceTimeEntry {
+  id            String                     @id @default(cuid())
+  projectId     String
+  freelancerId  String
+  startTime     DateTime
+  endTime       DateTime?
+  duration      Int?
+  description   String?
+  screenshotUrl String?
+  activityLevel Float?
+  billed        Boolean                    @default(false)
+  invoiceId     String?
+  createdAt     DateTime                   @default(now())
+  project       FreelanceProjectAssignment @relation(fields: [projectId], references: [id])
+
+  @@index([projectId])
+  @@index([freelancerId])
+}
+
+model ForumCategory {
+  id          String        @id @default(cuid())
+  name        String
+  nameEn      String?
+  slug        String        @unique
+  description String?
+  icon        String?
+  sortOrder   Int           @default(0)
+  threadCount Int           @default(0)
+  postCount   Int           @default(0)
+  isActive    Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  threads     ForumThread[]
+
+  @@index([isActive])
+}
+
+model ForumThread {
+  id          String        @id @default(cuid())
+  categoryId  String
+  title       String
+  slug        String        @unique
+  content     String
+  authorId    String?
+  authorName  String
+  viewCount   Int           @default(0)
+  replyCount  Int           @default(0)
+  isPinned    Boolean       @default(false)
+  isLocked    Boolean       @default(false)
+  isFeatured  Boolean       @default(false)
+  lastReplyAt DateTime?
+  lastReplyBy String?
+  tags        String[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  posts       ForumPost[]
+  category    ForumCategory @relation(fields: [categoryId], references: [id])
+
+  @@index([categoryId])
+  @@index([authorId])
+  @@index([isPinned])
+}
+
+model ForumPost {
+  id         String      @id @default(cuid())
+  threadId   String
+  content    String
+  authorId   String?
+  authorName String
+  replyToId  String?
+  upvotes    Int         @default(0)
+  downvotes  Int         @default(0)
+  isAccepted Boolean     @default(false)
+  isEdited   Boolean     @default(false)
+  editedAt   DateTime?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  replyTo    ForumPost?  @relation("PostReplies", fields: [replyToId], references: [id])
+  replies    ForumPost[] @relation("PostReplies")
+  thread     ForumThread @relation(fields: [threadId], references: [id])
+
+  @@index([threadId])
+  @@index([authorId])
+}
+
+model BlogCategory {
+  id          String        @id @default(cuid())
+  name        String
+  nameEn      String?
+  slug        String        @unique
+  description String?
+  sortOrder   Int           @default(0)
+  isActive    Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  articles    BlogArticle[]
+
+  @@index([isActive])
+}
+
+model BlogArticle {
+  id               String            @id @default(cuid())
+  categoryId       String?
+  title            String
+  titleEn          String?
+  slug             String            @unique
+  excerpt          String?
+  content          String
+  authorId         String?
+  authorName       String
+  authorBio        String?
+  featuredImageUrl String?
+  readTime         Int?
+  tags             String[]
+  status           BlogArticleStatus @default(BLOG_DRAFT)
+  publishedAt      DateTime?
+  viewCount        Int               @default(0)
+  likeCount        Int               @default(0)
+  shareCount       Int               @default(0)
+  seoTitle         String?
+  seoDescription   String?
+  seoKeywords      String[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  category         BlogCategory?     @relation(fields: [categoryId], references: [id])
+
+  @@index([categoryId])
+  @@index([authorId])
+  @@index([status])
+  @@index([publishedAt])
+}
+
+model DemoBusiness {
+  id            String                @id @default(cuid())
+  name          String
+  cui           String                @unique
+  industry      String
+  city          String
+  county        String
+  employeeCount Int                   @default(0)
+  revenue       Decimal?              @db.Decimal(15, 2)
+  description   String?
+  tier          Tier                  @default(FREE)
+  isActive      Boolean               @default(true)
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+  contacts      DemoBusinessContact[]
+  employees     DemoEmployee[]
+
+  @@index([industry])
+}
+
+model DemoBusinessContact {
+  id         String       @id @default(cuid())
+  businessId String
+  name       String
+  role       String
+  email      String
+  phone      String?
+  isPrimary  Boolean      @default(false)
+  createdAt  DateTime     @default(now())
+  business   DemoBusiness @relation(fields: [businessId], references: [id])
+
+  @@index([businessId])
+}
+
+model DemoEmployee {
+  id           String             @id @default(cuid())
+  businessId   String
+  firstName    String
+  lastName     String
+  email        String
+  department   String
+  position     String
+  hireDate     DateTime
+  salary       Decimal            @db.Decimal(10, 2)
+  contractType DemoContractType   @default(DEMO_FULL_TIME)
+  status       DemoEmployeeStatus @default(DEMO_ACTIVE)
+  createdAt    DateTime           @default(now())
+  business     DemoBusiness       @relation(fields: [businessId], references: [id])
+
+  @@index([businessId])
+  @@index([department])
+}
+
+model SyncLog {
+  id          String   @id @default(cuid())
+  userId      String
+  service     String
+  entityType  String
+  entityId    String
+  direction   String
+  status      String
+  details     String?
+  xmlSent     String?
+  xmlReceived String?
+  syncedAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([service])
+  @@index([entityType])
+  @@index([status])
+  @@index([syncedAt])
+}
+
+model OrganizationIntegration {
+  id             String       @id @default(cuid())
+  organizationId String
+  provider       String
+  credentials    String?
+  isActive       Boolean      @default(false)
+  lastSyncAt     DateTime?
+  lastError      String?
+  settings       Json?        @default("{}")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, provider])
+  @@index([organizationId])
+  @@index([provider])
+}
+
+model RecurringInvoice {
+  id               String       @id @default(cuid())
+  organizationId   String
+  name             String
+  description      String?
+  partnerId        String
+  frequency        String
+  startDate        DateTime
+  endDate          DateTime?
+  nextRunDate      DateTime
+  lastRunDate      DateTime?
+  dayOfMonth       Int?
+  dayOfWeek        Int?
+  isActive         Boolean      @default(true)
+  autoSend         Boolean      @default(false)
+  autoSubmitSpv    Boolean      @default(false)
+  currency         String       @default("RON")
+  vatRate          Decimal      @default(19) @db.Decimal(5, 2)
+  items            Json
+  notes            String?
+  paymentTermsDays Int          @default(30)
+  seriesName       String?
+  generatedCount   Int          @default(0)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  invoices         Invoice[]    @relation("RecurringInvoiceInvoices")
+  organization     Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  partner          Partner      @relation(fields: [partnerId], references: [id])
+
+  @@index([organizationId])
+  @@index([partnerId])
+  @@index([isActive])
+  @@index([nextRunDate])
+}
+
+model InvoiceItem {
+  id          String   @id @default(cuid())
+  invoiceId   String
+  lineNumber  Int      @default(1)
+  description String
+  code        String?
+  quantity    Decimal  @db.Decimal(12, 4)
+  unit        String   @default("buc")
+  unitPrice   Decimal  @db.Decimal(12, 4)
+  vatRate     Decimal  @default(19) @db.Decimal(5, 2)
+  discount    Decimal  @default(0) @db.Decimal(5, 2)
+  netAmount   Decimal  @db.Decimal(12, 2)
+  vatAmount   Decimal  @db.Decimal(12, 2)
+  grossAmount Decimal  @db.Decimal(12, 2)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceId])
+}
+
+model Product {
+  id             String          @id @default(cuid())
+  userId         String
+  organizationId String?
+  code           String
+  name           String
+  description    String?
+  category       String?
+  brand          String?
+  unit           String          @default("buc")
+  purchasePrice  Decimal         @default(0) @db.Decimal(12, 2)
+  salePrice      Decimal         @default(0) @db.Decimal(12, 2)
+  vatRate        Decimal         @default(19) @db.Decimal(5, 2)
+  currency       String          @default("RON")
+  currentStock   Decimal         @default(0) @db.Decimal(12, 4)
+  reservedStock  Decimal         @default(0) @db.Decimal(12, 4)
+  minStockLevel  Decimal         @default(0) @db.Decimal(12, 4)
+  maxStockLevel  Decimal?        @db.Decimal(12, 4)
+  barcode        String?
+  location       String?
+  supplier       String?
+  isActive       Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  organization   Organization?   @relation(fields: [organizationId], references: [id])
+  user           User            @relation(fields: [userId], references: [id])
+  stockAlerts    StockAlert[]
+  stockMovements StockMovement[]
+
+  @@unique([userId, code])
+  @@index([userId])
+  @@index([organizationId])
+  @@index([category])
+  @@index([isActive])
+}
+
+model StockMovement {
+  id            String            @id @default(cuid())
+  productId     String
+  type          StockMovementType
+  quantity      Decimal           @db.Decimal(12, 4)
+  previousStock Decimal           @db.Decimal(12, 4)
+  newStock      Decimal           @db.Decimal(12, 4)
+  reference     String?
+  referenceType String?
+  referenceId   String?
+  unitCost      Decimal?          @db.Decimal(12, 2)
+  notes         String?
+  createdBy     String?
+  createdAt     DateTime          @default(now())
+  product       Product           @relation(fields: [productId], references: [id])
+
+  @@index([productId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+model StockAlert {
+  id             String           @id @default(cuid())
+  productId      String
+  userId         String
+  type           StockAlertType
+  threshold      Decimal          @db.Decimal(12, 4)
+  currentLevel   Decimal          @db.Decimal(12, 4)
+  status         StockAlertStatus @default(ACTIVE)
+  acknowledgedAt DateTime?
+  acknowledgedBy String?
+  createdAt      DateTime         @default(now())
+  resolvedAt     DateTime?
+  product        Product          @relation(fields: [productId], references: [id])
+
+  @@index([productId])
+  @@index([userId])
+  @@index([status])
+}
+
+model Contract {
+  id                  String         @id @default(cuid())
+  userId              String
+  organizationId      String?
+  contractNumber      String
+  title               String
+  description         String?
+  type                ContractType   @default(SERVICE)
+  status              ContractStatus @default(DRAFT)
+  partnerId           String?
+  partnerName         String
+  partnerCui          String?
+  partnerAddress      String?
+  totalValue          Decimal        @db.Decimal(14, 2)
+  currency            String         @default("RON")
+  paymentTerms        String?
+  billingFrequency    String?
+  startDate           DateTime
+  endDate             DateTime?
+  signedAt            DateTime?
+  terminatedAt        DateTime?
+  autoRenew           Boolean        @default(false)
+  renewalPeriodMonths Int?
+  renewalNoticesDays  Int?
+  documentId          String?        @unique
+  attachments         Json?
+  linkedInvoiceIds    String[]       @default([])
+  isCompliant         Boolean        @default(true)
+  complianceNotes     String?
+  tags                String[]       @default([])
+  metadata            Json?
+  notes               String?
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+  document            Document?      @relation(fields: [documentId], references: [id])
+  organization        Organization?  @relation(fields: [organizationId], references: [id])
+  partner             Partner?       @relation(fields: [partnerId], references: [id])
+  user                User           @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([partnerId])
+  @@index([status])
+  @@index([type])
+  @@index([startDate])
+  @@index([endDate])
+}
+
+model ContactSubmission {
+  id          String    @id @default(cuid())
+  referenceId String    @unique
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  subject     String
+  message     String
+  status      String    @default("NEW")
+  ipAddress   String?
+  userAgent   String?
+  notes       String?
+  repliedAt   DateTime?
+  repliedBy   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model ErrorLog {
+  id             String   @id @default(cuid())
+  message        String
+  stack          String   @default("")
+  type           String
+  componentStack String?  @default("")
+  url            String?  @default("")
+  userAgent      String?  @default("")
+  userId         String?  @default("anonymous")
+  source         String   @default("frontend")
+  metadata       String?  @default("{}")
+  createdAt      DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([type])
+  @@index([userId])
+  @@index([source])
+}
+
+model SimulationGame {
+  id              String                  @id @default(cuid())
+  userId          String
+  businessId      String?
+  name            String
+  description     String?
+  currentMonth    Int                     @default(1)
+  currentYear     Int                     @default(2025)
+  status          SimulationStatus        @default(SIM_ACTIVE)
+  difficulty      SimulationDifficulty    @default(SIM_NORMAL)
+  healthScore     Float                   @default(100)
+  financialScore  Float                   @default(100)
+  operationsScore Float                   @default(100)
+  complianceScore Float                   @default(100)
+  growthScore     Float                   @default(100)
+  scenarioId      String?
+  createdAt       DateTime                @default(now())
+  updatedAt       DateTime                @updatedAt
+  achievements    SimulationAchievement[]
+  decisions       SimulationDecision[]
+  events          SimulationEvent[]
+  scenario        SimulationScenario?     @relation(fields: [scenarioId], references: [id])
+  states          SimulationState[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([scenarioId])
+}
+
+model SimulationState {
+  id              String         @id @default(cuid())
+  gameId          String
+  month           Int
+  year            Int
+  cash            Decimal        @default(50000) @db.Decimal(14, 2)
+  revenue         Decimal        @default(0) @db.Decimal(14, 2)
+  expenses        Decimal        @default(0) @db.Decimal(14, 2)
+  profit          Decimal        @default(0) @db.Decimal(14, 2)
+  receivables     Decimal        @default(0) @db.Decimal(14, 2)
+  payables        Decimal        @default(0) @db.Decimal(14, 2)
+  inventory       Decimal        @default(0) @db.Decimal(14, 2)
+  equipment       Decimal        @default(0) @db.Decimal(14, 2)
+  loans           Decimal        @default(0) @db.Decimal(14, 2)
+  employees       Int            @default(1)
+  capacity        Float          @default(100)
+  utilization     Float          @default(50)
+  quality         Float          @default(80)
+  marketShare     Float          @default(0.1)
+  customerCount   Int            @default(10)
+  reputation      Float          @default(50)
+  taxOwed         Decimal        @default(0) @db.Decimal(12, 2)
+  vatBalance      Decimal        @default(0) @db.Decimal(12, 2)
+  penaltiesRisk   Float          @default(0)
+  auditRisk       Float          @default(5)
+  metricsSnapshot Json?
+  createdAt       DateTime       @default(now())
+  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([gameId, month, year])
+  @@index([gameId])
+}
+
+model SimulationDecision {
+  id               String              @id @default(cuid())
+  gameId           String
+  month            Int
+  year             Int
+  category         SimDecisionCategory
+  type             String
+  parameters       Json
+  impactSummary    String?
+  impactMetrics    Json?
+  relatedCourseId  String?
+  relatedLessonId  String?
+  aiRecommendation String?
+  wasSuccessful    Boolean?
+  outcomeNotes     String?
+  createdAt        DateTime            @default(now())
+  game             SimulationGame      @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@index([gameId])
+  @@index([category])
+}
+
+model SimulationEvent {
+  id              String           @id @default(cuid())
+  gameId          String
+  month           Int
+  year            Int
+  type            SimEventType
+  severity        SimEventSeverity @default(SEVERITY_MEDIUM)
+  title           String
+  description     String
+  impact          Json
+  responseOptions Json?
+  playerChoice    String?
+  outcome         String?
+  outcomeImpact   Json?
+  deadline        Int?
+  expiresAt       DateTime?
+  createdAt       DateTime         @default(now())
+  game            SimulationGame   @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@index([gameId])
+  @@index([type])
+}
+
+model SimulationAchievement {
+  id            String         @id @default(cuid())
+  gameId        String
+  achievementId String
+  title         String
+  description   String?
+  icon          String?
+  xpReward      Int            @default(100)
+  unlockedAt    DateTime       @default(now())
+  game          SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([gameId, achievementId])
+  @@index([gameId])
+}
+
+model SimulationScenario {
+  id               String               @id @default(cuid())
+  slug             String               @unique
+  title            String
+  titleEn          String?
+  description      String
+  descriptionEn    String?
+  difficulty       SimulationDifficulty
+  initialState     Json
+  objectives       Json
+  timeLimit        Int?
+  type             SimScenarioType
+  xpReward         Int                  @default(500)
+  badgeId          String?
+  relatedCourseIds String[]             @default([])
+  isActive         Boolean              @default(true)
+  isFeatured       Boolean              @default(false)
+  sortOrder        Int                  @default(0)
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+  games            SimulationGame[]
+
+  @@index([type])
+  @@index([difficulty])
+  @@index([isActive])
+}
+
 enum OrgRole {
-  OWNER           // Full access, can delete organization
-  ADMIN           // Full access except delete org
-  ACCOUNTANT      // Financial data access
-  MEMBER          // Basic access
-  VIEWER          // Read-only access
+  OWNER
+  ADMIN
+  ACCOUNTANT
+  MEMBER
+  VIEWER
 }
 
 enum InvitationStatus {
@@ -156,95 +2172,6 @@ enum InvitationStatus {
   ACCEPTED
   EXPIRED
   CANCELLED
-}
-
-// User Management
-model User {
-  id            String    @id @default(cuid())
-  clerkId       String?   @unique  // Optional for SSO users
-  email         String    @unique
-  password      String?   // Hashed password for local auth
-  name          String?
-  company       String?   // Personal/default company name
-  cui           String?   // Personal Romanian company ID
-  address       String?   // Company address for e-Factura (required for UBL generation)
-  role          UserRole  @default(USER)  // System-wide role
-  tier          Tier      @default(FREE)
-  language      String    @default("ro")
-  emailVerified Boolean   @default(false)  // Email verification status
-  emailVerifiedAt DateTime?  // When email was verified
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  // Current active organization context
-  activeOrganizationId String?
-
-  // Notification preferences - JSON object with boolean flags
-  // Default: all notifications enabled
-  // Format: { email: { invoiceReminders: true, overdueAlerts: true, complianceDeadlines: true, weeklyReports: true, systemAlerts: true } }
-  notificationPreferences Json @default("{\"email\":{\"invoiceReminders\":true,\"overdueAlerts\":true,\"complianceDeadlines\":true,\"weeklyReports\":true,\"systemAlerts\":true}}")
-
-  // MFA (Multi-Factor Authentication)
-  mfaEnabled      Boolean   @default(false)
-  mfaSecret       String?   // TOTP secret for authenticator apps
-  mfaBackupCodes  String[]  // Array of backup codes
-  mfaEnabledAt    DateTime?
-
-  // Organization memberships
-  organizationMemberships OrganizationMember[]
-
-  // Direct relations (for backward compatibility - will migrate to org-scoped)
-  documents     Document[]
-  invoices      Invoice[]
-  vatReports    VATReport[]
-  saftReports   SAFTReport[]
-  vatD300Declarations VatD300Declaration[]
-  vatD394Declarations VatD394Declaration[]
-  srlRegistrations SrlRegistration[]
-  pfaRegistrations PfaRegistration[]
-  employees     Employee[]
-  aiQueries     AIQuery[]
-  auditLogs     AuditLog[]
-  syncLogs      SyncLog[]
-  dsrRequests   DSRRequest[]
-  products      Product[]
-  contracts     Contract[]
-
-  // Dashboard customization preferences
-  dashboardPreferences DashboardPreferences?
-
-  @@index([clerkId])
-  @@index([email])
-  @@index([activeOrganizationId])
-}
-
-// Dashboard Module Customization Preferences
-model DashboardPreferences {
-  id              String    @id @default(cuid())
-  userId          String    @unique
-  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  // Enabled modules (JSON array of module IDs)
-  enabledModules  Json      @default("[\"dashboard\",\"analytics\",\"invoices\",\"finance\",\"crm\",\"hr\"]")
-
-  // Module order (JSON array for drag-drop reordering)
-  moduleOrder     Json      @default("[]")
-
-  // Collapsed sections (JSON array of section IDs)
-  collapsedSections Json    @default("[]")
-
-  // Dashboard layout preferences
-  sidebarCollapsed Boolean  @default(false)
-  compactMode      Boolean  @default(false)
-  darkMode         Boolean  @default(false)
-
-  // Widget preferences for main dashboard
-  dashboardWidgets Json     @default("[\"overview\",\"cashFlow\",\"vatChart\",\"recentInvoices\",\"alerts\"]")
-
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-
-  @@index([userId])
 }
 
 enum Tier {
@@ -260,156 +2187,11 @@ enum UserRole {
   ACCOUNTANT
 }
 
-// Document Management (OCR)
-model Document {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-  filename        String
-  fileUrl         String
-  fileType        String
-  fileSize        Int
-  status          DocStatus     @default(PENDING)
-  ocrData         Json?
-  extractedText   String?
-  confidence      Float?
-  createdAt       DateTime      @default(now())
-  processedAt     DateTime?
-
-  invoice         Invoice?
-  contract        Contract?
-  extractedFields ExtractedField[]
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([status])
-}
-
 enum DocStatus {
   PENDING
   PROCESSING
   COMPLETED
   FAILED
-}
-
-// Invoice Management
-model Invoice {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-  documentId      String?       @unique
-  document        Document?     @relation(fields: [documentId], references: [id])
-
-  invoiceNumber   String
-  invoiceDate     DateTime
-  dueDate         DateTime?
-  type            InvoiceType   @default(RECEIVED)
-  status          InvoiceStatus @default(DRAFT)
-
-  // Supplier/Customer
-  partnerName     String
-  partnerCui      String?
-  partnerAddress  String?
-
-  // Amounts
-  netAmount       Decimal       @db.Decimal(12, 2)
-  vatRate         Decimal       @db.Decimal(5, 2)
-  vatAmount       Decimal       @db.Decimal(12, 2)
-  grossAmount     Decimal       @db.Decimal(12, 2)
-  currency        String        @default("RON")
-
-  // Multi-currency support
-  exchangeRate        Decimal?  @db.Decimal(12, 6) // Rate at invoice date (to base currency)
-  baseCurrency        String    @default("RON")    // Company's base/functional currency
-  baseNetAmount       Decimal?  @db.Decimal(12, 2) // Net amount in base currency
-  baseVatAmount       Decimal?  @db.Decimal(12, 2) // VAT amount in base currency
-  baseGrossAmount     Decimal?  @db.Decimal(12, 2) // Gross amount in base currency
-
-  // e-Factura
-  efacturaId      String?
-  efacturaStatus  String?
-  spvSubmitted    Boolean       @default(false)
-  spvSubmittedAt  DateTime?
-
-  // SAGA sync
-  sagaSynced      Boolean       @default(false)
-  sagaId          String?
-
-  // Payment tracking
-  paidAmount      Decimal       @default(0) @db.Decimal(12, 2)
-  paymentStatus   PaymentStatus @default(UNPAID)
-  paidAt          DateTime?     // When invoice was fully paid
-
-  // Recurring invoice relation
-  isRecurring         Boolean           @default(false)
-  recurringInvoiceId  String?
-  recurringInvoice    RecurringInvoice? @relation("RecurringInvoiceInvoices", fields: [recurringInvoiceId], references: [id])
-
-  // Partner relation
-  partnerId       String?
-  partner         Partner?      @relation(fields: [partnerId], references: [id])
-
-  // External reference (SmartBill, etc.)
-  externalRef     String?
-  metadata        Json?
-
-  // Notes
-  notes           String?       @db.Text
-
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  payments        Payment[]
-  items           InvoiceItem[]
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([invoiceDate])
-  @@index([type])
-  @@index([paymentStatus])
-  // Composite indexes for optimized report queries (TD-004)
-  @@index([userId, type, invoiceDate])           // P&L and cash flow reports
-  @@index([userId, invoiceDate, type])           // Date-range filtering with type
-  @@index([userId, type, partnerName])           // GroupBy queries for top customers/suppliers
-  @@index([userId, paymentStatus, invoiceDate])  // Overdue invoice tracking
-  @@index([currency, userId, invoiceDate])       // Multi-currency reports
-}
-
-// Payment Tracking
-model Payment {
-  id              String        @id @default(cuid())
-  invoiceId       String
-  invoice         Invoice       @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
-
-  amount          Decimal       @db.Decimal(12, 2)
-  currency        String        @default("RON")
-  paymentDate     DateTime      @default(now())
-
-  // Payment details
-  method          PaymentMethod
-  reference       String?       // Bank transfer reference, card last 4 digits, etc.
-  description     String?
-
-  // Bank details for wire transfers
-  bankName        String?
-  bankAccount     String?       // IBAN
-
-  // Status
-  status          PaymentRecordStatus @default(COMPLETED)
-
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  @@index([invoiceId])
-  @@index([paymentDate])
-  @@index([method])
-  // Composite indexes for optimized payment queries (TD-004)
-  @@index([paymentDate, invoiceId])  // Date range queries with invoice filtering
-  @@index([status, paymentDate])     // Payment status reports
 }
 
 enum PaymentMethod {
@@ -448,70 +2230,6 @@ enum InvoiceStatus {
   CANCELLED
 }
 
-// VAT Reports
-model VATReport {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  period        String      // YYYY-MM
-  vatCollected  Decimal     @db.Decimal(12, 2)
-  vatDeductible Decimal     @db.Decimal(12, 2)
-  vatPayable    Decimal     @db.Decimal(12, 2)
-  vatRate       Decimal     @db.Decimal(5, 2) @default(21)
-
-  status        ReportStatus @default(DRAFT)
-  submittedAt   DateTime?
-  anafRef       String?
-
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-
-  @@unique([userId, period])
-  @@index([userId])
-  @@index([organizationId])
-  // Composite index for period lookups (TD-004)
-  @@index([period, userId])  // Period-based queries for trend reports
-}
-
-// SAF-T D406 Reports
-model SAFTReport {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  period        String      // YYYY-MM
-  reportType    String      @default("D406")
-  xmlUrl        String?
-  xmlSize       Int?
-
-  // Validation
-  validated     Boolean     @default(false)
-  validatedAt   DateTime?
-  validationResult Json?
-
-  // Submission
-  status        ReportStatus @default(DRAFT)
-  submittedAt   DateTime?
-  spvRef        String?
-
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-
-  @@unique([userId, period])
-  @@index([userId])
-  @@index([organizationId])
-  // Composite indexes for D406 SAF-T report queries (Sprint 9 - Grok recommendation)
-  @@index([status, period])                    // Status-based period queries
-  @@index([userId, status, submittedAt])       // User submission history
-  @@index([organizationId, period, status])    // Org compliance tracking
-  @@index([reportType, status])                // Report type filtering
-}
-
 enum ReportStatus {
   DRAFT
   VALIDATING
@@ -521,360 +2239,10 @@ enum ReportStatus {
   REJECTED
 }
 
-// VAT D300 Monthly Declarations
-model VatD300Declaration {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-
-  cui             String
-  companyName     String
-  month           Int           // 1-12
-  year            Int
-
-  // Section A - Output VAT
-  outputTaxableBase19       Decimal @db.Decimal(14, 2)
-  outputVat19               Decimal @db.Decimal(14, 2)
-  outputTaxableBase9        Decimal @db.Decimal(14, 2)
-  outputVat9                Decimal @db.Decimal(14, 2)
-  outputTaxableBase5        Decimal @db.Decimal(14, 2)
-  outputVat5                Decimal @db.Decimal(14, 2)
-  exemptWithDeduction       Decimal @db.Decimal(14, 2)
-  exemptWithoutDeduction    Decimal @db.Decimal(14, 2)
-  reverseChargeBase         Decimal @db.Decimal(14, 2)
-  intraCommunityDeliveries  Decimal @db.Decimal(14, 2)
-  exports                   Decimal @db.Decimal(14, 2)
-
-  // Section B - Input VAT
-  inputVat19                        Decimal @db.Decimal(14, 2)
-  inputVat9                         Decimal @db.Decimal(14, 2)
-  inputVat5                         Decimal @db.Decimal(14, 2)
-  importVat                         Decimal @db.Decimal(14, 2)
-  intraCommunityAcquisitionsBase    Decimal @db.Decimal(14, 2)
-  intraCommunityAcquisitionsVat     Decimal @db.Decimal(14, 2)
-  reverseChargeInputVat             Decimal @db.Decimal(14, 2)
-
-  // Section C - Calculated totals
-  totalOutputVat            Decimal @db.Decimal(14, 2)
-  totalInputVat             Decimal @db.Decimal(14, 2)
-  vatPayable                Decimal @db.Decimal(14, 2)
-
-  // Section D - Intra-community transactions
-  intraCommunityTransactions Json?
-
-  // Additional data
-  notes                     String? @db.Text
-  legalRepresentativeName   String?
-  legalRepresentativeCnp    String?
-
-  // Status and submission
-  status                    String  @default("DRAFT") // DRAFT, SUBMITTED, ACCEPTED, REJECTED
-  submittedAt               DateTime?
-  anafReferenceNumber       String?
-
-  createdAt                 DateTime @default(now())
-  updatedAt                 DateTime @updatedAt
-
-  @@unique([userId, cui, month, year])
-  @@index([userId])
-  @@index([cui])
-  @@index([year, month])
-  @@index([status])
-}
-
-// VAT D394 Quarterly Declarations
-model VatD394Declaration {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-
-  cui             String
-  companyName     String
-  quarter         Int           // 1-4
-  year            Int
-
-  // Section 1 - Acquisitions
-  acquisitions              Json? // Array of EuTransactionDto
-  totalAcquisitionsBase     Decimal @db.Decimal(14, 2)
-  totalAcquisitionsVat      Decimal @db.Decimal(14, 2)
-
-  // Section 2 - Deliveries
-  deliveries                Json? // Array of EuTransactionDto
-  totalDeliveriesValue      Decimal @db.Decimal(14, 2)
-
-  // Section 3 - Services
-  servicesProvided          Json? // Array of EuTransactionDto
-  totalServicesProvidedValue Decimal @db.Decimal(14, 2)
-  servicesReceived          Json? // Array of EuTransactionDto
-  totalServicesReceivedBase Decimal @db.Decimal(14, 2)
-  totalServicesReceivedVat  Decimal @db.Decimal(14, 2)
-
-  // Section 4 - Triangular operations
-  triangularSimplification  Decimal? @db.Decimal(14, 2)
-  triangularDeliveries      Decimal? @db.Decimal(14, 2)
-  triangularAcquisitions    Decimal? @db.Decimal(14, 2)
-
-  // Section 5 - Corrections
-  acquisitionsCorrectionsBase   Decimal? @db.Decimal(14, 2)
-  acquisitionsCorrectionsVat    Decimal? @db.Decimal(14, 2)
-  deliveriesCorrectionsValue    Decimal? @db.Decimal(14, 2)
-  servicesProvidedCorrectionsValue Decimal? @db.Decimal(14, 2)
-  servicesReceivedCorrectionsBase  Decimal? @db.Decimal(14, 2)
-  servicesReceivedCorrectionsVat   Decimal? @db.Decimal(14, 2)
-
-  // VIES validation
-  viesValidated             Boolean @default(false)
-  viesValidationDate        String?
-  invalidVatIds             String[] @default([])
-
-  // References to monthly D300
-  monthlyD300Ids            String[] @default([])
-  isReconciled              Boolean @default(false)
-
-  // Additional data
-  notes                     String? @db.Text
-  isAmendment               Boolean @default(false)
-  originalDeclarationNumber String?
-  legalRepresentativeName   String?
-  legalRepresentativeCnp    String?
-
-  // Status and submission
-  status                    String  @default("DRAFT") // DRAFT, SUBMITTED, ACCEPTED, REJECTED
-  submittedAt               DateTime?
-  anafReferenceNumber       String?
-
-  createdAt                 DateTime @default(now())
-  updatedAt                 DateTime @updatedAt
-
-  @@unique([userId, cui, quarter, year])
-  @@index([userId])
-  @@index([cui])
-  @@index([year, quarter])
-  @@index([status])
-}
-
-// Services Module - Business Registration
-model SrlRegistration {
-  id                   String   @id @default(cuid())
-  userId               String
-  user                 User     @relation(fields: [userId], references: [id])
-
-  status               String   // DRAFT, SUBMITTED, UNDER_REVIEW, APPROVED, COMPLETED, REJECTED, CANCELLED
-  companyType          String
-  companyName          String
-  alternativeName1     String?
-  alternativeName2     String?
-  county               String
-  city                 String
-  sector               String?
-  street               String
-  streetNumber         String
-  building             String?
-  staircase            String?
-  floor                String?
-  apartment            String?
-  postalCode           String
-  shareCapital         Decimal  @db.Decimal(14, 2)
-  totalShares          Int
-  shareNominalValue    Decimal  @db.Decimal(14, 2)
-  businessPurpose      String   @db.Text
-  companyDuration      Int      @default(99)
-  contactEmail         String
-  contactPhone         String
-  notes                String?  @db.Text
-  registrationFee      Decimal  @db.Decimal(10, 2)
-  onrcFee              Decimal  @db.Decimal(10, 2)
-  serviceFee           Decimal  @db.Decimal(10, 2)
-  cui                  String?
-  registrationNumber   String?
-  onrcReferenceNumber  String?
-  submittedAt          DateTime?
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
-
-  shareholders         Shareholder[]
-  administrators       Administrator[]
-  activities           CompanyActivity[]
-
-  @@index([userId])
-  @@index([status])
-  @@index([cui])
-}
-
-model Shareholder {
-  id                 String   @id @default(cuid())
-  registrationId     String
-  registration       SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
-
-  type               String   // INDIVIDUAL, COMPANY
-  name               String
-  cnp                String?
-  cui                String?
-  address            String
-  email              String
-  phone              String?
-  shares             Int
-  contribution       Decimal  @db.Decimal(14, 2)
-  percentage         Decimal  @db.Decimal(5, 2)
-  createdAt          DateTime @default(now())
-
-  @@index([registrationId])
-}
-
-model Administrator {
-  id                     String   @id @default(cuid())
-  registrationId         String
-  registration           SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
-
-  name                   String
-  cnp                    String
-  address                String
-  email                  String
-  phone                  String?
-  isSoleAdministrator    Boolean  @default(false)
-  createdAt              DateTime @default(now())
-
-  @@index([registrationId])
-}
-
-model CompanyActivity {
-  id                 String   @id @default(cuid())
-  registrationId     String
-  registration       SrlRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
-
-  caenCode           String
-  description        String
-  isPrimary          Boolean  @default(false)
-  createdAt          DateTime @default(now())
-
-  @@index([registrationId])
-  @@index([caenCode])
-}
-
-model PfaRegistration {
-  id                   String   @id @default(cuid())
-  userId               String
-  user                 User     @relation(fields: [userId], references: [id])
-
-  status               String   // DRAFT, SUBMITTED, UNDER_REVIEW, APPROVED, COMPLETED, REJECTED, CANCELLED
-  fullName             String
-  cnp                  String   @unique
-  idCardNumber         String
-  idCardIssuedBy       String
-  idCardIssuedDate     DateTime
-  county               String
-  city                 String
-  sector               String?
-  street               String
-  streetNumber         String
-  building             String?
-  staircase            String?
-  floor                String?
-  apartment            String?
-  postalCode           String
-  email                String
-  phone                String
-  tradeName            String?
-  activityType         String
-  activityDescription  String   @db.Text
-  businessAddress      String?
-  needsCommercialSpace Boolean  @default(false)
-  expectedEmployees    Int      @default(0)
-  notes                String?  @db.Text
-  registrationFee      Decimal  @db.Decimal(10, 2)
-  anafFee              Decimal  @db.Decimal(10, 2)
-  serviceFee           Decimal  @db.Decimal(10, 2)
-  cui                  String?
-  anafReferenceNumber  String?
-  submittedAt          DateTime?
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
-
-  activities           PfaActivity[]
-
-  @@index([userId])
-  @@index([status])
-  @@index([cnp])
-  @@index([cui])
-}
-
-model PfaActivity {
-  id                 String   @id @default(cuid())
-  registrationId     String
-  registration       PfaRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
-
-  caenCode           String
-  description        String
-  isPrimary          Boolean  @default(false)
-  createdAt          DateTime @default(now())
-
-  @@index([registrationId])
-}
-
-// HR Module
-model Employee {
-  id              String        @id @default(cuid())
-  userId          String        // Company owner
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  firstName     String
-  lastName      String
-  email         String
-  cnp           String?     // Romanian personal ID
-  position      String
-  department    String?
-
-  hireDate      DateTime
-  salary        Decimal     @db.Decimal(10, 2)
-  contractType  String      @default("FULL_TIME")
-
-  status        EmployeeStatus @default(ACTIVE)
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-
-  payrolls      Payroll[]
-  timesheets    Timesheet[]
-
-  // Fleet Management relations (for Munich delivery operations)
-  assignedVehicles Vehicle[]       @relation("AssignedVehicle")
-  driverRoutes     DeliveryRoute[] @relation("DriverRoutes")
-
-  // BOP Module relations
-  hrContracts      HRContract[]
-  hrForms          HRForm[]
-  hseIncidents     HSEIncident[]
-  hseSafetyTrainings HSESafetyTraining[]
-
-  @@index([userId])
-  @@index([organizationId])
-}
-
 enum EmployeeStatus {
   ACTIVE
   ON_LEAVE
   TERMINATED
-}
-
-model Payroll {
-  id            String      @id @default(cuid())
-  employeeId    String
-  employee      Employee    @relation(fields: [employeeId], references: [id])
-
-  period        String      // YYYY-MM
-  grossSalary   Decimal     @db.Decimal(10, 2)
-  netSalary     Decimal     @db.Decimal(10, 2)
-  taxes         Decimal     @db.Decimal(10, 2)
-  contributions Decimal     @db.Decimal(10, 2)
-
-  status        PayrollStatus @default(PENDING)
-  paidAt        DateTime?
-
-  createdAt     DateTime    @default(now())
-
-  @@unique([employeeId, period])
-  @@index([employeeId])
 }
 
 enum PayrollStatus {
@@ -883,88 +2251,10 @@ enum PayrollStatus {
   PAID
 }
 
-// Timesheet - Track driver working hours for logistics
-model Timesheet {
-  id            String          @id @default(cuid())
-  employeeId    String
-  employee      Employee        @relation(fields: [employeeId], references: [id])
-
-  date          DateTime
-  startTime     DateTime
-  endTime       DateTime
-  breakMinutes  Int             @default(0)
-  workedHours   Float           @default(0)
-
-  // Link to delivery route (for auto-generated timesheets)
-  routeId       String?
-
-  notes         String?
-  status        TimesheetStatus @default(PENDING)
-
-  approvedAt    DateTime?
-  approvedBy    String?
-
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-
-  @@index([employeeId])
-  @@index([date])
-  @@index([status])
-}
-
 enum TimesheetStatus {
   PENDING
   APPROVED
   REJECTED
-}
-
-// Partners/Customers Management
-model Partner {
-  id              String        @id @default(cuid())
-  userId          String        // Owner company
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  // Partner details
-  name          String
-  cui           String?       // Romanian company ID (CUI/CIF)
-  regCom        String?       // Trade registry number (J40/1234/2024)
-  address       String?
-  city          String?
-  county        String?
-  country       String        @default("Romania")
-  postalCode    String?
-
-  // Contact info
-  email         String?
-  phone         String?
-  contactPerson String?
-
-  // Banking info
-  bankName      String?
-  bankAccount   String?       // IBAN
-
-  // Partner type
-  type          PartnerType   @default(CUSTOMER)
-  isActive      Boolean       @default(true)
-
-  // Stats
-  invoiceCount  Int           @default(0)
-  totalRevenue  Decimal       @default(0) @db.Decimal(14, 2)
-
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-
-  // Relations
-  invoices          Invoice[]
-  recurringInvoices RecurringInvoice[]
-  contracts         Contract[]
-
-  @@unique([userId, cui])
-  @@index([userId])
-  @@index([organizationId])
-  @@index([type])
-  @@index([name])
 }
 
 enum PartnerType {
@@ -973,209 +2263,11 @@ enum PartnerType {
   BOTH
 }
 
-// AI Queries Log
-model AIQuery {
-  id            String      @id @default(cuid())
-  userId        String
-  user          User        @relation(fields: [userId], references: [id])
-
-  question      String
-  answer        String
-  model         String      @default("grok")
-  tokens        Int?
-  latencyMs     Int?
-
-  createdAt     DateTime    @default(now())
-
-  @@index([userId])
-  @@index([createdAt])
-}
-
-// Audit Log for Compliance
-model AuditLog {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  action        String
-  entity        String
-  entityId      String?
-  details       Json?
-  ipAddress     String?
-
-  createdAt     DateTime    @default(now())
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([action])
-  @@index([createdAt])
-  // Composite indexes for compliance audit queries (Sprint 9)
-  @@index([userId, entity, createdAt])      // Entity-specific audit trail
-  @@index([entity, entityId])               // Entity record history
-  @@index([organizationId, action, createdAt]) // Org-level action history
-}
-
-// GDPR Consent Records
-model Consent {
-  id         String   @id @default(cuid())
-  userId     String
-  purpose    String   // ESSENTIAL, ANALYTICS, MARKETING, etc.
-  granted    Boolean
-  ipAddress  String?
-  userAgent  String?
-  timestamp  DateTime @default(now())
-
-  @@unique([userId, purpose])
-  @@index([userId])
-  @@index([purpose])
-}
-
-// GDPR Data Subject Request (DSR)
-model DSRRequest {
-  id               String    @id @default(cuid())
-  userId           String
-  user             User      @relation(fields: [userId], references: [id])
-  type             String    // ACCESS, RECTIFICATION, ERASURE, PORTABILITY
-  status           String    @default("PENDING") // PENDING, PROCESSING, COMPLETED, REJECTED
-  reason           String?
-  additionalDetails String?
-  ipAddress        String?
-  adminNotes       String?
-  rejectionReason  String?
-  processedBy      String?
-  processedAt      DateTime?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-
-  @@index([userId])
-  @@index([status])
-}
-
-// OCR Templates for document processing
-model OCRTemplate {
-  id              String        @id @default(cuid())
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  name          String
-  description   String?
-  documentType  DocumentType
-  language      String        @default("ro")  // ro, de, en
-
-  // Zone definitions for field extraction
-  zones         Json          // Array of {fieldName, x, y, width, height}
-
-  // AI extraction hints
-  aiPrompt      String?       // Custom prompt for Claude Vision
-
-  // Matching criteria
-  matchPatterns Json?         // Regex patterns to auto-match this template
-
-  createdById   String?
-  isSystem      Boolean       @default(false)  // Pre-built templates
-  usageCount    Int           @default(0)
-
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-
-  extractedFields ExtractedField[]
-
-  @@index([organizationId])
-  @@index([documentType])
-  @@index([language])
-}
-
-// Extracted fields from OCR processing
-model ExtractedField {
-  id              String        @id @default(cuid())
-  documentId      String
-  document        Document      @relation(fields: [documentId], references: [id], onDelete: Cascade)
-
-  templateId      String?
-  template        OCRTemplate?  @relation(fields: [templateId], references: [id])
-
-  // Extracted invoice fields
-  invoiceNumber   String?
-  invoiceDate     DateTime?
-  dueDate         DateTime?
-  partnerName     String?
-  partnerCui      String?
-  partnerAddress  String?
-  netAmount       Decimal?      @db.Decimal(12, 2)
-  vatRate         Decimal?      @db.Decimal(5, 2)
-  vatAmount       Decimal?      @db.Decimal(12, 2)
-  grossAmount     Decimal?      @db.Decimal(12, 2)
-  currency        String?
-
-  // Receipt-specific
-  receiptNumber   String?
-  cashRegisterNo  String?
-
-  // Contract-specific
-  contractNumber  String?
-  parties         Json?
-  effectiveDate   DateTime?
-
-  // Confidence scores per field
-  confidences       Json         // {"invoiceNumber": 0.95, ...}
-  overallConfidence Float
-
-  // Raw OCR output
-  rawText           String?
-  boundingBoxes     Json?        // For visualization
-
-  // Manual corrections
-  wasManuallyEdited Boolean      @default(false)
-  editedFields      Json?
-
-  createdAt         DateTime     @default(now())
-
-  @@index([documentId])
-  @@index([templateId])
-  @@index([overallConfidence])
-}
-
 enum DocumentType {
   INVOICE
   RECEIPT
   CONTRACT
   OTHER
-}
-
-// ===== PROJECT MANAGEMENT (Scrum) =====
-
-// Epic - High-level feature grouping (e.g., "Finance Module", "HR Module")
-model Epic {
-  id            String      @id @default(cuid())
-  code          String      @unique  // E.g., "FINANCE", "HR", "COMPLIANCE"
-  name          String
-  description   String?
-  color         String      @default("#3B82F6")
-  icon          String?     // Lucide icon name
-
-  // Module mapping
-  module        ModuleType
-  priority      Int         @default(0)
-
-  // Status tracking
-  status        EpicStatus  @default(PLANNED)
-  progress      Int         @default(0)  // 0-100%
-
-  // Dates
-  startDate     DateTime?
-  targetDate    DateTime?
-  completedAt   DateTime?
-
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-
-  sprints       Sprint[]
-  tasks         Task[]
-
-  @@index([module])
-  @@index([status])
 }
 
 enum ModuleType {
@@ -1198,95 +2290,11 @@ enum EpicStatus {
   ON_HOLD
 }
 
-// Sprint - Time-boxed iteration
-model Sprint {
-  id            String        @id @default(cuid())
-  name          String
-  goal          String?
-
-  epicId        String
-  epic          Epic          @relation(fields: [epicId], references: [id])
-
-  // Sprint dates
-  startDate     DateTime
-  endDate       DateTime
-
-  // Status
-  status        SprintStatus  @default(PLANNED)
-
-  // Velocity tracking
-  plannedPoints Int           @default(0)
-  completedPoints Int         @default(0)
-
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-
-  tasks         Task[]
-
-  @@index([epicId])
-  @@index([status])
-  @@index([startDate])
-}
-
 enum SprintStatus {
   PLANNED
   ACTIVE
   COMPLETED
   CANCELLED
-}
-
-// Task - Actionable work item
-model Task {
-  id            String        @id @default(cuid())
-  code          String        @unique  // Auto-generated: EPIC-001
-  title         String
-  description   String?
-
-  epicId        String
-  epic          Epic          @relation(fields: [epicId], references: [id])
-
-  sprintId      String?
-  sprint        Sprint?       @relation(fields: [sprintId], references: [id])
-
-  // Task details
-  type          TaskType      @default(TASK)
-  priority      TaskPriority  @default(MEDIUM)
-  status        TaskStatus    @default(BACKLOG)
-
-  // Estimation
-  storyPoints   Int?
-  estimatedHours Float?
-  actualHours   Float?
-
-  // Assignee
-  assigneeId    String?
-
-  // Dependencies
-  blockedById   String?
-  blockedBy     Task?         @relation("TaskBlocks", fields: [blockedById], references: [id])
-  blocks        Task[]        @relation("TaskBlocks")
-
-  // Labels/tags
-  labels        String[]      @default([])
-
-  // Compliance reference
-  complianceRef String?       // E.g., "ANAF-D406", "GDPR-ART17"
-
-  // Dates
-  dueDate       DateTime?
-  startedAt     DateTime?
-  completedAt   DateTime?
-
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-
-  comments      TaskComment[]
-
-  @@index([epicId])
-  @@index([sprintId])
-  @@index([status])
-  @@index([priority])
-  @@index([type])
 }
 
 enum TaskType {
@@ -1315,107 +2323,22 @@ enum TaskStatus {
   CANCELLED
 }
 
-// Task comments for collaboration
-model TaskComment {
-  id            String      @id @default(cuid())
-  taskId        String
-  task          Task        @relation(fields: [taskId], references: [id], onDelete: Cascade)
-
-  authorId      String?
-  content       String
-
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-
-  @@index([taskId])
-}
-
-// ===== ANAF SPV INTEGRATION =====
-
-// ANAF SPV OAuth2 Token Storage
-model SpvToken {
-  id              String        @id @default(cuid())
-  userId          String        @unique  // One token per user/company
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-  cui             String        // Romanian company CUI linked to this token
-
-  // OAuth2 Tokens
-  accessToken     String      @db.Text
-  refreshToken    String?     @db.Text
-  tokenType       String      @default("Bearer")
-
-  // Token metadata
-  expiresAt       DateTime
-  refreshExpiresAt DateTime?
-  scope           String?     // e-factura, saft, etc.
-
-  // Connection status
-  status          SpvStatus   @default(PENDING)
-  lastUsedAt      DateTime?
-  lastError       String?
-
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-
-  @@index([organizationId])
-  @@index([cui])
-  @@index([status])
-}
-
 enum SpvStatus {
-  PENDING       // Initial state, not yet connected
-  ACTIVE        // Connected and token valid
-  EXPIRED       // Token expired, needs refresh
-  REVOKED       // User revoked access
-  ERROR         // Connection error
-}
-
-// SPV Message/Notification from ANAF
-model SpvMessage {
-  id              String        @id @default(cuid())
-  userId          String
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-  cui             String
-
-  // Message details from ANAF
-  messageId       String        @unique  // ANAF message ID
-  messageType     SpvMessageType
-  subject         String
-  content         String?       @db.Text
-  xmlContent      String?       @db.Text
-
-  // Related entities
-  relatedInvoice  String?       // e-Factura reference
-  relatedSaft     String?       // SAF-T reference
-  uploadIndex     String?       // ANAF upload index
-
-  // Status
-  status          SpvMessageStatus @default(UNREAD)
-  readAt          DateTime?
-  processedAt     DateTime?
-
-  // ANAF timestamps
-  anafCreatedAt   DateTime
-  receivedAt      DateTime      @default(now())
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([cui])
-  @@index([status])
-  @@index([messageType])
-  @@index([anafCreatedAt])
+  PENDING
+  ACTIVE
+  EXPIRED
+  REVOKED
+  ERROR
 }
 
 enum SpvMessageType {
-  EFACTURA_RECEIVED     // Incoming e-Factura
-  EFACTURA_RESPONSE     // Response to submitted e-Factura
-  EFACTURA_ERROR        // e-Factura submission error
-  SAFT_RESPONSE         // SAF-T submission response
-  SAFT_ERROR            // SAF-T submission error
-  NOTIFICATION          // General ANAF notification
-  DEADLINE_REMINDER     // Deadline reminder
+  EFACTURA_RECEIVED
+  EFACTURA_RESPONSE
+  EFACTURA_ERROR
+  SAFT_RESPONSE
+  SAFT_ERROR
+  NOTIFICATION
+  DEADLINE_REMINDER
   OTHER
 }
 
@@ -1426,319 +2349,36 @@ enum SpvMessageStatus {
   ARCHIVED
 }
 
-// SPV Submission Log - Track all submissions to ANAF
-model SpvSubmission {
-  id              String            @id @default(cuid())
-  userId          String
-  organizationId  String?
-  organization    Organization?     @relation(fields: [organizationId], references: [id])
-  cui             String
-
-  // Submission details
-  submissionType  SpvSubmissionType
-  uploadIndex     String            @unique  // ANAF upload/index reference
-
-  // Document reference
-  documentId      String?           // Internal document ID
-  documentType    String?           // invoice, saft, etc.
-  period          String?           // For SAF-T: YYYY-MM
-
-  // XML data (optional storage)
-  xmlHash         String?           // SHA256 hash of submitted XML
-  xmlSize         Int?              // Size in bytes
-
-  // Status tracking
-  status          SpvSubmissionStatus @default(PENDING)
-  anafStatus      String?           // Raw ANAF status
-  anafMessages    Json?             // Array of ANAF response messages
-
-  // Timestamps
-  submittedAt     DateTime          @default(now())
-  lastCheckedAt   DateTime?
-  completedAt     DateTime?
-
-  // Error tracking
-  errorCode       String?
-  errorMessage    String?
-  retryCount      Int               @default(0)
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([cui])
-  @@index([status])
-  @@index([submissionType])
-  @@index([uploadIndex])
-  @@index([submittedAt])
-}
-
 enum SpvSubmissionType {
-  EFACTURA_SEND     // Sending e-Factura
-  EFACTURA_DOWNLOAD // Downloading received e-Facturi
-  SAFT_D406         // SAF-T D406 submission
-  CUI_VALIDATION    // CUI/CIF validation
-  VAT_CHECK         // VAT payer status check
+  EFACTURA_SEND
+  EFACTURA_DOWNLOAD
+  SAFT_D406
+  CUI_VALIDATION
+  VAT_CHECK
 }
 
 enum SpvSubmissionStatus {
-  PENDING           // Submitted, awaiting response
-  PROCESSING        // ANAF is processing
-  ACCEPTED          // Accepted by ANAF
-  REJECTED          // Rejected by ANAF
-  ERROR             // Technical error
-  CANCELLED         // Cancelled by user
+  PENDING
+  PROCESSING
+  ACCEPTED
+  REJECTED
+  ERROR
+  CANCELLED
 }
-
-// ===== FLEET MANAGEMENT (Parcel Delivery) =====
-
-// Vehicle - represents a delivery van in the fleet
-model Vehicle {
-  id              String          @id @default(cuid())
-  userId          String
-  organizationId  String?
-
-  // Vehicle identification
-  licensePlate    String          @unique  // e.g., "M-FL 1234" (Munich plates)
-  vin             String?         @unique  // Vehicle Identification Number
-  make            String                   // e.g., "Mercedes-Benz"
-  model           String                   // e.g., "Sprinter"
-  year            Int?                     // Manufacturing year
-
-  // Vehicle specs for parcel delivery
-  type            VehicleType     @default(VAN)
-  maxPayloadKg    Decimal?        @db.Decimal(10, 2)  // Max cargo weight
-  cargoVolumeM3   Decimal?        @db.Decimal(10, 2)  // Cargo volume in m³
-  fuelType        FuelType        @default(DIESEL)
-
-  // Location tracking (Munich area)
-  currentLat      Decimal?        @db.Decimal(10, 7)
-  currentLng      Decimal?        @db.Decimal(10, 7)
-  lastLocationAt  DateTime?
-
-  // Status
-  status          VehicleStatus   @default(AVAILABLE)
-  mileage         Int?            // Current odometer reading
-
-  // Maintenance
-  nextServiceDate DateTime?
-  lastServiceDate DateTime?
-  insuranceExpiry DateTime?
-  tuvExpiry       DateTime?       // German TÜV inspection
-
-  // Driver assignment
-  assignedDriverId String?
-  assignedDriver   Employee?      @relation("AssignedVehicle", fields: [assignedDriverId], references: [id])
-
-  // Costs tracking
-  monthlyLeaseCost Decimal?       @db.Decimal(10, 2)
-  insuranceCost    Decimal?       @db.Decimal(10, 2)
-
-  // Notes
-  notes           String?
-
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-
-  // Relations
-  deliveryRoutes  DeliveryRoute[]
-  fuelLogs        FuelLog[]
-  maintenanceLogs MaintenanceLog[]
-  positions       VehiclePosition[]
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([licensePlate])
-  @@index([status])
-  @@index([assignedDriverId])
-}
-
-// DeliveryRoute - represents a planned delivery route
-model DeliveryRoute {
-  id              String          @id @default(cuid())
-  userId          String
-  organizationId  String?
-
-  // Route identification
-  routeName       String?         // e.g., "Munich North - AM Route"
-  routeDate       DateTime        @db.Date
-
-  // Vehicle and driver
-  vehicleId       String
-  vehicle         Vehicle         @relation(fields: [vehicleId], references: [id])
-  driverId        String?
-  driver          Employee?       @relation("DriverRoutes", fields: [driverId], references: [id])
-
-  // Route details
-  totalStops      Int             @default(0)
-  completedStops  Int             @default(0)
-  totalParcels    Int             @default(0)
-  deliveredParcels Int            @default(0)
-  failedDeliveries Int            @default(0)
-
-  // Distance and time
-  plannedDistanceKm Decimal?      @db.Decimal(10, 2)
-  actualDistanceKm  Decimal?      @db.Decimal(10, 2)
-  plannedDurationMin Int?
-  actualDurationMin  Int?
-
-  // Timing
-  plannedStartTime DateTime?
-  actualStartTime  DateTime?
-  plannedEndTime   DateTime?
-  actualEndTime    DateTime?
-
-  // Status
-  status          RouteStatus     @default(PLANNED)
-
-  // Munich area zones
-  deliveryZone    String?         // e.g., "Munich-Schwabing", "Munich-Pasing"
-
-  // Notes
-  notes           String?
-
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-
-  // Relations
-  stops           DeliveryStop[]
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([vehicleId])
-  @@index([driverId])
-  @@index([routeDate])
-  @@index([status])
-}
-
-// DeliveryStop - individual delivery stop on a route
-model DeliveryStop {
-  id              String          @id @default(cuid())
-  routeId         String
-  route           DeliveryRoute   @relation(fields: [routeId], references: [id], onDelete: Cascade)
-
-  // Stop order
-  stopOrder       Int             // Sequence number on route
-
-  // Address (Munich area)
-  recipientName   String
-  recipientPhone  String?         // For SMS notifications
-  recipientEmail  String?         // For email notifications
-  streetAddress   String
-  postalCode      String          // German postal codes
-  city            String          @default("München")
-
-  // Coordinates
-  latitude        Decimal?        @db.Decimal(10, 7)
-  longitude       Decimal?        @db.Decimal(10, 7)
-
-  // Parcel info
-  parcelCount     Int             @default(1)
-  trackingNumbers String[]        // Array of tracking numbers
-
-  // Status
-  status          DeliveryStopStatus @default(PENDING)
-  attemptCount    Int             @default(0)
-
-  // Timing
-  estimatedArrival DateTime?
-  actualArrival    DateTime?
-  completedAt      DateTime?
-
-  // Proof of delivery
-  signature       String?         // Base64 signature
-  photoUrl        String?         // Photo proof URL
-  recipientNote   String?         // Note from recipient
-
-  // Failure info
-  failureReason   DeliveryFailureReason?
-  failureNote     String?
-
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-
-  @@index([routeId])
-  @@index([status])
-  @@index([postalCode])
-}
-
-// FuelLog - track fuel consumption
-model FuelLog {
-  id              String          @id @default(cuid())
-  vehicleId       String
-  vehicle         Vehicle         @relation(fields: [vehicleId], references: [id])
-  driverId        String?
-
-  // Fuel details
-  fuelType        FuelType
-  liters          Decimal         @db.Decimal(10, 2)
-  pricePerLiter   Decimal         @db.Decimal(10, 3)
-  totalCost       Decimal         @db.Decimal(10, 2)
-
-  // Odometer
-  odometerReading Int
-
-  // Location
-  stationName     String?
-  stationAddress  String?
-
-  // Date
-  fueledAt        DateTime        @default(now())
-
-  createdAt       DateTime        @default(now())
-
-  @@index([vehicleId])
-  @@index([fueledAt])
-}
-
-// MaintenanceLog - track vehicle maintenance
-model MaintenanceLog {
-  id              String          @id @default(cuid())
-  vehicleId       String
-  vehicle         Vehicle         @relation(fields: [vehicleId], references: [id])
-
-  // Maintenance details
-  type            MaintenanceType
-  description     String
-  odometerReading Int?
-
-  // Costs
-  partsCost       Decimal?        @db.Decimal(10, 2)
-  laborCost       Decimal?        @db.Decimal(10, 2)
-  totalCost       Decimal?        @db.Decimal(10, 2)
-
-  // Vendor
-  vendorName      String?
-  vendorAddress   String?
-  invoiceNumber   String?
-
-  // Dates
-  serviceDate     DateTime        @default(now())
-  nextServiceDate DateTime?
-
-  // Notes
-  notes           String?
-
-  createdAt       DateTime        @default(now())
-
-  @@index([vehicleId])
-  @@index([serviceDate])
-  @@index([type])
-}
-
-// ===== Fleet Management Enums =====
 
 enum VehicleType {
-  VAN             // Standard delivery van
-  LARGE_VAN       // Large capacity van
-  SMALL_TRUCK     // Small delivery truck
-  CARGO_BIKE      // Electric cargo bike
+  VAN
+  LARGE_VAN
+  SMALL_TRUCK
+  CARGO_BIKE
 }
 
 enum VehicleStatus {
-  AVAILABLE       // Ready for use
-  IN_USE          // Currently on route
-  MAINTENANCE     // Under maintenance
-  OUT_OF_SERVICE  // Temporarily unavailable
-  RETIRED         // No longer in use
+  AVAILABLE
+  IN_USE
+  MAINTENANCE
+  OUT_OF_SERVICE
+  RETIRED
 }
 
 enum FuelType {
@@ -1746,34 +2386,34 @@ enum FuelType {
   PETROL
   ELECTRIC
   HYBRID
-  CNG             // Compressed Natural Gas
+  CNG
 }
 
 enum RouteStatus {
-  PLANNED         // Route planned
-  IN_PROGRESS     // Route in progress
-  COMPLETED       // All deliveries done
-  PARTIAL         // Some deliveries failed
-  CANCELLED       // Route cancelled
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  PARTIAL
+  CANCELLED
 }
 
 enum DeliveryStopStatus {
-  PENDING         // Not yet attempted
-  IN_PROGRESS     // Driver en route
-  DELIVERED       // Successfully delivered
-  ATTEMPTED       // Attempted but failed
-  FAILED          // Delivery failed
-  RETURNED        // Parcel returned
+  PENDING
+  IN_PROGRESS
+  DELIVERED
+  ATTEMPTED
+  FAILED
+  RETURNED
 }
 
 enum DeliveryFailureReason {
-  RECIPIENT_ABSENT     // No one home
-  WRONG_ADDRESS        // Address incorrect
-  REFUSED              // Recipient refused
-  DAMAGED              // Parcel damaged
-  ACCESS_ISSUE         // Cannot access building
-  WEATHER              // Bad weather
-  VEHICLE_ISSUE        // Vehicle breakdown
+  RECIPIENT_ABSENT
+  WRONG_ADDRESS
+  REFUSED
+  DAMAGED
+  ACCESS_ISSUE
+  WEATHER
+  VEHICLE_ISSUE
   OTHER
 }
 
@@ -1781,7 +2421,7 @@ enum MaintenanceType {
   OIL_CHANGE
   TIRE_ROTATION
   BRAKE_SERVICE
-  TUV_INSPECTION      // German technical inspection
+  TUV_INSPECTION
   REPAIR
   SCHEDULED_SERVICE
   UNSCHEDULED_REPAIR
@@ -1789,138 +2429,12 @@ enum MaintenanceType {
   OTHER
 }
 
-// ===== COURIER INTEGRATION =====
-
 enum CourierProvider {
   DPD
   GLS
   DHL
   UPS
   HERMES
-}
-
-// CourierDelivery - track deliveries from courier partners for subcontractor reconciliation
-model CourierDelivery {
-  id              String          @id @default(cuid())
-  userId          String
-
-  // Tracking
-  trackingNumber  String
-  provider        CourierProvider
-  status          String
-
-  // Recipient
-  recipientName   String?
-  recipientAddress String?
-
-  // Delivery info
-  deliveredAt     DateTime?
-
-  // Payment reconciliation
-  amount          Decimal?        @db.Decimal(10, 2)
-  currency        String          @default("EUR")
-
-  // Timestamps
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-
-  @@unique([trackingNumber, provider])
-  @@index([userId])
-  @@index([provider])
-  @@index([status])
-  @@index([createdAt])
-}
-
-// ===== GPS TRACKING =====
-
-// VehiclePosition - Track GPS position history for live tracking
-model VehiclePosition {
-  id              String          @id @default(cuid())
-  vehicleId       String
-  vehicle         Vehicle         @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
-
-  // GPS coordinates
-  latitude        Decimal         @db.Decimal(10, 7)
-  longitude       Decimal         @db.Decimal(10, 7)
-  altitude        Decimal?        @db.Decimal(10, 2)
-
-  // Speed and heading
-  speed           Decimal?        @db.Decimal(10, 2)  // km/h
-  heading         Int?            // 0-360 degrees
-
-  // Accuracy
-  accuracy        Decimal?        @db.Decimal(10, 2)  // meters
-
-  // Status
-  ignition        Boolean         @default(true)
-  engineRunning   Boolean         @default(true)
-
-  // Optional route link
-  routeId         String?
-
-  // Timestamps
-  recordedAt      DateTime        @default(now())
-  receivedAt      DateTime        @default(now())
-
-  @@index([vehicleId])
-  @@index([recordedAt])
-  @@index([routeId])
-}
-
-// Geofence - Define delivery zones and alerts
-model Geofence {
-  id              String          @id @default(cuid())
-  userId          String
-  organizationId  String?
-
-  // Geofence definition
-  name            String
-  description     String?
-  type            GeofenceType    @default(CIRCLE)
-
-  // For circular geofences
-  centerLat       Decimal?        @db.Decimal(10, 7)
-  centerLng       Decimal?        @db.Decimal(10, 7)
-  radiusMeters    Int?
-
-  // For polygon geofences (array of lat/lng points)
-  polygonPoints   Json?           // [{lat: number, lng: number}]
-
-  // Alert settings
-  alertOnEntry    Boolean         @default(true)
-  alertOnExit     Boolean         @default(true)
-  isActive        Boolean         @default(true)
-
-  // Munich delivery zones
-  deliveryZone    String?         // e.g., "Munich-Schwabing"
-
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-
-  events          GeofenceEvent[]
-
-  @@index([userId])
-  @@index([organizationId])
-  @@index([isActive])
-}
-
-// GeofenceEvent - Track geofence entry/exit events
-model GeofenceEvent {
-  id              String          @id @default(cuid())
-  geofenceId      String
-  geofence        Geofence        @relation(fields: [geofenceId], references: [id], onDelete: Cascade)
-  vehicleId       String
-
-  eventType       GeofenceEventType
-  latitude        Decimal         @db.Decimal(10, 7)
-  longitude       Decimal         @db.Decimal(10, 7)
-
-  // Timestamps
-  occurredAt      DateTime        @default(now())
-
-  @@index([geofenceId])
-  @@index([vehicleId])
-  @@index([occurredAt])
 }
 
 enum GeofenceType {
@@ -1931,57 +2445,6 @@ enum GeofenceType {
 enum GeofenceEventType {
   ENTER
   EXIT
-}
-
-// ===== GERMAN VAT RATES =====
-// Standard: 19%
-// Reduced: 7% (food, books, public transport)
-// Logistics/transport services: typically 19%
-
-// ===== BOP EXTENSION: HR CONTRACTS MODULE =====
-
-model HRContract {
-  id            String   @id @default(cuid())
-  userId        String
-  employeeId    String
-  employee      Employee @relation(fields: [employeeId], references: [id])
-
-  type          HRContractType
-  status        HRContractStatus @default(DRAFT)
-
-  startDate     DateTime
-  endDate       DateTime?
-  probationEnd  DateTime?
-  salary        Decimal  @db.Decimal(10, 2)
-  currency      String   @default("RON")
-  workHours     Int      @default(40)
-  position      String
-  department    String?
-
-  nonCompete    Boolean  @default(false)
-  telework      Boolean  @default(false)
-  teleworkDays  Int?
-
-  signedAt      DateTime?
-  signatureUrl  String?
-  signedByEmployee Boolean @default(false)
-  signedByEmployer Boolean @default(false)
-
-  revisalSubmitted Boolean @default(false)
-  revisalId        String?
-  revisalStatus    String?
-
-  templateId    String?
-  templateVersion Int?
-
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  amendments    HRContractAmendment[]
-
-  @@index([userId])
-  @@index([employeeId])
-  @@index([status])
 }
 
 enum HRContractType {
@@ -2004,48 +2467,6 @@ enum HRContractStatus {
   EXPIRED
 }
 
-model HRContractAmendment {
-  id          String   @id @default(cuid())
-  contractId  String
-  contract    HRContract @relation(fields: [contractId], references: [id])
-
-  reason      String
-  changes     Json
-  effectiveDate DateTime
-
-  signedAt    DateTime?
-
-  createdAt   DateTime @default(now())
-
-  @@index([contractId])
-}
-
-model HRForm {
-  id          String   @id @default(cuid())
-  userId      String
-  employeeId  String?
-  employee    Employee? @relation(fields: [employeeId], references: [id])
-
-  type        HRFormType
-  title       String
-  status      HRFormStatus @default(DRAFT)
-  data        Json
-
-  submittedAt DateTime?
-  approvedAt  DateTime?
-  approvedBy  String?
-  rejectedAt  DateTime?
-  rejectedBy  String?
-  rejectionReason String?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([userId])
-  @@index([type])
-  @@index([status])
-}
-
 enum HRFormType {
   LEAVE_REQUEST
   MEDICAL_LEAVE
@@ -2066,47 +2487,6 @@ enum HRFormStatus {
   APPROVED
   REJECTED
   CANCELLED
-}
-
-// ===== BOP EXTENSION: HSE MODULE =====
-
-model HSEIncident {
-  id          String   @id @default(cuid())
-  userId      String
-  reporterId  String
-
-  type        HSEIncidentType
-  severity    HSEIncidentSeverity
-  status      HSEIncidentStatus @default(REPORTED)
-
-  title       String
-  description String   @db.Text
-
-  location    String
-  latitude    Float?
-  longitude   Float?
-  siteId      String?
-
-  photoUrls   String[]
-  videoUrls   String[]
-
-  occurredAt  DateTime
-  reportedAt  DateTime @default(now())
-  resolvedAt  DateTime?
-
-  rootCause   String?  @db.Text
-  correctiveActions String? @db.Text
-  preventiveActions String? @db.Text
-
-  employeeId  String?
-  employee    Employee? @relation(fields: [employeeId], references: [id])
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([userId])
-  @@index([severity])
-  @@index([status])
 }
 
 enum HSEIncidentType {
@@ -2136,42 +2516,6 @@ enum HSEIncidentStatus {
   CLOSED
 }
 
-model HSERiskAssessment {
-  id          String   @id @default(cuid())
-  userId      String
-
-  title       String
-  description String?  @db.Text
-
-  location    String
-  department  String?
-  processArea String?
-
-  hazards     Json
-  riskLevel   HSERiskLevel
-  likelihood  Int
-  impact      Int
-  riskScore   Int
-
-  existingControls String? @db.Text
-  proposedControls String? @db.Text
-  residualRisk     HSERiskLevel?
-
-  assessedAt  DateTime @default(now())
-  reviewDueAt DateTime
-  reviewedAt  DateTime?
-  reviewedBy  String?
-
-  status      HSERiskStatus @default(RISK_DRAFT)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([userId])
-  @@index([riskLevel])
-  @@index([status])
-}
-
 enum HSERiskLevel {
   VERY_LOW
   LOW
@@ -2187,33 +2531,6 @@ enum HSERiskStatus {
   RISK_ARCHIVED
 }
 
-model HSESafetyTraining {
-  id          String   @id @default(cuid())
-  userId      String
-  employeeId  String
-  employee    Employee @relation(fields: [employeeId], references: [id])
-
-  trainingType HSESafetyTrainingType
-  title       String
-  description String?
-
-  scheduledAt DateTime
-  completedAt DateTime?
-  expiresAt   DateTime?
-
-  certificateUrl String?
-  score       Float?
-  passed      Boolean?
-
-  linkedToPayroll Boolean @default(false)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([userId])
-  @@index([employeeId])
-}
-
 enum HSESafetyTrainingType {
   SSM_INDUCTION
   SSM_PERIODIC
@@ -2225,44 +2542,6 @@ enum HSESafetyTrainingType {
   EMERGENCY_RESPONSE
   ERGONOMICS
   TRAINING_CUSTOM
-}
-
-// ===== BOP EXTENSION: LMS MODULE =====
-
-model LMSCourse {
-  id          String   @id @default(cuid())
-
-  title       String
-  slug        String   @unique
-  description String   @db.Text
-
-  category    LMSCourseCategory
-  level       LMSCourseLevel @default(BEGINNER)
-
-  thumbnailUrl String?
-  duration    Int
-
-  price       Decimal? @db.Decimal(10, 2)
-  currency    String   @default("EUR")
-  isFree      Boolean  @default(false)
-
-  language    String   @default("ro")
-  tags        String[]
-
-  status      LMSCourseStatus @default(LMS_DRAFT)
-  publishedAt DateTime?
-
-  hasCertificate Boolean @default(true)
-  certificateTemplate String?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  modules     LMSCourseModule[]
-  enrollments LMSEnrollment[]
-
-  @@index([category])
-  @@index([status])
 }
 
 enum LMSCourseCategory {
@@ -2292,48 +2571,6 @@ enum LMSCourseStatus {
   LMS_ARCHIVED
 }
 
-model LMSCourseModule {
-  id          String   @id @default(cuid())
-  courseId    String
-  course      LMSCourse @relation(fields: [courseId], references: [id])
-
-  title       String
-  description String?
-  order       Int
-  duration    Int
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  lessons     LMSLesson[]
-
-  @@index([courseId])
-}
-
-model LMSLesson {
-  id          String   @id @default(cuid())
-  moduleId    String
-  module      LMSCourseModule @relation(fields: [moduleId], references: [id])
-
-  title       String
-  description String?
-  order       Int
-
-  type        LMSLessonType
-  videoUrl    String?
-  content     String?  @db.Text
-  duration    Int
-
-  attachments String[]
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  progress    LMSLessonProgress[]
-
-  @@index([moduleId])
-}
-
 enum LMSLessonType {
   VIDEO
   TEXT
@@ -2343,132 +2580,11 @@ enum LMSLessonType {
   DOWNLOAD
 }
 
-model LMSEnrollment {
-  id          String   @id @default(cuid())
-  userId      String
-  courseId    String
-  course      LMSCourse @relation(fields: [courseId], references: [id])
-
-  progress    Float    @default(0)
-  startedAt   DateTime @default(now())
-  completedAt DateTime?
-
-  certificateUrl String?
-  certificateIssuedAt DateTime?
-
-  quizScore   Float?
-  passed      Boolean?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  lessonProgress LMSLessonProgress[]
-
-  @@unique([userId, courseId])
-  @@index([userId])
-  @@index([courseId])
-}
-
-model LMSLessonProgress {
-  id          String   @id @default(cuid())
-  enrollmentId String
-  enrollment   LMSEnrollment @relation(fields: [enrollmentId], references: [id])
-  lessonId    String
-  lesson      LMSLesson @relation(fields: [lessonId], references: [id])
-
-  completed   Boolean  @default(false)
-  completedAt DateTime?
-
-  watchedDuration Int?
-  lastPosition    Int?
-
-  attempts    Int      @default(0)
-  bestScore   Float?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@unique([enrollmentId, lessonId])
-}
-
-// ===== BOP EXTENSION: FREELANCER MODULE =====
-
-model FreelancerProfile {
-  id          String   @id @default(cuid())
-  userId      String?
-
-  name        String
-  email       String   @unique
-  phone       String?
-
-  skills      String[]
-  categories  String[]
-  experience  Int?
-
-  portfolioUrl String?
-  linkedinUrl  String?
-  bio         String?  @db.Text
-
-  availability FreelancerAvailability @default(AVAILABLE)
-  hourlyRate  Decimal? @db.Decimal(10, 2)
-  currency    String   @default("EUR")
-  preferredWorkType String[]
-
-  rating      Float?   @default(0)
-  reviewCount Int      @default(0)
-
-  verified    Boolean  @default(false)
-  verifiedAt  DateTime?
-
-  pfaNumber   String?
-  cui         String?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  projects    FreelanceProjectAssignment[]
-  contracts   FreelancerContract[]
-
-  @@index([userId])
-  @@index([availability])
-}
-
 enum FreelancerAvailability {
   AVAILABLE
   PARTIALLY_AVAILABLE
   NOT_AVAILABLE
   ON_PROJECT
-}
-
-model FreelanceProjectAssignment {
-  id          String   @id @default(cuid())
-  userId      String
-
-  title       String
-  description String   @db.Text
-
-  skills      String[]
-  budget      Decimal? @db.Decimal(10, 2)
-  budgetType  FreelanceBudgetType @default(FIXED)
-  currency    String   @default("EUR")
-
-  startDate   DateTime?
-  endDate     DateTime?
-
-  status      FreelanceProjectStatus @default(PROJECT_DRAFT)
-
-  freelancerId String?
-  freelancer   FreelancerProfile? @relation(fields: [freelancerId], references: [id])
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  milestones  FreelanceProjectMilestone[]
-  timeEntries FreelanceTimeEntry[]
-
-  @@index([userId])
-  @@index([freelancerId])
-  @@index([status])
 }
 
 enum FreelanceBudgetType {
@@ -2487,28 +2603,6 @@ enum FreelanceProjectStatus {
   PROJECT_CANCELLED
 }
 
-model FreelanceProjectMilestone {
-  id          String   @id @default(cuid())
-  projectId   String
-  project     FreelanceProjectAssignment @relation(fields: [projectId], references: [id])
-
-  title       String
-  description String?
-  amount      Decimal  @db.Decimal(10, 2)
-
-  dueDate     DateTime?
-  completedAt DateTime?
-
-  status      FreelanceMilestoneStatus @default(MILESTONE_PENDING)
-
-  escrowHeld  Boolean  @default(false)
-  releasedAt  DateTime?
-
-  createdAt   DateTime @default(now())
-
-  @@index([projectId])
-}
-
 enum FreelanceMilestoneStatus {
   MILESTONE_PENDING
   MILESTONE_IN_PROGRESS
@@ -2518,33 +2612,6 @@ enum FreelanceMilestoneStatus {
   MILESTONE_DISPUTED
 }
 
-model FreelancerContract {
-  id          String   @id @default(cuid())
-  freelancerId String
-  freelancer   FreelancerProfile @relation(fields: [freelancerId], references: [id])
-
-  type        FreelancerContractType
-  startDate   DateTime
-  endDate     DateTime?
-
-  rate        Decimal  @db.Decimal(10, 2)
-  rateType    FreelanceBudgetType
-  currency    String   @default("EUR")
-
-  ndaSigned   Boolean  @default(false)
-  ndaSignedAt DateTime?
-  ipClause    Boolean  @default(false)
-
-  status      HRContractStatus @default(DRAFT)
-
-  signedAt    DateTime?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([freelancerId])
-}
-
 enum FreelancerContractType {
   PROJECT_BASED
   RETAINER
@@ -2552,254 +2619,11 @@ enum FreelancerContractType {
   CONSULTING
 }
 
-model FreelanceTimeEntry {
-  id          String   @id @default(cuid())
-  projectId   String
-  project     FreelanceProjectAssignment @relation(fields: [projectId], references: [id])
-  freelancerId String
-
-  startTime   DateTime
-  endTime     DateTime?
-  duration    Int?
-
-  description String?
-
-  screenshotUrl String?
-  activityLevel Float?
-
-  billed      Boolean  @default(false)
-  invoiceId   String?
-
-  createdAt   DateTime @default(now())
-
-  @@index([projectId])
-  @@index([freelancerId])
-}
-
-// ===== BOP EXTENSION: FORUM MODULE =====
-
-model ForumCategory {
-  id          String   @id @default(cuid())
-
-  name        String
-  nameEn      String?
-  slug        String   @unique
-  description String?  @db.Text
-  icon        String?
-
-  sortOrder   Int      @default(0)
-
-  threadCount Int      @default(0)
-  postCount   Int      @default(0)
-
-  isActive    Boolean  @default(true)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  threads     ForumThread[]
-
-  @@index([isActive])
-}
-
-model ForumThread {
-  id          String   @id @default(cuid())
-  categoryId  String
-  category    ForumCategory @relation(fields: [categoryId], references: [id])
-
-  title       String
-  slug        String   @unique
-  content     String   @db.Text
-
-  authorId    String?
-  authorName  String
-
-  viewCount   Int      @default(0)
-  replyCount  Int      @default(0)
-
-  isPinned    Boolean  @default(false)
-  isLocked    Boolean  @default(false)
-  isFeatured  Boolean  @default(false)
-
-  lastReplyAt DateTime?
-  lastReplyBy String?
-
-  tags        String[]
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  posts       ForumPost[]
-
-  @@index([categoryId])
-  @@index([authorId])
-  @@index([isPinned])
-}
-
-model ForumPost {
-  id          String   @id @default(cuid())
-  threadId    String
-  thread      ForumThread @relation(fields: [threadId], references: [id])
-
-  content     String   @db.Text
-  
-  authorId    String?
-  authorName  String
-
-  replyToId   String?
-  replyTo     ForumPost? @relation("PostReplies", fields: [replyToId], references: [id])
-  replies     ForumPost[] @relation("PostReplies")
-
-  upvotes     Int      @default(0)
-  downvotes   Int      @default(0)
-
-  isAccepted  Boolean  @default(false)
-  isEdited    Boolean  @default(false)
-  editedAt    DateTime?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([threadId])
-  @@index([authorId])
-}
-
-// ===== BOP EXTENSION: BLOG MODULE =====
-
-model BlogCategory {
-  id          String   @id @default(cuid())
-
-  name        String
-  nameEn      String?
-  slug        String   @unique
-  description String?
-
-  sortOrder   Int      @default(0)
-  isActive    Boolean  @default(true)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  articles    BlogArticle[]
-
-  @@index([isActive])
-}
-
-model BlogArticle {
-  id          String   @id @default(cuid())
-  categoryId  String?
-  category    BlogCategory? @relation(fields: [categoryId], references: [id])
-
-  title       String
-  titleEn     String?
-  slug        String   @unique
-  excerpt     String?  @db.Text
-  content     String   @db.Text
-
-  authorId    String?
-  authorName  String
-  authorBio   String?
-
-  featuredImageUrl String?
-
-  readTime    Int?
-
-  tags        String[]
-
-  status      BlogArticleStatus @default(BLOG_DRAFT)
-  publishedAt DateTime?
-
-  viewCount   Int      @default(0)
-  likeCount   Int      @default(0)
-  shareCount  Int      @default(0)
-
-  seoTitle    String?
-  seoDescription String?
-  seoKeywords String[]
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([categoryId])
-  @@index([authorId])
-  @@index([status])
-  @@index([publishedAt])
-}
-
 enum BlogArticleStatus {
   BLOG_DRAFT
   BLOG_REVIEW
   BLOG_PUBLISHED
   BLOG_ARCHIVED
-}
-
-// ===== BOP EXTENSION: DEMO BUSINESS =====
-
-model DemoBusiness {
-  id          String   @id @default(cuid())
-
-  name        String
-  cui         String   @unique
-  industry    String
-  city        String
-  county      String
-  
-  employeeCount Int    @default(0)
-  revenue     Decimal? @db.Decimal(15, 2)
-  
-  description String?  @db.Text
-  tier        Tier     @default(FREE)
-
-  isActive    Boolean  @default(true)
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  contacts    DemoBusinessContact[]
-  employees   DemoEmployee[]
-
-  @@index([industry])
-}
-
-model DemoBusinessContact {
-  id          String   @id @default(cuid())
-  businessId  String
-  business    DemoBusiness @relation(fields: [businessId], references: [id])
-
-  name        String
-  role        String
-  email       String
-  phone       String?
-
-  isPrimary   Boolean  @default(false)
-
-  createdAt   DateTime @default(now())
-
-  @@index([businessId])
-}
-
-model DemoEmployee {
-  id          String   @id @default(cuid())
-  businessId  String
-  business    DemoBusiness @relation(fields: [businessId], references: [id])
-
-  firstName   String
-  lastName    String
-  email       String
-  
-  department  String
-  position    String
-  
-  hireDate    DateTime
-  salary      Decimal  @db.Decimal(10, 2)
-  
-  contractType DemoContractType @default(DEMO_FULL_TIME)
-  status       DemoEmployeeStatus @default(DEMO_ACTIVE)
-
-  createdAt   DateTime @default(now())
-
-  @@index([businessId])
-  @@index([department])
 }
 
 enum DemoContractType {
@@ -2814,236 +2638,12 @@ enum DemoEmployeeStatus {
   DEMO_TERMINATED
 }
 
-// ===== SAGA-005: SYNC LOG =====
-
-// SyncLog - Tracks synchronization events with external services
-model SyncLog {
-  id          String      @id @default(cuid())
-  userId      String
-  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  service     String      // SAGA, ANAF, REVISAL, etc.
-  entityType  String      // invoice, payment, ledger, etc.
-  entityId    String      // ID of the synced entity
-  direction   String      // import or export
-  status      String      // success, error, pending
-  details     String?     // Additional info or error message
-  xmlSent     String?     @db.Text
-  xmlReceived String?     @db.Text
-
-  syncedAt    DateTime    @default(now())
-  createdAt   DateTime    @default(now())
-
-  @@index([userId])
-  @@index([service])
-  @@index([entityType])
-  @@index([status])
-  @@index([syncedAt])
-}
-
-// ===== SPRINT 7: ORGANIZATION INTEGRATIONS =====
-
-model OrganizationIntegration {
-  id              String        @id @default(cuid())
-  organizationId  String
-  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-
-  provider        String        // SMARTBILL, SAGA, etc.
-  credentials     String?       @db.Text // Encrypted JSON credentials
-
-  isActive        Boolean       @default(false)
-  lastSyncAt      DateTime?
-  lastError       String?
-
-  settings        Json?         @default("{}")
-
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  @@unique([organizationId, provider])
-  @@index([organizationId])
-  @@index([provider])
-}
-
-// ===== SPRINT 7: RECURRING INVOICES =====
-
-model RecurringInvoice {
-  id              String        @id @default(cuid())
-  organizationId  String
-  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-
-  name            String
-  description     String?
-
-  partnerId       String
-  partner         Partner       @relation(fields: [partnerId], references: [id])
-
-  // Schedule
-  frequency       String        // DAILY, WEEKLY, BIWEEKLY, MONTHLY, QUARTERLY, BIANNUALLY, ANNUALLY
-  startDate       DateTime
-  endDate         DateTime?
-  nextRunDate     DateTime
-  lastRunDate     DateTime?
-  dayOfMonth      Int?          // 1-31 for monthly+
-  dayOfWeek       Int?          // 0-6 for weekly
-
-  // Status
-  isActive        Boolean       @default(true)
-  autoSend        Boolean       @default(false)
-  autoSubmitSpv   Boolean       @default(false)
-
-  // Invoice template
-  currency        String        @default("RON")
-  vatRate         Decimal       @db.Decimal(5, 2) @default(19)
-  items           Json          // Array of invoice items
-  notes           String?       @db.Text
-  paymentTermsDays Int          @default(30)
-  seriesName      String?
-
-  // Statistics
-  generatedCount  Int           @default(0)
-
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  invoices        Invoice[]     @relation("RecurringInvoiceInvoices")
-
-  @@index([organizationId])
-  @@index([partnerId])
-  @@index([isActive])
-  @@index([nextRunDate])
-}
-
-// ===== SPRINT 7: INVOICE ITEMS =====
-
-model InvoiceItem {
-  id              String        @id @default(cuid())
-  invoiceId       String
-  invoice         Invoice       @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
-
-  lineNumber      Int           @default(1)
-  description     String
-  code            String?       // Product/service code
-
-  quantity        Decimal       @db.Decimal(12, 4)
-  unit            String        @default("buc")
-  unitPrice       Decimal       @db.Decimal(12, 4)
-
-  vatRate         Decimal       @db.Decimal(5, 2) @default(19)
-  discount        Decimal       @db.Decimal(5, 2) @default(0)
-
-  netAmount       Decimal       @db.Decimal(12, 2)
-  vatAmount       Decimal       @db.Decimal(12, 2)
-  grossAmount     Decimal       @db.Decimal(12, 2)
-
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  @@index([invoiceId])
-}
-
-// ===== SPRINT 12: INVENTORY MANAGEMENT =====
-
-model Product {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  // Product details
-  code            String        // SKU/Product code
-  name            String
-  description     String?
-  category        String?
-  brand           String?
-  unit            String        @default("buc") // Unit of measure
-
-  // Pricing
-  purchasePrice   Decimal       @db.Decimal(12, 2) @default(0)
-  salePrice       Decimal       @db.Decimal(12, 2) @default(0)
-  vatRate         Decimal       @db.Decimal(5, 2) @default(19)
-  currency        String        @default("RON")
-
-  // Stock levels
-  currentStock    Decimal       @db.Decimal(12, 4) @default(0)
-  reservedStock   Decimal       @db.Decimal(12, 4) @default(0)
-  minStockLevel   Decimal       @db.Decimal(12, 4) @default(0)  // Alert threshold
-  maxStockLevel   Decimal?      @db.Decimal(12, 4)              // Optimal max
-
-  // Tracking
-  barcode         String?
-  location        String?       // Warehouse location
-  supplier        String?       // Default supplier
-
-  isActive        Boolean       @default(true)
-
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  stockMovements  StockMovement[]
-  stockAlerts     StockAlert[]
-
-  @@unique([userId, code])
-  @@index([userId])
-  @@index([organizationId])
-  @@index([category])
-  @@index([isActive])
-}
-
-model StockMovement {
-  id              String        @id @default(cuid())
-  productId       String
-  product         Product       @relation(fields: [productId], references: [id])
-
-  type            StockMovementType
-  quantity        Decimal       @db.Decimal(12, 4)
-  previousStock   Decimal       @db.Decimal(12, 4)
-  newStock        Decimal       @db.Decimal(12, 4)
-
-  reference       String?       // Invoice/Order reference
-  referenceType   String?       // "INVOICE", "ORDER", "ADJUSTMENT"
-  referenceId     String?       // ID of the related document
-
-  unitCost        Decimal?      @db.Decimal(12, 2)
-  notes           String?
-
-  createdBy       String?
-  createdAt       DateTime      @default(now())
-
-  @@index([productId])
-  @@index([type])
-  @@index([createdAt])
-}
-
 enum StockMovementType {
-  IN              // Stock received
-  OUT             // Stock sold/used
-  ADJUSTMENT      // Manual adjustment
-  TRANSFER        // Between locations
-  RETURN          // Returned stock
-}
-
-model StockAlert {
-  id              String        @id @default(cuid())
-  productId       String
-  product         Product       @relation(fields: [productId], references: [id])
-  userId          String
-
-  type            StockAlertType
-  threshold       Decimal       @db.Decimal(12, 4)
-  currentLevel    Decimal       @db.Decimal(12, 4)
-
-  status          StockAlertStatus @default(ACTIVE)
-  acknowledgedAt  DateTime?
-  acknowledgedBy  String?
-
-  createdAt       DateTime      @default(now())
-  resolvedAt      DateTime?
-
-  @@index([productId])
-  @@index([userId])
-  @@index([status])
+  IN
+  OUT
+  ADJUSTMENT
+  TRANSFER
+  RETURN
 }
 
 enum StockAlertType {
@@ -3059,82 +2659,14 @@ enum StockAlertStatus {
   RESOLVED
 }
 
-// ===== SPRINT 19: CONTRACT MANAGEMENT =====
-
-model Contract {
-  id              String        @id @default(cuid())
-  userId          String
-  user            User          @relation(fields: [userId], references: [id])
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-
-  // Contract identification
-  contractNumber  String
-  title           String
-  description     String?       @db.Text
-  type            ContractType  @default(SERVICE)
-  status          ContractStatus @default(DRAFT)
-
-  // Parties
-  partnerId       String?
-  partner         Partner?      @relation(fields: [partnerId], references: [id])
-  partnerName     String
-  partnerCui      String?
-  partnerAddress  String?       @db.Text
-
-  // Financial terms
-  totalValue      Decimal       @db.Decimal(14, 2)
-  currency        String        @default("RON")
-  paymentTerms    String?       // e.g., "Net 30", "50% advance, 50% on delivery"
-  billingFrequency String?      // monthly, quarterly, one-time
-
-  // Dates
-  startDate       DateTime
-  endDate         DateTime?
-  signedAt        DateTime?
-  terminatedAt    DateTime?
-
-  // Auto-renewal
-  autoRenew       Boolean       @default(false)
-  renewalPeriodMonths Int?
-  renewalNoticesDays Int?       // Days before end to send reminder
-
-  // Document storage
-  documentId      String?       @unique
-  document        Document?     @relation(fields: [documentId], references: [id])
-  attachments     Json?         // Array of attachment URLs
-
-  // Linked invoices
-  linkedInvoiceIds String[]     @default([])
-
-  // Compliance
-  isCompliant     Boolean       @default(true)
-  complianceNotes String?       @db.Text
-
-  // Metadata
-  tags            String[]      @default([])
-  metadata        Json?
-  notes           String?       @db.Text
-
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  @@index([userId])
-  @@index([partnerId])
-  @@index([status])
-  @@index([type])
-  @@index([startDate])
-  @@index([endDate])
-}
-
 enum ContractType {
-  SERVICE       // Prestări servicii
-  SALE          // Vânzare
-  PURCHASE      // Achiziție
-  LEASE         // Închiriere
-  EMPLOYMENT    // Muncă (HR)
-  FRAMEWORK     // Contract cadru
-  NDA           // Confidențialitate
+  SERVICE
+  SALE
+  PURCHASE
+  LEASE
+  EMPLOYMENT
+  FRAMEWORK
+  NDA
   OTHER
 }
 
@@ -3147,255 +2679,6 @@ enum ContractStatus {
   TERMINATED
   RENEWED
 }
-
-// ===== CONTACT SUBMISSIONS =====
-
-model ContactSubmission {
-  id            String   @id @default(cuid())
-  referenceId   String   @unique
-  name          String
-  email         String
-  phone         String?
-  company       String?
-  subject       String
-  message       String   @db.Text
-  status        String   @default("NEW") // NEW, READ, REPLIED, ARCHIVED
-  ipAddress     String?
-  userAgent     String?
-  notes         String?  @db.Text
-  repliedAt     DateTime?
-  repliedBy     String?
-
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  @@index([email])
-  @@index([status])
-  @@index([createdAt])
-}
-
-// ===== ERROR LOGGING =====
-
-model ErrorLog {
-  id            String   @id @default(cuid())
-  message       String
-  stack         String   @default("")
-  type          String   // ReactComponentError, UnhandledError, PromiseRejection, NetworkError, APIError
-  componentStack String? @default("")
-  url           String?  @default("")
-  userAgent     String?  @default("")
-  userId        String?  @default("anonymous")
-  source        String   @default("frontend") // frontend, backend, mobile
-  metadata      String?  @default("{}") // JSON string for additional context
-
-  createdAt     DateTime @default(now())
-
-  @@index([createdAt])
-  @@index([type])
-  @@index([userId])
-  @@index([source])
-}
-
-// ===== SPRINT 25: BUSINESS SIMULATION MODULE =====
-
-model SimulationGame {
-  id              String   @id @default(cuid())
-  userId          String
-  businessId      String?  // Link to real business for data import
-  name            String
-  description     String?
-
-  // Game State
-  currentMonth    Int      @default(1)
-  currentYear     Int      @default(2025)
-  status          SimulationStatus @default(SIM_ACTIVE)
-  difficulty      SimulationDifficulty @default(SIM_NORMAL)
-
-  // Scores (0-100)
-  healthScore     Float    @default(100)
-  financialScore  Float    @default(100)
-  operationsScore Float    @default(100)
-  complianceScore Float    @default(100)
-  growthScore     Float    @default(100)
-
-  // Scenario reference
-  scenarioId      String?
-  scenario        SimulationScenario? @relation(fields: [scenarioId], references: [id])
-
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  // Relations
-  states          SimulationState[]
-  decisions       SimulationDecision[]
-  events          SimulationEvent[]
-  achievements    SimulationAchievement[]
-
-  @@index([userId])
-  @@index([status])
-  @@index([scenarioId])
-}
-
-model SimulationState {
-  id              String   @id @default(cuid())
-  gameId          String
-  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
-
-  month           Int
-  year            Int
-
-  // Financial State (in RON)
-  cash            Decimal  @db.Decimal(14, 2) @default(50000)
-  revenue         Decimal  @db.Decimal(14, 2) @default(0)
-  expenses        Decimal  @db.Decimal(14, 2) @default(0)
-  profit          Decimal  @db.Decimal(14, 2) @default(0)
-  receivables     Decimal  @db.Decimal(14, 2) @default(0)
-  payables        Decimal  @db.Decimal(14, 2) @default(0)
-  inventory       Decimal  @db.Decimal(14, 2) @default(0)
-  equipment       Decimal  @db.Decimal(14, 2) @default(0)
-  loans           Decimal  @db.Decimal(14, 2) @default(0)
-
-  // Operations State
-  employees       Int      @default(1)
-  capacity        Float    @default(100) // Production capacity %
-  utilization     Float    @default(50)  // How much capacity is used %
-  quality         Float    @default(80)  // Product/service quality %
-
-  // Market State
-  marketShare     Float    @default(0.1) // 0-100%
-  customerCount   Int      @default(10)
-  reputation      Float    @default(50)  // 0-100
-
-  // Compliance State (Romanian)
-  taxOwed         Decimal  @db.Decimal(12, 2) @default(0)
-  vatBalance      Decimal  @db.Decimal(12, 2) @default(0)
-  penaltiesRisk   Float    @default(0)   // Penalty probability 0-100
-  auditRisk       Float    @default(5)   // Audit probability 0-100
-
-  // Snapshot of key metrics
-  metricsSnapshot Json?    // Store additional metrics
-
-  createdAt       DateTime @default(now())
-
-  @@unique([gameId, month, year])
-  @@index([gameId])
-}
-
-model SimulationDecision {
-  id              String   @id @default(cuid())
-  gameId          String
-  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
-
-  month           Int
-  year            Int
-  category        SimDecisionCategory
-  type            String   // Specific decision type within category
-  parameters      Json     // Decision parameters
-
-  // Impact tracking
-  impactSummary   String?  @db.Text
-  impactMetrics   Json?    // { revenue: +5000, cash: -10000, employees: +1 }
-
-  // Learning connection
-  relatedCourseId String?
-  relatedLessonId String?
-  aiRecommendation String? @db.Text
-
-  // Outcome
-  wasSuccessful   Boolean?
-  outcomeNotes    String?  @db.Text
-
-  createdAt       DateTime @default(now())
-
-  @@index([gameId])
-  @@index([category])
-}
-
-model SimulationEvent {
-  id              String   @id @default(cuid())
-  gameId          String
-  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
-
-  month           Int
-  year            Int
-  type            SimEventType
-  severity        SimEventSeverity @default(SEVERITY_MEDIUM)
-  title           String
-  description     String   @db.Text
-  impact          Json     // Expected impacts if not handled
-
-  // Player response
-  responseOptions Json?    // Available choices
-  playerChoice    String?
-  outcome         String?  @db.Text
-  outcomeImpact   Json?    // Actual impact after player choice
-
-  // Timing
-  deadline        Int?     // Turns to respond, null = immediate
-  expiresAt       DateTime?
-
-  createdAt       DateTime @default(now())
-
-  @@index([gameId])
-  @@index([type])
-}
-
-model SimulationAchievement {
-  id              String   @id @default(cuid())
-  gameId          String
-  game            SimulationGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
-
-  achievementId   String   // Reference to achievement definition
-  title           String
-  description     String?
-  icon            String?  // Emoji or icon name
-  xpReward        Int      @default(100)
-
-  unlockedAt      DateTime @default(now())
-
-  @@unique([gameId, achievementId])
-  @@index([gameId])
-}
-
-model SimulationScenario {
-  id              String   @id @default(cuid())
-  slug            String   @unique
-  title           String
-  titleEn         String?
-  description     String   @db.Text
-  descriptionEn   String?  @db.Text
-  difficulty      SimulationDifficulty
-
-  // Starting conditions
-  initialState    Json     // Initial SimulationState values
-  objectives      Json     // Array of objectives with conditions
-  timeLimit       Int?     // Max months to complete
-
-  // Challenge type
-  type            SimScenarioType
-
-  // Rewards
-  xpReward        Int      @default(500)
-  badgeId         String?
-
-  // Related courses
-  relatedCourseIds String[] @default([])
-
-  isActive        Boolean  @default(true)
-  isFeatured      Boolean  @default(false)
-  sortOrder       Int      @default(0)
-
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  games           SimulationGame[]
-
-  @@index([type])
-  @@index([difficulty])
-  @@index([isActive])
-}
-
-// Simulation Enums
 
 enum SimulationStatus {
   SIM_ACTIVE

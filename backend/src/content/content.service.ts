@@ -1,9 +1,64 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Injectable()
 export class ContentService {
-  constructor(private prisma: PrismaService) {}
+  private readonly logger = new Logger(ContentService.name);
+  private useJsonFallback = false;
+  private jsonCourses: any[] = [];
+  private jsonBlogArticles: any[] = [];
+  private jsonForumThreads: any[] = [];
+
+  constructor(private prisma: PrismaService) {
+    this.loadJsonContent();
+  }
+
+  private loadJsonContent() {
+    try {
+      const seedDataDir = path.join(process.cwd(), 'prisma', 'seed-data');
+
+      // Load courses
+      const coursesFile = fs
+        .readdirSync(seedDataDir)
+        .find((f) => f.startsWith('courses-generated-'));
+      if (coursesFile) {
+        this.jsonCourses = JSON.parse(
+          fs.readFileSync(path.join(seedDataDir, coursesFile), 'utf-8'),
+        );
+        this.logger.log(`✅ Loaded ${this.jsonCourses.length} courses from JSON`);
+        this.useJsonFallback = true;
+      }
+
+      // Load blog articles
+      const blogFiles = fs
+        .readdirSync(seedDataDir)
+        .filter((f) => f.startsWith('blog-'));
+      for (const blogFile of blogFiles) {
+        const articles = JSON.parse(
+          fs.readFileSync(path.join(seedDataDir, blogFile), 'utf-8'),
+        );
+        this.jsonBlogArticles.push(...articles);
+      }
+      if (this.jsonBlogArticles.length > 0) {
+        this.logger.log(`✅ Loaded ${this.jsonBlogArticles.length} blog articles from JSON`);
+      }
+
+      // Load forum threads
+      const forumFile = fs
+        .readdirSync(seedDataDir)
+        .find((f) => f.startsWith('forum-generated-'));
+      if (forumFile) {
+        this.jsonForumThreads = JSON.parse(
+          fs.readFileSync(path.join(seedDataDir, forumFile), 'utf-8'),
+        );
+        this.logger.log(`✅ Loaded ${this.jsonForumThreads.length} forum threads from JSON`);
+      }
+    } catch (error) {
+      this.logger.warn('Could not load JSON content files:', error.message);
+    }
+  }
 
   // ==================== FORUM ====================
 

@@ -108,22 +108,35 @@ export class DashboardPreferencesService {
   /**
    * Get user's dashboard preferences
    */
-  async getPreferences(userId: string): Promise<DashboardPreferencesDto> {
+  async getPreferences(userId: string): Promise<DashboardPreferencesDto & { tier: string }> {
+    // Get user with organization to determine tier
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        tier: true,
+        activeOrganizationId: true,
+        organizationMemberships: {
+          where: { isActive: true },
+          include: { organization: { select: { tier: true } } },
+          take: 1,
+        },
+      },
+    });
+
+    // Use organization tier if available, otherwise user tier
+    const orgTier = user?.organizationMemberships?.[0]?.organization?.tier;
+    const tier = orgTier || user?.tier || 'FREE';
+
     const prefs = await this.prisma.dashboardPreferences.findUnique({
       where: { userId },
     });
 
     if (!prefs) {
-      // Return default preferences
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId },
-        select: { tier: true },
-      });
-
-      const tier = user?.tier || 'FREE';
+      // Return default preferences with tier
       const defaultModules = DEFAULT_MODULES_BY_TIER[tier] || DEFAULT_MODULES_BY_TIER.FREE;
 
       return {
+        tier,
         enabledModules: defaultModules,
         moduleOrder: [],
         collapsedSections: [],
@@ -135,6 +148,7 @@ export class DashboardPreferencesService {
     }
 
     return {
+      tier,
       enabledModules: prefs.enabledModules as string[],
       moduleOrder: prefs.moduleOrder as string[],
       collapsedSections: prefs.collapsedSections as string[],

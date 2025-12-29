@@ -68,8 +68,8 @@ export class EuVatController {
    * Get VAT rates for a specific EU country (public)
    */
   @Get('countries/:countryCode')
-  getCountryRates(@Param('countryCode') countryCode: string): EUCountryVATRates {
-    return this.euVatService.getCountryRates(countryCode);
+  async getCountryRates(@Param('countryCode') countryCode: string): Promise<EUCountryVATRates> {
+    return await this.euVatService.getCountryRates(countryCode);
   }
 
   /**
@@ -109,8 +109,8 @@ export class EuVatController {
    */
   @Post('calculate')
   @HttpCode(HttpStatus.OK)
-  calculateVAT(@Body() dto: CalculateVATDto): EUVATCalculation {
-    return this.euVatService.calculateVAT(
+  async calculateVAT(@Body() dto: CalculateVATDto): Promise<EUVATCalculation> {
+    return await this.euVatService.calculateVAT(
       dto.countryCode,
       dto.amount,
       dto.rateType || 'standard',
@@ -123,8 +123,8 @@ export class EuVatController {
    * Validate VAT number format
    */
   @Get('validate/format/:vatNumber')
-  validateVATFormat(@Param('vatNumber') vatNumber: string) {
-    return this.euVatService.validateVATNumberFormat(vatNumber);
+  async validateVATFormat(@Param('vatNumber') vatNumber: string) {
+    return await this.euVatService.validateVATNumberFormat(vatNumber);
   }
 
   /**
@@ -226,13 +226,13 @@ export class EuVatController {
    * Quick VAT calculation endpoint (GET for simple use)
    */
   @Get('quick-calc')
-  quickCalculate(
+  async quickCalculate(
     @Query('country') countryCode: string,
     @Query('amount') amount: string,
     @Query('type') rateType: string = 'standard',
     @Query('gross') isGross: string = 'false',
-  ): EUVATCalculation {
-    return this.euVatService.calculateVAT(
+  ): Promise<EUVATCalculation> {
+    return await this.euVatService.calculateVAT(
       countryCode,
       parseFloat(amount),
       rateType as 'standard' | 'reduced' | 'super_reduced' | 'parking' | 'zero',

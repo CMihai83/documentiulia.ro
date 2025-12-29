@@ -412,9 +412,9 @@ export class EuVatService {
   /**
    * Get VAT rates from config service if available, otherwise use hardcoded
    */
-  private getVATRates(): Record<string, EUCountryVATRates> {
+  private async getVATRates(): Promise<Record<string, EUCountryVATRates>> {
     if (this.vatConfigService) {
-      return this.vatConfigService.getAllCountries() as Record<string, EUCountryVATRates>;
+      return (await this.vatConfigService.getAllCountries()) as Record<string, EUCountryVATRates>;
     }
     return this.EU_VAT_RATES;
   }
@@ -422,9 +422,9 @@ export class EuVatService {
   /**
    * Get OSS threshold from config service if available
    */
-  private getOSSThreshold(): number {
+  private async getOSSThreshold(): Promise<number> {
     if (this.vatConfigService) {
-      return this.vatConfigService.getOSSThreshold();
+      return await this.vatConfigService.getOSSThreshold();
     }
     return this.OSS_THRESHOLD_EUR;
   }
@@ -432,9 +432,9 @@ export class EuVatService {
   /**
    * Get configuration version info (if config service available)
    */
-  getConfigVersion(): { version: string; effectiveDate: string; lastUpdated: string; source: string } | null {
+  async getConfigVersion(): Promise<{ version: string; effectiveDate: string; lastUpdated: string; source: string } | null> {
     if (this.vatConfigService) {
-      const info = this.vatConfigService.getConfigVersion();
+      const info = await this.vatConfigService.getConfigVersion();
       return { ...info, source: 'configuration file' };
     }
     return {
@@ -467,9 +467,10 @@ export class EuVatService {
   /**
    * Get VAT rates for a specific country
    */
-  getCountryRates(countryCode: string): EUCountryVATRates {
+  async getCountryRates(countryCode: string): Promise<EUCountryVATRates> {
     const upperCode = countryCode.toUpperCase();
-    const country = this.getVATRates()[upperCode];
+    const vatRates = await this.getVATRates();
+    const country = vatRates[upperCode];
     if (!country) {
       throw new HttpException(
         `Country code ${countryCode} is not a valid EU member state`,
@@ -482,14 +483,14 @@ export class EuVatService {
   /**
    * Calculate VAT for a specific EU country
    */
-  calculateVAT(
+  async calculateVAT(
     countryCode: string,
     amount: number,
     rateType: 'standard' | 'reduced' | 'super_reduced' | 'parking' | 'zero' = 'standard',
     reducedRateIndex: number = 0,
     isGross: boolean = false,
-  ): EUVATCalculation {
-    const country = this.getCountryRates(countryCode);
+  ): Promise<EUVATCalculation> {
+    const country = await this.getCountryRates(countryCode);
     let vatRate: number;
 
     switch (rateType) {
@@ -564,7 +565,7 @@ export class EuVatService {
   /**
    * Validate EU VAT number format
    */
-  validateVATNumberFormat(vatNumber: string): { valid: boolean; countryCode: string; error?: string } {
+  async validateVATNumberFormat(vatNumber: string): Promise<{ valid: boolean; countryCode: string; error?: string }> {
     const cleaned = vatNumber.replace(/\s/g, '').toUpperCase();
 
     if (cleaned.length < 4) {
@@ -577,7 +578,8 @@ export class EuVatService {
       countryCode = 'GR';
     }
 
-    const country = this.getVATRates()[countryCode];
+    const vatRates = await this.getVATRates();
+    const country = vatRates[countryCode];
     if (!country) {
       return { valid: false, countryCode, error: `${countryCode} is not a valid EU country code` };
     }
@@ -774,15 +776,15 @@ export class EuVatService {
   /**
    * Check OSS (One-Stop-Shop) registration requirements
    */
-  checkOSSRequirement(
+  async checkOSSRequirement(
     homeCountry: string,
     salesByCountry: Record<string, number>,
-  ): { requiresOSS: boolean; countries: OSSRegistration[] } {
+  ): Promise<{ requiresOSS: boolean; countries: OSSRegistration[] }> {
     const results: OSSRegistration[] = [];
     let requiresOSS = false;
 
-    const ossThreshold = this.getOSSThreshold();
-    const vatRates = this.getVATRates();
+    const ossThreshold = await this.getOSSThreshold();
+    const vatRates = await this.getVATRates();
 
     for (const [countryCode, salesAmount] of Object.entries(salesByCountry)) {
       if (countryCode.toUpperCase() === homeCountry.toUpperCase()) {

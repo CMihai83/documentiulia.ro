@@ -1,0 +1,22 @@
+# DocumentIulia.ro Platform User Simulation - Python Dependencies
+
+# HTTP Client
+requests>=2.31.0
+
+# Web Automation
+selenium>=4.15.0
+webdriver-manager>=4.0.1
+
+# HTML Parsing
+beautifulsoup4>=4.12.0
+
+# Testing Framework
+pytest>=7.4.0
+pytest-html>=4.1.0
+pytest-xdist>=3.5.0
+
+# Data Validation
+pydantic>=2.5.0
+
+# Utilities
+python-dotenv>=1.0.0

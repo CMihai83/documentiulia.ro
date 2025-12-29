@@ -146,6 +146,13 @@ export class AuthService {
   async login(dto: LoginDto, metadata?: { userAgent?: string; ipAddress?: string }) {
     const user = await this.prisma.user.findUnique({
       where: { email: dto.email },
+      include: {
+        organizationMemberships: {
+          where: { isActive: true },
+          include: { organization: true },
+          take: 1,
+        },
+      },
     });
 
     if (!user || !user.password) {
@@ -205,6 +212,10 @@ export class AuthService {
       },
     });
 
+    // Get organization info for subscription tier
+    const orgMembership = user.organizationMemberships?.[0];
+    const organization = orgMembership?.organization;
+
     return {
       requiresMfa: false,
       user: {
@@ -212,8 +223,10 @@ export class AuthService {
         email: user.email,
         name: user.name,
         company: user.company,
-        tier: user.tier,
+        tier: organization?.tier || user.tier,  // Prefer org tier over user tier
         role: user.role,
+        organizationId: user.activeOrganizationId || organization?.id,
+        organizationName: organization?.name,
       },
       accessToken: tokens.accessToken,
       refreshToken: tokens.refreshToken,
