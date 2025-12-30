@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Put, Delete, Body, Query, Param, UseGuards } from '@nestjs/common';
+import { Controller, Post, Get, Put, Delete, Body, Query, Param, UseGuards, Req } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { HrService } from './hr.service';
 import { UserRole } from '@prisma/client';
@@ -22,21 +22,22 @@ export class HrController {
 
   @Post('employees')
   @ApiOperation({ summary: 'Create new employee' })
-  async createEmployee(@Body() body: { userId: string; data: any }) {
+  async createEmployee(@Body() employeeData: any, @Req() req: any) {
+    const userId = req.user?.userId;
     // Normalize employee data - auto-generate display_name if not provided
-    const employeeData = { ...body.data };
+    const data = { ...employeeData };
 
     // If display_name is not provided, construct it from firstName and lastName
-    if (!employeeData.display_name && employeeData.firstName && employeeData.lastName) {
-      employeeData.display_name = `${employeeData.firstName} ${employeeData.lastName}`;
+    if (!data.display_name && data.firstName && data.lastName) {
+      data.display_name = `${data.firstName} ${data.lastName}`;
     }
 
-    const employee = await this.hrService.createEmployee(body.userId, employeeData);
+    const employee = await this.hrService.createEmployee(userId, data);
 
     // Add display_name to response if not already present
     return {
       ...employee,
-      display_name: employee.display_name || `${employee.firstName} ${employee.lastName}`,
+      display_name: (employee as any).display_name || `${employee.firstName} ${employee.lastName}`,
     };
   }
 

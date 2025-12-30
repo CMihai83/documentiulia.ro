@@ -719,8 +719,8 @@ export default function QualityPage() {
               <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
                 <div className="text-center">
                   <BarChart3 className="w-12 h-12 mx-auto text-gray-400 mb-2" />
-                  <p className="text-gray-500 text-sm">Grafic Tendinte Calitate</p>
-                  <p className="text-gray-400 text-xs mt-1">TODO: Integrate cu API /api/v1/quality/trends</p>
+                  <p className="text-gray-500 text-sm">Grafic Tendințe Calitate</p>
+                  <p className="text-gray-400 text-xs mt-1">Date în curs de încărcare</p>
                 </div>
               </div>
             </div>

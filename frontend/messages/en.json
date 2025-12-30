@@ -573,6 +573,38 @@
     "exportSuccess": "Export completed successfully",
     "exportError": "Export failed"
   },
+  "crm": {
+    "title": "CRM",
+    "subtitle": "Customer Relationship Management",
+    "totalContacts": "Total Contacts",
+    "activeDeals": "Active Deals",
+    "revenuePipeline": "Revenue Pipeline",
+    "conversionRate": "Conversion Rate",
+    "pipeline": "Pipeline",
+    "contacts": "Contacts",
+    "activities": "Activities",
+    "deals": "Deals",
+    "newDeal": "New Deal",
+    "newContact": "New Contact",
+    "pipelineStages": "Pipeline Stages",
+    "lead": "Lead",
+    "qualified": "Qualified",
+    "proposal": "Proposal",
+    "negotiation": "Negotiation",
+    "won": "Won",
+    "lost": "Lost"
+  },
+  "fleet": {
+    "refresh": "Refresh",
+    "addVehicle": "Add Vehicle",
+    "tabOverview": "Overview",
+    "tabVehicles": "Vehicles",
+    "tabRoutes": "Routes",
+    "tabTracking": "Tracking",
+    "tabOptimization": "Optimization",
+    "tabReports": "Reports",
+    "tabMaintenance": "Maintenance"
+  },
   "sidebar": {
     "title": "Navigation",
     "overview": "Dashboard",

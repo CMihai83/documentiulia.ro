@@ -536,6 +536,38 @@
     "exportSuccess": "Export finalizat cu succes",
     "exportError": "Eroare la export"
   },
+  "crm": {
+    "title": "CRM",
+    "subtitle": "Gestionarea Relațiilor cu Clienții",
+    "totalContacts": "Total Contacte",
+    "activeDeals": "Oportunități Active",
+    "revenuePipeline": "Pipeline Venituri",
+    "conversionRate": "Rată Conversie",
+    "pipeline": "Pipeline",
+    "contacts": "Contacte",
+    "activities": "Activități",
+    "deals": "Oportunități",
+    "newDeal": "Oportunitate Nouă",
+    "newContact": "Contact Nou",
+    "pipelineStages": "Etape Pipeline",
+    "lead": "Lead",
+    "qualified": "Calificat",
+    "proposal": "Propunere",
+    "negotiation": "Negociere",
+    "won": "Câștigat",
+    "lost": "Pierdut"
+  },
+  "fleet": {
+    "refresh": "Actualizează",
+    "addVehicle": "Adaugă Vehicul",
+    "tabOverview": "Prezentare Generală",
+    "tabVehicles": "Vehicule",
+    "tabRoutes": "Rute",
+    "tabTracking": "Urmărire",
+    "tabOptimization": "Optimizare",
+    "tabReports": "Rapoarte",
+    "tabMaintenance": "Întreținere"
+  },
   "sidebar": {
     "title": "Navigare",
     "overview": "Panou Principal",

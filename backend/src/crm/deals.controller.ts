@@ -177,7 +177,7 @@ export class DealsController {
     @Body() body: {
       name: string;
       description?: string;
-      pipelineId: string;
+      pipelineId?: string;
       stageId?: string;
       amount: number;
       currency?: string;
@@ -198,7 +198,7 @@ export class DealsController {
       ownerId: req.user.id,
       name: body.name,
       description: body.description,
-      pipelineId: body.pipelineId,
+      pipelineId: body.pipelineId || 'default-pipeline',
       stageId: body.stageId,
       amount: body.amount,
       currency: body.currency,

@@ -793,8 +793,8 @@ export default function EcommercePage() {
         <div className="mt-6 h-64 bg-gray-50 rounded-lg flex items-center justify-center">
           <div className="text-center text-gray-500">
             <BarChart3 className="h-12 w-12 mx-auto mb-2" />
-            <p>Revenue charts and analytics coming soon...</p>
-            <p className="text-sm">TODO: Integrate with /api/v1/ecommerce/stores/:storeId/analytics</p>
+            <p>Grafice venituri și analize în curând...</p>
+            <p className="text-sm">Integrare în curs de dezvoltare</p>
           </div>
         </div>
       </div>

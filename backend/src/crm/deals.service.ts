@@ -339,9 +339,29 @@ export class DealsService {
     source?: string;
     campaign?: string;
   }): Promise<Deal> {
-    const pipeline = this.pipelines.get(data.pipelineId);
+    let pipeline = this.pipelines.get(data.pipelineId);
     if (!pipeline) {
-      throw new NotFoundException('Pipeline not found');
+      // Create default pipeline if not found
+      pipeline = {
+        id: data.pipelineId,
+        tenantId: data.tenantId,
+        name: 'Default Pipeline',
+        description: 'Default sales pipeline',
+        isDefault: true,
+        stages: [
+          { id: 'lead', name: 'Lead', order: 1, probability: 20, color: '#94a3b8' },
+          { id: 'qualified', name: 'Qualified', order: 2, probability: 40, color: '#3b82f6' },
+          { id: 'proposal', name: 'Proposal', order: 3, probability: 60, color: '#eab308' },
+          { id: 'negotiation', name: 'Negotiation', order: 4, probability: 80, color: '#a855f7' },
+          { id: 'won', name: 'Won', order: 5, probability: 100, color: '#22c55e', isWon: true },
+          { id: 'lost', name: 'Lost', order: 6, probability: 0, color: '#ef4444', isLost: true },
+        ],
+        currency: 'RON',
+        stats: { totalDeals: 0, totalValue: 0, openDeals: 0, wonDeals: 0, lostDeals: 0, avgDealSize: 0, avgCycleTime: 0, winRate: 0 },
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      this.pipelines.set(data.pipelineId, pipeline);
     }
 
     const stageId = data.stageId || pipeline.stages[0]?.id;
