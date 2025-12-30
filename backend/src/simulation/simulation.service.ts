@@ -551,23 +551,55 @@ export class SimulationService {
       throw new BadRequestException('Invalid response');
     }
 
-    // Apply impacts
+    // Apply impacts - split into state impacts and game score impacts
     const currentState = await this.prisma.simulationState.findFirst({
       where: { gameId },
       orderBy: { createdAt: 'desc' },
     });
 
-    if (currentState && response.impacts) {
-      const updates: Record<string, number> = {};
-      for (const [key, value] of Object.entries(response.impacts)) {
-        const currentValue = toNumber((currentState as Record<string, unknown>)[key] as Prisma.Decimal);
-        updates[key] = currentValue + value;
+    const game = await this.prisma.simulationGame.findUnique({
+      where: { id: gameId },
+    });
+
+    // Score fields that belong to SimulationGame
+    const scoreFields = ['healthScore', 'financialScore', 'operationsScore', 'complianceScore', 'growthScore'];
+
+    if (response.impacts) {
+      // Update SimulationState with state impacts
+      if (currentState) {
+        const stateUpdates: Record<string, number> = {};
+        for (const [key, value] of Object.entries(response.impacts)) {
+          if (!scoreFields.includes(key)) {
+            const currentValue = toNumber((currentState as Record<string, unknown>)[key] as Prisma.Decimal);
+            stateUpdates[key] = currentValue + value;
+          }
+        }
+
+        if (Object.keys(stateUpdates).length > 0) {
+          await this.prisma.simulationState.update({
+            where: { id: currentState.id },
+            data: stateUpdates as unknown as Prisma.SimulationStateUpdateInput,
+          });
+        }
       }
 
-      await this.prisma.simulationState.update({
-        where: { id: currentState.id },
-        data: updates as unknown as Prisma.SimulationStateUpdateInput,
-      });
+      // Update SimulationGame with score impacts
+      if (game) {
+        const scoreUpdates: Record<string, number> = {};
+        for (const [key, value] of Object.entries(response.impacts)) {
+          if (scoreFields.includes(key)) {
+            const currentValue = (game as Record<string, unknown>)[key] as number;
+            scoreUpdates[key] = Math.max(0, Math.min(100, currentValue + value)); // Clamp between 0-100
+          }
+        }
+
+        if (Object.keys(scoreUpdates).length > 0) {
+          await this.prisma.simulationGame.update({
+            where: { id: gameId },
+            data: scoreUpdates as unknown as Prisma.SimulationGameUpdateInput,
+          });
+        }
+      }
     }
 
     // Update event
