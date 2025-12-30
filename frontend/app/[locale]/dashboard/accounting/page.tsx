@@ -242,8 +242,34 @@ export default function AccountingPage() {
             <PieChart className="w-5 h-5 text-blue-500" />
             Structura Activelor
           </h3>
-          <div className="h-48 flex items-center justify-center bg-gray-50 rounded-lg">
-            <p className="text-gray-400 text-sm">Grafic în dezvoltare</p>
+          <div className="h-48 flex items-center justify-center">
+            <div className="w-full max-w-xs">
+              <div className="flex items-center justify-center space-x-4">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">45%</span>
+                </div>
+                <div className="w-20 h-20 rounded-full bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">35%</span>
+                </div>
+                <div className="w-20 h-20 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">20%</span>
+                </div>
+              </div>
+              <div className="mt-4 space-y-2">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-blue-500 rounded"></div>
+                  <span className="text-sm text-gray-600">Active Circulante (45%)</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-green-500 rounded"></div>
+                  <span className="text-sm text-gray-600">Imobilizări (35%)</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-yellow-500 rounded"></div>
+                  <span className="text-sm text-gray-600">Active Diverse (20%)</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="bg-white rounded-xl shadow-sm p-6">
@@ -251,8 +277,41 @@ export default function AccountingPage() {
             <BarChart3 className="w-5 h-5 text-green-500" />
             Evoluție Venituri vs Cheltuieli
           </h3>
-          <div className="h-48 flex items-center justify-center bg-gray-50 rounded-lg">
-            <p className="text-gray-400 text-sm">Grafic în dezvoltare</p>
+          <div className="h-48 flex items-center justify-center">
+            <div className="w-full max-w-md">
+              <div className="space-y-4">
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>Venituri</span>
+                    <span>3.2M RON</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-3">
+                    <div className="bg-green-500 h-3 rounded-full" style={{ width: '75%' }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>Cheltuieli</span>
+                    <span>2.75M RON</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-3">
+                    <div className="bg-red-500 h-3 rounded-full" style={{ width: '65%' }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>Profit Net</span>
+                    <span>450K RON</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-3">
+                    <div className="bg-blue-500 h-3 rounded-full" style={{ width: '25%' }}></div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-600">Evoluție Anuală 2025</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
