@@ -118,7 +118,7 @@ export class SimulationService {
     }
 
     const latestState = game.states[0];
-    const engineState: SimulationState = {
+    const engineState: EngineState = {
       cash: toNumber(latestState.cash),
       revenue: toNumber(latestState.revenue),
       expenses: toNumber(latestState.expenses),
@@ -170,7 +170,6 @@ export class SimulationService {
    */
   async getLearningPath(gameId: string) {
     return this.aiRecommendations.getLearningPath(gameId);
-  }
   }
 
   getIndustryScenarios() {
@@ -250,13 +249,20 @@ export class SimulationService {
         inventory: inventoryValue,
         equipment: equipmentValue,
         loans: 0,
+        loanPayments: 0,
         employees: employeesValue,
+        averageSalary: typeof mergedState.averageSalary === 'number' ? mergedState.averageSalary : 3000,
         capacity: 100,
         utilization: 50,
         quality: 80,
+        morale: typeof mergedState.morale === 'number' ? mergedState.morale : 70,
+        price: typeof mergedState.price === 'number' ? mergedState.price : 100,
+        basePrice: typeof mergedState.basePrice === 'number' ? mergedState.basePrice : 100,
+        marketSize: typeof mergedState.marketSize === 'number' ? mergedState.marketSize : 1000,
         marketShare: 0.1,
         customerCount: customerCountValue,
         reputation: 50,
+        customerSatisfaction: typeof mergedState.customerSatisfaction === 'number' ? mergedState.customerSatisfaction : 70,
         taxOwed: 0,
         vatBalance: 0,
         penaltiesRisk: 0,
