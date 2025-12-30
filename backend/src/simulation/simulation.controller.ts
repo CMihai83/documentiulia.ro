@@ -27,6 +27,7 @@ import {
   ApiQuery,
   ApiBearerAuth,
 } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
 import { SimulationService, GameSummary, ScenarioInfo } from './simulation.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Public } from '../auth/public.decorator';
@@ -45,6 +46,7 @@ class MakeDecisionDto {
 }
 
 class EventResponseDto {
+  @IsString()
   responseId: string;
 }
 
