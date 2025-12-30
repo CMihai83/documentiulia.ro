@@ -27,22 +27,36 @@ import {
   ApiQuery,
   ApiBearerAuth,
 } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsString, IsOptional } from 'class-validator';
 import { SimulationService, GameSummary, ScenarioInfo } from './simulation.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Public } from '../auth/public.decorator';
 
 // DTOs
 class StartGameDto {
+  @IsOptional()
+  @IsString()
   name?: string;
+
+  @IsOptional()
+  @IsString()
   scenarioId?: string;
+
+  @IsOptional()
+  @IsString()
   difficulty?: string;
+
+  @IsOptional()
+  @IsString()
   industryScenarioId?: string;
 }
 
 class MakeDecisionDto {
+  @IsString()
   decisionType: string;
-  parameters: Record<string, unknown>;
+
+  @IsOptional()
+  parameters?: Record<string, unknown>;
 }
 
 class EventResponseDto {
