@@ -794,7 +794,6 @@ export default function EcommercePage() {
           <div className="text-center text-gray-500">
             <BarChart3 className="h-12 w-12 mx-auto mb-2" />
             <p>Grafice venituri și analize în curând...</p>
-            <p className="text-sm">Integrare în curs de dezvoltare</p>
           </div>
         </div>
       </div>

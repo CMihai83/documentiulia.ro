@@ -87,7 +87,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/documents', icon: FolderOpen, labelKey: 'documents', defaultLabel: 'Documente' },
       { href: '/dashboard/ocr', icon: Scan, labelKey: 'ocr', defaultLabel: 'OCR Documente' },
       { href: '/dashboard/invoices', icon: Receipt, labelKey: 'invoices', defaultLabel: 'Facturi' },
-      { href: '/dashboard/efactura', icon: FileText, labelKey: 'efactura', defaultLabel: 'e-Factura' },
+      { href: '/dashboard/e-invoice', icon: FileText, labelKey: 'efactura', defaultLabel: 'e-Factura' },
     ],
   },
   {
@@ -135,7 +135,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/quality', icon: ClipboardCheck, labelKey: 'quality', defaultLabel: 'Management Calitate' },
       { href: '/dashboard/hse', icon: HeartPulse, labelKey: 'hse', defaultLabel: 'HSE' },
       { href: '/dashboard/audit', icon: Shield, labelKey: 'audit', defaultLabel: 'Jurnal Audit' },
-      { href: '/dashboard/anaf', icon: FileCheck, labelKey: 'anafStatus', defaultLabel: 'Status ANAF' },
+      { href: '/dashboard/anaf-status', icon: FileCheck, labelKey: 'anafStatus', defaultLabel: 'Status ANAF' },
     ],
   },
   {
@@ -145,7 +145,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/hr', icon: Users, labelKey: 'hr', defaultLabel: 'HR & Salarizare' },
       { href: '/dashboard/freelancer', icon: Briefcase, labelKey: 'freelancer', defaultLabel: 'Hub Freelanceri' },
       { href: '/dashboard/lms', icon: GraduationCap, labelKey: 'lms', defaultLabel: 'Training (LMS)' },
-      { href: '/simulation', icon: Target, labelKey: 'simulation', defaultLabel: 'Simulator Business' },
+      { href: '/simulator', icon: Target, labelKey: 'simulation', defaultLabel: 'Simulator Business' },
     ],
   },
   {
