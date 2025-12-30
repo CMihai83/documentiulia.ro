@@ -631,7 +631,7 @@ export class EuVatService {
    * Validate VAT number against EU VIES system
    */
   async validateVIES(vatNumber: string): Promise<VIESValidationResult> {
-    const formatCheck = this.validateVATNumberFormat(vatNumber);
+    const formatCheck = await this.validateVATNumberFormat(vatNumber);
     if (!formatCheck.valid) {
       return {
         valid: false,
@@ -689,20 +689,20 @@ export class EuVatService {
   /**
    * Determine VAT treatment for intra-community transaction
    */
-  determineIntraCommunityVAT(
+  async determineIntraCommunityVAT(
     sellerCountry: string,
     sellerVatNumber: string,
     buyerCountry: string,
     buyerVatNumber: string,
     isB2B: boolean,
     isService: boolean,
-  ): IntraCommunityTransaction {
+  ): Promise<IntraCommunityTransaction> {
     const sellerCountryUpper = sellerCountry.toUpperCase();
     const buyerCountryUpper = buyerCountry.toUpperCase();
 
     // Same country - normal domestic VAT
     if (sellerCountryUpper === buyerCountryUpper) {
-      const country = this.getCountryRates(sellerCountryUpper);
+      const country = await this.getCountryRates(sellerCountryUpper);
       return {
         sellerCountry: sellerCountryUpper,
         sellerVatNumber,
@@ -746,7 +746,7 @@ export class EuVatService {
 
     // Cross-border B2C (or B2B without valid VAT)
     if (!isB2B || !buyerVatNumber) {
-      const buyerRates = this.getCountryRates(buyerCountryUpper);
+      const buyerRates = await this.getCountryRates(buyerCountryUpper);
       return {
         sellerCountry: sellerCountryUpper,
         sellerVatNumber,
@@ -760,7 +760,7 @@ export class EuVatService {
     }
 
     // Default
-    const sellerRates = this.getCountryRates(sellerCountryUpper);
+    const sellerRates = await this.getCountryRates(sellerCountryUpper);
     return {
       sellerCountry: sellerCountryUpper,
       sellerVatNumber,
@@ -845,20 +845,20 @@ export class EuVatService {
   /**
    * Multi-currency VAT calculation with conversion
    */
-  calculateMultiCurrencyVAT(
+  async calculateMultiCurrencyVAT(
     countryCode: string,
     amount: number,
     sourceCurrency: string,
     exchangeRateToCountryCurrency: number,
     rateType: 'standard' | 'reduced' | 'super_reduced' | 'parking' | 'zero' = 'standard',
-  ): EUVATCalculation & { originalAmount: number; originalCurrency: string } {
-    const country = this.getCountryRates(countryCode);
+  ): Promise<EUVATCalculation & { originalAmount: number; originalCurrency: string }> {
+    const country = await this.getCountryRates(countryCode);
 
     // Convert to country currency
     const convertedAmount = amount * exchangeRateToCountryCurrency;
 
     // Calculate VAT in country currency
-    const calculation = this.calculateVAT(countryCode, convertedAmount, rateType);
+    const calculation = await this.calculateVAT(countryCode, convertedAmount, rateType);
 
     return {
       ...calculation,

@@ -6,6 +6,7 @@ import { PfaRegistrationService } from './pfa-registration.service';
 import { DocumentGenerationService } from './document-generation.service';
 import { OnrcIntegrationService } from './onrc-integration.service';
 import { PrismaModule } from '../prisma/prisma.module';
+import { PdfModule } from '../pdf/pdf.module';
 
 /**
  * Services Module for DocumentIulia.ro
@@ -26,7 +27,7 @@ import { PrismaModule } from '../prisma/prisma.module';
  * Business Value: Primary revenue driver, high-margin service
  */
 @Module({
-  imports: [PrismaModule],
+  imports: [PrismaModule, PdfModule],
   controllers: [ServicesController],
   providers: [
     ServicesService,

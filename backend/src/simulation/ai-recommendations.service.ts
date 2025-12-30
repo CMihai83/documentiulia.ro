@@ -277,9 +277,9 @@ export class AIRecommendationsService {
     const courses = [];
     for (const mapping of mappings) {
       try {
-        const course = await this.prisma.course.findUnique({
+        const course = await this.prisma.lMSCourse.findUnique({
           where: { id: mapping.courseId },
-          select: { id: true, title: true, lessons: { select: { title: true } } },
+          select: { id: true, title: true, modules: { select: { title: true } } },
         });
 
         if (course) {
@@ -287,7 +287,7 @@ export class AIRecommendationsService {
             id: course.id,
             title: course.title,
             relevance: mapping.relevanceWeight,
-            keyLessons: course.lessons.slice(0, 3).map(l => l.title),
+            keyLessons: course.modules.slice(0, 3).map((l: any) => l.title),
           });
         }
       } catch (error) {
@@ -421,7 +421,7 @@ export class AIRecommendationsService {
       learningPath.push({
         courseId: 'pricing-strategy',
         title: 'Pricing Strategy Fundamentals',
-        priority: 'high',
+        priority: 'high' as const,
         reason: 'Essential for early business decisions',
       });
     }
@@ -430,7 +430,7 @@ export class AIRecommendationsService {
       learningPath.push({
         courseId: 'primii-angajati',
         title: 'First Employees Management',
-        priority: 'high',
+        priority: 'high' as const,
         reason: 'Critical as business grows',
       });
     }

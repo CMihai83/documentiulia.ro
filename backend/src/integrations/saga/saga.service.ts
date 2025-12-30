@@ -300,20 +300,21 @@ export class SagaService {
       const accessToken = await this.getValidToken(organizationId);
 
       // Transform local invoice to SAGA format
+      const inv = invoice as any;
       const sagaInvoice = {
-        number: invoice.number,
-        date: invoice.date.toISOString().split('T')[0],
-        due_date: invoice.dueDate?.toISOString().split('T')[0],
-        partner_cui: invoice.partnerCui,
-        partner_name: invoice.partnerName,
-        currency: invoice.currency || 'RON',
-        items: invoice.items.map(item => ({
+        number: inv.number,
+        date: inv.date?.toISOString().split('T')[0],
+        due_date: inv.dueDate?.toISOString().split('T')[0],
+        partner_cui: inv.partnerCui,
+        partner_name: inv.partnerName,
+        currency: inv.currency || 'RON',
+        items: (inv.items || []).map((item: any) => ({
           description: item.description,
           quantity: item.quantity,
           unit_price: item.unitPrice,
           vat_rate: item.vatRate,
         })),
-        notes: invoice.notes,
+        notes: inv.notes,
       };
 
       const response = await fetch(`${this.baseUrl}/invoices`, {

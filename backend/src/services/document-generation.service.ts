@@ -192,12 +192,12 @@ export class DocumentGenerationService {
       {
         language: 'ro',
         pageSize: 'A4',
-        orientation: 'portrait',
+        orientation: 'PORTRAIT' as any,
         margins: { top: 25, right: 20, bottom: 25, left: 20 },
       }
     );
 
-    return pdfResult.content;
+    return pdfResult.content!;
   }
 
   /**
@@ -299,12 +299,12 @@ export class DocumentGenerationService {
       {
         language: 'ro',
         pageSize: 'A4',
-        orientation: 'portrait',
+        orientation: 'PORTRAIT' as any,
         margins: { top: 25, right: 20, bottom: 25, left: 20 },
       }
     );
 
-    return pdfResult.content;
+    return pdfResult.content!;
   }
 
   /**

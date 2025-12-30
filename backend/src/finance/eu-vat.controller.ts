@@ -159,8 +159,8 @@ export class EuVatController {
   @Post('intra-community')
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  determineIntraCommunityVAT(@Body() dto: IntraCommunityDto): IntraCommunityTransaction {
-    return this.euVatService.determineIntraCommunityVAT(
+  async determineIntraCommunityVAT(@Body() dto: IntraCommunityDto): Promise<IntraCommunityTransaction> {
+    return await this.euVatService.determineIntraCommunityVAT(
       dto.sellerCountry,
       dto.sellerVatNumber,
       dto.buyerCountry,

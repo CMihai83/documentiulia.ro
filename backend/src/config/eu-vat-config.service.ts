@@ -24,8 +24,13 @@ export interface VATRatesConfig {
   effectiveDate: string;
   lastUpdated: string;
   source: string;
-  notes: Record<string, string>;
-  ossThresholdEur: number;
+  notes?: Record<string, string>;
+  ossThresholdEur?: number;
+  euWideRules?: {
+    vatThreshold?: number;
+    smallEntrepreneurRules?: boolean;
+    digitalServicesRules?: boolean;
+  };
   countries: Record<string, EUCountryVATRates>;
 }
 

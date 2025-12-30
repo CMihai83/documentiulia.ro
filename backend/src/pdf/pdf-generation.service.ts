@@ -1206,7 +1206,7 @@ export class PdfGenerationService {
       this.logger.log(`PDF generated successfully: ${pdfBuffer.length} bytes, ~${pageCount} pages`);
 
       return {
-        content: pdfBuffer,
+        content: Buffer.from(pdfBuffer),
         size: pdfBuffer.length,
         pageCount
       };

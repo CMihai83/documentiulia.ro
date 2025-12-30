@@ -2,7 +2,7 @@ import { Injectable, Logger, UnauthorizedException, BadRequestException } from '
 import { ConfigService } from '@nestjs/config';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { PrismaService } from '../prisma/prisma.service';
-import { RateLimiterService } from '../security/rate-limiter.service';
+import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
 import { SpvStatus, SpvMessageType, SpvMessageStatus, SpvSubmissionType, SpvSubmissionStatus } from '@prisma/client';
 import axios, { AxiosInstance } from 'axios';
 import * as crypto from 'crypto';

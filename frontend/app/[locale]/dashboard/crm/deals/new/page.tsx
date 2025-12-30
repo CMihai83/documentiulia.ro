@@ -107,7 +107,17 @@ export default function NewDealPage() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.title,
+          amount: form.value,
+          currency: form.currency,
+          probability: form.probability,
+          expectedCloseDate: form.expectedCloseDate,
+          contactId: form.contactId,
+          description: form.description,
+          pipelineId: 'default-pipeline',
+          stageId: form.stage.toLowerCase()
+        }),
       });
 
       if (response.ok) {

@@ -22,6 +22,7 @@ import { ANAFResilientService } from './anaf-resilient.service';
 import { EFacturaB2CService } from './efactura-b2c.service';
 import { EfacturaB2CController } from './efactura-b2c.controller';
 import { PrismaModule } from '../prisma/prisma.module';
+import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
 
 @Module({
   imports: [ScheduleModule.forRoot(), EventEmitterModule.forRoot(), PrismaModule],
@@ -48,6 +49,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     SpvService,
     ETransportService,
     DeadlineReminderService,
+    RateLimiterService,
   ],
   exports: [
     AnafService,

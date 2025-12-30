@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { RateLimiterService } from '../security/rate-limiter.service';
+import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
 import axios from 'axios';
 
 @Injectable()
