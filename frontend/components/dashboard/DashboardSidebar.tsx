@@ -135,7 +135,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/quality', icon: ClipboardCheck, labelKey: 'quality', defaultLabel: 'Management Calitate' },
       { href: '/dashboard/hse', icon: HeartPulse, labelKey: 'hse', defaultLabel: 'HSE' },
       { href: '/dashboard/audit', icon: Shield, labelKey: 'audit', defaultLabel: 'Jurnal Audit' },
-      { href: '/dashboard/compliance/anaf-status', icon: FileCheck, labelKey: 'anafStatus', defaultLabel: 'Status ANAF' },
+      { href: '/dashboard/anaf', icon: FileCheck, labelKey: 'anafStatus', defaultLabel: 'Status ANAF' },
     ],
   },
   {

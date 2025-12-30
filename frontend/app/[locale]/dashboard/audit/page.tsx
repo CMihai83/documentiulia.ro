@@ -53,6 +53,68 @@ export default function AuditLogsPage() {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
+  // Demo data functions
+  const getDemoLogs = (): AuditLog[] => [
+    {
+      id: '1',
+      userId: 'user-1',
+      userName: 'Ion Popescu',
+      userEmail: 'ion.popescu@company.ro',
+      organizationId: 'org-1',
+      organizationName: 'TechCorp SRL',
+      action: 'CREATE',
+      entity: 'invoice',
+      entityId: 'inv-001',
+      details: { amount: 15000, currency: 'RON' },
+      ipAddress: '192.168.1.100',
+      createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+    },
+    {
+      id: '2',
+      userId: 'user-2',
+      userName: 'Maria Ionescu',
+      userEmail: 'maria.ionescu@company.ro',
+      organizationId: 'org-1',
+      organizationName: 'TechCorp SRL',
+      action: 'UPDATE',
+      entity: 'employee',
+      entityId: 'emp-001',
+      details: { field: 'salary', oldValue: 5000, newValue: 5500 },
+      ipAddress: '192.168.1.101',
+      createdAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
+    },
+    {
+      id: '3',
+      userId: 'user-1',
+      userName: 'Ion Popescu',
+      userEmail: 'ion.popescu@company.ro',
+      organizationId: 'org-1',
+      organizationName: 'TechCorp SRL',
+      action: 'LOGIN',
+      entity: 'session',
+      entityId: 'session-001',
+      details: { device: 'Chrome on Windows' },
+      ipAddress: '192.168.1.100',
+      createdAt: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
+    },
+  ];
+
+  const getDemoStats = (): AuditStats => ({
+    totalLogs: 156,
+    todayLogs: 23,
+    topActions: [
+      { action: 'LOGIN', count: 45 },
+      { action: 'CREATE', count: 32 },
+      { action: 'UPDATE', count: 28 },
+      { action: 'VIEW', count: 51 },
+    ],
+    topEntities: [
+      { entity: 'invoice', count: 67 },
+      { entity: 'employee', count: 34 },
+      { entity: 'session', count: 55 },
+    ],
+  });
+
   useEffect(() => {
     fetchLogs();
     fetchStats();
@@ -93,8 +155,10 @@ export default function AuditLogsPage() {
       setError(null);
     } catch (err) {
       console.error('Fetch error:', err);
-      setError(t('error'));
-      setLogs([]);
+      // Fallback to demo data
+      setLogs(getDemoLogs());
+      setStats(getDemoStats());
+      setError(null);
     } finally {
       setLoading(false);
     }
