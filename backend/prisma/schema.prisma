@@ -2741,3 +2741,169 @@ enum SimScenarioType {
   SCENARIO_GROWTH_RACE
   SCENARIO_COMPLIANCE_TEST
 }
+
+// ============================================================
+// CONTROLLING (Management Accounting / SAP CO analog) — S-42
+// ============================================================
+
+enum CostCenterCategory {
+  production
+  sales
+  administration
+  rd
+  logistics
+  it
+  management
+}
+
+enum CostElementCategory {
+  personnel
+  materials
+  services
+  depreciation
+  rent_utilities
+  marketing
+  travel
+  it_software
+  financial
+  other
+}
+
+enum InternalOrderType {
+  project
+  event
+  capex
+  maintenance
+  marketing_campaign
+}
+
+enum InternalOrderStatus {
+  open
+  released
+  technically_closed
+  closed
+}
+
+enum AllocationMethod {
+  distribution
+  assessment
+}
+
+enum AllocationDriver {
+  headcount
+  area_sqm
+  revenue_share
+  machine_hours
+  fixed_percentage
+}
+
+model CostCenter {
+  id             String             @id @default(cuid())
+  organizationId String
+  code           String
+  name           String
+  nameRo         String
+  category       CostCenterCategory
+  parentId       String?
+  managerName    String?
+  currency       String             @default("RON")
+  active         Boolean            @default(true)
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  @@unique([organizationId, code])
+  @@index([organizationId])
+}
+
+model ProfitCenter {
+  id             String   @id @default(cuid())
+  organizationId String
+  code           String
+  name           String
+  nameRo         String
+  responsible    String?
+  currency       String   @default("RON")
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([organizationId, code])
+  @@index([organizationId])
+}
+
+model CostElement {
+  id             String              @id @default(cuid())
+  organizationId String
+  code           String
+  name           String
+  category       CostElementCategory
+  type           String              @default("primary") // primary | secondary
+  createdAt      DateTime            @default(now())
+
+  @@unique([organizationId, code])
+  @@index([organizationId])
+}
+
+model CostLine {
+  id             String   @id @default(cuid())
+  organizationId String
+  costCenterId   String
+  costElementId  String
+  period         String // YYYY-MM
+  planned        Decimal  @default(0) @db.Decimal(14, 2)
+  actual         Decimal  @default(0) @db.Decimal(14, 2)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([organizationId, costCenterId, costElementId, period])
+  @@index([organizationId, period])
+}
+
+model InternalOrder {
+  id                        String              @id @default(cuid())
+  organizationId            String
+  code                      String
+  name                      String
+  type                      InternalOrderType   @default(project)
+  responsibleCostCenterId   String
+  budget                    Decimal             @default(0) @db.Decimal(14, 2)
+  actual                    Decimal             @default(0) @db.Decimal(14, 2)
+  currency                  String              @default("RON")
+  status                    InternalOrderStatus @default(open)
+  startDate                 String
+  endDate                   String?
+  createdAt                 DateTime            @default(now())
+  updatedAt                 DateTime            @updatedAt
+
+  @@unique([organizationId, code])
+  @@index([organizationId])
+}
+
+model AllocationCycle {
+  id                    String           @id @default(cuid())
+  organizationId        String
+  name                  String
+  method                AllocationMethod @default(assessment)
+  driver                AllocationDriver @default(headcount)
+  senderCostCenterId    String
+  receiverCostCenterIds String[]
+  active                Boolean          @default(true)
+  createdAt             DateTime         @default(now())
+
+  @@index([organizationId])
+}
+
+model ProfitabilitySegment {
+  id                  String   @id @default(cuid())
+  organizationId      String
+  name                String
+  profitCenterId      String
+  revenue             Decimal  @default(0) @db.Decimal(14, 2)
+  cogs                Decimal  @default(0) @db.Decimal(14, 2)
+  directCosts         Decimal  @default(0) @db.Decimal(14, 2)
+  allocatedFixedCosts Decimal  @default(0) @db.Decimal(14, 2)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([organizationId])
+}

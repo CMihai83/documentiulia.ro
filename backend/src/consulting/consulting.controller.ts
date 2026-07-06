@@ -333,6 +333,17 @@ export class ConsultingController {
       { type: 'hr_compliance', name: 'HR Compliance', nameRo: 'Conformitate HR' },
       { type: 'payroll_setup', name: 'Payroll Setup', nameRo: 'Configurare Salarizare' },
       { type: 'vat_analysis', name: 'VAT Analysis', nameRo: 'Analiza TVA' },
+      // SAP & ERP consultancy
+      { type: 'erp_selection', name: 'ERP Selection Advisory', nameRo: 'Consultanță Selecție ERP' },
+      { type: 'sap_implementation', name: 'SAP Implementation', nameRo: 'Implementare SAP' },
+      { type: 's4hana_migration', name: 'S/4HANA Migration', nameRo: 'Migrare S/4HANA' },
+      { type: 'controlling_setup', name: 'Controlling (CO) Setup', nameRo: 'Configurare Controlling' },
+      { type: 'fico_consulting', name: 'SAP FI/CO Consulting', nameRo: 'Consultanță SAP FI/CO' },
+      { type: 'process_optimization', name: 'Process Optimization', nameRo: 'Optimizare Procese' },
+      { type: 'erp_data_migration', name: 'ERP Data Migration', nameRo: 'Migrare Date ERP' },
+      { type: 'integration_architecture', name: 'Integration Architecture', nameRo: 'Arhitectură Integrări' },
+      { type: 'change_management', name: 'Change Management', nameRo: 'Management Schimbare' },
+      { type: 'fractional_cfo', name: 'Fractional CFO', nameRo: 'CFO Fracțional' },
     ];
 
     return serviceTypes;
