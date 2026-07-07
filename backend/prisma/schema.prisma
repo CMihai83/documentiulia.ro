@@ -3331,6 +3331,8 @@ model SimV2Run {
   status      String       @default("active")   // active | paused | ended
   seed        Int
   currentTick Int          @default(0)
+  rewindCount Int          @default(0) // SIM-8: capped rewinds in practice mode
+  scoreJson   Json?        // SIM-12: composite score breakdown on run end
   clockYear   Int          @default(1)
   clockMonth  Int          @default(1)
   clockDay    Int          @default(1)
@@ -3372,4 +3374,33 @@ model EncryptionKeyStore {
   rotatedAt  DateTime?
 
   @@index([status])
+}
+
+
+// ---- S-50 / BC-101..103: Business-Case studio ----
+model BusinessCase {
+  id             String            @id @default(cuid())
+  userId         String
+  organizationId String?
+  title          String
+  template       String            // FIVE_CASE | PRINCE2_LEAN | RFQ
+  status         String            @default("DRAFT") // DRAFT | SOC | OBC | FBC
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  assumptionSets BcAssumptionSet[]
+
+  @@index([userId])
+  @@index([organizationId])
+}
+
+model BcAssumptionSet {
+  id        String       @id @default(cuid())
+  bcId      String
+  version   Int
+  answers   Json
+  createdAt DateTime     @default(now())
+  businessCase BusinessCase @relation(fields: [bcId], references: [id], onDelete: Cascade)
+
+  @@unique([bcId, version])
+  @@index([bcId])
 }

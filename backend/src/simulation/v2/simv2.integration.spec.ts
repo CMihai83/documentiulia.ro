@@ -10,6 +10,8 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { SimV2Service } from './simv2.service';
 import { SimV2CalibrationService } from './simv2.calibration';
 import { DataUseGuardService } from '../../ai/data-use-guard.service';
+import { GamificationService } from '../../lms/gamification.service';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 const RUN = process.env.SIMV2_IT === '1';
 const d = RUN ? describe : describe.skip;
@@ -25,7 +27,8 @@ d('SIM-7/9 integration', () => {
     prisma = new PrismaService();
     await prisma.$connect();
     guard = new DataUseGuardService(prisma);
-    sim = new SimV2Service(prisma, new SimV2CalibrationService(prisma, guard));
+    const gamification = new GamificationService(new EventEmitter2(), prisma);
+    sim = new SimV2Service(prisma, new SimV2CalibrationService(prisma, guard), gamification);
 
     // idempotent: the throwaway DB may persist across jest invocations
     await prisma.invoice.deleteMany({ where: { userId } });
@@ -113,4 +116,65 @@ d('SIM-7/9 integration', () => {
     expect(blob).not.toContain('@it.ro');
     expect(blob).not.toContain('partner 1');
   }, 60000);
+
+  // ---- SIM-8: rewind is a pure sandbox (advance→rewind→advance == straight replay) ----
+  it('SIM-8: advance 20 → rewind to 5 → advance 15 is bit-identical to a straight 20-tick replay', async () => {
+    const seed = 313131;
+    // straight replay of 20 ticks
+    const straight = await finalState(seed, 20);
+
+    // rewind path: same seed, advance 20, rewind to tick 5, advance 15 more back to tick 20
+    const { run } = await sim.createRun(userId, { scenarioKey: 'services', seed });
+    await sim.advance(userId, run.id, { tickType: 'day', ticks: 20 });
+    await sim.rewind(userId, run.id, 15); // 20 - 15 = 5 ticks back (at the cap)
+    let mid = (await sim.getRun(userId, run.id)).state;
+    expect(mid.tick).toBe(15);
+    await sim.rewind(userId, run.id, 10); // rewind again (10) — still within cap per call
+    await sim.advance(userId, run.id, { tickType: 'day', ticks: 10 }); // back to 20
+    const rewound = (await sim.getRun(userId, run.id)).state;
+
+    expect(rewound.tick).toBe(20);
+    // PRNG state lives in the state JSON → replay after rewind is byte-identical
+    expect(JSON.stringify(rewound)).toBe(JSON.stringify(straight.state));
+
+    // later state rows were pruned then rebuilt — exactly 21 rows (ticks 0..20)
+    const rows = await prisma.simV2State.count({ where: { runId: run.id } });
+    expect(rows).toBe(21);
+  }, 120000);
+
+  it('SIM-8: rewind is REFUSED on a scored run', async () => {
+    const { run } = await sim.createRun(userId, { scenarioKey: 'services', mode: 'scored', seed: 55 });
+    await sim.advance(userId, run.id, { tickType: 'day', ticks: 3 });
+    await expect(sim.rewind(userId, run.id, 1)).rejects.toThrow(/practice/i);
+  }, 60000);
+
+  it('SIM-8: rewind cannot jump more than 5 ticks back in one call', async () => {
+    const { run } = await sim.createRun(userId, { scenarioKey: 'services', seed: 66 });
+    await sim.advance(userId, run.id, { tickType: 'day', ticks: 10 });
+    await expect(sim.rewind(userId, run.id, 2)).rejects.toThrow(/capped/i); // 10 - 2 = 8 > 5
+  }, 60000);
+
+  // ---- SIM-12: ending a run persists the composite score + awards points/badges (scored) ----
+  it('SIM-12: ending a scored run persists a composite score and awards points, surviving a fresh service instance', async () => {
+    const { run } = await sim.createRun(userId, { scenarioKey: 'services', mode: 'scored', seed: 2027 });
+    await sim.advance(userId, run.id, { tickType: 'day', ticks: 90 });
+    const ended = await sim.endRun(userId, run.id);
+    expect(ended.score.composite).toBeGreaterThanOrEqual(0);
+    expect(ended.score.composite).toBeLessThanOrEqual(100);
+
+    // persisted breakdown survives a brand-new service instance (proves DB, not memory)
+    const fresh = new SimV2Service(
+      prisma,
+      new SimV2CalibrationService(prisma, guard),
+      new GamificationService(new EventEmitter2(), prisma),
+    );
+    const reloaded = await fresh.getRun(userId, run.id);
+    expect(reloaded.run.status).toBe('ended');
+    expect((reloaded.run as any).scoreJson).toBeTruthy();
+    expect((reloaded.run as any).scoreJson.composite).toBe(ended.score.composite);
+
+    // XP was awarded via the F-2 gamification engine
+    const points = await prisma.gamificationUserPoints.findUnique({ where: { userId } });
+    expect(points && points.totalPoints).toBeGreaterThan(0);
+  }, 120000);
 });

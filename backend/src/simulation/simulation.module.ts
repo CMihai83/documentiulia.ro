@@ -12,10 +12,11 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { SimV2Controller } from './v2/simv2.controller';
 import { SimV2Service } from './v2/simv2.service';
 import { SimV2CalibrationService } from './v2/simv2.calibration';
+import { LMSModule } from '../lms/lms.module';
 import { DataUseGuardService } from '../ai/data-use-guard.service';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [PrismaModule, LMSModule],
   controllers: [SimulationController, SimV2Controller],
   providers: [SimulationService, AIRecommendationsService, SimV2Service, SimV2CalibrationService, DataUseGuardService],
   exports: [SimulationService, SimV2Service],

@@ -5,6 +5,8 @@ import { randomInt as _randomInt } from 'crypto';
 import { applyTick, createInitialState, SCENARIO_PRESETS } from './simv2.engine';
 import { DECISION_CATALOG, SimDecision, SimV2StateData, TickType } from './simv2.types';
 import { SimV2CalibrationService } from './simv2.calibration';
+import { computeScore, earnedBadges } from './simv2.scoring';
+import { GamificationService } from '../../lms/gamification.service';
 
 /**
  * Simulator v2 — run lifecycle + versioned state persistence (S-48).
@@ -18,6 +20,7 @@ export class SimV2Service {
   constructor(
     private readonly prisma: PrismaService,
     private readonly calibration: SimV2CalibrationService,
+    private readonly gamification: GamificationService,
   ) {}
 
   /** SIM-9: create a run seeded from the tenant's real ERP data (Art 28(10)-guarded). */
@@ -210,6 +213,78 @@ export class SimV2Service {
   async setStatus(userId: string, runId: string, status: 'active' | 'paused' | 'ended') {
     const run = await this.prisma.simV2Run.findFirst({ where: { id: runId, userId } });
     if (!run) throw new NotFoundException(`Run ${runId} not found`);
+    if (status === 'ended') return this.endRun(userId, runId);
     return this.prisma.simV2Run.update({ where: { id: runId }, data: { status } });
+  }
+
+  /**
+   * SIM-8 — rewind a PRACTICE run to an earlier tick (safe sandbox). Scored runs
+   * refuse (stakes preserved). Capped at 5 ticks back per call. Because the PRNG
+   * state lives in the persisted state JSON, advancing again from the restored
+   * tick replays bit-identically to a run that never rewound.
+   */
+  async rewind(userId: string, runId: string, toTick: number) {
+    const run = await this.prisma.simV2Run.findFirst({ where: { id: runId, userId } });
+    if (!run) throw new NotFoundException(`Run ${runId} not found`);
+    if (run.mode !== 'practice') {
+      throw new BadRequestException('Rewind is only allowed in practice mode — scored runs cannot be rewound.');
+    }
+    if (!Number.isInteger(toTick) || toTick < 0 || toTick >= run.currentTick) {
+      throw new BadRequestException(`toTick must be an integer in [0, ${run.currentTick - 1}].`);
+    }
+    if (run.currentTick - toTick > 5) {
+      throw new BadRequestException(`Rewind is capped at 5 ticks; current tick ${run.currentTick}, earliest allowed ${run.currentTick - 5}.`);
+    }
+    const target = await this.prisma.simV2State.findFirst({ where: { runId, tick: toTick } });
+    if (!target) throw new BadRequestException(`No snapshot at tick ${toTick}.`);
+
+    await this.prisma.simV2State.deleteMany({ where: { runId, tick: { gt: toTick } } });
+    const state = target.stateJson as unknown as SimV2StateData;
+    const updated = await this.prisma.simV2Run.update({
+      where: { id: runId },
+      data: {
+        currentTick: toTick,
+        status: 'active',
+        rewindCount: { increment: 1 },
+        clockYear: state.clock.year,
+        clockMonth: state.clock.month,
+        clockDay: state.clock.day,
+      },
+    });
+    this.logger.log(`SimV2 run ${runId} rewound to tick ${toTick} (rewind #${updated.rewindCount})`);
+    return { run: updated, state };
+  }
+
+  /**
+   * SIM-12 — end a run: compute the composite score, persist the breakdown, and
+   * (for scored runs) award XP + behavioral badges via the F-2 gamification engine.
+   */
+  async endRun(userId: string, runId: string) {
+    const run = await this.prisma.simV2Run.findFirst({ where: { id: runId, userId } });
+    if (!run) throw new NotFoundException(`Run ${runId} not found`);
+    const state = await this.latestState(runId);
+    const history = await this.prisma.simV2State.findMany({
+      where: { runId }, orderBy: { tick: 'asc' }, select: { stateJson: true },
+    });
+    const states = history.map((h) => h.stateJson as unknown as SimV2StateData);
+    const score = computeScore(states);
+    const badges = earnedBadges(states);
+
+    await this.prisma.simV2Run.update({
+      where: { id: runId },
+      data: { status: 'ended', scoreJson: { ...score, badges } as any },
+    });
+
+    if (run.mode === 'scored') {
+      try {
+        // XP scaled to the composite (COURSE_COMPLETE = 100; scale by composite/100)
+        await this.gamification.awardPoints(userId, 'COURSE_COMPLETE', { source: 'sim-v2', runId, composite: score.composite });
+        for (const b of badges) await this.gamification.awardBadge(userId, b);
+      } catch (e: any) {
+        this.logger.warn(`Sim gamification award failed (non-fatal): ${e?.message}`);
+      }
+    }
+    this.logger.log(`SimV2 run ${runId} ended — composite ${score.composite}, badges [${badges.join(', ')}]`);
+    return { run: { ...run, status: 'ended' }, score, badges };
   }
 }
