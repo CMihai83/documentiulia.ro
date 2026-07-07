@@ -8,6 +8,7 @@ import {
   B2CInvoice,
 } from './efactura-b2c.service';
 import { ANAFResilientService } from './anaf-resilient.service';
+import { AnafLookupService } from './anaf-lookup.service';
 import { PrismaService } from '../prisma/prisma.service';
 
 describe('EFacturaB2CService', () => {
@@ -72,6 +73,7 @@ describe('EFacturaB2CService', () => {
         { provide: ANAFResilientService, useValue: mockANAFService },
         { provide: ConfigService, useValue: mockConfigService },
         { provide: PrismaService, useValue: mockPrisma },
+        { provide: AnafLookupService, useValue: { assertUsable: jest.fn().mockResolvedValue({ ok: true }) } },
         EventEmitter2,
       ],
     }).compile();
