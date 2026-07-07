@@ -599,6 +599,7 @@ model Employee {
   lastName           String
   email              String
   cnp                String?
+  cnpHash            String? // blind index (HMAC) for equality lookups on encrypted cnp
   position           String
   department         String?
   hireDate           DateTime
@@ -621,6 +622,7 @@ model Employee {
 
   @@index([userId])
   @@index([organizationId])
+  @@index([cnpHash])
 }
 
 model Payroll {
@@ -3356,4 +3358,17 @@ model AuditChainHead {
   lastSequence BigInt   @default(0)
   lastHash     String?
   updatedAt    DateTime @updatedAt
+}
+
+// ---- GDPR-A / GI-SEC-1: durable envelope-encryption key store ----
+model EncryptionKeyStore {
+  id         String    @id @default(cuid())
+  keyId      String    @unique
+  wrappedKey String // data key encrypted (AES-256-GCM) under the ENCRYPTION_MASTER_KEY
+  algorithm  String    @default("aes-256-gcm")
+  status     String    @default("ACTIVE") // ACTIVE | ROTATED | RETIRED
+  createdAt  DateTime  @default(now())
+  rotatedAt  DateTime?
+
+  @@index([status])
 }

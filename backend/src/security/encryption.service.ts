@@ -1,6 +1,8 @@
 import { Injectable, Logger, BadRequestException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as crypto from 'crypto';
+import { PrismaService } from '../prisma/prisma.service';
+import { getPiiCipher } from './pii-cipher';
 
 /**
  * Encryption Service
@@ -111,10 +113,38 @@ export class EncryptionService {
     encryptionTimes: [] as number[],
   };
 
-  constructor(private readonly configService: ConfigService) {
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly prisma: PrismaService,
+  ) {
     this.config = DEFAULT_CONFIG;
     this.masterKey = this.initializeMasterKey();
     this.initializeKeys();
+  }
+
+  // =================== DURABLE FIELD API (GDPR-A / GI-SEC-1) ===================
+  // Delegates to the persisted-keystore cipher (PiiCipher) that PrismaService
+  // initializes at boot. Ciphertext format enc:v1:{keyId}:{iv}:{tag}:{ct};
+  // legacy plaintext passes through, so lazy migration is safe.
+
+  /** Encrypt a single PII field with the durable active data key. */
+  async encryptField(plain: string | null | undefined): Promise<string | null | undefined> {
+    return getPiiCipher().encryptField(plain);
+  }
+
+  /** Decrypt a stored field value (passthrough for legacy plaintext). */
+  async decryptField(stored: string | null | undefined): Promise<string | null | undefined> {
+    return getPiiCipher().decryptField(stored);
+  }
+
+  /** Deterministic blind index for equality lookups on encrypted fields. */
+  blindIndex(plain: string | null | undefined): string | null {
+    return getPiiCipher().hashField(plain);
+  }
+
+  /** Rotate the durable data key (old keys kept for decrypting history). */
+  async rotateDurableKey(): Promise<{ oldKeyId: string | null; newKeyId: string }> {
+    return getPiiCipher().rotate(this.prisma as any);
   }
 
   // =================== INITIALIZATION ===================

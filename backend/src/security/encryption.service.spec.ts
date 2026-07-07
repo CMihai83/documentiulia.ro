@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import { BadRequestException } from '@nestjs/common';
 import { EncryptionService, SENSITIVE_FIELDS } from './encryption.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 describe('EncryptionService', () => {
   let service: EncryptionService;
@@ -20,6 +21,7 @@ describe('EncryptionService', () => {
       providers: [
         EncryptionService,
         { provide: ConfigService, useValue: mockConfigService },
+        { provide: PrismaService, useValue: {} },
       ],
     }).compile();
 

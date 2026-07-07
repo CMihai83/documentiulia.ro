@@ -1,5 +1,7 @@
 import { Injectable, OnModuleInit, OnModuleDestroy, Logger } from '@nestjs/common';
 import { PrismaClient, Prisma } from '@prisma/client';
+import { getPiiCipher } from '../security/pii-cipher';
+import { piiEncryptionMiddleware } from './pii-encryption.middleware';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
@@ -34,6 +36,14 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   async onModuleInit() {
     await this.$connect();
     this.logger.log('Database connection established');
+    // GDPR-A (GI-SEC-1/2): load persisted encryption keys, then intercept
+    // reads/writes at the single Prisma choke point (covers includes + $transaction).
+    try {
+      await getPiiCipher().init(this as any);
+      (this as any).$use(piiEncryptionMiddleware());
+    } catch (e: any) {
+      this.logger.error(`PII encryption init failed (continuing in passthrough): ${e?.message}`);
+    }
   }
 
   async onModuleDestroy() {
