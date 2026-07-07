@@ -285,10 +285,15 @@ export class GdprService {
       throw new NotFoundException('User not found');
     }
 
-    // Remove sensitive fields
-    const sanitizedUser = {
-      ...user,
-    };
+    // Strip credentials/secrets — security material is not the subject's portable
+    // personal data (Art. 20 covers data the user provided/generated, never
+    // password hashes or MFA seeds).
+    const {
+      password: _password,
+      mfaSecret: _mfaSecret,
+      mfaBackupCodes: _mfaBackupCodes,
+      ...sanitizedUser
+    } = user as any;
 
     return {
       exportDate: new Date().toISOString(),
