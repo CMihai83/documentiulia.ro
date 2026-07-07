@@ -1,6 +1,7 @@
 'use client';
 
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
+import { UpgradePrompt } from '@/components/dashboard/UpgradePrompt';
 import { MobileBottomNav } from '@/components/layout/MobileBottomNav';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { KeyboardShortcutsModal } from '@/components/KeyboardShortcutsModal';
@@ -44,6 +45,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           {/* Add padding-top on mobile to account for menu button */}
           <div className="pt-12 md:pt-0">
             {children}
+        <UpgradePrompt />
           </div>
         </main>
 

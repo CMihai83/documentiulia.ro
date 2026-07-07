@@ -48,6 +48,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { OrganizationSelector } from '@/components/organization/OrganizationSelector';
 import { ModuleConfigModal } from './ModuleConfigModal';
 import { useDashboardPreferences } from '@/hooks/useDashboardPreferences';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface NavItem {
   href: string;
@@ -179,6 +180,23 @@ const navSections: NavSection[] = [
   },
 ];
 
+
+// Minimum subscription tier per route (mirrors backend TierGuard; hidden below tier)
+const TIER_ORDER = ['FREE', 'PRO', 'BUSINESS', 'ENTERPRISE'] as const;
+const minTierByHref: Record<string, (typeof TIER_ORDER)[number]> = {
+  '/simulation': 'PRO',
+  '/dashboard/lms': 'PRO',
+  '/dashboard/hr': 'PRO',
+  '/dashboard/payroll': 'PRO',
+  '/dashboard/freelancer': 'PRO',
+  '/dashboard/consulting': 'PRO',
+  '/dashboard/services/templates': 'PRO',
+  '/dashboard/controlling': 'BUSINESS',
+  '/dashboard/data-migration': 'BUSINESS',
+  '/dashboard/developer': 'BUSINESS',
+};
+const tierRank = (t?: string) => Math.max(0, TIER_ORDER.indexOf((t as any) ?? 'FREE'));
+
 // Flat list for backward compatibility
 const navItems: NavItem[] = navSections.flatMap(section => section.items);
 
@@ -248,19 +266,27 @@ export function DashboardSidebar() {
 
   // Dashboard preferences hook
   const { preferences, isModuleEnabled } = useDashboardPreferences();
+  const { user } = useAuth();
+  const userTierRank = tierRank(user?.tier);
+  const tierAllows = (href: string) => {
+    const min = minTierByHref[href];
+    return !min || userTierRank >= TIER_ORDER.indexOf(min);
+  };
 
   // Filter nav items based on user preferences
   const filteredNavItems = useMemo(() => {
-    if (!preferences) return navItems;
-
-    return navItems.filter(item => {
-      const moduleId = hrefToModuleId[item.href];
-      // Always show dashboard and settings
-      if (moduleId === 'dashboard' || moduleId === 'settings') return true;
-      // Check if module is enabled
-      return moduleId ? isModuleEnabled(moduleId) : true;
-    });
-  }, [preferences, isModuleEnabled]);
+    const base = !preferences
+      ? navItems
+      : navItems.filter(item => {
+          const moduleId = hrefToModuleId[item.href];
+          // Always show dashboard and settings
+          if (moduleId === 'dashboard' || moduleId === 'settings') return true;
+          // Check if module is enabled
+          return moduleId ? isModuleEnabled(moduleId) : true;
+        });
+    // Hide items above the user's subscription tier (backend TierGuard mirror)
+    return base.filter(item => tierAllows(item.href));
+  }, [preferences, isModuleEnabled, userTierRank]);
 
   // Close mobile menu on route change
   useEffect(() => {

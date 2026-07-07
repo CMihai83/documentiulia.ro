@@ -157,7 +157,21 @@ export async function apiRequest<T = unknown>(
 
       // Handle 403 Forbidden - insufficient permissions (don't retry)
       if (response.status === 403) {
-        return { status: 403, error: 'You do not have permission to perform this action.' };
+        let serverMessage = '';
+        try {
+          const body = await response.clone().json();
+          serverMessage = body?.message || '';
+        } catch { /* non-JSON body */ }
+        // Tier-gated feature: surface an upgrade prompt app-wide
+        const tierMatch = serverMessage.match(/requires the (\w+) plan/i);
+        if (tierMatch && typeof window !== 'undefined') {
+          window.dispatchEvent(
+            new CustomEvent('tier:upgrade-required', {
+              detail: { requiredTier: tierMatch[1], message: serverMessage, endpoint },
+            }),
+          );
+        }
+        return { status: 403, error: serverMessage || 'You do not have permission to perform this action.' };
       }
 
       // Parse response
