@@ -7,8 +7,12 @@ import { XMLParser, XMLValidator } from 'fast-xml-parser';
 export interface SaftValidationError {
   path: string;
   message: string;
+  /** Romanian-language, actionable version of the message (DOC-42-4). */
+  messageRo?: string;
   code: string;
 }
+
+export type SaftPeriodType = 'monthly' | 'quarterly' | 'annual' | 'invalid';
 
 export interface SaftValidationResult {
   valid: boolean;
@@ -273,6 +277,18 @@ export class SaftValidatorService {
           message: 'SelectionStartDate must be before SelectionEndDate',
           code: 'SAFT-SEL-ORDER',
         });
+      }
+
+      // D406 period must be a full calendar month, quarter, or year (DOC-42-4)
+      const detected = this.detectPeriod(String(startDate), String(endDate));
+      if (detected.type === 'invalid') {
+        errors.push({
+          path: '/AuditFile/Header/SelectionCriteria',
+          message: `SAF-T D406 period must be a full calendar month, quarter or year (${detected.label})`,
+          code: 'SAFT-SEL-PERIOD',
+        });
+      } else {
+        warnings.push(`Reporting period: ${detected.type} (${detected.label})`);
       }
     }
   }
@@ -597,16 +613,109 @@ export class SaftValidatorService {
     return cleanCui.length >= 2 && cleanCui.length <= 10;
   }
 
-  // Full validation
-  validate(xml: string): SaftValidationResult {
-    // First check well-formedness
-    const wellformedResult = this.validateXmlWellformed(xml);
-    if (!wellformedResult.valid) {
-      return wellformedResult;
+  // ---- Period type (monthly / quarterly / annual) — DOC-42-4 ----
+
+  /**
+   * Detect the D406 reporting period from the SelectionCriteria date span.
+   * ANAF accepts a full calendar month, quarter, or year; anything else is
+   * invalid. Returns a type plus a Romanian label for messaging.
+   */
+  detectPeriod(start: string, end: string): { type: SaftPeriodType; label: string } {
+    const s = new Date(start);
+    const e = new Date(end);
+    if (isNaN(s.getTime()) || isNaN(e.getTime()) || s > e) {
+      return { type: 'invalid', label: 'interval de date invalid' };
+    }
+    if (s.getUTCDate() !== 1) {
+      return { type: 'invalid', label: 'nu începe în prima zi a perioadei' };
+    }
+    const lastDayOfEndMonth = new Date(Date.UTC(e.getUTCFullYear(), e.getUTCMonth() + 1, 0)).getUTCDate();
+    if (e.getUTCDate() !== lastDayOfEndMonth) {
+      return { type: 'invalid', label: 'nu se termină în ultima zi a lunii' };
+    }
+    const months =
+      (e.getUTCFullYear() - s.getUTCFullYear()) * 12 + (e.getUTCMonth() - s.getUTCMonth()) + 1;
+    if (months === 1) return { type: 'monthly', label: 'lunar' };
+    if (months === 3 && s.getUTCMonth() % 3 === 0) return { type: 'quarterly', label: 'trimestrial' };
+    if (months === 12 && s.getUTCMonth() === 0) return { type: 'annual', label: 'anual' };
+    return { type: 'invalid', label: `interval de ${months} luni nevalid pentru D406` };
+  }
+
+  // Romanian messages keyed by error code (DOC-42-4). Unmapped codes fall
+  // back to the English message so nothing is left untranslated-and-blank.
+  private readonly roMessages: Record<string, string> = {
+    'XML-001': 'Fișierul XML nu este bine format',
+    'SAFT-001': 'Elementul rădăcină AuditFile lipsește',
+    'SAFT-002': 'Elementul Header este obligatoriu',
+    'SAFT-HDR-COUNTRY': 'AuditFileCountry trebuie să fie "RO" pentru SAF-T România',
+    'SAFT-HDR-TAXBASIS': 'TaxAccountingBasis trebuie să fie "A" (Angajament) sau "C" (Casă)',
+    'SAFT-SEL-START': 'SelectionStartDate este obligatoriu',
+    'SAFT-SEL-END': 'SelectionEndDate este obligatoriu',
+    'SAFT-SEL-ORDER': 'SelectionStartDate trebuie să fie înaintea SelectionEndDate',
+    'SAFT-SEL-PERIOD': 'Perioada D406 trebuie să fie o lună, un trimestru sau un an calendaristic complet',
+    'SAFT-SEL-PERIOD-MISMATCH': 'Tipul perioadei nu corespunde celui așteptat',
+    'SAFT-CUST-ID': 'CustomerID este obligatoriu',
+    'SAFT-CUST-NAME': 'Numele clientului este obligatoriu',
+    'SAFT-SUPP-ID': 'SupplierID este obligatoriu',
+    'SAFT-SUPP-NAME': 'Numele furnizorului este obligatoriu',
+    'SAFT-TOTALS-MATH': 'Totalurile documentului nu corespund (verificați baza impozabilă + TVA)',
+  };
+
+  private translate(result: SaftValidationResult): SaftValidationResult {
+    for (const err of result.errors) {
+      let ro = err.messageRo || this.roMessages[err.code];
+      if (!ro && err.code.startsWith('SAFT-HDR-')) {
+        ro = `Element obligatoriu lipsă în Header: ${err.code.replace('SAFT-HDR-', '')}`;
+      } else if (!ro && err.code.startsWith('SAFT-COMP-')) {
+        ro = `Element obligatoriu lipsă în Company: ${err.code.replace('SAFT-COMP-', '')}`;
+      }
+      err.messageRo = ro || err.message;
+    }
+    return result;
+  }
+
+  private getSelectionDates(xml: string): { start?: string; end?: string } {
+    try {
+      const parsed = this.xmlParser.parse(xml);
+      const af = parsed.AuditFile || parsed['n1:AuditFile'] || {};
+      const header = af.Header || af['n1:Header'] || {};
+      const sc = header.SelectionCriteria || header['n1:SelectionCriteria'] || {};
+      const g = (n: string) => sc[n] || sc[`n1:${n}`];
+      return { start: g('SelectionStartDate'), end: g('SelectionEndDate') };
+    } catch {
+      return {};
+    }
+  }
+
+  // Full validation. Optionally assert the reporting period type (monthly or
+  // quarterly, per the taxpayer's VAT period). Errors carry Romanian messages.
+  validate(
+    xml: string,
+    opts?: { expectedPeriodType?: 'monthly' | 'quarterly' | 'annual' },
+  ): SaftValidationResult {
+    const wellformed = this.validateXmlWellformed(xml);
+    if (!wellformed.valid) return this.translate(wellformed);
+
+    const result = this.validateStructure(xml);
+
+    if (opts?.expectedPeriodType) {
+      const { start, end } = this.getSelectionDates(xml);
+      if (start && end) {
+        const detected = this.detectPeriod(String(start), String(end));
+        if (detected.type !== 'invalid' && detected.type !== opts.expectedPeriodType) {
+          const roExpected = { monthly: 'lunar', quarterly: 'trimestrial', annual: 'anual' }[opts.expectedPeriodType];
+          result.errors.push({
+            path: '/AuditFile/Header/SelectionCriteria',
+            message: `Period type is ${detected.type}, expected ${opts.expectedPeriodType}`,
+            messageRo: `Perioada raportată este ${detected.label}, dar se aștepta ${roExpected}`,
+            code: 'SAFT-SEL-PERIOD-MISMATCH',
+          });
+          result.valid = false;
+        }
+      }
     }
 
-    // Then validate structure
-    return this.validateStructure(xml);
+    return this.translate(result);
   }
 
   // Validate and throw if invalid
