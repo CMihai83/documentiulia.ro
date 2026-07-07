@@ -37,8 +37,10 @@ export function detectEntityType(row: Record<string, any>): MigrationEntity | nu
   const cols = Object.keys(row).map((k) => k.toLowerCase().trim());
   const has = (...ks: string[]) => ks.some((k) => cols.includes(k));
   if (has('invoicenumber', 'numar_factura', 'nrfactura', 'invoice_no', 'numarfactura')) return 'invoice';
-  if (has('cui', 'cif', 'cod_fiscal', 'codfiscal')) return 'customer';
+  // product: explicit product-code columns, or a generic code paired with a price
   if (has('sku', 'cod_produs', 'codprodus', 'product_code', 'barcode')) return 'product';
+  if (has('cod') && has('pret', 'price', 'pret_unitar', 'unit_price')) return 'product';
+  if (has('cui', 'cif', 'cod_fiscal', 'codfiscal')) return 'customer';
   if (has('name', 'denumire', 'nume')) return 'customer';
   return null;
 }
@@ -79,4 +81,29 @@ export function validateRow(entity: MigrationEntity, row: Record<string, any>): 
 /** Numeric total of an invoice row (for reconciliation), else 0. */
 export function invoiceTotal(row: Record<string, any>): number {
   return num(pick(row, ['total', 'total_amount', 'valoare', 'suma'])) ?? 0;
+}
+
+/** Map a staged customer row to the live Partner fields (commit-to-live). */
+export function extractCustomer(row: Record<string, any>) {
+  const rawCui = pick(row, ['cui', 'cif', 'cod_fiscal', 'codfiscal']);
+  return {
+    name: String(pick(row, ['name', 'denumire', 'nume']) ?? '').trim(),
+    cui: rawCui ? String(rawCui).toUpperCase().replace(/^RO/, '').replace(/\D/g, '') : null,
+    address: (pick(row, ['address', 'adresa']) as string) ?? null,
+    city: (pick(row, ['city', 'oras', 'localitate']) as string) ?? null,
+    county: (pick(row, ['county', 'judet']) as string) ?? null,
+    email: (pick(row, ['email']) as string) ?? null,
+    phone: (pick(row, ['phone', 'telefon']) as string) ?? null,
+  };
+}
+
+/** Map a staged product row to the live Product fields (commit-to-live). */
+export function extractProduct(row: Record<string, any>) {
+  return {
+    code: String(pick(row, ['sku', 'cod_produs', 'codprodus', 'product_code', 'cod']) ?? '').trim(),
+    name: String(pick(row, ['name', 'denumire', 'nume']) ?? '').trim(),
+    salePrice: num(pick(row, ['price', 'pret', 'unit_price', 'pret_unitar'])) ?? 0,
+    vatRate: num(pick(row, ['vatrate', 'tva', 'cota_tva'])) ?? 21,
+    unit: (pick(row, ['unit', 'um', 'unitate']) as string) ?? 'buc',
+  };
 }

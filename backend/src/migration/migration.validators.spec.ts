@@ -11,6 +11,12 @@ describe('migration.validators (DOC-46-1)', () => {
     it('detects product by SKU column', () => {
       expect(detectEntityType({ sku: 'P1', denumire: 'Widget' })).toBe('product');
     });
+    it('detects product by generic code + price (over customer name fallback)', () => {
+      expect(detectEntityType({ cod: 'P1', denumire: 'Widget', pret: '10' })).toBe('product');
+    });
+    it('keeps a bare code + name as customer (no price signal)', () => {
+      expect(detectEntityType({ cod: 'C1', denumire: 'Client SRL' })).toBe('customer');
+    });
     it('falls back to customer when only a name is present', () => {
       expect(detectEntityType({ nume: 'Ion' })).toBe('customer');
     });
