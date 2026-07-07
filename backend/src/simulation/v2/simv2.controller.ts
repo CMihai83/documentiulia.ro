@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Header, Param, Post, Query, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
 import { SimV2Service } from './simv2.service';
 import { SimDecision, TickType } from './simv2.types';
@@ -62,10 +62,24 @@ export class SimV2Controller {
     return this.sim.history(this.userId(req), id, fromTick ? parseInt(fromTick, 10) : 0);
   }
 
-  /** Pending-consequences ledger + open operational issues + Focus info. */
+  /** KPI time series as CSV for after-action review (SIM-7). */
+  @Get('runs/:id/history.csv')
+  @Header('Content-Type', 'text/csv')
+  @Header('Content-Disposition', 'attachment; filename="sim-history.csv"')
+  historyCsv(@Request() req: any, @Param('id') id: string) {
+    return this.sim.historyCsv(this.userId(req), id);
+  }
+
+  /** Pending-consequences ledger + open issues + events awaiting a choice (SIM-5). */
   @Get('runs/:id/pending')
   pending(@Request() req: any, @Param('id') id: string) {
     return this.sim.pendingEffects(this.userId(req), id);
+  }
+
+  /** Respond to a fired event's choice (SIM-5). */
+  @Post('runs/:id/events/:eventId/respond')
+  respondToEvent(@Request() req: any, @Param('id') id: string, @Param('eventId') eventId: string, @Body() dto: { choiceIndex: number }) {
+    return this.sim.respondToEvent(this.userId(req), id, eventId, dto?.choiceIndex ?? 0);
   }
 
   @Post('runs/:id/pause')
