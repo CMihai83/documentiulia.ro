@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
+import { AnafLookupService } from './anaf-lookup.service';
 import axios from 'axios';
 
 @Injectable()
@@ -10,6 +11,7 @@ export class AnafService {
   constructor(
     private configService: ConfigService,
     private rateLimiter: RateLimiterService,
+    private anafLookup: AnafLookupService,
   ) {}
 
   // Validate CUI (Romanian company ID)
@@ -23,67 +25,22 @@ export class AnafService {
     };
     error?: string;
   }> {
-    // Check rate limit for ANAF API calls
-    const rateLimitKey = `anaf:cui:${cui.substring(0, 4)}`; // Group by first 4 digits to avoid too many keys
-    const rateLimitResult = await this.rateLimiter.consumeRateLimit('INTEGRATION', rateLimitKey, {
-      integrationType: 'ANAF'
-    });
-
-    if (!rateLimitResult.allowed) {
-      this.logger.warn(`ANAF CUI validation rate limited for CUI ${cui}`);
+    // Delegates to the hardened, v9-correct AnafLookupService (rate-limited,
+    // 24h-cached, retried). Keeps this method's legacy return contract.
+    const result = await this.anafLookup.lookup(cui);
+    if (result.company) {
       return {
-        valid: false,
-        error: `Rate limit exceeded. Try again in ${Math.ceil((rateLimitResult.retryAfterMs || 5000) / 1000)} seconds.`,
-      };
-    }
-
-    const cuiApiUrl = this.configService.get('ANAF_CUI_API_URL') || 'https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva';
-    const cleanCui = parseInt(cui.replace(/\D/g, ''));
-    const today = new Date().toISOString().split('T')[0];
-
-    try {
-      const response = await axios.post(
-        cuiApiUrl,
-        [{ cui: cleanCui, data: today }],
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'User-Agent': 'DocumentIulia-ERP/1.0',
-          },
-          timeout: 10000,
+        valid: result.found,
+        company: {
+          name: result.company.name ?? '',
+          address: result.company.address ?? '',
+          vatPayer: result.company.vatPayer,
+          roEfactura: result.company.eFacturaEnrolled,
         },
-      );
-
-      const data = response.data.found?.[0];
-      if (data) {
-        return {
-          valid: true,
-          company: {
-            name: data.denumire,
-            address: data.adresa,
-            vatPayer: data.scpTVA === true,
-            roEfactura: data.statusRO_e_Factura === true,
-          },
-        };
-      }
-
-      // Check notfound array
-      if (response.data.notfound?.length > 0) {
-        return { valid: false, error: 'CUI not found in ANAF database' };
-      }
-
-      return { valid: false };
-    } catch (error: any) {
-      this.logger.error('Failed to validate CUI', error.message);
-      // Return graceful error instead of throwing
-      return {
-        valid: false,
-        error: error.response?.status === 404
-          ? 'ANAF API temporarily unavailable'
-          : `Validation failed: ${error.message}`,
+        error: result.error,
       };
     }
+    return { valid: false, error: result.errorRo || result.error };
   }
 
   // Submit SAF-T D406 to SPV

@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
 import { AnafService } from './anaf.service';
+import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
+import { AnafLookupService } from './anaf-lookup.service';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -9,8 +11,11 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe('AnafService', () => {
   let service: AnafService;
   let mockConfigService: jest.Mocked<ConfigService>;
+  let mockAnafLookup: { lookup: jest.Mock };
 
   beforeEach(async () => {
+    mockAnafLookup = { lookup: jest.fn().mockResolvedValue({ cui: '', formatValid: false, found: false, valid: false, cached: false }) };
+    const mockRateLimiter = { consumeRateLimit: jest.fn().mockResolvedValue({ allowed: true }) };
     mockConfigService = {
       get: jest.fn((key: string) => {
         const config: Record<string, string> = {
@@ -25,6 +30,8 @@ describe('AnafService', () => {
       providers: [
         AnafService,
         { provide: ConfigService, useValue: mockConfigService },
+        { provide: RateLimiterService, useValue: mockRateLimiter },
+        { provide: AnafLookupService, useValue: mockAnafLookup },
       ],
     }).compile();
 
@@ -42,123 +49,47 @@ describe('AnafService', () => {
 
   // =================== CUI VALIDATION ===================
 
-  describe('validateCUI', () => {
-    it('should validate a valid CUI and return company data', async () => {
-      mockedAxios.post.mockResolvedValue({
-        data: {
-          found: [
-            {
-              cui: 12345678,
-              denumire: 'SC Test Company SRL',
-              adresa: 'Bucuresti, Str. Exemplu nr. 1',
-              scpTVA: true,
-            },
-          ],
-        },
+  describe('validateCUI (delegates to AnafLookupService)', () => {
+    it('maps a found active VAT payer to the legacy contract', async () => {
+      mockAnafLookup.lookup.mockResolvedValue({
+        cui: '12345678', formatValid: true, found: true, valid: true, cached: false,
+        company: { cui: '12345678', name: 'SC Test SRL', address: 'Bucuresti', vatPayer: true, splitVat: false, eFacturaEnrolled: true, inactive: false },
       });
-
-      const result = await service.validateCUI('RO12345678');
-
-      expect(result.valid).toBe(true);
-      expect(result.company).toBeDefined();
-      expect(result.company!.name).toBe('SC Test Company SRL');
-      expect(result.company!.address).toBe('Bucuresti, Str. Exemplu nr. 1');
-      expect(result.company!.vatPayer).toBe(true);
+      const r = await service.validateCUI('RO12345678');
+      expect(r.valid).toBe(true);
+      expect(r.company!.name).toBe('SC Test SRL');
+      expect(r.company!.vatPayer).toBe(true);
+      expect(r.company!.roEfactura).toBe(true);
     });
 
-    it('should call ANAF API with correct endpoint', async () => {
-      mockedAxios.post.mockResolvedValue({ data: { found: [] } });
-
-      await service.validateCUI('12345678');
-
-      expect(mockedAxios.post).toHaveBeenCalledWith(
-        'https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva',
-        expect.any(Array),
-      );
-    });
-
-    it('should strip non-numeric characters from CUI', async () => {
-      mockedAxios.post.mockResolvedValue({ data: { found: [] } });
-
+    it('passes the raw CUI to the lookup service', async () => {
+      mockAnafLookup.lookup.mockResolvedValue({ cui: '12345678', formatValid: true, found: false, valid: false, cached: false });
       await service.validateCUI('RO-123-456-78');
-
-      expect(mockedAxios.post).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.arrayContaining([
-          expect.objectContaining({ cui: 12345678 }),
-        ]),
-      );
+      expect(mockAnafLookup.lookup).toHaveBeenCalledWith('RO-123-456-78');
     });
 
-    it('should return invalid for non-existent CUI', async () => {
-      mockedAxios.post.mockResolvedValue({
-        data: { found: [] },
+    it('returns invalid for a not-found CUI', async () => {
+      mockAnafLookup.lookup.mockResolvedValue({ cui: '99999999', formatValid: true, found: false, valid: false, cached: false, error: 'not found', errorRo: 'negasit' });
+      const r = await service.validateCUI('99999999');
+      expect(r.valid).toBe(false);
+      expect(r.company).toBeUndefined();
+    });
+
+    it('maps a non-VAT payer', async () => {
+      mockAnafLookup.lookup.mockResolvedValue({
+        cui: '87654321', formatValid: true, found: true, valid: true, cached: false,
+        company: { cui: '87654321', name: 'PFA', address: 'Cluj', vatPayer: false, splitVat: false, eFacturaEnrolled: false, inactive: false },
       });
-
-      const result = await service.validateCUI('99999999');
-
-      expect(result.valid).toBe(false);
-      expect(result.company).toBeUndefined();
+      const r = await service.validateCUI('87654321');
+      expect(r.valid).toBe(true);
+      expect(r.company!.vatPayer).toBe(false);
     });
 
-    it('should return invalid when API returns null found', async () => {
-      mockedAxios.post.mockResolvedValue({
-        data: { found: null },
-      });
-
-      const result = await service.validateCUI('12345678');
-
-      expect(result.valid).toBe(false);
-    });
-
-    it('should handle API errors gracefully', async () => {
-      mockedAxios.post.mockRejectedValue(new Error('Network error'));
-
-      const result = await service.validateCUI('12345678');
-
-      expect(result.valid).toBe(false);
-    });
-
-    it('should handle timeout errors', async () => {
-      mockedAxios.post.mockRejectedValue({ code: 'ECONNABORTED' });
-
-      const result = await service.validateCUI('12345678');
-
-      expect(result.valid).toBe(false);
-    });
-
-    it('should detect non-VAT payer company', async () => {
-      mockedAxios.post.mockResolvedValue({
-        data: {
-          found: [
-            {
-              cui: 87654321,
-              denumire: 'PFA Non-Vat',
-              adresa: 'Cluj-Napoca',
-              scpTVA: false,
-            },
-          ],
-        },
-      });
-
-      const result = await service.validateCUI('87654321');
-
-      expect(result.valid).toBe(true);
-      expect(result.company!.vatPayer).toBe(false);
-    });
-
-    it('should include current date in API request', async () => {
-      mockedAxios.post.mockResolvedValue({ data: { found: [] } });
-
-      await service.validateCUI('12345678');
-
-      const today = new Date().toISOString().split('T')[0];
-      expect(mockedAxios.post).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.arrayContaining([
-          expect.objectContaining({ data: today }),
-        ]),
-      );
+    it('propagates lookup failures gracefully', async () => {
+      mockAnafLookup.lookup.mockResolvedValue({ cui: '12345678', formatValid: true, found: false, valid: false, cached: false, error: 'ANAF lookup failed', errorRo: 'Interogare ANAF esuata' });
+      const r = await service.validateCUI('12345678');
+      expect(r.valid).toBe(false);
+      expect(r.error).toBeDefined();
     });
   });
 
@@ -371,9 +302,7 @@ describe('AnafService', () => {
 
   describe('Romanian Compliance - Legea 141/2025 & Order 1783/2021', () => {
     it('should support RO prefix in CUI validation', async () => {
-      mockedAxios.post.mockResolvedValue({
-        data: { found: [{ cui: 12345678, denumire: 'Test', adresa: 'Addr', scpTVA: true }] },
-      });
+      mockAnafLookup.lookup.mockResolvedValue({ cui: '12345678', formatValid: true, found: true, valid: true, cached: false, company: { cui: '12345678', name: 'Test', address: 'Addr', vatPayer: true, splitVat: false, eFacturaEnrolled: false, inactive: false } });
 
       const result = await service.validateCUI('RO12345678');
 
@@ -433,16 +362,9 @@ describe('AnafService', () => {
     });
 
     it('should handle special characters in CUI', async () => {
-      mockedAxios.post.mockResolvedValue({
-        data: { found: [{ cui: 12345678, denumire: 'Test', adresa: 'A', scpTVA: true }] },
-      });
+      await service.validateCUI('RO-123.456.78');
 
-      const result = await service.validateCUI('RO-123.456.78');
-
-      expect(mockedAxios.post).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.arrayContaining([expect.objectContaining({ cui: 12345678 })]),
-      );
+      expect(mockAnafLookup.lookup).toHaveBeenCalledWith('RO-123.456.78');
     });
 
     it('should handle empty XML for SAF-T submission', async () => {
@@ -458,11 +380,7 @@ describe('AnafService', () => {
     });
 
     it('should handle company with empty address', async () => {
-      mockedAxios.post.mockResolvedValue({
-        data: {
-          found: [{ cui: 12345678, denumire: 'Test Company', adresa: '', scpTVA: true }],
-        },
-      });
+      mockAnafLookup.lookup.mockResolvedValue({ cui: '12345678', formatValid: true, found: true, valid: true, cached: false, company: { cui: '12345678', name: 'Test Company', address: '', vatPayer: true, splitVat: false, eFacturaEnrolled: false, inactive: false } });
 
       const result = await service.validateCUI('12345678');
 
