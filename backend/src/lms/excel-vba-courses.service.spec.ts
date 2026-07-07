@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
+import { RedisService } from '../redis/redis.service';
 import { ExcelVBACoursesService } from './excel-vba-courses.service';
 import { LMSService } from './lms.service';
+import { PrismaService } from '../prisma/prisma.service';
+import { createLmsPrismaFake } from './testing/lms-prisma.fake';
 
 describe('ExcelVBACoursesService', () => {
   let service: ExcelVBACoursesService;
@@ -12,6 +15,8 @@ describe('ExcelVBACoursesService', () => {
       providers: [
         ExcelVBACoursesService,
         LMSService,
+        { provide: RedisService, useValue: { get: async () => null, set: async () => true, del: async () => true, delPattern: async () => 0 } },
+        { provide: PrismaService, useValue: createLmsPrismaFake() },
         {
           provide: ConfigService,
           useValue: {

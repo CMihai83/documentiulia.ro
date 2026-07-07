@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { PrismaService } from '../prisma/prisma.service';
+import { RedisService } from '../redis/redis.service';
 
 // Learning Management System (LMS) Service
 // Course management, progress tracking, assessments, certificates, and gamification
@@ -302,10 +304,6 @@ export interface LearningPath {
 @Injectable()
 export class LMSService {
   // In-memory storage
-  private courses = new Map<string, Course>();
-  private modules = new Map<string, CourseModule>();
-  private lessons = new Map<string, Lesson>();
-  private enrollments = new Map<string, Enrollment>();
   private assessments = new Map<string, Assessment>();
   private attempts = new Map<string, AssessmentAttempt>();
   private certificates = new Map<string, Certificate>();
@@ -315,15 +313,155 @@ export class LMSService {
   private learningPaths = new Map<string, LearningPath>();
   private instructors = new Map<string, Instructor>();
 
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private prisma: PrismaService,
+    private redis: RedisService,
+  ) {
     this.initializeDefaultBadges();
   }
 
-  resetState(): void {
-    this.courses.clear();
-    this.modules.clear();
-    this.lessons.clear();
-    this.enrollments.clear();
+  // ===== F-1: Prisma mappers + Redis cache helpers =====
+
+  private readonly COURSE_TTL = 3600;
+
+  private courseKey(id: string): string {
+    return `lms:course:${id}`;
+  }
+
+  private listKey(filters?: Record<string, unknown>): string {
+    return filters && Object.keys(filters).length
+      ? `lms:courses:${JSON.stringify(filters)}`
+      : 'lms:courses:all';
+  }
+
+  private async invalidateCourseCache(courseId?: string): Promise<void> {
+    try {
+      if (courseId) await this.redis.del(this.courseKey(courseId));
+      await this.redis.delPattern('lms:courses:*');
+    } catch {
+      // cache is best-effort; never fail a write on cache errors
+    }
+  }
+
+  private defaultInstructor(id = 'instructor'): Instructor {
+    return { id, name: 'Instructor', title: 'Course Instructor', bio: '', expertise: [], rating: 0, courseCount: 0, studentCount: 0 };
+  }
+
+  private readonly courseStatusToDb: Record<Course['status'], any> = {
+    DRAFT: 'LMS_DRAFT',
+    PUBLISHED: 'LMS_PUBLISHED',
+    ARCHIVED: 'LMS_ARCHIVED',
+  };
+
+  private courseStatusFromDb(s: string): Course['status'] {
+    if (s === 'LMS_PUBLISHED') return 'PUBLISHED';
+    if (s === 'LMS_ARCHIVED') return 'ARCHIVED';
+    return 'DRAFT';
+  }
+
+  private mapLesson(row: any): Lesson {
+    return {
+      id: row.id,
+      moduleId: row.moduleId,
+      title: row.title,
+      description: row.description ?? undefined,
+      order: row.order,
+      type: row.type,
+      content: (row.contentJson as LessonContent) ?? { textContent: row.content ?? undefined, videoUrl: row.videoUrl ?? undefined },
+      duration: row.duration,
+      isFree: row.isFree,
+      isPreview: row.isPreview,
+    };
+  }
+
+  private mapModule(row: any): CourseModule {
+    return {
+      id: row.id,
+      courseId: row.courseId,
+      title: row.title,
+      description: row.description ?? undefined,
+      order: row.order,
+      duration: row.duration,
+      isFree: row.isFree,
+      lessons: (row.lessons ?? []).map((l: any) => this.mapLesson(l)),
+    };
+  }
+
+  private mapCourse(row: any): Course {
+    return {
+      id: row.id,
+      title: row.title,
+      slug: row.slug,
+      description: row.description,
+      shortDescription: row.shortDescription ?? '',
+      thumbnail: row.thumbnailUrl ?? undefined,
+      previewVideo: row.previewVideo ?? undefined,
+      instructor: (row.instructor as Instructor) ?? this.defaultInstructor(),
+      category: row.category,
+      subcategory: row.subcategory ?? undefined,
+      level: row.level,
+      language: row.language,
+      duration: row.duration,
+      modules: (row.modules ?? []).map((m: any) => this.mapModule(m)),
+      prerequisites: row.prerequisites ?? [],
+      learningOutcomes: row.learningOutcomes ?? [],
+      targetAudience: row.targetAudience ?? [],
+      tags: row.tags ?? [],
+      price: row.price != null ? Number(row.price) : 0,
+      currency: row.currency,
+      discountPrice: row.discountPrice != null ? Number(row.discountPrice) : undefined,
+      isFree: row.isFree,
+      enrollmentCount: row.enrollmentCount,
+      rating: row.rating,
+      reviewCount: row.reviewCount,
+      status: this.courseStatusFromDb(row.status),
+      publishedAt: row.publishedAt ?? undefined,
+      certificateEnabled: row.hasCertificate,
+      certificateTemplate: row.certificateTemplate ?? undefined,
+      hrdaEligible: row.hrdaEligible,
+      ceuCredits: row.ceuCredits ?? undefined,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+    };
+  }
+
+  private mapEnrollment(row: any): Enrollment {
+    const completedLessons = (row.lessonProgress ?? []).filter((p: any) => p.completed).map((p: any) => p.lessonId);
+    return {
+      id: row.id,
+      userId: row.userId,
+      courseId: row.courseId,
+      status: row.status,
+      enrolledAt: row.startedAt,
+      completedAt: row.completedAt ?? undefined,
+      expiresAt: row.expiresAt ?? undefined,
+      progress: {
+        completedLessons,
+        completedModules: row.completedModules ?? [],
+        completedAssessments: row.completedAssessments ?? [],
+        currentLessonId: row.currentLessonId ?? undefined,
+        currentModuleId: row.currentModuleId ?? undefined,
+        overallProgress: row.progress,
+        totalTimeSpent: row.totalTimeSpent,
+        lastAccessedAt: row.lastAccessedAt ?? row.startedAt,
+        streakDays: row.streakDays,
+        longestStreak: row.longestStreak,
+      },
+      certificateId: row.certificateId ?? undefined,
+      paymentId: row.paymentId ?? undefined,
+      accessType: row.accessType,
+    };
+  }
+
+  async resetState(): Promise<void> {
+    // Migrated entities live in the DB now
+    await this.prisma.lMSLessonProgress.deleteMany({});
+    await this.prisma.lMSEnrollment.deleteMany({});
+    await this.prisma.lMSLesson.deleteMany({});
+    await this.prisma.lMSCourseModule.deleteMany({});
+    await this.prisma.lMSCourse.deleteMany({});
+    // Remaining in-memory stores
     this.assessments.clear();
     this.attempts.clear();
     this.certificates.clear();
@@ -333,6 +471,7 @@ export class LMSService {
     this.learningPaths.clear();
     this.instructors.clear();
     this.initializeDefaultBadges();
+    await this.invalidateCourseCache();
   }
 
   private initializeDefaultBadges(): void {
@@ -440,40 +579,27 @@ export class LMSService {
     thumbnail?: string;
     previewVideo?: string;
   }): Promise<Course> {
-    const courseId = `course-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    const slug = data.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const slugBase = data.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-    // Get or create instructor
     let instructor = this.instructors.get(data.instructorId);
     if (!instructor) {
-      instructor = {
-        id: data.instructorId,
-        name: 'Instructor',
-        title: 'Course Instructor',
-        bio: '',
-        expertise: [],
-        rating: 0,
-        courseCount: 0,
-        studentCount: 0,
-      };
-      this.instructors.set(data.instructorId, instructor);
+      instructor = this.defaultInstructor(data.instructorId);
     }
+    instructor.courseCount++;
+    this.instructors.set(instructor.id, instructor);
 
-    const course: Course = {
-      id: courseId,
+    const createData: any = {
       title: data.title,
-      slug,
+      slug: slugBase,
       description: data.description,
       shortDescription: data.shortDescription,
-      thumbnail: data.thumbnail,
       previewVideo: data.previewVideo,
-      instructor,
-      category: data.category,
+      thumbnailUrl: data.thumbnail,
+      category: data.category as any,
       subcategory: data.subcategory,
-      level: data.level,
+      level: data.level as any,
       language: data.language,
       duration: 0,
-      modules: [],
       prerequisites: data.prerequisites || [],
       learningOutcomes: data.learningOutcomes,
       targetAudience: data.targetAudience,
@@ -481,66 +607,106 @@ export class LMSService {
       price: data.price,
       currency: data.currency,
       isFree: data.price === 0,
-      enrollmentCount: 0,
-      rating: 0,
-      reviewCount: 0,
-      status: 'DRAFT',
-      certificateEnabled: data.certificateEnabled ?? true,
+      hasCertificate: data.certificateEnabled ?? true,
       hrdaEligible: data.hrdaEligible ?? false,
       ceuCredits: data.ceuCredits,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      status: 'LMS_DRAFT',
+      instructor: instructor as any,
     };
 
-    this.courses.set(courseId, course);
+    let row;
+    try {
+      row = await this.prisma.lMSCourse.create({ data: createData });
+    } catch (e: any) {
+      if (e?.code === 'P2002') {
+        row = await this.prisma.lMSCourse.create({ data: { ...createData, slug: `${slugBase}-${Math.random().toString(36).slice(2, 8)}` } });
+      } else {
+        throw e;
+      }
+    }
 
-    // Update instructor course count
-    instructor.courseCount++;
-    this.instructors.set(instructor.id, instructor);
-
-    return course;
+    await this.invalidateCourseCache(row.id);
+    return this.mapCourse({ ...row, modules: [] });
   }
 
   async getCourse(courseId: string): Promise<Course | null> {
-    return this.courses.get(courseId) || null;
+    const key = this.courseKey(courseId);
+    try {
+      const cached = await this.redis.get<Course>(key);
+      if (cached) return cached;
+    } catch {
+      // fall through to DB
+    }
+    const row = await this.prisma.lMSCourse.findUnique({
+      where: { id: courseId },
+      include: { modules: { orderBy: { order: 'asc' }, include: { lessons: { orderBy: { order: 'asc' } } } } },
+    });
+    if (!row) return null;
+    const course = this.mapCourse(row);
+    try { await this.redis.set(key, course, this.COURSE_TTL); } catch { /* best-effort */ }
+    return course;
   }
 
   async getCourseBySlug(slug: string): Promise<Course | null> {
-    return Array.from(this.courses.values()).find(c => c.slug === slug) || null;
+    const row = await this.prisma.lMSCourse.findUnique({
+      where: { slug },
+      include: { modules: { orderBy: { order: 'asc' }, include: { lessons: { orderBy: { order: 'asc' } } } } },
+    });
+    return row ? this.mapCourse(row) : null;
   }
 
   async updateCourse(courseId: string, updates: Partial<Course>): Promise<Course> {
-    const course = this.courses.get(courseId);
-    if (!course) {
+    const data: any = {};
+    if (updates.title !== undefined) data.title = updates.title;
+    if (updates.description !== undefined) data.description = updates.description;
+    if (updates.shortDescription !== undefined) data.shortDescription = updates.shortDescription;
+    if (updates.previewVideo !== undefined) data.previewVideo = updates.previewVideo;
+    if (updates.thumbnail !== undefined) data.thumbnailUrl = updates.thumbnail;
+    if (updates.category !== undefined) data.category = updates.category as any;
+    if (updates.subcategory !== undefined) data.subcategory = updates.subcategory;
+    if (updates.level !== undefined) data.level = updates.level as any;
+    if (updates.language !== undefined) data.language = updates.language;
+    if (updates.tags !== undefined) data.tags = updates.tags;
+    if (updates.prerequisites !== undefined) data.prerequisites = updates.prerequisites;
+    if (updates.learningOutcomes !== undefined) data.learningOutcomes = updates.learningOutcomes;
+    if (updates.targetAudience !== undefined) data.targetAudience = updates.targetAudience;
+    if (updates.price !== undefined) { data.price = updates.price; data.isFree = updates.price === 0; }
+    if (updates.discountPrice !== undefined) data.discountPrice = updates.discountPrice;
+    if (updates.status !== undefined) data.status = this.courseStatusToDb[updates.status];
+    if (updates.certificateEnabled !== undefined) data.hasCertificate = updates.certificateEnabled;
+    if (updates.hrdaEligible !== undefined) data.hrdaEligible = updates.hrdaEligible;
+    if (updates.ceuCredits !== undefined) data.ceuCredits = updates.ceuCredits;
+
+    let row;
+    try {
+      row = await this.prisma.lMSCourse.update({
+        where: { id: courseId },
+        data,
+        include: { modules: { orderBy: { order: 'asc' }, include: { lessons: { orderBy: { order: 'asc' } } } } },
+      });
+    } catch {
       throw new Error('Course not found');
     }
-
-    const updated = { ...course, ...updates, updatedAt: new Date() };
-    this.courses.set(courseId, updated);
-    return updated;
+    await this.invalidateCourseCache(courseId);
+    return this.mapCourse(row);
   }
 
   async publishCourse(courseId: string): Promise<Course> {
-    const course = this.courses.get(courseId);
-    if (!course) {
-      throw new Error('Course not found');
-    }
+    const existing = await this.prisma.lMSCourse.findUnique({
+      where: { id: courseId },
+      include: { modules: { include: { lessons: true } } },
+    });
+    if (!existing) throw new Error('Course not found');
+    if (existing.modules.length === 0) throw new Error('Course must have at least one module');
+    if (!existing.modules.some((m: any) => m.lessons.length > 0)) throw new Error('Course must have at least one lesson');
 
-    if (course.modules.length === 0) {
-      throw new Error('Course must have at least one module');
-    }
-
-    const hasLessons = course.modules.some(m => m.lessons.length > 0);
-    if (!hasLessons) {
-      throw new Error('Course must have at least one lesson');
-    }
-
-    course.status = 'PUBLISHED';
-    course.publishedAt = new Date();
-    course.updatedAt = new Date();
-
-    this.courses.set(courseId, course);
-    return course;
+    const row = await this.prisma.lMSCourse.update({
+      where: { id: courseId },
+      data: { status: 'LMS_PUBLISHED', publishedAt: new Date() },
+      include: { modules: { orderBy: { order: 'asc' }, include: { lessons: { orderBy: { order: 'asc' } } } } },
+    });
+    await this.invalidateCourseCache(courseId);
+    return this.mapCourse(row);
   }
 
   async listCourses(filters?: {
@@ -551,109 +717,82 @@ export class LMSService {
     instructorId?: string;
     search?: string;
   }): Promise<Course[]> {
-    let courses = Array.from(this.courses.values());
+    const key = this.listKey(filters as any);
+    try {
+      const cached = await this.redis.get<Course[]>(key);
+      if (cached) return cached;
+    } catch {
+      // fall through to DB
+    }
 
-    if (filters?.category) {
-      courses = courses.filter(c => c.category === filters.category);
-    }
-    if (filters?.level) {
-      courses = courses.filter(c => c.level === filters.level);
-    }
-    if (filters?.status) {
-      courses = courses.filter(c => c.status === filters.status);
-    }
-    if (filters?.isFree !== undefined) {
-      courses = courses.filter(c => c.isFree === filters.isFree);
+    const where: any = {};
+    if (filters?.category) where.category = filters.category;
+    if (filters?.level) where.level = filters.level;
+    if (filters?.status) where.status = this.courseStatusToDb[filters.status];
+    if (filters?.isFree !== undefined) where.isFree = filters.isFree;
+
+    const rows = await this.prisma.lMSCourse.findMany({
+      where,
+      include: { modules: { orderBy: { order: 'asc' }, include: { lessons: { orderBy: { order: 'asc' } } } } },
+      orderBy: { enrollmentCount: 'desc' },
+    });
+    let courses = rows.map((r: any) => this.mapCourse(r));
+
+    if (filters?.search) {
+      const term = filters.search.toLowerCase();
+      courses = courses.filter(c =>
+        c.title.toLowerCase().includes(term) ||
+        c.description.toLowerCase().includes(term) ||
+        c.tags.some(t => t.toLowerCase().includes(term)),
+      );
     }
     if (filters?.instructorId) {
       courses = courses.filter(c => c.instructor.id === filters.instructorId);
     }
-    if (filters?.search) {
-      const searchLower = filters.search.toLowerCase();
-      courses = courses.filter(c =>
-        c.title.toLowerCase().includes(searchLower) ||
-        c.description.toLowerCase().includes(searchLower) ||
-        c.tags.some(t => t.toLowerCase().includes(searchLower))
-      );
-    }
 
-    return courses.sort((a, b) => b.enrollmentCount - a.enrollmentCount);
+    try { await this.redis.set(key, courses, this.COURSE_TTL); } catch { /* best-effort */ }
+    return courses;
   }
 
   // ===== MODULE MANAGEMENT =====
 
-  async addModule(courseId: string, data: {
-    title: string;
-    description?: string;
-    isFree?: boolean;
-  }): Promise<CourseModule> {
-    const course = this.courses.get(courseId);
-    if (!course) {
-      throw new Error('Course not found');
-    }
-
-    const moduleId = `module-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-
-    const module: CourseModule = {
-      id: moduleId,
-      courseId,
-      title: data.title,
-      description: data.description,
-      order: course.modules.length + 1,
-      lessons: [],
-      duration: 0,
-      isFree: data.isFree ?? false,
-    };
-
-    this.modules.set(moduleId, module);
-    course.modules.push(module);
-    course.updatedAt = new Date();
-    this.courses.set(courseId, course);
-
-    return module;
+  async addModule(courseId: string, data: { title: string; description?: string; isFree?: boolean; }): Promise<CourseModule> {
+    const course = await this.prisma.lMSCourse.findUnique({ where: { id: courseId }, include: { modules: true } });
+    if (!course) throw new Error('Course not found');
+    const row = await this.prisma.lMSCourseModule.create({
+      data: { courseId, title: data.title, description: data.description, order: course.modules.length + 1, duration: 0, isFree: data.isFree ?? false },
+    });
+    await this.invalidateCourseCache(courseId);
+    return this.mapModule({ ...row, lessons: [] });
   }
 
   async updateModule(moduleId: string, updates: Partial<CourseModule>): Promise<CourseModule> {
-    const module = this.modules.get(moduleId);
-    if (!module) {
+    const data: any = {};
+    if (updates.title !== undefined) data.title = updates.title;
+    if (updates.description !== undefined) data.description = updates.description;
+    if (updates.order !== undefined) data.order = updates.order;
+    if (updates.duration !== undefined) data.duration = updates.duration;
+    if (updates.isFree !== undefined) data.isFree = updates.isFree;
+    let row;
+    try {
+      row = await this.prisma.lMSCourseModule.update({ where: { id: moduleId }, data, include: { lessons: { orderBy: { order: 'asc' } } } });
+    } catch {
       throw new Error('Module not found');
     }
-
-    const updated = { ...module, ...updates };
-    this.modules.set(moduleId, updated);
-
-    // Update in course
-    const course = this.courses.get(module.courseId);
-    if (course) {
-      const idx = course.modules.findIndex(m => m.id === moduleId);
-      if (idx !== -1) {
-        course.modules[idx] = updated;
-        this.courses.set(course.id, course);
-      }
-    }
-
-    return updated;
+    await this.invalidateCourseCache(row.courseId);
+    return this.mapModule(row);
   }
 
   async reorderModules(courseId: string, moduleOrder: string[]): Promise<Course> {
-    const course = this.courses.get(courseId);
-    if (!course) {
-      throw new Error('Course not found');
+    const course = await this.prisma.lMSCourse.findUnique({ where: { id: courseId }, include: { modules: true } });
+    if (!course) throw new Error('Course not found');
+    for (let i = 0; i < moduleOrder.length; i++) {
+      const id = moduleOrder[i];
+      if (!course.modules.find((m: any) => m.id === id)) throw new Error(`Module ${id} not found`);
+      await this.prisma.lMSCourseModule.update({ where: { id }, data: { order: i + 1 } });
     }
-
-    const reorderedModules = moduleOrder.map((id, index) => {
-      const module = course.modules.find(m => m.id === id);
-      if (!module) throw new Error(`Module ${id} not found`);
-      module.order = index + 1;
-      this.modules.set(id, module);
-      return module;
-    });
-
-    course.modules = reorderedModules;
-    course.updatedAt = new Date();
-    this.courses.set(courseId, course);
-
-    return course;
+    await this.invalidateCourseCache(courseId);
+    return (await this.getCourse(courseId)) as Course;
   }
 
   // ===== LESSON MANAGEMENT =====
@@ -667,247 +806,182 @@ export class LMSService {
     isFree?: boolean;
     isPreview?: boolean;
   }): Promise<Lesson> {
-    const module = this.modules.get(moduleId);
-    if (!module) {
-      throw new Error('Module not found');
-    }
-
-    const lessonId = `lesson-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-
-    const lesson: Lesson = {
-      id: lessonId,
-      moduleId,
-      title: data.title,
-      description: data.description,
-      order: module.lessons.length + 1,
-      type: data.type,
-      content: data.content,
-      duration: data.duration,
-      isFree: data.isFree ?? false,
-      isPreview: data.isPreview ?? false,
-    };
-
-    this.lessons.set(lessonId, lesson);
-    module.lessons.push(lesson);
-    module.duration += data.duration;
-    this.modules.set(moduleId, module);
-
-    // Update course duration
-    const course = this.courses.get(module.courseId);
-    if (course) {
-      course.duration += data.duration;
-      const moduleIdx = course.modules.findIndex(m => m.id === moduleId);
-      if (moduleIdx !== -1) {
-        course.modules[moduleIdx] = module;
-      }
-      this.courses.set(course.id, course);
-    }
-
-    return lesson;
+    const parentModule = await this.prisma.lMSCourseModule.findUnique({ where: { id: moduleId }, include: { lessons: true } });
+    if (!parentModule) throw new Error('Module not found');
+    const row = await this.prisma.lMSLesson.create({
+      data: {
+        moduleId,
+        title: data.title,
+        description: data.description,
+        order: parentModule.lessons.length + 1,
+        type: data.type as any,
+        videoUrl: data.content?.videoUrl,
+        content: data.content?.textContent,
+        contentJson: data.content as any,
+        duration: data.duration,
+        isFree: data.isFree ?? false,
+        isPreview: data.isPreview ?? false,
+        attachments: [],
+      },
+    });
+    await this.prisma.lMSCourseModule.update({ where: { id: moduleId }, data: { duration: { increment: data.duration } } });
+    await this.prisma.lMSCourse.update({ where: { id: parentModule.courseId }, data: { duration: { increment: data.duration } } });
+    await this.invalidateCourseCache(parentModule.courseId);
+    return this.mapLesson(row);
   }
 
   async updateLesson(lessonId: string, updates: Partial<Lesson>): Promise<Lesson> {
-    const lesson = this.lessons.get(lessonId);
-    if (!lesson) {
-      throw new Error('Lesson not found');
+    const lesson = await this.prisma.lMSLesson.findUnique({ where: { id: lessonId } });
+    if (!lesson) throw new Error('Lesson not found');
+    const durationDiff = (updates.duration ?? lesson.duration) - lesson.duration;
+    const data: any = {};
+    if (updates.title !== undefined) data.title = updates.title;
+    if (updates.description !== undefined) data.description = updates.description;
+    if (updates.order !== undefined) data.order = updates.order;
+    if (updates.type !== undefined) data.type = updates.type as any;
+    if (updates.duration !== undefined) data.duration = updates.duration;
+    if (updates.isFree !== undefined) data.isFree = updates.isFree;
+    if (updates.isPreview !== undefined) data.isPreview = updates.isPreview;
+    if (updates.content !== undefined) {
+      data.contentJson = updates.content as any;
+      data.videoUrl = updates.content.videoUrl;
+      data.content = updates.content.textContent;
     }
-
-    const durationDiff = (updates.duration || lesson.duration) - lesson.duration;
-    const updated = { ...lesson, ...updates };
-    this.lessons.set(lessonId, updated);
-
-    // Update module
-    const module = this.modules.get(lesson.moduleId);
-    if (module) {
-      const idx = module.lessons.findIndex(l => l.id === lessonId);
-      if (idx !== -1) {
-        module.lessons[idx] = updated;
-        module.duration += durationDiff;
-        this.modules.set(module.id, module);
-
-        // Update course
-        const course = this.courses.get(module.courseId);
-        if (course) {
-          course.duration += durationDiff;
-          const moduleIdx = course.modules.findIndex(m => m.id === module.id);
-          if (moduleIdx !== -1) {
-            course.modules[moduleIdx] = module;
-          }
-          this.courses.set(course.id, course);
-        }
-      }
+    const row = await this.prisma.lMSLesson.update({ where: { id: lessonId }, data });
+    if (durationDiff !== 0) {
+      await this.prisma.lMSCourseModule.update({ where: { id: lesson.moduleId }, data: { duration: { increment: durationDiff } } });
+      const mod = await this.prisma.lMSCourseModule.findUnique({ where: { id: lesson.moduleId } });
+      if (mod) await this.prisma.lMSCourse.update({ where: { id: mod.courseId }, data: { duration: { increment: durationDiff } } });
     }
-
-    return updated;
+    const mod2 = await this.prisma.lMSCourseModule.findUnique({ where: { id: lesson.moduleId } });
+    if (mod2) await this.invalidateCourseCache(mod2.courseId);
+    return this.mapLesson(row);
   }
 
   async getLesson(lessonId: string): Promise<Lesson | null> {
-    return this.lessons.get(lessonId) || null;
+    const row = await this.prisma.lMSLesson.findUnique({ where: { id: lessonId } });
+    return row ? this.mapLesson(row) : null;
   }
 
   // ===== ENROLLMENT MANAGEMENT =====
 
   async enrollUser(userId: string, courseId: string, accessType: Enrollment['accessType'] = 'PURCHASED', paymentId?: string): Promise<Enrollment> {
-    const course = this.courses.get(courseId);
-    if (!course) {
-      throw new Error('Course not found');
+    const course = await this.prisma.lMSCourse.findUnique({ where: { id: courseId } });
+    if (!course) throw new Error('Course not found');
+
+    const existing = await this.prisma.lMSEnrollment.findFirst({ where: { userId, courseId, status: 'ACTIVE' } });
+    if (existing) throw new Error('User is already enrolled in this course');
+
+    let row;
+    try {
+      row = await this.prisma.lMSEnrollment.create({
+        data: {
+          userId, courseId, status: 'ACTIVE', accessType, paymentId,
+          progress: 0, totalTimeSpent: 0, streakDays: 0, longestStreak: 0,
+          completedModules: [], completedAssessments: [], lastAccessedAt: new Date(),
+        },
+        include: { lessonProgress: true },
+      });
+    } catch (e: any) {
+      if (e?.code === 'P2002') throw new Error('User is already enrolled in this course');
+      throw e;
     }
 
-    // Check for existing enrollment
-    const existing = Array.from(this.enrollments.values()).find(
-      e => e.userId === userId && e.courseId === courseId && e.status === 'ACTIVE'
-    );
-    if (existing) {
-      throw new Error('User is already enrolled in this course');
+    await this.prisma.lMSCourse.update({ where: { id: courseId }, data: { enrollmentCount: { increment: 1 } } });
+
+    const instrId = (course.instructor as any)?.id;
+    if (instrId) {
+      const i = this.instructors.get(instrId);
+      if (i) { i.studentCount++; this.instructors.set(instrId, i); }
     }
 
-    const enrollmentId = `enroll-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-
-    const enrollment: Enrollment = {
-      id: enrollmentId,
-      userId,
-      courseId,
-      status: 'ACTIVE',
-      enrolledAt: new Date(),
-      progress: {
-        completedLessons: [],
-        completedModules: [],
-        completedAssessments: [],
-        overallProgress: 0,
-        totalTimeSpent: 0,
-        lastAccessedAt: new Date(),
-        streakDays: 0,
-        longestStreak: 0,
-      },
-      accessType,
-      paymentId,
-    };
-
-    this.enrollments.set(enrollmentId, enrollment);
-
-    // Update course enrollment count
-    course.enrollmentCount++;
-    this.courses.set(courseId, course);
-
-    // Update instructor student count
-    const instructor = this.instructors.get(course.instructor.id);
-    if (instructor) {
-      instructor.studentCount++;
-      this.instructors.set(instructor.id, instructor);
-    }
-
-    // Check for first course badge
+    await this.invalidateCourseCache(courseId);
     await this.checkAndAwardBadges(userId, 'FIRST_COURSE');
-
-    return enrollment;
+    return this.mapEnrollment(row);
   }
 
   async getEnrollment(enrollmentId: string): Promise<Enrollment | null> {
-    return this.enrollments.get(enrollmentId) || null;
+    const row = await this.prisma.lMSEnrollment.findUnique({ where: { id: enrollmentId }, include: { lessonProgress: true } });
+    return row ? this.mapEnrollment(row) : null;
   }
 
   async getUserEnrollments(userId: string): Promise<Enrollment[]> {
-    return Array.from(this.enrollments.values())
-      .filter(e => e.userId === userId)
-      .sort((a, b) => b.enrolledAt.getTime() - a.enrolledAt.getTime());
+    const rows = await this.prisma.lMSEnrollment.findMany({ where: { userId }, include: { lessonProgress: true }, orderBy: { startedAt: 'desc' } });
+    return rows.map((r: any) => this.mapEnrollment(r));
   }
 
   async getCourseEnrollments(courseId: string): Promise<Enrollment[]> {
-    return Array.from(this.enrollments.values())
-      .filter(e => e.courseId === courseId);
+    const rows = await this.prisma.lMSEnrollment.findMany({ where: { courseId }, include: { lessonProgress: true } });
+    return rows.map((r: any) => this.mapEnrollment(r));
   }
 
   // ===== PROGRESS TRACKING =====
 
   async markLessonComplete(enrollmentId: string, lessonId: string, timeSpent: number): Promise<Enrollment> {
-    const enrollment = this.enrollments.get(enrollmentId);
-    if (!enrollment) {
-      throw new Error('Enrollment not found');
+    const enr = await this.prisma.lMSEnrollment.findUnique({ where: { id: enrollmentId } });
+    if (!enr) throw new Error('Enrollment not found');
+    const lesson = await this.prisma.lMSLesson.findUnique({ where: { id: lessonId } });
+    if (!lesson) throw new Error('Lesson not found');
+
+    await this.prisma.lMSLessonProgress.upsert({
+      where: { enrollmentId_lessonId: { enrollmentId, lessonId } },
+      create: { enrollmentId, lessonId, completed: true, completedAt: new Date(), watchedDuration: timeSpent },
+      update: { completed: true, completedAt: new Date(), watchedDuration: { increment: timeSpent } },
+    });
+
+    const prevLast = enr.lastAccessedAt ?? enr.startedAt;
+    let streakDays = enr.streakDays;
+    let longestStreak = enr.longestStreak;
+    if (new Date().toDateString() !== new Date(prevLast).toDateString()) {
+      streakDays++;
+      if (streakDays > longestStreak) longestStreak = streakDays;
     }
 
-    const lesson = this.lessons.get(lessonId);
-    if (!lesson) {
-      throw new Error('Lesson not found');
+    const progressRows = await this.prisma.lMSLessonProgress.findMany({ where: { enrollmentId, completed: true } });
+    const completedLessonIds = progressRows.map((p: any) => p.lessonId);
+
+    const parentModule = await this.prisma.lMSCourseModule.findUnique({ where: { id: lesson.moduleId }, include: { lessons: true } });
+    let completedModules = enr.completedModules;
+    if (parentModule) {
+      const allDone = parentModule.lessons.every((l: any) => completedLessonIds.includes(l.id));
+      if (allDone && !completedModules.includes(parentModule.id)) completedModules = [...completedModules, parentModule.id];
     }
 
-    // Add to completed lessons if not already
-    if (!enrollment.progress.completedLessons.includes(lessonId)) {
-      enrollment.progress.completedLessons.push(lessonId);
+    const courseModules = await this.prisma.lMSCourseModule.findMany({ where: { courseId: enr.courseId }, include: { _count: { select: { lessons: true } } } });
+    const totalLessons = courseModules.reduce((sum: number, m: any) => sum + m._count.lessons, 0);
+    const overall = totalLessons > 0 ? Math.round((completedLessonIds.length / totalLessons) * 100) : 0;
+
+    const course = await this.prisma.lMSCourse.findUnique({ where: { id: enr.courseId } });
+    let status = enr.status;
+    let completedAt = enr.completedAt;
+    const justCompleted = overall === 100 && status !== 'COMPLETED';
+    if (justCompleted) { status = 'COMPLETED'; completedAt = new Date(); }
+
+    await this.prisma.lMSEnrollment.update({
+      where: { id: enrollmentId },
+      data: { progress: overall, totalTimeSpent: { increment: timeSpent }, lastAccessedAt: new Date(), streakDays, longestStreak, completedModules, status, completedAt },
+    });
+
+    if (justCompleted) {
+      if (course?.hasCertificate) { try { await this.generateCertificate(enrollmentId); } catch { /* non-fatal */ } }
+      await this.checkAndAwardBadges(enr.userId, 'COURSES_COUNT');
     }
+    await this.checkAndAwardBadges(enr.userId, 'STREAK_DAYS', streakDays);
 
-    enrollment.progress.totalTimeSpent += timeSpent;
-    enrollment.progress.lastAccessedAt = new Date();
-
-    // Update streak
-    const today = new Date().toDateString();
-    const lastAccess = enrollment.progress.lastAccessedAt.toDateString();
-    if (today !== lastAccess) {
-      enrollment.progress.streakDays++;
-      if (enrollment.progress.streakDays > enrollment.progress.longestStreak) {
-        enrollment.progress.longestStreak = enrollment.progress.streakDays;
-      }
-    }
-
-    // Check if module is complete
-    const module = this.modules.get(lesson.moduleId);
-    if (module) {
-      const moduleLessonIds = module.lessons.map(l => l.id);
-      const allLessonsComplete = moduleLessonIds.every(id =>
-        enrollment.progress.completedLessons.includes(id)
-      );
-      if (allLessonsComplete && !enrollment.progress.completedModules.includes(module.id)) {
-        enrollment.progress.completedModules.push(module.id);
-      }
-    }
-
-    // Calculate overall progress
-    const course = this.courses.get(enrollment.courseId);
-    if (course) {
-      const totalLessons = course.modules.reduce((sum, m) => sum + m.lessons.length, 0);
-      enrollment.progress.overallProgress = totalLessons > 0
-        ? Math.round((enrollment.progress.completedLessons.length / totalLessons) * 100)
-        : 0;
-
-      // Check if course is complete
-      if (enrollment.progress.overallProgress === 100 && enrollment.status !== 'COMPLETED') {
-        enrollment.status = 'COMPLETED';
-        enrollment.completedAt = new Date();
-
-        // Generate certificate if enabled
-        if (course.certificateEnabled) {
-          await this.generateCertificate(enrollmentId);
-        }
-
-        // Check badges
-        await this.checkAndAwardBadges(enrollment.userId, 'COURSES_COUNT');
-      }
-    }
-
-    this.enrollments.set(enrollmentId, enrollment);
-
-    // Check streak badges
-    await this.checkAndAwardBadges(enrollment.userId, 'STREAK_DAYS', enrollment.progress.streakDays);
-
-    return enrollment;
+    return (await this.getEnrollment(enrollmentId)) as Enrollment;
   }
 
   async setCurrentLesson(enrollmentId: string, lessonId: string): Promise<Enrollment> {
-    const enrollment = this.enrollments.get(enrollmentId);
-    if (!enrollment) {
-      throw new Error('Enrollment not found');
-    }
-
-    const lesson = this.lessons.get(lessonId);
-    if (!lesson) {
-      throw new Error('Lesson not found');
-    }
-
-    enrollment.progress.currentLessonId = lessonId;
-    enrollment.progress.currentModuleId = lesson.moduleId;
-    enrollment.progress.lastAccessedAt = new Date();
-
-    this.enrollments.set(enrollmentId, enrollment);
-    return enrollment;
+    const enr = await this.prisma.lMSEnrollment.findUnique({ where: { id: enrollmentId } });
+    if (!enr) throw new Error('Enrollment not found');
+    const lesson = await this.prisma.lMSLesson.findUnique({ where: { id: lessonId } });
+    if (!lesson) throw new Error('Lesson not found');
+    const row = await this.prisma.lMSEnrollment.update({
+      where: { id: enrollmentId },
+      data: { currentLessonId: lessonId, currentModuleId: lesson.moduleId, lastAccessedAt: new Date() },
+      include: { lessonProgress: true },
+    });
+    return this.mapEnrollment(row);
   }
 
   // ===== ASSESSMENTS =====
@@ -1072,10 +1146,9 @@ export class LMSService {
 
     // Update enrollment progress
     if (attempt.passed) {
-      const enrollment = this.enrollments.get(attempt.enrollmentId);
-      if (enrollment && !enrollment.progress.completedAssessments.includes(assessment.id)) {
-        enrollment.progress.completedAssessments.push(assessment.id);
-        this.enrollments.set(enrollment.id, enrollment);
+      const enrollment = await this.prisma.lMSEnrollment.findUnique({ where: { id: attempt.enrollmentId } });
+      if (enrollment && !enrollment.completedAssessments.includes(assessment.id)) {
+        await this.prisma.lMSEnrollment.update({ where: { id: attempt.enrollmentId }, data: { completedAssessments: { push: assessment.id } } });
       }
 
       // Check perfect score badge
@@ -1104,22 +1177,16 @@ export class LMSService {
   // ===== CERTIFICATES =====
 
   async generateCertificate(enrollmentId: string, grade?: string): Promise<Certificate> {
-    const enrollment = this.enrollments.get(enrollmentId);
-    if (!enrollment) {
-      throw new Error('Enrollment not found');
-    }
+    const enrollment = await this.prisma.lMSEnrollment.findUnique({ where: { id: enrollmentId } });
+    if (!enrollment) throw new Error('Enrollment not found');
+    if (enrollment.status !== 'COMPLETED') throw new Error('Course must be completed to generate certificate');
 
-    if (enrollment.status !== 'COMPLETED') {
-      throw new Error('Course must be completed to generate certificate');
-    }
-
-    const course = this.courses.get(enrollment.courseId);
-    if (!course) {
-      throw new Error('Course not found');
-    }
+    const course = await this.prisma.lMSCourse.findUnique({ where: { id: enrollment.courseId } });
+    if (!course) throw new Error('Course not found');
 
     const certificateId = `cert-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     const certificateNumber = `CERT-${new Date().getFullYear()}-${String(this.certificates.size + 1).padStart(6, '0')}`;
+    const instructorName = (course.instructor as any)?.name ?? 'Instructor';
 
     const certificate: Certificate = {
       id: certificateId,
@@ -1127,23 +1194,19 @@ export class LMSService {
       userId: enrollment.userId,
       courseId: course.id,
       courseName: course.title,
-      userName: enrollment.userId, // Would be actual name in production
-      instructorName: course.instructor.name,
+      userName: enrollment.userId,
+      instructorName,
       issuedAt: new Date(),
       certificateNumber,
       verificationUrl: `https://documentiulia.ro/verify/${certificateNumber}`,
-      ceuCredits: course.ceuCredits,
+      ceuCredits: course.ceuCredits ?? undefined,
       skills: course.learningOutcomes,
       grade,
       status: 'ISSUED',
     };
 
     this.certificates.set(certificateId, certificate);
-
-    // Update enrollment
-    enrollment.certificateId = certificateId;
-    this.enrollments.set(enrollmentId, enrollment);
-
+    await this.prisma.lMSEnrollment.update({ where: { id: enrollmentId }, data: { certificateId } });
     return certificate;
   }
 
@@ -1173,18 +1236,15 @@ export class LMSService {
       if (badge.criteria.type !== criteriaType) continue;
 
       let earned = false;
-
       switch (criteriaType) {
         case 'FIRST_COURSE': {
-          const completedCourses = Array.from(this.enrollments.values())
-            .filter(e => e.userId === userId && e.status === 'COMPLETED');
-          earned = completedCourses.length >= 1;
+          const completed = await this.prisma.lMSEnrollment.count({ where: { userId, status: 'COMPLETED' } });
+          earned = completed >= 1;
           break;
         }
         case 'COURSES_COUNT': {
-          const completedCourses = Array.from(this.enrollments.values())
-            .filter(e => e.userId === userId && e.status === 'COMPLETED');
-          earned = completedCourses.length >= (badge.criteria.threshold || 0);
+          const completed = await this.prisma.lMSEnrollment.count({ where: { userId, status: 'COMPLETED' } });
+          earned = completed >= (badge.criteria.threshold || 0);
           break;
         }
         case 'STREAK_DAYS': {
@@ -1197,9 +1257,7 @@ export class LMSService {
         }
       }
 
-      if (earned) {
-        await this.awardBadge(userId, badgeId);
-      }
+      if (earned) await this.awardBadge(userId, badgeId);
     }
   }
 
@@ -1235,48 +1293,27 @@ export class LMSService {
   }
 
   async getLeaderboard(period: 'WEEKLY' | 'MONTHLY' | 'ALL_TIME' = 'ALL_TIME', limit: number = 10): Promise<LeaderboardEntry[]> {
-    // Calculate user stats
-    const userStats = new Map<string, {
-      points: number;
-      coursesCompleted: number;
-      certificatesEarned: number;
-      streak: number;
-    }>();
+    const userStats = new Map<string, { points: number; coursesCompleted: number; certificatesEarned: number; streak: number; }>();
 
-    // Count completed courses and certificates
-    for (const enrollment of this.enrollments.values()) {
-      const stats = userStats.get(enrollment.userId) || {
-        points: 0,
-        coursesCompleted: 0,
-        certificatesEarned: 0,
-        streak: 0,
-      };
-
-      if (enrollment.status === 'COMPLETED') {
+    const enrollments = await this.prisma.lMSEnrollment.findMany({});
+    for (const e of enrollments) {
+      const stats = userStats.get(e.userId) || { points: 0, coursesCompleted: 0, certificatesEarned: 0, streak: 0 };
+      if (e.status === 'COMPLETED') {
         stats.coursesCompleted++;
-        stats.points += 100; // Points per course
-        if (enrollment.certificateId) {
-          stats.certificatesEarned++;
-          stats.points += 50; // Points per certificate
-        }
+        stats.points += 100;
+        if (e.certificateId) { stats.certificatesEarned++; stats.points += 50; }
       }
-
-      stats.streak = Math.max(stats.streak, enrollment.progress.longestStreak);
-      stats.points += enrollment.progress.streakDays * 5; // Points for streak
-
-      userStats.set(enrollment.userId, stats);
+      stats.streak = Math.max(stats.streak, e.longestStreak);
+      stats.points += e.streakDays * 5;
+      userStats.set(e.userId, stats);
     }
 
-    // Add badge points
     for (const userBadge of this.userBadges.values()) {
       const stats = userStats.get(userBadge.userId);
-      if (stats) {
-        stats.points += userBadge.badge.points;
-      }
+      if (stats) stats.points += userBadge.badge.points;
     }
 
-    // Create leaderboard entries
-    const entries: LeaderboardEntry[] = Array.from(userStats.entries())
+    return Array.from(userStats.entries())
       .map(([userId, stats]) => ({
         userId,
         userName: userId,
@@ -1290,8 +1327,6 @@ export class LMSService {
       .sort((a, b) => b.points - a.points)
       .slice(0, limit)
       .map((entry, index) => ({ ...entry, rank: index + 1 }));
-
-    return entries;
   }
 
   // ===== REVIEWS =====
@@ -1301,29 +1336,16 @@ export class LMSService {
     title?: string;
     content: string;
   }): Promise<CourseReview> {
-    const course = this.courses.get(courseId);
-    if (!course) {
-      throw new Error('Course not found');
-    }
+    const course = await this.prisma.lMSCourse.findUnique({ where: { id: courseId } });
+    if (!course) throw new Error('Course not found');
 
-    // Check if user has completed the course
-    const enrollment = Array.from(this.enrollments.values()).find(
-      e => e.courseId === courseId && e.userId === userId
-    );
-    if (!enrollment) {
-      throw new Error('User must be enrolled to review');
-    }
+    const enrollment = await this.prisma.lMSEnrollment.findFirst({ where: { courseId, userId } });
+    if (!enrollment) throw new Error('User must be enrolled to review');
 
-    // Check for existing review
-    const existing = Array.from(this.reviews.values()).find(
-      r => r.courseId === courseId && r.userId === userId
-    );
-    if (existing) {
-      throw new Error('User has already reviewed this course');
-    }
+    const existing = Array.from(this.reviews.values()).find(r => r.courseId === courseId && r.userId === userId);
+    if (existing) throw new Error('User has already reviewed this course');
 
     const reviewId = `review-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-
     const review: CourseReview = {
       id: reviewId,
       courseId,
@@ -1337,14 +1359,13 @@ export class LMSService {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-
     this.reviews.set(reviewId, review);
 
-    // Update course rating
     const courseReviews = Array.from(this.reviews.values()).filter(r => r.courseId === courseId);
-    course.reviewCount = courseReviews.length;
-    course.rating = courseReviews.reduce((sum, r) => sum + r.rating, 0) / courseReviews.length;
-    this.courses.set(courseId, course);
+    const reviewCount = courseReviews.length;
+    const rating = courseReviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount;
+    await this.prisma.lMSCourse.update({ where: { id: courseId }, data: { reviewCount, rating } });
+    await this.invalidateCourseCache(courseId);
 
     return review;
   }
@@ -1370,7 +1391,7 @@ export class LMSService {
     // Calculate duration
     let duration = 0;
     for (const courseId of data.courses) {
-      const course = this.courses.get(courseId);
+      const course = await this.prisma.lMSCourse.findUnique({ where: { id: courseId } });
       if (course) {
         duration += course.duration;
       }
