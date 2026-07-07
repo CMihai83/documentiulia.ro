@@ -166,9 +166,11 @@ export class SimV2Service {
   async historyCsv(userId: string, runId: string): Promise<string> {
     const rows = await this.history(userId, runId, 0, 1000);
     if (!rows.length) return 'tick\n';
-    const cols = Object.keys(this.kpiRow({ tick: 0, clock: { year: 1, month: 1, day: 1 } } as any)).filter((c) => c !== 'clock');
-    const header = ['tick', ...cols.filter((c) => c !== 'tick')].join(',');
-    const body = rows.map((r: any) => ['tick', ...cols.filter((c) => c !== 'tick')].map((c) => r[c]).join(',')).join('\n');
+    // scalar columns only (drop the nested clock object), tick first
+    const cols = Object.keys(rows[0]).filter((c) => c !== 'clock' && c !== 'tick');
+    const ordered = ['tick', ...cols];
+    const header = ordered.join(',');
+    const body = rows.map((r: any) => ordered.map((c) => r[c]).join(',')).join('\n');
     return `${header}\n${body}\n`;
   }
 
