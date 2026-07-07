@@ -72,6 +72,21 @@ export function allocationShares(weights: number[]): number[] {
   return weights.map((w) => w / total);
 }
 
+export type InternalOrderStatus = 'open' | 'released' | 'technically_closed' | 'closed';
+
+const IO_TRANSITIONS: Record<InternalOrderStatus, InternalOrderStatus[]> = {
+  open: ['released', 'closed'],
+  released: ['technically_closed', 'closed'],
+  technically_closed: ['closed'],
+  closed: [],
+};
+
+/** Whether an internal order may move from `from` to `to` (same status = no-op). */
+export function canTransitionInternalOrder(from: InternalOrderStatus, to: InternalOrderStatus): boolean {
+  if (from === to) return true;
+  return IO_TRANSITIONS[from]?.includes(to) ?? false;
+}
+
 /** Split an amount across receivers by weight; receivers sum == amount (to the cent). */
 export function allocateAmount(amount: number, weights: number[]): number[] {
   const shares = allocationShares(weights);

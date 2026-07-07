@@ -5,6 +5,7 @@ import {
   contributionMargin,
   allocationShares,
   allocateAmount,
+  canTransitionInternalOrder,
 } from './controlling.math';
 
 describe('ControllingMath', () => {
@@ -89,6 +90,26 @@ describe('ControllingMath', () => {
     });
     it('handles a single receiver', () => {
       expect(allocateAmount(500, [5])).toEqual([500]);
+    });
+  });
+
+  describe('canTransitionInternalOrder (DOC-43-2 state machine)', () => {
+    it('allows the forward lifecycle', () => {
+      expect(canTransitionInternalOrder('open', 'released')).toBe(true);
+      expect(canTransitionInternalOrder('released', 'technically_closed')).toBe(true);
+      expect(canTransitionInternalOrder('technically_closed', 'closed')).toBe(true);
+    });
+    it('allows shortcut to closed', () => {
+      expect(canTransitionInternalOrder('open', 'closed')).toBe(true);
+      expect(canTransitionInternalOrder('released', 'closed')).toBe(true);
+    });
+    it('rejects backward / illegal transitions', () => {
+      expect(canTransitionInternalOrder('closed', 'open')).toBe(false);
+      expect(canTransitionInternalOrder('technically_closed', 'released')).toBe(false);
+      expect(canTransitionInternalOrder('open', 'technically_closed')).toBe(false);
+    });
+    it('treats same status as a no-op (allowed)', () => {
+      expect(canTransitionInternalOrder('released', 'released')).toBe(true);
     });
   });
 });

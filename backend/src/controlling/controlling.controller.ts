@@ -47,6 +47,21 @@ class UpsertCostLineDto {
   planned: number;
   actual: number;
 }
+class UpdateInternalOrderDto {
+  name?: string;
+  budget?: number;
+  actual?: number;
+  endDate?: string;
+  status?: 'open' | 'released' | 'technically_closed' | 'closed';
+}
+class SegmentDto {
+  name?: string;
+  profitCenterId?: string;
+  revenue?: number;
+  cogs?: number;
+  directCosts?: number;
+  allocatedFixedCosts?: number;
+}
 
 /**
  * Controlling (Management Accounting) — SAP CO analog.
@@ -138,8 +153,45 @@ export class ControllingController {
 
   @Post('allocation-cycles/:id/run')
   @UseGuards(JwtAuthGuard)
-  runAllocationCycle(@Request() req: any, @Param('id') id: string, @Query('period') period?: string) {
-    return this.controlling.runAllocationCycle(this.orgId(req), id, period);
+  runAllocationCycle(
+    @Request() req: any,
+    @Param('id') id: string,
+    @Query('period') period?: string,
+    @Query('dryRun') dryRun?: string,
+  ) {
+    return this.controlling.runAllocationCycle(this.orgId(req), id, period, {
+      dryRun: dryRun === 'true',
+      userId: this.userId(req),
+    });
+  }
+
+  @Get('allocation-cycles/:id/postings')
+  getAllocationPostings(@Request() req: any, @Param('id') id: string, @Query('period') period?: string) {
+    return this.controlling.getAllocationPostings(this.orgId(req), id, period);
+  }
+
+  @Put('internal-orders/:id')
+  @UseGuards(JwtAuthGuard)
+  updateInternalOrder(@Request() req: any, @Param('id') id: string, @Body() dto: UpdateInternalOrderDto): Promise<InternalOrder> {
+    return this.controlling.updateInternalOrder(this.orgId(req), id, dto, this.userId(req));
+  }
+
+  @Post('internal-orders/:id/close')
+  @UseGuards(JwtAuthGuard)
+  closeInternalOrder(@Request() req: any, @Param('id') id: string): Promise<InternalOrder> {
+    return this.controlling.closeInternalOrder(this.orgId(req), id, this.userId(req));
+  }
+
+  @Post('profitability/segments')
+  @UseGuards(JwtAuthGuard)
+  createSegment(@Request() req: any, @Body() dto: SegmentDto) {
+    return this.controlling.createSegment(this.orgId(req), dto as any, this.userId(req));
+  }
+
+  @Put('profitability/segments/:id')
+  @UseGuards(JwtAuthGuard)
+  updateSegment(@Request() req: any, @Param('id') id: string, @Body() dto: SegmentDto) {
+    return this.controlling.updateSegment(this.orgId(req), id, dto, this.userId(req));
   }
 
   // ---- Profitability Analysis (CO-PA) ----
