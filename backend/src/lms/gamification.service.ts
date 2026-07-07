@@ -1,8 +1,12 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
+import { PrismaService } from '../prisma/prisma.service';
 
 // Sprint 21: LMS Gamification & Engagement Features
 // Points, badges, leaderboards, streaks, and achievements for learning motivation
+// S-47/F-2: user state (points, transactions, badges, achievements, streaks) is
+// persisted via Prisma; catalogs (badge/achievement/challenge definitions) stay
+// code-defined and are seeded in the constructor.
 
 // ===== TYPES =====
 
@@ -163,31 +167,87 @@ const POINTS_CONFIG: Record<PointsAction, number> = {
 export class GamificationService {
   private readonly logger = new Logger(GamificationService.name);
 
-  // Storage
+  // Catalog storage (code-defined; seeded in constructor)
   private readonly badges: Map<string, Badge> = new Map();
-  private readonly userBadges: Map<string, UserBadge[]> = new Map();
   private readonly achievements: Map<string, Achievement> = new Map();
-  private readonly userAchievements: Map<string, UserAchievement[]> = new Map();
-  private readonly pointsTransactions: Map<string, PointsTransaction[]> = new Map();
-  private readonly userPoints: Map<string, UserPoints> = new Map();
-  private readonly streaks: Map<string, Streak> = new Map();
   private readonly challenges: Map<string, Challenge> = new Map();
+  // Challenges' user state is still in-memory (documented follow-up; not part of F-2 AC)
   private readonly userChallenges: Map<string, UserChallenge[]> = new Map();
 
-  constructor(private readonly eventEmitter: EventEmitter2) {
+  constructor(
+    private readonly eventEmitter: EventEmitter2,
+    private readonly prisma: PrismaService,
+  ) {
     this.initializeBadges();
     this.initializeAchievements();
     this.initializeChallenges();
   }
 
+  // ===== ROW MAPPERS =====
+
+  private mapUserPoints(row: any, streak?: { currentStreak: number; longestStreak: number } | null): UserPoints {
+    return {
+      userId: row.userId,
+      totalPoints: row.totalPoints,
+      level: row.level,
+      levelProgress: row.levelProgress,
+      pointsToNextLevel: row.pointsToNextLevel,
+      currentStreak: streak?.currentStreak ?? 0,
+      longestStreak: streak?.longestStreak ?? 0,
+      lastActiveDate: row.lastActiveDate ?? row.updatedAt ?? new Date(),
+      weeklyPoints: row.weeklyPoints,
+      monthlyPoints: row.monthlyPoints,
+    };
+  }
+
+  private mapTransaction(row: any): PointsTransaction {
+    return {
+      id: row.id,
+      userId: row.userId,
+      action: row.action as PointsAction,
+      points: row.points,
+      description: row.description,
+      metadata: row.metadata ?? undefined,
+      createdAt: row.createdAt,
+    };
+  }
+
+  private mapUserBadge(row: any): UserBadge {
+    return { badgeId: row.badgeId, userId: row.userId, earnedAt: row.earnedAt, progress: row.progress, isNew: row.isNew };
+  }
+
+  private mapUserAchievement(row: any): UserAchievement {
+    return {
+      achievementId: row.achievementId,
+      userId: row.userId,
+      currentTier: row.currentTier,
+      progress: row.progress,
+      currentValue: row.currentValue,
+      status: row.status as AchievementStatus,
+      unlockedTiers: row.unlockedTiers ?? [],
+      lastUpdated: row.lastUpdated,
+    };
+  }
+
+  private mapStreak(row: any): Streak {
+    return {
+      userId: row.userId,
+      currentStreak: row.currentStreak,
+      longestStreak: row.longestStreak,
+      lastActivityDate: row.lastActivityDate ?? row.createdAt ?? new Date(),
+      streakFreezeAvailable: row.streakFreezeAvailable,
+      streakFreezeUsed: row.streakFreezeUsed,
+    };
+  }
+
   // ===== POINTS MANAGEMENT =====
 
-  awardPoints(userId: string, action: PointsAction, metadata?: Record<string, any>): PointsTransaction {
+  async awardPoints(userId: string, action: PointsAction, metadata?: Record<string, any>): Promise<PointsTransaction> {
     const points = POINTS_CONFIG[action];
-    const userPts = this.getOrCreateUserPoints(userId);
+    const userPtsRow = await this.getOrCreateUserPointsRow(userId);
 
     // Check for streak bonus
-    const streak = this.getOrCreateStreak(userId);
+    const streak = await this.getStreak(userId);
     let streakBonus = 0;
     if (streak.currentStreak >= 7) {
       streakBonus = Math.floor(points * 0.1); // 10% bonus for 7+ day streak
@@ -195,29 +255,37 @@ export class GamificationService {
 
     const totalPoints = points + streakBonus;
 
-    const transaction: PointsTransaction = {
-      id: this.generateId(),
-      userId,
-      action,
-      points: totalPoints,
-      description: this.getPointsDescription(action, streakBonus),
-      metadata,
-      createdAt: new Date(),
-    };
-
     // Save transaction
-    const userTransactions = this.pointsTransactions.get(userId) || [];
-    userTransactions.push(transaction);
-    this.pointsTransactions.set(userId, userTransactions);
+    const txRow = await this.prisma.gamificationPointsTransaction.create({
+      data: {
+        userId,
+        action,
+        points: totalPoints,
+        description: this.getPointsDescription(action, streakBonus),
+        metadata: metadata ?? undefined,
+      },
+    });
 
     // Update user points
+    const userPts = this.mapUserPoints(userPtsRow, streak);
     userPts.totalPoints += totalPoints;
     userPts.weeklyPoints += totalPoints;
     userPts.monthlyPoints += totalPoints;
     this.updateLevel(userPts);
+    await this.prisma.gamificationUserPoints.update({
+      where: { userId },
+      data: {
+        totalPoints: userPts.totalPoints,
+        weeklyPoints: userPts.weeklyPoints,
+        monthlyPoints: userPts.monthlyPoints,
+        level: userPts.level,
+        levelProgress: userPts.levelProgress,
+        pointsToNextLevel: userPts.pointsToNextLevel,
+      },
+    });
 
     // Check for achievements
-    this.checkAchievements(userId, action);
+    await this.checkAchievements(userId, action);
 
     // Emit event
     this.eventEmitter.emit('gamification.points.awarded', {
@@ -229,36 +297,39 @@ export class GamificationService {
     });
 
     this.logger.log(`Awarded ${totalPoints} points to user ${userId} for ${action}`);
-    return transaction;
+    return this.mapTransaction(txRow);
   }
 
-  getPointsHistory(userId: string, limit: number = 50): PointsTransaction[] {
-    const transactions = this.pointsTransactions.get(userId) || [];
-    return transactions.slice(-limit).reverse();
+  async getPointsHistory(userId: string, limit: number = 50): Promise<PointsTransaction[]> {
+    const rows = await this.prisma.gamificationPointsTransaction.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+      take: limit,
+    });
+    return rows.map((r) => this.mapTransaction(r));
   }
 
-  getUserPoints(userId: string): UserPoints {
-    return this.getOrCreateUserPoints(userId);
+  async getUserPoints(userId: string): Promise<UserPoints> {
+    const row = await this.getOrCreateUserPointsRow(userId);
+    const streakRow = await this.prisma.gamificationStreak.findUnique({ where: { userId } });
+    return this.mapUserPoints(row, streakRow);
   }
 
-  private getOrCreateUserPoints(userId: string): UserPoints {
-    let userPts = this.userPoints.get(userId);
-    if (!userPts) {
-      userPts = {
+  private async getOrCreateUserPointsRow(userId: string): Promise<any> {
+    const existing = await this.prisma.gamificationUserPoints.findUnique({ where: { userId } });
+    if (existing) return existing;
+    return this.prisma.gamificationUserPoints.create({
+      data: {
         userId,
         totalPoints: 0,
         level: 1,
         levelProgress: 0,
         pointsToNextLevel: LEVEL_THRESHOLDS[1],
-        currentStreak: 0,
-        longestStreak: 0,
-        lastActiveDate: new Date(),
         weeklyPoints: 0,
         monthlyPoints: 0,
-      };
-      this.userPoints.set(userId, userPts);
-    }
-    return userPts;
+        lastActiveDate: new Date(),
+      },
+    });
   }
 
   private updateLevel(userPts: UserPoints): void {
@@ -317,29 +388,30 @@ export class GamificationService {
 
   // ===== BADGES =====
 
-  awardBadge(userId: string, badgeId: string): UserBadge | null {
+  async awardBadge(userId: string, badgeId: string): Promise<UserBadge | null> {
     const badge = this.badges.get(badgeId);
     if (!badge) return null;
 
-    // Check if already earned
-    const userBadgeList = this.userBadges.get(userId) || [];
-    if (userBadgeList.find(b => b.badgeId === badgeId)) {
+    // Check if already earned (also enforced by @@unique([userId, badgeId]))
+    const existing = await this.prisma.gamificationUserBadge.findUnique({
+      where: { userId_badgeId: { userId, badgeId } },
+    });
+    if (existing) {
       return null; // Already has badge
     }
 
-    const userBadge: UserBadge = {
-      badgeId,
-      userId,
-      earnedAt: new Date(),
-      progress: 100,
-      isNew: true,
-    };
-
-    userBadgeList.push(userBadge);
-    this.userBadges.set(userId, userBadgeList);
+    let row: any;
+    try {
+      row = await this.prisma.gamificationUserBadge.create({
+        data: { userId, badgeId, earnedAt: new Date(), progress: 100, isNew: true },
+      });
+    } catch (e: any) {
+      if (e?.code === 'P2002') return null; // Concurrent duplicate award
+      throw e;
+    }
 
     // Award points for badge
-    this.awardPoints(userId, 'BADGE_EARNED', { badgeId });
+    await this.awardPoints(userId, 'BADGE_EARNED', { badgeId });
 
     // Emit event
     this.eventEmitter.emit('gamification.badge.earned', {
@@ -350,15 +422,17 @@ export class GamificationService {
     });
 
     this.logger.log(`User ${userId} earned badge: ${badge.name}`);
-    return userBadge;
+    return this.mapUserBadge(row);
   }
 
-  getUserBadges(userId: string): (UserBadge & { badge: Badge })[] {
-    const userBadgeList = this.userBadges.get(userId) || [];
-    return userBadgeList.map(ub => ({
-      ...ub,
-      badge: this.badges.get(ub.badgeId)!,
-    })).filter(b => b.badge);
+  async getUserBadges(userId: string): Promise<(UserBadge & { badge: Badge })[]> {
+    const rows = await this.prisma.gamificationUserBadge.findMany({
+      where: { userId },
+      orderBy: { earnedAt: 'asc' },
+    });
+    return rows
+      .map((r) => ({ ...this.mapUserBadge(r), badge: this.badges.get(r.badgeId)! }))
+      .filter((b) => b.badge);
   }
 
   getAllBadges(): Badge[] {
@@ -369,12 +443,11 @@ export class GamificationService {
     return this.badges.get(badgeId);
   }
 
-  markBadgeSeen(userId: string, badgeId: string): void {
-    const userBadgeList = this.userBadges.get(userId) || [];
-    const userBadge = userBadgeList.find(b => b.badgeId === badgeId);
-    if (userBadge) {
-      userBadge.isNew = false;
-    }
+  async markBadgeSeen(userId: string, badgeId: string): Promise<void> {
+    await this.prisma.gamificationUserBadge.updateMany({
+      where: { userId, badgeId },
+      data: { isNew: false },
+    });
   }
 
   private initializeBadges(): void {
@@ -596,79 +669,93 @@ export class GamificationService {
 
   // ===== ACHIEVEMENTS =====
 
-  updateAchievementProgress(userId: string, achievementId: string, value: number): UserAchievement {
+  async updateAchievementProgress(userId: string, achievementId: string, value: number): Promise<UserAchievement> {
     const achievement = this.achievements.get(achievementId);
     if (!achievement) {
       throw new NotFoundException(`Achievement ${achievementId} not found`);
     }
 
-    let userAch = this.getUserAchievement(userId, achievementId);
-    if (!userAch) {
-      userAch = {
-        achievementId,
-        userId,
-        currentTier: 0,
-        progress: 0,
-        currentValue: 0,
-        status: 'IN_PROGRESS',
-        unlockedTiers: [],
-        lastUpdated: new Date(),
-      };
-      const userAchList = this.userAchievements.get(userId) || [];
-      userAchList.push(userAch);
-      this.userAchievements.set(userId, userAchList);
+    let row = await this.prisma.gamificationUserAchievement.findUnique({
+      where: { userId_achievementId: { userId, achievementId } },
+    });
+    if (!row) {
+      row = await this.prisma.gamificationUserAchievement.create({
+        data: {
+          userId,
+          achievementId,
+          currentTier: 0,
+          progress: 0,
+          currentValue: 0,
+          status: 'IN_PROGRESS',
+          unlockedTiers: [],
+          lastUpdated: new Date(),
+        },
+      });
     }
+    const userAch = this.mapUserAchievement(row);
 
     userAch.currentValue = value;
     userAch.lastUpdated = new Date();
 
     // Check tier unlocks
+    const newlyUnlocked: { level: number; name: string; badge?: string }[] = [];
     for (const tier of achievement.tiers) {
       if (value >= tier.target && !userAch.unlockedTiers.includes(tier.level)) {
         userAch.unlockedTiers.push(tier.level);
         userAch.currentTier = tier.level;
-
-        // Award tier badge if exists
-        if (tier.badge) {
-          this.awardBadge(userId, tier.badge);
-        }
-
-        // Award tier points
-        this.awardPoints(userId, 'BADGE_EARNED', { achievementId, tier: tier.level });
-
-        this.eventEmitter.emit('gamification.achievement.tier.unlocked', {
-          userId,
-          achievementId,
-          tier: tier.level,
-          tierName: tier.name,
-        });
+        newlyUnlocked.push({ level: tier.level, name: tier.name, badge: tier.badge });
       }
     }
 
     // Calculate progress to next tier
-    const nextTier = achievement.tiers.find(t => t.level > userAch!.currentTier);
+    const nextTier = achievement.tiers.find(t => t.level > userAch.currentTier);
     if (nextTier) {
-      const prevTarget = achievement.tiers.find(t => t.level === userAch!.currentTier)?.target || 0;
+      const prevTarget = achievement.tiers.find(t => t.level === userAch.currentTier)?.target || 0;
       userAch.progress = ((value - prevTarget) / (nextTier.target - prevTarget)) * 100;
     } else {
       userAch.progress = 100;
       userAch.status = 'UNLOCKED';
     }
 
+    // Persist BEFORE cascading awards so re-entrant reads (awardPoints ->
+    // checkAchievements -> this method) see the unlocked tiers and terminate.
+    await this.prisma.gamificationUserAchievement.update({
+      where: { userId_achievementId: { userId, achievementId } },
+      data: {
+        currentTier: userAch.currentTier,
+        progress: userAch.progress,
+        currentValue: userAch.currentValue,
+        status: userAch.status,
+        unlockedTiers: userAch.unlockedTiers,
+        lastUpdated: userAch.lastUpdated,
+      },
+    });
+
+    for (const tier of newlyUnlocked) {
+      // Award tier badge if exists
+      if (tier.badge) {
+        await this.awardBadge(userId, tier.badge);
+      }
+
+      // Award tier points
+      await this.awardPoints(userId, 'BADGE_EARNED', { achievementId, tier: tier.level });
+
+      this.eventEmitter.emit('gamification.achievement.tier.unlocked', {
+        userId,
+        achievementId,
+        tier: tier.level,
+        tierName: tier.name,
+      });
+    }
+
     return userAch;
   }
 
-  getUserAchievements(userId: string): (UserAchievement & { achievement: Achievement })[] {
-    const userAchList = this.userAchievements.get(userId) || [];
-    return userAchList.map(ua => ({
-      ...ua,
-      achievement: this.achievements.get(ua.achievementId)!,
-    })).filter(a => a.achievement);
-  }
-
-  private getUserAchievement(userId: string, achievementId: string): UserAchievement | undefined {
-    const userAchList = this.userAchievements.get(userId) || [];
-    return userAchList.find(a => a.achievementId === achievementId);
+  async getUserAchievements(userId: string): Promise<(UserAchievement & { achievement: Achievement })[]> {
+    const rows = await this.prisma.gamificationUserAchievement.findMany({ where: { userId } });
+    return rows
+      .map((r) => ({ ...this.mapUserAchievement(r), achievement: this.achievements.get(r.achievementId)! }))
+      .filter((a) => a.achievement);
   }
 
   getAllAchievements(): Achievement[] {
@@ -749,29 +836,36 @@ export class GamificationService {
     this.logger.log(`Initialized ${this.achievements.size} achievements`);
   }
 
-  private checkAchievements(userId: string, action: PointsAction): void {
-    const userPts = this.getUserPoints(userId);
+  private async checkAchievements(userId: string, action: PointsAction): Promise<void> {
+    const row = await this.prisma.gamificationUserPoints.findUnique({ where: { userId } });
+    const totalPoints = row?.totalPoints ?? 0;
 
     // Update points collector achievement
-    this.updateAchievementProgress(userId, 'points-collector', userPts.totalPoints);
+    await this.updateAchievementProgress(userId, 'points-collector', totalPoints);
 
     // Check based on action type
     switch (action) {
-      case 'COURSE_COMPLETE':
-        const courses = this.pointsTransactions.get(userId)?.filter(t => t.action === 'COURSE_COMPLETE').length || 0;
-        this.updateAchievementProgress(userId, 'course-completion', courses);
+      case 'COURSE_COMPLETE': {
+        const courses = await this.prisma.gamificationPointsTransaction.count({
+          where: { userId, action: 'COURSE_COMPLETE' },
+        });
+        await this.updateAchievementProgress(userId, 'course-completion', courses);
         break;
-      case 'PERFECT_SCORE':
-        const perfects = this.pointsTransactions.get(userId)?.filter(t => t.action === 'PERFECT_SCORE').length || 0;
-        this.updateAchievementProgress(userId, 'quiz-perfection', perfects);
+      }
+      case 'PERFECT_SCORE': {
+        const perfects = await this.prisma.gamificationPointsTransaction.count({
+          where: { userId, action: 'PERFECT_SCORE' },
+        });
+        await this.updateAchievementProgress(userId, 'quiz-perfection', perfects);
         break;
+      }
     }
   }
 
   // ===== STREAKS =====
 
-  recordActivity(userId: string): Streak {
-    const streak = this.getOrCreateStreak(userId);
+  async recordActivity(userId: string): Promise<Streak> {
+    const streak = await this.getOrCreateStreakRow(userId).then((r) => this.mapStreak(r));
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -787,20 +881,6 @@ export class GamificationService {
       // Consecutive day
       streak.currentStreak++;
       streak.longestStreak = Math.max(streak.longestStreak, streak.currentStreak);
-
-      // Award streak bonus
-      this.awardPoints(userId, 'STREAK_BONUS');
-
-      // Check streak badges
-      this.updateAchievementProgress(userId, 'streak-master', streak.currentStreak);
-
-      if (streak.currentStreak === 7) {
-        this.awardBadge(userId, 'week-streak');
-      } else if (streak.currentStreak === 30) {
-        this.awardBadge(userId, 'month-streak');
-      } else if (streak.currentStreak === 100) {
-        this.awardBadge(userId, 'hundred-streak');
-      }
     } else if (daysDiff === 2 && streak.streakFreezeAvailable > 0 && !streak.streakFreezeUsed) {
       // Use streak freeze
       streak.streakFreezeAvailable--;
@@ -816,57 +896,111 @@ export class GamificationService {
       streak.currentStreak = 1;
     }
 
+    const consecutiveDay = daysDiff === 1;
     streak.lastActivityDate = new Date();
-    streak.streakFreezeUsed = false;
+    const persistedFreezeUsed = false; // freeze consumption applies to a single gap
+    await this.prisma.gamificationStreak.update({
+      where: { userId },
+      data: {
+        currentStreak: streak.currentStreak,
+        longestStreak: streak.longestStreak,
+        lastActivityDate: streak.lastActivityDate,
+        streakFreezeAvailable: streak.streakFreezeAvailable,
+        streakFreezeUsed: persistedFreezeUsed,
+      },
+    });
+    streak.streakFreezeUsed = persistedFreezeUsed;
 
-    // Update user points
-    const userPts = this.getOrCreateUserPoints(userId);
-    userPts.currentStreak = streak.currentStreak;
-    userPts.longestStreak = streak.longestStreak;
-    userPts.lastActiveDate = streak.lastActivityDate;
+    // Update user points row (streak values are joined from the streak table on read)
+    await this.getOrCreateUserPointsRow(userId);
+    await this.prisma.gamificationUserPoints.update({
+      where: { userId },
+      data: { lastActiveDate: streak.lastActivityDate },
+    });
+
+    if (consecutiveDay) {
+      // Award streak bonus (reads the just-persisted streak for the 7+ day bonus)
+      await this.awardPoints(userId, 'STREAK_BONUS');
+
+      // Check streak badges
+      await this.updateAchievementProgress(userId, 'streak-master', streak.currentStreak);
+
+      if (streak.currentStreak === 7) {
+        await this.awardBadge(userId, 'week-streak');
+      } else if (streak.currentStreak === 30) {
+        await this.awardBadge(userId, 'month-streak');
+      } else if (streak.currentStreak === 100) {
+        await this.awardBadge(userId, 'hundred-streak');
+      }
+    }
 
     return streak;
   }
 
-  getStreak(userId: string): Streak {
-    return this.getOrCreateStreak(userId);
+  async getStreak(userId: string): Promise<Streak> {
+    const row = await this.getOrCreateStreakRow(userId);
+    return this.mapStreak(row);
   }
 
-  useStreakFreeze(userId: string): boolean {
-    const streak = this.getOrCreateStreak(userId);
-    if (streak.streakFreezeAvailable > 0) {
-      streak.streakFreezeAvailable--;
+  async useStreakFreeze(userId: string): Promise<boolean> {
+    const row = await this.getOrCreateStreakRow(userId);
+    if (row.streakFreezeAvailable > 0) {
+      await this.prisma.gamificationStreak.update({
+        where: { userId },
+        data: { streakFreezeAvailable: row.streakFreezeAvailable - 1 },
+      });
       return true;
     }
     return false;
   }
 
-  private getOrCreateStreak(userId: string): Streak {
-    let streak = this.streaks.get(userId);
-    if (!streak) {
-      streak = {
+  private async getOrCreateStreakRow(userId: string): Promise<any> {
+    const existing = await this.prisma.gamificationStreak.findUnique({ where: { userId } });
+    if (existing) return existing;
+    return this.prisma.gamificationStreak.create({
+      data: {
         userId,
         currentStreak: 0,
         longestStreak: 0,
         lastActivityDate: new Date(),
         streakFreezeAvailable: 2, // Start with 2 freezes
         streakFreezeUsed: false,
-      };
-      this.streaks.set(userId, streak);
-    }
-    return streak;
+      },
+    });
   }
 
   // ===== LEADERBOARDS =====
 
-  getLeaderboard(period: LeaderboardPeriod, limit: number = 50): LeaderboardEntry[] {
-    const entries: LeaderboardEntry[] = [];
+  async getLeaderboard(period: LeaderboardPeriod, limit: number = 50): Promise<LeaderboardEntry[]> {
+    const rows = await this.prisma.gamificationUserPoints.findMany();
+    if (rows.length === 0) return [];
 
-    for (const [userId, userPts] of this.userPoints) {
+    const badgeCounts = await this.prisma.gamificationUserBadge.groupBy({
+      by: ['userId'],
+      _count: { _all: true },
+    });
+    const badgeCountMap = new Map<string, number>(badgeCounts.map((b: any) => [b.userId, b._count._all]));
+
+    const streakRows = await this.prisma.gamificationStreak.findMany();
+    const streakMap = new Map<string, number>(streakRows.map((s: any) => [s.userId, s.currentStreak]));
+
+    let dailyMap = new Map<string, number>();
+    if (period === 'DAILY') {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const daily = await this.prisma.gamificationPointsTransaction.groupBy({
+        by: ['userId'],
+        where: { createdAt: { gte: today } },
+        _sum: { points: true },
+      });
+      dailyMap = new Map<string, number>(daily.map((d: any) => [d.userId, d._sum.points ?? 0]));
+    }
+
+    const entries: LeaderboardEntry[] = rows.map((userPts: any) => {
       let points: number;
       switch (period) {
         case 'DAILY':
-          points = this.getDailyPoints(userId);
+          points = dailyMap.get(userPts.userId) ?? 0;
           break;
         case 'WEEKLY':
           points = userPts.weeklyPoints;
@@ -879,17 +1013,17 @@ export class GamificationService {
           points = userPts.totalPoints;
       }
 
-      entries.push({
+      return {
         rank: 0,
-        userId,
-        userName: `User ${userId.substring(0, 8)}`, // In production, fetch from user service
+        userId: userPts.userId,
+        userName: `User ${userPts.userId.substring(0, 8)}`, // In production, fetch from user service
         points,
         level: userPts.level,
-        badgeCount: (this.userBadges.get(userId) || []).length,
-        streak: userPts.currentStreak,
+        badgeCount: badgeCountMap.get(userPts.userId) ?? 0,
+        streak: streakMap.get(userPts.userId) ?? 0,
         change: 0, // In production, compare to previous period
-      });
-    }
+      };
+    });
 
     // Sort and assign ranks
     entries.sort((a, b) => b.points - a.points);
@@ -900,25 +1034,15 @@ export class GamificationService {
     return entries.slice(0, limit);
   }
 
-  getUserRank(userId: string, period: LeaderboardPeriod): number {
-    const leaderboard = this.getLeaderboard(period, 1000);
+  async getUserRank(userId: string, period: LeaderboardPeriod): Promise<number> {
+    const leaderboard = await this.getLeaderboard(period, 1000);
     const entry = leaderboard.find(e => e.userId === userId);
     return entry?.rank || 0;
   }
 
-  private getDailyPoints(userId: string): number {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const transactions = this.pointsTransactions.get(userId) || [];
-    return transactions
-      .filter(t => t.createdAt >= today)
-      .reduce((sum, t) => sum + t.points, 0);
-  }
-
   // ===== CHALLENGES =====
 
-  joinChallenge(userId: string, challengeId: string): UserChallenge {
+  async joinChallenge(userId: string, challengeId: string): Promise<UserChallenge> {
     const challenge = this.challenges.get(challengeId);
     if (!challenge) {
       throw new NotFoundException(`Challenge ${challengeId} not found`);
@@ -945,7 +1069,7 @@ export class GamificationService {
     return userChallenge;
   }
 
-  updateChallengeProgress(userId: string, challengeId: string, progress: number): UserChallenge {
+  async updateChallengeProgress(userId: string, challengeId: string, progress: number): Promise<UserChallenge> {
     const userChallengeList = this.userChallenges.get(userId) || [];
     const userChallenge = userChallengeList.find(c => c.challengeId === challengeId);
 
@@ -961,10 +1085,10 @@ export class GamificationService {
       userChallenge.completedAt = new Date();
 
       // Award challenge rewards
-      this.awardPoints(userId, 'BADGE_EARNED', { challengeId });
+      await this.awardPoints(userId, 'BADGE_EARNED', { challengeId });
 
       if (challenge.badgeId) {
-        this.awardBadge(userId, challenge.badgeId);
+        await this.awardBadge(userId, challenge.badgeId);
       }
 
       this.eventEmitter.emit('gamification.challenge.completed', {
@@ -1054,19 +1178,11 @@ export class GamificationService {
 
   // ===== HELPERS =====
 
-  private generateId(): string {
-    return `gam-${Date.now().toString(36)}-${Math.random().toString(36).substr(2, 9)}`;
-  }
-
   // Reset weekly/monthly stats (call from cron job)
-  resetPeriodStats(period: 'weekly' | 'monthly'): void {
-    for (const userPts of this.userPoints.values()) {
-      if (period === 'weekly') {
-        userPts.weeklyPoints = 0;
-      } else {
-        userPts.monthlyPoints = 0;
-      }
-    }
+  async resetPeriodStats(period: 'weekly' | 'monthly'): Promise<void> {
+    await this.prisma.gamificationUserPoints.updateMany({
+      data: period === 'weekly' ? { weeklyPoints: 0 } : { monthlyPoints: 0 },
+    });
     this.logger.log(`Reset ${period} stats for all users`);
   }
 }
