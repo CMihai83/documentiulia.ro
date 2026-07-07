@@ -228,11 +228,34 @@ export function evaluateEvents(
     if (onCooldown(draft, ev)) continue;
     if (draft.telegraphed.some((t) => t.eventId === ev.id)) continue; // already scheduled
 
-    let hit = false;
     const tr = ev.trigger;
+
+    // Scripted events: the scriptedTick / monthlyDay IS the fire moment, and the
+    // telegraph must appear telegraphTicks BEFORE it (unlike random/conditional,
+    // which are detected early and scheduled forward).
     if (tr.type === 'scripted') {
-      hit = (tr.scriptedTicks?.includes(draft.tick) ?? false) || (tr.monthlyDay !== undefined && draft.clock.day === tr.monthlyDay);
-    } else if (tr.type === 'conditional') {
+      const dayAhead = ((draft.clock.day - 1 + ev.telegraphTicks) % 30) + 1;
+      const shouldTelegraph =
+        ev.telegraphTicks > 0 &&
+        ((tr.scriptedTicks?.includes(draft.tick + ev.telegraphTicks) ?? false) ||
+          (tr.monthlyDay !== undefined && dayAhead === tr.monthlyDay));
+      const fireNow =
+        ev.telegraphTicks === 0 &&
+        ((tr.scriptedTicks?.includes(draft.tick) ?? false) ||
+          (tr.monthlyDay !== undefined && draft.clock.day === tr.monthlyDay));
+      if (shouldTelegraph) {
+        draft.telegraphed.push({ eventId: ev.id, fireAtTick: draft.tick + ev.telegraphTicks });
+        draft.eventCooldowns[ev.id] = draft.tick + ev.telegraphTicks + 1;
+        log.push({ tick: draft.tick, kind: 'hint', message: `${ev.title} — ${ev.telegraph} (in ${ev.telegraphTicks} days)` });
+      } else if (fireNow) {
+        fireEvent(draft, ev, round, log);
+        firedThisTick++;
+      }
+      continue;
+    }
+
+    let hit = false;
+    if (tr.type === 'conditional') {
       const condsOk = (tr.conditions ?? []).every((c) => conditionHolds(draft, c));
       hit = condsOk && (tr.baseProbPerTick === undefined || drawFn(draft) < tr.baseProbPerTick);
     } else { // random
