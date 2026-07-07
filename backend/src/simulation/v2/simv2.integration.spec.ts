@@ -155,12 +155,21 @@ d('SIM-7/9 integration', () => {
   }, 60000);
 
   // ---- SIM-12: ending a run persists the composite score + awards points/badges (scored) ----
-  it('SIM-12: ending a scored run persists a composite score and awards points, surviving a fresh service instance', async () => {
-    const { run } = await sim.createRun(userId, { scenarioKey: 'services', mode: 'scored', seed: 2027 });
-    await sim.advance(userId, run.id, { tickType: 'day', ticks: 90 });
-    const ended = await sim.endRun(userId, run.id);
+  it('SIM-12: ending a scored run persists a composite score and awards points + ≥1 badge, surviving a fresh service instance', async () => {
+    const badgeUser = 'it-user-badge';
+    const { run } = await sim.createRun(badgeUser, { scenarioKey: 'services', mode: 'scored', seed: 2027 });
+    // Delegate all three operational classes across three advance calls → earns 'sim-delegator'.
+    await sim.advance(badgeUser, run.id, { tickType: 'day', ticks: 5, decisions: [{ key: 'DELEGATE', params: { class: 'CHASE_INVOICE' } }] });
+    await sim.advance(badgeUser, run.id, { tickType: 'day', ticks: 5, decisions: [{ key: 'DELEGATE', params: { class: 'APPROVE_PO' } }] });
+    await sim.advance(badgeUser, run.id, { tickType: 'day', ticks: 5, decisions: [{ key: 'DELEGATE', params: { class: 'DISCOUNT_TO_CLOSE' } }] });
+    await sim.advance(badgeUser, run.id, { tickType: 'day', ticks: 75 });
+    const ended = await sim.endRun(badgeUser, run.id);
     expect(ended.score.composite).toBeGreaterThanOrEqual(0);
     expect(ended.score.composite).toBeLessThanOrEqual(100);
+    expect(ended.badges).toContain('sim-delegator');
+    // the behavioral badge was actually persisted via the F-2 engine
+    const badgeRow = await prisma.gamificationUserBadge.findUnique({ where: { userId_badgeId: { userId: badgeUser, badgeId: 'sim-delegator' } } });
+    expect(badgeRow).toBeTruthy();
 
     // persisted breakdown survives a brand-new service instance (proves DB, not memory)
     const fresh = new SimV2Service(
@@ -168,13 +177,13 @@ d('SIM-7/9 integration', () => {
       new SimV2CalibrationService(prisma, guard),
       new GamificationService(new EventEmitter2(), prisma),
     );
-    const reloaded = await fresh.getRun(userId, run.id);
+    const reloaded = await fresh.getRun(badgeUser, run.id);
     expect(reloaded.run.status).toBe('ended');
     expect((reloaded.run as any).scoreJson).toBeTruthy();
     expect((reloaded.run as any).scoreJson.composite).toBe(ended.score.composite);
 
     // XP was awarded via the F-2 gamification engine
-    const points = await prisma.gamificationUserPoints.findUnique({ where: { userId } });
+    const points = await prisma.gamificationUserPoints.findUnique({ where: { userId: badgeUser } });
     expect(points && points.totalPoints).toBeGreaterThan(0);
   }, 120000);
 });

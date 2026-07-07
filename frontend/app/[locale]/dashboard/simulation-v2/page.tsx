@@ -8,7 +8,7 @@ import {
   LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
 } from 'recharts';
 import {
-  Play, Gauge, AlertTriangle, Loader2, Clock, TrendingUp, Users, Zap, Download, ChevronRight,
+  Play, Gauge, AlertTriangle, Loader2, Clock, TrendingUp, Users, Zap, Download, ChevronRight, Rewind,
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { api, API_URL } from '@/lib/api';
@@ -25,8 +25,8 @@ type Pending = {
 };
 
 const T = {
-  ro: { title: 'Simulator Business v2', subtitle: 'Rulează afacerea în timp — deciziile se acumulează.', newRun: 'Simulare nouă', calibrated: 'Din datele reale (oglindă)', advance: 'Avansează', day: 'zi', days: 'zile', evolution: 'Evoluție KPI', consequences: 'Consecințe în așteptare', events: 'Evenimente', timeline: 'Jurnal', csv: 'Export CSV', noRun: 'Creează o simulare pentru a începe.', tick: 'Ziua', cash: 'Numerar', revenue: 'Venituri', customers: 'Clienți', brand: 'Brand', morale: 'Moral', share: 'Cotă piață', respond: 'Alege', in: 'în', ticksLeft: 'zile rămase', phase: 'Fază', loadFail: 'Nu s-au putut încărca datele.' },
-  en: { title: 'Business Simulator v2', subtitle: 'Run your business over time — decisions compound.', newRun: 'New run', calibrated: 'From real data (mirror)', advance: 'Advance', day: 'day', days: 'days', evolution: 'KPI evolution', consequences: 'Pending consequences', events: 'Events', timeline: 'Log', csv: 'Export CSV', noRun: 'Create a run to begin.', tick: 'Day', cash: 'Cash', revenue: 'Revenue', customers: 'Customers', brand: 'Brand', morale: 'Morale', share: 'Market share', respond: 'Choose', in: 'in', ticksLeft: 'days left', phase: 'Phase', loadFail: 'Could not load data.' },
+  ro: { title: 'Simulator Business v2', subtitle: 'Rulează afacerea în timp — deciziile se acumulează.', newRun: 'Simulare nouă', calibrated: 'Din datele reale (oglindă)', advance: 'Avansează', day: 'zi', days: 'zile', evolution: 'Evoluție KPI', consequences: 'Consecințe în așteptare', events: 'Evenimente', timeline: 'Jurnal', csv: 'Export CSV', noRun: 'Creează o simulare pentru a începe.', tick: 'Ziua', cash: 'Numerar', revenue: 'Venituri', customers: 'Clienți', brand: 'Brand', morale: 'Moral', share: 'Cotă piață', respond: 'Alege', in: 'în', ticksLeft: 'zile rămase', phase: 'Fază', loadFail: 'Nu s-au putut încărca datele.', practice: 'Exersare', scored: 'Punctat', rewind: 'Derulează', rewindHint: 'Doar în modul exersare (max 5 zile înapoi)' },
+  en: { title: 'Business Simulator v2', subtitle: 'Run your business over time — decisions compound.', newRun: 'New run', calibrated: 'From real data (mirror)', advance: 'Advance', day: 'day', days: 'days', evolution: 'KPI evolution', consequences: 'Pending consequences', events: 'Events', timeline: 'Log', csv: 'Export CSV', noRun: 'Create a run to begin.', tick: 'Day', cash: 'Cash', revenue: 'Revenue', customers: 'Customers', brand: 'Brand', morale: 'Morale', share: 'Market share', respond: 'Choose', in: 'in', ticksLeft: 'days left', phase: 'Phase', loadFail: 'Could not load data.', practice: 'Practice', scored: 'Scored', rewind: 'Rewind', rewindHint: 'Practice mode only (up to 5 days back)' },
 };
 
 const TEAL = '#0b7681';
@@ -85,6 +85,19 @@ export default function SimulationV2Page() {
     await loadRun(run.id);
   };
 
+  // SIM-8 — rewind a practice run up to 5 ticks back (scored runs cannot rewind).
+  const rewind = async (backBy: number) => {
+    if (!run) return;
+    const toTick = Math.max(0, run.currentTick - backBy);
+    if (toTick >= run.currentTick) return;
+    setBusy(true);
+    const res = await api.post(`/simulation/v2/runs/${run.id}/rewind`, { toTick });
+    setBusy(false);
+    if (res.error) { setError(res.error); return; }
+    setError(null);
+    await loadRun(run.id);
+  };
+
   const respond = async (eventId: string, choiceIndex: number) => {
     if (!run) return;
     setBusy(true);
@@ -133,11 +146,17 @@ export default function SimulationV2Page() {
           <Card><CardContent className="p-4 flex flex-wrap items-center gap-3 justify-between">
             <div className="flex items-center gap-3 text-sm">
               <span className="font-mono text-xs bg-muted rounded px-2 py-1">{run.scenarioKey}</span>
+              {/* SIM-8 run-mode badge */}
+              <span className={`text-xs px-2 py-1 rounded ${run.mode === 'scored' ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'}`}>{run.mode === 'scored' ? t.scored : t.practice}</span>
               {run.mirrorMode && <span className="text-xs px-2 py-1 rounded bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300">{t.calibrated}</span>}
               <span className="text-muted-foreground">{t.tick} <b className="tabular-nums text-foreground">{run.currentTick}</b></span>
               {latest && <span className="text-xs text-muted-foreground">{t.phase}: {latest.cyclePhase}</span>}
             </div>
             <div className="flex gap-2">
+              {/* SIM-8 rewind — practice-only, up to 5 days back */}
+              {run.mode !== 'scored' && run.currentTick > 0 && (
+                <Button size="sm" variant="outline" disabled={busy} title={t.rewindHint} onClick={() => rewind(5)}><Rewind className="h-4 w-4" /> {t.rewind} 5 {t.days}</Button>
+              )}
               <Button size="sm" disabled={busy} onClick={() => advance(7)}>{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <ChevronRight className="h-4 w-4" />} {t.advance} 7 {t.days}</Button>
               <Button size="sm" variant="secondary" disabled={busy} onClick={() => advance(30)}>{t.advance} 30 {t.days}</Button>
             </div>
