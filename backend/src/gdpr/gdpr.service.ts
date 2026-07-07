@@ -367,7 +367,7 @@ export class GdprService {
       //     Employees: name + CNP are payroll-required → keep; email/phone → anonymize.
       report.anonymized.employees = (await tx.employee.updateMany({
         where: { userId, anonymizedAt: null },
-        data: { email: anonEmail, phone: null, anonymizedAt: new Date() },
+        data: { email: anonEmail, anonymizedAt: new Date() },
       })).count;
       //     Partners: legal name + CUI + address stay (invoice validity); contact fields → anonymize.
       report.anonymized.partners = (await tx.partner.updateMany({

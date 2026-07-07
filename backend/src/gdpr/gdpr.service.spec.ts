@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { GdprService } from './gdpr.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { AuditChainService } from '../audit/audit-chain.service';
 import { DsrType, DsrStatus, ConsentPurpose } from './gdpr.dto';
 
 describe('GdprService', () => {
@@ -49,48 +50,41 @@ describe('GdprService', () => {
     timestamp: new Date(),
   };
 
-  const mockPrismaService = {
+  const restrictModel = () => ({
+    deleteMany: jest.fn().mockResolvedValue({ count: 0 }),
+    updateMany: jest.fn().mockResolvedValue({ count: 0 }),
+    count: jest.fn().mockResolvedValue(0),
+  });
+
+  const mockPrismaService: any = {
     dSRRequest: {
       findFirst: jest.fn(),
       findMany: jest.fn(),
       findUnique: jest.fn(),
       create: jest.fn(),
-      update: jest.fn(),
+      update: jest.fn().mockResolvedValue({}),
     },
-    consent: {
-      findMany: jest.fn(),
-      upsert: jest.fn(),
-    },
-    user: {
-      findUnique: jest.fn(),
-      delete: jest.fn(),
-    },
-    auditLog: {
-      create: jest.fn(),
-      deleteMany: jest.fn(),
-    },
-    employee: {
-      deleteMany: jest.fn(),
-    },
-    payroll: {
-      deleteMany: jest.fn(),
-    },
-    document: {
-      deleteMany: jest.fn(),
-    },
-    invoice: {
-      deleteMany: jest.fn(),
-    },
-    vATReport: {
-      deleteMany: jest.fn(),
-    },
-    sAFTReport: {
-      deleteMany: jest.fn(),
-    },
-    aIQuery: {
-      deleteMany: jest.fn(),
-    },
-    $transaction: jest.fn().mockImplementation((promises) => Promise.all(promises)),
+    consent: { findMany: jest.fn(), upsert: jest.fn() },
+    user: { findUnique: jest.fn(), delete: jest.fn(), update: jest.fn().mockResolvedValue({}) },
+    auditLog: { create: jest.fn(), deleteMany: jest.fn() },
+    employee: { deleteMany: jest.fn(), updateMany: jest.fn().mockResolvedValue({ count: 0 }) },
+    partner: { updateMany: jest.fn().mockResolvedValue({ count: 0 }) },
+    payroll: restrictModel(),
+    document: restrictModel(),
+    invoice: restrictModel(),
+    vATReport: restrictModel(),
+    sAFTReport: restrictModel(),
+    aIQuery: { deleteMany: jest.fn().mockResolvedValue({ count: 0 }) },
+    // Callback form (retention-aware erasure) runs the fn with the prisma mock as tx;
+    // array form (other call sites) still resolves via Promise.all.
+    $transaction: jest.fn().mockImplementation((arg) =>
+      typeof arg === 'function' ? arg(mockPrismaService) : Promise.all(arg),
+    ),
+  };
+
+  const mockAuditChain = {
+    appendAudit: jest.fn().mockResolvedValue({ id: 'log_1', sequence: '1', hash: 'h1' }),
+    verifyChain: jest.fn().mockResolvedValue({ ok: true, checked: 1 }),
   };
 
   beforeEach(async () => {
@@ -98,6 +92,7 @@ describe('GdprService', () => {
       providers: [
         GdprService,
         { provide: PrismaService, useValue: mockPrismaService },
+        { provide: AuditChainService, useValue: mockAuditChain },
       ],
     }).compile();
 
@@ -150,12 +145,8 @@ describe('GdprService', () => {
           '127.0.0.1'
         );
 
-        expect(mockPrismaService.auditLog.create).toHaveBeenCalledWith(
-          expect.objectContaining({
-            data: expect.objectContaining({
-              action: 'DSR_REQUEST_CREATED',
-            }),
-          })
+        expect(mockAuditChain.appendAudit).toHaveBeenCalledWith(
+          expect.objectContaining({ action: 'DSR_REQUEST_CREATED' }),
         );
       });
 
@@ -354,12 +345,8 @@ describe('GdprService', () => {
           'admin_123'
         );
 
-        expect(mockPrismaService.auditLog.create).toHaveBeenCalledWith(
-          expect.objectContaining({
-            data: expect.objectContaining({
-              action: 'DSR_REQUEST_UPDATED',
-            }),
-          })
+        expect(mockAuditChain.appendAudit).toHaveBeenCalledWith(
+          expect.objectContaining({ action: 'DSR_REQUEST_UPDATED' }),
         );
       });
 
@@ -414,12 +401,8 @@ describe('GdprService', () => {
           '127.0.0.1'
         );
 
-        expect(mockPrismaService.auditLog.create).toHaveBeenCalledWith(
-          expect.objectContaining({
-            data: expect.objectContaining({
-              action: 'CONSENT_UPDATED',
-            }),
-          })
+        expect(mockAuditChain.appendAudit).toHaveBeenCalledWith(
+          expect.objectContaining({ action: 'CONSENT_UPDATED' }),
         );
       });
 
@@ -573,7 +556,7 @@ describe('GdprService', () => {
   });
 
   describe('Data Deletion (Article 17)', () => {
-    it('should delete user data', async () => {
+    it('should process a retention-aware erasure', async () => {
       mockPrismaService.user.findUnique.mockResolvedValue(mockUser);
 
       const result = await service.deleteUserData('user_123');
@@ -583,12 +566,12 @@ describe('GdprService', () => {
       expect(result.gdprArticle).toContain('Article 17');
     });
 
-    it('should include deletion timestamp', async () => {
+    it('should include a processed timestamp', async () => {
       mockPrismaService.user.findUnique.mockResolvedValue(mockUser);
 
       const result = await service.deleteUserData('user_123');
 
-      expect(result.deletedAt).toBeDefined();
+      expect(result.processedAt).toBeDefined();
     });
 
     it('should include affected user ID', async () => {
@@ -599,12 +582,33 @@ describe('GdprService', () => {
       expect(result.affectedUserId).toBe('user_123');
     });
 
+    it('should NEVER delete audit logs and should anonymize (not delete) the user', async () => {
+      mockPrismaService.user.findUnique.mockResolvedValue(mockUser);
+      await service.deleteUserData('user_123');
+      expect(mockPrismaService.auditLog.deleteMany).not.toHaveBeenCalled();
+      expect(mockPrismaService.user.delete).not.toHaveBeenCalled();
+      expect(mockPrismaService.user.update).toHaveBeenCalled();
+      expect(mockAuditChain.appendAudit).toHaveBeenCalledWith(
+        expect.objectContaining({ action: 'GDPR_ERASURE' }),
+      );
+    });
+
+    it('should return a structured erasure report', async () => {
+      mockPrismaService.user.findUnique.mockResolvedValue(mockUser);
+      const result = await service.deleteUserData('user_123');
+      expect(result.report).toBeDefined();
+      expect(result.report.deleted).toBeDefined();
+      expect(result.report.restricted).toBeDefined();
+      expect(result.report.anonymized).toBeDefined();
+    });
+
+
     it('should include legal retention note', async () => {
       mockPrismaService.user.findUnique.mockResolvedValue(mockUser);
 
       const result = await service.deleteUserData('user_123');
 
-      expect(result.note).toContain('legal');
+      expect((result.note || '').toLowerCase()).toMatch(/retention|retained|restrict/);
     });
 
     it('should execute deletion in transaction', async () => {
@@ -620,9 +624,11 @@ describe('GdprService', () => {
 
       await service.deleteUserData('user_123');
 
-      expect(mockPrismaService.employee.deleteMany).toHaveBeenCalled();
-      expect(mockPrismaService.document.deleteMany).toHaveBeenCalled();
-      expect(mockPrismaService.invoice.deleteMany).toHaveBeenCalled();
+      // Retention-bound records are RESTRICTED (Art. 18), not deleted; the person is anonymized.
+      expect(mockPrismaService.invoice.updateMany).toHaveBeenCalled();
+      expect(mockPrismaService.document.updateMany).toHaveBeenCalled();
+      expect(mockPrismaService.employee.updateMany).toHaveBeenCalled();
+      expect(mockPrismaService.user.update).toHaveBeenCalled();
     });
 
     it('should throw NotFoundException for non-existent user', async () => {
@@ -898,8 +904,8 @@ describe('GdprService', () => {
 
       const result = await service.deleteUserData('user_123');
 
-      expect(result.note).toContain('10 years');
       expect(result.note).toContain('Romanian');
+      expect(result.note).toMatch(/ANAF|retention/);
     });
   });
 });
