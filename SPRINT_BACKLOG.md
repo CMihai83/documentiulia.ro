@@ -2468,3 +2468,13 @@ Five interlocking epics (draft for review, not yet started):
 - **AI** — Self-Evolution & Autonomous Research: CORAL evolves sim scenarios; researchclaw/Feynman refresh funds/market data + author cited business-case research. *(Xagent excluded — trading-only.)*
 
 Prerequisite **Foundation sprint S-47** migrates the in-memory LMS / gamification / ATS+Freelancer matchers to Prisma and adds doc-gen deps. Sequencing S-47…S-59 (~330 SP). Awaiting approval + epic-priority decision.
+
+---
+
+## GDPR Module — two-track epic (added 2026-07-07)
+
+Full plan + research: `docs/gdpr-module/` (see `README.md`). Two products, one engine:
+- **GDPR-INT** (own compliance — some are hard-deadline legal obligations): security baseline (encrypt PII at rest — currently plaintext CNP/IBAN; wire the unused EncryptionService + durable keys), append-only hash-chained audit log, erasure→anonymize/restrict (not hard-delete), retention engine (RO 5y accounting/payroll defaults, 75y personnel, litigation holds), Art 28 DPA + RoPA + DPO registration + sub-processor register, breach 72h runbook (ANSPDCP Decision 128/2018), **xAI ZDR transfer package + PII redaction**, **Art 28(10) guard (no simulator training on tenant data)**, **Art 50 AI transparency (live 2 Aug 2026)**, **ATS = EU-AI-Act Annex III high-risk readiness**, Law 190/2018 CNP handling.
+- **GDPR-EXT** (sold to customers, multi-tenant): CMP (IAB TCF v2.3 + Consent Mode v2), DSAR portal, RoPA builder, DPIA (ANSPDCP 174/2018 + Art 5 monitoring wizard), breach + NIS2/DNSC combined track, policy generator (RO/EN from RoPA), vendor/DPA/SCC/TIA, CNP compliance pack, GDPR training via the LMS, DPO marketplace (separate legal entity), Data Act switching. Packaging: Gratuit banner+policy / Pro 49 RON / Business 149 RON (undercuts GDPR Register ~10x).
+
+SHIPPED: security hotfix PR #22 (JWT identity + export secret-strip). Cross-cutting: the S-47 F-3 ATS matcher is Annex III high-risk; the S-48 simulator must not train on real tenant financials (role-flip). Awaiting approval + track sequencing.
