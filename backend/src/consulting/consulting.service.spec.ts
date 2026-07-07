@@ -8,13 +8,21 @@ describe('ConsultingService', () => {
   let service: ConsultingService;
   let prisma: PrismaService;
 
+  const bookingStore = new Map<string, any>();
   const mockPrismaService = {
     organization: {
       findUnique: jest.fn(),
     },
+    consultingBooking: {
+      create: jest.fn(async ({ data }: any) => { bookingStore.set(data.id, { ...data, createdAt: new Date(), updatedAt: new Date() }); return bookingStore.get(data.id); }),
+      findUnique: jest.fn(async ({ where }: any) => bookingStore.get(where.id) || null),
+      findMany: jest.fn(async ({ where }: any) => [...bookingStore.values()].filter((b: any) => !where?.organizationId || b.organizationId === where.organizationId).sort((a: any, z: any) => z.scheduledAt.getTime() - a.scheduledAt.getTime())),
+      update: jest.fn(async ({ where, data }: any) => { const b = bookingStore.get(where.id); Object.assign(b, data, { updatedAt: new Date() }); return b; }),
+    },
   };
 
   beforeEach(async () => {
+    bookingStore.clear();
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ConsultingService,
@@ -30,13 +38,13 @@ describe('ConsultingService', () => {
 
   describe('Package Management', () => {
     describe('getAllPackages', () => {
-      it('should return all consulting packages', () => {
+      it('should return all consulting packages', async () => {
         const packages = service.getAllPackages();
 
         expect(packages.length).toBeGreaterThan(5);
       });
 
-      it('should include Romanian localization', () => {
+      it('should include Romanian localization', async () => {
         const packages = service.getAllPackages();
 
         packages.forEach(pkg => {
@@ -47,7 +55,7 @@ describe('ConsultingService', () => {
         });
       });
 
-      it('should include pricing in RON and EUR', () => {
+      it('should include pricing in RON and EUR', async () => {
         const packages = service.getAllPackages();
 
         packages.forEach(pkg => {
@@ -58,35 +66,35 @@ describe('ConsultingService', () => {
     });
 
     describe('getPackagesByCategory', () => {
-      it('should filter packages by accounting category', () => {
+      it('should filter packages by accounting category', async () => {
         const accounting = service.getPackagesByCategory('accounting');
 
         expect(accounting.length).toBeGreaterThan(0);
         expect(accounting.every(p => p.category === 'accounting')).toBe(true);
       });
 
-      it('should filter packages by tax category', () => {
+      it('should filter packages by tax category', async () => {
         const tax = service.getPackagesByCategory('tax');
 
         expect(tax.length).toBeGreaterThan(0);
         expect(tax.every(p => p.category === 'tax')).toBe(true);
       });
 
-      it('should filter packages by compliance category', () => {
+      it('should filter packages by compliance category', async () => {
         const compliance = service.getPackagesByCategory('compliance');
 
         expect(compliance.length).toBeGreaterThan(0);
         expect(compliance.every(p => p.category === 'compliance')).toBe(true);
       });
 
-      it('should filter packages by training category', () => {
+      it('should filter packages by training category', async () => {
         const training = service.getPackagesByCategory('training');
 
         expect(training.length).toBeGreaterThan(0);
         expect(training.every(p => p.category === 'training')).toBe(true);
       });
 
-      it('should return empty array for unknown category', () => {
+      it('should return empty array for unknown category', async () => {
         const unknown = service.getPackagesByCategory('unknown');
 
         expect(unknown).toEqual([]);
@@ -94,7 +102,7 @@ describe('ConsultingService', () => {
     });
 
     describe('getPackage', () => {
-      it('should return package by ID', () => {
+      it('should return package by ID', async () => {
         const pkg = service.getPackage('pkg_accounting_setup');
 
         expect(pkg).toBeDefined();
@@ -102,13 +110,13 @@ describe('ConsultingService', () => {
         expect(pkg.type).toBe('accounting_setup');
       });
 
-      it('should throw NotFoundException for invalid package', () => {
+      it('should throw NotFoundException for invalid package', async () => {
         expect(() => service.getPackage('invalid-id')).toThrow(NotFoundException);
       });
     });
 
     describe('getPackagesForTier', () => {
-      it('should return all FREE tier packages for FREE users', () => {
+      it('should return all FREE tier packages for FREE users', async () => {
         const packages = service.getPackagesForTier(Tier.FREE);
 
         packages.forEach(pkg => {
@@ -116,7 +124,7 @@ describe('ConsultingService', () => {
         });
       });
 
-      it('should return FREE and PRO packages for PRO users', () => {
+      it('should return FREE and PRO packages for PRO users', async () => {
         const packages = service.getPackagesForTier(Tier.PRO);
 
         const tiers = packages.map(p => p.requiredTier);
@@ -125,7 +133,7 @@ describe('ConsultingService', () => {
         expect(tiers).not.toContain(Tier.BUSINESS);
       });
 
-      it('should return all packages for BUSINESS users', () => {
+      it('should return all packages for BUSINESS users', async () => {
         const businessPackages = service.getPackagesForTier(Tier.BUSINESS);
         const allPackages = service.getAllPackages();
 
@@ -134,7 +142,7 @@ describe('ConsultingService', () => {
     });
 
     describe('getPopularPackages', () => {
-      it('should return packages marked as popular', () => {
+      it('should return packages marked as popular', async () => {
         const popular = service.getPopularPackages();
 
         expect(popular.length).toBeGreaterThan(0);
@@ -143,7 +151,7 @@ describe('ConsultingService', () => {
     });
 
     describe('getNewPackages', () => {
-      it('should return packages marked as new', () => {
+      it('should return packages marked as new', async () => {
         const newPkgs = service.getNewPackages();
 
         expect(newPkgs.length).toBeGreaterThan(0);
@@ -152,7 +160,7 @@ describe('ConsultingService', () => {
     });
 
     describe('getCategories', () => {
-      it('should return category summary', () => {
+      it('should return category summary', async () => {
         const categories = service.getCategories();
 
         expect(categories.length).toBeGreaterThan(0);
@@ -163,7 +171,7 @@ describe('ConsultingService', () => {
         });
       });
 
-      it('should include all expected categories', () => {
+      it('should include all expected categories', async () => {
         const categories = service.getCategories();
         const categoryNames = categories.map(c => c.category);
 
@@ -230,7 +238,7 @@ describe('ConsultingService', () => {
 
   describe('Availability Slots', () => {
     describe('getAvailableSlots', () => {
-      it('should return slots for weekday', () => {
+      it('should return slots for weekday', async () => {
         // Find a Monday
         const monday = new Date();
         monday.setDate(monday.getDate() + (1 + 7 - monday.getDay()) % 7);
@@ -247,7 +255,7 @@ describe('ConsultingService', () => {
         });
       });
 
-      it('should return empty array for weekend', () => {
+      it('should return empty array for weekend', async () => {
         // Find a Saturday
         const saturday = new Date();
         saturday.setDate(saturday.getDate() + (6 - saturday.getDay() + 7) % 7);
@@ -258,11 +266,11 @@ describe('ConsultingService', () => {
         expect(slots).toEqual([]);
       });
 
-      it('should throw NotFoundException for invalid package', () => {
+      it('should throw NotFoundException for invalid package', async () => {
         expect(() => service.getAvailableSlots('2025-01-15', 'invalid-package')).toThrow(NotFoundException);
       });
 
-      it('should include consultant information', () => {
+      it('should include consultant information', async () => {
         // Find a Monday
         const monday = new Date();
         monday.setDate(monday.getDate() + (1 + 7 - monday.getDay()) % 7);
@@ -389,13 +397,13 @@ describe('ConsultingService', () => {
           futureDate,
         );
 
-        const booking = service.getBooking(created.id);
+        const booking = await service.getBooking(created.id);
 
         expect(booking.id).toBe(created.id);
       });
 
-      it('should throw NotFoundException for invalid booking', () => {
-        expect(() => service.getBooking('invalid-id')).toThrow(NotFoundException);
+      it('should throw NotFoundException for invalid booking', async () => {
+        await expect(service.getBooking('invalid-id')).rejects.toThrow(NotFoundException);
       });
     });
 
@@ -406,15 +414,15 @@ describe('ConsultingService', () => {
         await service.createBooking('org-2', 'user-2', 'pkg_accounting_setup', futureDate);
       });
 
-      it('should return bookings for organization', () => {
-        const bookings = service.getOrganizationBookings('org-1');
+      it('should return bookings for organization', async () => {
+        const bookings = await service.getOrganizationBookings('org-1');
 
         expect(bookings.length).toBe(2);
         expect(bookings.every(b => b.organizationId === 'org-1')).toBe(true);
       });
 
-      it('should sort by scheduledAt descending', () => {
-        const bookings = service.getOrganizationBookings('org-1');
+      it('should sort by scheduledAt descending', async () => {
+        const bookings = await service.getOrganizationBookings('org-1');
 
         for (let i = 1; i < bookings.length; i++) {
           expect(bookings[i - 1].scheduledAt.getTime()).toBeGreaterThanOrEqual(
@@ -423,8 +431,8 @@ describe('ConsultingService', () => {
         }
       });
 
-      it('should return empty array for org without bookings', () => {
-        const bookings = service.getOrganizationBookings('org-99');
+      it('should return empty array for org without bookings', async () => {
+        const bookings = await service.getOrganizationBookings('org-99');
 
         expect(bookings).toEqual([]);
       });
@@ -437,9 +445,9 @@ describe('ConsultingService', () => {
 
         await service.createBooking('org-1', 'user-1', 'pkg_accounting_setup', futureDate);
         const cancelled = await service.createBooking('org-1', 'user-1', 'pkg_tax_planning', new Date(futureDate.getTime() + 86400000));
-        service.cancelBooking(cancelled.id);
+        await service.cancelBooking(cancelled.id);
 
-        const upcoming = service.getUpcomingBookings('org-1');
+        const upcoming = await service.getUpcomingBookings('org-1');
 
         expect(upcoming.length).toBe(1);
         expect(upcoming.every(b => b.scheduledAt > new Date())).toBe(true);
@@ -456,7 +464,7 @@ describe('ConsultingService', () => {
           futureDate,
         );
 
-        const confirmed = service.confirmBooking(booking.id);
+        const confirmed = await service.confirmBooking(booking.id);
 
         expect(confirmed.status).toBe('confirmed');
         expect(confirmed.paymentStatus).toBe('paid');
@@ -470,9 +478,9 @@ describe('ConsultingService', () => {
           'pkg_accounting_setup',
           futureDate,
         );
-        service.confirmBooking(booking.id);
+        await service.confirmBooking(booking.id);
 
-        expect(() => service.confirmBooking(booking.id)).toThrow(BadRequestException);
+        await expect(service.confirmBooking(booking.id)).rejects.toThrow(BadRequestException);
       });
     });
 
@@ -485,7 +493,7 @@ describe('ConsultingService', () => {
           futureDate,
         );
 
-        const cancelled = service.cancelBooking(booking.id, 'Schedule conflict');
+        const cancelled = await service.cancelBooking(booking.id, 'Schedule conflict');
 
         expect(cancelled.status).toBe('cancelled');
         expect(cancelled.notes).toContain('Schedule conflict');
@@ -501,9 +509,9 @@ describe('ConsultingService', () => {
           'pkg_accounting_setup',
           farFuture,
         );
-        service.confirmBooking(booking.id);
+        await service.confirmBooking(booking.id);
 
-        const cancelled = service.cancelBooking(booking.id);
+        const cancelled = await service.cancelBooking(booking.id);
 
         expect(cancelled.paymentStatus).toBe('refunded');
       });
@@ -515,10 +523,10 @@ describe('ConsultingService', () => {
           'pkg_accounting_setup',
           futureDate,
         );
-        service.confirmBooking(booking.id);
-        service.completeBooking(booking.id);
+        await service.confirmBooking(booking.id);
+        await service.completeBooking(booking.id);
 
-        expect(() => service.cancelBooking(booking.id)).toThrow(BadRequestException);
+        await expect(service.cancelBooking(booking.id)).rejects.toThrow(BadRequestException);
       });
     });
 
@@ -532,7 +540,7 @@ describe('ConsultingService', () => {
         );
 
         const newDate = new Date(futureDate.getTime() + 7 * 86400000);
-        const rescheduled = service.rescheduleBooking(booking.id, newDate);
+        const rescheduled = await service.rescheduleBooking(booking.id, newDate);
 
         expect(rescheduled.status).toBe('rescheduled');
         expect(rescheduled.scheduledAt.getTime()).toBe(newDate.getTime());
@@ -547,7 +555,7 @@ describe('ConsultingService', () => {
         );
 
         const newDate = new Date(futureDate.getTime() + 7 * 86400000);
-        const rescheduled = service.rescheduleBooking(booking.id, newDate);
+        const rescheduled = await service.rescheduleBooking(booking.id, newDate);
 
         const expectedEnd = new Date(newDate);
         expectedEnd.setMinutes(expectedEnd.getMinutes() + 120);
@@ -562,10 +570,10 @@ describe('ConsultingService', () => {
           'pkg_accounting_setup',
           futureDate,
         );
-        service.confirmBooking(booking.id);
-        service.completeBooking(booking.id);
+        await service.confirmBooking(booking.id);
+        await service.completeBooking(booking.id);
 
-        expect(() => service.rescheduleBooking(booking.id, new Date())).toThrow(BadRequestException);
+        await expect(service.rescheduleBooking(booking.id, new Date())).rejects.toThrow(BadRequestException);
       });
     });
 
@@ -577,9 +585,9 @@ describe('ConsultingService', () => {
           'pkg_accounting_setup',
           futureDate,
         );
-        service.confirmBooking(booking.id);
+        await service.confirmBooking(booking.id);
 
-        const completed = service.completeBooking(booking.id);
+        const completed = await service.completeBooking(booking.id);
 
         expect(completed.status).toBe('completed');
       });
@@ -591,9 +599,9 @@ describe('ConsultingService', () => {
           'pkg_accounting_setup',
           futureDate,
         );
-        service.confirmBooking(booking.id);
+        await service.confirmBooking(booking.id);
 
-        const completed = service.completeBooking(booking.id, [
+        const completed = await service.completeBooking(booking.id, [
           'chart_of_accounts.pdf',
           'setup_guide.pdf',
         ]);
@@ -609,7 +617,7 @@ describe('ConsultingService', () => {
           futureDate,
         );
 
-        expect(() => service.completeBooking(booking.id)).toThrow(BadRequestException);
+        await expect(service.completeBooking(booking.id)).rejects.toThrow(BadRequestException);
       });
     });
   });
@@ -629,13 +637,13 @@ describe('ConsultingService', () => {
         'pkg_accounting_setup',
         futureDate,
       );
-      service.confirmBooking(completedBooking.id);
-      service.completeBooking(completedBooking.id);
+      await service.confirmBooking(completedBooking.id);
+      await service.completeBooking(completedBooking.id);
     });
 
     describe('submitFeedback', () => {
-      it('should submit feedback', () => {
-        const updated = service.submitFeedback(
+      it('should submit feedback', async () => {
+        const updated = await service.submitFeedback(
           completedBooking.id,
           5,
           'Excellent service!',
@@ -649,8 +657,8 @@ describe('ConsultingService', () => {
         expect(updated.feedback?.submittedAt).toBeDefined();
       });
 
-      it('should accept rating without comment', () => {
-        const updated = service.submitFeedback(completedBooking.id, 4);
+      it('should accept rating without comment', async () => {
+        const updated = await service.submitFeedback(completedBooking.id, 4);
 
         expect(updated.feedback?.rating).toBe(4);
         expect(updated.feedback?.comment).toBeUndefined();
@@ -664,12 +672,12 @@ describe('ConsultingService', () => {
           new Date(Date.now() + 86400000),
         );
 
-        expect(() => service.submitFeedback(pending.id, 5)).toThrow(BadRequestException);
+        await expect(service.submitFeedback(pending.id, 5)).rejects.toThrow(BadRequestException);
       });
 
-      it('should throw BadRequestException for invalid rating', () => {
-        expect(() => service.submitFeedback(completedBooking.id, 0)).toThrow(BadRequestException);
-        expect(() => service.submitFeedback(completedBooking.id, 6)).toThrow(BadRequestException);
+      it('should throw BadRequestException for invalid rating', async () => {
+        await expect(service.submitFeedback(completedBooking.id, 0)).rejects.toThrow(BadRequestException);
+        await expect(service.submitFeedback(completedBooking.id, 6)).rejects.toThrow(BadRequestException);
       });
     });
   });
@@ -689,7 +697,7 @@ describe('ConsultingService', () => {
           futureDate,
         );
 
-        const invoice = service.generateInvoice(booking.id);
+        const invoice = await service.generateInvoice(booking.id);
 
         expect(invoice.id).toBeDefined();
         expect(invoice.bookingId).toBe(booking.id);
@@ -713,12 +721,12 @@ describe('ConsultingService', () => {
         );
 
         // Unpaid
-        let invoice = service.generateInvoice(booking.id);
+        let invoice = await service.generateInvoice(booking.id);
         expect(invoice.status).toBe('draft');
 
         // Paid
-        service.confirmBooking(booking.id);
-        invoice = service.generateInvoice(booking.id);
+        await service.confirmBooking(booking.id);
+        invoice = await service.generateInvoice(booking.id);
         expect(invoice.status).toBe('paid');
       });
 
@@ -735,7 +743,7 @@ describe('ConsultingService', () => {
           futureDate,
         );
 
-        const invoice = service.generateInvoice(booking.id);
+        const invoice = await service.generateInvoice(booking.id);
         const daysDiff = (invoice.dueDate.getTime() - invoice.issuedAt.getTime()) / (1000 * 60 * 60 * 24);
 
         expect(Math.round(daysDiff)).toBe(30);
@@ -755,60 +763,60 @@ describe('ConsultingService', () => {
 
       // Create and complete some bookings (with past dates - already happened)
       const booking1 = await service.createBooking('org-1', 'user-1', 'pkg_accounting_setup', pastDate);
-      service.confirmBooking(booking1.id);
-      service.completeBooking(booking1.id);
-      service.submitFeedback(booking1.id, 5, 'Great!');
+      await service.confirmBooking(booking1.id);
+      await service.completeBooking(booking1.id);
+      await service.submitFeedback(booking1.id, 5, 'Great!');
 
       const booking2 = await service.createBooking('org-1', 'user-1', 'pkg_tax_planning', new Date(pastDate.getTime() + 86400000));
-      service.confirmBooking(booking2.id);
-      service.completeBooking(booking2.id);
-      service.submitFeedback(booking2.id, 4);
+      await service.confirmBooking(booking2.id);
+      await service.completeBooking(booking2.id);
+      await service.submitFeedback(booking2.id, 4);
 
       // Create upcoming booking (future date)
       await service.createBooking('org-1', 'user-1', 'pkg_efactura_setup', futureDate);
     });
 
     describe('getStats', () => {
-      it('should return total bookings', () => {
-        const stats = service.getStats('org-1');
+      it('should return total bookings', async () => {
+        const stats = await service.getStats('org-1');
 
         expect(stats.totalBookings).toBe(3);
       });
 
-      it('should return completed bookings', () => {
-        const stats = service.getStats('org-1');
+      it('should return completed bookings', async () => {
+        const stats = await service.getStats('org-1');
 
         expect(stats.completedBookings).toBe(2);
       });
 
-      it('should return upcoming bookings', () => {
-        const stats = service.getStats('org-1');
+      it('should return upcoming bookings', async () => {
+        const stats = await service.getStats('org-1');
 
         expect(stats.upcomingBookings).toBe(1);
       });
 
-      it('should calculate total revenue', () => {
-        const stats = service.getStats('org-1');
+      it('should calculate total revenue', async () => {
+        const stats = await service.getStats('org-1');
 
         expect(stats.totalRevenue).toBe(599 + 799); // accounting + tax planning
       });
 
-      it('should calculate average rating', () => {
-        const stats = service.getStats('org-1');
+      it('should calculate average rating', async () => {
+        const stats = await service.getStats('org-1');
 
         expect(stats.averageRating).toBe(4.5); // (5 + 4) / 2
       });
 
-      it('should return popular services', () => {
-        const stats = service.getStats('org-1');
+      it('should return popular services', async () => {
+        const stats = await service.getStats('org-1');
 
         expect(stats.popularServices.length).toBeGreaterThan(0);
         expect(stats.popularServices[0]).toHaveProperty('type');
         expect(stats.popularServices[0]).toHaveProperty('count');
       });
 
-      it('should return zero stats for org without bookings', () => {
-        const stats = service.getStats('org-99');
+      it('should return zero stats for org without bookings', async () => {
+        const stats = await service.getStats('org-99');
 
         expect(stats.totalBookings).toBe(0);
         expect(stats.totalRevenue).toBe(0);
@@ -819,7 +827,7 @@ describe('ConsultingService', () => {
 
   describe('Romanian Compliance Packages', () => {
     describe('e-Factura Setup Package', () => {
-      it('should exist', () => {
+      it('should exist', async () => {
         const pkg = service.getPackage('pkg_efactura_setup');
 
         expect(pkg).toBeDefined();
@@ -827,14 +835,14 @@ describe('ConsultingService', () => {
         expect(pkg.category).toBe('compliance');
       });
 
-      it('should include SPV integration feature', () => {
+      it('should include SPV integration feature', async () => {
         const pkg = service.getPackage('pkg_efactura_setup');
 
         expect(pkg.features.some(f => f.includes('SPV'))).toBe(true);
         expect(pkg.featuresRo.some(f => f.includes('SPV'))).toBe(true);
       });
 
-      it('should include UBL template feature', () => {
+      it('should include UBL template feature', async () => {
         const pkg = service.getPackage('pkg_efactura_setup');
 
         expect(pkg.features.some(f => f.includes('UBL'))).toBe(true);
@@ -842,20 +850,20 @@ describe('ConsultingService', () => {
     });
 
     describe('SAF-T D406 Package', () => {
-      it('should exist', () => {
+      it('should exist', async () => {
         const pkg = service.getPackage('pkg_saft_optimization');
 
         expect(pkg).toBeDefined();
         expect(pkg.type).toBe('saft_optimization');
       });
 
-      it('should reference Order 1783/2021', () => {
+      it('should reference Order 1783/2021', async () => {
         const pkg = service.getPackage('pkg_saft_optimization');
 
         expect(pkg.descriptionRo).toContain('1783/2021');
       });
 
-      it('should include monthly reporting optimization', () => {
+      it('should include monthly reporting optimization', async () => {
         const pkg = service.getPackage('pkg_saft_optimization');
 
         expect(pkg.features.some(f => f.includes('Monthly'))).toBe(true);
@@ -863,14 +871,14 @@ describe('ConsultingService', () => {
     });
 
     describe('HR & Revisal Compliance Package', () => {
-      it('should exist', () => {
+      it('should exist', async () => {
         const pkg = service.getPackage('pkg_hr_compliance');
 
         expect(pkg).toBeDefined();
         expect(pkg.type).toBe('hr_compliance');
       });
 
-      it('should include Revisal integration check', () => {
+      it('should include Revisal integration check', async () => {
         const pkg = service.getPackage('pkg_hr_compliance');
 
         expect(pkg.features.some(f => f.includes('Revisal'))).toBe(true);
@@ -879,20 +887,20 @@ describe('ConsultingService', () => {
     });
 
     describe('VAT Analysis Package', () => {
-      it('should exist', () => {
+      it('should exist', async () => {
         const pkg = service.getPackage('pkg_vat_analysis');
 
         expect(pkg).toBeDefined();
         expect(pkg.type).toBe('vat_analysis');
       });
 
-      it('should reference Legea 141/2025', () => {
+      it('should reference Legea 141/2025', async () => {
         const pkg = service.getPackage('pkg_vat_analysis');
 
         expect(pkg.description).toContain('Legea 141/2025');
       });
 
-      it('should include 21%/11% VAT rates', () => {
+      it('should include 21%/11% VAT rates', async () => {
         const pkg = service.getPackage('pkg_vat_analysis');
 
         expect(pkg.features.some(f => f.includes('21%/11%'))).toBe(true);
@@ -900,20 +908,20 @@ describe('ConsultingService', () => {
     });
 
     describe('SAGA Migration Package', () => {
-      it('should exist', () => {
+      it('should exist', async () => {
         const pkg = service.getPackage('pkg_saga_migration');
 
         expect(pkg).toBeDefined();
         expect(pkg.type).toBe('saga_migration');
       });
 
-      it('should reference SAGA v3.2', () => {
+      it('should reference SAGA v3.2', async () => {
         const pkg = service.getPackage('pkg_saga_migration');
 
         expect(pkg.description).toContain('SAGA v3.2');
       });
 
-      it('should include parallel running support', () => {
+      it('should include parallel running support', async () => {
         const pkg = service.getPackage('pkg_saga_migration');
 
         expect(pkg.features.some(f => f.includes('Parallel'))).toBe(true);
@@ -922,7 +930,7 @@ describe('ConsultingService', () => {
   });
 
   describe('Pricing', () => {
-    it('should have reasonable RON/EUR conversion ratio', () => {
+    it('should have reasonable RON/EUR conversion ratio', async () => {
       const packages = service.getAllPackages();
 
       packages.forEach(pkg => {
@@ -933,7 +941,7 @@ describe('ConsultingService', () => {
       });
     });
 
-    it('should have prices that cover 19% VAT', () => {
+    it('should have prices that cover 19% VAT', async () => {
       const packages = service.getAllPackages();
 
       packages.forEach(pkg => {
