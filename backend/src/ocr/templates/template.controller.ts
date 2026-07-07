@@ -13,12 +13,17 @@ import {
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiQuery } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
 import { RolesGuard } from '../../auth/roles.guard';
+import { TierGuard } from '../../auth/tier.guard';
+import { RequiresTier } from '../../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import { Roles } from '../../auth/roles.decorator';
 import { TemplateService } from './template.service';
 import { CreateTemplateDto, UpdateTemplateDto } from '../dto/ocr.dto';
 import { DocumentType } from '@prisma/client';
 
 @ApiTags('templates')
+@UseGuards(JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
 @Controller('templates')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @ApiBearerAuth()
