@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
 import { UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
 import { SpvService } from './spv.service';
 import { SpvStatus, SpvMessageStatus, SpvSubmissionType, SpvSubmissionStatus } from '@prisma/client';
 
@@ -67,6 +68,7 @@ describe('SpvService', () => {
         SpvService,
         { provide: ConfigService, useValue: mockConfigService },
         { provide: PrismaService, useValue: mockPrismaService },
+        { provide: RateLimiterService, useValue: { consumeRateLimit: jest.fn().mockResolvedValue({ allowed: true }) } },
       ],
     }).compile();
 
