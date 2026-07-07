@@ -12,6 +12,16 @@ export type FieldType =
   | 'driver-table'
   | 'distribution';
 
+/** A column in a driver-table field (BC-104 annual cashflow drivers). */
+export interface DriverColumn {
+  key: string;               // cell key within a row
+  label: string;
+  labelRo?: string;
+  type: 'currency' | 'number' | 'percent';
+  min?: number;
+  max?: number;
+}
+
 export interface QuestionField {
   key: string; // unique within the case; also the model-parameter mapping key
   label: string;
@@ -22,6 +32,12 @@ export interface QuestionField {
   min?: number;
   max?: number;
   options?: { value: string; label: string }[]; // for select
+  /** driver-table: column spec (each answer row is an object keyed by column.key). */
+  columns?: DriverColumn[];
+  /** driver-table: row count is driven by another numeric field (e.g. the horizon). */
+  rowsFrom?: string;
+  /** distribution: which model driver this distribution perturbs (BC-105 Monte-Carlo). */
+  distributionTarget?: 'benefits' | 'opex' | 'capex' | 'discountRate';
   /** Conditional visibility: show only when another field satisfies a predicate. */
   visibleIf?: { field: string; equals?: string | number | boolean; gt?: number; lt?: number };
   /** Maps this answer onto a financial-model parameter path (BC engine consumes it). */
@@ -84,6 +100,35 @@ const STRATEGIC_SECTION: QuestionSection = {
   ],
 };
 
+/**
+ * BC-104 — economic case: the annual benefit/opex streams that drive NPV/IRR.
+ * The driver-table has one row per appraisal year (row count == horizon).
+ */
+const ECONOMIC_SECTION: QuestionSection = {
+  id: 'economic',
+  title: 'Economic case (cashflows)',
+  titleRo: 'Cazul economic (fluxuri)',
+  fields: [
+    {
+      key: 'economic.cashflows',
+      label: 'Annual benefit & operating-cost streams',
+      labelRo: 'Fluxuri anuale de beneficii și costuri',
+      type: 'driver-table',
+      required: true,
+      rowsFrom: 'strategic.horizonYears',
+      mapsTo: 'model.cashflows',
+      columns: [
+        { key: 'benefit', label: 'Benefit / inflow', labelRo: 'Beneficiu / încasare', type: 'currency', min: 0 },
+        { key: 'opex', label: 'Operating cost', labelRo: 'Cost de operare', type: 'currency', min: 0 },
+      ],
+    },
+    // BC-105 Monte-Carlo distributions (optional; sampled only if provided).
+    { key: 'economic.dist.benefits', label: 'Benefit uncertainty', type: 'distribution', distributionTarget: 'benefits' },
+    { key: 'economic.dist.opex', label: 'Op-cost uncertainty', type: 'distribution', distributionTarget: 'opex' },
+    { key: 'economic.dist.capex', label: 'Capex uncertainty', type: 'distribution', distributionTarget: 'capex' },
+  ],
+};
+
 const RFQ_SECTION: QuestionSection = {
   id: 'rfq',
   title: 'RFQ costing',
@@ -106,14 +151,14 @@ export const TEMPLATES: Record<BcTemplate, TemplateDescriptor> = {
     nameRo: 'Modelul celor 5 cazuri',
     skeleton: ['Strategic', 'Economic', 'Commercial', 'Financial', 'Management'],
     maturityStages: ['SOC', 'OBC', 'FBC'],
-    sections: [STRATEGIC_SECTION, WACC_SECTION],
+    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, WACC_SECTION],
   },
   PRINCE2_LEAN: {
     template: 'PRINCE2_LEAN',
     name: 'PRINCE2 / lean business case',
     nameRo: 'Caz de afaceri PRINCE2 (lean)',
     skeleton: ['Exec summary', 'Reasons', 'Options', 'Benefits', 'Costs', 'Investment appraisal', 'Risks'],
-    sections: [STRATEGIC_SECTION, WACC_SECTION],
+    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, WACC_SECTION],
   },
   RFQ: {
     template: 'RFQ',
@@ -163,6 +208,26 @@ export function validateAnswers(template: BcTemplate, answers: Record<string, an
     }
     if (f.type === 'select' && f.options && !f.options.some((o) => o.value === val)) {
       errors.push({ field: f.key, message: `${f.label}: invalid choice` });
+    }
+    if (f.type === 'driver-table') {
+      if (!Array.isArray(val)) {
+        errors.push({ field: f.key, message: `${f.label} must be a table of rows` });
+      } else {
+        if (f.rowsFrom) {
+          const expected = Number(answers[f.rowsFrom]);
+          if (Number.isFinite(expected) && val.length !== expected) {
+            errors.push({ field: f.key, message: `${f.label} must have exactly ${expected} row(s) (one per year)` });
+          }
+        }
+        for (const col of f.columns ?? []) {
+          for (let r = 0; r < val.length; r++) {
+            const cell = Number(val[r]?.[col.key]);
+            if (!Number.isFinite(cell)) { errors.push({ field: `${f.key}[${r}].${col.key}`, message: `${col.label} (year ${r + 1}) must be a number` }); continue; }
+            if (col.min !== undefined && cell < col.min) errors.push({ field: `${f.key}[${r}].${col.key}`, message: `${col.label} (year ${r + 1}) must be ≥ ${col.min}` });
+            if (col.max !== undefined && cell > col.max) errors.push({ field: `${f.key}[${r}].${col.key}`, message: `${col.label} (year ${r + 1}) must be ≤ ${col.max}` });
+          }
+        }
+      }
     }
   }
   return errors;
