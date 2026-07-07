@@ -35,9 +35,19 @@ export class SimV2Controller {
     return this.sim.getCatalog();
   }
 
+  private orgId(req: any): string | undefined {
+    return req?.headers?.['x-organization-id'] || req?.user?.organizationId;
+  }
+
   @Post('runs')
   createRun(@Request() req: any, @Body() dto: CreateRunDto) {
     return this.sim.createRun(this.userId(req), dto ?? {});
+  }
+
+  /** SIM-9: create a run calibrated from the tenant's real ERP data (Art 28(10)-guarded). */
+  @Post('runs/calibrated')
+  createCalibratedRun(@Request() req: any, @Body() dto: CreateRunDto) {
+    return this.sim.createCalibratedRun(this.userId(req), this.orgId(req), dto ?? {});
   }
 
   @Get('runs')

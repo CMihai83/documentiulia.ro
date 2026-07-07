@@ -1,8 +1,10 @@
 import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { randomInt } from 'crypto';
 import { PrismaService } from '../../prisma/prisma.service';
+import { randomInt as _randomInt } from 'crypto';
 import { applyTick, createInitialState, SCENARIO_PRESETS } from './simv2.engine';
 import { DECISION_CATALOG, SimDecision, SimV2StateData, TickType } from './simv2.types';
+import { SimV2CalibrationService } from './simv2.calibration';
 
 /**
  * Simulator v2 — run lifecycle + versioned state persistence (S-48).
@@ -13,7 +15,34 @@ import { DECISION_CATALOG, SimDecision, SimV2StateData, TickType } from './simv2
 export class SimV2Service {
   private readonly logger = new Logger(SimV2Service.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly calibration: SimV2CalibrationService,
+  ) {}
+
+  /** SIM-9: create a run seeded from the tenant's real ERP data (Art 28(10)-guarded). */
+  async createCalibratedRun(userId: string, organizationId: string | undefined, dto: { scenarioKey?: string; seed?: number; businessId?: string }) {
+    const scenarioKey = dto.scenarioKey && SCENARIO_PRESETS[dto.scenarioKey] ? dto.scenarioKey : 'services';
+    const seed = dto.seed ?? _randomInt(1, 2 ** 31);
+    const cal = await this.calibration.calibrate(userId, organizationId, scenarioKey, seed);
+    const state = cal.state;
+    const run = await this.prisma.simV2Run.create({
+      data: {
+        userId,
+        businessId: dto.businessId,
+        scenarioKey,
+        mode: 'practice',
+        mirrorMode: cal.mirror,
+        seed,
+        currentTick: 0,
+        clockYear: state.clock.year,
+        clockMonth: state.clock.month,
+        clockDay: state.clock.day,
+        states: { create: { tick: 0, stateJson: state as any } },
+      },
+    });
+    return { run, state, calibration: { mirror: cal.mirror, source: cal.source, notes: cal.notes } };
+  }
 
   getCatalog() {
     return {
