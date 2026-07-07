@@ -3291,3 +3291,35 @@ model FreelancerProjectApplication {
   @@index([projectId, status])
   @@index([freelancerId])
 }
+
+// ---- S-48 / SIM-1: Simulator v2 core — versioned run state ----
+model SimV2Run {
+  id          String       @id @default(cuid())
+  userId      String
+  businessId  String?
+  scenarioKey String
+  mode        String       @default("practice") // practice | scored
+  status      String       @default("active")   // active | paused | ended
+  seed        Int
+  currentTick Int          @default(0)
+  clockYear   Int          @default(1)
+  clockMonth  Int          @default(1)
+  clockDay    Int          @default(1)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  states      SimV2State[]
+
+  @@index([userId, status])
+}
+
+model SimV2State {
+  id        String   @id @default(cuid())
+  runId     String
+  tick      Int
+  stateJson Json
+  createdAt DateTime @default(now())
+  run       SimV2Run @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@unique([runId, tick])
+  @@index([runId])
+}

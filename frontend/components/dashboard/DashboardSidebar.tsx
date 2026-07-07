@@ -150,7 +150,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/hr', icon: Users, labelKey: 'hr', defaultLabel: 'HR & Salarizare' },
       { href: '/dashboard/freelancer', icon: Briefcase, labelKey: 'freelancer', defaultLabel: 'Hub Freelanceri' },
       { href: '/dashboard/lms', icon: GraduationCap, labelKey: 'lms', defaultLabel: 'Training (LMS)' },
-      { href: '/simulator', icon: Target, labelKey: 'simulation', defaultLabel: 'Simulator Business' },
+      { href: '/simulation', icon: Target, labelKey: 'simulation', defaultLabel: 'Simulator Business' },
     ],
   },
   {
