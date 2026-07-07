@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Package,
   Warehouse,
@@ -122,6 +123,7 @@ const getStatusLabel = (status: string): string => {
 export default function WarehousePage() {
   const t = useTranslations('warehouse');
   const toast = useToast();
+  const router = useRouter();
   const [summary, setSummary] = useState<WarehouseSummary | null>(null);
   const [locations, setLocations] = useState<WarehouseLocation[]>([]);
   const [movements, setMovements] = useState<StockMovement[]>([]);

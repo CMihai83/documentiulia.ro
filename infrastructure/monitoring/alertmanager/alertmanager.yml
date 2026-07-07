@@ -1,0 +1,110 @@
+# DocumentIulia.ro - AlertManager Configuration
+
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'alerts@documentiulia.ro'
+  smtp_auth_username: '${SMTP_USER}'
+  smtp_auth_password: '${SMTP_PASSWORD}'
+  resolve_timeout: 5m
+
+# Templates for notifications
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'
+
+# Route tree
+route:
+  group_by: ['alertname', 'severity', 'service']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  receiver: 'default'
+
+  routes:
+    # Critical alerts - immediate notification
+    - match:
+        severity: critical
+      receiver: 'critical-alerts'
+      group_wait: 10s
+      repeat_interval: 1h
+
+    # Warning alerts - grouped notification
+    - match:
+        severity: warning
+      receiver: 'warning-alerts'
+      group_wait: 1m
+      repeat_interval: 4h
+
+    # Business alerts (ANAF compliance)
+    - match:
+        alertname: 'SAFTDeadlineApproaching'
+      receiver: 'compliance-alerts'
+      repeat_interval: 24h
+
+    # Security alerts
+    - match_re:
+        alertname: 'HighLoginFailures|SuspiciousAPIActivity'
+      receiver: 'security-alerts'
+      group_wait: 10s
+      repeat_interval: 30m
+
+# Receivers
+receivers:
+  - name: 'default'
+    email_configs:
+      - to: 'devops@documentiulia.ro'
+        send_resolved: true
+
+  - name: 'critical-alerts'
+    email_configs:
+      - to: 'critical@documentiulia.ro'
+        send_resolved: true
+        headers:
+          Subject: '[CRITICAL] DocumentIulia Alert: {{ .GroupLabels.alertname }}'
+    # Slack webhook (optional)
+    # slack_configs:
+    #   - api_url: '${SLACK_WEBHOOK_URL}'
+    #     channel: '#alerts-critical'
+    #     send_resolved: true
+
+  - name: 'warning-alerts'
+    email_configs:
+      - to: 'devops@documentiulia.ro'
+        send_resolved: true
+        headers:
+          Subject: '[WARNING] DocumentIulia Alert: {{ .GroupLabels.alertname }}'
+
+  - name: 'compliance-alerts'
+    email_configs:
+      - to: 'compliance@documentiulia.ro'
+        send_resolved: false
+        headers:
+          Subject: '[COMPLIANCE] DocumentIulia: {{ .GroupLabels.alertname }}'
+
+  - name: 'security-alerts'
+    email_configs:
+      - to: 'security@documentiulia.ro'
+        send_resolved: true
+        headers:
+          Subject: '[SECURITY] DocumentIulia Alert: {{ .GroupLabels.alertname }}'
+
+# Inhibition rules - prevent notification spam
+inhibit_rules:
+  # If critical alert fires, suppress warning for same alert
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'service']
+
+  # If backend is down, suppress high latency alerts
+  - source_match:
+      alertname: 'BackendDown'
+    target_match_re:
+      alertname: 'HighLatency|CriticalLatency|HighErrorRate'
+    equal: ['service']
+
+  # If database is down, suppress connection alerts
+  - source_match:
+      alertname: 'PostgreSQLDown'
+    target_match_re:
+      alertname: 'PostgreSQLHighConnections|PostgreSQLSlowQueries'
