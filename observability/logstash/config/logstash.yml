@@ -1,0 +1,29 @@
+# Logstash Configuration for DocumentIulia.ro
+
+# HTTP API Settings
+http.host: "0.0.0.0"
+http.port: 9600
+
+# Pipeline Settings
+pipeline.workers: 2
+pipeline.batch.size: 125
+pipeline.batch.delay: 50
+
+# Queue Settings
+queue.type: memory
+queue.max_bytes: 1gb
+
+# Monitoring
+monitoring.enabled: false
+
+# Logging
+log.level: info
+log.format: json
+
+# Pipeline Configuration
+path.config: /usr/share/logstash/pipeline
+config.reload.automatic: true
+config.reload.interval: 10s
+
+# Performance Tuning
+pipeline.unsafe_shutdown: false

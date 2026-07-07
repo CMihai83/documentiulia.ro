@@ -1,0 +1,140 @@
+# Prometheus Configuration for DocumentIulia.ro Observability Stack
+
+global:
+  scrape_interval: 15s  # Default scrape interval
+  evaluation_interval: 15s  # Evaluate rules every 15 seconds
+  scrape_timeout: 10s
+
+  external_labels:
+    cluster: 'documentiulia-production'
+    environment: 'production'
+
+# Alertmanager configuration (optional)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets:
+#             - alertmanager:9093
+
+# Rule files (for alerting rules)
+rule_files:
+  # - "rules/*.yml"
+
+# Scrape configurations
+scrape_configs:
+  #############################################################################
+  # PROMETHEUS SELF-MONITORING
+  #############################################################################
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          service: 'prometheus'
+
+  #############################################################################
+  # NEST.JS BACKEND APPLICATION
+  #############################################################################
+  - job_name: 'documentiulia-backend'
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['host.docker.internal:3001']  # NestJS backend
+        labels:
+          service: 'backend'
+          app: 'documentiulia'
+
+  #############################################################################
+  # NEXT.JS FRONTEND APPLICATION
+  #############################################################################
+  - job_name: 'documentiulia-frontend'
+    metrics_path: '/api/metrics'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['host.docker.internal:3000']  # Next.js frontend
+        labels:
+          service: 'frontend'
+          app: 'documentiulia'
+
+  #############################################################################
+  # JAEGER TRACING METRICS
+  #############################################################################
+  - job_name: 'jaeger'
+    static_configs:
+      - targets: ['jaeger:14269']
+        labels:
+          service: 'jaeger'
+
+  #############################################################################
+  # ELASTICSEARCH METRICS
+  #############################################################################
+  - job_name: 'elasticsearch'
+    metrics_path: '/_prometheus/metrics'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['elasticsearch:9200']
+        labels:
+          service: 'elasticsearch'
+
+  #############################################################################
+  # LOGSTASH METRICS
+  #############################################################################
+  - job_name: 'logstash'
+    metrics_path: '/_node/stats'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['logstash:9600']
+        labels:
+          service: 'logstash'
+
+  #############################################################################
+  # REDIS METRICS (requires redis_exporter)
+  #############################################################################
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+        labels:
+          service: 'redis'
+
+  #############################################################################
+  # POSTGRESQL METRICS (requires postgres_exporter)
+  #############################################################################
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres:5432']
+        labels:
+          service: 'postgres'
+
+  #############################################################################
+  # NODE EXPORTER (System Metrics)
+  #############################################################################
+  # - job_name: 'node'
+  #   static_configs:
+  #     - targets: ['node-exporter:9100']
+  #       labels:
+  #         service: 'node-exporter'
+
+  #############################################################################
+  # BLACKBOX EXPORTER (Endpoint Health Checks)
+  #############################################################################
+  # - job_name: 'blackbox'
+  #   metrics_path: /probe
+  #   params:
+  #     module: [http_2xx]
+  #   static_configs:
+  #     - targets:
+  #         - https://documentIulia.ro
+  #         - https://api.documentIulia.ro/health
+  #   relabel_configs:
+  #     - source_labels: [__address__]
+  #       target_label: __param_target
+  #     - source_labels: [__param_target]
+  #       target_label: instance
+  #     - target_label: __address__
+  #       replacement: blackbox-exporter:9115
+
+# Storage configuration
+storage:
+  tsdb:
+    path: /prometheus
+    retention.time: 30d  # Keep metrics for 30 days
+    retention.size: 10GB  # Or until 10GB is reached

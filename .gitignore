@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+
+# secrets & local env (keep *.example templates tracked)
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+
+# build output
+dist/
+.next/
+out/
+build/
+coverage/
+
+# logs & runtime
+*.log
+logs/
+*.pid
+
+# local tooling / editor
+.claude/
+.vscode-server/
+.DS_Store
+
+# archives & db backups
+*.tar.gz
+backups/
+
+# generated review artifacts (bulky, not source)
+reviews/
+
+# CI workflow — commit separately with a workflow-scoped token
+.github/workflows/ci.yml

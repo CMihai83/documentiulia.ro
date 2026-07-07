@@ -11,11 +11,13 @@ import { AnomalyDetectionService } from './anomaly-detection.service';
 import { AnomalyDetectionController } from './anomaly-detection.controller';
 import { DashboardAnalyticsService } from './dashboard-analytics.service';
 import { DashboardAnalyticsController } from './dashboard-analytics.controller';
+import { ValueMetricsController } from './value-metrics.controller';
 import { AnalyticsController } from './analytics.controller';
 import { PrismaModule } from '../prisma/prisma.module';
+import { CommonModule } from '../common/common.module';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [PrismaModule, CommonModule],
   controllers: [
     AnalyticsController,
     PredictiveAnalyticsController,
@@ -24,6 +26,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     ForecastingController,
     AnomalyDetectionController,
     DashboardAnalyticsController,
+    ValueMetricsController,
   ],
   providers: [
     PredictiveAnalyticsService,

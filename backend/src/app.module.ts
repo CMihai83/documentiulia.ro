@@ -58,6 +58,7 @@ import { ContentModule } from './content/content.module';
 import { WarehouseModule } from './warehouse/warehouse.module';
 import { SubscriptionModule } from './subscription/subscription.module';
 import { ConsultingModule } from './consulting/consulting.module';
+import { ControllingModule } from './controlling/controlling.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { HelpModule } from './help/help.module';
 import { BackupModule } from './backup/backup.module';
@@ -212,6 +213,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     ClientPortalModule,
     SubscriptionModule,
     ConsultingModule,
+    ControllingModule,
     OnboardingModule,
     DeveloperModule,
     AdminModule,

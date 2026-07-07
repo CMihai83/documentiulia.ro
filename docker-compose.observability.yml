@@ -1,0 +1,315 @@
+version: '3.8'
+
+# DocumentIulia.ro Observability Stack
+# ELK (Elasticsearch, Logstash, Kibana) + Jaeger + Redis + PostgreSQL
+#
+# Services:
+# - elasticsearch: Log storage and search
+# - logstash: Log aggregation and processing
+# - kibana: Log visualization and dashboards
+# - jaeger-all-in-one: Distributed tracing
+# - redis: Caching and rate limiting
+# - postgres: Primary database
+# - postgres-backup: Automated backup service
+#
+# Usage:
+#   docker-compose -f docker-compose.observability.yml up -d
+#   docker-compose -f docker-compose.observability.yml logs -f
+#   docker-compose -f docker-compose.observability.yml down
+
+services:
+  #############################################################################
+  # ELASTICSEARCH - Log Storage and Search Engine
+  #############################################################################
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+    container_name: documentiulia-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false  # Disable for development
+      - xpack.security.enrollment.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - observability
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 1g
+    cpus: 1.0
+
+  #############################################################################
+  # LOGSTASH - Log Aggregation and Processing
+  #############################################################################
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.11.3
+    container_name: documentiulia-logstash
+    ports:
+      - "5044:5044"  # Beats input
+      - "5000:5000/tcp"  # TCP input
+      - "5000:5000/udp"  # UDP input
+      - "9600:9600"  # Monitoring API
+    volumes:
+      - ./observability/logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./observability/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - logstash-data:/usr/share/logstash/data
+    environment:
+      - LS_JAVA_OPTS=-Xms256m -Xmx256m
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    networks:
+      - observability
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9600/_node/stats || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.5
+
+  #############################################################################
+  # KIBANA - Log Visualization and Dashboards
+  #############################################################################
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.3
+    container_name: documentiulia-kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - SERVER_NAME=documentiulia-kibana
+      - SERVER_HOST=0.0.0.0
+    volumes:
+      - kibana-data:/usr/share/kibana/data
+    networks:
+      - observability
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5601/api/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.5
+
+  #############################################################################
+  # JAEGER - Distributed Tracing
+  #############################################################################
+  jaeger:
+    image: jaegertracing/all-in-one:1.52
+    container_name: documentiulia-jaeger
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "5775:5775/udp"  # Zipkin compact Thrift
+      - "6831:6831/udp"  # Jaeger compact Thrift
+      - "6832:6832/udp"  # Jaeger binary Thrift
+      - "5778:5778"      # Serve configs
+      - "16686:16686"    # Jaeger UI
+      - "14250:14250"    # Jaeger gRPC
+      - "14268:14268"    # Jaeger HTTP
+      - "14269:14269"    # Jaeger health check
+      - "9411:9411"      # Zipkin compatible endpoint
+      - "4317:4317"      # OTLP gRPC
+      - "4318:4318"      # OTLP HTTP
+    networks:
+      - observability
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:14269/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.5
+
+  #############################################################################
+  # REDIS - Caching and Rate Limiting
+  #############################################################################
+  redis:
+    image: redis:7-alpine
+    container_name: documentiulia-redis
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - observability
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.25
+
+  #############################################################################
+  # POSTGRESQL - Primary Database
+  #############################################################################
+  postgres:
+    image: postgres:16-alpine
+    container_name: documentiulia-postgres
+    environment:
+      - POSTGRES_DB=documentiulia
+      - POSTGRES_USER=documentiulia_user
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-secure_password_change_me}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./observability/postgres/init:/docker-entrypoint-initdb.d:ro
+      - postgres-backups:/backups
+    networks:
+      - observability
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U documentiulia_user -d documentiulia"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 1g
+    cpus: 1.0
+    shm_size: 256mb
+
+  #############################################################################
+  # POSTGRES BACKUP - Automated Daily Backups
+  #############################################################################
+  postgres-backup:
+    image: prodrigestivill/postgres-backup-local:16-alpine
+    container_name: documentiulia-postgres-backup
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=documentiulia
+      - POSTGRES_USER=documentiulia_user
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-secure_password_change_me}
+      - SCHEDULE=@daily  # Run at midnight every day
+      - BACKUP_KEEP_DAYS=30  # Keep 30 days of backups
+      - BACKUP_KEEP_WEEKS=8  # Keep 8 weekly backups
+      - BACKUP_KEEP_MONTHS=12  # Keep 12 monthly backups
+      - HEALTHCHECK_PORT=8080
+    volumes:
+      - postgres-backups:/backups
+    networks:
+      - observability
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.25
+
+  #############################################################################
+  # PROMETHEUS - Metrics Collection (Optional)
+  #############################################################################
+  prometheus:
+    image: prom/prometheus:v2.48.1
+    container_name: documentiulia-prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    networks:
+      - observability
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.5
+
+  #############################################################################
+  # GRAFANA - Metrics Visualization
+  #############################################################################
+  grafana:
+    image: grafana/grafana:10.2.3
+    container_name: documentiulia-grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin_change_me}
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./observability/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./observability/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    networks:
+      - observability
+    depends_on:
+      - prometheus
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.5
+
+#############################################################################
+# NETWORKS
+#############################################################################
+networks:
+  observability:
+    driver: bridge
+    name: documentiulia-observability
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
+
+#############################################################################
+# VOLUMES
+#############################################################################
+volumes:
+  elasticsearch-data:
+    name: documentiulia-elasticsearch-data
+    driver: local
+  logstash-data:
+    name: documentiulia-logstash-data
+    driver: local
+  kibana-data:
+    name: documentiulia-kibana-data
+    driver: local
+  redis-data:
+    name: documentiulia-redis-data
+    driver: local
+  postgres-data:
+    name: documentiulia-postgres-data
+    driver: local
+  postgres-backups:
+    name: documentiulia-postgres-backups
+    driver: local
+  prometheus-data:
+    name: documentiulia-prometheus-data
+    driver: local
+  grafana-data:
+    name: documentiulia-grafana-data
+    driver: local

@@ -1,6 +1,7 @@
 import { Module, Global } from '@nestjs/common';
 import { AnafUtilsService } from './anaf-utils.service';
 import { PerformanceService } from './services/performance.service';
+import { ValueMetricsService } from './services/value-metrics.service';
 import { PerformanceController } from './controllers/performance.controller';
 import { MetricsInterceptor } from './interceptors/metrics.interceptor';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
@@ -18,6 +19,7 @@ import { RateLimitGuard, RateLimitService } from './guards/rate-limit.guard';
   providers: [
     AnafUtilsService,
     PerformanceService,
+    ValueMetricsService,
     MetricsInterceptor,
     LoggingInterceptor,
     AuditInterceptor,
@@ -31,6 +33,7 @@ import { RateLimitGuard, RateLimitService } from './guards/rate-limit.guard';
   exports: [
     AnafUtilsService,
     PerformanceService,
+    ValueMetricsService,
     MetricsInterceptor,
     LoggingInterceptor,
     AuditInterceptor,

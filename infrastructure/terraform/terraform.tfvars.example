@@ -1,0 +1,12 @@
+# DocumentIulia.ro - Terraform Variables
+# Copy to terraform.tfvars and fill in values
+
+hcloud_token = "your_hetzner_cloud_api_token"
+
+environment = "production"
+
+location = "nbg1"  # Nuremberg - closest to Romania
+
+domain = "documentiulia.ro"
+
+ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAB... your-key@documentiulia"
