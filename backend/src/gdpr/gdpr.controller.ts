@@ -11,9 +11,9 @@ import {
   HttpCode,
   HttpStatus,
   Res,
-  StreamableFile,
   UseGuards,
   Req,
+  ForbiddenException,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { Response, Request } from 'express';
@@ -36,13 +36,33 @@ import {
 export class GdprController {
   constructor(private readonly gdprService: GdprService) {}
 
+  /**
+   * Identity comes from the JWT, never from the client. A non-admin always acts
+   * as themselves; an ADMIN may act on behalf of another user by passing
+   * ?userId= (the legitimate DPO/admin fulfilment flow).
+   */
+  private effectiveUserId(req: Request, requestedUserId?: string): string {
+    const authUser: any = (req as any).user;
+    const selfId = authUser?.id || authUser?.sub;
+    if (!requestedUserId || requestedUserId === selfId) return selfId;
+    if (authUser?.role === UserRole.ADMIN) return requestedUserId;
+    throw new ForbiddenException('You may only access your own data');
+  }
+
+  private authUserId(req: Request): string {
+    const authUser: any = (req as any).user;
+    return authUser?.id || authUser?.sub;
+  }
+
   @Get('export')
   @ApiOperation({ summary: 'Export all user data (GDPR Article 20 - Data Portability)' })
   @ApiResponse({ status: 200, description: 'User data exported successfully' })
   async exportUserData(
-    @Query('userId') userId: string,
+    @Req() req: Request,
     @Res() res: Response,
+    @Query('userId') requestedUserId?: string,
   ) {
+    const userId = this.effectiveUserId(req, requestedUserId);
     const data = await this.gdprService.exportUserData(userId);
 
     res.set({
@@ -57,33 +77,34 @@ export class GdprController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete all user data (GDPR Article 17 - Right to Erasure)' })
   @ApiResponse({ status: 200, description: 'User data deleted successfully' })
-  async deleteUserData(@Query('userId') userId: string) {
-    return this.gdprService.deleteUserData(userId);
+  async deleteUserData(@Req() req: Request, @Query('userId') requestedUserId?: string) {
+    return this.gdprService.deleteUserData(this.effectiveUserId(req, requestedUserId));
   }
 
   @Get('consent-log')
   @ApiOperation({ summary: 'Get user consent history' })
   @ApiResponse({ status: 200, description: 'Consent log retrieved' })
-  async getConsentLog(@Query('userId') userId: string) {
-    return this.gdprService.getConsentLog(userId);
+  async getConsentLog(@Req() req: Request, @Query('userId') requestedUserId?: string) {
+    return this.gdprService.getConsentLog(this.effectiveUserId(req, requestedUserId));
   }
 
   @Post('consent')
   @ApiOperation({ summary: 'Record user consent' })
   @ApiResponse({ status: 201, description: 'Consent recorded' })
   async recordConsent(
-    @Query('userId') userId: string,
+    @Req() req: Request,
     @Query('purpose') purpose: string,
     @Query('granted') granted: boolean,
+    @Query('userId') requestedUserId?: string,
   ) {
-    return this.gdprService.recordConsent(userId, purpose, granted);
+    return this.gdprService.recordConsent(this.effectiveUserId(req, requestedUserId), purpose, granted);
   }
 
   @Get('data-inventory')
   @ApiOperation({ summary: 'Get data inventory for user' })
   @ApiResponse({ status: 200, description: 'Data inventory retrieved' })
-  async getDataInventory(@Query('userId') userId: string) {
-    return this.gdprService.getDataInventory(userId);
+  async getDataInventory(@Req() req: Request, @Query('userId') requestedUserId?: string) {
+    return this.gdprService.getDataInventory(this.effectiveUserId(req, requestedUserId));
   }
 
   // DSR Request Endpoints
@@ -93,11 +114,11 @@ export class GdprController {
   @ApiResponse({ status: 201, description: 'DSR request created' })
   async createDsrRequest(
     @Body() dto: CreateDsrRequestDto,
-    @Query('userId') userId: string,
     @Req() req: Request,
+    @Query('userId') requestedUserId?: string,
   ) {
-    const ipAddress = req.ip || req.headers['x-forwarded-for'] as string;
-    return this.gdprService.createDsrRequest(userId, dto, ipAddress);
+    const ipAddress = req.ip || (req.headers['x-forwarded-for'] as string);
+    return this.gdprService.createDsrRequest(this.effectiveUserId(req, requestedUserId), dto, ipAddress);
   }
 
   @Get('dsr-requests')
@@ -105,18 +126,29 @@ export class GdprController {
   @ApiOperation({ summary: 'Get DSR requests' })
   @ApiResponse({ status: 200, description: 'DSR requests retrieved' })
   async getDsrRequests(
-    @Query('userId') userId?: string,
+    @Req() req: Request,
+    @Query('userId') requestedUserId?: string,
     @Query('status') status?: DsrStatus,
   ) {
-    return this.gdprService.getDsrRequests(userId, status);
+    const authUser: any = (req as any).user;
+    // Admins may list all requests (no userId filter); users only their own.
+    if (authUser?.role === UserRole.ADMIN) {
+      return this.gdprService.getDsrRequests(requestedUserId, status);
+    }
+    return this.gdprService.getDsrRequests(this.authUserId(req), status);
   }
 
   @Get('dsr-requests/:id')
   @Roles(UserRole.USER, UserRole.ADMIN)
   @ApiOperation({ summary: 'Get a specific DSR request' })
   @ApiResponse({ status: 200, description: 'DSR request retrieved' })
-  async getDsrRequest(@Param('id') id: string) {
-    return this.gdprService.getDsrRequest(id);
+  async getDsrRequest(@Param('id') id: string, @Req() req: Request) {
+    const request = await this.gdprService.getDsrRequest(id);
+    const authUser: any = (req as any).user;
+    if (authUser?.role !== UserRole.ADMIN && request?.userId !== this.authUserId(req)) {
+      throw new ForbiddenException('You may only access your own requests');
+    }
+    return request;
   }
 
   @Patch('dsr-requests/:id')
@@ -126,9 +158,10 @@ export class GdprController {
   async updateDsrRequest(
     @Param('id') id: string,
     @Body() dto: UpdateDsrRequestDto,
-    @Query('adminId') adminId: string,
+    @Req() req: Request,
   ) {
-    return this.gdprService.updateDsrRequest(id, dto, adminId);
+    // adminId comes from the authenticated admin's JWT, never the client.
+    return this.gdprService.updateDsrRequest(id, dto, this.authUserId(req));
   }
 
   // Consent Management Endpoints
@@ -138,19 +171,19 @@ export class GdprController {
   @ApiResponse({ status: 200, description: 'Consent updated' })
   async updateConsent(
     @Body() dto: UpdateConsentDto,
-    @Query('userId') userId: string,
     @Req() req: Request,
+    @Query('userId') requestedUserId?: string,
   ) {
-    const ipAddress = req.ip || req.headers['x-forwarded-for'] as string;
+    const ipAddress = req.ip || (req.headers['x-forwarded-for'] as string);
     const userAgent = req.headers['user-agent'];
-    return this.gdprService.updateConsent(userId, dto, ipAddress, userAgent);
+    return this.gdprService.updateConsent(this.effectiveUserId(req, requestedUserId), dto, ipAddress, userAgent);
   }
 
   @Get('consents')
   @Roles(UserRole.USER, UserRole.ADMIN)
   @ApiOperation({ summary: 'Get user consents' })
   @ApiResponse({ status: 200, description: 'Consents retrieved' })
-  async getUserConsents(@Query('userId') userId: string) {
-    return this.gdprService.getUserConsents(userId);
+  async getUserConsents(@Req() req: Request, @Query('userId') requestedUserId?: string) {
+    return this.gdprService.getUserConsents(this.effectiveUserId(req, requestedUserId));
   }
 }
