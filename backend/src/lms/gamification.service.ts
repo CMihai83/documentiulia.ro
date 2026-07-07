@@ -452,6 +452,11 @@ export class GamificationService {
 
   private initializeBadges(): void {
     const badgeDefinitions: Badge[] = [
+      // SIM-12 — behavioral badges from the business simulator
+      { id: 'sim-cash-buffer', name: 'Cash Cushion', nameRo: 'Rezervă de Cash', description: 'Held 3+ months of runway going into a downturn', descriptionRo: 'Ai păstrat rezervă de 3+ luni înainte de o recesiune', icon: '💰', category: 'SPECIAL', rarity: 'UNCOMMON', points: 150, requirements: [{ type: 'sim_cash_buffer', target: 1 }], secret: false },
+      { id: 'sim-delegator', name: 'The Delegator', nameRo: 'Delegatorul', description: 'Delegated 3+ operational classes to free strategic focus', descriptionRo: 'Ai delegat 3+ activități operaționale pentru a elibera focusul strategic', icon: '🤝', category: 'SPECIAL', rarity: 'UNCOMMON', points: 150, requirements: [{ type: 'sim_delegate', target: 3 }], secret: false },
+      { id: 'sim-survivor', name: 'Recession Survivor', nameRo: 'Supraviețuitor de Recesiune', description: 'Finished a run through a recession with positive equity', descriptionRo: 'Ai încheiat o simulare printr-o recesiune cu capital pozitiv', icon: '🛡️', category: 'SPECIAL', rarity: 'RARE', points: 300, requirements: [{ type: 'sim_survivor', target: 1 }], secret: false },
+
       // Completion badges
       {
         id: 'first-lesson',

@@ -105,6 +105,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/vat', icon: Calculator, labelKey: 'vat', defaultLabel: 'Rapoarte TVA' },
       { href: '/dashboard/saft', icon: FileSpreadsheet, labelKey: 'saft', defaultLabel: 'SAF-T D406' },
       { href: '/dashboard/reports', icon: PieChart, labelKey: 'reports', defaultLabel: 'Rapoarte' },
+      { href: '/dashboard/business-case', icon: FileText, labelKey: 'businessCase', defaultLabel: 'Business Case' },
     ],
   },
   {
@@ -191,6 +192,7 @@ const minTierByHref: Record<string, (typeof TIER_ORDER)[number]> = {
   '/dashboard/freelancer': 'PRO',
   '/dashboard/consulting': 'PRO',
   '/dashboard/services/templates': 'PRO',
+  '/dashboard/business-case': 'PRO',
   '/dashboard/controlling': 'BUSINESS',
   '/dashboard/data-migration': 'BUSINESS',
   '/dashboard/developer': 'BUSINESS',

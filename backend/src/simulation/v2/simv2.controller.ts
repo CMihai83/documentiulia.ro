@@ -110,4 +110,10 @@ export class SimV2Controller {
   end(@Request() req: any, @Param('id') id: string) {
     return this.sim.setStatus(this.userId(req), id, 'ended');
   }
+
+  /** SIM-8 — rewind a practice run to an earlier tick (scored runs refuse). */
+  @Post('runs/:id/rewind')
+  rewind(@Request() req: any, @Param('id') id: string, @Body() body: { toTick: number }) {
+    return this.sim.rewind(this.userId(req), id, body?.toTick);
+  }
 }

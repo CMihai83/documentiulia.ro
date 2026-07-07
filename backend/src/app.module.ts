@@ -1,3 +1,4 @@
+import { BusinessCaseModule } from './business-case/business-case.module';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
@@ -122,6 +123,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
 
 @Module({
   imports: [
+    BusinessCaseModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
