@@ -1,3 +1,7 @@
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import {
   Controller,
   Get,
@@ -29,7 +33,8 @@ import {
 // Course management, enrollments, progress tracking, assessments, certificates, gamification
 
 @Controller('lms')
-@UseGuards(ThrottlerGuard)
+@UseGuards(ThrottlerGuard, JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
 export class LMSController {
   constructor(private readonly lmsService: LMSService) {}
 

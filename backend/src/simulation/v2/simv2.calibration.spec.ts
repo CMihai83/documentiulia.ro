@@ -21,13 +21,15 @@ const guard = (allowed: boolean, scrubSpy?: { called: boolean }) => ({
 }) as any;
 
 describe('SIM-9 calibration (Art 28(10) gate)', () => {
-  it('falls back to the preset and touches NO tenant data when unauthorised', async () => {
+  it('mirror mode is service delivery: calibrates from OWN org data even without training authorisation', async () => {
     const spy = { touched: false };
-    const svc = new SimV2CalibrationService(makePrisma(spy), guard(false));
+    const scrub = { called: false };
+    const svc = new SimV2CalibrationService(makePrisma(spy), guard(false, scrub));
     const r = await svc.calibrate('u1', 'org1', 'services', 123);
-    expect(r.mirror).toBe(false);
-    expect(r.source).toBe('preset');
-    expect(spy.touched).toBe(false); // no ERP query ran
+    expect(r.mirror).toBe(true);
+    expect(r.source).toBe('erp');
+    expect(spy.touched).toBe(true); // own-org ERP aggregates ARE read (service delivery)
+    expect(scrub.called).toBe(true); // person-level fields still scrubbed
   });
 
   it('falls back to preset when there is no organisation context', async () => {

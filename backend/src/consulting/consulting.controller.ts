@@ -13,6 +13,9 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import {
   ConsultingService,
   ConsultingPackage,
@@ -22,7 +25,6 @@ import {
   AvailabilitySlot,
   ConsultingServiceType,
 } from './consulting.service';
-import { Tier } from '@prisma/client';
 
 // DTOs
 class CreateBookingDto {
@@ -50,6 +52,8 @@ class SubmitFeedbackDto {
   wouldRecommend?: boolean;
 }
 
+@UseGuards(JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
 @Controller('consulting')
 export class ConsultingController {
   constructor(private readonly consultingService: ConsultingService) {}

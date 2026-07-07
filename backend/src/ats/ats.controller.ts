@@ -1,3 +1,7 @@
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import {
   Controller,
   Get,
@@ -28,7 +32,8 @@ import {
 // API endpoints for recruitment management with AI-powered features
 
 @Controller('ats')
-@UseGuards(ThrottlerGuard)
+@UseGuards(ThrottlerGuard, JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
 export class ATSController {
   constructor(private readonly atsService: ATSService) {}
 

@@ -1,5 +1,8 @@
 import { Controller, Get, Post, Param, Query, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import { GamificationService, LeaderboardPeriod } from './gamification.service';
 
 /**
@@ -16,7 +19,8 @@ export class GamificationController {
   }
 
   @Get('points')
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
   getPoints(@Request() req: any) {
     return this.gamification.getUserPoints(this.userId(req));
   }
