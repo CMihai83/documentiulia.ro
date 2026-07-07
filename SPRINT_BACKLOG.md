@@ -2453,3 +2453,18 @@ For each page, verify:
 6. [ ] Loading states work
 7. [ ] Success/failure feedback to user
 
+
+---
+
+## Horizon 2 — Business Simulator v2 & Expert-Growth Platform (added 2026-07-07)
+
+Full plan + research: `docs/business-simulator-v2/` (see `README.md`).
+
+Five interlocking epics (draft for review, not yet started):
+- **SIM** — Simulator v2: granular day/week/month tick engine, Focus/opportunity-cost mechanic, deferred consequences, macro-cycle + event system, 5 feedback loops, real-ERP calibration (digital twin), persisted gamification. *(enhances existing `src/simulation/`)*
+- **BC** — Business-Case & RFQ Studio: questionnaire → deterministic financial engine (NPV/IRR/MIRR/Monte-Carlo/RFQ) → Excel + PPTX + PDF per scenario (multi-year, investment, RFQ).
+- **FND** — Funds & Financing Advisory: 2025-26 EU-grants/financing catalog + 7-filter matching engine + de minimis ledger + eligibility wizard + dossier + durability tracker.
+- **EXP** — Expertise & Mastery + Marketplace: ESCO skills → gap analysis → mastery path → Open Badges 3.0 verifiable credentials → verified expert profile → HR-marketplace matching → career coaching → expert-for-hire.
+- **AI** — Self-Evolution & Autonomous Research: CORAL evolves sim scenarios; researchclaw/Feynman refresh funds/market data + author cited business-case research. *(Xagent excluded — trading-only.)*
+
+Prerequisite **Foundation sprint S-47** migrates the in-memory LMS / gamification / ATS+Freelancer matchers to Prisma and adds doc-gen deps. Sequencing S-47…S-59 (~330 SP). Awaiting approval + epic-priority decision.
