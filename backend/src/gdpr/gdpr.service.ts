@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { randomBytes } from 'crypto';
 import { PrismaService } from '../prisma/prisma.service';
+import { AuditChainService } from '../audit/audit-chain.service';
 import {
   DsrType,
   DsrStatus,
@@ -32,7 +34,10 @@ export interface DataInventory {
 
 @Injectable()
 export class GdprService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private auditChain: AuditChainService,
+  ) {}
 
   // DSR Request Management
   async createDsrRequest(
@@ -67,8 +72,7 @@ export class GdprService {
     });
 
     // Log audit trail
-    await this.prisma.auditLog.create({
-      data: {
+    await this.auditChain.appendAudit({
         userId,
         action: 'DSR_REQUEST_CREATED',
         entity: 'DsrRequest',
@@ -78,8 +82,7 @@ export class GdprService {
           reason: dto.reason,
         },
         ipAddress,
-      },
-    });
+      });
 
     return this.mapDsrRequestToDto(request);
   }
@@ -152,8 +155,7 @@ export class GdprService {
     });
 
     // Log audit trail
-    await this.prisma.auditLog.create({
-      data: {
+    await this.auditChain.appendAudit({
         userId: adminId,
         action: 'DSR_REQUEST_UPDATED',
         entity: 'DsrRequest',
@@ -162,12 +164,11 @@ export class GdprService {
           status: dto.status,
           previousStatus: request.status,
         },
-      },
-    });
+      });
 
     // If approved and type is deletion, execute deletion
     if (dto.status === DsrStatus.APPROVED && request.type === DsrType.DATA_DELETION) {
-      await this.deleteUserData(request.userId);
+      await this.deleteUserData(request.userId, request.id);
     }
 
     return this.mapDsrRequestToDto(updated);
@@ -221,8 +222,7 @@ export class GdprService {
     });
 
     // Log audit trail
-    await this.prisma.auditLog.create({
-      data: {
+    await this.auditChain.appendAudit({
         userId,
         action: 'CONSENT_UPDATED',
         entity: 'Consent',
@@ -232,8 +232,7 @@ export class GdprService {
           granted: dto.granted,
         },
         ipAddress,
-      },
-    });
+      });
 
     return {
       id: consent.id,
@@ -267,15 +266,12 @@ export class GdprService {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
       include: {
-        invoices: true,
-        employees: {
-          include: {
-            payrolls: true,
-          },
-        },
-        documents: true,
-        vatReports: true,
-        saftReports: true,
+        // Restricted (Art. 18 archived) records are excluded from the portability export.
+        invoices: { where: { restrictedAt: null } },
+        employees: { include: { payrolls: { where: { restrictedAt: null } } } },
+        documents: { where: { restrictedAt: null } },
+        vatReports: { where: { restrictedAt: null } },
+        saftReports: { where: { restrictedAt: null } },
         aiQueries: true,
         auditLogs: true,
       },
@@ -309,55 +305,111 @@ export class GdprService {
         version: '1.0',
         charset: 'UTF-8',
       },
+      note: 'Records restricted under a prior erasure request (Art. 18) are excluded. Copies of invoices already submitted to ANAF via e-Factura remain under ANAF control and are outside this export.',
     };
   }
 
-  async deleteUserData(userId: string) {
+  /**
+   * GI-DSR-1 — retention-aware erasure (GDPR Art. 17 with the Art. 17(3)(b) legal-obligation carve-out).
+   *
+   * Decision matrix:
+   *  - No retention duty (AI queries)          → hard delete.
+   *  - Retention-bound (invoices, payroll, VAT/SAF-T, accounting docs) → RESTRICT
+   *    (Art. 18 archive tier: set restrictedAt/reason), unless a legal hold applies → skip + report.
+   *  - The person's records                     → anonymize person-identifying fields in place.
+   *  - The user account                         → anonymize in place (FK anchor; login disabled), never deleted.
+   *  - Audit log                                → NEVER touched (accountability, Art. 5(2)).
+   */
+  async deleteUserData(userId: string, requestId?: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
-      include: {
-        employees: true,
-      },
+      include: { employees: true },
     });
-
     if (!user) {
       throw new NotFoundException('User not found');
     }
 
-    // Get employee IDs for the user
+    const RESTRICTION_REASON = 'GDPR Art. 17 erasure request — retained under Art. 17(3)(b) legal obligation (Romanian tax/accounting retention)';
+    const shortId = randomBytes(4).toString('hex');
+    const anonEmail = `erased-${shortId}@anonymized.local`;
     const employeeIds = user.employees.map((e) => e.id);
+    const report: Record<string, any> = { deleted: {}, restricted: {}, anonymized: {}, held: {} };
 
-    // Delete related data first (cascade)
-    await this.prisma.$transaction([
-      // Delete payrolls for employees
-      this.prisma.payroll.deleteMany({
-        where: { employeeId: { in: employeeIds } },
-      }),
-      // Delete employees
-      this.prisma.employee.deleteMany({ where: { userId } }),
-      // Delete documents
-      this.prisma.document.deleteMany({ where: { userId } }),
-      // Delete invoices
-      this.prisma.invoice.deleteMany({ where: { userId } }),
-      // Delete VAT reports
-      this.prisma.vATReport.deleteMany({ where: { userId } }),
-      // Delete SAFT reports
-      this.prisma.sAFTReport.deleteMany({ where: { userId } }),
-      // Delete AI queries
-      this.prisma.aIQuery.deleteMany({ where: { userId } }),
-      // Delete audit logs
-      this.prisma.auditLog.deleteMany({ where: { userId } }),
-      // Finally delete user
-      this.prisma.user.delete({ where: { id: userId } }),
-    ]);
+    await this.prisma.$transaction(async (tx) => {
+      // (a) No retention duty → hard delete
+      report.deleted.aiQueries = (await tx.aIQuery.deleteMany({ where: { userId } })).count;
+
+      // (b) Retention-bound → restrict, honouring legal holds. Held rows are left untouched and reported.
+      for (const [name, model] of [
+        ['invoices', tx.invoice],
+        ['documents', tx.document],
+        ['vatReports', tx.vATReport],
+        ['saftReports', tx.sAFTReport],
+      ] as const) {
+        const held = await (model as any).count({ where: { userId, legalHold: true } });
+        if (held > 0) report.held[name] = held;
+        report.restricted[name] = (await (model as any).updateMany({
+          where: { userId, legalHold: false, restrictedAt: null },
+          data: { restrictedAt: new Date(), restrictionReason: RESTRICTION_REASON },
+        })).count;
+      }
+      // Payroll is keyed by employeeId
+      if (employeeIds.length) {
+        const heldPayroll = await tx.payroll.count({ where: { employeeId: { in: employeeIds }, legalHold: true } });
+        if (heldPayroll > 0) report.held.payrolls = heldPayroll;
+        report.restricted.payrolls = (await tx.payroll.updateMany({
+          where: { employeeId: { in: employeeIds }, legalHold: false, restrictedAt: null },
+          data: { restrictedAt: new Date(), restrictionReason: RESTRICTION_REASON },
+        })).count;
+      }
+
+      // (c) Anonymize person-identifying fields on retained records (keep legally-required fields).
+      //     Employees: name + CNP are payroll-required → keep; email/phone → anonymize.
+      report.anonymized.employees = (await tx.employee.updateMany({
+        where: { userId, anonymizedAt: null },
+        data: { email: anonEmail, phone: null, anonymizedAt: new Date() },
+      })).count;
+      //     Partners: legal name + CUI + address stay (invoice validity); contact fields → anonymize.
+      report.anonymized.partners = (await tx.partner.updateMany({
+        where: { userId, anonymizedAt: null },
+        data: { email: null, phone: null, contactPerson: null, bankAccount: null, anonymizedAt: new Date() },
+      })).count;
+
+      // (d) The user account → anonymize in place, disable login. Never deleted.
+      await tx.user.update({
+        where: { id: userId },
+        data: {
+          email: anonEmail,
+          name: 'Erased User',
+          address: null,
+          password: randomBytes(24).toString('hex'), // unusable credential
+          anonymizedAt: new Date(),
+        },
+      });
+      report.anonymized.user = 1;
+    });
+
+    // (e) Accountability audit — appended to the immutable chain, never deleting prior entries.
+    await this.auditChain.appendAudit({
+      userId,
+      action: 'GDPR_ERASURE',
+      entity: 'User',
+      entityId: userId,
+      details: { erasureReport: report, requestId: requestId ?? null },
+    });
+
+    if (requestId) {
+      await this.prisma.dSRRequest.update({ where: { id: requestId }, data: { erasureReport: report as any } }).catch(() => undefined);
+    }
 
     return {
       success: true,
-      message: 'All user data deleted successfully',
-      gdprArticle: 'Article 17 - Right to Erasure',
-      deletedAt: new Date().toISOString(),
+      message: 'Erasure processed: non-retained data deleted; retention-bound records restricted; identity anonymized.',
+      gdprArticle: 'Article 17 - Right to Erasure (with Article 17(3)(b) legal-obligation retention)',
+      processedAt: new Date().toISOString(),
       affectedUserId: userId,
-      note: 'Some data may be retained for legal compliance (e.g., tax records for 10 years per Romanian law)',
+      report,
+      note: 'Records under Romanian tax/accounting retention (invoices, payroll, VAT/SAF-T) are restricted, not deleted. Copies already submitted to ANAF (e-Factura XML) cannot be erased and remain under ANAF control.',
     };
   }
 
