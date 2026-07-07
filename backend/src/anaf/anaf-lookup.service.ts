@@ -39,7 +39,7 @@ export interface AnafLookupResult {
 export class AnafLookupService {
   private readonly logger = new Logger(AnafLookupService.name);
   private readonly apiUrl =
-    process.env.ANAF_CUI_API_URL || 'https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva';
+    process.env.ANAF_CUI_API_URL || 'https://webservicesp.anaf.ro/api/PlatitorTvaRest/v9/tva';
   private readonly cacheTtlSeconds = 24 * 60 * 60;
   private readonly maxRetries = 3;
   private readonly maxPerSecond = 10;
@@ -120,14 +120,17 @@ export class AnafLookupService {
         const d = resp.data?.found?.[0];
         let result: AnafLookupResult;
         if (d) {
-          const inactive = d.statusInactivi === true;
+          // ANAF v9 nests data under sub-objects
+          const dg = d.date_generale ?? {};
+          const inactive =
+            d.stare_inactiv?.statusInactivi === true || /RADIAT/i.test(dg.stare_inregistrare ?? '');
           const company: AnafCompany = {
             cui: clean,
-            name: d.denumire,
-            address: d.adresa,
-            vatPayer: d.scpTVA === true,
-            splitVat: d.statusSplitTVA === true,
-            eFacturaEnrolled: d.statusRO_e_Factura === true,
+            name: dg.denumire,
+            address: dg.adresa,
+            vatPayer: d.inregistrare_scop_Tva?.scpTVA === true,
+            splitVat: d.inregistrare_SplitTVA?.statusSplitTVA === true,
+            eFacturaEnrolled: dg.statusRO_e_Factura === true,
             inactive,
           };
           result = { cui: clean, formatValid: true, found: true, valid: !inactive, company, cached: false };

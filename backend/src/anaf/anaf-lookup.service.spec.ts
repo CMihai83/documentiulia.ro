@@ -42,7 +42,7 @@ describe('AnafLookupService (DOC-44-4)', () => {
   });
 
   it('parses an active VAT payer and caches it', async () => {
-    mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ denumire: 'Test SRL', adresa: 'Cluj', scpTVA: true, statusRO_e_Factura: true, statusInactivi: false }] } });
+    mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ date_generale: { denumire: 'Test SRL', adresa: 'Cluj', statusRO_e_Factura: true }, inregistrare_scop_Tva: { scpTVA: true }, stare_inactiv: { statusInactivi: false } }] } });
     const r = await service.lookup('12345678');
     expect(r.valid).toBe(true);
     expect(r.company?.name).toBe('Test SRL');
@@ -52,7 +52,7 @@ describe('AnafLookupService (DOC-44-4)', () => {
   });
 
   it('marks inactive taxpayers as not valid', async () => {
-    mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ denumire: 'Dead SRL', statusInactivi: true }] } });
+    mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ date_generale: { denumire: 'Dead SRL' }, stare_inactiv: { statusInactivi: true } }] } });
     const r = await service.lookup('12345678');
     expect(r.found).toBe(true);
     expect(r.valid).toBe(false);
@@ -69,7 +69,7 @@ describe('AnafLookupService (DOC-44-4)', () => {
   it('retries on a 5xx then succeeds', async () => {
     mockedPost
       .mockResolvedValueOnce({ status: 503, data: {} })
-      .mockResolvedValueOnce({ status: 200, data: { found: [{ denumire: 'OK SRL', statusInactivi: false }] } });
+      .mockResolvedValueOnce({ status: 200, data: { found: [{ date_generale: { denumire: 'OK SRL' }, stare_inactiv: { statusInactivi: false } }] } });
     const r = await service.lookup('12345678');
     expect(mockedPost).toHaveBeenCalledTimes(2);
     expect(r.valid).toBe(true);
@@ -84,7 +84,7 @@ describe('AnafLookupService (DOC-44-4)', () => {
   });
 
   it('rate-limits to ~10/sec (11th call waits)', async () => {
-    mockedPost.mockResolvedValue({ status: 200, data: { found: [{ denumire: 'X', statusInactivi: false }] } });
+    mockedPost.mockResolvedValue({ status: 200, data: { found: [{ date_generale: { denumire: 'X' }, stare_inactiv: { statusInactivi: false } }] } });
     const start = Date.now();
     await Promise.all(Array.from({ length: 11 }, (_, i) => service.lookup(`1000000${i}`)));
     expect(Date.now() - start).toBeGreaterThanOrEqual(900);
@@ -92,11 +92,11 @@ describe('AnafLookupService (DOC-44-4)', () => {
 
   describe('assertUsable', () => {
     it('ok for an active found CUI', async () => {
-      mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ denumire: 'X', statusInactivi: false }] } });
+      mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ date_generale: { denumire: 'X' }, stare_inactiv: { statusInactivi: false } }] } });
       expect((await service.assertUsable('12345678')).ok).toBe(true);
     });
     it('blocks an inactive taxpayer with a reason', async () => {
-      mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ denumire: 'X', statusInactivi: true }] } });
+      mockedPost.mockResolvedValueOnce({ status: 200, data: { found: [{ date_generale: { denumire: 'X' }, stare_inactiv: { statusInactivi: true } }] } });
       const r = await service.assertUsable('12345678');
       expect(r.ok).toBe(false);
       expect(r.reason).toContain('inactiv');

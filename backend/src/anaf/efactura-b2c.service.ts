@@ -8,6 +8,7 @@
 
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { AnafLookupService } from './anaf-lookup.service';
 import { ConfigService } from '@nestjs/config';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { ANAFResilientService } from './anaf-resilient.service';
@@ -141,6 +142,7 @@ export class EFacturaB2CService {
     private eventEmitter: EventEmitter2,
     private anafService: ANAFResilientService,
     private prisma: PrismaService,
+    private anafLookup: AnafLookupService,
   ) {}
 
   // ---- Prisma row <-> domain mappers (DOC-43-4) ----
@@ -431,6 +433,21 @@ export class EFacturaB2CService {
     }
     const orgRow = await this.prisma.b2CInvoice.findUnique({ where: { id: invoiceId }, select: { organizationId: true } });
     const orgId = orgRow?.organizationId || 'demo-org';
+
+    // DOC-44-4: gate on the seller CUI — ANAF rejects e-Factura from an invalid
+    // or inactive taxpayer, so validate before pushing to SPV.
+    const gate = await this.anafLookup.assertUsable(invoice.seller.cui);
+    if (!gate.ok) {
+      const result: B2CSubmissionResult = {
+        success: false, invoiceId, status: 'ERROR',
+        message: `Seller CUI validation failed: ${gate.reason}`, xmlGenerated: false,
+      };
+      await this.prisma.b2CSubmission.create({
+        data: { organizationId: orgId, invoiceId, success: false, status: 'ERROR', message: result.message, xmlGenerated: false },
+      });
+      this.logger.warn(`B2C submit blocked for ${invoiceId}: ${gate.reason}`);
+      return result;
+    }
 
     try {
       // Generate XML
