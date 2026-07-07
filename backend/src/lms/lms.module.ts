@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { LMSController } from './lms.controller';
 import { LMSService } from './lms.service';
+import { GamificationController } from './gamification.controller';
+import { GamificationService } from './gamification.service';
 import { ExcelVBACoursesController } from './excel-vba-courses.controller';
 import { ExcelVBACoursesService } from './excel-vba-courses.service';
 import { PMAgileCoursesController } from './pm-agile-courses.controller';
@@ -13,9 +16,10 @@ import { FinanceOpsCoursesService } from './finance-ops-courses.service';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule, ConfigModule],
+  imports: [PrismaModule, ConfigModule, EventEmitterModule.forRoot()],
   controllers: [
     LMSController,
+    GamificationController,
     ExcelVBACoursesController,
     PMAgileCoursesController,
     MBACoursesController,
@@ -23,6 +27,7 @@ import { PrismaModule } from '../prisma/prisma.module';
   ],
   providers: [
     LMSService,
+    GamificationService,
     ExcelVBACoursesService,
     PMAgileCoursesService,
     MBACoursesService,
@@ -30,6 +35,7 @@ import { PrismaModule } from '../prisma/prisma.module';
   ],
   exports: [
     LMSService,
+    GamificationService,
     ExcelVBACoursesService,
     PMAgileCoursesService,
     MBACoursesService,

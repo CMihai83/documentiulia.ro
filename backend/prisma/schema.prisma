@@ -3058,3 +3058,76 @@ model MigrationStaging {
   @@index([organizationId, batchId])
   @@index([batchId, status])
 }
+
+// ---- S-47 / F-2: persisted gamification (user state; catalogs stay code-defined) ----
+model GamificationUserPoints {
+  id               String    @id @default(cuid())
+  userId           String    @unique
+  totalPoints      Int       @default(0)
+  level            Int       @default(1)
+  levelProgress    Float     @default(0)
+  pointsToNextLevel Int      @default(100)
+  weeklyPoints     Int       @default(0)
+  monthlyPoints    Int       @default(0)
+  lastActiveDate   DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([totalPoints])
+}
+
+model GamificationPointsTransaction {
+  id          String   @id @default(cuid())
+  userId      String
+  action      String
+  points      Int
+  description String
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([userId, action])
+}
+
+model GamificationUserBadge {
+  id        String   @id @default(cuid())
+  userId    String
+  badgeId   String
+  earnedAt  DateTime @default(now())
+  progress  Float    @default(100)
+  isNew     Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+}
+
+model GamificationUserAchievement {
+  id            String   @id @default(cuid())
+  userId        String
+  achievementId String
+  currentTier   Int      @default(0)
+  progress      Float    @default(0)
+  currentValue  Float    @default(0)
+  status        String   @default("IN_PROGRESS")
+  unlockedTiers Int[]    @default([])
+  lastUpdated   DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([userId, achievementId])
+  @@index([userId])
+}
+
+model GamificationStreak {
+  id                    String    @id @default(cuid())
+  userId                String    @unique
+  currentStreak         Int       @default(0)
+  longestStreak         Int       @default(0)
+  lastActivityDate      DateTime?
+  streakFreezeAvailable Int       @default(2)
+  streakFreezeUsed      Boolean   @default(false)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+}
