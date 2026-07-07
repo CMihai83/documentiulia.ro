@@ -6,8 +6,11 @@ FROM node:20-slim AS builder
 
 WORKDIR /app
 
-# Install build dependencies for bcrypt native module
-RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
+# Build deps for native modules: bcrypt + canvas (chartjs-node-canvas → business-case charts)
+RUN apt-get update && apt-get install -y \
+      python3 make g++ \
+      libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy package files
 COPY package*.json ./
@@ -28,8 +31,11 @@ RUN npm run build
 # ============= Production Stage =============
 FROM node:20-slim AS production
 
-# Install dependencies for Prisma and OpenSSL
-RUN apt-get update && apt-get install -y openssl ca-certificates wget && rm -rf /var/lib/apt/lists/*
+# Runtime deps: Prisma/OpenSSL + canvas shared libraries (Cairo/Pango/JPEG/GIF/SVG)
+RUN apt-get update && apt-get install -y \
+      openssl ca-certificates wget \
+      libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libjpeg62-turbo libgif7 librsvg2-2 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Security: create non-root user
 RUN groupadd -g 1001 nodejs && \
