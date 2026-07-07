@@ -5,12 +5,15 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { randomUUID } from 'crypto';
 import {
   round2,
   varianceStatus,
   variance,
   contributionMargin,
   allocateAmount,
+  canTransitionInternalOrder,
+  InternalOrderStatus,
   VarianceStatus,
 } from './controlling.math';
 
@@ -372,14 +375,30 @@ export class ControllingService {
     return this.prisma.allocationCycle.findMany({ where: { organizationId: orgId } }) as any;
   }
 
-  async runAllocationCycle(orgId: string, cycleId: string, period = DEFAULT_PERIOD) {
+  /**
+   * Run an assessment/distribution cycle. Persists immutable postings (sender −,
+   * receivers +) via a secondary cost element. Idempotent: re-running for the
+   * same (cycle, period) reverses the previous run before posting a fresh one,
+   * so totals never double-count. `dryRun` returns the computed postings without
+   * writing anything.
+   */
+  async runAllocationCycle(
+    orgId: string,
+    cycleId: string,
+    period = DEFAULT_PERIOD,
+    opts?: { dryRun?: boolean; userId?: string },
+  ) {
     const cycle = await this.prisma.allocationCycle.findFirst({ where: { id: cycleId, organizationId: orgId } });
     if (!cycle) throw new NotFoundException(`Allocation cycle ${cycleId} not found`);
 
-    const lines = await this.prisma.costLine.findMany({ where: { organizationId: orgId, period } });
-    const centers = await this.prisma.costCenter.findMany({ where: { organizationId: orgId } });
-    const elems = await this.prisma.costElement.findMany({ where: { organizationId: orgId } });
+    const [lines, centers, elems] = await Promise.all([
+      this.prisma.costLine.findMany({ where: { organizationId: orgId, period } }),
+      this.prisma.costCenter.findMany({ where: { organizationId: orgId } }),
+      this.prisma.costElement.findMany({ where: { organizationId: orgId } }),
+    ]);
     const personnelIds = new Set(elems.filter((e) => e.category === 'personnel').map((e) => e.id));
+    const secondary = elems.find((e) => e.type === 'secondary') || elems[0];
+    if (!secondary) throw new BadRequestException('No cost element available for allocation posting');
 
     const senderTotal = lines
       .filter((l) => l.costCenterId === cycle.senderCostCenterId)
@@ -395,13 +414,116 @@ export class ControllingService {
       }
       return 1;
     });
-
+    const weightSum = weights.reduce((s, w) => s + w, 0) || 1;
     const amounts = allocateAmount(senderTotal, weights);
-    const postings = cycle.receiverCostCenterIds.map((rid, i) => {
+    const receiverPostings = cycle.receiverCostCenterIds.map((rid, i) => {
       const cc = centers.find((c) => c.id === rid);
-      return { receiverId: rid, receiverName: cc?.nameRo || rid, driverWeight: round2((weights[i] / (weights.reduce((s, w) => s + w, 0) || 1)) * 100), amount: amounts[i] };
+      return { receiverId: rid, receiverName: cc?.nameRo || rid, driverWeight: round2((weights[i] / weightSum) * 100), amount: amounts[i] };
     });
-    return { cycle, senderTotal: round2(senderTotal), postings };
+
+    if (opts?.dryRun) {
+      return {
+        cycle, senderTotal: round2(senderTotal), dryRun: true, persisted: false,
+        reversedPrevious: 0, runId: null, postings: receiverPostings,
+        senderPosting: { costCenterId: cycle.senderCostCenterId, amount: round2(-senderTotal) },
+      };
+    }
+
+    const runId = randomUUID();
+    // Idempotency: reverse any prior live run for this (cycle, period).
+    const reversal = await this.prisma.allocationPosting.updateMany({
+      where: { organizationId: orgId, cycleId, period, reversed: false },
+      data: { reversed: true },
+    });
+    const rows = [
+      { organizationId: orgId, cycleId, runId, period, costCenterId: cycle.senderCostCenterId, costElementId: secondary.id, direction: 'sender', amount: round2(-senderTotal) },
+      ...receiverPostings.map((p) => ({ organizationId: orgId, cycleId, runId, period, costCenterId: p.receiverId, costElementId: secondary.id, direction: 'receiver', amount: p.amount })),
+    ];
+    await this.prisma.allocationPosting.createMany({ data: rows });
+    await this.audit(orgId, opts?.userId, 'run', 'AllocationCycle', cycleId, { runId, period, senderTotal: round2(senderTotal) });
+
+    return {
+      cycle, senderTotal: round2(senderTotal), dryRun: false, persisted: true,
+      reversedPrevious: reversal.count, runId, postings: receiverPostings,
+      senderPosting: { costCenterId: cycle.senderCostCenterId, amount: round2(-senderTotal) },
+    };
+  }
+
+  /** Current (non-reversed) allocation postings for a cycle+period, with net per cost center. */
+  async getAllocationPostings(orgId: string, cycleId: string, period = DEFAULT_PERIOD) {
+    const [rows, centers] = await Promise.all([
+      this.prisma.allocationPosting.findMany({ where: { organizationId: orgId, cycleId, period, reversed: false }, orderBy: { createdAt: 'asc' } }),
+      this.prisma.costCenter.findMany({ where: { organizationId: orgId } }),
+    ]);
+    const name = (id: string) => centers.find((c) => c.id === id)?.nameRo || id;
+    return rows.map((r) => ({
+      id: r.id, runId: r.runId, period: r.period, direction: r.direction,
+      costCenterId: r.costCenterId, costCenterName: name(r.costCenterId), amount: this.num(r.amount),
+    }));
+  }
+
+  // =================== INTERNAL ORDER LIFECYCLE (DOC-43-2) ===================
+
+  async updateInternalOrder(
+    orgId: string,
+    id: string,
+    dto: { name?: string; budget?: number; actual?: number; endDate?: string; status?: InternalOrderStatus },
+    userId?: string,
+  ): Promise<InternalOrder> {
+    const io = await this.prisma.internalOrder.findFirst({ where: { id, organizationId: orgId } });
+    if (!io) throw new NotFoundException(`Internal order ${id} not found`);
+    if (dto.status && !canTransitionInternalOrder(io.status as InternalOrderStatus, dto.status)) {
+      throw new BadRequestException(`Invalid status transition: ${io.status} → ${dto.status}`);
+    }
+    const updated = await this.prisma.internalOrder.update({
+      where: { id },
+      data: {
+        name: dto.name ?? undefined,
+        budget: dto.budget ?? undefined,
+        actual: dto.actual ?? undefined,
+        endDate: dto.endDate ?? undefined,
+        status: (dto.status as any) ?? undefined,
+      },
+    });
+    await this.audit(orgId, userId, 'update', 'InternalOrder', id, { status: updated.status });
+    return { ...updated, budget: this.num(updated.budget), actual: this.num(updated.actual) };
+  }
+
+  async closeInternalOrder(orgId: string, id: string, userId?: string): Promise<InternalOrder> {
+    return this.updateInternalOrder(orgId, id, { status: 'closed' }, userId);
+  }
+
+  // =================== CO-PA SEGMENT WRITES (DOC-43-1) ===================
+
+  async createSegment(
+    orgId: string,
+    dto: { name: string; profitCenterId: string; revenue: number; cogs: number; directCosts: number; allocatedFixedCosts: number },
+    userId?: string,
+  ) {
+    if (!dto.name || !dto.profitCenterId) throw new BadRequestException('name and profitCenterId are required');
+    const pc = await this.prisma.profitCenter.findFirst({ where: { id: dto.profitCenterId, organizationId: orgId } });
+    if (!pc) throw new BadRequestException('profitCenterId does not exist for this organization');
+    const seg = await this.prisma.profitabilitySegment.create({
+      data: { organizationId: orgId, name: dto.name, profitCenterId: dto.profitCenterId, revenue: dto.revenue, cogs: dto.cogs, directCosts: dto.directCosts, allocatedFixedCosts: dto.allocatedFixedCosts },
+    });
+    await this.audit(orgId, userId, 'create', 'ProfitabilitySegment', seg.id, { name: seg.name });
+    return seg;
+  }
+
+  async updateSegment(
+    orgId: string,
+    id: string,
+    dto: { name?: string; revenue?: number; cogs?: number; directCosts?: number; allocatedFixedCosts?: number },
+    userId?: string,
+  ) {
+    const seg = await this.prisma.profitabilitySegment.findFirst({ where: { id, organizationId: orgId } });
+    if (!seg) throw new NotFoundException(`Segment ${id} not found`);
+    const updated = await this.prisma.profitabilitySegment.update({
+      where: { id },
+      data: { name: dto.name ?? undefined, revenue: dto.revenue ?? undefined, cogs: dto.cogs ?? undefined, directCosts: dto.directCosts ?? undefined, allocatedFixedCosts: dto.allocatedFixedCosts ?? undefined },
+    });
+    await this.audit(orgId, userId, 'update', 'ProfitabilitySegment', id, { name: updated.name });
+    return updated;
   }
 
   // =================== CO-PA ===================

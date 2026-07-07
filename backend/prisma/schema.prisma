@@ -2907,3 +2907,21 @@ model ProfitabilitySegment {
 
   @@index([organizationId])
 }
+
+// ---- S-43: persisted allocation postings (assessment/distribution cycles) ----
+model AllocationPosting {
+  id             String   @id @default(cuid())
+  organizationId String
+  cycleId        String
+  runId          String   // groups one cycle run (for idempotent reversal)
+  period         String
+  costCenterId   String
+  costElementId  String   // secondary allocation cost element (e.g. 931)
+  direction      String   // 'sender' | 'receiver'
+  amount         Decimal  @db.Decimal(14, 2) // negative for sender, positive for receivers
+  reversed       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  @@index([organizationId, cycleId, period])
+  @@index([runId])
+}
