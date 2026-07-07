@@ -145,10 +145,10 @@ export class SaftD406Controller {
   @ApiResponse({ status: 200, description: 'Validation result' })
   @ApiResponse({ status: 400, description: 'Invalid XML' })
   async validateXml(
-    @Body() body: { xml: string },
+    @Body() body: { xml: string; periodType?: 'monthly' | 'quarterly' | 'annual' },
   ): Promise<{
     valid: boolean;
-    errors: Array<{ path: string; message: string; code: string }>;
+    errors: Array<{ path: string; message: string; messageRo?: string; code: string }>;
     warnings: string[];
     compliance: {
       order1783: boolean;
@@ -158,7 +158,10 @@ export class SaftD406Controller {
     // Import validator dynamically to avoid circular deps
     const { SaftValidatorService } = await import('./saft-validator.service');
     const validator = new SaftValidatorService();
-    const result = validator.validate(body.xml);
+    const result = validator.validate(
+      body.xml,
+      body.periodType ? { expectedPeriodType: body.periodType } : undefined,
+    );
 
     return {
       valid: result.valid,

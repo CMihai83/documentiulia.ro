@@ -17,7 +17,18 @@ export type ConsultingServiceType =
   | 'saft_optimization'      // SAF-T D406 optimization
   | 'hr_compliance'          // HR/Revisal compliance
   | 'payroll_setup'          // Payroll system configuration
-  | 'vat_analysis';          // VAT optimization analysis
+  | 'vat_analysis'           // VAT optimization analysis
+  // --- SAP & ERP consultancy services ---
+  | 'erp_selection'          // ERP/software selection advisory
+  | 'sap_implementation'     // SAP S/4HANA / ByDesign implementation
+  | 's4hana_migration'       // ECC -> S/4HANA brownfield/greenfield migration
+  | 'controlling_setup'      // SAP CO / management accounting setup
+  | 'fico_consulting'        // SAP FI/CO financial consulting
+  | 'process_optimization'   // Business process reengineering (BPR)
+  | 'erp_data_migration'     // Legacy -> ERP data migration
+  | 'integration_architecture' // API/EDI/middleware integration design
+  | 'change_management'      // ERP rollout change management & training
+  | 'fractional_cfo';        // Fractional CFO / controlling-as-a-service
 
 export type BookingStatus =
   | 'pending'
@@ -44,7 +55,7 @@ export interface ConsultingPackage {
   durationMinutes: number;
   priceRon: number;
   priceEur: number;
-  category: 'accounting' | 'tax' | 'compliance' | 'technical' | 'training';
+  category: 'accounting' | 'tax' | 'compliance' | 'technical' | 'training' | 'erp';
   features: string[];
   featuresRo: string[];
   deliverables: string[];
@@ -519,6 +530,178 @@ export class ConsultingService {
         'Pregătire întâlnire pre-audit',
       ],
       requiredTier: Tier.BUSINESS,
+    }],
+
+    // =================== SAP & ERP CONSULTANCY ===================
+    ['pkg_erp_selection', {
+      id: 'pkg_erp_selection',
+      type: 'erp_selection',
+      name: 'ERP Selection Advisory',
+      nameRo: 'Consultanță Selecție ERP',
+      description: 'Vendor-neutral advisory to select the right ERP (SAP, Oracle, MS Dynamics, DocumentIulia) for your business, with a weighted scorecard and TCO analysis.',
+      descriptionRo: 'Consultanță independentă pentru alegerea ERP-ului potrivit (SAP, Oracle, MS Dynamics, DocumentIulia), cu grilă de scor ponderată și analiză TCO.',
+      durationMinutes: 120,
+      priceRon: 1490,
+      priceEur: 299,
+      category: 'erp',
+      features: [
+        'Requirements & fit-gap workshop',
+        'Weighted vendor scorecard',
+        '3-year TCO comparison',
+        'Recommendation report',
+      ],
+      featuresRo: [
+        'Workshop cerințe & fit-gap',
+        'Grilă de scor ponderată furnizori',
+        'Comparație TCO pe 3 ani',
+        'Raport de recomandare',
+      ],
+      deliverables: ['Vendor scorecard', 'TCO model', 'Selection recommendation'],
+      deliverablesRo: ['Grilă furnizori', 'Model TCO', 'Recomandare selecție'],
+      requiredTier: Tier.FREE,
+      isNew: true,
+      isPopular: true,
+    }],
+    ['pkg_sap_implementation', {
+      id: 'pkg_sap_implementation',
+      type: 'sap_implementation',
+      name: 'SAP Implementation Advisory',
+      nameRo: 'Consultanță Implementare SAP',
+      description: 'SAP S/4HANA / Business ByDesign implementation advisory — blueprint, module scoping (FI, CO, MM, SD, PP), and rollout roadmap by certified consultants.',
+      descriptionRo: 'Consultanță implementare SAP S/4HANA / Business ByDesign — blueprint, scoping module (FI, CO, MM, SD, PP) și foaie de parcurs, de consultanți certificați.',
+      durationMinutes: 180,
+      priceRon: 2990,
+      priceEur: 599,
+      category: 'erp',
+      features: [
+        'Business blueprint workshop',
+        'Module scoping (FI/CO/MM/SD/PP)',
+        'Fit-to-standard analysis',
+        'Implementation roadmap',
+      ],
+      featuresRo: [
+        'Workshop business blueprint',
+        'Scoping module (FI/CO/MM/SD/PP)',
+        'Analiză fit-to-standard',
+        'Foaie de parcurs implementare',
+      ],
+      deliverables: ['Business blueprint', 'Module scope document', 'Phased roadmap'],
+      deliverablesRo: ['Business blueprint', 'Document scope module', 'Foaie de parcurs pe faze'],
+      requiredTier: Tier.PRO,
+      isNew: true,
+    }],
+    ['pkg_s4hana_migration', {
+      id: 'pkg_s4hana_migration',
+      type: 's4hana_migration',
+      name: 'S/4HANA Migration Assessment',
+      nameRo: 'Evaluare Migrare S/4HANA',
+      description: 'Readiness assessment for ECC to S/4HANA migration — brownfield vs greenfield vs selective, simplification list impact, and risk register.',
+      descriptionRo: 'Evaluare de pregătire pentru migrarea ECC către S/4HANA — brownfield vs greenfield vs selectiv, impact listă simplificare și registru de riscuri.',
+      durationMinutes: 150,
+      priceRon: 2490,
+      priceEur: 499,
+      category: 'erp',
+      features: [
+        'Readiness & sizing check',
+        'Migration approach recommendation',
+        'Simplification impact analysis',
+        'Risk register',
+      ],
+      featuresRo: [
+        'Verificare readiness & sizing',
+        'Recomandare abordare migrare',
+        'Analiză impact simplificare',
+        'Registru riscuri',
+      ],
+      deliverables: ['Readiness report', 'Migration approach', 'Risk register'],
+      deliverablesRo: ['Raport readiness', 'Abordare migrare', 'Registru riscuri'],
+      requiredTier: Tier.BUSINESS,
+      isNew: true,
+    }],
+    ['pkg_controlling_setup', {
+      id: 'pkg_controlling_setup',
+      type: 'controlling_setup',
+      name: 'Controlling (CO) Setup',
+      nameRo: 'Configurare Controlling (CO)',
+      description: 'Stand up management accounting: cost center & profit center hierarchy, internal orders, allocation cycles, CO-PA contribution margin and a KPI cockpit — wired to the DocumentIulia Controlling module.',
+      descriptionRo: 'Implementare contabilitate de gestiune: ierarhie centre de cost și profit, ordine interne, cicluri de alocare, marjă de contribuție CO-PA și cockpit KPI — integrat cu modulul Controlling DocumentIulia.',
+      durationMinutes: 180,
+      priceRon: 1990,
+      priceEur: 399,
+      category: 'erp',
+      features: [
+        'Cost & profit center design',
+        'Allocation / assessment cycles',
+        'Contribution margin (CO-PA)',
+        'KPI cockpit configuration',
+      ],
+      featuresRo: [
+        'Design centre cost & profit',
+        'Cicluri alocare / assessment',
+        'Marjă de contribuție (CO-PA)',
+        'Configurare cockpit KPI',
+      ],
+      deliverables: ['CO structure', 'Allocation cycles', 'KPI cockpit'],
+      deliverablesRo: ['Structură CO', 'Cicluri alocare', 'Cockpit KPI'],
+      requiredTier: Tier.PRO,
+      isNew: true,
+      isPopular: true,
+    }],
+    ['pkg_process_optimization', {
+      id: 'pkg_process_optimization',
+      type: 'process_optimization',
+      name: 'Business Process Optimization',
+      nameRo: 'Optimizare Procese de Business',
+      description: 'Process reengineering (BPR) across order-to-cash, procure-to-pay and record-to-report — bottleneck analysis, automation opportunities and a value-case.',
+      descriptionRo: 'Reengineering de procese (BPR) pe order-to-cash, procure-to-pay și record-to-report — analiză blocaje, oportunități de automatizare și business case.',
+      durationMinutes: 150,
+      priceRon: 1690,
+      priceEur: 339,
+      category: 'erp',
+      features: [
+        'As-is / to-be process mapping',
+        'Bottleneck & waste analysis',
+        'Automation opportunity list',
+        'Value case & ROI',
+      ],
+      featuresRo: [
+        'Mapare procese as-is / to-be',
+        'Analiză blocaje & risipă',
+        'Listă oportunități automatizare',
+        'Business case & ROI',
+      ],
+      deliverables: ['Process maps', 'Optimization backlog', 'ROI model'],
+      deliverablesRo: ['Hărți procese', 'Backlog optimizare', 'Model ROI'],
+      requiredTier: Tier.PRO,
+      isNew: true,
+    }],
+    ['pkg_fractional_cfo', {
+      id: 'pkg_fractional_cfo',
+      type: 'fractional_cfo',
+      name: 'Fractional CFO / Controlling-as-a-Service',
+      nameRo: 'CFO Fracțional / Controlling ca Serviciu',
+      description: 'Ongoing part-time CFO & controlling support — monthly close review, variance analysis, cash-flow forecasting and board-ready reporting.',
+      descriptionRo: 'Suport CFO & controlling part-time recurent — revizuire închidere lunară, analiză abateri, prognoză cash-flow și raportare pentru board.',
+      durationMinutes: 240,
+      priceRon: 3490,
+      priceEur: 699,
+      category: 'erp',
+      features: [
+        'Monthly close review',
+        'Variance & KPI analysis',
+        'Cash-flow forecasting',
+        'Board-ready reporting',
+      ],
+      featuresRo: [
+        'Revizuire închidere lunară',
+        'Analiză abateri & KPI',
+        'Prognoză cash-flow',
+        'Raportare pentru board',
+      ],
+      deliverables: ['Monthly management pack', 'Variance report', 'Rolling forecast'],
+      deliverablesRo: ['Pachet lunar de management', 'Raport abateri', 'Prognoză rulantă'],
+      requiredTier: Tier.BUSINESS,
+      isNew: true,
     }],
   ]);
 
