@@ -23,6 +23,7 @@ import {
   Shield,
   Truck,
   BarChart3,
+  Gauge,
   Wallet,
   Menu,
   X,
@@ -96,6 +97,7 @@ const navSections: NavSection[] = [
     items: [
       { href: '/dashboard/finance', icon: Wallet, labelKey: 'finance', defaultLabel: 'Finanțe' },
       { href: '/dashboard/accounting', icon: Calculator, labelKey: 'accounting', defaultLabel: 'Contabilitate' },
+      { href: '/dashboard/controlling', icon: Gauge, labelKey: 'controlling', defaultLabel: 'Controlling' },
       { href: '/dashboard/payments', icon: CreditCard, labelKey: 'payments', defaultLabel: 'Plăți' },
       { href: '/dashboard/vat', icon: Calculator, labelKey: 'vat', defaultLabel: 'Rapoarte TVA' },
       { href: '/dashboard/saft', icon: FileSpreadsheet, labelKey: 'saft', defaultLabel: 'SAF-T D406' },
@@ -193,6 +195,7 @@ const hrefToModuleId: Record<string, string> = {
   '/dashboard/efactura': 'efactura',
   '/dashboard/finance': 'finance',
   '/dashboard/accounting': 'accounting',
+  '/dashboard/controlling': 'controlling',
   '/dashboard/payments': 'payments',
   '/dashboard/vat': 'vat',
   '/dashboard/saft': 'saft',
