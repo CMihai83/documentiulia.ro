@@ -11,7 +11,7 @@ import {
   Play, Gauge, AlertTriangle, Loader2, Clock, TrendingUp, Users, Zap, Download, ChevronRight,
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { api } from '@/lib/api';
+import { api, API_URL } from '@/lib/api';
 
 type Row = { tick: number; cash: number; revenue: number; customerBase: number; brandEquity: number; morale: number; marketShare: number; productivity: number; churnRate: number; cyclePhase: string };
 type Run = { id: string; scenarioKey: string; mode: string; mirrorMode?: boolean; currentTick: number; status: string };
@@ -91,6 +91,20 @@ export default function SimulationV2Page() {
     await api.post(`/simulation/v2/runs/${run.id}/events/${eventId}/respond`, { choiceIndex });
     setBusy(false);
     await loadRun(run.id);
+  };
+
+  const downloadCsv = async () => {
+    if (!run) return;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    const res = await fetch(`${API_URL}/simulation/v2/runs/${run.id}/history.csv`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    if (!res.ok) return;
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `sim-${run.id}.csv`; a.click();
+    URL.revokeObjectURL(url);
   };
 
   const chartData = useMemo(() => history.map((r) => ({ ...r, cashK: Math.round(r.cash / 1000), revK: Math.round(r.revenue) })), [history]);
@@ -173,7 +187,7 @@ export default function SimulationV2Page() {
                   </LineChart>
                 </ChartCard>
               </div>
-              <a href={`/api/v1/simulation/v2/runs/${run.id}/history.csv`} className="inline-flex"><Button size="sm" variant="ghost"><Download className="h-4 w-4" /> {t.csv}</Button></a>
+              <Button size="sm" variant="ghost" onClick={downloadCsv}><Download className="h-4 w-4" /> {t.csv}</Button>
             </TabsContent>
 
             <TabsContent value="consequences" className="mt-4">
