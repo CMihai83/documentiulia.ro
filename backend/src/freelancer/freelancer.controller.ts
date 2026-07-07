@@ -1,3 +1,7 @@
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import {
   Controller,
   Get,
@@ -24,7 +28,8 @@ import {
 // AI-powered talent matching, vendor portal, and gig economy orchestration
 
 @Controller('freelancer')
-@UseGuards(ThrottlerGuard)
+@UseGuards(ThrottlerGuard, JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
 export class FreelancerController {
   constructor(private readonly freelancerService: FreelancerService) {}
 

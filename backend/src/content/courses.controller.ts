@@ -1,6 +1,9 @@
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ContentService } from './content.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly contentService: ContentService) {}
@@ -41,6 +44,7 @@ export class CoursesController {
   }
 }
 
+@UseGuards(JwtAuthGuard)
 @Controller('demo-businesses')
 export class DemoBusinessesController {
   constructor(private readonly contentService: ContentService) {}
@@ -56,6 +60,7 @@ export class DemoBusinessesController {
   }
 }
 
+@UseGuards(JwtAuthGuard)
 @Controller('content')
 export class ContentStatsController {
   constructor(private readonly contentService: ContentService) {}

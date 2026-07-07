@@ -1,5 +1,8 @@
 import { Body, Controller, Get, Header, Param, Post, Query, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
+import { TierGuard } from '../../auth/tier.guard';
+import { RequiresTier } from '../../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import { SimV2Service } from './simv2.service';
 import { SimDecision, TickType } from './simv2.types';
 
@@ -21,7 +24,8 @@ class AdvanceDto {
  * deferred consequences and macro cycles. Base path: /api/v1/simulation/v2
  */
 @Controller('simulation/v2')
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
 export class SimV2Controller {
   constructor(private readonly sim: SimV2Service) {}
 

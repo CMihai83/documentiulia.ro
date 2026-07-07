@@ -4,6 +4,10 @@
  * Sprint 25 - World-Class Simulation
  */
 
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import {
   Controller,
   Get,
@@ -29,8 +33,6 @@ import {
 } from '@nestjs/swagger';
 import { IsString, IsOptional } from 'class-validator';
 import { SimulationService, GameSummary, ScenarioInfo } from './simulation.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { Public } from '../auth/public.decorator';
 
 // DTOs
 class StartGameDto {
@@ -66,7 +68,8 @@ class EventResponseDto {
 
 @ApiTags('Simulation')
 @Controller('simulation')
-// @UseGuards(JwtAuthGuard) // Removed - using @Public() on individual routes for guest access
+@UseGuards(JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.PRO)
 // @ApiBearerAuth()
 export class SimulationController {
   constructor(private readonly simulationService: SimulationService) {}
@@ -74,24 +77,18 @@ export class SimulationController {
   // =====================================================
   // SCENARIOS
   // =====================================================
-
-  @Public()
   @Get('scenarios')
   @ApiOperation({ summary: 'Get all available simulation scenarios' })
   @ApiResponse({ status: 200, description: 'List of scenarios' })
   async getScenarios(): Promise<ScenarioInfo[]> {
     return this.simulationService.getScenarios();
   }
-
-  @Public()
   @Get('presets/what-if')
   @ApiOperation({ summary: 'Get what-if scenario presets for company data' })
   @ApiResponse({ status: 200, description: 'List of what-if presets' })
   getWhatIfPresets() {
     return this.simulationService.getWhatIfPresets();
   }
-
-  @Public()
   @Get('presets/industry')
   @ApiOperation({ summary: 'Get industry-specific scenario templates' })
   @ApiResponse({ status: 200, description: 'List of industry scenarios' })
@@ -102,37 +99,31 @@ export class SimulationController {
   // =====================================================
   // GAME MANAGEMENT
   // =====================================================
-
-  @Public() // Allow guest users for demo mode
   @Post('games')
   @ApiOperation({ summary: 'Start a new simulation game' })
   @ApiBody({ type: StartGameDto })
   @ApiResponse({ status: 201, description: 'Game created successfully' })
   async startGame(
-    @Request() req: { user?: { userId: string } },
+    @Request() req: { user?: { id?: string; userId?: string } },
     @Body() dto: StartGameDto
   ): Promise<GameSummary> {
     // Support both authenticated and guest users
-    const userId = req.user?.userId || 'guest';
+    const userId = req.user?.id || req.user?.userId;
     return this.simulationService.startGame(userId, {
       name: dto.name,
       scenarioId: dto.scenarioId,
       industryScenarioId: dto.industryScenarioId,
     });
   }
-
-  @Public() // Allow guest users
   @Get('games')
   @ApiOperation({ summary: 'Get all games for current user' })
   @ApiResponse({ status: 200, description: 'List of user games' })
   async getUserGames(
-    @Request() req: { user?: { userId: string } }
+    @Request() req: { user?: { id?: string; userId?: string } }
   ): Promise<GameSummary[]> {
-    const userId = req.user?.userId || 'guest';
+    const userId = req.user?.id || req.user?.userId;
     return this.simulationService.getUserGames(userId);
   }
-
-  @Public() // Allow guest users
   @Get('games/:gameId')
   @ApiOperation({ summary: 'Get detailed game information' })
   @ApiParam({ name: 'gameId', description: 'Game ID' })
@@ -143,8 +134,6 @@ export class SimulationController {
   ) {
     return this.simulationService.getGameDetails(gameId);
   }
-
-  @Public() // Allow guest users
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete('games/:gameId')
   @ApiOperation({ summary: 'Delete a game' })
@@ -152,18 +141,16 @@ export class SimulationController {
   @ApiResponse({ status: 204, description: 'Game deleted' })
   @ApiResponse({ status: 404, description: 'Game not found' })
   async deleteGame(
-    @Request() req: { user?: { userId: string } },
+    @Request() req: { user?: { id?: string; userId?: string } },
     @Param('gameId') gameId: string
   ): Promise<void> {
-    const userId = req.user?.userId || 'guest';
+    const userId = req.user?.id || req.user?.userId;
     return this.simulationService.deleteGame(gameId, userId);
   }
 
   // =====================================================
   // SIMULATION ACTIONS
   // =====================================================
-
-  @Public() // Allow guest users
   @Post('games/:gameId/advance')
   @ApiOperation({ summary: 'Advance simulation by one month' })
   @ApiParam({ name: 'gameId', description: 'Game ID' })
@@ -171,8 +158,6 @@ export class SimulationController {
   async advanceMonth(@Param('gameId') gameId: string) {
     return this.simulationService.advanceMonth(gameId);
   }
-
-  @Public() // Allow guest users
   @Post('games/:gameId/decisions')
   @ApiOperation({ summary: 'Make a business decision' })
   @ApiParam({ name: 'gameId', description: 'Game ID' })
@@ -188,8 +173,6 @@ export class SimulationController {
       dto.parameters
     );
   }
-
-  @Public() // Allow guest users
   @Get('games/:gameId/decisions')
   @ApiOperation({ summary: 'Get available decisions for current state' })
   @ApiParam({ name: 'gameId', description: 'Game ID' })
@@ -197,8 +180,6 @@ export class SimulationController {
   async getAvailableDecisions(@Param('gameId') gameId: string) {
     return this.simulationService.getAvailableDecisions(gameId);
   }
-
-  @Public() // Allow guest users
   @Post('games/:gameId/events/:eventId/respond')
   @ApiOperation({ summary: 'Respond to an event' })
   @ApiParam({ name: 'gameId', description: 'Game ID' })
@@ -212,8 +193,6 @@ export class SimulationController {
   ) {
     return this.simulationService.respondToEvent(gameId, eventId, dto.responseId);
   }
-
-  @Public() // Allow guest users
   @Get('games/:gameId/events/pending')
   @ApiOperation({ summary: 'Get pending events requiring response' })
   @ApiParam({ name: 'gameId', description: 'Game ID' })
@@ -225,8 +204,6 @@ export class SimulationController {
   // =====================================================
   // GAME LIFECYCLE
   // =====================================================
-
-  @Public() // Allow guest users
   @HttpCode(HttpStatus.NO_CONTENT)
   @Put('games/:gameId/pause')
   @ApiOperation({ summary: 'Pause a game' })
@@ -235,8 +212,6 @@ export class SimulationController {
   async pauseGame(@Param('gameId') gameId: string): Promise<void> {
     return this.simulationService.pauseGame(gameId);
   }
-
-  @Public() // Allow guest users
   @HttpCode(HttpStatus.NO_CONTENT)
   @Put('games/:gameId/resume')
   @ApiOperation({ summary: 'Resume a paused game' })
@@ -245,8 +220,6 @@ export class SimulationController {
   async resumeGame(@Param('gameId') gameId: string): Promise<void> {
     return this.simulationService.resumeGame(gameId);
   }
-
-  @Public() // Allow guest users
   @Post('games/:gameId/end')
   @ApiOperation({ summary: 'End a game and get final results' })
   @ApiParam({ name: 'gameId', description: 'Game ID' })
@@ -258,8 +231,6 @@ export class SimulationController {
   // =====================================================
   // ANALYTICS & LEADERBOARD
   // =====================================================
-
-  @Public()
   @Get('leaderboard')
   @ApiOperation({ summary: 'Get simulation leaderboard' })
   @ApiQuery({ name: 'limit', required: false, description: 'Number of entries (default 10)' })
@@ -267,21 +238,17 @@ export class SimulationController {
   async getLeaderboard(@Query('limit') limit?: string) {
     return this.simulationService.getLeaderboard(limit ? parseInt(limit) : 10);
   }
-
-  @Public() // Allow guest users
   @Get('stats')
   @ApiOperation({ summary: 'Get user simulation statistics' })
   @ApiResponse({ status: 200, description: 'User statistics' })
-  async getUserStats(@Request() req: { user?: { userId: string } }) {
-    const userId = req.user?.userId || 'guest';
+  async getUserStats(@Request() req: { user?: { id?: string; userId?: string } }) {
+    const userId = req.user?.id || req.user?.userId;
     return this.simulationService.getUserStats(userId);
   }
 
   // =====================================================
   // MARKET DATA (Read-only reference)
   // =====================================================
-
-  @Public()
   @Get('market-data')
   @ApiOperation({ summary: 'Get current Romanian market model data' })
   @ApiResponse({ status: 200, description: 'Romanian market parameters' })

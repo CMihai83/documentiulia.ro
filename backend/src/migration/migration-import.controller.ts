@@ -1,5 +1,8 @@
 import { Controller, Get, Post, Delete, Body, Param, Query, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import { MigrationImportService } from './migration-import.service';
 import { MigrationEntity, RowStatus } from './migration.validators';
 
@@ -14,6 +17,8 @@ class StageDto {
  * Data-migration studio — import/staging (DOC-46-1/46-3).
  * Base path: /api/v1/migration
  */
+@UseGuards(JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.BUSINESS)
 @Controller('migration')
 export class MigrationImportController {
   constructor(private readonly migration: MigrationImportService) {}

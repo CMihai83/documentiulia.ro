@@ -80,19 +80,19 @@ d('SIM-7/9 integration', () => {
     expect(csv.split('\n').length).toBeGreaterThan(31);
   }, 120000);
 
-  it('Art 28(10): UNAUTHORISED org falls back to preset with no tenant PII', async () => {
+  it('mirror mode: org WITHOUT training authorisation still calibrates from OWN data (service delivery), person-level scrubbed', async () => {
     await prisma.organization.update({ where: { id: orgId }, data: { aiTrainingAuthorized: false } });
     const res = await sim.createCalibratedRun(userId, orgId, { scenarioKey: 'services' });
-    expect(res.calibration.mirror).toBe(false);
-    expect(res.calibration.source).toBe('preset');
-    expect(res.run.mirrorMode).toBe(false);
-    // no tenant person-level data anywhere in the persisted state
+    expect(res.calibration.mirror).toBe(true);
+    expect(res.calibration.source).toBe('erp');
+    expect(res.run.mirrorMode).toBe(true);
+    // person-level data must STILL never reach the state (scrub), even though aggregates do
     const blob = JSON.stringify(res.state).toLowerCase();
     expect(blob).not.toContain('cnp');
     expect(blob).not.toContain('@it.ro');
   }, 60000);
 
-  it('Art 28(10): AUTHORISED org seeds from real aggregates (guard consulted, scrubbed)', async () => {
+  it('authorised org also seeds from real aggregates (scrub still applied)', async () => {
     // real tenant data
     await prisma.partner.createMany({ data: [1, 2, 3].map((i) => ({ userId, organizationId: orgId, name: `Partner ${i}` })), skipDuplicates: true });
     await prisma.employee.createMany({ data: [1, 2].map((i) => ({ userId, organizationId: orgId, firstName: `F${i}`, lastName: `L${i}`, email: `e${i}@it.ro`, position: 'Dev', salary: 5000, hireDate: new Date('2025-01-10') })), skipDuplicates: true });

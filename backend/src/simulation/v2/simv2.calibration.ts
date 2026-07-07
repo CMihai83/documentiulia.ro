@@ -39,14 +39,14 @@ export class SimV2CalibrationService {
     const key = SCENARIO_PRESETS[scenarioKey] ? scenarioKey : 'services';
     const notes: string[] = [];
 
-    // --- Art 28(10) gate: no authorisation => preset, no tenant data touched ---
-    const allowed = organizationId ? await this.guard.isTrainingAllowed(organizationId) : false;
-    if (!allowed) {
-      notes.push(
-        organizationId
-          ? 'Organisation has not authorised AI calibration (Art 28(10)) — using the industry preset.'
-          : 'No organisation context — using the industry preset.',
-      );
+    // Mirror-mode calibration is SERVICE DELIVERY on the tenant's own data inside
+    // their authenticated, org-scoped, tier-gated session — not an Art 28(10)
+    // role-flip. That gate applies to OUR reuse (model training / cross-tenant
+    // benchmarks) and stays enforced via DataUseGuard at those call sites.
+    // Person-level fields are still scrubbed below: the sim only needs aggregates.
+    // See docs/business-simulator-v2/research/04 §5B (mirror mode).
+    if (!organizationId) {
+      notes.push('No organisation context — using the industry preset.');
       return { state: createInitialState(key, seed), mirror: false, source: 'preset', notes };
     }
 

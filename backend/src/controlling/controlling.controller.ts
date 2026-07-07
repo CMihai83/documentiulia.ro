@@ -1,3 +1,6 @@
+import { TierGuard } from '../auth/tier.guard';
+import { RequiresTier } from '../auth/tiers.decorator';
+import { Tier } from '@prisma/client';
 import {
   Controller,
   Get,
@@ -69,6 +72,8 @@ class SegmentDto {
  * `x-organization-id` header or the JWT; a demo org is used as a fallback so
  * the showcase works unauthenticated. Writes require a valid JWT.
  */
+@UseGuards(JwtAuthGuard, TierGuard)
+@RequiresTier(Tier.BUSINESS)
 @Controller('controlling')
 export class ControllingController {
   constructor(private readonly controlling: ControllingService) {}
