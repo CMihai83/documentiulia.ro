@@ -26,6 +26,7 @@ import {
   TickLogEntry,
   TickType,
 } from './simv2.types';
+import { evaluateEvents, kpiModifier } from './simv2.events';
 
 // ---------------------------------------------------------------------------
 // Seeded PRNG (mulberry32) — state is a uint32 carried inside SimV2StateData
@@ -149,6 +150,11 @@ export function createInitialState(scenarioKey: string, seed: number): SimV2Stat
       plannedDwell: Math.round(dwell.base + (first.value - 0.5) * 2 * dwell.spread),
     },
     params: { ...params, seasonality: [...params.seasonality] },
+    activeModifiers: [],
+    eventCooldowns: {},
+    telegraphed: [],
+    firedOnce: [],
+    pendingEventChoices: [],
     lastTickLog: [],
     seq: 0,
   };
@@ -188,9 +194,14 @@ export function effectiveDemand(draft: SimV2StateData): number {
   const season = p.seasonality[draft.clock.month - 1] ?? 1;
   const trend = Math.pow(1 + p.trendAnnual, draft.tick / 360);
   const noise = 1 + (draw(draft) - 0.5) * 2 * p.noiseAmplitude;
-  // brand/customer effects deepen in SIM-6; a light brand pull keeps loops alive now
-  const brandPull = 0.9 + (draft.stocks.brandEquity / 100) * 0.2;
-  return p.baseDailyDemand * cycleMult * season * trend * noise * brandPull;
+  // R1 growth loop (SIM-6): brand + customer base pull demand; price elasticity damps it.
+  const brandPull = 0.85 + (draft.stocks.brandEquity / 100) * 0.3;
+  const customerPull = 0.8 + Math.min(0.6, draft.stocks.customerBase / 500);
+  const elasticity = Math.pow(draft.aux.priceIndex, -(p.priceElasticity ?? 1.3));
+  // active event modifiers (SIM-5)
+  const ev = kpiModifier(draft, 'demand');
+  const base = p.baseDailyDemand * cycleMult * season * trend * noise * brandPull * customerPull * elasticity;
+  return Math.max(0, base * ev.mult + ev.add);
 }
 
 // ---------------------------------------------------------------------------
@@ -457,11 +468,12 @@ function dailyStep(draft: SimV2StateData, log: TickLogEntry[]): DeferredEffect[]
   }
 
   stepCycle(draft, log);
+  evaluateEvents(draft, draw, round, log); // SIM-5: fire/telegraph events, expire modifiers
 
   // demand → orders → fulfillment (capacity- and inventory-bound)
   const demand = effectiveDemand(draft);
   s.backlogOrders = round(s.backlogOrders + demand);
-  const producible = s.capacity * draft.aux.productivity;
+  const producible = s.capacity * draft.aux.productivity * kpiModifier(draft, 'productivity').mult;
   const fulfilled = Math.min(s.backlogOrders, producible, s.inventoryUnits);
   s.backlogOrders = round(s.backlogOrders - fulfilled);
   s.inventoryUnits = round(s.inventoryUnits - fulfilled);
@@ -469,11 +481,11 @@ function dailyStep(draft: SimV2StateData, log: TickLogEntry[]): DeferredEffect[]
 
   // money
   const revenue = fulfilled * p.unitPrice * draft.aux.priceIndex;
-  const cogs = fulfilled * p.unitCost * cycleMults.inputCosts;
+  const cogs = fulfilled * p.unitCost * cycleMults.inputCosts * kpiModifier(draft, 'inputCosts').mult;
   const salaries = (s.headcount * p.monthlySalary) / 30;
   const delegationCost = draft.focus.delegations.length * p.delegationDailyCost;
   const opex = salaries + p.fixedOpexDaily + draft.flows.marketingSpend + delegationCost;
-  const interest = (s.debt * p.annualInterestRate * cycleMults.interestRate) / 360;
+  const interest = (s.debt * p.annualInterestRate * cycleMults.interestRate * kpiModifier(draft, 'interestRate').mult) / 360;
 
   s.cash = round(s.cash + revenue * p.cashSaleShare - cogs - opex - interest);
   s.receivables = round(s.receivables + revenue * (1 - p.cashSaleShare));
@@ -491,17 +503,46 @@ function dailyStep(draft: SimV2StateData, log: TickLogEntry[]): DeferredEffect[]
   draft.flows.orderInflow = round(demand);
   draft.flows.interestExpense = round(interest, 6);
 
-  // solvency guardrail (full death-spiral loop lands in SIM-6)
+  // ---- SIM-6 coupled feedback loops (difference equations) ----
+  const a = draft.aux;
+  const moraleRate = p.moraleAdjustRate ?? 0.4;
+  const prodFromMorale = p.productivityFromMorale ?? 0.0015;
+  const attrition = p.attritionFromMorale ?? 0.01;
+  const churnFromBacklog = p.churnFromBacklog ?? 0.03;
+  const brandDecay = p.brandDecayDaily ?? 0.08;
+
+  // R2/B2 morale ↔ productivity: over-utilisation burns morale, slack restores it (delayed via slow rate)
+  const moraleTarget = 70 - (a.utilization > 0.9 ? (a.utilization - 0.9) * 250 : 0) + (a.utilization < 0.6 ? 8 : 0);
+  a.morale = round(Math.max(0, Math.min(100, a.morale + (moraleTarget - a.morale) * moraleRate * 0.05)));
+  a.productivity = round(Math.max(0.5, Math.min(1.4, a.productivity + (a.morale - 60) * prodFromMorale * 0.1 + (kpiModifier(draft, 'productivity').mult - 1) * 0)));
+  // attrition when morale is dire
+  if (a.morale < 30 && s.headcount > 1 && draw(draft) < attrition) {
+    s.headcount -= 1;
+    s.capacity = round(Math.max(0, s.capacity - s.capacity / (s.headcount + 1)));
+    log.push({ tick: draft.tick, kind: 'guardrail', message: 'Low morale drove an employee to quit — capacity fell' });
+  }
+
+  // B1 capacity/backlog → lead time → churn: a fat backlog relative to capacity raises churn
+  const leadPressure = producible > 0 ? Math.max(0, s.backlogOrders / producible - 1) : 0;
+  a.churnRate = round(Math.max(0.005, Math.min(0.4, 0.02 + leadPressure * churnFromBacklog + kpiModifier(draft, 'churn').add)));
+  if (leadPressure > 0.5) a.serviceQuality = round(Math.max(0, a.serviceQuality + kpiModifier(draft, 'serviceQuality').add - 0.15 * leadPressure));
+  else a.serviceQuality = round(Math.min(100, a.serviceQuality + 0.05 + kpiModifier(draft, 'serviceQuality').add));
+
+  // R1 growth: fulfilled demand + brand win customers; churn + lead pain lose them
+  const won = fulfilled * 0.02 * (a.serviceQuality / 75);
+  const lost = s.customerBase * (a.churnRate / 30);
+  s.customerBase = round(Math.max(0, s.customerBase + won - lost));
+  // brand decays daily, marketing offsets it
+  s.brandEquity = round(Math.max(0, Math.min(100, s.brandEquity - brandDecay + draft.flows.marketingSpend / 400)));
+  // market share tracks customer base (soft, bounded)
+  a.marketShare = round(Math.max(0, Math.min(100, s.customerBase / 20)));
+
+  // B3 solvency guardrail: negative cash → penalty borrowing (interest drag compounds next tick)
   if (s.cash < 0) {
     const borrow = round(-s.cash + 1000);
     s.debt = round(s.debt + borrow);
     s.cash = round(s.cash + borrow);
     log.push({ tick: draft.tick, kind: 'guardrail', message: `Cash ran out — emergency credit line drawn: ${borrow} RON at penalty terms` });
-  }
-
-  // gentle inventory replenishment pressure: backlog starves service quality
-  if (s.backlogOrders > producible * 3) {
-    draft.aux.serviceQuality = round(Math.max(0, draft.aux.serviceQuality - 0.1));
   }
 
   return resolveDueEffects(draft, log);
