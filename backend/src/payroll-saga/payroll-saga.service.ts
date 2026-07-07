@@ -1,3 +1,4 @@
+import { getPiiCipher } from '../security/pii-cipher';
 import { Injectable, Logger, BadRequestException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
@@ -382,8 +383,13 @@ export class PayrollSagaService {
         processed++;
         try {
           // Find local employee by CNP
+          // cnp is encrypted at rest; match legacy plaintext OR the blind index
+          const cnpHash = getPiiCipher().hashField(sagaEmp.cnp);
+          const cnpWhere: any = cnpHash
+            ? { OR: [{ cnp: sagaEmp.cnp }, { cnpHash }] }
+            : { cnp: sagaEmp.cnp };
           const localEmployee = await this.prisma.employee.findFirst({
-            where: { cnp: sagaEmp.cnp },
+            where: cnpWhere,
           });
 
           if (localEmployee) {

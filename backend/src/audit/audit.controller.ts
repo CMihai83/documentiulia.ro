@@ -15,6 +15,7 @@ import { UserRole } from '@prisma/client';
 import { TenantGuard } from '../tenant/tenant.guard';
 import { TenantScope } from '../tenant/tenant.decorator';
 import { AuditService } from './audit.service';
+import { AuditChainService } from './audit-chain.service';
 import { AuditLogQueryDto, AuditLogListResponseDto, AuditLogResponseDto } from './dto/audit.dto';
 
 @ApiTags('audit')
@@ -22,7 +23,17 @@ import { AuditLogQueryDto, AuditLogListResponseDto, AuditLogResponseDto } from '
 @UseGuards(JwtAuthGuard, RolesGuard, TenantGuard)
 @ApiBearerAuth()
 export class AuditController {
-  constructor(private readonly auditService: AuditService) {}
+  constructor(
+    private readonly auditService: AuditService,
+    private readonly auditChain: AuditChainService,
+  ) {}
+
+  @Get('chain/verify')
+  @Roles(UserRole.ADMIN)
+  @ApiOperation({ summary: 'Verify the append-only audit hash chain (GI-AUDIT-1)' })
+  async verifyChain(@Query('from') from?: string, @Query('to') to?: string) {
+    return this.auditChain.verifyChain(from ? Number(from) : undefined, to ? Number(to) : undefined);
+  }
 
   @Get()
   @TenantScope()
