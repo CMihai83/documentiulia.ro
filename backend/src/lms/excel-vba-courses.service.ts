@@ -1466,7 +1466,7 @@ Transformați datele brute de vânzări într-un raport profesional.
       }
     }
 
-    return course;
+    return (await this.lmsService.getCourse(course.id)) as Course;
   }
 
   async generateAllExcelCourses(instructorId: string): Promise<{

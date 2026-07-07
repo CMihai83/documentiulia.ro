@@ -1470,7 +1470,7 @@ Pentru fiecare risc, completează:
       }
     }
 
-    return course;
+    return (await this.lmsService.getCourse(course.id)) as Course;
   }
 
   async generateAllPMCourses(instructorId: string): Promise<{

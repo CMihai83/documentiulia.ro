@@ -3,6 +3,8 @@ import { FinanceOpsCoursesService } from './finance-ops-courses.service';
 import { LMSService } from './lms.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { ConfigService } from '@nestjs/config';
+import { RedisService } from '../redis/redis.service';
+import { createLmsPrismaFake } from './testing/lms-prisma.fake';
 
 describe('FinanceOpsCoursesService', () => {
   let service: FinanceOpsCoursesService;
@@ -13,12 +15,10 @@ describe('FinanceOpsCoursesService', () => {
       providers: [
         FinanceOpsCoursesService,
         LMSService,
+        { provide: RedisService, useValue: { get: async () => null, set: async () => true, del: async () => true, delPattern: async () => 0 } },
         {
           provide: PrismaService,
-          useValue: {
-            course: { findMany: jest.fn(), create: jest.fn() },
-            enrollment: { findMany: jest.fn() },
-          },
+          useValue: createLmsPrismaFake(),
         },
         {
           provide: ConfigService,

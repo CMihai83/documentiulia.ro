@@ -1389,6 +1389,20 @@ model LMSCourse {
   publishedAt         DateTime?
   hasCertificate      Boolean           @default(true)
   certificateTemplate String?
+  // F-1 lossless additions (from the in-memory Course interface)
+  shortDescription    String?
+  previewVideo        String?
+  subcategory         String?
+  prerequisites       String[]          @default([])
+  learningOutcomes    String[]          @default([])
+  targetAudience      String[]          @default([])
+  discountPrice       Decimal?          @db.Decimal(10, 2)
+  enrollmentCount     Int               @default(0)
+  rating              Float             @default(0)
+  reviewCount         Int               @default(0)
+  hrdaEligible        Boolean           @default(false)
+  ceuCredits          Float?
+  instructor          Json?
   createdAt           DateTime          @default(now())
   updatedAt           DateTime          @updatedAt
   modules             LMSCourseModule[]
@@ -1405,6 +1419,7 @@ model LMSCourseModule {
   description String?
   order       Int
   duration    Int
+  isFree      Boolean     @default(false)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
   course      LMSCourse   @relation(fields: [courseId], references: [id])
@@ -1422,6 +1437,9 @@ model LMSLesson {
   type        LMSLessonType
   videoUrl    String?
   content     String?
+  contentJson Json?
+  isFree      Boolean             @default(false)
+  isPreview   Boolean             @default(false)
   duration    Int
   attachments String[]
   createdAt   DateTime            @default(now())
@@ -1443,6 +1461,20 @@ model LMSEnrollment {
   certificateIssuedAt DateTime?
   quizScore           Float?
   passed              Boolean?
+  // F-1 lossless additions (from the in-memory Enrollment interface)
+  status              String              @default("ACTIVE")
+  accessType          String              @default("PURCHASED")
+  expiresAt           DateTime?
+  paymentId           String?
+  certificateId       String?
+  currentLessonId     String?
+  currentModuleId     String?
+  completedModules    String[]            @default([])
+  completedAssessments String[]           @default([])
+  totalTimeSpent      Int                 @default(0)
+  lastAccessedAt      DateTime?
+  streakDays          Int                 @default(0)
+  longestStreak       Int                 @default(0)
   createdAt           DateTime            @default(now())
   updatedAt           DateTime            @updatedAt
   course              LMSCourse           @relation(fields: [courseId], references: [id])
@@ -2562,6 +2594,14 @@ enum LMSCourseCategory {
   ACCOUNTING
   TAX_COMPLIANCE
   SOFT_SKILLS
+  // F-1: values from the in-memory LMS Course interface (lossless superset)
+  FINANCE
+  LEADERSHIP
+  COMPLIANCE
+  TECHNOLOGY
+  HR
+  OPERATIONS
+  MARKETING
 }
 
 enum LMSCourseLevel {
@@ -2585,6 +2625,9 @@ enum LMSLessonType {
   EXERCISE
   SIMULATION
   DOWNLOAD
+  // F-1: values from the in-memory LMS Lesson interface (lossless superset)
+  ASSIGNMENT
+  LIVE_SESSION
 }
 
 enum FreelancerAvailability {

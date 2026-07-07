@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigService } from '@nestjs/config';
+import { RedisService } from '../redis/redis.service';
 import { PMAgileCoursesService } from './pm-agile-courses.service';
 import { LMSService } from './lms.service';
+import { PrismaService } from '../prisma/prisma.service';
+import { createLmsPrismaFake } from './testing/lms-prisma.fake';
 
 describe('PMAgileCoursesService', () => {
   let service: PMAgileCoursesService;
@@ -12,6 +15,8 @@ describe('PMAgileCoursesService', () => {
       providers: [
         PMAgileCoursesService,
         LMSService,
+        { provide: RedisService, useValue: { get: async () => null, set: async () => true, del: async () => true, delPattern: async () => 0 } },
+        { provide: PrismaService, useValue: createLmsPrismaFake() },
         {
           provide: ConfigService,
           useValue: {
