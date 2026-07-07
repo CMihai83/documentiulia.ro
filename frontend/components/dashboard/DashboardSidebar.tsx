@@ -116,6 +116,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/ecommerce', icon: ShoppingCart, labelKey: 'ecommerce', defaultLabel: 'E-Commerce' },
       { href: '/dashboard/crm', icon: Target, labelKey: 'crm', defaultLabel: 'CRM' },
       { href: '/dashboard/partners', icon: Building, labelKey: 'partners', defaultLabel: 'Parteneri' },
+      { href: '/dashboard/consulting', icon: Briefcase, labelKey: 'consulting', defaultLabel: 'Consultanță' },
     ],
   },
   {
@@ -200,6 +201,7 @@ const hrefToModuleId: Record<string, string> = {
   '/dashboard/ecommerce': 'ecommerce',
   '/dashboard/crm': 'crm',
   '/dashboard/partners': 'partners',
+  '/dashboard/consulting': 'consulting',
   '/dashboard/warehouse': 'warehouse',
   '/dashboard/procurement': 'procurement',
   '/dashboard/logistics': 'logistics',
