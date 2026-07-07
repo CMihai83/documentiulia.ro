@@ -8,6 +8,7 @@ import {
   B2CInvoice,
 } from './efactura-b2c.service';
 import { ANAFResilientService } from './anaf-resilient.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 describe('EFacturaB2CService', () => {
   let service: EFacturaB2CService;
@@ -34,11 +35,43 @@ describe('EFacturaB2CService', () => {
   };
 
   beforeEach(async () => {
+    // Stateful in-memory Prisma mock so the persistence refactor stays testable
+    const invoices = new Map<string, any>();
+    const submissions: any[] = [];
+    const mockPrisma = {
+      b2CInvoice: {
+        create: async ({ data }: any) => {
+          invoices.set(data.id, { ...data, createdAt: new Date(), updatedAt: new Date() });
+          return invoices.get(data.id);
+        },
+        findUnique: async ({ where }: any) => invoices.get(where.id) || null,
+        findMany: async ({ where }: any) => {
+          let rows = [...invoices.values()];
+          if (where?.seller?.equals) rows = rows.filter((r) => r.seller?.cui === where.seller.equals);
+          return rows;
+        },
+        update: async ({ where, data }: any) => {
+          const r = invoices.get(where.id);
+          if (r) Object.assign(r, data);
+          return r;
+        },
+      },
+      b2CSubmission: {
+        create: async ({ data }: any) => {
+          const row = { id: `sub-${submissions.length + 1}`, submittedAt: new Date(), ...data };
+          submissions.push(row);
+          return row;
+        },
+        findMany: async ({ where }: any) => submissions.filter((s) => s.invoiceId === where.invoiceId),
+        findFirst: async ({ where }: any) => submissions.find((s) => s.invoiceId === where.invoiceId) || null,
+      },
+    };
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         EFacturaB2CService,
         { provide: ANAFResilientService, useValue: mockANAFService },
         { provide: ConfigService, useValue: mockConfigService },
+        { provide: PrismaService, useValue: mockPrisma },
         EventEmitter2,
       ],
     }).compile();
@@ -241,7 +274,7 @@ describe('EFacturaB2CService', () => {
 
       await service.submitToANAF(invoice.id);
 
-      const updated = service.getInvoice(invoice.id);
+      const updated = await service.getInvoice(invoice.id);
       expect(updated?.uploadIndex).toBe('upload-123');
       expect(updated?.efacturaStatus).toBe('SUBMITTED');
       expect(updated?.submittedAt).toBeDefined();
@@ -303,7 +336,7 @@ describe('EFacturaB2CService', () => {
 
       await service.checkStatus(invoice.id);
 
-      const updated = service.getInvoice(invoice.id);
+      const updated = await service.getInvoice(invoice.id);
       expect(updated?.efacturaStatus).toBe('ACCEPTED');
     });
 
@@ -323,14 +356,14 @@ describe('EFacturaB2CService', () => {
       const invoiceData = createTestInvoice();
       const created = await service.createInvoice(invoiceData);
 
-      const invoice = service.getInvoice(created.id);
+      const invoice = await service.getInvoice(created.id);
 
       expect(invoice).not.toBeNull();
       expect(invoice?.id).toBe(created.id);
     });
 
-    it('should return null for non-existent invoice', () => {
-      const invoice = service.getInvoice('non-existent');
+    it('should return null for non-existent invoice', async () => {
+      const invoice = await service.getInvoice('non-existent');
       expect(invoice).toBeNull();
     });
   });
@@ -344,13 +377,13 @@ describe('EFacturaB2CService', () => {
       await service.createInvoice(invoiceData1);
       await service.createInvoice(invoiceData2);
 
-      const invoices = service.getInvoicesBySeller('12345678');
+      const invoices = await service.getInvoicesBySeller('12345678');
 
       expect(invoices.length).toBe(2);
     });
 
-    it('should return empty array for unknown seller', () => {
-      const invoices = service.getInvoicesBySeller('99999999');
+    it('should return empty array for unknown seller', async () => {
+      const invoices = await service.getInvoicesBySeller('99999999');
       expect(invoices.length).toBe(0);
     });
   });
@@ -361,7 +394,7 @@ describe('EFacturaB2CService', () => {
       const invoice = await service.createInvoice(invoiceData);
       await service.submitToANAF(invoice.id);
 
-      const history = service.getSubmissionHistory(invoice.id);
+      const history = await service.getSubmissionHistory(invoice.id);
 
       expect(history.length).toBe(1);
       expect(history[0].success).toBe(true);
