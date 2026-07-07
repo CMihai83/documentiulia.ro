@@ -12,16 +12,14 @@ import {
   BiasCategory,
 } from './ats.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { MatchingService } from '../matching/matching.service';
+import { createMatchingPrismaFake } from '../testing/matching-prisma.fake';
 
 describe('ATSService', () => {
   let service: ATSService;
   let module: TestingModule;
 
-  const mockPrismaService = {
-    employee: {
-      findFirst: jest.fn(),
-    },
-  };
+  const mockPrismaService: any = createMatchingPrismaFake();
 
   const mockConfigService = {
     get: jest.fn(),
@@ -32,13 +30,14 @@ describe('ATSService', () => {
     module = await Test.createTestingModule({
       providers: [
         ATSService,
+        MatchingService,
         { provide: PrismaService, useValue: mockPrismaService },
         { provide: ConfigService, useValue: mockConfigService },
       ],
     }).compile();
 
     service = module.get<ATSService>(ATSService);
-    service.resetState(); // Clear in-memory data
+    await service.resetState(); // Clear persisted (fake) data
     jest.clearAllMocks();
   });
 
