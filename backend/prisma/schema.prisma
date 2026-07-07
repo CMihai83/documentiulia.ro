@@ -2971,3 +2971,30 @@ model B2CSubmission {
   @@index([organizationId, invoiceId])
   @@index([invoiceId])
 }
+
+// ---- S-44 / DOC-44-1: persist consultancy bookings (was in-memory) ----
+model ConsultingBooking {
+  id             String    @id
+  organizationId String
+  userId         String
+  packageId      String
+  package        Json      // snapshot of the package at booking time
+  consultantId   String?
+  consultantName String?
+  scheduledAt    DateTime
+  endTime        DateTime
+  status         String    @default("pending")
+  paymentStatus  String    @default("pending")
+  amount         Decimal   @db.Decimal(14, 2)
+  currency       String    @default("RON")
+  notes          String?
+  meetingLink    String?
+  attachments    Json?
+  feedback       Json?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([organizationId])
+  @@index([organizationId, status])
+  @@index([organizationId, scheduledAt])
+}

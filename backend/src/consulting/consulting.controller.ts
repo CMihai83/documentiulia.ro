@@ -193,7 +193,7 @@ export class ConsultingController {
    */
   @Get('bookings/:bookingId')
   @UseGuards(JwtAuthGuard)
-  getBooking(@Param('bookingId') bookingId: string): ConsultingBooking {
+  getBooking(@Param('bookingId') bookingId: string): Promise<ConsultingBooking> {
     return this.consultingService.getBooking(bookingId);
   }
 
@@ -203,7 +203,7 @@ export class ConsultingController {
   @Post('bookings/:bookingId/confirm')
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  confirmBooking(@Param('bookingId') bookingId: string): ConsultingBooking {
+  confirmBooking(@Param('bookingId') bookingId: string): Promise<ConsultingBooking> {
     return this.consultingService.confirmBooking(bookingId);
   }
 
@@ -216,7 +216,7 @@ export class ConsultingController {
   cancelBooking(
     @Param('bookingId') bookingId: string,
     @Body() dto: CancelBookingDto,
-  ): ConsultingBooking {
+  ): Promise<ConsultingBooking> {
     return this.consultingService.cancelBooking(bookingId, dto.reason);
   }
 
@@ -229,7 +229,7 @@ export class ConsultingController {
   rescheduleBooking(
     @Param('bookingId') bookingId: string,
     @Body() dto: RescheduleBookingDto,
-  ): ConsultingBooking {
+  ): Promise<ConsultingBooking> {
     return this.consultingService.rescheduleBooking(
       bookingId,
       new Date(dto.newScheduledAt),
@@ -245,7 +245,7 @@ export class ConsultingController {
   completeBooking(
     @Param('bookingId') bookingId: string,
     @Body() dto: CompleteBookingDto,
-  ): ConsultingBooking {
+  ): Promise<ConsultingBooking> {
     return this.consultingService.completeBooking(bookingId, dto.deliverables);
   }
 
@@ -258,7 +258,7 @@ export class ConsultingController {
   submitFeedback(
     @Param('bookingId') bookingId: string,
     @Body() dto: SubmitFeedbackDto,
-  ): ConsultingBooking {
+  ): Promise<ConsultingBooking> {
     return this.consultingService.submitFeedback(
       bookingId,
       dto.rating,
@@ -272,7 +272,7 @@ export class ConsultingController {
    */
   @Get('bookings/:bookingId/invoice')
   @UseGuards(JwtAuthGuard)
-  generateInvoice(@Param('bookingId') bookingId: string): ConsultingInvoice {
+  generateInvoice(@Param('bookingId') bookingId: string): Promise<ConsultingInvoice> {
     return this.consultingService.generateInvoice(bookingId);
   }
 

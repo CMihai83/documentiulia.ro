@@ -1,6 +1,7 @@
 import { Injectable, Logger, BadRequestException, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Tier } from '@prisma/client';
+import { canTransitionBooking } from './consulting.state';
 
 // Consulting service types
 export type ConsultingServiceType =
@@ -135,9 +136,7 @@ export interface ConsultingStats {
 export class ConsultingService {
   private readonly logger = new Logger(ConsultingService.name);
 
-  // In-memory storage for bookings (would be in DB in production)
-  private bookings: Map<string, ConsultingBooking> = new Map();
-  private bookingCounter = 1000;
+  // Bookings are persisted to Postgres (DOC-44-1) — see mappers below.
 
   // Consulting packages
   private readonly packages: Map<string, ConsultingPackage> = new Map([
@@ -707,6 +706,27 @@ export class ConsultingService {
 
   constructor(private readonly prisma: PrismaService) {}
 
+  // ---- Booking row <-> domain mappers (DOC-44-1) ----
+  private bookingToRow(b: ConsultingBooking) {
+    return {
+      id: b.id, organizationId: b.organizationId, userId: b.userId, packageId: b.packageId,
+      package: b.package as any, consultantId: b.consultantId, consultantName: b.consultantName,
+      scheduledAt: b.scheduledAt, endTime: b.endTime, status: b.status, paymentStatus: b.paymentStatus,
+      amount: b.amount, currency: b.currency, notes: b.notes, meetingLink: b.meetingLink,
+      attachments: (b.attachments ?? undefined) as any, feedback: (b.feedback ?? undefined) as any,
+    };
+  }
+  private bookingFromRow(r: any): ConsultingBooking {
+    return {
+      id: r.id, organizationId: r.organizationId, userId: r.userId, packageId: r.packageId,
+      package: r.package, consultantId: r.consultantId ?? undefined, consultantName: r.consultantName ?? undefined,
+      scheduledAt: r.scheduledAt, endTime: r.endTime, status: r.status, paymentStatus: r.paymentStatus,
+      amount: Number(r.amount), currency: r.currency, notes: r.notes ?? undefined,
+      meetingLink: r.meetingLink ?? undefined, attachments: r.attachments ?? undefined,
+      feedback: r.feedback ?? undefined, createdAt: r.createdAt, updatedAt: r.updatedAt,
+    };
+  }
+
   /**
    * Get all consulting packages
    */
@@ -842,7 +862,7 @@ export class ConsultingService {
     const pkg = this.packages.get(packageId)!;
     const amount = currency === 'EUR' ? pkg.priceEur : pkg.priceRon;
 
-    const bookingId = `booking_${++this.bookingCounter}`;
+    const bookingId = `booking_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
     const endTime = new Date(scheduledAt);
     endTime.setMinutes(endTime.getMinutes() + pkg.durationMinutes);
 
@@ -865,7 +885,7 @@ export class ConsultingService {
       updatedAt: new Date(),
     };
 
-    this.bookings.set(bookingId, booking);
+    await this.prisma.consultingBooking.create({ data: this.bookingToRow(booking) });
     this.logger.log(`Created booking ${bookingId} for org ${organizationId}`);
 
     return booking;
@@ -874,29 +894,32 @@ export class ConsultingService {
   /**
    * Get booking by ID
    */
-  getBooking(bookingId: string): ConsultingBooking {
-    const booking = this.bookings.get(bookingId);
-    if (!booking) {
+  async getBooking(bookingId: string): Promise<ConsultingBooking> {
+    const row = await this.prisma.consultingBooking.findUnique({ where: { id: bookingId } });
+    if (!row) {
       throw new NotFoundException(`Booking ${bookingId} not found`);
     }
-    return booking;
+    return this.bookingFromRow(row);
   }
 
   /**
    * Get all bookings for an organization
    */
-  getOrganizationBookings(organizationId: string): ConsultingBooking[] {
-    return Array.from(this.bookings.values())
-      .filter(b => b.organizationId === organizationId)
-      .sort((a, b) => b.scheduledAt.getTime() - a.scheduledAt.getTime());
+  async getOrganizationBookings(organizationId: string): Promise<ConsultingBooking[]> {
+    const rows = await this.prisma.consultingBooking.findMany({
+      where: { organizationId },
+      orderBy: { scheduledAt: 'desc' },
+    });
+    return rows.map((r) => this.bookingFromRow(r));
   }
 
   /**
    * Get upcoming bookings for an organization
    */
-  getUpcomingBookings(organizationId: string): ConsultingBooking[] {
+  async getUpcomingBookings(organizationId: string): Promise<ConsultingBooking[]> {
     const now = new Date();
-    return this.getOrganizationBookings(organizationId)
+    const all = await this.getOrganizationBookings(organizationId);
+    return all
       .filter(b => b.scheduledAt > now && b.status !== 'cancelled')
       .sort((a, b) => a.scheduledAt.getTime() - b.scheduledAt.getTime());
   }
@@ -904,100 +927,94 @@ export class ConsultingService {
   /**
    * Confirm a booking (after payment)
    */
-  confirmBooking(bookingId: string): ConsultingBooking {
-    const booking = this.getBooking(bookingId);
+  async confirmBooking(bookingId: string): Promise<ConsultingBooking> {
+    const booking = await this.getBooking(bookingId);
 
-    if (booking.status !== 'pending') {
+    if (!canTransitionBooking(booking.status, 'confirmed')) {
       throw new BadRequestException(`Cannot confirm booking with status ${booking.status}`);
     }
 
-    booking.status = 'confirmed';
-    booking.paymentStatus = 'paid';
-    booking.meetingLink = `https://meet.documentuilia.ro/consulting/${bookingId}`;
-    booking.updatedAt = new Date();
-
-    this.bookings.set(bookingId, booking);
+    const updated = await this.prisma.consultingBooking.update({
+      where: { id: bookingId },
+      data: {
+        status: 'confirmed',
+        paymentStatus: 'paid',
+        meetingLink: `https://meet.documentuilia.ro/consulting/${bookingId}`,
+      },
+    });
     this.logger.log(`Confirmed booking ${bookingId}`);
-
-    return booking;
+    return this.bookingFromRow(updated);
   }
 
   /**
    * Cancel a booking
    */
-  cancelBooking(bookingId: string, reason?: string): ConsultingBooking {
-    const booking = this.getBooking(bookingId);
+  async cancelBooking(bookingId: string, reason?: string): Promise<ConsultingBooking> {
+    const booking = await this.getBooking(bookingId);
 
-    if (booking.status === 'completed' || booking.status === 'cancelled') {
+    if (!canTransitionBooking(booking.status, 'cancelled')) {
       throw new BadRequestException(`Cannot cancel booking with status ${booking.status}`);
     }
 
     // Check if cancellation is within 24 hours
     const hoursUntilBooking = (booking.scheduledAt.getTime() - Date.now()) / (1000 * 60 * 60);
     const canRefund = hoursUntilBooking > 24;
+    const paymentStatus =
+      canRefund && booking.paymentStatus === 'paid' ? 'refunded' : booking.paymentStatus;
+    const notes = reason ? `${booking.notes || ''}\nCancellation reason: ${reason}` : booking.notes;
 
-    booking.status = 'cancelled';
-    booking.paymentStatus = canRefund && booking.paymentStatus === 'paid' ? 'refunded' : booking.paymentStatus;
-    booking.notes = reason ? `${booking.notes || ''}\nCancellation reason: ${reason}` : booking.notes;
-    booking.updatedAt = new Date();
-
-    this.bookings.set(bookingId, booking);
+    const updated = await this.prisma.consultingBooking.update({
+      where: { id: bookingId },
+      data: { status: 'cancelled', paymentStatus, notes },
+    });
     this.logger.log(`Cancelled booking ${bookingId}, refund: ${canRefund}`);
-
-    return booking;
+    return this.bookingFromRow(updated);
   }
 
   /**
    * Reschedule a booking
    */
-  rescheduleBooking(bookingId: string, newScheduledAt: Date): ConsultingBooking {
-    const booking = this.getBooking(bookingId);
+  async rescheduleBooking(bookingId: string, newScheduledAt: Date): Promise<ConsultingBooking> {
+    const booking = await this.getBooking(bookingId);
 
-    if (booking.status === 'completed' || booking.status === 'cancelled') {
+    if (!canTransitionBooking(booking.status, 'rescheduled')) {
       throw new BadRequestException(`Cannot reschedule booking with status ${booking.status}`);
     }
 
     const newEndTime = new Date(newScheduledAt);
     newEndTime.setMinutes(newEndTime.getMinutes() + booking.package.durationMinutes);
 
-    booking.scheduledAt = newScheduledAt;
-    booking.endTime = newEndTime;
-    booking.status = 'rescheduled';
-    booking.updatedAt = new Date();
-
-    this.bookings.set(bookingId, booking);
+    const updated = await this.prisma.consultingBooking.update({
+      where: { id: bookingId },
+      data: { scheduledAt: newScheduledAt, endTime: newEndTime, status: 'rescheduled' },
+    });
     this.logger.log(`Rescheduled booking ${bookingId} to ${newScheduledAt}`);
-
-    return booking;
+    return this.bookingFromRow(updated);
   }
 
   /**
    * Complete a booking
    */
-  completeBooking(bookingId: string, deliverables?: string[]): ConsultingBooking {
-    const booking = this.getBooking(bookingId);
+  async completeBooking(bookingId: string, deliverables?: string[]): Promise<ConsultingBooking> {
+    const booking = await this.getBooking(bookingId);
 
-    if (booking.status !== 'confirmed' && booking.status !== 'in_progress') {
+    if (!canTransitionBooking(booking.status, 'completed')) {
       throw new BadRequestException(`Cannot complete booking with status ${booking.status}`);
     }
 
-    booking.status = 'completed';
-    if (deliverables) {
-      booking.attachments = deliverables;
-    }
-    booking.updatedAt = new Date();
-
-    this.bookings.set(bookingId, booking);
+    const updated = await this.prisma.consultingBooking.update({
+      where: { id: bookingId },
+      data: { status: 'completed', attachments: deliverables ? (deliverables as any) : undefined },
+    });
     this.logger.log(`Completed booking ${bookingId}`);
-
-    return booking;
+    return this.bookingFromRow(updated);
   }
 
   /**
    * Submit feedback for a completed booking
    */
-  submitFeedback(bookingId: string, rating: number, comment?: string, wouldRecommend: boolean = true): ConsultingBooking {
-    const booking = this.getBooking(bookingId);
+  async submitFeedback(bookingId: string, rating: number, comment?: string, wouldRecommend: boolean = true): Promise<ConsultingBooking> {
+    const booking = await this.getBooking(bookingId);
 
     if (booking.status !== 'completed') {
       throw new BadRequestException('Can only submit feedback for completed bookings');
@@ -1007,25 +1024,20 @@ export class ConsultingService {
       throw new BadRequestException('Rating must be between 1 and 5');
     }
 
-    booking.feedback = {
-      rating,
-      comment,
-      wouldRecommend,
-      submittedAt: new Date(),
-    };
-    booking.updatedAt = new Date();
-
-    this.bookings.set(bookingId, booking);
+    const feedback = { rating, comment, wouldRecommend, submittedAt: new Date() };
+    const updated = await this.prisma.consultingBooking.update({
+      where: { id: bookingId },
+      data: { feedback: feedback as any },
+    });
     this.logger.log(`Feedback submitted for booking ${bookingId}: ${rating}/5`);
-
-    return booking;
+    return this.bookingFromRow(updated);
   }
 
   /**
    * Generate invoice for a booking
    */
-  generateInvoice(bookingId: string): ConsultingInvoice {
-    const booking = this.getBooking(bookingId);
+  async generateInvoice(bookingId: string): Promise<ConsultingInvoice> {
+    const booking = await this.getBooking(bookingId);
 
     const vatRate = 0.19; // Romanian VAT 19% for services
     const netAmount = booking.amount / (1 + vatRate);
@@ -1050,8 +1062,8 @@ export class ConsultingService {
   /**
    * Get consulting statistics for an organization
    */
-  getStats(organizationId: string): ConsultingStats {
-    const bookings = this.getOrganizationBookings(organizationId);
+  async getStats(organizationId: string): Promise<ConsultingStats> {
+    const bookings = await this.getOrganizationBookings(organizationId);
     const now = new Date();
 
     const completedBookings = bookings.filter(b => b.status === 'completed');
