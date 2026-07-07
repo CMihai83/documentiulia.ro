@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
+import { PiiRedactionService } from './pii-redaction.service';
 import axios from 'axios';
 
 // Grok AI Service for DocumentIulia.ro
@@ -47,7 +48,19 @@ Nu inventa informații. Dacă nu știi, spune-o.`;
   constructor(
     private configService: ConfigService,
     private prisma: PrismaService,
+    private readonly pii: PiiRedactionService,
   ) {}
+
+  /**
+   * Redaction is forced whenever xAI Zero-Data-Retention is not confirmed on the
+   * account (GI-AI-1). It can only be disabled for debugging when ZDR is confirmed.
+   */
+  private redactionForced(): boolean {
+    const zdrConfirmed = this.configService.get('AI_ZDR_CONFIRMED') === 'true';
+    const flag = this.configService.get('AI_PII_REDACTION');
+    const redactionOn = flag === undefined || flag === null || String(flag) !== 'false';
+    return redactionOn || !zdrConfirmed;
+  }
 
   async ask(userId: string, question: string): Promise<{ answer: string; tokens: number }> {
     const startTime = Date.now();
@@ -61,6 +74,14 @@ Nu inventa informații. Dacă nu știi, spune-o.`;
       };
     }
 
+    // GI-AI-1: pseudonymise Romanian PII before the prompt leaves to xAI (US).
+    const { text: outboundQuestion, map: piiMap, counts } = this.redactionForced()
+      ? this.pii.redact(question)
+      : { text: question, map: {} as Record<string, string>, counts: {} as Record<string, number> };
+    if (this.pii.hasPii(counts)) {
+      this.logger.log(`Redacted ${JSON.stringify(counts)} PII token(s) before xAI call`);
+    }
+
     try {
       const response = await axios.post<GrokResponse>(
         this.grokApiUrl,
@@ -68,7 +89,7 @@ Nu inventa informații. Dacă nu știi, spune-o.`;
           model: 'grok-2-latest',
           messages: [
             { role: 'system', content: this.systemPrompt },
-            { role: 'user', content: question },
+            { role: 'user', content: outboundQuestion },
           ],
           temperature: 0.7,
           max_tokens: 1000,
@@ -81,17 +102,20 @@ Nu inventa informații. Dacă nu știi, spune-o.`;
         },
       );
 
-      const answer = response.data.choices[0]?.message?.content || 'Nu am putut genera un răspuns.';
+      const modelAnswer = response.data.choices[0]?.message?.content || 'Nu am putut genera un răspuns.';
       const tokens = response.data.usage?.total_tokens || 0;
       const latencyMs = Date.now() - startTime;
 
-      // Log the query
+      // Re-hydrate placeholders so the USER sees real values...
+      const answer = this.pii.rehydrate(modelAnswer, piiMap);
+
+      // ...but STORE only the pseudonymised text — no raw PII lands in our DB.
       if (userId && userId !== 'system') {
         await this.prisma.aIQuery.create({
           data: {
             user: { connect: { id: userId } },
-            question,
-            answer,
+            question: outboundQuestion,
+            answer: modelAnswer,
             model: 'grok-2-latest',
             tokens,
             latencyMs,

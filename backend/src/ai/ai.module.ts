@@ -15,9 +15,13 @@ import { VoiceCommandsService } from './voice-commands.service';
 import { VoiceCommandsController } from './voice-commands.controller';
 import { GrokConversationService } from './grok-conversation.service';
 import { GrokConversationController } from './grok-conversation.controller';
+import { PiiRedactionService } from './pii-redaction.service';
+import { DataUseGuardService } from './data-use-guard.service';
+import { DataUseController } from './data-use.controller';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [EventEmitterModule.forRoot(), ConfigModule],
+  imports: [EventEmitterModule.forRoot(), ConfigModule, PrismaModule],
   controllers: [
     AiController,
     AiChatAssistantController,
@@ -26,6 +30,7 @@ import { GrokConversationController } from './grok-conversation.controller';
     AiInsightsController,
     VoiceCommandsController,
     GrokConversationController,
+    DataUseController,
   ],
   providers: [
     AiService,
@@ -35,6 +40,8 @@ import { GrokConversationController } from './grok-conversation.controller';
     AiInsightsService,
     VoiceCommandsService,
     GrokConversationService,
+    PiiRedactionService,
+    DataUseGuardService,
   ],
   exports: [
     AiService,
@@ -44,6 +51,8 @@ import { GrokConversationController } from './grok-conversation.controller';
     AiInsightsService,
     VoiceCommandsService,
     GrokConversationService,
+    PiiRedactionService,
+    DataUseGuardService,
   ],
 })
 export class AiModule {}

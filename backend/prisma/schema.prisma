@@ -8,6 +8,9 @@ datasource db {
 }
 
 model Organization {
+  aiTrainingAuthorized   Boolean   @default(false)
+  aiTrainingAuthorizedAt DateTime?
+  aiTrainingAuthorizedBy String?
   id                 String                    @id @default(cuid())
   name               String
   slug               String                    @unique
