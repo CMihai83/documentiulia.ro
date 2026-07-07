@@ -114,6 +114,7 @@ model OrganizationInvitation {
 
 model User {
   id                      String                @id @default(cuid())
+  anonymizedAt      DateTime?
   clerkId                 String?               @unique
   email                   String                @unique
   name                    String?
@@ -176,6 +177,9 @@ model DashboardPreferences {
 
 model Document {
   id              String           @id @default(cuid())
+  restrictedAt      DateTime?
+  restrictionReason String?
+  legalHold         Boolean   @default(false)
   userId          String
   filename        String
   fileUrl         String
@@ -201,6 +205,9 @@ model Document {
 
 model Invoice {
   id                 String            @id @default(cuid())
+  restrictedAt      DateTime?
+  restrictionReason String?
+  legalHold         Boolean   @default(false)
   userId             String
   documentId         String?           @unique
   invoiceNumber      String
@@ -284,6 +291,9 @@ model Payment {
 
 model VATReport {
   id             String        @id @default(cuid())
+  restrictedAt      DateTime?
+  restrictionReason String?
+  legalHold         Boolean   @default(false)
   userId         String
   period         String
   vatCollected   Decimal       @db.Decimal(12, 2)
@@ -307,6 +317,9 @@ model VATReport {
 
 model SAFTReport {
   id               String        @id @default(cuid())
+  restrictedAt      DateTime?
+  restrictionReason String?
+  legalHold         Boolean   @default(false)
   userId           String
   period           String
   reportType       String        @default("D406")
@@ -580,6 +593,7 @@ model PfaActivity {
 
 model Employee {
   id                 String              @id @default(cuid())
+  anonymizedAt      DateTime?
   userId             String
   firstName          String
   lastName           String
@@ -611,6 +625,9 @@ model Employee {
 
 model Payroll {
   id            String        @id @default(cuid())
+  restrictedAt      DateTime?
+  restrictionReason String?
+  legalHold         Boolean   @default(false)
   employeeId    String
   period        String
   grossSalary   Decimal       @db.Decimal(10, 2)
@@ -650,6 +667,7 @@ model Timesheet {
 
 model Partner {
   id                String             @id @default(cuid())
+  anonymizedAt      DateTime?
   userId            String
   organizationId    String?
   name              String
@@ -700,6 +718,9 @@ model AIQuery {
 
 model AuditLog {
   id             String        @id @default(cuid())
+  sequence          BigInt?
+  previousHash      String?
+  hash              String?
   userId         String
   action         String
   entity         String
@@ -718,6 +739,7 @@ model AuditLog {
   @@index([userId, entity, createdAt])
   @@index([entity, entityId])
   @@index([organizationId, action, createdAt])
+  @@index([sequence])
 }
 
 model Consent {
@@ -736,6 +758,7 @@ model Consent {
 
 model DSRRequest {
   id                String    @id @default(cuid())
+  erasureReport     Json?
   userId            String
   type              String
   status            String    @default("PENDING")
@@ -3325,4 +3348,12 @@ model SimV2State {
 
   @@unique([runId, tick])
   @@index([runId])
+}
+
+// GI-AUDIT-1: single-row head of the global append-only audit hash chain
+model AuditChainHead {
+  id           String   @id @default("global")
+  lastSequence BigInt   @default(0)
+  lastHash     String?
+  updatedAt    DateTime @updatedAt
 }
