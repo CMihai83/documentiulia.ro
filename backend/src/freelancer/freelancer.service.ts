@@ -1,7 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { MatchingService } from '../matching/matching.service';
 
 // Freelancer & Collaboration Hub Service
 // AI-powered talent matching, vendor portal, and gig economy orchestration
+//
+// F-3: profiles/projects/project-applications persist via Prisma (FreelancerProfile
+// extended + FreelancerProject/FreelancerProjectApplication); all match scoring is
+// delegated to the shared MatchingService. Reviews, posted-worker declarations and
+// classification assessments remain in-memory (documented follow-up).
 
 // ===== TYPES =====
 
@@ -310,37 +317,247 @@ const EU_MINIMUM_WAGES: Record<string, number> = {
 
 @Injectable()
 export class FreelancerService {
-  // In-memory storage (would use Prisma in production)
-  private freelancers = new Map<string, FreelancerProfile>();
-  private projects = new Map<string, Project>();
-  private applications = new Map<string, ProjectApplication>();
+  // Still in-memory (documented follow-up stories): reviews, EU posted-worker
+  // declarations, OUG 79/2023 classification assessments.
   private reviews = new Map<string, FreelancerReview>();
   private postedWorkerDeclarations = new Map<string, PostedWorkerDeclaration>();
   private classificationAssessments = new Map<string, ClassificationAssessment>();
 
-  constructor() {
-    this.initializeDefaultData();
-  }
-
-  private initializeDefaultData(): void {
-    // Initialize with some sample skill categories
-  }
+  constructor(
+    private prisma: PrismaService,
+    private matching: MatchingService,
+  ) {}
 
   // Reset for testing
-  resetState(): void {
-    this.freelancers.clear();
-    this.projects.clear();
-    this.applications.clear();
+  async resetState(): Promise<void> {
+    await this.prisma.freelancerProjectApplication.deleteMany({});
+    await this.prisma.freelancerProject.deleteMany({});
+    await this.prisma.freelancerProfile.deleteMany({});
     this.reviews.clear();
     this.postedWorkerDeclarations.clear();
     this.classificationAssessments.clear();
+  }
+
+  // ===== ROW ↔ INTERFACE MAPPERS (F-3) =====
+
+  private rowToProfile(row: any): FreelancerProfile {
+    const d = (row.profileData as any) || {};
+    const skills: Skill[] = ((row.skillsDetailed as any[]) || []).map(s => ({
+      ...s,
+      verifiedAt: s.verifiedAt ? new Date(s.verifiedAt) : undefined,
+    }));
+    return {
+      id: row.id,
+      userId: row.userId || '',
+      email: row.email,
+      firstName: d.firstName || '',
+      lastName: d.lastName || '',
+      displayName: d.displayName || row.name,
+      avatarUrl: d.avatarUrl,
+      title: d.title || '',
+      bio: row.bio || '',
+      skills,
+      hourlyRate: row.hourlyRate != null ? Number(row.hourlyRate) : 0,
+      currency: row.currency,
+      contractType: d.contractType || 'PFA',
+      businessName: d.businessName,
+      cui: row.cui || undefined,
+      vatNumber: d.vatNumber,
+      registrationNumber: d.registrationNumber,
+      country: row.country || '',
+      city: d.city || '',
+      timezone: d.timezone || '',
+      availability: row.availability as AvailabilityStatus,
+      availableHoursPerWeek: d.availableHoursPerWeek ?? 0,
+      preferredProjectDuration: d.preferredProjectDuration || [],
+      remoteOnly: d.remoteOnly ?? false,
+      willingToTravel: d.willingToTravel ?? false,
+      travelRadius: d.travelRadius,
+      totalProjects: d.totalProjects ?? 0,
+      completedProjects: d.completedProjects ?? 0,
+      totalEarnings: d.totalEarnings ?? 0,
+      averageRating: row.rating ?? 0,
+      totalReviews: row.reviewCount ?? 0,
+      responseRate: d.responseRate ?? 100,
+      responseTime: d.responseTime ?? 24,
+      onTimeDelivery: d.onTimeDelivery ?? 100,
+      status: (row.profileStatus as FreelancerStatus) || 'ACTIVE',
+      identityVerified: d.identityVerified ?? row.verified ?? false,
+      portfolioVerified: d.portfolioVerified ?? false,
+      skillsVerified: d.skillsVerified ?? false,
+      linkedinUrl: row.linkedinUrl || undefined,
+      githubUrl: d.githubUrl,
+      portfolioUrl: row.portfolioUrl || undefined,
+      maltProfileId: d.maltProfileId,
+      freelancerComProfileId: d.freelancerComProfileId,
+      upworkProfileId: d.upworkProfileId,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+      lastActiveAt: d.lastActiveAt ? new Date(d.lastActiveAt) : row.updatedAt,
+    };
+  }
+
+  /** Column sync: flat skills/rating/etc. stay queryable; the rich shape lives in JSON. */
+  private profileToRowData(p: FreelancerProfile): any {
+    return {
+      userId: p.userId || null,
+      name: p.displayName || `${p.firstName} ${p.lastName}`.trim() || p.email,
+      email: p.email,
+      skills: p.skills.map(s => s.name),
+      experience: p.skills.length
+        ? Math.round(p.skills.reduce((sum, s) => sum + s.yearsExperience, 0) / p.skills.length)
+        : null,
+      portfolioUrl: p.portfolioUrl ?? null,
+      linkedinUrl: p.linkedinUrl ?? null,
+      bio: p.bio ?? null,
+      availability: p.availability,
+      hourlyRate: p.hourlyRate,
+      currency: p.currency,
+      rating: p.averageRating,
+      reviewCount: p.totalReviews,
+      verified: p.identityVerified,
+      cui: p.cui ?? null,
+      country: p.country || null,
+      profileStatus: p.status,
+      skillsDetailed: p.skills as any,
+      profileData: {
+        firstName: p.firstName,
+        lastName: p.lastName,
+        displayName: p.displayName,
+        avatarUrl: p.avatarUrl,
+        title: p.title,
+        contractType: p.contractType,
+        businessName: p.businessName,
+        vatNumber: p.vatNumber,
+        registrationNumber: p.registrationNumber,
+        city: p.city,
+        timezone: p.timezone,
+        availableHoursPerWeek: p.availableHoursPerWeek,
+        preferredProjectDuration: p.preferredProjectDuration,
+        remoteOnly: p.remoteOnly,
+        willingToTravel: p.willingToTravel,
+        travelRadius: p.travelRadius,
+        totalProjects: p.totalProjects,
+        completedProjects: p.completedProjects,
+        totalEarnings: p.totalEarnings,
+        responseRate: p.responseRate,
+        responseTime: p.responseTime,
+        onTimeDelivery: p.onTimeDelivery,
+        identityVerified: p.identityVerified,
+        portfolioVerified: p.portfolioVerified,
+        skillsVerified: p.skillsVerified,
+        githubUrl: p.githubUrl,
+        maltProfileId: p.maltProfileId,
+        freelancerComProfileId: p.freelancerComProfileId,
+        upworkProfileId: p.upworkProfileId,
+        lastActiveAt: p.lastActiveAt,
+      } as any,
+    };
+  }
+
+  private async loadProfile(freelancerId: string): Promise<FreelancerProfile | null> {
+    const row = await this.prisma.freelancerProfile.findUnique({ where: { id: freelancerId } });
+    return row ? this.rowToProfile(row) : null;
+  }
+
+  private async saveProfile(profile: FreelancerProfile): Promise<FreelancerProfile> {
+    const row = await this.prisma.freelancerProfile.update({
+      where: { id: profile.id },
+      data: this.profileToRowData(profile),
+    });
+    return this.rowToProfile(row);
+  }
+
+  private rowToProject(row: any): Project {
+    return {
+      id: row.id,
+      clientId: row.clientId,
+      title: row.title,
+      description: row.description,
+      requiredSkills: (row.requiredSkills as any[]) || [],
+      budgetType: row.budgetType,
+      budgetMin: Number(row.budgetMin),
+      budgetMax: Number(row.budgetMax),
+      currency: row.currency,
+      startDate: row.startDate || undefined,
+      endDate: row.endDate || undefined,
+      estimatedDuration: row.estimatedDuration,
+      locationType: row.locationType,
+      location: row.location || undefined,
+      country: row.country,
+      experienceLevel: row.experienceLevel,
+      contractTypes: (row.contractTypes as ContractType[]) || [],
+      languagesRequired: row.languagesRequired || [],
+      status: row.status as ProjectStatus,
+      visibility: row.visibility,
+      applicationsCount: row.applicationsCount,
+      shortlistedCount: row.shortlistedCount,
+      maxApplicants: row.maxApplicants ?? undefined,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+      publishedAt: row.publishedAt || undefined,
+      closedAt: row.closedAt || undefined,
+    };
+  }
+
+  private projectToRowData(p: Project): any {
+    return {
+      clientId: p.clientId,
+      title: p.title,
+      description: p.description,
+      requiredSkills: p.requiredSkills as any,
+      budgetType: p.budgetType,
+      budgetMin: p.budgetMin,
+      budgetMax: p.budgetMax,
+      currency: p.currency,
+      startDate: p.startDate ?? null,
+      endDate: p.endDate ?? null,
+      estimatedDuration: p.estimatedDuration,
+      locationType: p.locationType,
+      location: p.location ?? null,
+      country: p.country,
+      experienceLevel: p.experienceLevel,
+      contractTypes: p.contractTypes,
+      languagesRequired: p.languagesRequired,
+      status: p.status,
+      visibility: p.visibility,
+      applicationsCount: p.applicationsCount,
+      shortlistedCount: p.shortlistedCount,
+      maxApplicants: p.maxApplicants ?? null,
+      publishedAt: p.publishedAt ?? null,
+      closedAt: p.closedAt ?? null,
+    };
+  }
+
+  private rowToApplication(row: any): ProjectApplication {
+    return {
+      id: row.id,
+      projectId: row.projectId,
+      freelancerId: row.freelancerId,
+      coverLetter: row.coverLetter,
+      proposedRate: Number(row.proposedRate),
+      proposedDuration: row.proposedDuration,
+      proposedStartDate: row.proposedStartDate,
+      matchScore: row.matchScore,
+      skillMatchScore: row.skillMatchScore,
+      experienceMatchScore: row.experienceMatchScore,
+      rateMatchScore: row.rateMatchScore,
+      availabilityMatchScore: row.availabilityMatchScore,
+      status: row.status as ApplicationStatus,
+      interviewScheduledAt: row.interviewScheduledAt || undefined,
+      interviewNotes: row.interviewNotes || undefined,
+      interviewRating: row.interviewRating ?? undefined,
+      appliedAt: row.appliedAt,
+      updatedAt: row.updatedAt,
+      respondedAt: row.respondedAt || undefined,
+    };
   }
 
   // ===== FREELANCER PROFILE MANAGEMENT =====
 
   async createFreelancerProfile(data: Omit<FreelancerProfile, 'id' | 'createdAt' | 'updatedAt' | 'lastActiveAt' | 'totalProjects' | 'completedProjects' | 'totalEarnings' | 'averageRating' | 'totalReviews' | 'responseRate' | 'responseTime' | 'onTimeDelivery'>): Promise<FreelancerProfile> {
     const profile: FreelancerProfile = {
-      id: `freelancer-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: 'pending',
       ...data,
       totalProjects: 0,
       completedProjects: 0,
@@ -355,16 +572,23 @@ export class FreelancerService {
       lastActiveAt: new Date(),
     };
 
-    this.freelancers.set(profile.id, profile);
-    return profile;
+    try {
+      const row = await this.prisma.freelancerProfile.create({ data: this.profileToRowData(profile) });
+      return this.rowToProfile(row);
+    } catch (e: any) {
+      if (e?.code === 'P2002') {
+        throw new Error('Freelancer with this email already exists');
+      }
+      throw e;
+    }
   }
 
   async getFreelancerProfile(freelancerId: string): Promise<FreelancerProfile | null> {
-    return this.freelancers.get(freelancerId) || null;
+    return this.loadProfile(freelancerId);
   }
 
   async updateFreelancerProfile(freelancerId: string, updates: Partial<FreelancerProfile>): Promise<FreelancerProfile> {
-    const profile = this.freelancers.get(freelancerId);
+    const profile = await this.loadProfile(freelancerId);
     if (!profile) throw new Error('Freelancer not found');
 
     const updated: FreelancerProfile = {
@@ -375,12 +599,11 @@ export class FreelancerService {
       updatedAt: new Date(),
     };
 
-    this.freelancers.set(freelancerId, updated);
-    return updated;
+    return this.saveProfile(updated);
   }
 
   async addSkill(freelancerId: string, skill: Omit<Skill, 'id' | 'verified' | 'endorsements'>): Promise<Skill> {
-    const profile = this.freelancers.get(freelancerId);
+    const profile = await this.loadProfile(freelancerId);
     if (!profile) throw new Error('Freelancer not found');
 
     const newSkill: Skill = {
@@ -391,12 +614,12 @@ export class FreelancerService {
     };
 
     profile.skills.push(newSkill);
-    profile.updatedAt = new Date();
+    await this.saveProfile(profile);
     return newSkill;
   }
 
   async verifySkill(freelancerId: string, skillId: string): Promise<Skill> {
-    const profile = this.freelancers.get(freelancerId);
+    const profile = await this.loadProfile(freelancerId);
     if (!profile) throw new Error('Freelancer not found');
 
     const skill = profile.skills.find(s => s.id === skillId);
@@ -404,18 +627,19 @@ export class FreelancerService {
 
     skill.verified = true;
     skill.verifiedAt = new Date();
-    profile.updatedAt = new Date();
+    await this.saveProfile(profile);
     return skill;
   }
 
   async endorseSkill(freelancerId: string, skillId: string): Promise<Skill> {
-    const profile = this.freelancers.get(freelancerId);
+    const profile = await this.loadProfile(freelancerId);
     if (!profile) throw new Error('Freelancer not found');
 
     const skill = profile.skills.find(s => s.id === skillId);
     if (!skill) throw new Error('Skill not found');
 
     skill.endorsements++;
+    await this.saveProfile(profile);
     return skill;
   }
 
@@ -431,8 +655,8 @@ export class FreelancerService {
     experienceLevel?: SkillLevel;
     verifiedOnly?: boolean;
   }): Promise<FreelancerProfile[]> {
-    let results = Array.from(this.freelancers.values())
-      .filter(f => f.status === 'ACTIVE');
+    const rows = await this.prisma.freelancerProfile.findMany({ where: { profileStatus: 'ACTIVE' } });
+    let results = rows.map(r => this.rowToProfile(r));
 
     if (filters.skills?.length) {
       results = results.filter(f =>
@@ -493,16 +717,18 @@ export class FreelancerService {
     highlights: string[];
     concerns: string[];
   }[]> {
-    const project = this.projects.get(projectId);
+    const project = await this.getProject(projectId);
     if (!project) throw new Error('Project not found');
 
-    const freelancers = Array.from(this.freelancers.values())
-      .filter(f => f.status === 'ACTIVE' && f.availability !== 'NOT_AVAILABLE');
+    const rows = await this.prisma.freelancerProfile.findMany({
+      where: { profileStatus: 'ACTIVE', availability: { not: 'NOT_AVAILABLE' } },
+    });
+    const freelancers = rows.map(r => this.rowToProfile(r));
 
+    // Score through the shared engine (F-3) — weights unchanged
     const matches = freelancers.map(freelancer => {
-      const breakdown = this.calculateMatchBreakdown(freelancer, project);
-      const matchScore = this.calculateOverallMatch(breakdown);
-      const { highlights, concerns } = this.analyzeMatch(freelancer, project, breakdown);
+      const { breakdown, matchScore, highlights, concerns } =
+        this.matching.scoreFreelancerToProject(freelancer, project);
 
       return {
         freelancer,
@@ -517,210 +743,19 @@ export class FreelancerService {
     return matches.sort((a, b) => b.matchScore - a.matchScore);
   }
 
-  private calculateMatchBreakdown(freelancer: FreelancerProfile, project: Project): {
-    skillMatch: number;
-    experienceMatch: number;
-    rateMatch: number;
-    availabilityMatch: number;
-    locationMatch: number;
-    ratingMatch: number;
-  } {
-    // Skill Match (40% weight)
-    const requiredSkills = project.requiredSkills;
-    let skillPoints = 0;
-    let maxSkillPoints = 0;
-
-    for (const required of requiredSkills) {
-      const weight = required.required ? 2 : 1;
-      maxSkillPoints += weight * 100;
-
-      const freelancerSkill = freelancer.skills.find(
-        s => s.name.toLowerCase() === required.skillName.toLowerCase()
-      );
-
-      if (freelancerSkill) {
-        const levelScore = this.getSkillLevelScore(freelancerSkill.level, required.minLevel);
-        skillPoints += weight * levelScore;
-        if (freelancerSkill.verified) skillPoints += weight * 10; // Bonus for verified
-      }
-    }
-    const skillMatch = maxSkillPoints > 0 ? (skillPoints / maxSkillPoints) * 100 : 50;
-
-    // Experience Match (20% weight)
-    const experienceMap: Record<string, number> = {
-      'ENTRY': 1, 'INTERMEDIATE': 2, 'SENIOR': 3, 'EXPERT': 4
-    };
-    const requiredLevel = experienceMap[project.experienceLevel] || 2;
-    const avgYearsExp = freelancer.skills.length > 0
-      ? freelancer.skills.reduce((sum, s) => sum + s.yearsExperience, 0) / freelancer.skills.length
-      : 0;
-    const freelancerLevel = avgYearsExp < 2 ? 1 : avgYearsExp < 5 ? 2 : avgYearsExp < 8 ? 3 : 4;
-    const experienceMatch = Math.min(100, (freelancerLevel / requiredLevel) * 100);
-
-    // Rate Match (15% weight)
-    const midBudget = (project.budgetMin + project.budgetMax) / 2;
-    let rateMatch: number;
-    if (project.budgetType === 'HOURLY') {
-      if (freelancer.hourlyRate <= project.budgetMax && freelancer.hourlyRate >= project.budgetMin) {
-        rateMatch = 100;
-      } else if (freelancer.hourlyRate < project.budgetMin) {
-        rateMatch = 70; // Under budget is okay but might indicate less experience
-      } else {
-        rateMatch = Math.max(0, 100 - ((freelancer.hourlyRate - project.budgetMax) / project.budgetMax) * 100);
-      }
-    } else {
-      rateMatch = 80; // Fixed projects - less relevant
-    }
-
-    // Availability Match (10% weight)
-    let availabilityMatch = 50;
-    if (freelancer.availability === 'AVAILABLE') availabilityMatch = 100;
-    else if (freelancer.availability === 'PARTIALLY_AVAILABLE') availabilityMatch = 70;
-    else if (freelancer.availability === 'BUSY') availabilityMatch = 30;
-
-    // Location Match (10% weight)
-    let locationMatch = 100;
-    if (project.locationType === 'ONSITE') {
-      if (freelancer.country !== project.country) {
-        locationMatch = freelancer.willingToTravel ? 50 : 0;
-      }
-    } else if (project.locationType === 'REMOTE') {
-      locationMatch = freelancer.remoteOnly ? 100 : 80;
-    }
-
-    // Contract type match
-    if (!project.contractTypes.includes(freelancer.contractType)) {
-      locationMatch *= 0.5;
-    }
-
-    // Rating Match (5% weight)
-    const ratingMatch = freelancer.totalReviews > 0
-      ? (freelancer.averageRating / 5) * 100
-      : 50; // No reviews = neutral
-
-    return { skillMatch, experienceMatch, rateMatch, availabilityMatch, locationMatch, ratingMatch };
-  }
-
-  private getSkillLevelScore(freelancerLevel: SkillLevel, requiredLevel: SkillLevel): number {
-    const levels: Record<SkillLevel, number> = {
-      'BEGINNER': 1, 'INTERMEDIATE': 2, 'ADVANCED': 3, 'EXPERT': 4, 'MASTER': 5
-    };
-    const fLevel = levels[freelancerLevel];
-    const rLevel = levels[requiredLevel];
-
-    if (fLevel >= rLevel) return 100;
-    if (fLevel === rLevel - 1) return 70;
-    return Math.max(0, 100 - (rLevel - fLevel) * 30);
-  }
-
-  private calculateOverallMatch(breakdown: {
-    skillMatch: number;
-    experienceMatch: number;
-    rateMatch: number;
-    availabilityMatch: number;
-    locationMatch: number;
-    ratingMatch: number;
-  }): number {
-    // Weighted average
-    return Math.round(
-      breakdown.skillMatch * 0.40 +
-      breakdown.experienceMatch * 0.20 +
-      breakdown.rateMatch * 0.15 +
-      breakdown.availabilityMatch * 0.10 +
-      breakdown.locationMatch * 0.10 +
-      breakdown.ratingMatch * 0.05
-    );
-  }
-
-  private analyzeMatch(freelancer: FreelancerProfile, project: Project, breakdown: {
-    skillMatch: number;
-    experienceMatch: number;
-    rateMatch: number;
-    availabilityMatch: number;
-    locationMatch: number;
-    ratingMatch: number;
-  }): { highlights: string[]; concerns: string[] } {
-    const highlights: string[] = [];
-    const concerns: string[] = [];
-
-    // Skill highlights
-    if (breakdown.skillMatch >= 90) {
-      highlights.push('Excellent skill match - has all required skills');
-    } else if (breakdown.skillMatch >= 70) {
-      highlights.push('Good skill coverage');
-    }
-
-    // Verified skills
-    const verifiedCount = freelancer.skills.filter(s => s.verified).length;
-    if (verifiedCount > 0) {
-      highlights.push(`${verifiedCount} verified skill(s)`);
-    }
-
-    // High rating
-    if (freelancer.averageRating >= 4.5 && freelancer.totalReviews >= 5) {
-      highlights.push(`Highly rated (${freelancer.averageRating.toFixed(1)}/5 from ${freelancer.totalReviews} reviews)`);
-    }
-
-    // On-time delivery
-    if (freelancer.onTimeDelivery >= 95) {
-      highlights.push(`${freelancer.onTimeDelivery}% on-time delivery rate`);
-    }
-
-    // Fast responder
-    if (freelancer.responseTime <= 4) {
-      highlights.push('Fast responder (< 4 hours)');
-    }
-
-    // Experience
-    if (freelancer.completedProjects >= 20) {
-      highlights.push(`Experienced: ${freelancer.completedProjects} completed projects`);
-    }
-
-    // Concerns
-    if (breakdown.skillMatch < 50) {
-      concerns.push('Missing several required skills');
-    }
-
-    if (breakdown.rateMatch < 50) {
-      concerns.push('Rate significantly above budget');
-    }
-
-    if (freelancer.availability === 'BUSY') {
-      concerns.push('Currently busy - may have limited availability');
-    }
-
-    if (freelancer.totalReviews === 0) {
-      concerns.push('No reviews yet - new to platform');
-    }
-
-    if (freelancer.onTimeDelivery < 80) {
-      concerns.push(`Low on-time delivery rate (${freelancer.onTimeDelivery}%)`);
-    }
-
-    if (!freelancer.identityVerified) {
-      concerns.push('Identity not verified');
-    }
-
-    return { highlights, concerns };
-  }
-
   async findSimilarFreelancers(freelancerId: string, limit: number = 5): Promise<FreelancerProfile[]> {
-    const source = this.freelancers.get(freelancerId);
+    const source = await this.loadProfile(freelancerId);
     if (!source) throw new Error('Freelancer not found');
 
-    const sourceSkills = new Set(source.skills.map(s => s.name.toLowerCase()));
-
-    const others = Array.from(this.freelancers.values())
-      .filter(f => f.id !== freelancerId && f.status === 'ACTIVE');
-
-    const scored = others.map(f => {
-      const fSkills = new Set(f.skills.map(s => s.name.toLowerCase()));
-      const intersection = [...sourceSkills].filter(s => fSkills.has(s)).length;
-      const union = new Set([...sourceSkills, ...fSkills]).size;
-      const similarity = union > 0 ? intersection / union : 0;
-
-      return { freelancer: f, similarity };
+    const rows = await this.prisma.freelancerProfile.findMany({
+      where: { id: { not: freelancerId }, profileStatus: 'ACTIVE' },
     });
+    const others = rows.map(r => this.rowToProfile(r));
+
+    const scored = others.map(f => ({
+      freelancer: f,
+      similarity: this.matching.freelancerSimilarity(source.skills, f.skills),
+    }));
 
     return scored
       .sort((a, b) => b.similarity - a.similarity)
@@ -732,7 +767,7 @@ export class FreelancerService {
 
   async createProject(data: Omit<Project, 'id' | 'createdAt' | 'updatedAt' | 'applicationsCount' | 'shortlistedCount'>): Promise<Project> {
     const project: Project = {
-      id: `project-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: 'pending',
       ...data,
       applicationsCount: 0,
       shortlistedCount: 0,
@@ -740,16 +775,17 @@ export class FreelancerService {
       updatedAt: new Date(),
     };
 
-    this.projects.set(project.id, project);
-    return project;
+    const row = await this.prisma.freelancerProject.create({ data: this.projectToRowData(project) });
+    return this.rowToProject(row);
   }
 
   async getProject(projectId: string): Promise<Project | null> {
-    return this.projects.get(projectId) || null;
+    const row = await this.prisma.freelancerProject.findUnique({ where: { id: projectId } });
+    return row ? this.rowToProject(row) : null;
   }
 
   async updateProject(projectId: string, updates: Partial<Project>): Promise<Project> {
-    const project = this.projects.get(projectId);
+    const project = await this.getProject(projectId);
     if (!project) throw new Error('Project not found');
 
     const updated: Project = {
@@ -760,8 +796,11 @@ export class FreelancerService {
       updatedAt: new Date(),
     };
 
-    this.projects.set(projectId, updated);
-    return updated;
+    const row = await this.prisma.freelancerProject.update({
+      where: { id: projectId },
+      data: this.projectToRowData(updated),
+    });
+    return this.rowToProject(row);
   }
 
   async publishProject(projectId: string): Promise<Project> {
@@ -781,7 +820,8 @@ export class FreelancerService {
     contractTypes?: ContractType[];
     status?: ProjectStatus[];
   }): Promise<Project[]> {
-    let results = Array.from(this.projects.values());
+    const rows = await this.prisma.freelancerProject.findMany({});
+    let results = rows.map(r => this.rowToProject(r));
 
     if (filters.status?.length) {
       results = results.filter(p => filters.status!.includes(p.status));
@@ -836,56 +876,63 @@ export class FreelancerService {
     proposedDuration: number;
     proposedStartDate: Date;
   }): Promise<ProjectApplication> {
-    const project = this.projects.get(data.projectId);
+    const project = await this.getProject(data.projectId);
     if (!project) throw new Error('Project not found');
 
-    const freelancer = this.freelancers.get(data.freelancerId);
+    const freelancer = await this.loadProfile(data.freelancerId);
     if (!freelancer) throw new Error('Freelancer not found');
 
-    // Calculate match scores
-    const breakdown = this.calculateMatchBreakdown(freelancer, project);
-    const matchScore = this.calculateOverallMatch(breakdown);
+    // Calculate match scores via the shared engine (F-3)
+    const { breakdown, matchScore } = this.matching.scoreFreelancerToProject(freelancer, project);
 
-    const application: ProjectApplication = {
-      id: `app-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      projectId: data.projectId,
-      freelancerId: data.freelancerId,
-      coverLetter: data.coverLetter,
-      proposedRate: data.proposedRate,
-      proposedDuration: data.proposedDuration,
-      proposedStartDate: data.proposedStartDate,
-      matchScore,
-      skillMatchScore: breakdown.skillMatch,
-      experienceMatchScore: breakdown.experienceMatch,
-      rateMatchScore: breakdown.rateMatch,
-      availabilityMatchScore: breakdown.availabilityMatch,
-      status: 'PENDING',
-      appliedAt: new Date(),
-      updatedAt: new Date(),
-    };
+    try {
+      const row = await this.prisma.freelancerProjectApplication.create({
+        data: {
+          projectId: data.projectId,
+          freelancerId: data.freelancerId,
+          coverLetter: data.coverLetter,
+          proposedRate: data.proposedRate,
+          proposedDuration: data.proposedDuration,
+          proposedStartDate: data.proposedStartDate,
+          matchScore,
+          skillMatchScore: breakdown.skillMatch,
+          experienceMatchScore: breakdown.experienceMatch,
+          rateMatchScore: breakdown.rateMatch,
+          availabilityMatchScore: breakdown.availabilityMatch,
+          status: 'PENDING',
+          appliedAt: new Date(),
+        },
+      });
 
-    this.applications.set(application.id, application);
+      // Update project counts
+      await this.prisma.freelancerProject.update({
+        where: { id: data.projectId },
+        data: { applicationsCount: project.applicationsCount + 1 },
+      });
 
-    // Update project counts
-    project.applicationsCount++;
-
-    return application;
+      return this.rowToApplication(row);
+    } catch (e: any) {
+      if (e?.code === 'P2002') {
+        throw new Error('Already applied to this project');
+      }
+      throw e;
+    }
   }
 
   async getApplicationsForProject(projectId: string): Promise<ProjectApplication[]> {
-    return Array.from(this.applications.values())
-      .filter(a => a.projectId === projectId)
-      .sort((a, b) => b.matchScore - a.matchScore);
+    const rows = await this.prisma.freelancerProjectApplication.findMany({ where: { projectId } });
+    return rows.map(r => this.rowToApplication(r)).sort((a, b) => b.matchScore - a.matchScore);
   }
 
   async getApplicationsForFreelancer(freelancerId: string): Promise<ProjectApplication[]> {
-    return Array.from(this.applications.values())
-      .filter(a => a.freelancerId === freelancerId);
+    const rows = await this.prisma.freelancerProjectApplication.findMany({ where: { freelancerId } });
+    return rows.map(r => this.rowToApplication(r));
   }
 
   async updateApplicationStatus(applicationId: string, status: ApplicationStatus, notes?: string): Promise<ProjectApplication> {
-    const application = this.applications.get(applicationId);
-    if (!application) throw new Error('Application not found');
+    const appRow = await this.prisma.freelancerProjectApplication.findUnique({ where: { id: applicationId } });
+    if (!appRow) throw new Error('Application not found');
+    const application = this.rowToApplication(appRow);
 
     application.status = status;
     application.updatedAt = new Date();
@@ -895,35 +942,49 @@ export class FreelancerService {
       application.interviewNotes = notes;
     }
 
+    const updated = await this.prisma.freelancerProjectApplication.update({
+      where: { id: applicationId },
+      data: {
+        status: application.status,
+        respondedAt: application.respondedAt,
+        interviewNotes: application.interviewNotes ?? null,
+      },
+    });
+
     // Update project shortlist count
     if (status === 'SHORTLISTED') {
-      const project = this.projects.get(application.projectId);
-      if (project) project.shortlistedCount++;
+      const project = await this.getProject(application.projectId);
+      if (project) {
+        await this.prisma.freelancerProject.update({
+          where: { id: project.id },
+          data: { shortlistedCount: project.shortlistedCount + 1 },
+        });
+      }
     }
 
-    return application;
+    return this.rowToApplication(updated);
   }
 
   async scheduleInterview(applicationId: string, scheduledAt: Date): Promise<ProjectApplication> {
-    const application = this.applications.get(applicationId);
-    if (!application) throw new Error('Application not found');
+    const appRow = await this.prisma.freelancerProjectApplication.findUnique({ where: { id: applicationId } });
+    if (!appRow) throw new Error('Application not found');
 
-    application.status = 'INTERVIEWING';
-    application.interviewScheduledAt = scheduledAt;
-    application.updatedAt = new Date();
-
-    return application;
+    const updated = await this.prisma.freelancerProjectApplication.update({
+      where: { id: applicationId },
+      data: { status: 'INTERVIEWING', interviewScheduledAt: scheduledAt },
+    });
+    return this.rowToApplication(updated);
   }
 
   async rateInterview(applicationId: string, rating: number, notes: string): Promise<ProjectApplication> {
-    const application = this.applications.get(applicationId);
-    if (!application) throw new Error('Application not found');
+    const appRow = await this.prisma.freelancerProjectApplication.findUnique({ where: { id: applicationId } });
+    if (!appRow) throw new Error('Application not found');
 
-    application.interviewRating = rating;
-    application.interviewNotes = notes;
-    application.updatedAt = new Date();
-
-    return application;
+    const updated = await this.prisma.freelancerProjectApplication.update({
+      where: { id: applicationId },
+      data: { interviewRating: rating, interviewNotes: notes },
+    });
+    return this.rowToApplication(updated);
   }
 
   // ===== REVIEWS =====
@@ -937,8 +998,8 @@ export class FreelancerService {
 
     this.reviews.set(review.id, review);
 
-    // Update freelancer ratings
-    const freelancer = this.freelancers.get(data.freelancerId);
+    // Update freelancer ratings (profile persisted via Prisma; reviews stay in-memory)
+    const freelancer = await this.loadProfile(data.freelancerId);
     if (freelancer) {
       const allReviews = Array.from(this.reviews.values())
         .filter(r => r.freelancerId === data.freelancerId);
@@ -947,6 +1008,7 @@ export class FreelancerService {
       freelancer.averageRating = allReviews.reduce((sum, r) => sum + r.overallRating, 0) / allReviews.length;
       freelancer.completedProjects++;
       freelancer.totalEarnings += data.projectValue;
+      await this.saveProfile(freelancer);
     }
 
     return review;
@@ -1241,7 +1303,7 @@ export class FreelancerService {
     postedWorkerDeclarations: PostedWorkerDeclaration[];
     alerts: { type: string; message: string; severity: 'INFO' | 'WARNING' | 'CRITICAL' }[];
   }> {
-    const profile = this.freelancers.get(freelancerId);
+    const profile = await this.loadProfile(freelancerId);
     if (!profile) throw new Error('Freelancer not found');
 
     const applications = await this.getApplicationsForFreelancer(freelancerId);
@@ -1252,7 +1314,8 @@ export class FreelancerService {
     const recentReviews = reviews.slice(0, 5);
 
     // Get recommended projects based on skills
-    const allProjects = Array.from(this.projects.values()).filter(p => p.status === 'PUBLISHED');
+    const projectRows = await this.prisma.freelancerProject.findMany({ where: { status: 'PUBLISHED' } });
+    const allProjects = projectRows.map(r => this.rowToProject(r));
     const recommendedProjects = allProjects
       .filter(p => {
         const hasMatchingSkill = p.requiredSkills.some(rs =>
@@ -1316,7 +1379,7 @@ export class FreelancerService {
       position: 'BELOW_AVERAGE' | 'AVERAGE' | 'ABOVE_AVERAGE';
     };
   }> {
-    const profile = this.freelancers.get(freelancerId);
+    const profile = await this.loadProfile(freelancerId);
     if (!profile) throw new Error('Freelancer not found');
 
     const applications = await this.getApplicationsForFreelancer(freelancerId);
@@ -1342,7 +1405,8 @@ export class FreelancerService {
     }
 
     // Skill demand (based on project requirements)
-    const allProjects = Array.from(this.projects.values());
+    const projectRows = await this.prisma.freelancerProject.findMany({});
+    const allProjects = projectRows.map(r => this.rowToProject(r));
     const skillCounts = new Map<string, number>();
     for (const project of allProjects) {
       for (const skill of project.requiredSkills) {
@@ -1356,8 +1420,10 @@ export class FreelancerService {
     })).sort((a, b) => b.demandScore - a.demandScore);
 
     // Competitive analysis
-    const similarFreelancers = Array.from(this.freelancers.values())
-      .filter(f => f.id !== freelancerId && f.status === 'ACTIVE');
+    const similarRows = await this.prisma.freelancerProfile.findMany({
+      where: { id: { not: freelancerId }, profileStatus: 'ACTIVE' },
+    });
+    const similarFreelancers = similarRows.map(r => this.rowToProfile(r));
     const avgRate = similarFreelancers.length > 0
       ? similarFreelancers.reduce((sum, f) => sum + f.hourlyRate, 0) / similarFreelancers.length
       : profile.hourlyRate;
@@ -1394,9 +1460,9 @@ export class FreelancerService {
     freelancersByCountry: { country: string; count: number }[];
     averageHourlyRate: number;
   }> {
-    const freelancers = Array.from(this.freelancers.values());
-    const projects = Array.from(this.projects.values());
-    const applications = Array.from(this.applications.values());
+    const freelancers = (await this.prisma.freelancerProfile.findMany({})).map(r => this.rowToProfile(r));
+    const projects = (await this.prisma.freelancerProject.findMany({})).map(r => this.rowToProject(r));
+    const applications = (await this.prisma.freelancerProjectApplication.findMany({})).map(r => this.rowToApplication(r));
 
     // Top skills
     const skillCounts = new Map<string, number>();

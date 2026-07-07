@@ -1,10 +1,14 @@
-import { Injectable, Logger, BadRequestException, NotFoundException, ForbiddenException } from '@nestjs/common';
+import { Injectable, Logger, BadRequestException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
+import { MatchingService } from '../matching/matching.service';
 
 // ATS (Applicant Tracking System) Service
 // AI-powered recruitment with 99% candidate matching, bias detection, multi-channel posting
 // Compliant with Romanian labor law and GDPR
+//
+// F-3: jobs/candidates/applications persist via Prisma (AtsJobPosting/AtsCandidate/
+// AtsApplication); all match scoring is delegated to the shared MatchingService.
 
 // ===== ENUMS =====
 
@@ -348,11 +352,6 @@ export interface RecruitmentMetrics {
 export class ATSService {
   private readonly logger = new Logger(ATSService.name);
 
-  // In-memory storage for demo (replace with Prisma when tables are created)
-  private jobs: Map<string, JobPosting> = new Map();
-  private candidates: Map<string, Candidate> = new Map();
-  private applications: Map<string, Application> = new Map();
-
   // Bias detection patterns (Romanian and English)
   private readonly BIAS_PATTERNS = {
     [BiasCategory.GENDER]: [
@@ -378,79 +377,238 @@ export class ATSService {
     ],
   };
 
-  // Skill synonyms for matching
-  private readonly SKILL_SYNONYMS: Record<string, string[]> = {
-    'javascript': ['js', 'ecmascript', 'es6', 'es2015'],
-    'typescript': ['ts'],
-    'react': ['reactjs', 'react.js'],
-    'node': ['nodejs', 'node.js'],
-    'python': ['py', 'python3'],
-    'sql': ['mysql', 'postgresql', 'postgres', 'mssql', 'oracle'],
-    'aws': ['amazon web services', 'amazon cloud'],
-    'gcp': ['google cloud', 'google cloud platform'],
-    'azure': ['microsoft azure', 'azure cloud'],
-    'docker': ['containerization', 'containers'],
-    'kubernetes': ['k8s', 'container orchestration'],
-    'agile': ['scrum', 'kanban', 'sprint'],
-    'ci/cd': ['continuous integration', 'continuous deployment', 'devops'],
-  };
-
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
+    private matching: MatchingService,
   ) {}
 
-  // For testing - reset all in-memory data
-  resetState(): void {
-    this.jobs.clear();
-    this.candidates.clear();
-    this.applications.clear();
+  // For testing - reset all persisted ATS data
+  async resetState(): Promise<void> {
+    await this.prisma.atsApplication.deleteMany({});
+    await this.prisma.atsCandidate.deleteMany({});
+    await this.prisma.atsJobPosting.deleteMany({});
+  }
+
+  // ===== ROW ↔ INTERFACE MAPPERS =====
+
+  private reviveDate<T>(v: T): T {
+    return (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(v) ? new Date(v) : v) as unknown as T;
+  }
+
+  private rowToJob(row: any): JobPosting {
+    const channels = ((row.publishedChannels as any[]) || []).map(c => ({
+      ...c,
+      publishedAt: this.reviveDate(c.publishedAt),
+    }));
+    return {
+      id: row.id,
+      title: row.title,
+      department: row.department,
+      location: row.location,
+      description: row.description,
+      requirements: row.requirements || [],
+      responsibilities: row.responsibilities || [],
+      skills: (row.skills as Skill[]) || [],
+      salary: (row.salary as SalaryRange) || { min: 0, max: 0, currency: 'RON', period: 'MONTHLY', negotiable: true },
+      jobType: row.jobType as JobType,
+      experienceLevel: row.experienceLevel as ExperienceLevel,
+      status: row.status as JobStatus,
+      publishedChannels: channels,
+      applicationDeadline: row.applicationDeadline || undefined,
+      hiringManagerId: row.hiringManagerId || undefined,
+      recruiterId: row.recruiterId || undefined,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+      applicantCount: row.applicantCount,
+      viewCount: row.viewCount,
+    };
+  }
+
+  private jobToRowData(job: JobPosting): any {
+    return {
+      title: job.title,
+      department: job.department,
+      location: job.location,
+      description: job.description,
+      requirements: job.requirements,
+      responsibilities: job.responsibilities,
+      skills: job.skills as any,
+      salary: job.salary as any,
+      jobType: job.jobType,
+      experienceLevel: job.experienceLevel,
+      status: job.status,
+      publishedChannels: job.publishedChannels as any,
+      applicationDeadline: job.applicationDeadline ?? null,
+      hiringManagerId: job.hiringManagerId ?? null,
+      recruiterId: job.recruiterId ?? null,
+      applicantCount: job.applicantCount,
+      viewCount: job.viewCount,
+    };
+  }
+
+  private rowToCandidate(row: any): Candidate {
+    return {
+      id: row.id,
+      firstName: row.firstName,
+      lastName: row.lastName,
+      email: row.email,
+      phone: row.phone || undefined,
+      linkedInUrl: row.linkedInUrl || undefined,
+      portfolioUrl: row.portfolioUrl || undefined,
+      currentPosition: row.currentPosition || undefined,
+      currentCompany: row.currentCompany || undefined,
+      location: row.location || undefined,
+      yearsOfExperience: row.yearsOfExperience,
+      skills: (row.skills as CandidateSkill[]) || [],
+      education: (row.education as Education[]) || [],
+      workExperience: (row.workExperience as WorkExperience[]) || [],
+      languages: (row.languages as Language[]) || [],
+      cvUrl: row.cvUrl || undefined,
+      coverLetterUrl: row.coverLetterUrl || undefined,
+      source: row.source as ApplicationSource,
+      referredBy: row.referredBy || undefined,
+      gdprConsent: row.gdprConsent,
+      gdprConsentDate: row.gdprConsentDate,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+      tags: row.tags || [],
+    };
+  }
+
+  private candidateToRowData(c: Candidate): any {
+    return {
+      firstName: c.firstName,
+      lastName: c.lastName,
+      email: c.email,
+      phone: c.phone ?? null,
+      linkedInUrl: c.linkedInUrl ?? null,
+      portfolioUrl: c.portfolioUrl ?? null,
+      currentPosition: c.currentPosition ?? null,
+      currentCompany: c.currentCompany ?? null,
+      location: c.location ?? null,
+      yearsOfExperience: c.yearsOfExperience,
+      skills: c.skills as any,
+      education: c.education as any,
+      workExperience: c.workExperience as any,
+      languages: c.languages as any,
+      cvUrl: c.cvUrl ?? null,
+      coverLetterUrl: c.coverLetterUrl ?? null,
+      source: c.source,
+      referredBy: c.referredBy ?? null,
+      gdprConsent: c.gdprConsent,
+      gdprConsentDate: c.gdprConsentDate,
+      tags: c.tags,
+    };
+  }
+
+  private rowToApplication(row: any): Application {
+    const notes = ((row.notes as any[]) || []).map(n => ({ ...n, createdAt: this.reviveDate(n.createdAt) }));
+    const interviews = ((row.interviews as any[]) || []).map(i => ({
+      ...i,
+      scheduledAt: this.reviveDate(i.scheduledAt),
+      createdAt: this.reviveDate(i.createdAt),
+      feedback: i.feedback ? { ...i.feedback, submittedAt: this.reviveDate(i.feedback.submittedAt) } : undefined,
+    }));
+    const assessments = ((row.assessments as any[]) || []).map(a => ({
+      ...a,
+      sentAt: this.reviveDate(a.sentAt),
+      completedAt: a.completedAt ? this.reviveDate(a.completedAt) : undefined,
+    }));
+    const offer = row.offer
+      ? {
+          ...(row.offer as any),
+          sentAt: row.offer.sentAt ? this.reviveDate(row.offer.sentAt) : undefined,
+          respondedAt: row.offer.respondedAt ? this.reviveDate(row.offer.respondedAt) : undefined,
+          expiresAt: this.reviveDate(row.offer.expiresAt),
+        }
+      : undefined;
+    return {
+      id: row.id,
+      jobId: row.jobId,
+      candidateId: row.candidateId,
+      status: row.status as CandidateStatus,
+      appliedAt: row.appliedAt,
+      source: row.source as ApplicationSource,
+      matchScore: row.matchScore,
+      skillsMatch: (row.skillsMatch as SkillMatch[]) || [],
+      experienceMatch: row.experienceMatch,
+      educationMatch: row.educationMatch,
+      cultureMatch: row.cultureMatch,
+      overallScore: row.overallScore,
+      notes,
+      interviews,
+      assessments,
+      offer,
+      rejectionReason: row.rejectionReason || undefined,
+      updatedAt: row.updatedAt,
+    };
+  }
+
+  private applicationToRowData(a: Application): any {
+    return {
+      status: a.status,
+      source: a.source,
+      matchScore: a.matchScore,
+      skillsMatch: a.skillsMatch as any,
+      experienceMatch: a.experienceMatch,
+      educationMatch: a.educationMatch,
+      cultureMatch: a.cultureMatch,
+      overallScore: a.overallScore,
+      notes: a.notes as any,
+      interviews: a.interviews as any,
+      assessments: a.assessments as any,
+      offer: (a.offer as any) ?? null,
+      rejectionReason: a.rejectionReason ?? null,
+    };
+  }
+
+  private async saveApplication(application: Application): Promise<Application> {
+    const row = await this.prisma.atsApplication.update({
+      where: { id: application.id },
+      data: this.applicationToRowData(application),
+    });
+    return this.rowToApplication(row);
   }
 
   // ===== JOB POSTINGS =====
 
   async createJobPosting(data: Partial<JobPosting>, creatorId: string): Promise<JobPosting> {
-    const jobId = `job-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-
-    const job: JobPosting = {
-      id: jobId,
-      title: data.title || 'Untitled Position',
-      department: data.department || 'General',
-      location: data.location || 'Remote',
-      description: data.description || '',
-      requirements: data.requirements || [],
-      responsibilities: data.responsibilities || [],
-      skills: data.skills || [],
-      salary: data.salary || { min: 0, max: 0, currency: 'RON', period: 'MONTHLY', negotiable: true },
-      jobType: data.jobType || JobType.FULL_TIME,
-      experienceLevel: data.experienceLevel || ExperienceLevel.MID,
-      status: JobStatus.DRAFT,
-      publishedChannels: [],
-      applicationDeadline: data.applicationDeadline,
-      hiringManagerId: data.hiringManagerId,
-      recruiterId: creatorId,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      applicantCount: 0,
-      viewCount: 0,
-    };
-
-    this.jobs.set(jobId, job);
-    this.logger.log(`Job posting created: ${jobId} - ${job.title}`);
-    return job;
+    const row = await this.prisma.atsJobPosting.create({
+      data: {
+        title: data.title || 'Untitled Position',
+        department: data.department || 'General',
+        location: data.location || 'Remote',
+        description: data.description || '',
+        requirements: data.requirements || [],
+        responsibilities: data.responsibilities || [],
+        skills: (data.skills as any) || [],
+        salary: (data.salary as any) || { min: 0, max: 0, currency: 'RON', period: 'MONTHLY', negotiable: true },
+        jobType: data.jobType || JobType.FULL_TIME,
+        experienceLevel: data.experienceLevel || ExperienceLevel.MID,
+        status: JobStatus.DRAFT,
+        publishedChannels: [],
+        applicationDeadline: data.applicationDeadline ?? null,
+        hiringManagerId: data.hiringManagerId ?? null,
+        recruiterId: creatorId,
+        applicantCount: 0,
+        viewCount: 0,
+      },
+    });
+    this.logger.log(`Job posting created: ${row.id} - ${row.title}`);
+    return this.rowToJob(row);
   }
 
   async getJobPosting(jobId: string): Promise<JobPosting> {
-    const job = this.jobs.get(jobId);
-    if (!job) {
+    const row = await this.prisma.atsJobPosting.findUnique({ where: { id: jobId } });
+    if (!row) {
       throw new NotFoundException(`Job posting ${jobId} not found`);
     }
-    return job;
+    return this.rowToJob(row);
   }
 
   async updateJobPosting(jobId: string, data: Partial<JobPosting>): Promise<JobPosting> {
     const job = await this.getJobPosting(jobId);
-
     const updated: JobPosting = {
       ...job,
       ...data,
@@ -458,9 +616,8 @@ export class ATSService {
       createdAt: job.createdAt,
       updatedAt: new Date(),
     };
-
-    this.jobs.set(jobId, updated);
-    return updated;
+    const row = await this.prisma.atsJobPosting.update({ where: { id: jobId }, data: this.jobToRowData(updated) });
+    return this.rowToJob(row);
   }
 
   async publishJob(jobId: string, channels: ApplicationSource[]): Promise<JobPosting> {
@@ -481,19 +638,17 @@ export class ATSService {
 
     job.status = JobStatus.PUBLISHED;
     job.publishedChannels = [...job.publishedChannels, ...publishedChannels];
-    job.updatedAt = new Date();
 
-    this.jobs.set(jobId, job);
+    const row = await this.prisma.atsJobPosting.update({ where: { id: jobId }, data: this.jobToRowData(job) });
     this.logger.log(`Job ${jobId} published to ${channels.join(', ')}`);
-    return job;
+    return this.rowToJob(row);
   }
 
   async closeJob(jobId: string): Promise<JobPosting> {
     const job = await this.getJobPosting(jobId);
     job.status = JobStatus.CLOSED;
-    job.updatedAt = new Date();
-    this.jobs.set(jobId, job);
-    return job;
+    const row = await this.prisma.atsJobPosting.update({ where: { id: jobId }, data: this.jobToRowData(job) });
+    return this.rowToJob(row);
   }
 
   async listJobs(filters?: {
@@ -502,27 +657,22 @@ export class ATSService {
     jobType?: JobType;
     experienceLevel?: ExperienceLevel;
   }): Promise<JobPosting[]> {
-    let jobs = Array.from(this.jobs.values());
-
-    if (filters?.status) {
-      jobs = jobs.filter(j => j.status === filters.status);
-    }
-    if (filters?.department) {
-      jobs = jobs.filter(j => j.department === filters.department);
-    }
-    if (filters?.jobType) {
-      jobs = jobs.filter(j => j.jobType === filters.jobType);
-    }
-    if (filters?.experienceLevel) {
-      jobs = jobs.filter(j => j.experienceLevel === filters.experienceLevel);
-    }
-
-    return jobs.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+    const rows = await this.prisma.atsJobPosting.findMany({
+      where: {
+        ...(filters?.status ? { status: filters.status } : {}),
+        ...(filters?.department ? { department: filters.department } : {}),
+        ...(filters?.jobType ? { jobType: filters.jobType } : {}),
+        ...(filters?.experienceLevel ? { experienceLevel: filters.experienceLevel } : {}),
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+    return rows.map(r => this.rowToJob(r));
   }
 
   async searchJobs(query: string): Promise<JobPosting[]> {
     const lowerQuery = query.toLowerCase();
-    return Array.from(this.jobs.values()).filter(job =>
+    const rows = await this.prisma.atsJobPosting.findMany({});
+    return rows.map(r => this.rowToJob(r)).filter(job =>
       job.title.toLowerCase().includes(lowerQuery) ||
       job.description.toLowerCase().includes(lowerQuery) ||
       job.skills.some(s => s.name.toLowerCase().includes(lowerQuery))
@@ -537,56 +687,57 @@ export class ATSService {
     }
 
     // Check for existing candidate with same email
-    const existing = Array.from(this.candidates.values()).find(c => c.email === data.email);
+    const existing = await this.prisma.atsCandidate.findUnique({ where: { email: data.email } });
     if (existing) {
       throw new BadRequestException('Candidate with this email already exists');
     }
 
-    const candidateId = `cand-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-
-    const candidate: Candidate = {
-      id: candidateId,
-      firstName: data.firstName || '',
-      lastName: data.lastName || '',
-      email: data.email,
-      phone: data.phone,
-      linkedInUrl: data.linkedInUrl,
-      portfolioUrl: data.portfolioUrl,
-      currentPosition: data.currentPosition,
-      currentCompany: data.currentCompany,
-      location: data.location,
-      yearsOfExperience: data.yearsOfExperience || 0,
-      skills: data.skills || [],
-      education: data.education || [],
-      workExperience: data.workExperience || [],
-      languages: data.languages || [],
-      cvUrl: data.cvUrl,
-      coverLetterUrl: data.coverLetterUrl,
-      source: data.source || ApplicationSource.DIRECT,
-      referredBy: data.referredBy,
-      gdprConsent: data.gdprConsent || false,
-      gdprConsentDate: data.gdprConsentDate || new Date(),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      tags: data.tags || [],
-    };
-
-    this.candidates.set(candidateId, candidate);
-    this.logger.log(`Candidate created: ${candidateId} - ${candidate.firstName} ${candidate.lastName}`);
-    return candidate;
+    try {
+      const row = await this.prisma.atsCandidate.create({
+        data: {
+          firstName: data.firstName || '',
+          lastName: data.lastName || '',
+          email: data.email,
+          phone: data.phone ?? null,
+          linkedInUrl: data.linkedInUrl ?? null,
+          portfolioUrl: data.portfolioUrl ?? null,
+          currentPosition: data.currentPosition ?? null,
+          currentCompany: data.currentCompany ?? null,
+          location: data.location ?? null,
+          yearsOfExperience: data.yearsOfExperience || 0,
+          skills: (data.skills as any) || [],
+          education: (data.education as any) || [],
+          workExperience: (data.workExperience as any) || [],
+          languages: (data.languages as any) || [],
+          cvUrl: data.cvUrl ?? null,
+          coverLetterUrl: data.coverLetterUrl ?? null,
+          source: data.source || ApplicationSource.DIRECT,
+          referredBy: data.referredBy ?? null,
+          gdprConsent: data.gdprConsent || false,
+          gdprConsentDate: data.gdprConsentDate || new Date(),
+          tags: data.tags || [],
+        },
+      });
+      this.logger.log(`Candidate created: ${row.id} - ${row.firstName} ${row.lastName}`);
+      return this.rowToCandidate(row);
+    } catch (e: any) {
+      if (e?.code === 'P2002') {
+        throw new BadRequestException('Candidate with this email already exists');
+      }
+      throw e;
+    }
   }
 
   async getCandidate(candidateId: string): Promise<Candidate> {
-    const candidate = this.candidates.get(candidateId);
-    if (!candidate) {
+    const row = await this.prisma.atsCandidate.findUnique({ where: { id: candidateId } });
+    if (!row) {
       throw new NotFoundException(`Candidate ${candidateId} not found`);
     }
-    return candidate;
+    return this.rowToCandidate(row);
   }
 
   async updateCandidate(candidateId: string, data: Partial<Candidate>): Promise<Candidate> {
     const candidate = await this.getCandidate(candidateId);
-
     const updated: Candidate = {
       ...candidate,
       ...data,
@@ -594,14 +745,17 @@ export class ATSService {
       createdAt: candidate.createdAt,
       updatedAt: new Date(),
     };
-
-    this.candidates.set(candidateId, updated);
-    return updated;
+    const row = await this.prisma.atsCandidate.update({
+      where: { id: candidateId },
+      data: this.candidateToRowData(updated),
+    });
+    return this.rowToCandidate(row);
   }
 
   async searchCandidates(query: string): Promise<Candidate[]> {
     const lowerQuery = query.toLowerCase();
-    return Array.from(this.candidates.values()).filter(c =>
+    const rows = await this.prisma.atsCandidate.findMany({});
+    return rows.map(r => this.rowToCandidate(r)).filter(c =>
       c.firstName.toLowerCase().includes(lowerQuery) ||
       c.lastName.toLowerCase().includes(lowerQuery) ||
       c.email.toLowerCase().includes(lowerQuery) ||
@@ -614,11 +768,12 @@ export class ATSService {
     minExperience?: number;
     skills?: string[];
   }): Promise<Candidate[]> {
-    let candidates = Array.from(this.candidates.values());
+    const rows = await this.prisma.atsCandidate.findMany({
+      where: { ...(filters?.source ? { source: filters.source } : {}) },
+      orderBy: { createdAt: 'desc' },
+    });
+    let candidates = rows.map(r => this.rowToCandidate(r));
 
-    if (filters?.source) {
-      candidates = candidates.filter(c => c.source === filters.source);
-    }
     if (filters?.minExperience !== undefined) {
       const minExp = filters.minExperience;
       candidates = candidates.filter(c => c.yearsOfExperience >= minExp);
@@ -626,12 +781,12 @@ export class ATSService {
     if (filters?.skills?.length) {
       candidates = candidates.filter(c =>
         filters.skills!.some(skill =>
-          c.skills.some(cs => this.skillMatches(cs.name, skill))
+          c.skills.some(cs => this.matching.skillMatches(cs.name, skill))
         )
       );
     }
 
-    return candidates.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+    return candidates;
   }
 
   // ===== APPLICATIONS =====
@@ -645,52 +800,56 @@ export class ATSService {
     }
 
     // Check if already applied
-    const existingApp = Array.from(this.applications.values()).find(
-      a => a.jobId === jobId && a.candidateId === candidateId
-    );
+    const existingApp = await this.prisma.atsApplication.findFirst({ where: { jobId, candidateId } });
     if (existingApp) {
       throw new BadRequestException('Already applied to this job');
     }
 
-    // Calculate AI match score
-    const matchResult = this.calculateMatchScore(candidate, job);
+    // Calculate AI match score via the shared engine
+    const matchResult = this.matching.scoreCandidateToJob(candidate, job);
 
-    const applicationId = `app-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    const application: Application = {
-      id: applicationId,
-      jobId,
-      candidateId,
-      status: CandidateStatus.NEW,
-      appliedAt: new Date(),
-      source,
-      matchScore: matchResult.overallScore,
-      skillsMatch: this.calculateSkillsMatch(candidate, job),
-      experienceMatch: matchResult.breakdown.experience,
-      educationMatch: matchResult.breakdown.education,
-      cultureMatch: matchResult.breakdown.culture,
-      overallScore: matchResult.overallScore,
-      notes: [],
-      interviews: [],
-      assessments: [],
-      updatedAt: new Date(),
-    };
+    try {
+      const row = await this.prisma.atsApplication.create({
+        data: {
+          jobId,
+          candidateId,
+          status: CandidateStatus.NEW,
+          appliedAt: new Date(),
+          source,
+          matchScore: matchResult.overallScore,
+          skillsMatch: this.matching.candidateSkillsMatch(candidate, job) as any,
+          experienceMatch: matchResult.breakdown.experience,
+          educationMatch: matchResult.breakdown.education,
+          cultureMatch: matchResult.breakdown.culture,
+          overallScore: matchResult.overallScore,
+          notes: [],
+          interviews: [],
+          assessments: [],
+        },
+      });
 
-    this.applications.set(applicationId, application);
+      // Update job applicant count
+      await this.prisma.atsJobPosting.update({
+        where: { id: jobId },
+        data: { applicantCount: job.applicantCount + 1 },
+      });
 
-    // Update job applicant count
-    job.applicantCount++;
-    this.jobs.set(jobId, job);
-
-    this.logger.log(`Application created: ${applicationId} for job ${jobId}`);
-    return application;
+      this.logger.log(`Application created: ${row.id} for job ${jobId}`);
+      return this.rowToApplication(row);
+    } catch (e: any) {
+      if (e?.code === 'P2002') {
+        throw new BadRequestException('Already applied to this job');
+      }
+      throw e;
+    }
   }
 
   async getApplication(applicationId: string): Promise<Application> {
-    const application = this.applications.get(applicationId);
-    if (!application) {
+    const row = await this.prisma.atsApplication.findUnique({ where: { id: applicationId } });
+    if (!row) {
       throw new NotFoundException(`Application ${applicationId} not found`);
     }
-    return application;
+    return this.rowToApplication(row);
   }
 
   async updateApplicationStatus(applicationId: string, status: CandidateStatus, reason?: string): Promise<Application> {
@@ -703,8 +862,7 @@ export class ATSService {
       application.rejectionReason = reason;
     }
 
-    this.applications.set(applicationId, application);
-    return application;
+    return this.saveApplication(application);
   }
 
   async addApplicationNote(applicationId: string, authorId: string, authorName: string, content: string, isPrivate: boolean = false): Promise<Application> {
@@ -720,24 +878,22 @@ export class ATSService {
     };
 
     application.notes.push(note);
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
-    return application;
+    return this.saveApplication(application);
   }
 
   async getApplicationsForJob(jobId: string, status?: CandidateStatus): Promise<Application[]> {
-    let applications = Array.from(this.applications.values()).filter(a => a.jobId === jobId);
-
-    if (status) {
-      applications = applications.filter(a => a.status === status);
-    }
-
-    return applications.sort((a, b) => b.overallScore - a.overallScore);
+    const rows = await this.prisma.atsApplication.findMany({
+      where: { jobId, ...(status ? { status } : {}) },
+    });
+    return rows
+      .map(r => this.rowToApplication(r))
+      .sort((a, b) => b.overallScore - a.overallScore);
   }
 
   async getApplicationsForCandidate(candidateId: string): Promise<Application[]> {
-    return Array.from(this.applications.values())
-      .filter(a => a.candidateId === candidateId)
+    const rows = await this.prisma.atsApplication.findMany({ where: { candidateId } });
+    return rows
+      .map(r => this.rowToApplication(r))
       .sort((a, b) => b.appliedAt.getTime() - a.appliedAt.getTime());
   }
 
@@ -768,8 +924,7 @@ export class ATSService {
 
     application.interviews.push(interview);
     application.status = CandidateStatus.INTERVIEW;
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
+    await this.saveApplication(application);
 
     this.logger.log(`Interview scheduled: ${interview.id} for application ${applicationId}`);
     return interview;
@@ -793,9 +948,7 @@ export class ATSService {
     };
     interview.status = 'COMPLETED';
 
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
-
+    await this.saveApplication(application);
     return interview;
   }
 
@@ -808,9 +961,7 @@ export class ATSService {
     }
 
     interview.status = 'CANCELLED';
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
-
+    await this.saveApplication(application);
     return interview;
   }
 
@@ -835,8 +986,7 @@ export class ATSService {
 
     application.assessments.push(assessment);
     application.status = CandidateStatus.ASSESSMENT;
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
+    await this.saveApplication(application);
 
     this.logger.log(`Assessment sent: ${assessment.id} for application ${applicationId}`);
     return assessment;
@@ -860,9 +1010,7 @@ export class ATSService {
     assessment.results = results;
     assessment.status = 'COMPLETED';
 
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
-
+    await this.saveApplication(application);
     return assessment;
   }
 
@@ -898,8 +1046,7 @@ export class ATSService {
 
     application.offer = offer;
     application.status = CandidateStatus.OFFER;
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
+    await this.saveApplication(application);
 
     return offer;
   }
@@ -917,8 +1064,7 @@ export class ATSService {
 
     application.offer.status = 'SENT';
     application.offer.sentAt = new Date();
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
+    await this.saveApplication(application);
 
     this.logger.log(`Offer sent for application ${applicationId}`);
     return application.offer;
@@ -938,14 +1084,7 @@ export class ATSService {
     application.offer.status = accepted ? 'ACCEPTED' : 'REJECTED';
     application.offer.respondedAt = new Date();
     application.status = accepted ? CandidateStatus.HIRED : CandidateStatus.REJECTED;
-    application.updatedAt = new Date();
-    this.applications.set(applicationId, application);
-
-    if (accepted) {
-      // Close the job if position is filled
-      const job = await this.getJobPosting(application.jobId);
-      // Optionally close the job here
-    }
+    await this.saveApplication(application);
 
     return application.offer;
   }
@@ -1014,58 +1153,9 @@ export class ATSService {
     };
   }
 
+  /** Delegates to the shared MatchingService (F-3) — same weights as before (40/30/15/15). */
   calculateMatchScore(candidate: Candidate, job: JobPosting): AIMatchResult {
-    // Skills match (40% weight)
-    const skillsScore = this.calculateSkillsScore(candidate, job);
-
-    // Experience match (30% weight)
-    const experienceScore = this.calculateExperienceScore(candidate, job);
-
-    // Education match (15% weight)
-    const educationScore = this.calculateEducationScore(candidate, job);
-
-    // Culture fit estimate (15% weight)
-    const cultureScore = this.estimateCultureFit(candidate, job);
-
-    const overallScore = Math.round(
-      skillsScore * 0.40 +
-      experienceScore * 0.30 +
-      educationScore * 0.15 +
-      cultureScore * 0.15
-    );
-
-    const strengths: string[] = [];
-    const gaps: string[] = [];
-
-    if (skillsScore >= 80) strengths.push('Strong skills match');
-    else if (skillsScore < 50) gaps.push('Skills gap identified');
-
-    if (experienceScore >= 80) strengths.push('Excellent experience level');
-    else if (experienceScore < 50) gaps.push('May need more experience');
-
-    if (educationScore >= 80) strengths.push('Education aligns well');
-
-    let recommendation = '';
-    if (overallScore >= 85) recommendation = 'Strong Candidate - Recommend immediate interview';
-    else if (overallScore >= 70) recommendation = 'Good Candidate - Consider for phone screen';
-    else if (overallScore >= 50) recommendation = 'Potential Candidate - Review manually';
-    else recommendation = 'Weak Match - May not meet requirements';
-
-    return {
-      candidateId: candidate.id,
-      jobId: job.id,
-      overallScore,
-      breakdown: {
-        skills: skillsScore,
-        experience: experienceScore,
-        education: educationScore,
-        culture: cultureScore,
-      },
-      strengths,
-      gaps,
-      recommendation,
-      confidence: 0.85,
-    };
+    return this.matching.scoreCandidateToJob(candidate, job);
   }
 
   async detectBias(text: string): Promise<BiasDetectionResult> {
@@ -1110,12 +1200,13 @@ export class ATSService {
 
   async getSimilarCandidates(candidateId: string, limit: number = 5): Promise<Candidate[]> {
     const candidate = await this.getCandidate(candidateId);
-    const allCandidates = Array.from(this.candidates.values()).filter(c => c.id !== candidateId);
+    const rows = await this.prisma.atsCandidate.findMany({ where: { id: { not: candidateId } } });
+    const allCandidates = rows.map(r => this.rowToCandidate(r));
 
-    // Score similarity based on skills overlap
+    // Score similarity based on skills overlap (shared engine)
     const scored = allCandidates.map(c => ({
       candidate: c,
-      similarity: this.calculateSimilarity(candidate, c),
+      similarity: this.matching.candidateSimilarity(candidate, c),
     }));
 
     return scored
@@ -1167,10 +1258,12 @@ export class ATSService {
   }
 
   async getRecruitmentMetrics(startDate: Date, endDate: Date): Promise<RecruitmentMetrics> {
-    const jobs = Array.from(this.jobs.values()).filter(
+    const jobRows = await this.prisma.atsJobPosting.findMany({});
+    const appRows = await this.prisma.atsApplication.findMany({});
+    const jobs = jobRows.map(r => this.rowToJob(r)).filter(
       j => j.createdAt >= startDate && j.createdAt <= endDate
     );
-    const applications = Array.from(this.applications.values()).filter(
+    const applications = appRows.map(r => this.rowToApplication(r)).filter(
       a => a.appliedAt >= startDate && a.appliedAt <= endDate
     );
 
@@ -1223,133 +1316,6 @@ export class ATSService {
     return urls[channel] || '';
   }
 
-  private skillMatches(skill1: string, skill2: string): boolean {
-    const s1 = skill1.toLowerCase();
-    const s2 = skill2.toLowerCase();
-
-    if (s1 === s2) return true;
-
-    // Check synonyms
-    for (const [main, synonyms] of Object.entries(this.SKILL_SYNONYMS)) {
-      const allVariants = [main, ...synonyms].map(v => v.toLowerCase());
-      if (allVariants.includes(s1) && allVariants.includes(s2)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  private calculateSkillsMatch(candidate: Candidate, job: JobPosting): SkillMatch[] {
-    return job.skills.map(requiredSkill => {
-      const candidateSkill = candidate.skills.find(cs =>
-        this.skillMatches(cs.name, requiredSkill.name)
-      );
-
-      const match = candidateSkill
-        ? this.getLevelScore(candidateSkill.level) / this.getRequiredLevelScore(requiredSkill.level)
-        : 0;
-
-      return {
-        skill: requiredSkill.name,
-        required: requiredSkill.level === 'REQUIRED',
-        candidateLevel: candidateSkill?.level || 'NONE',
-        requiredLevel: requiredSkill.level,
-        match: Math.min(100, Math.round(match * 100)),
-      };
-    });
-  }
-
-  private calculateSkillsScore(candidate: Candidate, job: JobPosting): number {
-    if (job.skills.length === 0) return 75;
-
-    const matches = this.calculateSkillsMatch(candidate, job);
-    const requiredSkills = matches.filter(m => m.required);
-    const preferredSkills = matches.filter(m => !m.required);
-
-    const requiredScore = requiredSkills.length > 0
-      ? requiredSkills.reduce((sum, m) => sum + m.match, 0) / requiredSkills.length
-      : 100;
-
-    const preferredScore = preferredSkills.length > 0
-      ? preferredSkills.reduce((sum, m) => sum + m.match, 0) / preferredSkills.length
-      : 75;
-
-    return Math.round(requiredScore * 0.7 + preferredScore * 0.3);
-  }
-
-  private calculateExperienceScore(candidate: Candidate, job: JobPosting): number {
-    const levelRequirements: Record<ExperienceLevel, number> = {
-      [ExperienceLevel.ENTRY]: 0,
-      [ExperienceLevel.JUNIOR]: 1,
-      [ExperienceLevel.MID]: 3,
-      [ExperienceLevel.SENIOR]: 5,
-      [ExperienceLevel.LEAD]: 8,
-      [ExperienceLevel.EXECUTIVE]: 12,
-    };
-
-    const requiredYears = levelRequirements[job.experienceLevel];
-    const candidateYears = candidate.yearsOfExperience;
-
-    if (candidateYears >= requiredYears) {
-      return Math.min(100, 80 + (candidateYears - requiredYears) * 5);
-    } else {
-      const deficit = requiredYears - candidateYears;
-      return Math.max(0, 80 - deficit * 20);
-    }
-  }
-
-  private calculateEducationScore(candidate: Candidate, job: JobPosting): number {
-    // Basic education scoring
-    if (candidate.education.length === 0) return 50;
-
-    const degrees = candidate.education.map(e => e.degree.toLowerCase());
-
-    if (degrees.some(d => d.includes('master') || d.includes('phd') || d.includes('doctorat'))) {
-      return 100;
-    }
-    if (degrees.some(d => d.includes('bachelor') || d.includes('licență') || d.includes('inginer'))) {
-      return 85;
-    }
-    return 70;
-  }
-
-  private estimateCultureFit(candidate: Candidate, job: JobPosting): number {
-    // Basic culture fit estimation based on location and language
-    let score = 70;
-
-    if (candidate.location && job.location) {
-      if (candidate.location.toLowerCase().includes(job.location.toLowerCase())) {
-        score += 15;
-      }
-    }
-
-    if (candidate.languages.some(l => l.name.toLowerCase() === 'romanian' || l.name.toLowerCase() === 'română')) {
-      score += 10;
-    }
-
-    return Math.min(100, score);
-  }
-
-  private getLevelScore(level: string): number {
-    const scores: Record<string, number> = {
-      'BEGINNER': 25,
-      'INTERMEDIATE': 50,
-      'ADVANCED': 75,
-      'EXPERT': 100,
-    };
-    return scores[level] || 0;
-  }
-
-  private getRequiredLevelScore(level: string): number {
-    const scores: Record<string, number> = {
-      'REQUIRED': 75,
-      'PREFERRED': 50,
-      'NICE_TO_HAVE': 25,
-    };
-    return scores[level] || 50;
-  }
-
   private getBiasSeverity(category: BiasCategory): 'LOW' | 'MEDIUM' | 'HIGH' {
     const severities: Record<BiasCategory, 'LOW' | 'MEDIUM' | 'HIGH'> = {
       [BiasCategory.GENDER]: 'HIGH',
@@ -1360,23 +1326,6 @@ export class ATSService {
       [BiasCategory.MARITAL_STATUS]: 'MEDIUM',
     };
     return severities[category] || 'LOW';
-  }
-
-  private calculateSimilarity(c1: Candidate, c2: Candidate): number {
-    // Calculate skill overlap
-    const skills1 = new Set(c1.skills.map(s => s.name.toLowerCase()));
-    const skills2 = new Set(c2.skills.map(s => s.name.toLowerCase()));
-
-    const intersection = new Set([...skills1].filter(s => skills2.has(s)));
-    const union = new Set([...skills1, ...skills2]);
-
-    const skillSimilarity = union.size > 0 ? intersection.size / union.size : 0;
-
-    // Experience similarity
-    const expDiff = Math.abs(c1.yearsOfExperience - c2.yearsOfExperience);
-    const expSimilarity = Math.max(0, 1 - expDiff / 10);
-
-    return skillSimilarity * 0.7 + expSimilarity * 0.3;
   }
 
   private getSourceCost(source: ApplicationSource): number {

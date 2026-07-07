@@ -1525,13 +1525,20 @@ model FreelancerProfile {
   verifiedAt        DateTime?
   pfaNumber         String?
   cui               String?
+  // F-3 lossless additions (matching): rich skills + remaining interface fields
+  skillsDetailed    Json?
+  profileData       Json?
+  profileStatus     String                       @default("ACTIVE")
+  country           String?
   createdAt         DateTime                     @default(now())
   updatedAt         DateTime                     @updatedAt
   projects          FreelanceProjectAssignment[]
   contracts         FreelancerContract[]
+  projectApplications FreelancerProjectApplication[]
 
   @@index([userId])
   @@index([availability])
+  @@index([profileStatus])
 }
 
 model FreelanceProjectAssignment {
@@ -2635,6 +2642,9 @@ enum FreelancerAvailability {
   PARTIALLY_AVAILABLE
   NOT_AVAILABLE
   ON_PROJECT
+  // F-3: values from the in-memory freelancer AvailabilityStatus union
+  BUSY
+  ON_VACATION
 }
 
 enum FreelanceBudgetType {
@@ -3130,4 +3140,154 @@ model GamificationStreak {
   streakFreezeUsed      Boolean   @default(false)
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
+}
+
+// ---- S-47 / F-3: shared MatchingService — ATS + Freelancer matching persistence ----
+
+model AtsJobPosting {
+  id                  String           @id @default(cuid())
+  title               String
+  department          String
+  location            String
+  description         String
+  requirements        String[]         @default([])
+  responsibilities    String[]         @default([])
+  skills              Json             @default("[]")
+  salary              Json?
+  jobType             String           @default("FULL_TIME")
+  experienceLevel     String           @default("MID")
+  status              String           @default("DRAFT")
+  publishedChannels   Json             @default("[]")
+  applicationDeadline DateTime?
+  hiringManagerId     String?
+  recruiterId         String?
+  applicantCount      Int              @default(0)
+  viewCount           Int              @default(0)
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  applications        AtsApplication[]
+
+  @@index([status])
+  @@index([department])
+}
+
+model AtsCandidate {
+  id                String           @id @default(cuid())
+  firstName         String
+  lastName          String
+  email             String           @unique
+  phone             String?
+  linkedInUrl       String?
+  portfolioUrl      String?
+  currentPosition   String?
+  currentCompany    String?
+  location          String?
+  yearsOfExperience Int              @default(0)
+  skills            Json             @default("[]")
+  education         Json             @default("[]")
+  workExperience    Json             @default("[]")
+  languages         Json             @default("[]")
+  cvUrl             String?
+  coverLetterUrl    String?
+  source            String           @default("DIRECT")
+  referredBy        String?
+  gdprConsent       Boolean          @default(false)
+  gdprConsentDate   DateTime         @default(now())
+  tags              String[]         @default([])
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  applications      AtsApplication[]
+
+  @@index([source])
+}
+
+model AtsApplication {
+  id              String        @id @default(cuid())
+  jobId           String
+  candidateId     String
+  status          String        @default("NEW")
+  appliedAt       DateTime      @default(now())
+  source          String        @default("DIRECT")
+  matchScore      Float         @default(0)
+  skillsMatch     Json          @default("[]")
+  experienceMatch Float         @default(0)
+  educationMatch  Float         @default(0)
+  cultureMatch    Float         @default(0)
+  overallScore    Float         @default(0)
+  notes           Json          @default("[]")
+  interviews      Json          @default("[]")
+  assessments     Json          @default("[]")
+  offer           Json?
+  rejectionReason String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  job             AtsJobPosting @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  candidate       AtsCandidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, candidateId])
+  @@index([jobId, status])
+  @@index([candidateId])
+}
+
+model FreelancerProject {
+  id                String                         @id @default(cuid())
+  clientId          String
+  title             String
+  description       String
+  requiredSkills    Json                           @default("[]")
+  budgetType        String                         @default("HOURLY")
+  budgetMin         Decimal                        @default(0) @db.Decimal(10, 2)
+  budgetMax         Decimal                        @default(0) @db.Decimal(10, 2)
+  currency          String                         @default("EUR")
+  startDate         DateTime?
+  endDate           DateTime?
+  estimatedDuration Int                            @default(0)
+  locationType      String                         @default("REMOTE")
+  location          String?
+  country           String                         @default("RO")
+  experienceLevel   String                         @default("INTERMEDIATE")
+  contractTypes     String[]                       @default([])
+  languagesRequired String[]                       @default([])
+  status            String                         @default("DRAFT")
+  visibility        String                         @default("PUBLIC")
+  applicationsCount Int                            @default(0)
+  shortlistedCount  Int                            @default(0)
+  maxApplicants     Int?
+  publishedAt       DateTime?
+  closedAt          DateTime?
+  createdAt         DateTime                       @default(now())
+  updatedAt         DateTime                       @updatedAt
+  applications      FreelancerProjectApplication[]
+
+  @@index([status])
+  @@index([clientId])
+}
+
+model FreelancerProjectApplication {
+  id                     String            @id @default(cuid())
+  projectId              String
+  freelancerId           String
+  coverLetter            String
+  proposedRate           Decimal           @default(0) @db.Decimal(10, 2)
+  proposedDuration       Int               @default(0)
+  proposedStartDate      DateTime
+  matchScore             Float             @default(0)
+  skillMatchScore        Float             @default(0)
+  experienceMatchScore   Float             @default(0)
+  rateMatchScore         Float             @default(0)
+  availabilityMatchScore Float             @default(0)
+  status                 String            @default("PENDING")
+  interviewScheduledAt   DateTime?
+  interviewNotes         String?
+  interviewRating        Float?
+  appliedAt              DateTime          @default(now())
+  respondedAt            DateTime?
+  createdAt              DateTime          @default(now())
+  updatedAt              DateTime          @updatedAt
+  project                FreelancerProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  freelancer             FreelancerProfile @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, freelancerId])
+  @@index([projectId, status])
+  @@index([freelancerId])
 }
