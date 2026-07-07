@@ -34,3 +34,6 @@ reviews/
 
 # CI workflow — commit separately with a workflow-scoped token
 .github/workflows/ci.yml
+
+# TS build info
+*.tsbuildinfo
