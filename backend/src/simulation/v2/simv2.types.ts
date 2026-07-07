@@ -166,6 +166,20 @@ export interface SimParams {
   delegationErrorRate: number;
   /** Expected operational issues per day-tick (scales with tick length). */
   issuesPerDay: number;
+
+  // --- SIM-6 feedback-loop coefficients (optional; engine defaults if unset) ---
+  /** Demand price elasticity (higher = more volume lost per price rise). */
+  priceElasticity?: number;
+  /** Morale points gained/lost per day toward its equilibrium given utilization. */
+  moraleAdjustRate?: number;
+  /** Productivity gained/lost per day per point of morale above/below 60. */
+  productivityFromMorale?: number;
+  /** Attrition (headcount loss) probability per day when morale is very low. */
+  attritionFromMorale?: number;
+  /** Extra churn per day when backlog exceeds capacity (lead-time pain). */
+  churnFromBacklog?: number;
+  /** Daily brand-equity decay toward 0 (offset by marketing). */
+  brandDecayDaily?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -221,8 +235,83 @@ export interface SimClock {
 
 export interface TickLogEntry {
   tick: number;
-  kind: 'decision' | 'effect-resolved' | 'issue-auto' | 'cycle' | 'guardrail';
+  kind: 'decision' | 'effect-resolved' | 'issue-auto' | 'cycle' | 'guardrail' | 'event' | 'hint';
   message: string;
+}
+
+// ---------------------------------------------------------------------------
+// Data-driven events (SIM-5)
+// ---------------------------------------------------------------------------
+
+export type EventCategory = 'supply' | 'competitor' | 'regulatory' | 'demand' | 'hr' | 'fx' | 'finance';
+
+/** A temporary multiplier/addend applied to a named KPI for a number of ticks. */
+export interface EventModifier {
+  targetKpi: 'demand' | 'inputCosts' | 'churn' | 'serviceQuality' | 'productivity' | 'interestRate';
+  mult?: number;
+  add?: number;
+  durationTicks: number;
+}
+
+export interface ActiveModifier extends EventModifier {
+  id: string;
+  eventId: string;
+  expiresAtTick: number;
+}
+
+export interface EventCondition {
+  /** state.stocks.cash | aux.marketShare | cycle.phase | clock.day | tick */
+  field: string;
+  op: 'lt' | 'gt' | 'eq' | 'mod';
+  value: number;
+}
+
+export interface EventChoiceEffect {
+  target?: string; // dot-path e.g. "stocks.cash"
+  delta?: number;
+}
+
+export interface EventChoice {
+  label: string;
+  cost?: number; // cash cost, applied on choose
+  effects?: EventChoiceEffect[];
+  modifiers?: EventModifier[];
+}
+
+export interface SimEventTrigger {
+  type: 'random' | 'scripted' | 'conditional';
+  baseProbPerTick?: number; // random
+  conditions?: EventCondition[]; // conditional (all must hold)
+  scriptedTicks?: number[]; // scripted (absolute day ticks)
+  monthlyDay?: number; // scripted-monthly: fires on clock.day == monthlyDay
+}
+
+export interface SimEventDef {
+  id: string;
+  title: string;
+  category: EventCategory;
+  telegraph: string; // hint text shown telegraphTicks before firing
+  telegraphTicks: number; // 0 = fires immediately, no telegraph
+  trigger: SimEventTrigger;
+  /** Auto-applied modifiers/effects when the event fires (default outcome). */
+  modifiers?: EventModifier[];
+  effects?: EventChoiceEffect[];
+  /** Optional player choices (surfaced via the pending-events endpoint). */
+  choices?: EventChoice[];
+  /** Multiply baseProbPerTick by phase weight (default 1). */
+  weightByPhase?: Partial<Record<CyclePhase, number>>;
+  cooldownTicks: number;
+  once?: boolean;
+  isBad?: boolean; // bad events get telegraphed; drives UI severity
+}
+
+/** A fired event awaiting a player choice (surfaced to the controller). */
+export interface PendingEvent {
+  eventId: string;
+  title: string;
+  category: EventCategory;
+  firedAtTick: number;
+  choices: EventChoice[];
 }
 
 export interface SimV2StateData {
@@ -237,6 +326,16 @@ export interface SimV2StateData {
   pendingEffects: DeferredEffect[];
   cycle: CycleState;
   params: SimParams;
+  // --- events (SIM-5) ---
+  activeModifiers: ActiveModifier[];
+  /** eventId -> day-tick before which it cannot fire again (cooldown). */
+  eventCooldowns: Record<string, number>;
+  /** Telegraphed events awaiting their fire tick. */
+  telegraphed: { eventId: string; fireAtTick: number }[];
+  /** once-only events that have already fired. */
+  firedOnce: string[];
+  /** Fired events awaiting a player choice (default outcome already applied). */
+  pendingEventChoices: PendingEvent[];
   /** What happened last tick (bounded; UI shows it as the tick narrative). */
   lastTickLog: TickLogEntry[];
   /** Monotonic id counter for engine-generated ids (deterministic). */

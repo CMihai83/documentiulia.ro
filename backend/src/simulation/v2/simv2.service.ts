@@ -1,8 +1,10 @@
 import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { randomInt } from 'crypto';
 import { PrismaService } from '../../prisma/prisma.service';
+import { randomInt as _randomInt } from 'crypto';
 import { applyTick, createInitialState, SCENARIO_PRESETS } from './simv2.engine';
 import { DECISION_CATALOG, SimDecision, SimV2StateData, TickType } from './simv2.types';
+import { SimV2CalibrationService } from './simv2.calibration';
 
 /**
  * Simulator v2 — run lifecycle + versioned state persistence (S-48).
@@ -13,7 +15,34 @@ import { DECISION_CATALOG, SimDecision, SimV2StateData, TickType } from './simv2
 export class SimV2Service {
   private readonly logger = new Logger(SimV2Service.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly calibration: SimV2CalibrationService,
+  ) {}
+
+  /** SIM-9: create a run seeded from the tenant's real ERP data (Art 28(10)-guarded). */
+  async createCalibratedRun(userId: string, organizationId: string | undefined, dto: { scenarioKey?: string; seed?: number; businessId?: string }) {
+    const scenarioKey = dto.scenarioKey && SCENARIO_PRESETS[dto.scenarioKey] ? dto.scenarioKey : 'services';
+    const seed = dto.seed ?? _randomInt(1, 2 ** 31);
+    const cal = await this.calibration.calibrate(userId, organizationId, scenarioKey, seed);
+    const state = cal.state;
+    const run = await this.prisma.simV2Run.create({
+      data: {
+        userId,
+        businessId: dto.businessId,
+        scenarioKey,
+        mode: 'practice',
+        mirrorMode: cal.mirror,
+        seed,
+        currentTick: 0,
+        clockYear: state.clock.year,
+        clockMonth: state.clock.month,
+        clockDay: state.clock.day,
+        states: { create: { tick: 0, stateJson: state as any } },
+      },
+    });
+    return { run, state, calibration: { mirror: cal.mirror, source: cal.source, notes: cal.notes } };
+  }
 
   getCatalog() {
     return {
@@ -106,23 +135,57 @@ export class SimV2Service {
       orderBy: { tick: 'asc' },
       take: Math.min(limit, 1000),
     });
-    return rows.map((r) => {
-      const s = r.stateJson as unknown as SimV2StateData;
-      return {
-        tick: s.tick,
-        clock: s.clock,
-        cash: s.stocks.cash,
-        revenue: s.flows.revenue,
-        backlogOrders: s.stocks.backlogOrders,
-        capacity: s.stocks.capacity,
-        headcount: s.stocks.headcount,
-        customerBase: s.stocks.customerBase,
-        brandEquity: s.stocks.brandEquity,
-        morale: s.aux.morale,
-        utilization: s.aux.utilization,
-        cyclePhase: s.cycle.phase,
-      };
-    });
+    return rows.map((r) => this.kpiRow(r.stateJson as unknown as SimV2StateData));
+  }
+
+  private kpiRow(s: SimV2StateData) {
+    return {
+      tick: s.tick,
+      clock: s.clock,
+      cash: s.stocks.cash,
+      revenue: s.flows.revenue,
+      cogs: s.flows.cogs,
+      opex: s.flows.opex,
+      debt: s.stocks.debt,
+      backlogOrders: s.stocks.backlogOrders,
+      capacity: s.stocks.capacity,
+      headcount: s.stocks.headcount,
+      customerBase: s.stocks.customerBase,
+      brandEquity: s.stocks.brandEquity,
+      marketShare: s.aux.marketShare,
+      morale: s.aux.morale,
+      productivity: s.aux.productivity,
+      serviceQuality: s.aux.serviceQuality,
+      churnRate: s.aux.churnRate,
+      utilization: s.aux.utilization,
+      cyclePhase: s.cycle.phase,
+    };
+  }
+
+  /** SIM-7 after-action review: KPI time-series as CSV. */
+  async historyCsv(userId: string, runId: string): Promise<string> {
+    const rows = await this.history(userId, runId, 0, 1000);
+    if (!rows.length) return 'tick\n';
+    // scalar columns only (drop the nested clock object), tick first
+    const cols = Object.keys(rows[0]).filter((c) => c !== 'clock' && c !== 'tick');
+    const ordered = ['tick', ...cols];
+    const header = ordered.join(',');
+    const body = rows.map((r: any) => ordered.map((c) => r[c]).join(',')).join('\n');
+    return `${header}\n${body}\n`;
+  }
+
+  /** SIM-5: apply a player's response to a pending event choice, persist the tick. */
+  async respondToEvent(userId: string, runId: string, eventId: string, choiceIndex: number) {
+    const run = await this.prisma.simV2Run.findFirst({ where: { id: runId, userId } });
+    if (!run) throw new NotFoundException(`Run ${runId} not found`);
+    const state = await this.latestState(runId);
+    const { applyEventChoice } = await import('./simv2.events');
+    const roundFn = (n: number, dp = 4) => Math.round(n * 10 ** dp) / 10 ** dp;
+    const log: any[] = [];
+    applyEventChoice(state, eventId, choiceIndex, roundFn, log);
+    // update the current tick's row in place (a response doesn't advance time)
+    await this.prisma.simV2State.updateMany({ where: { runId, tick: state.tick }, data: { stateJson: state as any } });
+    return { state, log };
   }
 
   /** The pending-consequences ledger (SIM-2 AC: visible via the API). */
@@ -137,6 +200,10 @@ export class SimV2Service {
       openIssues: state.focus.openIssues,
       focusPerTick: { day: 5, week: 15, month: 40 },
       delegations: state.focus.delegations,
+      // SIM-5: events awaiting a choice + active market modifiers + telegraphed warnings
+      pendingEvents: state.pendingEventChoices,
+      activeModifiers: state.activeModifiers.map((m) => ({ ...m, ticksLeft: m.expiresAtTick - state.tick })),
+      telegraphed: state.telegraphed.map((t) => ({ ...t, ticksUntil: t.fireAtTick - state.tick })),
     };
   }
 

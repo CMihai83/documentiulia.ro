@@ -3327,6 +3327,7 @@ model SimV2Run {
   businessId  String?
   scenarioKey String
   mode        String       @default("practice") // practice | scored
+  mirrorMode  Boolean      @default(false) // SIM-9: calibrated from real ERP data
   status      String       @default("active")   // active | paused | ended
   seed        Int
   currentTick Int          @default(0)
