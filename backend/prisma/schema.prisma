@@ -2925,3 +2925,49 @@ model AllocationPosting {
   @@index([organizationId, cycleId, period])
   @@index([runId])
 }
+
+// ---- DOC-43-4: persist B2C e-Factura (10yr retention — cannot be in-memory) ----
+model B2CInvoice {
+  id             String    @id
+  organizationId String    @default("demo-org")
+  invoiceNumber  String
+  invoiceDate    DateTime
+  invoiceType    String
+  seller         Json
+  buyer          Json
+  items          Json
+  currency       String    @default("RON")
+  netTotal       Decimal   @db.Decimal(14, 2)
+  vatTotal       Decimal   @db.Decimal(14, 2)
+  grossTotal     Decimal   @db.Decimal(14, 2)
+  paymentMethod  String?
+  paymentTerms   String?
+  dueDate        DateTime?
+  isPaid         Boolean   @default(false)
+  uploadIndex    String?
+  efacturaStatus String?
+  submittedAt    DateTime?
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([organizationId])
+  @@index([organizationId, invoiceNumber])
+}
+
+model B2CSubmission {
+  id                 String    @id @default(cuid())
+  organizationId     String    @default("demo-org")
+  invoiceId          String
+  success            Boolean
+  uploadIndex        String?
+  status             String
+  message            String?
+  xmlGenerated       Boolean   @default(false)
+  xml                String? // retained UBL for 10-year compliance
+  submittedAt        DateTime  @default(now())
+  retentionExpiresAt DateTime?
+
+  @@index([organizationId, invoiceId])
+  @@index([invoiceId])
+}

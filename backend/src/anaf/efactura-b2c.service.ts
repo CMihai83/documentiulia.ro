@@ -7,6 +7,7 @@
  */
 
 import { Injectable, Logger } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 import { ConfigService } from '@nestjs/config';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { ANAFResilientService } from './anaf-resilient.service';
@@ -135,27 +136,51 @@ export class EFacturaB2CService {
   // Retention period (years)
   private readonly retentionYears = 10;
 
-  // In-memory storage for demo
-  private invoices: Map<string, B2CInvoice> = new Map();
-  private submissionHistory: Map<string, B2CSubmissionResult[]> = new Map();
-
   constructor(
     private configService: ConfigService,
     private eventEmitter: EventEmitter2,
     private anafService: ANAFResilientService,
+    private prisma: PrismaService,
   ) {}
+
+  // ---- Prisma row <-> domain mappers (DOC-43-4) ----
+  private toRow(inv: B2CInvoice, orgId: string) {
+    return {
+      id: inv.id, organizationId: orgId, invoiceNumber: inv.invoiceNumber,
+      invoiceDate: inv.invoiceDate, invoiceType: inv.invoiceType, seller: inv.seller as any,
+      buyer: inv.buyer as any, items: inv.items as any, currency: inv.currency,
+      netTotal: inv.netTotal, vatTotal: inv.vatTotal, grossTotal: inv.grossTotal,
+      paymentMethod: inv.paymentMethod, paymentTerms: inv.paymentTerms, dueDate: inv.dueDate,
+      isPaid: inv.isPaid, uploadIndex: inv.uploadIndex, efacturaStatus: inv.efacturaStatus,
+      submittedAt: inv.submittedAt, notes: inv.notes,
+    };
+  }
+  private fromRow(r: any): B2CInvoice {
+    return {
+      id: r.id, invoiceNumber: r.invoiceNumber, invoiceDate: r.invoiceDate,
+      invoiceType: r.invoiceType, seller: r.seller, buyer: r.buyer, items: r.items,
+      currency: r.currency, netTotal: Number(r.netTotal), vatTotal: Number(r.vatTotal),
+      grossTotal: Number(r.grossTotal), paymentMethod: r.paymentMethod ?? undefined,
+      paymentTerms: r.paymentTerms ?? undefined, dueDate: r.dueDate ?? undefined,
+      isPaid: r.isPaid, uploadIndex: r.uploadIndex ?? undefined,
+      efacturaStatus: r.efacturaStatus ?? undefined, submittedAt: r.submittedAt ?? undefined,
+      notes: r.notes ?? undefined, createdAt: r.createdAt, updatedAt: r.updatedAt,
+    } as B2CInvoice;
+  }
 
   /**
    * Create a B2C invoice
    */
   async createInvoice(
     invoiceData: Omit<B2CInvoice, 'id' | 'createdAt' | 'updatedAt'>,
+    orgId = 'demo-org',
   ): Promise<B2CInvoice> {
+    const now = new Date();
     const invoice: B2CInvoice = {
       ...invoiceData,
       id: `B2C-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: now,
+      updatedAt: now,
     };
 
     // Determine invoice type based on amount
@@ -167,10 +192,10 @@ export class EFacturaB2CService {
       this.logger.debug(`Invoice ${invoice.id} marked as simplified (amount <= ${this.simplifiedThreshold} RON)`);
     }
 
-    this.invoices.set(invoice.id, invoice);
+    await this.prisma.b2CInvoice.create({ data: this.toRow(invoice, orgId) });
     this.eventEmitter.emit('efactura.b2c.created', invoice);
 
-    this.logger.log(`B2C invoice created: ${invoice.invoiceNumber}`);
+    this.logger.log(`B2C invoice created & persisted: ${invoice.invoiceNumber}`);
     return invoice;
   }
 
@@ -394,7 +419,7 @@ export class EFacturaB2CService {
    * Submit B2C invoice to ANAF
    */
   async submitToANAF(invoiceId: string): Promise<B2CSubmissionResult> {
-    const invoice = this.invoices.get(invoiceId);
+    const invoice = await this.getInvoice(invoiceId);
     if (!invoice) {
       return {
         success: false,
@@ -404,6 +429,8 @@ export class EFacturaB2CService {
         xmlGenerated: false,
       };
     }
+    const orgRow = await this.prisma.b2CInvoice.findUnique({ where: { id: invoiceId }, select: { organizationId: true } });
+    const orgId = orgRow?.organizationId || 'demo-org';
 
     try {
       // Generate XML
@@ -414,12 +441,13 @@ export class EFacturaB2CService {
       const response = await this.anafService.uploadEFactura(xml, invoice.seller.cui);
 
       if (response.success && response.data) {
-        // Update invoice with submission details
-        invoice.uploadIndex = response.data.uploadIndex;
-        invoice.efacturaStatus = 'SUBMITTED';
-        invoice.submittedAt = new Date();
-        invoice.updatedAt = new Date();
-        this.invoices.set(invoiceId, invoice);
+        const submittedAt = new Date();
+        const retentionExpiresAt = this.calculateRetentionExpiry(submittedAt);
+        // Persist submission details on the invoice
+        await this.prisma.b2CInvoice.update({
+          where: { id: invoiceId },
+          data: { uploadIndex: response.data.uploadIndex, efacturaStatus: 'SUBMITTED', submittedAt },
+        });
 
         const result: B2CSubmissionResult = {
           success: true,
@@ -427,16 +455,17 @@ export class EFacturaB2CService {
           uploadIndex: response.data.uploadIndex,
           status: 'SUBMITTED',
           xmlGenerated: true,
-          submittedAt: invoice.submittedAt,
-          retentionExpiresAt: new Date(
-            invoice.submittedAt.getTime() + this.retentionYears * 365 * 24 * 60 * 60 * 1000,
-          ),
+          submittedAt,
+          retentionExpiresAt,
         };
 
-        // Store submission history
-        const history = this.submissionHistory.get(invoiceId) || [];
-        history.push(result);
-        this.submissionHistory.set(invoiceId, history);
+        // Persist the submission + retained XML for 10-year compliance
+        await this.prisma.b2CSubmission.create({
+          data: {
+            organizationId: orgId, invoiceId, success: true, uploadIndex: response.data.uploadIndex,
+            status: 'SUBMITTED', xmlGenerated: true, xml, submittedAt, retentionExpiresAt,
+          },
+        });
 
         this.eventEmitter.emit('efactura.b2c.submitted', result);
         this.logger.log(`B2C invoice ${invoice.invoiceNumber} submitted successfully`);
@@ -450,6 +479,11 @@ export class EFacturaB2CService {
           message: response.error || 'Unknown error',
           xmlGenerated: true,
         };
+
+        // Persist the failed attempt too (complete audit trail)
+        await this.prisma.b2CSubmission.create({
+          data: { organizationId: orgId, invoiceId, success: false, status: 'ERROR', message: result.message, xmlGenerated: true, xml },
+        });
 
         this.eventEmitter.emit('efactura.b2c.failed', result);
         return result;
@@ -470,7 +504,7 @@ export class EFacturaB2CService {
    * Check submission status
    */
   async checkStatus(invoiceId: string): Promise<B2CStatusCheck> {
-    const invoice = this.invoices.get(invoiceId);
+    const invoice = await this.getInvoice(invoiceId);
     if (!invoice || !invoice.uploadIndex) {
       return {
         invoiceId,
@@ -490,10 +524,8 @@ export class EFacturaB2CService {
       if (response.success && response.data) {
         const status = this.mapANAFStatus(response.data.status);
 
-        // Update invoice status
-        invoice.efacturaStatus = status;
-        invoice.updatedAt = new Date();
-        this.invoices.set(invoiceId, invoice);
+        // Persist updated status
+        await this.prisma.b2CInvoice.update({ where: { id: invoiceId }, data: { efacturaStatus: status } });
 
         return {
           invoiceId,
@@ -541,24 +573,35 @@ export class EFacturaB2CService {
   /**
    * Get invoice by ID
    */
-  getInvoice(invoiceId: string): B2CInvoice | null {
-    return this.invoices.get(invoiceId) || null;
+  async getInvoice(invoiceId: string): Promise<B2CInvoice | null> {
+    const row = await this.prisma.b2CInvoice.findUnique({ where: { id: invoiceId } });
+    return row ? this.fromRow(row) : null;
   }
 
   /**
    * Get invoices by seller CUI
    */
-  getInvoicesBySeller(cui: string): B2CInvoice[] {
-    return Array.from(this.invoices.values()).filter(
-      (inv) => inv.seller.cui === cui,
-    );
+  async getInvoicesBySeller(cui: string): Promise<B2CInvoice[]> {
+    const rows = await this.prisma.b2CInvoice.findMany({
+      where: { seller: { path: ['cui'], equals: cui } },
+      orderBy: { createdAt: 'desc' },
+    });
+    return rows.map((r) => this.fromRow(r));
   }
 
   /**
-   * Get submission history for invoice
+   * Get submission history for invoice (persisted audit trail)
    */
-  getSubmissionHistory(invoiceId: string): B2CSubmissionResult[] {
-    return this.submissionHistory.get(invoiceId) || [];
+  async getSubmissionHistory(invoiceId: string): Promise<B2CSubmissionResult[]> {
+    const rows = await this.prisma.b2CSubmission.findMany({
+      where: { invoiceId },
+      orderBy: { submittedAt: 'asc' },
+    });
+    return rows.map((r) => ({
+      success: r.success, invoiceId: r.invoiceId, uploadIndex: r.uploadIndex ?? undefined,
+      status: r.status, message: r.message ?? undefined, xmlGenerated: r.xmlGenerated,
+      submittedAt: r.submittedAt ?? undefined, retentionExpiresAt: r.retentionExpiresAt ?? undefined,
+    }));
   }
 
   /**

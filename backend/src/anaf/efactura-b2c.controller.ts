@@ -234,7 +234,7 @@ export class EfacturaB2CController {
   @ApiResponse({ status: 200, description: 'XML generated successfully' })
   @ApiResponse({ status: 404, description: 'Invoice not found' })
   async generateXML(@Param('invoiceId') invoiceId: string) {
-    const invoice = this.b2cService.getInvoice(invoiceId);
+    const invoice = await this.b2cService.getInvoice(invoiceId);
     if (!invoice) {
       return {
         success: false,
@@ -261,7 +261,7 @@ export class EfacturaB2CController {
     @Param('invoiceId') invoiceId: string,
     @Res() res: Response,
   ) {
-    const invoice = this.b2cService.getInvoice(invoiceId);
+    const invoice = await this.b2cService.getInvoice(invoiceId);
     if (!invoice) {
       res.status(HttpStatus.NOT_FOUND).json({
         success: false,
@@ -314,7 +314,7 @@ export class EfacturaB2CController {
   })
   @ApiParam({ name: 'invoiceId', description: 'Invoice ID' })
   async getInvoice(@Param('invoiceId') invoiceId: string) {
-    const invoice = this.b2cService.getInvoice(invoiceId);
+    const invoice = await this.b2cService.getInvoice(invoiceId);
     if (!invoice) {
       return {
         success: false,
@@ -335,7 +335,7 @@ export class EfacturaB2CController {
   })
   @ApiQuery({ name: 'cui', required: true, description: 'Seller CUI' })
   async getInvoicesBySeller(@Query('cui') cui: string) {
-    const invoices = this.b2cService.getInvoicesBySeller(cui);
+    const invoices = await this.b2cService.getInvoicesBySeller(cui);
     return {
       success: true,
       total: invoices.length,
@@ -350,7 +350,7 @@ export class EfacturaB2CController {
   })
   @ApiParam({ name: 'invoiceId', description: 'Invoice ID' })
   async getSubmissionHistory(@Param('invoiceId') invoiceId: string) {
-    const history = this.b2cService.getSubmissionHistory(invoiceId);
+    const history = await this.b2cService.getSubmissionHistory(invoiceId);
     return {
       success: true,
       invoiceId,
