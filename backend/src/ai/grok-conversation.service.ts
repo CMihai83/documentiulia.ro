@@ -1,6 +1,7 @@
 import { Injectable, Logger, BadRequestException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
+import { PiiRedactionService } from './pii-redaction.service';
 
 /**
  * Grok Conversational AI Service
@@ -23,7 +24,10 @@ export class GrokConversationService {
   private openai: OpenAI;
   private readonly modelName = 'grok-beta'; // x.ai model identifier
 
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private readonly pii: PiiRedactionService,
+  ) {
     // Initialize OpenAI client for x.ai Grok API
     const apiKey = this.configService.get<string>('XAI_API_KEY') || 'xai-test-key';
 
@@ -60,7 +64,14 @@ export class GrokConversationService {
       const systemPrompt = this.buildSystemPrompt(locale, companyContext);
 
       // Build user context for RAG
-      const userPrompt = this.buildUserPrompt(query, companyContext);
+      const rawUserPrompt = this.buildUserPrompt(query, companyContext);
+      // GI-AI-1: pseudonymise Romanian PII (RAG company context is the biggest leak) before it leaves to xAI (US).
+      const redact = this.configService.get('AI_ZDR_CONFIRMED') !== 'true'
+        || String(this.configService.get('AI_PII_REDACTION')) !== 'false';
+      const { text: userPrompt, map: piiMap, counts } = redact
+        ? this.pii.redact(rawUserPrompt)
+        : { text: rawUserPrompt, map: {} as Record<string, string>, counts: {} as Record<string, number> };
+      if (this.pii.hasPii(counts)) this.logger.log(`Redacted ${JSON.stringify(counts)} PII token(s) before xAI call`);
 
       // Call Grok API
       const completion = await this.openai.chat.completions.create({
@@ -74,7 +85,7 @@ export class GrokConversationService {
         stream: false,
       });
 
-      const responseText = completion.choices[0]?.message?.content || 'Nu am putut genera un răspuns.';
+      const responseText = this.pii.rehydrate(completion.choices[0]?.message?.content || 'Nu am putut genera un răspuns.', piiMap);
       const tokenUsage = completion.usage?.total_tokens || 0;
 
       // Extract confidence based on response quality
