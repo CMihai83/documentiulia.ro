@@ -1,16 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FreelancerService } from './freelancer.service';
+import { MatchingService } from '../matching/matching.service';
+import { PrismaService } from '../prisma/prisma.service';
+import { createMatchingPrismaFake } from '../testing/matching-prisma.fake';
 
 describe('FreelancerService', () => {
   let service: FreelancerService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [FreelancerService],
+      providers: [
+        FreelancerService,
+        MatchingService,
+        { provide: PrismaService, useValue: createMatchingPrismaFake() },
+      ],
     }).compile();
 
     service = module.get<FreelancerService>(FreelancerService);
-    service.resetState();
+    await service.resetState();
   });
 
   describe('Freelancer Profile Management', () => {
