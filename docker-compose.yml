@@ -51,6 +51,7 @@ services:
       REDIS_URL: redis://redis:6379
       JWT_SECRET: ${JWT_SECRET:?JWT secret required}
       GROK_API_KEY: ${GROK_API_KEY}
+      ENCRYPTION_MASTER_KEY: ${ENCRYPTION_MASTER_KEY}
       ANAF_API_URL: ${ANAF_API_URL:-https://api.anaf.ro}
       ANAF_CLIENT_ID: ${ANAF_CLIENT_ID:-placeholder}
       ANAF_CLIENT_SECRET: ${ANAF_CLIENT_SECRET:-placeholder}
