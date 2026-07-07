@@ -2998,3 +2998,20 @@ model ConsultingBooking {
   @@index([organizationId, status])
   @@index([organizationId, scheduledAt])
 }
+
+// ---- S-46 / DOC-46-1: data-migration staging (parse -> validate, no live writes) ----
+model MigrationStaging {
+  id             String   @id @default(cuid())
+  organizationId String
+  batchId        String
+  sourceType     String   // CSV | XML | SAGA
+  entityType     String   // customer | product | invoice
+  rowIndex       Int
+  rawData        Json
+  status         String   // valid | warning | error
+  errors         String[]
+  createdAt      DateTime @default(now())
+
+  @@index([organizationId, batchId])
+  @@index([batchId, status])
+}
