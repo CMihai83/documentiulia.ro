@@ -21,6 +21,8 @@ import { DeadlineReminderController } from './deadline-reminder.controller';
 import { ANAFResilientService } from './anaf-resilient.service';
 import { EFacturaB2CService } from './efactura-b2c.service';
 import { EfacturaB2CController } from './efactura-b2c.controller';
+import { AnafLookupService } from './anaf-lookup.service';
+import { AnafLookupController } from './anaf-lookup.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
 
@@ -35,10 +37,12 @@ import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
     EfacturaB2BController,
     EfacturaB2CController,
     DeadlineReminderController,
+    AnafLookupController,
   ],
   providers: [
     AnafService,
     ANAFResilientService,
+    AnafLookupService,
     SaftService,
     SaftValidatorService,
     SaftD406MonthlyService,
@@ -54,6 +58,7 @@ import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
   exports: [
     AnafService,
     ANAFResilientService,
+    AnafLookupService,
     SaftService,
     SaftValidatorService,
     SaftD406MonthlyService,
