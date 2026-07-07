@@ -21,6 +21,9 @@ export class MigrationImportController {
   private orgId(req: any): string {
     return req?.headers?.['x-organization-id'] || req?.user?.organizationId || 'demo-org';
   }
+  private userId(req: any): string {
+    return req?.user?.sub || req?.user?.id || 'demo-user';
+  }
 
   /** Parse + validate a SAGA export into a staging batch (no live writes). */
   @Post('import')
@@ -41,6 +44,20 @@ export class MigrationImportController {
   @UseGuards(JwtAuthGuard)
   dryRun(@Request() req: any, @Param('batchId') batchId: string) {
     return this.migration.dryRun(this.orgId(req), batchId);
+  }
+
+  /** SAF-T re-validation of migrated master data (DOC-46-4). */
+  @Get('batches/:batchId/saft-check')
+  @UseGuards(JwtAuthGuard)
+  saftCheck(@Request() req: any, @Param('batchId') batchId: string) {
+    return this.migration.saftCheck(this.orgId(req), batchId);
+  }
+
+  /** Commit a reviewed batch to live master data (DOC-46-3). */
+  @Post('batches/:batchId/commit')
+  @UseGuards(JwtAuthGuard)
+  commit(@Request() req: any, @Param('batchId') batchId: string) {
+    return this.migration.commitBatch(this.orgId(req), this.userId(req), batchId);
   }
 
   @Delete('batches/:batchId')

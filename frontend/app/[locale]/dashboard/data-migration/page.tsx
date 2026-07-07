@@ -42,6 +42,8 @@ const T = {
     autoMap: 'Mapare automată', saveTpl: 'Salvează șablon', loadTpl: 'Șablon salvat aplicat',
     controlTotal: 'Total control', ready: 'Gata de migrare', notReady: 'Erori de corectat',
     valid: 'Valide', warning: 'Avertismente', error: 'Erori', discard: 'Renunță', row: 'Rând',
+    commit: 'Migrează în producție', committing: 'Se migrează…', saft: 'Verificare SAF-T',
+    committed: 'migrate', skippedLbl: 'sărite', saftOk: 'Date valide SAF-T', saftBad: 'Probleme SAF-T',
     noData: 'Importă un fișier pentru a începe.' },
   en: { title: 'Data Migration', subtitle: 'Import from SAGA, map fields, validate — then migrate.',
     source: 'Source', format: 'Format', entity: 'Entity type', auto: 'Auto',
@@ -51,6 +53,8 @@ const T = {
     autoMap: 'Auto-map', saveTpl: 'Save template', loadTpl: 'Saved template applied',
     controlTotal: 'Control total', ready: 'Ready to migrate', notReady: 'Errors to fix',
     valid: 'Valid', warning: 'Warnings', error: 'Errors', discard: 'Discard', row: 'Row',
+    commit: 'Migrate to live', committing: 'Migrating…', saft: 'SAF-T check',
+    committed: 'migrated', skippedLbl: 'skipped', saftOk: 'SAF-T valid', saftBad: 'SAF-T issues',
     noData: 'Import a file to begin.' },
 };
 
@@ -74,6 +78,9 @@ export default function DataMigrationPage() {
   const [rows, setRows] = useState<StagedRow[]>([]);
   const [dry, setDry] = useState<DryRun | null>(null);
   const [mapping, setMapping] = useState<Record<string, string>>({}); // sourceCol -> targetField
+  const [committing, setCommitting] = useState(false);
+  const [commitResult, setCommitResult] = useState<{ committed: number; skipped: number } | null>(null);
+  const [saftResult, setSaftResult] = useState<{ valid: boolean; customersChecked?: number; applicable: boolean } | null>(null);
 
   const sourceCols = useMemo(() => (rows[0] ? Object.keys(rows[0].rawData) : []), [rows]);
 
@@ -111,7 +118,21 @@ export default function DataMigrationPage() {
   const discard = async () => {
     if (!result) return;
     await api.delete(`/migration/batches/${result.batchId}`);
-    setResult(null); setRows([]); setDry(null); setMapping({});
+    setResult(null); setRows([]); setDry(null); setMapping({}); setCommitResult(null); setSaftResult(null);
+  };
+
+  const doSaftCheck = async () => {
+    if (!result) return;
+    const res = await api.get<{ valid: boolean; customersChecked?: number; applicable: boolean }>(`/migration/batches/${result.batchId}/saft-check`);
+    if (res.data) setSaftResult(res.data);
+  };
+
+  const doCommit = async () => {
+    if (!result) return;
+    setCommitting(true); setCommitResult(null);
+    const res = await api.post<{ committed: number; skipped: number }>(`/migration/batches/${result.batchId}/commit`);
+    setCommitting(false);
+    if (res.data) setCommitResult(res.data);
   };
 
   const saveTemplate = () => {
@@ -238,8 +259,22 @@ export default function DataMigrationPage() {
             </TabsContent>
           </Tabs>
 
-          <div className="flex justify-end">
-            <Button variant="ghost" className="text-red-600" onClick={discard}><Trash2 className="h-4 w-4" /> {t.discard}</Button>
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            {saftResult && (
+              <span className={`text-xs px-2 py-1 rounded flex items-center gap-1 ${saftResult.applicable && saftResult.valid ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300'}`}>
+                <CheckCircle2 className="h-3.5 w-3.5" /> {!saftResult.applicable ? '—' : saftResult.valid ? `${t.saftOk} (${saftResult.customersChecked})` : t.saftBad}
+              </span>
+            )}
+            {commitResult && (
+              <span className="text-xs px-2 py-1 rounded bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300">
+                {commitResult.committed} {t.committed} · {commitResult.skipped} {t.skippedLbl}
+              </span>
+            )}
+            <Button size="sm" variant="outline" onClick={doSaftCheck}><CheckCircle2 className="h-4 w-4" /> {t.saft}</Button>
+            <Button size="sm" disabled={committing || result.entityType === 'invoice' || !dry?.ready} onClick={doCommit}>
+              {committing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />} {committing ? t.committing : t.commit}
+            </Button>
+            <Button size="sm" variant="ghost" className="text-red-600" onClick={discard}><Trash2 className="h-4 w-4" /> {t.discard}</Button>
           </div>
         </>
       )}
