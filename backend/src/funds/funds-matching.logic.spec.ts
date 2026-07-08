@@ -127,6 +127,17 @@ describe('FND-2 seven filters — pass and fail branches', () => {
 });
 
 describe('FND-2 grant estimation + București-Ilfov reduced intensity', () => {
+  it('GBER: a program-stated intensity CAPS the regional path (min binds, never raises)', () => {
+    // (a) call says 40% in a 60% region, small (60+20=80 regional path) -> 40 binds
+    const low = baseProgram({ legalBasis: 'gber_14', aidIntensityPct: 40, caenWhitelist: [], sizeEligibility: [], ceilingEur: null });
+    const smallNV = { ...baseProfile(), county: 'Cluj', headcount: 20, turnoverEur: 4_000_000, balanceSheetEur: 4_000_000 };
+    expect(matchProgram(smallNV, low, { requestedCostEur: 100_000 }).effectiveIntensityPct).toBe(40);
+    // (b) call says 90% in RO32 (40%) medium (40+10=50) -> regional ceiling binds, 90 does NOT raise it
+    const high = baseProgram({ legalBasis: 'gber_14', aidIntensityPct: 90, caenWhitelist: [], sizeEligibility: [], ceilingEur: null });
+    const mediumBI = { ...baseProfile(), county: 'București', headcount: 100, turnoverEur: 30_000_000, balanceSheetEur: 30_000_000 };
+    expect(matchProgram(mediumBI, high, { requestedCostEur: 100_000 }).effectiveIntensityPct).toBe(50);
+  });
+
   it('GBER: București-Ilfov medium gets 40 + 10 = 50% intensity; Vest large gets 50%', () => {
     const prog = baseProgram({ legalBasis: 'gber_14', caenWhitelist: [], sizeEligibility: [], ceilingEur: null });
     const biMedium = matchProgram(
