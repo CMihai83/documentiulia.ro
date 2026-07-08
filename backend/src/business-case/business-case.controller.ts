@@ -67,6 +67,11 @@ export class BusinessCaseController {
   }
 
   /** BC-106 — latest persisted appraisal snapshot. */
+  @Post(':id/goalseek')
+  goalSeek(@Request() req: any, @Param('id') id: string, @Body() body: any) {
+    return this.svc.goalSeek(this.userId(req), id, body);
+  }
+
   @Get(':id/results')
   results(@Request() req: any, @Param('id') id: string) {
     return this.svc.getResults(this.userId(req), id);

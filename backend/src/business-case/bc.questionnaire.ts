@@ -141,6 +141,15 @@ const RFQ_SECTION: QuestionSection = {
     { key: 'rfq.overheadPct', label: 'Overhead %', type: 'percent', min: 0, max: 200, mapsTo: 'rfq.overheadPct' },
     { key: 'rfq.markupPct', label: 'Markup %', type: 'percent', visibleIf: { field: 'rfq.method', equals: 'cost-plus' }, min: 0, max: 500, mapsTo: 'rfq.markupPct' },
     { key: 'rfq.targetMarginPct', label: 'Target margin %', type: 'percent', visibleIf: { field: 'rfq.method', equals: 'target-margin' }, min: 0, max: 95, mapsTo: 'rfq.targetMarginPct' },
+    // S-59 (BC-209) — all optional: should-cost benchmark + bid/no-bid scoring
+    { key: 'rfq.shouldCostBenchmark', label: 'Should-cost benchmark', labelRo: 'Reper should-cost', type: 'currency', min: 0 },
+    { key: 'rfq.bid.marginThresholdPct', label: 'Minimum acceptable margin %', labelRo: 'Marjă minimă acceptabilă %', type: 'percent', min: 0, max: 95 },
+    { key: 'rfq.bid.capacityFitPct', label: 'Capacity fit (0–100)', labelRo: 'Potrivire capacitate (0–100)', type: 'number', min: 0, max: 100 },
+    { key: 'rfq.bid.strategicFitPct', label: 'Strategic fit (0–100)', labelRo: 'Potrivire strategică (0–100)', type: 'number', min: 0, max: 100 },
+    { key: 'rfq.bid.weightMargin', label: 'Weight: margin', labelRo: 'Pondere: marjă', type: 'number', min: 0, max: 100 },
+    { key: 'rfq.bid.weightCapacity', label: 'Weight: capacity', labelRo: 'Pondere: capacitate', type: 'number', min: 0, max: 100 },
+    { key: 'rfq.bid.weightStrategic', label: 'Weight: strategic', labelRo: 'Pondere: strategic', type: 'number', min: 0, max: 100 },
+    { key: 'rfq.bid.scoreThreshold', label: 'Bid threshold score', labelRo: 'Prag scor ofertare', type: 'number', min: 0, max: 100 },
   ],
 };
 
@@ -195,6 +204,24 @@ const ADVANCED_MODEL_SECTION: QuestionSection = {
   ],
 };
 
+/**
+ * S-59 (BC-210 + BC-208 accounting break-even) — optional unit-economics inputs.
+ */
+const UNIT_ECONOMICS_SECTION: QuestionSection = {
+  id: 'unitEconomics',
+  title: 'Unit economics (optional)',
+  titleRo: 'Economie unitară (opțional)',
+  fields: [
+    { key: 'ue.pricePerUnit', label: 'Price per unit', labelRo: 'Preț pe unitate', type: 'currency', min: 0 },
+    { key: 'ue.variableCostPerUnit', label: 'Variable cost per unit', labelRo: 'Cost variabil pe unitate', type: 'currency', min: 0 },
+    { key: 'ue.ordersPerMonth', label: 'Orders per customer / month', labelRo: 'Comenzi per client / lună', type: 'number', min: 0, max: 1000 },
+    { key: 'ue.monthlyChurnPct', label: 'Monthly churn %', labelRo: 'Churn lunar %', type: 'percent', min: 0, max: 100 },
+    { key: 'ue.marketingSpendMonthly', label: 'Monthly marketing spend', labelRo: 'Buget marketing lunar', type: 'currency', min: 0 },
+    { key: 'ue.newCustomersMonthly', label: 'New customers / month', labelRo: 'Clienți noi / lună', type: 'number', min: 0 },
+    { key: 'ue.fixedCostsMonthly', label: 'Fixed costs / month', labelRo: 'Costuri fixe / lună', type: 'currency', min: 0 },
+  ],
+};
+
 export const TEMPLATES: Record<BcTemplate, TemplateDescriptor> = {
   FIVE_CASE: {
     template: 'FIVE_CASE',
@@ -202,14 +229,14 @@ export const TEMPLATES: Record<BcTemplate, TemplateDescriptor> = {
     nameRo: 'Modelul celor 5 cazuri',
     skeleton: ['Strategic', 'Economic', 'Commercial', 'Financial', 'Management'],
     maturityStages: ['SOC', 'OBC', 'FBC'],
-    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, ADVANCED_MODEL_SECTION, WACC_SECTION],
+    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, ADVANCED_MODEL_SECTION, UNIT_ECONOMICS_SECTION, WACC_SECTION],
   },
   PRINCE2_LEAN: {
     template: 'PRINCE2_LEAN',
     name: 'PRINCE2 / lean business case',
     nameRo: 'Caz de afaceri PRINCE2 (lean)',
     skeleton: ['Exec summary', 'Reasons', 'Options', 'Benefits', 'Costs', 'Investment appraisal', 'Risks'],
-    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, ADVANCED_MODEL_SECTION, WACC_SECTION],
+    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, ADVANCED_MODEL_SECTION, UNIT_ECONOMICS_SECTION, WACC_SECTION],
   },
   RFQ: {
     template: 'RFQ',

@@ -3,6 +3,9 @@ import { PrismaService } from '../prisma/prisma.service';
 import { BcTemplate, TEMPLATES, validateAnswers, diffAnswers } from './bc.questionnaire';
 import { resolveDiscountRate } from './bc.finance';
 import { appraise, mirr, eac } from './bc.model';
+import { breakEven, goalSeek, GoalDriver, GoalMetric } from './bc.goalseek';
+import { computeRfq, hasRfqInputs } from './bc.rfq';
+import { computeUnitEconomics, hasUnitEconomicsInputs } from './bc.uniteconomics';
 import { buildExtendedModel, hasExtendedDrivers, TvValidationError } from './bc.cashflow';
 import { tornado, monteCarlo } from './bc.sensitivity';
 import { buildDeliverableHtml, Maturity } from './bc.deliverable';
@@ -125,6 +128,16 @@ export class BusinessCaseService {
       }
     }
 
+    // S-59 (BC-208/209/210) — strictly ADDITIVE keys, null when inputs absent.
+    const rfq = hasRfqInputs(answers) ? computeRfq(answers) : null;
+    const unitEconomics = hasUnitEconomicsInputs(answers) ? computeUnitEconomics(answers) : null;
+    let breakEvenRes: any = null;
+    try {
+      breakEvenRes = breakEven(answers);
+    } catch {
+      breakEvenRes = null; // break-even is advisory — never fail the compute
+    }
+
     const results = {
       assumptionVersion: latest.version,
       appraisal,
@@ -132,6 +145,9 @@ export class BusinessCaseService {
       monteCarlo: monteCarlo(answers, { seed, iterations: opts?.iterations ?? 5000 }),
       extras,
       extended,
+      rfq,
+      unitEconomics,
+      breakEven: breakEvenRes,
       computedAt: new Date().toISOString(),
     };
 
@@ -210,4 +226,19 @@ export class BusinessCaseService {
     if (!a || !b) throw new NotFoundException('One or both versions not found');
     return { from: vA, to: vB, changes: diffAnswers(a.answers as any, b.answers as any) };
   }
+  /** BC-208 — reverse-solve one driver for a target NPV or IRR (pure, on the latest assumptions). */
+  async goalSeek(userId: string, id: string, body: { driver: GoalDriver; metric: GoalMetric; target: number }) {
+    const bc = await this.prisma.businessCase.findFirst({ where: { id, userId } });
+    if (!bc) throw new NotFoundException(`Business case ${id} not found`);
+    const latest = await this.prisma.bcAssumptionSet.findFirst({ where: { bcId: id }, orderBy: { version: 'desc' } });
+    if (!latest) throw new BadRequestException('No assumptions submitted yet.');
+    const drivers: GoalDriver[] = ['price', 'volume', 'capex', 'discountRate'];
+    const metrics: GoalMetric[] = ['npv', 'irr'];
+    if (!drivers.includes(body?.driver)) throw new BadRequestException(`driver must be one of ${drivers.join(', ')}`);
+    if (!metrics.includes(body?.metric)) throw new BadRequestException(`metric must be one of ${metrics.join(', ')}`);
+    const target = Number(body?.target);
+    if (!Number.isFinite(target)) throw new BadRequestException('target must be a number');
+    return { assumptionVersion: latest.version, ...goalSeek(latest.answers as Record<string, any>, body.driver, body.metric, target) };
+  }
+
 }
