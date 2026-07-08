@@ -18,6 +18,7 @@ describe('BC-101 questionnaire DSL', () => {
     // hurdle mode → CAPM fields hidden, so their absence is not an error
     const errors = validateAnswers('FIVE_CASE', {
       'strategic.problem': 'growth', 'strategic.horizonYears': 5, 'strategic.initialInvestment': 100000,
+      'economic.cashflows': Array.from({ length: 5 }, () => ({ benefit: 40000, opex: 12000 })),
       'wacc.mode': 'hurdle', 'wacc.hurdle': 12,
     });
     expect(errors).toEqual([]);
@@ -29,6 +30,19 @@ describe('BC-101 questionnaire DSL', () => {
       'wacc.mode': 'hurdle', 'wacc.hurdle': 12,
     });
     expect(errors.some((e) => e.field === 'strategic.horizonYears')).toBe(true);
+  });
+
+  it('BC-104: driver-table must have one row per horizon year', () => {
+    const base = {
+      'strategic.problem': 'growth', 'strategic.horizonYears': 3, 'strategic.initialInvestment': 100000,
+      'wacc.mode': 'hurdle', 'wacc.hurdle': 12,
+    };
+    const wrong = validateAnswers('FIVE_CASE', { ...base, 'economic.cashflows': [{ benefit: 1, opex: 0 }] });
+    expect(wrong.some((e) => e.field === 'economic.cashflows')).toBe(true);
+    const right = validateAnswers('FIVE_CASE', {
+      ...base, 'economic.cashflows': [{ benefit: 1, opex: 0 }, { benefit: 1, opex: 0 }, { benefit: 1, opex: 0 }],
+    });
+    expect(right).toEqual([]);
   });
 
   it('isVisible evaluates equals predicate', () => {

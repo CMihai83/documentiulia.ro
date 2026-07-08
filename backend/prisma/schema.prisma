@@ -3388,6 +3388,7 @@ model BusinessCase {
   createdAt      DateTime          @default(now())
   updatedAt      DateTime          @updatedAt
   assumptionSets BcAssumptionSet[]
+  results        BcResult[]
 
   @@index([userId])
   @@index([organizationId])
@@ -3402,5 +3403,19 @@ model BcAssumptionSet {
   businessCase BusinessCase @relation(fields: [bcId], references: [id], onDelete: Cascade)
 
   @@unique([bcId, version])
+  @@index([bcId])
+}
+
+// BC-106 — a persisted investment-appraisal snapshot (NPV/IRR/payback + tornado +
+// Monte-Carlo) keyed to the assumption-set version it was computed from.
+model BcResult {
+  id                String       @id @default(cuid())
+  bcId              String
+  assumptionVersion Int
+  resultsJson       Json
+  createdAt         DateTime     @default(now())
+  businessCase      BusinessCase @relation(fields: [bcId], references: [id], onDelete: Cascade)
+
+  @@unique([bcId, assumptionVersion])
   @@index([bcId])
 }
