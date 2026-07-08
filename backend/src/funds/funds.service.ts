@@ -37,7 +37,7 @@ export class FundsService {
     if (overlap.length) throw new BadRequestException(`CAEN codes in both white and blacklist: ${overlap.join(', ')}`);
   }
 
-  createProgram(dto: CreateProgramDto) {
+  async createProgram(dto: CreateProgramDto) {
     this.validateCaenLists(dto.caenWhitelist, dto.caenBlacklist);
     return this.prisma.fundingProgram.create({
       data: {
