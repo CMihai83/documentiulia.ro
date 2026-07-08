@@ -3,12 +3,13 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { FundsController } from './funds.controller';
 import { FundsService } from './funds.service';
 import { DeMinimisService } from './deminimis.service';
+import { FundsAdvisoryService } from './funds-advisory.service';
 
-/** FND-1/2/3/4 — Funds & Financing Advisory (catalog, 7-filter match, de minimis, pre-check). */
+/** FND-1..9 — Funds & Financing Advisory (catalog, 7-filter match, de minimis, pre-check, advisory). */
 @Module({
   imports: [PrismaModule],
   controllers: [FundsController],
-  providers: [FundsService, DeMinimisService],
-  exports: [FundsService, DeMinimisService],
+  providers: [FundsService, DeMinimisService, FundsAdvisoryService],
+  exports: [FundsService, DeMinimisService, FundsAdvisoryService],
 })
 export class FundsModule {}
