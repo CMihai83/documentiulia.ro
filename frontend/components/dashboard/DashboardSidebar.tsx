@@ -26,6 +26,7 @@ import {
   Database,
   Gauge,
   Wallet,
+  Landmark,
   Menu,
   X,
   HelpCircle,
@@ -106,6 +107,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/saft', icon: FileSpreadsheet, labelKey: 'saft', defaultLabel: 'SAF-T D406' },
       { href: '/dashboard/reports', icon: PieChart, labelKey: 'reports', defaultLabel: 'Rapoarte' },
       { href: '/dashboard/business-case', icon: FileText, labelKey: 'businessCase', defaultLabel: 'Business Case' },
+      { href: '/dashboard/funds', icon: Landmark, labelKey: 'funds', defaultLabel: 'Finanțări & Fonduri' },
     ],
   },
   {
@@ -193,6 +195,7 @@ const minTierByHref: Record<string, (typeof TIER_ORDER)[number]> = {
   '/dashboard/consulting': 'PRO',
   '/dashboard/services/templates': 'PRO',
   '/dashboard/business-case': 'PRO',
+  '/dashboard/funds': 'PRO',
   '/dashboard/controlling': 'BUSINESS',
   '/dashboard/data-migration': 'BUSINESS',
   '/dashboard/developer': 'BUSINESS',
