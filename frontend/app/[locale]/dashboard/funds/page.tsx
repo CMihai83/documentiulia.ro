@@ -143,6 +143,86 @@ export default function FundsPage() {
           </CardContent>
         </Card>
       )}
+
+      <FundsAdvisory ro={ro} />
+    </div>
+  );
+}
+
+// ---------------- S-54 advisory tools ----------------
+function FundsAdvisory({ ro }: { ro: boolean }) {
+  const [cf, setCf] = useState({ totalProjectCostEur: '121000', vatRatePct: '21', programCoFinPct: '90', vatRegistered: true });
+  const [cfRes, setCfRes] = useState<any>(null);
+  const [dur, setDur] = useState({ title: 'Grant', finalPaymentDate: '2026-01-15', beneficiaryType: 'sme' });
+  const [durRes, setDurRes] = useState<any>(null);
+  const [busy, setBusy] = useState(false);
+
+  const runCoFin = async () => {
+    setBusy(true);
+    const r = await api.post<any>('/funds/cofinance', {
+      totalProjectCostEur: Number(cf.totalProjectCostEur), vatRatePct: Number(cf.vatRatePct),
+      programCoFinPct: Number(cf.programCoFinPct), vatRegistered: cf.vatRegistered,
+    });
+    setCfRes(r.data ?? r); setBusy(false);
+  };
+  const runDur = async () => {
+    setBusy(true);
+    const r = await api.post<any>('/funds/durability', dur);
+    setDurRes(r.data ?? r); setBusy(false);
+  };
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      <Card>
+        <CardHeader><CardTitle className="text-base">{t(ro, 'Cofinanțare & TVA', 'Co-financing & VAT')}</CardTitle></CardHeader>
+        <CardContent className="space-y-3">
+          <div className="grid gap-2 sm:grid-cols-2">
+            <div><Label className="text-xs">{t(ro, 'Cost total (€)', 'Total cost (€)')}</Label><Input value={cf.totalProjectCostEur} onChange={(e) => setCf({ ...cf, totalProjectCostEur: e.target.value })} /></div>
+            <div><Label className="text-xs">{t(ro, 'Co-fin %', 'Co-fin %')}</Label><Input value={cf.programCoFinPct} onChange={(e) => setCf({ ...cf, programCoFinPct: e.target.value })} /></div>
+          </div>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" checked={cf.vatRegistered} onChange={(e) => setCf({ ...cf, vatRegistered: e.target.checked })} />
+            {t(ro, 'Plătitor de TVA (TVA neeligibil)', 'VAT-registered (VAT ineligible)')}
+          </label>
+          <Button size="sm" onClick={runCoFin} disabled={busy}>{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : t(ro, 'Calculează', 'Calculate')}</Button>
+          {cfRes && (
+            <div className="text-sm space-y-1 border-t pt-2">
+              <div>{t(ro, 'Grant', 'Grant')}: <span className="font-semibold">€{cfRes.grantEur?.toLocaleString()}</span></div>
+              <div>{t(ro, 'Contribuție proprie', 'Own contribution')}: €{cfRes.beneficiaryContributionEur?.toLocaleString()}</div>
+              <div className="text-xs text-muted-foreground">{cfRes.notes?.join(' ')}</div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle className="text-base">{t(ro, 'Durabilitate', 'Durability')}</CardTitle></CardHeader>
+        <CardContent className="space-y-3">
+          <div className="grid gap-2 sm:grid-cols-2">
+            <div><Label className="text-xs">{t(ro, 'Data plății finale', 'Final payment date')}</Label><Input type="date" value={dur.finalPaymentDate} onChange={(e) => setDur({ ...dur, finalPaymentDate: e.target.value })} /></div>
+            <div>
+              <Label className="text-xs">{t(ro, 'Tip beneficiar', 'Beneficiary')}</Label>
+              <select className="w-full h-9 rounded-md border px-2 text-sm bg-background" value={dur.beneficiaryType} onChange={(e) => setDur({ ...dur, beneficiaryType: e.target.value })}>
+                <option value="sme">{t(ro, 'IMM (3 ani)', 'SME (3 yr)')}</option>
+                <option value="large">{t(ro, 'Mare (5 ani)', 'Large (5 yr)')}</option>
+                <option value="public">{t(ro, 'Public (5 ani)', 'Public (5 yr)')}</option>
+              </select>
+            </div>
+          </div>
+          <Button size="sm" onClick={runDur} disabled={busy}>{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : t(ro, 'Generează calendar', 'Generate calendar')}</Button>
+          {durRes && (
+            <div className="text-sm space-y-1 border-t pt-2">
+              <div className="text-xs text-muted-foreground">{t(ro, 'Orizont', 'Horizon')}: {durRes.durabilityYears} {t(ro, 'ani', 'yr')}</div>
+              {durRes.events?.slice(0, 6).map((e: any) => (
+                <div key={e.id} className="text-xs flex justify-between gap-2">
+                  <span className="text-muted-foreground">{new Date(e.dueDate).toLocaleDateString()}</span>
+                  <span className="truncate">{ro ? e.descriptionRo : e.description}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
