@@ -58,6 +58,18 @@ export class BusinessCaseController {
     return this.svc.submitAnswers(this.userId(req), id, body?.answers ?? {});
   }
 
+  /** BC-106 — run the appraisal on the latest version and persist a snapshot. */
+  @Post(':id/compute')
+  compute(@Request() req: any, @Param('id') id: string, @Body() body?: { seed?: number; iterations?: number }) {
+    return this.svc.compute(this.userId(req), id, body);
+  }
+
+  /** BC-106 — latest persisted appraisal snapshot. */
+  @Get(':id/results')
+  results(@Request() req: any, @Param('id') id: string) {
+    return this.svc.getResults(this.userId(req), id);
+  }
+
   @Get(':id/versions')
   versions(@Request() req: any, @Param('id') id: string) {
     return this.svc.listVersions(this.userId(req), id);

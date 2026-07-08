@@ -2,6 +2,8 @@ import { BadRequestException, Injectable, Logger, NotFoundException } from '@nes
 import { PrismaService } from '../prisma/prisma.service';
 import { BcTemplate, TEMPLATES, validateAnswers, diffAnswers } from './bc.questionnaire';
 import { resolveDiscountRate } from './bc.finance';
+import { appraise } from './bc.model';
+import { tornado, monteCarlo } from './bc.sensitivity';
 
 @Injectable()
 export class BusinessCaseService {
@@ -73,6 +75,51 @@ export class BusinessCaseService {
     return this.prisma.bcAssumptionSet.findMany({
       where: { bcId: id }, orderBy: { version: 'desc' }, select: { version: true, createdAt: true },
     });
+  }
+
+  /**
+   * BC-106 — run the full appraisal (NPV/IRR/payback + tornado + Monte-Carlo)
+   * against the LATEST assumption version and upsert a snapshot keyed to it.
+   * Re-running on the same version refreshes it; a new answer version yields a
+   * new snapshot row.
+   */
+  async compute(userId: string, id: string, opts?: { seed?: number; iterations?: number }) {
+    const bc = await this.prisma.businessCase.findFirst({ where: { id, userId } });
+    if (!bc) throw new NotFoundException(`Business case ${id} not found`);
+    const latest = await this.prisma.bcAssumptionSet.findFirst({
+      where: { bcId: id }, orderBy: { version: 'desc' },
+    });
+    if (!latest) throw new BadRequestException('No assumptions submitted yet — save answers before computing.');
+
+    const answers = latest.answers as Record<string, any>;
+    const seed = (opts?.seed ?? 12345) >>> 0;
+    const appraisal = appraise(answers);
+    const results = {
+      assumptionVersion: latest.version,
+      appraisal,
+      tornado: tornado(answers),
+      monteCarlo: monteCarlo(answers, { seed, iterations: opts?.iterations ?? 5000 }),
+      computedAt: new Date().toISOString(),
+    };
+
+    const snapshot = await this.prisma.bcResult.upsert({
+      where: { bcId_assumptionVersion: { bcId: id, assumptionVersion: latest.version } },
+      create: { bcId: id, assumptionVersion: latest.version, resultsJson: results as any },
+      update: { resultsJson: results as any, createdAt: new Date() },
+    });
+    this.logger.log(`BC ${id} appraised v${latest.version}: NPV ${appraisal.npv}, IRR ${appraisal.irr}`);
+    return { id: snapshot.id, ...results };
+  }
+
+  /** BC-106 — latest persisted appraisal snapshot. */
+  async getResults(userId: string, id: string) {
+    const bc = await this.prisma.businessCase.findFirst({ where: { id, userId } });
+    if (!bc) throw new NotFoundException(`Business case ${id} not found`);
+    const snap = await this.prisma.bcResult.findFirst({
+      where: { bcId: id }, orderBy: { assumptionVersion: 'desc' },
+    });
+    if (!snap) return null;
+    return { id: snap.id, createdAt: snap.createdAt, ...(snap.resultsJson as any) };
   }
 
   /** BC-105 — field-level diff between two assumption-set versions. */
