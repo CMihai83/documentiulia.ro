@@ -3805,13 +3805,57 @@ model Credential {
 /// EXP-10 — expert profile; PRIVATE by default. Public exposure is double-gated
 /// (user opt-in + EXPERT_PROFILES_PUBLIC env flag) and DPO-review-gated for go-live.
 model ExpertProfile {
-  id              String   @id @default(cuid())
-  userId          String   @unique
-  headline        String   @default("")
-  bio             String   @default("")
-  isPublic        Boolean  @default(false)
-  endorsements    Json     @default("[]")
-  reputationScore Float    @default(0)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  headline         String   @default("")
+  bio              String   @default("")
+  isPublic         Boolean  @default(false)
+  endorsements     Json     @default("[]")
+  reputationScore  Float    @default(0)
+  // S-57 marketplace: separate, explicit consent (NOT the public-profile flag)
+  marketplaceOptIn Boolean  @default(false)
+  hourlyRateEur    Float?
+  sessionTypes     String[] @default([])
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+// S-57 EXP-12 — expert-for-hire engagement. paymentStatus is a PLACEHOLDER
+// (no live payments until Stripe/DOC-44-2): pending_hold|held|released|refunded.
+model ExpertEngagement {
+  id            String   @id @default(cuid())
+  expertUserId  String
+  clientUserId  String
+  sessionType   String
+  scheduledAt   DateTime
+  durationMin   Int      @default(60)
+  status        String   @default("requested") // requested|confirmed|completed|cancelled
+  paymentStatus String   @default("pending_hold")
+  rating        Int?
+  ratingComment String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([expertUserId])
+  @@index([clientUserId])
+  @@index([status])
+}
+
+// S-57 AI-1 — funds-catalog refresh proposals. NEVER auto-applied: a human
+// approves/rejects; approval applies the change and writes an audit entry.
+model FundingProgramRevision {
+  id              String    @id @default(cuid())
+  programId       String
+  fetchedAt       DateTime  @default(now())
+  sourceUrl       String
+  rawExcerpt      String    @default("")
+  proposedChanges Json      @default("[]") // [{field, old, new}]
+  contentHash     String
+  status          String    @default("pending") // pending|approved|rejected
+  reviewedBy      String?
+  reviewedAt      DateTime?
+  createdAt       DateTime  @default(now())
+
+  @@unique([programId, contentHash])
+  @@index([status])
 }

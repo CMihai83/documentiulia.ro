@@ -18,6 +18,23 @@ describe('EXP-10 reputation.logic', () => {
     expect(a.reputation).toBe(63.5);
   });
 
+  it('S-57: client engagement ratings fold into the reviews pool (exact)', () => {
+    const input = {
+      skills: [
+        { evidenceTier: 'verified', proficiency: 5 },
+        { evidenceTier: 'course', proficiency: 3 },
+      ],
+      activeCredentials: 2,
+      peerReviewScores: [80, 90],
+      simComposites: [70],
+      engagementRatings: [5, 4], // → 100, 80 → pool [80,90,100,80] avg 87.5
+    };
+    // 0.4*0.65 + 0.25*0.4 + 0.2*0.875 + 0.15*0.7 = 0.64
+    expect(computeReputation(input).reputation).toBe(64);
+    // and WITHOUT ratings the prior exact value is preserved
+    expect(computeReputation({ ...input, engagementRatings: [] }).reputation).toBe(63.5);
+  });
+
   it('empty inputs give zero', () => {
     expect(computeReputation({ skills: [], activeCredentials: 0, peerReviewScores: [], simComposites: [] }).reputation).toBe(0);
   });

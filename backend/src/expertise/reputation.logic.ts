@@ -24,6 +24,10 @@ export interface ReputationInputs {
   activeCredentials: number;
   peerReviewScores: number[]; // 0–100 each
   simComposites: number[]; // 0–100 each, scored runs only
+  /** S-57 EXP-12: client ratings (1–5) from completed marketplace engagements.
+   *  Folded into the reviews pool (×20 → 0–100) so weights stay stable and
+   *  profiles without engagements keep their exact prior score. */
+  engagementRatings?: number[];
 }
 
 export interface ReputationBreakdown {
@@ -42,7 +46,8 @@ export function computeReputation(input: ReputationInputs): ReputationBreakdown 
     avg(input.skills.map((s) => (TIER_CREDIBILITY[s.evidenceTier] ?? 0) * clamp01(s.proficiency / 5))),
   );
   const credentials = clamp01(input.activeCredentials / 5);
-  const reviews = clamp01(avg(input.peerReviewScores) / 100);
+  const reviewPool = [...input.peerReviewScores, ...(input.engagementRatings ?? []).map((r) => clamp01(r / 5) * 100)];
+  const reviews = clamp01(avg(reviewPool) / 100);
   const simulator = clamp01(avg(input.simComposites) / 100);
   const reputation = Math.round((0.4 * skills + 0.25 * credentials + 0.2 * reviews + 0.15 * simulator) * 1000) / 10;
   return {
