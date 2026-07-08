@@ -3859,3 +3859,20 @@ model FundingProgramRevision {
   @@unique([programId, contentHash])
   @@index([status])
 }
+
+model ClientErrorLog {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  source    String   @default("frontend") // frontend | backend
+  level     String   @default("error")    // error | warning
+  message   String
+  stack     String?
+  url       String?
+  userAgent String?
+  userId    String?
+  orgId     String?
+  meta      Json?
+
+  @@index([createdAt])
+  @@index([source, createdAt])
+}

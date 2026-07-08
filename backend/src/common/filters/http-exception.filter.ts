@@ -7,10 +7,14 @@ import {
   Logger,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { Optional } from '@nestjs/common';
+import { ClientLogsService } from '../../monitoring/client-logs.service';
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
   private readonly logger = new Logger(GlobalExceptionFilter.name);
+
+  constructor(@Optional() private readonly clientLogs?: ClientLogsService) {}
 
   catch(exception: unknown, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
@@ -44,6 +48,16 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       error,
       message,
     };
+
+    // Persist 5xx to the live error log (best-effort; never blocks the response)
+    if (status >= 500 && this.clientLogs) {
+      void this.clientLogs.recordBackendError(
+        `${request.method} ${request.url} - ${status} - ${message}`,
+        exception instanceof Error ? exception.stack : undefined,
+        request.url,
+        (request as any).user?.id,
+      );
+    }
 
     // Log error for monitoring
     this.logger.error(

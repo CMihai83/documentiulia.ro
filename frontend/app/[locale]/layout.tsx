@@ -8,6 +8,7 @@ import '../globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { QueryProvider } from '@/components/QueryProvider';
+import { ErrorLoggerProvider } from '@/components/ErrorLoggerProvider';
 import { ClientClerkProvider } from '@/components/providers/ClientClerkProvider';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
@@ -56,7 +57,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
                     <OrganizationProvider>
                       <div className="min-h-screen flex flex-col">
                         <Navbar />
-                        <main className="flex-1">{children}</main>
+                        <main className="flex-1"><ErrorLoggerProvider>{children}</ErrorLoggerProvider></main>
                         <Footer />
                       </div>
                     </OrganizationProvider>

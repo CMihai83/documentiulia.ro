@@ -1,3 +1,5 @@
+import { logApiFailure } from './error-logger';
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 const ORG_STORAGE_KEY = 'current_organization_id';
 
@@ -174,6 +176,10 @@ export async function apiRequest<T = unknown>(
         return { status: 403, error: serverMessage || 'You do not have permission to perform this action.' };
       }
 
+      if (response.status >= 500 && typeof window !== 'undefined') {
+        logApiFailure(endpoint, response.status);
+      }
+
       // Parse response
       let data: T | undefined;
       const contentType = response.headers.get('content-type');
@@ -199,6 +205,7 @@ export async function apiRequest<T = unknown>(
 
       return { status: response.status, data };
     } catch (error) {
+      if (typeof window !== 'undefined') logApiFailure(endpoint, 'network', String((error as any)?.message ?? error));
       lastStatus = 0;
       lastError = 'Network error. Please check your connection.';
       console.error(`API request failed (attempt ${attempt + 1}/${(maxRetries || 0) + 1}):`, error);
