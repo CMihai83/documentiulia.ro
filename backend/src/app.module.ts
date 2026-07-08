@@ -63,6 +63,7 @@ import { ControllingModule } from './controlling/controlling.module';
 import { MigrationModule } from './migration/migration.module';
 import { ChartsModule } from './charts/charts.module';
 import { MatchingModule } from './matching/matching.module';
+import { FundsModule } from './funds/funds.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { HelpModule } from './help/help.module';
 import { BackupModule } from './backup/backup.module';
@@ -222,6 +223,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     MigrationModule,
     ChartsModule,
     MatchingModule,
+    FundsModule,
     OnboardingModule,
     DeveloperModule,
     AdminModule,
