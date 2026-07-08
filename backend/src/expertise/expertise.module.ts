@@ -3,6 +3,10 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { AuditModule } from '../audit/audit.module';
 import { ExpertiseController } from './expertise.controller';
 import { ExpertiseService } from './expertise.service';
+import { MasteryService } from './mastery.service';
+import { CredentialService } from './credential.service';
+import { ProfileService } from './profile.service';
+import { ExpertisePublicController } from './expertise-public.controller';
 
 /**
  * EXP-1/2/3/5 — Expertise & Mastery Engine (S-55 EXP Foundations).
@@ -11,8 +15,8 @@ import { ExpertiseService } from './expertise.service';
  */
 @Module({
   imports: [PrismaModule, AuditModule],
-  controllers: [ExpertiseController],
-  providers: [ExpertiseService],
-  exports: [ExpertiseService],
+  controllers: [ExpertiseController, ExpertisePublicController],
+  providers: [ExpertiseService, MasteryService, CredentialService, ProfileService],
+  exports: [ExpertiseService, MasteryService, CredentialService, ProfileService],
 })
 export class ExpertiseModule {}

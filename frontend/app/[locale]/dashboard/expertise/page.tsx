@@ -58,6 +58,39 @@ export default function ExpertisePage() {
     } finally { setLoading(false); }
   }, [target, difficulty]);
 
+  // ---- EXP-10 expert profile (S-56) ----
+  const [profile, setProfile] = useState<any | null>(null);
+  const [headline, setHeadline] = useState('');
+  const [bio, setBio] = useState('');
+  const [savingProfile, setSavingProfile] = useState(false);
+
+  const loadProfile = useCallback(async () => {
+    const r = await api.get<any>('/expertise/me/profile').catch(() => null);
+    if (r?.data) {
+      setProfile(r.data);
+      setHeadline(r.data.profile?.headline ?? '');
+      setBio(r.data.profile?.bio ?? '');
+    }
+  }, []);
+  useEffect(() => { loadProfile(); }, [loadProfile]);
+
+  const saveProfile = async () => {
+    setSavingProfile(true);
+    try {
+      await api.post('/expertise/me/profile', { headline, bio });
+      await loadProfile();
+    } finally { setSavingProfile(false); }
+  };
+  const toggleVisibility = async () => {
+    const next = !profile?.profile?.isPublic;
+    await api.post('/expertise/me/profile/visibility', { isPublic: next });
+    await loadProfile();
+  };
+  const claimCredential = async (escoUri: string) => {
+    await api.post('/expertise/me/credentials/claim', { skillUri: escoUri }).catch(() => {});
+    await loadProfile();
+  };
+
   const pct = (n: number) => `${Math.round(n * 100)}%`;
   const hrs = (m: number) => `${Math.floor(m / 60)}h ${m % 60}m`;
 
@@ -114,6 +147,61 @@ export default function ExpertisePage() {
                 <span className="text-xs tabular-nums text-muted-foreground shrink-0">{g.currentLevel} → {g.requiredLevel}</span>
               </div>
             ))}
+          </CardContent>
+        </Card>
+      )}
+
+      {profile && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base flex items-center justify-between">
+              <span>{t(ro, 'Profil de expert', 'Expert profile')} · {t(ro, 'reputație', 'reputation')} {profile.reputation?.reputation ?? 0}/100</span>
+              <Badge variant={profile.profile?.isPublic ? 'default' : 'secondary'} className="text-[10px]">
+                {profile.profile?.publiclyVisible
+                  ? t(ro, 'PUBLIC', 'PUBLIC')
+                  : profile.profile?.isPublic
+                    ? t(ro, 'opt-in (așteaptă activarea publică)', 'opted-in (awaiting public rollout)')
+                    : t(ro, 'PRIVAT', 'PRIVATE')}
+              </Badge>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="grid gap-2 sm:grid-cols-2">
+              <input value={headline} onChange={(e) => setHeadline(e.target.value)} placeholder={t(ro, 'Titlu (ex: Expert contabilitate & TVA)', 'Headline (e.g. Accounting & VAT expert)')} className="border rounded-lg px-3 py-2 text-sm bg-transparent" />
+              <input value={bio} onChange={(e) => setBio(e.target.value)} placeholder={t(ro, 'Scurtă descriere', 'Short bio')} className="border rounded-lg px-3 py-2 text-sm bg-transparent" />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button size="sm" onClick={saveProfile} disabled={savingProfile}>{t(ro, 'Salvează profilul', 'Save profile')}</Button>
+              <Button size="sm" variant="outline" onClick={toggleVisibility}>
+                {profile.profile?.isPublic ? t(ro, 'Retrage consimțământul public', 'Withdraw public consent') : t(ro, 'Optează pentru profil public', 'Opt in to a public profile')}
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              {t(ro,
+                'Profilul este PRIVAT implicit. Optarea pentru public este un consimțământ explicit (înregistrat în jurnalul de audit); vizibilitatea publică efectivă se activează doar după avizul DPO.',
+                'Your profile is PRIVATE by default. Opting in is explicit consent (recorded in the audit log); actual public visibility only activates after DPO clearance.')}
+            </p>
+            {profile.credentials?.length > 0 && (
+              <div className="space-y-1.5">
+                <p className="text-sm font-medium">{t(ro, 'Credențiale (Open Badges 3.0)', 'Credentials (Open Badges 3.0)')}</p>
+                {profile.credentials.map((c: any) => (
+                  <div key={c.id} className="flex items-center justify-between border rounded-lg px-3 py-2">
+                    <span className="text-sm truncate">{c.name ?? 'Credential'}{c.revoked ? ` — ${t(ro, 'revocat', 'revoked')}` : ''}</span>
+                    <a className="text-xs text-teal-600 underline shrink-0" href={`/api/v1/expertise/verify/${c.verifyCode}`} target="_blank" rel="noreferrer">{t(ro, 'verifică public', 'verify publicly')}</a>
+                  </div>
+                ))}
+              </div>
+            )}
+            {profile.skills?.some((sk: any) => sk.evidenceTier === 'verified' || (sk.evidenceTier === 'assessed' && sk.proficiency >= 4)) && (
+              <div className="space-y-1.5">
+                <p className="text-sm font-medium">{t(ro, 'Competențe eligibile pentru credențial', 'Skills eligible for a credential')}</p>
+                <div className="flex flex-wrap gap-2">
+                  {profile.skills.filter((sk: any) => sk.evidenceTier === 'verified' || (sk.evidenceTier === 'assessed' && sk.proficiency >= 4)).map((sk: any) => (
+                    <Button key={sk.escoUri} size="sm" variant="outline" onClick={() => claimCredential(sk.escoUri)}>{t(ro, 'Emite credențial:', 'Claim credential:')} {sk.label}</Button>
+                  ))}
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
       )}
