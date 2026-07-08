@@ -207,9 +207,13 @@ function estimateIntensityAndGrant(
     return { effectiveIntensityPct: intensity, coFinPct: 100 - intensity, estMaxGrantEur: grant };
   }
   if (program.legalBasis.startsWith('gber_')) {
-    // regional ceiling (by NUTS) + SME bonus, but never above program's own stated intensity if lower isn't implied.
-    const base = nuts2 ? REGION_MAX_INTENSITY_LARGE[nuts2] ?? (program.aidIntensityPct ?? 0) : (program.aidIntensityPct ?? 0);
-    const effective = Math.min(100, base + smeBonusPct(size));
+    // Regional legal ceiling (by NUTS) + SME bonus. A call's own aidIntensityPct can
+    // only LOWER the result — the stricter ceiling binds; a generous call intensity
+    // never raises the regional maximum (state-aid semantics).
+    const regionalBase = nuts2 ? REGION_MAX_INTENSITY_LARGE[nuts2] : undefined;
+    const pathBase = regionalBase ?? program.aidIntensityPct ?? 0;
+    let effective = Math.min(100, pathBase + smeBonusPct(size));
+    if (program.aidIntensityPct != null) effective = Math.min(effective, program.aidIntensityPct);
     let grant = cost * (effective / 100);
     if (program.ceilingEur != null) grant = Math.min(grant, program.ceilingEur);
     return { effectiveIntensityPct: effective, coFinPct: 100 - effective, estMaxGrantEur: grant };
