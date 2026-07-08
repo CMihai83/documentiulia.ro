@@ -184,7 +184,7 @@ export class ExpertiseService {
 
   // ---------------- EXP-3: gap analysis ----------------
 
-  private async requiredForOccupation(occUri: string): Promise<{ occLabel: string; required: RequiredSkill[]; skillIdByEsco: Map<string, string>; parentByEsco: Map<string, string | null> }> {
+  async requiredForOccupation(occUri: string): Promise<{ occLabel: string; required: RequiredSkill[]; skillIdByEsco: Map<string, string>; parentByEsco: Map<string, string | null> }> {
     const occ = await this.prisma.occupation.findUnique({
       where: { escoUri: occUri },
       include: { occupationSkills: { include: { skill: true } } },
@@ -201,7 +201,7 @@ export class ExpertiseService {
     return { occLabel: occ.label, required, skillIdByEsco: new Map(), parentByEsco };
   }
 
-  private async currentSkills(userId: string): Promise<CurrentSkill[]> {
+  async currentSkills(userId: string): Promise<CurrentSkill[]> {
     const rows = await this.prisma.userSkill.findMany({ where: { userId } });
     const now = new Date();
     return rows

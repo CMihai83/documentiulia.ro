@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, GraduationCap, Target, Route, Sparkles } from 'lucide-react';
+import { Loader2, GraduationCap, Target, Route, Sparkles, Users2 } from 'lucide-react';
 import { api } from '@/lib/api';
 
 const t = (ro: boolean, r: string, e: string) => (ro ? r : e);
@@ -93,6 +93,44 @@ export default function ExpertisePage() {
 
   const pct = (n: number) => `${Math.round(n * 100)}%`;
   const hrs = (m: number) => `${Math.floor(m / 60)}h ${m % 60}m`;
+
+  // ---- S-57 EXP-11/12: coaching + marketplace ----
+  const [coachRes, setCoachRes] = useState<any | null>(null);
+  const [experts, setExperts] = useState<any[] | null>(null);
+  const [engagements, setEngagements] = useState<any[]>([]);
+  const [mktBusy, setMktBusy] = useState(false);
+
+  const runCoach = async () => {
+    setMktBusy(true);
+    const r = await api.post<any>('/expertise/coach', {}).catch(() => null);
+    setCoachRes(r?.data ?? null);
+    setMktBusy(false);
+  };
+  const loadMarketplace = async () => {
+    setMktBusy(true);
+    const [m, e] = await Promise.all([
+      api.get<any>('/expertise/marketplace').catch(() => null),
+      api.get<any>('/expertise/me/engagements').catch(() => null),
+    ]);
+    setExperts(m?.data?.experts ?? []);
+    setEngagements(Array.isArray(e?.data) ? e.data : []);
+    setMktBusy(false);
+  };
+  const toggleMarketplaceOptIn = async () => {
+    const next = !profile?.profile?.marketplaceOptIn;
+    await api.post('/expertise/me/marketplace', { optIn: next, sessionTypes: ['mentoring', 'business_plan_review', 'sim_debrief'] });
+    await loadProfile();
+  };
+  const bookExpert = async (expertUserId: string) => {
+    const d = new Date(); d.setDate(d.getDate() + ((8 - d.getDay()) % 7 || 7)); // next Monday
+    const iso = `${d.toISOString().slice(0, 10)}T10:00:00Z`;
+    await api.post('/expertise/engagements', { expertUserId, sessionType: 'mentoring', scheduledAt: iso }).catch(() => {});
+    await loadMarketplace();
+  };
+  const engAction = async (id: string, action: string) => {
+    await api.post(`/expertise/engagements/${id}/${action}`, action === 'rate' ? { rating: 5 } : {}).catch(() => {});
+    await loadMarketplace();
+  };
 
   return (
     <div className="p-4 sm:p-6 max-w-5xl mx-auto space-y-6">
@@ -205,6 +243,56 @@ export default function ExpertisePage() {
           </CardContent>
         </Card>
       )}
+
+      <Card>
+        <CardHeader><CardTitle className="text-base flex items-center gap-2"><Sparkles className="h-4 w-4" /> {t(ro, 'Coach de carieră', 'Career coach')}</CardTitle></CardHeader>
+        <CardContent className="space-y-2">
+          <Button size="sm" onClick={runCoach} disabled={mktBusy || !seeded}>{t(ro, 'Sugerează următorii pași', 'Suggest next moves')}</Button>
+          {coachRes?.suggestions?.map((sg: any) => (
+            <div key={sg.escoUri} className="flex items-center gap-3 border rounded-lg px-3 py-2">
+              <span className="text-sm flex-1 min-w-0 truncate">{sg.label}{sg.mastered ? ' ✓' : ''}</span>
+              <span className="text-xs tabular-nums text-muted-foreground">{sg.readinessPct}% {t(ro, 'pregătit', 'ready')}</span>
+              {sg.salary && <span className="text-xs tabular-nums text-teal-700 dark:text-teal-300 shrink-0">{sg.salary.minEur}–{sg.salary.maxEur} €/lună*</span>}
+            </div>
+          ))}
+          {coachRes && <p className="text-[11px] text-muted-foreground">* {t(ro, 'estimări orientative 2025-26, nu date live', 'indicative 2025-26 estimates, not live data')}</p>}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle className="text-base flex items-center gap-2"><Users2 className="h-4 w-4" /> {t(ro, 'Piața experților', 'Expert marketplace')}</CardTitle></CardHeader>
+        <CardContent className="space-y-3">
+          <div className="flex flex-wrap gap-2">
+            <Button size="sm" variant="outline" onClick={loadMarketplace} disabled={mktBusy}>{t(ro, 'Caută experți', 'Browse experts')}</Button>
+            <Button size="sm" variant="outline" onClick={toggleMarketplaceOptIn}>{t(ro, 'Comută listarea mea în piață (consimțământ)', 'Toggle my marketplace listing (consent)')}</Button>
+          </div>
+          <p className="text-[11px] text-muted-foreground">{t(ro, 'Plata online în curând — rezervările se confirmă fără plată. Listarea este vizibilă doar utilizatorilor autentificați și necesită consimțământ explicit, retractabil.', 'Online payment coming soon — bookings confirm without payment. Listing is visible to authenticated users only and requires explicit, withdrawable consent.')}</p>
+          {experts?.map((e) => (
+            <div key={e.expertUserId} className="flex items-center gap-3 border rounded-lg px-3 py-2">
+              <span className="text-sm flex-1 min-w-0 truncate">{e.headline || t(ro, 'Expert', 'Expert')}</span>
+              <Badge variant="outline" className="text-[10px] tabular-nums">{t(ro, 'reputație', 'reputation')} {e.reputation}</Badge>
+              {e.hourlyRateEur != null && <span className="text-xs tabular-nums text-muted-foreground">{e.hourlyRateEur} €/h</span>}
+              <Button size="sm" onClick={() => bookExpert(e.expertUserId)}>{t(ro, 'Rezervă', 'Book')}</Button>
+            </div>
+          ))}
+          {experts?.length === 0 && <p className="text-sm text-muted-foreground">{t(ro, 'Niciun expert listat încă.', 'No experts listed yet.')}</p>}
+          {engagements.length > 0 && (
+            <div className="space-y-1.5">
+              <p className="text-sm font-medium">{t(ro, 'Sesiunile mele', 'My sessions')}</p>
+              {engagements.map((g) => (
+                <div key={g.id} className="flex items-center gap-2 border rounded-lg px-3 py-2">
+                  <span className="text-xs flex-1 truncate">{g.sessionType} · {new Date(g.scheduledAt).toLocaleString()}</span>
+                  <Badge variant="outline" className="text-[10px]">{g.status}</Badge>
+                  {g.status === 'requested' && <Button size="sm" variant="outline" onClick={() => engAction(g.id, 'confirm')}>{t(ro, 'Confirmă', 'Confirm')}</Button>}
+                  {g.status === 'confirmed' && <Button size="sm" variant="outline" onClick={() => engAction(g.id, 'complete')}>{t(ro, 'Finalizează', 'Complete')}</Button>}
+                  {g.status === 'completed' && g.rating == null && <Button size="sm" variant="outline" onClick={() => engAction(g.id, 'rate')}>{t(ro, 'Evaluează 5★', 'Rate 5★')}</Button>}
+                  {g.rating != null && <span className="text-xs">{'★'.repeat(g.rating)}</span>}
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
       {path && (
         <Card>

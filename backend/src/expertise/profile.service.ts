@@ -58,12 +58,14 @@ export class ProfileService {
 
   /** Recompute and persist the reputation score; returns the full aggregate. */
   async aggregate(userId: string) {
-    const [skills, credentials, attempts, runs, profile] = await Promise.all([
+    const [skills, credentials, attempts, runs, profile, ratedEngagements] = await Promise.all([
       this.prisma.userSkill.findMany({ where: { userId }, include: { skill: true } }),
       this.prisma.credential.findMany({ where: { userId } }),
       this.prisma.assessmentAttempt.findMany({ where: { userId }, include: { peerReviews: true, assessment: { select: { title: true } } } }),
       this.prisma.simV2Run.findMany({ where: { userId, mode: 'scored', status: 'ended' }, select: { scoreJson: true, updatedAt: true } }),
       this.prisma.expertProfile.findUnique({ where: { userId } }),
+      // S-57 EXP-12: client ratings on completed marketplace engagements
+      this.prisma.expertEngagement.findMany({ where: { expertUserId: userId, status: 'completed', rating: { not: null } }, select: { rating: true } }),
     ]);
 
     const peerReviewScores = attempts.flatMap((a) => a.peerReviews.map((r) => r.scorePct));
@@ -76,6 +78,7 @@ export class ProfileService {
       activeCredentials: credentials.filter((c) => !c.revoked).length,
       peerReviewScores,
       simComposites,
+      engagementRatings: ratedEngagements.map((e) => e.rating as number),
     });
 
     const saved = await this.prisma.expertProfile.upsert({
@@ -94,7 +97,7 @@ export class ProfileService {
       .slice(0, 20);
 
     return {
-      profile: { headline: saved.headline, bio: saved.bio, isPublic: saved.isPublic, publiclyVisible: saved.isPublic && this.publicFlagOn() },
+      profile: { headline: saved.headline, bio: saved.bio, isPublic: saved.isPublic, publiclyVisible: saved.isPublic && this.publicFlagOn(), marketplaceOptIn: saved.marketplaceOptIn, hourlyRateEur: saved.hourlyRateEur, sessionTypes: saved.sessionTypes },
       reputation: breakdown,
       skills: skills.map((s) => ({ label: s.skill.preferredLabel, escoUri: s.skill.escoUri, proficiency: s.proficiency, evidenceTier: s.evidenceTier })),
       credentials: credentials.map((c) => ({ id: c.id, verifyCode: c.verifyCode, revoked: c.revoked, issuedAt: c.issuedAt, name: (c.vcJson as any)?.credentialSubject?.achievement?.name })),

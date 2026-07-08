@@ -6,6 +6,7 @@ import { ExpertiseService } from './expertise.service';
 import { MasteryService } from './mastery.service';
 import { CredentialService } from './credential.service';
 import { ProfileService } from './profile.service';
+import { MarketplaceService } from './marketplace.service';
 import { ExpertisePublicController } from './expertise-public.controller';
 
 /**
@@ -16,7 +17,7 @@ import { ExpertisePublicController } from './expertise-public.controller';
 @Module({
   imports: [PrismaModule, AuditModule],
   controllers: [ExpertiseController, ExpertisePublicController],
-  providers: [ExpertiseService, MasteryService, CredentialService, ProfileService],
+  providers: [ExpertiseService, MasteryService, CredentialService, ProfileService, MarketplaceService],
   exports: [ExpertiseService, MasteryService, CredentialService, ProfileService],
 })
 export class ExpertiseModule {}

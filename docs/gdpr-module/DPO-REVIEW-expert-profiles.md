@@ -37,3 +37,25 @@ outcomes and simulator history into a profile card with a reputation score. A pu
 - [ ] Auto-revoke credentials on Art. 17 erasure
 - [ ] Privacy-policy section for public profiles + credential verification
 - [ ] Then set `EXPERT_PROFILES_PUBLIC=true`
+
+## S-57 addendum — marketplace listing (separate lawful basis)
+
+The expert-for-hire marketplace (S-57 EXP-12) is DISTINCT from the public profile above:
+
+- **Audience:** authenticated PRO users only — never the public internet. The
+  `EXPERT_PROFILES_PUBLIC` flag does NOT govern the marketplace and stays OFF.
+- **Lawful basis:** consent (Art. 6(1)(a)) for the specific purpose of being listed
+  to other authenticated users as available for hire. Captured via an explicit,
+  withdrawable `marketplaceOptIn` toggle; both opt-in and withdrawal are logged to
+  the hash-chained audit trail with the stated purpose.
+- **Data exposed to other authenticated users on opt-in:** headline, reputation
+  score, assessed/verified skill labels, credential count, hourly rate, session
+  types. No email/CNP/contact data; contact happens through in-app bookings.
+- **Client ratings** (1–5 on completed sessions) feed the expert's reputation
+  score; the client's identity is visible to the expert on the engagement itself
+  (contractual necessity for the booked session, Art. 6(1)(b)).
+- **Payments:** none processed yet — `paymentStatus` is a placeholder; no financial
+  data is collected by this feature until the Stripe integration ships.
+
+Marketplace go-live does NOT require the public-profile flag; the consent gate above
+is the control. DPO review of this addendum recommended before marketing pushes.
