@@ -3419,3 +3419,87 @@ model BcResult {
   @@unique([bcId, assumptionVersion])
   @@index([bcId])
 }
+
+// ===== FND (Funds & Financing Advisory) — S-53 =====
+
+/// FND-1 — grant/finance program catalog (national + EU). CAEN white/blacklist,
+/// NUTS regions, legal basis + intensity/ceiling drive the 7-filter engine.
+model FundingProgram {
+  id               String   @id @default(cuid())
+  name             String
+  authority        String   // e.g. "MEAT / ADR Vest", "European Commission"
+  purpose          String
+  beneficiaryType  String   // free text: "SMEs", "New SMEs <3yr", ...
+  sizeEligibility  String[] // micro | small | medium | large
+  coFinancingPct   Float?   // beneficiary co-fin %; null => region-driven
+  legalBasis       String   // de_minimis | gber_<article> | notified
+  gberArticle      String?  // e.g. "14" (regional), "28" (innovation)
+  aidIntensityPct  Float?   // base intensity for GBER programs (before SME bonus)
+  ceilingEur       Float?   // hard grant ceiling
+  opensAt          DateTime?
+  closesAt         DateTime?
+  caenWhitelist    String[] // empty => all CAEN allowed (subject to blacklist)
+  caenBlacklist    String[]
+  regions          String[] // NUTS-2 codes RO11..RO42; empty => national
+  interventionField String?
+  status           String   @default("open") // open | closed | upcoming
+  sourceUrl        String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([status])
+  @@index([legalBasis])
+}
+
+/// FND-2 input — an organization's fund-relevant snapshot. headcount + turnover
+/// auto-derived from ERP (Employee count / Invoice aggregate); the rest are inputs.
+model FundingProfile {
+  id              String   @id @default(cuid())
+  organizationId  String   @unique
+  userId          String
+  caenPrimary     String?
+  caenSecondary   String[]
+  foundedDate     DateTime?
+  headcount       Int?     // full profile headcount incl. consolidation inputs
+  turnoverEur     Float?
+  balanceSheetEur Float?
+  subscribedCapitalEur Float?  // for GBER Art.2(18) firm-in-difficulty ratio
+  accumulatedLossEur   Float?
+  equityEur            Float?
+  partnerLinks    Json?    // [{cui,name,relation:'partner'|'linked',sharePct,headcount,turnoverEur,balanceSheetEur}]
+  anafDebt        Boolean  @default(false)
+  insolvent       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+}
+
+/// FND-3 — de minimis aid ledger per single undertaking (EUR 300k rolling 3yr).
+model DeMinimisAid {
+  id             String   @id @default(cuid())
+  organizationId String
+  grantorProgram String
+  amountEur      Float
+  awardedDate    DateTime
+  source         String   @default("self-declared") // self-declared | RegAS
+  createdAt      DateTime @default(now())
+
+  @@index([organizationId])
+  @@index([organizationId, awardedDate])
+}
+
+/// FND-4 — a saved eligibility pre-check result (lead).
+model FundingLead {
+  id             String   @id @default(cuid())
+  userId         String
+  organizationId String?
+  criteria       Json     // [{criterion,pass,reason}]
+  eligible       Boolean
+  requestedType  String?
+  requestedCostEur Float?
+  createdAt      DateTime @default(now())
+
+  @@index([userId])
+  @@index([organizationId])
+}
