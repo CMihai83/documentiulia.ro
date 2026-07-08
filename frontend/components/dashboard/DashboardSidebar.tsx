@@ -145,6 +145,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/hse', icon: HeartPulse, labelKey: 'hse', defaultLabel: 'HSE' },
       { href: '/dashboard/audit', icon: Shield, labelKey: 'audit', defaultLabel: 'Jurnal Audit' },
       { href: '/dashboard/anaf-status', icon: FileCheck, labelKey: 'anafStatus', defaultLabel: 'Status ANAF' },
+      { href: '/dashboard/gdpr-toolkit', icon: Shield, labelKey: 'gdprToolkit', defaultLabel: 'GDPR Toolkit' },
     ],
   },
   {
