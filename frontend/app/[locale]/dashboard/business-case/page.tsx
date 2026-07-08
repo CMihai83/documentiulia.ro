@@ -33,7 +33,21 @@ type MonteCarlo = {
   p10: number; p50: number; p90: number; mean: number; probNpvPositive: number; probIrrAboveHurdle: number;
   histogram: { x0: number; x1: number; count: number }[];
 };
-type Results = { assumptionVersion: number; appraisal: Appraisal; tornado: TornadoBar[]; monteCarlo: MonteCarlo };
+type ExtRow = { month: number; revenue: number; ebitda: number; fcff: number; fcfe: number; deltaNwc: number };
+type ExtAnnual = { year: number; revenue: number; ebitda: number; fcff: number; fcfe: number; deltaNwc: number };
+type DebtRow = { period: number; opening: number; interest: number; principal: number; closing: number };
+type Extended = {
+  months: ExtRow[]; annual: ExtAnnual[];
+  debtSchedule: { rows: DebtRow[]; totalInterest: number } | null;
+  coverage: { minDscr: number | null } | null; dscrWarning: boolean;
+  fcffNpv: number;
+  terminalValue: { method: string; tv: number; pvTv: number; npvWithoutTv: number; npvWithTv: number } | null;
+};
+type Results = {
+  assumptionVersion: number; appraisal: Appraisal; tornado: TornadoBar[]; monteCarlo: MonteCarlo;
+  extras?: { mirr: number | null; eac: number } | null;
+  extended?: Extended | null;
+};
 type Section = { id: string; title: string; titleRo?: string; fields: Field[] };
 type Template = { template: string; name: string; nameRo: string; skeleton: string[]; maturityStages?: string[] };
 type Questionnaire = Template & { sections: Section[] };
@@ -52,6 +66,7 @@ const T = {
     computed: 'Rata calculată',
     compute: 'Calculează evaluarea', results: 'Rezultatele evaluării', npv: 'VAN (NPV)', irr: 'RIR (IRR)',
     payback: 'Recuperare', years: 'ani', tornado: 'Senzitivitate (tornado)', mc: 'Monte-Carlo — distribuția VAN',
+    mirr: 'RIR modificată (MIRR)', eac: 'Cost anual echivalent (EAC)', cashflow: 'Flux de numerar (FCFF/FCFE)', monthly: 'Lunar', annual: 'Anual', debt: 'Grafic rambursare credit', dscrWarn: 'DSCR < 1,0 — fluxul nu acoperă serviciul datoriei', tv: 'Valoare terminală', tvWith: 'VAN cu VT', tvWithout: 'VAN fără VT',
     probPos: 'Prob. VAN > 0', na: 'fără soluție', year1: 'Anul', benefit: 'Beneficiu', opex: 'Cost operare',
     dist: 'Distribuție', none: 'niciuna', computeFirst: 'Salvează versiunea, apoi calculează.',
     deliverable: 'Descarcă livrabilul (PDF)',
@@ -66,6 +81,7 @@ const T = {
     computed: 'Computed rate',
     compute: 'Compute appraisal', results: 'Appraisal results', npv: 'NPV', irr: 'IRR',
     payback: 'Payback', years: 'yrs', tornado: 'Sensitivity (tornado)', mc: 'Monte-Carlo — NPV distribution',
+    mirr: 'MIRR', eac: 'Equivalent annual cost (EAC)', cashflow: 'Cash flow (FCFF/FCFE)', monthly: 'Monthly', annual: 'Annual', debt: 'Debt schedule', dscrWarn: 'DSCR < 1.0 — cash flow does not cover debt service', tv: 'Terminal value', tvWith: 'NPV with TV', tvWithout: 'NPV without TV',
     probPos: 'Prob. NPV > 0', na: 'no root', year1: 'Year', benefit: 'Benefit', opex: 'Op-cost',
     dist: 'Distribution', none: 'none', computeFirst: 'Save a version, then compute.',
     deliverable: 'Download deliverable (PDF)',
@@ -111,6 +127,7 @@ export default function BusinessCasePage() {
   const [diff, setDiff] = useState<{ from: number; to: number; changes: DiffChange[] } | null>(null);
   const [rate, setRate] = useState<{ rate: number; method: string } | null>(null);
   const [results, setResults] = useState<Results | null>(null);
+  const [cfView, setCfView] = useState<'annual' | 'monthly'>('annual');
   const [computing, setComputing] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -428,6 +445,89 @@ export default function BusinessCasePage() {
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
+
+                {/* S-58 — MIRR/EAC tiles + extended FCFF/FCFE model */}
+                {results.extras && (
+                  <div className="grid grid-cols-2 gap-3">
+                    <Stat label={t.mirr} value={results.extras.mirr === null ? t.na : pctStr(results.extras.mirr)!} />
+                    <Stat label={t.eac} value={money(results.extras.eac)} />
+                  </div>
+                )}
+                {results.extended && (
+                  <div className="space-y-4">
+                    {results.extended.dscrWarning && (
+                      <div className="rounded-md border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40 px-3 py-2 text-xs font-medium text-amber-800 dark:text-amber-300">
+                        ⚠ {t.dscrWarn}{results.extended.coverage?.minDscr != null ? ` (min ${results.extended.coverage.minDscr.toFixed(2)})` : ''}
+                      </div>
+                    )}
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <p className="text-xs font-medium text-muted-foreground">{t.cashflow}</p>
+                        <div className="flex gap-1">
+                          {(['annual', 'monthly'] as const).map((v) => (
+                            <Button key={v} size="sm" variant={cfView === v ? 'default' : 'ghost'} className="h-6 px-2 text-[11px]" onClick={() => setCfView(v)}>
+                              {v === 'annual' ? t.annual : t.monthly}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="overflow-x-auto rounded-md border">
+                        <table className="w-full text-xs">
+                          <thead className="bg-muted/50"><tr>
+                            <th className="px-2 py-1 text-left">{cfView === 'annual' ? 'Y' : 'M'}</th>
+                            <th className="px-2 py-1 text-right">Rev</th><th className="px-2 py-1 text-right">EBITDA</th>
+                            <th className="px-2 py-1 text-right">ΔNWC</th>
+                            <th className="px-2 py-1 text-right">FCFF</th><th className="px-2 py-1 text-right">FCFE</th>
+                          </tr></thead>
+                          <tbody>
+                            {(cfView === 'annual' ? results.extended.annual : results.extended.months.slice(0, 25)).map((r: any) => (
+                              <tr key={cfView === 'annual' ? r.year : r.month} className="border-t">
+                                <td className="px-2 py-1">{cfView === 'annual' ? r.year : r.month}</td>
+                                <td className="px-2 py-1 text-right tabular-nums">{money(r.revenue)}</td>
+                                <td className="px-2 py-1 text-right tabular-nums">{money(r.ebitda)}</td>
+                                <td className="px-2 py-1 text-right tabular-nums">{money(r.deltaNwc)}</td>
+                                <td className={`px-2 py-1 text-right tabular-nums ${r.fcff < 0 ? 'text-red-600 dark:text-red-400' : ''}`}>{money(r.fcff)}</td>
+                                <td className={`px-2 py-1 text-right tabular-nums ${r.fcfe < 0 ? 'text-red-600 dark:text-red-400' : ''}`}>{money(r.fcfe)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    {results.extended.debtSchedule && (
+                      <div>
+                        <p className="text-xs font-medium text-muted-foreground mb-1">{t.debt}</p>
+                        <div className="overflow-x-auto rounded-md border max-h-48 overflow-y-auto">
+                          <table className="w-full text-xs">
+                            <thead className="bg-muted/50 sticky top-0"><tr>
+                              <th className="px-2 py-1 text-left">#</th><th className="px-2 py-1 text-right">Open</th>
+                              <th className="px-2 py-1 text-right">Int.</th><th className="px-2 py-1 text-right">Princ.</th>
+                              <th className="px-2 py-1 text-right">Close</th>
+                            </tr></thead>
+                            <tbody>
+                              {results.extended.debtSchedule.rows.map((r) => (
+                                <tr key={r.period} className="border-t">
+                                  <td className="px-2 py-1">{r.period}</td>
+                                  <td className="px-2 py-1 text-right tabular-nums">{money(r.opening)}</td>
+                                  <td className="px-2 py-1 text-right tabular-nums">{money(r.interest)}</td>
+                                  <td className="px-2 py-1 text-right tabular-nums">{money(r.principal)}</td>
+                                  <td className="px-2 py-1 text-right tabular-nums">{money(r.closing)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                    {results.extended.terminalValue && (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <Stat label={`${t.tv} (${results.extended.terminalValue.method})`} value={money(results.extended.terminalValue.pvTv)} />
+                        <Stat label={t.tvWithout} value={money(results.extended.terminalValue.npvWithoutTv)} />
+                        <Stat label={t.tvWith} value={money(results.extended.terminalValue.npvWithTv)} tone={results.extended.terminalValue.npvWithTv >= 0 ? 'pos' : 'neg'} />
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* BC-107 — deliverable download, one button per maturity (authenticated blob) */}
                 <div className="flex flex-wrap items-center gap-2 pt-1">
