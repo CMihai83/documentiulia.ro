@@ -3631,6 +3631,8 @@ model Skill {
 
   occupationSkills OccupationSkill[]
   userSkills       UserSkill[]
+  scenarioSkills   ScenarioSkill[]
+  assessments      SkillAssessment[]
 
   @@index([parentUri])
   @@index([skillType])
@@ -3722,4 +3724,94 @@ model LearningPathStep {
   path               LearningPath @relation(fields: [pathId], references: [id], onDelete: Cascade)
 
   @@index([pathId])
+}
+
+/// EXP-6 — links a simulator scenario to the ESCO skills it exercises (graded practice).
+model ScenarioSkill {
+  id          String @id @default(cuid())
+  scenarioKey String // sim-v2 SCENARIO_PRESETS key (services | retail | manufacturing)
+  skillId     String
+  skill       Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  weight      Float  @default(1)
+
+  @@unique([scenarioKey, skillId])
+  @@index([scenarioKey])
+}
+
+/// EXP-7 — a validated assessment attached to a skill (auto-graded quiz / work sample / capstone).
+model SkillAssessment {
+  id           String   @id @default(cuid())
+  skillId      String
+  skill        Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  kind         String // auto_quiz | work_sample | capstone
+  title        String
+  items        Json // quiz items incl. correct answers — NEVER served raw (stripped for takers)
+  passScorePct Int      @default(70)
+  createdAt    DateTime @default(now())
+
+  attempts AssessmentAttempt[]
+
+  @@index([skillId])
+}
+
+/// EXP-7 — an attempt; immutable once passed (no update/delete path exists in code).
+model AssessmentAttempt {
+  id           String          @id @default(cuid())
+  assessmentId String
+  assessment   SkillAssessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  userId       String
+  answers      Json
+  scorePct     Int
+  passed       Boolean
+  passedAt     DateTime?
+  createdAt    DateTime        @default(now())
+
+  peerReviews PeerReview[]
+
+  @@index([userId])
+  @@index([assessmentId])
+}
+
+/// EXP-7 — anonymised peer review (reviewerRef is an HMAC of the reviewer's id; never exposed).
+model PeerReview {
+  id          String            @id @default(cuid())
+  attemptId   String
+  attempt     AssessmentAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  reviewerRef String // HMAC-SHA256(reviewer userId) — anonymised by design (GDPR)
+  rubric      Json
+  scorePct    Int
+  createdAt   DateTime          @default(now())
+
+  @@index([attemptId])
+}
+
+/// EXP-8 — an issued Open Badges 3.0 / W3C Verifiable Credential (Ed25519-signed).
+model Credential {
+  id            String    @id @default(cuid())
+  userId        String
+  skillId       String?
+  occupationId  String?
+  vcJson        Json // the OB 3.0-shaped VC (proof embedded for export)
+  signature     String // detached Ed25519 signature over the canonical unsigned VC
+  verifyCode    String    @unique
+  escoAlignment String?
+  issuedAt      DateTime  @default(now())
+  revoked       Boolean   @default(false)
+  revokedAt     DateTime?
+
+  @@index([userId])
+}
+
+/// EXP-10 — expert profile; PRIVATE by default. Public exposure is double-gated
+/// (user opt-in + EXPERT_PROFILES_PUBLIC env flag) and DPO-review-gated for go-live.
+model ExpertProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  headline        String   @default("")
+  bio             String   @default("")
+  isPublic        Boolean  @default(false)
+  endorsements    Json     @default("[]")
+  reputationScore Float    @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
