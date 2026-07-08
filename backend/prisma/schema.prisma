@@ -137,6 +137,7 @@ model User {
   notificationPreferences Json                  @default("{\"email\": {\"systemAlerts\": true, \"overdueAlerts\": true, \"weeklyReports\": true, \"invoiceReminders\": true, \"complianceDeadlines\": true}}")
   aiQueries               AIQuery[]
   auditLogs               AuditLog[]
+  userSkills              UserSkill[]
   contracts               Contract[]
   dsrRequests             DSRRequest[]
   dashboardPreferences    DashboardPreferences?
@@ -3605,4 +3606,120 @@ model DurabilityEvent {
   createdAt      DateTime             @default(now())
 
   @@index([obligationId])
+}
+
+// ============================================================
+// EXP — Expertise & Mastery Engine (S-55 EXP Foundations)
+// ESCO-based skills taxonomy, user evidence tiers, gap analysis, mastery paths.
+// String enums (allowed values in comments) mirror the funds module convention.
+// ============================================================
+
+/// ESCO skill/knowledge/competence node. Hierarchy via parentUri (self-ref by escoUri).
+model Skill {
+  id             String   @id @default(cuid())
+  escoUri        String   @unique
+  preferredLabel String
+  altLabels      String[] @default([])
+  description    String   @default("")
+  skillType      String   @default("skill") // skill | knowledge | competence
+  reuseLevel     String   @default("") // ESCO reuse level (cross-sector | sector-specific | occupation-specific | transversal)
+  parentUri      String? // broader skill's escoUri (prerequisite/hierarchy)
+  sfiaCode       String?
+  taxonomyVersion String  @default("ESCO-1.2")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  occupationSkills OccupationSkill[]
+  userSkills       UserSkill[]
+
+  @@index([parentUri])
+  @@index([skillType])
+  @@index([preferredLabel])
+}
+
+/// ESCO occupation (target role for gap analysis).
+model Occupation {
+  id              String   @id @default(cuid())
+  escoUri         String   @unique
+  label           String
+  iscoGroup       String   @default("")
+  description     String   @default("")
+  taxonomyVersion String   @default("ESCO-1.2")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  occupationSkills OccupationSkill[]
+  learningPaths    LearningPath[]
+
+  @@index([iscoGroup])
+  @@index([label])
+}
+
+/// Occupation ↔ skill requirement (essential/optional + required level 0-5).
+model OccupationSkill {
+  id           String     @id @default(cuid())
+  occupationId String
+  skillId      String
+  relation     String     @default("essential") // essential | optional
+  level        Int        @default(3) // required proficiency 0-5
+  occupation   Occupation @relation(fields: [occupationId], references: [id], onDelete: Cascade)
+  skill        Skill      @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([occupationId, skillId])
+  @@index([skillId])
+}
+
+/// A user's evidenced proficiency in a skill.
+model UserSkill {
+  id           String    @id @default(cuid())
+  userId       String
+  skillId      String
+  proficiency  Int       @default(0) // 0-5
+  evidenceTier String    @default("self_declared") // self_declared | course | assessed | verified
+  evidence     Json[]    @default([]) // [{type, ref, note, at}]
+  validFrom    DateTime  @default(now())
+  validUntil   DateTime?
+  verified     Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill        Skill     @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillId])
+  @@index([userId])
+  @@index([skillId])
+}
+
+/// A mastery path from a user's current skills toward a target occupation.
+model LearningPath {
+  id                 String             @id @default(cuid())
+  userId             String
+  targetOccupationId String?
+  title              String             @default("Mastery path")
+  difficulty         String             @default("standard") // gentle | standard | intensive
+  status             String             @default("active") // active | completed | archived
+  estTotalMinutes    Int                @default(0)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  targetOccupation   Occupation?        @relation(fields: [targetOccupationId], references: [id], onDelete: SetNull)
+  steps              LearningPathStep[]
+
+  @@index([userId])
+}
+
+/// One ordered step in a mastery path (topologically ordered by prerequisite).
+model LearningPathStep {
+  id                 String   @id @default(cuid())
+  pathId             String
+  order              Int
+  kind               String   @default("course") // course | sim_scenario | assessment
+  refId              String? // LMSCourse id, sim scenario key, or null for placeholder
+  skillId            String? // the skill this step addresses
+  title              String   @default("")
+  estMinutes         Int      @default(0)
+  prerequisiteStepId String?
+  status             String   @default("pending") // pending | in_progress | done
+  path               LearningPath @relation(fields: [pathId], references: [id], onDelete: Cascade)
+
+  @@index([pathId])
 }
