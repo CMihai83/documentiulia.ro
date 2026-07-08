@@ -6,6 +6,7 @@ import { Tier } from '@prisma/client';
 import { FundsService, CreateProgramDto, ProfileDto } from './funds.service';
 import { DeMinimisService } from './deminimis.service';
 import { FundsAdvisoryService } from './funds-advisory.service';
+import { FundsRefreshService } from './funds-refresh.service';
 import { CoFinInput, ProjectionInput } from './funds-advisory.logic';
 import { BeneficiaryType } from './durability.logic';
 
@@ -21,6 +22,7 @@ export class FundsController {
     private readonly funds: FundsService,
     private readonly deMinimis: DeMinimisService,
     private readonly advisory: FundsAdvisoryService,
+    private readonly refresh: FundsRefreshService,
   ) {}
 
   private userId(req: any): string {
@@ -147,4 +149,26 @@ export class FundsController {
 
   @Get('durability')
   listDurability(@Request() req: any) { return this.advisory.listDurability(this.userId(req)); }
+
+  // ---------------- S-57 AI-1: catalog auto-refresh (human-approve gate) ----------------
+
+  @Post('refresh')
+  runRefresh() {
+    return this.refresh.refreshAll();
+  }
+
+  @Get('revisions')
+  listRevisions(@Query('status') status?: string) {
+    return this.refresh.listRevisions(status);
+  }
+
+  @Post('revisions/:id/approve')
+  approveRevision(@Request() req: any, @Param('id') id: string) {
+    return this.refresh.approve(id, req.user?.id ?? req.user?.sub ?? 'unknown');
+  }
+
+  @Post('revisions/:id/reject')
+  rejectRevision(@Request() req: any, @Param('id') id: string) {
+    return this.refresh.reject(id, req.user?.id ?? req.user?.sub ?? 'unknown');
+  }
 }

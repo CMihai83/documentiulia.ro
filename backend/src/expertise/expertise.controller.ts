@@ -8,6 +8,7 @@ import { MasteryService } from './mastery.service';
 import { CredentialService } from './credential.service';
 import { ProfileService } from './profile.service';
 import { Difficulty } from './path.logic';
+import { MarketplaceService } from './marketplace.service';
 
 /**
  * EXP-1/2/3/5 — Expertise & Mastery Engine. PRO-gated behind JWT.
@@ -22,6 +23,7 @@ export class ExpertiseController {
     private readonly mastery: MasteryService,
     private readonly credentials: CredentialService,
     private readonly profiles: ProfileService,
+    private readonly marketplace: MarketplaceService,
   ) {}
 
   private userId(req: any): string {
@@ -175,5 +177,62 @@ export class ExpertiseController {
   @Post('endorse')
   endorse(@Request() req: any, @Body() body: { targetUserId: string; skillUri: string; note?: string }) {
     return this.profiles.endorse(this.userId(req), body.targetUserId, body.skillUri, body.note);
+  }
+
+  // ---------------- S-57 EXP-11: career coaching ----------------
+
+  @Post('coach')
+  coach(@Request() req: any) {
+    return this.marketplace.coach(this.userId(req));
+  }
+
+  // ---------------- S-57 EXP-12: expert-for-hire marketplace ----------------
+
+  @Post('me/marketplace')
+  setMarketplaceOptIn(
+    @Request() req: any,
+    @Body() body: { optIn: boolean; hourlyRateEur?: number; sessionTypes?: string[] },
+  ) {
+    return this.marketplace.setMarketplaceOptIn(this.userId(req), body);
+  }
+
+  @Get('marketplace')
+  marketplaceSearch() {
+    return this.marketplace.search();
+  }
+
+  @Get('marketplace/:expertUserId/slots')
+  marketplaceSlots(@Param('expertUserId') expertUserId: string, @Query('date') date: string) {
+    return this.marketplace.slots(expertUserId, date);
+  }
+
+  @Post('engagements')
+  book(@Request() req: any, @Body() body: { expertUserId: string; sessionType: string; scheduledAt: string }) {
+    return this.marketplace.book(this.userId(req), body);
+  }
+
+  @Get('me/engagements')
+  myEngagements(@Request() req: any) {
+    return this.marketplace.myEngagements(this.userId(req));
+  }
+
+  @Post('engagements/:id/confirm')
+  confirmEngagement(@Request() req: any, @Param('id') id: string) {
+    return this.marketplace.transition(this.userId(req), id, 'confirm');
+  }
+
+  @Post('engagements/:id/complete')
+  completeEngagement(@Request() req: any, @Param('id') id: string) {
+    return this.marketplace.transition(this.userId(req), id, 'complete');
+  }
+
+  @Post('engagements/:id/cancel')
+  cancelEngagement(@Request() req: any, @Param('id') id: string) {
+    return this.marketplace.transition(this.userId(req), id, 'cancel');
+  }
+
+  @Post('engagements/:id/rate')
+  rateEngagement(@Request() req: any, @Param('id') id: string, @Body() body: { rating: number; comment?: string }) {
+    return this.marketplace.rate(this.userId(req), id, body.rating, body.comment);
   }
 }
