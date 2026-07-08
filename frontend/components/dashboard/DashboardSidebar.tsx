@@ -154,6 +154,7 @@ const navSections: NavSection[] = [
       { href: '/dashboard/hr', icon: Users, labelKey: 'hr', defaultLabel: 'HR & Salarizare' },
       { href: '/dashboard/freelancer', icon: Briefcase, labelKey: 'freelancer', defaultLabel: 'Hub Freelanceri' },
       { href: '/dashboard/lms', icon: GraduationCap, labelKey: 'lms', defaultLabel: 'Training (LMS)' },
+      { href: '/dashboard/expertise', icon: GraduationCap, labelKey: 'expertise', defaultLabel: 'Expertiză & Cariere' },
       { href: '/simulation', icon: Target, labelKey: 'simulation', defaultLabel: 'Simulator Business' },
     ],
   },
@@ -189,6 +190,7 @@ const TIER_ORDER = ['FREE', 'PRO', 'BUSINESS', 'ENTERPRISE'] as const;
 const minTierByHref: Record<string, (typeof TIER_ORDER)[number]> = {
   '/simulation': 'PRO',
   '/dashboard/lms': 'PRO',
+  '/dashboard/expertise': 'PRO',
   '/dashboard/hr': 'PRO',
   '/dashboard/payroll': 'PRO',
   '/dashboard/freelancer': 'PRO',
