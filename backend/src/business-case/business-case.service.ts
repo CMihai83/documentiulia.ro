@@ -2,7 +2,8 @@ import { BadRequestException, Injectable, Logger, NotFoundException } from '@nes
 import { PrismaService } from '../prisma/prisma.service';
 import { BcTemplate, TEMPLATES, validateAnswers, diffAnswers } from './bc.questionnaire';
 import { resolveDiscountRate } from './bc.finance';
-import { appraise } from './bc.model';
+import { appraise, mirr, eac } from './bc.model';
+import { buildExtendedModel, hasExtendedDrivers, TvValidationError } from './bc.cashflow';
 import { tornado, monteCarlo } from './bc.sensitivity';
 import { buildDeliverableHtml, Maturity } from './bc.deliverable';
 import { ChartService } from '../charts/chart.service';
@@ -101,11 +102,36 @@ export class BusinessCaseService {
     const answers = latest.answers as Record<string, any>;
     const seed = (opts?.seed ?? 12345) >>> 0;
     const appraisal = appraise(answers);
+
+    // S-58 (BC-201..205): extended model + MIRR/EAC — strictly ADDITIVE keys so
+    // existing consumers of resultsJson (results tab, FND-6) are unaffected.
+    const num = (v: any, d: number) => (Number.isFinite(Number(v)) ? Number(v) : d);
+    const financeRate = num(answers['economic.rates.financeRatePct'], appraisal.discountRate * 100) / 100;
+    const reinvestRate = num(answers['economic.rates.reinvestRatePct'], appraisal.discountRate * 100) / 100;
+    const years = Math.max(1, Math.round(num(answers['strategic.horizonYears'], 1)));
+    const mirrVal = mirr(appraisal.cashflows, financeRate, reinvestRate);
+    const extras = {
+      mirr: mirrVal === null ? null : Number(mirrVal.toFixed(6)),
+      financeRate, reinvestRate,
+      eac: Number(eac(appraisal.npv, appraisal.discountRate, years).toFixed(2)),
+    };
+    let extended: any = null;
+    if (hasExtendedDrivers(answers)) {
+      try {
+        extended = buildExtendedModel(answers);
+      } catch (e) {
+        if (e instanceof TvValidationError) throw new BadRequestException(e.message);
+        throw e;
+      }
+    }
+
     const results = {
       assumptionVersion: latest.version,
       appraisal,
       tornado: tornado(answers),
       monteCarlo: monteCarlo(answers, { seed, iterations: opts?.iterations ?? 5000 }),
+      extras,
+      extended,
       computedAt: new Date().toISOString(),
     };
 

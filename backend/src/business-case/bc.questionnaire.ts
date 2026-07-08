@@ -144,6 +144,57 @@ const RFQ_SECTION: QuestionSection = {
   ],
 };
 
+
+/**
+ * S-58 (BC-201..205) — advanced financial model. Every field OPTIONAL so
+ * existing cases keep validating; `economic.pnl.revenueYear1 > 0` activates the
+ * extended FCFF/FCFE monthly model.
+ */
+const ADVANCED_MODEL_SECTION: QuestionSection = {
+  id: 'advanced',
+  title: 'Advanced financial model (FCFF/FCFE)',
+  titleRo: 'Model financiar avansat (FCFF/FCFE)',
+  fields: [
+    { key: 'economic.pnl.revenueYear1', label: 'Year-1 annual revenue', labelRo: 'Venit anual (anul 1)', type: 'currency', min: 0 },
+    { key: 'economic.pnl.revenueGrowthPct', label: 'Annual revenue growth %', labelRo: 'Creștere anuală venit %', type: 'percent', min: -50, max: 200 },
+    { key: 'economic.pnl.cogsPct', label: 'COGS % of revenue', labelRo: 'COGS % din venit', type: 'percent', min: 0, max: 95 },
+    { key: 'economic.pnl.opexMonthly', label: 'Monthly opex', labelRo: 'Cheltuieli operaționale lunare', type: 'currency', min: 0 },
+    { key: 'economic.pnl.daMonthly', label: 'Monthly D&A', labelRo: 'Amortizare lunară', type: 'currency', min: 0 },
+    { key: 'economic.pnl.taxRatePct', label: 'Profit-tax rate %', labelRo: 'Cotă impozit profit %', type: 'percent', min: 0, max: 60 },
+    { key: 'economic.pnl.capexMonthly', label: 'Recurring monthly capex', labelRo: 'Capex lunar recurent', type: 'currency', min: 0 },
+    // BC-205 working capital
+    { key: 'economic.wc.dsoDays', label: 'DSO (days sales outstanding)', labelRo: 'DSO (zile încasare)', type: 'number', min: 0, max: 365 },
+    { key: 'economic.wc.dpoDays', label: 'DPO (days payables outstanding)', labelRo: 'DPO (zile plată)', type: 'number', min: 0, max: 365 },
+    { key: 'economic.wc.dioDays', label: 'DIO (days inventory outstanding)', labelRo: 'DIO (zile stoc)', type: 'number', min: 0, max: 365 },
+    { key: 'economic.wc.dsoTargetDays', label: 'DSO target (improvement)', labelRo: 'Țintă DSO', type: 'number', min: 0, max: 365 },
+    { key: 'economic.wc.dpoTargetDays', label: 'DPO target', labelRo: 'Țintă DPO', type: 'number', min: 0, max: 365 },
+    { key: 'economic.wc.dioTargetDays', label: 'DIO target', labelRo: 'Țintă DIO', type: 'number', min: 0, max: 365 },
+    { key: 'economic.wc.improveMonths', label: 'Months to reach targets', labelRo: 'Luni până la țintă', type: 'number', min: 1, max: 60 },
+    // BC-204 debt
+    { key: 'economic.debt.amount', label: 'Debt amount', labelRo: 'Credit (sumă)', type: 'currency', min: 0 },
+    { key: 'economic.debt.ratePct', label: 'Interest rate %/yr', labelRo: 'Dobândă %/an', type: 'percent', min: 0, max: 40, visibleIf: { field: 'economic.debt.amount', gt: 0 } },
+    { key: 'economic.debt.tenorMonths', label: 'Tenor (months)', labelRo: 'Durată (luni)', type: 'number', min: 1, max: 360, visibleIf: { field: 'economic.debt.amount', gt: 0 } },
+    { key: 'economic.debt.shape', label: 'Repayment shape', labelRo: 'Tip rambursare', type: 'select', visibleIf: { field: 'economic.debt.amount', gt: 0 }, options: [
+      { value: 'amortizing', label: 'Amortizing (level annuity)' },
+      { value: 'interest_only', label: 'Interest-only (bullet)' },
+      { value: 'balloon', label: 'Balloon' },
+    ] },
+    { key: 'economic.debt.graceMonths', label: 'Grace period (months)', labelRo: 'Perioadă de grație (luni)', type: 'number', min: 0, max: 60, visibleIf: { field: 'economic.debt.amount', gt: 0 } },
+    { key: 'economic.debt.balloonPct', label: 'Balloon % of amount', labelRo: 'Balon % din sumă', type: 'percent', min: 0, max: 90, visibleIf: { field: 'economic.debt.shape', equals: 'balloon' } },
+    // BC-203 terminal value
+    { key: 'economic.tv.method', label: 'Terminal value method', labelRo: 'Metodă valoare terminală', type: 'select', options: [
+      { value: 'none', label: 'None' },
+      { value: 'gordon', label: 'Perpetuity growth (Gordon)' },
+      { value: 'exit_multiple', label: 'Exit multiple (× EBITDA)' },
+    ] },
+    { key: 'economic.tv.growthPct', label: 'Perpetuity growth %', labelRo: 'Creștere perpetuă %', type: 'percent', min: -5, max: 10, visibleIf: { field: 'economic.tv.method', equals: 'gordon' } },
+    { key: 'economic.tv.exitMultiple', label: 'Exit multiple (× EBITDA)', labelRo: 'Multiplu exit (× EBITDA)', type: 'number', min: 0, max: 30, visibleIf: { field: 'economic.tv.method', equals: 'exit_multiple' } },
+    // BC-202 MIRR rates (optional; default to the discount rate)
+    { key: 'economic.rates.financeRatePct', label: 'MIRR finance rate %', labelRo: 'Rată finanțare MIRR %', type: 'percent', min: 0, max: 40 },
+    { key: 'economic.rates.reinvestRatePct', label: 'MIRR reinvestment rate %', labelRo: 'Rată reinvestire MIRR %', type: 'percent', min: 0, max: 40 },
+  ],
+};
+
 export const TEMPLATES: Record<BcTemplate, TemplateDescriptor> = {
   FIVE_CASE: {
     template: 'FIVE_CASE',
@@ -151,14 +202,14 @@ export const TEMPLATES: Record<BcTemplate, TemplateDescriptor> = {
     nameRo: 'Modelul celor 5 cazuri',
     skeleton: ['Strategic', 'Economic', 'Commercial', 'Financial', 'Management'],
     maturityStages: ['SOC', 'OBC', 'FBC'],
-    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, WACC_SECTION],
+    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, ADVANCED_MODEL_SECTION, WACC_SECTION],
   },
   PRINCE2_LEAN: {
     template: 'PRINCE2_LEAN',
     name: 'PRINCE2 / lean business case',
     nameRo: 'Caz de afaceri PRINCE2 (lean)',
     skeleton: ['Exec summary', 'Reasons', 'Options', 'Benefits', 'Costs', 'Investment appraisal', 'Risks'],
-    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, WACC_SECTION],
+    sections: [STRATEGIC_SECTION, ECONOMIC_SECTION, ADVANCED_MODEL_SECTION, WACC_SECTION],
   },
   RFQ: {
     template: 'RFQ',

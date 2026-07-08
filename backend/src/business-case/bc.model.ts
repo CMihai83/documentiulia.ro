@@ -156,3 +156,31 @@ export function appraise(answers: Record<string, any>): AppraisalResult {
 
 const round = (n: number, dp = 4): number => (Number.isFinite(n) ? Number(n.toFixed(dp)) : n);
 const roundN = (n: number | null, dp = 4): number | null => (n === null ? null : round(n, dp));
+
+/**
+ * BC-202 — MIRR with Excel MIRR() semantics: negative flows discounted to t0 at
+ * `financeRate`, positive flows compounded to t_n at `reinvestRate`;
+ * MIRR = (FV⁺ / −PV⁻)^(1/n) − 1 where n = last period index.
+ * Returns null (like Excel's #DIV/0!) when either sign is absent.
+ */
+export function mirr(cashflows: CashflowRow[], financeRate: number, reinvestRate: number): number | null {
+  if (cashflows.length < 2) return null;
+  const n = cashflows[cashflows.length - 1].year;
+  let fvPos = 0, pvNeg = 0;
+  for (const r of cashflows) {
+    if (r.net > 0) fvPos += r.net * Math.pow(1 + reinvestRate, n - r.year);
+    else if (r.net < 0) pvNeg += r.net / Math.pow(1 + financeRate, r.year);
+  }
+  if (fvPos === 0 || pvNeg === 0 || n === 0) return null;
+  return Math.pow(fvPos / -pvNeg, 1 / n) - 1;
+}
+
+/**
+ * BC-202 — equivalent annual cost/value: spreads an NPV over `years` as a level
+ * annuity at `rate` (Excel PMT(rate, years, −npv)). rate 0 ⇒ npv / years.
+ */
+export function eac(npvValue: number, rate: number, years: number): number {
+  if (years <= 0) return npvValue;
+  if (rate === 0) return npvValue / years;
+  return (npvValue * rate) / (1 - Math.pow(1 + rate, -years));
+}
