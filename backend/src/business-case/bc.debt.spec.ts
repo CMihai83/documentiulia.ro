@@ -2,16 +2,16 @@ import { annuityPayment, buildDebtSchedule, coverage } from './bc.debt';
 
 /**
  * BC-204 reference vector (hand math, Excel PMT semantics):
- * 300,000 @ 12%/yr (r = 1%/mo), 24 months amortizing, no grace:
- *   1.01^24 = 1.2697346…, PMT = 3,000 / (1 − 1/1.2697346) = 3,000 / 0.2124339
- *   PMT = 14,122.0665 (Excel PMT(1%,24,-300000) = 14,122.066511…)
- *   Row 1: interest = 3,000.00; principal = 11,122.07; closing = 288,877.93
+ * 300,000 @ 12%/yr (r = 1%/mo), 24 months amortizing, no grace.
+ * High-precision decimal reference (30-digit): PMT = 14,122.04166697…
+ * (= Excel PMT(1%,24,-300000)). Row 1: interest = 3,000.00;
+ * principal = 11,122.04; closing = 288,877.96.
  */
 describe('BC-204 debt schedule', () => {
   it('amortizing matches the hand reference row to the cent and reconciles', () => {
     const s = buildDebtSchedule({ amount: 300_000, annualRatePct: 12, tenorMonths: 24, shape: 'amortizing' });
     const pmt = annuityPayment(300_000, 0.01, 24);
-    expect(Math.abs(pmt - 14_122.066511)).toBeLessThan(0.0001); // Excel PMT to 4dp
+    expect(Math.abs(pmt - 14_122.041667)).toBeLessThan(0.0001); // Excel PMT to 4dp
 
     expect(s.rows[0].interest).toBe(3_000);
     expect(s.rows[0].principal).toBe(round2(pmt - 3_000));
