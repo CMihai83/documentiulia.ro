@@ -11,7 +11,7 @@ import { Loader2, Plus, FileText, Calculator, History, ChevronRight, TrendingUp 
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RTooltip, ResponsiveContainer, Cell, ReferenceLine,
 } from 'recharts';
-import { api } from '@/lib/api';
+import { api, API_URL } from '@/lib/api';
 
 type DriverColumn = { key: string; label: string; labelRo?: string; type: string; min?: number; max?: number };
 type Field = {
@@ -54,6 +54,7 @@ const T = {
     payback: 'Recuperare', years: 'ani', tornado: 'Senzitivitate (tornado)', mc: 'Monte-Carlo — distribuția VAN',
     probPos: 'Prob. VAN > 0', na: 'fără soluție', year1: 'Anul', benefit: 'Beneficiu', opex: 'Cost operare',
     dist: 'Distribuție', none: 'niciuna', computeFirst: 'Salvează versiunea, apoi calculează.',
+    deliverable: 'Descarcă livrabilul (PDF)',
   },
   en: {
     title: 'Business Case Studio', subtitle: 'Build rigorous investment cases — Five Case, PRINCE2, or RFQ bid.',
@@ -67,6 +68,7 @@ const T = {
     payback: 'Payback', years: 'yrs', tornado: 'Sensitivity (tornado)', mc: 'Monte-Carlo — NPV distribution',
     probPos: 'Prob. NPV > 0', na: 'no root', year1: 'Year', benefit: 'Benefit', opex: 'Op-cost',
     dist: 'Distribution', none: 'none', computeFirst: 'Save a version, then compute.',
+    deliverable: 'Download deliverable (PDF)',
   },
 };
 
@@ -191,6 +193,22 @@ export default function BusinessCasePage() {
     return { ...prev, [key]: table };
   });
   const setDist = (key: string, patch: Record<string, any>) => setAnswers((prev) => ({ ...prev, [key]: { ...(prev[key] ?? { dist: 'triangular' }), ...patch } }));
+
+  // BC-107 — authenticated PDF download (bare <a href> would drop the JWT → 401).
+  const downloadDeliverable = async (maturity: 'SOC' | 'OBC' | 'FBC') => {
+    if (!active) return;
+    setError(null);
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    const res = await fetch(`${API_URL}/business-case/${active.id}/deliverable?maturity=${maturity}&locale=${locale}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    if (!res.ok) { setError(t.loadFail); return; }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `${active.title}-${maturity}.pdf`; a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const label = (o: { label: string; labelRo?: string }) => (locale === 'ro' && (o as any).labelRo ? (o as any).labelRo : o.label);
 
@@ -409,6 +427,16 @@ export default function BusinessCasePage() {
                       </Bar>
                     </BarChart>
                   </ResponsiveContainer>
+                </div>
+
+                {/* BC-107 — deliverable download, one button per maturity (authenticated blob) */}
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <span className="text-xs text-muted-foreground">{t.deliverable}:</span>
+                  {(['SOC', 'OBC', 'FBC'] as const).map((m) => (
+                    <Button key={m} size="sm" variant="outline" onClick={() => downloadDeliverable(m)}>
+                      <FileText className="h-4 w-4" /> {m}
+                    </Button>
+                  ))}
                 </div>
               </CardContent>
             </Card>

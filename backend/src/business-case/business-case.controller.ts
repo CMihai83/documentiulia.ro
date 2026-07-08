@@ -1,10 +1,12 @@
-import { Body, Controller, Get, Param, Patch, Post, Query, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query, Request, Res, UseGuards } from '@nestjs/common';
+import type { Response } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { TierGuard } from '../auth/tier.guard';
 import { RequiresTier } from '../auth/tiers.decorator';
 import { Tier } from '@prisma/client';
 import { BusinessCaseService } from './business-case.service';
 import { BcTemplate } from './bc.questionnaire';
+import { Maturity } from './bc.deliverable';
 
 /**
  * BC-101/102/103 — Business-Case studio. PRO-gated (TierGuard) behind JWT auth.
@@ -78,5 +80,24 @@ export class BusinessCaseController {
   @Get(':id/diff')
   diff(@Request() req: any, @Param('id') id: string, @Query('from') from: string, @Query('to') to: string) {
     return this.svc.diff(this.userId(req), id, Number(from), Number(to));
+  }
+
+  /** BC-107 — stream the SOC/OBC/FBC deliverable as a PDF. */
+  @Get(':id/deliverable')
+  async deliverable(
+    @Request() req: any,
+    @Param('id') id: string,
+    @Res() res: Response,
+    @Query('maturity') maturity?: string,
+    @Query('locale') locale?: string,
+  ) {
+    const m: Maturity = ['SOC', 'OBC', 'FBC'].includes(String(maturity)) ? (maturity as Maturity) : 'SOC';
+    const loc: 'ro' | 'en' = locale === 'en' ? 'en' : 'ro';
+    const out = await this.svc.generateDeliverable(this.userId(req), id, m, loc);
+    const buf = Buffer.from(out.content, 'utf8');
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${out.filename.replace(/[^\w.\-]/g, '_')}"`);
+    res.setHeader('Content-Length', String(buf.length));
+    res.end(buf);
   }
 }

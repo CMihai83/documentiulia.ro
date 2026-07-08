@@ -4,11 +4,18 @@ import { BcTemplate, TEMPLATES, validateAnswers, diffAnswers } from './bc.questi
 import { resolveDiscountRate } from './bc.finance';
 import { appraise } from './bc.model';
 import { tornado, monteCarlo } from './bc.sensitivity';
+import { buildDeliverableHtml, Maturity } from './bc.deliverable';
+import { ChartService } from '../charts/chart.service';
+import { PDFGeneratorService } from '../document-generation/pdf-generator.service';
 
 @Injectable()
 export class BusinessCaseService {
   private readonly logger = new Logger(BusinessCaseService.name);
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly charts: ChartService,
+    private readonly pdf: PDFGeneratorService,
+  ) {}
 
   /** BC-102 — the questionnaire (sections + fields) for a template. */
   getQuestionnaire(template: BcTemplate) {
@@ -120,6 +127,50 @@ export class BusinessCaseService {
     });
     if (!snap) return null;
     return { id: snap.id, createdAt: snap.createdAt, ...(snap.resultsJson as any) };
+  }
+
+  /**
+   * BC-107 — generate the SOC/OBC/FBC deliverable as a PDF. Computes the
+   * appraisal if none is cached, renders embedded charts, assembles the
+   * maturity-appropriate HTML, and stamps BusinessCase.status = maturity.
+   */
+  async generateDeliverable(userId: string, id: string, maturity: Maturity, locale: 'ro' | 'en') {
+    const bc = await this.prisma.businessCase.findFirst({ where: { id, userId } });
+    if (!bc) throw new NotFoundException(`Business case ${id} not found`);
+    const template = bc.template as BcTemplate;
+    const skeleton = TEMPLATES[template]?.skeleton ?? [];
+
+    const results = (await this.getResults(userId, id)) ?? (await this.compute(userId, id));
+    const appraisal = results.appraisal;
+
+    // Embedded charts (data URIs) — never throw the whole PDF over a chart error.
+    const charts: { npvByYear?: string; tornado?: string; mcHistogram?: string } = {};
+    try {
+      const cf = appraisal.cashflows as { year: number; net: number }[];
+      charts.npvByYear = await this.charts.renderToDataUri(
+        this.charts.barConfig(cf.map((r) => `Y${r.year}`), [{ label: 'Net', data: cf.map((r) => r.net), color: '#0b7681' }]),
+      );
+      charts.tornado = await this.charts.renderToDataUri(
+        this.charts.tornadoConfig(results.tornado.map((b: any) => ({ label: b.key, value: b.swing }))),
+      );
+      const h = results.monteCarlo.histogram as { x0: number; x1: number; count: number }[];
+      charts.mcHistogram = await this.charts.renderToDataUri(
+        this.charts.barConfig(h.map((b) => String(Math.round((b.x0 + b.x1) / 2))), [{ label: 'NPV', data: h.map((b) => b.count), color: '#c79a3a' }]),
+      );
+    } catch (e: any) {
+      this.logger.warn(`Deliverable chart render failed (${e?.message}) — continuing text-only`);
+    }
+
+    const html = buildDeliverableHtml({
+      title: bc.title, template, skeleton, maturity, locale,
+      answers: results.appraisal ? (results as any).answers ?? {} : {},
+      appraisal, tornado: results.tornado, monteCarlo: results.monteCarlo, charts,
+    });
+
+    const pdf = await this.pdf.fromHTML(html, { metadata: { title: `${bc.title} — ${maturity}` } });
+    await this.prisma.businessCase.update({ where: { id }, data: { status: maturity } });
+    this.logger.log(`BC ${id} deliverable generated (${maturity}, ${pdf.size} bytes)`);
+    return { content: pdf.content ?? '', size: pdf.size ?? 0, maturity, html, filename: `${bc.title}-${maturity}.pdf` };
   }
 
   /** BC-105 — field-level diff between two assumption-set versions. */
