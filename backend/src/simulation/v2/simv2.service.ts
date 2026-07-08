@@ -7,6 +7,8 @@ import { DECISION_CATALOG, SimDecision, SimV2StateData, TickType } from './simv2
 import { SimV2CalibrationService } from './simv2.calibration';
 import { computeScore, earnedBadges } from './simv2.scoring';
 import { GamificationService } from '../../lms/gamification.service';
+import { Optional } from '@nestjs/common';
+import { MasteryService } from '../../expertise/mastery.service';
 
 /**
  * Simulator v2 — run lifecycle + versioned state persistence (S-48).
@@ -21,6 +23,7 @@ export class SimV2Service {
     private readonly prisma: PrismaService,
     private readonly calibration: SimV2CalibrationService,
     private readonly gamification: GamificationService,
+    @Optional() private readonly mastery?: MasteryService,
   ) {}
 
   /** SIM-9: create a run seeded from the tenant's real ERP data (Art 28(10)-guarded). */
@@ -282,6 +285,14 @@ export class SimV2Service {
         for (const b of badges) await this.gamification.awardBadge(userId, b);
       } catch (e: any) {
         this.logger.warn(`Sim gamification award failed (non-fatal): ${e?.message}`);
+      }
+      // EXP-6 — graded practice: raise the scenario's linked skills to the
+      // `assessed` tier. Never allowed to break the simulator.
+      try {
+        const res = await this.mastery?.recordScoredRun(userId, runId, run.scenarioKey, score.composite);
+        if (res?.assessedSkills) this.logger.log(`SimV2 run ${runId} raised ${res.assessedSkills} skill(s) via graded practice`);
+      } catch (e: any) {
+        this.logger.warn(`Graded-practice evidence failed (non-fatal): ${e?.message}`);
       }
     }
     this.logger.log(`SimV2 run ${runId} ended — composite ${score.composite}, badges [${badges.join(', ')}]`);
