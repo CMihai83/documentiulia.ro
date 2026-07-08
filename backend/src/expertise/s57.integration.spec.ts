@@ -88,9 +88,13 @@ d('S-57 integration', () => {
     expect(eng.status).toBe('requested');
     expect(eng.paymentStatus).toBe('pending_hold'); // honest placeholder
 
-    // the booked hour disappears from availability
+    // the booked hour disappears from availability (2027-01-04 is winter EET,
+    // UTC+2 -> the local 09-17 window is 07:00Z..15:00Z; 10:00Z = 12:00 local)
     const slots = await marketplace.slots(expertId, '2027-01-04');
-    expect(slots.slots.map((s) => s.startsAt)).not.toContain('2027-01-04T10:00:00Z');
+    const starts = slots.slots.map((s) => s.startsAt);
+    expect(starts[0]).toBe('2027-01-04T07:00:00.000Z'); // winter window start
+    expect(starts).not.toContain('2027-01-04T10:00:00.000Z'); // booked slot gone
+    expect(starts).toHaveLength(7); // 8 business hours minus the booking
 
     await expect(marketplace.transition(clientId, eng.id, 'confirm')).rejects.toThrow(/only the expert/i);
     await marketplace.transition(expertId, eng.id, 'confirm');

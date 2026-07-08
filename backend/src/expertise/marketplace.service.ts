@@ -112,26 +112,49 @@ export class MarketplaceService {
 
   // ---------------- EXP-12: availability (consulting pattern — simple) ----------------
 
-  /** Business-hour hourly slots (09–17, weekdays) minus the expert's active bookings. */
+  /**
+   * Business-hour hourly slots (09–17 Europe/Bucharest, weekdays) minus the
+   * expert's active bookings. The Bucharest offset is derived from the DATE
+   * BEING SCHEDULED (DST-correct: summer EEST = UTC+3 → 06:00Z, winter EET =
+   * UTC+2 → 07:00Z), not from the server's current date.
+   */
   async slots(expertUserId: string, dateIso: string) {
-    const day = new Date(`${dateIso}T00:00:00Z`);
+    const day = new Date(`${dateIso}T12:00:00Z`); // noon avoids midnight edge cases
     if (Number.isNaN(day.getTime())) throw new BadRequestException('Invalid date');
+    const offsetH = MarketplaceService.bucharestOffsetHours(day);
     const dow = day.getUTCDay();
-    if (dow === 0 || dow === 6) return { date: dateIso, slots: [] };
+    if (dow === 0 || dow === 6) return { date: dateIso, timezone: 'Europe/Bucharest', slots: [] };
+    const windowStart = new Date(`${dateIso}T00:00:00Z`);
+    windowStart.setUTCHours(9 - offsetH); // 09:00 local as a UTC instant
+    const windowEnd = new Date(windowStart.getTime() + 8 * 3600_000); // 17:00 local
     const busy = await this.prisma.expertEngagement.findMany({
       where: {
         expertUserId,
         status: { in: ['requested', 'confirmed'] },
-        scheduledAt: { gte: new Date(`${dateIso}T00:00:00Z`), lt: new Date(`${dateIso}T23:59:59Z`) },
+        scheduledAt: { gte: windowStart, lt: windowEnd },
       },
       select: { scheduledAt: true },
     });
-    const busyHours = new Set(busy.map((b) => b.scheduledAt.getUTCHours()));
+    const busyStarts = new Set(busy.map((b) => b.scheduledAt.getTime()));
     const slots = [];
-    for (let h = 9; h < 17; h++) {
-      if (!busyHours.has(h)) slots.push({ startsAt: `${dateIso}T${String(h).padStart(2, '0')}:00:00Z`, durationMin: 60 });
+    for (let i = 0; i < 8; i++) {
+      const startsAt = new Date(windowStart.getTime() + i * 3600_000);
+      if (!busyStarts.has(startsAt.getTime())) {
+        slots.push({ startsAt: startsAt.toISOString(), localHour: 9 + i, durationMin: 60 });
+      }
     }
-    return { date: dateIso, slots };
+    return { date: dateIso, timezone: 'Europe/Bucharest', slots };
+  }
+
+  /** UTC offset (hours) of Europe/Bucharest at the given instant, via Intl (no deps). */
+  static bucharestOffsetHours(at: Date): number {
+    const tz = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Europe/Bucharest',
+      hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
+    }).formatToParts(at);
+    const get = (t: string) => Number(tz.find((x) => x.type === t)!.value);
+    const asUtc = Date.UTC(get('year'), get('month') - 1, get('day'), get('hour') % 24, get('minute'));
+    return Math.round((asUtc - at.getTime()) / 3600_000);
   }
 
   // ---------------- EXP-12: booking lifecycle ----------------
