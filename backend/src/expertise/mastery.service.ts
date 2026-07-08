@@ -110,7 +110,17 @@ export class MasteryService {
   async submitAttempt(userId: string, assessmentId: string, answers: Record<string, number>, seed: number, count = 5) {
     const a = await this.prisma.skillAssessment.findUnique({ where: { id: assessmentId }, include: { skill: true } });
     if (!a) throw new NotFoundException(`Assessment ${assessmentId} not found`);
-    if (a.kind !== 'auto_quiz') throw new BadRequestException('Only auto_quiz assessments are auto-graded; work samples go through peer review.');
+
+    // Work samples / capstones are SUBMITTED here (ungraded) and pass via peer review.
+    if (a.kind !== 'auto_quiz') {
+      const submission = await this.prisma.assessmentAttempt.create({
+        data: { assessmentId, userId, answers: answers as any, scorePct: 0, passed: false, passedAt: null },
+      });
+      await this.audit
+        .appendAudit({ userId, action: 'expertise.assessment.attempt', entity: 'AssessmentAttempt', entityId: submission.id, details: { assessmentId, kind: a.kind, status: 'pending_peer_review' } })
+        .catch(() => undefined);
+      return { attemptId: submission.id, scorePct: 0, passed: false, correctCount: 0, total: 0, pendingPeerReview: true };
+    }
 
     const served = selectItems((a.items as unknown as QuizItem[]) ?? [], count, seed);
     const result = grade(served, answers, a.passScorePct);

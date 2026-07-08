@@ -50,4 +50,11 @@ export const SEED_ASSESSMENTS: {
       { id: 'cf4', question: 'Un buffer sănătos de numerar acoperă de regulă:', options: ['O zi de costuri', '3+ luni de costuri', '10 ani', 'Nimic'], correct: 1 },
     ],
   },
+  {
+    skillUri: 'http://data.europa.eu/esco/skill/business-planning',
+    kind: 'work_sample',
+    title: 'Plan de afaceri — lucrare practică (evaluare colegială)',
+    passScorePct: 70,
+    items: [],
+  },
 ];
