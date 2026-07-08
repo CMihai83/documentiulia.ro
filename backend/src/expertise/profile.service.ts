@@ -97,7 +97,7 @@ export class ProfileService {
       .slice(0, 20);
 
     return {
-      profile: { headline: saved.headline, bio: saved.bio, isPublic: saved.isPublic, publiclyVisible: saved.isPublic && this.publicFlagOn() },
+      profile: { headline: saved.headline, bio: saved.bio, isPublic: saved.isPublic, publiclyVisible: saved.isPublic && this.publicFlagOn(), marketplaceOptIn: saved.marketplaceOptIn, hourlyRateEur: saved.hourlyRateEur, sessionTypes: saved.sessionTypes },
       reputation: breakdown,
       skills: skills.map((s) => ({ label: s.skill.preferredLabel, escoUri: s.skill.escoUri, proficiency: s.proficiency, evidenceTier: s.evidenceTier })),
       credentials: credentials.map((c) => ({ id: c.id, verifyCode: c.verifyCode, revoked: c.revoked, issuedAt: c.issuedAt, name: (c.vcJson as any)?.credentialSubject?.achievement?.name })),

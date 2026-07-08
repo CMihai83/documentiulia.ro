@@ -151,6 +151,23 @@ export default function FundsPage() {
 
 // ---------------- S-54 advisory tools ----------------
 function FundsAdvisory({ ro }: { ro: boolean }) {
+  // S-57 AI-1: catalog refresh revisions (human-approve gate)
+  const [revisions, setRevisions] = useState<any[] | null>(null);
+  const [revBusy, setRevBusy] = useState(false);
+  const loadRevisions = async () => {
+    const r = await api.get<any>('/funds/revisions', { params: { status: 'pending' } }).catch(() => null);
+    setRevisions(Array.isArray(r?.data) ? r.data : []);
+  };
+  const runRefresh = async () => {
+    setRevBusy(true);
+    await api.post('/funds/refresh', {}).catch(() => {});
+    await loadRevisions();
+    setRevBusy(false);
+  };
+  const decideRevision = async (id: string, action: 'approve' | 'reject') => {
+    await api.post(`/funds/revisions/${id}/${action}`, {}).catch(() => {});
+    await loadRevisions();
+  };
   const [cf, setCf] = useState({ totalProjectCostEur: '121000', vatRatePct: '21', programCoFinPct: '90', vatRegistered: true });
   const [cfRes, setCfRes] = useState<any>(null);
   const [dur, setDur] = useState({ title: 'Grant', finalPaymentDate: '2026-01-15', beneficiaryType: 'sme' });
@@ -221,6 +238,36 @@ function FundsAdvisory({ ro }: { ro: boolean }) {
               ))}
             </div>
           )}
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader><CardTitle className="text-base flex items-center gap-2"><Search className="h-4 w-4" /> {ro ? 'Actualizări catalog (necesită aprobare)' : 'Catalog updates (approval required)'}</CardTitle></CardHeader>
+        <CardContent className="space-y-2">
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline" onClick={runRefresh} disabled={revBusy}>{revBusy ? <Loader2 className="h-4 w-4 animate-spin" /> : (ro ? 'Verifică sursele acum' : 'Check sources now')}</Button>
+            <Button size="sm" variant="ghost" onClick={loadRevisions}>{ro ? 'Reîncarcă' : 'Reload'}</Button>
+          </div>
+          <p className="text-[11px] text-muted-foreground">{ro ? 'Extractie automată din paginile-sursă; nicio modificare nu se aplică fără aprobarea ta.' : 'Automated extraction from source pages; nothing is applied without your approval.'}</p>
+          {revisions?.length === 0 && <p className="text-sm text-muted-foreground">{ro ? 'Nicio propunere în așteptare.' : 'No pending proposals.'}</p>}
+          {revisions?.map((r) => (
+            <div key={r.id} className="border rounded-lg px-3 py-2 space-y-1.5">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-sm font-medium truncate">{r.programName}</span>
+                <div className="flex gap-1 shrink-0">
+                  <Button size="sm" onClick={() => decideRevision(r.id, 'approve')}><CheckCircle2 className="h-4 w-4 mr-1" />{ro ? 'Aprobă' : 'Approve'}</Button>
+                  <Button size="sm" variant="outline" onClick={() => decideRevision(r.id, 'reject')}><XCircle className="h-4 w-4 mr-1" />{ro ? 'Respinge' : 'Reject'}</Button>
+                </div>
+              </div>
+              {(r.proposedChanges ?? []).map((c: any, i: number) => (
+                <div key={i} className="text-xs flex gap-2 tabular-nums">
+                  <Badge variant="outline" className="text-[10px]">{c.field}</Badge>
+                  <span className="text-muted-foreground line-through">{String(c.old ?? '—')}</span>
+                  <span>→ {String(c.new)}</span>
+                </div>
+              ))}
+              {r.rawExcerpt && <p className="text-[11px] text-muted-foreground italic truncate">“{r.rawExcerpt.slice(0, 160)}…”</p>}
+            </div>
+          ))}
         </CardContent>
       </Card>
     </div>
