@@ -1,13 +1,22 @@
 import {
   BadRequestException,
+  Body,
   Controller,
   Get,
+  Ip,
   Param,
+  Post,
   Query,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { memoryStorage } from 'multer';
 import { Throttle, ThrottlerGuard } from '@nestjs/throttler';
 import { ToolsService } from './tools.service';
+import { FreeInvoiceInput, ToolsInvoiceService } from './tools-invoice.service';
+import { validateXmlTool } from './tools-xml-validate.logic';
 
 /**
  * W-0 free-tools funnel — PUBLIC endpoints (no JWT by design, like
@@ -19,7 +28,10 @@ import { ToolsService } from './tools.service';
 @Controller('tools')
 @UseGuards(ThrottlerGuard)
 export class ToolsController {
-  constructor(private readonly tools: ToolsService) {}
+  constructor(
+    private readonly tools: ToolsService,
+    private readonly invoices: ToolsInvoiceService,
+  ) {}
 
   /** DOC-W0-1 — CUI / VAT-status lookup (ANAF public WS, 24h-cached). */
   @Get('cui/:cui')
@@ -71,5 +83,33 @@ export class ToolsController {
       return this.tools.salaryFromNet(n, dep, mw);
     }
     throw new BadRequestException('Furnizați gross= sau net=.');
+  }
+
+  /** DOC-W0-4 — free invoice + e-Factura UBL XML (3/month anonymous cap). */
+  @Post('invoice')
+  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  generateInvoice(@Body() input: FreeInvoiceInput, @Ip() ip: string) {
+    return this.invoices.generate(input, ip);
+  }
+
+  /** DOC-W0-4 helper — how many free invoices remain this month. */
+  @Get('invoice/remaining')
+  @Throttle({ default: { limit: 30, ttl: 60_000 } })
+  async remaining(@Ip() ip: string) {
+    return { remaining: await this.invoices.remaining(ip), cap: 3 };
+  }
+
+  /**
+   * DOC-W0-5 — SAF-T / e-Factura XML validator. Memory-only by design
+   * (GDPR): multer memoryStorage, 10MB cap, nothing touches disk or DB.
+   */
+  @Post('validate-xml')
+  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  @UseInterceptors(FileInterceptor('file', { storage: memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 } }))
+  validateXml(@UploadedFile() file?: { buffer: Buffer; size: number }) {
+    if (!file?.buffer?.length) {
+      throw new BadRequestException('Încărcați un fișier XML (max 10MB).');
+    }
+    return validateXmlTool(file.buffer.toString('utf-8'));
   }
 }

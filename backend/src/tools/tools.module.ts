@@ -3,6 +3,7 @@ import { AnafModule } from '../anaf/anaf.module';
 import { VatModule } from '../vat/vat.module';
 import { ToolsController } from './tools.controller';
 import { ToolsService } from './tools.service';
+import { ToolsInvoiceService } from './tools-invoice.service';
 
 /**
  * W-0 free-tools funnel (public, throttled, zero-migration).
@@ -11,6 +12,6 @@ import { ToolsService } from './tools.service';
 @Module({
   imports: [AnafModule, VatModule],
   controllers: [ToolsController],
-  providers: [ToolsService],
+  providers: [ToolsService, ToolsInvoiceService],
 })
 export class ToolsModule {}
