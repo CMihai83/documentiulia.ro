@@ -172,25 +172,48 @@
       "name": "Gratuit",
       "price": "0 RON",
       "period": "/lună",
-      "features": ["Calcul TVA de bază", "OCR 10 documente/lună", "Rapoarte simple"]
+      "features": [
+        "Calcul TVA de bază",
+        "OCR 10 documente/lună",
+        "Rapoarte simple"
+      ]
     },
     "pro": {
       "name": "Pro",
       "price": "49 RON",
       "period": "/lună",
-      "features": ["TVA nelimitat", "OCR nelimitat", "Modul HR", "Suport prioritar", "Export SAF-T"]
+      "features": [
+        "TVA nelimitat",
+        "OCR nelimitat",
+        "Modul HR",
+        "Suport prioritar",
+        "Export SAF-T"
+      ]
     },
     "business": {
       "name": "Business",
       "price": "149 RON",
       "period": "/lună",
-      "features": ["Tot din Pro", "API personalizat", "Integrare SAGA", "Manager dedicat", "SLA garantat"]
+      "features": [
+        "Tot din Pro",
+        "API personalizat",
+        "Integrare SAGA",
+        "Manager dedicat",
+        "SLA garantat"
+      ]
     },
     "enterprise": {
       "name": "Enterprise",
       "price": "299 RON",
       "period": "/lună",
-      "features": ["Tot din Business", "Utilizatori nelimitați", "SSO & SAML", "SLA 99.9%", "On-Premise", "Training personalizat"]
+      "features": [
+        "Tot din Business",
+        "Utilizatori nelimitați",
+        "SSO & SAML",
+        "SLA 99.9%",
+        "On-Premise",
+        "Training personalizat"
+      ]
     }
   },
   "contact": {
@@ -637,7 +660,15 @@
     "sectionHR": "HR & Echipă",
     "sectionCommunity": "Comunitate",
     "sectionDeveloper": "Dezvoltare",
-    "sectionHelp": "Ajutor"
+    "sectionHelp": "Ajutor",
+    "controlling": "Controlling",
+    "dataMigration": "Migrare Date",
+    "consulting": "Consultanță",
+    "funds": "Fonduri Europene",
+    "expertise": "Expertiză & Competențe",
+    "workspaces": "Spații de Lucru",
+    "gdprToolkit": "Set GDPR",
+    "businessCase": "Business Case"
   },
   "audit": {
     "title": "Jurnal Audit",
@@ -675,7 +706,9 @@
     "justNow": "acum",
     "minutesAgo": "min în urmă",
     "hoursAgo": "h în urmă",
-    "daysAgo": "z în urmă"
+    "daysAgo": "z în urmă",
+    "results": "rezultate",
+    "of": "din"
   },
   "reports": {
     "title": "Rapoarte Financiare",
@@ -1009,7 +1042,7 @@
     "reset": "Resetează Vizualizare",
     "dragToMove": "Trage pentru a muta",
     "templates": "Șabloane OCR",
-    "templatesSubtitle": "Gestionează șabloanele pentru extracție",
+    "templatesSubtitle": "Gestionați template-urile pentru extragerea datelor din documente",
     "createTemplate": "Creează Șablon",
     "editTemplate": "Editează Șablon",
     "deleteTemplate": "Șterge Șablon",
@@ -1030,7 +1063,6 @@
     "asDraft": "Ca Ciornă",
     "autoMatch": "Potrivire Automată Șablon",
     "templatesTitle": "Template-uri OCR",
-    "templatesSubtitle": "Gestionați template-urile pentru extragerea datelor din documente",
     "searchTemplates": "Caută template-uri...",
     "allTypes": "Toate tipurile",
     "allLanguages": "Toate limbile",
@@ -1169,7 +1201,9 @@
     "pending": "În așteptare",
     "processed": "Procesat",
     "paid": "Plătit",
-    "downloadPayslips": "Descarcă Fluturași"
+    "downloadPayslips": "Descarcă Fluturași",
+    "noPayrolls": "Nicio salarizare încă",
+    "taxInfo": "Informații fiscale"
   },
   "payments": {
     "title": "Plăți",

@@ -157,6 +157,13 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
 
     if (!isMountedRef.current) return;
 
+    // No WebSocket server is deployed unless explicitly configured — do not
+    // attempt (and endlessly retry) a connection to a nonexistent /ws endpoint.
+    if (!process.env.NEXT_PUBLIC_WS_URL) {
+      setStatus('disconnected');
+      return;
+    }
+
     setStatus('connecting');
 
     try {

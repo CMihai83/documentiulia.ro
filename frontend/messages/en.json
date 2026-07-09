@@ -664,7 +664,15 @@
     "srl": "SRL",
     "pfa": "PFA",
     "legalForms": "Legal Forms",
-    "accounting": "Accounting"
+    "accounting": "Accounting",
+    "controlling": "Controlling",
+    "dataMigration": "Data Migration",
+    "consulting": "Consulting",
+    "funds": "EU Funds",
+    "expertise": "Expertise & Skills",
+    "workspaces": "Delivery Workspaces",
+    "gdprToolkit": "GDPR Toolkit",
+    "businessCase": "Business Case"
   },
   "audit": {
     "title": "Audit Logs",
@@ -702,7 +710,9 @@
     "justNow": "just now",
     "minutesAgo": "min ago",
     "hoursAgo": "h ago",
-    "daysAgo": "d ago"
+    "daysAgo": "d ago",
+    "results": "results",
+    "of": "of"
   },
   "reports": {
     "title": "Financial Reports",
@@ -1368,7 +1378,9 @@
     "pending": "Pending",
     "processed": "Processed",
     "paid": "Paid",
-    "downloadPayslips": "Download Payslips"
+    "downloadPayslips": "Download Payslips",
+    "noPayrolls": "No payroll runs yet",
+    "taxInfo": "Tax information"
   },
   "shortcuts": {
     "title": "Keyboard Shortcuts",
@@ -1404,8 +1416,44 @@
     "title": "Cash Flow Forecast",
     "subtitle": "AI analysis and cash flow predictions",
     "forecast": "Forecast",
-    "insights": "AI Insights",
-    "scenarios": "What-If Scenarios",
+    "insights": {
+      "title": "AI Analysis & Insights",
+      "confidence": "AI Confidence",
+      "impact": "Impact",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "recommendation": "Recommendation",
+      "categories": {
+        "trend": "Trend",
+        "seasonality": "Seasonality",
+        "risk": "Risk",
+        "opportunity": "Opportunity"
+      },
+      "summary": "AI Analysis Summary",
+      "identified": "Insights Identified",
+      "highImpact": "High Impact",
+      "avgConfidence": "Average Confidence",
+      "recommendations": "Recommendations"
+    },
+    "scenarios": {
+      "title": "Scenario Builder - What If?",
+      "parameters": "Scenario Parameters",
+      "save": "Save Scenario",
+      "saved": "Saved Scenarios",
+      "compare": "Compare Scenarios",
+      "impact": "Projected Impact",
+      "baseBalance": "Base Balance",
+      "scenarioBalance": "Scenario Balance",
+      "difference": "Difference",
+      "variables": {
+        "revenueGrowth": "Revenue Growth",
+        "expenseIncrease": "Expense Increase",
+        "paymentDelay": "Payment Delay",
+        "newContract": "New Contract",
+        "oneTimeExpense": "One-Time Expense"
+      }
+    },
     "currentBalance": "Current Balance",
     "projected": "Projected",
     "avgInflow": "Average Inflow",
@@ -1428,45 +1476,7 @@
     "historical": "Historical Data",
     "predicted": "AI Predictions",
     "aiInsights": "AI Insights",
-    "seasonalPatterns": "Seasonal Patterns",
-    "scenarios": {
-      "title": "Scenario Builder - What If?",
-      "parameters": "Scenario Parameters",
-      "save": "Save Scenario",
-      "saved": "Saved Scenarios",
-      "compare": "Compare Scenarios",
-      "impact": "Projected Impact",
-      "baseBalance": "Base Balance",
-      "scenarioBalance": "Scenario Balance",
-      "difference": "Difference",
-      "variables": {
-        "revenueGrowth": "Revenue Growth",
-        "expenseIncrease": "Expense Increase",
-        "paymentDelay": "Payment Delay",
-        "newContract": "New Contract",
-        "oneTimeExpense": "One-Time Expense"
-      }
-    },
-    "insights": {
-      "title": "AI Analysis & Insights",
-      "confidence": "AI Confidence",
-      "impact": "Impact",
-      "high": "High",
-      "medium": "Medium",
-      "low": "Low",
-      "recommendation": "Recommendation",
-      "categories": {
-        "trend": "Trend",
-        "seasonality": "Seasonality",
-        "risk": "Risk",
-        "opportunity": "Opportunity"
-      },
-      "summary": "AI Analysis Summary",
-      "identified": "Insights Identified",
-      "highImpact": "High Impact",
-      "avgConfidence": "Average Confidence",
-      "recommendations": "Recommendations"
-    }
+    "seasonalPatterns": "Seasonal Patterns"
   },
   "sessions": {
     "securitySettings": "Security Settings",
@@ -1560,7 +1570,13 @@
     "detectedAt": "Detected At",
     "relatedEntity": "Related Entity",
     "alertId": "Alert ID",
-    "status": "Status",
+    "status": {
+      "pending": "Pending",
+      "investigating": "Investigating",
+      "false_positive": "False Positive",
+      "confirmed": "Confirmed",
+      "resolved": "Resolved"
+    },
     "additionalInfo": "Additional Information",
     "resolution": "Resolution",
     "resolvedAt": "Resolved At",
@@ -1585,13 +1601,6 @@
       "medium": "Medium",
       "high": "High",
       "critical": "Critical"
-    },
-    "status": {
-      "pending": "Pending",
-      "investigating": "Investigating",
-      "false_positive": "False Positive",
-      "confirmed": "Confirmed",
-      "resolved": "Resolved"
     },
     "riskLevel": {
       "minimal": "Minimal Risk",
