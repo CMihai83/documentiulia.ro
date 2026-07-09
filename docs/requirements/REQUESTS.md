@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 31 · logged: 2 · planned: 3 · in_progress: 1 · shipped: 23 · parked: 2 · rejected: 0
+Total: 33 · logged: 2 · planned: 4 · in_progress: 2 · shipped: 23 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -36,3 +36,5 @@ Total: 31 · logged: 2 · planned: 3 · in_progress: 1 · shipped: 23 · parked:
 | REQ-029 | 2026-07-09 | **logged** | Lawyer review of GDPR-EXT generated templates (DPA, policies, breach/DSAR responses) before selling paid tiers | S-62 GE-LIABILITY |
 | REQ-030 | 2026-07-09 | **shipped** | Find loose points / broken pages across the live site while S-63 runs | sweep: i18n x12 + WS gate, 3c201917 |
 | REQ-031 | 2026-07-09 | **shipped** | Fix the errors captured by the live error logger | 3c201917,b337f941 |
+| REQ-032 | 2026-07-09 | **in_progress** | Investigate all logger errors + fix what is missing | b337f941,2815df44 |
+| REQ-033 | 2026-07-09 | **planned** | Remove all fabricated/mock data shown to users; wire mock-only pages (e-Factura, analytics, ANAF status, logistics reconciliation, finance t… | honesty sweep |
