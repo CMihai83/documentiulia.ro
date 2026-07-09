@@ -47,6 +47,8 @@ interface Deadline {
   priority: 'low' | 'medium' | 'high';
 }
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+
 export default function ANAFStatusPage() {
   const t = useTranslations('anaf');
   const [complianceStatuses, setComplianceStatuses] = useState<ComplianceStatus[]>([]);
@@ -54,6 +56,7 @@ export default function ANAFStatusPage() {
   const [deadlines, setDeadlines] = useState<Deadline[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
     fetchANAFData();
@@ -61,92 +64,105 @@ export default function ANAFStatusPage() {
 
   const fetchANAFData = async () => {
     setRefreshing(true);
+    setLoadError(false);
     try {
-      // Mock data - replace with actual API calls
-      setComplianceStatuses([
-        {
-          category: 'SAF-T D406',
-          status: 'compliant',
-          lastCheck: '2025-12-24T10:00:00Z',
-          nextCheck: '2026-01-31T23:59:59Z',
-          details: 'Ultima declarație trimisă: 24 decembrie 2025'
-        },
-        {
-          category: 'e-Factura',
-          status: 'compliant',
-          lastCheck: '2025-12-24T09:30:00Z',
-          nextCheck: '2026-01-15T23:59:59Z',
-          details: '35 facturi acceptate, 5 în procesare, 3 în așteptare'
-        },
-        {
-          category: 'TVA Lunar',
-          status: 'warning',
-          lastCheck: '2025-12-20T14:00:00Z',
-          nextCheck: '2026-01-25T23:59:59Z',
-          details: 'Declarația pentru decembrie trebuie depusă până la 25 ianuarie'
-        },
-        {
-          category: 'Declarații Salariale',
-          status: 'compliant',
-          lastCheck: '2025-12-23T16:00:00Z',
-          nextCheck: '2026-01-15T23:59:59Z',
-          details: 'D112 pentru decembrie 2025 depus cu succes'
-        }
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const headers: HeadersInit = token ? { Authorization: `Bearer ${token}` } : {};
+
+      const [upcomingRes, overdueRes, b2cRes, summaryRes, invRes] = await Promise.all([
+        fetch(`${API_URL}/deadlines/upcoming?days=60`, { headers }),
+        fetch(`${API_URL}/deadlines/overdue`, { headers }),
+        fetch(`${API_URL}/efactura-b2c/compliance/status`, { headers }),
+        fetch(`${API_URL}/deadlines/summary`, { headers }),
+        fetch(`${API_URL}/invoices?type=ISSUED&limit=50`, { headers }),
       ]);
 
-      setSubmissions([
-        {
-          id: '1',
-          type: 'SAF-T',
-          period: 'decembrie 2025',
-          status: 'accepted',
-          submittedAt: '2025-12-24T10:00:00Z',
-          processedAt: '2025-12-24T10:30:00Z'
-        },
-        {
-          id: '2',
-          type: 'e-Factura',
-          period: 'decembrie 2025',
-          status: 'submitted',
-          submittedAt: '2025-12-24T09:30:00Z'
-        },
-        {
-          id: '3',
-          type: 'VAT',
-          period: 'decembrie 2025',
-          status: 'pending',
-          submittedAt: '2025-12-20T14:00:00Z'
+      // --- Deadlines: statutory calendar from the deadline service (real) ---
+      const dl: Deadline[] = [];
+      if (upcomingRes.ok) {
+        const d = await upcomingRes.json();
+        for (const it of d?.deadlines ?? []) {
+          const due = new Date(it.dueDate);
+          const days = Math.ceil((due.getTime() - Date.now()) / 86_400_000);
+          dl.push({
+            id: it.id,
+            title: it.metadata?.nameRo || it.descriptionRo || it.type,
+            description: `${it.descriptionRo || it.description}${it.law ? ` · ${it.law}` : ''}${it.penalty ? ` · Penalitate: ${it.penalty}` : ''}`,
+            dueDate: it.dueDate,
+            status: it.status === 'COMPLETED' ? 'completed' : days < 0 ? 'overdue' : days <= 7 ? 'due_soon' : 'upcoming',
+            priority: days <= 7 ? 'high' : days <= 21 ? 'medium' : 'low',
+          });
         }
-      ]);
+      }
+      if (overdueRes.ok) {
+        const d = await overdueRes.json();
+        for (const it of d?.deadlines ?? []) {
+          dl.push({
+            id: it.id,
+            title: it.metadata?.nameRo || it.descriptionRo || it.type,
+            description: `${it.descriptionRo || it.description}${it.penalty ? ` · Penalitate: ${it.penalty}` : ''}`,
+            dueDate: it.dueDate,
+            status: 'overdue',
+            priority: 'high',
+          });
+        }
+      }
+      dl.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
+      setDeadlines(dl);
 
-      setDeadlines([
-        {
-          id: '1',
-          title: 'Declarație TVA 394',
-          description: 'Declarație lunară TVA pentru decembrie 2025',
-          dueDate: '2026-01-25T23:59:59Z',
-          status: 'upcoming',
-          priority: 'high'
-        },
-        {
-          id: '2',
-          title: 'SAF-T D406',
-          description: 'Raport standard audit financiar decembrie 2025',
-          dueDate: '2026-01-31T23:59:59Z',
-          status: 'upcoming',
-          priority: 'high'
-        },
-        {
-          id: '3',
-          title: 'Declarație 112',
-          description: 'Declarație privind obligațiile de plată a contribuțiilor',
-          dueDate: '2026-01-15T23:59:59Z',
-          status: 'upcoming',
-          priority: 'medium'
-        }
-      ]);
+      // --- Submissions: the org's real issued invoices with their SPV state ---
+      if (invRes.ok) {
+        const raw = await invRes.json();
+        const list = Array.isArray(raw) ? raw : raw?.invoices ?? raw?.data ?? [];
+        const subs: SubmissionStatus[] = list
+          .filter((inv: any) => inv.spvSubmitted || inv.spvUploadIndex)
+          .slice(0, 20)
+          .map((inv: any) => ({
+            id: inv.id,
+            type: 'e-Factura' as const,
+            period: inv.invoiceNumber || inv.number || inv.id,
+            status: inv.spvStatus === 'ACCEPTED' ? 'accepted' : inv.spvStatus === 'REJECTED' ? 'rejected' : inv.spvSubmitted ? 'submitted' : 'pending',
+            submittedAt: inv.spvSubmittedAt || inv.updatedAt || inv.createdAt,
+            errorMessage: inv.spvError || undefined,
+          }));
+        setSubmissions(subs);
+      } else {
+        setSubmissions([]);
+      }
+
+      // --- Compliance: computed from real signals (B2C statutory phase + deadline summary) ---
+      const comp: ComplianceStatus[] = [];
+      if (b2cRes.ok) {
+        const c = await b2cRes.json();
+        const unmet = (c?.requirements ?? []).filter((r: any) => !r.fulfilled);
+        comp.push({
+          category: 'e-Factura B2C',
+          status: unmet.length === 0 ? 'compliant' : 'warning',
+          lastCheck: new Date().toISOString(),
+          nextCheck: '',
+          details: unmet.length === 0
+            ? `Fază: ${c?.phaseRo ?? c?.phase ?? '—'} · toate cerințele îndeplinite`
+            : `Cerințe neîndeplinite: ${unmet.map((r: any) => r.requirement).join(', ')}`,
+        });
+      }
+      if (summaryRes.ok) {
+        const sm = await summaryRes.json();
+        comp.push({
+          category: 'Calendar declarații',
+          status: (sm?.overdue ?? 0) > 0 ? 'error' : (sm?.upcoming ?? 0) > 0 ? 'warning' : 'compliant',
+          lastCheck: new Date().toISOString(),
+          nextCheck: sm?.nextDeadline?.dueDate ?? '',
+          details: `${sm?.upcoming ?? 0} termene în următoarele 30 de zile · ${sm?.overdue ?? 0} depășite${sm?.nextDeadline ? ` · următorul: ${sm.nextDeadline.descriptionRo ?? sm.nextDeadline.type}` : ''}`,
+        });
+      }
+      setComplianceStatuses(comp);
+      if (!upcomingRes.ok && !summaryRes.ok && !invRes.ok) setLoadError(true);
     } catch (error) {
       console.error('Failed to fetch ANAF data:', error);
+      setLoadError(true);
+      setComplianceStatuses([]);
+      setSubmissions([]);
+      setDeadlines([]);
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -247,11 +263,11 @@ export default function ANAFStatusPage() {
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
-      {/* TODO(REQ): wire to real API — page currently renders demo data */}
-      <div role="status" className="mb-4 flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 px-4 py-2.5 text-sm font-medium text-amber-900 dark:text-amber-200">
-        <span aria-hidden="true">⚠</span>
-        <span>Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.</span>
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
+          ⚠ Nu am putut încărca datele ANAF. Reîncearcă. / Could not load ANAF data. Please retry.
+        </div>
+      )}
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
