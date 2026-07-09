@@ -1,0 +1,582 @@
+<!doctype html><html><head><!-- frame-runtime --><script>window.__FRAME_PREAMBLE={"capabilities":{"mcp":"mcp.BQqQVVN_.js"},"transforms":"_transforms.DYk1Ltlh.js"}</script><script>(function(){"use strict";const X="modulepreload",Y=function(e){return"/"+e},Z={},U=function(t,n,u){let o=Promise.resolve();function i(f){const a=new Event("vite:preloadError",{cancelable:!0});if(a.payload=f,window.dispatchEvent(a),!a.defaultPrevented)throw f}return o.then(f=>{for(const a of f||[])a.status==="rejected"&&i(a.reason);return t().catch(i)})},D=["light","dark","system"];function $(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_init;return t!=null&&typeof t=="object"}function q(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_theme;if(t==null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&D.includes(n)}function M(e){if(window===top||e.type==="auxclick"&&e.button!==1)return;const t=e.composedPath?e.composedPath():[e.target];let n=null;for(let f=0;f<t.length;f++){const a=t[f];if(a&&a.matches&&a.matches("a[href],area[href]")){n=a;break}}if(!n&&e.target&&e.target.closest&&(n=e.target.closest("a[href],area[href]")),!n)return;const u=n.getAttribute("href");if(!u)return;let o,i;try{o=new URL(u,document.baseURI),i=new URL(document.baseURI).origin}catch{return}(o.protocol==="http:"||o.protocol==="https:")&&o.origin!==i&&(e.preventDefault(),parent.postMessage({__frame_nav:!0,url:o.href},"*"))}const L={};function y(e){if(window===top)return;const t=Date.now();t-(L[e]||0)<500||(L[e]=t,parent.postMessage({__frame_engaged:!0,kind:e},"*"))}const F=2e3,T=["wheel","touchstart","touchmove","keydown","pointerdown"];let k=0;function B(e){e.isTrusted&&(k=Date.now())}function z(){addEventListener("click",M,!0),addEventListener("auxclick",M,!0)}function W(){for(let e=0;e<T.length;e++)addEventListener(T[e],B,{capture:!0,passive:!0});addEventListener("scroll",e=>{e.isTrusted&&Date.now()-k<F&&y("scroll")},{capture:!0,passive:!0}),addEventListener("pointermove",e=>{e.isTrusted&&y("pointer")},{capture:!0,passive:!0}),addEventListener("click",e=>{e.isTrusted&&y("click")},{capture:!0,passive:!0})}function x(e,t,n){const u=[...t.values()].filter(o=>o.targets.some(i=>i.startsWith(e+".")));return{wrap(o,i){const f=`${e}.${o}`,a=u.filter(s=>s.targets.includes(f));return a.length===0?(...s)=>{try{return i(...s)}catch(d){return Promise.reject(d)}}:(...s)=>{let d=s;for(const c of a){const l=c.module.parameters;if(l)try{d=l(d)}catch{return Promise.reject({code:"transform_error",id:c.id,scope:e,message:"parameters transform failed"})}}let m;try{m=i(...d)}catch(c){m=Promise.reject(c)}return m.then(c=>{for(let l=a.length-1;l>=0;l--){const h=a[l],p=h.module.returns;if(p)try{c=p(c)}catch{return n({id:h.id,scope:e,leg:"returns"}),c}}return c},c=>{for(let l=a.length-1;l>=0;l--){const h=a[l],p=h.module.throws;if(p)try{c=p(c)}catch{return n({id:h.id,scope:e,leg:"throws"}),Promise.reject(c)}}return Promise.reject(c)})}}}}function H(e,t,n,u=()=>{}){const o=new Set(e.changes??[]),i=new Map;for(const f of o){const a=t[f];a&&i.set(f,a)}return{contract:e.contract,changes:o,flags:new Set(e.flags??[]),capabilities:e.capabilities??{},transforms:i,shellOrigin:n.shellOrigin,mount:n.mount,pipe:f=>x(f,i,u)}}(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let u=0;for(let o=0;o<n.length;o++){const i=n[o];try{e(t,i,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[i]}catch{}try{e(t,i,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[i]=="function"&&u++}if(u&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:u},"*")}catch{}})();const K=1e4,G=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function J(e){for(const t of G)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}const w=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities??{}}),E=window.__FRAME_PREAMBLE?.transforms,C=/^[\w.-]+\.js$/,V=/^[a-z][a-z0-9_-]{0,63}$/;let A=null,g=null;function P(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}let R=!1;function N(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,R=!0):R&&(delete t.dataset.theme,t.style.colorScheme="",R=!1)}const _=new Map;function Q(e,t){const n=_.get(e);if(!n)return;Object.assign(n.impl,t),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const u=n.queue;n.queue=[];for(const o of u){const i=t[o.method];i?i(...o.args).then(o.resolve,o.reject):o.reject({code:"capability_removed",message:`${e}.${o.method} is not in this runtime`})}}function O(e,t){const n=_.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t);const u=n.queue;n.queue=[];for(const o of u)o.reject(t)}const j=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(j&&j.writable===!1)){z(),W();const e=j?.value??{};P(window,"claude",e);const t=s=>{const d={impl:Object.create(null),queue:[]};_.set(s,d);const m=new Proxy(d.impl,{get:(c,l)=>{if(typeof l=="string"&&!(l==="then"||l==="toJSON"||l==="valueOf"))return l==="toString"?Object.prototype.toString:(...h)=>{const p=c[l]??c.__settled;return p?p(...h):new Promise((b,S)=>{d.queue.push({method:l,args:h,resolve:b,reject:S})})}},set:()=>!1});P(e,s,m)};for(const s of Object.keys(w)){if(e[s]!==void 0){P(e,s,e[s]);continue}t(s)}let n=null,u=null,o=0;const i=s=>{s.source!==parent||!J(s.origin)||$(s.data)&&(n=s.data.__frame_init,g=s.origin,removeEventListener("message",i),clearTimeout(o),u?.())};addEventListener("message",i),parent.postMessage({__frame_connect:!0},"*");const f=new Promise(s=>{u=s,o=setTimeout(()=>{removeEventListener("message",i),s()},K)}),a=document.readyState==="loading"?new Promise(s=>document.addEventListener("DOMContentLoaded",()=>s(),{once:!0})):Promise.resolve();f.then(async()=>{if(!n||!g){for(const r of _.keys())O(r,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}N(n.theme);const s=g;addEventListener("message",r=>{r.source!==parent||r.origin!==s||q(r.data)&&N(r.data.__frame_theme.theme)});const d=r=>U(()=>import("/_runtime/"+r),void 0),m=Object.keys(n.capabilities??{});for(const r of m)Object.hasOwn(w,r)||V.test(r)&&e[r]===void 0&&(t(r),O(r,{code:"capability_disabled",message:"capability not in this runtime generation"}));const c=m.filter(r=>Object.hasOwn(w,r)).map(r=>[r,w[r]]).filter(r=>typeof r[1]=="string"&&C.test(r[1])),[l,...h]=await Promise.allSettled([E&&C.test(E)?d(E):Promise.resolve({}),...c.map(([,r])=>d(r))]),p=g;A=H(n,l.status==="fulfilled"&&l.value?.TRANSFORMS||{},{shellOrigin:p,mount:Q},r=>parent.postMessage({__frame_cap_telemetry:r},p));const b=r=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:r}},p),S=A;h.forEach((r,v)=>{const I=c[v][0];if(r.status!=="fulfilled"){b(I);return}try{r.value?.install?.(S)}catch{b(I)}});for(const[r,v]of _)v.queue.length===0&&Object.keys(v.impl).length>0||O(r,{code:m.includes(r)?"capability_disabled":"not_granted",message:"capability not available in this session"});await a,parent.postMessage({__frame_ready:!0},g)})}})();</script><!-- /frame-runtime --><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>DocumentIulia — Sprint Execution Plan (S-41 → S-46 + W-0)</title>
+<style>
+  :root {
+    --bg:#f4f7f8; --surface:#fff; --surface-2:#eaf0f1; --ink:#10202b; --ink-soft:#4a5d64; --ink-faint:#7c8f95;
+    --line:#d6e0e2; --line-soft:#e4ebec; --accent:#0c7d88; --accent-bright:#109aa6; --accent-wash:#e2f1f2;
+    --amber:#a86d16; --amber-wash:#f6ecd8; --good:#2f8f66; --warn:#bd7f24; --crit:#bd433a; --crit-wash:#f7e6e4;
+    --violet:#6d4a9e; --violet-wash:#ece5f5; --code-bg:#0f2027; --code-ink:#d7e6e8;
+    --must:#0c7d88; --should:#4a5d64; --could:#7c8f95;
+    --shadow:0 1px 2px rgba(16,32,43,.05),0 8px 24px rgba(16,32,43,.06);
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code","Roboto Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0a1418; --surface:#0f2027; --surface-2:#143039; --ink:#e9f1f2; --ink-soft:#a2b6bb; --ink-faint:#6d848a;
+    --line:#213a43; --line-soft:#1a2f37; --accent:#17aeba; --accent-bright:#3ed2dc; --accent-wash:#10333a;
+    --amber:#d9a441; --amber-wash:#2a2416; --good:#45b884; --warn:#d9a441; --crit:#e0685e; --crit-wash:#2c1a18;
+    --violet:#a98bd6; --violet-wash:#201a2e; --code-bg:#081014; --code-ink:#c8dde0;
+    --must:#17aeba; --should:#a2b6bb; --could:#6d848a; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }}
+  :root[data-theme="light"]{--bg:#f4f7f8;--surface:#fff;--surface-2:#eaf0f1;--ink:#10202b;--ink-soft:#4a5d64;--ink-faint:#7c8f95;--line:#d6e0e2;--line-soft:#e4ebec;--accent:#0c7d88;--accent-bright:#109aa6;--accent-wash:#e2f1f2;--amber:#a86d16;--amber-wash:#f6ecd8;--good:#2f8f66;--warn:#bd7f24;--crit:#bd433a;--crit-wash:#f7e6e4;--violet:#6d4a9e;--violet-wash:#ece5f5;--code-bg:#0f2027;--code-ink:#d7e6e8;--must:#0c7d88;--should:#4a5d64;--could:#7c8f95;--shadow:0 1px 2px rgba(16,32,43,.05),0 8px 24px rgba(16,32,43,.06);}
+  :root[data-theme="dark"]{--bg:#0a1418;--surface:#0f2027;--surface-2:#143039;--ink:#e9f1f2;--ink-soft:#a2b6bb;--ink-faint:#6d848a;--line:#213a43;--line-soft:#1a2f37;--accent:#17aeba;--accent-bright:#3ed2dc;--accent-wash:#10333a;--amber:#d9a441;--amber-wash:#2a2416;--good:#45b884;--warn:#d9a441;--crit:#e0685e;--crit-wash:#2c1a18;--violet:#a98bd6;--violet-wash:#201a2e;--code-bg:#081014;--code-ink:#c8dde0;--must:#17aeba;--should:#a2b6bb;--could:#6d848a;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;gap:18px;height:54px;}
+  .brand{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;}
+  .brand b{color:var(--accent);}
+  .nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;}
+  .nav-links a{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-soft);text-decoration:none;padding:6px 9px;border-radius:6px;white-space:nowrap;}
+  .nav-links a:hover{color:var(--accent);background:var(--accent-wash);}
+
+  header.hero{padding:64px 0 44px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.06;letter-spacing:-.015em;margin:0 0 18px;text-wrap:balance;max-width:18ch;}
+  .lede{font-size:clamp(1.02rem,1.8vw,1.18rem);color:var(--ink-soft);max-width:64ch;margin:0 0 26px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:9px 24px;font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);}
+  .hero-meta b{color:var(--ink);font-weight:600;}
+
+  section{padding:52px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:66px;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+  .sec-num{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600;padding-top:7px;}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.01em;margin:0;line-height:1.12;}
+  .sec-sub{color:var(--ink-soft);max-width:70ch;margin:8px 0 0;font-size:1rem;}
+
+  /* conventions / DoD box */
+  .box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px;box-shadow:var(--shadow);}
+  .box.accent{border-color:var(--accent);background:linear-gradient(180deg,var(--accent-wash),var(--surface));}
+  .box h3{margin:0 0 12px;font-size:1rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--accent);}
+  .conv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px 22px;}
+  .conv-grid div{font-size:.9rem;color:var(--ink-soft);}
+  .conv-grid b{color:var(--ink);font-family:var(--mono);font-size:.8rem;}
+  .dod-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:7px 20px;}
+  .dod-list li{font-size:.9rem;color:var(--ink-soft);padding-left:22px;position:relative;}
+  .dod-list li::before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:700;}
+
+  /* sprint */
+  .sprint{margin-bottom:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:66px;}
+  .sprint-hd{padding:20px 24px;border-bottom:1px solid var(--line-soft);background:linear-gradient(180deg,var(--accent-wash),transparent);}
+  .sprint.wk .sprint-hd{background:linear-gradient(180deg,var(--violet-wash),transparent);}
+  .sprint-hd .id-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .sid{font-family:var(--mono);font-size:12px;font-weight:700;background:var(--accent);color:#fff;border-radius:6px;padding:4px 9px;}
+  .sprint.wk .sid{background:var(--violet);}
+  .sprint.audit .sid{background:var(--crit);}
+  .sname{font-family:var(--serif);font-size:1.4rem;font-weight:600;}
+  .sprint-goal{color:var(--ink-soft);margin:8px 0 0;font-size:.98rem;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .chip{font-family:var(--mono);font-size:10.5px;padding:3px 9px;border-radius:20px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-soft);white-space:nowrap;}
+  .chip b{color:var(--ink);}
+  .chip.dep{border-color:var(--amber);color:var(--amber);}
+  .sprint-bd{padding:8px 24px 22px;}
+
+  .story{border-top:1px solid var(--line-soft);padding:18px 0;}
+  .story:first-child{border-top:none;}
+  .story-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .stid{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent);}
+  .story.anaf .stid{color:var(--amber);}
+  .st-title{font-weight:600;font-size:1rem;}
+  .st-pts{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-left:auto;}
+  .st-user{font-size:.9rem;color:var(--ink-soft);font-style:italic;margin:6px 0 10px;}
+  .sub{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin:12px 0 6px;font-weight:600;}
+  .ac{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .ac li{font-size:.88rem;color:var(--ink-soft);padding-left:22px;position:relative;}
+  .ac li::before{content:"☐";position:absolute;left:0;color:var(--accent);font-family:var(--mono);}
+  .tasks{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;}
+  .tasks li{font-size:.86rem;color:var(--ink-soft);padding-left:16px;position:relative;}
+  .tasks li::before{content:"›";position:absolute;left:2px;color:var(--accent);font-weight:700;}
+  code{font-family:var(--mono);font-size:.82em;background:var(--surface-2);padding:1px 5px;border-radius:4px;color:var(--accent);}
+  pre{background:var(--code-bg);color:var(--code-ink);border-radius:10px;padding:16px 18px;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.55;margin:6px 0 0;border:1px solid var(--line);}
+  pre .k{color:#7fd4dc;} pre .c{color:#6d848a;font-style:italic;} pre .s{color:#c8a45e;}
+
+  .ep-table{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:6px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px;background:var(--surface);}
+  th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+  thead th{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);font-weight:600;background:var(--surface-2);}
+  td.m{font-family:var(--mono);font-size:11.5px;color:var(--accent);white-space:nowrap;}
+  tbody tr:last-child td{border-bottom:none;}
+  .method{font-family:var(--mono);font-weight:700;font-size:10px;padding:1px 6px;border-radius:4px;}
+  .get{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good);}
+  .post{background:var(--accent-wash);color:var(--accent);}
+  .put{background:var(--amber-wash);color:var(--amber);}
+
+  .note{font-size:.85rem;color:var(--ink-soft);background:var(--amber-wash);border-left:3px solid var(--amber);padding:9px 13px;border-radius:0 8px 8px 0;margin-top:12px;}
+  .note b{color:var(--ink);}
+  footer{padding:48px 0 66px;}
+  .foot-meta{text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em;}
+
+  @media (max-width:600px){.st-pts{margin-left:0;}}
+  @media (prefers-reduced-motion:no-preference){.reveal{animation:rise .6s ease both;}@keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}}
+</style>
+
+<nav>
+  <div class="wrap nav-inner">
+    <span class="brand">Document<b>Iulia</b> · Sprint Plan</span>
+    <div class="nav-links">
+      <a href="#conv">Conventions</a>
+      <a href="#s41">S-41</a>
+      <a href="#s42">S-42</a>
+      <a href="#s43">S-43</a>
+      <a href="#s44">S-44</a>
+      <a href="#s45">S-45</a>
+      <a href="#s46">S-46</a>
+      <a href="#w0">W-0</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap reveal">
+    <p class="eyebrow">Sprint Execution Plan · v1 · companion to Blueprint v3.1</p>
+    <h1>The executable window, fully specified.</h1>
+    <p class="lede">Implementation-grade detail for the seven sprints you can start now: the module maturity audit (S-41), Horizon 1 (S-42→S-46), and the free-tools funnel (W-0) that runs in parallel. Stories, acceptance criteria, data models, endpoints, tests and DoD — ready to work against the existing codebase.</p>
+    <div class="hero-meta">
+      <span>Window: <b>~14 weeks</b></span>
+      <span>Sprints: <b>7 (2-week each)</b></span>
+      <span>Cadence: <b>AI-augmented solo</b></span>
+      <span>Gate: <b>S-41 before H1 builds</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- CONVENTIONS -->
+<section id="conv">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">§</span><div><h2>Conventions &amp; Definition of Done</h2><p class="sec-sub">Applies to every story below. Points are effort (Fibonacci), read for a solo+AI cadence — not team velocity.</p></div></div>
+    <div class="box" style="margin-bottom:16px">
+      <h3>Conventions</h3>
+      <div class="conv-grid">
+        <div><b>Story IDs</b> — DOC-{sprint}-{n}; ANAF tasks flagged amber</div>
+        <div><b>Branches</b> — feature/DOC-xx-x-slug · bugfix/ · hotfix/</div>
+        <div><b>Commits</b> — feat(module): … / fix(module): … · &lt;50 lines where possible</div>
+        <div><b>Backend</b> — NestJS, prefix <code>/api/v1</code>, Swagger at <code>/api-docs</code></div>
+        <div><b>DB</b> — PostgreSQL + Prisma; every table org-scoped (<code>organizationId</code>)</div>
+        <div><b>Frontend</b> — Next.js 15 App Router, <code>/[locale]</code>, next-intl RO/EN</div>
+        <div><b>PR gate</b> — CI lint+test green · 1 review · comments resolved</div>
+        <div><b>Estimate scale</b> — 1,2,3,5,8 pts; sprint target ≈ 20–26 pts of "Must"</div>
+      </div>
+    </div>
+    <div class="box accent">
+      <h3>Global Definition of Done</h3>
+      <ul class="dod-list">
+        <li>Code + unit tests, ≥80% coverage (≥90% on financial logic)</li>
+        <li>Swagger/OpenAPI updated for new/changed endpoints</li>
+        <li>Prisma migration is reversible + seed updated</li>
+        <li>RO/EN i18n keys for any user-facing text</li>
+        <li>ESLint + Prettier pass; TypeScript strict, no <code>any</code></li>
+        <li>Immutable audit-log entry on every financial write</li>
+        <li>Org-scoped authZ verified (no cross-tenant leakage)</li>
+        <li>Deployed to staging; smoke-tested end-to-end</li>
+        <li>ANAF/compliance task ratified by romanian-tax-specialist ◆</li>
+        <li>Change logged to project-ledger</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- S-41 -->
+<section>
+  <div class="wrap">
+    <div class="sprint audit" id="s41">
+      <div class="sprint-hd">
+        <div class="id-row"><span class="sid">S-41</span><span class="sname">Module Maturity Audit + Compute Baseline</span></div>
+        <p class="sprint-goal">Horizon 0 · Before building on ~130 modules, find out which are real. No feature code ships this sprint — the output is ground truth that gates all of Horizon 1.</p>
+        <div class="meta-row"><span class="chip"><b>~13 pts</b></span><span class="chip">Owner: <b>erp-architect · devops</b></span><span class="chip dep">Deps: none (start here)</span><span class="chip">Exit: go/no-go for H1</span></div>
+      </div>
+      <div class="sprint-bd">
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-41-1</span><span class="st-title">Automated module maturity classifier</span><span class="st-pts">5 pts</span></div>
+          <p class="st-user">As the architect, I want every backend module classified production / partial / stub / empty, so H1 never builds on a scaffold.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li>Script <code>scripts/audit-modules.ts</code>: walk <code>src/*/</code>, count controllers/services/entities, detect Prisma models used, detect <code>*.spec.ts</code> presence + pass rate</li>
+            <li>Probe each controller route against the running backend; record 200/404/500 and whether data is real vs hard-coded</li>
+            <li>Emit <code>audit/maturity-heatmap.json</code> + human <code>audit/MATURITY.md</code> (RAG per module)</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac">
+            <li>All ~130 modules appear with a class (production/partial/stub/empty) + evidence</li>
+            <li>Report distinguishes "has endpoints that return DB data" from "returns in-memory/hard-coded"</li>
+            <li>Committed to repo; re-runnable via <code>npm run audit:modules</code></li>
+          </ul>
+        </div>
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-41-2</span><span class="st-title">Backend boot &amp; endpoint inventory</span><span class="st-pts">3 pts</span></div>
+          <p class="st-user">As the team, I want a verified list of real endpoints, so the frontend and roadmap reference truth, not aspiration.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li>Verify <code>documentiulia-backend</code> boots clean; capture Nest route table from startup logs</li>
+            <li>Export full OpenAPI JSON from <code>/api-docs-json</code>; diff against the audit route probe</li>
+            <li>Publish <code>audit/ENDPOINTS.md</code> — real vs missing vs 404</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Backend health green; Swagger reachable</li><li>Endpoint inventory committed; finance/accounting/vat/anaf coverage explicitly assessed</li></ul>
+        </div>
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-41-3</span><span class="st-title">Local LLM + embeddings baseline</span><span class="st-pts">3 pts</span></div>
+          <p class="st-user">As the platform, I want a working on-box model + embeddings, so W-1 matching and RAG cost nothing to prototype.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li><code>ollama pull qwen2.5:14b-instruct-q4_K_M</code> and <code>bge-m3</code>; record tok/s + RAM</li>
+            <li>Minimal FastAPI <code>ai-service/embeddings</code> endpoint over bge-m3; Redis/pgvector smoke</li>
+            <li>RAG smoke test over 10 sample invoices/docs; document latency</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Embedding endpoint returns vectors; cosine match demo works</li><li>Baseline tok/s + memory documented in <code>audit/COMPUTE.md</code></li></ul>
+        </div>
+
+        <div class="story anaf">
+          <div class="story-hd"><span class="stid">DOC-41-4</span><span class="st-title">ANAF coverage audit — e-Factura B2C &amp; SAF-T</span><span class="st-pts">2 pts</span></div>
+          <p class="st-user">As the tax-specialist, I want to know exactly what compliance we already cover, because B2C is already mandatory and gaps are live risk.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li>Inventory what <code>anaf</code>/<code>saga</code>/<code>vat</code> modules actually implement vs required</li>
+            <li>Confirm e-Factura B2C path exists (mandatory since Jan 2025); flag if missing</li>
+            <li>Confirm SAF-T D406 supports monthly <em>and</em> quarterly; VAT engine handles 21/11/9-housing</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Gap list produced with severity; feeds S-43/S-45 backlog</li><li>Ratified by romanian-tax-specialist ◆</li></ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S-42 -->
+<section>
+  <div class="wrap">
+    <div class="sprint" id="s42">
+      <div class="sprint-hd">
+        <div class="id-row"><span class="sid">S-42</span><span class="sname">Controlling Core → Production</span></div>
+        <p class="sprint-goal">Promote the in-memory Controlling PoC to a persisted, tested, org-scoped production module. Cost-Center (CO-CCA) + Profit-Center (EC-PCA) + variance engine on real data.</p>
+        <div class="meta-row"><span class="chip"><b>21 pts</b></span><span class="chip">Owner: <b>erp-architect · financial-accountant</b></span><span class="chip dep">Deps: S-41 (finance ledger verified)</span></div>
+      </div>
+      <div class="sprint-bd">
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-42-1</span><span class="st-title">Prisma schema + migration for CO entities</span><span class="st-pts">5 pts</span></div>
+          <p class="st-user">As the platform, I want the Controlling model persisted &amp; org-scoped, so data survives restarts and is multi-tenant safe.</p>
+          <div class="sub">Data model (Prisma)</div>
+<pre><span class="k">model</span> CostCenter {
+  id             String   @id @default(cuid())
+  organizationId String
+  code           String   <span class="c">// CC-1000</span>
+  name           String
+  nameRo         String
+  category       CostCenterCategory
+  parentId       String?
+  managerName    String?
+  currency       String   @default(<span class="s">"RON"</span>)
+  active         Boolean  @default(true)
+  costLines      CostLine[]
+  createdAt      DateTime @default(now())
+  @@unique([organizationId, code])
+  @@index([organizationId])
+}
+<span class="k">model</span> CostLine {
+  id             String   @id @default(cuid())
+  organizationId String
+  costCenterId   String
+  costElementId  String
+  period         String   <span class="c">// 2026-07</span>
+  planned        Decimal  @db.Decimal(14,2)
+  actual         Decimal  @db.Decimal(14,2)
+  @@index([organizationId, period])
+}
+<span class="c">// + ProfitCenter, CostElement, InternalOrder, AllocationCycle, ProfitabilitySegment (same org-scoping)</span></pre>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Migration applies + rolls back cleanly on a fresh DB</li><li>Seed script reproduces the demo org from the PoC</li><li>All money columns <code>Decimal(14,2)</code>, never float</li></ul>
+        </div>
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-42-2</span><span class="st-title">Refactor ControllingService: Map → Prisma repos</span><span class="st-pts">8 pts</span></div>
+          <p class="st-user">As a developer, I want the service backed by Prisma while keeping the existing interfaces, so endpoints keep working but read real data.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li>Inject <code>PrismaService</code>; replace in-memory <code>Map</code>s with repository queries, org-scoped</li>
+            <li>Preserve return shapes (<code>VarianceLine</code>, <code>KpiCockpit</code>, etc.) so no controller change needed</li>
+            <li>Move variance thresholds + rounding into a pure, unit-tested <code>ControllingMath</code> util</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Every existing GET endpoint returns DB-sourced data for the caller's org</li><li>No cross-tenant leakage (test with two orgs)</li><li>Variance math unit-tested to the cent</li></ul>
+        </div>
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-42-3</span><span class="st-title">Write endpoints + authZ + audit</span><span class="st-pts">3 pts</span></div>
+          <div class="sub">Endpoints</div>
+          <div class="ep-table"><table>
+            <thead><tr><th>Method</th><th>Path (<code>/api/v1</code>)</th><th>Guard</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td><span class="method post">POST</span></td><td class="m">/controlling/cost-centers</td><td>Jwt + RBAC</td><td>create; audit-logged</td></tr>
+              <tr><td><span class="method put">PUT</span></td><td class="m">/controlling/cost-lines</td><td>Jwt + RBAC</td><td>upsert plan/actual</td></tr>
+              <tr><td><span class="method post">POST</span></td><td class="m">/controlling/internal-orders</td><td>Jwt + RBAC</td><td>already stubbed in PoC</td></tr>
+            </tbody>
+          </table></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Writes require role (accountant/admin); reads org-scoped</li><li>Each write emits an immutable audit entry</li></ul>
+        </div>
+
+        <div class="story anaf">
+          <div class="story-hd"><span class="stid">DOC-42-4</span><span class="st-title">SAF-T D406 XSD validator refresh</span><span class="st-pts">3 pts</span></div>
+          <div class="sub">Tasks</div>
+          <ul class="tasks"><li>Update to current D406 XSD; support monthly &amp; quarterly period types</li><li>Validator returns structured, Romanian-language errors (line/field)</li><li>Unit tests with a valid + 3 invalid fixtures</li></ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Valid file passes; each invalid fixture yields an actionable RO message</li><li>Ratified by romanian-tax-specialist ◆</li></ul>
+        </div>
+        <p class="note"><b>Dependency reality:</b> CO-CCA ideally reads <em>actuals</em> from the accounting ledger. If S-41 finds <code>accounting</code>/<code>finance</code> are stubs, S-42 ships with manual <code>CostLine</code> entry + import, and ledger-fed actuals move to a follow-up story — do not block Controlling on an unverified dependency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S-43 -->
+<section>
+  <div class="wrap">
+    <div class="sprint" id="s43">
+      <div class="sprint-hd">
+        <div class="id-row"><span class="sid">S-43</span><span class="sname">CO-PA, Internal Orders &amp; Allocation Cycles</span></div>
+        <p class="sprint-goal">Profitability analysis (contribution margin) + internal-order variance + assessment/distribution cycles that post real secondary CO entries.</p>
+        <div class="meta-row"><span class="chip"><b>26 pts</b></span><span class="chip">Owner: <b>financial-accountant · erp-architect</b></span><span class="chip dep">Deps: S-42</span></div>
+      </div>
+      <div class="sprint-bd">
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-43-1</span><span class="st-title">CO-PA contribution margin, persisted</span><span class="st-pts">5 pts</span></div>
+          <p class="st-user">As a controller, I want contribution margin by product/segment, so I know what actually makes money after variable cost.</p>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>CM1 = revenue − (COGS + direct); operating result = CM1 − allocated fixed</li><li>Endpoint <code>GET /controlling/profitability/contribution-margins</code> DB-backed, sorted by CM1</li><li>Percentages tabular, rounded to 2 dp; matches hand-calc fixtures</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-43-2</span><span class="st-title">Internal orders CRUD + variance</span><span class="st-pts">5 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Create/update/close orders; budget vs actual + utilization %</li><li>RAG status (favorable/on-track/warning/critical) by threshold</li><li>State machine: open → released → technically_closed → closed</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-43-3</span><span class="st-title">Allocation cycles post secondary entries</span><span class="st-pts">8 pts</span></div>
+          <p class="st-user">As a controller, I want to run an assessment cycle so overhead cost centers distribute onto receivers by a driver — with a real posting trail.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li>Driver weight calc (headcount / revenue-share / area / fixed-%) as a tested pure fn</li>
+            <li><code>POST /controlling/allocation-cycles/:id/run</code> creates immutable <code>AllocationPosting</code> rows (sender −, receivers +) via a secondary cost element</li>
+            <li>Idempotency: re-running a cycle for a period reverses + re-posts (no double count)</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Sum of receiver postings = sender total (to the cent)</li><li>Re-run is idempotent; full audit trail; dry-run mode returns postings without writing</li></ul>
+        </div>
+        <div class="story anaf">
+          <div class="story-hd"><span class="stid">DOC-43-4</span><span class="st-title">Close e-Factura B2C gaps from S-41</span><span class="st-pts">5 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Any B2C gap found in DOC-41-4 has a passing path (UBL 2.1, SPV submit)</li><li>Integration test against ANAF sandbox; ratified by tax-specialist ◆</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S-44 -->
+<section>
+  <div class="wrap">
+    <div class="sprint" id="s44">
+      <div class="sprint-hd">
+        <div class="id-row"><span class="sid">S-44</span><span class="sname">SAP/ERP Consultancy Marketplace</span></div>
+        <p class="sprint-goal">Persist the consulting PoC, wire real payments, and add the consultant side: booking → Stripe → consultant portal.</p>
+        <div class="meta-row"><span class="chip"><b>23 pts</b></span><span class="chip">Owner: <b>erp-architect · frontend</b></span><span class="chip dep">Deps: S-41</span></div>
+      </div>
+      <div class="sprint-bd">
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-44-1</span><span class="st-title">Persist packages, bookings, consultants</span><span class="st-pts">5 pts</span></div>
+          <div class="sub">Tasks</div>
+          <ul class="tasks"><li>Prisma models: <code>ConsultingPackage</code>, <code>Booking</code>, <code>Consultant</code>, <code>Feedback</code> (org-scoped)</li><li>Migrate the 10 SAP/ERP + existing packages from in-memory seed to DB</li><li>Booking state machine: pending → confirmed → in_progress → completed / cancelled</li></ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Existing consulting endpoints return DB data; bookings survive restart</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-44-2</span><span class="st-title">Stripe payment + webhook</span><span class="st-pts">8 pts</span></div>
+          <p class="st-user">As a client, I want to pay for a consultancy booking, so it's confirmed automatically.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li><code>POST /consulting/bookings/:id/checkout</code> → Stripe PaymentIntent (amount incl. 21% VAT)</li>
+            <li><code>POST /webhooks/stripe</code> — verify signature, on <code>payment_intent.succeeded</code> confirm booking + issue e-Factura draft</li>
+            <li>Idempotent webhook handling (store event id); refund path</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Signature verified; replayed events ignored; test with Stripe CLI</li><li>Paid booking auto-confirms and generates an invoice record</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-44-3</span><span class="st-title">Consultant portal (frontend)</span><span class="st-pts">5 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Consultant sees bookings, availability, deliverables upload, mark-complete</li><li>RO/EN; mobile-first</li></ul>
+        </div>
+        <div class="story anaf">
+          <div class="story-hd"><span class="stid">DOC-44-4</span><span class="st-title">CIF/CUI validation hardening</span><span class="st-pts">5 pts</span></div>
+          <div class="sub">Tasks</div>
+          <ul class="tasks"><li>Central <code>AnafLookupService</code>: validate CUI against ANAF public WS before any invoice</li><li>Rate-limit 10 req/s, exponential backoff, max 3 retries; Redis-cache 24h</li></ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Invalid/inactive CUI blocks submission with RO message</li><li>Backoff verified under simulated 429; ratified by tax-specialist ◆</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S-45 -->
+<section>
+  <div class="wrap">
+    <div class="sprint" id="s45">
+      <div class="sprint-hd">
+        <div class="id-row"><span class="sid">S-45</span><span class="sname">Controlling Cockpit (Frontend)</span></div>
+        <p class="sprint-goal">The management-facing surface: KPI cockpit, variance RAG dashboards, executive summary + alerts — RO/EN, mobile-first, wired to <code>/api/v1/controlling</code>.</p>
+        <div class="meta-row"><span class="chip"><b>24 pts</b></span><span class="chip">Owner: <b>frontend · romanian-tax-specialist</b></span><span class="chip dep">Deps: S-42, S-43</span></div>
+      </div>
+      <div class="sprint-bd">
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-45-1</span><span class="st-title">KPI cockpit page</span><span class="st-pts">8 pts</span></div>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li><code>app/[locale]/dashboard/controlling/page.tsx</code> — KPI tiles (EBITDA, margins, budget util) from <code>GET /controlling/kpi</code></li>
+            <li>Recharts: variance bar (plan vs actual per cost center), CM waterfall, cost-element donut</li>
+            <li>Loading/empty/error states; tabular-nums; RON formatting</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Renders live org data; &lt;2s on 3G; Lighthouse mobile &gt;85</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-45-2</span><span class="st-title">Variance table + drill-down</span><span class="st-pts">5 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>RAG-coloured variance rows; sort worst-first</li><li>Drill: cost-center → cost-element → (later) source document</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-45-3</span><span class="st-title">Executive summary + alerts</span><span class="st-pts">3 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Consumes <code>GET /controlling/executive-summary</code>; alerts show severity + RO/EN copy</li></ul>
+        </div>
+        <div class="story anaf">
+          <div class="story-hd"><span class="stid">DOC-45-4</span><span class="st-title">VAT 21/11/9 date-aware engine audit</span><span class="st-pts">8 pts</span></div>
+          <p class="st-user">As the tax-specialist, I want the rate engine proven correct across the Aug-2025 boundary and the 9% housing transition, because every document depends on it.</p>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Rate resolved by document date: 19/9/5 before Aug 2025, 21/11 after, 9% housing until Aug 2026</li><li>Reverse-charge auto-detect for EU; test matrix across dates × categories</li><li>Ratified by romanian-tax-specialist ◆</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S-46 -->
+<section>
+  <div class="wrap">
+    <div class="sprint" id="s46">
+      <div class="sprint-hd">
+        <div class="id-row"><span class="sid">S-46</span><span class="sname">Data-Migration Studio</span></div>
+        <p class="sprint-goal">Kill the #1 adoption blocker: import from SAGA with a mapping studio, dry-run validation, and a reconciliation report before cutover.</p>
+        <div class="meta-row"><span class="chip"><b>25 pts</b></span><span class="chip">Owner: <b>erp-architect · financial-accountant</b></span><span class="chip dep">Deps: S-42 (target schema stable)</span></div>
+      </div>
+      <div class="sprint-bd">
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-46-1</span><span class="st-title">SAGA import parsers → staging</span><span class="st-pts">8 pts</span></div>
+          <div class="sub">Tasks</div>
+          <ul class="tasks"><li>CSV/XLS + XML (SAF-T) parsers → <code>MigrationStaging</code> tables (no writes to live yet)</li><li>Detect entity type (customers, products, invoices, ledger) + row-level validation</li></ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Sample SAGA export lands in staging with per-row status</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-46-2</span><span class="st-title">Mapping studio (frontend)</span><span class="st-pts">8 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Map source→target fields, save/reuse templates, preview transformed rows</li></ul>
+        </div>
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-46-3</span><span class="st-title">Dry-run + reconciliation report</span><span class="st-pts">5 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Dry-run reports counts, totals, errors; pre/post reconciliation (control totals match)</li><li>Commit only after explicit approval; rollback on failure</li></ul>
+        </div>
+        <div class="story anaf">
+          <div class="story-hd"><span class="stid">DOC-46-4</span><span class="st-title">Migrated data re-validates vs SAF-T</span><span class="st-pts">4 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Post-migration, a generated D406 sample passes XSD; ratified by tax-specialist ◆</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- W-0 -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">W</span><div><h2>Parallel track — the free-tools funnel</h2><p class="sec-sub">Runs alongside H1. Each tool is a public page + a thin endpoint over free data — your top-of-funnel and the marketplace's future supply/demand.</p></div></div>
+    <div class="sprint wk" id="w0">
+      <div class="sprint-hd">
+        <div class="id-row"><span class="sid">W-0</span><span class="sname">Free-Tools Funnel</span></div>
+        <p class="sprint-goal">Five zero-data-cost tools, each grabbing a different persona and funnelling to signup. Buildable now — no dependency on the H1 gate.</p>
+        <div class="meta-row"><span class="chip"><b>~22 pts</b></span><span class="chip">Owner: <b>frontend · erp-architect</b></span><span class="chip dep">Deps: none</span><span class="chip">Data cost: <b>~€0</b></span></div>
+      </div>
+      <div class="sprint-bd">
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-W0-1</span><span class="st-title">CUI / VAT validator (ANAF public WS)</span><span class="st-pts">5 pts</span></div>
+          <p class="st-user">As anyone, I want to look up a Romanian company by CUI and see its VAT status, so I trust who I'm dealing with — and discover DocumentIulia.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li><code>GET /api/v1/tools/cui/:cui</code> → POST to ANAF <code>webservicesp.anaf.ro/.../PlatitorTvaRest</code> (free, no auth)</li>
+            <li>Parse: name, address, VAT-payer, split-TVA, e-Factura enrolled, inactive flag</li>
+            <li>Redis-cache 24h; rate-limit + backoff (reuse <code>AnafLookupService</code> from DOC-44-4)</li>
+            <li>Public SEO page <code>/[locale]/tools/verificare-cui</code></li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Valid CUI returns company + VAT status; invalid → friendly RO error</li><li>Cached; graceful when ANAF is down; server-rendered for SEO</li></ul>
+          <p class="note">Highest-leverage tool: catches <b>everyone</b>, best SEO, and the <code>AnafLookupService</code> is shared with S-44 — build once, use twice.</p>
+        </div>
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-W0-2</span><span class="st-title">VAT calculator (21 / 11 / 9)</span><span class="st-pts">3 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Date-aware rates + reverse-charge; add/extract VAT; shares the S-45 rate engine</li><li>Shareable URL with params; RO/EN</li></ul>
+        </div>
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-W0-3</span><span class="st-title">Net ↔ gross salary calculator</span><span class="st-pts">3 pts</span></div>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>RO payroll: CAS 25%, CASS 10%, impozit 10%, personal deduction; both directions</li><li>Matches an official reference example to the leu</li></ul>
+        </div>
+
+        <div class="story">
+          <div class="story-hd"><span class="stid">DOC-W0-4</span><span class="st-title">Free invoice + e-Factura XML generator</span><span class="st-pts">8 pts</span></div>
+          <p class="st-user">As a freelancer, I want to generate a compliant invoice PDF <em>and</em> e-Factura XML for free, so I stay — and later pay for more.</p>
+          <div class="sub">Tasks</div>
+          <ul class="tasks">
+            <li>Form → PDF (reuse <code>pdf</code> module) + RO_CIUS UBL 2.1 XML (reuse <code>invoices</code> logic)</li>
+            <li>Cap anonymous use (e.g. 3/mo, cookie/IP); CTA to sign up for unlimited</li>
+            <li>Optional CUI auto-fill via DOC-W0-1</li>
+          </ul>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Generated XML passes XSD; PDF matches; cap enforced; signup CTA converts</li></ul>
+        </div>
+
+        <div class="story anaf">
+          <div class="story-hd"><span class="stid">DOC-W0-5</span><span class="st-title">SAF-T / e-Factura XML validator</span><span class="st-pts">3 pts</span></div>
+          <p class="st-user">As an accountant, I want to validate a D406 / e-Factura XML before submitting, so I catch errors ANAF would reject — this is what lands accountants.</p>
+          <div class="sub">Acceptance criteria</div>
+          <ul class="ac"><li>Upload XML → XSD validate → plain-language RO errors (line/field)</li><li>Reuses the DOC-42-4 validator; no data stored (GDPR); ratified by tax-specialist ◆</li></ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-meta">DocumentIulia.ro · Sprint Execution Plan v1 · companion to Blueprint v3.1 · S-41 → S-46 + W-0 · logged to project-ledger</p>
+  </div>
+</footer>
+
+</body></html>
