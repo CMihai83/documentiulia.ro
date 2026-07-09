@@ -1,13 +1,13 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 25 · logged: 1 · planned: 2 · in_progress: 3 · shipped: 17 · parked: 2 · rejected: 0
+Total: 26 · logged: 1 · planned: 3 · in_progress: 1 · shipped: 19 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
 | REQ-001 | 2025-12-06 | **in_progress** | Build DocumentIulia.ro: AI ERP/accounting combining SAGA+OneStream+SAP, RO compliance (VAT 21/11, SAF-T D406, e-Factura), freemium, Grok API | CLAUDE.md |
 | REQ-002 | 2026-07-06 | **shipped** | Blueprint v2->v3.1 + 5-horizon roadmap incl. Work & Delivery Platform pillar (section 09) | docs/blueprint/PLATFORM-BLUEPRINT-v3.1.html |
-| REQ-003 | 2026-07-06 | **in_progress** | Module where customers and freelancers can work in VMs (delivery workspaces: dev container / shared VM / GPU pod, RunPod, escrow+e-Factura l… | Blueprint §09 W-3,docs/blueprint/REQUIREMENTS-COVERAGE.md,W-1 sprint planned,W-1 worker launched |
+| REQ-003 | 2026-07-06 | **shipped** | Module where customers and freelancers can work in VMs (delivery workspaces: dev container / shared VM / GPU pod, RunPod, escrow+e-Factura l… | Blueprint §09 W-3,docs/blueprint/REQUIREMENTS-COVERAGE.md,W-1 sprint planned,W-1 worker launched,W-1,master b3b9bc77,/delivery-workspaces |
 | REQ-004 | 2026-07-06 | **shipped** | W-0 free-tools funnel: CUI validator, VAT calc, salary calc, free invoice+e-Factura XML, SAF-T validator | SPRINT-PLAN-W0,worker running,master ddcbafe5,/tools/* |
 | REQ-005 | 2026-07-07 | **shipped** | Full GDPR module: extensive research + blueprint as external product AND internal compliance | GDPR-A,S-61 GDPR-EXT MVP,PR#23 |
 | REQ-006 | 2026-07-07 | **shipped** | Start with GDPR critical blockers | GDPR-A,PR#25-28 |
@@ -29,4 +29,5 @@ Total: 25 · logged: 1 · planned: 2 · in_progress: 3 · shipped: 17 · parked:
 | REQ-022 | 2026-07-08 | **logged** | User must save printed keys: ENCRYPTION_MASTER_KEY, CREDENTIAL_SIGNING_KEY, PEER_REVIEW_HMAC_KEY; configure BACKUP_REMOTE; rotate RunPod+xAI… | GDPR-A,S-56 |
 | REQ-023 | 2026-07-06 | **planned** | Financial consolidation (OneStream pillar, blueprint H2) — approved requirement, never scheduled | Blueprint §02/§07 |
 | REQ-024 | 2026-07-06 | **planned** | Accountant channel: multi-client filing + white-label for firms (GTM wedge) | Blueprint §08 |
-| REQ-025 | 2026-07-09 | **in_progress** | Plan and launch W-1 delivery workspaces (the VM module) after W-0 | REQ-003,SPRINT-PLAN-W1 committed,W-1 worker launched |
+| REQ-025 | 2026-07-09 | **shipped** | Plan and launch W-1 delivery workspaces (the VM module) after W-0 | REQ-003,SPRINT-PLAN-W1 committed,W-1 worker launched,W-1 deployed |
+| REQ-026 | 2026-07-09 | **planned** | W-1.5: live RunPod GPU provisioning + security review (needs RUNPOD_API_KEY + security-engineer sign-off) | W-1 |
