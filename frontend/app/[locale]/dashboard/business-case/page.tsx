@@ -222,21 +222,23 @@ export default function BusinessCasePage() {
   });
   const setDist = (key: string, patch: Record<string, any>) => setAnswers((prev) => ({ ...prev, [key]: { ...(prev[key] ?? { dist: 'triangular' }), ...patch } }));
 
-  // BC-107 — authenticated PDF download (bare <a href> would drop the JWT → 401).
-  const downloadDeliverable = async (maturity: 'SOC' | 'OBC' | 'FBC') => {
+  // Authenticated blob download (bare <a href> would drop the JWT → 401).
+  const downloadBlob = async (path: string, filename: string) => {
     if (!active) return;
     setError(null);
     const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
-    const res = await fetch(`${API_URL}/business-case/${active.id}/deliverable?maturity=${maturity}&locale=${locale}`, {
+    const res = await fetch(`${API_URL}/business-case/${active.id}${path}`, {
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
     if (!res.ok) { setError(t.loadFail); return; }
     const blob = await res.blob();
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `${active.title}-${maturity}.pdf`; a.click();
+    a.href = url; a.download = filename; a.click();
     URL.revokeObjectURL(url);
   };
+  const downloadDeliverable = (maturity: 'SOC' | 'OBC' | 'FBC') =>
+    downloadBlob(`/deliverable?maturity=${maturity}&locale=${locale}`, `${active?.title}-${maturity}.pdf`);
 
   const label = (o: { label: string; labelRo?: string }) => (locale === 'ro' && (o as any).labelRo ? (o as any).labelRo : o.label);
 
@@ -586,6 +588,20 @@ export default function BusinessCasePage() {
                       <FileText className="h-4 w-4" /> {m}
                     </Button>
                   ))}
+                </div>
+
+                {/* S-60 — bank-grade exports (authenticated blobs) */}
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <span className="text-xs text-muted-foreground">{locale === 'ro' ? 'Exporturi' : 'Exports'}:</span>
+                  <Button size="sm" variant="outline" onClick={() => downloadBlob('/export/xlsx', `${active?.title}-model.xlsx`)}>
+                    Excel {locale === 'ro' ? '(formule live)' : '(live formulas)'}
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={() => downloadBlob('/export/xlsx-template', `${active?.title}-summary.xlsx`)}>
+                    Excel {locale === 'ro' ? '(șablon)' : '(template)'}
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={() => downloadBlob(`/export/pptx?maturity=OBC&locale=${locale}`, `${active?.title}-deck.pptx`)}>
+                    PowerPoint
+                  </Button>
                 </div>
               </CardContent>
             </Card>
