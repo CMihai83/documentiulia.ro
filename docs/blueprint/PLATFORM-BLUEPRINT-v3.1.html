@@ -1,0 +1,717 @@
+<!doctype html><html><head><!-- frame-runtime --><script>window.__FRAME_PREAMBLE={"capabilities":{"mcp":"mcp.BQqQVVN_.js"},"transforms":"_transforms.DYk1Ltlh.js"}</script><script>(function(){"use strict";const X="modulepreload",Y=function(e){return"/"+e},Z={},U=function(t,n,u){let o=Promise.resolve();function i(f){const a=new Event("vite:preloadError",{cancelable:!0});if(a.payload=f,window.dispatchEvent(a),!a.defaultPrevented)throw f}return o.then(f=>{for(const a of f||[])a.status==="rejected"&&i(a.reason);return t().catch(i)})},D=["light","dark","system"];function $(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_init;return t!=null&&typeof t=="object"}function q(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_theme;if(t==null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&D.includes(n)}function M(e){if(window===top||e.type==="auxclick"&&e.button!==1)return;const t=e.composedPath?e.composedPath():[e.target];let n=null;for(let f=0;f<t.length;f++){const a=t[f];if(a&&a.matches&&a.matches("a[href],area[href]")){n=a;break}}if(!n&&e.target&&e.target.closest&&(n=e.target.closest("a[href],area[href]")),!n)return;const u=n.getAttribute("href");if(!u)return;let o,i;try{o=new URL(u,document.baseURI),i=new URL(document.baseURI).origin}catch{return}(o.protocol==="http:"||o.protocol==="https:")&&o.origin!==i&&(e.preventDefault(),parent.postMessage({__frame_nav:!0,url:o.href},"*"))}const L={};function y(e){if(window===top)return;const t=Date.now();t-(L[e]||0)<500||(L[e]=t,parent.postMessage({__frame_engaged:!0,kind:e},"*"))}const F=2e3,T=["wheel","touchstart","touchmove","keydown","pointerdown"];let k=0;function B(e){e.isTrusted&&(k=Date.now())}function z(){addEventListener("click",M,!0),addEventListener("auxclick",M,!0)}function W(){for(let e=0;e<T.length;e++)addEventListener(T[e],B,{capture:!0,passive:!0});addEventListener("scroll",e=>{e.isTrusted&&Date.now()-k<F&&y("scroll")},{capture:!0,passive:!0}),addEventListener("pointermove",e=>{e.isTrusted&&y("pointer")},{capture:!0,passive:!0}),addEventListener("click",e=>{e.isTrusted&&y("click")},{capture:!0,passive:!0})}function x(e,t,n){const u=[...t.values()].filter(o=>o.targets.some(i=>i.startsWith(e+".")));return{wrap(o,i){const f=`${e}.${o}`,a=u.filter(s=>s.targets.includes(f));return a.length===0?(...s)=>{try{return i(...s)}catch(d){return Promise.reject(d)}}:(...s)=>{let d=s;for(const c of a){const l=c.module.parameters;if(l)try{d=l(d)}catch{return Promise.reject({code:"transform_error",id:c.id,scope:e,message:"parameters transform failed"})}}let m;try{m=i(...d)}catch(c){m=Promise.reject(c)}return m.then(c=>{for(let l=a.length-1;l>=0;l--){const h=a[l],p=h.module.returns;if(p)try{c=p(c)}catch{return n({id:h.id,scope:e,leg:"returns"}),c}}return c},c=>{for(let l=a.length-1;l>=0;l--){const h=a[l],p=h.module.throws;if(p)try{c=p(c)}catch{return n({id:h.id,scope:e,leg:"throws"}),Promise.reject(c)}}return Promise.reject(c)})}}}}function H(e,t,n,u=()=>{}){const o=new Set(e.changes??[]),i=new Map;for(const f of o){const a=t[f];a&&i.set(f,a)}return{contract:e.contract,changes:o,flags:new Set(e.flags??[]),capabilities:e.capabilities??{},transforms:i,shellOrigin:n.shellOrigin,mount:n.mount,pipe:f=>x(f,i,u)}}(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let u=0;for(let o=0;o<n.length;o++){const i=n[o];try{e(t,i,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[i]}catch{}try{e(t,i,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[i]=="function"&&u++}if(u&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:u},"*")}catch{}})();const K=1e4,G=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function J(e){for(const t of G)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}const w=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities??{}}),E=window.__FRAME_PREAMBLE?.transforms,C=/^[\w.-]+\.js$/,V=/^[a-z][a-z0-9_-]{0,63}$/;let A=null,g=null;function P(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}let R=!1;function N(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,R=!0):R&&(delete t.dataset.theme,t.style.colorScheme="",R=!1)}const _=new Map;function Q(e,t){const n=_.get(e);if(!n)return;Object.assign(n.impl,t),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const u=n.queue;n.queue=[];for(const o of u){const i=t[o.method];i?i(...o.args).then(o.resolve,o.reject):o.reject({code:"capability_removed",message:`${e}.${o.method} is not in this runtime`})}}function O(e,t){const n=_.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t);const u=n.queue;n.queue=[];for(const o of u)o.reject(t)}const j=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(j&&j.writable===!1)){z(),W();const e=j?.value??{};P(window,"claude",e);const t=s=>{const d={impl:Object.create(null),queue:[]};_.set(s,d);const m=new Proxy(d.impl,{get:(c,l)=>{if(typeof l=="string"&&!(l==="then"||l==="toJSON"||l==="valueOf"))return l==="toString"?Object.prototype.toString:(...h)=>{const p=c[l]??c.__settled;return p?p(...h):new Promise((b,S)=>{d.queue.push({method:l,args:h,resolve:b,reject:S})})}},set:()=>!1});P(e,s,m)};for(const s of Object.keys(w)){if(e[s]!==void 0){P(e,s,e[s]);continue}t(s)}let n=null,u=null,o=0;const i=s=>{s.source!==parent||!J(s.origin)||$(s.data)&&(n=s.data.__frame_init,g=s.origin,removeEventListener("message",i),clearTimeout(o),u?.())};addEventListener("message",i),parent.postMessage({__frame_connect:!0},"*");const f=new Promise(s=>{u=s,o=setTimeout(()=>{removeEventListener("message",i),s()},K)}),a=document.readyState==="loading"?new Promise(s=>document.addEventListener("DOMContentLoaded",()=>s(),{once:!0})):Promise.resolve();f.then(async()=>{if(!n||!g){for(const r of _.keys())O(r,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}N(n.theme);const s=g;addEventListener("message",r=>{r.source!==parent||r.origin!==s||q(r.data)&&N(r.data.__frame_theme.theme)});const d=r=>U(()=>import("/_runtime/"+r),void 0),m=Object.keys(n.capabilities??{});for(const r of m)Object.hasOwn(w,r)||V.test(r)&&e[r]===void 0&&(t(r),O(r,{code:"capability_disabled",message:"capability not in this runtime generation"}));const c=m.filter(r=>Object.hasOwn(w,r)).map(r=>[r,w[r]]).filter(r=>typeof r[1]=="string"&&C.test(r[1])),[l,...h]=await Promise.allSettled([E&&C.test(E)?d(E):Promise.resolve({}),...c.map(([,r])=>d(r))]),p=g;A=H(n,l.status==="fulfilled"&&l.value?.TRANSFORMS||{},{shellOrigin:p,mount:Q},r=>parent.postMessage({__frame_cap_telemetry:r},p));const b=r=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:r}},p),S=A;h.forEach((r,v)=>{const I=c[v][0];if(r.status!=="fulfilled"){b(I);return}try{r.value?.install?.(S)}catch{b(I)}});for(const[r,v]of _)v.queue.length===0&&Object.keys(v.impl).length>0||O(r,{code:m.includes(r)?"capability_disabled":"not_granted",message:"capability not available in this session"});await a,parent.postMessage({__frame_ready:!0},g)})}})();</script><!-- /frame-runtime --><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>DocumentIulia — Platform Blueprint v3.1 &amp; Roadmap</title>
+<style>
+  :root {
+    --bg: #f4f7f8; --surface: #ffffff; --surface-2: #eaf0f1; --ink: #10202b;
+    --ink-soft: #4a5d64; --ink-faint: #7c8f95; --line: #d6e0e2; --line-soft: #e4ebec;
+    --accent: #0c7d88; --accent-bright: #109aa6; --accent-wash: #e2f1f2; --amber: #a86d16;
+    --amber-wash: #f6ecd8; --good: #2f8f66; --warn: #bd7f24; --crit: #bd433a; --crit-wash: #f7e6e4;
+    --violet: #6d4a9e; --violet-wash: #ece5f5;
+    --must: #0c7d88; --should: #4a5d64; --could: #7c8f95;
+    --shadow: 0 1px 2px rgba(16,32,43,.05), 0 8px 24px rgba(16,32,43,.06);
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a1418; --surface: #0f2027; --surface-2: #143039; --ink: #e9f1f2;
+      --ink-soft: #a2b6bb; --ink-faint: #6d848a; --line: #213a43; --line-soft: #1a2f37;
+      --accent: #17aeba; --accent-bright: #3ed2dc; --accent-wash: #10333a; --amber: #d9a441;
+      --amber-wash: #2a2416; --good: #45b884; --warn: #d9a441; --crit: #e0685e; --crit-wash: #2c1a18;
+      --violet: #a98bd6; --violet-wash: #201a2e;
+      --must: #17aeba; --should: #a2b6bb; --could: #6d848a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f7f8; --surface: #ffffff; --surface-2: #eaf0f1; --ink: #10202b; --ink-soft: #4a5d64;
+    --ink-faint: #7c8f95; --line: #d6e0e2; --line-soft: #e4ebec; --accent: #0c7d88; --accent-bright: #109aa6;
+    --accent-wash: #e2f1f2; --amber: #a86d16; --amber-wash: #f6ecd8; --good: #2f8f66; --warn: #bd7f24;
+    --crit: #bd433a; --crit-wash: #f7e6e4; --violet: #6d4a9e; --violet-wash: #ece5f5;
+    --must: #0c7d88; --should: #4a5d64; --could: #7c8f95;
+    --shadow: 0 1px 2px rgba(16,32,43,.05), 0 8px 24px rgba(16,32,43,.06);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a1418; --surface: #0f2027; --surface-2: #143039; --ink: #e9f1f2; --ink-soft: #a2b6bb;
+    --ink-faint: #6d848a; --line: #213a43; --line-soft: #1a2f37; --accent: #17aeba; --accent-bright: #3ed2dc;
+    --accent-wash: #10333a; --amber: #d9a441; --amber-wash: #2a2416; --good: #45b884; --warn: #d9a441;
+    --crit: #e0685e; --crit-wash: #2c1a18; --violet: #a98bd6; --violet-wash: #201a2e;
+    --must: #17aeba; --should: #a2b6bb; --could: #6d848a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; gap: 20px; height: 56px; }
+  .brand { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--ink); white-space: nowrap; }
+  .brand b { color: var(--accent); }
+  .nav-links { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; }
+  .nav-links a { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
+  .nav-links a:hover { color: var(--accent); background: var(--accent-wash); }
+
+  header.hero { padding: 74px 0 52px; border-bottom: 1px solid var(--line); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin: 0 0 20px; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.4rem, 5.6vw, 4.1rem); line-height: 1.04; letter-spacing: -.015em; margin: 0 0 22px; text-wrap: balance; max-width: 17ch; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .lede { font-size: clamp(1.05rem, 2vw, 1.24rem); color: var(--ink-soft); max-width: 64ch; margin: 0 0 30px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 26px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); }
+  .hero-meta b { color: var(--ink); font-weight: 600; }
+
+  section { padding: 60px 0; border-bottom: 1px solid var(--line-soft); scroll-margin-top: 70px; }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; }
+  .sec-num { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: .05em; padding-top: 8px; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 3.2vw, 2.4rem); letter-spacing: -.01em; margin: 0; line-height: 1.1; text-wrap: balance; }
+  .sec-sub { color: var(--ink-soft); max-width: 68ch; margin: 10px 0 0; font-size: 1.02rem; }
+
+  /* changelog strip */
+  .changelog { background: var(--accent-wash); border: 1px solid var(--accent); border-radius: 12px; padding: 20px 22px; }
+  .changelog h3 { margin: 0 0 12px; font-size: .95rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+  .changelog ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 8px 22px; }
+  .changelog li { font-size: .9rem; color: var(--ink-soft); display: flex; gap: 8px; align-items: baseline; }
+  .changelog li b { color: var(--ink); }
+  .cl-tag { font-family: var(--mono); font-size: 9px; font-weight: 700; padding: 2px 5px; border-radius: 4px; flex-shrink: 0; margin-top: 3px; text-transform: uppercase; letter-spacing: .04em; }
+  .cl-fix { background: var(--crit); color: #fff; } .cl-new { background: var(--accent); color: #fff; } .cl-real { background: var(--amber); color: #fff; }
+
+  /* callouts */
+  .callout { border-radius: 12px; padding: 20px 22px; display: flex; gap: 16px; align-items: flex-start; box-shadow: var(--shadow); }
+  .callout .ico { font-family: var(--mono); font-weight: 700; font-size: 12px; padding: 5px 9px; border-radius: 7px; white-space: nowrap; flex-shrink: 0; }
+  .callout.warn { background: var(--crit-wash); border: 1px solid var(--crit); }
+  .callout.warn .ico { background: var(--crit); color: #fff; }
+  .callout.info { background: var(--amber-wash); border: 1px solid var(--amber); }
+  .callout.info .ico { background: var(--amber); color: #fff; }
+  .callout p { margin: 0; font-size: .94rem; color: var(--ink-soft); }
+  .callout p strong { color: var(--ink); }
+  .callout code { font-family: var(--mono); font-size: 12px; background: var(--surface); padding: 1px 6px; border-radius: 4px; color: var(--accent); }
+
+  .bet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .bet { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; box-shadow: var(--shadow); }
+  .bet .k { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .bet h3 { margin: 6px 0 6px; font-size: 1.05rem; }
+  .bet p { margin: 0; color: var(--ink-soft); font-size: .92rem; }
+
+  .prose p { max-width: 68ch; color: var(--ink-soft); }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .arch { display: flex; flex-direction: column; gap: 9px; }
+  .layer { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 15px 18px; display: grid; grid-template-columns: 178px 1fr; gap: 18px; align-items: center; box-shadow: var(--shadow); }
+  .layer.hl { border-color: var(--accent); background: linear-gradient(180deg, var(--accent-wash), var(--surface)); }
+  .layer.evo { border-color: var(--violet); background: linear-gradient(180deg, var(--violet-wash), var(--surface)); }
+  .layer-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 600; }
+  .layer.evo .layer-label { color: var(--violet); }
+  .layer-label span { display: block; color: var(--ink-faint); font-size: 10px; letter-spacing: .04em; margin-top: 3px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip { font-family: var(--mono); font-size: 11.5px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 20px; padding: 4px 11px; white-space: nowrap; }
+  .chip.new { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); font-weight: 600; }
+  .chip.evo { border-color: var(--violet); color: var(--violet); background: var(--violet-wash); font-weight: 600; }
+  .flow { text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); letter-spacing: .1em; text-transform: uppercase; }
+
+  .dom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 16px; }
+  .dom { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+  .dom.violet { border-color: color-mix(in srgb, var(--violet) 40%, var(--line)); }
+  .dom-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 8px; }
+  .dom h3 { margin: 0; font-size: 1.04rem; }
+  .tag { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; padding: 3px 8px; border-radius: 5px; font-weight: 600; white-space: nowrap; }
+  .tag.new { color: var(--accent); background: var(--accent-wash); border: 1px solid var(--accent); }
+  .tag.live { color: var(--good); background: color-mix(in srgb, var(--good) 12%, transparent); }
+  .tag.enh { color: var(--amber); background: var(--amber-wash); }
+  .tag.rnd { color: var(--violet); background: var(--violet-wash); border: 1px solid var(--violet); }
+  .tag.audit { color: var(--crit); background: var(--crit-wash); }
+  .dom ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+  .dom li { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); background: var(--surface-2); border-radius: 5px; padding: 3px 8px; }
+  .dom .count { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 12px; }
+  .dom p.desc { margin: 0 0 12px; font-size: .88rem; color: var(--ink-soft); }
+
+  .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; background: var(--surface); }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  thead th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); font-weight: 600; background: var(--surface-2); }
+  tbody th { font-weight: 600; color: var(--ink); }
+  td.us { color: var(--accent); font-weight: 600; }
+  tbody tr:last-child td, tbody tr:last-child th { border-bottom: none; }
+  .dot { font-weight: 700; } .dot.y { color: var(--good); } .dot.p { color: var(--warn); } .dot.n { color: var(--crit); }
+  .sev { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; white-space: nowrap; }
+  .sev.hi { background: var(--crit); color: #fff; } .sev.md { background: var(--amber); color: #fff; } .sev.lo { background: var(--good); color: #fff; }
+
+  .horizon { margin-bottom: 38px; }
+  .horizon:last-child { margin-bottom: 0; }
+  .h-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-bottom: 14px; margin-bottom: 20px; border-bottom: 2px solid var(--accent); }
+  .h-head.evo { border-color: var(--violet); }
+  .h-code { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .05em; }
+  .h-head.evo .h-code { color: var(--violet); }
+  .h-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; margin: 0; }
+  .h-when { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin-left: auto; }
+  .h-theme { flex-basis: 100%; color: var(--ink-soft); font-size: .95rem; margin: 4px 0 0; }
+  .sprints { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .sprint { background: var(--surface); border: 1px solid var(--line); border-radius: 11px; padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 11px; }
+  .sprint.audit { border-color: var(--crit); background: linear-gradient(180deg, var(--crit-wash), var(--surface)); }
+  .sprint-top { display: flex; align-items: center; gap: 10px; }
+  .sprint-id { font-family: var(--mono); font-size: 11px; font-weight: 700; background: var(--accent-wash); color: var(--accent); border-radius: 6px; padding: 3px 8px; }
+  .sprint.audit .sprint-id { background: var(--crit-wash); color: var(--crit); }
+  .sprint-goal { font-weight: 600; font-size: .97rem; line-height: 1.3; }
+  .sprint ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .sprint li { font-size: .85rem; color: var(--ink-soft); display: flex; gap: 8px; align-items: baseline; }
+  .moscow { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .04em; padding: 2px 5px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; text-transform: uppercase; }
+  .m-must { color: #fff; background: var(--must); } .m-should { color: var(--surface); background: var(--should); } .m-could { color: var(--surface); background: var(--could); }
+  .sprint li.anaf { color: var(--amber); } .sprint li.anaf .moscow { background: var(--amber); color: #fff; }
+  .sprint-foot { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); border-top: 1px dashed var(--line); padding-top: 9px; display: flex; justify-content: space-between; gap: 8px; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+  .kpi.north { border-color: var(--accent); background: linear-gradient(160deg, var(--accent-wash), var(--surface)); }
+  .kpi .lab { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-faint); }
+  .kpi .val { font-family: var(--serif); font-size: 2rem; font-weight: 600; letter-spacing: -.02em; margin: 6px 0 2px; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .kpi.north .val { color: var(--accent); }
+  .kpi .from { font-size: .82rem; color: var(--ink-soft); }
+  .kpi .base { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); margin-top: 6px; }
+
+  .timeline { display: flex; flex-direction: column; }
+  .tl { display: grid; grid-template-columns: 128px 1fr; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+  .tl:last-child { border-bottom: none; }
+  .tl-date { font-family: var(--mono); font-size: 12px; color: var(--amber); font-weight: 600; padding-top: 2px; }
+  .tl-body strong { display: block; margin-bottom: 2px; }
+  .tl-body span { color: var(--ink-soft); font-size: .9rem; }
+  .tl-body .corrected { color: var(--crit); font-weight: 600; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+
+  .cons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .role { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .role .r-name { font-weight: 600; font-size: .95rem; }
+  .role .r-veto { font-family: var(--mono); font-size: 10px; color: var(--crit); text-transform: uppercase; letter-spacing: .05em; }
+  .role p { margin: 6px 0 0; font-size: .85rem; color: var(--ink-soft); }
+
+  .status { background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 22px 24px; display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; box-shadow: var(--shadow); }
+  .status .badge { font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--good); background: color-mix(in srgb, var(--good) 12%, transparent); padding: 6px 11px; border-radius: 7px; white-space: nowrap; }
+  .status .s-body { flex: 1; min-width: 260px; }
+  .status code { font-family: var(--mono); font-size: 12px; background: var(--surface-2); padding: 1px 6px; border-radius: 4px; color: var(--accent); }
+
+  footer { padding: 54px 0 70px; }
+  .approve { background: linear-gradient(160deg, var(--accent), #08525a); color: #fff; border-radius: 16px; padding: 40px; text-align: center; }
+  .approve h2 { color: #fff; font-family: var(--serif); }
+  .approve p { color: rgba(255,255,255,.86); max-width: 56ch; margin: 12px auto 22px; }
+  .approve .opts { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-family: var(--mono); font-size: 12.5px; }
+  .approve .opt { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); padding: 9px 16px; border-radius: 8px; }
+  .foot-meta { text-align: center; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 26px; letter-spacing: .04em; }
+
+  @media (max-width: 640px) {
+    .layer { grid-template-columns: 1fr; gap: 10px; }
+    .tl { grid-template-columns: 1fr; gap: 4px; }
+    h1 { max-width: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: rise .7s cubic-bezier(.2,.7,.3,1) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+
+<nav>
+  <div class="wrap nav-inner">
+    <span class="brand">Document<b>Iulia</b> · Blueprint v3.1</span>
+    <div class="nav-links">
+      <a href="#changes">v3.1</a>
+      <a href="#bet">Bet</a>
+      <a href="#arch">Architecture</a>
+      <a href="#evo">Self-Evolution</a>
+      <a href="#compute">Compute</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#work">Work</a>
+      <a href="#gtm">GTM</a>
+      <a href="#risk">Risks</a>
+      <a href="#compliance">Compliance</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap reveal">
+    <p class="eyebrow">Target-State Blueprint &amp; Delivery Roadmap · v3.1 · July 2026</p>
+    <h1>The self-evolving ERP that makes <em>SAP-grade</em> control affordable.</h1>
+    <p class="lede">DocumentIulia collapses SAGA, OneStream and SAP into one AI-native platform — statutory compliance as code, management <strong>Controlling</strong> built in, a consultancy marketplace attached, and a governed <strong>self-evolving agent layer</strong> — plus a <strong>work &amp; delivery marketplace</strong> where members find work, grow and deliver it, paid compliantly. v3.1 grounds the whole plan in real hardware and existing modules.</p>
+    <div class="hero-meta">
+      <span>Author: <b>Expert Consortium</b></span>
+      <span>Horizon: <b>2026 → 2030</b></span>
+      <span>North star: <b>100k EU SMBs</b></span>
+      <span>Revision: <b>v3.1 · +work platform</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- CHANGELOG -->
+<section id="changes">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">00</span><div><h2>What changed (v3.0 → v3.1)</h2><p class="sec-sub">The consortium reviewed v2.0 against live regulation and the actual server. Nothing here is cosmetic — these are the corrections that make the plan executable.</p></div></div>
+    <div class="changelog reveal">
+      <h3>Folded-in fixes</h3>
+      <ul>
+        <li><span class="cl-tag cl-new">v3.1</span><span><b>Work &amp; Delivery Platform pillar (§09)</b> — talent marketplace + growth (training/coaching) + delivery workspaces, ~70% from existing modules. New <b>Horizon W</b>.</span></li>
+        <li><span class="cl-tag cl-fix">Fix</span><span><b>e-Factura B2C reframed</b> — it is <b>already mandatory (Jan 2025)</b>, not a 2026 build-ahead. Now a coverage gap-audit.</span></li>
+        <li><span class="cl-tag cl-fix">Fix</span><span><b>VAT engine = 21 / 11 / 9-housing</b> — 9% housing rate persists transitionally to Aug 2026, not a flat two-rate model.</span></li>
+        <li><span class="cl-tag cl-fix">Fix</span><span><b>SAF-T D406</b> corrected to monthly <b>or quarterly</b> + annual assets + on-request inventory.</span></li>
+        <li><span class="cl-tag cl-real">Reality</span><span><b>No GPU on this server.</b> Compute strategy rewritten around CPU + cloud/API. New §Compute.</span></li>
+        <li><span class="cl-tag cl-real">Reality</span><span><b>Capacity re-baselined</b> to AI-augmented solo delivery; story points reframed as effort, not team-velocity.</span></li>
+        <li><span class="cl-tag cl-fix">Fix</span><span><b>Sprint-41 module maturity audit</b> added before H1 — classify 130 modules real / stub / empty.</span></li>
+        <li><span class="cl-tag cl-new">New</span><span><b>Self-Evolving Intelligence layer</b> — CORAL + research agents, firewalled from tax execution. New §04.</span></li>
+        <li><span class="cl-tag cl-new">New</span><span><b>GTM &amp; business model</b> (accountant channel, unit economics) — §08.</span></li>
+        <li><span class="cl-tag cl-new">New</span><span><b>Risk register</b> incl. AI tax-advice liability &amp; bus-factor — §09.</span></li>
+        <li><span class="cl-tag cl-new">New</span><span><b>Security &amp; certification</b> (SOC 2 / ISO 27001 / pen-test) promoted to a roadmap milestone.</span></li>
+        <li><span class="cl-tag cl-new">New</span><span><b>Data migration</b> promoted from consultancy service to first-class product module.</span></li>
+        <li><span class="cl-tag cl-new">New</span><span><b>KPI baselines &amp; leading indicators</b> added — targets are now falsifiable.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- THE BET -->
+<section id="bet">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><div><h2>The bet</h2><p class="sec-sub">Three structural shifts over the next five to ten years hand the market to whoever moves first — plus a fourth that is now within reach: software that improves itself.</p></div></div>
+    <div class="bet-grid">
+      <div class="bet"><div class="k">€21.6B</div><h3>Compliance is now code</h3><p>ANAF SAF-T, e-Factura and e-Transport turned bookkeeping into a real-time API contract, PNRR-funded. Incumbents bolt this on; we are compliance-first by design.</p></div>
+      <div class="bet"><div class="k">1/10</div><h3>AI collapses cost-to-serve</h3><p>OCR, RAG copilots and agentic close mean one accountant does the work of ten. The winner prices the mid-market out of SAP without losing depth.</p></div>
+      <div class="bet"><div class="k">3-in-1</div><h3>The suite consolidates</h3><p>SMBs refuse to run SAGA + a consolidation tool + a BI stack + external consultants. One platform for statutory + management + advisory wins the wallet.</p></div>
+      <div class="bet"><div class="k">Δ self</div><h3>Software that evolves</h3><p>A governed multi-agent layer researches regulation, drafts modules, hardens tests and proposes improvements — compounding the roadmap's velocity over time.</p></div>
+    </div>
+    <div class="prose" style="margin-top:26px">
+      <p><strong>North-star:</strong> become the default financial operating system for 100,000+ European SMBs and their accountants by 2030 — from an unassailable position in Romanian compliance, expanding across the EU on the same regulatory-as-code engine, with a self-improving agent layer widening the moat each quarter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE WE WIN -->
+<section id="win">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><div><h2>Where we win</h2><p class="sec-sub">Not by out-featuring SAP or out-pricing a spreadsheet — by owning the one wedge incumbents structurally cannot serve: compliance-grade + AI-native + advisory, at SMB price.</p></div></div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Capability</th><th>SAGA</th><th>SAP S/4</th><th>OneStream</th><th>Xero / Odoo</th><th>DocumentIulia</th></tr></thead>
+        <tbody>
+          <tr><th>RO compliance (SAF-T, e-Factura)</th><td><span class="dot y">●</span> native</td><td><span class="dot p">◐</span> localised</td><td><span class="dot n">○</span> none</td><td><span class="dot n">○</span> weak</td><td class="us"><span class="dot y">●</span> compliance-first</td></tr>
+          <tr><th>Management Controlling (CO)</th><td><span class="dot n">○</span> none</td><td><span class="dot y">●</span> deep</td><td><span class="dot y">●</span> yes</td><td><span class="dot p">◐</span> partial</td><td class="us"><span class="dot y">●</span> built-in</td></tr>
+          <tr><th>Financial consolidation</th><td><span class="dot n">○</span> none</td><td><span class="dot y">●</span> yes</td><td><span class="dot y">●</span> specialist</td><td><span class="dot n">○</span> none</td><td class="us"><span class="dot p">◐</span> Horizon 2</td></tr>
+          <tr><th>Native AI (OCR, copilot, forecast)</th><td><span class="dot n">○</span> none</td><td><span class="dot p">◐</span> add-on</td><td><span class="dot p">◐</span> partial</td><td><span class="dot p">◐</span> partial</td><td class="us"><span class="dot y">●</span> AI-native</td></tr>
+          <tr><th>Embedded advisory / consultancy</th><td><span class="dot n">○</span> none</td><td><span class="dot n">○</span> partner-only</td><td><span class="dot n">○</span> none</td><td><span class="dot n">○</span> none</td><td class="us"><span class="dot y">●</span> marketplace</td></tr>
+          <tr><th>Self-evolving platform layer</th><td><span class="dot n">○</span> none</td><td><span class="dot n">○</span> none</td><td><span class="dot n">○</span> none</td><td><span class="dot n">○</span> none</td><td class="us"><span class="dot p">◐</span> R&amp;D track</td></tr>
+          <tr><th>SMB total cost of ownership</th><td><span class="dot y">●</span> low</td><td><span class="dot n">○</span> very high</td><td><span class="dot n">○</span> high</td><td><span class="dot y">●</span> low</td><td class="us"><span class="dot y">●</span> 49–149 RON/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-sub" style="margin-top:14px"><span class="dot y">●</span> full &nbsp; <span class="dot p">◐</span> partial / planned &nbsp; <span class="dot n">○</span> absent. The winning column is the only one with no gaps across compliance, control, intelligence and advisory at once.</p>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="arch">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><div><h2>Target architecture</h2><p class="sec-sub">A modular monolith today, factored so each domain can peel off under load. <span style="color:var(--accent);font-weight:600">Teal = this cycle.</span> <span style="color:var(--violet);font-weight:600">Violet = the new self-evolving layer.</span></p></div></div>
+    <div class="arch">
+      <div class="layer"><div class="layer-label">Experience<span>Next.js 15 · PWA</span></div><div class="chips"><span class="chip">App Router /[locale]</span><span class="chip">RO·EN (DE·FR·ES planned)</span><span class="chip">shadcn/Tailwind · WCAG AA</span><span class="chip">Recharts cockpits</span><span class="chip new">Controlling cockpit ✦</span></div></div>
+      <div class="flow">↓ REST / GraphQL · JWT · org-scoped ↓</div>
+      <div class="layer hl"><div class="layer-label">Application<span>NestJS · ~130 modules*</span></div><div class="chips"><span class="chip">Finance · Accounting · VAT</span><span class="chip new">Controlling (CO) ✦</span><span class="chip new">SAP/ERP Consultancy ✦</span><span class="chip new">Data-migration ✦</span><span class="chip">HR · Payroll · Ops · CRM</span><span class="chip">Event bus · Swagger</span></div></div>
+      <div class="flow">↓ inference · RAG · vector ↓</div>
+      <div class="layer"><div class="layer-label">Intelligence<span>Hybrid: local + cloud</span></div><div class="chips"><span class="chip">RAG copilot (API brain)</span><span class="chip">OCR post-proc (local model)</span><span class="chip">Prophet forecasts</span><span class="chip">Anomaly detection</span><span class="chip new">Agentic close (gated) ✦</span></div></div>
+      <div class="flow">↓ governed · human-gated · firewalled ↓</div>
+      <div class="layer evo"><div class="layer-label">Self-Evolution<span>Δ R&amp;D · off statutory path</span></div><div class="chips"><span class="chip evo">CORAL orchestration Δ</span><span class="chip evo">AutoResearchClaw Δ</span><span class="chip evo">EvoAgentX Δ</span><span class="chip evo">Hermes · ScienceClaw Δ</span><span class="chip evo">Xagent (ops) Δ</span></div></div>
+      <div class="flow">↓ Prisma · cache · time-series ↓</div>
+      <div class="layer"><div class="layer-label">Data<span>Persistent · immutable</span></div><div class="chips"><span class="chip">PostgreSQL / Prisma</span><span class="chip">Redis cache · queue</span><span class="chip">pgvector / embeddings</span><span class="chip">Object storage</span><span class="chip">10yr immutable audit</span></div></div>
+      <div class="flow">↓ statutory &amp; ecosystem connectors ↓</div>
+      <div class="layer"><div class="layer-label">Integrations<span>Gov · Bank · ERP</span></div><div class="chips"><span class="chip">ANAF SPV · D406 · e-Factura</span><span class="chip">SAGA v3.2 REST/OAuth</span><span class="chip">Banks PSD2</span><span class="chip new">SAP OData/RFC ✦</span><span class="chip">Stripe · e-Transport</span></div></div>
+      <div class="flow">↓ runs on ↓</div>
+      <div class="layer"><div class="layer-label">Platform<span>DevEx · Ops</span></div><div class="chips"><span class="chip">Docker · K8s (target)</span><span class="chip">GitHub Actions blue/green</span><span class="chip">Prometheus / Grafana</span><span class="chip">CPU now · GPU on demand</span><span class="chip">99.9% SLA (target)</span></div></div>
+    </div>
+    <p class="sec-sub" style="margin-top:14px">* ~130 module directories exist; <strong>maturity is unverified</strong> — some are production, some scaffolds. Sprint-41 audits this before H1 builds on them.</p>
+  </div>
+</section>
+
+<!-- SELF-EVOLUTION -->
+<section id="evo">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><div><h2>Self-evolving intelligence layer</h2><p class="sec-sub">A governed multi-agent system that improves the <em>platform</em> — researching regulation, drafting modules, hardening tests, watching ops. It is deliberately <strong>firewalled from the statutory execution path</strong>.</p></div></div>
+
+    <div class="callout warn" style="margin-bottom:24px">
+      <span class="ico">◆ FIREWALL</span>
+      <p><strong>Hard architectural boundary.</strong> Self-evolving agents may propose, research, draft code, and open PRs — they may <strong>never</strong> post a tax filing, alter a VAT rate, or approve a close. Every output touching compliance passes through deterministic validators <em>and</em> the human <code>romanian-tax-specialist</code> veto. Autonomy is scoped to the platform's own codebase, research, and monitoring — never a customer's ledger. This directly answers the AI-liability risk (§09).</p>
+    </div>
+
+    <div class="dom-grid">
+      <div class="dom violet"><div class="dom-top"><h3>CORAL</h3><span class="tag rnd">Custom Δ</span></div><p class="desc">Multi-agent self-evolution orchestrator — the conductor. Spawns, evaluates and retires specialist agents against fitness functions (tests pass, coverage up, latency down).</p><div class="count">Role: orchestration brain</div></div>
+      <div class="dom violet"><div class="dom-top"><h3>AutoResearchClaw</h3><span class="tag rnd">Custom Δ</span></div><p class="desc">Autonomous research agent (<code>researchclaw</code>). Watches ANAF / EU tax sources, summarises rule changes into structured diffs for the tax-specialist to ratify.</p><div class="count">Role: regulatory radar</div></div>
+      <div class="dom violet"><div class="dom-top"><h3>EvoAgentX</h3><span class="tag rnd">OSS Δ</span></div><p class="desc">Open framework for evolving agent workflows. Candidate engine for CORAL's evolution loop — mutate → evaluate → select on module-generation tasks.</p><div class="count">Role: evolution engine</div></div>
+      <div class="dom violet"><div class="dom-top"><h3>Hermes Agent</h3><span class="tag rnd">OSS Δ</span></div><p class="desc">Nous Research tool-using agent. Strong general executor for scoped build/refactor tasks under CORAL supervision.</p><div class="count">Role: builder agent</div></div>
+      <div class="dom violet"><div class="dom-top"><h3>ScienceClaw</h3><span class="tag rnd">OSS Δ</span></div><p class="desc">MIT research agent (lamm-mit). Hypothesis-driven — fits forecasting/anomaly model R&amp;D and controlled experiments on the platform's own data.</p><div class="count">Role: research scientist</div></div>
+      <div class="dom violet"><div class="dom-top"><h3>Xagent</h3><span class="tag rnd">Custom Δ</span></div><p class="desc">Trading &amp; scouting agent, repurposed as an <em>ops scout</em> — surfaces cost/perf regressions and integration health across services.</p><div class="count">Role: ops sentinel</div></div>
+    </div>
+
+    <div class="prose" style="margin-top:24px">
+      <p><strong>Maturity is honest:</strong> these are a mix of private prototypes (CORAL, AutoResearchClaw, Xagent) and early open-source research projects (EvoAgentX, Hermes, ScienceClaw, mercury-agent, Feynman). None is battle-tested in a regulated financial context. The layer therefore ships as a <strong>governed R&amp;D track</strong> (Horizon E) with staged autonomy gates — read-only → PR-proposing → auto-merge-behind-tests — never skipping straight to production authority. Complementary Claude-Code tooling (OneRedOak review/security workflows, curated skills libraries, an <code>llm-wiki</code>-style session→knowledge promotion) becomes the agents' shared toolbelt and memory.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPUTE -->
+<section id="compute">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><div><h2>Compute &amp; local-LLM strategy</h2><p class="sec-sub">Grounded in the actual server, not the aspiration. This is what runs where — and the model to start with today.</p></div></div>
+
+    <div class="callout warn" style="margin-bottom:22px">
+      <span class="ico">⚠ REALITY</span>
+      <p><strong>The current host has no GPU.</strong> It is an 8-core Intel i7-7700 (2017), 62 GB RAM, ~500 GB free. Ollama is installed but its model list is almost entirely <code>:cloud</code> (remote) — the only local weight file is a FLUX <em>image</em> model. Every "GPU acceleration" claim in prior docs is aspirational. The plan below works <em>today</em> on this box and scales when a GPU is provisioned.</p>
+    </div>
+
+    <div class="table-scroll" style="margin-bottom:22px">
+      <table>
+        <thead><tr><th>Workload</th><th>Runs where</th><th>Model / tool</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><th>Doc classify · PII redact · field extract · embeddings</th><td class="us">Local CPU</td><td>Qwen2.5-7B / Phi-4-mini / bge-m3 (GGUF via Ollama/llama.cpp)</td><td>High-volume, private, cheap; 5–15 tok/s is fine for async batch.</td></tr>
+          <tr><th>RAG copilot · Controlling Q&amp;A · summaries</th><td>Cloud API</td><td>Claude / Grok, or Ollama-Cloud GLM/DeepSeek/Qwen-coder already configured</td><td>Reasoning quality &amp; citation grounding matter; not local-CPU feasible.</td></tr>
+          <tr><th>Tax logic · agentic close · code generation</th><td>Cloud API + human gate</td><td>Frontier model + deterministic validators + tax-specialist veto</td><td>Correctness &amp; liability &gt; latency; never a small local model here.</td></tr>
+          <tr><th>Self-evolution agent brains</th><td>Cloud API (burst)</td><td>Frontier models via CORAL; GPU box rented per experiment</td><td>Heavy, bursty, sandboxed — pay only when evolving.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bet-grid">
+      <div class="bet"><div class="k">Start here</div><h3>Qwen2.5-14B-Instruct (Q4)</h3><p>The best general workhorse that fits this box (~9 GB, 62 GB RAM to spare). Pull via the installed Ollama today. Drop to Qwen2.5-Coder-7B or Phi-4-mini for speed. <em>Verify newer Qwen3 / GLM builds before committing.</em></p></div>
+      <div class="bet"><div class="k">Next</div><h3>Rent GPU on demand</h3><p>Hetzner GPU / cloud A100–H100 hourly for OCR fine-tunes, self-evolution runs and any interactive local frontier model. CapEx-free; provision per Horizon-2 need.</p></div>
+      <div class="bet"><div class="k">Keep</div><h3>Cloud API as the brain</h3><p>Reasoning, tax and agent orchestration stay on frontier APIs. Local models are the cheap, private, high-volume hands — not the head.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOMAINS -->
+<section id="domains">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><div><h2>Domain module map</h2><p class="sec-sub">~130 module directories in nine domains. <span style="color:var(--accent);font-weight:600">New ✦</span>, <span style="color:var(--amber);font-weight:600">Enhanced</span>, <span style="color:var(--violet);font-weight:600">R&amp;D Δ</span>. "Live" now means <em>present &amp; pending Sprint-41 maturity verification</em> — not a maturity guarantee.</p></div></div>
+    <div class="dom-grid">
+      <div class="dom"><div class="dom-top"><h3>Financial Core</h3><span class="tag audit">Audit S-41</span></div><ul><li>finance</li><li>accounting</li><li>invoices</li><li>bank-reconciliation</li><li>payments</li><li>billing</li></ul><div class="count">Statutory ledger · H1 depends on this being real</div></div>
+      <div class="dom"><div class="dom-top"><h3>Controlling ✦</h3><span class="tag new">New</span></div><ul><li>cost-centers</li><li>profit-centers</li><li>internal-orders</li><li>allocation-cycles</li><li>CO-PA margins</li><li>KPI cockpit</li></ul><div class="count">PoC scaffolded · SAP CO analog</div></div>
+      <div class="dom"><div class="dom-top"><h3>Compliance &amp; Tax</h3><span class="tag enh">Enhanced</span></div><ul><li>anaf</li><li>vat (21/11/9)</li><li>saga</li><li>saf-t / D406</li><li>e-Factura B2B+B2C</li><li>audit-trail</li></ul><div class="count">Legea 141/2025 · Order 1783/2021</div></div>
+      <div class="dom"><div class="dom-top"><h3>Data Migration ✦</h3><span class="tag new">New</span></div><ul><li>saga-import</li><li>sap-extract</li><li>mapping-studio</li><li>validation</li><li>dry-run</li></ul><div class="count">The #1 adoption blocker, productised</div></div>
+      <div class="dom"><div class="dom-top"><h3>Operations &amp; SCM</h3><span class="tag audit">Audit S-41</span></div><ul><li>inventory</li><li>warehouse</li><li>procurement</li><li>logistics</li><li>fleet</li><li>ecommerce</li></ul><div class="count">SAP S/4-style operations</div></div>
+      <div class="dom"><div class="dom-top"><h3>HR &amp; Payroll</h3><span class="tag audit">Audit S-41</span></div><ul><li>hr</li><li>payroll-saga</li><li>ats</li><li>hr-contracts</li><li>hse</li><li>lms</li></ul><div class="count">Revisal · SAF-T payroll</div></div>
+      <div class="dom"><div class="dom-top"><h3>Advisory ✦</h3><span class="tag new">New</span></div><ul><li>consulting +SAP/ERP</li><li>erp-selection</li><li>s4hana-migration</li><li>fractional-cfo</li><li>process-opt</li></ul><div class="count">Marketplace · 10 service types</div></div>
+      <div class="dom violet"><div class="dom-top"><h3>Work &amp; Delivery ✦</h3><span class="tag new">New</span></div><ul><li>ats-matching</li><li>gig-board</li><li>lms-training</li><li>coaching</li><li>delivery-workspaces</li></ul><div class="count">Marketplace + growth + workspaces</div></div>
+      <div class="dom violet"><div class="dom-top"><h3>Self-Evolution Δ</h3><span class="tag rnd">R&amp;D</span></div><ul><li>CORAL</li><li>researchclaw</li><li>evoagentx</li><li>agent-gateway</li><li>fitness-eval</li></ul><div class="count">Firewalled · Horizon E</div></div>
+      <div class="dom"><div class="dom-top"><h3>Platform &amp; Security</h3><span class="tag enh">Enhanced</span></div><ul><li>auth · mfa · gdpr</li><li>api-platform</li><li>webhooks</li><li>monitoring</li><li>tenant</li><li>soc2-controls</li></ul><div class="count">SOC 2 / ISO 27001 track</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section id="status">
+  <div class="wrap">
+    <div class="status reveal">
+      <span class="badge">✦ PoC delivered · build paused</span>
+      <div class="s-body">
+        <p style="margin:0 0 8px"><strong>Controlling module + 6 SAP/ERP consultancy packages are scaffolded and compiling clean</strong> — proof the blueprint is buildable. <code>src/controlling/</code> (cost/profit centers, internal orders, allocation cycles, CO-PA, KPI cockpit) + <code>consulting</code> extensions, registered in <code>app.module.ts</code>; <code>npm run build</code> → exit 0. Production container untouched (verified in a throwaway container).</p>
+        <p style="margin:0; font-size:.9rem; color:var(--ink-soft)">Not yet promoted: still in-memory, not persisted, not tested. Promotion is the first act of Sprint-42 — <em>after</em> the Sprint-41 maturity audit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><div><h2>Delivery roadmap</h2><p class="sec-sub">Two-week sprints, MoSCoW-prioritised, ≥1 ANAF task each (<span style="color:var(--amber);font-weight:600">amber</span>), 20% tech-debt reserve.</p></div></div>
+
+    <div class="callout info" style="margin-bottom:26px">
+      <span class="ico">◷ CAPACITY</span>
+      <p><strong>Read points as effort, not team-velocity.</strong> Delivery is <strong>AI-augmented solo</strong> (founder + Claude/agents), not a 6-person team. Sprint <em>owners</em> name the accountable expert <em>lens</em>, not headcount. Realistic throughput ≈ one sprint's "Must" items per fortnight; "Should/Could" absorb into later sprints when reality bites. Horizon dates assume a GPU is rented before Horizon 2.</p>
+    </div>
+
+    <!-- H0 -->
+    <div class="horizon">
+      <div class="h-head"><span class="h-code">HORIZON 0</span><h3 class="h-title">Ground Truth</h3><span class="h-when">Aug 2026 · Sprint 41</span><p class="h-theme">Before building on 130 modules, find out which of them are real. No new features until the ground is mapped.</p></div>
+      <div class="sprints">
+        <div class="sprint audit"><div class="sprint-top"><span class="sprint-id">S-41</span><span class="sprint-goal">Module maturity audit + compute baseline</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Classify every module: production / stub / empty; publish a heatmap</li>
+          <li><span class="moscow m-must">Must</span> Verify backend boots clean + Swagger inventory of real endpoints</li>
+          <li><span class="moscow m-must">Must</span> Stand up local Qwen2.5 via Ollama; wire embeddings + RAG smoke test</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Audit live coverage of e-Factura B2C (already mandatory) &amp; SAF-T</li></ul>
+          <div class="sprint-foot"><span>Foundation</span><span>erp-architect · devops</span></div></div>
+      </div>
+    </div>
+
+    <!-- H1 -->
+    <div class="horizon">
+      <div class="h-head"><span class="h-code">HORIZON 1</span><h3 class="h-title">Foundation &amp; Controlling</h3><span class="h-when">Q3–Q4 2026 · Sprints 42–46</span><p class="h-theme">Ship management accounting, the advisory marketplace and productised migration on a verified compliance core.</p></div>
+      <div class="sprints">
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-42</span><span class="sprint-goal">Controlling core → production</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Promote PoC: persist CO model to Prisma, add tests</li>
+          <li><span class="moscow m-must">Must</span> CO-CCA + EC-PCA hierarchy &amp; variance engine</li>
+          <li><span class="moscow m-should">Should</span> Cost elements mapped to RO class-6 accounts</li>
+          <li class="anaf"><span class="moscow">ANAF</span> SAF-T D406 XSD validator refresh (monthly + quarterly)</li></ul>
+          <div class="sprint-foot"><span>Must≈21</span><span>erp-architect · financial-accountant</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-43</span><span class="sprint-goal">CO-PA, internal orders, allocation</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Contribution-margin (CO-PA) by segment/product</li>
+          <li><span class="moscow m-must">Must</span> Internal orders + assessment/distribution cycles</li>
+          <li><span class="moscow m-should">Should</span> Post allocations as secondary CO entries</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Close any e-Factura <b>B2C</b> coverage gaps found in S-41</li></ul>
+          <div class="sprint-foot"><span>Must≈26</span><span>financial-accountant · erp-architect</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-44</span><span class="sprint-goal">SAP/ERP consultancy marketplace</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Booking → Stripe → consultant portal flow</li>
+          <li><span class="moscow m-must">Must</span> 10 SAP/ERP service types live incl. fractional-CFO</li>
+          <li><span class="moscow m-could">Could</span> Consultant availability &amp; calendar sync</li>
+          <li class="anaf"><span class="moscow">ANAF</span> CIF/CUI validation hardening + rate-limit backoff</li></ul>
+          <div class="sprint-foot"><span>Must≈23</span><span>erp-architect · frontend</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-45</span><span class="sprint-goal">Controlling cockpit (frontend)</span></div><ul>
+          <li><span class="moscow m-must">Must</span> KPI cockpit + variance RAG dashboards (Recharts)</li>
+          <li><span class="moscow m-must">Must</span> Executive summary + alerts, RO/EN</li>
+          <li class="anaf"><span class="moscow">ANAF</span> VAT <b>21/11/9-housing</b> date-aware engine audit + tests</li></ul>
+          <div class="sprint-foot"><span>Must≈24</span><span>frontend · romanian-tax-specialist</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-46</span><span class="sprint-goal">Data-migration studio</span></div><ul>
+          <li><span class="moscow m-must">Must</span> SAGA import + field-mapping studio + dry-run validation</li>
+          <li><span class="moscow m-should">Should</span> Reconciliation report pre/post migration</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Migrated data re-validates against SAF-T schema</li></ul>
+          <div class="sprint-foot"><span>Must≈25</span><span>erp-architect · financial-accountant</span></div></div>
+      </div>
+    </div>
+
+    <!-- H2 -->
+    <div class="horizon">
+      <div class="h-head"><span class="h-code">HORIZON 2</span><h3 class="h-title">AI-Native &amp; Consolidation</h3><span class="h-when">Q1 2027 · Sprints 47–51</span><p class="h-theme">Turn data into decisions — consolidation (multi-sprint), a grounded copilot, and forecasting. GPU provisioned here.</p></div>
+      <div class="sprints">
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-47/48</span><span class="sprint-goal">Multi-entity consolidation (2 sprints)</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Group ledger + intercompany elimination</li>
+          <li><span class="moscow m-must">Must</span> Minority interest + multi-currency translation (CTA)</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Consolidated SAF-T submission chaining</li></ul>
+          <div class="sprint-foot"><span>Epic · re-scoped</span><span>financial-accountant</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-49</span><span class="sprint-goal">Grounded financial copilot GA</span></div><ul>
+          <li><span class="moscow m-must">Must</span> RAG over ledger + docs; cites source postings</li>
+          <li><span class="moscow m-must">Must</span> Guardrails + mandatory "not tax advice" gate</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Answers grounded in current 21/11/9 rules</li></ul>
+          <div class="sprint-foot"><span>Must≈25</span><span>erp-architect · security</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-50</span><span class="sprint-goal">Forecasting &amp; anomaly</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Prophet cash-flow forecast w/ confidence bands</li>
+          <li><span class="moscow m-should">Should</span> Anomaly alerts into cockpit</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Deadline auto-alerts (D406, e-Factura)</li></ul>
+          <div class="sprint-foot"><span>Must≈22</span><span>ml · financial-accountant</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-51</span><span class="sprint-goal">OCR &amp; document intelligence</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Invoice extraction &gt;95% RO formats (GPU fine-tune)</li>
+          <li><span class="moscow m-could">Could</span> Auto-posting suggestions, human-in-loop</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Extracted data → e-Factura UBL 2.1 draft</li></ul>
+          <div class="sprint-foot"><span>Must≈24</span><span>ml · erp-architect</span></div></div>
+      </div>
+    </div>
+
+    <!-- HSEC -->
+    <div class="horizon">
+      <div class="h-head"><span class="h-code">HORIZON S</span><h3 class="h-title">Security &amp; Certification</h3><span class="h-when">Parallel · Q1–Q2 2027</span><p class="h-theme">Runs alongside H2. Enterprises will not buy an unaudited financial system — this is a sales gate, not a nicety.</p></div>
+      <div class="sprints">
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-SEC1</span><span class="sprint-goal">SOC 2 Type II readiness</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Control mapping, access reviews, evidence automation</li>
+          <li><span class="moscow m-must">Must</span> External pen-test + remediation</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Audit-log immutability meets 10yr tax retention</li></ul>
+          <div class="sprint-foot"><span>Sales gate</span><span>security-engineer ◆</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-SEC2</span><span class="sprint-goal">ISO 27001 + GDPR hardening</span></div><ul>
+          <li><span class="moscow m-must">Must</span> ISMS, encryption at rest/in transit, RBAC least-priv</li>
+          <li><span class="moscow m-should">Should</span> DPA templates + data-residency (EU) controls</li>
+          <li class="anaf"><span class="moscow">ANAF</span> SPV credential vaulting + rotation</li></ul>
+          <div class="sprint-foot"><span>Sales gate</span><span>security-engineer ◆</span></div></div>
+      </div>
+    </div>
+
+    <!-- H3 -->
+    <div class="horizon">
+      <div class="h-head"><span class="h-code">HORIZON 3</span><h3 class="h-title">Enterprise &amp; Global</h3><span class="h-when">Q2–Q3 2027 · Sprints 52–55</span><p class="h-theme">Cross the border: IFRS, multi-jurisdiction tax, and the SAP connector that lets us sit next to incumbents.</p></div>
+      <div class="sprints">
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-52</span><span class="sprint-goal">IFRS &amp; multi-GAAP ledger</span></div><ul><li><span class="moscow m-must">Must</span> Parallel ledgers (RO stat + IFRS)</li><li><span class="moscow m-should">Should</span> Automated GAAP adjustment postings</li><li class="anaf"><span class="moscow">ANAF</span> Statutory ↔ IFRS reconciliation report</li></ul><div class="sprint-foot"><span>Must≈27</span><span>financial-accountant</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-53</span><span class="sprint-goal">SAP connector</span></div><ul><li><span class="moscow m-must">Must</span> OData/RFC bi-directional sync (FI/CO)</li><li><span class="moscow m-could">Could</span> S/4HANA migration templates</li><li class="anaf"><span class="moscow">ANAF</span> Map SAP tax codes → RO VAT scheme</li></ul><div class="sprint-foot"><span>Must≈26</span><span>erp-architect · integration</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-54</span><span class="sprint-goal">International tax packs</span></div><ul><li><span class="moscow m-must">Must</span> EU VAT/OSS, reverse-charge auto-detect</li><li><span class="moscow m-should">Should</span> DE/FR/ES localisation packs</li><li class="anaf"><span class="moscow">ANAF</span> Intrastat + VIES validation</li></ul><div class="sprint-foot"><span>Must≈25</span><span>romanian-tax-specialist</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">S-55</span><span class="sprint-goal">e-Transport &amp; logistics compliance</span></div><ul><li><span class="moscow m-must">Must</span> e-Transport UIT generation + geo tracking</li><li><span class="moscow m-could">Could</span> Tachograph AI analysis</li><li class="anaf"><span class="moscow">ANAF</span> e-Transport API submission + status poll</li></ul><div class="sprint-foot"><span>Must≈23</span><span>integration · operations</span></div></div>
+      </div>
+    </div>
+
+    <!-- HE -->
+    <div class="horizon">
+      <div class="h-head evo"><span class="h-code">HORIZON E</span><h3 class="h-title">Self-Evolution (governed R&amp;D)</h3><span class="h-when">Continuous · gated from Q4 2026</span><p class="h-theme">Runs as a firewalled side-track, never on the critical path. Autonomy earned in stages, never granted.</p></div>
+      <div class="sprints">
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">E-1</span><span class="sprint-goal">Gate 1 — read-only</span></div><ul><li><span class="moscow m-must">Must</span> AutoResearchClaw regulatory radar → tax-specialist inbox</li><li><span class="moscow m-must">Must</span> Xagent ops sentinel: cost/perf/health reports</li><li class="anaf"><span class="moscow">ANAF</span> Rule-change diffs ratified by human before use</li></ul><div class="sprint-foot"><span>No write access</span><span>ml · security ◆</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">E-2</span><span class="sprint-goal">Gate 2 — PR-proposing</span></div><ul><li><span class="moscow m-must">Must</span> CORAL + EvoAgentX draft modules/tests as PRs only</li><li><span class="moscow m-must">Must</span> Fitness eval: tests+coverage+lint gate every PR</li><li class="anaf"><span class="moscow">ANAF</span> Compliance-touching PRs auto-flagged for veto</li></ul><div class="sprint-foot"><span>Human merges</span><span>erp-architect · security ◆</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">E-3</span><span class="sprint-goal">Gate 3 — auto-merge-behind-tests</span></div><ul><li><span class="moscow m-must">Must</span> Auto-merge only for non-statutory, fully-tested changes</li><li><span class="moscow m-should">Should</span> Nightly self-improvement loop w/ rollback</li><li class="anaf"><span class="moscow">ANAF</span> Statutory path remains human-only, forever</li></ul><div class="sprint-foot"><span>Scoped autonomy</span><span>full consortium ◆</span></div></div>
+      </div>
+    </div>
+
+    <!-- HW -->
+    <div class="horizon">
+      <div class="h-head evo"><span class="h-code">HORIZON W</span><h3 class="h-title">Work &amp; Delivery Platform</h3><span class="h-when">Parallel · tools now → marketplace H2 → workspaces H2–H3</span><p class="h-theme">The acquisition &amp; retention engine: free tools pull members in, the marketplace puts them to work, delivery workspaces close the loop.</p></div>
+      <div class="sprints">
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">W-0</span><span class="sprint-goal">Free-tools funnel (now)</span></div><ul>
+          <li><span class="moscow m-must">Must</span> CUI/VAT validator (free ANAF WS) + VAT/payroll calculators</li>
+          <li><span class="moscow m-must">Must</span> Free invoice + e-Factura XML generator (capped)</li>
+          <li class="anaf"><span class="moscow">ANAF</span> SAF-T / e-Factura validator (lands accountants)</li></ul>
+          <div class="sprint-foot"><span>Top of funnel</span><span>frontend · erp-architect</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">W-1</span><span class="sprint-goal">Talent marketplace MVP</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Jobs/gigs + profiles (resume, availability, rates) — reuse ats/freelancer</li>
+          <li><span class="moscow m-must">Must</span> Matching v1: hard filters + local embeddings</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Gig accept → contract + e-Factura wiring</li></ul>
+          <div class="sprint-foot"><span>Finance niche first</span><span>erp-architect · frontend</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">W-2</span><span class="sprint-goal">Growth layer</span></div><ul>
+          <li><span class="moscow m-must">Must</span> Career trajectory + LMS training recommendations</li>
+          <li><span class="moscow m-should">Should</span> Coaching booking (reuse consulting engine)</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Coach/training invoices via e-Factura</li></ul>
+          <div class="sprint-foot"><span>Retention / LTV</span><span>ml · frontend</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">W-3</span><span class="sprint-goal">Delivery workspaces</span></div><ul>
+          <li><span class="moscow m-must">Must</span> v1 dev container + collaboration + delivery gate</li>
+          <li><span class="moscow m-should">Should</span> v2 GPU pod via RunPod (pass-through billing)</li>
+          <li class="anaf"><span class="moscow">ANAF</span> Delivery approved → escrow release → e-Factura</li></ul>
+          <div class="sprint-foot"><span>Premium · security ◆</span><span>devops · security</span></div></div>
+      </div>
+    </div>
+
+    <!-- H4/5 condensed -->
+    <div class="horizon">
+      <div class="h-head"><span class="h-code">HORIZON 4–5</span><h3 class="h-title">Autonomous Ops → Ecosystem &amp; Scale</h3><span class="h-when">H2 2027 → 2030</span><p class="h-theme">Agentic close, predictive compliance, self-serve integration hub; then marketplace, reseller/accountant network, EU expansion &amp; 10k-concurrent scale.</p></div>
+      <div class="sprints">
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">H4</span><span class="sprint-goal">Autonomous operations</span></div><ul><li><span class="moscow m-must">Must</span> Agentic month-end close (human approval gates)</li><li><span class="moscow m-must">Must</span> Predictive compliance calendar + escalations</li><li><span class="moscow m-should">Should</span> Self-serve integration hub; 1,000 concurrent &lt;5%</li></ul><div class="sprint-foot"><span>Epic train</span><span>ml · devops</span></div></div>
+        <div class="sprint"><div class="sprint-top"><span class="sprint-id">H5</span><span class="sprint-goal">Ecosystem &amp; scale</span></div><ul><li><span class="moscow m-must">Must</span> API platform GA + app marketplace (rev-share)</li><li><span class="moscow m-must">Must</span> Accountant reseller / white-label tiers</li><li><span class="moscow m-should">Should</span> EU compliance packs; 10,000 concurrent</li></ul><div class="sprint-foot"><span>Epic train</span><span>developer · partners</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GTM -->
+<section id="gtm">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span><div><h2>Go-to-market &amp; business model</h2><p class="sec-sub">The tech is necessary, not sufficient. #1 is won through the channel — and in Romanian accounting, the channel is the accountant.</p></div></div>
+    <div class="bet-grid" style="margin-bottom:22px">
+      <div class="bet"><div class="k">Wedge</div><h3>Accountant-led distribution</h3><p>One accounting firm serves 50–200 SMBs. Win the firm with multi-client filing + white-label, and you acquire its whole book at near-zero marginal CAC. This is the flywheel, not paid ads.</p></div>
+      <div class="bet"><div class="k">Land</div><h3>Free compliance, paid control</h3><p>Free tier: e-Factura + SAF-T + OCR (the painful mandatory stuff). Paid: Pro 49 / Business 149 RON/mo for Controlling, HR, consolidation. Compliance is the hook; control is the revenue.</p></div>
+      <div class="bet"><div class="k">Expand</div><h3>Three revenue lines</h3><p>SaaS subscription + consultancy marketplace take-rate + usage (API, bulk filing, GPU jobs). NRR &gt;120% by climbing Pro→Business→advisory within each account.</p></div>
+    </div>
+    <div class="prose">
+      <p><strong>Defensibility (the real moat):</strong> not "we did compliance first" — SAP can localise. It is <strong>(1)</strong> the accountant network and its switching cost, <strong>(2)</strong> accumulated ledger + document data that trains better OCR/forecasts than anyone else has for RO SMBs, and <strong>(3)</strong> the self-evolution layer compounding feature velocity. Each quarter the gap widens; that is what makes #1 durable rather than merely first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK & DELIVERY -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">09</span><div><h2>Work &amp; delivery platform</h2><p class="sec-sub">Beyond running the books: help members <em>find work, grow, and deliver it</em> — then get paid compliantly, without leaving the platform. ~70% assembles from modules that already exist.</p></div></div>
+
+    <div class="callout info" style="margin-bottom:24px">
+      <span class="ico">↻ CLOSED LOOP</span>
+      <p><strong>The loop no RO competitor closes:</strong> match → contract auto-drafted → <strong>delivery workspace provisioned</strong> → client + team collaborate → deliver in-platform → client approves milestone → <strong>escrow releases + e-Factura issued</strong> → income &amp; tax tracked. Upwork/eJobs stop at "matched"; delivery, IP, review and payment stay native here.</p>
+    </div>
+
+    <div class="bet-grid" style="margin-bottom:22px">
+      <div class="bet"><div class="k">01</div><h3>Talent &amp; gig marketplace</h3><p>Post jobs/gigs; profiles carry resume, availability, skills &amp; rates. Matching = hard filters + local embeddings (free, on-box). Reuses <code>ats</code>, <code>freelancer</code>, <code>crm</code>.</p></div>
+      <div class="bet"><div class="k">02</div><h3>Growth layer</h3><p>Career trajectories (skill-gap → next role) → recommend <strong>training</strong> (the <code>lms</code> already exists, 20 files) → book a <strong>coach</strong> (reuses the <code>consulting</code> booking engine). Flywheel: match → train → coach → re-match at a higher rate.</p></div>
+      <div class="bet"><div class="k">03</div><h3>Delivery workspaces</h3><p>Per-project dev container / shared VM / <strong>GPU pod</strong> where client + freelancers/teams connect and build. Provisioned via your proven RunPod flow; <strong>compute is pass-through</strong> to the client — near-zero cost to the platform.</p></div>
+    </div>
+
+    <div class="table-scroll" style="margin-bottom:20px">
+      <table>
+        <thead><tr><th>Capability</th><th>Reuses (already present)</th><th>Serves</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr><th>Job/gig board + profiles</th><td>ats · freelancer · crm</td><td>Freelancers, SMBs</td><td><span class="sev lo">Low</span></td></tr>
+          <tr><th>Matching engine (v1)</th><td>ats + local bge-m3 embeddings</td><td>Both sides</td><td><span class="sev lo">Low</span></td></tr>
+          <tr><th>Career trajectory + training</th><td>lms (20 files) + LLM</td><td>Freelancers</td><td><span class="sev md">Med</span></td></tr>
+          <tr><th>Coaching (book a mentor)</th><td>consulting booking engine</td><td>Freelancers, coaches</td><td><span class="sev lo">Low</span></td></tr>
+          <tr><th>Workspace — dev container</th><td>collaboration · realtime · storage · project-mgmt</td><td>Dev / automation gigs</td><td><span class="sev md">Med</span></td></tr>
+          <tr><th>Workspace — GPU pod</th><td>cloud-infrastructure + RunPod / runpodctl</td><td>ML / data / render gigs</td><td><span class="sev lo">Low*</span></td></tr>
+          <tr><th>Delivery → contract → e-Factura → tax</th><td>contracts · invoices · payments · vat</td><td>Everyone</td><td><span class="sev md">Med</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p><strong>Monetization (four lines, low marginal cost):</strong> gig take-rate / lead fee · coaching take-rate · training subscriptions · workspace compute pass-through + platform fee — and the real prize, converting marketplace members onto paid invoicing/ERP tiers.</p>
+      <p><strong>Cold-start cheat:</strong> you already build a funnel of both sides — freelancers/PFAs arriving for free invoicing, SMBs for the ERP. Seed the marketplace from your own base instead of buying supply and demand. <strong>Wedge:</strong> launch the niche you can own — RO <em>finance / accounting / bookkeeping</em> freelancers, where you have the audience, the LMS finance courses, and the compliance credibility — then widen.</p>
+      <p><strong>Honest risks:</strong> two-sided cold-start (mitigated above); workspace <strong>isolation &amp; IP security</strong> (security-engineer veto — per-project isolation, teardown wipes data); GDPR data-residency (EU workspaces + DPA); idle-compute cost (auto-stop + budget caps — the RunPod lesson); and scope — only technical/compute gigs need a workspace, so it ships as a <strong>premium tier</strong>, not the entry point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">10</span><div><h2>Risk register</h2><p class="sec-sub">The risks that actually threaten this plan — with the owner accountable for each. Reviewed every sprint.</p></div></div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Risk</th><th>Sev</th><th>Mitigation</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><th>AI gives wrong tax/close guidance → liability</th><td><span class="sev hi">High</span></td><td>Firewall (§04): human veto + deterministic validators + "not tax advice" gate + PI insurance + AI-decision audit trail.</td><td>tax-specialist ◆ · security ◆</td></tr>
+          <tr><th>130 modules are stubs → H1 built on sand</th><td><span class="sev hi">High</span></td><td>Sprint-41 maturity audit gates all H1 work; no feature ships on an unverified dependency.</td><td>erp-architect</td></tr>
+          <tr><th>Bus-factor = 1 (solo delivery)</th><td><span class="sev hi">High</span></td><td>Documented in project-ledger; self-evolution layer + AI reduce keyperson load; hiring plan tied to revenue.</td><td>founder</td></tr>
+          <tr><th>Regulation shifts under us (ViDA, ANAF)</th><td><span class="sev md">Med</span></td><td>AutoResearchClaw radar + tax-specialist veto; regulatory-as-code isolates change to config.</td><td>tax-specialist ◆</td></tr>
+          <tr><th>No GPU → AI roadmap stalls</th><td><span class="sev md">Med</span></td><td>Hybrid local+cloud (§05); rent GPU on demand before H2; nothing on critical path needs on-box GPU today.</td><td>devops</td></tr>
+          <tr><th>Incumbent (SAP/SAGA) adds AI + localises</th><td><span class="sev md">Med</span></td><td>Compete on channel + data moat + price, not features; move faster via self-evolution.</td><td>founder</td></tr>
+          <tr><th>Data-migration failure blocks onboarding</th><td><span class="sev md">Med</span></td><td>Productised migration studio (S-46) with dry-run + reconciliation before cutover.</td><td>erp-architect</td></tr>
+          <tr><th>Self-evolving agents cause regressions</th><td><span class="sev lo">Low</span></td><td>Staged autonomy gates; fitness eval; auto-merge only non-statutory + fully-tested; instant rollback.</td><td>security ◆</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="kpi">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">11</span><div><h2>Success metrics</h2><p class="sec-sub">Now with baselines and leading indicators — every target is falsifiable, not aspirational.</p></div></div>
+    <div class="kpi-grid">
+      <div class="kpi north"><div class="lab">North star</div><div class="val">100k</div><div class="from">active SMBs by 2030</div><div class="base">baseline: measure at S-41</div></div>
+      <div class="kpi"><div class="lab">Leading: activation</div><div class="val">&gt;40%</div><div class="from">signup → first filing in 7 days</div><div class="base">predicts the North Star</div></div>
+      <div class="kpi"><div class="lab">Leading: WAU</div><div class="val">↑ w/w</div><div class="from">weekly active orgs</div><div class="base">retention signal</div></div>
+      <div class="kpi"><div class="lab">Filing success</div><div class="val">100%</div><div class="from">D406 / e-Factura on time</div><div class="base">guardrail</div></div>
+      <div class="kpi"><div class="lab">API p95</div><div class="val">&lt;200ms</div><div class="from">at 100 concurrent</div><div class="base">baseline TBD S-41</div></div>
+      <div class="kpi"><div class="lab">Test coverage</div><div class="val">≥80%</div><div class="from">90% on business logic</div><div class="base">measure at S-41</div></div>
+      <div class="kpi"><div class="lab">Time-to-close</div><div class="val">−70%</div><div class="from">vs manual baseline</div><div class="base">baseline: capture in H1</div></div>
+      <div class="kpi"><div class="lab">Net revenue retention</div><div class="val">&gt;120%</div><div class="from">Pro→Business→advisory</div><div class="base">cohort at first 50 orgs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section id="compliance">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">12</span><div><h2>Compliance cadence</h2><p class="sec-sub">Verified against live sources this session. The <span style="color:var(--crit);font-weight:600">romanian-tax-specialist</span> holds absolute veto on anything touching these.</p></div></div>
+    <div class="timeline">
+      <div class="tl"><div class="tl-date">Since Jan 2024</div><div class="tl-body"><strong>e-Factura B2B/B2G mandatory</strong><span>SPV in RO_CIUS UBL 2.1, uploaded within 5 working days, DUKIntegrator-validated.</span></div></div>
+      <div class="tl"><div class="tl-date">Since Jan 2025</div><div class="tl-body"><strong>e-Factura B2C mandatory <span class="corrected">▲ corrected</span></strong><span>Already required (penalty grace ended 1 Jul 2025). v2.0 wrongly treated this as future work — it is a coverage gap-audit, not a build-ahead.</span></div></div>
+      <div class="tl"><div class="tl-date">Since Jan 2025</div><div class="tl-body"><strong>SAF-T D406 <span class="corrected">▲ corrected</span></strong><span>Monthly <em>or quarterly</em> by VAT period + annual fixed-assets file + on-request inventory. Order 1783/2021; files &lt;500MB, XSD-valid.</span></div></div>
+      <div class="tl"><div class="tl-date">Since Aug 2025</div><div class="tl-body"><strong>VAT reform — Legea 141/2025 <span class="corrected">▲ refined</span></strong><span>Standard 19%→21%, reduced consolidated to 11% — <em>but housing stays 9% transitionally until 1 Aug 2026</em>. Engine must model 21/11/9.</span></div></div>
+      <div class="tl"><div class="tl-date">Through 2026</div><div class="tl-body"><strong>e-Transport tightening</strong><span>UIT enforcement expands — Horizon 3 delivery target.</span></div></div>
+      <div class="tl"><div class="tl-date">2027 →</div><div class="tl-body"><strong>EU-wide ViDA &amp; digital reporting</strong><span>VAT in the Digital Age harmonises e-invoicing across the EU — our per-jurisdiction engine is the expansion vehicle.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section id="gov">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">13</span><div><h2>Delivery governance</h2><p class="sec-sub">Accountable expert lenses. Vetoes are absolute within their domain — they cannot be overridden by velocity or by an agent.</p></div></div>
+    <div class="cons-grid">
+      <div class="role"><div class="r-name">Romanian Tax Specialist</div><div class="r-veto">◆ absolute veto · tax logic</div><p>ANAF, e-Factura, VAT, SAF-T. Ratifies every compliance-touching change — human, never an agent.</p></div>
+      <div class="role"><div class="r-name">Security Engineer</div><div class="r-veto">◆ veto · data, access &amp; agents</div><p>GDPR, SOC 2/ISO 27001, encryption, RBAC. Owns the self-evolution firewall &amp; autonomy gates.</p></div>
+      <div class="role"><div class="r-name">Financial Accountant</div><p>Accounting standards, consolidation, reports, immutable audit trails.</p></div>
+      <div class="role"><div class="r-name">ERP Architect</div><p>NestJS modules, API contracts, event bus, database schema, migration.</p></div>
+      <div class="role"><div class="r-name">Frontend Engineer</div><p>Next.js cockpits, UX, WCAG AA accessibility, mobile-first.</p></div>
+      <div class="role"><div class="r-name">DevOps / ML</div><p>Docker/K8s, blue-green, observability, local+cloud model ops, GPU provisioning.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="approve reveal">
+      <h2>Review — approve v3.1, or request changes?</h2>
+      <p>No further build proceeds until you sign off. On approval we open <strong>Horizon 0 / Sprint 41</strong> (the maturity audit) — the honest first step — then promote the Controlling PoC in Sprint 42.</p>
+      <div class="opts">
+        <span class="opt">✓ Approve v3.1 → start S-41 audit</span>
+        <span class="opt">✎ Approve with changes</span>
+        <span class="opt">↻ Re-scope a horizon</span>
+      </div>
+    </div>
+    <p class="foot-meta">DocumentIulia.ro · Blueprint v3.1 · reality-corrected · erp-compliance-team consortium · logged to project-ledger</p>
+  </div>
+</footer>
+
+</body></html>
