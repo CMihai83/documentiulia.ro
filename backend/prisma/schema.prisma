@@ -3962,3 +3962,71 @@ model CmpBannerConfig {
   updatedAt     DateTime @updatedAt
   createdAt     DateTime @default(now())
 }
+
+// ---------------------------------------------------------------------------
+// W-1 (Blueprint §09 / REQ-003) — Delivery Workspaces. Orchestration layer only:
+// no live/paid provisioning in this sprint; RunPod driver is env-gated.
+// ---------------------------------------------------------------------------
+
+model Workspace {
+  id              String    @id @default(cuid())
+  orgId           String?
+  createdBy       String
+  engagementId    String?
+  name            String
+  kind            String    @default("dev_container") // dev_container | vm | gpu_pod
+  driver          String    @default("mock")          // mock | local_docker | runpod
+  status          String    @default("requested")     // requested|provisioning|running|stopped|destroyed|error
+  spec            Json?
+  connectInfo     Json?
+  budgetCapEur    Decimal   @default(25) @db.Decimal(10, 2)
+  spentEur        Decimal   @default(0) @db.Decimal(10, 2)
+  autoStopMinutes Int       @default(60)
+  lastActiveAt    DateTime  @default(now())
+  lastBilledAt    DateTime?
+  startedAt       DateTime?
+  stoppedAt       DateTime?
+  destroyedAt     DateTime?
+  containerRef    String?
+  volumeRef       String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  events          WorkspaceEvent[]
+  milestones      Milestone[]
+
+  @@index([createdBy])
+  @@index([engagementId])
+  @@index([status])
+}
+
+/// Immutable lifecycle log — no update/delete path exists in code.
+model WorkspaceEvent {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  type        String
+  payload     Json?
+  at          DateTime  @default(now())
+
+  @@index([workspaceId, at])
+}
+
+model Milestone {
+  id              String     @id @default(cuid())
+  engagementId    String
+  workspaceId     String?
+  workspace       Workspace? @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
+  title           String
+  amountEur       Decimal    @db.Decimal(10, 2)
+  status          String     @default("pending") // pending | submitted | approved | released
+  deliverableNote String?
+  submittedAt     DateTime?
+  approvedAt      DateTime?
+  releasedAt      DateTime?
+  invoiceId       String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  @@index([engagementId])
+  @@index([status])
+}
