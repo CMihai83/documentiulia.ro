@@ -1,0 +1,31 @@
+# DocumentIulia — Requirements / Requests Log
+
+Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
+Total: 24 · logged: 1 · planned: 3 · in_progress: 3 · shipped: 15 · parked: 2 · rejected: 0
+
+| ID | Date | Status | Request | Links |
+|---|---|---|---|---|
+| REQ-001 | 2025-12-06 | **in_progress** | Build DocumentIulia.ro: AI ERP/accounting combining SAGA+OneStream+SAP, RO compliance (VAT 21/11, SAF-T D406, e-Factura), freemium, Grok API | CLAUDE.md |
+| REQ-002 | 2026-07-06 | **shipped** | Blueprint v2->v3.1 + 5-horizon roadmap incl. Work & Delivery Platform pillar (section 09) | docs/blueprint/PLATFORM-BLUEPRINT-v3.1.html |
+| REQ-003 | 2026-07-06 | **planned** | Module where customers and freelancers can work in VMs (delivery workspaces: dev container / shared VM / GPU pod, RunPod, escrow+e-Factura l… | Blueprint §09 W-3,docs/blueprint/REQUIREMENTS-COVERAGE.md |
+| REQ-004 | 2026-07-06 | **in_progress** | W-0 free-tools funnel: CUI validator, VAT calc, salary calc, free invoice+e-Factura XML, SAF-T validator | SPRINT-PLAN-W0,worker running |
+| REQ-005 | 2026-07-07 | **shipped** | Full GDPR module: extensive research + blueprint as external product AND internal compliance | GDPR-A,S-61 GDPR-EXT MVP,PR#23 |
+| REQ-006 | 2026-07-07 | **shipped** | Start with GDPR critical blockers | GDPR-A,PR#25-28 |
+| REQ-007 | 2026-07-07 | **shipped** | Business Simulator v2 / Expert-Growth platform research + plan; approved order SIM->BC->FND->EXP | S-47..S-57 |
+| REQ-008 | 2026-07-07 | **shipped** | All pages (templates/simulator/courses) accessible ONLY to registered accounts, gated by subscription level; fix the 4 test credentials | PR#30,PR#31,TierGuard |
+| REQ-009 | 2026-07-07 | **shipped** | Simulator business cases with actual tenant data is OK now (login-gated) — integrate per initial research (mirror mode) | simv2.calibration service-delivery change |
+| REQ-010 | 2026-07-08 | **shipped** | Tier-UX follow-ups: sidebar hiding, upgrade prompt on 403, subscription page | PR#32 |
+| REQ-011 | 2026-07-08 | **parked** | Skip/postpone Grok advisor (S-52) | SPRINT-PLAN-S52 (resumable) |
+| REQ-012 | 2026-07-08 | **shipped** | Start FND epic (EU funds) | S-53,S-54 |
+| REQ-013 | 2026-07-08 | **shipped** | Implement all of planning-audit Finding 1 (BC gap) + external GDPR from Finding 2 | S-58,S-59,S-60,S-61 |
+| REQ-014 | 2026-07-08 | **shipped** | Deploy multiple agents in parallel on independent items | S-59+S-61+follow-ups parallel batch; module-ownership pattern |
+| REQ-015 | 2026-07-08 | **shipped** | Production/live-site error logger: log any error when clicking/using the site, like Chrome/Edge DevTools console | /dashboard/admin/error-logs,ClientErrorLog |
+| REQ-016 | 2026-07-08 | **shipped** | Review: what would it take to bring the platform 2 levels up | Level+1/+2 report (chat) |
+| REQ-017 | 2026-07-09 | **shipped** | Chronological implementation-requirements audit; user flagged missing VM module -> search all sources | docs/blueprint/REQUIREMENTS-COVERAGE.md |
+| REQ-018 | 2026-07-09 | **shipped** | Give me all horizons blueprints | docs/blueprint/HORIZONS.md |
+| REQ-019 | 2026-07-09 | **in_progress** | Launch W-0 | W-0 sprint active |
+| REQ-020 | 2026-07-09 | **shipped** | Build a requirements/requests logger for ALL documentiulia work, mandatory across sessions | scripts/reqlog.py,docs/requirements/ |
+| REQ-021 | 2026-07-07 | **parked** | Stripe live keys -> real payments (DOC-44-2 + marketplace + subscriptions) | DOC-44-2 |
+| REQ-022 | 2026-07-08 | **logged** | User must save printed keys: ENCRYPTION_MASTER_KEY, CREDENTIAL_SIGNING_KEY, PEER_REVIEW_HMAC_KEY; configure BACKUP_REMOTE; rotate RunPod+xAI… | GDPR-A,S-56 |
+| REQ-023 | 2026-07-06 | **planned** | Financial consolidation (OneStream pillar, blueprint H2) — approved requirement, never scheduled | Blueprint §02/§07 |
+| REQ-024 | 2026-07-06 | **planned** | Accountant channel: multi-client filing + white-label for firms (GTM wedge) | Blueprint §08 |
