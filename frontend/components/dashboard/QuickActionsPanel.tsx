@@ -64,7 +64,7 @@ const QUICK_ACTIONS: QuickAction[] = [
     label: 'Trimite e-Factura',
     description: 'SPV ANAF direct',
     icon: <Send className="w-5 h-5" />,
-    href: '/dashboard/efactura',
+    href: '/dashboard/e-invoice',
     color: 'bg-orange-500',
     category: 'compliance',
   },

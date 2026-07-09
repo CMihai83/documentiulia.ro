@@ -224,6 +224,7 @@ const hrefToModuleId: Record<string, string> = {
   '/dashboard/ocr': 'ocr',
   '/dashboard/invoices': 'invoices',
   '/dashboard/efactura': 'efactura',
+  '/dashboard/e-invoice': 'efactura',
   '/dashboard/finance': 'finance',
   '/dashboard/accounting': 'accounting',
   '/dashboard/controlling': 'controlling',
