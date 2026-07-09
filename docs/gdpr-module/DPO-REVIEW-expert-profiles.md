@@ -59,3 +59,24 @@ The expert-for-hire marketplace (S-57 EXP-12) is DISTINCT from the public profil
 
 Marketplace go-live does NOT require the public-profile flag; the consent gate above
 is the control. DPO review of this addendum recommended before marketing pushes.
+
+---
+
+## S-62 addendum — GDPR-EXT MUST epics (DSAR / Breach / CNP / Liability)
+
+- **DSAR portal**: public intake resolves the org from the URL slug only; the immutable
+  `DsarEvent` trail covers the public step (data subjects have no user account, so the
+  hash-chain audit — which FKs to User — covers only authenticated tenant actions).
+- **Erasure is honest**: fiscal records are RESTRICTED (10y RO retention, Art 17(3)(b)),
+  person records anonymized; an `ErasureLedger` row records the request + a backup-expiry
+  date. We do NOT rewrite encrypted backups — the DSAR response text says so.
+- **Breach**: ANSPDCP (Decision 128/2018) and Art 34 subject notifications are DRAFTS only;
+  nothing auto-submits (integration asserts zero outbound HTTP in the breach path). The
+  Art 33(5) register keeps non-notified incidents with their justification.
+- **CNP (Law 190/2018 Art 4)**: legitimate-interest + CNP RoPA entries are blocked from
+  going `active` server-side until DPO + retention + training + safeguards are all set.
+- **Liability**: every generated artifact carries `lawyerReviewed:false` + the "nu constituie
+  consultanță juridică" disclaimer; `LEGAL_TERMS` is versioned (AS-IS, 12-month cap).
+- **Packaging enforced by TierGuard**: PRO = DSAR portal; BUSINESS = breach + CNP.
+- **Still needed before go-live**: lawyer-reviewed ANSPDCP/DSAR templates; real backup-expiry
+  automation; S-63 epics (DPIA, VENDOR/DPA/SCC, TRAIN, DATA-ACT, CMP hardening).
