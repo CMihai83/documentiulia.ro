@@ -66,8 +66,7 @@ export async function renderPdfViaPuppeteer(
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const puppeteer = require('puppeteer');
     browser = await puppeteer.launch({
-      headless: 'new',
-      headless: 'shell' as const,
+      headless: 'shell',
       args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-crashpad', '--disable-crash-reporter', '--crash-dumps-dir=/tmp'],
       timeout: 20_000,
     });
