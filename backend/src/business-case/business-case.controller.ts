@@ -99,10 +99,53 @@ export class BusinessCaseController {
     const m: Maturity = ['SOC', 'OBC', 'FBC'].includes(String(maturity)) ? (maturity as Maturity) : 'SOC';
     const loc: 'ro' | 'en' = locale === 'en' ? 'en' : 'ro';
     const out = await this.svc.generateDeliverable(this.userId(req), id, m, loc);
-    const buf = Buffer.from(out.content, 'utf8');
+    const buf: Buffer = (out as any).buffer ?? Buffer.from(out.content, 'utf8');
     res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('X-Renderer', (out as any).renderer ?? 'fallback');
     res.setHeader('Content-Disposition', `attachment; filename="${out.filename.replace(/[^\w.\-]/g, '_')}"`);
     res.setHeader('Content-Length', String(buf.length));
     res.end(buf);
+  }
+
+  /** S-60 exports — Excel (live formulas), Excel (branded template), PPTX deck. */
+  @Get(':id/export/xlsx')
+  async exportXlsx(@Request() req: any, @Param('id') id: string, @Res() res: Response) {
+    const out = await this.svc.exportExcelLive(this.userId(req), id);
+    this.stream(res, out.buffer, out.filename, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  }
+
+  @Get(':id/export/xlsx-template')
+  async exportXlsxTemplate(@Request() req: any, @Param('id') id: string, @Res() res: Response) {
+    const out = await this.svc.exportExcelTemplate(this.userId(req), id);
+    this.stream(res, out.buffer, out.filename, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  }
+
+  @Get(':id/export/pptx')
+  async exportPptx(
+    @Request() req: any,
+    @Param('id') id: string,
+    @Res() res: Response,
+    @Query('maturity') maturity?: string,
+    @Query('locale') locale?: string,
+  ) {
+    const m: Maturity = ['SOC', 'OBC', 'FBC'].includes(String(maturity)) ? (maturity as Maturity) : 'OBC';
+    const loc: 'ro' | 'en' = locale === 'en' ? 'en' : 'ro';
+    const out = await this.svc.exportPptx(this.userId(req), id, m, loc);
+    res.setHeader('X-Slide-Count', String(out.slideCount));
+    this.stream(res, out.buffer, out.filename, 'application/vnd.openxmlformats-officedocument.presentationml.presentation');
+  }
+
+  /** BC-306 — org-level branding for all deliverable formats. */
+  @Patch('branding')
+  setBranding(@Request() req: any, @Body() body: any) {
+    const orgId = req.user?.activeOrganizationId ?? req.headers?.['x-organization-id'] ?? null;
+    return this.svc.setBranding(this.userId(req), orgId, body ?? {});
+  }
+
+  private stream(res: Response, buffer: Buffer, filename: string, mime: string) {
+    res.setHeader('Content-Type', mime);
+    res.setHeader('Content-Disposition', `attachment; filename="${filename.replace(/[^\w.\-]/g, '_')}"`);
+    res.setHeader('Content-Length', String(buffer.length));
+    res.end(buffer);
   }
 }

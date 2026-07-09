@@ -8,7 +8,13 @@ import { computeRfq, hasRfqInputs } from './bc.rfq';
 import { computeUnitEconomics, hasUnitEconomicsInputs } from './bc.uniteconomics';
 import { buildExtendedModel, hasExtendedDrivers, TvValidationError } from './bc.cashflow';
 import { tornado, monteCarlo } from './bc.sensitivity';
-import { buildDeliverableHtml, Maturity } from './bc.deliverable';
+import { buildDeliverableHtml, Maturity, sectionsForMaturity } from './bc.deliverable';
+import { buildChartConfigs, BcBranding } from './bc.charts';
+import { generateWorkbookLive, populateWorkbookTemplate, ExcelModelInput } from './bc.excel';
+import { buildBoardDeck } from './bc.pptx';
+import { wrapHtmlForPrint, renderPdfViaPuppeteer } from './bc.pdf-render';
+import * as fs from 'fs';
+import * as path from 'path';
 import { ChartService } from '../charts/chart.service';
 import { PDFGeneratorService } from '../document-generation/pdf-generator.service';
 
@@ -185,20 +191,14 @@ export class BusinessCaseService {
     const results = (await this.getResults(userId, id)) ?? (await this.compute(userId, id));
     const appraisal = results.appraisal;
 
-    // Embedded charts (data URIs) — never throw the whole PDF over a chart error.
+    // BC-301: ONE chart-config set for every format; render failures never break the document.
+    const branding = await this.resolveBranding(bc);
     const charts: { npvByYear?: string; tornado?: string; mcHistogram?: string } = {};
     try {
-      const cf = appraisal.cashflows as { year: number; net: number }[];
-      charts.npvByYear = await this.charts.renderToDataUri(
-        this.charts.barConfig(cf.map((r) => `Y${r.year}`), [{ label: 'Net', data: cf.map((r) => r.net), color: '#0b7681' }]),
-      );
-      charts.tornado = await this.charts.renderToDataUri(
-        this.charts.tornadoConfig(results.tornado.map((b: any) => ({ label: b.key, value: b.swing }))),
-      );
-      const h = results.monteCarlo.histogram as { x0: number; x1: number; count: number }[];
-      charts.mcHistogram = await this.charts.renderToDataUri(
-        this.charts.barConfig(h.map((b) => String(Math.round((b.x0 + b.x1) / 2))), [{ label: 'NPV', data: h.map((b) => b.count), color: '#c79a3a' }]),
-      );
+      const set = buildChartConfigs(results, branding);
+      if (set.cashTrajectory) charts.npvByYear = await this.charts.renderToDataUri(set.cashTrajectory);
+      if (set.tornado) charts.tornado = await this.charts.renderToDataUri(set.tornado);
+      if (set.mcHistogram) charts.mcHistogram = await this.charts.renderToDataUri(set.mcHistogram);
     } catch (e: any) {
       this.logger.warn(`Deliverable chart render failed (${e?.message}) — continuing text-only`);
     }
@@ -209,10 +209,120 @@ export class BusinessCaseService {
       appraisal, tornado: results.tornado, monteCarlo: results.monteCarlo, charts,
     });
 
-    const pdf = await this.pdf.fromHTML(html, { metadata: { title: `${bc.title} — ${maturity}` } });
+    // BC-305: real Puppeteer render (cover + TOC + page numbers); graceful fallback
+    // to the legacy fromHTML stub when Chromium is unavailable — never a 500.
+    const toc = sectionsForMaturity(skeleton, maturity).map((t, i) => ({ id: `s${i}`, title: t }));
+    const printable = wrapHtmlForPrint(html, { title: bc.title, maturity, locale, toc, branding });
+    const rendered = await renderPdfViaPuppeteer(printable, { footerText: branding?.footerText });
+
     await this.prisma.businessCase.update({ where: { id }, data: { status: maturity } });
-    this.logger.log(`BC ${id} deliverable generated (${maturity}, ${pdf.size} bytes)`);
-    return { content: pdf.content ?? '', size: pdf.size ?? 0, maturity, html, filename: `${bc.title}-${maturity}.pdf` };
+    if (rendered) {
+      this.logger.log(`BC ${id} deliverable generated (${maturity}, ${rendered.length} bytes, puppeteer)`);
+      return {
+        content: rendered.toString('latin1'), size: rendered.length, maturity, html,
+        renderer: 'puppeteer' as const, buffer: rendered, filename: `${bc.title}-${maturity}.pdf`,
+      };
+    }
+    const pdf = await this.pdf.fromHTML(html, { metadata: { title: `${bc.title} — ${maturity}` } });
+    this.logger.log(`BC ${id} deliverable generated (${maturity}, ${pdf.size} bytes, fallback)`);
+    return { content: pdf.content ?? '', size: pdf.size ?? 0, maturity, html, renderer: 'fallback' as const, filename: `${bc.title}-${maturity}.pdf` };
+  }
+
+  /** BC-306 — tenant branding from Organization.settings.branding (never throws). */
+  private async resolveBranding(bc: { organizationId?: string | null }): Promise<BcBranding | null> {
+    try {
+      if (!bc.organizationId) return null;
+      const org = await this.prisma.organization.findUnique({ where: { id: bc.organizationId }, select: { settings: true } });
+      const b = (org?.settings as any)?.branding;
+      if (!b || typeof b !== 'object') return null;
+      return {
+        logoDataUri: typeof b.logoDataUri === 'string' && b.logoDataUri.startsWith('data:image/') ? b.logoDataUri : undefined,
+        primaryColor: typeof b.primaryColor === 'string' && /^#[0-9a-fA-F]{6}$/.test(b.primaryColor) ? b.primaryColor : undefined,
+        accentColor: typeof b.accentColor === 'string' && /^#[0-9a-fA-F]{6}$/.test(b.accentColor) ? b.accentColor : undefined,
+        footerText: typeof b.footerText === 'string' ? b.footerText.slice(0, 200) : undefined,
+      };
+    } catch {
+      return null;
+    }
+  }
+
+  /** BC-306 — set branding on the caller's organization (merge into settings Json). */
+  async setBranding(userId: string, organizationId: string | null | undefined, branding: Partial<BcBranding>) {
+    if (!organizationId) throw new BadRequestException('No active organization — branding is org-level');
+    const clean: any = {};
+    if (branding.primaryColor !== undefined) {
+      if (branding.primaryColor && !/^#[0-9a-fA-F]{6}$/.test(branding.primaryColor)) throw new BadRequestException('primaryColor must be #rrggbb');
+      clean.primaryColor = branding.primaryColor || undefined;
+    }
+    if (branding.accentColor !== undefined) {
+      if (branding.accentColor && !/^#[0-9a-fA-F]{6}$/.test(branding.accentColor)) throw new BadRequestException('accentColor must be #rrggbb');
+      clean.accentColor = branding.accentColor || undefined;
+    }
+    if (branding.logoDataUri !== undefined) {
+      if (branding.logoDataUri && (!branding.logoDataUri.startsWith('data:image/') || branding.logoDataUri.length > 200_000)) {
+        throw new BadRequestException('logoDataUri must be a data:image/* URI under 200KB');
+      }
+      clean.logoDataUri = branding.logoDataUri || undefined;
+    }
+    if (branding.footerText !== undefined) clean.footerText = String(branding.footerText ?? '').slice(0, 200) || undefined;
+
+    const org = await this.prisma.organization.findUnique({ where: { id: organizationId }, select: { settings: true } });
+    const settings = { ...((org?.settings as any) ?? {}), branding: { ...(((org?.settings as any) ?? {}).branding ?? {}), ...clean } };
+    await this.prisma.organization.update({ where: { id: organizationId }, data: { settings } });
+    this.logger.log(`Branding updated for org ${organizationId} by ${userId}`);
+    return { branding: settings.branding };
+  }
+
+  /** Shared input for the Excel/PPTX generators. */
+  private async exportInput(userId: string, id: string): Promise<{ bc: any; input: ExcelModelInput; results: any; branding: BcBranding | null }> {
+    const bc = await this.prisma.businessCase.findFirst({ where: { id, userId } });
+    if (!bc) throw new NotFoundException(`Business case ${id} not found`);
+    const results = (await this.getResults(userId, id)) ?? (await this.compute(userId, id));
+    const branding = await this.resolveBranding(bc);
+    const input: ExcelModelInput = {
+      title: bc.title,
+      template: bc.template,
+      appraisal: results.appraisal,
+      extras: results.extras ?? null,
+      extended: results.extended ?? null,
+      unitEconomics: results.unitEconomics ?? null,
+      branding,
+    };
+    return { bc, input, results, branding };
+  }
+
+  /** BC-303 — generative Excel with live formulas. */
+  async exportExcelLive(userId: string, id: string) {
+    const { bc, input } = await this.exportInput(userId, id);
+    const buffer = await generateWorkbookLive(input);
+    return { buffer, filename: `${bc.title}-model.xlsx` };
+  }
+
+  /** BC-302 — branded template Excel. */
+  async exportExcelTemplate(userId: string, id: string) {
+    const { bc, input } = await this.exportInput(userId, id);
+    const tplPath = path.join(__dirname, '../../assets/bc/bc-template.xlsx');
+    const tpl = fs.readFileSync(tplPath);
+    const buffer = await populateWorkbookTemplate(tpl, input);
+    return { buffer, filename: `${bc.title}-summary.xlsx` };
+  }
+
+  /** BC-304 — PPTX board deck. */
+  async exportPptx(userId: string, id: string, maturity: Maturity, locale: 'ro' | 'en') {
+    const { bc, results, branding } = await this.exportInput(userId, id);
+    const chartsPng: Record<string, string> = {};
+    try {
+      const set = buildChartConfigs(results, branding);
+      for (const [key, cfg] of Object.entries(set)) {
+        if (cfg) chartsPng[key] = (await this.charts.renderToBuffer(cfg as any)).toString('base64');
+      }
+    } catch (e: any) {
+      this.logger.warn(`PPTX chart render failed (${e?.message}) — deck continues without images`);
+    }
+    const { buffer, slideCount } = await buildBoardDeck({
+      title: bc.title, template: bc.template, maturity, locale, results, chartsPng: chartsPng as any, branding,
+    });
+    return { buffer, slideCount, filename: `${bc.title}-${maturity}.pptx` };
   }
 
   /** BC-105 — field-level diff between two assumption-set versions. */
