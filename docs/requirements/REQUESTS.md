@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 30 · logged: 2 · planned: 3 · in_progress: 1 · shipped: 22 · parked: 2 · rejected: 0
+Total: 31 · logged: 2 · planned: 3 · in_progress: 1 · shipped: 23 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -35,3 +35,4 @@ Total: 30 · logged: 2 · planned: 3 · in_progress: 1 · shipped: 22 · parked:
 | REQ-028 | 2026-07-09 | **shipped** | S-63 GDPR-EXT Shoulds: DPIA, vendor/DPA/SCC/TIA, LMS GDPR training, Data Act export, CMP hardening (TCF v2.3 + Consent Mode v2 + cookie scan… | GDPR-SPRINT-PLAN Track B,S-63 plan committed, worker launching,S-63,master 5f2a0e99 |
 | REQ-029 | 2026-07-09 | **logged** | Lawyer review of GDPR-EXT generated templates (DPA, policies, breach/DSAR responses) before selling paid tiers | S-62 GE-LIABILITY |
 | REQ-030 | 2026-07-09 | **shipped** | Find loose points / broken pages across the live site while S-63 runs | sweep: i18n x12 + WS gate, 3c201917 |
+| REQ-031 | 2026-07-09 | **shipped** | Fix the errors captured by the live error logger | 3c201917,b337f941 |
