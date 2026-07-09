@@ -3,6 +3,7 @@ import { randomInt } from 'crypto';
 import { PrismaService } from '../../prisma/prisma.service';
 import { randomInt as _randomInt } from 'crypto';
 import { applyTick, createInitialState, SCENARIO_PRESETS } from './simv2.engine';
+import { runStress } from './simv2.stress';
 import { DECISION_CATALOG, SimDecision, SimV2StateData, TickType } from './simv2.types';
 import { SimV2CalibrationService } from './simv2.calibration';
 import { computeScore, earnedBadges } from './simv2.scoring';
@@ -298,4 +299,28 @@ export class SimV2Service {
     this.logger.log(`SimV2 run ${runId} ended — composite ${score.composite}, badges [${badges.join(', ')}]`);
     return { run: { ...run, status: 'ended' }, score, badges };
   }
+  /**
+   * SIM-11 — Monte-Carlo stress of the tenant's real budget. Mirror-calibrates
+   * (S-49 service-delivery stance, scrubbed aggregates), then runs seeded
+   * iterations through the pure engine. Response-only: writes NO runs, NO ERP
+   * data, and triggers no gamification/evidence side-effects.
+   */
+  async stressTest(
+    userId: string,
+    organizationId: string | undefined,
+    dto: { scenarioKey?: string; seed?: number; iterations?: number; horizonMonths?: number },
+  ) {
+    const scenarioKey = dto?.scenarioKey ?? 'services';
+    const seed = (dto?.seed ?? 20260709) >>> 0;
+    const iterations = Math.min(2000, Math.max(500, Math.round(dto?.iterations ?? 500)));
+    const horizonMonths = Math.min(24, Math.max(1, Math.round(dto?.horizonMonths ?? 12)));
+    const cal = await this.calibration.calibrate(userId, organizationId, scenarioKey, seed);
+    const stress = runStress(cal.state, { seed, iterations, horizonMonths });
+    this.logger.log(
+      `SimV2 stress for ${organizationId ?? userId}: ${iterations}x${horizonMonths}mo, ` +
+        `P(insolv)=${stress.flags.insolvencyProbabilityPct}%`,
+    );
+    return { calibration: { mirror: cal.mirror, source: cal.source, notes: cal.notes }, ...stress };
+  }
+
 }

@@ -25,8 +25,8 @@ type Pending = {
 };
 
 const T = {
-  ro: { title: 'Simulator Business v2', subtitle: 'Rulează afacerea în timp — deciziile se acumulează.', newRun: 'Simulare nouă', calibrated: 'Din datele reale (oglindă)', advance: 'Avansează', day: 'zi', days: 'zile', evolution: 'Evoluție KPI', consequences: 'Consecințe în așteptare', events: 'Evenimente', timeline: 'Jurnal', csv: 'Export CSV', noRun: 'Creează o simulare pentru a începe.', tick: 'Ziua', cash: 'Numerar', revenue: 'Venituri', customers: 'Clienți', brand: 'Brand', morale: 'Moral', share: 'Cotă piață', respond: 'Alege', in: 'în', ticksLeft: 'zile rămase', phase: 'Fază', loadFail: 'Nu s-au putut încărca datele.', practice: 'Exersare', scored: 'Punctat', rewind: 'Derulează', rewindHint: 'Doar în modul exersare (max 5 zile înapoi)' },
-  en: { title: 'Business Simulator v2', subtitle: 'Run your business over time — decisions compound.', newRun: 'New run', calibrated: 'From real data (mirror)', advance: 'Advance', day: 'day', days: 'days', evolution: 'KPI evolution', consequences: 'Pending consequences', events: 'Events', timeline: 'Log', csv: 'Export CSV', noRun: 'Create a run to begin.', tick: 'Day', cash: 'Cash', revenue: 'Revenue', customers: 'Customers', brand: 'Brand', morale: 'Morale', share: 'Market share', respond: 'Choose', in: 'in', ticksLeft: 'days left', phase: 'Phase', loadFail: 'Could not load data.', practice: 'Practice', scored: 'Scored', rewind: 'Rewind', rewindHint: 'Practice mode only (up to 5 days back)' },
+  ro: { title: 'Simulator Business v2', subtitle: 'Rulează afacerea în timp — deciziile se acumulează.', newRun: 'Simulare nouă', calibrated: 'Din datele reale (oglindă)', advance: 'Avansează', day: 'zi', days: 'zile', evolution: 'Evoluție KPI', consequences: 'Consecințe în așteptare', events: 'Evenimente', timeline: 'Jurnal', csv: 'Export CSV', noRun: 'Creează o simulare pentru a începe.', tick: 'Ziua', cash: 'Numerar', revenue: 'Venituri', customers: 'Clienți', brand: 'Brand', morale: 'Moral', share: 'Cotă piață', respond: 'Alege', in: 'în', ticksLeft: 'zile rămase', phase: 'Fază', loadFail: 'Nu s-au putut încărca datele.', practice: 'Exersare', scored: 'Punctat', rewind: 'Derulează', rewindHint: 'Doar în modul exersare (max 5 zile înapoi)', stress: 'Test de stres', stressRun: 'Rulează testul de stres (500 scenarii)', stressHint: 'Monte-Carlo pe bugetul calibrat — doar răspuns, nimic nu se salvează', insolv: 'Probabilitate insolvență', trough: 'Luna minimului de numerar (P50)', netWorth: 'Avere netă', factors: 'Factori de risc', recs: 'Recomandări' },
+  en: { title: 'Business Simulator v2', subtitle: 'Run your business over time — decisions compound.', newRun: 'New run', calibrated: 'From real data (mirror)', advance: 'Advance', day: 'day', days: 'days', evolution: 'KPI evolution', consequences: 'Pending consequences', events: 'Events', timeline: 'Log', csv: 'Export CSV', noRun: 'Create a run to begin.', tick: 'Day', cash: 'Cash', revenue: 'Revenue', customers: 'Customers', brand: 'Brand', morale: 'Morale', share: 'Market share', respond: 'Choose', in: 'in', ticksLeft: 'days left', phase: 'Phase', loadFail: 'Could not load data.', practice: 'Practice', scored: 'Scored', rewind: 'Rewind', rewindHint: 'Practice mode only (up to 5 days back)', stress: 'Stress test', stressRun: 'Run stress test (500 scenarios)', stressHint: 'Monte-Carlo on your calibrated budget — response only, nothing is saved', insolv: 'Insolvency probability', trough: 'Cash trough (P50) month', netWorth: 'Net worth', factors: 'Risk drivers', recs: 'Recommendations' },
 };
 
 const TEAL = '#0b7681';
@@ -120,6 +120,19 @@ export default function SimulationV2Page() {
     URL.revokeObjectURL(url);
   };
 
+  const [stress, setStress] = useState<any | null>(null);
+  const [stressBusy, setStressBusy] = useState(false);
+  const runStressTest = async () => {
+    setStressBusy(true);
+    try {
+      const r = await api.post<any>('/simulation/v2/stress', { seed: 20260709, iterations: 500, horizonMonths: 12 });
+      if (r.data) setStress(r.data);
+    } finally {
+      setStressBusy(false);
+    }
+  };
+
+
   const chartData = useMemo(() => history.map((r) => ({ ...r, cashK: Math.round(r.cash / 1000), revK: Math.round(r.revenue) })), [history]);
   const latest = history[history.length - 1];
 
@@ -207,6 +220,41 @@ export default function SimulationV2Page() {
                 </ChartCard>
               </div>
               <Button size="sm" variant="ghost" onClick={downloadCsv}><Download className="h-4 w-4" /> {t.csv}</Button>
+
+              {/* SIM-11 — Monte-Carlo budget stress (fan chart P10/P50/P90) */}
+              <Card><CardContent className="p-4 space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <p className="text-sm font-medium">{t.stress}</p>
+                  <Button size="sm" disabled={stressBusy} title={t.stressHint} onClick={runStressTest}>
+                    {stressBusy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Gauge className="h-4 w-4" />} {t.stressRun}
+                  </Button>
+                </div>
+                {stress && (
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
+                      <div><p className="text-xs text-muted-foreground">{t.insolv}</p><p className="font-semibold tabular-nums">{stress.flags.insolvencyProbabilityPct}%</p></div>
+                      <div><p className="text-xs text-muted-foreground">{t.trough}</p><p className="font-semibold tabular-nums">{stress.flags.minCashMonthP50}</p></div>
+                      <div><p className="text-xs text-muted-foreground">{t.factors}</p><p className="font-semibold">{stress.factorBreakdown.map((f: any) => `${f.factor} ${f.variedPct}%`).join(' · ')}</p></div>
+                    </div>
+                    <div style={{ height: 220 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={stress.trajectory}>
+                          <CartesianGrid strokeDasharray="3 3" opacity={0.2} /><XAxis dataKey="month" fontSize={11} /><YAxis fontSize={11} width={56} />
+                          <Tooltip />
+                          <Area type="monotone" dataKey="netWorthP90" name={`${t.netWorth} P90`} stroke={TEAL} fill={TEAL} fillOpacity={0.12} strokeWidth={1} />
+                          <Area type="monotone" dataKey="netWorthP50" name={`${t.netWorth} P50`} stroke={TEAL} fill={TEAL} fillOpacity={0.2} strokeWidth={2} />
+                          <Area type="monotone" dataKey="netWorthP10" name={`${t.netWorth} P10`} stroke={GOLD} fill="#fff" fillOpacity={0.6} strokeWidth={1.5} />
+                          <Legend />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium text-muted-foreground">{t.recs}</p>
+                      {stress.recommendations.map((r: string, i: number) => <p key={i} className="text-xs text-muted-foreground">• {r}</p>)}
+                    </div>
+                  </div>
+                )}
+              </CardContent></Card>
             </TabsContent>
 
             <TabsContent value="consequences" className="mt-4">

@@ -43,10 +43,21 @@ type Extended = {
   fcffNpv: number;
   terminalValue: { method: string; tv: number; pvTv: number; npvWithoutTv: number; npvWithTv: number } | null;
 };
+type Rfq = {
+  costSheet: { directMaterial: number; directLabour: number; directCost: number; overheadPct: number; overhead: number; fullCost: number };
+  pricing: { method: string; price: number; marginPct: number };
+  shouldCost: { benchmark: number; variancePct: number; verdict: string } | null;
+  bid: { score: number; threshold: number; recommendation: string; components: { margin: number; capacity: number; strategic: number } };
+};
+type UnitEconomics = { contributionPerUnit: number; monthlyContribution: number; cac: number | null; ltv: number; ltvCapped: boolean; ltvToCac: number | null; cacPaybackMonths: number | null };
+type BreakEvenR = { accounting: { unitsPerMonth: number; revenuePerMonth: number } | null; financial: { changePct: number; message: string } | null };
 type Results = {
   assumptionVersion: number; appraisal: Appraisal; tornado: TornadoBar[]; monteCarlo: MonteCarlo;
   extras?: { mirr: number | null; eac: number } | null;
   extended?: Extended | null;
+  rfq?: Rfq | null;
+  unitEconomics?: UnitEconomics | null;
+  breakEven?: BreakEvenR | null;
 };
 type Section = { id: string; title: string; titleRo?: string; fields: Field[] };
 type Template = { template: string; name: string; nameRo: string; skeleton: string[]; maturityStages?: string[] };
@@ -66,7 +77,7 @@ const T = {
     computed: 'Rata calculată',
     compute: 'Calculează evaluarea', results: 'Rezultatele evaluării', npv: 'VAN (NPV)', irr: 'RIR (IRR)',
     payback: 'Recuperare', years: 'ani', tornado: 'Senzitivitate (tornado)', mc: 'Monte-Carlo — distribuția VAN',
-    mirr: 'RIR modificată (MIRR)', eac: 'Cost anual echivalent (EAC)', cashflow: 'Flux de numerar (FCFF/FCFE)', monthly: 'Lunar', annual: 'Anual', debt: 'Grafic rambursare credit', dscrWarn: 'DSCR < 1,0 — fluxul nu acoperă serviciul datoriei', tv: 'Valoare terminală', tvWith: 'VAN cu VT', tvWithout: 'VAN fără VT',
+    mirr: 'RIR modificată (MIRR)', eac: 'Cost anual echivalent (EAC)', cashflow: 'Flux de numerar (FCFF/FCFE)', monthly: 'Lunar', annual: 'Anual', debt: 'Grafic rambursare credit', dscrWarn: 'DSCR < 1,0 — fluxul nu acoperă serviciul datoriei', tv: 'Valoare terminală', tvWith: 'VAN cu VT', tvWithout: 'VAN fără VT', rfqTitle: 'Cost ofertă (RFQ)', fullCost: 'Cost complet', price: 'Preț', margin: 'Marjă', bidScore: 'Scor ofertare', bid: 'OFERTEAZĂ', noBid: 'NU oferta', ueTitle: 'Economie unitară', cacL: 'CAC', ltvL: 'LTV', ltvCac: 'LTV/CAC', cacPayback: 'Recuperare CAC (luni)', capped: 'plafonat 60 luni', beTitle: 'Prag de rentabilitate', beUnits: 'Unități/lună', beRevenue: 'Venit/lună',
     probPos: 'Prob. VAN > 0', na: 'fără soluție', year1: 'Anul', benefit: 'Beneficiu', opex: 'Cost operare',
     dist: 'Distribuție', none: 'niciuna', computeFirst: 'Salvează versiunea, apoi calculează.',
     deliverable: 'Descarcă livrabilul (PDF)',
@@ -81,7 +92,7 @@ const T = {
     computed: 'Computed rate',
     compute: 'Compute appraisal', results: 'Appraisal results', npv: 'NPV', irr: 'IRR',
     payback: 'Payback', years: 'yrs', tornado: 'Sensitivity (tornado)', mc: 'Monte-Carlo — NPV distribution',
-    mirr: 'MIRR', eac: 'Equivalent annual cost (EAC)', cashflow: 'Cash flow (FCFF/FCFE)', monthly: 'Monthly', annual: 'Annual', debt: 'Debt schedule', dscrWarn: 'DSCR < 1.0 — cash flow does not cover debt service', tv: 'Terminal value', tvWith: 'NPV with TV', tvWithout: 'NPV without TV',
+    mirr: 'MIRR', eac: 'Equivalent annual cost (EAC)', cashflow: 'Cash flow (FCFF/FCFE)', monthly: 'Monthly', annual: 'Annual', debt: 'Debt schedule', dscrWarn: 'DSCR < 1.0 — cash flow does not cover debt service', tv: 'Terminal value', tvWith: 'NPV with TV', tvWithout: 'NPV without TV', rfqTitle: 'RFQ costing', fullCost: 'Full cost', price: 'Price', margin: 'Margin', bidScore: 'Bid score', bid: 'BID', noBid: 'NO-BID', ueTitle: 'Unit economics', cacL: 'CAC', ltvL: 'LTV', ltvCac: 'LTV/CAC', cacPayback: 'CAC payback (months)', capped: 'capped at 60mo', ueTitleShort: 'Unit economics', beTitle: 'Break-even', beUnits: 'Units/month', beRevenue: 'Revenue/month',
     probPos: 'Prob. NPV > 0', na: 'no root', year1: 'Year', benefit: 'Benefit', opex: 'Op-cost',
     dist: 'Distribution', none: 'none', computeFirst: 'Save a version, then compute.',
     deliverable: 'Download deliverable (PDF)',
@@ -446,6 +457,44 @@ export default function BusinessCasePage() {
                   </ResponsiveContainer>
                 </div>
 
+                {/* S-59 — RFQ costing, unit economics, break-even (all additive) */}
+                {results.rfq && (
+                  <div className="rounded-lg border p-3 space-y-2">
+                    <p className="text-xs font-semibold text-muted-foreground">{t.rfqTitle}</p>
+                    <div className="grid grid-cols-3 gap-3">
+                      <Stat label={t.fullCost} value={money(results.rfq.costSheet.fullCost)} />
+                      <Stat label={t.price} value={money(results.rfq.pricing.price)} />
+                      <Stat label={t.margin} value={`${results.rfq.pricing.marginPct.toFixed(1)}%`} />
+                    </div>
+                    <div className={`rounded-md px-3 py-2 text-xs font-semibold ${results.rfq.bid.recommendation === 'bid' ? 'bg-teal-50 text-teal-800 dark:bg-teal-950/40 dark:text-teal-300' : 'bg-red-50 text-red-800 dark:bg-red-950/40 dark:text-red-300'}`}>
+                      {t.bidScore}: {results.rfq.bid.score} / {results.rfq.bid.threshold} — {results.rfq.bid.recommendation === 'bid' ? t.bid : t.noBid}
+                      {results.rfq.shouldCost && <span className="ml-2 font-normal opacity-80">(should-cost {results.rfq.shouldCost.variancePct > 0 ? '+' : ''}{results.rfq.shouldCost.variancePct}% vs {money(results.rfq.shouldCost.benchmark)})</span>}
+                    </div>
+                  </div>
+                )}
+                {results.unitEconomics && (
+                  <div className="rounded-lg border p-3 space-y-2">
+                    <p className="text-xs font-semibold text-muted-foreground">{t.ueTitle}</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      <Stat label={t.cacL} value={results.unitEconomics.cac === null ? t.na : money(results.unitEconomics.cac)} />
+                      <Stat label={`${t.ltvL}${results.unitEconomics.ltvCapped ? ` (${t.capped})` : ''}`} value={money(results.unitEconomics.ltv)} />
+                      <Stat label={t.ltvCac} value={results.unitEconomics.ltvToCac === null ? t.na : String(results.unitEconomics.ltvToCac)} />
+                      <Stat label={t.cacPayback} value={results.unitEconomics.cacPaybackMonths === null ? t.na : String(results.unitEconomics.cacPaybackMonths)} />
+                    </div>
+                  </div>
+                )}
+                {results.breakEven && (results.breakEven.accounting || results.breakEven.financial) && (
+                  <div className="rounded-lg border p-3 space-y-1">
+                    <p className="text-xs font-semibold text-muted-foreground">{t.beTitle}</p>
+                    {results.breakEven.accounting && (
+                      <div className="grid grid-cols-2 gap-3">
+                        <Stat label={t.beUnits} value={String(results.breakEven.accounting.unitsPerMonth)} />
+                        <Stat label={t.beRevenue} value={money(results.breakEven.accounting.revenuePerMonth)} />
+                      </div>
+                    )}
+                    {results.breakEven.financial && <p className="text-xs text-muted-foreground">{results.breakEven.financial.message}</p>}
+                  </div>
+                )}
                 {/* S-58 — MIRR/EAC tiles + extended FCFF/FCFE model */}
                 {results.extras && (
                   <div className="grid grid-cols-2 gap-3">

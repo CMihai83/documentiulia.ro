@@ -48,6 +48,12 @@ export class SimV2Controller {
     return this.sim.createRun(this.userId(req), dto ?? {});
   }
 
+  /** SIM-11: Monte-Carlo stress of the real budget (response-only; no runs, no ERP writes). */
+  @Post('stress')
+  stress(@Request() req: any, @Body() dto: { scenarioKey?: string; seed?: number; iterations?: number; horizonMonths?: number }) {
+    return this.sim.stressTest(this.userId(req), this.orgId(req), dto ?? {});
+  }
+
   /** SIM-9: create a run calibrated from the tenant's real ERP data (Art 28(10)-guarded). */
   @Post('runs/calibrated')
   createCalibratedRun(@Request() req: any, @Body() dto: CreateRunDto) {
