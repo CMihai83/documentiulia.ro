@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 29 · logged: 2 · planned: 4 · in_progress: 1 · shipped: 20 · parked: 2 · rejected: 0
+Total: 30 · logged: 2 · planned: 3 · in_progress: 1 · shipped: 22 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -32,5 +32,6 @@ Total: 29 · logged: 2 · planned: 4 · in_progress: 1 · shipped: 20 · parked:
 | REQ-025 | 2026-07-09 | **shipped** | Plan and launch W-1 delivery workspaces (the VM module) after W-0 | REQ-003,SPRINT-PLAN-W1 committed,W-1 worker launched,W-1 deployed |
 | REQ-026 | 2026-07-09 | **planned** | W-1.5: live RunPod GPU provisioning + security review (needs RUNPOD_API_KEY + security-engineer sign-off) | W-1 |
 | REQ-027 | 2026-07-09 | **shipped** | What about the external GDPR services provision module deliverable? | S-61,GDPR-SPRINT-PLAN Track B,S-62,master ffb95e4d |
-| REQ-028 | 2026-07-09 | **planned** | S-63 GDPR-EXT Shoulds: DPIA, vendor/DPA/SCC/TIA, LMS GDPR training, Data Act export, CMP hardening (TCF v2.3 + Consent Mode v2 + cookie scan… | GDPR-SPRINT-PLAN Track B |
+| REQ-028 | 2026-07-09 | **shipped** | S-63 GDPR-EXT Shoulds: DPIA, vendor/DPA/SCC/TIA, LMS GDPR training, Data Act export, CMP hardening (TCF v2.3 + Consent Mode v2 + cookie scan… | GDPR-SPRINT-PLAN Track B,S-63 plan committed, worker launching,S-63,master 5f2a0e99 |
 | REQ-029 | 2026-07-09 | **logged** | Lawyer review of GDPR-EXT generated templates (DPA, policies, breach/DSAR responses) before selling paid tiers | S-62 GE-LIABILITY |
+| REQ-030 | 2026-07-09 | **shipped** | Find loose points / broken pages across the live site while S-63 runs | sweep: i18n x12 + WS gate, 3c201917 |
