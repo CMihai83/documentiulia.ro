@@ -10,6 +10,7 @@ import {
 } from './ropa.logic';
 import { renderPolicy, diffPolicies, PolicyKind, PolicyLocale } from './policy.logic';
 import { buildBannerScript, bannerTextHash, hashPii, DEFAULT_CATEGORIES, CmpConfigLike } from './cmp.logic';
+import { GdprTrainExportService } from './gdpr-train-export.service';
 
 /**
  * GDPR-EXT (S-61) — tenant-facing GDPR tooling (the tenant is the controller;
@@ -24,7 +25,19 @@ export class GdprExtService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly audit: AuditChainService,
+    private readonly training: GdprTrainExportService,
   ) {}
+
+  /**
+   * GE-CNP × GE-TRAIN wiring: the Law-190 training condition is satisfied EITHER
+   * by an explicit RoPA attestation OR by a valid (<=12mo) org GDPR-training
+   * completion. Returns the entry with an effective staffTrainingAttested flag.
+   */
+  private async withEffectiveTraining(orgId: string, entry: any) {
+    if (entry?.staffTrainingAttested) return entry;
+    const trained = await this.training.orgHasValidTraining(orgId).catch(() => false);
+    return trained ? { ...entry, staffTrainingAttested: true } : entry;
+  }
 
   // ------------------------------------------------------------------ RoPA
   /** Probe which data the org actually holds (drives seeding proposals). */
@@ -91,7 +104,8 @@ export class GdprExtService {
     // until DPO + retention + training + safeguards are all satisfied. Enforced server-side.
     if ((dto as any).status === 'active') {
       const { canActivate } = require('./law190.logic');
-      const { allowed, check } = canActivate(merged);
+      const effective = await this.withEffectiveTraining(orgId, merged);
+      const { allowed, check } = canActivate(effective);
       if (!allowed) {
         const missing = check.conditions.filter((c: any) => !c.ok).map((c: any) => c.remedy);
         throw new BadRequestException({
@@ -110,7 +124,8 @@ export class GdprExtService {
     const row = await this.prisma.ropaEntry.findFirst({ where: { id, orgId } });
     if (!row) throw new NotFoundException('RoPA entry not found');
     const { checkLaw190 } = require('./law190.logic');
-    return checkLaw190(row);
+    const effective = await this.withEffectiveTraining(orgId, row);
+    return checkLaw190(effective);
   }
 
   async listRopa(orgId: string, includeProcessor: boolean) {

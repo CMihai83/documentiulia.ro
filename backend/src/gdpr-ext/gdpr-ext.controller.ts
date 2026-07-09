@@ -1,4 +1,5 @@
-import { Body, Controller, ForbiddenException, Get, Header, Param, Patch, Post, Put, Query, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, ForbiddenException, Get, Header, Param, Patch, Post, Put, Query, Request, Res, UseGuards } from '@nestjs/common';
+import type { Response } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { TierGuard } from '../auth/tier.guard';
 import { RequiresTier } from '../auth/tiers.decorator';
@@ -6,6 +7,8 @@ import { Tier } from '@prisma/client';
 import { GdprExtService } from './gdpr-ext.service';
 import { GdprDsarService } from './gdpr-dsar.service';
 import { GdprBreachService } from './gdpr-breach.service';
+import { GdprDpiaVendorService } from './gdpr-dpia-vendor.service';
+import { GdprTrainExportService } from './gdpr-train-export.service';
 import { LEGAL_TERMS } from './legal-terms';
 import { IndustryTemplate, RopaEntryLike } from './ropa.logic';
 import { PolicyKind, PolicyLocale } from './policy.logic';
@@ -24,6 +27,8 @@ export class GdprExtController {
     private readonly svc: GdprExtService,
     private readonly dsar: GdprDsarService,
     private readonly breach: GdprBreachService,
+    private readonly dv: GdprDpiaVendorService,
+    private readonly te: GdprTrainExportService,
   ) {}
 
   private userId(req: any): string {
@@ -185,6 +190,88 @@ export class GdprExtController {
   @Post('breach/:id/not-notified')
   breachNotNotified(@Request() req: any, @Param('id') id: string, @Body() b: { reason?: string }) {
     this.assertBusiness(req); return this.breach.markNotNotified(this.orgId(req), this.userId(req), id, b?.reason ?? '');
+  }
+
+  // ==== S-63 GE-DPIA (BUSINESS) ====
+  @Get('dpia')
+  dpiaList(@Request() req: any) { this.assertBusiness(req); return this.dv.listDpia(this.orgId(req)); }
+
+  @Post('ropa/:id/dpia/screen')
+  dpiaScreen(@Request() req: any, @Param('id') id: string, @Body() b: any) {
+    this.assertBusiness(req); return this.dv.screenRopa(this.orgId(req), this.userId(req), id, b ?? {});
+  }
+
+  @Post('dpia/:id/risks')
+  dpiaRisks(@Request() req: any, @Param('id') id: string, @Body() b: { risks: any[] }) {
+    this.assertBusiness(req); return this.dv.assessDpiaRisks(this.orgId(req), this.userId(req), id, b?.risks ?? []);
+  }
+
+  @Post('dpia/:id/signoff')
+  dpiaSignoff(@Request() req: any, @Param('id') id: string, @Body() b: { wizard?: any }) {
+    this.assertBusiness(req); return this.dv.signOffDpia(this.orgId(req), this.userId(req), id, b?.wizard);
+  }
+
+  // ==== S-63 GE-VENDOR (BUSINESS) ====
+  @Get('vendors')
+  vendorList(@Request() req: any) { this.assertBusiness(req); return this.dv.listVendors(this.orgId(req)); }
+
+  @Post('vendors')
+  vendorCreate(@Request() req: any, @Body() dto: any) { this.assertBusiness(req); return this.dv.createVendor(this.orgId(req), this.userId(req), dto); }
+
+  @Get('vendors/:id/transfer')
+  vendorTransfer(@Request() req: any, @Param('id') id: string, @Query('exporterRole') role?: string) {
+    this.assertBusiness(req); return this.dv.transferDecision(this.orgId(req), id, (role as any) ?? 'controller');
+  }
+
+  @Post('vendors/:id/tia')
+  vendorTia(@Request() req: any, @Param('id') id: string, @Body() b: any) {
+    this.assertBusiness(req); return this.dv.saveTia(this.orgId(req), this.userId(req), id, b ?? {});
+  }
+
+  @Post('vendors/:id/dpa')
+  vendorDpa(@Request() req: any, @Param('id') id: string, @Body() b: { locale?: 'ro' | 'en' }) {
+    this.assertBusiness(req); return this.dv.generateDpa(this.orgId(req), this.userId(req), id, b?.locale ?? 'ro');
+  }
+
+  @Post('vendors/:id/publish')
+  vendorPublish(@Request() req: any, @Param('id') id: string, @Body() b: { published?: boolean }) {
+    this.assertBusiness(req); return this.dv.publishVendor(this.orgId(req), this.userId(req), id, b?.published ?? true);
+  }
+
+  @Get('objections')
+  objectionsList(@Request() req: any) { this.assertBusiness(req); return this.dv.listObjections(this.orgId(req)); }
+
+  // ==== S-63 GE-TRAIN (PRO) ====
+  @Post('training/seed')
+  trainingSeed(@Request() req: any) { this.assertPro(req); return this.te.seedCourses(); }
+
+  @Post('training/complete')
+  trainingComplete(@Request() req: any, @Body() b: { courseId: string; score?: number }) {
+    this.assertPro(req); return this.te.completeTraining(this.userId(req), b.courseId, b?.score ?? 100);
+  }
+
+  @Get('training/valid')
+  trainingValid(@Request() req: any) { this.assertPro(req); return this.te.orgHasValidTraining(this.orgId(req)).then((v) => ({ orgHasValidTraining: v })); }
+
+  @Get('training/evidence.csv')
+  @Header('Content-Type', 'text/csv; charset=utf-8')
+  @Header('Content-Disposition', 'attachment; filename="gdpr-training-evidence.csv"')
+  trainingEvidence(@Request() req: any) { this.assertPro(req); return this.te.evidenceCsv(this.orgId(req)); }
+
+  // ==== S-63 GE-DATA-ACT (PRO) ====
+  @Get('export/full')
+  async fullExport(@Request() req: any, @Res() res: Response) {
+    this.assertPro(req);
+    const buf = await this.te.fullExport(this.orgId(req));
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader('Content-Disposition', 'attachment; filename="documentiulia-full-export.zip"');
+    res.end(buf);
+  }
+
+  // ==== S-63 GE-CMP-HARDEN (PRO) ====
+  @Post('cmp/scan')
+  cmpScan(@Request() req: any, @Body() b: { url: string }) {
+    this.assertPro(req); return this.te.scanSite(this.orgId(req), b.url);
   }
 
   // ---- Liability ToS (any tier) ----
