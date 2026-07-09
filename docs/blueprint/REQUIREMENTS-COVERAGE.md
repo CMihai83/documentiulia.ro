@@ -26,3 +26,28 @@ release + e-Factura → income/tax tracked.
 S-41..S-46 Horizon-1 promotions · S-47 foundations · SIM (S-48/49/50) · BC (S-50/51/58/59/60) ·
 FND (S-53/54) · EXP (S-55/56/57) · GDPR-A + GDPR-EXT MVP (S-61) · tier access control ·
 live error logger. S-52 Grok advisor parked by user decision.
+
+## Addendum (2026-07-09): missed items recovered from the Sprint Execution Plan artifact
+Source: docs/blueprint/SPRINT-EXECUTION-PLAN-S41-46-W0.html
+
+### W-0 — Free-Tools Funnel (~22 pts) — ENTIRELY UNBUILT (verified: no /tools pages)
+- DOC-W0-1 public CUI/VAT validator + SEO page /[locale]/tools/verificare-cui (AnafLookupService backend EXISTS from DOC-44-4 — only the public page is missing)
+- DOC-W0-2 public VAT calculator (date-aware 21/11/9, reverse-charge, shareable URL)
+- DOC-W0-3 net↔gross salary calculator (CAS 25/CASS 10/impozit 10 + deduction)
+- DOC-W0-4 FREE invoice + e-Factura UBL 2.1 XML generator (capped anonymous 3/mo, signup CTA)
+- DOC-W0-5 public SAF-T/e-Factura XML validator (the accountant-acquisition tool; no data stored)
+
+### Other unbuilt/unverified from S-41..46 detail
+- DOC-44-2 Stripe checkout + signed idempotent webhook + refund + auto e-Factura draft (blocked on keys)
+- DOC-44-3 consultant-side portal (bookings/availability/deliverables/mark-complete) — no page found
+- DOC-41-3 local LLM + embeddings baseline (qwen2.5 + bge-m3 + FastAPI embeddings + pgvector) — not wired
+- Global DoD deltas: reversible-migration requirement (we ship additive-only, no down-migrations),
+  staging environment (we deploy straight to prod), CI PR gate (workflow still uncommitted)
+
+### Blueprint v3.1 non-roadmap sections (now mined; in-repo via PLATFORM-BLUEPRINT-v3.1.html)
+- §08 GTM: accountant-channel wedge (multi-client filing + white-label), free-compliance/paid-control
+  packaging, NRR >120% expansion model — product features unbuilt
+- §11 KPI baselines: activation >40% signup→first-filing-in-7-days, WAU, 100% on-time filing guardrail,
+  time-to-close −70%, NRR >120% — measurement not instrumented
+- §10 Risk register w/ owners, reviewed every sprint — process not systematized
+- §13 Governance: expert vetoes (tax ◆, security ◆) — followed informally, not enforced tooling
