@@ -98,7 +98,7 @@ export default function DocumentsPage() {
       });
       if (response.ok) {
         const data = await response.json();
-        setDocuments(data || []);
+        setDocuments(Array.isArray(data) ? data : (data as any)?.documents ?? (data as any)?.data ?? []);
       } else if (response.status === 401) {
         setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
       } else {

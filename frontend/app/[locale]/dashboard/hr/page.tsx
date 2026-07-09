@@ -527,7 +527,7 @@ export default function HRPage() {
           fetch(`${API_URL}/hr/summary`, { headers }),
         ]);
         if (empRes.ok) {
-          setEmployees(await empRes.json());
+          { const d = await empRes.json(); setEmployees(Array.isArray(d) ? d : (d as any)?.employees ?? (d as any)?.data ?? []); }
         } else if (empRes.status === 401) {
           setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
           return;
@@ -536,7 +536,7 @@ export default function HRPage() {
       } else if (activeTab === 'payroll') {
         const response = await fetch(`${API_URL}/hr/payroll?period=${selectedPeriod}`, { headers });
         if (response.ok) {
-          setPayrolls(await response.json());
+          { const d = await response.json(); setPayrolls(Array.isArray(d) ? d : (d as any)?.payrolls ?? (d as any)?.data ?? []); }
         } else if (response.status === 401) {
           setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
           return;

@@ -212,8 +212,8 @@ const report = await response.json();`,
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Chei API</span>
               <Key className="w-5 h-5 text-blue-500" />
             </div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview.apiKeys.total}</div>
-            <div className="text-xs text-green-600 mt-1">{overview.apiKeys.active} active</div>
+            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview?.apiKeys?.total ?? 0}</div>
+            <div className="text-xs text-green-600 mt-1">{overview?.apiKeys?.active ?? 0} active</div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5">
@@ -221,8 +221,8 @@ const report = await response.json();`,
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Webhooks</span>
               <Webhook className="w-5 h-5 text-purple-500" />
             </div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview.webhooks.total}</div>
-            <div className="text-xs text-green-600 mt-1">{overview.webhooks.active} active</div>
+            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview?.webhooks?.total ?? 0}</div>
+            <div className="text-xs text-green-600 mt-1">{overview?.webhooks?.active ?? 0} active</div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5">
@@ -243,9 +243,9 @@ const report = await response.json();`,
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Documentație</span>
               <BookOpen className="w-5 h-5 text-orange-500" />
             </div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview.documentation.sections}</div>
+            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview?.documentation?.sections ?? 0}</div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              {overview.documentation.guides} ghiduri disponibile
+              {overview?.documentation?.guides ?? 0} ghiduri disponibile
             </div>
           </div>
         </div>
