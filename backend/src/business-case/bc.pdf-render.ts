@@ -67,7 +67,7 @@ export async function renderPdfViaPuppeteer(
     const puppeteer = require('puppeteer');
     browser = await puppeteer.launch({
       headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-crashpad', '--disable-crash-reporter', '--crash-dumps-dir=/tmp'],
       timeout: 20_000,
     });
     const page = await browser.newPage();
