@@ -87,3 +87,17 @@ The `Consent`/`DSRRequest` models are single-tenant today — Track B's foundati
 - **GDPR-E:** GE-VENDOR, GE-TRAIN, GE-DPO, GE-DATA-ACT, GI-AI-4.
 
 **Feature-flag (proposed, not law):** Digital Omnibus (breach 72h→96h, cookies→GDPR, RoPA <750). **Verify before shipping:** live ANSPDCP portal fields, IAB CMP fee, DPF appeal (C-703/25 P), AI-Act OJ publication.
+
+---
+## S-61 delivery note (2026-07-09)
+GDPR-C MVP shipped: multi-tenant foundation (DataSubjectRecord/ConsentRecord/RopaEntry/
+PolicyDocument/CmpBannerConfig), GE-ROPA-MVP (ERP-usage seeding, industry templates, Art-30
+completeness, RO retention defaults, CNP/Law-190 flag), GE-POLICY-MVP (RoPA-derived RO/EN
+policies, versioned, public published-only URL), GE-CMP-MVP (prior-blocking banner, equal-
+prominence reject, immutable consent proof, org-isolated intake, CSV export), tier packaging
+(FREE basic / PRO seed+templates+versions+export / BUSINESS processor entries).
+**Flagged follow-ups (NOT implemented): IAB TCF v2.3, Google Consent Mode v2, geo-targeting,
+lawyer-reviewed template certification, auto-update-on-legal-change, GE-DSAR multi-tenant portal,
+GE-DPIA, GE-BREACH, GE-VENDOR, GE-CNP pack, GE-TRAIN, DPO marketplace.** Toolkit UI lives at
+/dashboard/gdpr-toolkit (the internal DSR page already owns /dashboard/gdpr). Nu constituie
+consultanță juridică — disclaimer embedded on every page and generated document.

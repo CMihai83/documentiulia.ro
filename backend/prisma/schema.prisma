@@ -3875,4 +3875,88 @@ model ClientErrorLog {
 
   @@index([createdAt])
   @@index([source, createdAt])
+
+// ---------------------------------------------------------------------------
+// GDPR-EXT (S-61) — multi-tenant data-subject foundation. These rows belong to
+// the TENANT'S customers (the tenant is the controller; we are their tooling),
+// never to DocumentIulia's own users.
+// ---------------------------------------------------------------------------
+
+model DataSubjectRecord {
+  id           String   @id @default(cuid())
+  orgId        String
+  externalRef  String
+  emailHash    String?
+  sourceModule String?
+  createdAt    DateTime @default(now())
+
+  @@unique([orgId, externalRef])
+  @@index([orgId])
 }
+
+/// Immutable proof of consent — no update path anywhere; supersede by new row.
+model ConsentRecord {
+  id             String   @id @default(cuid())
+  orgId          String
+  dataSubjectRef String
+  purpose        String
+  granted        Boolean
+  method         String   @default("banner")
+  bannerVersion  String?
+  textHash       String?
+  ipHash         String?
+  uaHash         String?
+  createdAt      DateTime @default(now())
+
+  @@index([orgId, dataSubjectRef])
+  @@index([orgId, purpose])
+  @@index([orgId, createdAt])
+}
+
+model RopaEntry {
+  id                String   @id @default(cuid())
+  orgId             String
+  role              String   @default("controller")
+  processName       String
+  purposes          String[]
+  legalBasis        String?
+  categories        String[]
+  specialCategories String[]
+  recipients        String[]
+  transfers         String[]
+  retentionMonths   Int?
+  securityMeasures  String[]
+  status            String   @default("draft")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([orgId])
+  @@index([orgId, role])
+}
+
+model PolicyDocument {
+  id             String    @id @default(cuid())
+  orgId          String
+  kind           String
+  locale         String    @default("ro")
+  version        Int
+  html           String
+  sourceRopaHash String?
+  status         String    @default("draft")
+  publishedAt    DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@unique([orgId, kind, locale, version])
+  @@index([orgId, kind, status])
+}
+
+model CmpBannerConfig {
+  id            String   @id @default(cuid())
+  orgId         String   @unique
+  bannerVersion String   @default("1")
+  categories    Json     @default("[\"necessary\",\"analytics\",\"marketing\"]")
+  colors        Json?
+  policyUrl     String?
+  texts         Json?
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime @default(now())}
