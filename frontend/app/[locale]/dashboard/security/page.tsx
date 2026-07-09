@@ -145,7 +145,7 @@ const apiKeys: ApiKey[] = [
   {
     id: 'key-001',
     name: 'Production API',
-    prefix: 'dk_live_abc1',
+    prefix: '',
     createdAt: '2025-12-08',
     lastUsed: '2025-12-14T10:45:00',
     scopes: ['invoices:read', 'invoices:write', 'clients:read'],
@@ -161,7 +161,7 @@ const apiKeys: ApiKey[] = [
   {
     id: 'key-003',
     name: 'Webhook Integration',
-    prefix: 'dk_live_def2',
+    prefix: '',
     createdAt: '2025-10-20',
     scopes: ['webhooks:read', 'webhooks:write'],
   },

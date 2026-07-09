@@ -46,80 +46,6 @@ interface ValidationResult {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 // Mock data for demo mode
-const getMockEfacturaRecords = (): EfacturaRecord[] => [
-  {
-    id: 'ef-001',
-    invoiceNumber: 'FV-2025-0156',
-    invoiceDate: '2025-12-15',
-    partnerName: 'Tech Solutions SRL',
-    partnerCui: 'RO12345678',
-    grossAmount: 11900.00,
-    status: 'pending',
-    xmlGenerated: true,
-  },
-  {
-    id: 'ef-002',
-    invoiceNumber: 'FV-2025-0155',
-    invoiceDate: '2025-12-14',
-    partnerName: 'Office Direct SRL',
-    partnerCui: 'RO23456789',
-    grossAmount: 4850.00,
-    status: 'submitted',
-    uploadIndex: 'SPV-2025-123456',
-    submittedAt: '2025-12-14',
-    xmlGenerated: true,
-  },
-  {
-    id: 'ef-003',
-    invoiceNumber: 'FV-2025-0154',
-    invoiceDate: '2025-12-13',
-    partnerName: 'Digital Services SRL',
-    partnerCui: 'RO34567890',
-    grossAmount: 7500.00,
-    status: 'accepted',
-    uploadIndex: 'SPV-2025-123455',
-    submittedAt: '2025-12-13',
-    messages: ['Factură acceptată în sistemul ANAF'],
-    xmlGenerated: true,
-  },
-  {
-    id: 'ef-004',
-    invoiceNumber: 'FV-2025-0153',
-    invoiceDate: '2025-12-12',
-    partnerName: 'Construct Pro SRL',
-    partnerCui: 'RO45678901',
-    grossAmount: 23500.00,
-    status: 'rejected',
-    uploadIndex: 'SPV-2025-123454',
-    submittedAt: '2025-12-12',
-    messages: ['Eroare validare: CUI invalid'],
-    validationErrors: ['CUI beneficiar nu corespunde cu baza ANAF'],
-    xmlGenerated: true,
-  },
-  {
-    id: 'ef-005',
-    invoiceNumber: 'FV-2025-0152',
-    invoiceDate: '2025-12-11',
-    partnerName: 'Green Energy SRL',
-    partnerCui: 'RO56789012',
-    grossAmount: 15750.00,
-    status: 'pending',
-    xmlGenerated: false,
-  },
-  {
-    id: 'ef-006',
-    invoiceNumber: 'FV-2025-0151',
-    invoiceDate: '2025-12-10',
-    partnerName: 'Auto Parts SRL',
-    partnerCui: 'RO67890123',
-    grossAmount: 8900.00,
-    status: 'accepted',
-    uploadIndex: 'SPV-2025-123453',
-    submittedAt: '2025-12-10',
-    messages: ['Factură acceptată în sistemul ANAF'],
-    xmlGenerated: true,
-  },
-];
 
 export default function EfacturaPage() {
   const t = useTranslations('efactura');
@@ -173,16 +99,16 @@ export default function EfacturaPage() {
         setRecords(efacturaRecords);
       } else if (response.status === 401) {
         setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
-        // Use mock data for demo
-        setRecords(getMockEfacturaRecords());
+        setRecords([]);
       } else {
-        // Use mock data as fallback
-        setRecords(getMockEfacturaRecords());
+        // Honest empty state — never fabricated records in a compliance view.
+        setError('Nu am putut încărca facturile e-Factura. Reîncearcă. / Could not load e-Factura records. Please retry.');
+        setRecords([]);
       }
     } catch (err) {
       console.error('Fetch error:', err);
-      // Use mock data as fallback for demo
-      setRecords(getMockEfacturaRecords());
+      setError('Nu am putut încărca facturile e-Factura. Reîncearcă. / Could not load e-Factura records. Please retry.');
+      setRecords([]);
     } finally {
       setLoading(false);
     }
@@ -326,12 +252,12 @@ export default function EfacturaPage() {
         setXmlContent(result.xml || result.content || '');
       } else {
         // Generate mock XML for demo
-        setXmlContent(generateMockXml(record));
+        setError('XML-ul nu a putut fi încărcat de la server. / XML could not be loaded from the server.'); return;
         toast.success('XML generat', 'XML UBL 2.1 generat pentru previzualizare.');
       }
     } catch (err) {
       // Generate mock XML for demo
-      setXmlContent(generateMockXml(record));
+      setError('XML-ul nu a putut fi încărcat de la server. / XML could not be loaded from the server.'); return;
       toast.success('XML generat', 'XML UBL 2.1 generat local pentru previzualizare.');
     } finally {
       setXmlLoading(false);
@@ -339,52 +265,6 @@ export default function EfacturaPage() {
   };
 
   // Generate mock UBL 2.1 XML
-  const generateMockXml = (record: EfacturaRecord): string => {
-    return `<?xml version="1.0" encoding="UTF-8"?>
-<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1</cbc:CustomizationID>
-  <cbc:ID>${record.invoiceNumber}</cbc:ID>
-  <cbc:IssueDate>${record.invoiceDate}</cbc:IssueDate>
-  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
-  <cbc:DocumentCurrencyCode>RON</cbc:DocumentCurrencyCode>
-
-  <cac:AccountingSupplierParty>
-    <cac:Party>
-      <cac:PartyName>
-        <cbc:Name>DocumentIulia SRL</cbc:Name>
-      </cac:PartyName>
-      <cac:PartyTaxScheme>
-        <cbc:CompanyID>RO12345678</cbc:CompanyID>
-        <cac:TaxScheme>
-          <cbc:ID>VAT</cbc:ID>
-        </cac:TaxScheme>
-      </cac:PartyTaxScheme>
-    </cac:Party>
-  </cac:AccountingSupplierParty>
-
-  <cac:AccountingCustomerParty>
-    <cac:Party>
-      <cac:PartyName>
-        <cbc:Name>${record.partnerName}</cbc:Name>
-      </cac:PartyName>
-      <cac:PartyTaxScheme>
-        <cbc:CompanyID>${record.partnerCui}</cbc:CompanyID>
-        <cac:TaxScheme>
-          <cbc:ID>VAT</cbc:ID>
-        </cac:TaxScheme>
-      </cac:PartyTaxScheme>
-    </cac:Party>
-  </cac:AccountingCustomerParty>
-
-  <cac:LegalMonetaryTotal>
-    <cbc:TaxExclusiveAmount currencyID="RON">${(record.grossAmount / 1.19).toFixed(2)}</cbc:TaxExclusiveAmount>
-    <cbc:TaxInclusiveAmount currencyID="RON">${record.grossAmount.toFixed(2)}</cbc:TaxInclusiveAmount>
-    <cbc:PayableAmount currencyID="RON">${record.grossAmount.toFixed(2)}</cbc:PayableAmount>
-  </cac:LegalMonetaryTotal>
-</Invoice>`;
-  };
 
   // Download XML Handler
   const handleDownloadXml = async (record: EfacturaRecord) => {
@@ -397,12 +277,17 @@ export default function EfacturaPage() {
         },
       });
 
+      // Never fabricate UBL XML — a user could submit invented data to ANAF.
       let xmlData: string;
       if (response.ok) {
         const result = await response.json();
-        xmlData = result.xml || result.content || generateMockXml(record);
+        xmlData = result.xml || result.content || '';
       } else {
-        xmlData = generateMockXml(record);
+        xmlData = '';
+      }
+      if (!xmlData) {
+        setError('XML-ul nu a putut fi obținut de la server. Descărcarea a fost anulată. / XML could not be retrieved; download cancelled.');
+        return;
       }
 
       // Create download
