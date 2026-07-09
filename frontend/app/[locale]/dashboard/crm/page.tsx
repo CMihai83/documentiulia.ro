@@ -104,12 +104,13 @@ export default function CRMPage() {
             setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
             return;
           } else {
-            // Fallback to demo data on API error
-            setContacts(getDemoContacts());
+            setError('Nu am putut încărca datele CRM. Reîncearcă. / Could not load CRM data. Please retry.');
+            setContacts([]);
           }
         } catch (err) {
-          console.warn('CRM contacts API unavailable, using demo data');
-          setContacts(getDemoContacts());
+          console.error('CRM fetch error:', err);
+          setError('Nu am putut încărca datele CRM. Reîncearcă. / Could not load CRM data. Please retry.');
+          setContacts([]);
         }
       } else if (activeTab === 'pipeline') {
         try {
@@ -121,12 +122,13 @@ export default function CRMPage() {
             setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
             return;
           } else {
-            // Fallback to demo data on API error
-            setDeals(getDemoDeals());
+            setError('Nu am putut încărca datele CRM. Reîncearcă. / Could not load CRM data. Please retry.');
+            setDeals([]);
           }
         } catch (err) {
-          console.warn('CRM deals API unavailable, using demo data');
-          setDeals(getDemoDeals());
+          console.error('CRM fetch error:', err);
+          setError('Nu am putut încărca datele CRM. Reîncearcă. / Could not load CRM data. Please retry.');
+          setDeals([]);
         }
       } else if (activeTab === 'activities') {
         try {
@@ -138,12 +140,13 @@ export default function CRMPage() {
             setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
             return;
           } else {
-            // Fallback to demo data on API error
-            setActivities(getDemoActivities());
+            setError('Nu am putut încărca datele CRM. Reîncearcă. / Could not load CRM data. Please retry.');
+            setActivities([]);
           }
         } catch (err) {
-          console.warn('CRM activities API unavailable, using demo data');
-          setActivities(getDemoActivities());
+          console.error('CRM fetch error:', err);
+          setError('Nu am putut încărca datele CRM. Reîncearcă. / Could not load CRM data. Please retry.');
+          setActivities([]);
         }
       }
 
@@ -153,27 +156,11 @@ export default function CRMPage() {
         if (statsRes.ok) {
           setStats(await statsRes.json());
         } else {
-          // Fallback demo stats
-          setStats({
-            totalContacts: 24,
-            activeDeals: 12,
-            revenuePipeline: 218000,
-            conversionRate: 32.5,
-            leadCount: 8,
-            customerCount: 16,
-          });
+          setStats(null);
         }
       } catch (err) {
-        // Fallback demo stats
-        setStats({
-          totalContacts: 24,
-          activeDeals: 12,
-          revenuePipeline: 218000,
-          conversionRate: 32.5,
-          leadCount: 8,
-          customerCount: 16,
-        });
-      }
+          setStats(null);
+        }
     } catch (err) {
       console.error('Failed to fetch CRM data:', err);
       setError('Eroare de conexiune cu serverul');
@@ -182,144 +169,6 @@ export default function CRMPage() {
     }
   };
 
-  // Demo data functions for fallback
-  const getDemoContacts = (): Contact[] => [
-    {
-      id: '1',
-      name: 'Ion Popescu',
-      email: 'ion.popescu@company.ro',
-      phone: '+40721234567',
-      company: 'TechCorp SRL',
-      position: 'Director General',
-      status: 'CUSTOMER',
-      createdAt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
-      lastContactedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    {
-      id: '2',
-      name: 'Maria Ionescu',
-      email: 'maria@startup.ro',
-      phone: '+40723456789',
-      company: 'StartupHub',
-      position: 'CEO',
-      status: 'LEAD',
-      createdAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
-      lastContactedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    {
-      id: '3',
-      name: 'Andrei Georgescu',
-      email: 'andrei.g@enterprise.ro',
-      phone: '+40724567890',
-      company: 'Enterprise Solutions',
-      position: 'Procurement Manager',
-      status: 'PARTNER',
-      createdAt: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString(),
-      lastContactedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-  ];
-
-  const getDemoDeals = (): Deal[] => [
-    {
-      id: '1',
-      title: 'Implementare ERP - TechCorp',
-      contactId: '1',
-      contactName: 'Ion Popescu',
-      value: 50000,
-      currency: 'RON',
-      stage: 'NEGOTIATION',
-      probability: 75,
-      expectedCloseDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(),
-      createdAt: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    {
-      id: '2',
-      title: 'Consultanță Contabilitate',
-      contactId: '2',
-      contactName: 'Maria Ionescu',
-      value: 15000,
-      currency: 'RON',
-      stage: 'PROPOSAL',
-      probability: 50,
-      expectedCloseDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-      createdAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    {
-      id: '3',
-      title: 'Servicii IT Anuale',
-      contactId: '3',
-      contactName: 'Andrei Georgescu',
-      value: 120000,
-      currency: 'RON',
-      stage: 'WON',
-      probability: 100,
-      expectedCloseDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
-      createdAt: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    {
-      id: '4',
-      title: 'Training Angajați',
-      contactId: '1',
-      contactName: 'Ion Popescu',
-      value: 8000,
-      currency: 'RON',
-      stage: 'QUALIFIED',
-      probability: 40,
-      expectedCloseDate: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000).toISOString(),
-      createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    {
-      id: '5',
-      title: 'Audit Financiar',
-      contactId: '2',
-      contactName: 'Maria Ionescu',
-      value: 25000,
-      currency: 'RON',
-      stage: 'LEAD',
-      probability: 20,
-      expectedCloseDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString(),
-      createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-  ];
-
-  const getDemoActivities = (): Activity[] => [
-    {
-      id: '1',
-      type: 'MEETING',
-      title: 'Demo ERP Platform',
-      description: 'Prezentare demo pentru modul financiar',
-      contactId: '1',
-      contactName: 'Ion Popescu',
-      dueDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
-      completedAt: null,
-      status: 'PENDING',
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '2',
-      type: 'CALL',
-      title: 'Follow-up Propunere',
-      description: 'Discuție despre propunerea comercială',
-      contactId: '2',
-      contactName: 'Maria Ionescu',
-      dueDate: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString(),
-      completedAt: null,
-      status: 'PENDING',
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '3',
-      type: 'EMAIL',
-      title: 'Trimitere Ofertă',
-      description: 'Ofertă pentru servicii consultanță',
-      contactId: '2',
-      contactName: 'Maria Ionescu',
-      dueDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
-      completedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
-      status: 'COMPLETED',
-      createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-  ];
 
   const formatAmount = (amount: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {

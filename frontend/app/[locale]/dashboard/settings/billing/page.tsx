@@ -165,7 +165,7 @@ export default function BillingSettingsPage() {
         setBilling({
           plan: user.tier?.toLowerCase() || 'free',
           status: 'active',
-          nextBillingDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          nextBillingDate: '',
           amount: 0,
           currency: 'RON',
           paymentMethod: undefined,
