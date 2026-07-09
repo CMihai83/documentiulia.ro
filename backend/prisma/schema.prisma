@@ -3961,6 +3961,12 @@ model CmpBannerConfig {
   colors        Json?
   policyUrl     String?
   texts         Json?
+  // S-63 CMP hardening (all additive with safe defaults)
+  consentModeV2 Boolean  @default(true)
+  tcfEnabled    Boolean  @default(false)
+  geoEuOnly     Boolean  @default(false)
+  scanResult    Json?
+  scannedAt     DateTime?
   updatedAt     DateTime @updatedAt
   createdAt     DateTime @default(now())
 }
@@ -4120,4 +4126,96 @@ model BreachAction {
   incident   BreachIncident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
 
   @@index([incidentId])
+}
+
+// ---------------------------------------------------------------------------
+// GDPR-EXT S-63 — DPIA, vendor/DPA/SCC/TIA, sub-processor objections.
+// All org-scoped tenant tooling; additive only.
+// ---------------------------------------------------------------------------
+
+model DpiaAssessment {
+  id             String   @id @default(cuid())
+  orgId          String
+  ropaEntryId    String
+  version        Int      @default(1)
+  screening      Json     // questionnaire answers
+  verdict        String   // required | recommended | not_required
+  verdictReasons String[]
+  risks          Json?    // [{risk, likelihood, severity, mitigations, residualLikelihood, residualSeverity}]
+  residualBand   String?  // low | medium | high | very_high
+  wizardRequired Boolean  @default(false)
+  wizard         Json?    // the 5 Art-5 Law-190 gates
+  status         String   @default("draft") // draft | blocked | signed_off
+  art36Html      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([orgId, ropaEntryId, version])
+  @@index([orgId])
+}
+
+model GdprVendor {
+  id                String   @id @default(cuid())
+  orgId             String
+  name              String
+  role              String   @default("processor") // controller | processor | subprocessor
+  country           String   @default("RO")
+  isEu              Boolean  @default(true)
+  transferMechanism String?  // none_needed | scc | dpf_claimed | adequacy
+  dpfClaimed        Boolean  @default(false)
+  dpfEvidenceUrl    String?
+  ropaEntryIds      String[] @default([])
+  contactEmail      String?
+  published         Boolean  @default(false) // appears on the public sub-processor list
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([orgId])
+  @@index([orgId, published])
+}
+
+model DpaDocument {
+  id          String    @id @default(cuid())
+  orgId       String
+  vendorId    String
+  locale      String    @default("ro")
+  version     Int
+  sccModule   String?   // M1..M4
+  html        String
+  status      String    @default("draft")
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@unique([orgId, vendorId, locale, version])
+  @@index([orgId, vendorId])
+}
+
+model TiaAssessment {
+  id        String   @id @default(cuid())
+  orgId     String
+  vendorId  String
+  version   Int      @default(1)
+  answers   Json
+  score     Int
+  verdict   String   // proceed | proceed_with_measures | do_not_transfer
+  measures  String[]
+  createdAt DateTime @default(now())
+
+  @@unique([orgId, vendorId, version])
+  @@index([orgId])
+}
+
+model SubprocessorObjection {
+  id           String    @id @default(cuid())
+  orgId        String
+  vendorId     String
+  contactEmail String
+  reason       String
+  receivedAt   DateTime  @default(now())
+  respondDueAt DateTime
+  status       String    @default("open") // open | responded
+  respondedAt  DateTime?
+  response     String?
+
+  @@index([orgId, status])
 }

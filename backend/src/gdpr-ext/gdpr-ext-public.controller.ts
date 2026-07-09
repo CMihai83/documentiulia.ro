@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Header, Headers, Ip, Param, Post, Query } from '@nestjs/common';
 import { GdprExtService } from './gdpr-ext.service';
 import { GdprDsarService } from './gdpr-dsar.service';
+import { GdprDpiaVendorService } from './gdpr-dpia-vendor.service';
 import { Throttle, ThrottlerGuard } from '@nestjs/throttler';
 import { UseGuards } from '@nestjs/common';
 
@@ -16,7 +17,24 @@ import { UseGuards } from '@nestjs/common';
  */
 @Controller('gdpr-public')
 export class GdprExtPublicController {
-  constructor(private readonly svc: GdprExtService, private readonly dsar: GdprDsarService) {}
+  constructor(
+    private readonly svc: GdprExtService,
+    private readonly dsar: GdprDsarService,
+    private readonly dv: GdprDpiaVendorService,
+  ) {}
+
+  // ---- PUBLIC sub-processor list + objection intake (org from slug ONLY) ----
+  @Get('subprocessors/:orgSlug')
+  subprocessors(@Param('orgSlug') orgSlug: string) {
+    return this.dv.publicSubprocessors(orgSlug);
+  }
+
+  @Post('subprocessors/:orgSlug/object')
+  @UseGuards(ThrottlerGuard)
+  @Throttle({ default: { limit: 5, ttl: 60_000 } })
+  objection(@Param('orgSlug') orgSlug: string, @Body() body: any) {
+    return this.dv.recordObjection(orgSlug, body ?? {});
+  }
 
   @Get('policy/:orgSlug/:kind')
   @Header('Content-Type', 'text/html; charset=utf-8')
