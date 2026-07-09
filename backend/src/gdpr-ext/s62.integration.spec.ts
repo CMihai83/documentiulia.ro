@@ -9,6 +9,7 @@ import { Test } from '@nestjs/testing';
 import { PrismaService } from '../prisma/prisma.service';
 import { AuditChainService } from '../audit/audit-chain.service';
 import { GdprExtService } from './gdpr-ext.service';
+import { GdprTrainExportService } from './gdpr-train-export.service';
 import { GdprDsarService } from './gdpr-dsar.service';
 import { GdprBreachService } from './gdpr-breach.service';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
@@ -25,7 +26,7 @@ d('S-62 GDPR-EXT MUSTs integration', () => {
 
   beforeAll(async () => {
     const mod = await Test.createTestingModule({
-      providers: [PrismaService, AuditChainService, GdprExtService, GdprDsarService, GdprBreachService],
+      providers: [PrismaService, AuditChainService, GdprTrainExportService, GdprExtService, GdprDsarService, GdprBreachService],
     }).compile();
     prisma = mod.get(PrismaService); svc = mod.get(GdprExtService);
     dsar = mod.get(GdprDsarService); breach = mod.get(GdprBreachService);
