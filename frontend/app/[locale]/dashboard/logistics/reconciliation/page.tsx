@@ -153,88 +153,9 @@ export default function InventoryReconciliationPage() {
         const data = await response.json();
         setDashboard(data);
       } else {
-        // Mock data for demo
-        setDashboard({
-          activeSessions: [
-            {
-              id: 'COUNT-001',
-              warehouseId: 'WH-001',
-              type: 'CYCLE',
-              status: 'IN_PROGRESS',
-              scheduledDate: new Date().toISOString(),
-              startedAt: new Date().toISOString(),
-              countedBy: 'Maria Ionescu',
-              items: [
-                { id: '1', itemId: 'ITEM-001', sku: 'SKU-001', name: 'Produs A', systemQuantity: 100, countedQuantity: 98, variance: -2, variancePercent: -2, varianceValue: -100, unitCost: 50, status: 'VARIANCE_DETECTED', requiresRecount: false },
-                { id: '2', itemId: 'ITEM-002', sku: 'SKU-002', name: 'Produs B', systemQuantity: 250, unitCost: 25, status: 'PENDING', requiresRecount: false },
-                { id: '3', itemId: 'ITEM-003', sku: 'SKU-003', name: 'Produs C', systemQuantity: 75, countedQuantity: 75, variance: 0, variancePercent: 0, varianceValue: 0, unitCost: 100, status: 'COUNTED', requiresRecount: false },
-              ],
-              summary: {
-                totalItems: 3,
-                countedItems: 2,
-                pendingItems: 1,
-                itemsWithVariance: 1,
-                totalSystemValue: 15000,
-                totalCountedValue: 12350,
-                totalVarianceValue: -100,
-                variancePercent: -0.67,
-                positiveVarianceItems: 0,
-                negativeVarianceItems: 1,
-                completionPercent: 67,
-              },
-            },
-          ],
-          recentCompletedSessions: [
-            {
-              id: 'COUNT-000',
-              warehouseId: 'WH-001',
-              type: 'SPOT',
-              status: 'COMPLETED',
-              scheduledDate: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-              completedAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
-              verifiedBy: 'Admin',
-              items: [],
-              summary: {
-                totalItems: 10,
-                countedItems: 10,
-                pendingItems: 0,
-                itemsWithVariance: 2,
-                totalSystemValue: 25000,
-                totalCountedValue: 24800,
-                totalVarianceValue: -200,
-                variancePercent: -0.8,
-                positiveVarianceItems: 1,
-                negativeVarianceItems: 1,
-                completionPercent: 100,
-              },
-            },
-          ],
-          pendingAdjustments: [
-            {
-              id: 'ADJ-001',
-              itemId: 'ITEM-001',
-              sku: 'SKU-001',
-              type: 'DECREASE',
-              reason: 'PHYSICAL_COUNT',
-              previousQuantity: 100,
-              adjustedQuantity: 98,
-              quantityChange: -2,
-              valueChange: -100,
-              status: 'PENDING_APPROVAL',
-              createdAt: new Date().toISOString(),
-            },
-          ],
-          stats: {
-            totalSessionsThisMonth: 3,
-            averageVariancePercent: -0.5,
-            totalAdjustmentsValue: 350,
-            itemsRequiringAttention: 2,
-          },
-          alerts: [
-            { type: 'info', message: '1 sesiune de inventariere in desfasurare' },
-            { type: 'warning', message: '1 ajustare asteapta aprobare' },
-          ],
-        });
+        // No fabrication: honest empty state on a failed load.
+        setDashboard(null);
+        setError('Nu am putut încărca datele de inventariere. Reîncearcă. / Could not load reconciliation data. Please retry.');
       }
     } catch (err) {
       setError('Eroare la incarcarea datelor');
@@ -377,11 +298,11 @@ export default function InventoryReconciliationPage() {
 
   return (
     <div className="space-y-6">
-      {/* TODO(REQ): wire to real API — page currently renders demo data */}
-      <div role="status" className="mb-4 flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 px-4 py-2.5 text-sm font-medium text-amber-900 dark:text-amber-200">
-        <span aria-hidden="true">⚠</span>
-        <span>Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.</span>
-      </div>
+      {error && (
+        <div role="status" className="mb-4 flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 px-4 py-2.5 text-sm font-medium text-amber-900 dark:text-amber-200">
+          <span aria-hidden="true">⚠</span><span>{error}</span>
+        </div>
+      )}
       {/* Header */}
       <div className="flex justify-between items-start">
         <div>

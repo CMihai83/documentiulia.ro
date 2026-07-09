@@ -79,47 +79,6 @@ interface TransactionDetail {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
-// Mock data for demo
-const getMockTransaction = (id: string): TransactionDetail => ({
-  id,
-  transactionNumber: 'TRX-2025-0456',
-  type: 'income',
-  category: 'Venituri din vânzări',
-  subcategory: 'Servicii IT',
-  description: 'Încasare factură servicii consultanță IT - proiect ERP',
-  amount: 11900.00,
-  currency: 'RON',
-  date: '2025-12-15',
-  status: 'reconciled',
-  paymentMethod: 'Transfer bancar',
-  reference: 'OP-2025-78456',
-  bankAccount: {
-    id: 'acc-001',
-    name: 'Cont Principal RON',
-    iban: 'RO49BTRLRONCRT0123456789',
-    bank: 'Banca Transilvania',
-  },
-  partner: {
-    id: 'partner-001',
-    name: 'Tech Solutions SRL',
-    cui: 'RO12345678',
-  },
-  linkedDocuments: [
-    { type: 'invoice', id: 'inv-001', number: 'FV-2025-0156' },
-    { type: 'payment', id: 'pay-001', number: 'PL-2025-0089' },
-  ],
-  attachments: [
-    { id: 'att-001', name: 'extras_cont_dec2025.pdf', type: 'application/pdf', size: 125000 },
-  ],
-  notes: 'Plată conform contract servicii nr. 45/2025',
-  tags: ['client-premium', 'proiect-erp', 'recurent'],
-  createdBy: 'Maria Ionescu',
-  createdAt: '2025-12-15T10:30:00Z',
-  updatedAt: '2025-12-15T14:20:00Z',
-  reconciledAt: '2025-12-15T14:20:00Z',
-  reconciledBy: 'Sistem Automat',
-});
-
 export default function TransactionDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -146,12 +105,17 @@ export default function TransactionDetailPage() {
       if (response.ok) {
         const data = await response.json();
         setTransaction(data);
+      } else if (response.status === 404) {
+        setTransaction(null);
+        setError('Tranzacția nu există. / Transaction not found.');
       } else {
-        setTransaction(getMockTransaction(transactionId));
+        setTransaction(null);
+        setError('Nu am putut încărca tranzacția. Reîncearcă. / Could not load the transaction. Please retry.');
       }
     } catch (err) {
       console.error('Error fetching transaction:', err);
-      setTransaction(getMockTransaction(transactionId));
+      setTransaction(null);
+      setError('Nu am putut încărca tranzacția. Reîncearcă. / Could not load the transaction. Please retry.');
     } finally {
       setLoading(false);
     }
@@ -306,11 +270,6 @@ export default function TransactionDetailPage() {
 
   return (
     <div className="space-y-6">
-      {/* TODO(REQ): wire to real API — page currently renders demo data */}
-      <div role="status" className="mb-4 flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 px-4 py-2.5 text-sm font-medium text-amber-900 dark:text-amber-200">
-        <span aria-hidden="true">⚠</span>
-        <span>Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.</span>
-      </div>
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">

@@ -59,6 +59,8 @@ interface RecentActivity {
 
 type DateRange = '7d' | '30d' | '90d' | '1y' | 'custom';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+
 export default function AnalyticsDashboardPage() {
   const router = useRouter();
   const toast = useToast();
@@ -69,115 +71,74 @@ export default function AnalyticsDashboardPage() {
   const [invoiceData, setInvoiceData] = useState<ChartData[]>([]);
   const [activities, setActivities] = useState<RecentActivity[]>([]);
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+  const [loadError, setLoadError] = useState(false);
 
-  // Mock data loading
   const loadData = useCallback(async () => {
     setIsLoading(true);
+    setLoadError(false);
+    try {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const headers: HeadersInit = token ? { Authorization: `Bearer ${token}` } : {};
+      const [statsRes, monthlyRes, invRes, actRes] = await Promise.all([
+        fetch(`${API_URL}/dashboard/quick-stats`, { headers }),
+        fetch(`${API_URL}/finance/analytics/monthly`, { headers }),
+        fetch(`${API_URL}/invoices/summary`, { headers }),
+        fetch(`${API_URL}/analytics/dashboard/activity`, { headers }),
+      ]);
+      const anyOk = [statsRes, monthlyRes, invRes, actRes].some(r => r.ok);
+      if (!anyOk) throw new Error('all analytics sources failed');
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 800));
+      // --- Metric cards from real quick-stats ---
+      if (statsRes.ok) {
+        const q = await statsRes.json();
+        const fmt = (n: number) => (n ?? 0).toLocaleString('ro-RO', { style: 'currency', currency: 'RON', maximumFractionDigits: 0 });
+        setMetrics([
+          { title: 'Venituri', value: fmt(q?.revenue?.current), change: q?.revenue?.change ?? 0, changeLabel: 'vs. perioada anterioară', icon: DollarSign, color: 'text-green-600' },
+          { title: 'Facturi', value: String(q?.invoices?.total ?? 0), change: 0, changeLabel: `${q?.invoices?.pending ?? 0} în așteptare`, icon: FileText, color: 'text-blue-600' },
+          { title: 'Parteneri Activi', value: String(q?.partners?.active ?? 0), change: 0, changeLabel: `din ${q?.partners?.total ?? 0} total`, icon: Users, color: 'text-purple-600' },
+          { title: 'Profit', value: fmt(q?.profit?.current), change: q?.profit?.change ?? 0, changeLabel: 'vs. perioada anterioară', icon: TrendingUp, color: 'text-emerald-600' },
+        ]);
+      } else setMetrics([]);
 
-    // Metrics
-    setMetrics([
-      {
-        title: 'Venituri Totale',
-        value: '€47,832',
-        change: 12.5,
-        changeLabel: 'vs. luna trecută',
-        icon: DollarSign,
-        color: 'text-green-600',
-      },
-      {
-        title: 'Facturi Emise',
-        value: '156',
-        change: 8.2,
-        changeLabel: 'vs. luna trecută',
-        icon: FileText,
-        color: 'text-blue-600',
-      },
-      {
-        title: 'Clienți Activi',
-        value: '42',
-        change: 3.1,
-        changeLabel: 'vs. luna trecută',
-        icon: Users,
-        color: 'text-purple-600',
-      },
-      {
-        title: 'Timp Mediu Procesare',
-        value: '2.4s',
-        change: -15.3,
-        changeLabel: 'vs. luna trecută',
-        icon: Clock,
-        color: 'text-orange-600',
-      },
-    ]);
+      // --- Revenue trend from real monthly finance analytics ---
+      if (monthlyRes.ok) {
+        const m = await monthlyRes.json();
+        setRevenueData((Array.isArray(m) ? m : []).map((r: any) => ({
+          name: r.month, value: r.revenue ?? 0, previousValue: r.expenses ?? 0,
+        })));
+      } else setRevenueData([]);
 
-    // Revenue chart data
-    setRevenueData([
-      { name: 'Ian', value: 32000, previousValue: 28000 },
-      { name: 'Feb', value: 35000, previousValue: 30000 },
-      { name: 'Mar', value: 38000, previousValue: 32000 },
-      { name: 'Apr', value: 42000, previousValue: 36000 },
-      { name: 'Mai', value: 45000, previousValue: 40000 },
-      { name: 'Iun', value: 47832, previousValue: 43000 },
-    ]);
+      // --- Invoice status breakdown from real invoice summary ---
+      if (invRes.ok) {
+        const iv = await invRes.json();
+        setInvoiceData([
+          { name: 'Emise', value: iv?.issued?.count ?? 0 },
+          { name: 'Primite', value: iv?.received?.count ?? 0 },
+        ]);
+      } else setInvoiceData([]);
 
-    // Invoice chart data
-    setInvoiceData([
-      { name: 'Plătite', value: 128 },
-      { name: 'În așteptare', value: 18 },
-      { name: 'Restante', value: 8 },
-      { name: 'Anulate', value: 2 },
-    ]);
-
-    // Recent activities
-    setActivities([
-      {
-        id: '1',
-        type: 'invoice',
-        title: 'Factură nouă emisă',
-        description: 'FV-2024-00156 către Client SRL',
-        time: 'Acum 5 minute',
-        status: 'success',
-      },
-      {
-        id: '2',
-        type: 'payment',
-        title: 'Plată primită',
-        description: '€2,450.00 pentru FV-2024-00148',
-        time: 'Acum 15 minute',
-        status: 'success',
-      },
-      {
-        id: '3',
-        type: 'alert',
-        title: 'Factură restantă',
-        description: 'FV-2024-00132 - scadentă acum 5 zile',
-        time: 'Acum 1 oră',
-        status: 'warning',
-      },
-      {
-        id: '4',
-        type: 'document',
-        title: 'Document procesat OCR',
-        description: 'Contract_furnizor.pdf - 99.2% acuratețe',
-        time: 'Acum 2 ore',
-        status: 'success',
-      },
-      {
-        id: '5',
-        type: 'user',
-        title: 'Utilizator nou',
-        description: 'maria.popescu@company.ro s-a alăturat',
-        time: 'Acum 3 ore',
-        status: 'info',
-      },
-    ]);
-
-    setLastUpdated(new Date());
-    setIsLoading(false);
-  }, []);
+      // --- Recent activity from the real activity feed ---
+      if (actRes.ok) {
+        const a = await actRes.json();
+        const list = Array.isArray(a) ? a : a?.activities ?? [];
+        setActivities(list.slice(0, 8).map((it: any, i: number) => ({
+          id: it.id ?? String(i),
+          type: it.type ?? 'document',
+          title: it.title ?? it.action ?? 'Activitate',
+          description: it.description ?? it.detail ?? '',
+          time: it.time ?? (it.createdAt ? new Date(it.createdAt).toLocaleString('ro-RO') : ''),
+          status: it.status ?? 'info',
+        })));
+      } else setActivities([]);
+    } catch (e) {
+      console.error('Analytics load failed:', e);
+      setLoadError(true);
+      setMetrics([]); setRevenueData([]); setInvoiceData([]); setActivities([]);
+    } finally {
+      setLastUpdated(new Date());
+      setIsLoading(false);
+    }
+  }, [dateRange]);
 
   useEffect(() => {
     loadData();
@@ -377,11 +338,12 @@ export default function AnalyticsDashboardPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 p-6">
-      {/* TODO(REQ): wire to real API — page currently renders demo data */}
-      <div role="status" className="mb-4 flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 px-4 py-2.5 text-sm font-medium text-amber-900 dark:text-amber-200">
-        <span aria-hidden="true">⚠</span>
-        <span>Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.</span>
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 px-4 py-2.5 text-sm font-medium text-amber-900 dark:text-amber-200">
+          <span aria-hidden="true">⚠</span>
+          <span>Nu am putut încărca datele de analiză. Reîncearcă. / Could not load analytics data. Please retry.</span>
+        </div>
+      )}
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
@@ -625,6 +587,7 @@ export default function AnalyticsDashboardPage() {
               <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
                 <Target className="h-5 w-5 text-red-500" />
                 Obiective Lunare
+                <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold text-amber-800 dark:bg-amber-900/40 dark:text-amber-300" title="Date demonstrative — modul de obiective încă neconectat">demo</span>
               </h2>
               <button
                 onClick={handleEditGoals}
