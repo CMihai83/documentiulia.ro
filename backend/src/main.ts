@@ -15,7 +15,7 @@ async function bootstrap() {
   });
 
   // Behind nginx: resolve the real client IP from X-Forwarded-For (loopback proxy only)
-  app.getHttpAdapter().getInstance().set('trust proxy', 'loopback');
+  app.getHttpAdapter().getInstance().set('trust proxy', ['loopback', 'uniquelocal']);
   console.log('App created successfully');
 
   // Use Winston logger
