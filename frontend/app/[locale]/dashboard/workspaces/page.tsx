@@ -26,7 +26,7 @@ export default function WorkspacesPage() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    const r = await api.get<Workspace[]>('/workspaces');
+    const r = await api.get<Workspace[]>('/delivery-workspaces');
     setItems(r.data ?? []);
     setLoading(false);
   }, []);
@@ -34,7 +34,7 @@ export default function WorkspacesPage() {
 
   const create = async () => {
     if (!name.trim()) return;
-    await api.post('/workspaces', { name, kind, budgetCapEur: budget });
+    await api.post('/delivery-workspaces', { name, kind, budgetCapEur: budget });
     setName('');
     void load();
   };

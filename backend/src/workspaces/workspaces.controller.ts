@@ -10,7 +10,7 @@ import { WorkspacesService } from './workspaces.service';
  * service (creator or the engagement's client/expert). GPU pods are unavailable
  * until RUNPOD_API_KEY is configured — create() returns a clear message.
  */
-@Controller('workspaces')
+@Controller('delivery-workspaces')
 @UseGuards(JwtAuthGuard, TierGuard)
 @RequiresTier(Tier.PRO)
 export class WorkspacesController {
