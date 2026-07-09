@@ -13,6 +13,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
   });
+
+  // Behind nginx: resolve the real client IP from X-Forwarded-For (loopback proxy only)
+  app.getHttpAdapter().getInstance().set('trust proxy', 'loopback');
   console.log('App created successfully');
 
   // Use Winston logger
