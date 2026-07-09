@@ -3960,4 +3960,5 @@ model CmpBannerConfig {
   policyUrl     String?
   texts         Json?
   updatedAt     DateTime @updatedAt
-  createdAt     DateTime @default(now())}
+  createdAt     DateTime @default(now())
+}
