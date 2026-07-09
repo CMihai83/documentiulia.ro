@@ -65,6 +65,7 @@ import { ChartsModule } from './charts/charts.module';
 import { MatchingModule } from './matching/matching.module';
 import { FundsModule } from './funds/funds.module';
 import { ExpertiseModule } from './expertise/expertise.module';
+import { WorkspacesModule } from './workspaces/workspaces.module';
 import { GdprExtModule } from './gdpr-ext/gdpr-ext.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { ToolsModule } from './tools/tools.module';
@@ -229,6 +230,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     MatchingModule,
     FundsModule,
     ExpertiseModule,
+    WorkspacesModule,
     GdprExtModule,
     OnboardingModule,
     DeveloperModule,
