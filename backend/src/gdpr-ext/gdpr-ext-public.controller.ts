@@ -1,5 +1,8 @@
 import { Body, Controller, Get, Header, Headers, Ip, Param, Post, Query } from '@nestjs/common';
 import { GdprExtService } from './gdpr-ext.service';
+import { GdprDsarService } from './gdpr-dsar.service';
+import { Throttle, ThrottlerGuard } from '@nestjs/throttler';
+import { UseGuards } from '@nestjs/common';
 
 /**
  * GDPR-EXT PUBLIC endpoints — deliberately WITHOUT JwtAuthGuard/TierGuard
@@ -13,7 +16,7 @@ import { GdprExtService } from './gdpr-ext.service';
  */
 @Controller('gdpr-public')
 export class GdprExtPublicController {
-  constructor(private readonly svc: GdprExtService) {}
+  constructor(private readonly svc: GdprExtService, private readonly dsar: GdprDsarService) {}
 
   @Get('policy/:orgSlug/:kind')
   @Header('Content-Type', 'text/html; charset=utf-8')
@@ -37,5 +40,18 @@ export class GdprExtPublicController {
     @Headers('user-agent') ua?: string,
   ) {
     return this.svc.recordConsent(slug, body ?? {}, ip, ua);
+  }
+
+  // ---- PUBLIC DSAR intake (org from slug ONLY) ----
+  @Post('dsar/:orgSlug')
+  @UseGuards(ThrottlerGuard)
+  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  dsarIntake(@Param('orgSlug') orgSlug: string, @Body() body: any) {
+    return this.dsar.publicIntake(orgSlug, body ?? {});
+  }
+
+  @Get('dsar/status/:token')
+  dsarStatus(@Param('token') token: string) {
+    return this.dsar.publicStatus(token);
   }
 }

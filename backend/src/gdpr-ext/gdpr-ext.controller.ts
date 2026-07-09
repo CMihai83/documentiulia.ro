@@ -4,6 +4,9 @@ import { TierGuard } from '../auth/tier.guard';
 import { RequiresTier } from '../auth/tiers.decorator';
 import { Tier } from '@prisma/client';
 import { GdprExtService } from './gdpr-ext.service';
+import { GdprDsarService } from './gdpr-dsar.service';
+import { GdprBreachService } from './gdpr-breach.service';
+import { LEGAL_TERMS } from './legal-terms';
 import { IndustryTemplate, RopaEntryLike } from './ropa.logic';
 import { PolicyKind, PolicyLocale } from './policy.logic';
 
@@ -17,7 +20,11 @@ import { PolicyKind, PolicyLocale } from './policy.logic';
 @Controller('gdpr-ext')
 @UseGuards(JwtAuthGuard, TierGuard)
 export class GdprExtController {
-  constructor(private readonly svc: GdprExtService) {}
+  constructor(
+    private readonly svc: GdprExtService,
+    private readonly dsar: GdprDsarService,
+    private readonly breach: GdprBreachService,
+  ) {}
 
   private userId(req: any): string {
     return req?.user?.id || req?.user?.userId;
@@ -117,4 +124,70 @@ export class GdprExtController {
   csv(@Request() req: any) {
     return this.svc.consentCsv(this.orgId(req));
   }
+
+  private assertPro(req: any) {
+    if (this.tierRank(req) < 1) throw new ForbiddenException('This feature requires the PRO plan. Upgrade at /dashboard/settings/subscription.');
+  }
+  private assertBusiness(req: any) {
+    if (this.tierRank(req) < 2) throw new ForbiddenException('This feature requires the BUSINESS plan. Upgrade at /dashboard/settings/subscription.');
+  }
+
+  // ---- GE-CNP: Law 190/2018 check for a RoPA entry (BUSINESS) ----
+  @Get('ropa/:id/law190')
+  law190(@Request() req: any, @Param('id') id: string) {
+    this.assertBusiness(req);
+    return this.svc.law190(this.orgId(req), id);
+  }
+
+  // ---- GE-DSAR management (PRO) ----
+  @Get('dsar')
+  dsarList(@Request() req: any) { this.assertPro(req); return this.dsar.list(this.orgId(req)); }
+
+  @Get('dsar/:id')
+  dsarGet(@Request() req: any, @Param('id') id: string) { this.assertPro(req); return this.dsar.get(this.orgId(req), id); }
+
+  @Post('dsar/:id/verify')
+  dsarVerify(@Request() req: any, @Param('id') id: string, @Body() b: { providedTier: 'low'|'medium'|'high' }) {
+    this.assertPro(req); return this.dsar.verify(this.orgId(req), this.userId(req), id, b?.providedTier ?? 'low');
+  }
+
+  @Post('dsar/:id/extend')
+  dsarExtend(@Request() req: any, @Param('id') id: string, @Body() b: { reason?: string }) {
+    this.assertPro(req); return this.dsar.extend(this.orgId(req), this.userId(req), id, b?.reason ?? '');
+  }
+
+  @Post('dsar/:id/export')
+  dsarExport(@Request() req: any, @Param('id') id: string) {
+    this.assertPro(req); return this.dsar.exportData(this.orgId(req), this.userId(req), id);
+  }
+
+  @Post('dsar/:id/erase')
+  dsarErase(@Request() req: any, @Param('id') id: string) {
+    this.assertPro(req); return this.dsar.erase(this.orgId(req), this.userId(req), id);
+  }
+
+  // ---- GE-BREACH (BUSINESS) ----
+  @Get('breach')
+  breachList(@Request() req: any) { this.assertBusiness(req); return this.breach.list(this.orgId(req)); }
+
+  @Post('breach')
+  breachCreate(@Request() req: any, @Body() dto: any) { this.assertBusiness(req); return this.breach.create(this.orgId(req), this.userId(req), dto); }
+
+  @Get('breach/register')
+  breachRegister(@Request() req: any) { this.assertBusiness(req); return this.breach.register(this.orgId(req)); }
+
+  @Get('breach/:id')
+  breachGet(@Request() req: any, @Param('id') id: string) { this.assertBusiness(req); return this.breach.get(this.orgId(req), id); }
+
+  @Post('breach/:id/notified')
+  breachNotified(@Request() req: any, @Param('id') id: string) { this.assertBusiness(req); return this.breach.markNotified(this.orgId(req), this.userId(req), id); }
+
+  @Post('breach/:id/not-notified')
+  breachNotNotified(@Request() req: any, @Param('id') id: string, @Body() b: { reason?: string }) {
+    this.assertBusiness(req); return this.breach.markNotNotified(this.orgId(req), this.userId(req), id, b?.reason ?? '');
+  }
+
+  // ---- Liability ToS (any tier) ----
+  @Get('legal-terms')
+  legalTerms() { return LEGAL_TERMS; }
 }

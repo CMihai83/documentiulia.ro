@@ -8,61 +8,61 @@ datasource db {
 }
 
 model Organization {
-  aiTrainingAuthorized   Boolean   @default(false)
+  aiTrainingAuthorized   Boolean                   @default(false)
   aiTrainingAuthorizedAt DateTime?
   aiTrainingAuthorizedBy String?
-  id                 String                    @id @default(cuid())
-  name               String
-  slug               String                    @unique
-  cui                String?                   @unique
-  regCom             String?
-  address            String?
-  city               String?
-  county             String?
-  country            String                    @default("Romania")
-  postalCode         String?
-  phone              String?
-  email              String?
-  website            String?
-  bankName           String?
-  bankAccount        String?
-  tier               Tier                      @default(FREE)
-  maxUsers           Int                       @default(1)
-  maxInvoices        Int                       @default(10)
-  maxDocuments       Int                       @default(50)
-  defaultVatRate     Decimal                   @default(21) @db.Decimal(5, 2)
-  defaultCurrency    String                    @default("RON")
-  invoicePrefix      String?
-  invoiceCounter     Int                       @default(0)
-  isActive           Boolean                   @default(true)
-  activatedAt        DateTime?
-  deactivatedAt      DateTime?
-  spvConnected       Boolean                   @default(false)
-  sagaConnected      Boolean                   @default(false)
-  sagaAccessToken    String?
-  sagaRefreshToken   String?
-  sagaTokenExpiresAt DateTime?
-  sagaTokenScope     String?
-  settings           Json?                     @default("{}")
-  createdAt          DateTime                  @default(now())
-  updatedAt          DateTime                  @updatedAt
-  auditLogs          AuditLog[]
-  contracts          Contract[]
-  documents          Document[]
-  employees          Employee[]
-  invoices           Invoice[]
-  ocrTemplates       OCRTemplate[]
-  integrations       OrganizationIntegration[]
-  invitations        OrganizationInvitation[]
-  members            OrganizationMember[]
-  partners           Partner[]
-  products           Product[]
-  recurringInvoices  RecurringInvoice[]
-  saftReports        SAFTReport[]
-  spvMessages        SpvMessage[]
-  spvSubmissions     SpvSubmission[]
-  spvTokens          SpvToken[]
-  vatReports         VATReport[]
+  id                     String                    @id @default(cuid())
+  name                   String
+  slug                   String                    @unique
+  cui                    String?                   @unique
+  regCom                 String?
+  address                String?
+  city                   String?
+  county                 String?
+  country                String                    @default("Romania")
+  postalCode             String?
+  phone                  String?
+  email                  String?
+  website                String?
+  bankName               String?
+  bankAccount            String?
+  tier                   Tier                      @default(FREE)
+  maxUsers               Int                       @default(1)
+  maxInvoices            Int                       @default(10)
+  maxDocuments           Int                       @default(50)
+  defaultVatRate         Decimal                   @default(21) @db.Decimal(5, 2)
+  defaultCurrency        String                    @default("RON")
+  invoicePrefix          String?
+  invoiceCounter         Int                       @default(0)
+  isActive               Boolean                   @default(true)
+  activatedAt            DateTime?
+  deactivatedAt          DateTime?
+  spvConnected           Boolean                   @default(false)
+  sagaConnected          Boolean                   @default(false)
+  sagaAccessToken        String?
+  sagaRefreshToken       String?
+  sagaTokenExpiresAt     DateTime?
+  sagaTokenScope         String?
+  settings               Json?                     @default("{}")
+  createdAt              DateTime                  @default(now())
+  updatedAt              DateTime                  @updatedAt
+  auditLogs              AuditLog[]
+  contracts              Contract[]
+  documents              Document[]
+  employees              Employee[]
+  invoices               Invoice[]
+  ocrTemplates           OCRTemplate[]
+  integrations           OrganizationIntegration[]
+  invitations            OrganizationInvitation[]
+  members                OrganizationMember[]
+  partners               Partner[]
+  products               Product[]
+  recurringInvoices      RecurringInvoice[]
+  saftReports            SAFTReport[]
+  spvMessages            SpvMessage[]
+  spvSubmissions         SpvSubmission[]
+  spvTokens              SpvToken[]
+  vatReports             VATReport[]
 
   @@index([slug])
   @@index([cui])
@@ -114,7 +114,7 @@ model OrganizationInvitation {
 
 model User {
   id                      String                @id @default(cuid())
-  anonymizedAt      DateTime?
+  anonymizedAt            DateTime?
   clerkId                 String?               @unique
   email                   String                @unique
   name                    String?
@@ -177,27 +177,27 @@ model DashboardPreferences {
 }
 
 model Document {
-  id              String           @id @default(cuid())
+  id                String           @id @default(cuid())
   restrictedAt      DateTime?
   restrictionReason String?
-  legalHold         Boolean   @default(false)
-  userId          String
-  filename        String
-  fileUrl         String
-  fileType        String
-  fileSize        Int
-  status          DocStatus        @default(PENDING)
-  ocrData         Json?
-  extractedText   String?
-  confidence      Float?
-  createdAt       DateTime         @default(now())
-  processedAt     DateTime?
-  organizationId  String?
-  contract        Contract?
-  organization    Organization?    @relation(fields: [organizationId], references: [id])
-  user            User             @relation(fields: [userId], references: [id])
-  extractedFields ExtractedField[]
-  invoice         Invoice?
+  legalHold         Boolean          @default(false)
+  userId            String
+  filename          String
+  fileUrl           String
+  fileType          String
+  fileSize          Int
+  status            DocStatus        @default(PENDING)
+  ocrData           Json?
+  extractedText     String?
+  confidence        Float?
+  createdAt         DateTime         @default(now())
+  processedAt       DateTime?
+  organizationId    String?
+  contract          Contract?
+  organization      Organization?    @relation(fields: [organizationId], references: [id])
+  user              User             @relation(fields: [userId], references: [id])
+  extractedFields   ExtractedField[]
+  invoice           Invoice?
 
   @@index([userId])
   @@index([organizationId])
@@ -206,9 +206,9 @@ model Document {
 
 model Invoice {
   id                 String            @id @default(cuid())
-  restrictedAt      DateTime?
-  restrictionReason String?
-  legalHold         Boolean   @default(false)
+  restrictedAt       DateTime?
+  restrictionReason  String?
+  legalHold          Boolean           @default(false)
   userId             String
   documentId         String?           @unique
   invoiceNumber      String
@@ -291,24 +291,24 @@ model Payment {
 }
 
 model VATReport {
-  id             String        @id @default(cuid())
+  id                String        @id @default(cuid())
   restrictedAt      DateTime?
   restrictionReason String?
-  legalHold         Boolean   @default(false)
-  userId         String
-  period         String
-  vatCollected   Decimal       @db.Decimal(12, 2)
-  vatDeductible  Decimal       @db.Decimal(12, 2)
-  vatPayable     Decimal       @db.Decimal(12, 2)
-  vatRate        Decimal       @default(21) @db.Decimal(5, 2)
-  status         ReportStatus  @default(DRAFT)
-  submittedAt    DateTime?
-  anafRef        String?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  organizationId String?
-  organization   Organization? @relation(fields: [organizationId], references: [id])
-  user           User          @relation(fields: [userId], references: [id])
+  legalHold         Boolean       @default(false)
+  userId            String
+  period            String
+  vatCollected      Decimal       @db.Decimal(12, 2)
+  vatDeductible     Decimal       @db.Decimal(12, 2)
+  vatPayable        Decimal       @db.Decimal(12, 2)
+  vatRate           Decimal       @default(21) @db.Decimal(5, 2)
+  status            ReportStatus  @default(DRAFT)
+  submittedAt       DateTime?
+  anafRef           String?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  organizationId    String?
+  organization      Organization? @relation(fields: [organizationId], references: [id])
+  user              User          @relation(fields: [userId], references: [id])
 
   @@unique([userId, period])
   @@index([userId])
@@ -317,26 +317,26 @@ model VATReport {
 }
 
 model SAFTReport {
-  id               String        @id @default(cuid())
+  id                String        @id @default(cuid())
   restrictedAt      DateTime?
   restrictionReason String?
-  legalHold         Boolean   @default(false)
-  userId           String
-  period           String
-  reportType       String        @default("D406")
-  xmlUrl           String?
-  xmlSize          Int?
-  validated        Boolean       @default(false)
-  validatedAt      DateTime?
-  validationResult Json?
-  status           ReportStatus  @default(DRAFT)
-  submittedAt      DateTime?
-  spvRef           String?
-  createdAt        DateTime      @default(now())
-  updatedAt        DateTime      @updatedAt
-  organizationId   String?
-  organization     Organization? @relation(fields: [organizationId], references: [id])
-  user             User          @relation(fields: [userId], references: [id])
+  legalHold         Boolean       @default(false)
+  userId            String
+  period            String
+  reportType        String        @default("D406")
+  xmlUrl            String?
+  xmlSize           Int?
+  validated         Boolean       @default(false)
+  validatedAt       DateTime?
+  validationResult  Json?
+  status            ReportStatus  @default(DRAFT)
+  submittedAt       DateTime?
+  spvRef            String?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  organizationId    String?
+  organization      Organization? @relation(fields: [organizationId], references: [id])
+  user              User          @relation(fields: [userId], references: [id])
 
   @@unique([userId, period])
   @@index([userId])
@@ -594,7 +594,7 @@ model PfaActivity {
 
 model Employee {
   id                 String              @id @default(cuid())
-  anonymizedAt      DateTime?
+  anonymizedAt       DateTime?
   userId             String
   firstName          String
   lastName           String
@@ -627,20 +627,20 @@ model Employee {
 }
 
 model Payroll {
-  id            String        @id @default(cuid())
+  id                String        @id @default(cuid())
   restrictedAt      DateTime?
   restrictionReason String?
-  legalHold         Boolean   @default(false)
-  employeeId    String
-  period        String
-  grossSalary   Decimal       @db.Decimal(10, 2)
-  netSalary     Decimal       @db.Decimal(10, 2)
-  taxes         Decimal       @db.Decimal(10, 2)
-  contributions Decimal       @db.Decimal(10, 2)
-  status        PayrollStatus @default(PENDING)
-  paidAt        DateTime?
-  createdAt     DateTime      @default(now())
-  employee      Employee      @relation(fields: [employeeId], references: [id])
+  legalHold         Boolean       @default(false)
+  employeeId        String
+  period            String
+  grossSalary       Decimal       @db.Decimal(10, 2)
+  netSalary         Decimal       @db.Decimal(10, 2)
+  taxes             Decimal       @db.Decimal(10, 2)
+  contributions     Decimal       @db.Decimal(10, 2)
+  status            PayrollStatus @default(PENDING)
+  paidAt            DateTime?
+  createdAt         DateTime      @default(now())
+  employee          Employee      @relation(fields: [employeeId], references: [id])
 
   @@unique([employeeId, period])
   @@index([employeeId])
@@ -721,9 +721,9 @@ model AIQuery {
 
 model AuditLog {
   id             String        @id @default(cuid())
-  sequence          BigInt?
-  previousHash      String?
-  hash              String?
+  sequence       BigInt?
+  previousHash   String?
+  hash           String?
   userId         String
   action         String
   entity         String
@@ -1480,34 +1480,34 @@ model LMSLesson {
 }
 
 model LMSEnrollment {
-  id                  String              @id @default(cuid())
-  userId              String
-  courseId            String
-  progress            Float               @default(0)
-  startedAt           DateTime            @default(now())
-  completedAt         DateTime?
-  certificateUrl      String?
-  certificateIssuedAt DateTime?
-  quizScore           Float?
-  passed              Boolean?
+  id                   String              @id @default(cuid())
+  userId               String
+  courseId             String
+  progress             Float               @default(0)
+  startedAt            DateTime            @default(now())
+  completedAt          DateTime?
+  certificateUrl       String?
+  certificateIssuedAt  DateTime?
+  quizScore            Float?
+  passed               Boolean?
   // F-1 lossless additions (from the in-memory Enrollment interface)
-  status              String              @default("ACTIVE")
-  accessType          String              @default("PURCHASED")
-  expiresAt           DateTime?
-  paymentId           String?
-  certificateId       String?
-  currentLessonId     String?
-  currentModuleId     String?
-  completedModules    String[]            @default([])
-  completedAssessments String[]           @default([])
-  totalTimeSpent      Int                 @default(0)
-  lastAccessedAt      DateTime?
-  streakDays          Int                 @default(0)
-  longestStreak       Int                 @default(0)
-  createdAt           DateTime            @default(now())
-  updatedAt           DateTime            @updatedAt
-  course              LMSCourse           @relation(fields: [courseId], references: [id])
-  lessonProgress      LMSLessonProgress[]
+  status               String              @default("ACTIVE")
+  accessType           String              @default("PURCHASED")
+  expiresAt            DateTime?
+  paymentId            String?
+  certificateId        String?
+  currentLessonId      String?
+  currentModuleId      String?
+  completedModules     String[]            @default([])
+  completedAssessments String[]            @default([])
+  totalTimeSpent       Int                 @default(0)
+  lastAccessedAt       DateTime?
+  streakDays           Int                 @default(0)
+  longestStreak        Int                 @default(0)
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+  course               LMSCourse           @relation(fields: [courseId], references: [id])
+  lessonProgress       LMSLessonProgress[]
 
   @@unique([userId, courseId])
   @@index([userId])
@@ -1533,36 +1533,36 @@ model LMSLessonProgress {
 }
 
 model FreelancerProfile {
-  id                String                       @id @default(cuid())
-  userId            String?
-  name              String
-  email             String                       @unique
-  phone             String?
-  skills            String[]
-  categories        String[]
-  experience        Int?
-  portfolioUrl      String?
-  linkedinUrl       String?
-  bio               String?
-  availability      FreelancerAvailability       @default(AVAILABLE)
-  hourlyRate        Decimal?                     @db.Decimal(10, 2)
-  currency          String                       @default("EUR")
-  preferredWorkType String[]
-  rating            Float?                       @default(0)
-  reviewCount       Int                          @default(0)
-  verified          Boolean                      @default(false)
-  verifiedAt        DateTime?
-  pfaNumber         String?
-  cui               String?
+  id                  String                         @id @default(cuid())
+  userId              String?
+  name                String
+  email               String                         @unique
+  phone               String?
+  skills              String[]
+  categories          String[]
+  experience          Int?
+  portfolioUrl        String?
+  linkedinUrl         String?
+  bio                 String?
+  availability        FreelancerAvailability         @default(AVAILABLE)
+  hourlyRate          Decimal?                       @db.Decimal(10, 2)
+  currency            String                         @default("EUR")
+  preferredWorkType   String[]
+  rating              Float?                         @default(0)
+  reviewCount         Int                            @default(0)
+  verified            Boolean                        @default(false)
+  verifiedAt          DateTime?
+  pfaNumber           String?
+  cui                 String?
   // F-3 lossless additions (matching): rich skills + remaining interface fields
-  skillsDetailed    Json?
-  profileData       Json?
-  profileStatus     String                       @default("ACTIVE")
-  country           String?
-  createdAt         DateTime                     @default(now())
-  updatedAt         DateTime                     @updatedAt
-  projects          FreelanceProjectAssignment[]
-  contracts         FreelancerContract[]
+  skillsDetailed      Json?
+  profileData         Json?
+  profileStatus       String                         @default("ACTIVE")
+  country             String?
+  createdAt           DateTime                       @default(now())
+  updatedAt           DateTime                       @updatedAt
+  projects            FreelanceProjectAssignment[]
+  contracts           FreelancerContract[]
   projectApplications FreelancerProjectApplication[]
 
   @@index([userId])
@@ -2942,20 +2942,20 @@ model CostLine {
 }
 
 model InternalOrder {
-  id                        String              @id @default(cuid())
-  organizationId            String
-  code                      String
-  name                      String
-  type                      InternalOrderType   @default(project)
-  responsibleCostCenterId   String
-  budget                    Decimal             @default(0) @db.Decimal(14, 2)
-  actual                    Decimal             @default(0) @db.Decimal(14, 2)
-  currency                  String              @default("RON")
-  status                    InternalOrderStatus @default(open)
-  startDate                 String
-  endDate                   String?
-  createdAt                 DateTime            @default(now())
-  updatedAt                 DateTime            @updatedAt
+  id                      String              @id @default(cuid())
+  organizationId          String
+  code                    String
+  name                    String
+  type                    InternalOrderType   @default(project)
+  responsibleCostCenterId String
+  budget                  Decimal             @default(0) @db.Decimal(14, 2)
+  actual                  Decimal             @default(0) @db.Decimal(14, 2)
+  currency                String              @default("RON")
+  status                  InternalOrderStatus @default(open)
+  startDate               String
+  endDate                 String?
+  createdAt               DateTime            @default(now())
+  updatedAt               DateTime            @updatedAt
 
   @@unique([organizationId, code])
   @@index([organizationId])
@@ -2995,11 +2995,11 @@ model AllocationPosting {
   id             String   @id @default(cuid())
   organizationId String
   cycleId        String
-  runId          String   // groups one cycle run (for idempotent reversal)
+  runId          String // groups one cycle run (for idempotent reversal)
   period         String
   costCenterId   String
-  costElementId  String   // secondary allocation cost element (e.g. 931)
-  direction      String   // 'sender' | 'receiver'
+  costElementId  String // secondary allocation cost element (e.g. 931)
+  direction      String // 'sender' | 'receiver'
   amount         Decimal  @db.Decimal(14, 2) // negative for sender, positive for receivers
   reversed       Boolean  @default(false)
   createdAt      DateTime @default(now())
@@ -3056,25 +3056,25 @@ model B2CSubmission {
 
 // ---- S-44 / DOC-44-1: persist consultancy bookings (was in-memory) ----
 model ConsultingBooking {
-  id             String    @id
+  id             String   @id
   organizationId String
   userId         String
   packageId      String
-  package        Json      // snapshot of the package at booking time
+  package        Json // snapshot of the package at booking time
   consultantId   String?
   consultantName String?
   scheduledAt    DateTime
   endTime        DateTime
-  status         String    @default("pending")
-  paymentStatus  String    @default("pending")
-  amount         Decimal   @db.Decimal(14, 2)
-  currency       String    @default("RON")
+  status         String   @default("pending")
+  paymentStatus  String   @default("pending")
+  amount         Decimal  @db.Decimal(14, 2)
+  currency       String   @default("RON")
   notes          String?
   meetingLink    String?
   attachments    Json?
   feedback       Json?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   @@index([organizationId])
   @@index([organizationId, status])
@@ -3086,11 +3086,11 @@ model MigrationStaging {
   id             String   @id @default(cuid())
   organizationId String
   batchId        String
-  sourceType     String   // CSV | XML | SAGA
-  entityType     String   // customer | product | invoice
+  sourceType     String // CSV | XML | SAGA
+  entityType     String // customer | product | invoice
   rowIndex       Int
   rawData        Json
-  status         String   // valid | warning | error
+  status         String // valid | warning | error
   errors         String[]
   createdAt      DateTime @default(now())
 
@@ -3100,17 +3100,17 @@ model MigrationStaging {
 
 // ---- S-47 / F-2: persisted gamification (user state; catalogs stay code-defined) ----
 model GamificationUserPoints {
-  id               String    @id @default(cuid())
-  userId           String    @unique
-  totalPoints      Int       @default(0)
-  level            Int       @default(1)
-  levelProgress    Float     @default(0)
-  pointsToNextLevel Int      @default(100)
-  weeklyPoints     Int       @default(0)
-  monthlyPoints    Int       @default(0)
-  lastActiveDate   DateTime?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  id                String    @id @default(cuid())
+  userId            String    @unique
+  totalPoints       Int       @default(0)
+  level             Int       @default(1)
+  levelProgress     Float     @default(0)
+  pointsToNextLevel Int       @default(100)
+  weeklyPoints      Int       @default(0)
+  monthlyPoints     Int       @default(0)
+  lastActiveDate    DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   @@index([totalPoints])
 }
@@ -3329,11 +3329,11 @@ model SimV2Run {
   scenarioKey String
   mode        String       @default("practice") // practice | scored
   mirrorMode  Boolean      @default(false) // SIM-9: calibrated from real ERP data
-  status      String       @default("active")   // active | paused | ended
+  status      String       @default("active") // active | paused | ended
   seed        Int
   currentTick Int          @default(0)
   rewindCount Int          @default(0) // SIM-8: capped rewinds in practice mode
-  scoreJson   Json?        // SIM-12: composite score breakdown on run end
+  scoreJson   Json? // SIM-12: composite score breakdown on run end
   clockYear   Int          @default(1)
   clockMonth  Int          @default(1)
   clockDay    Int          @default(1)
@@ -3377,14 +3377,13 @@ model EncryptionKeyStore {
   @@index([status])
 }
 
-
 // ---- S-50 / BC-101..103: Business-Case studio ----
 model BusinessCase {
   id             String            @id @default(cuid())
   userId         String
   organizationId String?
   title          String
-  template       String            // FIVE_CASE | PRINCE2_LEAN | RFQ
+  template       String // FIVE_CASE | PRINCE2_LEAN | RFQ
   status         String            @default("DRAFT") // DRAFT | SOC | OBC | FBC
   createdAt      DateTime          @default(now())
   updatedAt      DateTime          @updatedAt
@@ -3396,11 +3395,11 @@ model BusinessCase {
 }
 
 model BcAssumptionSet {
-  id        String       @id @default(cuid())
-  bcId      String
-  version   Int
-  answers   Json
-  createdAt DateTime     @default(now())
+  id           String       @id @default(cuid())
+  bcId         String
+  version      Int
+  answers      Json
+  createdAt    DateTime     @default(now())
   businessCase BusinessCase @relation(fields: [bcId], references: [id], onDelete: Cascade)
 
   @@unique([bcId, version])
@@ -3426,27 +3425,27 @@ model BcResult {
 /// FND-1 — grant/finance program catalog (national + EU). CAEN white/blacklist,
 /// NUTS regions, legal basis + intensity/ceiling drive the 7-filter engine.
 model FundingProgram {
-  id               String   @id @default(cuid())
-  name             String
-  authority        String   // e.g. "MEAT / ADR Vest", "European Commission"
-  purpose          String
-  beneficiaryType  String   // free text: "SMEs", "New SMEs <3yr", ...
-  sizeEligibility  String[] // micro | small | medium | large
-  coFinancingPct   Float?   // beneficiary co-fin %; null => region-driven
-  legalBasis       String   // de_minimis | gber_<article> | notified
-  gberArticle      String?  // e.g. "14" (regional), "28" (innovation)
-  aidIntensityPct  Float?   // base intensity for GBER programs (before SME bonus)
-  ceilingEur       Float?   // hard grant ceiling
-  opensAt          DateTime?
-  closesAt         DateTime?
-  caenWhitelist    String[] // empty => all CAEN allowed (subject to blacklist)
-  caenBlacklist    String[]
-  regions          String[] // NUTS-2 codes RO11..RO42; empty => national
+  id                String    @id @default(cuid())
+  name              String
+  authority         String // e.g. "MEAT / ADR Vest", "European Commission"
+  purpose           String
+  beneficiaryType   String // free text: "SMEs", "New SMEs <3yr", ...
+  sizeEligibility   String[] // micro | small | medium | large
+  coFinancingPct    Float? // beneficiary co-fin %; null => region-driven
+  legalBasis        String // de_minimis | gber_<article> | notified
+  gberArticle       String? // e.g. "14" (regional), "28" (innovation)
+  aidIntensityPct   Float? // base intensity for GBER programs (before SME bonus)
+  ceilingEur        Float? // hard grant ceiling
+  opensAt           DateTime?
+  closesAt          DateTime?
+  caenWhitelist     String[] // empty => all CAEN allowed (subject to blacklist)
+  caenBlacklist     String[]
+  regions           String[] // NUTS-2 codes RO11..RO42; empty => national
   interventionField String?
-  status           String   @default("open") // open | closed | upcoming
-  sourceUrl        String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  status            String    @default("open") // open | closed | upcoming
+  sourceUrl         String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   @@index([status])
   @@index([legalBasis])
@@ -3455,24 +3454,24 @@ model FundingProgram {
 /// FND-2 input — an organization's fund-relevant snapshot. headcount + turnover
 /// auto-derived from ERP (Employee count / Invoice aggregate); the rest are inputs.
 model FundingProfile {
-  id              String   @id @default(cuid())
-  organizationId  String   @unique
-  userId          String
-  caenPrimary     String?
-  caenSecondary   String[]
-  foundedDate     DateTime?
-  headcount       Int?     // full profile headcount incl. consolidation inputs
-  turnoverEur     Float?
-  balanceSheetEur Float?
-  subscribedCapitalEur Float?  // for GBER Art.2(18) firm-in-difficulty ratio
+  id                   String    @id @default(cuid())
+  organizationId       String    @unique
+  userId               String
+  caenPrimary          String?
+  caenSecondary        String[]
+  foundedDate          DateTime?
+  headcount            Int? // full profile headcount incl. consolidation inputs
+  turnoverEur          Float?
+  balanceSheetEur      Float?
+  subscribedCapitalEur Float? // for GBER Art.2(18) firm-in-difficulty ratio
   accumulatedLossEur   Float?
   equityEur            Float?
-  partnerLinks    Json?    // [{cui,name,relation:'partner'|'linked',sharePct,headcount,turnoverEur,balanceSheetEur}]
-  anafDebt        Boolean  @default(false)
-  insolvent       Boolean  @default(false)
-  vatPayer        Boolean  @default(true)  // FND-7: VAT-registered => deductible VAT ineligible for grants
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  partnerLinks         Json? // [{cui,name,relation:'partner'|'linked',sharePct,headcount,turnoverEur,balanceSheetEur}]
+  anafDebt             Boolean   @default(false)
+  insolvent            Boolean   @default(false)
+  vatPayer             Boolean   @default(true) // FND-7: VAT-registered => deductible VAT ineligible for grants
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
 
   @@index([userId])
 }
@@ -3493,14 +3492,14 @@ model DeMinimisAid {
 
 /// FND-4 — a saved eligibility pre-check result (lead).
 model FundingLead {
-  id             String   @id @default(cuid())
-  userId         String
-  organizationId String?
-  criteria       Json     // [{criterion,pass,reason}]
-  eligible       Boolean
-  requestedType  String?
+  id               String   @id @default(cuid())
+  userId           String
+  organizationId   String?
+  criteria         Json // [{criterion,pass,reason}]
+  eligible         Boolean
+  requestedType    String?
   requestedCostEur Float?
-  createdAt      DateTime @default(now())
+  createdAt        DateTime @default(now())
 
   @@index([userId])
   @@index([organizationId])
@@ -3514,7 +3513,7 @@ model DossierChecklist {
   userId         String
   organizationId String?
   programId      String?
-  legalBasis     String        // de_minimis | gber_<art> | notified
+  legalBasis     String // de_minimis | gber_<art> | notified
   status         String        @default("open") // open | complete
   items          DossierItem[]
   createdAt      DateTime      @default(now())
@@ -3541,18 +3540,18 @@ model DossierItem {
 
 // FND-6 — business-plan projection (built on the BC engine)
 model FundingProjection {
-  id               String   @id @default(cuid())
-  userId           String
-  organizationId   String?
-  programId        String?
-  title            String
-  implementationYears Int   @default(1)
-  durabilityYears  Int      @default(3)
-  answers          Json     // BC-engine answer set (strategic.* + economic.cashflows)
-  resultJson       Json     // AppraisalResult snapshot
-  indicatorTargets Json?    // [{name, target, unit}]
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  id                  String   @id @default(cuid())
+  userId              String
+  organizationId      String?
+  programId           String?
+  title               String
+  implementationYears Int      @default(1)
+  durabilityYears     Int      @default(3)
+  answers             Json // BC-engine answer set (strategic.* + economic.cashflows)
+  resultJson          Json // AppraisalResult snapshot
+  indicatorTargets    Json? // [{name, target, unit}]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 
   @@index([userId])
   @@index([organizationId])
@@ -3560,20 +3559,20 @@ model FundingProjection {
 
 // FND-8 — financing marketplace catalog
 model FinancingInstrument {
-  id                String   @id @default(cuid())
-  name              String
-  nameRo            String
-  type              String   // grant_bridge | guarantee | leasing | factoring | equity | crowdfunding | working_capital
-  provider          String?
-  maxCoveragePct    Float?   // e.g. FNGCIMM guarantee <= 80
-  minAmountEur      Float?
-  maxAmountEur      Float?
-  forReimbursementGap Boolean @default(false)
+  id                   String   @id @default(cuid())
+  name                 String
+  nameRo               String
+  type                 String // grant_bridge | guarantee | leasing | factoring | equity | crowdfunding | working_capital
+  provider             String?
+  maxCoveragePct       Float? // e.g. FNGCIMM guarantee <= 80
+  minAmountEur         Float?
+  maxAmountEur         Float?
+  forReimbursementGap  Boolean  @default(false)
   eligibilitySnippet   String
   eligibilitySnippetRo String
-  active            Boolean  @default(true)
-  sourceUrl         String?
-  createdAt         DateTime @default(now())
+  active               Boolean  @default(true)
+  sourceUrl            String?
+  createdAt            DateTime @default(now())
 }
 
 // FND-9 — implementation & durability tracker
@@ -3585,7 +3584,7 @@ model DurabilityObligation {
   title            String
   finalPaymentDate DateTime
   beneficiaryType  String            @default("sme") // sme | large | public
-  durabilityYears  Int               // 3 (sme) | 5 (large/public)
+  durabilityYears  Int // 3 (sme) | 5 (large/public)
   events           DurabilityEvent[]
   createdAt        DateTime          @default(now())
 
@@ -3594,16 +3593,16 @@ model DurabilityObligation {
 }
 
 model DurabilityEvent {
-  id             String               @id @default(cuid())
-  obligationId   String
-  obligation     DurabilityObligation @relation(fields: [obligationId], references: [id], onDelete: Cascade)
-  kind           String               // reporting | procurement | durability_end
-  dueDate        DateTime
-  description    String
-  descriptionRo  String
-  alertAt        DateTime             // 30 days before dueDate
-  status         String               @default("pending") // pending | done
-  createdAt      DateTime             @default(now())
+  id            String               @id @default(cuid())
+  obligationId  String
+  obligation    DurabilityObligation @relation(fields: [obligationId], references: [id], onDelete: Cascade)
+  kind          String // reporting | procurement | durability_end
+  dueDate       DateTime
+  description   String
+  descriptionRo String
+  alertAt       DateTime // 30 days before dueDate
+  status        String               @default("pending") // pending | done
+  createdAt     DateTime             @default(now())
 
   @@index([obligationId])
 }
@@ -3616,18 +3615,18 @@ model DurabilityEvent {
 
 /// ESCO skill/knowledge/competence node. Hierarchy via parentUri (self-ref by escoUri).
 model Skill {
-  id             String   @id @default(cuid())
-  escoUri        String   @unique
-  preferredLabel String
-  altLabels      String[] @default([])
-  description    String   @default("")
-  skillType      String   @default("skill") // skill | knowledge | competence
-  reuseLevel     String   @default("") // ESCO reuse level (cross-sector | sector-specific | occupation-specific | transversal)
-  parentUri      String? // broader skill's escoUri (prerequisite/hierarchy)
-  sfiaCode       String?
-  taxonomyVersion String  @default("ESCO-1.2")
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id              String   @id @default(cuid())
+  escoUri         String   @unique
+  preferredLabel  String
+  altLabels       String[] @default([])
+  description     String   @default("")
+  skillType       String   @default("skill") // skill | knowledge | competence
+  reuseLevel      String   @default("") // ESCO reuse level (cross-sector | sector-specific | occupation-specific | transversal)
+  parentUri       String? // broader skill's escoUri (prerequisite/hierarchy)
+  sfiaCode        String?
+  taxonomyVersion String   @default("ESCO-1.2")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   occupationSkills OccupationSkill[]
   userSkills       UserSkill[]
@@ -3711,16 +3710,16 @@ model LearningPath {
 
 /// One ordered step in a mastery path (topologically ordered by prerequisite).
 model LearningPathStep {
-  id                 String   @id @default(cuid())
+  id                 String       @id @default(cuid())
   pathId             String
   order              Int
-  kind               String   @default("course") // course | sim_scenario | assessment
+  kind               String       @default("course") // course | sim_scenario | assessment
   refId              String? // LMSCourse id, sim scenario key, or null for placeholder
   skillId            String? // the skill this step addresses
-  title              String   @default("")
-  estMinutes         Int      @default(0)
+  title              String       @default("")
+  estMinutes         Int          @default(0)
   prerequisiteStepId String?
-  status             String   @default("pending") // pending | in_progress | done
+  status             String       @default("pending") // pending | in_progress | done
   path               LearningPath @relation(fields: [pathId], references: [id], onDelete: Cascade)
 
   @@index([pathId])
@@ -3864,7 +3863,7 @@ model ClientErrorLog {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   source    String   @default("frontend") // frontend | backend
-  level     String   @default("error")    // error | warning
+  level     String   @default("error") // error | warning
   message   String
   stack     String?
   url       String?
@@ -3915,21 +3914,24 @@ model ConsentRecord {
 }
 
 model RopaEntry {
-  id                String   @id @default(cuid())
-  orgId             String
-  role              String   @default("controller")
-  processName       String
-  purposes          String[]
-  legalBasis        String?
-  categories        String[]
-  specialCategories String[]
-  recipients        String[]
-  transfers         String[]
-  retentionMonths   Int?
-  securityMeasures  String[]
-  status            String   @default("draft")
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id                    String   @id @default(cuid())
+  orgId                 String
+  role                  String   @default("controller")
+  processName           String
+  purposes              String[]
+  legalBasis            String?
+  categories            String[]
+  specialCategories     String[]
+  recipients            String[]
+  transfers             String[]
+  retentionMonths       Int?
+  securityMeasures      String[]
+  status                String   @default("draft")
+  dpoDesignated         Boolean  @default(false)
+  staffTrainingAttested Boolean  @default(false)
+  documentedSafeguards  Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
 
   @@index([orgId])
   @@index([orgId, role])
@@ -3969,28 +3971,28 @@ model CmpBannerConfig {
 // ---------------------------------------------------------------------------
 
 model Workspace {
-  id              String    @id @default(cuid())
+  id              String           @id @default(cuid())
   orgId           String?
   createdBy       String
   engagementId    String?
   name            String
-  kind            String    @default("dev_container") // dev_container | vm | gpu_pod
-  driver          String    @default("mock")          // mock | local_docker | runpod
-  status          String    @default("requested")     // requested|provisioning|running|stopped|destroyed|error
+  kind            String           @default("dev_container") // dev_container | vm | gpu_pod
+  driver          String           @default("mock") // mock | local_docker | runpod
+  status          String           @default("requested") // requested|provisioning|running|stopped|destroyed|error
   spec            Json?
   connectInfo     Json?
-  budgetCapEur    Decimal   @default(25) @db.Decimal(10, 2)
-  spentEur        Decimal   @default(0) @db.Decimal(10, 2)
-  autoStopMinutes Int       @default(60)
-  lastActiveAt    DateTime  @default(now())
+  budgetCapEur    Decimal          @default(25) @db.Decimal(10, 2)
+  spentEur        Decimal          @default(0) @db.Decimal(10, 2)
+  autoStopMinutes Int              @default(60)
+  lastActiveAt    DateTime         @default(now())
   lastBilledAt    DateTime?
   startedAt       DateTime?
   stoppedAt       DateTime?
   destroyedAt     DateTime?
   containerRef    String?
   volumeRef       String?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
   events          WorkspaceEvent[]
   milestones      Milestone[]
 
@@ -4029,4 +4031,93 @@ model Milestone {
 
   @@index([engagementId])
   @@index([status])
+}
+
+// ---------------------------------------------------------------------------
+// GDPR-EXT S-62 — DSAR portal, breach register, erasure ledger (MUST epics).
+// Multi-tenant: rows belong to the TENANT'S data subjects/incidents.
+// ---------------------------------------------------------------------------
+model DsarRequest {
+  id               String      @id @default(cuid())
+  orgId            String
+  type             String // access|erasure|rectification|restriction|portability|objection
+  status           String      @default("new") // new|verifying|in_progress|responded|refused
+  dataSubjectRef   String // email or external id the subject supplied
+  subjectEmailHash String?
+  receivedAt       DateTime    @default(now())
+  dueAt            DateTime
+  extendedTo       DateTime?
+  extensionReason  String?
+  verificationTier String      @default("low") // low|medium|high
+  verified         Boolean     @default(false)
+  statusToken      String      @unique // opaque token for public status lookup
+  responsePayload  Json?
+  refusalReason    String?
+  overdue          Boolean     @default(false)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  events           DsarEvent[]
+
+  @@index([orgId, status])
+  @@index([orgId, dueAt])
+}
+
+model DsarEvent {
+  id        String      @id @default(cuid())
+  requestId String
+  type      String
+  payload   Json?
+  at        DateTime    @default(now())
+  request   DsarRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+}
+
+model ErasureLedger {
+  id             String   @id @default(cuid())
+  orgId          String
+  dsarRequestId  String?
+  dataSubjectRef String
+  action         String // deleted|restricted|anonymized
+  scope          Json // per-module counts + notes
+  backupExpiryAt DateTime // when residual copies in backups age out per retention
+  createdAt      DateTime @default(now())
+
+  @@index([orgId])
+}
+
+model BreachIncident {
+  id                 String         @id @default(cuid())
+  orgId              String
+  description        String
+  categories         String[]
+  affectedCount      Int            @default(0)
+  detectedAt         DateTime
+  notifyDueAt        DateTime // detectedAt + 72h (Art 33)
+  severity           String         @default("low") // low|medium|high|very_high
+  enisaScore         Float          @default(0)
+  status             String         @default("triage") // triage|assessed|notified|closed
+  ansdpcDraft        Json?
+  subjectDraft       Json?
+  dpaNotifiedAt      DateTime?
+  subjectsNotifiedAt DateTime?
+  notified           Boolean        @default(false)
+  notNotifiedReason  String? // Art 33(5): justification when not notified
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  actions            BreachAction[]
+
+  @@index([orgId, status])
+  @@index([orgId, notifyDueAt])
+}
+
+model BreachAction {
+  id         String         @id @default(cuid())
+  incidentId String
+  type       String
+  payload    Json?
+  at         DateTime       @default(now())
+  incident   BreachIncident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+
+  @@index([incidentId])
 }

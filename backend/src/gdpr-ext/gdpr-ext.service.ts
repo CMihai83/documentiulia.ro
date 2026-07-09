@@ -86,9 +86,31 @@ export class GdprExtService {
   async updateRopa(orgId: string, userId: string, id: string, dto: Partial<RopaEntryLike>) {
     const row = await this.prisma.ropaEntry.findFirst({ where: { id, orgId } });
     if (!row) throw new NotFoundException('RoPA entry not found');
+    const merged: any = { ...row, ...dto };
+    // GE-CNP: Law 190/2018 Art 4 gate — legitimate-interest + CNP cannot go `active`
+    // until DPO + retention + training + safeguards are all satisfied. Enforced server-side.
+    if ((dto as any).status === 'active') {
+      const { canActivate } = require('./law190.logic');
+      const { allowed, check } = canActivate(merged);
+      if (!allowed) {
+        const missing = check.conditions.filter((c: any) => !c.ok).map((c: any) => c.remedy);
+        throw new BadRequestException({
+          message: 'Nu se poate activa: procesarea CNP pe temei de interes legitim necesită garanțiile Legii 190/2018 art. 4.',
+          law190: check, missing,
+        });
+      }
+    }
     const updated = await this.prisma.ropaEntry.update({ where: { id }, data: { ...dto, orgId } as any });
     await this.audit.appendAudit({ userId, organizationId: orgId, action: 'gdprext.ropa.update', entity: 'RopaEntry', entityId: id });
     return this.withCompleteness(updated);
+  }
+
+  /** Law-190 status for a RoPA entry (surfaced on the UI). */
+  async law190(orgId: string, id: string) {
+    const row = await this.prisma.ropaEntry.findFirst({ where: { id, orgId } });
+    if (!row) throw new NotFoundException('RoPA entry not found');
+    const { checkLaw190 } = require('./law190.logic');
+    return checkLaw190(row);
   }
 
   async listRopa(orgId: string, includeProcessor: boolean) {
