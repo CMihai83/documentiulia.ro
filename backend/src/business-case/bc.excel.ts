@@ -81,6 +81,14 @@ export async function generateWorkbookLive(input: ExcelModelInput): Promise<Buff
     asm.getCell('A8').value = input.branding.footerText;
     asm.getCell('A8').font = { italic: true, size: 9 };
   }
+  // BC-306: tenant logo on the Assumptions sheet (generative path only —
+  // xlsx-populate cannot inject images into the template path).
+  if (input.branding?.logoDataUri?.startsWith('data:image/png;base64,')) {
+    try {
+      const imageId = wb.addImage({ base64: input.branding.logoDataUri.split(',')[1], extension: 'png' });
+      asm.addImage(imageId, { tl: { col: 3, row: 1 }, ext: { width: 120, height: 48 } });
+    } catch { /* logo is cosmetic — never fail the workbook */ }
+  }
   asm.getColumn(1).width = 26;
   asm.getColumn(2).width = 18;
 
