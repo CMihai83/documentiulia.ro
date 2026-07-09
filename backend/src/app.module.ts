@@ -67,6 +67,7 @@ import { FundsModule } from './funds/funds.module';
 import { ExpertiseModule } from './expertise/expertise.module';
 import { GdprExtModule } from './gdpr-ext/gdpr-ext.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
+import { ToolsModule } from './tools/tools.module';
 import { HelpModule } from './help/help.module';
 import { BackupModule } from './backup/backup.module';
 import { ErrorsModule } from './errors/errors.module';
@@ -145,6 +146,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     CacheModule,
     SecurityModule,
     MonitoringModule,
+    ToolsModule,
     ErrorsModule,
     DatabaseModule,
     I18nModule,
