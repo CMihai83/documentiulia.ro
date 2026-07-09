@@ -3875,6 +3875,7 @@ model ClientErrorLog {
 
   @@index([createdAt])
   @@index([source, createdAt])
+}
 
 // ---------------------------------------------------------------------------
 // GDPR-EXT (S-61) — multi-tenant data-subject foundation. These rows belong to
