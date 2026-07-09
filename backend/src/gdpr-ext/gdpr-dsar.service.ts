@@ -53,7 +53,9 @@ export class GdprDsarService {
     await this.prisma.dsarEvent.create({
       data: { requestId: req.id, type: 'received', payload: { type, tier, details: body.details ?? null } },
     });
-    await this.audit.appendAudit({ userId: `subject:${req.dataSubjectRef}`, organizationId: orgId, action: 'gdprext.dsar.received', entity: 'DsarRequest', entityId: req.id });
+    // NOTE: public data subjects have no user account (AuditLog.userId is an FK) —
+    // the immutable DsarEvent above is the trail for this step; the hash-chain audit
+    // covers the authenticated tenant actions (verify/export/erase).
     return {
       id: req.id, statusToken, dueAt: req.dueAt, verificationTier: tier,
       message: 'Cererea a fost înregistrată. Vei fi contactat pentru verificarea identității.',
