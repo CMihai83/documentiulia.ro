@@ -42,13 +42,14 @@ interface APIKey {
 
 interface PortalOverview {
   apiKeys: { total: number; active: number };
-  webhooks: { total: number; active: number };
-  apiCalls: { today: number; thisMonth: number };
-  documentation: { sections: number; guides: number };
+  documentation: { sections: number; categories: number };
+  guides: { total: number };
+  changelog: { latestVersion: string; latestDate: string };
 }
 
 export default function DeveloperPortalPage() {
   const [overview, setOverview] = useState<PortalOverview | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [apiKeys, setApiKeys] = useState<APIKey[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreateKey, setShowCreateKey] = useState(false);
@@ -63,39 +64,14 @@ export default function DeveloperPortalPage() {
         api.get('/developer/keys'),
       ]);
       if (overviewRes) setOverview(overviewRes as PortalOverview);
-      const keysData = keysRes as { keys?: APIKey[] } | null;
-      if (keysData?.keys) setApiKeys(keysData.keys);
+      const keysData = keysRes as { keys?: APIKey[] } | APIKey[] | null;
+      setApiKeys(Array.isArray(keysData) ? keysData : keysData?.keys ?? []);
     } catch (error) {
       console.error('Error fetching developer data:', error);
-      // Set fallback data
-      setOverview({
-        apiKeys: { total: 3, active: 2 },
-        webhooks: { total: 5, active: 4 },
-        apiCalls: { today: 1247, thisMonth: 45892 },
-        documentation: { sections: 12, guides: 8 },
-      });
-      setApiKeys([
-        {
-          id: '1',
-          name: 'Production API Key',
-          keyPreview: 'dk_live_****...7x2f',
-          permissions: ['invoices:read', 'invoices:write', 'reports:read'],
-          rateLimit: { requestsPerMinute: 60, requestsPerDay: 10000 },
-          createdAt: '2025-01-15T10:00:00Z',
-          lastUsedAt: '2025-12-12T14:30:00Z',
-          isActive: true,
-        },
-        {
-          id: '2',
-          name: 'Development Key',
-          keyPreview: 'dk_test_****...9k1m',
-          permissions: ['*'],
-          rateLimit: { requestsPerMinute: 100, requestsPerDay: 50000 },
-          createdAt: '2025-02-20T08:00:00Z',
-          lastUsedAt: '2025-12-12T12:15:00Z',
-          isActive: true,
-        },
-      ]);
+      // No fabricated fallback: show an honest empty state rather than invented data.
+      setOverview(null);
+      setApiKeys([]);
+      setLoadError(true);
     } finally {
       setLoading(false);
     }
@@ -205,6 +181,12 @@ const report = await response.json();`,
       </div>
 
       {/* Stats Cards */}
+      {loadError && (
+        <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca datele portalului. Reîncearcă mai târziu. / Could not load portal data. Please retry.
+        </div>
+      )}
+
       {overview && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5">
@@ -218,23 +200,23 @@ const report = await response.json();`,
 
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Webhooks</span>
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Ghiduri</span>
               <Webhook className="w-5 h-5 text-purple-500" />
             </div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview?.webhooks?.total ?? 0}</div>
-            <div className="text-xs text-green-600 mt-1">{overview?.webhooks?.active ?? 0} active</div>
+            <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview?.guides?.total ?? 0}</div>
+            <div className="text-xs text-gray-500 mt-1">disponibile</div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Apeluri API Azi</span>
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Documentație</span>
               <Activity className="w-5 h-5 text-green-500" />
             </div>
             <div className="text-2xl font-bold text-gray-900 dark:text-white">
-              {overview.apiCalls.today.toLocaleString()}
+              {(overview?.documentation?.sections ?? 0).toLocaleString()}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              {overview.apiCalls.thisMonth.toLocaleString()} luna aceasta
+              {overview?.documentation?.categories ?? 0} categorii
             </div>
           </div>
 
@@ -245,7 +227,7 @@ const report = await response.json();`,
             </div>
             <div className="text-2xl font-bold text-gray-900 dark:text-white">{overview?.documentation?.sections ?? 0}</div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              {overview?.documentation?.guides ?? 0} ghiduri disponibile
+              {overview?.guides?.total ?? 0} ghiduri disponibile
             </div>
           </div>
         </div>
