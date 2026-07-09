@@ -306,6 +306,11 @@ export default function TransactionDetailPage() {
 
   return (
     <div className="space-y-6">
+      {/* TODO(REQ): wire to real API — page currently renders demo data */}
+      <div role="status" className="mb-4 flex items-center gap-2 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 px-4 py-2.5 text-sm font-medium text-amber-900 dark:text-amber-200">
+        <span aria-hidden="true">⚠</span>
+        <span>Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.</span>
+      </div>
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">

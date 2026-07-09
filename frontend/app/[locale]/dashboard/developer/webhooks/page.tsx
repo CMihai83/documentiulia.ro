@@ -86,83 +86,9 @@ export default function WebhooksPage() {
       if (deliveriesData?.deliveries) setDeliveries(deliveriesData.deliveries);
     } catch (error) {
       console.error('Error fetching webhooks:', error);
-      // Fallback data
-      setWebhooks([
-        {
-          id: '1',
-          name: 'Notificări Facturi',
-          url: 'https://myapp.com/webhooks/invoices',
-          events: ['invoice.created', 'invoice.paid'],
-          secret: 'whsec_****...abc123',
-          isActive: true,
-          createdAt: '2025-01-10T10:00:00Z',
-          lastTriggeredAt: '2025-12-12T14:30:00Z',
-          successRate: 98.5,
-          totalDeliveries: 1250,
-          failedDeliveries: 19,
-        },
-        {
-          id: '2',
-          name: 'ANAF Sync',
-          url: 'https://myerp.local/api/anaf-updates',
-          events: ['efactura.submitted', 'efactura.response', 'saft.generated'],
-          secret: 'whsec_****...def456',
-          isActive: true,
-          createdAt: '2025-02-15T08:00:00Z',
-          lastTriggeredAt: '2025-12-12T12:00:00Z',
-          successRate: 99.2,
-          totalDeliveries: 890,
-          failedDeliveries: 7,
-        },
-        {
-          id: '3',
-          name: 'Slack Notifications',
-          url: 'https://hooks.slack.com/services/T00/B00/XXX',
-          events: ['invoice.overdue'],
-          secret: 'whsec_****...ghi789',
-          isActive: false,
-          createdAt: '2025-03-01T12:00:00Z',
-          successRate: 95.0,
-          totalDeliveries: 45,
-          failedDeliveries: 2,
-        },
-      ]);
-      setDeliveries([
-        {
-          id: 'd1',
-          webhookId: '1',
-          event: 'invoice.created',
-          status: 'success',
-          statusCode: 200,
-          responseTime: 145,
-          attemptCount: 1,
-          createdAt: '2025-12-12T14:30:00Z',
-          payload: { invoiceId: 'INV-2024-0156', amount: 2500, currency: 'RON' },
-        },
-        {
-          id: 'd2',
-          webhookId: '2',
-          event: 'efactura.response',
-          status: 'success',
-          statusCode: 200,
-          responseTime: 89,
-          attemptCount: 1,
-          createdAt: '2025-12-12T12:00:00Z',
-          payload: { uploadIndex: '5024789', status: 'ACCEPTED' },
-        },
-        {
-          id: 'd3',
-          webhookId: '1',
-          event: 'invoice.paid',
-          status: 'failed',
-          statusCode: 500,
-          responseTime: 2500,
-          attemptCount: 3,
-          createdAt: '2025-12-12T10:15:00Z',
-          payload: { invoiceId: 'INV-2024-0148', amount: 1800, currency: 'RON' },
-          response: 'Internal Server Error',
-        },
-      ]);
+      // Honest empty state — no fabricated webhooks/keys.
+      setWebhooks([]);
+      setDeliveries([]);
     } finally {
       setLoading(false);
     }

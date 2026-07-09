@@ -111,23 +111,7 @@ export default function EditPartnerPage() {
       });
     } catch (err) {
       console.error('Fetch error:', err);
-      // Mock data for demo
-      setFormData({
-        name: 'Exemplu SRL',
-        cui: 'RO12345678',
-        regCom: 'J40/1234/2020',
-        address: 'Str. Exemplu nr. 10',
-        city: 'București',
-        county: 'București',
-        country: 'Romania',
-        postalCode: '010101',
-        email: 'contact@exemplu.ro',
-        phone: '+40 21 123 4567',
-        contactPerson: 'Ion Popescu',
-        bankName: 'Banca Transilvania',
-        bankAccount: 'RO49BTRL0000001234567890',
-        type: 'CUSTOMER',
-      });
+      setError('Nu am putut încărca partenerul pentru editare. Reîncearcă. / Could not load the partner for editing. Please retry.');
     } finally {
       setLoading(false);
     }
@@ -171,6 +155,9 @@ export default function EditPartnerPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
+      {error && (
+        <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200" role="status">{error}</div>
+      )}
         <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
         <span className="ml-2 text-gray-600">Se încarcă...</span>
       </div>

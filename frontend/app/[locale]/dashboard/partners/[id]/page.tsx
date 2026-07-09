@@ -114,29 +114,8 @@ export default function PartnerDetailPage() {
       setPartner(data);
     } catch (err) {
       console.error('Fetch error:', err);
-      // Mock data for demo
-      setPartner({
-        id: partnerId,
-        name: 'Exemplu SRL',
-        cui: 'RO12345678',
-        regCom: 'J40/1234/2020',
-        address: 'Str. Exemplu nr. 10',
-        city: 'București',
-        county: 'București',
-        country: 'Romania',
-        postalCode: '010101',
-        email: 'contact@exemplu.ro',
-        phone: '+40 21 123 4567',
-        contactPerson: 'Ion Popescu',
-        bankName: 'Banca Transilvania',
-        bankAccount: 'RO49BTRL0000001234567890',
-        type: 'CUSTOMER',
-        isActive: true,
-        invoiceCount: 15,
-        totalRevenue: 45000,
-        createdAt: '2024-01-15T10:00:00Z',
-        updatedAt: '2024-12-10T14:30:00Z',
-      });
+      setError('Nu am putut încărca partenerul. Reîncearcă. / Could not load the partner. Please retry.');
+      setPartner(null);
     } finally {
       setLoading(false);
     }
@@ -273,6 +252,9 @@ export default function PartnerDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
+      {error && (
+        <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200" role="status">{error}</div>
+      )}
         <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
         <span className="ml-2 text-gray-600">Se încarcă...</span>
       </div>

@@ -568,7 +568,7 @@ export default function SettingsPage() {
       if (data) {
         setGdprData(data);
       } else {
-        // Create mock data from current user if API not available
+        // API unavailable: show the user's OWN real profile with empty collections (honest degraded view, not fabricated).
         const mockData: GdprExportData = {
           exportDate: new Date().toISOString(),
           user: {
