@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Shield, FileText, Cookie, Loader2, CheckCircle2, AlertTriangle, Copy } from 'lucide-react';
 import { api } from '@/lib/api';
 
-type Tab = 'ropa' | 'policies' | 'banner' | 'dsar' | 'breach';
+type Tab = 'ropa' | 'policies' | 'banner' | 'dsar' | 'breach' | 'dpia' | 'vendors' | 'tools';
 
 export default function GdprToolkitPage() {
   const params = useParams();
@@ -19,6 +19,9 @@ export default function GdprToolkitPage() {
   const [cmp, setCmp] = useState<any | null>(null);
   const [dsar, setDsar] = useState<any[]>([]);
   const [breaches, setBreaches] = useState<any[]>([]);
+  const [dpia, setDpia] = useState<any[]>([]);
+  const [vendors, setVendors] = useState<any[]>([]);
+  const [scanUrl, setScanUrl] = useState('');
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState('');
 
@@ -34,6 +37,10 @@ export default function GdprToolkitPage() {
     setBreaches(Array.isArray(bq.data) ? bq.data : []);
     setVersions(Array.isArray(v.data) ? v.data : []); // 403 on FREE → stays empty (PRO feature)
     setCmp(c.data ?? null);
+    // S-63 (BUSINESS): DPIA + vendors — 403 on lower tiers stays empty
+    const [pq, vq] = await Promise.all([api.get('/gdpr-ext/dpia').catch(() => ({ data: [] })), api.get('/gdpr-ext/vendors').catch(() => ({ data: [] }))]);
+    setDpia(Array.isArray(pq.data) ? pq.data : []);
+    setVendors(Array.isArray(vq.data) ? vq.data : []);
   }, []);
   useEffect(() => { load(); }, [load]);
 
@@ -63,10 +70,10 @@ export default function GdprToolkitPage() {
         </p>
       </div>
 
-      <div className="flex gap-2">
-        {(['ropa', 'policies', 'banner', 'dsar', 'breach'] as Tab[]).map((t) => (
+      <div className="flex gap-2 flex-wrap">
+        {(['ropa', 'policies', 'banner', 'dsar', 'breach', 'dpia', 'vendors', 'tools'] as Tab[]).map((t) => (
           <Button key={t} size="sm" variant={tab === t ? 'default' : 'outline'} onClick={() => setTab(t)}>
-            {t === 'ropa' ? (ro ? 'Registru (RoPA)' : 'RoPA register') : t === 'policies' ? (ro ? 'Politici' : 'Policies') : t === 'banner' ? 'Banner' : t === 'dsar' ? (ro ? 'Cereri DSAR (PRO)' : 'DSAR (PRO)') : (ro ? 'Incidente (BUSINESS)' : 'Breaches (BUSINESS)')}
+            {t === 'ropa' ? (ro ? 'Registru (RoPA)' : 'RoPA register') : t === 'policies' ? (ro ? 'Politici' : 'Policies') : t === 'banner' ? 'Banner' : t === 'dsar' ? (ro ? 'DSAR (PRO)' : 'DSAR (PRO)') : t === 'breach' ? (ro ? 'Incidente (BUSINESS)' : 'Breaches (BUSINESS)') : t === 'dpia' ? (ro ? 'DPIA (BUSINESS)' : 'DPIA (BUSINESS)') : t === 'vendors' ? (ro ? 'Furnizori/DPA (BUSINESS)' : 'Vendors/DPA (BUSINESS)') : (ro ? 'Instrumente (PRO)' : 'Tools (PRO)')}
           </Button>
         ))}
       </div>
@@ -201,6 +208,71 @@ export default function GdprToolkitPage() {
               {breaches.length === 0 && <tr><td colSpan={4} className="py-6 text-center text-muted-foreground">{ro ? 'Niciun incident. Necesită planul BUSINESS.' : 'No incidents. Requires BUSINESS.'}</td></tr>}
             </tbody>
           </table></div>
+        </CardContent></Card>
+      )}
+
+      {tab === 'dpia' && (
+        <Card><CardContent className="p-4">
+          <p className="text-sm text-muted-foreground mb-3">{ro ? 'Evaluări de impact (DPIA) — screening Art. 35 (WP248 + ANSPDCP 174/2018), matrice de risc și verificarea monitorizării angajaților (Legea 190/2018 art. 5). Deschideți o intrare RoPA pentru a porni un screening.' : 'Data Protection Impact Assessments — Art. 35 screening (WP248 + ANSPDCP 174/2018), risk matrix, and the Law-190 employee-monitoring wizard. Start a screening from a RoPA entry.'}</p>
+          <div className="overflow-x-auto"><table className="w-full text-sm">
+            <thead><tr className="text-left text-muted-foreground border-b"><th className="py-2 pr-3">RoPA</th><th className="pr-3">{ro ? 'Verdict' : 'Verdict'}</th><th className="pr-3">{ro ? 'Risc rezidual' : 'Residual'}</th><th className="pr-3">Status</th></tr></thead>
+            <tbody>
+              {dpia.map((a) => (
+                <tr key={a.id} className="border-b border-line-soft">
+                  <td className="py-2 pr-3 font-mono text-xs">{a.ropaEntryId?.slice(0, 8)}</td>
+                  <td className="pr-3"><span className={`text-xs px-1.5 py-0.5 rounded ${a.verdict === 'required' ? 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300' : a.verdict === 'recommended' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}`}>{a.verdict}</span></td>
+                  <td className="pr-3 text-xs">{a.residualBand ?? '—'}</td>
+                  <td className="pr-3 text-xs">{a.status}{a.status === 'blocked' && <span className="ml-1 text-red-600">🔒</span>}</td>
+                </tr>
+              ))}
+              {dpia.length === 0 && <tr><td colSpan={4} className="py-6 text-center text-muted-foreground">{ro ? 'Nicio evaluare. Necesită planul BUSINESS.' : 'No assessments. Requires BUSINESS.'}</td></tr>}
+            </tbody>
+          </table></div>
+        </CardContent></Card>
+      )}
+
+      {tab === 'vendors' && (
+        <Card><CardContent className="p-4">
+          <p className="text-sm text-muted-foreground mb-3">{ro ? 'Registru furnizori / împuterniciți: generator DPA (Art. 28), modul SCC 2021/914, TIA și listă publică de sub-împuterniciți cu drept de obiecție.' : 'Vendor/processor register: Art-28 DPA generator, SCC 2021/914 module, TIA, and a public sub-processor list with objection rights.'}</p>
+          <div className="overflow-x-auto"><table className="w-full text-sm">
+            <thead><tr className="text-left text-muted-foreground border-b"><th className="py-2 pr-3">{ro ? 'Furnizor' : 'Vendor'}</th><th className="pr-3">{ro ? 'Rol' : 'Role'}</th><th className="pr-3">{ro ? 'Țară' : 'Country'}</th><th className="pr-3">{ro ? 'Public' : 'Published'}</th></tr></thead>
+            <tbody>
+              {vendors.map((v) => (
+                <tr key={v.id} className="border-b border-line-soft">
+                  <td className="py-2 pr-3">{v.name}</td>
+                  <td className="pr-3 text-xs">{v.role}</td>
+                  <td className="pr-3 text-xs">{v.country}{!v.isEu && ' 🌍'}</td>
+                  <td className="pr-3">{v.published ? '✓' : '—'}</td>
+                </tr>
+              ))}
+              {vendors.length === 0 && <tr><td colSpan={4} className="py-6 text-center text-muted-foreground">{ro ? 'Niciun furnizor. Necesită planul BUSINESS.' : 'No vendors. Requires BUSINESS.'}</td></tr>}
+            </tbody>
+          </table></div>
+        </CardContent></Card>
+      )}
+
+      {tab === 'tools' && (
+        <Card><CardContent className="p-4 space-y-4">
+          <div>
+            <h3 className="font-semibold text-sm mb-1">{ro ? 'Instruire GDPR (LMS)' : 'GDPR training (LMS)'}</h3>
+            <p className="text-xs text-muted-foreground mb-2">{ro ? 'Cursuri pe roluri; o finalizare validă (12 luni) satisface automat condiția de instruire din Legea 190/2018.' : 'Role-based courses; a valid completion (12 months) auto-satisfies the Law-190 training condition.'}</p>
+            <div className="flex gap-2">
+              <Button size="sm" disabled={busy} onClick={() => act(() => api.post('/gdpr-ext/training/seed', {}), ro ? 'Cursuri create.' : 'Courses seeded.')}>{ro ? 'Creează cursuri' : 'Seed courses'}</Button>
+              <a href="/api/v1/gdpr-ext/training/evidence.csv"><Button size="sm" variant="outline">{ro ? 'Export dovezi (CSV)' : 'Evidence CSV'}</Button></a>
+            </div>
+          </div>
+          <div className="border-t pt-4">
+            <h3 className="font-semibold text-sm mb-1">{ro ? 'Export complet cont (Data Act / Art. 20)' : 'Full account export (Data Act / Art. 20)'}</h3>
+            <a href="/api/v1/gdpr-ext/export/full"><Button size="sm" variant="outline">{ro ? 'Descarcă arhiva ZIP' : 'Download ZIP'}</Button></a>
+          </div>
+          <div className="border-t pt-4">
+            <h3 className="font-semibold text-sm mb-1">{ro ? 'Scanare cookie-uri (statică)' : 'Cookie scan (static)'}</h3>
+            <div className="flex gap-2">
+              <input value={scanUrl} onChange={(e) => setScanUrl(e.target.value)} placeholder="https://site.ro" className="h-9 px-3 rounded-md border bg-background text-sm flex-1" />
+              <Button size="sm" disabled={busy || !scanUrl} onClick={() => act(() => api.post('/gdpr-ext/cmp/scan', { url: scanUrl }), ro ? 'Scanare finalizată — vezi categoriile propuse.' : 'Scan done — see proposed categories.')}>{ro ? 'Scanează' : 'Scan'}</Button>
+            </div>
+            <p className="text-[11px] text-muted-foreground mt-1">{ro ? 'Scanare statică a unei singure pagini; nu înlocuiește un crawl complet.' : 'Static single-page scan; not a full crawl.'}</p>
+          </div>
         </CardContent></Card>
       )}
     </div>

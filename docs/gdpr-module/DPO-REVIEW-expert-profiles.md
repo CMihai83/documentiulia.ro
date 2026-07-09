@@ -80,3 +80,18 @@ is the control. DPO review of this addendum recommended before marketing pushes.
 - **Packaging enforced by TierGuard**: PRO = DSAR portal; BUSINESS = breach + CNP.
 - **Still needed before go-live**: lawyer-reviewed ANSPDCP/DSAR templates; real backup-expiry
   automation; S-63 epics (DPIA, VENDOR/DPA/SCC, TRAIN, DATA-ACT, CMP hardening).
+
+---
+
+## S-63 GDPR-EXT Shoulds — DPO go-live notes (added 2026-07-09)
+
+The Track-B "Should" epics are now implemented; before selling the Business/Pro tiers on them:
+- **DPIA/DPA/TIA templates** are generated content marked `lawyerReviewed:false` — a partner-cabinet
+  review is required (REQ-029) before customers rely on them.
+- **TCF v2.3**: the TC-string codec + `__tcfapi` stub are spec-shaped but the CMP is **not IAB-registered**
+  (`cmpId=0`, labelled "IAB registration pending"). IAB CMP registration is a separate business step.
+- **DPF check** stores the vendor's self-claim + evidence link only — no automatic DPF-list scrape; the DPO
+  verifies listing manually and SCC remains the recommended fallback.
+- **Cookie scanner** is a static single-page fetch (signature match), not a headless-browser crawl.
+- **Full export** excludes security material (passwords/MFA/tokens/CNP/IBAN) per the internal export rules.
+- Nothing in DPIA/breach/vendor auto-submits to ANSPDCP — all outputs are drafts for manual filing.
