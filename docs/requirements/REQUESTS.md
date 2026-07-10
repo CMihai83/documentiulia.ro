@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 40 · logged: 3 · planned: 4 · in_progress: 2 · shipped: 29 · parked: 2 · rejected: 0
+Total: 41 · logged: 3 · planned: 4 · in_progress: 2 · shipped: 30 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -45,3 +45,4 @@ Total: 40 · logged: 3 · planned: 4 · in_progress: 2 · shipped: 29 · parked:
 | REQ-038 | 2026-07-10 | **in_progress** | MAJOR FINDING: the 21 'no backend' bannered pages nearly all HAVE backends under different module names (assets->asset-management 83 routes,… | REQ-036 |
 | REQ-039 | 2026-07-10 | **shipped** | Research and upgrade the frontend design | master 6657ea5c — Registrul viu live |
 | REQ-040 | 2026-07-10 | **planned** | Build genuinely-missing backends: projects controller, scheduling/meetings module, client-portal self-resolution ('my client' from JWT); wir… |  |
+| REQ-041 | 2026-07-10 | **shipped** | Organise how services are bundled and how users consume them from the dashboard burger/left menu | sidebar IA live |
