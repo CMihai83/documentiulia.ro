@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -70,123 +70,47 @@ interface SharedDocument {
   status: 'pending' | 'viewed' | 'downloaded' | 'signed';
 }
 
-// Sample data
-const portalClients: PortalClient[] = [
-  {
-    id: 'client-001',
-    name: 'Maria Ionescu',
-    email: 'maria@techcorp.ro',
-    company: 'TechCorp SRL',
-    cui: 'RO12345678',
-    phone: '+40 722 123 456',
-    portalEnabled: true,
-    lastAccess: '2025-12-14T09:30:00',
-    documentsShared: 45,
-    invoicesPending: 2,
-    totalInvoiced: 125000,
-    portalUrl: 'https://portal.documentiulia.ro/c/techcorp',
-  },
-  {
-    id: 'client-002',
-    name: 'Andrei Popescu',
-    email: 'andrei@globalsoft.ro',
-    company: 'GlobalSoft SA',
-    cui: 'RO23456789',
-    phone: '+40 733 234 567',
-    portalEnabled: true,
-    lastAccess: '2025-12-13T16:45:00',
-    documentsShared: 32,
-    invoicesPending: 0,
-    totalInvoiced: 89000,
-    portalUrl: 'https://portal.documentiulia.ro/c/globalsoft',
-  },
-  {
-    id: 'client-003',
-    name: 'Elena Gheorghe',
-    email: 'elena@startupx.ro',
-    company: 'StartupX SRL',
-    cui: 'RO34567890',
-    phone: '+40 744 345 678',
-    portalEnabled: true,
-    lastAccess: '2025-12-10T11:20:00',
-    documentsShared: 18,
-    invoicesPending: 3,
-    totalInvoiced: 45000,
-    portalUrl: 'https://portal.documentiulia.ro/c/startupx',
-  },
-  {
-    id: 'client-004',
-    name: 'Ion Dumitrescu',
-    email: 'ion@consulting.ro',
-    company: 'Consulting Pro SRL',
-    cui: 'RO45678901',
-    phone: '+40 755 456 789',
-    portalEnabled: false,
-    documentsShared: 0,
-    invoicesPending: 1,
-    totalInvoiced: 28000,
-    portalUrl: 'https://portal.documentiulia.ro/c/consultingpro',
-  },
-];
 
-const sharedDocuments: SharedDocument[] = [
-  {
-    id: 'doc-001',
-    name: 'Factură PRO-2025-0892',
-    type: 'Factură',
-    sharedAt: '2025-12-14T10:00:00',
-    viewedAt: '2025-12-14T10:15:00',
-    clientName: 'TechCorp SRL',
-    status: 'viewed',
-  },
-  {
-    id: 'doc-002',
-    name: 'Contract servicii 2025',
-    type: 'Contract',
-    sharedAt: '2025-12-13T14:30:00',
-    viewedAt: '2025-12-13T15:00:00',
-    downloadedAt: '2025-12-13T15:02:00',
-    clientName: 'GlobalSoft SA',
-    status: 'downloaded',
-  },
-  {
-    id: 'doc-003',
-    name: 'Factură PRO-2025-0891',
-    type: 'Factură',
-    sharedAt: '2025-12-12T09:00:00',
-    clientName: 'StartupX SRL',
-    status: 'pending',
-  },
-  {
-    id: 'doc-004',
-    name: 'Raport lunar noiembrie',
-    type: 'Raport',
-    sharedAt: '2025-12-10T16:00:00',
-    viewedAt: '2025-12-11T09:30:00',
-    clientName: 'TechCorp SRL',
-    status: 'viewed',
-  },
-];
 
-const activityData = [
-  { day: 'Lun', views: 12, downloads: 5 },
-  { day: 'Mar', views: 18, downloads: 8 },
-  { day: 'Mie', views: 15, downloads: 6 },
-  { day: 'Joi', views: 22, downloads: 10 },
-  { day: 'Vin', views: 28, downloads: 12 },
-  { day: 'Sâm', views: 8, downloads: 3 },
-  { day: 'Dum', views: 5, downloads: 2 },
-];
 
-const documentTypeData = [
-  { name: 'Facturi', value: 45, color: '#3B82F6' },
-  { name: 'Contracte', value: 20, color: '#10B981' },
-  { name: 'Rapoarte', value: 25, color: '#F59E0B' },
-  { name: 'Altele', value: 10, color: '#8B5CF6' },
-];
 
 export default function ClientPortalPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [portalClients, setPortalClients] = useState<PortalClient[]>([]);
+  const [loadError, setLoadError] = useState(false);
+  // Honest scope: document sharing/activity have no backend yet — empty, not fabricated.
+  const sharedDocuments: SharedDocument[] = [];
+  const activityData: { month: string; views: number }[] = [];
+  const documentTypeData: { name: string; value: number; color: string }[] = [];
+  useEffect(() => {
+    (async () => {
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+        const res = await fetch(`${API_URL}/partners?type=CUSTOMER&limit=100`, { headers: { Authorization: `Bearer ${token}` } });
+        if (!res.ok) throw new Error(String(res.status));
+        const d = await res.json();
+        const list = Array.isArray(d) ? d : d?.partners ?? d?.data ?? d?.items ?? [];
+        setPortalClients(list.map((x: any) => ({
+          id: x.id,
+          name: x.contactPerson ?? x.name,
+          email: x.email ?? '—',
+          company: x.name,
+          cui: x.cui ?? '—',
+          phone: x.phone ?? '—',
+          portalEnabled: !!x.email, // a portal login requires an email — honest derivation
+          lastAccess: undefined,     // not tracked yet
+          documentsShared: 0,        // no sharing backend yet
+          invoicesPending: 0,
+          totalInvoiced: 0,
+          portalUrl: '/dashboard/client-portal',
+        })));
+      } catch (e) {
+        console.error('Client portal load failed:', e);
+        setLoadError(true); setPortalClients([]);
+      }
+    })();
+  }, []);
   const [activeTab, setActiveTab] = useState('clients');
 
   const getDocumentStatusBadge = (status: SharedDocument['status']) => {
@@ -218,10 +142,11 @@ export default function ClientPortalPage() {
 
   return (
     <div className="space-y-6">
-      {/* TODO(REQ-035): wire to real API */}
-      <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+          Nu am putut încărca clienții. Reîncearcă. / Could not load clients. Please retry.
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>

@@ -72,6 +72,7 @@ export default function AnalyticsDashboardPage() {
   const [activities, setActivities] = useState<RecentActivity[]>([]);
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
   const [loadError, setLoadError] = useState(false);
+  const [goalsProgress, setGoalsProgress] = useState<{ id: string; metric: string; period: string; current: number; target: number; progressPct: number | null; achieved: boolean }[]>([]);
 
   const loadData = useCallback(async () => {
     setIsLoading(true);
@@ -79,11 +80,12 @@ export default function AnalyticsDashboardPage() {
     try {
       const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
       const headers: HeadersInit = token ? { Authorization: `Bearer ${token}` } : {};
-      const [statsRes, monthlyRes, invRes, actRes] = await Promise.all([
+      const [statsRes, monthlyRes, invRes, actRes, goalsRes] = await Promise.all([
         fetch(`${API_URL}/dashboard/quick-stats`, { headers }),
         fetch(`${API_URL}/finance/analytics/monthly`, { headers }),
         fetch(`${API_URL}/invoices/summary`, { headers }),
         fetch(`${API_URL}/analytics/dashboard/activity`, { headers }),
+        fetch(`${API_URL}/analytics/goals/progress`, { headers }),
       ]);
       const anyOk = [statsRes, monthlyRes, invRes, actRes].some(r => r.ok);
       if (!anyOk) throw new Error('all analytics sources failed');
@@ -130,6 +132,10 @@ export default function AnalyticsDashboardPage() {
           status: it.status ?? 'info',
         })));
       } else setActivities([]);
+      if (goalsRes.ok) {
+        const g = await goalsRes.json();
+        setGoalsProgress(Array.isArray(g) ? g : []);
+      }
     } catch (e) {
       console.error('Analytics load failed:', e);
       setLoadError(true);
@@ -587,7 +593,6 @@ export default function AnalyticsDashboardPage() {
               <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
                 <Target className="h-5 w-5 text-red-500" />
                 Obiective Lunare
-                <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold text-amber-800 dark:bg-amber-900/40 dark:text-amber-300" title="Date demonstrative — modul de obiective încă neconectat">demo</span>
               </h2>
               <button
                 onClick={handleEditGoals}
@@ -597,42 +602,24 @@ export default function AnalyticsDashboardPage() {
               </button>
             </div>
             <div className="space-y-4">
-              <div
-                onClick={() => handleViewGoalDetails('revenue')}
-                className="cursor-pointer hover:bg-slate-50 p-2 rounded -mx-2"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-600">Venituri</span>
-                  <span className="text-sm font-medium text-slate-900">€47,832 / €50,000</span>
+  {goalsProgress.length === 0 ? (
+                <p className="text-sm text-slate-500">Niciun obiectiv definit încă. / No goals defined yet.</p>
+              ) : goalsProgress.map((g) => (
+                <div key={g.id} className="p-2 rounded -mx-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-slate-600">
+                      {g.metric === 'revenue' ? 'Venituri' : g.metric === 'profit' ? 'Profit' : g.metric === 'invoices' ? 'Facturi' : 'Clienți'}
+                      <span className="text-slate-400"> · {g.period}</span>
+                    </span>
+                    <span className="text-sm font-medium text-slate-900 tabular-nums">
+                      {g.current.toLocaleString('ro-RO')} / {g.target.toLocaleString('ro-RO')}
+                    </span>
+                  </div>
+                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div className={`h-full rounded-full transition-all duration-500 ${g.achieved ? 'bg-green-500' : 'bg-blue-500'}`} style={{ width: `${Math.min(100, g.progressPct ?? 0)}%` }} />
+                  </div>
                 </div>
-                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-green-500 rounded-full transition-all duration-500" style={{ width: '96%' }} />
-                </div>
-              </div>
-              <div
-                onClick={() => handleViewGoalDetails('invoices')}
-                className="cursor-pointer hover:bg-slate-50 p-2 rounded -mx-2"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-600">Facturi noi</span>
-                  <span className="text-sm font-medium text-slate-900">156 / 150</span>
-                </div>
-                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-500 rounded-full transition-all duration-500" style={{ width: '100%' }} />
-                </div>
-              </div>
-              <div
-                onClick={() => handleViewGoalDetails('clients')}
-                className="cursor-pointer hover:bg-slate-50 p-2 rounded -mx-2"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-600">Clienți noi</span>
-                  <span className="text-sm font-medium text-slate-900">8 / 10</span>
-                </div>
-                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: '80%' }} />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

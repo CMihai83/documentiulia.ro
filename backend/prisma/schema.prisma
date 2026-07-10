@@ -4219,3 +4219,86 @@ model SubprocessorObjection {
 
   @@index([orgId, status])
 }
+
+// ---------------------------------------------------------------------------
+// REQ-040 — Projects, Scheduling (meetings), Business goals.
+// ---------------------------------------------------------------------------
+
+model Project {
+  id          String    @id @default(cuid())
+  orgId       String
+  name        String
+  description String?
+  clientName  String?
+  status      String    @default("planning") // planning|active|on_hold|completed|cancelled
+  startDate   DateTime?
+  dueDate     DateTime?
+  budgetRon   Decimal?  @db.Decimal(14, 2)
+  spentRon    Decimal?  @db.Decimal(14, 2)
+  managerName String?
+  teamNames   Json?     // string[]
+  progressPct Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  tasks       ProjectTask[]
+  milestones  ProjectMilestone[]
+
+  @@index([orgId])
+}
+
+model ProjectTask {
+  id        String    @id @default(cuid())
+  projectId String
+  project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  title     String
+  status    String    @default("todo") // todo|in_progress|completed
+  assignee  String?
+  dueDate   DateTime?
+  priority  String    @default("medium") // low|medium|high
+  createdAt DateTime  @default(now())
+
+  @@index([projectId])
+}
+
+model ProjectMilestone {
+  id        String    @id @default(cuid())
+  projectId String
+  project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  title     String
+  dueDate   DateTime?
+  done      Boolean   @default(false)
+  createdAt DateTime  @default(now())
+
+  @@index([projectId])
+}
+
+model Meeting {
+  id          String   @id @default(cuid())
+  orgId       String
+  title       String
+  description String?
+  startsAt    DateTime
+  endsAt      DateTime
+  location    String?
+  meetingUrl  String?
+  attendees   Json?    // { name, email? }[]
+  status      String   @default("scheduled") // scheduled|completed|cancelled
+  createdBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([orgId, startsAt])
+}
+
+model BusinessGoal {
+  id          String   @id @default(cuid())
+  orgId       String
+  metric      String   // revenue|profit|invoices|customers
+  targetValue Decimal  @db.Decimal(14, 2)
+  period      String   // YYYY or YYYY-MM
+  note        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([orgId, period])
+}

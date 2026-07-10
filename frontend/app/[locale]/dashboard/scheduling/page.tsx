@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Calendar,
   Clock,
@@ -50,111 +50,7 @@ interface Appointment {
   notes?: string;
 }
 
-const events: Event[] = [
-  {
-    id: 'e1',
-    title: 'Intalnire clienti noi',
-    type: 'meeting',
-    date: '2024-12-14',
-    time: '10:00',
-    duration: '1h',
-    location: 'Sala Conferinte A',
-    attendees: [
-      { name: 'Maria Ionescu' },
-      { name: 'Andrei Pop' },
-      { name: 'Client XYZ' },
-    ],
-    status: 'scheduled',
-    priority: 'high',
-  },
-  {
-    id: 'e2',
-    title: 'Deadline TVA Q4',
-    type: 'deadline',
-    date: '2024-12-14',
-    time: '23:59',
-    duration: '-',
-    status: 'scheduled',
-    priority: 'high',
-  },
-  {
-    id: 'e3',
-    title: 'Call consultant fiscal',
-    type: 'call',
-    date: '2024-12-14',
-    time: '14:00',
-    duration: '30min',
-    attendees: [{ name: 'Ion Popescu' }],
-    status: 'scheduled',
-  },
-  {
-    id: 'e4',
-    title: 'Review raport lunar',
-    type: 'task',
-    date: '2024-12-14',
-    time: '16:00',
-    duration: '2h',
-    status: 'in-progress',
-  },
-  {
-    id: 'e5',
-    title: 'Team standup',
-    type: 'meeting',
-    date: '2024-12-15',
-    time: '09:00',
-    duration: '15min',
-    location: 'Online - Google Meet',
-    attendees: [{ name: 'Echipa Contabilitate' }],
-    status: 'scheduled',
-    recurring: true,
-  },
-  {
-    id: 'e6',
-    title: 'Training SAF-T',
-    type: 'meeting',
-    date: '2024-12-15',
-    time: '11:00',
-    duration: '2h',
-    location: 'Sala Training',
-    attendees: [{ name: 'Echipa' }],
-    status: 'scheduled',
-  },
-];
 
-const appointments: Appointment[] = [
-  {
-    id: 'a1',
-    clientName: 'Maria Popescu',
-    clientCompany: 'Tech Solutions SRL',
-    date: '2024-12-14',
-    time: '10:00',
-    duration: '1h',
-    type: 'Consultanta fiscala',
-    status: 'confirmed',
-    notes: 'Discutie despre optimizare TVA',
-  },
-  {
-    id: 'a2',
-    clientName: 'Ion Georgescu',
-    clientCompany: 'Construct Plus SA',
-    date: '2024-12-14',
-    time: '14:00',
-    duration: '45min',
-    type: 'Review bilant',
-    status: 'confirmed',
-  },
-  {
-    id: 'a3',
-    clientName: 'Ana Dumitrescu',
-    clientCompany: 'Green Energy SRL',
-    date: '2024-12-15',
-    time: '09:30',
-    duration: '1h',
-    type: 'Onboarding',
-    status: 'pending',
-    notes: 'Client nou - prezentare platforma',
-  },
-];
 
 const weekDays = ['Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sam', 'Dum'];
 const currentMonth = 'Decembrie 2024';
@@ -174,7 +70,40 @@ const upcomingDeadlines = [
 ];
 
 export default function SchedulingPage() {
-  const [selectedDate, setSelectedDate] = useState('2024-12-14');
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loadError, setLoadError] = useState(false);
+  useEffect(() => {
+    (async () => {
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+        const res = await fetch(`${API_URL}/scheduling/meetings`, { headers: { Authorization: `Bearer ${token}` } });
+        if (!res.ok) throw new Error(String(res.status));
+        const d = await res.json();
+        const rows: Event[] = (Array.isArray(d) ? d : []).map((m: any) => {
+          const starts = new Date(m.startsAt);
+          const ends = new Date(m.endsAt);
+          const mins = Math.max(0, Math.round((ends.getTime() - starts.getTime()) / 60000));
+          return {
+            id: m.id,
+            title: m.title,
+            type: 'meeting' as const,
+            date: starts.toISOString().slice(0, 10),
+            time: starts.toISOString().slice(11, 16),
+            duration: `${mins}min`,
+            location: m.location ?? m.meetingUrl ?? undefined,
+            attendees: Array.isArray(m.attendees) ? m.attendees.map((a: any) => ({ name: a?.name ?? String(a) })) : [],
+            status: m.status === 'cancelled' ? 'cancelled' as const : m.status === 'completed' ? 'completed' as const : 'scheduled' as const,
+          };
+        });
+        setEvents(rows);
+      } catch (e) {
+        console.error('Scheduling load failed:', e);
+        setLoadError(true); setEvents([]);
+      }
+    })();
+  }, []);
   const [view, setView] = useState<'day' | 'week' | 'month'>('day');
   const [activeTab, setActiveTab] = useState<'events' | 'appointments'>('events');
 
@@ -209,14 +138,17 @@ export default function SchedulingPage() {
     }
   };
 
-  const todayEvents = events.filter(e => e.date === '2024-12-14');
-  const todayAppointments = appointments.filter(a => a.date === '2024-12-14');
+  const todayEvents = events.filter(e => e.date === selectedDate);
+  const appointments: Appointment[] = []; // no appointments backend — honest empty
+  const todayAppointments = appointments;
 
   return (
     <div className="p-6 space-y-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+          Nu am putut încărca întâlnirile. Reîncearcă. / Could not load meetings. Please retry.
+        </div>
+      )}
 
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">

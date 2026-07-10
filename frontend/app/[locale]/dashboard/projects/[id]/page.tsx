@@ -57,62 +57,57 @@ interface Activity {
   createdBy: string;
 }
 
-// Mock data for demonstration
-const mockProject: Project = {
-  id: '1',
-  name: 'Implementare ERP',
-  client: 'SC Tech SRL',
-  description: 'Implementare sistem ERP complet pentru managementul operațiunilor financiare și logistice.',
-  startDate: '2025-01-15',
-  endDate: '2025-06-30',
-  budget: 45000,
-  spent: 28000,
-  progress: 65,
-  status: 'active',
-  priority: 'high',
-  team: ['Maria Popescu', 'Ion Vasilescu'],
-  objectives: 'Digitalizare completă a proceselor contabile și logistice.',
-  tasks: [
-    { id: '1', title: 'Analiză cerințe', status: 'completed', assignee: 'Maria Popescu', dueDate: '2025-02-01', priority: 'high' },
-    { id: '2', title: 'Configurare sistem', status: 'in_progress', assignee: 'Ion Vasilescu', dueDate: '2025-03-15', priority: 'high' },
-    { id: '3', title: 'Training utilizatori', status: 'todo', assignee: 'Maria Popescu', dueDate: '2025-05-01', priority: 'medium' },
-  ],
-  activities: [
-    { id: '1', type: 'milestone', title: 'Kickoff meeting', description: 'Întâlnire inițială cu echipa client', createdAt: '2025-01-20', createdBy: 'Project Manager' },
-    { id: '2', type: 'update', title: 'Progress update', description: 'S-a finalizat faza de analiză', createdAt: '2025-02-15', createdBy: 'Maria Popescu' },
-  ]
-};
 
 export default function ProjectDetailPage() {
   const router = useRouter();
   const params = useParams();
+  const projectId = Array.isArray(params?.id) ? params.id[0] : (params?.id as string);
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const [loadError, setLoadError] = useState(false);
   useEffect(() => {
-    // Simulate API call
-    const fetchProject = async () => {
+    (async () => {
       try {
-        // In real app, fetch from API
-        // const response = await fetch(`/api/v1/projects/${params.id}`);
-        // const data = await response.json();
-        // setProject(data);
-
-        // For demo, use mock data
-        setTimeout(() => {
-          setProject(mockProject);
-          setLoading(false);
-        }, 500);
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+        const res = await fetch(`${API_URL}/projects/${projectId}`, { headers: { Authorization: `Bearer ${token}` } });
+        if (res.status === 404) { setProject(null); setLoading(false); return; }
+        if (!res.ok) throw new Error(String(res.status));
+        const x = await res.json();
+        setProject({
+          id: x.id,
+          name: x.name,
+          client: x.clientName ?? '—',
+          description: x.description ?? '',
+          startDate: x.startDate ?? '',
+          endDate: x.dueDate ?? '',
+          budget: x.budgetRon != null ? Number(x.budgetRon) : 0,
+          spent: x.spentRon != null ? Number(x.spentRon) : 0,
+          progress: x.progressPct ?? 0,
+          status: x.status,
+          priority: 'medium',
+          team: Array.isArray(x.teamNames) ? x.teamNames : [],
+          objectives: '',
+          tasks: (x.tasks ?? []).map((t: any) => ({
+            id: t.id, title: t.title, status: t.status,
+            assignee: t.assignee ?? '—', dueDate: t.dueDate ?? '', priority: t.priority,
+          })),
+          // Honest mapping: milestones are the only recorded events; no fabricated feed.
+          activities: (x.milestones ?? []).map((ms: any) => ({
+            id: ms.id, type: 'milestone' as const, title: ms.title,
+            description: ms.done ? 'Finalizat' : 'În curs',
+            createdAt: ms.dueDate ?? ms.createdAt ?? '', createdBy: '',
+          })),
+        });
       } catch (err) {
         console.error('Failed to fetch project:', err);
+        setLoadError(true); setProject(null);
+      } finally {
         setLoading(false);
       }
-    };
-
-    if (params.id) {
-      fetchProject();
-    }
-  }, [params.id]);
+    })();
+  }, [projectId]);
 
   const getStatusColor = (status: string) => {
     const colors = {
@@ -147,9 +142,6 @@ export default function ProjectDetailPage() {
   if (loading) {
     return (
       <div className="space-y-6 max-w-6xl mx-auto">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
         <div className="animate-pulse">
           <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
           <div className="h-4 bg-gray-200 rounded w-1/2 mb-6"></div>
