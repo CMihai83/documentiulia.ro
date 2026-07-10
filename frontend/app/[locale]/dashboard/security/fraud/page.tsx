@@ -22,159 +22,51 @@ interface FraudDashboardStats {
 }
 
 // Mock data for demonstration
-const MOCK_STATS: FraudDashboardStats = {
-  totalAlerts: 47,
-  criticalAlerts: 3,
-  pendingAlerts: 12,
-  resolvedAlerts: 28,
-  falsePositiveRate: 18.5,
-  averageRiskScore: 62.3,
-  alertsByType: {
-    UNUSUAL_AMOUNT: 12,
-    DUPLICATE_INVOICE: 8,
-    RAPID_SUCCESSION: 6,
-    VENDOR_ANOMALY: 9,
-    GEOGRAPHIC_INCONSISTENCY: 2,
-    WEEKEND_ACTIVITY: 5,
-    AFTER_HOURS: 3,
-    VELOCITY_ANOMALY: 2,
-  },
-  alertsBySeverity: {
-    LOW: 15,
-    MEDIUM: 18,
-    HIGH: 11,
-    CRITICAL: 3,
-  },
-  riskTrend: [
-    { date: '2025-12-05', score: 58 },
-    { date: '2025-12-06', score: 62 },
-    { date: '2025-12-07', score: 65 },
-    { date: '2025-12-08', score: 61 },
-    { date: '2025-12-09', score: 59 },
-    { date: '2025-12-10', score: 63 },
-    { date: '2025-12-11', score: 67 },
-    { date: '2025-12-12', score: 62 },
-  ],
-};
 
-const MOCK_ALERTS: FraudAlert[] = [
-  {
-    id: '1',
-    type: 'UNUSUAL_AMOUNT',
-    severity: 'CRITICAL',
-    status: 'PENDING',
-    title: 'Unusually Large Transaction Detected',
-    description: 'Transaction amount 125,000 RON is 4.2 standard deviations above your average of 12,500 RON',
-    riskScore: 92.5,
-    entityType: 'INVOICE',
-    entityId: 'INV-2025-001234',
-    metadata: {
-      amount: 125000,
-      average: 12500,
-      stdDev: 3200,
-      zScore: 4.2,
-    },
-    detectedAt: new Date('2025-12-12T14:30:00'),
-  },
-  {
-    id: '2',
-    type: 'DUPLICATE_INVOICE',
-    severity: 'HIGH',
-    status: 'PENDING',
-    title: 'Potential Duplicate Invoice',
-    description: 'Found 2 similar transaction(s) with the same amount within 24 hours',
-    riskScore: 78.3,
-    entityType: 'INVOICE',
-    entityId: 'INV-2025-001235',
-    metadata: {
-      duplicateCount: 2,
-      amount: 8500,
-    },
-    detectedAt: new Date('2025-12-12T11:15:00'),
-  },
-  {
-    id: '3',
-    type: 'VENDOR_ANOMALY',
-    severity: 'MEDIUM',
-    status: 'INVESTIGATING',
-    title: 'New Vendor with Large Transaction',
-    description: 'Large transaction (45,000 RON) with vendor added only 3 days ago',
-    riskScore: 65.7,
-    entityType: 'INVOICE',
-    entityId: 'INV-2025-001230',
-    metadata: {
-      vendorId: 'VEND-0089',
-      vendorName: 'Tech Solutions SRL',
-      vendorAgeDays: 3,
-      amount: 45000,
-    },
-    detectedAt: new Date('2025-12-11T16:20:00'),
-  },
-  {
-    id: '4',
-    type: 'RAPID_SUCCESSION',
-    severity: 'HIGH',
-    status: 'PENDING',
-    title: 'Rapid Transaction Succession',
-    description: '5 transactions detected within 3 minutes',
-    riskScore: 81.2,
-    entityType: 'TRANSACTION',
-    entityId: 'TXN-BATCH-456',
-    metadata: {
-      transactionCount: 5,
-      timeWindow: 3,
-    },
-    detectedAt: new Date('2025-12-12T09:45:00'),
-  },
-  {
-    id: '5',
-    type: 'WEEKEND_ACTIVITY',
-    severity: 'LOW',
-    status: 'FALSE_POSITIVE',
-    title: 'Weekend Transaction',
-    description: 'Transaction created on Saturday',
-    riskScore: 28.5,
-    entityType: 'INVOICE',
-    entityId: 'INV-2025-001220',
-    metadata: {
-      dayOfWeek: 6,
-    },
-    detectedAt: new Date('2025-12-09T13:00:00'),
-    resolvedAt: new Date('2025-12-10T10:00:00'),
-    resolution: 'Confirmed legitimate weekend work - architectural project deadline',
-  },
-];
 
 export default function FraudDetectionDashboard() {
   const t = useTranslations('fraudDetection');
-  const [stats, setStats] = useState<FraudDashboardStats>(MOCK_STATS);
-  const [alerts, setAlerts] = useState<FraudAlert[]>(MOCK_ALERTS);
+  const [stats, setStats] = useState<FraudDashboardStats | null>(null);
+  const [alerts, setAlerts] = useState<FraudAlert[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadError, setLoadError] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
 
   // Fetch dashboard data
   const fetchData = useCallback(async () => {
     setLoading(true);
+    setLoadError(false);
     try {
-      // In production, fetch from API
-      // const response = await fetch('/api/fraud-detection/dashboard/stats');
-      // const data = await response.json();
-      // setStats(data);
-
-      // const alertsResponse = await fetch('/api/fraud-detection/alerts');
-      // const alertsData = await alertsResponse.json();
-      // setAlerts(alertsData);
-
-      // Using mock data for now
-      await new Promise(resolve => setTimeout(resolve, 500));
-      setStats(MOCK_STATS);
-      setAlerts(MOCK_ALERTS);
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const headers = { Authorization: `Bearer ${token}` };
+      const [statsRes, alertsRes] = await Promise.all([
+        fetch(`${API_URL}/fraud-detection/dashboard/stats`, { headers }),
+        fetch(`${API_URL}/fraud-detection/alerts`, { headers }),
+      ]);
+      if (statsRes.ok) {
+        setStats(await statsRes.json());
+      } else {
+        setStats(null);
+        setLoadError(true);
+      }
+      if (alertsRes.ok) {
+        const d = await alertsRes.json();
+        setAlerts(Array.isArray(d) ? d : d?.items ?? d?.data ?? []);
+      } else {
+        setAlerts([]);
+        setLoadError(true);
+      }
     } catch (error) {
       console.error('Failed to fetch fraud detection data:', error);
+      setStats(null);
+      setAlerts([]);
+      setLoadError(true);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [API_URL]);
 
   useEffect(() => {
     fetchData();
@@ -183,14 +75,17 @@ export default function FraudDetectionDashboard() {
   // Handle alert status update
   const handleUpdateStatus = async (alertId: string, status: FraudAlertStatus, resolution?: string) => {
     try {
-      // In production, call API
-      // await fetch(`/api/fraud-detection/alerts/${alertId}`, {
-      //   method: 'PUT',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ status, resolution }),
-      // });
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const action = status === 'RESOLVED' ? 'resolve' : status === 'CONFIRMED' ? 'confirm' : status === 'FALSE_POSITIVE' ? 'mark-false-positive' : null;
+      if (action) {
+        await fetch(`${API_URL}/fraud-detection/alerts/${alertId}/${action}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ resolution }),
+        });
+      }
 
-      // Update local state
+      // Optimistic local update; the refetch below reconciles with the server
       setAlerts(prevAlerts =>
         prevAlerts.map(alert =>
           alert.id === alertId
@@ -216,12 +111,12 @@ export default function FraudDetectionDashboard() {
   const criticalAlerts = alerts.filter(a => a.severity === 'CRITICAL' && a.status === 'PENDING');
 
   // Prepare chart data
-  const alertTypeData = Object.entries(stats.alertsByType).map(([name, value]) => ({
+  const alertTypeData = Object.entries(stats?.alertsByType ?? {}).map(([name, value]) => ({
     name: t(`alertTypes.${name.toLowerCase()}`),
     value,
   }));
 
-  const severityData = Object.entries(stats.alertsBySeverity).map(([name, value]) => ({
+  const severityData = Object.entries(stats?.alertsBySeverity ?? {}).map(([name, value]) => ({
     name: t(`severity.${name.toLowerCase()}`),
     value,
     color:
@@ -232,9 +127,11 @@ export default function FraudDetectionDashboard() {
 
   return (
     <div className="p-3 sm:p-4 md:p-6 max-w-7xl mx-auto">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.
+        </div>
+      )}
       {/* Header */}
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -284,7 +181,7 @@ export default function FraudDetectionDashboard() {
             <h3 className="text-sm font-medium text-gray-600">{t('totalAlerts')}</h3>
             <AlertTriangle className="w-5 h-5 text-blue-500" />
           </div>
-          <div className="text-3xl font-bold text-gray-900">{stats.totalAlerts}</div>
+          <div className="text-3xl font-bold text-gray-900">{stats?.totalAlerts ?? 0}</div>
           <p className="text-sm text-gray-500 mt-1">{t('allTime')}</p>
         </div>
 
@@ -294,7 +191,7 @@ export default function FraudDetectionDashboard() {
             <h3 className="text-sm font-medium text-gray-600">{t('criticalAlerts')}</h3>
             <AlertTriangle className="w-5 h-5 text-red-500" />
           </div>
-          <div className="text-3xl font-bold text-red-600">{stats.criticalAlerts}</div>
+          <div className="text-3xl font-bold text-red-600">{stats?.criticalAlerts ?? 0}</div>
           <p className="text-sm text-gray-500 mt-1">{t('needsAttention')}</p>
         </div>
 
@@ -304,7 +201,7 @@ export default function FraudDetectionDashboard() {
             <h3 className="text-sm font-medium text-gray-600">{t('pendingAlerts')}</h3>
             <AlertTriangle className="w-5 h-5 text-yellow-500" />
           </div>
-          <div className="text-3xl font-bold text-yellow-600">{stats.pendingAlerts}</div>
+          <div className="text-3xl font-bold text-yellow-600">{stats?.pendingAlerts ?? 0}</div>
           <p className="text-sm text-gray-500 mt-1">{t('awaitingReview')}</p>
         </div>
 
@@ -314,9 +211,9 @@ export default function FraudDetectionDashboard() {
             <h3 className="text-sm font-medium text-gray-600">{t('resolvedAlerts')}</h3>
             <CheckCircle className="w-5 h-5 text-green-500" />
           </div>
-          <div className="text-3xl font-bold text-green-600">{stats.resolvedAlerts}</div>
+          <div className="text-3xl font-bold text-green-600">{stats?.resolvedAlerts ?? 0}</div>
           <p className="text-sm text-gray-500 mt-1">
-            {stats.falsePositiveRate.toFixed(1)}% {t('falsePositives')}
+            {(stats?.falsePositiveRate ?? 0).toFixed(1)}% {t('falsePositives')}
           </p>
         </div>
       </div>
@@ -328,7 +225,7 @@ export default function FraudDetectionDashboard() {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('averageRiskScore')}</h3>
           <div className="flex items-center justify-center">
             <RiskScoreIndicator
-              score={stats.averageRiskScore}
+              score={stats?.averageRiskScore ?? 0}
               previousScore={59.8}
               size="lg"
               showTrend
@@ -345,7 +242,7 @@ export default function FraudDetectionDashboard() {
           </h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={stats.riskTrend}>
+              <LineChart data={stats?.riskTrend ?? []}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" tick={{ fontSize: 12 }} />
                 <YAxis domain={[0, 100]} tick={{ fontSize: 12 }} />
