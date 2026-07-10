@@ -1,3 +1,5 @@
+import { BusinessGoalsService } from './business-goals.service';
+import { BusinessGoalsController } from './business-goals.controller';
 import { Module } from '@nestjs/common';
 import { PredictiveAnalyticsService } from './predictive-analytics.service';
 import { PredictiveAnalyticsController } from './predictive-analytics.controller';
@@ -18,7 +20,7 @@ import { CommonModule } from '../common/common.module';
 
 @Module({
   imports: [PrismaModule, CommonModule],
-  controllers: [
+  controllers: [BusinessGoalsController, 
     AnalyticsController,
     PredictiveAnalyticsController,
     MobileAnalyticsController,
@@ -28,7 +30,7 @@ import { CommonModule } from '../common/common.module';
     DashboardAnalyticsController,
     ValueMetricsController,
   ],
-  providers: [
+  providers: [BusinessGoalsService, 
     PredictiveAnalyticsService,
     MobileAnalyticsService,
     FinancialConsolidationService,
