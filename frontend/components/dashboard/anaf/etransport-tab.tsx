@@ -30,6 +30,7 @@ import {
   Filter,
 } from 'lucide-react';
 import { mockTransportDeclarations, mockTransportStatistics } from '@/lib/anaf/mocks';
+import { eTransportService } from '@/lib/anaf/services';
 import type { TransportDeclaration, TransportStatus, TransportType } from '@/lib/anaf/types';
 
 const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK_ANAF === 'true';
@@ -60,13 +61,15 @@ export function EtransportTab() {
         setTransports(filtered);
         setStatistics(mockTransportStatistics);
       } else {
-        // Real API call would go here
         const filters: any = {};
         if (statusFilter !== 'all') filters.status = statusFilter;
         if (typeFilter !== 'all') filters.type = typeFilter;
-        // const data = await eTransportService.getDeclarations('user_001', filters);
-        // setTransports(data.declarations);
-        // setStatistics(data.statistics);
+        const [decl, stats] = await Promise.all([
+          eTransportService.getDeclarations(filters).catch(() => null),
+          eTransportService.getStatistics('').catch(() => null),
+        ]);
+        setTransports((((decl?.data as any)?.declarations ?? decl?.data ?? []) as any[]));
+        setStatistics(((stats?.data as any) ?? null));
       }
     } catch (error) {
       console.error('Failed to fetch transports:', error);
