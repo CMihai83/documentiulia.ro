@@ -304,8 +304,10 @@ export function DashboardSidebar() {
   );
 
   // Org-level module preferences: disabled modules stay HIDDEN (unchanged).
+  const isAdmin = user?.role === 'ADMIN';
   const visibleBundles = useMemo(() => {
     const keep = (item: NavItem) => {
+      if (item.href === '/dashboard/admin/error-logs' && !isAdmin) return false;
       const moduleId = hrefToModuleId[item.href];
       if (moduleId === 'dashboard' || moduleId === 'settings') return true;
       if (!preferences) return true;
@@ -314,7 +316,7 @@ export function DashboardSidebar() {
     return navBundles
       .map((b) => ({ ...b, items: b.items.filter(keep) }))
       .filter((b) => b.items.length > 0);
-  }, [preferences, isModuleEnabled]);
+  }, [preferences, isModuleEnabled, isAdmin]);
 
   // Filter (consumption model C): matches item labels in the active locale AND
   // the Romanian defaults, so both languages find things.
@@ -391,9 +393,23 @@ export function DashboardSidebar() {
 
   const isBundleOpen = (id: string) => {
     if (query) return true; // filtering auto-expands matches
-    if (id === activeBundleId) return true; // active route's bundle always visible
     return effectiveOpen.has(id);
   };
+
+  // Auto-expand the bundle containing the active route on navigation,
+  // without persisting — the user's saved collapse choices stay intact,
+  // and the header toggle keeps working (they can re-collapse it).
+  useEffect(() => {
+    if (!activeBundleId) return;
+    setOpenBundles((prev) => {
+      const base = prev ?? new Set(DEFAULT_OPEN);
+      if (base.has(activeBundleId)) return prev;
+      const next = new Set(base);
+      next.add(activeBundleId);
+      return next;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeBundleId]);
 
   // Close mobile menu on route change
   useEffect(() => {
