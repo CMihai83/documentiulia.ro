@@ -75,6 +75,7 @@ import { ErrorsModule } from './errors/errors.module';
 import { BankReconciliationModule } from './bank-reconciliation/bank-reconciliation.module';
 import { ClientPortalModule } from './client-portal/client-portal.module';
 import { ExpenseManagementModule } from './expense-management/expense-management.module';
+import { FraudDetectionModule } from './fraud-detection/fraud-detection.module';
 import { DatabaseModule } from './database/database.module';
 import { OnboardingModule } from './onboarding/onboarding.module';
 import { CollaborationModule } from './collaboration/collaboration.module';
@@ -162,6 +163,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     AccountingModule,
     BudgetManagementModule,
     ExpenseManagementModule,
+    FraudDetectionModule,
     // ANAF Compliance
     AnafModule,
     VatModule,

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -90,133 +90,7 @@ interface EmployeeSalary {
 }
 
 // Sample data
-const samplePayrollRuns: PayrollRun[] = [
-  {
-    id: '1',
-    period: 'Decembrie 2024',
-    month: 'Decembrie',
-    year: 2024,
-    employeeCount: 45,
-    grossTotal: 485000,
-    netTotal: 298500,
-    taxesTotal: 82450,
-    contributionsTotal: 104050,
-    status: 'draft',
-  },
-  {
-    id: '2',
-    period: 'Noiembrie 2024',
-    month: 'Noiembrie',
-    year: 2024,
-    employeeCount: 44,
-    grossTotal: 472000,
-    netTotal: 290480,
-    taxesTotal: 80240,
-    contributionsTotal: 101280,
-    status: 'paid',
-    approvedBy: 'Director Financiar',
-    processedAt: '2024-11-25',
-    paidAt: '2024-11-30',
-  },
-  {
-    id: '3',
-    period: 'Octombrie 2024',
-    month: 'Octombrie',
-    year: 2024,
-    employeeCount: 43,
-    grossTotal: 458000,
-    netTotal: 281860,
-    taxesTotal: 77860,
-    contributionsTotal: 98280,
-    status: 'paid',
-    approvedBy: 'Director Financiar',
-    processedAt: '2024-10-25',
-    paidAt: '2024-10-31',
-  },
-];
 
-const sampleEmployeeSalaries: EmployeeSalary[] = [
-  {
-    id: '1',
-    employeeName: 'Ion Popescu',
-    employeeInitials: 'IP',
-    position: 'Senior Developer',
-    department: 'IT',
-    grossSalary: 15000,
-    netSalary: 9225,
-    taxAmount: 1500,
-    casAmount: 3750,
-    cassAmount: 1500,
-    bonuses: 2000,
-    deductions: 0,
-    workDays: 22,
-    absenceDays: 0,
-  },
-  {
-    id: '2',
-    employeeName: 'Maria Ionescu',
-    employeeInitials: 'MI',
-    position: 'HR Manager',
-    department: 'HR',
-    grossSalary: 12000,
-    netSalary: 7380,
-    taxAmount: 1200,
-    casAmount: 3000,
-    cassAmount: 1200,
-    bonuses: 0,
-    deductions: 0,
-    workDays: 20,
-    absenceDays: 2,
-  },
-  {
-    id: '3',
-    employeeName: 'Andrei Marin',
-    employeeInitials: 'AM',
-    position: 'Junior Accountant',
-    department: 'Contabilitate',
-    grossSalary: 6500,
-    netSalary: 3998,
-    taxAmount: 650,
-    casAmount: 1625,
-    cassAmount: 650,
-    bonuses: 500,
-    deductions: 0,
-    workDays: 22,
-    absenceDays: 0,
-  },
-  {
-    id: '4',
-    employeeName: 'Elena Dumitrescu',
-    employeeInitials: 'ED',
-    position: 'Marketing Specialist',
-    department: 'Marketing',
-    grossSalary: 8000,
-    netSalary: 4920,
-    taxAmount: 800,
-    casAmount: 2000,
-    cassAmount: 800,
-    bonuses: 0,
-    deductions: 200,
-    workDays: 11,
-    absenceDays: 0,
-  },
-  {
-    id: '5',
-    employeeName: 'Alexandru Popa',
-    employeeInitials: 'AP',
-    position: 'Consultant',
-    department: 'Consultanță',
-    grossSalary: 18000,
-    netSalary: 11070,
-    taxAmount: 1800,
-    casAmount: 4500,
-    cassAmount: 1800,
-    bonuses: 3000,
-    deductions: 0,
-    workDays: 22,
-    absenceDays: 0,
-  },
-];
 
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 
@@ -242,7 +116,10 @@ export default function PayrollPage() {
   const [activeTab, setActiveTab] = useState('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [departmentFilter, setDepartmentFilter] = useState<string>('all');
-  const [selectedPayroll, setSelectedPayroll] = useState(samplePayrollRuns[0]);
+  const [payrollRuns, setPayrollRuns] = useState<PayrollRun[]>([]);
+  const [employeeSalaries, setEmployeeSalaries] = useState<EmployeeSalary[]>([]);
+  const [selectedPayroll, setSelectedPayroll] = useState<PayrollRun | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [calculating, setCalculating] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [importing, setImporting] = useState(false);
@@ -250,11 +127,39 @@ export default function PayrollPage() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
   const getToken = () => localStorage.getItem('auth_token');
 
+  useEffect(() => {
+    (async () => {
+      setLoadError(false);
+      try {
+        const token = getToken();
+        const headers = { Authorization: `Bearer ${token}` };
+        const [runsRes, empRes] = await Promise.all([
+          fetch(`${API_URL}/hr/payroll`, { headers }),
+          fetch(`${API_URL}/hr/employees`, { headers }),
+        ]);
+        if (runsRes.ok) {
+          const d = await runsRes.json();
+          const runs: PayrollRun[] = Array.isArray(d) ? d : d?.items ?? d?.data ?? [];
+          setPayrollRuns(runs);
+          setSelectedPayroll(runs[0] ?? null);
+        } else { setLoadError(true); }
+        if (empRes.ok) {
+          const d = await empRes.json();
+          setEmployeeSalaries(Array.isArray(d) ? d : d?.items ?? d?.data ?? []);
+        } else { setLoadError(true); }
+      } catch (e) {
+        console.error('Failed to load payroll data:', e);
+        setLoadError(true);
+      }
+    })();
+  }, [API_URL]);
+
   const handleExportSAGA = async () => {
+    if (!selectedPayroll) return;
     setExporting(true);
     try {
       const token = getToken();
-      const response = await fetch(`${API_URL}/hr/payroll/export-saga?period=${selectedPayroll.period}`, {
+      const response = await fetch(`${API_URL}/hr/payroll/export-saga?period=${selectedPayroll?.period}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -263,44 +168,12 @@ export default function PayrollPage() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `saga_salarii_${selectedPayroll.period.replace(' ', '_')}.xml`;
+        a.download = `saga_salarii_${selectedPayroll?.period.replace(' ', '_')}.xml`;
         a.click();
         window.URL.revokeObjectURL(url);
       } else {
-        // Fallback: Generate a mock XML export
-        const sagaXml = `<?xml version="1.0" encoding="UTF-8"?>
-<SAGA version="3.2">
-  <Header>
-    <Period>${selectedPayroll.period}</Period>
-    <EmployeeCount>${selectedPayroll.employeeCount}</EmployeeCount>
-    <Generated>${new Date().toISOString()}</Generated>
-  </Header>
-  <Employees>
-    ${sampleEmployeeSalaries.map(emp => `
-    <Employee>
-      <Name>${emp.employeeName}</Name>
-      <GrossSalary>${emp.grossSalary}</GrossSalary>
-      <NetSalary>${emp.netSalary}</NetSalary>
-      <Tax>${emp.taxAmount}</Tax>
-      <CAS>${emp.casAmount}</CAS>
-      <CASS>${emp.cassAmount}</CASS>
-    </Employee>`).join('')}
-  </Employees>
-  <Totals>
-    <GrossTotal>${selectedPayroll.grossTotal}</GrossTotal>
-    <NetTotal>${selectedPayroll.netTotal}</NetTotal>
-    <TaxesTotal>${selectedPayroll.taxesTotal}</TaxesTotal>
-    <ContributionsTotal>${selectedPayroll.contributionsTotal}</ContributionsTotal>
-  </Totals>
-</SAGA>`;
-        const blob = new Blob([sagaXml], { type: 'application/xml' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `saga_salarii_${selectedPayroll.period.replace(' ', '_')}.xml`;
-        a.click();
-        window.URL.revokeObjectURL(url);
-        toast.success('Export SAGA', 'Fișier generat cu succes!');
+        // Never fabricate a SAGA payroll XML — a user could submit invented salary data.
+        toast.error('Eroare', 'Exportul SAGA nu a putut fi generat de server.');
       }
     } catch (error) {
       console.error('Export SAGA error:', error);
@@ -322,7 +195,7 @@ export default function PayrollPage() {
       try {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('period', selectedPayroll.period);
+        formData.append('period', selectedPayroll?.period ?? '');
 
         const token = getToken();
         const response = await fetch(`${API_URL}/hr/payroll/import-timesheet`, {
@@ -335,11 +208,11 @@ export default function PayrollPage() {
           const result = await response.json();
           toast.success('Import reușit', `${result.imported || 0} înregistrări procesate.`);
         } else {
-          toast.success('Import (Demo)', `Fișierul ${file.name} selectat - import simulat cu succes!`);
+          toast.error('Eroare', 'Importul pontajului a eșuat pe server.');
         }
       } catch (error) {
         console.error('Import error:', error);
-        toast.success('Import (Demo)', 'Import pontaj simulat cu succes!');
+        toast.error('Eroare', 'Importul pontajului a eșuat.');
       } finally {
         setImporting(false);
       }
@@ -357,23 +230,23 @@ export default function PayrollPage() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ period: selectedPayroll.period }),
+        body: JSON.stringify({ period: selectedPayroll?.period }),
       });
 
       if (response.ok) {
         const result = await response.json();
-        toast.success('Calcul finalizat', `Total brut: ${formatCurrency(result.grossTotal || selectedPayroll.grossTotal)} | Net: ${formatCurrency(result.netTotal || selectedPayroll.netTotal)}`);
+        toast.success('Calcul finalizat', `Total brut: ${formatCurrency(result.grossTotal || selectedPayroll?.grossTotal)} | Net: ${formatCurrency(result.netTotal || selectedPayroll?.netTotal)}`);
         setSelectedPayroll({
-          ...selectedPayroll,
+          ...selectedPayroll!,
           status: 'processing',
           processedAt: new Date().toISOString(),
         });
       } else {
         // Simulate calculation for demo
         await new Promise(resolve => setTimeout(resolve, 1500));
-        toast.success('Calcul finalizat (Demo)', `${selectedPayroll.employeeCount} angajați procesați`);
+        toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
         setSelectedPayroll({
-          ...selectedPayroll,
+          ...selectedPayroll!,
           status: 'processing',
           processedAt: new Date().toISOString(),
         });
@@ -382,19 +255,19 @@ export default function PayrollPage() {
       console.error('Calculate error:', error);
       // Simulate success for demo
       await new Promise(resolve => setTimeout(resolve, 1500));
-      toast.success('Calcul finalizat (Demo)', `${selectedPayroll.employeeCount} angajați procesați`);
+      toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
     } finally {
       setCalculating(false);
     }
   };
 
   const stats = {
-    employees: selectedPayroll.employeeCount,
-    grossTotal: selectedPayroll.grossTotal,
-    netTotal: selectedPayroll.netTotal,
-    taxesTotal: selectedPayroll.taxesTotal,
-    contributionsTotal: selectedPayroll.contributionsTotal,
-    avgSalary: selectedPayroll.grossTotal / selectedPayroll.employeeCount,
+    employees: selectedPayroll?.employeeCount,
+    grossTotal: selectedPayroll?.grossTotal ?? 0,
+    netTotal: selectedPayroll?.netTotal ?? 0,
+    taxesTotal: selectedPayroll?.taxesTotal ?? 0,
+    contributionsTotal: selectedPayroll?.contributionsTotal ?? 0,
+    avgSalary: (selectedPayroll?.grossTotal ?? 0) / (selectedPayroll?.employeeCount || 1),
   };
 
   // Distribution data
@@ -421,9 +294,9 @@ export default function PayrollPage() {
     { month: 'Dec', gross: 485000, net: 298500 },
   ];
 
-  const departments = [...new Set(sampleEmployeeSalaries.map(e => e.department))];
+  const departments = [...new Set(employeeSalaries.map(e => e.department))];
 
-  const filteredEmployees = sampleEmployeeSalaries.filter(emp => {
+  const filteredEmployees = employeeSalaries.filter(emp => {
     const matchesSearch = searchQuery === '' ||
       emp.employeeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       emp.position.toLowerCase().includes(searchQuery.toLowerCase());
@@ -446,7 +319,7 @@ export default function PayrollPage() {
   };
 
   const handlePrintPayslip = (emp: EmployeeSalary) => {
-    router.push(`/dashboard/payroll/payslip/${emp.id}?period=${selectedPayroll.period}`);
+    router.push(`/dashboard/payroll/payslip/${emp.id}?period=${selectedPayroll?.period}`);
   };
 
   const handleSendPayslip = async (emp: EmployeeSalary) => {
@@ -458,22 +331,22 @@ export default function PayrollPage() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ period: selectedPayroll.period }),
+        body: JSON.stringify({ period: selectedPayroll?.period }),
       });
 
       if (response.ok) {
         toast.success('Fluturaș trimis', `Email trimis către ${emp.employeeName}`);
       } else {
-        toast.success('Trimitere (Demo)', `Fluturaș pentru ${emp.employeeName} - funcționalitate în dezvoltare`);
+        toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
       }
     } catch (err) {
       console.error('Send payslip failed:', err);
-      toast.success('Trimitere (Demo)', `Fluturaș pentru ${emp.employeeName} - funcționalitate în dezvoltare`);
+      toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
     }
   };
 
   const handleEditEmployeeSalary = (emp: EmployeeSalary) => {
-    router.push(`/dashboard/payroll/employee/${emp.id}/edit?period=${selectedPayroll.period}`);
+    router.push(`/dashboard/payroll/employee/${emp.id}/edit?period=${selectedPayroll?.period}`);
   };
 
   // History Handlers
@@ -494,7 +367,7 @@ export default function PayrollPage() {
   const handleApprovePayroll = async () => {
     try {
       const token = getToken();
-      const response = await fetch(`${API_URL}/hr/payroll/${selectedPayroll.id}/approve`, {
+      const response = await fetch(`${API_URL}/hr/payroll/${selectedPayroll?.id}/approve`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -503,20 +376,18 @@ export default function PayrollPage() {
       });
 
       if (response.ok) {
-        toast.success('Stat aprobat', `Statul de plată pentru ${selectedPayroll.period} a fost aprobat.`);
+        toast.success('Stat aprobat', `Statul de plată pentru ${selectedPayroll?.period} a fost aprobat.`);
       } else {
-        toast.success('Aprobare (Demo)', `Stat pentru ${selectedPayroll.period} marcat ca aprobat.`);
+        toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
       }
-      setSelectedPayroll({
-        ...selectedPayroll,
+      setSelectedPayroll({ ...selectedPayroll!,
         status: 'approved',
         approvedBy: 'Director Financiar',
       });
     } catch (err) {
       console.error('Approve failed:', err);
-      toast.success('Aprobare (Demo)', `Stat pentru ${selectedPayroll.period} marcat ca aprobat.`);
-      setSelectedPayroll({
-        ...selectedPayroll,
+      toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
+      setSelectedPayroll({ ...selectedPayroll!,
         status: 'approved',
         approvedBy: 'Director Financiar',
       });
@@ -524,14 +395,15 @@ export default function PayrollPage() {
   };
 
   const handleProcessPayments = async () => {
-    if (selectedPayroll.status !== 'approved') {
+    if (!selectedPayroll) return;
+    if (selectedPayroll?.status !== 'approved') {
       toast.error('Eroare', 'Statul de plată trebuie aprobat înainte de procesarea plăților.');
       return;
     }
 
     try {
       const token = getToken();
-      const response = await fetch(`${API_URL}/hr/payroll/${selectedPayroll.id}/process-payments`, {
+      const response = await fetch(`${API_URL}/hr/payroll/${selectedPayroll?.id}/process-payments`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -540,20 +412,18 @@ export default function PayrollPage() {
       });
 
       if (response.ok) {
-        toast.success('Plăți procesate', `Plățile pentru ${selectedPayroll.employeeCount} angajați au fost inițiate.`);
+        toast.success('Plăți procesate', `Plățile pentru ${selectedPayroll?.employeeCount} angajați au fost inițiate.`);
       } else {
-        toast.success('Plăți (Demo)', `Plăți pentru ${selectedPayroll.employeeCount} angajați - în dezvoltare`);
+        toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
       }
-      setSelectedPayroll({
-        ...selectedPayroll,
+      setSelectedPayroll({ ...selectedPayroll!,
         status: 'paid',
         paidAt: new Date().toISOString(),
       });
     } catch (err) {
       console.error('Process payments failed:', err);
-      toast.success('Plăți (Demo)', `Plăți simulate pentru ${selectedPayroll.employeeCount} angajați`);
-      setSelectedPayroll({
-        ...selectedPayroll,
+      toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
+      setSelectedPayroll({ ...selectedPayroll!,
         status: 'paid',
         paidAt: new Date().toISOString(),
       });
@@ -562,7 +432,7 @@ export default function PayrollPage() {
 
   // Declaration Handlers
   const handleGenerateDeclaration = (declName: string) => {
-    toast.success(`Declarație ${declName}`, `Generată pentru ${selectedPayroll.period} - gata pentru depunere.`);
+    toast.success(`Declarație ${declName}`, `Generată pentru ${selectedPayroll?.period} - gata pentru depunere.`);
   };
 
   const handleSubmitDeclaration = async (declName: string) => {
@@ -574,17 +444,17 @@ export default function PayrollPage() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ period: selectedPayroll.period }),
+        body: JSON.stringify({ period: selectedPayroll?.period }),
       });
 
       if (response.ok) {
         toast.compliance(`${declName} depus`, `Declarația a fost depusă cu succes la ANAF.`);
       } else {
-        toast.compliance(`${declName} (Demo)`, `Declarație marcată ca depusă - funcționalitate în dezvoltare.`);
+        toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
       }
     } catch (err) {
       console.error('Submit declaration failed:', err);
-      toast.compliance(`${declName} (Demo)`, `Declarație marcată ca depusă - funcționalitate în dezvoltare.`);
+      toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
     }
   };
 
@@ -594,6 +464,7 @@ export default function PayrollPage() {
 
   // Bulk Actions
   const handleSendAllPayslips = async () => {
+    if (!selectedPayroll) return;
     try {
       const token = getToken();
       const response = await fetch(`${API_URL}/hr/payroll/send-all-payslips`, {
@@ -602,29 +473,29 @@ export default function PayrollPage() {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ period: selectedPayroll.period }),
+        body: JSON.stringify({ period: selectedPayroll?.period }),
       });
 
       if (response.ok) {
-        toast.success('Fluturași trimiși', `${selectedPayroll.employeeCount} fluturași au fost trimiși pe email.`);
+        toast.success('Fluturași trimiși', `${selectedPayroll?.employeeCount} fluturași au fost trimiși pe email.`);
       } else {
-        toast.success('Trimitere (Demo)', `${selectedPayroll.employeeCount} fluturași - funcționalitate în dezvoltare`);
+        toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
       }
     } catch (err) {
       console.error('Send all payslips failed:', err);
-      toast.success('Trimitere (Demo)', `${selectedPayroll.employeeCount} fluturași - funcționalitate în dezvoltare`);
+      toast.error('Eroare', 'Operațiunea nu a putut fi finalizată pe server.');
     }
   };
 
   const handlePrintAllPayslips = () => {
-    router.push(`/dashboard/payroll/print-all?period=${selectedPayroll.period}`);
+    router.push(`/dashboard/payroll/print-all?period=${selectedPayroll?.period}`);
   };
 
   return (
     <div className="space-y-6 p-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (<div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
+        Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.
+      </div>)}
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
@@ -658,7 +529,7 @@ export default function PayrollPage() {
                 <Wallet className="h-8 w-8" />
               </div>
               <div>
-                <h2 className="text-xl font-bold">{selectedPayroll.period}</h2>
+                <h2 className="text-xl font-bold">{selectedPayroll?.period}</h2>
                 <p className="text-blue-100">Stat de plată curent</p>
               </div>
             </div>
@@ -676,7 +547,7 @@ export default function PayrollPage() {
                 <div className="text-xs text-blue-100">Net Total</div>
               </div>
               <Badge className="bg-white/20 hover:bg-white/30 text-white">
-                {statusLabels[selectedPayroll.status]}
+                {selectedPayroll ? statusLabels[selectedPayroll.status] : ''}
               </Badge>
             </div>
           </div>
@@ -760,7 +631,7 @@ export default function PayrollPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Distribuție Costuri</CardTitle>
-                <CardDescription>Fond salarii {selectedPayroll.period}</CardDescription>
+                <CardDescription>Fond salarii {selectedPayroll?.period}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="h-[300px]">
@@ -960,7 +831,7 @@ export default function PayrollPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {samplePayrollRuns.map((run) => (
+                {payrollRuns.map((run) => (
                   <div key={run.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                     <div className="flex items-center gap-4">
                       <div className="p-2 bg-muted rounded-lg">
@@ -1058,7 +929,7 @@ export default function PayrollPage() {
                 <div className="p-4 border rounded-lg bg-muted/50">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <p className="font-medium">Export Salarii {selectedPayroll.period}</p>
+                      <p className="font-medium">Export Salarii {selectedPayroll?.period}</p>
                       <p className="text-sm text-muted-foreground">Format SAGA compatibil</p>
                     </div>
                     <Button onClick={handleExportSAGADeclarations} disabled={exporting}>

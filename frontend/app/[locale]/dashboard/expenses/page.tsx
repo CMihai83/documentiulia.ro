@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -91,139 +91,7 @@ interface ExpenseReport {
 
 // Sample data
 // TODO(REQ-035): wire to real API
-  const sampleExpenses: Expense[] = [
-  {
-    id: '1',
-    employeeName: 'Ion Popescu',
-    employeeInitials: 'IP',
-    categoryName: 'Transport',
-    description: 'Bilet avion București - Cluj pentru conferință',
-    amount: 450,
-    vatAmount: 85.5,
-    totalAmount: 535.5,
-    currency: 'RON',
-    expenseDate: '2024-12-10',
-    paymentMethod: 'card',
-    vendorName: 'Wizz Air',
-    status: 'submitted',
-    tags: ['conferință', 'deplasare'],
-  },
-  {
-    id: '2',
-    employeeName: 'Maria Ionescu',
-    employeeInitials: 'MI',
-    categoryName: 'Cazare',
-    description: 'Hotel pentru 2 nopți - Training extern',
-    amount: 680,
-    vatAmount: 129.2,
-    totalAmount: 809.2,
-    currency: 'RON',
-    expenseDate: '2024-12-08',
-    paymentMethod: 'card',
-    vendorName: 'Hotel Marriott',
-    status: 'approved',
-    approvedBy: 'Elena Stancu',
-    tags: ['training'],
-  },
-  {
-    id: '3',
-    employeeName: 'Andrei Marin',
-    employeeInitials: 'AM',
-    categoryName: 'Consumabile',
-    description: 'Achiziție toner imprimantă birou',
-    amount: 185,
-    vatAmount: 35.15,
-    totalAmount: 220.15,
-    currency: 'RON',
-    expenseDate: '2024-12-12',
-    paymentMethod: 'cash',
-    vendorName: 'IT Store SRL',
-    receiptUrl: '/receipts/3.pdf',
-    status: 'draft',
-    tags: ['birou'],
-  },
-  {
-    id: '4',
-    employeeName: 'Elena Dumitrescu',
-    employeeInitials: 'ED',
-    categoryName: 'Masă',
-    description: 'Prânz cu client - negociere contract',
-    amount: 320,
-    vatAmount: 60.8,
-    totalAmount: 380.8,
-    currency: 'RON',
-    expenseDate: '2024-12-11',
-    paymentMethod: 'card',
-    vendorName: 'Restaurant Caru cu Bere',
-    status: 'rejected',
-    tags: ['client', 'vânzări'],
-  },
-  {
-    id: '5',
-    employeeName: 'Alexandru Popa',
-    employeeInitials: 'AP',
-    categoryName: 'Software',
-    description: 'Licență Adobe Creative Cloud - anual',
-    amount: 2400,
-    vatAmount: 456,
-    totalAmount: 2856,
-    currency: 'RON',
-    expenseDate: '2024-12-01',
-    paymentMethod: 'bank_transfer',
-    vendorName: 'Adobe Systems',
-    status: 'paid',
-    approvedBy: 'Director Financiar',
-    tags: ['software', 'licență'],
-  },
-  {
-    id: '6',
-    employeeName: 'Ana Vasilescu',
-    employeeInitials: 'AV',
-    categoryName: 'Transport',
-    description: 'Combustibil - deplasare la client',
-    amount: 250,
-    vatAmount: 47.5,
-    totalAmount: 297.5,
-    currency: 'RON',
-    expenseDate: '2024-12-13',
-    paymentMethod: 'card',
-    vendorName: 'OMV Petrom',
-    status: 'submitted',
-    tags: ['client', 'combustibil'],
-  },
-];
 
-const sampleReports: ExpenseReport[] = [
-  {
-    id: '1',
-    employeeName: 'Ion Popescu',
-    title: 'Deplasare Conferință Tech Summit 2024',
-    expenseCount: 5,
-    totalAmount: 2850,
-    status: 'submitted',
-    submittedAt: '2024-12-10',
-    createdAt: '2024-12-08',
-  },
-  {
-    id: '2',
-    employeeName: 'Maria Ionescu',
-    title: 'Training Management Q4',
-    expenseCount: 3,
-    totalAmount: 1450,
-    status: 'approved',
-    submittedAt: '2024-12-05',
-    createdAt: '2024-12-03',
-  },
-  {
-    id: '3',
-    employeeName: 'Andrei Marin',
-    title: 'Cheltuieli birou Decembrie',
-    expenseCount: 8,
-    totalAmount: 650,
-    status: 'draft',
-    createdAt: '2024-12-12',
-  },
-];
 
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
 
@@ -261,28 +129,53 @@ const paymentMethodIcons: Record<PaymentMethod, React.ReactNode> = {
 
 export default function ExpensesPage() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [expenses, setExpenses] = useState<Expense[]>([]);
+  const [reports, setReports] = useState<ExpenseReport[]>([]);
+  const [loadError, setLoadError] = useState(false);
+  useEffect(() => {
+    (async () => {
+      setLoadError(false);
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+        const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+        const headers = { Authorization: `Bearer ${token}` };
+        const [expRes, repRes] = await Promise.all([
+          fetch(`${API_URL}/expense-management/expenses`, { headers }),
+          fetch(`${API_URL}/expense-management/reports`, { headers }).catch(() => null),
+        ]);
+        if (expRes.ok) {
+          const d = await expRes.json();
+          setExpenses(Array.isArray(d) ? d : d?.expenses ?? d?.items ?? d?.data ?? []);
+        } else { setLoadError(true); }
+        if (repRes && repRes.ok) {
+          const d = await repRes.json();
+          setReports(Array.isArray(d) ? d : d?.reports ?? d?.items ?? d?.data ?? []);
+        }
+      } catch (e) { console.error('Failed to load expenses:', e); setLoadError(true); }
+    })();
+  }, []);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
 
   // Calculate statistics
   const stats = {
-    total: sampleExpenses.length,
-    draft: sampleExpenses.filter(e => e.status === 'draft').length,
-    pending: sampleExpenses.filter(e => e.status === 'submitted').length,
-    approved: sampleExpenses.filter(e => e.status === 'approved' || e.status === 'paid').length,
-    rejected: sampleExpenses.filter(e => e.status === 'rejected').length,
-    totalAmount: sampleExpenses.reduce((sum, e) => sum + e.totalAmount, 0),
-    pendingAmount: sampleExpenses
+    total: expenses.length,
+    draft: expenses.filter(e => e.status === 'draft').length,
+    pending: expenses.filter(e => e.status === 'submitted').length,
+    approved: expenses.filter(e => e.status === 'approved' || e.status === 'paid').length,
+    rejected: expenses.filter(e => e.status === 'rejected').length,
+    totalAmount: expenses.reduce((sum, e) => sum + e.totalAmount, 0),
+    pendingAmount: expenses
       .filter(e => e.status === 'submitted')
       .reduce((sum, e) => sum + e.totalAmount, 0),
-    thisMonth: sampleExpenses.filter(e => new Date(e.expenseDate).getMonth() === 11).length,
+    thisMonth: expenses.filter(e => new Date(e.expenseDate).getMonth() === 11).length,
   };
 
   // Category data for chart
-  const categoryData = [...new Set(sampleExpenses.map(e => e.categoryName))].map(cat => ({
+  const categoryData = [...new Set(expenses.map(e => e.categoryName))].map(cat => ({
     name: cat,
-    value: sampleExpenses
+    value: expenses
       .filter(e => e.categoryName === cat)
       .reduce((sum, e) => sum + e.totalAmount, 0),
   }));
@@ -297,7 +190,7 @@ export default function ExpensesPage() {
   ];
 
   // Filter expenses
-  const filteredExpenses = sampleExpenses.filter(expense => {
+  const filteredExpenses = expenses.filter(expense => {
     const matchesSearch = searchQuery === '' ||
       expense.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       expense.employeeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -307,7 +200,7 @@ export default function ExpensesPage() {
     return matchesSearch && matchesStatus && matchesCategory;
   });
 
-  const categories = [...new Set(sampleExpenses.map(e => e.categoryName))];
+  const categories = [...new Set(expenses.map(e => e.categoryName))];
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('ro-RO', {
@@ -323,10 +216,7 @@ export default function ExpensesPage() {
   };
 
   return (
-    <div className="space-y-6 p-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+    <div className="space-y-6 p-6">{loadError && (<div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.</div>)}
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
@@ -501,7 +391,7 @@ export default function ExpensesPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {sampleExpenses.slice(0, 5).map((expense) => (
+                {expenses.slice(0, 5).map((expense) => (
                   <div key={expense.id} className="flex items-center justify-between p-3 border rounded-lg">
                     <div className="flex items-center gap-3">
                       <Avatar className="h-9 w-9">
@@ -651,7 +541,7 @@ export default function ExpensesPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {sampleReports.map((report) => (
+                {reports.map((report) => (
                   <div key={report.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                     <div className="flex items-center gap-4">
                       <div className="p-2 bg-muted rounded-lg">
@@ -700,7 +590,7 @@ export default function ExpensesPage() {
               <CardDescription>Cheltuieli care necesită aprobare</CardDescription>
             </CardHeader>
             <CardContent>
-              {sampleExpenses.filter(e => e.status === 'submitted').length === 0 ? (
+              {expenses.filter(e => e.status === 'submitted').length === 0 ? (
                 <div className="text-center py-12">
                   <CheckCircle className="h-12 w-12 mx-auto mb-4 text-green-500" />
                   <p className="text-lg font-medium">Toate cheltuielile au fost procesate</p>
@@ -708,7 +598,7 @@ export default function ExpensesPage() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {sampleExpenses.filter(e => e.status === 'submitted').map((expense) => (
+                  {expenses.filter(e => e.status === 'submitted').map((expense) => (
                     <div key={expense.id} className="flex items-center justify-between p-4 border rounded-lg bg-yellow-50/50">
                       <div className="flex items-center gap-4">
                         <Avatar className="h-10 w-10">

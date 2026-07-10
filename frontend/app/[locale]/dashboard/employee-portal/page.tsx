@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -72,39 +72,9 @@ interface PaySlip {
 
 // TODO(REQ): wire to real API — demo data below
 // Sample data
-const employeeInfo = {
-  name: 'Ion Popescu',
-  initials: 'IP',
-  position: 'Senior Software Developer',
-  department: 'IT',
-  manager: 'Maria Ionescu',
-  startDate: '2022-03-15',
-  email: 'ion.popescu@company.ro',
-  phone: '+40 721 234 567',
-  contractType: 'Nedeterminat',
-  workSchedule: '09:00 - 18:00',
-};
 
-const leaveBalances: LeaveBalance[] = [
-  { type: 'Concediu Odihnă', icon: <Sun className="h-4 w-4" />, total: 21, used: 12, pending: 2, color: 'bg-blue-500' },
-  { type: 'Zile Libere', icon: <Coffee className="h-4 w-4" />, total: 3, used: 1, pending: 0, color: 'bg-green-500' },
-  { type: 'Concediu Medical', icon: <Heart className="h-4 w-4" />, total: 180, used: 5, pending: 0, color: 'bg-red-500' },
-  { type: 'Work from Home', icon: <Home className="h-4 w-4" />, total: 48, used: 35, pending: 3, color: 'bg-purple-500' },
-];
 
-const leaveRequests: LeaveRequest[] = [
-  { id: '1', type: 'Concediu Odihnă', startDate: '2024-12-23', endDate: '2024-12-27', days: 5, status: 'pending' },
-  { id: '2', type: 'Work from Home', startDate: '2024-12-16', endDate: '2024-12-18', days: 3, status: 'approved' },
-  { id: '3', type: 'Concediu Odihnă', startDate: '2024-11-01', endDate: '2024-11-08', days: 6, status: 'approved' },
-  { id: '4', type: 'Zi Liberă', startDate: '2024-10-15', endDate: '2024-10-15', days: 1, status: 'approved' },
-];
 
-const paySlips: PaySlip[] = [
-  { id: '1', period: 'Noiembrie 2024', grossSalary: 15000, netSalary: 9225, paidDate: '2024-11-30' },
-  { id: '2', period: 'Octombrie 2024', grossSalary: 15000, netSalary: 9225, paidDate: '2024-10-31' },
-  { id: '3', period: 'Septembrie 2024', grossSalary: 14500, netSalary: 8918, paidDate: '2024-09-30' },
-  { id: '4', period: 'August 2024', grossSalary: 14500, netSalary: 8918, paidDate: '2024-08-31' },
-];
 
 const attendanceData = [
   { day: 'Lun', hours: 8.5 },
@@ -128,6 +98,35 @@ const statusLabels = {
 
 export default function EmployeePortalPage() {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [employeeInfo, setEmployeeInfo] = useState<any>(null);
+  const [leaveBalances, setLeaveBalances] = useState<LeaveBalance[]>([]);
+  const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([]);
+  const [paySlips, setPaySlips] = useState<PaySlip[]>([]);
+  const [loadError, setLoadError] = useState(false);
+  const [noProfile, setNoProfile] = useState(false);
+  useEffect(() => {
+    (async () => {
+      setLoadError(false); setNoProfile(false);
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const headers = { Authorization: `Bearer ${token}` };
+      const pick = (d: any) => Array.isArray(d) ? d : d?.items ?? d?.data ?? [];
+      try {
+        const prof = await fetch(`${API_URL}/employee-portal/profile`, { headers });
+        if (prof.ok) { setEmployeeInfo(await prof.json()); }
+        else if (prof.status === 404) { setNoProfile(true); }
+        else { setLoadError(true); }
+        const [bal, req, slips] = await Promise.all([
+          fetch(`${API_URL}/employee-portal/leave/balance`, { headers }).catch(() => null),
+          fetch(`${API_URL}/employee-portal/leave/requests`, { headers }).catch(() => null),
+          fetch(`${API_URL}/employee-portal/payslips`, { headers }).catch(() => null),
+        ]);
+        if (bal && bal.ok) setLeaveBalances(pick(await bal.json()));
+        if (req && req.ok) setLeaveRequests(pick(await req.json()));
+        if (slips && slips.ok) setPaySlips(pick(await slips.json()));
+      } catch (e) { console.error('Failed to load employee portal:', e); setLoadError(true); }
+    })();
+  }, []);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('ro-RO', {
@@ -145,19 +144,17 @@ export default function EmployeePortalPage() {
 
   return (
     <div className="space-y-6 p-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {noProfile ? (<div role="status" className="mb-4 rounded-lg border border-blue-300 bg-blue-50 dark:bg-blue-950/40 p-3 text-sm text-blue-900 dark:text-blue-200">Contul tău nu este asociat unui profil de angajat. / Your account is not linked to an employee profile.</div>) : loadError ? (<div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.</div>) : null}
 
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4">
           <Avatar className="h-16 w-16">
-            <AvatarFallback className="text-xl bg-blue-100 text-blue-700">{employeeInfo.initials}</AvatarFallback>
+            <AvatarFallback className="text-xl bg-blue-100 text-blue-700">{employeeInfo?.initials}</AvatarFallback>
           </Avatar>
           <div>
-            <h1 className="text-2xl font-bold">{employeeInfo.name}</h1>
-            <p className="text-muted-foreground">{employeeInfo.position} • {employeeInfo.department}</p>
+            <h1 className="text-2xl font-bold">{employeeInfo?.name}</h1>
+            <p className="text-muted-foreground">{employeeInfo?.position} • {employeeInfo?.department}</p>
           </div>
         </div>
         <div className="flex gap-2">
@@ -242,7 +239,7 @@ export default function EmployeePortalPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">2 ani 9 luni</div>
-                <p className="text-xs text-muted-foreground">din {formatDate(employeeInfo.startDate)}</p>
+                <p className="text-xs text-muted-foreground">din {formatDate(employeeInfo?.startDate)}</p>
               </CardContent>
             </Card>
           </div>
@@ -465,9 +462,9 @@ export default function EmployeePortalPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {[
-                  { label: 'Nume Complet', value: employeeInfo.name },
-                  { label: 'Email', value: employeeInfo.email },
-                  { label: 'Telefon', value: employeeInfo.phone },
+                  { label: 'Nume Complet', value: employeeInfo?.name },
+                  { label: 'Email', value: employeeInfo?.email },
+                  { label: 'Telefon', value: employeeInfo?.phone },
                 ].map((item, idx) => (
                   <div key={idx} className="flex justify-between py-2 border-b last:border-0">
                     <span className="text-muted-foreground">{item.label}</span>
@@ -483,12 +480,12 @@ export default function EmployeePortalPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {[
-                  { label: 'Poziție', value: employeeInfo.position },
-                  { label: 'Departament', value: employeeInfo.department },
-                  { label: 'Manager', value: employeeInfo.manager },
-                  { label: 'Tip Contract', value: employeeInfo.contractType },
-                  { label: 'Program', value: employeeInfo.workSchedule },
-                  { label: 'Data Angajării', value: formatDate(employeeInfo.startDate) },
+                  { label: 'Poziție', value: employeeInfo?.position },
+                  { label: 'Departament', value: employeeInfo?.department },
+                  { label: 'Manager', value: employeeInfo?.manager },
+                  { label: 'Tip Contract', value: employeeInfo?.contractType },
+                  { label: 'Program', value: employeeInfo?.workSchedule },
+                  { label: 'Data Angajării', value: formatDate(employeeInfo?.startDate) },
                 ].map((item, idx) => (
                   <div key={idx} className="flex justify-between py-2 border-b last:border-0">
                     <span className="text-muted-foreground">{item.label}</span>
