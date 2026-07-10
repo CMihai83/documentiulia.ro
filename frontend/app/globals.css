@@ -270,3 +270,28 @@
     color: black !important;
   }
 }
+
+
+/* ===== "Registrul viu" (public pages) — additive; dashboard untouched ===== */
+.registru-tabular { font-variant-numeric: tabular-nums; }
+.registru-rule { border-color: #D9E2EA; }
+.registru-eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4A6479;
+  font-weight: 600;
+}
+.registru-focus:focus-visible {
+  outline: 2px solid #C0392B;
+  outline-offset: 2px;
+}
+@keyframes registru-stamp {
+  0% { transform: scale(1.4) rotate(-10deg); opacity: 0; }
+  70% { transform: scale(0.96) rotate(-5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-6deg); opacity: 1; }
+}
+.registru-stamp { animation: registru-stamp 300ms cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .registru-stamp { animation: none; }
+}

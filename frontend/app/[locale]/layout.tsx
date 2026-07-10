@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Archivo, Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -16,6 +16,13 @@ import { ToastProvider } from '@/components/ui/Toast';
 import { OrganizationProvider } from '@/contexts/OrganizationContext';
 
 const inter = Inter({ subsets: ['latin'] });
+const archivo = Archivo({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-archivo',
+  display: 'swap',
+  adjustFontFallback: true,
+});
 
 export const metadata: Metadata = {
   title: 'DocumentIulia.ro - Contabilitate cu Inteligență Artificială',
@@ -48,7 +55,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   return (
     <ClientClerkProvider>
       <html lang={locale}>
-        <body className={inter.className}>
+        <body className={`${inter.className} ${archivo.variable}`}>
           <NextIntlClientProvider messages={messages}>
             <QueryProvider>
               <ThemeProvider>

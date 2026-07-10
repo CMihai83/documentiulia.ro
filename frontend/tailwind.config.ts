@@ -10,6 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // "Registrul viu" — the visual world of Romanian fiscal documents (public pages)
+        registru: {
+          hartie: '#FAFBFC',
+          linie: '#D9E2EA',
+          cerneala: '#16324F',
+          'cerneala-soft': '#4A6479',
+          stampila: '#C0392B',
+          viza: '#1E7F5C',
+        },
         // CSS Variable based colors (shadcn-ui style)
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -70,6 +79,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-archivo)', 'Archivo', 'system-ui', 'sans-serif'],
       },
       animation: {
         'slide-in': 'slideIn 0.3s ease-out',
