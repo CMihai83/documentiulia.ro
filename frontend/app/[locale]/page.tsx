@@ -69,7 +69,7 @@ export default function HomePage() {
       {/* Plan de conturi — modules indexed by real account codes */}
       <section className="px-4 py-16">
         <div className="max-w-6xl mx-auto">
-          <p className="registru-eyebrow mb-2">{ro ? 'Rubrica 02 — Plan de conturi' : 'Section 02 — Chart of accounts'}</p>
+          <p className="registru-eyebrow mb-2">{ro ? 'Plan de conturi' : 'Chart of accounts'}</p>
           <h2 className="font-display font-bold text-2xl md:text-3xl mb-8">
             {ro ? 'Fiecare cont are un modul.' : 'Every account has a module.'}
           </h2>
@@ -105,7 +105,7 @@ export default function HomePage() {
       {/* Free tools — form rows */}
       <section className="px-4 py-16 border-t border-registru-linie">
         <div className="max-w-6xl mx-auto">
-          <p className="registru-eyebrow mb-2">{ro ? 'Rubrica 01 — Instrumente gratuite' : 'Section 01 — Free tools'}</p>
+          <p className="registru-eyebrow mb-2">{ro ? 'Instrumente gratuite' : 'Free tools'}</p>
           <h2 className="font-display font-bold text-2xl md:text-3xl mb-8">
             {ro ? 'Începe fără cont.' : 'Start without an account.'}
           </h2>
@@ -130,7 +130,7 @@ export default function HomePage() {
       {/* Pricing — ruled columns */}
       <section className="px-4 py-16 border-t border-registru-linie">
         <div className="max-w-6xl mx-auto">
-          <p className="registru-eyebrow mb-2">{ro ? 'Rubrica 03 — Abonamente' : 'Section 03 — Plans'}</p>
+          <p className="registru-eyebrow mb-2">{ro ? 'Abonamente' : 'Plans'}</p>
           <h2 className="font-display font-bold text-2xl md:text-3xl mb-8">{t('pricing.title')}</h2>
           <div className="grid md:grid-cols-3 border-y border-registru-cerneala">
             {['free', 'pro', 'business'].map((tier) => (
