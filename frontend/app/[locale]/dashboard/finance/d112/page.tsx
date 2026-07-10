@@ -46,28 +46,6 @@ interface D112Totals {
   numarAngajati: number;
 }
 
-// Mock data for demo mode
-const getMockD112Data = (period: string) => {
-  const mockEmployees: D112Employee[] = [
-    { cnp: '1850312345678', nume: 'Popescu', prenume: 'Ion', salariuBrut: 8500, salariuNet: 5355, cas: 2125, cass: 850, impozit: 362, camFSSF: 191, zileLucrate: 22, oreLucrate: 176 },
-    { cnp: '2900515234567', nume: 'Ionescu', prenume: 'Maria', salariuBrut: 6500, salariuNet: 4095, cas: 1625, cass: 650, impozit: 277, camFSSF: 146, zileLucrate: 22, oreLucrate: 176 },
-    { cnp: '1880721345612', nume: 'Georgescu', prenume: 'Andrei', salariuBrut: 12000, salariuNet: 7560, cas: 3000, cass: 1200, impozit: 510, camFSSF: 270, zileLucrate: 22, oreLucrate: 176 },
-    { cnp: '2910825123456', nume: 'Constantinescu', prenume: 'Elena', salariuBrut: 9500, salariuNet: 5985, cas: 2375, cass: 950, impozit: 404, camFSSF: 214, zileLucrate: 22, oreLucrate: 176 },
-    { cnp: '1870430234561', nume: 'Dumitrescu', prenume: 'Alexandru', salariuBrut: 7500, salariuNet: 4725, cas: 1875, cass: 750, impozit: 319, camFSSF: 169, zileLucrate: 22, oreLucrate: 176 },
-  ];
-
-  const totals: D112Totals = {
-    totalSalariuBrut: mockEmployees.reduce((acc, e) => acc + e.salariuBrut, 0),
-    totalSalariuNet: mockEmployees.reduce((acc, e) => acc + e.salariuNet, 0),
-    totalCAS: mockEmployees.reduce((acc, e) => acc + e.cas, 0),
-    totalCASS: mockEmployees.reduce((acc, e) => acc + e.cass, 0),
-    totalImpozit: mockEmployees.reduce((acc, e) => acc + e.impozit, 0),
-    totalCAM: mockEmployees.reduce((acc, e) => acc + e.camFSSF, 0),
-    numarAngajati: mockEmployees.length,
-  };
-
-  return { employees: mockEmployees, totals };
-};
 
 // Calculate D112 deadline (25th of the following month)
 const getD112Deadline = (period: string): { date: Date; daysRemaining: number; isOverdue: boolean } => {
@@ -89,6 +67,7 @@ export default function D112Page() {
 
   const [loading, setLoading] = useState(true);
   const [employees, setEmployees] = useState<D112Employee[]>([]);
+  const [loadError, setLoadError] = useState(false);
   const [totals, setTotals] = useState<D112Totals | null>(null);
   const [validation, setValidation] = useState<{ valid: boolean; errors: string[] } | null>(null);
   const [generating, setGenerating] = useState(false);
@@ -117,6 +96,7 @@ export default function D112Page() {
   const fetchData = async () => {
     try {
       setLoading(true);
+      setLoadError(false);
       const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
@@ -130,11 +110,11 @@ export default function D112Page() {
         setEmployees(data.employees || []);
         setTotals(data.totals || null);
       } else {
-        // Fallback to mock data for demo
-        console.log('Using mock D112 data for demo');
-        const mockData = getMockD112Data(period);
-        setEmployees(mockData.employees);
-        setTotals(mockData.totals);
+        // Payroll declaration — never fabricate figures.
+        console.error('D112 employees fetch failed:', employeesRes.status);
+        setEmployees([]);
+        setTotals(null);
+        setLoadError(true);
       }
 
       if (historyRes.ok) {
@@ -143,10 +123,9 @@ export default function D112Page() {
       }
     } catch (err) {
       console.error('Error fetching D112 data:', err);
-      // Fallback to mock data on error
-      const mockData = getMockD112Data(period);
-      setEmployees(mockData.employees);
-      setTotals(mockData.totals);
+      setEmployees([]);
+      setTotals(null);
+      setLoadError(true);
     } finally {
       setLoading(false);
     }
@@ -267,6 +246,11 @@ export default function D112Page() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca datele D112 de la server. Cifrele afișate pot fi incomplete. / Could not load D112 data. Figures may be incomplete.
+        </div>
+      )}
         <Loader2 className="w-8 h-8 animate-spin text-primary-600" />
       </div>
     );
