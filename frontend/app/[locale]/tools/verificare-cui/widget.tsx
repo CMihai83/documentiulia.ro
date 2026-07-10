@@ -50,7 +50,7 @@ export function CuiLookupWidget({ locale }: { locale: string }) {
         <button
           onClick={lookup}
           disabled={busy}
-          className="h-11 px-5 rounded-md bg-primary-600 text-white font-semibold hover:bg-primary-700 disabled:opacity-50"
+          className="h-11 px-5 rounded-md bg-registru-cerneala text-white font-semibold hover:bg-registru-stampila disabled:opacity-50"
         >
           {busy ? '…' : ro ? 'Verifică' : 'Check'}
         </button>

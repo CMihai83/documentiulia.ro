@@ -34,7 +34,7 @@ export function XmlValidatorWidget({ locale }: { locale: string }) {
 
   return (
     <div className="rounded-xl border bg-white dark:bg-gray-900 p-5 max-w-xl">
-      <label className="block rounded-lg border-2 border-dashed p-8 text-center cursor-pointer hover:border-primary-500">
+      <label className="block rounded-lg border-2 border-dashed p-8 text-center cursor-pointer hover:border-registru-cerneala">
         <input type="file" accept=".xml,text/xml,application/xml" className="hidden"
                onChange={(e) => onFile(e.target.files?.[0] ?? null)} />
         <span className="text-sm text-gray-600 dark:text-gray-300">
