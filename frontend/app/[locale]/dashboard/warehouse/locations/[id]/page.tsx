@@ -103,47 +103,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
 
-// Mock data for demo
-const getMockLocation = (id: string): LocationDetail => ({
-  id,
-  code: 'A-01-03-02',
-  name: 'Raft A1 - Nivel 3 - Poziția 2',
-  zone: 'Zona A - Produse Rapide',
-  aisle: 'A1',
-  rack: '03',
-  level: '3',
-  position: '02',
-  type: 'RACK',
-  capacity: 500,
-  capacityUnit: 'kg',
-  currentUtilization: 68,
-  dimensions: {
-    width: 120,
-    depth: 80,
-    height: 60,
-    unit: 'cm',
-  },
-  maxWeight: 500,
-  weightUnit: 'kg',
-  status: 'ACTIVE',
-  items: [
-    { id: 'item-1', sku: 'PAPER-A4-500', name: 'Hârtie A4 500 coli', quantity: 45, unit: 'top', lastMovement: '2025-12-16T10:30:00Z', status: 'available' },
-    { id: 'item-2', sku: 'TONER-HP-85A', name: 'Toner HP 85A Original', quantity: 12, unit: 'buc', lastMovement: '2025-12-15T14:20:00Z', status: 'available' },
-    { id: 'item-3', sku: 'PEN-BIC-BLUE', name: 'Pixuri BIC Cristal albastru', quantity: 8, unit: 'set', lastMovement: '2025-12-14T09:15:00Z', status: 'reserved' },
-  ],
-  totalItems: 65,
-  totalSKUs: 3,
-  lastActivity: '2025-12-16T10:30:00Z',
-  createdAt: '2024-01-15T08:00:00Z',
-  notes: 'Locație preferată pentru produse cu rotație rapidă',
-});
 
-const getMockMovements = (): LocationMovement[] => [
-  { id: 'm1', type: 'RECEIPT', itemSku: 'PAPER-A4-500', itemName: 'Hârtie A4 500 coli', quantity: 50, direction: 'in', reference: 'PO-2025-0156', user: 'Maria Ionescu', timestamp: '2025-12-16T10:30:00Z' },
-  { id: 'm2', type: 'PICK', itemSku: 'TONER-HP-85A', itemName: 'Toner HP 85A Original', quantity: 3, direction: 'out', reference: 'ORD-2025-0089', user: 'Ion Popescu', timestamp: '2025-12-15T16:45:00Z' },
-  { id: 'm3', type: 'PUTAWAY', itemSku: 'PEN-BIC-BLUE', itemName: 'Pixuri BIC Cristal albastru', quantity: 10, direction: 'in', reference: 'PO-2025-0148', user: 'Maria Ionescu', timestamp: '2025-12-14T09:15:00Z' },
-  { id: 'm4', type: 'TRANSFER', itemSku: 'PAPER-A4-500', itemName: 'Hârtie A4 500 coli', quantity: 20, direction: 'out', reference: 'TRF-2025-0034', user: 'Admin', timestamp: '2025-12-13T11:00:00Z' },
-];
 
 export default function WarehouseLocationDetailPage() {
   const params = useParams();
@@ -179,19 +139,21 @@ export default function WarehouseLocationDetailPage() {
         const data = await locRes.json();
         setLocation(data);
       } else {
-        setLocation(getMockLocation(locationId));
+        setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setLocation(null);
       }
 
       if (movRes.ok) {
         const movData = await movRes.json();
         setMovements(movData.data || movData);
       } else {
-        setMovements(getMockMovements());
+        setMovements([]);
       }
     } catch (err) {
       console.error('Error fetching location:', err);
-      setLocation(getMockLocation(locationId));
-      setMovements(getMockMovements());
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setLocation(null);
+      setMovements([]);
     } finally {
       setLoading(false);
     }

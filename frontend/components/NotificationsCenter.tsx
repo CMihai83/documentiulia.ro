@@ -35,77 +35,6 @@ interface NotificationsCenterProps {
 }
 
 // Mock notifications for demo
-const getMockNotifications = (): Notification[] => {
-  const now = new Date();
-  return [
-    {
-      id: '1',
-      type: 'compliance',
-      title: 'Termen SAF-T D406',
-      message: 'Termenul pentru depunerea declarației D406 pentru noiembrie 2025 este pe 25 decembrie.',
-      timestamp: new Date(now.getTime() - 1000 * 60 * 30), // 30 mins ago
-      read: false,
-      category: 'compliance',
-      actionUrl: '/dashboard/saft',
-      actionLabel: 'Generează D406',
-    },
-    {
-      id: '2',
-      type: 'success',
-      title: 'e-Factura acceptată',
-      message: 'Factura FV-2025-0156 a fost acceptată de ANAF SPV.',
-      timestamp: new Date(now.getTime() - 1000 * 60 * 60 * 2), // 2 hours ago
-      read: false,
-      category: 'invoice',
-      actionUrl: '/dashboard/efactura',
-      actionLabel: 'Vezi detalii',
-    },
-    {
-      id: '3',
-      type: 'warning',
-      title: 'Stoc redus',
-      message: 'Produsul "Laptop Premium" are stoc sub limita minimă (3 unități).',
-      timestamp: new Date(now.getTime() - 1000 * 60 * 60 * 4), // 4 hours ago
-      read: true,
-      category: 'system',
-      actionUrl: '/dashboard/inventory',
-      actionLabel: 'Gestionează stoc',
-    },
-    {
-      id: '4',
-      type: 'info',
-      title: 'Contract expiră curând',
-      message: 'Contractul angajatului Ion Popescu expiră în 30 de zile.',
-      timestamp: new Date(now.getTime() - 1000 * 60 * 60 * 24), // 1 day ago
-      read: true,
-      category: 'hr',
-      actionUrl: '/dashboard/hr/contracts',
-      actionLabel: 'Vezi contract',
-    },
-    {
-      id: '5',
-      type: 'success',
-      title: 'Deal câștigat',
-      message: 'Dealul "Proiect ERP Enterprise" a fost marcat ca Won (€45,000).',
-      timestamp: new Date(now.getTime() - 1000 * 60 * 60 * 48), // 2 days ago
-      read: true,
-      category: 'crm',
-      actionUrl: '/dashboard/crm/deals',
-      actionLabel: 'Vezi deal',
-    },
-    {
-      id: '6',
-      type: 'info',
-      title: 'Curs valutar actualizat',
-      message: 'Cursul BNR a fost actualizat: EUR = 4.9760 RON, USD = 4.7125 RON.',
-      timestamp: new Date(now.getTime() - 1000 * 60 * 60 * 72), // 3 days ago
-      read: true,
-      category: 'finance',
-      actionUrl: '/dashboard/finance',
-      actionLabel: 'Vezi cursuri',
-    },
-  ];
-};
 
 const getNotificationIcon = (type: Notification['type']) => {
   switch (type) {
@@ -188,11 +117,10 @@ export function NotificationsCenter({ isOpen, onClose }: NotificationsCenterProp
       // const data = await response.json();
       // setNotifications(data);
 
-      // Mock data for demo
-      setNotifications(getMockNotifications());
+      setNotifications([]);
     } catch (error) {
       console.error('Error fetching notifications:', error);
-      setNotifications(getMockNotifications());
+      setNotifications([]);
     } finally {
       setLoading(false);
     }

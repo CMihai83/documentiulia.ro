@@ -45,62 +45,6 @@ interface VATSummary {
   vatSummary: { collected: number; deductible: number; payable: number };
 }
 
-// Mock data for graceful degradation
-const getMockInvoices = (): Invoice[] => [
-  {
-    id: '1',
-    invoiceNumber: 'FV-2025-001',
-    invoiceDate: '2025-12-15',
-    dueDate: '2026-01-15',
-    type: 'ISSUED',
-    status: 'PENDING',
-    partnerName: 'SC Example SRL',
-    partnerCui: 'RO12345678',
-    netAmount: 5000,
-    vatAmount: 950,
-    grossAmount: 5950,
-    currency: 'RON',
-    spvSubmitted: false,
-  },
-  {
-    id: '2',
-    invoiceNumber: 'FV-2025-002',
-    invoiceDate: '2025-12-10',
-    dueDate: '2026-01-10',
-    type: 'ISSUED',
-    status: 'SUBMITTED',
-    partnerName: 'SC Tech Solutions SRL',
-    partnerCui: 'RO87654321',
-    netAmount: 12500,
-    vatAmount: 2375,
-    grossAmount: 14875,
-    currency: 'RON',
-    spvSubmitted: true,
-  },
-  {
-    id: '3',
-    invoiceNumber: 'FP-2025-001',
-    invoiceDate: '2025-12-01',
-    dueDate: '2025-12-31',
-    type: 'RECEIVED',
-    status: 'PAID',
-    partnerName: 'Furnizor Services SRL',
-    partnerCui: 'RO11223344',
-    netAmount: 3200,
-    vatAmount: 608,
-    grossAmount: 3808,
-    currency: 'RON',
-    spvSubmitted: false,
-  },
-];
-
-const getMockVATSummary = (): VATSummary => ({
-  period: 'Decembrie 2025',
-  issued: { count: 15, netAmount: 125000, vatAmount: 23750, grossAmount: 148750 },
-  received: { count: 8, netAmount: 45000, vatAmount: 8550, grossAmount: 53550 },
-  vatSummary: { collected: 23750, deductible: 8550, payable: 15200 },
-});
-
 export default function InvoicesPage() {
   const t = useTranslations('invoices');
   const router = useRouter();
@@ -347,10 +291,9 @@ export default function InvoicesPage() {
       setError(null);
     } catch (err) {
       console.error('Failed to fetch invoices:', err);
-      // Use mock data on error
-      setInvoices(getMockInvoices());
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setInvoices([]);
       setTotalPages(1);
-      setError(null);
     } finally {
       setLoading(false);
     }
@@ -370,7 +313,7 @@ export default function InvoicesPage() {
       }
     } catch (err) {
       console.error('Failed to fetch VAT summary:', err);
-      setVatSummary(getMockVATSummary());
+      setVatSummary(null);
     }
   };
 

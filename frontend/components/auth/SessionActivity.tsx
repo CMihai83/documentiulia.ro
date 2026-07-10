@@ -59,13 +59,13 @@ export default function SessionActivity({ limit = 20 }: SessionActivityProps) {
         const data = await response.json();
         setActivities(data);
       } else {
-        // Use mock data for demo
-        setActivities(getMockActivities());
+        
+      setActivities([]);
       }
     } catch (error) {
       console.error('Failed to fetch login activity:', error);
-      // Use mock data for demo
-      setActivities(getMockActivities());
+      
+      setActivities([]);
     } finally {
       setLoading(false);
     }
@@ -228,96 +228,3 @@ export default function SessionActivity({ limit = 20 }: SessionActivityProps) {
   );
 }
 
-function getMockActivities(): LoginActivity[] {
-  const now = new Date();
-
-  return [
-    {
-      id: 'act_1',
-      userId: 'user_123',
-      type: 'login_success',
-      ipAddress: '86.124.45.67',
-      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0',
-      location: {
-        ip: '86.124.45.67',
-        country: 'RO',
-        city: 'Bucharest',
-      },
-      timestamp: new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString(),
-      isSuspicious: false,
-    },
-    {
-      id: 'act_2',
-      userId: 'user_123',
-      type: 'login_success',
-      ipAddress: '86.124.45.68',
-      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0) Safari/17.0',
-      location: {
-        ip: '86.124.45.68',
-        country: 'RO',
-        city: 'Cluj-Napoca',
-      },
-      timestamp: new Date(now.getTime() - 5 * 60 * 60 * 1000).toISOString(),
-      details: 'New device login',
-      isSuspicious: false,
-    },
-    {
-      id: 'act_3',
-      userId: 'user_123',
-      type: 'logout',
-      ipAddress: '86.124.45.70',
-      userAgent: 'Mozilla/5.0 (Windows NT 10.0) Firefox/120.0',
-      location: {
-        ip: '86.124.45.70',
-        country: 'RO',
-        city: 'Bucharest',
-      },
-      timestamp: new Date(now.getTime() - 8 * 60 * 60 * 1000).toISOString(),
-      isSuspicious: false,
-    },
-    {
-      id: 'act_4',
-      userId: 'user_123',
-      type: 'login_success',
-      ipAddress: '86.124.45.69',
-      userAgent: 'Mozilla/5.0 (Android 13) Chrome/119.0.0',
-      location: {
-        ip: '86.124.45.69',
-        country: 'RO',
-        city: 'Timisoara',
-      },
-      timestamp: new Date(now.getTime() - 12 * 60 * 60 * 1000).toISOString(),
-      isSuspicious: false,
-    },
-    {
-      id: 'act_5',
-      userId: 'user_123',
-      type: 'login_failed',
-      ipAddress: '192.168.1.100',
-      userAgent: 'Unknown',
-      location: {
-        ip: '192.168.1.100',
-        country: 'US',
-        city: 'Unknown',
-      },
-      timestamp: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(),
-      details: 'Invalid password',
-      isSuspicious: true,
-    },
-    {
-      id: 'act_6',
-      userId: 'user_123',
-      type: 'session_revoked',
-      ipAddress: '86.124.45.67',
-      userAgent: 'System',
-      location: {
-        ip: '86.124.45.67',
-        country: 'RO',
-        city: 'Bucharest',
-      },
-      timestamp: new Date(now.getTime() - 36 * 60 * 60 * 1000).toISOString(),
-      details: 'User revoked session from security settings',
-      isSuspicious: false,
-    },
-  ];
-}

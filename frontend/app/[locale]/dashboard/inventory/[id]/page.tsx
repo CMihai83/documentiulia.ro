@@ -93,103 +93,8 @@ interface StockHistory {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
-// Mock data for demo
-const getMockProduct = (id: string): Product => ({
-  id,
-  code: 'PROD-001',
-  name: 'Hârtie A4 500 coli',
-  description: 'Hârtie de copiat și imprimat de înaltă calitate, 80g/m², albă, format A4, 500 coli per top. Ideală pentru imprimante laser și inkjet.',
-  category: 'Papetărie',
-  brand: 'XEROX',
-  unit: 'top',
-  purchasePrice: 25.00,
-  salePrice: 35.00,
-  vatRate: 19,
-  currency: 'RON',
-  currentStock: 150,
-  reservedStock: 20,
-  availableStock: 130,
-  minStockLevel: 50,
-  maxStockLevel: 500,
-  barcode: '5941234567890',
-  location: 'Depozit A - Raft 1',
-  supplier: 'Office Direct SRL',
-  supplierId: 'sup-001',
-  isActive: true,
-  createdAt: '2024-01-15T10:00:00Z',
-  updatedAt: '2025-12-15T14:30:00Z',
-  lastStockUpdate: '2025-12-15T14:30:00Z',
-});
 
-const getMockMovements = (): StockMovement[] => [
-  {
-    id: 'm1',
-    type: 'IN',
-    quantity: 100,
-    unitCost: 25.00,
-    reference: 'PO-2025-0089',
-    referenceType: 'PURCHASE_ORDER',
-    notes: 'Recepție comandă furnizor',
-    createdAt: '2025-12-15T14:30:00Z',
-    createdBy: 'Maria Ionescu',
-  },
-  {
-    id: 'm2',
-    type: 'OUT',
-    quantity: 30,
-    reference: 'FV-2025-0156',
-    referenceType: 'INVOICE',
-    notes: 'Livrare client Tech Solutions SRL',
-    createdAt: '2025-12-14T09:15:00Z',
-    createdBy: 'Ion Popescu',
-  },
-  {
-    id: 'm3',
-    type: 'OUT',
-    quantity: 20,
-    reference: 'FV-2025-0149',
-    referenceType: 'INVOICE',
-    notes: 'Livrare client ABC Company',
-    createdAt: '2025-12-12T11:45:00Z',
-    createdBy: 'Ion Popescu',
-  },
-  {
-    id: 'm4',
-    type: 'ADJUSTMENT',
-    quantity: -5,
-    notes: 'Inventar - diferențe constatate',
-    createdAt: '2025-12-10T16:00:00Z',
-    createdBy: 'Admin',
-  },
-  {
-    id: 'm5',
-    type: 'IN',
-    quantity: 200,
-    unitCost: 24.50,
-    reference: 'PO-2025-0075',
-    referenceType: 'PURCHASE_ORDER',
-    notes: 'Recepție comandă furnizor',
-    createdAt: '2025-12-01T10:00:00Z',
-    createdBy: 'Maria Ionescu',
-  },
-];
 
-const getMockStockHistory = (): StockHistory[] => {
-  const data: StockHistory[] = [];
-  let stock = 100;
-  for (let i = 30; i >= 0; i--) {
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-    stock += Math.floor(Math.random() * 40) - 15;
-    stock = Math.max(0, stock);
-    data.push({
-      date: date.toISOString().split('T')[0],
-      stock,
-      value: stock * 25,
-    });
-  }
-  return data;
-};
 
 export default function InventoryDetailPage() {
   const params = useParams();
@@ -230,22 +135,24 @@ export default function InventoryDetailPage() {
         const data = await productRes.json();
         setProduct(data);
       } else {
-        setProduct(getMockProduct(productId));
+        setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setProduct(null);
       }
 
       if (movementsRes.ok) {
         const movData = await movementsRes.json();
         setMovements(movData.data || movData);
       } else {
-        setMovements(getMockMovements());
+        setMovements([]);
       }
 
-      setStockHistory(getMockStockHistory());
+      setStockHistory([]);
     } catch (err) {
       console.error('Error fetching product:', err);
-      setProduct(getMockProduct(productId));
-      setMovements(getMockMovements());
-      setStockHistory(getMockStockHistory());
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setProduct(null);
+      setMovements([]);
+      setStockHistory([]);
     } finally {
       setLoading(false);
     }

@@ -83,78 +83,6 @@ interface PurchaseOrderDetail {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
-// Mock data for demo
-const getMockPO = (id: string): PurchaseOrderDetail => ({
-  id,
-  poNumber: 'PO-2025-0156',
-  vendor: {
-    id: 'vendor-001',
-    name: 'Office Supplies SRL',
-    code: 'V-001',
-    email: 'comenzi@officesupplies.ro',
-    phone: '+40 21 123 4567',
-    address: 'Str. Industriilor nr. 45, București, Sector 3',
-    paymentTerms: 'Net 30',
-  },
-  items: [
-    {
-      id: 'item-1',
-      productId: 'prod-001',
-      productCode: 'PAPER-A4-500',
-      productName: 'Hârtie A4 500 coli',
-      description: 'Hârtie de copiat 80g/m²',
-      quantity: 100,
-      unit: 'top',
-      unitPrice: 25.00,
-      totalPrice: 2500.00,
-      receivedQuantity: 0,
-      status: 'pending',
-    },
-    {
-      id: 'item-2',
-      productId: 'prod-002',
-      productCode: 'TONER-HP-85A',
-      productName: 'Toner HP 85A Original',
-      description: 'Cartuș toner pentru HP LaserJet',
-      quantity: 10,
-      unit: 'buc',
-      unitPrice: 180.00,
-      totalPrice: 1800.00,
-      receivedQuantity: 0,
-      status: 'pending',
-    },
-    {
-      id: 'item-3',
-      productId: 'prod-003',
-      productCode: 'PEN-BIC-BLUE',
-      productName: 'Pixuri BIC Cristal albastru',
-      description: 'Set 50 pixuri',
-      quantity: 5,
-      unit: 'set',
-      unitPrice: 45.00,
-      totalPrice: 225.00,
-      receivedQuantity: 0,
-      status: 'pending',
-    },
-  ],
-  subtotal: 4525.00,
-  vatAmount: 859.75,
-  totalAmount: 5384.75,
-  currency: 'RON',
-  status: 'approved',
-  priority: 'medium',
-  deliveryAddress: 'Depozit Central, Str. Logisticii nr. 10, București',
-  expectedDeliveryDate: '2025-12-20',
-  notes: 'Livrare între orele 9:00-17:00. Contact: Ion Popescu - 0722123456',
-  internalNotes: 'Verificare stoc înainte de recepție',
-  requestedBy: 'Maria Ionescu',
-  approvedBy: 'Director Achiziții',
-  approvedAt: '2025-12-15T10:30:00Z',
-  createdAt: '2025-12-14T09:00:00Z',
-  updatedAt: '2025-12-15T10:30:00Z',
-  linkedRequisitionId: 'req-001',
-  linkedRequisitionNumber: 'PR-2025-0089',
-});
 
 export default function PurchaseOrderDetailPage() {
   const params = useParams();
@@ -186,11 +114,13 @@ export default function PurchaseOrderDetailPage() {
         const data = await response.json();
         setPO(data);
       } else {
-        setPO(getMockPO(orderId));
+        setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setPO(null);
       }
     } catch (err) {
       console.error('Error fetching PO:', err);
-      setPO(getMockPO(orderId));
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setPO(null);
     } finally {
       setLoading(false);
     }

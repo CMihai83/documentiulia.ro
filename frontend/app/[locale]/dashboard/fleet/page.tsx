@@ -282,101 +282,8 @@ interface MaintenanceForecast {
   details: Array<{ vehiclePlate: string; type: string; cost: number }>;
 }
 
-// Demo data functions for graceful degradation
-const getMockFleetSummary = (): FleetSummary => ({
-  totalVehicles: 24,
-  availableVehicles: 8,
-  inUseVehicles: 12,
-  maintenanceVehicles: 4,
-  todayRoutes: 15,
-  todayDeliveries: 156,
-  todayCompletedDeliveries: 128,
-  todayFailedDeliveries: 3,
-  monthlyFuelCost: 12500,
-  monthlyMaintenanceCost: 3200,
-});
 
-const getMockVehicles = (): Vehicle[] => [
-  {
-    id: '1',
-    licensePlate: 'B-123-ABC',
-    make: 'Mercedes-Benz',
-    model: 'Sprinter',
-    year: 2022,
-    status: 'IN_USE',
-    fuelType: 'DIESEL',
-    mileage: 45000,
-    maxPayloadKg: 1200,
-    currentLat: 44.4268,
-    currentLng: 26.1025,
-    assignedDriver: { id: 'drv-1', firstName: 'Ion', lastName: 'Popescu' },
-  },
-  {
-    id: '2',
-    licensePlate: 'B-456-DEF',
-    make: 'Volkswagen',
-    model: 'Crafter',
-    year: 2021,
-    status: 'IN_USE',
-    fuelType: 'DIESEL',
-    mileage: 62000,
-    maxPayloadKg: 1000,
-    currentLat: 44.4368,
-    currentLng: 26.0925,
-    assignedDriver: { id: 'drv-2', firstName: 'Maria', lastName: 'Ionescu' },
-  },
-  {
-    id: '3',
-    licensePlate: 'B-789-GHI',
-    make: 'Ford',
-    model: 'Transit',
-    year: 2023,
-    status: 'MAINTENANCE',
-    fuelType: 'DIESEL',
-    mileage: 28000,
-    maxPayloadKg: 1100,
-  },
-  {
-    id: '4',
-    licensePlate: 'B-321-JKL',
-    make: 'Renault',
-    model: 'Master',
-    year: 2020,
-    status: 'AVAILABLE',
-    fuelType: 'DIESEL',
-    mileage: 85000,
-    maxPayloadKg: 1300,
-  },
-];
 
-const getMockLiveRoutes = (): RouteProgress[] => [
-  {
-    routeId: 'route-1',
-    routeName: 'Sector 1 - Dimineața',
-    driverName: 'Ion Popescu',
-    vehiclePlate: 'B-123-ABC',
-    totalStops: 12,
-    completedStops: 7,
-    pendingStops: 5,
-    failedStops: 0,
-    status: 'IN_PROGRESS',
-    currentLat: 44.4268,
-    currentLng: 26.1025,
-  },
-  {
-    routeId: 'route-2',
-    routeName: 'Sector 3 - Centru',
-    driverName: 'Maria Ionescu',
-    vehiclePlate: 'B-456-DEF',
-    totalStops: 8,
-    completedStops: 3,
-    pendingStops: 4,
-    failedStops: 1,
-    status: 'IN_PROGRESS',
-    currentLat: 44.4368,
-    currentLng: 26.0925,
-  },
-];
 
 export default function FleetDashboardPage() {
   const router = useRouter();
@@ -453,7 +360,7 @@ export default function FleetDashboardPage() {
       }
     } catch (err) {
       console.error('Failed to fetch fleet summary:', err);
-      setSummary(getMockFleetSummary());
+      setSummary(null);
     }
   };
 
@@ -471,7 +378,7 @@ export default function FleetDashboardPage() {
       }
     } catch (err) {
       console.error('Failed to fetch vehicles:', err);
-      setVehicles(getMockVehicles());
+      setVehicles([]);
     }
   };
 
@@ -489,7 +396,7 @@ export default function FleetDashboardPage() {
       }
     } catch (err) {
       console.error('Failed to fetch live routes:', err);
-      setLiveRoutes(getMockLiveRoutes());
+      setLiveRoutes([]);
     }
   };
 

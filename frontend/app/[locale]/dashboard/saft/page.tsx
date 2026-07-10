@@ -96,46 +96,6 @@ export default function SAFTPage() {
     return status;
   }, []);
 
-  // Mock data for demo mode
-  const getMockReports = (): SAFTReport[] => {
-    const now = new Date();
-    return [
-      {
-        id: 'saft-001',
-        period: `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`,
-        reportType: 'D406',
-        status: 'VALIDATED',
-        validated: true,
-        validatedAt: new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-        submittedAt: null,
-        spvRef: null,
-        createdAt: new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000).toISOString(),
-      },
-      {
-        id: 'saft-002',
-        period: `${now.getFullYear()}-${String(now.getMonth()).padStart(2, '0') || '12'}`,
-        reportType: 'D406',
-        status: 'ACCEPTED',
-        validated: true,
-        validatedAt: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString(),
-        submittedAt: new Date(now.getTime() - 28 * 24 * 60 * 60 * 1000).toISOString(),
-        spvRef: 'SPV-2024-D406-' + Math.random().toString(36).substring(7).toUpperCase(),
-        createdAt: new Date(now.getTime() - 35 * 24 * 60 * 60 * 1000).toISOString(),
-      },
-      {
-        id: 'saft-003',
-        period: `${now.getFullYear()}-${String(now.getMonth() - 1 > 0 ? now.getMonth() - 1 : 11).padStart(2, '0')}`,
-        reportType: 'D406',
-        status: 'ACCEPTED',
-        validated: true,
-        validatedAt: new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000).toISOString(),
-        submittedAt: new Date(now.getTime() - 58 * 24 * 60 * 60 * 1000).toISOString(),
-        spvRef: 'SPV-2024-D406-' + Math.random().toString(36).substring(7).toUpperCase(),
-        createdAt: new Date(now.getTime() - 65 * 24 * 60 * 60 * 1000).toISOString(),
-      },
-    ];
-  };
-
   function getCurrentPeriod() {
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
@@ -175,14 +135,14 @@ export default function SAFTPage() {
       } else if (response.status === 401) {
         setError('Sesiune expirată. Vă rugăm să vă autentificați din nou.');
       } else {
-        // Fallback to mock data for demo
-        console.log('Using mock SAF-T data for demo');
-        setReports(getMockReports());
+        // Honest empty state — never fabricated D406/SPV statuses.
+        setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+        setReports([]);
       }
     } catch (err) {
       console.error('Failed to fetch SAF-T reports:', err);
-      // Fallback to mock data on error
-      setReports(getMockReports());
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setReports([]);
     } finally {
       setLoading(false);
     }
