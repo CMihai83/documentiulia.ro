@@ -145,7 +145,7 @@ export function FreeInvoiceWidget({ locale }: { locale: string }) {
       )}
 
       <button onClick={generate} disabled={busy || remaining === 0}
-              className="mt-5 h-11 px-6 rounded-md bg-primary-600 text-white font-semibold hover:bg-primary-700 disabled:opacity-50">
+              className="mt-5 h-11 px-6 rounded-md bg-registru-cerneala text-white font-semibold hover:bg-registru-stampila disabled:opacity-50">
         {busy ? '…' : ro ? 'Generează factura (PDF + XML)' : 'Generate invoice (PDF + XML)'}
       </button>
     </div>

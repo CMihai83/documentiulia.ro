@@ -14,19 +14,19 @@ export default async function ToolsLayout({
   const { locale } = await params;
   const ro = locale !== 'en';
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      <header className="border-b bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-registru-hartie text-registru-cerneala">
+      <header className="border-b border-registru-cerneala bg-registru-hartie">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-          <Link href={`/${locale}`} className="font-semibold text-primary-700 dark:text-teal-400">
+          <Link href={`/${locale}`} className="registru-focus font-display font-bold text-registru-cerneala">
             DocumentIulia<span className="opacity-60">.ro</span>
           </Link>
           <nav className="flex items-center gap-3 text-sm">
-            <Link href={`/${locale}/tools`} className="text-gray-600 dark:text-gray-300 hover:underline">
+            <Link href={`/${locale}/tools`} className="registru-focus text-registru-cerneala-soft hover:text-registru-stampila">
               {ro ? 'Instrumente gratuite' : 'Free tools'}
             </Link>
             <Link
               href={`/${locale}/register`}
-              className="bg-primary-600 text-white px-3 py-1.5 rounded-md hover:bg-primary-700"
+              className="registru-focus bg-registru-cerneala text-white font-semibold px-3 py-1.5 hover:bg-registru-stampila transition-colors"
             >
               {ro ? 'Cont gratuit' : 'Free account'}
             </Link>
@@ -34,7 +34,7 @@ export default async function ToolsLayout({
         </div>
       </header>
       <main className="max-w-4xl mx-auto px-4 py-8">{children}</main>
-      <footer className="max-w-4xl mx-auto px-4 py-8 text-xs text-gray-500">
+      <footer className="max-w-4xl mx-auto px-4 py-8 text-xs text-registru-cerneala-soft border-t border-registru-linie mt-8">
         {ro
           ? 'Instrumente informative gratuite — nu constituie consultanță fiscală sau juridică.'
           : 'Free informational tools — not tax or legal advice.'}

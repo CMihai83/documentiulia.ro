@@ -40,21 +40,23 @@ export default async function ToolsIndex({ params }: { params: Promise<{ locale:
   const ro = locale !== 'en';
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-2">{ro ? 'Instrumente gratuite' : 'Free tools'}</h1>
-      <p className="text-gray-600 dark:text-gray-300 mb-8">
+      <p className="registru-eyebrow mb-2">{ro ? 'Rubrica 01 — Instrumente gratuite' : 'Section 01 — Free tools'}</p>
+      <h1 className="font-display font-extrabold text-3xl mb-2">{ro ? 'Instrumente gratuite' : 'Free tools'}</h1>
+      <p className="text-registru-cerneala-soft mb-8">
         {ro
           ? 'Cinci instrumente gratuite pentru firme, PFA și contabili. Fără cont, fără costuri.'
           : 'Five free tools for companies, freelancers and accountants. No account, no cost.'}
       </p>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="border-t border-registru-cerneala">
         {TOOLS.map((t) => (
           <Link
             key={t.href}
             href={`/${locale}/tools/${t.href}`}
-            className="block rounded-xl border bg-white dark:bg-gray-900 p-5 hover:border-primary-500 transition"
+            className="registru-focus group flex items-baseline gap-4 py-4 border-b border-registru-linie hover:bg-white transition-colors"
           >
-            <div className="font-semibold mb-1">{ro ? t.ro[0] : t.en[0]}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">{ro ? t.ro[1] : t.en[1]}</div>
+            <span className="font-semibold min-w-[14rem] group-hover:text-registru-stampila transition-colors">{ro ? t.ro[0] : t.en[0]}</span>
+            <span className="text-sm text-registru-cerneala-soft flex-1">{ro ? t.ro[1] : t.en[1]}</span>
+            <span className="text-registru-cerneala-soft group-hover:text-registru-stampila transition-colors">→</span>
           </Link>
         ))}
       </div>
