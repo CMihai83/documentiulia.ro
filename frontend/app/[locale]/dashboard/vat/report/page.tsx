@@ -72,96 +72,93 @@ export default function VATReportPage() {
   const [showTransactions, setShowTransactions] = useState(false);
   const [activeTab, setActiveTab] = useState<'summary' | 'breakdown' | 'transactions'>('summary');
 
-  // Mock data - would come from API
-  const [summary, setSummary] = useState<VATSummary>({
-    collected: 45230.50,
-    deductible: 28150.75,
-    payable: 17079.75,
-    refundable: 0,
-  });
+  const [summary, setSummary] = useState<VATSummary>({ collected: 0, deductible: 0, payable: 0, refundable: 0 });
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [noDeclaration, setNoDeclaration] = useState(false);
 
-  const [breakdown, setBreakdown] = useState<VATBreakdown[]>([
-    { rate: 19, label: '19% - Standard', taxableBase: 185000, vatAmount: 35150, transactionCount: 145 },
-    { rate: 9, label: '9% - Redus', taxableBase: 52000, vatAmount: 4680, transactionCount: 38 },
-    { rate: 5, label: '5% - Special', taxableBase: 28000, vatAmount: 1400, transactionCount: 12 },
-    { rate: 0, label: '0% - Scutit', taxableBase: 15000, vatAmount: 0, transactionCount: 8 },
-  ]);
+  const [breakdown, setBreakdown] = useState<VATBreakdown[]>([]);
 
-  const [transactions, setTransactions] = useState<VATTransaction[]>([
-    { id: '1', date: '2025-12-01', type: 'sale', partner: 'Tech Solutions SRL', invoiceNumber: 'FAC-2025-0145', taxableBase: 5000, vatRate: 19, vatAmount: 950, total: 5950 },
-    { id: '2', date: '2025-12-02', type: 'purchase', partner: 'Office Supplies SA', invoiceNumber: 'FACT-8821', taxableBase: 2500, vatRate: 19, vatAmount: 475, total: 2975 },
-    { id: '3', date: '2025-12-03', type: 'sale', partner: 'Farmacia Central', invoiceNumber: 'FAC-2025-0146', taxableBase: 8000, vatRate: 9, vatAmount: 720, total: 8720 },
-    { id: '4', date: '2025-12-05', type: 'purchase', partner: 'Food Distributor SRL', invoiceNumber: 'FV-2025-445', taxableBase: 3200, vatRate: 9, vatAmount: 288, total: 3488 },
-    { id: '5', date: '2025-12-08', type: 'sale', partner: 'Construction Pro SA', invoiceNumber: 'FAC-2025-0147', taxableBase: 12000, vatRate: 19, vatAmount: 2280, total: 14280 },
-  ]);
+  const [transactions, setTransactions] = useState<VATTransaction[]>([]);
 
   const [submissionStatus, setSubmissionStatus] = useState<'pending' | 'submitted' | 'accepted' | 'rejected'>('pending');
-  const [deadline, setDeadline] = useState<string>('2026-01-25');
+  const [deadline, setDeadline] = useState<string>('');
 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 5 }, (_, i) => currentYear - i);
 
-  const handleRefreshData = async () => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+
+  const loadData = async () => {
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
+    setLoadError(null);
+    setNoDeclaration(false);
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    const headers = { Authorization: `Bearer ${token}` };
+    // Statutory D300 deadline: the 25th of the month following the period.
+    const endMonth = periodType === 'monthly' ? selectedMonth : selectedQuarter * 3 - 1;
+    const dl = new Date(selectedYear, endMonth + 1, 25);
+    setDeadline(dl.toISOString().slice(0, 10));
+    try {
+      const months = periodType === 'monthly' ? [selectedMonth + 1] : [selectedQuarter * 3 - 2, selectedQuarter * 3 - 1, selectedQuarter * 3];
+      const decls: any[] = [];
+      for (const m of months) {
+        const r = await fetch(`${API_URL}/vat/d300?year=${selectedYear}&month=${m}`, { headers });
+        if (r.ok) {
+          const d = await r.json();
+          decls.push(...(Array.isArray(d) ? d : d?.declarations ?? d?.data ?? []));
+        }
+      }
+      if (decls.length === 0) {
+        setNoDeclaration(true);
+        setSummary({ collected: 0, deductible: 0, payable: 0, refundable: 0 });
+        setBreakdown([]);
+        setSubmissionStatus('pending');
+      } else {
+        const n = (v: any) => Number(v ?? 0);
+        const agg = (k: string) => decls.reduce((a, d) => a + n(d[k]), 0);
+        const collected = agg('outputVat19') + agg('outputVat9') + agg('outputVat5');
+        const deductible = agg('inputVat19') + agg('inputVat9') + agg('inputVat5') + agg('importVat');
+        const payable = collected - deductible;
+        setSummary({ collected, deductible, payable: Math.max(0, payable), refundable: Math.max(0, -payable) });
+        setBreakdown([
+          { rate: 19, label: '19% (istoric) / 21%', taxableBase: agg('outputTaxableBase19'), vatAmount: agg('outputVat19'), transactionCount: 0 },
+          { rate: 9, label: '9% (istoric) / 11%', taxableBase: agg('outputTaxableBase9'), vatAmount: agg('outputVat9'), transactionCount: 0 },
+          { rate: 5, label: '5% (istoric)', taxableBase: agg('outputTaxableBase5'), vatAmount: agg('outputVat5'), transactionCount: 0 },
+        ].filter(b => b.taxableBase > 0 || b.vatAmount > 0));
+        const st = decls.some(d => d.status === 'SUBMITTED' || d.submittedAt) ? 'submitted' : 'pending';
+        setSubmissionStatus(st as any);
+      }
+      // Transactions: real ISSUED invoices for the period (sales side).
+      const ri = await fetch(`${API_URL}/invoices?type=ISSUED&limit=50`, { headers });
+      if (ri.ok) {
+        const inv = await ri.json();
+        const list = Array.isArray(inv) ? inv : inv?.data ?? inv?.invoices ?? [];
+        setTransactions(list
+          .filter((i: any) => { const d = new Date(i.invoiceDate ?? i.createdAt); return d.getFullYear() === selectedYear && (periodType === 'quarterly' ? Math.ceil((d.getMonth() + 1) / 3) === selectedQuarter : d.getMonth() === selectedMonth); })
+          .map((i: any) => ({ id: i.id, date: (i.invoiceDate ?? i.createdAt ?? '').slice(0, 10), type: 'sale' as const, partner: i.partnerName ?? '-', invoiceNumber: i.invoiceNumber ?? '-', taxableBase: Number(i.netAmount ?? 0), vatRate: Number(i.vatRate ?? 0), vatAmount: Number(i.vatAmount ?? 0), total: Number(i.grossAmount ?? 0) })));
+      } else {
+        setTransactions([]);
+      }
+    } catch (err) {
+      console.error('VAT report load error:', err);
+      setLoadError('Nu am putut încărca datele TVA. Reîncearcă. / Could not load VAT data. Please retry.');
+      setSummary({ collected: 0, deductible: 0, payable: 0, refundable: 0 });
+      setBreakdown([]);
+      setTransactions([]);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  useEffect(() => { void loadData(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [periodType, selectedYear, selectedMonth, selectedQuarter]);
+
+  const handleRefreshData = async () => { await loadData(); };
 
   const handleExportD406 = async () => {
     setIsExporting(true);
-    try {
-      // Simulate SAF-T D406 XML generation
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Create mock XML content
-      const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
-<AuditFile xmlns="urn:OECD:StandardAuditFile-Tax:RO_1.0">
-  <Header>
-    <AuditFileVersion>RO_CIUS_1.0</AuditFileVersion>
-    <AuditFileCountry>RO</AuditFileCountry>
-    <AuditFileDateCreated>${new Date().toISOString().split('T')[0]}</AuditFileDateCreated>
-    <SoftwareCompanyName>DocumentIulia.ro</SoftwareCompanyName>
-    <SoftwareID>DOCUMENTIULIA_ERP</SoftwareID>
-    <SoftwareVersion>2.0.0</SoftwareVersion>
-    <TaxAccountingBasis>Invoice</TaxAccountingBasis>
-    <Company>
-      <RegistrationNumber>RO12345678</RegistrationNumber>
-    </Company>
-    <SelectionCriteria>
-      <SelectionStartDate>${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-01</SelectionStartDate>
-      <SelectionEndDate>${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${new Date(selectedYear, selectedMonth + 1, 0).getDate()}</SelectionEndDate>
-    </SelectionCriteria>
-  </Header>
-  <MasterFiles>
-    <!-- Master data would be here -->
-  </MasterFiles>
-  <GeneralLedgerEntries>
-    <!-- Journal entries would be here -->
-  </GeneralLedgerEntries>
-  <SourceDocuments>
-    <SalesInvoices>
-      <NumberOfEntries>${breakdown.reduce((acc, b) => acc + b.transactionCount, 0)}</NumberOfEntries>
-      <TotalDebit>${summary.collected.toFixed(2)}</TotalDebit>
-    </SalesInvoices>
-  </SourceDocuments>
-</AuditFile>`;
-
-      // Download file
-      const blob = new Blob([xmlContent], { type: 'application/xml' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `D406_${selectedYear}_${String(selectedMonth + 1).padStart(2, '0')}.xml`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Export failed:', error);
-    } finally {
-      setIsExporting(false);
-    }
+    // No SAF-T D406 generation endpoint exists yet — never download fabricated XML.
+    alert('Generarea fișierului SAF-T D406 din platformă nu este încă disponibilă. / SAF-T D406 file generation is not available yet.');
+    setIsExporting(false);
   };
 
   const handleSubmitToANAF = async () => {
@@ -219,6 +216,14 @@ export default function VATReportPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
+      {loadError && (
+        <div role="alert" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">{loadError}</div>
+      )}
+      {noDeclaration && !loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-sky-300 bg-sky-50 dark:bg-sky-950/40 p-3 text-sm text-sky-900 dark:text-sky-200">
+          Nicio declarație D300 pentru perioada selectată — sumarul afișează 0. / No D300 declaration for the selected period — summary shows 0.
+        </div>
+      )}
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
