@@ -65,13 +65,13 @@ export default function ActiveSessions({ onRevoke, onTrustDevice, onUntrustDevic
         const data = await response.json();
         setSessions(data);
       } else {
-        // Use mock data for demo
-        setSessions(getMockSessions());
+        
+      setSessions([]);
       }
     } catch (error) {
       console.error('Failed to fetch sessions:', error);
-      // Use mock data for demo
-      setSessions(getMockSessions());
+      
+      setSessions([]);
     } finally {
       setLoading(false);
     }
@@ -264,77 +264,3 @@ export default function ActiveSessions({ onRevoke, onTrustDevice, onUntrustDevic
   );
 }
 
-function getMockSessions(): Session[] {
-  const now = new Date();
-  return [
-    {
-      id: 'sess_current_123',
-      userId: 'user_123',
-      device: {
-        type: 'desktop',
-        os: 'Windows 10',
-        browser: 'Chrome',
-        browserVersion: '120.0.0',
-        fingerprint: 'fp_desktop_123',
-      },
-      location: {
-        ip: '86.124.45.67',
-        country: 'RO',
-        city: 'Bucharest',
-        latitude: 44.4268,
-        longitude: 26.1025,
-      },
-      createdAt: new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString(),
-      lastActivityAt: new Date(now.getTime() - 5 * 60 * 1000).toISOString(),
-      expiresAt: new Date(now.getTime() + 22 * 60 * 60 * 1000).toISOString(),
-      isCurrent: true,
-      isTrusted: true,
-    },
-    {
-      id: 'sess_mobile_456',
-      userId: 'user_123',
-      device: {
-        type: 'mobile',
-        os: 'iOS 17',
-        browser: 'Safari',
-        browserVersion: '17.0',
-        fingerprint: 'fp_mobile_456',
-      },
-      location: {
-        ip: '86.124.45.68',
-        country: 'RO',
-        city: 'Cluj-Napoca',
-        latitude: 46.7712,
-        longitude: 23.6236,
-      },
-      createdAt: new Date(now.getTime() - 5 * 60 * 60 * 1000).toISOString(),
-      lastActivityAt: new Date(now.getTime() - 45 * 60 * 1000).toISOString(),
-      expiresAt: new Date(now.getTime() + 19 * 60 * 60 * 1000).toISOString(),
-      isCurrent: false,
-      isTrusted: false,
-    },
-    {
-      id: 'sess_tablet_789',
-      userId: 'user_123',
-      device: {
-        type: 'tablet',
-        os: 'Android 13',
-        browser: 'Chrome',
-        browserVersion: '119.0.0',
-        fingerprint: 'fp_tablet_789',
-      },
-      location: {
-        ip: '86.124.45.69',
-        country: 'RO',
-        city: 'Timisoara',
-        latitude: 45.7489,
-        longitude: 21.2087,
-      },
-      createdAt: new Date(now.getTime() - 12 * 60 * 60 * 1000).toISOString(),
-      lastActivityAt: new Date(now.getTime() - 3 * 60 * 60 * 1000).toISOString(),
-      expiresAt: new Date(now.getTime() + 12 * 60 * 60 * 1000).toISOString(),
-      isCurrent: false,
-      isTrusted: true,
-    },
-  ];
-}

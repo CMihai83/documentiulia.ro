@@ -129,6 +129,7 @@ export default function WarehousePage() {
   const [movements, setMovements] = useState<StockMovement[]>([]);
   const [lowStockItems, setLowStockItems] = useState<LowStockItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -136,6 +137,7 @@ export default function WarehousePage() {
   }, []);
 
   const fetchWarehouseData = async () => {
+    setLoadError(false);
     setLoading(true);
     try {
       const token = localStorage.getItem('auth_token');
@@ -144,7 +146,6 @@ export default function WarehousePage() {
         'Content-Type': 'application/json',
       };
 
-      let usedMockData = false;
 
       // Fetch warehouse summary from API
       try {
@@ -156,7 +157,6 @@ export default function WarehousePage() {
           throw new Error('Summary API unavailable');
         }
       } catch {
-        usedMockData = true;
         setSummary(null);
       }
 
@@ -170,7 +170,6 @@ export default function WarehousePage() {
           throw new Error('Locations API unavailable');
         }
       } catch {
-        usedMockData = true;
         setLocations([]);
       }
 
@@ -184,7 +183,6 @@ export default function WarehousePage() {
           throw new Error('Movements API unavailable');
         }
       } catch {
-        usedMockData = true;
         setMovements([]);
       }
 
@@ -198,22 +196,18 @@ export default function WarehousePage() {
           throw new Error('Low stock API unavailable');
         }
       } catch {
-        usedMockData = true;
         setLowStockItems([]);
-      }
-
-      if (usedMockData) {
-        console.warn('Warehouse: Using demo data - backend unavailable');
       }
     } catch (error) {
       console.error('Error fetching warehouse data:', error);
-      loadMockData();
+      clearData();
+      setLoadError(true);
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
+  const clearData = () => {
     setSummary(null);
     setLocations([]);
     setMovements([]);
@@ -248,6 +242,9 @@ export default function WarehousePage() {
 
   return (
     <div className="space-y-6">
+      {loadError && (
+        <div role="status" className="rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">Nu am putut încărca datele depozitului. Reîncearcă. / Could not load warehouse data. Please retry.</div>
+      )}
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
