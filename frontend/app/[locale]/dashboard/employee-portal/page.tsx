@@ -136,11 +136,14 @@ export default function EmployeePortalPage() {
     }).format(value);
   };
 
-  const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('ro-RO');
+  const formatDate = (dateStr?: string) => {
+    if (!dateStr) return '—';
+    const d = new Date(dateStr);
+    return isNaN(d.getTime()) ? '—' : d.toLocaleDateString('ro-RO');
   };
 
-  const totalLeaveAvailable = leaveBalances[0].total - leaveBalances[0].used - leaveBalances[0].pending;
+  const lb0 = leaveBalances[0];
+  const totalLeaveAvailable = lb0 ? lb0.total - lb0.used - lb0.pending : 0;
 
   return (
     <div className="space-y-6 p-6">
