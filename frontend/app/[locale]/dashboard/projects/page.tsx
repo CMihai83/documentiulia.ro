@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   FolderKanban,
@@ -31,16 +31,40 @@ interface Project {
   priority: 'low' | 'medium' | 'high';
 }
 
-const projects: Project[] = [
-  { id: '1', name: 'Implementare ERP', client: 'SC Tech SRL', status: 'active', progress: 65, budget: 45000, spent: 28000, team: ['Maria P.', 'Ion D.'], tasksCompleted: 32, tasksTotal: 50, priority: 'high' },
-  { id: '2', name: 'Migrare Cloud', client: 'ABC Industries', status: 'active', progress: 40, budget: 85000, spent: 32000, team: ['Andrei M.'], tasksCompleted: 18, tasksTotal: 45, priority: 'high' },
-  { id: '3', name: 'Website Redesign', client: 'Fashion Store', status: 'planning', progress: 10, budget: 15000, spent: 1500, team: ['Diana C.'], tasksCompleted: 3, tasksTotal: 25, priority: 'medium' },
-  { id: '4', name: 'Integrare e-Factura', client: 'Logistics Pro', status: 'completed', progress: 100, budget: 12000, spent: 11500, team: ['Ion D.'], tasksCompleted: 20, tasksTotal: 20, priority: 'high' }
-];
 
 export default function ProjectsPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loadError, setLoadError] = useState(false);
+  useEffect(() => {
+    (async () => {
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+        const res = await fetch(`${API_URL}/projects`, { headers: { Authorization: `Bearer ${token}` } });
+        if (!res.ok) throw new Error(String(res.status));
+        const d = await res.json();
+        const rows = (Array.isArray(d) ? d : d?.items ?? []).map((x: any) => ({
+          id: x.id,
+          name: x.name,
+          client: x.clientName ?? '—',
+          status: x.status,
+          progress: x.progressPct ?? 0,
+          budget: x.budgetRon != null ? Number(x.budgetRon) : 0,
+          spent: x.spentRon != null ? Number(x.spentRon) : 0,
+          team: Array.isArray(x.teamNames) ? x.teamNames : [],
+          tasksCompleted: 0,
+          tasksTotal: x._count?.tasks ?? 0,
+          priority: 'medium' as const,
+        }));
+        setProjects(rows);
+      } catch (e) {
+        console.error('Projects load failed:', e);
+        setLoadError(true); setProjects([]);
+      }
+    })();
+  }, []);
 
   const stats = {
     total: projects.length,
@@ -64,6 +88,11 @@ export default function ProjectsPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
+      {loadError && (
+        <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+          Nu am putut încărca proiectele. Reîncearcă. / Could not load projects. Please retry.
+        </div>
+      )}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Management Proiecte</h1>
