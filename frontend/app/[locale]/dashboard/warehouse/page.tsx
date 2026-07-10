@@ -157,7 +157,7 @@ export default function WarehousePage() {
         }
       } catch {
         usedMockData = true;
-        setSummary(getMockSummary());
+        setSummary(null);
       }
 
       // Fetch warehouse locations from API
@@ -171,7 +171,7 @@ export default function WarehousePage() {
         }
       } catch {
         usedMockData = true;
-        setLocations(getMockLocations());
+        setLocations([]);
       }
 
       // Fetch stock movements from API
@@ -185,7 +185,7 @@ export default function WarehousePage() {
         }
       } catch {
         usedMockData = true;
-        setMovements(getMockMovements());
+        setMovements([]);
       }
 
       // Fetch low stock alerts from API
@@ -199,7 +199,7 @@ export default function WarehousePage() {
         }
       } catch {
         usedMockData = true;
-        setLowStockItems(getMockLowStockItems());
+        setLowStockItems([]);
       }
 
       if (usedMockData) {
@@ -213,47 +213,11 @@ export default function WarehousePage() {
     }
   };
 
-  // Demo data functions for fallback
-  const getMockSummary = (): WarehouseSummary => ({
-    totalSKUs: 1847,
-    inStockValue: 3456000,
-    lowStockAlerts: 18,
-    pendingReceipts: 7,
-    activeLocations: 156,
-    totalMovements: 234,
-    pendingCycleCounts: 3,
-    averageAccuracy: 98.7,
-  });
-
-  const getMockLocations = (): WarehouseLocation[] => [
-    { id: '1', code: 'A-01-001', name: 'Zone A - Raft 1 - Nivel 1', zone: 'A', type: 'RACK', capacity: 500, utilization: 85, activeItems: 45, status: 'ACTIVE' },
-    { id: '2', code: 'A-01-002', name: 'Zone A - Raft 1 - Nivel 2', zone: 'A', type: 'RACK', capacity: 500, utilization: 72, activeItems: 38, status: 'ACTIVE' },
-    { id: '3', code: 'B-02-001', name: 'Zone B - Raft 2 - Nivel 1', zone: 'B', type: 'RACK', capacity: 600, utilization: 91, activeItems: 52, status: 'ACTIVE' },
-    { id: '4', code: 'C-01-F01', name: 'Zone C - Pardoseala 1', zone: 'C', type: 'FLOOR', capacity: 1000, utilization: 45, activeItems: 12, status: 'ACTIVE' },
-    { id: '5', code: 'D-01-DOC', name: 'Zone D - Doc Incarcare 1', zone: 'D', type: 'DOCK', capacity: 200, utilization: 35, activeItems: 8, status: 'ACTIVE' },
-    { id: '6', code: 'E-01-STG', name: 'Zone E - Zona Intermediara', zone: 'E', type: 'STAGING', capacity: 400, utilization: 58, activeItems: 23, status: 'ACTIVE' },
-  ];
-
-  const getMockMovements = (): StockMovement[] => [
-    { id: '1', type: 'RECEIPT', itemSKU: 'SKU-1001', itemName: 'Laptop Dell Latitude 5540', quantity: 25, toLocation: 'A-01-001', timestamp: new Date().toISOString(), user: 'Ion Popescu', status: 'COMPLETED' },
-    { id: '2', type: 'TRANSFER', itemSKU: 'SKU-1002', itemName: 'Monitor LG 27"', quantity: 10, fromLocation: 'A-01-001', toLocation: 'B-02-001', timestamp: new Date().toISOString(), user: 'Maria Ionescu', status: 'COMPLETED' },
-    { id: '3', type: 'PICK', itemSKU: 'SKU-1003', itemName: 'Tastatura Mecanica', quantity: 5, fromLocation: 'B-02-001', timestamp: new Date().toISOString(), user: 'Andrei Vasile', status: 'COMPLETED' },
-    { id: '4', type: 'RECEIPT', itemSKU: 'SKU-1004', itemName: 'Mouse Wireless', quantity: 50, toLocation: 'A-01-002', timestamp: new Date().toISOString(), user: 'Ion Popescu', status: 'PENDING' },
-    { id: '5', type: 'ADJUSTMENT', itemSKU: 'SKU-1005', itemName: 'Cabluri USB-C', quantity: -3, toLocation: 'C-01-F01', timestamp: new Date().toISOString(), user: 'Maria Ionescu', status: 'COMPLETED' },
-  ];
-
-  const getMockLowStockItems = (): LowStockItem[] => [
-    { id: '1', sku: 'SKU-2001', name: 'Monitor LG 27"', currentStock: 5, reorderPoint: 15, location: 'A-01-001', severity: 'CRITICAL', daysToStockout: 3 },
-    { id: '2', sku: 'SKU-2002', name: 'Tastatura Mecanica', currentStock: 8, reorderPoint: 20, location: 'B-02-001', severity: 'HIGH', daysToStockout: 7 },
-    { id: '3', sku: 'SKU-2003', name: 'Mouse Wireless', currentStock: 18, reorderPoint: 30, location: 'A-01-002', severity: 'MEDIUM', daysToStockout: 12 },
-    { id: '4', sku: 'SKU-2004', name: 'Cabluri HDMI', currentStock: 3, reorderPoint: 25, location: 'C-01-F01', severity: 'CRITICAL', daysToStockout: 2 },
-  ];
-
   const loadMockData = () => {
-    setSummary(getMockSummary());
-    setLocations(getMockLocations());
-    setMovements(getMockMovements());
-    setLowStockItems(getMockLowStockItems());
+    setSummary(null);
+    setLocations([]);
+    setMovements([]);
+    setLowStockItems([]);
   };
 
   const filteredMovements = movements.filter(movement =>

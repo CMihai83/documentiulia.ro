@@ -61,37 +61,6 @@ interface PaymentDetail {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
-// Mock data for demo
-const getMockPayment = (id: string): PaymentDetail => ({
-  id,
-  invoiceId: 'inv-001',
-  amount: 5950.00,
-  currency: 'RON',
-  method: 'BANK_TRANSFER',
-  paymentDate: '2025-12-15',
-  reference: 'OP-2025-12345',
-  description: 'Plată pentru servicii IT luna noiembrie 2025',
-  bankName: 'Banca Transilvania',
-  bankAccount: 'RO49BTRLRONCRT0123456789',
-  status: 'COMPLETED',
-  createdAt: '2025-12-15T10:30:00Z',
-  updatedAt: '2025-12-15T10:30:00Z',
-  invoice: {
-    id: 'inv-001',
-    invoiceNumber: 'FV-2025-0156',
-    partnerName: 'Tech Solutions SRL',
-    partnerId: 'partner-001',
-    grossAmount: 11900.00,
-    netAmount: 10000.00,
-    vatAmount: 1900.00,
-    currency: 'RON',
-    issueDate: '2025-11-30',
-    dueDate: '2025-12-30',
-    paymentStatus: 'PARTIAL',
-    totalPaid: 5950.00,
-    remaining: 5950.00,
-  },
-});
 
 export default function PaymentDetailPage() {
   const t = useTranslations('payments');
@@ -127,14 +96,16 @@ export default function PaymentDetailPage() {
         setPayment(data);
       } else if (response.status === 404) {
         // Use mock data for demo
-        setPayment(getMockPayment(paymentId));
+        setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setPayment(null);
       } else {
         throw new Error('Failed to fetch payment');
       }
     } catch (err) {
       console.error('Error fetching payment:', err);
       // Fallback to mock data
-      setPayment(getMockPayment(paymentId));
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setPayment(null);
     } finally {
       setLoading(false);
     }

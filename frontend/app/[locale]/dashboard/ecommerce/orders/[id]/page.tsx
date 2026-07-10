@@ -90,77 +90,6 @@ interface OrderDetail {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
-// Mock data for demo
-const getMockOrder = (id: string): OrderDetail => ({
-  id,
-  storeId: 'store-001',
-  storeName: 'My eMAG Store',
-  platform: 'eMAG',
-  orderNumber: 'ORD-2025-0089',
-  externalOrderId: 'EMG-78456321',
-  status: 'processing',
-  paymentStatus: 'paid',
-  paymentMethod: 'Card bancar',
-  customer: {
-    name: 'Ion Popescu',
-    email: 'ion.popescu@email.com',
-    phone: '+40 722 123 456',
-  },
-  shippingAddress: {
-    street: 'Str. Victoriei nr. 123, Bl. A1, Sc. 2, Ap. 45',
-    city: 'București',
-    county: 'Sector 1',
-    postalCode: '010123',
-    country: 'România',
-  },
-  billingAddress: {
-    street: 'Str. Victoriei nr. 123, Bl. A1, Sc. 2, Ap. 45',
-    city: 'București',
-    county: 'Sector 1',
-    postalCode: '010123',
-    country: 'România',
-  },
-  items: [
-    {
-      id: 'item-1',
-      productId: 'prod-001',
-      productName: 'Laptop ASUS VivoBook 15',
-      sku: 'ASUS-VB15-001',
-      quantity: 1,
-      unitPrice: 2499.00,
-      totalPrice: 2499.00,
-    },
-    {
-      id: 'item-2',
-      productId: 'prod-002',
-      productName: 'Mouse Wireless Logitech M185',
-      sku: 'LOG-M185-BLK',
-      quantity: 2,
-      unitPrice: 75.00,
-      totalPrice: 150.00,
-    },
-    {
-      id: 'item-3',
-      productId: 'prod-003',
-      productName: 'Geantă laptop 15.6"',
-      sku: 'BAG-156-PRO',
-      quantity: 1,
-      unitPrice: 120.00,
-      totalPrice: 120.00,
-    },
-  ],
-  subtotal: 2769.00,
-  shippingCost: 0,
-  discount: 100.00,
-  vatAmount: 507.11,
-  totalAmount: 2669.00,
-  currency: 'RON',
-  orderDate: '2025-12-15T09:30:00Z',
-  updatedAt: '2025-12-16T14:20:00Z',
-  trackingNumber: 'FAN123456789RO',
-  trackingUrl: 'https://tracking.fancourier.ro/FAN123456789RO',
-  notes: 'Livrare la sediul firmei, program L-V 9:00-18:00',
-});
 
 export default function ECommerceOrderDetailPage() {
   const params = useParams();
@@ -188,11 +117,13 @@ export default function ECommerceOrderDetailPage() {
         const data = await response.json();
         setOrder(data);
       } else {
-        setOrder(getMockOrder(orderId));
+        setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setOrder(null);
       }
     } catch (err) {
       console.error('Error fetching order:', err);
-      setOrder(getMockOrder(orderId));
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setOrder(null);
     } finally {
       setLoading(false);
     }
