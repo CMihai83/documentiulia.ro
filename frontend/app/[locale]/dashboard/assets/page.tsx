@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -113,235 +113,6 @@ interface AssetRequest {
 
 // Sample data
 // TODO(REQ-035): wire to real API
-  const sampleAssets: Asset[] = [
-  {
-    id: '1',
-    name: 'Dell Latitude 5520 Laptop',
-    assetTag: 'AT-DOC-001',
-    serialNumber: 'DL5520-2024-001',
-    category: 'it_hardware',
-    manufacturer: 'Dell',
-    model: 'Latitude 5520',
-    status: 'active',
-    condition: 'good',
-    locationName: 'Sediu Central',
-    departmentName: 'IT',
-    assignedToUserName: 'Ion Popescu',
-    purchaseDate: '2024-01-15',
-    purchasePrice: 4500,
-    currentValue: 3600,
-    warrantyExpiry: '2027-01-15',
-  },
-  {
-    id: '2',
-    name: 'HP LaserJet Pro Printer',
-    assetTag: 'AT-DOC-002',
-    serialNumber: 'HP-LJP-2024-001',
-    category: 'it_hardware',
-    manufacturer: 'HP',
-    model: 'LaserJet Pro M404dn',
-    status: 'active',
-    condition: 'excellent',
-    locationName: 'Etaj 2',
-    departmentName: 'Administrativ',
-    purchaseDate: '2024-03-10',
-    purchasePrice: 2200,
-    currentValue: 1980,
-    warrantyExpiry: '2026-03-10',
-  },
-  {
-    id: '3',
-    name: 'Volkswagen Transporter',
-    assetTag: 'AT-DOC-003',
-    serialNumber: 'WVGZZZ7HZ8H000001',
-    category: 'vehicle',
-    manufacturer: 'Volkswagen',
-    model: 'Transporter T6.1',
-    status: 'active',
-    condition: 'good',
-    locationName: 'Parcare',
-    departmentName: 'Logistică',
-    assignedToUserName: 'Marius Ionescu',
-    purchaseDate: '2023-06-20',
-    purchasePrice: 125000,
-    currentValue: 95000,
-    warrantyExpiry: '2026-06-20',
-  },
-  {
-    id: '4',
-    name: 'Birou Executive BEKANT',
-    assetTag: 'AT-DOC-004',
-    category: 'furniture',
-    manufacturer: 'IKEA',
-    model: 'BEKANT 160x80',
-    status: 'active',
-    condition: 'excellent',
-    locationName: 'Biroul Directorului',
-    departmentName: 'Management',
-    purchaseDate: '2024-02-01',
-    purchasePrice: 1200,
-    currentValue: 1080,
-  },
-  {
-    id: '5',
-    name: 'Server Rack - Data Center',
-    assetTag: 'AT-DOC-005',
-    serialNumber: 'APC-NS42-001',
-    category: 'equipment',
-    manufacturer: 'APC',
-    model: 'NetShelter SX 42U',
-    status: 'active',
-    condition: 'good',
-    locationName: 'Sala Servere',
-    departmentName: 'IT',
-    purchaseDate: '2023-01-15',
-    purchasePrice: 8500,
-    currentValue: 6800,
-    warrantyExpiry: '2028-01-15',
-  },
-  {
-    id: '6',
-    name: 'Microsoft Office 365 Business',
-    assetTag: 'AT-DOC-006',
-    category: 'software',
-    manufacturer: 'Microsoft',
-    model: 'Office 365 Business Premium',
-    status: 'active',
-    condition: 'excellent',
-    departmentName: 'General',
-    purchaseDate: '2024-01-01',
-    purchasePrice: 6000,
-    currentValue: 4500,
-  },
-  {
-    id: '7',
-    name: 'MacBook Pro 14"',
-    assetTag: 'AT-DOC-007',
-    serialNumber: 'FVFDJ123456',
-    category: 'it_hardware',
-    manufacturer: 'Apple',
-    model: 'MacBook Pro 14" M3',
-    status: 'maintenance',
-    condition: 'fair',
-    locationName: 'Service Apple',
-    departmentName: 'Design',
-    assignedToUserName: 'Ana Marin',
-    purchaseDate: '2024-05-01',
-    purchasePrice: 12000,
-    currentValue: 10800,
-    warrantyExpiry: '2026-05-01',
-  },
-  {
-    id: '8',
-    name: 'Scanner Canon DR-C225',
-    assetTag: 'AT-DOC-008',
-    category: 'it_hardware',
-    manufacturer: 'Canon',
-    model: 'DR-C225',
-    status: 'disposed',
-    condition: 'broken',
-    departmentName: 'Contabilitate',
-    purchaseDate: '2020-03-15',
-    purchasePrice: 1500,
-    currentValue: 0,
-  },
-];
-
-const sampleCheckouts: AssetCheckout[] = [
-  {
-    id: '1',
-    assetName: 'Dell Latitude 5520 Laptop',
-    assetTag: 'AT-DOC-001',
-    checkedOutTo: 'user',
-    targetName: 'Ion Popescu',
-    checkedOutAt: '2024-11-01',
-    expectedReturn: '2025-11-01',
-    status: 'checked_out',
-  },
-  {
-    id: '2',
-    assetName: 'Proiector Epson',
-    assetTag: 'AT-DOC-015',
-    checkedOutTo: 'department',
-    targetName: 'Marketing',
-    checkedOutAt: '2024-12-01',
-    expectedReturn: '2024-12-10',
-    status: 'overdue',
-  },
-  {
-    id: '3',
-    assetName: 'Camera Sony Alpha',
-    assetTag: 'AT-DOC-020',
-    checkedOutTo: 'user',
-    targetName: 'Maria Dumitrescu',
-    checkedOutAt: '2024-12-10',
-    expectedReturn: '2024-12-15',
-    status: 'checked_out',
-  },
-];
-
-const sampleTransfers: AssetTransfer[] = [
-  {
-    id: '1',
-    assetName: 'Imprimantă HP Color',
-    fromName: 'Etaj 1 - Contabilitate',
-    toName: 'Etaj 3 - Marketing',
-    reason: 'Reorganizare departamente',
-    transferredAt: '2024-12-12',
-    status: 'pending',
-  },
-  {
-    id: '2',
-    assetName: 'Birou Standing Desk',
-    fromName: 'Depozit',
-    toName: 'Biroul 305 - Ion Popescu',
-    reason: 'Echipare birou nou angajat',
-    transferredAt: '2024-12-10',
-    status: 'approved',
-  },
-  {
-    id: '3',
-    assetName: 'Monitor Dell 27"',
-    fromName: 'IT Department',
-    toName: 'Design Department',
-    transferredAt: '2024-12-05',
-    status: 'completed',
-  },
-];
-
-const sampleRequests: AssetRequest[] = [
-  {
-    id: '1',
-    requestType: 'new_asset',
-    requesterName: 'Elena Stancu',
-    description: 'Laptop pentru angajat nou în departamentul HR',
-    estimatedCost: 4500,
-    priority: 'high',
-    status: 'pending',
-    createdAt: '2024-12-13',
-  },
-  {
-    id: '2',
-    requestType: 'repair',
-    requesterName: 'Ana Marin',
-    assetName: 'MacBook Pro 14"',
-    description: 'Ecran defect - necesită înlocuire',
-    estimatedCost: 2500,
-    priority: 'urgent',
-    status: 'approved',
-    createdAt: '2024-12-10',
-  },
-  {
-    id: '3',
-    requestType: 'disposal',
-    requesterName: 'Andrei Popa',
-    assetName: 'Scanner Canon DR-C225',
-    description: 'Echipament vechi, nu mai funcționează',
-    priority: 'low',
-    status: 'completed',
-    createdAt: '2024-12-01',
-  },
-];
 
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#6b7280'];
 
@@ -427,21 +198,47 @@ const priorityLabels: Record<string, string> = {
 
 export default function AssetManagementPage() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [assetList, setAssetList] = useState<Asset[]>([]);
+  const [checkoutList, setCheckoutList] = useState<AssetCheckout[]>([]);
+  const [transferList, setTransferList] = useState<AssetTransfer[]>([]);
+  const [requestList, setRequestList] = useState<AssetRequest[]>([]);
+  const [loadError, setLoadError] = useState(false);
+  useEffect(() => {
+    (async () => {
+      setLoadError(false);
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const headers = { Authorization: `Bearer ${token}` };
+      const pick = (d: any) => Array.isArray(d) ? d : d?.items ?? d?.data ?? d?.assets ?? [];
+      try {
+        const [a, c, t, r] = await Promise.all([
+          fetch(`${API_URL}/assets`, { headers }),
+          fetch(`${API_URL}/assets/checkouts/list`, { headers }).catch(() => null),
+          fetch(`${API_URL}/assets/transfers/list`, { headers }).catch(() => null),
+          fetch(`${API_URL}/assets/requests/list`, { headers }).catch(() => null),
+        ]);
+        if (a.ok) setAssetList(pick(await a.json())); else setLoadError(true);
+        if (c && c.ok) setCheckoutList(pick(await c.json()));
+        if (t && t.ok) setTransferList(pick(await t.json()));
+        if (r && r.ok) setRequestList(pick(await r.json()));
+      } catch (e) { console.error('Failed to load assets:', e); setLoadError(true); }
+    })();
+  }, []);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('all');
 
   // Calculate statistics
   const stats = {
-    total: sampleAssets.length,
-    active: sampleAssets.filter(a => a.status === 'active').length,
-    maintenance: sampleAssets.filter(a => a.status === 'maintenance').length,
-    disposed: sampleAssets.filter(a => a.status === 'disposed').length,
-    totalValue: sampleAssets.reduce((sum, a) => sum + (a.currentValue || 0), 0),
-    totalPurchaseValue: sampleAssets.reduce((sum, a) => sum + (a.purchasePrice || 0), 0),
-    overdueCheckouts: sampleCheckouts.filter(c => c.status === 'overdue').length,
-    pendingTransfers: sampleTransfers.filter(t => t.status === 'pending').length,
-    pendingRequests: sampleRequests.filter(r => r.status === 'pending').length,
+    total: assetList.length,
+    active: assetList.filter(a => a.status === 'active').length,
+    maintenance: assetList.filter(a => a.status === 'maintenance').length,
+    disposed: assetList.filter(a => a.status === 'disposed').length,
+    totalValue: assetList.reduce((sum, a) => sum + (a.currentValue || 0), 0),
+    totalPurchaseValue: assetList.reduce((sum, a) => sum + (a.purchasePrice || 0), 0),
+    overdueCheckouts: checkoutList.filter(c => c.status === 'overdue').length,
+    pendingTransfers: transferList.filter(t => t.status === 'pending').length,
+    pendingRequests: requestList.filter(r => r.status === 'pending').length,
   };
 
   const depreciation = stats.totalPurchaseValue - stats.totalValue;
@@ -452,23 +249,23 @@ export default function AssetManagementPage() {
   // Category distribution data for charts
   const categoryData = Object.entries(categoryLabels).map(([key, label]) => ({
     name: label,
-    value: sampleAssets.filter(a => a.category === key).length,
+    value: assetList.filter(a => a.category === key).length,
   })).filter(d => d.value > 0);
 
   const categoryValueData = Object.entries(categoryLabels).map(([key, label]) => ({
     name: label,
-    value: sampleAssets
+    value: assetList
       .filter(a => a.category === key)
       .reduce((sum, a) => sum + (a.currentValue || 0), 0),
   })).filter(d => d.value > 0);
 
   const conditionData = Object.entries(conditionLabels).map(([key, label]) => ({
     name: label,
-    value: sampleAssets.filter(a => a.condition === key).length,
+    value: assetList.filter(a => a.condition === key).length,
   })).filter(d => d.value > 0);
 
   // Filter assets
-  const filteredAssets = sampleAssets.filter(asset => {
+  const filteredAssets = assetList.filter(asset => {
     const matchesSearch = searchQuery === '' ||
       asset.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       asset.assetTag.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -493,9 +290,7 @@ export default function AssetManagementPage() {
 
   return (
     <div className="space-y-6 p-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (<div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.</div>)}
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
@@ -581,7 +376,7 @@ export default function AssetManagementPage() {
                 <ClipboardList className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{sampleCheckouts.filter(c => c.status !== 'returned').length}</div>
+                <div className="text-2xl font-bold">{checkoutList.filter(c => c.status !== 'returned').length}</div>
                 {stats.overdueCheckouts > 0 ? (
                   <p className="text-xs text-red-600">
                     <AlertTriangle className="inline h-3 w-3 mr-1" />
@@ -872,7 +667,7 @@ export default function AssetManagementPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {sampleCheckouts.map((checkout) => (
+                {checkoutList.map((checkout) => (
                   <div
                     key={checkout.id}
                     className="flex items-center justify-between p-4 border rounded-lg"
@@ -950,7 +745,7 @@ export default function AssetManagementPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {sampleTransfers.map((transfer) => (
+                {transferList.map((transfer) => (
                   <div
                     key={transfer.id}
                     className="flex items-center justify-between p-4 border rounded-lg"
@@ -1034,7 +829,7 @@ export default function AssetManagementPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {sampleRequests.map((request) => (
+                {requestList.map((request) => (
                   <div
                     key={request.id}
                     className="flex items-center justify-between p-4 border rounded-lg"
