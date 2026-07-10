@@ -225,149 +225,17 @@ export default function InspectionDetailPage() {
       }
     } catch (error) {
       console.error('Error fetching inspection details:', error);
-      loadMockData();
+      loadEmpty();
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
-    setInspection({
-      id: inspectionId,
-      inspectionNumber: 'INS-2024-0156',
-      type: 'INCOMING',
-      status: 'PASS',
-      score: 92,
-      product: {
-        id: 'prod-001',
-        name: 'Componenta Electronica PCB v2.1',
-        code: 'PCB-2024-001',
-        lotNumber: 'LOT-2024-12-001',
-        quantity: 500,
-        unit: 'buc',
-      },
-      supplier: {
-        id: 'sup-001',
-        name: 'Tech Components SRL',
-        code: 'SUP-TC-001',
-      },
-      inspector: {
-        id: 'insp-001',
-        name: 'Maria Ionescu',
-        department: 'Quality Control',
-      },
-      scheduledDate: '2024-12-16',
-      completedDate: '2024-12-16',
-      location: 'Zona Receptie - Depozit Central',
-      purchaseOrder: 'PO-2024-0789',
-      sampleSize: 50,
-      acceptedCount: 48,
-      rejectedCount: 2,
-      notes: 'Inspectie standard pentru componente electronice. 2 unitati respinse din cauza defectelor vizuale minore.',
-      createdAt: '2024-12-15T10:00:00Z',
-      updatedAt: '2024-12-16T14:30:00Z',
-    });
-
-    setCheckpoints([
-      {
-        id: 'cp-001',
-        name: 'Inspectie Vizuala',
-        description: 'Verificare aspect general, zgârieturi, deformari',
-        type: 'VISUAL',
-        specification: 'Fara defecte vizibile la ochiul liber',
-        result: 'PASS',
-        notes: '48/50 conforme. 2 cu zgârieturi minore pe suprafata.',
-      },
-      {
-        id: 'cp-002',
-        name: 'Dimensiuni PCB',
-        description: 'Masurare dimensiuni conform desenului tehnic',
-        type: 'DIMENSIONAL',
-        specification: '100mm x 80mm',
-        tolerance: '±0.5mm',
-        result: 'PASS',
-        actualValue: '100.2mm x 79.8mm',
-      },
-      {
-        id: 'cp-003',
-        name: 'Test Functional',
-        description: 'Verificare conectivitate si functionalitate',
-        type: 'FUNCTIONAL',
-        specification: 'Toate punctele de test OK',
-        result: 'PASS',
-        notes: 'Toate 50 unitatile testate au trecut testul functional.',
-      },
-      {
-        id: 'cp-004',
-        name: 'Verificare Documentatie',
-        description: 'Certificat de conformitate, raport test',
-        type: 'DOCUMENT',
-        specification: 'CoC + Test Report prezente',
-        result: 'PASS',
-        notes: 'Documentatie completa primita de la furnizor.',
-      },
-      {
-        id: 'cp-005',
-        name: 'Grosime Placare',
-        description: 'Masurare grosime strat de cupru',
-        type: 'MEASUREMENT',
-        specification: '35μm minim',
-        tolerance: '+10μm/-0μm',
-        result: 'PASS',
-        actualValue: '38μm',
-      },
-    ]);
-
-    setFindings([
-      {
-        id: 'find-001',
-        type: 'MINOR',
-        description: '2 unitati cu zgârieturi superficiale pe layer-ul superior',
-        checkpoint: 'Inspectie Vizuala',
-        recommendation: 'Unitatile pot fi utilizate pentru prototipare, nu pentru productie finala',
-        status: 'RESOLVED',
-        createdAt: '2024-12-16T11:30:00Z',
-        resolvedAt: '2024-12-16T14:00:00Z',
-      },
-      {
-        id: 'find-002',
-        type: 'OBSERVATION',
-        description: 'Ambalajul de transport prezinta semne de umiditate',
-        recommendation: 'Solicitare imbunatatire ambalaj pentru urmatoarele livrari',
-        status: 'OPEN',
-        createdAt: '2024-12-16T10:45:00Z',
-      },
-    ]);
-
-    setAttachments([
-      {
-        id: 'att-001',
-        filename: 'inspectie_vizuala_lot001.jpg',
-        type: 'IMAGE',
-        size: 2456000,
-        uploadedBy: 'Maria Ionescu',
-        uploadedAt: '2024-12-16T11:00:00Z',
-        url: '/attachments/inspectie_vizuala_lot001.jpg',
-      },
-      {
-        id: 'att-002',
-        filename: 'certificat_conformitate_tc.pdf',
-        type: 'DOCUMENT',
-        size: 524000,
-        uploadedBy: 'Maria Ionescu',
-        uploadedAt: '2024-12-16T10:30:00Z',
-        url: '/attachments/certificat_conformitate_tc.pdf',
-      },
-      {
-        id: 'att-003',
-        filename: 'raport_test_functional.pdf',
-        type: 'REPORT',
-        size: 1245000,
-        uploadedBy: 'Maria Ionescu',
-        uploadedAt: '2024-12-16T12:00:00Z',
-        url: '/attachments/raport_test_functional.pdf',
-      },
-    ]);
+  const loadEmpty = () => {
+    setAttachments([]);
+    setCheckpoints([]);
+    setFindings([]);
+    setInspection(null);
   };
 
   const handleCompleteInspection = async () => {

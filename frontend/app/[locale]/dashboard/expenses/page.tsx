@@ -90,7 +90,8 @@ interface ExpenseReport {
 }
 
 // Sample data
-const sampleExpenses: Expense[] = [
+// TODO(REQ-035): wire to real API
+  const sampleExpenses: Expense[] = [
   {
     id: '1',
     employeeName: 'Ion Popescu',
@@ -323,6 +324,9 @@ export default function ExpensesPage() {
 
   return (
     <div className="space-y-6 p-6">
+      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
+        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
+      </div>
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
