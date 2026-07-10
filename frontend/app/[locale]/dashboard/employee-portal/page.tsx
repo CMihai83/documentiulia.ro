@@ -206,7 +206,7 @@ export default function EmployeePortalPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{totalLeaveAvailable}</div>
-                <p className="text-xs text-muted-foreground">disponibile din {leaveBalances[0].total}</p>
+                <p className="text-xs text-muted-foreground">disponibile din {lb0?.total ?? 0}</p>
               </CardContent>
             </Card>
 
