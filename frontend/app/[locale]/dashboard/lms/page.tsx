@@ -244,12 +244,14 @@ export default function LMSPage() {
 
       // Stats from REAL data only — no invented counters.
       let enrolled = 0, completed = 0, certificates = 0;
+      let enrollList: any[] = [];
       try {
         if (userId) {
           const enrRes = await fetch(`${API_URL}/lms/enrollments/user/${userId}`, { headers });
           if (enrRes.ok) {
             const enr = await enrRes.json();
             const list = Array.isArray(enr) ? enr : enr?.enrollments ?? enr?.data ?? [];
+            enrollList = list;
             enrolled = list.length;
             completed = list.filter((e: any) => e.completedAt || e.status === 'COMPLETED' || Number(e.progress ?? 0) >= 100).length;
             certificates = list.filter((e: any) => e.certificateId || e.certificateIssuedAt).length;
@@ -267,56 +269,26 @@ export default function LMSPage() {
 
       // No fabricated fallback courses: an empty catalog renders the empty state.
 
-      setEnrollments([
-        {
-          id: 'e-001',
-          courseId: 'c-001',
-          courseTitle: 'SAF-T D406 - Ghid Complet',
-          progress: 75,
-          completedLessons: 9,
-          totalLessons: 12,
-          startedAt: '2025-11-01',
-          lastAccessedAt: '2025-12-10',
-          status: 'IN_PROGRESS',
-        },
-        {
-          id: 'e-002',
-          courseId: 'c-002',
-          courseTitle: 'e-Factura B2B - Implementare',
-          progress: 100,
-          completedLessons: 8,
-          totalLessons: 8,
-          startedAt: '2025-10-15',
-          lastAccessedAt: '2025-11-20',
-          status: 'COMPLETED',
-        },
-        {
-          id: 'e-003',
-          courseId: 'c-003',
-          courseTitle: 'TVA 2025 - Noutăți Legislative',
-          progress: 33,
-          completedLessons: 2,
-          totalLessons: 6,
-          startedAt: '2025-12-05',
-          lastAccessedAt: '2025-12-09',
-          status: 'IN_PROGRESS',
-        },
-      ]);
+      setEnrollments(enrollList.map((e: any) => ({
+        id: String(e.id),
+        courseId: String(e.courseId ?? e.course?.id ?? ''),
+        courseTitle: e.course?.title ?? e.courseTitle ?? '-',
+        progress: Number(e.progress ?? 0),
+        completedLessons: Number(e.completedLessons ?? e.lessonsCompleted ?? 0),
+        totalLessons: Number(e.totalLessons ?? e.course?.lessonCount ?? 0),
+        startedAt: (e.startedAt ?? e.createdAt ?? '').toString().slice(0, 10),
+        lastAccessedAt: (e.lastAccessedAt ?? e.updatedAt ?? '').toString().slice(0, 10),
+        status: e.completedAt || Number(e.progress ?? 0) >= 100 ? 'COMPLETED' : 'IN_PROGRESS',
+      })) as any);
 
-      setCertificates([
-        {
-          id: 'cert-001',
-          courseName: 'e-Factura B2B - Implementare',
-          issuedAt: '2025-11-20',
-          credentialId: 'DIULIA-EF-2025-001',
-        },
-        {
-          id: 'cert-002',
-          courseName: 'Contabilitate pentru Start-ups',
-          issuedAt: '2025-10-15',
-          credentialId: 'DIULIA-CS-2025-002',
-        },
-      ]);
+      setCertificates(enrollList
+        .filter((e: any) => e.certificateId || e.certificateIssuedAt)
+        .map((e: any) => ({
+          id: String(e.certificateId ?? e.id),
+          courseName: e.course?.title ?? e.courseTitle ?? '-',
+          issuedAt: (e.certificateIssuedAt ?? e.completedAt ?? '').toString().slice(0, 10),
+          credentialId: e.certificateNumber ?? String(e.certificateId ?? ''),
+        })) as any);
 
     } catch (err) {
       console.error('Failed to fetch LMS data:', err);
