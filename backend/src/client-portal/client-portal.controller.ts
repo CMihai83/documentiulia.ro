@@ -8,7 +8,7 @@ import {
   Query,
   HttpCode,
   HttpStatus,
-, NotFoundException} from '@nestjs/common';
+} from '@nestjs/common';
 import {
   ApiTags,
   ApiOperation,
@@ -43,7 +43,7 @@ export class ClientPortalController {
   async getProfile(@Param('clientId') clientId: string) {
     const profile = await this.portalService.getClientProfile(clientId);
     if (!profile) {
-      throw new NotFoundException('Client not found');
+      return { error: 'Client not found', statusCode: 404 };
     }
     return profile;
   }
@@ -68,7 +68,7 @@ export class ClientPortalController {
   ) {
     const profile = await this.portalService.updateClientProfile(clientId, body);
     if (!profile) {
-      throw new NotFoundException('Client not found');
+      return { error: 'Client not found', statusCode: 404 };
     }
     return profile;
   }

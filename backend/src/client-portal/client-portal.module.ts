@@ -6,7 +6,7 @@ import { ClientPortalController } from './client-portal.controller';
 
 @Module({
   imports: [PrismaModule],
-  controllers: [ClientPortalController, ClientPortalMeController],
+  controllers: [ClientPortalMeController, ClientPortalController],
   providers: [ClientPortalService],
   exports: [ClientPortalService],
 })
