@@ -231,157 +231,16 @@ export default function VehicleDetailPage() {
       }
     } catch (error) {
       console.error('Error fetching vehicle details:', error);
-      loadMockData();
+      setVehicle(null);
+      setMaintenance([]);
+      setRoutes([]);
+      setFuelRecords([]);
+      setStats(null);
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
-    setVehicle({
-      id: vehicleId,
-      licensePlate: 'B-123-LOG',
-      make: 'Mercedes-Benz',
-      model: 'Sprinter 316 CDI',
-      year: 2022,
-      vin: 'WDB9066331S123456',
-      status: 'IN_USE',
-      mileage: 45230,
-      fuelType: 'DIESEL',
-      fuelCapacityLiters: 75,
-      currentFuelLevel: 62,
-      maxPayloadKg: 1500,
-      dimensions: { lengthCm: 700, widthCm: 200, heightCm: 230 },
-      currentLat: 44.4268,
-      currentLng: 26.1025,
-      lastPositionUpdate: new Date().toISOString(),
-      assignedDriver: {
-        id: 'drv-001',
-        firstName: 'Ion',
-        lastName: 'Popescu',
-        phone: '+40722123456',
-        licenseNumber: 'RO-B-123456',
-      },
-      insuranceExpiry: '2025-06-30',
-      inspectionExpiry: '2025-08-15',
-      registrationExpiry: '2025-12-31',
-      purchaseDate: '2022-03-15',
-      purchasePrice: 52000,
-      currentValue: 38000,
-      notes: 'Vehicul principal pentru rute Bucuresti-Sud',
-      tags: ['prioritar', 'frigorific'],
-    });
-
-    setMaintenance([
-      {
-        id: 'm-001',
-        type: 'Schimb ulei',
-        description: 'Schimb ulei motor + filtru ulei',
-        date: '2024-11-15',
-        mileageAtService: 42500,
-        cost: 850,
-        provider: 'Service Auto Expert SRL',
-        nextDue: '2025-02-15',
-        nextDueMileage: 52500,
-      },
-      {
-        id: 'm-002',
-        type: 'Revizie completa',
-        description: 'Revizie anuala completa cu toate verificarile',
-        date: '2024-08-20',
-        mileageAtService: 38000,
-        cost: 2400,
-        provider: 'Mercedes-Benz Romania',
-        nextDue: '2025-08-20',
-      },
-      {
-        id: 'm-003',
-        type: 'Anvelope',
-        description: 'Inlocuire anvelope fata - set iarna',
-        date: '2024-10-25',
-        mileageAtService: 41200,
-        cost: 1800,
-        provider: 'Vulcanizare Rapid',
-      },
-      {
-        id: 'm-004',
-        type: 'Frane',
-        description: 'Inlocuire placute frana fata',
-        date: '2024-06-10',
-        mileageAtService: 35000,
-        cost: 650,
-        provider: 'Service Auto Expert SRL',
-        nextDue: '2025-06-10',
-        nextDueMileage: 55000,
-      },
-    ]);
-
-    setRoutes([
-      {
-        id: 'r-001',
-        routeName: 'Ruta Bucuresti - Sud A',
-        date: '2024-12-16',
-        stops: 12,
-        completedStops: 12,
-        distanceKm: 145,
-        durationMinutes: 420,
-        driverName: 'Ion Popescu',
-        status: 'COMPLETED',
-      },
-      {
-        id: 'r-002',
-        routeName: 'Ruta Bucuresti - Vest',
-        date: '2024-12-15',
-        stops: 8,
-        completedStops: 8,
-        distanceKm: 98,
-        durationMinutes: 285,
-        driverName: 'Ion Popescu',
-        status: 'COMPLETED',
-      },
-      {
-        id: 'r-003',
-        routeName: 'Ruta Express Centru',
-        date: '2024-12-14',
-        stops: 15,
-        completedStops: 13,
-        distanceKm: 62,
-        durationMinutes: 340,
-        driverName: 'Andrei Vasile',
-        status: 'PARTIAL',
-      },
-      {
-        id: 'r-004',
-        routeName: 'Ruta Bucuresti - Nord',
-        date: '2024-12-13',
-        stops: 10,
-        completedStops: 10,
-        distanceKm: 125,
-        durationMinutes: 380,
-        driverName: 'Ion Popescu',
-        status: 'COMPLETED',
-      },
-    ]);
-
-    setFuelRecords([
-      { id: 'f-001', date: '2024-12-16', liters: 65, costPerLiter: 7.25, totalCost: 471.25, mileage: 45230, fullTank: true, station: 'OMV Bucuresti' },
-      { id: 'f-002', date: '2024-12-13', liters: 58, costPerLiter: 7.20, totalCost: 417.60, mileage: 44850, fullTank: true, station: 'Petrom Voluntari' },
-      { id: 'f-003', date: '2024-12-10', liters: 62, costPerLiter: 7.18, totalCost: 445.16, mileage: 44420, fullTank: true, station: 'OMV Bucuresti' },
-      { id: 'f-004', date: '2024-12-07', liters: 55, costPerLiter: 7.22, totalCost: 397.10, mileage: 43980, fullTank: false, station: 'Mol Pipera' },
-      { id: 'f-005', date: '2024-12-04', liters: 68, costPerLiter: 7.15, totalCost: 486.20, mileage: 43520, fullTank: true, station: 'OMV Bucuresti' },
-    ]);
-
-    setStats({
-      totalDistanceKm: 45230,
-      avgFuelConsumption: 9.2,
-      totalFuelCost: 28500,
-      totalMaintenanceCost: 5700,
-      routesCompleted: 342,
-      deliveriesCompleted: 4128,
-      avgDeliveriesPerRoute: 12.1,
-      utilizationPercent: 78,
-    });
-  };
 
   const handleChangeStatus = async (newStatus: string) => {
     try {
@@ -470,9 +329,6 @@ export default function VehicleDetailPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
         <div className="h-8 bg-gray-200 rounded w-48 mb-4"></div>
         <div className="bg-white rounded-lg shadow p-6">
           <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>

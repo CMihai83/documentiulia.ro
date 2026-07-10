@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   ShoppingCart,
@@ -33,76 +33,52 @@ interface PurchaseOrder {
   currency: string;
 }
 
-// TODO(REQ-035): wire to real API
-  const mockOrders: PurchaseOrder[] = [
-  {
-    id: '1',
-    orderNumber: 'PO-2025-0145',
-    supplier: 'Tech Distribution SRL',
-    supplierCui: 'RO12345678',
-    orderDate: '2025-12-20',
-    expectedDelivery: '2025-12-27',
-    status: 'sent',
-    itemCount: 5,
-    totalAmount: 24500,
-    currency: 'RON',
-  },
-  {
-    id: '2',
-    orderNumber: 'PO-2025-0144',
-    supplier: 'Office Solutions SA',
-    supplierCui: 'RO87654321',
-    orderDate: '2025-12-18',
-    expectedDelivery: '2025-12-25',
-    status: 'partial',
-    itemCount: 12,
-    totalAmount: 8750,
-    currency: 'RON',
-  },
-  {
-    id: '3',
-    orderNumber: 'PO-2025-0143',
-    supplier: 'Import Direct SRL',
-    supplierCui: 'RO11223344',
-    orderDate: '2025-12-15',
-    expectedDelivery: '2025-12-22',
-    status: 'received',
-    itemCount: 3,
-    totalAmount: 15200,
-    currency: 'EUR',
-  },
-  {
-    id: '4',
-    orderNumber: 'PO-2025-0142',
-    supplier: 'Food Distributor SRL',
-    supplierCui: 'RO44332211',
-    orderDate: '2025-12-14',
-    expectedDelivery: '2025-12-21',
-    status: 'pending',
-    itemCount: 8,
-    totalAmount: 4200,
-    currency: 'RON',
-  },
-  {
-    id: '5',
-    orderNumber: 'PO-2025-0141',
-    supplier: 'Tech Distribution SRL',
-    supplierCui: 'RO12345678',
-    orderDate: '2025-12-10',
-    expectedDelivery: '2025-12-17',
-    status: 'cancelled',
-    itemCount: 2,
-    totalAmount: 6800,
-    currency: 'RON',
-  },
-];
 
 export default function PurchaseOrdersPage() {
   const router = useRouter();
+  const [orders, setOrders] = useState<PurchaseOrder[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
 
-  const filteredOrders = mockOrders.filter(order => {
+  useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = localStorage.getItem('auth_token');
+        const res = await fetch(`${API_URL}/procurement/purchase-orders`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!res.ok) { setOrders([]); setLoadError(true); return; }
+        const d = await res.json();
+        const list = Array.isArray(d) ? d : (d?.data ?? d?.items ?? []);
+        setOrders(list.map((po: any) => ({
+          id: po.id,
+          orderNumber: po.poNumber || po.orderNumber || po.id,
+          supplier: po.supplierName || '—',
+          supplierCui: po.supplierCui || po.supplierVat || '',
+          orderDate: po.orderDate || po.createdAt,
+          expectedDelivery: po.expectedDeliveryDate || po.expectedDelivery || '',
+          status: po.status,
+          itemCount: (po.lines || po.items || []).length,
+          totalAmount: po.grandTotal ?? po.totalAmount ?? 0,
+          currency: po.currency || 'RON',
+        })));
+        setLoadError(false);
+      } catch (e) {
+        console.error('Error loading purchase orders:', e);
+        setOrders([]);
+        setLoadError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
+
+  const filteredOrders = orders.filter(order => {
     const matchesSearch = order.orderNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.supplier.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
@@ -144,17 +120,19 @@ export default function PurchaseOrdersPage() {
   };
 
   const stats = {
-    total: mockOrders.length,
-    pending: mockOrders.filter(o => o.status === 'pending').length,
-    inTransit: mockOrders.filter(o => o.status === 'sent').length,
-    received: mockOrders.filter(o => o.status === 'received').length,
+    total: orders.length,
+    pending: orders.filter(o => o.status === 'pending').length,
+    inTransit: orders.filter(o => o.status === 'sent').length,
+    received: orders.filter(o => o.status === 'received').length,
   };
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca comenzile. Reîncearcă. / Could not load purchase orders. Please retry.
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>

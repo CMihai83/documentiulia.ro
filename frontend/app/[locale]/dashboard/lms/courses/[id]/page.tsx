@@ -46,125 +46,6 @@ interface Course {
 }
 
 // Mock courses for demo (matching dashboard/lms page)
-const mockCourses: Record<string, Course> = {
-  'c-001': {
-    id: 'c-001',
-    title: 'SAF-T D406 - Ghid Complet',
-    slug: 'saft-d406-ghid-complet',
-    description: `Acest curs complet te va ghida prin toate aspectele raportării SAF-T D406 conform Ordinului 1783/2021.
-
-Vei învăța:
-- Structura fișierului XML SAF-T
-- Maparea datelor contabile
-- Utilizarea DUKIntegrator pentru validare
-- Termene și sancțiuni
-- Erori frecvente și cum le rezolvi
-- Best practices pentru automatizare
-
-Cursul include exerciții practice și exemple din situații reale.`,
-    category: 'ANAF',
-    level: 'INTERMEDIATE',
-    duration: 180,
-    price: '149',
-    currency: 'RON',
-    isFree: false,
-    language: 'ro',
-    tags: ['SAF-T', 'ANAF', 'Fiscalitate', 'D406'],
-    status: 'PUBLISHED',
-    hasCertificate: true,
-    modules: [
-      {
-        id: 'm-001',
-        title: 'Introducere în SAF-T',
-        order: 1,
-        duration: 30,
-        lessons: [
-          { id: 'l-001', title: 'Ce este SAF-T D406?', duration: 10, order: 1, type: 'VIDEO', isFree: true },
-          { id: 'l-002', title: 'Cadrul Legal - Ordin 1783/2021', duration: 10, order: 2, type: 'VIDEO' },
-          { id: 'l-003', title: 'Cine trebuie să raporteze?', duration: 10, order: 3, type: 'VIDEO' },
-        ]
-      },
-      {
-        id: 'm-002',
-        title: 'Structura Fișierului XML',
-        order: 2,
-        duration: 45,
-        lessons: [
-          { id: 'l-004', title: 'Secțiunile principale ale SAF-T', duration: 15, order: 1, type: 'VIDEO' },
-          { id: 'l-005', title: 'Header și Company Info', duration: 15, order: 2, type: 'VIDEO' },
-          { id: 'l-006', title: 'General Ledger Entries', duration: 15, order: 3, type: 'VIDEO' },
-        ]
-      },
-      {
-        id: 'm-003',
-        title: 'Maparea Datelor',
-        order: 3,
-        duration: 45,
-        lessons: [
-          { id: 'l-007', title: 'Planul de conturi și SAF-T', duration: 15, order: 1, type: 'VIDEO' },
-          { id: 'l-008', title: 'Tipuri de documente', duration: 15, order: 2, type: 'VIDEO' },
-          { id: 'l-009', title: 'Parteneri și clienți', duration: 15, order: 3, type: 'VIDEO' },
-        ]
-      },
-      {
-        id: 'm-004',
-        title: 'Validare și Transmitere',
-        order: 4,
-        duration: 60,
-        lessons: [
-          { id: 'l-010', title: 'DUKIntegrator - Instalare și Configurare', duration: 20, order: 1, type: 'VIDEO' },
-          { id: 'l-011', title: 'Erori frecvente și soluții', duration: 20, order: 2, type: 'VIDEO' },
-          { id: 'l-012', title: 'Transmitere prin SPV', duration: 20, order: 3, type: 'VIDEO' },
-        ]
-      },
-    ],
-    _count: { enrollments: 1234 }
-  },
-  'c-002': {
-    id: 'c-002',
-    title: 'e-Factura B2B - Implementare',
-    slug: 'efactura-b2b-implementare',
-    description: 'Implementarea completă a e-Factura pentru tranzacții B2B conform normelor ANAF.',
-    category: 'ANAF',
-    level: 'BEGINNER',
-    duration: 120,
-    price: '99',
-    currency: 'RON',
-    isFree: false,
-    language: 'ro',
-    tags: ['e-Factura', 'UBL 2.1', 'SPV'],
-    status: 'PUBLISHED',
-    hasCertificate: true,
-    modules: [
-      { id: 'm-101', title: 'Introducere e-Factura', order: 1, duration: 30, lessons: [] },
-      { id: 'm-102', title: 'Formatul UBL 2.1', order: 2, duration: 45, lessons: [] },
-      { id: 'm-103', title: 'Integrare SPV', order: 3, duration: 45, lessons: [] },
-    ],
-    _count: { enrollments: 2156 }
-  },
-  'c-003': {
-    id: 'c-003',
-    title: 'TVA 2025 - Noutăți Legislative',
-    slug: 'tva-2025-noutati',
-    description: 'Noile cote TVA conform Legea 141/2025: 21%, 11%, 5%.',
-    category: 'Fiscalitate',
-    level: 'BEGINNER',
-    duration: 90,
-    price: null,
-    currency: 'RON',
-    isFree: true,
-    language: 'ro',
-    tags: ['TVA', 'Legea 141', 'Fiscalitate'],
-    status: 'PUBLISHED',
-    hasCertificate: false,
-    modules: [
-      { id: 'm-201', title: 'Noile cote TVA', order: 1, duration: 30, lessons: [] },
-      { id: 'm-202', title: 'Aplicare practică', order: 2, duration: 30, lessons: [] },
-      { id: 'm-203', title: 'Cazuri speciale', order: 3, duration: 30, lessons: [] },
-    ],
-    _count: { enrollments: 3421 }
-  },
-};
 
 const levelMap: Record<string, { label: string; color: string }> = {
   BEGINNER: { label: 'Începător', color: 'bg-green-100 text-green-700' },
@@ -194,35 +75,27 @@ export default function LMSCourseDetailPage() {
   useEffect(() => {
     async function loadCourse() {
       setLoading(true);
-
-      // First check if it's a mock course
-      if (mockCourses[courseId]) {
-        setCourse(mockCourses[courseId]);
-        setLoading(false);
-        return;
-      }
-
-      // Try to load from API (might be a real slug)
       try {
-        const res = await fetch(`/api/v1/courses/${courseId}`);
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = localStorage.getItem('auth_token');
+        const headers = token ? { Authorization: `Bearer ${token}` } : undefined;
+        const res = await fetch(`${API_URL}/courses/${courseId}`, { headers });
         if (res.ok) {
-          const data = await res.json();
-          setCourse(data);
+          setCourse(await res.json());
         } else {
-          // Try all courses and find by slug
-          const allRes = await fetch('/api/v1/courses');
+          const allRes = await fetch(`${API_URL}/courses`, { headers });
           if (allRes.ok) {
-            const courses = await allRes.json();
-            const found = courses.find((c: Course) => c.slug === courseId || c.id === courseId);
-            if (found) {
-              setCourse(found);
-            }
+            const d = await allRes.json();
+            const courses = Array.isArray(d) ? d : (d?.data ?? d?.items ?? []);
+            setCourse(courses.find((c: Course) => c.slug === courseId || c.id === courseId) ?? null);
+          } else {
+            setCourse(null);
           }
         }
       } catch (error) {
         console.error('Error loading course:', error);
+        setCourse(null);
       }
-
       setLoading(false);
     }
 
@@ -239,7 +112,7 @@ export default function LMSCourseDetailPage() {
     // Use the learn route for database courses, or the old mock route for mock courses
     if (course && course.slug) {
       router.push(`/dashboard/lms/learn/${course.slug}/${lessonId}`);
-    } else if (course && mockCourses[course.id]) {
+    } else if (course) {
       router.push(`/dashboard/lms/courses/${course.id}/lessons/${lessonId}`);
     }
   };
@@ -247,9 +120,6 @@ export default function LMSCourseDetailPage() {
   if (loading) {
     return (
       <div className="p-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
         <div className="animate-pulse space-y-4">
           <div className="h-8 bg-gray-200 rounded w-1/4"></div>
           <div className="h-64 bg-gray-200 rounded"></div>

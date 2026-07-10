@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -110,262 +110,8 @@ interface StockAlert {
 }
 
 // Sample data
-const sampleProducts: Product[] = [
-  {
-    id: '1',
-    code: 'PROD-001',
-    name: 'Hârtie A4 500 coli',
-    category: 'Papetărie',
-    brand: 'XEROX',
-    unit: 'top',
-    purchasePrice: 25,
-    salePrice: 35,
-    vatRate: 19,
-    currency: 'RON',
-    currentStock: 150,
-    reservedStock: 20,
-    minStockLevel: 50,
-    maxStockLevel: 500,
-    barcode: '5941234567890',
-    location: 'Depozit A - Raft 1',
-    supplier: 'Office Direct SRL',
-    isActive: true,
-  },
-  {
-    id: '2',
-    code: 'PROD-002',
-    name: 'Toner HP 85A',
-    category: 'Consumabile IT',
-    brand: 'HP',
-    unit: 'buc',
-    purchasePrice: 180,
-    salePrice: 250,
-    vatRate: 19,
-    currency: 'RON',
-    currentStock: 8,
-    reservedStock: 2,
-    minStockLevel: 10,
-    maxStockLevel: 50,
-    barcode: '5941234567891',
-    location: 'Depozit A - Raft 3',
-    supplier: 'IT Supplies SRL',
-    isActive: true,
-  },
-  {
-    id: '3',
-    code: 'PROD-003',
-    name: 'Pixuri BIC Blue',
-    description: 'Pachet 50 bucăți',
-    category: 'Papetărie',
-    brand: 'BIC',
-    unit: 'pachet',
-    purchasePrice: 45,
-    salePrice: 65,
-    vatRate: 19,
-    currency: 'RON',
-    currentStock: 0,
-    reservedStock: 0,
-    minStockLevel: 20,
-    maxStockLevel: 100,
-    barcode: '5941234567892',
-    location: 'Depozit A - Raft 1',
-    supplier: 'Office Direct SRL',
-    isActive: true,
-  },
-  {
-    id: '4',
-    code: 'PROD-004',
-    name: 'Monitor Dell 24"',
-    category: 'Hardware IT',
-    brand: 'Dell',
-    unit: 'buc',
-    purchasePrice: 800,
-    salePrice: 1100,
-    vatRate: 19,
-    currency: 'RON',
-    currentStock: 25,
-    reservedStock: 5,
-    minStockLevel: 5,
-    maxStockLevel: 30,
-    barcode: '5941234567893',
-    location: 'Depozit B - Electronice',
-    supplier: 'Tech Distribution SRL',
-    isActive: true,
-  },
-  {
-    id: '5',
-    code: 'PROD-005',
-    name: 'Tastatură Logitech K120',
-    category: 'Hardware IT',
-    brand: 'Logitech',
-    unit: 'buc',
-    purchasePrice: 55,
-    salePrice: 85,
-    vatRate: 19,
-    currency: 'RON',
-    currentStock: 45,
-    reservedStock: 0,
-    minStockLevel: 10,
-    maxStockLevel: 100,
-    barcode: '5941234567894',
-    location: 'Depozit B - Electronice',
-    supplier: 'Tech Distribution SRL',
-    isActive: true,
-  },
-  {
-    id: '6',
-    code: 'PROD-006',
-    name: 'Dezinfectant mâini 500ml',
-    category: 'Igienă',
-    brand: 'Hygiene Pro',
-    unit: 'buc',
-    purchasePrice: 12,
-    salePrice: 20,
-    vatRate: 9,
-    currency: 'RON',
-    currentStock: 200,
-    reservedStock: 0,
-    minStockLevel: 50,
-    maxStockLevel: 500,
-    location: 'Depozit C - Curățenie',
-    supplier: 'Clean Supplies SRL',
-    isActive: true,
-  },
-  {
-    id: '7',
-    code: 'PROD-007',
-    name: 'Scaun Ergonomic Premium',
-    category: 'Mobilier',
-    brand: 'ErgoStar',
-    unit: 'buc',
-    purchasePrice: 1200,
-    salePrice: 1800,
-    vatRate: 19,
-    currency: 'RON',
-    currentStock: 3,
-    reservedStock: 2,
-    minStockLevel: 5,
-    maxStockLevel: 20,
-    location: 'Depozit D - Mobilier',
-    supplier: 'Furniture Pro SRL',
-    isActive: true,
-  },
-];
 
-const sampleMovements: StockMovement[] = [
-  {
-    id: '1',
-    productId: '1',
-    productName: 'Hârtie A4 500 coli',
-    productCode: 'PROD-001',
-    type: 'IN',
-    quantity: 100,
-    unitCost: 25,
-    reference: 'PO-2024-0156',
-    referenceType: 'Comandă aprovizionare',
-    notes: 'Recepție comandă Office Direct',
-    createdAt: '2024-12-13T10:30:00',
-    createdBy: 'Ion Popescu',
-  },
-  {
-    id: '2',
-    productId: '2',
-    productName: 'Toner HP 85A',
-    productCode: 'PROD-002',
-    type: 'OUT',
-    quantity: 3,
-    reference: 'INV-2024-0892',
-    referenceType: 'Factură vânzare',
-    createdAt: '2024-12-13T09:15:00',
-    createdBy: 'Maria Ionescu',
-  },
-  {
-    id: '3',
-    productId: '4',
-    productName: 'Monitor Dell 24"',
-    productCode: 'PROD-004',
-    type: 'OUT',
-    quantity: 5,
-    reference: 'INT-REQ-045',
-    referenceType: 'Cerere internă',
-    notes: 'Echipare birouri noi',
-    createdAt: '2024-12-12T14:00:00',
-    createdBy: 'Andrei Marin',
-  },
-  {
-    id: '4',
-    productId: '6',
-    productName: 'Dezinfectant mâini 500ml',
-    productCode: 'PROD-006',
-    type: 'IN',
-    quantity: 150,
-    unitCost: 12,
-    reference: 'PO-2024-0155',
-    referenceType: 'Comandă aprovizionare',
-    createdAt: '2024-12-12T11:00:00',
-    createdBy: 'Ion Popescu',
-  },
-  {
-    id: '5',
-    productId: '3',
-    productName: 'Pixuri BIC Blue',
-    productCode: 'PROD-003',
-    type: 'ADJUSTMENT',
-    quantity: -5,
-    notes: 'Inventar - diferență constatată',
-    createdAt: '2024-12-11T16:30:00',
-    createdBy: 'Maria Ionescu',
-  },
-  {
-    id: '6',
-    productId: '7',
-    productName: 'Scaun Ergonomic Premium',
-    productCode: 'PROD-007',
-    type: 'RETURN',
-    quantity: 1,
-    reference: 'RET-2024-012',
-    referenceType: 'Retur client',
-    notes: 'Defect mecanism',
-    createdAt: '2024-12-10T10:00:00',
-    createdBy: 'Andrei Marin',
-  },
-];
 
-const sampleAlerts: StockAlert[] = [
-  {
-    id: '1',
-    productId: '3',
-    productName: 'Pixuri BIC Blue',
-    productCode: 'PROD-003',
-    type: 'OUT_OF_STOCK',
-    currentLevel: 0,
-    threshold: 20,
-    status: 'ACTIVE',
-    createdAt: '2024-12-13T08:00:00',
-  },
-  {
-    id: '2',
-    productId: '2',
-    productName: 'Toner HP 85A',
-    productCode: 'PROD-002',
-    type: 'LOW_STOCK',
-    currentLevel: 8,
-    threshold: 10,
-    status: 'ACTIVE',
-    createdAt: '2024-12-13T08:00:00',
-  },
-  {
-    id: '3',
-    productId: '7',
-    productName: 'Scaun Ergonomic Premium',
-    productCode: 'PROD-007',
-    type: 'LOW_STOCK',
-    currentLevel: 3,
-    threshold: 5,
-    status: 'ACKNOWLEDGED',
-    createdAt: '2024-12-12T08:00:00',
-  },
-];
 
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'];
 
@@ -406,6 +152,50 @@ export default function InventoryPage() {
   const router = useRouter();
   const toast = useToast();
   const [activeTab, setActiveTab] = useState('overview');
+  const [sampleProducts, setSampleProducts] = useState<Product[]>([]);
+  const [sampleMovements, setSampleMovements] = useState<StockMovement[]>([]);
+  const [sampleAlerts, setSampleAlerts] = useState<StockAlert[]>([]);
+  const [loadError, setLoadError] = useState(false);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = localStorage.getItem('auth_token');
+        const h = { Authorization: `Bearer ${token}` };
+        const [pRes, aRes] = await Promise.all([
+          fetch(`${API_URL}/inventory/products`, { headers: h }),
+          fetch(`${API_URL}/inventory/alerts`, { headers: h }),
+        ]);
+        if (pRes.ok) {
+          const d = await pRes.json();
+          const list = Array.isArray(d) ? d : (d?.data ?? d?.items ?? []);
+          setSampleProducts(list.map((p: any) => ({
+            id: p.id, code: p.sku || p.code || '', name: p.name || '—',
+            category: p.category || '', unit: p.unit || 'buc',
+            purchasePrice: Number(p.purchasePrice ?? 0), salePrice: Number(p.salePrice ?? p.unitPrice ?? 0),
+            vatRate: Number(p.vatRate ?? 21),
+            currentStock: Number(p.currentStock ?? p.quantity ?? 0),
+            reservedStock: Number(p.reservedStock ?? 0),
+            minStockLevel: Number(p.minStockLevel ?? 0),
+            maxStockLevel: Number(p.maxStockLevel ?? 0),
+            location: p.location, supplier: p.supplierName || p.supplier,
+          })) as Product[]);
+        } else { setLoadError(true); }
+        if (aRes.ok) {
+          const d = await aRes.json();
+          const list = Array.isArray(d) ? d : (d?.data ?? d?.items ?? []);
+          setSampleAlerts(list as StockAlert[]);
+        }
+        // No aggregate stock-movements endpoint (only per-product) — honest empty.
+        setSampleMovements([]);
+      } catch (e) {
+        console.error('Error loading inventory:', e);
+        setLoadError(true);
+      }
+    };
+    load();
+  }, []);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [stockFilter, setStockFilter] = useState<string>('all');
@@ -708,9 +498,11 @@ export default function InventoryPage() {
 
   return (
     <div className="space-y-6 p-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca inventarul. Reîncearcă. / Could not load inventory. Please retry.
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>

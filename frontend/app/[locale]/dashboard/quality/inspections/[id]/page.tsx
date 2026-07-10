@@ -204,22 +204,22 @@ export default function InspectionDetailPage() {
       const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
-      const inspectionRes = await fetch(`${API_URL}/quality/inspections/${inspectionId}`, { headers });
+      const inspectionRes = await fetch(`${API_URL}/quality-inspections/${inspectionId}`, { headers });
       if (inspectionRes.ok) {
         setInspection(await inspectionRes.json());
       }
 
-      const checkpointsRes = await fetch(`${API_URL}/quality/inspections/${inspectionId}/checkpoints`, { headers });
+      const checkpointsRes = await fetch(`${API_URL}/quality-inspections/${inspectionId}/checkpoints`, { headers });
       if (checkpointsRes.ok) {
         setCheckpoints(await checkpointsRes.json());
       }
 
-      const findingsRes = await fetch(`${API_URL}/quality/inspections/${inspectionId}/findings`, { headers });
+      const findingsRes = await fetch(`${API_URL}/quality-inspections/${inspectionId}/findings`, { headers });
       if (findingsRes.ok) {
         setFindings(await findingsRes.json());
       }
 
-      const attachmentsRes = await fetch(`${API_URL}/quality/inspections/${inspectionId}/attachments`, { headers });
+      const attachmentsRes = await fetch(`${API_URL}/quality-inspections/${inspectionId}/attachments`, { headers });
       if (attachmentsRes.ok) {
         setAttachments(await attachmentsRes.json());
       }
@@ -241,7 +241,7 @@ export default function InspectionDetailPage() {
   const handleCompleteInspection = async () => {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/quality/inspections/${inspectionId}/complete`, {
+      const response = await fetch(`${API_URL}/quality-inspections/${inspectionId}/complete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
