@@ -135,35 +135,6 @@ interface ExchangeRatesData {
   lastUpdated: string;
 }
 
-// Mock BNR exchange rates for demo
-const getMockExchangeRates = (): ExchangeRatesData => {
-  const today = new Date().toISOString().split('T')[0];
-  return {
-    date: today,
-    source: 'BNR',
-    baseCurrency: 'RON',
-    lastUpdated: new Date().toISOString(),
-    rates: [
-      { currency: 'EUR', name: 'Euro', rate: 4.9760, multiplier: 1, change: 0.0023, changePercent: 0.05 },
-      { currency: 'USD', name: 'Dolar SUA', rate: 4.7125, multiplier: 1, change: -0.0145, changePercent: -0.31 },
-      { currency: 'GBP', name: 'Lira sterlina', rate: 5.9845, multiplier: 1, change: 0.0087, changePercent: 0.15 },
-      { currency: 'CHF', name: 'Franc elvetian', rate: 5.2890, multiplier: 1, change: 0.0056, changePercent: 0.11 },
-      { currency: 'HUF', name: 'Forint maghiar', rate: 1.2156, multiplier: 100, change: -0.0034, changePercent: -0.28 },
-      { currency: 'PLN', name: 'Zlot polonez', rate: 1.1623, multiplier: 1, change: 0.0012, changePercent: 0.10 },
-      { currency: 'CZK', name: 'Coroana ceha', rate: 0.2078, multiplier: 1, change: 0.0003, changePercent: 0.14 },
-      { currency: 'BGN', name: 'Leva bulgareasca', rate: 2.5440, multiplier: 1, change: 0.0011, changePercent: 0.04 },
-      { currency: 'SEK', name: 'Coroana suedeza', rate: 0.4456, multiplier: 1, change: -0.0021, changePercent: -0.47 },
-      { currency: 'NOK', name: 'Coroana norvegiana', rate: 0.4234, multiplier: 1, change: 0.0015, changePercent: 0.36 },
-      { currency: 'DKK', name: 'Coroana daneza', rate: 0.6672, multiplier: 1, change: 0.0008, changePercent: 0.12 },
-      { currency: 'JPY', name: 'Yen japonez', rate: 3.0567, multiplier: 100, change: -0.0234, changePercent: -0.76 },
-      { currency: 'CAD', name: 'Dolar canadian', rate: 3.2890, multiplier: 1, change: 0.0045, changePercent: 0.14 },
-      { currency: 'AUD', name: 'Dolar australian', rate: 2.9876, multiplier: 1, change: -0.0067, changePercent: -0.22 },
-      { currency: 'CNY', name: 'Yuan chinezesc', rate: 0.6478, multiplier: 1, change: 0.0023, changePercent: 0.36 },
-      { currency: 'TRY', name: 'Lira turceasca', rate: 0.1345, multiplier: 1, change: -0.0012, changePercent: -0.88 },
-    ],
-  };
-};
-
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
 export default function FinanceDashboardPage() {
@@ -250,44 +221,8 @@ export default function FinanceDashboardPage() {
       if (response.ok) {
         setCashFlowData(await response.json());
       } else {
-        // Fallback to calculated data from invoices
-        const now = new Date();
-        const thirtyDaysFromNow = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-
-        // Generate mock forecast based on existing metrics
-        const mockCashFlow: CashFlowData = {
-          period: now.toISOString().substring(0, 7),
-          summary: {
-            openingBalance: 125000,
-            closingBalance: 148500,
-            netCashFlow: 23500,
-            totalInflows: 85000,
-            totalOutflows: 61500,
-          },
-          forecast: Array.from({ length: 30 }, (_, i) => {
-            const date = new Date(now.getTime() + i * 24 * 60 * 60 * 1000);
-            const baseBalance = 125000 + (i * 780);
-            return {
-              date: date.toISOString().split('T')[0],
-              projectedBalance: baseBalance + Math.random() * 5000 - 2500,
-              expectedInflows: Math.random() * 10000 + 2000,
-              expectedOutflows: Math.random() * 8000 + 1500,
-              confidence: Math.max(50, 95 - i * 1.5),
-            };
-          }),
-          inflows: [
-            { category: 'Incasari Facturi', amount: 65000, count: 24 },
-            { category: 'Plati Avans', amount: 12000, count: 5 },
-            { category: 'Alte Incasari', amount: 8000, count: 8 },
-          ],
-          outflows: [
-            { category: 'Salarii', amount: 35000, count: 1 },
-            { category: 'Furnizori', amount: 18500, count: 12 },
-            { category: 'Taxe si Impozite', amount: 5000, count: 3 },
-            { category: 'Alte Cheltuieli', amount: 3000, count: 7 },
-          ],
-        };
-        setCashFlowData(mockCashFlow);
+        // Honest empty state — never invented balances or Math.random() forecasts.
+        setCashFlowData(null);
       }
     } catch (error) {
       console.error('Error fetching cash flow:', error);
@@ -322,12 +257,11 @@ export default function FinanceDashboardPage() {
       } else {
         // Fallback to mock BNR data
         console.log('Using mock BNR exchange rates for demo');
-        setExchangeRates(getMockExchangeRates());
+        setExchangeRates(null);
       }
     } catch (error) {
       console.error('Error fetching exchange rates:', error);
-      // Fallback to mock data
-      setExchangeRates(getMockExchangeRates());
+      setExchangeRates(null);
     } finally {
       setExchangeRatesLoading(false);
     }

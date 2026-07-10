@@ -27,41 +27,6 @@ interface VATSummary {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
-// Mock data for graceful degradation
-const getMockReports = (): VATReport[] => [
-  {
-    id: '1',
-    period: '2025-12',
-    vatCollected: 23750,
-    vatDeductible: 8550,
-    vatPayable: 15200,
-    vatRate: 19,
-    status: 'DRAFT',
-    submittedAt: null,
-    anafRef: null,
-    createdAt: '2025-12-01',
-  },
-  {
-    id: '2',
-    period: '2025-11',
-    vatCollected: 21500,
-    vatDeductible: 7800,
-    vatPayable: 13700,
-    vatRate: 19,
-    status: 'ACCEPTED',
-    submittedAt: '2025-12-10',
-    anafRef: 'ANAF-2025-11-001',
-    createdAt: '2025-11-01',
-  },
-];
-
-const getMockSummary = (): VATSummary => ({
-  totalCollected: 185000,
-  totalDeductible: 67000,
-  totalPayable: 118000,
-  currentYear: 2025,
-});
-
 export default function VATPage() {
   const t = useTranslations('vat');
   const toast = useToast();
@@ -172,9 +137,8 @@ export default function VATPage() {
       }
     } catch (err) {
       console.error('Failed to fetch VAT reports:', err);
-      // Use mock data on error
-      setReports(getMockReports());
-      setError(null);
+      setError('Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.');
+      setReports([]);
     } finally {
       setLoading(false);
     }
@@ -197,7 +161,7 @@ export default function VATPage() {
       }
     } catch (err) {
       console.error('Failed to fetch VAT summary:', err);
-      setSummary(getMockSummary());
+      setSummary(null);
     }
   };
 
