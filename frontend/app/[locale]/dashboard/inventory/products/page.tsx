@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Package,
@@ -36,94 +36,53 @@ interface Product {
   lastUpdated: string;
 }
 
-// TODO(REQ-035): wire to real API
-  const mockProducts: Product[] = [
-  {
-    id: '1',
-    name: 'Laptop Dell Latitude 5520',
-    sku: 'ELE-LAP-001',
-    category: 'Electronice',
-    currentStock: 15,
-    minStock: 5,
-    maxStock: 50,
-    unit: 'buc',
-    purchasePrice: 4500,
-    salePrice: 5200,
-    vatRate: 19,
-    status: 'active',
-    lastUpdated: '2025-12-20',
-  },
-  {
-    id: '2',
-    name: 'Monitor LG 27" 4K',
-    sku: 'ELE-MON-002',
-    category: 'Electronice',
-    currentStock: 3,
-    minStock: 5,
-    maxStock: 30,
-    unit: 'buc',
-    purchasePrice: 1200,
-    salePrice: 1450,
-    vatRate: 19,
-    status: 'low_stock',
-    lastUpdated: '2025-12-18',
-  },
-  {
-    id: '3',
-    name: 'Hârtie A4 Premium (500 coli)',
-    sku: 'OFF-PAP-001',
-    category: 'Birotică',
-    currentStock: 250,
-    minStock: 50,
-    maxStock: 500,
-    unit: 'top',
-    purchasePrice: 22,
-    salePrice: 28,
-    vatRate: 19,
-    status: 'active',
-    lastUpdated: '2025-12-22',
-  },
-  {
-    id: '4',
-    name: 'Toner HP LaserJet Pro',
-    sku: 'OFF-TON-002',
-    category: 'Birotică',
-    currentStock: 0,
-    minStock: 10,
-    maxStock: 50,
-    unit: 'buc',
-    purchasePrice: 280,
-    salePrice: 350,
-    vatRate: 19,
-    status: 'out_of_stock',
-    lastUpdated: '2025-12-15',
-  },
-  {
-    id: '5',
-    name: 'Scaun ergonomic Premium',
-    sku: 'MOB-SCN-001',
-    category: 'Mobilier',
-    currentStock: 8,
-    minStock: 3,
-    maxStock: 20,
-    unit: 'buc',
-    purchasePrice: 850,
-    salePrice: 1100,
-    vatRate: 19,
-    status: 'active',
-    lastUpdated: '2025-12-19',
-  },
-];
 
 const CATEGORIES = ['Toate', 'Electronice', 'Birotică', 'Mobilier', 'Consumabile'];
 
 export default function ProductsPage() {
   const router = useRouter();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Toate');
   const [statusFilter, setStatusFilter] = useState<string>('all');
 
-  const filteredProducts = mockProducts.filter(product => {
+  useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = localStorage.getItem('auth_token');
+        const res = await fetch(`${API_URL}/inventory/products`, { headers: { Authorization: `Bearer ${token}` } });
+        if (!res.ok) { setProducts([]); setLoadError(true); return; }
+        const d = await res.json();
+        const list = Array.isArray(d) ? d : (d?.data ?? d?.items ?? []);
+        setProducts(list.map((p: any) => ({
+          id: p.id,
+          name: p.name || '—',
+          sku: p.sku || p.code || '',
+          category: p.category || p.categoryName || '',
+          currentStock: Number(p.currentStock ?? p.quantity ?? 0),
+          minStock: Number(p.minStockLevel ?? p.minStock ?? 0),
+          maxStock: Number(p.maxStockLevel ?? p.maxStock ?? 0),
+          unit: p.unit || p.unitOfMeasure || 'buc',
+          purchasePrice: Number(p.purchasePrice ?? p.costPrice ?? 0),
+          salePrice: Number(p.salePrice ?? p.sellingPrice ?? p.unitPrice ?? 0),
+          vatRate: Number(p.vatRate ?? 21),
+          status: p.isOutOfStock ? 'out_of_stock' : (p.isLowStock ? 'low_stock' : (p.isActive === false ? 'inactive' : 'active')),
+          lastUpdated: p.updatedAt || p.lastUpdated || '',
+        })));
+        setLoadError(false);
+      } catch (e) {
+        console.error('Error loading products:', e);
+        setProducts([]); setLoadError(true);
+      } finally { setLoading(false); }
+    };
+    load();
+  }, []);
+
+  const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.sku.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'Toate' || product.category === selectedCategory;
@@ -153,17 +112,19 @@ export default function ProductsPage() {
   };
 
   const stats = {
-    total: mockProducts.length,
-    active: mockProducts.filter(p => p.status === 'active').length,
-    lowStock: mockProducts.filter(p => p.status === 'low_stock').length,
-    outOfStock: mockProducts.filter(p => p.status === 'out_of_stock').length,
+    total: products.length,
+    active: products.filter(p => p.status === 'active').length,
+    lowStock: products.filter(p => p.status === 'low_stock').length,
+    outOfStock: products.filter(p => p.status === 'out_of_stock').length,
   };
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca produsele. Reîncearcă. / Could not load products. Please retry.
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
