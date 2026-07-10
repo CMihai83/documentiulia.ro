@@ -520,35 +520,6 @@ export default function BlogPage() {
               Aboneaza-te
             </button>
           </div>
-
-          {/* Top Authors */}
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-4 border-b border-gray-200">
-              <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-                <Award className="w-4 h-4 text-yellow-500" />
-                Autori Populari
-              </h3>
-            </div>
-            <div className="p-4 space-y-3">
-              {[
-                { name: 'Maria Ionescu', title: 'Expert Contabil', articles: 34 },
-                { name: 'Ion Popescu', title: 'Consultant Fiscal', articles: 28 },
-                { name: 'Andrei Vasilescu', title: 'IT Consultant', articles: 22 },
-                { name: 'Elena Dumitrescu', title: 'Consultant Fonduri', articles: 18 },
-              ].map((author) => (
-                <div key={author.name} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold">
-                    {author.name.charAt(0)}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-gray-900 text-sm">{author.name}</p>
-                    <p className="text-xs text-gray-500">{author.title}</p>
-                  </div>
-                  <span className="text-sm text-gray-500">{author.articles} art.</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>

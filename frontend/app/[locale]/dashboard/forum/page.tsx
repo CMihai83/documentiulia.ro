@@ -525,13 +525,7 @@ export default function ForumPage() {
               </h3>
             </div>
             <div className="p-4 space-y-3">
-              {[
-                { name: 'Maria Ionescu', posts: 234, badge: 'Expert Contabil' },
-                { name: 'Ion Popescu', posts: 189, badge: 'Consultant Fiscal' },
-                { name: 'Elena Dumitrescu', posts: 156, badge: 'HR Specialist' },
-                { name: 'Andrei Vasilescu', posts: 123, badge: 'IT Expert' },
-                { name: 'Mihai Stanescu', posts: 98, badge: 'Fonduri Expert' },
-              ].map((user, index) => (
+              {([] as { name: string; posts: number; badge: string }[]).map((user, index) => (
                 <div key={user.name} className="flex items-center gap-3">
                   <span className={`w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold ${
                     index === 0 ? 'bg-yellow-100 text-yellow-700' :

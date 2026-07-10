@@ -471,6 +471,10 @@ export default function NCRDetailPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
+      {/* TODO(REQ-035): wire to real API */}
+      <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
+      </div>
         <div className="h-8 bg-gray-200 rounded w-48 mb-4"></div>
         <div className="bg-white rounded-lg shadow p-6">
           <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>

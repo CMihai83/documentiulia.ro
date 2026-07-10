@@ -25,61 +25,6 @@ interface Notification {
   category: 'compliance' | 'finance' | 'hr' | 'system' | 'deadline';
 }
 
-const MOCK_NOTIFICATIONS: Notification[] = [
-  {
-    id: '1',
-    type: 'warning',
-    title: 'Termen SAF-T D406',
-    message: 'Declaratia D406 trebuie depusa pana pe 25 decembrie 2025',
-    timestamp: new Date(Date.now() - 1000 * 60 * 30),
-    read: false,
-    actionUrl: '/dashboard/saft',
-    actionLabel: 'Genereaza D406',
-    category: 'compliance',
-  },
-  {
-    id: '2',
-    type: 'alert',
-    title: 'Facturi neplatite',
-    message: '3 facturi depasesc termenul de scadenta cu peste 30 zile',
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
-    read: false,
-    actionUrl: '/dashboard/finance',
-    actionLabel: 'Vezi facturile',
-    category: 'finance',
-  },
-  {
-    id: '3',
-    type: 'success',
-    title: 'e-Factura trimisa',
-    message: 'Factura INV-2025-0089 a fost validata si inregistrata la ANAF',
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 4),
-    read: true,
-    category: 'compliance',
-  },
-  {
-    id: '4',
-    type: 'info',
-    title: 'Actualizare TVA',
-    message: 'Noile cote TVA (21%/11%) intra in vigoare din August 2025',
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24),
-    read: true,
-    actionUrl: '/dashboard/vat',
-    actionLabel: 'Detalii',
-    category: 'compliance',
-  },
-  {
-    id: '5',
-    type: 'warning',
-    title: 'Contract expira',
-    message: 'Contractul angajatului Ion Popescu expira in 7 zile',
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48),
-    read: false,
-    actionUrl: '/dashboard/hr',
-    actionLabel: 'Reinnoire',
-    category: 'hr',
-  },
-];
 
 export function NotificationsWidget() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -104,15 +49,14 @@ export function NotificationsWidget() {
 
       if (response.ok) {
         const data = await response.json();
-        // Ensure API response is an array
-        setNotifications(Array.isArray(data) ? data : MOCK_NOTIFICATIONS);
+        // Honest empty state — never fabricated notifications/compliance alerts.
+        setNotifications(Array.isArray(data) ? data : (data?.notifications ?? []));
       } else {
-        // Use mock data as fallback
-        setNotifications(MOCK_NOTIFICATIONS);
+        setNotifications([]);
       }
     } catch (err) {
       console.error('Error fetching notifications:', err);
-      setNotifications(MOCK_NOTIFICATIONS);
+      setNotifications([]);
     } finally {
       setLoading(false);
     }
