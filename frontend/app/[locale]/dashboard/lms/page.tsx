@@ -192,11 +192,13 @@ export default function LMSPage() {
       };
 
       // Fetch user profile
+      let userId: string | undefined;
       try {
         const profileRes = await fetch(`${API_URL}/auth/profile`, { headers });
         if (profileRes.ok) {
           const profile = await profileRes.json();
           setUserProfile(profile);
+          userId = profile?.id ?? profile?.user?.id;
         }
       } catch {
         // Use stored user info if available
@@ -240,91 +242,30 @@ export default function LMSPage() {
         console.error('Failed to fetch courses:', err);
       }
 
-      // Set stats based on real data
+      // Stats from REAL data only — no invented counters.
+      let enrolled = 0, completed = 0, certificates = 0;
+      try {
+        if (userId) {
+          const enrRes = await fetch(`${API_URL}/lms/enrollments/user/${userId}`, { headers });
+          if (enrRes.ok) {
+            const enr = await enrRes.json();
+            const list = Array.isArray(enr) ? enr : enr?.enrollments ?? enr?.data ?? [];
+            enrolled = list.length;
+            completed = list.filter((e: any) => e.completedAt || e.status === 'COMPLETED' || Number(e.progress ?? 0) >= 100).length;
+            certificates = list.filter((e: any) => e.certificateId || e.certificateIssuedAt).length;
+          }
+        }
+      } catch { /* stats stay 0 — honest */ }
       setStats({
-        totalCourses: realCourses.length || 67,
-        enrolledCourses: 12,
-        completedCourses: 8,
-        totalHoursLearned: 45,
-        certificates: 5,
-        streak: 7,
+        totalCourses: realCourses.length,
+        enrolledCourses: enrolled,
+        completedCourses: completed,
+        totalHoursLearned: 0,
+        certificates,
+        streak: 0,
       });
 
-      // Use mock courses if API fails
-      if (realCourses.length === 0) {
-        setCourses([
-          {
-            id: 'c-001',
-            title: 'SAF-T D406 - Ghid Complet',
-            slug: 'saf-t-d406-ghid-complet',
-            description: 'Învață tot ce trebuie să știi despre raportarea SAF-T D406 conform Order 1783/2021',
-            category: 'ANAF',
-            duration: 180,
-            lessons: 12,
-            level: 'INTERMEDIATE',
-            rating: 4.9,
-            enrollments: 1234,
-            instructor: 'Dr. Ion Popescu',
-            tags: ['SAF-T', 'ANAF', 'Fiscalitate'],
-          },
-          {
-            id: 'c-002',
-            title: 'e-Factura B2B - Implementare',
-            slug: 'e-factura-b2b-implementare',
-            description: 'Implementarea completă a e-Factura pentru tranzacții B2B conform normelor ANAF',
-            category: 'ANAF',
-            duration: 120,
-            lessons: 8,
-            level: 'BEGINNER',
-            rating: 4.8,
-            enrollments: 2156,
-            instructor: 'Maria Ionescu',
-            tags: ['e-Factura', 'UBL 2.1', 'SPV'],
-          },
-          {
-            id: 'c-003',
-            title: 'TVA 2025 - Noutăți Legislative',
-            slug: 'tva-2025-noutati-legislative',
-            description: 'Noile cote TVA conform Legea 141/2025: 21%, 11%, 5%',
-            category: 'Fiscalitate',
-            duration: 90,
-            lessons: 6,
-            level: 'BEGINNER',
-            rating: 4.7,
-            enrollments: 3421,
-            instructor: 'Dr. Ana Marinescu',
-            tags: ['TVA', 'Legea 141', 'Fiscalitate'],
-          },
-          {
-            id: 'c-004',
-            title: 'Contracte de Muncă și REVISAL',
-            slug: 'contracte-de-munca-si-revisal',
-            description: 'Gestionarea contractelor și raportarea REVISAL pentru ITM',
-            category: 'HR',
-            duration: 150,
-            lessons: 10,
-            level: 'INTERMEDIATE',
-            rating: 4.6,
-            enrollments: 987,
-            instructor: 'Avocată Elena Tudor',
-            tags: ['HR', 'REVISAL', 'Contracte'],
-          },
-          {
-            id: 'c-005',
-            title: 'Contabilitate pentru Start-ups',
-            slug: 'contabilitate-pentru-start-ups',
-            description: 'Tot ce trebuie să știe un antreprenor despre contabilitate',
-            category: 'Contabilitate',
-            duration: 240,
-            lessons: 16,
-            level: 'BEGINNER',
-            rating: 4.9,
-            enrollments: 5678,
-            instructor: 'Ec. Mihai Popa',
-            tags: ['Start-up', 'SRL', 'PFA'],
-          },
-        ]);
-      }
+      // No fabricated fallback courses: an empty catalog renders the empty state.
 
       setEnrollments([
         {
