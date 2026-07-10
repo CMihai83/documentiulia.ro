@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -96,195 +96,7 @@ interface Amendment {
 }
 
 // Sample data
-const sampleContracts: Contract[] = [
-  {
-    id: '1',
-    employeeId: 'emp-1',
-    employeeName: 'Ion Popescu',
-    employeeEmail: 'ion.popescu@company.ro',
-    type: 'FULL_TIME',
-    position: 'Senior Developer',
-    department: 'IT',
-    startDate: '2023-01-15',
-    probationEnd: '2023-04-15',
-    salary: 12000,
-    currency: 'RON',
-    workHours: 40,
-    status: 'ACTIVE',
-    signedByEmployee: true,
-    signedByEmployer: true,
-    telework: true,
-    teleworkDays: 3,
-    revisalSubmitted: true,
-    createdAt: '2023-01-10',
-  },
-  {
-    id: '2',
-    employeeId: 'emp-2',
-    employeeName: 'Maria Ionescu',
-    employeeEmail: 'maria.ionescu@company.ro',
-    type: 'FULL_TIME',
-    position: 'HR Manager',
-    department: 'HR',
-    startDate: '2022-06-01',
-    salary: 10000,
-    currency: 'RON',
-    workHours: 40,
-    status: 'ACTIVE',
-    signedByEmployee: true,
-    signedByEmployer: true,
-    telework: false,
-    revisalSubmitted: true,
-    createdAt: '2022-05-25',
-  },
-  {
-    id: '3',
-    employeeId: 'emp-3',
-    employeeName: 'Andrei Marin',
-    employeeEmail: 'andrei.marin@company.ro',
-    type: 'FULL_TIME',
-    position: 'Junior Accountant',
-    department: 'Contabilitate',
-    startDate: '2024-12-01',
-    probationEnd: '2025-03-01',
-    salary: 5500,
-    currency: 'RON',
-    workHours: 40,
-    status: 'PENDING_SIGNATURE',
-    signedByEmployee: false,
-    signedByEmployer: true,
-    telework: false,
-    revisalSubmitted: false,
-    createdAt: '2024-11-28',
-  },
-  {
-    id: '4',
-    employeeId: 'emp-4',
-    employeeName: 'Elena Dumitrescu',
-    employeeEmail: 'elena.dumitrescu@company.ro',
-    type: 'PART_TIME',
-    position: 'Marketing Specialist',
-    department: 'Marketing',
-    startDate: '2024-10-15',
-    salary: 4000,
-    currency: 'RON',
-    workHours: 20,
-    status: 'ACTIVE',
-    signedByEmployee: true,
-    signedByEmployer: true,
-    telework: true,
-    teleworkDays: 5,
-    revisalSubmitted: true,
-    createdAt: '2024-10-10',
-  },
-  {
-    id: '5',
-    employeeId: 'emp-5',
-    employeeName: 'Alexandru Popa',
-    employeeEmail: 'alex.popa@company.ro',
-    type: 'TEMPORARY',
-    position: 'Consultant Proiect',
-    department: 'Consultanță',
-    startDate: '2024-06-01',
-    endDate: '2024-12-31',
-    salary: 15000,
-    currency: 'RON',
-    workHours: 40,
-    status: 'ACTIVE',
-    signedByEmployee: true,
-    signedByEmployer: true,
-    telework: true,
-    teleworkDays: 2,
-    revisalSubmitted: true,
-    createdAt: '2024-05-25',
-  },
-  {
-    id: '6',
-    employeeId: 'emp-6',
-    employeeName: 'Ana Vasilescu',
-    employeeEmail: 'ana.vasilescu@company.ro',
-    type: 'INTERNSHIP',
-    position: 'Stagiar Design',
-    department: 'Design',
-    startDate: '2024-11-01',
-    endDate: '2025-02-01',
-    salary: 2500,
-    currency: 'RON',
-    workHours: 40,
-    status: 'DRAFT',
-    signedByEmployee: false,
-    signedByEmployer: false,
-    telework: false,
-    revisalSubmitted: false,
-    createdAt: '2024-10-28',
-  },
-  {
-    id: '7',
-    employeeId: 'emp-7',
-    employeeName: 'Mihai Stanescu',
-    employeeEmail: 'mihai.stanescu@company.ro',
-    type: 'FULL_TIME',
-    position: 'Sales Manager',
-    department: 'Vânzări',
-    startDate: '2021-03-01',
-    salary: 11000,
-    currency: 'RON',
-    workHours: 40,
-    status: 'TERMINATED',
-    signedByEmployee: true,
-    signedByEmployer: true,
-    telework: false,
-    revisalSubmitted: true,
-    createdAt: '2021-02-20',
-  },
-];
 
-const sampleAmendments: Amendment[] = [
-  {
-    id: '1',
-    contractId: '1',
-    employeeName: 'Ion Popescu',
-    amendmentType: 'salary_change',
-    oldValue: '10000 RON',
-    newValue: '12000 RON',
-    effectiveDate: '2024-07-01',
-    status: 'APPROVED',
-    createdAt: '2024-06-15',
-  },
-  {
-    id: '2',
-    contractId: '2',
-    employeeName: 'Maria Ionescu',
-    amendmentType: 'position_change',
-    oldValue: 'HR Specialist',
-    newValue: 'HR Manager',
-    effectiveDate: '2024-01-01',
-    status: 'APPROVED',
-    createdAt: '2023-12-15',
-  },
-  {
-    id: '3',
-    contractId: '5',
-    employeeName: 'Alexandru Popa',
-    amendmentType: 'extension',
-    oldValue: '2024-12-31',
-    newValue: '2025-06-30',
-    effectiveDate: '2025-01-01',
-    status: 'PENDING',
-    createdAt: '2024-12-10',
-  },
-  {
-    id: '4',
-    contractId: '4',
-    employeeName: 'Elena Dumitrescu',
-    amendmentType: 'hours_change',
-    oldValue: '20 ore/săptămână',
-    newValue: '30 ore/săptămână',
-    effectiveDate: '2025-01-01',
-    status: 'DRAFT',
-    createdAt: '2024-12-12',
-  },
-];
 
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
 
@@ -331,6 +143,35 @@ const amendmentStatusColors: Record<string, string> = {
 };
 
 export default function ContractsPage() {
+  const [sampleContracts, setSampleContracts] = useState<Contract[]>([]);
+  const [sampleAmendments, setSampleAmendments] = useState<Amendment[]>([]);
+  const [loadError, setLoadError] = useState(false);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+        const token = localStorage.getItem('auth_token');
+        const res = await fetch(`${API_URL}/hr-contracts`, { headers: { Authorization: `Bearer ${token}` } });
+        if (!res.ok) { setSampleContracts([]); setLoadError(true); return; }
+        const d = await res.json();
+        const list = Array.isArray(d) ? d : (d?.data ?? d?.items ?? []);
+        setSampleContracts(list.map((c: any) => ({
+          ...c,
+          employeeName: c.employeeName || [c.employee?.firstName, c.employee?.lastName].filter(Boolean).join(' ') || '—',
+          employeeEmail: c.employeeEmail || c.employee?.email || '',
+          currency: c.currency || 'RON',
+        })) as Contract[]);
+        // No amendments endpoint yet — honest empty.
+        setSampleAmendments([]);
+        setLoadError(false);
+      } catch (e) {
+        console.error('Error loading contracts:', e);
+        setSampleContracts([]); setLoadError(true);
+      }
+    };
+    load();
+  }, []);
   const router = useRouter();
   const toast = useToast();
   const [activeTab, setActiveTab] = useState('overview');
@@ -552,9 +393,11 @@ export default function ContractsPage() {
 
   return (
     <div className="space-y-6 p-6">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca contractele. Reîncearcă. / Could not load contracts. Please retry.
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>

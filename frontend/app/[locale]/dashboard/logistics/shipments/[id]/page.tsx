@@ -232,150 +232,14 @@ export default function ShipmentDetailPage() {
       }
     } catch (error) {
       console.error('Error fetching shipment details:', error);
-      loadMockData();
+      setShipment(null);
+      setEvents([]);
+      setComments([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
-    setShipment({
-      id: shipmentId,
-      trackingNumber: 'TRK-2024-123456',
-      status: 'IN_TRANSIT',
-      priority: 'EXPRESS',
-      createdAt: '2024-12-14T08:30:00Z',
-      estimatedDelivery: '2024-12-17T18:00:00Z',
-      sender: {
-        name: 'Tech Solutions SRL',
-        company: 'Tech Solutions SRL',
-        address: 'Str. Industriilor 45',
-        city: 'Bucuresti',
-        postalCode: '012345',
-        country: 'Romania',
-        phone: '+40212345678',
-        email: 'expeditii@techsolutions.ro',
-      },
-      recipient: {
-        name: 'Maria Ionescu',
-        company: 'ABC Distribution SRL',
-        address: 'Bd. Unirii 100, Ap. 5',
-        city: 'Cluj-Napoca',
-        postalCode: '400123',
-        country: 'Romania',
-        phone: '+40722123456',
-        email: 'maria.ionescu@abc.ro',
-        deliveryInstructions: 'Livrare la receptie, etaj 2. Suna inainte cu 30 minute.',
-      },
-      packages: [
-        {
-          id: 'pkg-001',
-          weight: 2.5,
-          dimensions: { length: 40, width: 30, height: 20 },
-          contents: 'Laptop Dell Latitude',
-          declaredValue: 4500,
-          fragile: true,
-        },
-        {
-          id: 'pkg-002',
-          weight: 0.5,
-          dimensions: { length: 20, width: 15, height: 5 },
-          contents: 'Accesorii IT',
-          declaredValue: 350,
-          fragile: false,
-        },
-      ],
-      serviceType: 'Express Business',
-      carrier: 'DocumentIulia Logistics',
-      vehiclePlate: 'B-123-LOG',
-      driverName: 'Ion Popescu',
-      routeId: 'route-001',
-      shippingCost: 45.00,
-      insuranceCost: 15.00,
-      currency: 'RON',
-      orderId: 'ORD-2024-5678',
-      invoiceId: 'FV-2024-1234',
-      awbNumber: 'AWB-RO-2024-789012',
-      notes: 'Client VIP - prioritate ridicata',
-      tags: ['fragil', 'prioritar', 'asigurat'],
-    });
-
-    setEvents([
-      {
-        id: 'evt-001',
-        timestamp: '2024-12-14T08:30:00Z',
-        status: 'PENDING',
-        location: 'Bucuresti',
-        description: 'Comanda inregistrata in sistem',
-        performedBy: 'System',
-      },
-      {
-        id: 'evt-002',
-        timestamp: '2024-12-14T14:15:00Z',
-        status: 'PICKED_UP',
-        location: 'Bucuresti - Depozit Central',
-        description: 'Colet ridicat de la expeditor',
-        latitude: 44.4268,
-        longitude: 26.1025,
-        performedBy: 'Ion Popescu',
-      },
-      {
-        id: 'evt-003',
-        timestamp: '2024-12-15T06:00:00Z',
-        status: 'IN_TRANSIT',
-        location: 'Bucuresti - Hub Sortare',
-        description: 'Colet procesat si incarcat pentru transport',
-        performedBy: 'Sorting Center',
-      },
-      {
-        id: 'evt-004',
-        timestamp: '2024-12-15T16:30:00Z',
-        status: 'IN_TRANSIT',
-        location: 'Ploiesti - Punct Tranzit',
-        description: 'Colet in tranzit catre destinatie',
-        latitude: 44.9432,
-        longitude: 26.0254,
-        performedBy: 'Transport Hub',
-      },
-      {
-        id: 'evt-005',
-        timestamp: '2024-12-16T09:00:00Z',
-        status: 'IN_TRANSIT',
-        location: 'Brasov - Hub Regional',
-        description: 'Colet sosit la hub-ul regional',
-        latitude: 45.6580,
-        longitude: 25.6012,
-        performedBy: 'Regional Hub',
-      },
-    ]);
-
-    setComments([
-      {
-        id: 'cmt-001',
-        author: 'Maria Ionescu',
-        authorRole: 'Destinatar',
-        content: 'Va rog sa ma sunati cu 30 de minute inainte de livrare.',
-        createdAt: '2024-12-14T10:00:00Z',
-        isInternal: false,
-      },
-      {
-        id: 'cmt-002',
-        author: 'Ion Popescu',
-        authorRole: 'Curier',
-        content: 'Colet ridicat fara probleme. Stare perfecta.',
-        createdAt: '2024-12-14T14:20:00Z',
-        isInternal: true,
-      },
-      {
-        id: 'cmt-003',
-        author: 'Dispecerat',
-        authorRole: 'Operator',
-        content: 'ETA actualizat pentru 17.12 - trafic intens pe ruta.',
-        createdAt: '2024-12-15T18:00:00Z',
-        isInternal: true,
-      },
-    ]);
-  };
 
   const handleUpdateStatus = async (newStatus: string) => {
     try {
@@ -513,9 +377,6 @@ export default function ShipmentDetailPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
         <div className="h-8 bg-gray-200 rounded w-48 mb-4"></div>
         <div className="bg-white rounded-lg shadow p-6">
           <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
