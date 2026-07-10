@@ -121,160 +121,56 @@ export default function ProcurementDashboardPage() {
         'Content-Type': 'application/json',
       };
 
-      // TODO: Implement actual API calls to /api/v1/procurement endpoints
-      // const [metricsRes, posRes, requisitionsRes, vendorsRes] = await Promise.all([
-      //   fetch(`${API_URL}/v1/procurement/metrics?userId=${userId}`, { headers }),
-      //   fetch(`${API_URL}/v1/procurement/purchase-orders?userId=${userId}`, { headers }),
-      //   fetch(`${API_URL}/v1/procurement/requisitions?userId=${userId}&status=pending`, { headers }),
-      //   fetch(`${API_URL}/v1/procurement/vendors?userId=${userId}&sortBy=spend`, { headers }),
-      // ]);
-
-      // Mock data for now
+      const [poSumRes, poRes, reqRes] = await Promise.all([
+        fetch(`${API_URL}/procurement/purchase-orders/analytics/summary`, { headers }),
+        fetch(`${API_URL}/procurement/purchase-orders?limit=20`, { headers }),
+        fetch(`${API_URL}/procurement/requisitions?status=pending&limit=20`, { headers }),
+      ]);
+      const arr = async (r: Response, ...keys: string[]) => {
+        if (!r.ok) return [] as any[];
+        const d = await r.json();
+        if (Array.isArray(d)) return d;
+        for (const k of keys) if (Array.isArray(d?.[k])) return d[k];
+        return [] as any[];
+      };
+      const pos = await arr(poRes, 'purchaseOrders', 'orders', 'data');
+      const reqs = await arr(reqRes, 'requisitions', 'data');
+      const sum: any = poSumRes.ok ? await poSumRes.json() : {};
+      // Metrics from REAL aggregates only; fields with no backend source stay 0 (never invented).
       setMetrics({
-        openPOs: 24,
-        pendingApprovals: 7,
-        totalSpendMTD: 145230.50,
-        activeVendors: 38,
-        avgPOValue: 6051.27,
-        onTimeDeliveryRate: 92.5,
-        costSavings: 8420.00,
-        poProcessingTime: 2.3,
+        openPOs: Number(sum?.openCount ?? sum?.open ?? pos.filter((o: any) => !['COMPLETED', 'CANCELLED', 'closed'].includes((o.status ?? '').toString().toUpperCase())).length),
+        pendingApprovals: Number(sum?.pendingApprovals ?? reqs.length),
+        totalSpendMTD: Number(sum?.totalSpendMTD ?? sum?.totalSpend ?? 0),
+        activeVendors: Number(sum?.activeVendors ?? 0),
+        avgPOValue: Number(sum?.avgValue ?? sum?.averagePoValue ?? 0),
+        onTimeDeliveryRate: Number(sum?.onTimeDeliveryRate ?? 0),
+        costSavings: Number(sum?.costSavings ?? 0),
+        poProcessingTime: Number(sum?.avgProcessingDays ?? 0),
       });
-
-      setPurchaseOrders([
-        {
-          id: '1',
-          poNumber: 'PO-2025-0156',
-          vendor: 'Office Supplies SRL',
-          vendorId: 'V001',
-          items: 12,
-          totalAmount: 4850.00,
-          currency: 'RON',
-          status: 'approved',
-          createdAt: new Date('2025-12-10'),
-          deliveryDate: new Date('2025-12-18'),
-          approvedBy: 'Maria Popescu',
-        },
-        {
-          id: '2',
-          poNumber: 'PO-2025-0155',
-          vendor: 'Tech Solutions Ltd',
-          vendorId: 'V023',
-          items: 5,
-          totalAmount: 12300.00,
-          currency: 'RON',
-          status: 'sent',
-          createdAt: new Date('2025-12-09'),
-          deliveryDate: new Date('2025-12-20'),
-        },
-        {
-          id: '3',
-          poNumber: 'PO-2025-0154',
-          vendor: 'Acme Hardware',
-          vendorId: 'V015',
-          items: 8,
-          totalAmount: 6750.00,
-          currency: 'RON',
-          status: 'partially_received',
-          createdAt: new Date('2025-12-08'),
-          deliveryDate: new Date('2025-12-15'),
-        },
-        {
-          id: '4',
-          poNumber: 'PO-2025-0153',
-          vendor: 'Global Distributors',
-          vendorId: 'V042',
-          items: 20,
-          totalAmount: 18900.00,
-          currency: 'RON',
-          status: 'pending_approval',
-          createdAt: new Date('2025-12-07'),
-        },
-      ]);
-
-      setRequisitions([
-        {
-          id: '1',
-          prNumber: 'PR-2025-0089',
-          requestedBy: 'Ion Ionescu',
-          department: 'IT',
-          items: 3,
-          estimatedAmount: 5200.00,
-          priority: 'high',
-          status: 'pending',
-          createdAt: new Date('2025-12-11'),
-        },
-        {
-          id: '2',
-          prNumber: 'PR-2025-0088',
-          requestedBy: 'Ana Maria',
-          department: 'HR',
-          items: 7,
-          estimatedAmount: 1850.00,
-          priority: 'medium',
-          status: 'pending',
-          createdAt: new Date('2025-12-10'),
-        },
-        {
-          id: '3',
-          prNumber: 'PR-2025-0087',
-          requestedBy: 'Georgel Marinescu',
-          department: 'Operations',
-          items: 15,
-          estimatedAmount: 8900.00,
-          priority: 'urgent',
-          status: 'pending',
-          createdAt: new Date('2025-12-09'),
-        },
-      ]);
-
-      setVendors([
-        {
-          id: 'V023',
-          name: 'Tech Solutions Ltd',
-          code: 'TECH001',
-          category: 'IT Equipment',
-          totalSpend: 45230.00,
-          poCount: 12,
-          rating: 4.8,
-          paymentTerms: 'Net 30',
-          status: 'active',
-        },
-        {
-          id: 'V042',
-          name: 'Global Distributors',
-          code: 'GLOB001',
-          category: 'General Supplies',
-          totalSpend: 32150.00,
-          poCount: 18,
-          rating: 4.5,
-          paymentTerms: 'Net 45',
-          status: 'active',
-        },
-        {
-          id: 'V015',
-          name: 'Acme Hardware',
-          code: 'ACME001',
-          category: 'Hardware',
-          totalSpend: 28640.00,
-          poCount: 9,
-          rating: 4.2,
-          paymentTerms: 'Net 30',
-          status: 'active',
-        },
-        {
-          id: 'V001',
-          name: 'Office Supplies SRL',
-          code: 'OFF001',
-          category: 'Office Supplies',
-          totalSpend: 21450.00,
-          poCount: 24,
-          rating: 4.6,
-          paymentTerms: 'Net 15',
-          status: 'active',
-        },
-      ]);
+      setPurchaseOrders(pos.map((o: any) => ({
+        id: String(o.id), poNumber: o.poNumber ?? o.number ?? '-', vendor: o.supplierName ?? o.vendorName ?? o.supplier?.name ?? '-',
+        vendorId: String(o.supplierId ?? o.vendorId ?? ''), items: Number(o.itemCount ?? o.items?.length ?? 0),
+        totalAmount: Number(o.totalAmount ?? o.total ?? 0), currency: o.currency ?? 'RON',
+        status: ((o.status ?? 'draft').toString().toLowerCase() as PurchaseOrder['status']),
+        createdAt: new Date(o.createdAt ?? Date.now()),
+        deliveryDate: o.expectedDeliveryDate || o.deliveryDate ? new Date(o.expectedDeliveryDate ?? o.deliveryDate) : undefined,
+        approvedBy: o.approvedBy ?? undefined,
+      })));
+      setRequisitions(reqs.map((r0: any) => ({
+        id: String(r0.id), prNumber: r0.requisitionNumber ?? r0.prNumber ?? r0.number ?? '-',
+        requestedBy: r0.requesterName ?? r0.requestedBy ?? '-', department: r0.department ?? '-',
+        items: Number(r0.itemCount ?? r0.items?.length ?? 0), estimatedAmount: Number(r0.estimatedTotal ?? r0.totalAmount ?? 0),
+        priority: ((r0.priority ?? 'medium').toString().toLowerCase() as PurchaseRequisition['priority']),
+        status: ((r0.status ?? 'pending').toString().toLowerCase() as PurchaseRequisition['status']),
+        createdAt: new Date(r0.createdAt ?? Date.now()), approver: r0.approver ?? undefined,
+      })));
+      setVendors([]); // no vendor-spend endpoint yet — honest empty (TODO(REQ): wire when a vendors analytics endpoint exists)
     } catch (error) {
+      console.error('Procurement load error:', error);
+      setMetrics(null as any);
+      setPurchaseOrders([]);
+      setRequisitions([]);
+      setVendors([]);
       console.error('Error fetching procurement data:', error);
       toast.error('Eroare încărcare', 'Nu s-au putut încărca datele de procurement.');
     } finally {

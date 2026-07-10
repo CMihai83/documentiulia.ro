@@ -56,6 +56,7 @@ const depreciationMethods: Record<string, string> = {
 export default function FixedAssetsPage() {
   const [assets, setAssets] = useState<FixedAsset[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('active');
@@ -68,49 +69,30 @@ export default function FixedAssetsPage() {
   async function fetchFixedAssets() {
     setLoading(true);
     try {
-      // Placeholder - will be implemented with real API
-      // const token = localStorage.getItem('auth_token');
-      // const response = await fetch('/api/accounting/fixed-assets', {
-      //   headers: { Authorization: `Bearer ${token}` }
-      // });
-      // const data = await response.json();
-      // setAssets(data.assets || []);
-
-      // Mock data for now
-      setAssets([
-        {
-          id: '1',
-          assetCode: 'EQ-001',
-          name: 'Laptop Dell XPS 15',
-          category: 'computer',
-          acquisitionDate: '2024-01-15',
-          acquisitionCost: 8500,
-          depreciationMethod: 'straight_line',
-          usefulLifeYears: 3,
-          salvageValue: 500,
-          accumulatedDepreciation: 2667,
-          bookValue: 5833,
-          status: 'active',
-          location: 'Birou Cluj',
-        },
-        {
-          id: '2',
-          assetCode: 'VH-001',
-          name: 'Dacia Duster',
-          category: 'vehicle',
-          acquisitionDate: '2023-06-10',
-          acquisitionCost: 75000,
-          depreciationMethod: 'straight_line',
-          usefulLifeYears: 5,
-          salvageValue: 15000,
-          accumulatedDepreciation: 18000,
-          bookValue: 57000,
-          status: 'active',
-          location: 'Flotă Auto',
-        },
-      ]);
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+      const response = await fetch(`${API_URL}/assets`, { headers: { Authorization: `Bearer ${token}` } });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      const list = Array.isArray(data) ? data : data?.assets ?? data?.data ?? [];
+      // Map defensively onto the page's Asset shape; unknown fields stay undefined (rendered as '-').
+      setAssets(list.map((a: any) => ({
+        id: a.id,
+        assetCode: a.assetTag ?? a.assetCode ?? a.code ?? '-',
+        name: a.name ?? '-',
+        category: (a.category ?? a.type ?? 'other').toString().toLowerCase(),
+        purchaseDate: (a.purchaseDate ?? a.acquiredAt ?? a.createdAt ?? '').slice(0, 10),
+        purchaseValue: Number(a.purchaseValue ?? a.purchasePrice ?? a.value ?? 0),
+        currentValue: Number(a.currentValue ?? a.bookValue ?? a.purchaseValue ?? 0),
+        depreciationMethod: a.depreciationMethod ?? 'linear',
+        usefulLife: Number(a.usefulLifeYears ?? a.usefulLife ?? 0),
+        status: (a.status ?? 'active').toString().toLowerCase(),
+        location: a.location ?? a.locationName ?? '-',
+      })));
     } catch (error) {
       console.error('Failed to fetch fixed assets:', error);
+      setAssets([]);
+      setLoadError('Nu am putut încărca mijloacele fixe. Reîncearcă. / Could not load fixed assets. Please retry.');
     } finally {
       setLoading(false);
     }
@@ -160,6 +142,7 @@ export default function FixedAssetsPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
+      {loadError && (<div role="alert" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">{loadError}</div>)}
       {/* Header */}
       <div className="mb-6">
         <Link
