@@ -147,6 +147,9 @@ export default function ProjectDetailPage() {
   if (loading) {
     return (
       <div className="space-y-6 max-w-6xl mx-auto">
+      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
+        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
+      </div>
         <div className="animate-pulse">
           <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
           <div className="h-4 bg-gray-200 rounded w-1/2 mb-6"></div>

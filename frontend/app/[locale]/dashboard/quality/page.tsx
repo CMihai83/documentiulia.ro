@@ -201,6 +201,7 @@ export default function QualityPage() {
   const [documents, setDocuments] = useState<QualityDocument[]>([]);
   const [suppliers, setSuppliers] = useState<SupplierQuality[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
 
@@ -262,75 +263,19 @@ export default function QualityPage() {
       }
 
       // Load mock data for now
-      loadMockData();
+      loadEmpty();
     } catch (error) {
       console.error('Error fetching quality data:', error);
-      loadMockData();
+      loadEmpty();
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
-    setSummary({
-      openNCRs: 8,
-      pendingCAPAs: 12,
-      inspectionPassRate: 94.5,
-      supplierScoreAvg: 87.3,
-      totalInspections: 156,
-      totalNCRs: 45,
-      resolvedCAPAs: 89,
-      certifications: 5,
-    });
-
-    setInspections(getMockInspections());
-    setNCRs(getMockNCRs());
-    setCAPAs(getMockCAPAs());
-    setDocuments(getMockDocuments());
-    setSuppliers(getMockSuppliers());
+  const loadEmpty = () => {
+    setInspections([]);
+    setLoadError(true);
   };
-
-  const getMockInspections = (): Inspection[] => [
-    { id: '1', inspectionNumber: 'INS-2024-0156', type: 'Incoming Inspection', product: 'Raw Material Batch #4521', inspector: 'Ana Popescu', date: '2024-12-11', status: 'PASS', score: 98, findings: 0 },
-    { id: '2', inspectionNumber: 'INS-2024-0155', type: 'In-Process Inspection', product: 'Product Line A - Unit 342', inspector: 'Mihai Ionescu', date: '2024-12-11', status: 'CONDITIONAL', score: 85, findings: 2 },
-    { id: '3', inspectionNumber: 'INS-2024-0154', type: 'Final Inspection', product: 'Product X - Lot 890', inspector: 'Elena Georgescu', date: '2024-12-10', status: 'PASS', score: 96, findings: 1 },
-    { id: '4', inspectionNumber: 'INS-2024-0153', type: 'Incoming Inspection', product: 'Component Y - Shipment 123', inspector: 'Andrei Matei', date: '2024-12-10', status: 'FAIL', score: 62, findings: 5 },
-    { id: '5', inspectionNumber: 'INS-2024-0152', type: 'Supplier Audit', product: 'Supplier ABC - Annual Audit', inspector: 'Maria Dumitrescu', date: '2024-12-09', status: 'PASS', score: 92, findings: 3 },
-    { id: '6', inspectionNumber: 'INS-2024-0151', type: 'Process Audit', product: 'Manufacturing Process Z', inspector: 'Ion Vasilescu', date: '2024-12-09', status: 'PENDING', score: 0, findings: 0 },
-  ];
-
-  const getMockNCRs = (): NonConformance[] => [
-    { id: '1', ncrNumber: 'NCR-2024-0045', title: 'Dimensional non-conformance in batch #4521', severity: 'MAJOR', status: 'OPEN', reportedBy: 'Ana Popescu', reportedDate: '2024-12-11', dueDate: '2024-12-18', assignedTo: 'Mihai Ionescu', department: 'Production' },
-    { id: '2', ncrNumber: 'NCR-2024-0044', title: 'Surface finish defect on Product X', severity: 'MINOR', status: 'IN_REVIEW', reportedBy: 'Elena Georgescu', reportedDate: '2024-12-10', dueDate: '2024-12-17', assignedTo: 'Quality Team', department: 'Quality Control' },
-    { id: '3', ncrNumber: 'NCR-2024-0043', title: 'Material certificate missing for shipment', severity: 'CRITICAL', status: 'OPEN', reportedBy: 'Andrei Matei', reportedDate: '2024-12-10', dueDate: '2024-12-12', assignedTo: 'Procurement', department: 'Procurement' },
-    { id: '4', ncrNumber: 'NCR-2024-0042', title: 'Calibration overdue on measuring equipment', severity: 'MAJOR', status: 'CLOSED', reportedBy: 'Maria Dumitrescu', reportedDate: '2024-12-08', dueDate: '2024-12-15', assignedTo: 'Maintenance', department: 'Maintenance' },
-    { id: '5', ncrNumber: 'NCR-2024-0041', title: 'Documentation incomplete for lot 890', severity: 'MINOR', status: 'OPEN', reportedBy: 'Ion Vasilescu', reportedDate: '2024-12-07', dueDate: '2024-12-14', assignedTo: 'Documentation', department: 'Quality Assurance' },
-  ];
-
-  const getMockCAPAs = (): CAPA[] => [
-    { id: '1', capaNumber: 'CAPA-2024-0089', title: 'Improve incoming inspection process', type: 'PREVENTIVE', status: 'IN_PROGRESS', priority: 'HIGH', owner: 'Ana Popescu', dueDate: '2024-12-20', completionPercentage: 65, relatedNCR: 'NCR-2024-0043' },
-    { id: '2', capaNumber: 'CAPA-2024-0088', title: 'Correct dimensional tolerance in process', type: 'CORRECTIVE', status: 'VERIFICATION', priority: 'MEDIUM', owner: 'Mihai Ionescu', dueDate: '2024-12-15', completionPercentage: 90, relatedNCR: 'NCR-2024-0045' },
-    { id: '3', capaNumber: 'CAPA-2024-0087', title: 'Implement calibration reminder system', type: 'PREVENTIVE', status: 'COMPLETED', priority: 'HIGH', owner: 'Maria Dumitrescu', dueDate: '2024-12-10', completionPercentage: 100, relatedNCR: 'NCR-2024-0042' },
-    { id: '4', capaNumber: 'CAPA-2024-0086', title: 'Update supplier quality requirements', type: 'PREVENTIVE', status: 'OPEN', priority: 'MEDIUM', owner: 'Andrei Matei', dueDate: '2024-12-25', completionPercentage: 25 },
-    { id: '5', capaNumber: 'CAPA-2024-0085', title: 'Revise surface finish acceptance criteria', type: 'CORRECTIVE', status: 'IN_PROGRESS', priority: 'LOW', owner: 'Elena Georgescu', dueDate: '2024-12-22', completionPercentage: 45, relatedNCR: 'NCR-2024-0044' },
-  ];
-
-  const getMockDocuments = (): QualityDocument[] => [
-    { id: '1', documentNumber: 'QMS-001', title: 'Quality Management System Manual', type: 'Manual', version: '3.2', status: 'APPROVED', approvedBy: 'Quality Director', approvedDate: '2024-11-15', nextReviewDate: '2025-11-15' },
-    { id: '2', documentNumber: 'QP-101', title: 'Incoming Inspection Procedure', type: 'Procedure', version: '2.5', status: 'APPROVED', approvedBy: 'Quality Manager', approvedDate: '2024-10-20', nextReviewDate: '2025-10-20' },
-    { id: '3', documentNumber: 'QP-102', title: 'Non-Conformance Management', type: 'Procedure', version: '2.1', status: 'REVIEW', nextReviewDate: '2025-01-10' },
-    { id: '4', documentNumber: 'QP-103', title: 'CAPA Process and Methodology', type: 'Procedure', version: '1.8', status: 'APPROVED', approvedBy: 'Quality Manager', approvedDate: '2024-09-05', nextReviewDate: '2025-09-05' },
-    { id: '5', documentNumber: 'WI-201', title: 'Dimensional Inspection Work Instruction', type: 'Work Instruction', version: '1.3', status: 'DRAFT', nextReviewDate: '2024-12-20' },
-    { id: '6', documentNumber: 'QF-301', title: 'Inspection Report Form', type: 'Form', version: '2.0', status: 'APPROVED', approvedBy: 'Quality Manager', approvedDate: '2024-08-12', nextReviewDate: '2025-08-12' },
-  ];
-
-  const getMockSuppliers = (): SupplierQuality[] => [
-    { id: '1', supplierName: 'Premium Materials SRL', supplierCode: 'SUP-001', qualityScore: 95, scoreChange: 2.5, totalInspections: 24, passedInspections: 23, failedInspections: 1, openNCRs: 0, lastInspectionDate: '2024-12-10', rating: 'EXCELLENT' },
-    { id: '2', supplierName: 'Quality Components SA', supplierCode: 'SUP-002', qualityScore: 88, scoreChange: -1.2, totalInspections: 18, passedInspections: 16, failedInspections: 2, openNCRs: 1, lastInspectionDate: '2024-12-09', rating: 'GOOD' },
-    { id: '3', supplierName: 'Standard Parts Ltd', supplierCode: 'SUP-003', qualityScore: 76, scoreChange: 3.8, totalInspections: 15, passedInspections: 12, failedInspections: 3, openNCRs: 2, lastInspectionDate: '2024-12-08', rating: 'FAIR' },
-    { id: '4', supplierName: 'Budget Supplies SRL', supplierCode: 'SUP-004', qualityScore: 62, scoreChange: -5.1, totalInspections: 12, passedInspections: 7, failedInspections: 5, openNCRs: 3, lastInspectionDate: '2024-12-05', rating: 'POOR' },
-    { id: '5', supplierName: 'Reliable Manufacturing SA', supplierCode: 'SUP-005', qualityScore: 91, scoreChange: 1.8, totalInspections: 20, passedInspections: 19, failedInspections: 1, openNCRs: 0, lastInspectionDate: '2024-12-11', rating: 'EXCELLENT' },
-  ];
 
   const filteredInspections = inspections.filter(item => {
     const matchesSearch = item.product.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -445,6 +390,11 @@ export default function QualityPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.
+        </div>
+      )}
         <div className="flex justify-between items-center">
           <div>
             <div className="h-8 bg-gray-200 rounded w-64 mb-2"></div>

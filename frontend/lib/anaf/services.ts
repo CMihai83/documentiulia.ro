@@ -479,6 +479,10 @@ export const eTransportService = {
   checkStatus: (id: string) =>
     api.get(`/e-transport/${id}/status`),
 
+  /** List declarations (org-scoped) */
+  getDeclarations: (params?: Record<string, any>) =>
+    api.get('/e-transport', { params }),
+
   /**
    * Mark transport as started (requires UIT)
    */

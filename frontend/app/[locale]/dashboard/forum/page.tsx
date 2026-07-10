@@ -108,6 +108,7 @@ export default function ForumPage() {
   const [view, setView] = useState<ViewType>('threads');
   const [categories, setCategories] = useState<ForumCategory[]>([]);
   const [threads, setThreads] = useState<ForumThread[]>([]);
+  const [loadError, setLoadError] = useState(false);
   const [stats, setStats] = useState<ForumStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -142,140 +143,18 @@ export default function ForumPage() {
       }
     } catch (error) {
       console.error('Error fetching forum data:', error);
-      loadMockData();
+      loadEmpty('error');
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
-    setCategories(getMockCategories());
-    setThreads(getMockThreads());
-    setStats(getMockStats());
+  const loadEmpty = (msg?: string) => {
+    setCategories([]);
+    setThreads([]);
+    setStats(null);
+    if (msg) setLoadError(true);
   };
-
-  const getMockCategories = (): ForumCategory[] => [
-    { id: '1', name: 'Contabilitate & Fiscalitate', slug: 'contabilitate', description: 'Discutii despre contabilitate, TVA, declaratii fiscale', icon: 'calculator', color: 'blue', threadCount: 156, postCount: 892, isActive: true },
-    { id: '2', name: 'Resurse Umane & Salarizare', slug: 'hr-salarizare', description: 'Intrebari despre HR, contracte, salarii, REVISAL', icon: 'briefcase', color: 'green', threadCount: 98, postCount: 456, isActive: true },
-    { id: '3', name: 'Legislatie & Conformitate', slug: 'legislatie', description: 'Actualizari legislative, ANAF, conformitate', icon: 'scale', color: 'purple', threadCount: 234, postCount: 1205, isActive: true },
-    { id: '4', name: 'e-Factura & SAF-T D406', slug: 'efactura-saft', description: 'Implementare e-Factura, SAF-T, SPV', icon: 'fileText', color: 'orange', threadCount: 312, postCount: 1567, isActive: true },
-    { id: '5', name: 'Intrebari Generale', slug: 'general', description: 'Intrebari generale despre platforma si functionalitati', icon: 'helpCircle', color: 'gray', threadCount: 78, postCount: 234, isActive: true },
-    { id: '6', name: 'Fonduri & Finantari', slug: 'fonduri', description: 'Discutii despre PNRR, fonduri europene, Start-Up Nation', icon: 'trendingUp', color: 'emerald', threadCount: 45, postCount: 189, isActive: true },
-  ];
-
-  const getMockThreads = (): ForumThread[] => [
-    {
-      id: '1',
-      title: 'Cum completez corect declaratia D406 pentru luna ianuarie 2025?',
-      slug: 'd406-ianuarie-2025',
-      content: 'Buna ziua, am cateva intrebari despre completarea declaratiei D406...',
-      authorName: 'Maria Ionescu',
-      category: getMockCategories()[3],
-      viewCount: 1234,
-      replyCount: 23,
-      likeCount: 45,
-      isPinned: true,
-      isLocked: false,
-      isSolved: true,
-      tags: ['D406', 'SAF-T', 'ANAF'],
-      createdAt: '2024-12-10T14:30:00Z',
-      lastReplyAt: '2024-12-11T08:15:00Z',
-    },
-    {
-      id: '2',
-      title: 'Noile rate TVA din august 2025 - ce trebuie sa stim?',
-      slug: 'tva-august-2025',
-      content: 'Conform Legii 141/2025, cotele de TVA se modifica...',
-      authorName: 'Ion Popescu',
-      category: getMockCategories()[0],
-      viewCount: 2567,
-      replyCount: 56,
-      likeCount: 89,
-      isPinned: true,
-      isLocked: false,
-      isSolved: false,
-      tags: ['TVA', 'Legea 141', '2025'],
-      createdAt: '2024-12-09T10:00:00Z',
-      lastReplyAt: '2024-12-11T09:30:00Z',
-    },
-    {
-      id: '3',
-      title: 'Probleme cu integrarea SAGA v3.2 - eroare la sincronizare',
-      slug: 'saga-eroare-sincronizare',
-      content: 'Am incercat sa sincronizez facturile cu SAGA dar primesc eroare...',
-      authorName: 'Andrei Vasilescu',
-      category: getMockCategories()[4],
-      viewCount: 456,
-      replyCount: 12,
-      likeCount: 8,
-      isPinned: false,
-      isLocked: false,
-      isSolved: true,
-      tags: ['SAGA', 'Integrare', 'Eroare'],
-      createdAt: '2024-12-11T07:45:00Z',
-      lastReplyAt: '2024-12-11T10:20:00Z',
-    },
-    {
-      id: '4',
-      title: 'Cum calculez corect contributiile pentru contracte part-time?',
-      slug: 'contributii-part-time',
-      content: 'Am angajat recent pe cineva part-time si nu sunt sigur cum calculez...',
-      authorName: 'Elena Dumitrescu',
-      category: getMockCategories()[1],
-      viewCount: 789,
-      replyCount: 18,
-      likeCount: 34,
-      isPinned: false,
-      isLocked: false,
-      isSolved: true,
-      tags: ['Contributii', 'Part-time', 'Salarizare'],
-      createdAt: '2024-12-10T16:20:00Z',
-      lastReplyAt: '2024-12-11T11:00:00Z',
-    },
-    {
-      id: '5',
-      title: 'PNRR 2025 - noi finantari pentru digitalizare IMM',
-      slug: 'pnrr-digitalizare-2025',
-      content: 'S-a lansat o noua sesiune de finantari PNRR pentru digitalizare...',
-      authorName: 'Mihai Stanescu',
-      category: getMockCategories()[5],
-      viewCount: 1890,
-      replyCount: 42,
-      likeCount: 78,
-      isPinned: false,
-      isLocked: false,
-      isSolved: false,
-      tags: ['PNRR', 'Digitalizare', 'Finantare'],
-      createdAt: '2024-12-08T09:00:00Z',
-      lastReplyAt: '2024-12-11T07:45:00Z',
-    },
-    {
-      id: '6',
-      title: 'Actualizare OUG privind termenele e-Factura B2B',
-      slug: 'oug-efactura-b2b',
-      content: 'Guvernul a emis o noua OUG care modifica termenele pentru e-Factura B2B...',
-      authorName: 'Admin',
-      category: getMockCategories()[2],
-      viewCount: 3456,
-      replyCount: 89,
-      likeCount: 156,
-      isPinned: true,
-      isLocked: false,
-      isSolved: false,
-      tags: ['e-Factura', 'B2B', 'OUG', 'Legislatie'],
-      createdAt: '2024-12-07T11:30:00Z',
-      lastReplyAt: '2024-12-11T10:45:00Z',
-    },
-  ];
-
-  const getMockStats = (): ForumStats => ({
-    totalThreads: 923,
-    totalPosts: 4543,
-    totalUsers: 2156,
-    onlineUsers: 78,
-    todayThreads: 12,
-    todayPosts: 89,
-  });
 
   const filteredThreads = threads.filter(thread => {
     const matchesSearch = thread.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -293,6 +172,11 @@ export default function ForumPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca discuțiile. Reîncearcă. / Could not load threads. Please retry.
+        </div>
+      )}
         <div className="flex justify-between items-center">
           <div>
             <div className="h-8 bg-gray-200 rounded w-48 mb-2"></div>

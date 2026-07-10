@@ -97,6 +97,7 @@ export default function BlogPage() {
   const [categories, setCategories] = useState<BlogCategory[]>([]);
   const [articles, setArticles] = useState<BlogArticle[]>([]);
   const [stats, setStats] = useState<BlogStats | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -117,6 +118,11 @@ export default function BlogPage() {
         setCategories(await categoriesRes.json());
       }
 
+      setLoadError(false);
+      // Fetch categories (real endpoint)
+      const catRes = await fetch('/api/blog/categories', { headers });
+      if (catRes.ok) setCategories(await catRes.json());
+
       // Fetch articles
       const params = new URLSearchParams();
       if (selectedCategory !== 'all') {
@@ -130,164 +136,18 @@ export default function BlogPage() {
       }
     } catch (error) {
       console.error('Error fetching blog data:', error);
-      loadMockData();
+      loadEmpty('error');
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
-    setCategories(getMockCategories());
-    setArticles(getMockArticles());
-    setStats(getMockStats());
+  const loadEmpty = (msg?: string) => {
+    setCategories([]);
+    setArticles([]);
+    setStats(null);
+    if (msg) setLoadError(true);
   };
-
-  const getMockCategories = (): BlogCategory[] => [
-    { id: '1', name: 'Legislatie & Conformitate', slug: 'legislatie', description: 'Actualizari legislative si conformitate', color: 'purple', articleCount: 45, isActive: true },
-    { id: '2', name: 'Contabilitate', slug: 'contabilitate', description: 'Sfaturi si ghiduri de contabilitate', color: 'blue', articleCount: 38, isActive: true },
-    { id: '3', name: 'Fiscalitate', slug: 'fiscalitate', description: 'Noutati fiscale si TVA', color: 'green', articleCount: 52, isActive: true },
-    { id: '4', name: 'HR & Salarizare', slug: 'hr-salarizare', description: 'Resurse umane si managementul salariilor', color: 'orange', articleCount: 29, isActive: true },
-    { id: '5', name: 'Fonduri Europene', slug: 'fonduri', description: 'PNRR, fonduri structurale, finantari', color: 'emerald', articleCount: 23, isActive: true },
-    { id: '6', name: 'Digitalizare', slug: 'digitalizare', description: 'Transformare digitala in afaceri', color: 'indigo', articleCount: 31, isActive: true },
-  ];
-
-  const getMockArticles = (): BlogArticle[] => [
-    {
-      id: '1',
-      title: 'Ghid Complet: Noile Cote TVA din August 2025 conform Legii 141/2025',
-      slug: 'ghid-tva-august-2025',
-      excerpt: 'Tot ce trebuie sa stii despre modificarile cotelor de TVA care intra in vigoare in august 2025. Cota standard ramane 19%, dar apar modificari importante pentru anumite categorii de bunuri si servicii.',
-      authorName: 'Maria Ionescu',
-      authorTitle: 'Expert Contabil',
-      category: getMockCategories()[2],
-      tags: ['TVA', 'Legea 141', 'Fiscalitate', '2025'],
-      viewCount: 12456,
-      likeCount: 234,
-      commentCount: 45,
-      readingTime: 12,
-      isFeatured: true,
-      publishedAt: '2024-12-10T10:00:00Z',
-    },
-    {
-      id: '2',
-      title: 'e-Factura B2B: Termen Extins - Ce Trebuie Sa Stie Companiile',
-      slug: 'efactura-b2b-termen-extins',
-      excerpt: 'Guvernul a extins termenul pentru implementarea obligatorie a e-Factura B2B. Afla ce inseamna acest lucru pentru afacerea ta si cum te poti pregati.',
-      authorName: 'Ion Popescu',
-      authorTitle: 'Consultant Fiscal',
-      category: getMockCategories()[0],
-      tags: ['e-Factura', 'B2B', 'ANAF', 'SPV'],
-      viewCount: 8923,
-      likeCount: 178,
-      commentCount: 32,
-      readingTime: 8,
-      isFeatured: true,
-      publishedAt: '2024-12-09T14:30:00Z',
-    },
-    {
-      id: '3',
-      title: 'SAF-T D406: Declaratia Lunara Obligatorie din Ianuarie 2025',
-      slug: 'saft-d406-ianuarie-2025',
-      excerpt: 'Incepand cu ianuarie 2025, declaratia SAF-T D406 devine lunara pentru toate companiile. Uite cum te pregatesti si ce schimbari aduce.',
-      authorName: 'Andrei Vasilescu',
-      authorTitle: 'IT Consultant',
-      category: getMockCategories()[5],
-      tags: ['SAF-T', 'D406', 'ANAF', 'Digitalizare'],
-      viewCount: 7654,
-      likeCount: 145,
-      commentCount: 28,
-      readingTime: 10,
-      isFeatured: false,
-      publishedAt: '2024-12-08T09:00:00Z',
-    },
-    {
-      id: '4',
-      title: 'PNRR 2025: Noi Finantari pentru Digitalizare IMM-uri',
-      slug: 'pnrr-digitalizare-imm-2025',
-      excerpt: 'O noua sesiune de finantari PNRR pentru digitalizarea IMM-urilor se deschide in 2025. Afla criteriile de eligibilitate si cum poti aplica.',
-      authorName: 'Elena Dumitrescu',
-      authorTitle: 'Consultant Fonduri',
-      category: getMockCategories()[4],
-      tags: ['PNRR', 'IMM', 'Finantare', 'Digitalizare'],
-      viewCount: 6234,
-      likeCount: 156,
-      commentCount: 41,
-      readingTime: 15,
-      isFeatured: true,
-      publishedAt: '2024-12-07T11:00:00Z',
-    },
-    {
-      id: '5',
-      title: 'Contributii Sociale 2025: Ce Se Schimba pentru Angajatori',
-      slug: 'contributii-sociale-2025',
-      excerpt: 'Modificarile aduse contributiilor sociale pentru anul 2025 si impactul lor asupra costurilor salariale.',
-      authorName: 'Mihai Stanescu',
-      authorTitle: 'Expert HR',
-      category: getMockCategories()[3],
-      tags: ['Contributii', 'CAS', 'CASS', 'Salarizare'],
-      viewCount: 5678,
-      likeCount: 98,
-      commentCount: 23,
-      readingTime: 7,
-      isFeatured: false,
-      publishedAt: '2024-12-06T15:00:00Z',
-    },
-    {
-      id: '6',
-      title: 'Cum Sa Implementezi Corect SAGA v3.2 in Compania Ta',
-      slug: 'implementare-saga-v32',
-      excerpt: 'Ghid practic pentru implementarea sistemului SAGA v3.2 pentru gestiunea contabila si fiscala.',
-      authorName: 'Andrei Vasilescu',
-      authorTitle: 'IT Consultant',
-      category: getMockCategories()[5],
-      tags: ['SAGA', 'Implementare', 'Software', 'Contabilitate'],
-      viewCount: 4321,
-      likeCount: 87,
-      commentCount: 19,
-      readingTime: 20,
-      isFeatured: false,
-      publishedAt: '2024-12-05T10:30:00Z',
-    },
-    {
-      id: '7',
-      title: 'Inchiderea Exercitiului Financiar 2024: Checklist Complet',
-      slug: 'inchidere-exercitiu-2024',
-      excerpt: 'Lista completa de verificari pentru inchiderea corecta a exercitiului financiar 2024.',
-      authorName: 'Maria Ionescu',
-      authorTitle: 'Expert Contabil',
-      category: getMockCategories()[1],
-      tags: ['Bilant', 'Inchidere An', 'Contabilitate'],
-      viewCount: 9876,
-      likeCount: 234,
-      commentCount: 56,
-      readingTime: 25,
-      isFeatured: true,
-      publishedAt: '2024-12-04T08:00:00Z',
-    },
-    {
-      id: '8',
-      title: 'REVISAL 2025: Noile Obligatii de Raportare',
-      slug: 'revisal-2025-obligatii',
-      excerpt: 'Ce modificari aduce anul 2025 pentru raportarea REVISAL si cum sa te conformezi.',
-      authorName: 'Elena Dumitrescu',
-      authorTitle: 'Expert HR',
-      category: getMockCategories()[3],
-      tags: ['REVISAL', 'HR', 'Raportare', 'ITM'],
-      viewCount: 3456,
-      likeCount: 67,
-      commentCount: 15,
-      readingTime: 6,
-      isFeatured: false,
-      publishedAt: '2024-12-03T12:00:00Z',
-    },
-  ];
-
-  const getMockStats = (): BlogStats => ({
-    totalArticles: 218,
-    totalViews: 456789,
-    totalAuthors: 15,
-    thisMonthArticles: 23,
-  });
 
   const filteredArticles = articles.filter(article => {
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -313,6 +173,11 @@ export default function BlogPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca articolele. Reîncearcă. / Could not load articles. Please retry.
+        </div>
+      )}
         <div className="flex justify-between items-center">
           <div>
             <div className="h-8 bg-gray-200 rounded w-32 mb-2"></div>

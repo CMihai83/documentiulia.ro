@@ -36,7 +36,8 @@ interface Product {
   lastUpdated: string;
 }
 
-const mockProducts: Product[] = [
+// TODO(REQ-035): wire to real API
+  const mockProducts: Product[] = [
   {
     id: '1',
     name: 'Laptop Dell Latitude 5520',
@@ -160,6 +161,9 @@ export default function ProductsPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
+      <div role="status" className="mb-4 rounded-lg border border-amber-400 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
+        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
+      </div>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>

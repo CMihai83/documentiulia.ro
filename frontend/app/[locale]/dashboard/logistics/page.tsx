@@ -211,6 +211,7 @@ export default function LogisticsPage() {
   const [carbonMetrics, setCarbonMetrics] = useState<CarbonMetrics | null>(null);
   const [forecasts, setForecasts] = useState<ForecastData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
 
@@ -252,7 +253,7 @@ export default function LogisticsPage() {
 
       if (activeTab === 'routes') {
         // Mock route data for now
-        setRoutes(getMockRoutes());
+        setRoutes([]);
       }
 
       if (activeTab === 'customs') {
@@ -278,88 +279,23 @@ export default function LogisticsPage() {
     } catch (error) {
       console.error('Error fetching logistics data:', error);
       // Load mock data on error
-      loadMockData();
+      loadEmpty();
     } finally {
       setLoading(false);
     }
   };
 
-  const loadMockData = () => {
-    setSummary({
-      totalItems: 1245,
-      totalWarehouses: 5,
-      totalValue: 2456000,
-      lowStockItems: 23,
-      expiringBatches: 8,
-      pendingReceipts: 12,
-      pendingShipments: 34,
-      stockAccuracy: 98.5,
-    });
-
-    setItems(getMockItems());
-    setWarehouses(getMockWarehouses());
-    setAlerts(getMockAlerts());
-    setRoutes(getMockRoutes());
-    setDeclarations(getMockDeclarations());
-    setCarbonMetrics(getMockCarbonMetrics());
-    setForecasts(getMockForecasts());
+  const loadEmpty = () => {
+    setAlerts([]);
+    setCarbonMetrics(null);
+    setDeclarations([]);
+    setForecasts([]);
+    setItems([]);
+    setRoutes([]);
+    setSummary(null);
+    setWarehouses([]);
+    setLoadError(true);
   };
-
-  const getMockItems = (): InventoryItem[] => [
-    { id: '1', sku: 'SKU-001', name: 'Laptop Dell Latitude 5540', category: 'Electronice', quantity: 45, reorderPoint: 20, unitCost: 4500, location: 'A-01-001', status: 'IN_STOCK', lastMovement: '2024-12-10' },
-    { id: '2', sku: 'SKU-002', name: 'Monitor LG 27"', category: 'Electronice', quantity: 12, reorderPoint: 15, unitCost: 1200, location: 'A-01-002', status: 'LOW_STOCK', lastMovement: '2024-12-09' },
-    { id: '3', sku: 'SKU-003', name: 'Tastatura Mecanica', category: 'Periferice', quantity: 0, reorderPoint: 30, unitCost: 350, location: 'B-02-001', status: 'OUT_OF_STOCK', lastMovement: '2024-12-05' },
-    { id: '4', sku: 'SKU-004', name: 'Mouse Wireless', category: 'Periferice', quantity: 234, reorderPoint: 50, unitCost: 120, location: 'B-02-002', status: 'OVERSTOCK', lastMovement: '2024-12-11' },
-    { id: '5', sku: 'SKU-005', name: 'Cabluri USB-C', category: 'Accesorii', quantity: 567, reorderPoint: 100, unitCost: 25, location: 'C-01-001', status: 'IN_STOCK', lastMovement: '2024-12-11' },
-    { id: '6', sku: 'SKU-006', name: 'Hartie A4 80g', category: 'Papetarie', quantity: 1200, reorderPoint: 500, unitCost: 35, location: 'D-01-001', status: 'IN_STOCK', lastMovement: '2024-12-10' },
-  ];
-
-  const getMockWarehouses = (): WarehouseData[] => [
-    { id: '1', name: 'Depozit Central Bucuresti', code: 'BCU-01', type: 'DISTRIBUTION', address: 'Str. Industriilor 15, Bucuresti', capacity: 5000, utilization: 78, zones: 8, locations: 240, isActive: true },
-    { id: '2', name: 'Depozit Cluj-Napoca', code: 'CLJ-01', type: 'REGIONAL', address: 'Str. Fabricii 22, Cluj-Napoca', capacity: 2500, utilization: 65, zones: 4, locations: 120, isActive: true },
-    { id: '3', name: 'Depozit Timisoara', code: 'TIM-01', type: 'REGIONAL', address: 'Str. Logisticii 8, Timisoara', capacity: 2000, utilization: 82, zones: 3, locations: 90, isActive: true },
-    { id: '4', name: 'Depozit Constanta', code: 'CTA-01', type: 'PORT', address: 'Portul Constanta Sud, Constanta', capacity: 3000, utilization: 45, zones: 5, locations: 150, isActive: true },
-    { id: '5', name: 'Depozit Iasi', code: 'IAS-01', type: 'REGIONAL', address: 'Str. Depozitelor 3, Iasi', capacity: 1500, utilization: 58, zones: 2, locations: 60, isActive: true },
-  ];
-
-  const getMockAlerts = (): StockAlert[] => [
-    { id: '1', type: 'LOW_STOCK', severity: 'HIGH', itemName: 'Monitor LG 27"', message: 'Stoc sub nivelul minim (12 < 15)', createdAt: '2024-12-11T08:30:00Z', acknowledged: false },
-    { id: '2', type: 'REORDER', severity: 'HIGH', itemName: 'Tastatura Mecanica', message: 'Stoc epuizat - necesita reaprovizionare urgenta', createdAt: '2024-12-11T07:00:00Z', acknowledged: false },
-    { id: '3', type: 'EXPIRY', severity: 'MEDIUM', itemName: 'Toner HP', message: 'Lot #TN-2024-089 expira in 15 zile', createdAt: '2024-12-10T14:00:00Z', acknowledged: false },
-    { id: '4', type: 'OVERSTOCK', severity: 'LOW', itemName: 'Mouse Wireless', message: 'Stoc peste capacitatea optima (234 > 150)', createdAt: '2024-12-10T10:00:00Z', acknowledged: true },
-  ];
-
-  const getMockRoutes = (): RouteData[] => [
-    { id: '1', name: 'Ruta Bucuresti - Sud', status: 'IN_PROGRESS', stops: 8, distanceKm: 145, estimatedDuration: '4h 30min', vehicle: 'B-123-LOG', driver: 'Ion Popescu', scheduledDate: '2024-12-11' },
-    { id: '2', name: 'Ruta Cluj - Vest', status: 'PLANNED', stops: 12, distanceKm: 220, estimatedDuration: '6h 15min', vehicle: 'CJ-456-LOG', driver: 'Maria Ionescu', scheduledDate: '2024-12-12' },
-    { id: '3', name: 'Ruta Constanta - Port', status: 'COMPLETED', stops: 5, distanceKm: 85, estimatedDuration: '2h 45min', vehicle: 'CT-789-LOG', driver: 'Andrei Vasile', scheduledDate: '2024-12-10' },
-    { id: '4', name: 'Ruta Timisoara - Arad', status: 'PLANNED', stops: 6, distanceKm: 95, estimatedDuration: '3h 00min', vehicle: 'TM-012-LOG', scheduledDate: '2024-12-13' },
-  ];
-
-  const getMockDeclarations = (): CustomsDeclaration[] => [
-    { id: '1', lrn: 'LRN-2024-001234', mrn: 'MRN-RO-2024-001234', type: 'IMPORT', status: 'RELEASED', declarant: 'SC Import SRL', goodsValue: 125000, currency: 'EUR', customsOffice: 'RO012000 Bucuresti', createdAt: '2024-12-08' },
-    { id: '2', lrn: 'LRN-2024-001235', type: 'EXPORT', status: 'SUBMITTED', declarant: 'SC Export SA', goodsValue: 85000, currency: 'EUR', customsOffice: 'RO012000 Bucuresti', createdAt: '2024-12-10' },
-    { id: '3', lrn: 'LRN-2024-001236', type: 'TRANSIT', status: 'DRAFT', declarant: 'SC Transit SRL', goodsValue: 45000, currency: 'EUR', customsOffice: 'RO033000 Constanta', createdAt: '2024-12-11' },
-    { id: '4', lrn: 'LRN-2024-001237', mrn: 'MRN-RO-2024-001237', type: 'IMPORT', status: 'ACCEPTED', declarant: 'SC Distributie SA', goodsValue: 200000, currency: 'EUR', customsOffice: 'RO033000 Constanta', createdAt: '2024-12-09' },
-  ];
-
-  const getMockCarbonMetrics = (): CarbonMetrics => ({
-    totalEmissions: 1245.8,
-    emissionsChange: -12.5,
-    fleetSize: 45,
-    electricVehicles: 8,
-    averageEfficiency: 8.5,
-    targetProgress: 67,
-    etsCompliance: true,
-    cbamDeclarations: 3,
-  });
-
-  const getMockForecasts = (): ForecastData[] => [
-    { productId: '1', productName: 'Laptop Dell Latitude 5540', currentStock: 45, forecastedDemand: 60, confidence: 0.89, recommendedAction: 'Comanda 20 unitati', daysToStockout: 22 },
-    { productId: '2', productName: 'Monitor LG 27"', currentStock: 12, forecastedDemand: 35, confidence: 0.92, recommendedAction: 'Comanda urgenta 30 unitati', daysToStockout: 10 },
-    { productId: '3', productName: 'Tastatura Mecanica', currentStock: 0, forecastedDemand: 25, confidence: 0.85, recommendedAction: 'Reaprovizionare imediata', daysToStockout: 0 },
-    { productId: '4', productName: 'Mouse Wireless', currentStock: 234, forecastedDemand: 40, confidence: 0.91, recommendedAction: 'Stoc suficient pentru 6 saptamani', daysToStockout: 45 },
-  ];
 
   const filteredItems = items.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -490,6 +426,11 @@ export default function LogisticsPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
+      {loadError && (
+        <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
+          Nu am putut încărca datele. Reîncearcă. / Could not load data. Please retry.
+        </div>
+      )}
         <div className="flex justify-between items-center">
           <div>
             <div className="h-8 bg-gray-200 rounded w-64 mb-2"></div>

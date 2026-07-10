@@ -23,6 +23,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import { mockSpvDashboard, mockDeadlineReminders, mockSpvSubmissions } from '@/lib/anaf/mocks';
+import { spvService, deadlineService } from '@/lib/anaf/services';
 import type { SpvDashboard, DeadlineReminder, SpvSubmission } from '@/lib/anaf/types';
 
 const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK_ANAF === 'true';
@@ -52,9 +53,16 @@ export function OverviewTab() {
         // Get recent submissions
         setRecentActivity(mockSpvSubmissions.slice(0, 10));
       } else {
-        // Real API call would go here
-        // const data = await spvService.getDashboard();
-        // setDashboard(data);
+        const [dash, up, over] = await Promise.all([
+          spvService.getDashboard().catch(() => null),
+          deadlineService.getUpcoming(14).catch(() => null),
+          deadlineService.getOverdue().catch(() => null),
+        ]);
+        setDashboard((dash?.data as SpvDashboard) ?? null);
+        const ups = (up?.data as DeadlineReminder[]) ?? [];
+        const ovs = (over?.data as DeadlineReminder[]) ?? [];
+        setUrgentDeadlines([...ovs, ...ups].filter((d: any) => !d.completed).slice(0, 3));
+        setRecentActivity(((dash?.data as any)?.recentSubmissions as SpvSubmission[]) ?? []);
       }
     } catch (error) {
       console.error('Failed to fetch dashboard:', error);

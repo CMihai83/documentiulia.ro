@@ -27,6 +27,7 @@ import {
   CalendarDays,
 } from 'lucide-react';
 import { mockDeadlineReminders, mockDeadlineSummary } from '@/lib/anaf/mocks';
+import { deadlineService } from '@/lib/anaf/services';
 import type { DeadlineReminder, DeadlineType } from '@/lib/anaf/types';
 
 const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK_ANAF === 'true';
@@ -60,13 +61,18 @@ export function DeadlinesTab() {
         setDeadlines(filtered);
         setSummary(mockDeadlineSummary);
       } else {
-        // Real API call would go here
-        const filters: any = {};
-        if (typeFilter !== 'all') filters.type = typeFilter;
-        if (statusFilter !== 'all') filters.status = statusFilter;
-        // const data = await deadlineService.getReminders('user_001', filters);
-        // setDeadlines(data.reminders);
-        // setSummary(data.summary);
+        const [up, over, sum] = await Promise.all([
+          deadlineService.getUpcoming(90).catch(() => null),
+          deadlineService.getOverdue().catch(() => null),
+          deadlineService.getSummary().catch(() => null),
+        ]);
+        const upl = ((up?.data as any)?.deadlines ?? up?.data ?? []) as any[];
+        const ovl = ((over?.data as any)?.deadlines ?? over?.data ?? []) as any[];
+        let all = [...ovl, ...upl];
+        if (typeFilter !== 'all') all = all.filter((d) => d.type === typeFilter);
+        if (statusFilter !== 'all') all = all.filter((d) => d.status === statusFilter);
+        setDeadlines(all);
+        setSummary(((sum?.data as any) ?? null));
       }
     } catch (error) {
       console.error('Failed to fetch deadlines:', error);
@@ -194,9 +200,6 @@ export function DeadlinesTab() {
               </h4>
               <p className="text-sm text-red-700">
                 Toate termenele de depunere ANAF (SAF-T D406, e-Factura, TVA, e-Transport) într-o singură interfață. Urmăriți deadlines-urile și evitați penalizările.
-              </p>
-              <p className="text-xs text-red-600 mt-2">
-                <strong>Mock Data:</strong> Utilizează simulări locale. Sincronizarea automată cu ANAF SPV va fi disponibilă după activarea OAuth2.
               </p>
             </div>
           </div>
