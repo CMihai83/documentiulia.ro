@@ -107,144 +107,33 @@ export default function BankReconciliationPage() {
   const loadData = async () => {
     setLoading(true);
     try {
-      // Simulate API calls
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Mock data
-      setStats({
-        accounts: {
-          total: 3,
-          active: 3,
-          psd2Connected: 2,
-          totalBalance: 179450.50,
-        },
-        transactions: {
-          pending: 12,
-          matched: 145,
-          unmatched: 5,
-          disputed: 2,
-        },
-        reconciliation: {
-          lastSessionDate: new Date(),
-          matchRate: 89.5,
-          pendingReview: 1,
-        },
-      });
-
-      setAccounts([
-        {
-          id: 'acc-001',
-          bankName: 'Banca Transilvania',
-          accountNumber: 'RO49BTRL...',
-          iban: 'RO49BTRLRONCRT0123456789',
-          currency: 'RON',
-          balance: 125750.50,
-          lastSync: new Date(),
-          status: 'active',
-          psd2Connected: true,
-        },
-        {
-          id: 'acc-002',
-          bankName: 'ING Bank',
-          accountNumber: 'RO84INGB...',
-          iban: 'RO84INGBRONN123456789012',
-          currency: 'RON',
-          balance: 45200.00,
-          lastSync: new Date(Date.now() - 2 * 60 * 60 * 1000),
-          status: 'active',
-          psd2Connected: true,
-        },
-        {
-          id: 'acc-003',
-          bankName: 'BCR',
-          accountNumber: 'RO65RNCB...',
-          iban: 'RO65RNCBRONN098765432109',
-          currency: 'EUR',
-          balance: 8500.00,
-          lastSync: new Date(Date.now() - 24 * 60 * 60 * 1000),
-          status: 'active',
-          psd2Connected: false,
-        },
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const headers = { Authorization: `Bearer ${token}` };
+      const [dashRes, accRes, txRes, sessRes] = await Promise.all([
+        fetch(`${API_URL}/bank-reconciliation/dashboard`, { headers }),
+        fetch(`${API_URL}/bank-reconciliation/accounts`, { headers }),
+        fetch(`${API_URL}/bank-reconciliation/transactions?limit=25`, { headers }),
+        fetch(`${API_URL}/bank-reconciliation/sessions`, { headers }),
       ]);
-
-      setTransactions([
-        {
-          id: 'txn-001',
-          accountId: 'acc-001',
-          date: new Date(),
-          amount: 15000,
-          currency: 'RON',
-          description: 'Încasare factură FC-2024-0125',
-          reference: 'REF-12345',
-          counterparty: 'ABC SRL',
-          type: 'credit',
-          reconciliationStatus: 'matched',
-          matchedInvoiceId: 'INV-125',
-        },
-        {
-          id: 'txn-002',
-          accountId: 'acc-001',
-          date: new Date(Date.now() - 86400000),
-          amount: -3500,
-          currency: 'RON',
-          description: 'Plată furnizor materiale',
-          reference: 'REF-12346',
-          counterparty: 'XYZ IMPEX',
-          type: 'debit',
-          reconciliationStatus: 'pending',
-        },
-        {
-          id: 'txn-003',
-          accountId: 'acc-001',
-          date: new Date(Date.now() - 172800000),
-          amount: -8500,
-          currency: 'RON',
-          description: 'Salarii noiembrie 2024',
-          reference: 'SALARY-NOV',
-          counterparty: 'SALARIES',
-          type: 'debit',
-          reconciliationStatus: 'matched',
-        },
-        {
-          id: 'txn-004',
-          accountId: 'acc-002',
-          date: new Date(Date.now() - 259200000),
-          amount: 25000,
-          currency: 'RON',
-          description: 'Încasare comandă #1234',
-          reference: 'ORD-1234',
-          counterparty: 'EURO TECH',
-          type: 'credit',
-          reconciliationStatus: 'unmatched',
-        },
-        {
-          id: 'txn-005',
-          accountId: 'acc-001',
-          date: new Date(Date.now() - 345600000),
-          amount: -1200,
-          currency: 'RON',
-          description: 'ENEL factură energie',
-          reference: 'ENEL-12345',
-          counterparty: 'ENEL ENERGIE',
-          type: 'debit',
-          reconciliationStatus: 'matched',
-        },
-      ]);
-
-      setSessions([
-        {
-          id: 'session-001',
-          accountId: 'acc-001',
-          startDate: new Date(Date.now() - 30 * 86400000),
-          endDate: new Date(),
-          status: 'completed',
-          totalTransactions: 145,
-          matchedTransactions: 138,
-          unmatchedTransactions: 5,
-          disputedTransactions: 2,
-        },
-      ]);
+      if (!dashRes.ok) throw new Error(`dashboard HTTP ${dashRes.status}`);
+      const dash = await dashRes.json();
+      setStats(dash);
+      const arr = async (r: Response, ...keys: string[]) => {
+        if (!r.ok) return [];
+        const d = await r.json();
+        if (Array.isArray(d)) return d;
+        for (const k of keys) if (Array.isArray(d?.[k])) return d[k];
+        return [];
+      };
+      setAccounts(await arr(accRes, 'accounts', 'data'));
+      setTransactions(await arr(txRes, 'transactions', 'data'));
+      setSessions(await arr(sessRes, 'sessions', 'data'));
     } catch (error) {
+      console.error('Bank reconciliation load error:', error);
+      setStats(null as any);
+      setAccounts([]);
+      setTransactions([]);
+      setSessions([]);
       console.error('Error loading data:', error);
     } finally {
       setLoading(false);

@@ -158,113 +158,51 @@ export default function FreelancerHubPage() {
         'Content-Type': 'application/json',
       };
 
-      // Mock data for demonstration
+      const arr = async (r: Response, ...keys: string[]) => {
+        if (!r.ok) return [] as any[];
+        const d = await r.json();
+        if (Array.isArray(d)) return d;
+        for (const k of keys) if (Array.isArray(d?.[k])) return d[k];
+        return [] as any[];
+      };
+      const [profRes, projRes] = await Promise.all([
+        fetch(`${API_URL}/freelancer/profiles`, { headers }),
+        fetch(`${API_URL}/freelancer/projects`, { headers }),
+      ]);
+      const profs = await arr(profRes, 'profiles', 'data');
+      const projs = await arr(projRes, 'projects', 'data');
+      // Stats derived from REAL lists only — never invented counters.
+      const completed = projs.filter((x: any) => ['COMPLETED', 'completed', 'CLOSED'].includes(String(x.status))).length;
+      const ratings = profs.map((f: any) => Number(f.rating ?? 0)).filter((r: number) => r > 0);
       setStats({
-        totalFreelancers: 156,
-        activeProjects: 23,
-        completedProjects: 89,
-        totalEarnings: 245000,
-        avgRating: 4.7,
+        totalFreelancers: profs.length,
+        activeProjects: projs.length - completed,
+        completedProjects: completed,
+        totalEarnings: 0,
+        avgRating: ratings.length ? Math.round((ratings.reduce((a: number, b: number) => a + b, 0) / ratings.length) * 10) / 10 : 0,
       });
-
-      setFreelancers([
-        {
-          id: 'fl-001',
-          name: 'Alexandru Popescu',
-          title: 'Senior Full-Stack Developer',
-          skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL'],
-          hourlyRate: 75,
-          currency: 'EUR',
-          rating: 4.9,
-          completedProjects: 34,
-          status: 'AVAILABLE',
-          location: 'București, România',
-        },
-        {
-          id: 'fl-002',
-          name: 'Maria Ionescu',
-          title: 'UI/UX Designer',
-          skills: ['Figma', 'Design', 'Prototyping', 'User Research'],
-          hourlyRate: 60,
-          currency: 'EUR',
-          rating: 4.8,
-          completedProjects: 28,
-          status: 'BUSY',
-          location: 'Cluj-Napoca, România',
-        },
-        {
-          id: 'fl-003',
-          name: 'Ion Vasilescu',
-          title: 'DevOps Engineer',
-          skills: ['AWS', 'Docker', 'Kubernetes', 'DevOps'],
-          hourlyRate: 80,
-          currency: 'EUR',
-          rating: 4.7,
-          completedProjects: 19,
-          status: 'AVAILABLE',
-          location: 'Timișoara, România',
-        },
-      ]);
-
-      setProjects([
-        {
-          id: 'prj-001',
-          title: 'Dezvoltare Platformă E-commerce',
-          description: 'Dezvoltare magazin online cu Next.js și Stripe',
-          budget: 15000,
-          currency: 'EUR',
-          status: 'IN_PROGRESS',
-          deadline: '2026-01-15',
-          freelancerId: 'fl-001',
-          freelancerName: 'Alexandru Popescu',
-          skills: ['React', 'Node.js'],
-        },
-        {
-          id: 'prj-002',
-          title: 'Redesign Aplicație Mobilă',
-          description: 'Redesign complet UI/UX pentru aplicație iOS/Android',
-          budget: 8000,
-          currency: 'EUR',
-          status: 'OPEN',
-          deadline: '2026-02-01',
-          skills: ['Design', 'Mobile'],
-        },
-        {
-          id: 'prj-003',
-          title: 'Migrare Infrastructură Cloud',
-          description: 'Migrare de la on-premise la AWS cu Kubernetes',
-          budget: 25000,
-          currency: 'EUR',
-          status: 'COMPLETED',
-          deadline: '2025-12-01',
-          freelancerId: 'fl-003',
-          freelancerName: 'Ion Vasilescu',
-          skills: ['DevOps', 'AWS'],
-        },
-      ]);
-
-      setContracts([
-        {
-          id: 'ctr-001',
-          projectTitle: 'Dezvoltare Platformă E-commerce',
-          freelancerName: 'Alexandru Popescu',
-          amount: 15000,
-          currency: 'EUR',
-          status: 'ACTIVE',
-          startDate: '2025-11-01',
-          endDate: '2026-01-15',
-        },
-        {
-          id: 'ctr-002',
-          projectTitle: 'Migrare Infrastructură Cloud',
-          freelancerName: 'Ion Vasilescu',
-          amount: 25000,
-          currency: 'EUR',
-          status: 'COMPLETED',
-          startDate: '2025-09-01',
-          endDate: '2025-12-01',
-        },
-      ]);
+      setFreelancers(profs.map((f: any) => ({
+        id: String(f.id),
+        name: f.name ?? f.displayName ?? f.user?.name ?? '-',
+        title: f.title ?? f.headline ?? '-',
+        skills: Array.isArray(f.skills) ? f.skills : [],
+        hourlyRate: Number(f.hourlyRate ?? 0),
+        rating: Number(f.rating ?? 0),
+        completedProjects: Number(f.completedProjects ?? 0),
+        availability: f.availability ?? 'unknown',
+        avatar: f.avatarUrl ?? undefined,
+      })) as any);
+      setProjects(projs.map((x: any) => ({
+        id: String(x.id),
+        title: x.title ?? '-',
+        description: x.description ?? '',
+        budget: Number(x.budget ?? x.budgetMax ?? 0),
+        deadline: (x.deadline ?? x.dueDate ?? '').toString().slice(0, 10),
+        status: String(x.status ?? 'open').toLowerCase(),
+        applicants: Number(x.applicationCount ?? x.applicants ?? 0),
+        skills: Array.isArray(x.requiredSkills) ? x.requiredSkills : Array.isArray(x.skills) ? x.skills : [],
+      })) as any);
+      setContracts([]); // no contracts endpoint yet — honest empty (TODO(REQ): wire when available)
 
     } catch (err) {
       console.error('Failed to fetch Freelancer Hub data:', err);

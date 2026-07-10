@@ -1,3 +1,5 @@
+// NOTE: types + pure helpers only. Fabricated datasets were removed in the honesty audit;
+// feed these components from real endpoints (see CashFlowForecastWidget → /reports/cash-flow-forecast/*).
 /**
  * Mock data for Cash Flow Forecasting
  * Simulates historical transactions, AI predictions, and anomaly detection
@@ -221,40 +223,10 @@ export const generateInsights = (data: CashFlowDataPoint[]): CashFlowInsight[] =
 };
 
 // Seasonal patterns
-export const seasonalPatterns: SeasonalPattern[] = [
-  { month: 'Ian', avgInflow: 68000, avgOutflow: 55000, variance: 0.15 },
-  { month: 'Feb', avgInflow: 72000, avgOutflow: 58000, variance: 0.12 },
-  { month: 'Mar', avgInflow: 78000, avgOutflow: 62000, variance: 0.18 },
-  { month: 'Apr', avgInflow: 85000, avgOutflow: 65000, variance: 0.10 },
-  { month: 'Mai', avgInflow: 90000, avgOutflow: 68000, variance: 0.14 },
-  { month: 'Iun', avgInflow: 95000, avgOutflow: 70000, variance: 0.11 },
-  { month: 'Iul', avgInflow: 88000, avgOutflow: 72000, variance: 0.16 },
-  { month: 'Aug', avgInflow: 75000, avgOutflow: 60000, variance: 0.20 },
-  { month: 'Sep', avgInflow: 92000, avgOutflow: 68000, variance: 0.13 },
-  { month: 'Oct', avgInflow: 105000, avgOutflow: 75000, variance: 0.09 },
-  { month: 'Noi', avgInflow: 110000, avgOutflow: 78000, variance: 0.08 },
-  { month: 'Dec', avgInflow: 115000, avgOutflow: 82000, variance: 0.12 },
-];
+// (removed) fabricated `seasonalPatterns` dataset had no consumers — components are props-driven.
 
 // Anomaly detection
-export const anomalies: AnomalyDetection[] = [
-  {
-    date: new Date(2024, 7, 15), // August
-    type: 'drop',
-    severity: 'medium',
-    description: 'Scădere neașteptată a încasărilor cu 28% față de media sezonieră',
-    expectedValue: 95000,
-    actualValue: 68400,
-  },
-  {
-    date: new Date(2024, 10, 20), // November
-    type: 'spike',
-    severity: 'low',
-    description: 'Creștere semnificativă a plăților - probabil achizitii de final de an',
-    expectedValue: 78000,
-    actualValue: 105000,
-  },
-];
+// (removed) fabricated `anomalies` dataset had no consumers — components are props-driven.
 
 // Scenario variables
 export const scenarioVariables: ScenarioVariable[] = [
@@ -317,8 +289,8 @@ export const getMockCashFlowData = () => {
     historical,
     predictions,
     insights,
-    seasonalPatterns,
-    anomalies,
+    seasonalPatterns: [] as SeasonalPattern[],
+    anomalies: [] as AnomalyDetection[],
     scenarioVariables,
   };
 };

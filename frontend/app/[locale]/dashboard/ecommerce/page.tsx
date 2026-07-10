@@ -118,108 +118,11 @@ export default function EcommercePage() {
   const t = useTranslations('ecommerce');
   const toast = useToast();
 
-  // Mock data - TODO: Replace with API calls
-  const [stores, setStores] = useState<Store[]>([
-    {
-      id: '1',
-      name: 'Main Store',
-      platform: 'Shopify',
-      status: 'connected',
-      url: 'https://mystore.shopify.com',
-      lastSync: new Date().toISOString(),
-    },
-    {
-      id: '2',
-      name: 'WooCommerce Store',
-      platform: 'WooCommerce',
-      status: 'connected',
-      url: 'https://shop.example.com',
-      lastSync: new Date(Date.now() - 3600000).toISOString(),
-    },
-    {
-      id: '3',
-      name: 'eMAG Marketplace',
-      platform: 'eMAG',
-      status: 'connected',
-      url: 'https://marketplace.emag.ro',
-      lastSync: new Date(Date.now() - 7200000).toISOString(),
-    },
-  ]);
+  const [stores, setStores] = useState<Store[]>([]);
 
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: '1',
-      storeId: '1',
-      name: 'Premium Laptop',
-      sku: 'LAP-001',
-      price: 4999.99,
-      stock: 15,
-      stockStatus: 'in_stock',
-      category: 'Electronics',
-    },
-    {
-      id: '2',
-      storeId: '1',
-      name: 'Wireless Mouse',
-      sku: 'MSE-002',
-      price: 129.99,
-      stock: 3,
-      stockStatus: 'low_stock',
-      category: 'Accessories',
-    },
-    {
-      id: '3',
-      storeId: '2',
-      name: 'Mechanical Keyboard',
-      sku: 'KBD-003',
-      price: 399.99,
-      stock: 0,
-      stockStatus: 'out_of_stock',
-      category: 'Accessories',
-    },
-  ]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const [orders, setOrders] = useState<Order[]>([
-    {
-      id: '1',
-      storeId: '1',
-      orderNumber: 'ORD-2025-001',
-      customerName: 'Ion Popescu',
-      customerEmail: 'ion@example.com',
-      status: 'processing',
-      totalAmount: 5499.98,
-      currency: 'RON',
-      itemCount: 2,
-      orderDate: new Date().toISOString(),
-      platform: 'Shopify',
-    },
-    {
-      id: '2',
-      storeId: '1',
-      orderNumber: 'ORD-2025-002',
-      customerName: 'Maria Ionescu',
-      customerEmail: 'maria@example.com',
-      status: 'completed',
-      totalAmount: 1299.99,
-      currency: 'RON',
-      itemCount: 1,
-      orderDate: new Date(Date.now() - 86400000).toISOString(),
-      platform: 'Shopify',
-    },
-    {
-      id: '3',
-      storeId: '2',
-      orderNumber: 'ORD-2025-003',
-      customerName: 'Andrei Vasile',
-      customerEmail: 'andrei@example.com',
-      status: 'pending',
-      totalAmount: 899.99,
-      currency: 'RON',
-      itemCount: 3,
-      orderDate: new Date(Date.now() - 43200000).toISOString(),
-      platform: 'WooCommerce',
-    },
-  ]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -227,11 +130,46 @@ export default function EcommercePage() {
   const [selectedStore, setSelectedStore] = useState<string>('all');
   const [showConnectModal, setShowConnectModal] = useState(false);
 
-  // TODO: Implement API integration
   useEffect(() => {
-    // fetchStores();
-    // fetchProducts();
-    // fetchOrders();
+    const load = async () => {
+      setLoading(true);
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+      const headers = { Authorization: `Bearer ${token}` };
+      const arr = async (r: Response, ...keys: string[]) => {
+        if (!r.ok) return [] as any[];
+        const d = await r.json();
+        if (Array.isArray(d)) return d;
+        for (const k of keys) if (Array.isArray(d?.[k])) return d[k];
+        return [] as any[];
+      };
+      try {
+        const sRes = await fetch(`${API_URL}/ecommerce/stores`, { headers });
+        const sList = await arr(sRes, 'stores', 'data');
+        setStores(sList.map((x: any) => ({
+          id: String(x.id), name: x.name ?? '-', platform: (x.platform ?? 'shopify') as any,
+          status: (x.status ?? (x.connected ? 'connected' : 'disconnected')) as any,
+          url: x.url ?? x.storeUrl ?? '', lastSync: (x.lastSyncAt ?? x.lastSync ?? '').toString(),
+        })));
+        const sid = selectedStore || sList[0]?.id;
+        if (sid) {
+          const [pRes, oRes] = await Promise.all([
+            fetch(`${API_URL}/ecommerce/stores/${sid}/products`, { headers }),
+            fetch(`${API_URL}/ecommerce/stores/${sid}/orders`, { headers }),
+          ]);
+          setProducts((await arr(pRes, 'products', 'data')) as any);
+          setOrders((await arr(oRes, 'orders', 'data')) as any);
+        } else {
+          setProducts([]); setOrders([]);
+        }
+      } catch (err) {
+        console.error('Ecommerce load error:', err);
+        setStores([]); setProducts([]); setOrders([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    void load();
   }, [selectedStore]);
 
   const fetchStores = async () => {

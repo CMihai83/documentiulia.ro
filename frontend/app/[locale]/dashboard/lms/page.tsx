@@ -192,11 +192,13 @@ export default function LMSPage() {
       };
 
       // Fetch user profile
+      let userId: string | undefined;
       try {
         const profileRes = await fetch(`${API_URL}/auth/profile`, { headers });
         if (profileRes.ok) {
           const profile = await profileRes.json();
           setUserProfile(profile);
+          userId = profile?.id ?? profile?.user?.id;
         }
       } catch {
         // Use stored user info if available
@@ -240,142 +242,53 @@ export default function LMSPage() {
         console.error('Failed to fetch courses:', err);
       }
 
-      // Set stats based on real data
+      // Stats from REAL data only — no invented counters.
+      let enrolled = 0, completed = 0, certificates = 0;
+      let enrollList: any[] = [];
+      try {
+        if (userId) {
+          const enrRes = await fetch(`${API_URL}/lms/enrollments/user/${userId}`, { headers });
+          if (enrRes.ok) {
+            const enr = await enrRes.json();
+            const list = Array.isArray(enr) ? enr : enr?.enrollments ?? enr?.data ?? [];
+            enrollList = list;
+            enrolled = list.length;
+            completed = list.filter((e: any) => e.completedAt || e.status === 'COMPLETED' || Number(e.progress ?? 0) >= 100).length;
+            certificates = list.filter((e: any) => e.certificateId || e.certificateIssuedAt).length;
+          }
+        }
+      } catch { /* stats stay 0 — honest */ }
       setStats({
-        totalCourses: realCourses.length || 67,
-        enrolledCourses: 12,
-        completedCourses: 8,
-        totalHoursLearned: 45,
-        certificates: 5,
-        streak: 7,
+        totalCourses: realCourses.length,
+        enrolledCourses: enrolled,
+        completedCourses: completed,
+        totalHoursLearned: 0,
+        certificates,
+        streak: 0,
       });
 
-      // Use mock courses if API fails
-      if (realCourses.length === 0) {
-        setCourses([
-          {
-            id: 'c-001',
-            title: 'SAF-T D406 - Ghid Complet',
-            slug: 'saf-t-d406-ghid-complet',
-            description: 'Învață tot ce trebuie să știi despre raportarea SAF-T D406 conform Order 1783/2021',
-            category: 'ANAF',
-            duration: 180,
-            lessons: 12,
-            level: 'INTERMEDIATE',
-            rating: 4.9,
-            enrollments: 1234,
-            instructor: 'Dr. Ion Popescu',
-            tags: ['SAF-T', 'ANAF', 'Fiscalitate'],
-          },
-          {
-            id: 'c-002',
-            title: 'e-Factura B2B - Implementare',
-            slug: 'e-factura-b2b-implementare',
-            description: 'Implementarea completă a e-Factura pentru tranzacții B2B conform normelor ANAF',
-            category: 'ANAF',
-            duration: 120,
-            lessons: 8,
-            level: 'BEGINNER',
-            rating: 4.8,
-            enrollments: 2156,
-            instructor: 'Maria Ionescu',
-            tags: ['e-Factura', 'UBL 2.1', 'SPV'],
-          },
-          {
-            id: 'c-003',
-            title: 'TVA 2025 - Noutăți Legislative',
-            slug: 'tva-2025-noutati-legislative',
-            description: 'Noile cote TVA conform Legea 141/2025: 21%, 11%, 5%',
-            category: 'Fiscalitate',
-            duration: 90,
-            lessons: 6,
-            level: 'BEGINNER',
-            rating: 4.7,
-            enrollments: 3421,
-            instructor: 'Dr. Ana Marinescu',
-            tags: ['TVA', 'Legea 141', 'Fiscalitate'],
-          },
-          {
-            id: 'c-004',
-            title: 'Contracte de Muncă și REVISAL',
-            slug: 'contracte-de-munca-si-revisal',
-            description: 'Gestionarea contractelor și raportarea REVISAL pentru ITM',
-            category: 'HR',
-            duration: 150,
-            lessons: 10,
-            level: 'INTERMEDIATE',
-            rating: 4.6,
-            enrollments: 987,
-            instructor: 'Avocată Elena Tudor',
-            tags: ['HR', 'REVISAL', 'Contracte'],
-          },
-          {
-            id: 'c-005',
-            title: 'Contabilitate pentru Start-ups',
-            slug: 'contabilitate-pentru-start-ups',
-            description: 'Tot ce trebuie să știe un antreprenor despre contabilitate',
-            category: 'Contabilitate',
-            duration: 240,
-            lessons: 16,
-            level: 'BEGINNER',
-            rating: 4.9,
-            enrollments: 5678,
-            instructor: 'Ec. Mihai Popa',
-            tags: ['Start-up', 'SRL', 'PFA'],
-          },
-        ]);
-      }
+      // No fabricated fallback courses: an empty catalog renders the empty state.
 
-      setEnrollments([
-        {
-          id: 'e-001',
-          courseId: 'c-001',
-          courseTitle: 'SAF-T D406 - Ghid Complet',
-          progress: 75,
-          completedLessons: 9,
-          totalLessons: 12,
-          startedAt: '2025-11-01',
-          lastAccessedAt: '2025-12-10',
-          status: 'IN_PROGRESS',
-        },
-        {
-          id: 'e-002',
-          courseId: 'c-002',
-          courseTitle: 'e-Factura B2B - Implementare',
-          progress: 100,
-          completedLessons: 8,
-          totalLessons: 8,
-          startedAt: '2025-10-15',
-          lastAccessedAt: '2025-11-20',
-          status: 'COMPLETED',
-        },
-        {
-          id: 'e-003',
-          courseId: 'c-003',
-          courseTitle: 'TVA 2025 - Noutăți Legislative',
-          progress: 33,
-          completedLessons: 2,
-          totalLessons: 6,
-          startedAt: '2025-12-05',
-          lastAccessedAt: '2025-12-09',
-          status: 'IN_PROGRESS',
-        },
-      ]);
+      setEnrollments(enrollList.map((e: any) => ({
+        id: String(e.id),
+        courseId: String(e.courseId ?? e.course?.id ?? ''),
+        courseTitle: e.course?.title ?? e.courseTitle ?? '-',
+        progress: Number(e.progress ?? 0),
+        completedLessons: Number(e.completedLessons ?? e.lessonsCompleted ?? 0),
+        totalLessons: Number(e.totalLessons ?? e.course?.lessonCount ?? 0),
+        startedAt: (e.startedAt ?? e.createdAt ?? '').toString().slice(0, 10),
+        lastAccessedAt: (e.lastAccessedAt ?? e.updatedAt ?? '').toString().slice(0, 10),
+        status: e.completedAt || Number(e.progress ?? 0) >= 100 ? 'COMPLETED' : 'IN_PROGRESS',
+      })) as any);
 
-      setCertificates([
-        {
-          id: 'cert-001',
-          courseName: 'e-Factura B2B - Implementare',
-          issuedAt: '2025-11-20',
-          credentialId: 'DIULIA-EF-2025-001',
-        },
-        {
-          id: 'cert-002',
-          courseName: 'Contabilitate pentru Start-ups',
-          issuedAt: '2025-10-15',
-          credentialId: 'DIULIA-CS-2025-002',
-        },
-      ]);
+      setCertificates(enrollList
+        .filter((e: any) => e.certificateId || e.certificateIssuedAt)
+        .map((e: any) => ({
+          id: String(e.certificateId ?? e.id),
+          courseName: e.course?.title ?? e.courseTitle ?? '-',
+          issuedAt: (e.certificateIssuedAt ?? e.completedAt ?? '').toString().slice(0, 10),
+          credentialId: e.certificateNumber ?? String(e.certificateId ?? ''),
+        })) as any);
 
     } catch (err) {
       console.error('Failed to fetch LMS data:', err);
