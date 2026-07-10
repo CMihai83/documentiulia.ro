@@ -190,155 +190,43 @@ export default function NCRDetailPage() {
       const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
-      const ncrRes = await fetch(`${API_URL}/quality/ncr/${ncrId}`, { headers });
-      if (ncrRes.ok) {
-        setNCR(await ncrRes.json());
+      // Real backend: @Controller('non-conformance'), GET /non-conformance/:id.
+      const ncrRes = await fetch(`${API_URL}/non-conformance/${ncrId}`, { headers });
+      if (!ncrRes.ok) {
+        setNCR(null);
+        return;
       }
+      const raw = await ncrRes.json();
+      const up = (v: any) => (v ? String(v).toUpperCase() : '');
+      setNCR({
+        ...raw,
+        ncrNumber: raw.ncrNumber || raw.id,
+        status: up(raw.status),
+        severity: up(raw.severity),
+        category: raw.category || raw.source || '',
+        department: raw.departmentName || '',
+        supplier: raw.supplierName ? { id: raw.supplierId || '', name: raw.supplierName, code: '' } : undefined,
+        reportedBy: { id: raw.detectedBy || '', name: raw.detectedByName || '—', department: raw.departmentName || '' },
+        assignedTo: raw.assignedTo ? { id: raw.assignedTo, name: raw.assignedToName || '—', department: raw.departmentName || '' } : undefined,
+        reportedDate: raw.createdAt,
+        dueDate: raw.dueDate,
+        quantityAffected: raw.quantity,
+        rootCause: raw.rootCause,
+        containmentActions: (raw.containmentActions || []).map((a: any) => a.description).filter(Boolean).join('; ') || undefined,
+        linkedCAPAs: raw.linkedCAPAs || [],
+        currency: raw.currency || 'RON',
+        tags: raw.tags || [],
+      } as NCRDetail);
 
-      const activitiesRes = await fetch(`${API_URL}/quality/ncr/${ncrId}/activities`, { headers });
-      if (activitiesRes.ok) {
-        setActivities(await activitiesRes.json());
-      }
-
-      const attachmentsRes = await fetch(`${API_URL}/quality/ncr/${ncrId}/attachments`, { headers });
-      if (attachmentsRes.ok) {
-        setAttachments(await attachmentsRes.json());
-      }
+      // No backend endpoint for activity log / attachments yet — honest empties.
+      setActivities([]);
+      setAttachments([]);
     } catch (error) {
       console.error('Error fetching NCR details:', error);
-      loadMockData();
+      setNCR(null);
     } finally {
       setLoading(false);
     }
-  };
-
-  const loadMockData = () => {
-    setNCR({
-      id: ncrId,
-      ncrNumber: 'NCR-2024-0089',
-      title: 'Componente electronice cu defecte vizuale',
-      description: 'La inspectia de receptie a lotului LOT-2024-12-001, s-au identificat 2 unitati din 50 cu zgarieturi pe suprafata PCB. Defectele sunt vizibile si afecteaza aspectul estetic al produsului final.',
-      severity: 'MINOR',
-      status: 'ROOT_CAUSE',
-      category: 'Defect Vizual',
-      department: 'Productie',
-      product: {
-        id: 'prod-001',
-        name: 'Componenta Electronica PCB v2.1',
-        code: 'PCB-2024-001',
-        lotNumber: 'LOT-2024-12-001',
-      },
-      supplier: {
-        id: 'sup-001',
-        name: 'Tech Components SRL',
-        code: 'SUP-TC-001',
-      },
-      reportedBy: {
-        id: 'user-001',
-        name: 'Maria Ionescu',
-        department: 'Quality Control',
-      },
-      assignedTo: {
-        id: 'user-002',
-        name: 'Ion Popescu',
-        department: 'Productie',
-      },
-      reportedDate: '2024-12-16',
-      dueDate: '2024-12-23',
-      quantityAffected: 2,
-      quantityUnit: 'buc',
-      costImpact: 450,
-      currency: 'RON',
-      rootCause: 'Cauza principala identificata: manipulare necorespunzatoare in timpul procesului de ambalare la furnizor. Zgârieturile au fost cauzate de contactul direct intre PCB-uri fara separatoare adecvate.',
-      containmentActions: '1. Unitatile afectate au fost izolate si marcate\n2. Stocul existent a fost verificat suplimentar\n3. Furnizorul a fost notificat',
-      linkedInspection: 'INS-2024-0156',
-      linkedCAPAs: ['CAPA-2024-0045'],
-      tags: ['furnizor', 'ambalaj', 'vizual'],
-      createdAt: '2024-12-16T11:30:00Z',
-      updatedAt: '2024-12-17T09:15:00Z',
-    });
-
-    setActivities([
-      {
-        id: 'act-001',
-        type: 'STATUS_CHANGE',
-        description: 'Status schimbat de la Izolare la Analiza Cauza',
-        performedBy: 'Ion Popescu',
-        performedAt: '2024-12-17T09:15:00Z',
-        oldValue: 'CONTAINMENT',
-        newValue: 'ROOT_CAUSE',
-      },
-      {
-        id: 'act-002',
-        type: 'COMMENT',
-        description: 'Am finalizat izolarea unitatilor afectate. Se poate trece la analiza cauzei radacina.',
-        performedBy: 'Ion Popescu',
-        performedAt: '2024-12-17T09:00:00Z',
-      },
-      {
-        id: 'act-003',
-        type: 'ASSIGNMENT',
-        description: 'NCR atribuit pentru investigatie',
-        performedBy: 'Maria Ionescu',
-        performedAt: '2024-12-16T14:00:00Z',
-        newValue: 'Ion Popescu',
-      },
-      {
-        id: 'act-004',
-        type: 'STATUS_CHANGE',
-        description: 'Status schimbat de la In Revizuire la Izolare',
-        performedBy: 'Maria Ionescu',
-        performedAt: '2024-12-16T12:30:00Z',
-        oldValue: 'IN_REVIEW',
-        newValue: 'CONTAINMENT',
-      },
-      {
-        id: 'act-005',
-        type: 'ATTACHMENT',
-        description: 'Fotografii atasate cu defectele identificate',
-        performedBy: 'Maria Ionescu',
-        performedAt: '2024-12-16T11:45:00Z',
-      },
-      {
-        id: 'act-006',
-        type: 'STATUS_CHANGE',
-        description: 'NCR creat si trimis pentru revizuire',
-        performedBy: 'Maria Ionescu',
-        performedAt: '2024-12-16T11:30:00Z',
-        oldValue: 'OPEN',
-        newValue: 'IN_REVIEW',
-      },
-    ]);
-
-    setAttachments([
-      {
-        id: 'att-001',
-        filename: 'defect_pcb_1.jpg',
-        type: 'IMAGE',
-        size: 1856000,
-        uploadedBy: 'Maria Ionescu',
-        uploadedAt: '2024-12-16T11:45:00Z',
-        url: '/attachments/defect_pcb_1.jpg',
-      },
-      {
-        id: 'att-002',
-        filename: 'defect_pcb_2.jpg',
-        type: 'IMAGE',
-        size: 2124000,
-        uploadedBy: 'Maria Ionescu',
-        uploadedAt: '2024-12-16T11:45:00Z',
-        url: '/attachments/defect_pcb_2.jpg',
-      },
-      {
-        id: 'att-003',
-        filename: 'raport_inspectie_INS-2024-0156.pdf',
-        type: 'REPORT',
-        size: 524000,
-        uploadedBy: 'Maria Ionescu',
-        uploadedAt: '2024-12-16T12:00:00Z',
-        url: '/attachments/raport_inspectie.pdf',
-      },
-    ]);
   };
 
   const handleUpdateStatus = async (newStatus: string) => {
@@ -471,10 +359,6 @@ export default function NCRDetailPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-      {/* TODO(REQ-035): wire to real API */}
-      <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
         <div className="h-8 bg-gray-200 rounded w-48 mb-4"></div>
         <div className="bg-white rounded-lg shadow p-6">
           <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>

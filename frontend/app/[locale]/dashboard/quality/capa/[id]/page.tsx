@@ -218,202 +218,59 @@ export default function CAPADetailPage() {
       const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
-      const capaRes = await fetch(`${API_URL}/quality/capa/${capaId}`, { headers });
-      if (capaRes.ok) {
-        setCAPA(await capaRes.json());
+      // Real backend: @Controller('capa'), GET /capa/:id (no /quality prefix,
+      // no separate tasks/activities/attachments endpoints — they live inline).
+      const capaRes = await fetch(`${API_URL}/capa/${capaId}`, { headers });
+      if (!capaRes.ok) {
+        setCAPA(null);
+        return;
       }
+      const raw = await capaRes.json();
+      const actions = [...(raw.correctiveActions || []), ...(raw.preventiveActions || [])];
+      const done = actions.filter((a: any) => (a.status || '').toLowerCase() === 'completed' || (a.status || '').toLowerCase() === 'verified').length;
+      const up = (v: any) => (v ? String(v).toUpperCase() : '');
 
-      const tasksRes = await fetch(`${API_URL}/quality/capa/${capaId}/tasks`, { headers });
-      if (tasksRes.ok) {
-        setTasks(await tasksRes.json());
-      }
+      setCAPA({
+        ...raw,
+        capaNumber: raw.capaNumber || raw.id,
+        type: (raw.preventiveActions?.length && !raw.correctiveActions?.length) ? 'PREVENTIVE' : 'CORRECTIVE',
+        status: up(raw.status),
+        priority: up(raw.priority),
+        category: raw.category || raw.source || '',
+        department: raw.department || '',
+        owner: { id: raw.ownerId || '', name: raw.ownerName || '—', department: raw.department || '' },
+        verifier: raw.verification ? { id: raw.verification.verifiedBy || '', name: raw.verification.verifiedByName || '—', department: '' } : undefined,
+        createdBy: { id: raw.ownerId || '', name: raw.ownerName || '—', department: raw.department || '' },
+        createdDate: raw.createdAt,
+        targetDate: raw.targetDate,
+        completionPercentage: actions.length ? Math.round((done / actions.length) * 100) : 0,
+        rootCauseAnalysis: raw.rootCauseAnalysis?.rootCauses?.join('; ') || raw.rootCauseAnalysis?.summary || undefined,
+        linkedNCRs: raw.linkedNCRs || [],
+        linkedInspections: raw.linkedInspections || [],
+        currency: raw.currency || 'RON',
+      } as CAPADetail);
 
-      const activitiesRes = await fetch(`${API_URL}/quality/capa/${capaId}/activities`, { headers });
-      if (activitiesRes.ok) {
-        setActivities(await activitiesRes.json());
-      }
+      // Derive the "tasks" tab from the real corrective/preventive actions.
+      setTasks(actions.map((a: any) => ({
+        id: a.id,
+        title: a.description || a.title || 'Actiune',
+        description: a.description,
+        assignedTo: a.assignedToName || a.assignedTo || '—',
+        dueDate: a.dueDate,
+        status: up(a.status) as CAPATask['status'],
+        completedDate: a.completedAt || a.verifiedAt,
+        notes: a.notes,
+      })));
 
-      const attachmentsRes = await fetch(`${API_URL}/quality/capa/${capaId}/attachments`, { headers });
-      if (attachmentsRes.ok) {
-        setAttachments(await attachmentsRes.json());
-      }
+      // No backend endpoint for activity log / attachments yet — honest empties.
+      setActivities([]);
+      setAttachments([]);
     } catch (error) {
       console.error('Error fetching CAPA details:', error);
-      loadMockData();
+      setCAPA(null);
     } finally {
       setLoading(false);
     }
-  };
-
-  const loadMockData = () => {
-    setCAPA({
-      id: capaId,
-      capaNumber: 'CAPA-2024-0045',
-      title: 'Imbunatatire proces ambalare furnizor',
-      description: 'Actiune corectiva pentru prevenirea defectelor vizuale cauzate de manipularea necorespunzatoare in timpul ambalarii. Se vor implementa separatoare intre componentele PCB si se va actualiza procedura de ambalare.',
-      type: 'CORRECTIVE',
-      status: 'IN_PROGRESS',
-      priority: 'HIGH',
-      category: 'Proces Furnizor',
-      department: 'Achizitii',
-      owner: {
-        id: 'user-002',
-        name: 'Ion Popescu',
-        department: 'Achizitii',
-      },
-      verifier: {
-        id: 'user-003',
-        name: 'Ana Marinescu',
-        department: 'Quality Assurance',
-      },
-      createdBy: {
-        id: 'user-001',
-        name: 'Maria Ionescu',
-        department: 'Quality Control',
-      },
-      createdDate: '2024-12-16',
-      targetDate: '2024-12-30',
-      completionPercentage: 65,
-      rootCauseAnalysis: '## Analiza 5 Why\n\n1. **De ce au aparut zgarieturile?**\n   PCB-urile au intrat in contact direct unele cu altele\n\n2. **De ce au intrat in contact?**\n   Nu existau separatoare in cutie\n\n3. **De ce nu existau separatoare?**\n   Procedura de ambalare nu specifica acest lucru\n\n4. **De ce nu specifica?**\n   Procedura nu a fost actualizata pentru noul produs\n\n5. **Cauza radacina:**\n   Lipsa revizuirii procedurii de ambalare la introducerea produselor noi',
-      proposedActions: '1. Actualizare procedura de ambalare la furnizor\n2. Implementare separatoare din spuma EPE intre straturi\n3. Training pentru personalul de ambalare\n4. Audit la furnizor pentru verificare implementare',
-      implementedActions: '1. ✅ Procedura actualizata si trimisa furnizorului\n2. ✅ Furnizor confirma primirea separatoarelor EPE\n3. 🔄 Training in curs (programat 20.12)',
-      verificationMethod: 'Inspectie primele 3 loturi dupa implementare + Audit furnizor',
-      linkedNCRs: ['NCR-2024-0089'],
-      linkedInspections: ['INS-2024-0156'],
-      costEstimate: 1500,
-      actualCost: 1200,
-      currency: 'RON',
-      preventionScope: 'Toate componentele electronice de la acest furnizor',
-      riskLevel: 'MEDIUM',
-      tags: ['furnizor', 'ambalaj', 'proces'],
-      updatedAt: '2024-12-17T10:30:00Z',
-    });
-
-    setTasks([
-      {
-        id: 'task-001',
-        title: 'Actualizare procedura ambalare',
-        description: 'Revizuire si actualizare procedura PR-AMB-001',
-        assignedTo: 'Ion Popescu',
-        dueDate: '2024-12-18',
-        status: 'COMPLETED',
-        completedDate: '2024-12-17',
-        notes: 'Procedura v2.0 finalizata si trimisa la furnizor',
-      },
-      {
-        id: 'task-002',
-        title: 'Achizitie separatoare EPE',
-        description: 'Comandare si livrare separatoare spuma EPE',
-        assignedTo: 'Ion Popescu',
-        dueDate: '2024-12-19',
-        status: 'COMPLETED',
-        completedDate: '2024-12-18',
-      },
-      {
-        id: 'task-003',
-        title: 'Training personal ambalare',
-        description: 'Sesiune training pentru echipa de ambalare la furnizor',
-        assignedTo: 'Ana Marinescu',
-        dueDate: '2024-12-20',
-        status: 'IN_PROGRESS',
-        notes: 'Training programat pentru 20.12, ora 10:00',
-      },
-      {
-        id: 'task-004',
-        title: 'Audit furnizor',
-        description: 'Verificare implementare la sediul furnizorului',
-        assignedTo: 'Maria Ionescu',
-        dueDate: '2024-12-28',
-        status: 'PENDING',
-      },
-      {
-        id: 'task-005',
-        title: 'Inspectie lot verificare',
-        description: 'Inspectie primele 3 loturi dupa implementare',
-        assignedTo: 'Maria Ionescu',
-        dueDate: '2024-12-30',
-        status: 'PENDING',
-      },
-    ]);
-
-    setActivities([
-      {
-        id: 'act-001',
-        type: 'TASK_UPDATE',
-        description: 'Task "Achizitie separatoare EPE" marcat ca finalizat',
-        performedBy: 'Ion Popescu',
-        performedAt: '2024-12-18T16:00:00Z',
-      },
-      {
-        id: 'act-002',
-        type: 'COMMENT',
-        description: 'Furnizorul a confirmat primirea noii proceduri si a comandat separatoarele.',
-        performedBy: 'Ion Popescu',
-        performedAt: '2024-12-18T14:30:00Z',
-      },
-      {
-        id: 'act-003',
-        type: 'TASK_UPDATE',
-        description: 'Task "Actualizare procedura ambalare" marcat ca finalizat',
-        performedBy: 'Ion Popescu',
-        performedAt: '2024-12-17T15:00:00Z',
-      },
-      {
-        id: 'act-004',
-        type: 'STATUS_CHANGE',
-        description: 'Status schimbat de la Deschis la In Desfasurare',
-        performedBy: 'Ion Popescu',
-        performedAt: '2024-12-17T09:00:00Z',
-        oldValue: 'OPEN',
-        newValue: 'IN_PROGRESS',
-      },
-      {
-        id: 'act-005',
-        type: 'EDIT',
-        description: 'Adaugare analiza cauza radacina (5 Why)',
-        performedBy: 'Ion Popescu',
-        performedAt: '2024-12-16T16:00:00Z',
-      },
-      {
-        id: 'act-006',
-        type: 'STATUS_CHANGE',
-        description: 'CAPA creat si deschis pentru actiune',
-        performedBy: 'Maria Ionescu',
-        performedAt: '2024-12-16T12:00:00Z',
-        oldValue: 'DRAFT',
-        newValue: 'OPEN',
-      },
-    ]);
-
-    setAttachments([
-      {
-        id: 'att-001',
-        filename: 'procedura_ambalare_v2.pdf',
-        type: 'DOCUMENT',
-        size: 856000,
-        uploadedBy: 'Ion Popescu',
-        uploadedAt: '2024-12-17T15:30:00Z',
-        url: '/attachments/procedura_ambalare_v2.pdf',
-      },
-      {
-        id: 'att-002',
-        filename: 'specificatie_separatoare_EPE.pdf',
-        type: 'DOCUMENT',
-        size: 324000,
-        uploadedBy: 'Ion Popescu',
-        uploadedAt: '2024-12-17T10:00:00Z',
-        url: '/attachments/specificatie_separatoare.pdf',
-      },
-      {
-        id: 'att-003',
-        filename: 'diagrama_ishikawa.png',
-        type: 'IMAGE',
-        size: 1245000,
-        uploadedBy: 'Ion Popescu',
-        uploadedAt: '2024-12-16T16:30:00Z',
-        url: '/attachments/diagrama_ishikawa.png',
-      },
-    ]);
   };
 
   const handleUpdateStatus = async (newStatus: string) => {
@@ -574,10 +431,6 @@ export default function CAPADetailPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-      {/* TODO(REQ-035): wire to real API */}
-      <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200">
-        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
-      </div>
         <div className="h-8 bg-gray-200 rounded w-48 mb-4"></div>
         <div className="bg-white rounded-lg shadow p-6">
           <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
