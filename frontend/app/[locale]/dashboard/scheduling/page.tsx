@@ -214,6 +214,10 @@ export default function SchedulingPage() {
 
   return (
     <div className="p-6 space-y-6">
+      <div role="status" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950/40 p-3 text-sm font-medium text-amber-900 dark:text-amber-200">
+        ⚠ Date demonstrative — nu reflectă situația reală. / Demo data — does not reflect real data.
+      </div>
+
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
