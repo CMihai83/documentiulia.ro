@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 35 · logged: 2 · planned: 4 · in_progress: 1 · shipped: 26 · parked: 2 · rejected: 0
+Total: 37 · logged: 3 · planned: 4 · in_progress: 1 · shipped: 27 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -39,4 +39,6 @@ Total: 35 · logged: 2 · planned: 4 · in_progress: 1 · shipped: 26 · parked:
 | REQ-032 | 2026-07-09 | **shipped** | Investigate all logger errors + fix what is missing | b337f941,2815df44,0ca9ca7b honesty sweep |
 | REQ-033 | 2026-07-09 | **shipped** | Remove all fabricated/mock data shown to users; wire mock-only pages (e-Factura, analytics, ANAF status, logistics reconciliation, finance t… | honesty sweep,a3c8dc57 — 4 pages wired; only analytics Goals widget stays demo (no backend) |
 | REQ-034 | 2026-07-09 | **shipped** | Dedupe duplicate pages: /dashboard/efactura vs /dashboard/e-invoice (sidebar links e-invoice), and /dashboard/webhooks vs /dashboard/develop… | 0ca9ca7b,23ba852b |
-| REQ-035 | 2026-07-10 | **planned** | Fabrication residue in ~26 OTHER pages (Maria Ionescu / SKU-001 seeds: client-portal, blog, ecommerce, scheduling, employee-portal, logistic… |  |
+| REQ-035 | 2026-07-10 | **shipped** | Fabrication residue in ~26 OTHER pages (Maria Ionescu / SKU-001 seeds: client-portal, blog, ecommerce, scheduling, employee-portal, logistic… | 7bc5f151 — 3 lanes + last mile; A-class 0 |
+| REQ-036 | 2026-07-10 | **planned** | Build backends for the 21 demo-bannered pages (procurement orders, inventory movements/alerts, expenses, assets, contracts, payroll runs, fr… | REQ-035 |
+| REQ-037 | 2026-07-10 | **logged** | Marketing /about page lists fabricated executives (e.g. 'Elena Dumitrescu, CFO') — user decision: real team, placeholder, or remove |  |
