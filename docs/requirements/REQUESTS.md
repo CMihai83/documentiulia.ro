@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 38 · logged: 3 · planned: 3 · in_progress: 3 · shipped: 27 · parked: 2 · rejected: 0
+Total: 39 · logged: 3 · planned: 3 · in_progress: 4 · shipped: 27 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -43,3 +43,4 @@ Total: 38 · logged: 3 · planned: 3 · in_progress: 3 · shipped: 27 · parked:
 | REQ-036 | 2026-07-10 | **in_progress** | Build backends for the 21 demo-bannered pages (procurement orders, inventory movements/alerts, expenses, assets, contracts, payroll runs, fr… | REQ-035 |
 | REQ-037 | 2026-07-10 | **logged** | Marketing /about page lists fabricated executives (e.g. 'Elena Dumitrescu, CFO') — user decision: real team, placeholder, or remove |  |
 | REQ-038 | 2026-07-10 | **in_progress** | MAJOR FINDING: the 21 'no backend' bannered pages nearly all HAVE backends under different module names (assets->asset-management 83 routes,… | REQ-036 |
+| REQ-039 | 2026-07-10 | **in_progress** | Research and upgrade the frontend design |  |
