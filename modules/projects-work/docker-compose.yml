@@ -1,0 +1,57 @@
+# projects-work — standalone deployable slice of documentiulia (REQ-043).
+# Own database, own Redis, own JWT secret, own port. Same backend image as the
+# platform; only the projects_work/compliance module graph is bootstrapped
+# (dist/main-projects-work.js — see backend/src/standalone/projects_work-app.module.ts).
+name: projects-work
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: projects_work
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-projects_work}
+      POSTGRES_DB: projects_work
+    volumes:
+      - projects_work_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U projects_work"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - projects_work_redis:/data
+
+  api:
+    build: ../../backend
+    command: sh -c "npx prisma migrate deploy && node dist/main-projects-work"
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://projects_work:${DB_PASSWORD:-projects_work}@db:5432/projects_work?schema=public
+      REDIS_URL: redis://redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      PROJECTS_PORT: "3109"
+      PORT: "3109"
+      NODE_ENV: production
+    ports:
+      - "127.0.0.1:3109:3109"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3109/api/v1/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  projects_work_pgdata:
+  projects_work_redis:
