@@ -39,3 +39,7 @@ curl -X POST localhost:3101/api/v1/auth/register -H 'Content-Type: application/j
   -d '{"email":"test@example.com","password":"Test1234!","firstName":"Test","lastName":"User"}'
 # then use the returned token against /api/v1/invoices, /api/v1/vat, /api/v1/efactura-b2b ...
 ```
+
+## Market research
+
+See [docs/research/invoicing-efactura.md](../../docs/research/invoicing-efactura.md) — verified findings (REQ-044): pricing corridor 15-30 RON/mo, accountant multi-client beachhead (25€+2€/CIF benchmark), differentiation = ungated bundle with full SAF-T D406 generation.
