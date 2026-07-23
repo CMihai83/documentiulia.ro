@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 43 · logged: 3 · planned: 4 · in_progress: 3 · shipped: 31 · parked: 2 · rejected: 0
+Total: 44 · logged: 3 · planned: 4 · in_progress: 3 · shipped: 32 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -47,4 +47,5 @@ Total: 43 · logged: 3 · planned: 4 · in_progress: 3 · shipped: 31 · parked:
 | REQ-040 | 2026-07-10 | **shipped** | Build genuinely-missing backends: projects controller, scheduling/meetings module, client-portal self-resolution ('my client' from JWT); wir… | master 22be257e |
 | REQ-041 | 2026-07-10 | **shipped** | Organise how services are bundled and how users consume them from the dashboard burger/left menu | sidebar IA live |
 | REQ-042 | 2026-07-10 | **planned** | Retire the legacy in-memory client-portal :clientId controller/service in favour of me/*; add create-goal UI for analytics goals; ATS /candi… |  |
-| REQ-043 | 2026-07-23 | **in_progress** | check functionality in documentiulia and group/create stand alone modules that can be used as standalone or in connection with other modules… |  |
+| REQ-043 | 2026-07-23 | **shipped** | check functionality in documentiulia and group/create stand alone modules that can be used as standalone or in connection with other modules… | PR#33,docs/architecture/standalone-modules.md,PR#33,PR#34,PR#35,docs/architecture/standalone-modules.md |
+| REQ-044 | 2026-07-23 | **in_progress** | make sure you are doing the /deep-research on all modules you implement |  |
