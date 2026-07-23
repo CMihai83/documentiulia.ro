@@ -3,6 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
 import { XMLBuilder, XMLParser } from 'fast-xml-parser';
 import { SpvService } from './spv.service';
+import { AccountingService, JournalEntry, TrialBalanceRow } from '../accounting/accounting.service';
+import { ROMANIAN_CHART_OF_ACCOUNTS, saftAccountType } from '../accounting/romanian-chart-of-accounts';
 import * as crypto from 'crypto';
 
 /**
@@ -148,6 +150,7 @@ export class SaftD406MonthlyService {
     private prisma: PrismaService,
     private configService: ConfigService,
     private spvService: SpvService,
+    private accountingService: AccountingService,
   ) {
     this.xmlBuilder = new XMLBuilder({
       ignoreAttributes: false,
@@ -182,7 +185,7 @@ export class SaftD406MonthlyService {
 
     try {
       // Fetch all required data in parallel
-      const [user, invoices, payments, products, employees, payrolls] = await Promise.all([
+      const [user, invoices, payments, products, employees, payrolls, orgMembership, journalEntries, trialBalance] = await Promise.all([
         this.prisma.user.findUnique({ where: { id: userId } }),
         this.prisma.invoice.findMany({
           where: {
@@ -209,7 +212,30 @@ export class SaftD406MonthlyService {
           },
           include: { employee: true },
         }),
+        this.prisma.organizationMember.findFirst({
+          where: { userId, isActive: true },
+          include: { organization: true },
+        }),
+        this.accountingService.getJournalEntries(userId, { startDate, endDate }),
+        this.accountingService.getTrialBalance(userId, { startDate, endDate }),
       ]);
+
+      // Company profile: Organization is authoritative (has full address/bank
+      // data); User fields are the standalone-mode fallback.
+      const org = orgMembership?.organization;
+      const companyProfile = {
+        cui: org?.cui || user?.cui,
+        company: org?.name || user?.company,
+        address: org?.address || user?.address,
+        city: org?.city || (user as any)?.city,
+        postalCode: org?.postalCode || (user as any)?.postalCode,
+        county: org?.county || (user as any)?.county,
+        phone: org?.phone || (user as any)?.phone,
+        email: org?.email || user?.email,
+        website: org?.website || (user as any)?.website,
+        iban: org?.bankAccount || (user as any)?.iban,
+        bankName: org?.bankName || (user as any)?.bankName,
+      };
 
       // Validate required company data
       if (!user) {
@@ -217,11 +243,11 @@ export class SaftD406MonthlyService {
         return this.createErrorResult(period, errors);
       }
 
-      if (!user.cui) {
+      if (!companyProfile.cui) {
         errors.push('E002: CUI/CIF lipsă - obligatoriu pentru SAF-T D406');
       }
 
-      if (!user.company) {
+      if (!companyProfile.company) {
         errors.push('E003: Denumire companie lipsă');
       }
 
@@ -266,6 +292,9 @@ export class SaftD406MonthlyService {
       // Build complete SAF-T D406 structure
       const saftData = this.buildD406Structure({
         user,
+        companyProfile,
+        journalEntries,
+        trialBalance,
         period,
         startDate,
         endDate,
@@ -352,6 +381,9 @@ export class SaftD406MonthlyService {
    */
   private buildD406Structure(data: {
     user: any;
+    companyProfile: any;
+    journalEntries: JournalEntry[];
+    trialBalance: TrialBalanceRow[];
     period: string;
     startDate: Date;
     endDate: Date;
@@ -364,7 +396,7 @@ export class SaftD406MonthlyService {
     employees: any[];
     payrolls: any[];
   }): any {
-    const { user, period, startDate, endDate, salesInvoices, purchaseInvoices, customers, suppliers, products, payments, employees, payrolls } = data;
+    const { user, companyProfile, journalEntries, trialBalance, period, startDate, endDate, salesInvoices, purchaseInvoices, customers, suppliers, products, payments, employees, payrolls } = data;
 
     return {
       'n1:AuditFile': {
@@ -380,7 +412,7 @@ export class SaftD406MonthlyService {
           'n1:SoftwareCompanyName': 'DocumentIulia.ro',
           'n1:SoftwareID': 'DOCUMENTIULIA-ERP-V1',
           'n1:SoftwareVersion': '1.0.0',
-          'n1:Company': this.buildCompanyInfo(user),
+          'n1:Company': this.buildCompanyInfo(companyProfile),
           'n1:DefaultCurrencyCode': 'RON',
           'n1:SelectionCriteria': {
             'n1:SelectionStartDate': formatLocalDate(startDate),
@@ -394,16 +426,16 @@ export class SaftD406MonthlyService {
 
         // MasterFiles Section
         'n1:MasterFiles': {
-          'n1:GeneralLedgerAccounts': this.buildGeneralLedgerAccounts(),
+          'n1:GeneralLedgerAccounts': this.buildGeneralLedgerAccounts(trialBalance),
           'n1:Customers': this.buildCustomers(customers),
           'n1:Suppliers': this.buildSuppliers(suppliers),
-          'n1:TaxTable': this.buildTaxTable(),
+          'n1:TaxTable': this.buildTaxTable(period, [...salesInvoices, ...purchaseInvoices]),
           'n1:Products': this.buildProducts(products),
           ...(employees.length > 0 ? { 'n1:Owners': this.buildOwners(user) } : {}),
         },
 
         // GeneralLedgerEntries Section (recommended)
-        'n1:GeneralLedgerEntries': this.buildGeneralLedgerEntries(salesInvoices, purchaseInvoices, payments, period),
+        'n1:GeneralLedgerEntries': this.buildGeneralLedgerEntries(journalEntries, period),
 
         // SourceDocuments Section
         'n1:SourceDocuments': {
@@ -451,32 +483,25 @@ export class SaftD406MonthlyService {
   /**
    * Build Romanian Chart of Accounts (Planul de Conturi General - PCG)
    */
-  private buildGeneralLedgerAccounts(): any {
-    // Main accounts used in Romanian accounting
-    const accounts = [
-      { id: '401', description: 'Furnizori', type: 'L' },
-      { id: '4111', description: 'Clienti', type: 'A' },
-      { id: '4423', description: 'TVA de plata', type: 'L' },
-      { id: '4426', description: 'TVA deductibila', type: 'A' },
-      { id: '4427', description: 'TVA colectata', type: 'L' },
-      { id: '5121', description: 'Conturi la banci in lei', type: 'A' },
-      { id: '5311', description: 'Casa in lei', type: 'A' },
-      { id: '601', description: 'Cheltuieli cu materiile prime', type: 'E' },
-      { id: '607', description: 'Cheltuieli privind marfurile', type: 'E' },
-      { id: '628', description: 'Alte cheltuieli cu serviciile', type: 'E' },
-      { id: '641', description: 'Cheltuieli cu salariile personalului', type: 'E' },
-      { id: '701', description: 'Venituri din vanzarea produselor', type: 'R' },
-      { id: '704', description: 'Venituri din servicii prestate', type: 'R' },
-      { id: '707', description: 'Venituri din vanzarea marfurilor', type: 'R' },
-    ];
+  private buildGeneralLedgerAccounts(trialBalance: TrialBalanceRow[]): any {
+    // Shared OMFP 1802 chart (single source with the accounting module) merged
+    // with the period trial balance so D406 ties out with accounting reports.
+    const balanceByCode = new Map(trialBalance.map((r) => [r.accountCode, r]));
 
     return {
-      'n1:Account': accounts.map((acc) => ({
-        'n1:AccountID': acc.id,
-        'n1:AccountDescription': acc.description,
-        'n1:StandardAccountID': acc.id,
-        'n1:AccountType': acc.type,
-      })),
+      'n1:Account': ROMANIAN_CHART_OF_ACCOUNTS.map((acc) => {
+        const bal = balanceByCode.get(acc.code);
+        return {
+          'n1:AccountID': acc.code,
+          'n1:AccountDescription': acc.name,
+          'n1:StandardAccountID': acc.code,
+          'n1:AccountType': saftAccountType(acc.type),
+          'n1:OpeningDebitBalance': (bal?.openingDebit ?? 0).toFixed(2),
+          'n1:ClosingDebitBalance': (bal?.closingDebit ?? 0).toFixed(2),
+          'n1:OpeningCreditBalance': (bal?.openingCredit ?? 0).toFixed(2),
+          'n1:ClosingCreditBalance': (bal?.closingCredit ?? 0).toFixed(2),
+        };
+      }),
     };
   }
 
@@ -535,77 +560,41 @@ export class SaftD406MonthlyService {
   /**
    * Build Tax Table per Legea 141/2025
    */
-  private buildTaxTable(): any {
-    return {
-      'n1:TaxTableEntry': [
-        {
-          'n1:TaxType': 'TVA',
-          'n1:TaxCode': 'S',
-          'n1:TaxCodeDetails': {
-            'n1:TaxCode': 'S',
-            'n1:Description': 'TVA standard 21% - Legea 141/2025',
-            'n1:TaxPercentage': '21.00',
-            'n1:Country': 'RO',
-            'n1:StandardTaxCode': 'S',
-            'n1:BaseRate': '100.00',
-            'n1:FlatTaxRate': {},
-          },
-        },
-        {
-          'n1:TaxType': 'TVA',
-          'n1:TaxCode': 'R1',
-          'n1:TaxCodeDetails': {
-            'n1:TaxCode': 'R1',
-            'n1:Description': 'TVA redus 11% - alimente/medicamente - Legea 141/2025',
-            'n1:TaxPercentage': '11.00',
-            'n1:Country': 'RO',
-            'n1:StandardTaxCode': 'R1',
-            'n1:BaseRate': '100.00',
-            'n1:FlatTaxRate': {},
-          },
-        },
-        {
-          'n1:TaxType': 'TVA',
-          'n1:TaxCode': 'R2',
-          'n1:Description': 'TVA redus 5% - locuinte sociale',
-          'n1:TaxCodeDetails': {
-            'n1:TaxCode': 'R2',
-            'n1:Description': 'TVA redus 5% - locuinte sociale',
-            'n1:TaxPercentage': '5.00',
-            'n1:Country': 'RO',
-            'n1:StandardTaxCode': 'R2',
-            'n1:BaseRate': '100.00',
-            'n1:FlatTaxRate': {},
-          },
-        },
-        {
-          'n1:TaxType': 'TVA',
-          'n1:TaxCode': 'Z',
-          'n1:TaxCodeDetails': {
-            'n1:TaxCode': 'Z',
-            'n1:Description': 'TVA 0% - export/intracomunitar',
-            'n1:TaxPercentage': '0.00',
-            'n1:Country': 'RO',
-            'n1:StandardTaxCode': 'Z',
-            'n1:BaseRate': '100.00',
-            'n1:FlatTaxRate': {},
-          },
-        },
-        {
-          'n1:TaxType': 'TVA',
-          'n1:TaxCode': 'E',
-          'n1:TaxCodeDetails': {
-            'n1:TaxCode': 'E',
-            'n1:Description': 'Scutit de TVA',
-            'n1:TaxPercentage': '0.00',
-            'n1:Country': 'RO',
-            'n1:StandardTaxCode': 'E',
-            'n1:BaseRate': '100.00',
-            'n1:FlatTaxRate': {},
-          },
-        },
-      ],
-    };
+  private buildTaxTable(period: string, invoices: any[] = []): any {
+    const entry = (code: string, description: string, pct: string) => ({
+      'n1:TaxType': 'TVA',
+      'n1:TaxCode': code,
+      'n1:TaxCodeDetails': {
+        'n1:TaxCode': code,
+        'n1:Description': description,
+        'n1:TaxPercentage': pct,
+        'n1:Country': 'RO',
+        'n1:StandardTaxCode': code,
+        'n1:BaseRate': '100.00',
+        'n1:FlatTaxRate': {},
+      },
+    });
+
+    // Legea 141/2025: standard 21% / reduced 11% from Aug 2025; earlier
+    // periods (and transition months containing old-rate invoices) also need
+    // the historical 19% / 9% codes.
+    const preLegea141 = period < '2025-08';
+    const ratesUsed = new Set(invoices.map((i) => Number(i.vatRate)));
+    const entries = [
+      entry('S', 'TVA standard 21% - Legea 141/2025', '21.00'),
+      entry('R1', 'TVA redus 11% - alimente/medicamente - Legea 141/2025', '11.00'),
+      entry('R2', 'TVA redus 5% - locuinte sociale', '5.00'),
+      entry('Z', 'TVA 0% - export/intracomunitar', '0.00'),
+      entry('E', 'Scutit de TVA', '0.00'),
+    ];
+    if (preLegea141 || ratesUsed.has(19)) {
+      entries.push(entry('S19', 'TVA standard 19% (istoric, pana la 31.07.2025)', '19.00'));
+    }
+    if (preLegea141 || ratesUsed.has(9)) {
+      entries.push(entry('R9', 'TVA redus 9% (istoric, pana la 31.07.2025)', '9.00'));
+    }
+
+    return { 'n1:TaxTableEntry': entries };
   }
 
   /**
@@ -644,49 +633,48 @@ export class SaftD406MonthlyService {
   /**
    * Build General Ledger Entries (Journal entries)
    */
-  private buildGeneralLedgerEntries(
-    salesInvoices: any[],
-    purchaseInvoices: any[],
-    payments: any[],
-    period: string,
-  ): any {
-    const totalDebit = purchaseInvoices.reduce((sum, i) => sum + Number(i.grossAmount || 0), 0) +
-      payments.reduce((sum, p) => sum + Number(p.amount || 0), 0);
-    const totalCredit = salesInvoices.reduce((sum, i) => sum + Number(i.grossAmount || 0), 0) +
-      payments.reduce((sum, p) => sum + Number(p.amount || 0), 0);
+  private buildGeneralLedgerEntries(journalEntries: JournalEntry[], period: string): any {
+    // Double-entry journal synthesized by AccountingService (411/70x/4427 for
+    // sales, 6xx/4426/401 for purchases, 5121/411 for receipts) — the same
+    // source as the trial balance, so the D406 ledger is balanced and ties out.
+    const posted = journalEntries.filter((e) => e.status === 'POSTED');
 
-    const entries = [
-      ...salesInvoices.map((inv) => ({
-        'n1:JournalID': 'VZ', // Vanzari
-        'n1:Description': `Factura vanzare ${inv.invoiceNumber}`,
-        'n1:DebitAmount': { 'n1:Amount': '0.00' },
-        'n1:CreditAmount': { 'n1:Amount': Number(inv.grossAmount || 0).toFixed(2) },
-        'n1:AccountID': '4111',
-        'n1:CustomerID': inv.partnerCui || '',
-        'n1:TransactionID': inv.id,
-        'n1:TransactionDate': inv.invoiceDate?.toISOString().split('T')[0] || period + '-01',
-      })),
-      ...purchaseInvoices.map((inv) => ({
-        'n1:JournalID': 'CP', // Cumparari
-        'n1:Description': `Factura achizitie ${inv.invoiceNumber}`,
-        'n1:DebitAmount': { 'n1:Amount': Number(inv.grossAmount || 0).toFixed(2) },
-        'n1:CreditAmount': { 'n1:Amount': '0.00' },
-        'n1:AccountID': '401',
-        'n1:SupplierID': inv.partnerCui || '',
-        'n1:TransactionID': inv.id,
-        'n1:TransactionDate': inv.invoiceDate?.toISOString().split('T')[0] || period + '-01',
-      })),
-    ];
+    let totalDebit = 0;
+    let totalCredit = 0;
+    const transactions = posted.map((entry) => {
+      const lines = entry.lines.map((line, idx) => {
+        totalDebit += line.debit;
+        totalCredit += line.credit;
+        return {
+          'n1:RecordID': `${entry.id}-${idx + 1}`,
+          'n1:AccountID': line.accountCode,
+          'n1:Description': line.description || entry.description,
+          ...(line.debit > 0
+            ? { 'n1:DebitAmount': { 'n1:Amount': line.debit.toFixed(2) } }
+            : { 'n1:CreditAmount': { 'n1:Amount': line.credit.toFixed(2) } }),
+        };
+      });
+      return {
+        'n1:TransactionID': entry.id,
+        'n1:Period': period.split('-')[1],
+        'n1:PeriodYear': period.split('-')[0],
+        'n1:TransactionDate': entry.date?.toISOString?.().split('T')[0] || `${period}-01`,
+        'n1:Description': entry.description,
+        'n1:SystemEntryDate': entry.createdAt?.toISOString?.().split('T')[0] || `${period}-01`,
+        'n1:GLPostingDate': entry.date?.toISOString?.().split('T')[0] || `${period}-01`,
+        'n1:Line': lines,
+      };
+    });
 
     return {
-      'n1:NumberOfEntries': entries.length.toString(),
+      'n1:NumberOfEntries': posted.length.toString(),
       'n1:TotalDebit': totalDebit.toFixed(2),
       'n1:TotalCredit': totalCredit.toFixed(2),
-      'n1:Journal': entries.length > 0 ? {
+      'n1:Journal': posted.length > 0 ? {
         'n1:JournalID': 'GEN',
         'n1:Description': `Registru jurnal ${period}`,
         'n1:Type': 'GEN',
-        'n1:Transaction': entries.slice(0, 10000), // Limit entries
+        'n1:Transaction': transactions.slice(0, 10000),
       } : undefined,
     };
   }

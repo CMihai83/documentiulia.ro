@@ -24,10 +24,11 @@ import { EfacturaB2CController } from './efactura-b2c.controller';
 import { AnafLookupService } from './anaf-lookup.service';
 import { AnafLookupController } from './anaf-lookup.controller';
 import { PrismaModule } from '../prisma/prisma.module';
+import { AccountingModule } from '../accounting/accounting.module';
 import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
 
 @Module({
-  imports: [ScheduleModule.forRoot(), EventEmitterModule.forRoot(), PrismaModule],
+  imports: [ScheduleModule.forRoot(), EventEmitterModule.forRoot(), PrismaModule, AccountingModule],
   controllers: [
     AnafController,
     SpvController,

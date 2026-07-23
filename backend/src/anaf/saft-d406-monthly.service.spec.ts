@@ -3,6 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { SaftD406MonthlyService } from './saft-d406-monthly.service';
 import { SpvService } from './spv.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { AccountingService } from '../accounting/accounting.service';
+import { XMLParser } from 'fast-xml-parser';
 
 /**
  * TEST-002: Automated Tests for SAF-T D406 Monthly XML Generation
@@ -117,6 +119,52 @@ describe('SaftD406MonthlyService', () => {
   const mockEmployees: any[] = [];
   const mockPayrolls: any[] = [];
 
+  // Double-entry journal fixtures consistent with mockInvoices (REQ-045:
+  // GeneralLedgerEntries now come from AccountingService, not ad-hoc math)
+  const mockJournalEntries = [
+    {
+      id: 'INV-inv-1', date: new Date('2025-01-15'),
+      description: 'Factura vanzare FV-001 - Client Test SRL', reference: 'FV-001',
+      lines: [
+        { accountCode: '411', accountName: 'Clienti', debit: 1210, credit: 0 },
+        { accountCode: '704', accountName: 'Venituri din servicii', debit: 0, credit: 1000 },
+        { accountCode: '4427', accountName: 'TVA colectata', debit: 0, credit: 210 },
+      ],
+      status: 'POSTED' as const, createdAt: new Date('2025-01-15'),
+    },
+    {
+      id: 'PINV-inv-3', date: new Date('2025-01-10'),
+      description: 'Factura achizitie FA-001 - Furnizor Test SRL', reference: 'FA-001',
+      lines: [
+        { accountCode: '628', accountName: 'Alte cheltuieli cu servicii', debit: 2000, credit: 0 },
+        { accountCode: '4426', accountName: 'TVA deductibila', debit: 420, credit: 0 },
+        { accountCode: '401', accountName: 'Furnizori', debit: 0, credit: 2420 },
+      ],
+      status: 'POSTED' as const, createdAt: new Date('2025-01-10'),
+    },
+  ];
+
+  const mockTrialBalance = [
+    { accountCode: '411', accountName: 'Clienti', accountType: 'ASSET',
+      openingDebit: 0, openingCredit: 0, periodDebit: 1210, periodCredit: 0,
+      closingDebit: 1210, closingCredit: 0 },
+    { accountCode: '4427', accountName: 'TVA colectata', accountType: 'LIABILITY',
+      openingDebit: 0, openingCredit: 0, periodDebit: 0, periodCredit: 210,
+      closingDebit: 0, closingCredit: 210 },
+  ];
+
+  const mockOrganization = {
+    name: 'Org Test SRL', cui: 'RO55555555', address: 'Bd. Organizatiei 9',
+    city: 'Cluj-Napoca', postalCode: '400001', county: 'Cluj',
+    phone: '+40744000000', email: 'org@test.ro', website: 'https://org.test.ro',
+    bankAccount: 'RO12BTRL0000000000000000', bankName: 'Org Bank',
+  };
+
+  const accountingServiceMock = {
+    getJournalEntries: jest.fn().mockResolvedValue(mockJournalEntries),
+    getTrialBalance: jest.fn().mockResolvedValue(mockTrialBalance),
+  };
+
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -148,7 +196,15 @@ describe('SaftD406MonthlyService', () => {
               findMany: jest.fn().mockResolvedValue([]),
               update: jest.fn().mockResolvedValue({}),
             },
+            // default: no org membership -> company data falls back to User
+            organizationMember: {
+              findFirst: jest.fn().mockResolvedValue(null),
+            },
           },
+        },
+        {
+          provide: AccountingService,
+          useValue: accountingServiceMock,
         },
         {
           provide: ConfigService,
@@ -435,6 +491,70 @@ describe('SaftD406MonthlyService', () => {
       const duration = Date.now() - startTime;
 
       expect(duration).toBeLessThan(5000);
+    });
+  });
+
+  describe('REQ-045: full D406 generation (GL tie-out, Organization data, period-aware TaxTable)', () => {
+    const parser = new XMLParser({ ignoreAttributes: false });
+
+    async function generateParsed(period: string) {
+      const result = await service.generateMonthlyD406('user-123', period);
+      expect(result.success).toBe(true);
+      return parser.parse(result.xml);
+    }
+
+    it('emits a balanced double-entry GeneralLedgerEntries section', async () => {
+      const doc = await generateParsed('2025-01');
+      const gle = doc['n1:AuditFile']['n1:GeneralLedgerEntries'];
+      expect(gle['n1:TotalDebit']).toBe(gle['n1:TotalCredit']);
+      expect(Number(gle['n1:TotalDebit'])).toBeCloseTo(3630, 2); // 1210 + 2420
+      const txs = [].concat(gle['n1:Journal']['n1:Transaction']);
+      expect(txs).toHaveLength(2);
+      expect([].concat(txs[0]['n1:Line'])).toHaveLength(3); // real double-entry
+    });
+
+    it('sources company data from Organization when a membership exists', async () => {
+      jest.spyOn(prismaService.organizationMember, 'findFirst' as any)
+        .mockResolvedValueOnce({ organization: mockOrganization });
+      const doc = await generateParsed('2025-01');
+      const company = doc['n1:AuditFile']['n1:Header']['n1:Company'];
+      expect(company['n1:RegistrationNumber']).toBe('RO55555555');
+      expect(company['n1:Name']).toBe('Org Test SRL');
+      expect(company['n1:Address']['n1:City']).toBe('Cluj-Napoca');
+      expect(company['n1:Address']['n1:Region']).toBe('Cluj');
+      expect(company['n1:BankAccount']['n1:IBANNumber']).toBe('RO12BTRL0000000000000000');
+    });
+
+    it('falls back to User fields without an Organization membership', async () => {
+      const doc = await generateParsed('2025-01');
+      const company = doc['n1:AuditFile']['n1:Header']['n1:Company'];
+      expect(company['n1:RegistrationNumber']).toBe('RO12345678');
+      expect(String(company['n1:Name'])).toBe('Test Company SRL');
+    });
+
+    it('emits GL accounts from the shared OMFP chart with trial-balance figures', async () => {
+      const doc = await generateParsed('2025-01');
+      const accounts = doc['n1:AuditFile']['n1:MasterFiles']['n1:GeneralLedgerAccounts']['n1:Account'];
+      expect(accounts.length).toBeGreaterThan(40); // shared chart, not the old 14
+      const a411 = accounts.find((a: any) => String(a['n1:AccountID']) === '411');
+      expect(Number(a411['n1:ClosingDebitBalance'])).toBeCloseTo(1210, 2);
+      const a4427 = accounts.find((a: any) => String(a['n1:AccountID']) === '4427');
+      expect(Number(a4427['n1:ClosingCreditBalance'])).toBeCloseTo(210, 2);
+    });
+
+    it('includes historical 19%/9% tax codes for pre-Legea-141 periods', async () => {
+      const doc = await generateParsed('2025-05');
+      const entries = doc['n1:AuditFile']['n1:MasterFiles']['n1:TaxTable']['n1:TaxTableEntry'];
+      const codes = entries.map((e: any) => String(e['n1:TaxCode']));
+      expect(codes).toEqual(expect.arrayContaining(['S', 'R1', 'S19', 'R9']));
+    });
+
+    it('omits historical codes for post-Legea-141 periods without old-rate invoices', async () => {
+      const doc = await generateParsed('2025-09');
+      const entries = doc['n1:AuditFile']['n1:MasterFiles']['n1:TaxTable']['n1:TaxTableEntry'];
+      const codes = entries.map((e: any) => String(e['n1:TaxCode']));
+      expect(codes).toContain('S');
+      expect(codes).not.toContain('S19');
     });
   });
 });
