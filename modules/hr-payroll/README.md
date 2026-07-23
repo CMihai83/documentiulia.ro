@@ -14,3 +14,7 @@ cp .env.example .env   # set JWT secrets
 docker compose up -d --build
 curl http://localhost:3103/api/v1/health
 ```
+
+## Market research
+
+See [docs/research/hr-payroll.md](../../docs/research/hr-payroll.md) — verified findings (REQ-044): REGES-Online REST API is the mandatory integration (REVISAL dead Jan 2026), bureau white-label beachhead vs SAGA desktop exclusive-mode, D112/INS/bank files = table stakes.
