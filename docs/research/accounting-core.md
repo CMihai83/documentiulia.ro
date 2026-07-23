@@ -97,3 +97,5 @@ on — priced per-company at **€10–30/mo**, not competing with Saga on price
    Saga structurally cannot deliver.
 6. RO GAAP (OMFP 1802) chart complete first; IFRS 16/full IFRS deferred to the
    Europe stage.
+
+> **Update (hr-payroll research, 2026-07-23):** Saga pricing now primary-verified — official sagasoft.ro: 500-2,500 lei/YEAR (VAT incl.), payroll bundled in the single license. The "near-free anchor" is confirmed fact, resolving open question #1. See [hr-payroll.md](hr-payroll.md) §4.
