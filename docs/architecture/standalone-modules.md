@@ -24,16 +24,16 @@ registered in every slice's app module.
 
 | Module | Port | Absorbs (backend/src dirs) | Status |
 |---|---|---|---|
-| **invoicing-efactura** | 3101 | invoices, vat, payments, billing, anaf | ✅ shipped (template) |
-| accounting-core | 3102 | accounting, bank-reconciliation, budget-management, controlling, asset-management, funds, expense-management | planned |
-| hr-payroll | 3103 | hr, hr-contracts, hr-forms, payroll-saga, employee-portal, ats, hse, scheduling | planned |
-| compliance-hub | 3104 | compliance, gdpr, gdpr-ext, freelancer | planned |
-| docs-ai | 3105 | documents, document-generation, ocr, pdf, contracts, templates (+ certainty-engine lease pack) | planned |
-| crm-sales | 3106 | crm, partners, reseller, marketing, client-portal | planned |
-| ops-supply | 3107 | inventory, warehouse, procurement, vendor-management, logistics, fleet, courier, ecommerce, quality | planned |
-| analytics-bi | 3108 | analytics, business-intelligence, dashboard, reports, simulation, fraud-detection | planned |
-| projects-work | 3109 | project+projects+project-management (merge), workspaces, collaboration, workflow, consulting, expertise, business-case | planned |
-| lms-content | 3110 | lms, content, certifications, help | planned |
+| **invoicing-efactura** | 3101 | invoices, vat, payments, billing, anaf | ✅ shipped + verified (template) |
+| accounting-core | 3102 | accounting, bank-reconciliation, budget-management, controlling, asset-management, funds, expense-management | ✅ verified (slice boots, own auth) |
+| hr-payroll | 3103 | hr, hr-contracts, hr-forms, payroll-saga, employee-portal, ats, hse, scheduling | ✅ verified (slice boots, own auth) |
+| compliance-hub | 3104 | compliance, gdpr, gdpr-ext, freelancer | ✅ verified (slice boots, own auth) |
+| docs-ai | 3105 | documents, document-generation, ocr, pdf, contracts, templates (+ certainty-engine lease pack) | ✅ verified (slice boots, own auth) |
+| crm-sales | 3106 | crm, partners, reseller, marketing, client-portal | ✅ verified (slice boots, own auth) |
+| ops-supply | 3107 | inventory, warehouse, procurement, vendor-management, logistics, fleet, courier, ecommerce, quality | ✅ verified (slice boots, own auth) |
+| analytics-bi | 3108 | analytics, business-intelligence, dashboard, reports, simulation, fraud-detection | ✅ verified (slice boots, own auth) |
+| projects-work | 3109 | project+projects+project-management (merge), workspaces, collaboration, workflow, consulting, expertise, business-case | ✅ verified (slice boots, own auth) |
+| lms-content | 3110 | lms, content, certifications, help | ✅ verified (slice boots, own auth) |
 | platform-core | 3001 | auth, users, mfa, tenant, sessions, settings, notifications, communication, webhooks, integrations, automation, audit, admin, monitoring + full app | existing backend |
 
 ## Approved cleanup (pending)

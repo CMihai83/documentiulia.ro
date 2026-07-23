@@ -1,0 +1,57 @@
+# crm-sales — standalone deployable slice of documentiulia (REQ-043).
+# Own database, own Redis, own JWT secret, own port. Same backend image as the
+# platform; only the crm_sales/compliance module graph is bootstrapped
+# (dist/main-crm-sales.js — see backend/src/standalone/crm_sales-app.module.ts).
+name: crm-sales
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: crm_sales
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-crm_sales}
+      POSTGRES_DB: crm_sales
+    volumes:
+      - crm_sales_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U crm_sales"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - crm_sales_redis:/data
+
+  api:
+    build: ../../backend
+    command: sh -c "npx prisma migrate deploy && node dist/main-crm-sales"
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://crm_sales:${DB_PASSWORD:-crm_sales}@db:5432/crm_sales?schema=public
+      REDIS_URL: redis://redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      CRM_PORT: "3106"
+      PORT: "3106"
+      NODE_ENV: production
+    ports:
+      - "127.0.0.1:3106:3106"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3106/api/v1/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  crm_sales_pgdata:
+  crm_sales_redis:

@@ -1,0 +1,77 @@
+import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+import { ConfigModule } from '@nestjs/config';
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+
+// Global infrastructure modules (@Global) — required in every slice.
+import { PrismaModule } from '../prisma/prisma.module';
+import { RedisModule } from '../redis/redis.module';
+import { CacheModule } from '../cache/cache.module';
+import { CommonModule } from '../common/common.module';
+import { LoggingModule } from '../logging/logging.module';
+import { SecurityModule } from '../security/security.module';
+import { TenantModule } from '../tenant/tenant.module';
+import { SubscriptionModule } from '../subscription/subscription.module';
+import { MonitoringModule } from '../monitoring/monitoring.module';
+import { ChartsModule } from '../charts/charts.module';
+import { MatchingModule } from '../matching/matching.module';
+import { AuthModule } from '../auth/auth.module';
+import { UsersModule } from '../users/users.module';
+import { HealthModule } from '../health/health.module';
+
+import { InventoryModule } from '../inventory/inventory.module';
+import { WarehouseModule } from '../warehouse/warehouse.module';
+import { ProcurementModule } from '../procurement/procurement.module';
+import { VendorManagementModule } from '../vendor-management/vendor-management.module';
+import { LogisticsModule } from '../logistics/logistics.module';
+import { FleetModule } from '../fleet/fleet.module';
+import { CourierModule } from '../courier/courier.module';
+import { EcommerceModule } from '../ecommerce/ecommerce.module';
+import { QualityModule } from '../quality/quality.module';
+
+/**
+ * ops-supply — standalone deployable slice (REQ-043, port 3107).
+ * Operations/SCM: inventory, warehouse, procurement, vendors, logistics, fleet, courier, ecommerce, quality.
+ * See docs/architecture/standalone-modules.md for the dual-mode contract.
+ */
+@Module({
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: parseInt(process.env.THROTTLE_TTL || '60000', 10),
+        limit: parseInt(process.env.THROTTLE_LIMIT || '100', 10),
+      },
+    ]),
+    PrismaModule,
+    RedisModule,
+    CacheModule,
+    CommonModule,
+    LoggingModule,
+    SecurityModule,
+    TenantModule,
+    SubscriptionModule,
+    MonitoringModule,
+    ChartsModule,
+    MatchingModule,
+    AuthModule,
+    UsersModule,
+    InventoryModule,
+    WarehouseModule,
+    ProcurementModule,
+    VendorManagementModule,
+    LogisticsModule,
+    FleetModule,
+    CourierModule,
+    EcommerceModule,
+    QualityModule,
+    HealthModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
+})
+export class OpsSupplyAppModule {}

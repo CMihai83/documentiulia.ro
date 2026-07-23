@@ -1,0 +1,57 @@
+# analytics-bi — standalone deployable slice of documentiulia (REQ-043).
+# Own database, own Redis, own JWT secret, own port. Same backend image as the
+# platform; only the analytics_bi/compliance module graph is bootstrapped
+# (dist/main-analytics-bi.js — see backend/src/standalone/analytics_bi-app.module.ts).
+name: analytics-bi
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: analytics_bi
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-analytics_bi}
+      POSTGRES_DB: analytics_bi
+    volumes:
+      - analytics_bi_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U analytics_bi"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - analytics_bi_redis:/data
+
+  api:
+    build: ../../backend
+    command: sh -c "npx prisma migrate deploy && node dist/main-analytics-bi"
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://analytics_bi:${DB_PASSWORD:-analytics_bi}@db:5432/analytics_bi?schema=public
+      REDIS_URL: redis://redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      ANALYTICS_PORT: "3108"
+      PORT: "3108"
+      NODE_ENV: production
+    ports:
+      - "127.0.0.1:3108:3108"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3108/api/v1/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  analytics_bi_pgdata:
+  analytics_bi_redis:
