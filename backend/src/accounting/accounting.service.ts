@@ -13,6 +13,9 @@ export interface JournalEntry {
   lines: JournalEntryLine[];
   status: 'DRAFT' | 'POSTED' | 'VOIDED';
   createdAt: Date;
+  /** Counterparty fiscal ID (CUI) when the entry originates from a partner document (REQ-045). */
+  partnerCui?: string;
+  partnerType?: 'customer' | 'supplier';
 }
 
 export interface JournalEntryLine {
@@ -175,6 +178,8 @@ export class AccountingService {
           ],
           status: invoice.paymentStatus === 'PAID' ? 'POSTED' : 'DRAFT',
           createdAt: invoice.createdAt,
+          partnerCui: invoice.partnerCui || undefined,
+          partnerType: 'customer',
         });
 
         // Payment entry if paid
@@ -190,6 +195,8 @@ export class AccountingService {
             ],
             status: 'POSTED',
             createdAt: invoice.updatedAt,
+            partnerCui: invoice.partnerCui || undefined,
+            partnerType: 'customer',
           });
         }
       } else {
@@ -206,6 +213,8 @@ export class AccountingService {
           ],
           status: invoice.paymentStatus === 'PAID' ? 'POSTED' : 'DRAFT',
           createdAt: invoice.createdAt,
+          partnerCui: invoice.partnerCui || undefined,
+          partnerType: 'supplier',
         });
       }
     });

@@ -132,6 +132,7 @@ describe('SaftD406MonthlyService', () => {
         { accountCode: '4427', accountName: 'TVA colectata', debit: 0, credit: 210 },
       ],
       status: 'POSTED' as const, createdAt: new Date('2025-01-15'),
+      partnerCui: 'RO87654321', partnerType: 'customer' as const,
     },
     {
       id: 'PINV-inv-3', date: new Date('2025-01-10'),
@@ -142,6 +143,7 @@ describe('SaftD406MonthlyService', () => {
         { accountCode: '401', accountName: 'Furnizori', debit: 0, credit: 2420 },
       ],
       status: 'POSTED' as const, createdAt: new Date('2025-01-10'),
+      partnerCui: 'RO22222222', partnerType: 'supplier' as const,
     },
   ];
 
@@ -521,6 +523,9 @@ describe('SaftD406MonthlyService', () => {
       const txs = [].concat(gle['n1:Journal']['n1:Transaction']);
       expect(txs).toHaveLength(2);
       expect([].concat(txs[0]['n1:TransactionLine'])).toHaveLength(3); // real double-entry
+      // partner CUIs threaded from the source invoices (REQ-045)
+      expect(String(txs[0]['n1:CustomerID'])).toBe('RO87654321');
+      expect(String(txs[1]['n1:SupplierID'])).toBe('RO22222222');
     });
 
     it('sources company data from Organization when a membership exists', async () => {

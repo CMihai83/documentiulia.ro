@@ -39,14 +39,14 @@ describe('SAF-T D406 XSD conformance (ANAF Ro_SAFT_Schema v2.4.9)', () => {
         { accountCode: '411', accountName: 'Clienti', debit: 1210, credit: 0 },
         { accountCode: '704', accountName: 'Venituri', debit: 0, credit: 1000 },
         { accountCode: '4427', accountName: 'TVA colectata', debit: 0, credit: 210 },
-      ] },
+      ], partnerCui: 'RO30111222', partnerType: 'customer' as const },
     { id: 'J2', date: new Date('2025-09-15'), description: 'Factura achizitie FA-200',
       reference: 'FA-200', status: 'POSTED' as const, createdAt: new Date('2025-09-15'),
       lines: [
         { accountCode: '628', accountName: 'Servicii', debit: 600, credit: 0 },
         { accountCode: '4426', accountName: 'TVA deductibila', debit: 126, credit: 0 },
         { accountCode: '401', accountName: 'Furnizori', debit: 0, credit: 726 },
-      ] },
+      ], partnerCui: 'RO30999888', partnerType: 'supplier' as const },
   ];
 
   const trialBalance = [

@@ -661,23 +661,25 @@ export class SaftD406MonthlyService {
    */
   private buildGeneralLedgerEntries(journalEntries: JournalEntry[], period: string, companyCui = '0'): any {
     // Double-entry journal from AccountingService. RO schema requires
-    // CustomerID/SupplierID at transaction AND line level; when the journal
-    // entry has no identified partner the company's own CUI is used
-    // (TODO REQ-045: thread partner CUIs through JournalEntry).
+    // CustomerID/SupplierID at transaction AND line level; the counterparty
+    // CUI is threaded through JournalEntry.partnerCui, with the company's own
+    // CUI as fallback for entries without an identified partner.
     const posted = journalEntries.filter((e) => e.status === 'POSTED');
     const [year, month] = period.split('-');
 
     let totalDebit = 0;
     let totalCredit = 0;
     const transactions = posted.map((entry) => {
+      const customerId = entry.partnerType === 'customer' ? (entry.partnerCui || companyCui) : companyCui;
+      const supplierId = entry.partnerType === 'supplier' ? (entry.partnerCui || companyCui) : companyCui;
       const lines = entry.lines.map((line, idx) => {
         totalDebit += line.debit;
         totalCredit += line.credit;
         return {
           'n1:RecordID': `${entry.id}-${idx + 1}`,
           'n1:AccountID': line.accountCode,
-          'n1:CustomerID': companyCui,
-          'n1:SupplierID': companyCui,
+          'n1:CustomerID': customerId,
+          'n1:SupplierID': supplierId,
           'n1:Description': line.description || entry.description,
           ...(line.debit > 0
             ? { 'n1:DebitAmount': this.amount(line.debit) }
@@ -698,8 +700,8 @@ export class SaftD406MonthlyService {
         'n1:Description': entry.description,
         'n1:SystemEntryDate': entry.createdAt?.toISOString?.().split('T')[0] || txDate,
         'n1:GLPostingDate': txDate,
-        'n1:CustomerID': companyCui,
-        'n1:SupplierID': companyCui,
+        'n1:CustomerID': customerId,
+        'n1:SupplierID': supplierId,
         'n1:TransactionLine': lines,
       };
     });
