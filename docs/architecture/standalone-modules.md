@@ -36,14 +36,20 @@ registered in every slice's app module.
 | lms-content | 3110 | lms, content, certifications, help | ✅ verified (slice boots, own auth) |
 | platform-core | 3001 | auth, users, mfa, tenant, sessions, settings, notifications, communication, webhooks, integrations, automation, audit, admin, monitoring + full app | existing backend |
 
-## Approved cleanup (pending)
+## Cleanup (DONE 2026-07-24)
 
-- Delete/merge 16 stub-duplicate dirs: `audit-logging`, `audit-trail`, `caching`,
-  `config`, `customer-portal`, `data-export`, `document`, `export-import`,
-  `gateway`, `imports`, `notification`, `portal`, `rate-limiter`,
-  `rate-limiting`, `testing`, `logging`(empty) — after confirming no imports.
-- Hoist `EventEmitterModule.forRoot()` to one root registration (currently
-  re-declared in 35 modules).
+- **Deleted 12 dead dirs** (zero external references verified):
+  `audit-logging`, `audit-trail`, `caching`, `customer-portal`, `data-export`,
+  `document`, `export-import`, `gateway`, `imports`, `notification`, `portal`,
+  `rate-limiting`.
+- **4 exonerated from the original stub list** (real dependencies found):
+  `config` (EuVatConfigService + env validation), `rate-limiter` (ANAF SPV
+  rate limiting), `testing` (spec utilities), `logging` (winston config +
+  logAudit used by invoices/e-Factura sync).
+- **EventEmitter hoisted**: single `forRoot({ wildcard: true, delimiter: '.' })`
+  at app root + each slice; stripped from 40 feature modules. IMPORTANT: the
+  wildcard options came from microservices.module and the automation engine's
+  global listeners depend on them — never register a second forRoot.
 - Prune transitive routes from slices via slim module variants (e.g.
   `InvoicesSlimModule` without FinanceModule) as needed.
 

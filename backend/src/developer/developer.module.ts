@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { SDKGeneratorService } from './sdk-generator.service';
 import { SDKGeneratorController } from './sdk-generator.controller';
 import { WebhookTesterService } from './webhook-tester.service';
@@ -15,7 +14,7 @@ import { RateLimitController } from './rate-limit.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule, EventEmitterModule.forRoot()],
+  imports: [PrismaModule],
   controllers: [
     SDKGeneratorController,
     WebhookTesterController,

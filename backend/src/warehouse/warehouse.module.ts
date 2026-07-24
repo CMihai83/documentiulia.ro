@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { PrismaModule } from '../prisma/prisma.module';
 import { TenantModule } from '../tenant/tenant.module';
 
@@ -37,7 +36,7 @@ import {
 } from './warehouse-analytics.controller';
 
 @Module({
-  imports: [PrismaModule, TenantModule, EventEmitterModule.forRoot()],
+  imports: [PrismaModule, TenantModule],
   controllers: [
     // Legacy
     WarehouseController,

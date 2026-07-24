@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 
 // Services
 import { VendorManagementService } from './vendor-management.service';
@@ -18,7 +17,7 @@ import { VendorPortalController } from './vendor-portal.controller';
 import { VendorPaymentsController } from './vendor-payments.controller';
 
 @Module({
-  imports: [EventEmitterModule.forRoot()],
+  imports: [],
   controllers: [
     VendorManagementController,
     VendorOnboardingController,

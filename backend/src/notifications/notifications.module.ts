@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ScheduleModule } from '@nestjs/schedule';
 import { NotificationsService } from './notifications.service';
 import { NotificationsController } from './notifications.controller';
@@ -18,7 +17,7 @@ import { NotificationCenterController } from './notification-center.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [ConfigModule, PrismaModule, EventEmitterModule.forRoot(), ScheduleModule.forRoot()],
+  imports: [ConfigModule, PrismaModule, ScheduleModule.forRoot()],
   controllers: [NotificationsController, EmailNotificationController, PushNotificationController, NotificationSchedulerController, NotificationCenterController],
   providers: [
     NotificationsService,

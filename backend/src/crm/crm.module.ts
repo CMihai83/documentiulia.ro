@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ContactsService } from './contacts.service';
 import { ContactsController } from './contacts.controller';
 import { DealsService } from './deals.service';
@@ -12,7 +11,7 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [PrismaModule, EventEmitterModule.forRoot(), AuthModule],
+  imports: [PrismaModule, AuthModule],
   controllers: [
     ContactsController,
     DealsController,

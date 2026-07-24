@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { LMSController } from './lms.controller';
 import { LMSService } from './lms.service';
 import { GamificationController } from './gamification.controller';
@@ -16,7 +15,7 @@ import { FinanceOpsCoursesService } from './finance-ops-courses.service';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule, ConfigModule, EventEmitterModule.forRoot()],
+  imports: [PrismaModule, ConfigModule],
   controllers: [
     LMSController,
     GamificationController,

@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { OnboardingController } from './onboarding.controller';
 import { OnboardingService } from './onboarding.service';
 import { OnboardingEmailListener } from './onboarding-email.listener';
@@ -9,7 +8,7 @@ import { OnboardingGamificationController } from './onboarding-gamification.cont
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule, ConfigModule, EventEmitterModule.forRoot()],
+  imports: [PrismaModule, ConfigModule],
   controllers: [OnboardingController, OnboardingGamificationController],
   providers: [OnboardingService, OnboardingEmailListener, OnboardingGamificationService],
   exports: [OnboardingService, OnboardingGamificationService],

@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { PrismaModule } from '../prisma/prisma.module';
 
 // Services
@@ -21,8 +20,7 @@ import { AssetDisposalController } from './asset-disposal.controller';
 @Module({
   imports: [
     PrismaModule,
-    EventEmitterModule.forRoot(),
-  ],
+    ],
   controllers: [
     AssetManagementController,
     AssetDepreciationController,

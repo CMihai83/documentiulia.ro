@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 45 · logged: 3 · planned: 4 · in_progress: 4 · shipped: 32 · parked: 2 · rejected: 0
+Total: 46 · logged: 4 · planned: 4 · in_progress: 3 · shipped: 33 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -49,4 +49,5 @@ Total: 45 · logged: 3 · planned: 4 · in_progress: 4 · shipped: 32 · parked:
 | REQ-042 | 2026-07-10 | **planned** | Retire the legacy in-memory client-portal :clientId controller/service in favour of me/*; add create-goal UI for analytics goals; ATS /candi… |  |
 | REQ-043 | 2026-07-23 | **shipped** | check functionality in documentiulia and group/create stand alone modules that can be used as standalone or in connection with other modules… | PR#33,docs/architecture/standalone-modules.md,PR#33,PR#34,PR#35,docs/architecture/standalone-modules.md |
 | REQ-044 | 2026-07-23 | **in_progress** | make sure you are doing the /deep-research on all modules you implement |  |
-| REQ-045 | 2026-07-23 | **in_progress** | continue with build work, prioritize SAF-T D406 generation |  |
+| REQ-045 | 2026-07-23 | **shipped** | continue with build work, prioritize SAF-T D406 generation | PR#40,PR#40,PR#41,PR#42 |
+| REQ-046 | 2026-07-24 | **logged** | PRE-EXISTING BUG found during REQ-043 cleanup: DealsService.createDeal does not reject non-existent pipelineId (deals.service.spec.ts test f… |  |

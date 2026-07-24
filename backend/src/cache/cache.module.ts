@@ -1,6 +1,5 @@
 import { Module, Global } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { RedisCacheService } from './redis-cache.service';
 import { DashboardCacheService } from './dashboard-cache.service';
 import { CacheInterceptor, CacheInvalidationInterceptor } from './cache.interceptor';
@@ -22,7 +21,7 @@ import { CloudflareCacheService } from './cloudflare-cache.service';
  */
 @Global()
 @Module({
-  imports: [ConfigModule, EventEmitterModule.forRoot()],
+  imports: [ConfigModule],
   controllers: [CacheController],
   providers: [
     RedisCacheService,

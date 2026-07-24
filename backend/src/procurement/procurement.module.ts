@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 
 // Services
 import { ProcurementManagementService } from './procurement-management.service';
@@ -24,7 +23,7 @@ import { GoodsReceiptController } from './goods-receipt.controller';
 import { ProcurementAnalyticsController } from './procurement-analytics.controller';
 
 @Module({
-  imports: [EventEmitterModule.forRoot()],
+  imports: [],
   controllers: [
     ProcurementManagementController,
     PurchaseRequisitionsController,

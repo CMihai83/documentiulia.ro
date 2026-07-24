@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ConfigModule } from '@nestjs/config';
 import { AiService } from './ai.service';
 import { AiController } from './ai.controller';
@@ -21,7 +20,7 @@ import { DataUseController } from './data-use.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [EventEmitterModule.forRoot(), ConfigModule, PrismaModule],
+  imports: [ConfigModule, PrismaModule],
   controllers: [
     AiController,
     AiChatAssistantController,

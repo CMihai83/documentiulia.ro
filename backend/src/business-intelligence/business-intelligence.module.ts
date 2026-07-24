@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ScheduleModule } from '@nestjs/schedule';
 import { DashboardBuilderService } from './dashboard-builder.service';
 import { DashboardBuilderController } from './dashboard-builder.controller';
@@ -18,7 +17,6 @@ import { PrismaModule } from '../prisma/prisma.module';
 @Module({
   imports: [
     PrismaModule,
-    EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
   ],
   controllers: [

@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TasksService } from './tasks.service';
 import { TasksController } from './tasks.controller';
 import { KanbanService } from './kanban.service';
@@ -11,7 +10,7 @@ import { EpicsController } from './epics.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule, EventEmitterModule.forRoot()],
+  imports: [PrismaModule],
   controllers: [
     TasksController,
     KanbanController,

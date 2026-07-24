@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 
 // Services
 import { BudgetPlanningService } from './budget-planning.service';
@@ -18,7 +17,7 @@ import { BudgetApprovalController } from './budget-approval.controller';
 import { BudgetReportingController } from './budget-reporting.controller';
 
 @Module({
-  imports: [EventEmitterModule.forRoot()],
+  imports: [],
   controllers: [
     BudgetPlanningController,
     BudgetTrackingController,
