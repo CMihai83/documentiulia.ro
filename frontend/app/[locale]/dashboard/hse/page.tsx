@@ -70,6 +70,30 @@ export default function HSEPage() {
   const router = useRouter();
   const toast = useToast();
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
+  const [trainingCourses, setTrainingCourses] = useState<any[]>([]);
+  const [trainingLoading, setTrainingLoading] = useState(false);
+
+  useEffect(() => {
+    // Load SSM training courses when the tab is opened (REQ-038)
+    if (activeTab !== 'training' || trainingCourses.length > 0) return;
+    (async () => {
+      setTrainingLoading(true);
+      try {
+        const token = localStorage.getItem('auth_token');
+        const res = await fetch(`${API_URL}/hse/training/courses`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setTrainingCourses(Array.isArray(data) ? data : data?.courses || []);
+        }
+      } catch (err) {
+        console.error('Failed to load HSE trainings:', err);
+      } finally {
+        setTrainingLoading(false);
+      }
+    })();
+  }, [activeTab]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [summary, setSummary] = useState<HSESummary | null>(null);
@@ -945,13 +969,32 @@ export default function HSEPage() {
           </div>
         </div>
       ) : (
-        /* Training Tab */
+        /* Training Tab (REQ-038: wired to hse/training/courses) */
         <div className="bg-white rounded-lg shadow p-6">
-          <div className="text-center py-12 text-gray-500">
-            <Users className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-            <p>Modulul de instruiri este în dezvoltare</p>
-            <p className="text-sm mt-2">Veți putea gestiona instruiri SSM și de mediu</p>
-          </div>
+          {trainingLoading ? (
+            <p className="text-center py-12 text-gray-500">Se încarcă instruirile…</p>
+          ) : trainingCourses.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">
+              <Users className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+              <p>Nicio instruire SSM înregistrată încă.</p>
+              <p className="text-sm mt-2">Cursurile de instruire vor apărea aici după configurare.</p>
+            </div>
+          ) : (
+            <div className="divide-y">
+              {trainingCourses.map((c: any) => (
+                <div key={c.id || c.courseId} className="py-3 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-medium text-gray-900">{c.title || c.name}</p>
+                    {c.description && <p className="text-sm text-gray-500 mt-0.5">{c.description}</p>}
+                  </div>
+                  <div className="text-right text-sm text-gray-500 shrink-0">
+                    {c.durationHours ? `${c.durationHours}h` : null}
+                    {c.mandatory ? <span className="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Obligatoriu</span> : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

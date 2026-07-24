@@ -222,6 +222,13 @@ export class EmailCampaignsController {
     return this.emailService.pauseCampaign(id);
   }
 
+  @Post('campaigns/:id/resume')
+  @ApiOperation({ summary: 'Resume paused campaign' })
+  @ApiResponse({ status: 200, description: 'Campaign resumed' })
+  async resumeCampaign(@Param('id') id: string) {
+    return this.emailService.resumeCampaign(id);
+  }
+
   @Post('campaigns/:id/cancel')
   @ApiOperation({ summary: 'Cancel campaign' })
   @ApiResponse({ status: 200, description: 'Campaign cancelled' })

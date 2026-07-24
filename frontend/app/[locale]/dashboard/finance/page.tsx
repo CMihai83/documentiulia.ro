@@ -423,10 +423,11 @@ export default function FinanceDashboardPage() {
     router.push(`/dashboard/finance/reconciliation/match?invoice=${invoiceNumber}`);
   };
 
-  const handleSendReminder = async (invoiceNumber: string, partnerName: string) => {
+  const handleSendReminder = async (invoiceId: string, invoiceNumber: string, partnerName: string) => {
     try {
       const token = getToken();
-      const response = await fetch(`${API_URL}/finance/invoices/${invoiceNumber}/reminder`, {
+      // Real endpoint: invoices/reminders/:invoiceId/send (REQ-038)
+      const response = await fetch(`${API_URL}/invoices/reminders/${invoiceId}/send`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -437,11 +438,12 @@ export default function FinanceDashboardPage() {
       if (response.ok) {
         toast.success('Reminder trimis', `Reminder-ul pentru factura ${invoiceNumber} a fost trimis către ${partnerName}`);
       } else {
-        toast.success('Reminder (Demo)', `Reminder pentru ${invoiceNumber} - funcționalitate în dezvoltare`);
+        const body = await response.json().catch(() => null);
+        toast.error('Reminder netrimis', body?.message || `Trimiterea reminder-ului pentru ${invoiceNumber} a eșuat.`);
       }
     } catch (err) {
       console.error('Reminder failed:', err);
-      toast.success('Reminder (Demo)', `Reminder pentru ${invoiceNumber} - funcționalitate în dezvoltare`);
+      toast.error('Reminder netrimis', 'Nu s-a putut contacta serverul. Încercați din nou.');
     }
   };
 
@@ -835,7 +837,7 @@ export default function FinanceDashboardPage() {
                                 <div className="flex gap-1">
                                   <button onClick={() => handleManualMatch(inv.invoiceNumber)} className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200">Potrivire</button>
                                   <button onClick={() => handleMarkAsPaid(inv.invoiceNumber)} className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200">Platit</button>
-                                  <button onClick={() => handleSendReminder(inv.invoiceNumber, inv.partnerName)} className="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Reminder</button>
+                                  <button onClick={() => handleSendReminder(inv.id, inv.invoiceNumber, inv.partnerName)} className="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Reminder</button>
                                 </div>
                               </td>
                             </tr>

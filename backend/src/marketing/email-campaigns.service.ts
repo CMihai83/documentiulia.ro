@@ -447,6 +447,25 @@ export class EmailCampaignsService {
     return campaign;
   }
 
+  async resumeCampaign(id: string): Promise<EmailCampaign> {
+    const campaign = this.campaigns.get(id);
+    if (!campaign) {
+      throw new NotFoundException('Campaign not found');
+    }
+    if (campaign.status !== 'paused') {
+      throw new BadRequestException('Can only resume paused campaigns');
+    }
+    // Return to the state pause() left: scheduled sends wait for their date,
+    // immediate sends go straight back to sending.
+    campaign.status = campaign.schedule?.type === 'scheduled' ? 'scheduled' : 'sending';
+    campaign.updatedAt = new Date();
+    this.campaigns.set(id, campaign);
+    if (campaign.status === 'sending') {
+      void this.sendCampaign(campaign);
+    }
+    return campaign;
+  }
+
   async cancelCampaign(id: string): Promise<EmailCampaign> {
     const campaign = this.campaigns.get(id);
     if (!campaign) {
