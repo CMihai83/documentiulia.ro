@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 46 · logged: 4 · planned: 4 · in_progress: 3 · shipped: 33 · parked: 2 · rejected: 0
+Total: 47 · logged: 4 · planned: 4 · in_progress: 4 · shipped: 33 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -51,3 +51,4 @@ Total: 46 · logged: 4 · planned: 4 · in_progress: 3 · shipped: 33 · parked:
 | REQ-044 | 2026-07-23 | **in_progress** | make sure you are doing the /deep-research on all modules you implement |  |
 | REQ-045 | 2026-07-23 | **shipped** | continue with build work, prioritize SAF-T D406 generation | PR#40,PR#40,PR#41,PR#42 |
 | REQ-046 | 2026-07-24 | **logged** | PRE-EXISTING BUG found during REQ-043 cleanup: DealsService.createDeal does not reject non-existent pipelineId (deals.service.spec.ts test f… |  |
+| REQ-047 | 2026-07-24 | **in_progress** | continue with the REGES-Online API integration |  |
