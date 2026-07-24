@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { PrismaModule } from '../prisma/prisma.module';
 import { Soc2ComplianceService } from './soc2-compliance.service';
 import { Soc2ComplianceController } from './soc2-compliance.controller';
@@ -24,7 +23,7 @@ import { AnafStatusService } from './anaf-status.service';
 import { AnafStatusController } from './anaf-status.controller';
 
 @Module({
-  imports: [ConfigModule, EventEmitterModule.forRoot(), PrismaModule],
+  imports: [ConfigModule, PrismaModule],
   controllers: [
     Soc2ComplianceController,
     AuditTrailController,

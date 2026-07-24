@@ -2,6 +2,7 @@ import { BusinessCaseModule } from './business-case/business-case.module';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { validate } from './config/env.validation';
 import { ScheduleModule } from '@nestjs/schedule';
 import { APP_FILTER, APP_INTERCEPTOR, APP_GUARD } from '@nestjs/core';
@@ -136,6 +137,15 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
       isGlobal: true,
       envFilePath: '.env',
       validate,
+    }),
+    // Single root registration (REQ-043 cleanup — was re-declared in 40 feature modules)
+    EventEmitterModule.forRoot({
+      // Hoisted from microservices.module (REQ-043 cleanup): the automation
+      // wildcard listeners depend on wildcard mode being enabled app-wide.
+      wildcard: true,
+      delimiter: '.',
+      maxListeners: 20,
+      verboseMemoryLeak: true,
     }),
     ThrottlerModule.forRoot([{
       ttl: 60000,

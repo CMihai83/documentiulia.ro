@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 
 // Services
 import { QualityControlService } from './quality-control.service';
@@ -31,7 +30,7 @@ import {
 } from './quality-analytics.controller';
 
 @Module({
-  imports: [EventEmitterModule.forRoot()],
+  imports: [],
   providers: [
     // Services
     QualityControlService,

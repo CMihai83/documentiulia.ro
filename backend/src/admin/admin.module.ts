@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { FeatureFlagsService } from './feature-flags.service';
 import { FeatureFlagsController } from './feature-flags.controller';
 import { SystemSettingsService } from './system-settings.service';
@@ -9,7 +8,7 @@ import { AdminController } from './admin.controller';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule, EventEmitterModule.forRoot()],
+  imports: [PrismaModule],
   controllers: [AdminController, FeatureFlagsController],
   providers: [
     FeatureFlagsService,

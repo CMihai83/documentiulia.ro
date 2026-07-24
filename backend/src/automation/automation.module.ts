@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ScheduleModule } from '@nestjs/schedule';
 import { PrismaModule } from '../prisma/prisma.module';
 
@@ -22,7 +21,6 @@ import { AutomationMonitoringController } from './automation-monitoring.controll
 @Module({
   imports: [
     PrismaModule,
-    EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
   ],
   controllers: [

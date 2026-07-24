@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 // Global infrastructure modules (@Global) the platform registers in app.module —
 // required in any slice for cross-cutting DI (cache, redis, tenant, security...).
@@ -42,6 +43,14 @@ import { HealthModule } from '../health/health.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    EventEmitterModule.forRoot({
+      // Hoisted from microservices.module (REQ-043 cleanup): the automation
+      // wildcard listeners depend on wildcard mode being enabled app-wide.
+      wildcard: true,
+      delimiter: '.',
+      maxListeners: 20,
+      verboseMemoryLeak: true,
+    }),
     ThrottlerModule.forRoot([
       {
         ttl: parseInt(process.env.THROTTLE_TTL || '60000', 10),

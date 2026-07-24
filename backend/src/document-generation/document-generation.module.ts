@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { PrismaModule } from '../prisma/prisma.module';
 
 // Services
@@ -21,8 +20,7 @@ import { DocumentWorkflowController } from './document-workflow.controller';
 @Module({
   imports: [
     PrismaModule,
-    EventEmitterModule.forRoot(),
-  ],
+    ],
   controllers: [
     DocumentGeneratorController,
     TemplateEngineController,

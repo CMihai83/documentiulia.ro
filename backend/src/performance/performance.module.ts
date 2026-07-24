@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { QueryOptimizerService } from './query-optimizer.service';
 import { QueryOptimizerController } from './query-optimizer.controller';
 import { BackgroundJobsService } from './background-jobs.service';
@@ -8,7 +7,7 @@ import { PerformanceMetricsService } from './performance-metrics.service';
 import { PerformanceMetricsController } from './performance-metrics.controller';
 
 @Module({
-  imports: [EventEmitterModule.forRoot()],
+  imports: [],
   controllers: [
     QueryOptimizerController,
     BackgroundJobsController,

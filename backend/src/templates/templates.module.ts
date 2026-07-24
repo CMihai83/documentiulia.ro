@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { DocumentTemplateService } from './document-template.service';
 import { TemplatesController } from './templates.controller';
 
 @Module({
-  imports: [EventEmitterModule.forRoot()],
+  imports: [],
   controllers: [TemplatesController],
   providers: [DocumentTemplateService],
   exports: [DocumentTemplateService],

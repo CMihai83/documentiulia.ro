@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { AnafService } from './anaf.service';
 import { AnafController } from './anaf.controller';
 import { SaftService } from './saft.service';
@@ -29,7 +28,7 @@ import { AccountingModule } from '../accounting/accounting.module';
 import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
 
 @Module({
-  imports: [ScheduleModule.forRoot(), EventEmitterModule.forRoot(), PrismaModule, AccountingModule],
+  imports: [ScheduleModule.forRoot(), PrismaModule, AccountingModule],
   controllers: [
     AnafController,
     SpvController,

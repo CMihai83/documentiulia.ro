@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { EventEmitterModule } from '@nestjs/event-emitter';
 import { WebhookService } from './webhook.service';
 import { WebhookController } from './webhook.controller';
 import { IntegrationsHubService } from './integrations-hub.service';
@@ -15,7 +14,7 @@ import { SmartBillModule } from './smartbill/smartbill.module';
 import { QuickBooksModule } from './quickbooks/quickbooks.module';
 
 @Module({
-  imports: [PrismaModule, ConfigModule, EventEmitterModule.forRoot(), SagaModule, SmartBillModule, QuickBooksModule],
+  imports: [PrismaModule, ConfigModule, SagaModule, SmartBillModule, QuickBooksModule],
   controllers: [
     WebhookController,
     IntegrationsHubController,

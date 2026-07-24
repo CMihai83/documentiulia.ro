@@ -183,6 +183,7 @@ export class TriggerManagerService {
   private setupEventListeners() {
     // Listen for all events and check triggers
     this.eventEmitter.on('**', async (data: any, eventName: string) => {
+      if (typeof eventName !== 'string') return;
       if (eventName.startsWith('trigger.')) return;
       await this.handleEvent(eventName, data);
     });

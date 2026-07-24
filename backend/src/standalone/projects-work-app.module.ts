@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 // Global infrastructure modules (@Global) — required in every slice.
 import { PrismaModule } from '../prisma/prisma.module';
@@ -35,6 +36,14 @@ import { BusinessCaseModule } from '../business-case/business-case.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    EventEmitterModule.forRoot({
+      // Hoisted from microservices.module (REQ-043 cleanup): the automation
+      // wildcard listeners depend on wildcard mode being enabled app-wide.
+      wildcard: true,
+      delimiter: '.',
+      maxListeners: 20,
+      verboseMemoryLeak: true,
+    }),
     ThrottlerModule.forRoot([
       {
         ttl: parseInt(process.env.THROTTLE_TTL || '60000', 10),
