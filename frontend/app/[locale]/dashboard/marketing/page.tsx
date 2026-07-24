@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -55,7 +55,7 @@ interface Campaign {
   id: string;
   name: string;
   type: 'email' | 'newsletter' | 'automation' | 'sms';
-  status: 'draft' | 'scheduled' | 'running' | 'completed' | 'paused';
+  status: 'draft' | 'scheduled' | 'running' | 'completed' | 'paused' | 'cancelled';
   audience: number;
   sent?: number;
   opened?: number;
@@ -72,56 +72,8 @@ interface Audience {
   lastUpdated: string;
 }
 
-// Sample data
-const campaigns: Campaign[] = [
-  {
-    id: 'camp-001',
-    name: 'Newsletter Decembrie 2025',
-    type: 'newsletter',
-    status: 'completed',
-    audience: 2450,
-    sent: 2450,
-    opened: 1225,
-    clicked: 367,
-    completedAt: '2025-12-10T10:00:00',
-  },
-  {
-    id: 'camp-002',
-    name: 'Promoție Sfârșit de An',
-    type: 'email',
-    status: 'running',
-    audience: 1850,
-    sent: 1200,
-    opened: 540,
-    clicked: 162,
-    scheduledAt: '2025-12-14T09:00:00',
-  },
-  {
-    id: 'camp-003',
-    name: 'Reminder Facturi Restante',
-    type: 'automation',
-    status: 'running',
-    audience: 125,
-    sent: 45,
-    opened: 38,
-    clicked: 22,
-  },
-  {
-    id: 'camp-004',
-    name: 'Anul Nou 2026 - Early Bird',
-    type: 'email',
-    status: 'scheduled',
-    audience: 3200,
-    scheduledAt: '2025-12-28T08:00:00',
-  },
-  {
-    id: 'camp-005',
-    name: 'Feedback Clienți Q4',
-    type: 'email',
-    status: 'draft',
-    audience: 500,
-  },
-];
+// Campaigns are loaded from the marketing/email API (REQ-038) —
+// no fabricated sample data.
 
 const audiences: Audience[] = [
   { id: 'aud-001', name: 'Toți abonații', count: 3250, tags: ['activi', 'newsletter'], lastUpdated: '2025-12-14' },
@@ -159,6 +111,43 @@ export default function MarketingPage() {
   const toast = useToast();
   const [activeTab, setActiveTab] = useState('campaigns');
   const [searchTerm, setSearchTerm] = useState('');
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const [campaignsLoading, setCampaignsLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem('auth_token');
+      const res = await fetch('/api/v1/marketing/email/campaigns', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const list = Array.isArray(data) ? data : data?.campaigns || [];
+      const statusMap: Record<string, Campaign['status']> = {
+        draft: 'draft', scheduled: 'scheduled', sending: 'running',
+        sent: 'completed', paused: 'paused', cancelled: 'cancelled',
+      };
+      setCampaigns(list.map((c: any): Campaign => ({
+        id: c.id,
+        name: c.name,
+        type: 'email',
+        status: statusMap[c.status] || 'draft',
+        audience: c.stats?.totalRecipients ?? c.recipients?.estimatedCount ?? 0,
+        sent: c.stats?.sent,
+        opened: c.stats?.opened,
+        clicked: c.stats?.clicked,
+        scheduledAt: c.schedule?.sendAt,
+        completedAt: c.status === 'sent' ? c.updatedAt : undefined,
+      })));
+    } catch (err) {
+      console.error('Failed to load campaigns:', err);
+      setCampaigns([]);
+    } finally {
+      setCampaignsLoading(false);
+    }
+  };
+
+  useEffect(() => { fetchData(); }, []);
 
   const getCampaignStatusBadge = (status: Campaign['status']) => {
     const config = {
@@ -167,6 +156,7 @@ export default function MarketingPage() {
       running: { label: 'În curs', variant: 'default' as const, icon: Play },
       completed: { label: 'Finalizat', variant: 'default' as const, icon: CheckCircle },
       paused: { label: 'Pauză', variant: 'secondary' as const, icon: Pause },
+      cancelled: { label: 'Anulată', variant: 'outline' as const, icon: Pause },
     };
     const c = config[status];
     return (
@@ -243,34 +233,38 @@ export default function MarketingPage() {
   const handlePauseCampaign = async (campaign: Campaign) => {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`/api/v1/marketing/campaigns/${campaign.id}/pause`, {
+      const response = await fetch(`/api/v1/marketing/email/campaigns/${campaign.id}/pause`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.ok) {
         toast.success('Campanie în pauză', `"${campaign.name}" a fost pusă în pauză.`);
+        fetchData();
       } else {
-        toast.success('Campanie în pauză (Demo)', `"${campaign.name}" - funcționalitate în dezvoltare`);
+        const body = await response.json().catch(() => null);
+        toast.error('Pauza a eșuat', body?.message || 'Doar campaniile în trimitere sau programate pot fi puse în pauză.');
       }
     } catch (err) {
-      toast.success('Campanie în pauză (Demo)', `"${campaign.name}" - funcționalitate în dezvoltare`);
+      toast.error('Pauza a eșuat', 'Nu s-a putut contacta serverul. Încercați din nou.');
     }
   };
 
   const handleResumeCampaign = async (campaign: Campaign) => {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`/api/v1/marketing/campaigns/${campaign.id}/resume`, {
+      const response = await fetch(`/api/v1/marketing/email/campaigns/${campaign.id}/resume`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.ok) {
         toast.success('Campanie reluată', `"${campaign.name}" a fost reluată.`);
+        fetchData();
       } else {
-        toast.success('Campanie reluată (Demo)', `"${campaign.name}" - funcționalitate în dezvoltare`);
+        const body = await response.json().catch(() => null);
+        toast.error('Reluarea a eșuat', body?.message || 'Doar campaniile în pauză pot fi reluate.');
       }
     } catch (err) {
-      toast.success('Campanie reluată (Demo)', `"${campaign.name}" - funcționalitate în dezvoltare`);
+      toast.error('Reluarea a eșuat', 'Nu s-a putut contacta serverul. Încercați din nou.');
     }
   };
 
@@ -574,6 +568,14 @@ export default function MarketingPage() {
             <CardContent>
               <ScrollArea className="h-[400px]">
                 <div className="space-y-4">
+                  {campaignsLoading && (
+                    <p className="text-sm text-muted-foreground text-center py-8">Se încarcă campaniile…</p>
+                  )}
+                  {!campaignsLoading && campaigns.length === 0 && (
+                    <p className="text-sm text-muted-foreground text-center py-8">
+                      Nicio campanie încă. Creați prima campanie de email pentru a o vedea aici.
+                    </p>
+                  )}
                   {campaigns.map((campaign) => (
                     <div key={campaign.id} className="rounded-lg border p-4">
                       <div className="flex items-start justify-between">

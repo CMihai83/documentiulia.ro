@@ -108,23 +108,36 @@ export default function LMSPage() {
   const handleEnrollCourse = async (course: Course) => {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/lms/courses/${course.id}/enroll`, {
+      // Resolve the current user id the same way fetchData does (REQ-038)
+      let userId: string | undefined;
+      try {
+        const storedUser = localStorage.getItem('user');
+        userId = storedUser ? JSON.parse(storedUser)?.id : undefined;
+      } catch { /* ignore */ }
+      if (!userId) {
+        toast.error('Înscriere eșuată', 'Nu am putut identifica utilizatorul curent. Reautentificați-vă.');
+        return;
+      }
+      // Real endpoint: POST /lms/enrollments (REQ-038)
+      const response = await fetch(`${API_URL}/lms/enrollments`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ userId, courseId: course.id }),
       });
 
       if (response.ok) {
         toast.success('Înscris cu succes', `Te-ai înscris la cursul "${course.title}"`);
         fetchData(); // Refresh data
       } else {
-        toast.success('Înscriere (Demo)', `Înscris la "${course.title}" - funcționalitate în dezvoltare`);
+        const body = await response.json().catch(() => null);
+        toast.error('Înscriere eșuată', body?.message || `Înscrierea la "${course.title}" a eșuat.`);
       }
     } catch (err) {
       console.error('Enrollment failed:', err);
-      toast.success('Înscriere (Demo)', `Înscris la "${course.title}" - funcționalitate în dezvoltare`);
+      toast.error('Înscriere eșuată', 'Nu s-a putut contacta serverul. Încercați din nou.');
     }
   };
 
@@ -151,11 +164,11 @@ export default function LMSPage() {
         document.body.removeChild(a);
         toast.success('Descărcare', `Certificat descărcat: ${cert.courseName}`);
       } else {
-        toast.success('Descărcare (Demo)', `Certificat "${cert.courseName}" - funcționalitate în dezvoltare`);
+        toast.info('În dezvoltare', `Descărcarea certificatului "${cert.courseName}" nu este încă disponibilă.`);
       }
     } catch (err) {
       console.error('Download failed:', err);
-      toast.success('Descărcare (Demo)', `Certificat "${cert.courseName}" - funcționalitate în dezvoltare`);
+      toast.info('În dezvoltare', `Descărcarea certificatului "${cert.courseName}" nu este încă disponibilă.`);
     }
   };
 
