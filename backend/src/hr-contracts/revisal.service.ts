@@ -156,6 +156,11 @@ const COR_CODES: Record<string, string> = {
 };
 
 @Injectable()
+/**
+ * @deprecated Legacy REVISAL (.rvs/desktop-era) flow. REVISAL was replaced by
+ * REGES-Online on 1 Apr 2025 and deactivated on 1 Jan 2026 (HG 295/2025).
+ * Use RegesOnlineService (reges-online.service.ts) for all new submissions.
+ */
 export class RevisalService {
   private readonly logger = new Logger(RevisalService.name);
   private submissions: Map<string, RevisalSubmission> = new Map();
