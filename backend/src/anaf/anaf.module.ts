@@ -5,6 +5,7 @@ import { AnafService } from './anaf.service';
 import { AnafController } from './anaf.controller';
 import { SaftService } from './saft.service';
 import { SaftValidatorService } from './saft-validator.service';
+import { SaftXsdValidatorService } from './saft-xsd-validator.service';
 import { SaftD406MonthlyService } from './saft-d406-monthly.service';
 import { SaftD406Controller } from './saft-d406.controller';
 import { SaftController } from './saft.controller';
@@ -46,6 +47,7 @@ import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
     AnafLookupService,
     SaftService,
     SaftValidatorService,
+    SaftXsdValidatorService,
     SaftD406MonthlyService,
     EfacturaService,
     EfacturaSyncService,
@@ -62,6 +64,7 @@ import { RateLimiterService } from '../rate-limiter/rate-limiter.service';
     AnafLookupService,
     SaftService,
     SaftValidatorService,
+    SaftXsdValidatorService,
     SaftD406MonthlyService,
     EfacturaService,
     EfacturaSyncService,

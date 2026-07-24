@@ -55,8 +55,11 @@ COPY package*.json ./
 # non-root user can execute it (BC-305).
 ENV PUPPETEER_CACHE_DIR=/app/.puppeteer-cache
 
-# Install only production dependencies
-RUN npm ci --omit=dev && \
+# Production dependencies: copy prebuilt node_modules from the builder
+# (native modules like libxmljs2 need the builder's toolchain to compile),
+# then prune dev dependencies — pruning requires no compiler.
+COPY --from=builder /app/node_modules ./node_modules
+RUN npm prune --omit=dev && \
     npm cache clean --force
 
 # Copy Prisma schema and generate client

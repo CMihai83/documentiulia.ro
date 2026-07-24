@@ -4,6 +4,7 @@ import { SaftD406MonthlyService } from './saft-d406-monthly.service';
 import { SpvService } from './spv.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { AccountingService } from '../accounting/accounting.service';
+import { SaftXsdValidatorService } from './saft-xsd-validator.service';
 import { XMLParser } from 'fast-xml-parser';
 
 /**
@@ -205,6 +206,13 @@ describe('SaftD406MonthlyService', () => {
         {
           provide: AccountingService,
           useValue: accountingServiceMock,
+        },
+        {
+          provide: SaftXsdValidatorService,
+          useValue: {
+            available: true,
+            validate: jest.fn().mockReturnValue({ available: true, valid: true, errors: [] }),
+          },
         },
         {
           provide: ConfigService,
@@ -428,10 +436,13 @@ describe('SaftD406MonthlyService', () => {
   });
 
   describe('XML Structure Compliance', () => {
-    it('should include SAF-T RO 2.0 namespace', async () => {
+    it('should use the official ANAF D406 namespace (Ro_SAFT_Schema v2.4.x)', async () => {
       const result = await service.generateMonthlyD406('user-123', '2025-01');
 
-      expect(result.xml).toContain('urn:OECD:StandardAuditFile-Taxation/RO_2.0');
+      // the previous 'urn:OECD:StandardAuditFile-Taxation/RO_2.0' value is
+      // rejected by ANAF's validator (REQ-045 XSD hardening)
+      expect(result.xml).toContain('mfp:anaf:dgti:d406t:declaratie:v1');
+      expect(result.xml).toContain('Ro_SAFT_Schema_v249_2025.xsd');
     });
 
     it('should include XSI namespace', async () => {
@@ -440,14 +451,13 @@ describe('SaftD406MonthlyService', () => {
       expect(result.xml).toContain('http://www.w3.org/2001/XMLSchema-instance');
     });
 
-    it('should include SelectionCriteria with period dates', async () => {
+    it('should include SelectionCriteria with the period-numbers branch (RO schema)', async () => {
       const result = await service.generateMonthlyD406('user-123', '2025-01');
 
       expect(result.xml).toContain('n1:SelectionCriteria');
-      expect(result.xml).toContain('n1:SelectionStartDate');
-      expect(result.xml).toContain('n1:SelectionEndDate');
-      expect(result.xml).toContain('2025-01-01');
-      expect(result.xml).toContain('2025-01-31');
+      expect(result.xml).toContain('<n1:PeriodStart>1</n1:PeriodStart>');
+      expect(result.xml).toContain('<n1:PeriodStartYear>2025</n1:PeriodStartYear>');
+      expect(result.xml).toContain('<n1:PeriodEndYear>2025</n1:PeriodEndYear>');
     });
 
     it('should include GeneralLedgerEntries', async () => {
@@ -510,7 +520,7 @@ describe('SaftD406MonthlyService', () => {
       expect(Number(gle['n1:TotalDebit'])).toBeCloseTo(3630, 2); // 1210 + 2420
       const txs = [].concat(gle['n1:Journal']['n1:Transaction']);
       expect(txs).toHaveLength(2);
-      expect([].concat(txs[0]['n1:Line'])).toHaveLength(3); // real double-entry
+      expect([].concat(txs[0]['n1:TransactionLine'])).toHaveLength(3); // real double-entry
     });
 
     it('sources company data from Organization when a membership exists', async () => {
@@ -545,14 +555,14 @@ describe('SaftD406MonthlyService', () => {
     it('includes historical 19%/9% tax codes for pre-Legea-141 periods', async () => {
       const doc = await generateParsed('2025-05');
       const entries = doc['n1:AuditFile']['n1:MasterFiles']['n1:TaxTable']['n1:TaxTableEntry'];
-      const codes = entries.map((e: any) => String(e['n1:TaxCode']));
+      const codes = entries.map((e: any) => String(e['n1:TaxCodeDetails']['n1:TaxCode']));
       expect(codes).toEqual(expect.arrayContaining(['S', 'R1', 'S19', 'R9']));
     });
 
     it('omits historical codes for post-Legea-141 periods without old-rate invoices', async () => {
       const doc = await generateParsed('2025-09');
       const entries = doc['n1:AuditFile']['n1:MasterFiles']['n1:TaxTable']['n1:TaxTableEntry'];
-      const codes = entries.map((e: any) => String(e['n1:TaxCode']));
+      const codes = entries.map((e: any) => String(e['n1:TaxCodeDetails']['n1:TaxCode']));
       expect(codes).toContain('S');
       expect(codes).not.toContain('S19');
     });
