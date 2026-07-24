@@ -17,14 +17,11 @@ export interface LedgerAccount {
   children?: LedgerAccount[];
 }
 
-/** Map OMFP account type to the SAF-T RO AccountType letter used in D406. */
+/** Map OMFP account type to the SAF-T RO AccountType enum (Ro_SAFT_Schema v2.4.x). */
 export function saftAccountType(type: LedgerAccount['type']): string {
-  switch (type) {
-    case 'ASSET': return 'A';
-    case 'EXPENSE': return 'E';
-    case 'REVENUE': return 'R';
-    default: return 'L'; // LIABILITY + EQUITY
-  }
+  // Schema enumeration: Activ | Pasiv | Bifunctional. Debit-nature accounts
+  // (assets, expenses) are Activ; liabilities/equity/revenue are Pasiv.
+  return type === 'ASSET' || type === 'EXPENSE' ? 'Activ' : 'Pasiv';
 }
 
 export function getAccountByCode(code: string): LedgerAccount | undefined {

@@ -4,6 +4,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { XMLBuilder, XMLParser } from 'fast-xml-parser';
 import { SpvService } from './spv.service';
 import { AccountingService, JournalEntry, TrialBalanceRow } from '../accounting/accounting.service';
+import { SaftXsdValidatorService } from './saft-xsd-validator.service';
 import { ROMANIAN_CHART_OF_ACCOUNTS, saftAccountType } from '../accounting/romanian-chart-of-accounts';
 import * as crypto from 'crypto';
 
@@ -110,6 +111,7 @@ export interface D406GenerationResult {
     valid: boolean;
     errors: string[];
     warnings: string[];
+    xsd?: { available: boolean; valid: boolean; errors: string[] };
   };
   summary: {
     invoicesCount: number;
@@ -143,7 +145,9 @@ export class SaftD406MonthlyService {
   private xmlParser: XMLParser;
 
   // ANAF namespace for SAF-T RO 2.0
-  private readonly NS = 'urn:OECD:StandardAuditFile-Taxation/RO_2.0';
+  // Official ANAF D406 namespace (Ro_SAFT_Schema v2.4.x) — the previous
+  // 'urn:OECD:StandardAuditFile-Taxation/RO_2.0' value is rejected by ANAF.
+  private readonly NS = 'mfp:anaf:dgti:d406t:declaratie:v1';
   private readonly XSI = 'http://www.w3.org/2001/XMLSchema-instance';
 
   constructor(
@@ -151,12 +155,13 @@ export class SaftD406MonthlyService {
     private configService: ConfigService,
     private spvService: SpvService,
     private accountingService: AccountingService,
+    private xsdValidator: SaftXsdValidatorService,
   ) {
     this.xmlBuilder = new XMLBuilder({
       ignoreAttributes: false,
       format: true,
       indentBy: '  ',
-      suppressEmptyNode: true,
+      suppressEmptyNode: false,
       attributeNamePrefix: '@_',
       textNodeName: '#text',
       processEntities: true,
@@ -309,8 +314,15 @@ export class SaftD406MonthlyService {
       });
 
       // Generate XML with declaration header (per SAF-T RO 2.0 standard)
-      const xmlContent = this.xmlBuilder.build(saftData);
+      const xmlContent = this.xmlBuilder.build(this.clean(saftData));
       const xml = `<?xml version="1.0" encoding="UTF-8"?>\n${xmlContent}`;
+
+      // Validate against ANAF's official XSD (v2.4.9); schema errors are
+      // surfaced as warnings so generation still returns the XML for review.
+      const xsdResult = this.xsdValidator.validate(xml);
+      if (xsdResult.available && !xsdResult.valid) {
+        warnings.push(`XSD: ${xsdResult.errors.length}+ neconformitati cu Ro_SAFT_Schema_v249 (prima: ${xsdResult.errors[0] || ''})`);
+      }
 
       // Validate XML size (must be < 500MB per ANAF)
       const xmlSize = Buffer.byteLength(xml, 'utf8');
@@ -354,6 +366,7 @@ export class SaftD406MonthlyService {
           valid: errors.length === 0,
           errors,
           warnings,
+          xsd: xsdResult,
         },
         summary: {
           invoicesCount: invoices.length,
@@ -379,6 +392,28 @@ export class SaftD406MonthlyService {
   /**
    * Build complete D406 XML structure per Order 1783/2021
    */
+  /** RO AmountStructure: Amount + CurrencyCode + CurrencyAmount are all
+   * mandatory in Ro_SAFT_Schema v2.4.x (RON reporting currency). */
+  private amount(v: number): any {
+    const a = v.toFixed(2);
+    return { 'n1:Amount': a, 'n1:CurrencyCode': 'RON', 'n1:CurrencyAmount': a };
+  }
+
+  /** Recursively drop undefined/null values; keep intentionally-empty objects
+   * (required-but-empty wrappers like UOMTable render as empty elements). */
+  private clean(o: any): any {
+    if (Array.isArray(o)) return o.filter((v) => v !== undefined && v !== null).map((v) => this.clean(v));
+    if (o !== null && typeof o === 'object') {
+      const out: any = {};
+      for (const [k, v] of Object.entries(o)) {
+        if (v === undefined || v === null) continue;
+        out[k] = this.clean(v);
+      }
+      return out;
+    }
+    return o;
+  }
+
   private buildD406Structure(data: {
     user: any;
     companyProfile: any;
@@ -402,7 +437,7 @@ export class SaftD406MonthlyService {
       'n1:AuditFile': {
         '@_xmlns:n1': this.NS,
         '@_xmlns:xsi': this.XSI,
-        '@_xsi:schemaLocation': `${this.NS} SAF-T_RO_2.0.xsd`,
+        '@_xsi:schemaLocation': `${this.NS} Ro_SAFT_Schema_v249_2025.xsd`,
 
         // Header Section
         'n1:Header': {
@@ -415,13 +450,15 @@ export class SaftD406MonthlyService {
           'n1:Company': this.buildCompanyInfo(companyProfile),
           'n1:DefaultCurrencyCode': 'RON',
           'n1:SelectionCriteria': {
-            'n1:SelectionStartDate': formatLocalDate(startDate),
-            'n1:SelectionEndDate': formatLocalDate(endDate),
-            'n1:PeriodStart': period,
-            'n1:PeriodEnd': period,
+            'n1:PeriodStart': String(Number(period.split('-')[1])),
+            'n1:PeriodStartYear': period.split('-')[0],
+            'n1:PeriodEnd': String(Number(period.split('-')[1])),
+            'n1:PeriodEndYear': period.split('-')[0],
           },
-          'n1:TaxAccountingBasis': 'A', // Accrual basis
           'n1:HeaderComment': `SAF-T D406 generat pentru perioada ${period} conform Ordinului 1783/2021`,
+          'n1:SegmentIndex': '1',
+          'n1:TotalSegmentsInsequence': '1',
+          'n1:TaxAccountingBasis': 'A',
         },
 
         // MasterFiles Section
@@ -430,18 +467,23 @@ export class SaftD406MonthlyService {
           'n1:Customers': this.buildCustomers(customers),
           'n1:Suppliers': this.buildSuppliers(suppliers),
           'n1:TaxTable': this.buildTaxTable(period, [...salesInvoices, ...purchaseInvoices]),
+          'n1:UOMTable': {},
+          'n1:AnalysisTypeTable': {},
+          'n1:MovementTypeTable': {},
           'n1:Products': this.buildProducts(products),
-          ...(employees.length > 0 ? { 'n1:Owners': this.buildOwners(user) } : {}),
+          'n1:Owners': {},
+          'n1:Assets': {},
         },
 
         // GeneralLedgerEntries Section (recommended)
-        'n1:GeneralLedgerEntries': this.buildGeneralLedgerEntries(journalEntries, period),
+        'n1:GeneralLedgerEntries': this.buildGeneralLedgerEntries(journalEntries, period, companyProfile.cui || '0'),
 
         // SourceDocuments Section
         'n1:SourceDocuments': {
           'n1:SalesInvoices': this.buildSalesInvoices(salesInvoices),
           'n1:PurchaseInvoices': this.buildPurchaseInvoices(purchaseInvoices),
-          'n1:Payments': this.buildPayments(payments),
+          'n1:Payments': this.buildPayments(payments, companyProfile),
+          'n1:MovementOfGoods': {},
         },
       },
     };
@@ -451,31 +493,33 @@ export class SaftD406MonthlyService {
    * Build company information for Header
    */
   private buildCompanyInfo(user: any): any {
+    const [firstName, ...rest] = String(user.contactName || user.company || 'Reprezentant Legal').split(' ');
     return {
       'n1:RegistrationNumber': user.cui || '',
       'n1:Name': user.company || '',
       'n1:Address': {
         'n1:StreetName': user.address?.split(',')[0] || '',
+        'n1:AdditionalAddressDetail': user.address || '',
         'n1:City': user.city || '',
         'n1:PostalCode': user.postalCode || '',
         'n1:Region': user.county || '',
         'n1:Country': 'RO',
-        'n1:AddressDetail': user.address || '',
       },
       'n1:Contact': {
-        'n1:Telephone': user.phone || '',
-        'n1:Email': user.email || '',
-        'n1:Website': user.website || 'https://documentiulia.ro',
+        'n1:ContactPerson': {
+          'n1:FirstName': firstName || 'Reprezentant',
+          'n1:LastName': rest.join(' ') || 'Legal',
+        },
+        'n1:Telephone': user.phone || '-',
+        'n1:Email': user.email || undefined,
+        'n1:Website': user.website || undefined,
       },
       'n1:TaxRegistration': {
         'n1:TaxRegistrationNumber': user.cui || '',
         'n1:TaxType': 'TVA',
-        'n1:TaxAuthority': 'ANAF',
       },
       'n1:BankAccount': user.iban ? {
         'n1:IBANNumber': user.iban,
-        'n1:BankAccountName': user.bankName || '',
-        'n1:CurrencyCode': 'RON',
       } : undefined,
     };
   }
@@ -484,22 +528,28 @@ export class SaftD406MonthlyService {
    * Build Romanian Chart of Accounts (Planul de Conturi General - PCG)
    */
   private buildGeneralLedgerAccounts(trialBalance: TrialBalanceRow[]): any {
-    // Shared OMFP 1802 chart (single source with the accounting module) merged
-    // with the period trial balance so D406 ties out with accounting reports.
+    // Shared OMFP 1802 chart merged with the period trial balance. RO schema:
+    // AccountType is Activ/Pasiv/Bifunctional and balances are a CHOICE of
+    // debit or credit per side, not all four.
     const balanceByCode = new Map(trialBalance.map((r) => [r.accountCode, r]));
 
     return {
       'n1:Account': ROMANIAN_CHART_OF_ACCOUNTS.map((acc) => {
         const bal = balanceByCode.get(acc.code);
+        const debitNature = acc.type === 'ASSET' || acc.type === 'EXPENSE';
+        const opening = debitNature
+          ? { 'n1:OpeningDebitBalance': (bal?.openingDebit ?? 0).toFixed(2) }
+          : { 'n1:OpeningCreditBalance': (bal?.openingCredit ?? 0).toFixed(2) };
+        const closing = debitNature
+          ? { 'n1:ClosingDebitBalance': (bal?.closingDebit ?? 0).toFixed(2) }
+          : { 'n1:ClosingCreditBalance': (bal?.closingCredit ?? 0).toFixed(2) };
         return {
           'n1:AccountID': acc.code,
           'n1:AccountDescription': acc.name,
           'n1:StandardAccountID': acc.code,
           'n1:AccountType': saftAccountType(acc.type),
-          'n1:OpeningDebitBalance': (bal?.openingDebit ?? 0).toFixed(2),
-          'n1:ClosingDebitBalance': (bal?.closingDebit ?? 0).toFixed(2),
-          'n1:OpeningCreditBalance': (bal?.openingCredit ?? 0).toFixed(2),
-          'n1:ClosingCreditBalance': (bal?.closingCredit ?? 0).toFixed(2),
+          ...opening,
+          ...closing,
         };
       }),
     };
@@ -509,24 +559,21 @@ export class SaftD406MonthlyService {
    * Build Customers section for MasterFiles
    */
   private buildCustomers(customers: any[]): any {
-    if (customers.length === 0) {
-      return { 'n1:NumberOfEntries': '0' };
-    }
-
     return {
-      'n1:NumberOfEntries': customers.length.toString(),
       'n1:Customer': customers.map((c) => ({
-        'n1:CustomerID': c.id,
-        'n1:AccountID': '4111',
-        'n1:CustomerTaxID': c.id,
-        'n1:CompanyName': c.name,
-        'n1:Contact': {},
-        'n1:BillingAddress': {
-          'n1:AddressDetail': c.address || '',
-          'n1:City': '',
-          'n1:Country': 'RO',
+        'n1:CompanyStructure': {
+          'n1:RegistrationNumber': c.cui || c.id || '0',
+          'n1:Name': c.name || 'Necunoscut',
+          'n1:Address': {
+            'n1:AdditionalAddressDetail': c.address || undefined,
+            'n1:City': c.city || 'Necunoscut',
+            'n1:Country': 'RO',
+          },
         },
-        'n1:SelfBillingIndicator': '0',
+        'n1:CustomerID': c.cui || c.id || '0',
+        'n1:AccountID': '4111',
+        'n1:OpeningDebitBalance': '0.00',
+        'n1:ClosingDebitBalance': '0.00',
       })),
     };
   }
@@ -535,24 +582,21 @@ export class SaftD406MonthlyService {
    * Build Suppliers section for MasterFiles
    */
   private buildSuppliers(suppliers: any[]): any {
-    if (suppliers.length === 0) {
-      return { 'n1:NumberOfEntries': '0' };
-    }
-
     return {
-      'n1:NumberOfEntries': suppliers.length.toString(),
-      'n1:Supplier': suppliers.map((s) => ({
-        'n1:SupplierID': s.id,
-        'n1:AccountID': '401',
-        'n1:SupplierTaxID': s.id,
-        'n1:CompanyName': s.name,
-        'n1:Contact': {},
-        'n1:BillingAddress': {
-          'n1:AddressDetail': s.address || '',
-          'n1:City': '',
-          'n1:Country': 'RO',
+      'n1:Supplier': suppliers.map((c) => ({
+        'n1:CompanyStructure': {
+          'n1:RegistrationNumber': c.cui || c.id || '0',
+          'n1:Name': c.name || 'Necunoscut',
+          'n1:Address': {
+            'n1:AdditionalAddressDetail': c.address || undefined,
+            'n1:City': c.city || 'Necunoscut',
+            'n1:Country': 'RO',
+          },
         },
-        'n1:SelfBillingIndicator': '0',
+        'n1:SupplierID': c.cui || c.id || '0',
+        'n1:AccountID': '401',
+        'n1:OpeningCreditBalance': '0.00',
+        'n1:ClosingCreditBalance': '0.00',
       })),
     };
   }
@@ -563,15 +607,13 @@ export class SaftD406MonthlyService {
   private buildTaxTable(period: string, invoices: any[] = []): any {
     const entry = (code: string, description: string, pct: string) => ({
       'n1:TaxType': 'TVA',
-      'n1:TaxCode': code,
+      'n1:Description': description,
       'n1:TaxCodeDetails': {
         'n1:TaxCode': code,
         'n1:Description': description,
         'n1:TaxPercentage': pct,
-        'n1:Country': 'RO',
-        'n1:StandardTaxCode': code,
         'n1:BaseRate': '100.00',
-        'n1:FlatTaxRate': {},
+        'n1:Country': 'RO',
       },
     });
 
@@ -600,44 +642,30 @@ export class SaftD406MonthlyService {
   /**
    * Build Products section for MasterFiles
    */
-  private buildProducts(products: any[]): any {
-    if (products.length === 0) {
-      return undefined;
-    }
-
-    return {
-      'n1:Product': products.slice(0, 1000).map((p) => ({ // Limit to 1000 products
-        'n1:ProductCode': p.code || p.id,
-        'n1:ProductGroup': p.category || 'General',
-        'n1:Description': p.name || '',
-        'n1:ProductCommodityCode': p.ncCode || '',
-        'n1:UOMBase': p.unit || 'BUC',
-        'n1:UOMStandard': p.unit || 'BUC',
-      })),
-    };
+  private buildProducts(_products: any[]): any {
+    // Product entries require ProductCommodityCode/UOMBase/UOMStandard which
+    // the current product master does not carry — emit the (valid) empty
+    // wrapper until the inventory model provides them.
+    return {};
   }
 
   /**
    * Build Owners section
    */
-  private buildOwners(user: any): any {
-    return {
-      'n1:Owner': {
-        'n1:OwnerID': user.id,
-        'n1:AccountID': '456',
-        'n1:OwnerName': user.name || user.company,
-      },
-    };
+  private buildOwners(_user: any): any {
+    return {};
   }
 
   /**
    * Build General Ledger Entries (Journal entries)
    */
-  private buildGeneralLedgerEntries(journalEntries: JournalEntry[], period: string): any {
-    // Double-entry journal synthesized by AccountingService (411/70x/4427 for
-    // sales, 6xx/4426/401 for purchases, 5121/411 for receipts) — the same
-    // source as the trial balance, so the D406 ledger is balanced and ties out.
+  private buildGeneralLedgerEntries(journalEntries: JournalEntry[], period: string, companyCui = '0'): any {
+    // Double-entry journal from AccountingService. RO schema requires
+    // CustomerID/SupplierID at transaction AND line level; when the journal
+    // entry has no identified partner the company's own CUI is used
+    // (TODO REQ-045: thread partner CUIs through JournalEntry).
     const posted = journalEntries.filter((e) => e.status === 'POSTED');
+    const [year, month] = period.split('-');
 
     let totalDebit = 0;
     let totalCredit = 0;
@@ -648,21 +676,31 @@ export class SaftD406MonthlyService {
         return {
           'n1:RecordID': `${entry.id}-${idx + 1}`,
           'n1:AccountID': line.accountCode,
+          'n1:CustomerID': companyCui,
+          'n1:SupplierID': companyCui,
           'n1:Description': line.description || entry.description,
           ...(line.debit > 0
-            ? { 'n1:DebitAmount': { 'n1:Amount': line.debit.toFixed(2) } }
-            : { 'n1:CreditAmount': { 'n1:Amount': line.credit.toFixed(2) } }),
+            ? { 'n1:DebitAmount': this.amount(line.debit) }
+            : { 'n1:CreditAmount': this.amount(line.credit) }),
+          'n1:TaxInformation': [{
+            'n1:TaxType': 'TVA',
+            'n1:TaxCode': '000000',
+            'n1:TaxAmount': this.amount(0),
+          }],
         };
       });
+      const txDate = entry.date?.toISOString?.().split('T')[0] || `${period}-01`;
       return {
         'n1:TransactionID': entry.id,
-        'n1:Period': period.split('-')[1],
-        'n1:PeriodYear': period.split('-')[0],
-        'n1:TransactionDate': entry.date?.toISOString?.().split('T')[0] || `${period}-01`,
+        'n1:Period': String(Number(month)),
+        'n1:PeriodYear': year,
+        'n1:TransactionDate': txDate,
         'n1:Description': entry.description,
-        'n1:SystemEntryDate': entry.createdAt?.toISOString?.().split('T')[0] || `${period}-01`,
-        'n1:GLPostingDate': entry.date?.toISOString?.().split('T')[0] || `${period}-01`,
-        'n1:Line': lines,
+        'n1:SystemEntryDate': entry.createdAt?.toISOString?.().split('T')[0] || txDate,
+        'n1:GLPostingDate': txDate,
+        'n1:CustomerID': companyCui,
+        'n1:SupplierID': companyCui,
+        'n1:TransactionLine': lines,
       };
     });
 
@@ -670,12 +708,12 @@ export class SaftD406MonthlyService {
       'n1:NumberOfEntries': posted.length.toString(),
       'n1:TotalDebit': totalDebit.toFixed(2),
       'n1:TotalCredit': totalCredit.toFixed(2),
-      'n1:Journal': posted.length > 0 ? {
+      ...(posted.length > 0 ? { 'n1:Journal': {
         'n1:JournalID': 'GEN',
         'n1:Description': `Registru jurnal ${period}`,
         'n1:Type': 'GEN',
         'n1:Transaction': transactions.slice(0, 10000),
-      } : undefined,
+      } } : {}),
     };
   }
 
@@ -683,12 +721,10 @@ export class SaftD406MonthlyService {
    * Build Sales Invoices section
    */
   private buildSalesInvoices(invoices: any[]): any {
-    const totalDebit = 0;
     const totalCredit = invoices.reduce((sum, i) => sum + Number(i.grossAmount || 0), 0);
-
     return {
       'n1:NumberOfEntries': invoices.length.toString(),
-      'n1:TotalDebit': totalDebit.toFixed(2),
+      'n1:TotalDebit': '0.00',
       'n1:TotalCredit': totalCredit.toFixed(2),
       'n1:Invoice': invoices.map((inv) => this.buildInvoice(inv, 'sales')),
     };
@@ -699,12 +735,10 @@ export class SaftD406MonthlyService {
    */
   private buildPurchaseInvoices(invoices: any[]): any {
     const totalDebit = invoices.reduce((sum, i) => sum + Number(i.grossAmount || 0), 0);
-    const totalCredit = 0;
-
     return {
       'n1:NumberOfEntries': invoices.length.toString(),
       'n1:TotalDebit': totalDebit.toFixed(2),
-      'n1:TotalCredit': totalCredit.toFixed(2),
+      'n1:TotalCredit': '0.00',
       'n1:Invoice': invoices.map((inv) => this.buildInvoice(inv, 'purchase')),
     };
   }
@@ -713,90 +747,57 @@ export class SaftD406MonthlyService {
    * Build individual invoice
    */
   private buildInvoice(inv: any, type: 'sales' | 'purchase'): any {
-    const netAmount = Number(inv.netAmount || 0);
-    const vatAmount = Number(inv.vatAmount || 0);
-    const grossAmount = Number(inv.grossAmount || 0);
-
-    // Determine VAT rate
-    let vatCode = 'S'; // Standard 21%
-    const vatRate = vatAmount > 0 && netAmount > 0 ? (vatAmount / netAmount) * 100 : 0;
-    if (vatRate < 1) vatCode = 'Z';
-    else if (vatRate >= 4 && vatRate <= 6) vatCode = 'R2';
-    else if (vatRate >= 10 && vatRate <= 12) vatCode = 'R1';
+    const net = Number(inv.netAmount || 0);
+    const vat = Number(inv.vatAmount || 0);
+    const gross = Number(inv.grossAmount || 0);
+    const rate = Number(inv.vatRate ?? 21);
+    const date = inv.invoiceDate?.toISOString?.().split('T')[0] || '';
+    const partnerId = inv.partnerCui || '0';
+    const taxCode = rate === 21 ? 'S' : rate === 11 ? 'R1' : rate === 19 ? 'S19'
+      : rate === 9 ? 'R9' : rate === 5 ? 'R2' : 'Z';
 
     return {
-      'n1:InvoiceNo': inv.invoiceNumber || inv.id,
-      'n1:ATCUD': '', // Optional: unique document code
-      'n1:CustomerInfo': type === 'sales' ? {
-        'n1:CustomerID': inv.partnerCui || '',
-        'n1:BillingAddress': {
-          'n1:AddressDetail': inv.partnerAddress || '',
-          'n1:City': '',
-          'n1:Country': 'RO',
-        },
-      } : undefined,
-      'n1:SupplierInfo': type === 'purchase' ? {
-        'n1:SupplierID': inv.partnerCui || '',
-        'n1:BillingAddress': {
-          'n1:AddressDetail': inv.partnerAddress || '',
-          'n1:City': '',
-          'n1:Country': 'RO',
-        },
-      } : undefined,
-      'n1:Period': inv.invoiceDate?.toISOString().slice(0, 7) || '',
-      'n1:InvoiceDate': inv.invoiceDate?.toISOString().split('T')[0] || '',
+      'n1:InvoiceNo': inv.invoiceNumber,
+      ...(type === 'sales'
+        ? { 'n1:CustomerInfo': {
+            'n1:CustomerID': partnerId,
+            'n1:BillingAddress': {
+              'n1:AdditionalAddressDetail': inv.partnerAddress || undefined,
+              'n1:City': inv.partnerCity || 'Necunoscut',
+              'n1:Country': 'RO',
+            },
+          } }
+        : { 'n1:SupplierInfo': {
+            'n1:SupplierID': partnerId,
+            'n1:BillingAddress': {
+              'n1:AdditionalAddressDetail': inv.partnerAddress || undefined,
+              'n1:City': inv.partnerCity || 'Necunoscut',
+              'n1:Country': 'RO',
+            },
+          } }),
+      'n1:AccountID': type === 'sales' ? '4111' : '401',
+      'n1:InvoiceDate': date,
       'n1:InvoiceType': this.getInvoiceType(inv),
-      'n1:SpecialRegimes': {},
-      'n1:SourceID': 'DocumentIulia-ERP',
-      'n1:GLPostingDate': inv.invoiceDate?.toISOString().split('T')[0] || '',
-      'n1:TransactionID': inv.id,
-      'n1:SystemEntryDate': inv.createdAt?.toISOString().split('T')[0] || new Date().toISOString().split('T')[0],
-      'n1:Line': {
+      'n1:SelfBillingIndicator': '0',
+      'n1:InvoiceLine': [{
         'n1:LineNumber': '1',
-        'n1:AccountID': type === 'sales' ? '4111' : '401',
-        'n1:OrderReferences': {},
-        'n1:ProductCode': '',
-        'n1:ProductDescription': inv.description || 'Servicii/Produse',
+        'n1:AccountID': type === 'sales' ? '704' : '628',
         'n1:Quantity': '1',
-        'n1:UnitOfMeasure': 'BUC',
-        'n1:UnitPrice': netAmount.toFixed(2),
-        'n1:TaxPointDate': inv.invoiceDate?.toISOString().split('T')[0] || '',
-        'n1:References': {},
-        'n1:Description': inv.description || '',
-        ...(type === 'sales'
-          ? {
-              'n1:CreditAmount': {
-                'n1:Amount': grossAmount.toFixed(2),
-                'n1:CurrencyCode': inv.currency || 'RON',
-              },
-            }
-          : {
-              'n1:DebitAmount': {
-                'n1:Amount': grossAmount.toFixed(2),
-                'n1:CurrencyCode': inv.currency || 'RON',
-              },
-            }),
-        'n1:Tax': {
+        'n1:UnitPrice': net.toFixed(2),
+        'n1:TaxPointDate': date,
+        'n1:Description': inv.partnerName ? `Factura ${inv.invoiceNumber} - ${inv.partnerName}` : `Factura ${inv.invoiceNumber}`,
+        'n1:InvoiceLineAmount': this.amount(net),
+        'n1:DebitCreditIndicator': type === 'sales' ? 'C' : 'D',
+        'n1:TaxInformation': [{
           'n1:TaxType': 'TVA',
-          'n1:TaxCode': vatCode,
-          'n1:TaxPercentage': vatRate.toFixed(2),
-          'n1:TaxBase': netAmount.toFixed(2),
-          'n1:TaxAmount': {
-            'n1:Amount': vatAmount.toFixed(2),
-            'n1:CurrencyCode': inv.currency || 'RON',
-          },
-        },
-        'n1:SettlementAmount': {},
-      },
-      'n1:DocumentTotals': {
-        'n1:TaxPayable': vatAmount.toFixed(2),
-        'n1:NetTotal': netAmount.toFixed(2),
-        'n1:GrossTotal': grossAmount.toFixed(2),
-        'n1:Currency': {
-          'n1:CurrencyCode': inv.currency || 'RON',
-          'n1:CurrencyAmount': grossAmount.toFixed(2),
-          'n1:ExchangeRate': '1.0000',
-        },
+          'n1:TaxCode': taxCode,
+          'n1:TaxPercentage': rate.toFixed(2),
+          'n1:TaxAmount': this.amount(vat),
+        }],
+      }],
+      'n1:InvoiceDocumentTotals': {
+        'n1:NetTotal': net.toFixed(2),
+        'n1:GrossTotal': gross.toFixed(2),
       },
     };
   }
@@ -804,46 +805,30 @@ export class SaftD406MonthlyService {
   /**
    * Build Payments section
    */
-  private buildPayments(payments: any[]): any {
-    if (payments.length === 0) {
-      return {
-        'n1:NumberOfEntries': '0',
-        'n1:TotalDebit': '0.00',
-        'n1:TotalCredit': '0.00',
-      };
-    }
-
-    const totalAmount = payments.reduce((sum, p) => sum + Number(p.amount || 0), 0);
-
+  private buildPayments(payments: any[], companyProfile: any = {}): any {
+    const total = payments.reduce((sum, p) => sum + Number(p.amount || 0), 0);
+    const cui = companyProfile.cui || '0';
     return {
       'n1:NumberOfEntries': payments.length.toString(),
-      'n1:TotalDebit': totalAmount.toFixed(2),
-      'n1:TotalCredit': totalAmount.toFixed(2),
-      'n1:Payment': payments.map((p) => ({
-        'n1:PaymentRefNo': p.reference || p.id,
-        'n1:Period': p.paymentDate?.toISOString().slice(0, 7) || '',
-        'n1:TransactionID': p.id,
-        'n1:TransactionDate': p.paymentDate?.toISOString().split('T')[0] || '',
-        'n1:PaymentType': this.getPaymentType(p),
-        'n1:Description': p.description || 'Plată',
-        'n1:SystemID': 'DocumentIulia-ERP',
-        'n1:DocumentTotals': {
-          'n1:TaxPayable': '0.00',
-          'n1:NetTotal': Number(p.amount || 0).toFixed(2),
-          'n1:GrossTotal': Number(p.amount || 0).toFixed(2),
-          'n1:Currency': {
-            'n1:CurrencyCode': p.currency || 'RON',
-          },
-        },
-        'n1:Line': {
-          'n1:LineNumber': '1',
-          'n1:AccountID': p.type === 'CASH' ? '5311' : '5121',
-          'n1:SourceDocumentID': p.invoiceId || '',
-          'n1:DebitAmount': {
-            'n1:Amount': Number(p.amount || 0).toFixed(2),
-          },
-        },
-      })),
+      'n1:TotalDebit': total.toFixed(2),
+      'n1:TotalCredit': total.toFixed(2),
+      'n1:Payment': payments.map((p, i) => {
+        const date = p.paymentDate?.toISOString?.().split('T')[0] || '';
+        return {
+          'n1:PaymentRefNo': p.reference || p.id || `PL-${i + 1}`,
+          'n1:TransactionDate': date,
+          'n1:PaymentMethod': this.getPaymentType(p),
+          'n1:Description': p.description || `Incasare ${p.reference || p.id || i + 1}`,
+          'n1:PaymentLine': [{
+            'n1:LineNumber': '1',
+            'n1:AccountID': '5121',
+            'n1:CustomerID': cui,
+            'n1:SupplierID': cui,
+            'n1:DebitCreditIndicator': 'D',
+            'n1:PaymentLineAmount': this.amount(Number(p.amount || 0)),
+          }],
+        };
+      }),
     };
   }
 
