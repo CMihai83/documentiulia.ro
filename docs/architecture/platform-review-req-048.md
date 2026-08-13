@@ -50,6 +50,27 @@ read the actual code. 77 raw findings → 13 confirmed critical/high (1 refuted)
 
 - All MFA calls go to /api/auth/mfa/* which is neither a Next API route nor proxied — backend serves /api/v1/mfa/*; 2FA cannot be enabled, verified, or disabled
 
+## Wave 2 — fiscal accuracy items FIXED (PR #51)
+
+Promoted from the backlog below and fixed 2026-08-13:
+
+1. **D406 period boundary** — midnight `lte` bound + UTC date rendering meant
+   last-day documents appeared in no declaration at all. Now exclusive bound,
+   local-date rendering throughout.
+2. **D406 status filtering** — cancelled/draft invoices were declared with
+   their VAT. Now excluded.
+3. **Non-RON currency** — foreign invoices declared at face value as RON
+   (~80% understatement on EUR). Now uses the stored BNR-converted amounts,
+   with the original currency alongside; ledger fixed the same way.
+4. **Stale 19% VAT defaults** — recurring templates and B2C invoices. New
+   shared `finance/vat-rates.ts` derives defaults from the document date and
+   validates supplied rates.
+
+Bonus, found while testing: `EuVatService.getAllCountries()` returned an empty
+array (sync method awaiting an async source) so three public endpoints served
+nothing; its spec had never executed. Both fixed — the endpoint now returns 27
+countries in production.
+
 ## Open backlog (lower severity, not yet fixed)
 
 Ranked as reported. Several are worth promoting — notably the D406 invoice-status
