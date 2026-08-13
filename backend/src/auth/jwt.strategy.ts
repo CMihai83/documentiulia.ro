@@ -23,6 +23,24 @@ interface UserMembership {
   };
 }
 
+/**
+ * REQ-048 security fix: JWT_SECRET previously fell back to the constant
+ * 'documentiulia_jwt_secret', which is committed to this repository. Any
+ * deployment missing the env var silently signed and accepted tokens anyone
+ * could forge — and made tokens valid across every standalone slice too.
+ * Refuse to start instead.
+ */
+function requireJwtSecret(configService: ConfigService): string {
+  const secret = configService.get<string>('JWT_SECRET');
+  if (!secret || secret.length < 16 || secret === 'documentiulia_jwt_secret') {
+    throw new Error(
+      'JWT_SECRET is missing, too short, or still the default placeholder. ' +
+      'Set a unique secret of at least 16 characters before starting the API.',
+    );
+  }
+  return secret;
+}
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
@@ -32,7 +50,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('JWT_SECRET') || 'documentiulia_jwt_secret',
+      secretOrKey: requireJwtSecret(configService),
     });
   }
 
