@@ -9,7 +9,9 @@ import {
   Res,
   HttpStatus,
   Request,
+  BadRequestException,
 } from '@nestjs/common';
+import { checkVatRateForDate, standardVatRateForDate } from '../finance/vat-rates';
 import { Response } from 'express';
 import {
   ApiTags,
@@ -103,7 +105,7 @@ export class EfacturaB2CController {
               quantity: { type: 'number' },
               unitOfMeasure: { type: 'string', default: 'buc' },
               unitPrice: { type: 'number' },
-              vatRate: { type: 'number', default: 19 },
+              vatRate: { type: 'number', description: 'Optional — defaults to the standard rate applicable on the invoice date (21% since Aug 2025).' },
               vatCategory: { type: 'string', default: 'S' },
               productCode: { type: 'string' },
             },
@@ -169,10 +171,18 @@ export class EfacturaB2CController {
       notes?: string;
     },
   ) {
+    // REQ-048: the applicable VAT regime follows the invoice date, not today.
+    const issueDate = body.invoiceDate ? new Date(body.invoiceDate) : new Date();
+
     // Build items with calculated amounts
     const items: B2CInvoiceItem[] = body.items.map((item, index) => {
       const netAmount = item.quantity * item.unitPrice - (item.discount || 0);
-      const vatRate = item.vatRate ?? 19;
+      // REQ-048: was `?? 19` — abolished in Aug 2025 (Legea 141/2025).
+      const vatRate = item.vatRate ?? standardVatRateForDate(issueDate);
+      const rateCheck = checkVatRateForDate(vatRate, issueDate);
+      if (!rateCheck.valid) {
+        throw new BadRequestException(rateCheck.message);
+      }
       const vatAmount = netAmount * (vatRate / 100);
       const grossAmount = netAmount + vatAmount;
 

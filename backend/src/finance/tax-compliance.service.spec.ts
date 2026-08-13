@@ -56,9 +56,10 @@ describe('TaxComplianceService', () => {
       });
 
       expect(result.netAmount).toBe(1000);
-      expect(result.taxRate).toBe(19);
-      expect(result.taxAmount).toBe(190);
-      expect(result.grossAmount).toBe(1190);
+      // Legea 141/2025: Romanian standard rate is 21% since 1 Aug 2025.
+      expect(result.taxRate).toBe(21);
+      expect(result.taxAmount).toBe(210);
+      expect(result.grossAmount).toBe(1210);
       expect(result.reverseCharge).toBe(false);
     });
 
@@ -112,8 +113,9 @@ describe('TaxComplianceService', () => {
         category: 'hospitality',
       });
 
-      expect(result.taxRate).toBe(9);
-      expect(result.taxAmount).toBe(90);
+      // Legea 141/2025 merged the 9%/5% reduced rates into 11%.
+      expect(result.taxRate).toBe(11);
+      expect(result.taxAmount).toBe(110);
     });
 
     it('should exempt medical services', () => {
@@ -308,7 +310,7 @@ describe('TaxComplianceService', () => {
 
       expect(config).toBeDefined();
       expect(config?.name).toBe('Romania');
-      expect(config?.standardRate).toBe(19);
+      expect(config?.standardRate).toBe(21); // Legea 141/2025
       expect(config?.currency).toBe('RON');
     });
 
@@ -461,7 +463,7 @@ describe('TaxComplianceService', () => {
         transactionType: 'B2C',
       });
 
-      expect(result.taxAmount).toBe(190000000);
+      expect(result.taxAmount).toBe(210000000); // 21% standard rate
     });
 
     it('should throw for unknown seller country', () => {

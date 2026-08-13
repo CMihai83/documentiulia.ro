@@ -460,8 +460,14 @@ export class EuVatService {
   /**
    * Get all EU member states with VAT rates
    */
-  getAllCountries(): EUCountryVATRates[] {
-    return Object.values(this.getVATRates());
+  /**
+   * REQ-048 fix: this was declared synchronous while getVATRates() is async, so
+   * it evaluated Object.values(Promise) and returned an EMPTY array — the
+   * /eu-vat/countries endpoint and the OSS threshold lookup silently served no
+   * countries at all.
+   */
+  async getAllCountries(): Promise<EUCountryVATRates[]> {
+    return Object.values(await this.getVATRates());
   }
 
   /**
