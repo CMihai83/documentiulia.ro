@@ -6,9 +6,18 @@ import {
   HttpCode,
   HttpStatus,
   Logger,
+  UseGuards,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { RolesGuard } from '../auth/roles.guard';
+import { Roles } from '../auth/roles.decorator';
+import { UserRole } from '@prisma/client';
 
+// REQ-048 security fix: these endpoints run DB maintenance (VACUUM/REINDEX)
+// and expose schema/health internals — previously completely unauthenticated.
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.ADMIN)
 @Controller('database')
 export class DatabaseController {
   private readonly logger = new Logger(DatabaseController.name);

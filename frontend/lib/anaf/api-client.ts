@@ -66,7 +66,7 @@ const createApiClient = (): AxiosInstance => {
     (config) => {
       // Get token from localStorage (set by auth system)
       const token = typeof window !== 'undefined'
-        ? localStorage.getItem('accessToken') || localStorage.getItem('auth_token')
+        ? localStorage.getItem('auth_token') || localStorage.getItem('auth_token')
         : null;
 
       if (token) {
@@ -90,7 +90,7 @@ const createApiClient = (): AxiosInstance => {
       if (error.response?.status === 401) {
         if (typeof window !== 'undefined') {
           // Clear tokens
-          localStorage.removeItem('accessToken');
+          localStorage.removeItem('auth_token');
           localStorage.removeItem('auth_token');
 
           // Redirect to login (unless already on login page)

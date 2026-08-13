@@ -130,7 +130,7 @@ export function BusinessWidgets() {
   const [apiData, setApiData] = useState<BusinessData | null>(null);
   const [lastRefresh, setLastRefresh] = useState<Date | null>(null);
 
-  const getToken = () => localStorage.getItem('auth_token') || localStorage.getItem('accessToken');
+  const getToken = () => localStorage.getItem('auth_token') || localStorage.getItem('auth_token');
 
   const fetchBusinessData = async (type: string) => {
     setLoading(true);

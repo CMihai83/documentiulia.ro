@@ -161,8 +161,29 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     }
   }
 
+  /**
+   * REQ-048 security fix: identifiers cannot be parameterized, so any table
+   * name reaching raw DDL must be validated against the live schema first —
+   * previously an attacker-controlled name was interpolated straight into
+   * VACUUM/REINDEX (SQL injection + DoS).
+   */
+  private async assertKnownTable(tableName: string): Promise<void> {
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(tableName)) {
+      throw new Error(`Invalid table name: ${tableName}`);
+    }
+    const rows = await this.$queryRaw<Array<{ exists: boolean }>>`
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.tables
+        WHERE table_schema = 'public' AND table_name = ${tableName}
+      ) AS "exists"`;
+    if (!rows?.[0]?.exists) {
+      throw new Error(`Unknown table: ${tableName}`);
+    }
+  }
+
   async vacuum(tableName?: string): Promise<void> {
     if (tableName) {
+      await this.assertKnownTable(tableName);
       await this.$executeRawUnsafe(`VACUUM ANALYZE "${tableName}"`);
     } else {
       await this.$executeRaw`VACUUM ANALYZE`;
@@ -171,6 +192,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   }
 
   async reindex(tableName: string): Promise<void> {
+    await this.assertKnownTable(tableName);
     await this.$executeRawUnsafe(`REINDEX TABLE "${tableName}"`);
     this.logger.log(`REINDEX completed for ${tableName}`);
   }

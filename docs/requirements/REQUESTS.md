@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 47 · logged: 4 · planned: 4 · in_progress: 4 · shipped: 33 · parked: 2 · rejected: 0
+Total: 48 · logged: 3 · planned: 4 · in_progress: 4 · shipped: 35 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -42,7 +42,7 @@ Total: 47 · logged: 4 · planned: 4 · in_progress: 4 · shipped: 33 · parked:
 | REQ-035 | 2026-07-10 | **shipped** | Fabrication residue in ~26 OTHER pages (Maria Ionescu / SKU-001 seeds: client-portal, blog, ecommerce, scheduling, employee-portal, logistic… | 7bc5f151 — 3 lanes + last mile; A-class 0 |
 | REQ-036 | 2026-07-10 | **shipped** | Build backends for the 21 demo-bannered pages (procurement orders, inventory movements/alerts, expenses, assets, contracts, payroll runs, fr… | REQ-035,master a5410b33 — 15 pages wired (backends existed), FraudDetectionModule registered, 6 honest banners remain |
 | REQ-037 | 2026-07-10 | **logged** | Marketing /about page lists fabricated executives (e.g. 'Elena Dumitrescu, CFO') — user decision: real team, placeholder, or remove |  |
-| REQ-038 | 2026-07-10 | **in_progress** | MAJOR FINDING: the 21 'no backend' bannered pages nearly all HAVE backends under different module names (assets->asset-management 83 routes,… | REQ-036 |
+| REQ-038 | 2026-07-10 | **in_progress** | MAJOR FINDING: the 21 'no backend' bannered pages nearly all HAVE backends under different module names (assets->asset-management 83 routes,… | REQ-036,PR#46 |
 | REQ-039 | 2026-07-10 | **shipped** | Research and upgrade the frontend design | master 6657ea5c — Registrul viu live |
 | REQ-040 | 2026-07-10 | **shipped** | Build genuinely-missing backends: projects controller, scheduling/meetings module, client-portal self-resolution ('my client' from JWT); wir… | master 22be257e |
 | REQ-041 | 2026-07-10 | **shipped** | Organise how services are bundled and how users consume them from the dashboard burger/left menu | sidebar IA live |
@@ -50,5 +50,6 @@ Total: 47 · logged: 4 · planned: 4 · in_progress: 4 · shipped: 33 · parked:
 | REQ-043 | 2026-07-23 | **shipped** | check functionality in documentiulia and group/create stand alone modules that can be used as standalone or in connection with other modules… | PR#33,docs/architecture/standalone-modules.md,PR#33,PR#34,PR#35,docs/architecture/standalone-modules.md |
 | REQ-044 | 2026-07-23 | **in_progress** | make sure you are doing the /deep-research on all modules you implement |  |
 | REQ-045 | 2026-07-23 | **shipped** | continue with build work, prioritize SAF-T D406 generation | PR#40,PR#40,PR#41,PR#42 |
-| REQ-046 | 2026-07-24 | **logged** | PRE-EXISTING BUG found during REQ-043 cleanup: DealsService.createDeal does not reject non-existent pipelineId (deals.service.spec.ts test f… |  |
-| REQ-047 | 2026-07-24 | **in_progress** | continue with the REGES-Online API integration |  |
+| REQ-046 | 2026-07-24 | **shipped** | PRE-EXISTING BUG found during REQ-043 cleanup: DealsService.createDeal does not reject non-existent pipelineId (deals.service.spec.ts test f… |  |
+| REQ-047 | 2026-07-24 | **shipped** | continue with the REGES-Online API integration | PR#44 |
+| REQ-048 | 2026-08-13 | **in_progress** | do full review of entire platform and span multiple agents to close gaps and enhance functionality and accuracy and operability of the platf… |  |

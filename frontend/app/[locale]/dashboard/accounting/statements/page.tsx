@@ -45,7 +45,7 @@ export default function FinancialStatementsPage() {
   const fetchStatement = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
 
       let url = `/api/v1/accounting/statements/${activeTab}`;
       const params = new URLSearchParams();

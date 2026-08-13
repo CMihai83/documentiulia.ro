@@ -1,8 +1,15 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { RolesGuard } from '../auth/roles.guard';
+import { Roles } from '../auth/roles.decorator';
+import { UserRole } from '@prisma/client';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { SecurityAuditService, ComplianceStandard, SecuritySeverity } from './security-audit.service';
 
 @ApiTags('security')
+// REQ-048 security fix: IP block/unblock and audit reports were unauthenticated.
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.ADMIN)
 @Controller('security')
 export class SecurityAuditController {
   constructor(private readonly securityAuditService: SecurityAuditService) {}

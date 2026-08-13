@@ -46,6 +46,21 @@ export interface FinancialStatement {
 }
 
 
+
+/**
+ * REQ-048 fix (accrual accounting): an invoice creates its ledger obligation on
+ * the invoice date, not when it is paid. Previously entries were POSTED only for
+ * PAID invoices, so unpaid revenue/VAT vanished from the trial balance, the
+ * statements and the D406 GeneralLedgerEntries — while the same D406 declared
+ * those invoices in SourceDocuments and a TaxAccountingBasis of 'A' (accrual).
+ * Only genuinely unissued documents (DRAFT) or voided ones (CANCELLED) stay out.
+ */
+function invoiceEntryStatus(invoice: { status?: string | null }): 'DRAFT' | 'POSTED' | 'VOIDED' {
+  if (invoice.status === 'CANCELLED') return 'VOIDED';
+  if (invoice.status === 'DRAFT') return 'DRAFT';
+  return 'POSTED';
+}
+
 @Injectable()
 export class AccountingService {
   private readonly logger = new Logger(AccountingService.name);
@@ -176,7 +191,7 @@ export class AccountingService {
             { accountCode: '704', accountName: 'Venituri din servicii', debit: 0, credit: subtotal },
             { accountCode: '4427', accountName: 'TVA colectata', debit: 0, credit: vatAmount },
           ],
-          status: invoice.paymentStatus === 'PAID' ? 'POSTED' : 'DRAFT',
+          status: invoiceEntryStatus(invoice),
           createdAt: invoice.createdAt,
           partnerCui: invoice.partnerCui || undefined,
           partnerType: 'customer',
@@ -211,7 +226,7 @@ export class AccountingService {
             { accountCode: '4426', accountName: 'TVA deductibila', debit: vatAmount, credit: 0 },
             { accountCode: '401', accountName: 'Furnizori', debit: 0, credit: total, description: invoice.partnerName },
           ],
-          status: invoice.paymentStatus === 'PAID' ? 'POSTED' : 'DRAFT',
+          status: invoiceEntryStatus(invoice),
           createdAt: invoice.createdAt,
           partnerCui: invoice.partnerCui || undefined,
           partnerType: 'supplier',

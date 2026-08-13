@@ -36,7 +36,7 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${localStorage.getItem('auth_token')}`,
         },
         body: JSON.stringify({ password }),
       });
@@ -66,7 +66,7 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${localStorage.getItem('auth_token')}`,
         },
         body: JSON.stringify({
           token: verificationCode,

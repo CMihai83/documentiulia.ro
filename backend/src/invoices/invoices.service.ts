@@ -273,8 +273,37 @@ export class InvoicesService {
     return updated;
   }
 
+  /**
+   * REQ-048 fix (financial-record retention): deleting an invoice cascaded away
+   * its Payments and InvoiceItems with no guard. Romanian accounting law
+   * (Legea 82/1991) requires 10-year retention, and an invoice already sent to
+   * ANAF (e-Factura) or paid must never disappear — it is corrected by a credit
+   * note, not erased. Only unissued drafts may be hard-deleted; everything else
+   * is cancelled (soft), preserving the audit trail.
+   */
   async delete(userId: string, id: string) {
-    await this.findOne(userId, id);
+    const invoice = await this.findOne(userId, id);
+
+    const isDraft = invoice.status === 'DRAFT';
+    const hasPayments = Number(invoice.paidAmount || 0) > 0;
+    const sentToAnaf = Boolean((invoice as any).efacturaId || (invoice as any).anafUploadIndex)
+      || invoice.status === 'SUBMITTED';
+
+    if (!isDraft || hasPayments || sentToAnaf) {
+      const reason = sentToAnaf
+        ? 'a fost transmisă la ANAF'
+        : hasPayments
+          ? 'are plăți înregistrate'
+          : 'nu mai este ciornă';
+      this.logger.warn(
+        `Refusing hard-delete of invoice ${invoice.invoiceNumber} (${id}) — ${reason}; cancelling instead`,
+      );
+      return this.prisma.invoice.update({
+        where: { id },
+        data: { status: 'CANCELLED' },
+      });
+    }
+
     return this.prisma.invoice.delete({ where: { id } });
   }
 
@@ -387,7 +416,11 @@ export class InvoicesService {
       },
     };
 
-    const xml = this.efacturaService.generateUBL(ublInvoice);
+    // REQ-048 fix: use the CIUS-RO-compliant generator. generateUBL emitted
+    // unescaped values (an '&' in a partner name broke the XML outright) and
+    // omitted EN16931-mandatory elements (TaxSubtotal, LineExtensionAmount,
+    // party addresses/legal entity), so every real submission was rejected.
+    const xml = this.efacturaService.generateB2BUBL(ublInvoice);
 
     try {
       // Submit to ANAF SPV

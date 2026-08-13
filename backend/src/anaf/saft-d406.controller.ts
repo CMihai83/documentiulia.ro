@@ -9,6 +9,7 @@ import {
   Res,
   HttpStatus,
   UseInterceptors,
+  Request,
 } from '@nestjs/common';
 import { Response } from 'express';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiBody, ApiQuery, ApiResponse } from '@nestjs/swagger';
@@ -32,6 +33,9 @@ import { CacheTTL } from '../cache/redis-cache.service';
 @Controller('saft-d406')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(UserRole.USER, UserRole.ADMIN, UserRole.ACCOUNTANT)
+// REQ-048 security fix: userId is ALWAYS derived from the JWT (req.user.sub),
+// never from the request body or path param — the previous contract let any
+// authenticated user read/submit another tenant's SAF-T fiscal data (IDOR).
 export class SaftD406Controller {
   constructor(
     private readonly saftD406Service: SaftD406MonthlyService,
@@ -58,9 +62,10 @@ export class SaftD406Controller {
   @ApiResponse({ status: 200, description: 'D406 generated successfully' })
   @ApiResponse({ status: 400, description: 'Validation errors' })
   async generateD406(
-    @Body() body: { userId: string; period: string },
+    @Request() req: any,
+    @Body() body: { period: string },
   ): Promise<D406GenerationResult> {
-    return this.saftD406Service.generateMonthlyD406(body.userId, body.period);
+    return this.saftD406Service.generateMonthlyD406(req.user.sub, body.period);
   }
 
   @Get('preview/:userId/:period')
@@ -70,10 +75,10 @@ export class SaftD406Controller {
   })
   @ApiResponse({ status: 200, description: 'XML preview' })
   async previewD406(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Param('period') period: string,
   ): Promise<{ xml: string; formatted: string }> {
-    return this.saftD406Service.previewXML(userId, period);
+    return this.saftD406Service.previewXML(req.user.sub, period);
   }
 
   @Get('download/:userId/:period')
@@ -82,11 +87,11 @@ export class SaftD406Controller {
     description: 'Generate and download the SAF-T D406 XML as a file',
   })
   async downloadD406(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Param('period') period: string,
     @Res() res: Response,
   ): Promise<void> {
-    const result = await this.saftD406Service.generateMonthlyD406(userId, period);
+    const result = await this.saftD406Service.generateMonthlyD406(req.user.sub, period);
 
     if (!result.success || !result.xml) {
       res.status(HttpStatus.BAD_REQUEST).json({
@@ -112,14 +117,15 @@ export class SaftD406Controller {
     description: 'Validates all data for SAF-T D406 without generating XML',
   })
   async validateD406(
-    @Body() body: { userId: string; period: string },
+    @Request() req: any,
+    @Body() body: { period: string },
   ): Promise<{
     valid: boolean;
     errors: string[];
     warnings: string[];
     summary: any;
   }> {
-    const result = await this.saftService.validateSAFT(body.userId, body.period);
+    const result = await this.saftService.validateSAFT(req.user.sub, body.period);
     return {
       valid: result.valid,
       errors: result.errors.map((e) => `${e.code}: ${e.message}`),
@@ -174,16 +180,16 @@ export class SaftD406Controller {
     };
   }
 
-  @Get('checklist/:userId/:period')
+  @Get('checklist/:period')
   @ApiOperation({
     summary: 'Get pre-submission checklist',
     description: 'Returns a checklist of items to verify before submission',
   })
   async getChecklist(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Param('period') period: string,
   ) {
-    return this.saftService.getPreSubmissionChecklist(userId, period);
+    return this.saftService.getPreSubmissionChecklist(req.user.sub, period);
   }
 
   // ===== Submission Endpoints =====
@@ -206,63 +212,64 @@ export class SaftD406Controller {
   @ApiResponse({ status: 200, description: 'Submission initiated' })
   @ApiResponse({ status: 400, description: 'Submission failed' })
   async submitD406(
-    @Body() body: { userId: string; period: string },
+    @Request() req: any,
+    @Body() body: { period: string },
   ): Promise<D406SubmissionResult> {
-    return this.saftD406Service.submitToANAF(body.userId, body.period);
+    return this.saftD406Service.submitToANAF(req.user.sub, body.period);
   }
 
-  @Get('submission-status/:userId/:reference')
+  @Get('submission-status/:reference')
   @ApiOperation({
     summary: 'Check submission status',
     description: 'Check the status of a SAF-T D406 submission to ANAF',
   })
   async getSubmissionStatus(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Param('reference') reference: string,
   ) {
-    return this.saftD406Service.getSubmissionStatus(userId, reference);
+    return this.saftD406Service.getSubmissionStatus(req.user.sub, reference);
   }
 
   // ===== Compliance Endpoints =====
 
-  @Get('compliance/:userId/:period')
+  @Get('compliance/:period')
   @ApiOperation({
     summary: 'Get compliance status',
     description: 'Check compliance status for a specific period',
   })
   async getComplianceStatus(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Param('period') period: string,
   ) {
-    return this.saftService.getComplianceStatus(userId, period);
+    return this.saftService.getComplianceStatus(req.user.sub, period);
   }
 
-  @Get('calendar/:userId')
+  @Get('calendar')
   @ApiOperation({
     summary: 'Get compliance calendar',
     description: 'Get compliance calendar with deadlines for multiple periods',
   })
   @ApiQuery({ name: 'months', required: false, type: Number, description: 'Number of months (default 12)' })
   async getComplianceCalendar(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Query('months') months?: number,
   ) {
-    return this.saftService.getComplianceCalendar(userId, months || 12);
+    return this.saftService.getComplianceCalendar(req.user.sub, months || 12);
   }
 
   // ===== Report History =====
 
-  @Get('reports/:userId')
+  @Get('reports')
   @ApiOperation({
     summary: 'Get D406 reports history',
     description: 'List all SAF-T D406 reports for a user',
   })
   @ApiQuery({ name: 'year', required: false, type: Number })
   async getReports(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Query('year') year?: number,
   ) {
-    return this.saftD406Service.getReports(userId, year);
+    return this.saftD406Service.getReports(req.user.sub, year);
   }
 
   // ===== Deadlines Endpoint =====
@@ -325,12 +332,13 @@ export class SaftD406Controller {
 
   // ===== Dashboard Endpoint =====
 
-  @Get('dashboard/:userId')
+  @Get('dashboard')
   @ApiOperation({
     summary: 'Get D406 dashboard',
     description: 'Comprehensive dashboard with compliance status, recent submissions, and deadlines',
   })
-  async getDashboard(@Param('userId') userId: string) {
+  async getDashboard(@Request() req: any) {
+    const userId = req.user.sub;
     const now = new Date();
     const currentPeriod = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
     const previousPeriod = `${now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear()}-${String(now.getMonth() === 0 ? 12 : now.getMonth()).padStart(2, '0')}`;

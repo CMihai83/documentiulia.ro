@@ -79,7 +79,7 @@ export default function RevisalPage() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
       const [employeesRes, statusRes, historyRes] = await Promise.all([
@@ -111,7 +111,7 @@ export default function RevisalPage() {
 
   const handleValidate = async () => {
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/v1/compliance/revisal/validate', {
         method: 'POST',
         headers: {
@@ -133,7 +133,7 @@ export default function RevisalPage() {
   const handleGenerate = async () => {
     try {
       setGenerating(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/v1/compliance/revisal/generate', {
         method: 'POST',
         headers: {
@@ -163,7 +163,7 @@ export default function RevisalPage() {
 
     try {
       setSubmitting(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/v1/compliance/revisal/submit', {
         method: 'POST',
         headers: {
