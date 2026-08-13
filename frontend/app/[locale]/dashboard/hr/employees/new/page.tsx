@@ -66,7 +66,7 @@ export default function NewEmployeePage() {
     setError(null);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/v1/hr/employees', {
         method: 'POST',
         headers: {

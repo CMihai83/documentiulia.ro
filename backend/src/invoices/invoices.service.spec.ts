@@ -42,6 +42,7 @@ describe('InvoicesService', () => {
 
   const mockEfacturaService = {
     generateUBL: jest.fn(),
+    generateB2BUBL: jest.fn(),
     submitToSPV: jest.fn(),
     checkStatus: jest.fn(),
   };
@@ -350,9 +351,9 @@ describe('InvoicesService', () => {
     });
   });
 
-  describe('delete', () => {
-    it('should delete invoice', async () => {
-      const mockInvoice = { id: 'inv-1', userId: mockUserId };
+  describe('delete (REQ-048 retention policy)', () => {
+    it('hard-deletes an unissued draft with no payments', async () => {
+      const mockInvoice = { id: 'inv-1', userId: mockUserId, status: 'DRAFT', paidAmount: 0 };
 
       mockPrismaService.invoice.findFirst.mockResolvedValue(mockInvoice);
       mockPrismaService.invoice.delete.mockResolvedValue(mockInvoice);
@@ -363,6 +364,38 @@ describe('InvoicesService', () => {
       expect(mockPrismaService.invoice.delete).toHaveBeenCalledWith({
         where: { id: 'inv-1' },
       });
+    });
+
+    it('cancels instead of deleting when the invoice was sent to ANAF', async () => {
+      const mockInvoice = {
+        id: 'inv-2', userId: mockUserId, invoiceNumber: 'FV-2',
+        status: 'SUBMITTED', paidAmount: 0, efacturaId: 'SPV-123',
+      };
+      mockPrismaService.invoice.findFirst.mockResolvedValue(mockInvoice);
+      mockPrismaService.invoice.update.mockResolvedValue({ ...mockInvoice, status: 'CANCELLED' });
+
+      const result: any = await service.delete(mockUserId, 'inv-2');
+
+      expect(mockPrismaService.invoice.delete).not.toHaveBeenCalled();
+      expect(mockPrismaService.invoice.update).toHaveBeenCalledWith({
+        where: { id: 'inv-2' },
+        data: { status: 'CANCELLED' },
+      });
+      expect(result.status).toBe('CANCELLED');
+    });
+
+    it('cancels instead of deleting when payments exist', async () => {
+      const mockInvoice = {
+        id: 'inv-3', userId: mockUserId, invoiceNumber: 'FV-3',
+        status: 'PAID', paidAmount: 500,
+      };
+      mockPrismaService.invoice.findFirst.mockResolvedValue(mockInvoice);
+      mockPrismaService.invoice.update.mockResolvedValue({ ...mockInvoice, status: 'CANCELLED' });
+
+      await service.delete(mockUserId, 'inv-3');
+
+      expect(mockPrismaService.invoice.delete).not.toHaveBeenCalled();
+      expect(mockPrismaService.invoice.update).toHaveBeenCalled();
     });
 
     it('should throw NotFoundException when deleting non-existent invoice', async () => {
@@ -436,7 +469,7 @@ describe('InvoicesService', () => {
 
       mockPrismaService.invoice.findFirst.mockResolvedValue(mockInvoice);
       mockPrismaService.user.findUnique.mockResolvedValue(mockUser);
-      mockEfacturaService.generateUBL.mockReturnValue('<xml>...</xml>');
+      mockEfacturaService.generateB2BUBL.mockReturnValue('<xml>...</xml>');
       mockEfacturaService.submitToSPV.mockResolvedValue({
         uploadIndex: 'UPL123456',
         status: 'submitted',
@@ -449,7 +482,7 @@ describe('InvoicesService', () => {
 
       const result = await service.finalizeAndSubmit(mockUserId, 'inv-1');
 
-      expect(mockEfacturaService.generateUBL).toHaveBeenCalled();
+      expect(mockEfacturaService.generateB2BUBL).toHaveBeenCalled();
       expect(mockEfacturaService.submitToSPV).toHaveBeenCalled();
       expect(result.efactura.uploadIndex).toBe('UPL123456');
     });

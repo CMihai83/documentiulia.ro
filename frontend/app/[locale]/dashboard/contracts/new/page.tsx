@@ -104,7 +104,7 @@ export default function NewContractPage() {
   useEffect(() => {
     const fetchPartners = async () => {
       try {
-        const token = localStorage.getItem('accessToken');
+        const token = localStorage.getItem('auth_token');
         const response = await fetch('/api/v1/partners', {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -133,7 +133,7 @@ export default function NewContractPage() {
     setSubmitError(null);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
 
       // Create FormData for file upload
       const formData = new FormData();

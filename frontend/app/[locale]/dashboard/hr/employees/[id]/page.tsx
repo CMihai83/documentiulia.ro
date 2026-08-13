@@ -82,7 +82,7 @@ export default function EmployeeDetailPage() {
   const fetchEmployee = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
       const [empRes, contractsRes, payrollRes] = await Promise.all([

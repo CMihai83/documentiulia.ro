@@ -34,7 +34,7 @@ interface EFacturaStats {
 
 async function fetchEFacturaStatus(): Promise<{ items: EFacturaStatus[]; stats: EFacturaStats }> {
   const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
-  const token = typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null;
+  const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
 
   const response = await fetch(`${API_URL}/efactura/status`, {
     headers: token ? { 'Authorization': `Bearer ${token}` } : {},

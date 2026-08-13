@@ -224,6 +224,11 @@ export class EfacturaService {
   }
 
   // Generate UBL 2.1 XML for e-Factura
+  /**
+   * @deprecated REQ-048: emits unescaped values and lacks EN16931/CIUS-RO
+   * mandatory elements (TaxSubtotal, LineExtensionAmount, party addresses,
+   * PartyLegalEntity) — ANAF rejects the output. Use generateB2BUBL instead.
+   */
   generateUBL(invoice: EfacturaInvoice): string {
     return `<?xml version="1.0" encoding="UTF-8"?>
 <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"

@@ -115,7 +115,7 @@ export default function NewExpensePage() {
   useEffect(() => {
     const fetchSuppliers = async () => {
       try {
-        const token = localStorage.getItem('accessToken');
+        const token = localStorage.getItem('auth_token');
         const response = await fetch('/api/v1/partners?type=supplier', {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -138,7 +138,7 @@ export default function NewExpensePage() {
     setOcrProcessing(true);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const formData = new FormData();
       formData.append('file', file);
 
@@ -168,7 +168,7 @@ export default function NewExpensePage() {
     setSubmitError(null);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/v1/expenses', {
         method: 'POST',
         headers: {

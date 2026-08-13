@@ -69,7 +69,7 @@ export default function PayrollDetailPage() {
   const fetchPayroll = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
       const [entriesRes, summaryRes] = await Promise.all([
@@ -91,7 +91,7 @@ export default function PayrollDetailPage() {
   const calculatePayroll = async () => {
     setCalculating(true);
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/v1/hr/payroll/calculate', {
         method: 'POST',
         headers: {
@@ -117,7 +117,7 @@ export default function PayrollDetailPage() {
   const generateD112 = async () => {
     setGeneratingD112(true);
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch(`/api/v1/hr/payroll/d112?period=${period}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -150,7 +150,7 @@ export default function PayrollDetailPage() {
 
   const approveAllConfirmed = async () => {
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch(`/api/v1/hr/payroll/approve-all`, {
         method: 'POST',
         headers: {

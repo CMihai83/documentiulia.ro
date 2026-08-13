@@ -76,7 +76,7 @@ export default function EditEmployeePage() {
   const fetchEmployee = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch(`/api/v1/hr/employees/${employeeId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -113,7 +113,7 @@ export default function EditEmployeePage() {
     setError(null);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch(`/api/v1/hr/employees/${employeeId}`, {
         method: 'PATCH',
         headers: {
@@ -144,7 +144,7 @@ export default function EditEmployeePage() {
   const handleDeleteConfirmed = async () => {
     setDeleting(true);
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch(`/api/v1/hr/employees/${employeeId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },

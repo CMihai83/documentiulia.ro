@@ -42,7 +42,7 @@ export default function SecuritySettingsPage() {
     try {
       const response = await fetch('/api/auth/mfa/status', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${localStorage.getItem('auth_token')}`,
         },
       });
 
@@ -61,7 +61,7 @@ export default function SecuritySettingsPage() {
     try {
       const response = await fetch('/api/auth/sessions', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${localStorage.getItem('auth_token')}`,
         },
       });
 
@@ -334,7 +334,7 @@ function DisableMfaModal({ onSuccess, onCancel }: DisableMfaModalProps) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${localStorage.getItem('auth_token')}`,
         },
         body: JSON.stringify({
           password,

@@ -7,7 +7,7 @@ import {
   Param,
   UseGuards,
   Res,
-  HttpStatus,
+  HttpStatus,  Request,
 } from '@nestjs/common';
 import { Response } from 'express';
 import {
@@ -62,13 +62,13 @@ export class EfacturaB2BController {
       required: ['invoiceId'],
       properties: {
         invoiceId: { type: 'string', description: 'Invoice ID from database' },
-        userId: { type: 'string', description: 'User ID' },
       },
     },
   })
   @ApiResponse({ status: 200, description: 'XML generated successfully' })
   @ApiResponse({ status: 400, description: 'Validation errors' })
-  async generateB2BXML(@Body() body: { invoiceId: string; userId: string }) {
+  async generateB2BXML(@Request() req: any, @Body() body: { invoiceId: string }) {
+    const userId = req.user.sub;
     // Fetch invoice with all related data
     const invoice = await this.prisma.invoice.findUnique({
       where: { id: body.invoiceId },
@@ -83,7 +83,7 @@ export class EfacturaB2BController {
 
     // Get user data for supplier info
     const user = await this.prisma.user.findUnique({
-      where: { id: body.userId },
+      where: { id: userId },
     });
 
     if (!user) {
@@ -126,12 +126,11 @@ export class EfacturaB2BController {
     description: 'Generate and preview the e-Factura XML without saving',
   })
   @ApiParam({ name: 'invoiceId', description: 'Invoice ID' })
-  @ApiQuery({ name: 'userId', required: true, description: 'User ID' })
   async previewB2BXML(
+    @Request() req: any,
     @Param('invoiceId') invoiceId: string,
-    @Query('userId') userId: string,
   ) {
-    const result = await this.generateB2BXML({ invoiceId, userId });
+    const result = await this.generateB2BXML(req, { invoiceId });
 
     if (!result.success) {
       return result;
@@ -155,11 +154,11 @@ export class EfacturaB2BController {
     description: 'Generate and download the e-Factura XML as a file',
   })
   async downloadB2BXML(
+    @Request() req: any,
     @Param('invoiceId') invoiceId: string,
-    @Query('userId') userId: string,
     @Res() res: Response,
   ) {
-    const result = await this.generateB2BXML({ invoiceId, userId });
+    const result = await this.generateB2BXML(req, { invoiceId });
 
     if (!result.success || !result.xml) {
       res.status(HttpStatus.BAD_REQUEST).json({
@@ -191,18 +190,18 @@ export class EfacturaB2BController {
   @ApiBody({
     schema: {
       type: 'object',
-      required: ['invoiceId', 'userId'],
+      required: ['invoiceId'],
       properties: {
         invoiceId: { type: 'string' },
-        userId: { type: 'string' },
       },
     },
   })
   @ApiResponse({ status: 200, description: 'Submission initiated' })
   @ApiResponse({ status: 400, description: 'Submission failed' })
-  async submitToSPV(@Body() body: { invoiceId: string; userId: string }) {
+  async submitToSPV(@Request() req: any, @Body() body: { invoiceId: string }) {
+    const userId = req.user.sub;
     // Generate XML first
-    const genResult = await this.generateB2BXML(body);
+    const genResult = await this.generateB2BXML(req, body);
 
     if (!genResult.success || !genResult.xml) {
       return {
@@ -214,7 +213,7 @@ export class EfacturaB2BController {
 
     // Get user CUI
     const user = await this.prisma.user.findUnique({
-      where: { id: body.userId },
+      where: { id: userId },
     });
 
     if (!user?.cui) {
@@ -228,7 +227,7 @@ export class EfacturaB2BController {
     try {
       // Submit via SPV service
       const submission = await this.spvService.submitEfactura(
-        body.userId,
+        userId,
         genResult.xml,
         user.cui,
       );
@@ -267,11 +266,11 @@ export class EfacturaB2BController {
     description: 'Check the status of an e-Factura submission to ANAF',
   })
   @ApiParam({ name: 'uploadIndex', description: 'ANAF upload index' })
-  @ApiQuery({ name: 'userId', required: true })
   async checkStatus(
+    @Request() req: any,
     @Param('uploadIndex') uploadIndex: string,
-    @Query('userId') userId: string,
   ) {
+    const userId = req.user.sub;
     try {
       const result = await this.spvService.checkEfacturaStatus(userId, uploadIndex);
 
@@ -316,14 +315,14 @@ export class EfacturaB2BController {
   @ApiBody({
     schema: {
       type: 'object',
-      required: ['invoiceId', 'userId'],
+      required: ['invoiceId'],
       properties: {
         invoiceId: { type: 'string' },
-        userId: { type: 'string' },
       },
     },
   })
-  async validateInvoice(@Body() body: { invoiceId: string; userId: string }) {
+  async validateInvoice(@Request() req: any, @Body() body: { invoiceId: string }) {
+    const userId = req.user.sub;
     const invoice = await this.prisma.invoice.findUnique({
       where: { id: body.invoiceId },
     });
@@ -337,7 +336,7 @@ export class EfacturaB2BController {
     }
 
     const user = await this.prisma.user.findUnique({
-      where: { id: body.userId },
+      where: { id: userId },
     });
 
     if (!user) {
@@ -398,12 +397,13 @@ export class EfacturaB2BController {
 
   // ===== B2B Readiness & Compliance =====
 
-  @Get('readiness/:userId')
+  @Get('readiness')
   @ApiOperation({
     summary: 'Check B2B readiness',
     description: 'Validates company data against ANAF B2B requirements',
   })
-  async checkB2BReadiness(@Param('userId') userId: string) {
+  async checkB2BReadiness(@Request() req: any) {
+    const userId = req.user.sub;
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
     });
@@ -455,25 +455,25 @@ export class EfacturaB2BController {
   @ApiBody({
     schema: {
       type: 'object',
-      required: ['originalInvoiceId', 'creditNoteNumber', 'reason', 'userId'],
+      required: ['originalInvoiceId', 'creditNoteNumber', 'reason'],
       properties: {
         originalInvoiceId: { type: 'string' },
         creditNoteNumber: { type: 'string' },
         reason: { type: 'string' },
-        userId: { type: 'string' },
         linesToCredit: { type: 'array', items: { type: 'number' }, description: 'Optional: specific line indices to credit' },
       },
     },
   })
   async generateCreditNote(
+    @Request() req: any,
     @Body() body: {
       originalInvoiceId: string;
       creditNoteNumber: string;
       reason: string;
-      userId: string;
       linesToCredit?: number[];
     },
   ): Promise<any> {
+    const userId = req.user.sub;
     const originalInvoice = await this.prisma.invoice.findUnique({
       where: { id: body.originalInvoiceId },
     });
@@ -486,7 +486,7 @@ export class EfacturaB2BController {
     }
 
     const user = await this.prisma.user.findUnique({
-      where: { id: body.userId },
+      where: { id: userId },
     });
 
     if (!user) {
@@ -522,7 +522,7 @@ export class EfacturaB2BController {
 
   // ===== Invoice List with e-Factura Status =====
 
-  @Get('invoices/:userId')
+  @Get('invoices')
   @ApiOperation({
     summary: 'Get invoices with e-Factura status',
     description: 'List invoices with their e-Factura submission status',
@@ -532,12 +532,13 @@ export class EfacturaB2BController {
   @ApiQuery({ name: 'limit', required: false, type: Number })
   @ApiQuery({ name: 'offset', required: false, type: Number })
   async getInvoicesWithStatus(
-    @Param('userId') userId: string,
+    @Request() req: any,
     @Query('status') status?: string,
     @Query('period') period?: string,
     @Query('limit') limit?: number,
     @Query('offset') offset?: number,
   ) {
+    const userId = req.user.sub;
     const where: any = { userId };
 
     if (status) {
@@ -600,12 +601,13 @@ export class EfacturaB2BController {
 
   // ===== Dashboard =====
 
-  @Get('dashboard/:userId')
+  @Get('dashboard')
   @ApiOperation({
     summary: 'Get e-Factura B2B dashboard',
     description: 'Comprehensive dashboard with status, stats, and compliance info',
   })
-  async getDashboard(@Param('userId') userId: string) {
+  async getDashboard(@Request() req: any) {
+    const userId = req.user.sub;
     const now = new Date();
     const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);

@@ -91,7 +91,7 @@ export default function NewJournalEntryPage() {
     setError(null);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/v1/accounting/journal-entries', {
         method: 'POST',
         headers: {

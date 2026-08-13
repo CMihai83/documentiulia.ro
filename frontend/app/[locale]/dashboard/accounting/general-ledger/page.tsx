@@ -67,7 +67,7 @@ export default function GeneralLedgerPage() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const headers = { Authorization: `Bearer ${token}` };
 
       const params = new URLSearchParams();
@@ -131,7 +131,7 @@ export default function GeneralLedgerPage() {
 
   const handleExport = async () => {
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const params = new URLSearchParams();
       if (filters.startDate) params.append('startDate', filters.startDate);
       if (filters.endDate) params.append('endDate', filters.endDate);

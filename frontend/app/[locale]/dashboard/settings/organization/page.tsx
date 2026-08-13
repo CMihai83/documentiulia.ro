@@ -51,7 +51,7 @@ export default function OrganizationSettingsPage() {
 
   const fetchOrganization = async () => {
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const res = await fetch('/api/v1/auth/profile', {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -77,7 +77,7 @@ export default function OrganizationSettingsPage() {
     setMessage(null);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const res = await fetch('/api/v1/auth/profile', {
         method: 'PATCH',
         headers: {
@@ -108,7 +108,7 @@ export default function OrganizationSettingsPage() {
     if (!formData.cui) return;
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const res = await fetch(`/api/v1/anaf/validate-cui/${formData.cui}`, {
         headers: { Authorization: `Bearer ${token}` },
       });

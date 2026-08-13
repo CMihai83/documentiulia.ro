@@ -73,7 +73,7 @@ export default function InvoiceEditPage() {
   const fetchInvoice = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch(`/api/v1/invoices/${invoiceId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -106,7 +106,7 @@ export default function InvoiceEditPage() {
     setError(null);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('auth_token');
       const response = await fetch(`/api/v1/invoices/${invoiceId}`, {
         method: 'PATCH',
         headers: {
