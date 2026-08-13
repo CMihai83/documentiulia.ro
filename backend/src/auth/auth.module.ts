@@ -24,7 +24,15 @@ import { MfaModule } from '../mfa/mfa.module';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET') || 'documentiulia_jwt_secret',
+        // REQ-048: no fallback — a missing secret must fail the boot, not
+        // silently sign tokens with a value published in this repo.
+        secret: (() => {
+          const v = configService.get<string>('JWT_SECRET');
+          if (!v || v.length < 16 || v === 'documentiulia_jwt_secret') {
+            throw new Error('JWT_SECRET is missing, too short, or still the default placeholder.');
+          }
+          return v;
+        })(),
         signOptions: {
           expiresIn: '7d' as const,
         },
