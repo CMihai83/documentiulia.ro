@@ -64,7 +64,7 @@ export class EuVatController {
   @Get('countries')
   @ApiOperation({ summary: 'Get all EU countries with VAT rates' })
   @ApiResponse({ status: 200, description: 'List of EU countries with their VAT rates' })
-  getAllCountries(): EUCountryVATRates[] {
+  async getAllCountries(): Promise<EUCountryVATRates[]> {
     return this.euVatService.getAllCountries();
   }
 
@@ -209,8 +209,8 @@ export class EuVatController {
    * Get countries with reduced rates
    */
   @Get('rates/reduced')
-  getReducedRates() {
-    const countries = this.euVatService.getAllCountries();
+  async getReducedRates() {
+    const countries = await this.euVatService.getAllCountries();
     return countries
       .filter((c) => c.reducedRates.length > 0)
       .map((c) => ({
@@ -227,8 +227,8 @@ export class EuVatController {
    * Get countries allowing zero-rated supplies
    */
   @Get('rates/zero-rated')
-  getZeroRatedCountries() {
-    const countries = this.euVatService.getAllCountries();
+  async getZeroRatedCountries() {
+    const countries = await this.euVatService.getAllCountries();
     return countries
       .filter((c) => c.zeroRated)
       .map((c) => ({

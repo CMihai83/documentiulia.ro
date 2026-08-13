@@ -572,4 +572,72 @@ describe('SaftD406MonthlyService', () => {
       expect(codes).not.toContain('S19');
     });
   });
+
+  describe('REQ-048: period boundary, status filtering and currency', () => {
+    const parser = new XMLParser({ ignoreAttributes: false });
+
+    it('queries an exclusive upper bound so last-day documents are not lost', async () => {
+      await service.generateMonthlyD406('user-123', '2025-01');
+
+      const where = (prismaService.invoice.findMany as jest.Mock).mock.calls[0][0].where;
+      // A document stamped 2025-01-31T14:00 must fall inside the period; with
+      // the old `lte: new Date(2025,1,0)` (midnight) it fell into no period.
+      expect(where.invoiceDate.lt).toEqual(new Date(2025, 1, 1));
+      expect(where.invoiceDate.lte).toBeUndefined();
+      expect(new Date('2025-01-31T14:00:00') < where.invoiceDate.lt).toBe(true);
+    });
+
+    it('excludes cancelled and draft invoices from the declaration', async () => {
+      await service.generateMonthlyD406('user-123', '2025-01');
+
+      const where = (prismaService.invoice.findMany as jest.Mock).mock.calls[0][0].where;
+      expect(where.status.notIn).toEqual(expect.arrayContaining(['CANCELLED', 'DRAFT']));
+    });
+
+    it('declares foreign-currency invoices in RON with the original alongside', async () => {
+      const eurInvoice = {
+        id: 'inv-eur', invoiceNumber: 'FV-EUR', invoiceDate: new Date('2025-01-12'),
+        type: 'ISSUED', partnerCui: 'RO87654321', partnerName: 'Client EU',
+        netAmount: 1000, vatRate: 21, vatAmount: 210, grossAmount: 1210,
+        currency: 'EUR', exchangeRate: 4.97,
+        baseNetAmount: 4970, baseVatAmount: 1043.7, baseGrossAmount: 6013.7,
+        userId: 'user-123', status: 'PAID',
+      };
+      (prismaService.invoice.findMany as jest.Mock).mockResolvedValueOnce([eurInvoice]);
+
+      const result = await service.generateMonthlyD406('user-123', '2025-01');
+      const doc = parser.parse(result.xml);
+      const invoice = doc['n1:AuditFile']['n1:SourceDocuments']['n1:SalesInvoices']['n1:Invoice'];
+      const line = [].concat(invoice['n1:InvoiceLine'])[0];
+
+      // Amount is the RON figure (1000 EUR * 4.97), not the EUR face value.
+      expect(Number(line['n1:InvoiceLineAmount']['n1:Amount'])).toBeCloseTo(4970, 2);
+      expect(String(line['n1:InvoiceLineAmount']['n1:CurrencyCode'])).toBe('EUR');
+      expect(Number(line['n1:InvoiceLineAmount']['n1:CurrencyAmount'])).toBeCloseTo(1000, 2);
+      // VAT likewise declared in RON.
+      const tax = [].concat(line['n1:TaxInformation'])[0];
+      expect(Number(tax['n1:TaxAmount']['n1:Amount'])).toBeCloseTo(1043.7, 2);
+      // Summary totals follow the same rule.
+      expect(result.summary.totalSales).toBeCloseTo(6013.7, 2);
+      expect(result.summary.totalVATCollected).toBeCloseTo(1043.7, 2);
+    });
+
+    it('renders document dates in local time, not UTC', async () => {
+      const lastDayInvoice = {
+        id: 'inv-eod', invoiceNumber: 'FV-EOD',
+        // 00:30 local on the 1st would render as the previous month in UTC+2/3.
+        invoiceDate: new Date(2025, 0, 1, 0, 30, 0),
+        type: 'ISSUED', partnerCui: 'RO1', partnerName: 'C',
+        netAmount: 100, vatRate: 21, vatAmount: 21, grossAmount: 121,
+        currency: 'RON', userId: 'user-123', status: 'PAID',
+      };
+      (prismaService.invoice.findMany as jest.Mock).mockResolvedValueOnce([lastDayInvoice]);
+
+      const result = await service.generateMonthlyD406('user-123', '2025-01');
+      const doc = parser.parse(result.xml);
+      const invoice = doc['n1:AuditFile']['n1:SourceDocuments']['n1:SalesInvoices']['n1:Invoice'];
+      expect(String(invoice['n1:InvoiceDate'])).toBe('2025-01-01');
+    });
+  });
+
 });

@@ -13,7 +13,7 @@ describe('EuVatService', () => {
     service = module.get<EuVatService>(EuVatService);
   });
 
-  it('should be defined', () => {
+  it('should be defined', async () => {
     expect(service).toBeDefined();
   });
 
@@ -21,13 +21,13 @@ describe('EuVatService', () => {
   // getAllCountries Tests
   // ========================
   describe('getAllCountries', () => {
-    it('should return all 27 EU member states', () => {
-      const countries = service.getAllCountries();
+    it('should return all 27 EU member states', async () => {
+      const countries = await service.getAllCountries();
       expect(countries).toHaveLength(27);
     });
 
-    it('should include Romania with correct VAT rates (Legea 141/2025)', () => {
-      const countries = service.getAllCountries();
+    it('should include Romania with correct VAT rates (Legea 141/2025)', async () => {
+      const countries = await service.getAllCountries();
       const romania = countries.find(c => c.countryCode === 'RO');
 
       expect(romania).toBeDefined();
@@ -38,8 +38,8 @@ describe('EuVatService', () => {
       expect(romania!.currency).toBe('RON');
     });
 
-    it('should include all Eurozone countries with EUR currency', () => {
-      const countries = service.getAllCountries();
+    it('should include all Eurozone countries with EUR currency', async () => {
+      const countries = await service.getAllCountries();
       const eurozoneCountries = ['AT', 'BE', 'HR', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PT', 'SK', 'SI', 'ES'];
 
       eurozoneCountries.forEach(code => {
@@ -49,8 +49,8 @@ describe('EuVatService', () => {
       });
     });
 
-    it('should include non-Eurozone countries with local currencies', () => {
-      const countries = service.getAllCountries();
+    it('should include non-Eurozone countries with local currencies', async () => {
+      const countries = await service.getAllCountries();
 
       const bulgaria = countries.find(c => c.countryCode === 'BG');
       expect(bulgaria!.currency).toBe('BGN');
@@ -76,25 +76,25 @@ describe('EuVatService', () => {
   // getCountryRates Tests
   // ========================
   describe('getCountryRates', () => {
-    it('should return rates for valid country code', () => {
-      const rates = service.getCountryRates('RO');
+    it('should return rates for valid country code', async () => {
+      const rates = await service.getCountryRates('RO');
 
       expect(rates.countryCode).toBe('RO');
       expect(rates.countryName).toBe('Romania');
       expect(rates.standardRate).toBe(21); // Updated per Legea 141/2025
     });
 
-    it('should handle lowercase country codes', () => {
-      const rates = service.getCountryRates('ro');
+    it('should handle lowercase country codes', async () => {
+      const rates = await service.getCountryRates('ro');
       expect(rates.countryCode).toBe('RO');
     });
 
-    it('should throw error for invalid country code', () => {
-      expect(() => service.getCountryRates('XX')).toThrow(HttpException);
-      expect(() => service.getCountryRates('US')).toThrow(HttpException);
+    it('should throw error for invalid country code', async () => {
+      await expect(service.getCountryRates('XX')).rejects.toThrow(HttpException);
+      await expect(service.getCountryRates('US')).rejects.toThrow(HttpException);
     });
 
-    it('should return correct standard rates for all countries', () => {
+    it('should return correct standard rates for all countries', async () => {
       // Updated rates reflecting 2025 EU VAT rates
       const expectedRates: Record<string, number> = {
         HU: 27, // Hungary - highest in EU
@@ -109,10 +109,10 @@ describe('EuVatService', () => {
         LU: 17, // Luxembourg - lowest standard rate in EU
       };
 
-      Object.entries(expectedRates).forEach(([code, rate]) => {
-        const country = service.getCountryRates(code);
+      for (const [code, rate] of Object.entries(expectedRates)) {
+        const country = await service.getCountryRates(code);
         expect(country.standardRate).toBe(rate);
-      });
+      }
     });
   });
 
@@ -121,8 +121,8 @@ describe('EuVatService', () => {
   // ========================
   describe('calculateVAT', () => {
     describe('Standard Rate Calculations', () => {
-      it('should calculate VAT correctly for Romania (21% per Legea 141/2025)', () => {
-        const result = service.calculateVAT('RO', 1000, 'standard');
+      it('should calculate VAT correctly for Romania (21% per Legea 141/2025)', async () => {
+        const result = await service.calculateVAT('RO', 1000, 'standard');
 
         expect(result.countryCode).toBe('RO');
         expect(result.netAmount).toBe(1000);
@@ -133,8 +133,8 @@ describe('EuVatService', () => {
         expect(result.rateType).toBe('standard');
       });
 
-      it('should calculate VAT correctly for Germany (19%)', () => {
-        const result = service.calculateVAT('DE', 500, 'standard');
+      it('should calculate VAT correctly for Germany (19%)', async () => {
+        const result = await service.calculateVAT('DE', 500, 'standard');
 
         expect(result.netAmount).toBe(500);
         expect(result.vatRate).toBe(19);
@@ -143,16 +143,16 @@ describe('EuVatService', () => {
         expect(result.currency).toBe('EUR');
       });
 
-      it('should calculate VAT correctly for Hungary (27% - highest EU rate)', () => {
-        const result = service.calculateVAT('HU', 100, 'standard');
+      it('should calculate VAT correctly for Hungary (27% - highest EU rate)', async () => {
+        const result = await service.calculateVAT('HU', 100, 'standard');
 
         expect(result.vatRate).toBe(27);
         expect(result.vatAmount).toBe(27);
         expect(result.grossAmount).toBe(127);
       });
 
-      it('should calculate VAT correctly for Luxembourg (17% - lowest EU rate)', () => {
-        const result = service.calculateVAT('LU', 100, 'standard');
+      it('should calculate VAT correctly for Luxembourg (17% - lowest EU rate)', async () => {
+        const result = await service.calculateVAT('LU', 100, 'standard');
 
         expect(result.vatRate).toBe(17);
         expect(result.vatAmount).toBe(17);
@@ -161,8 +161,8 @@ describe('EuVatService', () => {
     });
 
     describe('Reduced Rate Calculations', () => {
-      it('should calculate first reduced VAT for Romania (5% per Legea 141/2025)', () => {
-        const result = service.calculateVAT('RO', 100, 'reduced', 0);
+      it('should calculate first reduced VAT for Romania (5% per Legea 141/2025)', async () => {
+        const result = await service.calculateVAT('RO', 100, 'reduced', 0);
 
         expect(result.vatRate).toBe(5);
         expect(result.vatAmount).toBe(5);
@@ -170,22 +170,22 @@ describe('EuVatService', () => {
         expect(result.rateType).toBe('reduced');
       });
 
-      it('should calculate second reduced VAT for Romania (11% per Legea 141/2025)', () => {
-        const result = service.calculateVAT('RO', 100, 'reduced', 1);
+      it('should calculate second reduced VAT for Romania (11% per Legea 141/2025)', async () => {
+        const result = await service.calculateVAT('RO', 100, 'reduced', 1);
 
         expect(result.vatRate).toBe(11);
         expect(result.vatAmount).toBe(11);
         expect(result.grossAmount).toBe(111);
       });
 
-      it('should throw error for country without reduced rates', () => {
-        expect(() => service.calculateVAT('DK', 100, 'reduced')).toThrow(HttpException);
+      it('should throw error for country without reduced rates', async () => {
+        await expect(service.calculateVAT('DK', 100, 'reduced')).rejects.toThrow(HttpException);
       });
     });
 
     describe('Super Reduced Rate Calculations', () => {
-      it('should calculate super-reduced VAT for Spain (4%)', () => {
-        const result = service.calculateVAT('ES', 100, 'super_reduced');
+      it('should calculate super-reduced VAT for Spain (4%)', async () => {
+        const result = await service.calculateVAT('ES', 100, 'super_reduced');
 
         expect(result.vatRate).toBe(4);
         expect(result.vatAmount).toBe(4);
@@ -193,22 +193,22 @@ describe('EuVatService', () => {
         expect(result.rateType).toBe('super_reduced');
       });
 
-      it('should calculate super-reduced VAT for France (2.1%)', () => {
-        const result = service.calculateVAT('FR', 1000, 'super_reduced');
+      it('should calculate super-reduced VAT for France (2.1%)', async () => {
+        const result = await service.calculateVAT('FR', 1000, 'super_reduced');
 
         expect(result.vatRate).toBe(2.1);
         expect(result.vatAmount).toBe(21);
         expect(result.grossAmount).toBe(1021);
       });
 
-      it('should throw error for country without super-reduced rate', () => {
-        expect(() => service.calculateVAT('RO', 100, 'super_reduced')).toThrow(HttpException);
+      it('should throw error for country without super-reduced rate', async () => {
+        await expect(service.calculateVAT('RO', 100, 'super_reduced')).rejects.toThrow(HttpException);
       });
     });
 
     describe('Parking Rate Calculations', () => {
-      it('should calculate parking VAT for Austria (13%)', () => {
-        const result = service.calculateVAT('AT', 100, 'parking');
+      it('should calculate parking VAT for Austria (13%)', async () => {
+        const result = await service.calculateVAT('AT', 100, 'parking');
 
         expect(result.vatRate).toBe(13);
         expect(result.vatAmount).toBe(13);
@@ -216,14 +216,14 @@ describe('EuVatService', () => {
         expect(result.rateType).toBe('parking');
       });
 
-      it('should throw error for country without parking rate', () => {
-        expect(() => service.calculateVAT('RO', 100, 'parking')).toThrow(HttpException);
+      it('should throw error for country without parking rate', async () => {
+        await expect(service.calculateVAT('RO', 100, 'parking')).rejects.toThrow(HttpException);
       });
     });
 
     describe('Zero Rate Calculations', () => {
-      it('should calculate zero VAT for Belgium (zero-rated supply)', () => {
-        const result = service.calculateVAT('BE', 100, 'zero');
+      it('should calculate zero VAT for Belgium (zero-rated supply)', async () => {
+        const result = await service.calculateVAT('BE', 100, 'zero');
 
         expect(result.vatRate).toBe(0);
         expect(result.vatAmount).toBe(0);
@@ -231,22 +231,22 @@ describe('EuVatService', () => {
         expect(result.rateType).toBe('zero');
       });
 
-      it('should throw error for country without zero-rating', () => {
-        expect(() => service.calculateVAT('AT', 100, 'zero')).toThrow(HttpException);
+      it('should throw error for country without zero-rating', async () => {
+        await expect(service.calculateVAT('AT', 100, 'zero')).rejects.toThrow(HttpException);
       });
     });
 
     describe('Gross Amount Calculations', () => {
-      it('should calculate net from gross correctly for Romania', () => {
-        const result = service.calculateVAT('RO', 1210, 'standard', 0, true);
+      it('should calculate net from gross correctly for Romania', async () => {
+        const result = await service.calculateVAT('RO', 1210, 'standard', 0, true);
 
         expect(result.grossAmount).toBe(1210);
         expect(result.netAmount).toBe(1000);
         expect(result.vatAmount).toBe(210);
       });
 
-      it('should calculate net from gross for high VAT country (Hungary)', () => {
-        const result = service.calculateVAT('HU', 127, 'standard', 0, true);
+      it('should calculate net from gross for high VAT country (Hungary)', async () => {
+        const result = await service.calculateVAT('HU', 127, 'standard', 0, true);
 
         expect(result.grossAmount).toBe(127);
         expect(result.netAmount).toBe(100);
@@ -255,8 +255,8 @@ describe('EuVatService', () => {
     });
 
     describe('Rounding', () => {
-      it('should round to 2 decimal places', () => {
-        const result = service.calculateVAT('RO', 333.33, 'standard');
+      it('should round to 2 decimal places', async () => {
+        const result = await service.calculateVAT('RO', 333.33, 'standard');
 
         // 333.33 * 0.21 = 70.00 (rounded)
         expect(result.vatAmount).toBe(70);
@@ -270,81 +270,81 @@ describe('EuVatService', () => {
   // ========================
   describe('validateVATNumberFormat', () => {
     describe('Valid VAT Numbers', () => {
-      it('should validate Romanian VAT number', () => {
-        const result = service.validateVATNumberFormat('RO12345678');
+      it('should validate Romanian VAT number', async () => {
+        const result = await service.validateVATNumberFormat('RO12345678');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('RO');
       });
 
-      it('should validate German VAT number', () => {
-        const result = service.validateVATNumberFormat('DE123456789');
+      it('should validate German VAT number', async () => {
+        const result = await service.validateVATNumberFormat('DE123456789');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('DE');
       });
 
-      it('should validate Austrian VAT number', () => {
-        const result = service.validateVATNumberFormat('ATU12345678');
+      it('should validate Austrian VAT number', async () => {
+        const result = await service.validateVATNumberFormat('ATU12345678');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('AT');
       });
 
-      it('should validate Belgian VAT number', () => {
-        const result = service.validateVATNumberFormat('BE0123456789');
+      it('should validate Belgian VAT number', async () => {
+        const result = await service.validateVATNumberFormat('BE0123456789');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('BE');
       });
 
-      it('should validate French VAT number', () => {
-        const result = service.validateVATNumberFormat('FR12345678901');
+      it('should validate French VAT number', async () => {
+        const result = await service.validateVATNumberFormat('FR12345678901');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('FR');
       });
 
-      it('should validate Dutch VAT number', () => {
-        const result = service.validateVATNumberFormat('NL123456789B01');
+      it('should validate Dutch VAT number', async () => {
+        const result = await service.validateVATNumberFormat('NL123456789B01');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('NL');
       });
 
-      it('should validate Polish VAT number', () => {
-        const result = service.validateVATNumberFormat('PL1234567890');
+      it('should validate Polish VAT number', async () => {
+        const result = await service.validateVATNumberFormat('PL1234567890');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('PL');
       });
 
-      it('should handle lowercase input', () => {
-        const result = service.validateVATNumberFormat('ro12345678');
+      it('should handle lowercase input', async () => {
+        const result = await service.validateVATNumberFormat('ro12345678');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('RO');
       });
 
-      it('should handle spaces in VAT number', () => {
-        const result = service.validateVATNumberFormat('RO 1234 5678');
+      it('should handle spaces in VAT number', async () => {
+        const result = await service.validateVATNumberFormat('RO 1234 5678');
         expect(result.valid).toBe(true);
       });
 
-      it('should handle Greek VAT number with EL prefix', () => {
-        const result = service.validateVATNumberFormat('EL123456789');
+      it('should handle Greek VAT number with EL prefix', async () => {
+        const result = await service.validateVATNumberFormat('EL123456789');
         expect(result.valid).toBe(true);
         expect(result.countryCode).toBe('GR');
       });
     });
 
     describe('Invalid VAT Numbers', () => {
-      it('should reject VAT number that is too short', () => {
-        const result = service.validateVATNumberFormat('RO1');
+      it('should reject VAT number that is too short', async () => {
+        const result = await service.validateVATNumberFormat('RO1');
         expect(result.valid).toBe(false);
         expect(result.error).toContain('too short');
       });
 
-      it('should reject non-EU country code', () => {
-        const result = service.validateVATNumberFormat('US123456789');
+      it('should reject non-EU country code', async () => {
+        const result = await service.validateVATNumberFormat('US123456789');
         expect(result.valid).toBe(false);
         expect(result.error).toContain('not a valid EU country code');
       });
 
-      it('should reject invalid format for country', () => {
-        const result = service.validateVATNumberFormat('DE12345'); // Too short for Germany
+      it('should reject invalid format for country', async () => {
+        const result = await service.validateVATNumberFormat('DE12345'); // Too short for Germany
         expect(result.valid).toBe(false);
         expect(result.error).toContain('Invalid format');
       });
@@ -382,8 +382,8 @@ describe('EuVatService', () => {
   // determineIntraCommunityVAT Tests
   // ========================
   describe('determineIntraCommunityVAT', () => {
-    it('should apply reverse charge for B2B cross-border goods', () => {
-      const result = service.determineIntraCommunityVAT(
+    it('should apply reverse charge for B2B cross-border goods', async () => {
+      const result = await service.determineIntraCommunityVAT(
         'RO',
         'RO12345678',
         'DE',
@@ -397,8 +397,8 @@ describe('EuVatService', () => {
       expect(result.placeOfSupply).toBe('DE');
     });
 
-    it('should apply reverse charge for B2B cross-border services', () => {
-      const result = service.determineIntraCommunityVAT(
+    it('should apply reverse charge for B2B cross-border services', async () => {
+      const result = await service.determineIntraCommunityVAT(
         'RO',
         'RO12345678',
         'FR',
@@ -412,8 +412,8 @@ describe('EuVatService', () => {
       expect(result.placeOfSupply).toBe('FR');
     });
 
-    it('should apply destination VAT for B2C cross-border services', () => {
-      const result = service.determineIntraCommunityVAT(
+    it('should apply destination VAT for B2C cross-border services', async () => {
+      const result = await service.determineIntraCommunityVAT(
         'RO',
         'RO12345678',
         'DE',
@@ -427,8 +427,8 @@ describe('EuVatService', () => {
       expect(result.placeOfSupply).toBe('DE');
     });
 
-    it('should apply origin VAT for domestic transaction', () => {
-      const result = service.determineIntraCommunityVAT(
+    it('should apply origin VAT for domestic transaction', async () => {
+      const result = await service.determineIntraCommunityVAT(
         'RO',
         'RO12345678',
         'RO',
@@ -447,24 +447,24 @@ describe('EuVatService', () => {
   // Edge Cases and Error Handling
   // ========================
   describe('Edge Cases', () => {
-    it('should handle zero amount', () => {
-      const result = service.calculateVAT('RO', 0, 'standard');
+    it('should handle zero amount', async () => {
+      const result = await service.calculateVAT('RO', 0, 'standard');
 
       expect(result.netAmount).toBe(0);
       expect(result.vatAmount).toBe(0);
       expect(result.grossAmount).toBe(0);
     });
 
-    it('should handle very large amounts', () => {
-      const result = service.calculateVAT('RO', 1000000000, 'standard');
+    it('should handle very large amounts', async () => {
+      const result = await service.calculateVAT('RO', 1000000000, 'standard');
 
       expect(result.netAmount).toBe(1000000000);
       expect(result.vatAmount).toBe(210000000); // 21% of 1B
       expect(result.grossAmount).toBe(1210000000);
     });
 
-    it('should handle decimal amounts correctly', () => {
-      const result = service.calculateVAT('RO', 123.45, 'standard');
+    it('should handle decimal amounts correctly', async () => {
+      const result = await service.calculateVAT('RO', 123.45, 'standard');
 
       expect(result.netAmount).toBe(123.45);
       expect(result.vatAmount).toBe(25.92); // 123.45 * 0.21 = 25.9245 rounded

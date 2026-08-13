@@ -1,4 +1,5 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger , BadRequestException } from '@nestjs/common';
+import { checkVatRateForDate, standardVatRateForDate } from '../finance/vat-rates';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -96,6 +97,15 @@ export class RecurringInvoiceService {
       dto.dayOfWeek,
     );
 
+    // REQ-048: reject a rate that is not legal for the date the first invoice
+    // will be issued, instead of silently generating an invoice ANAF rejects.
+    if (dto.vatRate != null) {
+      const check = checkVatRateForDate(dto.vatRate, nextRunDate);
+      if (!check.valid) {
+        throw new BadRequestException(check.message);
+      }
+    }
+
     const template = await this.prisma.recurringInvoice.create({
       data: {
         organizationId,
@@ -112,7 +122,11 @@ export class RecurringInvoiceService {
         autoSend: dto.autoSend ?? false,
         autoSubmitSpv: dto.autoSubmitSpv ?? false,
         currency: dto.currency || 'RON',
-        vatRate: dto.vatRate || 19,
+        // REQ-048: was `|| 19` — a template created today generated invoices
+        // at a rate abolished in Aug 2025 (Legea 141/2025), undercharging VAT
+        // and failing ANAF validation. Default to the rate applicable on the
+        // template's first issue date.
+        vatRate: dto.vatRate ?? standardVatRateForDate(nextRunDate),
         items: JSON.stringify(dto.items),
         notes: dto.notes,
         paymentTermsDays: dto.paymentTermsDays || 30,

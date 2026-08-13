@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { InvoiceStatus } from '@prisma/client';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
 import { XMLBuilder, XMLParser } from 'fast-xml-parser';
@@ -183,7 +184,14 @@ export class SaftD406MonthlyService {
 
     const [year, month] = period.split('-').map(Number);
     const startDate = new Date(year, month - 1, 1);
-    const endDate = new Date(year, month, 0); // Last day of month
+    // REQ-048 fix: `new Date(year, month, 0)` is the last day at 00:00 local, so
+    // with `lte` any document timestamped later that day (OCR imports, DB
+    // defaults of now(), ISO datetimes) fell out of this period — and the next
+    // period starts at the 1st, so it vanished from SAF-T entirely. Use an
+    // exclusive upper bound at the start of the following month.
+    const endDateExclusive = new Date(year, month, 1);
+    // Last instant of the period, for display/validation only.
+    const endDate = new Date(endDateExclusive.getTime() - 1);
 
     const errors: string[] = [];
     const warnings: string[] = [];
@@ -195,14 +203,19 @@ export class SaftD406MonthlyService {
         this.prisma.invoice.findMany({
           where: {
             userId,
-            invoiceDate: { gte: startDate, lte: endDate },
+            invoiceDate: { gte: startDate, lt: endDateExclusive },
+            // REQ-048 fix: cancelled invoices and unissued drafts are not
+            // fiscal documents — declaring their VAT diverged from what was
+            // actually reported via e-Factura and triggered ANAF cross-check
+            // discrepancies. Cancellations are represented by credit notes.
+            status: { notIn: [InvoiceStatus.CANCELLED, InvoiceStatus.DRAFT] },
           },
           orderBy: { invoiceDate: 'asc' },
         }),
         this.prisma.payment.findMany({
           where: {
             invoice: { userId },
-            paymentDate: { gte: startDate, lte: endDate },
+            paymentDate: { gte: startDate, lt: endDateExclusive },
           },
         }),
         // Products are not stored in the database - omitted from SAF-T
@@ -289,10 +302,12 @@ export class SaftD406MonthlyService {
       }
 
       // Calculate totals
-      const totalSales = salesInvoices.reduce((sum: number, i: any) => sum + Number(i.grossAmount || 0), 0);
-      const totalPurchases = purchaseInvoices.reduce((sum: number, i: any) => sum + Number(i.grossAmount || 0), 0);
-      const totalVATCollected = salesInvoices.reduce((sum: number, i: any) => sum + Number(i.vatAmount || 0), 0);
-      const totalVATDeductible = purchaseInvoices.reduce((sum: number, i: any) => sum + Number(i.vatAmount || 0), 0);
+      // REQ-048: totals are declared in RON — use the stored base-currency
+      // amounts for foreign-currency invoices instead of their face value.
+      const totalSales = salesInvoices.reduce((sum: number, i: any) => sum + this.ronAmounts(i).gross, 0);
+      const totalPurchases = purchaseInvoices.reduce((sum: number, i: any) => sum + this.ronAmounts(i).gross, 0);
+      const totalVATCollected = salesInvoices.reduce((sum: number, i: any) => sum + this.ronAmounts(i).vat, 0);
+      const totalVATDeductible = purchaseInvoices.reduce((sum: number, i: any) => sum + this.ronAmounts(i).vat, 0);
 
       // Build complete SAF-T D406 structure
       const saftData = this.buildD406Structure({
@@ -394,9 +409,47 @@ export class SaftD406MonthlyService {
    */
   /** RO AmountStructure: Amount + CurrencyCode + CurrencyAmount are all
    * mandatory in Ro_SAFT_Schema v2.4.x (RON reporting currency). */
-  private amount(v: number): any {
-    const a = v.toFixed(2);
-    return { 'n1:Amount': a, 'n1:CurrencyCode': 'RON', 'n1:CurrencyAmount': a };
+  /**
+   * RO AmountStructure. `Amount` is ALWAYS the RON figure (the reporting
+   * currency); CurrencyCode/CurrencyAmount carry the original document
+   * currency when it differs.
+   *
+   * REQ-048 fix: previously the foreign-currency face value was emitted as the
+   * RON Amount — a 1.000 EUR invoice was declared as 1.000 RON instead of
+   * ~4.970 RON, understating declared sales and VAT base by ~80%.
+   */
+  private amount(ronValue: number, original?: { value: number; currency: string }): any {
+    const ron = ronValue.toFixed(2);
+    if (original && original.currency && original.currency !== 'RON') {
+      return {
+        'n1:Amount': ron,
+        'n1:CurrencyCode': original.currency,
+        'n1:CurrencyAmount': original.value.toFixed(2),
+      };
+    }
+    return { 'n1:Amount': ron, 'n1:CurrencyCode': 'RON', 'n1:CurrencyAmount': ron };
+  }
+
+  /**
+   * Amounts as declared in SAF-T: RON values from the stored base-currency
+   * columns (populated at invoice creation from the BNR rate), falling back to
+   * the face value for RON-denominated documents.
+   */
+  private ronAmounts(inv: any): {
+    net: number; vat: number; gross: number;
+    currency: string; origNet: number; origVat: number; origGross: number;
+  } {
+    const currency = inv.currency || 'RON';
+    const origNet = Number(inv.netAmount || 0);
+    const origVat = Number(inv.vatAmount || 0);
+    const origGross = Number(inv.grossAmount || 0);
+    const foreign = currency !== 'RON';
+    return {
+      net: foreign && inv.baseNetAmount != null ? Number(inv.baseNetAmount) : origNet,
+      vat: foreign && inv.baseVatAmount != null ? Number(inv.baseVatAmount) : origVat,
+      gross: foreign && inv.baseGrossAmount != null ? Number(inv.baseGrossAmount) : origGross,
+      currency, origNet, origVat, origGross,
+    };
   }
 
   /** Recursively drop undefined/null values; keep intentionally-empty objects
@@ -691,14 +744,14 @@ export class SaftD406MonthlyService {
           }],
         };
       });
-      const txDate = entry.date?.toISOString?.().split('T')[0] || `${period}-01`;
+      const txDate = entry.date ? formatLocalDate(new Date(entry.date)) : `${period}-01`;
       return {
         'n1:TransactionID': entry.id,
         'n1:Period': String(Number(month)),
         'n1:PeriodYear': year,
         'n1:TransactionDate': txDate,
         'n1:Description': entry.description,
-        'n1:SystemEntryDate': entry.createdAt?.toISOString?.().split('T')[0] || txDate,
+        'n1:SystemEntryDate': entry.createdAt ? formatLocalDate(new Date(entry.createdAt)) : txDate,
         'n1:GLPostingDate': txDate,
         'n1:CustomerID': customerId,
         'n1:SupplierID': supplierId,
@@ -723,7 +776,7 @@ export class SaftD406MonthlyService {
    * Build Sales Invoices section
    */
   private buildSalesInvoices(invoices: any[]): any {
-    const totalCredit = invoices.reduce((sum, i) => sum + Number(i.grossAmount || 0), 0);
+    const totalCredit = invoices.reduce((sum, i) => sum + this.ronAmounts(i).gross, 0);
     return {
       'n1:NumberOfEntries': invoices.length.toString(),
       'n1:TotalDebit': '0.00',
@@ -736,7 +789,7 @@ export class SaftD406MonthlyService {
    * Build Purchase Invoices section
    */
   private buildPurchaseInvoices(invoices: any[]): any {
-    const totalDebit = invoices.reduce((sum, i) => sum + Number(i.grossAmount || 0), 0);
+    const totalDebit = invoices.reduce((sum, i) => sum + this.ronAmounts(i).gross, 0);
     return {
       'n1:NumberOfEntries': invoices.length.toString(),
       'n1:TotalDebit': totalDebit.toFixed(2),
@@ -749,11 +802,12 @@ export class SaftD406MonthlyService {
    * Build individual invoice
    */
   private buildInvoice(inv: any, type: 'sales' | 'purchase'): any {
-    const net = Number(inv.netAmount || 0);
-    const vat = Number(inv.vatAmount || 0);
-    const gross = Number(inv.grossAmount || 0);
+    const amounts = this.ronAmounts(inv);
+    const net = amounts.net;
+    const vat = amounts.vat;
+    const gross = amounts.gross;
     const rate = Number(inv.vatRate ?? 21);
-    const date = inv.invoiceDate?.toISOString?.().split('T')[0] || '';
+    const date = inv.invoiceDate ? formatLocalDate(new Date(inv.invoiceDate)) : '';
     const partnerId = inv.partnerCui || '0';
     const taxCode = rate === 21 ? 'S' : rate === 11 ? 'R1' : rate === 19 ? 'S19'
       : rate === 9 ? 'R9' : rate === 5 ? 'R2' : 'Z';
@@ -788,13 +842,13 @@ export class SaftD406MonthlyService {
         'n1:UnitPrice': net.toFixed(2),
         'n1:TaxPointDate': date,
         'n1:Description': inv.partnerName ? `Factura ${inv.invoiceNumber} - ${inv.partnerName}` : `Factura ${inv.invoiceNumber}`,
-        'n1:InvoiceLineAmount': this.amount(net),
+        'n1:InvoiceLineAmount': this.amount(net, { value: amounts.origNet, currency: amounts.currency }),
         'n1:DebitCreditIndicator': type === 'sales' ? 'C' : 'D',
         'n1:TaxInformation': [{
           'n1:TaxType': 'TVA',
           'n1:TaxCode': taxCode,
           'n1:TaxPercentage': rate.toFixed(2),
-          'n1:TaxAmount': this.amount(vat),
+          'n1:TaxAmount': this.amount(vat, { value: amounts.origVat, currency: amounts.currency }),
         }],
       }],
       'n1:InvoiceDocumentTotals': {
@@ -815,7 +869,7 @@ export class SaftD406MonthlyService {
       'n1:TotalDebit': total.toFixed(2),
       'n1:TotalCredit': total.toFixed(2),
       'n1:Payment': payments.map((p, i) => {
-        const date = p.paymentDate?.toISOString?.().split('T')[0] || '';
+        const date = p.paymentDate ? formatLocalDate(new Date(p.paymentDate)) : '';
         return {
           'n1:PaymentRefNo': p.reference || p.id || `PL-${i + 1}`,
           'n1:TransactionDate': date,
@@ -840,6 +894,9 @@ export class SaftD406MonthlyService {
   private getInvoiceType(inv: any): string {
     if (inv.isCreditNote) return 'NC'; // Nota de credit
     if (inv.isDebitNote) return 'ND'; // Nota de debit
+    // Proformas are not fiscal documents and must not reach SAF-T; they are
+    // filtered out before assembly (see isFiscalDocument) — this branch stays
+    // only as a defensive label.
     if (inv.isProforma) return 'FP'; // Factura proforma
     return 'FT'; // Factura standard
   }

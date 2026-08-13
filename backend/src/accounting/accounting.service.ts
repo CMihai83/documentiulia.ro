@@ -174,9 +174,20 @@ export class AccountingService {
     const entries: JournalEntry[] = [];
 
     invoices.forEach(invoice => {
-      const subtotal = Number(invoice.netAmount);
-      const vatAmount = Number(invoice.vatAmount);
-      const total = Number(invoice.grossAmount);
+      // REQ-048: the ledger is kept in RON (the reporting currency). Foreign
+      // currency invoices store their BNR-converted values in base*Amount at
+      // creation; posting the face value understated a 1.000 EUR invoice as
+      // 1.000 RON in the trial balance and every statement built on it.
+      const isForeign = (invoice.currency || 'RON') !== 'RON';
+      const subtotal = Number(
+        isForeign && invoice.baseNetAmount != null ? invoice.baseNetAmount : invoice.netAmount,
+      );
+      const vatAmount = Number(
+        isForeign && invoice.baseVatAmount != null ? invoice.baseVatAmount : invoice.vatAmount,
+      );
+      const total = Number(
+        isForeign && invoice.baseGrossAmount != null ? invoice.baseGrossAmount : invoice.grossAmount,
+      );
       const isIssued = invoice.type === 'ISSUED';
 
       if (isIssued) {
