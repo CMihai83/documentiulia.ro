@@ -271,7 +271,9 @@ export default function ContractsPage() {
   };
 
   const handleExportRevisal = () => {
-    toast.compliance('REVISAL Export', 'Se generează XML pentru contractele active și modificările din ultimele 30 de zile.');
+    // REQ-048: the .rvs/XML export belonged to the retired REVISAL desktop app.
+    // REGES-Online accepts messages over its API (see handleSubmitToRevisal).
+    toast.info('Export indisponibil', 'Fișierele .rvs au fost eliminate odată cu REVISAL (1 ian. 2026). Transmiteți contractele direct către REGES-Online.');
   };
 
   const handleNewContract = () => {
@@ -318,60 +320,87 @@ export default function ContractsPage() {
     router.push(`/dashboard/contracts/amendments/${amendment.id}/reject`);
   };
 
-  // REVISAL Handlers
+  // REGES-Online handlers (REQ-048).
+  // REVISAL was replaced by REGES-Online on 1 Apr 2025 and switched off on
+  // 1 Jan 2026 (HG 295/2025). These previously POSTed to /api/v1/revisal/*,
+  // which does not exist, and then told the user the contract had been
+  // transmitted — a false confirmation on a filing whose omission is fined
+  // 20.000 lei per person. Now wired to the real REGES integration.
   const handleSubmitToRevisal = async (contract: Contract) => {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`/api/v1/revisal/submit/${contract.id}`, {
+      const response = await fetch(`/api/v1/hr-contracts/reges/contracts/${contract.id}/register`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({}),
       });
+      const body = await response.json().catch(() => null);
 
-      if (response.ok) {
-        toast.compliance('REVISAL', `Contractul ${contract.employeeName} a fost transmis. Ref: REV-${Date.now()}`);
+      if (response.ok && body?.submitted) {
+        toast.compliance(
+          'REGES-Online',
+          `Contractul ${contract.employeeName} a fost transmis. MessageId: ${body.messageId}`,
+        );
       } else {
-        toast.compliance('REVISAL (Demo)', `Contractul ${contract.employeeName} marcat ca transmis (simulare).`);
+        toast.error(
+          'Transmitere eșuată',
+          body?.message || 'Contractul NU a fost transmis la REGES-Online. Verificați configurarea (Setări → Acces → Chei API) și reîncercați.',
+        );
       }
     } catch (err) {
-      console.error('REVISAL submit failed:', err);
-      toast.compliance('REVISAL (Demo)', `Contractul ${contract.employeeName} marcat ca transmis (simulare).`);
+      console.error('REGES submit failed:', err);
+      toast.error('Transmitere eșuată', 'Contractul NU a fost transmis: serverul nu a putut fi contactat.');
     }
   };
 
   const handleExportRevisalXML = () => {
     const contractCount = sampleContracts.filter(c => c.status === 'ACTIVE').length;
     const amendmentCount = sampleAmendments.filter(a => a.status === 'APPROVED').length;
-    toast.compliance('Export REVISAL', `${contractCount} contracte active, ${amendmentCount} acte adiționale exportate.`);
+    toast.info('Export indisponibil', `REGES-Online nu mai folosește fișiere .rvs. Cele ${contractCount} contracte active se transmit prin API (butonul „Transmite la REGES").`);
   };
 
   const handleBulkSubmitRevisal = async () => {
     const pendingCount = sampleContracts.filter(c => c.status === 'ACTIVE' && !c.revisalSubmitted).length;
     if (pendingCount === 0) {
-      toast.success('Sincronizat', 'Toate contractele sunt deja sincronizate cu REVISAL.');
+      toast.success('Sincronizat', 'Toate contractele sunt deja transmise la REGES-Online.');
       return;
     }
 
-    try {
-      const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/v1/revisal/bulk-submit', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
+    // No bulk endpoint exists in REGES-Online: each contract is a separate
+    // message. Submit sequentially and report the true tally instead of
+    // claiming success for the whole batch.
+    const pending = sampleContracts.filter(c => c.status === 'ACTIVE' && !c.revisalSubmitted);
+    const token = localStorage.getItem('auth_token');
+    let ok = 0;
+    const failures: string[] = [];
 
-      if (response.ok) {
-        toast.compliance('REVISAL', `${pendingCount} contracte au fost transmise cu succes.`);
-      } else {
-        toast.compliance('REVISAL (Demo)', `${pendingCount} contracte marcate ca transmise (simulare).`);
+    for (const contract of pending) {
+      try {
+        const response = await fetch(`/api/v1/hr-contracts/reges/contracts/${contract.id}/register`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({}),
+        });
+        const body = await response.json().catch(() => null);
+        if (response.ok && body?.submitted) ok += 1;
+        else failures.push(contract.employeeName);
+      } catch {
+        failures.push(contract.employeeName);
       }
-    } catch (err) {
-      console.error('REVISAL bulk submit failed:', err);
-      toast.compliance('REVISAL (Demo)', `${pendingCount} contracte marcate ca transmise (simulare).`);
+    }
+
+    if (failures.length === 0) {
+      toast.compliance('REGES-Online', `${ok} contracte au fost transmise cu succes.`);
+    } else if (ok === 0) {
+      toast.error('Transmitere eșuată', `Niciun contract nu a fost transmis (${failures.length} eșecuri). Verificați configurarea REGES-Online.`);
+    } else {
+      toast.error('Transmitere parțială', `${ok} transmise, ${failures.length} eșuate: ${failures.slice(0, 3).join(', ')}${failures.length > 3 ? '…' : ''}`);
     }
   };
 
