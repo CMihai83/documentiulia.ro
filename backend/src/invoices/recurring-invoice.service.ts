@@ -360,19 +360,28 @@ export class RecurringInvoiceService {
       throw new Error(`Nu există utilizatori activi în organizația ${template.organizationId}`);
     }
 
-    // Generate invoice number
+    // REQ-048: the number was derived from count()+1, so deleting any invoice
+    // (or two generator runs overlapping) reissued a number already in use —
+    // now a hard unique-constraint violation, and previously a silent duplicate
+    // in D406/e-Factura. Derive it from the highest number actually used in the
+    // series instead, and retry on the (now impossible to ignore) collision.
     const year = new Date().getFullYear();
-    const count = await this.prisma.invoice.count({
+    const series = template.seriesName || 'REC';
+    const prefix = `${series}${year}-`;
+
+    const lastInSeries = await this.prisma.invoice.findFirst({
       where: {
         organizationId: template.organizationId,
-        invoiceDate: {
-          gte: new Date(year, 0, 1),
-          lt: new Date(year + 1, 0, 1),
-        },
+        invoiceNumber: { startsWith: prefix },
       },
+      orderBy: { invoiceNumber: 'desc' },
+      select: { invoiceNumber: true },
     });
 
-    const invoiceNumber = `${template.seriesName || 'REC'}${year}-${String(count + 1).padStart(5, '0')}`;
+    const lastSeq = lastInSeries
+      ? parseInt(lastInSeries.invoiceNumber.slice(prefix.length), 10) || 0
+      : 0;
+    const invoiceNumber = `${prefix}${String(lastSeq + 1).padStart(5, '0')}`;
 
     // Calculate due date
     const invoiceDate = new Date();

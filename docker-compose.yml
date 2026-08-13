@@ -20,6 +20,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
 
   # Redis Cache (for sessions and rate limiting)
   redis:
@@ -36,6 +40,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
 
   # NestJS Backend API
   backend:
@@ -72,6 +80,10 @@ services:
       timeout: 10s
       retries: 3
       start_period: 30s
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
 
   # Next.js Frontend
   frontend:
@@ -93,6 +105,10 @@ services:
       - documentiulia-network
     ports:
       - "127.0.0.1:3000:3000"
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
 
   # Nginx Reverse Proxy (disabled - using system nginx)
   nginx:
@@ -111,6 +127,10 @@ services:
       - backend
     networks:
       - documentiulia-network
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
 
 networks:
   documentiulia-network:

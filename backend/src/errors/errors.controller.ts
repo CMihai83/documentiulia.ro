@@ -19,8 +19,12 @@ import { Roles } from '../auth/roles.decorator';
 
 // Simple API key guard for error logging
 function validateApiKey(apiKey: string | undefined): boolean {
-  const validKey = process.env.ERROR_LOGGING_API_KEY || 'default-error-logging-key';
-  return apiKey === validKey;
+  // REQ-048: this fell back to the constant 'default-error-logging-key', which
+  // is published in this repository — any deployment that had not set the env
+  // var accepted error submissions (and their payloads) from anyone.
+  const validKey = process.env.ERROR_LOGGING_API_KEY;
+  if (!validKey || validKey.length < 16) return false;
+  return Boolean(apiKey) && apiKey === validKey;
 }
 
 @Controller('errors')
