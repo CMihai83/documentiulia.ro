@@ -19,27 +19,33 @@ export class PaymentsService {
       throw new NotFoundException('Invoice not found');
     }
 
-    // Create payment
-    const payment = await this.prisma.payment.create({
-      data: {
-        invoiceId: dto.invoiceId,
-        amount: new Prisma.Decimal(dto.amount),
-        currency: dto.currency || invoice.currency,
-        method: dto.method,
-        paymentDate: dto.paymentDate || new Date(),
-        reference: dto.reference,
-        description: dto.description,
-        bankName: dto.bankName,
-        bankAccount: dto.bankAccount,
-        status: dto.status || 'COMPLETED',
-      },
-      include: {
-        invoice: true,
-      },
-    });
+    // REQ-048: the payment insert and the invoice status recompute were two
+    // independent writes. A crash between them (or a concurrent payment) left
+    // the invoice's paidAmount/paymentStatus disagreeing with its own payment
+    // rows — the figure shown to the user and used by the D406 ledger. One
+    // transaction now covers both.
+    const payment = await this.prisma.$transaction(async (tx) => {
+      const created = await tx.payment.create({
+        data: {
+          invoiceId: dto.invoiceId,
+          amount: new Prisma.Decimal(dto.amount),
+          currency: dto.currency || invoice.currency,
+          method: dto.method,
+          paymentDate: dto.paymentDate || new Date(),
+          reference: dto.reference,
+          description: dto.description,
+          bankName: dto.bankName,
+          bankAccount: dto.bankAccount,
+          status: dto.status || 'COMPLETED',
+        },
+        include: {
+          invoice: true,
+        },
+      });
 
-    // Update invoice payment status
-    await this.updateInvoicePaymentStatus(dto.invoiceId);
+      await this.recomputeInvoicePaymentStatus(tx, dto.invoiceId);
+      return created;
+    });
 
     this.logger.log(`Payment ${payment.id} created for invoice ${dto.invoiceId} - Amount: ${dto.amount}`);
 
@@ -355,8 +361,18 @@ export class PaymentsService {
     };
   }
 
+  /** Public entry point (own transaction) for callers outside an existing one. */
   private async updateInvoicePaymentStatus(invoiceId: string) {
-    const invoice = await this.prisma.invoice.findUnique({
+    return this.prisma.$transaction((tx) => this.recomputeInvoicePaymentStatus(tx, invoiceId));
+  }
+
+  /**
+   * Recompute paidAmount/paymentStatus from the invoice's own COMPLETED
+   * payments. Takes a transaction client so it can be composed atomically with
+   * the write that triggered it (REQ-048).
+   */
+  private async recomputeInvoicePaymentStatus(tx: Prisma.TransactionClient, invoiceId: string) {
+    const invoice = await tx.invoice.findUnique({
       where: { id: invoiceId },
       include: {
         payments: {
@@ -381,7 +397,7 @@ export class PaymentsService {
       paymentStatus = 'UNPAID';
     }
 
-    await this.prisma.invoice.update({
+    await tx.invoice.update({
       where: { id: invoiceId },
       data: {
         paidAmount: new Prisma.Decimal(totalPaid),

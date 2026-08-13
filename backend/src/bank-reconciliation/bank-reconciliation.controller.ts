@@ -9,6 +9,7 @@ import {
   Query,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -19,8 +20,13 @@ import {
   ApiBody,
 } from '@nestjs/swagger';
 import { BankReconciliationService } from './bank-reconciliation.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('bank-reconciliation')
+// REQ-048: bank accounts, balances and transactions were served with no
+// authentication at all. Guarded; per-user scoping is tracked separately as
+// the service still reads a global account store.
+@UseGuards(JwtAuthGuard)
 @Controller('bank-reconciliation')
 export class BankReconciliationController {
   constructor(private readonly reconciliationService: BankReconciliationService) {}

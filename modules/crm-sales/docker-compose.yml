@@ -18,12 +18,24 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
+    # REQ-048: stateful containers must come back after a host reboot
+    restart: unless-stopped
 
   redis:
     image: redis:7-alpine
     command: redis-server --appendonly yes
     volumes:
       - crm_sales_redis:/data
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
+    # REQ-048: stateful containers must come back after a host reboot
+    restart: unless-stopped
 
   api:
     build: ../../backend
@@ -51,6 +63,10 @@ services:
       redis:
         condition: service_started
     restart: unless-stopped
+    # REQ-048: cap container logs — nothing rotated them
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "3" }
 
 volumes:
   crm_sales_pgdata:

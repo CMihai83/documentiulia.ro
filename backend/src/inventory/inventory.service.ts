@@ -228,27 +228,42 @@ export class InventoryService {
         newStock = currentStock;
     }
 
-    // Create movement record
-    await this.prisma.stockMovement.create({
-      data: {
-        productId: dto.productId,
-        type: dto.type,
-        quantity: dto.quantity,
-        previousStock: currentStock,
-        newStock,
-        reference: dto.reference,
-        referenceType: dto.referenceType,
-        referenceId: dto.referenceId,
-        unitCost: dto.unitCost,
-        notes: dto.notes,
-        createdBy: userId,
-      },
-    });
+    // REQ-048: the movement insert and the stock update were separate writes on
+    // a read-modify-write, so two concurrent adjustments both read the same
+    // starting stock and the second silently overwrote the first — losing an
+    // entire movement's worth of inventory while its ledger row remained. One
+    // transaction, and the update is conditioned on the stock we actually read.
+    const updated = await this.prisma.$transaction(async (tx) => {
+      const fresh = await tx.product.findUnique({
+        where: { id: dto.productId },
+        select: { currentStock: true },
+      });
+      if (fresh && Number(fresh.currentStock) !== currentStock) {
+        throw new ConflictException(
+          'Stocul s-a modificat între timp. Reîncărcați și reîncercați ajustarea.',
+        );
+      }
 
-    // Update product stock
-    const updated = await this.prisma.product.update({
-      where: { id: dto.productId },
-      data: { currentStock: newStock },
+      await tx.stockMovement.create({
+        data: {
+          productId: dto.productId,
+          type: dto.type,
+          quantity: dto.quantity,
+          previousStock: currentStock,
+          newStock,
+          reference: dto.reference,
+          referenceType: dto.referenceType,
+          referenceId: dto.referenceId,
+          unitCost: dto.unitCost,
+          notes: dto.notes,
+          createdBy: userId,
+        },
+      });
+
+      return tx.product.update({
+        where: { id: dto.productId },
+        data: { currentStock: newStock },
+      });
     });
 
     // Check for stock alerts
