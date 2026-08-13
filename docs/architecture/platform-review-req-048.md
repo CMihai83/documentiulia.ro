@@ -71,6 +71,25 @@ array (sync method awaiting an async source) so three public endpoints served
 nothing; its spec had never executed. Both fixed — the endpoint now returns 27
 countries in production.
 
+## Wave 3 — security / data integrity / operability FIXED (PR #52 + certainty fab2548)
+
+- **bank-reconciliation** controller was completely unguarded → JwtAuthGuard (verified 401)
+- **error-logging API key** fell back to a repo-published constant → no fallback
+- **certainty-engine bound to 0.0.0.0** — API answered on the public IP over plain
+  HTTP, bypassing Cloudflare TLS with no host firewall. Now localhost-only
+  (public IP refuses, HTTPS domain unaffected)
+- **Invoice number uniqueness** — partial unique indexes (ISSUED per user;
+  RECEIVED per user+supplier), applied after verifying no duplicates
+- **Recurring number generator** — `count()+1` reissued live numbers → derived
+  from the highest number in the series
+- **Payment atomicity** — insert + status recompute now one transaction
+- **Inventory atomicity** — `adjustStock` read-modify-write could lose an entire
+  adjustment under concurrency → transactional with an optimistic check
+- **Log rotation** — 320 MB unrotated (incl. a 152 MB rejections.log from
+  January); logrotate added, 44 MB reclaimed, container log caps in all 11
+  compose files
+- **Restart policies** — the 10 slice databases would not survive a host reboot
+
 ## Open backlog (lower severity, not yet fixed)
 
 Ranked as reported. Several are worth promoting — notably the D406 invoice-status
