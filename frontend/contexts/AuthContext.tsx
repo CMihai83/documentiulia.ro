@@ -20,11 +20,18 @@ interface AuthContextType {
   user: User | null;
   token: string | null;
   isLoading: boolean;
-  login: (email: string, password: string, returnUrl?: string) => Promise<void>;
+  /** Resolves to { requiresMfa, mfaToken } when the account has MFA — caller shows the code step. */
+  login: (email: string, password: string, returnUrl?: string) => Promise<LoginResult | void>;
+  /** Second step of an MFA login (REQ-049 B5). */
+  verifyMfa: (mfaToken: string, code: string, returnUrl?: string, backupCode?: string) => Promise<void>;
   register: (data: RegisterData) => Promise<void>;
   logout: () => void;
+  /** Re-read the current user from the server (role/tier/org changes become visible). */
+  refreshUser: () => Promise<void>;
   isAuthenticated: boolean;
 }
+
+export interface LoginResult { requiresMfa: true; mfaToken: string }
 
 interface RegisterData {
   email: string;
@@ -38,6 +45,7 @@ interface RegisterData {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+import { persistSession, clearAuthData as clearStoredSession, fetchCurrentUser } from '@/lib/api';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -62,12 +70,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           localStorage.setItem('auth_user', JSON.stringify(parsedUser));
         }
         setUser(parsedUser);
+        // REQ-049 B5: localStorage is a cache, not the truth. Re-read the user
+        // (role/tier/org) from the server; silently refresh an expired token.
+        void fetchCurrentUser().then((fresh) => {
+          if (fresh) {
+            setUser((prev) => ({ ...(prev || {}), ...fresh }));
+            setToken(localStorage.getItem('auth_token'));
+            localStorage.setItem('auth_user', JSON.stringify({ ...(parsedUser || {}), ...fresh }));
+          } else if (fresh === null) {
+            // definitively invalid (refresh failed too) — drop the stale session
+            clearStoredSession();
+            setUser(null);
+            setToken(null);
+          }
+        });
       }
     } catch (error) {
       console.error('Error reading auth from localStorage:', error);
     }
     setIsLoading(false);
   }, []);
+
+  const applySession = (data: { accessToken: string; refreshToken?: string; user: User }) => {
+    setToken(data.accessToken);
+    setUser(data.user);
+    persistSession(data);
+  };
 
   const login = async (email: string, password: string, returnUrl?: string) => {
     setIsLoading(true);
@@ -93,18 +121,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       const data = await response.json();
-      setToken(data.accessToken);
-      setUser(data.user);
 
-      // Store in localStorage
-      localStorage.setItem('auth_token', data.accessToken);
-      localStorage.setItem('auth_user', JSON.stringify(data.user));
+      // REQ-049 B5: accounts with MFA get a second step instead of a token.
+      if (data.requiresMfa) {
+        return { requiresMfa: true as const, mfaToken: data.mfaToken as string };
+      }
 
-      // Store in cookie for middleware access (7 days expiry)
-      // Secure flag required for HTTPS, SameSite=Lax for CSRF protection
-      const isSecure = window.location.protocol === 'https:';
-      document.cookie = `auth_token=${data.accessToken}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax${isSecure ? '; Secure' : ''}`;
-
+      applySession(data);
       router.push(returnUrl || '/dashboard');
     } catch (error) {
       // Log error to error tracking system
@@ -152,10 +175,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       const result = await response.json();
-      setToken(result.access_token);
-      setUser(result.user);
-      localStorage.setItem('auth_token', result.access_token);
-      localStorage.setItem('auth_user', JSON.stringify(result.user));
+      // REQ-049 B5: the API returns `accessToken`; this read `access_token`, so
+      // every new account was stored with an undefined token and logged out on
+      // the next request. Accept both for safety.
+      const accessToken = result.accessToken ?? result.access_token;
+      if (!accessToken) throw new Error('Înregistrarea a reușit, dar sesiunea nu a putut fi pornită. Autentificați-vă.');
+      applySession({ accessToken, refreshToken: result.refreshToken, user: result.user });
 
       // Save business type for onboarding wizard
       if (businessType) {
@@ -163,8 +188,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       // Store in cookie for middleware access (7 days expiry)
-      const isSecure = window.location.protocol === 'https:';
-      document.cookie = `auth_token=${result.access_token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax${isSecure ? '; Secure' : ''}`;
 
       router.push(redirectUrl || '/dashboard');
     } finally {
@@ -172,7 +195,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const verifyMfa = async (mfaToken: string, code: string, returnUrl?: string, backupCode?: string) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/auth/login/verify-mfa`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ mfaToken, code, backupCode }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.messageRo || data.message || 'Cod MFA invalid');
+      applySession(data);
+      router.push(returnUrl || '/dashboard');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const refreshUser = async () => {
+    const fresh = await fetchCurrentUser();
+    if (fresh) {
+      setUser((prev) => ({ ...(prev || {}), ...fresh }));
+      localStorage.setItem('auth_user', JSON.stringify({ ...(user || {}), ...fresh }));
+    }
+  };
+
   const logout = () => {
+    clearStoredSession();
     setToken(null);
     setUser(null);
     localStorage.removeItem('auth_token');
@@ -186,6 +235,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider
       value={{
         user,
+        verifyMfa,
+        refreshUser,
         token,
         isLoading,
         login,

@@ -17,6 +17,8 @@ interface RetryOptions {
 }
 
 interface FetchOptions extends RequestInit {
+  /** internal: set after one silent-refresh retry */
+  _retried?: boolean;
   skipAuth?: boolean;
   organizationId?: string | null;
   skipOrgHeader?: boolean;
@@ -70,11 +72,92 @@ function getStoredOrgId(): string | null {
   return localStorage.getItem(ORG_STORAGE_KEY);
 }
 
-function clearAuthData(): void {
+export function clearAuthData(): void {
   if (typeof window === 'undefined') return;
   localStorage.removeItem('auth_token');
   localStorage.removeItem('auth_user');
+  localStorage.removeItem(REFRESH_KEY);
   document.cookie = 'auth_token=; path=/; max-age=0';
+}
+
+// ---------------------------------------------------------------------------
+// REQ-049 B5 — session persistence + silent refresh.
+// The access token lives 15 minutes (backend ACCESS_TOKEN_EXPIRY) and the
+// frontend never refreshed it, so every user was kicked out mid-work. The
+// backend already issues rotating 30-day refresh tokens at /auth/refresh;
+// we now store them and use them once on a 401 before giving up.
+// ---------------------------------------------------------------------------
+const REFRESH_KEY = 'refresh_token';
+
+export interface SessionPayload { accessToken: string; refreshToken?: string; user?: unknown }
+
+export function persistSession(data: SessionPayload): void {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem('auth_token', data.accessToken);
+  if (data.refreshToken) localStorage.setItem(REFRESH_KEY, data.refreshToken);
+  if (data.user) localStorage.setItem('auth_user', JSON.stringify(data.user));
+  const isSecure = window.location.protocol === 'https:';
+  document.cookie = `auth_token=${data.accessToken}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax${isSecure ? '; Secure' : ''}`;
+}
+
+let refreshInFlight: Promise<boolean> | null = null;
+
+/** Exchange the stored refresh token for a new session. Coalesces concurrent callers. */
+export async function tryRefreshSession(): Promise<boolean> {
+  if (typeof window === 'undefined') return false;
+  const refreshToken = localStorage.getItem(REFRESH_KEY);
+  if (!refreshToken) return false;
+  if (refreshInFlight) return refreshInFlight;
+  refreshInFlight = (async () => {
+    try {
+      const res = await fetch(`${API_URL}/auth/refresh`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ refreshToken }),
+      });
+      if (!res.ok) {
+        localStorage.removeItem(REFRESH_KEY);
+        return false;
+      }
+      const data = (await res.json()) as SessionPayload;
+      if (!data?.accessToken) return false;
+      persistSession(data);
+      return true;
+    } catch {
+      return false; // network blip: keep the refresh token, caller decides
+    } finally {
+      refreshInFlight = null;
+    }
+  })();
+  return refreshInFlight;
+}
+
+/**
+ * Current user from the server (source of truth for role/tier/org), with one
+ * silent refresh attempt. Returns null when the session is definitively
+ * invalid, undefined on transient/network failure (caller should keep state).
+ */
+export async function fetchCurrentUser(): Promise<any | null | undefined> {
+  const go = async () => {
+    const token = getAuthToken();
+    if (!token) return null;
+    const res = await fetch(`${API_URL}/auth/me`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' } });
+    if (res.status === 401) return 401;
+    if (!res.ok) return undefined;
+    const data = await res.json();
+    return data?.user ?? data;
+  };
+  try {
+    const first = await go();
+    if (first !== 401) return first;
+    if (await tryRefreshSession()) {
+      const second = await go();
+      return second === 401 ? null : second;
+    }
+    return null;
+  } catch {
+    return undefined;
+  }
 }
 
 function redirectToLogin(returnUrl?: string): void {
@@ -149,8 +232,12 @@ export async function apiRequest<T = unknown>(
         headers,
       });
 
-      // Handle 401 Unauthorized - session expired or invalid (don't retry)
+      // Handle 401 Unauthorized — try ONE silent refresh, then give up (REQ-049 B5)
       if (response.status === 401) {
+        const isAuthRoute = endpoint.startsWith('/auth/login') || endpoint.startsWith('/auth/refresh') || endpoint.startsWith('/auth/register');
+        if (!options._retried && !isAuthRoute && (await tryRefreshSession())) {
+          return apiRequest<T>(endpoint, { ...options, _retried: true });
+        }
         clearAuthData();
         const currentPath = typeof window !== 'undefined' ? window.location.pathname : undefined;
         redirectToLogin(currentPath);

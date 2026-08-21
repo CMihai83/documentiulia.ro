@@ -40,7 +40,10 @@ const TEST_CREDENTIALS = [
 
 export default function LoginPage() {
   const t = useTranslations('auth');
-  const { login, isLoading } = useAuth();
+  const { login, verifyMfa, isLoading } = useAuth();
+  const [mfaToken, setMfaToken] = useState<string | null>(null);
+  const [mfaCode, setMfaCode] = useState('');
+  const [useBackup, setUseBackup] = useState(false);
   const searchParams = useSearchParams();
   const returnUrl = searchParams.get('returnUrl');
   const [email, setEmail] = useState('');
@@ -54,9 +57,21 @@ export default function LoginPage() {
     setError('');
 
     try {
-      await login(email, password, returnUrl || undefined);
+      const result = await login(email, password, returnUrl || undefined);
+      if (result && result.requiresMfa) setMfaToken(result.mfaToken);
     } catch (err: any) {
       setError(err.message || t('loginError'));
+    }
+  };
+
+  const handleVerifyMfa = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    if (!mfaToken) return;
+    try {
+      await verifyMfa(mfaToken, useBackup ? '' : mfaCode.trim(), returnUrl || undefined, useBackup ? mfaCode.trim() : undefined);
+    } catch (err: any) {
+      setError(err.message || 'Cod invalid. Încercați din nou.');
     }
   };
 
@@ -65,6 +80,42 @@ export default function LoginPage() {
     setPassword(cred.password);
     setError('');
   };
+
+  if (mfaToken) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-yellow-50 py-12 px-4 sm:px-6 lg:px-8">
+        <form onSubmit={handleVerifyMfa} className="max-w-md w-full space-y-6 bg-white/80 p-8 rounded-xl shadow-sm border">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">Verificare în doi pași</h2>
+            <p className="mt-2 text-sm text-gray-600">
+              {useBackup ? 'Introduceți unul dintre codurile de rezervă.' : 'Introduceți codul de 6 cifre din aplicația de autentificare.'}
+            </p>
+          </div>
+          {error && <div className="rounded-md bg-red-50 p-3 border border-red-200 text-sm text-red-700">{error}</div>}
+          <input
+            autoFocus
+            inputMode={useBackup ? 'text' : 'numeric'}
+            autoComplete="one-time-code"
+            value={mfaCode}
+            onChange={(e) => setMfaCode(e.target.value)}
+            placeholder={useBackup ? 'cod de rezervă' : '123456'}
+            className="w-full rounded-lg border px-4 py-3 text-center text-lg tracking-widest"
+            aria-label="Cod de verificare"
+          />
+          <button type="submit" disabled={isLoading || mfaCode.trim().length < 4}
+            className="w-full py-3 rounded-lg text-white bg-registru-cerneala hover:bg-registru-stampila disabled:opacity-50">
+            {isLoading ? 'Se verifică…' : 'Confirmă'}
+          </button>
+          <div className="flex justify-between text-sm">
+            <button type="button" className="text-gray-600 underline" onClick={() => { setUseBackup(!useBackup); setMfaCode(''); setError(''); }}>
+              {useBackup ? 'Folosește codul din aplicație' : 'Folosește un cod de rezervă'}
+            </button>
+            <button type="button" className="text-gray-600 underline" onClick={() => { setMfaToken(null); setMfaCode(''); setError(''); }}>Înapoi</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-yellow-50 py-12 px-4 sm:px-6 lg:px-8">
