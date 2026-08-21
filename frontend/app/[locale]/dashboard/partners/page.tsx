@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
+import { api } from '@/lib/api';
 interface Partner {
   id: string;
   name: string;
@@ -238,7 +239,10 @@ export default function PartnersPage() {
   };
 
   const handleDelete = async (partner: Partner) => {
-    router.push(`/dashboard/partners/${partner.id}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/partners/${partner.id}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Partener șters'); fetchPartners(); fetchStats(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteConfirmed = async (partnerId: string, partnerName: string) => {

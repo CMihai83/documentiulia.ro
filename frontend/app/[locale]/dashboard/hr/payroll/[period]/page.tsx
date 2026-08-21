@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   ArrowLeft,
   Download,
@@ -145,7 +146,7 @@ export default function PayrollDetailPage() {
 
   const approveAll = async () => {
     // Navigate to approval confirmation page
-    router.push(`/dashboard/hr/payroll/${period}/approve`);
+    notifyNotAvailable();
   };
 
   const approveAllConfirmed = async () => {

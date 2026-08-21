@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   ArrowLeft,
   MapPin,
@@ -312,7 +313,7 @@ export default function WarehouseLocationDetailPage() {
           </span>
 
           <button
-            onClick={() => router.push(`/dashboard/warehouse/locations/${locationId}/edit`)}
+            onClick={() => notifyNotAvailable()}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2"
           >
             <Edit className="h-4 w-4" />
@@ -596,7 +597,7 @@ export default function WarehouseLocationDetailPage() {
                 Numărătoare stoc
               </button>
               <button
-                onClick={() => router.push(`/dashboard/warehouse/locations/${locationId}/history`)}
+                onClick={() => notifyNotAvailable()}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center gap-2"
               >
                 <History className="h-4 w-4" />

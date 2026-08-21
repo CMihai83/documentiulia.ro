@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { api } from '@/lib/api';
 
+import { notifyNotAvailable } from '@/lib/toast-bus';
 interface Template {
   id: string;
   name: string;
@@ -245,7 +246,7 @@ export default function TemplatesPage() {
               onClick={(e) => {
                 e.stopPropagation();
                 // Navigate to template editor
-                router.push(`/dashboard/templates/${template.id}`);
+                notifyNotAvailable();
               }}
               className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
             >

@@ -24,6 +24,7 @@ import {
 import { downloadInvoicePdf, type InvoicePdfData } from '@/lib/pdf';
 import { useToast } from '@/components/ui/Toast';
 
+import { api } from '@/lib/api';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 interface InvoiceItem {
@@ -147,7 +148,10 @@ export default function InvoiceDetailPage() {
   const handleDelete = async () => {
     if (!invoice) return;
     // Navigate to delete confirmation page
-    router.push(`/dashboard/invoices/${invoice.id}/delete`);
+    if (!window.confirm('Ștergeți această factură? Facturile emise sau plătite vor fi anulate, nu șterse.')) return;
+    const r = await api.delete(`/invoices/${invoice.id}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Factura a fost ștearsă (sau anulată, dacă era emisă ori plătită)'); router.push('/dashboard/invoices'); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteConfirmed = async () => {
@@ -229,7 +233,9 @@ export default function InvoiceDetailPage() {
   const handleSendEmail = async () => {
     if (!invoice) return;
     // Navigate to email send page with form
-    router.push(`/dashboard/invoices/${invoice.id}/send-email`);
+    const r = await api.post(`/invoices/${invoice.id}/send-email`);
+    if (r.status >= 200 && r.status < 300) { toast.success('E-mail trimis clientului'); fetchInvoice(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleSendEmailConfirmed = async (email: string) => {

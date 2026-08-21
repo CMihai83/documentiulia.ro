@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { api } from '@/lib/api';
 import {
   Plus,
   Calendar,
@@ -153,7 +154,9 @@ export default function RecurringInvoicesPage() {
 
   const handleGenerateNow = async (id: string) => {
     // Navigate to generate confirmation page
-    router.push(`/dashboard/invoices/recurring/${id}/generate`);
+    const r = await api.post(`/invoices/recurring/${id}/generate`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Factura a fost generată din șablon'); fetchData(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleGenerateNowConfirmed = async (id: string) => {
@@ -181,7 +184,10 @@ export default function RecurringInvoicesPage() {
 
   const handleDelete = async (id: string) => {
     // Navigate to delete confirmation page
-    router.push(`/dashboard/invoices/recurring/${id}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/invoices/recurring/${id}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Șablon recurent șters'); fetchData(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteConfirmed = async (id: string) => {

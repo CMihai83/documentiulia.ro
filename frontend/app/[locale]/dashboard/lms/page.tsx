@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 
+import { notifyNotAvailable } from '@/lib/toast-bus';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 interface UserProfile {
@@ -102,7 +103,7 @@ export default function LMSPage() {
   };
 
   const handleStartLearning = (course: Course) => {
-    router.push(`/dashboard/lms/learn/${course.slug || course.id}`);
+    notifyNotAvailable();
   };
 
   const handleEnrollCourse = async (course: Course) => {
@@ -142,7 +143,7 @@ export default function LMSPage() {
   };
 
   const handleContinueCourse = (enrollment: Enrollment) => {
-    router.push(`/dashboard/lms/courses/${enrollment.courseId}/learn`);
+    router.push(`/dashboard/lms/courses/${enrollment.courseId}`);
   };
 
   const handleDownloadCertificate = async (cert: Certificate) => {
@@ -173,7 +174,7 @@ export default function LMSPage() {
   };
 
   const handleVerifyCertificate = (cert: Certificate) => {
-    router.push(`/dashboard/lms/certificates/verify?id=${cert.credentialId}`);
+    notifyNotAvailable();
   };
 
   const handleContinueLearning = () => {

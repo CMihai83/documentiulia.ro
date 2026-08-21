@@ -420,7 +420,7 @@ export default function FinanceDashboardPage() {
   };
 
   const handleManualMatch = (invoiceNumber: string) => {
-    router.push(`/dashboard/finance/reconciliation/match?invoice=${invoiceNumber}`);
+    router.push(`/dashboard/bank-reconciliation?invoice=${invoiceNumber}`);
   };
 
   const handleSendReminder = async (invoiceId: string, invoiceNumber: string, partnerName: string) => {
@@ -448,7 +448,7 @@ export default function FinanceDashboardPage() {
   };
 
   const handleMarkAsPaid = (invoiceNumber: string) => {
-    router.push(`/dashboard/finance/payments/register?invoice=${invoiceNumber}`);
+    router.push(`/dashboard/finance/transactions/new?invoice=${invoiceNumber}`);
   };
 
   // Cash Flow Handlers

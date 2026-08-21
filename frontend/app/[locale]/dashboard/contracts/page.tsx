@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   FileText,
   Search,
@@ -287,16 +288,16 @@ export default function ContractsPage() {
 
   // Contract Action Handlers
   const handleViewContract = (contract: Contract) => {
-    router.push(`/dashboard/contracts/${contract.id}`);
+    router.push(`/dashboard/hr/contracts/${contract.id}`);
   };
 
   const handleEditContract = (contract: Contract) => {
-    router.push(`/dashboard/contracts/${contract.id}/edit`);
+    router.push(`/dashboard/hr/contracts/${contract.id}/edit`);
   };
 
   const handleContractOptions = (contract: Contract) => {
     // Navigate to contract actions page with all options
-    router.push(`/dashboard/contracts/${contract.id}/actions`);
+    notifyNotAvailable();
   };
 
   // Amendment Handlers
@@ -305,19 +306,19 @@ export default function ContractsPage() {
   };
 
   const handleCreateAmendment = (contract: Contract) => {
-    router.push(`/dashboard/contracts/${contract.id}/amendment/new`);
+    router.push(`/dashboard/contracts/amendments/new?contractId=${contract.id}`);
   };
 
   const handleEditAmendment = (amendment: Amendment) => {
-    router.push(`/dashboard/contracts/amendments/${amendment.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleApproveAmendment = async (amendment: Amendment) => {
-    router.push(`/dashboard/contracts/amendments/${amendment.id}/approve`);
+    notifyNotAvailable();
   };
 
   const handleRejectAmendment = async (amendment: Amendment) => {
-    router.push(`/dashboard/contracts/amendments/${amendment.id}/reject`);
+    notifyNotAvailable();
   };
 
   // REGES-Online handlers (REQ-048).

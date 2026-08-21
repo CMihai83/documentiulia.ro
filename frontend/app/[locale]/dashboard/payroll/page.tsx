@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Progress } from '@/components/ui/progress';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Wallet,
   Search,
@@ -319,7 +320,7 @@ export default function PayrollPage() {
   };
 
   const handlePrintPayslip = (emp: EmployeeSalary) => {
-    router.push(`/dashboard/payroll/payslip/${emp.id}?period=${selectedPayroll?.period}`);
+    notifyNotAvailable();
   };
 
   const handleSendPayslip = async (emp: EmployeeSalary) => {
@@ -346,7 +347,7 @@ export default function PayrollPage() {
   };
 
   const handleEditEmployeeSalary = (emp: EmployeeSalary) => {
-    router.push(`/dashboard/payroll/employee/${emp.id}/edit?period=${selectedPayroll?.period}`);
+    notifyNotAvailable();
   };
 
   // History Handlers
@@ -356,7 +357,7 @@ export default function PayrollPage() {
   };
 
   const handleDownloadPayrollReport = (run: PayrollRun) => {
-    router.push(`/dashboard/payroll/report/${run.id}`);
+    notifyNotAvailable();
   };
 
   const handleComparePayrolls = () => {
@@ -488,7 +489,7 @@ export default function PayrollPage() {
   };
 
   const handlePrintAllPayslips = () => {
-    router.push(`/dashboard/payroll/print-all?period=${selectedPayroll?.period}`);
+    notifyNotAvailable();
   };
 
   return (

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useToast } from '@/components/ui/Toast';
 import { ArrowLeft, Check, X, ExternalLink, RefreshCw, Loader2, Key, Building, FileText, Banknote } from 'lucide-react';
 
+import { notifyNotAvailable } from '@/lib/toast-bus';
 interface Integration {
   id: string;
   name: string;
@@ -73,7 +74,7 @@ export default function IntegrationsPage() {
   const handleConfigure = (integrationId: string) => {
     const integration = integrations.find(i => i.id === integrationId);
     if (integration) {
-      router.push(`/dashboard/settings/integrations/${integrationId}`);
+      notifyNotAvailable();
     }
   };
 
@@ -82,7 +83,7 @@ export default function IntegrationsPage() {
     if (!integration) return;
 
     // Navigate to disconnect confirmation page
-    router.push(`/dashboard/settings/integrations/${integrationId}/disconnect`);
+    notifyNotAvailable();
   };
 
   return (

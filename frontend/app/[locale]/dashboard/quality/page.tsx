@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   ClipboardCheck,
   AlertOctagon,
@@ -295,7 +296,7 @@ export default function QualityPage() {
   const handleAddNew = () => {
     const options = { dashboard: 'inspection', inspections: 'inspection', ncr: 'NCR', capa: 'CAPA', documents: 'document', suppliers: 'supplier' };
     const type = options[activeTab] || 'item';
-    router.push(`/dashboard/quality/${activeTab}/new`);
+    notifyNotAvailable();
   };
 
   const handleNCRAction = (ncr: NonConformance) => {
@@ -311,7 +312,7 @@ export default function QualityPage() {
   };
 
   const handleFinalizeInspection = async (inspection: Inspection) => {
-    router.push(`/dashboard/quality/inspections/${inspection.id}/finalize?number=${encodeURIComponent(inspection.inspectionNumber)}`);
+    notifyNotAvailable();
   };
 
   const handleFinalizeInspectionConfirmed = async (inspection: Inspection) => {
@@ -327,7 +328,7 @@ export default function QualityPage() {
   };
 
   const handleResolveNCR = async (ncr: NonConformance) => {
-    router.push(`/dashboard/quality/ncr/${ncr.id}/resolve?number=${encodeURIComponent(ncr.ncrNumber)}`);
+    notifyNotAvailable();
   };
 
   const handleResolveNCRConfirmed = async (ncr: NonConformance) => {
@@ -343,11 +344,11 @@ export default function QualityPage() {
   };
 
   const handleUpdateCAPA = (capa: CAPA) => {
-    router.push(`/dashboard/quality/capa/${capa.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleCloseCAPA = async (capa: CAPA) => {
-    router.push(`/dashboard/quality/capa/${capa.id}/close?number=${encodeURIComponent(capa.capaNumber)}`);
+    notifyNotAvailable();
   };
 
   const handleCloseCAPAConfirmed = async (capa: CAPA) => {
@@ -359,19 +360,19 @@ export default function QualityPage() {
   };
 
   const handleViewDocument = (doc: QualityDocument) => {
-    router.push(`/dashboard/quality/documents/${doc.id}`);
+    notifyNotAvailable();
   };
 
   const handleEditDocument = (doc: QualityDocument) => {
-    router.push(`/dashboard/quality/documents/${doc.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleSupplierHistory = (supplier: SupplierQuality) => {
-    router.push(`/dashboard/quality/suppliers/${supplier.id}/history`);
+    notifyNotAvailable();
   };
 
   const handleSupplierAudit = (supplier: SupplierQuality) => {
-    router.push(`/dashboard/quality/suppliers/${supplier.id}/audit`);
+    notifyNotAvailable();
   };
 
   const handleSupplierReport = (supplier: SupplierQuality) => {

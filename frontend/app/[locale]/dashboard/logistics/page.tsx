@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Package,
   Warehouse,
@@ -310,7 +311,7 @@ export default function LogisticsPage() {
   };
 
   const handleResolveAlert = async (alert: StockAlert) => {
-    router.push(`/dashboard/logistics/alerts/${alert.id}/resolve?name=${encodeURIComponent(alert.itemName)}`);
+    notifyNotAvailable();
   };
 
   const handleResolveAlertConfirmed = async (alertId: string) => {
@@ -337,11 +338,11 @@ export default function LogisticsPage() {
   };
 
   const handleEditItem = (item: InventoryItem) => {
-    router.push(`/dashboard/logistics/inventory/${item.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleViewMovements = (item: InventoryItem) => {
-    router.push(`/dashboard/logistics/inventory/${item.id}/movements`);
+    notifyNotAvailable();
   };
 
   const handleOptimizeRoute = () => {
@@ -353,11 +354,11 @@ export default function LogisticsPage() {
   };
 
   const handleRouteDetails = (route: RouteData) => {
-    router.push(`/dashboard/logistics/routes/${route.id}`);
+    notifyNotAvailable();
   };
 
   const handleTrackGPS = (route: RouteData) => {
-    router.push(`/dashboard/logistics/routes/${route.id}/track`);
+    notifyNotAvailable();
   };
 
   const handleCalculateOptimalRoute = () => {
@@ -377,11 +378,11 @@ export default function LogisticsPage() {
   };
 
   const handleDeclarationDetails = (decl: CustomsDeclaration) => {
-    router.push(`/dashboard/logistics/customs/${decl.id}`);
+    notifyNotAvailable();
   };
 
   const handleSubmitDeclaration = async (decl: CustomsDeclaration) => {
-    router.push(`/dashboard/logistics/customs/${decl.id}/submit?lrn=${encodeURIComponent(decl.lrn)}`);
+    notifyNotAvailable();
   };
 
   const handleSubmitDeclarationConfirmed = async (decl: CustomsDeclaration) => {

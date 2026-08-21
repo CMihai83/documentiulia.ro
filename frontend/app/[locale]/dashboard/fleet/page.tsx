@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Truck,
   MapPin,
@@ -782,11 +783,11 @@ export default function FleetDashboardPage() {
 
   // Vehicle action handlers
   const handleEditVehicle = (vehicle: Vehicle) => {
-    router.push(`/dashboard/fleet/vehicles/${vehicle.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleViewVehicleDetails = (vehicle: Vehicle) => {
-    router.push(`/dashboard/fleet/vehicles/${vehicle.id}`);
+    router.push(`/dashboard/fleet/${vehicle.id}`);
   };
 
   const handleCreateRoute = () => {
@@ -794,15 +795,15 @@ export default function FleetDashboardPage() {
   };
 
   const handleScheduleMaintenance = (vehicle: Vehicle) => {
-    router.push(`/dashboard/fleet/maintenance/schedule?vehicleId=${vehicle.id}&plate=${vehicle.licensePlate}`);
+    notifyNotAvailable();
   };
 
   const handleAssignDriver = (vehicle: Vehicle) => {
-    router.push(`/dashboard/fleet/vehicles/${vehicle.id}/assign-driver`);
+    notifyNotAvailable();
   };
 
   const handleTrackFuelConsumption = (vehicle: Vehicle) => {
-    router.push(`/dashboard/fleet/fuel/record?vehicleId=${vehicle.id}&plate=${vehicle.licensePlate}`);
+    notifyNotAvailable();
   };
 
   const handleViewFleetReport = () => {

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   ArrowLeft,
   Package,
@@ -353,7 +354,7 @@ export default function InventoryDetailPage() {
           </span>
 
           <button
-            onClick={() => router.push(`/dashboard/inventory/${productId}/edit`)}
+            onClick={() => notifyNotAvailable()}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2"
           >
             <Edit className="h-4 w-4" />
@@ -656,7 +657,7 @@ export default function InventoryDetailPage() {
                 Setează alertă stoc
               </button>
               <button
-                onClick={() => router.push(`/dashboard/inventory/${productId}/history`)}
+                onClick={() => router.push(`/dashboard/inventory/stock-movements?productId=${productId}`)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center gap-2"
               >
                 <History className="h-4 w-4" />

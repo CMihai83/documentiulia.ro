@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useToast } from '@/components/ui/Toast';
+import { api } from '@/lib/api';
 import {
   ArrowLeft,
   Save,
@@ -138,7 +139,10 @@ export default function EditEmployeePage() {
 
   const handleDelete = async () => {
     // Navigate to delete confirmation page
-    router.push(`/dashboard/hr/employees/${employeeId}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/hr/employees/${employeeId}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Angajat șters'); router.push('/dashboard/hr'); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteConfirmed = async () => {

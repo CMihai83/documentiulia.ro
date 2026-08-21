@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 
+import { notifyNotAvailable } from '@/lib/toast-bus';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 interface HSESummary {
@@ -243,19 +244,19 @@ export default function HSEPage() {
   };
 
   const handleViewRisk = (risk: RiskAssessment) => {
-    router.push(`/dashboard/hse/risks/${risk.id}`);
+    notifyNotAvailable();
   };
 
   const handleEditRisk = (risk: RiskAssessment) => {
-    router.push(`/dashboard/hse/risks/${risk.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleViewIncident = (incident: Incident) => {
-    router.push(`/dashboard/hse/incidents/${incident.id}`);
+    notifyNotAvailable();
   };
 
   const handleInvestigateIncident = (incident: Incident) => {
-    router.push(`/dashboard/hse/incidents/${incident.id}/investigate`);
+    notifyNotAvailable();
   };
 
   const handleScheduleAudit = () => {
@@ -263,7 +264,7 @@ export default function HSEPage() {
   };
 
   const handleViewAudit = (audit: AuditItem) => {
-    router.push(`/dashboard/hse/audits/${audit.id}`);
+    notifyNotAvailable();
   };
 
   const handleDownloadAuditReport = async (audit: AuditItem) => {

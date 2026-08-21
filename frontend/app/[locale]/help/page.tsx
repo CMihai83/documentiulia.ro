@@ -15,9 +15,9 @@ export default function HelpPage() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const categories = [
-    { icon: FileText, title: 'Ghiduri de Start', count: 12, href: '/help/getting-started' },
-    { icon: Book, title: 'Documentație', count: 45, href: '/help/docs' },
-    { icon: Video, title: 'Video Tutoriale', count: 24, href: '/help/videos' },
+    { icon: FileText, title: 'Ghiduri de Start', count: 12, href: '/help#getting-started' },
+    { icon: Book, title: 'Documentație', count: 45, href: '/help#docs' },
+    { icon: Video, title: 'Video Tutoriale', count: 24, href: '/help#videos' },
     { icon: Users, title: 'Comunitate', count: 889, href: '/forum' },
   ];
 

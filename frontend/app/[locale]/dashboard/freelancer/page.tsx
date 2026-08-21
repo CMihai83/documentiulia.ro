@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 
+import { notifyNotAvailable } from '@/lib/toast-bus';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 interface FreelancerProfile {
@@ -81,26 +82,26 @@ export default function FreelancerHubPage() {
   };
 
   const handleViewProject = (projectId: string) => {
-    router.push(`/dashboard/freelancer/projects/${projectId}`);
+    notifyNotAvailable();
   };
 
   const handleEditProject = (projectId: string) => {
-    router.push(`/dashboard/freelancer/projects/${projectId}/edit`);
+    notifyNotAvailable();
   };
 
   const handleViewFreelancerProfile = (freelancerId: string) => {
-    router.push(`/dashboard/freelancer/profiles/${freelancerId}`);
+    notifyNotAvailable();
   };
 
   const handleContactFreelancer = async (freelancer: FreelancerProfile) => {
     toast.success('Mesaj', `Se deschide conversația cu ${freelancer.name}...`);
     setTimeout(() => {
-      router.push(`/dashboard/freelancer/messages?to=${freelancer.id}`);
+      notifyNotAvailable();
     }, 500);
   };
 
   const handleViewContract = (contractId: string) => {
-    router.push(`/dashboard/freelancer/contracts/${contractId}`);
+    notifyNotAvailable();
   };
 
   const handleDownloadContract = async (contract: Contract) => {

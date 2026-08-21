@@ -52,7 +52,7 @@ export default function HomePage() {
               <span>{ro ? 'Ordin 1783/2021 · SAF-T D406' : 'Order 1783/2021 · SAF-T D406'}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/signup" className="registru-focus bg-registru-cerneala text-white font-display font-bold px-7 py-3 hover:bg-registru-stampila transition-colors">
+              <Link href="/register" className="registru-focus bg-registru-cerneala text-white font-display font-bold px-7 py-3 hover:bg-registru-stampila transition-colors">
                 {t('hero.cta')}
               </Link>
               <Link href="/tools" className="registru-focus border border-registru-cerneala px-7 py-3 font-semibold hover:bg-registru-cerneala hover:text-white transition-colors">
@@ -153,7 +153,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <Link
-                  href="/signup"
+                  href="/register"
                   className={`registru-focus block text-center py-3 font-display font-bold text-sm transition-colors ${
                     tier === 'pro' ? 'bg-registru-stampila text-white hover:bg-registru-cerneala' : 'border border-registru-cerneala hover:bg-registru-cerneala hover:text-white'
                   }`}
