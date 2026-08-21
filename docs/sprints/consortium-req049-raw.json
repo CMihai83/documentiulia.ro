@@ -1,0 +1,788 @@
+{
+ "experts": {
+  "frontend-nav": {
+   "inventory": "Route map: 270 page.tsx files under frontend/app/[locale] (full list built from find). Public: /, /about, /features, /pricing, /tools/*(5 tools), /templates, /services/{business-formation,forme-juridice,infiintare-srl,inregistrare-pfa}, /blog, /courses, /forum/*, /help, /faq, /contact, /demo, /api-docs, /login, /register, /forgot-password, /terms, /privacy, /gdpr, /simulation, /onboarding, /client-portal/[clientId], /employee-portal/[userId]. Dashboard: ~230 pages across accounting, finance, invoices, efactura/e-invoice, vat, saft, hr, payroll, crm, partners, inventory, warehouse, procurement, logistics, fleet, quality, hse, marketing, lms, projects, contracts, freelancer, settings/*, admin/{clients,requests,error-logs,errors,gdpr}, data-export, developer, etc.\n\nNavigation components checked: components/dashboard/DashboardSidebar.tsx (all ~70 hrefs resolve, incl. admin/staff section), components/layout/Navbar.tsx (all resolve), components/layout/Footer.tsx (all resolve), components/layout/MobileBottomNav.tsx (all resolve), components/dashboard/QuickActionsPanel.tsx (all resolve), components/CommandPalette.tsx + components/shortcuts/CommandPalette.tsx (all resolve), components/dashboard/GlobalSearch.tsx (2 of 30 broken).\n\nSystemic finding: a past refactor replaced confirm()/modal actions with router.push('/.../delete|/approve|/close|/send|/revisal|/revoke|/disconnect') \"confirmation pages\" that were never created. 30 orphaned `handleXConfirmed` functions exist (zero callers), and the wired buttons 404. Affects invoices/[id], hr, crm, partners, contracts, marketing, accounting/periods, settings/integrations, settings/security, hr/payroll/[period], invoices/recurring, documents, fleet/[id], data-export, quality, logistics, hse. Plus many detail/edit routes navigated to but never built (contracts/[id], fleet/vehicles/[id], freelancer/projects/[id], inventory/products/[id], marketing/campaigns/[id], procurement/purchase-orders/[id], hse/*/[id], quality/documents/[id], hr/forms/*, hr/leave/[id], hr/performance/*). ~120 distinct broken destinations found in total.",
+   "gaps": [
+    {
+     "area": "Public landing / conversion",
+     "file": "frontend/app/[locale]/page.tsx",
+     "severity": "blocker",
+     "title": "Homepage hero CTA and all 3 pricing-card CTAs link to /signup which has no page",
+     "detail": "Visitor clicks the main 'Începe gratuit' hero button (line 55) or any pricing tier button (line 156) and lands on the 404 page. The real registration page is /[locale]/register; there is no /signup page and no redirect in next.config.js or vercel.json.",
+     "fix_spec": "Retarget the link: change both href=\"/signup\" to href={`/${locale}/register`} (or '/register' with next-intl Link). Optionally add a permanent redirect /signup -> /register in next.config.js redirects() for inbound/SEO links."
+    },
+    {
+     "area": "Destructive actions (systemic)",
+     "file": "frontend/app/[locale]/dashboard/invoices/[id]/page.tsx",
+     "severity": "blocker",
+     "title": "Invoice Delete and Send-by-email buttons navigate to non-existent confirmation pages",
+     "detail": "On the invoice detail page, 'Șterge' (line 150 -> /dashboard/invoices/{id}/delete) and 'Trimite email' (line 232 -> /dashboard/invoices/{id}/send-email) router.push to routes with no page.tsx; user gets 404. The real logic lives in handleDeleteConfirmed/handleSendEmailConfirmed which are never called. Same pattern in invoices/recurring/page.tsx (156 /generate, 184 /delete) and documents/page.tsx (77 /delete).",
+     "fix_spec": "Remove the navigation: replace router.push(...) in handleDelete/handleSendEmail with an in-page ConfirmDialog (components/ui) that on confirm calls the existing handleDeleteConfirmed / handleSendEmailConfirmed(email). Apply the same refactor to invoices/recurring and documents pages. Do NOT create /delete pages."
+    },
+    {
+     "area": "HR module",
+     "file": "frontend/app/[locale]/dashboard/hr/page.tsx",
+     "severity": "blocker",
+     "title": "HR hub: delete employee, submit REVISAL/REGES, forms, leave, performance, training buttons all lead to missing routes",
+     "detail": "Wired buttons 404: Delete employee (124 -> /hr/employees/{id}/delete), Trimite REVISAL (156 -> /hr/contracts/{id}/revisal), form submissions (231/235 -> /hr/forms/submissions/{id}[/edit]), complete form (239 -> /hr/forms/{id}/new), attendance detail (268), performance (304/308 -> /hr/performance/*), training (441/445 -> /lms/assign, /lms/progress/{id}), leave (450/454 -> /hr/forms/LEAVE/new, /hr/leave/{id}). handleDeleteEmployeeConfirmed and handleSubmitToREVISALConfirmed exist but are never invoked.",
+     "fix_spec": "(a) delete + REVISAL: replace router.push with ConfirmDialog calling the existing *Confirmed handlers. (b) forms/leave/performance/attendance/training: either create pages hr/forms/[formId]/new, hr/forms/submissions/[id], hr/leave/[employeeId], hr/performance/new + [id], hr/attendance/[id], lms/assign, lms/progress/[employeeId] — or retarget to existing hubs (/dashboard/hr/leave/pending, /dashboard/lms) and hide the buttons until pages exist."
+    },
+    {
+     "area": "Accounting period close",
+     "file": "frontend/app/[locale]/dashboard/accounting/periods/page.tsx",
+     "severity": "blocker",
+     "title": "Close / Lock / Reopen period buttons navigate to non-existent /close, /lock, /reopen routes",
+     "detail": "Month-end close — a core accountant task — is impossible from the UI: handleClosePeriod (145), handleLockPeriod (181), handleReopenPeriod (215) router.push to /dashboard/accounting/periods/{id}/close|lock|reopen which 404. The working handleClosePeriodConfirmed etc. are dead code.",
+     "fix_spec": "Remove navigation; open an in-page ConfirmDialog and call handleClosePeriodConfirmed / handleLockPeriodConfirmed / handleReopenPeriodConfirmed on confirm."
+    },
+    {
+     "area": "CRM / Partners",
+     "file": "frontend/app/[locale]/dashboard/crm/page.tsx",
+     "severity": "blocker",
+     "title": "Delete contact / delete deal / delete partner / edit activity lead to missing routes",
+     "detail": "crm/page.tsx 366,370 and crm/contacts/[id]/page.tsx:107, crm/deals/[id]/page.tsx:96 push to /crm/contacts/{id}/delete and /crm/deals/{id}/delete; crm/page.tsx:303 pushes /crm/activities/{id}/edit; partners/page.tsx:241 and partners/[id]/page.tsx:190 push /partners/{id}/delete. None exist.",
+     "fix_spec": "Delete: replace with ConfirmDialog + existing *Confirmed handlers (DELETE API call). Activities edit: create crm/activities/[id]/edit/page.tsx mirroring crm/activities/new, or hide the edit icon."
+    },
+    {
+     "area": "Contracts",
+     "file": "frontend/app/[locale]/dashboard/contracts/page.tsx",
+     "severity": "blocker",
+     "title": "Contracts hub: view/edit/actions/amend/approve/reject all route to missing pages",
+     "detail": "handleViewContract (290 -> /contracts/{id}), edit (294), actions (299), create amendment (308 -> /contracts/{id}/amendment/new), edit amendment (312), approve (316), reject (320) — none of these routes exist; only contracts/new and contracts/amendments/new do. A user cannot open any contract from the list.",
+     "fix_spec": "Create contracts/[id]/page.tsx (detail) and contracts/[id]/edit/page.tsx (reuse contracts/new form in edit mode). Retarget /contracts/{id}/amendment/new -> '/dashboard/contracts/amendments/new?contractId={id}'. Replace approve/reject/actions navigation with in-page actions (ConfirmDialog + PATCH calls); remove /actions route."
+    },
+    {
+     "area": "Accounting",
+     "file": "frontend/app/[locale]/dashboard/accounting/page.tsx",
+     "severity": "major",
+     "title": "Accounting hub quick-action cards: De încasat, De plătit, Bilanț, Profit & Pierdere point to missing pages",
+     "detail": "4 of 6 quick-action cards (lines 52-56) navigate to /dashboard/accounting/accounts-receivable, accounts-payable, balance-sheet, income-statement — none exist. Balance sheet and P&L are in /dashboard/accounting/statements; AR/AP have no page.",
+     "fix_spec": "Retarget: balance-sheet and income-statement -> '/dashboard/accounting/statements?report=balance-sheet' / '?report=income-statement' (statements page reads the query param); accounts-receivable -> '/dashboard/invoices?status=unpaid', accounts-payable -> '/dashboard/payments?type=payable' (or create thin AR/AP aging pages backed by existing invoices/payments APIs)."
+    },
+    {
+     "area": "Settings",
+     "file": "frontend/app/[locale]/dashboard/settings/integrations/page.tsx",
+     "severity": "major",
+     "title": "Integrations Configure/Disconnect go to missing pages for every integration except SmartBill; Security session revoke also 404s",
+     "detail": "handleConfigure (76) pushes /settings/integrations/{id} where id is anaf-spv, anaf-saft, saga, banking — only /settings/integrations/smartbill exists. handleDisconnect (85) pushes /{id}/disconnect — only smartbill/disconnect exists. settings/security/page.tsx:86 pushes /settings/security/sessions/{tokenId}/revoke which does not exist.",
+     "fix_spec": "Integrations: create settings/integrations/[provider]/page.tsx (generic config form keyed by provider, reusing the smartbill page layout) and [provider]/disconnect/page.tsx, or replace disconnect with ConfirmDialog calling the DELETE endpoint. Security: replace router.push in handleRevokeSession with ConfirmDialog calling the existing revoke API call."
+    },
+    {
+     "area": "Dashboard global search",
+     "file": "frontend/components/dashboard/GlobalSearch.tsx",
+     "severity": "major",
+     "title": "Global search results 'Cash Flow' and 'Simulation' navigate to missing routes",
+     "detail": "SEARCH_INDEX entries path '/dashboard/finance/cash-flow' (line 58) and '/dashboard/simulation' (line 87) have no page. Users searching 'cash', 'numerar', 'simulare' get a 404.",
+     "fix_spec": "Retarget: cash-flow -> '/dashboard/finance?tab=cash-flow' (finance page has cash-flow section; sub-routes exist at finance/cash-flow/alerts|inflow/new|outflow/new) or '/dashboard/finance/cash-flow/alerts'; simulation -> '/simulation' (page exists at app/[locale]/simulation) or '/dashboard/simulation-v2'."
+    },
+    {
+     "area": "Marketing",
+     "file": "frontend/app/[locale]/dashboard/marketing/page.tsx",
+     "severity": "major",
+     "title": "Marketing campaign view/send/edit/delete/duplicate/schedule/stats and audience edit/delete all 404",
+     "detail": "13 handlers (lines 197-425) push to /marketing/campaigns/{id}[/send|/edit|/delete|/duplicate|/schedule|/ab-results|/stats], /marketing/audiences/{id}[/edit|/delete], /marketing/automation/{id}[/edit|/stats] — no such pages. Only marketing/campaigns/new, templates, audiences/segments/new, automation/new, analytics exist.",
+     "fix_spec": "Create marketing/campaigns/[id]/page.tsx (detail with stats tab) and [id]/edit; send/delete/duplicate/schedule -> ConfirmDialog + API calls in-page; ab-results/stats -> '/dashboard/marketing/analytics?campaign={id}'. Audiences/automation edit -> create [id]/edit pages or hide buttons."
+    },
+    {
+     "area": "Inventory / Procurement / Fleet / Freelancer / Quality / HSE / Logistics",
+     "file": "frontend/app/[locale]/dashboard/inventory/page.tsx",
+     "severity": "major",
+     "title": "Operations hubs push to detail/edit routes that were never built (products/[id], purchase-orders/[id], fleet/vehicles/[id], freelancer/projects/[id], hse/*/[id], quality/documents/[id], logistics/routes/[id]...)",
+     "detail": "inventory/page.tsx 266/270/333/409/414 -> /inventory/products/{id}[/edit|/actions|/adjust|/reserve] (only inventory/[id] exists); procurement/page.tsx 246/250/255/288 -> purchase-orders/{id}, requisitions/{id}, vendors/{id} (only procurement/orders/[id] exists); fleet/page.tsx 785-805 -> fleet/vehicles/{id}[/edit|/assign-driver], maintenance/schedule, fuel/record (fleet/[id] exists); freelancer/page.tsx 84-103 -> projects/{id}, profiles/{id}, messages, contracts/{id}; hse/page.tsx 246-266,308-309 -> risks/{id}, incidents/{id}[/investigate], audits/{id}, checklists/pssr, reports/export; quality/page.tsx 298-374; logistics/page.tsx 313-384; warehouse/locations/[id] 315/599; payroll/page.tsx 322/349/359/491.",
+     "fix_spec": "Retarget where an equivalent exists: /inventory/products/{id} -> /inventory/{id}; /procurement/purchase-orders/{id} -> /procurement/orders/{id}; /fleet/vehicles/{id} -> /fleet/{id}. For adjust/reserve use existing StockAdjustmentsWizard/StockTransfersWizard modals. Create minimal [id] detail pages for freelancer projects/contracts, hse risks/incidents/audits, quality documents, logistics routes/customs (list→detail is a core ERP flow). Replace action-style routes (/finalize, /resolve, /close, /track, /submit, /investigate, /export, /print-all) with in-page dialogs/API calls."
+    },
+    {
+     "area": "Help / Developer",
+     "file": "frontend/app/[locale]/help/page.tsx",
+     "severity": "major",
+     "title": "Public Help Center category cards and Developer portal cards point to missing pages",
+     "detail": "help/page.tsx lines 18-20: 'Ghiduri de Start' -> /help/getting-started, 'Documentație' -> /help/docs, 'Video Tutoriale' -> /help/videos — none exist (only /help and /forum). dashboard/developer/page.tsx 103/117: 'Getting Started' -> /dashboard/developer/guides, 'API Sandbox' -> /dashboard/developer/sandbox — missing.",
+     "fix_spec": "Retarget: /help/getting-started -> '/dashboard/tutorials' or '/onboarding'; /help/docs -> '/api-docs' or '/faq'; /help/videos -> '/dashboard/tutorials'. Developer: guides -> '/api-docs'; remove the Sandbox card or create developer/sandbox/page.tsx embedding the Swagger UI at /api/docs."
+    },
+    {
+     "area": "Onboarding / Notifications",
+     "file": "frontend/app/[locale]/dashboard/onboarding/page.tsx",
+     "severity": "major",
+     "title": "Onboarding quick action 'Adaugă client' and notifications action links point to missing routes",
+     "detail": "onboarding/page.tsx:179 link '/dashboard/crm/new' does not exist (actual: /dashboard/crm/contacts/new). notifications/page.tsx:102 actionUrl '/dashboard/anaf/d406' does not exist (actual: /dashboard/saft); :116 '/dashboard/contracts/3' has no contracts/[id] page.",
+     "fix_spec": "Retarget '/dashboard/crm/new' -> '/dashboard/crm/contacts/new'; '/dashboard/anaf/d406' -> '/dashboard/saft'; contracts/{id} resolved by creating contracts/[id] (see Contracts gap) or pointing to '/dashboard/contracts'."
+    },
+    {
+     "area": "LMS",
+     "file": "frontend/app/[locale]/dashboard/lms/page.tsx",
+     "severity": "major",
+     "title": "LMS 'Start learning', 'Continue course' and 'Verify certificate' routes do not exist",
+     "detail": "handleStartLearning (105) pushes /lms/learn/{slug} but the only learn route is lms/learn/[courseSlug]/[lessonId]; handleContinueCourse (145) pushes /lms/courses/{id}/learn (missing); handleVerifyCertificate (176) pushes /lms/certificates/verify (missing).",
+     "fix_spec": "Retarget start/continue to '/dashboard/lms/courses/{slug||id}' (course page lists lessons and links to learn/[courseSlug]/[lessonId]), or create lms/learn/[courseSlug]/page.tsx that redirects to the first/next lesson. Create lms/certificates/verify/page.tsx reading ?id= and calling GET /lms/certificates/verify/:credentialId, or remove the button."
+    },
+    {
+     "area": "Dashboard home / widgets",
+     "file": "frontend/components/dashboard/WidgetGrid.tsx",
+     "severity": "minor",
+     "title": "Widget 'Reset layout' button and DashboardClient hide-widget/search/batch-OCR handlers navigate to missing settings sub-routes",
+     "detail": "WidgetGrid.tsx:184 handleResetLayout (wired at line 226) pushes /dashboard/settings/widgets/reset (missing; handleResetLayoutConfirmed is dead). DashboardClient.tsx:343 /dashboard/ocr/batch-process, :542 /dashboard/settings/widgets/hide, :604 /dashboard/search — all missing (these three handlers are currently not wired to any element, so dead code today, but will 404 the moment they are wired).",
+     "fix_spec": "WidgetGrid: call handleResetLayoutConfirmed directly behind a ConfirmDialog and delete the /reset navigation. DashboardClient: delete the three router.push stubs and call the *Confirmed implementations directly (or open GlobalSearch for handleGlobalSearch)."
+    }
+   ]
+  },
+  "honest-data": {
+   "inventory": "Frontend dashboard pages live under /root/documentiulia.ro/frontend/app/[locale]/dashboard/* (~100 routes, sidebar in components/dashboard/DashboardSidebar.tsx, mobile nav in components/layout/MobileBottomNav.tsx). Backend NestJS controllers (global prefix api/v1) relevant to data honesty: compliance/anaf-status (overview, dashboard, submissions, deadlines, calendar), compliance/calendar (upcoming, overdue, stats, view), compliance (SOC2 dashboard/controls/incidents), deadlines (upcoming/overdue/summary), subscription (status, usage, summary, plans), billing (plans, subscription, invoices — in-memory Map store), monitoring (dashboard, system, health/checks, alerts, metrics/:name/history — real os/process metrics), sessions (list, activity, summary, delete), security (events, events/summary), gdpr (dsr-requests CRUD, consents, consent-log, data-inventory — Prisma-backed), hse + hse/incidents + hse/dashboard (summary, incidents list, kpis/safety, kpis/environmental, audits), quality-inspections / non-conformance / capa / quality-documents / supplier-quality (list + metrics each), quality-kpis, quality-dashboards/default, marketing/email (campaigns, lists, subscribers, stats, campaigns/:id/analytics — in-memory), marketing/automation/segments, notifications (list, preferences, history), ai-assistant (chat, query, conversations), ai/chat, integrations (catalog, connections, stats, sync-logs — in-memory), automation/workflows (list, stats, executions — in-memory), backup (jobs/tenant, configs/tenant, restore-points — in-memory), vendors (list, statistics), onboarding (status, progress), dashboard (summary, quick-stats), efactura-b2b/validate, efactura-b2c/validate.\n\nAlready honest (verified, not reported): analytics, anaf-status, audit, documents, e-invoice list, assets, expenses, contracts, inventory, payroll lists, fraud, ocr-metrics, system, compliance/anaf-status components (mock gated behind NEXT_PUBLIC_USE_MOCK_ANAF which is unset). Still fully static but lower-traffic (not in sidebar, folded into findings below or left as minor): backup/page.tsx, vendors/page.tsx, onboarding/page.tsx (fake step statuses; GET /onboarding/progress exists), saft/compliance-dashboard.tsx (dead code, unused import; mock 12-month status), tutorials (static content, acceptable).",
+   "gaps": [
+    {
+     "area": "compliance",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/compliance/page.tsx",
+     "severity": "blocker",
+     "title": "Compliance page renders 100% fabricated ANAF/GDPR/SOC2 statuses and declarations",
+     "detail": "Page has zero API calls. Hardcoded `complianceItems` (e-Factura 'Conform', SAF-T 'Conform', REVISAL warning, all dated 2024-12-14) and `declarations` (D406/D112/D100/D394 for Nov 2024) drive the 'Scor Conformitate' gradient card, 4 KPI tiles, per-category progress bars, a 'Depune' button per fake declaration, and a calendar tab hardcoded to 'Decembrie 2024 / Ianuarie 2025'. Linked from MobileBottomNav as 'Rapoarte' and from DashboardClient module nav, so every mobile user lands here and sees 'Toate sistemele verificate' regardless of their real SPV state. 'Raport Audit' and 'Verificare Completă' buttons do nothing.",
+     "fix_spec": "Replace static arrays with fetches: GET /api/v1/compliance/anaf-status/overview (+ /dashboard) for e-Factura/SAF-T/D112/D394 submission state; GET /api/v1/compliance/calendar/upcoming?days=30, /compliance/calendar/overdue, /compliance/calendar/stats and GET /api/v1/deadlines/summary for declarations/calendar tabs (render real months from today, not Dec 2024); GET /api/v1/compliance/dashboard (SOC2 controls) and GET /api/v1/gdpr/consents for the GDPR/SOC2 categories. Compute complianceScore from those responses; wire 'Depune' to router.push('/dashboard/e-invoice' | '/dashboard/saft') by code; on fetch error show loadError banner + empty state (reuse pattern from anaf-status/page.tsx). Delete the hardcoded arrays."
+    },
+    {
+     "area": "quality",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/quality/page.tsx",
+     "severity": "blocker",
+     "title": "Quality dashboard never calls the backend — every tab shows an error/empty state even when data exists",
+     "detail": "fetchData() has all six fetches commented out (TODO lines 215-263) and unconditionally calls loadEmpty() which sets loadError=true. Users with real inspections/NCRs/CAPAs (created via the working detail pages quality/inspections/[id], ncr/[id], capa/[id]) see a permanent 'could not load' state and zero KPI tiles (summary stays null). The commented URLs (/quality/summary, /quality/ncr, /quality/capa, /quality/suppliers) also do not match real routes.",
+     "fix_spec": "Wire to existing endpoints: GET /api/v1/quality-inspections (list) + /quality-inspections/metrics; GET /api/v1/non-conformance?status=OPEN + /non-conformance/metrics; GET /api/v1/capa + /capa/metrics; GET /api/v1/quality-documents; GET /api/v1/supplier-quality + /supplier-quality/metrics; build `summary` (openNCRs/totalNCRs/pendingCAPAs/resolvedCAPAs/inspectionPassRate/totalInspections) from the metrics responses, or use GET /api/v1/quality-kpis. Use localStorage 'auth_token' (page currently reads 'token', which is the wrong key). Set loadError only when a request actually fails; replace the 'TODO Recharts' placeholder with a real chart from /quality-analytics/trend/:metric or remove it."
+    },
+    {
+     "area": "gdpr",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/gdpr/page.tsx",
+     "severity": "blocker",
+     "title": "GDPR console shows fabricated data-subject requests with fake personal names instead of real DSRs",
+     "detail": "No API calls. Hardcoded `dsrRequests` (Maria Ionescu, Andrei Popescu, Elena Dumitrescu, Ion Georgescu with emails), `consentRecords`, `dataInventory`, `auditLogs`, `dsrTypeData`, `dsrMonthlyData` feed every tab, KPI counts (pending/in-progress/completed) and both charts. A DPO opening this sidebar page cannot see or process real DSR requests submitted via the public GDPR form, and the 30-day legal deadline counters are fiction.",
+     "fix_spec": "Wire: GET /api/v1/gdpr/dsr-requests (list, Prisma dSRRequest) with PATCH /api/v1/gdpr/dsr-requests/:id for status changes; GET /api/v1/gdpr/consents and /api/v1/gdpr/consent-log for the consent tab; GET /api/v1/gdpr/data-inventory for the inventory tab; derive dsrTypeData/dsrMonthlyData client-side from the real list. For the audit-log tab call GET /api/v1/audit?entity=gdpr (audit controller) or hide the tab. Empty state: 'Nicio cerere DSR înregistrată'. Remove all fake personal data."
+    },
+    {
+     "area": "ai-assistant",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/ai-assistant/page.tsx",
+     "severity": "blocker",
+     "title": "AI assistant fabricates financial 'analysis' of the user's data via setTimeout + canned text",
+     "detail": "handleSend never calls the backend: after 1.5s it appends getSimulatedResponse(), which returns hardcoded figures presented as the user's own numbers ('Venituri totale: 245.890 RON', '+12.3%', category breakdowns, ANAF deadlines). `sampleHistory` shows four fake past conversations. The page is in the sidebar and GlobalSearch, and DashboardClient routes users here with their question (?q=). A freelancer asking 'Analizează veniturile' gets invented revenue.",
+     "fix_spec": "Wire to POST /api/v1/ai-assistant/chat (body {message, conversationId?}) or POST /api/v1/ai-assistant/query, and GET /api/v1/ai-assistant/conversations for history (POST /ai-assistant/conversations to create). Remove getSimulatedResponse and sampleHistory; while waiting show typing indicator; on error show 'Asistentul AI este indisponibil momentan' — never a fabricated answer. Also fix DashboardClient.tsx handleAskAI which POSTs to nonexistent /api/v1/ai/assistant — just router.push to the assistant with ?q= and let this page send it."
+    },
+    {
+     "area": "dashboard-home",
+     "file": "/root/documentiulia.ro/frontend/hooks/useDashboardData.ts",
+     "severity": "major",
+     "title": "Main dashboard shows fabricated cash-flow and VAT charts as placeholder, on 401, on empty payload and on error",
+     "detail": "useDashboardSummary sets placeholderData = {cashFlow: fallbackCashFlow (45k-67k RON/month), vatSummary: fallbackVatData (12.600/8.400/4.200 RON)}, returns the same fallback when /dashboard/summary returns 401 or an empty body, and DashboardClient.tsx line 608-609 falls back again (`dashboardData?.cashFlow || fallbackCashFlow`). Because placeholderData makes isLoading false, a brand-new account sees a confident 6-month revenue chart and VAT pie of invented numbers on first paint and permanently if the API errors.",
+     "fix_spec": "Backend GET /api/v1/dashboard/summary exists — drop placeholderData (or use empty arrays), return {cashFlow: [], vatSummary: [], ...zeros} on 401/empty, and in DashboardClient.tsx replace the || fallbacks with `dashboardData?.cashFlow ?? []` plus an explicit empty-chart state ('Nu există date încă — emite prima factură') and an error banner using the query's isError. Delete fallbackCashFlow/fallbackVatData from both files."
+    },
+    {
+     "area": "billing",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/billing/page.tsx",
+     "severity": "major",
+     "title": "Billing page tells every user they are on the 149 RON 'Business' plan with fake invoices and usage",
+     "detail": "No API calls. Hardcoded currentPlan (Business, next billing 2025-01-14), six paid invoices INV-2025-007..012, usageMetrics (234 invoices, 8 users, 12 450 API calls), a 12-month billingHistory chart and `plans` with Business marked current. A Free-tier user sees themselves as a paying Business customer; download links are '#'. A separate, real page already exists at dashboard/settings/billing (reads /subscription/status) and settings/subscription.",
+     "fix_spec": "Either make /dashboard/billing a redirect to /dashboard/settings/billing, or wire it: GET /api/v1/subscription/status (tier, renewal), GET /api/v1/subscription/usage (invoices/users/storage/AI usage vs limits), GET /api/v1/subscription/plans (plan cards, mark current from status), GET /api/v1/billing/invoices for history (note billing.service is an in-memory Map — expect empty; render 'Nicio factură încă'). Remove all static arrays and the '#' download hrefs."
+    },
+    {
+     "area": "monitoring",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/monitoring/page.tsx",
+     "severity": "major",
+     "title": "System monitoring page is entirely static — service health, alerts and resource charts are invented",
+     "detail": "No API calls. `services` (OCR 'degraded', ANAF 97.5% uptime), `alerts` (fake ANAF SPV failure 6h ago), `systemMetrics` (CPU 45%, 234 active users, 1250 req/min), `performanceData`/`responseTimeData` charts are constants; the time-range toggle and 'Reimprospatare' button change nothing. Staff opening this sidebar page during a real outage would see 'Operational'.",
+     "fix_spec": "Wire to the real monitoring module: GET /api/v1/monitoring/dashboard (system+application+health+alerts in one call), GET /api/v1/monitoring/health/checks for the services table, GET /api/v1/monitoring/alerts + /alerts/history with POST /monitoring/alerts/:id/acknowledge, GET /api/v1/monitoring/metrics/:name/history?range= for the charts (cpu_usage, memory_usage, requests_per_second), and GET /api/v1/health/dependencies for DB/Redis/ANAF reachability. Poll every 30s; show error state if the monitoring endpoint fails. Delete the static arrays."
+    },
+    {
+     "area": "marketing",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/marketing/page.tsx",
+     "severity": "major",
+     "title": "Marketing audiences tab and all analytics charts are hardcoded while campaigns are real",
+     "detail": "Campaigns now load from /marketing/email/campaigns, but `audiences` (4 segments, 3 250 subscribers), `emailPerformance` (Jul-Dec), `audienceGrowth` (S1-S5) and `campaignTypeData` remain constants. The header 'Abonați' KPI uses audiences[0].count (3 250) for every tenant; the Audiences tab lists fake segments whose Edit/Export/Delete actions hit ids aud-001..004 that don't exist; the Analytics tab charts never change.",
+     "fix_spec": "Wire audiences to GET /api/v1/marketing/email/lists (+ GET /marketing/email/subscribers for totalSubscribers) and GET /api/v1/marketing/automation/segments; analytics to GET /api/v1/marketing/email/stats and per-campaign GET /marketing/email/campaigns/:id/analytics aggregated by month; derive campaignTypeData from the loaded campaigns. Delete the four static arrays; show 'Nicio audiență — importă contacte' empty state (store is in-memory so it will usually be empty until persisted)."
+    },
+    {
+     "area": "security",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/security/page.tsx",
+     "severity": "major",
+     "title": "Security page shows fake active sessions and a fabricated failed-login from Moscow for every user",
+     "detail": "No API calls. `sessions` (Windows PC/iPhone 15/MacBook Pro in București/Cluj) and `securityEvents` (including 'Încercare autentificare eșuată — Moscova, Rusia', 2FA enabled, password changed) are constants, so each user is told that unknown devices are logged in and a Russian IP attacked their account; 'Revoke session' cannot act on real sessions.",
+     "fix_spec": "Wire to GET /api/v1/sessions (list, Prisma-backed) with DELETE /api/v1/sessions/:sessionId and DELETE /api/v1/sessions (revoke all), GET /api/v1/sessions/activity for the event timeline, GET /api/v1/security/events?userId= + /security/events/summary for security events, and MFA status from the mfa controller. Remove the static arrays; empty state 'Nicio sesiune activă în afara celei curente'."
+    },
+    {
+     "area": "hse",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/hse/page.tsx",
+     "severity": "major",
+     "title": "HSE dashboard mixes real risk/audit data with mock incidents and invented safety/environmental KPIs",
+     "detail": "fetchData loads summary, risk-assessments and audits from the API, then unconditionally setIncidents([...two fake incidents 'Alunecare pe suprafață umedă', 'Contact cu echipament fierbinte']) and setSafetyKPIs/setEnvKPIs with constants (TRIR 1.2, 45 days incident-free, 78% recycled waste, 125 t CO2). An HSE manager sees incidents that never happened alongside their real audits, and KPI cards that never move.",
+     "fix_spec": "Replace the mock block with GET /api/v1/hse/incidents (incident controller list) and KPIs from POST /api/v1/hse/dashboard/kpis/safety and POST /api/v1/hse/dashboard/kpis/environmental (body {fromDate,toDate}) or GET /api/v1/hse/dashboard?fromDate&toDate; render 'Fără incidente raportate' when empty and hide KPI cards when the KPI call fails instead of showing constants."
+    },
+    {
+     "area": "notifications",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/notifications/page.tsx",
+     "severity": "major",
+     "title": "Notification center lists fabricated notifications and preferences; actions mutate local constants only",
+     "detail": "No API calls. `sampleNotifications` drives the list, unread/urgent/archived counters and filters; `samplePreferences` seeds the preferences form, and mark-read/archive/save-preferences only touch React state. Real notifications produced by the backend (deadline reminders, payment reminders, delivery events) never appear here.",
+     "fix_spec": "Wire list to GET /api/v1/notifications/list (and /notifications/history), preferences to GET + PATCH /api/v1/notifications/preferences, and mark-read/archive via the notifications/center controller. Empty state 'Nicio notificare'. Delete sampleNotifications/samplePreferences."
+    },
+    {
+     "area": "integrations",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/integrations/page.tsx",
+     "severity": "major",
+     "title": "Integrations page claims SAGA/banks/etc. are connected with 98.5% sync success for every tenant",
+     "detail": "No API calls. Static `integrations` catalog hardcodes connected:true + connectionStatus 'active' + lastSync 2025-12-14 + syncSuccess for SAGA, PSD2 banks, Stripe and others (and 'error' for one), so a user who never configured SAGA is told it is syncing. Connect/disconnect/sync buttons have nothing to act on. Page is in the sidebar.",
+     "fix_spec": "Wire to GET /api/v1/integrations/catalog (available integrations, categories via /catalog/categories), GET /api/v1/integrations/connections (per-tenant status, lastSync), GET /api/v1/integrations/stats, POST /integrations/connections/:id/sync|test|disconnect, and GET /integrations/connections/:id/sync-logs; for SAGA specifically GET /api/v1/integrations/saga status. Derive connected/connectionStatus from the connections response; default to 'Neconectat'."
+    },
+    {
+     "area": "automation",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/workflow/page.tsx",
+     "severity": "major",
+     "title": "Workflow automation page shows fake workflows with 1 245 executions and 98.5% success",
+     "detail": "No API calls. `workflows` (Factură→e-Factura, reminder, onboarding, raport lunar…) with executions/lastRun/successRate are constants; toggles and 'Rulează' act on nothing. Users believe automatic e-Factura submission is already running. Page is in the sidebar.",
+     "fix_spec": "Wire to GET /api/v1/automation/workflows (list), GET /automation/workflows/stats, GET /automation/workflows/:id/executions, POST /automation/workflows/:id/activate|pause|execute. Store is in-memory so show 'Niciun workflow — creează primul' empty state and link to the workflow builder. Remove the static array."
+    },
+    {
+     "area": "e-factura",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/e-invoice/page.tsx",
+     "severity": "major",
+     "title": "e-Factura XML validation reports 'valid: true' when the validation endpoint fails or does not exist",
+     "detail": "handleValidate calls POST ${API_URL}/anaf/efactura/validate/${id}, a route that does not exist in anaf.controller.ts (only efactura/generate, efactura/submit, efactura/status/:uploadIndex, efactura/received), so it always hits the catch/else branches that setValidationResult({valid:true, errors:[]}) with a soft warning. The user is told the invoice passed RO_CIUS validation before submitting to SPV when nothing was checked. Same pattern for generate-xml/:id and submit/:id which also have no backend route.",
+     "fix_spec": "Point validation at an existing validator — POST /api/v1/efactura-b2b/validate (or /efactura-b2c/validate) with the invoice XML/id — and on non-OK/network failure set validationResult to null and show toast.error('Validarea nu a putut fi efectuată') with the submit button disabled; never synthesize valid:true. Align generate/submit calls with POST /anaf/efactura/generate and /anaf/efactura/submit (or the efactura-b2b routes)."
+    },
+    {
+     "area": "partners",
+     "file": "/root/documentiulia.ro/frontend/app/[locale]/dashboard/partners/[id]/page.tsx",
+     "severity": "major",
+     "title": "Partner detail page injects fake activities and fake invoices (INV-2024-0156, 5 400 RON) when the API returns non-OK",
+     "detail": "fetchActivities and fetchInvoices fall back to hardcoded arrays on any non-OK response (e.g. 403/404 or the nonexistent /partners/:id/activities route), so a real partner record displays invented invoices and payments that affect how staff read the account.",
+     "fix_spec": "On non-OK set [] and a loadError flag with 'Nu am putut încărca istoricul' banner. Activities: there is no /partners/:id/activities route — use GET /api/v1/crm/activities?partnerId= or hide the tab; invoices: GET /api/v1/invoices?partnerId=&limit=10 already exists, keep it and render empty state on failure. Delete both mock arrays."
+    }
+   ]
+  },
+  "admin-backend": {
+   "inventory": "Back-office backend (NestJS, prefix api/v1) — what exists:\n- backend/src/admin/admin-clients.controller.ts (REQ-049 A1): GET /admin/overview (real KPIs: users, orgs, invoices30d, e-Factura, ticket counts, byTier), GET /admin/clients?search&tier&role&page&limit (User search, lastActivityAt from AuditLog), GET /admin/clients/:id (client-360: profile, first active org, invoices byType/recent, efactura status counts, tickets, ErrorLog recentErrors, staffChanges), PATCH /admin/clients/:id {tier,role,reason} (ADMIN only, audited as ADMIN_CLIENT_UPDATED). Reads: ADMIN+ACCOUNTANT.\n- backend/src/support/: models SupportTicket (reference REQ-YYYY-NNNNNN, userId?/guest*, category, status OPEN|IN_PROGRESS|WAITING_CLIENT|RESOLVED|CLOSED, priority, assignedToId, source, firstResponseAt/resolvedAt/closedAt) + TicketMessage (isStaff, isInternal); migration 20260820100000. Client: /support/tickets CRUD+reply. Staff: /admin/tickets (inbox filters status/assignedTo me|unassigned|id/search, byStatus counts), GET /admin/tickets/staff, GET/PATCH /admin/tickets/:id, POST /admin/tickets/:id/messages (reply/internal note, auto-assign first responder). Guards ADMIN+ACCOUNTANT.\n- backend/src/public-contact: POST /contact → ContactSubmission row + guest ticket (no read endpoint for ContactSubmission).\n- backend/src/admin/admin.controller.ts (ADMIN): system settings, maintenance mode, announcements, feature flags, platform analytics, impersonation — ALL in-memory Maps; analytics partly Math.random.\n- backend/src/audit/audit.controller.ts: GET /audit (ADMIN + TenantScope, requires x-organization-id the caller belongs to).\n- backend/src/monitoring/client-logs.controller.ts: GET /admin/client-logs(+/stats) ADMIN. backend/src/errors: GET /errors ADMIN.\n- backend/src/subscription: org-scoped tier (Organization.tier + maxUsers/maxInvoices); User.tier also exists; TierGuard uses max(user.tier, org.tier). No Subscription model, no admin subscription endpoints.\n- Roles: UserRole USER|ADMIN|ACCOUNTANT (ACCOUNTANT = staff; seeded contabil@documentiulia.ro). No isActive/suspended/lastLoginAt on User.\n- Frontend pages exist: /dashboard/admin, /admin/clients, /admin/clients/[id], /admin/requests, /admin/error-logs, /admin/gdpr; sidebar gates by role.",
+   "gaps": [
+    {
+     "area": "admin-clients / tier management",
+     "file": "backend/src/admin/admin-clients.service.ts:162",
+     "severity": "major",
+     "title": "Staff tier change only updates User.tier — org tier, limits and /subscription/status unchanged",
+     "detail": "Staff sets a client to PRO in the 360 page; the client's dashboard /subscription/status, usage limits and org.maxInvoices still say FREE (SubscriptionService reads Organization.tier). Conversely a staff downgrade is ineffective because TierGuard takes max(user.tier, org.tier).",
+     "fix_spec": "In AdminClientsService.update(): when patch.tier is set, also update every Organization the user owns/is OWNER of (OrganizationMember.role=OWNER) via SubscriptionService.upgradeTier/downgradeTier(orgId, tier) (which already sets tier+maxUsers/maxInvoices/maxDocuments), or at minimum prisma.organization.updateMany({where:{members:{some:{userId,role:'OWNER'}}},data:{tier}}). Accept optional body.organizationId to target one org; return {before:{userTier,orgTier},after:{...}}. Audit details must include orgIds touched. Inject SubscriptionModule into AdminModule."
+    },
+    {
+     "area": "audit log for staff",
+     "file": "backend/src/audit/audit.controller.ts:38",
+     "severity": "major",
+     "title": "Staff cannot read a client's audit trail — /audit is tenant-scoped to the caller's own org",
+     "detail": "An ADMIN investigating a client complaint gets 400 'Organization ID required' or 403 because TenantGuard validates the staff member is a member of x-organization-id. Client-360 shows only last action + ADMIN_* changes.",
+     "fix_spec": "Add to AdminClientsController: GET /admin/clients/:id/audit?action&entity&from&to&page&limit (@Roles ADMIN, ACCOUNTANT; JwtAuthGuard+RolesGuard, no TenantGuard) → AuditService.findAll({userId:id, organizationId: undefined, ...}) returning {items:[{id,action,entity,entityId,details,ipAddress,createdAt}],total}. Also GET /admin/organizations/:orgId/audit same shape. Write an AuditLog row ADMIN_AUDIT_VIEWED {targetUserId} for each staff read (GDPR access logging)."
+    },
+    {
+     "area": "support inbox / notifications",
+     "file": "backend/src/support/support.service.ts:232",
+     "severity": "major",
+     "title": "Staff replies never reach the client — no email or in-app notification on ticket events",
+     "detail": "A contact-form guest (no account) submits a request; staff reply in /admin/requests; the guest never receives anything and has no way to read or answer. Registered users are not notified either and must poll 'Cererile mele'. Also no notification to staff when a new ticket arrives.",
+     "fix_spec": "Inject EmailService (backend/src/email) + NotificationsService into SupportService. In staffReply() when !internal: if ticket.guestEmail && !ticket.userId → sendTemplateEmail(guestEmail, 'Răspuns la cererea {reference}', body + link /ro/contact?ref=REF); if ticket.userId → in-app notification {type:'SUPPORT_REPLY', ticketId, reference} + email per user.notificationPreferences. In createForUser/createForGuest → notify all STAFF_ROLES users (in-app) and email support@ address from config. Add TicketMessage.channel ('web'|'email'), and a public GET /support/public/:reference?email= endpoint (Throttle 10/min, matches guestEmail) so guests can read the thread and POST a reply with source 'contact_form'."
+    },
+    {
+     "area": "admin / impersonation",
+     "file": "backend/src/admin/user-impersonation.service.ts:66",
+     "severity": "major",
+     "title": "Impersonation always returns 403 (role list is lowercase) and issues no token even if it passed",
+     "detail": "POST /admin/impersonation/start with a real ADMIN user (role 'ADMIN') fails 'You do not have permission' because allowedRoles is ['super_admin','admin','support']. Even if fixed, the session is an in-memory Map with no JWT, so 'view as client' is impossible and sessions vanish on restart.",
+     "fix_spec": "Replace allowedRoles with UserRole.ADMIN check (adminRole === UserRole.ADMIN); block targets with role ADMIN. Persist sessions in a new Prisma model ImpersonationSession {id, adminId, targetUserId, reason, ticketId?, permissions Json, startedAt, expiresAt, endedAt?, ipAddress, userAgent}. On start, sign a short-lived JWT via JwtService {sub: targetUserId, email, act: {sub: adminId}, imp: sessionId, exp ≤ 2h} and return {session, accessToken}; JwtStrategy.validate must expose req.user.impersonatedBy when payload.act exists, and AuditInterceptor must record impersonatedBy on every write. Guard remains ADMIN only."
+    },
+    {
+     "area": "admin / feature flags",
+     "file": "backend/src/admin/feature-flags.controller.ts:29",
+     "severity": "major",
+     "title": "Any authenticated user can create/toggle/delete platform feature flags and overrides",
+     "detail": "/admin/feature-flags is guarded by JwtAuthGuard only (no RolesGuard/@Roles); a FREE client can POST /admin/feature-flags/:key/toggle or create tenant overrides. Also the store is in-memory so admin changes are lost on restart.",
+     "fix_spec": "Add @UseGuards(JwtAuthGuard, RolesGuard) + @Roles(UserRole.ADMIN) at controller level; keep GET evaluate/:key and check/:key open to any authenticated user via method-level @Roles(USER, ACCOUNTANT, ADMIN) or move them to a separate /feature-flags controller. Persist flags/overrides in Prisma model FeatureFlag {key @unique, name, type, enabled, rolloutPercent, rules Json, updatedBy, updatedAt} + FeatureFlagOverride."
+    },
+    {
+     "area": "admin / platform analytics",
+     "file": "backend/src/admin/platform-analytics.service.ts:135",
+     "severity": "major",
+     "title": "/admin/analytics/* returns fabricated Math.random revenue/user metrics to staff",
+     "detail": "GET /admin/analytics/revenue, /growth, /users etc. return random MRR, revenue and DAU numbers presented as platform KPIs; anyone using the admin API/Swagger is misled. Only /admin/overview is real.",
+     "fix_spec": "Either remove the analytics endpoints from AdminController or re-implement PlatformAnalyticsService on Prisma: usersByPeriod from User.createdAt, active users from AuditLog distinct userId per day, invoices/e-Factura counts from Invoice, revenue from Payment/Invoice where organization is DocumentIulia's own billing (or return null with {available:false} until billing exists). Never return synthetic values; add a unit test asserting no Math.random in service."
+    },
+    {
+     "area": "admin-clients / account actions",
+     "file": "backend/prisma/schema.prisma:115",
+     "severity": "major",
+     "title": "No way to suspend/reactivate a client, force password reset, resend verification, or see last login",
+     "detail": "Staff handling abuse or a locked-out client can only change tier/role. User has no isActive/suspendedAt/lastLoginAt; list 'activity' is inferred from AuditLog only. A suspended customer keeps full access.",
+     "fix_spec": "Schema: add to User: isActive Boolean @default(true), suspendedAt DateTime?, suspendedReason String?, lastLoginAt DateTime?, lastLoginIp String?. AuthService.login/validate: reject !isActive with 403 'Contul este suspendat' and set lastLoginAt/Ip on success; JwtStrategy.validate: throw Unauthorized if !isActive. Endpoints (ADMIN only, audited ADMIN_CLIENT_SUSPENDED/REACTIVATED/PASSWORD_RESET_SENT/VERIFICATION_RESENT): POST /admin/clients/:id/suspend {reason}, POST /admin/clients/:id/reactivate, POST /admin/clients/:id/send-password-reset (reuse AuthService forgot-password flow), POST /admin/clients/:id/resend-verification. Include isActive,lastLoginAt in list() select and get360 profile."
+    },
+    {
+     "area": "admin-clients / organizations",
+     "file": "backend/src/admin/admin-clients.service.ts:145",
+     "severity": "major",
+     "title": "Client search is user-only; no organization list/search and 360 shows only the first membership",
+     "detail": "Staff looking up a company by org CUI/name (e.g., ANAF e-Factura issue for 'SC X SRL') cannot find it unless the owner's User.company/cui happens to match; multi-org users show only one org; org-level data (spvConnected, sagaConnected, isActive, member list, invoice counts by org) is not visible.",
+     "fix_spec": "Add GET /admin/organizations?search&tier&active&page&limit (ADMIN, ACCOUNTANT) → {items:[{id,name,cui,tier,isActive,spvConnected,sagaConnected,createdAt,_count:{members,invoices,employees}}],total}; GET /admin/organizations/:id → org + members [{userId,email,name,role,isActive}] + invoice/e-Factura stats + integrations; PATCH /admin/organizations/:id {tier?,isActive?,reason} (ADMIN, audited, uses SubscriptionService). In get360 return organizations: user.organizationMemberships.map(...) (all, with membership role) instead of [0]."
+    },
+    {
+     "area": "admin-clients / role change safety",
+     "file": "backend/src/admin/admin-clients.controller.ts",
+     "severity": "minor",
+     "title": "Role change has no safeguards: admin can demote self or the last ADMIN, no reason required",
+     "detail": "PATCH /admin/clients/:id {role:'USER'} on your own id locks you out of the back-office; the last admin can be removed; reason is optional so the audit trail lacks justification.",
+     "fix_spec": "In AdminClientsService.update(): throw BadRequest if userId === staffId and patch.role !== ADMIN ('Nu vă puteți retrograda propriul cont'); if demoting from ADMIN, require count(role ADMIN, isActive) > 1; require reason (min 5 chars) for any role change. Validate tier/role enums with class-validator DTO (IsEnum)."
+    },
+    {
+     "area": "support inbox / staff-created tickets",
+     "file": "backend/src/support/support.controller.ts",
+     "severity": "minor",
+     "title": "Staff cannot open a ticket on behalf of a client (phone/email requests) despite source 'staff' being modelled",
+     "detail": "A client calls in; staff has no way to log the request into the inbox tied to that client — they would have to use the client's own account.",
+     "fix_spec": "Add POST /admin/tickets (ADMIN, ACCOUNTANT) body {userId?, guestEmail?, guestName?, subject, body, category?, priority?, assignedToId?} → SupportService.createByStaff(staffId, input): source 'staff', first message isStaff:true, status IN_PROGRESS, assignedToId default staffId; audit TICKET_CREATED_BY_STAFF. Also add GET /admin/tickets/export?status&from&to (CSV) for reporting."
+    },
+    {
+     "area": "public-contact / duplicate store",
+     "file": "backend/src/public-contact/public-contact.service.ts:31",
+     "severity": "minor",
+     "title": "ContactSubmission table is write-only and diverges from the ticket copy",
+     "detail": "Contact-form messages are stored twice (ContactSubmission + SupportTicket); phone is only on ContactSubmission and never visible to staff, and ContactSubmission.status never changes so it is a dead table.",
+     "fix_spec": "Either drop ContactSubmission write and add guestPhone String? to SupportTicket (pass dto.phone into createForGuest), or link them: add SupportTicket.contactSubmissionId and update ContactSubmission.status='TICKETED'. Show guestPhone in staffGet/ticketInclude."
+    }
+   ]
+  },
+  "crm-tools": {
+   "inventory": "CRM backend (backend/src/crm, registered in app.module as CrmModule, served by the monolith container documentiulia-backend:3001 under /api/v1): ContactsController (crm/contacts: CRUD, merge, lead-score, notes, activities, segments, bulk, import/export, stats/overview), DealsController (crm/deals: pipelines+stages CRUD, deals CRUD, move/close/reopen, per-deal activities & tasks, forecast/overview, stats/overview), ActivityTimelineController (crm/activities: log, list by entityType/entityId, comments, reactions, aggregation, summary), CrmFinanceIntegrationController (crm/finance: Partner-based customer summary/insights/top-customers/at-risk via Prisma). ContactsService, DealsService and ActivityTimelineService store everything in process-memory Maps (no Prisma models for Contact/Deal/Pipeline/Activity exist in schema.prisma); only the finance integration touches the DB (Partner/Invoice). Tenant key is req.user.tenantId, which JwtStrategy never sets (it exposes organizationId). Event bus: contact.created, deal.created/stage-changed/won/lost handled by ActivityTimelineService. Related DB entities: Partner (userId/organizationId, customers/suppliers), User, SupportTicket/TicketMessage (REQ-049; userId, guest fields, assignedToId, category incl. 'sales', internal notes), ContactSubmission (public form, also creates a guest ticket). Staff back-office: admin/tickets (inbox, reply/internal note, status/priority/assignee), admin/clients (+ client 360 with invoices, tickets, errors, audit), frontend pages dashboard/admin/requests, dashboard/admin/clients/[id]. A second, in-memory ticket API lives in help.service/help.controller (help/tickets). Frontend CRM: dashboard/crm (tabs pipeline/contacts/activities, stats), contacts/new, contacts/[id], contacts/[id]/edit, deals/new, deals/[id], deals/[id]/edit, activities/new; sidebar, command palette and global search link to it. No User↔Contact, Contact↔Partner or Ticket↔Contact/Deal links exist anywhere.",
+   "gaps": [
+    {
+     "area": "crm-persistence",
+     "file": "backend/src/crm/contacts.service.ts",
+     "severity": "blocker",
+     "title": "All CRM data lives in process memory and is lost on every backend restart",
+     "detail": "ContactsService (line 141), DealsService (deals.service.ts:150) and ActivityTimelineService (activity-timeline.service.ts:104) keep contacts, deals, pipelines, notes, tasks and activities in `new Map()`. The backend runs as the docker container documentiulia-backend; every deploy/restart wipes the whole CRM. schema.prisma has no Contact/Deal/Pipeline/Activity model at all, so staff cannot rely on CRM for any client-operations history.",
+     "fix_spec": "Add Prisma models CrmContact{id, organizationId, ownerId, userId?, partnerId?, type, status, firstName, lastName, companyName, jobTitle, email, phone, mobile, website, address Json, source, leadScore, tags String[], customFields Json, lifecycleStage, lastActivityAt, createdBy}, CrmPipeline{id, organizationId, name, isDefault, currency, stages Json}, CrmDeal{id, organizationId, pipelineId, stageId, name, amount Decimal, currency, probability, status, contactId?, partnerId?, ownerId, expectedCloseDate, closedAt, lostReason, tags, customFields}, CrmActivity{id, organizationId, entityType, entityId, type, action, title, description, status, dueDate, priority, userId, occurredAt, details Json} and CrmNote/CrmDealTask. Port the three services to PrismaService keeping method signatures; add indexes on organizationId, contactId, userId, partnerId, email."
+    },
+    {
+     "area": "crm-tenant-scoping",
+     "file": "backend/src/crm/contacts.controller.ts",
+     "severity": "blocker",
+     "title": "CRM is scoped by req.user.tenantId, which is never set → every tenant shares one CRM",
+     "detail": "contacts.controller.ts:106/134, deals.controller.ts (createDeal/getDeals) and activity-timeline.controller.ts:55/98 pass req.user.tenantId, but JwtStrategy.validate (backend/src/auth/jwt.strategy.ts:104-112) only exposes organizationId/organizations. tenantId is therefore undefined for every caller, so getContacts(undefined) returns every contact ever created by any user of the platform, and getContact/updateContact/deleteContact (contacts.service.ts:265-297) have no tenant check at all. Cross-tenant data exposure and corruption.",
+     "fix_spec": "Introduce a helper `crmTenantOf(req) = req.user.organizationId ?? req.user.id` (or add tenantId = organizationId to the JwtStrategy return object) and use it in all CRM controllers. Make ContactsService/DealsService/ActivityTimelineService get/update/delete methods take tenantId and throw NotFoundException when the record's tenantId differs. Add a spec asserting two users in different orgs cannot see each other's contacts."
+    },
+    {
+     "area": "crm-deals",
+     "file": "frontend/app/[locale]/dashboard/crm/deals/new/page.tsx",
+     "severity": "blocker",
+     "title": "Creating a deal from the UI always fails (pipeline 'default-pipeline' never exists)",
+     "detail": "deals/new/page.tsx:116-117 posts pipelineId:'default-pipeline', stageId:'lead'. DealsService.createDeal (deals.service.ts:342-346) does this.pipelines.get('default-pipeline') and throws NotFoundException because no pipeline is ever seeded (pipelines get uuid ids) and the frontend never calls GET crm/deals/pipelines/default or creates one. Every 'Deal nou' submission shows an error; the pipeline tab is permanently empty.",
+     "fix_spec": "In DealsService add `getOrCreateDefaultPipeline(tenantId)` that creates a pipeline with stable stage ids lead/qualified/proposal/negotiation/won/lost (probabilities 10/25/50/75/100/0). In the controller, resolve pipelineId 'default-pipeline' or undefined to that pipeline and map stageId case-insensitively; expose it from GET crm/deals/pipelines/default. Frontend deals/new and deals/[id]/edit load that pipeline and submit its real stage ids."
+    },
+    {
+     "area": "crm-activities",
+     "file": "frontend/app/[locale]/dashboard/crm/activities/new/page.tsx",
+     "severity": "blocker",
+     "title": "Activities created from the UI are not attached to any contact/deal and cannot be listed or completed",
+     "detail": "activities/new posts {type:'TASK'|'CALL'…, title, description, contactId, dealId, dueDate, priority}; the backend POST crm/activities (activity-timeline.controller.ts:37-72) expects entityType/entityId/type(lowercase)/action/description and has no validation, so the activity is stored with entityType=undefined. Contact and deal detail pages query crm/activities?contactId= / ?dealId= (contacts/[id]/page.tsx:78, deals/[id]/page.tsx:72) but the controller only honours entityType/entityId, so every contact shows every activity. 'Finalizează' does PATCH crm/activities/:id (crm/page.tsx:286) which 404s (only PUT exists, no status field) while the toast claims success; 'Editează' routes to /dashboard/crm/activities/:id/edit which does not exist. The 'pending' filter relies on activity.status that the backend never sets.",
+     "fix_spec": "Backend: in POST crm/activities accept contactId/dealId/ticketId aliases → entityType/entityId (and relatedEntities for the second one), lowercase the type, default action='manual', add fields title, status ('pending'|'completed'|'cancelled'), dueDate, priority; in GET accept contactId/dealId/ticketId query aliases; add PATCH crm/activities/:id {status, completedAt, dueDate}. Frontend: create activities/[id]/edit page (reuse new form) and show real errors instead of success toasts on non-2xx."
+    },
+    {
+     "area": "crm-frontend-contract",
+     "file": "frontend/app/[locale]/dashboard/crm/page.tsx",
+     "severity": "major",
+     "title": "CRM pages render fields the API does not return and send fields it ignores (blank lists, silent no-ops)",
+     "detail": "crm/page.tsx expects contact.name/company/position/status LEAD|CUSTOMER and deal.title/value/stage/contactName; backend returns firstName/lastName/companyName/jobTitle/status active|inactive/lifecycleStage and deal.name/amount/stageId — so list rows show empty names, values and stages. contacts/new sends company/position/status/notes which are dropped (type and source end up undefined). Stage changes use PATCH crm/deals/:id {stage} (crm/page.tsx:330, deals/[id]/page.tsx:121) — backend has only PUT :id and POST :id/move {stageId}; PATCH 404s but UI toasts 'Deal mutat'. Stats call GET crm/statistics which does not exist (backend has crm/contacts/stats/overview and crm/deals/stats/overview), so KPI cards are always empty.",
+     "fix_spec": "Add a response serializer in ContactsController/DealsController that adds display aliases (contact.name, company=companyName, position=jobTitle, lifecycleStage→status upper-case; deal.title=name, value=amount, stage=stage.name upper-cased, contactName resolved from ContactsService). Accept the same aliases on create/update (company→companyName, position→jobTitle, notes→initial note, default type 'person', source 'manual'). Add GET crm/stats (or alias crm/statistics) returning {totalContacts, leadCount, customerCount, activeDeals, revenuePipeline, conversionRate}. Switch frontend stage changes to POST crm/deals/:id/move {stageId} and show errors on non-2xx."
+    },
+    {
+     "area": "crm-routing",
+     "file": "backend/src/crm/contacts.controller.ts",
+     "severity": "major",
+     "title": "GET crm/contacts/segments and crm/contacts/export are shadowed by GET :id",
+     "detail": "@Get(':id') is declared at line 146, while @Get('segments') (line 302) and @Get('export') (line 412) come later; Express matches in declaration order so both calls return {error:'Contact not found'}. Segment listing and CSV export are unreachable from any client.",
+     "fix_spec": "Move the static routes ('segments', 'segments/:id/contacts', 'export', 'stats/overview', 'bulk/*', 'import') above the parameterised ':id' handlers in ContactsController (same check for DealsController tasks/:taskId/* which is fine today). Add an e2e test hitting /crm/contacts/export."
+    },
+    {
+     "area": "crm-as-client-operations",
+     "file": "backend/prisma/schema.prisma",
+     "severity": "major",
+     "title": "No link between platform Users/Partners, CRM contacts and support tickets — staff cannot operate a client from the CRM",
+     "detail": "CRM Contact has no userId/partnerId/organizationId (contacts.service.ts:6-50); SupportTicket (schema.prisma:4329) has userId but no contactId/dealId; admin client 360 (admin-clients.service.ts:99-156) shows invoices/tickets/errors but no CRM contact, deals or activities; admin/requests page links to 'fișa clientului' only. A support inquiry (category 'sales' exists) can never become a CRM deal or activity, a registered user never appears as a CRM contact, and a contact page cannot show the client's tier, tickets or invoices (crm/finance works on partnerId which contacts do not carry).",
+     "fix_spec": "1) Schema: CrmContact.userId? (unique per org), CrmContact.partnerId?, SupportTicket.contactId?, SupportTicket.dealId?. 2) SupportService.createForUser/createForGuest: upsert CrmContact by (staffOrgId,email) with source 'support', link ticket.contactId, and emit 'ticket.created' → ActivityTimelineService logs type 'ticket' on entity contact. staffReply/staffUpdate emit 'ticket.replied'/'ticket.status' → activities. 3) Add ActivityType 'ticket' | 'onboarding' | 'billing'. 4) POST admin/tickets/:id/convert-to-deal {pipelineId?, amount?} creates a CrmDeal (contactId, source 'support', campaign=ticket.reference), sets ticket.dealId, logs activity. 5) admin-clients.get360 returns crmContact, openDeals, last 10 activities; admin/clients/[id] gets a 'CRM' card with links to /dashboard/crm/contacts/:id. 6) admin/requests ticket panel shows client context (tier, open deals, last activity, link 'Creează deal' / 'Deschide în CRM')."
+    },
+    {
+     "area": "crm-as-client-operations",
+     "file": "backend/src/auth/auth.service.ts",
+     "severity": "major",
+     "title": "Registered users never become CRM contacts; staff CRM has no 'all platform clients' view",
+     "detail": "Nothing creates a CRM contact when a user signs up or an organization is created, and CRM is per-tenant, so a staff member opening dashboard/crm sees only contacts they typed by hand — not the platform's real clients (Users/Organizations with tier, CUI, invoice volume). admin/clients is a flat user list without ownership, lifecycle stage, notes or follow-up tasks; there is no 'my accounts' view for ACCOUNTANT/ADMIN.",
+     "fix_spec": "On user.registered / organization.created events (or a one-off backfill script), upsert a CrmContact in the staff organization (env CRM_STAFF_ORG_ID) with userId, companyName=user.company, customFields {tier, cui}, lifecycleStage 'customer' for paid tiers / 'lead' for FREE, source 'signup'. Add GET admin/crm/contacts (staff-only) = contacts of the staff org with ownerId filter 'me', and render it as a 'Clienți (CRM)' tab in dashboard/admin/clients with owner assignment (PUT crm/contacts/:id {ownerId}) and next-task column from CrmActivity status 'pending'."
+    },
+    {
+     "area": "support-duplicate",
+     "file": "backend/src/help/help.service.ts",
+     "severity": "major",
+     "title": "Second, in-memory ticket system in HelpModule competes with the DB-backed support inbox",
+     "detail": "help.service.ts:723 keeps `supportTickets: SupportTicket[]` in memory and help.controller.ts exposes POST help/tickets, GET help/tickets/user/:userId, POST help/tickets/:id/respond|status. Tickets created there never reach admin/tickets, are lost on restart, and the GET by :userId is not restricted to the caller. Any integration/help-center client hitting help/tickets produces requests staff never see.",
+     "fix_spec": "Make HelpController ticket endpoints delegate to SupportService (createForUser/listForUser/getForUser/replyAsUser) with req.user.sub instead of a path userId, or remove them and point help-center UI to /support/tickets. Delete the in-memory array."
+    },
+    {
+     "area": "crm-staff-views",
+     "file": "frontend/app/[locale]/dashboard/crm/page.tsx",
+     "severity": "major",
+     "title": "Missing staff-oriented CRM views: no contact list page, no owner/my-accounts filter, no follow-ups board",
+     "detail": "/dashboard/crm/contacts and /dashboard/crm/deals have no index page (links from contact/deal pages go back to /dashboard/crm tabs only); the contacts tab has no owner, lifecycleStage, tag or source filters although the API supports them (contacts.controller.ts:112-144); there is no 'tasks due today / overdue' view although DealsService has tasks and activities have dueDate in the UI model. Staff handling many clients cannot see their own queue.",
+     "fix_spec": "Add pages dashboard/crm/contacts/page.tsx (table with filters owner=me, lifecycleStage, source, tags, search; bulk assign owner) and dashboard/crm/deals/page.tsx (kanban by stage from the default pipeline using POST :id/move). Add a 'Follow-ups' tab on dashboard/crm listing CrmActivity status='pending' sorted by dueDate with complete/reschedule actions (PATCH crm/activities/:id). Gate these behind the existing sidebar 'crm' entry."
+    },
+    {
+     "area": "crm-validation",
+     "file": "backend/src/crm/contacts.controller.ts",
+     "severity": "minor",
+     "title": "CRM endpoints have no DTO validation — malformed bodies are stored as-is",
+     "detail": "All CRM controllers type bodies inline (`@Body() body: {...}`) without class-validator DTOs; email is 'required' only by TS type, type/source can be undefined, amount can be a string. Bad data from imports or forms is stored silently and later breaks sorting/forecast.",
+     "fix_spec": "Add CreateContactDto/UpdateContactDto/CreateDealDto/LogActivityDto with class-validator (IsEmail, IsIn for type/source/status, IsNumber amount, IsUUID ids) and rely on the global ValidationPipe with whitelist; keep the alias normalisation (name/company/position/contact_type) inside the DTO transform."
+    },
+    {
+     "area": "crm-finance",
+     "file": "frontend/app/[locale]/dashboard/crm/contacts/[id]/page.tsx",
+     "severity": "minor",
+     "title": "Contact page cannot show the client's financial picture although crm/finance endpoints exist",
+     "detail": "GET crm/finance/customer/:partnerId/summary and /insights work off Partner ids, but a CRM contact has no partnerId, and contacts/[id]/page.tsx shows only deals/activities. Staff handling a billing request have to leave CRM to find invoices/overdue amounts.",
+     "fix_spec": "After adding CrmContact.partnerId (auto-matched by CUI/email at contact create and on partner create), add a 'Financiar' card on contacts/[id] calling crm/finance/customer/{partnerId}/summary (revenue, overdue, risk) with a link to /dashboard/invoices?partnerId=…; show a 'Leagă de partener' picker when partnerId is null."
+    }
+   ]
+  },
+  "ux-journey": {
+   "inventory": "Core money journey as it exists today. Auth: /[locale]/register, /login, /forgot-password pages (frontend/app/[locale]); backend AuthController at /api/v1/auth (register, login, login/verify-mfa, refresh, me, forgot-password, reset-password, verify-email, resend-verification). JwtStrategy returns {id, sub, email, company, cui, tier, role, organizationId, organizations} – no `userId`. Onboarding: /[locale]/onboarding 5-step wizard (company/CUI, tax, bank, team) plus an unmounted components/onboarding wizard and a static /dashboard/onboarding checklist; backend OnboardingController /api/v1/onboarding (complete, status, progress, skip) that upserts Organization by CUI and sets user.activeOrganizationId. Company data: Prisma User has company/cui/address; Organization has full fiscal profile (cui, regCom, address, bank, invoicePrefix/counter, spvConnected). Settings pages: /dashboard/settings (index, profile, organization, integrations, security…) and a separate root /[locale]/settings page with SPV connect/status UI. Invoices: /dashboard/invoices (list), /new, /[id], /bulk-spv, /e-invoice (sidebar “e-Factura”), /efactura (redirect), /efactura-b2b; backend InvoicesController /api/v1/invoices (CRUD, summary, :id/submit-efactura = markAsSubmitted only, pdf, bulk-email, mark-paid…), PartnersController /partners. e-Factura/ANAF backend: AnafController /anaf (validate-cui, efactura/generate|submit|status|received using global ANAF_API_KEY), SpvController /spv (oauth/authorize|callback, status, dashboard, efactura/submit with per-user SpvToken), EfacturaB2bController /efactura-b2b (generate, validate, submit, status, invoices, dashboard, readiness), efactura-b2c, saft-d406, deadlines. InvoicesService.finalizeAndSubmit (real UBL+SPV submit) exists but is not exposed by any controller. Nginx: /api/v1/ -> NestJS :3001, everything else -> Next :3000.",
+   "gaps": [
+    {
+     "area": "auth/register",
+     "file": "frontend/contexts/AuthContext.tsx",
+     "severity": "blocker",
+     "title": "Registration stores an undefined token (access_token vs accessToken)",
+     "detail": "AuthContext.register reads result.access_token but AuthService.register returns accessToken (backend/src/auth/auth.service.ts ~L140). After sign-up the user is redirected to /onboarding with localStorage auth_token = 'undefined' and cookie auth_token=undefined; every API call sends 'Bearer undefined' and 401s, so the very first session is dead until the user manually logs in again.",
+     "fix_spec": "In AuthContext.register use result.accessToken (and result.refreshToken/expiresIn) exactly like login does; also store organizationId if returned. Add a Playwright test register->onboarding that asserts /api/v1/auth/me returns 200."
+    },
+    {
+     "area": "onboarding",
+     "file": "frontend/app/[locale]/onboarding/page.tsx",
+     "severity": "blocker",
+     "title": "Onboarding completion POSTs to a non-existent route without auth",
+     "detail": "handleComplete calls fetch('/api/onboarding/complete') (no /v1 prefix, no Authorization header). Nginx routes /api/* that is not /api/v1/ to Next.js, which has no such route -> 404 -> user always sees 'A aparut o eroare' on step 5 and the CUI/company/tax/bank data is never saved. Same for the ANAF autofill: fetch('/api/anaf/company/:cui') does not exist (backend has /api/v1/anaf/cui/:cui).",
+     "fix_spec": "Use `${API_URL}/onboarding/complete` with Authorization: Bearer token (reuse lib/api.ts client), and `${API_URL}/anaf/cui/${cui}` for autofill. Show backend error message on failure. Mark onboarding complete server-side (OnboardingService already does) and read /onboarding/status instead of localStorage."
+    },
+    {
+     "area": "company-profile",
+     "file": "frontend/app/[locale]/dashboard/settings/organization/page.tsx",
+     "severity": "blocker",
+     "title": "Company/CUI settings call /api/v1/auth/profile which does not exist",
+     "detail": "settings/organization, settings/profile and settings index all GET/PATCH /api/v1/auth/profile; AuthController has no 'profile' route (only /auth/me and a GET-only alias /settings/profile). The organization form loads empty and 'Salvează' always shows 'Eroare la actualizare'. Fields regCom, IBAN, bank, city, county are collected but never sent anywhere. Result: there is no working screen where a user can enter/correct the CUI, company name and address that e-Factura and D406 require.",
+     "fix_spec": "Add PATCH /api/v1/auth/profile (or /users/me) that updates User{name,company,cui,address} AND the active Organization {name,cui,regCom,address,city,county,postalCode,phone,email,bankName,bankAccount,defaultVatRate}; make GET return both. Point the three settings pages at it and persist all fields shown in the form."
+    },
+    {
+     "area": "company-profile / e-factura",
+     "file": "backend/src/onboarding/onboarding.service.ts",
+     "severity": "blocker",
+     "title": "Onboarding writes CUI to Organization but e-Factura reads User.cui",
+     "detail": "completeOnboarding upserts Organization(cui, address, bank…) and sets activeOrganizationId, but never updates user.cui/company/address. SpvController.submitEfactura, EfacturaB2bController.submitToSPV/generateB2BXML and InvoicesService.finalizeAndSubmit all read prisma.user.cui/company/address and throw 'No CUI configured. Please update company profile.' A user who left CUI blank at registration (it is optional) can complete onboarding and still never submit an e-Factura; conversely the supplier address in the UBL is user.address or '' even when the Organization has a full address.",
+     "fix_spec": "Single source of truth: resolve supplier data from the active Organization (cui, name, regCom, address, city, county, bankAccount) with User fields as fallback, via one helper (e.g. CompanyProfileService.getSupplierForUser(userId)). In completeOnboarding also mirror cui/company/address onto User until all readers are migrated."
+    },
+    {
+     "area": "invoices -> e-factura submit",
+     "file": "frontend/app/[locale]/dashboard/invoices/[id]/page.tsx",
+     "severity": "blocker",
+     "title": "'Trimite la SPV' buttons hit routes that do not exist; real submit service is not exposed",
+     "detail": "Invoice detail (L125), invoices list (L365), e-invoice page (L156, L385) POST /api/v1/anaf/efactura/submit/{id}; bulk-spv and list call /anaf/efactura/bulk-submit; e-invoice calls /anaf/efactura/generate-xml/:id and /validate/:id. None exist (AnafController only has POST efactura/submit with body {xml,cui}). The only invoices route, POST /invoices/:id/submit-efactura, merely calls markAsSubmitted with a client-supplied efacturaId – it never talks to ANAF. InvoicesService.finalizeAndSubmit (generates CIUS-RO UBL and submits) is not wired to any controller. So no invoice can actually be sent to e-Factura from any invoice screen; the user only sees 'Eroare la trimiterea către SPV'.",
+     "fix_spec": "Add POST /api/v1/invoices/:id/submit-efactura that calls InvoicesService.finalizeAndSubmit(userId,id) using SpvService.getValidToken(userId) (per-user OAuth), plus POST /invoices/bulk-submit-efactura, GET /invoices/:id/efactura-xml and POST /invoices/:id/efactura-validate. Change all four frontend callers to these routes and surface backend error messages (e.g. 'SPV not connected')."
+    },
+    {
+     "area": "anaf-connect",
+     "file": "backend/src/anaf/spv.controller.ts",
+     "severity": "blocker",
+     "title": "SPV OAuth/status endpoints crash because req.user.userId is never set",
+     "detail": "SpvController (and ~99 other call sites) use req.user.userId, but JwtStrategy.validate returns {...user, sub} with `id`, not `userId`. GET /spv/oauth/authorize therefore runs prisma.user.findUnique({where:{id: undefined}}) -> Prisma validation error -> 500. /spv/status, /spv/dashboard, /spv/efactura/submit fail the same way. Additionally the 'Conectează' button on /dashboard/settings/integrations (L67) opens '/api/v1/spv/oauth/init' in a new tab (route does not exist, no Bearer header), and the OAuth callback redirects to /dashboard/settings?spv=connected, a page that ignores the param – the only page that handles it and calls /spv/oauth/authorize correctly is the root /[locale]/settings page, which is not linked from the dashboard sidebar. Net: a user cannot connect ANAF SPV anywhere.",
+     "fix_spec": "In JwtStrategy.validate return userId: user.id alongside id/sub (one-line systemic fix), or replace req.user.userId with req.user.id in SpvController. On integrations page: fetch /spv/oauth/authorize with Bearer, then window.location = authUrl; move/duplicate the SPV connect+status card from /settings into /dashboard/settings/integrations and make the callback redirect there (?spv=connected handled). Gate the 'Trimite la SPV' buttons on /spv/status.connected with a link to connect."
+    },
+    {
+     "area": "e-factura backend auth",
+     "file": "backend/src/anaf/efactura.service.ts",
+     "severity": "blocker",
+     "title": "EfacturaService uses an unset global ANAF_API_KEY instead of the user's SPV token",
+     "detail": "submitToSPV/checkStatus/downloadReceived send Authorization: Bearer ${ANAF_API_KEY}; backend/.env has no ANAF_API_KEY, so requests go out as 'Bearer undefined'. ANAF e-Factura requires a per-taxpayer OAuth token anyway. Every consumer (AnafController efactura/*, InvoicesService.finalizeAndSubmit/checkEfacturaStatus, e-invoice page status checks) fails even after the routing is fixed.",
+     "fix_spec": "Inject SpvService into EfacturaService (or have callers pass a token) and use SpvService.getValidToken(userId) for upload/status/download; base URL should be ANAF_EFACTURA_URL prod/test from config. Remove ANAF_API_KEY usage. Return actionable Romanian errors ('SPV neconectat – conectați-vă în Setări > Integrări')."
+    },
+    {
+     "area": "auth/recovery",
+     "file": "frontend/app/[locale]/forgot-password/page.tsx",
+     "severity": "blocker",
+     "title": "Forgot-password is a simulated stub; no reset-password or verify-email pages",
+     "detail": "handleSubmit awaits a 1.5s timeout with the real fetch commented out and then shows 'email trimis' – no email is ever sent, although POST /api/v1/auth/forgot-password exists. The backend emails link to https://documentiulia.ro/reset-password?token= and /verify-email?token=, but neither page exists under frontend/app/[locale] (404). A user who forgets their password is locked out permanently.",
+     "fix_spec": "Call POST ${API_URL}/auth/forgot-password {email}. Create /[locale]/reset-password (reads ?token, POST /auth/reset-password {token,newPassword}) and /[locale]/verify-email (POST /auth/verify-email {token}, then link to login). Add both to middleware public paths and e2e tests."
+    },
+    {
+     "area": "auth/login (MFA)",
+     "file": "frontend/contexts/AuthContext.tsx",
+     "severity": "blocker",
+     "title": "Login ignores requiresMfa – users who enabled MFA cannot log in",
+     "detail": "AuthService.login returns {requiresMfa:true, mfaToken} without accessToken when MFA is enabled (and /dashboard/settings/security lets users enable it via MFASetup). AuthContext.login stores data.accessToken (undefined) and router.push('/dashboard'); the login page has no code-entry step and never calls /auth/login/verify-mfa. The user is bounced with an invalid session.",
+     "fix_spec": "In AuthContext.login: if (data.requiresMfa) return {requiresMfa:true, mfaToken}; login page renders MFAVerify (components/auth/MFAVerify.tsx) and POSTs /auth/login/verify-mfa {mfaToken, code|backupCode}, then stores tokens as usual."
+    },
+    {
+     "area": "e-factura page",
+     "file": "frontend/app/[locale]/dashboard/efactura-b2b/page.tsx",
+     "severity": "major",
+     "title": "e-Factura B2B page queries with 'demo-user' and wrong route shapes",
+     "detail": "getUserId() = localStorage 'user_id' || 'demo-user' (nothing ever sets user_id), and the page calls /efactura-b2b/dashboard/{userId} and /efactura-b2b/invoices/{userId}; the backend routes are GET /efactura-b2b/dashboard and /efactura-b2b/invoices (user from JWT) -> 404, so the only page wired to the working submit endpoint shows no invoices. It is also not in the sidebar.",
+     "fix_spec": "Drop getUserId; call /efactura-b2b/dashboard, /efactura-b2b/invoices?status=&period=, /efactura-b2b/status/:uploadIndex without userId. Either make this the sidebar 'e-Factura' destination or merge its submit/status logic into /dashboard/e-invoice."
+    },
+    {
+     "area": "onboarding/first-run",
+     "file": "frontend/app/[locale]/dashboard/onboarding/page.tsx",
+     "severity": "major",
+     "title": "Getting-started hub is hardcoded and nothing drives new users to set up company/ANAF",
+     "detail": "The /dashboard/onboarding checklist marks 'Creare cont', 'Configurare companie' and 'Conectare ANAF' as completed for everyone (static data) and those steps have no links; only 'Prima factură' links. Dashboard never checks GET /onboarding/status, so a user who skipped or failed onboarding gets no prompt that CUI/SPV are missing until a submit fails. The components/onboarding OnboardingProvider/Wizard is a second, unmounted implementation that posts {companyData,modules,integrations} – a shape OnboardingController rejects.",
+     "fix_spec": "Drive the checklist from GET /onboarding/status + /spv/status + invoice count; link step 2 to /dashboard/settings/organization and step 3 to the SPV connect card; show a dashboard banner when cui or spvConnected is missing. Delete or wire the unused components/onboarding wizard to the real DTO."
+    },
+    {
+     "area": "invoices",
+     "file": "frontend/app/[locale]/dashboard/invoices/new/page.tsx",
+     "severity": "major",
+     "title": "Invoice numbering and duplicate call routes that do not exist",
+     "detail": "New invoice fetches /invoices/next-number (no such route; request matches GET /invoices/:id and fails) so the number silently defaults to 'FV-<timestamp>' – non-sequential numbering, which is not acceptable for Romanian invoices; Organization.invoicePrefix/invoiceCounter are never used. Invoice detail 'Duplică' calls POST /invoices/:id/duplicate which does not exist (always 'Eroare').",
+     "fix_spec": "Add GET /invoices/next-number (atomic increment of Organization.invoiceCounter with invoicePrefix, fallback per-user series) and POST /invoices/:id/duplicate in InvoicesController/Service; expose prefix/series editing in settings/organization."
+    },
+    {
+     "area": "invoice status visibility",
+     "file": "frontend/app/[locale]/dashboard/e-invoice/page.tsx",
+     "severity": "major",
+     "title": "No reliable place to see the ANAF status of a submitted invoice",
+     "detail": "After a (would-be) submission the invoice detail shows only 'SPV: {spvIndexId}'; e-invoice page polls /anaf/efactura/status/:uploadIndex (global-key path, see above) and invoices list has no status refresh. InvoicesService.checkEfacturaStatus exists but has no route. Users cannot tell whether ANAF accepted or rejected (and rejections carry the error messages they must fix).",
+     "fix_spec": "Add GET /invoices/:id/efactura-status (calls checkEfacturaStatus via user SPV token, stores efacturaStatus + anafMessages) and show a status badge + 'Verifică status' + ANAF messages on invoice detail and the list; schedule a background poll for SUBMITTED invoices."
+    }
+   ]
+  },
+  "billing-subs": {
+   "inventory": "Tier infrastructure: Prisma `enum Tier {FREE,PRO,BUSINESS,ENTERPRISE}` on both `User.tier` and `Organization.tier` (+ Organization.maxUsers/maxInvoices/maxDocuments). NO Subscription/BillingInvoice/UsageCounter/stripeCustomerId models exist. Registration (auth.service.register) creates no organization; orgs come from POST /tenant/organizations (tenant.service.ts).\n\nBackend: `backend/src/subscription/` (SubscriptionController @ /api/v1/subscription: GET plans, status, usage, summary, features/:key, POST check-limit, upgrade, downgrade, ai-addon/*, organization/:id[/usage]). Plans are a hardcoded Map (0/49/149/299 RON + AI add-ons 29/79/199). upgrade/downgrade just `organization.update({tier})` — no payment. Usage (ocr_pages/ai_queries) lives in an in-memory Map; `incrementUsage` is never called by any module. AI add-on stored in organization.settings JSON. `backend/src/billing/` (BillingController /billing, in-memory Maps, separate plan catalog plan-gratuit/pro/business/enterprise, not used by frontend). `backend/src/payments/payment-gateway.*` (/payment-gateway: intents/checkout/subscriptions/webhooks simulated with Math.random, in-memory, no signature check). `backend/src/tenant/stripe-connect.service.ts` simulated. No `stripe` npm dependency; .env STRIPE_* are placeholders (\"your_stripe_secret...\"). Gating: `auth/tiers.decorator.ts` @RequiresTier + `auth/tier.guard.ts` TierGuard (effective = max(user.tier, org membership tier)) applied on ~19 controllers (projects, meetings, freelancer, ocr templates, templates, expertise, ats, consulting, funds, gdpr-ext, lms, simulation, workspaces, business-case, controlling, business-goals, migration-import@BUSINESS). NOT gated: hr, saga, api-keys, analytics, ocr, ai-assistant, invoices (no monthly count). Staff: `admin/admin-clients.controller.ts` PATCH /admin/clients/:id {tier,role,reason} updates User.tier only (audited); GET overview/clients/clients/:id (360 shows org tier). admin/platform-analytics.service MRR/subscription metrics hardcoded.\n\nFrontend: `/[locale]/pricing` (i18n, 14-day trial claim, CTA → /register), `/dashboard/settings/subscription` (reads /subscription/status, mailto upgrade), `/dashboard/settings/billing` (+cancel, payment-method \"coming soon\"; fake plan change), `/dashboard/billing` (fully hardcoded, orphan), `components/dashboard/UpgradePrompt.tsx` + lib/api.ts 403 \"requires the X plan\" event, DashboardSidebar lockedTier from user.tier, admin/clients pages (tier select).",
+   "gaps": [
+    {
+     "area": "subscription-upgrade",
+     "file": "backend/src/subscription/subscription.controller.ts",
+     "severity": "blocker",
+     "title": "POST /subscription/upgrade grants paid tiers with zero payment, to any org member",
+     "detail": "Any authenticated user (not just org owner) can POST /api/v1/subscription/upgrade {tier:'ENTERPRISE'} and subscription.service.upgradeTier() immediately writes organization.tier + maxUsers/maxInvoices. TierGuard honours org tier, so every PRO/BUSINESS-gated module unlocks for free. Marketed monetization is entirely bypassable with one curl. Same for /subscription/ai-addon/subscribe (writes settings JSON, no charge). Also GET /subscription/organization/:organizationId has no membership check.",
+     "fix_spec": "(1) Remove direct tier writes from public upgrade/downgrade/ai-addon endpoints. (2) Replace with POST /subscription/checkout {tier, billingCycle} → creates Stripe Checkout Session (mode=subscription, price from PRICE_ID map, metadata.organizationId) and returns {url}; tier is written ONLY by the Stripe webhook handler (checkout.session.completed / customer.subscription.updated|deleted) or by admin PATCH. (3) Until Stripe is live: guard upgrade with @Roles(ADMIN) or return 402 {message:'Plata online indisponibilă — solicitați upgrade'} and log a SupportTicket(category:'billing'). (4) Require org OWNER/ADMIN membership for any org-level billing mutation; add membership check to GET /subscription/organization/:id(/usage)."
+    },
+    {
+     "area": "subscription-page",
+     "file": "frontend/app/[locale]/dashboard/settings/subscription/page.tsx",
+     "severity": "blocker",
+     "title": "Subscription page spins forever for users with an organization (TypeError on plan object)",
+     "detail": "Line 55-57: `const t = (r.data?.tier || r.data?.plan || '').toUpperCase()`. /subscription/status returns {currentTier, plan:{...object}} — `tier` is undefined, `plan` is an object, so `.toUpperCase()` throws inside the async IIFE, setLoading(false) is never reached and the page shows an infinite spinner. This is the destination of every upgrade CTA (sidebar locked items, UpgradePrompt). Only org-less users (for whom the API 500s and r.data is undefined) see the page.",
+     "fix_spec": "Use `r.data?.currentTier`; wrap in try/catch/finally with setLoading(false) in finally; fall back to user.tier on error. Also render usage vs limits from r.data.usage (users/invoices/documents) and the real nextBillingDate/trial fields once they exist."
+    },
+    {
+     "area": "payments",
+     "file": "backend/src/payments/payment-gateway.service.ts",
+     "severity": "blocker",
+     "title": "No real payment processing exists — Stripe is simulated, unsigned, in-memory, unconfigured",
+     "detail": "No `stripe` package in backend/package.json; STRIPE_SECRET_KEY/PUBLISHABLE_KEY in backend/.env are literal placeholders ('your_stripe_secret…'); no STRIPE_WEBHOOK_SECRET. payment-gateway.service confirmPaymentIntent uses Math.random()>0.1 to 'succeed', createSubscription stores to a Map, processWebhook JSON.parses the body with no signature verification and all handlers are empty `break`. tenant/stripe-connect.service and billing.service are likewise in-memory simulations. A customer has no way to pay 49/149 RON; a restart wipes all 'subscriptions'.",
+     "fix_spec": "npm i stripe; new `backend/src/billing-stripe/` module: StripeService (constructed from STRIPE_SECRET_KEY, feature-flag off when absent), POST /subscription/checkout, POST /subscription/portal (Customer Portal session for card change/cancel), POST /webhooks/stripe with raw body (main.ts: app.use('/api/v1/webhooks/stripe', express.raw({type:'application/json'}))) verified via stripe.webhooks.constructEvent(body, sig, STRIPE_WEBHOOK_SECRET); handlers persist Subscription row + set organization.tier; idempotency via StripeEvent(id) table. Add Prisma models: Subscription{id, organizationId @unique, tier, status, billingCycle, stripeCustomerId, stripeSubscriptionId, stripePriceId, currentPeriodStart, currentPeriodEnd, cancelAtPeriodEnd, trialEndsAt}, BillingInvoice{id, organizationId, stripeInvoiceId, number, amount, currency, status, pdfUrl, issuedAt}. Delete or internal-only the simulated /payment-gateway intents/checkout/subscriptions routes and /billing/* in-memory module."
+    },
+    {
+     "area": "tier-enforcement",
+     "file": "backend/src/hr/hr.controller.ts",
+     "severity": "major",
+     "title": "Marketed Pro/Business features (HR, SAGA, API, OCR/invoice quotas, 14-day trial) are not enforced",
+     "detail": "Pricing (frontend/messages/ro.json pricing.*) sells HR + unlimited OCR as Pro, SAGA + API as Business, 'OCR 10 documente/lună' and 10 invoices/month on Free, and '14 zile gratuit pentru toate planurile'. In code: hr, saga, api-keys, analytics, ocr, ai-assistant, payroll controllers carry no @RequiresTier; invoices.service.create never compares monthly count to maxInvoices; subscription.service.incrementUsage('ocr_pages'/'ai_queries') has zero callers so usage is always 0 and in-memory; there is no trial field/logic anywhere (isTrialActive hardcoded false). Free users get everything; paying would buy nothing extra except the ~19 already-gated modules.",
+     "fix_spec": "(1) Add @UseGuards(JwtAuthGuard, TierGuard) @RequiresTier(Tier.PRO) to hr.controller, payroll-saga, hr-contracts, ats (exists), ocr templates (exists); @RequiresTier(Tier.BUSINESS) to saga.controller and api-keys.controller. (2) In invoices.service.create: count invoices for org this month; call subscriptionService.enforceLimit(orgId,'maxInvoices',count) (inject SubscriptionModule). (3) Persist usage: Prisma UsageCounter{organizationId, period(YYYY-MM), metric, count @@unique} with upsert-increment; call from ocr.service (pages), ai-assistant.service (queries), anaf saft (reports), efactura submit. (4) Trial: add Organization.trialEndsAt (set now+14d on org creation); TierGuard/rank treat active trial as PRO; expose in /subscription/status; or delete the trialInfo i18n string if trials are not offered."
+    },
+    {
+     "area": "staff-console",
+     "file": "backend/src/admin/admin-clients.service.ts",
+     "severity": "major",
+     "title": "Staff tier change edits User.tier only; billing/status/usage read Organization.tier — two sources of truth",
+     "detail": "PATCH /admin/clients/:id (admin-clients.service.update) updates prisma.user.tier and audits it, but /subscription/status, /usage, settings/billing page, invoice limits and self-upgrade all use organization.tier. Result: staff 'upgrades' a client → client's billing page still says Gratuit; staff 'downgrades' a client whose org was self-upgraded → TierGuard still grants PRO (max of both). Staff also cannot set trial end, see plan history, or see org-level plan except read-only in client-360.",
+     "fix_spec": "Make Organization.tier canonical. New endpoints in admin module: GET /admin/organizations/:orgId/subscription (tier, limits, usage, Subscription row, trialEndsAt, last 20 audit entries with action 'subscription.tier_changed'), PATCH /admin/organizations/:orgId/subscription {tier, reason, trialEndsAt?, cancelAtPeriodEnd?} — in a $transaction update organization.tier+maxUsers/maxInvoices/maxDocuments from the plan, upsert Subscription(status 'comped'|'active'), update all members' user.tier to match, auditLog with before/after; GET /admin/subscriptions?tier=&status= list. Update admin-clients.update to delegate to this when the user has an organization. Frontend admin/clients/[id]: show organization tier + usage bars + 'Schimbă plan organizație' form and history table."
+    },
+    {
+     "area": "billing-dashboard",
+     "file": "frontend/app/[locale]/dashboard/billing/page.tsx",
+     "severity": "major",
+     "title": "/dashboard/billing is entirely fabricated (Business plan, paid invoices, MRR chart) with no API call",
+     "detail": "Page hardcodes currentPlan Business 149 RON, four 'paid' invoices INV-2025-009..012 with downloadUrl '#', usage metrics, a 5-month billing history and a plans grid; 'use client' with zero fetch. Any user navigating to /ro/dashboard/billing sees they are on Business and have paid 596 RON. It is orphaned (no sidebar link) but routable.",
+     "fix_spec": "Delete the page and add a redirect (next.config or page.tsx → redirect(`/${locale}/dashboard/settings/billing`)). If kept: fetch /subscription/status + /subscription/usage for plan/usage, /billing/invoices (new, from BillingInvoice table) for invoices; show empty-state 'Nu există facturi' when none."
+    },
+    {
+     "area": "billing-settings",
+     "file": "frontend/app/[locale]/dashboard/settings/billing/page.tsx",
+     "severity": "major",
+     "title": "Settings › Billing fakes plan changes, next-billing dates and invoice downloads; cancel/payment-method are placeholders",
+     "detail": "handleChangePlan is a 1.5s setTimeout that flips local state (user believes plan changed; nothing persisted, no payment). nextBillingDate fabricated as today+30d and amount shown even for FREE; paymentMethod always undefined yet 'Schimbă' routes to /settings/billing/payment-method which is a 'Construction' coming-soon page, as is /settings/billing/cancel. handleDownloadInvoice toasts success '(Demo)' on failure. Invoices hardcoded to [] with comment.",
+     "fix_spec": "Wire plan buttons to POST /subscription/checkout (Stripe) and show returned URL; until live, replace with the mailto/ticket 'Solicită upgrade' flow used on settings/subscription and remove the fake delay. Show nextBillingDate/amount only when Subscription exists (status paid). Replace cancel and payment-method pages with POST /subscription/portal redirect (Stripe Customer Portal) or a support-ticket form (category 'billing'); never toast success on a failed download. Consolidate settings/billing and settings/subscription into one page."
+    },
+    {
+     "area": "plan-catalog",
+     "file": "backend/src/billing/billing.service.ts",
+     "severity": "major",
+     "title": "Three divergent backend plan catalogs and four hardcoded frontend copies disagree on features/prices",
+     "detail": "/subscription/plans (FREE/PRO/BUSINESS/ENTERPRISE 0/49/149/299, maxInvoices 10/500/10000), /billing/plans (plan-gratuit…plan-enterprise price 0 'custom', limits invoices/customers/apiCalls), /payment-gateway/plans (public, another list). Frontend hardcodes feature lists in pricing i18n (Enterprise 299 RON, HR in Pro), settings/billing/page.tsx (Enterprise 'contact'), settings/subscription/page.tsx (simulator in Pro), dashboard/billing. A prospect reads one set of promises, a customer sees another, enforcement uses a third.",
+     "fix_spec": "Single source of truth: SubscriptionService.pricingPlans (or a PlanCatalog table editable by admin). Frontend pricing, settings/subscription and settings/billing fetch GET /subscription/plans and render nameRo/features/limits; i18n keeps only copy, not features. Remove BillingModule (in-memory) and /payment-gateway/plans from app.module or mark @ApiExcludeEndpoint + RolesGuard ADMIN. Align gating (@RequiresTier per controller) with the plan feature keys hr_module/saga_integration/api_access."
+    },
+    {
+     "area": "subscription-status",
+     "file": "backend/src/subscription/subscription.service.ts",
+     "severity": "major",
+     "title": "/subscription/status and /usage throw 500 for users without an organization (registration creates none)",
+     "detail": "auth.service.register creates only a User; orgs come from POST /tenant/organizations. Controller resolves organizationId = header || req.user.organizationId → undefined, then prisma.organization.findUnique({where:{id:undefined}}) throws a Prisma validation error → 500. Frontend silently falls back to localStorage user.tier, so a FREE user whose admin set user.tier=PRO sees inconsistent state, and logs fill with 500s for every fresh account.",
+     "fix_spec": "In SubscriptionController (or service) when organizationId is falsy: build status from req.user.tier (plan = getPlan(user.tier), usage counted by userId, isTrialActive false) and return 200; or auto-create a personal organization + membership in auth.service.register (transaction) so every user has an org. Return 404 not 500 when an org id is given but not found."
+    },
+    {
+     "area": "admin-analytics",
+     "file": "backend/src/admin/platform-analytics.service.ts",
+     "severity": "major",
+     "title": "Admin revenue/subscription metrics are hardcoded fiction (MRR 156 000, Pro 1 180 users, Math.random)",
+     "detail": "GET /admin/analytics/revenue and /admin/analytics/subscriptions return constant mrr 156000, revenueByPlan Pro 58000/1180 users etc., revenueByMonth with Math.random. A staff member opening the admin dashboard sees invented revenue; admin-clients.overview byTier counts users (not orgs), which is the closer-to-real number.",
+     "fix_spec": "getSubscriptionMetrics: prisma.organization.groupBy({by:['tier'],_count}) joined with SubscriptionService.getPlan(tier).priceMonthly → byPlan {plan,count,mrr}; mrr = Σ; churn/new from auditLog action 'subscription.tier_changed' in period (later from Subscription table + Stripe). Remove all constant/random values; return zeros with `source:'derived'` until Stripe data exists."
+    },
+    {
+     "area": "data-model",
+     "file": "backend/prisma/schema.prisma",
+     "severity": "minor",
+     "title": "No Subscription/UsageCounter models: usage in-memory per process, AI add-on stored in settings JSON, billingCycle/nextBillingDate invented",
+     "detail": "SubscriptionService.usageCache is a process Map (lost on restart, wrong under PM2 cluster); AI add-on state lives in organization.settings.aiAddOnPackage; getSubscriptionStatus hardcodes billingCycle 'monthly', nextBillingDate = 1st of next month and isTrialActive false regardless of reality; upgradeTier accepts billingCycle yearly but stores nothing.",
+     "fix_spec": "Add Prisma models Subscription (see payments gap), UsageCounter{organizationId, period, metric, count, @@unique([organizationId,period,metric])}, AiAddOnSubscription{organizationId, packageId, billingCycle, startedAt, cancelledAt}. SubscriptionService reads/writes these; getSubscriptionStatus returns the stored billingCycle/currentPeriodEnd/trialEndsAt; migrate settings.aiAddOn* into the new table."
+    },
+    {
+     "area": "frontend-tier-state",
+     "file": "frontend/contexts/AuthContext.tsx",
+     "severity": "minor",
+     "title": "Sidebar locks and plan badges use login-time user.tier from localStorage; stale after staff/self tier change until re-login",
+     "detail": "DashboardSidebar.lockedTier and settings pages derive tier from AuthContext user.tier (persisted at login as org.tier||user.tier). After an admin PATCH or any tier change, backend TierGuard allows the feature but the sidebar still shows it locked (or vice-versa) until the user logs out/in; there is no refresh path.",
+     "fix_spec": "On dashboard mount (and after any 403 tier event), call GET /auth/me or /subscription/status and update AuthContext.user.tier + localStorage auth_user; expose refreshTier() in AuthContext; have admin PATCH responses note 'client must refresh'. Backend /auth/me should return effective tier = max(user.tier, org.tier)."
+    },
+    {
+     "area": "webhooks-security",
+     "file": "backend/src/payments/payment-gateway.controller.ts",
+     "severity": "minor",
+     "title": "Public unsigned /payment-gateway/webhooks/stripe|paypal and simulated payment endpoints are exposed in production",
+     "detail": "POST /api/v1/payment-gateway/webhooks/stripe accepts any JSON without verifying stripe-signature and stores it; /payment-gateway/plans and providers are public; authenticated users can create fake intents/subscriptions/checkouts that 'succeed' randomly. While currently no-ops, they mislead integrators and will become an attack surface the moment handlers do anything.",
+     "fix_spec": "Remove PaymentGatewayController routes for intents/checkout/subscriptions/webhooks from production (or gate whole controller behind a PAYMENTS_SIMULATION=true env flag and @Roles(ADMIN)); implement the real webhook in the new Stripe module with constructEvent signature verification and raw-body middleware; return 400 on invalid signature."
+    }
+   ]
+  },
+  "i18n-ops": {
+   "inventory": "Session/auth: backend NestJS auth module (backend/src/auth) issues JWT access tokens with ACCESS_TOKEN_EXPIRY='15m' and rotating refresh tokens '30d' stored in an in-memory Map; endpoints /api/v1/auth/{login,register,refresh,logout,me,sessions,mfa/*}. Frontend contexts/AuthContext.tsx keeps token+user in localStorage and a 7-day 'auth_token' cookie; lib/api.ts (apiRequest) adds Bearer + x-organization-id, retries 5xx, and on 401 clears storage and hard-redirects to login; hooks/useApi.ts wraps it. middleware.ts (next-intl as-needed, default 'ro', locales ro/en/de/fr/es) gates /dashboard,/onboarding,/settings... by cookie presence only. Login page has email/password only (no MFA step); settings/security page can enable MFA via Next route proxies app/api/auth/mfa/*.\n\nRouting: live nginx (sites-enabled/documentiulia.ro) proxies only /api/v1/ → :3001, /health, and everything else → Next :3000. Next rewrites also only cover /api/v1/*. Frontend has a handful of Next API routes (app/api/{auth/sessions,auth/mfa,gdpr,errors,ai/ask,invoices,client-portal,employee-portal,project/roadmap,health}). ~60 pages use raw fetch; ~30 call /api/<module> without /v1 (blog, forum, finance/tax, logistics, lms, inventory, onboarding, anaf/company).\n\nRealtime: hooks/useWebSocket.ts + contexts/WebSocketContext.tsx open a raw WebSocket to `${host}/ws?token=`; dashboard layout renders WebSocketStatusIndicator. Backend only has socket.io gateways (fleet).\n\ni18n: messages/{ro,en,de,fr,es}.json (ro 1145 keys, en 1307, de 790, fr 719); no getMessageFallback. Navbar has LanguageSelector (regex ro|en|de). Dashboard pages are mostly hardcoded Romanian; /settings mixes EN and RO.\n\nError surfaces: app/[locale]/error.tsx, not-found.tsx, global-error.tsx use 'errors' namespace (present in ro/en). Toast system exists (useToast). useDashboardData uses React Query with fabricated fallback/placeholder data.\n\nContact: /contact posts to /api/v1/contact → PublicContactController stores ContactSubmission and creates a support ticket (REQ-049); no staff email.",
+   "gaps": [
+    {
+     "area": "session",
+     "file": "backend/src/auth/auth.service.ts:61; frontend/contexts/AuthContext.tsx:92-104; frontend/lib/api.ts:150-158",
+     "severity": "blocker",
+     "title": "Access token lives 15 min, frontend never refreshes: every user is kicked out mid-work",
+     "detail": "Backend signs access tokens with ACCESS_TOKEN_EXPIRY='15m' and returns a refreshToken, but AuthContext.login/register store only accessToken (refreshToken is dropped) and set a 7-day cookie. ~15 minutes after login the first API call gets 401; apiRequest clears storage and does window.location.href to /login. An accountant typing an invoice loses the form with no warning. The middleware still lets the stale cookie into /dashboard, so the page renders then hard-redirects (flash). Backend refresh tokens are in an in-memory Map, so a backend restart also kills all refresh tokens (no Redis).",
+     "fix_spec": "1) AuthContext: persist data.refreshToken (localStorage 'auth_refresh_token' or httpOnly cookie set by backend) and data.expiresIn; schedule a proactive POST /api/v1/auth/refresh at ~80% of expiry. 2) lib/api.ts: on 401, if a refresh token exists call /auth/refresh once (single-flight promise), update token+cookie, retry the original request; only on refresh failure clear auth, dispatch 'auth:expired' (toast 'Sesiunea a expirat, te rugăm să te autentifici din nou') and redirect with returnUrl. 3) Set cookie max-age = refresh expiry, not 7d hardcoded. 4) Backend: move refreshTokens/pendingMfaTokens/verificationTokens Maps to Redis or a RefreshToken Prisma table so sessions survive restarts; keep the 5-sessions cap. 5) Add session-timeout banner at 28 min of inactivity per Grok guideline (30 min) instead of silent expiry."
+    },
+    {
+     "area": "session",
+     "file": "frontend/contexts/AuthContext.tsx:92-101; frontend/app/[locale]/login/page.tsx; backend/src/auth/auth.service.ts:193-198",
+     "severity": "blocker",
+     "title": "Users who enable MFA can never log in again (no MFA step in login flow)",
+     "detail": "Backend login returns {requiresMfa:true, mfaToken, message} with no accessToken when MFA is enabled (settings/security lets users enable it). AuthContext.login then does setToken(undefined), localStorage.setItem('auth_token', undefined) → the string 'undefined', cookie auth_token=undefined, and router.push('/dashboard'). The dashboard sends 'Bearer undefined', gets 401, is bounced to /login, and the loop repeats. Nothing in the frontend references mfaToken or requiresMfa.",
+     "fix_spec": "In AuthContext.login: if (data.requiresMfa) return {requiresMfa:true, mfaToken} without touching storage. Login page: render a 6-digit TOTP / backup-code step that POSTs /api/v1/auth/mfa/verify (confirm DTO name in auth.controller) with {mfaToken, code}, then store accessToken/refreshToken/user as in the normal path. Guard all setItem calls with 'if (!data.accessToken) throw new Error(...)'. Add a Playwright test: enable MFA → logout → login → code prompt → dashboard."
+    },
+    {
+     "area": "session",
+     "file": "frontend/contexts/AuthContext.tsx:158-162",
+     "severity": "blocker",
+     "title": "Registration stores result.access_token but backend returns accessToken → new users are immediately logged out",
+     "detail": "register() reads result.access_token / result.user, but AuthController.register returns {user, accessToken, refreshToken, expiresIn}. localStorage.auth_token becomes the string 'undefined' and the cookie auth_token=undefined; the user is pushed to /onboarding, and the first authenticated call (or the dashboard) 401s and redirects to /login. Combined with the broken onboarding POST below, the sign-up funnel dead-ends.",
+     "fix_spec": "Use result.accessToken (and result.refreshToken); share one 'persistSession(tokens,user)' helper between login/register/refresh that throws if accessToken is falsy. Add a unit test on AuthContext.register against the real response shape."
+    },
+    {
+     "area": "routing",
+     "file": "frontend/app/[locale]/onboarding/page.tsx:136,191; backend/src/onboarding/onboarding.controller.ts:65-71; backend/src/anaf/anaf-lookup.controller.ts:10-14",
+     "severity": "blocker",
+     "title": "Onboarding wizard can never finish: POST /api/onboarding/complete and ANAF lookup hit paths that do not exist (404 in prod)",
+     "detail": "handleComplete POSTs to '/api/onboarding/complete' (no auth header) and the CUI autofill GETs '/api/anaf/company/:cui'. nginx only proxies /api/v1/ to the backend and there is no Next route for these, so production returns 404 HTML (verified: curl https://documentiulia.ro/api/onboarding/complete → 404). Every user sees 'A aparut o eroare. Va rugam incercati din nou.' (also without diacritics) on the last step; CUI autofill silently does nothing. Backend routes are /api/v1/onboarding/complete and /api/v1/anaf/cui/:cui.",
+     "fix_spec": "Replace both raw fetches with apiRequest: api.post('/onboarding/complete', {company,tax,bank,team}) and api.get(`/anaf/cui/${cui}`) (maps response fields denumire/adresa from the ANAF lookup DTO). Surface response.error via setError with diacritics ('A apărut o eroare…'). Show inline ANAF lookup error ('CUI negăsit la ANAF') instead of swallowing."
+    },
+    {
+     "area": "routing",
+     "file": "frontend/app/[locale]/dashboard/logistics/page.tsx:230-319; dashboard/blog/page.tsx:116-133; dashboard/forum/page.tsx:128-140; dashboard/accounting/tax-codes/page.tsx:107-220; dashboard/quizzes/page.tsx:102-173; components/StockTransfersWizard.tsx:76-94; dashboard/admin/gdpr/page.tsx:84",
+     "severity": "blocker",
+     "title": "~30 frontend calls use /api/<module> without /v1 — nginx sends them to Next.js → 404 on every load",
+     "detail": "Pages for logistics (inventory items/warehouses/alerts/customs/carbon/demand-forecast), blog, forum, tax codes (finance/tax/*), LMS assessments, stock transfers, GDPR DSR decisions, and lms attempts call fetch('/api/...') without the v1 prefix. Live nginx proxies only /api/v1/ to :3001 and Next rewrites likewise; there is no app/api route for them. Verified prod: /api/blog/categories → 404. Users get empty tables or spinners forever; saves (tax exemptions, stock transfer, quiz publish) fail silently or with a generic message.",
+     "fix_spec": "Codemod: replace fetch('/api/X') with api.get/post('/X') from lib/api.ts (which already prefixes /api/v1, adds Bearer + org header, handles 401/403). Optionally add a temporary nginx 'location /api/ { proxy_pass http://127.0.0.1:3001/api/v1/; }' fallback plus a Next rewrite '/api/:path*' → backend for paths not in app/api, but the codemod is the real fix. Add an ESLint rule (no-restricted-syntax) banning fetch('/api/' outside lib/api.ts and app/api/**."
+    },
+    {
+     "area": "i18n/session",
+     "file": "frontend/middleware.ts:129-135; frontend/lib/api.ts:80-86; frontend/app/[locale]/dashboard/layout.tsx:23-28; components/dashboard/DashboardSidebar.tsx:355-357",
+     "severity": "major",
+     "title": "Default-locale (Romanian, unprefixed) URLs break every login redirect: RO users land on /en/login or a 404 /dashboard/login",
+     "detail": "next-intl runs with localePrefix 'as-needed' and default 'ro', so Romanian users live on /dashboard, /settings (no prefix). middleware computes locale as 'ro' only if the path starts with /ro, else 'en' → an unauthenticated RO user is sent to the English login page (verified prod: /dashboard → /en/login?returnUrl=/dashboard). apiRequest.redirectToLogin and dashboard/layout.tsx take pathname.split('/')[1] as locale → after session expiry the user is sent to /dashboard/login (404) and the subsequent login returnUrl points to that 404.",
+     "fix_spec": "Create lib/locale.ts getLocaleFromPath(pathname): returns the first segment only if it is in `locales`, else defaultLocale; use it in middleware.ts, lib/api.ts redirectToLogin, dashboard/layout.tsx, onboarding/page.tsx:67, DashboardSidebar. Build login URL as `/${locale === defaultLocale ? '' : locale + '/'}login`. Prefer next-intl createNavigation() Link/useRouter for internal navigation. Add a middleware test for /dashboard, /en/dashboard, /fr/dashboard."
+    },
+    {
+     "area": "realtime/ops",
+     "file": "frontend/hooks/useWebSocket.ts:93-99; frontend/contexts/WebSocketContext.tsx:104-160; frontend/app/[locale]/dashboard/layout.tsx:66-68; /etc/nginx/sites-enabled/documentiulia.ro",
+     "severity": "major",
+     "title": "Dashboard permanently shows 'Reconectare (n)…' / 'Deconectat' — the /ws endpoint does not exist anywhere",
+     "detail": "The frontend opens a raw WebSocket to wss://documentiulia.ro/ws?token=…; nginx has no /ws location (request lands on Next.js → 404, verified), and the backend only has socket.io gateways for fleet — no raw ws server at /ws. On every dashboard page the status pill at bottom-right cycles through 10 reconnect attempts then shows 'Deconectat', making the product look broken; real-time toasts (ANAF accepted, payment received) can never fire.",
+     "fix_spec": "Either (a) implement the server: in backend main.ts register a WsAdapter (ws) gateway at path '/ws' that validates ?token= JWT and emits the event types in WebSocketContext (NOTIFICATION, ANAF_STATUS, LOW_STOCK, PAYMENT_RECEIVED…), and add nginx 'location /ws { proxy_pass http://127.0.0.1:3001; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection \"upgrade\"; }'; or (b) until then gate WebSocketProvider behind NEXT_PUBLIC_WS_ENABLED and hide WebSocketStatusIndicator when no server is configured. Also pass the token in a first-message auth frame rather than the query string (logged by proxies)."
+    },
+    {
+     "area": "error-surfaces",
+     "file": "frontend/hooks/useDashboardData.ts:115-135,141-195; frontend/app/[locale]/dashboard/DashboardClient.tsx:298",
+     "severity": "major",
+     "title": "Dashboard shows fabricated cash-flow/VAT numbers when the API fails or is slow, with no error shown",
+     "detail": "useDashboardSummary sets placeholderData and error/401 fallbacks to hardcoded demo figures (Ian 45,000/32,000 … 'TVA de Plată 4,200'). DashboardClient destructures only data/isLoading/refetch and never reads isError, so when the backend is down or returns 5xx the accountant sees confident but fake charts and KPIs. useCashFlow does the same on empty data.",
+     "fix_spec": "Remove fabricated fallback arrays; use skeletons while loading (placeholderData undefined). In DashboardClient read isError/error and render an ErrorState banner ('Nu am putut încărca datele. Reîncearcă') with refetch button; keep last good data via keepPreviousData only. Log to error-logger. Apply the same to useCashFlow/useVatSummary."
+    },
+    {
+     "area": "error-surfaces",
+     "file": "frontend/app/[locale]/dashboard/logistics/page.tsx:225-330 (representative; 36 dashboard pages match the pattern); frontend/lib/api.ts",
+     "severity": "major",
+     "title": "Failed API calls are swallowed: 36 dashboard pages only console.error, user sees empty lists or stuck buttons",
+     "detail": "A scan of app/[locale]/dashboard/**/page.tsx finds 36 pages whose catch blocks only console.error (no setError/toast). apiRequest returns {error} rather than throwing, and many pages ignore response.error too. Network errors, 403 tier gates (except the upgrade event), 404 from wrong paths and 5xx all degrade to blank tables; a user clicking 'Salvează' gets no feedback at all.",
+     "fix_spec": "In lib/api.ts, after computing the final non-OK result (status !== 401/403), dispatch window event 'api:error' {endpoint,status,message}; mount a single <ApiErrorToaster/> in app/[locale]/layout.tsx that shows toast.error with the backend Romanian message (messageRo when present) and a 'Reîncearcă' action; allow opt-out via options.silent. Add a useApiQuery helper returning {data,error,isLoading} and migrate pages to render <ErrorState/> when error is set. Lint rule: catch blocks in pages must call setError/toast."
+    },
+    {
+     "area": "i18n",
+     "file": "frontend/messages/ro.json vs en.json; frontend/app/[locale]/contact/page.tsx:113-116; frontend/components/onboarding/*.tsx; frontend/app/[locale]/layout.tsx:59",
+     "severity": "major",
+     "title": "232 translation keys missing in ro.json (RO is the default locale) → raw keys like 'contact.successTitle' appear on screen; de/fr/es missing 567–653 keys",
+     "detail": "Flattening the catalogs: en has 1307 keys, ro 1145; 232 en keys are absent from ro (forum.*, onboarding.welcome/company/modules/integrations/completion.*, contact.successTitle/successMessage/sendAnother/sending…). next-intl returns the key path when a message is missing, so after a successful contact submission a Romanian visitor sees 'contact.successTitle' and 'contact.successMessage' (the `|| 'Mesaj trimis!'` fallback never fires because the key string is truthy). de/fr/es are <60% complete, so switching language yields a patchwork of raw keys.",
+     "fix_spec": "1) Add the missing ro keys (at minimum contact.successTitle/successMessage/sendAnother/sending, forum.*, onboarding.* used by components/onboarding). 2) Add scripts/i18n-check.ts run in CI that fails when any locale lacks a key present in en.json. 3) In NextIntlClientProvider pass getMessageFallback to return the en string (or onError to log) instead of the key path. 4) Remove the `t(...) || 'literal'` pattern. 5) Either complete de/fr/es or hide them from LanguageSelector until complete."
+    },
+    {
+     "area": "i18n",
+     "file": "frontend/app/[locale]/settings/page.tsx (SAGA section ~'Connection Status','Manual Sync Operations','Sync Invoices', Profile/Name/Email/Role/Company); frontend/app/[locale]/dashboard/settings/page.tsx ('Setari','Gestioneaza contul si preferintele tale','Angajati'); frontend/app/[locale]/dashboard/page.tsx + DashboardClient.tsx (0 useTranslations); frontend/app/[locale]/onboarding/page.tsx:202; frontend/app/[locale]/contact/page.tsx:46-52",
+     "severity": "major",
+     "title": "Key pages mix English and Romanian and drop diacritics; dashboard is Romanian-only regardless of locale",
+     "detail": "/settings renders the SAGA card entirely in English ('Connection Status', 'Manual Sync Operations', 'Push invoices to SAGA', 'Profile/Name/Email/Role/Company') next to Romanian ANAF/MFA cards. /dashboard/settings and onboarding use ASCII Romanian ('Setari', 'Gestioneaza contul si preferintele tale', 'Angajati', 'A aparut o eroare. Va rugam incercati') violating the diacritics guideline. dashboard/page.tsx and DashboardClient.tsx use no translations, so an /en user gets a Romanian dashboard; contact page error strings are hardcoded English ('Network error. Please check your connection…') on the RO site.",
+     "fix_spec": "Move these strings into messages/*.json under settings.saga.*, settings.profile.*, dashboard.*, onboarding.errors.*, contact.errors.* with proper ș/ț/ă/î/â; replace literals with t(). Add an ESLint/i18n lint step (e.g. eslint-plugin-i18next no-literal-string scoped to app/[locale]/dashboard and settings) and a regex CI check that rejects Romanian words without diacritics ('Setari','Gestioneaza','aparut','Va rugam')."
+    },
+    {
+     "area": "contact/ops",
+     "file": "backend/src/public-contact/public-contact.service.ts:26-66; frontend/app/[locale]/contact/page.tsx",
+     "severity": "minor",
+     "title": "Contact form saves + creates a ticket but never notifies staff, and returns success even when the DB write fails",
+     "detail": "processContactForm stores ContactSubmission and creates a guest support ticket (good), but the email notification is a TODO comment, and if the DB write throws it logs and still returns {success:true, referenceId} — the visitor gets a reference number nobody can ever find. The frontend success copy depends on the missing RO keys noted above.",
+     "fix_spec": "Send a NotificationsService email to CONTACT_INBOX (env) with the referenceId and a link to the staff request inbox; rethrow on DB failure so the controller returns 503 with messageRo 'Nu am putut trimite mesajul, încercați din nou'; expose ContactSubmission rows in the staff back-office inbox filter 'Contact website'."
+    },
+    {
+     "area": "session",
+     "file": "frontend/contexts/AuthContext.tsx:50-68; frontend/lib/api.ts:246-270 (validateSession unused)",
+     "severity": "minor",
+     "title": "User identity is only ever read from localStorage; role/tier/organization changes are invisible until re-login",
+     "detail": "On mount AuthProvider trusts auth_user from localStorage and never calls /auth/me; validateSession() exists but is unused. After an admin upgrades a tier or the user is added to an organization, the sidebar/tier gates keep the stale values (and stale tokens are not detected until an API call 401s).",
+     "fix_spec": "On mount, if a token exists call GET /api/v1/auth/me (with the refresh flow) and replace user/tier/role; on 401 clear session. Re-run after organization switch and after Stripe checkout return."
+    },
+    {
+     "area": "i18n",
+     "file": "frontend/components/ui/LanguageSelector.tsx:33-38; frontend/middleware.ts:33-66",
+     "severity": "minor",
+     "title": "Language switcher and protected-path list ignore fr/es locales",
+     "detail": "LanguageSelector's localePattern is /^\\/(ro|en|de)(\\/|$)/ so switching from /fr/pricing to EN yields /en/fr/pricing; middleware protectedPaths enumerates only ro/en/de prefixes, so /fr/dashboard and /es/dashboard skip the server-side auth redirect (client layout still redirects, but to the broken /fr/login path noted above).",
+     "fix_spec": "Build the regex and protectedPaths from the `locales` array in i18n.ts (e.g. new RegExp(`^/(${locales.join('|')})(/|$)`)); protectedPaths = basePaths.flatMap(p => [p, ...locales.map(l => `/${l}${p}`)])."
+    }
+   ]
+  }
+ },
+ "totals": {
+  "gaps": 93,
+  "blockers": 31,
+  "majors": 50
+ }
+}
