@@ -100,7 +100,7 @@ export default function DeveloperPortalPage() {
       title: 'Getting Started',
       description: 'Quick start guide for developers',
       icon: <Play className="w-5 h-5" />,
-      href: '/dashboard/developer/guides',
+      href: '/help',
       color: 'bg-green-500',
     },
     {
@@ -109,13 +109,6 @@ export default function DeveloperPortalPage() {
       icon: <Webhook className="w-5 h-5" />,
       href: '/dashboard/developer/webhooks',
       color: 'bg-purple-500',
-    },
-    {
-      title: 'API Sandbox',
-      description: 'Test API calls interactively',
-      icon: <Terminal className="w-5 h-5" />,
-      href: '/dashboard/developer/sandbox',
-      color: 'bg-orange-500',
     },
   ];
 

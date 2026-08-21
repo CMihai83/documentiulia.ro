@@ -15,6 +15,7 @@ import {
 import { Upload, FileText, TrendingUp, RefreshCw } from 'lucide-react';
 import { SkeletonDashboard } from '@/components/ui/Skeleton';
 
+import { notifyNotAvailable } from '@/lib/toast-bus';
 interface CashFlowItem {
   month: string;
   income: number;
@@ -340,7 +341,7 @@ export function DashboardClient() {
       return;
     }
 
-    router.push(`/dashboard/ocr/batch-process?count=${uploadedFiles.length}`);
+    router.push(`/dashboard/ocr?count=${uploadedFiles.length}`);
   };
 
   const handleProcessAllFilesConfirmed = async () => {
@@ -539,7 +540,7 @@ export function DashboardClient() {
   };
 
   const handleHideWidget = (widgetName: string) => {
-    router.push(`/dashboard/settings/widgets/hide?name=${encodeURIComponent(widgetName)}`);
+    router.push('/dashboard/settings/widgets');
   };
 
   const handleHideWidgetConfirmed = (widgetName: string) => {
@@ -601,7 +602,7 @@ export function DashboardClient() {
   // Search handler
   const handleGlobalSearch = (query: string) => {
     if (!query.trim()) return;
-    router.push(`/dashboard/search?q=${encodeURIComponent(query)}`);
+    notifyNotAvailable();
   };
 
   // Get data from React Query hook (with fallback placeholders)

@@ -617,7 +617,7 @@ export default function ECommerceOrderDetailPage() {
                 Printează comandă
               </button>
               <button
-                onClick={() => router.push(`/dashboard/ecommerce/stores/${order.storeId}`)}
+                onClick={() => router.push('/dashboard/ecommerce')}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center gap-2"
               >
                 <Store className="h-4 w-4" />

@@ -8,6 +8,7 @@ import { SkeletonDocumentList } from '@/components/ui/Skeleton';
 import FileUpload from '../../../../components/FileUpload';
 import { useToast } from '@/components/ui/Toast';
 
+import { api } from '@/lib/api';
 interface Document {
   id: string;
   filename: string;
@@ -74,7 +75,10 @@ export default function DocumentsPage() {
   };
 
   const deleteDocument = async (docId: string) => {
-    router.push(`/dashboard/documents/${docId}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/documents/${docId}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Document șters'); fetchDocuments(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const deleteDocumentConfirmed = async (docId: string) => {

@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 
+import { api } from '@/lib/api';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 interface Deal {
@@ -93,7 +94,10 @@ export default function DealDetailPage() {
   };
 
   const handleDelete = async () => {
-    router.push(`/dashboard/crm/deals/${dealId}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/crm/deals/${dealId}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Oportunitate ștearsă'); router.push('/dashboard/crm'); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteConfirmed = async () => {

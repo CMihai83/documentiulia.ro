@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Download,
   Upload,
@@ -274,7 +275,7 @@ export default function DataExportPage() {
   };
 
   const handleDeleteExport = (job: ExportJob) => {
-    router.push(`/dashboard/data-export/${job.id}/delete`);
+    notifyNotAvailable();
   };
 
   const handleQuickExport = async (type: string) => {
@@ -352,7 +353,7 @@ export default function DataExportPage() {
   };
 
   const handleViewImportErrors = (job: ImportJob) => {
-    router.push(`/dashboard/data-export/import/${job.id}/errors`);
+    router.push('/dashboard/data-export/history');
   };
 
   const handleScheduleExport = () => {
@@ -360,7 +361,7 @@ export default function DataExportPage() {
   };
 
   const handleEditSchedule = (scheduleName: string) => {
-    router.push(`/dashboard/data-export/schedule/${encodeURIComponent(scheduleName)}/edit`);
+    notifyNotAvailable();
   };
 
   const handleToggleSchedule = async (scheduleName: string, currentlyActive: boolean) => {

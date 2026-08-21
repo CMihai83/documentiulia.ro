@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   ArrowLeft,
   Package,
@@ -392,7 +393,7 @@ export default function PurchaseOrderDetailPage() {
                 <div className="fixed inset-0 z-40" onClick={() => setShowActionsMenu(false)} />
                 <div className="absolute right-0 top-full mt-1 w-48 bg-white border rounded-lg shadow-lg z-50">
                   <button
-                    onClick={() => router.push(`/dashboard/procurement/orders/${orderId}/edit`)}
+                    onClick={() => notifyNotAvailable()}
                     className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
                   >
                     <Edit className="h-4 w-4" />

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Truck,
   MapPin,
@@ -272,7 +273,7 @@ export default function VehicleDetailPage() {
   };
 
   const handleDeleteVehicle = async () => {
-    router.push(`/dashboard/fleet/vehicles/${vehicleId}/delete`);
+    notifyNotAvailable();
   };
 
   const handleTrackVehicle = () => {

@@ -49,11 +49,11 @@ const recentTransactions = [
 
 const quickActions = [
   { name: 'Fișă cont', icon: FileSpreadsheet, href: '/dashboard/accounting/general-ledger', color: 'blue' },
-  { name: 'De încasat', icon: ArrowDownRight, href: '/dashboard/accounting/accounts-receivable', color: 'green' },
-  { name: 'De plătit', icon: ArrowUpRight, href: '/dashboard/accounting/accounts-payable', color: 'red' },
+  { name: 'De încasat', icon: ArrowDownRight, href: '/dashboard/accounting/statements', color: 'green' },
+  { name: 'De plătit', icon: ArrowUpRight, href: '/dashboard/accounting/statements', color: 'red' },
   { name: 'Balanță', icon: Calculator, href: '/dashboard/accounting/trial-balance', color: 'purple' },
-  { name: 'Bilanț', icon: BookOpen, href: '/dashboard/accounting/balance-sheet', color: 'indigo' },
-  { name: 'Profit & Pierdere', icon: BarChart3, href: '/dashboard/accounting/income-statement', color: 'amber' }
+  { name: 'Bilanț', icon: BookOpen, href: '/dashboard/accounting/statements', color: 'indigo' },
+  { name: 'Profit & Pierdere', icon: BarChart3, href: '/dashboard/accounting/statements', color: 'amber' }
 ];
 
 const pendingTasks = [

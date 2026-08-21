@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { api } from '@/lib/api';
 import {
   ArrowLeft,
   Building2,
@@ -187,7 +188,10 @@ export default function PartnerDetailPage() {
 
   const handleDelete = async () => {
     if (!partner) return;
-    router.push(`/dashboard/partners/${partnerId}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/partners/${partnerId}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Partener șters'); router.push('/dashboard/partners'); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteConfirmed = async () => {

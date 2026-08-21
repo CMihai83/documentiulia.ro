@@ -181,7 +181,7 @@ export const WidgetGrid = memo(function WidgetGrid({
   }, [widgets.length]);
 
   const handleResetLayout = useCallback(() => {
-    router.push('/dashboard/settings/widgets/reset');
+    router.push('/dashboard/settings/widgets');
   }, [router]);
 
   const handleResetLayoutConfirmed = useCallback(() => {

@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useToast } from '@/components/ui/Toast';
+import { api } from '@/lib/api';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Users, Target, TrendingUp, Phone, Mail, Calendar,
   Loader2, RefreshCw, Edit, Trash2, Eye, AlertCircle,
@@ -300,7 +302,7 @@ export default function CRMPage() {
   };
 
   const handleEditActivity = (activity: Activity) => {
-    router.push(`/dashboard/crm/activities/${activity.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleFilterActivities = (status: 'all' | 'pending' | 'completed') => {
@@ -363,11 +365,17 @@ export default function CRMPage() {
 
   // Delete Handlers
   const handleDeleteContact = async (contact: Contact) => {
-    router.push(`/dashboard/crm/contacts/${contact.id}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/crm/contacts/${contact.id}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Contact șters'); fetchData(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteDeal = async (deal: Deal) => {
-    router.push(`/dashboard/crm/deals/${deal.id}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/crm/deals/${deal.id}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Oportunitate ștearsă'); fetchData(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   // Quick Actions from Pipeline

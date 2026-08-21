@@ -7,6 +7,7 @@ import { MFASetup } from '@/components/auth/MFASetup';
 import { BackupCodes } from '@/components/auth/BackupCodes';
 import { useToast } from '@/components/ui/Toast';
 
+import { notifyNotAvailable } from '@/lib/toast-bus';
 interface MFAStatus {
   enabled: boolean;
   backupCodesRemaining?: number;
@@ -83,7 +84,7 @@ export default function SecuritySettingsPage() {
 
   const handleRevokeSession = async (tokenId: string) => {
     // Navigate to session revoke confirmation page
-    router.push(`/dashboard/settings/security/sessions/${tokenId}/revoke`);
+    notifyNotAvailable();
   };
 
   const handleLogoutAllSessions = async () => {

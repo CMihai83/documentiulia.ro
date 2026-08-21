@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import { SkeletonHRPage } from '@/components/ui/Skeleton';
 
+import { api } from '@/lib/api';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 interface Employee {
@@ -121,7 +123,10 @@ export default function HRPage() {
 
   const handleDeleteEmployee = async (emp: Employee) => {
     // Navigate to delete confirmation page
-    router.push(`/dashboard/hr/employees/${emp.id}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/hr/employees/${emp.id}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Angajat șters'); fetchData(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteEmployeeConfirmed = async (emp: Employee) => {
@@ -153,7 +158,9 @@ export default function HRPage() {
 
   const handleSubmitToREVISAL = async (contract: HRContract) => {
     // Navigate to REVISAL submission confirmation page
-    router.push(`/dashboard/hr/contracts/${contract.id}/revisal`);
+    const r = await api.post(`/hr-contracts/reges/contracts/${contract.id}/register`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Contract transmis la REGES-Online'); fetchData(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleSubmitToREVISALConfirmed = async (contract: HRContract) => {
@@ -228,15 +235,15 @@ export default function HRPage() {
   };
 
   const handleViewFormSubmission = (subId: string) => {
-    router.push(`/dashboard/hr/forms/submissions/${subId}`);
+    notifyNotAvailable();
   };
 
   const handleEditFormSubmission = (subId: string) => {
-    router.push(`/dashboard/hr/forms/submissions/${subId}/edit`);
+    notifyNotAvailable();
   };
 
   const handleCompleteForm = (formId: string) => {
-    router.push(`/dashboard/hr/forms/${formId}/new`);
+    notifyNotAvailable();
   };
 
   const handleExportReport = async () => {
@@ -265,7 +272,7 @@ export default function HRPage() {
 
   // Attendance handlers
   const handleViewAttendance = (empId: string) => {
-    router.push(`/dashboard/hr/attendance/${empId}`);
+    notifyNotAvailable();
   };
 
   const handleMarkAttendance = async (emp: Employee, status: 'PRESENT' | 'ABSENT' | 'LATE' | 'REMOTE') => {
@@ -301,11 +308,11 @@ export default function HRPage() {
 
   // Performance review handlers
   const handleStartReview = (emp: Employee) => {
-    router.push(`/dashboard/hr/performance/new?employee=${emp.id}`);
+    notifyNotAvailable();
   };
 
   const handleViewPerformance = (empId: string) => {
-    router.push(`/dashboard/hr/performance/${empId}`);
+    notifyNotAvailable();
   };
 
   const handlePerformanceReport = async () => {
@@ -438,20 +445,20 @@ export default function HRPage() {
 
   // Training and development handlers
   const handleAssignTraining = (emp: Employee) => {
-    router.push(`/dashboard/lms/assign?employee=${emp.id}`);
+    router.push(`/dashboard/lms?employee=${emp.id}`);
   };
 
   const handleViewTrainingProgress = (empId: string) => {
-    router.push(`/dashboard/lms/progress/${empId}`);
+    router.push('/dashboard/lms');
   };
 
   // Leave management handlers
   const handleRequestLeave = (emp: Employee) => {
-    router.push(`/dashboard/hr/forms/LEAVE/new?employee=${emp.id}`);
+    notifyNotAvailable();
   };
 
   const handleViewLeaveBalance = (empId: string) => {
-    router.push(`/dashboard/hr/leave/${empId}`);
+    notifyNotAvailable();
   };
 
   const handleApproveLeaves = () => {

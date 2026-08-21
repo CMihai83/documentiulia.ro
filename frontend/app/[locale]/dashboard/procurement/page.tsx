@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   ShoppingCart,
   FileCheck,
@@ -243,16 +244,16 @@ export default function ProcurementDashboardPage() {
 
   // Purchase Order Handlers
   const handleViewPO = (po: PurchaseOrder) => {
-    router.push(`/dashboard/procurement/purchase-orders/${po.id}`);
+    router.push(`/dashboard/procurement/orders/${po.id}`);
   };
 
   const handlePODetails = (po: PurchaseOrder) => {
-    router.push(`/dashboard/procurement/purchase-orders/${po.id}`);
+    router.push(`/dashboard/procurement/orders/${po.id}`);
   };
 
   // Requisition Handlers
   const handleViewRequisition = (req: PurchaseRequisition) => {
-    router.push(`/dashboard/procurement/requisitions/${req.id}`);
+    notifyNotAvailable();
   };
 
   const handleApproveRequisition = async (req: PurchaseRequisition) => {
@@ -285,7 +286,7 @@ export default function ProcurementDashboardPage() {
   };
 
   const handleVendorDetails = (vendor: Vendor) => {
-    router.push(`/dashboard/procurement/vendors/${vendor.id}`);
+    notifyNotAvailable();
   };
 
   // Receipt Handlers

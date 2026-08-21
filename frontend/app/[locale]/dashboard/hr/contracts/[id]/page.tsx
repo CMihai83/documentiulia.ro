@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 
+import { api } from '@/lib/api';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 interface Contract {
@@ -80,7 +81,10 @@ export default function ContractDetailPage() {
 
   const handleDelete = async () => {
     // Navigate to delete confirmation page
-    router.push(`/dashboard/hr/contracts/${contractId}/delete`);
+    if (!window.confirm('Sigur doriți să ștergeți? Acțiunea nu poate fi anulată.')) return;
+    const r = await api.delete(`/hr-contracts/${contractId}`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Contract șters'); router.push('/dashboard/hr'); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleDeleteConfirmed = async () => {
@@ -128,7 +132,9 @@ export default function ContractDetailPage() {
 
   const handleSubmitRevisal = async () => {
     // Navigate to REVISAL submission page
-    router.push(`/dashboard/hr/contracts/${contractId}/revisal`);
+    const r = await api.post(`/hr-contracts/reges/contracts/${contractId}/register`);
+    if (r.status >= 200 && r.status < 300) { toast.success('Contract transmis la REGES-Online'); fetchContract(); }
+    else toast.error('Acțiunea a eșuat', r.error || 'Încercați din nou sau contactați echipa.');
   };
 
   const handleSubmitRevisalConfirmed = async () => {

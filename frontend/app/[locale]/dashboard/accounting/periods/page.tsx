@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Calendar,
   Lock,
@@ -142,7 +143,7 @@ export default function PeriodClosingPage() {
   }, [selectedPeriod, fetchPeriodDetails]);
 
   const handleClosePeriod = async () => {
-    router.push(`/dashboard/accounting/periods/${selectedPeriod}/close`);
+    notifyNotAvailable();
   };
 
   const handleClosePeriodConfirmed = async () => {
@@ -178,7 +179,7 @@ export default function PeriodClosingPage() {
   };
 
   const handleLockPeriod = async () => {
-    router.push(`/dashboard/accounting/periods/${selectedPeriod}/lock`);
+    notifyNotAvailable();
   };
 
   const handleLockPeriodConfirmed = async () => {
@@ -212,7 +213,7 @@ export default function PeriodClosingPage() {
   };
 
   const handleReopenPeriod = async () => {
-    router.push(`/dashboard/accounting/periods/${selectedPeriod}/reopen`);
+    notifyNotAvailable();
   };
 
   const handleReopenPeriodConfirmed = async (reason: string) => {

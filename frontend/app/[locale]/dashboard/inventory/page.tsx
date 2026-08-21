@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Package,
   Search,
@@ -263,11 +264,11 @@ export default function InventoryPage() {
   };
 
   const handleViewProduct = (product: Product) => {
-    router.push(`/dashboard/inventory/products/${product.id}`);
+    router.push(`/dashboard/inventory/${product.id}`);
   };
 
   const handleEditProduct = (product: Product) => {
-    router.push(`/dashboard/inventory/products/${product.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleStockEntry = (product?: Product) => {
@@ -330,7 +331,7 @@ export default function InventoryPage() {
 
   const handleMoreOptions = (product: Product) => {
     // Navigate to product actions page with dropdown menu functionality
-    router.push(`/dashboard/inventory/products/${product.id}/actions`);
+    notifyNotAvailable();
   };
 
   // Quick Action Handlers
@@ -406,12 +407,12 @@ export default function InventoryPage() {
 
   // Adjust Stock Handler
   const handleAdjustStock = (product: Product) => {
-    router.push(`/dashboard/inventory/products/${product.id}/adjust`);
+    notifyNotAvailable();
   };
 
   // Reserve Stock Handler
   const handleReserveStock = (product: Product) => {
-    router.push(`/dashboard/inventory/products/${product.id}/reserve`);
+    notifyNotAvailable();
   };
 
   // Calculate statistics

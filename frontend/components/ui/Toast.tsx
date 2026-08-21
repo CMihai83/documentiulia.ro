@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import { TOAST_EVENT, type BusToast } from '@/lib/toast-bus';
+import { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle, Shield } from 'lucide-react';
 
 type ToastType = 'success' | 'error' | 'warning' | 'info' | 'compliance';
@@ -130,6 +131,16 @@ export function ToastProvider({ children }: ToastProviderProps) {
     const newToast = { ...toast, id };
 
     setToasts((prev) => [...prev, newToast]);
+
+  // REQ-049: toasts raised from outside React (see lib/toast-bus.ts)
+  useEffect(() => {
+    const onBus = (e: Event) => {
+      const d = (e as CustomEvent<BusToast>).detail;
+      if (d?.title) addToast({ type: d.type, title: d.title, message: d.message });
+    };
+    window.addEventListener(TOAST_EVENT, onBus);
+    return () => window.removeEventListener(TOAST_EVENT, onBus);
+  }, [addToast]);
 
     // Auto-remove after duration
     const duration = toast.duration || 5000;

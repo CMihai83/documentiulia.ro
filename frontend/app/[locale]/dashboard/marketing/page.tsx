@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Mail,
   Send,
@@ -194,12 +195,12 @@ export default function MarketingPage() {
   };
 
   const handleViewCampaign = (campaign: Campaign) => {
-    router.push(`/dashboard/marketing/campaigns/${campaign.id}`);
+    notifyNotAvailable();
   };
 
   const handleSendCampaign = (campaign: Campaign) => {
     // Navigate to send confirmation page
-    router.push(`/dashboard/marketing/campaigns/${campaign.id}/send`);
+    notifyNotAvailable();
   };
 
   const handleNewSegment = () => {
@@ -208,7 +209,7 @@ export default function MarketingPage() {
   };
 
   const handleEditAudience = (audience: Audience) => {
-    router.push(`/dashboard/marketing/audiences/${audience.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleCreateCampaignForAudience = (audience: Audience) => {
@@ -217,17 +218,17 @@ export default function MarketingPage() {
 
   // Campaign CRUD handlers
   const handleEditCampaign = (campaign: Campaign) => {
-    router.push(`/dashboard/marketing/campaigns/${campaign.id}/edit`);
+    notifyNotAvailable();
   };
 
   const handleDeleteCampaign = (campaign: Campaign) => {
     // Navigate to delete confirmation page
-    router.push(`/dashboard/marketing/campaigns/${campaign.id}/delete`);
+    notifyNotAvailable();
   };
 
   const handleDuplicateCampaign = (campaign: Campaign) => {
     // Navigate to duplicate page
-    router.push(`/dashboard/marketing/campaigns/${campaign.id}/duplicate`);
+    notifyNotAvailable();
   };
 
   const handlePauseCampaign = async (campaign: Campaign) => {
@@ -270,7 +271,7 @@ export default function MarketingPage() {
 
   const handleScheduleCampaign = (campaign: Campaign) => {
     // Navigate to schedule page
-    router.push(`/dashboard/marketing/campaigns/${campaign.id}/schedule`);
+    notifyNotAvailable();
   };
 
   // A/B Testing handlers
@@ -279,7 +280,7 @@ export default function MarketingPage() {
   };
 
   const handleViewABTestResults = (campaignId: string) => {
-    router.push(`/dashboard/marketing/campaigns/${campaignId}/ab-results`);
+    notifyNotAvailable();
   };
 
   // Export and analytics handlers
@@ -334,7 +335,7 @@ export default function MarketingPage() {
   };
 
   const handleViewCampaignStats = (campaign: Campaign) => {
-    router.push(`/dashboard/marketing/campaigns/${campaign.id}/stats`);
+    notifyNotAvailable();
   };
 
   // Audience management handlers
@@ -344,7 +345,7 @@ export default function MarketingPage() {
       return;
     }
     // Navigate to delete confirmation page
-    router.push(`/dashboard/marketing/audiences/${audience.id}/delete`);
+    notifyNotAvailable();
   };
 
   const handleExportAudience = async (audience: Audience) => {
@@ -399,7 +400,7 @@ export default function MarketingPage() {
   };
 
   const handleEditAutomation = (automationId: string) => {
-    router.push(`/dashboard/marketing/automation/${automationId}/edit`);
+    notifyNotAvailable();
   };
 
   const handleToggleAutomation = async (automationName: string, currentlyActive: boolean) => {
@@ -422,7 +423,7 @@ export default function MarketingPage() {
   };
 
   const handleViewAutomationStats = (automationId: string) => {
-    router.push(`/dashboard/marketing/automation/${automationId}/stats`);
+    notifyNotAvailable();
   };
 
   // Email template handlers
