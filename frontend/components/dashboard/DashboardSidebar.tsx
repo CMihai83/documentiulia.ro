@@ -43,6 +43,8 @@ import {
   Code,
   Cog,
   Rocket,
+  Inbox,
+  LifeBuoy,
   Scale,
   FileCheck,
   Lock,
@@ -176,8 +178,19 @@ const navBundles: NavBundle[] = [
       { href: '/dashboard/security', icon: Shield, labelKey: 'security', defaultLabel: 'Securitate' },
       { href: '/dashboard/data-migration', icon: Database, labelKey: 'dataMigration', defaultLabel: 'Migrare Date' },
       { href: '/dashboard/developer', icon: Code, labelKey: 'developer', defaultLabel: 'API & Integrări' },
-      { href: '/dashboard/admin/error-logs', icon: AlertTriangle, labelKey: 'errorLogs', defaultLabel: 'Jurnal Erori' },
       { href: '/dashboard/settings', icon: Settings, labelKey: 'settings', defaultLabel: 'Setări' },
+    ],
+  },
+  {
+    // REQ-049: staff back-office — visible only to ADMIN / ACCOUNTANT (see keep()).
+    id: 'administrare',
+    titleKey: 'bundleAdministrare',
+    defaultTitle: 'Administrare (echipă)',
+    items: [
+      { href: '/dashboard/admin', icon: LayoutDashboard, labelKey: 'adminOverview', defaultLabel: 'Panou echipă' },
+      { href: '/dashboard/admin/clients', icon: Users, labelKey: 'adminClients', defaultLabel: 'Clienți' },
+      { href: '/dashboard/admin/requests', icon: Inbox, labelKey: 'adminRequests', defaultLabel: 'Cereri clienți' },
+      { href: '/dashboard/admin/error-logs', icon: AlertTriangle, labelKey: 'errorLogs', defaultLabel: 'Jurnal Erori' },
     ],
   },
 ];
@@ -186,6 +199,7 @@ const navBundles: NavBundle[] = [
 const footerItems: NavItem[] = [
   { href: '/dashboard/tutorials', icon: PlayCircle, labelKey: 'tutorials', defaultLabel: 'Tutoriale Video' },
   { href: '/dashboard/help', icon: HelpCircle, labelKey: 'help', defaultLabel: 'Ghid Utilizare' },
+  { href: '/dashboard/support', icon: LifeBuoy, labelKey: 'support', defaultLabel: 'Ajutor · Cererile mele' },
   { href: '/dashboard/roadmap', icon: Map, labelKey: 'roadmap', defaultLabel: 'Roadmap Produs' },
 ];
 
@@ -305,9 +319,12 @@ export function DashboardSidebar() {
 
   // Org-level module preferences: disabled modules stay HIDDEN (unchanged).
   const isAdmin = user?.role === 'ADMIN';
+  const isStaff = isAdmin || user?.role === 'ACCOUNTANT';
   const visibleBundles = useMemo(() => {
     const keep = (item: NavItem) => {
+      // REQ-049: the staff bundle is for ADMIN/ACCOUNTANT; error logs ADMIN only.
       if (item.href === '/dashboard/admin/error-logs' && !isAdmin) return false;
+      if (item.href.startsWith('/dashboard/admin') && !isStaff) return false;
       const moduleId = hrefToModuleId[item.href];
       if (moduleId === 'dashboard' || moduleId === 'settings') return true;
       if (!preferences) return true;
@@ -316,7 +333,7 @@ export function DashboardSidebar() {
     return navBundles
       .map((b) => ({ ...b, items: b.items.filter(keep) }))
       .filter((b) => b.items.length > 0);
-  }, [preferences, isModuleEnabled, isAdmin]);
+  }, [preferences, isModuleEnabled, isAdmin, isStaff]);
 
   // Filter (consumption model C): matches item labels in the active locale AND
   // the Romanian defaults, so both languages find things.
