@@ -228,25 +228,25 @@ export default function LogisticsPage() {
 
       if (activeTab === 'dashboard' || activeTab === 'inventory') {
         // Fetch inventory summary
-        const summaryRes = await fetch('/api/logistics/inventory/reports/summary', { headers });
+        const summaryRes = await fetch('/api/v1/logistics/inventory/reports/summary', { headers });
         if (summaryRes.ok) {
           setSummary(await summaryRes.json());
         }
 
         // Fetch items
-        const itemsRes = await fetch('/api/logistics/inventory/items', { headers });
+        const itemsRes = await fetch('/api/v1/logistics/inventory/items', { headers });
         if (itemsRes.ok) {
           setItems(await itemsRes.json());
         }
 
         // Fetch warehouses
-        const warehousesRes = await fetch('/api/logistics/inventory/warehouses', { headers });
+        const warehousesRes = await fetch('/api/v1/logistics/inventory/warehouses', { headers });
         if (warehousesRes.ok) {
           setWarehouses(await warehousesRes.json());
         }
 
         // Fetch alerts
-        const alertsRes = await fetch('/api/logistics/inventory/alerts?resolved=false', { headers });
+        const alertsRes = await fetch('/api/v1/logistics/inventory/alerts?resolved=false', { headers });
         if (alertsRes.ok) {
           setAlerts(await alertsRes.json());
         }
@@ -258,21 +258,21 @@ export default function LogisticsPage() {
       }
 
       if (activeTab === 'customs') {
-        const declarationsRes = await fetch('/api/logistics/customs/declarations', { headers });
+        const declarationsRes = await fetch('/api/v1/logistics/customs/declarations', { headers });
         if (declarationsRes.ok) {
           setDeclarations(await declarationsRes.json());
         }
       }
 
       if (activeTab === 'carbon') {
-        const carbonRes = await fetch('/api/logistics/carbon/dashboard', { headers });
+        const carbonRes = await fetch('/api/v1/logistics/carbon/dashboard', { headers });
         if (carbonRes.ok) {
           setCarbonMetrics(await carbonRes.json());
         }
       }
 
       if (activeTab === 'forecast') {
-        const forecastRes = await fetch('/api/logistics/demand-forecast/dashboard', { headers });
+        const forecastRes = await fetch('/api/v1/logistics/demand-forecast/dashboard', { headers });
         if (forecastRes.ok) {
           setForecasts(await forecastRes.json());
         }
@@ -317,7 +317,7 @@ export default function LogisticsPage() {
   const handleResolveAlertConfirmed = async (alertId: string) => {
     try {
       const token = localStorage.getItem('token');
-      await fetch(`/api/logistics/inventory/alerts/${alertId}/acknowledge`, {
+      await fetch(`/api/v1/logistics/inventory/alerts/${alertId}/acknowledge`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });

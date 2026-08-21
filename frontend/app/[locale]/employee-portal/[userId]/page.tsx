@@ -71,7 +71,7 @@ export default function EmployeePortalDashboard() {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const response = await fetch(`/api/employee-portal/${userId}/dashboard`);
+        const response = await fetch(`/api/v1/employee-portal/dashboard`);
         if (!response.ok) {
           throw new Error('Failed to fetch dashboard');
         }

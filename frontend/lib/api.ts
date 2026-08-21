@@ -72,6 +72,8 @@ function getStoredOrgId(): string | null {
   return localStorage.getItem(ORG_STORAGE_KEY);
 }
 
+import { localePrefixFromPath } from './locale';
+
 export function clearAuthData(): void {
   if (typeof window === 'undefined') return;
   localStorage.removeItem('auth_token');
@@ -162,8 +164,7 @@ export async function fetchCurrentUser(): Promise<any | null | undefined> {
 
 function redirectToLogin(returnUrl?: string): void {
   if (typeof window === 'undefined') return;
-  const locale = window.location.pathname.split('/')[1] || 'ro';
-  const loginPath = `/${locale}/login`;
+  const loginPath = `${localePrefixFromPath(window.location.pathname)}/login`;
   const url = returnUrl ? `${loginPath}?returnUrl=${encodeURIComponent(returnUrl)}` : loginPath;
   window.location.href = url;
 }

@@ -126,6 +126,9 @@ export function useWebSocketContext() {
 
 // Connection status indicator component
 export function WebSocketStatusIndicator() {
+  // REQ-049 B6: no /ws endpoint exists unless NEXT_PUBLIC_WS_URL points at one —
+  // showing 'Reconectare…' forever told users the app was broken.
+  if (!process.env.NEXT_PUBLIC_WS_URL) return null;
   const { status, reconnectAttempts } = useWebSocketContext();
 
   const getStatusColor = () => {

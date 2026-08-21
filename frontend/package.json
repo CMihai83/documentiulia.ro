@@ -14,7 +14,8 @@
     "test:e2e": "playwright test",
     "test:links": "npx ts-node scripts/link-checker.ts",
     "audit:links": "BASE_URL=https://documentiulia.ro npx ts-node scripts/link-checker.ts",
-    "check:routes": "node scripts/check-routes.mjs"
+    "check:routes": "node scripts/check-routes.mjs",
+    "check:api-paths": "node scripts/check-api-paths.mjs"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.5",

@@ -133,14 +133,14 @@ export default function OnboardingPage() {
 
     try {
       const cui = company.cui.replace(/^RO/i, '');
-      const response = await fetch(`/api/anaf/company/${cui}`);
+      const response = await fetch(`/api/v1/anaf/cui/${cui}`); // REQ-049 B6: real public lookup endpoint
 
       if (response.ok) {
         const data = await response.json();
         setCompany(prev => ({
           ...prev,
-          name: data.denumire || prev.name,
-          address: data.adresa || prev.address,
+          name: data?.company?.name || data.denumire || prev.name,
+          address: data?.company?.address || data.adresa || prev.address,
           // Parse address components if available
         }));
       }
@@ -188,9 +188,11 @@ export default function OnboardingPage() {
 
     try {
       // Save to backend
-      const response = await fetch('/api/onboarding/complete', {
+      // REQ-049 B6: was '/api/onboarding/complete' (no /v1 → Next.js 404) and
+      // sent no token to a JwtAuthGuard-protected route — the wizard could never finish.
+      const response = await fetch('/api/v1/onboarding/complete', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('auth_token') || ''}` },
         body: JSON.stringify({ company, tax, bank, team }),
       });
 

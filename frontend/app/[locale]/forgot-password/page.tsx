@@ -23,11 +23,6 @@ export default function ForgotPasswordPage() {
       await new Promise(resolve => setTimeout(resolve, 1500));
 
       // In production, this would call the actual API
-      // await fetch('/api/auth/forgot-password', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email }),
-      // });
 
       setIsSuccess(true);
     } catch (err: any) {

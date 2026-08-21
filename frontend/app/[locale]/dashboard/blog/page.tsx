@@ -113,14 +113,14 @@ export default function BlogPage() {
       const headers = { Authorization: `Bearer ${token}` };
 
       // Fetch categories
-      const categoriesRes = await fetch('/api/blog/categories', { headers });
+      const categoriesRes = await fetch('/api/v1/blog/categories', { headers });
       if (categoriesRes.ok) {
         setCategories(await categoriesRes.json());
       }
 
       setLoadError(false);
       // Fetch categories (real endpoint)
-      const catRes = await fetch('/api/blog/categories', { headers });
+      const catRes = await fetch('/api/v1/blog/categories', { headers });
       if (catRes.ok) setCategories(await catRes.json());
 
       // Fetch articles
@@ -130,7 +130,7 @@ export default function BlogPage() {
       }
       params.append('limit', '20');
 
-      const articlesRes = await fetch(`/api/blog/articles?${params}`, { headers });
+      const articlesRes = await fetch(`/api/v1/blog/articles?${params}`, { headers });
       if (articlesRes.ok) {
         setArticles(await articlesRes.json());
       }

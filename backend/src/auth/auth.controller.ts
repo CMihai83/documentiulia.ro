@@ -11,6 +11,7 @@ import {
   HttpStatus,
   Headers,
   Ip,
+  Patch,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
@@ -192,6 +193,27 @@ export class AuthController {
   @ApiOperation({ summary: 'Get current user profile' })
   async getProfile(@Request() req: any) {
     return this.authService.validateUser(req.user.id);
+  }
+
+  // REQ-049 B6: settings pages called GET/PATCH /auth/profile, which did not
+  // exist — company data (CUI, address) could never be saved from the UI.
+  @Get('profile')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Full profile incl. company data and active organization' })
+  async getFullProfile(@Request() req: any) {
+    return this.authService.getFullProfile(req.user.id);
+  }
+
+  @Patch('profile')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Update name / company / CUI / address / language (mirrored to the active organization)' })
+  async updateProfile(
+    @Request() req: any,
+    @Body() body: { name?: string; company?: string; cui?: string; address?: string; language?: string },
+  ) {
+    return this.authService.updateProfile(req.user.id, body);
   }
 
   @Get('sessions')

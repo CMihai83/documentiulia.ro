@@ -99,7 +99,7 @@ export default function QuizzesManagementPage() {
   async function handleCreateAssessment() {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/lms/assessments', {
+      const response = await fetch('/api/v1/lms/assessments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -145,7 +145,7 @@ export default function QuizzesManagementPage() {
   async function duplicateAssessment(assessment: Assessment) {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/lms/assessments', {
+      const response = await fetch('/api/v1/lms/assessments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ export default function QuizzesManagementPage() {
   async function publishAssessment(id: string) {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`/api/lms/assessments/${id}/publish`, {
+      const response = await fetch(`/api/v1/lms/assessments/${id}/publish`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });
