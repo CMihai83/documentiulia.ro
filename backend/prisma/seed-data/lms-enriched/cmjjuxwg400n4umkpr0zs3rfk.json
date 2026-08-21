@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwg400n4umkpr0zs3rfk",
+ "courseId": "cmjjuxwfu00muumkpg2yfuclq",
+ "course": "Communication Skills pentru Profesioniști",
+ "module": "Fundamentele Comunicării",
+ "lesson": "Quiz stiluri comunicare",
+ "category": "SOFT_SKILLS",
+ "content": "Test de evaluare — Quiz stiluri comunicare (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este definiția de bază a procesului de comunicare?",
+     "choices": [
+      "Transmiterea unui mesaj de la un emițător către un receptor, cu scopul de a crea o înțelegere comună",
+      "Simpla transmitere de informații, fără nevoie de feedback",
+      "Comunicarea exclusiv verbală, față în față",
+      "Un proces strict scris, folosit doar în corespondența oficială"
+     ],
+     "answer": 0,
+     "explain": "Comunicarea este un proces bidirecțional în care emițătorul transmite un mesaj, iar receptorul îl decodifică și oferă feedback, scopul fiind atingerea unei înțelegeri comune, nu doar transferul de informație.",
+     "concept_key": "definitie_comunicare"
+    },
+    {
+     "q": "Care sunt elementele de bază ale procesului de comunicare?",
+     "choices": [
+      "Emițător, mesaj, canal, receptor, feedback și zgomot (perturbații)",
+      "Emițător, receptor, contract și semnătură",
+      "Doar emițătorul și receptorul",
+      "Mesaj, ton al vocii, volum și gesturi"
+     ],
+     "answer": 0,
+     "explain": "Modelul clasic al comunicării cuprinde emițătorul, mesajul, canalul prin care circulă mesajul, receptorul, feedback-ul primit și zgomotul (orice factor care poate distorsiona mesajul).",
+     "concept_key": "elemente_proces_comunicare"
+    },
+    {
+     "q": "Ce include, în general, comunicarea nonverbală într-un context profesional?",
+     "choices": [
+      "Limbajul corpului, tonul vocii, contactul vizual și postura",
+      "Doar cuvintele folosite într-un e-mail",
+      "Exclusiv gesturile făcute cu mâinile",
+      "Numai expresiile faciale surprinse în videoconferințe"
+     ],
+     "answer": 0,
+     "explain": "Comunicarea nonverbală este un ansamblu de semnale — postură, gestică, contact vizual, tonul și inflexiunile vocii — care însoțesc și influențează mesajul verbal, fără a se rezuma la un singur element izolat.",
+     "concept_key": "comunicare_nonverbala"
+    },
+    {
+     "q": "Care dintre următoarele este o tehnică specifică ascultării active?",
+     "choices": [
+      "Parafrazarea mesajului interlocutorului pentru a confirma înțelegerea corectă",
+      "Întreruperea interlocutorului pentru a-ți exprima rapid opinia",
+      "Pregătirea răspunsului în timp ce cealaltă persoană încă vorbește",
+      "Evitarea contactului vizual, pentru a nu distrage atenția interlocutorului"
+     ],
+     "answer": 0,
+     "explain": "Ascultarea activă presupune tehnici precum parafrazarea, sumarizarea și punerea de întrebări clarificatoare, prin care confirmi interlocutorului că mesajul a fost înțeles corect, nu doar auzit.",
+     "concept_key": "ascultare_activa"
+    },
+    {
+     "q": "O persoană care își exprimă opiniile și nevoile clar și ferm, dar respectă în același timp opiniile și nevoile celorlalți, are un stil de comunicare:",
+     "choices": [
+      "Asertiv",
+      "Agresiv",
+      "Pasiv",
+      "Pasiv-agresiv"
+     ],
+     "answer": 0,
+     "explain": "Stilul asertiv presupune exprimarea directă și onestă a propriilor nevoi și opinii, cu respectarea drepturilor și punctelor de vedere ale celorlalți — spre deosebire de stilul agresiv (impune, ignoră celălalt) sau pasiv (evită exprimarea).",
+     "concept_key": "stil_asertiv"
+    },
+    {
+     "q": "Un coleg din departamentul de vânzări al unei SRL acceptă constant sarcini suplimentare spunând „da, sigur”, deși este deja supraîncărcat, iar apoi se plânge colegilor pe ascuns și întârzie livrarea acelor sarcini. Acest comportament este un exemplu tipic de:",
+     "choices": [
+      "Comunicare pasiv-agresivă",
+      "Comunicare asertivă",
+      "Comunicare agresivă",
+      "Comunicare directă"
+     ],
+     "answer": 0,
+     "explain": "Stilul pasiv-agresiv se manifestă prin acceptare aparentă la suprafață, dar exprimare indirectă a nemulțumirii — prin întârzieri, sabotaj subtil sau plângeri în spatele celuilalt — în loc de comunicare directă a limitelor.",
+     "concept_key": "stil_pasiv_agresiv"
+    },
+    {
+     "q": "Care dintre următoarele seturi de caracteristici definește un feedback eficient la locul de muncă?",
+     "choices": [
+      "Specific, orientat spre comportament observabil, oferit la timp și constructiv",
+      "General, orientat spre trăsături de personalitate, oferit oricând convine emitentului",
+      "Vag, exclusiv pozitiv și oferit întotdeauna în public",
+      "Critic, axat pe evenimente din trecut îndepărtat, fără exemple concrete"
+     ],
+     "answer": 0,
+     "explain": "Feedback-ul eficient se concentrează pe comportamente concrete și observabile (nu pe persoană), este oferit cât mai aproape de momentul faptei și are un scop constructiv, orientat spre îmbunătățire.",
+     "concept_key": "feedback_eficient"
+    },
+    {
+     "q": "Care este un exemplu tipic de barieră de comunicare frecvent întâlnită într-o firmă românească cu mai multe niveluri ierarhice?",
+     "choices": [
+      "Filtrarea sau distorsionarea informației pe măsură ce este transmisă prin mai multe niveluri de management",
+      "Existența unei organigrame clare și cunoscute de toți angajații",
+      "Folosirea unui canal scris pentru sarcini complexe, care necesită detalii",
+      "Programarea de ședințe periodice de sincronizare între departamente"
+     ],
+     "answer": 0,
+     "explain": "Filtrarea informației — fenomen prin care mesajul este simplificat, selectat sau distorsionat pe măsură ce trece prin mai multe niveluri ierarhice — este o barieră clasică de comunicare organizațională, spre deosebire de practicile menționate în celelalte variante, care de fapt susțin comunicarea eficientă.",
+     "concept_key": "bariere_comunicare"
+    },
+    {
+     "q": "Într-o ședință, un manager dintr-o SRL trebuie să îi comunice unui coleg că termenul-limită al unui raport nu a fost respectat. Care formulare reflectă cel mai bine un stil de comunicare asertiv?",
+     "choices": [
+      "„Am observat că raportul nu a fost trimis până la termenul stabilit; putem discuta ce s-a întâmplat și cum stabilim un nou termen realist?”",
+      "„Iar ai întârziat, ca de obicei — nu mai pot conta deloc pe tine.”",
+      "„Nu-i nimic, rezolv eu, nu vreau să te deranjez cu asta.”",
+      "„O să le spun celorlalți din echipă că tu ești responsabil pentru întârziere.”"
+     ],
+     "answer": 0,
+     "explain": "Formularea asertivă descrie faptul concret și observabil (raportul netrimis la termen), fără etichetare sau acuzații la adresa persoanei, și propune o soluție prin dialog — spre deosebire de varianta agresivă (b), pasivă (c) sau pasiv-agresivă (d).",
+     "concept_key": "aplicare_asertivitate"
+    },
+    {
+     "q": "De ce este esențială, într-un mediu profesional, congruența (alinierea) dintre mesajul verbal și cel nonverbal?",
+     "choices": [
+      "Pentru că semnalele nonverbale contradictorii pot submina credibilitatea mesajului verbal și pot genera neîncredere din partea interlocutorului",
+      "Pentru că, în realitate, doar comunicarea nonverbală contează, iar cuvintele sunt irelevante",
+      "Pentru că angajații din România preferă exclusiv comunicarea scrisă, prin e-mail",
+      "Pentru că legislația muncii din România impune, prin lege, congruența dintre ton și cuvinte"
+     ],
+     "answer": 0,
+     "explain": "Când tonul, postura sau expresia facială contrazic ceea ce se spune (de exemplu, cineva afirmă „sunt de acord” cu brațele încrucișate și ton tăios), interlocutorul tinde să acorde mai multă încredere semnalelor nonverbale, ceea ce poate submina mesajul și relația profesională; nu este vorba despre o obligație legală sau despre irelevanța cuvintelor.",
+     "concept_key": "congruenta_verbal_nonverbal"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw8x00hhumkpg9zlhyjf",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Dosarul de Personal",
+ "lesson": "Documente la angajare",
+ "category": "HR_COMPLIANCE",
+ "content": "# Documente la angajare\n\nDosarul de personal este colecția de documente pe care angajatorul are obligația să o constituie și să o păstreze pentru fiecare salariat, de la angajare până la încetarea raporturilor de muncă (și încă mulți ani după, pentru anumite acte). Baza legală principală este HG 905/2017 privind Registrul general de evidență a salariaților (REVISAL), coroborată cu Codul Muncii (Legea 53/2003) și cu legislația privind protecția datelor (Regulamentul UE 2016/679 - GDPR).\n\nScopul dosarului este dublu: pe de o parte dovedește că angajatorul respectă legislația muncii (existența CIM, informarea salariatului, evaluările medicale), iar pe de altă parte servește ca sursă de date pentru calculul drepturilor salariale, al vechimii și al eventualelor beneficii.\n\nÎn practică, HR trebuie să colecteze documentele *înainte* de prima zi de lucru, deoarece unele dintre ele (fișa de aptitudine, actele de identitate) condiționează legal începerea activității, iar înregistrarea CIM în REVISAL trebuie făcută cel târziu cu o zi lucrătoare înainte.\n\nLa întocmirea dosarului de personal pentru un salariat nou, angajatorul solicită, de regulă, următoarele categorii de documente:\n\n1. **Act de identitate** (CI/BI) - copie, pentru verificarea datelor din CIM (CNP, domiciliu) și pentru declarațiile fiscale.\n2. **CV și, dacă e cazul, scrisoare de intenție** - documentează procesul de recrutare; nu sunt obligatorii legal, dar recomandate pentru dosar.\n3. **Diplome de studii și certificate de calificare** - copii, relevante pentru postul ocupat; angajatorul poate solicita originalul pentru confruntare, dar NU poate reține originalul.\n4. **Fișa de aptitudine (medicina muncii)** - obligatorie înainte de începerea activității, conform Legii 319/2006 și HG 355/2007; fără avizul 'apt', salariatul nu poate începe efectiv munca.\n5. **Adeverință/extras privind vechimea în muncă** - utilă pentru calculul sporurilor de vechime, se poate obține și din extrasul REVISAL al angajatorului anterior.\n6. **Acte de stare civilă** (certificat de căsătorie, certificate de naștere ale copiilor) - necesare doar dacă salariatul solicită drepturi condiționate de aceste situații; nu se colectează implicit pentru toți angajații.\n7. **Cazier judiciar** - NU este un document standard; se solicită doar când o lege specială sau fișa postului o impune explicit (ex: gestionari, agenți de pază, funcții publice, activități cu minori).\n8. **Declarație pe proprie răspundere** privind eventuale alte raporturi de muncă (relevantă pentru cumul de contracte și calculul corect al contribuțiilor).\n9. **Fișa postului semnată** și dovada instruirii SSM/PSI.\n\nRegula generală: se colectează strict ce este necesar pentru încheierea CIM și îndeplinirea obligațiilor legale - orice document suplimentar trebuie justificat printr-o cerință legală sau de post.\n\nDosarul de personal conține date cu caracter personal, unele sensibile (stare de sănătate, eventual cazier judiciar). Regulamentul UE 2016/679 (GDPR) impune angajatorului principiul minimizării datelor: se colectează doar informațiile strict necesare scopului - încheierea și executarea CIM, obligații legale, fiscale și de securitate în muncă.\n\nÎn practică, aceasta înseamnă:\n- Accesul la dosarul de personal este restricționat la personalul HR și, punctual, la conducere/audit; nu este un document public în cadrul companiei.\n- Documentele sensibile (fișa medicală, cazierul, atunci când se solicită legal) se păstrează separat sau cu acces suplimentar restricționat.\n- Salariatul trebuie informat, la angajare, despre ce date i se colectează și în ce scop, de regulă printr-o notă de informare GDPR anexată la CIM.\n- Perioada de păstrare a documentelor variază: statele de plată se păstrează 50 de ani, dar alte documente (CV, corespondență de recrutare pentru candidați nerespinși) au termene de păstrare mult mai scurte și trebuie șterse/arhivate conform politicii interne de retenție.\n\nAceastă secțiune nu constituie consultanță juridică individuală; pentru situații specifice recomandăm verificarea cu un consultant juridic sau specialist GDPR.\n\n> Temei legal: HG 905/2017 privind Registrul general de evidență a salariaților art. 4 (în vigoare de la 2017-08-01)\nAngajatorul are obligația de a înregistra contractul individual de muncă în REVISAL cel târziu în ziua anterioară începerii activității de către salariatul în cauză. Netransmiterea la timp a datelor în registru constituie contravenție și se sancționează conform HG 905/2017. Această obligație este independentă de existența tuturor documentelor 'opționale' din dosarul de personal (diplome, acte stare civilă) - CIM se poate înregistra chiar dacă unele documente administrative sunt completate ulterior, cu condiția ca elementele obligatorii ale contractului (părți, funcție, salariu, durată) să fie stabilite.\n\n⚠ Cazierul judiciar nu poate fi solicitat 'din oficiu' tuturor candidaților. Colectarea lui fără temei legal sau fără legătură directă cu fișa postului poate fi considerată prelucrare excesivă de date personale (încălcare GDPR) și eventual discriminare la angajare. Solicitați cazier judiciar doar atunci când o normă specială o impune (ex: Legea 333/2003 pentru personalul de pază, legislația privind protecția minorilor, funcții publice) sau când natura postului (gestiune de valori, acces la informații clasificate) justifică obiectiv cerința.\n\n## Exemplu: Cronologia colectării documentelor pentru un angajat nou\nCompania ABC SRL angajează o contabilă, Ana Popescu, cu data de începere a activității stabilită pentru 15 iulie 2026 (post de execuție, fără cerințe speciale de cazier judiciar). Cronologia colectării documentelor arată astfel:\n\n- **Cu 7-10 zile înainte** (până pe 6-8 iulie 2026): Ana este programată la medicina muncii pentru control la angajare; se obține fișa de aptitudine cu avizul 'apt'.\n- **Cu 3-5 zile înainte**: se colectează actul de identitate (copie CI), diplomele de studii relevante pentru post (copie + confruntare cu originalul), CV-ul și, dacă există, adeverința de vechime de la angajatorul anterior.\n- **Cu cel puțin 1 zi lucrătoare înainte** (până pe 14 iulie 2026): se semnează CIM și se transmite în REVISAL - termenul legal este cel târziu ziua anterioară începerii activității.\n- **În prima zi de lucru** (15 iulie 2026): Ana semnează fișa postului, parcurge instruirea SSM/PSI și primește nota de informare GDPR privind prelucrarea datelor sale personale.\n\nActele de stare civilă (certificat de căsătorie, certificate de naștere ale copiilor) nu se solicită implicit - se colectează doar dacă Ana are nevoie de ele pentru drepturi specifice, precum zile libere pentru evenimente familiale.\n\n## Exemplu: Calculul perioadei de probă pentru un post de execuție\nIon Marinescu este angajat ca operator introducere date (funcție de execuție) începând cu data de 3 august 2026. Conform art. 31 din Codul Muncii, perioada de probă maximă pentru funcțiile de execuție este de 90 de zile calendaristice.\n\nCalcul: 3 august 2026 + 90 de zile calendaristice = 1 noiembrie 2026. Așadar, perioada de probă a lui Ion poate dura, cel mult, până la 1 noiembrie 2026 inclusiv.\n\nÎn acest interval, oricare dintre părți (angajator sau salariat) poate înceta contractul individual de muncă printr-o simplă notificare scrisă, fără preaviz și fără a fi necesară motivarea deciziei. După expirarea perioadei de probă, contractul continuă în condiții normale, iar încetarea acestuia trebuie să respecte procedurile obișnuite (demisie, concediere cu preaviz, acord de părți etc.).\n\n## Exercițiu\nCompania XYZ SRL angajează un gestionar de depozit, Mihai Ionescu, cu data începerii activității stabilită pentru 10 septembrie 2026 (funcție de execuție). Fișa postului prevede expres, conform politicii interne aliniate la Legea 333/2003, obligativitatea prezentării cazierului judiciar. Stabiliți:\n(a) lista completă a documentelor obligatorii pentru dosarul de personal al lui Mihai;\n(b) data limită până la care CIM trebuie înregistrat în REVISAL;\n(c) data limită până la care se poate întinde perioada de probă, fiind funcție de execuție.\n\n**Soluție:** (a) Documente obligatorii: copie CI, CIM semnat, fișa de aptitudine de la medicina muncii (aviz 'apt', obținut înainte de 10 septembrie), fișa postului semnată, dovada instruirii SSM/PSI și cazier judiciar (obligatoriu în acest caz, conform cerinței specifice a postului de gestionar). Diplome/certificate de calificare dacă postul le impune. Actele de stare civilă nu sunt obligatorii implicit - se colectează doar dacă Mihai solicită drepturi condiționate de acestea.\n\n(b) CIM trebuie înregistrat în REVISAL cel târziu în ziua anterioară începerii activității, deci cel târziu pe 9 septembrie 2026 (art. 4, HG 905/2017).\n\n(c) Fiind funcție de execuție, perioada de probă maximă este de 90 de zile calendaristice de la 10 septembrie 2026, deci se poate întinde până la 9 decembrie 2026 inclusiv.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "dosar-personal-documente-obligatorii",
+    "md": "Dosarul de personal este colecția de documente pe care angajatorul are obligația să o constituie și să o păstreze pentru fiecare salariat, de la angajare până la încetarea raporturilor de muncă (și încă mulți ani după, pentru anumite acte). Baza legală principală este HG 905/2017 privind Registrul general de evidență a salariaților (REVISAL), coroborată cu Codul Muncii (Legea 53/2003) și cu legislația privind protecția datelor (Regulamentul UE 2016/679 - GDPR).\n\nScopul dosarului este dublu: pe de o parte dovedește că angajatorul respectă legislația muncii (existența CIM, informarea salariatului, evaluările medicale), iar pe de altă parte servește ca sursă de date pentru calculul drepturilor salariale, al vechimii și al eventualelor beneficii.\n\nÎn practică, HR trebuie să colecteze documentele *înainte* de prima zi de lucru, deoarece unele dintre ele (fișa de aptitudine, actele de identitate) condiționează legal începerea activității, iar înregistrarea CIM în REVISAL trebuie făcută cel târziu cu o zi lucrătoare înainte.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "documente-obligatorii-la-angajare",
+    "md": "La întocmirea dosarului de personal pentru un salariat nou, angajatorul solicită, de regulă, următoarele categorii de documente:\n\n1. **Act de identitate** (CI/BI) - copie, pentru verificarea datelor din CIM (CNP, domiciliu) și pentru declarațiile fiscale.\n2. **CV și, dacă e cazul, scrisoare de intenție** - documentează procesul de recrutare; nu sunt obligatorii legal, dar recomandate pentru dosar.\n3. **Diplome de studii și certificate de calificare** - copii, relevante pentru postul ocupat; angajatorul poate solicita originalul pentru confruntare, dar NU poate reține originalul.\n4. **Fișa de aptitudine (medicina muncii)** - obligatorie înainte de începerea activității, conform Legii 319/2006 și HG 355/2007; fără avizul 'apt', salariatul nu poate începe efectiv munca.\n5. **Adeverință/extras privind vechimea în muncă** - utilă pentru calculul sporurilor de vechime, se poate obține și din extrasul REVISAL al angajatorului anterior.\n6. **Acte de stare civilă** (certificat de căsătorie, certificate de naștere ale copiilor) - necesare doar dacă salariatul solicită drepturi condiționate de aceste situații; nu se colectează implicit pentru toți angajații.\n7. **Cazier judiciar** - NU este un document standard; se solicită doar când o lege specială sau fișa postului o impune explicit (ex: gestionari, agenți de pază, funcții publice, activități cu minori).\n8. **Declarație pe proprie răspundere** privind eventuale alte raporturi de muncă (relevantă pentru cumul de contracte și calculul corect al contribuțiilor).\n9. **Fișa postului semnată** și dovada instruirii SSM/PSI.\n\nRegula generală: se colectează strict ce este necesar pentru încheierea CIM și îndeplinirea obligațiilor legale - orice document suplimentar trebuie justificat printr-o cerință legală sau de post.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "gdpr-dosar-personal-minimizare",
+    "md": "Dosarul de personal conține date cu caracter personal, unele sensibile (stare de sănătate, eventual cazier judiciar). Regulamentul UE 2016/679 (GDPR) impune angajatorului principiul minimizării datelor: se colectează doar informațiile strict necesare scopului - încheierea și executarea CIM, obligații legale, fiscale și de securitate în muncă.\n\nÎn practică, aceasta înseamnă:\n- Accesul la dosarul de personal este restricționat la personalul HR și, punctual, la conducere/audit; nu este un document public în cadrul companiei.\n- Documentele sensibile (fișa medicală, cazierul, atunci când se solicită legal) se păstrează separat sau cu acces suplimentar restricționat.\n- Salariatul trebuie informat, la angajare, despre ce date i se colectează și în ce scop, de regulă printr-o notă de informare GDPR anexată la CIM.\n- Perioada de păstrare a documentelor variază: statele de plată se păstrează 50 de ani, dar alte documente (CV, corespondență de recrutare pentru candidați nerespinși) au termene de păstrare mult mai scurte și trebuie șterse/arhivate conform politicii interne de retenție.\n\nAceastă secțiune nu constituie consultanță juridică individuală; pentru situații specifice recomandăm verificarea cu un consultant juridic sau specialist GDPR.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG 905/2017 privind Registrul general de evidență a salariaților",
+    "article": "art. 4",
+    "effective": "2017-08-01",
+    "md": "Angajatorul are obligația de a înregistra contractul individual de muncă în REVISAL cel târziu în ziua anterioară începerii activității de către salariatul în cauză. Netransmiterea la timp a datelor în registru constituie contravenție și se sancționează conform HG 905/2017. Această obligație este independentă de existența tuturor documentelor 'opționale' din dosarul de personal (diplome, acte stare civilă) - CIM se poate înregistra chiar dacă unele documente administrative sunt completate ulterior, cu condiția ca elementele obligatorii ale contractului (părți, funcție, salariu, durată) să fie stabilite.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b4"
+   },
+   {
+    "type": "warning",
+    "md": "Cazierul judiciar nu poate fi solicitat 'din oficiu' tuturor candidaților. Colectarea lui fără temei legal sau fără legătură directă cu fișa postului poate fi considerată prelucrare excesivă de date personale (încălcare GDPR) și eventual discriminare la angajare. Solicitați cazier judiciar doar atunci când o normă specială o impune (ex: Legea 333/2003 pentru personalul de pază, legislația privind protecția minorilor, funcții publice) sau când natura postului (gestiune de valori, acces la informații clasificate) justifică obiectiv cerința.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b5"
+   },
+   {
+    "type": "example",
+    "title": "Cronologia colectării documentelor pentru un angajat nou",
+    "concept_key": "timeline-documente-angajare",
+    "md": "Compania ABC SRL angajează o contabilă, Ana Popescu, cu data de începere a activității stabilită pentru 15 iulie 2026 (post de execuție, fără cerințe speciale de cazier judiciar). Cronologia colectării documentelor arată astfel:\n\n- **Cu 7-10 zile înainte** (până pe 6-8 iulie 2026): Ana este programată la medicina muncii pentru control la angajare; se obține fișa de aptitudine cu avizul 'apt'.\n- **Cu 3-5 zile înainte**: se colectează actul de identitate (copie CI), diplomele de studii relevante pentru post (copie + confruntare cu originalul), CV-ul și, dacă există, adeverința de vechime de la angajatorul anterior.\n- **Cu cel puțin 1 zi lucrătoare înainte** (până pe 14 iulie 2026): se semnează CIM și se transmite în REVISAL - termenul legal este cel târziu ziua anterioară începerii activității.\n- **În prima zi de lucru** (15 iulie 2026): Ana semnează fișa postului, parcurge instruirea SSM/PSI și primește nota de informare GDPR privind prelucrarea datelor sale personale.\n\nActele de stare civilă (certificat de căsătorie, certificate de naștere ale copiilor) nu se solicită implicit - se colectează doar dacă Ana are nevoie de ele pentru drepturi specifice, precum zile libere pentru evenimente familiale.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calculul perioadei de probă pentru un post de execuție",
+    "concept_key": "calcul-perioada-proba",
+    "md": "Ion Marinescu este angajat ca operator introducere date (funcție de execuție) începând cu data de 3 august 2026. Conform art. 31 din Codul Muncii, perioada de probă maximă pentru funcțiile de execuție este de 90 de zile calendaristice.\n\nCalcul: 3 august 2026 + 90 de zile calendaristice = 1 noiembrie 2026. Așadar, perioada de probă a lui Ion poate dura, cel mult, până la 1 noiembrie 2026 inclusiv.\n\nÎn acest interval, oricare dintre părți (angajator sau salariat) poate înceta contractul individual de muncă printr-o simplă notificare scrisă, fără preaviz și fără a fi necesară motivarea deciziei. După expirarea perioadei de probă, contractul continuă în condiții normale, iar încetarea acestuia trebuie să respecte procedurile obișnuite (demisie, concediere cu preaviz, acord de părți etc.).",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Compania XYZ SRL angajează un gestionar de depozit, Mihai Ionescu, cu data începerii activității stabilită pentru 10 septembrie 2026 (funcție de execuție). Fișa postului prevede expres, conform politicii interne aliniate la Legea 333/2003, obligativitatea prezentării cazierului judiciar. Stabiliți:\n(a) lista completă a documentelor obligatorii pentru dosarul de personal al lui Mihai;\n(b) data limită până la care CIM trebuie înregistrat în REVISAL;\n(c) data limită până la care se poate întinde perioada de probă, fiind funcție de execuție.",
+    "solution_md": "(a) Documente obligatorii: copie CI, CIM semnat, fișa de aptitudine de la medicina muncii (aviz 'apt', obținut înainte de 10 septembrie), fișa postului semnată, dovada instruirii SSM/PSI și cazier judiciar (obligatoriu în acest caz, conform cerinței specifice a postului de gestionar). Diplome/certificate de calificare dacă postul le impune. Actele de stare civilă nu sunt obligatorii implicit - se colectează doar dacă Mihai solicită drepturi condiționate de acestea.\n\n(b) CIM trebuie înregistrat în REVISAL cel târziu în ziua anterioară începerii activității, deci cel târziu pe 9 septembrie 2026 (art. 4, HG 905/2017).\n\n(c) Fiind funcție de execuție, perioada de probă maximă este de 90 de zile calendaristice de la 10 septembrie 2026, deci se poate întinde până la 9 decembrie 2026 inclusiv.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cazierul judiciar la angajare se solicită:",
+    "choices": [
+     "Întotdeauna, pentru orice candidat, indiferent de post",
+     "Doar când o lege specială sau fișa postului o prevede expres, în legătură cu natura postului",
+     "Doar dacă angajatul are peste 5 ani vechime",
+     "Niciodată, este interzis prin GDPR"
+    ],
+    "answer": 1,
+    "explain": "Colectarea cazierului 'din oficiu' pentru toți candidații, fără temei legal sau legătură cu postul, este considerată prelucrare excesivă de date și poate constitui discriminare la angajare.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Termenul legal de înregistrare a contractului individual de muncă (CIM) în REVISAL este:",
+    "choices": [
+     "În aceeași zi cu începerea activității",
+     "Cel târziu în ziua anterioară începerii activității",
+     "În termen de 5 zile lucrătoare de la începerea activității",
+     "Lunar, odată cu depunerea D112"
+    ],
+    "answer": 1,
+    "explain": "Conform art. 4 din HG 905/2017, CIM trebuie transmis în REVISAL cel târziu în ziua lucrătoare anterioară începerii activității de către salariat.",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este REVISAL?",
+    "back": "Registrul general de evidență a salariaților, registru electronic în care angajatorii transmit datele privind CIM, reglementat de HG 905/2017.",
+    "concept_key": "revisal-definitie",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de înregistrare a CIM în REVISAL?",
+    "back": "Cel târziu în ziua anterioară începerii activității salariatului (art. 4, HG 905/2017).",
+    "concept_key": "revisal-termen-inregistrare",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este perioada de probă maximă pentru funcțiile de execuție?",
+    "back": "90 de zile calendaristice, conform art. 31 din Codul Muncii (Legea 53/2003).",
+    "concept_key": "perioada-proba-executie",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este perioada de probă maximă pentru funcțiile de conducere?",
+    "back": "120 de zile calendaristice, conform art. 31 din Codul Muncii (Legea 53/2003).",
+    "concept_key": "perioada-proba-conducere",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când se solicită cazierul judiciar la angajare?",
+    "back": "Doar când o lege specială sau fișa postului o prevede expres, în legătură directă cu natura postului (ex: gestionari, pază, funcții publice).",
+    "concept_key": "cazier-judiciar-angajare",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document medical este obligatoriu înainte de începerea activității?",
+    "back": "Fișa de aptitudine emisă de medicina muncii, cu avizul 'apt', conform Legii 319/2006 și HG 355/2007.",
+    "concept_key": "fisa-aptitudine-medicina-muncii",
+    "blockId": "cmjjuxw8x00hhumkpg9zlhyjf-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1245,
+   "flashcards": 6
+  }
+ }
+}

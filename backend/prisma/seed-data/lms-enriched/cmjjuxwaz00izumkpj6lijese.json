@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwaz00izumkpj6lijese",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Declarații Fiscale HR",
+ "lesson": "Declarația D100",
+ "category": "HR_COMPLIANCE",
+ "content": "# Declarația D100\n\nDeclarația 100 (D100), oficial „Declarație privind obligațiile de plată la bugetul de stat”, este formularul unic prin care persoanele juridice, plătitorii de venituri către persoane fizice și alte entități înregistrate fiscal raportează lunar sau trimestrial către ANAF o serie de impozite și taxe datorate direct bugetului de stat.\n\nSpre deosebire de D112 (dedicată exclusiv salariilor și contribuțiilor sociale) sau D300 (TVA), D100 este un formular „umbrelă”: adună într-un singur document mai multe tipuri de obligații fiscale, fiecare cu un cod propriu de identificare a obligației bugetare. Printre cele mai frecvente pentru un angajator: impozitul pe profit sau pe veniturile microîntreprinderilor, impozitul pe dividendele distribuite asociaților, impozitul reținut la sursă din alte venituri decât cele salariale (dobânzi, drepturi de autor, premii) și vărsămintele datorate pentru neangajarea persoanelor cu handicap.\n\nPentru un specialist de resurse umane sau salarizare, D100 devine relevantă ori de câte ori firma face plăți către persoane fizice în afara relațiilor de muncă clasice (colaboratori, autori, administratori neasimilați) sau distribuie dividende asociaților-angajați.\n\nCea mai frecventă confuzie a începătorilor: impozitul pe venitul din salarii NU se declară prin D100. Toate veniturile din salarii și veniturile asimilate salariilor se raportează exclusiv prin D112 (Declarație privind obligațiile de plată a contribuțiilor sociale, impozitului pe venit și evidența nominală a persoanelor asigurate), lunar, până pe data de 25 a lunii următoare.\n\nSunt „venituri asimilate salariilor” (deci raportate în D112, nu în D100), conform art. 76 alin. (2) din Codul fiscal: indemnizațiile administratorilor numiți prin contract de mandat, indemnizațiile membrilor consiliului de administrație, sumele primite de directori pe bază de mandat, indemnizațiile de conducere și orice alte sume asimilate salariilor.\n\nÎn D100 rămân doar obligațiile care NU au legătură cu un raport de muncă sau de mandat: impozitul pe dividende, impozitul pe dobânzi, impozitul reținut la sursă din drepturi de proprietate intelectuală plătite unor colaboratori fără CIM, impozitul pe veniturile din alte surse, precum și obligații asimilate precum vărsămintele pentru persoanele cu handicap neîncadrate.\n\nRegula practică pentru departamentul HR: dacă suma plătită unei persoane fizice trece prin statul de plată și fluturaș, raportarea e în D112; dacă e o plată punctuală, în afara CIM sau a contractului de mandat, verificați dacă se încadrează la D100.\n\nStructura D100 este organizată pe secțiuni, câte una pentru fiecare tip de impozit sau taxă, fiecare identificată printr-un cod de obligație bugetară distinct (impozitul pe dividende, impozitul pe veniturile din drepturi de proprietate intelectuală etc. au coduri separate). Plătitorul completează doar secțiunile corespunzătoare obligațiilor pe care le are efectiv în perioada de raportare.\n\nPeriodicitatea depunerii depinde de tipul de obligație și de categoria contribuabilului: majoritatea impozitelor reținute la sursă (dividende, drepturi de autor, alte venituri) se declară lunar, până pe data de 25 a lunii următoare celei în care s-a făcut plata venitului sau reținerea impozitului. Pentru anumite obligații (de exemplu impozitul pe profit al unor contribuabili mici) periodicitatea poate fi trimestrială.\n\nDepunerea se face exclusiv electronic, prin Spațiul Privat Virtual (SPV) sau prin programul de asistență pus la dispoziție de ANAF, cu semnătură electronică calificată. Erorile constatate ulterior se corectează printr-o declarație rectificativă, care înlocuiește integral declarația inițială pentru perioada respectivă — nu se depun „completări” parțiale.\n\n> Temei legal: OPANAF nr. 587/2016 Anexele 1–2 (model și instrucțiuni de completare a formularului 100), cu modificările și completările ulterioare; coroborat cu Legea nr. 207/2015 (Codul de procedură fiscală), art. 102 (în vigoare de la 2016-02-01)\nModelul, conținutul și instrucțiunile de completare ale formularului 100 sunt aprobate prin Ordinul președintelui ANAF nr. 587/2016, republicat, cu modificările și completările ulterioare. Codul de procedură fiscală (Legea nr. 207/2015, art. 102) stabilește regulile generale privind depunerea și rectificarea declarațiilor fiscale. Deoarece formularul și codurile de obligații bugetare se actualizează frecvent, verificați întotdeauna versiunea publicată curent pe portalul ANAF (secțiunea Declarații electronice) înainte de completare.\n\n⚠ Atenție la coordonarea D100 cu D112: dacă raportați din greșeală o indemnizație de administrator (venit asimilat salariilor) prin D100 în loc de D112, obligația nu se stinge — ANAF va considera D112 nedepusă corect pentru acea sumă, cu riscul unor majorări de întârziere și, în caz de control, al unor sancțiuni contravenționale conform Codului de procedură fiscală. De asemenea, selectarea unui cod de obligație bugetară greșit în D100 poate duce la înregistrarea plății la altă categorie de impozit decât cea reală, generând erori care se corectează greoi (cereri de îndreptare/compensare la ANAF). Verificați întotdeauna, înainte de depunere, natura juridică a fiecărei plăți către o persoană fizică: salariu sau venit asimilat → D112; orice altă reținere la sursă → D100.\n\n## Exemplu: Impozit reținut la sursă pentru un colaborator plătit prin drepturi de autor\nO firmă de training organizează un curs intern și plătește un formator extern (fără CIM, fără contract de mandat) printr-un contract de cesiune a drepturilor de proprietate intelectuală, cu un onorariu brut de 3.000 lei.\n\n**Calcul:**\n- Venit brut: 3.000 lei\n- Cheltuială forfetară deductibilă (cotă standard pentru drepturi de proprietate intelectuală, conform Codului fiscal — verificați procentul în vigoare la data plății): 40% × 3.000 = 1.200 lei\n- Bază impozabilă: 3.000 − 1.200 = 1.800 lei\n- Impozit pe venit reținut la sursă: 10% × 1.800 = **180 lei**\n- Sumă netă plătită colaboratorului: 3.000 − 180 = **2.820 lei**\n\nFirma reține și virează cei 180 lei către bugetul de stat și raportează suma prin D100, la secțiunea dedicată impozitului pe veniturile din drepturi de proprietate intelectuală — NU prin D112, întrucât persoana nu este salariat și nici administrator asimilat salariilor.\n\n## Exemplu: Vărsăminte pentru neangajarea persoanelor cu handicap — obligație raportată prin D100\nAngajatorii care depășesc pragul de salariați stabilit de Legea nr. 448/2006 privind protecția persoanelor cu handicap au obligația de a angaja persoane cu handicap într-un anumit procent din totalul angajaților sau, dacă nu o fac, de a plăti lunar o sumă către bugetul de stat, calculată prin raportare la salariul minim brut pe economie. Pragul de angajați și procentul exact trebuie verificate în forma actualizată a legii, deoarece pot fi modificate.\n\n**Exemplu ilustrativ** (doar pentru mecanismul de calcul, nu pentru procentul legal): dacă o firmă ar avea 2 locuri de muncă neocupate cu persoane cu handicap, iar obligația s-ar calcula la nivelul salariului minim brut în vigoare (4.325 lei, de la 1 iulie 2026):\n- Sumă datorată = 2 × 4.325 lei = **8.650 lei/lună**\n\nAceastă sumă se declară și se virează prin D100, la secțiunea dedicată vărsămintelor pentru persoanele cu handicap neîncadrate, până pe data de 25 a lunii următoare.\n\n## Exercițiu\nFirma ContaPlus SRL are, într-o lună, următoarele plăți către persoane fizice:\n1. Salarii nete pentru 12 angajați cu CIM;\n2. Indemnizație de 2.500 lei brut pentru administratorul numit prin contract de mandat (neasigurat în alt sistem);\n3. Onorariu de 1.500 lei brut pentru un consultant IT plătit prin contract de drepturi de autor, pentru un manual de utilizare software.\n\nCerințe:\na) Pentru fiecare dintre cele 3 plăți, precizați dacă obligația fiscală aferentă se raportează prin D112 sau prin D100.\nb) Calculați impozitul reținut la sursă pentru situația de la punctul 3, aplicând cota forfetară de cheltuieli de 40% și impozitul pe venit de 10%.\n\n**Soluție:** a) Încadrare:\n- Salariile celor 12 angajați → **D112** (venituri din salarii, art. 76 alin. 1 Cod fiscal);\n- Indemnizația administratorului pe contract de mandat → **D112**, întrucât este venit asimilat salariilor (art. 76 alin. 2 lit. a Cod fiscal), chiar dacă administratorul nu are CIM;\n- Onorariul consultantului IT pe drepturi de autor → **D100**, secțiunea impozit pe veniturile din drepturi de proprietate intelectuală, pentru că nu este nici salariat, nici administrator asimilat.\n\nb) Calcul impozit pentru onorariul de 1.500 lei:\n- Cheltuială forfetară: 40% × 1.500 = 600 lei\n- Bază impozabilă: 1.500 − 600 = 900 lei\n- Impozit reținut la sursă: 10% × 900 = **90 lei**\n- Sumă netă plătită consultantului: 1.500 − 90 = **1.410 lei**\n\nCei 90 lei se raportează și se virează prin D100, până pe 25 ale lunii următoare.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "d100-definitie",
+    "md": "Declarația 100 (D100), oficial „Declarație privind obligațiile de plată la bugetul de stat”, este formularul unic prin care persoanele juridice, plătitorii de venituri către persoane fizice și alte entități înregistrate fiscal raportează lunar sau trimestrial către ANAF o serie de impozite și taxe datorate direct bugetului de stat.\n\nSpre deosebire de D112 (dedicată exclusiv salariilor și contribuțiilor sociale) sau D300 (TVA), D100 este un formular „umbrelă”: adună într-un singur document mai multe tipuri de obligații fiscale, fiecare cu un cod propriu de identificare a obligației bugetare. Printre cele mai frecvente pentru un angajator: impozitul pe profit sau pe veniturile microîntreprinderilor, impozitul pe dividendele distribuite asociaților, impozitul reținut la sursă din alte venituri decât cele salariale (dobânzi, drepturi de autor, premii) și vărsămintele datorate pentru neangajarea persoanelor cu handicap.\n\nPentru un specialist de resurse umane sau salarizare, D100 devine relevantă ori de câte ori firma face plăți către persoane fizice în afara relațiilor de muncă clasice (colaboratori, autori, administratori neasimilați) sau distribuie dividende asociaților-angajați.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "d100-vs-d112",
+    "md": "Cea mai frecventă confuzie a începătorilor: impozitul pe venitul din salarii NU se declară prin D100. Toate veniturile din salarii și veniturile asimilate salariilor se raportează exclusiv prin D112 (Declarație privind obligațiile de plată a contribuțiilor sociale, impozitului pe venit și evidența nominală a persoanelor asigurate), lunar, până pe data de 25 a lunii următoare.\n\nSunt „venituri asimilate salariilor” (deci raportate în D112, nu în D100), conform art. 76 alin. (2) din Codul fiscal: indemnizațiile administratorilor numiți prin contract de mandat, indemnizațiile membrilor consiliului de administrație, sumele primite de directori pe bază de mandat, indemnizațiile de conducere și orice alte sume asimilate salariilor.\n\nÎn D100 rămân doar obligațiile care NU au legătură cu un raport de muncă sau de mandat: impozitul pe dividende, impozitul pe dobânzi, impozitul reținut la sursă din drepturi de proprietate intelectuală plătite unor colaboratori fără CIM, impozitul pe veniturile din alte surse, precum și obligații asimilate precum vărsămintele pentru persoanele cu handicap neîncadrate.\n\nRegula practică pentru departamentul HR: dacă suma plătită unei persoane fizice trece prin statul de plată și fluturaș, raportarea e în D112; dacă e o plată punctuală, în afara CIM sau a contractului de mandat, verificați dacă se încadrează la D100.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "d100-structura-termene",
+    "md": "Structura D100 este organizată pe secțiuni, câte una pentru fiecare tip de impozit sau taxă, fiecare identificată printr-un cod de obligație bugetară distinct (impozitul pe dividende, impozitul pe veniturile din drepturi de proprietate intelectuală etc. au coduri separate). Plătitorul completează doar secțiunile corespunzătoare obligațiilor pe care le are efectiv în perioada de raportare.\n\nPeriodicitatea depunerii depinde de tipul de obligație și de categoria contribuabilului: majoritatea impozitelor reținute la sursă (dividende, drepturi de autor, alte venituri) se declară lunar, până pe data de 25 a lunii următoare celei în care s-a făcut plata venitului sau reținerea impozitului. Pentru anumite obligații (de exemplu impozitul pe profit al unor contribuabili mici) periodicitatea poate fi trimestrială.\n\nDepunerea se face exclusiv electronic, prin Spațiul Privat Virtual (SPV) sau prin programul de asistență pus la dispoziție de ANAF, cu semnătură electronică calificată. Erorile constatate ulterior se corectează printr-o declarație rectificativă, care înlocuiește integral declarația inițială pentru perioada respectivă — nu se depun „completări” parțiale.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OPANAF nr. 587/2016",
+    "article": "Anexele 1–2 (model și instrucțiuni de completare a formularului 100), cu modificările și completările ulterioare; coroborat cu Legea nr. 207/2015 (Codul de procedură fiscală), art. 102",
+    "effective": "2016-02-01",
+    "md": "Modelul, conținutul și instrucțiunile de completare ale formularului 100 sunt aprobate prin Ordinul președintelui ANAF nr. 587/2016, republicat, cu modificările și completările ulterioare. Codul de procedură fiscală (Legea nr. 207/2015, art. 102) stabilește regulile generale privind depunerea și rectificarea declarațiilor fiscale. Deoarece formularul și codurile de obligații bugetare se actualizează frecvent, verificați întotdeauna versiunea publicată curent pe portalul ANAF (secțiunea Declarații electronice) înainte de completare.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b4"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la coordonarea D100 cu D112: dacă raportați din greșeală o indemnizație de administrator (venit asimilat salariilor) prin D100 în loc de D112, obligația nu se stinge — ANAF va considera D112 nedepusă corect pentru acea sumă, cu riscul unor majorări de întârziere și, în caz de control, al unor sancțiuni contravenționale conform Codului de procedură fiscală. De asemenea, selectarea unui cod de obligație bugetară greșit în D100 poate duce la înregistrarea plății la altă categorie de impozit decât cea reală, generând erori care se corectează greoi (cereri de îndreptare/compensare la ANAF). Verificați întotdeauna, înainte de depunere, natura juridică a fiecărei plăți către o persoană fizică: salariu sau venit asimilat → D112; orice altă reținere la sursă → D100.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b5"
+   },
+   {
+    "type": "example",
+    "title": "Impozit reținut la sursă pentru un colaborator plătit prin drepturi de autor",
+    "concept_key": "d100-impozit-drepturi-autor",
+    "md": "O firmă de training organizează un curs intern și plătește un formator extern (fără CIM, fără contract de mandat) printr-un contract de cesiune a drepturilor de proprietate intelectuală, cu un onorariu brut de 3.000 lei.\n\n**Calcul:**\n- Venit brut: 3.000 lei\n- Cheltuială forfetară deductibilă (cotă standard pentru drepturi de proprietate intelectuală, conform Codului fiscal — verificați procentul în vigoare la data plății): 40% × 3.000 = 1.200 lei\n- Bază impozabilă: 3.000 − 1.200 = 1.800 lei\n- Impozit pe venit reținut la sursă: 10% × 1.800 = **180 lei**\n- Sumă netă plătită colaboratorului: 3.000 − 180 = **2.820 lei**\n\nFirma reține și virează cei 180 lei către bugetul de stat și raportează suma prin D100, la secțiunea dedicată impozitului pe veniturile din drepturi de proprietate intelectuală — NU prin D112, întrucât persoana nu este salariat și nici administrator asimilat salariilor.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b6"
+   },
+   {
+    "type": "example",
+    "title": "Vărsăminte pentru neangajarea persoanelor cu handicap — obligație raportată prin D100",
+    "concept_key": "d100-varsaminte-handicap",
+    "md": "Angajatorii care depășesc pragul de salariați stabilit de Legea nr. 448/2006 privind protecția persoanelor cu handicap au obligația de a angaja persoane cu handicap într-un anumit procent din totalul angajaților sau, dacă nu o fac, de a plăti lunar o sumă către bugetul de stat, calculată prin raportare la salariul minim brut pe economie. Pragul de angajați și procentul exact trebuie verificate în forma actualizată a legii, deoarece pot fi modificate.\n\n**Exemplu ilustrativ** (doar pentru mecanismul de calcul, nu pentru procentul legal): dacă o firmă ar avea 2 locuri de muncă neocupate cu persoane cu handicap, iar obligația s-ar calcula la nivelul salariului minim brut în vigoare (4.325 lei, de la 1 iulie 2026):\n- Sumă datorată = 2 × 4.325 lei = **8.650 lei/lună**\n\nAceastă sumă se declară și se virează prin D100, la secțiunea dedicată vărsămintelor pentru persoanele cu handicap neîncadrate, până pe data de 25 a lunii următoare.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Firma ContaPlus SRL are, într-o lună, următoarele plăți către persoane fizice:\n1. Salarii nete pentru 12 angajați cu CIM;\n2. Indemnizație de 2.500 lei brut pentru administratorul numit prin contract de mandat (neasigurat în alt sistem);\n3. Onorariu de 1.500 lei brut pentru un consultant IT plătit prin contract de drepturi de autor, pentru un manual de utilizare software.\n\nCerințe:\na) Pentru fiecare dintre cele 3 plăți, precizați dacă obligația fiscală aferentă se raportează prin D112 sau prin D100.\nb) Calculați impozitul reținut la sursă pentru situația de la punctul 3, aplicând cota forfetară de cheltuieli de 40% și impozitul pe venit de 10%.",
+    "solution_md": "a) Încadrare:\n- Salariile celor 12 angajați → **D112** (venituri din salarii, art. 76 alin. 1 Cod fiscal);\n- Indemnizația administratorului pe contract de mandat → **D112**, întrucât este venit asimilat salariilor (art. 76 alin. 2 lit. a Cod fiscal), chiar dacă administratorul nu are CIM;\n- Onorariul consultantului IT pe drepturi de autor → **D100**, secțiunea impozit pe veniturile din drepturi de proprietate intelectuală, pentru că nu este nici salariat, nici administrator asimilat.\n\nb) Calcul impozit pentru onorariul de 1.500 lei:\n- Cheltuială forfetară: 40% × 1.500 = 600 lei\n- Bază impozabilă: 1.500 − 600 = 900 lei\n- Impozit reținut la sursă: 10% × 900 = **90 lei**\n- Sumă netă plătită consultantului: 1.500 − 90 = **1.410 lei**\n\nCei 90 lei se raportează și se virează prin D100, până pe 25 ale lunii următoare.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Impozitul pe venitul din indemnizația unui administrator numit prin contract de mandat se raportează prin:",
+    "choices": [
+     "D112, fiindcă este venit asimilat salariilor",
+     "D100, fiindcă administratorul nu are CIM",
+     "D300, alături de TVA",
+     "Nu se raportează, fiind scutit de impozit"
+    ],
+    "answer": 0,
+    "explain": "Indemnizațiile administratorilor pe bază de mandat sunt venituri asimilate salariilor (art. 76 alin. 2 Cod fiscal) și se raportează prin D112, indiferent de faptul că administratorul nu are contract individual de muncă.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul standard de depunere a D100 pentru obligațiile lunare?",
+    "choices": [
+     "Data de 25 a lunii următoare perioadei de raportare",
+     "Data de 15 a lunii curente",
+     "Trimestrial, în ultima zi a trimestrului",
+     "Anual, o dată cu bilanțul"
+    ],
+    "answer": 0,
+    "explain": "Ca și D112, majoritatea obligațiilor raportate prin D100 (impozit pe dividende, drepturi de autor, alte venituri) au termen lunar de depunere și plată: data de 25 a lunii următoare.",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce raportează Declarația 100 (D100)?",
+    "back": "Obligații de plată la bugetul de stat altele decât salariile: impozit pe profit/microîntreprinderi, impozit pe dividende, impozit reținut la sursă din alte venituri (dobânzi, drepturi de autor), vărsăminte pentru neangajarea persoanelor cu handicap ș.a.",
+    "concept_key": "d100-definitie",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "D100 sau D112 pentru impozitul pe salarii?",
+    "back": "D112 — impozitul pe venit din salarii și veniturile asimilate salariilor (inclusiv indemnizația administratorului pe mandat) se declară exclusiv prin D112, niciodată prin D100.",
+    "concept_key": "d100-vs-d112",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Termenul de depunere a D100",
+    "back": "Până pe data de 25 a lunii următoare perioadei de raportare, pentru majoritatea obligațiilor lunare (impozit pe dividende, drepturi de autor, alte venituri).",
+    "concept_key": "d100-termen-depunere",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se depune D100?",
+    "back": "Exclusiv electronic, prin Spațiul Privat Virtual (SPV) sau programul de asistență ANAF, semnată cu certificat digital calificat.",
+    "concept_key": "d100-depunere-electronica",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act aprobă modelul formularului D100?",
+    "back": "OPANAF nr. 587/2016 (republicat, cu modificări ulterioare), coroborat cu Legea nr. 207/2015 (Codul de procedură fiscală), art. 102 privind depunerea declarațiilor fiscale.",
+    "concept_key": "d100-baza-legala",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cota de impozit pe venit reținută la sursă pentru drepturi de proprietate intelectuală",
+    "back": "10%, aplicată bazei impozabile rămase după deducerea cheltuielii forfetare din venitul brut; se raportează prin D100.",
+    "concept_key": "d100-impozit-drepturi-autor",
+    "blockId": "cmjjuxwaz00izumkpj6lijese-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1232,
+   "flashcards": 6
+  }
+ }
+}

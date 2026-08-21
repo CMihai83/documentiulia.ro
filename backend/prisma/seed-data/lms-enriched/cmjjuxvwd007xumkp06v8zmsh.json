@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvwd007xumkp06v8zmsh",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scaling Agile și Pregătire Examen",
+ "lesson": "Simulare examen PSM I (80 întrebări)",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Simulare examen PSM I (80 întrebări) (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Conform Scrum Guide 2020, care este durata maximă a unui Sprint?",
+     "choices": [
+      "2 săptămâni, fără excepții",
+      "O lună calendaristică",
+      "6 săptămâni",
+      "Nu există o limită maximă definită"
+     ],
+     "answer": 1,
+     "explain": "Scrum Guide 2020 stabilește că un Sprint durează maximum o lună calendaristică; durate mai scurte permit un ciclu de inspecție și adaptare mai frecvent, dar limita superioară rămâne o lună.",
+     "concept_key": "sprint_duration"
+    },
+    {
+     "q": "Într-un proiect de digitalizare derulat de o companie românească, cine este responsabil de maximizarea valorii produsului rezultat din activitatea Scrum Team-ului?",
+     "choices": [
+      "Scrum Master",
+      "Product Owner",
+      "Development Team (echipa de dezvoltatori)",
+      "Project Manager"
+     ],
+     "answer": 1,
+     "explain": "Product Owner-ul este responsabil de maximizarea valorii produsului, în principal prin gestionarea Product Backlog-ului: ordonare, claritate și transparență a elementelor acestuia.",
+     "concept_key": "product_owner_role"
+    },
+    {
+     "q": "Care dintre următoarele NU este un eveniment Scrum conform Scrum Guide 2020?",
+     "choices": [
+      "Sprint Planning",
+      "Daily Scrum",
+      "Sprint Review",
+      "Ședință de status săptămânală cu managementul"
+     ],
+     "answer": 3,
+     "explain": "Scrum Guide 2020 definește exact cinci elemente legate de timp: Sprint-ul (containerul) și evenimentele Sprint Planning, Daily Scrum, Sprint Review și Sprint Retrospective. O ședință de status separată nu face parte din cadru.",
+     "concept_key": "scrum_events"
+    },
+    {
+     "q": "Care este angajamentul (commitment) asociat Sprint Backlog-ului?",
+     "choices": [
+      "Definition of Done",
+      "Sprint Goal",
+      "Product Goal",
+      "Increment"
+     ],
+     "answer": 1,
+     "explain": "Fiecare artefact Scrum are un angajament asociat: Product Backlog → Product Goal, Sprint Backlog → Sprint Goal, Increment → Definition of Done. Sprint Goal-ul oferă coerență și direcție Development Team-ului pe durata Sprintului.",
+     "concept_key": "scrum_commitments"
+    },
+    {
+     "q": "Care este scopul principal al evenimentului Daily Scrum?",
+     "choices": [
+      "Raportarea individuală a statusului către Scrum Master",
+      "Inspectarea progresului către Sprint Goal și adaptarea Sprint Backlog-ului pentru următoarele 24 de ore",
+      "Alocarea sarcinilor zilnice de către Scrum Master către dezvoltatori",
+      "Evaluarea performanței individuale a fiecărui membru al echipei"
+     ],
+     "answer": 1,
+     "explain": "Daily Scrum este un eveniment de 15 minute pentru Development Team, folosit pentru a inspecta progresul către Sprint Goal și a adapta Sprint Backlog-ul; nu este o ședință de raportare ierarhică.",
+     "concept_key": "daily_scrum_purpose"
+    },
+    {
+     "q": "Într-o implementare ERP cu mai multe echipe Scrum lucrând pe același Product Backlog, rolul din framework-ul Nexus (Scrum.org) responsabil de coordonarea integrării muncii echipelor este:",
+     "choices": [
+      "Release Train Engineer",
+      "Nexus Integration Team",
+      "Chief Product Owner",
+      "Enterprise Agile Coach"
+     ],
+     "answer": 1,
+     "explain": "Nexus Integration Team este un rol specific framework-ului Nexus, format din Product Owner, Scrum Master și membri ai echipelor, responsabil de identificarea și rezolvarea dependențelor și problemelor de integrare dintre echipele care contribuie la același Increment.",
+     "concept_key": "nexus_integration_team"
+    },
+    {
+     "q": "În SAFe (Scaled Agile Framework), conceptul de Agile Release Train (ART) are rolul de a:",
+     "choices": [
+      "Înlocui complet echipele Scrum cu structuri Kanban",
+      "Alinia mai multe echipe agile într-o cadență comună de livrare, organizată în Program Increments",
+      "Elimina necesitatea unui Product Owner la nivel de echipă",
+      "Înlocui Sprinturile cu proiecte de tip Waterfall"
+     ],
+     "answer": 1,
+     "explain": "Agile Release Train este structura organizatorică din SAFe care reunește mai multe echipe agile (de regulă 5-12) într-o cadență sincronizată de planificare și livrare, structurată în Program Increments (de obicei 4-6 Sprinturi).",
+     "concept_key": "safe_agile_release_train"
+    },
+    {
+     "q": "Spre deosebire de SAFe, principiul central al LeSS (Large-Scale Scrum) este:",
+     "choices": [
+      "Adăugarea de roluri și niveluri de management suplimentare pentru coordonare",
+      "Minimalismul: păstrarea structurii Scrum standard cât mai simplă posibil, chiar și la scară mare",
+      "Eliminarea completă a rolului de Product Owner",
+      "Utilizarea exclusivă a metodologiei Waterfall pentru proiecte de amploare"
+     ],
+     "answer": 1,
+     "explain": "LeSS se ghidează după principiul „more with less”: un singur Product Owner și un singur Product Backlog pentru toate echipele, fără roluri sau structuri suplimentare, extinzând regulile Scrum standard la scară, nu adăugând un nou cadru peste ele.",
+     "concept_key": "less_principle"
+    },
+    {
+     "q": "Examenul de certificare Professional Scrum Master I (PSM I), administrat de Scrum.org, are următorul format:",
+     "choices": [
+      "80 de întrebări grilă, prag de promovare 85%, durată 120 de minute",
+      "50 de întrebări grilă, prag de promovare 90%, durată 60 de minute",
+      "80 de întrebări grilă, prag de promovare 70%, durată 90 de minute",
+      "100 de întrebări grilă, prag de promovare 80%, durată 180 de minute"
+     ],
+     "answer": 0,
+     "explain": "Examenul PSM I constă în 80 de întrebări (grilă simplă, grilă multiplă, adevărat/fals), cu un prag de promovare de 85% și o durată alocată de 120 de minute; se susține individual, online, pe platforma Scrum.org.",
+     "concept_key": "psm1_exam_format"
+    },
+    {
+     "q": "O echipă care implementează un ERP într-o companie din România lucrează în Sprinturi de 3 săptămâni. La Sprint Review, Product Owner-ul constată că Increment-ul nu respectă integral Definition of Done. Care este acțiunea corectă conform Scrum Guide?",
+     "choices": [
+      "Increment-ul este oricum prezentat ca finalizat clientului, deoarece Sprint Review a avut deja loc",
+      "Increment-ul NU poate fi considerat „Done” și nu poate fi lansat sau inclus în Product Backlog ca finalizat, indiferent de discuțiile din Sprint Review",
+      "Scrum Master decide unilateral, fără implicarea echipei, dacă Increment-ul este „Done”",
+      "Definition of Done poate fi ignorată temporar dacă echipa este sub presiunea unui deadline"
+     ],
+     "answer": 1,
+     "explain": "Definition of Done este un standard formal, obiectiv, aplicat de întregul Scrum Team: dacă un element al Product Backlog-ului nu îl respectă, acesta nu poate fi numit Increment și nu poate fi lansat sau considerat finalizat, indiferent de presiunea timpului sau de discuțiile din Sprint Review.",
+     "concept_key": "definition_of_done_increment"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvpk0035umkpkwz6gvif",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Introducere în VBA",
+ "lesson": "Exercițiu - Macro simplu",
+ "category": "EXCEL_VBA",
+ "content": "# Exercițiu - Macro simplu\n\n## Ce este un macro și cum îl înregistrezi\n\nUn **macro** este o secvență de instrucțiuni scrise în VBA (Visual Basic for Applications) care automatizează acțiuni pe care altfel le-ai repeta manual în Excel: formatare de tabele, calcule, generare de rapoarte, trimitere de e-mailuri etc. VBA este limbajul de programare integrat în toate aplicațiile Office, iar Excel îl folosește pentru a controla obiecte precum foi de calcul, celule sau grafice.\n\nCel mai simplu mod de a începe este **înregistrarea unui macro** (Macro Recorder). Îl activezi din tab-ul **Dezvoltator** (Developer) — dacă nu îl vezi în ribbon, activează-l din File > Options > Customize Ribbon, bifează „Developer”. Apeși **Record Macro**, dai un nume macro-ului (fără spații, fără a începe cu cifră), alegi unde se salvează (This Workbook, New Workbook sau Personal Macro Workbook) și apeși OK. Din acel moment, Excel „filmează” fiecare click, selecție și formatare pe care o faci și le transformă automat în cod VBA. Apeși **Stop Recording** când ai terminat secvența de acțiuni. Dacă alegi Personal Macro Workbook, macro-ul devine disponibil în orice registru deschis, nu doar în fișierul curent — util pentru acțiuni pe care le repeți frecvent în mai multe rapoarte.\n\nRecorder-ul este util pentru a învăța sintaxa VBA prin exemplu, dar codul generat este de multe ori redundant: include selecții inutile (`Select` urmat de `Selection.xxx`) și proprietăți setate explicit chiar dacă erau deja la valoarea implicită. În lecția aceasta vei înregistra un macro de formatare, apoi îl vei citi și rescrie manual, mai curat și mai eficient.\n\n## Editorul VBA și structura unui macro\n\nEditorul VBA se deschide cu **Alt+F11** din orice fereastră Excel. În partea stângă vezi **Project Explorer**, unde fiecare registru de lucru deschis apare ca un „VBAProject”, cu foile de calcul (Sheet1, Sheet2 ...) și, dacă există macro-uri, un folder **Modules** care conține module de cod (Module1, Module2 etc.). Când înregistrezi un macro, Excel creează automat un modul nou și scrie codul acolo.\n\nOrice macro are structura de bază:\n\n```vba\nSub NumeMacro()\n    ' instrucțiunile macro-ului\nEnd Sub\n```\n\n`Sub` (subrutină) marchează începutul unei proceduri care nu returnează o valoare — spre deosebire de o `Function`, care returnează un rezultat. Tot ce se află între `Sub NumeMacro()` și `End Sub` se execută în ordine, de sus în jos, atunci când rulezi macro-ul. Poți rula un macro din editor apăsând **F5**, din Excel cu **Alt+F8** (deschide lista de macro-uri) sau atașându-l unui buton de pe foaie ori din ribbon.\n\nLiniile care încep cu apostrof (`'`) sunt comentarii — nu se execută, servesc doar la documentarea codului. Este o practică bună să comentezi în română fiecare bloc important, mai ales când codul va fi întreținut de un coleg.\n\n## Obiectul Range și proprietățile de formatare\n\nCea mai folosită referință în VBA pentru Excel este obiectul **Range**, care reprezintă o celulă sau un grup de celule. Îl poți referi în două moduri echivalente:\n\n```vba\nRange(\"A1\")        ' o singură celulă\nRange(\"A1:D10\")     ' un interval de celule\nCells(1, 1)         ' aceeași celulă A1, prin rând și coloană\n```\n\nFiecare `Range` are proprietăți pe care le poți citi sau modifica din cod. Cele mai folosite la formatarea unui raport sunt:\n\n- `Font.Bold = True` — text îngroșat (aldin)\n- `Font.Color = RGB(255,255,255)` — culoare text (alb, în format RGB)\n- `Interior.Color = RGB(31,73,125)` — culoare de fundal a celulei\n- `Borders.LineStyle = xlContinuous` — adaugă borduri continue\n- `NumberFormat = \"#.##0,00 \"\"lei\"\"\"` — format numeric cu separator de mii și simbol monetar\n- `Columns.AutoFit` — ajustează automat lățimea coloanelor la conținut\n\nReține că setările regionale din România folosesc virgula ca separator zecimal și punctul ca separator de mii (ex. 1.250,50 lei), spre deosebire de formatul american. Codul `NumberFormat` de mai sus respectă convenția românească, iar `Cells(rand, coloana)` este util în special atunci când parcurgi tabelul într-o buclă, folosind variabile pentru rând și coloană în loc de o adresă fixă.\n\n## Exemplu: Înregistrarea unui macro care formatează un raport de vânzări\nPresupunem că firma **Comerț Prietenos SRL** ține un raport lunar de vânzări în foaia „Raport”, cu antetul pe rândul 1 (A1:D1: „Produs”, „Cantitate”, „Preț unitar”, „Valoare”) și date pe rândurile 2-6. Pornești înregistrarea macro-ului, selectezi A1:D1, aplici bold, fundal albastru și text alb, apoi selectezi A1:D6 și adaugi borduri, iar la final dai AutoFit pe coloanele A:D. Oprești înregistrarea. Codul generat automat de Excel arată, de regulă, așa:\n\n```vba\nSub FormatareRaport_Inregistrat()\n    Range(\"A1:D1\").Select\n    Selection.Font.Bold = True\n    With Selection.Font\n        .Color = -16777216\n        .TintAndShade = 0\n    End With\n    Selection.Font.Color = RGB(255, 255, 255)\n    Selection.Interior.Color = RGB(31, 73, 125)\n    \n    Range(\"A1:D6\").Select\n    Selection.Borders.LineStyle = xlContinuous\n    \n    Columns(\"A:D\").Select\n    Selection.Columns.AutoFit\nEnd Sub\n```\n\nObservă tiparul repetitiv: `Range(...).Select`, urmat de acțiuni pe `Selection`. Acesta este stilul tipic al recorder-ului — funcțional, dar ineficient, pentru că selectarea efectivă a celulelor în interfață (schimbarea vizuală a selecției) încetinește execuția și nu este necesară din punct de vedere logic. Observă și valoarea ciudată `-16777216` pentru culoare: este modul intern prin care Excel reprezintă „culoarea automată” a textului, o particularitate tipică a codului generat automat, pe care un cod scris manual o poate omite complet.\n\n## Exemplu: Rescrierea codului: fără Select, cu referințe directe\nCodul de mai sus poate fi rescris fără `Select`, referind direct obiectele `Range`, ceea ce rulează mai rapid și este mai ușor de citit:\n\n```vba\nSub FormatareRaport_Curat()\n    ' Formatare antet: aldin, fundal albastru, text alb\n    With Range(\"A1:D1\")\n        .Font.Bold = True\n        .Font.Color = RGB(255, 255, 255)\n        .Interior.Color = RGB(31, 73, 125)\n    End With\n    \n    ' Borduri pentru tot tabelul (antet + date)\n    Range(\"A1:D6\").Borders.LineStyle = xlContinuous\n    \n    ' Ajustare automată a lățimii coloanelor\n    Columns(\"A:D\").AutoFit\nEnd Sub\n```\n\nInstrucțiunea `With Range(\"A1:D1\") ... End With` grupează mai multe proprietăți aplicate aceluiași obiect, fără a-l repeta la fiecare linie (fiecare proprietate din interior începe cu punct: `.Font.Bold`). Rezultatul vizual este identic cu varianta înregistrată, dar codul rulează mai rapid (nu mută selecția vizibilă pe ecran, ceea ce contează mai ales pe tabele mari) și este mult mai ușor de întreținut — dacă vrei să schimbi intervalul de date, modifici o singură adresă, nu patru linii diferite.\n\n⚠ Pentru ca un macro să funcționeze data viitoare când deschizi fișierul, trebuie să salvezi registrul de lucru în format **.xlsm** (Excel Macro-Enabled Workbook) — formatul standard **.xlsx** nu poate conține cod VBA și îl elimină automat la salvare. La deschiderea unui fișier .xlsm provenit din altă sursă, Excel afișează implicit o bară de securitate „Macro-urile au fost dezactivate”, cu un buton „Enable Content” — activează macro-urile doar dacă ai încredere în sursa fișierului, deoarece macro-urile pot executa cod cu acces la fișiere și la alte aplicații de pe calculator.\n\n## Exercițiu\nAi primit sarcina de a automatiza formatarea raportului lunar de vânzări al firmei **Comerț Prietenos SRL**. Datele se află în foaia „Raport”, în intervalul **A1:D6** (rândul 1 = antet, rândurile 2-6 = date; coloana D conține valori în lei).\n\nScrie un macro numit **FormateazaRaport** care, atunci când este rulat, face automat următoarele:\n\n1. Aplică pe antet (A1:D1): text aldin, culoare fundal albastru închis (RGB 31, 73, 125), text alb.\n2. Adaugă borduri continue pe tot intervalul A1:D6.\n3. Formatează coloana de valori (D2:D6) cu separator de mii și simbolul „lei” (ex. 1.250,00 lei).\n4. Ajustează automat lățimea coloanelor A:D la conținut.\n\nScrie codul complet, cu comentarii în română, folosind structura `With` pentru a evita `Select`.\n\n**Soluție:** ```vba\nSub FormateazaRaport()\n    ' 1. Formatare antet: aldin, fundal albastru, text alb\n    With Range(\"A1:D1\")\n        .Font.Bold = True\n        .Font.Color = RGB(255, 255, 255)\n        .Interior.Color = RGB(31, 73, 125)\n    End With\n    \n    ' 2. Borduri continue pentru tot tabelul\n    Range(\"A1:D6\").Borders.LineStyle = xlContinuous\n    \n    ' 3. Format numeric pentru coloana de valori (lei, separator de mii)\n    Range(\"D2:D6\").NumberFormat = \"#.##0,00 \"\"lei\"\"\"\n    \n    ' 4. Ajustare automată a lățimii coloanelor\n    Columns(\"A:D\").AutoFit\nEnd Sub\n```\n\nDupă rulare, antetul apare aldin pe fundal albastru cu text alb, tabelul are borduri clare, iar valorile din coloana D apar formatate similar cu „1.250,00 lei”, cu coloanele ajustate automat la conținut. Observă că soluția nu folosește deloc `Select` — fiecare acțiune se aplică direct pe obiectul `Range` vizat, exact stilul recomandat pentru cod VBA de întreținut.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "macro-inregistrare-excel",
+    "md": "## Ce este un macro și cum îl înregistrezi\n\nUn **macro** este o secvență de instrucțiuni scrise în VBA (Visual Basic for Applications) care automatizează acțiuni pe care altfel le-ai repeta manual în Excel: formatare de tabele, calcule, generare de rapoarte, trimitere de e-mailuri etc. VBA este limbajul de programare integrat în toate aplicațiile Office, iar Excel îl folosește pentru a controla obiecte precum foi de calcul, celule sau grafice.\n\nCel mai simplu mod de a începe este **înregistrarea unui macro** (Macro Recorder). Îl activezi din tab-ul **Dezvoltator** (Developer) — dacă nu îl vezi în ribbon, activează-l din File > Options > Customize Ribbon, bifează „Developer”. Apeși **Record Macro**, dai un nume macro-ului (fără spații, fără a începe cu cifră), alegi unde se salvează (This Workbook, New Workbook sau Personal Macro Workbook) și apeși OK. Din acel moment, Excel „filmează” fiecare click, selecție și formatare pe care o faci și le transformă automat în cod VBA. Apeși **Stop Recording** când ai terminat secvența de acțiuni. Dacă alegi Personal Macro Workbook, macro-ul devine disponibil în orice registru deschis, nu doar în fișierul curent — util pentru acțiuni pe care le repeți frecvent în mai multe rapoarte.\n\nRecorder-ul este util pentru a învăța sintaxa VBA prin exemplu, dar codul generat este de multe ori redundant: include selecții inutile (`Select` urmat de `Selection.xxx`) și proprietăți setate explicit chiar dacă erau deja la valoarea implicită. În lecția aceasta vei înregistra un macro de formatare, apoi îl vei citi și rescrie manual, mai curat și mai eficient.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "structura-macro-vba-sub",
+    "md": "## Editorul VBA și structura unui macro\n\nEditorul VBA se deschide cu **Alt+F11** din orice fereastră Excel. În partea stângă vezi **Project Explorer**, unde fiecare registru de lucru deschis apare ca un „VBAProject”, cu foile de calcul (Sheet1, Sheet2 ...) și, dacă există macro-uri, un folder **Modules** care conține module de cod (Module1, Module2 etc.). Când înregistrezi un macro, Excel creează automat un modul nou și scrie codul acolo.\n\nOrice macro are structura de bază:\n\n```vba\nSub NumeMacro()\n    ' instrucțiunile macro-ului\nEnd Sub\n```\n\n`Sub` (subrutină) marchează începutul unei proceduri care nu returnează o valoare — spre deosebire de o `Function`, care returnează un rezultat. Tot ce se află între `Sub NumeMacro()` și `End Sub` se execută în ordine, de sus în jos, atunci când rulezi macro-ul. Poți rula un macro din editor apăsând **F5**, din Excel cu **Alt+F8** (deschide lista de macro-uri) sau atașându-l unui buton de pe foaie ori din ribbon.\n\nLiniile care încep cu apostrof (`'`) sunt comentarii — nu se execută, servesc doar la documentarea codului. Este o practică bună să comentezi în română fiecare bloc important, mai ales când codul va fi întreținut de un coleg.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "obiect-range-proprietati-formatare",
+    "md": "## Obiectul Range și proprietățile de formatare\n\nCea mai folosită referință în VBA pentru Excel este obiectul **Range**, care reprezintă o celulă sau un grup de celule. Îl poți referi în două moduri echivalente:\n\n```vba\nRange(\"A1\")        ' o singură celulă\nRange(\"A1:D10\")     ' un interval de celule\nCells(1, 1)         ' aceeași celulă A1, prin rând și coloană\n```\n\nFiecare `Range` are proprietăți pe care le poți citi sau modifica din cod. Cele mai folosite la formatarea unui raport sunt:\n\n- `Font.Bold = True` — text îngroșat (aldin)\n- `Font.Color = RGB(255,255,255)` — culoare text (alb, în format RGB)\n- `Interior.Color = RGB(31,73,125)` — culoare de fundal a celulei\n- `Borders.LineStyle = xlContinuous` — adaugă borduri continue\n- `NumberFormat = \"#.##0,00 \"\"lei\"\"\"` — format numeric cu separator de mii și simbol monetar\n- `Columns.AutoFit` — ajustează automat lățimea coloanelor la conținut\n\nReține că setările regionale din România folosesc virgula ca separator zecimal și punctul ca separator de mii (ex. 1.250,50 lei), spre deosebire de formatul american. Codul `NumberFormat` de mai sus respectă convenția românească, iar `Cells(rand, coloana)` este util în special atunci când parcurgi tabelul într-o buclă, folosind variabile pentru rând și coloană în loc de o adresă fixă.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b3"
+   },
+   {
+    "type": "example",
+    "title": "Înregistrarea unui macro care formatează un raport de vânzări",
+    "concept_key": "inregistrare-macro-formatare-raport",
+    "md": "Presupunem că firma **Comerț Prietenos SRL** ține un raport lunar de vânzări în foaia „Raport”, cu antetul pe rândul 1 (A1:D1: „Produs”, „Cantitate”, „Preț unitar”, „Valoare”) și date pe rândurile 2-6. Pornești înregistrarea macro-ului, selectezi A1:D1, aplici bold, fundal albastru și text alb, apoi selectezi A1:D6 și adaugi borduri, iar la final dai AutoFit pe coloanele A:D. Oprești înregistrarea. Codul generat automat de Excel arată, de regulă, așa:\n\n```vba\nSub FormatareRaport_Inregistrat()\n    Range(\"A1:D1\").Select\n    Selection.Font.Bold = True\n    With Selection.Font\n        .Color = -16777216\n        .TintAndShade = 0\n    End With\n    Selection.Font.Color = RGB(255, 255, 255)\n    Selection.Interior.Color = RGB(31, 73, 125)\n    \n    Range(\"A1:D6\").Select\n    Selection.Borders.LineStyle = xlContinuous\n    \n    Columns(\"A:D\").Select\n    Selection.Columns.AutoFit\nEnd Sub\n```\n\nObservă tiparul repetitiv: `Range(...).Select`, urmat de acțiuni pe `Selection`. Acesta este stilul tipic al recorder-ului — funcțional, dar ineficient, pentru că selectarea efectivă a celulelor în interfață (schimbarea vizuală a selecției) încetinește execuția și nu este necesară din punct de vedere logic. Observă și valoarea ciudată `-16777216` pentru culoare: este modul intern prin care Excel reprezintă „culoarea automată” a textului, o particularitate tipică a codului generat automat, pe care un cod scris manual o poate omite complet.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b4"
+   },
+   {
+    "type": "example",
+    "title": "Rescrierea codului: fără Select, cu referințe directe",
+    "concept_key": "cod-vba-fara-select-with",
+    "md": "Codul de mai sus poate fi rescris fără `Select`, referind direct obiectele `Range`, ceea ce rulează mai rapid și este mai ușor de citit:\n\n```vba\nSub FormatareRaport_Curat()\n    ' Formatare antet: aldin, fundal albastru, text alb\n    With Range(\"A1:D1\")\n        .Font.Bold = True\n        .Font.Color = RGB(255, 255, 255)\n        .Interior.Color = RGB(31, 73, 125)\n    End With\n    \n    ' Borduri pentru tot tabelul (antet + date)\n    Range(\"A1:D6\").Borders.LineStyle = xlContinuous\n    \n    ' Ajustare automată a lățimii coloanelor\n    Columns(\"A:D\").AutoFit\nEnd Sub\n```\n\nInstrucțiunea `With Range(\"A1:D1\") ... End With` grupează mai multe proprietăți aplicate aceluiași obiect, fără a-l repeta la fiecare linie (fiecare proprietate din interior începe cu punct: `.Font.Bold`). Rezultatul vizual este identic cu varianta înregistrată, dar codul rulează mai rapid (nu mută selecția vizibilă pe ecran, ceea ce contează mai ales pe tabele mari) și este mult mai ușor de întreținut — dacă vrei să schimbi intervalul de date, modifici o singură adresă, nu patru linii diferite.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Pentru ca un macro să funcționeze data viitoare când deschizi fișierul, trebuie să salvezi registrul de lucru în format **.xlsm** (Excel Macro-Enabled Workbook) — formatul standard **.xlsx** nu poate conține cod VBA și îl elimină automat la salvare. La deschiderea unui fișier .xlsm provenit din altă sursă, Excel afișează implicit o bară de securitate „Macro-urile au fost dezactivate”, cu un buton „Enable Content” — activează macro-urile doar dacă ai încredere în sursa fișierului, deoarece macro-urile pot executa cod cu acces la fișiere și la alte aplicații de pe calculator.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai primit sarcina de a automatiza formatarea raportului lunar de vânzări al firmei **Comerț Prietenos SRL**. Datele se află în foaia „Raport”, în intervalul **A1:D6** (rândul 1 = antet, rândurile 2-6 = date; coloana D conține valori în lei).\n\nScrie un macro numit **FormateazaRaport** care, atunci când este rulat, face automat următoarele:\n\n1. Aplică pe antet (A1:D1): text aldin, culoare fundal albastru închis (RGB 31, 73, 125), text alb.\n2. Adaugă borduri continue pe tot intervalul A1:D6.\n3. Formatează coloana de valori (D2:D6) cu separator de mii și simbolul „lei” (ex. 1.250,00 lei).\n4. Ajustează automat lățimea coloanelor A:D la conținut.\n\nScrie codul complet, cu comentarii în română, folosind structura `With` pentru a evita `Select`.",
+    "solution_md": "```vba\nSub FormateazaRaport()\n    ' 1. Formatare antet: aldin, fundal albastru, text alb\n    With Range(\"A1:D1\")\n        .Font.Bold = True\n        .Font.Color = RGB(255, 255, 255)\n        .Interior.Color = RGB(31, 73, 125)\n    End With\n    \n    ' 2. Borduri continue pentru tot tabelul\n    Range(\"A1:D6\").Borders.LineStyle = xlContinuous\n    \n    ' 3. Format numeric pentru coloana de valori (lei, separator de mii)\n    Range(\"D2:D6\").NumberFormat = \"#.##0,00 \"\"lei\"\"\"\n    \n    ' 4. Ajustare automată a lățimii coloanelor\n    Columns(\"A:D\").AutoFit\nEnd Sub\n```\n\nDupă rulare, antetul apare aldin pe fundal albastru cu text alb, tabelul are borduri clare, iar valorile din coloana D apar formatate similar cu „1.250,00 lei”, cu coloanele ajustate automat la conținut. Observă că soluția nu folosește deloc `Select` — fiecare acțiune se aplică direct pe obiectul `Range` vizat, exact stilul recomandat pentru cod VBA de întreținut.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce format de fișier trebuie folosit pentru a păstra codul VBA la salvare?",
+    "choices": [
+     ".xlsx",
+     ".xlsm",
+     ".csv",
+     ".pdf"
+    ],
+    "answer": 1,
+    "explain": "Formatul .xlsx nu poate conține cod VBA; la salvare, Excel îl elimină automat. Trebuie folosit .xlsm (Excel Macro-Enabled Workbook).",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principalul dezavantaj al codului generat de Macro Recorder față de codul scris manual cu Range direct?",
+    "choices": [
+     "Nu poate formata culori",
+     "Include Select/Selection inutile, ceea ce îl face mai lent și mai greu de întreținut",
+     "Nu poate rula de mai multe ori",
+     "Nu poate fi salvat într-un modul"
+    ],
+    "answer": 1,
+    "explain": "Recorder-ul selectează efectiv celulele pe ecran înainte de a le formata (Select + Selection), ceea ce este redundant din punct de vedere logic și încetinește execuția față de referirea directă a obiectelor Range.",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce combinație de taste deschide Editorul VBA în Excel?",
+    "back": "Alt+F11",
+    "concept_key": "editor-vba-alt-f11",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este structura de bază a unui macro în VBA?",
+    "back": "Sub NumeMacro() ... End Sub — tot codul dintre aceste linii se execută în ordine când rulezi macro-ul.",
+    "concept_key": "structura-macro-vba-sub",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce format de fișier Excel este obligatoriu pentru a păstra codul VBA?",
+    "back": ".xlsm (Excel Macro-Enabled Workbook) — formatul .xlsx elimină automat codul VBA la salvare.",
+    "concept_key": "format-xlsm-macro",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce linie de cod VBA aplică text aldin (bold) unui interval de celule?",
+    "back": "Range(\"A1:D1\").Font.Bold = True",
+    "concept_key": "proprietate-font-bold",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce instrucțiune VBA ajustează automat lățimea coloanelor la conținut?",
+    "back": "Columns(\"A:D\").AutoFit",
+    "concept_key": "autofit-coloane-vba",
+    "blockId": "cmjjuxvpk0035umkpkwz6gvif-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1344,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvza009wumkpkglvcahs",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Agile & Hybrid",
+ "lesson": "Agile Metrics",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Agile Metrics\n\n## De ce metricile Agile sunt diferite\n\nÎn abordările predictive (waterfall), progresul se măsoară prin compararea costurilor și termenelor planificate cu cele reale — Earned Value Management (EVM): PV, EV, AC, SPI, CPI. În Agile, echipele lucrează în cicluri scurte de livrare, cu feedback continuu, iar un backlog care se reprioritizează constant. Metricile EVM clasice nu surprind bine această realitate, pentru că presupun un scop fix, stabilit de la început.\n\nDe aceea, Agile folosește **metrici empirice**, bazate pe date istorice reale ale echipei, nu pe estimări fixe făcute la începutul proiectului. Cele patru metrici esențiale pe care ECO (Examination Content Outline) le testează frecvent sunt: **velocity**, **burndown/burnup charts**, **cycle time** și **lead time**. Toate au un scop comun: să ofere predictibilitate — să răspundă la întrebarea „când vom termina?” — fără planificarea detaliată pe termen lung, tipică proiectelor predictive.\n\nPentru examen, reține: în abordările **hibride** (predictive + agile), Project Managerul trebuie să știe să traducă aceste metrici agile în rapoarte de progres pe care sponsori obișnuiți cu EVM să le înțeleagă, fără a forța echipa agile să adopte metrici incompatibile cu ritmul ei natural de lucru.\n\n## Velocity — viteza de livrare a echipei\n\n**Velocity** reprezintă cantitatea de muncă (de obicei exprimată în story points, uneori în ore ideale) pe care o echipă Scrum o finalizează **complet** („Done”, conform Definition of Done) într-un sprint.\n\n**Formulă:** Velocity = suma story points-urilor pentru elementele finalizate integral într-un sprint.\n\nRegulă strictă, testată frecvent la examen: elementele parțial finalizate **nu se numără deloc**. Dacă un story de 8 puncte este finalizat 80% la sfârșitul sprintului (de exemplu, fără code review sau fără teste), el contribuie cu **0 puncte**, nu cu 6,4.\n\nVelocity se calculează de obicei ca medie a ultimelor 3-4 sprinturi, pentru o valoare stabilă, și se folosește pentru:\n- **Forecast** — câte sprinturi mai sunt necesare pentru backlogul rămas;\n- **Sprint Planning** — câte story points poate realist prelua echipa în sprintul următor.\n\nVelocity este specifică unei echipe și unui context — echipe diferite estimează diferit ce înseamnă „1 story point”, așa că **nu se compară niciodată velocity între echipe**.\n\n## Burndown Chart vs Burnup Chart\n\nAmbele grafice arată progresul în timp, dar din perspective diferite.\n\n**Burndown Chart:** pe axa verticală arată cât MAI RĂMÂNE de făcut (story points sau ore), iar pe axa orizontală timpul (zile de sprint sau sprinturi succesive). Linia ideală scade liniar spre zero. Linia reală arată platouri (blocaje) și scăderi bruște (sprint review cu multe story-uri finalizate deodată).\n\nLimitare majoră: dacă scope-ul crește (se adaugă story-uri noi), burndown-ul devine confuz — nu distinge „am lucrat, dar am adăugat mai mult scope” de „nu am lucrat deloc”.\n\n**Burnup Chart:** afișează **două linii** — cantitatea de lucru finalizată (crescătoare) și scope-ul total (linia de sus, care poate crește dacă se adaugă cerințe noi). Avantajul major: face **vizibil scope creep-ul** — dacă linia de scope urcă, sponsorii înțeleg imediat de ce data de finalizare se mută, fără a confunda asta cu lipsa de performanță a echipei.\n\nPentru examen: burnup-ul este preferat când backlogul evoluează frecvent (produs nou, cerințe neclare la început), tocmai pentru transparența lui asupra scope creep-ului.\n\n## Cycle Time și Lead Time (Kanban)\n\nAceste metrici provin din Kanban și sunt esențiale pentru fluxul continuu de lucru, nu neapărat organizat în sprinturi.\n\n**Lead Time** = timpul total de la momentul în care o cerință este înregistrată (intră în backlog, ex. „To Do”) până este livrată clientului („Done”). Măsoară experiența clientului — cât așteaptă de la solicitare la livrare.\n\n**Cycle Time** = timpul de la momentul în care echipa ÎNCEPE efectiv lucrul la un element (intră în „In Progress”) până este finalizat („Done”). Măsoară eficiența internă a echipei.\n\nRelație obligatorie: **Lead Time ≥ Cycle Time**, întotdeauna, pentru că Lead Time include și timpul de așteptare în backlog, înainte ca lucrul să înceapă efectiv.\n\n**Legea lui Little (Little's Law)**, folosită pentru predictibilitate în flux continuu:\n\n**Cycle Time = Work in Progress (WIP) / Throughput**\n\nunde Throughput = numărul de elemente finalizate într-o perioadă de timp dată.\n\nPentru examen: reducerea WIP (limitarea numărului de elemente lucrate simultan) este principala pârghie pentru a scădea cycle time — acesta este principiul central al limitelor WIP din Kanban.\n\n## Exemplu: Calculul velocity și forecast pentru un proiect de implementare ERP\nO echipă lucrează la implementarea modulului de facturare într-un ERP pentru o companie RO.\n\n- **Sprint 1:** 18 puncte finalizate din 25 planificate (un story de 7 puncte a rămas neterminat — nu se numără deloc).\n- **Sprint 2:** 22 puncte finalizate.\n- **Sprint 3:** 20 puncte finalizate.\n\n**Velocity medie** = (18 + 22 + 20) / 3 = 60 / 3 = **20 puncte/sprint**.\n\nBacklogul rămas conține 140 story points.\n\n**Sprinturi necesare** = 140 / 20 = **7 sprinturi**.\n\nDacă durata unui sprint este de 2 săptămâni, proiectul mai are nevoie de aproximativ **14 săptămâni (~3,5 luni)** până la finalizare, presupunând velocity constantă și fără scope creep semnificativ.\n\n## Exemplu: Burnup chart cu scope creep și calcul cycle time\nUn proiect de digitalizare a proceselor de aprobare are un backlog inițial de **100 story points**. La sprintul 4, clientul solicită rapoarte suplimentare, iar scope-ul total crește la **130 puncte**. Până la acel moment, echipa finalizase **80 puncte**.\n\nÎn **burnup chart**, linia de scope urcă vizibil de la 100 la 130, iar linia de „lucru finalizat” arată 80 — diferența dintre cele două linii este explicată clar clientului drept scope creep, nu întârziere de execuție.\n\n**Calcul cycle time pentru un element individual:**\n- Task-ul intră în „In Progress” luni, 2026-03-02.\n- Task-ul este finalizat vineri, 2026-03-13.\n- **Cycle time** = 11 zile calendaristice.\n\n**Calcul lead time pentru același element:**\n- Task-ul a fost adăugat în backlog pe 2026-02-16.\n- Este livrat pe 2026-03-13.\n- **Lead time** = 25 zile calendaristice (întotdeauna ≥ cycle time, conform relației dintre cei doi indicatori).\n\n⚠ Nu folosi velocity pentru a compara echipe diferite sau ca metrică de evaluare individuală a performanței angajaților. Fiecare echipă estimează diferit ce înseamnă „1 story point”, iar presiunea de a crește artificial velocity duce la inflaționarea estimărilor („velocity gaming”) — un fenomen documentat care distruge utilitatea metricii ca instrument de predictibilitate.\n\n## Exercițiu\nO echipă Scrum lucrează la un proiect de automatizare a proceselor financiare pentru o companie RO. Ultimele 4 sprinturi (durată: 2 săptămâni fiecare) au avut următoarele story points finalizate complet: 15, 19, 17, 21. Backlogul rămas conține 132 story points.\n\na) Calculează velocity medie a echipei.\n\nb) Estimează câte sprinturi și câte săptămâni mai sunt necesare pentru finalizarea backlogului.\n\nc) Dacă WIP-ul curent al echipei este de 8 elemente, iar throughput-ul este de 4 elemente/săptămână, calculează cycle time-ul mediu folosind Legea lui Little.\n\n**Soluție:** **a)** Velocity medie = (15 + 19 + 17 + 21) / 4 = 72 / 4 = **18 puncte/sprint**.\n\n**b)** Sprinturi necesare = 132 / 18 = 7,33 → se rotunjește în sus la **8 sprinturi** (nu există fracțiuni de sprint). La 2 săptămâni/sprint, rezultă **16 săptămâni** până la finalizarea backlogului curent (fără a lua în calcul eventual scope creep).\n\n**c)** Cycle time = WIP / Throughput = 8 / 4 = **2 săptămâni** — timpul mediu în care un element parcurge fluxul de lucru, de la începerea efectivă până la finalizare.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "metrici-agile-vs-predictive",
+    "md": "## De ce metricile Agile sunt diferite\n\nÎn abordările predictive (waterfall), progresul se măsoară prin compararea costurilor și termenelor planificate cu cele reale — Earned Value Management (EVM): PV, EV, AC, SPI, CPI. În Agile, echipele lucrează în cicluri scurte de livrare, cu feedback continuu, iar un backlog care se reprioritizează constant. Metricile EVM clasice nu surprind bine această realitate, pentru că presupun un scop fix, stabilit de la început.\n\nDe aceea, Agile folosește **metrici empirice**, bazate pe date istorice reale ale echipei, nu pe estimări fixe făcute la începutul proiectului. Cele patru metrici esențiale pe care ECO (Examination Content Outline) le testează frecvent sunt: **velocity**, **burndown/burnup charts**, **cycle time** și **lead time**. Toate au un scop comun: să ofere predictibilitate — să răspundă la întrebarea „când vom termina?” — fără planificarea detaliată pe termen lung, tipică proiectelor predictive.\n\nPentru examen, reține: în abordările **hibride** (predictive + agile), Project Managerul trebuie să știe să traducă aceste metrici agile în rapoarte de progres pe care sponsori obișnuiți cu EVM să le înțeleagă, fără a forța echipa agile să adopte metrici incompatibile cu ritmul ei natural de lucru.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "agile-velocity",
+    "md": "## Velocity — viteza de livrare a echipei\n\n**Velocity** reprezintă cantitatea de muncă (de obicei exprimată în story points, uneori în ore ideale) pe care o echipă Scrum o finalizează **complet** („Done”, conform Definition of Done) într-un sprint.\n\n**Formulă:** Velocity = suma story points-urilor pentru elementele finalizate integral într-un sprint.\n\nRegulă strictă, testată frecvent la examen: elementele parțial finalizate **nu se numără deloc**. Dacă un story de 8 puncte este finalizat 80% la sfârșitul sprintului (de exemplu, fără code review sau fără teste), el contribuie cu **0 puncte**, nu cu 6,4.\n\nVelocity se calculează de obicei ca medie a ultimelor 3-4 sprinturi, pentru o valoare stabilă, și se folosește pentru:\n- **Forecast** — câte sprinturi mai sunt necesare pentru backlogul rămas;\n- **Sprint Planning** — câte story points poate realist prelua echipa în sprintul următor.\n\nVelocity este specifică unei echipe și unui context — echipe diferite estimează diferit ce înseamnă „1 story point”, așa că **nu se compară niciodată velocity între echipe**.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "burndown-burnup-chart",
+    "md": "## Burndown Chart vs Burnup Chart\n\nAmbele grafice arată progresul în timp, dar din perspective diferite.\n\n**Burndown Chart:** pe axa verticală arată cât MAI RĂMÂNE de făcut (story points sau ore), iar pe axa orizontală timpul (zile de sprint sau sprinturi succesive). Linia ideală scade liniar spre zero. Linia reală arată platouri (blocaje) și scăderi bruște (sprint review cu multe story-uri finalizate deodată).\n\nLimitare majoră: dacă scope-ul crește (se adaugă story-uri noi), burndown-ul devine confuz — nu distinge „am lucrat, dar am adăugat mai mult scope” de „nu am lucrat deloc”.\n\n**Burnup Chart:** afișează **două linii** — cantitatea de lucru finalizată (crescătoare) și scope-ul total (linia de sus, care poate crește dacă se adaugă cerințe noi). Avantajul major: face **vizibil scope creep-ul** — dacă linia de scope urcă, sponsorii înțeleg imediat de ce data de finalizare se mută, fără a confunda asta cu lipsa de performanță a echipei.\n\nPentru examen: burnup-ul este preferat când backlogul evoluează frecvent (produs nou, cerințe neclare la început), tocmai pentru transparența lui asupra scope creep-ului.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cycle-time-lead-time",
+    "md": "## Cycle Time și Lead Time (Kanban)\n\nAceste metrici provin din Kanban și sunt esențiale pentru fluxul continuu de lucru, nu neapărat organizat în sprinturi.\n\n**Lead Time** = timpul total de la momentul în care o cerință este înregistrată (intră în backlog, ex. „To Do”) până este livrată clientului („Done”). Măsoară experiența clientului — cât așteaptă de la solicitare la livrare.\n\n**Cycle Time** = timpul de la momentul în care echipa ÎNCEPE efectiv lucrul la un element (intră în „In Progress”) până este finalizat („Done”). Măsoară eficiența internă a echipei.\n\nRelație obligatorie: **Lead Time ≥ Cycle Time**, întotdeauna, pentru că Lead Time include și timpul de așteptare în backlog, înainte ca lucrul să înceapă efectiv.\n\n**Legea lui Little (Little's Law)**, folosită pentru predictibilitate în flux continuu:\n\n**Cycle Time = Work in Progress (WIP) / Throughput**\n\nunde Throughput = numărul de elemente finalizate într-o perioadă de timp dată.\n\nPentru examen: reducerea WIP (limitarea numărului de elemente lucrate simultan) este principala pârghie pentru a scădea cycle time — acesta este principiul central al limitelor WIP din Kanban.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul velocity și forecast pentru un proiect de implementare ERP",
+    "concept_key": "agile-velocity",
+    "md": "O echipă lucrează la implementarea modulului de facturare într-un ERP pentru o companie RO.\n\n- **Sprint 1:** 18 puncte finalizate din 25 planificate (un story de 7 puncte a rămas neterminat — nu se numără deloc).\n- **Sprint 2:** 22 puncte finalizate.\n- **Sprint 3:** 20 puncte finalizate.\n\n**Velocity medie** = (18 + 22 + 20) / 3 = 60 / 3 = **20 puncte/sprint**.\n\nBacklogul rămas conține 140 story points.\n\n**Sprinturi necesare** = 140 / 20 = **7 sprinturi**.\n\nDacă durata unui sprint este de 2 săptămâni, proiectul mai are nevoie de aproximativ **14 săptămâni (~3,5 luni)** până la finalizare, presupunând velocity constantă și fără scope creep semnificativ.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b5"
+   },
+   {
+    "type": "example",
+    "title": "Burnup chart cu scope creep și calcul cycle time",
+    "concept_key": "burndown-burnup-chart",
+    "md": "Un proiect de digitalizare a proceselor de aprobare are un backlog inițial de **100 story points**. La sprintul 4, clientul solicită rapoarte suplimentare, iar scope-ul total crește la **130 puncte**. Până la acel moment, echipa finalizase **80 puncte**.\n\nÎn **burnup chart**, linia de scope urcă vizibil de la 100 la 130, iar linia de „lucru finalizat” arată 80 — diferența dintre cele două linii este explicată clar clientului drept scope creep, nu întârziere de execuție.\n\n**Calcul cycle time pentru un element individual:**\n- Task-ul intră în „In Progress” luni, 2026-03-02.\n- Task-ul este finalizat vineri, 2026-03-13.\n- **Cycle time** = 11 zile calendaristice.\n\n**Calcul lead time pentru același element:**\n- Task-ul a fost adăugat în backlog pe 2026-02-16.\n- Este livrat pe 2026-03-13.\n- **Lead time** = 25 zile calendaristice (întotdeauna ≥ cycle time, conform relației dintre cei doi indicatori).",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu folosi velocity pentru a compara echipe diferite sau ca metrică de evaluare individuală a performanței angajaților. Fiecare echipă estimează diferit ce înseamnă „1 story point”, iar presiunea de a crește artificial velocity duce la inflaționarea estimărilor („velocity gaming”) — un fenomen documentat care distruge utilitatea metricii ca instrument de predictibilitate.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O echipă Scrum lucrează la un proiect de automatizare a proceselor financiare pentru o companie RO. Ultimele 4 sprinturi (durată: 2 săptămâni fiecare) au avut următoarele story points finalizate complet: 15, 19, 17, 21. Backlogul rămas conține 132 story points.\n\na) Calculează velocity medie a echipei.\n\nb) Estimează câte sprinturi și câte săptămâni mai sunt necesare pentru finalizarea backlogului.\n\nc) Dacă WIP-ul curent al echipei este de 8 elemente, iar throughput-ul este de 4 elemente/săptămână, calculează cycle time-ul mediu folosind Legea lui Little.",
+    "solution_md": "**a)** Velocity medie = (15 + 19 + 17 + 21) / 4 = 72 / 4 = **18 puncte/sprint**.\n\n**b)** Sprinturi necesare = 132 / 18 = 7,33 → se rotunjește în sus la **8 sprinturi** (nu există fracțiuni de sprint). La 2 săptămâni/sprint, rezultă **16 săptămâni** până la finalizarea backlogului curent (fără a lua în calcul eventual scope creep).\n\n**c)** Cycle time = WIP / Throughput = 8 / 4 = **2 săptămâni** — timpul mediu în care un element parcurge fluxul de lucru, de la începerea efectivă până la finalizare.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O echipă are un story de 13 puncte, finalizat 90% la sfârșitul sprintului, dar fără code review efectuat (Definition of Done nu este îndeplinit). Ce valoare se adaugă la velocity pentru acest story?",
+    "choices": [
+     "11,7 puncte (90% din 13)",
+     "13 puncte, pentru că este aproape gata",
+     "0 puncte, pentru că nu respectă Definition of Done",
+     "6,5 puncte, jumătate din valoare"
+    ],
+    "answer": 2,
+    "explain": "Velocity numără doar elementele complet finalizate conform Definition of Done. Un story parțial finalizat, indiferent de procentul de completare, contribuie cu 0 puncte la velocity.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele afirmații despre burnup chart este corectă?",
+    "choices": [
+     "Burnup chart nu poate arăta modificări de scope",
+     "Burnup chart afișează separat linia de scope total și linia de lucru finalizat, făcând vizibil scope creep-ul",
+     "Burnup chart se folosește doar în proiecte predictive (waterfall)",
+     "Burnup chart înlocuiește complet nevoia de a calcula velocity"
+    ],
+    "answer": 1,
+    "explain": "Spre deosebire de burndown chart, burnup chart arată două linii distincte — scope total și lucru finalizat — ceea ce face scope creep-ul vizibil și ușor de explicat sponsorilor.",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este velocity într-un proiect Agile?",
+    "back": "Cantitatea de story points finalizate complet (conform Definition of Done) de o echipă într-un sprint.",
+    "concept_key": "agile-velocity",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează Cycle Time folosind Legea lui Little?",
+    "back": "Cycle Time = WIP (Work in Progress) / Throughput (numărul de elemente finalizate pe unitatea de timp).",
+    "concept_key": "cycle-time-lead-time",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între Lead Time și Cycle Time?",
+    "back": "Lead Time măsoară de la cererea clientului până la livrare; Cycle Time măsoară doar de la începutul lucrului efectiv până la finalizare. Lead Time este întotdeauna mai mare sau egal cu Cycle Time.",
+    "concept_key": "cycle-time-lead-time",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce arată în plus un Burnup Chart față de un Burndown Chart?",
+    "back": "Burnup chart arată separat linia de scope total (care poate crește) și linia de lucru finalizat, făcând vizibil scope creep-ul.",
+    "concept_key": "burndown-burnup-chart",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Un story parțial finalizat (ex. 70%) la sfârșitul sprintului contribuie cât la velocity?",
+    "back": "0 puncte — doar elementele complet finalizate conform Definition of Done se numără la velocity.",
+    "concept_key": "agile-velocity",
+    "blockId": "cmjjuxvza009wumkpkglvcahs-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1138,
+   "flashcards": 5
+  }
+ }
+}

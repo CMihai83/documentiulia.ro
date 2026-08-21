@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw9900hpumkpprstck50",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Dosarul de Personal",
+ "lesson": "Template-uri documente",
+ "category": "HR_COMPLIANCE",
+ "content": "# Template-uri documente\n\n## Structura obligatorie a Contractului Individual de Muncă (CIM)\n\nContractul Individual de Muncă este documentul fundamental al dosarului de personal — orice altă piesă din dosar (act adițional, fișă de post, decizie) se raportează la el. Conform **art. 17 din Legea 53/2003 (Codul Muncii)**, angajatorul are obligația de informare prealabilă a salariatului, iar clauzele rezultate trebuie regăsite explicit în CIM. Un template de CIM complet și conform trebuie să conțină minimum:\n\n- **Identitatea părților** (angajator + salariat, cu toate datele de identificare);\n- **Locul de muncă** sau, dacă salariatul nu are un loc fix, mențiunea că prestează activitate în mai multe locații, cu sediul social al angajatorului ca reper;\n- **Funcția/ocupația**, conform Clasificării Ocupațiilor din România (COR), și **felul muncii** (atribuțiile generale, detaliate ulterior în fișa de post);\n- **Riscurile specifice postului**;\n- **Data încheierii** și, după caz, **durata contractului** (nedeterminată sau determinată, cu justificarea legală a determinării);\n- **Durata concediului de odihnă** anual;\n- **Condițiile de acordare a preavizului** de către oricare dintre părți;\n- **Salariul de bază**, alte elemente constitutive ale veniturilor (sporuri, indemnizații), periodicitatea plății;\n- **Durata normală a muncii**, exprimată în ore/zi și ore/săptămână;\n- **Indicarea contractului colectiv de muncă** aplicabil, dacă există;\n- **Durata perioadei de probă**, dacă a fost stabilită.\n\nUn pack de template-uri funcțional pentru un angajator tipic trebuie să acopere minimum trei variante: CIM pe durată nedeterminată cu normă întreagă, CIM pe durată determinată (cu temeiul legal al determinării) și CIM cu timp parțial, eventual combinat cu clauze de telemuncă. Fiecare variantă are clauze specifice suplimentare pe care un model generic le omite frecvent, de unde riscul de neconformitate la control.\n\n## Actul adițional — singurul instrument valid pentru modificarea CIM\n\nOrice modificare a unui element esențial al CIM — salariul, funcția, locul muncii, felul muncii sau durata timpului de lucru — se realizează **exclusiv prin act adițional**, semnat de ambele părți, în principiu **anterior** producerii efective a modificării. Excepțiile sunt strict prevăzute de lege (de exemplu, delegarea sau detașarea temporară, ori măsuri impuse de forță majoră).\n\nActul adițional nu este un document liber-format: el trebuie să identifice explicit contractul de bază (număr, dată de înregistrare în REVISAL), să precizeze clauza modificată prin comparație \"înainte / după\" și data de la care produce efecte, iar restul clauzelor CIM rămân neschimbate prin mențiune expresă. După semnare, actul adițional se transmite în Registrul General de Evidență a Salariaților (REVISAL), conform HG 905/2017. Termenul exact de transmitere diferă în funcție de tipul modificării (salariu, funcție, suspendare etc.) și a fost revizuit succesiv prin acte normative ulterioare — **recomandăm verificarea termenului legal în vigoare la data fiecărei modificări**, direct pe portalul REVISAL sau cu un specialist, înainte de a stabili fluxul intern de transmitere. Netransmiterea la termen este contravenție și se sancționează de Inspecția Muncii.\n\nUn pack de template-uri complet pentru actele adiționale acoperă cel puțin: majorare/modificare salarială, schimbare de funcție sau atribuții, trecere la telemuncă, prelungirea unui CIM pe durată determinată și modificarea normei de lucru (întreagă → parțială sau invers).\n\n## Fișa de post — documentul-oglindă al CIM\n\nCodul Muncii nu impune un model unic de fișă de post, însă aceasta este documentul pe care Inspectoratul Teritorial de Muncă (ITM) îl solicită sistematic la control pentru a verifica dacă atribuțiile efectiv exercitate de salariat corespund cu \"felul muncii\" înscris în CIM. **Fișa de post trebuie corelată strict cu CIM** — nu poate conține atribuții mai largi sau diferite de cele care rezultă din contract; orice discrepanță este un risc de sancțiune la control și, în relația cu salariatul, un potențial motiv de litigiu.\n\nStructura recomandată a unui template de fișă de post:\n\n1. Denumirea postului și codul COR corespunzător;\n2. Obiectivul general al postului (de ce există postul în organigramă);\n3. Relațiile ierarhice și funcționale (subordonare, colaborare);\n4. Atribuțiile și responsabilitățile principale, formulate concret și verificabile;\n5. Condiții de studii, experiență și competențe necesare;\n6. Condiții specifice de lucru (program, deplasări, expunere la riscuri);\n7. Semnătura de luare la cunoștință a salariatului, cu dată.\n\nFișa de post trebuie actualizată și resemnată de fiecare dată când se modifică atribuțiile postului. Dacă modificarea afectează un element esențial al CIM (de exemplu, funcția), actualizarea fișei de post trebuie să fie însoțită, în paralel, de actul adițional corespunzător — cele două documente nu se pot desincroniza.\n\n## Exemplu: CIM completat — clauze esențiale pentru un post cu normă întreagă, salariu minim\nExemplu de completare a clauzelor esențiale dintr-un template de CIM pe durată nedeterminată, normă întreagă, pentru un salariat angajat la nivelul salariului minim pe economie, începând cu 1 iulie 2026:\n\n- **Funcția**: Muncitor necalificat, cod COR 9329\n- **Durata normală a muncii**: 8 ore/zi, 40 ore/săptămână\n- **Perioada de probă**: 90 de zile calendaristice (maximul legal pentru funcții de execuție)\n- **Salariul de bază lunar brut**: 4.325 lei (nivelul salariului minim brut pe economie, aplicabil de la 1 iulie 2026, conform HG 146/2026)\n- **Concediul de odihnă**: 21 zile lucrătoare/an\n\n**Calculul brut → net (orientativ):**\n\n- CAS (25%): 4.325 × 25% = 1.081,25 lei\n- CASS (10%): 4.325 × 10% = 432,50 lei\n- Salariu după CAS + CASS: 4.325 − 1.081,25 − 432,50 = 2.811,25 lei\n- Din baza de impozitare se scade partea netaxabilă din salariul minim, de 200 lei (valabilă de la 1 iulie 2026, conform OUG 89/2025), plus deducerea personală aplicabilă conform Codului fiscal (variază în funcție de situația salariatului și nu poate fi generalizată într-un singur exemplu)\n- Impozitul pe venit (10%) se aplică asupra bazei rămase după aceste deduceri\n\nConform valorilor oficiale publicate odată cu majorarea salariului minim, **salariul net rezultat este de aproximativ 2.699 lei**. Diferența față de calculul simplificat de mai sus provine din aplicarea deducerii personale, element care trebuie verificat individual pentru fiecare salariat înainte de a genera fluturașul de salariu.\n\n## Exemplu: Act adițional de majorare salarială — model minimal\nStructura minimă a unui act adițional de majorare salarială, ca piesă de template reutilizabilă:\n\n> **ACT ADIȚIONAL nr. ___ din data ___**\n> la Contractul Individual de Muncă nr. ___ din data ___, înregistrat în REVISAL sub nr. ___\n>\n> Încheiat între [Angajator] și [Salariat], părțile convin modificarea CIM după cum urmează:\n>\n> **Art. 1** — Începând cu data de ___, salariul de bază lunar brut al salariatului se modifică de la ___ lei la ___ lei.\n> **Art. 2** — Celelalte clauze ale Contractului Individual de Muncă rămân neschimbate.\n> **Art. 3** — Prezentul act adițional a fost încheiat în două exemplare, câte unul pentru fiecare parte, și va fi transmis în REVISAL în termenul legal.\n>\n> Angajator: ___ Salariat: ___\n\nÎn practică, este esențial ca data de la care produce efecte majorarea (Art. 1) să fie coordonată cu data efectivă de transmitere în REVISAL — un decalaj între cele două poate genera discrepanțe la un control ITM, mai ales dacă majorarea coincide cu ajustarea salariului minim pe economie.\n\n> Temei legal: Legea nr. 53/2003 — Codul Muncii, republicată, cu modificările și completările ulterioare Art. 17 (în vigoare de la 2003-03-01)\nArt. 17 din Codul Muncii stabilește obligația angajatorului de a informa persoana selectată în vederea angajării, anterior încheierii sau modificării CIM, cu privire la clauzele esențiale pe care intenționează să le înscrie în contract: identitatea părților, locul de muncă, sediul angajatorului, funcția/ocupația și felul muncii, criteriile de evaluare a activității, riscurile specifice postului, data de la care contractul produce efecte, durata (dacă e determinată), durata concediului de odihnă, condițiile de preaviz, salariul de bază și celelalte elemente constitutive ale veniturilor, durata normală a muncii și contractul colectiv de muncă aplicabil. Aceste elemente stau la baza oricărui template de CIM conform legislației în vigoare.\n\n⚠ Dosarul de personal, inclusiv template-urile completate (CIM, acte adiționale, fișe de post), conține date cu caracter personal. Conform principiilor GDPR, accesul la aceste documente trebuie restricționat strict la personalul HR autorizat, iar template-urile-model (fără date reale) trebuie păstrate separat de dosarele individuale completate, pentru a evita expunerea accidentală a datelor unor salariați în fișiere de lucru interne. Aceste recomandări nu înlocuiesc o analiză juridică GDPR dedicată organizației — pentru proceduri interne de protecție a datelor, recomandăm consultarea unui specialist.\n\n## Exercițiu\nPrimești spre verificare un draft de CIM pentru un nou angajat, funcția de contabil, normă întreagă, salariu 5.000 lei brut/lună. Draftul conține: identitatea părților, locul de muncă, funcția, data încheierii, durata (nedeterminată), salariul de bază și durata normală a muncii (8h/zi, 40h/săptămână). Nu conține nicio mențiune despre perioada de probă, iar la secțiunea concediu de odihnă scrie doar \"conform legii\", fără număr de zile.\n\nIdentifică ce elemente lipsesc sau sunt incomplete față de cerințele art. 17 din Codul Muncii și propune corecturile necesare înainte de semnare.\n\n**Soluție:** Draftul are două probleme de conformitate:\n\n1. **Perioada de probă lipsește complet.** Dacă părțile intenționează să stabilească o perioadă de probă, aceasta trebuie menționată explicit în CIM, cu durata exactă (maximum 90 de zile calendaristice pentru o funcție de execuție precum contabil). Dacă nu se dorește perioadă de probă, se recomandă mențiunea expresă \"fără perioadă de probă\", pentru a evita orice ambiguitate ulterioară.\n2. **Durata concediului de odihnă trebuie exprimată printr-un număr concret de zile lucrătoare** (minimum 20 de zile lucrătoare/an), nu printr-o trimitere generică \"conform legii\" — clauza esențială impusă de art. 17 presupune indicarea duratei, nu doar a temeiului legal.\n\nCorectura recomandată înainte de semnare: se completează secțiunea perioadă de probă cu numărul exact de zile stabilit de părți (sau mențiunea expresă a absenței acesteia) și se înlocuiește \"conform legii\" cu numărul efectiv de zile de concediu de odihnă acordate (de exemplu, 21 zile lucrătoare/an). Abia după aceste completări documentul poate fi transmis spre semnare și înregistrat în REVISAL.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "cim-structura-obligatorie",
+    "md": "## Structura obligatorie a Contractului Individual de Muncă (CIM)\n\nContractul Individual de Muncă este documentul fundamental al dosarului de personal — orice altă piesă din dosar (act adițional, fișă de post, decizie) se raportează la el. Conform **art. 17 din Legea 53/2003 (Codul Muncii)**, angajatorul are obligația de informare prealabilă a salariatului, iar clauzele rezultate trebuie regăsite explicit în CIM. Un template de CIM complet și conform trebuie să conțină minimum:\n\n- **Identitatea părților** (angajator + salariat, cu toate datele de identificare);\n- **Locul de muncă** sau, dacă salariatul nu are un loc fix, mențiunea că prestează activitate în mai multe locații, cu sediul social al angajatorului ca reper;\n- **Funcția/ocupația**, conform Clasificării Ocupațiilor din România (COR), și **felul muncii** (atribuțiile generale, detaliate ulterior în fișa de post);\n- **Riscurile specifice postului**;\n- **Data încheierii** și, după caz, **durata contractului** (nedeterminată sau determinată, cu justificarea legală a determinării);\n- **Durata concediului de odihnă** anual;\n- **Condițiile de acordare a preavizului** de către oricare dintre părți;\n- **Salariul de bază**, alte elemente constitutive ale veniturilor (sporuri, indemnizații), periodicitatea plății;\n- **Durata normală a muncii**, exprimată în ore/zi și ore/săptămână;\n- **Indicarea contractului colectiv de muncă** aplicabil, dacă există;\n- **Durata perioadei de probă**, dacă a fost stabilită.\n\nUn pack de template-uri funcțional pentru un angajator tipic trebuie să acopere minimum trei variante: CIM pe durată nedeterminată cu normă întreagă, CIM pe durată determinată (cu temeiul legal al determinării) și CIM cu timp parțial, eventual combinat cu clauze de telemuncă. Fiecare variantă are clauze specifice suplimentare pe care un model generic le omite frecvent, de unde riscul de neconformitate la control.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "act-aditional-cim",
+    "md": "## Actul adițional — singurul instrument valid pentru modificarea CIM\n\nOrice modificare a unui element esențial al CIM — salariul, funcția, locul muncii, felul muncii sau durata timpului de lucru — se realizează **exclusiv prin act adițional**, semnat de ambele părți, în principiu **anterior** producerii efective a modificării. Excepțiile sunt strict prevăzute de lege (de exemplu, delegarea sau detașarea temporară, ori măsuri impuse de forță majoră).\n\nActul adițional nu este un document liber-format: el trebuie să identifice explicit contractul de bază (număr, dată de înregistrare în REVISAL), să precizeze clauza modificată prin comparație \"înainte / după\" și data de la care produce efecte, iar restul clauzelor CIM rămân neschimbate prin mențiune expresă. După semnare, actul adițional se transmite în Registrul General de Evidență a Salariaților (REVISAL), conform HG 905/2017. Termenul exact de transmitere diferă în funcție de tipul modificării (salariu, funcție, suspendare etc.) și a fost revizuit succesiv prin acte normative ulterioare — **recomandăm verificarea termenului legal în vigoare la data fiecărei modificări**, direct pe portalul REVISAL sau cu un specialist, înainte de a stabili fluxul intern de transmitere. Netransmiterea la termen este contravenție și se sancționează de Inspecția Muncii.\n\nUn pack de template-uri complet pentru actele adiționale acoperă cel puțin: majorare/modificare salarială, schimbare de funcție sau atribuții, trecere la telemuncă, prelungirea unui CIM pe durată determinată și modificarea normei de lucru (întreagă → parțială sau invers).",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "fisa-post-continut",
+    "md": "## Fișa de post — documentul-oglindă al CIM\n\nCodul Muncii nu impune un model unic de fișă de post, însă aceasta este documentul pe care Inspectoratul Teritorial de Muncă (ITM) îl solicită sistematic la control pentru a verifica dacă atribuțiile efectiv exercitate de salariat corespund cu \"felul muncii\" înscris în CIM. **Fișa de post trebuie corelată strict cu CIM** — nu poate conține atribuții mai largi sau diferite de cele care rezultă din contract; orice discrepanță este un risc de sancțiune la control și, în relația cu salariatul, un potențial motiv de litigiu.\n\nStructura recomandată a unui template de fișă de post:\n\n1. Denumirea postului și codul COR corespunzător;\n2. Obiectivul general al postului (de ce există postul în organigramă);\n3. Relațiile ierarhice și funcționale (subordonare, colaborare);\n4. Atribuțiile și responsabilitățile principale, formulate concret și verificabile;\n5. Condiții de studii, experiență și competențe necesare;\n6. Condiții specifice de lucru (program, deplasări, expunere la riscuri);\n7. Semnătura de luare la cunoștință a salariatului, cu dată.\n\nFișa de post trebuie actualizată și resemnată de fiecare dată când se modifică atribuțiile postului. Dacă modificarea afectează un element esențial al CIM (de exemplu, funcția), actualizarea fișei de post trebuie să fie însoțită, în paralel, de actul adițional corespunzător — cele două documente nu se pot desincroniza.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b3"
+   },
+   {
+    "type": "example",
+    "title": "CIM completat — clauze esențiale pentru un post cu normă întreagă, salariu minim",
+    "concept_key": "cim-structura-obligatorie",
+    "md": "Exemplu de completare a clauzelor esențiale dintr-un template de CIM pe durată nedeterminată, normă întreagă, pentru un salariat angajat la nivelul salariului minim pe economie, începând cu 1 iulie 2026:\n\n- **Funcția**: Muncitor necalificat, cod COR 9329\n- **Durata normală a muncii**: 8 ore/zi, 40 ore/săptămână\n- **Perioada de probă**: 90 de zile calendaristice (maximul legal pentru funcții de execuție)\n- **Salariul de bază lunar brut**: 4.325 lei (nivelul salariului minim brut pe economie, aplicabil de la 1 iulie 2026, conform HG 146/2026)\n- **Concediul de odihnă**: 21 zile lucrătoare/an\n\n**Calculul brut → net (orientativ):**\n\n- CAS (25%): 4.325 × 25% = 1.081,25 lei\n- CASS (10%): 4.325 × 10% = 432,50 lei\n- Salariu după CAS + CASS: 4.325 − 1.081,25 − 432,50 = 2.811,25 lei\n- Din baza de impozitare se scade partea netaxabilă din salariul minim, de 200 lei (valabilă de la 1 iulie 2026, conform OUG 89/2025), plus deducerea personală aplicabilă conform Codului fiscal (variază în funcție de situația salariatului și nu poate fi generalizată într-un singur exemplu)\n- Impozitul pe venit (10%) se aplică asupra bazei rămase după aceste deduceri\n\nConform valorilor oficiale publicate odată cu majorarea salariului minim, **salariul net rezultat este de aproximativ 2.699 lei**. Diferența față de calculul simplificat de mai sus provine din aplicarea deducerii personale, element care trebuie verificat individual pentru fiecare salariat înainte de a genera fluturașul de salariu.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b4"
+   },
+   {
+    "type": "example",
+    "title": "Act adițional de majorare salarială — model minimal",
+    "concept_key": "act-aditional-cim",
+    "md": "Structura minimă a unui act adițional de majorare salarială, ca piesă de template reutilizabilă:\n\n> **ACT ADIȚIONAL nr. ___ din data ___**\n> la Contractul Individual de Muncă nr. ___ din data ___, înregistrat în REVISAL sub nr. ___\n>\n> Încheiat între [Angajator] și [Salariat], părțile convin modificarea CIM după cum urmează:\n>\n> **Art. 1** — Începând cu data de ___, salariul de bază lunar brut al salariatului se modifică de la ___ lei la ___ lei.\n> **Art. 2** — Celelalte clauze ale Contractului Individual de Muncă rămân neschimbate.\n> **Art. 3** — Prezentul act adițional a fost încheiat în două exemplare, câte unul pentru fiecare parte, și va fi transmis în REVISAL în termenul legal.\n>\n> Angajator: ___ Salariat: ___\n\nÎn practică, este esențial ca data de la care produce efecte majorarea (Art. 1) să fie coordonată cu data efectivă de transmitere în REVISAL — un decalaj între cele două poate genera discrepanțe la un control ITM, mai ales dacă majorarea coincide cu ajustarea salariului minim pe economie.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 — Codul Muncii, republicată, cu modificările și completările ulterioare",
+    "article": "Art. 17",
+    "effective": "2003-03-01",
+    "md": "Art. 17 din Codul Muncii stabilește obligația angajatorului de a informa persoana selectată în vederea angajării, anterior încheierii sau modificării CIM, cu privire la clauzele esențiale pe care intenționează să le înscrie în contract: identitatea părților, locul de muncă, sediul angajatorului, funcția/ocupația și felul muncii, criteriile de evaluare a activității, riscurile specifice postului, data de la care contractul produce efecte, durata (dacă e determinată), durata concediului de odihnă, condițiile de preaviz, salariul de bază și celelalte elemente constitutive ale veniturilor, durata normală a muncii și contractul colectiv de muncă aplicabil. Aceste elemente stau la baza oricărui template de CIM conform legislației în vigoare.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Dosarul de personal, inclusiv template-urile completate (CIM, acte adiționale, fișe de post), conține date cu caracter personal. Conform principiilor GDPR, accesul la aceste documente trebuie restricționat strict la personalul HR autorizat, iar template-urile-model (fără date reale) trebuie păstrate separat de dosarele individuale completate, pentru a evita expunerea accidentală a datelor unor salariați în fișiere de lucru interne. Aceste recomandări nu înlocuiesc o analiză juridică GDPR dedicată organizației — pentru proceduri interne de protecție a datelor, recomandăm consultarea unui specialist.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Primești spre verificare un draft de CIM pentru un nou angajat, funcția de contabil, normă întreagă, salariu 5.000 lei brut/lună. Draftul conține: identitatea părților, locul de muncă, funcția, data încheierii, durata (nedeterminată), salariul de bază și durata normală a muncii (8h/zi, 40h/săptămână). Nu conține nicio mențiune despre perioada de probă, iar la secțiunea concediu de odihnă scrie doar \"conform legii\", fără număr de zile.\n\nIdentifică ce elemente lipsesc sau sunt incomplete față de cerințele art. 17 din Codul Muncii și propune corecturile necesare înainte de semnare.",
+    "solution_md": "Draftul are două probleme de conformitate:\n\n1. **Perioada de probă lipsește complet.** Dacă părțile intenționează să stabilească o perioadă de probă, aceasta trebuie menționată explicit în CIM, cu durata exactă (maximum 90 de zile calendaristice pentru o funcție de execuție precum contabil). Dacă nu se dorește perioadă de probă, se recomandă mențiunea expresă \"fără perioadă de probă\", pentru a evita orice ambiguitate ulterioară.\n2. **Durata concediului de odihnă trebuie exprimată printr-un număr concret de zile lucrătoare** (minimum 20 de zile lucrătoare/an), nu printr-o trimitere generică \"conform legii\" — clauza esențială impusă de art. 17 presupune indicarea duratei, nu doar a temeiului legal.\n\nCorectura recomandată înainte de semnare: se completează secțiunea perioadă de probă cu numărul exact de zile stabilit de părți (sau mențiunea expresă a absenței acesteia) și se înlocuiește \"conform legii\" cu numărul efectiv de zile de concediu de odihnă acordate (de exemplu, 21 zile lucrătoare/an). Abia după aceste completări documentul poate fi transmis spre semnare și înregistrat în REVISAL.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele NU este un element obligatoriu al CIM conform art. 17 din Codul Muncii?",
+    "choices": [
+     "Salariul de bază și celelalte elemente constitutive ale veniturilor",
+     "Durata normală a muncii",
+     "Numărul de copii aflați în întreținerea salariatului",
+     "Durata concediului de odihnă"
+    ],
+    "answer": 2,
+    "explain": "Art. 17 din Codul Muncii nu impune menționarea situației familiale a salariatului în CIM; aceasta este relevantă doar pentru calculul deducerii personale la statul de plată, nu ca element esențial al contractului.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O majorare a salariului de bază al unui angajat trebuie consemnată prin:",
+    "choices": [
+     "O notă internă semnată doar de angajator",
+     "Un act adițional la CIM, semnat de ambele părți și transmis ulterior în REVISAL",
+     "O simplă mențiune verbală, confirmată ulterior prin plata efectivă a salariului mărit",
+     "Actualizarea fișei de post, fără altă formalitate"
+    ],
+    "answer": 1,
+    "explain": "Salariul de bază este element esențial al CIM; orice modificare a lui se face exclusiv prin act adițional semnat de ambele părți, urmat de transmiterea în REVISAL. Fișa de post detaliază atribuțiile, nu elementele financiare ale contractului.",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul-limită pentru înregistrarea în REVISAL a unui CIM nou?",
+    "back": "Cel târziu în ziua lucrătoare anterioară începerii activității de către salariat.",
+    "concept_key": "revisal-termen-inregistrare-cim",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata maximă a perioadei de probă pentru funcții de execuție?",
+    "back": "Maximum 90 de zile calendaristice.",
+    "concept_key": "perioada-proba-executie",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata maximă a perioadei de probă pentru funcții de conducere?",
+    "back": "Maximum 120 de zile calendaristice.",
+    "concept_key": "perioada-proba-conducere",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document este obligatoriu pentru a modifica un element esențial al CIM (ex: salariul, funcția)?",
+    "back": "Actul adițional, semnat de ambele părți și transmis ulterior în REVISAL.",
+    "concept_key": "act-aditional-cim",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este salariul minim brut pe economie de la 1 iulie 2026?",
+    "back": "4.325 lei brut/lună (HG 146/2026), cu excepția construcțiilor unde salariul minim rămâne 4.582 lei.",
+    "concept_key": "salariu-minim-2026",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce trebuie fișa de post corelată strict cu CIM?",
+    "back": "Pentru că atribuțiile din fișa de post nu pot depăși sau contrazice felul muncii stabilit în CIM; discrepanțele reprezintă risc de sancțiune la control ITM.",
+    "concept_key": "fisa-post-continut",
+    "blockId": "cmjjuxw9900hpumkpprstck50-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1522,
+   "flashcards": 6
+  }
+ }
+}

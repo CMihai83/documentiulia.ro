@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwbr00jiumkpr8fjk5gi",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Cadrul Legal SSM",
+ "lesson": "Quiz legislație SSM",
+ "category": "HSE_SAFETY",
+ "content": "Test de evaluare — Quiz legislație SSM (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este actul normativ care reglementează cadrul general al securității și sănătății în muncă (SSM) în România?",
+     "choices": [
+      "Legea nr. 319/2006 a securității și sănătății în muncă",
+      "Legea nr. 53/2003 – Codul muncii",
+      "Legea nr. 307/2006 privind apărarea împotriva incendiilor",
+      "OUG nr. 99/2006 privind instituțiile de credit"
+     ],
+     "answer": 0,
+     "explain": "Legea nr. 319/2006 este legea-cadru care stabilește principiile generale privind prevenirea riscurilor profesionale, protecția lucrătorilor și eliminarea factorilor de risc și accidentare.",
+     "concept_key": "legea_319_2006"
+    },
+    {
+     "q": "Ce reglementează HG nr. 1425/2006?",
+     "choices": [
+      "Normele metodologice de aplicare a Legii nr. 319/2006",
+      "Salariul minim pe economie",
+      "Regulamentul de organizare și funcționare a ITM",
+      "Procedura de înființare a unei firme SRL"
+     ],
+     "answer": 0,
+     "explain": "HG 1425/2006 conține normele metodologice de aplicare a Legii 319/2006, detaliind modul concret de implementare a obligațiilor privind SSM (instruiri, evaluarea riscurilor, documentație etc.).",
+     "concept_key": "hg_1425_2006"
+    },
+    {
+     "q": "Care este autoritatea publică de control în domeniul securității și sănătății în muncă?",
+     "choices": [
+      "Inspectoratul Teritorial de Muncă (ITM)",
+      "ANAF",
+      "Poliția Locală",
+      "Casa Națională de Asigurări de Sănătate (CNAS)"
+     ],
+     "answer": 0,
+     "explain": "ITM este autoritatea abilitată să efectueze controale, să cerceteze evenimentele/accidentele de muncă și să aplice sancțiuni contravenționale în domeniul SSM.",
+     "concept_key": "itm_autoritate"
+    },
+    {
+     "q": "Care sunt cele trei tipuri de instruire în domeniul SSM prevăzute de legislație pentru un angajat nou încadrat?",
+     "choices": [
+      "Instructaj introductiv-general, instructaj la locul de muncă, instructaj periodic",
+      "Instructaj facultativ, instructaj de weekend, instructaj online",
+      "Instructaj introductiv-general și instructaj final, fără instructaj periodic",
+      "Instructaj unic, valabil pe toată durata contractului de muncă"
+     ],
+     "answer": 0,
+     "explain": "Legislația SSM (Legea 319/2006 și HG 1425/2006) prevede trei etape obligatorii de instruire: introductiv-generală (la angajare), la locul de muncă (specifică postului) și periodică (pe durata activității).",
+     "concept_key": "tipuri_instructaj"
+    },
+    {
+     "q": "Cui i se adresează instructajul introductiv-general și cine îl poate efectua?",
+     "choices": [
+      "Tuturor lucrătorilor nou angajați, efectuat de angajator, de un lucrător desemnat sau de serviciul intern/extern de prevenire și protecție",
+      "Doar managerilor, efectuat exclusiv de ITM",
+      "Doar muncitorilor din construcții, efectuat de medicul de familie",
+      "Este opțional și poate fi omis dacă angajatul are experiență anterioară"
+     ],
+     "answer": 0,
+     "explain": "Instructajul introductiv-general se face oricărui lucrător înainte de începerea activității, indiferent de experiența anterioară, și este realizat de angajator, de o persoană desemnată sau de serviciul de prevenire și protecție (intern ori extern).",
+     "concept_key": "instructaj_introductiv"
+    },
+    {
+     "q": "Cu privire la instructajul periodic, care afirmație este corectă?",
+     "choices": [
+      "Se repetă la intervale stabilite prin instrucțiuni proprii, care nu pot depăși 6 luni, cu excepțiile prevăzute de normele metodologice",
+      "Se efectuează o singură dată, la angajare, și nu se mai repetă",
+      "Este obligatoriu doar pentru angajații cu funcții de conducere",
+      "Se realizează exclusiv de către ITM, o dată pe an"
+     ],
+     "answer": 0,
+     "explain": "Instructajul periodic are rolul de a reîmprospăta și completa cunoștințele în domeniul SSM; intervalul este stabilit prin instrucțiuni proprii ale angajatorului, dar HG 1425/2006 limitează intervalul general la maximum 6 luni.",
+     "concept_key": "instructaj_periodic"
+    },
+    {
+     "q": "Care dintre următoarele NU se numără printre obligațiile de bază ale angajatorului conform Legii 319/2006?",
+     "choices": [
+      "Să suporte integral costul măsurilor de prevenire și protecție, fără a le transfera în sarcina lucrătorilor",
+      "Să evalueze riscurile pentru securitatea și sănătatea lucrătorilor și să întocmească documentația aferentă",
+      "Să asigure instruirea lucrătorilor în domeniul SSM",
+      "Să stabilească el însuși cuantumul amenzilor aplicate propriilor angajați pentru abateri SSM"
+     ],
+     "answer": 3,
+     "explain": "Angajatorul are obligația de a evalua riscurile, de a instrui lucrătorii și de a suporta costurile măsurilor de protecție, dar nu are atribuția de a stabili și aplica el însuși sancțiuni contravenționale — acestea sunt de competența ITM.",
+     "concept_key": "obligatii_angajator"
+    },
+    {
+     "q": "Ce este Comitetul de Securitate și Sănătate în Muncă (CSSM) și când este obligatorie constituirea lui?",
+     "choices": [
+      "Un organism paritar consultativ angajator-lucrători, obligatoriu în unitățile cu un număr de lucrători peste pragul stabilit de lege (în general peste 50)",
+      "Un organ de control subordonat direct ITM, prezent în orice firmă indiferent de mărime",
+      "O comisie formată exclusiv din reprezentanți ai autorităților locale",
+      "O structură opțională care nu are nicio bază legală"
+     ],
+     "answer": 0,
+     "explain": "CSSM este un organism paritar (angajator + reprezentanți ai lucrătorilor) cu rol consultativ în domeniul SSM, a cărui constituire devine obligatorie la depășirea pragului de lucrători stabilit prin lege și normele metodologice.",
+     "concept_key": "cssm"
+    },
+    {
+     "q": "În cazul producerii unui accident de muncă, care este una dintre obligațiile imediate ale angajatorului?",
+     "choices": [
+      "Să comunice evenimentul către ITM și instituțiile abilitate și să asigure cercetarea acestuia conform procedurii legale",
+      "Să șteargă din evidențe orice mențiune despre eveniment pentru a evita un control",
+      "Să concedieze imediat lucrătorul accidentat",
+      "Să achite doar despăgubiri private, fără nicio comunicare oficială"
+     ],
+     "answer": 0,
+     "explain": "Legea 319/2006 și HG 1425/2006 impun angajatorului obligația de a comunica evenimentul autorităților competente (inclusiv ITM) și de a asigura cercetarea acestuia, în vederea stabilirii cauzelor și măsurilor de prevenire a repetării.",
+     "concept_key": "accident_de_munca"
+    },
+    {
+     "q": "Care este natura juridică a faptelor de nerespectare a obligațiilor SSM prevăzute de Legea 319/2006 (de exemplu neinstruirea lucrătorilor)?",
+     "choices": [
+      "Constituie contravenții sancționate cu amendă, unele fapte grave putând fi calificate drept infracțiuni",
+      "Nu atrag nicio răspundere, fiind doar recomandări",
+      "Se sancționează exclusiv prin avertisment verbal, fără amendă",
+      "Sunt exclusiv abateri disciplinare interne, fără implicarea ITM"
+     ],
+     "answer": 0,
+     "explain": "Legea 319/2006 clasifică majoritatea abaterilor de la obligațiile SSM drept contravenții sancționabile cu amendă de către ITM, iar în cazurile grave (de exemplu cele care conduc la accidente cu consecințe grave) faptele pot fi calificate drept infracțiuni.",
+     "concept_key": "sanctiuni_contraventii"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

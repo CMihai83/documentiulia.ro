@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvoo002mumkpc29ma93b",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Funcții Array Dinamice (Excel 365)",
+ "lesson": "SORT și SORTBY",
+ "category": "EXCEL_VBA",
+ "content": "# SORT și SORTBY\n\n## SORT – sortare dinamică cu o singură formulă\n\nFuncția SORT face parte din familia funcțiilor matrice dinamice din Excel 365 și returnează automat un interval sortat (o „matrice revărsată” – spilled array), fără să fie nevoie de sortare manuală din panglică sau de rearanjarea datelor sursă.\n\nSintaxă:\n`=SORT(array; [sort_index]; [sort_order]; [by_col])`\n\n- **array** – intervalul sau matricea pe care vrei să o sortezi (de exemplu A2:C20).\n- **sort_index** – numărul coloanei (sau rândului, dacă by_col=ADEVĂRAT) după care se face sortarea; implicit 1.\n- **sort_order** – 1 pentru crescător (implicit), -1 pentru descrescător.\n- **by_col** – FALS (implicit, sortare pe verticală, după coloană) sau ADEVĂRAT dacă sortezi pe orizontală, după rând.\n\nRezultatul SORT nu modifică datele originale – formula se scrie o singură dată, în celula din stânga-sus a zonei unde vrei rezultatul, iar Excel „revarsă” automat valorile sortate în celulele adiacente. Dacă datele sursă se schimbă (se adaugă un rând nou, se modifică o valoare), rezultatul se recalculează instantaneu, fără click-uri suplimentare. Acesta este marele avantaj față de sortarea clasică (Data > Sort), care este statică și trebuie repetată manual după fiecare actualizare.\n\n## SORTBY – sortare după un criteriu extern\n\nSORTBY sortează un array după valorile dintr-unul sau mai multe intervale asociate, care nu trebuie neapărat să facă parte din rezultatul afișat. Aceasta este diferența esențială față de SORT, care sortează întotdeauna după o coloană/rând aflat în interiorul array-ului furnizat.\n\nSintaxă:\n`=SORTBY(array; by_array1; [sort_order1]; [by_array2; sort_order2]; ...)`\n\n- **array** – ce vrei să afișezi (rezultatul sortat).\n- **by_array1** – intervalul după ale cărui valori se face sortarea principală (trebuie să aibă aceleași dimensiuni ca array pe axa de sortare).\n- **sort_order1** – 1 (crescător, implicit) sau -1 (descrescător).\n- poți adăuga perechi suplimentare (by_array2, sort_order2 etc.) pentru sortare pe mai multe niveluri.\n\nDe exemplu, poți sorta o listă de produse după numărul de comenzi dintr-o coloană ascunsă sau dintr-un tabel separat, fără ca acea coloană să apară în rezultat, sau după o valoare calculată printr-o formulă care nu are sens să fie afișată. SORTBY oferă această flexibilitate; SORT, prin contrast, te obligă să incluzi coloana de sortare în array-ul propriu-zis (prin sort_index).\n\n## Sortare după mai multe criterii\n\nAmbele funcții permit sortare pe niveluri multiple (similar cu „Sort > Add Level” din Excel clasic), dar sintaxa diferă:\n\n- **Cu SORT**, folosești un array de coloane și un array de ordini de sortare: `=SORT(array;{2;3};{1;-1})` sortează întâi după coloana 2 crescător, apoi după coloana 3 descrescător, pentru rândurile cu valori egale pe prima coloană.\n- **Cu SORTBY**, adaugi pur și simplu perechi suplimentare de argumente: `=SORTBY(array;criteriu1;ordine1;criteriu2;ordine2)`. Primul criteriu are prioritate maximă; al doilea decide doar între rândurile egale pe primul.\n\nÎn practică, SORTBY este preferată pentru sortări multi-criteriu deoarece sintaxa e mai clară (fiecare criteriu are propriul interval, nu un index de coloană) și permite combinarea de coloane din tabele diferite. SORT rămâne utilă pentru sortări rapide, cu un singur criteriu, direct pe o coloană din array.\n\nAmbele funcții se pot combina cu FILTER și UNIQUE: `=SORT(UNIQUE(A2:A50))` produce o listă unică de valori, sortată alfabetic. La fel, poți sorta rezultatul unui FILTER: `=SORT(FILTER(A2:C50;C2:C50>1000);3;-1)` – întâi păstrează doar rândurile cu valori peste 1000 în coloana C, apoi le sortează descrescător după aceeași coloană. Ordinea contează: FILTER se aplică primul, ca argument, iar SORT/SORTBY prelucrează rezultatul deja filtrat.\n\n## Exemplu: Sortare simplă cu SORT\nAi un tabel cu vânzările lunii pentru un magazin de electronice, în intervalul A1:C6 (A1:C1 = capete de tabel):\n\n| Produs | Regiune | Vânzări (lei) |\n|---|---|---|\n| Laptop Dell | București | 45.000 |\n| Monitor LG | Cluj | 12.500 |\n| Tastatură Logitech | București | 3.200 |\n| Mouse Logitech | Timișoara | 1.800 |\n| Imprimantă HP | Cluj | 9.500 |\n\nVrei un clasament descrescător după coloana Vânzări (a treia coloană din interval). Scrii o singură formulă, în celula E2:\n\n`=SORT(A2:C6;3;-1)`\n\nRezultatul se revarsă automat pe 5 rânduri x 3 coloane:\n\n1. Laptop Dell – București – 45.000 lei\n2. Monitor LG – Cluj – 12.500 lei\n3. Imprimantă HP – Cluj – 9.500 lei\n4. Tastatură Logitech – București – 3.200 lei\n5. Mouse Logitech – Timișoara – 1.800 lei\n\nDacă modifici valoarea vânzărilor pentru Mouse Logitech la 20.000 lei, clasamentul se reordonează instantaneu, fără să atingi din nou formula.\n\n## Exemplu: SORTBY pe mai multe criterii și după o valoare externă\nPornind de la același tabel (A2:C6), vrei o sortare mai fină: mai întâi după Regiune (alfabetic, crescător), apoi, în cadrul aceleiași regiuni, după Vânzări (descrescător). Formula:\n\n`=SORTBY(A2:C6;B2:B6;1;C2:C6;-1)`\n\nRezultat:\n- București: Laptop Dell (45.000), Tastatură Logitech (3.200)\n- Cluj: Monitor LG (12.500), Imprimantă HP (9.500)\n- Timișoara: Mouse Logitech (1.800)\n\nRegiunea „București” apare prima pentru că e prima alfabetic, iar în interiorul ei Laptop Dell (45.000) e listat înaintea Tastaturii (3.200), conform celui de-al doilea criteriu.\n\nSORTBY poate sorta și după o valoare care nu apare deloc în rezultat. Dacă vrei doar lista de produse (coloana A), sortată după lungimea numelui, fără să afișezi lungimea ca atare:\n\n`=SORTBY(A2:A6;LEN(A2:A6))`\n\nAici by_array1 este rezultatul funcției LEN aplicat pe aceeași zonă – o coloană „virtuală”, calculată din mers, care nu apare în array-ul final afișat. Acest lucru nu este posibil direct cu SORT, care ar avea nevoie ca acea coloană de lungimi să existe efectiv în intervalul sursă.\n\n⚠ Capcane frecvente la SORT/SORTBY:\n- **#SPILL!** apare dacă celulele din dreapta/de sub celula-ancoră nu sunt goale – formula nu poate „revărsa” rezultatul. Eliberează zona sau mută formula în altă celulă.\n- La SORT, **sort_index** se referă la poziția coloanei în array-ul dat ca argument, nu la coloana din foaie – dacă array=B2:D10, sort_index=1 înseamnă coloana B, nu A.\n- La SORTBY, toate intervalele by_array trebuie să aibă aceeași dimensiune pe axa de sortare ca array (același număr de rânduri, de exemplu); altfel primești #VALUE!.\n- Sortarea nu ține cont de formatarea vizuală (culoare, bold) – doar de valoarea propriu-zisă a celulei, exact ca la orice sortare clasică din Excel.\n\n## Exercițiu\nAi tabelul de mai jos cu angajații unei firme, în intervalul A2:C7 (A1:C1 = capete de tabel: Nume, Departament, Salariu):\n\n| Nume | Departament | Salariu (lei) |\n|---|---|---|\n| Ana Pop | Vânzări | 4.500 |\n| Bogdan Ionescu | IT | 6.200 |\n| Carmen Radu | Vânzări | 5.100 |\n| Dan Georgescu | IT | 7.300 |\n| Elena Marin | Contabilitate | 4.800 |\n| Florin Stan | Contabilitate | 5.300 |\n\n1. Scrie o formulă SORTBY care sortează angajații întâi după Departament (crescător, alfabetic), apoi, în cadrul aceluiași departament, după Salariu (descrescător).\n2. Scrie o formulă SORT care produce un clasament descrescător al tuturor angajaților, doar după Salariu, indiferent de departament.\n\n**Soluție:** 1. `=SORTBY(A2:C7;B2:B7;1;C2:C7;-1)`\n\nRezultat:\n- Contabilitate: Florin Stan (5.300), Elena Marin (4.800)\n- IT: Dan Georgescu (7.300), Bogdan Ionescu (6.200)\n- Vânzări: Carmen Radu (5.100), Ana Pop (4.500)\n\n2. `=SORT(A2:C7;3;-1)`\n\nRezultat: Dan Georgescu (7.300), Florin Stan (5.300), Bogdan Ionescu (6.200), Carmen Radu (5.100), Elena Marin (4.800), Ana Pop (4.500).\n\nLa punctul 1, Departamentul este criteriul principal (sort_order1=1, crescător alfabetic: Contabilitate < IT < Vânzări), iar Salariul e criteriul secundar (sort_order2=-1), folosit doar pentru a departaja angajații din același departament. La punctul 2, SORT ignoră complet Departamentul – sort_index=3 indică direct a treia coloană din array (Salariu).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "sort-functie-baza",
+    "md": "## SORT – sortare dinamică cu o singură formulă\n\nFuncția SORT face parte din familia funcțiilor matrice dinamice din Excel 365 și returnează automat un interval sortat (o „matrice revărsată” – spilled array), fără să fie nevoie de sortare manuală din panglică sau de rearanjarea datelor sursă.\n\nSintaxă:\n`=SORT(array; [sort_index]; [sort_order]; [by_col])`\n\n- **array** – intervalul sau matricea pe care vrei să o sortezi (de exemplu A2:C20).\n- **sort_index** – numărul coloanei (sau rândului, dacă by_col=ADEVĂRAT) după care se face sortarea; implicit 1.\n- **sort_order** – 1 pentru crescător (implicit), -1 pentru descrescător.\n- **by_col** – FALS (implicit, sortare pe verticală, după coloană) sau ADEVĂRAT dacă sortezi pe orizontală, după rând.\n\nRezultatul SORT nu modifică datele originale – formula se scrie o singură dată, în celula din stânga-sus a zonei unde vrei rezultatul, iar Excel „revarsă” automat valorile sortate în celulele adiacente. Dacă datele sursă se schimbă (se adaugă un rând nou, se modifică o valoare), rezultatul se recalculează instantaneu, fără click-uri suplimentare. Acesta este marele avantaj față de sortarea clasică (Data > Sort), care este statică și trebuie repetată manual după fiecare actualizare.",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sortby-functie",
+    "md": "## SORTBY – sortare după un criteriu extern\n\nSORTBY sortează un array după valorile dintr-unul sau mai multe intervale asociate, care nu trebuie neapărat să facă parte din rezultatul afișat. Aceasta este diferența esențială față de SORT, care sortează întotdeauna după o coloană/rând aflat în interiorul array-ului furnizat.\n\nSintaxă:\n`=SORTBY(array; by_array1; [sort_order1]; [by_array2; sort_order2]; ...)`\n\n- **array** – ce vrei să afișezi (rezultatul sortat).\n- **by_array1** – intervalul după ale cărui valori se face sortarea principală (trebuie să aibă aceleași dimensiuni ca array pe axa de sortare).\n- **sort_order1** – 1 (crescător, implicit) sau -1 (descrescător).\n- poți adăuga perechi suplimentare (by_array2, sort_order2 etc.) pentru sortare pe mai multe niveluri.\n\nDe exemplu, poți sorta o listă de produse după numărul de comenzi dintr-o coloană ascunsă sau dintr-un tabel separat, fără ca acea coloană să apară în rezultat, sau după o valoare calculată printr-o formulă care nu are sens să fie afișată. SORTBY oferă această flexibilitate; SORT, prin contrast, te obligă să incluzi coloana de sortare în array-ul propriu-zis (prin sort_index).",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sortare-multicriteriu",
+    "md": "## Sortare după mai multe criterii\n\nAmbele funcții permit sortare pe niveluri multiple (similar cu „Sort > Add Level” din Excel clasic), dar sintaxa diferă:\n\n- **Cu SORT**, folosești un array de coloane și un array de ordini de sortare: `=SORT(array;{2;3};{1;-1})` sortează întâi după coloana 2 crescător, apoi după coloana 3 descrescător, pentru rândurile cu valori egale pe prima coloană.\n- **Cu SORTBY**, adaugi pur și simplu perechi suplimentare de argumente: `=SORTBY(array;criteriu1;ordine1;criteriu2;ordine2)`. Primul criteriu are prioritate maximă; al doilea decide doar între rândurile egale pe primul.\n\nÎn practică, SORTBY este preferată pentru sortări multi-criteriu deoarece sintaxa e mai clară (fiecare criteriu are propriul interval, nu un index de coloană) și permite combinarea de coloane din tabele diferite. SORT rămâne utilă pentru sortări rapide, cu un singur criteriu, direct pe o coloană din array.\n\nAmbele funcții se pot combina cu FILTER și UNIQUE: `=SORT(UNIQUE(A2:A50))` produce o listă unică de valori, sortată alfabetic. La fel, poți sorta rezultatul unui FILTER: `=SORT(FILTER(A2:C50;C2:C50>1000);3;-1)` – întâi păstrează doar rândurile cu valori peste 1000 în coloana C, apoi le sortează descrescător după aceeași coloană. Ordinea contează: FILTER se aplică primul, ca argument, iar SORT/SORTBY prelucrează rezultatul deja filtrat.",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b3"
+   },
+   {
+    "type": "example",
+    "title": "Sortare simplă cu SORT",
+    "concept_key": "sort-functie-baza",
+    "md": "Ai un tabel cu vânzările lunii pentru un magazin de electronice, în intervalul A1:C6 (A1:C1 = capete de tabel):\n\n| Produs | Regiune | Vânzări (lei) |\n|---|---|---|\n| Laptop Dell | București | 45.000 |\n| Monitor LG | Cluj | 12.500 |\n| Tastatură Logitech | București | 3.200 |\n| Mouse Logitech | Timișoara | 1.800 |\n| Imprimantă HP | Cluj | 9.500 |\n\nVrei un clasament descrescător după coloana Vânzări (a treia coloană din interval). Scrii o singură formulă, în celula E2:\n\n`=SORT(A2:C6;3;-1)`\n\nRezultatul se revarsă automat pe 5 rânduri x 3 coloane:\n\n1. Laptop Dell – București – 45.000 lei\n2. Monitor LG – Cluj – 12.500 lei\n3. Imprimantă HP – Cluj – 9.500 lei\n4. Tastatură Logitech – București – 3.200 lei\n5. Mouse Logitech – Timișoara – 1.800 lei\n\nDacă modifici valoarea vânzărilor pentru Mouse Logitech la 20.000 lei, clasamentul se reordonează instantaneu, fără să atingi din nou formula.",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b4"
+   },
+   {
+    "type": "example",
+    "title": "SORTBY pe mai multe criterii și după o valoare externă",
+    "concept_key": "sortby-functie",
+    "md": "Pornind de la același tabel (A2:C6), vrei o sortare mai fină: mai întâi după Regiune (alfabetic, crescător), apoi, în cadrul aceleiași regiuni, după Vânzări (descrescător). Formula:\n\n`=SORTBY(A2:C6;B2:B6;1;C2:C6;-1)`\n\nRezultat:\n- București: Laptop Dell (45.000), Tastatură Logitech (3.200)\n- Cluj: Monitor LG (12.500), Imprimantă HP (9.500)\n- Timișoara: Mouse Logitech (1.800)\n\nRegiunea „București” apare prima pentru că e prima alfabetic, iar în interiorul ei Laptop Dell (45.000) e listat înaintea Tastaturii (3.200), conform celui de-al doilea criteriu.\n\nSORTBY poate sorta și după o valoare care nu apare deloc în rezultat. Dacă vrei doar lista de produse (coloana A), sortată după lungimea numelui, fără să afișezi lungimea ca atare:\n\n`=SORTBY(A2:A6;LEN(A2:A6))`\n\nAici by_array1 este rezultatul funcției LEN aplicat pe aceeași zonă – o coloană „virtuală”, calculată din mers, care nu apare în array-ul final afișat. Acest lucru nu este posibil direct cu SORT, care ar avea nevoie ca acea coloană de lungimi să existe efectiv în intervalul sursă.",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Capcane frecvente la SORT/SORTBY:\n- **#SPILL!** apare dacă celulele din dreapta/de sub celula-ancoră nu sunt goale – formula nu poate „revărsa” rezultatul. Eliberează zona sau mută formula în altă celulă.\n- La SORT, **sort_index** se referă la poziția coloanei în array-ul dat ca argument, nu la coloana din foaie – dacă array=B2:D10, sort_index=1 înseamnă coloana B, nu A.\n- La SORTBY, toate intervalele by_array trebuie să aibă aceeași dimensiune pe axa de sortare ca array (același număr de rânduri, de exemplu); altfel primești #VALUE!.\n- Sortarea nu ține cont de formatarea vizuală (culoare, bold) – doar de valoarea propriu-zisă a celulei, exact ca la orice sortare clasică din Excel.",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai tabelul de mai jos cu angajații unei firme, în intervalul A2:C7 (A1:C1 = capete de tabel: Nume, Departament, Salariu):\n\n| Nume | Departament | Salariu (lei) |\n|---|---|---|\n| Ana Pop | Vânzări | 4.500 |\n| Bogdan Ionescu | IT | 6.200 |\n| Carmen Radu | Vânzări | 5.100 |\n| Dan Georgescu | IT | 7.300 |\n| Elena Marin | Contabilitate | 4.800 |\n| Florin Stan | Contabilitate | 5.300 |\n\n1. Scrie o formulă SORTBY care sortează angajații întâi după Departament (crescător, alfabetic), apoi, în cadrul aceluiași departament, după Salariu (descrescător).\n2. Scrie o formulă SORT care produce un clasament descrescător al tuturor angajaților, doar după Salariu, indiferent de departament.",
+    "solution_md": "1. `=SORTBY(A2:C7;B2:B7;1;C2:C7;-1)`\n\nRezultat:\n- Contabilitate: Florin Stan (5.300), Elena Marin (4.800)\n- IT: Dan Georgescu (7.300), Bogdan Ionescu (6.200)\n- Vânzări: Carmen Radu (5.100), Ana Pop (4.500)\n\n2. `=SORT(A2:C7;3;-1)`\n\nRezultat: Dan Georgescu (7.300), Florin Stan (5.300), Bogdan Ionescu (6.200), Carmen Radu (5.100), Elena Marin (4.800), Ana Pop (4.500).\n\nLa punctul 1, Departamentul este criteriul principal (sort_order1=1, crescător alfabetic: Contabilitate < IT < Vânzări), iar Salariul e criteriul secundar (sort_order2=-1), folosit doar pentru a departaja angajații din același departament. La punctul 2, SORT ignoră complet Departamentul – sort_index=3 indică direct a treia coloană din array (Salariu).",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială dintre SORT și SORTBY?",
+    "choices": [
+     "SORTBY poate sorta după o coloană/interval diferit de array-ul afișat, în timp ce SORT sortează doar după o coloană din interiorul array-ului dat",
+     "SORT este mai rapid decât SORTBY la volume mari de date",
+     "SORTBY nu poate produce o sortare descrescătoare",
+     "SORT poate sorta după mai multe coloane simultan, iar SORTBY doar după una singură"
+    ],
+    "answer": 0,
+    "explain": "SORT folosește sort_index pentru a indica o coloană din interiorul array-ului furnizat. SORTBY acceptă intervale by_array separate, care pot conține valori (sau formule) ce nu apar deloc în rezultatul afișat.",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce valoare trebuie folosită pentru argumentul sort_order (la SORT sau SORTBY) pentru a obține o ordine descrescătoare?",
+    "choices": [
+     "0",
+     "-1",
+     "1",
+     "\"DESC\""
+    ],
+    "answer": 1,
+    "explain": "Implicit, sort_order este 1 (crescător). Pentru descrescător se introduce explicit -1 ca argument.",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este sintaxa de bază a funcției SORT?",
+    "back": "=SORT(array; [sort_index]; [sort_order]; [by_col]) — sortează un array/interval după o coloană sau un rând din interiorul acestuia.",
+    "concept_key": "sort-functie-baza",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este sintaxa funcției SORTBY?",
+    "back": "=SORTBY(array; by_array1; [sort_order1]; [by_array2; sort_order2]; ...) — sortează array-ul după una sau mai multe intervale externe.",
+    "concept_key": "sortby-functie",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce valoare pentru sort_order produce o sortare descrescătoare?",
+    "back": "-1 (valoarea implicită, dacă argumentul lipsește, este 1 = crescător).",
+    "concept_key": "sort-order-valori",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e diferența esențială dintre SORT și SORTBY?",
+    "back": "SORT sortează array-ul după o coloană/rând aflat în interiorul aceluiași array (prin sort_index); SORTBY sortează array-ul după una sau mai multe coloane/intervale externe, care nu trebuie să facă parte din rezultatul afișat.",
+    "concept_key": "sort-vs-sortby",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum sortezi după mai multe criterii cu SORTBY?",
+    "back": "Adaugi perechi suplimentare by_array/sort_order: =SORTBY(array; criteriu1; ordine1; criteriu2; ordine2; ...) — primul criteriu are prioritate, următoarele departajează doar valorile egale pe criteriul anterior.",
+    "concept_key": "sortby-criterii-multiple",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o „matrice revărsată” (spilled array) generată de SORT/SORTBY?",
+    "back": "Rezultatul dinamic al formulei, care se extinde automat în celulele adiacente, goale, pornind din celula-ancoră unde e scrisă formula; se recalculează automat la schimbarea datelor sursă.",
+    "concept_key": "matrice-dinamica-spill",
+    "blockId": "cmjjuxvoo002mumkpc29ma93b-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1188,
+   "flashcards": 6
+  }
+ }
+}

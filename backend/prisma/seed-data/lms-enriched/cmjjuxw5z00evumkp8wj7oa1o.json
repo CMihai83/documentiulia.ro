@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw5z00evumkp8wj7oa1o",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Modelare Financiară în Excel",
+ "lesson": "Dashboard financiar",
+ "category": "FINANCE_OPS",
+ "content": "# Dashboard financiar\n\n## Ce este un dashboard financiar și de ce contează\n\nUn dashboard financiar este o pagină (de regulă în Excel sau Power BI) care concentrează cei mai importanți indicatori financiari ai companiei într-un singur ecran, actualizat periodic, gândit pentru citire rapidă de către board, CEO sau manageri de departament. Spre deosebire de un raport financiar clasic (bilanț, cont de profit și pierdere), dashboard-ul nu prezintă toate cifrele contabile, ci doar acele KPI (Key Performance Indicators – indicatori-cheie de performanță) care spun o poveste despre sănătatea financiară a firmei în câteva secunde.\n\nPrincipii de design pe care orice controller sau CFO ar trebui să le respecte:\n\n1. **Ierarhie vizuală** – cifrele critice (cash, marjă, EBITDA) sus-stânga, unde privirea ajunge prima; detaliile de sprijin jos sau pe pagini secundare.\n2. **Maximum 6-9 KPI pe ecran** – peste acest prag, atenția cititorului se pierde și dashboard-ul devine un raport deghizat.\n3. **Comparație, nu doar valoare absolută** – fiecare cifră e însoțită de un reper: buget, aceeași perioadă anul trecut, sau prag intern (target).\n4. **Consistență cromatică** – verde/galben/roșu au mereu același înțeles (peste target / aproape de target / sub target) pe tot dashboard-ul.\n5. **Actualizare automată** – dashboard-ul se leagă direct de sursa de date (balanța de verificare, extras bancar, ERP) prin formule sau Power Query, nu se completează manual, pentru a elimina erorile de copiere și a permite refresh rapid.\n\nUn dashboard bine construit reduce o ședință de raportare de o oră la o discuție de 10 minute axată pe decizii, nu pe explicarea cifrelor.\n\n## KPI-uri financiare esențiale pentru un dashboard executiv\n\nUn dashboard financiar solid combină, de regulă, indicatori din patru zone: creștere, profitabilitate, lichiditate și eficiență operațională.\n\n**1. Marja brută (Gross Margin)**\nMarja brută (%) = (Venituri − Costul bunurilor vândute) / Venituri × 100\nArată cât din fiecare leu vândut rămâne după costurile directe de producție sau achiziție.\n\n**2. Marja EBITDA**\nMarja EBITDA (%) = EBITDA / Venituri × 100, unde EBITDA = Profit operațional + Amortizare + Deprecieri.\nMăsoară profitabilitatea operațională, independent de politica de finanțare sau de amortizare contabilă.\n\n**3. DSO – Days Sales Outstanding (durata medie de încasare a creanțelor)**\nDSO = Creanțe comerciale / Venituri × Numărul de zile din perioadă.\nArată în câte zile, în medie, compania își încasează facturile emise către clienți. Un DSO în creștere semnalează probleme de cash flow viitoare.\n\n**4. Current Ratio (rata lichidității curente)**\nCurrent Ratio = Active curente / Datorii curente.\nValori sub 1 indică risc de lichiditate; peste 2 poate însemna capital \"blocat\" ineficient.\n\n**5. Cash Runway (autonomie de numerar)**\nCash Runway (luni) = Numerar disponibil / Cheltuieli lunare fixe medii.\nEsențial pentru companii cu flux de numerar negativ sau în expansiune – arată câte luni mai poate funcționa firma din rezervele actuale, fără venituri suplimentare.\n\n**6. Variance vs. Buget**\nVariance (%) = (Actual − Buget) / Buget × 100.\nSe afișează per linie bugetară (venituri, cheltuieli pe categorii) și este, de regulă, indicatorul care declanșează culorile de conditional formatting.\n\nToate aceste cifre provin din situațiile financiare întocmite conform OMFP 1802/2014 (bilanț, cont de profit și pierdere) și din balanța de verificare analitică, motiv pentru care dashboard-ul trebuie conectat direct la aceste surse, nu recalculat manual la fiecare închidere de lună.\n\n## Sparklines și conditional formatting: instrumentele vizuale din Excel\n\n**Sparklines** sunt mini-grafice inserate direct într-o celulă, fără axe sau etichete, care arată trendul unei serii de date (de exemplu, veniturile lunare din ultimele 12 luni) într-un spațiu de câțiva milimetri. În Excel 365: selectezi celula goală → tab **Inserare** → grup **Sparklines** → alegi **Linie**, **Coloană** sau **Câștig/Pierdere** → indici intervalul de date sursă (ex. B2:M2 pentru 12 luni). Avantaj: pe un rând de KPI, cititorul vede instant dacă indicatorul crește, scade sau oscilează, fără să citească 12 cifre separate.\n\nRecomandări practice:\n- Folosește sparkline de tip **coloană** pentru date discrete (vânzări lunare) și **linie** pentru trenduri continue (marjă %, cash disponibil).\n- Marchează punctul maxim/minim (opțiunile \"High Point\"/\"Low Point\" din tab-ul Sparkline Design) pentru a evidenția vârfurile.\n- Nu combina mai mult de 2-3 sparklines pe același card KPI – devine confuz.\n\n**Conditional formatting (formatare condiționată)** colorează automat celulele pe baza unei reguli, eliminând evaluarea manuală \"e bine sau e rău?\". Cele mai utile tipuri pentru dashboard financiar:\n\n- **Color Scales** – pentru DSO per client sau marjă per produs: verde = valoare bună, roșu = valoare critică, pe un gradient continuu.\n- **Icon Sets** (ex. săgeți sau semafor) – ideale pentru variance vs. buget: săgeată verde sus = peste target, roșie jos = sub target.\n- **Reguli personalizate cu formulă** – de exemplu, pentru variance: `=B2<-0,1` → font roșu, dacă abaterea e sub -10%. Se accesează din **Acasă → Formatare condiționată → Regulă nouă → Utilizare formulă pentru a determina celulele de formatat**.\n\nCombinația sparkline + conditional formatting transformă un tabel static de cifre într-un panou de control vizual, citibil în câteva secunde de orice membru al board-ului, chiar și fără pregătire financiară avansată.\n\n## Exemplu: Dashboard KPI pentru TehnoPlast SRL (exercițiul 2026)\nCompania TehnoPlast SRL, producător de ambalaje din plastic, construiește un dashboard financiar anual. Datele pentru 2026, comparativ cu bugetul aprobat:\n\n| Indicator | Actual 2026 | Buget 2026 | Variance |\n|---|---|---|---|\n| Venituri | 4.200.000 lei | 3.900.000 lei | +7,7% |\n| Cost bunuri vândute (COGS) | 2.520.000 lei | 2.340.000 lei | +7,7% |\n| Marja brută | 40,0% | 40,0% | 0 pp |\n| EBITDA | 630.000 lei | 585.000 lei | +7,7% |\n| Marja EBITDA | 15,0% | 15,0% | 0 pp |\n| Creanțe comerciale | 690.000 lei | 600.000 lei | +15,0% |\n| DSO | 60 zile | 56 zile | +4 zile |\n\nCalcul DSO actual: 690.000 / 4.200.000 × 365 = 59,96 ≈ 60 zile.\n\nÎn plus, dashboard-ul include doi indicatori de lichiditate care nu apar în bugetul de venituri și cheltuieli, dar sunt esențiali pentru board: Active curente 1.450.000 lei / Datorii curente 820.000 lei → Current Ratio = 1,77. Numerar disponibil 380.000 lei / Cheltuieli lunare fixe medii 190.000 lei → Cash Runway = 2,0 luni.\n\nConstrucția în Excel:\n1. Fiecare celulă \"Actual\" este legată prin formulă (SUMIFS sau XLOOKUP) direct din balanța de verificare exportată lunar, nu introdusă manual.\n2. Coloana Variance folosește formula `=(B2-C2)/C2`, formatată procentual cu o zecimală, separator RO (virgulă).\n3. Lângă coloana Venituri se inserează o sparkline de tip coloană pe cele 12 valori lunare, pentru a arăta trendul din spatele cifrei anuale.\n4. Pe coloana Variance se aplică o regulă de conditional formatting: verde dacă abaterea absolută este sub 5%, galben între 5% și 10%, roșu peste 10%.\n\n## Exemplu: Executive summary pe dashboard\nExecutive summary-ul este o casetă text (de obicei în colțul din dreapta sus al dashboard-ului), de 3-5 fraze, care traduce cifrele în concluzii pentru board, fără ca cititorul să mai parcurgă tabelul de KPI.\n\nExemplu de text pentru TehnoPlast SRL, exercițiul 2026:\n\n\"Performanță peste așteptări: veniturile au depășit bugetul cu 7,7% (4.200.000 lei față de 3.900.000 lei bugetați), susținute de comenzi suplimentare de la doi clienți industriali noi. Marja brută s-a menținut la 40,0%, în linie cu bugetul, semn că presiunea de creștere a prețului la materia primă (PET) a fost compensată prin efectul de volum. Atenție: DSO a crescut la 60 de zile (+4 față de buget) — recomandăm accelerarea încasărilor de la clientul cu cea mai mare pondere în soldul de creanțe. Cash runway rămâne confortabil, la 2,0 luni de cheltuieli fixe acoperite exclusiv din numerar disponibil, fără a lua în calcul liniile de credit neutilizate.\"\n\nÎn Excel, valorile numerice din text (7,7%, 4.200.000 lei, 60 de zile) pot fi generate dinamic cu funcția `=TEXT(celulă;\"#.##0\")` concatenată în celula narativă, astfel încât textul să se actualizeze automat la fiecare refresh de date; partea de interpretare și recomandare rămâne redactată manual de controller la fiecare închidere.\n\n> Temei legal: OMFP 1802/2014 Anexa 1 – Formatul și structura situațiilor financiare anuale (bilanț, cont de profit și pierdere) (în vigoare de la 2015-01-01)\nSursa oficială a cifrelor din dashboard (venituri, COGS, creanțe, active/datorii curente) o reprezintă situațiile financiare întocmite conform OMFP 1802/2014, aplicabil de la 1 ianuarie 2015. Orice KPI afișat trebuie să poată fi trasat până la o linie din bilanț sau din contul de profit și pierdere ori din balanța de verificare analitică, pentru a rezista unui audit intern sau extern.\n\n⚠ Un dashboard frumos cu date greșite este mai periculos decât niciun dashboard. Reguli de igienă a datelor: (1) nu introduce niciodată cifre manual peste formule – rupe legătura cu sursa și dashboard-ul \"minte\" tăcut la refresh-ul următor; (2) evită \"vanity metrics\" – indicatori care arată bine dar nu influențează nicio decizie (ex. numărul brut de facturi emise, fără context); (3) afișează întotdeauna data ultimei actualizări a datelor, vizibil pe ecran, astfel încât cititorul să știe cât de recentă e informația; (4) limitează zecimalele – două zecimale la procente, fără zecimale la sumele mari, altfel dashboard-ul devine ilizibil.\n\n## Exercițiu\nCompania Alfa Distribuție SRL îți pune la dispoziție următoarele linii bugetare pentru trimestrul încheiat, pentru a construi coloana de variance și conditional formatting a dashboard-ului:\n\n| Linie | Actual | Buget |\n|---|---|---|\n| Venituri | 4.200.000 lei | 3.900.000 lei |\n| Cheltuieli cu personalul | 950.000 lei | 900.000 lei |\n| Cheltuieli marketing | 310.000 lei | 250.000 lei |\n| EBITDA | 630.000 lei | 585.000 lei |\n| DSO | 60 zile | 56 zile |\n\nCerințe:\n1. Calculează variance (%) pentru fiecare linie, cu formula (Actual − Buget) / Buget × 100.\n2. Aplică pragurile de conditional formatting definite în lecție (verde ≤5% abatere absolută, galben 5-10%, roșu >10%) și indică ce culoare ar primi fiecare linie.\n3. Explică pentru care linii o variance pozitivă este favorabilă și pentru care este nefavorabilă.\n\n**Soluție:** 1. Calcul variance:\n- Venituri: (4.200.000−3.900.000)/3.900.000 = +7,7%\n- Cheltuieli personal: (950.000−900.000)/900.000 = +5,6%\n- Cheltuieli marketing: (310.000−250.000)/250.000 = +24,0%\n- EBITDA: (630.000−585.000)/585.000 = +7,7%\n- DSO: (60−56)/56 = +7,1%\n\n2. Culori (după abaterea absolută):\n- Venituri: 7,7% → galben\n- Cheltuieli personal: 5,6% → galben\n- Cheltuieli marketing: 24,0% → roșu (necesită investigare imediată)\n- EBITDA: 7,7% → galben\n- DSO: 7,1% → galben\n\n3. Interpretare direcțională: pentru Venituri și EBITDA, o variance pozitivă (peste buget) este favorabilă. Pentru Cheltuieli cu personalul, Cheltuieli marketing și DSO, o variance pozitivă (peste buget, respectiv încasare mai lentă) este nefavorabilă. Formula de conditional formatting pentru culoare pe magnitudine, indiferent de sens, folosește valoarea absolută: `=ABS((B2-C2)/C2)>0,1` pentru roșu, `=ABS((B2-C2)/C2)>0,05` pentru galben, altfel verde – dar interpretarea \"bine/rău\" a semnului rămâne responsabilitatea controllerului, nu a formulei.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "dashboard-financiar-definitie",
+    "md": "## Ce este un dashboard financiar și de ce contează\n\nUn dashboard financiar este o pagină (de regulă în Excel sau Power BI) care concentrează cei mai importanți indicatori financiari ai companiei într-un singur ecran, actualizat periodic, gândit pentru citire rapidă de către board, CEO sau manageri de departament. Spre deosebire de un raport financiar clasic (bilanț, cont de profit și pierdere), dashboard-ul nu prezintă toate cifrele contabile, ci doar acele KPI (Key Performance Indicators – indicatori-cheie de performanță) care spun o poveste despre sănătatea financiară a firmei în câteva secunde.\n\nPrincipii de design pe care orice controller sau CFO ar trebui să le respecte:\n\n1. **Ierarhie vizuală** – cifrele critice (cash, marjă, EBITDA) sus-stânga, unde privirea ajunge prima; detaliile de sprijin jos sau pe pagini secundare.\n2. **Maximum 6-9 KPI pe ecran** – peste acest prag, atenția cititorului se pierde și dashboard-ul devine un raport deghizat.\n3. **Comparație, nu doar valoare absolută** – fiecare cifră e însoțită de un reper: buget, aceeași perioadă anul trecut, sau prag intern (target).\n4. **Consistență cromatică** – verde/galben/roșu au mereu același înțeles (peste target / aproape de target / sub target) pe tot dashboard-ul.\n5. **Actualizare automată** – dashboard-ul se leagă direct de sursa de date (balanța de verificare, extras bancar, ERP) prin formule sau Power Query, nu se completează manual, pentru a elimina erorile de copiere și a permite refresh rapid.\n\nUn dashboard bine construit reduce o ședință de raportare de o oră la o discuție de 10 minute axată pe decizii, nu pe explicarea cifrelor.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "kpi-financiari-cheie",
+    "md": "## KPI-uri financiare esențiale pentru un dashboard executiv\n\nUn dashboard financiar solid combină, de regulă, indicatori din patru zone: creștere, profitabilitate, lichiditate și eficiență operațională.\n\n**1. Marja brută (Gross Margin)**\nMarja brută (%) = (Venituri − Costul bunurilor vândute) / Venituri × 100\nArată cât din fiecare leu vândut rămâne după costurile directe de producție sau achiziție.\n\n**2. Marja EBITDA**\nMarja EBITDA (%) = EBITDA / Venituri × 100, unde EBITDA = Profit operațional + Amortizare + Deprecieri.\nMăsoară profitabilitatea operațională, independent de politica de finanțare sau de amortizare contabilă.\n\n**3. DSO – Days Sales Outstanding (durata medie de încasare a creanțelor)**\nDSO = Creanțe comerciale / Venituri × Numărul de zile din perioadă.\nArată în câte zile, în medie, compania își încasează facturile emise către clienți. Un DSO în creștere semnalează probleme de cash flow viitoare.\n\n**4. Current Ratio (rata lichidității curente)**\nCurrent Ratio = Active curente / Datorii curente.\nValori sub 1 indică risc de lichiditate; peste 2 poate însemna capital \"blocat\" ineficient.\n\n**5. Cash Runway (autonomie de numerar)**\nCash Runway (luni) = Numerar disponibil / Cheltuieli lunare fixe medii.\nEsențial pentru companii cu flux de numerar negativ sau în expansiune – arată câte luni mai poate funcționa firma din rezervele actuale, fără venituri suplimentare.\n\n**6. Variance vs. Buget**\nVariance (%) = (Actual − Buget) / Buget × 100.\nSe afișează per linie bugetară (venituri, cheltuieli pe categorii) și este, de regulă, indicatorul care declanșează culorile de conditional formatting.\n\nToate aceste cifre provin din situațiile financiare întocmite conform OMFP 1802/2014 (bilanț, cont de profit și pierdere) și din balanța de verificare analitică, motiv pentru care dashboard-ul trebuie conectat direct la aceste surse, nu recalculat manual la fiecare închidere de lună.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sparklines-conditional-formatting-excel",
+    "md": "## Sparklines și conditional formatting: instrumentele vizuale din Excel\n\n**Sparklines** sunt mini-grafice inserate direct într-o celulă, fără axe sau etichete, care arată trendul unei serii de date (de exemplu, veniturile lunare din ultimele 12 luni) într-un spațiu de câțiva milimetri. În Excel 365: selectezi celula goală → tab **Inserare** → grup **Sparklines** → alegi **Linie**, **Coloană** sau **Câștig/Pierdere** → indici intervalul de date sursă (ex. B2:M2 pentru 12 luni). Avantaj: pe un rând de KPI, cititorul vede instant dacă indicatorul crește, scade sau oscilează, fără să citească 12 cifre separate.\n\nRecomandări practice:\n- Folosește sparkline de tip **coloană** pentru date discrete (vânzări lunare) și **linie** pentru trenduri continue (marjă %, cash disponibil).\n- Marchează punctul maxim/minim (opțiunile \"High Point\"/\"Low Point\" din tab-ul Sparkline Design) pentru a evidenția vârfurile.\n- Nu combina mai mult de 2-3 sparklines pe același card KPI – devine confuz.\n\n**Conditional formatting (formatare condiționată)** colorează automat celulele pe baza unei reguli, eliminând evaluarea manuală \"e bine sau e rău?\". Cele mai utile tipuri pentru dashboard financiar:\n\n- **Color Scales** – pentru DSO per client sau marjă per produs: verde = valoare bună, roșu = valoare critică, pe un gradient continuu.\n- **Icon Sets** (ex. săgeți sau semafor) – ideale pentru variance vs. buget: săgeată verde sus = peste target, roșie jos = sub target.\n- **Reguli personalizate cu formulă** – de exemplu, pentru variance: `=B2<-0,1` → font roșu, dacă abaterea e sub -10%. Se accesează din **Acasă → Formatare condiționată → Regulă nouă → Utilizare formulă pentru a determina celulele de formatat**.\n\nCombinația sparkline + conditional formatting transformă un tabel static de cifre într-un panou de control vizual, citibil în câteva secunde de orice membru al board-ului, chiar și fără pregătire financiară avansată.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b3"
+   },
+   {
+    "type": "example",
+    "title": "Dashboard KPI pentru TehnoPlast SRL (exercițiul 2026)",
+    "concept_key": "constructie-dashboard-kpi-cards",
+    "md": "Compania TehnoPlast SRL, producător de ambalaje din plastic, construiește un dashboard financiar anual. Datele pentru 2026, comparativ cu bugetul aprobat:\n\n| Indicator | Actual 2026 | Buget 2026 | Variance |\n|---|---|---|---|\n| Venituri | 4.200.000 lei | 3.900.000 lei | +7,7% |\n| Cost bunuri vândute (COGS) | 2.520.000 lei | 2.340.000 lei | +7,7% |\n| Marja brută | 40,0% | 40,0% | 0 pp |\n| EBITDA | 630.000 lei | 585.000 lei | +7,7% |\n| Marja EBITDA | 15,0% | 15,0% | 0 pp |\n| Creanțe comerciale | 690.000 lei | 600.000 lei | +15,0% |\n| DSO | 60 zile | 56 zile | +4 zile |\n\nCalcul DSO actual: 690.000 / 4.200.000 × 365 = 59,96 ≈ 60 zile.\n\nÎn plus, dashboard-ul include doi indicatori de lichiditate care nu apar în bugetul de venituri și cheltuieli, dar sunt esențiali pentru board: Active curente 1.450.000 lei / Datorii curente 820.000 lei → Current Ratio = 1,77. Numerar disponibil 380.000 lei / Cheltuieli lunare fixe medii 190.000 lei → Cash Runway = 2,0 luni.\n\nConstrucția în Excel:\n1. Fiecare celulă \"Actual\" este legată prin formulă (SUMIFS sau XLOOKUP) direct din balanța de verificare exportată lunar, nu introdusă manual.\n2. Coloana Variance folosește formula `=(B2-C2)/C2`, formatată procentual cu o zecimală, separator RO (virgulă).\n3. Lângă coloana Venituri se inserează o sparkline de tip coloană pe cele 12 valori lunare, pentru a arăta trendul din spatele cifrei anuale.\n4. Pe coloana Variance se aplică o regulă de conditional formatting: verde dacă abaterea absolută este sub 5%, galben între 5% și 10%, roșu peste 10%.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b4"
+   },
+   {
+    "type": "example",
+    "title": "Executive summary pe dashboard",
+    "concept_key": "executive-summary-dashboard",
+    "md": "Executive summary-ul este o casetă text (de obicei în colțul din dreapta sus al dashboard-ului), de 3-5 fraze, care traduce cifrele în concluzii pentru board, fără ca cititorul să mai parcurgă tabelul de KPI.\n\nExemplu de text pentru TehnoPlast SRL, exercițiul 2026:\n\n\"Performanță peste așteptări: veniturile au depășit bugetul cu 7,7% (4.200.000 lei față de 3.900.000 lei bugetați), susținute de comenzi suplimentare de la doi clienți industriali noi. Marja brută s-a menținut la 40,0%, în linie cu bugetul, semn că presiunea de creștere a prețului la materia primă (PET) a fost compensată prin efectul de volum. Atenție: DSO a crescut la 60 de zile (+4 față de buget) — recomandăm accelerarea încasărilor de la clientul cu cea mai mare pondere în soldul de creanțe. Cash runway rămâne confortabil, la 2,0 luni de cheltuieli fixe acoperite exclusiv din numerar disponibil, fără a lua în calcul liniile de credit neutilizate.\"\n\nÎn Excel, valorile numerice din text (7,7%, 4.200.000 lei, 60 de zile) pot fi generate dinamic cu funcția `=TEXT(celulă;\"#.##0\")` concatenată în celula narativă, astfel încât textul să se actualizeze automat la fiecare refresh de date; partea de interpretare și recomandare rămâne redactată manual de controller la fiecare închidere.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Anexa 1 – Formatul și structura situațiilor financiare anuale (bilanț, cont de profit și pierdere)",
+    "effective": "2015-01-01",
+    "md": "Sursa oficială a cifrelor din dashboard (venituri, COGS, creanțe, active/datorii curente) o reprezintă situațiile financiare întocmite conform OMFP 1802/2014, aplicabil de la 1 ianuarie 2015. Orice KPI afișat trebuie să poată fi trasat până la o linie din bilanț sau din contul de profit și pierdere ori din balanța de verificare analitică, pentru a rezista unui audit intern sau extern.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Un dashboard frumos cu date greșite este mai periculos decât niciun dashboard. Reguli de igienă a datelor: (1) nu introduce niciodată cifre manual peste formule – rupe legătura cu sursa și dashboard-ul \"minte\" tăcut la refresh-ul următor; (2) evită \"vanity metrics\" – indicatori care arată bine dar nu influențează nicio decizie (ex. numărul brut de facturi emise, fără context); (3) afișează întotdeauna data ultimei actualizări a datelor, vizibil pe ecran, astfel încât cititorul să știe cât de recentă e informația; (4) limitează zecimalele – două zecimale la procente, fără zecimale la sumele mari, altfel dashboard-ul devine ilizibil.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Compania Alfa Distribuție SRL îți pune la dispoziție următoarele linii bugetare pentru trimestrul încheiat, pentru a construi coloana de variance și conditional formatting a dashboard-ului:\n\n| Linie | Actual | Buget |\n|---|---|---|\n| Venituri | 4.200.000 lei | 3.900.000 lei |\n| Cheltuieli cu personalul | 950.000 lei | 900.000 lei |\n| Cheltuieli marketing | 310.000 lei | 250.000 lei |\n| EBITDA | 630.000 lei | 585.000 lei |\n| DSO | 60 zile | 56 zile |\n\nCerințe:\n1. Calculează variance (%) pentru fiecare linie, cu formula (Actual − Buget) / Buget × 100.\n2. Aplică pragurile de conditional formatting definite în lecție (verde ≤5% abatere absolută, galben 5-10%, roșu >10%) și indică ce culoare ar primi fiecare linie.\n3. Explică pentru care linii o variance pozitivă este favorabilă și pentru care este nefavorabilă.",
+    "solution_md": "1. Calcul variance:\n- Venituri: (4.200.000−3.900.000)/3.900.000 = +7,7%\n- Cheltuieli personal: (950.000−900.000)/900.000 = +5,6%\n- Cheltuieli marketing: (310.000−250.000)/250.000 = +24,0%\n- EBITDA: (630.000−585.000)/585.000 = +7,7%\n- DSO: (60−56)/56 = +7,1%\n\n2. Culori (după abaterea absolută):\n- Venituri: 7,7% → galben\n- Cheltuieli personal: 5,6% → galben\n- Cheltuieli marketing: 24,0% → roșu (necesită investigare imediată)\n- EBITDA: 7,7% → galben\n- DSO: 7,1% → galben\n\n3. Interpretare direcțională: pentru Venituri și EBITDA, o variance pozitivă (peste buget) este favorabilă. Pentru Cheltuieli cu personalul, Cheltuieli marketing și DSO, o variance pozitivă (peste buget, respectiv încasare mai lentă) este nefavorabilă. Formula de conditional formatting pentru culoare pe magnitudine, indiferent de sens, folosește valoarea absolută: `=ABS((B2-C2)/C2)>0,1` pentru roșu, `=ABS((B2-C2)/C2)>0,05` pentru galben, altfel verde – dar interpretarea \"bine/rău\" a semnului rămâne responsabilitatea controllerului, nu a formulei.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Compania Beta SRL are creanțe comerciale de 800.000 lei și venituri anuale de 4.800.000 lei. Care este DSO?",
+    "choices": [
+     "30 de zile",
+     "60 de zile",
+     "90 de zile",
+     "120 de zile"
+    ],
+    "answer": 1,
+    "explain": "DSO = Creanțe / Venituri × 365 = 800.000/4.800.000 × 365 = 60,8 ≈ 60 de zile.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este numărul maxim recomandat de KPI pe un singur ecran de dashboard financiar, conform principiilor de design prezentate?",
+    "choices": [
+     "2-3 KPI",
+     "6-9 KPI",
+     "15-20 KPI",
+     "Cât mai mulți, pentru completitudine"
+    ],
+    "answer": 1,
+    "explain": "Peste 6-9 KPI pe ecran, atenția cititorului se pierde și dashboard-ul devine, de fapt, un raport deghizat, contrar scopului său de sinteză rapidă.",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula DSO (Days Sales Outstanding)?",
+    "back": "DSO = Creanțe comerciale / Venituri × Numărul de zile din perioadă.",
+    "concept_key": "kpi-financiari-cheie",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o sparkline în Excel?",
+    "back": "Un mini-grafic inserat într-o singură celulă, fără axe sau etichete, care arată trendul unei serii de date.",
+    "concept_key": "sparklines-conditional-formatting-excel",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte KPI-uri sunt recomandate pe un ecran de dashboard financiar?",
+    "back": "Maximum 6-9 KPI, pentru a păstra atenția cititorului concentrată pe esențial.",
+    "concept_key": "dashboard-financiar-definitie",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează marja EBITDA?",
+    "back": "Marja EBITDA = EBITDA / Venituri × 100, unde EBITDA = Profit operațional + Amortizare + Deprecieri.",
+    "concept_key": "kpi-financiari-cheie",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce arată indicatorul Cash Runway?",
+    "back": "Câte luni poate funcționa firma din numerarul disponibil, calculat ca Numerar disponibil / Cheltuieli lunare fixe medii.",
+    "concept_key": "kpi-financiari-cheie",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementare stabilește structura situațiilor financiare din care se extrag KPI-urile pentru dashboard?",
+    "back": "OMFP 1802/2014, aplicabil de la 1 ianuarie 2015, care reglementează formatul și structura situațiilor financiare anuale din România.",
+    "concept_key": "situatii-financiare-omfp-1802",
+    "blockId": "cmjjuxw5z00evumkp8wj7oa1o-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1686,
+   "flashcards": 6
+  }
+ }
+}

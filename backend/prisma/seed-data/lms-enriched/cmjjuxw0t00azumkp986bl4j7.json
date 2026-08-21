@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw0t00azumkp986bl4j7",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Situațiile Financiare Explicate",
+ "lesson": "Bilanțul - Ce deține și ce datorează compania",
+ "category": "FINANCE_OPS",
+ "content": "# Bilanțul - Ce deține și ce datorează compania\n\n## Ce este bilanțul contabil?\n\nBilanțul este situația financiară care răspunde la trei întrebări simple, dar esențiale pentru orice manager sau antreprenor: **ce deține compania**, **cât datorează** și **cât din avere aparține efectiv proprietarilor**. Spre deosebire de contul de profit și pierdere, care arată performanța pe o perioadă (de exemplu, un an întreg), bilanțul este o „fotografie” făcută la un moment precis în timp — de regulă la 31 decembrie, pentru bilanțul anual, dar poate fi întocmit și lunar sau trimestrial pentru raportare managerială internă.\n\nStructura bilanțului se bazează pe o ecuație contabilă simplă, dar fundamentală, care trebuie să fie mereu adevărată, indiferent de mărimea companiei:\n\n**Active = Capitaluri proprii + Datorii**\n\nPartea din dreapta a ecuației (Capitaluri proprii + Datorii) se numește, în ansamblu, **Pasivul** bilanțier — adică sursele de finanțare ale activelor. Practic, orice leu de activ deținut de companie a fost finanțat fie din bani puși de proprietari (capitaluri proprii), fie din bani împrumutați de la terți (datorii). De aceea, Total Active trebuie să fie întotdeauna egal cu Total Pasiv — dacă nu sunt egale, undeva există o eroare de înregistrare.\n\nÎn România, formatul și structura bilanțului pentru situațiile financiare anuale sunt reglementate prin OMFP nr. 1802/2014, care armonizează raportarea contabilă românească cu Directiva europeană 2013/34/UE. Indiferent de forma juridică (SRL, SA, PFA cu contabilitate în partidă dublă), logica ecuației Active = Capitaluri proprii + Datorii rămâne aceeași.\n\n## Active circulante vs. active imobilizate\n\nActivele reprezintă tot ce deține compania și care are o valoare economică — resurse controlate de firmă, din care se așteaptă beneficii economice viitoare. Ele se împart în bilanț în funcție de orizontul de timp în care se transformă în numerar sau se consumă:\n\n**Active imobilizate (necurente)** — resurse deținute pe termen lung, de regulă peste 12 luni, folosite pentru desfășurarea activității și nu pentru revânzare imediată:\n- *Imobilizări corporale*: clădiri, terenuri, utilaje, echipamente, mijloace de transport;\n- *Imobilizări necorporale*: licențe, brevete, mărci, software dezvoltat sau achiziționat, fond comercial;\n- *Imobilizări financiare*: participații deținute la alte companii, împrumuturi acordate pe termen lung.\n\nCu excepția terenurilor, majoritatea imobilizărilor corporale și necorporale se amortizează — valoarea lor contabilă scade treptat, an de an, pe măsură ce se consumă din durata lor de utilitate.\n\n**Active circulante (curente)** — resurse care se așteaptă să fie transformate în numerar, vândute sau consumate în maximum 12 luni:\n- *Stocuri*: materii prime, produse finite, mărfuri aflate în depozit;\n- *Creanțe*: sume de încasat de la clienți sau alți debitori;\n- *Casă și conturi bancare*: numerar efectiv și disponibilul din conturi;\n- *Investiții financiare pe termen scurt*: depozite bancare pe termen scurt, titluri ușor de lichidat.\n\nDistincția contează practic pentru că activele circulante reflectă lichiditatea imediată a firmei — capacitatea de a face față plăților curente — în timp ce activele imobilizate reflectă capacitatea de producție și potențialul pe termen lung.\n\n## Datorii pe termen scurt și lung, plus capitalurile proprii\n\n**Datoriile** reprezintă obligațiile companiei față de terți — bani care nu aparțin proprietarilor, ci trebuie rambursați. Ca și activele, se clasifică după scadență:\n\n- *Datorii pe termen scurt (curente)*: scadente în maximum 12 luni — datorii către furnizori, credite bancare pe termen scurt sau rate scadente în anul următor, salarii de plată, TVA de plată, impozite și contribuții de virat la stat.\n- *Datorii pe termen lung (necurente)*: scadente peste 12 luni — credite bancare pe termen lung, leasing financiar, obligațiuni emise de companie.\n\n**Capitalurile proprii** reprezintă partea din activele companiei care rămâne proprietarilor, după ce se scad toate datoriile — de aceea se mai numesc și „activul net” sau valoarea contabilă a firmei. Principalele componente sunt:\n\n- *Capitalul social*: sumele aduse de asociați/acționari la înființare sau prin majorări ulterioare;\n- *Primele de capital*: diferența dintre valoarea de emisiune și valoarea nominală a părților sociale/acțiunilor, când există;\n- *Rezervele*: sume constituite din profit, de regulă cu destinație legală (rezerva legală, obligatorie prin lege) sau statutară;\n- *Rezultatul reportat*: profiturile din anii anteriori nedistribuite ca dividende (sau, dacă e negativ, pierderile neacoperite);\n- *Rezultatul exercițiului curent*: profitul sau pierderea anului în curs, până la închiderea și repartizarea sa.\n\nCapitalurile proprii cresc atunci când firma este profitabilă și reține profitul în companie, și scad atunci când firma înregistrează pierderi sau distribuie dividende mai mari decât profitul curent.\n\n## Exemplu: Bilanț simplificat — TehnoConcept SRL\nBilanțul simplificat al firmei **TehnoConcept SRL**, la 31 decembrie:\n\n**ACTIVE**\n| Element | Valoare (lei) |\n|---|---|\n| Active imobilizate (clădiri, utilaje, licențe) | 250.000 |\n| Stocuri | 80.000 |\n| Creanțe (clienți) | 60.000 |\n| Casă și conturi bancare | 30.000 |\n| **Active circulante, total** | **170.000** |\n| **TOTAL ACTIVE** | **420.000** |\n\n**PASIVE**\n| Element | Valoare (lei) |\n|---|---|\n| Capital social | 50.000 |\n| Rezerve | 20.000 |\n| Rezultat reportat | 100.000 |\n| **Capitaluri proprii, total** | **170.000** |\n| Datorii pe termen lung (credit bancar) | 150.000 |\n| Furnizori | 70.000 |\n| Salarii de plată | 20.000 |\n| TVA de plată | 10.000 |\n| **Datorii pe termen scurt, total** | **100.000** |\n| **Datorii, total** | **250.000** |\n| **TOTAL PASIVE** | **420.000** |\n\nTotal Active (420.000 lei) = Total Pasive (420.000 lei) = Capitaluri proprii (170.000 lei) + Datorii totale (250.000 lei). Ecuația fundamentală se verifică, semn că bilanțul este corect întocmit.\n\n## Exemplu: Interpretarea structurii bilanțului: fond de rulment și grad de îndatorare\nPornind de la bilanțul TehnoConcept SRL, putem calcula doi indicatori esențiali pentru interpretarea structurii financiare:\n\n**1. Fondul de rulment = Active circulante − Datorii pe termen scurt**\nFond de rulment = 170.000 − 100.000 = **70.000 lei** (pozitiv)\n\nUn fond de rulment pozitiv arată că firma are suficiente active ușor transformabile în numerar pentru a-și acoperi obligațiile scadente în următoarele 12 luni — un semnal bun de lichiditate pe termen scurt.\n\n**2. Gradul de îndatorare = Datorii totale / Capitaluri proprii**\nGrad de îndatorare = 250.000 / 170.000 = **1,47 (147%)**\n\nAceasta înseamnă că, pentru fiecare leu investit de proprietari, firma mai are 1,47 lei finanțați din datorii. Un nivel moderat spre ridicat, care merită urmărit: dacă gradul de îndatorare crește constant, firma devine tot mai dependentă de finanțare externă, ceea ce o expune la riscuri în cazul unor dobânzi mai mari sau al unei scăderi a vânzărilor.\n\n> Temei legal: OMFP nr. 1802/2014 Reglementările contabile privind situațiile financiare anuale individuale și consolidate (în vigoare de la 2015-01-01)\nStructura și conținutul bilanțului pentru situațiile financiare anuale ale entităților din România sunt reglementate prin Ordinul Ministrului Finanțelor Publice nr. 1802/2014, care transpune în legislația română Directiva europeană 2013/34/UE și stabilește formatul standard (format „listă”) pe care majoritatea entităților românești trebuie să îl respecte la întocmirea bilanțului.\n\n⚠ Bilanțul este o „fotografie” la o dată fixă, nu un film — nu arată cum a evoluat firma în cursul anului și nici cât de profitabilă a fost activitatea; pentru asta ai nevoie de contul de profit și pierdere. În plus, majoritatea activelor (mai ales imobilizările) sunt înregistrate la cost istoric sau cost amortizat, nu la valoarea lor de piață curentă — o clădire cumpărată acum 10 ani poate figura în bilanț la o valoare mult sub cea la care s-ar vinde azi. Interpretează bilanțul mereu împreună cu celelalte situații financiare, nu izolat.\n\n## Exercițiu\nAi la dispoziție următoarele solduri, la 31 decembrie, pentru firma **Verde Design SRL**:\n\n- Clădiri: 300.000 lei\n- Echipamente: 90.000 lei\n- Stocuri: 45.000 lei\n- Creanțe (clienți): 35.000 lei\n- Casă și conturi bancare: 15.000 lei\n- Capital social: 100.000 lei\n- Rezerve legale: 10.000 lei\n- Rezultat reportat: 60.000 lei\n- Credit bancar pe termen lung: 200.000 lei\n- Furnizori: 90.000 lei\n- Datorii salariale: 25.000 lei\n\n**Cerințe:**\n1. Calculează totalul activelor imobilizate, al activelor circulante și Total Active.\n2. Calculează Capitalurile proprii, Datoriile pe termen lung și scurt, apoi Total Pasive.\n3. Verifică ecuația fundamentală a bilanțului.\n4. Calculează fondul de rulment și interpretează-l.\n\n**Soluție:** **1. Active**\n- Active imobilizate = 300.000 + 90.000 = 390.000 lei\n- Active circulante = 45.000 + 35.000 + 15.000 = 95.000 lei\n- **Total Active = 390.000 + 95.000 = 485.000 lei**\n\n**2. Pasive**\n- Capitaluri proprii = 100.000 + 10.000 + 60.000 = 170.000 lei\n- Datorii pe termen lung = 200.000 lei\n- Datorii pe termen scurt = 90.000 + 25.000 = 115.000 lei\n- Datorii totale = 200.000 + 115.000 = 315.000 lei\n- **Total Pasive = 170.000 + 315.000 = 485.000 lei**\n\n**3. Verificare:** Total Active (485.000 lei) = Total Pasive (485.000 lei). Ecuația se confirmă.\n\n**4. Fond de rulment = Active circulante − Datorii pe termen scurt = 95.000 − 115.000 = −20.000 lei**\n\nFondul de rulment este **negativ**: activele ușor transformabile în numerar nu acoperă în totalitate obligațiile scadente în următoarele 12 luni. Este un semnal de atenție — firma ar trebui să analizeze fie accelerarea încasărilor de la clienți, fie renegocierea termenelor cu furnizorii, fie o linie de credit suplimentară pe termen scurt.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "bilant-ecuatia-fundamentala",
+    "md": "## Ce este bilanțul contabil?\n\nBilanțul este situația financiară care răspunde la trei întrebări simple, dar esențiale pentru orice manager sau antreprenor: **ce deține compania**, **cât datorează** și **cât din avere aparține efectiv proprietarilor**. Spre deosebire de contul de profit și pierdere, care arată performanța pe o perioadă (de exemplu, un an întreg), bilanțul este o „fotografie” făcută la un moment precis în timp — de regulă la 31 decembrie, pentru bilanțul anual, dar poate fi întocmit și lunar sau trimestrial pentru raportare managerială internă.\n\nStructura bilanțului se bazează pe o ecuație contabilă simplă, dar fundamentală, care trebuie să fie mereu adevărată, indiferent de mărimea companiei:\n\n**Active = Capitaluri proprii + Datorii**\n\nPartea din dreapta a ecuației (Capitaluri proprii + Datorii) se numește, în ansamblu, **Pasivul** bilanțier — adică sursele de finanțare ale activelor. Practic, orice leu de activ deținut de companie a fost finanțat fie din bani puși de proprietari (capitaluri proprii), fie din bani împrumutați de la terți (datorii). De aceea, Total Active trebuie să fie întotdeauna egal cu Total Pasiv — dacă nu sunt egale, undeva există o eroare de înregistrare.\n\nÎn România, formatul și structura bilanțului pentru situațiile financiare anuale sunt reglementate prin OMFP nr. 1802/2014, care armonizează raportarea contabilă românească cu Directiva europeană 2013/34/UE. Indiferent de forma juridică (SRL, SA, PFA cu contabilitate în partidă dublă), logica ecuației Active = Capitaluri proprii + Datorii rămâne aceeași.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "active-circulante-vs-imobilizate",
+    "md": "## Active circulante vs. active imobilizate\n\nActivele reprezintă tot ce deține compania și care are o valoare economică — resurse controlate de firmă, din care se așteaptă beneficii economice viitoare. Ele se împart în bilanț în funcție de orizontul de timp în care se transformă în numerar sau se consumă:\n\n**Active imobilizate (necurente)** — resurse deținute pe termen lung, de regulă peste 12 luni, folosite pentru desfășurarea activității și nu pentru revânzare imediată:\n- *Imobilizări corporale*: clădiri, terenuri, utilaje, echipamente, mijloace de transport;\n- *Imobilizări necorporale*: licențe, brevete, mărci, software dezvoltat sau achiziționat, fond comercial;\n- *Imobilizări financiare*: participații deținute la alte companii, împrumuturi acordate pe termen lung.\n\nCu excepția terenurilor, majoritatea imobilizărilor corporale și necorporale se amortizează — valoarea lor contabilă scade treptat, an de an, pe măsură ce se consumă din durata lor de utilitate.\n\n**Active circulante (curente)** — resurse care se așteaptă să fie transformate în numerar, vândute sau consumate în maximum 12 luni:\n- *Stocuri*: materii prime, produse finite, mărfuri aflate în depozit;\n- *Creanțe*: sume de încasat de la clienți sau alți debitori;\n- *Casă și conturi bancare*: numerar efectiv și disponibilul din conturi;\n- *Investiții financiare pe termen scurt*: depozite bancare pe termen scurt, titluri ușor de lichidat.\n\nDistincția contează practic pentru că activele circulante reflectă lichiditatea imediată a firmei — capacitatea de a face față plăților curente — în timp ce activele imobilizate reflectă capacitatea de producție și potențialul pe termen lung.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "datorii-si-capitaluri-proprii",
+    "md": "## Datorii pe termen scurt și lung, plus capitalurile proprii\n\n**Datoriile** reprezintă obligațiile companiei față de terți — bani care nu aparțin proprietarilor, ci trebuie rambursați. Ca și activele, se clasifică după scadență:\n\n- *Datorii pe termen scurt (curente)*: scadente în maximum 12 luni — datorii către furnizori, credite bancare pe termen scurt sau rate scadente în anul următor, salarii de plată, TVA de plată, impozite și contribuții de virat la stat.\n- *Datorii pe termen lung (necurente)*: scadente peste 12 luni — credite bancare pe termen lung, leasing financiar, obligațiuni emise de companie.\n\n**Capitalurile proprii** reprezintă partea din activele companiei care rămâne proprietarilor, după ce se scad toate datoriile — de aceea se mai numesc și „activul net” sau valoarea contabilă a firmei. Principalele componente sunt:\n\n- *Capitalul social*: sumele aduse de asociați/acționari la înființare sau prin majorări ulterioare;\n- *Primele de capital*: diferența dintre valoarea de emisiune și valoarea nominală a părților sociale/acțiunilor, când există;\n- *Rezervele*: sume constituite din profit, de regulă cu destinație legală (rezerva legală, obligatorie prin lege) sau statutară;\n- *Rezultatul reportat*: profiturile din anii anteriori nedistribuite ca dividende (sau, dacă e negativ, pierderile neacoperite);\n- *Rezultatul exercițiului curent*: profitul sau pierderea anului în curs, până la închiderea și repartizarea sa.\n\nCapitalurile proprii cresc atunci când firma este profitabilă și reține profitul în companie, și scad atunci când firma înregistrează pierderi sau distribuie dividende mai mari decât profitul curent.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b3"
+   },
+   {
+    "type": "example",
+    "title": "Bilanț simplificat — TehnoConcept SRL",
+    "concept_key": "bilant-ecuatia-fundamentala",
+    "md": "Bilanțul simplificat al firmei **TehnoConcept SRL**, la 31 decembrie:\n\n**ACTIVE**\n| Element | Valoare (lei) |\n|---|---|\n| Active imobilizate (clădiri, utilaje, licențe) | 250.000 |\n| Stocuri | 80.000 |\n| Creanțe (clienți) | 60.000 |\n| Casă și conturi bancare | 30.000 |\n| **Active circulante, total** | **170.000** |\n| **TOTAL ACTIVE** | **420.000** |\n\n**PASIVE**\n| Element | Valoare (lei) |\n|---|---|\n| Capital social | 50.000 |\n| Rezerve | 20.000 |\n| Rezultat reportat | 100.000 |\n| **Capitaluri proprii, total** | **170.000** |\n| Datorii pe termen lung (credit bancar) | 150.000 |\n| Furnizori | 70.000 |\n| Salarii de plată | 20.000 |\n| TVA de plată | 10.000 |\n| **Datorii pe termen scurt, total** | **100.000** |\n| **Datorii, total** | **250.000** |\n| **TOTAL PASIVE** | **420.000** |\n\nTotal Active (420.000 lei) = Total Pasive (420.000 lei) = Capitaluri proprii (170.000 lei) + Datorii totale (250.000 lei). Ecuația fundamentală se verifică, semn că bilanțul este corect întocmit.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b4"
+   },
+   {
+    "type": "example",
+    "title": "Interpretarea structurii bilanțului: fond de rulment și grad de îndatorare",
+    "concept_key": "fond-de-rulment-definitie",
+    "md": "Pornind de la bilanțul TehnoConcept SRL, putem calcula doi indicatori esențiali pentru interpretarea structurii financiare:\n\n**1. Fondul de rulment = Active circulante − Datorii pe termen scurt**\nFond de rulment = 170.000 − 100.000 = **70.000 lei** (pozitiv)\n\nUn fond de rulment pozitiv arată că firma are suficiente active ușor transformabile în numerar pentru a-și acoperi obligațiile scadente în următoarele 12 luni — un semnal bun de lichiditate pe termen scurt.\n\n**2. Gradul de îndatorare = Datorii totale / Capitaluri proprii**\nGrad de îndatorare = 250.000 / 170.000 = **1,47 (147%)**\n\nAceasta înseamnă că, pentru fiecare leu investit de proprietari, firma mai are 1,47 lei finanțați din datorii. Un nivel moderat spre ridicat, care merită urmărit: dacă gradul de îndatorare crește constant, firma devine tot mai dependentă de finanțare externă, ceea ce o expune la riscuri în cazul unor dobânzi mai mari sau al unei scăderi a vânzărilor.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP nr. 1802/2014",
+    "article": "Reglementările contabile privind situațiile financiare anuale individuale și consolidate",
+    "effective": "2015-01-01",
+    "md": "Structura și conținutul bilanțului pentru situațiile financiare anuale ale entităților din România sunt reglementate prin Ordinul Ministrului Finanțelor Publice nr. 1802/2014, care transpune în legislația română Directiva europeană 2013/34/UE și stabilește formatul standard (format „listă”) pe care majoritatea entităților românești trebuie să îl respecte la întocmirea bilanțului.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Bilanțul este o „fotografie” la o dată fixă, nu un film — nu arată cum a evoluat firma în cursul anului și nici cât de profitabilă a fost activitatea; pentru asta ai nevoie de contul de profit și pierdere. În plus, majoritatea activelor (mai ales imobilizările) sunt înregistrate la cost istoric sau cost amortizat, nu la valoarea lor de piață curentă — o clădire cumpărată acum 10 ani poate figura în bilanț la o valoare mult sub cea la care s-ar vinde azi. Interpretează bilanțul mereu împreună cu celelalte situații financiare, nu izolat.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai la dispoziție următoarele solduri, la 31 decembrie, pentru firma **Verde Design SRL**:\n\n- Clădiri: 300.000 lei\n- Echipamente: 90.000 lei\n- Stocuri: 45.000 lei\n- Creanțe (clienți): 35.000 lei\n- Casă și conturi bancare: 15.000 lei\n- Capital social: 100.000 lei\n- Rezerve legale: 10.000 lei\n- Rezultat reportat: 60.000 lei\n- Credit bancar pe termen lung: 200.000 lei\n- Furnizori: 90.000 lei\n- Datorii salariale: 25.000 lei\n\n**Cerințe:**\n1. Calculează totalul activelor imobilizate, al activelor circulante și Total Active.\n2. Calculează Capitalurile proprii, Datoriile pe termen lung și scurt, apoi Total Pasive.\n3. Verifică ecuația fundamentală a bilanțului.\n4. Calculează fondul de rulment și interpretează-l.",
+    "solution_md": "**1. Active**\n- Active imobilizate = 300.000 + 90.000 = 390.000 lei\n- Active circulante = 45.000 + 35.000 + 15.000 = 95.000 lei\n- **Total Active = 390.000 + 95.000 = 485.000 lei**\n\n**2. Pasive**\n- Capitaluri proprii = 100.000 + 10.000 + 60.000 = 170.000 lei\n- Datorii pe termen lung = 200.000 lei\n- Datorii pe termen scurt = 90.000 + 25.000 = 115.000 lei\n- Datorii totale = 200.000 + 115.000 = 315.000 lei\n- **Total Pasive = 170.000 + 315.000 = 485.000 lei**\n\n**3. Verificare:** Total Active (485.000 lei) = Total Pasive (485.000 lei). Ecuația se confirmă.\n\n**4. Fond de rulment = Active circulante − Datorii pe termen scurt = 95.000 − 115.000 = −20.000 lei**\n\nFondul de rulment este **negativ**: activele ușor transformabile în numerar nu acoperă în totalitate obligațiile scadente în următoarele 12 luni. Este un semnal de atenție — firma ar trebui să analizeze fie accelerarea încasărilor de la clienți, fie renegocierea termenelor cu furnizorii, fie o linie de credit suplimentară pe termen scurt.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ecuația fundamentală a bilanțului contabil?",
+    "choices": [
+     "Venituri = Cheltuieli + Profit",
+     "Active = Capitaluri proprii + Datorii",
+     "Active = Datorii − Capitaluri proprii",
+     "Capitaluri proprii = Active + Datorii"
+    ],
+    "answer": 1,
+    "explain": "Total Active este întotdeauna egal cu Total Pasiv, iar Pasivul este format din Capitaluri proprii + Datorii. Orice activ este finanțat fie de proprietari, fie de creditori.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O clădire deținută de companie pentru desfășurarea activității proprii se clasifică drept:",
+    "choices": [
+     "Activ circulant",
+     "Activ imobilizat corporal",
+     "Datorie pe termen lung",
+     "Cheltuială curentă"
+    ],
+    "answer": 1,
+    "explain": "Clădirile folosite pe termen lung (peste 12 luni) în activitatea firmei sunt imobilizări corporale, care se amortizează treptat, nu se consumă imediat ca un stoc.",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este ecuația fundamentală a bilanțului?",
+    "back": "Active = Capitaluri proprii + Datorii. Total Active este întotdeauna egal cu Total Pasiv.",
+    "concept_key": "bilant-ecuatia-fundamentala",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce sunt activele circulante?",
+    "back": "Resurse care se transformă în numerar sau se consumă în maximum 12 luni: stocuri, creanțe, casă și conturi bancare.",
+    "concept_key": "active-circulante-definitie",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce sunt activele imobilizate?",
+    "back": "Resurse deținute pe termen lung (peste 1 an) pentru desfășurarea activității: clădiri, utilaje, licențe, participații financiare.",
+    "concept_key": "active-imobilizate-definitie",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementează OMFP 1802/2014?",
+    "back": "Reglementările contabile privind situațiile financiare anuale individuale și consolidate din România, inclusiv formatul și structura bilanțului.",
+    "concept_key": "omfp-1802-2014-reglementari-contabile",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este fondul de rulment și cum se calculează?",
+    "back": "Diferența dintre activele circulante și datoriile pe termen scurt; un fond de rulment pozitiv arată lichiditate suficientă pentru obligațiile pe termen scurt.",
+    "concept_key": "fond-de-rulment-definitie",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din ce se compun capitalurile proprii?",
+    "back": "Capital social, prime de capital, rezerve, rezultatul reportat și rezultatul (profitul/pierderea) exercițiului curent.",
+    "concept_key": "capitaluri-proprii-componente",
+    "blockId": "cmjjuxw0t00azumkp986bl4j7-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1360,
+   "flashcards": 6
+  }
+ }
+}

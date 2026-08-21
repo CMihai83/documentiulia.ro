@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxw3v00d2umkp4gyr8cpy",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "TVA în România",
+ "lesson": "Mecanismul TVA și Legea 141/2025",
+ "category": "FINANCE_OPS",
+ "content": "# Mecanismul TVA și Legea 141/2025\n\n## Ce este TVA și cum funcționează mecanismul ei\n\nTaxa pe valoarea adăugată (TVA) este un **impozit indirect pe consum**: se calculează la fiecare etapă a lanțului economic (producător → distribuitor → comerciant → consumator final), dar este suportată, în final, de consumatorul final. Firmele care sunt înregistrate în scopuri de TVA joacă rolul de \"colector\" pentru stat — ele adaugă TVA la prețurile de vânzare și o virează către bugetul de stat, dar își recuperează TVA plătită la propriile achiziții.\n\nMecanismul se bazează pe două noțiuni-cheie:\n\n- **TVA colectată** — taxa pe care o aplici la vânzările tale (facturile emise către clienți).\n- **TVA deductibilă** — taxa pe care ai plătit-o la achizițiile tale de bunuri și servicii necesare activității (facturile primite de la furnizori).\n\nDiferența dintre cele două determină obligația față de bugetul de stat:\n\n**TVA de plată = TVA colectată − TVA deductibilă** (dacă rezultatul este pozitiv)\n\n**TVA de rambursat = TVA deductibilă − TVA colectată** (dacă rezultatul este negativ, adică ai plătit mai multă TVA la achiziții decât ai colectat la vânzări)\n\nAcest mecanism face ca TVA să fie **neutră pentru firme** — ea nu reprezintă un cost sau un venit pentru companie (cu excepții, de exemplu când TVA nu este deductibilă), ci doar o sumă pe care firma o administrează în numele statului. Costul real al TVA cade asupra ultimei verigi din lanț: consumatorul final, care nu mai are dreptul de a deduce nimic.\n\n## Faptul generator și exigibilitatea TVA\n\nDouă concepte esențiale guvernează momentul în care TVA \"devine reală\" din punct de vedere legal:\n\n- **Faptul generator** este evenimentul prin care se produc condițiile legale necesare pentru exigibilitatea taxei. În mod obișnuit, faptul generator intervine la data **livrării bunurilor** sau la data **prestării serviciilor**.\n- **Exigibilitatea TVA** este data la care organul fiscal devine îndreptățit, în baza legii, să solicite plata taxei de către persoana obligată. De regulă, exigibilitatea coincide cu faptul generator, dar există și situații de **exigibilitate anticipată** (de exemplu, emiterea facturii înainte de livrare sau încasarea unui avans) — în aceste cazuri, TVA devine exigibilă la data emiterii facturii sau la data încasării avansului, dacă acestea preced livrarea/prestarea efectivă.\n\nDistincția este importantă practic: momentul exigibilității stabilește în ce lună/trimestru (perioada fiscală) trebuie inclusă operațiunea în decontul de TVA (formularul 300), indiferent de momentul plății efective de către client. O firmă care lucrează pe bază de facturare la livrare, dar încasează cu întârziere, tot trebuie să declare și, dacă e cazul, să plătească TVA la termenul legal, chiar dacă banii nu au intrat încă în cont.\n\n## Cotele de TVA în România — Legea 141/2025\n\nÎncepând cu **1 august 2025**, prin **Legea 141/2025**, sistemul de cote de TVA din România a fost simplificat:\n\n- **Cota standard: 21%** — se aplică majorității bunurilor și serviciilor care nu beneficiază de o cotă redusă.\n- **Cota redusă unică: 11%** — a înlocuit fostele două cote reduse (5% și 9%), fiind aplicabilă, printre altele, la: alimente de bază (cu excepția băuturilor alcoolice, a băuturilor nealcoolice încadrate la codul NC 2202 și a alimentelor cu conținut ridicat de zahăr adăugat — peste 10 g/100 g — și a suplimentelor alimentare), medicamente de uz uman și veterinar, apă potabilă, canalizare și irigații, îngrășăminte și pesticide de uz agricol, cărți, manuale școlare și ziare (atât în format tipărit, cât și electronic), acces la muzee, monumente istorice și grădini zoologice, lemn de foc, energie termică furnizată în sistem centralizat, servicii de cazare hotelieră, precum și servicii de restaurant și catering (cu excepția băuturilor alcoolice și a celor de la codul NC 2202).\n\nAnterior datei de 1 august 2025, sistemul avea trei cote: **19% standard, 9% redusă și 5% specială**. Orice exemplu sau calcul din contabilitatea curentă trebuie să precizeze explicit perioada la care se raportează, pentru a evita confuzii între regimul vechi și cel actual.\n\n**Regim tranzitoriu:** pentru anumite tranzacții cu locuințe noi (pe bază de antecontracte încheiate anterior modificării legislative), se aplică în continuare cota de **9%**, dar doar până la **31 iulie 2026** — după această dată, tranzacția intră sub incidența cotelor generale.\n\n## Baza de impozitare a TVA\n\nBaza de impozitare reprezintă **valoarea la care se aplică procentul de TVA** (21% sau 11%, după caz) pentru a obține suma de TVA datorată. Practic, este contravaloarea bunurilor livrate sau serviciilor prestate, **exclusiv TVA**.\n\nRegula generală: baza de impozitare cuprinde tot ce constituie contrapartida obținută sau care urmează a fi obținută de furnizor din partea cumpărătorului — inclusiv subvențiile direct legate de preț, cheltuielile accesorii (comisioane, cheltuieli de ambalare, transport, asigurare, facturate de furnizor cumpărătorului) și impozitele/taxele, cu excepția TVA însăși.\n\nNu se includ în baza de impozitare:\n\n- rabaturile, remizele, risturnele și alte reduceri de preț acordate de furnizor direct clientului, dacă sunt evidențiate distinct pe factură;\n- sumele achitate de furnizor în numele și în contul clientului (de exemplu, taxe notariale plătite în numele clientului) și decontate ulterior acestuia;\n- ambalajele care circulă între furnizori și clienți prin schimb, fără facturare.\n\nÎnțelegerea corectă a bazei de impozitare este esențială, deoarece o eroare la acest nivel se propagă direct în suma de TVA colectată sau deductibilă, cu impact asupra decontului de TVA și, implicit, asupra riscului de sancțiuni în cazul unui control ANAF.\n\n> Temei legal: Legea 141/2025 (modificare Codul fiscal, art. 291) art. 291 (în vigoare de la 2025-08-01)\nLegea 141/2025 a modificat art. 291 din Codul fiscal, stabilind de la 1 august 2025 cota standard de TVA la **21%** și o cotă redusă unică de **11%**, în locul fostelor cote de 19% (standard), 9% și 5% (reduse). Pentru operațiuni cu regim tranzitoriu (ex. anumite locuințe noi cu antecontracte anterioare), se menține temporar cota de 9%, până la 31 iulie 2026. Recomandare: verifică întotdeauna forma consolidată a Codului fiscal la data operațiunii, deoarece legislația fiscală se poate modifica ulterior redactării acestui material.\n\n## Exemplu: Calculul TVA de plată pentru o lună de activitate\nFirma **Alfa Comerț SRL**, plătitoare de TVA lunar, înregistrează în luna iunie 2026 următoarele operațiuni (toate supuse cotei standard, întrucât vinde produse nealimentare):\n\n- Vânzări de mărfuri către clienți: bază de impozitare **50.000 lei**\n- TVA colectată = 50.000 lei × 21% = **10.500 lei**\n- Achiziții de mărfuri și servicii de la furnizori: bază de impozitare **30.000 lei**\n- TVA deductibilă = 30.000 lei × 21% = **6.300 lei**\n\n**TVA de plată = TVA colectată − TVA deductibilă = 10.500 − 6.300 = 4.200 lei**\n\nAceastă sumă se declară prin decontul de TVA (formularul 300) și se virează la bugetul de stat până la termenul legal de depunere/plată. Dacă, într-o altă lună, TVA deductibilă ar fi depășit TVA colectată (de exemplu, în urma unor investiții mari), firma ar înregistra TVA de rambursat, pe care o poate solicita înapoi de la ANAF sau o poate reporta în decontul următor.\n\n## Exemplu: Aplicarea cotelor mixte (21% și 11%) în aceeași factură\nUn restaurant emite o notă de plată pentru o masă compusă din:\n\n- Meniu (mâncare, fără alcool): bază de impozitare **200 lei** → cotă **11%** (servicii de restaurant, conform Legii 141/2025) → TVA = 200 × 11% = **22 lei**\n- Băutură alcoolică (vin): bază de impozitare **50 lei** → cotă **21%** (băuturile alcoolice sunt excluse expres de la cota redusă) → TVA = 50 × 21% = **10,5 lei**\n\n**Total factură = (200 + 22) + (50 + 10,5) = 222 + 60,5 = 282,5 lei**\n\nAcest exemplu ilustrează un aspect frecvent greșit în practică: pe același bon fiscal sau aceeași factură pot coexista mai multe cote de TVA, iar sistemul de casă de marcat sau software-ul de facturare trebuie configurat să aplice corect fiecare cotă, în funcție de natura produsului/serviciului, nu de valoarea totală a comenzii.\n\n⚠ Cotele și regulile prezentate corespund legislației în vigoare la data redactării acestui material (**iulie 2026**), conform Legii 141/2025. Legislația fiscală din România se modifică frecvent — înainte de a aplica o cotă de TVA într-o situație concretă (mai ales pentru categorii de bunuri/servicii la limita dintre 21% și 11%, sau pentru regimuri tranzitorii precum cel de 9% pentru locuințe noi), verifică forma actualizată a Codului fiscal sau consultă un expert contabil / consultant fiscal autorizat. Acest material are scop educațional și nu constituie consultanță fiscală personalizată.\n\n## Exercițiu\nSRL **Bio Market**, plătitoare de TVA lunar, realizează în luna iulie 2026 următoarele operațiuni:\n\n- Vânzări de alimente de bază (cotă redusă 11%): bază de impozitare **8.000 lei**\n- Vânzări de produse nealimentare (cotă standard 21%): bază de impozitare **12.000 lei**\n- Achiziții de mărfuri și servicii pentru activitate, toate la cota standard 21%: bază de impozitare **15.000 lei**\n\nCerințe:\n1. Calculează TVA colectată totală.\n2. Calculează TVA deductibilă.\n3. Determină TVA de plată sau de rambursat pentru luna iulie 2026.\n\n**Soluție:** **1. TVA colectată:**\n- Din alimente de bază: 8.000 lei × 11% = 880 lei\n- Din produse nealimentare: 12.000 lei × 21% = 2.520 lei\n- **Total TVA colectată = 880 + 2.520 = 3.400 lei**\n\n**2. TVA deductibilă:**\n- 15.000 lei × 21% = **3.150 lei**\n\n**3. TVA de plată:**\n- TVA de plată = TVA colectată − TVA deductibilă = 3.400 − 3.150 = **250 lei**\n\nSRL Bio Market va declara prin decontul de TVA (formularul 300) o obligație de plată de 250 lei către bugetul de stat pentru luna iulie 2026.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "tva-mecanism-general",
+    "md": "## Ce este TVA și cum funcționează mecanismul ei\n\nTaxa pe valoarea adăugată (TVA) este un **impozit indirect pe consum**: se calculează la fiecare etapă a lanțului economic (producător → distribuitor → comerciant → consumator final), dar este suportată, în final, de consumatorul final. Firmele care sunt înregistrate în scopuri de TVA joacă rolul de \"colector\" pentru stat — ele adaugă TVA la prețurile de vânzare și o virează către bugetul de stat, dar își recuperează TVA plătită la propriile achiziții.\n\nMecanismul se bazează pe două noțiuni-cheie:\n\n- **TVA colectată** — taxa pe care o aplici la vânzările tale (facturile emise către clienți).\n- **TVA deductibilă** — taxa pe care ai plătit-o la achizițiile tale de bunuri și servicii necesare activității (facturile primite de la furnizori).\n\nDiferența dintre cele două determină obligația față de bugetul de stat:\n\n**TVA de plată = TVA colectată − TVA deductibilă** (dacă rezultatul este pozitiv)\n\n**TVA de rambursat = TVA deductibilă − TVA colectată** (dacă rezultatul este negativ, adică ai plătit mai multă TVA la achiziții decât ai colectat la vânzări)\n\nAcest mecanism face ca TVA să fie **neutră pentru firme** — ea nu reprezintă un cost sau un venit pentru companie (cu excepții, de exemplu când TVA nu este deductibilă), ci doar o sumă pe care firma o administrează în numele statului. Costul real al TVA cade asupra ultimei verigi din lanț: consumatorul final, care nu mai are dreptul de a deduce nimic.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tva-fapt-generator",
+    "md": "## Faptul generator și exigibilitatea TVA\n\nDouă concepte esențiale guvernează momentul în care TVA \"devine reală\" din punct de vedere legal:\n\n- **Faptul generator** este evenimentul prin care se produc condițiile legale necesare pentru exigibilitatea taxei. În mod obișnuit, faptul generator intervine la data **livrării bunurilor** sau la data **prestării serviciilor**.\n- **Exigibilitatea TVA** este data la care organul fiscal devine îndreptățit, în baza legii, să solicite plata taxei de către persoana obligată. De regulă, exigibilitatea coincide cu faptul generator, dar există și situații de **exigibilitate anticipată** (de exemplu, emiterea facturii înainte de livrare sau încasarea unui avans) — în aceste cazuri, TVA devine exigibilă la data emiterii facturii sau la data încasării avansului, dacă acestea preced livrarea/prestarea efectivă.\n\nDistincția este importantă practic: momentul exigibilității stabilește în ce lună/trimestru (perioada fiscală) trebuie inclusă operațiunea în decontul de TVA (formularul 300), indiferent de momentul plății efective de către client. O firmă care lucrează pe bază de facturare la livrare, dar încasează cu întârziere, tot trebuie să declare și, dacă e cazul, să plătească TVA la termenul legal, chiar dacă banii nu au intrat încă în cont.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tva-cote-legea-141-2025",
+    "md": "## Cotele de TVA în România — Legea 141/2025\n\nÎncepând cu **1 august 2025**, prin **Legea 141/2025**, sistemul de cote de TVA din România a fost simplificat:\n\n- **Cota standard: 21%** — se aplică majorității bunurilor și serviciilor care nu beneficiază de o cotă redusă.\n- **Cota redusă unică: 11%** — a înlocuit fostele două cote reduse (5% și 9%), fiind aplicabilă, printre altele, la: alimente de bază (cu excepția băuturilor alcoolice, a băuturilor nealcoolice încadrate la codul NC 2202 și a alimentelor cu conținut ridicat de zahăr adăugat — peste 10 g/100 g — și a suplimentelor alimentare), medicamente de uz uman și veterinar, apă potabilă, canalizare și irigații, îngrășăminte și pesticide de uz agricol, cărți, manuale școlare și ziare (atât în format tipărit, cât și electronic), acces la muzee, monumente istorice și grădini zoologice, lemn de foc, energie termică furnizată în sistem centralizat, servicii de cazare hotelieră, precum și servicii de restaurant și catering (cu excepția băuturilor alcoolice și a celor de la codul NC 2202).\n\nAnterior datei de 1 august 2025, sistemul avea trei cote: **19% standard, 9% redusă și 5% specială**. Orice exemplu sau calcul din contabilitatea curentă trebuie să precizeze explicit perioada la care se raportează, pentru a evita confuzii între regimul vechi și cel actual.\n\n**Regim tranzitoriu:** pentru anumite tranzacții cu locuințe noi (pe bază de antecontracte încheiate anterior modificării legislative), se aplică în continuare cota de **9%**, dar doar până la **31 iulie 2026** — după această dată, tranzacția intră sub incidența cotelor generale.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tva-baza-impozitare",
+    "md": "## Baza de impozitare a TVA\n\nBaza de impozitare reprezintă **valoarea la care se aplică procentul de TVA** (21% sau 11%, după caz) pentru a obține suma de TVA datorată. Practic, este contravaloarea bunurilor livrate sau serviciilor prestate, **exclusiv TVA**.\n\nRegula generală: baza de impozitare cuprinde tot ce constituie contrapartida obținută sau care urmează a fi obținută de furnizor din partea cumpărătorului — inclusiv subvențiile direct legate de preț, cheltuielile accesorii (comisioane, cheltuieli de ambalare, transport, asigurare, facturate de furnizor cumpărătorului) și impozitele/taxele, cu excepția TVA însăși.\n\nNu se includ în baza de impozitare:\n\n- rabaturile, remizele, risturnele și alte reduceri de preț acordate de furnizor direct clientului, dacă sunt evidențiate distinct pe factură;\n- sumele achitate de furnizor în numele și în contul clientului (de exemplu, taxe notariale plătite în numele clientului) și decontate ulterior acestuia;\n- ambalajele care circulă între furnizori și clienți prin schimb, fără facturare.\n\nÎnțelegerea corectă a bazei de impozitare este esențială, deoarece o eroare la acest nivel se propagă direct în suma de TVA colectată sau deductibilă, cu impact asupra decontului de TVA și, implicit, asupra riscului de sancțiuni în cazul unui control ANAF.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b4"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea 141/2025 (modificare Codul fiscal, art. 291)",
+    "article": "art. 291",
+    "effective": "2025-08-01",
+    "md": "Legea 141/2025 a modificat art. 291 din Codul fiscal, stabilind de la 1 august 2025 cota standard de TVA la **21%** și o cotă redusă unică de **11%**, în locul fostelor cote de 19% (standard), 9% și 5% (reduse). Pentru operațiuni cu regim tranzitoriu (ex. anumite locuințe noi cu antecontracte anterioare), se menține temporar cota de 9%, până la 31 iulie 2026. Recomandare: verifică întotdeauna forma consolidată a Codului fiscal la data operațiunii, deoarece legislația fiscală se poate modifica ulterior redactării acestui material.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul TVA de plată pentru o lună de activitate",
+    "concept_key": "tva-formula-calcul",
+    "md": "Firma **Alfa Comerț SRL**, plătitoare de TVA lunar, înregistrează în luna iunie 2026 următoarele operațiuni (toate supuse cotei standard, întrucât vinde produse nealimentare):\n\n- Vânzări de mărfuri către clienți: bază de impozitare **50.000 lei**\n- TVA colectată = 50.000 lei × 21% = **10.500 lei**\n- Achiziții de mărfuri și servicii de la furnizori: bază de impozitare **30.000 lei**\n- TVA deductibilă = 30.000 lei × 21% = **6.300 lei**\n\n**TVA de plată = TVA colectată − TVA deductibilă = 10.500 − 6.300 = 4.200 lei**\n\nAceastă sumă se declară prin decontul de TVA (formularul 300) și se virează la bugetul de stat până la termenul legal de depunere/plată. Dacă, într-o altă lună, TVA deductibilă ar fi depășit TVA colectată (de exemplu, în urma unor investiții mari), firma ar înregistra TVA de rambursat, pe care o poate solicita înapoi de la ANAF sau o poate reporta în decontul următor.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b6"
+   },
+   {
+    "type": "example",
+    "title": "Aplicarea cotelor mixte (21% și 11%) în aceeași factură",
+    "concept_key": "tva-cote-legea-141-2025",
+    "md": "Un restaurant emite o notă de plată pentru o masă compusă din:\n\n- Meniu (mâncare, fără alcool): bază de impozitare **200 lei** → cotă **11%** (servicii de restaurant, conform Legii 141/2025) → TVA = 200 × 11% = **22 lei**\n- Băutură alcoolică (vin): bază de impozitare **50 lei** → cotă **21%** (băuturile alcoolice sunt excluse expres de la cota redusă) → TVA = 50 × 21% = **10,5 lei**\n\n**Total factură = (200 + 22) + (50 + 10,5) = 222 + 60,5 = 282,5 lei**\n\nAcest exemplu ilustrează un aspect frecvent greșit în practică: pe același bon fiscal sau aceeași factură pot coexista mai multe cote de TVA, iar sistemul de casă de marcat sau software-ul de facturare trebuie configurat să aplice corect fiecare cotă, în funcție de natura produsului/serviciului, nu de valoarea totală a comenzii.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cotele și regulile prezentate corespund legislației în vigoare la data redactării acestui material (**iulie 2026**), conform Legii 141/2025. Legislația fiscală din România se modifică frecvent — înainte de a aplica o cotă de TVA într-o situație concretă (mai ales pentru categorii de bunuri/servicii la limita dintre 21% și 11%, sau pentru regimuri tranzitorii precum cel de 9% pentru locuințe noi), verifică forma actualizată a Codului fiscal sau consultă un expert contabil / consultant fiscal autorizat. Acest material are scop educațional și nu constituie consultanță fiscală personalizată.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "SRL **Bio Market**, plătitoare de TVA lunar, realizează în luna iulie 2026 următoarele operațiuni:\n\n- Vânzări de alimente de bază (cotă redusă 11%): bază de impozitare **8.000 lei**\n- Vânzări de produse nealimentare (cotă standard 21%): bază de impozitare **12.000 lei**\n- Achiziții de mărfuri și servicii pentru activitate, toate la cota standard 21%: bază de impozitare **15.000 lei**\n\nCerințe:\n1. Calculează TVA colectată totală.\n2. Calculează TVA deductibilă.\n3. Determină TVA de plată sau de rambursat pentru luna iulie 2026.",
+    "solution_md": "**1. TVA colectată:**\n- Din alimente de bază: 8.000 lei × 11% = 880 lei\n- Din produse nealimentare: 12.000 lei × 21% = 2.520 lei\n- **Total TVA colectată = 880 + 2.520 = 3.400 lei**\n\n**2. TVA deductibilă:**\n- 15.000 lei × 21% = **3.150 lei**\n\n**3. TVA de plată:**\n- TVA de plată = TVA colectată − TVA deductibilă = 3.400 − 3.150 = **250 lei**\n\nSRL Bio Market va declara prin decontul de TVA (formularul 300) o obligație de plată de 250 lei către bugetul de stat pentru luna iulie 2026.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este cota standard de TVA aplicabilă în România începând cu 1 august 2025, conform Legii 141/2025?",
+    "choices": [
+     "19%",
+     "21%",
+     "24%",
+     "9%"
+    ],
+    "answer": 1,
+    "explain": "Legea 141/2025 a majorat cota standard de la 19% la 21%, începând cu 1 august 2025, eliminând totodată cotele reduse de 5% și 9% în favoarea unei cote reduse unice de 11%.",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă, în principiu, faptul generator al TVA?",
+    "choices": [
+     "Data la care firma încasează factura de la client",
+     "Data la care se produc condițiile legale pentru exigibilitatea taxei, de regulă livrarea bunurilor sau prestarea serviciilor",
+     "Data la care se depune decontul de TVA la ANAF",
+     "Data la care se emite nota de recepție (NIR) pentru bunuri"
+    ],
+    "answer": 1,
+    "explain": "Faptul generator este evenimentul care declanșează, din punct de vedere legal, obligația fiscală — de regulă, momentul livrării bunurilor sau prestării serviciilor. Exigibilitatea taxei coincide, în mod obișnuit, cu acest moment, cu excepția cazurilor de exigibilitate anticipată (facturare sau încasare avans înainte de livrare).",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota standard de TVA în România de la 1 august 2025?",
+    "back": "21%, conform Legii 141/2025 — anterior era 19%.",
+    "concept_key": "tva-cota-standard-2025",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota redusă unică de TVA de la 1 august 2025?",
+    "back": "11% — a înlocuit fostele cote reduse de 5% și 9%, conform Legii 141/2025.",
+    "concept_key": "tva-cota-redusa-2025",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este faptul generator al TVA?",
+    "back": "Evenimentul prin care se produc condițiile legale necesare pentru exigibilitatea TVA — de regulă, livrarea bunurilor sau prestarea serviciilor.",
+    "concept_key": "tva-fapt-generator",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează TVA de plată la bugetul de stat?",
+    "back": "TVA de plată = TVA colectată (din vânzări) − TVA deductibilă (din achiziții). Dacă rezultatul e negativ, este TVA de rambursat.",
+    "concept_key": "tva-formula-calcul",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este baza de impozitare a TVA?",
+    "back": "Contravaloarea bunurilor livrate sau serviciilor prestate, exclusiv TVA, la care se aplică procentul de TVA (21% sau 11%).",
+    "concept_key": "tva-baza-impozitare",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când se mai aplică cota tranzitorie de 9% pentru anumite locuințe noi?",
+    "back": "Până la 31 iulie 2026, pentru locuințe cu antecontracte încheiate anterior modificării legislative aduse de Legea 141/2025.",
+    "concept_key": "tva-cota-tranzitorie-locuinte",
+    "blockId": "cmjjuxw3v00d2umkp4gyr8cpy-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1449,
+   "flashcards": 6
+  }
+ }
+}

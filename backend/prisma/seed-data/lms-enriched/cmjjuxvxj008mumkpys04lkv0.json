@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxvxj008mumkpys04lkv0",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "People Domain",
+ "lesson": "Communication Essentials",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Communication Essentials\n\nComunicarea este, conform PMBOK 7, una dintre activitățile centrale ale oricărui project manager și stă la baza domeniilor de performanță „Stakeholderi” și „Echipă”. Un proiect nu eșuează de obicei din lipsă de metodologie, ci din comunicare deficitară: cerințe neînțelese, așteptări nealiniate, informații care nu ajung la timp la persoana potrivită. În proiecte de digitalizare sau implementare ERP din România, unde sunt implicate simultan echipa tehnică, managementul companiei client, furnizorul de soft și utilizatorii finali, comunicarea eficientă face diferența dintre un proiect livrat la timp și unul blocat în conflicte de interpretare. PMBOK 7 tratează comunicarea nu ca pe o sarcină administrativă (rapoarte, e-mailuri), ci ca pe o competență strategică: alegerea canalului potrivit, adaptarea mesajului la audiență și verificarea că mesajul a fost înțeles corect, nu doar transmis. Modelul de bază al comunicării presupune un emițător, un mesaj codificat, un canal, un receptor care decodează mesajul și, esențial, o buclă de feedback care confirmă înțelegerea. Fără această buclă, comunicarea rămâne unidirecțională și predispusă la erori de interpretare.\n\nUna dintre cele mai testate formule la examenul PMP este numărul de canale de comunicare dintr-o echipă: N = n(n-1)/2, unde n este numărul de persoane implicate (membri ai echipei plus stakeholderi relevanți, dacă enunțul îi include). Formula pornește de la faptul că fiecare persoană poate comunica direct cu fiecare altă persoană din grup, iar fiecare pereche formează un canal unic. Importanța formulei nu este matematică, ci managerială: numărul de canale crește pătratic, nu liniar, odată cu numărul de participanți. O echipă de 4 persoane are 6 canale; o echipă de 10 persoane are 45 de canale. Această creștere rapidă explică de ce proiectele mari au nevoie de structuri de comunicare formale (planuri de comunicare, ședințe stand-up, rapoarte de status) în loc să se bazeze pe conversații ad-hoc, care devin ingerabile pe măsură ce echipa crește. La examen, întrebările cer fie calculul direct al numărului de canale, fie diferența de canale atunci când echipa crește cu un anumit număr de persoane — de aceea exercițiul din această lecție este esențial de exersat până devine automatism.\n\nAscultarea activă este abilitatea de a asculta cu intenția de a înțelege, nu doar de a răspunde. În practică, presupune patru comportamente concrete: (1) parafrazarea — repeți în cuvintele tale ce ai înțeles, pentru a confirma acuratețea; (2) întrebări de clarificare — ceri detalii suplimentare în loc să presupui; (3) suspendarea judecății — nu întrerupi și nu pregătești răspunsul în timp ce interlocutorul încă vorbește; (4) validarea emoțională — recunoști starea sau frustrarea celuilalt înainte de a trece la soluții. Pentru un project manager, ascultarea activă este critică în ședințele cu stakeholderi dificili sau în retrospectivele de echipă, unde membrii pot ezita să semnaleze probleme reale dacă simt că nu sunt ascultați. Un test simplu al ascultării active: dacă poți rezuma poziția interlocutorului într-un mod pe care el însuși l-ar confirma ca fiind corect, ai ascultat activ; dacă rezumatul tău este contestat sau îl surprinde, ai ascultat parțial sau selectiv, filtrând informația prin propriile presupuneri.\n\nFeedback-ul constructiv este instrumentul prin care un project manager corectează direcția fără a deteriora relația cu membrul echipei. Modelul SBI (Situație–Comportament–Impact, în engleză Situation-Behavior-Impact) structurează feedback-ul în trei pași: descrii situația concretă, de exemplu „în ședința de ieri de la ora 10”; descrii comportamentul observabil, fără interpretări, de exemplu „ai întrerupt de trei ori raportarea colegului”; și descrii impactul, de exemplu „colegul a renunțat să mai adauge detalii, iar echipa a pierdut informații despre un risc”. Structura SBI evită generalizările de tipul „mereu faci asta” sau etichetele de personalitate, care declanșează reacții defensive. Feedback-ul eficient respectă și alte principii: se oferă cât mai aproape de momentul faptului, în privat dacă este corectiv și, ideal, în public dacă este de apreciere, și se încheie cu o invitație la dialog, nu cu un verdict unilateral. La fel de important este feedback-ul ascendent — de la echipă către project manager — pe care mulți manageri îl neglijează, deși retrospectivele agile (Scrum Guide 2020) sunt construite exact pentru a-l colecta sistematic.\n\nO mare parte din mesaj se transmite dincolo de cuvinte: tonul vocii, ritmul vorbirii, postura, contactul vizual și expresiile faciale. Regula 7-38-55 a lui Albert Mehrabian (des citată, dar adesea aplicată greșit) sugerează că, în situații încărcate emoțional și ambigue, cuvintele cântăresc puțin în raport cu tonul vocii și limbajul corpului — nu este o lege universală valabilă pentru orice comunicare, ci un reper pentru situațiile în care ce spui contrazice cum spui. Pentru un project manager, concluzia practică este simplă: o incongruență între mesaj și tonul vocii sau expresia facială subminează credibilitatea, chiar dacă textul mesajului este corect. Conștientizarea culturală (cultural awareness) devine esențială în proiecte cu echipe distribuite sau parteneri internaționali. Culturile „high-context” (de exemplu Japonia, multe țări din Orientul Mijlociu) transmit sens prin context, relații și subînțeles, tolerând ambiguitatea; culturile „low-context” (de exemplu Germania, SUA) preferă mesaje explicite, directe, documentate în scris. România se poziționează adesea undeva la mijloc, cu o preferință pentru relații personale, dar și pentru confirmări scrise. Un project manager eficient își adaptează stilul de comunicare — nu presupune că „direct” înseamnă „clar” pentru toată lumea.\n\n## Exemplu: Calculul canalelor de comunicare într-un proiect de implementare ERP\nCompania TehnoPlus SRL implementează un sistem ERP și formează o echipă de proiect din 6 persoane: project manager, analist de business, doi dezvoltatori, un specialist IT din partea clientului și un reprezentant al managementului. Aplicând formula N = n(n-1)/2: N = 6 × 5 / 2 = 15 canale de comunicare posibile. Pe parcursul proiectului, se alătură echipei încă 4 persoane — doi testeri și doi utilizatori-cheie (key users) care validează cerințele — ajungând la n = 10. Noul număr de canale este N = 10 × 9 / 2 = 45. Diferența, 45 − 15 = 30 de canale noi, ilustrează de ce project managerul introduce, odată cu extinderea echipei, un plan de comunicare formal: ședințe săptămânale de status cu agendă fixă, un canal dedicat pe Teams sau Slack pentru întrebări tehnice și un raport bilunar către management, în loc să lase fiecare persoană să comunice ad-hoc cu oricine altcineva. Fără această structurare, riscul este ca informații critice — o cerință modificată, un risc identificat — să circule doar între câteva persoane și să nu ajungă la cei care iau decizii.\n\n## Exemplu: Feedback structurat într-un proiect de digitalizare\nÎn cadrul unui proiect de digitalizare la o companie de distribuție, project managerul Ana observă că dezvoltatorul Bogdan livrează constant task-urile cu întârziere de 1-2 zile, fără să anunțe din timp. În loc să spună „nu ești organizat”, Ana aplică modelul SBI într-o discuție 1:1: „Situație: în ultimele trei sprinturi. Comportament: ai livrat task-urile alocate cu 1-2 zile mai târziu decât data estimată, fără să semnalezi întârzierea în stand-up. Impact: am raportat clientului termene pe care nu le-am putut respecta, iar echipa de testare a rămas fără timp suficient pentru validare.” Bogdan explică apoi că estimările inițiale nu au ținut cont de o dependență tehnică externă. Discuția se încheie cu un acord concret: Bogdan va semnala orice risc de întârziere în ziua în care îl identifică, nu în ziua deadline-ului, iar Ana va aloca timp suplimentar de buffer la estimări similare pe viitor. Rezultatul nu este o simplă mustrare, ci o cauză reală identificată și o soluție agreată de ambele părți — exact scopul feedback-ului constructiv.\n\n⚠ Atenție la examen: formula n(n-1)/2 calculează canalele de comunicare pentru toate persoanele incluse în enunț, nu neapărat doar membrii echipei de execuție — poate include și stakeholderi relevanți dacă problema o specifică. Citește cu atenție dacă întrebarea cere numărul total de canale sau doar canalele noi apărute după adăugarea unor persoane; sunt două rezultate diferite, iar candidații pierd frecvent puncte confundându-le.\n\n## Exercițiu\nUn proiect de implementare a unui sistem de raportare financiară are inițial o echipă de 7 persoane. La mijlocul proiectului, se alătură un auditor extern și doi reprezentanți ai unui departament nou implicat (total 3 persoane noi). Calculează: a) numărul de canale de comunicare din echipa inițială; b) numărul de canale după extindere; c) numărul de canale noi apărute exclusiv din adăugarea celor 3 persoane.\n\n**Soluție:** a) Echipa inițială: n = 7 → N = 7×6/2 = 21 canale. b) Echipa extinsă: n = 10 → N = 10×9/2 = 45 canale. c) Canale noi: 45 − 21 = 24 canale noi. Verificare: cele 24 de canale noi provin atât din conexiunile dintre cele 3 persoane noi și cele 7 existente (7×3 = 21 canale), cât și din conexiunile dintre cele 3 persoane noi între ele (3×2/2 = 3 canale); 21 + 3 = 24, ceea ce confirmă rezultatul.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "comunicare-rol-esential-pm",
+    "md": "Comunicarea este, conform PMBOK 7, una dintre activitățile centrale ale oricărui project manager și stă la baza domeniilor de performanță „Stakeholderi” și „Echipă”. Un proiect nu eșuează de obicei din lipsă de metodologie, ci din comunicare deficitară: cerințe neînțelese, așteptări nealiniate, informații care nu ajung la timp la persoana potrivită. În proiecte de digitalizare sau implementare ERP din România, unde sunt implicate simultan echipa tehnică, managementul companiei client, furnizorul de soft și utilizatorii finali, comunicarea eficientă face diferența dintre un proiect livrat la timp și unul blocat în conflicte de interpretare. PMBOK 7 tratează comunicarea nu ca pe o sarcină administrativă (rapoarte, e-mailuri), ci ca pe o competență strategică: alegerea canalului potrivit, adaptarea mesajului la audiență și verificarea că mesajul a fost înțeles corect, nu doar transmis. Modelul de bază al comunicării presupune un emițător, un mesaj codificat, un canal, un receptor care decodează mesajul și, esențial, o buclă de feedback care confirmă înțelegerea. Fără această buclă, comunicarea rămâne unidirecțională și predispusă la erori de interpretare.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "formula-canale-comunicare",
+    "md": "Una dintre cele mai testate formule la examenul PMP este numărul de canale de comunicare dintr-o echipă: N = n(n-1)/2, unde n este numărul de persoane implicate (membri ai echipei plus stakeholderi relevanți, dacă enunțul îi include). Formula pornește de la faptul că fiecare persoană poate comunica direct cu fiecare altă persoană din grup, iar fiecare pereche formează un canal unic. Importanța formulei nu este matematică, ci managerială: numărul de canale crește pătratic, nu liniar, odată cu numărul de participanți. O echipă de 4 persoane are 6 canale; o echipă de 10 persoane are 45 de canale. Această creștere rapidă explică de ce proiectele mari au nevoie de structuri de comunicare formale (planuri de comunicare, ședințe stand-up, rapoarte de status) în loc să se bazeze pe conversații ad-hoc, care devin ingerabile pe măsură ce echipa crește. La examen, întrebările cer fie calculul direct al numărului de canale, fie diferența de canale atunci când echipa crește cu un anumit număr de persoane — de aceea exercițiul din această lecție este esențial de exersat până devine automatism.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ascultare-activa",
+    "md": "Ascultarea activă este abilitatea de a asculta cu intenția de a înțelege, nu doar de a răspunde. În practică, presupune patru comportamente concrete: (1) parafrazarea — repeți în cuvintele tale ce ai înțeles, pentru a confirma acuratețea; (2) întrebări de clarificare — ceri detalii suplimentare în loc să presupui; (3) suspendarea judecății — nu întrerupi și nu pregătești răspunsul în timp ce interlocutorul încă vorbește; (4) validarea emoțională — recunoști starea sau frustrarea celuilalt înainte de a trece la soluții. Pentru un project manager, ascultarea activă este critică în ședințele cu stakeholderi dificili sau în retrospectivele de echipă, unde membrii pot ezita să semnaleze probleme reale dacă simt că nu sunt ascultați. Un test simplu al ascultării active: dacă poți rezuma poziția interlocutorului într-un mod pe care el însuși l-ar confirma ca fiind corect, ai ascultat activ; dacă rezumatul tău este contestat sau îl surprinde, ai ascultat parțial sau selectiv, filtrând informația prin propriile presupuneri.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "feedback-model-sbi",
+    "md": "Feedback-ul constructiv este instrumentul prin care un project manager corectează direcția fără a deteriora relația cu membrul echipei. Modelul SBI (Situație–Comportament–Impact, în engleză Situation-Behavior-Impact) structurează feedback-ul în trei pași: descrii situația concretă, de exemplu „în ședința de ieri de la ora 10”; descrii comportamentul observabil, fără interpretări, de exemplu „ai întrerupt de trei ori raportarea colegului”; și descrii impactul, de exemplu „colegul a renunțat să mai adauge detalii, iar echipa a pierdut informații despre un risc”. Structura SBI evită generalizările de tipul „mereu faci asta” sau etichetele de personalitate, care declanșează reacții defensive. Feedback-ul eficient respectă și alte principii: se oferă cât mai aproape de momentul faptului, în privat dacă este corectiv și, ideal, în public dacă este de apreciere, și se încheie cu o invitație la dialog, nu cu un verdict unilateral. La fel de important este feedback-ul ascendent — de la echipă către project manager — pe care mulți manageri îl neglijează, deși retrospectivele agile (Scrum Guide 2020) sunt construite exact pentru a-l colecta sistematic.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "comunicare-nonverbala-culturala",
+    "md": "O mare parte din mesaj se transmite dincolo de cuvinte: tonul vocii, ritmul vorbirii, postura, contactul vizual și expresiile faciale. Regula 7-38-55 a lui Albert Mehrabian (des citată, dar adesea aplicată greșit) sugerează că, în situații încărcate emoțional și ambigue, cuvintele cântăresc puțin în raport cu tonul vocii și limbajul corpului — nu este o lege universală valabilă pentru orice comunicare, ci un reper pentru situațiile în care ce spui contrazice cum spui. Pentru un project manager, concluzia practică este simplă: o incongruență între mesaj și tonul vocii sau expresia facială subminează credibilitatea, chiar dacă textul mesajului este corect. Conștientizarea culturală (cultural awareness) devine esențială în proiecte cu echipe distribuite sau parteneri internaționali. Culturile „high-context” (de exemplu Japonia, multe țări din Orientul Mijlociu) transmit sens prin context, relații și subînțeles, tolerând ambiguitatea; culturile „low-context” (de exemplu Germania, SUA) preferă mesaje explicite, directe, documentate în scris. România se poziționează adesea undeva la mijloc, cu o preferință pentru relații personale, dar și pentru confirmări scrise. Un project manager eficient își adaptează stilul de comunicare — nu presupune că „direct” înseamnă „clar” pentru toată lumea.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul canalelor de comunicare într-un proiect de implementare ERP",
+    "concept_key": "formula-canale-comunicare",
+    "md": "Compania TehnoPlus SRL implementează un sistem ERP și formează o echipă de proiect din 6 persoane: project manager, analist de business, doi dezvoltatori, un specialist IT din partea clientului și un reprezentant al managementului. Aplicând formula N = n(n-1)/2: N = 6 × 5 / 2 = 15 canale de comunicare posibile. Pe parcursul proiectului, se alătură echipei încă 4 persoane — doi testeri și doi utilizatori-cheie (key users) care validează cerințele — ajungând la n = 10. Noul număr de canale este N = 10 × 9 / 2 = 45. Diferența, 45 − 15 = 30 de canale noi, ilustrează de ce project managerul introduce, odată cu extinderea echipei, un plan de comunicare formal: ședințe săptămânale de status cu agendă fixă, un canal dedicat pe Teams sau Slack pentru întrebări tehnice și un raport bilunar către management, în loc să lase fiecare persoană să comunice ad-hoc cu oricine altcineva. Fără această structurare, riscul este ca informații critice — o cerință modificată, un risc identificat — să circule doar între câteva persoane și să nu ajungă la cei care iau decizii.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b6"
+   },
+   {
+    "type": "example",
+    "title": "Feedback structurat într-un proiect de digitalizare",
+    "concept_key": "feedback-model-sbi",
+    "md": "În cadrul unui proiect de digitalizare la o companie de distribuție, project managerul Ana observă că dezvoltatorul Bogdan livrează constant task-urile cu întârziere de 1-2 zile, fără să anunțe din timp. În loc să spună „nu ești organizat”, Ana aplică modelul SBI într-o discuție 1:1: „Situație: în ultimele trei sprinturi. Comportament: ai livrat task-urile alocate cu 1-2 zile mai târziu decât data estimată, fără să semnalezi întârzierea în stand-up. Impact: am raportat clientului termene pe care nu le-am putut respecta, iar echipa de testare a rămas fără timp suficient pentru validare.” Bogdan explică apoi că estimările inițiale nu au ținut cont de o dependență tehnică externă. Discuția se încheie cu un acord concret: Bogdan va semnala orice risc de întârziere în ziua în care îl identifică, nu în ziua deadline-ului, iar Ana va aloca timp suplimentar de buffer la estimări similare pe viitor. Rezultatul nu este o simplă mustrare, ci o cauză reală identificată și o soluție agreată de ambele părți — exact scopul feedback-ului constructiv.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la examen: formula n(n-1)/2 calculează canalele de comunicare pentru toate persoanele incluse în enunț, nu neapărat doar membrii echipei de execuție — poate include și stakeholderi relevanți dacă problema o specifică. Citește cu atenție dacă întrebarea cere numărul total de canale sau doar canalele noi apărute după adăugarea unor persoane; sunt două rezultate diferite, iar candidații pierd frecvent puncte confundându-le.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Un proiect de implementare a unui sistem de raportare financiară are inițial o echipă de 7 persoane. La mijlocul proiectului, se alătură un auditor extern și doi reprezentanți ai unui departament nou implicat (total 3 persoane noi). Calculează: a) numărul de canale de comunicare din echipa inițială; b) numărul de canale după extindere; c) numărul de canale noi apărute exclusiv din adăugarea celor 3 persoane.",
+    "solution_md": "a) Echipa inițială: n = 7 → N = 7×6/2 = 21 canale. b) Echipa extinsă: n = 10 → N = 10×9/2 = 45 canale. c) Canale noi: 45 − 21 = 24 canale noi. Verificare: cele 24 de canale noi provin atât din conexiunile dintre cele 3 persoane noi și cele 7 existente (7×3 = 21 canale), cât și din conexiunile dintre cele 3 persoane noi între ele (3×2/2 = 3 canale); 21 + 3 = 24, ceea ce confirmă rezultatul.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O echipă de proiect are 9 membri. Câte canale de comunicare potențiale există, conform formulei PMBOK?",
+    "choices": [
+     "36",
+     "45",
+     "72",
+     "81"
+    ],
+    "answer": 0,
+    "explain": "N = n(n-1)/2 = 9×8/2 = 36 canale de comunicare.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce descrie corect primul element al modelului de feedback SBI (Situație-Comportament-Impact)?",
+    "choices": [
+     "O trăsătură generală de personalitate a persoanei",
+     "Contextul concret și specific în care a avut loc comportamentul",
+     "O soluție propusă pentru viitor",
+     "O comparație cu alți membri ai echipei"
+    ],
+    "answer": 1,
+    "explain": "SBI începe cu Situația: contextul concret și specific (când, unde a avut loc), nu generalizări sau etichete de personalitate.",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula pentru numărul de canale de comunicare într-o echipă de proiect?",
+    "back": "N = n(n-1)/2, unde n este numărul de persoane implicate.",
+    "concept_key": "formula-canale-comunicare",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă ascultarea activă?",
+    "back": "A asculta cu intenția de a înțelege, confirmând prin parafrazare și întrebări de clarificare, nu doar a aștepta rândul de a răspunde.",
+    "concept_key": "ascultare-activa",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul SBI folosit în feedback?",
+    "back": "Situație – Comportament – Impact (Situation-Behavior-Impact), un model de structurare a feedback-ului constructiv.",
+    "concept_key": "feedback-model-sbi",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între culturile high-context și low-context în comunicare?",
+    "back": "Culturile high-context transmit sens prin context și relații (mesaj implicit); culturile low-context preferă mesaje explicite și directe.",
+    "concept_key": "comunicare-nonverbala-culturala",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte canale de comunicare noi apar dacă o echipă de 6 persoane devine echipă de 10 persoane?",
+    "back": "30 de canale noi (45 − 15), calculate cu N = n(n-1)/2.",
+    "concept_key": "formula-canale-comunicare",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce sugerează, cu prudență, regula 7-38-55 a lui Mehrabian?",
+    "back": "În situații emoționale ambigue, tonul vocii și limbajul corpului cântăresc mai mult decât cuvintele; nu este o lege universală valabilă pentru orice tip de comunicare.",
+    "concept_key": "comunicare-nonverbala-culturala",
+    "blockId": "cmjjuxvxj008mumkpys04lkv0-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1408,
+   "flashcards": 6
+  }
+ }
+}

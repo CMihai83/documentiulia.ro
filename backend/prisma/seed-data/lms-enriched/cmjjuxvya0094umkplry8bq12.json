@@ -1,0 +1,152 @@
+{
+ "lessonId": "cmjjuxvya0094umkplry8bq12",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Predictive",
+ "lesson": "Cost Management",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Cost Management\n\nManagementul costurilor este unul dintre cele mai testate domenii de performanță din examenul PMP, mai ales în abordarea predictivă (waterfall). Conform PMBOK 7 și ECO, procesul de Cost Management din ciclul de viață predictiv cuprinde patru activități principale, executate în general secvențial în faza de planificare și apoi monitorizate pe tot parcursul proiectului:\n\n1. **Plan Cost Management** – stabilește politicile, procedurile și documentația pentru planificarea, gestionarea, cheltuirea și controlul costurilor. Rezultă planul de management al costurilor, parte din planul de management al proiectului.\n2. **Estimate Costs** – dezvoltă o aproximare a resurselor monetare necesare pentru finalizarea activităților proiectului.\n3. **Determine Budget** – agregă costurile estimate ale activităților individuale sau pachetelor de lucru pentru a stabili o linie de bază de cost (cost baseline) autorizată.\n4. **Control Costs** – monitorizează stadiul proiectului pentru actualizarea costurilor și gestionarea modificărilor față de linia de bază.\n\nPentru un proiect tipic din România – de exemplu implementarea unui sistem ERP într-o companie de distribuție – aceste patru procese se derulează de la momentul aprobării business case-ului până la închiderea contractului cu integratorul. Examenul PMP testează atât secvența logică a proceselor, cât și capacitatea ta de a calcula și interpreta indicatorii de valoare realizată (EVM), instrumentul central de control al costurilor în abordarea predictivă.\n\nEstimarea costurilor folosește mai multe tehnici, iar examenul PMP cere să recunoști când se aplică fiecare:\n\n- **Estimarea analogă (analogous estimating)** – folosește costurile reale ale unor proiecte similare anterioare, ajustate cu factori de complexitate. Rapidă, dar mai puțin precisă (marjă de eroare -25%/+75%).\n- **Estimarea parametrică (parametric estimating)** – utilizează o relație statistică între variabile istorice (ex. cost pe metru pătrat de birou renovat) și date curente. Precizie medie.\n- **Estimarea bottom-up** – cea mai precisă metodă: se estimează costul fiecărui pachet de lucru din WBS, apoi se agregă de jos în sus. Necesită mai mult timp și detaliu (marjă -5%/+10%).\n- **Estimarea în trei puncte (three-point / PERT)** – combină scenariile optimist (O), cel mai probabil (M) și pesimist (P):\n  - Medie triunghiulară: (O + M + P) / 3\n  - Medie PERT (beta): (O + 4M + P) / 6\n- **Analiza rezervelor (reserve analysis)** – adaugă rezerve pentru risc: rezerva de contingență (pentru riscuri identificate) și rezerva de management (pentru riscuri neidentificate, necesită aprobarea sponsorului pentru utilizare).\n\nO întrebare clasică cere calculul mediei PERT: dacă O=8.000 lei, M=10.000 lei, P=18.000 lei, media PERT = (8.000 + 4×10.000 + 18.000) / 6 = 66.000 / 6 = 11.000 lei.\n\nDetermine Budget agregă estimările de cost pe pachete de lucru, apoi pe niveluri de control al costului (cost accounts), rezultând **linia de bază a costurilor (cost baseline)** – bugetul aprobat, distribuit în timp (fără rezerva de management), folosit ca referință pentru măsurarea performanței prin EVM.\n\nStructura ierarhică de agregare este esențială pentru examen:\n\nCosturile activităților → Costurile pachetelor de lucru → Cost baseline (+ rezerva de contingență) → Bugetul proiectului (cost baseline + rezerva de management) → Limitele de finanțare (funding limit reconciliation, dacă finanțarea vine eșalonat, de exemplu tranșe de la o bancă sau fonduri europene).\n\nÎn România, pentru proiecte finanțate din fonduri UE (ex. digitalizare prin PNRR), reconcilierea cu limitele de finanțare este critică: cheltuielile trebuie aliniate cu tranșele de rambursare aprobate, altfel proiectul riscă blocaje de cash-flow chiar dacă bugetul total este suficient.\n\nEarned Value Management (EVM) este tehnica standard PMP pentru integrarea măsurării scopului, timpului și costului într-un singur set de indicatori. Cele trei valori fundamentale, calculate la o dată de raportare (DS):\n\n- **PV – Planned Value**: valoarea bugetată a lucrului planificat să fie executat până la DS (ce ar fi trebuit să cheltuim conform planului).\n- **EV – Earned Value**: valoarea bugetată a lucrului efectiv finalizat până la DS (ce am produs din bugetul aprobat, indiferent cât am cheltuit real).\n- **AC – Actual Cost**: costul real suportat pentru lucrul efectuat până la DS.\n\nExemplu: un proiect de digitalizare a unui depozit are un buget total (BAC – Budget at Completion) de 200.000 lei, planificat pe 10 luni (20.000 lei/lună liniar). La finalul lunii 4, planul prevedea finalizarea a 40% din scop (PV = 80.000 lei). În realitate, echipa a finalizat doar 30% din scop (EV = 60.000 lei) și a cheltuit 70.000 lei (AC = 70.000 lei). Aceste trei cifre stau la baza tuturor indicatorilor derivați.\n\nDin PV, EV și AC se derivă indicatorii de variație și eficiență, testați intensiv la examen:\n\n- **SV (Schedule Variance) = EV − PV** → 60.000 − 80.000 = **−20.000 lei** (proiect în întârziere față de plan).\n- **CV (Cost Variance) = EV − AC** → 60.000 − 70.000 = **−10.000 lei** (proiect peste buget: s-a cheltuit mai mult decât valoarea produsă).\n- **SPI (Schedule Performance Index) = EV / PV** → 60.000 / 80.000 = **0,75** (echipa produce doar 75% din ritmul planificat).\n- **CPI (Cost Performance Index) = EV / AC** → 60.000 / 70.000 = **0,857** (pentru fiecare leu cheltuit se produce doar 0,857 lei valoare).\n\nRegula de interpretare: valori negative (SV, CV) sau subunitare (SPI, CPI < 1) indică performanță sub plan; valori pozitive sau supraunitare indică performanță peste plan. SPI = 1 sau CPI = 1 înseamnă performanță exact conform planului.\n\nIndicatorii de prognoză extrapolează tendința curentă pentru a estima costul final al proiectului:\n\n- **EAC (Estimate at Completion)** – costul total estimat la finalizare. Formula standard, folosită când abaterile curente sunt considerate tipice pentru restul proiectului: **EAC = BAC / CPI**.\n  - Variante pentru examen: dacă viitoarele activități se vor desfășura la rata planificată (abaterea a fost un caz izolat): EAC = AC + (BAC − EV). Dacă atât SPI cât și CPI influențează restul lucrării: EAC = AC + [(BAC − EV) / (CPI × SPI)].\n- **ETC (Estimate to Complete) = EAC − AC** – cât mai trebuie cheltuit de acum înainte.\n- **VAC (Variance at Completion) = BAC − EAC** – diferența dintre bugetul inițial și costul final estimat (negativ = depășire de buget).\n- **TCPI (To-Complete Performance Index)** – eficiența necesară de acum înainte pentru a atinge o țintă:\n  - Pentru a atinge BAC: TCPI = (BAC − EV) / (BAC − AC).\n  - Pentru a atinge EAC (dacă BAC nu mai este realist): TCPI = (BAC − EV) / (EAC − AC).\n\nUn TCPI mult mai mare decât CPI curent (ex. TCPI = 1,20 față de CPI = 0,86) semnalează că ținta este greu sau imposibil de atins fără schimbări majore de eficiență, resurse sau scop.\n\n## Exemplu: Calculul EAC, ETC, VAC și TCPI pentru un proiect ERP\nContinuăm exemplul proiectului de digitalizare a depozitului: BAC = 200.000 lei, PV = 80.000 lei, EV = 60.000 lei, AC = 70.000 lei, SPI = 0,75, CPI = 0,857.\n\n**Pasul 1 – EAC (varianta standard, abaterile sunt tipice):**\nEAC = BAC × AC / EV = 200.000 × 70.000 / 60.000 = **233.333 lei**\n\n**Pasul 2 – ETC:**\nETC = EAC − AC = 233.333 − 70.000 = **163.333 lei** (cât mai trebuie cheltuit)\n\n**Pasul 3 – VAC:**\nVAC = BAC − EAC = 200.000 − 233.333 = **−33.333 lei** (proiectul va depăși bugetul aprobat cu aproximativ 33.333 lei dacă tendința continuă)\n\n**Pasul 4 – TCPI (pentru a atinge tot BAC):**\nTCPI = (BAC − EV) / (BAC − AC) = (200.000 − 60.000) / (200.000 − 70.000) = 140.000 / 130.000 = **1,077**\n\nInterpretare pentru sponsor: echipa trebuie să lucreze cu o eficiență de cost de 1,077 (adică 7,7% mai eficient decât planul inițial) pe toată perioada rămasă doar pentru a se încadra în bugetul original de 200.000 lei, în condițiile în care performanța curentă (CPI) este de doar 0,857. Este un semnal clar că managerul de proiect trebuie fie să solicite buget suplimentar (folosind VAC ca justificare), fie să reducă scopul, fie să implementeze acțiuni corective de eficientizare.\n\n## Exemplu: Interpretarea combinată SPI/CPI pe un proiect hibrid\nEVM se aplică integral doar componentelor predictive ale unui proiect; într-o abordare hibridă (ex. dezvoltare software agilă + implementare hardware predictivă pentru o rețea de magazine), se calculează EVM separat pentru pachetele de lucru predictive, iar pentru componentele agile se folosesc alte metrici (velocity, burndown).\n\nPentru un pachet predictiv de cablare și instalare echipamente în 15 magazine noi, la data de raportare aveți: PV = 150.000 lei, EV = 165.000 lei, AC = 140.000 lei.\n\n- SV = EV − PV = 165.000 − 150.000 = **+15.000 lei** (înainte de plan)\n- CV = EV − AC = 165.000 − 140.000 = **+25.000 lei** (sub buget)\n- SPI = 165.000 / 150.000 = **1,10**\n- CPI = 165.000 / 140.000 = **1,18**\n\nAceasta este combinația ideală testată la examen: SPI > 1 și CPI > 1 înseamnă proiect înainte de grafic și sub buget. Managerul de proiect ar trebui totuși să verifice dacă performanța este reală (nu doar raportare optimistă) și dacă resursele eliberate pot fi realocate altor pachete de lucru întârziate din proiect, în loc să fie eliberate prematur.\n\n⚠ Capcană clasică de examen: nu confunda semnul negativ cu o interpretare universal negativă. Un CV negativ este mereu nefavorabil (se cheltuiește mai mult decât se produce), dar pe examen apar și scenarii în care un SPI subunitar este acceptabil (ex. echipa a decis conștient să amâne un pachet de lucru necritic pentru a realoca resurse pe calea critică). De asemenea, reține formula corectă de EAC în funcție de contextul din enunț: dacă enunțul spune că abaterile viitoare vor fi similare cu cele actuale, folosești EAC = BAC/CPI; dacă spune că a fost o problemă unică și restul lucrărilor va respecta estimările inițiale, folosești EAC = AC + (BAC − EV). Alegerea formulei greșite este cea mai frecventă eroare la întrebările EVM.\n\n## Exercițiu\nUn proiect de implementare a unui modul de facturare electronică într-o companie de servicii are BAC = 120.000 lei, planificat pe 6 luni, cu distribuție liniară a bugetului. La finalul lunii 3 (data de raportare), sponsorul îți cere un raport de status. Din sistemul de time-tracking și facturile furnizorilor afli: procentul de scop planificat a fi finalizat la luna 3 este 50%, procentul real finalizat este 40%, iar costurile real suportate sunt de 55.000 lei.\n\nCalculează: PV, EV, AC, SV, CV, SPI, CPI, EAC (folosind formula standard) și VAC. Interpretează pe scurt rezultatul pentru sponsor.\n\n**Soluție:** **Date de bază:**\nPV = 50% × 120.000 = **60.000 lei**\nEV = 40% × 120.000 = **48.000 lei**\nAC = **55.000 lei** (dat direct)\n\n**Indicatori de variație:**\nSV = EV − PV = 48.000 − 60.000 = **−12.000 lei** (întârziere)\nCV = EV − AC = 48.000 − 55.000 = **−7.000 lei** (peste buget)\n\n**Indicatori de eficiență:**\nSPI = EV / PV = 48.000 / 60.000 = **0,80**\nCPI = EV / AC = 48.000 / 55.000 = **0,873**\n\n**Prognoză:**\nEAC = BAC × AC / EV = 120.000 × 55.000 / 48.000 = **137.500 lei**\nVAC = BAC − EAC = 120.000 − 137.500 = **−17.500 lei**\n\n**Interpretare pentru sponsor:** Proiectul este atât în întârziere (SPI = 0,80, echipa produce doar 80% din ritmul planificat), cât și peste buget (CPI = 0,873, fiecare leu cheltuit produce doar 0,873 lei de valoare). Dacă tendința continuă neschimbată, costul final estimat este de 137.500 lei, cu 17.500 lei peste bugetul aprobat de 120.000 lei. Recomandarea către sponsor: fie se aprobă o rezervă suplimentară de aproximativ 17.500 lei, fie se declanșează acțiuni corective (realocare de resurse, revizuire scop) pentru a readuce CPI și SPI cât mai aproape de 1.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "cost-management-procese",
+    "md": "Managementul costurilor este unul dintre cele mai testate domenii de performanță din examenul PMP, mai ales în abordarea predictivă (waterfall). Conform PMBOK 7 și ECO, procesul de Cost Management din ciclul de viață predictiv cuprinde patru activități principale, executate în general secvențial în faza de planificare și apoi monitorizate pe tot parcursul proiectului:\n\n1. **Plan Cost Management** – stabilește politicile, procedurile și documentația pentru planificarea, gestionarea, cheltuirea și controlul costurilor. Rezultă planul de management al costurilor, parte din planul de management al proiectului.\n2. **Estimate Costs** – dezvoltă o aproximare a resurselor monetare necesare pentru finalizarea activităților proiectului.\n3. **Determine Budget** – agregă costurile estimate ale activităților individuale sau pachetelor de lucru pentru a stabili o linie de bază de cost (cost baseline) autorizată.\n4. **Control Costs** – monitorizează stadiul proiectului pentru actualizarea costurilor și gestionarea modificărilor față de linia de bază.\n\nPentru un proiect tipic din România – de exemplu implementarea unui sistem ERP într-o companie de distribuție – aceste patru procese se derulează de la momentul aprobării business case-ului până la închiderea contractului cu integratorul. Examenul PMP testează atât secvența logică a proceselor, cât și capacitatea ta de a calcula și interpreta indicatorii de valoare realizată (EVM), instrumentul central de control al costurilor în abordarea predictivă.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "estimare-costuri-tehnici",
+    "md": "Estimarea costurilor folosește mai multe tehnici, iar examenul PMP cere să recunoști când se aplică fiecare:\n\n- **Estimarea analogă (analogous estimating)** – folosește costurile reale ale unor proiecte similare anterioare, ajustate cu factori de complexitate. Rapidă, dar mai puțin precisă (marjă de eroare -25%/+75%).\n- **Estimarea parametrică (parametric estimating)** – utilizează o relație statistică între variabile istorice (ex. cost pe metru pătrat de birou renovat) și date curente. Precizie medie.\n- **Estimarea bottom-up** – cea mai precisă metodă: se estimează costul fiecărui pachet de lucru din WBS, apoi se agregă de jos în sus. Necesită mai mult timp și detaliu (marjă -5%/+10%).\n- **Estimarea în trei puncte (three-point / PERT)** – combină scenariile optimist (O), cel mai probabil (M) și pesimist (P):\n  - Medie triunghiulară: (O + M + P) / 3\n  - Medie PERT (beta): (O + 4M + P) / 6\n- **Analiza rezervelor (reserve analysis)** – adaugă rezerve pentru risc: rezerva de contingență (pentru riscuri identificate) și rezerva de management (pentru riscuri neidentificate, necesită aprobarea sponsorului pentru utilizare).\n\nO întrebare clasică cere calculul mediei PERT: dacă O=8.000 lei, M=10.000 lei, P=18.000 lei, media PERT = (8.000 + 4×10.000 + 18.000) / 6 = 66.000 / 6 = 11.000 lei.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "determinare-buget-cost-baseline",
+    "md": "Determine Budget agregă estimările de cost pe pachete de lucru, apoi pe niveluri de control al costului (cost accounts), rezultând **linia de bază a costurilor (cost baseline)** – bugetul aprobat, distribuit în timp (fără rezerva de management), folosit ca referință pentru măsurarea performanței prin EVM.\n\nStructura ierarhică de agregare este esențială pentru examen:\n\nCosturile activităților → Costurile pachetelor de lucru → Cost baseline (+ rezerva de contingență) → Bugetul proiectului (cost baseline + rezerva de management) → Limitele de finanțare (funding limit reconciliation, dacă finanțarea vine eșalonat, de exemplu tranșe de la o bancă sau fonduri europene).\n\nÎn România, pentru proiecte finanțate din fonduri UE (ex. digitalizare prin PNRR), reconcilierea cu limitele de finanțare este critică: cheltuielile trebuie aliniate cu tranșele de rambursare aprobate, altfel proiectul riscă blocaje de cash-flow chiar dacă bugetul total este suficient.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "evm-valori-fundamentale",
+    "md": "Earned Value Management (EVM) este tehnica standard PMP pentru integrarea măsurării scopului, timpului și costului într-un singur set de indicatori. Cele trei valori fundamentale, calculate la o dată de raportare (DS):\n\n- **PV – Planned Value**: valoarea bugetată a lucrului planificat să fie executat până la DS (ce ar fi trebuit să cheltuim conform planului).\n- **EV – Earned Value**: valoarea bugetată a lucrului efectiv finalizat până la DS (ce am produs din bugetul aprobat, indiferent cât am cheltuit real).\n- **AC – Actual Cost**: costul real suportat pentru lucrul efectuat până la DS.\n\nExemplu: un proiect de digitalizare a unui depozit are un buget total (BAC – Budget at Completion) de 200.000 lei, planificat pe 10 luni (20.000 lei/lună liniar). La finalul lunii 4, planul prevedea finalizarea a 40% din scop (PV = 80.000 lei). În realitate, echipa a finalizat doar 30% din scop (EV = 60.000 lei) și a cheltuit 70.000 lei (AC = 70.000 lei). Aceste trei cifre stau la baza tuturor indicatorilor derivați.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "evm-indicatori-variatie-eficienta",
+    "md": "Din PV, EV și AC se derivă indicatorii de variație și eficiență, testați intensiv la examen:\n\n- **SV (Schedule Variance) = EV − PV** → 60.000 − 80.000 = **−20.000 lei** (proiect în întârziere față de plan).\n- **CV (Cost Variance) = EV − AC** → 60.000 − 70.000 = **−10.000 lei** (proiect peste buget: s-a cheltuit mai mult decât valoarea produsă).\n- **SPI (Schedule Performance Index) = EV / PV** → 60.000 / 80.000 = **0,75** (echipa produce doar 75% din ritmul planificat).\n- **CPI (Cost Performance Index) = EV / AC** → 60.000 / 70.000 = **0,857** (pentru fiecare leu cheltuit se produce doar 0,857 lei valoare).\n\nRegula de interpretare: valori negative (SV, CV) sau subunitare (SPI, CPI < 1) indică performanță sub plan; valori pozitive sau supraunitare indică performanță peste plan. SPI = 1 sau CPI = 1 înseamnă performanță exact conform planului.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b5"
+   },
+   {
+    "type": "theory",
+    "concept_key": "evm-prognoze-eac-etc-vac-tcpi",
+    "md": "Indicatorii de prognoză extrapolează tendința curentă pentru a estima costul final al proiectului:\n\n- **EAC (Estimate at Completion)** – costul total estimat la finalizare. Formula standard, folosită când abaterile curente sunt considerate tipice pentru restul proiectului: **EAC = BAC / CPI**.\n  - Variante pentru examen: dacă viitoarele activități se vor desfășura la rata planificată (abaterea a fost un caz izolat): EAC = AC + (BAC − EV). Dacă atât SPI cât și CPI influențează restul lucrării: EAC = AC + [(BAC − EV) / (CPI × SPI)].\n- **ETC (Estimate to Complete) = EAC − AC** – cât mai trebuie cheltuit de acum înainte.\n- **VAC (Variance at Completion) = BAC − EAC** – diferența dintre bugetul inițial și costul final estimat (negativ = depășire de buget).\n- **TCPI (To-Complete Performance Index)** – eficiența necesară de acum înainte pentru a atinge o țintă:\n  - Pentru a atinge BAC: TCPI = (BAC − EV) / (BAC − AC).\n  - Pentru a atinge EAC (dacă BAC nu mai este realist): TCPI = (BAC − EV) / (EAC − AC).\n\nUn TCPI mult mai mare decât CPI curent (ex. TCPI = 1,20 față de CPI = 0,86) semnalează că ținta este greu sau imposibil de atins fără schimbări majore de eficiență, resurse sau scop.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calculul EAC, ETC, VAC și TCPI pentru un proiect ERP",
+    "concept_key": "evm-calcul-eac-vac",
+    "md": "Continuăm exemplul proiectului de digitalizare a depozitului: BAC = 200.000 lei, PV = 80.000 lei, EV = 60.000 lei, AC = 70.000 lei, SPI = 0,75, CPI = 0,857.\n\n**Pasul 1 – EAC (varianta standard, abaterile sunt tipice):**\nEAC = BAC × AC / EV = 200.000 × 70.000 / 60.000 = **233.333 lei**\n\n**Pasul 2 – ETC:**\nETC = EAC − AC = 233.333 − 70.000 = **163.333 lei** (cât mai trebuie cheltuit)\n\n**Pasul 3 – VAC:**\nVAC = BAC − EAC = 200.000 − 233.333 = **−33.333 lei** (proiectul va depăși bugetul aprobat cu aproximativ 33.333 lei dacă tendința continuă)\n\n**Pasul 4 – TCPI (pentru a atinge tot BAC):**\nTCPI = (BAC − EV) / (BAC − AC) = (200.000 − 60.000) / (200.000 − 70.000) = 140.000 / 130.000 = **1,077**\n\nInterpretare pentru sponsor: echipa trebuie să lucreze cu o eficiență de cost de 1,077 (adică 7,7% mai eficient decât planul inițial) pe toată perioada rămasă doar pentru a se încadra în bugetul original de 200.000 lei, în condițiile în care performanța curentă (CPI) este de doar 0,857. Este un semnal clar că managerul de proiect trebuie fie să solicite buget suplimentar (folosind VAC ca justificare), fie să reducă scopul, fie să implementeze acțiuni corective de eficientizare.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b7"
+   },
+   {
+    "type": "example",
+    "title": "Interpretarea combinată SPI/CPI pe un proiect hibrid",
+    "concept_key": "evm-interpretare-spi-cpi",
+    "md": "EVM se aplică integral doar componentelor predictive ale unui proiect; într-o abordare hibridă (ex. dezvoltare software agilă + implementare hardware predictivă pentru o rețea de magazine), se calculează EVM separat pentru pachetele de lucru predictive, iar pentru componentele agile se folosesc alte metrici (velocity, burndown).\n\nPentru un pachet predictiv de cablare și instalare echipamente în 15 magazine noi, la data de raportare aveți: PV = 150.000 lei, EV = 165.000 lei, AC = 140.000 lei.\n\n- SV = EV − PV = 165.000 − 150.000 = **+15.000 lei** (înainte de plan)\n- CV = EV − AC = 165.000 − 140.000 = **+25.000 lei** (sub buget)\n- SPI = 165.000 / 150.000 = **1,10**\n- CPI = 165.000 / 140.000 = **1,18**\n\nAceasta este combinația ideală testată la examen: SPI > 1 și CPI > 1 înseamnă proiect înainte de grafic și sub buget. Managerul de proiect ar trebui totuși să verifice dacă performanța este reală (nu doar raportare optimistă) și dacă resursele eliberate pot fi realocate altor pachete de lucru întârziate din proiect, în loc să fie eliberate prematur.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană clasică de examen: nu confunda semnul negativ cu o interpretare universal negativă. Un CV negativ este mereu nefavorabil (se cheltuiește mai mult decât se produce), dar pe examen apar și scenarii în care un SPI subunitar este acceptabil (ex. echipa a decis conștient să amâne un pachet de lucru necritic pentru a realoca resurse pe calea critică). De asemenea, reține formula corectă de EAC în funcție de contextul din enunț: dacă enunțul spune că abaterile viitoare vor fi similare cu cele actuale, folosești EAC = BAC/CPI; dacă spune că a fost o problemă unică și restul lucrărilor va respecta estimările inițiale, folosești EAC = AC + (BAC − EV). Alegerea formulei greșite este cea mai frecventă eroare la întrebările EVM.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "Un proiect de implementare a unui modul de facturare electronică într-o companie de servicii are BAC = 120.000 lei, planificat pe 6 luni, cu distribuție liniară a bugetului. La finalul lunii 3 (data de raportare), sponsorul îți cere un raport de status. Din sistemul de time-tracking și facturile furnizorilor afli: procentul de scop planificat a fi finalizat la luna 3 este 50%, procentul real finalizat este 40%, iar costurile real suportate sunt de 55.000 lei.\n\nCalculează: PV, EV, AC, SV, CV, SPI, CPI, EAC (folosind formula standard) și VAC. Interpretează pe scurt rezultatul pentru sponsor.",
+    "solution_md": "**Date de bază:**\nPV = 50% × 120.000 = **60.000 lei**\nEV = 40% × 120.000 = **48.000 lei**\nAC = **55.000 lei** (dat direct)\n\n**Indicatori de variație:**\nSV = EV − PV = 48.000 − 60.000 = **−12.000 lei** (întârziere)\nCV = EV − AC = 48.000 − 55.000 = **−7.000 lei** (peste buget)\n\n**Indicatori de eficiență:**\nSPI = EV / PV = 48.000 / 60.000 = **0,80**\nCPI = EV / AC = 48.000 / 55.000 = **0,873**\n\n**Prognoză:**\nEAC = BAC × AC / EV = 120.000 × 55.000 / 48.000 = **137.500 lei**\nVAC = BAC − EAC = 120.000 − 137.500 = **−17.500 lei**\n\n**Interpretare pentru sponsor:** Proiectul este atât în întârziere (SPI = 0,80, echipa produce doar 80% din ritmul planificat), cât și peste buget (CPI = 0,873, fiecare leu cheltuit produce doar 0,873 lei de valoare). Dacă tendința continuă neschimbată, costul final estimat este de 137.500 lei, cu 17.500 lei peste bugetul aprobat de 120.000 lei. Recomandarea către sponsor: fie se aprobă o rezervă suplimentară de aproximativ 17.500 lei, fie se declanșează acțiuni corective (realocare de resurse, revizuire scop) pentru a readuce CPI și SPI cât mai aproape de 1.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un proiect, EV = 90.000 lei, AC = 100.000 lei, PV = 95.000 lei. Care este interpretarea corectă?",
+    "choices": [
+     "Proiectul este peste buget și în întârziere",
+     "Proiectul este sub buget și înainte de plan",
+     "Proiectul este peste buget dar înainte de plan",
+     "Proiectul este sub buget dar în întârziere"
+    ],
+    "answer": 0,
+    "explain": "CV = EV − AC = 90.000 − 100.000 = −10.000 lei (peste buget). SV = EV − PV = 90.000 − 95.000 = −5.000 lei (în întârziere). Ambele variații sunt negative, deci proiectul este peste buget și în întârziere.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care formulă EAC se folosește atunci când enunțul de examen specifică faptul că abaterile curente de cost au fost cauzate de o problemă unică, nerepetabilă, iar restul proiectului va decurge conform estimărilor inițiale?",
+    "choices": [
+     "EAC = BAC / CPI",
+     "EAC = AC + (BAC − EV)",
+     "EAC = AC + [(BAC − EV) / (CPI × SPI)]",
+     "EAC = BAC × CPI"
+    ],
+    "answer": 1,
+    "explain": "Când abaterea este considerată un incident izolat și restul lucrărilor va respecta estimările originale, se folosește EAC = AC + (BAC − EV), adăugând la costul real de până acum valoarea rămasă de lucru la rata planificată inițial.",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 procese din Cost Management (PMBOK 7 / ECO)?",
+    "back": "Plan Cost Management, Estimate Costs, Determine Budget, Control Costs.",
+    "concept_key": "cost-management-procese",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula CPI (Cost Performance Index)",
+    "back": "CPI = EV / AC — eficiența costului; CPI < 1 înseamnă proiect peste buget.",
+    "concept_key": "evm-indicatori-variatie-eficienta",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula SPI (Schedule Performance Index)",
+    "back": "SPI = EV / PV — eficiența graficului; SPI < 1 înseamnă proiect în întârziere.",
+    "concept_key": "evm-indicatori-variatie-eficienta",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula EAC standard (abateri tipice pentru tot restul proiectului)",
+    "back": "EAC = BAC / CPI",
+    "concept_key": "evm-prognoze-eac-etc-vac-tcpi",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula TCPI pentru a atinge bugetul original (BAC)",
+    "back": "TCPI = (BAC − EV) / (BAC − AC)",
+    "concept_key": "evm-prognoze-eac-etc-vac-tcpi",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Diferența dintre rezerva de contingență și rezerva de management",
+    "back": "Rezerva de contingență acoperă riscuri identificate și face parte din cost baseline; rezerva de management acoperă riscuri neidentificate și necesită aprobarea sponsorului pentru utilizare.",
+    "concept_key": "determinare-buget-cost-baseline",
+    "blockId": "cmjjuxvya0094umkplry8bq12-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1775,
+   "flashcards": 6
+  }
+ }
+}

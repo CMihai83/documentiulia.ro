@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvws0084umkp4plxspf8",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Introducere PMP și PMBOK 7",
+ "lesson": "PMBOK 7 vs PMBOK 6",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# PMBOK 7 vs PMBOK 6\n\n## De la procese la principii: de ce a schimbat PMI paradigma\n\nPMBOK (**Project Management Body of Knowledge**) este ghidul de referință publicat de PMI (Project Management Institute), organizația care administrează certificarea PMP. Timp de peste două decenii, edițiile PMBOK au fost construite în jurul unui model **prescriptiv, bazat pe procese**.\n\n**PMBOK 6 (2017)**, ediția care a consacrat standardul „clasic\", organizează managementul de proiect în jurul a trei piloni:\n- **5 grupuri de procese**: Inițiere, Planificare, Execuție, Monitorizare și Control, Închidere;\n- **10 domenii de cunoștințe**: Integrare, Scop (Scope), Program/Timp (Schedule), Cost, Calitate, Resurse, Comunicare, Risc, Achiziții și Stakeholderi;\n- **49 de procese**, fiecare documentat după modelul ITTO (Input – Tools & Techniques – Output, adică Intrări – Instrumente și Tehnici – Ieșiri).\n\nAcest model funcționează foarte bine pe proiecte predictive (abordarea „waterfall\" sau în cascadă), cu scop clar definit de la început — de exemplu construcția unei hale industriale sau un proiect de infrastructură IT cu specificații fixe. Limita lui: devine rigid și greu de aplicat mecanic pe proiecte agile, hibride sau pe medii cu incertitudine ridicată, unde valoarea se livrează incremental, iar scopul evoluează pe parcurs.\n\n## PMBOK 7 (2021): 12 principii și 8 domenii de performanță\n\n**PMBOK 7**, publicat de PMI în 2021, marchează cea mai radicală schimbare de paradigmă din istoria ghidului: trece de la „ce procese trebuie urmate\" la „ce principii trebuie respectate și ce rezultate trebuie livrate\", indiferent de metodologia aleasă (predictivă, agilă sau hibridă).\n\nStructura PMBOK 7 se sprijină pe două elemente:\n\n**1. Cele 12 principii** — reguli de comportament pentru project manager, printre care: administrare responsabilă (stewardship), construirea unei culturi de colaborare în echipă, implicarea eficace a stakeholderilor, focalizarea pe valoare, gândire sistemică (systems thinking), leadership, adaptarea abordării la context, integrarea calității în procese și rezultate, navigarea complexității, abordarea proactivă a riscului, adaptabilitate și reziliență, precum și pregătirea pentru schimbare pentru a atinge starea viitoare vizată.\n\n**2. Cele 8 domenii de performanță** — arii interconectate de activitate, care înlocuiesc cele 10 domenii de cunoștințe din PMBOK 6: Stakeholderi, Echipă, Abordare de dezvoltare și Ciclu de viață, Planificare, Lucrul cu proiectul (Project Work), Livrare (Delivery), Măsurare și Incertitudine.\n\nSpre deosebire de procesele ITTO, un domeniu de performanță nu are o secvență fixă de pași — el descrie un rezultat dorit (de exemplu, „stakeholderii sunt implicați productiv\") și lasă echipei libertatea de a alege instrumentele potrivite contextului: un backlog Scrum, o diagramă Gantt sau un tablou Kanban, după caz.\n\n## Ce înseamnă schimbarea pentru examenul PMP\n\nUn detaliu esențial, adesea neînțeles de cursanți: **examenul PMP nu testează direct conținutul unui singur PMBOK**. Din 2021, examenul este construit pe baza **ECO (Examination Content Outline)**, un document separat, structurat pe 3 domenii de competență: **People** (aproximativ 42% din întrebări — leadership, echipă, conflict, stakeholderi), **Process** (aproximativ 50% — planificare, execuție, monitorizare, livrare de valoare) și **Business Environment** (aproximativ 8% — conformitate, beneficii, schimbare organizațională).\n\nECO reflectă filozofia PMBOK 7 (mindset agnostic de metodologie, cu o pondere importantă a întrebărilor pe abordări agile sau hibride), dar continuă să se bazeze pe cunoștințe procesuale detaliate care în forma lor completă se regăsesc doar în PMBOK 6 (ex. calculul valorii câștigate — Earned Value Management, secvențierea activităților, tehnici de estimare). De aceea, pregătirea eficientă pentru PMP combină ambele surse: **principiile și domeniile de performanță din PMBOK 7** pentru înțelegerea conceptuală și deciziile de tip „ce ar face un project manager în această situație\", plus **procesele și formulele din PMBOK 6** pentru întrebările cantitative și situaționale de detaliu.\n\n## Exemplu: Stakeholderi: proces (PMBOK 6) vs domeniu de performanță (PMBOK 7)\n**În PMBOK 6**, managementul stakeholderilor este un domeniu de cunoștințe cu 4 procese fixe, executate în secvențe specifice grupurilor de procese:\n1. Identificarea stakeholderilor (Inițiere) — output: registrul stakeholderilor;\n2. Planificarea managementului stakeholderilor (Planificare) — output: planul de management al stakeholderilor;\n3. Managementul implicării stakeholderilor (Execuție);\n4. Monitorizarea implicării stakeholderilor (Monitorizare și Control).\n\nFiecare proces are input-uri, instrumente/tehnici și output-uri documentate strict — un cursant trebuie să memoreze, de exemplu, că „matricea putere/interes\" este un instrument de analiză folosit la identificare.\n\n**În PMBOK 7**, „Stakeholderi\" devine un **domeniu de performanță** continuu, activ pe toată durata proiectului, nu o succesiune de 4 pași. Întrebarea centrală nu mai este „în ce fază execut acest proces?\", ci „stakeholderii sunt implicați productiv, iar proiectul livrează valoarea așteptată de ei?\". Instrumentele (matricea putere/interes, harta stakeholderilor, planul de comunicare) rămân aceleași — ce se schimbă este cadrul: ele devin opțiuni pe care project managerul le alege în funcție de context, nu pași obligatorii într-o secvență.\n\n## Exemplu: Aplicare hibridă la un proiect de implementare ERP în România\nO companie de distribuție din București, cu 180 de angajați, implementează un sistem ERP nou pentru a înlocui o soluție contabilă învechită. Bugetul aprobat este de 850.000 lei, iar termenul de livrare este de 9 luni.\n\n**Componenta predictivă (mentalitate PMBOK 6):** modulul financiar-contabil trebuie să respecte cerințe fixe impuse de OMFP 1802/2014 (structura bilanțului, cont de profit și pierdere) — aici scopul e stabil, deci echipa folosește un plan de proiect clasic, cu un WBS (Work Breakdown Structure) detaliat, un buget alocat pe faze și un calendar cu jaloane (milestones) fixe: analiză (luna 1), configurare (lunile 2–4), migrare date (luna 5), testare (luna 6), go-live (luna 7), stabilizare (lunile 8–9).\n\n**Componenta agilă (mentalitate PMBOK 7):** modulul de raportare managerială și dashboard-urile pentru directori sunt dezvoltate în sprinturi de 2 săptămâni, cu un backlog prioritizat de Product Owner și demo-uri la finalul fiecărui sprint, pentru că cerințele exacte ale conducerii se clarifică pe parcurs, prin feedback iterativ.\n\nProject managerul nu alege „ori PMBOK 6, ori PMBOK 7\" — folosește principiul PMBOK 7 de **adaptare a abordării la context** pentru a decide, domeniu cu domeniu, unde are sens o abordare predictivă și unde una agilă, iar apoi aplică procesele și instrumentele concrete din PMBOK 6 acolo unde e nevoie de disciplină procesuală (ex. controlul costurilor pe faza financiar-contabilă).\n\n⚠ Nu interpreta apariția PMBOK 7 ca pe o „abolire\" a proceselor din PMBOK 6. Examenul PMP conține în continuare întrebări cantitative (Earned Value Management, rețele de precedență, calculul rezervelor de risc) care presupun cunoașterea proceselor ITTO clasice. Strategia sigură de pregătire: învață principiile și domeniile de performanță din PMBOK 7 pentru „mindset-ul\" corect de răspuns, dar nu sări peste formulele și procesele detaliate din PMBOK 6 — ele rămân testate direct în domeniul „Process\" al ECO.\n\n## Exercițiu\nUn cursant PMP întâlnește la examen următorul scenariu: „Echipa de proiect lucrează la un produs software cu cerințe încă neclare pentru client. Sponsorul cere un raport de status și insistă pe respectarea strictă a unui grup de 5 faze secvențiale, cu un document de cerințe semnat de la început.\" \n\nCerință: (1) Identifică din ce ediție PMBOK provine abordarea cerută de sponsor și de ce nu se potrivește contextului descris. (2) Ce ar recomanda, conform principiilor PMBOK 7, project managerul în discuția cu sponsorul?\n\n**Soluție:** (1) Abordarea cerută de sponsor — cele „5 faze secvențiale\" cu cerințe fixate de la început — reflectă modelul **PMBOK 6**, cu cele 5 grupuri de procese aplicate în manieră strict predictivă (waterfall). Nu se potrivește, deoarece contextul descrie cerințe încă neclare, adică un nivel ridicat de incertitudine asupra scopului — exact situația în care un plan rigid, fixat integral la început, riscă blocaje și rework costisitor pe măsură ce cerințele se clarifică.\n\n(2) Conform PMBOK 7, project managerul ar trebui să aplice principiul **adaptării abordării la context** și domeniul de performanță **Abordare de dezvoltare și Ciclu de viață**: să propună sponsorului o abordare hibridă sau incrementală — de exemplu, un document de viziune la nivel înalt (nu specificații complete) urmat de dezvoltare în iterații scurte cu livrabile demonstrabile, păstrând totuși raportările de status cerute de sponsor (transparență, principiul stewardship), dar înlocuind „cerințele fixate de la început\" cu un backlog care se rafinează progresiv.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "pmbok6-model-procesual",
+    "md": "## De la procese la principii: de ce a schimbat PMI paradigma\n\nPMBOK (**Project Management Body of Knowledge**) este ghidul de referință publicat de PMI (Project Management Institute), organizația care administrează certificarea PMP. Timp de peste două decenii, edițiile PMBOK au fost construite în jurul unui model **prescriptiv, bazat pe procese**.\n\n**PMBOK 6 (2017)**, ediția care a consacrat standardul „clasic\", organizează managementul de proiect în jurul a trei piloni:\n- **5 grupuri de procese**: Inițiere, Planificare, Execuție, Monitorizare și Control, Închidere;\n- **10 domenii de cunoștințe**: Integrare, Scop (Scope), Program/Timp (Schedule), Cost, Calitate, Resurse, Comunicare, Risc, Achiziții și Stakeholderi;\n- **49 de procese**, fiecare documentat după modelul ITTO (Input – Tools & Techniques – Output, adică Intrări – Instrumente și Tehnici – Ieșiri).\n\nAcest model funcționează foarte bine pe proiecte predictive (abordarea „waterfall\" sau în cascadă), cu scop clar definit de la început — de exemplu construcția unei hale industriale sau un proiect de infrastructură IT cu specificații fixe. Limita lui: devine rigid și greu de aplicat mecanic pe proiecte agile, hibride sau pe medii cu incertitudine ridicată, unde valoarea se livrează incremental, iar scopul evoluează pe parcurs.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "pmbok7-principii-domenii-performanta",
+    "md": "## PMBOK 7 (2021): 12 principii și 8 domenii de performanță\n\n**PMBOK 7**, publicat de PMI în 2021, marchează cea mai radicală schimbare de paradigmă din istoria ghidului: trece de la „ce procese trebuie urmate\" la „ce principii trebuie respectate și ce rezultate trebuie livrate\", indiferent de metodologia aleasă (predictivă, agilă sau hibridă).\n\nStructura PMBOK 7 se sprijină pe două elemente:\n\n**1. Cele 12 principii** — reguli de comportament pentru project manager, printre care: administrare responsabilă (stewardship), construirea unei culturi de colaborare în echipă, implicarea eficace a stakeholderilor, focalizarea pe valoare, gândire sistemică (systems thinking), leadership, adaptarea abordării la context, integrarea calității în procese și rezultate, navigarea complexității, abordarea proactivă a riscului, adaptabilitate și reziliență, precum și pregătirea pentru schimbare pentru a atinge starea viitoare vizată.\n\n**2. Cele 8 domenii de performanță** — arii interconectate de activitate, care înlocuiesc cele 10 domenii de cunoștințe din PMBOK 6: Stakeholderi, Echipă, Abordare de dezvoltare și Ciclu de viață, Planificare, Lucrul cu proiectul (Project Work), Livrare (Delivery), Măsurare și Incertitudine.\n\nSpre deosebire de procesele ITTO, un domeniu de performanță nu are o secvență fixă de pași — el descrie un rezultat dorit (de exemplu, „stakeholderii sunt implicați productiv\") și lasă echipei libertatea de a alege instrumentele potrivite contextului: un backlog Scrum, o diagramă Gantt sau un tablou Kanban, după caz.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "relatia-pmbok-eco-examen-pmp",
+    "md": "## Ce înseamnă schimbarea pentru examenul PMP\n\nUn detaliu esențial, adesea neînțeles de cursanți: **examenul PMP nu testează direct conținutul unui singur PMBOK**. Din 2021, examenul este construit pe baza **ECO (Examination Content Outline)**, un document separat, structurat pe 3 domenii de competență: **People** (aproximativ 42% din întrebări — leadership, echipă, conflict, stakeholderi), **Process** (aproximativ 50% — planificare, execuție, monitorizare, livrare de valoare) și **Business Environment** (aproximativ 8% — conformitate, beneficii, schimbare organizațională).\n\nECO reflectă filozofia PMBOK 7 (mindset agnostic de metodologie, cu o pondere importantă a întrebărilor pe abordări agile sau hibride), dar continuă să se bazeze pe cunoștințe procesuale detaliate care în forma lor completă se regăsesc doar în PMBOK 6 (ex. calculul valorii câștigate — Earned Value Management, secvențierea activităților, tehnici de estimare). De aceea, pregătirea eficientă pentru PMP combină ambele surse: **principiile și domeniile de performanță din PMBOK 7** pentru înțelegerea conceptuală și deciziile de tip „ce ar face un project manager în această situație\", plus **procesele și formulele din PMBOK 6** pentru întrebările cantitative și situaționale de detaliu.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b3"
+   },
+   {
+    "type": "example",
+    "title": "Stakeholderi: proces (PMBOK 6) vs domeniu de performanță (PMBOK 7)",
+    "concept_key": "exemplu-stakeholder-pmbok6-vs-pmbok7",
+    "md": "**În PMBOK 6**, managementul stakeholderilor este un domeniu de cunoștințe cu 4 procese fixe, executate în secvențe specifice grupurilor de procese:\n1. Identificarea stakeholderilor (Inițiere) — output: registrul stakeholderilor;\n2. Planificarea managementului stakeholderilor (Planificare) — output: planul de management al stakeholderilor;\n3. Managementul implicării stakeholderilor (Execuție);\n4. Monitorizarea implicării stakeholderilor (Monitorizare și Control).\n\nFiecare proces are input-uri, instrumente/tehnici și output-uri documentate strict — un cursant trebuie să memoreze, de exemplu, că „matricea putere/interes\" este un instrument de analiză folosit la identificare.\n\n**În PMBOK 7**, „Stakeholderi\" devine un **domeniu de performanță** continuu, activ pe toată durata proiectului, nu o succesiune de 4 pași. Întrebarea centrală nu mai este „în ce fază execut acest proces?\", ci „stakeholderii sunt implicați productiv, iar proiectul livrează valoarea așteptată de ei?\". Instrumentele (matricea putere/interes, harta stakeholderilor, planul de comunicare) rămân aceleași — ce se schimbă este cadrul: ele devin opțiuni pe care project managerul le alege în funcție de context, nu pași obligatorii într-o secvență.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b4"
+   },
+   {
+    "type": "example",
+    "title": "Aplicare hibridă la un proiect de implementare ERP în România",
+    "concept_key": "exemplu-proiect-erp-hibrid",
+    "md": "O companie de distribuție din București, cu 180 de angajați, implementează un sistem ERP nou pentru a înlocui o soluție contabilă învechită. Bugetul aprobat este de 850.000 lei, iar termenul de livrare este de 9 luni.\n\n**Componenta predictivă (mentalitate PMBOK 6):** modulul financiar-contabil trebuie să respecte cerințe fixe impuse de OMFP 1802/2014 (structura bilanțului, cont de profit și pierdere) — aici scopul e stabil, deci echipa folosește un plan de proiect clasic, cu un WBS (Work Breakdown Structure) detaliat, un buget alocat pe faze și un calendar cu jaloane (milestones) fixe: analiză (luna 1), configurare (lunile 2–4), migrare date (luna 5), testare (luna 6), go-live (luna 7), stabilizare (lunile 8–9).\n\n**Componenta agilă (mentalitate PMBOK 7):** modulul de raportare managerială și dashboard-urile pentru directori sunt dezvoltate în sprinturi de 2 săptămâni, cu un backlog prioritizat de Product Owner și demo-uri la finalul fiecărui sprint, pentru că cerințele exacte ale conducerii se clarifică pe parcurs, prin feedback iterativ.\n\nProject managerul nu alege „ori PMBOK 6, ori PMBOK 7\" — folosește principiul PMBOK 7 de **adaptare a abordării la context** pentru a decide, domeniu cu domeniu, unde are sens o abordare predictivă și unde una agilă, iar apoi aplică procesele și instrumentele concrete din PMBOK 6 acolo unde e nevoie de disciplină procesuală (ex. controlul costurilor pe faza financiar-contabilă).",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Nu interpreta apariția PMBOK 7 ca pe o „abolire\" a proceselor din PMBOK 6. Examenul PMP conține în continuare întrebări cantitative (Earned Value Management, rețele de precedență, calculul rezervelor de risc) care presupun cunoașterea proceselor ITTO clasice. Strategia sigură de pregătire: învață principiile și domeniile de performanță din PMBOK 7 pentru „mindset-ul\" corect de răspuns, dar nu sări peste formulele și procesele detaliate din PMBOK 6 — ele rămân testate direct în domeniul „Process\" al ECO.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Un cursant PMP întâlnește la examen următorul scenariu: „Echipa de proiect lucrează la un produs software cu cerințe încă neclare pentru client. Sponsorul cere un raport de status și insistă pe respectarea strictă a unui grup de 5 faze secvențiale, cu un document de cerințe semnat de la început.\" \n\nCerință: (1) Identifică din ce ediție PMBOK provine abordarea cerută de sponsor și de ce nu se potrivește contextului descris. (2) Ce ar recomanda, conform principiilor PMBOK 7, project managerul în discuția cu sponsorul?",
+    "solution_md": "(1) Abordarea cerută de sponsor — cele „5 faze secvențiale\" cu cerințe fixate de la început — reflectă modelul **PMBOK 6**, cu cele 5 grupuri de procese aplicate în manieră strict predictivă (waterfall). Nu se potrivește, deoarece contextul descrie cerințe încă neclare, adică un nivel ridicat de incertitudine asupra scopului — exact situația în care un plan rigid, fixat integral la început, riscă blocaje și rework costisitor pe măsură ce cerințele se clarifică.\n\n(2) Conform PMBOK 7, project managerul ar trebui să aplice principiul **adaptării abordării la context** și domeniul de performanță **Abordare de dezvoltare și Ciclu de viață**: să propună sponsorului o abordare hibridă sau incrementală — de exemplu, un document de viziune la nivel înalt (nu specificații complete) urmat de dezvoltare în iterații scurte cu livrabile demonstrabile, păstrând totuși raportările de status cerute de sponsor (transparență, principiul stewardship), dar înlocuind „cerințele fixate de la început\" cu un backlog care se rafinează progresiv.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența fundamentală de structură între PMBOK 6 și PMBOK 7?",
+    "choices": [
+     "PMBOK 7 elimină complet noțiunea de proces, iar PMBOK 6 elimină noțiunea de principiu",
+     "PMBOK 6 e organizat pe 5 grupuri de procese și 10 domenii de cunoștințe (49 procese ITTO); PMBOK 7 e organizat pe 12 principii și 8 domenii de performanță",
+     "PMBOK 6 acoperă doar proiecte agile, iar PMBOK 7 doar proiecte predictive",
+     "PMBOK 7 este o simplă traducere actualizată a PMBOK 6, fără schimbări structurale"
+    ],
+    "answer": 1,
+    "explain": "PMBOK 6 este prescriptiv, structurat pe 5 grupuri de procese, 10 domenii de cunoștințe și 49 de procese documentate ITTO. PMBOK 7 trece la un model principial, agnostic de metodologie, cu 12 principii de comportament și 8 domenii de performanță interconectate.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Pe ce se bazează, de fapt, structura examenului PMP actual?",
+    "choices": [
+     "Exclusiv pe PMBOK 6, ediția anterioară",
+     "Exclusiv pe PMBOK 7, ultima ediție publicată",
+     "Pe ECO (Examination Content Outline), structurat pe domeniile People, Process și Business Environment",
+     "Pe Scrum Guide 2020, întrucât PMI a renunțat la abordările predictive"
+    ],
+    "answer": 2,
+    "explain": "Din 2021, examenul PMP este construit pe ECO (Examination Content Outline), cu 3 domenii de competență: People (~42%), Process (~50%) și Business Environment (~8%). ECO reflectă filozofia PMBOK 7, dar testează și cunoștințe procesuale detaliate, prezente în PMBOK 6.",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte grupuri de procese și domenii de cunoștințe definește PMBOK 6?",
+    "back": "5 grupuri de procese (Inițiere, Planificare, Execuție, Monitorizare și Control, Închidere), 10 domenii de cunoștințe și 49 de procese documentate după modelul ITTO.",
+    "concept_key": "pmbok6-model-procesual",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte principii și domenii de performanță definește PMBOK 7?",
+    "back": "12 principii de comportament și 8 domenii de performanță (Stakeholderi, Echipă, Abordare de dezvoltare și Ciclu de viață, Planificare, Lucrul cu proiectul, Livrare, Măsurare, Incertitudine).",
+    "concept_key": "pmbok7-principii-domenii-performanta",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul ITTO și din ce ediție PMBOK provine?",
+    "back": "Input – Tools & Techniques – Output (Intrări – Instrumente și Tehnici – Ieșiri); este modelul de documentare a celor 49 de procese din PMBOK 6.",
+    "concept_key": "pmbok6-model-procesual",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este ECO și de ce contează pentru cursanții PMP?",
+    "back": "ECO (Examination Content Outline) este documentul oficial pe care se bazează structura examenului PMP, cu 3 domenii: People (~42%), Process (~50%), Business Environment (~8%); examenul nu se bazează pe un singur PMBOK.",
+    "concept_key": "relatia-pmbok-eco-examen-pmp",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu PMBOK 7 justifică folosirea unei abordări hibride pe un proiect ERP?",
+    "back": "Principiul adaptării abordării la context (tailor the approach): fiecare parte a proiectului poate folosi metoda potrivită nivelului său de incertitudine — predictivă pentru cerințe fixe, agilă pentru cerințe încă neclare.",
+    "concept_key": "exemplu-proiect-erp-hibrid",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În PMBOK 7, „Stakeholderi\" este proces sau domeniu de performanță?",
+    "back": "Domeniu de performanță — activitate continuă pe toată durata proiectului, fără o secvență fixă de pași, spre deosebire de cele 4 procese distincte din PMBOK 6.",
+    "concept_key": "exemplu-stakeholder-pmbok6-vs-pmbok7",
+    "blockId": "cmjjuxvws0084umkp4plxspf8-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1253,
+   "flashcards": 6
+  }
+ }
+}

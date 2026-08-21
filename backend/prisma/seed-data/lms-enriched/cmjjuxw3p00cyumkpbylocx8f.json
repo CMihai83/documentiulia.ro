@@ -1,0 +1,149 @@
+{
+ "lessonId": "cmjjuxw3p00cyumkpbylocx8f",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Planul de Conturi Românesc",
+ "lesson": "Clase 6-7 - Cheltuieli și Venituri",
+ "category": "FINANCE_OPS",
+ "content": "# Clase 6-7 - Cheltuieli și Venituri\n\n## Clasa 6 — Conturi de cheltuieli\n\nClasa 6 din Planul de conturi general (OMFP 1802/2014) grupează toate cheltuielile unei entități, indiferent de natura lor. Contabil, cheltuielile reprezintă diminuări ale beneficiilor economice, sub formă de ieșiri sau scăderi ale activelor ori creșteri ale datoriilor, care determină reduceri ale capitalurilor proprii.\n\nStructura principală pe grupe:\n\n- **60 — Cheltuieli privind stocurile**: 601 materii prime, 602 materiale consumabile, 603 obiecte de inventar, 607 mărfuri, 609 reduceri comerciale primite.\n- **61 — Cheltuieli cu lucrări și servicii executate de terți**: 611 întreținere/reparații, 612 redevențe/locații de gestiune/chirii, 613 prime de asigurare.\n- **62 — Cheltuieli cu alte servicii executate de terți**: 622 comisioane, 623 protocol/reclamă/publicitate, 626 poștă/telecomunicații, 628 alte servicii.\n- **63 — Cheltuieli cu alte impozite, taxe și vărsăminte asimilate** (cont 635 — impozite/taxe locale, taxe vamale etc., altele decât impozitul pe profit).\n- **64 — Cheltuieli cu personalul**: 641 salarii, 645 contribuții asigurate de angajator.\n- **65 — Alte cheltuieli de exploatare**: 658 despăgubiri, amenzi, penalități, donații; 6588 alte cheltuieli de exploatare.\n- **66 — Cheltuieli financiare**: 666 dobânzi, 663 diferențe de curs valutar.\n- **68 — Cheltuieli cu amortizări, provizioane și ajustări de valoare**.\n- **69 — Cheltuieli cu impozitul pe profit și alte impozite** (contul 691 — impozitul pe profit curent, calculat cu cota de **16%**, neschimbată).\n\nDin punct de vedere al funcționării contabile, conturile de cheltuieli se comportă precum conturile de activ: se debitează pe parcursul exercițiului financiar, pe măsură ce cheltuielile se efectuează, și se creditează la sfârșitul lunii/exercițiului, prin transferul soldului în contul 121 „Profit sau pierdere”, moment în care rămân fără sold.\n\n## Clasa 7 — Conturi de venituri\n\nClasa 7 grupează veniturile entității: creșteri ale beneficiilor economice înregistrate pe parcursul exercițiului sub formă de intrări sau creșteri ale activelor ori reduceri ale datoriilor, care determină creșteri ale capitalurilor proprii, altele decât cele din aporturile acționarilor.\n\nStructura principală:\n\n- **70 — Cifra de afaceri**: 701 venituri din vânzarea produselor finite, 704 venituri din lucrări executate și servicii prestate, 707 venituri din vânzarea mărfurilor, 709 reduceri comerciale acordate.\n- **71 — Venituri aferente costului producției în curs de execuție**.\n- **72 — Venituri din producția de imobilizări** (imobilizări realizate în regie proprie).\n- **74 — Venituri din subvenții de exploatare**.\n- **75 — Alte venituri din exploatare**: 754 venituri din creanțe reactivate, 758 alte venituri din exploatare (inclusiv despăgubiri, penalități încasate).\n- **76 — Venituri financiare**: 766 venituri din dobânzi, 765 venituri din diferențe de curs valutar.\n- **78 — Venituri din provizioane, ajustări pentru depreciere sau pierdere de valoare și fonduri comerciale**.\n\nConturile de venituri funcționează invers față de cele de cheltuieli, ca și conturile de pasiv: se creditează la recunoașterea venitului (de regulă concomitent cu emiterea facturii, conform principiului contabilității de angajamente) și se debitează la închiderea exercițiului, prin transferul soldului în contul 121 „Profit sau pierdere”.\n\nÎmpreună, clasele 6 și 7 stau la baza Contului de profit și pierdere, componentă obligatorie a situațiilor financiare anuale întocmite conform OMFP 1802/2014.\n\n## Deductibilitatea fiscală a cheltuielilor\n\nNu toate cheltuielile înregistrate contabil (clasa 6) reduc și baza de impozitare a impozitului pe profit (cotă **16%**). Codul fiscal clasifică cheltuielile în trei categorii:\n\n1. **Cheltuieli deductibile integral** — cele efectuate în scopul desfășurării activității economice (materii prime, salarii, chirii, utilități, amortizare fiscală etc.). Reduc integral rezultatul fiscal.\n2. **Cheltuieli cu deductibilitate limitată** — cheltuieli care au legătură cu activitatea, dar legiuitorul le plafonează (de exemplu cheltuielile de protocol, sponsorizare, unele cheltuieli sociale, cheltuielile cu combustibilul pentru anumite vehicule). Plafoanele și mecanismul de calcul sunt stabilite prin Codul fiscal și se modifică periodic — **verifică întotdeauna nivelul actual al plafonului în legislația în vigoare la data efectuării cheltuielii**, deoarece acest curs nu poate garanta o cifră fixă valabilă în timp.\n3. **Cheltuieli nedeductibile** — nu se scad niciodată din baza impozabilă, chiar dacă sunt înregistrate contabil corect. Exemple tipice: amenzile și penalitățile datorate autorităților române (cont 6581), cheltuielile cu impozitul pe profit însuși (cont 691), unele cheltuieli fără documente justificative.\n\nAcest mecanism generează diferența dintre **rezultatul contabil** (venituri totale − cheltuieli totale, conform clasei 7 minus clasa 6) și **rezultatul fiscal** (baza de calcul a impozitului pe profit):\n\n**Rezultat fiscal = Rezultat contabil + Cheltuieli nedeductibile − Venituri neimpozabile − Deduceri fiscale + alte elemente similare venitului**\n\nImpozitul pe profit datorat = Rezultat fiscal × 16%. Corecta încadrare a cheltuielilor pe cele trei categorii este una dintre cele mai frecvente surse de erori la calculul impozitului pe profit și, implicit, un punct sensibil în inspecțiile fiscale ANAF.\n\n## Exemplu: Achiziție și vânzare de mărfuri — înregistrări în clasele 6 și 7\nO societate SRL cumpără marfă de la un furnizor la preț de 10.000 lei, TVA 21% (cotă standard, aplicabilă din 1 august 2025, conform Legii 141/2025), plătibilă prin bancă. Ulterior vinde întreaga marfă cu un adaos comercial de 4.000 lei, tot cu TVA 21%.\n\n**1. Achiziția mărfii** (marfa intră în stoc, nu direct pe cheltuială):\n\n```\n371 Mărfuri              = 401 Furnizori     10.000 lei\n4426 TVA deductibilă      = 401 Furnizori      2.100 lei\n```\n\n**2. Plata furnizorului:**\n\n```\n401 Furnizori = 5121 Conturi la bănci în lei   12.100 lei\n```\n\n**3. Vânzarea mărfii către client**, preț de vânzare 14.000 lei (10.000 cost + 4.000 adaos), TVA colectată 21% = 2.940 lei:\n\n```\n4111 Clienți = %                              16.940 lei\n              707 Venituri din vânzarea mărfurilor   14.000 lei\n              4427 TVA colectată                       2.940 lei\n```\n\n**4. Descărcarea gestiunii** (trecerea mărfii vândute pe cheltuială):\n\n```\n607 Cheltuieli privind mărfurile = 371 Mărfuri   10.000 lei\n```\n\nRezultatul brut din această tranzacție: venit 14.000 lei − cheltuială 10.000 lei = **4.000 lei profit**, exact adaosul comercial practicat. TVA colectată (2.940 lei) minus TVA deductibilă (2.100 lei) = 840 lei TVA de plată către bugetul de stat, evidențiată prin decontul de TVA.\n\n## Exemplu: De la rezultatul contabil la impozitul pe profit\nO societate înregistrează, într-un exercițiu financiar:\n\n- Venituri totale (clasa 7): 500.000 lei\n- Cheltuieli totale (clasa 6): 430.000 lei, din care 5.000 lei reprezintă o amendă ANAF (cont 6581) și 3.000 lei impozit pe profit estimat anterior (cont 691) — ambele **nedeductibile fiscal**.\n\n**Pasul 1 — Rezultatul contabil (profitul brut):**\n\n500.000 − 430.000 = **70.000 lei**\n\n**Pasul 2 — Rezultatul fiscal** (se adaugă înapoi cheltuielile nedeductibile, pentru că ele au redus profitul contabil, dar legea nu permite deducerea lor fiscală):\n\n70.000 + 5.000 (amendă) + 3.000 (impozit pe profit) = **78.000 lei rezultat fiscal**\n\n**Pasul 3 — Impozitul pe profit datorat:**\n\n78.000 lei × 16% = **12.480 lei**\n\nObservă diferența: dacă societatea ar fi calculat impozitul direct pe profitul contabil de 70.000 lei, ar fi obținut greșit 11.200 lei — cu 1.280 lei mai puțin decât suma corectă datorată bugetului. Aceasta este exact eroarea pe care organele de inspecție fiscală o caută frecvent: cheltuieli nedeductibile „strecurate” în baza de calcul a impozitului.\n\n> Temei legal: OMFP 1802/2014 Reglementările contabile privind situațiile financiare anuale individuale și consolidate — planul de conturi general, clasele 6 și 7 (în vigoare de la 2015-01-01)\nOMFP 1802/2014 stabilește structura și funcțiunea conturilor din clasele 6 (cheltuieli) și 7 (venituri), precum și regula generală de închidere a acestora prin contul 121 „Profit sau pierdere” la sfârșitul exercițiului financiar. Structura pe conturi sintetice prezentată în această lecție respectă acest act normativ, în forma actualizată.\n\n⚠ Nu confunda **deductibilitatea contabilă** (o cheltuială este întotdeauna înregistrată în contabilitate dacă respectă principiul contabilității de angajamente și are document justificativ) cu **deductibilitatea fiscală** (dreptul de a o scădea din baza de calcul a impozitului pe profit). Cheltuielile cu deductibilitate limitată — protocol, sponsorizare, unele cheltuieli sociale sau cu vehiculele — au plafoane stabilite prin Codul fiscal care se modifică periodic prin acte normative succesive. Nu te baza pe o cifră memorată dintr-un curs sau dintr-un exercițiu anterior: verifică întotdeauna plafonul aplicabil la data efectuării cheltuielii, direct în Codul fiscal actualizat sau cu un consultant fiscal autorizat.\n\n## Exercițiu\nO societate comercială înregistrează în exercițiul financiar 2026 următoarele:\n\n- Venituri din vânzarea mărfurilor (cont 707): 320.000 lei\n- Venituri financiare (cont 766): 6.000 lei\n- Cheltuieli privind mărfurile (cont 607): 210.000 lei\n- Cheltuieli cu personalul (cont 64): 60.000 lei\n- Cheltuieli cu alte servicii executate de terți (cont 62): 20.000 lei\n- O penalitate de întârziere datorată ANAF (cont 6581): 4.000 lei\n\nCerințe:\na) Calculează rezultatul contabil (profitul brut) al exercițiului.\nb) Calculează rezultatul fiscal, știind că penalitatea către ANAF este nedeductibilă fiscal, iar restul cheltuielilor sunt deductibile integral.\nc) Calculează impozitul pe profit datorat (cota 16%).\n\n**Soluție:** **a) Rezultatul contabil:**\n\nVenituri totale = 320.000 + 6.000 = 326.000 lei\n\nCheltuieli totale = 210.000 + 60.000 + 20.000 + 4.000 = 294.000 lei\n\nRezultat contabil = 326.000 − 294.000 = **32.000 lei profit**\n\n**b) Rezultatul fiscal:**\n\nSe adaugă înapoi cheltuiala nedeductibilă (penalitatea ANAF, 4.000 lei):\n\n32.000 + 4.000 = **36.000 lei rezultat fiscal**\n\n**c) Impozitul pe profit:**\n\n36.000 lei × 16% = **5.760 lei**\n\nÎnregistrarea contabilă a impozitului pe profit datorat:\n\n```\n691 Cheltuieli cu impozitul pe profit = 441 Impozitul pe profit   5.760 lei\n```",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "clasa-6-structura-cheltuieli",
+    "md": "## Clasa 6 — Conturi de cheltuieli\n\nClasa 6 din Planul de conturi general (OMFP 1802/2014) grupează toate cheltuielile unei entități, indiferent de natura lor. Contabil, cheltuielile reprezintă diminuări ale beneficiilor economice, sub formă de ieșiri sau scăderi ale activelor ori creșteri ale datoriilor, care determină reduceri ale capitalurilor proprii.\n\nStructura principală pe grupe:\n\n- **60 — Cheltuieli privind stocurile**: 601 materii prime, 602 materiale consumabile, 603 obiecte de inventar, 607 mărfuri, 609 reduceri comerciale primite.\n- **61 — Cheltuieli cu lucrări și servicii executate de terți**: 611 întreținere/reparații, 612 redevențe/locații de gestiune/chirii, 613 prime de asigurare.\n- **62 — Cheltuieli cu alte servicii executate de terți**: 622 comisioane, 623 protocol/reclamă/publicitate, 626 poștă/telecomunicații, 628 alte servicii.\n- **63 — Cheltuieli cu alte impozite, taxe și vărsăminte asimilate** (cont 635 — impozite/taxe locale, taxe vamale etc., altele decât impozitul pe profit).\n- **64 — Cheltuieli cu personalul**: 641 salarii, 645 contribuții asigurate de angajator.\n- **65 — Alte cheltuieli de exploatare**: 658 despăgubiri, amenzi, penalități, donații; 6588 alte cheltuieli de exploatare.\n- **66 — Cheltuieli financiare**: 666 dobânzi, 663 diferențe de curs valutar.\n- **68 — Cheltuieli cu amortizări, provizioane și ajustări de valoare**.\n- **69 — Cheltuieli cu impozitul pe profit și alte impozite** (contul 691 — impozitul pe profit curent, calculat cu cota de **16%**, neschimbată).\n\nDin punct de vedere al funcționării contabile, conturile de cheltuieli se comportă precum conturile de activ: se debitează pe parcursul exercițiului financiar, pe măsură ce cheltuielile se efectuează, și se creditează la sfârșitul lunii/exercițiului, prin transferul soldului în contul 121 „Profit sau pierdere”, moment în care rămân fără sold.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "clasa-7-structura-venituri",
+    "md": "## Clasa 7 — Conturi de venituri\n\nClasa 7 grupează veniturile entității: creșteri ale beneficiilor economice înregistrate pe parcursul exercițiului sub formă de intrări sau creșteri ale activelor ori reduceri ale datoriilor, care determină creșteri ale capitalurilor proprii, altele decât cele din aporturile acționarilor.\n\nStructura principală:\n\n- **70 — Cifra de afaceri**: 701 venituri din vânzarea produselor finite, 704 venituri din lucrări executate și servicii prestate, 707 venituri din vânzarea mărfurilor, 709 reduceri comerciale acordate.\n- **71 — Venituri aferente costului producției în curs de execuție**.\n- **72 — Venituri din producția de imobilizări** (imobilizări realizate în regie proprie).\n- **74 — Venituri din subvenții de exploatare**.\n- **75 — Alte venituri din exploatare**: 754 venituri din creanțe reactivate, 758 alte venituri din exploatare (inclusiv despăgubiri, penalități încasate).\n- **76 — Venituri financiare**: 766 venituri din dobânzi, 765 venituri din diferențe de curs valutar.\n- **78 — Venituri din provizioane, ajustări pentru depreciere sau pierdere de valoare și fonduri comerciale**.\n\nConturile de venituri funcționează invers față de cele de cheltuieli, ca și conturile de pasiv: se creditează la recunoașterea venitului (de regulă concomitent cu emiterea facturii, conform principiului contabilității de angajamente) și se debitează la închiderea exercițiului, prin transferul soldului în contul 121 „Profit sau pierdere”.\n\nÎmpreună, clasele 6 și 7 stau la baza Contului de profit și pierdere, componentă obligatorie a situațiilor financiare anuale întocmite conform OMFP 1802/2014.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "deductibilitate-fiscala-cheltuieli",
+    "md": "## Deductibilitatea fiscală a cheltuielilor\n\nNu toate cheltuielile înregistrate contabil (clasa 6) reduc și baza de impozitare a impozitului pe profit (cotă **16%**). Codul fiscal clasifică cheltuielile în trei categorii:\n\n1. **Cheltuieli deductibile integral** — cele efectuate în scopul desfășurării activității economice (materii prime, salarii, chirii, utilități, amortizare fiscală etc.). Reduc integral rezultatul fiscal.\n2. **Cheltuieli cu deductibilitate limitată** — cheltuieli care au legătură cu activitatea, dar legiuitorul le plafonează (de exemplu cheltuielile de protocol, sponsorizare, unele cheltuieli sociale, cheltuielile cu combustibilul pentru anumite vehicule). Plafoanele și mecanismul de calcul sunt stabilite prin Codul fiscal și se modifică periodic — **verifică întotdeauna nivelul actual al plafonului în legislația în vigoare la data efectuării cheltuielii**, deoarece acest curs nu poate garanta o cifră fixă valabilă în timp.\n3. **Cheltuieli nedeductibile** — nu se scad niciodată din baza impozabilă, chiar dacă sunt înregistrate contabil corect. Exemple tipice: amenzile și penalitățile datorate autorităților române (cont 6581), cheltuielile cu impozitul pe profit însuși (cont 691), unele cheltuieli fără documente justificative.\n\nAcest mecanism generează diferența dintre **rezultatul contabil** (venituri totale − cheltuieli totale, conform clasei 7 minus clasa 6) și **rezultatul fiscal** (baza de calcul a impozitului pe profit):\n\n**Rezultat fiscal = Rezultat contabil + Cheltuieli nedeductibile − Venituri neimpozabile − Deduceri fiscale + alte elemente similare venitului**\n\nImpozitul pe profit datorat = Rezultat fiscal × 16%. Corecta încadrare a cheltuielilor pe cele trei categorii este una dintre cele mai frecvente surse de erori la calculul impozitului pe profit și, implicit, un punct sensibil în inspecțiile fiscale ANAF.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b3"
+   },
+   {
+    "type": "example",
+    "title": "Achiziție și vânzare de mărfuri — înregistrări în clasele 6 și 7",
+    "concept_key": "exemplu-inregistrare-marfa-tva",
+    "md": "O societate SRL cumpără marfă de la un furnizor la preț de 10.000 lei, TVA 21% (cotă standard, aplicabilă din 1 august 2025, conform Legii 141/2025), plătibilă prin bancă. Ulterior vinde întreaga marfă cu un adaos comercial de 4.000 lei, tot cu TVA 21%.\n\n**1. Achiziția mărfii** (marfa intră în stoc, nu direct pe cheltuială):\n\n```\n371 Mărfuri              = 401 Furnizori     10.000 lei\n4426 TVA deductibilă      = 401 Furnizori      2.100 lei\n```\n\n**2. Plata furnizorului:**\n\n```\n401 Furnizori = 5121 Conturi la bănci în lei   12.100 lei\n```\n\n**3. Vânzarea mărfii către client**, preț de vânzare 14.000 lei (10.000 cost + 4.000 adaos), TVA colectată 21% = 2.940 lei:\n\n```\n4111 Clienți = %                              16.940 lei\n              707 Venituri din vânzarea mărfurilor   14.000 lei\n              4427 TVA colectată                       2.940 lei\n```\n\n**4. Descărcarea gestiunii** (trecerea mărfii vândute pe cheltuială):\n\n```\n607 Cheltuieli privind mărfurile = 371 Mărfuri   10.000 lei\n```\n\nRezultatul brut din această tranzacție: venit 14.000 lei − cheltuială 10.000 lei = **4.000 lei profit**, exact adaosul comercial practicat. TVA colectată (2.940 lei) minus TVA deductibilă (2.100 lei) = 840 lei TVA de plată către bugetul de stat, evidențiată prin decontul de TVA.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b4"
+   },
+   {
+    "type": "example",
+    "title": "De la rezultatul contabil la impozitul pe profit",
+    "concept_key": "exemplu-calcul-impozit-profit",
+    "md": "O societate înregistrează, într-un exercițiu financiar:\n\n- Venituri totale (clasa 7): 500.000 lei\n- Cheltuieli totale (clasa 6): 430.000 lei, din care 5.000 lei reprezintă o amendă ANAF (cont 6581) și 3.000 lei impozit pe profit estimat anterior (cont 691) — ambele **nedeductibile fiscal**.\n\n**Pasul 1 — Rezultatul contabil (profitul brut):**\n\n500.000 − 430.000 = **70.000 lei**\n\n**Pasul 2 — Rezultatul fiscal** (se adaugă înapoi cheltuielile nedeductibile, pentru că ele au redus profitul contabil, dar legea nu permite deducerea lor fiscală):\n\n70.000 + 5.000 (amendă) + 3.000 (impozit pe profit) = **78.000 lei rezultat fiscal**\n\n**Pasul 3 — Impozitul pe profit datorat:**\n\n78.000 lei × 16% = **12.480 lei**\n\nObservă diferența: dacă societatea ar fi calculat impozitul direct pe profitul contabil de 70.000 lei, ar fi obținut greșit 11.200 lei — cu 1.280 lei mai puțin decât suma corectă datorată bugetului. Aceasta este exact eroarea pe care organele de inspecție fiscală o caută frecvent: cheltuieli nedeductibile „strecurate” în baza de calcul a impozitului.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Reglementările contabile privind situațiile financiare anuale individuale și consolidate — planul de conturi general, clasele 6 și 7",
+    "effective": "2015-01-01",
+    "md": "OMFP 1802/2014 stabilește structura și funcțiunea conturilor din clasele 6 (cheltuieli) și 7 (venituri), precum și regula generală de închidere a acestora prin contul 121 „Profit sau pierdere” la sfârșitul exercițiului financiar. Structura pe conturi sintetice prezentată în această lecție respectă acest act normativ, în forma actualizată.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda **deductibilitatea contabilă** (o cheltuială este întotdeauna înregistrată în contabilitate dacă respectă principiul contabilității de angajamente și are document justificativ) cu **deductibilitatea fiscală** (dreptul de a o scădea din baza de calcul a impozitului pe profit). Cheltuielile cu deductibilitate limitată — protocol, sponsorizare, unele cheltuieli sociale sau cu vehiculele — au plafoane stabilite prin Codul fiscal care se modifică periodic prin acte normative succesive. Nu te baza pe o cifră memorată dintr-un curs sau dintr-un exercițiu anterior: verifică întotdeauna plafonul aplicabil la data efectuării cheltuielii, direct în Codul fiscal actualizat sau cu un consultant fiscal autorizat.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O societate comercială înregistrează în exercițiul financiar 2026 următoarele:\n\n- Venituri din vânzarea mărfurilor (cont 707): 320.000 lei\n- Venituri financiare (cont 766): 6.000 lei\n- Cheltuieli privind mărfurile (cont 607): 210.000 lei\n- Cheltuieli cu personalul (cont 64): 60.000 lei\n- Cheltuieli cu alte servicii executate de terți (cont 62): 20.000 lei\n- O penalitate de întârziere datorată ANAF (cont 6581): 4.000 lei\n\nCerințe:\na) Calculează rezultatul contabil (profitul brut) al exercițiului.\nb) Calculează rezultatul fiscal, știind că penalitatea către ANAF este nedeductibilă fiscal, iar restul cheltuielilor sunt deductibile integral.\nc) Calculează impozitul pe profit datorat (cota 16%).",
+    "solution_md": "**a) Rezultatul contabil:**\n\nVenituri totale = 320.000 + 6.000 = 326.000 lei\n\nCheltuieli totale = 210.000 + 60.000 + 20.000 + 4.000 = 294.000 lei\n\nRezultat contabil = 326.000 − 294.000 = **32.000 lei profit**\n\n**b) Rezultatul fiscal:**\n\nSe adaugă înapoi cheltuiala nedeductibilă (penalitatea ANAF, 4.000 lei):\n\n32.000 + 4.000 = **36.000 lei rezultat fiscal**\n\n**c) Impozitul pe profit:**\n\n36.000 lei × 16% = **5.760 lei**\n\nÎnregistrarea contabilă a impozitului pe profit datorat:\n\n```\n691 Cheltuieli cu impozitul pe profit = 441 Impozitul pe profit   5.760 lei\n```",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cum se comportă conturile din clasa 6 (cheltuieli) din punct de vedere al funcționării contabile?",
+    "choices": [
+     "Ca și conturile de pasiv: se creditează la înregistrare și se debitează la închidere",
+     "Ca și conturile de activ: se debitează la înregistrare și se creditează la închidere prin contul 121",
+     "Nu au regulă fixă, depinde de politica contabilă a firmei",
+     "Se debitează și se creditează simultan, fără sold final"
+    ],
+    "answer": 1,
+    "explain": "Conturile de cheltuieli funcționează după logica activului: se debitează pe măsură ce cheltuiala se efectuează și se creditează la sfârșitul exercițiului, când soldul se transferă în contul 121 „Profit sau pierdere”, rămânând fără sold.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O amendă aplicată de ANAF, înregistrată corect în contul 6581, are ce statut fiscal?",
+    "choices": [
+     "Este deductibilă integral, ca orice cheltuială de exploatare",
+     "Este deductibilă limitat, cu plafon anual",
+     "Este nedeductibilă fiscal, chiar dacă este înregistrată contabil corect",
+     "Devine deductibilă doar dacă este achitată în același an fiscal"
+    ],
+    "answer": 2,
+    "explain": "Amenzile și penalitățile datorate autorităților publice române sunt cheltuieli nedeductibile fiscal, indiferent de corectitudinea înregistrării lor contabile în clasa 6; ele se adaugă înapoi la calculul rezultatului fiscal.",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum funcționează conturile din clasa 6 (cheltuieli) prin natura lor contabilă?",
+    "back": "Ca și conturile de activ: se debitează la înregistrarea cheltuielii pe parcursul exercițiului și se creditează la închidere, prin transferul soldului în contul 121 „Profit sau pierdere”.",
+    "concept_key": "clasa-6-functionare",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă contul 707?",
+    "back": "Venituri din vânzarea mărfurilor — parte din grupa 70 „Cifra de afaceri”, clasa 7 din Planul de conturi general (OMFP 1802/2014).",
+    "concept_key": "cont-707-venituri-marfuri",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei categorii de cheltuieli din perspectiva deductibilității fiscale?",
+    "back": "Deductibile integral, deductibile limitat (plafon legal ce trebuie verificat în Codul fiscal actualizat) și nedeductibile.",
+    "concept_key": "categorii-deductibilitate-cheltuieli",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula rezultatului fiscal pornind de la rezultatul contabil?",
+    "back": "Rezultat fiscal = Rezultat contabil + Cheltuieli nedeductibile − Venituri neimpozabile − Deduceri fiscale (+ alte elemente similare venitului, după caz).",
+    "concept_key": "formula-rezultat-fiscal",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota impozitului pe profit în România?",
+    "back": "16%, cotă neschimbată; se aplică asupra rezultatului fiscal, nu direct asupra profitului contabil.",
+    "concept_key": "cota-impozit-profit-16",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont evidențiază o amendă sau penalitate datorată unei autorități publice, precum ANAF?",
+    "back": "Contul 6581 „Despăgubiri, amenzi și penalități” — cheltuială de exploatare, dar nedeductibilă fiscal.",
+    "concept_key": "cont-6581-amenzi-penalitati",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Prin ce cont se închid la sfârșitul exercițiului conturile din clasele 6 și 7?",
+    "back": "Prin contul 121 „Profit sau pierdere”: cheltuielile (clasa 6) se creditează, veniturile (clasa 7) se debitează, iar diferența reprezintă rezultatul exercițiului.",
+    "concept_key": "cont-121-inchidere-rezultat",
+    "blockId": "cmjjuxw3p00cyumkpbylocx8f-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1397,
+   "flashcards": 7
+  }
+ }
+}

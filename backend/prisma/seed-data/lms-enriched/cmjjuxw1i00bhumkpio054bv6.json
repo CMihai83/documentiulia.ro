@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxw1i00bhumkpio054bv6",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Indicatori Financiari Cheie",
+ "lesson": "Quiz indicatori",
+ "category": "FINANCE_OPS",
+ "content": "Test de evaluare — Quiz indicatori (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Ce măsoară rata de lichiditate curentă (current ratio)?",
+     "choices": [
+      "Capacitatea firmei de a-și achita datoriile pe termen scurt din activele circulante",
+      "Profitabilitatea generală a firmei",
+      "Gradul de îndatorare al firmei",
+      "Eficiența utilizării activelor fixe"
+     ],
+     "answer": 0,
+     "explain": "Lichiditatea curentă = Active circulante / Datorii curente. Arată de câte ori activele circulante (numerar, creanțe, stocuri) acoperă datoriile scadente pe termen scurt.",
+     "concept_key": "lichiditate_curenta_definitie"
+    },
+    {
+     "q": "SRL „Alfa” are active circulante de 240.000 lei și datorii curente de 120.000 lei. Care este rata de lichiditate curentă?",
+     "choices": [
+      "2,0",
+      "0,5",
+      "1,5",
+      "3,0"
+     ],
+     "answer": 0,
+     "explain": "Lichiditate curentă = Active circulante / Datorii curente = 240.000 / 120.000 = 2,0. O valoare de 2,0 înseamnă că firma are de două ori mai multe active circulante decât datorii curente.",
+     "concept_key": "lichiditate_curenta_calcul"
+    },
+    {
+     "q": "Ce diferență esențială există între lichiditatea curentă și lichiditatea imediată (quick ratio)?",
+     "choices": [
+      "Lichiditatea imediată exclude stocurile din activele circulante, fiind un indicator mai conservator",
+      "Lichiditatea imediată include și datoriile pe termen lung",
+      "Cei doi indicatori sunt identici ca formulă",
+      "Lichiditatea imediată se calculează doar la finalul exercițiului financiar"
+     ],
+     "answer": 0,
+     "explain": "Lichiditatea imediată = (Active circulante − Stocuri) / Datorii curente. Stocurile sunt eliminate deoarece sunt cel mai puțin lichide dintre activele circulante (necesită timp pentru a fi vândute și transformate în numerar).",
+     "concept_key": "lichiditate_imediata"
+    },
+    {
+     "q": "SRL „Beta” are o cifră de afaceri de 1.000.000 lei și un profit net de 80.000 lei. Care este marja profitului net?",
+     "choices": [
+      "8%",
+      "12,5%",
+      "80%",
+      "0,8%"
+     ],
+     "answer": 0,
+     "explain": "Marja profitului net = Profit net / Cifra de afaceri = 80.000 / 1.000.000 = 0,08 = 8%. Arată ce procent din veniturile din vânzări rămâne ca profit net, după toate cheltuielile.",
+     "concept_key": "marja_profit_net"
+    },
+    {
+     "q": "Care este formula corectă pentru ROE (rentabilitatea capitalului propriu)?",
+     "choices": [
+      "Profit net / Capital propriu",
+      "Profit net / Active totale",
+      "Cifra de afaceri / Capital propriu",
+      "Datorii totale / Capital propriu"
+     ],
+     "answer": 0,
+     "explain": "ROE (Return on Equity) = Profit net / Capital propriu. Măsoară randamentul obținut de acționari/asociați pentru banii investiți în firmă.",
+     "concept_key": "roe_formula"
+    },
+    {
+     "q": "SRL „Gamma” are un profit net de 150.000 lei și un capital propriu de 750.000 lei. Care este ROE?",
+     "choices": [
+      "20%",
+      "5%",
+      "50%",
+      "15%"
+     ],
+     "answer": 0,
+     "explain": "ROE = Profit net / Capital propriu = 150.000 / 750.000 = 0,20 = 20%. Firma generează 0,20 lei profit net pentru fiecare leu de capital propriu investit.",
+     "concept_key": "roe_calcul"
+    },
+    {
+     "q": "Ce arată rata gradului de îndatorare (Datorii totale / Active totale)?",
+     "choices": [
+      "Ce proporție din activele firmei este finanțată din datorii (surse externe)",
+      "Ce proporție din activele firmei este finanțată din capital propriu",
+      "Profitabilitatea operațională a firmei",
+      "Viteza de rotație a stocurilor"
+     ],
+     "answer": 0,
+     "explain": "Gradul de îndatorare = Datorii totale / Active totale. Cu cât valoarea e mai mare, cu atât firma depinde mai mult de finanțare externă (credite, furnizori), ceea ce crește riscul financiar.",
+     "concept_key": "grad_indatorare"
+    },
+    {
+     "q": "SRL „Delta” are creanțe comerciale de 300.000 lei și vânzări anuale de 3.650.000 lei. Care este DSO (durata medie de încasare a creanțelor, Days Sales Outstanding)?",
+     "choices": [
+      "30 de zile",
+      "12 zile",
+      "90 de zile",
+      "365 de zile"
+     ],
+     "answer": 0,
+     "explain": "DSO = (Creanțe / Vânzări) × 365 = (300.000 / 3.650.000) × 365 = 30 de zile. Firma încasează în medie o factură în 30 de zile de la vânzare.",
+     "concept_key": "dso_calcul"
+    },
+    {
+     "q": "Ce reprezintă indicatorul EBITDA?",
+     "choices": [
+      "Profitul înainte de dobânzi, impozite, depreciere și amortizare (Earnings Before Interest, Taxes, Depreciation and Amortization)",
+      "Profitul net final, după impozitare",
+      "Cifra de afaceri minus cheltuielile variabile",
+      "Capitalul propriu minus datoriile totale"
+     ],
+     "answer": 0,
+     "explain": "EBITDA exclude efectele deciziilor de finanțare (dobânzi), fiscalitate (impozite) și politicile contabile de amortizare, fiind util pentru a compara profitabilitatea operațională „pură” între firme diferite.",
+     "concept_key": "ebitda_definitie"
+    },
+    {
+     "q": "SRL „Epsilon” are lichiditate curentă de 0,7, grad de îndatorare de 85% și DSO în creștere de la 30 la 75 de zile în ultimul an. Care este concluzia cea mai potrivită?",
+     "choices": [
+      "Firma are risc ridicat de lichiditate, dependență mare de finanțare externă și încasează tot mai greu de la clienți — situație care necesită atenție urgentă",
+      "Firma este într-o poziție financiară excelentă și fără riscuri",
+      "Indicatorii arată o eficiență crescută a colectării creanțelor de la clienți",
+      "Nu există motive de îngrijorare, deoarece profitul net poate compensa orice dezechilibru"
+     ],
+     "answer": 0,
+     "explain": "Lichiditate curentă sub 1 înseamnă că activele circulante nu acoperă datoriile curente; gradul de îndatorare de 85% e foarte ridicat; iar dublarea DSO arată că firma încasează tot mai greu banii de la clienți, ceea ce pune presiune suplimentară pe numerar (cash flow), indiferent de profitul contabil raportat.",
+     "concept_key": "interpretare_indicatori_combinati"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

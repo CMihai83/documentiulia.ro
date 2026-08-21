@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvtx0064umkp2ont9o1f",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Închiderea Proiectului",
+ "lesson": "Celebration și recunoaștere",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Celebration și recunoaștere\n\nÎnchiderea unui proiect nu se termină odată cu livrarea produsului final sau semnarea procesului-verbal de recepție. Ultimul pas, adesea neglijat, este celebrarea succesului și recunoașterea contribuțiilor echipei. Conform PMBOK 7 (Project Management Institute), acest pas ține de domeniul de performanță „Team” (Echipă) și de principiul „demonstrează comportamente de leadership colaborativ” — un proiect de succes nu e doar despre livrabile, ci și despre oamenii care l-au făcut posibil.\n\nDe ce contează? Studiile despre motivația la locul de muncă arată constant că recunoașterea este unul dintre cei mai puternici factori de retenție și implicare, adesea mai importantă decât recompensa financiară pe termen scurt. Când o echipă lucrează luni de zile sub presiune de termene, buget și schimbări de scop, lipsa unui moment de închidere emoțională lasă un gol: energia investită nu are „punct final”, iar oboseala se transformă în epuizare (burnout) mai degrabă decât în satisfacție.\n\nPentru managerul de proiect (PM), celebrarea nu este un moft, ci un instrument de management al echipei cu efecte directe: crește moralul, consolidează relațiile pentru proiecte viitoare, transformă lecțiile învățate în amintiri pozitive și construiește reputația PM-ului ca lider care își apreciază oamenii. Într-o piață în care talentul tehnic (dezvoltatori, analiști, ingineri) este disputat, echipele care se simt apreciate rămân loiale organizației și acceptă mai ușor să lucreze din nou cu același PM.\n\nRecunoașterea contribuțiilor nu înseamnă neapărat un eveniment costisitor. Există mai multe niveluri și forme, pe care un PM eficient le combină în funcție de context, buget și cultura organizației.\n\n**Recunoaștere formală** — documentată și vizibilă la nivel de organizație: menționarea în raportul final de închidere a proiectului, un e-mail către conducere care evidențiază contribuțiile individuale, o scrisoare de recomandare, includerea realizării în evaluarea anuală de performanță sau chiar un bonus/premiu financiar aprobat de sponsor.\n\n**Recunoaștere informală** — se întâmplă zilnic și costă timp, nu bani: un „mulțumesc” spus în fața echipei la o retrospectivă, o mențiune într-un canal de Slack/Teams, o cafea oferită colegului care a stat peste program pentru un livrabil critic.\n\n**Recunoaștere individuală vs. de echipă** — ambele sunt necesare. Recunoașterea de echipă (ex. o masă festivă, un eveniment de închidere) construiește coeziune și sentimentul de apartenență la un rezultat comun. Recunoașterea individuală (ex. evidențierea publică a analistului care a identificat un risc major la timp) validează efortul specific și evită resentimentele din partea celor care au contribuit disproporționat.\n\nUn PM atent distinge între recunoașterea meritată de întreaga echipă (ex. respectarea termenului final) și cea specifică unor persoane (ex. cine a rezolvat criza de weekend). Amestecarea celor două — lăudând tot grupul pentru munca unei singure persoane — este una dintre cele mai frecvente greșeli și poate demotiva exact persoana care ar fi trebuit recunoscută.\n\nPlanificarea celebrării de închidere ar trebui inclusă încă din faza de planificare a proiectului, nu improvizată în ultima săptămână. Câteva repere practice:\n\n1. **Momentul potrivit** — celebrarea are loc după acceptanța formală a livrabilelor de către sponsor/client (procesul-verbal de recepție semnat) și, ideal, imediat după sau în cadrul întâlnirii de lecții învățate (lessons learned), astfel încât echipa să închidă proiectul cu un sentiment pozitiv, nu doar cu o listă de „ce am făcut greșit”.\n\n2. **Formatul** — variază de la un eveniment formal (masă festivă, petrecere de birou) până la un simplu e-mail de mulțumire trimis întregii organizații, în funcție de dimensiunea și vizibilitatea proiectului. Pentru un proiect intern mic, o oră de socializare cu echipa poate fi suficientă; pentru un proiect strategic (ex. implementare ERP la nivel de companie), merită implicat managementul de top într-un eveniment mai vizibil.\n\n3. **Bugetul** — dacă proiectul are alocată o linie pentru „team building” sau „închidere administrativă”, aceasta trebuie planificată încă din Project Charter, nu cerută ad-hoc la final, când fondurile pot fi deja epuizate.\n\n4. **Implicarea stakeholderilor** — invitarea sponsorului sau a clientului la momentul de celebrare are un dublu rol: arată echipei că munca ei e vizibilă la nivel înalt și oferă sponsorului ocazia să confirme public succesul proiectului, ceea ce întărește relația pentru colaborări viitoare.\n\n5. **Personalizarea** — o recunoaștere generică („Mulțumim tuturor!”) are impact mult mai mic decât una specifică, care menționează contribuția fiecărei persoane. Un PM bun își notează, pe parcursul proiectului, momentele-cheie în care fiecare membru a avut un impact vizibil, tocmai pentru a le putea folosi la închidere.\n\n## Exemplu: Celebrarea închiderii unui proiect de implementare ERP\nO companie de distribuție din Cluj-Napoca, cu 120 de angajați, a finalizat implementarea unui sistem ERP după 8 luni de proiect, cu o echipă internă de 6 persoane (PM, analist de business, doi specialiști IT, un contabil-cheie și un reprezentant HR) plus consultanții furnizorului.\n\nLa semnarea procesului-verbal de recepție finală, PM-ul a organizat următoarele acțiuni de închidere:\n- Un e-mail către directorul general și șefii de departamente, în care a detaliat contribuția fiecărui membru al echipei interne (ex. „Contabilul-șef a validat peste 200 de reguli de migrare a datelor financiare, esențiale pentru acuratețea raportărilor”).\n- O masă festivă cu întreaga echipă de proiect, decontată din bugetul de proiect alocat inițial în Project Charter la linia „închidere și team building”.\n- O mențiune a proiectului și a echipei în newsletter-ul intern al companiei, cu fotografii de la eveniment.\n- Un certificat simbolic de „Contribuție esențială” pentru cei doi specialiști IT care au lucrat weekenduri consecutive pentru migrarea datelor.\n\nRezultatul: doi dintre membrii echipei interne au fost ulterior propuși pentru roluri de coordonare pe proiectul următor, iar feedback-ul din retrospectivă a arătat un nivel ridicat de satisfacție, deși proiectul depășise ușor bugetul inițial.\n\n## Exemplu: Recunoașterea individuală într-un proiect de digitalizare\nÎntr-un proiect de digitalizare a arhivei unei instituții publice, echipa de 10 persoane a lucrat 4 luni sub presiunea unui termen legal. Cu o săptămână înainte de livrare, un membru al echipei (specialist scanare și indexare) a identificat o eroare sistematică în procesul de indexare care, dacă rămânea nedescoperită, ar fi afectat o parte semnificativă din documentele deja procesate.\n\nPM-ul a decis să separe clar recunoașterea: la întâlnirea finală de echipă, a mulțumit tuturor pentru respectarea termenului legal (recunoaștere de echipă), dar a menționat explicit, în fața tuturor și ulterior în raportul final trimis conducerii, contribuția specifică a persoanei care a depistat eroarea (recunoaștere individuală). Aceasta a primit și o zi liberă suplimentară, aprobată de sponsor ca gest de apreciere.\n\nAcest tip de recunoaștere targetată evită două capcane frecvente: lauda generică (care ar fi diluat meritul specific) și tăcerea (care ar fi transmis mesajul că efortul excepțional trece neobservat).\n\n⚠ Evită celebrarea „de fațadă” — un eveniment organizat superficial, fără recunoaștere reală a contribuțiilor individuale, poate avea efect invers, transmițând echipei că munca ei nu a fost cu adevărat observată. Recunoașterea trebuie să fie specifică, sinceră și proporțională cu efortul depus, nu un formular bifat la finalul proiectului.\n\n## Exercițiu\nEști PM pe un proiect de digitalizare a proceselor de facturare pentru o companie cu 40 de angajați. Proiectul a durat 6 luni, echipa a avut 8 membri (interni și externi), iar bugetul de proiect nu mai are fonduri disponibile pentru un eveniment costisitor. Sponsorul proiectului este mulțumit de rezultat și dispus să aloce puțin timp pentru un gest de recunoaștere. Elaborează un plan simplu de celebrare și recunoaștere, ținând cont de constrângerea de buget, care să includă cel puțin: (a) un element de recunoaștere formală, (b) un element de recunoaștere informală, (c) o modalitate de a distinge contribuțiile individuale de cele de echipă.\n\n**Soluție:** Un plan posibil, cu cost minim:\n\n(a) Recunoaștere formală: PM-ul trimite un e-mail către conducerea companiei (directorul general și șefii de departamente afectați), cu sponsorul în copie, în care detaliază rezultatele proiectului și menționează explicit contribuția fiecărui membru al echipei — de exemplu, cine a gestionat integrarea tehnică, cine a coordonat testarea cu utilizatorii finali. Acest e-mail devine parte din raportul final de închidere a proiectului.\n\n(b) Recunoaștere informală: PM-ul organizează o scurtă întâlnire de 30-45 de minute (fizică sau online) dedicată exclusiv mulțumirilor, separată de retrospectiva tehnică de lecții învățate — poate fi însoțită de o gustare simplă decontată din bugetul curent de birou, nu din bugetul de proiect.\n\n(c) Distincția individual/echipă: la întâlnire, PM-ul mulțumește întâi întregii echipe pentru livrarea la termen (recunoaștere colectivă), apoi menționează explicit 2-3 momente-cheie individuale (ex. „Ana a rezolvat blocajul cu integrarea API-ului de facturare în doar o zi, deși estimarea inițială era de trei”). Sponsorul este invitat să spună câteva cuvinte, ceea ce oferă recunoașterii o greutate suplimentară fără costuri suplimentare.\n\nAcest plan respectă constrângerea de buget, dar acoperă toate cele trei cerințe: formal, informal și diferențiere individual/echipă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "importanta-celebrarii-succesului",
+    "md": "Închiderea unui proiect nu se termină odată cu livrarea produsului final sau semnarea procesului-verbal de recepție. Ultimul pas, adesea neglijat, este celebrarea succesului și recunoașterea contribuțiilor echipei. Conform PMBOK 7 (Project Management Institute), acest pas ține de domeniul de performanță „Team” (Echipă) și de principiul „demonstrează comportamente de leadership colaborativ” — un proiect de succes nu e doar despre livrabile, ci și despre oamenii care l-au făcut posibil.\n\nDe ce contează? Studiile despre motivația la locul de muncă arată constant că recunoașterea este unul dintre cei mai puternici factori de retenție și implicare, adesea mai importantă decât recompensa financiară pe termen scurt. Când o echipă lucrează luni de zile sub presiune de termene, buget și schimbări de scop, lipsa unui moment de închidere emoțională lasă un gol: energia investită nu are „punct final”, iar oboseala se transformă în epuizare (burnout) mai degrabă decât în satisfacție.\n\nPentru managerul de proiect (PM), celebrarea nu este un moft, ci un instrument de management al echipei cu efecte directe: crește moralul, consolidează relațiile pentru proiecte viitoare, transformă lecțiile învățate în amintiri pozitive și construiește reputația PM-ului ca lider care își apreciază oamenii. Într-o piață în care talentul tehnic (dezvoltatori, analiști, ingineri) este disputat, echipele care se simt apreciate rămân loiale organizației și acceptă mai ușor să lucreze din nou cu același PM.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tipuri-recunoastere-echipa",
+    "md": "Recunoașterea contribuțiilor nu înseamnă neapărat un eveniment costisitor. Există mai multe niveluri și forme, pe care un PM eficient le combină în funcție de context, buget și cultura organizației.\n\n**Recunoaștere formală** — documentată și vizibilă la nivel de organizație: menționarea în raportul final de închidere a proiectului, un e-mail către conducere care evidențiază contribuțiile individuale, o scrisoare de recomandare, includerea realizării în evaluarea anuală de performanță sau chiar un bonus/premiu financiar aprobat de sponsor.\n\n**Recunoaștere informală** — se întâmplă zilnic și costă timp, nu bani: un „mulțumesc” spus în fața echipei la o retrospectivă, o mențiune într-un canal de Slack/Teams, o cafea oferită colegului care a stat peste program pentru un livrabil critic.\n\n**Recunoaștere individuală vs. de echipă** — ambele sunt necesare. Recunoașterea de echipă (ex. o masă festivă, un eveniment de închidere) construiește coeziune și sentimentul de apartenență la un rezultat comun. Recunoașterea individuală (ex. evidențierea publică a analistului care a identificat un risc major la timp) validează efortul specific și evită resentimentele din partea celor care au contribuit disproporționat.\n\nUn PM atent distinge între recunoașterea meritată de întreaga echipă (ex. respectarea termenului final) și cea specifică unor persoane (ex. cine a rezolvat criza de weekend). Amestecarea celor două — lăudând tot grupul pentru munca unei singure persoane — este una dintre cele mai frecvente greșeli și poate demotiva exact persoana care ar fi trebuit recunoscută.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "planificare-celebrare-inchidere",
+    "md": "Planificarea celebrării de închidere ar trebui inclusă încă din faza de planificare a proiectului, nu improvizată în ultima săptămână. Câteva repere practice:\n\n1. **Momentul potrivit** — celebrarea are loc după acceptanța formală a livrabilelor de către sponsor/client (procesul-verbal de recepție semnat) și, ideal, imediat după sau în cadrul întâlnirii de lecții învățate (lessons learned), astfel încât echipa să închidă proiectul cu un sentiment pozitiv, nu doar cu o listă de „ce am făcut greșit”.\n\n2. **Formatul** — variază de la un eveniment formal (masă festivă, petrecere de birou) până la un simplu e-mail de mulțumire trimis întregii organizații, în funcție de dimensiunea și vizibilitatea proiectului. Pentru un proiect intern mic, o oră de socializare cu echipa poate fi suficientă; pentru un proiect strategic (ex. implementare ERP la nivel de companie), merită implicat managementul de top într-un eveniment mai vizibil.\n\n3. **Bugetul** — dacă proiectul are alocată o linie pentru „team building” sau „închidere administrativă”, aceasta trebuie planificată încă din Project Charter, nu cerută ad-hoc la final, când fondurile pot fi deja epuizate.\n\n4. **Implicarea stakeholderilor** — invitarea sponsorului sau a clientului la momentul de celebrare are un dublu rol: arată echipei că munca ei e vizibilă la nivel înalt și oferă sponsorului ocazia să confirme public succesul proiectului, ceea ce întărește relația pentru colaborări viitoare.\n\n5. **Personalizarea** — o recunoaștere generică („Mulțumim tuturor!”) are impact mult mai mic decât una specifică, care menționează contribuția fiecărei persoane. Un PM bun își notează, pe parcursul proiectului, momentele-cheie în care fiecare membru a avut un impact vizibil, tocmai pentru a le putea folosi la închidere.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b3"
+   },
+   {
+    "type": "example",
+    "title": "Celebrarea închiderii unui proiect de implementare ERP",
+    "concept_key": "exemplu-celebrare-erp",
+    "md": "O companie de distribuție din Cluj-Napoca, cu 120 de angajați, a finalizat implementarea unui sistem ERP după 8 luni de proiect, cu o echipă internă de 6 persoane (PM, analist de business, doi specialiști IT, un contabil-cheie și un reprezentant HR) plus consultanții furnizorului.\n\nLa semnarea procesului-verbal de recepție finală, PM-ul a organizat următoarele acțiuni de închidere:\n- Un e-mail către directorul general și șefii de departamente, în care a detaliat contribuția fiecărui membru al echipei interne (ex. „Contabilul-șef a validat peste 200 de reguli de migrare a datelor financiare, esențiale pentru acuratețea raportărilor”).\n- O masă festivă cu întreaga echipă de proiect, decontată din bugetul de proiect alocat inițial în Project Charter la linia „închidere și team building”.\n- O mențiune a proiectului și a echipei în newsletter-ul intern al companiei, cu fotografii de la eveniment.\n- Un certificat simbolic de „Contribuție esențială” pentru cei doi specialiști IT care au lucrat weekenduri consecutive pentru migrarea datelor.\n\nRezultatul: doi dintre membrii echipei interne au fost ulterior propuși pentru roluri de coordonare pe proiectul următor, iar feedback-ul din retrospectivă a arătat un nivel ridicat de satisfacție, deși proiectul depășise ușor bugetul inițial.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b4"
+   },
+   {
+    "type": "example",
+    "title": "Recunoașterea individuală într-un proiect de digitalizare",
+    "concept_key": "exemplu-recunoastere-individuala",
+    "md": "Într-un proiect de digitalizare a arhivei unei instituții publice, echipa de 10 persoane a lucrat 4 luni sub presiunea unui termen legal. Cu o săptămână înainte de livrare, un membru al echipei (specialist scanare și indexare) a identificat o eroare sistematică în procesul de indexare care, dacă rămânea nedescoperită, ar fi afectat o parte semnificativă din documentele deja procesate.\n\nPM-ul a decis să separe clar recunoașterea: la întâlnirea finală de echipă, a mulțumit tuturor pentru respectarea termenului legal (recunoaștere de echipă), dar a menționat explicit, în fața tuturor și ulterior în raportul final trimis conducerii, contribuția specifică a persoanei care a depistat eroarea (recunoaștere individuală). Aceasta a primit și o zi liberă suplimentară, aprobată de sponsor ca gest de apreciere.\n\nAcest tip de recunoaștere targetată evită două capcane frecvente: lauda generică (care ar fi diluat meritul specific) și tăcerea (care ar fi transmis mesajul că efortul excepțional trece neobservat).",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Evită celebrarea „de fațadă” — un eveniment organizat superficial, fără recunoaștere reală a contribuțiilor individuale, poate avea efect invers, transmițând echipei că munca ei nu a fost cu adevărat observată. Recunoașterea trebuie să fie specifică, sinceră și proporțională cu efortul depus, nu un formular bifat la finalul proiectului.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești PM pe un proiect de digitalizare a proceselor de facturare pentru o companie cu 40 de angajați. Proiectul a durat 6 luni, echipa a avut 8 membri (interni și externi), iar bugetul de proiect nu mai are fonduri disponibile pentru un eveniment costisitor. Sponsorul proiectului este mulțumit de rezultat și dispus să aloce puțin timp pentru un gest de recunoaștere. Elaborează un plan simplu de celebrare și recunoaștere, ținând cont de constrângerea de buget, care să includă cel puțin: (a) un element de recunoaștere formală, (b) un element de recunoaștere informală, (c) o modalitate de a distinge contribuțiile individuale de cele de echipă.",
+    "solution_md": "Un plan posibil, cu cost minim:\n\n(a) Recunoaștere formală: PM-ul trimite un e-mail către conducerea companiei (directorul general și șefii de departamente afectați), cu sponsorul în copie, în care detaliază rezultatele proiectului și menționează explicit contribuția fiecărui membru al echipei — de exemplu, cine a gestionat integrarea tehnică, cine a coordonat testarea cu utilizatorii finali. Acest e-mail devine parte din raportul final de închidere a proiectului.\n\n(b) Recunoaștere informală: PM-ul organizează o scurtă întâlnire de 30-45 de minute (fizică sau online) dedicată exclusiv mulțumirilor, separată de retrospectiva tehnică de lecții învățate — poate fi însoțită de o gustare simplă decontată din bugetul curent de birou, nu din bugetul de proiect.\n\n(c) Distincția individual/echipă: la întâlnire, PM-ul mulțumește întâi întregii echipe pentru livrarea la termen (recunoaștere colectivă), apoi menționează explicit 2-3 momente-cheie individuale (ex. „Ana a rezolvat blocajul cu integrarea API-ului de facturare în doar o zi, deși estimarea inițială era de trei”). Sponsorul este invitat să spună câteva cuvinte, ceea ce oferă recunoașterii o greutate suplimentară fără costuri suplimentare.\n\nAcest plan respectă constrângerea de buget, dar acoperă toate cele trei cerințe: formal, informal și diferențiere individual/echipă.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform PMBOK 7, celebrarea succesului și recunoașterea echipei la închiderea proiectului țin în principal de care domeniu de performanță?",
+    "choices": [
+     "Domeniul de performanță „Team” (Echipă)",
+     "Domeniul de performanță „Planificare”",
+     "Domeniul de performanță „Livrabile”",
+     "Domeniul de performanță „Achiziții”"
+    ],
+    "answer": 0,
+    "explain": "PMBOK 7 organizează practicile în domenii de performanță; recunoașterea și grija față de echipă țin de domeniul „Team”, legat de principiul leadershipului colaborativ.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este cea mai frecventă greșeală atunci când un PM recunoaște contribuțiile echipei la finalul proiectului?",
+    "choices": [
+     "Oferă recunoaștere doar sponsorului, nu echipei",
+     "Amestecă recunoașterea de echipă cu cea individuală, lăudând tot grupul pentru munca unei singure persoane",
+     "Organizează celebrarea prea devreme, înainte de acceptanța livrabilelor",
+     "Alocă un buget prea mare pentru eveniment"
+    ],
+    "answer": 1,
+    "explain": "Recunoașterea nediferențiată (grupul lăudat pentru meritul unei singure persoane) poate demotiva exact persoana care ar fi trebuit evidențiată individual.",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce este importantă celebrarea succesului la închiderea unui proiect?",
+    "back": "Pentru că recunoașterea crește moralul, retenția și implicarea echipei, transformând oboseala acumulată în satisfacție și consolidând relațiile pentru proiecte viitoare.",
+    "concept_key": "importanta-celebrarii-succesului",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este recunoașterea formală?",
+    "back": "Recunoaștere documentată și vizibilă la nivel organizațional — raport de închidere, e-mail către conducere, bonus aprobat de sponsor, mențiune în evaluarea de performanță.",
+    "concept_key": "tipuri-recunoastere-echipa",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este recunoașterea informală?",
+    "back": "Gesturi zilnice, fără cost financiar semnificativ — un „mulțumesc” public, o mențiune într-un canal de comunicare al echipei, o cafea oferită colegului.",
+    "concept_key": "tipuri-recunoastere-echipa",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cea mai frecventă greșeală în recunoașterea echipei la finalul proiectului?",
+    "back": "Amestecarea recunoașterii de echipă cu cea individuală — lăudarea întregului grup pentru contribuția specifică a unei singure persoane, ceea ce demotivează persoana respectivă.",
+    "concept_key": "tipuri-recunoastere-echipa",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când ar trebui planificat momentul celebrării de închidere a proiectului?",
+    "back": "Din faza de planificare a proiectului (Project Charter), nu improvizat la final; evenimentul propriu-zis are loc după acceptanța formală a livrabilelor, ideal lângă întâlnirea de lecții învățate.",
+    "concept_key": "planificare-celebrare-inchidere",
+    "blockId": "cmjjuxvtx0064umkp2ont9o1f-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1402,
+   "flashcards": 5
+  }
+ }
+}

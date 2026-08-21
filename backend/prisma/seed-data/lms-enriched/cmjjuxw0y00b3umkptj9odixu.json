@@ -1,0 +1,149 @@
+{
+ "lessonId": "cmjjuxw0y00b3umkptj9odixu",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Situațiile Financiare Explicate",
+ "lesson": "Cash Flow Statement",
+ "category": "FINANCE_OPS",
+ "content": "# Cash Flow Statement\n\n## Ce este situația fluxurilor de trezorerie\n\nSituația fluxurilor de trezorerie (**cash flow statement**) este a treia situație financiară obligatorie, alături de bilanț și contul de profit și pierdere. Rolul ei este simplu de descris, dar esențial de înțeles: îți arată **cât numerar a intrat efectiv și cât a ieșit efectiv** din firmă într-o perioadă, defalcat pe trei tipuri de activități — operațională, de investiții și de finanțare.\n\nDe ce ai nevoie de un raport separat pentru asta, dacă ai deja contul de profit și pierdere? Pentru că profitul contabil și numerarul din cont **nu sunt același lucru**. Contabilitatea de angajamente (accrual accounting), obligatorie pentru firmele din România conform OMFP 1802/2014, recunoaște veniturile în momentul facturării, nu al încasării, și cheltuielile în momentul consumului, nu al plății. Rezultatul: o firmă poate raporta profit net de 100.000 lei și, în același timp, să aibă un cont bancar aproape gol — pentru că cei 100.000 lei de profit stau, parțial, în facturi neîncasate de la clienți sau în stocuri necumpărate încă în bani.\n\nAcesta este motivul pentru care mulți antreprenori descoperă cu surprindere expresia \"profit fictiv, cash real lipsă\": firma e profitabilă pe hârtie, dar nu poate plăti salariile sau furnizorii la scadență. Cash flow statement-ul este instrumentul care îți arată exact unde s-a \"dus\" profitul — în creanțe, în stocuri, în investiții sau în rambursări de credite — și de aceea este citit cu atenție de bănci, investitori și, mai ales, de tine ca manager.\n\n## Fluxul din activitatea operațională\n\nFluxul operațional (operating cash flow) măsoară numerarul generat sau consumat de activitatea de bază a firmei: vânzarea de produse/servicii și plata costurilor asociate. Este cel mai important dintre cele trei fluxuri, pentru că arată dacă firma se poate autofinanța din propria activitate, fără injecții de capital sau credite noi.\n\nÎn practică, aproape toate firmele din România îl calculează prin **metoda indirectă**, pornind de la profitul net și corectându-l cu elementele care nu reprezintă mișcări reale de numerar:\n\n**Flux operațional = Profit net + Amortizare și provizioane (cheltuieli nemonetare) − Creșterea creanțelor − Creșterea stocurilor + Creșterea datoriilor către furnizori**\n\nLogica fiecărei corecții:\n- **Amortizarea** se adaugă înapoi pentru că a redus profitul contabil, dar nu a generat nicio plată efectivă în perioada curentă (banii au ieșit deja, la achiziția activului).\n- O **creștere a creanțelor** înseamnă că ai vândut, dar nu ai încasat încă — acel venit e în profit, dar nu e în cont, deci se scade.\n- O **creștere a stocurilor** înseamnă că ai cumpărat marfă/materii prime cu bani cash, dar ele nu au trecut încă prin costul vânzărilor — deci se scade.\n- O **creștere a datoriilor către furnizori** înseamnă că ai consumat costuri (reflectate în profit) fără să fi plătit încă furnizorii — deci se adaugă, pentru că ai \"ținut\" banii mai mult timp în firmă.\n\n## Fluxul din investiții și fluxul din finanțare\n\n**Fluxul din activități de investiții** (investing activities) reflectă banii cheltuiți sau încasați din achiziția și vânzarea de active pe termen lung: utilaje, echipamente, clădiri, participații în alte firme, licențe software. Exemple tipice: achiziția unui utilaj nou (ieșire de numerar), vânzarea unui mijloc de transport uzat (intrare de numerar). Un flux investițional puternic negativ nu e neapărat un semn rău — poate însemna că firma investește agresiv în capacitate de producție sau expansiune.\n\n**Fluxul din activități de finanțare** (financing activities) arată mișcările de numerar legate de modul în care firma este finanțată: contractarea sau rambursarea de credite bancare, majorări sau reduceri de capital social, plata dividendelor către acționari/asociați, rambursarea ratelor de leasing financiar. Aici vezi dacă firma se \"umflă\" cu datorii noi sau, dimpotrivă, își reduce gradul de îndatorare și remunerează acționarii.\n\nSuma celor trei fluxuri (operațional + investițional + finanțare) reprezintă **variația netă de numerar** a perioadei, care adunată la soldul de numerar de la începutul perioadei dă soldul de numerar de la final — cifră care trebuie să corespundă exact cu numerarul din bilanț.\n\n### Cum citești tiparul celor trei semne\n\nCombinația de semne (+/−) ale celor trei fluxuri spune multe dintr-o privire:\n- **(+, −, −)**: firmă matură, sănătoasă — generează cash din operațiuni, investește moderat și rambursează datorii/plătește dividende. Tipar ideal.\n- **(+, −, +)**: firmă în creștere — generează cash operațional, investește puternic și se finanțează suplimentar prin credite noi pentru a accelera expansiunea.\n- **(−, +, +)**: semnal de alarmă — firma nu generează cash din activitatea de bază, vinde active și se împrumută pentru a supraviețui. Necesită investigație imediată.\n\n## Exemplu: Profit pozitiv, cash flow operațional negativ\n**Alfa Trading SRL** a avut un an bun din punct de vedere contabil: profit net de **60.000 lei**. Directorul general se așteaptă ca disponibilul din cont să fi crescut cu o sumă apropiată. Contabilul îi arată însă că fluxul operațional este de fapt **negativ**.\n\nDatele din anul curent:\n- Profit net: 60.000 lei\n- Amortizare (cheltuială nemonetară): +20.000 lei\n- Creanțe clienți: au crescut cu 80.000 lei (vânzări pe credit, neîncasate până la finalul anului)\n- Stocuri: au crescut cu 30.000 lei (aprovizionare pentru comenzi viitoare)\n- Datorii către furnizori: au crescut cu 10.000 lei\n\nCalcul (metoda indirectă):\n\n| Element | Sumă (lei) |\n|---|---|\n| Profit net | +60.000 |\n| Amortizare | +20.000 |\n| Creștere creanțe clienți | −80.000 |\n| Creștere stocuri | −30.000 |\n| Creștere datorii furnizori | +10.000 |\n| **Flux operațional** | **−20.000** |\n\nDeși firma e profitabilă cu 60.000 lei, activitatea operațională a **consumat** 20.000 lei de numerar în cursul anului. Cauza: firma a acordat termene de plată generoase clienților (creanțele au crescut cu 80.000 lei) și a cumpărat stocuri peste ritmul de vânzare. Dacă Alfa Trading nu are rezerve de numerar sau o linie de credit, riscă probleme de plată chiar dacă este profitabilă — exact tiparul care explică de ce firme profitabile intră în incapacitate de plată.\n\n## Exemplu: Situația completă a fluxurilor de trezorerie\n**Beta Distribution SRL** își întocmește situația fluxurilor de trezorerie pentru anul încheiat. Numerarul la începutul anului era de 40.000 lei.\n\n**1. Flux din activitatea operațională** (calculat prin metoda indirectă, similar exemplului anterior): **+85.000 lei**\n\n**2. Flux din activități de investiții:**\n- Achiziție echipamente noi de producție: −120.000 lei\n- Vânzare mijloc de transport vechi: +15.000 lei\n- **Total flux investițional: −105.000 lei**\n\n**3. Flux din activități de finanțare:**\n- Contractare credit bancar nou: +150.000 lei\n- Rambursare rate la un credit mai vechi: −40.000 lei\n- Plată dividende către asociați: −25.000 lei\n- **Total flux finanțare: +85.000 lei**\n\n**Variația netă de numerar** = 85.000 − 105.000 + 85.000 = **+65.000 lei**\n\n**Numerar la sfârșitul anului** = 40.000 (sold inițial) + 65.000 (variație) = **105.000 lei**\n\nInterpretare: Beta Distribution are tiparul (+, −, +) — generează cash din operațiuni, investește puternic în echipamente noi și se finanțează suplimentar printr-un credit bancar. Este un tipar tipic de firmă în expansiune, nu neapărat unul problematic, cu condiția ca fluxul operațional să rămână pozitiv și să poată susține pe termen mediu rambursarea noului credit.\n\n> Temei legal: OMFP nr. 1802/2014 Secțiunea 9 – Situațiile financiare anuale (Situația fluxurilor de trezorerie) (în vigoare de la 2015-01-01)\nConform OMFP 1802/2014 pentru aprobarea reglementărilor contabile privind situațiile financiare anuale individuale și consolidate, situația fluxurilor de trezorerie este parte a setului de situații financiare pentru entitățile mijlocii și mari, precum și pentru cele care optează pentru un set complet de situații financiare. Reglementarea permite atât metoda directă, cât și metoda indirectă de prezentare a fluxului din activitatea operațională, metoda indirectă fiind cea mai utilizată în practica din România.\n\n⚠ O capcană frecventă la clasificarea fluxurilor: **dobânda plătită la credite** se încadrează, conform practicii contabile curente în România (aliniată IFRS), la **fluxul operațional**, nu la fluxul de finanțare — pentru că reprezintă costul finanțării activității curente. La fluxul de finanțare se trece doar **rambursarea principalului** (ratele de capital) și eventualele dividende plătite acționarilor, conform politicii contabile alese de firmă. Confuzia între cele două poate distorsiona semnificativ interpretarea sănătății operaționale a firmei — verifică întotdeauna nota de politici contabile a situațiilor financiare pe care le analizezi.\n\n## Exercițiu\n**Gamma Construct SRL** îți pune la dispoziție următoarele date pentru anul încheiat, cu un sold de numerar la începutul anului de **20.000 lei**:\n\n- Profit net: 45.000 lei\n- Amortizare: 15.000 lei\n- Creanțe clienți: au crescut cu 25.000 lei\n- Stocuri: au scăzut cu 10.000 lei\n- Datorii către furnizori: au crescut cu 8.000 lei\n- Achiziție utilaj nou: −60.000 lei\n- Credit bancar nou contractat: +50.000 lei\n- Rambursare rate leasing financiar: −12.000 lei\n\nCalculează: (a) fluxul din activitatea operațională, (b) fluxul investițional, (c) fluxul de finanțare, (d) variația netă de numerar și (e) soldul de numerar la sfârșitul anului. Interpretează pe scurt tiparul obținut.\n\n**Soluție:** **(a) Flux operațional** (metoda indirectă):\nProfit net (45.000) + Amortizare (15.000) − Creștere creanțe (25.000) + Descreștere stocuri (10.000, intrare de cash) + Creștere datorii furnizori (8.000)\n= 45.000 + 15.000 − 25.000 + 10.000 + 8.000 = **53.000 lei**\n\n**(b) Flux investițional** = −60.000 lei (achiziția utilajului este singura mișcare)\n\n**(c) Flux de finanțare** = 50.000 (credit nou) − 12.000 (rambursare leasing) = **+38.000 lei**\n\n**(d) Variația netă de numerar** = 53.000 − 60.000 + 38.000 = **+31.000 lei**\n\n**(e) Sold numerar final** = 20.000 (sold inițial) + 31.000 = **51.000 lei**\n\n**Interpretare:** tiparul este (+, −, +) — Gamma Construct generează cash din activitatea de bază, investește într-un utilaj nou și completează finanțarea investiției printr-un credit bancar. Este un tipar sănătos pentru o firmă în dezvoltare, cu condiția ca fluxul operațional viitor să acopere confortabil noile rate de credit.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "cash-flow-statement-scop",
+    "md": "## Ce este situația fluxurilor de trezorerie\n\nSituația fluxurilor de trezorerie (**cash flow statement**) este a treia situație financiară obligatorie, alături de bilanț și contul de profit și pierdere. Rolul ei este simplu de descris, dar esențial de înțeles: îți arată **cât numerar a intrat efectiv și cât a ieșit efectiv** din firmă într-o perioadă, defalcat pe trei tipuri de activități — operațională, de investiții și de finanțare.\n\nDe ce ai nevoie de un raport separat pentru asta, dacă ai deja contul de profit și pierdere? Pentru că profitul contabil și numerarul din cont **nu sunt același lucru**. Contabilitatea de angajamente (accrual accounting), obligatorie pentru firmele din România conform OMFP 1802/2014, recunoaște veniturile în momentul facturării, nu al încasării, și cheltuielile în momentul consumului, nu al plății. Rezultatul: o firmă poate raporta profit net de 100.000 lei și, în același timp, să aibă un cont bancar aproape gol — pentru că cei 100.000 lei de profit stau, parțial, în facturi neîncasate de la clienți sau în stocuri necumpărate încă în bani.\n\nAcesta este motivul pentru care mulți antreprenori descoperă cu surprindere expresia \"profit fictiv, cash real lipsă\": firma e profitabilă pe hârtie, dar nu poate plăti salariile sau furnizorii la scadență. Cash flow statement-ul este instrumentul care îți arată exact unde s-a \"dus\" profitul — în creanțe, în stocuri, în investiții sau în rambursări de credite — și de aceea este citit cu atenție de bănci, investitori și, mai ales, de tine ca manager.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "flux-operational-metoda-indirecta",
+    "md": "## Fluxul din activitatea operațională\n\nFluxul operațional (operating cash flow) măsoară numerarul generat sau consumat de activitatea de bază a firmei: vânzarea de produse/servicii și plata costurilor asociate. Este cel mai important dintre cele trei fluxuri, pentru că arată dacă firma se poate autofinanța din propria activitate, fără injecții de capital sau credite noi.\n\nÎn practică, aproape toate firmele din România îl calculează prin **metoda indirectă**, pornind de la profitul net și corectându-l cu elementele care nu reprezintă mișcări reale de numerar:\n\n**Flux operațional = Profit net + Amortizare și provizioane (cheltuieli nemonetare) − Creșterea creanțelor − Creșterea stocurilor + Creșterea datoriilor către furnizori**\n\nLogica fiecărei corecții:\n- **Amortizarea** se adaugă înapoi pentru că a redus profitul contabil, dar nu a generat nicio plată efectivă în perioada curentă (banii au ieșit deja, la achiziția activului).\n- O **creștere a creanțelor** înseamnă că ai vândut, dar nu ai încasat încă — acel venit e în profit, dar nu e în cont, deci se scade.\n- O **creștere a stocurilor** înseamnă că ai cumpărat marfă/materii prime cu bani cash, dar ele nu au trecut încă prin costul vânzărilor — deci se scade.\n- O **creștere a datoriilor către furnizori** înseamnă că ai consumat costuri (reflectate în profit) fără să fi plătit încă furnizorii — deci se adaugă, pentru că ai \"ținut\" banii mai mult timp în firmă.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "flux-investitii-finantare",
+    "md": "## Fluxul din investiții și fluxul din finanțare\n\n**Fluxul din activități de investiții** (investing activities) reflectă banii cheltuiți sau încasați din achiziția și vânzarea de active pe termen lung: utilaje, echipamente, clădiri, participații în alte firme, licențe software. Exemple tipice: achiziția unui utilaj nou (ieșire de numerar), vânzarea unui mijloc de transport uzat (intrare de numerar). Un flux investițional puternic negativ nu e neapărat un semn rău — poate însemna că firma investește agresiv în capacitate de producție sau expansiune.\n\n**Fluxul din activități de finanțare** (financing activities) arată mișcările de numerar legate de modul în care firma este finanțată: contractarea sau rambursarea de credite bancare, majorări sau reduceri de capital social, plata dividendelor către acționari/asociați, rambursarea ratelor de leasing financiar. Aici vezi dacă firma se \"umflă\" cu datorii noi sau, dimpotrivă, își reduce gradul de îndatorare și remunerează acționarii.\n\nSuma celor trei fluxuri (operațional + investițional + finanțare) reprezintă **variația netă de numerar** a perioadei, care adunată la soldul de numerar de la începutul perioadei dă soldul de numerar de la final — cifră care trebuie să corespundă exact cu numerarul din bilanț.\n\n### Cum citești tiparul celor trei semne\n\nCombinația de semne (+/−) ale celor trei fluxuri spune multe dintr-o privire:\n- **(+, −, −)**: firmă matură, sănătoasă — generează cash din operațiuni, investește moderat și rambursează datorii/plătește dividende. Tipar ideal.\n- **(+, −, +)**: firmă în creștere — generează cash operațional, investește puternic și se finanțează suplimentar prin credite noi pentru a accelera expansiunea.\n- **(−, +, +)**: semnal de alarmă — firma nu generează cash din activitatea de bază, vinde active și se împrumută pentru a supraviețui. Necesită investigație imediată.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b3"
+   },
+   {
+    "type": "example",
+    "title": "Profit pozitiv, cash flow operațional negativ",
+    "concept_key": "profit-vs-cash-diferenta",
+    "md": "**Alfa Trading SRL** a avut un an bun din punct de vedere contabil: profit net de **60.000 lei**. Directorul general se așteaptă ca disponibilul din cont să fi crescut cu o sumă apropiată. Contabilul îi arată însă că fluxul operațional este de fapt **negativ**.\n\nDatele din anul curent:\n- Profit net: 60.000 lei\n- Amortizare (cheltuială nemonetară): +20.000 lei\n- Creanțe clienți: au crescut cu 80.000 lei (vânzări pe credit, neîncasate până la finalul anului)\n- Stocuri: au crescut cu 30.000 lei (aprovizionare pentru comenzi viitoare)\n- Datorii către furnizori: au crescut cu 10.000 lei\n\nCalcul (metoda indirectă):\n\n| Element | Sumă (lei) |\n|---|---|\n| Profit net | +60.000 |\n| Amortizare | +20.000 |\n| Creștere creanțe clienți | −80.000 |\n| Creștere stocuri | −30.000 |\n| Creștere datorii furnizori | +10.000 |\n| **Flux operațional** | **−20.000** |\n\nDeși firma e profitabilă cu 60.000 lei, activitatea operațională a **consumat** 20.000 lei de numerar în cursul anului. Cauza: firma a acordat termene de plată generoase clienților (creanțele au crescut cu 80.000 lei) și a cumpărat stocuri peste ritmul de vânzare. Dacă Alfa Trading nu are rezerve de numerar sau o linie de credit, riscă probleme de plată chiar dacă este profitabilă — exact tiparul care explică de ce firme profitabile intră în incapacitate de plată.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b4"
+   },
+   {
+    "type": "example",
+    "title": "Situația completă a fluxurilor de trezorerie",
+    "concept_key": "cash-flow-statement-structura-completa",
+    "md": "**Beta Distribution SRL** își întocmește situația fluxurilor de trezorerie pentru anul încheiat. Numerarul la începutul anului era de 40.000 lei.\n\n**1. Flux din activitatea operațională** (calculat prin metoda indirectă, similar exemplului anterior): **+85.000 lei**\n\n**2. Flux din activități de investiții:**\n- Achiziție echipamente noi de producție: −120.000 lei\n- Vânzare mijloc de transport vechi: +15.000 lei\n- **Total flux investițional: −105.000 lei**\n\n**3. Flux din activități de finanțare:**\n- Contractare credit bancar nou: +150.000 lei\n- Rambursare rate la un credit mai vechi: −40.000 lei\n- Plată dividende către asociați: −25.000 lei\n- **Total flux finanțare: +85.000 lei**\n\n**Variația netă de numerar** = 85.000 − 105.000 + 85.000 = **+65.000 lei**\n\n**Numerar la sfârșitul anului** = 40.000 (sold inițial) + 65.000 (variație) = **105.000 lei**\n\nInterpretare: Beta Distribution are tiparul (+, −, +) — generează cash din operațiuni, investește puternic în echipamente noi și se finanțează suplimentar printr-un credit bancar. Este un tipar tipic de firmă în expansiune, nu neapărat unul problematic, cu condiția ca fluxul operațional să rămână pozitiv și să poată susține pe termen mediu rambursarea noului credit.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP nr. 1802/2014",
+    "article": "Secțiunea 9 – Situațiile financiare anuale (Situația fluxurilor de trezorerie)",
+    "effective": "2015-01-01",
+    "md": "Conform OMFP 1802/2014 pentru aprobarea reglementărilor contabile privind situațiile financiare anuale individuale și consolidate, situația fluxurilor de trezorerie este parte a setului de situații financiare pentru entitățile mijlocii și mari, precum și pentru cele care optează pentru un set complet de situații financiare. Reglementarea permite atât metoda directă, cât și metoda indirectă de prezentare a fluxului din activitatea operațională, metoda indirectă fiind cea mai utilizată în practica din România.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b6"
+   },
+   {
+    "type": "warning",
+    "md": "O capcană frecventă la clasificarea fluxurilor: **dobânda plătită la credite** se încadrează, conform practicii contabile curente în România (aliniată IFRS), la **fluxul operațional**, nu la fluxul de finanțare — pentru că reprezintă costul finanțării activității curente. La fluxul de finanțare se trece doar **rambursarea principalului** (ratele de capital) și eventualele dividende plătite acționarilor, conform politicii contabile alese de firmă. Confuzia între cele două poate distorsiona semnificativ interpretarea sănătății operaționale a firmei — verifică întotdeauna nota de politici contabile a situațiilor financiare pe care le analizezi.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Gamma Construct SRL** îți pune la dispoziție următoarele date pentru anul încheiat, cu un sold de numerar la începutul anului de **20.000 lei**:\n\n- Profit net: 45.000 lei\n- Amortizare: 15.000 lei\n- Creanțe clienți: au crescut cu 25.000 lei\n- Stocuri: au scăzut cu 10.000 lei\n- Datorii către furnizori: au crescut cu 8.000 lei\n- Achiziție utilaj nou: −60.000 lei\n- Credit bancar nou contractat: +50.000 lei\n- Rambursare rate leasing financiar: −12.000 lei\n\nCalculează: (a) fluxul din activitatea operațională, (b) fluxul investițional, (c) fluxul de finanțare, (d) variația netă de numerar și (e) soldul de numerar la sfârșitul anului. Interpretează pe scurt tiparul obținut.",
+    "solution_md": "**(a) Flux operațional** (metoda indirectă):\nProfit net (45.000) + Amortizare (15.000) − Creștere creanțe (25.000) + Descreștere stocuri (10.000, intrare de cash) + Creștere datorii furnizori (8.000)\n= 45.000 + 15.000 − 25.000 + 10.000 + 8.000 = **53.000 lei**\n\n**(b) Flux investițional** = −60.000 lei (achiziția utilajului este singura mișcare)\n\n**(c) Flux de finanțare** = 50.000 (credit nou) − 12.000 (rambursare leasing) = **+38.000 lei**\n\n**(d) Variația netă de numerar** = 53.000 − 60.000 + 38.000 = **+31.000 lei**\n\n**(e) Sold numerar final** = 20.000 (sold inițial) + 31.000 = **51.000 lei**\n\n**Interpretare:** tiparul este (+, −, +) — Gamma Construct generează cash din activitatea de bază, investește într-un utilaj nou și completează finanțarea investiției printr-un credit bancar. Este un tipar sănătos pentru o firmă în dezvoltare, cu condiția ca fluxul operațional viitor să acopere confortabil noile rate de credit.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă raportează profit net de 80.000 lei, dar fluxul de numerar operațional este negativ. Care este cea mai probabilă explicație?",
+    "choices": [
+     "Firma plătește prea multe taxe și impozite",
+     "Profitul include venituri neîncasate (creanțe în creștere) și/sau stocuri cumpărate cu bani cash, neconvertite încă în vânzări",
+     "Firma nu are deloc active fixe",
+     "Contul de profit și pierdere conține o eroare de calcul"
+    ],
+    "answer": 1,
+    "explain": "Profitul contabil se calculează pe bază de angajamente: include veniturile facturate, chiar dacă nu au fost încă încasate. Când creanțele sau stocurile cresc semnificativ, o parte din profit rămâne \"blocată\" în afara contului bancar, iar fluxul operațional poate deveni negativ chiar dacă profitul e pozitiv.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În care categorie de flux de numerar se încadrează plata dividendelor către asociați?",
+    "choices": [
+     "Flux din activitatea operațională",
+     "Flux din activități de investiții",
+     "Flux din activități de finanțare",
+     "Nu apare în situația fluxurilor de trezorerie"
+    ],
+    "answer": 2,
+    "explain": "Dividendele reprezintă o remunerare a capitalului adus de acționari/asociați, deci se clasifică la fluxul din activități de finanțare, alături de contractarea/rambursarea de credite și modificările de capital social.",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este situația fluxurilor de trezorerie (cash flow statement)?",
+    "back": "Situația financiară care arată intrările și ieșirile efective de numerar dintr-o perioadă, structurate pe trei categorii: activitate operațională, investiții și finanțare.",
+    "concept_key": "cash-flow-statement-scop",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei categorii de fluxuri de numerar?",
+    "back": "Flux operațional, flux din activități de investiții și flux din activități de finanțare.",
+    "concept_key": "flux-investitii-finantare",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce poate profitul net să difere de fluxul de numerar operațional?",
+    "back": "Pentru că profitul se calculează pe bază de angajamente (accrual) și include venituri neîncasate (creanțe) și cheltuieli nemonetare (amortizare), în timp ce fluxul de numerar reflectă doar încasările și plățile efective.",
+    "concept_key": "profit-vs-cash-diferenta",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula fluxului operațional prin metoda indirectă?",
+    "back": "Profit net + Amortizare/provizioane − Creșterea creanțelor − Creșterea stocurilor + Creșterea datoriilor către furnizori.",
+    "concept_key": "flux-operational-metoda-indirecta",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementare contabilă românească guvernează situațiile financiare anuale, inclusiv situația fluxurilor de trezorerie?",
+    "back": "OMFP nr. 1802/2014, în vigoare de la 1 ianuarie 2015.",
+    "concept_key": "cash-flow-statement-structura-completa",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În ce categorie de flux se încadrează achiziția unui utilaj nou?",
+    "back": "Flux din activități de investiții (investing activities) — este o ieșire de numerar.",
+    "concept_key": "flux-investitii-finantare",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Unde se clasifică, în practica curentă din România, dobânda plătită la un credit bancar?",
+    "back": "La fluxul din activitatea operațională (nu la finanțare) — doar rambursarea principalului se trece la fluxul de finanțare.",
+    "concept_key": "flux-operational-metoda-indirecta",
+    "blockId": "cmjjuxw0y00b3umkptj9odixu-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1499,
+   "flashcards": 7
+  }
+ }
+}

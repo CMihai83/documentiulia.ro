@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw3y00d4umkpmld58ohb",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "TVA în România",
+ "lesson": "TVA colectat și TVA deductibil",
+ "category": "FINANCE_OPS",
+ "content": "# TVA colectat și TVA deductibil\n\n## TVA colectat: ce reprezintă\n\nTVA colectat este taxa pe valoarea adăugată pe care firma ta o **încasează de la clienți** atunci când vinde bunuri sau prestează servicii supuse TVA. Din punct de vedere contabil, ea nu este un venit al firmei — este bani colectați în numele statului, pe care firma îi datorează bugetului.\n\nContabil, TVA colectat se înregistrează în **creditul contului 4427 „TVA colectată”**, simultan cu recunoașterea venitului din vânzare. Cota aplicată depinde de natura bunului/serviciului:\n\n- **21% – cota standard**, aplicabilă majorității bunurilor și serviciilor, valabilă de la 1 august 2025 (Legea nr. 141/2025).\n- **11% – cota redusă unică**, aplicabilă unei liste limitate: alimente de bază, medicamente, apă/canalizare, cărți și manuale (print și electronic), acces la muzee, cazare hotelieră, servicii de restaurant/catering (fără alcool), lemn de foc, energie termică ș.a. Această cotă unică a înlocuit fostele cote de 5% și 9%, tot de la 1 august 2025.\n\nPentru operațiuni derulate până la 31 iulie 2025 se aplicau cotele istorice (19% standard, 9% și 5% reduse) — dacă analizezi documente din acea perioadă, aplică cotele valabile la data faptului generator, nu cele actuale.\n\n## TVA deductibil: ce reprezintă\n\nTVA deductibil este taxa aferentă **achizițiilor de bunuri și servicii** pe care firma ta le face pentru desfășurarea activității. Dacă achiziția este destinată unor operațiuni taxabile (adică generatoare de TVA colectat sau asimilate acestora), firma are dreptul să „recupereze” TVA plătită furnizorului, deducând-o din TVA pe care o datorează statului.\n\nContabil, TVA deductibil se înregistrează în **debitul contului 4426 „TVA deductibilă”**, în același moment cu recunoașterea cheltuielii sau a activului achiziționat.\n\nCondiții esențiale pentru ca TVA să fie deductibilă:\n\n1. Achiziția să fie destinată operațiunilor taxabile ale firmei (nu unor scopuri personale sau operațiuni scutite fără drept de deducere).\n2. Firma să dețină o **factură validă**, emisă conform prevederilor Codului fiscal (și, pentru operațiunile B2B/B2G, transmisă prin sistemul e-Factura/SPV).\n2. Anumite cheltuieli sunt **integral sau parțial nedeductibile** prin lege (ex. cheltuielile de protocol, unele cheltuieli cu vehiculele folosite și în scop personal — deductibilitate limitată la 50%), indiferent dacă furnizorul a emis factură corectă.\n\nNu confunda TVA deductibil (drept potențial de deducere) cu TVA dedus efectiv (exercitat prin decontul de TVA) — distincția contează în controale ANAF.\n\n## Jurnalele de TVA și determinarea soldului final\n\nLa finalul fiecărei perioade fiscale (lună sau trimestru, în funcție de vectorul fiscal al firmei), contabilul totalizează:\n\n- **Jurnalul de vânzări**: toate facturile emise, grupate pe cote de TVA, cu subtotal de TVA colectat.\n- **Jurnalul de cumpărări**: toate facturile de achiziție, grupate pe cote de TVA, cu subtotal de TVA deductibil.\n\nAceste jurnale stau la baza **decontului de TVA (formularul D300)**, depus la ANAF, și corespund secțiunilor relevante din **fișierul SAF-T (declarația D406)** — obligatoriu lunar/trimestrial pentru toți contribuabilii, inclusiv cei mici, începând cu 1 ianuarie 2025, fără perioadă de grație în 2026.\n\nCompararea celor două rulaje determină rezultatul lunii:\n\n- Dacă **TVA colectat > TVA deductibil** → firma are **TVA de plată**, înregistrată în contul **4423 „TVA de plată”**.\n- Dacă **TVA deductibil > TVA colectat** → firma are **TVA de recuperat**, înregistrată în contul **4424 „TVA de recuperat”**.\n\nFormula de închidere lunară, la nivel de conturi:\n\n**4427 = % (4426 + 4423)**, când rezultă TVA de plată, sau\n\n**% (4426 = 4427 + 4424)**, când rezultă TVA de recuperat.\n\nSoldul din 4423/4424 se reglează ulterior prin plată către buget sau prin compensare/rambursare, conform procedurii ANAF.\n\n## Exemplu: Determinarea TVA de plată — exemplu complet\nSC Exemplu SRL, plătitoare de TVA lunar, înregistrează în **iunie 2026** următoarele operațiuni:\n\n**Vânzări (jurnal de vânzări):**\n- Vânzări de marfă, cotă standard 21%: bază 100.000 lei → TVA colectat 21.000 lei\n- Vânzări de cărți, cotă redusă 11%: bază 20.000 lei → TVA colectat 2.200 lei\n\n**Total TVA colectat = 21.000 + 2.200 = 23.200 lei**\n\n**Achiziții (jurnal de cumpărări):**\n- Materii prime, cotă 21%: bază 40.000 lei → TVA deductibil 8.400 lei\n- Servicii utilități, cotă 21%: bază 10.000 lei → TVA deductibil 2.100 lei\n\n**Total TVA deductibil = 8.400 + 2.100 = 10.500 lei**\n\n**Înregistrări contabile:**\n\nVânzări:\n`4111 = %` \n`  701   100.000` \n`  4427   21.000`\n\n`4111 = %` \n`  707   20.000` \n`  4427   2.200`\n\nAchiziții:\n`% = 401` \n`301   40.000` \n`4426   8.400`\n\n`% = 401` \n`628   10.000` \n`4426   2.100`\n\n**Închidere lunară TVA:**\n\nTVA colectat (23.200) > TVA deductibil (10.500) → rezultă **TVA de plată = 12.700 lei**\n\n`4427 = %` \n`  4426   10.500` \n`  4423   12.700`\n\nSuma de 12.700 lei se va plăti la bugetul de stat, în corelare cu decontul de TVA (D300) depus pentru luna iunie 2026.\n\n## Exemplu: Taxare inversă la achiziții intracomunitare\nSC Exemplu SRL achiziționează materiale de la un furnizor din Germania, înregistrat în scop de TVA (cod verificat în **VIES**), în valoare de 15.000 lei (echivalent).\n\nDeoarece este o achiziție intracomunitară de bunuri între doi plătitori de TVA cu cod valid VIES, se aplică **mecanismul de taxare inversă (autolichidare)**: cumpărătorul român înregistrează simultan TVA colectat și TVA deductibil, fără ca banii de TVA să circule efectiv între părți.\n\n**Înregistrarea achiziției:**\n\n`301 = 401` \n`  15.000 lei` (bunuri, la valoarea facturii externe)\n\n**Autolichidarea TVA (21%, valabil de la 1 august 2025):**\n\n`4426 = 4427` \n`  3.150 lei` (15.000 × 21%)\n\nEfectul: TVA colectat și TVA deductibil cresc simultan cu aceeași sumă, deci **impactul asupra TVA de plată/recuperat este zero** — dar ambele sume trebuie declarate corect în decontul de TVA și în jurnalele aferente, întrucât ANAF urmărește simetria acestor înregistrări prin declarația recapitulativă (D390) și SAF-T.\n\n> Temei legal: Legea nr. 227/2015 (Codul fiscal), art. 297-301, modificat prin Legea nr. 141/2025 art. 297-301 (în vigoare de la 2025-08-01)\nCodul fiscal reglementează dreptul de deducere a TVA (condiții, limitări, documente justificative) la art. 297-301. Cotele de TVA aplicabile de la 1 august 2025 (standard 21%, redusă unică 11%) au fost stabilite prin Legea nr. 141/2025, care a eliminat fostele cote reduse de 5% și 9%. Pentru anumite antecontracte de locuințe noi se aplică tranzitoriu cota de 9%, până la 31 iulie 2026.\n\n⚠ Nu tot TVA-ul înscris pe o factură de achiziție este automat deductibil. Verifică întotdeauna: (1) dacă achiziția servește operațiunilor taxabile ale firmei; (2) dacă factura respectă cerințele legale de formă și, pentru relațiile B2B/B2G, a fost transmisă corect prin SPV (e-Factura); (3) dacă nu te încadrezi într-o categorie cu deductibilitate limitată sau exclusă (ex. protocol, folosința mixtă a vehiculelor). Pentru achizițiile intracomunitare sau din afara UE, verificarea codului de TVA al partenerului în VIES este obligatorie înainte de a aplica taxarea inversă — un cod invalid schimbă tratamentul fiscal al operațiunii. Amenzile pentru nereguli fiscale se aplică conform reglementărilor în vigoare la data redactării (iulie 2026); verifică nivelul actual înainte de a comunica sancțiuni clienților sau colegilor.\n\n## Exercițiu\nSC Antreprenor SRL, plătitoare de TVA lunar, raportează în **iulie 2026** următoarele operațiuni:\n\n**Vânzări:**\n- Vânzări de produse, cotă standard 21%: bază 200.000 lei\n- Servicii de cazare hotelieră, cotă redusă 11%: bază 30.000 lei\n\n**Achiziții:**\n- Materii prime, cotă 21%: bază 90.000 lei\n- Servicii de consultanță, cotă 21%: bază 5.000 lei\n- Cheltuieli de protocol (mese cu partenerii), cotă 21%: bază 500 lei TVA aferentă — **nedeductibilă conform legii**\n\nCerințe:\na) Calculează TVA colectat total.\nb) Calculează TVA deductibil total (ține cont de nedeductibilitate).\nc) Determină rezultatul final: TVA de plată sau TVA de recuperat, cu suma exactă.\n\n**Soluție:** **a) TVA colectat:**\n- 200.000 × 21% = 42.000 lei\n- 30.000 × 11% = 3.300 lei\n- **Total TVA colectat = 45.300 lei**\n\n**b) TVA deductibil:**\n- 90.000 × 21% = 18.900 lei\n- 5.000 × 21% = 1.050 lei\n- Cheltuiala de protocol (500 lei TVA) **nu se include** — este nedeductibilă prin lege, indiferent că factura este corectă\n- **Total TVA deductibil = 18.900 + 1.050 = 19.950 lei**\n\n**c) Rezultat:**\nTVA colectat (45.300) > TVA deductibil (19.950) → **TVA de plată = 45.300 − 19.950 = 25.350 lei**\n\nÎnregistrare de închidere:\n`4427 = %` \n`  4426   19.950` \n`  4423   25.350`\n\nSuma TVA aferentă protocolului (105 lei = 500 × 21%, dacă vrei să o tratezi separat) rămâne inclusă în cheltuiala de protocol (cont 623), nu se transferă în 4426.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "tva-colectat-definitie",
+    "md": "## TVA colectat: ce reprezintă\n\nTVA colectat este taxa pe valoarea adăugată pe care firma ta o **încasează de la clienți** atunci când vinde bunuri sau prestează servicii supuse TVA. Din punct de vedere contabil, ea nu este un venit al firmei — este bani colectați în numele statului, pe care firma îi datorează bugetului.\n\nContabil, TVA colectat se înregistrează în **creditul contului 4427 „TVA colectată”**, simultan cu recunoașterea venitului din vânzare. Cota aplicată depinde de natura bunului/serviciului:\n\n- **21% – cota standard**, aplicabilă majorității bunurilor și serviciilor, valabilă de la 1 august 2025 (Legea nr. 141/2025).\n- **11% – cota redusă unică**, aplicabilă unei liste limitate: alimente de bază, medicamente, apă/canalizare, cărți și manuale (print și electronic), acces la muzee, cazare hotelieră, servicii de restaurant/catering (fără alcool), lemn de foc, energie termică ș.a. Această cotă unică a înlocuit fostele cote de 5% și 9%, tot de la 1 august 2025.\n\nPentru operațiuni derulate până la 31 iulie 2025 se aplicau cotele istorice (19% standard, 9% și 5% reduse) — dacă analizezi documente din acea perioadă, aplică cotele valabile la data faptului generator, nu cele actuale.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tva-deductibil-definitie",
+    "md": "## TVA deductibil: ce reprezintă\n\nTVA deductibil este taxa aferentă **achizițiilor de bunuri și servicii** pe care firma ta le face pentru desfășurarea activității. Dacă achiziția este destinată unor operațiuni taxabile (adică generatoare de TVA colectat sau asimilate acestora), firma are dreptul să „recupereze” TVA plătită furnizorului, deducând-o din TVA pe care o datorează statului.\n\nContabil, TVA deductibil se înregistrează în **debitul contului 4426 „TVA deductibilă”**, în același moment cu recunoașterea cheltuielii sau a activului achiziționat.\n\nCondiții esențiale pentru ca TVA să fie deductibilă:\n\n1. Achiziția să fie destinată operațiunilor taxabile ale firmei (nu unor scopuri personale sau operațiuni scutite fără drept de deducere).\n2. Firma să dețină o **factură validă**, emisă conform prevederilor Codului fiscal (și, pentru operațiunile B2B/B2G, transmisă prin sistemul e-Factura/SPV).\n2. Anumite cheltuieli sunt **integral sau parțial nedeductibile** prin lege (ex. cheltuielile de protocol, unele cheltuieli cu vehiculele folosite și în scop personal — deductibilitate limitată la 50%), indiferent dacă furnizorul a emis factură corectă.\n\nNu confunda TVA deductibil (drept potențial de deducere) cu TVA dedus efectiv (exercitat prin decontul de TVA) — distincția contează în controale ANAF.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tva-plata-recuperat-jurnale",
+    "md": "## Jurnalele de TVA și determinarea soldului final\n\nLa finalul fiecărei perioade fiscale (lună sau trimestru, în funcție de vectorul fiscal al firmei), contabilul totalizează:\n\n- **Jurnalul de vânzări**: toate facturile emise, grupate pe cote de TVA, cu subtotal de TVA colectat.\n- **Jurnalul de cumpărări**: toate facturile de achiziție, grupate pe cote de TVA, cu subtotal de TVA deductibil.\n\nAceste jurnale stau la baza **decontului de TVA (formularul D300)**, depus la ANAF, și corespund secțiunilor relevante din **fișierul SAF-T (declarația D406)** — obligatoriu lunar/trimestrial pentru toți contribuabilii, inclusiv cei mici, începând cu 1 ianuarie 2025, fără perioadă de grație în 2026.\n\nCompararea celor două rulaje determină rezultatul lunii:\n\n- Dacă **TVA colectat > TVA deductibil** → firma are **TVA de plată**, înregistrată în contul **4423 „TVA de plată”**.\n- Dacă **TVA deductibil > TVA colectat** → firma are **TVA de recuperat**, înregistrată în contul **4424 „TVA de recuperat”**.\n\nFormula de închidere lunară, la nivel de conturi:\n\n**4427 = % (4426 + 4423)**, când rezultă TVA de plată, sau\n\n**% (4426 = 4427 + 4424)**, când rezultă TVA de recuperat.\n\nSoldul din 4423/4424 se reglează ulterior prin plată către buget sau prin compensare/rambursare, conform procedurii ANAF.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b3"
+   },
+   {
+    "type": "example",
+    "title": "Determinarea TVA de plată — exemplu complet",
+    "concept_key": "tva-plata-recuperat-jurnale",
+    "md": "SC Exemplu SRL, plătitoare de TVA lunar, înregistrează în **iunie 2026** următoarele operațiuni:\n\n**Vânzări (jurnal de vânzări):**\n- Vânzări de marfă, cotă standard 21%: bază 100.000 lei → TVA colectat 21.000 lei\n- Vânzări de cărți, cotă redusă 11%: bază 20.000 lei → TVA colectat 2.200 lei\n\n**Total TVA colectat = 21.000 + 2.200 = 23.200 lei**\n\n**Achiziții (jurnal de cumpărări):**\n- Materii prime, cotă 21%: bază 40.000 lei → TVA deductibil 8.400 lei\n- Servicii utilități, cotă 21%: bază 10.000 lei → TVA deductibil 2.100 lei\n\n**Total TVA deductibil = 8.400 + 2.100 = 10.500 lei**\n\n**Înregistrări contabile:**\n\nVânzări:\n`4111 = %` \n`  701   100.000` \n`  4427   21.000`\n\n`4111 = %` \n`  707   20.000` \n`  4427   2.200`\n\nAchiziții:\n`% = 401` \n`301   40.000` \n`4426   8.400`\n\n`% = 401` \n`628   10.000` \n`4426   2.100`\n\n**Închidere lunară TVA:**\n\nTVA colectat (23.200) > TVA deductibil (10.500) → rezultă **TVA de plată = 12.700 lei**\n\n`4427 = %` \n`  4426   10.500` \n`  4423   12.700`\n\nSuma de 12.700 lei se va plăti la bugetul de stat, în corelare cu decontul de TVA (D300) depus pentru luna iunie 2026.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b4"
+   },
+   {
+    "type": "example",
+    "title": "Taxare inversă la achiziții intracomunitare",
+    "concept_key": "taxare-inversa-autolichidare",
+    "md": "SC Exemplu SRL achiziționează materiale de la un furnizor din Germania, înregistrat în scop de TVA (cod verificat în **VIES**), în valoare de 15.000 lei (echivalent).\n\nDeoarece este o achiziție intracomunitară de bunuri între doi plătitori de TVA cu cod valid VIES, se aplică **mecanismul de taxare inversă (autolichidare)**: cumpărătorul român înregistrează simultan TVA colectat și TVA deductibil, fără ca banii de TVA să circule efectiv între părți.\n\n**Înregistrarea achiziției:**\n\n`301 = 401` \n`  15.000 lei` (bunuri, la valoarea facturii externe)\n\n**Autolichidarea TVA (21%, valabil de la 1 august 2025):**\n\n`4426 = 4427` \n`  3.150 lei` (15.000 × 21%)\n\nEfectul: TVA colectat și TVA deductibil cresc simultan cu aceeași sumă, deci **impactul asupra TVA de plată/recuperat este zero** — dar ambele sume trebuie declarate corect în decontul de TVA și în jurnalele aferente, întrucât ANAF urmărește simetria acestor înregistrări prin declarația recapitulativă (D390) și SAF-T.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 227/2015 (Codul fiscal), art. 297-301, modificat prin Legea nr. 141/2025",
+    "article": "art. 297-301",
+    "effective": "2025-08-01",
+    "md": "Codul fiscal reglementează dreptul de deducere a TVA (condiții, limitări, documente justificative) la art. 297-301. Cotele de TVA aplicabile de la 1 august 2025 (standard 21%, redusă unică 11%) au fost stabilite prin Legea nr. 141/2025, care a eliminat fostele cote reduse de 5% și 9%. Pentru anumite antecontracte de locuințe noi se aplică tranzitoriu cota de 9%, până la 31 iulie 2026.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu tot TVA-ul înscris pe o factură de achiziție este automat deductibil. Verifică întotdeauna: (1) dacă achiziția servește operațiunilor taxabile ale firmei; (2) dacă factura respectă cerințele legale de formă și, pentru relațiile B2B/B2G, a fost transmisă corect prin SPV (e-Factura); (3) dacă nu te încadrezi într-o categorie cu deductibilitate limitată sau exclusă (ex. protocol, folosința mixtă a vehiculelor). Pentru achizițiile intracomunitare sau din afara UE, verificarea codului de TVA al partenerului în VIES este obligatorie înainte de a aplica taxarea inversă — un cod invalid schimbă tratamentul fiscal al operațiunii. Amenzile pentru nereguli fiscale se aplică conform reglementărilor în vigoare la data redactării (iulie 2026); verifică nivelul actual înainte de a comunica sancțiuni clienților sau colegilor.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Antreprenor SRL, plătitoare de TVA lunar, raportează în **iulie 2026** următoarele operațiuni:\n\n**Vânzări:**\n- Vânzări de produse, cotă standard 21%: bază 200.000 lei\n- Servicii de cazare hotelieră, cotă redusă 11%: bază 30.000 lei\n\n**Achiziții:**\n- Materii prime, cotă 21%: bază 90.000 lei\n- Servicii de consultanță, cotă 21%: bază 5.000 lei\n- Cheltuieli de protocol (mese cu partenerii), cotă 21%: bază 500 lei TVA aferentă — **nedeductibilă conform legii**\n\nCerințe:\na) Calculează TVA colectat total.\nb) Calculează TVA deductibil total (ține cont de nedeductibilitate).\nc) Determină rezultatul final: TVA de plată sau TVA de recuperat, cu suma exactă.",
+    "solution_md": "**a) TVA colectat:**\n- 200.000 × 21% = 42.000 lei\n- 30.000 × 11% = 3.300 lei\n- **Total TVA colectat = 45.300 lei**\n\n**b) TVA deductibil:**\n- 90.000 × 21% = 18.900 lei\n- 5.000 × 21% = 1.050 lei\n- Cheltuiala de protocol (500 lei TVA) **nu se include** — este nedeductibilă prin lege, indiferent că factura este corectă\n- **Total TVA deductibil = 18.900 + 1.050 = 19.950 lei**\n\n**c) Rezultat:**\nTVA colectat (45.300) > TVA deductibil (19.950) → **TVA de plată = 45.300 − 19.950 = 25.350 lei**\n\nÎnregistrare de închidere:\n`4427 = %` \n`  4426   19.950` \n`  4423   25.350`\n\nSuma TVA aferentă protocolului (105 lei = 500 × 21%, dacă vrei să o tratezi separat) rămâne inclusă în cheltuiala de protocol (cont 623), nu se transferă în 4426.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În ce cont contabil se înregistrează TVA colectat?",
+    "choices": [
+     "4426 – TVA deductibilă",
+     "4427 – TVA colectată",
+     "4423 – TVA de plată",
+     "4424 – TVA de recuperat"
+    ],
+    "answer": 1,
+    "explain": "TVA colectat se înregistrează în creditul contului 4427, în momentul facturării vânzărilor/prestărilor supuse TVA.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are, într-o lună, TVA deductibil de 30.000 lei și TVA colectat de 22.000 lei. Ce rezultă?",
+    "choices": [
+     "TVA de plată de 8.000 lei, în contul 4423",
+     "TVA de recuperat de 8.000 lei, în contul 4424",
+     "TVA de plată de 52.000 lei",
+     "Nu rezultă nimic, sumele se anulează"
+    ],
+    "answer": 1,
+    "explain": "Când TVA deductibil (30.000) depășește TVA colectat (22.000), diferența de 8.000 lei reprezintă TVA de recuperat, înregistrată în contul 4424.",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este TVA colectat și în ce cont se înregistrează?",
+    "back": "TVA aferentă vânzărilor/prestărilor efectuate de firmă, datorată bugetului de stat; se înregistrează în creditul contului 4427 „TVA colectată”.",
+    "concept_key": "tva-colectat-definitie",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este TVA deductibil și în ce cont se înregistrează?",
+    "back": "TVA aferentă achizițiilor destinate operațiunilor taxabile ale firmei, recuperabilă de la stat; se înregistrează în debitul contului 4426 „TVA deductibilă”.",
+    "concept_key": "tva-deductibil-definitie",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula pentru TVA de plată?",
+    "back": "TVA de plată = TVA colectat (4427) − TVA deductibil (4426), atunci când colectat > deductibil; soldul se înregistrează în contul 4423.",
+    "concept_key": "tva-plata-recuperat-jurnale",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont contabil folosești pentru TVA de recuperat și când apare?",
+    "back": "Contul 4424 „TVA de recuperat”, folosit când TVA deductibil depășește TVA colectat în perioada fiscală respectivă.",
+    "concept_key": "tva-plata-recuperat-jurnale",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este taxarea inversă (autolichidarea TVA) și cum se înregistrează?",
+    "back": "Mecanism aplicat de regulă achizițiilor intracomunitare B2B cu cod VIES valid, prin care cumpărătorul înregistrează simultan TVA colectat și deductibil (4426 = 4427), fără plată efectivă de TVA între părți.",
+    "concept_key": "taxare-inversa-autolichidare",
+    "blockId": "cmjjuxw3y00d4umkpmld58ohb-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1278,
+   "flashcards": 5
+  }
+ }
+}

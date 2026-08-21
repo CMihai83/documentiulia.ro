@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxw3m00cwumkppw3if6ud",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Planul de Conturi Românesc",
+ "lesson": "Clasa 5 - Trezorerie",
+ "category": "FINANCE_OPS",
+ "content": "# Clasa 5 - Trezorerie\n\n## Clasa 5 \"Conturi de trezorerie\" — prezentare generală\n\nClasa 5 din Planul de conturi general (OMFP 1802/2014) grupează toate conturile prin care o firmă evidențiază disponibilitățile bănești, echivalentele de numerar și mișcările de fonduri pe termen scurt. Este clasa cu cea mai mare frecvență de utilizare zilnică într-o societate, pentru că orice încasare sau plată — indiferent de natura ei economică — se reflectă până la urmă printr-un cont din clasa 5.\n\nStructura pe grupe este următoarea:\n\n- **Grupa 50 \"Investiții pe termen scurt\"** — titluri de plasament, acțiuni proprii răscumpărate pe termen scurt (501, 505, 506, 508, 509);\n- **Grupa 51 \"Conturi la bănci\"** — 511 \"Valori de încasat\" (cecuri, efecte comerciale), 512 \"Conturi curente la bănci\", 518 \"Dobânzi\", 519 \"Credite bancare pe termen scurt\";\n- **Grupa 53 \"Casa\"** — 531 \"Casa\" (numerar efectiv) și 532 \"Alte valori\" (timbre, tichete, bilete de călătorie);\n- **Grupa 54 \"Acreditive\"** — 541 \"Acreditive\" și 542 \"Avansuri de trezorerie\";\n- **Grupa 58 \"Viramente interne\"** — 581, contul \"de tranzit\" folosit exclusiv pentru mișcările de fonduri între conturile proprii ale aceleiași entități.\n\nToate conturile de trezorerie sunt, prin natura lor, conturi de **activ** (cu excepția 519 \"Credite bancare pe termen scurt\", care este de pasiv, fiind o datorie). Se debitează cu intrările de numerar/disponibil și se creditează cu ieșirile. Soldul final debitor reprezintă disponibilul existent la data raportării și trebuie să corespundă cu soldul din registrul de casă, respectiv cu extrasul de cont bancar — aceasta este baza controlului intern minim pe care orice contabil trebuie să îl aplice lunar.\n\n## Contul 531 \"Casa\"\n\nContul 531 evidențiază numerarul efectiv aflat în casieria unității: bancnote și monede, atât în lei (5311), cât și în valută (5314). Se debitează cu încasările în numerar (de la clienți, avansuri restituite de angajați, ridicări de numerar de la bancă) și se creditează cu plățile în numerar (furnizori, avansuri spre decontare acordate angajaților, depuneri la bancă).\n\nÎn practică, gestiunea casei se bazează pe **Registrul de casă**, document zilnic în care se înscriu, în ordine cronologică, toate operațiunile: sold inițial, încasări, plăți, sold final. Soldul din registru trebuie să fie identic, în orice moment, cu soldul contabil al contului 5311/5314 și cu numerarul faptic constatat la un eventual control de casă (inventariere inopinată).\n\nContul 5314 \"Casa în valută\" ridică o particularitate suplimentară: la fiecare intrare/ieșire se folosește cursul valutar din ziua operațiunii, iar la închiderea lunii soldul se reevaluează la cursul BNR din ultima zi lucrătoare, generând diferențe de curs valutar favorabile (contul 765) sau nefavorabile (contul 665).\n\n## Contul 512 \"Conturi curente la bănci\"\n\nContul 512 evidențiază disponibilitățile aflate în conturile bancare curente ale firmei: 5121 \"Conturi la bănci în lei\" și 5124 \"Conturi la bănci în valută\". Funcționarea este simetrică celei de la casă: se debitează cu încasările (de la clienți prin virament, credite trase, depuneri de numerar) și se creditează cu plățile (furnizori, salarii, taxe, ridicări de numerar).\n\nDocumentul justificativ de bază este **extrasul de cont**, emis de bancă, pe care contabilul îl reconciliază lunar cu rulajele din contabilitate. Diferențele apărute (de regulă comisioane bancare debitate direct de bancă și neînregistrate încă, sau operațiuni înregistrate în contabilitate dar neapărute în extras) se lămuresc printr-un **punctaj bancă** (bank reconciliation) — o practică obligatorie de control intern, chiar dacă OMFP 1802/2014 nu impune un format standard.\n\nContul 5125 \"Sume în curs de decontare\" are rol tehnic: reține temporar sumele transferate între conturi bancare proprii (de exemplu, de la banca A la banca B) în intervalul dintre debitarea la banca A și creditarea efectivă la banca B, evitând ca fondurile să \"dispară\" contabil pe durata decontării interbancare.\n\n## Acreditive (541) și avansuri de trezorerie (542)\n\n**Acreditivul** (contul 541, cu 5411 în lei și 5412 în valută) este o sumă de bani pe care firma o blochează, la cererea sa, într-un cont distinct deschis la bancă, special afectat plății unui furnizor, condiționat de îndeplinirea unor documente contractuale (de regulă în tranzacții cu parteneri externi sau contracte cu valoare mare, unde furnizorul cere o garanție de plată). Deschiderea acreditivului se înregistrează 541 = 512 (transfer din contul curent), iar utilizarea lui la plata furnizorului se înregistrează 401 = 541. Dacă acreditivul nu se consumă integral, diferența neutilizată se reia în contul curent: 512 = 541.\n\n**Avansurile de trezorerie** (contul 542) reprezintă sumele puse la dispoziția angajaților (de regulă prin dispoziție de plată către casierie) pentru cheltuieli mărunte de aprovizionare, deplasare sau reprezentare, urmând ca beneficiarul să justifice ulterior utilizarea prin documente (bonuri fiscale, facturi) și să deconteze diferența. Circuitul standard este: acordare — 542 = 5311; justificare pe cheltuieli — 6xx = 542; restituire numerar nefolosit — 5311 = 542. Un avans nejustificat la termenul stabilit de politica internă a firmei se poate imputa angajatului (461 \"Debitori diverși\").\n\n## Exemplu: Monografie contabilă — operațiuni cu numerar\nO societate SRL efectuează, într-o singură zi, următoarele operațiuni de casierie:\n\n**1. Ridicare numerar de la bancă pentru plata unui avans de trezorerie, 3.000 lei**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Foaie de vărsământ / chitanță bancă | 5311 \"Casa în lei\" | 5121 \"Conturi la bănci în lei\" | 3.000 |\n\n**2. Acordare avans de trezorerie unui angajat pentru achiziții de birou**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Dispoziție de plată | 542 \"Avansuri de trezorerie\" | 5311 \"Casa în lei\" | 800 |\n\n**3. Justificare avans — angajatul aduce bonuri fiscale în valoare de 650 lei (din care 542 lei materiale consumabile și 108 lei TVA deductibilă, cotă 21% aplicabilă de la 1 august 2025 conform Legii 141/2025) și restituie diferența în numerar**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Bonuri fiscale (decont de cheltuieli) | 302 \"Materiale consumabile\" | 542 | 542 |\n| Bonuri fiscale | 4426 \"TVA deductibilă\" | 542 | 108 |\n| Chitanță restituire | 5311 \"Casa în lei\" | 542 | 150 |\n\n**4. Depunere la bancă a numerarului încasat de la un client, 4.200 lei**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Foaie de vărsământ | 5121 \"Conturi la bănci în lei\" | 5311 \"Casa în lei\" | 4.200 |\n\nObservă că soldul contului 542 se închide complet la pasul 3 (800 = 542 + 108 + 150), deci nu rămân sume nejustificate în evidența avansurilor de trezorerie.\n\n## Exemplu: Monografie contabilă — virament intern și diferență de curs valutar\nO firmă transferă 10.000 EUR din contul în valută (5124) în contul în lei (5121), pentru a acoperi plăți curente. La data transferului cursul BNR este 5,0700 lei/EUR, iar suma fusese înregistrată inițial în 5124 la un curs istoric de 4,9800 lei/EUR (curs de la data încasării inițiale a valutei).\n\n**Pasul 1 — inițierea transferului prin contul de tranzit (581)**\n\n| Document | Cont debitor | Cont creditor | Sumă |\n|---|---|---|---|\n| Ordin de schimb valutar | 581 \"Viramente interne\" | 5124 \"Conturi la bănci în valută\" | 10.000 EUR × 4,9800 = 49.800 lei |\n\n**Pasul 2 — calculul diferenței de curs la data decontării**\n\nValoarea în lei la cursul zilei transferului: 10.000 EUR × 5,0700 = 50.700 lei.\nDiferență favorabilă de curs valutar: 50.700 − 49.800 = 900 lei.\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Notă contabilă | 581 \"Viramente interne\" | 765 \"Venituri din diferențe de curs valutar\" | 900 |\n\n**Pasul 3 — creditarea efectivă a contului în lei**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Extras de cont | 5121 \"Conturi la bănci în lei\" | 581 \"Viramente interne\" | 50.700 |\n\nDupă cele trei operațiuni, soldul contului 581 devine zero (49.800 + 900 = 50.700), ceea ce confirmă corectitudinea înregistrării — contul de viramente interne nu trebuie să rămână niciodată cu sold la finalul lunii, decât dacă există o sumă efectiv \"în tranzit\" la data raportării.\n\n> Temei legal: OMFP 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate Planul de conturi general — Clasa 5 \"Conturi de trezorerie\" (în vigoare de la 2015-01-01)\nFuncțiunea conturilor din clasa 5 (Casa, Conturi la bănci, Acreditive, Viramente interne) este stabilită prin Planul de conturi general anexat la OMFP 1802/2014, cu modificările și completările ulterioare. Reglementarea impune ca soldurile acestor conturi să fie confirmate prin inventariere (numerar faptic, extrase de cont, confirmări bancare) cel puțin o dată pe an, la data situațiilor financiare anuale.\n\n⚠ Contul 581 \"Viramente interne\" este exclusiv un cont de tranzit tehnic — nu trebuie confundat cu un cont de venituri sau cheltuieli și, corect utilizat, are întotdeauna sold zero la închiderea lunii. De asemenea, operațiunile cu numerar între operatori economici sunt supuse plafoanelor de disciplină financiară stabilite prin Legea nr. 70/2015 (republicată, cu modificări ulterioare); valorile exacte ale plafoanelor zilnice pentru încasări/plăți în numerar trebuie verificate la data operațiunii, întrucât au fost actualizate succesiv prin acte normative ulterioare. Nerespectarea acestor plafoane atrage sancțiuni contravenționale, ale căror cuantumuri trebuie de asemenea verificate în reglementările în vigoare la data faptei. Din perspectiva controlului intern, este recomandată separarea atribuțiilor: persoana care gestionează casieria nu ar trebui să fie și cea care aprobă/înregistrează operațiunile în contabilitate.\n\n## Exercițiu\nSocietatea ALFA SRL are, la începutul lunii, soldul inițial al contului 5121 \"Conturi la bănci în lei\" de 25.000 lei. În cursul lunii au loc următoarele operațiuni:\n\n1. Încasare de la un client prin virament bancar: 12.000 lei;\n2. Plată către un furnizor prin virament: 7.500 lei;\n3. Ridicare numerar de la bancă pentru casierie: 2.000 lei;\n4. Plată comision bancar de administrare cont, conform extrasului: 45 lei;\n5. Depunere la bancă a numerarului încasat de la clienți la casierie: 3.200 lei.\n\nCerințe: (a) înregistrează contabil toate operațiunile de mai sus; (b) calculează soldul final al contului 5121.\n\n**Soluție:** **(a) Înregistrări contabile**\n\n1. Încasare client prin virament: 5121 = 4111 \"Clienți\" — 12.000 lei\n2. Plată furnizor prin virament: 401 \"Furnizori\" = 5121 — 7.500 lei\n3. Ridicare numerar pentru casierie: 5311 \"Casa în lei\" = 5121 — 2.000 lei\n4. Comision bancar: 627 \"Cheltuieli cu serviciile bancare și asimilate\" = 5121 — 45 lei\n5. Depunere numerar la bancă: 5121 = 5311 \"Casa în lei\" — 3.200 lei\n\n**(b) Calcul sold final 5121**\n\nSold inițial: 25.000 lei\n+ Total intrări (debit): 12.000 (client) + 3.200 (depunere numerar) = 15.200 lei\n− Total ieșiri (credit): 7.500 (furnizor) + 2.000 (ridicare numerar) + 45 (comision) = 9.545 lei\n\nSold final = 25.000 + 15.200 − 9.545 = **30.655 lei**\n\nAcest sold trebuie să corespundă exact cu soldul final din extrasul de cont bancar al lunii respective; orice diferență impune un punctaj bancă pentru identificarea cauzei (operațiune neînregistrată, eroare de sumă sau decalaj de dată).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "clasa-5-trezorerie-structura",
+    "md": "## Clasa 5 \"Conturi de trezorerie\" — prezentare generală\n\nClasa 5 din Planul de conturi general (OMFP 1802/2014) grupează toate conturile prin care o firmă evidențiază disponibilitățile bănești, echivalentele de numerar și mișcările de fonduri pe termen scurt. Este clasa cu cea mai mare frecvență de utilizare zilnică într-o societate, pentru că orice încasare sau plată — indiferent de natura ei economică — se reflectă până la urmă printr-un cont din clasa 5.\n\nStructura pe grupe este următoarea:\n\n- **Grupa 50 \"Investiții pe termen scurt\"** — titluri de plasament, acțiuni proprii răscumpărate pe termen scurt (501, 505, 506, 508, 509);\n- **Grupa 51 \"Conturi la bănci\"** — 511 \"Valori de încasat\" (cecuri, efecte comerciale), 512 \"Conturi curente la bănci\", 518 \"Dobânzi\", 519 \"Credite bancare pe termen scurt\";\n- **Grupa 53 \"Casa\"** — 531 \"Casa\" (numerar efectiv) și 532 \"Alte valori\" (timbre, tichete, bilete de călătorie);\n- **Grupa 54 \"Acreditive\"** — 541 \"Acreditive\" și 542 \"Avansuri de trezorerie\";\n- **Grupa 58 \"Viramente interne\"** — 581, contul \"de tranzit\" folosit exclusiv pentru mișcările de fonduri între conturile proprii ale aceleiași entități.\n\nToate conturile de trezorerie sunt, prin natura lor, conturi de **activ** (cu excepția 519 \"Credite bancare pe termen scurt\", care este de pasiv, fiind o datorie). Se debitează cu intrările de numerar/disponibil și se creditează cu ieșirile. Soldul final debitor reprezintă disponibilul existent la data raportării și trebuie să corespundă cu soldul din registrul de casă, respectiv cu extrasul de cont bancar — aceasta este baza controlului intern minim pe care orice contabil trebuie să îl aplice lunar.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cont-531-casa",
+    "md": "## Contul 531 \"Casa\"\n\nContul 531 evidențiază numerarul efectiv aflat în casieria unității: bancnote și monede, atât în lei (5311), cât și în valută (5314). Se debitează cu încasările în numerar (de la clienți, avansuri restituite de angajați, ridicări de numerar de la bancă) și se creditează cu plățile în numerar (furnizori, avansuri spre decontare acordate angajaților, depuneri la bancă).\n\nÎn practică, gestiunea casei se bazează pe **Registrul de casă**, document zilnic în care se înscriu, în ordine cronologică, toate operațiunile: sold inițial, încasări, plăți, sold final. Soldul din registru trebuie să fie identic, în orice moment, cu soldul contabil al contului 5311/5314 și cu numerarul faptic constatat la un eventual control de casă (inventariere inopinată).\n\nContul 5314 \"Casa în valută\" ridică o particularitate suplimentară: la fiecare intrare/ieșire se folosește cursul valutar din ziua operațiunii, iar la închiderea lunii soldul se reevaluează la cursul BNR din ultima zi lucrătoare, generând diferențe de curs valutar favorabile (contul 765) sau nefavorabile (contul 665).",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cont-512-conturi-banci",
+    "md": "## Contul 512 \"Conturi curente la bănci\"\n\nContul 512 evidențiază disponibilitățile aflate în conturile bancare curente ale firmei: 5121 \"Conturi la bănci în lei\" și 5124 \"Conturi la bănci în valută\". Funcționarea este simetrică celei de la casă: se debitează cu încasările (de la clienți prin virament, credite trase, depuneri de numerar) și se creditează cu plățile (furnizori, salarii, taxe, ridicări de numerar).\n\nDocumentul justificativ de bază este **extrasul de cont**, emis de bancă, pe care contabilul îl reconciliază lunar cu rulajele din contabilitate. Diferențele apărute (de regulă comisioane bancare debitate direct de bancă și neînregistrate încă, sau operațiuni înregistrate în contabilitate dar neapărute în extras) se lămuresc printr-un **punctaj bancă** (bank reconciliation) — o practică obligatorie de control intern, chiar dacă OMFP 1802/2014 nu impune un format standard.\n\nContul 5125 \"Sume în curs de decontare\" are rol tehnic: reține temporar sumele transferate între conturi bancare proprii (de exemplu, de la banca A la banca B) în intervalul dintre debitarea la banca A și creditarea efectivă la banca B, evitând ca fondurile să \"dispară\" contabil pe durata decontării interbancare.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "acreditive-avansuri-trezorerie",
+    "md": "## Acreditive (541) și avansuri de trezorerie (542)\n\n**Acreditivul** (contul 541, cu 5411 în lei și 5412 în valută) este o sumă de bani pe care firma o blochează, la cererea sa, într-un cont distinct deschis la bancă, special afectat plății unui furnizor, condiționat de îndeplinirea unor documente contractuale (de regulă în tranzacții cu parteneri externi sau contracte cu valoare mare, unde furnizorul cere o garanție de plată). Deschiderea acreditivului se înregistrează 541 = 512 (transfer din contul curent), iar utilizarea lui la plata furnizorului se înregistrează 401 = 541. Dacă acreditivul nu se consumă integral, diferența neutilizată se reia în contul curent: 512 = 541.\n\n**Avansurile de trezorerie** (contul 542) reprezintă sumele puse la dispoziția angajaților (de regulă prin dispoziție de plată către casierie) pentru cheltuieli mărunte de aprovizionare, deplasare sau reprezentare, urmând ca beneficiarul să justifice ulterior utilizarea prin documente (bonuri fiscale, facturi) și să deconteze diferența. Circuitul standard este: acordare — 542 = 5311; justificare pe cheltuieli — 6xx = 542; restituire numerar nefolosit — 5311 = 542. Un avans nejustificat la termenul stabilit de politica internă a firmei se poate imputa angajatului (461 \"Debitori diverși\").",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b4"
+   },
+   {
+    "type": "example",
+    "title": "Monografie contabilă — operațiuni cu numerar",
+    "concept_key": "monografie-operatiuni-casa",
+    "md": "O societate SRL efectuează, într-o singură zi, următoarele operațiuni de casierie:\n\n**1. Ridicare numerar de la bancă pentru plata unui avans de trezorerie, 3.000 lei**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Foaie de vărsământ / chitanță bancă | 5311 \"Casa în lei\" | 5121 \"Conturi la bănci în lei\" | 3.000 |\n\n**2. Acordare avans de trezorerie unui angajat pentru achiziții de birou**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Dispoziție de plată | 542 \"Avansuri de trezorerie\" | 5311 \"Casa în lei\" | 800 |\n\n**3. Justificare avans — angajatul aduce bonuri fiscale în valoare de 650 lei (din care 542 lei materiale consumabile și 108 lei TVA deductibilă, cotă 21% aplicabilă de la 1 august 2025 conform Legii 141/2025) și restituie diferența în numerar**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Bonuri fiscale (decont de cheltuieli) | 302 \"Materiale consumabile\" | 542 | 542 |\n| Bonuri fiscale | 4426 \"TVA deductibilă\" | 542 | 108 |\n| Chitanță restituire | 5311 \"Casa în lei\" | 542 | 150 |\n\n**4. Depunere la bancă a numerarului încasat de la un client, 4.200 lei**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Foaie de vărsământ | 5121 \"Conturi la bănci în lei\" | 5311 \"Casa în lei\" | 4.200 |\n\nObservă că soldul contului 542 se închide complet la pasul 3 (800 = 542 + 108 + 150), deci nu rămân sume nejustificate în evidența avansurilor de trezorerie.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b5"
+   },
+   {
+    "type": "example",
+    "title": "Monografie contabilă — virament intern și diferență de curs valutar",
+    "concept_key": "monografie-diferente-curs-valutar-banca",
+    "md": "O firmă transferă 10.000 EUR din contul în valută (5124) în contul în lei (5121), pentru a acoperi plăți curente. La data transferului cursul BNR este 5,0700 lei/EUR, iar suma fusese înregistrată inițial în 5124 la un curs istoric de 4,9800 lei/EUR (curs de la data încasării inițiale a valutei).\n\n**Pasul 1 — inițierea transferului prin contul de tranzit (581)**\n\n| Document | Cont debitor | Cont creditor | Sumă |\n|---|---|---|---|\n| Ordin de schimb valutar | 581 \"Viramente interne\" | 5124 \"Conturi la bănci în valută\" | 10.000 EUR × 4,9800 = 49.800 lei |\n\n**Pasul 2 — calculul diferenței de curs la data decontării**\n\nValoarea în lei la cursul zilei transferului: 10.000 EUR × 5,0700 = 50.700 lei.\nDiferență favorabilă de curs valutar: 50.700 − 49.800 = 900 lei.\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Notă contabilă | 581 \"Viramente interne\" | 765 \"Venituri din diferențe de curs valutar\" | 900 |\n\n**Pasul 3 — creditarea efectivă a contului în lei**\n\n| Document | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Extras de cont | 5121 \"Conturi la bănci în lei\" | 581 \"Viramente interne\" | 50.700 |\n\nDupă cele trei operațiuni, soldul contului 581 devine zero (49.800 + 900 = 50.700), ceea ce confirmă corectitudinea înregistrării — contul de viramente interne nu trebuie să rămână niciodată cu sold la finalul lunii, decât dacă există o sumă efectiv \"în tranzit\" la data raportării.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate",
+    "article": "Planul de conturi general — Clasa 5 \"Conturi de trezorerie\"",
+    "effective": "2015-01-01",
+    "md": "Funcțiunea conturilor din clasa 5 (Casa, Conturi la bănci, Acreditive, Viramente interne) este stabilită prin Planul de conturi general anexat la OMFP 1802/2014, cu modificările și completările ulterioare. Reglementarea impune ca soldurile acestor conturi să fie confirmate prin inventariere (numerar faptic, extrase de cont, confirmări bancare) cel puțin o dată pe an, la data situațiilor financiare anuale.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Contul 581 \"Viramente interne\" este exclusiv un cont de tranzit tehnic — nu trebuie confundat cu un cont de venituri sau cheltuieli și, corect utilizat, are întotdeauna sold zero la închiderea lunii. De asemenea, operațiunile cu numerar între operatori economici sunt supuse plafoanelor de disciplină financiară stabilite prin Legea nr. 70/2015 (republicată, cu modificări ulterioare); valorile exacte ale plafoanelor zilnice pentru încasări/plăți în numerar trebuie verificate la data operațiunii, întrucât au fost actualizate succesiv prin acte normative ulterioare. Nerespectarea acestor plafoane atrage sancțiuni contravenționale, ale căror cuantumuri trebuie de asemenea verificate în reglementările în vigoare la data faptei. Din perspectiva controlului intern, este recomandată separarea atribuțiilor: persoana care gestionează casieria nu ar trebui să fie și cea care aprobă/înregistrează operațiunile în contabilitate.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Societatea ALFA SRL are, la începutul lunii, soldul inițial al contului 5121 \"Conturi la bănci în lei\" de 25.000 lei. În cursul lunii au loc următoarele operațiuni:\n\n1. Încasare de la un client prin virament bancar: 12.000 lei;\n2. Plată către un furnizor prin virament: 7.500 lei;\n3. Ridicare numerar de la bancă pentru casierie: 2.000 lei;\n4. Plată comision bancar de administrare cont, conform extrasului: 45 lei;\n5. Depunere la bancă a numerarului încasat de la clienți la casierie: 3.200 lei.\n\nCerințe: (a) înregistrează contabil toate operațiunile de mai sus; (b) calculează soldul final al contului 5121.",
+    "solution_md": "**(a) Înregistrări contabile**\n\n1. Încasare client prin virament: 5121 = 4111 \"Clienți\" — 12.000 lei\n2. Plată furnizor prin virament: 401 \"Furnizori\" = 5121 — 7.500 lei\n3. Ridicare numerar pentru casierie: 5311 \"Casa în lei\" = 5121 — 2.000 lei\n4. Comision bancar: 627 \"Cheltuieli cu serviciile bancare și asimilate\" = 5121 — 45 lei\n5. Depunere numerar la bancă: 5121 = 5311 \"Casa în lei\" — 3.200 lei\n\n**(b) Calcul sold final 5121**\n\nSold inițial: 25.000 lei\n+ Total intrări (debit): 12.000 (client) + 3.200 (depunere numerar) = 15.200 lei\n− Total ieșiri (credit): 7.500 (furnizor) + 2.000 (ridicare numerar) + 45 (comision) = 9.545 lei\n\nSold final = 25.000 + 15.200 − 9.545 = **30.655 lei**\n\nAcest sold trebuie să corespundă exact cu soldul final din extrasul de cont bancar al lunii respective; orice diferență impune un punctaj bancă pentru identificarea cauzei (operațiune neînregistrată, eroare de sumă sau decalaj de dată).",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cont din clasa 5 se folosește pentru a evidenția o sumă blocată la bancă drept garanție pentru plata unui furnizor, condiționată de documente contractuale?",
+    "choices": [
+     "531 \"Casa\"",
+     "541 \"Acreditive\"",
+     "581 \"Viramente interne\"",
+     "512 \"Conturi curente la bănci\""
+    ],
+    "answer": 1,
+    "explain": "Contul 541 \"Acreditive\" evidențiază exact sumele blocate la bancă în scopul garantării unei plăți viitoare către un furnizor, cu deschidere prin 541 = 512 și utilizare prin 401 = 541.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă transferă 15.000 lei din contul bancar A în contul bancar B, ambele conturi proprii. La finalul lunii, ce sold ar trebui să aibă, în mod normal, contul 581 \"Viramente interne\" folosit pentru acest transfer?",
+    "choices": [
+     "Egal cu suma transferată (15.000 lei), deoarece reprezintă o creanță internă",
+     "Zero, dacă transferul s-a decontat integral până la închiderea lunii",
+     "Sold creditor, echivalent unei datorii către bancă",
+     "Nu se folosește niciodată contul 581 pentru transferuri interbancare"
+    ],
+    "answer": 1,
+    "explain": "Contul 581 este un cont de tranzit: se debitează la ieșirea din contul sursă și se creditează la intrarea în contul destinație. Dacă decontarea s-a finalizat în aceeași lună, soldul contului la închidere este zero; un sold rămas ar indica o sumă efectiv \"în curs de decontare\" la data raportării.",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont sintetic din clasa 5 evidențiază numerarul efectiv în lei aflat în casieria firmei?",
+    "back": "Contul 5311 \"Casa în lei\", parte din grupa 53 \"Casa\".",
+    "concept_key": "cont-531-casa",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre conturile 5121 și 5124?",
+    "back": "5121 = \"Conturi la bănci în lei\"; 5124 = \"Conturi la bănci în valută\". Ambele fac parte din contul 512 \"Conturi curente la bănci\".",
+    "concept_key": "cont-512-conturi-banci",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un acreditiv (cont 541) și cum se deschide contabil?",
+    "back": "O sumă blocată la bancă drept garanție pentru plata unui furnizor, condiționată de documente contractuale; deschiderea se înregistrează 541 = 512 (transfer din contul curent).",
+    "concept_key": "acreditive-avansuri-trezorerie",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont se folosește pentru viramentele între conturile proprii ale aceleiași firme (ex. casă → bancă, bancă → bancă)?",
+    "back": "Contul 581 \"Viramente interne\", un cont de tranzit tehnic care trebuie să aibă sold zero la închiderea lunii, dacă decontarea s-a finalizat.",
+    "concept_key": "clasa-5-trezorerie-structura",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document reglementează circuitul unui avans de trezorerie (cont 542) acordat unui angajat?",
+    "back": "Acordare prin dispoziție de plată (542 = 5311), justificare pe cheltuieli cu documente (6xx = 542) și restituirea numerarului nefolosit (5311 = 542).",
+    "concept_key": "acreditive-avansuri-trezorerie",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce lege reglementează plafoanele operațiunilor cu numerar între operatori economici în România?",
+    "back": "Legea nr. 70/2015 (republicată, cu modificări ulterioare) privind disciplina financiară — valorile exacte ale plafoanelor trebuie verificate la data operațiunii.",
+    "concept_key": "clasa-5-trezorerie-structura",
+    "blockId": "cmjjuxw3m00cwumkppw3if6ud-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1633,
+   "flashcards": 6
+  }
+ }
+}

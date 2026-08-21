@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw4o00dmumkpptgpcmvi",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Raportare ANAF - SAF-T și e-Factura",
+ "lesson": "e-Factura și SPV",
+ "category": "FINANCE_OPS",
+ "content": "# e-Factura și SPV\n\n## Ce este e-Factura și SPV\n\n**e-Factura** este sistemul național de facturare electronică structurată, prin care facturile emise între operatori economici circulă printr-o platformă centrală administrată de ANAF: **SPV (Spațiul Privat Virtual)**. Nu este un simplu PDF trimis prin e-mail, ci un fișier XML structurat, validat semantic de sistemul ANAF, care devine astfel documentul fiscal cu valoare originală.\n\nCadrul legal s-a construit progresiv:\n- **OUG 120/2021** — introduce sistemul RO e-Factura și obligația de utilizare pentru relația B2G (business-to-government).\n- **Legea 296/2023** — extinde obligativitatea la relația **B2B** (business-to-business).\n- **OUG 69/2024** — clarifică mecanismul B2C și sancțiunile.\n- **OUG 89/2025** — modifică termenul de transmitere și extinde sfera de aplicare începând cu 1 ianuarie 2026.\n\nCalendarul obligativității pe care trebuie să-l reții:\n- **B2G** (facturi către instituții publice): obligatoriu din 2024.\n- **B2B** (facturi între firme, indiferent de mărime): obligatoriu de la **1 iulie 2024**.\n- **B2C** (facturi către persoane fizice): obligatoriu de la **1 ianuarie 2025** — cu excepția facturilor simplificate (bonuri fiscale cu valoare mică, de exemplu), care rămân exceptate.\n- Din **1 ianuarie 2026**, obligația s-a extins și la livrările interne efectuate către clienți înregistrați în scop de TVA în România, dar fără sediu fix pe teritoriul țării.\n\nPractic, dacă emiți facturi în activitatea curentă a firmei tale — indiferent de cifra de afaceri — ești obligat să treci prin SPV. Singura excepție reală este pentru facturile simplificate din zona B2C.\n\n## Formatul tehnic: RO_CIUS pe bază de UBL 2.1\n\nFactura electronică nu se transmite ca PDF sau Word, ci ca fișier **XML**, structurat conform standardului **UBL 2.1** (Universal Business Language), particularizat pentru România sub numele **RO_CIUS** (Core Invoice Usage Specification). Acest standard definește exact ce câmpuri sunt obligatorii, opționale și cum trebuie formatate (de exemplu: CIF-ul emitentului și al beneficiarului, codul de monedă, codurile de TVA pe fiecare linie, totalurile pe cote de TVA etc.).\n\nFluxul de validare are două niveluri:\n1. **Validare sintactică** — fișierul XML respectă schema RO_CIUS (structură, tipuri de date, câmpuri obligatorii).\n2. **Validare semantică** — regulile de business ale ANAF: de exemplu, ca suma liniilor de TVA să corespundă cotelor legale (21% sau 11%, conform cadrului în vigoare de la 1 august 2025), ca CIF-urile să fie valide, ca datele să fie coerente.\n\nProgramul folosit oficial de contribuabili și de dezvoltatorii de softuri pentru pre-validare se numește **DUKIntegrator**, pus la dispoziție de ANAF. Multe programe de contabilitate integrează deja acest validator, astfel încât eroarea să fie semnalată înainte de încărcarea efectivă în SPV.\n\nUn aspect esențial de reținut: din momentul în care factura este încărcată, validată și îi este alocat un index unic de către SPV, **acel document — cu antetul și semnătura electronică a Ministerului Finanțelor — devine exemplarul original al facturii**, indiferent ce format a folosit firma ta la generare. Factura pe hârtie sau PDF-ul trimis clientului rămâne doar o copie informativă.\n\n## Fluxul de transmitere și termenul legal\n\nProcesul tehnic de transmitere a unei facturi prin SPV parcurge, de regulă, următorii pași:\n\n1. **Generarea facturii** în softul de facturare/contabilitate al firmei, în format XML RO_CIUS.\n2. **Autentificarea** în SPV, fie cu certificat digital calificat, fie prin utilizator și parolă asociate contului SPV al firmei (împuternicire electronică).\n3. **Încărcarea (upload)** fișierului XML în sistem.\n4. **Validarea automată** — dacă fișierul respectă regulile sintactice și semantice, primește un index unic de încărcare.\n5. **Alocarea și semnarea** facturii de către sistemul ANAF, care o pune la dispoziția beneficiarului în propriul cont SPV.\n6. **Descărcarea confirmării** — atât emitentul, cât și beneficiarul pot descărca factura validată, cu antetul de semnătură electronică al MF.\n\nTermenul de transmitere este un element pe care legislația l-a schimbat recent, iar reținerea perioadelor de valabilitate este esențială:\n- Până la **31 decembrie 2025**: termenul de transmitere în SPV era de **5 zile calendaristice** de la data emiterii facturii.\n- De la **1 ianuarie 2026** (conform OUG 89/2025): termenul este de **5 zile lucrătoare** de la data emiterii facturii.\n\nDiferența dintre zile calendaristice și zile lucrătoare este semnificativă mai ales când în interval cad weekend-uri sau sărbători legale — o factură emisă vineri are, în noul regim, un termen efectiv mai lax decât în vechiul sistem, pentru că sâmbăta și duminica nu se numără.\n\n## Exemplu: Emiterea și transmiterea unei facturi B2B prin SPV\n**Situație:** SC CONSULT PRIM SRL (plătitoare de TVA) prestează servicii de consultanță către SC BETA INVEST SRL. Valoarea serviciilor este de 10.000 lei, cotă de TVA standard 21% (conform Legii 141/2025, aplicabilă din 1 august 2025).\n\n**Calcul factură:**\n- Bază impozabilă: 10.000 lei\n- TVA 21%: 2.100 lei\n- Total factură: 12.100 lei\n\n**Pași efectivi:**\n1. Contabilul SC CONSULT PRIM SRL generează factura direct din softul de facturare, care produce automat fișierul XML în format RO_CIUS UBL 2.1.\n2. Fișierul este pre-validat cu DUKIntegrator (integrat în soft) — nicio eroare de structură.\n3. Se încarcă în SPV folosind certificatul digital calificat al societății.\n4. SPV validează factura, îi alocă un index de încărcare (ex. nr. 5482910) și o pune la dispoziția SC BETA INVEST SRL în propriul cont SPV.\n5. Ambele firme descarcă exemplarul semnat electronic — acesta este documentul original, folosit ulterior atât pentru înregistrarea în contabilitate, cât și pentru deducerea TVA la beneficiar.\n\n**Notă:** dacă factura ar fi respinsă la validare (de exemplu, CIF greșit al beneficiarului), termenul de transmitere nu se întrerupe — firma trebuie să corecteze și să retrimită cât mai repede, în cadrul aceluiași termen legal.\n\n## Exemplu: Calculul termenului de transmitere în zile lucrătoare\n**Situație:** SC EXEMPLU SRL emite o factură către un client persoană juridică în data de **vineri, 10 iulie 2026**. Conform regulii aplicabile din 1 ianuarie 2026, termenul de transmitere în SPV este de **5 zile lucrătoare** de la data emiterii.\n\n**Numărare zile lucrătoare** (se exclud sâmbăta, duminica și sărbătorile legale):\n- Ziua 1: luni, 13 iulie 2026\n- Ziua 2: marți, 14 iulie 2026\n- Ziua 3: miercuri, 15 iulie 2026\n- Ziua 4: joi, 16 iulie 2026\n- Ziua 5: vineri, 17 iulie 2026\n\n**Concluzie:** termenul limită de transmitere a facturii în SPV este **17 iulie 2026**. Dacă în această perioadă ar fi picat o sărbătoare legală, termenul s-ar fi decalat cu o zi lucrătoare suplimentară.\n\nÎn vechiul regim (până la 31 decembrie 2025), aceeași factură emisă vineri ar fi avut termen calculat în zile calendaristice — adică miercuri, 15 iulie 2026 — deci un termen mai scurt cu 2 zile.\n\n> Temei legal: OUG 89/2025 privind modificarea termenului de transmitere a facturilor în sistemul RO e-Factura (în vigoare de la 2026-01-01)\nÎncepând cu **1 ianuarie 2026**, termenul de transmitere a facturilor electronice în SPV se calculează în **zile lucrătoare** (5 zile lucrătoare de la data emiterii facturii), înlocuind vechea regulă a celor 5 zile calendaristice aplicabilă până la 31 decembrie 2025. Actul extinde totodată obligativitatea e-Facturii și la livrările interne către clienți înregistrați în scop de TVA în România, dar fără sediu fix pe teritoriul țării.\n\n⚠ **Atenție la sancțiuni.** Nerespectarea termenului de transmitere a facturii în SPV este sancționată contravențional. Conform reglementărilor în vigoare la data redactării (iulie 2026), amenzile sunt diferențiate pe categorii de contribuabili: **5.000–10.000 lei** pentru contribuabilii mari, **2.500–5.000 lei** pentru cei mijlocii și **1.000–2.500 lei** pentru contribuabilii mici și persoanele fizice. Din **1 iulie 2025**, aceleași niveluri de sancțiuni se aplică și pentru neconformarea la obligațiile B2C. Deoarece cuantumurile amenzilor pot fi actualizate prin acte normative ulterioare, verifică întotdeauna nivelul aplicabil pe portalul ANAF sau cu un consultant fiscal înainte de a estima un risc concret.\n\n## Exercițiu\nSC MODEX SRL, contribuabil mijlociu, emite o factură B2B în data de **marți, 4 august 2026**, către un alt SRL. Din motive tehnice, factura este încărcată efectiv în SPV abia în data de **miercuri, 12 august 2026**.\n\nCerințe:\n1. Calculează termenul legal de transmitere (în zile lucrătoare), presupunând că nu există sărbători legale în interval.\n2. Stabilește dacă transmiterea din 12 august 2026 respectă sau depășește termenul legal.\n3. Precizează în ce plajă de amendă s-ar putea încadra firma, dacă ANAF ar constata întârzierea.\n\n**Soluție:** **1. Calculul termenului legal:**\nFactura este emisă marți, 4 august 2026. Se numără 5 zile lucrătoare:\n- Ziua 1: miercuri, 5 august 2026\n- Ziua 2: joi, 6 august 2026\n- Ziua 3: vineri, 7 august 2026\n- Ziua 4: luni, 10 august 2026\n- Ziua 5: marți, 11 august 2026\n\nTermenul legal de transmitere este **11 august 2026**.\n\n**2. Verificare conformitate:**\nFactura a fost încărcată efectiv pe **12 august 2026**, adică la o zi lucrătoare după termenul legal. Transmiterea este **tardivă**.\n\n**3. Încadrare sancțiune:**\nSC MODEX SRL este contribuabil mijlociu, deci s-ar încadra, conform reglementărilor în vigoare la data redactării (iulie 2026), în plaja de amendă de **2.500–5.000 lei**. Recomandarea practică este ca firma să documenteze cauza întârzierii (eroare tehnică, indisponibilitate SPV) și să verifice cu un consultant fiscal dacă există motive de circumstanțe atenuante, precum și nivelul actualizat al sancțiunilor la data constatării.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "e-factura-cadru-legal",
+    "md": "## Ce este e-Factura și SPV\n\n**e-Factura** este sistemul național de facturare electronică structurată, prin care facturile emise între operatori economici circulă printr-o platformă centrală administrată de ANAF: **SPV (Spațiul Privat Virtual)**. Nu este un simplu PDF trimis prin e-mail, ci un fișier XML structurat, validat semantic de sistemul ANAF, care devine astfel documentul fiscal cu valoare originală.\n\nCadrul legal s-a construit progresiv:\n- **OUG 120/2021** — introduce sistemul RO e-Factura și obligația de utilizare pentru relația B2G (business-to-government).\n- **Legea 296/2023** — extinde obligativitatea la relația **B2B** (business-to-business).\n- **OUG 69/2024** — clarifică mecanismul B2C și sancțiunile.\n- **OUG 89/2025** — modifică termenul de transmitere și extinde sfera de aplicare începând cu 1 ianuarie 2026.\n\nCalendarul obligativității pe care trebuie să-l reții:\n- **B2G** (facturi către instituții publice): obligatoriu din 2024.\n- **B2B** (facturi între firme, indiferent de mărime): obligatoriu de la **1 iulie 2024**.\n- **B2C** (facturi către persoane fizice): obligatoriu de la **1 ianuarie 2025** — cu excepția facturilor simplificate (bonuri fiscale cu valoare mică, de exemplu), care rămân exceptate.\n- Din **1 ianuarie 2026**, obligația s-a extins și la livrările interne efectuate către clienți înregistrați în scop de TVA în România, dar fără sediu fix pe teritoriul țării.\n\nPractic, dacă emiți facturi în activitatea curentă a firmei tale — indiferent de cifra de afaceri — ești obligat să treci prin SPV. Singura excepție reală este pentru facturile simplificate din zona B2C.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "format-ubl-ro-cius",
+    "md": "## Formatul tehnic: RO_CIUS pe bază de UBL 2.1\n\nFactura electronică nu se transmite ca PDF sau Word, ci ca fișier **XML**, structurat conform standardului **UBL 2.1** (Universal Business Language), particularizat pentru România sub numele **RO_CIUS** (Core Invoice Usage Specification). Acest standard definește exact ce câmpuri sunt obligatorii, opționale și cum trebuie formatate (de exemplu: CIF-ul emitentului și al beneficiarului, codul de monedă, codurile de TVA pe fiecare linie, totalurile pe cote de TVA etc.).\n\nFluxul de validare are două niveluri:\n1. **Validare sintactică** — fișierul XML respectă schema RO_CIUS (structură, tipuri de date, câmpuri obligatorii).\n2. **Validare semantică** — regulile de business ale ANAF: de exemplu, ca suma liniilor de TVA să corespundă cotelor legale (21% sau 11%, conform cadrului în vigoare de la 1 august 2025), ca CIF-urile să fie valide, ca datele să fie coerente.\n\nProgramul folosit oficial de contribuabili și de dezvoltatorii de softuri pentru pre-validare se numește **DUKIntegrator**, pus la dispoziție de ANAF. Multe programe de contabilitate integrează deja acest validator, astfel încât eroarea să fie semnalată înainte de încărcarea efectivă în SPV.\n\nUn aspect esențial de reținut: din momentul în care factura este încărcată, validată și îi este alocat un index unic de către SPV, **acel document — cu antetul și semnătura electronică a Ministerului Finanțelor — devine exemplarul original al facturii**, indiferent ce format a folosit firma ta la generare. Factura pe hârtie sau PDF-ul trimis clientului rămâne doar o copie informativă.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "proces-transmitere-spv",
+    "md": "## Fluxul de transmitere și termenul legal\n\nProcesul tehnic de transmitere a unei facturi prin SPV parcurge, de regulă, următorii pași:\n\n1. **Generarea facturii** în softul de facturare/contabilitate al firmei, în format XML RO_CIUS.\n2. **Autentificarea** în SPV, fie cu certificat digital calificat, fie prin utilizator și parolă asociate contului SPV al firmei (împuternicire electronică).\n3. **Încărcarea (upload)** fișierului XML în sistem.\n4. **Validarea automată** — dacă fișierul respectă regulile sintactice și semantice, primește un index unic de încărcare.\n5. **Alocarea și semnarea** facturii de către sistemul ANAF, care o pune la dispoziția beneficiarului în propriul cont SPV.\n6. **Descărcarea confirmării** — atât emitentul, cât și beneficiarul pot descărca factura validată, cu antetul de semnătură electronică al MF.\n\nTermenul de transmitere este un element pe care legislația l-a schimbat recent, iar reținerea perioadelor de valabilitate este esențială:\n- Până la **31 decembrie 2025**: termenul de transmitere în SPV era de **5 zile calendaristice** de la data emiterii facturii.\n- De la **1 ianuarie 2026** (conform OUG 89/2025): termenul este de **5 zile lucrătoare** de la data emiterii facturii.\n\nDiferența dintre zile calendaristice și zile lucrătoare este semnificativă mai ales când în interval cad weekend-uri sau sărbători legale — o factură emisă vineri are, în noul regim, un termen efectiv mai lax decât în vechiul sistem, pentru că sâmbăta și duminica nu se numără.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b3"
+   },
+   {
+    "type": "example",
+    "title": "Emiterea și transmiterea unei facturi B2B prin SPV",
+    "concept_key": "proces-transmitere-spv",
+    "md": "**Situație:** SC CONSULT PRIM SRL (plătitoare de TVA) prestează servicii de consultanță către SC BETA INVEST SRL. Valoarea serviciilor este de 10.000 lei, cotă de TVA standard 21% (conform Legii 141/2025, aplicabilă din 1 august 2025).\n\n**Calcul factură:**\n- Bază impozabilă: 10.000 lei\n- TVA 21%: 2.100 lei\n- Total factură: 12.100 lei\n\n**Pași efectivi:**\n1. Contabilul SC CONSULT PRIM SRL generează factura direct din softul de facturare, care produce automat fișierul XML în format RO_CIUS UBL 2.1.\n2. Fișierul este pre-validat cu DUKIntegrator (integrat în soft) — nicio eroare de structură.\n3. Se încarcă în SPV folosind certificatul digital calificat al societății.\n4. SPV validează factura, îi alocă un index de încărcare (ex. nr. 5482910) și o pune la dispoziția SC BETA INVEST SRL în propriul cont SPV.\n5. Ambele firme descarcă exemplarul semnat electronic — acesta este documentul original, folosit ulterior atât pentru înregistrarea în contabilitate, cât și pentru deducerea TVA la beneficiar.\n\n**Notă:** dacă factura ar fi respinsă la validare (de exemplu, CIF greșit al beneficiarului), termenul de transmitere nu se întrerupe — firma trebuie să corecteze și să retrimită cât mai repede, în cadrul aceluiași termen legal.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul termenului de transmitere în zile lucrătoare",
+    "concept_key": "proces-transmitere-spv",
+    "md": "**Situație:** SC EXEMPLU SRL emite o factură către un client persoană juridică în data de **vineri, 10 iulie 2026**. Conform regulii aplicabile din 1 ianuarie 2026, termenul de transmitere în SPV este de **5 zile lucrătoare** de la data emiterii.\n\n**Numărare zile lucrătoare** (se exclud sâmbăta, duminica și sărbătorile legale):\n- Ziua 1: luni, 13 iulie 2026\n- Ziua 2: marți, 14 iulie 2026\n- Ziua 3: miercuri, 15 iulie 2026\n- Ziua 4: joi, 16 iulie 2026\n- Ziua 5: vineri, 17 iulie 2026\n\n**Concluzie:** termenul limită de transmitere a facturii în SPV este **17 iulie 2026**. Dacă în această perioadă ar fi picat o sărbătoare legală, termenul s-ar fi decalat cu o zi lucrătoare suplimentară.\n\nÎn vechiul regim (până la 31 decembrie 2025), aceeași factură emisă vineri ar fi avut termen calculat în zile calendaristice — adică miercuri, 15 iulie 2026 — deci un termen mai scurt cu 2 zile.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OUG 89/2025",
+    "article": "privind modificarea termenului de transmitere a facturilor în sistemul RO e-Factura",
+    "effective": "2026-01-01",
+    "md": "Începând cu **1 ianuarie 2026**, termenul de transmitere a facturilor electronice în SPV se calculează în **zile lucrătoare** (5 zile lucrătoare de la data emiterii facturii), înlocuind vechea regulă a celor 5 zile calendaristice aplicabilă până la 31 decembrie 2025. Actul extinde totodată obligativitatea e-Facturii și la livrările interne către clienți înregistrați în scop de TVA în România, dar fără sediu fix pe teritoriul țării.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Atenție la sancțiuni.** Nerespectarea termenului de transmitere a facturii în SPV este sancționată contravențional. Conform reglementărilor în vigoare la data redactării (iulie 2026), amenzile sunt diferențiate pe categorii de contribuabili: **5.000–10.000 lei** pentru contribuabilii mari, **2.500–5.000 lei** pentru cei mijlocii și **1.000–2.500 lei** pentru contribuabilii mici și persoanele fizice. Din **1 iulie 2025**, aceleași niveluri de sancțiuni se aplică și pentru neconformarea la obligațiile B2C. Deoarece cuantumurile amenzilor pot fi actualizate prin acte normative ulterioare, verifică întotdeauna nivelul aplicabil pe portalul ANAF sau cu un consultant fiscal înainte de a estima un risc concret.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "SC MODEX SRL, contribuabil mijlociu, emite o factură B2B în data de **marți, 4 august 2026**, către un alt SRL. Din motive tehnice, factura este încărcată efectiv în SPV abia în data de **miercuri, 12 august 2026**.\n\nCerințe:\n1. Calculează termenul legal de transmitere (în zile lucrătoare), presupunând că nu există sărbători legale în interval.\n2. Stabilește dacă transmiterea din 12 august 2026 respectă sau depășește termenul legal.\n3. Precizează în ce plajă de amendă s-ar putea încadra firma, dacă ANAF ar constata întârzierea.",
+    "solution_md": "**1. Calculul termenului legal:**\nFactura este emisă marți, 4 august 2026. Se numără 5 zile lucrătoare:\n- Ziua 1: miercuri, 5 august 2026\n- Ziua 2: joi, 6 august 2026\n- Ziua 3: vineri, 7 august 2026\n- Ziua 4: luni, 10 august 2026\n- Ziua 5: marți, 11 august 2026\n\nTermenul legal de transmitere este **11 august 2026**.\n\n**2. Verificare conformitate:**\nFactura a fost încărcată efectiv pe **12 august 2026**, adică la o zi lucrătoare după termenul legal. Transmiterea este **tardivă**.\n\n**3. Încadrare sancțiune:**\nSC MODEX SRL este contribuabil mijlociu, deci s-ar încadra, conform reglementărilor în vigoare la data redactării (iulie 2026), în plaja de amendă de **2.500–5.000 lei**. Recomandarea practică este ca firma să documenteze cauza întârzierii (eroare tehnică, indisponibilitate SPV) și să verifice cu un consultant fiscal dacă există motive de circumstanțe atenuante, precum și nivelul actualizat al sancțiunilor la data constatării.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De la ce dată este obligatorie e-Factura pentru facturile B2C (către persoane fizice), cu excepția facturilor simplificate?",
+    "choices": [
+     "1 iulie 2024",
+     "1 ianuarie 2025",
+     "1 ianuarie 2026",
+     "1 august 2025"
+    ],
+    "answer": 1,
+    "explain": "Obligativitatea e-Factura pentru relația B2C a intrat în vigoare la 1 ianuarie 2025; facturile simplificate rămân exceptate. B2B fusese deja obligatoriu din 1 iulie 2024.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cum se calculează, de la 1 ianuarie 2026, termenul de transmitere a unei facturi în SPV?",
+    "choices": [
+     "5 zile calendaristice de la data emiterii facturii",
+     "5 zile lucrătoare de la data emiterii facturii",
+     "10 zile lucrătoare de la data încasării facturii",
+     "3 zile lucrătoare de la validarea semnăturii electronice"
+    ],
+    "answer": 1,
+    "explain": "Conform OUG 89/2025, de la 1 ianuarie 2026 termenul de transmitere s-a schimbat din 5 zile calendaristice (valabil până la 31 decembrie 2025) în 5 zile lucrătoare de la data emiterii facturii.",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce format tehnic folosește factura electronică transmisă prin SPV?",
+    "back": "XML structurat conform standardului RO_CIUS, bazat pe UBL 2.1 (Universal Business Language).",
+    "concept_key": "format-ubl-ro-cius",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De la ce dată este obligatorie e-Factura pentru relația B2B (business-to-business)?",
+    "back": "De la 1 iulie 2024, conform Legii 296/2023.",
+    "concept_key": "e-factura-cadru-legal",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de transmitere a facturii în SPV începând cu 1 ianuarie 2026?",
+    "back": "5 zile lucrătoare de la data emiterii facturii (anterior, până la 31 decembrie 2025, era de 5 zile calendaristice), conform OUG 89/2025.",
+    "concept_key": "proces-transmitere-spv",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care document este considerat exemplarul original al facturii, odată transmisă prin SPV?",
+    "back": "Factura validată și semnată electronic de Ministerul Finanțelor, descărcată din SPV — nu PDF-ul sau hârtia emise inițial de firmă.",
+    "concept_key": "format-ubl-ro-cius",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce instrument oficial folosește ANAF pentru pre-validarea facturilor RO_CIUS?",
+    "back": "DUKIntegrator — validatorul pus la dispoziție de ANAF, adesea integrat direct în softurile de facturare/contabilitate.",
+    "concept_key": "format-ubl-ro-cius",
+    "blockId": "cmjjuxw4o00dmumkpptgpcmvi-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1432,
+   "flashcards": 5
+  }
+ }
+}

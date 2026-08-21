@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxwig00p3umkpl1xg5ktn",
+ "courseId": "cmjjuxwhc00obumkpfv2f5s1h",
+ "course": "Time Management și Productivitate",
+ "module": "Planificare și Execuție",
+ "lesson": "Template planificare săptămânală",
+ "category": "SOFT_SKILLS",
+ "content": "# Template planificare săptămânală\n\nUn template de planificare săptămânală nu este un simplu tabel Excel — este ritualul care transformă intențiile în rezultate. Diferența dintre o listă zilnică de sarcini (\"to-do list\") și o planificare săptămânală structurată ține de perspectivă: lista zilnică te ține prins în urgențele zilei, în timp ce planificarea săptămânală te obligă să privești imaginea de ansamblu înainte de a intra în detalii.\n\nCercetările din psihologia productivității arată consecvent că persoanele care își planifică săptămâna în avans, alocând timp explicit pentru sarcinile importante (nu doar pentru cele urgente), raportează un nivel mai scăzut de stres și o rată mai mare de finalizare a obiectivelor pe termen mediu. Motivul este simplu: dacă nu rezervi tu timp pentru ceea ce contează cu adevărat, calendarul tău va fi ocupat automat de ce e urgent pentru altcineva — e-mailuri, ședințe convocate pe loc, întreruperi colegiale.\n\nUn template bun de planificare săptămânală îndeplinește trei funcții esențiale:\n\n1. **Claritate** — știi exact care sunt cele 3-5 rezultate cheie ale săptămânii, nu o listă nesfârșită de task-uri fără prioritate.\n2. **Alocare realistă** — transformi obiectivele în blocuri concrete de timp în calendar (time blocking), nu doar în intenții vagi de genul \"mă ocup săptămâna asta de...\".\n3. **Flexibilitate controlată** — lași loc pentru neprevăzut, astfel încât o singură urgență să nu dărâme tot planul săptămânii.\n\nUn template de planificare săptămânală eficient are, de regulă, patru secțiuni fixe. Nu contează dacă îl construiești în Excel, Google Sheets sau pe hârtie — structura contează mai mult decât instrumentul.\n\n**1. Obiectivele săptămânii (3-5 rezultate cheie).** Nu confunda obiectivele cu sarcinile. Un obiectiv este un rezultat măsurabil (\"trimit oferta finalizată către client\"), nu o activitate vagă (\"lucrez la ofertă\"). Limitarea la 3-5 obiective forțează prioritizarea — dacă totul e prioritate, nimic nu mai e.\n\n**2. Grila de time blocking pe zile.** O grilă cu zilele săptămânii pe coloane și intervale orare pe rânduri (de exemplu, blocuri de o oră sau de 90 de minute). Aici muți fiecare obiectiv din secțiunea 1 într-un slot concret. Recomandarea de bază: plasează sarcinile care cer concentrare profundă (\"deep work\") în intervalele tale de energie maximă — pentru majoritatea oamenilor, prima parte a dimineții.\n\n**3. Blocuri de buffer (timp tampon).** Rezervă în mod deliberat intervale libere, nealocate niciunei sarcini fixe. Acestea absorb întârzierile, urgențele și sarcinile administrative care apar neanunțat. Fără buffer, orice întrerupere de 20 de minute strică toată secvența plănuită pentru restul zilei.\n\n**4. Secțiunea de revizuire.** La finalul săptămânii, câteva rânduri pentru: ce a fost dus la capăt, ce a rămas neterminat și de ce, ce se mută în săptămâna următoare. Fără această buclă de feedback, planificarea devine un exercițiu mecanic care nu te ajută să te îmbunătățești.\n\nPlanificarea săptămânală funcționează doar dacă devine un ritual fix, nu o activitate ad-hoc făcută \"quando ai timp\". Recomandarea validată de practica majorității consultanților în productivitate este o sesiune scurtă în două etape.\n\n**Etapa 1 — vineri după-amiază (20-30 minute).** Închei săptămâna în curs: bifezi ce ai realizat, notezi ce a rămas neterminat și schițezi obiectivele preliminare pentru săptămâna următoare, cât timp contextul e încă proaspăt în minte. Este mult mai ușor să evaluezi o săptămână la finalul ei decât luni dimineața, când ai uitat deja jumătate din detalii.\n\n**Etapa 2 — duminică seara sau luni dimineața devreme (10-15 minute).** Verifici schița din vineri în raport cu calendarul actualizat (ședințe noi apărute, termene modificate) și o transformi în planul final, cu blocuri de timp concrete.\n\nPașii concreți ai sesiunii de planificare sunt:\n1. Revizuiește săptămâna anterioară (ce a mers, ce nu).\n2. Notează 3-5 obiective cheie pentru săptămâna următoare.\n3. Alocă fiecărui obiectiv un bloc de timp concret în grilă.\n4. Identifică riscurile previzibile (ședințe recurente, termene de raportare, concedii ale colegilor).\n5. Rezervă explicit blocurile de buffer — nu le lăsa \"implicite\" prin golurile rămase din calendar.\n\n## Exemplu: Template completat — manager de proiect la o firmă de implementare ERP\nAna este manager de proiect la o firmă SRL care implementează soluții ERP pentru clienți din retail. Iată cum arată secțiunea de obiective și grila ei de time blocking pentru o săptămână obișnuită:\n\n**Obiectivele săptămânii:**\n1. Finalizare document de specificații pentru modulul de facturare (client Alfa Distribuție SRL)\n2. Interviuri pentru 2 candidați la poziția de consultant junior\n3. Pregătire prezentare de buget trimestrial pentru consiliul de administrație\n4. Follow-up telefonic cu 3 clienți ale căror contracte de mentenanță expiră luna viitoare\n5. Revizuire proces intern de onboarding pentru noii consultanți\n\n**Grila de time blocking (extras Luni-Miercuri):**\n\n| Interval | Luni | Marți | Miercuri |\n|---|---|---|---|\n| 08:00-10:00 | Deep work: specificații facturare (obiectiv 1) | Deep work: specificații facturare (obiectiv 1) | Pregătire prezentare buget (obiectiv 3) |\n| 10:00-11:00 | Ședință echipă de proiect | Buffer (probleme urgente client) | Interviu candidat 1 (obiectiv 2) |\n| 11:00-13:00 | Follow-up clienți contracte (obiectiv 4) | Interviu candidat 2 (obiectiv 2) | Deep work: prezentare buget |\n| 14:00-16:00 | E-mailuri, administrativ | Revizuire onboarding (obiectiv 5) | Buffer |\n| 16:00-17:00 | Buffer | Follow-up clienți contracte | Ședință status cu sponsorul de proiect |\n\nObservă cum fiecare din cele 5 obiective are cel puțin un bloc dedicat, iar buffer-ul apare de cel puțin două ori pe zi — nu doar o dată pe săptămână.\n\n## Exemplu: Cum ajustezi template-ul când apare o urgență neprevăzută\nRevenim la Ana. Miercuri la ora 9:15, în timp ce lucra la prezentarea de buget, primește un telefon: serverul de producție al unui client important a picat, iar echipa tehnică are nevoie de ea pentru a coordona comunicarea cu clientul.\n\nFără template și fără buffer, această urgență ar da peste cap toată ziua — inclusiv interviul cu candidatul, programat la 10:00. Pentru că Ana are blocuri de buffer prevăzute (10:00-11:00 și 14:00-16:00), procedează astfel:\n\n1. Folosește imediat blocul de buffer de la 10:00 pentru a gestiona criza, în loc să sacrifice un bloc deja alocat unui obiectiv.\n2. Mută interviul cu candidatul (care era programat exact în acel interval, conform planului inițial de miercuri) în blocul de buffer de la 14:00, trimițând un mesaj scurt candidatului pentru reprogramare cu o oră.\n3. Blocul \"Deep work: prezentare buget\" de la 11:00-13:00 rămâne neatins — pentru că nu s-a folosit buffer pe acesta, obiectivul 3 nu este afectat.\n4. La sesiunea de revizuire de vineri, notează în secțiunea de feedback: \"Criza de miercuri a consumat ambele blocuri de buffer din ziua respectivă — de verificat dacă acest client are nevoie de un plan de mentenanță preventivă, pentru a reduce frecvența urgențelor.\"\n\nAcest exemplu arată exact rolul buffer-ului: nu este timp \"pierdut\", ci capacitate de rezervă care protejează restul planului.\n\n⚠ Cea mai frecventă greșeală la construirea unui template de planificare săptămânală este supra-planificarea: alocarea a 100% din timpul disponibil unor sarcini fixe, fără niciun bloc de buffer. Rezultatul este un plan frumos pe hârtie, dar care se destramă la prima întrerupere neprevăzută — și, în timp, duce la sentimentul fals că \"planificarea nu funcționează\", când, de fapt, planul nu a lăsat loc realității.\n\n## Exercițiu\nMihai este PFA și lucrează ca și contabil colaborator pentru 3 clienți SRL de dimensiuni medii. Săptămâna viitoare are următoarele sarcini de dus la capăt:\n- Pregătirea și transmiterea declarației unice pentru un client cu termen apropiat\n- Reconcilierea balanței de verificare pentru clientul B (proces care necesită concentrare de 3-4 ore neîntrerupte)\n- Două ședințe de consultanță fiscală, deja fixate în calendar (marți 11:00 și joi 15:00)\n- Actualizarea evidenței cheltuielilor deductibile pentru clientul C\n\nConstruiește pentru Mihai o secțiune de \"Obiective ale săptămânii\" (maximum 4 obiective) și o schiță de time blocking pentru zilele de luni și marți, incluzând cel puțin un bloc de buffer pe zi.\n\n**Soluție:** **Obiectivele săptămânii ale lui Mihai (4 obiective):**\n1. Transmiterea declarației unice pentru clientul A, înainte de termenul-limită\n2. Finalizarea reconcilierii balanței de verificare pentru clientul B\n3. Susținerea celor două ședințe de consultanță fiscală deja programate\n4. Actualizarea evidenței cheltuielilor deductibile pentru clientul C\n\n**Schiță time blocking:**\n\n| Interval | Luni | Marți |\n|---|---|---|\n| 09:00-12:00 | Deep work: reconciliere balanță client B (obiectiv 2) | Deep work: continuare reconciliere client B (obiectiv 2) |\n| 12:00-13:00 | Buffer | Pregătire materiale pentru ședința de consultanță de la 11:00 (mutată aici pentru revizuire finală) |\n| — | — | 11:00-12:00 rezervat pentru ședința fixă — n.b. pe grila reală, acest bloc apare direct la ora fixă |\n| 14:00-16:00 | Declarație unică client A (obiectiv 1) | Actualizare evidență cheltuieli client C (obiectiv 4) |\n| 16:00-17:00 | Buffer | Buffer |\n\nObservație: în varianta finală, ședința fixă de marți 11:00 rămâne exact la ora ei din calendar; celelalte blocuri se construiesc în jurul acesteia. Fiecare zi are minimum un bloc de buffer, iar cele 4 obiective au fiecare un slot dedicat de lucru efectiv, nu doar o mențiune vagă pe listă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "scopul-planificarii-saptamanale",
+    "md": "Un template de planificare săptămânală nu este un simplu tabel Excel — este ritualul care transformă intențiile în rezultate. Diferența dintre o listă zilnică de sarcini (\"to-do list\") și o planificare săptămânală structurată ține de perspectivă: lista zilnică te ține prins în urgențele zilei, în timp ce planificarea săptămânală te obligă să privești imaginea de ansamblu înainte de a intra în detalii.\n\nCercetările din psihologia productivității arată consecvent că persoanele care își planifică săptămâna în avans, alocând timp explicit pentru sarcinile importante (nu doar pentru cele urgente), raportează un nivel mai scăzut de stres și o rată mai mare de finalizare a obiectivelor pe termen mediu. Motivul este simplu: dacă nu rezervi tu timp pentru ceea ce contează cu adevărat, calendarul tău va fi ocupat automat de ce e urgent pentru altcineva — e-mailuri, ședințe convocate pe loc, întreruperi colegiale.\n\nUn template bun de planificare săptămânală îndeplinește trei funcții esențiale:\n\n1. **Claritate** — știi exact care sunt cele 3-5 rezultate cheie ale săptămânii, nu o listă nesfârșită de task-uri fără prioritate.\n2. **Alocare realistă** — transformi obiectivele în blocuri concrete de timp în calendar (time blocking), nu doar în intenții vagi de genul \"mă ocup săptămâna asta de...\".\n3. **Flexibilitate controlată** — lași loc pentru neprevăzut, astfel încât o singură urgență să nu dărâme tot planul săptămânii.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "structura-template-planificare-saptamanala",
+    "md": "Un template de planificare săptămânală eficient are, de regulă, patru secțiuni fixe. Nu contează dacă îl construiești în Excel, Google Sheets sau pe hârtie — structura contează mai mult decât instrumentul.\n\n**1. Obiectivele săptămânii (3-5 rezultate cheie).** Nu confunda obiectivele cu sarcinile. Un obiectiv este un rezultat măsurabil (\"trimit oferta finalizată către client\"), nu o activitate vagă (\"lucrez la ofertă\"). Limitarea la 3-5 obiective forțează prioritizarea — dacă totul e prioritate, nimic nu mai e.\n\n**2. Grila de time blocking pe zile.** O grilă cu zilele săptămânii pe coloane și intervale orare pe rânduri (de exemplu, blocuri de o oră sau de 90 de minute). Aici muți fiecare obiectiv din secțiunea 1 într-un slot concret. Recomandarea de bază: plasează sarcinile care cer concentrare profundă (\"deep work\") în intervalele tale de energie maximă — pentru majoritatea oamenilor, prima parte a dimineții.\n\n**3. Blocuri de buffer (timp tampon).** Rezervă în mod deliberat intervale libere, nealocate niciunei sarcini fixe. Acestea absorb întârzierile, urgențele și sarcinile administrative care apar neanunțat. Fără buffer, orice întrerupere de 20 de minute strică toată secvența plănuită pentru restul zilei.\n\n**4. Secțiunea de revizuire.** La finalul săptămânii, câteva rânduri pentru: ce a fost dus la capăt, ce a rămas neterminat și de ce, ce se mută în săptămâna următoare. Fără această buclă de feedback, planificarea devine un exercițiu mecanic care nu te ajută să te îmbunătățești.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ritualul-planificarii-saptamanale",
+    "md": "Planificarea săptămânală funcționează doar dacă devine un ritual fix, nu o activitate ad-hoc făcută \"quando ai timp\". Recomandarea validată de practica majorității consultanților în productivitate este o sesiune scurtă în două etape.\n\n**Etapa 1 — vineri după-amiază (20-30 minute).** Închei săptămâna în curs: bifezi ce ai realizat, notezi ce a rămas neterminat și schițezi obiectivele preliminare pentru săptămâna următoare, cât timp contextul e încă proaspăt în minte. Este mult mai ușor să evaluezi o săptămână la finalul ei decât luni dimineața, când ai uitat deja jumătate din detalii.\n\n**Etapa 2 — duminică seara sau luni dimineața devreme (10-15 minute).** Verifici schița din vineri în raport cu calendarul actualizat (ședințe noi apărute, termene modificate) și o transformi în planul final, cu blocuri de timp concrete.\n\nPașii concreți ai sesiunii de planificare sunt:\n1. Revizuiește săptămâna anterioară (ce a mers, ce nu).\n2. Notează 3-5 obiective cheie pentru săptămâna următoare.\n3. Alocă fiecărui obiectiv un bloc de timp concret în grilă.\n4. Identifică riscurile previzibile (ședințe recurente, termene de raportare, concedii ale colegilor).\n5. Rezervă explicit blocurile de buffer — nu le lăsa \"implicite\" prin golurile rămase din calendar.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b3"
+   },
+   {
+    "type": "example",
+    "title": "Template completat — manager de proiect la o firmă de implementare ERP",
+    "concept_key": "exemplu-template-completat-manager-proiect",
+    "md": "Ana este manager de proiect la o firmă SRL care implementează soluții ERP pentru clienți din retail. Iată cum arată secțiunea de obiective și grila ei de time blocking pentru o săptămână obișnuită:\n\n**Obiectivele săptămânii:**\n1. Finalizare document de specificații pentru modulul de facturare (client Alfa Distribuție SRL)\n2. Interviuri pentru 2 candidați la poziția de consultant junior\n3. Pregătire prezentare de buget trimestrial pentru consiliul de administrație\n4. Follow-up telefonic cu 3 clienți ale căror contracte de mentenanță expiră luna viitoare\n5. Revizuire proces intern de onboarding pentru noii consultanți\n\n**Grila de time blocking (extras Luni-Miercuri):**\n\n| Interval | Luni | Marți | Miercuri |\n|---|---|---|---|\n| 08:00-10:00 | Deep work: specificații facturare (obiectiv 1) | Deep work: specificații facturare (obiectiv 1) | Pregătire prezentare buget (obiectiv 3) |\n| 10:00-11:00 | Ședință echipă de proiect | Buffer (probleme urgente client) | Interviu candidat 1 (obiectiv 2) |\n| 11:00-13:00 | Follow-up clienți contracte (obiectiv 4) | Interviu candidat 2 (obiectiv 2) | Deep work: prezentare buget |\n| 14:00-16:00 | E-mailuri, administrativ | Revizuire onboarding (obiectiv 5) | Buffer |\n| 16:00-17:00 | Buffer | Follow-up clienți contracte | Ședință status cu sponsorul de proiect |\n\nObservă cum fiecare din cele 5 obiective are cel puțin un bloc dedicat, iar buffer-ul apare de cel puțin două ori pe zi — nu doar o dată pe săptămână.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b4"
+   },
+   {
+    "type": "example",
+    "title": "Cum ajustezi template-ul când apare o urgență neprevăzută",
+    "concept_key": "ajustare-plan-neprevazut",
+    "md": "Revenim la Ana. Miercuri la ora 9:15, în timp ce lucra la prezentarea de buget, primește un telefon: serverul de producție al unui client important a picat, iar echipa tehnică are nevoie de ea pentru a coordona comunicarea cu clientul.\n\nFără template și fără buffer, această urgență ar da peste cap toată ziua — inclusiv interviul cu candidatul, programat la 10:00. Pentru că Ana are blocuri de buffer prevăzute (10:00-11:00 și 14:00-16:00), procedează astfel:\n\n1. Folosește imediat blocul de buffer de la 10:00 pentru a gestiona criza, în loc să sacrifice un bloc deja alocat unui obiectiv.\n2. Mută interviul cu candidatul (care era programat exact în acel interval, conform planului inițial de miercuri) în blocul de buffer de la 14:00, trimițând un mesaj scurt candidatului pentru reprogramare cu o oră.\n3. Blocul \"Deep work: prezentare buget\" de la 11:00-13:00 rămâne neatins — pentru că nu s-a folosit buffer pe acesta, obiectivul 3 nu este afectat.\n4. La sesiunea de revizuire de vineri, notează în secțiunea de feedback: \"Criza de miercuri a consumat ambele blocuri de buffer din ziua respectivă — de verificat dacă acest client are nevoie de un plan de mentenanță preventivă, pentru a reduce frecvența urgențelor.\"\n\nAcest exemplu arată exact rolul buffer-ului: nu este timp \"pierdut\", ci capacitate de rezervă care protejează restul planului.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală la construirea unui template de planificare săptămânală este supra-planificarea: alocarea a 100% din timpul disponibil unor sarcini fixe, fără niciun bloc de buffer. Rezultatul este un plan frumos pe hârtie, dar care se destramă la prima întrerupere neprevăzută — și, în timp, duce la sentimentul fals că \"planificarea nu funcționează\", când, de fapt, planul nu a lăsat loc realității.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Mihai este PFA și lucrează ca și contabil colaborator pentru 3 clienți SRL de dimensiuni medii. Săptămâna viitoare are următoarele sarcini de dus la capăt:\n- Pregătirea și transmiterea declarației unice pentru un client cu termen apropiat\n- Reconcilierea balanței de verificare pentru clientul B (proces care necesită concentrare de 3-4 ore neîntrerupte)\n- Două ședințe de consultanță fiscală, deja fixate în calendar (marți 11:00 și joi 15:00)\n- Actualizarea evidenței cheltuielilor deductibile pentru clientul C\n\nConstruiește pentru Mihai o secțiune de \"Obiective ale săptămânii\" (maximum 4 obiective) și o schiță de time blocking pentru zilele de luni și marți, incluzând cel puțin un bloc de buffer pe zi.",
+    "solution_md": "**Obiectivele săptămânii ale lui Mihai (4 obiective):**\n1. Transmiterea declarației unice pentru clientul A, înainte de termenul-limită\n2. Finalizarea reconcilierii balanței de verificare pentru clientul B\n3. Susținerea celor două ședințe de consultanță fiscală deja programate\n4. Actualizarea evidenței cheltuielilor deductibile pentru clientul C\n\n**Schiță time blocking:**\n\n| Interval | Luni | Marți |\n|---|---|---|\n| 09:00-12:00 | Deep work: reconciliere balanță client B (obiectiv 2) | Deep work: continuare reconciliere client B (obiectiv 2) |\n| 12:00-13:00 | Buffer | Pregătire materiale pentru ședința de consultanță de la 11:00 (mutată aici pentru revizuire finală) |\n| — | — | 11:00-12:00 rezervat pentru ședința fixă — n.b. pe grila reală, acest bloc apare direct la ora fixă |\n| 14:00-16:00 | Declarație unică client A (obiectiv 1) | Actualizare evidență cheltuieli client C (obiectiv 4) |\n| 16:00-17:00 | Buffer | Buffer |\n\nObservație: în varianta finală, ședința fixă de marți 11:00 rămâne exact la ora ei din calendar; celelalte blocuri se construiesc în jurul acesteia. Fiecare zi are minimum un bloc de buffer, iar cele 4 obiective au fiecare un slot dedicat de lucru efectiv, nu doar o mențiune vagă pe listă.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este numărul recomandat de obiective cheie într-un template de planificare săptămânală, pentru a păstra claritatea și prioritizarea?",
+    "choices": [
+     "1-2 obiective",
+     "3-5 obiective",
+     "8-10 obiective",
+     "Cât mai multe posibil, pentru a nu rata nimic"
+    ],
+    "answer": 1,
+    "explain": "Limitarea la 3-5 rezultate cheie forțează prioritizarea reală. Peste acest număr, planificarea devine o listă nediferențiată în care totul pare la fel de important.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform regulii 60/40 a lui Alan Lakein aplicată planificării săptămânale, cum ar trebui împărțit timpul disponibil?",
+    "choices": [
+     "40% planificat rigid, 60% flexibil pentru neprevăzut",
+     "60% planificat rigid, 40% flexibil pentru neprevăzut",
+     "90% planificat rigid, 10% flexibil",
+     "100% planificat, fără marjă"
+    ],
+    "answer": 1,
+    "explain": "Regula 60/40 recomandă planificarea rigidă a aproximativ 60% din timpul disponibil, lăsând restul de 40% ca marjă flexibilă (buffer) pentru întreruperi, urgențe și sarcini neprevăzute.",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este time blocking?",
+    "back": "Tehnica prin care aloci intervale fixe în calendar pentru sarcini specifice, în loc să lucrezi după o listă nesfârșită de to-do-uri fără prioritate orară.",
+    "concept_key": "time-blocking",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte obiective cheie ar trebui să conțină un template de planificare săptămânală?",
+    "back": "Între 3 și 5 rezultate cheie, pentru a păstra claritatea și a evita dispersarea efortului pe prea multe direcții.",
+    "concept_key": "obiective-cheie-saptamanale",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce spune regula 60/40 a lui Alan Lakein aplicată la planificarea săptămânală?",
+    "back": "Planifici rigid doar aproximativ 60% din timpul disponibil, lăsând circa 40% neplanificat, ca buffer pentru întreruperi și urgențe.",
+    "concept_key": "regula-60-40-lakein",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este momentul recomandat pentru sesiunea de planificare săptămânală?",
+    "back": "Vineri după-amiază (revizuirea săptămânii încheiate și schița pentru următoarea), urmată de o scurtă finalizare duminică seara sau luni dimineața devreme.",
+    "concept_key": "momentul-planificarii-saptamanale",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce faci cu blocurile de buffer când apare o urgență în timpul săptămânii?",
+    "back": "Folosești buffer-ul pentru a absorbi urgența, apoi muți sarcinile neterminate din blocurile afectate în sloturile de buffer rămase sau, dacă e nevoie, în săptămâna următoare.",
+    "concept_key": "gestionare-buffer-urgente",
+    "blockId": "cmjjuxwig00p3umkpl1xg5ktn-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1434,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxw8200gmumkp0l2bmubl",
+ "courseId": "cmjjuxw7400fmumkp9cm4a9vj",
+ "course": "HR Fundamentals - Managementul Resurselor Umane",
+ "module": "Onboarding și Integrare",
+ "lesson": "Quiz onboarding",
+ "category": "HR_COMPLIANCE",
+ "content": "Test de evaluare — Quiz onboarding (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este termenul legal pentru înregistrarea unui contract individual de muncă (CIM) nou în REVISAL, în cadrul procesului de onboarding?",
+     "choices": [
+      "Cel târziu în ziua anterioară începerii activității",
+      "În termen de 5 zile lucrătoare de la angajare",
+      "În termen de 20 zile lucrătoare de la angajare",
+      "Până la sfârșitul lunii calendaristice în care a fost angajat"
+     ],
+     "answer": 0,
+     "explain": "Conform Codului Muncii (Legea 53/2003), contractul individual de muncă trebuie înregistrat în REVISAL cel târziu în ziua anterioară celei în care angajatul începe efectiv activitatea.",
+     "concept_key": "revisal_inregistrare"
+    },
+    {
+     "q": "Care este durata maximă a perioadei de probă pentru o funcție de execuție, conform Codului Muncii?",
+     "choices": [
+      "30 de zile calendaristice",
+      "90 de zile calendaristice",
+      "120 de zile calendaristice",
+      "6 luni"
+     ],
+     "answer": 1,
+     "explain": "Pentru funcțiile de execuție, perioada de probă este de maximum 90 de zile calendaristice; pentru funcțiile de conducere, maximul este 120 de zile.",
+     "concept_key": "perioada_proba_executie"
+    },
+    {
+     "q": "Pentru o funcție de conducere, care este durata maximă legală a perioadei de probă?",
+     "choices": [
+      "90 de zile calendaristice",
+      "100 de zile calendaristice",
+      "120 de zile calendaristice",
+      "150 de zile calendaristice"
+     ],
+     "answer": 2,
+     "explain": "Codul Muncii stabilește 120 de zile calendaristice ca durată maximă a perioadei de probă pentru funcțiile de conducere, față de 90 de zile pentru funcțiile de execuție.",
+     "concept_key": "perioada_proba_conducere"
+    },
+    {
+     "q": "Un angajat nou este angajat cu normă întreagă. Care este numărul standard de ore de lucru pe săptămână, conform Codului Muncii (Legea 53/2003)?",
+     "choices": [
+      "35 de ore",
+      "40 de ore",
+      "45 de ore",
+      "48 de ore"
+     ],
+     "answer": 1,
+     "explain": "Norma întreagă de lucru este de 40 de ore pe săptămână; orele suplimentare se compensează cu timp liber în 90 de zile sau cu un spor de minimum 75%.",
+     "concept_key": "timp_munca"
+    },
+    {
+     "q": "Câte zile lucrătoare de concediu de odihnă anual trebuie să primească, cel puțin, un nou angajat, conform legii?",
+     "choices": [
+      "15 zile lucrătoare",
+      "18 zile lucrătoare",
+      "20 zile lucrătoare",
+      "25 zile lucrătoare"
+     ],
+     "answer": 2,
+     "explain": "Legea prevede un minimum de 20 de zile lucrătoare de concediu de odihnă pe an, indiferent de tipul contractului sau vechimea angajatului.",
+     "concept_key": "concediu_odihna"
+    },
+    {
+     "q": "Dacă un nou angajat va lucra în regim de telemuncă sau muncă la domiciliu, ce trebuie să prevadă în mod obligatoriu contractul individual de muncă?",
+     "choices": [
+      "Nimic diferit față de un CIM standard",
+      "Clauze specifice obligatorii pentru acest tip de muncă",
+      "Doar semnătura electronică a angajatului",
+      "Aprobarea prealabilă a ITM înainte de semnare"
+     ],
+     "answer": 1,
+     "explain": "Contractele pentru telemuncă, muncă la domiciliu sau part-time necesită clauze obligatorii specifice, suplimentare față de conținutul standard al CIM.",
+     "concept_key": "clauze_telemunca"
+    },
+    {
+     "q": "Care este fluxul corect al proceselor lunare de salarizare, de la pontaj până la plata contribuțiilor, relevant și pentru primul salariu al unui angajat nou?",
+     "choices": [
+      "D112 → pontaj → stat de plată → plată contribuții",
+      "Stat de plată → pontaj → D112 → plată contribuții",
+      "Pontaj → stat de plată → D112 → plată contribuții",
+      "Pontaj → D112 → stat de plată → plată contribuții"
+     ],
+     "answer": 2,
+     "explain": "Fluxul corect este: pontaj → stat de plată → declarația D112 (depusă lunar, până pe 25 ale lunii următoare) → plata contribuțiilor.",
+     "concept_key": "flux_salarizare"
+    },
+    {
+     "q": "Un angajat nou este remunerat cu salariul minim brut pe economie începând cu 1 iulie 2026. Ce valoare are partea netaxabilă din salariul minim, conform OUG 89/2025, de la această dată?",
+     "choices": [
+      "300 lei",
+      "250 lei",
+      "200 lei",
+      "0 lei"
+     ],
+     "answer": 2,
+     "explain": "Partea netaxabilă din salariul minim a scăzut de la 300 lei (valabilă până la 30 iunie 2026) la 200 lei începând cu 1 iulie 2026, conform OUG 89/2025.",
+     "concept_key": "parte_netaxabila"
+    },
+    {
+     "q": "La explicarea fluturașului de salariu unui angajat nou, ce rețineri obligatorii din salariul brut trebuie prezentate acestuia?",
+     "choices": [
+      "Doar impozitul pe venit de 10%",
+      "CAS 25%, CASS 10% și impozit pe venit 10% (după deduceri)",
+      "CAS 25% și CAM 2,25%",
+      "Doar CASS 10% și CAM 2,25%"
+     ],
+     "answer": 1,
+     "explain": "Reținerile din salariul brut al angajatului sunt CAS 25%, CASS 10% și impozitul pe venit de 10% (aplicat după deduceri); CAM de 2,25% este o contribuție suportată de angajator, nu se reține din salariul angajatului.",
+     "concept_key": "contributii_salariat"
+    },
+    {
+     "q": "La constituirea dosarului de personal al unui angajat nou, ce principiu GDPR trebuie respectat, iar dacă acesta ridică o întrebare juridică individuală despre propriul contract, cum trebuie procedat corect?",
+     "choices": [
+      "Se colectează toate datele disponibile despre angajat, iar întrebarea juridică se rezolvă direct de HR, conform interpretării proprii",
+      "Se colectează date minime necesare, cu acces restricționat, iar pentru întrebări juridice individuale se recomandă consultarea unui specialist (avocat/consultant), fără a se oferi consultanță juridică directă",
+      "Se colectează toate datele solicitate de angajat, iar întrebările juridice se ignoră",
+      "Datele personale pot fi partajate liber în companie, iar întrebările juridice se răspund conform interpretării proprii a Codului Muncii"
+     ],
+     "answer": 1,
+     "explain": "GDPR impune principiul minimizării datelor și accesul restricționat la dosarul de personal. În plus, HR nu oferă consultanță juridică individuală; pentru situații punctuale se recomandă consultarea unui specialist.",
+     "concept_key": "gdpr_consultanta"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvz7009uumkpfibmgv77",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Agile & Hybrid",
+ "lesson": "Adaptive Planning",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Adaptive Planning\n\n## Ce este planificarea adaptivă (adaptive planning)\n\nÎn PMBOK 7, planificarea adaptivă este definită prin **domeniul de performanță Planning**, care recunoaște explicit că nu toate proiectele pot fi planificate integral de la început. Spre deosebire de abordarea predictivă (waterfall), unde planul detaliat se stabilește o singură dată la începutul proiectului și variațiile sunt tratate ca abateri de gestionat, planificarea adaptivă acceptă incertitudinea ca pe o caracteristică normală a proiectului și integrează revizuirea planului ca activitate continuă, nu ca excepție.\n\nAtenție: planificare adaptivă **nu înseamnă lipsă de planificare**. Este una dintre cele mai frecvente capcane la examenul PMP — o întrebare care sugerează \"echipa agilă nu planifică, doar execută\" este întotdeauna greșită. De fapt, echipele agile planifică frecvent, dar la granularități diferite și cu orizonturi de timp diferite, în funcție de cât de sigure sunt informațiile disponibile.\n\nContext practic: la o firmă românească care implementează un ERP nou (de exemplu SAP Business One sau o soluție locală) în paralel cu digitalizarea proceselor de facturare, planificarea adaptivă permite echipei de proiect să stabilească ferm doar următoarele 2-3 sprinturi, în timp ce restul roadmap-ului (module de contabilitate, gestiune stocuri, integrare cu ANAF e-Factura) rămâne la nivel de epic, urmând a fi detaliat pe măsură ce se acumulează informații despre cerințele reale ale utilizatorilor finali.\n\n## Rolling wave planning (planificare în valuri succesive)\n\nRolling wave planning este o tehnică de planificare progresivă în care lucrul apropiat în timp este planificat în detaliu, iar lucrul îndepărtat este planificat la un nivel mai general (de obicei la nivel de epic, fază sau pachet de lucru major), urmând să fie detaliat pe măsură ce se apropie momentul execuției.\n\nTehnica nu este exclusiv agilă — este menționată și în abordările predictive, în special pentru proiecte mari, pe fază (de exemplu un proiect de construcție unde faza de proiectare este detaliată complet, iar faza de execuție este planificată la nivel de pachete majore până se finalizează proiectarea). Diferența față de context agil este că, în agile, \"valul\" corespunde de regulă unui sprint sau unei iterații, iar granularitatea se reface la fiecare eveniment de planificare.\n\nBeneficiul principal: reduce risipa de efort investit în planificare detaliată pentru activități care oricum se vor schimba înainte de a fi executate — un risc real în proiectele cu cerințe volatile, cum sunt cele de digitalizare unde utilizatorii finali își clarifică nevoile abia după ce văd un prim prototip funcțional.\n\n## Progressive elaboration (elaborare progresivă)\n\nElaborarea progresivă este conceptul de bază care stă în spatele rolling wave planning: procesul iterativ de creștere a nivelului de detaliu al unui plan pe măsură ce devin disponibile informații mai precise și estimări mai fiabile. Este un principiu general de management de proiect, aplicabil atât în abordări predictive, cât și agile, și este menționat explicit în PMBOK ca o caracteristică inerentă a planificării de proiect, nu ca o tehnică opțională.\n\nUn exemplu tipic de elaborare progresivă: la inițierea proiectului, bugetul unui modul ERP poate fi estimat printr-un ordin de mărime (ROM — Rough Order of Magnitude), cu o marjă de eroare largă, de exemplu -25%/+75% față de valoarea finală. Pe măsură ce se definitivează cerințele funcționale și se realizează o analiză detaliată (de exemplu după primele două sprinturi de descoperire — \"discovery sprints\"), estimarea se rafinează către un buget definitiv, cu o marjă de -5%/+10%.\n\nEste esențial pentru examen să reții diferența dintre cei trei termeni: **progressive elaboration** este principiul general (detaliere crescândă), **rolling wave planning** este tehnica de aplicare a acestui principiu la planificarea activităților, iar **iteration planning** este aplicarea lui punctuală, la nivel de sprint, în context agil.\n\n## Iteration planning (planificarea iterației / Sprint Planning)\n\nÎn Scrum Guide 2020, Sprint Planning este evenimentul în care echipa de dezvoltare, alături de Product Owner, stabilește obiectivul sprintului (**Sprint Goal**) și selectează elementele din Product Backlog care vor fi transformate în Sprint Backlog pentru iterația curentă. Durata recomandată este de maximum 8 ore pentru un sprint de o lună, proporțional mai scurtă pentru sprinturi mai scurte (de exemplu aproximativ 4 ore pentru un sprint de 2 săptămâni).\n\nPlanificarea iterației se bazează pe **velocity** — numărul mediu de story points pe care echipa l-a livrat efectiv în sprinturile anterioare. Velocity nu este o normă impusă, ci o măsură empirică derivată din istoricul echipei, folosită exclusiv pentru estimare și prognoză, nu pentru evaluarea performanței individuale a membrilor echipei.\n\nÎn practică, la o echipă care implementează modulul de facturare electronică al unui ERP, planificarea iterației presupune: (1) revizuirea Sprint Goal-ului propus de Product Owner, (2) selectarea user story-urilor din backlog până la atingerea capacității estimate (velocity), (3) descompunerea story-urilor selectate în task-uri tehnice, estimate de regulă în ore, de către echipa de dezvoltare.\n\n## Exemplu: Rolling wave planning într-un proiect de implementare ERP\nO firmă de distribuție din Cluj, cu 50 de angajați, implementează un ERP nou pentru a integra contabilitatea, gestiunea stocurilor și facturarea electronică (e-Factura). Product Backlog-ul total estimat este de **240 story points**, împărțit pe trei epicuri:\n\n- Epic 1 — Contabilitate și facturare: 90 story points\n- Epic 2 — Gestiune stocuri: 80 story points\n- Epic 3 — Integrare e-Factura și rapoarte: 70 story points\n\nAplicând rolling wave planning, echipa de proiect:\n\n1. **Planifică în detaliu** doar Sprint 1 și Sprint 2 (primele 4 săptămâni), care acoperă exclusiv Epic 1 — deoarece este epicul cu cerințele cele mai clare la momentul actual;\n2. **Menține la nivel de epic** (fără descompunere în user story-uri) Epic 2 și Epic 3, urmând ca acestea să fie detaliate abia după ce se validează cu utilizatorii finali fluxul de facturare din Epic 1;\n3. **Reface planificarea detaliată** la fiecare 2 sprinturi (o \"undă\"/wave), integrând învățăturile din sprinturile anterioare.\n\nAcest mod de lucru evită investiția de timp în detalierea completă a Epic 3 (integrare e-Factura), care s-ar putea schimba semnificativ dacă, între timp, ANAF actualizează specificațiile tehnice ale sistemului RO e-Factura — un risc real și frecvent întâlnit în proiectele de digitalizare din România.\n\n## Exemplu: Elaborare progresivă a estimărilor de buget\nLa demararea aceluiași proiect ERP, sponsorul cere o estimare de buget pentru aprobarea inițială. Managerul de proiect oferă o estimare **ROM (Rough Order of Magnitude)** de 200.000 lei, cu marjă de eroare -25%/+75%, adică un interval realist între 150.000 lei și 350.000 lei.\n\nDupă finalizarea primelor două sprinturi de \"discovery\" (analiză cerințe și prototipare), echipa are suficiente informații pentru a rafina estimarea la nivel de **buget definitiv (Definitive Estimate)**, cu marjă de -5%/+10%: 240.000 lei, adică un interval între 228.000 lei și 264.000 lei.\n\nAcesta este exemplul clasic de elaborare progresivă: nivelul de detaliu și acuratețea estimării cresc pe măsură ce proiectul avansează și se acumulează informații validate, nu pentru că managerul de proiect \"greșește\" estimarea inițială, ci pentru că la momentul inițial informația disponibilă nu permitea o precizie mai mare.\n\n⚠ Capcană frecventă la examenul PMP: rolling wave planning **nu este o tehnică exclusiv agilă**. Ea poate apărea în întrebări despre proiecte predictive (de exemplu construcții, pe faze), unde faza curentă este planificată detaliat iar fazele viitoare doar la nivel de pachete majore. Nu alege automat un răspuns \"agile\" doar pentru că vezi termenul \"rolling wave\" în enunț — citește contextul proiectului din întrebare.\n\n## Exercițiu\nEchipa de dezvoltare a modulului de facturare electronică a înregistrat următoarea viteză (velocity) în ultimele 3 sprinturi: Sprint 1 = 24 story points, Sprint 2 = 28 story points, Sprint 3 = 32 story points. Backlog-ul rămas de livrat este de 150 story points.\n\na) Calculează velocity-ul mediu al echipei.\nb) Estimează câte sprinturi vor mai fi necesare pentru a finaliza backlog-ul rămas, folosind planificarea adaptivă bazată pe velocity istoric.\n\n**Soluție:** a) Velocity mediu = (24 + 28 + 32) / 3 = 84 / 3 = **28 story points/sprint**.\n\nb) Număr de sprinturi necesare = Backlog rămas / Velocity mediu = 150 / 28 ≈ **5,36 sprinturi**, deci echipa trebuie să planifice, prudent, **6 sprinturi** pentru a finaliza backlog-ul rămas (rotunjire în sus, deoarece un sprint parțial tot necesită timp complet de execuție).\n\nNotă metodologică: această prognoză este o estimare bazată pe date istorice, nu un angajament ferm — conform planificării adaptive, ea trebuie recalculată la finalul fiecărui sprint, pe măsură ce apar noi date de velocity.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "adaptive-planning",
+    "md": "## Ce este planificarea adaptivă (adaptive planning)\n\nÎn PMBOK 7, planificarea adaptivă este definită prin **domeniul de performanță Planning**, care recunoaște explicit că nu toate proiectele pot fi planificate integral de la început. Spre deosebire de abordarea predictivă (waterfall), unde planul detaliat se stabilește o singură dată la începutul proiectului și variațiile sunt tratate ca abateri de gestionat, planificarea adaptivă acceptă incertitudinea ca pe o caracteristică normală a proiectului și integrează revizuirea planului ca activitate continuă, nu ca excepție.\n\nAtenție: planificare adaptivă **nu înseamnă lipsă de planificare**. Este una dintre cele mai frecvente capcane la examenul PMP — o întrebare care sugerează \"echipa agilă nu planifică, doar execută\" este întotdeauna greșită. De fapt, echipele agile planifică frecvent, dar la granularități diferite și cu orizonturi de timp diferite, în funcție de cât de sigure sunt informațiile disponibile.\n\nContext practic: la o firmă românească care implementează un ERP nou (de exemplu SAP Business One sau o soluție locală) în paralel cu digitalizarea proceselor de facturare, planificarea adaptivă permite echipei de proiect să stabilească ferm doar următoarele 2-3 sprinturi, în timp ce restul roadmap-ului (module de contabilitate, gestiune stocuri, integrare cu ANAF e-Factura) rămâne la nivel de epic, urmând a fi detaliat pe măsură ce se acumulează informații despre cerințele reale ale utilizatorilor finali.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "rolling-wave-planning",
+    "md": "## Rolling wave planning (planificare în valuri succesive)\n\nRolling wave planning este o tehnică de planificare progresivă în care lucrul apropiat în timp este planificat în detaliu, iar lucrul îndepărtat este planificat la un nivel mai general (de obicei la nivel de epic, fază sau pachet de lucru major), urmând să fie detaliat pe măsură ce se apropie momentul execuției.\n\nTehnica nu este exclusiv agilă — este menționată și în abordările predictive, în special pentru proiecte mari, pe fază (de exemplu un proiect de construcție unde faza de proiectare este detaliată complet, iar faza de execuție este planificată la nivel de pachete majore până se finalizează proiectarea). Diferența față de context agil este că, în agile, \"valul\" corespunde de regulă unui sprint sau unei iterații, iar granularitatea se reface la fiecare eveniment de planificare.\n\nBeneficiul principal: reduce risipa de efort investit în planificare detaliată pentru activități care oricum se vor schimba înainte de a fi executate — un risc real în proiectele cu cerințe volatile, cum sunt cele de digitalizare unde utilizatorii finali își clarifică nevoile abia după ce văd un prim prototip funcțional.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "progressive-elaboration",
+    "md": "## Progressive elaboration (elaborare progresivă)\n\nElaborarea progresivă este conceptul de bază care stă în spatele rolling wave planning: procesul iterativ de creștere a nivelului de detaliu al unui plan pe măsură ce devin disponibile informații mai precise și estimări mai fiabile. Este un principiu general de management de proiect, aplicabil atât în abordări predictive, cât și agile, și este menționat explicit în PMBOK ca o caracteristică inerentă a planificării de proiect, nu ca o tehnică opțională.\n\nUn exemplu tipic de elaborare progresivă: la inițierea proiectului, bugetul unui modul ERP poate fi estimat printr-un ordin de mărime (ROM — Rough Order of Magnitude), cu o marjă de eroare largă, de exemplu -25%/+75% față de valoarea finală. Pe măsură ce se definitivează cerințele funcționale și se realizează o analiză detaliată (de exemplu după primele două sprinturi de descoperire — \"discovery sprints\"), estimarea se rafinează către un buget definitiv, cu o marjă de -5%/+10%.\n\nEste esențial pentru examen să reții diferența dintre cei trei termeni: **progressive elaboration** este principiul general (detaliere crescândă), **rolling wave planning** este tehnica de aplicare a acestui principiu la planificarea activităților, iar **iteration planning** este aplicarea lui punctuală, la nivel de sprint, în context agil.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "iteration-planning",
+    "md": "## Iteration planning (planificarea iterației / Sprint Planning)\n\nÎn Scrum Guide 2020, Sprint Planning este evenimentul în care echipa de dezvoltare, alături de Product Owner, stabilește obiectivul sprintului (**Sprint Goal**) și selectează elementele din Product Backlog care vor fi transformate în Sprint Backlog pentru iterația curentă. Durata recomandată este de maximum 8 ore pentru un sprint de o lună, proporțional mai scurtă pentru sprinturi mai scurte (de exemplu aproximativ 4 ore pentru un sprint de 2 săptămâni).\n\nPlanificarea iterației se bazează pe **velocity** — numărul mediu de story points pe care echipa l-a livrat efectiv în sprinturile anterioare. Velocity nu este o normă impusă, ci o măsură empirică derivată din istoricul echipei, folosită exclusiv pentru estimare și prognoză, nu pentru evaluarea performanței individuale a membrilor echipei.\n\nÎn practică, la o echipă care implementează modulul de facturare electronică al unui ERP, planificarea iterației presupune: (1) revizuirea Sprint Goal-ului propus de Product Owner, (2) selectarea user story-urilor din backlog până la atingerea capacității estimate (velocity), (3) descompunerea story-urilor selectate în task-uri tehnice, estimate de regulă în ore, de către echipa de dezvoltare.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b4"
+   },
+   {
+    "type": "example",
+    "title": "Rolling wave planning într-un proiect de implementare ERP",
+    "concept_key": "rolling-wave-planning",
+    "md": "O firmă de distribuție din Cluj, cu 50 de angajați, implementează un ERP nou pentru a integra contabilitatea, gestiunea stocurilor și facturarea electronică (e-Factura). Product Backlog-ul total estimat este de **240 story points**, împărțit pe trei epicuri:\n\n- Epic 1 — Contabilitate și facturare: 90 story points\n- Epic 2 — Gestiune stocuri: 80 story points\n- Epic 3 — Integrare e-Factura și rapoarte: 70 story points\n\nAplicând rolling wave planning, echipa de proiect:\n\n1. **Planifică în detaliu** doar Sprint 1 și Sprint 2 (primele 4 săptămâni), care acoperă exclusiv Epic 1 — deoarece este epicul cu cerințele cele mai clare la momentul actual;\n2. **Menține la nivel de epic** (fără descompunere în user story-uri) Epic 2 și Epic 3, urmând ca acestea să fie detaliate abia după ce se validează cu utilizatorii finali fluxul de facturare din Epic 1;\n3. **Reface planificarea detaliată** la fiecare 2 sprinturi (o \"undă\"/wave), integrând învățăturile din sprinturile anterioare.\n\nAcest mod de lucru evită investiția de timp în detalierea completă a Epic 3 (integrare e-Factura), care s-ar putea schimba semnificativ dacă, între timp, ANAF actualizează specificațiile tehnice ale sistemului RO e-Factura — un risc real și frecvent întâlnit în proiectele de digitalizare din România.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b5"
+   },
+   {
+    "type": "example",
+    "title": "Elaborare progresivă a estimărilor de buget",
+    "concept_key": "progressive-elaboration",
+    "md": "La demararea aceluiași proiect ERP, sponsorul cere o estimare de buget pentru aprobarea inițială. Managerul de proiect oferă o estimare **ROM (Rough Order of Magnitude)** de 200.000 lei, cu marjă de eroare -25%/+75%, adică un interval realist între 150.000 lei și 350.000 lei.\n\nDupă finalizarea primelor două sprinturi de \"discovery\" (analiză cerințe și prototipare), echipa are suficiente informații pentru a rafina estimarea la nivel de **buget definitiv (Definitive Estimate)**, cu marjă de -5%/+10%: 240.000 lei, adică un interval între 228.000 lei și 264.000 lei.\n\nAcesta este exemplul clasic de elaborare progresivă: nivelul de detaliu și acuratețea estimării cresc pe măsură ce proiectul avansează și se acumulează informații validate, nu pentru că managerul de proiect \"greșește\" estimarea inițială, ci pentru că la momentul inițial informația disponibilă nu permitea o precizie mai mare.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană frecventă la examenul PMP: rolling wave planning **nu este o tehnică exclusiv agilă**. Ea poate apărea în întrebări despre proiecte predictive (de exemplu construcții, pe faze), unde faza curentă este planificată detaliat iar fazele viitoare doar la nivel de pachete majore. Nu alege automat un răspuns \"agile\" doar pentru că vezi termenul \"rolling wave\" în enunț — citește contextul proiectului din întrebare.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Echipa de dezvoltare a modulului de facturare electronică a înregistrat următoarea viteză (velocity) în ultimele 3 sprinturi: Sprint 1 = 24 story points, Sprint 2 = 28 story points, Sprint 3 = 32 story points. Backlog-ul rămas de livrat este de 150 story points.\n\na) Calculează velocity-ul mediu al echipei.\nb) Estimează câte sprinturi vor mai fi necesare pentru a finaliza backlog-ul rămas, folosind planificarea adaptivă bazată pe velocity istoric.",
+    "solution_md": "a) Velocity mediu = (24 + 28 + 32) / 3 = 84 / 3 = **28 story points/sprint**.\n\nb) Număr de sprinturi necesare = Backlog rămas / Velocity mediu = 150 / 28 ≈ **5,36 sprinturi**, deci echipa trebuie să planifice, prudent, **6 sprinturi** pentru a finaliza backlog-ul rămas (rotunjire în sus, deoarece un sprint parțial tot necesită timp complet de execuție).\n\nNotă metodologică: această prognoză este o estimare bazată pe date istorice, nu un angajament ferm — conform planificării adaptive, ea trebuie recalculată la finalul fiecărui sprint, pe măsură ce apar noi date de velocity.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre rolling wave planning și progressive elaboration?",
+    "choices": [
+     "Rolling wave planning este principiul general, iar progressive elaboration este tehnica de aplicare a acestuia la nivel de sprint",
+     "Progressive elaboration este principiul general de detaliere crescândă a planului; rolling wave planning este tehnica specifică prin care acest principiu se aplică planificării activităților în valuri succesive",
+     "Rolling wave planning se aplică doar în proiecte agile, iar progressive elaboration doar în proiecte predictive",
+     "Nu există nicio diferență, termenii sunt sinonimi în PMBOK 7"
+    ],
+    "answer": 1,
+    "explain": "Progressive elaboration este conceptul general — planul devine tot mai detaliat pe măsură ce apar informații noi. Rolling wave planning este tehnica concretă prin care acest principiu se materializează: planifici detaliat lucrul apropiat și la nivel general lucrul îndepărtat.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un Product Owner insistă ca toate cele 12 sprinturi ale proiectului să fie planificate în detaliu chiar de la Sprint 0, inclusiv toate user story-urile din Epic 3, care depinde de o integrare externă neconfirmată încă. Ce ar trebui să recomande Project Managerul, conform principiilor planificării adaptive?",
+    "choices": [
+     "Să accepte cererea, pentru că un plan detaliat complet reduce riscul de proiect",
+     "Să detalieze doar sprinturile apropiate (de exemplu următoarele 2 sprinturi) și să mențină Epic 3 la nivel general până la clarificarea integrării externe, aplicând rolling wave planning",
+     "Să oprească proiectul până când integrarea externă este confirmată",
+     "Să elimine complet Epic 3 din backlog, pentru a evita incertitudinea"
+    ],
+    "answer": 1,
+    "explain": "Planificarea detaliată a unui epic dependent de o integrare externă neconfirmată riscă să genereze rework semnificativ. Rolling wave planning recomandă detalierea progresivă, pe măsură ce informația devine disponibilă și fiabilă.",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este rolling wave planning?",
+    "back": "Tehnică de planificare progresivă în care lucrul apropiat este planificat în detaliu, iar lucrul îndepărtat este planificat la nivel general, urmând a fi detaliat pe măsură ce se apropie execuția.",
+    "concept_key": "rolling-wave-planning",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este progressive elaboration (elaborarea progresivă)?",
+    "back": "Principiul general conform căruia planul de proiect devine tot mai detaliat și mai precis pe măsură ce devin disponibile informații noi; este aplicabil atât în abordări predictive, cât și agile.",
+    "concept_key": "progressive-elaboration",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este velocity într-o echipă agilă?",
+    "back": "Numărul mediu de story points livrate efectiv de echipă în sprinturile anterioare; este o măsură empirică folosită pentru estimare și prognoză, nu pentru evaluarea performanței individuale.",
+    "concept_key": "iteration-planning",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata recomandată pentru Sprint Planning, conform Scrum Guide 2020, într-un sprint de o lună?",
+    "back": "Maximum 8 ore (time-boxed); proporțional mai scurt pentru sprinturi mai scurte, de exemplu aproximativ 4 ore pentru un sprint de 2 săptămâni.",
+    "concept_key": "iteration-planning",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Rolling wave planning este o tehnică exclusiv agilă? (capcană de examen PMP)",
+    "back": "Nu. Rolling wave planning se aplică și în proiecte predictive, pe fază (de exemplu construcții), nu doar în proiecte agile — este o greșeală frecventă la examen să o asociezi exclusiv cu agile.",
+    "concept_key": "rolling-wave-planning",
+    "blockId": "cmjjuxvz7009uumkpfibmgv77-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1329,
+   "flashcards": 5
+  }
+ }
+}

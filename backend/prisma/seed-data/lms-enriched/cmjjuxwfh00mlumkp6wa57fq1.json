@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxwfh00mlumkp6wa57fq1",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Evaluare și Îmbunătățire (Cl. 9-10)",
+ "lesson": "Monitorizare și măsurare",
+ "category": "HSE_SAFETY",
+ "content": "# Monitorizare și măsurare\n\nClauza 9.1.1 „Generalități” din ISO 45001:2018 cere organizației să stabilească, implementeze și mențină un proces documentat de monitorizare, măsurare, analiză și evaluare a performanței SSM. Nu este suficient să „ții evidența” accidentelor — standardul cere un proces sistematic care răspunde la patru întrebări pentru fiecare aspect relevant: CE se monitorizează, CU CE METODĂ, CÂND (frecvență) și CINE analizează și comunică rezultatele.\n\nCe trebuie monitorizat, conform standardului:\n- gradul de conformare cu cerințele legale și cu alte cerințe aplicabile (audituri de conformitate legală);\n- activitățile operaționale legate de pericolele și riscurile identificate (ex. lucru la înălțime, spații închise, manipulare substanțe periculoase);\n- progresul în atingerea obiectivelor SSM stabilite conform clauzei 6.2;\n- eficacitatea controalelor operaționale și a măsurilor de prevenire aplicate;\n- starea de sănătate a lucrătorilor, acolo unde legea o cere (supraveghere medicală).\n\nRezultatele trebuie păstrate ca informații documentate — nu ca notițe individuale, ci ca înregistrări trasabile, comparabile în timp și utilizabile ca date de intrare pentru analiza de management (clauza 9.3).\n\nUn sistem de monitorizare matur combină două tipuri de indicatori, pentru că fiecare arată altceva:\n\n**Indicatori reactivi (lagging)** — măsoară consecințe deja produse: numărul de accidente de muncă, zilele de incapacitate temporară de muncă (ITM) pierdute, indicele de frecvență (IF), indicele de gravitate (IG), numărul de boli profesionale declarate, costurile cu despăgubirile. Sunt utili pentru raportare și comparații istorice, dar apar DUPĂ ce răul s-a produs.\n\n**Indicatori proactivi (leading)** — măsoară acțiunile preventive, înainte ca un eveniment nedorit să apară: procentul de instruiri SSM realizate la termen, numărul de inspecții/audituri interne efectuate față de plan, numărul de aproape-accidente (near-miss) raportate și investigate, procentul de acțiuni corective închise în termen, procentul de echipamente de protecție verificate/etalonate la scadență.\n\nUn sistem care urmărește doar indicatori reactivi este „orb” — reacționează, nu previne. ISO 45001 recomandă explicit un echilibru: cu cât indicatorii proactivi sunt mai buni, cu atât te aștepți ca, în timp, indicatorii reactivi să scadă. Compararea lunară a celor două categorii într-un tablou de bord (dashboard) este practica recomandată pentru organizațiile de nivel avansat.\n\nUn plan de monitorizare SSM funcțional se construiește ca un tabel cu minimum șase coloane: (1) aspectul/procesul monitorizat, (2) indicatorul concret, (3) metoda de măsurare, (4) frecvența, (5) responsabilul colectării datelor, (6) responsabilul analizei și pragul de alertă.\n\nFrecvențele diferă în funcție de risc și de natura indicatorului:\n- zilnic/săptămânal — controale operaționale la locuri de muncă cu risc ridicat (ex. permise de lucru, verificare EIP la intrarea în șantier);\n- lunar — indicatori proactivi (instruiri, inspecții, near-miss), buletine de noxe acolo unde există expuneri continue;\n- trimestrial — analiza tendințelor IF/IG, stadiul obiectivelor SSM;\n- anual — evaluarea de risc generală, verificări metrologice ale echipamentelor de măsurare conform scadențarului, revizuirea planului de monitorizare însuși.\n\nPentru echipamentele de măsurare (sonometre, luxmetre, aparate de măsurat noxe, echipamente de detecție gaze), standardul cere ca acestea să fie etalonate sau verificate periodic, cu înregistrări păstrate (buletin de verificare metrologică, emis de un laborator acreditat sau autorizat BRML în România). Un echipament neetalonat invalidează datele colectate cu el, indiferent cât de bine arată graficul rezultat.\n\nColectarea datelor este doar jumătate din proces — clauza 9.1.1 cere explicit și ANALIZA și EVALUAREA rezultatelor, nu doar arhivarea lor. Practic, pentru fiecare set de date trebuie să răspunzi: care este tendința (îmbunătățire/înrăutățire), cum se compară cu obiectivul stabilit, ce cauze explică abaterile și ce acțiuni corective sunt necesare.\n\nInstrumentele uzuale de analiză sunt simple și eficiente: grafice de tendință (trend) lunare/trimestriale, comparație an-la-an, benchmarking intern între secții sau șantiere, analiza Pareto a cauzelor de accidente/incidente pentru a identifica prioritățile de acțiune.\n\nAceste rezultate NU rămân la nivelul responsabilului SSM — ele devin date de intrare obligatorii pentru analiza efectuată de management (clauza 9.3), alături de rezultatele auditurilor interne, stadiul acțiunilor corective și gradul de atingere a obiectivelor. Fără un proces solid de monitorizare și analiză, analiza de management se transformă într-o discuție fără substanță, bazată pe impresii, nu pe date — exact ceea ce un auditor de certificare va sancționa ca neconformitate.\n\n## Exemplu: Tablou de bord SSM pentru un depozit logistic\nO firmă de logistică din Ilfov, cu 80 de angajați (operatori depozit, stivuitoriști), a construit un tablou de bord lunar cu următorii indicatori:\n\n| Indicator | Tip | Frecvență | Țintă | Rezultat luna curentă |\n|---|---|---|---|---|\n| Nr. accidente de muncă | reactiv | lunar | 0 | 0 |\n| Zile ITM pierdute cumulat | reactiv | lunar | 0 | 0 |\n| % instruiri periodice realizate la termen | proactiv | lunar | 100% | 92% |\n| Nr. inspecții SSM efectuate de șef depozit | proactiv | lunar (plan: 4) | 4 | 3 |\n| Nr. aproape-accidente raportate | proactiv | lunar | fără prag, se urmărește tendința | 5 |\n| Nr. stivuitoare cu verificare tehnică ISCIR la zi | proactiv | lunar | 100% din flotă | 100% |\n\nAnaliza responsabilului SSM: procentul de instruiri sub țintă (92%) și inspecțiile neefectuate integral (3 din 4) au fost semnalate ca risc — corelate cu cele 5 aproape-accidente raportate în zona de stivuire, mai multe decât luna anterioară (2). Concluzia din raport: se solicită o inspecție suplimentară în zona de stivuire și reprogramarea instruirilor restante în primele 5 zile ale lunii următoare, înainte ca un aproape-accident să devină accident real.\n\n## Exemplu: Calculul indicilor de frecvență și gravitate a accidentelor\nCei doi indicatori reactivi standard, folosiți și de ITM în statisticile naționale, se calculează astfel:\n\n**Indicele de frecvență (IF)** = (nr. accidente de muncă × 1.000.000) / nr. total ore lucrate în perioada de referință\n\n**Indicele de gravitate (IG)** = (nr. zile de incapacitate temporară de muncă, ITM, pierdute × 1.000) / nr. total ore lucrate\n\nExemplu numeric — o fabrică de componente auto cu 300 de angajați, care au lucrat în medie 1.800 ore/an fiecare (total 540.000 ore-om în an), a înregistrat 2 accidente de muncă soldate cu un total de 40 de zile ITM:\n\nIF = (2 × 1.000.000) / 540.000 = **3,70**\n\nIG = (40 × 1.000) / 540.000 = **0,074**\n\nAceste valori se compară de la un an la altul (sau de la un trimestru la altul) pentru a evalua tendința: dacă IF a fost 5,20 în anul anterior, scăderea la 3,70 arată o îmbunătățire reală a performanței SSM, corelabilă cu măsurile preventive implementate. Fără o serie istorică de comparație, o cifră izolată nu spune nimic despre performanță.\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă art. 7 alin. (4) (în vigoare de la 2006-10-01)\nLegea nr. 319/2006 (în vigoare din 1 octombrie 2006), completată de normele metodologice din HG nr. 1425/2006, stabilește la art. 7 alin. (4) obligația generală a angajatorului de a evalua riscurile pentru securitatea și sănătatea lucrătorilor și de a lua măsurile de prevenire necesare, inclusiv adaptarea acestor măsuri în funcție de evoluția situației și de rezultatele monitorizării. Procesul de monitorizare și măsurare descris de clauza 9.1 din ISO 45001:2018 este instrumentul organizațional prin care această obligație legală este operaționalizată, documentată și demonstrabilă în fața unui inspector de muncă (ITM) sau a unui auditor de certificare.\n\n⚠ Nu confunda monitorizarea (clauza 9.1) cu auditul intern (clauza 9.2) sau cu analiza de management (clauza 9.3) — sunt procese distincte, dar interconectate: monitorizarea produce date curente, auditul intern verifică dacă sistemul respectă cerințele și este implementat eficace, iar analiza de management evaluează strategic ambele seturi de rezultate. O greșeală frecventă la auditurile de certificare este prezentarea unor date de monitorizare fără nicio urmă de analiză sau acțiune ulterioară — acest lucru se sancționează ca neconformitate, pentru că standardul cere explicit evaluarea rezultatelor, nu doar colectarea lor.\n\n## Exercițiu\nO fabrică de mobilă din Argeș, cu 120 de angajați, a înregistrat în trimestrul II din 2026 următoarele: 2 accidente de muncă, soldate cumulat cu 15 zile de incapacitate temporară de muncă (ITM); numărul total de ore lucrate în trimestru a fost de 54.000 ore.\n\nCerințe:\n1. Calculează indicele de frecvență (IF) și indicele de gravitate (IG) pentru trimestrul II.\n2. Știind că în trimestrul I din 2026 IF a fost 25,00, interpretează tendința.\n3. Propune 3 indicatori PROACTIVI pe care fabrica ar trebui să îi monitorizeze lunar, în trimestrul III, pentru a reduce riscul de accidente.\n\n**Soluție:** 1. IF = (2 × 1.000.000) / 54.000 = **37,04**\n   IG = (15 × 1.000) / 54.000 = **0,28**\n\n2. Tendința este negativă: IF a crescut de la 25,00 (trimestrul I) la 37,04 (trimestrul II), o creștere de aproape 50%. Aceasta indică o deteriorare a performanței SSM și impune investigarea cauzelor (schimbare de personal, lipsă instruiri, echipamente neverificate, presiune de producție etc.) și acțiuni corective, nu doar înregistrarea cifrei în raport.\n\n3. Exemple de indicatori proactivi recomandați pentru trimestrul III:\n   - procentul de instruiri SSM periodice realizate la termen (țintă: 100%);\n   - numărul de inspecții SSM la locul de muncă efectuate lunar de șeful de secție, față de planul stabilit;\n   - numărul de aproape-accidente (near-miss) raportate și investigate în maximum 48 de ore de la semnalare.\n\n   Urmărirea acestor indicatori proactivi, corelată lunar cu IF și IG, permite depistarea din timp a derapajelor, înainte ca acestea să se materializeze în accidente noi.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "monitorizare-masurare-iso45001-clauza91",
+    "md": "Clauza 9.1.1 „Generalități” din ISO 45001:2018 cere organizației să stabilească, implementeze și mențină un proces documentat de monitorizare, măsurare, analiză și evaluare a performanței SSM. Nu este suficient să „ții evidența” accidentelor — standardul cere un proces sistematic care răspunde la patru întrebări pentru fiecare aspect relevant: CE se monitorizează, CU CE METODĂ, CÂND (frecvență) și CINE analizează și comunică rezultatele.\n\nCe trebuie monitorizat, conform standardului:\n- gradul de conformare cu cerințele legale și cu alte cerințe aplicabile (audituri de conformitate legală);\n- activitățile operaționale legate de pericolele și riscurile identificate (ex. lucru la înălțime, spații închise, manipulare substanțe periculoase);\n- progresul în atingerea obiectivelor SSM stabilite conform clauzei 6.2;\n- eficacitatea controalelor operaționale și a măsurilor de prevenire aplicate;\n- starea de sănătate a lucrătorilor, acolo unde legea o cere (supraveghere medicală).\n\nRezultatele trebuie păstrate ca informații documentate — nu ca notițe individuale, ci ca înregistrări trasabile, comparabile în timp și utilizabile ca date de intrare pentru analiza de management (clauza 9.3).",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "indicatori-proactivi-reactivi-ssm",
+    "md": "Un sistem de monitorizare matur combină două tipuri de indicatori, pentru că fiecare arată altceva:\n\n**Indicatori reactivi (lagging)** — măsoară consecințe deja produse: numărul de accidente de muncă, zilele de incapacitate temporară de muncă (ITM) pierdute, indicele de frecvență (IF), indicele de gravitate (IG), numărul de boli profesionale declarate, costurile cu despăgubirile. Sunt utili pentru raportare și comparații istorice, dar apar DUPĂ ce răul s-a produs.\n\n**Indicatori proactivi (leading)** — măsoară acțiunile preventive, înainte ca un eveniment nedorit să apară: procentul de instruiri SSM realizate la termen, numărul de inspecții/audituri interne efectuate față de plan, numărul de aproape-accidente (near-miss) raportate și investigate, procentul de acțiuni corective închise în termen, procentul de echipamente de protecție verificate/etalonate la scadență.\n\nUn sistem care urmărește doar indicatori reactivi este „orb” — reacționează, nu previne. ISO 45001 recomandă explicit un echilibru: cu cât indicatorii proactivi sunt mai buni, cu atât te aștepți ca, în timp, indicatorii reactivi să scadă. Compararea lunară a celor două categorii într-un tablou de bord (dashboard) este practica recomandată pentru organizațiile de nivel avansat.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "plan-monitorizare-ssm-ce-cum-cand-cine",
+    "md": "Un plan de monitorizare SSM funcțional se construiește ca un tabel cu minimum șase coloane: (1) aspectul/procesul monitorizat, (2) indicatorul concret, (3) metoda de măsurare, (4) frecvența, (5) responsabilul colectării datelor, (6) responsabilul analizei și pragul de alertă.\n\nFrecvențele diferă în funcție de risc și de natura indicatorului:\n- zilnic/săptămânal — controale operaționale la locuri de muncă cu risc ridicat (ex. permise de lucru, verificare EIP la intrarea în șantier);\n- lunar — indicatori proactivi (instruiri, inspecții, near-miss), buletine de noxe acolo unde există expuneri continue;\n- trimestrial — analiza tendințelor IF/IG, stadiul obiectivelor SSM;\n- anual — evaluarea de risc generală, verificări metrologice ale echipamentelor de măsurare conform scadențarului, revizuirea planului de monitorizare însuși.\n\nPentru echipamentele de măsurare (sonometre, luxmetre, aparate de măsurat noxe, echipamente de detecție gaze), standardul cere ca acestea să fie etalonate sau verificate periodic, cu înregistrări păstrate (buletin de verificare metrologică, emis de un laborator acreditat sau autorizat BRML în România). Un echipament neetalonat invalidează datele colectate cu el, indiferent cât de bine arată graficul rezultat.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "analiza-date-monitorizare-input-analiza-management",
+    "md": "Colectarea datelor este doar jumătate din proces — clauza 9.1.1 cere explicit și ANALIZA și EVALUAREA rezultatelor, nu doar arhivarea lor. Practic, pentru fiecare set de date trebuie să răspunzi: care este tendința (îmbunătățire/înrăutățire), cum se compară cu obiectivul stabilit, ce cauze explică abaterile și ce acțiuni corective sunt necesare.\n\nInstrumentele uzuale de analiză sunt simple și eficiente: grafice de tendință (trend) lunare/trimestriale, comparație an-la-an, benchmarking intern între secții sau șantiere, analiza Pareto a cauzelor de accidente/incidente pentru a identifica prioritățile de acțiune.\n\nAceste rezultate NU rămân la nivelul responsabilului SSM — ele devin date de intrare obligatorii pentru analiza efectuată de management (clauza 9.3), alături de rezultatele auditurilor interne, stadiul acțiunilor corective și gradul de atingere a obiectivelor. Fără un proces solid de monitorizare și analiză, analiza de management se transformă într-o discuție fără substanță, bazată pe impresii, nu pe date — exact ceea ce un auditor de certificare va sancționa ca neconformitate.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b4"
+   },
+   {
+    "type": "example",
+    "title": "Tablou de bord SSM pentru un depozit logistic",
+    "concept_key": "exemplu-tablou-bord-ssm-depozit-logistic",
+    "md": "O firmă de logistică din Ilfov, cu 80 de angajați (operatori depozit, stivuitoriști), a construit un tablou de bord lunar cu următorii indicatori:\n\n| Indicator | Tip | Frecvență | Țintă | Rezultat luna curentă |\n|---|---|---|---|---|\n| Nr. accidente de muncă | reactiv | lunar | 0 | 0 |\n| Zile ITM pierdute cumulat | reactiv | lunar | 0 | 0 |\n| % instruiri periodice realizate la termen | proactiv | lunar | 100% | 92% |\n| Nr. inspecții SSM efectuate de șef depozit | proactiv | lunar (plan: 4) | 4 | 3 |\n| Nr. aproape-accidente raportate | proactiv | lunar | fără prag, se urmărește tendința | 5 |\n| Nr. stivuitoare cu verificare tehnică ISCIR la zi | proactiv | lunar | 100% din flotă | 100% |\n\nAnaliza responsabilului SSM: procentul de instruiri sub țintă (92%) și inspecțiile neefectuate integral (3 din 4) au fost semnalate ca risc — corelate cu cele 5 aproape-accidente raportate în zona de stivuire, mai multe decât luna anterioară (2). Concluzia din raport: se solicită o inspecție suplimentară în zona de stivuire și reprogramarea instruirilor restante în primele 5 zile ale lunii următoare, înainte ca un aproape-accident să devină accident real.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul indicilor de frecvență și gravitate a accidentelor",
+    "concept_key": "calcul-index-frecventa-gravitate-accidente",
+    "md": "Cei doi indicatori reactivi standard, folosiți și de ITM în statisticile naționale, se calculează astfel:\n\n**Indicele de frecvență (IF)** = (nr. accidente de muncă × 1.000.000) / nr. total ore lucrate în perioada de referință\n\n**Indicele de gravitate (IG)** = (nr. zile de incapacitate temporară de muncă, ITM, pierdute × 1.000) / nr. total ore lucrate\n\nExemplu numeric — o fabrică de componente auto cu 300 de angajați, care au lucrat în medie 1.800 ore/an fiecare (total 540.000 ore-om în an), a înregistrat 2 accidente de muncă soldate cu un total de 40 de zile ITM:\n\nIF = (2 × 1.000.000) / 540.000 = **3,70**\n\nIG = (40 × 1.000) / 540.000 = **0,074**\n\nAceste valori se compară de la un an la altul (sau de la un trimestru la altul) pentru a evalua tendința: dacă IF a fost 5,20 în anul anterior, scăderea la 3,70 arată o îmbunătățire reală a performanței SSM, corelabilă cu măsurile preventive implementate. Fără o serie istorică de comparație, o cifră izolată nu spune nimic despre performanță.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă",
+    "article": "art. 7 alin. (4)",
+    "effective": "2006-10-01",
+    "md": "Legea nr. 319/2006 (în vigoare din 1 octombrie 2006), completată de normele metodologice din HG nr. 1425/2006, stabilește la art. 7 alin. (4) obligația generală a angajatorului de a evalua riscurile pentru securitatea și sănătatea lucrătorilor și de a lua măsurile de prevenire necesare, inclusiv adaptarea acestor măsuri în funcție de evoluția situației și de rezultatele monitorizării. Procesul de monitorizare și măsurare descris de clauza 9.1 din ISO 45001:2018 este instrumentul organizațional prin care această obligație legală este operaționalizată, documentată și demonstrabilă în fața unui inspector de muncă (ITM) sau a unui auditor de certificare.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda monitorizarea (clauza 9.1) cu auditul intern (clauza 9.2) sau cu analiza de management (clauza 9.3) — sunt procese distincte, dar interconectate: monitorizarea produce date curente, auditul intern verifică dacă sistemul respectă cerințele și este implementat eficace, iar analiza de management evaluează strategic ambele seturi de rezultate. O greșeală frecventă la auditurile de certificare este prezentarea unor date de monitorizare fără nicio urmă de analiză sau acțiune ulterioară — acest lucru se sancționează ca neconformitate, pentru că standardul cere explicit evaluarea rezultatelor, nu doar colectarea lor.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "O fabrică de mobilă din Argeș, cu 120 de angajați, a înregistrat în trimestrul II din 2026 următoarele: 2 accidente de muncă, soldate cumulat cu 15 zile de incapacitate temporară de muncă (ITM); numărul total de ore lucrate în trimestru a fost de 54.000 ore.\n\nCerințe:\n1. Calculează indicele de frecvență (IF) și indicele de gravitate (IG) pentru trimestrul II.\n2. Știind că în trimestrul I din 2026 IF a fost 25,00, interpretează tendința.\n3. Propune 3 indicatori PROACTIVI pe care fabrica ar trebui să îi monitorizeze lunar, în trimestrul III, pentru a reduce riscul de accidente.",
+    "solution_md": "1. IF = (2 × 1.000.000) / 54.000 = **37,04**\n   IG = (15 × 1.000) / 54.000 = **0,28**\n\n2. Tendința este negativă: IF a crescut de la 25,00 (trimestrul I) la 37,04 (trimestrul II), o creștere de aproape 50%. Aceasta indică o deteriorare a performanței SSM și impune investigarea cauzelor (schimbare de personal, lipsă instruiri, echipamente neverificate, presiune de producție etc.) și acțiuni corective, nu doar înregistrarea cifrei în raport.\n\n3. Exemple de indicatori proactivi recomandați pentru trimestrul III:\n   - procentul de instruiri SSM periodice realizate la termen (țintă: 100%);\n   - numărul de inspecții SSM la locul de muncă efectuate lunar de șeful de secție, față de planul stabilit;\n   - numărul de aproape-accidente (near-miss) raportate și investigate în maximum 48 de ore de la semnalare.\n\n   Urmărirea acestor indicatori proactivi, corelată lunar cu IF și IG, permite depistarea din timp a derapajelor, înainte ca acestea să se materializeze în accidente noi.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă a indicelui de frecvență (IF) al accidentelor de muncă?",
+    "choices": [
+     "(nr. accidente × 1.000.000) / nr. total ore lucrate",
+     "(nr. accidente × 1.000) / nr. total angajați",
+     "(nr. zile ITM × 1.000) / nr. total ore lucrate",
+     "(nr. accidente / nr. total angajați) × 100"
+    ],
+    "answer": 0,
+    "explain": "IF măsoară numărul de accidente raportat la un milion de ore lucrate, permițând comparații între organizații de mărimi diferite. Formula (nr. zile ITM × 1.000)/ore lucrate este, de fapt, indicele de gravitate (IG).",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "„Procentul de instruiri SSM realizate la termen” este un exemplu de:",
+    "choices": [
+     "indicator reactiv (lagging)",
+     "indicator proactiv (leading)",
+     "indicator financiar",
+     "cerință de audit extern"
+    ],
+    "answer": 1,
+    "explain": "Este un indicator proactiv, pentru că măsoară o acțiune de prevenire realizată ÎNAINTE ca un eveniment nedorit să se producă, spre deosebire de indicatorii reactivi (accidente, zile ITM), care măsoară consecințe deja apărute.",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cere clauza 9.1.1 din ISO 45001:2018?",
+    "back": "Stabilirea unui proces de monitorizare, măsurare, analiză și evaluare a performanței SSM, care să definească ce se monitorizează, cu ce metodă, când și cine analizează rezultatele.",
+    "concept_key": "monitorizare-masurare-iso45001-clauza91",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre indicatorii proactivi și cei reactivi în SSM?",
+    "back": "Proactiv (leading) = măsoară acțiuni de prevenire, înainte de eveniment (instruiri, inspecții, near-miss); reactiv (lagging) = măsoară consecințe, după eveniment (accidente, zile ITM pierdute).",
+    "concept_key": "indicatori-proactivi-reactivi-ssm",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula indicelui de frecvență (IF) al accidentelor de muncă?",
+    "back": "IF = (nr. accidente × 1.000.000) / nr. total ore lucrate în perioada de referință.",
+    "concept_key": "calcul-index-frecventa-gravitate-accidente",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula indicelui de gravitate (IG)?",
+    "back": "IG = (nr. zile ITM pierdute × 1.000) / nr. total ore lucrate în perioada de referință.",
+    "concept_key": "calcul-index-frecventa-gravitate-accidente",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ stabilește obligația generală a angajatorului de a evalua riscurile SSM în România?",
+    "back": "Legea nr. 319/2006 a securității și sănătății în muncă (în vigoare din 1 octombrie 2006), art. 7 alin. (4), completată de HG nr. 1425/2006.",
+    "concept_key": "legea-319-2006-obligatii-angajator",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce devin rezultatele monitorizării și analizei SSM în cadrul sistemului de management?",
+    "back": "Date de intrare obligatorii pentru analiza efectuată de management (clauza 9.3 din ISO 45001), alături de rezultatele auditurilor interne și stadiul acțiunilor corective.",
+    "concept_key": "analiza-date-monitorizare-input-analiza-management",
+    "blockId": "cmjjuxwfh00mlumkp6wa57fq1-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1438,
+   "flashcards": 6
+  }
+ }
+}

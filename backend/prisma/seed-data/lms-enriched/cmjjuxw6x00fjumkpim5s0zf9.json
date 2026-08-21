@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw6x00fjumkpim5s0zf9",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Performance Management și Raportare",
+ "lesson": "Board Presentations",
+ "category": "FINANCE_OPS",
+ "content": "# Board Presentations\n\nCând pregătești o prezentare pentru board (consiliul de administrație), primul lucru pe care trebuie să-l accepți este că audiența ta nu vrea un raport contabil citit linie cu linie. Membrii board-ului — de multe ori antreprenori, investitori sau directori non-executivi cu portofolii diverse — au 20-40 de minute alocate subiectului tău, poate mai puțin. Ce vor ei de fapt:\n\n1. **Performanța versus plan** — cât de aproape suntem de buget/forecast și de ce apar abaterile (variance-uri).\n2. **Poziția de cash și runway-ul** — câte luni de operare mai are compania la rata actuală de consum de numerar (burn rate), mai ales dacă firma nu e încă profitabilă.\n3. **Riscuri emergente** — orice element care ar putea schimba materialal traiectoria financiară în următoarele 1-2 trimestre (client mare pierdut, litigiu, întârziere la o finanțare).\n4. **Decizii care necesită aprobarea lor** — investiții CAPEX peste un anumit prag, contractare de credit, aprobarea bugetului anual.\n\nRegula de aur în controlling: **\"So what?\"** — pentru fiecare cifră pe care o arăți, board-ul își va pune întrebarea \"și ce înseamnă asta pentru noi?\". Dacă nu poți răspunde în maximum o propoziție, cifra respectivă nu ar trebui să fie pe slide, ci în anexă. O prezentare de board bună este 20% cifre și 80% interpretare de business — invers față de un raport de management intern, unde procentul de detaliu tehnic e mult mai mare.\n\nO structură dovedită pentru prezentarea financiară de board, folosită de majoritatea companiilor mature din România și nu numai, are 6 secțiuni:\n\n1. **Executive summary (1 slide)** — 3-5 bullet-uri cu mesajele cheie: \"Am depășit bugetul de venituri cu X%\", \"Cash runway de Y luni\", \"Riscul principal este Z\". Acesta e singurul slide pe care unii membri îl vor citi cu adevărat.\n2. **Performanță financiară** — P&L (cont de profit și pierdere) actual vs. buget vs. anul anterior (year-over-year), cu variance-uri explicate.\n3. **Cash flow și bilanț** — poziția de numerar, principalii indicatori de lichiditate (DSO, DPO, capital de lucru), evoluția datoriei.\n4. **KPI-uri operaționale** — indicatorii care explică \"de ce\" din spatele cifrelor financiare (ex: număr de clienți noi, churn rate, cost de achiziție).\n5. **Forecast actualizat** — rolling forecast pentru trimestrul/anul curent, cu scenarii (best/base/worst case) dacă există incertitudine semnificativă.\n6. **Riscuri, decizii și cereri de aprobare** — orice subiect pe care ai nevoie de input sau vot din partea board-ului.\n\nO greșeală frecventă a controllerilor juniori este să înceapă cu detaliile (de exemplu, o listă de 40 de conturi analitice) și să lase concluzia la final. Board-ul funcționează invers: vrea concluzia întâi (\"pyramid principle\" — structura piramidală de comunicare, popularizată de Barbara Minto), iar detaliile doar dacă sunt întrebați. Regula practică: fiecare slide ar trebui să aibă un titlu care este o afirmație (\"Veniturile au crescut cu 8% peste buget, susținute de segmentul export\"), nu o etichetă neutră (\"Analiza veniturilor\").\n\nUn board obosit de sute de tabele Excel reacționează mult mai bine la vizualizări clare. Câteva tipuri de grafice care funcționează foarte bine în raportarea financiară:\n\n- **Waterfall chart (grafic în cascadă)** — ideal pentru a explica o variație, de exemplu evoluția EBITDA de la buget la realizat, arătând contribuția fiecărui factor (volum, preț, costuri, curs valutar). Este graficul preferat pentru \"variance bridge\"-uri.\n- **Grafic combinat linie + bare** — pentru a arăta simultan o valoare absolută (ex. venituri lunare, bare) și un procent (ex. marja brută, linie pe axa secundară).\n- **Trend cu bandă de scenarii** — pentru rolling forecast, arată realizatul ca linie continuă și forecast-ul ca linie punctată, cu o bandă (shading) între scenariul optimist și pesimist.\n- **Scorecard/dashboard cu semafor (RAG — Red/Amber/Green)** — pentru KPI-uri multiple pe un singur slide, unde culoarea arată rapid dacă indicatorul e sub, la, sau peste țintă.\n\nReguli de design care contează mai mult decât instrumentul folosit:\n1. **Un mesaj pe grafic.** Dacă un grafic are nevoie de 3 minute de explicații, probabil are prea multe serii de date.\n2. **Etichetează direct pe grafic**, nu doar în legendă — reduce timpul de citire.\n3. **Evită graficele 3D și pie chart-urile cu multe categorii** — distorsionează percepția vizuală a proporțiilor; un bar chart simplu comunică mai clar.\n4. **Folosește aceeași scală și aceleași culori pe tot parcursul prezentării** (ex. albastru = actual, gri = buget, roșu = sub țintă) — consistența reduce efortul cognitiv al audienței.\n5. **Rotunjește cifrele afișate** (ex. 2,4 mil. lei, nu 2.437.812,45 lei) — precizia exagerată distrage atenția de la concluzie; detaliul exact rămâne în anexă pentru cine întreabă.\n\n## Exemplu: Exemplu: slide de variance analysis pentru venituri\nPresupunem (cifre ipotetice, doar pentru exemplificare) o companie de distribuție cu bugetul trimestrial de venituri de **4.200.000 lei** și un realizat de **4.578.000 lei**.\n\n**Formula variance-ului procentual:**\n\nVariance % = (Realizat − Buget) / Buget × 100\n\nVariance % = (4.578.000 − 4.200.000) / 4.200.000 × 100 = **+9,0%**\n\nPe slide, nu te oprești la cifra brută — descompui variance-ul pe factori, exact ca într-un waterfall chart:\n\n| Factor | Contribuție (lei) |\n|---|---|\n| Volum vânzări mai mare decât planificat | +250.000 |\n| Efect preț (creșteri de listă aplicate) | +90.000 |\n| Curs valutar (parte din vânzări facturate în euro) | +38.000 |\n| **Total variance** | **+378.000** |\n\nMesajul pentru board, tradus din tabel: \"Am depășit bugetul de venituri cu 9%, susținut în principal de volum (66% din variance), nu de preț — ceea ce confirmă că strategia de expansiune comercială funcționează, dar marja unitară rămâne sub presiune.\" Acesta este exact tipul de interpretare de business pe care board-ul o așteaptă, nu doar cifra de 9%.\n\n## Exemplu: Exemplu: EBITDA bridge (waterfall) pentru raportare trimestrială\nUn al doilea slide tipic de board este \"EBITDA bridge\" — arată vizual, printr-un grafic în cascadă, cum s-a ajuns de la EBITDA bugetat la EBITDA realizat (cifre ipotetice):\n\n- EBITDA buget: **1.100.000 lei**\n- (+) Efect volum vânzări: **+180.000 lei**\n- (−) Costuri materii prime peste buget (creștere preț furnizor): **−95.000 lei**\n- (−) Costuri de personal peste buget (bonusuri neplanificate): **−40.000 lei**\n- (+) Economii la cheltuieli administrative: **+25.000 lei**\n- **EBITDA realizat: 1.170.000 lei**\n\nVerificare: 1.100.000 + 180.000 − 95.000 − 40.000 + 25.000 = 1.170.000 lei ✓\n\nÎn grafic, fiecare bară \"plutitoare\" (floating bar) reprezintă unul dintre acești pași, pornind de la bara buget (ancorată la zero) și terminând cu bara realizat (tot ancorată la zero). Board-ul vede dintr-o privire că, deși EBITDA a depășit bugetul cu 70.000 lei (+6,4%), principala presiune vine din costul materiilor prime — un semnal că echipa de achiziții ar trebui să fie invitată la următoarea discuție despre riscuri operaționale.\n\n⚠ Cifrele folosite în exemplele de mai sus (venituri, EBITDA, variance-uri) sunt **ipotetice**, construite strict pentru a ilustra metoda de calcul și tipul de grafic — nu reprezintă date reale ale vreunei companii și nu trebuie folosite ca benchmark. La o prezentare reală de board, verifică întotdeauna cifrele cu sursa (balanța de verificare, extrasele bancare, modulul de buget din ERP) înainte de a le pune pe slide — o eroare descoperită de un membru al board-ului în timpul prezentării erodează instant credibilitatea întregului raport.\n\n## Exercițiu\nEști controller financiar la o companie cu buget trimestrial de vânzări de **3.000.000 lei**. Realizatul trimestrului este **2.760.000 lei**. Din analiza pe factori, ai identificat: pierderea unui client mare a redus veniturile cu 280.000 lei, dar o campanie de cross-selling a adus în plus 40.000 lei.\n\nCerințe:\n1. Calculează variance-ul procentual față de buget.\n2. Verifică dacă suma factorilor identificați explică integral variance-ul absolut.\n3. Formulează, într-o singură propoziție, mesajul de tip \"executive summary\" pentru slide-ul de board.\n\n**Soluție:** **1. Variance procentual:**\n\nVariance % = (Realizat − Buget) / Buget × 100 = (2.760.000 − 3.000.000) / 3.000.000 × 100 = **−8,0%**\n\n**2. Verificare factori:**\n\nVariance absolut = 2.760.000 − 3.000.000 = −240.000 lei\n\nSuma factorilor identificați = −280.000 (pierdere client) + 40.000 (cross-selling) = **−240.000 lei** ✓ — factorii identificați explică integral abaterea, deci nu mai există un \"reziduu neexplicat\" care ar ridica întrebări suplimentare din partea board-ului.\n\n**3. Mesaj executive summary:**\n\n\"Veniturile trimestrului au fost sub buget cu 8% (−240.000 lei), determinate în întregime de pierderea unui client cheie; campania de cross-selling a recuperat parțial impactul, iar echipa comercială are deja un plan de acțiune pentru compensarea integrală în trimestrul următor.\"\n\n> Temei legal: OMFP 1802/2014 reglementări privind situațiile financiare anuale individuale și consolidate (în vigoare de la 2015-01-01)\nStructura P&L (cont de profit și pierdere) și a bilanțului prezentate board-ului trebuie să rămână coerente cu formatul situațiilor financiare anuale reglementat de OMFP 1802/2014, chiar dacă la nivel de prezentare vizuală se folosesc gruparile manageriale (ex. EBITDA, marjă de contribuție) care nu apar explicit ca linii distincte în formatul legal — pentru a evita neconcordanțe atunci când board-ul compară raportarea internă cu situațiile financiare auditate.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "board-presentation-obiective",
+    "md": "Când pregătești o prezentare pentru board (consiliul de administrație), primul lucru pe care trebuie să-l accepți este că audiența ta nu vrea un raport contabil citit linie cu linie. Membrii board-ului — de multe ori antreprenori, investitori sau directori non-executivi cu portofolii diverse — au 20-40 de minute alocate subiectului tău, poate mai puțin. Ce vor ei de fapt:\n\n1. **Performanța versus plan** — cât de aproape suntem de buget/forecast și de ce apar abaterile (variance-uri).\n2. **Poziția de cash și runway-ul** — câte luni de operare mai are compania la rata actuală de consum de numerar (burn rate), mai ales dacă firma nu e încă profitabilă.\n3. **Riscuri emergente** — orice element care ar putea schimba materialal traiectoria financiară în următoarele 1-2 trimestre (client mare pierdut, litigiu, întârziere la o finanțare).\n4. **Decizii care necesită aprobarea lor** — investiții CAPEX peste un anumit prag, contractare de credit, aprobarea bugetului anual.\n\nRegula de aur în controlling: **\"So what?\"** — pentru fiecare cifră pe care o arăți, board-ul își va pune întrebarea \"și ce înseamnă asta pentru noi?\". Dacă nu poți răspunde în maximum o propoziție, cifra respectivă nu ar trebui să fie pe slide, ci în anexă. O prezentare de board bună este 20% cifre și 80% interpretare de business — invers față de un raport de management intern, unde procentul de detaliu tehnic e mult mai mare.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "structura-prezentare-board",
+    "md": "O structură dovedită pentru prezentarea financiară de board, folosită de majoritatea companiilor mature din România și nu numai, are 6 secțiuni:\n\n1. **Executive summary (1 slide)** — 3-5 bullet-uri cu mesajele cheie: \"Am depășit bugetul de venituri cu X%\", \"Cash runway de Y luni\", \"Riscul principal este Z\". Acesta e singurul slide pe care unii membri îl vor citi cu adevărat.\n2. **Performanță financiară** — P&L (cont de profit și pierdere) actual vs. buget vs. anul anterior (year-over-year), cu variance-uri explicate.\n3. **Cash flow și bilanț** — poziția de numerar, principalii indicatori de lichiditate (DSO, DPO, capital de lucru), evoluția datoriei.\n4. **KPI-uri operaționale** — indicatorii care explică \"de ce\" din spatele cifrelor financiare (ex: număr de clienți noi, churn rate, cost de achiziție).\n5. **Forecast actualizat** — rolling forecast pentru trimestrul/anul curent, cu scenarii (best/base/worst case) dacă există incertitudine semnificativă.\n6. **Riscuri, decizii și cereri de aprobare** — orice subiect pe care ai nevoie de input sau vot din partea board-ului.\n\nO greșeală frecventă a controllerilor juniori este să înceapă cu detaliile (de exemplu, o listă de 40 de conturi analitice) și să lase concluzia la final. Board-ul funcționează invers: vrea concluzia întâi (\"pyramid principle\" — structura piramidală de comunicare, popularizată de Barbara Minto), iar detaliile doar dacă sunt întrebați. Regula practică: fiecare slide ar trebui să aibă un titlu care este o afirmație (\"Veniturile au crescut cu 8% peste buget, susținute de segmentul export\"), nu o etichetă neutră (\"Analiza veniturilor\").",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "grafice-eficiente-financiar",
+    "md": "Un board obosit de sute de tabele Excel reacționează mult mai bine la vizualizări clare. Câteva tipuri de grafice care funcționează foarte bine în raportarea financiară:\n\n- **Waterfall chart (grafic în cascadă)** — ideal pentru a explica o variație, de exemplu evoluția EBITDA de la buget la realizat, arătând contribuția fiecărui factor (volum, preț, costuri, curs valutar). Este graficul preferat pentru \"variance bridge\"-uri.\n- **Grafic combinat linie + bare** — pentru a arăta simultan o valoare absolută (ex. venituri lunare, bare) și un procent (ex. marja brută, linie pe axa secundară).\n- **Trend cu bandă de scenarii** — pentru rolling forecast, arată realizatul ca linie continuă și forecast-ul ca linie punctată, cu o bandă (shading) între scenariul optimist și pesimist.\n- **Scorecard/dashboard cu semafor (RAG — Red/Amber/Green)** — pentru KPI-uri multiple pe un singur slide, unde culoarea arată rapid dacă indicatorul e sub, la, sau peste țintă.\n\nReguli de design care contează mai mult decât instrumentul folosit:\n1. **Un mesaj pe grafic.** Dacă un grafic are nevoie de 3 minute de explicații, probabil are prea multe serii de date.\n2. **Etichetează direct pe grafic**, nu doar în legendă — reduce timpul de citire.\n3. **Evită graficele 3D și pie chart-urile cu multe categorii** — distorsionează percepția vizuală a proporțiilor; un bar chart simplu comunică mai clar.\n4. **Folosește aceeași scală și aceleași culori pe tot parcursul prezentării** (ex. albastru = actual, gri = buget, roșu = sub țintă) — consistența reduce efortul cognitiv al audienței.\n5. **Rotunjește cifrele afișate** (ex. 2,4 mil. lei, nu 2.437.812,45 lei) — precizia exagerată distrage atenția de la concluzie; detaliul exact rămâne în anexă pentru cine întreabă.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b3"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu: slide de variance analysis pentru venituri",
+    "concept_key": "variance-analysis-formula",
+    "md": "Presupunem (cifre ipotetice, doar pentru exemplificare) o companie de distribuție cu bugetul trimestrial de venituri de **4.200.000 lei** și un realizat de **4.578.000 lei**.\n\n**Formula variance-ului procentual:**\n\nVariance % = (Realizat − Buget) / Buget × 100\n\nVariance % = (4.578.000 − 4.200.000) / 4.200.000 × 100 = **+9,0%**\n\nPe slide, nu te oprești la cifra brută — descompui variance-ul pe factori, exact ca într-un waterfall chart:\n\n| Factor | Contribuție (lei) |\n|---|---|\n| Volum vânzări mai mare decât planificat | +250.000 |\n| Efect preț (creșteri de listă aplicate) | +90.000 |\n| Curs valutar (parte din vânzări facturate în euro) | +38.000 |\n| **Total variance** | **+378.000** |\n\nMesajul pentru board, tradus din tabel: \"Am depășit bugetul de venituri cu 9%, susținut în principal de volum (66% din variance), nu de preț — ceea ce confirmă că strategia de expansiune comercială funcționează, dar marja unitară rămâne sub presiune.\" Acesta este exact tipul de interpretare de business pe care board-ul o așteaptă, nu doar cifra de 9%.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b4"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu: EBITDA bridge (waterfall) pentru raportare trimestrială",
+    "concept_key": "ebitda-bridge-waterfall",
+    "md": "Un al doilea slide tipic de board este \"EBITDA bridge\" — arată vizual, printr-un grafic în cascadă, cum s-a ajuns de la EBITDA bugetat la EBITDA realizat (cifre ipotetice):\n\n- EBITDA buget: **1.100.000 lei**\n- (+) Efect volum vânzări: **+180.000 lei**\n- (−) Costuri materii prime peste buget (creștere preț furnizor): **−95.000 lei**\n- (−) Costuri de personal peste buget (bonusuri neplanificate): **−40.000 lei**\n- (+) Economii la cheltuieli administrative: **+25.000 lei**\n- **EBITDA realizat: 1.170.000 lei**\n\nVerificare: 1.100.000 + 180.000 − 95.000 − 40.000 + 25.000 = 1.170.000 lei ✓\n\nÎn grafic, fiecare bară \"plutitoare\" (floating bar) reprezintă unul dintre acești pași, pornind de la bara buget (ancorată la zero) și terminând cu bara realizat (tot ancorată la zero). Board-ul vede dintr-o privire că, deși EBITDA a depășit bugetul cu 70.000 lei (+6,4%), principala presiune vine din costul materiilor prime — un semnal că echipa de achiziții ar trebui să fie invitată la următoarea discuție despre riscuri operaționale.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cifrele folosite în exemplele de mai sus (venituri, EBITDA, variance-uri) sunt **ipotetice**, construite strict pentru a ilustra metoda de calcul și tipul de grafic — nu reprezintă date reale ale vreunei companii și nu trebuie folosite ca benchmark. La o prezentare reală de board, verifică întotdeauna cifrele cu sursa (balanța de verificare, extrasele bancare, modulul de buget din ERP) înainte de a le pune pe slide — o eroare descoperită de un membru al board-ului în timpul prezentării erodează instant credibilitatea întregului raport.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești controller financiar la o companie cu buget trimestrial de vânzări de **3.000.000 lei**. Realizatul trimestrului este **2.760.000 lei**. Din analiza pe factori, ai identificat: pierderea unui client mare a redus veniturile cu 280.000 lei, dar o campanie de cross-selling a adus în plus 40.000 lei.\n\nCerințe:\n1. Calculează variance-ul procentual față de buget.\n2. Verifică dacă suma factorilor identificați explică integral variance-ul absolut.\n3. Formulează, într-o singură propoziție, mesajul de tip \"executive summary\" pentru slide-ul de board.",
+    "solution_md": "**1. Variance procentual:**\n\nVariance % = (Realizat − Buget) / Buget × 100 = (2.760.000 − 3.000.000) / 3.000.000 × 100 = **−8,0%**\n\n**2. Verificare factori:**\n\nVariance absolut = 2.760.000 − 3.000.000 = −240.000 lei\n\nSuma factorilor identificați = −280.000 (pierdere client) + 40.000 (cross-selling) = **−240.000 lei** ✓ — factorii identificați explică integral abaterea, deci nu mai există un \"reziduu neexplicat\" care ar ridica întrebări suplimentare din partea board-ului.\n\n**3. Mesaj executive summary:**\n\n\"Veniturile trimestrului au fost sub buget cu 8% (−240.000 lei), determinate în întregime de pierderea unui client cheie; campania de cross-selling a recuperat parțial impactul, iar echipa comercială are deja un plan de acțiune pentru compensarea integrală în trimestrul următor.\"",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență de structură între un raport de management intern și o prezentare de board, conform principiului piramidal (pyramid principle)?",
+    "choices": [
+     "Raportul intern folosește mai puține culori, iar prezentarea de board mai multe",
+     "Prezentarea de board începe cu concluzia și mesajele cheie, detaliile venind doar la cerere; raportul intern poate începe cu detaliile",
+     "Prezentarea de board nu conține niciodată cifre, doar text narativ",
+     "Nu există nicio diferență de structură, doar de lungime"
+    ],
+    "answer": 1,
+    "explain": "Principiul piramidal (Barbara Minto) recomandă ca board-ul să primească întâi concluzia și mesajul cheie, iar detaliile de susținere să fie disponibile doar dacă sunt cerute — invers față de un raport tehnic intern, care poate porni de la detaliu spre concluzie.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce tip de grafic este cel mai potrivit pentru a explica, pas cu pas, cum s-a ajuns de la EBITDA bugetat la EBITDA realizat (efect volum, efect cost, efect curs valutar etc.)?",
+    "choices": [
+     "Pie chart (grafic circular)",
+     "Waterfall chart (grafic în cascadă)",
+     "Grafic radar",
+     "Histogramă"
+    ],
+    "answer": 1,
+    "explain": "Waterfall chart-ul (grafic în cascadă) arată vizual, prin bare \"plutitoare\", contribuția fiecărui factor la trecerea de la o valoare de start (buget) la o valoare finală (realizat), fiind instrumentul standard pentru \"variance bridge\"-uri de tip EBITDA sau venituri.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce întrebare ar trebui să-ți pui pentru fiecare cifră pusă pe un slide de board?",
+    "back": "\"So what?\" — dacă nu poți explica în maximum o propoziție ce înseamnă cifra pentru business, ea aparține anexei, nu slide-ului principal.",
+    "concept_key": "board-presentation-obiective",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 6 secțiuni recomandate ale unei prezentări financiare de board?",
+    "back": "1) Executive summary, 2) Performanță financiară (P&L vs buget), 3) Cash flow și bilanț, 4) KPI-uri operaționale, 5) Forecast actualizat, 6) Riscuri și decizii de aprobat.",
+    "concept_key": "structura-prezentare-board",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un \"waterfall chart\" (grafic în cascadă) și pentru ce se folosește în raportarea financiară?",
+    "back": "Un grafic cu bare \"plutitoare\" care descompune o variație totală (ex. de la EBITDA buget la EBITDA realizat) în contribuțiile individuale ale fiecărui factor cauzal.",
+    "concept_key": "grafice-eficiente-financiar",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula variance-ului procentual față de buget?",
+    "back": "Variance % = (Realizat − Buget) / Buget × 100. Exemplu: buget 3.000.000 lei, realizat 2.760.000 lei → variance = −8,0%.",
+    "concept_key": "variance-analysis-formula",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce e principiul piramidal (pyramid principle) în comunicarea către board?",
+    "back": "Structurarea mesajului cu concluzia și recomandarea întâi, urmate de argumentele și detaliile de susținere — opusul unui raport tehnic care pornește de la detaliu.",
+    "concept_key": "structura-prezentare-board",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b14"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "reglementări privind situațiile financiare anuale individuale și consolidate",
+    "effective": "2015-01-01",
+    "md": "Structura P&L (cont de profit și pierdere) și a bilanțului prezentate board-ului trebuie să rămână coerente cu formatul situațiilor financiare anuale reglementat de OMFP 1802/2014, chiar dacă la nivel de prezentare vizuală se folosesc gruparile manageriale (ex. EBITDA, marjă de contribuție) care nu apar explicit ca linii distincte în formatul legal — pentru a evita neconcordanțe atunci când board-ul compară raportarea internă cu situațiile financiare auditate.",
+    "blockId": "cmjjuxw6x00fjumkpim5s0zf9-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1421,
+   "flashcards": 5
+  }
+ }
+}

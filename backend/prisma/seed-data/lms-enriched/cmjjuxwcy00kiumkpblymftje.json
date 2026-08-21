@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwcy00kiumkpblymftje",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Instruirea Lucrătorilor",
+ "lesson": "Planificarea instruirilor",
+ "category": "HSE_SAFETY",
+ "content": "# Planificarea instruirilor\n\n## De ce planificarea instruirilor este o obligație, nu o formalitate\n\nInstruirea lucrătorilor în domeniul securității și sănătății în muncă (SSM) nu se face „quando apare timp”, ci după un **plan scris**, aprobat de angajator, care stabilește dinainte tematicile, duratele, frecvența și persoanele responsabile. Legea 319/2006 obligă angajatorul să asigure instruirea *tuturor* lucrătorilor, iar HG 1425/2006 (Normele metodologice de aplicare) detaliază exact cum trebuie organizat acest proces.\n\nPlanificarea este atributul lucrătorului desemnat SSM, al serviciului intern de prevenire și protecție sau, dacă firma a externalizat, al serviciului extern de prevenire și protecție (SEPP). Angajatorul rămâne însă răspunzător final, indiferent cine execută instruirea efectiv.\n\nUn plan de instruire bine construit are trei roluri:\n\n1. **Conformitate legală** — dovedește la control ITM (Inspectoratul Teritorial de Muncă) că instruirea nu este întâmplătoare, ci sistematică.\n2. **Instrument managerial** — permite responsabilului SSM să bugeteze timpul de instruire, să planifice suplinitorii și să nu uite pe nimeni.\n3. **Reducere reală a riscului** — instruirea la timp, pe tematica potrivită postului, este singura instruire care chiar previne accidente.\n\n## Cele trei tipuri de instruire și cum se planifică fiecare\n\n### 1. Instruirea introductiv-generală\nSe planifică **o singură dată**, la angajare (sau la primirea unor persoane aflate în firmă în interes de serviciu, studenți în practică, vizitatori care intră în zone cu risc). Durata minimă este de 8 ore, stabilită prin instrucțiuni proprii ale angajatorului. Se organizează de regulă în prima zi, înainte ca persoana să înceapă efectiv activitatea.\n\n### 2. Instruirea la locul de muncă\nSe planifică imediat după instruirea introductiv-generală, tot cu durată minimă de 8 ore, și se repetă obligatoriu la: schimbarea locului de muncă, schimbarea felului muncii, introducerea unui echipament de muncă nou sau a unor modificări ale celui existent, introducerea unei noi tehnologii, la reluarea activității după o întrerupere mai mare de 6 luni (executanți) sau 12 luni (alte categorii).\n\n### 3. Instruirea periodică\nAceasta este cea care necesită un **calendar anual** propriu-zis, pentru că se repetă la intervale regulate, stabilite prin instrucțiuni proprii, în funcție de riscurile specifice postului, dar **fără a depăși 6 luni** pentru personalul de execuție și **12 luni** pentru personalul tehnico-administrativ (TESA). Pentru posturi cu risc ridicat (ex. lucru la înălțime, spații confinate, agenți chimici periculoși), angajatorul poate — și este recomandat să — stabilească intervale mai scurte (lunar sau trimestrial), documentate în evaluarea de risc.\n\nPlanul de instruire periodică trebuie să conțină, pentru fiecare grupă de lucrători: tematica lunii/trimestrului, durata alocată, formatorul, locul și modalitatea de verificare a cunoștințelor (test scris, verificare practică).\n\n## Structura unui plan/calendar anual de instruire SSM\n\nUn plan de instruire eficient nu este doar un tabel cu date — este un document de lucru care leagă instruirea de evaluarea riscurilor și de fișele de post. Elementele obligatorii recomandate:\n\n| Element | Conținut |\n|---|---|\n| Grupa de lucrători | ex. operatori depozit, șoferi, TESA, personal producție |\n| Tematică | corelată cu riscurile identificate în evaluarea de risc a postului |\n| Durata minimă | 8 ore pentru introductiv-generală și la locul de muncă; durata periodicei stabilită prin instrucțiuni proprii |\n| Frecvența | ≤ 6 luni execuție / ≤ 12 luni TESA, sau interval redus pentru risc ridicat |\n| Data planificată | lună/trimestru concret, nu doar „periodic” |\n| Formator | lucrător desemnat, serviciu intern SSM sau SEPP |\n| Metodă de verificare | test grilă, chestionar, verificare practică la locul de muncă |\n| Document rezultat | fișa individuală de instructaj SSM, semnată de instruit și instructor |\n\nCalendarul trebuie corelat și cu alte evenimente care declanșează instruiri suplimentare, neplanificate în calendarul standard: accident de muncă produs în unitate, modificarea legislației SSM, introducerea unui echipament nou sau constatarea unor abateri repetate de la normele de securitate. Aceste instruiri „la eveniment” se adaugă calendarului, nu îl înlocuiesc.\n\n> Temei legal: HG 1425/2006 pentru aprobarea Normelor metodologice de aplicare a Legii securității și sănătății în muncă nr. 319/2006 art. 98-99 (perioadicitatea instruirii) și art. 89-92 (durata instruirii la angajare) (în vigoare de la 2006-11-01)\nHG 1425/2006 stabilește că intervalul dintre două instruiri periodice se fixează prin instrucțiuni proprii ale angajatorului, în funcție de condițiile locului de muncă, dar **nu poate depăși 6 luni** pentru personalul de execuție, respectiv **12 luni** pentru personalul tehnico-administrativ. Durata instruirii introductiv-generale și a celei la locul de muncă este de minimum 8 ore fiecare. Textul actului poate avea completări ulterioare (ex. HG 955/2010) — verifică forma consolidată în vigoare înainte de a stabili intervalele exacte pentru categorii speciale de activitate.\n\n## Exemplu: Calendar anual de instruire pentru o firmă cu birou și depozit\n**Context:** SC Logistica Prundeni SRL are 22 de angajați: 6 în birouri (TESA — contabilitate, vânzări, HR) și 16 în depozit (gestionari, operatori stivuitor, ambalatori).\n\n**Pasul 1 — stabilirea frecvenței pe grupă, pe baza evaluării de risc:**\n- Personal TESA: risc redus → instruire periodică la 12 luni (limita maximă legală).\n- Operatori stivuitor și gestionari care manevrează mărfuri paletizate: risc mediu-ridicat → responsabilul SSM decide, pe baza evaluării de risc, un interval de 3 luni (mai strict decât plafonul de 6 luni impus de lege).\n- Ambalatori (fără manevrare utilaje): risc mediu → instruire periodică la 6 luni.\n\n**Pasul 2 — calendarul rezultat:**\n\n| Lună | Grupă instruită | Tematică | Durată |\n|---|---|---|---|\n| Ianuarie | Stivuitoriști + gestionari | Manevrarea sarcinilor, verificarea zilnică a stivuitorului, PSI depozit | 2 ore |\n| Martie | TESA | Ergonomia postului de birou, evacuare în caz de incendiu | 2 ore |\n| Aprilie | Stivuitoriști + gestionari | Reluare tematică + accidente recente în sector | 2 ore |\n| Iulie | Ambalatori | Manipularea manuală a maselor, poziții de lucru | 2 ore |\n| Iulie | Stivuitoriști + gestionari | Verificare periodică ITP-uri utilaje, prim ajutor | 2 ore |\n| Martie (anul următor) | TESA | Reactualizare legislație SSM | 2 ore |\n\n**Observație:** deși legea permite până la 6 luni pentru execuție, firma a ales 3 luni pentru grupa cu risc de manevrare utilaje — o decizie documentată în evaluarea de risc, nu una arbitrară. Acest tip de justificare este exact ce verifică inspectorul ITM la control.\n\n## Exemplu: Corelarea planului de instruire cu fișa individuală de instructaj\nFiecare rând din calendarul anual trebuie să se materializeze, la data planificată, într-o înregistrare concretă în **Fișa individuală de instructaj SSM** a fiecărui lucrător (formular reglementat de HG 1425/2006, Anexa 11).\n\nExemplu de completare pentru operatorul stivuitor Ionescu M., instruirea periodică din aprilie:\n\n- Data instruirii: 15 aprilie\n- Durata: 2 ore\n- Tematica abordată: reluare manevrare sarcini + analiză accident recent în sector (cădere marfă de pe raft)\n- Instructor: responsabil SSM intern, dl. Popescu A.\n- Modalitate de verificare: test grilă (10 întrebări, prag de promovare 80%)\n- Rezultat: promovat, semnătură lucrător + semnătură instructor\n\nDacă planul spune „aprilie” dar fișa individuală nu este completată și semnată în aprilie, instruirea **nu există din punct de vedere legal**, indiferent dacă discuția a avut loc informal la depozit. Planificarea fără execuție documentată nu are valoare probatorie la control.\n\n⚠ Cea mai frecventă greșeală în planificarea instruirilor este copierea unui interval generic (de exemplu „instruire periodică la 6 luni pentru toți”) direct dintr-un model găsit online, fără a-l corela cu evaluarea de risc proprie a fiecărui post. Legea stabilește un plafon maxim (6 luni execuție / 12 luni TESA), nu un standard universal — pentru posturi cu risc ridicat, angajatorul are obligația să reducă intervalul, nu doar opțiunea. La control, ITM verifică exact această corelație: dacă evaluarea de risc arată risc ridicat la un post, dar planul de instruire prevede interval de 6 luni „ca la toată lumea”, aceasta este o neconformitate sancționabilă.\n\n## Exercițiu\nEști responsabil SSM la o firmă de producție mobilă cu 40 de angajați: 8 în birouri (TESA), 12 operatori mașini de tăiat/frezat lemn (risc ridicat — utilaje tăietoare, praf de lemn), 20 în asamblare/finisare (risc mediu). Construiește un calendar anual simplificat de instruire periodică pentru cele trei grupe, respectând plafoanele legale din HG 1425/2006 și justificând orice interval mai strict decât plafonul maxim.\n\n**Soluție:** **Soluție propusă:**\n\n1. **TESA (8 persoane)** — risc redus. Interval ales: 12 luni (plafonul maxim permis de lege). O singură instruire anuală, de 2 ore, în luna în care s-a făcut angajarea majorității grupului (ex. ianuarie), cu tematică: ergonomie birou, evacuare incendiu, prim ajutor de bază.\n\n2. **Operatori mașini de tăiat/frezat (12 persoane)** — risc ridicat (utilaje periculoase, praf de lemn combustibil, zgomot). Interval ales: 2 luni — mai strict decât plafonul legal de 6 luni, justificat prin evaluarea de risc care semnalează pericol de amputație/tăiere și risc de incendiu/explozie praf de lemn. Tematici rotative: (1) protecții mecanice și dispozitive de oprire de urgență, (2) purtarea EIP (echipament individual de protecție) — mască praf, protecție auditivă, (3) proceduri PSI specifice atelierului cu praf combustibil, (4) analiza incidentelor/aproape-accidentelor din ultimele 2 luni, (5) reluare generală, (6) verificare practică la utilaj.\n\n3. **Asamblare/finisare (20 persoane)** — risc mediu (manipulare manuală, solvenți la finisare). Interval ales: 4 luni — sub plafonul de 6 luni, justificat de expunerea la substanțe chimice la finisare. Tematici: manipulare manuală a maselor, fișe de securitate ale solvenților utilizați, ventilație și EIP la finisare.\n\n**Notă de justificare** (obligatorie în planul scris): pentru grupele 2 și 3, intervalul este mai scurt decât plafonul legal maxim deoarece evaluarea de risc a identificat pericole cu potențial de vătămare gravă (tăiere, incendiu, expunere chimică), ceea ce impune, conform bunelor practici SSM și principiului prevenirii, o frecvență de reamintire mai mare decât minimul admis de HG 1425/2006.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "planificarea-instruirilor-ssm-rol",
+    "md": "## De ce planificarea instruirilor este o obligație, nu o formalitate\n\nInstruirea lucrătorilor în domeniul securității și sănătății în muncă (SSM) nu se face „quando apare timp”, ci după un **plan scris**, aprobat de angajator, care stabilește dinainte tematicile, duratele, frecvența și persoanele responsabile. Legea 319/2006 obligă angajatorul să asigure instruirea *tuturor* lucrătorilor, iar HG 1425/2006 (Normele metodologice de aplicare) detaliază exact cum trebuie organizat acest proces.\n\nPlanificarea este atributul lucrătorului desemnat SSM, al serviciului intern de prevenire și protecție sau, dacă firma a externalizat, al serviciului extern de prevenire și protecție (SEPP). Angajatorul rămâne însă răspunzător final, indiferent cine execută instruirea efectiv.\n\nUn plan de instruire bine construit are trei roluri:\n\n1. **Conformitate legală** — dovedește la control ITM (Inspectoratul Teritorial de Muncă) că instruirea nu este întâmplătoare, ci sistematică.\n2. **Instrument managerial** — permite responsabilului SSM să bugeteze timpul de instruire, să planifice suplinitorii și să nu uite pe nimeni.\n3. **Reducere reală a riscului** — instruirea la timp, pe tematica potrivită postului, este singura instruire care chiar previne accidente.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tipuri-instruire-planificare",
+    "md": "## Cele trei tipuri de instruire și cum se planifică fiecare\n\n### 1. Instruirea introductiv-generală\nSe planifică **o singură dată**, la angajare (sau la primirea unor persoane aflate în firmă în interes de serviciu, studenți în practică, vizitatori care intră în zone cu risc). Durata minimă este de 8 ore, stabilită prin instrucțiuni proprii ale angajatorului. Se organizează de regulă în prima zi, înainte ca persoana să înceapă efectiv activitatea.\n\n### 2. Instruirea la locul de muncă\nSe planifică imediat după instruirea introductiv-generală, tot cu durată minimă de 8 ore, și se repetă obligatoriu la: schimbarea locului de muncă, schimbarea felului muncii, introducerea unui echipament de muncă nou sau a unor modificări ale celui existent, introducerea unei noi tehnologii, la reluarea activității după o întrerupere mai mare de 6 luni (executanți) sau 12 luni (alte categorii).\n\n### 3. Instruirea periodică\nAceasta este cea care necesită un **calendar anual** propriu-zis, pentru că se repetă la intervale regulate, stabilite prin instrucțiuni proprii, în funcție de riscurile specifice postului, dar **fără a depăși 6 luni** pentru personalul de execuție și **12 luni** pentru personalul tehnico-administrativ (TESA). Pentru posturi cu risc ridicat (ex. lucru la înălțime, spații confinate, agenți chimici periculoși), angajatorul poate — și este recomandat să — stabilească intervale mai scurte (lunar sau trimestrial), documentate în evaluarea de risc.\n\nPlanul de instruire periodică trebuie să conțină, pentru fiecare grupă de lucrători: tematica lunii/trimestrului, durata alocată, formatorul, locul și modalitatea de verificare a cunoștințelor (test scris, verificare practică).",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "elemente-plan-instruire-anual",
+    "md": "## Structura unui plan/calendar anual de instruire SSM\n\nUn plan de instruire eficient nu este doar un tabel cu date — este un document de lucru care leagă instruirea de evaluarea riscurilor și de fișele de post. Elementele obligatorii recomandate:\n\n| Element | Conținut |\n|---|---|\n| Grupa de lucrători | ex. operatori depozit, șoferi, TESA, personal producție |\n| Tematică | corelată cu riscurile identificate în evaluarea de risc a postului |\n| Durata minimă | 8 ore pentru introductiv-generală și la locul de muncă; durata periodicei stabilită prin instrucțiuni proprii |\n| Frecvența | ≤ 6 luni execuție / ≤ 12 luni TESA, sau interval redus pentru risc ridicat |\n| Data planificată | lună/trimestru concret, nu doar „periodic” |\n| Formator | lucrător desemnat, serviciu intern SSM sau SEPP |\n| Metodă de verificare | test grilă, chestionar, verificare practică la locul de muncă |\n| Document rezultat | fișa individuală de instructaj SSM, semnată de instruit și instructor |\n\nCalendarul trebuie corelat și cu alte evenimente care declanșează instruiri suplimentare, neplanificate în calendarul standard: accident de muncă produs în unitate, modificarea legislației SSM, introducerea unui echipament nou sau constatarea unor abateri repetate de la normele de securitate. Aceste instruiri „la eveniment” se adaugă calendarului, nu îl înlocuiesc.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG 1425/2006 pentru aprobarea Normelor metodologice de aplicare a Legii securității și sănătății în muncă nr. 319/2006",
+    "article": "art. 98-99 (perioadicitatea instruirii) și art. 89-92 (durata instruirii la angajare)",
+    "effective": "2006-11-01",
+    "md": "HG 1425/2006 stabilește că intervalul dintre două instruiri periodice se fixează prin instrucțiuni proprii ale angajatorului, în funcție de condițiile locului de muncă, dar **nu poate depăși 6 luni** pentru personalul de execuție, respectiv **12 luni** pentru personalul tehnico-administrativ. Durata instruirii introductiv-generale și a celei la locul de muncă este de minimum 8 ore fiecare. Textul actului poate avea completări ulterioare (ex. HG 955/2010) — verifică forma consolidată în vigoare înainte de a stabili intervalele exacte pentru categorii speciale de activitate.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calendar anual de instruire pentru o firmă cu birou și depozit",
+    "concept_key": "exemplu-calendar-instruire-anual",
+    "md": "**Context:** SC Logistica Prundeni SRL are 22 de angajați: 6 în birouri (TESA — contabilitate, vânzări, HR) și 16 în depozit (gestionari, operatori stivuitor, ambalatori).\n\n**Pasul 1 — stabilirea frecvenței pe grupă, pe baza evaluării de risc:**\n- Personal TESA: risc redus → instruire periodică la 12 luni (limita maximă legală).\n- Operatori stivuitor și gestionari care manevrează mărfuri paletizate: risc mediu-ridicat → responsabilul SSM decide, pe baza evaluării de risc, un interval de 3 luni (mai strict decât plafonul de 6 luni impus de lege).\n- Ambalatori (fără manevrare utilaje): risc mediu → instruire periodică la 6 luni.\n\n**Pasul 2 — calendarul rezultat:**\n\n| Lună | Grupă instruită | Tematică | Durată |\n|---|---|---|---|\n| Ianuarie | Stivuitoriști + gestionari | Manevrarea sarcinilor, verificarea zilnică a stivuitorului, PSI depozit | 2 ore |\n| Martie | TESA | Ergonomia postului de birou, evacuare în caz de incendiu | 2 ore |\n| Aprilie | Stivuitoriști + gestionari | Reluare tematică + accidente recente în sector | 2 ore |\n| Iulie | Ambalatori | Manipularea manuală a maselor, poziții de lucru | 2 ore |\n| Iulie | Stivuitoriști + gestionari | Verificare periodică ITP-uri utilaje, prim ajutor | 2 ore |\n| Martie (anul următor) | TESA | Reactualizare legislație SSM | 2 ore |\n\n**Observație:** deși legea permite până la 6 luni pentru execuție, firma a ales 3 luni pentru grupa cu risc de manevrare utilaje — o decizie documentată în evaluarea de risc, nu una arbitrară. Acest tip de justificare este exact ce verifică inspectorul ITM la control.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b5"
+   },
+   {
+    "type": "example",
+    "title": "Corelarea planului de instruire cu fișa individuală de instructaj",
+    "concept_key": "exemplu-fisa-instructaj-corelata",
+    "md": "Fiecare rând din calendarul anual trebuie să se materializeze, la data planificată, într-o înregistrare concretă în **Fișa individuală de instructaj SSM** a fiecărui lucrător (formular reglementat de HG 1425/2006, Anexa 11).\n\nExemplu de completare pentru operatorul stivuitor Ionescu M., instruirea periodică din aprilie:\n\n- Data instruirii: 15 aprilie\n- Durata: 2 ore\n- Tematica abordată: reluare manevrare sarcini + analiză accident recent în sector (cădere marfă de pe raft)\n- Instructor: responsabil SSM intern, dl. Popescu A.\n- Modalitate de verificare: test grilă (10 întrebări, prag de promovare 80%)\n- Rezultat: promovat, semnătură lucrător + semnătură instructor\n\nDacă planul spune „aprilie” dar fișa individuală nu este completată și semnată în aprilie, instruirea **nu există din punct de vedere legal**, indiferent dacă discuția a avut loc informal la depozit. Planificarea fără execuție documentată nu are valoare probatorie la control.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală în planificarea instruirilor este copierea unui interval generic (de exemplu „instruire periodică la 6 luni pentru toți”) direct dintr-un model găsit online, fără a-l corela cu evaluarea de risc proprie a fiecărui post. Legea stabilește un plafon maxim (6 luni execuție / 12 luni TESA), nu un standard universal — pentru posturi cu risc ridicat, angajatorul are obligația să reducă intervalul, nu doar opțiunea. La control, ITM verifică exact această corelație: dacă evaluarea de risc arată risc ridicat la un post, dar planul de instruire prevede interval de 6 luni „ca la toată lumea”, aceasta este o neconformitate sancționabilă.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești responsabil SSM la o firmă de producție mobilă cu 40 de angajați: 8 în birouri (TESA), 12 operatori mașini de tăiat/frezat lemn (risc ridicat — utilaje tăietoare, praf de lemn), 20 în asamblare/finisare (risc mediu). Construiește un calendar anual simplificat de instruire periodică pentru cele trei grupe, respectând plafoanele legale din HG 1425/2006 și justificând orice interval mai strict decât plafonul maxim.",
+    "solution_md": "**Soluție propusă:**\n\n1. **TESA (8 persoane)** — risc redus. Interval ales: 12 luni (plafonul maxim permis de lege). O singură instruire anuală, de 2 ore, în luna în care s-a făcut angajarea majorității grupului (ex. ianuarie), cu tematică: ergonomie birou, evacuare incendiu, prim ajutor de bază.\n\n2. **Operatori mașini de tăiat/frezat (12 persoane)** — risc ridicat (utilaje periculoase, praf de lemn combustibil, zgomot). Interval ales: 2 luni — mai strict decât plafonul legal de 6 luni, justificat prin evaluarea de risc care semnalează pericol de amputație/tăiere și risc de incendiu/explozie praf de lemn. Tematici rotative: (1) protecții mecanice și dispozitive de oprire de urgență, (2) purtarea EIP (echipament individual de protecție) — mască praf, protecție auditivă, (3) proceduri PSI specifice atelierului cu praf combustibil, (4) analiza incidentelor/aproape-accidentelor din ultimele 2 luni, (5) reluare generală, (6) verificare practică la utilaj.\n\n3. **Asamblare/finisare (20 persoane)** — risc mediu (manipulare manuală, solvenți la finisare). Interval ales: 4 luni — sub plafonul de 6 luni, justificat de expunerea la substanțe chimice la finisare. Tematici: manipulare manuală a maselor, fișe de securitate ale solvenților utilizați, ventilație și EIP la finisare.\n\n**Notă de justificare** (obligatorie în planul scris): pentru grupele 2 și 3, intervalul este mai scurt decât plafonul legal maxim deoarece evaluarea de risc a identificat pericole cu potențial de vătămare gravă (tăiere, incendiu, expunere chimică), ceea ce impune, conform bunelor practici SSM și principiului prevenirii, o frecvență de reamintire mai mare decât minimul admis de HG 1425/2006.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este intervalul maxim admis prin HG 1425/2006 pentru instruirea periodică a personalului de execuție?",
+    "choices": [
+     "3 luni",
+     "6 luni",
+     "12 luni",
+     "24 luni"
+    ],
+    "answer": 1,
+    "explain": "Legea permite un plafon maxim de 6 luni pentru personalul de execuție; angajatorul poate stabili un interval mai scurt dacă riscurile postului o impun, dar nu poate depăși acest plafon.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce trebuie să conțină obligatoriu un plan de instruire SSM pentru a avea valoare la un control ITM?",
+    "choices": [
+     "Doar lista angajaților care trebuie instruiți",
+     "Tematică, durată, frecvență, formator și metodă de verificare, corelate cu evaluarea de risc",
+     "Doar semnătura angajatorului pe prima pagină",
+     "Un istoric al accidentelor din ultimii 10 ani"
+    ],
+    "answer": 1,
+    "explain": "Un plan de instruire credibil leagă fiecare instruire de riscurile reale ale postului: ce se predă, cât durează, cât de des, cine predă și cum se verifică însușirea cunoștințelor.",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata minimă a instruirii introductiv-generale și a instruirii la locul de muncă?",
+    "back": "Minimum 8 ore fiecare, conform HG 1425/2006.",
+    "concept_key": "durata-instruire-introductiv-generala",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este intervalul maxim legal dintre două instruiri periodice pentru personalul de execuție?",
+    "back": "6 luni (poate fi redus, nu extins, pe baza evaluării de risc).",
+    "concept_key": "interval-maxim-instruire-periodica-executie",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este intervalul maxim legal dintre două instruiri periodice pentru personalul TESA (tehnico-administrativ)?",
+    "back": "12 luni.",
+    "concept_key": "interval-maxim-instruire-periodica-tesa",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document dovedește efectuarea concretă a unei instruiri planificate în calendar?",
+    "back": "Fișa individuală de instructaj SSM, semnată de lucrător și de instructor, cu data, durata, tematica și rezultatul verificării.",
+    "concept_key": "fisa-individuala-instructaj-ssm",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine planifică și organizează instruirile SSM într-o firmă, deși angajatorul rămâne responsabil final?",
+    "back": "Lucrătorul desemnat SSM, serviciul intern de prevenire și protecție, sau serviciul extern de prevenire și protecție (SEPP), dacă activitatea este externalizată.",
+    "concept_key": "responsabil-planificare-instruire-ssm",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce evenimente declanșează o instruire suplimentară, în afara calendarului periodic standard?",
+    "back": "Accident de muncă în unitate, modificarea legislației SSM, introducerea unui echipament/tehnologie nouă, sau abateri repetate de la normele de securitate.",
+    "concept_key": "instruire-suplimentara-eveniment",
+    "blockId": "cmjjuxwcy00kiumkpblymftje-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1438,
+   "flashcards": 6
+  }
+ }
+}

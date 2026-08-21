@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxvy40090umkpxmwik0rh",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Predictive",
+ "lesson": "Scope Management",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Scope Management\n\n## Ce este Project Scope Management?\n\nÎn abordarea predictivă (waterfall), Project Scope Management este domeniul de cunoștințe care asigură că proiectul include **tot ce este necesar, și numai ce este necesar**, pentru finalizarea cu succes. Din perspectiva ECO (Examination Content Outline) și PMBOK, acest domeniu se traduce în șase procese secvențiale, aplicate în general în faza de planificare și apoi monitorizate pe tot parcursul proiectului:\n\n1. **Plan Scope Management** – stabilește cum va fi definit, validat și controlat scope-ul; produce Scope Management Plan și Requirements Management Plan.\n2. **Collect Requirements** – identifică și documentează nevoile stakeholderilor.\n3. **Define Scope** – transformă cerințele într-o descriere detaliată a produsului și proiectului (Project Scope Statement).\n4. **Create WBS** – descompune livrabilele în componente mai mici, gestionabile (work packages).\n5. **Validate Scope** – obține acceptarea formală a livrabilelor finalizate.\n6. **Control Scope** – monitorizează starea scope-ului și gestionează modificările.\n\nUn exemplu tipic la o companie românească: implementarea unui sistem ERP la o firmă de distribuție cu 200 de angajați. Fără un Scope Management Plan clar, riscul ca proiectul să „crească\" necontrolat (module suplimentare, integrări neplanificate) este foarte mare — de aceea examenul PMP acordă atenție deosebită acestor procese și instrumentelor lor.\n\n## Collect Requirements: tehnici principale\n\nCollect Requirements este procesul prin care se determină, documentează și gestionează nevoile și cerințele stakeholderilor pentru atingerea obiectivelor proiectului. Pentru examen, trebuie să recunoști rapid tehnicile și când se aplică fiecare:\n\n- **Interviuri** – discuții individuale, 1-la-1, cu stakeholderi cheie (ex. directorul financiar, pentru cerințele de raportare ERP).\n- **Focus grupuri** – discuții moderate cu stakeholderi și experți din domeniu.\n- **Ateliere facilitate (facilitated workshops)** – sesiuni intensive cu stakeholderi din departamente diferite (ex. JAD – Joint Application Design, sau QFD – Quality Function Deployment).\n- **Tehnici de creativitate de grup** – brainstorming, nominal group technique (vot ponderat al ideilor), Delphi (chestionare anonime succesive cu experți), mind mapping și **diagrame de afinitate** (gruparea unui volum mare de idei în clustere).\n- **Tehnici de decizie de grup** – unanimitate, majoritate, pluralitate, dictatorial.\n- **Chestionare și sondaje** – eficiente pentru audiențe mari, dispersate geografic.\n- **Observații (job shadowing)** – urmărirea directă a modului de lucru al utilizatorilor finali.\n- **Prototipuri** – modele funcționale timpurii pentru feedback rapid, frecvent folosite hibrid, cu iterații agile.\n- **Benchmarking** – comparație cu practici similare din piață.\n- **Diagrame de context** – vizualizează granițele sistemului și interacțiunile cu actorii externi.\n- **Analiza documentelor** – contracte, procese existente, reglementări.\n\nOutput-ul central este **Requirements Documentation**, însoțit de **Requirements Traceability Matrix (RTM)** — un tabel care leagă fiecare cerință de originea ei și de livrabilele care o satisfac, permițând trasabilitate completă până la testare și acceptanță.\n\n## Define Scope și Project Scope Statement\n\nDefine Scope dezvoltă o descriere detaliată a proiectului și produsului, pornind de la cerințele colectate, business case și Project Charter. Tehnicile principale sunt **expert judgment**, **product analysis** (descompunerea produsului în componente funcționale), **generarea de alternative** și **atelierele facilitate**.\n\nRezultatul este **Project Scope Statement**, documentul care ancorează întreaga echipă în același înțeles al scope-ului. Componentele sale obligatorii:\n\n- **Descrierea scope-ului produsului** – caracteristicile produsului/serviciului/rezultatului.\n- **Livrabile (deliverables)** – rezultatele măsurabile ale proiectului.\n- **Criterii de acceptanță** – condițiile care trebuie îndeplinite pentru ca livrabilele să fie acceptate.\n- **Excluderi din scope** – ce NU este inclus, esențial pentru a preveni ambiguități și dispute ulterioare.\n- **Constrângeri** – limitări de buget, termen, resurse, reglementări.\n- **Asumpții** – factori considerați adevărați, fără verificare la momentul planificării.\n\nLa examen, reține diferența dintre Project Charter (autorizează proiectul, la nivel înalt) și Project Scope Statement (detaliază scope-ul, la nivel granular) — o capcană clasică de întrebare.\n\n## Create WBS: descompunerea ierarhică a livrabilelor\n\nCreate WBS este procesul de subdivizare a livrabilelor și a activității proiectului în componente mai mici, ușor de gestionat, numite **work packages**. WBS (Work Breakdown Structure) este o structură **ierarhică, orientată pe livrabile**, nu pe activități — distincție testată frecvent la examen (WBS ≠ listă de task-uri).\n\nReguli esențiale:\n\n- **Regula 100%** – WBS trebuie să reprezinte 100% din scope-ul definit în Project Scope Statement, la fiecare nivel de descompunere, fără suprapuneri între ramuri.\n- **Work package** – cel mai jos nivel al WBS, suficient de mic pentru a fi estimat, planificat și controlat fiabil (regulă practică: 8-80 ore de efort).\n- **Control account** – punct de control managerial unde se integrează scope, buget și program, de obicei deasupra work package-urilor.\n- **WBS Dictionary** – document însoțitor care descrie fiecare componentă (cod, descriere, criterii de acceptanță, resurse, estimări).\n\nOutput-ul final este **Scope Baseline**, format din Project Scope Statement + WBS + WBS Dictionary aprobate — reperul față de care se măsoară orice abatere ulterioară, în procesul Control Scope.\n\n## Validate Scope vs. Control Scope: diferența cheie de examen\n\nAceste procese sunt confundate frecvent, deși joacă roluri diferite:\n\n**Validate Scope**:\n- obține **acceptarea formală** a livrabilelor finalizate de către client sau sponsor;\n- input principal: livrabile verificate (Verified Deliverables), rezultate din Control Quality;\n- output: livrabile acceptate (Accepted Deliverables) + cereri de schimbare, dacă livrabilele sunt respinse;\n- răspunde la: „Este livrabilul corect și acceptat de client?\"\n\n**Control Scope**:\n- monitorizează starea scope-ului proiectului și al produsului și gestionează modificările față de Scope Baseline;\n- folosește **analiza varianței** pentru a determina cauza și amploarea abaterii;\n- orice modificare de scope trece prin **Perform Integrated Change Control**;\n- răspunde la: „Facem exact ce am planificat, sau scope-ul deviază?\"\n\nReține fluxul conceptual: **Control Quality → Validate Scope → Control Scope**. Verificarea calității precede acceptarea formală de către client, iar controlul scope-ului este continuu, pe tot ciclul de viață al proiectului.\n\n## Exemplu: Exemplu WBS – Implementare ERP la o firmă de distribuție\nO firmă de distribuție din Cluj-Napoca, cu 200 de angajați, implementează un sistem ERP. Project Scope Statement include, printre livrabile: module Financiar-Contabil, Gestiune Stocuri, Vânzări și Migrare Date.\n\nFragment din WBS (primele 3 niveluri):\n\n**1.0 Implementare ERP**\n- **1.1 Managementul proiectului** (control account)\n  - 1.1.1 Plan de proiect\n  - 1.1.2 Rapoarte de status\n- **1.2 Modul Financiar-Contabil**\n  - 1.2.1 Configurare plan de conturi\n  - 1.2.2 Configurare TVA și rapoarte fiscale\n  - 1.2.3 Testare și UAT (User Acceptance Testing)\n- **1.3 Modul Gestiune Stocuri**\n  - 1.3.1 Configurare depozite și gestiuni\n  - 1.3.2 Migrare stocuri inițiale\n- **1.4 Migrare date**\n  - 1.4.1 Extragere date din sistemul legacy\n  - 1.4.2 Curățare și validare date\n  - 1.4.3 Încărcare date în noul sistem (go-live)\n\nFiecare element de la nivelul cel mai de jos (ex. 1.2.2) este un **work package**: are un responsabil clar, o estimare de efort (ex. 40 de ore) și criterii de acceptanță definite în WBS Dictionary. Suma componentelor 1.1-1.4 acoperă 100% din scope-ul declarat — omiterea, de exemplu, a migrării datelor ar încălca regula 100%.\n\n## Exemplu: Exemplu Requirements Traceability Matrix (RTM)\nPentru un proiect de digitalizare a fluxului de aprobare a facturilor la o companie din București, echipa a colectat cerințe prin ateliere facilitate și interviuri. Fragment din RTM:\n\n| ID | Cerință | Sursă | Obiectiv de business | Livrabil asociat | Status |\n|----|---------|-------|----------------------|-------------------|--------|\n| R-01 | Aprobare facturi în maxim 2 pași, cu notificare email | Director Financiar | Reducere timp de procesare cu 30% | Modul Aprobări | Aprobat |\n| R-02 | Arhivare electronică conform cerințelor legale, 10 ani | Departament Juridic | Conformitate legislativă | Modul Arhivare | Aprobat |\n| R-03 | Dashboard cu status facturi în timp real | Manager Achiziții | Vizibilitate operațională | Modul Raportare | În analiză |\n\nRTM leagă fiecare cerință de sursa ei, de obiectivul de business justificativ și de livrabilul care o va satisface — astfel, la Validate Scope, echipa poate demonstra, rând cu rând, că fiecare cerință aprobată a fost implementată și testată. Fără RTM, riști „pierderea\" cerințelor pe parcursul proiectului, mai ales în proiecte cu mulți stakeholderi.\n\n⚠ Capcană frecventă la examen: nu confunda **scope creep** (extindere necontrolată a scope-ului, fără trecere prin change control, adesea acceptată tacit de echipă pentru a „mulțumi\" clientul) cu **gold plating** (echipa adaugă funcționalități suplimentare din proprie inițiativă, neaprobate și necerute de client). Ambele sunt practici nedorite și trebuie prevenite prin Control Scope riguros — PMP-ul testează capacitatea ta de a recunoaște și preveni aceste situații, nu doar de a le defini.\n\n## Exercițiu\nLucrezi ca manager de proiect la o companie de logistică din Timișoara care implementează un nou modul de tracking GPS pentru flota de camioane. La o ședință de status, șeful de flotă cere ca echipa să adauge, „cât timp tot suntem în sistem\", și un modul de gestiune a consumului de combustibil, care nu a fost menționat în Project Scope Statement și nu are buget alocat.\n\nÎntrebări:\n1. Ce proces din Project Scope Management ar trebui aplicat înainte de a accepta această cerere?\n2. Este aceasta o situație de scope creep sau de gold plating, dacă echipa ar implementa cererea direct, fără aprobare?\n3. Ce documente din Scope Baseline trebuie consultate pentru a evalua impactul?\n\n**Soluție:** 1. Cererea trebuie direcționată către **Control Scope**, care o transformă într-o cerere de schimbare formală (Change Request), evaluată prin **Perform Integrated Change Control**. Managerul de proiect NU decide unilateral acceptarea sau respingerea.\n2. Dacă echipa ar implementa modulul fără aprobare, ar fi **scope creep** — extindere necontrolată a scope-ului, inițiată de un stakeholder extern (șeful de flotă), acceptată informal, fără trecere prin procesul de control al schimbărilor.\n3. Trebuie consultate **Project Scope Statement** (pentru excluderi și constrângeri) și **WBS/WBS Dictionary** (pentru a confirma că modulul de combustibil nu este deja acoperit), precum și **Scope Management Plan**, pentru procedura corectă de solicitare a schimbării. Impactul asupra bugetului, programului și resurselor trebuie analizat înainte ca Change Control Board (CCB) să aprobe sau să respingă cererea.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "scope-management-procese-predictive",
+    "md": "## Ce este Project Scope Management?\n\nÎn abordarea predictivă (waterfall), Project Scope Management este domeniul de cunoștințe care asigură că proiectul include **tot ce este necesar, și numai ce este necesar**, pentru finalizarea cu succes. Din perspectiva ECO (Examination Content Outline) și PMBOK, acest domeniu se traduce în șase procese secvențiale, aplicate în general în faza de planificare și apoi monitorizate pe tot parcursul proiectului:\n\n1. **Plan Scope Management** – stabilește cum va fi definit, validat și controlat scope-ul; produce Scope Management Plan și Requirements Management Plan.\n2. **Collect Requirements** – identifică și documentează nevoile stakeholderilor.\n3. **Define Scope** – transformă cerințele într-o descriere detaliată a produsului și proiectului (Project Scope Statement).\n4. **Create WBS** – descompune livrabilele în componente mai mici, gestionabile (work packages).\n5. **Validate Scope** – obține acceptarea formală a livrabilelor finalizate.\n6. **Control Scope** – monitorizează starea scope-ului și gestionează modificările.\n\nUn exemplu tipic la o companie românească: implementarea unui sistem ERP la o firmă de distribuție cu 200 de angajați. Fără un Scope Management Plan clar, riscul ca proiectul să „crească\" necontrolat (module suplimentare, integrări neplanificate) este foarte mare — de aceea examenul PMP acordă atenție deosebită acestor procese și instrumentelor lor.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "collect-requirements-tehnici",
+    "md": "## Collect Requirements: tehnici principale\n\nCollect Requirements este procesul prin care se determină, documentează și gestionează nevoile și cerințele stakeholderilor pentru atingerea obiectivelor proiectului. Pentru examen, trebuie să recunoști rapid tehnicile și când se aplică fiecare:\n\n- **Interviuri** – discuții individuale, 1-la-1, cu stakeholderi cheie (ex. directorul financiar, pentru cerințele de raportare ERP).\n- **Focus grupuri** – discuții moderate cu stakeholderi și experți din domeniu.\n- **Ateliere facilitate (facilitated workshops)** – sesiuni intensive cu stakeholderi din departamente diferite (ex. JAD – Joint Application Design, sau QFD – Quality Function Deployment).\n- **Tehnici de creativitate de grup** – brainstorming, nominal group technique (vot ponderat al ideilor), Delphi (chestionare anonime succesive cu experți), mind mapping și **diagrame de afinitate** (gruparea unui volum mare de idei în clustere).\n- **Tehnici de decizie de grup** – unanimitate, majoritate, pluralitate, dictatorial.\n- **Chestionare și sondaje** – eficiente pentru audiențe mari, dispersate geografic.\n- **Observații (job shadowing)** – urmărirea directă a modului de lucru al utilizatorilor finali.\n- **Prototipuri** – modele funcționale timpurii pentru feedback rapid, frecvent folosite hibrid, cu iterații agile.\n- **Benchmarking** – comparație cu practici similare din piață.\n- **Diagrame de context** – vizualizează granițele sistemului și interacțiunile cu actorii externi.\n- **Analiza documentelor** – contracte, procese existente, reglementări.\n\nOutput-ul central este **Requirements Documentation**, însoțit de **Requirements Traceability Matrix (RTM)** — un tabel care leagă fiecare cerință de originea ei și de livrabilele care o satisfac, permițând trasabilitate completă până la testare și acceptanță.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "define-scope-scope-statement",
+    "md": "## Define Scope și Project Scope Statement\n\nDefine Scope dezvoltă o descriere detaliată a proiectului și produsului, pornind de la cerințele colectate, business case și Project Charter. Tehnicile principale sunt **expert judgment**, **product analysis** (descompunerea produsului în componente funcționale), **generarea de alternative** și **atelierele facilitate**.\n\nRezultatul este **Project Scope Statement**, documentul care ancorează întreaga echipă în același înțeles al scope-ului. Componentele sale obligatorii:\n\n- **Descrierea scope-ului produsului** – caracteristicile produsului/serviciului/rezultatului.\n- **Livrabile (deliverables)** – rezultatele măsurabile ale proiectului.\n- **Criterii de acceptanță** – condițiile care trebuie îndeplinite pentru ca livrabilele să fie acceptate.\n- **Excluderi din scope** – ce NU este inclus, esențial pentru a preveni ambiguități și dispute ulterioare.\n- **Constrângeri** – limitări de buget, termen, resurse, reglementări.\n- **Asumpții** – factori considerați adevărați, fără verificare la momentul planificării.\n\nLa examen, reține diferența dintre Project Charter (autorizează proiectul, la nivel înalt) și Project Scope Statement (detaliază scope-ul, la nivel granular) — o capcană clasică de întrebare.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "create-wbs-descompunere",
+    "md": "## Create WBS: descompunerea ierarhică a livrabilelor\n\nCreate WBS este procesul de subdivizare a livrabilelor și a activității proiectului în componente mai mici, ușor de gestionat, numite **work packages**. WBS (Work Breakdown Structure) este o structură **ierarhică, orientată pe livrabile**, nu pe activități — distincție testată frecvent la examen (WBS ≠ listă de task-uri).\n\nReguli esențiale:\n\n- **Regula 100%** – WBS trebuie să reprezinte 100% din scope-ul definit în Project Scope Statement, la fiecare nivel de descompunere, fără suprapuneri între ramuri.\n- **Work package** – cel mai jos nivel al WBS, suficient de mic pentru a fi estimat, planificat și controlat fiabil (regulă practică: 8-80 ore de efort).\n- **Control account** – punct de control managerial unde se integrează scope, buget și program, de obicei deasupra work package-urilor.\n- **WBS Dictionary** – document însoțitor care descrie fiecare componentă (cod, descriere, criterii de acceptanță, resurse, estimări).\n\nOutput-ul final este **Scope Baseline**, format din Project Scope Statement + WBS + WBS Dictionary aprobate — reperul față de care se măsoară orice abatere ulterioară, în procesul Control Scope.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "validate-control-scope-diferenta",
+    "md": "## Validate Scope vs. Control Scope: diferența cheie de examen\n\nAceste procese sunt confundate frecvent, deși joacă roluri diferite:\n\n**Validate Scope**:\n- obține **acceptarea formală** a livrabilelor finalizate de către client sau sponsor;\n- input principal: livrabile verificate (Verified Deliverables), rezultate din Control Quality;\n- output: livrabile acceptate (Accepted Deliverables) + cereri de schimbare, dacă livrabilele sunt respinse;\n- răspunde la: „Este livrabilul corect și acceptat de client?\"\n\n**Control Scope**:\n- monitorizează starea scope-ului proiectului și al produsului și gestionează modificările față de Scope Baseline;\n- folosește **analiza varianței** pentru a determina cauza și amploarea abaterii;\n- orice modificare de scope trece prin **Perform Integrated Change Control**;\n- răspunde la: „Facem exact ce am planificat, sau scope-ul deviază?\"\n\nReține fluxul conceptual: **Control Quality → Validate Scope → Control Scope**. Verificarea calității precede acceptarea formală de către client, iar controlul scope-ului este continuu, pe tot ciclul de viață al proiectului.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b5"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu WBS – Implementare ERP la o firmă de distribuție",
+    "concept_key": "create-wbs-descompunere",
+    "md": "O firmă de distribuție din Cluj-Napoca, cu 200 de angajați, implementează un sistem ERP. Project Scope Statement include, printre livrabile: module Financiar-Contabil, Gestiune Stocuri, Vânzări și Migrare Date.\n\nFragment din WBS (primele 3 niveluri):\n\n**1.0 Implementare ERP**\n- **1.1 Managementul proiectului** (control account)\n  - 1.1.1 Plan de proiect\n  - 1.1.2 Rapoarte de status\n- **1.2 Modul Financiar-Contabil**\n  - 1.2.1 Configurare plan de conturi\n  - 1.2.2 Configurare TVA și rapoarte fiscale\n  - 1.2.3 Testare și UAT (User Acceptance Testing)\n- **1.3 Modul Gestiune Stocuri**\n  - 1.3.1 Configurare depozite și gestiuni\n  - 1.3.2 Migrare stocuri inițiale\n- **1.4 Migrare date**\n  - 1.4.1 Extragere date din sistemul legacy\n  - 1.4.2 Curățare și validare date\n  - 1.4.3 Încărcare date în noul sistem (go-live)\n\nFiecare element de la nivelul cel mai de jos (ex. 1.2.2) este un **work package**: are un responsabil clar, o estimare de efort (ex. 40 de ore) și criterii de acceptanță definite în WBS Dictionary. Suma componentelor 1.1-1.4 acoperă 100% din scope-ul declarat — omiterea, de exemplu, a migrării datelor ar încălca regula 100%.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b6"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu Requirements Traceability Matrix (RTM)",
+    "concept_key": "collect-requirements-tehnici",
+    "md": "Pentru un proiect de digitalizare a fluxului de aprobare a facturilor la o companie din București, echipa a colectat cerințe prin ateliere facilitate și interviuri. Fragment din RTM:\n\n| ID | Cerință | Sursă | Obiectiv de business | Livrabil asociat | Status |\n|----|---------|-------|----------------------|-------------------|--------|\n| R-01 | Aprobare facturi în maxim 2 pași, cu notificare email | Director Financiar | Reducere timp de procesare cu 30% | Modul Aprobări | Aprobat |\n| R-02 | Arhivare electronică conform cerințelor legale, 10 ani | Departament Juridic | Conformitate legislativă | Modul Arhivare | Aprobat |\n| R-03 | Dashboard cu status facturi în timp real | Manager Achiziții | Vizibilitate operațională | Modul Raportare | În analiză |\n\nRTM leagă fiecare cerință de sursa ei, de obiectivul de business justificativ și de livrabilul care o va satisface — astfel, la Validate Scope, echipa poate demonstra, rând cu rând, că fiecare cerință aprobată a fost implementată și testată. Fără RTM, riști „pierderea\" cerințelor pe parcursul proiectului, mai ales în proiecte cu mulți stakeholderi.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană frecventă la examen: nu confunda **scope creep** (extindere necontrolată a scope-ului, fără trecere prin change control, adesea acceptată tacit de echipă pentru a „mulțumi\" clientul) cu **gold plating** (echipa adaugă funcționalități suplimentare din proprie inițiativă, neaprobate și necerute de client). Ambele sunt practici nedorite și trebuie prevenite prin Control Scope riguros — PMP-ul testează capacitatea ta de a recunoaște și preveni aceste situații, nu doar de a le defini.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Lucrezi ca manager de proiect la o companie de logistică din Timișoara care implementează un nou modul de tracking GPS pentru flota de camioane. La o ședință de status, șeful de flotă cere ca echipa să adauge, „cât timp tot suntem în sistem\", și un modul de gestiune a consumului de combustibil, care nu a fost menționat în Project Scope Statement și nu are buget alocat.\n\nÎntrebări:\n1. Ce proces din Project Scope Management ar trebui aplicat înainte de a accepta această cerere?\n2. Este aceasta o situație de scope creep sau de gold plating, dacă echipa ar implementa cererea direct, fără aprobare?\n3. Ce documente din Scope Baseline trebuie consultate pentru a evalua impactul?",
+    "solution_md": "1. Cererea trebuie direcționată către **Control Scope**, care o transformă într-o cerere de schimbare formală (Change Request), evaluată prin **Perform Integrated Change Control**. Managerul de proiect NU decide unilateral acceptarea sau respingerea.\n2. Dacă echipa ar implementa modulul fără aprobare, ar fi **scope creep** — extindere necontrolată a scope-ului, inițiată de un stakeholder extern (șeful de flotă), acceptată informal, fără trecere prin procesul de control al schimbărilor.\n3. Trebuie consultate **Project Scope Statement** (pentru excluderi și constrângeri) și **WBS/WBS Dictionary** (pentru a confirma că modulul de combustibil nu este deja acoperit), precum și **Scope Management Plan**, pentru procedura corectă de solicitare a schimbării. Impactul asupra bugetului, programului și resurselor trebuie analizat înainte ca Change Control Board (CCB) să aprobe sau să respingă cererea.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența principală dintre Validate Scope și Control Scope?",
+    "choices": [
+     "Validate Scope obține acceptarea formală a livrabilelor de către client; Control Scope monitorizează și gestionează modificările față de Scope Baseline",
+     "Validate Scope se ocupă de calitatea internă a livrabilelor, iar Control Scope de acceptarea clientului",
+     "Cele două procese sunt identice și se folosesc interschimbabil",
+     "Validate Scope se execută doar la începutul proiectului, iar Control Scope doar la final"
+    ],
+    "answer": 0,
+    "explain": "Validate Scope confirmă acceptarea formală a livrabilelor finalizate (după Control Quality), în timp ce Control Scope monitorizează starea scope-ului și gestionează cererile de schimbare față de Scope Baseline, pe tot parcursul proiectului.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care tehnică din Collect Requirements presupune gruparea unui volum mare de idei generate în clustere, pe baza relațiilor naturale dintre ele?",
+    "choices": [
+     "Nominal Group Technique",
+     "Diagrama de afinitate (affinity diagram)",
+     "Tehnica Delphi",
+     "Benchmarking"
+    ],
+    "answer": 1,
+    "explain": "Diagrama de afinitate organizează vizual un număr mare de idei/cerințe în grupuri logice, facilitând identificarea de teme și priorități — utilă mai ales după sesiuni extinse de brainstorming.",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 6 procese din Project Scope Management (abordare predictivă)?",
+    "back": "Plan Scope Management, Collect Requirements, Define Scope, Create WBS, Validate Scope, Control Scope.",
+    "concept_key": "scope-management-procese-predictive",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este „100% Rule\" în WBS?",
+    "back": "WBS trebuie să reprezinte 100% din scope-ul definit în Project Scope Statement, la toate nivelurile, fără suprapuneri între ramuri.",
+    "concept_key": "create-wbs-descompunere",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este scope creep?",
+    "back": "Extinderea necontrolată a scope-ului proiectului, fără a trece printr-un proces formal de control al schimbărilor.",
+    "concept_key": "validate-control-scope-diferenta",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este gold plating?",
+    "back": "Livrarea de funcționalități suplimentare, neaprobate și necerute de client, adăugate din inițiativa echipei de proiect.",
+    "concept_key": "validate-control-scope-diferenta",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce output esențial produce Collect Requirements pentru trasabilitatea cerințelor?",
+    "back": "Requirements Traceability Matrix (RTM), care leagă fiecare cerință de sursă, obiectiv de business și livrabilul care o satisface.",
+    "concept_key": "collect-requirements-tehnici",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce conține Project Scope Statement?",
+    "back": "Descrierea scope-ului produsului, livrabile, criterii de acceptanță, excluderi din scope, constrângeri și asumpții.",
+    "concept_key": "define-scope-scope-statement",
+    "blockId": "cmjjuxvy40090umkpxmwik0rh-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1513,
+   "flashcards": 6
+  }
+ }
+}

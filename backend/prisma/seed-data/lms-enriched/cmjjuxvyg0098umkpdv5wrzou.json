@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvyg0098umkpdv5wrzou",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Predictive",
+ "lesson": "Resource Management",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Resource Management\n\n## Managementul Resurselor în abordarea predictivă\n\nÎn PMBOK 6 (ghidul de procese, complementar cadrului de principii din PMBOK 7), domeniul de cunoștințe **Resource Management** grupează șase procese aplicate de-a lungul ciclului de viață al unui proiect predictiv:\n\n1. **Plan Resource Management** (planificare) — stabilește cum vor fi identificate, achiziționate, gestionate și eliberate resursele.\n2. **Estimate Activity Resources** (planificare) — determină tipul și cantitatea de resurse (umane, echipamente, materiale) necesare pentru fiecare activitate.\n3. **Acquire Resources** (execuție) — obține echipa și resursele fizice necesare.\n4. **Develop Team** (execuție) — îmbunătățește competențele, interacțiunea și climatul echipei.\n5. **Manage Team** (execuție) — urmărește performanța membrilor, oferă feedback, rezolvă conflicte.\n6. **Control Resources** (monitorizare și control) — asigură că resursele alocate sunt disponibile la timp și sunt utilizate conform planului.\n\nAtenție la examen: începând cu PMBOK 6, denumirea domeniului s-a schimbat din „Human Resource Management” în „Resource Management”, tocmai pentru a include explicit resursele fizice (echipamente, materiale, facilități), nu doar echipa de proiect. Întrebările ECO testează frecvent capacitatea de a distinge între gestionarea resurselor umane (motivare, dezvoltare, conflicte) și gestionarea resurselor fizice (disponibilitate, utilizare, achiziție).\n\n## Plan Resource Management și Estimate Activity Resources\n\n**Plan Resource Management** produce documentul central al domeniului — *resource management plan* — care conține:\n\n- **Roluri și responsabilități** (rol, autoritate, responsabilitate, competențe cerute);\n- **Organigrama proiectului** (project organization chart);\n- **Staffing management plan** — cum și când vor fi aduse și eliberate resursele umane, nevoi de instruire, reguli de conformitate (ex. legislația muncii RO), planuri de recunoaștere și recompensare.\n\nO tehnică-cheie de aici este **RACI matrix** (Responsible, Accountable, Consulted, Informed), pe care o detaliem separat mai jos.\n\n**Estimate Activity Resources** răspunde la întrebarea „de ce și de câte resurse am nevoie pentru fiecare activitate din WBS?”. Ieșirea principală este **Resource Breakdown Structure (RBS)** — o structură ierarhică a resurselor grupate pe categorie (ex. Resurse umane → Analiști → Analist senior/junior) și tip, utilă atât pentru estimare, cât și pentru raportare ulterioară a costurilor.\n\nTehnici de estimare folosite frecvent, în ordinea crescătoare a preciziei (și a efortului):\n\n- **Analogous estimating** — folosește date istorice dintr-un proiect similar; rapid, dar mai puțin precis.\n- **Parametric estimating** — folosește o relație statistică (ex. ore/funcționalitate × număr de funcționalități).\n- **Bottom-up estimating** — descompune activitatea în componente mici, estimate individual și însumate; cea mai precisă, dar consumatoare de timp.\n- **Alternative analysis** — compară variante (ex. resursă internă vs. externalizare, echipament nou vs. închiriat).\n\n## Acquire Resources și Develop Team\n\n**Acquire Resources** înseamnă obținerea efectivă a echipei și a resurselor fizice: prin **pre-assignment** (membri alocați dinainte, ex. printr-un acord contractual), **negociere** internă (cu managerii funcționali) sau externă (cu furnizori), sau prin **echipe virtuale**, tot mai frecvente în proiectele de digitalizare distribuite geografic.\n\n**Develop Team** urmărește creșterea performanței colective. Modelul de referință pentru examen este **scara Tuckman**, cu cinci etape prin care trece orice echipă nou formată:\n\n1. **Forming** — membrii se cunosc, sunt politicoși, orientați spre reguli;\n2. **Storming** — apar dezacorduri privind stilul de lucru, autoritatea, prioritățile;\n3. **Norming** — echipa începe să colaboreze, se stabilesc norme comune;\n4. **Performing** — echipa funcționează eficient, interdependent, cu autonomie ridicată;\n5. **Adjourning** — echipa se dizolvă la finalul proiectului (relevantă mai ales pentru proiecte, nu operațiuni continue).\n\nInstrumente specifice pentru Develop Team: activități de team building, instruire (training), colocation (spațiu de lucru comun, chiar și virtual — „war room”), și un plan de **recognition and rewards** aliniat la cultura organizației, nu doar la bonusuri financiare.\n\n## Manage Team, Control Resources și matricea RACI\n\n**Manage Team** presupune monitorizarea performanței individuale, oferirea de feedback, actualizarea registrului de probleme (issue log) și rezolvarea conflictelor. PMI recomandă cinci tehnici de gestionare a conflictelor, de la cea mai puțin la cea mai recomandată pentru rezultate pe termen lung:\n\n- **Withdraw/Avoid** — amânarea discuției; utilă temporar, nu rezolvă cauza.\n- **Smooth/Accommodate** — accentuarea punctelor comune, minimizarea diferențelor.\n- **Compromise** — fiecare parte cedează parțial; soluție „lose-lose” acceptabilă pe termen scurt.\n- **Force/Direct** — impunerea unei soluții de către o persoană cu autoritate; rapid, dar poate afecta relația.\n- **Collaborate/Problem Solve** — analiza cauzei reale și găsirea unei soluții „win-win”; tehnica preferată de PMI, deși cea mai consumatoare de timp.\n\n**Control Resources** verifică dacă resursele fizice (echipamente, licențe software, materiale) sunt disponibile conform planului, identifică abateri (ex. supra-alocare) și inițiază acțiuni corective.\n\n### Matricea RACI\n\nRACI este instrumentul standard pentru a clarifica rolurile pe activități, folosit atât la Plan Resource Management, cât și ca referință continuă pe parcursul proiectului:\n\n- **R — Responsible**: persoana care execută efectiv activitatea.\n- **A — Accountable**: persoana care răspunde final de rezultat și aprobă munca; regula de aur — **o singură persoană A per activitate**, pentru a evita ambiguitatea.\n- **C — Consulted**: persoane consultate înainte de finalizare (comunicare bidirecțională).\n- **I — Informed**: persoane ținute la curent cu progresul (comunicare unidirecțională).\n\nO greșeală frecventă de examen: a presupune că R și A trebuie să fie mereu persoane diferite. În practică, aceeași persoană poate fi R și A pentru aceeași activitate, dar A trebuie să fie mereu unică.\n\n## Exemplu: RACI matrix pentru implementarea unui ERP\nO firmă fictivă, **TechnoSoft SRL**, implementează un sistem ERP pentru a-și digitaliza fluxurile financiar-contabile. Managerul de proiect construiește următoarea matrice RACI pentru activitățile-cheie:\n\n| Activitate | Sponsor | Manager Proiect | Analist Business | Lider IT | Utilizatori-cheie |\n|---|---|---|---|---|---|\n| Definire cerințe | A | R | R | C | C |\n| Configurare sistem | I | A | C | R | I |\n| Migrare date | I | A | C | R | C |\n| Testare UAT | I | C | R | C | R |\n| Instruire utilizatori | I | A | R | C | I |\n| Go-live | A | R | C | C | I |\n\nObservații de citit ca la examen:\n\n- Pentru „Configurare sistem”, **Liderul IT** este R (execută), iar **Managerul de Proiect** este A (răspunde de rezultat) — chiar dacă nu configurează el însuși sistemul.\n- La „Testare UAT” (User Acceptance Testing), utilizatorii-cheie devin R, pentru că ei validează dacă sistemul răspunde nevoilor de business — un exemplu clasic de responsabilitate care se mută spre client/utilizator final.\n- Sponsorul rămâne A doar la activitățile cu impact strategic major (definire cerințe, go-live), fiind Informed la restul — regulă tipică pentru a nu supraîncărca nivelul executiv cu detalii operaționale.\n\n## Exemplu: Estimare bottom-up pentru un proiect de digitalizare\nO echipă estimează prin **bottom-up estimating** efortul necesar pentru digitalizarea arhivei documentelor la o companie de distribuție cu 40.000 de documente fizice. Activitatea „Scanare și indexare arhivă” se descompune astfel:\n\n- Pregătire fizică documente (sortare, îndepărtare capse): 40.000 documente ÷ 500 documente/oră = **80 ore**\n- Scanare efectivă: 40.000 documente ÷ 800 documente/oră = **50 ore**\n- Indexare metadate (tip document, dată, departament): 40.000 documente ÷ 400 documente/oră = **100 ore**\n- Control calitate eșantion (10% din documente): 4.000 documente ÷ 300 documente/oră = **13,3 ore**\n\n**Total estimat: 243,3 ore.**\n\nCu o echipă de 3 operatori disponibili 6 ore/zi productive (restul timpului fiind alocat altor sarcini administrative), durata calendaristică estimată este:\n\n243,3 ore ÷ (3 operatori × 6 ore/zi) = 243,3 ÷ 18 ≈ **13,5 zile lucrătoare**.\n\nAcest calcul devine intrare directă pentru **resource calendars** (disponibilitatea celor 3 operatori trebuie confirmată pentru cele ~14 zile) și pentru estimarea costurilor din procesul Estimate Costs, aflat în domeniul de cunoștințe Cost Management.\n\n## Exercițiu\nEști manager de proiect pentru implementarea unui modul de facturare electronică într-o companie cu 120 de angajați. Doi membri ai echipei tehnice — un dezvoltator senior și un analist de sistem — au un dezacord constant privind arhitectura soluției (monolit vs. microservicii). Discuția a fost amânată deja de două ori de către dezvoltatorul senior, iar termenul de livrare a arhitecturii se apropie.\n\nÎntrebări:\n1. Ce tehnică de gestionare a conflictului a folosit până acum dezvoltatorul senior?\n2. Ce tehnică ar trebui să aplice managerul de proiect, având în vedere timpul rămas și importanța deciziei pe termen lung?\n3. Cine ar trebui notat ca **A (Accountable)** pentru activitatea „Definire arhitectură tehnică” în matricea RACI a proiectului?\n\n**Soluție:** 1. Amânarea repetată a discuției este tehnica **Withdraw/Avoid** — evită conflictul, dar nu rezolvă cauza, iar problema persistă (dovadă: dezacordul revine).\n\n2. Având în vedere că decizia are impact pe termen lung asupra arhitecturii soluției, managerul de proiect ar trebui să faciliteze **Collaborate/Problem Solve**: organizează o sesiune dedicată, cu criterii obiective de decizie (scalabilitate, cost de mentenanță, competențele echipei), pentru a ajunge la o soluție agreată de ambele părți, nu impusă. Dacă termenul devine critic și nu se ajunge la consens, managerul poate recurge, ca ultimă soluție, la **Force/Direct** — dar aceasta ar trebui să fie excepția, nu prima opțiune.\n\n3. **Managerul de proiect** ar trebui să fie A pentru „Definire arhitectură tehnică” — el răspunde final de livrarea acestei decizii către sponsor, chiar dacă dezvoltatorul senior și analistul de sistem sunt R (execută analiza tehnică). Notarea a doi A diferiți (ex. ambii ingineri) ar recrea exact ambiguitatea care a generat conflictul inițial.\n\n⚠ Capcane frecvente la examenul PMP pe acest subiect: (1) confundarea „Resource Management” cu vechiul „Human Resource Management” din PMBOK 5 — domeniul actual include explicit resursele fizice, nu doar echipa; (2) atribuirea rolului A (Accountable) mai multor persoane pentru aceeași activitate în RACI — regula PMI este o singură persoană A per activitate; (3) alegerea automată a tehnicii „Collaborate” ca răspuns corect la orice întrebare despre conflict — ECO testează și situațiile în care „Force/Direct” sau „Compromise” sunt răspunsul potrivit, în funcție de urgență și miza deciziei.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "managementul-resurselor-pmp",
+    "md": "## Managementul Resurselor în abordarea predictivă\n\nÎn PMBOK 6 (ghidul de procese, complementar cadrului de principii din PMBOK 7), domeniul de cunoștințe **Resource Management** grupează șase procese aplicate de-a lungul ciclului de viață al unui proiect predictiv:\n\n1. **Plan Resource Management** (planificare) — stabilește cum vor fi identificate, achiziționate, gestionate și eliberate resursele.\n2. **Estimate Activity Resources** (planificare) — determină tipul și cantitatea de resurse (umane, echipamente, materiale) necesare pentru fiecare activitate.\n3. **Acquire Resources** (execuție) — obține echipa și resursele fizice necesare.\n4. **Develop Team** (execuție) — îmbunătățește competențele, interacțiunea și climatul echipei.\n5. **Manage Team** (execuție) — urmărește performanța membrilor, oferă feedback, rezolvă conflicte.\n6. **Control Resources** (monitorizare și control) — asigură că resursele alocate sunt disponibile la timp și sunt utilizate conform planului.\n\nAtenție la examen: începând cu PMBOK 6, denumirea domeniului s-a schimbat din „Human Resource Management” în „Resource Management”, tocmai pentru a include explicit resursele fizice (echipamente, materiale, facilități), nu doar echipa de proiect. Întrebările ECO testează frecvent capacitatea de a distinge între gestionarea resurselor umane (motivare, dezvoltare, conflicte) și gestionarea resurselor fizice (disponibilitate, utilizare, achiziție).",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "estimare-resurse-activitati",
+    "md": "## Plan Resource Management și Estimate Activity Resources\n\n**Plan Resource Management** produce documentul central al domeniului — *resource management plan* — care conține:\n\n- **Roluri și responsabilități** (rol, autoritate, responsabilitate, competențe cerute);\n- **Organigrama proiectului** (project organization chart);\n- **Staffing management plan** — cum și când vor fi aduse și eliberate resursele umane, nevoi de instruire, reguli de conformitate (ex. legislația muncii RO), planuri de recunoaștere și recompensare.\n\nO tehnică-cheie de aici este **RACI matrix** (Responsible, Accountable, Consulted, Informed), pe care o detaliem separat mai jos.\n\n**Estimate Activity Resources** răspunde la întrebarea „de ce și de câte resurse am nevoie pentru fiecare activitate din WBS?”. Ieșirea principală este **Resource Breakdown Structure (RBS)** — o structură ierarhică a resurselor grupate pe categorie (ex. Resurse umane → Analiști → Analist senior/junior) și tip, utilă atât pentru estimare, cât și pentru raportare ulterioară a costurilor.\n\nTehnici de estimare folosite frecvent, în ordinea crescătoare a preciziei (și a efortului):\n\n- **Analogous estimating** — folosește date istorice dintr-un proiect similar; rapid, dar mai puțin precis.\n- **Parametric estimating** — folosește o relație statistică (ex. ore/funcționalitate × număr de funcționalități).\n- **Bottom-up estimating** — descompune activitatea în componente mici, estimate individual și însumate; cea mai precisă, dar consumatoare de timp.\n- **Alternative analysis** — compară variante (ex. resursă internă vs. externalizare, echipament nou vs. închiriat).",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tuckman-team-development",
+    "md": "## Acquire Resources și Develop Team\n\n**Acquire Resources** înseamnă obținerea efectivă a echipei și a resurselor fizice: prin **pre-assignment** (membri alocați dinainte, ex. printr-un acord contractual), **negociere** internă (cu managerii funcționali) sau externă (cu furnizori), sau prin **echipe virtuale**, tot mai frecvente în proiectele de digitalizare distribuite geografic.\n\n**Develop Team** urmărește creșterea performanței colective. Modelul de referință pentru examen este **scara Tuckman**, cu cinci etape prin care trece orice echipă nou formată:\n\n1. **Forming** — membrii se cunosc, sunt politicoși, orientați spre reguli;\n2. **Storming** — apar dezacorduri privind stilul de lucru, autoritatea, prioritățile;\n3. **Norming** — echipa începe să colaboreze, se stabilesc norme comune;\n4. **Performing** — echipa funcționează eficient, interdependent, cu autonomie ridicată;\n5. **Adjourning** — echipa se dizolvă la finalul proiectului (relevantă mai ales pentru proiecte, nu operațiuni continue).\n\nInstrumente specifice pentru Develop Team: activități de team building, instruire (training), colocation (spațiu de lucru comun, chiar și virtual — „war room”), și un plan de **recognition and rewards** aliniat la cultura organizației, nu doar la bonusuri financiare.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "raci-matrix-pmp",
+    "md": "## Manage Team, Control Resources și matricea RACI\n\n**Manage Team** presupune monitorizarea performanței individuale, oferirea de feedback, actualizarea registrului de probleme (issue log) și rezolvarea conflictelor. PMI recomandă cinci tehnici de gestionare a conflictelor, de la cea mai puțin la cea mai recomandată pentru rezultate pe termen lung:\n\n- **Withdraw/Avoid** — amânarea discuției; utilă temporar, nu rezolvă cauza.\n- **Smooth/Accommodate** — accentuarea punctelor comune, minimizarea diferențelor.\n- **Compromise** — fiecare parte cedează parțial; soluție „lose-lose” acceptabilă pe termen scurt.\n- **Force/Direct** — impunerea unei soluții de către o persoană cu autoritate; rapid, dar poate afecta relația.\n- **Collaborate/Problem Solve** — analiza cauzei reale și găsirea unei soluții „win-win”; tehnica preferată de PMI, deși cea mai consumatoare de timp.\n\n**Control Resources** verifică dacă resursele fizice (echipamente, licențe software, materiale) sunt disponibile conform planului, identifică abateri (ex. supra-alocare) și inițiază acțiuni corective.\n\n### Matricea RACI\n\nRACI este instrumentul standard pentru a clarifica rolurile pe activități, folosit atât la Plan Resource Management, cât și ca referință continuă pe parcursul proiectului:\n\n- **R — Responsible**: persoana care execută efectiv activitatea.\n- **A — Accountable**: persoana care răspunde final de rezultat și aprobă munca; regula de aur — **o singură persoană A per activitate**, pentru a evita ambiguitatea.\n- **C — Consulted**: persoane consultate înainte de finalizare (comunicare bidirecțională).\n- **I — Informed**: persoane ținute la curent cu progresul (comunicare unidirecțională).\n\nO greșeală frecventă de examen: a presupune că R și A trebuie să fie mereu persoane diferite. În practică, aceeași persoană poate fi R și A pentru aceeași activitate, dar A trebuie să fie mereu unică.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b4"
+   },
+   {
+    "type": "example",
+    "title": "RACI matrix pentru implementarea unui ERP",
+    "concept_key": "raci-matrix-pmp",
+    "md": "O firmă fictivă, **TechnoSoft SRL**, implementează un sistem ERP pentru a-și digitaliza fluxurile financiar-contabile. Managerul de proiect construiește următoarea matrice RACI pentru activitățile-cheie:\n\n| Activitate | Sponsor | Manager Proiect | Analist Business | Lider IT | Utilizatori-cheie |\n|---|---|---|---|---|---|\n| Definire cerințe | A | R | R | C | C |\n| Configurare sistem | I | A | C | R | I |\n| Migrare date | I | A | C | R | C |\n| Testare UAT | I | C | R | C | R |\n| Instruire utilizatori | I | A | R | C | I |\n| Go-live | A | R | C | C | I |\n\nObservații de citit ca la examen:\n\n- Pentru „Configurare sistem”, **Liderul IT** este R (execută), iar **Managerul de Proiect** este A (răspunde de rezultat) — chiar dacă nu configurează el însuși sistemul.\n- La „Testare UAT” (User Acceptance Testing), utilizatorii-cheie devin R, pentru că ei validează dacă sistemul răspunde nevoilor de business — un exemplu clasic de responsabilitate care se mută spre client/utilizator final.\n- Sponsorul rămâne A doar la activitățile cu impact strategic major (definire cerințe, go-live), fiind Informed la restul — regulă tipică pentru a nu supraîncărca nivelul executiv cu detalii operaționale.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b5"
+   },
+   {
+    "type": "example",
+    "title": "Estimare bottom-up pentru un proiect de digitalizare",
+    "concept_key": "estimare-resurse-activitati",
+    "md": "O echipă estimează prin **bottom-up estimating** efortul necesar pentru digitalizarea arhivei documentelor la o companie de distribuție cu 40.000 de documente fizice. Activitatea „Scanare și indexare arhivă” se descompune astfel:\n\n- Pregătire fizică documente (sortare, îndepărtare capse): 40.000 documente ÷ 500 documente/oră = **80 ore**\n- Scanare efectivă: 40.000 documente ÷ 800 documente/oră = **50 ore**\n- Indexare metadate (tip document, dată, departament): 40.000 documente ÷ 400 documente/oră = **100 ore**\n- Control calitate eșantion (10% din documente): 4.000 documente ÷ 300 documente/oră = **13,3 ore**\n\n**Total estimat: 243,3 ore.**\n\nCu o echipă de 3 operatori disponibili 6 ore/zi productive (restul timpului fiind alocat altor sarcini administrative), durata calendaristică estimată este:\n\n243,3 ore ÷ (3 operatori × 6 ore/zi) = 243,3 ÷ 18 ≈ **13,5 zile lucrătoare**.\n\nAcest calcul devine intrare directă pentru **resource calendars** (disponibilitatea celor 3 operatori trebuie confirmată pentru cele ~14 zile) și pentru estimarea costurilor din procesul Estimate Costs, aflat în domeniul de cunoștințe Cost Management.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești manager de proiect pentru implementarea unui modul de facturare electronică într-o companie cu 120 de angajați. Doi membri ai echipei tehnice — un dezvoltator senior și un analist de sistem — au un dezacord constant privind arhitectura soluției (monolit vs. microservicii). Discuția a fost amânată deja de două ori de către dezvoltatorul senior, iar termenul de livrare a arhitecturii se apropie.\n\nÎntrebări:\n1. Ce tehnică de gestionare a conflictului a folosit până acum dezvoltatorul senior?\n2. Ce tehnică ar trebui să aplice managerul de proiect, având în vedere timpul rămas și importanța deciziei pe termen lung?\n3. Cine ar trebui notat ca **A (Accountable)** pentru activitatea „Definire arhitectură tehnică” în matricea RACI a proiectului?",
+    "solution_md": "1. Amânarea repetată a discuției este tehnica **Withdraw/Avoid** — evită conflictul, dar nu rezolvă cauza, iar problema persistă (dovadă: dezacordul revine).\n\n2. Având în vedere că decizia are impact pe termen lung asupra arhitecturii soluției, managerul de proiect ar trebui să faciliteze **Collaborate/Problem Solve**: organizează o sesiune dedicată, cu criterii obiective de decizie (scalabilitate, cost de mentenanță, competențele echipei), pentru a ajunge la o soluție agreată de ambele părți, nu impusă. Dacă termenul devine critic și nu se ajunge la consens, managerul poate recurge, ca ultimă soluție, la **Force/Direct** — dar aceasta ar trebui să fie excepția, nu prima opțiune.\n\n3. **Managerul de proiect** ar trebui să fie A pentru „Definire arhitectură tehnică” — el răspunde final de livrarea acestei decizii către sponsor, chiar dacă dezvoltatorul senior și analistul de sistem sunt R (execută analiza tehnică). Notarea a doi A diferiți (ex. ambii ingineri) ar recrea exact ambiguitatea care a generat conflictul inițial.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Capcane frecvente la examenul PMP pe acest subiect: (1) confundarea „Resource Management” cu vechiul „Human Resource Management” din PMBOK 5 — domeniul actual include explicit resursele fizice, nu doar echipa; (2) atribuirea rolului A (Accountable) mai multor persoane pentru aceeași activitate în RACI — regula PMI este o singură persoană A per activitate; (3) alegerea automată a tehnicii „Collaborate” ca răspuns corect la orice întrebare despre conflict — ECO testează și situațiile în care „Force/Direct” sau „Compromise” sunt răspunsul potrivit, în funcție de urgență și miza deciziei.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-o matrice RACI, managerul de proiect notează atât Analistul Business, cât și Sponsorul ca „A” (Accountable) pentru activitatea „Aprobare cerințe funcționale”. Care este problema?",
+    "choices": [
+     "Nu există nicio problemă, mai multe persoane pot fi A pentru aceeași activitate",
+     "Regula RACI cere o singură persoană A per activitate, pentru a evita ambiguitatea privind cine răspunde final",
+     "Sponsorul nu poate fi niciodată A, doar I",
+     "Analistul Business trebuie să fie R, nu A"
+    ],
+    "answer": 1,
+    "explain": "Buna practică RACI, testată constant la examenul PMP, impune o singură persoană Accountable per activitate. Mai mulți A creează ambiguitate privind cine aprobă efectiv rezultatul final.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care proces din domeniul Resource Management produce Resource Breakdown Structure (RBS)?",
+    "choices": [
+     "Plan Resource Management",
+     "Estimate Activity Resources",
+     "Acquire Resources",
+     "Control Resources"
+    ],
+    "answer": 1,
+    "explain": "RBS este o ieșire directă a procesului Estimate Activity Resources — o structură ierarhică a resurselor pe categorie și tip, folosită pentru estimare și raportare ulterioară.",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 etape ale modelului Tuckman de dezvoltare a echipei?",
+    "back": "Forming, Storming, Norming, Performing, Adjourning.",
+    "concept_key": "tuckman-team-development",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă litera R în matricea RACI?",
+    "back": "Responsible — persoana care execută efectiv activitatea.",
+    "concept_key": "raci-matrix-pmp",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte procese conține domeniul de cunoștințe Resource Management conform PMBOK 6?",
+    "back": "Șase: Plan Resource Management, Estimate Activity Resources, Acquire Resources, Develop Team, Manage Team, Control Resources.",
+    "concept_key": "managementul-resurselor-pmp",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte persoane trebuie notate ca „Accountable” (A) pentru o activitate în matricea RACI?",
+    "back": "Exact una — regula de aur RACI, pentru a evita ambiguitatea privind cine răspunde final de rezultat.",
+    "concept_key": "raci-matrix-pmp",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care tehnică de estimare descompune o activitate în componente mici, estimate individual și însumate?",
+    "back": "Bottom-up estimating — cea mai precisă tehnică, dar și cea mai consumatoare de timp.",
+    "concept_key": "estimare-resurse-activitati",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este tehnica de gestionare a conflictelor preferată de PMI pe termen lung?",
+    "back": "Collaborate/Problem Solve — analizează cauza reală a conflictului și caută o soluție „win-win”.",
+    "concept_key": "managementul-resurselor-pmp",
+    "blockId": "cmjjuxvyg0098umkpdv5wrzou-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1475,
+   "flashcards": 6
+  }
+ }
+}

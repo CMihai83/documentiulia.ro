@@ -5,12 +5,15 @@ import { SystemSettingsService } from './system-settings.service';
 import { PlatformAnalyticsService } from './platform-analytics.service';
 import { UserImpersonationService } from './user-impersonation.service';
 import { AdminController } from './admin.controller';
+import { AdminClientsController } from './admin-clients.controller';
+import { AdminClientsService } from './admin-clients.service';
 import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
-  controllers: [AdminController, FeatureFlagsController],
+  controllers: [AdminController, AdminClientsController, FeatureFlagsController],
   providers: [
+    AdminClientsService,
     FeatureFlagsService,
     SystemSettingsService,
     PlatformAnalyticsService,

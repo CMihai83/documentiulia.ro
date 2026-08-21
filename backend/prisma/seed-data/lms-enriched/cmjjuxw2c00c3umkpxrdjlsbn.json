@@ -1,0 +1,161 @@
+{
+ "lessonId": "cmjjuxw2c00c3umkpxrdjlsbn",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Decizii de Business cu Impact Financiar",
+ "lesson": "Evaluarea investițiilor",
+ "category": "FINANCE_OPS",
+ "content": "# Evaluarea investițiilor\n\n## De ce contează evaluarea investițiilor\n\nOrice decizie de investiție - fie că vorbim despre achiziția unui utilaj, deschiderea unui magazin nou, implementarea unui sistem ERP sau extinderea liniei de producție - înseamnă să cheltui bani acum pentru a obține beneficii în viitor. Problema este că banii au valoare diferită în timp: 100.000 lei încasați azi valorează mai mult decât 100.000 lei încasați peste trei ani, pentru că banii de azi pot fi investiți, pot genera dobândă sau profit, și sunt afectați de inflație și de riscul ca fluxurile viitoare să nu se materializeze conform planului.\n\nDe aceea, un manager sau antreprenor nu poate compara direct „investesc 200.000 lei azi” cu „încasez 60.000 lei pe an timp de 5 ani” fără să aducă toate sumele la același moment de referință. Acesta este exact rolul celor trei metode standard de evaluare a investițiilor:\n\n- **Payback Period** (Perioada de recuperare) - în cât timp îmi recuperez banii investiți?\n- **NPV** (Net Present Value / Valoarea Actualizată Netă) - cât valoare netă creează investiția, exprimată în lei de azi?\n- **IRR** (Internal Rate of Return / Rata Internă de Rentabilitate) - ce randament anual generează efectiv investiția?\n\nCele trei metode nu se exclud, ci se completează. În practică, o companie serioasă calculează toate trei pentru orice investiție semnificativă, pentru că fiecare răspunde la o întrebare diferită și niciuna nu oferă singură imaginea completă.\n\n## Payback Period - Perioada de recuperare\n\nPayback Period răspunde la întrebarea cea mai intuitivă: **în câți ani recuperez banii investiți?**\n\nFormula (pentru fluxuri de numerar egale în fiecare an):\n\n**Payback = Investiția inițială / Fluxul de numerar anual**\n\nCând fluxurile de numerar diferă de la un an la altul, se calculează cumulat: aduni fluxurile an de an până depășești valoarea investiției inițiale, apoi interpolezi pentru luna/anul exact.\n\n**Avantaje:**\n- Simplu de calculat și de explicat, chiar și persoanelor fără pregătire financiară.\n- Oferă o măsură rapidă a riscului de lichiditate: cu cât recuperezi mai repede banii, cu atât ești mai puțin expus la incertitudini pe termen lung.\n\n**Dezavantaje:**\n- Ignoră valoarea în timp a banilor (în varianta simplă, neactualizată) - tratează un leu încasat anul 1 la fel ca un leu încasat anul 5.\n- Ignoră complet ce se întâmplă *după* recuperarea investiției. Două proiecte cu același payback pot avea profitabilitate total diferită pe termen lung.\n\nDin aceste motive, payback period este util ca prim filtru (mai ales pentru companii mici, cu lichiditate limitată), dar nu trebuie folosit ca unic criteriu de decizie.\n\n## NPV - Valoarea Actualizată Netă\n\nNPV aduce toate fluxurile de numerar viitoare la valoarea lor de azi (le „actualizează”), folosind o rată de actualizare (r) - de regulă costul capitalului companiei sau randamentul minim cerut de investitori.\n\nFormula:\n\n**NPV = Σ [CF_t / (1 + r)^t] − Investiția inițială**\n\nunde CF_t este fluxul de numerar net din anul t, iar r este rata de actualizare anuală.\n\n**Regula de decizie:**\n- NPV > 0 → investiția creează valoare peste costul capitalului; se acceptă.\n- NPV < 0 → investiția distruge valoare; se respinge.\n- NPV = 0 → investiția abia acoperă costul capitalului, fără plus de valoare.\n\nRata de actualizare este punctul critic al calculului: o rată prea mică face orice proiect să pară atractiv, o rată prea mare respinge proiecte bune. De regulă, rata reflectă costul mediu ponderat al capitalului (WACC) al companiei, ajustat cu riscul specific proiectului.\n\n## IRR - Rata Internă de Rentabilitate\n\nIRR este rata de actualizare pentru care NPV devine exact zero. Cu alte cuvinte, IRR reprezintă randamentul anual efectiv pe care investiția îl generează, exprimat ca procent.\n\n**Regula de decizie:**\n- IRR > costul capitalului → investiția depășește pragul minim de rentabilitate cerut; se acceptă.\n- IRR < costul capitalului → investiția nu justifică riscul asumat; se respinge.\n\nIRR este util pentru că se exprimă direct ca procent, ușor de comparat cu alte oportunități (o dobândă bancară, randamentul altei investiții). Dezavantajul principal apare la compararea proiectelor de dimensiuni foarte diferite sau cu fluxuri de numerar neconvenționale (intrări și ieșiri alternante), situații în care IRR poate avea soluții multiple sau poate contrazice concluzia NPV. Regula practică: **când NPV și IRR intră în conflict, NPV are prioritate**, pentru că exprimă valoarea creată în lei, nu doar un procent.\n\n## Exemplu: Calculul complet: Payback, NPV și IRR pentru o investiție într-un utilaj\nO firmă de producție analizează achiziția unui utilaj nou, în valoare de 200.000 lei, care va genera un flux de numerar suplimentar de 60.000 lei/an, timp de 5 ani. Costul capitalului companiei este 10%.\n\n**1. Payback Period**\n\n| An | Flux anual | Flux cumulat |\n|---|---|---|\n| 1 | 60.000 | 60.000 |\n| 2 | 60.000 | 120.000 |\n| 3 | 60.000 | 180.000 |\n| 4 | 60.000 | 240.000 |\n\nDupă anul 3, mai rămân de recuperat 200.000 − 180.000 = 20.000 lei. În anul 4, fluxul e 60.000 lei, deci 20.000/60.000 = 0,33 ani.\n\n**Payback = 3,33 ani (aproximativ 3 ani și 4 luni).**\n\n**2. NPV la r = 10%**\n\n| An | Flux | Factor actualizare (1/1,10^t) | Valoare actualizată |\n|---|---|---|---|\n| 1 | 60.000 | 0,9091 | 54.546 |\n| 2 | 60.000 | 0,8264 | 49.584 |\n| 3 | 60.000 | 0,7513 | 45.078 |\n| 4 | 60.000 | 0,6830 | 40.980 |\n| 5 | 60.000 | 0,6209 | 37.254 |\n\nTotal valoare actualizată a fluxurilor: 227.442 lei.\n\nNPV = 227.442 − 200.000 = **+27.442 lei**\n\nNPV este pozitiv → investiția creează valoare peste costul capitalului de 10%. Se recomandă acceptarea proiectului.\n\n**3. IRR**\n\nIRR este rata la care NPV = 0. Prin încercări succesive: la r = 15%, NPV ≈ +1.132 lei (aproape zero); la r = 16%, NPV ≈ −3.536 lei. Interpolând între cele două valori, **IRR ≈ 15,2%**.\n\nCum IRR (15,2%) > costul capitalului (10%), concluzia coincide cu cea dată de NPV: investiția este atractivă și ar trebui acceptată.\n\n## Exemplu: Când Payback Period te poate induce în eroare\nCompară două proiecte alternative, ambele necesitând o investiție inițială de 100.000 lei, evaluate la un cost al capitalului de 10%:\n\n- **Proiectul A:** generează 50.000 lei/an, timp de 3 ani (apoi utilajul se casează).\n- **Proiectul B:** generează 30.000 lei/an, timp de 6 ani.\n\n**Payback:**\n- Proiectul A: 100.000 / 50.000 = **2 ani** exact.\n- Proiectul B: cumulat 30.000 / 60.000 / 90.000 / 120.000 → recuperare între anul 3 și 4: (100.000 − 90.000)/30.000 = 0,33 → **3,33 ani**.\n\nJudecând doar după payback, Proiectul A pare net superior (2 ani vs. 3,33 ani).\n\n**NPV la 10%:**\n- Proiectul A (3 ani × 50.000): valoare actualizată totală ≈ 124.340 lei → NPV = 124.340 − 100.000 = **+24.340 lei**.\n- Proiectul B (6 ani × 30.000): valoare actualizată totală ≈ 130.656 lei → NPV = 130.656 − 100.000 = **+30.656 lei**.\n\nSurpriză: deși recuperează investiția mai lent, **Proiectul B creează mai multă valoare netă** (30.656 lei față de 24.340 lei), pentru că generează fluxuri de numerar mai mulți ani, chiar dacă mai mici anual.\n\n**Concluzie practică:** payback period e un indicator de lichiditate și risc, nu de profitabilitate. Dacă decizia se bazează exclusiv pe payback, riști să respingi proiecte care, pe ansamblu, valorează mai mult pentru companie.\n\n> Temei legal: OMFP 1802/2014 reglementări contabile privind situațiile financiare anuale individuale și consolidate - imobilizări corporale și amortizare (în vigoare de la 2015-01-01)\nAchizițiile de tipul utilajelor, echipamentelor sau clădirilor analizate în acest tip de decizie de investiție se înregistrează contabil drept imobilizări corporale (mijloace fixe), conform OMFP 1802/2014, și se amortizează pe durata de viață utilă estimată. Amortizarea nu este un flux de numerar (nu presupune o plată efectivă), dar este deductibilă fiscal și reduce baza de calcul a impozitului pe profit (cotă 16%), generând un „scut fiscal” care trebuie inclus atunci când estimezi fluxurile de numerar nete ale unei investiții în practică.\n\n⚠ **Atenție la limitele practice ale acestor calcule:**\n- Fluxurile de numerar viitoare sunt *estimări*, nu certitudini - o piață care evoluează diferit față de prognoză poate schimba complet rezultatul.\n- Rata de actualizare (costul capitalului) trebuie să reflecte riscul specific al proiectului: o investiție riscantă (piață nouă, tehnologie netestată) trebuie evaluată cu o rată mai mare decât o investiție de rutină (înlocuirea unui utilaj existent).\n- NPV și IRR nu surprind factori calitativi (aliniere strategică, impact asupra brandului, obligații legale de conformare). O investiție cu NPV ușor negativ poate fi totuși necesară dacă e impusă de reglementări sau de siguranța operațională.\n- Pentru decizii semnificative, discută rata de actualizare și ipotezele de flux de numerar cu un consultant financiar sau cu departamentul financiar al companiei.\n\n## Exercițiu\n**Exercițiu:** O companie de distribuție analizează achiziția unui echipament de automatizare a depozitului, în valoare de 150.000 lei. Echipamentul va genera economii/flux de numerar suplimentar de 45.000 lei/an, timp de 5 ani. Costul capitalului companiei este 8%.\n\nCalculează:\na) Payback Period\nb) NPV la r = 8%\nc) Ar trebui compania să facă această investiție? Justifică pe baza NPV.\n\n(Factori de actualizare la 8%: anul 1 = 0,9259; anul 2 = 0,8573; anul 3 = 0,7938; anul 4 = 0,7350; anul 5 = 0,6806)\n\n**Soluție:** **a) Payback Period**\n\nFlux cumulat: 45.000 / 90.000 / 135.000 / 180.000. Investiția (150.000) e recuperată între anul 3 (135.000) și anul 4 (180.000): (150.000 − 135.000)/45.000 = 0,33 → **Payback = 3,33 ani**.\n\n**b) NPV la 8%**\n\n| An | Flux | Factor | Valoare actualizată |\n|---|---|---|---|\n| 1 | 45.000 | 0,9259 | 41.666 |\n| 2 | 45.000 | 0,8573 | 38.579 |\n| 3 | 45.000 | 0,7938 | 35.721 |\n| 4 | 45.000 | 0,7350 | 33.075 |\n| 5 | 45.000 | 0,6806 | 30.627 |\n\nTotal valoare actualizată ≈ 179.668 lei.\n\nNPV = 179.668 − 150.000 = **+29.668 lei**\n\n**c) Decizie:** NPV este pozitiv (+29.668 lei), ceea ce înseamnă că investiția generează un randament peste costul capitalului de 8% și creează valoare netă pentru companie. **Recomandarea este să se facă investiția.** Payback-ul de 3,33 ani este acceptabil dacă echipamentul are o durată de viață utilă mai mare (ex. 5+ ani), pentru că fluxurile din anii 4-5 continuă să adauge valoare după recuperare.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "evaluare-investitii-valoarea-in-timp",
+    "md": "## De ce contează evaluarea investițiilor\n\nOrice decizie de investiție - fie că vorbim despre achiziția unui utilaj, deschiderea unui magazin nou, implementarea unui sistem ERP sau extinderea liniei de producție - înseamnă să cheltui bani acum pentru a obține beneficii în viitor. Problema este că banii au valoare diferită în timp: 100.000 lei încasați azi valorează mai mult decât 100.000 lei încasați peste trei ani, pentru că banii de azi pot fi investiți, pot genera dobândă sau profit, și sunt afectați de inflație și de riscul ca fluxurile viitoare să nu se materializeze conform planului.\n\nDe aceea, un manager sau antreprenor nu poate compara direct „investesc 200.000 lei azi” cu „încasez 60.000 lei pe an timp de 5 ani” fără să aducă toate sumele la același moment de referință. Acesta este exact rolul celor trei metode standard de evaluare a investițiilor:\n\n- **Payback Period** (Perioada de recuperare) - în cât timp îmi recuperez banii investiți?\n- **NPV** (Net Present Value / Valoarea Actualizată Netă) - cât valoare netă creează investiția, exprimată în lei de azi?\n- **IRR** (Internal Rate of Return / Rata Internă de Rentabilitate) - ce randament anual generează efectiv investiția?\n\nCele trei metode nu se exclud, ci se completează. În practică, o companie serioasă calculează toate trei pentru orice investiție semnificativă, pentru că fiecare răspunde la o întrebare diferită și niciuna nu oferă singură imaginea completă.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "payback-period",
+    "md": "## Payback Period - Perioada de recuperare\n\nPayback Period răspunde la întrebarea cea mai intuitivă: **în câți ani recuperez banii investiți?**\n\nFormula (pentru fluxuri de numerar egale în fiecare an):\n\n**Payback = Investiția inițială / Fluxul de numerar anual**\n\nCând fluxurile de numerar diferă de la un an la altul, se calculează cumulat: aduni fluxurile an de an până depășești valoarea investiției inițiale, apoi interpolezi pentru luna/anul exact.\n\n**Avantaje:**\n- Simplu de calculat și de explicat, chiar și persoanelor fără pregătire financiară.\n- Oferă o măsură rapidă a riscului de lichiditate: cu cât recuperezi mai repede banii, cu atât ești mai puțin expus la incertitudini pe termen lung.\n\n**Dezavantaje:**\n- Ignoră valoarea în timp a banilor (în varianta simplă, neactualizată) - tratează un leu încasat anul 1 la fel ca un leu încasat anul 5.\n- Ignoră complet ce se întâmplă *după* recuperarea investiției. Două proiecte cu același payback pot avea profitabilitate total diferită pe termen lung.\n\nDin aceste motive, payback period este util ca prim filtru (mai ales pentru companii mici, cu lichiditate limitată), dar nu trebuie folosit ca unic criteriu de decizie.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "npv-valoare-actualizata-neta",
+    "md": "## NPV - Valoarea Actualizată Netă\n\nNPV aduce toate fluxurile de numerar viitoare la valoarea lor de azi (le „actualizează”), folosind o rată de actualizare (r) - de regulă costul capitalului companiei sau randamentul minim cerut de investitori.\n\nFormula:\n\n**NPV = Σ [CF_t / (1 + r)^t] − Investiția inițială**\n\nunde CF_t este fluxul de numerar net din anul t, iar r este rata de actualizare anuală.\n\n**Regula de decizie:**\n- NPV > 0 → investiția creează valoare peste costul capitalului; se acceptă.\n- NPV < 0 → investiția distruge valoare; se respinge.\n- NPV = 0 → investiția abia acoperă costul capitalului, fără plus de valoare.\n\nRata de actualizare este punctul critic al calculului: o rată prea mică face orice proiect să pară atractiv, o rată prea mare respinge proiecte bune. De regulă, rata reflectă costul mediu ponderat al capitalului (WACC) al companiei, ajustat cu riscul specific proiectului.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "irr-rata-interna-de-rentabilitate",
+    "md": "## IRR - Rata Internă de Rentabilitate\n\nIRR este rata de actualizare pentru care NPV devine exact zero. Cu alte cuvinte, IRR reprezintă randamentul anual efectiv pe care investiția îl generează, exprimat ca procent.\n\n**Regula de decizie:**\n- IRR > costul capitalului → investiția depășește pragul minim de rentabilitate cerut; se acceptă.\n- IRR < costul capitalului → investiția nu justifică riscul asumat; se respinge.\n\nIRR este util pentru că se exprimă direct ca procent, ușor de comparat cu alte oportunități (o dobândă bancară, randamentul altei investiții). Dezavantajul principal apare la compararea proiectelor de dimensiuni foarte diferite sau cu fluxuri de numerar neconvenționale (intrări și ieșiri alternante), situații în care IRR poate avea soluții multiple sau poate contrazice concluzia NPV. Regula practică: **când NPV și IRR intră în conflict, NPV are prioritate**, pentru că exprimă valoarea creată în lei, nu doar un procent.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul complet: Payback, NPV și IRR pentru o investiție într-un utilaj",
+    "concept_key": "npv-irr-payback-calcul-complet",
+    "md": "O firmă de producție analizează achiziția unui utilaj nou, în valoare de 200.000 lei, care va genera un flux de numerar suplimentar de 60.000 lei/an, timp de 5 ani. Costul capitalului companiei este 10%.\n\n**1. Payback Period**\n\n| An | Flux anual | Flux cumulat |\n|---|---|---|\n| 1 | 60.000 | 60.000 |\n| 2 | 60.000 | 120.000 |\n| 3 | 60.000 | 180.000 |\n| 4 | 60.000 | 240.000 |\n\nDupă anul 3, mai rămân de recuperat 200.000 − 180.000 = 20.000 lei. În anul 4, fluxul e 60.000 lei, deci 20.000/60.000 = 0,33 ani.\n\n**Payback = 3,33 ani (aproximativ 3 ani și 4 luni).**\n\n**2. NPV la r = 10%**\n\n| An | Flux | Factor actualizare (1/1,10^t) | Valoare actualizată |\n|---|---|---|---|\n| 1 | 60.000 | 0,9091 | 54.546 |\n| 2 | 60.000 | 0,8264 | 49.584 |\n| 3 | 60.000 | 0,7513 | 45.078 |\n| 4 | 60.000 | 0,6830 | 40.980 |\n| 5 | 60.000 | 0,6209 | 37.254 |\n\nTotal valoare actualizată a fluxurilor: 227.442 lei.\n\nNPV = 227.442 − 200.000 = **+27.442 lei**\n\nNPV este pozitiv → investiția creează valoare peste costul capitalului de 10%. Se recomandă acceptarea proiectului.\n\n**3. IRR**\n\nIRR este rata la care NPV = 0. Prin încercări succesive: la r = 15%, NPV ≈ +1.132 lei (aproape zero); la r = 16%, NPV ≈ −3.536 lei. Interpolând între cele două valori, **IRR ≈ 15,2%**.\n\nCum IRR (15,2%) > costul capitalului (10%), concluzia coincide cu cea dată de NPV: investiția este atractivă și ar trebui acceptată.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b5"
+   },
+   {
+    "type": "example",
+    "title": "Când Payback Period te poate induce în eroare",
+    "concept_key": "npv-vs-payback-comparatie-proiecte",
+    "md": "Compară două proiecte alternative, ambele necesitând o investiție inițială de 100.000 lei, evaluate la un cost al capitalului de 10%:\n\n- **Proiectul A:** generează 50.000 lei/an, timp de 3 ani (apoi utilajul se casează).\n- **Proiectul B:** generează 30.000 lei/an, timp de 6 ani.\n\n**Payback:**\n- Proiectul A: 100.000 / 50.000 = **2 ani** exact.\n- Proiectul B: cumulat 30.000 / 60.000 / 90.000 / 120.000 → recuperare între anul 3 și 4: (100.000 − 90.000)/30.000 = 0,33 → **3,33 ani**.\n\nJudecând doar după payback, Proiectul A pare net superior (2 ani vs. 3,33 ani).\n\n**NPV la 10%:**\n- Proiectul A (3 ani × 50.000): valoare actualizată totală ≈ 124.340 lei → NPV = 124.340 − 100.000 = **+24.340 lei**.\n- Proiectul B (6 ani × 30.000): valoare actualizată totală ≈ 130.656 lei → NPV = 130.656 − 100.000 = **+30.656 lei**.\n\nSurpriză: deși recuperează investiția mai lent, **Proiectul B creează mai multă valoare netă** (30.656 lei față de 24.340 lei), pentru că generează fluxuri de numerar mai mulți ani, chiar dacă mai mici anual.\n\n**Concluzie practică:** payback period e un indicator de lichiditate și risc, nu de profitabilitate. Dacă decizia se bazează exclusiv pe payback, riști să respingi proiecte care, pe ansamblu, valorează mai mult pentru companie.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "reglementări contabile privind situațiile financiare anuale individuale și consolidate - imobilizări corporale și amortizare",
+    "effective": "2015-01-01",
+    "md": "Achizițiile de tipul utilajelor, echipamentelor sau clădirilor analizate în acest tip de decizie de investiție se înregistrează contabil drept imobilizări corporale (mijloace fixe), conform OMFP 1802/2014, și se amortizează pe durata de viață utilă estimată. Amortizarea nu este un flux de numerar (nu presupune o plată efectivă), dar este deductibilă fiscal și reduce baza de calcul a impozitului pe profit (cotă 16%), generând un „scut fiscal” care trebuie inclus atunci când estimezi fluxurile de numerar nete ale unei investiții în practică.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b7"
+   },
+   {
+    "type": "warning",
+    "md": "**Atenție la limitele practice ale acestor calcule:**\n- Fluxurile de numerar viitoare sunt *estimări*, nu certitudini - o piață care evoluează diferit față de prognoză poate schimba complet rezultatul.\n- Rata de actualizare (costul capitalului) trebuie să reflecte riscul specific al proiectului: o investiție riscantă (piață nouă, tehnologie netestată) trebuie evaluată cu o rată mai mare decât o investiție de rutină (înlocuirea unui utilaj existent).\n- NPV și IRR nu surprind factori calitativi (aliniere strategică, impact asupra brandului, obligații legale de conformare). O investiție cu NPV ușor negativ poate fi totuși necesară dacă e impusă de reglementări sau de siguranța operațională.\n- Pentru decizii semnificative, discută rata de actualizare și ipotezele de flux de numerar cu un consultant financiar sau cu departamentul financiar al companiei.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "**Exercițiu:** O companie de distribuție analizează achiziția unui echipament de automatizare a depozitului, în valoare de 150.000 lei. Echipamentul va genera economii/flux de numerar suplimentar de 45.000 lei/an, timp de 5 ani. Costul capitalului companiei este 8%.\n\nCalculează:\na) Payback Period\nb) NPV la r = 8%\nc) Ar trebui compania să facă această investiție? Justifică pe baza NPV.\n\n(Factori de actualizare la 8%: anul 1 = 0,9259; anul 2 = 0,8573; anul 3 = 0,7938; anul 4 = 0,7350; anul 5 = 0,6806)",
+    "solution_md": "**a) Payback Period**\n\nFlux cumulat: 45.000 / 90.000 / 135.000 / 180.000. Investiția (150.000) e recuperată între anul 3 (135.000) și anul 4 (180.000): (150.000 − 135.000)/45.000 = 0,33 → **Payback = 3,33 ani**.\n\n**b) NPV la 8%**\n\n| An | Flux | Factor | Valoare actualizată |\n|---|---|---|---|\n| 1 | 45.000 | 0,9259 | 41.666 |\n| 2 | 45.000 | 0,8573 | 38.579 |\n| 3 | 45.000 | 0,7938 | 35.721 |\n| 4 | 45.000 | 0,7350 | 33.075 |\n| 5 | 45.000 | 0,6806 | 30.627 |\n\nTotal valoare actualizată ≈ 179.668 lei.\n\nNPV = 179.668 − 150.000 = **+29.668 lei**\n\n**c) Decizie:** NPV este pozitiv (+29.668 lei), ceea ce înseamnă că investiția generează un randament peste costul capitalului de 8% și creează valoare netă pentru companie. **Recomandarea este să se facă investiția.** Payback-ul de 3,33 ani este acceptabil dacă echipamentul are o durată de viață utilă mai mare (ex. 5+ ani), pentru că fluxurile din anii 4-5 continuă să adauge valoare după recuperare.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principalul dezavantaj al metodei Payback Period (în varianta simplă, neactualizată)?",
+    "choices": [
+     "Ignoră valoarea în timp a banilor și fluxurile de numerar generate după recuperarea investiției",
+     "Este imposibil de calculat fără software specializat",
+     "Se aplică doar investițiilor mai mari de 1 milion de lei",
+     "Necesită cunoștințe avansate de statistică"
+    ],
+    "answer": 0,
+    "explain": "Payback period simplu tratează toți banii la fel indiferent de an și nu ia în calcul ce se întâmplă după recuperare, motiv pentru care nu ar trebui folosit ca unic criteriu de decizie.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O investiție are IRR = 18%, iar costul capitalului companiei este 12%. Ce decizie sugerează acest rezultat?",
+    "choices": [
+     "Se respinge investiția, IRR fiind prea mare",
+     "Se acceptă investiția, deoarece IRR > costul capitalului, deci proiectul creează valoare peste pragul minim cerut",
+     "Rezultatul este irelevant fără calculul payback period",
+     "Se acceptă doar dacă NPV este exact zero"
+    ],
+    "answer": 1,
+    "explain": "Regula de decizie pentru IRR: se acceptă proiectul dacă IRR depășește costul capitalului (rata minimă de rentabilitate cerută de companie).",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce înseamnă un NPV negativ pentru o investiție?",
+    "choices": [
+     "Investiția generează pierderi contabile în primul an",
+     "Fluxurile de numerar actualizate ale investiției nu acoperă investiția inițială și costul capitalului - investiția distruge valoare și ar trebui respinsă",
+     "Payback period va fi mai mare de 10 ani",
+     "Rata de actualizare a fost calculată greșit"
+    ],
+    "answer": 1,
+    "explain": "NPV negativ arată că, la rata de actualizare folosită, investiția nu generează suficientă valoare pentru a acoperi atât investiția inițială, cât și randamentul minim cerut.",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este NPV (Valoarea Actualizată Netă)?",
+    "back": "Suma valorilor actualizate ale fluxurilor de numerar viitoare generate de o investiție, minus investiția inițială. NPV pozitiv înseamnă că investiția creează valoare.",
+    "concept_key": "npv-definitie",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula NPV",
+    "back": "NPV = Σ [CF_t / (1+r)^t] − Investiția inițială, unde CF_t = flux de numerar în anul t, r = rata de actualizare.",
+    "concept_key": "npv-formula",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este IRR (Rata Internă de Rentabilitate)?",
+    "back": "Rata de actualizare pentru care NPV al investiției este egal cu zero; reprezintă randamentul intrinsec al proiectului.",
+    "concept_key": "irr-definitie",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este regula de decizie pentru IRR?",
+    "back": "Se acceptă investiția dacă IRR > costul capitalului (rata de actualizare cerută de companie).",
+    "concept_key": "irr-regula-decizie",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Payback Period?",
+    "back": "Perioada de timp necesară pentru ca fluxurile de numerar cumulate generate de investiție să recupereze investiția inițială.",
+    "concept_key": "payback-period-definitie",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este principalul dezavantaj al Payback Period simplu?",
+    "back": "Ignoră valoarea în timp a banilor și fluxurile de numerar generate după momentul recuperării investiției.",
+    "concept_key": "payback-period-dezavantaj",
+    "blockId": "cmjjuxw2c00c3umkpxrdjlsbn-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1576,
+   "flashcards": 6
+  }
+ }
+}

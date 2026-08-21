@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvzg00a0umkpvp0qz953",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Agile & Hybrid",
+ "lesson": "Quiz Agile & Hybrid",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Quiz Agile & Hybrid (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Conform Manifestului Agile, care dintre următoarele perechi reflectă corect o valoare fundamentală agilă?",
+     "choices": [
+      "Respectarea unui plan mai presus de răspunsul la schimbare",
+      "Indivizii și interacțiunile mai presus de procese și instrumente",
+      "Documentația cuprinzătoare mai presus de software-ul funcțional",
+      "Negocierea contractului mai presus de colaborarea cu clientul"
+     ],
+     "answer": 1,
+     "explain": "Manifestul Agile valorizează indivizii și interacțiunile mai mult decât procesele și instrumentele. Celelalte trei opțiuni inversează exact cele patru perechi de valori din manifest (software funcțional > documentație, colaborare cu clientul > negociere contract, răspuns la schimbare > respectarea unui plan).",
+     "concept_key": "agile_manifesto_values"
+    },
+    {
+     "q": "Potrivit Scrum Guide 2020, din câte roluri este formată Echipa Scrum (Scrum Team)?",
+     "choices": [
+      "Patru: Sponsor, Product Owner, Scrum Master, Echipa de Dezvoltare",
+      "Trei: Product Owner, Scrum Master, Dezvoltatori (Developers)",
+      "Doi: Product Owner și Scrum Master",
+      "Trei: Project Manager, Product Owner, Scrum Master"
+     ],
+     "answer": 1,
+     "explain": "Scrum Guide 2020 definește Echipa Scrum ca fiind formată din trei roluri: Product Owner, Scrum Master și Dezvoltatori (termenul „Development Team” a fost înlocuit cu „Developers”). Rolul de Project Manager nu există formal în Scrum, iar sponsorul nu face parte din Echipa Scrum.",
+     "concept_key": "scrum_roles"
+    },
+    {
+     "q": "Într-un proiect de digitalizare la o firmă SRL din România, Scrum Master-ul observă că echipa are dificultăți în a colabora cu departamentul financiar. Care este cel mai potrivit mod de a descrie rolul Scrum Master-ului în această situație?",
+     "choices": [
+      "Alocă sarcini fiecărui dezvoltator pentru a rezolva problema mai rapid",
+      "Acționează ca un lider slujitor (servant leader), facilitând eliminarea obstacolelor și îmbunătățind colaborarea",
+      "Ia decizii finale în locul Product Owner-ului pentru a accelera livrarea",
+      "Redactează un raport de status săptămânal pentru sponsor, ca un Project Manager tradițional"
+     ],
+     "answer": 1,
+     "explain": "Scrum Master-ul este un lider slujitor (servant leader) pentru Echipa Scrum, responsabil cu facilitarea proceselor, eliminarea obstacolelor și îmbunătățirea colaborării, nu cu alocarea de sarcini sau luarea deciziilor de produs, care aparțin Product Owner-ului.",
+     "concept_key": "servant_leadership"
+    },
+    {
+     "q": "Care este scopul principal al evenimentului Sprint Retrospective conform Scrum Guide 2020?",
+     "choices": [
+      "A prezenta stakeholderilor incrementul de produs finalizat",
+      "A planifica elementele din Product Backlog pentru următorul sprint",
+      "A inspecta modul în care a decurs ultimul sprint în privința oamenilor, proceselor și instrumentelor și a identifica îmbunătățiri",
+      "A estima efortul necesar pentru elementele rămase din Backlog"
+     ],
+     "answer": 2,
+     "explain": "Sprint Retrospective are loc la finalul sprintului și are ca scop inspectarea modului în care a decurs sprintul (oameni, relații, procese, instrumente) pentru a identifica și planifica îmbunătățiri aplicate în sprintul următor. Prezentarea incrementului are loc la Sprint Review, iar planificarea backlog-ului la Sprint Planning.",
+     "concept_key": "sprint_retrospective"
+    },
+    {
+     "q": "Ce reprezintă „Definition of Done” (Definiția de Finalizat) într-un proiect Scrum?",
+     "choices": [
+      "Lista priorităților stabilite de Product Owner pentru sprintul curent",
+      "Un set de criterii formale, agreate de echipă, pe care trebuie să le îndeplinească un increment pentru a fi considerat complet",
+      "Estimarea în story points a elementelor din Sprint Backlog",
+      "Raportul final de proiect prezentat sponsorului la închiderea proiectului"
+     ],
+     "answer": 1,
+     "explain": "Definition of Done este un set formal de criterii de calitate agreate de Echipa Scrum, care determină când un element de lucru (increment) este cu adevărat complet. Fără acest criteriu comun, transparența asupra progresului real este compromisă.",
+     "concept_key": "definition_of_done"
+    },
+    {
+     "q": "O echipă Scrum a livrat 32, 28 și 36 de story points în ultimele trei sprinturi de câte două săptămâni. Care este velocitatea medie a echipei, folosită pentru a estima capacitatea sprinturilor viitoare?",
+     "choices": [
+      "36 story points/sprint",
+      "32 story points/sprint",
+      "30 story points/sprint",
+      "48 story points/sprint"
+     ],
+     "answer": 1,
+     "explain": "Velocitatea medie se calculează ca medie aritmetică a story points livrate în sprinturile anterioare: (32+28+36)/3 = 96/3 = 32 story points/sprint. Această valoare istorică ajută la planificarea realistă a sprinturilor viitoare, nu maximul sau valori arbitrare.",
+     "concept_key": "velocity_calculation"
+    },
+    {
+     "q": "Într-un tablou Kanban folosit pentru mentenanța unui sistem ERP, coloana „În lucru” are o limită WIP (Work in Progress) de 3, iar în prezent conține deja 3 elemente. Care este acțiunea recomandată de practica Kanban atunci când un dezvoltator dorește să înceapă un element nou?",
+     "choices": [
+      "Adaugă elementul nou și crește temporar limita WIP fără nicio analiză",
+      "Începe elementul nou, deoarece limitele WIP sunt doar orientative",
+      "Nu trage un element nou; echipa se concentrează pe finalizarea unui element existent pentru a elibera capacitate",
+      "Mută un element existent înapoi în „De făcut” pentru a face loc noului element"
+     ],
+     "answer": 2,
+     "explain": "Limitele WIP în Kanban sunt reguli active menite să limiteze lucrul paralel, să evite supraîncărcarea și să scoată la iveală blocajele (bottlenecks). Când limita este atinsă, echipa trebuie să finalizeze lucrul existent înainte de a trage un element nou, nu să ignore sau să crească limita ad-hoc.",
+     "concept_key": "kanban_wip_limits"
+    },
+    {
+     "q": "La Daily Scrum, într-un sprint pentru migrarea unui modul ERP, apare o problemă tehnică complexă care necesită discuții detaliate între doi dezvoltatori. Ce ar trebui să facă Scrum Master-ul, respectând timebox-ul de 15 minute al evenimentului?",
+     "choices": [
+      "Prelungește Daily Scrum-ul cu încă 15 minute pentru a rezolva problema pe loc",
+      "Anulează Daily Scrum-ul pentru restul sprintului, considerându-l ineficient",
+      "Încurajează discuția detaliată să aibă loc separat, imediat după Daily Scrum, între persoanele implicate",
+      "Reprogramează Daily Scrum-ul pentru după-amiaza, pentru a avea mai mult timp disponibil"
+     ],
+     "answer": 2,
+     "explain": "Daily Scrum are un timebox strict de 15 minute, indiferent de mărimea echipei. Discuțiile detaliate sau de rezolvare a problemelor tehnice trebuie mutate în întâlniri separate, imediat după eveniment, pentru a păstra scopul de sincronizare rapidă al Daily Scrum-ului.",
+     "concept_key": "daily_scrum_timebox"
+    },
+    {
+     "q": "O companie românească implementează un sistem ERP: componenta de conformitate fiscală are cerințe fixe și reglementate, în timp ce interfața utilizator și rapoartele de management trebuie dezvoltate iterativ, pe baza feedback-ului continuu al utilizatorilor. Conform PMBOK 7, ce tip de abordare a ciclului de viață este cel mai potrivit pentru acest proiect?",
+     "choices": [
+      "O abordare predictivă (waterfall) pentru toate componentele, pentru a asigura control strict al costurilor",
+      "O abordare hibridă, cu componenta de conformitate fiscală gestionată predictiv și componenta UI/rapoarte gestionată agil, iterativ",
+      "O abordare pur agilă, cu toate componentele dezvoltate în sprinturi, inclusiv conformitatea fiscală",
+      "O abordare bazată exclusiv pe Kanban, fără planificare inițială pentru componenta de conformitate fiscală"
+     ],
+     "answer": 1,
+     "explain": "PMBOK 7 recomandă adaptarea (tailoring) ciclului de viață în funcție de gradul de incertitudine și volatilitate al cerințelor: componentele cu cerințe stabile și reglementate (conformitate fiscală) se pretează unei abordări predictive, iar componentele cu cerințe evolutive (UI, rapoarte) beneficiază de o abordare agilă/iterativă. O abordare hibridă combină ambele, maximizând controlul acolo unde e nevoie și flexibilitatea unde aduce valoare.",
+     "concept_key": "hybrid_lifecycle_tailoring"
+    },
+    {
+     "q": "Un Product Owner dintr-o echipă hibridă (predictiv + agil) trebuie să decidă cum să gestioneze un risc major de integrare, identificat înainte de începerea sprinturilor, care afectează arhitectura întregului sistem. Care este cea mai adecvată practică, combinând principii PMBOK 7 și Agile?",
+     "choices": [
+      "Ignoră riscul până apare ca problemă reală, conform principiului agil de a nu planifica excesiv în avans",
+      "Alocă un sprint dedicat exclusiv unui „spike” tehnic de investigare a riscului, integrând rezultatele într-un plan de răspuns la risc documentat conform practicilor predictive",
+      "Elimină toate elementele din backlog legate de arhitectură, pentru a evita complet riscul",
+      "Delegă decizia integral sponsorului, fără implicarea echipei de dezvoltare"
+     ],
+     "answer": 1,
+     "explain": "Într-un mediu hibrid, riscurile tehnice majore identificate timpuriu pot fi investigate printr-un „spike” (o iterație de cercetare/prototipare, tehnică agilă), iar rezultatele sunt apoi documentate și gestionate printr-un plan de răspuns la risc, aliniat practicilor de management al riscului din PMBOK 7. Ignorarea riscului sau eliminarea completă a lucrului contravine atât principiilor agile, cât și celor predictive de gestionare proactivă a riscurilor.",
+     "concept_key": "hybrid_risk_management"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

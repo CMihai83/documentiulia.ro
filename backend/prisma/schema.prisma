@@ -153,6 +153,10 @@ model User {
   vatReports              VATReport[]
   vatD300Declarations     VatD300Declaration[]
   vatD394Declarations     VatD394Declaration[]
+  // REQ-049 staff back-office: client requests
+  supportTickets          SupportTicket[]       @relation("TicketRequester")
+  assignedTickets         SupportTicket[]       @relation("TicketAssignee")
+  ticketMessages          TicketMessage[]
 
   @@index([clerkId])
   @@index([email])
@@ -3954,21 +3958,21 @@ model PolicyDocument {
 }
 
 model CmpBannerConfig {
-  id            String   @id @default(cuid())
-  orgId         String   @unique
-  bannerVersion String   @default("1")
-  categories    Json     @default("[\"necessary\",\"analytics\",\"marketing\"]")
+  id            String    @id @default(cuid())
+  orgId         String    @unique
+  bannerVersion String    @default("1")
+  categories    Json      @default("[\"necessary\",\"analytics\",\"marketing\"]")
   colors        Json?
   policyUrl     String?
   texts         Json?
   // S-63 CMP hardening (all additive with safe defaults)
-  consentModeV2 Boolean  @default(true)
-  tcfEnabled    Boolean  @default(false)
-  geoEuOnly     Boolean  @default(false)
+  consentModeV2 Boolean   @default(true)
+  tcfEnabled    Boolean   @default(false)
+  geoEuOnly     Boolean   @default(false)
   scanResult    Json?
   scannedAt     DateTime?
-  updatedAt     DateTime @updatedAt
-  createdAt     DateTime @default(now())
+  updatedAt     DateTime  @updatedAt
+  createdAt     DateTime  @default(now())
 }
 
 // ---------------------------------------------------------------------------
@@ -4138,13 +4142,13 @@ model DpiaAssessment {
   orgId          String
   ropaEntryId    String
   version        Int      @default(1)
-  screening      Json     // questionnaire answers
-  verdict        String   // required | recommended | not_required
+  screening      Json // questionnaire answers
+  verdict        String // required | recommended | not_required
   verdictReasons String[]
-  risks          Json?    // [{risk, likelihood, severity, mitigations, residualLikelihood, residualSeverity}]
-  residualBand   String?  // low | medium | high | very_high
+  risks          Json? // [{risk, likelihood, severity, mitigations, residualLikelihood, residualSeverity}]
+  residualBand   String? // low | medium | high | very_high
   wizardRequired Boolean  @default(false)
-  wizard         Json?    // the 5 Art-5 Law-190 gates
+  wizard         Json? // the 5 Art-5 Law-190 gates
   status         String   @default("draft") // draft | blocked | signed_off
   art36Html      String?
   createdAt      DateTime @default(now())
@@ -4161,7 +4165,7 @@ model GdprVendor {
   role              String   @default("processor") // controller | processor | subprocessor
   country           String   @default("RO")
   isEu              Boolean  @default(true)
-  transferMechanism String?  // none_needed | scc | dpf_claimed | adequacy
+  transferMechanism String? // none_needed | scc | dpf_claimed | adequacy
   dpfClaimed        Boolean  @default(false)
   dpfEvidenceUrl    String?
   ropaEntryIds      String[] @default([])
@@ -4180,7 +4184,7 @@ model DpaDocument {
   vendorId    String
   locale      String    @default("ro")
   version     Int
-  sccModule   String?   // M1..M4
+  sccModule   String? // M1..M4
   html        String
   status      String    @default("draft")
   publishedAt DateTime?
@@ -4197,7 +4201,7 @@ model TiaAssessment {
   version   Int      @default(1)
   answers   Json
   score     Int
-  verdict   String   // proceed | proceed_with_measures | do_not_transfer
+  verdict   String // proceed | proceed_with_measures | do_not_transfer
   measures  String[]
   createdAt DateTime @default(now())
 
@@ -4225,21 +4229,21 @@ model SubprocessorObjection {
 // ---------------------------------------------------------------------------
 
 model Project {
-  id          String    @id @default(cuid())
+  id          String             @id @default(cuid())
   orgId       String
   name        String
   description String?
   clientName  String?
-  status      String    @default("planning") // planning|active|on_hold|completed|cancelled
+  status      String             @default("planning") // planning|active|on_hold|completed|cancelled
   startDate   DateTime?
   dueDate     DateTime?
-  budgetRon   Decimal?  @db.Decimal(14, 2)
-  spentRon    Decimal?  @db.Decimal(14, 2)
+  budgetRon   Decimal?           @db.Decimal(14, 2)
+  spentRon    Decimal?           @db.Decimal(14, 2)
   managerName String?
-  teamNames   Json?     // string[]
-  progressPct Int       @default(0)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  teamNames   Json? // string[]
+  progressPct Int                @default(0)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
   tasks       ProjectTask[]
   milestones  ProjectMilestone[]
 
@@ -4281,7 +4285,7 @@ model Meeting {
   endsAt      DateTime
   location    String?
   meetingUrl  String?
-  attendees   Json?    // { name, email? }[]
+  attendees   Json? // { name, email? }[]
   status      String   @default("scheduled") // scheduled|completed|cancelled
   createdBy   String
   createdAt   DateTime @default(now())
@@ -4293,12 +4297,78 @@ model Meeting {
 model BusinessGoal {
   id          String   @id @default(cuid())
   orgId       String
-  metric      String   // revenue|profit|invoices|customers
+  metric      String // revenue|profit|invoices|customers
   targetValue Decimal  @db.Decimal(14, 2)
-  period      String   // YYYY or YYYY-MM
+  period      String // YYYY or YYYY-MM
   note        String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@index([orgId, period])
+}
+
+// ---------------------------------------------------------------------------
+// REQ-049 — Client requests (support tickets) operated from the staff back-office
+// ---------------------------------------------------------------------------
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  WAITING_CLIENT
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model SupportTicket {
+  id              String          @id @default(cuid())
+  reference       String          @unique // human-facing, e.g. REQ-2026-000123
+  /// Requester when authenticated; null for public contact-form guests
+  userId          String?
+  user            User?           @relation("TicketRequester", fields: [userId], references: [id])
+  guestName       String?
+  guestEmail      String?
+  guestCompany    String?
+  subject         String
+  category        String          @default("general") // general | billing | efactura | saft | hr | technical | sales
+  status          TicketStatus    @default(OPEN)
+  priority        TicketPriority  @default(NORMAL)
+  assignedToId    String?
+  assignedTo      User?           @relation("TicketAssignee", fields: [assignedToId], references: [id])
+  source          String          @default("dashboard") // dashboard | contact_form | email | staff
+  firstResponseAt DateTime?
+  resolvedAt      DateTime?
+  closedAt        DateTime?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  messages        TicketMessage[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([assignedToId])
+  @@index([createdAt])
+  @@index([guestEmail])
+}
+
+model TicketMessage {
+  id         String        @id @default(cuid())
+  ticketId   String
+  ticket     SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  /// null for guest messages (contact form)
+  authorId   String?
+  author     User?         @relation(fields: [authorId], references: [id])
+  isStaff    Boolean       @default(false)
+  /// internal staff note — never shown to the client
+  isInternal Boolean       @default(false)
+  body       String
+  createdAt  DateTime      @default(now())
+
+  @@index([ticketId])
+  @@index([createdAt])
 }

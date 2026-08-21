@@ -1,0 +1,139 @@
+{
+ "lessonId": "cmjjuxvs2004sumkp5jkpf2l8",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Introducere în Project Management",
+ "lesson": "Ciclul de viață al proiectului",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Ciclul de viață al proiectului\n\n## Ce este ciclul de viață al proiectului\n\nCiclul de viață al proiectului este succesiunea de faze prin care trece orice proiect, de la idee până la finalizare. Spre deosebire de ciclul de viață al produsului (care poate dura ani sau decenii, incluzând mentenanța și retragerea din piață), ciclul de viață al proiectului se încheie odată ce obiectivele proiectului au fost atinse sau proiectul a fost oprit.\n\nGhidul PMBOK (ediția a 7-a, 2021) a mutat accentul de la „procese stricte” la 8 domenii de performanță și un set de principii, dar modelul clasic al celor **5 grupe de procese** rămâne referința cea mai folosită în practica din România pentru a structura livrarea unui proiect:\n\n1. **Inițiere**\n2. **Planificare**\n3. **Execuție**\n4. **Monitorizare & Control**\n5. **Închidere**\n\nAceste grupe nu sunt neapărat secvențiale și izolate — Execuția și Monitorizarea & Controlul rulează de regulă în paralel, iar în abordările agile (Scrum Guide 2020), ciclul se repetă la scară mică în fiecare sprint. Indiferent de metodologie, fiecare fază produce **livrabile** (deliverables) specifice și se încheie printr-un punct de decizie numit **phase gate**.\n\n## Faza de Inițiere\n\nInițierea răspunde la întrebarea: „Merită acest proiect să existe?”. Aici se validează oportunitatea de business și se autorizează formal începerea lucrului.\n\n**Activități principale:**\n- Elaborarea business case-ului (justificarea economică a proiectului)\n- Identificarea și analiza inițială a stakeholderilor (persoane sau organizații afectate de proiect sau care îl pot influența)\n- Definirea la nivel înalt a scopului, obiectivelor și constrângerilor (buget, timp, resurse)\n- Numirea Project Managerului\n\n**Livrabile cheie:**\n- **Project Charter** (Carta Proiectului) — documentul oficial care autorizează proiectul, numește PM-ul și îi acordă autoritatea de a folosi resursele organizației\n- **Registrul stakeholderilor** (Stakeholder Register)\n\nExemplu concret: o firmă de distribuție din Cluj decide să implementeze un sistem ERP. În faza de Inițiere, directorul general semnează Project Charter-ul, se stabilește un buget estimativ orientativ și se numește un PM intern. Fără acest document, echipa nu are mandat oficial să aloce timp și buget proiectului.\n\n## Faza de Planificare\n\nPlanificarea transformă obiectivele de nivel înalt din Charter într-un plan de acțiune detaliat și realist. Este, de regulă, faza cu cel mai mare consum de timp din punct de vedere al documentației, dar investiția aici reduce dramatic riscurile din Execuție.\n\n**Activități principale:**\n- Descompunerea scopului în **WBS** (Work Breakdown Structure) — structura ierarhică ce împarte proiectul în pachete de lucru gestionabile\n- Estimarea duratelor și costurilor activităților\n- Construirea programului (graficul Gantt) și a bugetului detaliat\n- Planificarea resurselor, comunicării, calității și a răspunsului la riscuri\n- Definirea criteriilor de acceptanță pentru livrabile\n\n**Livrabile cheie:**\n- **Planul de Management al Proiectului** (Project Management Plan) — documentul „umbrelă” care integrează toate planurile subsidiare (scop, timp, cost, calitate, riscuri, comunicare)\n- **WBS** și dicționarul WBS\n- Bugetul detaliat și programul de execuție\n\nÎn exemplul ERP, echipa detaliază acum WBS-ul: migrare date, configurare module financiar-contabile, testare, instruire utilizatori, go-live. Fiecare pachet primește un responsabil, o durată estimată și un cost asociat.\n\n## Execuție și Monitorizare & Control\n\nAceste două grupe de procese rulează practic în paralel, pe toată durata livrării propriu-zise.\n\n**Execuția** înseamnă realizarea efectivă a activităților planificate: dezvoltarea livrabilelor, coordonarea echipei, gestionarea furnizorilor, comunicarea cu stakeholderii. Aici se consumă cea mai mare parte a bugetului și a efortului uman.\n\n**Monitorizarea & Controlul** înseamnă compararea permanentă a progresului real cu planul de bază (baseline) și aplicarea de acțiuni corective atunci când apar abateri. Instrumente tipice:\n- Rapoarte de status (săptămânale/lunare)\n- Analiza valorii realizate (Earned Value Management) pentru a vedea dacă proiectul e pe buget și pe termen\n- Registrul de riscuri și registrul de probleme (issue log), actualizate constant\n- Procesul de control al schimbărilor (change requests aprobate/respinse de un comitet)\n\n**Livrabile cheie:** livrabilele funcționale ale proiectului (ex. modulele ERP configurate), rapoarte de status, cereri de schimbare aprobate, registre de risc actualizate.\n\nÎn abordările agile, echivalentul acestei faze este ciclul de sprinturi: fiecare sprint produce un increment funcțional (Execuție), iar Sprint Review și Daily Scrum joacă rolul de mecanisme de Monitorizare & Control la scară redusă.\n\n## Phase gates și faza de Închidere\n\nUn **phase gate** (punct de control între faze) este un moment formal de decizie, de regulă cu participarea sponsorului sau a unui comitet de guvernanță, în care se evaluează dacă proiectul poate trece în faza următoare. La un gate se verifică: livrabilele fazei anterioare sunt complete și acceptate, bugetul și programul rămân realiste, riscurile sunt sub control. Deciziile posibile la un gate sunt: **Go** (continuă), **Go cu condiții** (continuă cu ajustări), **No-Go** (proiectul se oprește sau se reface planul).\n\nPhase gate-urile previn „scope creep” necontrolat și oferă puncte naturale de a opri un proiect care nu mai are sens economic, fără a aștepta până la final.\n\n**Închiderea** este faza finală, adesea neglijată în practică, dar esențială:\n- Obținerea acceptanței formale a beneficiarului pentru livrabilele finale\n- Finalizarea contractelor cu furnizorii\n- Eliberarea echipei și realocarea resurselor\n- Documentarea **lecțiilor învățate** (lessons learned)\n- Arhivarea documentației proiectului\n\n**Livrabile cheie:** procesul verbal de acceptanță finală, raportul de închidere (closeout report), registrul lecțiilor învățate.\n\nÎn proiectul ERP, Închiderea înseamnă semnarea recepției finale de către client intern, dezactivarea sistemului vechi și un workshop de 1-2 ore în care echipa notează ce ar face diferit data viitoare.\n\n## Exemplu: Ciclul de viață complet într-un proiect de implementare ERP\nO companie de distribuție cu 80 de angajați decide implementarea unui sistem ERP pentru a înlocui evidența ținută în Excel și un soft contabil izolat.\n\n1. **Inițiere:** Se aprobă Project Charter-ul cu un buget orientativ de 250.000 lei și un termen țintă de 6 luni. PM-ul este numit, iar directorul financiar și directorul de operațiuni sunt identificați ca sponsori-cheie în registrul stakeholderilor.\n2. **Planificare:** WBS-ul împarte proiectul în 5 pachete: migrare date, configurare module financiar-contabile, configurare module de stoc/vânzări, testare integrată, instruire utilizatori. Bugetul detaliat alocă, de exemplu, 60.000 lei pentru migrarea datelor și 40.000 lei pentru instruire. Se trece primul **phase gate**: comitetul de guvernanță aprobă planul.\n3. **Execuție & Monitorizare-Control:** Consultanții configurează modulele, echipa internă testează, iar PM-ul raportează lunar stadiul bugetului consumat față de cel planificat (ex. la finalul lunii 3, s-au cheltuit 130.000 lei din 250.000, corespunzător procentului de activități finalizate — semn că proiectul e „pe buget”).\n4. **Al doilea phase gate**, înainte de go-live: se verifică dacă testarea integrată a trecut toate criteriile de acceptanță. Se decide Go.\n5. **Închidere:** După go-live și o perioadă de stabilizare de 2 săptămâni, clientul intern semnează acceptanța finală, iar echipa organizează o sesiune de lecții învățate, notând, de exemplu, că migrarea datelor a durat cu 30% mai mult decât estimat din cauza calității slabe a datelor istorice.\n\n## Exemplu: Ciclul de viață clasic vs. agil într-un proiect de digitalizare\nO firmă de servicii vrea să digitalizeze fluxul de aprobare a facturilor de la furnizori.\n\n**Abordare clasică (predictivă):** Se parcurg secvențial cele 5 faze descrise mai sus, cu un singur phase gate mare între Planificare și Execuție. Avantaj: predictibilitate ridicată a bugetului total, util când cerințele sunt clare de la început (ex. conformitate cu o cerință legală fixă). Dezavantaj: dacă utilizatorii finali nu văd produsul decât la final, riscul de a livra ceva nepotrivit nevoilor reale este mare.\n\n**Abordare agilă (Scrum Guide 2020):** Proiectul este împărțit în sprinturi de 2 săptămâni. Fiecare sprint este un mini-ciclu: Planificare (Sprint Planning) → Execuție (dezvoltare) → Monitorizare & Control (Daily Scrum) → o formă de „închidere” parțială (Sprint Review + Retrospective), unde Product Owner-ul acceptă sau respinge incrementul livrat — acesta este echivalentul unui phase gate, dar repetat la fiecare 2 săptămâni în loc de o singură dată. Avantaj: feedback rapid de la utilizatori, ajustări frecvente. Dezavantaj: bugetul total este mai greu de fixat rigid de la început.\n\nÎn practică, multe organizații din România folosesc un model hibrid: Inițiere și Planificare de nivel înalt făcute clasic (pentru a obține aprobarea bugetului), iar Execuția organizată în sprinturi agile.\n\n⚠ Cea mai frecventă greșeală în proiectele din România este să se sară direct de la Inițiere la Execuție, sub presiunea termenelor, sărind sau comprimând drastic Planificarea. Rezultatul tipic: WBS incomplet, estimări optimiste nefundamentate și depășiri de buget descoperite abia în Monitorizare & Control, când opțiunile de corecție sunt deja limitate. Un phase gate riguros între Planificare și Execuție previne exact acest scenariu.\n\n## Exercițiu\nEști Project Manager pe un proiect de renovare și digitalizare a unui sediu de birouri. Ai următoarea listă de activități/documente produse pe parcursul proiectului. Asociază fiecare element cu faza corectă din ciclul de viață (Inițiere, Planificare, Execuție, Monitorizare & Control, Închidere):\n\na) Semnarea Project Charter-ului de către directorul general\nb) Raportul lunar de comparare a bugetului cheltuit față de cel planificat\nc) Elaborarea WBS-ului cu pachetele de lucru: demolare, instalații, mobilier, IT\nd) Instalarea efectivă a cablării de rețea de către echipa tehnică\ne) Semnarea procesului verbal de recepție finală de către beneficiar\nf) Actualizarea registrului de riscuri după apariția unei întârzieri la furnizorul de mobilier\n\n**Soluție:** a) **Inițiere** — Project Charter-ul autorizează oficial proiectul.\nb) **Monitorizare & Control** — compararea planificat vs. realizat este control al performanței.\nc) **Planificare** — WBS-ul descompune scopul înainte de a începe lucrul efectiv.\nd) **Execuție** — realizarea fizică a activității planificate.\ne) **Închidere** — acceptanța formală a livrabilului final marchează sfârșitul proiectului.\nf) **Monitorizare & Control** — actualizarea registrului de riscuri ca reacție la un eveniment apărut în timpul execuției.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "ciclul-de-viata-proiect-definitie",
+    "md": "## Ce este ciclul de viață al proiectului\n\nCiclul de viață al proiectului este succesiunea de faze prin care trece orice proiect, de la idee până la finalizare. Spre deosebire de ciclul de viață al produsului (care poate dura ani sau decenii, incluzând mentenanța și retragerea din piață), ciclul de viață al proiectului se încheie odată ce obiectivele proiectului au fost atinse sau proiectul a fost oprit.\n\nGhidul PMBOK (ediția a 7-a, 2021) a mutat accentul de la „procese stricte” la 8 domenii de performanță și un set de principii, dar modelul clasic al celor **5 grupe de procese** rămâne referința cea mai folosită în practica din România pentru a structura livrarea unui proiect:\n\n1. **Inițiere**\n2. **Planificare**\n3. **Execuție**\n4. **Monitorizare & Control**\n5. **Închidere**\n\nAceste grupe nu sunt neapărat secvențiale și izolate — Execuția și Monitorizarea & Controlul rulează de regulă în paralel, iar în abordările agile (Scrum Guide 2020), ciclul se repetă la scară mică în fiecare sprint. Indiferent de metodologie, fiecare fază produce **livrabile** (deliverables) specifice și se încheie printr-un punct de decizie numit **phase gate**.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "faza-initiere-proiect",
+    "md": "## Faza de Inițiere\n\nInițierea răspunde la întrebarea: „Merită acest proiect să existe?”. Aici se validează oportunitatea de business și se autorizează formal începerea lucrului.\n\n**Activități principale:**\n- Elaborarea business case-ului (justificarea economică a proiectului)\n- Identificarea și analiza inițială a stakeholderilor (persoane sau organizații afectate de proiect sau care îl pot influența)\n- Definirea la nivel înalt a scopului, obiectivelor și constrângerilor (buget, timp, resurse)\n- Numirea Project Managerului\n\n**Livrabile cheie:**\n- **Project Charter** (Carta Proiectului) — documentul oficial care autorizează proiectul, numește PM-ul și îi acordă autoritatea de a folosi resursele organizației\n- **Registrul stakeholderilor** (Stakeholder Register)\n\nExemplu concret: o firmă de distribuție din Cluj decide să implementeze un sistem ERP. În faza de Inițiere, directorul general semnează Project Charter-ul, se stabilește un buget estimativ orientativ și se numește un PM intern. Fără acest document, echipa nu are mandat oficial să aloce timp și buget proiectului.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "faza-planificare-proiect",
+    "md": "## Faza de Planificare\n\nPlanificarea transformă obiectivele de nivel înalt din Charter într-un plan de acțiune detaliat și realist. Este, de regulă, faza cu cel mai mare consum de timp din punct de vedere al documentației, dar investiția aici reduce dramatic riscurile din Execuție.\n\n**Activități principale:**\n- Descompunerea scopului în **WBS** (Work Breakdown Structure) — structura ierarhică ce împarte proiectul în pachete de lucru gestionabile\n- Estimarea duratelor și costurilor activităților\n- Construirea programului (graficul Gantt) și a bugetului detaliat\n- Planificarea resurselor, comunicării, calității și a răspunsului la riscuri\n- Definirea criteriilor de acceptanță pentru livrabile\n\n**Livrabile cheie:**\n- **Planul de Management al Proiectului** (Project Management Plan) — documentul „umbrelă” care integrează toate planurile subsidiare (scop, timp, cost, calitate, riscuri, comunicare)\n- **WBS** și dicționarul WBS\n- Bugetul detaliat și programul de execuție\n\nÎn exemplul ERP, echipa detaliază acum WBS-ul: migrare date, configurare module financiar-contabile, testare, instruire utilizatori, go-live. Fiecare pachet primește un responsabil, o durată estimată și un cost asociat.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "executie-monitorizare-control-proiect",
+    "md": "## Execuție și Monitorizare & Control\n\nAceste două grupe de procese rulează practic în paralel, pe toată durata livrării propriu-zise.\n\n**Execuția** înseamnă realizarea efectivă a activităților planificate: dezvoltarea livrabilelor, coordonarea echipei, gestionarea furnizorilor, comunicarea cu stakeholderii. Aici se consumă cea mai mare parte a bugetului și a efortului uman.\n\n**Monitorizarea & Controlul** înseamnă compararea permanentă a progresului real cu planul de bază (baseline) și aplicarea de acțiuni corective atunci când apar abateri. Instrumente tipice:\n- Rapoarte de status (săptămânale/lunare)\n- Analiza valorii realizate (Earned Value Management) pentru a vedea dacă proiectul e pe buget și pe termen\n- Registrul de riscuri și registrul de probleme (issue log), actualizate constant\n- Procesul de control al schimbărilor (change requests aprobate/respinse de un comitet)\n\n**Livrabile cheie:** livrabilele funcționale ale proiectului (ex. modulele ERP configurate), rapoarte de status, cereri de schimbare aprobate, registre de risc actualizate.\n\nÎn abordările agile, echivalentul acestei faze este ciclul de sprinturi: fiecare sprint produce un increment funcțional (Execuție), iar Sprint Review și Daily Scrum joacă rolul de mecanisme de Monitorizare & Control la scară redusă.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "phase-gates-inchidere-proiect",
+    "md": "## Phase gates și faza de Închidere\n\nUn **phase gate** (punct de control între faze) este un moment formal de decizie, de regulă cu participarea sponsorului sau a unui comitet de guvernanță, în care se evaluează dacă proiectul poate trece în faza următoare. La un gate se verifică: livrabilele fazei anterioare sunt complete și acceptate, bugetul și programul rămân realiste, riscurile sunt sub control. Deciziile posibile la un gate sunt: **Go** (continuă), **Go cu condiții** (continuă cu ajustări), **No-Go** (proiectul se oprește sau se reface planul).\n\nPhase gate-urile previn „scope creep” necontrolat și oferă puncte naturale de a opri un proiect care nu mai are sens economic, fără a aștepta până la final.\n\n**Închiderea** este faza finală, adesea neglijată în practică, dar esențială:\n- Obținerea acceptanței formale a beneficiarului pentru livrabilele finale\n- Finalizarea contractelor cu furnizorii\n- Eliberarea echipei și realocarea resurselor\n- Documentarea **lecțiilor învățate** (lessons learned)\n- Arhivarea documentației proiectului\n\n**Livrabile cheie:** procesul verbal de acceptanță finală, raportul de închidere (closeout report), registrul lecțiilor învățate.\n\nÎn proiectul ERP, Închiderea înseamnă semnarea recepției finale de către client intern, dezactivarea sistemului vechi și un workshop de 1-2 ore în care echipa notează ce ar face diferit data viitoare.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b5"
+   },
+   {
+    "type": "example",
+    "title": "Ciclul de viață complet într-un proiect de implementare ERP",
+    "concept_key": "exemplu-ciclu-viata-erp",
+    "md": "O companie de distribuție cu 80 de angajați decide implementarea unui sistem ERP pentru a înlocui evidența ținută în Excel și un soft contabil izolat.\n\n1. **Inițiere:** Se aprobă Project Charter-ul cu un buget orientativ de 250.000 lei și un termen țintă de 6 luni. PM-ul este numit, iar directorul financiar și directorul de operațiuni sunt identificați ca sponsori-cheie în registrul stakeholderilor.\n2. **Planificare:** WBS-ul împarte proiectul în 5 pachete: migrare date, configurare module financiar-contabile, configurare module de stoc/vânzări, testare integrată, instruire utilizatori. Bugetul detaliat alocă, de exemplu, 60.000 lei pentru migrarea datelor și 40.000 lei pentru instruire. Se trece primul **phase gate**: comitetul de guvernanță aprobă planul.\n3. **Execuție & Monitorizare-Control:** Consultanții configurează modulele, echipa internă testează, iar PM-ul raportează lunar stadiul bugetului consumat față de cel planificat (ex. la finalul lunii 3, s-au cheltuit 130.000 lei din 250.000, corespunzător procentului de activități finalizate — semn că proiectul e „pe buget”).\n4. **Al doilea phase gate**, înainte de go-live: se verifică dacă testarea integrată a trecut toate criteriile de acceptanță. Se decide Go.\n5. **Închidere:** După go-live și o perioadă de stabilizare de 2 săptămâni, clientul intern semnează acceptanța finală, iar echipa organizează o sesiune de lecții învățate, notând, de exemplu, că migrarea datelor a durat cu 30% mai mult decât estimat din cauza calității slabe a datelor istorice.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b6"
+   },
+   {
+    "type": "example",
+    "title": "Ciclul de viață clasic vs. agil într-un proiect de digitalizare",
+    "concept_key": "exemplu-ciclu-viata-agil-waterfall",
+    "md": "O firmă de servicii vrea să digitalizeze fluxul de aprobare a facturilor de la furnizori.\n\n**Abordare clasică (predictivă):** Se parcurg secvențial cele 5 faze descrise mai sus, cu un singur phase gate mare între Planificare și Execuție. Avantaj: predictibilitate ridicată a bugetului total, util când cerințele sunt clare de la început (ex. conformitate cu o cerință legală fixă). Dezavantaj: dacă utilizatorii finali nu văd produsul decât la final, riscul de a livra ceva nepotrivit nevoilor reale este mare.\n\n**Abordare agilă (Scrum Guide 2020):** Proiectul este împărțit în sprinturi de 2 săptămâni. Fiecare sprint este un mini-ciclu: Planificare (Sprint Planning) → Execuție (dezvoltare) → Monitorizare & Control (Daily Scrum) → o formă de „închidere” parțială (Sprint Review + Retrospective), unde Product Owner-ul acceptă sau respinge incrementul livrat — acesta este echivalentul unui phase gate, dar repetat la fiecare 2 săptămâni în loc de o singură dată. Avantaj: feedback rapid de la utilizatori, ajustări frecvente. Dezavantaj: bugetul total este mai greu de fixat rigid de la început.\n\nÎn practică, multe organizații din România folosesc un model hibrid: Inițiere și Planificare de nivel înalt făcute clasic (pentru a obține aprobarea bugetului), iar Execuția organizată în sprinturi agile.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală în proiectele din România este să se sară direct de la Inițiere la Execuție, sub presiunea termenelor, sărind sau comprimând drastic Planificarea. Rezultatul tipic: WBS incomplet, estimări optimiste nefundamentate și depășiri de buget descoperite abia în Monitorizare & Control, când opțiunile de corecție sunt deja limitate. Un phase gate riguros între Planificare și Execuție previne exact acest scenariu.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești Project Manager pe un proiect de renovare și digitalizare a unui sediu de birouri. Ai următoarea listă de activități/documente produse pe parcursul proiectului. Asociază fiecare element cu faza corectă din ciclul de viață (Inițiere, Planificare, Execuție, Monitorizare & Control, Închidere):\n\na) Semnarea Project Charter-ului de către directorul general\nb) Raportul lunar de comparare a bugetului cheltuit față de cel planificat\nc) Elaborarea WBS-ului cu pachetele de lucru: demolare, instalații, mobilier, IT\nd) Instalarea efectivă a cablării de rețea de către echipa tehnică\ne) Semnarea procesului verbal de recepție finală de către beneficiar\nf) Actualizarea registrului de riscuri după apariția unei întârzieri la furnizorul de mobilier",
+    "solution_md": "a) **Inițiere** — Project Charter-ul autorizează oficial proiectul.\nb) **Monitorizare & Control** — compararea planificat vs. realizat este control al performanței.\nc) **Planificare** — WBS-ul descompune scopul înainte de a începe lucrul efectiv.\nd) **Execuție** — realizarea fizică a activității planificate.\ne) **Închidere** — acceptanța formală a livrabilului final marchează sfârșitul proiectului.\nf) **Monitorizare & Control** — actualizarea registrului de riscuri ca reacție la un eveniment apărut în timpul execuției.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ordinea corectă a celor 5 grupe de procese din ciclul de viață clasic al proiectului?",
+    "choices": [
+     "Planificare, Inițiere, Execuție, Închidere, Monitorizare & Control",
+     "Inițiere, Planificare, Execuție, Monitorizare & Control, Închidere",
+     "Inițiere, Execuție, Planificare, Închidere, Monitorizare & Control",
+     "Execuție, Planificare, Inițiere, Monitorizare & Control, Închidere"
+    ],
+    "answer": 1,
+    "explain": "Ordinea standard este Inițiere → Planificare → Execuție → Monitorizare & Control (rulează în paralel cu Execuția) → Închidere.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă un phase gate?",
+    "choices": [
+     "Un livrabil tehnic produs în faza de Execuție",
+     "Un punct formal de decizie între faze, unde se aprobă continuarea, ajustarea sau oprirea proiectului",
+     "Documentul care descompune scopul proiectului în activități",
+     "Raportul final de lecții învățate din faza de Închidere"
+    ],
+    "answer": 1,
+    "explain": "Phase gate-ul este momentul de decizie (Go / Go cu condiții / No-Go) care marchează trecerea controlată de la o fază la alta.",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 grupe de procese din ciclul de viață al proiectului?",
+    "back": "Inițiere, Planificare, Execuție, Monitorizare & Control, Închidere.",
+    "concept_key": "ciclul-de-viata-proiect-definitie",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document marchează oficial începutul unui proiect și autorizează PM-ul?",
+    "back": "Project Charter (Carta Proiectului), emis în faza de Inițiere.",
+    "concept_key": "faza-initiere-proiect",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un phase gate?",
+    "back": "Un punct de decizie formal între două faze, unde sponsorul sau comitetul de guvernanță decide dacă proiectul continuă, se ajustează sau se oprește (Go / Go cu condiții / No-Go).",
+    "concept_key": "phase-gates-inchidere-proiect",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce livrabil cheie din faza de Planificare descompune scopul în pachete de lucru gestionabile?",
+    "back": "WBS (Work Breakdown Structure) — structura de descompunere a activităților.",
+    "concept_key": "faza-planificare-proiect",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce rulează Monitorizarea & Controlul simultan cu Execuția, nu doar la final?",
+    "back": "Pentru a compara permanent progresul real cu planul de bază și a aplica acțiuni corective din timp, nu abia la finalul proiectului.",
+    "concept_key": "executie-monitorizare-control-proiect",
+    "blockId": "cmjjuxvs2004sumkp5jkpf2l8-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1500,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwcp00kaumkpbr2569ug",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Documentația SSM",
+ "lesson": "Semnalizarea de securitate",
+ "category": "HSE_SAFETY",
+ "content": "# Semnalizarea de securitate\n\n## Ce este semnalizarea de securitate\n\nSemnalizarea de securitate reprezintă ansamblul de informații transmise lucrătorilor printr-o combinație de **formă geometrică, culoare și pictogramă** (panouri), prin **culori de securitate** (marcaje pe pardoseală, benzi, conducte), prin **semnale luminoase sau acustice**, ori prin comunicare verbală și gesturi, cu scopul de a atrage rapid atenția asupra unui obiect, unei situații sau a unui pericol determinat.\n\nÎn România, cerințele minime pentru semnalizarea de securitate și/sau de sănătate la locul de muncă sunt reglementate prin **HG 971/2006**, act ce completează cadrul general stabilit de Legea 319/2006 (legea SSM) și de HG 1425/2006 (normele metodologice de aplicare a acesteia). Orice angajator care are în structura sa zone cu riscuri – incendiu, substanțe periculoase, echipamente în mișcare, căi de evacuare, spații cu acces restricționat – are obligația de a implementa o semnalizare corespunzătoare și de a o include în documentația SSM a unității (plan de semnalizare, evidența panourilor, fișe de instruire).\n\nUn principiu esențial: semnalizarea **nu este o măsură de prevenire în sine**, ci un mijloc complementar. Ea se instituie atunci când riscul nu poate fi eliminat sau redus suficient prin măsuri tehnice colective ori prin organizarea muncii.\n\n## Tipuri de panouri și codul culorilor\n\nCulorile și formele panourilor de securitate sunt standardizate (SR ISO 7010, preluat prin HG 971/2006) tocmai pentru a fi recunoscute instant, indiferent de limba vorbită de lucrător. Cele cinci categorii principale:\n\n1. **Panouri de interzicere** – fond alb, cerc roșu cu bandă diagonală, pictogramă neagră. Exemplu: „Fumatul interzis”, „Accesul interzis persoanelor neautorizate”.\n2. **Panouri de avertizare** – triunghi echilateral galben, chenar și pictogramă negre. Exemplu: „Pericol de electrocutare”, „Pericol de incendiu – materiale inflamabile”.\n3. **Panouri de obligativitate** – cerc albastru, pictogramă albă. Exemplu: „Protecție obligatorie a capului”, „Protecție respiratorie obligatorie”.\n4. **Panouri de salvare/prim ajutor** – pătrat sau dreptunghi verde, pictogramă albă. Exemplu: „Ieșire de urgență”, „Punct de prim ajutor”, „Duș de urgență”.\n5. **Panouri pentru echipamente de luptă împotriva incendiilor** – pătrat sau dreptunghi roșu, pictogramă albă. Exemplu: „Stingător”, „Furtun de incendiu”, „Telefon de urgență”.\n\nRegula de bază pentru angajator: **culorile nu se inventează și nu se combină arbitrar** – fiecare culoare are o semnificație unică și fixă, iar folosirea incorectă (de exemplu un panou galben pentru interzicere) anulează efectul de recunoaștere imediată și poate fi sancționată la controlul ITM ca neconformitate a documentației SSM.\n\n## Dimensiuni, amplasare și întreținere\n\n**Dimensiunea panoului** trebuie corelată cu distanța de la care acesta trebuie să fie observat și înțeles. Regula practică folosită în proiectarea semnalizării este:\n\n**S ≥ d² / 2000**, unde S este suprafața minimă a panoului (în m²), iar d este distanța maximă de vizibilitate (în metri), formulă valabilă pentru distanțe de până la 50 m.\n\n**Amplasarea** trebuie să respecte câteva reguli practice:\n- panoul se montează la intrarea în zona de risc, nu doar în interiorul ei;\n- se poziționează la o înălțime și un unghi care asigură vizibilitate din orice punct de acces, fără a fi obturat de uși, rafturi sau utilaje;\n- iluminatul zonei trebuie să permită citirea panoului inclusiv pe timp de noapte sau în condiții de vizibilitate redusă (dacă e cazul, se folosesc panouri fotoluminiscente sau iluminate).\n\n**Marcarea căilor de circulație** (culoare de securitate pe pardoseală) se face cu benzi continue, de regulă galbene sau alb-galben, care delimitează culoarele pentru pietoni de cele pentru utilaje/mijloace de transport intern. Obstacolele fixe și zonele cu pericol de coliziune sau cădere se marchează cu benzi alternante galben-negru sau roșu-alb, aplicate la 45°.\n\n**Întreținerea** este obligația continuă a angajatorului: panourile deteriorate, decolorate sau ilizibile se înlocuiesc imediat, iar lucrătorii noi trebuie instruiți asupra semnificației semnalizării chiar în cadrul instructajului la locul de muncă.\n\n## Exemplu: Semnalizarea într-un depozit de vopsele\nO firmă SRL operează un depozit de vopsele și diluanți inflamabili. La evaluarea de risc s-au identificat: substanțe inflamabile, posibile emanații de vapori toxici și necesitatea unei căi de evacuare rapidă.\n\nSemnalizarea implementată de responsabilul SSM:\n- la intrarea în depozit: panou de **avertizare** galben triunghiular „Pericol de incendiu – materiale inflamabile” și panou de **interzicere** roșu rotund „Fumatul și focul deschis interzise”;\n- lângă zona de manipulare a diluanților: panou de **obligativitate** albastru rotund „Protecție respiratorie obligatorie” și „Mănuși de protecție obligatorii”;\n- deasupra ușii laterale: panou de **salvare** verde dreptunghiular „Ieșire de urgență”, cu pictogramă și săgeată direcțională;\n- lângă stingătoarele montate pe pereți: panouri roșii dreptunghiulare „Stingător” vizibile de la minimum 15 m;\n- pardoseala culoarului principal de circulație este marcată cu bandă continuă galbenă de-a lungul rafturilor, iar paleții depozitați temporar pe culoar sunt delimitați cu bandă galben-negru.\n\nToate aceste elemente sunt trecute în planul de semnalizare al depozitului, anexă la documentația SSM, actualizat de fiecare dată când se modifică amplasamentul sau tipul de risc.\n\n## Exemplu: Calculul dimensiunii minime a unui panou\nÎntr-un atelier de producție, panoul „Ieșire de urgență” trebuie să fie vizibil de la o distanță maximă de 24 de metri (capătul opus al halei).\n\nAplicăm formula S ≥ d² / 2000:\n\nS ≥ 24² / 2000 = 576 / 2000 = 0,288 m².\n\nDacă panoul este pătrat, latura minimă L = √0,288 ≈ 0,537 m, adică aproximativ **54 × 54 cm**. În practică, se alege formatul standard imediat superior din gama furnizorului (de exemplu 60 × 60 cm), pentru a avea o marjă de siguranță și pentru a se încadra în dimensiunile uzuale disponibile comercial.\n\n> Temei legal: HG 971/2006 Art. 3 alin. (1) și Anexa privind cerințele minime de semnalizare (în vigoare de la 2006-08-09)\nHG 971/2006 privind cerințele minime pentru semnalizarea de securitate și/sau de sănătate la locul de muncă stabilește, la art. 3, obligația angajatorului de a asigura semnalizarea de securitate ori de câte ori riscurile identificate nu pot fi evitate sau reduse suficient prin mijloace tehnice de protecție colectivă sau prin măsuri, metode ori proceduri de organizare a muncii. Anexele actului detaliază culorile, formele, pictogramele și cerințele de amplasare pentru fiecare tip de panou, marcaj sau semnal (luminos, acustic, verbal, gestual). Verifică forma consolidată la zi a hotărârii înainte de a o cita într-un document oficial, întrucât actele normative pot suferi modificări ulterioare.\n\n⚠ Semnalizarea de securitate **nu înlocuiește** măsurile tehnice de protecție colectivă, echipamentul individual de protecție (EIP) sau instruirea lucrătorilor – este un mijloc complementar, ultimul strat de protecție. Greșeli frecvente întâlnite la controalele ITM: culori neconforme (panouri „inventate” în afara codului standard), panouri vechi, decolorate sau parțial acoperite de rafturi/utilaje, lipsa semnalizării pentru echipamentele de stingere a incendiilor, precum și absența unui plan de semnalizare actualizat în dosarul SSM. Toate aceste neconformități pot fi sancționate contravențional și, în caz de accident, agravează răspunderea angajatorului.\n\n## Exercițiu\nEști responsabil SSM la o firmă SRL cu depozit de solvenți inflamabili. În depozit există: (1) un stingător de incendiu montat pe perete, (2) o ușă de evacuare de urgență, (3) o zonă cu risc de emanații toxice, unde lucrătorii trebuie să poarte mască de protecție respiratorie.\n\nCerințe:\na) Stabilește culoarea și forma panoului pentru fiecare dintre cele 3 elemente.\nb) Calculează suprafața minimă a panoului pentru ușa de evacuare, știind că distanța maximă de la care trebuie să fie vizibil panoul este de 18 metri.\nc) Calculează latura panoului, presupunând că acesta este pătrat.\n\n**Soluție:** a)\n- Stingător de incendiu → panou **roșu**, formă pătrată/dreptunghiulară, pictogramă albă (echipament de luptă împotriva incendiilor).\n- Ușă de evacuare de urgență → panou **verde**, formă pătrată/dreptunghiulară, pictogramă albă (persoană alergând spre ieșire + săgeată).\n- Zonă cu risc de emanații toxice (obligativitate mască) → panou **albastru**, formă rotundă, pictogramă albă „Protecție respiratorie obligatorie”, însoțit de un panou **galben** triunghiular de avertizare „Pericol substanțe toxice”.\n\nb) S ≥ d² / 2000 = 18² / 2000 = 324 / 2000 = 0,162 m².\n\nc) Pentru un panou pătrat, latura L = √0,162 ≈ 0,40 m. Se alege deci un panou de minimum 40 × 40 cm (sau formatul standard imediat superior, 45 × 45 cm, pentru marjă de siguranță).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "semnalizare-securitate-definitie",
+    "md": "## Ce este semnalizarea de securitate\n\nSemnalizarea de securitate reprezintă ansamblul de informații transmise lucrătorilor printr-o combinație de **formă geometrică, culoare și pictogramă** (panouri), prin **culori de securitate** (marcaje pe pardoseală, benzi, conducte), prin **semnale luminoase sau acustice**, ori prin comunicare verbală și gesturi, cu scopul de a atrage rapid atenția asupra unui obiect, unei situații sau a unui pericol determinat.\n\nÎn România, cerințele minime pentru semnalizarea de securitate și/sau de sănătate la locul de muncă sunt reglementate prin **HG 971/2006**, act ce completează cadrul general stabilit de Legea 319/2006 (legea SSM) și de HG 1425/2006 (normele metodologice de aplicare a acesteia). Orice angajator care are în structura sa zone cu riscuri – incendiu, substanțe periculoase, echipamente în mișcare, căi de evacuare, spații cu acces restricționat – are obligația de a implementa o semnalizare corespunzătoare și de a o include în documentația SSM a unității (plan de semnalizare, evidența panourilor, fișe de instruire).\n\nUn principiu esențial: semnalizarea **nu este o măsură de prevenire în sine**, ci un mijloc complementar. Ea se instituie atunci când riscul nu poate fi eliminat sau redus suficient prin măsuri tehnice colective ori prin organizarea muncii.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "semnalizare-tipuri-panouri",
+    "md": "## Tipuri de panouri și codul culorilor\n\nCulorile și formele panourilor de securitate sunt standardizate (SR ISO 7010, preluat prin HG 971/2006) tocmai pentru a fi recunoscute instant, indiferent de limba vorbită de lucrător. Cele cinci categorii principale:\n\n1. **Panouri de interzicere** – fond alb, cerc roșu cu bandă diagonală, pictogramă neagră. Exemplu: „Fumatul interzis”, „Accesul interzis persoanelor neautorizate”.\n2. **Panouri de avertizare** – triunghi echilateral galben, chenar și pictogramă negre. Exemplu: „Pericol de electrocutare”, „Pericol de incendiu – materiale inflamabile”.\n3. **Panouri de obligativitate** – cerc albastru, pictogramă albă. Exemplu: „Protecție obligatorie a capului”, „Protecție respiratorie obligatorie”.\n4. **Panouri de salvare/prim ajutor** – pătrat sau dreptunghi verde, pictogramă albă. Exemplu: „Ieșire de urgență”, „Punct de prim ajutor”, „Duș de urgență”.\n5. **Panouri pentru echipamente de luptă împotriva incendiilor** – pătrat sau dreptunghi roșu, pictogramă albă. Exemplu: „Stingător”, „Furtun de incendiu”, „Telefon de urgență”.\n\nRegula de bază pentru angajator: **culorile nu se inventează și nu se combină arbitrar** – fiecare culoare are o semnificație unică și fixă, iar folosirea incorectă (de exemplu un panou galben pentru interzicere) anulează efectul de recunoaștere imediată și poate fi sancționată la controlul ITM ca neconformitate a documentației SSM.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "semnalizare-dimensiuni-amplasare",
+    "md": "## Dimensiuni, amplasare și întreținere\n\n**Dimensiunea panoului** trebuie corelată cu distanța de la care acesta trebuie să fie observat și înțeles. Regula practică folosită în proiectarea semnalizării este:\n\n**S ≥ d² / 2000**, unde S este suprafața minimă a panoului (în m²), iar d este distanța maximă de vizibilitate (în metri), formulă valabilă pentru distanțe de până la 50 m.\n\n**Amplasarea** trebuie să respecte câteva reguli practice:\n- panoul se montează la intrarea în zona de risc, nu doar în interiorul ei;\n- se poziționează la o înălțime și un unghi care asigură vizibilitate din orice punct de acces, fără a fi obturat de uși, rafturi sau utilaje;\n- iluminatul zonei trebuie să permită citirea panoului inclusiv pe timp de noapte sau în condiții de vizibilitate redusă (dacă e cazul, se folosesc panouri fotoluminiscente sau iluminate).\n\n**Marcarea căilor de circulație** (culoare de securitate pe pardoseală) se face cu benzi continue, de regulă galbene sau alb-galben, care delimitează culoarele pentru pietoni de cele pentru utilaje/mijloace de transport intern. Obstacolele fixe și zonele cu pericol de coliziune sau cădere se marchează cu benzi alternante galben-negru sau roșu-alb, aplicate la 45°.\n\n**Întreținerea** este obligația continuă a angajatorului: panourile deteriorate, decolorate sau ilizibile se înlocuiesc imediat, iar lucrătorii noi trebuie instruiți asupra semnificației semnalizării chiar în cadrul instructajului la locul de muncă.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b3"
+   },
+   {
+    "type": "example",
+    "title": "Semnalizarea într-un depozit de vopsele",
+    "concept_key": "semnalizare-caz-depozit",
+    "md": "O firmă SRL operează un depozit de vopsele și diluanți inflamabili. La evaluarea de risc s-au identificat: substanțe inflamabile, posibile emanații de vapori toxici și necesitatea unei căi de evacuare rapidă.\n\nSemnalizarea implementată de responsabilul SSM:\n- la intrarea în depozit: panou de **avertizare** galben triunghiular „Pericol de incendiu – materiale inflamabile” și panou de **interzicere** roșu rotund „Fumatul și focul deschis interzise”;\n- lângă zona de manipulare a diluanților: panou de **obligativitate** albastru rotund „Protecție respiratorie obligatorie” și „Mănuși de protecție obligatorii”;\n- deasupra ușii laterale: panou de **salvare** verde dreptunghiular „Ieșire de urgență”, cu pictogramă și săgeată direcțională;\n- lângă stingătoarele montate pe pereți: panouri roșii dreptunghiulare „Stingător” vizibile de la minimum 15 m;\n- pardoseala culoarului principal de circulație este marcată cu bandă continuă galbenă de-a lungul rafturilor, iar paleții depozitați temporar pe culoar sunt delimitați cu bandă galben-negru.\n\nToate aceste elemente sunt trecute în planul de semnalizare al depozitului, anexă la documentația SSM, actualizat de fiecare dată când se modifică amplasamentul sau tipul de risc.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul dimensiunii minime a unui panou",
+    "concept_key": "semnalizare-calcul-dimensiune",
+    "md": "Într-un atelier de producție, panoul „Ieșire de urgență” trebuie să fie vizibil de la o distanță maximă de 24 de metri (capătul opus al halei).\n\nAplicăm formula S ≥ d² / 2000:\n\nS ≥ 24² / 2000 = 576 / 2000 = 0,288 m².\n\nDacă panoul este pătrat, latura minimă L = √0,288 ≈ 0,537 m, adică aproximativ **54 × 54 cm**. În practică, se alege formatul standard imediat superior din gama furnizorului (de exemplu 60 × 60 cm), pentru a avea o marjă de siguranță și pentru a se încadra în dimensiunile uzuale disponibile comercial.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG 971/2006",
+    "article": "Art. 3 alin. (1) și Anexa privind cerințele minime de semnalizare",
+    "effective": "2006-08-09",
+    "md": "HG 971/2006 privind cerințele minime pentru semnalizarea de securitate și/sau de sănătate la locul de muncă stabilește, la art. 3, obligația angajatorului de a asigura semnalizarea de securitate ori de câte ori riscurile identificate nu pot fi evitate sau reduse suficient prin mijloace tehnice de protecție colectivă sau prin măsuri, metode ori proceduri de organizare a muncii. Anexele actului detaliază culorile, formele, pictogramele și cerințele de amplasare pentru fiecare tip de panou, marcaj sau semnal (luminos, acustic, verbal, gestual). Verifică forma consolidată la zi a hotărârii înainte de a o cita într-un document oficial, întrucât actele normative pot suferi modificări ulterioare.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Semnalizarea de securitate **nu înlocuiește** măsurile tehnice de protecție colectivă, echipamentul individual de protecție (EIP) sau instruirea lucrătorilor – este un mijloc complementar, ultimul strat de protecție. Greșeli frecvente întâlnite la controalele ITM: culori neconforme (panouri „inventate” în afara codului standard), panouri vechi, decolorate sau parțial acoperite de rafturi/utilaje, lipsa semnalizării pentru echipamentele de stingere a incendiilor, precum și absența unui plan de semnalizare actualizat în dosarul SSM. Toate aceste neconformități pot fi sancționate contravențional și, în caz de accident, agravează răspunderea angajatorului.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești responsabil SSM la o firmă SRL cu depozit de solvenți inflamabili. În depozit există: (1) un stingător de incendiu montat pe perete, (2) o ușă de evacuare de urgență, (3) o zonă cu risc de emanații toxice, unde lucrătorii trebuie să poarte mască de protecție respiratorie.\n\nCerințe:\na) Stabilește culoarea și forma panoului pentru fiecare dintre cele 3 elemente.\nb) Calculează suprafața minimă a panoului pentru ușa de evacuare, știind că distanța maximă de la care trebuie să fie vizibil panoul este de 18 metri.\nc) Calculează latura panoului, presupunând că acesta este pătrat.",
+    "solution_md": "a)\n- Stingător de incendiu → panou **roșu**, formă pătrată/dreptunghiulară, pictogramă albă (echipament de luptă împotriva incendiilor).\n- Ușă de evacuare de urgență → panou **verde**, formă pătrată/dreptunghiulară, pictogramă albă (persoană alergând spre ieșire + săgeată).\n- Zonă cu risc de emanații toxice (obligativitate mască) → panou **albastru**, formă rotundă, pictogramă albă „Protecție respiratorie obligatorie”, însoțit de un panou **galben** triunghiular de avertizare „Pericol substanțe toxice”.\n\nb) S ≥ d² / 2000 = 18² / 2000 = 324 / 2000 = 0,162 m².\n\nc) Pentru un panou pătrat, latura L = √0,162 ≈ 0,40 m. Se alege deci un panou de minimum 40 × 40 cm (sau formatul standard imediat superior, 45 × 45 cm, pentru marjă de siguranță).",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce culoare și formă standard are un panou de avertizare (atenție/pericol)?",
+    "choices": [
+     "Roșu, formă rotundă",
+     "Galben, formă triunghiulară cu chenar negru",
+     "Albastru, formă rotundă",
+     "Verde, formă pătrată"
+    ],
+    "answer": 1,
+    "explain": "Panourile de avertizare folosesc fond galben, formă triunghiulară, cu chenar și pictogramă negre – rezervate atenționării asupra unui pericol existent.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula orientativă pentru suprafața minimă S (m²) a unui panou de securitate, în funcție de distanța maximă de vizibilitate d (m)?",
+    "choices": [
+     "S ≥ d / 2000",
+     "S ≥ d² / 2000",
+     "S ≥ 2000 / d",
+     "S ≥ d² × 2000"
+    ],
+    "answer": 1,
+    "explain": "S ≥ d²/2000 este formula practică folosită pentru dimensionarea panourilor de securitate, valabilă pentru distanțe de vizibilitate de până la 50 m.",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce culoare și formă are panoul de interzicere?",
+    "back": "Fond alb, cerc roșu cu bandă diagonală, pictogramă neagră (ex: „Fumatul interzis”).",
+    "concept_key": "semnalizare-culoare-interzicere",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula minimă pentru dimensiunea unui panou de securitate?",
+    "back": "S ≥ d²/2000, unde S este suprafața minimă (m²) și d distanța maximă de vizibilitate (m), valabilă până la 50 m.",
+    "concept_key": "semnalizare-formula-dimensiune-panou",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează în România semnalizarea de securitate la locul de muncă?",
+    "back": "HG 971/2006 privind cerințele minime pentru semnalizarea de securitate și/sau de sănătate la locul de muncă.",
+    "concept_key": "semnalizare-hg-971-2006",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce culoare și formă are panoul de salvare/prim ajutor?",
+    "back": "Fond verde, formă pătrată sau dreptunghiulară, pictogramă albă (ex: „Ieșire de urgență”, „Punct de prim ajutor”).",
+    "concept_key": "semnalizare-culoare-salvare",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce formă geometrică au panourile de obligativitate?",
+    "back": "Cerc de culoare albastră, cu pictogramă albă (ex: „Protecție obligatorie a capului”).",
+    "concept_key": "semnalizare-forma-obligativitate",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine are obligația de a instrui lucrătorii cu privire la semnificația semnalizării de securitate?",
+    "back": "Angajatorul, conform HG 971/2006 și Legii 319/2006 – instruirea se include în instructajul la locul de muncă.",
+    "concept_key": "semnalizare-instruire-angajator",
+    "blockId": "cmjjuxwcp00kaumkpbr2569ug-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1239,
+   "flashcards": 6
+  }
+ }
+}

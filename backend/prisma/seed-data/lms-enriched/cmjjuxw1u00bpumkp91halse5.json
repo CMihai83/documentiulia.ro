@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxw1u00bpumkp91halse5",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Bugetare și Planificare Financiară",
+ "lesson": "Analiza varianțelor",
+ "category": "FINANCE_OPS",
+ "content": "# Analiza varianțelor\n\n# Ce este analiza varianțelor?\n\nAnaliza varianțelor este procesul prin care compari execuția bugetară reală (**Actual**) cu valorile planificate (**Buget**), pentru fiecare linie din bugetul de venituri și cheltuieli. Diferența dintre cele două se numește **varianță** (variance) și reprezintă abaterea de la plan.\n\n**Formula generală:**\n\nVarianță = Actual − Buget\n\nVarianța se exprimă atât în valoare absolută (lei), cât și procentual, pentru a-i evalua semnificația relativă:\n\nVarianță % = (Actual − Buget) / Buget × 100\n\nScopul analizei varianțelor nu este să găsești vinovați, ci să înțelegi **de ce** rezultatele diferă de plan și să decizi dacă e nevoie de o acțiune corectivă. Este instrumentul central al controlului bugetar: fără el, bugetul rămâne un document static, fără valoare de gestiune reală.\n\n# Favorabilă sau nefavorabilă? Depinde de linia bugetară\n\nSemnul varianței nu îți spune automat dacă rezultatul e bun sau rău — depinde dacă analizezi un venit sau o cheltuială:\n\n- **Pentru venituri**: Actual > Buget → varianță **favorabilă (F)** — ai vândut mai mult decât ai planificat. Actual < Buget → varianță **nefavorabilă (N)**.\n- **Pentru cheltuieli**: Actual < Buget → varianță **favorabilă (F)** — ai cheltuit mai puțin decât ai planificat. Actual > Buget → varianță **nefavorabilă (N)**.\n\nAtenție: „favorabil” nu înseamnă automat „bine”. O varianță favorabilă la cheltuieli de marketing (ai cheltuit mai puțin) poate ascunde o problemă — poate ai amânat campanii esențiale, iar efectul negativ se va vedea peste două trimestre în varianța de venituri. La fel, o varianță favorabilă mare la venituri poate însemna doar că bugetul inițial a fost subestimat, nu neapărat că echipa de vânzări a performat excepțional.\n\nDe aceea, orice varianță — favorabilă sau nefavorabilă — trebuie explicată, nu doar raportată.\n\n# Cauzele variațiilor: preț vs. volum vs. timing\n\nCa manager non-financiar, e important să distingi tipurile de cauze din spatele unei varianțe, pentru a ști ce acțiune corectivă are sens:\n\n1. **Varianță de preț (rate variance)** — se schimbă prețul unitar (de vânzare sau de achiziție), cantitatea rămâne conform planului. Exemplu: furnizorul de materie primă a scumpit produsul cu 8%.\n2. **Varianță de volum (volume variance)** — se schimbă cantitatea vândută sau consumată, prețul unitar rămâne conform planului. Exemplu: ai vândut cu 15% mai multe unități decât planificat.\n3. **Varianță de timing (calendar variance)** — suma totală anuală va fi conform bugetului, dar banii sosesc sau se cheltuiesc în altă lună decât cea planificată. Exemplu: un contract semnat în februarie în loc de ianuarie.\n4. **Varianță structurală** — cauzată de o schimbare reală și permanentă în activitate (pierderea unui client mare, o nouă linie de produs), nu de fluctuații temporare.\n\nSepararea preț/volum este utilă mai ales la costuri: dacă un cost de producție a crescut, vrei să știi dacă vina e a prețului materiei prime (negociere cu furnizorul) sau a volumului consumat (eficiență de proces, risipă).\n\n# Procesul de analiză a varianțelor în practică\n\nUn proces eficient de analiză a varianțelor urmează, de regulă, patru pași:\n\n1. **Calculează varianțele** pentru fiecare linie bugetară (valoare absolută și procentuală), de obicei lunar.\n2. **Aplică un prag de materialitate** — nu investighezi orice abatere. O practică frecventă în companiile din România este să investighezi doar varianțele care depășesc simultan un prag procentual (de exemplu ±10%) ȘI un prag valoric (de exemplu 5.000 lei), pentru a evita timpul pierdut pe abateri nesemnificative la linii mici.\n3. **Identifică root cause-ul** (cauza reală) — discuți cu responsabilul de buget al departamentului respectiv; distingi între preț, volum, timing sau cauză structurală, conform blocului anterior.\n4. **Decide și documentează acțiunea corectivă** — renegocierea unui contract, revizuirea forecast-ului pentru restul anului, realocarea bugetului între linii sau, dacă varianța e structurală, actualizarea bugetului anual (reforecast).\n\nAcest ciclu se repetă lunar sau trimestrial, în ședințe de tip *budget review*, unde fiecare responsabil de linie bugetară își prezintă și explică varianțele către management.\n\n## Exemplu: Analiza varianțelor pentru un SRL de distribuție\nO firmă de distribuție analizează execuția bugetului pe luna trecută:\n\n| Linie bugetară | Buget (lei) | Actual (lei) | Varianță (lei) | Varianță % | Tip |\n|---|---|---|---|---|---|\n| Venituri | 500.000 | 540.000 | +40.000 | +8,0% | F |\n| Costul mărfurilor vândute | 300.000 | 335.000 | +35.000 | +11,7% | N |\n| Cheltuieli personal | 80.000 | 78.000 | −2.000 | −2,5% | F |\n| Cheltuieli marketing | 25.000 | 15.000 | −10.000 | −40,0% | F |\n| Cheltuieli administrative | 20.000 | 22.000 | +2.000 | +10,0% | N |\n| **Profit operațional** | **75.000** | **90.000** | **+15.000** | **+20,0%** | **F** |\n\nLa prima vedere, rezultatul e excelent: profitul operațional e cu 20% peste buget. Dar o analiză pe linii arată nuanțe importante:\n\n- Costul mărfurilor vândute a crescut cu 11,7%, mai repede decât veniturile (8%) — merită investigat dacă furnizorii au scumpit produsele sau dacă mixul de produse vândute s-a schimbat spre marje mai mici.\n- Cheltuiala de marketing e cu 40% sub buget — o varianță „favorabilă” din perspectivă contabilă, dar riscantă pe termen mediu, pentru că poate reduce vânzările viitoare.\n\nConcluzie: profitul mai mare nu înseamnă că nu există nimic de investigat.\n\n## Exemplu: Descompunerea unei varianțe de cost în preț și volum\nO firmă de producție bugetase pentru materia primă X: 10.000 kg la 12 lei/kg = 120.000 lei. La final de lună, situația reală a fost: 11.000 kg consumați la 13 lei/kg = 143.000 lei.\n\n**Varianță totală** = 143.000 − 120.000 = 23.000 lei (N)\n\nAceastă varianță se descompune astfel:\n\n- **Varianță de preț** = Cantitate actuală × (Preț actual − Preț bugetat) = 11.000 × (13 − 12) = **11.000 lei (N)**\n- **Varianță de volum** = Preț bugetat × (Cantitate actuală − Cantitate bugetată) = 12 × (11.000 − 10.000) = **12.000 lei (N)**\n\nVerificare: 11.000 + 12.000 = 23.000 lei, egal cu varianța totală.\n\nInterpretare pentru manager: aproape jumătate din depășire (11.000 lei) vine din scumpirea materiei prime — subiect pentru negocierea cu furnizorul sau căutarea unei alternative. Cealaltă jumătate (12.000 lei) vine din consumul unei cantități mai mari — poate fi un semnal bun (s-a produs mai mult, deci probabil s-a vândut mai mult) sau un semnal de risipă/pierderi în proces. Fără această descompunere, ai fi tratat cei 23.000 lei ca pe o singură problemă, în loc de două cauze distincte, cu soluții diferite.\n\n⚠ Nu te opri la varianța totală! Un total de cheltuieli aproape identic cu bugetul poate ascunde varianțe mari și opuse pe linii individuale (o linie mult sub buget poate compensa o altă linie mult peste buget). Analizează întotdeauna varianțele la nivel de linie bugetară, nu doar la nivel agregat — altfel riști să ratezi probleme reale de cost sau de venit.\n\n## Exercițiu\nO firmă de producție are următorul buget lunar pentru departamentul de producție, comparat cu execuția reală:\n\n| Linie bugetară | Buget (lei) | Actual (lei) |\n|---|---|---|\n| Materii prime | 150.000 | 168.000 |\n| Energie electrică | 40.000 | 33.000 |\n| Mentenanță echipamente | 20.000 | 29.000 |\n| **Total cheltuieli producție** | **210.000** | **230.000** |\n\nCerințe:\n1. Calculează varianța în lei și în procent pentru fiecare linie și pentru total.\n2. Clasifică fiecare varianță ca favorabilă (F) sau nefavorabilă (N).\n3. Folosind un prag de materialitate de ±10% ȘI peste 5.000 lei, stabilește ce linii ar trebui investigate prioritar.\n4. Propune câte o posibilă cauză și o acțiune corectivă pentru liniile prioritare.\n\n**Soluție:** **1-2. Varianțe:**\n\n- Materii prime: 168.000 − 150.000 = **+18.000 lei (+12,0%), N**\n- Energie electrică: 33.000 − 40.000 = **−7.000 lei (−17,5%), F**\n- Mentenanță echipamente: 29.000 − 20.000 = **+9.000 lei (+45,0%), N**\n- Total: 230.000 − 210.000 = **+20.000 lei (+9,52%), N**\n\n**3. Linii prioritare (depășesc ±10% ȘI 5.000 lei):**\n\n- Materii prime (+12,0%, 18.000 lei) — prioritar.\n- Mentenanță (+45,0%, 9.000 lei) — prioritar, cea mai mare abatere procentuală.\n- Energie electrică (−17,5%, 7.000 lei) — depășește pragul procentual și cel valoric, deci merită investigată deși e „favorabilă”.\n- Totalul (+9,52%) NU depășește pragul procentual de 10%, deși depășește pragul valoric — exact exemplul din care vezi de ce nu te poți baza doar pe total: varianțe mari și opuse pe linii se compensează parțial la nivel agregat.\n\n**4. Cauze posibile și acțiuni corective:**\n\n- Materii prime: posibilă scumpire de la furnizor sau consum mai mare decât planificat → separă varianța în preț/volum (ca în exemplul anterior) și, dacă e preț, renegociază contractul sau caută ofertă alternativă.\n- Mentenanță: posibilă reparație neplanificată (defecțiune) → verifică dacă a fost un eveniment izolat sau un semnal că planul de mentenanță preventivă e insuficient; dacă e recurent, actualizează bugetul de mentenanță pentru trimestrele următoare.\n- Energie: consumul mai mic poate fi corelat cu un volum de producție sub plan → corelează cu varianța de venituri/producție înainte de a considera acest rezultat pur pozitiv.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "analiza-variantelor-definitie",
+    "md": "# Ce este analiza varianțelor?\n\nAnaliza varianțelor este procesul prin care compari execuția bugetară reală (**Actual**) cu valorile planificate (**Buget**), pentru fiecare linie din bugetul de venituri și cheltuieli. Diferența dintre cele două se numește **varianță** (variance) și reprezintă abaterea de la plan.\n\n**Formula generală:**\n\nVarianță = Actual − Buget\n\nVarianța se exprimă atât în valoare absolută (lei), cât și procentual, pentru a-i evalua semnificația relativă:\n\nVarianță % = (Actual − Buget) / Buget × 100\n\nScopul analizei varianțelor nu este să găsești vinovați, ci să înțelegi **de ce** rezultatele diferă de plan și să decizi dacă e nevoie de o acțiune corectivă. Este instrumentul central al controlului bugetar: fără el, bugetul rămâne un document static, fără valoare de gestiune reală.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "varianta-favorabila-nefavorabila",
+    "md": "# Favorabilă sau nefavorabilă? Depinde de linia bugetară\n\nSemnul varianței nu îți spune automat dacă rezultatul e bun sau rău — depinde dacă analizezi un venit sau o cheltuială:\n\n- **Pentru venituri**: Actual > Buget → varianță **favorabilă (F)** — ai vândut mai mult decât ai planificat. Actual < Buget → varianță **nefavorabilă (N)**.\n- **Pentru cheltuieli**: Actual < Buget → varianță **favorabilă (F)** — ai cheltuit mai puțin decât ai planificat. Actual > Buget → varianță **nefavorabilă (N)**.\n\nAtenție: „favorabil” nu înseamnă automat „bine”. O varianță favorabilă la cheltuieli de marketing (ai cheltuit mai puțin) poate ascunde o problemă — poate ai amânat campanii esențiale, iar efectul negativ se va vedea peste două trimestre în varianța de venituri. La fel, o varianță favorabilă mare la venituri poate însemna doar că bugetul inițial a fost subestimat, nu neapărat că echipa de vânzări a performat excepțional.\n\nDe aceea, orice varianță — favorabilă sau nefavorabilă — trebuie explicată, nu doar raportată.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cauze-variante-pret-volum",
+    "md": "# Cauzele variațiilor: preț vs. volum vs. timing\n\nCa manager non-financiar, e important să distingi tipurile de cauze din spatele unei varianțe, pentru a ști ce acțiune corectivă are sens:\n\n1. **Varianță de preț (rate variance)** — se schimbă prețul unitar (de vânzare sau de achiziție), cantitatea rămâne conform planului. Exemplu: furnizorul de materie primă a scumpit produsul cu 8%.\n2. **Varianță de volum (volume variance)** — se schimbă cantitatea vândută sau consumată, prețul unitar rămâne conform planului. Exemplu: ai vândut cu 15% mai multe unități decât planificat.\n3. **Varianță de timing (calendar variance)** — suma totală anuală va fi conform bugetului, dar banii sosesc sau se cheltuiesc în altă lună decât cea planificată. Exemplu: un contract semnat în februarie în loc de ianuarie.\n4. **Varianță structurală** — cauzată de o schimbare reală și permanentă în activitate (pierderea unui client mare, o nouă linie de produs), nu de fluctuații temporare.\n\nSepararea preț/volum este utilă mai ales la costuri: dacă un cost de producție a crescut, vrei să știi dacă vina e a prețului materiei prime (negociere cu furnizorul) sau a volumului consumat (eficiență de proces, risipă).",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "proces-analiza-variantelor",
+    "md": "# Procesul de analiză a varianțelor în practică\n\nUn proces eficient de analiză a varianțelor urmează, de regulă, patru pași:\n\n1. **Calculează varianțele** pentru fiecare linie bugetară (valoare absolută și procentuală), de obicei lunar.\n2. **Aplică un prag de materialitate** — nu investighezi orice abatere. O practică frecventă în companiile din România este să investighezi doar varianțele care depășesc simultan un prag procentual (de exemplu ±10%) ȘI un prag valoric (de exemplu 5.000 lei), pentru a evita timpul pierdut pe abateri nesemnificative la linii mici.\n3. **Identifică root cause-ul** (cauza reală) — discuți cu responsabilul de buget al departamentului respectiv; distingi între preț, volum, timing sau cauză structurală, conform blocului anterior.\n4. **Decide și documentează acțiunea corectivă** — renegocierea unui contract, revizuirea forecast-ului pentru restul anului, realocarea bugetului între linii sau, dacă varianța e structurală, actualizarea bugetului anual (reforecast).\n\nAcest ciclu se repetă lunar sau trimestrial, în ședințe de tip *budget review*, unde fiecare responsabil de linie bugetară își prezintă și explică varianțele către management.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b4"
+   },
+   {
+    "type": "example",
+    "title": "Analiza varianțelor pentru un SRL de distribuție",
+    "concept_key": "exemplu-tabel-variante-pl",
+    "md": "O firmă de distribuție analizează execuția bugetului pe luna trecută:\n\n| Linie bugetară | Buget (lei) | Actual (lei) | Varianță (lei) | Varianță % | Tip |\n|---|---|---|---|---|---|\n| Venituri | 500.000 | 540.000 | +40.000 | +8,0% | F |\n| Costul mărfurilor vândute | 300.000 | 335.000 | +35.000 | +11,7% | N |\n| Cheltuieli personal | 80.000 | 78.000 | −2.000 | −2,5% | F |\n| Cheltuieli marketing | 25.000 | 15.000 | −10.000 | −40,0% | F |\n| Cheltuieli administrative | 20.000 | 22.000 | +2.000 | +10,0% | N |\n| **Profit operațional** | **75.000** | **90.000** | **+15.000** | **+20,0%** | **F** |\n\nLa prima vedere, rezultatul e excelent: profitul operațional e cu 20% peste buget. Dar o analiză pe linii arată nuanțe importante:\n\n- Costul mărfurilor vândute a crescut cu 11,7%, mai repede decât veniturile (8%) — merită investigat dacă furnizorii au scumpit produsele sau dacă mixul de produse vândute s-a schimbat spre marje mai mici.\n- Cheltuiala de marketing e cu 40% sub buget — o varianță „favorabilă” din perspectivă contabilă, dar riscantă pe termen mediu, pentru că poate reduce vânzările viitoare.\n\nConcluzie: profitul mai mare nu înseamnă că nu există nimic de investigat.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b5"
+   },
+   {
+    "type": "example",
+    "title": "Descompunerea unei varianțe de cost în preț și volum",
+    "concept_key": "exemplu-varianta-pret-volum",
+    "md": "O firmă de producție bugetase pentru materia primă X: 10.000 kg la 12 lei/kg = 120.000 lei. La final de lună, situația reală a fost: 11.000 kg consumați la 13 lei/kg = 143.000 lei.\n\n**Varianță totală** = 143.000 − 120.000 = 23.000 lei (N)\n\nAceastă varianță se descompune astfel:\n\n- **Varianță de preț** = Cantitate actuală × (Preț actual − Preț bugetat) = 11.000 × (13 − 12) = **11.000 lei (N)**\n- **Varianță de volum** = Preț bugetat × (Cantitate actuală − Cantitate bugetată) = 12 × (11.000 − 10.000) = **12.000 lei (N)**\n\nVerificare: 11.000 + 12.000 = 23.000 lei, egal cu varianța totală.\n\nInterpretare pentru manager: aproape jumătate din depășire (11.000 lei) vine din scumpirea materiei prime — subiect pentru negocierea cu furnizorul sau căutarea unei alternative. Cealaltă jumătate (12.000 lei) vine din consumul unei cantități mai mari — poate fi un semnal bun (s-a produs mai mult, deci probabil s-a vândut mai mult) sau un semnal de risipă/pierderi în proces. Fără această descompunere, ai fi tratat cei 23.000 lei ca pe o singură problemă, în loc de două cauze distincte, cu soluții diferite.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu te opri la varianța totală! Un total de cheltuieli aproape identic cu bugetul poate ascunde varianțe mari și opuse pe linii individuale (o linie mult sub buget poate compensa o altă linie mult peste buget). Analizează întotdeauna varianțele la nivel de linie bugetară, nu doar la nivel agregat — altfel riști să ratezi probleme reale de cost sau de venit.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă de producție are următorul buget lunar pentru departamentul de producție, comparat cu execuția reală:\n\n| Linie bugetară | Buget (lei) | Actual (lei) |\n|---|---|---|\n| Materii prime | 150.000 | 168.000 |\n| Energie electrică | 40.000 | 33.000 |\n| Mentenanță echipamente | 20.000 | 29.000 |\n| **Total cheltuieli producție** | **210.000** | **230.000** |\n\nCerințe:\n1. Calculează varianța în lei și în procent pentru fiecare linie și pentru total.\n2. Clasifică fiecare varianță ca favorabilă (F) sau nefavorabilă (N).\n3. Folosind un prag de materialitate de ±10% ȘI peste 5.000 lei, stabilește ce linii ar trebui investigate prioritar.\n4. Propune câte o posibilă cauză și o acțiune corectivă pentru liniile prioritare.",
+    "solution_md": "**1-2. Varianțe:**\n\n- Materii prime: 168.000 − 150.000 = **+18.000 lei (+12,0%), N**\n- Energie electrică: 33.000 − 40.000 = **−7.000 lei (−17,5%), F**\n- Mentenanță echipamente: 29.000 − 20.000 = **+9.000 lei (+45,0%), N**\n- Total: 230.000 − 210.000 = **+20.000 lei (+9,52%), N**\n\n**3. Linii prioritare (depășesc ±10% ȘI 5.000 lei):**\n\n- Materii prime (+12,0%, 18.000 lei) — prioritar.\n- Mentenanță (+45,0%, 9.000 lei) — prioritar, cea mai mare abatere procentuală.\n- Energie electrică (−17,5%, 7.000 lei) — depășește pragul procentual și cel valoric, deci merită investigată deși e „favorabilă”.\n- Totalul (+9,52%) NU depășește pragul procentual de 10%, deși depășește pragul valoric — exact exemplul din care vezi de ce nu te poți baza doar pe total: varianțe mari și opuse pe linii se compensează parțial la nivel agregat.\n\n**4. Cauze posibile și acțiuni corective:**\n\n- Materii prime: posibilă scumpire de la furnizor sau consum mai mare decât planificat → separă varianța în preț/volum (ca în exemplul anterior) și, dacă e preț, renegociază contractul sau caută ofertă alternativă.\n- Mentenanță: posibilă reparație neplanificată (defecțiune) → verifică dacă a fost un eveniment izolat sau un semnal că planul de mentenanță preventivă e insuficient; dacă e recurent, actualizează bugetul de mentenanță pentru trimestrele următoare.\n- Energie: consumul mai mic poate fi corelat cu un volum de producție sub plan → corelează cu varianța de venituri/producție înainte de a considera acest rezultat pur pozitiv.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă a bugetat cheltuieli cu chiria de 10.000 lei/lună, dar suma reală plătită a fost 12.000 lei. Ce tip de varianță este aceasta?",
+    "choices": [
+     "Favorabilă, pentru că Actual > Buget",
+     "Nefavorabilă, pentru că firma a cheltuit mai mult decât a planificat",
+     "Favorabilă, pentru că este o cheltuială fixă",
+     "Nu se poate determina fără a cunoaște și cantitatea"
+    ],
+    "answer": 1,
+    "explain": "Pentru cheltuieli, o varianță e nefavorabilă atunci când Actual > Buget, adică s-a cheltuit mai mult decât s-a planificat — indiferent dacă e o cheltuială fixă sau variabilă.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă pentru varianța procentuală?",
+    "choices": [
+     "(Buget − Actual) / Actual × 100",
+     "(Actual − Buget) / Buget × 100",
+     "Actual / Buget",
+     "Buget − Actual"
+    ],
+    "answer": 1,
+    "explain": "Varianța procentuală se raportează întotdeauna la valoarea bugetată (planul), pentru a arăta cu cât s-a abătut execuția reală de la plan: (Actual − Buget) / Buget × 100.",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula generală a varianței bugetare?",
+    "back": "Varianță = Actual − Buget (valoare absolută); procentual: (Actual − Buget) / Buget × 100.",
+    "concept_key": "analiza-variantelor-definitie",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când este favorabilă o varianță la o linie de cheltuieli?",
+    "back": "Când Actual < Buget, adică firma a cheltuit mai puțin decât a planificat.",
+    "concept_key": "varianta-favorabila-nefavorabila",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o varianță de preț (rate variance) la costuri?",
+    "back": "Abaterea cauzată de schimbarea prețului unitar, cu cantitatea la nivelul bugetat: Varianță de preț = Cantitate actuală × (Preț actual − Preț bugetat).",
+    "concept_key": "cauze-variante-pret-volum",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o varianță de volum (volume variance) la costuri?",
+    "back": "Abaterea cauzată de schimbarea cantității consumate, cu prețul unitar la nivelul bugetat: Varianță de volum = Preț bugetat × (Cantitate actuală − Cantitate bugetată).",
+    "concept_key": "cauze-variante-pret-volum",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este pragul de materialitate în analiza varianțelor?",
+    "back": "Un prag combinat (procentual, ex. ±10%, ȘI valoric, ex. peste 5.000 lei) sub care o varianță nu se investighează, pentru a concentra efortul de analiză pe abaterile semnificative.",
+    "concept_key": "proces-analiza-variantelor",
+    "blockId": "cmjjuxw1u00bpumkp91halse5-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1365,
+   "flashcards": 5
+  }
+ }
+}

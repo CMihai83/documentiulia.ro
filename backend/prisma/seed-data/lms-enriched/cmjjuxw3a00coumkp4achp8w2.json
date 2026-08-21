@@ -1,0 +1,154 @@
+{
+ "lessonId": "cmjjuxw3a00coumkp4achp8w2",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Planul de Conturi Românesc",
+ "lesson": "Clasa 1 - Capitaluri",
+ "category": "FINANCE_OPS",
+ "content": "# Clasa 1 - Capitaluri\n\nClasa 1 din planul de conturi general (OMFP 1802/2014) grupează toate conturile de **capitaluri** ale unei entități: sursele proprii de finanțare (capital social, prime, rezerve, rezultat) și sursele străine pe termen lung asimilate capitalurilor permanente (provizioane, împrumuturi pe termen lung). Structura pe grupe este:\n\n- **10 – Capital și rezerve**: 101 Capital, 104 Prime de capital, 105 Rezerve din reevaluare, 106 Rezerve, 107 Diferențe de curs valutar din conversie, 108 Interese care nu controlează, 109 Acțiuni proprii.\n- **11 – Rezultatul reportat**: 117.\n- **12 – Rezultatul exercițiului financiar**: 121 Profit sau pierdere, 129 Repartizarea profitului.\n- **14 – Câștiguri sau pierderi legate de instrumentele de capitaluri proprii**: 141, 149.\n- **15 – Provizioane**: 151.\n- **16 – Împrumuturi și datorii asimilate**: 161, 162, 166, 167, 168, 169.\n\nDin punct de vedere al funcției contabile, conturile din Clasa 1 sunt, ca regulă generală, **conturi de pasiv**: se creditează la constituire/majorare și se debitează la diminuare/stingere, iar soldul final creditor apare în Bilanț la Capitaluri proprii (grupele 10, 11, 12, 14) sau la Datorii (grupele 15 și 16, funcție de scadență).\n\nContul 101 «Capital» este contul central al capitalurilor proprii și se dezvoltă pe analitice: **1011 Capital subscris nevărsat** (creanța societății față de asociați pentru aportul promis, neefectuat încă) și **1012 Capital subscris vărsat** (aportul efectiv depus). La constituirea unei societăți, subscrierea se înregistrează 456 «Decontări cu asociații privind capitalul» = 1011, iar la depunerea efectivă a aportului se face transferul 1011 = 1012, concomitent cu încasarea propriu-zisă (5121 = 456 pentru aport în numerar, sau conturi de imobilizări/stocuri = 456 pentru aport în natură).\n\nContul 104 «Prime de capital» evidențiază diferența favorabilă dintre valoarea de emisiune și valoarea nominală a acțiunilor/părților sociale, la majorări de capital prin noi aporturi (1041 Prime de emisiune), fuziuni/divizări (1042), aporturi ulterioare constituirii (1043) sau conversia obligațiunilor în acțiuni (1044). Majorarea capitalului se poate face și prin încorporarea rezervelor sau a primelor de capital (106/104 = 1012), fără intrare de numerar nou.\n\nContul 106 «Rezerve» reflectă sumele reținute din profit sau din alte surse, cu destinație specifică: **1061 Rezerve legale** – obligatorii prin lege pentru toate societățile comerciale, constituite anual din minimum 5% din profitul contabil brut, până când rezerva atinge minimum 20% din capitalul social subscris și vărsat (Legea societăților nr. 31/1990, republicată, art. 183); **1063 Rezerve statutare sau contractuale** – stabilite prin actul constitutiv; **1068 Alte rezerve** – constituite din profitul net rămas, la decizia AGA.\n\nContul 117 «Rezultatul reportat» preia, până la aprobarea de către Adunarea Generală a modului de repartizare, profitul net al exercițiului anterior (analitic 1171) sau pierderea neacoperită; tot aici se înregistrează și corecțiile de erori contabile din exerciții anterioare (analitic 1174), când eroarea este semnificativă. La închiderea exercițiului, soldul contului 121 «Profit sau pierdere» se transferă în 117; ulterior, pe baza hotărârii AGA, sumele din 117 se repartizează spre 1061 (rezervă legală), alte rezerve sau dividende (457).\n\nUn **provizion** (cont 151) este o datorie cu exigibilitate sau valoare incertă, spre deosebire de o datorie obișnuită, a cărei sumă și scadență sunt cunoscute cu certitudine. Conform OMFP 1802/2014, recunoașterea unui provizion presupune îndeplinirea **cumulativă** a trei condiții: (1) entitatea are o obligație curentă (legală sau implicită) generată de un eveniment trecut; (2) este probabil ca o ieșire de resurse să fie necesară pentru stingerea obligației; (3) suma poate fi estimată în mod credibil. Dacă vreuna dintre condiții lipsește, nu se constituie provizion, ci cel mult se prezintă informația în notele explicative, ca datorie contingentă.\n\nAnaliticele uzuale ale contului 151 sunt: 1511 Provizioane pentru litigii, 1512 Provizioane pentru garanții acordate clienților, 1513 Provizioane pentru dezafectare imobilizări corporale, 1514 Provizioane pentru restructurare, 1515 Provizioane pentru pensii și obligații similare, 1518 Alte provizioane. Constituirea se înregistrează prin cheltuială (6812 = 151), iar diminuarea sau anularea, prin venit (151 = 7812). Provizioanele se reanalizează la fiecare dată a bilanțului și se ajustează la cea mai bună estimare curentă.\n\nGrupa 16 «Împrumuturi și datorii asimilate» cuprinde sursele de finanțare externă cu scadență de regulă mai mare de un an, asimilate capitalurilor permanente: 161 Împrumuturi din emisiuni de obligațiuni, 162 Credite bancare pe termen lung (analitice pe tipuri de garanții: 1621 credite interne, 1623-1627 credite externe/guvernamentale), 166 Datorii privind imobilizările financiare, 167 Alte împrumuturi și datorii asimilate, 168 Dobânzi aferente împrumuturilor din grupa 16, respectiv 169 Prime privind rambursarea obligațiunilor. Dobânda se înregistrează distinct de principal (666 «Cheltuieli privind dobânzile» = 168), pe măsura angajării ei în timp, indiferent de data plății efective. La întocmirea situațiilor financiare, partea din împrumuturile pe termen lung scadentă în anul următor se prezintă distinct în bilanț, la datorii curente, deși contabil rămâne evidențiată în conturile din grupa 16 până la rambursare.\n\n## Exemplu: Constituirea și vărsarea capitalului social la înființarea unui SRL\nSC Exemplu SRL se înființează cu doi asociați, care subscriu un capital social de 20.000 lei (200 părți sociale × 100 lei), aport integral în numerar.\n\n1. La subscriere (semnarea actului constitutiv): `456 «Decontări cu asociații privind capitalul» = 1011 «Capital subscris nevărsat» — 20.000 lei`\n2. La depunerea efectivă a aportului în contul bancar deschis la înmatriculare: `5121 «Conturi la bănci în lei» = 456 — 20.000 lei`\n3. Concomitent, transferul din capital nevărsat în vărsat: `1011 = 1012 «Capital subscris vărsat» — 20.000 lei`\n\nDupă înmatricularea la Registrul Comerțului, capitalul social apare integral în soldul creditor al contului 1012, egal cu cel din actul constitutiv.\n\n## Exemplu: Repartizarea profitului net la rezerva legală\nSC Exemplu SRL are un capital social de 20.000 lei și o rezervă legală deja constituită de 3.500 lei. La 31 decembrie 2025, exercițiul se închide cu un profit net de 150.000 lei.\n\nPlafonul legal al rezervei este 20% × 20.000 lei = 4.000 lei. Cota anuală obligatorie este 5% din profitul brut, adică 5% × 150.000 lei = 7.500 lei, dar societatea nu poate depăși plafonul: rezerva mai poate crește doar cu 4.000 − 3.500 = 500 lei.\n\n1. Închiderea rezultatului exercițiului: `121 «Profit sau pierdere» = 117 «Rezultatul reportat» — 150.000 lei`\n2. După aprobarea situațiilor financiare de AGA, repartizarea la rezerva legală: `117 = 1061 «Rezerve legale» — 500 lei`\n\nDiferența de 149.500 lei rămâne în contul 117 până la o nouă hotărâre a AGA (alte rezerve, dividende sau reportare pentru finanțarea activității).\n\n## Exemplu: Constituirea și anularea unui provizion pentru litigiu\nLa 31 decembrie 2025, SC Exemplu SRL are un litigiu deschis cu un client, nefinalizat. Avocatul societății estimează o probabilitate ridicată de pierdere a procesului, cu o despăgubire estimată la 40.000 lei.\n\n1. Constituirea provizionului la închiderea exercițiului: `6812 «Cheltuieli de exploatare privind provizioanele» = 1511 «Provizioane pentru litigii» — 40.000 lei`\n\nÎn martie 2026, instanța pronunță hotărârea definitivă: societatea este obligată la plata a 45.000 lei.\n\n2. Plata efectivă a despăgubirii: `658 «Alte cheltuieli de exploatare» = 5121 «Conturi la bănci în lei» — 45.000 lei`\n3. Anularea provizionului devenit fără obiect: `1511 = 7812 «Venituri din provizioane» — 40.000 lei`\n\nDiferența de 5.000 lei față de estimarea inițială afectează rezultatul exercițiului 2026, nu pe cel din 2025 — provizionul reflectă doar cea mai bună estimare disponibilă la data bilanțului, nu suma finală.\n\n> Temei legal: OMFP 1802/2014 Secțiunea 8.7 (pct. 375-378) – Provizioane (în vigoare de la 2015-01-01)\nReglementările contabile aprobate prin OMFP 1802/2014, aplicabile situațiilor financiare anuale începând cu exercițiul financiar 2015, stabilesc criteriile cumulative de recunoaștere a provizioanelor (obligație curentă generată de un eveniment trecut, probabilitate a ieșirii de resurse, estimare fiabilă) și interzic constituirea de provizioane pentru pierderi viitoare din activitatea curentă sau pentru cheltuieli fără legătură cu un eveniment trecut deja produs.\n\n⚠ Nu confunda provizioanele (grupa 15, incertitudine asupra sumei/momentului) cu ajustările pentru depreciere (grupele 29, 39, 49, 59 — corectează valoarea unui activ) sau cu datoriile curente certe (grupele 40, 41, 44 — sumă și scadență cunoscute). Constituirea de provizioane fără o bază reală (de exemplu, pentru „netezirea” rezultatului între exerciții) contravine principiului prudenței și poate fi respinsă de auditor sau la o verificare fiscală.\n\n## Exercițiu\nSC Exemplu SRL contractează la 1 martie 2026 un credit bancar pe termen lung de 60.000 lei, pe 3 ani, cu dobândă anuală fixă de 9%.\n\nCerințe:\na) Înregistrează încasarea creditului.\nb) Calculează și înregistrează dobânda aferentă lunii martie 2026.\nc) Știind că firma achită prima rată anuală de capital (20.000 lei) plus dobânda cumulată pe 12 luni la 1 martie 2027, înregistrează plata (simplificare didactică: sold constant pe tot anul).\n\n**Soluție:** a) Încasarea creditului: `5121 «Conturi la bănci în lei» = 1621 «Credite bancare pe termen lung» — 60.000 lei`\n\nb) Dobânda lunii martie: 60.000 × 9% / 12 = 450 lei → `666 «Cheltuieli privind dobânzile» = 1682 «Dobânzi aferente creditelor bancare pe termen lung» — 450 lei`\n\nc) Dobânda anuală totală: 60.000 × 9% = 5.400 lei.\n- Plata ratei de capital: `1621 = 5121 — 20.000 lei`\n- Plata dobânzii cumulate: `1682 = 5121 — 5.400 lei`\n\nNotă: în practică, dobânda se înregistrează lunar pe măsură ce se calculează (principiul contabilității de angajamente); la plată se stinge doar soldul deja acumulat în 1682, nu se recalculează retroactiv.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "clasa-1-capitaluri-structura",
+    "md": "Clasa 1 din planul de conturi general (OMFP 1802/2014) grupează toate conturile de **capitaluri** ale unei entități: sursele proprii de finanțare (capital social, prime, rezerve, rezultat) și sursele străine pe termen lung asimilate capitalurilor permanente (provizioane, împrumuturi pe termen lung). Structura pe grupe este:\n\n- **10 – Capital și rezerve**: 101 Capital, 104 Prime de capital, 105 Rezerve din reevaluare, 106 Rezerve, 107 Diferențe de curs valutar din conversie, 108 Interese care nu controlează, 109 Acțiuni proprii.\n- **11 – Rezultatul reportat**: 117.\n- **12 – Rezultatul exercițiului financiar**: 121 Profit sau pierdere, 129 Repartizarea profitului.\n- **14 – Câștiguri sau pierderi legate de instrumentele de capitaluri proprii**: 141, 149.\n- **15 – Provizioane**: 151.\n- **16 – Împrumuturi și datorii asimilate**: 161, 162, 166, 167, 168, 169.\n\nDin punct de vedere al funcției contabile, conturile din Clasa 1 sunt, ca regulă generală, **conturi de pasiv**: se creditează la constituire/majorare și se debitează la diminuare/stingere, iar soldul final creditor apare în Bilanț la Capitaluri proprii (grupele 10, 11, 12, 14) sau la Datorii (grupele 15 și 16, funcție de scadență).",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "capital-social-si-prime",
+    "md": "Contul 101 «Capital» este contul central al capitalurilor proprii și se dezvoltă pe analitice: **1011 Capital subscris nevărsat** (creanța societății față de asociați pentru aportul promis, neefectuat încă) și **1012 Capital subscris vărsat** (aportul efectiv depus). La constituirea unei societăți, subscrierea se înregistrează 456 «Decontări cu asociații privind capitalul» = 1011, iar la depunerea efectivă a aportului se face transferul 1011 = 1012, concomitent cu încasarea propriu-zisă (5121 = 456 pentru aport în numerar, sau conturi de imobilizări/stocuri = 456 pentru aport în natură).\n\nContul 104 «Prime de capital» evidențiază diferența favorabilă dintre valoarea de emisiune și valoarea nominală a acțiunilor/părților sociale, la majorări de capital prin noi aporturi (1041 Prime de emisiune), fuziuni/divizări (1042), aporturi ulterioare constituirii (1043) sau conversia obligațiunilor în acțiuni (1044). Majorarea capitalului se poate face și prin încorporarea rezervelor sau a primelor de capital (106/104 = 1012), fără intrare de numerar nou.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "rezerve-si-rezultat-reportat",
+    "md": "Contul 106 «Rezerve» reflectă sumele reținute din profit sau din alte surse, cu destinație specifică: **1061 Rezerve legale** – obligatorii prin lege pentru toate societățile comerciale, constituite anual din minimum 5% din profitul contabil brut, până când rezerva atinge minimum 20% din capitalul social subscris și vărsat (Legea societăților nr. 31/1990, republicată, art. 183); **1063 Rezerve statutare sau contractuale** – stabilite prin actul constitutiv; **1068 Alte rezerve** – constituite din profitul net rămas, la decizia AGA.\n\nContul 117 «Rezultatul reportat» preia, până la aprobarea de către Adunarea Generală a modului de repartizare, profitul net al exercițiului anterior (analitic 1171) sau pierderea neacoperită; tot aici se înregistrează și corecțiile de erori contabile din exerciții anterioare (analitic 1174), când eroarea este semnificativă. La închiderea exercițiului, soldul contului 121 «Profit sau pierdere» se transferă în 117; ulterior, pe baza hotărârii AGA, sumele din 117 se repartizează spre 1061 (rezervă legală), alte rezerve sau dividende (457).",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "provizioane-grupa-15",
+    "md": "Un **provizion** (cont 151) este o datorie cu exigibilitate sau valoare incertă, spre deosebire de o datorie obișnuită, a cărei sumă și scadență sunt cunoscute cu certitudine. Conform OMFP 1802/2014, recunoașterea unui provizion presupune îndeplinirea **cumulativă** a trei condiții: (1) entitatea are o obligație curentă (legală sau implicită) generată de un eveniment trecut; (2) este probabil ca o ieșire de resurse să fie necesară pentru stingerea obligației; (3) suma poate fi estimată în mod credibil. Dacă vreuna dintre condiții lipsește, nu se constituie provizion, ci cel mult se prezintă informația în notele explicative, ca datorie contingentă.\n\nAnaliticele uzuale ale contului 151 sunt: 1511 Provizioane pentru litigii, 1512 Provizioane pentru garanții acordate clienților, 1513 Provizioane pentru dezafectare imobilizări corporale, 1514 Provizioane pentru restructurare, 1515 Provizioane pentru pensii și obligații similare, 1518 Alte provizioane. Constituirea se înregistrează prin cheltuială (6812 = 151), iar diminuarea sau anularea, prin venit (151 = 7812). Provizioanele se reanalizează la fiecare dată a bilanțului și se ajustează la cea mai bună estimare curentă.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "imprumuturi-datorii-termen-lung",
+    "md": "Grupa 16 «Împrumuturi și datorii asimilate» cuprinde sursele de finanțare externă cu scadență de regulă mai mare de un an, asimilate capitalurilor permanente: 161 Împrumuturi din emisiuni de obligațiuni, 162 Credite bancare pe termen lung (analitice pe tipuri de garanții: 1621 credite interne, 1623-1627 credite externe/guvernamentale), 166 Datorii privind imobilizările financiare, 167 Alte împrumuturi și datorii asimilate, 168 Dobânzi aferente împrumuturilor din grupa 16, respectiv 169 Prime privind rambursarea obligațiunilor. Dobânda se înregistrează distinct de principal (666 «Cheltuieli privind dobânzile» = 168), pe măsura angajării ei în timp, indiferent de data plății efective. La întocmirea situațiilor financiare, partea din împrumuturile pe termen lung scadentă în anul următor se prezintă distinct în bilanț, la datorii curente, deși contabil rămâne evidențiată în conturile din grupa 16 până la rambursare.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b5"
+   },
+   {
+    "type": "example",
+    "title": "Constituirea și vărsarea capitalului social la înființarea unui SRL",
+    "concept_key": "exemplu-constituire-capital-social",
+    "md": "SC Exemplu SRL se înființează cu doi asociați, care subscriu un capital social de 20.000 lei (200 părți sociale × 100 lei), aport integral în numerar.\n\n1. La subscriere (semnarea actului constitutiv): `456 «Decontări cu asociații privind capitalul» = 1011 «Capital subscris nevărsat» — 20.000 lei`\n2. La depunerea efectivă a aportului în contul bancar deschis la înmatriculare: `5121 «Conturi la bănci în lei» = 456 — 20.000 lei`\n3. Concomitent, transferul din capital nevărsat în vărsat: `1011 = 1012 «Capital subscris vărsat» — 20.000 lei`\n\nDupă înmatricularea la Registrul Comerțului, capitalul social apare integral în soldul creditor al contului 1012, egal cu cel din actul constitutiv.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b6"
+   },
+   {
+    "type": "example",
+    "title": "Repartizarea profitului net la rezerva legală",
+    "concept_key": "exemplu-repartizare-profit-rezerva-legala",
+    "md": "SC Exemplu SRL are un capital social de 20.000 lei și o rezervă legală deja constituită de 3.500 lei. La 31 decembrie 2025, exercițiul se închide cu un profit net de 150.000 lei.\n\nPlafonul legal al rezervei este 20% × 20.000 lei = 4.000 lei. Cota anuală obligatorie este 5% din profitul brut, adică 5% × 150.000 lei = 7.500 lei, dar societatea nu poate depăși plafonul: rezerva mai poate crește doar cu 4.000 − 3.500 = 500 lei.\n\n1. Închiderea rezultatului exercițiului: `121 «Profit sau pierdere» = 117 «Rezultatul reportat» — 150.000 lei`\n2. După aprobarea situațiilor financiare de AGA, repartizarea la rezerva legală: `117 = 1061 «Rezerve legale» — 500 lei`\n\nDiferența de 149.500 lei rămâne în contul 117 până la o nouă hotărâre a AGA (alte rezerve, dividende sau reportare pentru finanțarea activității).",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b7"
+   },
+   {
+    "type": "example",
+    "title": "Constituirea și anularea unui provizion pentru litigiu",
+    "concept_key": "exemplu-provizion-litigiu",
+    "md": "La 31 decembrie 2025, SC Exemplu SRL are un litigiu deschis cu un client, nefinalizat. Avocatul societății estimează o probabilitate ridicată de pierdere a procesului, cu o despăgubire estimată la 40.000 lei.\n\n1. Constituirea provizionului la închiderea exercițiului: `6812 «Cheltuieli de exploatare privind provizioanele» = 1511 «Provizioane pentru litigii» — 40.000 lei`\n\nÎn martie 2026, instanța pronunță hotărârea definitivă: societatea este obligată la plata a 45.000 lei.\n\n2. Plata efectivă a despăgubirii: `658 «Alte cheltuieli de exploatare» = 5121 «Conturi la bănci în lei» — 45.000 lei`\n3. Anularea provizionului devenit fără obiect: `1511 = 7812 «Venituri din provizioane» — 40.000 lei`\n\nDiferența de 5.000 lei față de estimarea inițială afectează rezultatul exercițiului 2026, nu pe cel din 2025 — provizionul reflectă doar cea mai bună estimare disponibilă la data bilanțului, nu suma finală.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b8"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Secțiunea 8.7 (pct. 375-378) – Provizioane",
+    "effective": "2015-01-01",
+    "md": "Reglementările contabile aprobate prin OMFP 1802/2014, aplicabile situațiilor financiare anuale începând cu exercițiul financiar 2015, stabilesc criteriile cumulative de recunoaștere a provizioanelor (obligație curentă generată de un eveniment trecut, probabilitate a ieșirii de resurse, estimare fiabilă) și interzic constituirea de provizioane pentru pierderi viitoare din activitatea curentă sau pentru cheltuieli fără legătură cu un eveniment trecut deja produs.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b9"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda provizioanele (grupa 15, incertitudine asupra sumei/momentului) cu ajustările pentru depreciere (grupele 29, 39, 49, 59 — corectează valoarea unui activ) sau cu datoriile curente certe (grupele 40, 41, 44 — sumă și scadență cunoscute). Constituirea de provizioane fără o bază reală (de exemplu, pentru „netezirea” rezultatului între exerciții) contravine principiului prudenței și poate fi respinsă de auditor sau la o verificare fiscală.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b10"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Exemplu SRL contractează la 1 martie 2026 un credit bancar pe termen lung de 60.000 lei, pe 3 ani, cu dobândă anuală fixă de 9%.\n\nCerințe:\na) Înregistrează încasarea creditului.\nb) Calculează și înregistrează dobânda aferentă lunii martie 2026.\nc) Știind că firma achită prima rată anuală de capital (20.000 lei) plus dobânda cumulată pe 12 luni la 1 martie 2027, înregistrează plata (simplificare didactică: sold constant pe tot anul).",
+    "solution_md": "a) Încasarea creditului: `5121 «Conturi la bănci în lei» = 1621 «Credite bancare pe termen lung» — 60.000 lei`\n\nb) Dobânda lunii martie: 60.000 × 9% / 12 = 450 lei → `666 «Cheltuieli privind dobânzile» = 1682 «Dobânzi aferente creditelor bancare pe termen lung» — 450 lei`\n\nc) Dobânda anuală totală: 60.000 × 9% = 5.400 lei.\n- Plata ratei de capital: `1621 = 5121 — 20.000 lei`\n- Plata dobânzii cumulate: `1682 = 5121 — 5.400 lei`\n\nNotă: în practică, dobânda se înregistrează lunar pe măsură ce se calculează (principiul contabilității de angajamente); la plată se stinge doar soldul deja acumulat în 1682, nu se recalculează retroactiv.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care cont din Clasa 1 evidențiază rezerva legală constituită obligatoriu conform Legii 31/1990?",
+    "choices": [
+     "1061 Rezerve legale",
+     "1063 Rezerve statutare sau contractuale",
+     "1068 Alte rezerve",
+     "1041 Prime de emisiune"
+    ],
+    "answer": 0,
+    "explain": "Rezerva legală (1061) este singura rezervă obligatorie prin lege pentru toate societățile, spre deosebire de rezervele statutare (1063, stabilite prin actul constitutiv) sau alte rezerve (1068, la decizia AGA).",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b12"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele NU este o condiție necesară pentru recunoașterea unui provizion, conform OMFP 1802/2014?",
+    "choices": [
+     "Există o obligație curentă (legală sau implicită) generată de un eveniment trecut",
+     "Este probabil ca o ieșire de resurse să fie necesară pentru stingerea obligației",
+     "Suma poate fi estimată în mod credibil",
+     "Suma trebuie să fie exactă și cunoscută cu certitudine"
+    ],
+    "answer": 3,
+    "explain": "Provizioanele sunt prin definiție estimări; incertitudinea asupra sumei sau momentului este exact ceea ce le diferențiază de o datorie certă. Dacă suma ar fi cunoscută cu certitudine, s-ar înregistra o datorie, nu un provizion.",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este pragul legal al rezervei legale față de capitalul social?",
+    "back": "Se constituie anual minimum 5% din profitul brut, până când rezerva atinge minimum 20% din capitalul social subscris și vărsat (Legea 31/1990, art. 183).",
+    "concept_key": "rezerva-legala-prag",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont evidențiază capitalul social vărsat efectiv de asociați?",
+    "back": "Contul 1012 «Capital subscris vărsat».",
+    "concept_key": "cont-1012-capital-varsat",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 3 condiții cumulative pentru recunoașterea unui provizion?",
+    "back": "Obligație curentă (legală/implicită) generată de un eveniment trecut; probabilitate a ieșirii de resurse; estimare fiabilă a sumei.",
+    "concept_key": "conditii-recunoastere-provizion",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între un provizion (cont 151) și o datorie curentă certă?",
+    "back": "Provizionul are incertitudine asupra sumei sau momentului plății; datoria curentă este certă ca sumă și scadență.",
+    "concept_key": "provizion-vs-datorie",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont preia rezultatul exercițiului până la aprobarea repartizării de către AGA?",
+    "back": "Contul 117 «Rezultatul reportat», analitic 1171 pentru profit nerepartizat sau pierdere neacoperită.",
+    "concept_key": "cont-117-rezultat-reportat",
+    "blockId": "cmjjuxw3a00coumkp4achp8w2-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1429,
+   "flashcards": 5
+  }
+ }
+}

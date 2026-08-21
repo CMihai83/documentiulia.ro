@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvuy006rumkpt5hz1x5l",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Framework",
+ "lesson": "Artifacts: Product Backlog",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Artifacts: Product Backlog\n\n**Product Backlog-ul** este, conform Scrum Guide 2020, o listă unică, ordonată, emergentă a tot ceea ce este necesar pentru îmbunătățirea produsului. Este singura sursă de cerințe pentru orice modificare adusă produsului și este deținut și gestionat de **Product Owner**.\n\nUn Product Backlog sănătos respectă acronimul **DEEP**:\n- **D**etaliat corespunzător (Detailed appropriately) — elementele din vârful listei, cele care vor fi lucrate curând, sunt suficient de clare pentru a fi estimate și dezvoltate; cele din partea de jos rămân la nivel de idee generală.\n- **E**stimat (Estimated) — echipa de dezvoltare oferă o estimare de efort pentru fiecare element, de obicei în story points.\n- **E**mergent (Emergent) — backlogul nu este niciodată \"înghețat\"; el evoluează pe măsură ce produsul, piața și înțelegerea echipei se schimbă.\n- **P**rioritizat (Prioritized/Ordered) — elementele sunt ordonate după valoare, risc și dependențe, nu doar listate.\n\nÎn practică, la o firmă românească care implementează un ERP (de exemplu o platformă de facturare și gestiune stocuri pentru o rețea de magazine), Product Backlog-ul conține de la cerințe mari (\"Modul de gestiune stocuri multi-depozit\") până la elemente mici, gata de dezvoltat (\"Ca gestionar de depozit, vreau să pot transfera stoc între două gestiuni printr-un formular, ca să nu mai fac transferul manual în Excel\").\n\n**User story-urile** sunt formatul standard prin care cerințele sunt exprimate în Product Backlog, din perspectiva utilizatorului final. Formatul clasic este:\n\n> Ca [rol], vreau [funcționalitate], pentru ca [beneficiu/valoare].\n\nExemplu: \"Ca operator financiar, vreau să generez automat nota contabilă la validarea unei facturi de achiziție, pentru ca să elimin înregistrările manuale repetitive.\"\n\nPentru ca o user story să fie cu adevărat pregătită pentru dezvoltare, ea trebuie să treacă testul **INVEST**:\n- **I**ndependentă — poate fi dezvoltată și livrată separat de alte story-uri, fără dependențe blocante.\n- **N**egociabilă — detaliile de implementare rămân deschise discuției dintre Product Owner și echipă, nu sunt un contract rigid.\n- **V**aloroasă — aduce valoare vizibilă utilizatorului sau clientului, nu doar valoare tehnică internă.\n- **E**stimabilă — echipa are suficiente informații pentru a estima efortul.\n- **S**mall (mică) — poate fi finalizată în cadrul unui singur Sprint, ideal în câteva zile.\n- **T**estabilă — are criterii de acceptare clare, verificabile (\"Given-When-Then\" este un format frecvent folosit pentru acestea).\n\nO story care nu respectă INVEST (de exemplu, prea mare sau cu dependențe ascunse de alte module) trebuie descompusă (\"split\") înainte de a intra în Sprint Backlog.\n\nEstimarea în Scrum este **relativă**, nu absolută în ore-om, tocmai pentru că oamenii estimează mai bine comparând complexitatea relativă a două elemente decât prezicând timpul exact.\n\n**Story points** exprimă o combinație de efort, complexitate și risc, nu timp calendaristic. Se folosește de regulă scala Fibonacci modificată: 1, 2, 3, 5, 8, 13, 21 (uneori cu valori speciale 0 și ∞ pentru cazuri extreme). Distanța crescândă dintre numere reflectă incertitudinea mai mare pe elementele complexe. Tehnica standard de facilitare este **Planning Poker**: fiecare membru al echipei de dezvoltare alege simultan o carte cu valoarea estimată; diferențele mari de opinie declanșează o discuție scurtă, apoi se re-votează, până la convergență.\n\n**T-shirt sizing** (XS, S, M, L, XL, XXL) este o tehnică complementară, folosită mai ales devreme, la nivel de epic sau la rafinarea inițială a backlogului, când echipa nu are încă suficiente detalii pentru story points precise. Este mai rapidă decât Planning Poker și utilă pentru triaj grosier înainte de a intra în estimarea fină.\n\nImportant: story points **nu se compară între echipe diferite** — un \"5\" pentru o echipă poate însemna cu totul altceva pentru alta, pentru că fiecare echipă își calibrează propria scală prin referință internă (o story cunoscută, deja livrată, servește drept etalon).\n\nOrdonarea Product Backlog-ului este responsabilitatea Product Owner-ului, dar se bazează pe tehnici structurate, nu pe intuiție.\n\n**MoSCoW** este o tehnică simplă de clasificare, utilă mai ales la nivel de release sau MVP (Minimum Viable Product):\n- **M**ust have — fără această funcționalitate, livrarea nu are sens (ex: modulul de facturare fiscală pentru un ERP).\n- **S**hould have — importantă, dar produsul poate fi lansat și fără ea temporar.\n- **C**ould have — de dorit, cu impact mic dacă lipsește.\n- **W**on't have (this time) — exclusă explicit din scopul curent, pentru a evita ambiguitatea.\n\n**WSJF (Weighted Shortest Job First)**, provenită din SAFe (Scaled Agile Framework) dar aplicabilă și în Scrum la scară mai mică, oferă o prioritizare cantitativă bazată pe raportul cost-beneficiu:\n\n> WSJF = Cost of Delay (CoD) / Job Size (Durata/Efortul job-ului)\n\nunde Cost of Delay = Valoare de business + Criticitate în timp + Reducere de risc/Activare de oportunități (fiecare componentă notată, de regulă, pe o scală relativă precum Fibonacci: 1, 2, 3, 5, 8, 13, 20).\n\nLogica este simplă: la efort egal, se face întâi ceea ce costă mai mult dacă e amânat; la cost de amânare egal, se face întâi ce durează mai puțin. WSJF este util când Product Owner-ul trebuie să justifice obiectiv ordinea de prioritizare în fața stakeholderilor (de exemplu, conducerii unei companii care finanțează implementarea ERP).\n\n## Exemplu: Product Backlog pentru implementarea unui modul ERP de facturare\nO companie românească de distribuție implementează un modul nou de facturare electronică în ERP-ul propriu. Product Owner-ul construiește un fragment de Product Backlog astfel:\n\n1. \"Ca operator vânzări, vreau să generez automat factura la confirmarea comenzii, pentru ca să reduc timpul de facturare manuală.\" — story mică, testabilă (criteriu de acceptare: factura conține toate liniile comenzii și TVA calculat corect), estimată la 5 story points.\n2. \"Ca contabil, vreau ca factura să fie transmisă automat către sistemul e-Factura, pentru ca să respect fluxul de raportare fiscală.\" — story dependentă de integrarea API existentă, estimată la 8 story points (complexitate mai mare, risc de integrare).\n3. \"Ca administrator, vreau să configurez serii de facturare separate pe fiecare punct de lucru, pentru ca fiecare gestiune să aibă numerotare proprie.\" — estimată la 3 story points.\n\nObservați cum fiecare story respectă INVEST: sunt mici, testabile prin criterii de acceptare clare și aduc valoare distinctă. Story-ul 2 ar putea fi considerat \"Must have\" în clasificarea MoSCoW, pentru că nerespectarea integrării cu e-Factura ar bloca livrarea legală a produsului.\n\n## Exemplu: Calcul WSJF pentru două funcționalități concurente\nEchipa are de ales ce dezvoltă prima dată din Product Backlog: Funcționalitatea A (\"Export automat balanță de verificare\") sau Funcționalitatea B (\"Dashboard KPI pentru management\"). Echipa notează componentele pe scala Fibonacci (1-20):\n\n**Funcționalitatea A:**\n- Valoare de business = 8\n- Criticitate în timp = 5 (termen legal de raportare apropiat)\n- Reducere de risc = 3\n- Cost of Delay = 8 + 5 + 3 = 16\n- Job Size (efort estimat) = 5\n- WSJF = 16 / 5 = **3,2**\n\n**Funcționalitatea B:**\n- Valoare de business = 13\n- Criticitate în timp = 2\n- Reducere de risc = 1\n- Cost of Delay = 13 + 2 + 1 = 16\n- Job Size = 8\n- WSJF = 16 / 8 = **2,0**\n\nDeși Funcționalitatea B are o valoare de business percepută mai mare (13 față de 8), Funcționalitatea A câștigă prioritatea (WSJF 3,2 > 2,0), pentru că are aceeași urgență agregată dar cere un efort de dezvoltare mai mic — deci generează valoare mai repede pe unitatea de efort investită.\n\n⚠ Cea mai frecventă greșeală este tratarea Product Backlog-ului ca pe un document de cerințe \"înghețat\", scris o singură dată la începutul proiectului. În realitate, backlogul este **emergent**: Product Owner-ul îl rafinează constant (\"backlog refinement\"), adaugă, elimină sau re-estimează elemente pe baza feedback-ului din Sprint Review-uri și din schimbările de context de business. Un backlog nerafinat, plin de elemente vechi și neactuale, semnalează la examenul PSM I o încălcare a rolului Product Owner-ului.\n\n## Exercițiu\nAi următoarele patru elemente candidate pentru Product Backlog-ul unui proiect de digitalizare a arhivei unei firme:\n\nA) \"Scanare automată a facturilor de intrare cu OCR\" — Valoare business=8, Criticitate timp=3, Reducere risc=2, Job Size=8\nB) \"Semnătură electronică pentru documente contractuale\" — Valoare business=5, Criticitate timp=8, Reducere risc=5, Job Size=5\nC) \"Arhivare automată în cloud după 90 de zile\" — Valoare business=3, Criticitate timp=1, Reducere risc=1, Job Size=3\n\nCalculează WSJF pentru fiecare și stabilește ordinea de prioritizare în Product Backlog.\n\n**Soluție:** **A)** Cost of Delay = 8+3+2 = 13; WSJF = 13/8 = 1,63\n**B)** Cost of Delay = 5+8+5 = 18; WSJF = 18/5 = 3,6\n**C)** Cost of Delay = 3+1+1 = 5; WSJF = 5/3 = 1,67\n\nOrdinea de prioritizare (WSJF descrescător): **B (3,6) → C (1,67) → A (1,63)**.\n\nDeși elementul A are cea mai mare valoare de business brută (8), efortul mare de dezvoltare (Job Size=8) îi scade raportul WSJF sub cel al elementului C, care e mic dar rapid de livrat. Elementul B rămâne clar prioritar datorită criticității în timp ridicate (probabil un termen contractual sau de conformitate) combinate cu un efort redus.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "product-backlog-definitie",
+    "md": "**Product Backlog-ul** este, conform Scrum Guide 2020, o listă unică, ordonată, emergentă a tot ceea ce este necesar pentru îmbunătățirea produsului. Este singura sursă de cerințe pentru orice modificare adusă produsului și este deținut și gestionat de **Product Owner**.\n\nUn Product Backlog sănătos respectă acronimul **DEEP**:\n- **D**etaliat corespunzător (Detailed appropriately) — elementele din vârful listei, cele care vor fi lucrate curând, sunt suficient de clare pentru a fi estimate și dezvoltate; cele din partea de jos rămân la nivel de idee generală.\n- **E**stimat (Estimated) — echipa de dezvoltare oferă o estimare de efort pentru fiecare element, de obicei în story points.\n- **E**mergent (Emergent) — backlogul nu este niciodată \"înghețat\"; el evoluează pe măsură ce produsul, piața și înțelegerea echipei se schimbă.\n- **P**rioritizat (Prioritized/Ordered) — elementele sunt ordonate după valoare, risc și dependențe, nu doar listate.\n\nÎn practică, la o firmă românească care implementează un ERP (de exemplu o platformă de facturare și gestiune stocuri pentru o rețea de magazine), Product Backlog-ul conține de la cerințe mari (\"Modul de gestiune stocuri multi-depozit\") până la elemente mici, gata de dezvoltat (\"Ca gestionar de depozit, vreau să pot transfera stoc între două gestiuni printr-un formular, ca să nu mai fac transferul manual în Excel\").",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "user-stories-invest",
+    "md": "**User story-urile** sunt formatul standard prin care cerințele sunt exprimate în Product Backlog, din perspectiva utilizatorului final. Formatul clasic este:\n\n> Ca [rol], vreau [funcționalitate], pentru ca [beneficiu/valoare].\n\nExemplu: \"Ca operator financiar, vreau să generez automat nota contabilă la validarea unei facturi de achiziție, pentru ca să elimin înregistrările manuale repetitive.\"\n\nPentru ca o user story să fie cu adevărat pregătită pentru dezvoltare, ea trebuie să treacă testul **INVEST**:\n- **I**ndependentă — poate fi dezvoltată și livrată separat de alte story-uri, fără dependențe blocante.\n- **N**egociabilă — detaliile de implementare rămân deschise discuției dintre Product Owner și echipă, nu sunt un contract rigid.\n- **V**aloroasă — aduce valoare vizibilă utilizatorului sau clientului, nu doar valoare tehnică internă.\n- **E**stimabilă — echipa are suficiente informații pentru a estima efortul.\n- **S**mall (mică) — poate fi finalizată în cadrul unui singur Sprint, ideal în câteva zile.\n- **T**estabilă — are criterii de acceptare clare, verificabile (\"Given-When-Then\" este un format frecvent folosit pentru acestea).\n\nO story care nu respectă INVEST (de exemplu, prea mare sau cu dependențe ascunse de alte module) trebuie descompusă (\"split\") înainte de a intra în Sprint Backlog.",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "estimare-story-points-tshirt",
+    "md": "Estimarea în Scrum este **relativă**, nu absolută în ore-om, tocmai pentru că oamenii estimează mai bine comparând complexitatea relativă a două elemente decât prezicând timpul exact.\n\n**Story points** exprimă o combinație de efort, complexitate și risc, nu timp calendaristic. Se folosește de regulă scala Fibonacci modificată: 1, 2, 3, 5, 8, 13, 21 (uneori cu valori speciale 0 și ∞ pentru cazuri extreme). Distanța crescândă dintre numere reflectă incertitudinea mai mare pe elementele complexe. Tehnica standard de facilitare este **Planning Poker**: fiecare membru al echipei de dezvoltare alege simultan o carte cu valoarea estimată; diferențele mari de opinie declanșează o discuție scurtă, apoi se re-votează, până la convergență.\n\n**T-shirt sizing** (XS, S, M, L, XL, XXL) este o tehnică complementară, folosită mai ales devreme, la nivel de epic sau la rafinarea inițială a backlogului, când echipa nu are încă suficiente detalii pentru story points precise. Este mai rapidă decât Planning Poker și utilă pentru triaj grosier înainte de a intra în estimarea fină.\n\nImportant: story points **nu se compară între echipe diferite** — un \"5\" pentru o echipă poate însemna cu totul altceva pentru alta, pentru că fiecare echipă își calibrează propria scală prin referință internă (o story cunoscută, deja livrată, servește drept etalon).",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "prioritizare-moscow-wsjf",
+    "md": "Ordonarea Product Backlog-ului este responsabilitatea Product Owner-ului, dar se bazează pe tehnici structurate, nu pe intuiție.\n\n**MoSCoW** este o tehnică simplă de clasificare, utilă mai ales la nivel de release sau MVP (Minimum Viable Product):\n- **M**ust have — fără această funcționalitate, livrarea nu are sens (ex: modulul de facturare fiscală pentru un ERP).\n- **S**hould have — importantă, dar produsul poate fi lansat și fără ea temporar.\n- **C**ould have — de dorit, cu impact mic dacă lipsește.\n- **W**on't have (this time) — exclusă explicit din scopul curent, pentru a evita ambiguitatea.\n\n**WSJF (Weighted Shortest Job First)**, provenită din SAFe (Scaled Agile Framework) dar aplicabilă și în Scrum la scară mai mică, oferă o prioritizare cantitativă bazată pe raportul cost-beneficiu:\n\n> WSJF = Cost of Delay (CoD) / Job Size (Durata/Efortul job-ului)\n\nunde Cost of Delay = Valoare de business + Criticitate în timp + Reducere de risc/Activare de oportunități (fiecare componentă notată, de regulă, pe o scală relativă precum Fibonacci: 1, 2, 3, 5, 8, 13, 20).\n\nLogica este simplă: la efort egal, se face întâi ceea ce costă mai mult dacă e amânat; la cost de amânare egal, se face întâi ce durează mai puțin. WSJF este util când Product Owner-ul trebuie să justifice obiectiv ordinea de prioritizare în fața stakeholderilor (de exemplu, conducerii unei companii care finanțează implementarea ERP).",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b4"
+   },
+   {
+    "type": "example",
+    "title": "Product Backlog pentru implementarea unui modul ERP de facturare",
+    "concept_key": "user-stories-invest",
+    "md": "O companie românească de distribuție implementează un modul nou de facturare electronică în ERP-ul propriu. Product Owner-ul construiește un fragment de Product Backlog astfel:\n\n1. \"Ca operator vânzări, vreau să generez automat factura la confirmarea comenzii, pentru ca să reduc timpul de facturare manuală.\" — story mică, testabilă (criteriu de acceptare: factura conține toate liniile comenzii și TVA calculat corect), estimată la 5 story points.\n2. \"Ca contabil, vreau ca factura să fie transmisă automat către sistemul e-Factura, pentru ca să respect fluxul de raportare fiscală.\" — story dependentă de integrarea API existentă, estimată la 8 story points (complexitate mai mare, risc de integrare).\n3. \"Ca administrator, vreau să configurez serii de facturare separate pe fiecare punct de lucru, pentru ca fiecare gestiune să aibă numerotare proprie.\" — estimată la 3 story points.\n\nObservați cum fiecare story respectă INVEST: sunt mici, testabile prin criterii de acceptare clare și aduc valoare distinctă. Story-ul 2 ar putea fi considerat \"Must have\" în clasificarea MoSCoW, pentru că nerespectarea integrării cu e-Factura ar bloca livrarea legală a produsului.",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calcul WSJF pentru două funcționalități concurente",
+    "concept_key": "prioritizare-moscow-wsjf",
+    "md": "Echipa are de ales ce dezvoltă prima dată din Product Backlog: Funcționalitatea A (\"Export automat balanță de verificare\") sau Funcționalitatea B (\"Dashboard KPI pentru management\"). Echipa notează componentele pe scala Fibonacci (1-20):\n\n**Funcționalitatea A:**\n- Valoare de business = 8\n- Criticitate în timp = 5 (termen legal de raportare apropiat)\n- Reducere de risc = 3\n- Cost of Delay = 8 + 5 + 3 = 16\n- Job Size (efort estimat) = 5\n- WSJF = 16 / 5 = **3,2**\n\n**Funcționalitatea B:**\n- Valoare de business = 13\n- Criticitate în timp = 2\n- Reducere de risc = 1\n- Cost of Delay = 13 + 2 + 1 = 16\n- Job Size = 8\n- WSJF = 16 / 8 = **2,0**\n\nDeși Funcționalitatea B are o valoare de business percepută mai mare (13 față de 8), Funcționalitatea A câștigă prioritatea (WSJF 3,2 > 2,0), pentru că are aceeași urgență agregată dar cere un efort de dezvoltare mai mic — deci generează valoare mai repede pe unitatea de efort investită.",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală este tratarea Product Backlog-ului ca pe un document de cerințe \"înghețat\", scris o singură dată la începutul proiectului. În realitate, backlogul este **emergent**: Product Owner-ul îl rafinează constant (\"backlog refinement\"), adaugă, elimină sau re-estimează elemente pe baza feedback-ului din Sprint Review-uri și din schimbările de context de business. Un backlog nerafinat, plin de elemente vechi și neactuale, semnalează la examenul PSM I o încălcare a rolului Product Owner-ului.",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai următoarele patru elemente candidate pentru Product Backlog-ul unui proiect de digitalizare a arhivei unei firme:\n\nA) \"Scanare automată a facturilor de intrare cu OCR\" — Valoare business=8, Criticitate timp=3, Reducere risc=2, Job Size=8\nB) \"Semnătură electronică pentru documente contractuale\" — Valoare business=5, Criticitate timp=8, Reducere risc=5, Job Size=5\nC) \"Arhivare automată în cloud după 90 de zile\" — Valoare business=3, Criticitate timp=1, Reducere risc=1, Job Size=3\n\nCalculează WSJF pentru fiecare și stabilește ordinea de prioritizare în Product Backlog.",
+    "solution_md": "**A)** Cost of Delay = 8+3+2 = 13; WSJF = 13/8 = 1,63\n**B)** Cost of Delay = 5+8+5 = 18; WSJF = 18/5 = 3,6\n**C)** Cost of Delay = 3+1+1 = 5; WSJF = 5/3 = 1,67\n\nOrdinea de prioritizare (WSJF descrescător): **B (3,6) → C (1,67) → A (1,63)**.\n\nDeși elementul A are cea mai mare valoare de business brută (8), efortul mare de dezvoltare (Job Size=8) îi scade raportul WSJF sub cel al elementului C, care e mic dar rapid de livrat. Elementul B rămâne clar prioritar datorită criticității în timp ridicate (probabil un termen contractual sau de conformitate) combinate cu un efort redus.",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele NU face parte din criteriile INVEST pentru o user story bine formulată?",
+    "choices": [
+     "Negociabilă",
+     "Testabilă",
+     "Documentată exhaustiv",
+     "Estimabilă"
+    ],
+    "answer": 2,
+    "explain": "INVEST este format din Independentă, Negociabilă, Valoroasă, Estimabilă, Small (mică) și Testabilă. \"Documentată exhaustiv\" contrazice chiar principiul Agile conform căruia documentația funcțională detaliată este înlocuită de conversație și criterii de acceptare clare.",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un calcul WSJF, dacă două funcționalități au același Cost of Delay, care va avea prioritate mai mare?",
+    "choices": [
+     "Cea cu Job Size (efort) mai mare",
+     "Cea cu Job Size (efort) mai mic",
+     "Cea adăugată mai recent în backlog",
+     "Cea aleasă de Scrum Master"
+    ],
+    "answer": 1,
+    "explain": "WSJF = Cost of Delay / Job Size. La Cost of Delay egal, un Job Size mai mic produce un raport WSJF mai mare, deci acea funcționalitate va fi prioritizată — livrează aceeași valoare/urgență cu un efort mai mic.",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul DEEP aplicat Product Backlog-ului?",
+    "back": "Detailed appropriately (detaliat corespunzător), Estimated (estimat), Emergent (evolutiv), Prioritized (ordonat/prioritizat) — cele patru caracteristici ale unui Product Backlog sănătos.",
+    "concept_key": "product-backlog-definitie",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă criteriile INVEST pentru o user story?",
+    "back": "Independentă, Negociabilă, Valoroasă, Estimabilă, Small (mică), Testabilă — criteriile după care se verifică dacă o user story este pregătită pentru dezvoltare.",
+    "concept_key": "user-stories-invest",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este scala Fibonacci modificată folosită frecvent pentru story points?",
+    "back": "1, 2, 3, 5, 8, 13, 21 (uneori cu 0 și ∞ pentru cazuri extreme) — distanța crescândă reflectă incertitudinea mai mare la elementele complexe.",
+    "concept_key": "estimare-story-points-tshirt",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă cele 4 litere din MoSCoW?",
+    "back": "Must have (obligatoriu), Should have (important, dar nu obligatoriu), Could have (de dorit), Won't have (exclus din scopul curent) — tehnică de clasificare a priorităților.",
+    "concept_key": "prioritizare-moscow-wsjf",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula WSJF (Weighted Shortest Job First)?",
+    "back": "WSJF = Cost of Delay / Job Size, unde Cost of Delay = Valoare de business + Criticitate în timp + Reducere de risc/Activare de oportunități.",
+    "concept_key": "prioritizare-moscow-wsjf",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu se compară story points între echipe diferite?",
+    "back": "Fiecare echipă își calibrează scala de story points prin propriile elemente de referință deja livrate, deci un \"5\" pentru o echipă poate însemna cu totul altceva pentru alta.",
+    "concept_key": "estimare-story-points-tshirt",
+    "blockId": "cmjjuxvuy006rumkpt5hz1x5l-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1418,
+   "flashcards": 6
+  }
+ }
+}

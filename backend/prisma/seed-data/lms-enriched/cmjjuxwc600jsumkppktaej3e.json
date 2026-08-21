@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwc600jsumkppktaej3e",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Evaluarea Riscurilor",
+ "lesson": "Ierarhia măsurilor de prevenire",
+ "category": "HSE_SAFETY",
+ "content": "# Ierarhia măsurilor de prevenire\n\nIerarhia măsurilor de prevenire este principiul fundamental din managementul riscurilor SSM (Securitate și Sănătate în Muncă): nu toate măsurile de protecție au aceeași eficiență. Legea 319/2006 a securității și sănătății în muncă stabilește, la art. 7 alin. (4), o listă de principii generale de prevenire pe care angajatorul este obligat să le aplice, în ordinea priorității lor. Din aceste principii derivă modelul practic folosit azi în evaluarea riscurilor, cunoscut ca „ierarhia măsurilor de prevenire”, cu cinci niveluri, de la cel mai eficient la cel mai puțin eficient:\n\n1. Eliminare – înlăturarea completă a pericolului.\n2. Substituție – înlocuirea pericolului cu unul mai puțin periculos.\n3. Control ingineresc – izolarea oamenilor de pericol prin soluții tehnice.\n4. Măsuri administrative – schimbarea modului în care oamenii lucrează.\n5. Echipament individual de protecție (EIP) – protejarea directă a lucrătorului.\n\nLogica ierarhiei este simplă: cu cât o măsură acționează mai aproape de sursa pericolului, cu atât depinde mai puțin de comportamentul uman și este mai fiabilă pe termen lung. O măsură care elimină pericolul funcționează chiar și atunci când lucrătorul este obosit, grăbit sau uită instrucțiunile. O măsură care depinde de EIP funcționează doar dacă echipamentul este purtat corect, în permanență, și este întreținut corespunzător – ceea ce, în practică, eșuează frecvent. De aceea, responsabilul SSM trebuie să parcurgă întotdeauna ierarhia de sus în jos atunci când stabilește măsuri în urma evaluării riscurilor, și să combine măsuri de la niveluri diferite atunci când o singură măsură nu este suficientă pentru a reduce riscul rezidual la un nivel acceptabil.\n\nEliminarea este cea mai puternică măsură de prevenire, pentru că suprimă riscul, nu doar îl reduce. Exemple concrete: renunțarea la o operație manuală periculoasă prin automatizarea completă a acesteia, demontarea unui utilaj vechi nefolosit dintr-un spațiu de lucru, sau redesenarea unui flux astfel încât lucrătorii nu mai trebuie să urce la înălțime pentru o sarcină de rutină (de exemplu, mutarea punctelor de mentenanță la nivelul solului). Eliminarea nu este mereu posibilă – uneori pericolul este inerent activității (de exemplu, o macara trebuie să ridice sarcini la înălțime) – dar trebuie analizată prima, înainte de orice altă soluție.\n\nSubstituția înseamnă înlocuirea unui pericol cu o variantă mai puțin periculoasă, atunci când eliminarea totală nu este fezabilă. Exemple: înlocuirea unui solvent inflamabil și toxic cu unul pe bază de apă, folosirea unui utilaj electric mai silențios în locul unuia care depășește pragurile de zgomot admise, sau înlocuirea unei scări simple cu o platformă de lucru stabilă pentru operațiuni la înălțime mică. Atenție: substituția trebuie evaluată atent, pentru că uneori soluția introduce un risc nou (de exemplu, un solvent mai puțin toxic, dar mai inflamabil). Orice substituție se documentează în evaluarea de risc, cu riscurile vechi și noile riscuri identificate.\n\nControlul ingineresc reduce expunerea prin soluții tehnice care izolează lucrătorul de pericol, fără a elimina complet sursa. Exemple frecvente: apărători și carcase de protecție pe utilaje, sisteme de aspirare locală (LEV) pentru pulberi și noxe, izolare fonică pentru echipamente zgomotoase, sisteme de ventilație generală, senzori de prezență care opresc automat un utilaj, sau balustrade și parapete la lucrul la înălțime. Controlul ingineresc este preferat față de măsurile administrative pentru că funcționează independent de disciplina individuală a lucrătorului.\n\nMăsurile administrative schimbă modul de organizare a muncii pentru a reduce expunerea: proceduri de lucru, permise de lucru pentru activități cu risc ridicat (lucru la cald, spații închise, lucru la înălțime), rotația personalului pentru a limita timpul de expunere, semnalizare de securitate, instruire și instructaj SSM (introductiv-general, la locul de muncă, periodic), și supraveghere medicală. Aceste măsuri sunt necesare, dar mai puțin fiabile decât cele tehnice, pentru că depind de respectarea consecventă de către oameni.\n\nEchipamentul individual de protecție (EIP) – căști, ochelari, mănuși, antifoane, măști de protecție respiratorie, centuri de siguranță – este ultima linie de apărare, folosită atunci când riscul rezidual rămâne după aplicarea celorlalte măsuri sau ca protecție suplimentară. EIP nu reduce pericolul la sursă: protejează doar persoana care îl poartă, corect și în permanență. De aceea nu poate fi prima sau singura măsură aleasă, ci se combină întotdeauna cu măsuri de nivel superior.\n\n## Exemplu: Atelier de tâmplărie – praf de lemn\nO tâmplărie produce praf de lemn în timpul șlefuirii, expunând lucrătorii la risc respirator și la risc de explozie a pulberilor. Aplicarea ierarhiei arată clar diferența de eficiență:\n\n- Eliminare: nu este posibilă – șlefuirea lemnului generează întotdeauna praf.\n- Substituție: folosirea de panouri pre-finisate care necesită mai puțină șlefuire reduce cantitatea de praf generată.\n- Control ingineresc: instalarea unui sistem de exhaustare locală (LEV) direct la mașina de șlefuit, cuplat cu un sistem central de aspirare a pulberilor – aceasta este măsura cu cel mai mare impact, pentru că elimină praful chiar la sursă, înainte să ajungă în zona de respirație a lucrătorului.\n- Administrativ: rotația lucrătorilor astfel încât nimeni să nu stea expus timp îndelungat, curățenie regulată cu aspirator industrial (nu cu mătura, care ridică praful în aer), instruire privind riscul de explozie a pulberilor.\n- EIP: mască de protecție respiratorie cu filtru adecvat (FFP2/FFP3), purtată de toți lucrătorii din zonă, ca protecție suplimentară pentru praful rezidual care nu a fost captat de sistemul de exhaustare.\n\nO evaluare de risc corectă documentează toate cele cinci niveluri aplicate simultan, nu doar EIP-ul – o greșeală frecventă în firmele mici este să se oprească la „le dăm măști” fără instalarea sistemului de exhaustare.\n\n## Exemplu: Depozit – manipulare manuală a maselor\nÎntr-un depozit, lucrătorii ridică manual cutii de 20-25 kg de pe rafturi, cu risc de afecțiuni ale coloanei vertebrale. Ierarhia aplicată:\n\n- Eliminare: renunțarea la ridicarea manuală prin automatizarea completă a paletizării (transportoare, roboți de paletizare) – posibilă doar dacă investiția se justifică economic.\n- Substituție: reambalarea produselor în cutii mai mici (sub 15 kg), care reduc solicitarea fizică la fiecare ridicare.\n- Control ingineresc: introducerea de transpaleți electrici, mese elevatoare și benzi transportoare care preiau efortul de ridicare/deplasare.\n- Administrativ: proceduri de manipulare manuală a maselor conforme cu tehnica corectă (genunchii îndoiți, spatele drept), limitarea greutății maxime ridicate individual, rotația sarcinilor, pauze programate, instruire periodică specifică.\n- EIP: centură lombară de susținere și mănuși antiderapante, folosite ca sprijin suplimentar, nu ca soluție unică.\n\nÎn acest caz, cele mai multe firme din România implementează direct nivelul 4 (administrativ) și nivelul 5 (EIP), sărind peste analiza posibilităților de control ingineresc – de multe ori din cauza costului aparent mai ridicat pe termen scurt al transpaleților electrici, deși pe termen lung reduc semnificativ absenteismul medical.\n\n> Temei legal: Legea 319/2006 a securității și sănătății în muncă art. 7 alin. (4) (în vigoare de la 2006-07-27)\nArt. 7 alin. (4) din Legea 319/2006 stabilește principiile generale de prevenire pe care angajatorul trebuie să le aplice la organizarea activităților de prevenire, printre care: evitarea riscurilor; evaluarea riscurilor care nu pot fi evitate; combaterea riscurilor la sursă; adaptarea muncii la om, în special în ceea ce privește proiectarea locurilor de muncă și alegerea echipamentelor de muncă; luarea în considerare a evoluției tehnicii; înlocuirea a ceea ce este periculos cu ceea ce nu este periculos sau este mai puțin periculos; adoptarea, în mod prioritar, a măsurilor de protecție colectivă față de măsurile de protecție individuală; și furnizarea de instrucțiuni corespunzătoare lucrătorilor. Aceste prevederi ale art. 7 alin. (4) reprezintă sursa legală directă a ierarhiei măsurilor de prevenire folosite în practică. Verifică forma consolidată/republicată a legii pe portalul legislativ oficial înainte de a o cita într-un document SSM, pentru a te asigura că folosești varianta actualizată la zi.\n\n⚠ Greșeală frecventă în evaluările de risc din România: documentul de evaluare menționează direct „se acordă EIP” ca măsură de prevenire, fără a analiza și documenta posibilitatea eliminării, substituției, controlului ingineresc sau măsurilor administrative. Această abordare nu respectă ierarhia impusă de art. 7 alin. (4) din Legea 319/2006 și expune angajatorul la sancțiuni în cazul unui control ITM (Inspecția Muncii) sau al unui accident de muncă, unde se verifică dacă au fost analizate toate nivelurile ierarhiei înainte de a recurge la EIP. Regula practică: EIP se alege ultima, ca protecție pentru riscul rezidual, niciodată ca prim răspuns la un pericol identificat.\n\n## Exercițiu\nO firmă de vopsitorie auto folosește un solvent pe bază de toluen pentru curățarea pistoalelor de vopsit, într-o cabină fără sistem de ventilație dedicat. Lucrătorii poartă mănuși, dar nu mască de protecție respiratorie. Evaluarea riscului a identificat expunere la vapori toxici peste limita admisă. Propune câte o măsură pentru fiecare din cele 5 niveluri ale ierarhiei măsurilor de prevenire, aplicabilă acestui caz.\n\n**Soluție:** 1. Eliminare: renunțarea la curățarea manuală cu solvent prin achiziționarea unui sistem de curățare automată închisă a pistoalelor (spălător automat cu circuit închis), care elimină contactul direct al lucrătorului cu solventul.\n2. Substituție: înlocuirea toluenului cu un solvent de curățare pe bază de apă sau cu volatilitate/toxicitate mai redusă, compatibil cu tipul de vopsea folosit.\n3. Control ingineresc: instalarea unui sistem de ventilație locală (exhaustare) la cabina de vopsit și la stația de curățare a pistoalelor, care captează vaporii direct la sursă.\n4. Administrativ: procedură de lucru care limitează timpul de expunere, rotația lucrătorilor pe stația de curățare, instruire periodică privind riscurile solvenților și fișele de securitate (SDS) ale produselor chimice, supraveghere medicală periodică (monitorizarea expunerii la solvenți).\n5. EIP: mască de protecție respiratorie cu filtru pentru vapori organici (tip A), purtată obligatoriu în timpul operațiunii de curățare, ca măsură suplimentară pentru riscul rezidual.\n\nRăspunsul corect combină toate cele cinci niveluri, cu accent pe faptul că doar mănușile și eventual masca (nivelul 5) nu sunt suficiente fără măsurile de la nivelurile 1-4.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "ierarhia-masurilor-prevenire-ssm",
+    "md": "Ierarhia măsurilor de prevenire este principiul fundamental din managementul riscurilor SSM (Securitate și Sănătate în Muncă): nu toate măsurile de protecție au aceeași eficiență. Legea 319/2006 a securității și sănătății în muncă stabilește, la art. 7 alin. (4), o listă de principii generale de prevenire pe care angajatorul este obligat să le aplice, în ordinea priorității lor. Din aceste principii derivă modelul practic folosit azi în evaluarea riscurilor, cunoscut ca „ierarhia măsurilor de prevenire”, cu cinci niveluri, de la cel mai eficient la cel mai puțin eficient:\n\n1. Eliminare – înlăturarea completă a pericolului.\n2. Substituție – înlocuirea pericolului cu unul mai puțin periculos.\n3. Control ingineresc – izolarea oamenilor de pericol prin soluții tehnice.\n4. Măsuri administrative – schimbarea modului în care oamenii lucrează.\n5. Echipament individual de protecție (EIP) – protejarea directă a lucrătorului.\n\nLogica ierarhiei este simplă: cu cât o măsură acționează mai aproape de sursa pericolului, cu atât depinde mai puțin de comportamentul uman și este mai fiabilă pe termen lung. O măsură care elimină pericolul funcționează chiar și atunci când lucrătorul este obosit, grăbit sau uită instrucțiunile. O măsură care depinde de EIP funcționează doar dacă echipamentul este purtat corect, în permanență, și este întreținut corespunzător – ceea ce, în practică, eșuează frecvent. De aceea, responsabilul SSM trebuie să parcurgă întotdeauna ierarhia de sus în jos atunci când stabilește măsuri în urma evaluării riscurilor, și să combine măsuri de la niveluri diferite atunci când o singură măsură nu este suficientă pentru a reduce riscul rezidual la un nivel acceptabil.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "eliminare-substitutie-ssm",
+    "md": "Eliminarea este cea mai puternică măsură de prevenire, pentru că suprimă riscul, nu doar îl reduce. Exemple concrete: renunțarea la o operație manuală periculoasă prin automatizarea completă a acesteia, demontarea unui utilaj vechi nefolosit dintr-un spațiu de lucru, sau redesenarea unui flux astfel încât lucrătorii nu mai trebuie să urce la înălțime pentru o sarcină de rutină (de exemplu, mutarea punctelor de mentenanță la nivelul solului). Eliminarea nu este mereu posibilă – uneori pericolul este inerent activității (de exemplu, o macara trebuie să ridice sarcini la înălțime) – dar trebuie analizată prima, înainte de orice altă soluție.\n\nSubstituția înseamnă înlocuirea unui pericol cu o variantă mai puțin periculoasă, atunci când eliminarea totală nu este fezabilă. Exemple: înlocuirea unui solvent inflamabil și toxic cu unul pe bază de apă, folosirea unui utilaj electric mai silențios în locul unuia care depășește pragurile de zgomot admise, sau înlocuirea unei scări simple cu o platformă de lucru stabilă pentru operațiuni la înălțime mică. Atenție: substituția trebuie evaluată atent, pentru că uneori soluția introduce un risc nou (de exemplu, un solvent mai puțin toxic, dar mai inflamabil). Orice substituție se documentează în evaluarea de risc, cu riscurile vechi și noile riscuri identificate.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "control-ingineresc-administrativ-eip",
+    "md": "Controlul ingineresc reduce expunerea prin soluții tehnice care izolează lucrătorul de pericol, fără a elimina complet sursa. Exemple frecvente: apărători și carcase de protecție pe utilaje, sisteme de aspirare locală (LEV) pentru pulberi și noxe, izolare fonică pentru echipamente zgomotoase, sisteme de ventilație generală, senzori de prezență care opresc automat un utilaj, sau balustrade și parapete la lucrul la înălțime. Controlul ingineresc este preferat față de măsurile administrative pentru că funcționează independent de disciplina individuală a lucrătorului.\n\nMăsurile administrative schimbă modul de organizare a muncii pentru a reduce expunerea: proceduri de lucru, permise de lucru pentru activități cu risc ridicat (lucru la cald, spații închise, lucru la înălțime), rotația personalului pentru a limita timpul de expunere, semnalizare de securitate, instruire și instructaj SSM (introductiv-general, la locul de muncă, periodic), și supraveghere medicală. Aceste măsuri sunt necesare, dar mai puțin fiabile decât cele tehnice, pentru că depind de respectarea consecventă de către oameni.\n\nEchipamentul individual de protecție (EIP) – căști, ochelari, mănuși, antifoane, măști de protecție respiratorie, centuri de siguranță – este ultima linie de apărare, folosită atunci când riscul rezidual rămâne după aplicarea celorlalte măsuri sau ca protecție suplimentară. EIP nu reduce pericolul la sursă: protejează doar persoana care îl poartă, corect și în permanență. De aceea nu poate fi prima sau singura măsură aleasă, ci se combină întotdeauna cu măsuri de nivel superior.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b3"
+   },
+   {
+    "type": "example",
+    "title": "Atelier de tâmplărie – praf de lemn",
+    "concept_key": "control-ingineresc-exemplu-praf-lemn",
+    "md": "O tâmplărie produce praf de lemn în timpul șlefuirii, expunând lucrătorii la risc respirator și la risc de explozie a pulberilor. Aplicarea ierarhiei arată clar diferența de eficiență:\n\n- Eliminare: nu este posibilă – șlefuirea lemnului generează întotdeauna praf.\n- Substituție: folosirea de panouri pre-finisate care necesită mai puțină șlefuire reduce cantitatea de praf generată.\n- Control ingineresc: instalarea unui sistem de exhaustare locală (LEV) direct la mașina de șlefuit, cuplat cu un sistem central de aspirare a pulberilor – aceasta este măsura cu cel mai mare impact, pentru că elimină praful chiar la sursă, înainte să ajungă în zona de respirație a lucrătorului.\n- Administrativ: rotația lucrătorilor astfel încât nimeni să nu stea expus timp îndelungat, curățenie regulată cu aspirator industrial (nu cu mătura, care ridică praful în aer), instruire privind riscul de explozie a pulberilor.\n- EIP: mască de protecție respiratorie cu filtru adecvat (FFP2/FFP3), purtată de toți lucrătorii din zonă, ca protecție suplimentară pentru praful rezidual care nu a fost captat de sistemul de exhaustare.\n\nO evaluare de risc corectă documentează toate cele cinci niveluri aplicate simultan, nu doar EIP-ul – o greșeală frecventă în firmele mici este să se oprească la „le dăm măști” fără instalarea sistemului de exhaustare.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b4"
+   },
+   {
+    "type": "example",
+    "title": "Depozit – manipulare manuală a maselor",
+    "concept_key": "manipulare-manuala-maselor-exemplu",
+    "md": "Într-un depozit, lucrătorii ridică manual cutii de 20-25 kg de pe rafturi, cu risc de afecțiuni ale coloanei vertebrale. Ierarhia aplicată:\n\n- Eliminare: renunțarea la ridicarea manuală prin automatizarea completă a paletizării (transportoare, roboți de paletizare) – posibilă doar dacă investiția se justifică economic.\n- Substituție: reambalarea produselor în cutii mai mici (sub 15 kg), care reduc solicitarea fizică la fiecare ridicare.\n- Control ingineresc: introducerea de transpaleți electrici, mese elevatoare și benzi transportoare care preiau efortul de ridicare/deplasare.\n- Administrativ: proceduri de manipulare manuală a maselor conforme cu tehnica corectă (genunchii îndoiți, spatele drept), limitarea greutății maxime ridicate individual, rotația sarcinilor, pauze programate, instruire periodică specifică.\n- EIP: centură lombară de susținere și mănuși antiderapante, folosite ca sprijin suplimentar, nu ca soluție unică.\n\nÎn acest caz, cele mai multe firme din România implementează direct nivelul 4 (administrativ) și nivelul 5 (EIP), sărind peste analiza posibilităților de control ingineresc – de multe ori din cauza costului aparent mai ridicat pe termen scurt al transpaleților electrici, deși pe termen lung reduc semnificativ absenteismul medical.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea 319/2006 a securității și sănătății în muncă",
+    "article": "art. 7 alin. (4)",
+    "effective": "2006-07-27",
+    "md": "Art. 7 alin. (4) din Legea 319/2006 stabilește principiile generale de prevenire pe care angajatorul trebuie să le aplice la organizarea activităților de prevenire, printre care: evitarea riscurilor; evaluarea riscurilor care nu pot fi evitate; combaterea riscurilor la sursă; adaptarea muncii la om, în special în ceea ce privește proiectarea locurilor de muncă și alegerea echipamentelor de muncă; luarea în considerare a evoluției tehnicii; înlocuirea a ceea ce este periculos cu ceea ce nu este periculos sau este mai puțin periculos; adoptarea, în mod prioritar, a măsurilor de protecție colectivă față de măsurile de protecție individuală; și furnizarea de instrucțiuni corespunzătoare lucrătorilor. Aceste prevederi ale art. 7 alin. (4) reprezintă sursa legală directă a ierarhiei măsurilor de prevenire folosite în practică. Verifică forma consolidată/republicată a legii pe portalul legislativ oficial înainte de a o cita într-un document SSM, pentru a te asigura că folosești varianta actualizată la zi.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Greșeală frecventă în evaluările de risc din România: documentul de evaluare menționează direct „se acordă EIP” ca măsură de prevenire, fără a analiza și documenta posibilitatea eliminării, substituției, controlului ingineresc sau măsurilor administrative. Această abordare nu respectă ierarhia impusă de art. 7 alin. (4) din Legea 319/2006 și expune angajatorul la sancțiuni în cazul unui control ITM (Inspecția Muncii) sau al unui accident de muncă, unde se verifică dacă au fost analizate toate nivelurile ierarhiei înainte de a recurge la EIP. Regula practică: EIP se alege ultima, ca protecție pentru riscul rezidual, niciodată ca prim răspuns la un pericol identificat.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă de vopsitorie auto folosește un solvent pe bază de toluen pentru curățarea pistoalelor de vopsit, într-o cabină fără sistem de ventilație dedicat. Lucrătorii poartă mănuși, dar nu mască de protecție respiratorie. Evaluarea riscului a identificat expunere la vapori toxici peste limita admisă. Propune câte o măsură pentru fiecare din cele 5 niveluri ale ierarhiei măsurilor de prevenire, aplicabilă acestui caz.",
+    "solution_md": "1. Eliminare: renunțarea la curățarea manuală cu solvent prin achiziționarea unui sistem de curățare automată închisă a pistoalelor (spălător automat cu circuit închis), care elimină contactul direct al lucrătorului cu solventul.\n2. Substituție: înlocuirea toluenului cu un solvent de curățare pe bază de apă sau cu volatilitate/toxicitate mai redusă, compatibil cu tipul de vopsea folosit.\n3. Control ingineresc: instalarea unui sistem de ventilație locală (exhaustare) la cabina de vopsit și la stația de curățare a pistoalelor, care captează vaporii direct la sursă.\n4. Administrativ: procedură de lucru care limitează timpul de expunere, rotația lucrătorilor pe stația de curățare, instruire periodică privind riscurile solvenților și fișele de securitate (SDS) ale produselor chimice, supraveghere medicală periodică (monitorizarea expunerii la solvenți).\n5. EIP: mască de protecție respiratorie cu filtru pentru vapori organici (tip A), purtată obligatoriu în timpul operațiunii de curățare, ca măsură suplimentară pentru riscul rezidual.\n\nRăspunsul corect combină toate cele cinci niveluri, cu accent pe faptul că doar mănușile și eventual masca (nivelul 5) nu sunt suficiente fără măsurile de la nivelurile 1-4.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ordinea corectă a ierarhiei măsurilor de prevenire, de la cea mai eficientă la cea mai puțin eficientă, conform principiilor din Legea 319/2006?",
+    "choices": [
+     "Eliminare, Substituție, Control ingineresc, Măsuri administrative, EIP",
+     "EIP, Măsuri administrative, Control ingineresc, Substituție, Eliminare",
+     "Control ingineresc, Eliminare, EIP, Substituție, Măsuri administrative",
+     "Măsuri administrative, EIP, Eliminare, Control ingineresc, Substituție"
+    ],
+    "answer": 0,
+    "explain": "Ierarhia pornește de la eliminarea completă a pericolului (cea mai fiabilă măsură) și se încheie cu EIP (protecție individuală, cea mai puțin fiabilă, dependentă de comportamentul uman).",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce este echipamentul individual de protecție (EIP) considerat ultima opțiune în ierarhia măsurilor de prevenire?",
+    "choices": [
+     "Pentru că este întotdeauna cel mai scump dintre toate măsurile posibile",
+     "Pentru că protejează doar persoana care îl poartă și depinde de utilizarea corectă și constantă, nu elimină pericolul la sursă",
+     "Pentru că legea interzice folosirea EIP înainte de a epuiza bugetul alocat SSM",
+     "Pentru că EIP nu este reglementat de Legea 319/2006"
+    ],
+    "answer": 1,
+    "explain": "EIP nu acționează asupra sursei pericolului – funcționează doar dacă este purtat corect și permanent de fiecare lucrător, ceea ce îl face mai puțin fiabil decât măsurile tehnice sau organizatorice de nivel superior.",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 niveluri ale ierarhiei măsurilor de prevenire SSM?",
+    "back": "Eliminare, Substituție, Control ingineresc, Măsuri administrative, EIP (Echipament Individual de Protecție) – în ordine descrescătoare a eficienței.",
+    "concept_key": "ierarhia-masurilor-prevenire-ssm",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă „eliminare” în ierarhia măsurilor de prevenire?",
+    "back": "Înlăturarea completă a pericolului din procesul de muncă, astfel încât riscul asociat nu mai poate apărea.",
+    "concept_key": "eliminare-substitutie-ssm",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce prevede art. 7 alin. (4) din Legea 319/2006?",
+    "back": "Principiile generale de prevenire pe care angajatorul trebuie să le aplice: evitarea riscurilor, combaterea lor la sursă, adaptarea muncii la om, înlocuirea pericolului cu ceva mai puțin periculos, prioritatea protecției colective față de cea individuală etc.",
+    "concept_key": "legea-319-2006-art7-principii-prevenire",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce EIP e ultima măsură în ierarhia de prevenire?",
+    "back": "Pentru că protejează doar persoana care îl poartă, nu elimină pericolul la sursă și este eficient doar dacă e purtat corect și constant.",
+    "concept_key": "eip-ultima-masura-prevenire",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Dă un exemplu de control ingineresc pentru praful de lemn dintr-o tâmplărie.",
+    "back": "Sistem de exhaustare/aspirare locală (LEV) montat direct la mașina de șlefuit, care captează praful la sursă.",
+    "concept_key": "control-ingineresc-exemplu-praf-lemn",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este substituția în context SSM?",
+    "back": "Înlocuirea unei substanțe sau a unui proces periculos cu o variantă mai puțin periculoasă, de exemplu un solvent pe bază de apă în locul unuia inflamabil și toxic.",
+    "concept_key": "substitutie-ssm-exemplu",
+    "blockId": "cmjjuxwc600jsumkppktaej3e-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1524,
+   "flashcards": 6
+  }
+ }
+}

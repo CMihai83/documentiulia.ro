@@ -1,0 +1,161 @@
+{
+ "lessonId": "cmjjuxw4d00deumkpse0c4wq0",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "TVA în România",
+ "lesson": "Exercițiu TVA complet",
+ "category": "FINANCE_OPS",
+ "content": "# Exercițiu TVA complet\n\n## TVA colectată vs. TVA deductibilă\n\nÎnainte de a rezolva un exercițiu complet de TVA, reamintește-ți mecanismul de bază:\n\n- **TVA colectată** este taxa pe care o firmă o facturează clienților la vânzarea de bunuri sau prestarea de servicii (operațiuni de ieșire). Se înregistrează în contabilitate în contul 4427 „TVA colectată”.\n- **TVA deductibilă** este taxa aferentă achizițiilor de bunuri și servicii destinate operațiunilor taxabile ale firmei (operațiuni de intrare), cu drept de deducere conform art. 297–301 din Codul fiscal. Se înregistrează în contul 4426 „TVA deductibilă”.\n- La finalul perioadei fiscale (lună sau trimestru), se compară cele două sume:\n\n**TVA de plată = TVA colectată − TVA deductibilă**\n\nDacă rezultatul este pozitiv, firma datorează diferența la bugetul de stat. Dacă este negativ, firma înregistrează **TVA de rambursat**, pe care o poate solicita spre restituire sau o poate reporta în decontul următor.\n\nExercițiul unei luni complete de TVA presupune parcurgerea sistematică a tuturor facturilor emise și primite, aplicarea cotei corecte fiecărei operațiuni și tratarea corectă a cazurilor speciale (operațiuni scutite, taxare inversă, limitări de deducere).\n\n## Cotele de TVA aplicabile în 2026\n\nÎncepând cu **1 august 2025**, conform **Legii nr. 141/2025**, România aplică doar două cote de TVA:\n\n- **cota standard: 21%** — se aplică majorității bunurilor și serviciilor;\n- **cota redusă unică: 11%** — a înlocuit fostele cote de 5% și 9%, care au fost eliminate.\n\nCota de 11% se aplică, printre altele: alimentelor de bază (cu excepția alcoolului, băuturilor încadrate la codul NC 2202 și a alimentelor cu peste 10 g zahăr adăugat/100 g), medicamentelor, apei și canalizării, cărților și manualelor (tipărite și electronice), accesului la muzee și monumente, cazării hoteliere și serviciilor de restaurant/catering (exclusiv alcoolul și băuturile NC 2202).\n\nTranzitoriu, până la **31 iulie 2026**, se mai aplică o cotă de 9% pentru anumite livrări de locuințe cu antecontract încheiat înainte de modificarea legii.\n\n⚠️ Atenție la exemplele mai vechi din materiale sau din presă: până la 31 iulie 2025, cotele erau 19% (standard), 9% și 5% (reduse). Toate exemplele din această lecție folosesc exclusiv cotele actuale, 21%/11%, valabile de la 1 august 2025.\n\n## Decontul de TVA (formularul 300)\n\nPersoanele impozabile înregistrate în scopuri de TVA conform art. 316 din Codul fiscal depun periodic **decontul de TVA (formular 300)**, care centralizează toate operațiunile de intrare și ieșire ale perioadei fiscale (lună sau trimestru, în funcție de cifra de afaceri și opțiunea firmei).\n\nStructura decontului cuprinde, simplificat:\n- rândurile de **operațiuni taxabile** (bază + TVA colectată, pe cote);\n- rândurile de **operațiuni scutite** (cu sau fără drept de deducere) și **livrări/achiziții intracomunitare**;\n- rândurile de **TVA deductibilă**, inclusiv cele aferente taxării inverse;\n- rândul final: **soldul TVA de plată sau de rambursat**.\n\n**Termen de depunere și de plată: data de 25 a lunii următoare** perioadei fiscale. Este o dată calendaristică fixă; dacă aceasta cade într-o zi nelucrătoare, termenul se prorogă la următoarea zi lucrătoare, conform regulilor generale din Codul de procedură fiscală.\n\nPentru firmele mici plătitoare de TVA lunar, din 1 ianuarie 2025 s-a extins și obligația de raportare **SAF-T (declarația D406)**; perioada de grație pentru aceste firme s-a epuizat în cursul anului 2025, astfel încât în 2026 se aplică termenele standard de depunere, în paralel cu decontul de TVA.\n\n## Limitări și cazuri speciale la deducerea TVA\n\nNu toată TVA înscrisă pe facturile de achiziție este integral deductibilă. Două situații apar frecvent într-un exercițiu lunar:\n\n1. **Combustibil pentru vehicule cu utilizare mixtă** (afaceri + personal): conform art. 298 din Codul fiscal, TVA aferentă carburantului este deductibilă în proporție de **50%**, cu excepția vehiculelor utilizate exclusiv în scop economic, pentru care se poate justifica deducerea integrală (ex. vehicule de intervenție, curierat, taxi).\n2. **Taxarea inversă (autolichidarea)**, aplicabilă achizițiilor intracomunitare de bunuri, anumitor servicii intracomunitare și importurilor cu certificat de amânare a plății TVA în vamă: cumpărătorul înregistrează simultan TVA aferentă achiziției atât ca **TVA colectată**, cât și ca **TVA deductibilă**, în același decont. Dacă firma are drept integral de deducere, operațiunea este neutră din punct de vedere al sumei de plată efective, dar trebuie declarată corect pe rândurile specifice din decont.\n\nAceste ajustări nu se omit niciodată într-un exercițiu de TVA — o eroare frecventă a cursanților este să deducă integral TVA la combustibil sau să uite să reflecte taxarea inversă atât la colectată, cât și la deductibilă.\n\n## Exemplu: Calculul TVA colectate — vânzările lunii (SC ALFA SRL, iunie 2026)\nSC ALFA SRL este plătitoare de TVA, cu perioadă fiscală lunară. În iunie 2026 a emis următoarele facturi de vânzare:\n\n| Operațiune | Bază impozabilă | Cotă | TVA colectată |\n|---|---|---|---|\n| Vânzare articole de birotică (client RO) | 50.000 lei | 21% | 10.500 lei |\n| Vânzare produse alimentare de bază (client RO) | 20.000 lei | 11% | 2.200 lei |\n| Livrare intracomunitară de bunuri (client din Germania, cod VIES valid) | 15.000 lei | scutită cu drept de deducere | 0 lei |\n| Export de bunuri (client din SUA) | 8.000 lei | scutită cu drept de deducere | 0 lei |\n\n**TVA colectată din operațiuni interne taxabile = 10.500 + 2.200 = 12.700 lei.**\n\nLivrarea intracomunitară și exportul sunt operațiuni **scutite cu drept de deducere**: nu generează TVA colectată, dar se declară distinct în decont și dau dreptul la deducerea integrală a TVA aferente achizițiilor legate de ele. Verificarea codului de TVA al clientului din Germania în sistemul **VIES** este obligatorie înainte de a aplica scutirea — fără această verificare, operațiunea trebuie tratată ca vânzare internă taxabilă.\n\n## Exemplu: Calculul TVA deductibile și determinarea TVA de plată (SC ALFA SRL, iunie 2026)\nContinuăm exemplul SC ALFA SRL cu achizițiile din iunie 2026:\n\n| Operațiune | Bază impozabilă | TVA facturată | TVA deductibilă efectivă |\n|---|---|---|---|\n| Marfă de la furnizor RO (destinată revânzării) | 30.000 lei | 6.300 lei (21%) | 6.300 lei (integral) |\n| Combustibil auto, utilizare mixtă | 2.000 lei | 420 lei (21%) | 210 lei (50%, art. 298 Cod fiscal) |\n| Achiziție intracomunitară de bunuri (furnizor din Franța, cod VIES valid) — taxare inversă | 10.000 lei | 2.100 lei (21%, autolichidare) | 2.100 lei (integral) |\n| Servicii de consultanță (furnizor RO) | 5.000 lei | 1.050 lei (21%) | 1.050 lei (integral) |\n\n**TVA deductibilă totală = 6.300 + 210 + 2.100 + 1.050 = 9.660 lei.**\n\nAtenție: achiziția intracomunitară cu taxare inversă adaugă 2.100 lei și la **TVA colectată** (autolichidare), nu doar la deductibilă. Recalculăm:\n\n- TVA colectată totală = 12.700 (vânzări interne) + 2.100 (autolichidare) = **14.800 lei**\n- TVA deductibilă totală = **9.660 lei**\n\n**TVA de plată = 14.800 − 9.660 = 5.140 lei.**\n\nSC ALFA SRL va declara această sumă în decontul de TVA (formular 300) aferent lunii iunie 2026 și o va plăti până cel târziu pe **25 iulie 2026**.\n\n> Temei legal: Legea nr. 141/2025 dispoziții privind modificarea cotelor de TVA din Codul fiscal (în vigoare de la 2025-08-01)\nDe la 1 august 2025, Legea nr. 141/2025 stabilește pentru România o cotă standard de TVA de **21%** și o cotă redusă unică de **11%**, eliminând cotele reduse anterioare de 5% și 9% (cu excepția regimului tranzitoriu de 9% pentru anumite locuințe noi, aplicabil până la 31 iulie 2026). Orice calcul de TVA pentru operațiuni efectuate începând cu această dată trebuie să folosească exclusiv aceste două cote.\n\n⚠ Deducerea TVA nu este niciodată automată: fiecare sumă dedusă trebuie susținută de o **factură validă** (emisă conform formatului RO_CIUS, transmisă prin sistemul RO e-Factura pentru operațiunile B2B/B2G obligatorii), iar pentru operațiunile intracomunitare, de **verificarea codului de TVA al partenerului în VIES**. Pentru firmele mici plătitoare lunare de TVA, decontul de TVA se completează în paralel cu obligațiile de raportare **SAF-T (D406)**, ale căror termene standard se aplică integral din 2026, perioada de grație fiind epuizată. În caz de neclaritate privind încadrarea unei operațiuni sau a unei cote, verifică situația cu un consultant fiscal sau direct la ANAF — regulile de mai sus nu constituie consultanță fiscală personalizată.\n\n## Exercițiu\nSC BETA SRL este plătitoare de TVA, cu perioadă fiscală lunară. În iulie 2026 a înregistrat următoarele operațiuni:\n\n**Vânzări:**\n1. Vânzare produse electronice (client RO): bază 80.000 lei, cotă 21%.\n2. Vânzare pâine și produse de panificație (client RO): bază 12.000 lei, cotă 11%.\n3. Servicii de cazare hotelieră proprie (client RO): bază 6.000 lei, cotă 11%.\n4. Livrare intracomunitară de bunuri către un client din Italia, cod VIES valid: bază 25.000 lei, scutită cu drept de deducere.\n\n**Achiziții:**\n1. Marfă de la furnizor RO: bază 40.000 lei, cotă 21%, deductibilă integral.\n2. Combustibil auto, utilizare mixtă: bază 1.500 lei, cotă 21%.\n3. Import de bunuri din China, cu certificat de amânare a plății TVA în vamă (taxare inversă): bază 15.000 lei, cotă 21%.\n4. Servicii de marketing de la furnizor RO: bază 3.000 lei, cotă 21%, deductibilă integral.\n\n**Cerințe:**\na) Calculează TVA colectată totală a lunii iulie 2026.\nb) Calculează TVA deductibilă totală a lunii iulie 2026, ținând cont de limitarea legală pentru combustibil.\nc) Determină TVA de plată sau de rambursat.\nd) Precizează termenul-limită de depunere și plată a decontului de TVA aferent lunii iulie 2026.\n\n**Soluție:** **a) TVA colectată:**\n\n| Operațiune | Bază | Cotă | TVA |\n|---|---|---|---|\n| Electronice | 80.000 | 21% | 16.800 lei |\n| Pâine/panificație | 12.000 | 11% | 1.320 lei |\n| Cazare hotelieră | 6.000 | 11% | 660 lei |\n| Livrare intracomunitară (Italia) | 25.000 | scutită | 0 lei |\n\nTVA colectată din vânzări interne = 16.800 + 1.320 + 660 = **18.780 lei**.\n\nLa aceasta se adaugă TVA aferentă autolichidării la import (vezi mai jos): 3.150 lei.\n\n**TVA colectată totală = 18.780 + 3.150 = 21.930 lei.**\n\n**b) TVA deductibilă:**\n\n| Operațiune | Bază | TVA facturată | TVA deductibilă efectivă |\n|---|---|---|---|\n| Marfă furnizor RO | 40.000 | 8.400 lei (21%) | 8.400 lei (integral) |\n| Combustibil, utilizare mixtă | 1.500 | 315 lei (21%) | 157,5 lei (50%) |\n| Import China, taxare inversă | 15.000 | 3.150 lei (21%) | 3.150 lei (integral, autolichidare) |\n| Servicii marketing | 3.000 | 630 lei (21%) | 630 lei (integral) |\n\n**TVA deductibilă totală = 8.400 + 157,5 + 3.150 + 630 = 12.337,5 lei.**\n\n**c) TVA de plată = 21.930 − 12.337,5 = 9.592,5 lei.**\n\nSC BETA SRL datorează bugetului de stat 9.592,5 lei pentru luna iulie 2026.\n\n**d) Termen:** decontul de TVA (formular 300) aferent lunii iulie 2026 se depune și se plătește până la **25 august 2026** (dacă această dată cade într-o zi nelucrătoare, termenul se prorogă la următoarea zi lucrătoare).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "tva-mecanism-colectata-deductibila",
+    "md": "## TVA colectată vs. TVA deductibilă\n\nÎnainte de a rezolva un exercițiu complet de TVA, reamintește-ți mecanismul de bază:\n\n- **TVA colectată** este taxa pe care o firmă o facturează clienților la vânzarea de bunuri sau prestarea de servicii (operațiuni de ieșire). Se înregistrează în contabilitate în contul 4427 „TVA colectată”.\n- **TVA deductibilă** este taxa aferentă achizițiilor de bunuri și servicii destinate operațiunilor taxabile ale firmei (operațiuni de intrare), cu drept de deducere conform art. 297–301 din Codul fiscal. Se înregistrează în contul 4426 „TVA deductibilă”.\n- La finalul perioadei fiscale (lună sau trimestru), se compară cele două sume:\n\n**TVA de plată = TVA colectată − TVA deductibilă**\n\nDacă rezultatul este pozitiv, firma datorează diferența la bugetul de stat. Dacă este negativ, firma înregistrează **TVA de rambursat**, pe care o poate solicita spre restituire sau o poate reporta în decontul următor.\n\nExercițiul unei luni complete de TVA presupune parcurgerea sistematică a tuturor facturilor emise și primite, aplicarea cotei corecte fiecărei operațiuni și tratarea corectă a cazurilor speciale (operațiuni scutite, taxare inversă, limitări de deducere).",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tva-cote-2026",
+    "md": "## Cotele de TVA aplicabile în 2026\n\nÎncepând cu **1 august 2025**, conform **Legii nr. 141/2025**, România aplică doar două cote de TVA:\n\n- **cota standard: 21%** — se aplică majorității bunurilor și serviciilor;\n- **cota redusă unică: 11%** — a înlocuit fostele cote de 5% și 9%, care au fost eliminate.\n\nCota de 11% se aplică, printre altele: alimentelor de bază (cu excepția alcoolului, băuturilor încadrate la codul NC 2202 și a alimentelor cu peste 10 g zahăr adăugat/100 g), medicamentelor, apei și canalizării, cărților și manualelor (tipărite și electronice), accesului la muzee și monumente, cazării hoteliere și serviciilor de restaurant/catering (exclusiv alcoolul și băuturile NC 2202).\n\nTranzitoriu, până la **31 iulie 2026**, se mai aplică o cotă de 9% pentru anumite livrări de locuințe cu antecontract încheiat înainte de modificarea legii.\n\n⚠️ Atenție la exemplele mai vechi din materiale sau din presă: până la 31 iulie 2025, cotele erau 19% (standard), 9% și 5% (reduse). Toate exemplele din această lecție folosesc exclusiv cotele actuale, 21%/11%, valabile de la 1 august 2025.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "decont-tva-d300",
+    "md": "## Decontul de TVA (formularul 300)\n\nPersoanele impozabile înregistrate în scopuri de TVA conform art. 316 din Codul fiscal depun periodic **decontul de TVA (formular 300)**, care centralizează toate operațiunile de intrare și ieșire ale perioadei fiscale (lună sau trimestru, în funcție de cifra de afaceri și opțiunea firmei).\n\nStructura decontului cuprinde, simplificat:\n- rândurile de **operațiuni taxabile** (bază + TVA colectată, pe cote);\n- rândurile de **operațiuni scutite** (cu sau fără drept de deducere) și **livrări/achiziții intracomunitare**;\n- rândurile de **TVA deductibilă**, inclusiv cele aferente taxării inverse;\n- rândul final: **soldul TVA de plată sau de rambursat**.\n\n**Termen de depunere și de plată: data de 25 a lunii următoare** perioadei fiscale. Este o dată calendaristică fixă; dacă aceasta cade într-o zi nelucrătoare, termenul se prorogă la următoarea zi lucrătoare, conform regulilor generale din Codul de procedură fiscală.\n\nPentru firmele mici plătitoare de TVA lunar, din 1 ianuarie 2025 s-a extins și obligația de raportare **SAF-T (declarația D406)**; perioada de grație pentru aceste firme s-a epuizat în cursul anului 2025, astfel încât în 2026 se aplică termenele standard de depunere, în paralel cu decontul de TVA.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tva-deducere-combustibil",
+    "md": "## Limitări și cazuri speciale la deducerea TVA\n\nNu toată TVA înscrisă pe facturile de achiziție este integral deductibilă. Două situații apar frecvent într-un exercițiu lunar:\n\n1. **Combustibil pentru vehicule cu utilizare mixtă** (afaceri + personal): conform art. 298 din Codul fiscal, TVA aferentă carburantului este deductibilă în proporție de **50%**, cu excepția vehiculelor utilizate exclusiv în scop economic, pentru care se poate justifica deducerea integrală (ex. vehicule de intervenție, curierat, taxi).\n2. **Taxarea inversă (autolichidarea)**, aplicabilă achizițiilor intracomunitare de bunuri, anumitor servicii intracomunitare și importurilor cu certificat de amânare a plății TVA în vamă: cumpărătorul înregistrează simultan TVA aferentă achiziției atât ca **TVA colectată**, cât și ca **TVA deductibilă**, în același decont. Dacă firma are drept integral de deducere, operațiunea este neutră din punct de vedere al sumei de plată efective, dar trebuie declarată corect pe rândurile specifice din decont.\n\nAceste ajustări nu se omit niciodată într-un exercițiu de TVA — o eroare frecventă a cursanților este să deducă integral TVA la combustibil sau să uite să reflecte taxarea inversă atât la colectată, cât și la deductibilă.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul TVA colectate — vânzările lunii (SC ALFA SRL, iunie 2026)",
+    "concept_key": "tva-calcul-colectata-exemplu",
+    "md": "SC ALFA SRL este plătitoare de TVA, cu perioadă fiscală lunară. În iunie 2026 a emis următoarele facturi de vânzare:\n\n| Operațiune | Bază impozabilă | Cotă | TVA colectată |\n|---|---|---|---|\n| Vânzare articole de birotică (client RO) | 50.000 lei | 21% | 10.500 lei |\n| Vânzare produse alimentare de bază (client RO) | 20.000 lei | 11% | 2.200 lei |\n| Livrare intracomunitară de bunuri (client din Germania, cod VIES valid) | 15.000 lei | scutită cu drept de deducere | 0 lei |\n| Export de bunuri (client din SUA) | 8.000 lei | scutită cu drept de deducere | 0 lei |\n\n**TVA colectată din operațiuni interne taxabile = 10.500 + 2.200 = 12.700 lei.**\n\nLivrarea intracomunitară și exportul sunt operațiuni **scutite cu drept de deducere**: nu generează TVA colectată, dar se declară distinct în decont și dau dreptul la deducerea integrală a TVA aferente achizițiilor legate de ele. Verificarea codului de TVA al clientului din Germania în sistemul **VIES** este obligatorie înainte de a aplica scutirea — fără această verificare, operațiunea trebuie tratată ca vânzare internă taxabilă.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul TVA deductibile și determinarea TVA de plată (SC ALFA SRL, iunie 2026)",
+    "concept_key": "tva-calcul-deductibila-exemplu",
+    "md": "Continuăm exemplul SC ALFA SRL cu achizițiile din iunie 2026:\n\n| Operațiune | Bază impozabilă | TVA facturată | TVA deductibilă efectivă |\n|---|---|---|---|\n| Marfă de la furnizor RO (destinată revânzării) | 30.000 lei | 6.300 lei (21%) | 6.300 lei (integral) |\n| Combustibil auto, utilizare mixtă | 2.000 lei | 420 lei (21%) | 210 lei (50%, art. 298 Cod fiscal) |\n| Achiziție intracomunitară de bunuri (furnizor din Franța, cod VIES valid) — taxare inversă | 10.000 lei | 2.100 lei (21%, autolichidare) | 2.100 lei (integral) |\n| Servicii de consultanță (furnizor RO) | 5.000 lei | 1.050 lei (21%) | 1.050 lei (integral) |\n\n**TVA deductibilă totală = 6.300 + 210 + 2.100 + 1.050 = 9.660 lei.**\n\nAtenție: achiziția intracomunitară cu taxare inversă adaugă 2.100 lei și la **TVA colectată** (autolichidare), nu doar la deductibilă. Recalculăm:\n\n- TVA colectată totală = 12.700 (vânzări interne) + 2.100 (autolichidare) = **14.800 lei**\n- TVA deductibilă totală = **9.660 lei**\n\n**TVA de plată = 14.800 − 9.660 = 5.140 lei.**\n\nSC ALFA SRL va declara această sumă în decontul de TVA (formular 300) aferent lunii iunie 2026 și o va plăti până cel târziu pe **25 iulie 2026**.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 141/2025",
+    "article": "dispoziții privind modificarea cotelor de TVA din Codul fiscal",
+    "effective": "2025-08-01",
+    "md": "De la 1 august 2025, Legea nr. 141/2025 stabilește pentru România o cotă standard de TVA de **21%** și o cotă redusă unică de **11%**, eliminând cotele reduse anterioare de 5% și 9% (cu excepția regimului tranzitoriu de 9% pentru anumite locuințe noi, aplicabil până la 31 iulie 2026). Orice calcul de TVA pentru operațiuni efectuate începând cu această dată trebuie să folosească exclusiv aceste două cote.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Deducerea TVA nu este niciodată automată: fiecare sumă dedusă trebuie susținută de o **factură validă** (emisă conform formatului RO_CIUS, transmisă prin sistemul RO e-Factura pentru operațiunile B2B/B2G obligatorii), iar pentru operațiunile intracomunitare, de **verificarea codului de TVA al partenerului în VIES**. Pentru firmele mici plătitoare lunare de TVA, decontul de TVA se completează în paralel cu obligațiile de raportare **SAF-T (D406)**, ale căror termene standard se aplică integral din 2026, perioada de grație fiind epuizată. În caz de neclaritate privind încadrarea unei operațiuni sau a unei cote, verifică situația cu un consultant fiscal sau direct la ANAF — regulile de mai sus nu constituie consultanță fiscală personalizată.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "SC BETA SRL este plătitoare de TVA, cu perioadă fiscală lunară. În iulie 2026 a înregistrat următoarele operațiuni:\n\n**Vânzări:**\n1. Vânzare produse electronice (client RO): bază 80.000 lei, cotă 21%.\n2. Vânzare pâine și produse de panificație (client RO): bază 12.000 lei, cotă 11%.\n3. Servicii de cazare hotelieră proprie (client RO): bază 6.000 lei, cotă 11%.\n4. Livrare intracomunitară de bunuri către un client din Italia, cod VIES valid: bază 25.000 lei, scutită cu drept de deducere.\n\n**Achiziții:**\n1. Marfă de la furnizor RO: bază 40.000 lei, cotă 21%, deductibilă integral.\n2. Combustibil auto, utilizare mixtă: bază 1.500 lei, cotă 21%.\n3. Import de bunuri din China, cu certificat de amânare a plății TVA în vamă (taxare inversă): bază 15.000 lei, cotă 21%.\n4. Servicii de marketing de la furnizor RO: bază 3.000 lei, cotă 21%, deductibilă integral.\n\n**Cerințe:**\na) Calculează TVA colectată totală a lunii iulie 2026.\nb) Calculează TVA deductibilă totală a lunii iulie 2026, ținând cont de limitarea legală pentru combustibil.\nc) Determină TVA de plată sau de rambursat.\nd) Precizează termenul-limită de depunere și plată a decontului de TVA aferent lunii iulie 2026.",
+    "solution_md": "**a) TVA colectată:**\n\n| Operațiune | Bază | Cotă | TVA |\n|---|---|---|---|\n| Electronice | 80.000 | 21% | 16.800 lei |\n| Pâine/panificație | 12.000 | 11% | 1.320 lei |\n| Cazare hotelieră | 6.000 | 11% | 660 lei |\n| Livrare intracomunitară (Italia) | 25.000 | scutită | 0 lei |\n\nTVA colectată din vânzări interne = 16.800 + 1.320 + 660 = **18.780 lei**.\n\nLa aceasta se adaugă TVA aferentă autolichidării la import (vezi mai jos): 3.150 lei.\n\n**TVA colectată totală = 18.780 + 3.150 = 21.930 lei.**\n\n**b) TVA deductibilă:**\n\n| Operațiune | Bază | TVA facturată | TVA deductibilă efectivă |\n|---|---|---|---|\n| Marfă furnizor RO | 40.000 | 8.400 lei (21%) | 8.400 lei (integral) |\n| Combustibil, utilizare mixtă | 1.500 | 315 lei (21%) | 157,5 lei (50%) |\n| Import China, taxare inversă | 15.000 | 3.150 lei (21%) | 3.150 lei (integral, autolichidare) |\n| Servicii marketing | 3.000 | 630 lei (21%) | 630 lei (integral) |\n\n**TVA deductibilă totală = 8.400 + 157,5 + 3.150 + 630 = 12.337,5 lei.**\n\n**c) TVA de plată = 21.930 − 12.337,5 = 9.592,5 lei.**\n\nSC BETA SRL datorează bugetului de stat 9.592,5 lei pentru luna iulie 2026.\n\n**d) Termen:** decontul de TVA (formular 300) aferent lunii iulie 2026 se depune și se plătește până la **25 august 2026** (dacă această dată cade într-o zi nelucrătoare, termenul se prorogă la următoarea zi lucrătoare).",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cotă redusă unică de TVA se aplică în România începând cu 1 august 2025, conform Legii nr. 141/2025?",
+    "choices": [
+     "9%",
+     "5%",
+     "11%",
+     "19%"
+    ],
+    "answer": 2,
+    "explain": "De la 1 august 2025, cotele de 5% și 9% au fost eliminate și înlocuite cu o cotă redusă unică de 11%, alături de cota standard de 21%.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă cu perioadă fiscală lunară trebuie să depună și să plătească decontul de TVA aferent lunii iunie 2026 până cel târziu la:",
+    "choices": [
+     "15 iulie 2026",
+     "25 iulie 2026",
+     "30 iulie 2026",
+     "5 iulie 2026"
+    ],
+    "answer": 1,
+    "explain": "Termenul standard de depunere și plată a decontului de TVA este data de 25 a lunii următoare perioadei fiscale, deci pentru luna iunie 2026 termenul este 25 iulie 2026.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă achiziționează combustibil în valoare de 1.000 lei + TVA 21% (210 lei) pentru un autoturism cu utilizare mixtă. Câți lei din TVA sunt efectiv deductibili?",
+    "choices": [
+     "210 lei (100%)",
+     "157,5 lei (75%)",
+     "105 lei (50%)",
+     "0 lei"
+    ],
+    "answer": 2,
+    "explain": "Conform art. 298 din Codul fiscal, TVA aferentă combustibilului pentru vehicule cu utilizare mixtă este deductibilă în proporție de 50%: 210 lei × 50% = 105 lei.",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula de calcul a TVA de plată?",
+    "back": "TVA de plată = TVA colectată − TVA deductibilă. Dacă rezultatul este negativ, firma înregistrează TVA de rambursat.",
+    "concept_key": "tva-formula-plata",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă standard de TVA se aplică în România din 1 august 2025?",
+    "back": "21%, conform Legii nr. 141/2025.",
+    "concept_key": "tva-cota-standard-2025",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă redusă unică înlocuiește, din 1 august 2025, vechile cote de 5% și 9%?",
+    "back": "11%, conform Legii nr. 141/2025.",
+    "concept_key": "tva-cota-redusa-2025",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când trebuie depus și plătit decontul de TVA (formular 300)?",
+    "back": "Până la data de 25 a lunii următoare perioadei fiscale (lună sau trimestru); dacă e zi nelucrătoare, termenul se prorogă.",
+    "concept_key": "decont-tva-termen",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce procent din TVA aferentă combustibilului pentru vehicule cu utilizare mixtă este deductibil?",
+    "back": "50%, conform art. 298 din Codul fiscal (cu excepții pentru vehiculele folosite exclusiv în scop economic, justificate corespunzător).",
+    "concept_key": "tva-deducere-combustibil",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune mecanismul de taxare inversă (autolichidare) la o achiziție intracomunitară sau la import?",
+    "back": "Cumpărătorul înregistrează simultan aceeași sumă atât ca TVA colectată, cât și ca TVA deductibilă, în același decont — operațiune neutră dacă are drept integral de deducere.",
+    "concept_key": "taxare-inversa-tva",
+    "blockId": "cmjjuxw4d00deumkpse0c4wq0-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1638,
+   "flashcards": 6
+  }
+ }
+}

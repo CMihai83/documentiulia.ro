@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxwa700ibumkp6xj9vz2f",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Calculul Salariilor",
+ "lesson": "Beneficii și impozitare",
+ "category": "HR_COMPLIANCE",
+ "content": "# Beneficii și impozitare\n\nPe lângă salariul de bază, angajatorii din România oferă frecvent beneficii extrasalariale: tichete de masă, tichete cadou, contribuții la pensia privată facultativă (Pilon III), abonamente la sală sau asigurări private de sănătate. Aceste beneficii nu se impozitează la fel ca salariul de bază — fiecare categorie are un regim propriu, stabilit prin Codul Fiscal (Legea nr. 227/2015, art. 76).\n\nPentru orice beneficiu trebuie să stabilești trei lucruri:\n1. Intră în baza de calcul pentru CAS (25%)?\n2. Intră în baza de calcul pentru CASS (10%)?\n3. Este supus impozitului pe venit (10%)?\n\nRegula generală: cu cât un beneficiu are un scop social mai clar definit de lege (hrană, sănătate, economisire pentru pensie), cu atât beneficiază de scutiri mai mari. Majoritatea beneficiilor moderne sunt scutite de CAS, dar rămân supuse CASS și, în multe cazuri, impozitului pe venit. Ca specialist de salarizare, verifică la fiecare tip de beneficiu regimul aplicabil în perioada curentă, deoarece plafoanele și cotele se modifică frecvent prin ordonanțe de urgență.\n\nTichetele de masă rămân cel mai răspândit beneficiu extrasalarial din România, reglementate prin Legea nr. 165/2018 privind acordarea biletelor de valoare. Angajatorul poate acorda maximum un tichet pentru fiecare zi lucrată efectiv, cu condiția ca angajatul să nu beneficieze în aceeași zi de hrană gratuită asigurată de angajator.\n\nDin punct de vedere fiscal, tichetele de masă:\n- NU intră în baza de calcul a CAS (25%) — angajatul nu plătește contribuție de asigurări sociale pentru valoarea tichetelor;\n- INTRĂ în baza de calcul a CASS (10%) — valoarea tichetelor se cumulează cu salariul brut pentru calculul contribuției de sănătate;\n- este supusă impozitului pe venit (10%), calculat pe baza rămasă după deducerea contribuțiilor.\n\nValoarea maximă a unui tichet de masă se stabilește periodic prin ordin al ministrului finanțelor și se indexează, de regulă, cu inflația. Pentru 2025, valoarea de referință utilizată în practică a fost de 40,04 lei/tichet — însă această valoare se poate modifica. Verifică întotdeauna actul normativ în vigoare la data calculului salarial, nu te baza pe valori memorate din cursuri anterioare.\n\nPensia privată facultativă (Pilon III) este un beneficiu pe care angajatorul îl poate plăti direct către un fond de pensii facultative, în numele angajatului, ca element suplimentar de remunerare. Spre deosebire de tichetele de masă, contribuțiile angajatorului la Pilon III beneficiază de un regim fiscal mai favorabil: în limita unui plafon anual stabilit prin Codul Fiscal, sumele respective sunt neimpozabile — nu se includ nici în baza CAS, nici în baza CASS, nici în baza impozitului pe venit.\n\nPeste plafonul anual, diferența devine venit asimilat salariilor și se impozitează integral, la fel ca salariul de bază (CAS, CASS, impozit pe venit).\n\nDeoarece plafonul anual se stabilește prin lege și poate fi actualizat, ca specialist de salarizare trebuie să:\n- verifici valoarea actuală a plafonului înainte de a configura contribuția în sistemul de salarizare;\n- urmărești lunar cumulul contribuțiilor plătite de la începutul anului, pentru a nu depăși plafonul fără să observi;\n- informezi angajatul că depășirea plafonului îi va reduce salariul net în luna respectivă, din cauza impozitării suplimentare.\n\nBeneficiul este atractiv pentru angajați cu venituri mai mari, fiind o formă de economisire pe termen lung cu impact fiscal redus față de o mărire de salariu echivalentă.\n\nAbonamentele la sală, asigurările private de sănătate și tichetele cadou intră în categoria beneficiilor extrasalariale supuse unui plafon lunar cumulat, stabilit prin Codul Fiscal. În limita acestui plafon, beneficiile pot fi parțial sau integral scutite de anumite contribuții, în funcție de categorie; peste plafon, diferența se adaugă la venitul brut și se impozitează integral, ca orice element de salariu.\n\nParticularitatea acestor beneficii este că plafonul se aplică cumulat, nu separat pe fiecare tip de beneficiu — dacă angajatul primește simultan abonament la sală, tichete cadou și asigurare medicală privată, valorile se însumează pentru verificarea încadrării în plafon.\n\nDeoarece valoarea exactă a plafonului cumulat, precum și lista completă a beneficiilor incluse, se modifică relativ des prin acte normative, nu poți configura corect aceste beneficii în stat de plată fără să consulți versiunea actualizată a Codului Fiscal sau un specialist fiscal. Recomandarea practică: păstrează în departamentul de salarizare o listă actualizată trimestrial cu plafoanele în vigoare pentru fiecare categorie de beneficiu, pentru a evita erori care pot genera diferențe la controalele ANAF.\n\n## Exemplu: Calcul salariu cu tichete de masă incluse\nUn angajat are salariul brut de bază 6.000 lei și primește 20 de tichete de masă a 40,04 lei fiecare (valoare de referință 2025, verifică actualizarea). Presupunem că venitul depășește plafonul de deducere personală, deci deducerea este 0.\n\n1. Valoare tichete = 20 x 40,04 = 800,80 lei\n2. Venit brut total = 6.000 + 800,80 = 6.800,80 lei\n3. CAS (25% doar din salariul de bază, tichetele nu intră în bază) = 6.000 x 25% = 1.500 lei\n4. CASS (10% din salariu + tichete) = 6.800,80 x 10% = 680,08 lei\n5. Bază impozit = 6.800,80 − 1.500 − 680,08 = 4.620,72 lei\n6. Impozit pe venit (10%) = 462,07 lei\n7. Salariu net = 6.800,80 − 1.500 − 680,08 − 462,07 = 4.158,65 lei\n\nCost angajator: CAM (2,25% din salariul de bază) = 6.000 x 2,25% = 135 lei. Cost total = 6.000 + 800,80 + 135 = 6.935,80 lei.\n\n## Exemplu: Impactul unei contribuții la pensia privată facultativă\nSalariu brut de bază: 5.500 lei. Angajatorul plătește lunar 400 lei către un fond de pensii facultative (Pilon III), sumă care se încadrează, în acest exemplu, în plafonul anual neimpozabil prevăzut de lege (verifică valoarea exactă a plafonului în vigoare înainte de a aplica acest calcul în practică).\n\nDeoarece suma se încadrează în plafon, ea nu intră în nicio bază de calcul (CAS, CASS, impozit):\n1. CAS = 5.500 x 25% = 1.375 lei\n2. CASS = 5.500 x 10% = 550 lei\n3. Bază impozit = 5.500 − 1.375 − 550 = 3.575 lei\n4. Impozit (10%) = 357,50 lei\n5. Salariu net în cont = 5.500 − 1.375 − 550 − 357,50 = 3.197,50 lei\n\nSuplimentar, angajatul primește 400 lei direct în contul de pensie privată, fără nicio impozitare. Valoarea totală a pachetului salarial net (cash + pensie) este 3.597,50 lei.\n\nCost angajator: CAM = 5.500 x 2,25% = 123,75 lei. Cost total = 5.500 + 123,75 + 400 = 6.023,75 lei.\n\n> Temei legal: Codul Fiscal (Legea nr. 227/2015), art. 76 alin. (2) lit. b) și alin. (4) art. 76 (în vigoare de la 2024-01-01)\nCodul Fiscal stabilește regimul de impozitare al avantajelor de natură salarială, inclusiv al tichetelor de masă, tichetelor cadou și contribuțiilor la pensia privată facultativă. Includerea tichetelor de masă în baza de calcul a CASS a fost extinsă prin modificările legislative aplicate începând cu 2024. Condițiile de acordare a tichetelor de masă (un tichet pentru fiecare zi lucrată, incompatibilitate cu hrana gratuită asigurată de angajator) sunt reglementate separat prin Legea nr. 165/2018 privind acordarea biletelor de valoare, cu modificările ulterioare.\n\n⚠ Valorile tichetelor de masă, plafoanele pentru pensia privată facultativă și plafonul cumulat al celorlalte beneficii extrasalariale se modifică frecvent prin acte normative (ordine ale ministrului finanțelor, ordonanțe de urgență). Nu configura niciodată beneficiile în sistemul de salarizare pe baza unor valori memorate din cursuri sau calcule anterioare — verifică întotdeauna actul normativ în vigoare la data calculului. Această lecție are scop didactic și nu constituie consultanță fiscală individuală; pentru situații specifice sau de graniță, consultă un expert contabil sau fiscal autorizat.\n\n## Exercițiu\nUn angajat are salariul brut de bază 4.800 lei și primește 21 de tichete de masă a 40,04 lei fiecare (valoare de referință 2025, a se verifica actualizarea). Presupune că nu beneficiază de deducere personală. Calculează: valoarea tichetelor, CAS, CASS, baza și valoarea impozitului pe venit, salariul net și costul total pentru angajator (CAM 2,25%).\n\n**Soluție:** 1. Valoare tichete = 21 x 40,04 = 840,84 lei\n2. Venit brut total = 4.800 + 840,84 = 5.640,84 lei\n3. CAS (25% doar din salariul de bază) = 4.800 x 25% = 1.200 lei\n4. CASS (10% din salariu + tichete) = 5.640,84 x 10% = 564,08 lei\n5. Bază impozit = 5.640,84 − 1.200 − 564,08 = 3.876,76 lei\n6. Impozit pe venit (10%) = 387,68 lei\n7. Salariu net = 5.640,84 − 1.200 − 564,08 − 387,68 = 3.489,08 lei\n8. CAM = 4.800 x 2,25% = 108 lei\n9. Cost total angajator = 4.800 + 840,84 + 108 = 5.748,84 lei",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "beneficii-extrasalariale-cadru-general",
+    "md": "Pe lângă salariul de bază, angajatorii din România oferă frecvent beneficii extrasalariale: tichete de masă, tichete cadou, contribuții la pensia privată facultativă (Pilon III), abonamente la sală sau asigurări private de sănătate. Aceste beneficii nu se impozitează la fel ca salariul de bază — fiecare categorie are un regim propriu, stabilit prin Codul Fiscal (Legea nr. 227/2015, art. 76).\n\nPentru orice beneficiu trebuie să stabilești trei lucruri:\n1. Intră în baza de calcul pentru CAS (25%)?\n2. Intră în baza de calcul pentru CASS (10%)?\n3. Este supus impozitului pe venit (10%)?\n\nRegula generală: cu cât un beneficiu are un scop social mai clar definit de lege (hrană, sănătate, economisire pentru pensie), cu atât beneficiază de scutiri mai mari. Majoritatea beneficiilor moderne sunt scutite de CAS, dar rămân supuse CASS și, în multe cazuri, impozitului pe venit. Ca specialist de salarizare, verifică la fiecare tip de beneficiu regimul aplicabil în perioada curentă, deoarece plafoanele și cotele se modifică frecvent prin ordonanțe de urgență.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tichete-masa-tratament-fiscal",
+    "md": "Tichetele de masă rămân cel mai răspândit beneficiu extrasalarial din România, reglementate prin Legea nr. 165/2018 privind acordarea biletelor de valoare. Angajatorul poate acorda maximum un tichet pentru fiecare zi lucrată efectiv, cu condiția ca angajatul să nu beneficieze în aceeași zi de hrană gratuită asigurată de angajator.\n\nDin punct de vedere fiscal, tichetele de masă:\n- NU intră în baza de calcul a CAS (25%) — angajatul nu plătește contribuție de asigurări sociale pentru valoarea tichetelor;\n- INTRĂ în baza de calcul a CASS (10%) — valoarea tichetelor se cumulează cu salariul brut pentru calculul contribuției de sănătate;\n- este supusă impozitului pe venit (10%), calculat pe baza rămasă după deducerea contribuțiilor.\n\nValoarea maximă a unui tichet de masă se stabilește periodic prin ordin al ministrului finanțelor și se indexează, de regulă, cu inflația. Pentru 2025, valoarea de referință utilizată în practică a fost de 40,04 lei/tichet — însă această valoare se poate modifica. Verifică întotdeauna actul normativ în vigoare la data calculului salarial, nu te baza pe valori memorate din cursuri anterioare.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "pensie-privata-facultativa-pilon3",
+    "md": "Pensia privată facultativă (Pilon III) este un beneficiu pe care angajatorul îl poate plăti direct către un fond de pensii facultative, în numele angajatului, ca element suplimentar de remunerare. Spre deosebire de tichetele de masă, contribuțiile angajatorului la Pilon III beneficiază de un regim fiscal mai favorabil: în limita unui plafon anual stabilit prin Codul Fiscal, sumele respective sunt neimpozabile — nu se includ nici în baza CAS, nici în baza CASS, nici în baza impozitului pe venit.\n\nPeste plafonul anual, diferența devine venit asimilat salariilor și se impozitează integral, la fel ca salariul de bază (CAS, CASS, impozit pe venit).\n\nDeoarece plafonul anual se stabilește prin lege și poate fi actualizat, ca specialist de salarizare trebuie să:\n- verifici valoarea actuală a plafonului înainte de a configura contribuția în sistemul de salarizare;\n- urmărești lunar cumulul contribuțiilor plătite de la începutul anului, pentru a nu depăși plafonul fără să observi;\n- informezi angajatul că depășirea plafonului îi va reduce salariul net în luna respectivă, din cauza impozitării suplimentare.\n\nBeneficiul este atractiv pentru angajați cu venituri mai mari, fiind o formă de economisire pe termen lung cu impact fiscal redus față de o mărire de salariu echivalentă.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "abonamente-sport-alte-beneficii",
+    "md": "Abonamentele la sală, asigurările private de sănătate și tichetele cadou intră în categoria beneficiilor extrasalariale supuse unui plafon lunar cumulat, stabilit prin Codul Fiscal. În limita acestui plafon, beneficiile pot fi parțial sau integral scutite de anumite contribuții, în funcție de categorie; peste plafon, diferența se adaugă la venitul brut și se impozitează integral, ca orice element de salariu.\n\nParticularitatea acestor beneficii este că plafonul se aplică cumulat, nu separat pe fiecare tip de beneficiu — dacă angajatul primește simultan abonament la sală, tichete cadou și asigurare medicală privată, valorile se însumează pentru verificarea încadrării în plafon.\n\nDeoarece valoarea exactă a plafonului cumulat, precum și lista completă a beneficiilor incluse, se modifică relativ des prin acte normative, nu poți configura corect aceste beneficii în stat de plată fără să consulți versiunea actualizată a Codului Fiscal sau un specialist fiscal. Recomandarea practică: păstrează în departamentul de salarizare o listă actualizată trimestrial cu plafoanele în vigoare pentru fiecare categorie de beneficiu, pentru a evita erori care pot genera diferențe la controalele ANAF.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calcul salariu cu tichete de masă incluse",
+    "concept_key": "tichete-masa-calcul-salariu",
+    "md": "Un angajat are salariul brut de bază 6.000 lei și primește 20 de tichete de masă a 40,04 lei fiecare (valoare de referință 2025, verifică actualizarea). Presupunem că venitul depășește plafonul de deducere personală, deci deducerea este 0.\n\n1. Valoare tichete = 20 x 40,04 = 800,80 lei\n2. Venit brut total = 6.000 + 800,80 = 6.800,80 lei\n3. CAS (25% doar din salariul de bază, tichetele nu intră în bază) = 6.000 x 25% = 1.500 lei\n4. CASS (10% din salariu + tichete) = 6.800,80 x 10% = 680,08 lei\n5. Bază impozit = 6.800,80 − 1.500 − 680,08 = 4.620,72 lei\n6. Impozit pe venit (10%) = 462,07 lei\n7. Salariu net = 6.800,80 − 1.500 − 680,08 − 462,07 = 4.158,65 lei\n\nCost angajator: CAM (2,25% din salariul de bază) = 6.000 x 2,25% = 135 lei. Cost total = 6.000 + 800,80 + 135 = 6.935,80 lei.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b5"
+   },
+   {
+    "type": "example",
+    "title": "Impactul unei contribuții la pensia privată facultativă",
+    "concept_key": "pensie-privata-calcul-impact",
+    "md": "Salariu brut de bază: 5.500 lei. Angajatorul plătește lunar 400 lei către un fond de pensii facultative (Pilon III), sumă care se încadrează, în acest exemplu, în plafonul anual neimpozabil prevăzut de lege (verifică valoarea exactă a plafonului în vigoare înainte de a aplica acest calcul în practică).\n\nDeoarece suma se încadrează în plafon, ea nu intră în nicio bază de calcul (CAS, CASS, impozit):\n1. CAS = 5.500 x 25% = 1.375 lei\n2. CASS = 5.500 x 10% = 550 lei\n3. Bază impozit = 5.500 − 1.375 − 550 = 3.575 lei\n4. Impozit (10%) = 357,50 lei\n5. Salariu net în cont = 5.500 − 1.375 − 550 − 357,50 = 3.197,50 lei\n\nSuplimentar, angajatul primește 400 lei direct în contul de pensie privată, fără nicio impozitare. Valoarea totală a pachetului salarial net (cash + pensie) este 3.597,50 lei.\n\nCost angajator: CAM = 5.500 x 2,25% = 123,75 lei. Cost total = 5.500 + 123,75 + 400 = 6.023,75 lei.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Codul Fiscal (Legea nr. 227/2015), art. 76 alin. (2) lit. b) și alin. (4)",
+    "article": "art. 76",
+    "effective": "2024-01-01",
+    "md": "Codul Fiscal stabilește regimul de impozitare al avantajelor de natură salarială, inclusiv al tichetelor de masă, tichetelor cadou și contribuțiilor la pensia privată facultativă. Includerea tichetelor de masă în baza de calcul a CASS a fost extinsă prin modificările legislative aplicate începând cu 2024. Condițiile de acordare a tichetelor de masă (un tichet pentru fiecare zi lucrată, incompatibilitate cu hrana gratuită asigurată de angajator) sunt reglementate separat prin Legea nr. 165/2018 privind acordarea biletelor de valoare, cu modificările ulterioare.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Valorile tichetelor de masă, plafoanele pentru pensia privată facultativă și plafonul cumulat al celorlalte beneficii extrasalariale se modifică frecvent prin acte normative (ordine ale ministrului finanțelor, ordonanțe de urgență). Nu configura niciodată beneficiile în sistemul de salarizare pe baza unor valori memorate din cursuri sau calcule anterioare — verifică întotdeauna actul normativ în vigoare la data calculului. Această lecție are scop didactic și nu constituie consultanță fiscală individuală; pentru situații specifice sau de graniță, consultă un expert contabil sau fiscal autorizat.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Un angajat are salariul brut de bază 4.800 lei și primește 21 de tichete de masă a 40,04 lei fiecare (valoare de referință 2025, a se verifica actualizarea). Presupune că nu beneficiază de deducere personală. Calculează: valoarea tichetelor, CAS, CASS, baza și valoarea impozitului pe venit, salariul net și costul total pentru angajator (CAM 2,25%).",
+    "solution_md": "1. Valoare tichete = 21 x 40,04 = 840,84 lei\n2. Venit brut total = 4.800 + 840,84 = 5.640,84 lei\n3. CAS (25% doar din salariul de bază) = 4.800 x 25% = 1.200 lei\n4. CASS (10% din salariu + tichete) = 5.640,84 x 10% = 564,08 lei\n5. Bază impozit = 5.640,84 − 1.200 − 564,08 = 3.876,76 lei\n6. Impozit pe venit (10%) = 387,68 lei\n7. Salariu net = 5.640,84 − 1.200 − 564,08 − 387,68 = 3.489,08 lei\n8. CAM = 4.800 x 2,25% = 108 lei\n9. Cost total angajator = 4.800 + 840,84 + 108 = 5.748,84 lei",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este tratamentul corect al tichetelor de masă în privința contribuțiilor sociale reținute de la angajat?",
+    "choices": [
+     "Sunt supuse atât CAS, cât și CASS",
+     "Sunt exceptate de la CAS, dar supuse CASS și impozitului pe venit",
+     "Sunt exceptate integral de la orice contribuție sau impozit",
+     "Sunt supuse doar CAS, fiind exceptate de la CASS"
+    ],
+    "answer": 1,
+    "explain": "Tichetele de masă nu intră în baza de calcul a CAS, dar valoarea lor se cumulează cu salariul brut pentru calculul CASS (10%) și este supusă impozitului pe venit de 10%.",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un angajator plătește lunar o contribuție la pensia privată facultativă (Pilon III) care se încadrează în plafonul anual neimpozabil stabilit de lege. Cum este tratată fiscal această sumă?",
+    "choices": [
+     "Este integral neimpozabilă — nu se include în baza CAS, CASS sau impozit pe venit",
+     "Este supusă doar impozitului pe venit",
+     "Este supusă CAS și CASS, dar scutită de impozit pe venit",
+     "Este tratată identic cu tichetele de masă"
+    ],
+    "answer": 0,
+    "explain": "În limita plafonului anual stabilit prin Codul Fiscal, contribuțiile angajatorului la Pilon III sunt neimpozabile integral; peste plafon, diferența devine venit asimilat salariilor și se impozitează complet (CAS, CASS, impozit pe venit).",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce contribuții se rețin din valoarea tichetelor de masă?",
+    "back": "CASS (10%) și impozit pe venit (10%); tichetele sunt exceptate de la CAS (25%).",
+    "concept_key": "tichete-masa-regim-fiscal",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care era valoarea de referință a unui tichet de masă în 2025?",
+    "back": "40,04 lei/tichet (valoare 2025 — verifică actualizarea pentru perioada curentă).",
+    "concept_key": "tichete-masa-valoare-2025",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Contribuțiile angajatorului la pensia privată facultativă (Pilon III) sunt impozabile?",
+    "back": "Sunt neimpozabile în limita unui plafon anual stabilit prin Codul Fiscal; peste acest plafon devin venit impozabil integral.",
+    "concept_key": "pensie-privata-pilon3-plafon",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În ce act normativ este reglementată acordarea tichetelor de masă?",
+    "back": "Legea nr. 165/2018 privind acordarea biletelor de valoare, cu modificările ulterioare.",
+    "concept_key": "tichete-masa-lege-165-2018",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Intră tichetele de masă în baza de calcul pentru CAS?",
+    "back": "Nu — CAS se calculează doar pe salariul de bază brut, nu pe valoarea tichetelor de masă.",
+    "concept_key": "tichete-masa-baza-cas",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se aplică plafonul pentru beneficii precum abonamentele sportive, tichetele cadou și asigurările private de sănătate?",
+    "back": "Codul Fiscal prevede un plafon lunar cumulat pentru aceste beneficii, aplicat pe total, nu separat pe fiecare tip; valoarea exactă trebuie verificată la zi.",
+    "concept_key": "beneficii-extrasalariale-plafon-cumulat",
+    "blockId": "cmjjuxwa700ibumkp6xj9vz2f-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1351,
+   "flashcards": 6
+  }
+ }
+}

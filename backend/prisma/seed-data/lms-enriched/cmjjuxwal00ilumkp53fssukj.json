@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwal00ilumkp53fssukj",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Concedii și Absențe",
+ "lesson": "Concediul de odihnă",
+ "category": "HR_COMPLIANCE",
+ "content": "# Concediul de odihnă\n\nConcediul de odihnă anual plătit este un drept fundamental, garantat tuturor salariaților care au un contract individual de muncă (CIM), indiferent de tipul contractului — normă întreagă, timp parțial, determinat sau nedeterminat. Potrivit art. 144 din Codul Muncii (Legea 53/2003), acest drept nu poate face obiectul vreunei cesiuni, renunțări sau limitări.\n\nDurata minimă legală este de **20 de zile lucrătoare pe an calendaristic** (art. 145 Codul Muncii). Este un prag minim obligatoriu — angajatorul poate acorda o durată mai mare prin contractul individual de muncă, regulamentul intern sau contractul colectiv de muncă (CCM), dar niciodată mai puțin de 20 de zile.\n\nDurata se calculează în **zile lucrătoare**, nu în zile calendaristice: sâmbetele, duminicile și sărbătorile legale nu sunt incluse în cele 20 de zile și nu se scad din concediul efectuat. Pentru un salariat cu normă întreagă (5 zile lucrătoare/săptămână), 20 de zile de concediu acoperă, de regulă, 4 săptămâni calendaristice.\n\nDreptul la concediu se naște de la data angajării, dar efectuarea lui integrală se face proporțional cu perioada lucrată în anul respectiv — un salariat angajat la jumătatea anului nu are dreptul la toate cele 20 de zile, ci la un număr proporțional (vezi exemplul de calcul de mai jos).\n\nPe lângă durata minimă legală de 20 de zile, anumite categorii de salariați pot beneficia de zile suplimentare de concediu de odihnă. Este cazul, de exemplu, al persoanelor care lucrează în condiții grele, periculoase sau vătămătoare, al persoanelor cu dizabilități sau al altor categorii protejate prin legi speciale.\n\nNumărul exact de zile suplimentare **nu este stabilit uniform prin Codul Muncii** pentru toate categoriile — el rezultă din legi speciale aplicabile categoriei respective sau din contractul colectiv de muncă (CCM) încheiat la nivel de unitate, grup de unități sau sector de activitate. Ca administrator de personal, verificați întotdeauna:\n- dacă există un CCM aplicabil în unitate și ce prevede acesta referitor la zilele suplimentare;\n- dacă salariatul se încadrează într-o categorie protejată prin lege specială;\n- documentele justificative (certificat de încadrare în grad de handicap, fișa postului cu condiții speciale de muncă etc.), care se păstrează la dosarul de personal, cu acces restricționat, conform principiului minimizării datelor din GDPR.\n\nZilele suplimentare se adaugă la cele 20 de zile minime și se acordă, se programează și se plătesc după aceleași reguli ca și concediul de odihnă standard.\n\nEfectuarea concediului de odihnă se face pe baza unei **programări**, stabilită de angajator, cu consultarea salariatului sau, după caz, a sindicatului/reprezentanților salariaților, de regulă până la sfârșitul anului calendaristic pentru anul următor (art. 146 Codul Muncii). Programarea poate fi colectivă (pentru toată unitatea sau un compartiment) sau individuală, caz în care angajatorul este obligat să țină cont și de interesele salariatului la stabilirea perioadei.\n\nConcediul de odihnă se poate fracționa, cu condiția ca cel puțin una dintre fracțiuni să aibă o durată de minimum 10 zile lucrătoare consecutive.\n\nPe durata concediului, salariatul primește o **indemnizație de concediu**, care nu poate fi mai mică decât salariul de bază, indemnizațiile și sporurile cu caracter permanent cuvenite pentru perioada respectivă. Formula legală (art. 150 Codul Muncii): indemnizația se calculează pe baza mediei zilnice a drepturilor salariale din ultimele 3 luni anterioare celei în care se efectuează concediul, înmulțită cu numărul de zile de concediu.\n\nIndemnizația de concediu este asimilată fiscal veniturilor salariale: se aplică CAS 25%, CASS 10% și impozitul pe venit de 10% (la baza rămasă după deducerea CAS și CASS, și, după caz, a deducerii personale). Angajatorul datorează suplimentar CAM 2,25%, calculat la indemnizația brută — este un cost al angajatorului, nu o reținere din venitul salariatului. Indemnizația se plătește, de regulă, cu cel puțin 5 zile lucrătoare înainte de plecarea în concediu.\n\n## Exemplu: Calculul indemnizației de concediu de odihnă\nUn salariat are un salariu de bază brut lunar constant de 5.000 lei (peste minimul de 4.325 lei, valabil de la 1 iulie 2026), fără sporuri cu caracter permanent. Solicită 10 zile lucrătoare de concediu de odihnă, care urmează să fie efectuate în august 2026.\n\n**Pasul 1 — media zilnică.** Se iau în calcul ultimele 3 luni anterioare concediului: mai, iunie și iulie 2026, cu 21, 20 și, respectiv, 23 de zile lucrătoare (total 64 zile lucrătoare). Venit brut total din cele 3 luni: 5.000 lei × 3 = 15.000 lei.\n\nMedia zilnică = 15.000 lei ÷ 64 zile = **234,38 lei/zi**.\n\n**Pasul 2 — indemnizația brută.** 234,38 lei × 10 zile = **2.343,80 lei brut**.\n\n**Pasul 3 — reținerile salariatului.**\n- CAS (25%): 2.343,80 × 25% = 585,95 lei\n- CASS (10%): 2.343,80 × 10% = 234,38 lei\n- Bază de calcul a impozitului: 2.343,80 − 585,95 − 234,38 = 1.523,47 lei\n- Impozit pe venit (10%): 152,35 lei (fără deducere personală, în acest exemplu)\n\n**Indemnizație netă de plată: 1.371,12 lei.**\n\nAngajatorul datorează, în plus, CAM 2,25% la indemnizația brută: 2.343,80 × 2,25% = 52,74 lei — cost suplimentar, nu reținere din venitul salariatului.\n\n## Exemplu: Calculul proporțional al zilelor de concediu pentru un salariat nou-angajat\nO salariată este angajată cu contract individual de muncă pe durată nedeterminată începând cu 1 iulie 2026. Contractul colectiv de muncă aplicabil prevede exact durata minimă legală: 20 de zile lucrătoare de concediu de odihnă pe an.\n\nDeoarece salariata lucrează doar 6 luni din anul 2026 (iulie–decembrie), dreptul la concediu se calculează proporțional cu perioada efectiv lucrată:\n\nZile de concediu cuvenite = (20 zile ÷ 12 luni) × 6 luni lucrate = **10 zile lucrătoare**.\n\nDacă, până la finalul anului, salariata efectuează doar 6 zile din cele 10 cuvenite, diferența de 4 zile se reportează pentru efectuare în anul următor, cu acordul angajatorului, conform programării stabilite. Reportul nu transformă zilele neefectuate în bani — compensarea bănească a concediului rămas este posibilă doar dacă activitatea încetează prin desfacerea contractului individual de muncă.\n\n> Temei legal: Legea nr. 53/2003 - Codul Muncii (republicată, cu modificările și completările ulterioare) Art. 144, 145, 146, 150 (în vigoare de la 2003-03-01)\nArt. 144 din Codul Muncii garantează dreptul la concediu de odihnă anual plătit, care nu poate face obiectul vreunei cesiuni, renunțări sau limitări. Art. 145 stabilește durata minimă a concediului de odihnă la 20 de zile lucrătoare pe an. Art. 146 reglementează programarea și efectuarea concediului (inclusiv fracționarea, cu o tranșă de minimum 10 zile lucrătoare consecutive) și interzice compensarea în bani, cu excepția încetării contractului individual de muncă. Art. 150 stabilește formula de calcul a indemnizației de concediu (media zilnică a veniturilor din ultimele 3 luni, înmulțită cu numărul de zile de concediu) și termenul de plată (cu cel puțin 5 zile lucrătoare înainte de plecarea în concediu).\n\n⚠ ⚠️ Compensarea în bani a concediului de odihnă neefectuat este **interzisă** în timpul derulării contractului individual de muncă, indiferent dacă salariatul preferă bani în locul zilelor libere. Legea permite plata în bani a zilelor neefectuate DOAR la încetarea CIM (demisie, concediere, expirarea contractului etc.), pentru zilele rămase neefectuate din anii anteriori și din anul curent. Practicile de tipul „plătim concediul, dar salariatul continuă să lucreze” expun angajatorul la sancțiuni contravenționale în cazul unui control ITM. Pentru situații speciale (concediu neefectuat din motive medicale, concedii cumulate din mai mulți ani, contracte suspendate), recomandăm verificarea cu un consultant de specialitate în legislația muncii — regulile de mai sus sunt generale și nu înlocuiesc o consultanță juridică individuală.\n\n## Exercițiu\nUn salariat are salariul de bază brut lunar constant de 4.800 lei, fără sporuri. În ultimele 3 luni anterioare concediului a lucrat un total de 62 de zile lucrătoare (venit brut total realizat: 14.400 lei). Salariatul solicită 15 zile lucrătoare de concediu de odihnă, aprobate pentru luna septembrie.\n\nCalculați:\na) media zilnică a veniturilor salariale;\nb) indemnizația brută de concediu;\nc) reținerile (CAS, CASS, impozit pe venit) și indemnizația netă de plată.\n\n**Soluție:** a) Media zilnică = 14.400 lei ÷ 62 zile = **232,26 lei/zi**\n\nb) Indemnizație brută = 232,26 lei × 15 zile = **3.483,87 lei**\n\nc) Rețineri:\n- CAS (25%): 3.483,87 × 25% = 870,97 lei\n- CASS (10%): 3.483,87 × 10% = 348,39 lei\n- Bază de calcul impozit: 3.483,87 − 870,97 − 348,39 = 2.264,52 lei\n- Impozit pe venit (10%): 226,45 lei (fără deducere personală, în acest exemplu)\n\n**Indemnizație netă de plată: 2.038,07 lei**\n\nAngajatorul datorează suplimentar CAM 2,25% la indemnizația brută: 3.483,87 × 2,25% = 78,39 lei, cost suportat integral de angajator.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "concediu-odihna-dreptul-si-durata",
+    "md": "Concediul de odihnă anual plătit este un drept fundamental, garantat tuturor salariaților care au un contract individual de muncă (CIM), indiferent de tipul contractului — normă întreagă, timp parțial, determinat sau nedeterminat. Potrivit art. 144 din Codul Muncii (Legea 53/2003), acest drept nu poate face obiectul vreunei cesiuni, renunțări sau limitări.\n\nDurata minimă legală este de **20 de zile lucrătoare pe an calendaristic** (art. 145 Codul Muncii). Este un prag minim obligatoriu — angajatorul poate acorda o durată mai mare prin contractul individual de muncă, regulamentul intern sau contractul colectiv de muncă (CCM), dar niciodată mai puțin de 20 de zile.\n\nDurata se calculează în **zile lucrătoare**, nu în zile calendaristice: sâmbetele, duminicile și sărbătorile legale nu sunt incluse în cele 20 de zile și nu se scad din concediul efectuat. Pentru un salariat cu normă întreagă (5 zile lucrătoare/săptămână), 20 de zile de concediu acoperă, de regulă, 4 săptămâni calendaristice.\n\nDreptul la concediu se naște de la data angajării, dar efectuarea lui integrală se face proporțional cu perioada lucrată în anul respectiv — un salariat angajat la jumătatea anului nu are dreptul la toate cele 20 de zile, ci la un număr proporțional (vezi exemplul de calcul de mai jos).",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "concediu-odihna-zile-suplimentare",
+    "md": "Pe lângă durata minimă legală de 20 de zile, anumite categorii de salariați pot beneficia de zile suplimentare de concediu de odihnă. Este cazul, de exemplu, al persoanelor care lucrează în condiții grele, periculoase sau vătămătoare, al persoanelor cu dizabilități sau al altor categorii protejate prin legi speciale.\n\nNumărul exact de zile suplimentare **nu este stabilit uniform prin Codul Muncii** pentru toate categoriile — el rezultă din legi speciale aplicabile categoriei respective sau din contractul colectiv de muncă (CCM) încheiat la nivel de unitate, grup de unități sau sector de activitate. Ca administrator de personal, verificați întotdeauna:\n- dacă există un CCM aplicabil în unitate și ce prevede acesta referitor la zilele suplimentare;\n- dacă salariatul se încadrează într-o categorie protejată prin lege specială;\n- documentele justificative (certificat de încadrare în grad de handicap, fișa postului cu condiții speciale de muncă etc.), care se păstrează la dosarul de personal, cu acces restricționat, conform principiului minimizării datelor din GDPR.\n\nZilele suplimentare se adaugă la cele 20 de zile minime și se acordă, se programează și se plătesc după aceleași reguli ca și concediul de odihnă standard.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "concediu-odihna-programare-si-indemnizatie",
+    "md": "Efectuarea concediului de odihnă se face pe baza unei **programări**, stabilită de angajator, cu consultarea salariatului sau, după caz, a sindicatului/reprezentanților salariaților, de regulă până la sfârșitul anului calendaristic pentru anul următor (art. 146 Codul Muncii). Programarea poate fi colectivă (pentru toată unitatea sau un compartiment) sau individuală, caz în care angajatorul este obligat să țină cont și de interesele salariatului la stabilirea perioadei.\n\nConcediul de odihnă se poate fracționa, cu condiția ca cel puțin una dintre fracțiuni să aibă o durată de minimum 10 zile lucrătoare consecutive.\n\nPe durata concediului, salariatul primește o **indemnizație de concediu**, care nu poate fi mai mică decât salariul de bază, indemnizațiile și sporurile cu caracter permanent cuvenite pentru perioada respectivă. Formula legală (art. 150 Codul Muncii): indemnizația se calculează pe baza mediei zilnice a drepturilor salariale din ultimele 3 luni anterioare celei în care se efectuează concediul, înmulțită cu numărul de zile de concediu.\n\nIndemnizația de concediu este asimilată fiscal veniturilor salariale: se aplică CAS 25%, CASS 10% și impozitul pe venit de 10% (la baza rămasă după deducerea CAS și CASS, și, după caz, a deducerii personale). Angajatorul datorează suplimentar CAM 2,25%, calculat la indemnizația brută — este un cost al angajatorului, nu o reținere din venitul salariatului. Indemnizația se plătește, de regulă, cu cel puțin 5 zile lucrătoare înainte de plecarea în concediu.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul indemnizației de concediu de odihnă",
+    "concept_key": "indemnizatie-concediu-calcul-exemplu",
+    "md": "Un salariat are un salariu de bază brut lunar constant de 5.000 lei (peste minimul de 4.325 lei, valabil de la 1 iulie 2026), fără sporuri cu caracter permanent. Solicită 10 zile lucrătoare de concediu de odihnă, care urmează să fie efectuate în august 2026.\n\n**Pasul 1 — media zilnică.** Se iau în calcul ultimele 3 luni anterioare concediului: mai, iunie și iulie 2026, cu 21, 20 și, respectiv, 23 de zile lucrătoare (total 64 zile lucrătoare). Venit brut total din cele 3 luni: 5.000 lei × 3 = 15.000 lei.\n\nMedia zilnică = 15.000 lei ÷ 64 zile = **234,38 lei/zi**.\n\n**Pasul 2 — indemnizația brută.** 234,38 lei × 10 zile = **2.343,80 lei brut**.\n\n**Pasul 3 — reținerile salariatului.**\n- CAS (25%): 2.343,80 × 25% = 585,95 lei\n- CASS (10%): 2.343,80 × 10% = 234,38 lei\n- Bază de calcul a impozitului: 2.343,80 − 585,95 − 234,38 = 1.523,47 lei\n- Impozit pe venit (10%): 152,35 lei (fără deducere personală, în acest exemplu)\n\n**Indemnizație netă de plată: 1.371,12 lei.**\n\nAngajatorul datorează, în plus, CAM 2,25% la indemnizația brută: 2.343,80 × 2,25% = 52,74 lei — cost suplimentar, nu reținere din venitul salariatului.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul proporțional al zilelor de concediu pentru un salariat nou-angajat",
+    "concept_key": "concediu-odihna-calcul-proportional",
+    "md": "O salariată este angajată cu contract individual de muncă pe durată nedeterminată începând cu 1 iulie 2026. Contractul colectiv de muncă aplicabil prevede exact durata minimă legală: 20 de zile lucrătoare de concediu de odihnă pe an.\n\nDeoarece salariata lucrează doar 6 luni din anul 2026 (iulie–decembrie), dreptul la concediu se calculează proporțional cu perioada efectiv lucrată:\n\nZile de concediu cuvenite = (20 zile ÷ 12 luni) × 6 luni lucrate = **10 zile lucrătoare**.\n\nDacă, până la finalul anului, salariata efectuează doar 6 zile din cele 10 cuvenite, diferența de 4 zile se reportează pentru efectuare în anul următor, cu acordul angajatorului, conform programării stabilite. Reportul nu transformă zilele neefectuate în bani — compensarea bănească a concediului rămas este posibilă doar dacă activitatea încetează prin desfacerea contractului individual de muncă.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 - Codul Muncii (republicată, cu modificările și completările ulterioare)",
+    "article": "Art. 144, 145, 146, 150",
+    "effective": "2003-03-01",
+    "md": "Art. 144 din Codul Muncii garantează dreptul la concediu de odihnă anual plătit, care nu poate face obiectul vreunei cesiuni, renunțări sau limitări. Art. 145 stabilește durata minimă a concediului de odihnă la 20 de zile lucrătoare pe an. Art. 146 reglementează programarea și efectuarea concediului (inclusiv fracționarea, cu o tranșă de minimum 10 zile lucrătoare consecutive) și interzice compensarea în bani, cu excepția încetării contractului individual de muncă. Art. 150 stabilește formula de calcul a indemnizației de concediu (media zilnică a veniturilor din ultimele 3 luni, înmulțită cu numărul de zile de concediu) și termenul de plată (cu cel puțin 5 zile lucrătoare înainte de plecarea în concediu).",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b6"
+   },
+   {
+    "type": "warning",
+    "md": "⚠️ Compensarea în bani a concediului de odihnă neefectuat este **interzisă** în timpul derulării contractului individual de muncă, indiferent dacă salariatul preferă bani în locul zilelor libere. Legea permite plata în bani a zilelor neefectuate DOAR la încetarea CIM (demisie, concediere, expirarea contractului etc.), pentru zilele rămase neefectuate din anii anteriori și din anul curent. Practicile de tipul „plătim concediul, dar salariatul continuă să lucreze” expun angajatorul la sancțiuni contravenționale în cazul unui control ITM. Pentru situații speciale (concediu neefectuat din motive medicale, concedii cumulate din mai mulți ani, contracte suspendate), recomandăm verificarea cu un consultant de specialitate în legislația muncii — regulile de mai sus sunt generale și nu înlocuiesc o consultanță juridică individuală.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un salariat are salariul de bază brut lunar constant de 4.800 lei, fără sporuri. În ultimele 3 luni anterioare concediului a lucrat un total de 62 de zile lucrătoare (venit brut total realizat: 14.400 lei). Salariatul solicită 15 zile lucrătoare de concediu de odihnă, aprobate pentru luna septembrie.\n\nCalculați:\na) media zilnică a veniturilor salariale;\nb) indemnizația brută de concediu;\nc) reținerile (CAS, CASS, impozit pe venit) și indemnizația netă de plată.",
+    "solution_md": "a) Media zilnică = 14.400 lei ÷ 62 zile = **232,26 lei/zi**\n\nb) Indemnizație brută = 232,26 lei × 15 zile = **3.483,87 lei**\n\nc) Rețineri:\n- CAS (25%): 3.483,87 × 25% = 870,97 lei\n- CASS (10%): 3.483,87 × 10% = 348,39 lei\n- Bază de calcul impozit: 3.483,87 − 870,97 − 348,39 = 2.264,52 lei\n- Impozit pe venit (10%): 226,45 lei (fără deducere personală, în acest exemplu)\n\n**Indemnizație netă de plată: 2.038,07 lei**\n\nAngajatorul datorează suplimentar CAM 2,25% la indemnizația brută: 3.483,87 × 2,25% = 78,39 lei, cost suportat integral de angajator.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este durata minimă legală a concediului de odihnă anual, conform Codului Muncii (Legea 53/2003)?",
+    "choices": [
+     "15 zile lucrătoare",
+     "18 zile lucrătoare",
+     "20 zile lucrătoare",
+     "21 zile lucrătoare"
+    ],
+    "answer": 2,
+    "explain": "Art. 145 din Codul Muncii stabilește un prag minim de 20 de zile lucrătoare pe an; angajatorul poate acorda mai mult, niciodată mai puțin.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În ce situație este permisă compensarea în bani a concediului de odihnă neefectuat?",
+    "choices": [
+     "Oricând, la simpla cerere a salariatului",
+     "Doar la încetarea contractului individual de muncă",
+     "Niciodată, indiferent de situație",
+     "Doar dacă angajatorul decide discreționar, în orice moment al anului"
+    ],
+    "answer": 1,
+    "explain": "Art. 146 din Codul Muncii interzice compensarea bănească în timpul derulării CIM; aceasta este permisă exclusiv la încetarea contractului, pentru zilele de concediu rămase neefectuate.",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata minimă legală a concediului de odihnă anual în România?",
+    "back": "Minimum 20 de zile lucrătoare pe an, conform art. 145 din Codul Muncii (Legea 53/2003).",
+    "concept_key": "concediu-odihna-durata-minima",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează indemnizația de concediu de odihnă?",
+    "back": "Media zilnică a veniturilor salariale din ultimele 3 luni anterioare concediului, înmulțită cu numărul de zile de concediu efectuate (art. 150 Codul Muncii).",
+    "concept_key": "indemnizatie-concediu-formula",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Poate fi compensat în bani concediul de odihnă neefectuat, cât timp contractul de muncă este activ?",
+    "back": "Nu. Compensarea în bani este permisă doar la încetarea contractului individual de muncă (art. 146 Codul Muncii).",
+    "concept_key": "concediu-odihna-compensare-bani",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine stabilește programarea concediilor de odihnă în cadrul unei firme?",
+    "back": "Angajatorul, cu consultarea salariatului sau a reprezentanților acestuia, de regulă până la sfârșitul anului anterior celui în care se efectuează concediul.",
+    "concept_key": "concediu-odihna-programare",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reținere reprezintă cea mai mare parte din indemnizația brută de concediu?",
+    "back": "CAS (contribuția de asigurări sociale) de 25%, urmată de CASS 10% și impozitul pe venit de 10% aplicat la baza rămasă.",
+    "concept_key": "concediu-odihna-retineri-salariale",
+    "blockId": "cmjjuxwal00ilumkp53fssukj-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1331,
+   "flashcards": 5
+  }
+ }
+}

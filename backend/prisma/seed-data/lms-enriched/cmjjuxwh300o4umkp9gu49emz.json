@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxwh300o4umkp9gu49emz",
+ "courseId": "cmjjuxwfu00muumkpg2yfuclq",
+ "course": "Communication Skills pentru Profesioniști",
+ "module": "Prezentări cu Impact",
+ "lesson": "Slide design eficient",
+ "category": "SOFT_SKILLS",
+ "content": "# Slide design eficient\n\n## Principiul central: un slide, o singură idee\n\nCea mai frecventă greșeală în prezentările de business din România este supraîncărcarea slide-urilor: titlu, 8 bullet-uri, un tabel și un grafic, toate pe aceeași diapozitivă. Rezultatul este că audiența nu te mai ascultă — citește. Creierul uman nu poate procesa simultan un text scris și un vorbitor care spune altceva; când pui prea multă informație pe ecran, publicul alege automat lectura, iar mesajul tău verbal devine zgomot de fundal.\n\nSoluția este principiul „un slide, o singură idee”: fiecare diapozitivă comunică un singur gând, o singură concluzie sau o singură cifră-cheie. Dacă simți nevoia să folosești cuvântul „și” pentru a descrie ce conține un slide („acest slide arată vânzările ȘI structura echipei ȘI planul de buget”), înseamnă că ai nevoie de trei slide-uri, nu de unul.\n\nAcest principiu schimbă și modul în care gândești o prezentare: nu mai pornești de la slide-uri, ci de la mesaje. Scrie mai întâi, pe hârtie sau într-un document, lista mesajelor-cheie pe care vrei să le transmiți (de regulă 5-8 pentru o prezentare de 15-20 de minute), apoi construiește câte un slide pentru fiecare. O prezentare cu 20 de slide-uri simple, clare, este mai eficientă decât una cu 8 slide-uri aglomerate.\n\n## Text minimal: slide-ul este suport vizual, nu document\n\nUn slide de prezentare nu este un document Word proiectat pe ecran. Rolul lui este să susțină vizual ce spui tu, nu să reproducă în scris tot discursul. Un ghid practic, folosit frecvent în trainingurile de prezentare, este regula 6x6: maximum 6 rânduri de text pe slide și maximum 6 cuvinte pe rând. Nu este o lege absolută, ci un reper care te obligă să sintetizezi.\n\nÎn practică, aplici regula astfel:\n- Înlocuiești propozițiile complete cu cuvinte-cheie sau expresii scurte („Creștere 25% T2” în loc de „În trimestrul doi am înregistrat o creștere a vânzărilor de 25% față de perioada anterioară”).\n- Muți detaliile explicative în ceea ce spui tu, nu în text.\n- Folosești vizualul (fotografie, iconiță, grafic, diagramă simplă) în locul unui paragraf descriptiv, ori de câte ori este posibil.\n- Rezervi fraze complete doar pentru citate exacte, definiții legale sau formulări pe care nu vrei să le parafrazezi.\n\nUn test rapid, util în orice ședință de pregătire a unei prezentări pentru clienți sau conducere: privește slide-ul de la 2 metri distanță, timp de 3 secunde. Dacă nu poți spune despre ce este vorba în acele 3 secunde, slide-ul are prea mult text sau prea multe elemente vizuale concurente.\n\n## Consistență vizuală: același sistem, de la primul la ultimul slide\n\nO prezentare arată profesionist nu pentru că fiecare slide este spectaculos, ci pentru că toate slide-urile respectă același sistem vizual. Inconsecvența (fonturi diferite, culori care se schimbă fără motiv, logo-ul plasat altfel pe fiecare pagină) transmite lipsă de rigoare, chiar dacă informația de dedesubt este solidă — un aspect important atunci când prezinți în fața unui client, a unei bănci finanțatoare sau a unui board de conducere.\n\nElementele de consistență pe care le stabilești înainte de a construi conținutul:\n- **Paletă de culori**: 2-3 culori principale (de regulă culorile de brand ale firmei) plus 1 culoare de accent, folosită constant pentru a evidenția cifra sau ideea importantă. Evită să introduci o culoare nouă pentru fiecare slide.\n- **Fonturi**: maximum 2 fonturi în toată prezentarea — unul pentru titluri, unul pentru text. Fonturi sans-serif (Calibri, Arial, Segoe UI) sunt mai lizibile pe ecran/proiector decât cele serif.\n- **Grilă și aliniere**: titlul în aceeași poziție pe fiecare slide, logo-ul în același colț, marginile identice. Folosește ghidajele (guides) și funcția de aliniere din PowerPoint/Google Slides în loc să poziționezi elementele „din ochi”.\n- **Ierarhie vizuală**: dimensiunea și grosimea fontului arată importanța — titlul cel mai mare, mesajul-cheie proeminent, detaliile secundare mai mici sau mai șterse cromatic.\n\nCel mai simplu mod de a garanta consistența este să construiești un șablon (template) master la începutul lucrului și să adaugi conținut în el, nu invers.\n\n## Exemplu: De la slide aglomerat la trei slide-uri clare\nO consultantă pregătește o prezentare pentru conducerea unui SRL de distribuție, despre rezultatele echipei de vânzări. Varianta inițială avea un singur slide intitulat „Rezultate echipa de vânzări”, cu următorul conținut: titlu, un tabel cu vânzările pe 4 regiuni, un grafic de evoluție lunară, o listă cu 3 provocări întâmpinate și o listă cu 2 propuneri pentru trimestrul următor — totul pe o singură diapozitivă, cu font 14.\n\n**Aplicând principiul „un slide, o idee”, conținutul devine trei slide-uri:**\n\n1. Slide 1 — titlu: „Vânzări în creștere în toate cele 4 regiuni”. Conținut: doar graficul de evoluție lunară, cu o singură cifră evidențiată cu culoarea de accent (ex. „+18% față de trimestrul anterior”).\n2. Slide 2 — titlu: „Două provocări principale au încetinit ritmul”. Conținut: 2 iconițe simple (ex. stoc, logistică) cu câte 2-3 cuvinte fiecare, nu propoziții.\n3. Slide 3 — titlu: „Propunerea noastră pentru trimestrul următor”. Conținut: 2 propuneri, fiecare cu un scurt argument numeric.\n\nRezultatul: prezentatoarea vorbește pe larg despre fiecare temă, iar audiența urmărește ideea principală de pe ecran fără să citească un paragraf întreg în timp ce ea explică altceva.\n\n## Exemplu: Un tabel cu cifre devine un grafic simplu\nDatele financiare sunt zona în care tentația de a pune „tot” pe un slide este cea mai mare. Să presupunem un exemplu ipotetic: o firmă vrea să arate evoluția veniturilor pe ultimele trei trimestre — T1: 420.000 lei, T2: 480.000 lei, T3: 560.000 lei.\n\nVarianta greșită: un tabel cu 3 coloane (trimestru, venituri, procent de creștere) plus o a patra coloană cu costuri și o a cincea cu marja — 5 coloane, 3 rânduri, font mic pentru a încăpea totul pe slide. Audiența are nevoie de 15-20 de secunde să „citească” tabelul, timp în care nu te mai ascultă.\n\nVarianta corectă pentru slide: un grafic de tip bară sau linie, cu doar cele 3 valori de venituri, etichetate direct pe grafic (nu într-o legendă separată), cu ultima bară evidențiată în culoarea de accent și un singur text deasupra graficului: „Creștere constantă: +33% în 2 trimestre”. Restul cifrelor (costuri, marjă, detalii pe regiuni) rămân în vorbirea ta sau într-un material anexă (handout) distribuit separat, nu pe slide.\n\nRegula practică: dacă ai nevoie de mai mult de 10 secunde ca să explici un tabel, transformă-l într-un grafic sau elimină coloanele care nu susțin direct mesajul acelui slide.\n\n⚠ Nu citi slide-urile cuvânt cu cuvânt în fața audienței — este cea mai frecventă greșeală care anulează orice efort de design bun. Dacă textul de pe slide este identic cu ce spui tu, publicul citește mai repede decât vorbești și te „depășește”, apoi așteaptă plictisit. De asemenea, evită animațiile și tranzițiile excesive (litere care zboară, sunete la fiecare click): ele distrag atenția de la mesaj și, în context profesional (prezentare către un client, o bancă sau o comisie), pot fi percepute ca lipsă de seriozitate.\n\n## Exercițiu\nAi primit următorul text, pregătit inițial pentru UN SINGUR slide de raportare lunară către management, la o firmă de servicii:\n\n„Raport lunar echipa de suport clienți: Am gestionat 1.240 de tichete în luna curentă, cu 15% mai multe decât luna trecută. Timpul mediu de răspuns a fost de 4 ore, față de ținta de 6 ore. Rata de satisfacție a clienților (CSAT) a fost de 92%. Principalele probleme raportate au fost legate de facturare (35% din tichete) și de acces în cont (20% din tichete). Propunem angajarea unei persoane suplimentare în echipă și implementarea unui sistem de întrebări frecvente (FAQ) pe site pentru a reduce volumul de tichete de facturare.”\n\nSarcina ta: redesenează acest conținut în 3 slide-uri, aplicând principiile din această lecție (un slide/o idee, text minimal, vizual în locul textului lung). Pentru fiecare slide, notează titlul și ce elemente vizuale ai folosi (nu este nevoie să deschizi PowerPoint, doar descrie structura).\n\n**Soluție:** O variantă corectă de rezolvare, respectând principiile lecției:\n\n**Slide 1 — titlu: „Volum și viteză: peste așteptări”**\n- Vizual: două cifre mari, una lângă alta, cu culoarea de accent: „1.240 tichete (+15%)” și „4h timp mediu de răspuns (țintă: 6h)”.\n- Fără propoziții complete, fără tabel — doar cele două cifre-cheie, explicate verbal de prezentator.\n\n**Slide 2 — titlu: „92% satisfacție, dar două zone de risc”**\n- Vizual: un grafic simplu tip „donut” sau bare pentru CSAT (92%), plus două iconițe (factură, lacăt de cont) cu procentele 35% și 20% alături, fără text explicativ suplimentar.\n- Ideea centrală: satisfacția e bună, dar concentrarea problemelor pe facturare și acces în cont e semnalul de acțiune.\n\n**Slide 3 — titlu: „Propunere: o persoană în plus + FAQ online”**\n- Vizual: două iconițe simple (o persoană, un ecran cu semn de întrebare), fiecare cu 2-3 cuvinte, nu propoziție completă.\n- Argumentul numeric (reducerea estimată a tichetelor de facturare) se spune verbal, nu se scrie integral pe slide.\n\nObservă că textul inițial, care ar fi umplut un singur slide aglomerat cu 6 idei diferite, devine 3 slide-uri clare, fiecare cu un mesaj central ușor de reținut.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "un-slide-o-idee",
+    "md": "## Principiul central: un slide, o singură idee\n\nCea mai frecventă greșeală în prezentările de business din România este supraîncărcarea slide-urilor: titlu, 8 bullet-uri, un tabel și un grafic, toate pe aceeași diapozitivă. Rezultatul este că audiența nu te mai ascultă — citește. Creierul uman nu poate procesa simultan un text scris și un vorbitor care spune altceva; când pui prea multă informație pe ecran, publicul alege automat lectura, iar mesajul tău verbal devine zgomot de fundal.\n\nSoluția este principiul „un slide, o singură idee”: fiecare diapozitivă comunică un singur gând, o singură concluzie sau o singură cifră-cheie. Dacă simți nevoia să folosești cuvântul „și” pentru a descrie ce conține un slide („acest slide arată vânzările ȘI structura echipei ȘI planul de buget”), înseamnă că ai nevoie de trei slide-uri, nu de unul.\n\nAcest principiu schimbă și modul în care gândești o prezentare: nu mai pornești de la slide-uri, ci de la mesaje. Scrie mai întâi, pe hârtie sau într-un document, lista mesajelor-cheie pe care vrei să le transmiți (de regulă 5-8 pentru o prezentare de 15-20 de minute), apoi construiește câte un slide pentru fiecare. O prezentare cu 20 de slide-uri simple, clare, este mai eficientă decât una cu 8 slide-uri aglomerate.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "text-minimal-slide",
+    "md": "## Text minimal: slide-ul este suport vizual, nu document\n\nUn slide de prezentare nu este un document Word proiectat pe ecran. Rolul lui este să susțină vizual ce spui tu, nu să reproducă în scris tot discursul. Un ghid practic, folosit frecvent în trainingurile de prezentare, este regula 6x6: maximum 6 rânduri de text pe slide și maximum 6 cuvinte pe rând. Nu este o lege absolută, ci un reper care te obligă să sintetizezi.\n\nÎn practică, aplici regula astfel:\n- Înlocuiești propozițiile complete cu cuvinte-cheie sau expresii scurte („Creștere 25% T2” în loc de „În trimestrul doi am înregistrat o creștere a vânzărilor de 25% față de perioada anterioară”).\n- Muți detaliile explicative în ceea ce spui tu, nu în text.\n- Folosești vizualul (fotografie, iconiță, grafic, diagramă simplă) în locul unui paragraf descriptiv, ori de câte ori este posibil.\n- Rezervi fraze complete doar pentru citate exacte, definiții legale sau formulări pe care nu vrei să le parafrazezi.\n\nUn test rapid, util în orice ședință de pregătire a unei prezentări pentru clienți sau conducere: privește slide-ul de la 2 metri distanță, timp de 3 secunde. Dacă nu poți spune despre ce este vorba în acele 3 secunde, slide-ul are prea mult text sau prea multe elemente vizuale concurente.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "consistenta-vizuala-slide",
+    "md": "## Consistență vizuală: același sistem, de la primul la ultimul slide\n\nO prezentare arată profesionist nu pentru că fiecare slide este spectaculos, ci pentru că toate slide-urile respectă același sistem vizual. Inconsecvența (fonturi diferite, culori care se schimbă fără motiv, logo-ul plasat altfel pe fiecare pagină) transmite lipsă de rigoare, chiar dacă informația de dedesubt este solidă — un aspect important atunci când prezinți în fața unui client, a unei bănci finanțatoare sau a unui board de conducere.\n\nElementele de consistență pe care le stabilești înainte de a construi conținutul:\n- **Paletă de culori**: 2-3 culori principale (de regulă culorile de brand ale firmei) plus 1 culoare de accent, folosită constant pentru a evidenția cifra sau ideea importantă. Evită să introduci o culoare nouă pentru fiecare slide.\n- **Fonturi**: maximum 2 fonturi în toată prezentarea — unul pentru titluri, unul pentru text. Fonturi sans-serif (Calibri, Arial, Segoe UI) sunt mai lizibile pe ecran/proiector decât cele serif.\n- **Grilă și aliniere**: titlul în aceeași poziție pe fiecare slide, logo-ul în același colț, marginile identice. Folosește ghidajele (guides) și funcția de aliniere din PowerPoint/Google Slides în loc să poziționezi elementele „din ochi”.\n- **Ierarhie vizuală**: dimensiunea și grosimea fontului arată importanța — titlul cel mai mare, mesajul-cheie proeminent, detaliile secundare mai mici sau mai șterse cromatic.\n\nCel mai simplu mod de a garanta consistența este să construiești un șablon (template) master la începutul lucrului și să adaugi conținut în el, nu invers.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b3"
+   },
+   {
+    "type": "example",
+    "title": "De la slide aglomerat la trei slide-uri clare",
+    "concept_key": "un-slide-o-idee",
+    "md": "O consultantă pregătește o prezentare pentru conducerea unui SRL de distribuție, despre rezultatele echipei de vânzări. Varianta inițială avea un singur slide intitulat „Rezultate echipa de vânzări”, cu următorul conținut: titlu, un tabel cu vânzările pe 4 regiuni, un grafic de evoluție lunară, o listă cu 3 provocări întâmpinate și o listă cu 2 propuneri pentru trimestrul următor — totul pe o singură diapozitivă, cu font 14.\n\n**Aplicând principiul „un slide, o idee”, conținutul devine trei slide-uri:**\n\n1. Slide 1 — titlu: „Vânzări în creștere în toate cele 4 regiuni”. Conținut: doar graficul de evoluție lunară, cu o singură cifră evidențiată cu culoarea de accent (ex. „+18% față de trimestrul anterior”).\n2. Slide 2 — titlu: „Două provocări principale au încetinit ritmul”. Conținut: 2 iconițe simple (ex. stoc, logistică) cu câte 2-3 cuvinte fiecare, nu propoziții.\n3. Slide 3 — titlu: „Propunerea noastră pentru trimestrul următor”. Conținut: 2 propuneri, fiecare cu un scurt argument numeric.\n\nRezultatul: prezentatoarea vorbește pe larg despre fiecare temă, iar audiența urmărește ideea principală de pe ecran fără să citească un paragraf întreg în timp ce ea explică altceva.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b4"
+   },
+   {
+    "type": "example",
+    "title": "Un tabel cu cifre devine un grafic simplu",
+    "concept_key": "vizualizare-date-slide",
+    "md": "Datele financiare sunt zona în care tentația de a pune „tot” pe un slide este cea mai mare. Să presupunem un exemplu ipotetic: o firmă vrea să arate evoluția veniturilor pe ultimele trei trimestre — T1: 420.000 lei, T2: 480.000 lei, T3: 560.000 lei.\n\nVarianta greșită: un tabel cu 3 coloane (trimestru, venituri, procent de creștere) plus o a patra coloană cu costuri și o a cincea cu marja — 5 coloane, 3 rânduri, font mic pentru a încăpea totul pe slide. Audiența are nevoie de 15-20 de secunde să „citească” tabelul, timp în care nu te mai ascultă.\n\nVarianta corectă pentru slide: un grafic de tip bară sau linie, cu doar cele 3 valori de venituri, etichetate direct pe grafic (nu într-o legendă separată), cu ultima bară evidențiată în culoarea de accent și un singur text deasupra graficului: „Creștere constantă: +33% în 2 trimestre”. Restul cifrelor (costuri, marjă, detalii pe regiuni) rămân în vorbirea ta sau într-un material anexă (handout) distribuit separat, nu pe slide.\n\nRegula practică: dacă ai nevoie de mai mult de 10 secunde ca să explici un tabel, transformă-l într-un grafic sau elimină coloanele care nu susțin direct mesajul acelui slide.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Nu citi slide-urile cuvânt cu cuvânt în fața audienței — este cea mai frecventă greșeală care anulează orice efort de design bun. Dacă textul de pe slide este identic cu ce spui tu, publicul citește mai repede decât vorbești și te „depășește”, apoi așteaptă plictisit. De asemenea, evită animațiile și tranzițiile excesive (litere care zboară, sunete la fiecare click): ele distrag atenția de la mesaj și, în context profesional (prezentare către un client, o bancă sau o comisie), pot fi percepute ca lipsă de seriozitate.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai primit următorul text, pregătit inițial pentru UN SINGUR slide de raportare lunară către management, la o firmă de servicii:\n\n„Raport lunar echipa de suport clienți: Am gestionat 1.240 de tichete în luna curentă, cu 15% mai multe decât luna trecută. Timpul mediu de răspuns a fost de 4 ore, față de ținta de 6 ore. Rata de satisfacție a clienților (CSAT) a fost de 92%. Principalele probleme raportate au fost legate de facturare (35% din tichete) și de acces în cont (20% din tichete). Propunem angajarea unei persoane suplimentare în echipă și implementarea unui sistem de întrebări frecvente (FAQ) pe site pentru a reduce volumul de tichete de facturare.”\n\nSarcina ta: redesenează acest conținut în 3 slide-uri, aplicând principiile din această lecție (un slide/o idee, text minimal, vizual în locul textului lung). Pentru fiecare slide, notează titlul și ce elemente vizuale ai folosi (nu este nevoie să deschizi PowerPoint, doar descrie structura).",
+    "solution_md": "O variantă corectă de rezolvare, respectând principiile lecției:\n\n**Slide 1 — titlu: „Volum și viteză: peste așteptări”**\n- Vizual: două cifre mari, una lângă alta, cu culoarea de accent: „1.240 tichete (+15%)” și „4h timp mediu de răspuns (țintă: 6h)”.\n- Fără propoziții complete, fără tabel — doar cele două cifre-cheie, explicate verbal de prezentator.\n\n**Slide 2 — titlu: „92% satisfacție, dar două zone de risc”**\n- Vizual: un grafic simplu tip „donut” sau bare pentru CSAT (92%), plus două iconițe (factură, lacăt de cont) cu procentele 35% și 20% alături, fără text explicativ suplimentar.\n- Ideea centrală: satisfacția e bună, dar concentrarea problemelor pe facturare și acces în cont e semnalul de acțiune.\n\n**Slide 3 — titlu: „Propunere: o persoană în plus + FAQ online”**\n- Vizual: două iconițe simple (o persoană, un ecran cu semn de întrebare), fiecare cu 2-3 cuvinte, nu propoziție completă.\n- Argumentul numeric (reducerea estimată a tichetelor de facturare) se spune verbal, nu se scrie integral pe slide.\n\nObservă că textul inițial, care ar fi umplut un singur slide aglomerat cu 6 idei diferite, devine 3 slide-uri clare, fiecare cu un mesaj central ușor de reținut.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform regulii 6x6 folosite ca reper în design de prezentări, care este limita orientativă recomandată?",
+    "choices": [
+     "Maximum 6 slide-uri pe prezentare și 6 minute alocate",
+     "Maximum 6 rânduri de text pe slide și maximum 6 cuvinte pe rând",
+     "Maximum 6 culori diferite pe slide",
+     "Maximum 6 fonturi diferite în toată prezentarea"
+    ],
+    "answer": 1,
+    "explain": "Regula 6x6 este un ghid orientativ (nu o lege rigidă) pentru text minimal: maximum 6 rânduri pe slide, maximum 6 cuvinte pe rând. Scopul este să te oblige să sintetizezi și să muți detaliile în discursul verbal, nu pe ecran.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ai un set de date financiare (evoluția veniturilor pe 3 trimestre) pe care vrei să îl prezinți pe un slide către conducere. Care este abordarea recomandată?",
+    "choices": [
+     "Un tabel complet, cu toate coloanele disponibile (venituri, costuri, marjă, regiuni), pentru transparență totală",
+     "Un grafic simplu (bară sau linie) cu doar cifrele relevante pentru mesajul acelui slide, evidențiind valoarea-cheie",
+     "Se citesc cifrele cu voce tare, fără niciun element vizual pe slide",
+     "Un slide separat pentru fiecare cifră individuală din tabel"
+    ],
+    "answer": 1,
+    "explain": "Un grafic simplu, cu doar datele relevante pentru mesajul central al slide-ului, se citește în câteva secunde. Un tabel complet cu multe coloane obligă audiența să citească în loc să te asculte; detaliile suplimentare rămân pentru discuția verbală sau un material anexă.",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este principiul central al unui slide eficient?",
+    "back": "Un slide, o singură idee: fiecare diapozitivă transmite un singur mesaj sau o singură concluzie-cheie, nu mai multe teme combinate.",
+    "concept_key": "un-slide-o-idee",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă regula 6x6 în design de prezentări?",
+    "back": "Un reper orientativ: maximum 6 rânduri de text pe slide și maximum 6 cuvinte pe rând, folosit pentru a forța sintetizarea conținutului.",
+    "concept_key": "text-minimal-slide",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte fonturi diferite ar trebui folosite, de regulă, într-o prezentare profesională?",
+    "back": "Maximum 2 fonturi în toată prezentarea — unul pentru titluri, unul pentru text — pentru a păstra consistența vizuală.",
+    "concept_key": "consistenta-vizuala-slide",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce este preferat un grafic simplu în locul unui tabel cu multe coloane pe un slide de date financiare?",
+    "back": "Pentru că un grafic cu doar cifrele relevante se citește în câteva secunde, în timp ce un tabel complex obligă audiența să citească în loc să asculte prezentatorul.",
+    "concept_key": "vizualizare-date-slide",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cea mai frecventă greșeală de prezentare legată de citirea slide-urilor?",
+    "back": "Citirea slide-urilor cuvânt cu cuvânt: dacă textul de pe ecran este identic cu ce spune prezentatorul, audiența citește mai repede și pierde interesul, așteptând plictisită.",
+    "concept_key": "citire-slide-cuvant-cuvant",
+    "blockId": "cmjjuxwh300o4umkp9gu49emz-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1469,
+   "flashcards": 5
+  }
+ }
+}

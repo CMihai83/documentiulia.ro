@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvpz003fumkp5m32g8yc",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Programare VBA de Bază",
+ "lesson": "Bucle (For, Do While, For Each)",
+ "category": "EXCEL_VBA",
+ "content": "# Bucle (For, Do While, For Each)\n\n## De ce avem nevoie de bucle\n\nÎn lecțiile anterioare ai scris cod VBA care rulează o singură dată, linie cu linie. Dar ce faci când trebuie să prelucrezi 500 de rânduri dintr-un centralizator de facturi, sau să verifici fiecare foaie dintr-un registru de calcul cu 12 luni? Nu poți scrie manual 500 de instrucțiuni identice.\n\n**Bucla** (în engleză *loop*) este structura de control care repetă un bloc de instrucțiuni de mai multe ori, fie de un număr cunoscut de ori, fie până când o condiție se schimbă. VBA pune la dispoziție trei tipuri principale de bucle, fiecare potrivită pentru un scenariu diferit:\n\n1. **For...Next** — când știi dinainte de câte ori se repetă bucla (ex: de la rândul 2 la rândul 100).\n2. **Do While...Loop / Do Until...Loop** — când repetarea depinde de o condiție care se poate schimba în timp real (ex: „cât timp celula nu este goală”).\n3. **For Each...Next** — când parcurgi elementele unei colecții de obiecte (toate foile unui registru, toate celulele unui interval, toate fișierele dintr-un folder).\n\nAceastă lecție îți arată sintaxa exactă, capcanele frecvente (bucla infinită) și exemple complete, rulabile, cu date tipice unei firme din România (SRL cu vânzări, facturi, angajați).\n\n## Bucla For...Next\n\nSintaxa de bază:\n\n```vba\nFor contor = valoare_start To valoare_final [Step pas]\n    ' instrucțiuni de repetat\nNext contor\n```\n\n- `contor` este o variabilă numerică (de obicei `Integer` sau `Long`) care se incrementează automat la fiecare iterație.\n- `Step pas` este opțional; dacă lipsește, pasul implicit este 1. Poți folosi `Step -1` pentru a număra descrescător, sau `Step 2` pentru a sări din doi în doi.\n- `Exit For` întrerupe bucla imediat, util când ai găsit ce căutai și nu mai are rost să continui parcurgerea.\n\nExemplu minimal:\n\n```vba\nSub NumaraPana10()\n    Dim i As Integer\n    For i = 1 To 10\n        Debug.Print i ' scrie 1,2,3...10 in Immediate Window (Ctrl+G)\n    Next i\nEnd Sub\n```\n\nÎn practică, `contor` se folosește aproape mereu pentru a indexa rânduri sau coloane dintr-un `Range`, de exemplu `Cells(i, 1)` pentru rândul `i`, coloana 1.\n\n## Bucla Do While / Do Until\n\nSpre deosebire de `For...Next`, aici numărul de repetări nu este cunoscut dinainte — bucla continuă cât timp (sau până când) o condiție logică este îndeplinită. Există patru variante, toate valide:\n\n```vba\n' Testează condiția LA ÎNCEPUT (poate rula de 0 ori)\nDo While conditie\n    ' instrucțiuni\nLoop\n\nDo Until conditie\n    ' instrucțiuni\nLoop\n\n' Testează condiția LA FINAL (rulează garantat cel puțin o dată)\nDo\n    ' instrucțiuni\nLoop While conditie\n\nDo\n    ' instrucțiuni\nLoop Until conditie\n```\n\n- `Do While` repetă **cât timp** condiția este adevărată (`True`).\n- `Do Until` repetă **până când** condiția devine adevărată (echivalent cu `Do While Not conditie`).\n- `Exit Do` iese imediat din buclă, similar cu `Exit For`.\n\nCel mai frecvent scenariu în Excel: parcurgerea rândurilor unei coloane până la prima celulă goală, folosind `Do Until Cells(i, 1).Value = \"\"`. Numărul de rânduri nu este fix — depinde de câte facturi sau produse există în acel moment, deci `Do Until` este alegerea corectă, nu `For...Next`.\n\n## Bucla For Each...Next\n\n`For Each` parcurge fiecare element dintr-o **colecție** de obiecte, fără să fie nevoie de un contor numeric. Este cea mai naturală buclă atunci când lucrezi cu obiecte Excel: foi de calcul, celule dintr-un interval, registre deschise sau fișiere dintr-un folder.\n\n```vba\nFor Each element In colectie\n    ' instrucțiuni care folosesc element\nNext element\n```\n\nExemple de colecții tipice în VBA:\n\n- `Worksheets` — toate foile din registrul de calcul curent (`ThisWorkbook.Worksheets`).\n- `Range(\"A1:A10\")` — fiecare celulă individuală dintr-un interval.\n- `Workbooks` — toate registrele deschise în Excel în acel moment.\n\nExemplu minimal:\n\n```vba\nSub ListaFoi()\n    Dim foaie As Worksheet\n    For Each foaie In ThisWorkbook.Worksheets\n        Debug.Print foaie.Name\n    Next foaie\nEnd Sub\n```\n\nVariabila `foaie` trebuie declarată cu tipul potrivit colecției (`Worksheet`, `Range` pentru celule, `Workbook` pentru registre). Alegerea greșită a tipului generează eroare de compilare, ceea ce te ajută de fapt să prinzi greșeli înainte de rulare.\n\n## Exemplu: Colorare automată a vânzărilor lunare cu For...Next\nFirma Contarom SRL ține evidența vânzărilor lunare în coloana B (rândurile 2-13, ianuarie-decembrie), în lei. Vrem ca fiecare lună cu vânzări peste 5.000 lei să fie colorată verde, iar cea sub prag, roșu deschis.\n\n```vba\nSub ColoreazaVanzari()\n    Dim i As Integer\n    Dim pragMinim As Double\n    pragMinim = 5000 ' prag exprimat in lei\n\n    ' Rândurile 2 la 13 corespund celor 12 luni ale anului\n    For i = 2 To 13\n        If Cells(i, 2).Value >= pragMinim Then\n            Cells(i, 2).Interior.Color = RGB(198, 239, 206) ' verde deschis\n        Else\n            Cells(i, 2).Interior.Color = RGB(255, 199, 206) ' rosu deschis\n        End If\n    Next i\n\n    MsgBox \"Colorarea vanzarilor lunare s-a incheiat.\"\nEnd Sub\n```\n\nObservă că am folosit `Step` implicit (1), pentru că avansăm rând cu rând. Dacă am fi vrut să verificăm doar lunile pare, am fi scris `For i = 2 To 13 Step 2`.\n\n## Exemplu: Citirea facturilor până la prima celulă goală cu Do Until\nLa firma Contarom SRL, coloana A conține numărul facturii, iar coloana B valoarea în lei. Numărul de facturi variază de la o lună la alta, deci nu putem folosi un `For...Next` cu limită fixă — trebuie să ne oprim exact acolo unde datele se termină.\n\n```vba\nSub InsumeazaFacturi()\n    Dim i As Long\n    Dim totalFacturi As Double\n\n    i = 2 ' pornim de la primul rand cu date (rândul 1 are anteturile)\n    totalFacturi = 0\n\n    Do Until Cells(i, 1).Value = \"\"\n        totalFacturi = totalFacturi + Cells(i, 2).Value\n        i = i + 1 ' pas obligatoriu: fara el, bucla ar deveni infinita\n    Loop\n\n    MsgBox \"Total facturat: \" & Format(totalFacturi, \"#,##0.00\") & \" lei\" & vbCrLf & _\n           \"Numar facturi procesate: \" & (i - 2)\nEnd Sub\n```\n\nBucla se oprește automat când `Cells(i, 1)` este goală, indiferent dacă avem 20 sau 2.000 de facturi. Linia `i = i + 1` este esențială — o discutăm în detaliu în blocul de avertisment de mai jos.\n\n⚠ **Cel mai frecvent bug al buclelor Do While/Until: bucla infinită.**\n\nDacă uiți să actualizezi variabila din condiția de test (ex: `i = i + 1`), sau condiția rămâne mereu adevărată dintr-o greșeală de logică, VBA va rula bucla la nesfârșit, iar Excel pare că „îngheață”. Pentru a opri manual o buclă infinită, apasă **Ctrl+Break** (sau **Esc** pe unele configurații) — va apărea un dialog de eroare care îți permite să oprești execuția (`End`) sau să treci în modul debug (`Debug`).\n\nRegulă de aur: la orice `Do While`/`Do Until`, verifică imediat că există o instrucțiune care modifică, la fiecare iterație, variabila testată în condiție.\n\n## Exercițiu\nFirma Contarom SRL are, în intervalul `B2:B15` din foaia activă, valorile în lei ale unor facturi emise către clienți. Scrie o macro VBA care:\n\n1. Folosește o buclă **For Each** pentru a parcurge fiecare celulă din intervalul `B2:B15`.\n2. Numără câte facturi au valoarea mai mare de 1.000 lei.\n3. Afișează rezultatul într-un `MsgBox`, cu textul: \"Numar facturi peste 1000 lei: X\".\n\nIndicație: declară o variabilă obiect de tip `Range` pentru celulă și o variabilă `Integer` pentru contor.\n\n**Soluție:** ```vba\nSub NumaraFacturiMari()\n    Dim celula As Range\n    Dim contorFacturi As Integer\n    Dim pragMinim As Double\n\n    pragMinim = 1000 ' prag in lei\n    contorFacturi = 0\n\n    For Each celula In Range(\"B2:B15\")\n        If celula.Value > pragMinim Then\n            contorFacturi = contorFacturi + 1\n        End If\n    Next celula\n\n    MsgBox \"Numar facturi peste 1000 lei: \" & contorFacturi\nEnd Sub\n```\n\nExplicație: `celula` este declarată ca `Range`, tipul corect pentru elementele unui interval de celule. `For Each` parcurge automat cele 14 celule din `B2:B15`, fără să fie nevoie să calculăm manual câte rânduri sunt — ceea ce face codul mai robust dacă intervalul se extinde ulterior.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vba-bucle-introducere",
+    "md": "## De ce avem nevoie de bucle\n\nÎn lecțiile anterioare ai scris cod VBA care rulează o singură dată, linie cu linie. Dar ce faci când trebuie să prelucrezi 500 de rânduri dintr-un centralizator de facturi, sau să verifici fiecare foaie dintr-un registru de calcul cu 12 luni? Nu poți scrie manual 500 de instrucțiuni identice.\n\n**Bucla** (în engleză *loop*) este structura de control care repetă un bloc de instrucțiuni de mai multe ori, fie de un număr cunoscut de ori, fie până când o condiție se schimbă. VBA pune la dispoziție trei tipuri principale de bucle, fiecare potrivită pentru un scenariu diferit:\n\n1. **For...Next** — când știi dinainte de câte ori se repetă bucla (ex: de la rândul 2 la rândul 100).\n2. **Do While...Loop / Do Until...Loop** — când repetarea depinde de o condiție care se poate schimba în timp real (ex: „cât timp celula nu este goală”).\n3. **For Each...Next** — când parcurgi elementele unei colecții de obiecte (toate foile unui registru, toate celulele unui interval, toate fișierele dintr-un folder).\n\nAceastă lecție îți arată sintaxa exactă, capcanele frecvente (bucla infinită) și exemple complete, rulabile, cu date tipice unei firme din România (SRL cu vânzări, facturi, angajați).",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-for-next",
+    "md": "## Bucla For...Next\n\nSintaxa de bază:\n\n```vba\nFor contor = valoare_start To valoare_final [Step pas]\n    ' instrucțiuni de repetat\nNext contor\n```\n\n- `contor` este o variabilă numerică (de obicei `Integer` sau `Long`) care se incrementează automat la fiecare iterație.\n- `Step pas` este opțional; dacă lipsește, pasul implicit este 1. Poți folosi `Step -1` pentru a număra descrescător, sau `Step 2` pentru a sări din doi în doi.\n- `Exit For` întrerupe bucla imediat, util când ai găsit ce căutai și nu mai are rost să continui parcurgerea.\n\nExemplu minimal:\n\n```vba\nSub NumaraPana10()\n    Dim i As Integer\n    For i = 1 To 10\n        Debug.Print i ' scrie 1,2,3...10 in Immediate Window (Ctrl+G)\n    Next i\nEnd Sub\n```\n\nÎn practică, `contor` se folosește aproape mereu pentru a indexa rânduri sau coloane dintr-un `Range`, de exemplu `Cells(i, 1)` pentru rândul `i`, coloana 1.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-do-while-until",
+    "md": "## Bucla Do While / Do Until\n\nSpre deosebire de `For...Next`, aici numărul de repetări nu este cunoscut dinainte — bucla continuă cât timp (sau până când) o condiție logică este îndeplinită. Există patru variante, toate valide:\n\n```vba\n' Testează condiția LA ÎNCEPUT (poate rula de 0 ori)\nDo While conditie\n    ' instrucțiuni\nLoop\n\nDo Until conditie\n    ' instrucțiuni\nLoop\n\n' Testează condiția LA FINAL (rulează garantat cel puțin o dată)\nDo\n    ' instrucțiuni\nLoop While conditie\n\nDo\n    ' instrucțiuni\nLoop Until conditie\n```\n\n- `Do While` repetă **cât timp** condiția este adevărată (`True`).\n- `Do Until` repetă **până când** condiția devine adevărată (echivalent cu `Do While Not conditie`).\n- `Exit Do` iese imediat din buclă, similar cu `Exit For`.\n\nCel mai frecvent scenariu în Excel: parcurgerea rândurilor unei coloane până la prima celulă goală, folosind `Do Until Cells(i, 1).Value = \"\"`. Numărul de rânduri nu este fix — depinde de câte facturi sau produse există în acel moment, deci `Do Until` este alegerea corectă, nu `For...Next`.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-for-each-next",
+    "md": "## Bucla For Each...Next\n\n`For Each` parcurge fiecare element dintr-o **colecție** de obiecte, fără să fie nevoie de un contor numeric. Este cea mai naturală buclă atunci când lucrezi cu obiecte Excel: foi de calcul, celule dintr-un interval, registre deschise sau fișiere dintr-un folder.\n\n```vba\nFor Each element In colectie\n    ' instrucțiuni care folosesc element\nNext element\n```\n\nExemple de colecții tipice în VBA:\n\n- `Worksheets` — toate foile din registrul de calcul curent (`ThisWorkbook.Worksheets`).\n- `Range(\"A1:A10\")` — fiecare celulă individuală dintr-un interval.\n- `Workbooks` — toate registrele deschise în Excel în acel moment.\n\nExemplu minimal:\n\n```vba\nSub ListaFoi()\n    Dim foaie As Worksheet\n    For Each foaie In ThisWorkbook.Worksheets\n        Debug.Print foaie.Name\n    Next foaie\nEnd Sub\n```\n\nVariabila `foaie` trebuie declarată cu tipul potrivit colecției (`Worksheet`, `Range` pentru celule, `Workbook` pentru registre). Alegerea greșită a tipului generează eroare de compilare, ceea ce te ajută de fapt să prinzi greșeli înainte de rulare.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b4"
+   },
+   {
+    "type": "example",
+    "title": "Colorare automată a vânzărilor lunare cu For...Next",
+    "concept_key": "vba-for-next",
+    "md": "Firma Contarom SRL ține evidența vânzărilor lunare în coloana B (rândurile 2-13, ianuarie-decembrie), în lei. Vrem ca fiecare lună cu vânzări peste 5.000 lei să fie colorată verde, iar cea sub prag, roșu deschis.\n\n```vba\nSub ColoreazaVanzari()\n    Dim i As Integer\n    Dim pragMinim As Double\n    pragMinim = 5000 ' prag exprimat in lei\n\n    ' Rândurile 2 la 13 corespund celor 12 luni ale anului\n    For i = 2 To 13\n        If Cells(i, 2).Value >= pragMinim Then\n            Cells(i, 2).Interior.Color = RGB(198, 239, 206) ' verde deschis\n        Else\n            Cells(i, 2).Interior.Color = RGB(255, 199, 206) ' rosu deschis\n        End If\n    Next i\n\n    MsgBox \"Colorarea vanzarilor lunare s-a incheiat.\"\nEnd Sub\n```\n\nObservă că am folosit `Step` implicit (1), pentru că avansăm rând cu rând. Dacă am fi vrut să verificăm doar lunile pare, am fi scris `For i = 2 To 13 Step 2`.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b5"
+   },
+   {
+    "type": "example",
+    "title": "Citirea facturilor până la prima celulă goală cu Do Until",
+    "concept_key": "vba-do-while-until",
+    "md": "La firma Contarom SRL, coloana A conține numărul facturii, iar coloana B valoarea în lei. Numărul de facturi variază de la o lună la alta, deci nu putem folosi un `For...Next` cu limită fixă — trebuie să ne oprim exact acolo unde datele se termină.\n\n```vba\nSub InsumeazaFacturi()\n    Dim i As Long\n    Dim totalFacturi As Double\n\n    i = 2 ' pornim de la primul rand cu date (rândul 1 are anteturile)\n    totalFacturi = 0\n\n    Do Until Cells(i, 1).Value = \"\"\n        totalFacturi = totalFacturi + Cells(i, 2).Value\n        i = i + 1 ' pas obligatoriu: fara el, bucla ar deveni infinita\n    Loop\n\n    MsgBox \"Total facturat: \" & Format(totalFacturi, \"#,##0.00\") & \" lei\" & vbCrLf & _\n           \"Numar facturi procesate: \" & (i - 2)\nEnd Sub\n```\n\nBucla se oprește automat când `Cells(i, 1)` este goală, indiferent dacă avem 20 sau 2.000 de facturi. Linia `i = i + 1` este esențială — o discutăm în detaliu în blocul de avertisment de mai jos.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Cel mai frecvent bug al buclelor Do While/Until: bucla infinită.**\n\nDacă uiți să actualizezi variabila din condiția de test (ex: `i = i + 1`), sau condiția rămâne mereu adevărată dintr-o greșeală de logică, VBA va rula bucla la nesfârșit, iar Excel pare că „îngheață”. Pentru a opri manual o buclă infinită, apasă **Ctrl+Break** (sau **Esc** pe unele configurații) — va apărea un dialog de eroare care îți permite să oprești execuția (`End`) sau să treci în modul debug (`Debug`).\n\nRegulă de aur: la orice `Do While`/`Do Until`, verifică imediat că există o instrucțiune care modifică, la fiecare iterație, variabila testată în condiție.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Firma Contarom SRL are, în intervalul `B2:B15` din foaia activă, valorile în lei ale unor facturi emise către clienți. Scrie o macro VBA care:\n\n1. Folosește o buclă **For Each** pentru a parcurge fiecare celulă din intervalul `B2:B15`.\n2. Numără câte facturi au valoarea mai mare de 1.000 lei.\n3. Afișează rezultatul într-un `MsgBox`, cu textul: \"Numar facturi peste 1000 lei: X\".\n\nIndicație: declară o variabilă obiect de tip `Range` pentru celulă și o variabilă `Integer` pentru contor.",
+    "solution_md": "```vba\nSub NumaraFacturiMari()\n    Dim celula As Range\n    Dim contorFacturi As Integer\n    Dim pragMinim As Double\n\n    pragMinim = 1000 ' prag in lei\n    contorFacturi = 0\n\n    For Each celula In Range(\"B2:B15\")\n        If celula.Value > pragMinim Then\n            contorFacturi = contorFacturi + 1\n        End If\n    Next celula\n\n    MsgBox \"Numar facturi peste 1000 lei: \" & contorFacturi\nEnd Sub\n```\n\nExplicație: `celula` este declarată ca `Range`, tipul corect pentru elementele unui interval de celule. `For Each` parcurge automat cele 14 celule din `B2:B15`, fără să fie nevoie să calculăm manual câte rânduri sunt — ceea ce face codul mai robust dacă intervalul se extinde ulterior.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce face instrucțiunea `For i = 10 To 1 Step -1` într-o buclă VBA?",
+    "choices": [
+     "Generează o eroare de compilare, pentru că VBA nu acceptă valori negative la Step",
+     "Numără descrescător de la 10 la 1, decrementând `i` cu 1 la fiecare pas",
+     "Rulează bucla exact o singură dată",
+     "Numără crescător de la 1 la 10, ignorând Step"
+    ],
+    "answer": 1,
+    "explain": "`Step -1` indică un pas negativ, deci contorul scade de la valoarea de start (10) până la valoarea finală (1), inclusiv. Este util pentru a parcurge un interval de rânduri de jos în sus, de exemplu la ștergerea rândurilor dintr-un tabel.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială dintre `Do While` și `Do Until`?",
+    "choices": [
+     "Nu există nicio diferență, sunt sinonime perfecte",
+     "Do While repetă cât timp condiția este adevărată; Do Until repetă până când condiția devine adevărată",
+     "Do While se poate folosi doar cu numere, Do Until doar cu text",
+     "Do Until nu poate fi oprit cu Exit Do"
+    ],
+    "answer": 1,
+    "explain": "`Do While conditie` continuă bucla atât timp cât `conditie` evaluează la True. `Do Until conditie` continuă bucla atât timp cât `conditie` este False, oprindu-se în momentul în care devine True. Cele două sunt echivalente logic dacă inversezi condiția cu `Not`.",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei tipuri principale de bucle în VBA?",
+    "back": "For...Next (număr cunoscut de repetări), Do While/Until...Loop (condiție variabilă), For Each...Next (parcurgerea unei colecții de obiecte).",
+    "concept_key": "vba-bucle-introducere",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face `Step` într-o buclă For...Next?",
+    "back": "Stabilește pasul de incrementare al contorului; implicit este 1. Poate fi negativ (ex: -1 pentru numărare descrescătoare) sau mai mare de 1 (ex: 2 pentru a sări câte un element).",
+    "concept_key": "vba-for-next",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cea mai frecventă cauză a unei bucle infinite în Do While/Until?",
+    "back": "Uitarea de a actualiza, în interiorul buclei, variabila testată în condiție (ex: lipsa lui `i = i + 1`), astfel încât condiția rămâne mereu adevărată (sau falsă).",
+    "concept_key": "vba-do-while-until",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce instrucțiune întrerupe imediat execuția unei bucle For sau Do, indiferent de condiție?",
+    "back": "`Exit For` pentru buclele For...Next și `Exit Do` pentru buclele Do While/Until...Loop.",
+    "concept_key": "vba-for-next",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când folosești For Each în loc de For...Next?",
+    "back": "Când parcurgi o colecție de obiecte (Worksheets, Range, Workbooks, fișiere dintr-un folder) și nu ai nevoie de un contor numeric explicit pentru a accesa fiecare element.",
+    "concept_key": "vba-for-each-next",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum oprești manual o buclă VBA care rulează la nesfârșit (bucla infinită)?",
+    "back": "Apeși Ctrl+Break (sau Esc) pentru a afișa dialogul de eroare, apoi alegi End pentru a opri execuția sau Debug pentru a intra în modul de depanare.",
+    "concept_key": "vba-do-while-until",
+    "blockId": "cmjjuxvpz003fumkp5m32g8yc-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1220,
+   "flashcards": 6
+  }
+ }
+}

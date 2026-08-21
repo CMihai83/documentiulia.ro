@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwix00pjumkpcrqxs57z",
+ "courseId": "cmjjuxwhc00obumkpfv2f5s1h",
+ "course": "Time Management și Productivitate",
+ "module": "Sustenabilitate și Energie",
+ "lesson": "Quiz final productivitate",
+ "category": "SOFT_SKILLS",
+ "content": "Test de evaluare — Quiz final productivitate (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este principala diferență dintre managementul timpului și managementul energiei, așa cum este prezentată în acest modul?",
+     "choices": [
+      "Managementul energiei înlocuiește complet planificarea timpului și elimină nevoia de agendă",
+      "Managementul timpului optimizează câte ore aloci unei activități, iar managementul energiei optimizează calitatea resurselor tale fizice, emoționale și mentale disponibile în acele ore",
+      "Managementul energiei se referă strict la consumul de electricitate al biroului, nu la resursele personale",
+      "Cele două concepte sunt identice și pot fi folosite interschimbabil în practică"
+     ],
+     "answer": 1,
+     "explain": "Managementul timpului răspunde la întrebarea „cât timp aloc?”, în timp ce managementul energiei răspunde la „cât de bine pot folosi acel timp?”. Un program plin de ore nu garantează productivitate dacă energia (fizică, emoțională, mentală) e epuizată — de aceea cele două perspective se completează, nu se exclud.",
+     "concept_key": "time_vs_energy_management"
+    },
+    {
+     "q": "Un angajat SRL își planifică ziua strict pe blocuri orare, dar observă că la ora 15:00 nu mai poate lua decizii bune, deși mai are timp alocat pe agendă. Ce concept explică cel mai bine această situație?",
+     "choices": [
+      "Legea lui Parkinson, conform căreia sarcinile se extind pentru a umple timpul disponibil",
+      "Epuizarea resursei de energie mentală, independentă de timpul rămas disponibil pe agendă",
+      "O eroare de estimare a duratei sarcinilor din faza de planificare",
+      "Multitasking excesiv realizat în prima parte a zilei"
+     ],
+     "answer": 1,
+     "explain": "Timpul disponibil pe agendă nu garantează energie disponibilă. Capacitatea de concentrare și decizie scade pe măsură ce resursa mentală se consumă, indiferent de câte ore mai rămân în program — de aici nevoia de a alinia sarcinile solicitante cu perioadele de energie ridicată.",
+     "concept_key": "energy_depletion_vs_time"
+    },
+    {
+     "q": "Modelul celor patru tipuri de energie (folosit frecvent în literatura de productivitate, ex. Loehr & Schwartz) le clasifică drept:",
+     "choices": [
+      "Energie fizică, energie emoțională, energie mentală și energie a scopului (spirituală/de sens)",
+      "Energie de dimineață, energie de prânz, energie de după-amiază și energie de seară",
+      "Energie individuală, energie de echipă, energie organizațională și energie de piață",
+      "Energie recuperabilă, energie financiară, energie digitală și energie fizică"
+     ],
+     "answer": 0,
+     "explain": "Modelul distinge patru dimensiuni interdependente: fizică (corp, somn, mișcare), emoțională (stare afectivă), mentală (concentrare, claritate) și a scopului/spirituală (aliniere cu valori și sens). Neglijarea uneia afectă indirect celelalte, chiar dacă timpul alocat sarcinilor rămâne același.",
+     "concept_key": "four_energy_dimensions"
+    },
+    {
+     "q": "Cercetările privind ritmurile ultradiene sugerează că, pe parcursul zilei, capacitatea de concentrare susținută urmează cicluri de aproximativ:",
+     "choices": [
+      "10-15 minute, urmate de o pauză de câteva secunde",
+      "90-120 minute de energie ridicată, urmate de o perioadă naturală de scădere a atenției",
+      "3-4 ore continue, fără nicio scădere semnificativă a atenției",
+      "O singură perioadă de vârf pe zi, la aceeași oră pentru toți oamenii"
+     ],
+     "answer": 1,
+     "explain": "Studiile despre ritmurile ultradiene indică cicluri de aproximativ 90-120 de minute de concentrare ridicată, urmate de o scădere naturală a energiei mentale. Recunoașterea acestui tipar te ajută să programezi sarcinile complexe în perioadele de vârf și pauzele scurte în perioadele de scădere, în loc să forțezi concentrarea continuă.",
+     "concept_key": "ultradian_rhythms"
+    },
+    {
+     "q": "Care dintre următoarele este considerat un semnal timpuriu de epuizare energetică (nu neapărat burnout clinic) la locul de muncă?",
+     "choices": [
+      "Cerere crescută de pauze scurte la fiecare 90 de minute, ca metodă preventivă",
+      "Scăderea persistentă a calității deciziilor, iritabilitate crescută și nevoia de efort mult mai mare pentru sarcini obișnuite",
+      "Finalizarea sarcinilor mai repede decât estimarea inițială din planificare",
+      "Creșterea interesului pentru sarcini noi și provocatoare"
+     ],
+     "answer": 1,
+     "explain": "Semnalele timpurii de epuizare includ scăderea calității deciziilor, iritabilitate și senzația că sarcini obișnuite necesită un efort disproporționat. Pauzele preventive (opțiunea A) sunt de fapt o practică sănătoasă, nu un semnal de alarmă — de aceea nu reprezintă răspunsul corect.",
+     "concept_key": "early_burnout_signals"
+    },
+    {
+     "q": "Ce diferențiază recuperarea activă de recuperarea pasivă în contextul sustenabilității energiei pe termen lung?",
+     "choices": [
+      "Recuperarea activă înseamnă să lucrezi la alt proiect profesional, iar cea pasivă înseamnă concediu de odihnă",
+      "Recuperarea activă implică activități ușoare care reîncarcă energia (mișcare, plimbare, conversație relaxată), iar recuperarea pasivă implică odihnă completă (somn, relaxare fără stimuli); ambele sunt necesare, nu interschimbabile",
+      "Recuperarea activă este obligatorie doar pentru manageri, iar cea pasivă doar pentru restul echipei",
+      "Recuperarea pasivă este ineficientă și trebuie evitată în favoarea recuperării active"
+     ],
+     "answer": 1,
+     "explain": "Recuperarea activă (mișcare ușoară, socializare relaxată, hobby) și recuperarea pasivă (somn, odihnă fără stimuli) au roluri complementare: prima reîncarcă energia fizică și emoțională prin schimbare de ritm, a doua permite refacerea profundă a resurselor mentale și fizice. Un plan sustenabil le include pe amândouă, nu alege între ele.",
+     "concept_key": "active_vs_passive_recovery"
+    },
+    {
+     "q": "Într-un plan de productivitate sustenabilă, somnul este tratat drept:",
+     "choices": [
+      "Un lux opțional, care poate fi redus constant în perioadele aglomerate fără efecte asupra performanței",
+      "O componentă esențială a managementului energiei, cu impact direct asupra concentrării, deciziilor și reglării emoționale a doua zi",
+      "Relevant doar pentru sănătatea fizică, fără legătură cu performanța profesională",
+      "O variabilă pe care fiecare o poate ignora dacă bea suficientă cafea"
+     ],
+     "answer": 1,
+     "explain": "Somnul insuficient afectează direct capacitatea de concentrare, calitatea deciziilor și stabilitatea emoțională — toate resurse-cheie pentru productivitate. De aceea, în managementul energiei sustenabile, somnul este tratat ca investiție, nu ca variabilă de ajustat ultima dată.",
+     "concept_key": "sleep_as_productivity_pillar"
+    },
+    {
+     "q": "De ce un program de lucru „always-on” (disponibilitate constantă, fără limite clare între muncă și recuperare) este incompatibil cu sustenabilitatea energiei pe termen lung?",
+     "choices": [
+      "Pentru că elimină complet posibilitatea de a răspunde rapid la urgențe reale",
+      "Pentru că nu lasă timp de recuperare pentru niciuna dintre cele patru dimensiuni ale energiei, ducând la epuizare cumulativă chiar dacă volumul zilnic de muncă pare gestionabil",
+      "Pentru că este incompatibil cu legislația muncii din România în toate situațiile",
+      "Pentru că reduce numărul de întâlniri posibile într-o săptămână de lucru"
+     ],
+     "answer": 1,
+     "explain": "Fără perioade clare de recuperare, resursele fizice, emoționale și mentale se epuizează treptat, chiar dacă volumul de muncă dintr-o zi pare rezonabil — efectul este cumulativ. Sustenabilitatea presupune limite clare între perioadele de solicitare și cele de recuperare, nu doar gestionarea volumului instantaneu de sarcini.",
+     "concept_key": "always_on_unsustainability"
+    },
+    {
+     "q": "Un manager dintr-o companie RO vrea să construiască un program zilnic bazat pe energie, nu doar pe timp. Care dintre următoarele abordări este cea mai aliniată cu principiile din acest modul?",
+     "choices": [
+      "Programează toate întâlnirile importante la aceeași oră fixă în fiecare zi, indiferent de tipul de sarcină",
+      "Identifică perioadele proprii de energie mentală ridicată pentru sarcinile complexe (analiză, decizii), rezervă perioadele de energie scăzută pentru sarcini rutiniere și introduce pauze scurte la fiecare 90-120 de minute",
+      "Elimină complet pauzele din program pentru a maximiza orele de lucru efectiv",
+      "Alocă exact 8 ore de muncă intensă, fără nicio variație, indiferent de tipul de activitate"
+     ],
+     "answer": 1,
+     "explain": "Un program aliniat pe energie mapează tipul de sarcină pe perioada de energie potrivită (complex → energie ridicată, rutinier → energie scăzută) și include pauze scurte periodice, respectând ciclurile ultradiene. Programarea rigidă pe oră fixă sau eliminarea pauzelor ignoră variația naturală a energiei și reduce sustenabilitatea pe termen lung.",
+     "concept_key": "energy_based_scheduling"
+    },
+    {
+     "q": "Ana, antreprenoare PFA, lucrează 11-12 ore pe zi de trei luni, fără pauze structurate, motivând că „nu are timp de pierdut”. Deși volumul de muncă finalizat rămâne constant, calitatea deciziilor ei a scăzut vizibil, iar erorile s-au înmulțit. Ce recomandare, aliniată cu principiile de sustenabilitate a energiei din acest modul, este cea mai potrivită?",
+     "choices": [
+      "Să lucreze și mai multe ore pe zi, pentru a compensa erorile prin volum suplimentar",
+      "Să introducă pauze scurte la fiecare 90-120 de minute, să stabilească limite clare între muncă și recuperare (inclusiv somn suficient) și să realoce sarcinile complexe în perioadele ei de energie mentală ridicată, chiar dacă timpul total de lucru nu se schimbă imediat",
+      "Să renunțe complet la planificare și să lucreze exclusiv reactiv, pe măsură ce apar sarcinile",
+      "Să elimine complet pauzele rămase, pentru a recupera timpul pierdut cu corectarea erorilor"
+     ],
+     "answer": 1,
+     "explain": "Scăderea calității deciziilor și creșterea erorilor, în condițiile unui volum de muncă constant, sunt semnale clare de epuizare a energiei, nu de lipsă de timp. Soluția sustenabilă combină recuperare structurată (pauze, somn, limite clare) cu realocarea sarcinilor complexe în perioadele de energie ridicată — nu adăugarea și mai multor ore, care ar adânci epuizarea și ar crește riscul de erori.",
+     "concept_key": "applied_energy_sustainability"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

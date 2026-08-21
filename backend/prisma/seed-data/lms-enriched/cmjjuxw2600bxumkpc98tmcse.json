@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxw2600bxumkpc98tmcse",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Decizii de Business cu Impact Financiar",
+ "lesson": "Break-even Analysis",
+ "category": "FINANCE_OPS",
+ "content": "# Break-even Analysis\n\n## Ce este punctul de echilibru\n\nPunctul de echilibru (în engleză, *break-even point*, prescurtat BEP) reprezintă nivelul de vânzări la care veniturile totale ale unei afaceri acoperă exact costurile totale. La acest nivel, profitul este zero: firma nu câștigă, dar nici nu pierde bani.\n\nÎnțelegerea punctului de echilibru te ajută să răspunzi la întrebări esențiale pentru orice manager sau antreprenor:\n\n- Câte produse/servicii trebuie să vând lunar ca să nu fiu pe pierdere?\n- Ce preț minim pot practica fără să pun afacerea în pericol?\n- Cât de \"aproape de prăpastie\" sunt dacă vânzările scad?\n\nFormula de bază, în unități fizice, este:\n\n**BEP (unități) = Costuri Fixe / (Preț de vânzare unitar − Cost variabil unitar)**\n\nNumitorul (Preț − Cost variabil unitar) se numește **marjă de contribuție unitară** și este conceptul-cheie din analiza break-even. Vom detalia acest termen în blocul următor, împreună cu distincția dintre costurile fixe și cele variabile.\n\n## Costuri fixe vs. costuri variabile\n\nCa să calculezi punctul de echilibru, primul pas este să separi corect costurile afacerii tale în două categorii:\n\n**Costuri fixe (CF)** – rămân, pe termen scurt, aceleași indiferent de câte produse vinzi sau servicii prestezi. Exemple pentru un SRL din România: chiria spațiului, salariile personalului administrativ, abonamentul de contabilitate, amortizarea unui utilaj, primele de asigurare. Chiar dacă într-o lună nu vinzi nimic, aceste costuri tot apar în contul de profit și pierdere.\n\n**Costuri variabile (CV)** – cresc sau scad proporțional cu volumul de activitate. Exemple: materia primă folosită la fabricarea unui produs, ambalajele, comisioanele de vânzare plătite per bucată vândută, costul mărfii revândute. Dacă nu produci/vinzi nimic, aceste costuri sunt zero.\n\nÎn practică, multe costuri sunt de fapt **semi-variabile** (de exemplu, factura de electricitate are o componentă fixă și una care crește cu producția) și trebuie despărțite estimativ în cele două componente înainte de a face analiza. O clasificare greșită a costurilor (de exemplu, tratarea unui cost variabil ca fix) distorsionează complet rezultatul calculului de break-even, așa că merită timp investit în această etapă.\n\n## Marja de contribuție și marja de siguranță\n\n**Marja de contribuție unitară** (Preț de vânzare − Cost variabil unitar) arată cât \"rămâne\" din fiecare unitate vândută pentru a acoperi costurile fixe și, ulterior, pentru a genera profit. Exprimată procentual din preț, se numește **rata marjei de contribuție**:\n\nRata marjei de contribuție = Marja de contribuție unitară / Preț de vânzare\n\nAceastă rată permite calculul punctului de echilibru direct în lei (valoric), util mai ales când firma vinde mai multe produse diferite:\n\n**BEP (valoric, lei) = Costuri Fixe / Rata marjei de contribuție**\n\nA doua noțiune esențială este **marja de siguranță** (*margin of safety*): diferența dintre vânzările curente sau estimate și vânzările la punctul de echilibru.\n\nMarja de siguranță (unități) = Vânzări actuale − BEP (unități)\nMarja de siguranță (%) = Marja de siguranță (unități) / Vânzări actuale\n\nMarja de siguranță răspunde direct la întrebarea \"cu cât pot scădea vânzările înainte să intru pe pierdere?\". O marjă de siguranță mică (sub 15-20%) semnalează o afacere vulnerabilă la fluctuații de piață, în timp ce o marjă mare oferă confort și predictibilitate.\n\n## Exemplu: Calculul break-even la o brutărie\n**Panificația Bunicii SRL** produce și vinde pâine artizanală. Structura de costuri și venituri este următoarea:\n\n- Costuri fixe lunare (chirie, utilități fixe, salarii administrative, amortizare cuptor): **30.000 lei/lună**\n- Preț de vânzare: **5 lei/pâine**\n- Cost variabil per pâine (făină, drojdie, ambalaj, energie proporțională cu producția): **2 lei/pâine**\n\n**Pasul 1 – Marja de contribuție unitară:**\n5 lei − 2 lei = **3 lei/pâine**\n\n**Pasul 2 – Punctul de echilibru în unități:**\nBEP = 30.000 / 3 = **10.000 pâini pe lună**\n\n**Pasul 3 – Punctul de echilibru valoric:**\nBEP (lei) = 10.000 pâini × 5 lei = **50.000 lei/lună**\n(Verificare cu formula ratei marjei: rata = 3/5 = 0,6; BEP = 30.000 / 0,6 = 50.000 lei — rezultatul coincide.)\n\n**Pasul 4 – Marja de siguranță:**\nDacă firma vinde efectiv 15.000 de pâini/lună:\nMarja de siguranță = 15.000 − 10.000 = **5.000 pâini**\nMarja de siguranță % = 5.000 / 15.000 = **33,3%**\n\nInterpretare: vânzările pot scădea cu până la o treime față de nivelul actual înainte ca Panificația Bunicii SRL să înceapă să înregistreze pierderi.\n\n## Exemplu: Impactul modificării costurilor asupra punctului de echilibru\nContinuăm exemplul Panificației Bunicii SRL. Să presupunem că prețul făinii crește, iar costul variabil per pâine urcă de la 2 lei la **2,5 lei**, în timp ce prețul de vânzare și costurile fixe rămân neschimbate (5 lei, respectiv 30.000 lei).\n\n**Marja de contribuție nouă:** 5 − 2,5 = **2,5 lei/pâine** (a scăzut de la 3 lei)\n\n**Noul punct de echilibru:** BEP = 30.000 / 2,5 = **12.000 pâini/lună** (cu 2.000 mai multe față de situația inițială)\n\nDacă vânzările rămân la 15.000 pâini/lună, marja de siguranță scade de la 33,3% la:\n(15.000 − 12.000) / 15.000 = **20%**\n\nAcest exemplu arată de ce analiza break-even este un instrument dinamic, nu un calcul făcut o singură dată: orice creștere a costurilor variabile (materii prime mai scumpe) sau a costurilor fixe (majorare de chirie) ridică ștacheta minimă de vânzări și reduce marja de siguranță. Managerii folosesc acest tip de simulare pentru a decide dacă este cazul să crească prețul de vânzare, să negocieze costuri mai mici cu furnizorii sau să reducă anumite costuri fixe.\n\n⚠ Analiza break-even simplă presupune costuri variabile perfect proporționale cu volumul, un singur produs (sau un mix constant de produse) și un preț de vânzare fix, indiferent de cantitate. În realitate, aceste ipoteze se pot rupe: reducerile de preț la vânzări mari, costurile fixe care \"sar\" la un prag de capacitate (de exemplu, ai nevoie de un al doilea cuptor), sau mixul variabil de produse cu marje diferite. Tratează rezultatul BEP ca pe un reper orientativ pentru decizii, nu ca pe o cifră absolută, și recalculează-l ori de câte ori se schimbă semnificativ structura de costuri sau prețurile.\n\n## Exercițiu\n**Cofetăria \"Dulce Vis\" SRL** produce torturi personalizate. Datele lunii curente:\n\n- Costuri fixe lunare: **20.000 lei**\n- Preț de vânzare: **150 lei/tort**\n- Cost variabil per tort: **90 lei/tort**\n- Vânzări estimate: **400 torturi/lună**\n\nCalculează:\n1. Marja de contribuție unitară\n2. Punctul de echilibru în unități (torturi)\n3. Punctul de echilibru valoric (lei)\n4. Marja de siguranță, în unități și procentual\n5. Profitul estimat la nivelul de 400 de torturi vândute\n\n**Soluție:** **1. Marja de contribuție unitară:**\n150 − 90 = **60 lei/tort**\n\n**2. Punctul de echilibru în unități:**\nBEP = 20.000 / 60 = 333,33 → rotunjit în sus, **334 torturi/lună** (nu se pot vinde torturi fracționate, iar pentru a acoperi integral costurile fixe este nevoie de rotunjire la nivelul întreg imediat superior)\n\n**3. Punctul de echilibru valoric:**\nRata marjei de contribuție = 60 / 150 = 0,4\nBEP (lei) = 20.000 / 0,4 = **50.000 lei/lună**\n\n**4. Marja de siguranță:**\nMarja de siguranță (unități) = 400 − 333,33 ≈ **66,67 torturi**\nMarja de siguranță (%) = 66,67 / 400 = **16,7%**\n\nO marjă de siguranță de 16,7% este relativ mică – vânzările pot scădea cu puțin peste o șesime înainte ca afacerea să intre pe pierdere. Cofetăria ar trebui să analizeze fie creșterea prețului, fie reducerea costurilor fixe sau variabile, pentru a-și mări confortul financiar.\n\n**5. Profitul estimat la 400 de torturi:**\nContribuție totală = 400 × 60 = 24.000 lei\nProfit = 24.000 − 20.000 (costuri fixe) = **4.000 lei/lună**",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "break-even-point-definitie",
+    "md": "## Ce este punctul de echilibru\n\nPunctul de echilibru (în engleză, *break-even point*, prescurtat BEP) reprezintă nivelul de vânzări la care veniturile totale ale unei afaceri acoperă exact costurile totale. La acest nivel, profitul este zero: firma nu câștigă, dar nici nu pierde bani.\n\nÎnțelegerea punctului de echilibru te ajută să răspunzi la întrebări esențiale pentru orice manager sau antreprenor:\n\n- Câte produse/servicii trebuie să vând lunar ca să nu fiu pe pierdere?\n- Ce preț minim pot practica fără să pun afacerea în pericol?\n- Cât de \"aproape de prăpastie\" sunt dacă vânzările scad?\n\nFormula de bază, în unități fizice, este:\n\n**BEP (unități) = Costuri Fixe / (Preț de vânzare unitar − Cost variabil unitar)**\n\nNumitorul (Preț − Cost variabil unitar) se numește **marjă de contribuție unitară** și este conceptul-cheie din analiza break-even. Vom detalia acest termen în blocul următor, împreună cu distincția dintre costurile fixe și cele variabile.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "costuri-fixe-vs-variabile",
+    "md": "## Costuri fixe vs. costuri variabile\n\nCa să calculezi punctul de echilibru, primul pas este să separi corect costurile afacerii tale în două categorii:\n\n**Costuri fixe (CF)** – rămân, pe termen scurt, aceleași indiferent de câte produse vinzi sau servicii prestezi. Exemple pentru un SRL din România: chiria spațiului, salariile personalului administrativ, abonamentul de contabilitate, amortizarea unui utilaj, primele de asigurare. Chiar dacă într-o lună nu vinzi nimic, aceste costuri tot apar în contul de profit și pierdere.\n\n**Costuri variabile (CV)** – cresc sau scad proporțional cu volumul de activitate. Exemple: materia primă folosită la fabricarea unui produs, ambalajele, comisioanele de vânzare plătite per bucată vândută, costul mărfii revândute. Dacă nu produci/vinzi nimic, aceste costuri sunt zero.\n\nÎn practică, multe costuri sunt de fapt **semi-variabile** (de exemplu, factura de electricitate are o componentă fixă și una care crește cu producția) și trebuie despărțite estimativ în cele două componente înainte de a face analiza. O clasificare greșită a costurilor (de exemplu, tratarea unui cost variabil ca fix) distorsionează complet rezultatul calculului de break-even, așa că merită timp investit în această etapă.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "marja-de-contributie-si-siguranta",
+    "md": "## Marja de contribuție și marja de siguranță\n\n**Marja de contribuție unitară** (Preț de vânzare − Cost variabil unitar) arată cât \"rămâne\" din fiecare unitate vândută pentru a acoperi costurile fixe și, ulterior, pentru a genera profit. Exprimată procentual din preț, se numește **rata marjei de contribuție**:\n\nRata marjei de contribuție = Marja de contribuție unitară / Preț de vânzare\n\nAceastă rată permite calculul punctului de echilibru direct în lei (valoric), util mai ales când firma vinde mai multe produse diferite:\n\n**BEP (valoric, lei) = Costuri Fixe / Rata marjei de contribuție**\n\nA doua noțiune esențială este **marja de siguranță** (*margin of safety*): diferența dintre vânzările curente sau estimate și vânzările la punctul de echilibru.\n\nMarja de siguranță (unități) = Vânzări actuale − BEP (unități)\nMarja de siguranță (%) = Marja de siguranță (unități) / Vânzări actuale\n\nMarja de siguranță răspunde direct la întrebarea \"cu cât pot scădea vânzările înainte să intru pe pierdere?\". O marjă de siguranță mică (sub 15-20%) semnalează o afacere vulnerabilă la fluctuații de piață, în timp ce o marjă mare oferă confort și predictibilitate.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul break-even la o brutărie",
+    "concept_key": "break-even-point-definitie",
+    "md": "**Panificația Bunicii SRL** produce și vinde pâine artizanală. Structura de costuri și venituri este următoarea:\n\n- Costuri fixe lunare (chirie, utilități fixe, salarii administrative, amortizare cuptor): **30.000 lei/lună**\n- Preț de vânzare: **5 lei/pâine**\n- Cost variabil per pâine (făină, drojdie, ambalaj, energie proporțională cu producția): **2 lei/pâine**\n\n**Pasul 1 – Marja de contribuție unitară:**\n5 lei − 2 lei = **3 lei/pâine**\n\n**Pasul 2 – Punctul de echilibru în unități:**\nBEP = 30.000 / 3 = **10.000 pâini pe lună**\n\n**Pasul 3 – Punctul de echilibru valoric:**\nBEP (lei) = 10.000 pâini × 5 lei = **50.000 lei/lună**\n(Verificare cu formula ratei marjei: rata = 3/5 = 0,6; BEP = 30.000 / 0,6 = 50.000 lei — rezultatul coincide.)\n\n**Pasul 4 – Marja de siguranță:**\nDacă firma vinde efectiv 15.000 de pâini/lună:\nMarja de siguranță = 15.000 − 10.000 = **5.000 pâini**\nMarja de siguranță % = 5.000 / 15.000 = **33,3%**\n\nInterpretare: vânzările pot scădea cu până la o treime față de nivelul actual înainte ca Panificația Bunicii SRL să înceapă să înregistreze pierderi.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b4"
+   },
+   {
+    "type": "example",
+    "title": "Impactul modificării costurilor asupra punctului de echilibru",
+    "concept_key": "marja-de-contributie-si-siguranta",
+    "md": "Continuăm exemplul Panificației Bunicii SRL. Să presupunem că prețul făinii crește, iar costul variabil per pâine urcă de la 2 lei la **2,5 lei**, în timp ce prețul de vânzare și costurile fixe rămân neschimbate (5 lei, respectiv 30.000 lei).\n\n**Marja de contribuție nouă:** 5 − 2,5 = **2,5 lei/pâine** (a scăzut de la 3 lei)\n\n**Noul punct de echilibru:** BEP = 30.000 / 2,5 = **12.000 pâini/lună** (cu 2.000 mai multe față de situația inițială)\n\nDacă vânzările rămân la 15.000 pâini/lună, marja de siguranță scade de la 33,3% la:\n(15.000 − 12.000) / 15.000 = **20%**\n\nAcest exemplu arată de ce analiza break-even este un instrument dinamic, nu un calcul făcut o singură dată: orice creștere a costurilor variabile (materii prime mai scumpe) sau a costurilor fixe (majorare de chirie) ridică ștacheta minimă de vânzări și reduce marja de siguranță. Managerii folosesc acest tip de simulare pentru a decide dacă este cazul să crească prețul de vânzare, să negocieze costuri mai mici cu furnizorii sau să reducă anumite costuri fixe.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Analiza break-even simplă presupune costuri variabile perfect proporționale cu volumul, un singur produs (sau un mix constant de produse) și un preț de vânzare fix, indiferent de cantitate. În realitate, aceste ipoteze se pot rupe: reducerile de preț la vânzări mari, costurile fixe care \"sar\" la un prag de capacitate (de exemplu, ai nevoie de un al doilea cuptor), sau mixul variabil de produse cu marje diferite. Tratează rezultatul BEP ca pe un reper orientativ pentru decizii, nu ca pe o cifră absolută, și recalculează-l ori de câte ori se schimbă semnificativ structura de costuri sau prețurile.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "**Cofetăria \"Dulce Vis\" SRL** produce torturi personalizate. Datele lunii curente:\n\n- Costuri fixe lunare: **20.000 lei**\n- Preț de vânzare: **150 lei/tort**\n- Cost variabil per tort: **90 lei/tort**\n- Vânzări estimate: **400 torturi/lună**\n\nCalculează:\n1. Marja de contribuție unitară\n2. Punctul de echilibru în unități (torturi)\n3. Punctul de echilibru valoric (lei)\n4. Marja de siguranță, în unități și procentual\n5. Profitul estimat la nivelul de 400 de torturi vândute",
+    "solution_md": "**1. Marja de contribuție unitară:**\n150 − 90 = **60 lei/tort**\n\n**2. Punctul de echilibru în unități:**\nBEP = 20.000 / 60 = 333,33 → rotunjit în sus, **334 torturi/lună** (nu se pot vinde torturi fracționate, iar pentru a acoperi integral costurile fixe este nevoie de rotunjire la nivelul întreg imediat superior)\n\n**3. Punctul de echilibru valoric:**\nRata marjei de contribuție = 60 / 150 = 0,4\nBEP (lei) = 20.000 / 0,4 = **50.000 lei/lună**\n\n**4. Marja de siguranță:**\nMarja de siguranță (unități) = 400 − 333,33 ≈ **66,67 torturi**\nMarja de siguranță (%) = 66,67 / 400 = **16,7%**\n\nO marjă de siguranță de 16,7% este relativ mică – vânzările pot scădea cu puțin peste o șesime înainte ca afacerea să intre pe pierdere. Cofetăria ar trebui să analizeze fie creșterea prețului, fie reducerea costurilor fixe sau variabile, pentru a-și mări confortul financiar.\n\n**5. Profitul estimat la 400 de torturi:**\nContribuție totală = 400 × 60 = 24.000 lei\nProfit = 24.000 − 20.000 (costuri fixe) = **4.000 lei/lună**",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă pentru punctul de echilibru exprimat în unități?",
+    "choices": [
+     "Costuri Fixe / (Preț unitar − Cost variabil unitar)",
+     "Costuri Variabile / Preț unitar",
+     "(Costuri Fixe + Costuri Variabile) / Vânzări totale",
+     "Preț unitar / Costuri Fixe"
+    ],
+    "answer": 0,
+    "explain": "BEP (unități) = Costuri Fixe / Marja de contribuție unitară, unde marja de contribuție unitară = Preț unitar − Cost variabil unitar. Aceasta arată câte unități trebuie vândute pentru ca marja de contribuție cumulată să acopere exact costurile fixe.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are vânzări curente de 1.000 unități și un punct de echilibru de 850 de unități. Ce marjă de siguranță procentuală are?",
+    "choices": [
+     "85%",
+     "15%",
+     "150%",
+     "8,5%"
+    ],
+    "answer": 1,
+    "explain": "Marja de siguranță (unități) = 1.000 − 850 = 150 unități. Marja de siguranță (%) = 150 / 1.000 = 15%. Aceasta arată cu cât pot scădea vânzările curente înainte ca firma să ajungă la punctul de echilibru.",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este punctul de echilibru (break-even point)?",
+    "back": "Nivelul de vânzări la care veniturile totale acoperă exact costurile totale, iar profitul este zero.",
+    "concept_key": "break-even-point-definitie",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula BEP în unități?",
+    "back": "BEP (unități) = Costuri Fixe / (Preț unitar − Cost variabil unitar)",
+    "concept_key": "break-even-point-definitie",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este marja de contribuție unitară?",
+    "back": "Diferența dintre prețul de vânzare și costul variabil unitar; arată cât contribuie fiecare unitate vândută la acoperirea costurilor fixe și, apoi, la profit.",
+    "concept_key": "marja-de-contributie-si-siguranta",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este marja de siguranță (margin of safety)?",
+    "back": "Diferența dintre vânzările curente/estimate și vânzările la punctul de echilibru; arată cu cât pot scădea vânzările înainte ca firma să intre pe pierdere.",
+    "concept_key": "marja-de-contributie-si-siguranta",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre costurile fixe și cele variabile?",
+    "back": "Costurile fixe rămân constante indiferent de volumul produs/vândut (chirie, salarii administrative); costurile variabile cresc sau scad proporțional cu volumul de activitate (materii prime, comisioane per unitate).",
+    "concept_key": "costuri-fixe-vs-variabile",
+    "blockId": "cmjjuxw2600bxumkpc98tmcse-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1182,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvso0058umkpwunl4oh0",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Planificarea Proiectului",
+ "lesson": "Definirea Scope-ului",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Definirea Scope-ului\n\n## Ce este scope-ul unui proiect\n\n**Scope-ul** (domeniul, aria de cuprindere) este definiția clară și completă a ceea ce include proiectul — și, la fel de important, a ceea ce **nu** include. Scope-ul răspunde la întrebarea: *\"Ce trebuie livrat pentru ca proiectul să fie considerat finalizat cu succes?\"*\n\nConform PMBOK 7 (Project Management Institute), definirea scope-ului face parte din domeniul de performanță **Planificare** și este strâns legată de domeniul **Livrabile** (Deliverables). Un scope prost definit este una dintre cele mai frecvente cauze de eșec ale proiectelor: bugetul explodează, termenele se decalează, iar echipa lucrează la lucruri pe care sponsorul nu le-a cerut niciodată.\n\nÎn practică, scope-ul unui proiect de business (ex. implementare ERP, digitalizare procese, lansare produs) se stabilește în două etape:\n\n1. **Scope-ul produsului** — caracteristicile și funcțiile pe care trebuie să le aibă rezultatul final (ex. modulele unui sistem ERP: financiar-contabil, stocuri, facturare).\n2. **Scope-ul proiectului** — munca necesară pentru a livra acel produs (ex. analiza cerințelor, configurare, migrare date, instruire utilizatori, testare, go-live).\n\nAmbele trebuie documentate în scris, aprobate formal de sponsor/client și folosite ca referință pe tot parcursul proiectului. Documentul de bază pentru asta este **Scope Statement-ul** (Declarația de Scope), pe care îl detaliem în continuare.\n\n## Componentele unui Scope Statement\n\nUn Scope Statement bine scris nu este un paragraf vag de intenții, ci un document structurat, verificabil, care poate fi folosit ca referință în caz de dispută cu clientul. Componentele standard sunt:\n\n1. **Obiectivele proiectului** — ce problemă de business rezolvă proiectul (ex. reducerea timpului de facturare de la 3 zile la 1 zi).\n2. **Descrierea scope-ului produsului** — caracteristicile livrabilului final.\n3. **Livrabilele (deliverables)** — lista concretă a ce se predă la final (ex. sistem ERP configurat, manual de utilizare, echipă instruită).\n4. **Criterii de acceptanță** — condițiile măsurabile prin care sponsorul confirmă că fiecare livrabil este conform (ex. \"raportul de stocuri se generează în sub 5 secunde pentru 10.000 de SKU-uri\").\n5. **Excluderi (out of scope)** — ce NU face parte din proiect, menționat explicit pentru a evita interpretări greșite.\n6. **Constrângeri** — limitări impuse (buget fix, termen limită, resurse disponibile, tehnologie obligatorie).\n7. **Presupuneri (assumptions)** — condiții considerate adevărate fără verificare directă (ex. \"datele istorice din sistemul vechi sunt curate și complete\").\n\nAcest document se elaborează, de regulă, imediat după Project Charter și înainte de a construi WBS-ul (Work Breakdown Structure), pentru că WBS-ul descompune exact livrabilele stabilite aici. Un Scope Statement incomplet duce la o structură de descompunere a activităților greșită, deci la estimări de buget și termen nerealiste.\n\n## IN scope vs. OUT of scope\n\nCea mai practică metodă de a preveni conflictele cu clientul este să scrii, în paralel, două liste explicite:\n\n- **IN scope** — tot ce este inclus și va fi livrat.\n- **OUT of scope** — tot ce ar putea fi presupus ca inclus, dar nu este.\n\nMulți project manageri fac greșeala de a scrie doar lista IN scope, considerând că \"restul e evident că nu e inclus\". În realitate, stakeholderii au așteptări diferite, iar lucrurile \"evidente\" pentru PM nu sunt evidente pentru client. De exemplu, la un proiect de implementare ERP, clientul poate presupune implicit că migrarea istoricului de 5 ani de facturi este inclusă, deși contractul vorbește doar despre \"migrare date master\" (furnizori, clienți, articole).\n\nRegula practică: **orice element care a fost discutat în vreo ședință, chiar și tangențial, trebuie clarificat explicit ca IN sau OUT of scope.** Lista OUT of scope nu este o listă de scuze, ci un instrument de protecție reciprocă — pentru echipă (evită scope creep) și pentru client (știe exact ce primește și ce va necesita, eventual, un proiect separat sau un act adițional).\n\n## Requirements gathering (culegerea cerințelor)\n\nÎnainte de a putea scrie un Scope Statement corect, PM-ul trebuie să culeagă cerințele de la stakeholderi printr-un proces structurat, numit **requirements gathering** (sau requirements elicitation). Tehnicile cele mai folosite în proiecte de business din România sunt:\n\n- **Interviuri individuale** — cu sponsori, șefi de departament, utilizatori-cheie; potrivite pentru cerințe sensibile sau strategice.\n- **Workshop-uri de grup (facilitated workshops)** — reunesc mai mulți stakeholderi simultan pentru a alinia rapid punctele de vedere divergente (ex. departamentul financiar vs. cel de vânzări, în privința modulului de facturare).\n- **Chestionare/formulare** — utile când numărul de respondenți este mare (ex. 50 de agenți de vânzări din teritoriu).\n- **Observarea directă (job shadowing)** — PM-ul urmărește un angajat lucrând, pentru a identifica pași pe care acesta îi consideră \"de la sine înțeleși\" și nu i-ar menționa într-un interviu.\n- **Prototipare/machete** — mai ales în proiecte software, un prototip vizual clarifică cerințe mai repede decât o discuție abstractă.\n- **Analiza documentelor existente** — proceduri interne, rapoarte, formulare folosite curent.\n\nCerințele culese trebuie clasificate ca **funcționale** (ce trebuie să facă sistemul/procesul) și **nefuncționale** (performanță, securitate, conformitate). Fiecare cerință relevantă pentru livrabile se traduce apoi în linii concrete în Scope Statement — fie ca element IN scope, fie, dacă depășește bugetul sau termenul aprobat, ca element explicit OUT of scope, propus pentru o fază ulterioară.\n\n## Exemplu: Scope Statement pentru implementarea unui ERP la o firmă de distribuție\n**Context:** SC Distribert SRL, firmă de distribuție produse alimentare cu 40 de angajați și 3 depozite, implementează un sistem ERP pentru a înlocui evidența ținută în Excel.\n\n**Obiectiv:** Reducerea timpului de procesare a unei comenzi de la 45 de minute la maximum 10 minute, prin automatizarea fluxului comandă → factură → livrare.\n\n**Livrabile:**\n1. Modul financiar-contabil configurat (conform OMFP 1802/2014).\n2. Modul de gestiune stocuri pentru cele 3 depozite.\n3. Modul de facturare integrat cu casele de marcat.\n4. Migrarea datelor master: 1.200 clienți, 350 furnizori, 2.800 articole.\n5. Instruirea a 12 utilizatori-cheie (2 sesiuni a câte 4 ore).\n6. Documentație de utilizare în limba română.\n\n**Criterii de acceptanță:** Sistemul generează o factură fiscală validă în sub 3 secunde; raportul de stoc pe cele 3 depozite se actualizează în timp real (maximum 5 minute întârziere).\n\n**OUT of scope:** Migrarea istoricului de facturi anterior anului curent; integrarea cu magazinul online (proiect separat, planificat pentru anul următor); modulul de resurse umane.\n\n**Constrângeri:** Buget aprobat 85.000 lei; termen de finalizare — 4 luni de la semnarea contractului.\n\n**Presupuneri:** Infrastructura IT existentă (servere, rețea) este compatibilă și nu necesită investiții suplimentare.\n\n## Exemplu: Listă IN/OUT of scope pentru digitalizarea arhivei unui cabinet de contabilitate\n**Context:** Un cabinet de expertiză contabilă dorește digitalizarea arhivei fizice de documente financiar-contabile ale clienților din ultimii 3 ani.\n\n**IN scope:**\n- Scanarea documentelor din ultimii 3 ani fiscali (aprox. 45.000 de pagini).\n- Indexarea documentelor pe client și tip de document (factură, chitanță, contract).\n- Configurarea unui sistem de căutare rapidă (nume client, dată, tip document).\n- Instruirea echipei de 6 contabili în utilizarea sistemului.\n\n**OUT of scope:**\n- Scanarea arhivei mai vechi de 3 ani (rămâne în format fizic, conform termenului legal de păstrare).\n- Semnătura electronică a documentelor scanate.\n- Integrarea cu softul de contabilitate existent (evaluată separat, ca fază 2).\n- Distrugerea/arhivarea fizică a documentelor originale — rămâne responsabilitatea clientului, conform obligațiilor legale de păstrare.\n\nAceastă listare dublă a evitat, în cazul real similar, o discuție tensionată la finalul proiectului, când clientul se aștepta ca arhiva completă (10 ani) să fie inclusă în prețul inițial.\n\n⚠ **Scope creep** este extinderea treptată și necontrolată a scope-ului, prin acceptarea de cerințe noi \"mici\" fără a ajusta bugetul, termenul sau resursele. Fiecare cerere în plus pare rezonabilă izolat (\"mai adăugăm doar un raport\"), dar acumulate, aceste modificări pot dubla efortul real al proiectului. Soluția nu este refuzul rigid al oricărei schimbări, ci un **proces formal de control al schimbărilor** (change control): orice cerere nouă se evaluează în raport cu Scope Statement-ul aprobat, se estimează impactul asupra bugetului/termenului, iar decizia de acceptare aparține sponsorului, nu doar PM-ului sau echipei tehnice.\n\n## Exercițiu\nEști PM pe un proiect de creare a unui site de prezentare pentru o clinică stomatologică din Cluj-Napoca. Clientul a menționat în discuții, printre altele: design modern, formular de programare online, integrare cu Google Maps pentru locație, galerie foto cu cabinetul, traducere în limba engleză, chat live cu recepția, și optimizare SEO de bază.\n\nBugetul aprobat acoperă doar un site de prezentare cu 5 pagini și formular de programare — nu acoperă funcționalități de tip aplicație (chat live) sau conținut multilingv.\n\n**Cerință:** Scrie 3 elemente pentru lista IN scope și 3 elemente pentru lista OUT of scope, pornind de la informațiile de mai sus.\n\n**Soluție:** **IN scope (exemple corecte):**\n1. Site de prezentare cu 5 pagini (Acasă, Despre noi, Servicii, Galerie foto, Contact), design modern.\n2. Formular de programare online, cu trimitere automată de e-mail către recepție.\n3. Integrare hartă Google Maps pe pagina de Contact + optimizare SEO de bază (titluri, meta-descrieri, viteză de încărcare).\n\n**OUT of scope (exemple corecte):**\n1. Chat live cu recepția (funcționalitate de tip aplicație, necesită integrare separată și, posibil, personal dedicat — propusă ca fază ulterioară).\n2. Traducerea site-ului în limba engleză (conținut multilingv, în afara bugetului aprobat pentru 5 pagini în limba română).\n3. Orice funcționalitate suplimentară menționată informal în discuții, dar neconfirmată în scris de client, nu se consideră implicit inclusă — se clarifică explicit înainte de a începe dezvoltarea.\n\n**De ce contează:** fără această clarificare scrisă, clientul ar putea considera chat-ul live \"evident inclus\", deoarece l-a menționat în discuție, ceea ce ar genera un conflict la livrare privind bugetul și termenul.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "scope-proiect-definitie",
+    "md": "## Ce este scope-ul unui proiect\n\n**Scope-ul** (domeniul, aria de cuprindere) este definiția clară și completă a ceea ce include proiectul — și, la fel de important, a ceea ce **nu** include. Scope-ul răspunde la întrebarea: *\"Ce trebuie livrat pentru ca proiectul să fie considerat finalizat cu succes?\"*\n\nConform PMBOK 7 (Project Management Institute), definirea scope-ului face parte din domeniul de performanță **Planificare** și este strâns legată de domeniul **Livrabile** (Deliverables). Un scope prost definit este una dintre cele mai frecvente cauze de eșec ale proiectelor: bugetul explodează, termenele se decalează, iar echipa lucrează la lucruri pe care sponsorul nu le-a cerut niciodată.\n\nÎn practică, scope-ul unui proiect de business (ex. implementare ERP, digitalizare procese, lansare produs) se stabilește în două etape:\n\n1. **Scope-ul produsului** — caracteristicile și funcțiile pe care trebuie să le aibă rezultatul final (ex. modulele unui sistem ERP: financiar-contabil, stocuri, facturare).\n2. **Scope-ul proiectului** — munca necesară pentru a livra acel produs (ex. analiza cerințelor, configurare, migrare date, instruire utilizatori, testare, go-live).\n\nAmbele trebuie documentate în scris, aprobate formal de sponsor/client și folosite ca referință pe tot parcursul proiectului. Documentul de bază pentru asta este **Scope Statement-ul** (Declarația de Scope), pe care îl detaliem în continuare.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scope-statement-componente",
+    "md": "## Componentele unui Scope Statement\n\nUn Scope Statement bine scris nu este un paragraf vag de intenții, ci un document structurat, verificabil, care poate fi folosit ca referință în caz de dispută cu clientul. Componentele standard sunt:\n\n1. **Obiectivele proiectului** — ce problemă de business rezolvă proiectul (ex. reducerea timpului de facturare de la 3 zile la 1 zi).\n2. **Descrierea scope-ului produsului** — caracteristicile livrabilului final.\n3. **Livrabilele (deliverables)** — lista concretă a ce se predă la final (ex. sistem ERP configurat, manual de utilizare, echipă instruită).\n4. **Criterii de acceptanță** — condițiile măsurabile prin care sponsorul confirmă că fiecare livrabil este conform (ex. \"raportul de stocuri se generează în sub 5 secunde pentru 10.000 de SKU-uri\").\n5. **Excluderi (out of scope)** — ce NU face parte din proiect, menționat explicit pentru a evita interpretări greșite.\n6. **Constrângeri** — limitări impuse (buget fix, termen limită, resurse disponibile, tehnologie obligatorie).\n7. **Presupuneri (assumptions)** — condiții considerate adevărate fără verificare directă (ex. \"datele istorice din sistemul vechi sunt curate și complete\").\n\nAcest document se elaborează, de regulă, imediat după Project Charter și înainte de a construi WBS-ul (Work Breakdown Structure), pentru că WBS-ul descompune exact livrabilele stabilite aici. Un Scope Statement incomplet duce la o structură de descompunere a activităților greșită, deci la estimări de buget și termen nerealiste.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "in-scope-out-of-scope",
+    "md": "## IN scope vs. OUT of scope\n\nCea mai practică metodă de a preveni conflictele cu clientul este să scrii, în paralel, două liste explicite:\n\n- **IN scope** — tot ce este inclus și va fi livrat.\n- **OUT of scope** — tot ce ar putea fi presupus ca inclus, dar nu este.\n\nMulți project manageri fac greșeala de a scrie doar lista IN scope, considerând că \"restul e evident că nu e inclus\". În realitate, stakeholderii au așteptări diferite, iar lucrurile \"evidente\" pentru PM nu sunt evidente pentru client. De exemplu, la un proiect de implementare ERP, clientul poate presupune implicit că migrarea istoricului de 5 ani de facturi este inclusă, deși contractul vorbește doar despre \"migrare date master\" (furnizori, clienți, articole).\n\nRegula practică: **orice element care a fost discutat în vreo ședință, chiar și tangențial, trebuie clarificat explicit ca IN sau OUT of scope.** Lista OUT of scope nu este o listă de scuze, ci un instrument de protecție reciprocă — pentru echipă (evită scope creep) și pentru client (știe exact ce primește și ce va necesita, eventual, un proiect separat sau un act adițional).",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "requirements-gathering",
+    "md": "## Requirements gathering (culegerea cerințelor)\n\nÎnainte de a putea scrie un Scope Statement corect, PM-ul trebuie să culeagă cerințele de la stakeholderi printr-un proces structurat, numit **requirements gathering** (sau requirements elicitation). Tehnicile cele mai folosite în proiecte de business din România sunt:\n\n- **Interviuri individuale** — cu sponsori, șefi de departament, utilizatori-cheie; potrivite pentru cerințe sensibile sau strategice.\n- **Workshop-uri de grup (facilitated workshops)** — reunesc mai mulți stakeholderi simultan pentru a alinia rapid punctele de vedere divergente (ex. departamentul financiar vs. cel de vânzări, în privința modulului de facturare).\n- **Chestionare/formulare** — utile când numărul de respondenți este mare (ex. 50 de agenți de vânzări din teritoriu).\n- **Observarea directă (job shadowing)** — PM-ul urmărește un angajat lucrând, pentru a identifica pași pe care acesta îi consideră \"de la sine înțeleși\" și nu i-ar menționa într-un interviu.\n- **Prototipare/machete** — mai ales în proiecte software, un prototip vizual clarifică cerințe mai repede decât o discuție abstractă.\n- **Analiza documentelor existente** — proceduri interne, rapoarte, formulare folosite curent.\n\nCerințele culese trebuie clasificate ca **funcționale** (ce trebuie să facă sistemul/procesul) și **nefuncționale** (performanță, securitate, conformitate). Fiecare cerință relevantă pentru livrabile se traduce apoi în linii concrete în Scope Statement — fie ca element IN scope, fie, dacă depășește bugetul sau termenul aprobat, ca element explicit OUT of scope, propus pentru o fază ulterioară.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b4"
+   },
+   {
+    "type": "example",
+    "title": "Scope Statement pentru implementarea unui ERP la o firmă de distribuție",
+    "concept_key": "scope-statement-componente",
+    "md": "**Context:** SC Distribert SRL, firmă de distribuție produse alimentare cu 40 de angajați și 3 depozite, implementează un sistem ERP pentru a înlocui evidența ținută în Excel.\n\n**Obiectiv:** Reducerea timpului de procesare a unei comenzi de la 45 de minute la maximum 10 minute, prin automatizarea fluxului comandă → factură → livrare.\n\n**Livrabile:**\n1. Modul financiar-contabil configurat (conform OMFP 1802/2014).\n2. Modul de gestiune stocuri pentru cele 3 depozite.\n3. Modul de facturare integrat cu casele de marcat.\n4. Migrarea datelor master: 1.200 clienți, 350 furnizori, 2.800 articole.\n5. Instruirea a 12 utilizatori-cheie (2 sesiuni a câte 4 ore).\n6. Documentație de utilizare în limba română.\n\n**Criterii de acceptanță:** Sistemul generează o factură fiscală validă în sub 3 secunde; raportul de stoc pe cele 3 depozite se actualizează în timp real (maximum 5 minute întârziere).\n\n**OUT of scope:** Migrarea istoricului de facturi anterior anului curent; integrarea cu magazinul online (proiect separat, planificat pentru anul următor); modulul de resurse umane.\n\n**Constrângeri:** Buget aprobat 85.000 lei; termen de finalizare — 4 luni de la semnarea contractului.\n\n**Presupuneri:** Infrastructura IT existentă (servere, rețea) este compatibilă și nu necesită investiții suplimentare.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b5"
+   },
+   {
+    "type": "example",
+    "title": "Listă IN/OUT of scope pentru digitalizarea arhivei unui cabinet de contabilitate",
+    "concept_key": "in-scope-out-of-scope",
+    "md": "**Context:** Un cabinet de expertiză contabilă dorește digitalizarea arhivei fizice de documente financiar-contabile ale clienților din ultimii 3 ani.\n\n**IN scope:**\n- Scanarea documentelor din ultimii 3 ani fiscali (aprox. 45.000 de pagini).\n- Indexarea documentelor pe client și tip de document (factură, chitanță, contract).\n- Configurarea unui sistem de căutare rapidă (nume client, dată, tip document).\n- Instruirea echipei de 6 contabili în utilizarea sistemului.\n\n**OUT of scope:**\n- Scanarea arhivei mai vechi de 3 ani (rămâne în format fizic, conform termenului legal de păstrare).\n- Semnătura electronică a documentelor scanate.\n- Integrarea cu softul de contabilitate existent (evaluată separat, ca fază 2).\n- Distrugerea/arhivarea fizică a documentelor originale — rămâne responsabilitatea clientului, conform obligațiilor legale de păstrare.\n\nAceastă listare dublă a evitat, în cazul real similar, o discuție tensionată la finalul proiectului, când clientul se aștepta ca arhiva completă (10 ani) să fie inclusă în prețul inițial.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Scope creep** este extinderea treptată și necontrolată a scope-ului, prin acceptarea de cerințe noi \"mici\" fără a ajusta bugetul, termenul sau resursele. Fiecare cerere în plus pare rezonabilă izolat (\"mai adăugăm doar un raport\"), dar acumulate, aceste modificări pot dubla efortul real al proiectului. Soluția nu este refuzul rigid al oricărei schimbări, ci un **proces formal de control al schimbărilor** (change control): orice cerere nouă se evaluează în raport cu Scope Statement-ul aprobat, se estimează impactul asupra bugetului/termenului, iar decizia de acceptare aparține sponsorului, nu doar PM-ului sau echipei tehnice.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești PM pe un proiect de creare a unui site de prezentare pentru o clinică stomatologică din Cluj-Napoca. Clientul a menționat în discuții, printre altele: design modern, formular de programare online, integrare cu Google Maps pentru locație, galerie foto cu cabinetul, traducere în limba engleză, chat live cu recepția, și optimizare SEO de bază.\n\nBugetul aprobat acoperă doar un site de prezentare cu 5 pagini și formular de programare — nu acoperă funcționalități de tip aplicație (chat live) sau conținut multilingv.\n\n**Cerință:** Scrie 3 elemente pentru lista IN scope și 3 elemente pentru lista OUT of scope, pornind de la informațiile de mai sus.",
+    "solution_md": "**IN scope (exemple corecte):**\n1. Site de prezentare cu 5 pagini (Acasă, Despre noi, Servicii, Galerie foto, Contact), design modern.\n2. Formular de programare online, cu trimitere automată de e-mail către recepție.\n3. Integrare hartă Google Maps pe pagina de Contact + optimizare SEO de bază (titluri, meta-descrieri, viteză de încărcare).\n\n**OUT of scope (exemple corecte):**\n1. Chat live cu recepția (funcționalitate de tip aplicație, necesită integrare separată și, posibil, personal dedicat — propusă ca fază ulterioară).\n2. Traducerea site-ului în limba engleză (conținut multilingv, în afara bugetului aprobat pentru 5 pagini în limba română).\n3. Orice funcționalitate suplimentară menționată informal în discuții, dar neconfirmată în scris de client, nu se consideră implicit inclusă — se clarifică explicit înainte de a începe dezvoltarea.\n\n**De ce contează:** fără această clarificare scrisă, clientul ar putea considera chat-ul live \"evident inclus\", deoarece l-a menționat în discuție, ceea ce ar genera un conflict la livrare privind bugetul și termenul.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al listei \"OUT of scope\" într-un Scope Statement?",
+    "choices": [
+     "Să enumere toate riscurile proiectului",
+     "Să clarifice explicit ce nu este inclus, pentru a evita interpretări greșite ale stakeholderilor",
+     "Să înlocuiască necesitatea unui buget aprobat",
+     "Să descrie doar constrângerile tehnice ale proiectului"
+    ],
+    "answer": 1,
+    "explain": "Lista OUT of scope previne situația în care stakeholderii presupun implicit că un element este inclus doar pentru că a fost discutat, fără să fi fost confirmat formal.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce este \"scope creep\" și cum se previne corect?",
+    "choices": [
+     "Este o tehnică de requirements gathering; se previne prin mai multe interviuri",
+     "Este extinderea necontrolată a scope-ului prin acceptarea de cerințe noi fără ajustarea bugetului/termenului; se previne printr-un proces formal de control al schimbărilor",
+     "Este scăderea bugetului proiectului; se previne prin renegocierea contractului",
+     "Este un tip de livrabil obligatoriu în Scope Statement; se previne prin excluderea lui din document"
+    ],
+    "answer": 1,
+    "explain": "Scope creep apare când cerințe noi, aparent minore, se adaugă treptat fără evaluare formală a impactului asupra bugetului și termenului. Procesul de control al schimbărilor (change control) obligă la evaluarea și aprobarea explicită a fiecărei modificări de către sponsor.",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Scope Statement?",
+    "back": "Documentul care descrie în detaliu obiectivele, livrabilele, criteriile de acceptanță, excluderile, constrângerile și presupunerile unui proiect; servește drept referință oficială aprobată de sponsor.",
+    "concept_key": "scope-statement-componente",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este scope creep?",
+    "back": "Extinderea treptată și necontrolată a scope-ului proiectului prin acceptarea de cerințe noi fără a ajusta bugetul, termenul sau resursele alocate.",
+    "concept_key": "in-scope-out-of-scope",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 7 componente standard ale unui Scope Statement?",
+    "back": "Obiective, descrierea scope-ului produsului, livrabile, criterii de acceptanță, excluderi (out of scope), constrângeri și presupuneri.",
+    "concept_key": "scope-statement-componente",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Numește 3 tehnici de requirements gathering.",
+    "back": "Interviuri individuale, workshop-uri de grup facilitate și observarea directă (job shadowing); alte tehnici includ chestionare, prototipare și analiza documentelor existente.",
+    "concept_key": "requirements-gathering",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce trebuie scrisă explicit și lista OUT of scope, nu doar IN scope?",
+    "back": "Pentru că stakeholderii pot presupune implicit că un element discutat informal este inclus; excluderea scrisă previne conflictele și protejează atât echipa (evită scope creep), cât și clientul (știe exact ce primește).",
+    "concept_key": "in-scope-out-of-scope",
+    "blockId": "cmjjuxvso0058umkpwunl4oh0-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1510,
+   "flashcards": 5
+  }
+ }
+}

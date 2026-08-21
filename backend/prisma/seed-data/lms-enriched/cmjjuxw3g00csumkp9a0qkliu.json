@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw3g00csumkp9a0qkliu",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Planul de Conturi Românesc",
+ "lesson": "Clasa 3 - Stocuri",
+ "category": "FINANCE_OPS",
+ "content": "# Clasa 3 - Stocuri\n\n## Clasa 3 – Stocuri și producție în curs de execuție\n\nÎn planul general de conturi din România, clasa 3 grupează toate elementele de activ circulant materiale ale unei firme: de la materia primă cumpărată, până la produsul finit gata de vânzare. Structura este împărțită pe grupe de conturi, fiecare cu un rol precis:\n\n- **30 – Stocuri de materii prime și materiale**: 301 Materii prime, 302 Materiale consumabile, 303 Materiale de natura obiectelor de inventar, 308 Diferențe de preț la materii prime și materiale.\n- **32 – Obiecte de inventar**: 322 Obiecte de inventar (bunuri cu valoare mai mică decât pragul mijloacelor fixe, dar cu durată de utilizare mai mare de un an).\n- **33 – Producție în curs de execuție**: 331 Produse în curs de execuție, 332 Lucrări și servicii în curs de execuție.\n- **34 – Produse**: 341 Semifabricate, 345 Produse finite, 346 Produse reziduale, 348 Diferențe de preț la produse.\n- **35 – Stocuri aflate la terți**: mărfuri sau materiale trimise spre prelucrare, în custodie sau în consignație la alți parteneri.\n- **36 – Animale**: 361 Animale și păsări, 368 Diferențe de preț.\n- **37 – Mărfuri**: 371 Mărfuri, 378 Diferențe de preț la mărfuri.\n- **38 – Ambalaje**: 381 Ambalaje, 388 Diferențe de preț la ambalaje.\n- **39 – Ajustări pentru deprecierea stocurilor și producției în curs**: conturi rectificative (391-398), folosite când valoarea de piață scade sub costul de achiziție.\n\nConturile de diferențe de preț (308, 348, 368, 378, 388) se folosesc doar dacă firma evidențiază stocurile la preț standard sau preț de facturare, nu la cost efectiv – o tehnică des întâlnită în producție, pentru simplificarea calculului costurilor pe parcursul lunii.\n\n## Evaluarea stocurilor: intrare și ieșire\n\n**La intrare**, stocurile se evaluează la:\n- **cost de achiziție** (preț de cumpărare + cheltuieli de transport, manipulare, taxe vamale nerecuperabile, mai puțin reducerile comerciale) – pentru materii prime, materiale, mărfuri;\n- **cost de producție** (materii prime + manoperă directă + cotă de cheltuieli indirecte de producție) – pentru semifabricate și produse finite.\n\n**La ieșire din gestiune** (consum în producție, vânzare), OMFP 1802/2014 permite firmei să aleagă una dintre metodele general acceptate, aplicată **consecvent** pentru aceeași categorie de stocuri:\n\n1. **FIFO** (*First In, First Out*) – se consideră că primele bunuri intrate în gestiune sunt și primele ieșite. Stocul final rămâne evaluat la costurile cele mai recente.\n2. **CMP** (Costul Mediu Ponderat) – se recalculează o valoare medie unitară după fiecare intrare (sau lunar, în varianta simplificată), prin raportarea valorii totale a stocului la cantitatea totală disponibilă.\n3. **LIFO** (*Last In, First Out*) – ultimele cantități intrate sunt primele ieșite; metodă permisă contabil, dar rar folosită în practică în România.\n\nAlegerea metodei se menționează în politicile contabile ale firmei și în notele explicative la situațiile financiare anuale. Schimbarea metodei de la un exercițiu la altul este posibilă doar în situații justificate și trebuie prezentată distinct, cu impactul asupra rezultatului.\n\n## Evaluarea la închiderea exercițiului și ajustările pentru depreciere\n\nLa data bilanțului, stocurile se evaluează la minimul dintre costul istoric și valoarea realizabilă netă (principiul prudenței din OMFP 1802/2014). Valoarea realizabilă netă este prețul de vânzare estimat, mai puțin costurile de finalizare și cele de vânzare.\n\nDacă valoarea de piață a unui stoc scade sub costul înregistrat în contabilitate (uzură morală, deteriorare fizică, scădere de preț pe piață), firma trebuie să constituie o ajustare pentru depreciere, prin conturile din grupa 39 (de exemplu 391 pentru materii prime, 397 pentru mărfuri).\n\nÎnregistrarea se face astfel:\n- constituire ajustare: 6814 „Cheltuieli de exploatare privind ajustările pentru deprecierea activelor circulante” = 391/397/etc.\n- anulare sau diminuare ajustare (când motivul depreciere nu mai există sau stocul e vândut/casat): 391/397 = 7814 „Venituri din ajustări pentru deprecierea activelor circulante”.\n\nAjustările pentru depreciere se reevaluează la fiecare inventariere, cel puțin anual, pe baza inventarului fizic și a analizei valorii de utilizare sau de piață a stocurilor.\n\n## Exemplu: Recepția materiilor prime cu TVA\nO firmă producătoare de mobilă cumpără de la un furnizor plăci din PAL în valoare de 1.000 lei, plus TVA cota standard 21% (cotă aplicabilă de la 1 august 2025, conform Legii 141/2025). Factura totală este de 1.210 lei.\n\nÎnregistrarea contabilă la recepția materiei prime:\n\n| Operațiune | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Valoare materie primă | 301 Materii prime | 401 Furnizori | 1.000 |\n| TVA deductibilă | 4426 TVA deductibilă | 401 Furnizori | 210 |\n\nLa plata facturii către furnizor: 401 Furnizori = 5121 Conturi la bănci în lei, cu suma de 1.210 lei.\n\n## Exemplu: Monografie – Ieșirea materiilor prime în producție: FIFO vs. CMP\nDepozitul de materii prime al unei firme înregistrează, într-o lună, următoarea situație pentru un anumit tip de materie primă (unitate de măsură: kg):\n\n- Stoc inițial: 100 kg × 10 lei/kg = 1.000 lei\n- Intrare 1: 200 kg × 12 lei/kg = 2.400 lei\n- Intrare 2: 150 kg × 11 lei/kg = 1.650 lei\n- Total disponibil: 450 kg, valoare totală 5.050 lei\n- Ieșire spre producție: 250 kg\n\n**Varianta FIFO** – ieșirea se evaluează folosind, în ordine, loturile cele mai vechi:\n- 100 kg din stocul inițial × 10 lei = 1.000 lei\n- 150 kg din intrarea 1 × 12 lei = 1.800 lei\n- Total ieșire FIFO = 2.800 lei\n- Stoc final: 50 kg × 12 lei + 150 kg × 11 lei = 600 + 1.650 = 2.250 lei\n\nÎnregistrare: 601 Cheltuieli cu materiile prime = 301 Materii prime, cu 2.800 lei.\n\n**Varianta CMP** – se calculează costul mediu ponderat pe întreaga cantitate disponibilă:\n- CMP = 5.050 lei / 450 kg = 11,2222 lei/kg\n- Ieșire = 250 kg × 11,2222 lei/kg = 2.805,56 lei\n- Stoc final = 200 kg × 11,2222 lei/kg = 2.244,44 lei\n\nÎnregistrare: 601 Cheltuieli cu materiile prime = 301 Materii prime, cu 2.805,56 lei.\n\nObservă că valoarea ieșirii diferă între cele două metode (2.800 lei versus 2.805,56 lei), ceea ce influențează direct costul de producție și, implicit, profitul lunii. De aceea metoda aleasă trebuie aplicată consecvent și menționată în politicile contabile ale firmei.\n\n> Temei legal: OMFP 1802/2014 Secțiunea 8.6 – Stocuri și producția în curs de execuție (evaluarea la intrare, la ieșire și la data bilanțului) (în vigoare de la 2015-01-01)\nReglementările contabile aprobate prin OMFP 1802/2014 stabilesc regulile de evaluare a stocurilor la intrarea în gestiune (cost de achiziție/producție), metodele acceptate pentru evaluarea la ieșire (FIFO, CMP, LIFO) și obligația evaluării la valoarea cea mai mică dintre cost și valoarea realizabilă netă la data bilanțului. Pentru numerotarea exactă a punctelor aplicabile exercițiului tău financiar, verifică forma consolidată în vigoare a ordinului, publicată de Ministerul Finanțelor.\n\n⚠ Inventarierea anuală a stocurilor este obligatorie conform Legii contabilității nr. 82/1991 și normelor de aplicare (OMFP 2.861/2009). Diferențele constatate la inventar (plusuri, minusuri, deprecieri) trebuie înregistrate în contabilitate înainte de închiderea exercițiului financiar, iar metoda de evaluare aleasă (FIFO sau CMP) trebuie aplicată consecvent de la o perioadă la alta – schimbarea ei se justifică și se prezintă în notele explicative, nu se face discreționar pentru a modifica artificial rezultatul unei perioade.\n\n## Exercițiu\nO firmă de comerț cu produse electrocasnice are, pentru un anumit model de aspirator, următoarea situație a stocului într-o lună:\n\n- Stoc inițial: 50 buc × 20 lei/buc = 1.000 lei\n- Intrare: 100 buc × 22 lei/buc = 2.200 lei\n- Vânzare (ieșire din gestiune): 80 buc\n\nCalculează, folosind metoda CMP, valoarea ieșirii din gestiune (costul mărfurilor vândute) și valoarea stocului final. Formulează și înregistrarea contabilă a descărcării gestiunii.\n\n**Soluție:** **Pasul 1 – calcul CMP:**\nCMP = (1.000 + 2.200) / (50 + 100) = 3.200 / 150 = 21,3333 lei/buc\n\n**Pasul 2 – valoare ieșire (cost marfă vândută):**\n80 buc × 21,3333 lei/buc = 1.706,67 lei\n\n**Pasul 3 – valoare stoc final:**\n70 buc × 21,3333 lei/buc = 1.493,33 lei (verificare: 1.706,67 + 1.493,33 = 3.200 lei, egal cu totalul disponibil)\n\n**Înregistrare contabilă la descărcarea gestiunii:**\n607 Cheltuieli privind mărfurile = 371 Mărfuri, cu suma de 1.706,67 lei.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "clasa-3-stocuri-structura",
+    "md": "## Clasa 3 – Stocuri și producție în curs de execuție\n\nÎn planul general de conturi din România, clasa 3 grupează toate elementele de activ circulant materiale ale unei firme: de la materia primă cumpărată, până la produsul finit gata de vânzare. Structura este împărțită pe grupe de conturi, fiecare cu un rol precis:\n\n- **30 – Stocuri de materii prime și materiale**: 301 Materii prime, 302 Materiale consumabile, 303 Materiale de natura obiectelor de inventar, 308 Diferențe de preț la materii prime și materiale.\n- **32 – Obiecte de inventar**: 322 Obiecte de inventar (bunuri cu valoare mai mică decât pragul mijloacelor fixe, dar cu durată de utilizare mai mare de un an).\n- **33 – Producție în curs de execuție**: 331 Produse în curs de execuție, 332 Lucrări și servicii în curs de execuție.\n- **34 – Produse**: 341 Semifabricate, 345 Produse finite, 346 Produse reziduale, 348 Diferențe de preț la produse.\n- **35 – Stocuri aflate la terți**: mărfuri sau materiale trimise spre prelucrare, în custodie sau în consignație la alți parteneri.\n- **36 – Animale**: 361 Animale și păsări, 368 Diferențe de preț.\n- **37 – Mărfuri**: 371 Mărfuri, 378 Diferențe de preț la mărfuri.\n- **38 – Ambalaje**: 381 Ambalaje, 388 Diferențe de preț la ambalaje.\n- **39 – Ajustări pentru deprecierea stocurilor și producției în curs**: conturi rectificative (391-398), folosite când valoarea de piață scade sub costul de achiziție.\n\nConturile de diferențe de preț (308, 348, 368, 378, 388) se folosesc doar dacă firma evidențiază stocurile la preț standard sau preț de facturare, nu la cost efectiv – o tehnică des întâlnită în producție, pentru simplificarea calculului costurilor pe parcursul lunii.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metode-evaluare-iesire-stocuri",
+    "md": "## Evaluarea stocurilor: intrare și ieșire\n\n**La intrare**, stocurile se evaluează la:\n- **cost de achiziție** (preț de cumpărare + cheltuieli de transport, manipulare, taxe vamale nerecuperabile, mai puțin reducerile comerciale) – pentru materii prime, materiale, mărfuri;\n- **cost de producție** (materii prime + manoperă directă + cotă de cheltuieli indirecte de producție) – pentru semifabricate și produse finite.\n\n**La ieșire din gestiune** (consum în producție, vânzare), OMFP 1802/2014 permite firmei să aleagă una dintre metodele general acceptate, aplicată **consecvent** pentru aceeași categorie de stocuri:\n\n1. **FIFO** (*First In, First Out*) – se consideră că primele bunuri intrate în gestiune sunt și primele ieșite. Stocul final rămâne evaluat la costurile cele mai recente.\n2. **CMP** (Costul Mediu Ponderat) – se recalculează o valoare medie unitară după fiecare intrare (sau lunar, în varianta simplificată), prin raportarea valorii totale a stocului la cantitatea totală disponibilă.\n3. **LIFO** (*Last In, First Out*) – ultimele cantități intrate sunt primele ieșite; metodă permisă contabil, dar rar folosită în practică în România.\n\nAlegerea metodei se menționează în politicile contabile ale firmei și în notele explicative la situațiile financiare anuale. Schimbarea metodei de la un exercițiu la altul este posibilă doar în situații justificate și trebuie prezentată distinct, cu impactul asupra rezultatului.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ajustari-depreciere-stocuri",
+    "md": "## Evaluarea la închiderea exercițiului și ajustările pentru depreciere\n\nLa data bilanțului, stocurile se evaluează la minimul dintre costul istoric și valoarea realizabilă netă (principiul prudenței din OMFP 1802/2014). Valoarea realizabilă netă este prețul de vânzare estimat, mai puțin costurile de finalizare și cele de vânzare.\n\nDacă valoarea de piață a unui stoc scade sub costul înregistrat în contabilitate (uzură morală, deteriorare fizică, scădere de preț pe piață), firma trebuie să constituie o ajustare pentru depreciere, prin conturile din grupa 39 (de exemplu 391 pentru materii prime, 397 pentru mărfuri).\n\nÎnregistrarea se face astfel:\n- constituire ajustare: 6814 „Cheltuieli de exploatare privind ajustările pentru deprecierea activelor circulante” = 391/397/etc.\n- anulare sau diminuare ajustare (când motivul depreciere nu mai există sau stocul e vândut/casat): 391/397 = 7814 „Venituri din ajustări pentru deprecierea activelor circulante”.\n\nAjustările pentru depreciere se reevaluează la fiecare inventariere, cel puțin anual, pe baza inventarului fizic și a analizei valorii de utilizare sau de piață a stocurilor.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b3"
+   },
+   {
+    "type": "example",
+    "title": "Recepția materiilor prime cu TVA",
+    "concept_key": "inregistrare-achizitie-materii-prime",
+    "md": "O firmă producătoare de mobilă cumpără de la un furnizor plăci din PAL în valoare de 1.000 lei, plus TVA cota standard 21% (cotă aplicabilă de la 1 august 2025, conform Legii 141/2025). Factura totală este de 1.210 lei.\n\nÎnregistrarea contabilă la recepția materiei prime:\n\n| Operațiune | Cont debitor | Cont creditor | Sumă (lei) |\n|---|---|---|---|\n| Valoare materie primă | 301 Materii prime | 401 Furnizori | 1.000 |\n| TVA deductibilă | 4426 TVA deductibilă | 401 Furnizori | 210 |\n\nLa plata facturii către furnizor: 401 Furnizori = 5121 Conturi la bănci în lei, cu suma de 1.210 lei.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b4"
+   },
+   {
+    "type": "example",
+    "title": "Monografie – Ieșirea materiilor prime în producție: FIFO vs. CMP",
+    "concept_key": "cmp-vs-fifo-monografie",
+    "md": "Depozitul de materii prime al unei firme înregistrează, într-o lună, următoarea situație pentru un anumit tip de materie primă (unitate de măsură: kg):\n\n- Stoc inițial: 100 kg × 10 lei/kg = 1.000 lei\n- Intrare 1: 200 kg × 12 lei/kg = 2.400 lei\n- Intrare 2: 150 kg × 11 lei/kg = 1.650 lei\n- Total disponibil: 450 kg, valoare totală 5.050 lei\n- Ieșire spre producție: 250 kg\n\n**Varianta FIFO** – ieșirea se evaluează folosind, în ordine, loturile cele mai vechi:\n- 100 kg din stocul inițial × 10 lei = 1.000 lei\n- 150 kg din intrarea 1 × 12 lei = 1.800 lei\n- Total ieșire FIFO = 2.800 lei\n- Stoc final: 50 kg × 12 lei + 150 kg × 11 lei = 600 + 1.650 = 2.250 lei\n\nÎnregistrare: 601 Cheltuieli cu materiile prime = 301 Materii prime, cu 2.800 lei.\n\n**Varianta CMP** – se calculează costul mediu ponderat pe întreaga cantitate disponibilă:\n- CMP = 5.050 lei / 450 kg = 11,2222 lei/kg\n- Ieșire = 250 kg × 11,2222 lei/kg = 2.805,56 lei\n- Stoc final = 200 kg × 11,2222 lei/kg = 2.244,44 lei\n\nÎnregistrare: 601 Cheltuieli cu materiile prime = 301 Materii prime, cu 2.805,56 lei.\n\nObservă că valoarea ieșirii diferă între cele două metode (2.800 lei versus 2.805,56 lei), ceea ce influențează direct costul de producție și, implicit, profitul lunii. De aceea metoda aleasă trebuie aplicată consecvent și menționată în politicile contabile ale firmei.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Secțiunea 8.6 – Stocuri și producția în curs de execuție (evaluarea la intrare, la ieșire și la data bilanțului)",
+    "effective": "2015-01-01",
+    "md": "Reglementările contabile aprobate prin OMFP 1802/2014 stabilesc regulile de evaluare a stocurilor la intrarea în gestiune (cost de achiziție/producție), metodele acceptate pentru evaluarea la ieșire (FIFO, CMP, LIFO) și obligația evaluării la valoarea cea mai mică dintre cost și valoarea realizabilă netă la data bilanțului. Pentru numerotarea exactă a punctelor aplicabile exercițiului tău financiar, verifică forma consolidată în vigoare a ordinului, publicată de Ministerul Finanțelor.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Inventarierea anuală a stocurilor este obligatorie conform Legii contabilității nr. 82/1991 și normelor de aplicare (OMFP 2.861/2009). Diferențele constatate la inventar (plusuri, minusuri, deprecieri) trebuie înregistrate în contabilitate înainte de închiderea exercițiului financiar, iar metoda de evaluare aleasă (FIFO sau CMP) trebuie aplicată consecvent de la o perioadă la alta – schimbarea ei se justifică și se prezintă în notele explicative, nu se face discreționar pentru a modifica artificial rezultatul unei perioade.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă de comerț cu produse electrocasnice are, pentru un anumit model de aspirator, următoarea situație a stocului într-o lună:\n\n- Stoc inițial: 50 buc × 20 lei/buc = 1.000 lei\n- Intrare: 100 buc × 22 lei/buc = 2.200 lei\n- Vânzare (ieșire din gestiune): 80 buc\n\nCalculează, folosind metoda CMP, valoarea ieșirii din gestiune (costul mărfurilor vândute) și valoarea stocului final. Formulează și înregistrarea contabilă a descărcării gestiunii.",
+    "solution_md": "**Pasul 1 – calcul CMP:**\nCMP = (1.000 + 2.200) / (50 + 100) = 3.200 / 150 = 21,3333 lei/buc\n\n**Pasul 2 – valoare ieșire (cost marfă vândută):**\n80 buc × 21,3333 lei/buc = 1.706,67 lei\n\n**Pasul 3 – valoare stoc final:**\n70 buc × 21,3333 lei/buc = 1.493,33 lei (verificare: 1.706,67 + 1.493,33 = 3.200 lei, egal cu totalul disponibil)\n\n**Înregistrare contabilă la descărcarea gestiunii:**\n607 Cheltuieli privind mărfurile = 371 Mărfuri, cu suma de 1.706,67 lei.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care metodă de evaluare la ieșirea din stoc presupune că primele cantități intrate în gestiune sunt și primele ieșite?",
+    "choices": [
+     "FIFO",
+     "CMP",
+     "LIFO",
+     "Costul standard"
+    ],
+    "answer": 0,
+    "explain": "FIFO (First In, First Out) evaluează ieșirile la costul loturilor celor mai vechi, lăsând stocul final evaluat la costurile cele mai recente.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În ce cont se înregistrează ajustarea pentru depreciere a materiilor prime?",
+    "choices": [
+     "391 Ajustări pentru deprecierea materiilor prime",
+     "401 Furnizori",
+     "308 Diferențe de preț la materii prime și materiale",
+     "601 Cheltuieli cu materiile prime"
+    ],
+    "answer": 0,
+    "explain": "Contul 391 este un cont rectificativ de activ, folosit când valoarea de piață a materiilor prime scade sub costul lor înregistrat în contabilitate.",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce conturi compun clasa 3 din planul de conturi românesc?",
+    "back": "Conturi de stocuri și producție în curs de execuție (301-398), grupate pe materii prime, materiale, producție, produse, mărfuri, ambalaje și ajustări pentru depreciere.",
+    "concept_key": "clasa-3-stocuri-structura",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune metoda FIFO de evaluare a stocurilor?",
+    "back": "First In, First Out – stocurile ieșite din gestiune se evaluează la costul primelor loturi intrate, în ordine cronologică.",
+    "concept_key": "metode-evaluare-iesire-stocuri",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează costul mediu ponderat (CMP)?",
+    "back": "CMP = valoarea totală a stocului (stoc inițial + intrări) / cantitatea totală (stoc inițial + intrări).",
+    "concept_key": "metode-evaluare-iesire-stocuri",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont înregistrează ajustările pentru deprecierea materiilor prime?",
+    "back": "Contul 391 „Ajustări pentru deprecierea materiilor prime”, cont rectificativ de activ.",
+    "concept_key": "ajustari-depreciere-stocuri",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e formula contabilă pentru achiziția de materii prime cu TVA?",
+    "back": "301 Materii prime = 401 Furnizori (valoare fără TVA) și 4426 TVA deductibilă = 401 Furnizori (TVA aferentă).",
+    "concept_key": "inregistrare-achizitie-materii-prime",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont folosim pentru evidența mărfurilor și care e contul de diferențe de preț asociat?",
+    "back": "Contul 371 Mărfuri, cu diferențele de preț înregistrate în contul 378.",
+    "concept_key": "clasa-3-stocuri-structura",
+    "blockId": "cmjjuxw3g00csumkp9a0qkliu-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1230,
+   "flashcards": 6
+  }
+ }
+}

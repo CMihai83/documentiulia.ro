@@ -1,0 +1,155 @@
+{
+ "lessonId": "cmjjuxwbk00jeumkp1x0l84wv",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Cadrul Legal SSM",
+ "lesson": "Legislație specifică pe domenii",
+ "category": "HSE_SAFETY",
+ "content": "# Legislație specifică pe domenii\n\n## De ce nu e suficientă doar Legea 319/2006\n\nLegea 319/2006 a securității și sănătății în muncă și normele ei de aplicare, HG 1425/2006, formează **cadrul general** obligatoriu pentru orice angajator din România, indiferent de domeniul de activitate: evaluare de riscuri, instruiri (introductiv-generală, la locul de muncă, periodică), comitet de securitate și sănătate în muncă acolo unde legea o cere, documentație SSM de bază.\n\nÎnsă anumite activități presupun riscuri specifice pe care cadrul general nu le acoperă în detaliu suficient: lucrul pe șantiere de construcții, lucrul la înălțime, manipularea agenților chimici periculoși, intervențiile la instalații electrice. Pentru aceste domenii, legiuitorul român a transpus directive europene sectoriale prin hotărâri de guvern (HG) distincte, care **completează**, nu înlocuiesc, Legea 319/2006 și HG 1425/2006.\n\nCa responsabil SSM sau angajator, trebuie să identifici întâi dacă activitatea firmei tale se încadrează într-unul din aceste domenii cu reglementare sectorială și, dacă da, să aplici cerințele suplimentare pe lângă cele generale. Neaplicarea lor nu te scutește de sancțiuni doar pentru că ai respectat cadrul general — ITM verifică punctual conformitatea sectorială.\n\n## Construcții — șantiere temporare și mobile (HG 300/2006)\n\nPentru orice șantier de construcții (clădiri, infrastructură, reabilitări), HG 300/2006 privind cerințele minime de securitate și sănătate pentru șantierele temporare sau mobile introduce obligații suplimentare față de Legea 319/2006:\n\n- **Coordonatori SSM** — beneficiarul (investitorul) trebuie să desemneze un coordonator în materie de securitate și sănătate pentru faza de proiectare și, separat, unul pentru faza de realizare a lucrării (poate fi aceeași persoană, dacă are pregătirea necesară).\n- **Plan propriu de securitate și sănătate** — obligatoriu pentru șantierele cu risc ridicat sau cu mai mulți angajatori/subcontractori prezenți simultan; descrie măsurile specifice pentru fiecare fază a lucrării.\n- **Registru de coordonare** — document în care se consemnează evenimentele relevante privind securitatea pe parcursul execuției, ținut de coordonatorul de execuție.\n- **Notificare prealabilă către ITM** — pentru șantierele care depășesc anumite praguri de durată sau volum de muncă, se transmite o notificare la inspectoratul teritorial de muncă înainte de începerea lucrărilor.\n\nAceste obligații se aplică indiferent dacă lucrezi cu angajați proprii sau cu subcontractori — coordonarea SSM între toți angajatorii prezenți pe șantier este responsabilitatea beneficiarului, prin coordonatorii desemnați.\n\n## Lucrul la înălțime (HG 1146/2006)\n\nHG 1146/2006 privind cerințele minime de securitate și sănătate pentru utilizarea în muncă de către lucrători a echipamentelor de muncă reglementează, printre altele, lucrul la înălțime — activitate frecventă în construcții, mentenanță industrială, montaj panouri fotovoltaice sau lucrări pe acoperișuri.\n\nPrincipiile pe care trebuie să le aplici:\n\n1. **Ierarhia măsurilor** — întâi evită lucrul la înălțime dacă e posibil (de exemplu, asamblare la sol urmată de ridicare), apoi folosește echipamente colective de protecție (balustrade, plase de siguranță), și doar în ultimă instanță echipament individual de protecție (EIP) anti-cădere (ham de siguranță, linie de viață, opritor de cădere).\n2. **Verificarea echipamentelor** — schelele, platformele și EIP-urile anti-cădere trebuie verificate periodic de personal competent, cu înregistrare scrisă a rezultatelor.\n3. **Instruire specifică** — lucrătorii care efectuează lucrări la înălțime trebuie să primească instruire suplimentară față de instruirea generală SSM, axată pe utilizarea corectă a EIP-ului anti-cădere și pe procedurile de salvare în caz de cădere reținută.\n4. **Autorizarea lucrului** — pentru șantiere sau intervenții punctuale la înălțime, este bună practică emiterea unui permis de lucru (permis de lucru la înălțime), semnat de responsabilul SSM înainte de începerea activității.\n\nPragul exact de la care o activitate este calificată drept \"lucru la înălțime\" poate varia în funcție de reglementarea aplicabilă și de procedura internă a angajatorului — verifică întotdeauna textul actualizat al HG 1146/2006 și normele interne, deoarece valorile de prag pot fi revizuite.\n\n## Agenți chimici periculoși (HG 1218/2006) și lucrări electrice\n\n**Agenți chimici.** HG 1218/2006 privind stabilirea cerințelor minime de securitate și sănătate în muncă pentru asigurarea protecției lucrătorilor împotriva riscurilor legate de prezența agenților chimici se aplică oricărei firme care utilizează, depozitează sau manipulează substanțe chimice periculoase (solvenți, acizi, vopsele industriale, produse de curățenie profesionale etc.). Cerințele includ: evaluarea riscului chimic specific (separat de evaluarea generală de riscuri), fișele cu date de securitate (FDS/SDS) disponibile pentru fiecare substanță, măsuri de ventilație și depozitare adecvată, EIP specific (mănuși, ochelari, echipament de protecție respiratorie) și, unde e cazul, supraveghere medicală specială.\n\n**Instalații și lucrări electrice.** Pentru intervențiile la instalații electrice, cadrul SSM general se completează cu normative tehnice specifice domeniului electroenergetic, care impun: personal calificat și autorizat pentru lucrul cu tensiune, verificări periodice ale instalațiilor de către personal atestat, și proceduri stricte de lucru (scoatere de sub tensiune, verificarea lipsei de tensiune, legare la pământ, marcare zonă de lucru). Deoarece aceste normative tehnice sunt actualizate frecvent și pot varia în funcție de tipul instalației, verifică întotdeauna reglementarea tehnică în vigoare la data intervenției, împreună cu un specialist autorizat — nu te baza pe cifre sau coduri de normativ memorate.\n\n## Exemplu: Șantier de construcții — aplicarea HG 300/2006\n**Situație:** SC Construct Bravo SRL a câștigat un contract de execuție a unui bloc de locuințe cu 4 niveluri. Pe șantier vor lucra simultan echipa proprie (12 muncitori) și doi subcontractori (instalații sanitare și electrice).\n\n**Ce trebuie să facă angajatorul principal / beneficiarul:**\n\n1. Beneficiarul desemnează un coordonator SSM pentru proiectare (verifică dacă proiectul tehnic include măsuri de securitate) și un coordonator SSM pentru execuție (supraveghează aplicarea lor pe șantier).\n2. Coordonatorul de execuție elaborează, împreună cu Construct Bravo SRL, planul propriu de securitate și sănătate pentru șantier, care descrie riscurile fiecărei faze (excavare, structură, instalații, finisaje) și măsurile aferente.\n3. Se deschide registrul de coordonare, în care se notează, de exemplu, suprapunerea temporală a echipei de electricieni cu echipa de finisaje și măsurile de separare a zonelor de lucru.\n4. Se transmite notificarea prealabilă către ITM, cu datele șantierului și durata estimată a lucrărilor.\n5. Fiecare subcontractor rămâne responsabil de instruirea SSM proprie a angajaților săi, dar trebuie să respecte planul de securitate comun al șantierului.\n\nRezultat: dacă ITM face control și constată că nu există coordonator SSM desemnat sau plan de securitate, sancțiunea se aplică suplimentar față de eventualele neconformități din Legea 319/2006 — cele două seturi de obligații se verifică separat.\n\n## Exemplu: Lucrător pe acoperiș — echipament și procedură anti-cădere\n**Situație:** O firmă de mentenanță trebuie să repare o instalație de ventilație montată pe acoperișul unei hale industriale, la o înălțime de aproximativ 8 metri.\n\n**Pași aplicați de responsabilul SSM înainte de începerea lucrării:**\n\n1. Se analizează dacă lucrarea poate fi făcută altfel decât la înălțime (de exemplu, cu o platformă elevatoare care oferă protecție colectivă) — în acest caz nu este posibil, deci se trece la EIP individual.\n2. Se emite un permis de lucru la înălțime, semnat de responsabilul SSM, care specifică: punctele de ancorare validate, tipul de ham și linie de viață folosite, și persoana desemnată ca observator/asistent la sol.\n3. Se verifică vizual și documentat starea hamului de siguranță și a liniei de viață înainte de utilizare (fisuri, uzură a cataramelor, data ultimei verificări periodice).\n4. Lucrătorul primește instruirea specifică pentru lucrul la înălțime (dacă nu a mai efectuat-o în ultima perioadă stabilită de procedura internă) și confirmă în scris că a înțeles procedura de urgență în caz de cădere reținută.\n5. Pe durata lucrării, condițiile meteo (vânt, precipitații) sunt monitorizate — lucrul la înălțime se suspendă dacă acestea depășesc limitele stabilite prin procedura internă a firmei.\n\nAcest exemplu arată diferența față de o lucrare obișnuită: documentația (permis de lucru, verificare EIP) și instruirea specifică sunt suplimentare față de instructajul general SSM al lucrătorului.\n\n> Temei legal: HG 300/2006 privind cerințele minime de securitate și sănătate pentru șantierele temporare sau mobile Art. 4-8 (desemnarea coordonatorilor SSM) și Art. 44-47 (planul propriu de securitate și sănătate) (în vigoare de la 2006-03-02)\nHG 300/2006 completează Legea 319/2006 pentru domeniul construcțiilor: obligă beneficiarul lucrării să desemneze coordonatori SSM pentru proiectare și execuție și impune elaborarea unui plan propriu de securitate și sănătate, precum și ținerea unui registru de coordonare pe șantierele cu mai mulți angajatori. Verifică forma consolidată/actualizată a actului la data aplicării, întrucât hotărârile de guvern pot suferi modificări ulterioare.\n\n⚠ Codurile de acte normative sectoriale (HG 300/2006, HG 1146/2006, HG 1218/2006 etc.) sunt stabile ca principiu, dar **conținutul lor poate fi modificat prin acte ulterioare**. Înainte de a întocmi documentația SSM pentru un domeniu specific (construcții, lucru la înălțime, agenți chimici, electric), verifică întotdeauna forma consolidată și actualizată a actului normativ pe portalul legislativ oficial sau cu un consultant SSM autorizat — nu te baza exclusiv pe memorarea unor praguri numerice (metri, concentrații, durate) fără confirmare la zi.\n\n## Exercițiu\nFirma ta, o SRL de instalații electrice, urmează să deschidă un șantier de reabilitare a instalației electrice într-o hală industrială, în calitate de subcontractor al unei firme generale de construcții. Lucrarea presupune și montaj de cabluri pe un pod tehnologic aflat la 3,5 metri înălțime.\n\nÎntrebare: Enumeră minimum 4 seturi de obligații SSM specifice pe care trebuie să le respecți, dincolo de cerințele generale din Legea 319/2006, ținând cont de faptul că lucrezi pe un șantier de construcții (subcontractor), faci lucrări la înălțime și intervii la instalații electrice.\n\n**Soluție:** 1. **Ca subcontractor pe șantier (HG 300/2006):** trebuie să respecți planul propriu de securitate și sănătate al șantierului elaborat de coordonatorul SSM de execuție și să te coordonezi cu ceilalți angajatori prezenți; instruirea proprie a angajaților tăi rămâne responsabilitatea ta, dar trebuie aliniată cu regulile șantierului.\n\n2. **Pentru lucrul la înălțime (HG 1146/2006):** lucrătorii care montează cabluri pe podul tehnologic la 3,5 m trebuie să primească instruire specifică pentru lucrul la înălțime, să folosească EIP anti-cădere verificat, iar activitatea ar trebui autorizată printr-un permis de lucru la înălțime dacă procedura internă/a șantierului o cere.\n\n3. **Pentru lucrările electrice:** intervenția trebuie realizată de personal calificat și, unde normativele tehnice o cer, autorizat pentru lucrul cu instalații electrice, cu respectarea procedurilor de scoatere de sub tensiune și verificare a lipsei de tensiune înainte de intervenție.\n\n4. **Documentație și evidență:** trebuie păstrate înregistrări ale instruirilor specifice (înălțime + electric), ale verificărilor EIP și, dacă este cazul, o copie a evaluării de risc specifică activității pe acest șantier, corelată cu registrul de coordonare ținut de coordonatorul SSM al șantierului.\n\nConcluzie: aceeași lucrare poate cumula trei seturi de obligații sectoriale suprapuse (șantier + înălțime + electric), pe lângă cadrul general al Legii 319/2006 — de aceea evaluarea de risc trebuie să identifice explicit fiecare categorie aplicabilă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "ssm-legislatie-sectoriala",
+    "md": "## De ce nu e suficientă doar Legea 319/2006\n\nLegea 319/2006 a securității și sănătății în muncă și normele ei de aplicare, HG 1425/2006, formează **cadrul general** obligatoriu pentru orice angajator din România, indiferent de domeniul de activitate: evaluare de riscuri, instruiri (introductiv-generală, la locul de muncă, periodică), comitet de securitate și sănătate în muncă acolo unde legea o cere, documentație SSM de bază.\n\nÎnsă anumite activități presupun riscuri specifice pe care cadrul general nu le acoperă în detaliu suficient: lucrul pe șantiere de construcții, lucrul la înălțime, manipularea agenților chimici periculoși, intervențiile la instalații electrice. Pentru aceste domenii, legiuitorul român a transpus directive europene sectoriale prin hotărâri de guvern (HG) distincte, care **completează**, nu înlocuiesc, Legea 319/2006 și HG 1425/2006.\n\nCa responsabil SSM sau angajator, trebuie să identifici întâi dacă activitatea firmei tale se încadrează într-unul din aceste domenii cu reglementare sectorială și, dacă da, să aplici cerințele suplimentare pe lângă cele generale. Neaplicarea lor nu te scutește de sancțiuni doar pentru că ai respectat cadrul general — ITM verifică punctual conformitatea sectorială.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ssm-santiere-hg-300-2006",
+    "md": "## Construcții — șantiere temporare și mobile (HG 300/2006)\n\nPentru orice șantier de construcții (clădiri, infrastructură, reabilitări), HG 300/2006 privind cerințele minime de securitate și sănătate pentru șantierele temporare sau mobile introduce obligații suplimentare față de Legea 319/2006:\n\n- **Coordonatori SSM** — beneficiarul (investitorul) trebuie să desemneze un coordonator în materie de securitate și sănătate pentru faza de proiectare și, separat, unul pentru faza de realizare a lucrării (poate fi aceeași persoană, dacă are pregătirea necesară).\n- **Plan propriu de securitate și sănătate** — obligatoriu pentru șantierele cu risc ridicat sau cu mai mulți angajatori/subcontractori prezenți simultan; descrie măsurile specifice pentru fiecare fază a lucrării.\n- **Registru de coordonare** — document în care se consemnează evenimentele relevante privind securitatea pe parcursul execuției, ținut de coordonatorul de execuție.\n- **Notificare prealabilă către ITM** — pentru șantierele care depășesc anumite praguri de durată sau volum de muncă, se transmite o notificare la inspectoratul teritorial de muncă înainte de începerea lucrărilor.\n\nAceste obligații se aplică indiferent dacă lucrezi cu angajați proprii sau cu subcontractori — coordonarea SSM între toți angajatorii prezenți pe șantier este responsabilitatea beneficiarului, prin coordonatorii desemnați.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ssm-lucru-inaltime-hg-1146-2006",
+    "md": "## Lucrul la înălțime (HG 1146/2006)\n\nHG 1146/2006 privind cerințele minime de securitate și sănătate pentru utilizarea în muncă de către lucrători a echipamentelor de muncă reglementează, printre altele, lucrul la înălțime — activitate frecventă în construcții, mentenanță industrială, montaj panouri fotovoltaice sau lucrări pe acoperișuri.\n\nPrincipiile pe care trebuie să le aplici:\n\n1. **Ierarhia măsurilor** — întâi evită lucrul la înălțime dacă e posibil (de exemplu, asamblare la sol urmată de ridicare), apoi folosește echipamente colective de protecție (balustrade, plase de siguranță), și doar în ultimă instanță echipament individual de protecție (EIP) anti-cădere (ham de siguranță, linie de viață, opritor de cădere).\n2. **Verificarea echipamentelor** — schelele, platformele și EIP-urile anti-cădere trebuie verificate periodic de personal competent, cu înregistrare scrisă a rezultatelor.\n3. **Instruire specifică** — lucrătorii care efectuează lucrări la înălțime trebuie să primească instruire suplimentară față de instruirea generală SSM, axată pe utilizarea corectă a EIP-ului anti-cădere și pe procedurile de salvare în caz de cădere reținută.\n4. **Autorizarea lucrului** — pentru șantiere sau intervenții punctuale la înălțime, este bună practică emiterea unui permis de lucru (permis de lucru la înălțime), semnat de responsabilul SSM înainte de începerea activității.\n\nPragul exact de la care o activitate este calificată drept \"lucru la înălțime\" poate varia în funcție de reglementarea aplicabilă și de procedura internă a angajatorului — verifică întotdeauna textul actualizat al HG 1146/2006 și normele interne, deoarece valorile de prag pot fi revizuite.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ssm-agenti-chimici-hg-1218-2006",
+    "md": "## Agenți chimici periculoși (HG 1218/2006) și lucrări electrice\n\n**Agenți chimici.** HG 1218/2006 privind stabilirea cerințelor minime de securitate și sănătate în muncă pentru asigurarea protecției lucrătorilor împotriva riscurilor legate de prezența agenților chimici se aplică oricărei firme care utilizează, depozitează sau manipulează substanțe chimice periculoase (solvenți, acizi, vopsele industriale, produse de curățenie profesionale etc.). Cerințele includ: evaluarea riscului chimic specific (separat de evaluarea generală de riscuri), fișele cu date de securitate (FDS/SDS) disponibile pentru fiecare substanță, măsuri de ventilație și depozitare adecvată, EIP specific (mănuși, ochelari, echipament de protecție respiratorie) și, unde e cazul, supraveghere medicală specială.\n\n**Instalații și lucrări electrice.** Pentru intervențiile la instalații electrice, cadrul SSM general se completează cu normative tehnice specifice domeniului electroenergetic, care impun: personal calificat și autorizat pentru lucrul cu tensiune, verificări periodice ale instalațiilor de către personal atestat, și proceduri stricte de lucru (scoatere de sub tensiune, verificarea lipsei de tensiune, legare la pământ, marcare zonă de lucru). Deoarece aceste normative tehnice sunt actualizate frecvent și pot varia în funcție de tipul instalației, verifică întotdeauna reglementarea tehnică în vigoare la data intervenției, împreună cu un specialist autorizat — nu te baza pe cifre sau coduri de normativ memorate.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b4"
+   },
+   {
+    "type": "example",
+    "title": "Șantier de construcții — aplicarea HG 300/2006",
+    "concept_key": "ssm-santiere-hg-300-2006",
+    "md": "**Situație:** SC Construct Bravo SRL a câștigat un contract de execuție a unui bloc de locuințe cu 4 niveluri. Pe șantier vor lucra simultan echipa proprie (12 muncitori) și doi subcontractori (instalații sanitare și electrice).\n\n**Ce trebuie să facă angajatorul principal / beneficiarul:**\n\n1. Beneficiarul desemnează un coordonator SSM pentru proiectare (verifică dacă proiectul tehnic include măsuri de securitate) și un coordonator SSM pentru execuție (supraveghează aplicarea lor pe șantier).\n2. Coordonatorul de execuție elaborează, împreună cu Construct Bravo SRL, planul propriu de securitate și sănătate pentru șantier, care descrie riscurile fiecărei faze (excavare, structură, instalații, finisaje) și măsurile aferente.\n3. Se deschide registrul de coordonare, în care se notează, de exemplu, suprapunerea temporală a echipei de electricieni cu echipa de finisaje și măsurile de separare a zonelor de lucru.\n4. Se transmite notificarea prealabilă către ITM, cu datele șantierului și durata estimată a lucrărilor.\n5. Fiecare subcontractor rămâne responsabil de instruirea SSM proprie a angajaților săi, dar trebuie să respecte planul de securitate comun al șantierului.\n\nRezultat: dacă ITM face control și constată că nu există coordonator SSM desemnat sau plan de securitate, sancțiunea se aplică suplimentar față de eventualele neconformități din Legea 319/2006 — cele două seturi de obligații se verifică separat.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b5"
+   },
+   {
+    "type": "example",
+    "title": "Lucrător pe acoperiș — echipament și procedură anti-cădere",
+    "concept_key": "ssm-lucru-inaltime-hg-1146-2006",
+    "md": "**Situație:** O firmă de mentenanță trebuie să repare o instalație de ventilație montată pe acoperișul unei hale industriale, la o înălțime de aproximativ 8 metri.\n\n**Pași aplicați de responsabilul SSM înainte de începerea lucrării:**\n\n1. Se analizează dacă lucrarea poate fi făcută altfel decât la înălțime (de exemplu, cu o platformă elevatoare care oferă protecție colectivă) — în acest caz nu este posibil, deci se trece la EIP individual.\n2. Se emite un permis de lucru la înălțime, semnat de responsabilul SSM, care specifică: punctele de ancorare validate, tipul de ham și linie de viață folosite, și persoana desemnată ca observator/asistent la sol.\n3. Se verifică vizual și documentat starea hamului de siguranță și a liniei de viață înainte de utilizare (fisuri, uzură a cataramelor, data ultimei verificări periodice).\n4. Lucrătorul primește instruirea specifică pentru lucrul la înălțime (dacă nu a mai efectuat-o în ultima perioadă stabilită de procedura internă) și confirmă în scris că a înțeles procedura de urgență în caz de cădere reținută.\n5. Pe durata lucrării, condițiile meteo (vânt, precipitații) sunt monitorizate — lucrul la înălțime se suspendă dacă acestea depășesc limitele stabilite prin procedura internă a firmei.\n\nAcest exemplu arată diferența față de o lucrare obișnuită: documentația (permis de lucru, verificare EIP) și instruirea specifică sunt suplimentare față de instructajul general SSM al lucrătorului.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG 300/2006 privind cerințele minime de securitate și sănătate pentru șantierele temporare sau mobile",
+    "article": "Art. 4-8 (desemnarea coordonatorilor SSM) și Art. 44-47 (planul propriu de securitate și sănătate)",
+    "effective": "2006-03-02",
+    "md": "HG 300/2006 completează Legea 319/2006 pentru domeniul construcțiilor: obligă beneficiarul lucrării să desemneze coordonatori SSM pentru proiectare și execuție și impune elaborarea unui plan propriu de securitate și sănătate, precum și ținerea unui registru de coordonare pe șantierele cu mai mulți angajatori. Verifică forma consolidată/actualizată a actului la data aplicării, întrucât hotărârile de guvern pot suferi modificări ulterioare.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Codurile de acte normative sectoriale (HG 300/2006, HG 1146/2006, HG 1218/2006 etc.) sunt stabile ca principiu, dar **conținutul lor poate fi modificat prin acte ulterioare**. Înainte de a întocmi documentația SSM pentru un domeniu specific (construcții, lucru la înălțime, agenți chimici, electric), verifică întotdeauna forma consolidată și actualizată a actului normativ pe portalul legislativ oficial sau cu un consultant SSM autorizat — nu te baza exclusiv pe memorarea unor praguri numerice (metri, concentrații, durate) fără confirmare la zi.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Firma ta, o SRL de instalații electrice, urmează să deschidă un șantier de reabilitare a instalației electrice într-o hală industrială, în calitate de subcontractor al unei firme generale de construcții. Lucrarea presupune și montaj de cabluri pe un pod tehnologic aflat la 3,5 metri înălțime.\n\nÎntrebare: Enumeră minimum 4 seturi de obligații SSM specifice pe care trebuie să le respecți, dincolo de cerințele generale din Legea 319/2006, ținând cont de faptul că lucrezi pe un șantier de construcții (subcontractor), faci lucrări la înălțime și intervii la instalații electrice.",
+    "solution_md": "1. **Ca subcontractor pe șantier (HG 300/2006):** trebuie să respecți planul propriu de securitate și sănătate al șantierului elaborat de coordonatorul SSM de execuție și să te coordonezi cu ceilalți angajatori prezenți; instruirea proprie a angajaților tăi rămâne responsabilitatea ta, dar trebuie aliniată cu regulile șantierului.\n\n2. **Pentru lucrul la înălțime (HG 1146/2006):** lucrătorii care montează cabluri pe podul tehnologic la 3,5 m trebuie să primească instruire specifică pentru lucrul la înălțime, să folosească EIP anti-cădere verificat, iar activitatea ar trebui autorizată printr-un permis de lucru la înălțime dacă procedura internă/a șantierului o cere.\n\n3. **Pentru lucrările electrice:** intervenția trebuie realizată de personal calificat și, unde normativele tehnice o cer, autorizat pentru lucrul cu instalații electrice, cu respectarea procedurilor de scoatere de sub tensiune și verificare a lipsei de tensiune înainte de intervenție.\n\n4. **Documentație și evidență:** trebuie păstrate înregistrări ale instruirilor specifice (înălțime + electric), ale verificărilor EIP și, dacă este cazul, o copie a evaluării de risc specifică activității pe acest șantier, corelată cu registrul de coordonare ținut de coordonatorul SSM al șantierului.\n\nConcluzie: aceeași lucrare poate cumula trei seturi de obligații sectoriale suprapuse (șantier + înălțime + electric), pe lângă cadrul general al Legii 319/2006 — de aceea evaluarea de risc trebuie să identifice explicit fiecare categorie aplicabilă.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este relația dintre Legea 319/2006 și hotărârile de guvern sectoriale (HG 300/2006, HG 1146/2006, HG 1218/2006)?",
+    "choices": [
+     "HG-urile sectoriale înlocuiesc complet Legea 319/2006 pentru domeniile respective",
+     "HG-urile sectoriale completează cadrul general din Legea 319/2006 cu cerințe suplimentare specifice domeniului",
+     "Legea 319/2006 se aplică doar dacă nu există o HG sectorială pentru domeniul respectiv",
+     "HG-urile sectoriale sunt opționale și pot fi aplicate doar la cererea angajatorului"
+    ],
+    "answer": 1,
+    "explain": "Legea 319/2006 și HG 1425/2006 rămân cadrul general obligatoriu pentru orice angajator; HG-urile sectoriale (construcții, lucru la înălțime, agenți chimici etc.) se aplică suplimentar, adăugând cerințe specifice domeniului de risc respectiv, nu în locul cadrului general.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Pe un șantier de construcții cu mai mulți subcontractori, cine are obligația de a desemna coordonatorii SSM pentru proiectare și execuție, conform HG 300/2006?",
+    "choices": [
+     "Fiecare subcontractor, pentru propriii angajați",
+     "Inspectoratul Teritorial de Muncă (ITM)",
+     "Beneficiarul (investitorul) lucrării",
+     "Responsabilul SSM al firmei generale de construcții, ales prin vot al subcontractorilor"
+    ],
+    "answer": 2,
+    "explain": "Conform HG 300/2006, beneficiarul (investitorul) șantierului are obligația de a desemna coordonatorul SSM pentru faza de proiectare și pe cel pentru faza de execuție, responsabili de coordonarea măsurilor de securitate între toți angajatorii prezenți pe șantier.",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează cerințele minime SSM pentru șantierele temporare sau mobile (construcții)?",
+    "back": "HG 300/2006 privind cerințele minime de securitate și sănătate pentru șantierele temporare sau mobile.",
+    "concept_key": "ssm-santiere-hg-300-2006",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine desemnează coordonatorii SSM pe un șantier de construcții cu mai mulți angajatori?",
+    "back": "Beneficiarul (investitorul) lucrării desemnează coordonatorul SSM pentru proiectare și coordonatorul SSM pentru execuție.",
+    "concept_key": "ssm-santiere-hg-300-2006",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează cerințele minime de securitate pentru utilizarea echipamentelor de muncă, inclusiv lucrul la înălțime?",
+    "back": "HG 1146/2006 privind cerințele minime de securitate și sănătate pentru utilizarea în muncă de către lucrători a echipamentelor de muncă.",
+    "concept_key": "ssm-lucru-inaltime-hg-1146-2006",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este ordinea corectă a măsurilor de protecție pentru lucrul la înălțime, conform principiului ierarhiei prevenirii?",
+    "back": "1) Evitarea lucrului la înălțime (asamblare la sol), 2) protecție colectivă (balustrade, plase), 3) echipament individual de protecție anti-cădere (ham, linie de viață) — folosit doar dacă primele două nu sunt posibile.",
+    "concept_key": "ssm-lucru-inaltime-hg-1146-2006",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează protecția lucrătorilor împotriva riscurilor legate de agenții chimici periculoși la locul de muncă?",
+    "back": "HG 1218/2006 privind stabilirea cerințelor minime de securitate și sănătate în muncă pentru asigurarea protecției lucrătorilor împotriva riscurilor legate de prezența agenților chimici.",
+    "concept_key": "ssm-agenti-chimici-hg-1218-2006",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document trebuie disponibil pentru fiecare substanță chimică periculoasă utilizată în firmă, conform cerințelor privind agenții chimici?",
+    "back": "Fișa cu date de securitate (FDS/SDS) a substanței, care descrie riscurile și măsurile de manipulare, depozitare și protecție.",
+    "concept_key": "ssm-agenti-chimici-hg-1218-2006",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document consemnează evenimentele relevante privind securitatea pe parcursul execuției unui șantier, ținut de coordonatorul de execuție?",
+    "back": "Registrul de coordonare, prevăzut de HG 300/2006.",
+    "concept_key": "ssm-santiere-hg-300-2006",
+    "blockId": "cmjjuxwbk00jeumkp1x0l84wv-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1659,
+   "flashcards": 7
+  }
+ }
+}

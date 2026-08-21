@@ -1,0 +1,167 @@
+{
+ "lessonId": "cmjjuxw3j00cuumkpeb2k7gxn",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Planul de Conturi Românesc",
+ "lesson": "Clasa 4 - Terți",
+ "category": "FINANCE_OPS",
+ "content": "# Clasa 4 - Terți\n\n## Clasa 4 «Conturi de terți» - prezentare generală\n\nClasa 4 din Planul de conturi general (OMFP 1802/2014) cuprinde conturile care reflectă relațiile de decontare ale entității cu partenerii din afara ei - furnizori, clienți, personal, statul, asociații/acționarii - precum și cu terți diverși. Sunt excluse din această clasă operațiunile de trezorerie (Clasa 5 - casă, bănci) și cele legate direct de active imobilizate sau capital (Clasele 1-2, în partea lor «pură»).\n\nStructura pe grupe este următoarea:\n- **Grupa 40** - Furnizori și conturi asimilate\n- **Grupa 41** - Clienți și conturi asimilate\n- **Grupa 42** - Personal și conturi asimilate\n- **Grupa 43** - Asigurări sociale, protecție socială și conturi asimilate\n- **Grupa 44** - Bugetul statului, fonduri speciale și conturi asimilate\n- **Grupa 45** - Grup și acționari/asociați\n- **Grupa 46** - Debitori și creditori diverși\n- **Grupa 47** - Conturi de subvenții și regularizare\n- **Grupa 48** - Decontări în cadrul unității (uz intern, sedii secundare)\n- **Grupa 49** - Ajustări pentru deprecierea creanțelor\n\nParticularitatea Clasei 4 este că majoritatea conturilor sunt **bifuncționale**: în funcție de operațiune, pot avea sold debitor (creanță) sau sold creditor (datorie). De exemplu, contul 401 «Furnizori» este în mod normal creditor, dar devine debitor dacă entitatea a plătit un avans mai mare decât valoarea facturată.\n\n## Grupa 40 - Furnizori și conturi asimilate\n\nConturile principale din această grupă:\n- **401 «Furnizori»** - datoria față de furnizorii de bunuri și servicii curente; cont de pasiv, sold creditor.\n- **403 «Efecte de plătit»** - datorii către furnizori garantate prin bilete la ordin sau cambii.\n- **404 «Furnizori de imobilizări»** - distinct de 401, folosit când achiziția vizează active imobilizate (mijloace fixe, licențe etc.), nu stocuri sau servicii curente.\n- **408 «Furnizori - facturi nesosite»** - se folosește când marfa/serviciul a fost deja recepționat/prestat, dar factura fiscală nu a ajuns până la închiderea lunii; la sosirea facturii, 408 se stinge prin 401.\n- **409 «Furnizori - debitori»** - avansuri plătite furnizorilor înainte de livrare (409.1 pentru cumpărări de bunuri de natura stocurilor, 409.2 pentru prestări de servicii, 409.8 pentru imobilizări).\n\nDistincția 401 vs. 404 este importantă pentru corectitudinea situațiilor financiare: 404 se raportează separat, la rubrica datoriilor legate de active imobilizate, nu în cadrul datoriilor comerciale curente.\n\n## Grupa 41 - Clienți și conturi asimilate\n\n- **411 «Clienți»** - creanța din vânzarea de bunuri, lucrări sau servicii; sold debitor. Se dezvoltă analitic în 411.1 «Clienți» și 411.8 «Clienți incerți sau în litigiu» (pentru creanțe cu risc de neîncasare, aflate în urmărire sau proces).\n- **413 «Efecte de primit de la clienți»** - creanțe garantate prin bilete la ordin/cambii primite.\n- **418 «Clienți - facturi de întocmit»** - livrarea sau prestarea a avut loc, dar factura nu a fost încă emisă până la închiderea perioadei; se recunoaște venitul și TVA neexigibilă (4428), urmând ca la emiterea facturii TVA să devină exigibilă (4427).\n- **419 «Clienți - creditori»** - avansuri încasate de la clienți înainte de livrarea efectivă; sold creditor (este o datorie, deși aparține grupei «clienți»).\n\nPentru creanțele cu risc de neîncasare (client în insolvență, litigiu prelungit), entitatea trece soldul din 411.1 în 411.8 și constituie un provizion prin contul 491 (Grupa 49), respectând principiul prudenței.\n\n## Grupele 42-43 - Personal și asigurări sociale\n\n**Grupa 42 - Personal:**\n- **421 «Personal - salarii datorate»** - datoria brută către angajați, principalul cont de decontare a salariilor.\n- **423 «Personal - ajutoare materiale datorate»**, **424 «Prime reprezentând participarea personalului la profit»**.\n- **425 «Avansuri acordate personalului»** - sume plătite în cursul lunii, înainte de lichidarea finală a salariului.\n- **426 «Drepturi de personal neridicate»**, **427 «Rețineri din salarii datorate terților»** (poprire, rate, pensie alimentară).\n- **428 «Alte datorii și creanțe în legătură cu personalul»** (concedii de odihnă neefectuate, alte regularizări).\n\n**Grupa 43 - Asigurări sociale:**\n- **431 «Asigurări sociale»** - cu analitice pentru CAS angajat (4315) și CASS angajat (4316), reținute din salariul brut.\n- **436 «Contribuția asiguratorie pentru muncă»** (CAM) - datorată integral de angajator, în afara salariului brut.\n- **437 «Ajutor de șomaj»**, **438 «Alte datorii și creanțe sociale»**.\n\nCircuitul salarial leagă direct grupele 42, 43 și 44 (impozitul pe venitul din salarii, cont 444): din salariul brut înregistrat în 421 se rețin contribuțiile angajatului (431) și impozitul (444), rezultând salariul net de plată.\n\n## Grupa 44 - Bugetul statului, fonduri speciale și conturi asimilate\n\nAceastă grupă centralizează toate datoriile și creanțele fiscale ale entității față de stat:\n- **441 «Impozitul pe profit/venit»**\n- **442 «Taxa pe valoarea adăugată»**, cu analiticele esențiale pentru orice firmă plătitoare de TVA: **4423** TVA de plată, **4424** TVA de recuperat, **4426** TVA deductibilă, **4427** TVA colectată, **4428** TVA neexigibilă (facturi de întocmit/primit sau încasări pe bază de tichete/avans).\n- **444 «Impozitul pe venituri de natura salariilor»** - impozitul reținut din salariile angajaților și virat la stat.\n- **446 «Alte impozite, taxe și vărsăminte asimilate»** (ex. impozit pe clădiri/terenuri, impozit pe mijloace de transport, la unele entități).\n- **447 «Fonduri speciale - taxe și vărsăminte asimilate»**\n- **448 «Alte datorii și creanțe cu bugetul statului»** (subvenții de primit, alte regularizări fiscale).\n\nLa sfârșitul fiecărei perioade fiscale, TVA colectată (4427) se compară cu TVA deductibilă (4426); diferența se regularizează prin 4423 (dacă entitatea datorează TVA) sau 4424 (dacă are dreptul la rambursare/report).\n\n## Grupele 45, 46 și 49 - grup, asociați, debitori/creditori diverși și ajustări\n\n**Grupa 45 - Grup și acționari/asociați:**\n- **451 «Decontări în cadrul grupului»** (societăți afiliate/holding)\n- **455 «Sume datorate acționarilor/asociaților»** (împrumuturi acordate de asociați entității)\n- **456 «Decontări cu asociații privind capitalul»** (aporturi la capital subscrise, nevărsate încă)\n- **457 «Dividende de plată»**\n\n**Grupa 46 - Debitori și creditori diverși:** cuprinde relații de natură necomercială - **461 «Debitori diverși»** (despăgubiri de încasat, vânzări de imobilizări neîncasate) și **462 «Creditori diverși»** (datorii care nu provin din operațiuni comerciale curente, ex. garanții reținute, despăgubiri de plătit).\n\n**Grupa 49 - Ajustări pentru deprecierea creanțelor:** conturi precum **491** (clienți), **496** (debitori diverși), **497/498** - se folosesc pentru a reflecta, conform principiului prudenței, riscul de neîncasare a unor creanțe, fără a diminua contul de creanță propriu-zis (ajustarea rămâne evidențiată distinct).\n\n## Exemplu: Achiziție de marfă cu TVA și plata furnizorului\nSC Alfa SRL, plătitoare de TVA, achiziționează marfă de la furnizorul Beta SRL, valoare 10.000 lei + TVA 21% (cotă standard, valabilă de la 1 august 2025, Legea 141/2025) = 2.100 lei. Total factură: 12.100 lei, pe credit comercial la 30 de zile.\n\n**1. Recepția mărfii:**\n```\n% = 401 «Furnizori»          12.100 lei\n371 «Mărfuri»                10.000 lei\n4426 «TVA deductibilă»        2.100 lei\n```\n\n**2. Plata furnizorului, la scadență, din contul bancar:**\n```\n401 «Furnizori» = 5121 «Conturi la bănci în lei»   12.100 lei\n```\n\nDacă Alfa SRL ar fi plătit un avans de 3.000 lei înainte de livrare, acesta s-ar fi înregistrat în 409 «Furnizori - debitori», iar la recepția mărfii avansul s-ar fi stins prin 401, ilustrând caracterul bifuncțional al relației cu furnizorul.\n\n## Exemplu: Decalajul livrare-facturare: conturile 418 și 408\nSC Alfa SRL livrează produse către clientul Gamma SRL în data de 28 iulie 2026, valoare 8.000 lei + TVA 21% = 1.680 lei, dar factura fiscală este emisă abia pe 3 august 2026. Pentru a recunoaște venitul în luna livrării (principiul independenței exercițiului), se folosește contul 418:\n\n**La 28 iulie (livrare, fără factură emisă):**\n```\n418 «Clienți - facturi de întocmit» = %             9.680 lei\n707 «Venituri din vânzarea mărfurilor»               8.000 lei\n4428 «TVA neexigibilă»                                1.680 lei\n```\n\n**La 3 august (emiterea facturii):**\n```\n4111 «Clienți» = 418 «Clienți - facturi de întocmit»   9.680 lei\n4428 «TVA neexigibilă» = 4427 «TVA colectată»           1.680 lei\n```\n\nMecanismul este simetric la furnizori: dacă Alfa SRL primește marfă pe 28 iulie dar factura furnizorului ajunge pe 3 august, se folosește 408 «Furnizori - facturi nesosite» în locul lui 401, iar TVA se înregistrează tot ca neexigibilă (4428) până la primirea facturii.\n\n> Temei legal: OMFP 1802/2014 Reglementări contabile privind situațiile financiare anuale individuale și consolidate - structura Planului de conturi general, Clasa 4 «Conturi de terți» (în vigoare de la 2015-01-01)\nOMFP 1802/2014 stabilește structura și funcțiunea conturilor din Clasa 4, precum și principiile de recunoaștere a creanțelor și datoriilor: recunoașterea la valoare nominală, principiul independenței exercițiului (veniturile și cheltuielile se înregistrează în perioada în care au fost generate, indiferent de data facturării sau încasării) și principiul necompensării (creanțele și datoriile față de același terț nu se compensează în bilanț, decât dacă legea sau contractul permite explicit acest lucru).\n\n⚠ Balanța analitică a conturilor de terți (401, 411, 461, 462 etc.) trebuie să reflecte întotdeauna soldurile individuale, pe fiecare partener în parte, nu doar soldul sintetic global. În practică, o balanță sintetică «pe zero» poate ascunde solduri individuale semnificative - de exemplu, un furnizor cu sold debitor (avans neregularizat) și altul cu sold creditor mare, care se compensează aparent la nivel de cont sintetic. La întocmirea bilanțului, creanțele și datoriile se prezintă separat, brut, fără compensare. Pentru creanțele cu risc de neîncasare, constituirea ajustărilor prin contul 491 nu este opțională - ea decurge din principiul prudenței și trebuie documentată (vechime, corespondență, acțiuni de recuperare). Tratamentul fiscal al ajustărilor (deductibilitate) se verifică distinct, cu un consultant fiscal sau direct în Codul fiscal actualizat.\n\n## Exercițiu\nSC Alfa SRL (plătitoare de TVA, cotă standard 21%) înregistrează în luna iulie 2026 următoarele operațiuni:\n\n1. Achiziționează materii prime de la furnizorul Beta SRL: 5.000 lei + TVA 21%, pe credit comercial.\n2. Vinde produse finite clientului Gamma SRL: 15.000 lei + TVA 21%, încasare ulterioară.\n3. Calculează pentru un angajat un salariu brut de 8.000 lei; se rețin CAS 25% (2.000 lei) și CASS 10% (800 lei), iar impozitul pe venitul din salarii calculat la baza rămasă este de 520 lei. Angajatorul datorează suplimentar CAM 2,25% din salariul brut (180 lei).\n4. La finalul lunii, determinați TVA de plată/de recuperat și înregistrați regularizarea.\n\nCerință: efectuați înregistrările contabile pentru toate operațiunile.\n\n**Soluție:** **1. Achiziție materii prime:**\n```\n% = 401 «Furnizori»            6.050 lei\n301 «Materii prime»             5.000 lei\n4426 «TVA deductibilă»          1.050 lei\n```\n\n**2. Vânzare produse finite:**\n```\n4111 «Clienți» = %             18.150 lei\n701 «Venituri din vânzarea produselor finite»   15.000 lei\n4427 «TVA colectată»                             3.150 lei\n```\n\n**3. Salarii:**\n```\n641 «Cheltuieli cu salariile» = 421 «Personal - salarii datorate»   8.000 lei\n\n421 «Personal - salarii datorate» = %                                3.320 lei\n4315 «Contribuția de asigurări sociale»                              2.000 lei\n4316 «Contribuția de asigurări sociale de sănătate»                   800 lei\n444 «Impozitul pe venituri de natura salariilor»                      520 lei\n\n421 «Personal - salarii datorate» = 5121 «Conturi la bănci în lei»   4.680 lei  (salariul net de plată)\n\n646 «Cheltuieli privind contribuția asiguratorie pentru muncă» = 436 «Contribuția asiguratorie pentru muncă»   180 lei\n```\n\n**4. Regularizare TVA (TVA colectată 3.150 lei > TVA deductibilă 1.050 lei ⇒ TVA de plată 2.100 lei):**\n```\n4427 «TVA colectată» = %             3.150 lei\n4426 «TVA deductibilă»                1.050 lei\n4423 «TVA de plată»                   2.100 lei\n```\nLa data plății către bugetul de stat:\n```\n4423 «TVA de plată» = 5121 «Conturi la bănci în lei»   2.100 lei\n```",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "clasa-4-terti-structura-generala",
+    "md": "## Clasa 4 «Conturi de terți» - prezentare generală\n\nClasa 4 din Planul de conturi general (OMFP 1802/2014) cuprinde conturile care reflectă relațiile de decontare ale entității cu partenerii din afara ei - furnizori, clienți, personal, statul, asociații/acționarii - precum și cu terți diverși. Sunt excluse din această clasă operațiunile de trezorerie (Clasa 5 - casă, bănci) și cele legate direct de active imobilizate sau capital (Clasele 1-2, în partea lor «pură»).\n\nStructura pe grupe este următoarea:\n- **Grupa 40** - Furnizori și conturi asimilate\n- **Grupa 41** - Clienți și conturi asimilate\n- **Grupa 42** - Personal și conturi asimilate\n- **Grupa 43** - Asigurări sociale, protecție socială și conturi asimilate\n- **Grupa 44** - Bugetul statului, fonduri speciale și conturi asimilate\n- **Grupa 45** - Grup și acționari/asociați\n- **Grupa 46** - Debitori și creditori diverși\n- **Grupa 47** - Conturi de subvenții și regularizare\n- **Grupa 48** - Decontări în cadrul unității (uz intern, sedii secundare)\n- **Grupa 49** - Ajustări pentru deprecierea creanțelor\n\nParticularitatea Clasei 4 este că majoritatea conturilor sunt **bifuncționale**: în funcție de operațiune, pot avea sold debitor (creanță) sau sold creditor (datorie). De exemplu, contul 401 «Furnizori» este în mod normal creditor, dar devine debitor dacă entitatea a plătit un avans mai mare decât valoarea facturată.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "grupa-40-furnizori",
+    "md": "## Grupa 40 - Furnizori și conturi asimilate\n\nConturile principale din această grupă:\n- **401 «Furnizori»** - datoria față de furnizorii de bunuri și servicii curente; cont de pasiv, sold creditor.\n- **403 «Efecte de plătit»** - datorii către furnizori garantate prin bilete la ordin sau cambii.\n- **404 «Furnizori de imobilizări»** - distinct de 401, folosit când achiziția vizează active imobilizate (mijloace fixe, licențe etc.), nu stocuri sau servicii curente.\n- **408 «Furnizori - facturi nesosite»** - se folosește când marfa/serviciul a fost deja recepționat/prestat, dar factura fiscală nu a ajuns până la închiderea lunii; la sosirea facturii, 408 se stinge prin 401.\n- **409 «Furnizori - debitori»** - avansuri plătite furnizorilor înainte de livrare (409.1 pentru cumpărări de bunuri de natura stocurilor, 409.2 pentru prestări de servicii, 409.8 pentru imobilizări).\n\nDistincția 401 vs. 404 este importantă pentru corectitudinea situațiilor financiare: 404 se raportează separat, la rubrica datoriilor legate de active imobilizate, nu în cadrul datoriilor comerciale curente.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "grupa-41-clienti",
+    "md": "## Grupa 41 - Clienți și conturi asimilate\n\n- **411 «Clienți»** - creanța din vânzarea de bunuri, lucrări sau servicii; sold debitor. Se dezvoltă analitic în 411.1 «Clienți» și 411.8 «Clienți incerți sau în litigiu» (pentru creanțe cu risc de neîncasare, aflate în urmărire sau proces).\n- **413 «Efecte de primit de la clienți»** - creanțe garantate prin bilete la ordin/cambii primite.\n- **418 «Clienți - facturi de întocmit»** - livrarea sau prestarea a avut loc, dar factura nu a fost încă emisă până la închiderea perioadei; se recunoaște venitul și TVA neexigibilă (4428), urmând ca la emiterea facturii TVA să devină exigibilă (4427).\n- **419 «Clienți - creditori»** - avansuri încasate de la clienți înainte de livrarea efectivă; sold creditor (este o datorie, deși aparține grupei «clienți»).\n\nPentru creanțele cu risc de neîncasare (client în insolvență, litigiu prelungit), entitatea trece soldul din 411.1 în 411.8 și constituie un provizion prin contul 491 (Grupa 49), respectând principiul prudenței.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "grupa-42-43-personal-asigurari",
+    "md": "## Grupele 42-43 - Personal și asigurări sociale\n\n**Grupa 42 - Personal:**\n- **421 «Personal - salarii datorate»** - datoria brută către angajați, principalul cont de decontare a salariilor.\n- **423 «Personal - ajutoare materiale datorate»**, **424 «Prime reprezentând participarea personalului la profit»**.\n- **425 «Avansuri acordate personalului»** - sume plătite în cursul lunii, înainte de lichidarea finală a salariului.\n- **426 «Drepturi de personal neridicate»**, **427 «Rețineri din salarii datorate terților»** (poprire, rate, pensie alimentară).\n- **428 «Alte datorii și creanțe în legătură cu personalul»** (concedii de odihnă neefectuate, alte regularizări).\n\n**Grupa 43 - Asigurări sociale:**\n- **431 «Asigurări sociale»** - cu analitice pentru CAS angajat (4315) și CASS angajat (4316), reținute din salariul brut.\n- **436 «Contribuția asiguratorie pentru muncă»** (CAM) - datorată integral de angajator, în afara salariului brut.\n- **437 «Ajutor de șomaj»**, **438 «Alte datorii și creanțe sociale»**.\n\nCircuitul salarial leagă direct grupele 42, 43 și 44 (impozitul pe venitul din salarii, cont 444): din salariul brut înregistrat în 421 se rețin contribuțiile angajatului (431) și impozitul (444), rezultând salariul net de plată.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "grupa-44-bugetul-statului",
+    "md": "## Grupa 44 - Bugetul statului, fonduri speciale și conturi asimilate\n\nAceastă grupă centralizează toate datoriile și creanțele fiscale ale entității față de stat:\n- **441 «Impozitul pe profit/venit»**\n- **442 «Taxa pe valoarea adăugată»**, cu analiticele esențiale pentru orice firmă plătitoare de TVA: **4423** TVA de plată, **4424** TVA de recuperat, **4426** TVA deductibilă, **4427** TVA colectată, **4428** TVA neexigibilă (facturi de întocmit/primit sau încasări pe bază de tichete/avans).\n- **444 «Impozitul pe venituri de natura salariilor»** - impozitul reținut din salariile angajaților și virat la stat.\n- **446 «Alte impozite, taxe și vărsăminte asimilate»** (ex. impozit pe clădiri/terenuri, impozit pe mijloace de transport, la unele entități).\n- **447 «Fonduri speciale - taxe și vărsăminte asimilate»**\n- **448 «Alte datorii și creanțe cu bugetul statului»** (subvenții de primit, alte regularizări fiscale).\n\nLa sfârșitul fiecărei perioade fiscale, TVA colectată (4427) se compară cu TVA deductibilă (4426); diferența se regularizează prin 4423 (dacă entitatea datorează TVA) sau 4424 (dacă are dreptul la rambursare/report).",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b5"
+   },
+   {
+    "type": "theory",
+    "concept_key": "grupa-45-46-49-alte-terti",
+    "md": "## Grupele 45, 46 și 49 - grup, asociați, debitori/creditori diverși și ajustări\n\n**Grupa 45 - Grup și acționari/asociați:**\n- **451 «Decontări în cadrul grupului»** (societăți afiliate/holding)\n- **455 «Sume datorate acționarilor/asociaților»** (împrumuturi acordate de asociați entității)\n- **456 «Decontări cu asociații privind capitalul»** (aporturi la capital subscrise, nevărsate încă)\n- **457 «Dividende de plată»**\n\n**Grupa 46 - Debitori și creditori diverși:** cuprinde relații de natură necomercială - **461 «Debitori diverși»** (despăgubiri de încasat, vânzări de imobilizări neîncasate) și **462 «Creditori diverși»** (datorii care nu provin din operațiuni comerciale curente, ex. garanții reținute, despăgubiri de plătit).\n\n**Grupa 49 - Ajustări pentru deprecierea creanțelor:** conturi precum **491** (clienți), **496** (debitori diverși), **497/498** - se folosesc pentru a reflecta, conform principiului prudenței, riscul de neîncasare a unor creanțe, fără a diminua contul de creanță propriu-zis (ajustarea rămâne evidențiată distinct).",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b6"
+   },
+   {
+    "type": "example",
+    "title": "Achiziție de marfă cu TVA și plata furnizorului",
+    "concept_key": "cont-401-furnizori",
+    "md": "SC Alfa SRL, plătitoare de TVA, achiziționează marfă de la furnizorul Beta SRL, valoare 10.000 lei + TVA 21% (cotă standard, valabilă de la 1 august 2025, Legea 141/2025) = 2.100 lei. Total factură: 12.100 lei, pe credit comercial la 30 de zile.\n\n**1. Recepția mărfii:**\n```\n% = 401 «Furnizori»          12.100 lei\n371 «Mărfuri»                10.000 lei\n4426 «TVA deductibilă»        2.100 lei\n```\n\n**2. Plata furnizorului, la scadență, din contul bancar:**\n```\n401 «Furnizori» = 5121 «Conturi la bănci în lei»   12.100 lei\n```\n\nDacă Alfa SRL ar fi plătit un avans de 3.000 lei înainte de livrare, acesta s-ar fi înregistrat în 409 «Furnizori - debitori», iar la recepția mărfii avansul s-ar fi stins prin 401, ilustrând caracterul bifuncțional al relației cu furnizorul.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b7"
+   },
+   {
+    "type": "example",
+    "title": "Decalajul livrare-facturare: conturile 418 și 408",
+    "concept_key": "cont-418-clienti-facturi-de-intocmit",
+    "md": "SC Alfa SRL livrează produse către clientul Gamma SRL în data de 28 iulie 2026, valoare 8.000 lei + TVA 21% = 1.680 lei, dar factura fiscală este emisă abia pe 3 august 2026. Pentru a recunoaște venitul în luna livrării (principiul independenței exercițiului), se folosește contul 418:\n\n**La 28 iulie (livrare, fără factură emisă):**\n```\n418 «Clienți - facturi de întocmit» = %             9.680 lei\n707 «Venituri din vânzarea mărfurilor»               8.000 lei\n4428 «TVA neexigibilă»                                1.680 lei\n```\n\n**La 3 august (emiterea facturii):**\n```\n4111 «Clienți» = 418 «Clienți - facturi de întocmit»   9.680 lei\n4428 «TVA neexigibilă» = 4427 «TVA colectată»           1.680 lei\n```\n\nMecanismul este simetric la furnizori: dacă Alfa SRL primește marfă pe 28 iulie dar factura furnizorului ajunge pe 3 august, se folosește 408 «Furnizori - facturi nesosite» în locul lui 401, iar TVA se înregistrează tot ca neexigibilă (4428) până la primirea facturii.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b8"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Reglementări contabile privind situațiile financiare anuale individuale și consolidate - structura Planului de conturi general, Clasa 4 «Conturi de terți»",
+    "effective": "2015-01-01",
+    "md": "OMFP 1802/2014 stabilește structura și funcțiunea conturilor din Clasa 4, precum și principiile de recunoaștere a creanțelor și datoriilor: recunoașterea la valoare nominală, principiul independenței exercițiului (veniturile și cheltuielile se înregistrează în perioada în care au fost generate, indiferent de data facturării sau încasării) și principiul necompensării (creanțele și datoriile față de același terț nu se compensează în bilanț, decât dacă legea sau contractul permite explicit acest lucru).",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b9"
+   },
+   {
+    "type": "warning",
+    "md": "Balanța analitică a conturilor de terți (401, 411, 461, 462 etc.) trebuie să reflecte întotdeauna soldurile individuale, pe fiecare partener în parte, nu doar soldul sintetic global. În practică, o balanță sintetică «pe zero» poate ascunde solduri individuale semnificative - de exemplu, un furnizor cu sold debitor (avans neregularizat) și altul cu sold creditor mare, care se compensează aparent la nivel de cont sintetic. La întocmirea bilanțului, creanțele și datoriile se prezintă separat, brut, fără compensare. Pentru creanțele cu risc de neîncasare, constituirea ajustărilor prin contul 491 nu este opțională - ea decurge din principiul prudenței și trebuie documentată (vechime, corespondență, acțiuni de recuperare). Tratamentul fiscal al ajustărilor (deductibilitate) se verifică distinct, cu un consultant fiscal sau direct în Codul fiscal actualizat.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b10"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Alfa SRL (plătitoare de TVA, cotă standard 21%) înregistrează în luna iulie 2026 următoarele operațiuni:\n\n1. Achiziționează materii prime de la furnizorul Beta SRL: 5.000 lei + TVA 21%, pe credit comercial.\n2. Vinde produse finite clientului Gamma SRL: 15.000 lei + TVA 21%, încasare ulterioară.\n3. Calculează pentru un angajat un salariu brut de 8.000 lei; se rețin CAS 25% (2.000 lei) și CASS 10% (800 lei), iar impozitul pe venitul din salarii calculat la baza rămasă este de 520 lei. Angajatorul datorează suplimentar CAM 2,25% din salariul brut (180 lei).\n4. La finalul lunii, determinați TVA de plată/de recuperat și înregistrați regularizarea.\n\nCerință: efectuați înregistrările contabile pentru toate operațiunile.",
+    "solution_md": "**1. Achiziție materii prime:**\n```\n% = 401 «Furnizori»            6.050 lei\n301 «Materii prime»             5.000 lei\n4426 «TVA deductibilă»          1.050 lei\n```\n\n**2. Vânzare produse finite:**\n```\n4111 «Clienți» = %             18.150 lei\n701 «Venituri din vânzarea produselor finite»   15.000 lei\n4427 «TVA colectată»                             3.150 lei\n```\n\n**3. Salarii:**\n```\n641 «Cheltuieli cu salariile» = 421 «Personal - salarii datorate»   8.000 lei\n\n421 «Personal - salarii datorate» = %                                3.320 lei\n4315 «Contribuția de asigurări sociale»                              2.000 lei\n4316 «Contribuția de asigurări sociale de sănătate»                   800 lei\n444 «Impozitul pe venituri de natura salariilor»                      520 lei\n\n421 «Personal - salarii datorate» = 5121 «Conturi la bănci în lei»   4.680 lei  (salariul net de plată)\n\n646 «Cheltuieli privind contribuția asiguratorie pentru muncă» = 436 «Contribuția asiguratorie pentru muncă»   180 lei\n```\n\n**4. Regularizare TVA (TVA colectată 3.150 lei > TVA deductibilă 1.050 lei ⇒ TVA de plată 2.100 lei):**\n```\n4427 «TVA colectată» = %             3.150 lei\n4426 «TVA deductibilă»                1.050 lei\n4423 «TVA de plată»                   2.100 lei\n```\nLa data plății către bugetul de stat:\n```\n4423 «TVA de plată» = 5121 «Conturi la bănci în lei»   2.100 lei\n```",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cont se folosește când marfa a fost deja recepționată de la furnizor, dar factura fiscală nu a sosit încă până la închiderea lunii?",
+    "choices": [
+     "401 «Furnizori»",
+     "403 «Efecte de plătit»",
+     "408 «Furnizori - facturi nesosite»",
+     "409 «Furnizori - debitori»"
+    ],
+    "answer": 2,
+    "explain": "Contul 408 evidențiază exact această situație de decalaj temporal între recepția bunului/serviciului și primirea facturii; la sosirea facturii, 408 se stinge prin 401.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b12"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă contul 419 «Clienți - creditori»?",
+    "choices": [
+     "Datoria față de un client, provenită dintr-un avans încasat înainte de livrare",
+     "Creanța asupra unui furnizor pentru un avans plătit",
+     "Impozitul pe profit datorat bugetului de stat",
+     "TVA deductibilă aferentă achizițiilor"
+    ],
+    "answer": 0,
+    "explain": "Deși aparține grupei «41 - Clienți», contul 419 are sold creditor: reflectă o datorie a entității față de client, generată de un avans încasat înainte ca livrarea/prestarea să aibă loc.",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont se folosește pentru bunuri/servicii recepționate, dar a căror factură nu a sosit încă de la furnizor?",
+    "back": "Contul 408 «Furnizori - facturi nesosite», din grupa 40.",
+    "concept_key": "cont-408-furnizori-facturi-nesosite",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont evidențiază veniturile pentru livrări deja efectuate, dar facturate ulterior?",
+    "back": "Contul 418 «Clienți - facturi de întocmit», cu TVA înregistrată temporar ca neexigibilă în 4428.",
+    "concept_key": "cont-418-clienti-facturi-de-intocmit",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota TVA standard aplicabilă în România de la 1 august 2025?",
+    "back": "21%, conform Legii 141/2025 (înainte de această dată, cota standard era 19%).",
+    "concept_key": "tva-cota-standard-2025",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă că un cont din Clasa 4 este «bifuncțional»?",
+    "back": "Poate avea, în funcție de operațiune, fie sold debitor (creanță), fie sold creditor (datorie) - de exemplu 401 «Furnizori» sau 411 «Clienți».",
+    "concept_key": "cont-bifunctional-clasa-4",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont reflectă contribuția asiguratorie pentru muncă (CAM), datorată integral de angajator?",
+    "back": "Contul 436 «Contribuția asiguratorie pentru muncă», din grupa 43.",
+    "concept_key": "cont-436-cam",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b18"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce grupă din Clasa 4 cuprinde ajustările pentru deprecierea creanțelor?",
+    "back": "Grupa 49, cu conturi precum 491 «Ajustări pentru deprecierea creanțelor - clienți».",
+    "concept_key": "grupa-49-ajustari-creante",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b19"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se numește principiul contabil care interzice compensarea creanțelor cu datoriile în bilanț?",
+    "back": "Principiul necompensării: creanțele și datoriile se prezintă separat, la valoare brută, în situațiile financiare.",
+    "concept_key": "principiul-necompensarii",
+    "blockId": "cmjjuxw3j00cuumkpeb2k7gxn-b20"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1696,
+   "flashcards": 7
+  }
+ }
+}

@@ -1,0 +1,155 @@
+{
+ "lessonId": "cmjjuxw1800bbumkp7sfxhs19",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Indicatori Financiari Cheie",
+ "lesson": "Indicatori de profitabilitate",
+ "category": "FINANCE_OPS",
+ "content": "# Indicatori de profitabilitate\n\nIndicatorii de profitabilitate răspund la o singură întrebare, esențială pentru orice manager, antreprenor sau investitor: **cât de eficient transformă firma resursele în profit?**\n\nSpre deosebire de indicatorii de lichiditate (care arată dacă firma își poate plăti datoriile pe termen scurt) sau de cei de îndatorare (care arată cât de mult se bazează firma pe finanțare externă), indicatorii de profitabilitate măsoară **rentabilitatea** — capacitatea firmei de a genera profit din vânzări, din activele deținute sau din capitalul investit de asociați/acționari.\n\nÎn această lecție vei învăța cinci indicatori esențiali, împărțiți în două familii:\n\n- **Marje de profitabilitate** (procent din vânzări): marja brută și marja netă — arată ce parte din fiecare leu vândut rămâne profit.\n- **Rate de rentabilitate** (procent din resurse investite): ROA, ROE, ROI — arată ce randament produce fiecare leu investit în active sau adus de asociați.\n\nToți acești indicatori se calculează pe baza celor două situații financiare pe care le-ai întâlnit deja în curs: **contul de profit și pierdere** (de unde iei cifra de afaceri și profitul) și **bilanțul** (de unde iei activele totale și capitalul propriu), întocmite de firmele din România conform OMFP 1802/2014.\n\n### Marja brută\n\n**Marja brută (%) = (Cifra de afaceri − Costul bunurilor/serviciilor vândute) / Cifra de afaceri × 100**\n\nMarja brută arată ce procent din veniturile din vânzări rămâne după ce ai acoperit costul direct al produsului sau serviciului (materii prime, marfă achiziționată, manoperă directă). Este primul filtru al profitabilității: dacă marja brută e prea mică, firma are o problemă structurală de preț sau de cost al bunurilor, pe care cheltuielile ulterioare (chirie, salarii administrative, marketing) nu o pot repara.\n\n### Marja netă\n\n**Marja netă (%) = Profit net / Cifra de afaceri × 100**\n\nMarja netă arată ce procent din venituri rămâne cu adevărat profit, după ce ai scăzut absolut toate costurile — operaționale, financiare (dobânzi) și impozitul pe profit. Este indicatorul cel mai des citat, dar și cel mai ușor de interpretat greșit izolat: o marjă netă de 5% poate fi excelentă în retail (volume mari, marje mici) și slabă în consultanță (volume mici, marje mari așteptate). De aceea marja netă se compară întotdeauna cu firme din același sector, nu în absolut.\n\n### ROA — Return on Assets (rentabilitatea activelor)\n\n**ROA (%) = Profit net / Active totale × 100**\n\nROA măsoară cât profit generează firma din fiecare leu de active pe care le deține (echipamente, stocuri, creanțe, numerar). Este un indicator al eficienței operaționale, independent de cum sunt finanțate activele (din capital propriu sau din datorii).\n\n### ROE — Return on Equity (rentabilitatea capitalului propriu)\n\n**ROE (%) = Profit net / Capital propriu × 100**\n\nROE arată randamentul obținut de asociați/acționari pentru banii pe care i-au investit în firmă. Este indicatorul preferat de investitori, pentru că răspunde direct la întrebarea „cât câștig eu, ca proprietar, la fiecare leu pus în afacere?”. ROE este întotdeauna mai mare decât ROA atunci când firma folosește datorii pentru a-și finanța activele (efect de levier financiar) — vezi exemplul 2.\n\n### ROI — Return on Investment (rentabilitatea investiției)\n\n**ROI (%) = (Câștig din investiție − Costul investiției) / Costul investiției × 100**\n\nSpre deosebire de ROA și ROE, care se calculează la nivel de firmă întreagă, ROI este un indicator generic, folosit pentru a evalua **orice** investiție sau proiect specific: cumpărarea unui utilaj, un buget de marketing, deschiderea unei linii noi de business. Formula rămâne aceeași, doar „câștigul” și „costul” se definesc în funcție de proiectul analizat.\n\n## Exemplu: Calculul complet al indicatorilor pentru Alfa Comerț SRL\nAlfa Comerț SRL, distribuitor de materiale de construcții, raportează la finalul anului:\n\n- Cifra de afaceri: **1.000.000 lei**\n- Costul mărfurilor vândute: **600.000 lei**\n- Cheltuieli operaționale, administrative și de personal: **250.000 lei**\n- Cheltuieli cu dobânzi: **20.000 lei**\n- Impozit pe profit (16%, conform Legii nr. 227/2015): **20.800 lei**\n- Active totale (bilanț): **800.000 lei**\n- Capital propriu (bilanț): **500.000 lei**\n\n**Pas 1 — Profit brut:** 1.000.000 − 600.000 = 400.000 lei\n**Marja brută** = 400.000 / 1.000.000 × 100 = **40%**\n\n**Pas 2 — Profit înainte de impozitare:** 400.000 − 250.000 − 20.000 = 130.000 lei\n**Pas 3 — Profit net:** 130.000 − 20.800 = **109.200 lei**\n**Marja netă** = 109.200 / 1.000.000 × 100 = **10,9%**\n\n**Pas 4 — ROA** = 109.200 / 800.000 × 100 = **13,7%**\n**Pas 5 — ROE** = 109.200 / 500.000 × 100 = **21,8%**\n\nConcluzie: fiecare leu vândut aduce aproape 11 bani profit net, fiecare leu de activ generează 13,7 bani profit, iar asociații câștigă 21,8 bani la fiecare leu investit de ei în firmă — un ROE peste dobânda oricărui depozit bancar, ceea ce arată că investiția în afacere este justificată.\n\n## Exemplu: Efectul de levier financiar: de ce ROE poate depăși ROA\nDouă firme au exact același ROA, dar ROE foarte diferit, din cauza modului în care își finanțează activele.\n\n**Beta SRL** — finanțată integral din capital propriu:\n- Active totale: 1.000.000 lei, din care Capital propriu: 1.000.000 lei, Datorii: 0 lei\n- Profit net: 100.000 lei\n- ROA = 100.000 / 1.000.000 = **10%**\n- ROE = 100.000 / 1.000.000 = **10%**\n\n**Gamma SRL** — finanțată jumătate din datorii (credit bancar):\n- Active totale: 1.000.000 lei, din care Capital propriu: 500.000 lei, Datorii: 500.000 lei\n- Profit net: 100.000 lei (după ce a plătit deja dobânda la credit)\n- ROA = 100.000 / 1.000.000 = **10%**\n- ROE = 100.000 / 500.000 = **20%**\n\nDeși ambele firme au aceeași eficiență operațională (ROA = 10%), asociații de la Gamma SRL obțin un randament dublu, pentru că au folosit banii băncii, nu doar banii proprii, pentru a genera acel profit. Acesta este **efectul de levier financiar (financial leverage)**: îndatorarea poate amplifica ROE atunci când firma câștigă mai mult din investiții decât plătește dobândă. Reversul: dacă profitul scade sau dobânzile cresc, aceeași îndatorare amplifică pierderile — de aceea un ROE mare obținut prin îndatorare foarte ridicată trebuie interpretat împreună cu indicatorii de îndatorare (gradul de îndatorare), nu izolat.\n\n> Temei legal: OMFP 1802/2014 reglementări privind situațiile financiare anuale individuale și consolidate (în vigoare de la 2015-01-01)\nCifrele folosite pentru calculul indicatorilor de profitabilitate (cifra de afaceri, profitul net din contul de profit și pierdere; activele totale și capitalul propriu din bilanț) provin din situațiile financiare anuale întocmite de firmele din România conform OMFP nr. 1802/2014. Pentru comparații corecte între firme, verifică întotdeauna că folosești cifre din situații financiare întocmite pe aceeași bază (an complet, aceeași formă de raportare).\n\n⚠ **Benchmark-urile pe industrii nu sunt cifre fixe universale.** Ce înseamnă un ROE „bun” sau o marjă netă „bună” diferă radical de la un sector la altul: retail-ul funcționează sănătos cu marje nete de câteva procente și viteză mare de rotație a stocurilor, în timp ce servicii IT sau consultanță pot avea marje nete de 15-20% cu active minime. La fel, un ROA „normal” pentru o firmă de producție cu utilaje scumpe este mult mai mic decât pentru o firmă de servicii cu active reduse.\n\nÎn loc să memorezi un prag universal, compară firma cu: (1) propriul istoric (evoluția în timp), (2) firme directe concurente din același sector și, ideal, din aceeași plajă de cifră de afaceri, și (3) statistici sectoriale actualizate (de exemplu date agregate publicate de INS sau rapoarte financiare sectoriale ale ONRC), verificate la data analizei — nu cifre memorate dintr-un curs, care se pot învechi.\n\n## Exercițiu\nBeta Servicii SRL, firmă de consultanță, raportează pentru anul încheiat:\n\n- Cifra de afaceri: 500.000 lei\n- Costul serviciilor prestate (personal direct implicat în proiecte): 200.000 lei\n- Profit net (după toate cheltuielile, dobânzi și impozit): 60.000 lei\n- Active totale: 400.000 lei\n- Capital propriu: 300.000 lei\n\nCalculează: (a) marja brută, (b) marja netă, (c) ROA, (d) ROE. Interpretează pe scurt diferența dintre ROA și ROE.\n\n**Soluție:** **(a) Marja brută** = (500.000 − 200.000) / 500.000 × 100 = 300.000 / 500.000 × 100 = **60%**\n\n**(b) Marja netă** = 60.000 / 500.000 × 100 = **12%**\n\n**(c) ROA** = 60.000 / 400.000 × 100 = **15%**\n\n**(d) ROE** = 60.000 / 300.000 × 100 = **20%**\n\n**Interpretare:** ROE (20%) este mai mare decât ROA (15%) pentru că firma folosește și datorii (400.000 − 300.000 = 100.000 lei) pe lângă capitalul propriu pentru a-și finanța activele — efect de levier financiar pozitiv, similar exemplului Gamma SRL de mai sus. Marja brută de 60% este tipică pentru servicii de consultanță, unde costul direct (personal) este mult mai mic decât în comerț sau producție.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "indicatori-profitabilitate-intro",
+    "md": "Indicatorii de profitabilitate răspund la o singură întrebare, esențială pentru orice manager, antreprenor sau investitor: **cât de eficient transformă firma resursele în profit?**\n\nSpre deosebire de indicatorii de lichiditate (care arată dacă firma își poate plăti datoriile pe termen scurt) sau de cei de îndatorare (care arată cât de mult se bazează firma pe finanțare externă), indicatorii de profitabilitate măsoară **rentabilitatea** — capacitatea firmei de a genera profit din vânzări, din activele deținute sau din capitalul investit de asociați/acționari.\n\nÎn această lecție vei învăța cinci indicatori esențiali, împărțiți în două familii:\n\n- **Marje de profitabilitate** (procent din vânzări): marja brută și marja netă — arată ce parte din fiecare leu vândut rămâne profit.\n- **Rate de rentabilitate** (procent din resurse investite): ROA, ROE, ROI — arată ce randament produce fiecare leu investit în active sau adus de asociați.\n\nToți acești indicatori se calculează pe baza celor două situații financiare pe care le-ai întâlnit deja în curs: **contul de profit și pierdere** (de unde iei cifra de afaceri și profitul) și **bilanțul** (de unde iei activele totale și capitalul propriu), întocmite de firmele din România conform OMFP 1802/2014.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "marja-bruta-neta",
+    "md": "### Marja brută\n\n**Marja brută (%) = (Cifra de afaceri − Costul bunurilor/serviciilor vândute) / Cifra de afaceri × 100**\n\nMarja brută arată ce procent din veniturile din vânzări rămâne după ce ai acoperit costul direct al produsului sau serviciului (materii prime, marfă achiziționată, manoperă directă). Este primul filtru al profitabilității: dacă marja brută e prea mică, firma are o problemă structurală de preț sau de cost al bunurilor, pe care cheltuielile ulterioare (chirie, salarii administrative, marketing) nu o pot repara.\n\n### Marja netă\n\n**Marja netă (%) = Profit net / Cifra de afaceri × 100**\n\nMarja netă arată ce procent din venituri rămâne cu adevărat profit, după ce ai scăzut absolut toate costurile — operaționale, financiare (dobânzi) și impozitul pe profit. Este indicatorul cel mai des citat, dar și cel mai ușor de interpretat greșit izolat: o marjă netă de 5% poate fi excelentă în retail (volume mari, marje mici) și slabă în consultanță (volume mici, marje mari așteptate). De aceea marja netă se compară întotdeauna cu firme din același sector, nu în absolut.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "roa-roe-roi",
+    "md": "### ROA — Return on Assets (rentabilitatea activelor)\n\n**ROA (%) = Profit net / Active totale × 100**\n\nROA măsoară cât profit generează firma din fiecare leu de active pe care le deține (echipamente, stocuri, creanțe, numerar). Este un indicator al eficienței operaționale, independent de cum sunt finanțate activele (din capital propriu sau din datorii).\n\n### ROE — Return on Equity (rentabilitatea capitalului propriu)\n\n**ROE (%) = Profit net / Capital propriu × 100**\n\nROE arată randamentul obținut de asociați/acționari pentru banii pe care i-au investit în firmă. Este indicatorul preferat de investitori, pentru că răspunde direct la întrebarea „cât câștig eu, ca proprietar, la fiecare leu pus în afacere?”. ROE este întotdeauna mai mare decât ROA atunci când firma folosește datorii pentru a-și finanța activele (efect de levier financiar) — vezi exemplul 2.\n\n### ROI — Return on Investment (rentabilitatea investiției)\n\n**ROI (%) = (Câștig din investiție − Costul investiției) / Costul investiției × 100**\n\nSpre deosebire de ROA și ROE, care se calculează la nivel de firmă întreagă, ROI este un indicator generic, folosit pentru a evalua **orice** investiție sau proiect specific: cumpărarea unui utilaj, un buget de marketing, deschiderea unei linii noi de business. Formula rămâne aceeași, doar „câștigul” și „costul” se definesc în funcție de proiectul analizat.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul complet al indicatorilor pentru Alfa Comerț SRL",
+    "concept_key": "marja-bruta-neta",
+    "md": "Alfa Comerț SRL, distribuitor de materiale de construcții, raportează la finalul anului:\n\n- Cifra de afaceri: **1.000.000 lei**\n- Costul mărfurilor vândute: **600.000 lei**\n- Cheltuieli operaționale, administrative și de personal: **250.000 lei**\n- Cheltuieli cu dobânzi: **20.000 lei**\n- Impozit pe profit (16%, conform Legii nr. 227/2015): **20.800 lei**\n- Active totale (bilanț): **800.000 lei**\n- Capital propriu (bilanț): **500.000 lei**\n\n**Pas 1 — Profit brut:** 1.000.000 − 600.000 = 400.000 lei\n**Marja brută** = 400.000 / 1.000.000 × 100 = **40%**\n\n**Pas 2 — Profit înainte de impozitare:** 400.000 − 250.000 − 20.000 = 130.000 lei\n**Pas 3 — Profit net:** 130.000 − 20.800 = **109.200 lei**\n**Marja netă** = 109.200 / 1.000.000 × 100 = **10,9%**\n\n**Pas 4 — ROA** = 109.200 / 800.000 × 100 = **13,7%**\n**Pas 5 — ROE** = 109.200 / 500.000 × 100 = **21,8%**\n\nConcluzie: fiecare leu vândut aduce aproape 11 bani profit net, fiecare leu de activ generează 13,7 bani profit, iar asociații câștigă 21,8 bani la fiecare leu investit de ei în firmă — un ROE peste dobânda oricărui depozit bancar, ceea ce arată că investiția în afacere este justificată.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b4"
+   },
+   {
+    "type": "example",
+    "title": "Efectul de levier financiar: de ce ROE poate depăși ROA",
+    "concept_key": "roa-roe-roi",
+    "md": "Două firme au exact același ROA, dar ROE foarte diferit, din cauza modului în care își finanțează activele.\n\n**Beta SRL** — finanțată integral din capital propriu:\n- Active totale: 1.000.000 lei, din care Capital propriu: 1.000.000 lei, Datorii: 0 lei\n- Profit net: 100.000 lei\n- ROA = 100.000 / 1.000.000 = **10%**\n- ROE = 100.000 / 1.000.000 = **10%**\n\n**Gamma SRL** — finanțată jumătate din datorii (credit bancar):\n- Active totale: 1.000.000 lei, din care Capital propriu: 500.000 lei, Datorii: 500.000 lei\n- Profit net: 100.000 lei (după ce a plătit deja dobânda la credit)\n- ROA = 100.000 / 1.000.000 = **10%**\n- ROE = 100.000 / 500.000 = **20%**\n\nDeși ambele firme au aceeași eficiență operațională (ROA = 10%), asociații de la Gamma SRL obțin un randament dublu, pentru că au folosit banii băncii, nu doar banii proprii, pentru a genera acel profit. Acesta este **efectul de levier financiar (financial leverage)**: îndatorarea poate amplifica ROE atunci când firma câștigă mai mult din investiții decât plătește dobândă. Reversul: dacă profitul scade sau dobânzile cresc, aceeași îndatorare amplifică pierderile — de aceea un ROE mare obținut prin îndatorare foarte ridicată trebuie interpretat împreună cu indicatorii de îndatorare (gradul de îndatorare), nu izolat.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "reglementări privind situațiile financiare anuale individuale și consolidate",
+    "effective": "2015-01-01",
+    "md": "Cifrele folosite pentru calculul indicatorilor de profitabilitate (cifra de afaceri, profitul net din contul de profit și pierdere; activele totale și capitalul propriu din bilanț) provin din situațiile financiare anuale întocmite de firmele din România conform OMFP nr. 1802/2014. Pentru comparații corecte între firme, verifică întotdeauna că folosești cifre din situații financiare întocmite pe aceeași bază (an complet, aceeași formă de raportare).",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Benchmark-urile pe industrii nu sunt cifre fixe universale.** Ce înseamnă un ROE „bun” sau o marjă netă „bună” diferă radical de la un sector la altul: retail-ul funcționează sănătos cu marje nete de câteva procente și viteză mare de rotație a stocurilor, în timp ce servicii IT sau consultanță pot avea marje nete de 15-20% cu active minime. La fel, un ROA „normal” pentru o firmă de producție cu utilaje scumpe este mult mai mic decât pentru o firmă de servicii cu active reduse.\n\nÎn loc să memorezi un prag universal, compară firma cu: (1) propriul istoric (evoluția în timp), (2) firme directe concurente din același sector și, ideal, din aceeași plajă de cifră de afaceri, și (3) statistici sectoriale actualizate (de exemplu date agregate publicate de INS sau rapoarte financiare sectoriale ale ONRC), verificate la data analizei — nu cifre memorate dintr-un curs, care se pot învechi.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Beta Servicii SRL, firmă de consultanță, raportează pentru anul încheiat:\n\n- Cifra de afaceri: 500.000 lei\n- Costul serviciilor prestate (personal direct implicat în proiecte): 200.000 lei\n- Profit net (după toate cheltuielile, dobânzi și impozit): 60.000 lei\n- Active totale: 400.000 lei\n- Capital propriu: 300.000 lei\n\nCalculează: (a) marja brută, (b) marja netă, (c) ROA, (d) ROE. Interpretează pe scurt diferența dintre ROA și ROE.",
+    "solution_md": "**(a) Marja brută** = (500.000 − 200.000) / 500.000 × 100 = 300.000 / 500.000 × 100 = **60%**\n\n**(b) Marja netă** = 60.000 / 500.000 × 100 = **12%**\n\n**(c) ROA** = 60.000 / 400.000 × 100 = **15%**\n\n**(d) ROE** = 60.000 / 300.000 × 100 = **20%**\n\n**Interpretare:** ROE (20%) este mai mare decât ROA (15%) pentru că firma folosește și datorii (400.000 − 300.000 = 100.000 lei) pe lângă capitalul propriu pentru a-și finanța activele — efect de levier financiar pozitiv, similar exemplului Gamma SRL de mai sus. Marja brută de 60% este tipică pentru servicii de consultanță, unde costul direct (personal) este mult mai mic decât în comerț sau producție.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are profit net 80.000 lei, active totale 1.000.000 lei și capital propriu 400.000 lei. Care este ROE?",
+    "choices": [
+     "8%",
+     "20%",
+     "40%",
+     "80%"
+    ],
+    "answer": 1,
+    "explain": "ROE = Profit net / Capital propriu × 100 = 80.000 / 400.000 × 100 = 20%. Atenție să nu împarți la activele totale (asta ar da ROA = 8%, altă cifră disponibilă în enunț ca distractor).",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Două firme au același ROA, dar una are ROE mai mare decât cealaltă. Care este cea mai probabilă explicație?",
+    "choices": [
+     "Firma cu ROE mai mare are marja brută mai mare",
+     "Firma cu ROE mai mare folosește mai multe datorii pentru finanțare (levier financiar)",
+     "Firma cu ROE mai mare plătește un impozit pe profit mai mic",
+     "ROA și ROE nu pot fi comparate niciodată între firme"
+    ],
+    "answer": 1,
+    "explain": "Când ROA este identic, diferența de ROE vine aproape întotdeauna din structura de finanțare: firma cu mai multe datorii (deci mai puțin capital propriu la același nivel de active) obține un ROE mai mare — acesta este efectul de levier financiar, ilustrat în exemplul Beta SRL vs. Gamma SRL.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce arată marja brută, spre deosebire de marja netă?",
+    "choices": [
+     "Cât profit rămâne după plata TUTUROR cheltuielilor, inclusiv dobânzi și impozit",
+     "Cât profit rămâne după acoperirea doar a costului direct al produsului/serviciului vândut",
+     "Randamentul obținut de asociați la capitalul investit",
+     "Eficiența cu care sunt folosite activele totale"
+    ],
+    "answer": 1,
+    "explain": "Marja brută se oprește la costul direct (costul bunurilor/serviciilor vândute) și nu ia în calcul cheltuielile administrative, dobânzile sau impozitul — acelea sunt scăzute abia la calculul profitului net, deci al marjei nete.",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula marjei brute?",
+    "back": "Marja brută (%) = (Cifra de afaceri − Costul bunurilor/serviciilor vândute) / Cifra de afaceri × 100",
+    "concept_key": "marja-bruta-neta",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula marjei nete?",
+    "back": "Marja netă (%) = Profit net / Cifra de afaceri × 100",
+    "concept_key": "marja-bruta-neta",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula ROA (Return on Assets)?",
+    "back": "ROA (%) = Profit net / Active totale × 100 — arată cât profit generează fiecare leu de active deținute de firmă",
+    "concept_key": "roa-roe-roi",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula ROE (Return on Equity)?",
+    "back": "ROE (%) = Profit net / Capital propriu × 100 — arată randamentul obținut de asociați/acționari la banii investiți de ei în firmă",
+    "concept_key": "roa-roe-roi",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula ROI (Return on Investment)?",
+    "back": "ROI (%) = (Câștig din investiție − Costul investiției) / Costul investiției × 100 — se aplică oricărei investiții sau proiect specific, nu doar la nivel de firmă întreagă",
+    "concept_key": "roa-roe-roi",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce poate fi ROE mai mare decât ROA la aceeași firmă?",
+    "back": "Din cauza efectului de levier financiar: dacă firma folosește datorii (nu doar capital propriu) pentru a-și finanța activele și profitul depășește costul dobânzii, ROE crește peste ROA",
+    "concept_key": "roa-roe-roi",
+    "blockId": "cmjjuxw1800bbumkp7sfxhs19-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1322,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvou002qumkpq58utifd",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Funcții Array Dinamice (Excel 365)",
+ "lesson": "LET și LAMBDA",
+ "category": "EXCEL_VBA",
+ "content": "# LET și LAMBDA\n\n## LET — variabile denumite în formule\n\nFuncția **LET**, introdusă în Excel 365, îți permite să definești variabile denumite direct în interiorul unei formule și să le refolosești în calculul final, fără să le repeți sau să le pui în celule separate.\n\nSintaxa generală este:\n\n`=LET(nume1; valoare1; [nume2; valoare2; ...]; calcul)`\n\nPoți defini până la 126 de perechi nume-valoare într-o singură formulă LET. Ultimul argument este întotdeauna obligatoriu și reprezintă calculul final, care folosește variabilele definite anterior — dacă lipsește, formula returnează eroare.\n\nDe ce contează LET:\n- **Lizibilitate** — în loc de o formulă lungă cu referințe repetate (`A2*B2`, `A2*B2*0,21` etc.), dai nume relevante pieselor de calcul (`pret`, `cantitate`, `tva`).\n- **Performanță** — dacă aceeași subexpresie apare de mai multe ori într-o formulă complexă, Excel o recalculează de fiecare dată; cu LET, o calculezi o singură dată și o refolosești prin nume, ceea ce reduce timpul de recalculare pe registre mari.\n- **Mentenanță** — dacă trebuie să modifici logica, schimbi o singură definiție, nu cauți toate aparițiile formulei repetate.\n\nLET nu creează celule ajutătoare vizibile — variabilele există doar în interiorul formulei respective, deci foaia de calcul rămâne curată.\n\n## LAMBDA — funcții personalizate fără VBA\n\nFuncția **LAMBDA** îți permite să creezi propriile funcții, folosind sintaxa nativă de formule Excel, fără să scrii cod VBA și fără să instalezi un supliment (add-in).\n\nSintaxa generală este:\n\n`=LAMBDA(parametru1; [parametru2; ...]; calcul)`\n\nUltimul argument este întotdeauna calculul care folosește parametrii definiți. O formulă LAMBDA scrisă direct într-o celulă trebuie apelată imediat, cu argumentele efective în paranteze suplimentare, de exemplu:\n\n`=LAMBDA(x; y; x*y)(4; 5)` → returnează 20.\n\nFolosită așa, o singură dată, LAMBDA nu pare foarte utilă. Puterea ei reală apare când o **denumești**: deschizi Formulas → Name Manager → New Name, dai un nume funcției (de exemplu `CALC_COMISION`), iar în câmpul „Refers to” introduci formula LAMBDA completă, fără apelul final. După salvare, funcția devine disponibilă în tot registrul de calcul, cu autocompletare și tooltip, exact ca o funcție nativă (`=CALC_COMISION(A2)`).\n\nAvantajul față de VBA: nu necesită activarea macrourilor, funcționează și în versiunea web/mobilă a Excel 365, iar formula rămâne vizibilă și auditabilă direct în Name Manager, fără cod ascuns într-un modul.\n\n## Combinarea LET cu LAMBDA și funcțiile array care le folosesc\n\nLET și LAMBDA se combină natural: poți folosi LET *în interiorul* unei LAMBDA pentru a organiza calcule intermediare cu nume clare, exact ca într-o formulă obișnuită. Structura devine:\n\n`=LAMBDA(parametri; LET(nume1; valoare1; ...; calcul))`\n\nO altă capacitate avansată este **recursivitatea**: o funcție LAMBDA denumită se poate autoapela prin propriul nume, ceea ce permite calcule iterative (sume progresive, factorial, secvențe) fără a scrie multe coloane ajutătoare.\n\nLAMBDA stă și la baza celor mai puternice funcții de automatizare din Excel 365 — **MAP**, **REDUCE**, **BYROW**, **BYCOL** și **SCAN** — care primesc ca ultim argument o funcție LAMBDA și o aplică automat pe fiecare element dintr-un array, un rând sau o coloană. De exemplu, `BYROW` poate aplica o LAMBDA proprie fiecărei linii dintr-un tabel de comenzi, pentru a calcula un total pe rând fără formule copiate manual în fiecare celulă.\n\nPractic, LET te ajută să scrii o formulă complexă mai clar, iar LAMBDA te ajută să transformi acea formulă într-o funcție proprie, reutilizabilă în tot registrul de calcul — și, combinate cu MAP/REDUCE/BYROW, într-un instrument real de automatizare a rapoartelor recurente.\n\n## Exemplu: Calculul valorii totale a unei facturi cu LET\nO firmă emite o factură pentru 8 bucăți dintr-un produs cu preț unitar 250 lei, aplică un discount comercial de 10% și adaugă TVA la cota standard aplicabilă din august 2025 (21%).\n\nFără LET, formula ar repeta de mai multe ori `pret*cantitate` și ar fi greu de citit:\n\n`=(250*8*(1-10%))+(250*8*(1-10%)*21%)`\n\nCu LET, aceeași logică devine clară și ușor de întreținut:\n\n`=LET(pret;250;cantitate;8;discount;10%;cotaTVA;21%;valoareBruta;pret*cantitate;valoareNeta;valoareBruta*(1-discount);tva;valoareNeta*cotaTVA;valoareNeta+tva)`\n\nPas cu pas:\n- valoareBruta = 250 × 8 = 2.000 lei\n- valoareNeta = 2.000 × (1 − 10%) = 1.800 lei\n- tva = 1.800 × 21% = 378 lei\n- rezultat final = 1.800 + 378 = **2.178 lei**\n\nFiecare variabilă e calculată o singură dată și refolosită de câte ori e nevoie în restul formulei, iar dacă discountul sau cota TVA se modifică, schimbi o singură valoare, nu formula întreagă.\n\n## Exemplu: Funcție LAMBDA reutilizabilă pentru comision de vânzări\nO firmă plătește agenților comision progresiv: 3% pentru vânzări sub 20.000 lei, 5% pentru vânzări între 20.000 și 49.999 lei, 8% pentru vânzări de 50.000 lei sau mai mult.\n\nÎn loc să scrii aceeași formulă imbricată de IF în fiecare celulă, o transformi într-o funcție proprie. În Name Manager (Formulas → New Name), definești numele `CALC_COMISION` cu formula:\n\n`=LAMBDA(vanzari;LET(cota;IF(vanzari>=50000;8%;IF(vanzari>=20000;5%;3%));vanzari*cota))`\n\nDupă salvare, în orice celulă poți scrie simplu:\n\n`=CALC_COMISION(35000)` → 35.000 × 5% = **1.750 lei**\n\n`=CALC_COMISION(62000)` → 62.000 × 8% = **4.960 lei**\n\n`=CALC_COMISION(A2)` — aplicată direct pe o coloană de vânzări, cu autocompletare și descriere ca orice funcție nativă Excel.\n\nDiferența față de o formulă IF simplă copiată în toate celulele: dacă pragurile sau procentele de comision se modifică, editezi o singură dată definiția din Name Manager, iar toate celulele care folosesc `CALC_COMISION` se actualizează automat — exact avantajul pe care VBA îl oferea până acum, dar fără cod și fără macrouri.\n\n⚠ LET și LAMBDA sunt disponibile doar în Excel 365 (abonament) și Excel pentru web/mobil; nu funcționează în versiunile perpetue Excel 2019 sau 2021. Dacă distribui un fișier cu funcții LAMBDA denumite către colegi cu o licență mai veche, formulele vor genera erori `#NAME?`. Verifică versiunea de Excel a destinatarilor înainte de a construi rapoarte recurente bazate pe funcții LAMBDA personalizate, sau oferă o variantă alternativă (formule clasice) pentru compatibilitate.\n\n## Exercițiu\nO firmă de distribuție calculează valoarea de plată pentru o comandă astfel: preț unitar 120 lei, cantitate 15 bucăți, cost fix de transport 50 lei, iar discountul depinde de cantitate — 15% dacă se comandă cel puțin 10 bucăți, altfel 5%.\n\n1. Scrie o formulă **LET** care calculează valoarea totală de plată (subtotal cu discount + transport), folosind variabile denumite pentru preț, cantitate, transport, discount și subtotal.\n2. Transformă formula într-o funcție **LAMBDA** denumită `CALC_TOTAL_COMANDA`, cu trei parametri: `pret`, `cantitate`, `transport`, astfel încât să poată fi refolosită pentru orice comandă.\n3. Calculează manual rezultatul pentru datele de mai sus, pentru verificare.\n\n**Soluție:** **1. Formula LET:**\n\n`=LET(pret;120;cantitate;15;transport;50;discount;IF(cantitate>=10;15%;5%);subtotal;pret*cantitate;subtotalCuDiscount;subtotal*(1-discount);subtotalCuDiscount+transport)`\n\n**2. Funcția LAMBDA** (definită în Name Manager sub numele `CALC_TOTAL_COMANDA`):\n\n`=LAMBDA(pret;cantitate;transport;LET(discount;IF(cantitate>=10;15%;5%);subtotal;pret*cantitate;subtotalCuDiscount;subtotal*(1-discount);subtotalCuDiscount+transport))`\n\nUtilizare într-o celulă: `=CALC_TOTAL_COMANDA(120;15;50)`\n\n**3. Calcul manual:**\n- subtotal = 120 × 15 = 1.800 lei\n- cantitate (15) ≥ 10 → discount = 15%\n- subtotalCuDiscount = 1.800 × (1 − 15%) = 1.530 lei\n- total de plată = 1.530 + 50 = **1.580 lei**",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "let-functia-introducere",
+    "md": "## LET — variabile denumite în formule\n\nFuncția **LET**, introdusă în Excel 365, îți permite să definești variabile denumite direct în interiorul unei formule și să le refolosești în calculul final, fără să le repeți sau să le pui în celule separate.\n\nSintaxa generală este:\n\n`=LET(nume1; valoare1; [nume2; valoare2; ...]; calcul)`\n\nPoți defini până la 126 de perechi nume-valoare într-o singură formulă LET. Ultimul argument este întotdeauna obligatoriu și reprezintă calculul final, care folosește variabilele definite anterior — dacă lipsește, formula returnează eroare.\n\nDe ce contează LET:\n- **Lizibilitate** — în loc de o formulă lungă cu referințe repetate (`A2*B2`, `A2*B2*0,21` etc.), dai nume relevante pieselor de calcul (`pret`, `cantitate`, `tva`).\n- **Performanță** — dacă aceeași subexpresie apare de mai multe ori într-o formulă complexă, Excel o recalculează de fiecare dată; cu LET, o calculezi o singură dată și o refolosești prin nume, ceea ce reduce timpul de recalculare pe registre mari.\n- **Mentenanță** — dacă trebuie să modifici logica, schimbi o singură definiție, nu cauți toate aparițiile formulei repetate.\n\nLET nu creează celule ajutătoare vizibile — variabilele există doar în interiorul formulei respective, deci foaia de calcul rămâne curată.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "lambda-functia-introducere",
+    "md": "## LAMBDA — funcții personalizate fără VBA\n\nFuncția **LAMBDA** îți permite să creezi propriile funcții, folosind sintaxa nativă de formule Excel, fără să scrii cod VBA și fără să instalezi un supliment (add-in).\n\nSintaxa generală este:\n\n`=LAMBDA(parametru1; [parametru2; ...]; calcul)`\n\nUltimul argument este întotdeauna calculul care folosește parametrii definiți. O formulă LAMBDA scrisă direct într-o celulă trebuie apelată imediat, cu argumentele efective în paranteze suplimentare, de exemplu:\n\n`=LAMBDA(x; y; x*y)(4; 5)` → returnează 20.\n\nFolosită așa, o singură dată, LAMBDA nu pare foarte utilă. Puterea ei reală apare când o **denumești**: deschizi Formulas → Name Manager → New Name, dai un nume funcției (de exemplu `CALC_COMISION`), iar în câmpul „Refers to” introduci formula LAMBDA completă, fără apelul final. După salvare, funcția devine disponibilă în tot registrul de calcul, cu autocompletare și tooltip, exact ca o funcție nativă (`=CALC_COMISION(A2)`).\n\nAvantajul față de VBA: nu necesită activarea macrourilor, funcționează și în versiunea web/mobilă a Excel 365, iar formula rămâne vizibilă și auditabilă direct în Name Manager, fără cod ascuns într-un modul.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "let-lambda-combinare",
+    "md": "## Combinarea LET cu LAMBDA și funcțiile array care le folosesc\n\nLET și LAMBDA se combină natural: poți folosi LET *în interiorul* unei LAMBDA pentru a organiza calcule intermediare cu nume clare, exact ca într-o formulă obișnuită. Structura devine:\n\n`=LAMBDA(parametri; LET(nume1; valoare1; ...; calcul))`\n\nO altă capacitate avansată este **recursivitatea**: o funcție LAMBDA denumită se poate autoapela prin propriul nume, ceea ce permite calcule iterative (sume progresive, factorial, secvențe) fără a scrie multe coloane ajutătoare.\n\nLAMBDA stă și la baza celor mai puternice funcții de automatizare din Excel 365 — **MAP**, **REDUCE**, **BYROW**, **BYCOL** și **SCAN** — care primesc ca ultim argument o funcție LAMBDA și o aplică automat pe fiecare element dintr-un array, un rând sau o coloană. De exemplu, `BYROW` poate aplica o LAMBDA proprie fiecărei linii dintr-un tabel de comenzi, pentru a calcula un total pe rând fără formule copiate manual în fiecare celulă.\n\nPractic, LET te ajută să scrii o formulă complexă mai clar, iar LAMBDA te ajută să transformi acea formulă într-o funcție proprie, reutilizabilă în tot registrul de calcul — și, combinate cu MAP/REDUCE/BYROW, într-un instrument real de automatizare a rapoartelor recurente.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul valorii totale a unei facturi cu LET",
+    "concept_key": "let-functia-introducere",
+    "md": "O firmă emite o factură pentru 8 bucăți dintr-un produs cu preț unitar 250 lei, aplică un discount comercial de 10% și adaugă TVA la cota standard aplicabilă din august 2025 (21%).\n\nFără LET, formula ar repeta de mai multe ori `pret*cantitate` și ar fi greu de citit:\n\n`=(250*8*(1-10%))+(250*8*(1-10%)*21%)`\n\nCu LET, aceeași logică devine clară și ușor de întreținut:\n\n`=LET(pret;250;cantitate;8;discount;10%;cotaTVA;21%;valoareBruta;pret*cantitate;valoareNeta;valoareBruta*(1-discount);tva;valoareNeta*cotaTVA;valoareNeta+tva)`\n\nPas cu pas:\n- valoareBruta = 250 × 8 = 2.000 lei\n- valoareNeta = 2.000 × (1 − 10%) = 1.800 lei\n- tva = 1.800 × 21% = 378 lei\n- rezultat final = 1.800 + 378 = **2.178 lei**\n\nFiecare variabilă e calculată o singură dată și refolosită de câte ori e nevoie în restul formulei, iar dacă discountul sau cota TVA se modifică, schimbi o singură valoare, nu formula întreagă.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b4"
+   },
+   {
+    "type": "example",
+    "title": "Funcție LAMBDA reutilizabilă pentru comision de vânzări",
+    "concept_key": "lambda-functia-introducere",
+    "md": "O firmă plătește agenților comision progresiv: 3% pentru vânzări sub 20.000 lei, 5% pentru vânzări între 20.000 și 49.999 lei, 8% pentru vânzări de 50.000 lei sau mai mult.\n\nÎn loc să scrii aceeași formulă imbricată de IF în fiecare celulă, o transformi într-o funcție proprie. În Name Manager (Formulas → New Name), definești numele `CALC_COMISION` cu formula:\n\n`=LAMBDA(vanzari;LET(cota;IF(vanzari>=50000;8%;IF(vanzari>=20000;5%;3%));vanzari*cota))`\n\nDupă salvare, în orice celulă poți scrie simplu:\n\n`=CALC_COMISION(35000)` → 35.000 × 5% = **1.750 lei**\n\n`=CALC_COMISION(62000)` → 62.000 × 8% = **4.960 lei**\n\n`=CALC_COMISION(A2)` — aplicată direct pe o coloană de vânzări, cu autocompletare și descriere ca orice funcție nativă Excel.\n\nDiferența față de o formulă IF simplă copiată în toate celulele: dacă pragurile sau procentele de comision se modifică, editezi o singură dată definiția din Name Manager, iar toate celulele care folosesc `CALC_COMISION` se actualizează automat — exact avantajul pe care VBA îl oferea până acum, dar fără cod și fără macrouri.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b5"
+   },
+   {
+    "type": "warning",
+    "md": "LET și LAMBDA sunt disponibile doar în Excel 365 (abonament) și Excel pentru web/mobil; nu funcționează în versiunile perpetue Excel 2019 sau 2021. Dacă distribui un fișier cu funcții LAMBDA denumite către colegi cu o licență mai veche, formulele vor genera erori `#NAME?`. Verifică versiunea de Excel a destinatarilor înainte de a construi rapoarte recurente bazate pe funcții LAMBDA personalizate, sau oferă o variantă alternativă (formule clasice) pentru compatibilitate.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă de distribuție calculează valoarea de plată pentru o comandă astfel: preț unitar 120 lei, cantitate 15 bucăți, cost fix de transport 50 lei, iar discountul depinde de cantitate — 15% dacă se comandă cel puțin 10 bucăți, altfel 5%.\n\n1. Scrie o formulă **LET** care calculează valoarea totală de plată (subtotal cu discount + transport), folosind variabile denumite pentru preț, cantitate, transport, discount și subtotal.\n2. Transformă formula într-o funcție **LAMBDA** denumită `CALC_TOTAL_COMANDA`, cu trei parametri: `pret`, `cantitate`, `transport`, astfel încât să poată fi refolosită pentru orice comandă.\n3. Calculează manual rezultatul pentru datele de mai sus, pentru verificare.",
+    "solution_md": "**1. Formula LET:**\n\n`=LET(pret;120;cantitate;15;transport;50;discount;IF(cantitate>=10;15%;5%);subtotal;pret*cantitate;subtotalCuDiscount;subtotal*(1-discount);subtotalCuDiscount+transport)`\n\n**2. Funcția LAMBDA** (definită în Name Manager sub numele `CALC_TOTAL_COMANDA`):\n\n`=LAMBDA(pret;cantitate;transport;LET(discount;IF(cantitate>=10;15%;5%);subtotal;pret*cantitate;subtotalCuDiscount;subtotal*(1-discount);subtotalCuDiscount+transport))`\n\nUtilizare într-o celulă: `=CALC_TOTAL_COMANDA(120;15;50)`\n\n**3. Calcul manual:**\n- subtotal = 120 × 15 = 1.800 lei\n- cantitate (15) ≥ 10 → discount = 15%\n- subtotalCuDiscount = 1.800 × (1 − 15%) = 1.530 lei\n- total de plată = 1.530 + 50 = **1.580 lei**",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este rolul ultimului argument din funcția LET?",
+    "choices": [
+     "Definește ultima variabilă denumită",
+     "Reprezintă calculul final care folosește variabilele definite anterior",
+     "Specifică formatul celulei rezultat",
+     "Este opțional și poate fi omis"
+    ],
+    "answer": 1,
+    "explain": "Ultimul argument al LET este întotdeauna calculul final; fără el formula generează eroare, deoarece LET are nevoie de o expresie care să folosească variabilele definite anterior.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce trebuie să faci pentru ca o funcție LAMBDA să fie reutilizabilă în tot registrul de calcul, ca o funcție nativă?",
+    "choices": [
+     "Să o copiezi în fiecare celulă unde e nevoie",
+     "Să o salvezi ca șablon .xltx",
+     "Să o denumești în Name Manager (Formulas → New Name)",
+     "Să activezi macrourile VBA"
+    ],
+    "answer": 2,
+    "explain": "O LAMBDA scrisă direct într-o celulă trebuie apelată imediat cu argumente; pentru a deveni o funcție proprie, reutilizabilă și cu autocompletare, trebuie denumită în Name Manager.",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția LET în Excel?",
+    "back": "Permite definirea de variabile denumite în interiorul unei formule, pentru a evita repetarea calculelor și a crește lizibilitatea și performanța.",
+    "concept_key": "let-functia-introducere",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este ultimul argument obligatoriu al funcției LET?",
+    "back": "Calculul final, care folosește variabilele definite anterior — fără el formula LET generează eroare.",
+    "concept_key": "let-functia-introducere",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția LAMBDA?",
+    "back": "Creează o funcție personalizată definită direct în Excel, cu parametri proprii, fără a scrie cod VBA.",
+    "concept_key": "lambda-functia-introducere",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum faci o funcție LAMBDA reutilizabilă în tot registrul de calcul?",
+    "back": "O denumești în Name Manager (Formulas → Name Manager → New Name), astfel încât să poată fi apelată ca orice funcție nativă, cu autocompletare.",
+    "concept_key": "lambda-functia-introducere",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o funcție LAMBDA recursivă?",
+    "back": "O funcție LAMBDA denumită care se autoapelează prin propriul nume, utilă pentru calcule iterative (ex. factorial, sume progresive) fără coloane ajutătoare.",
+    "concept_key": "let-lambda-combinare",
+    "blockId": "cmjjuxvou002qumkpq58utifd-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1138,
+   "flashcards": 5
+  }
+ }
+}

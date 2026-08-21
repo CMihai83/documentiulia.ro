@@ -1,0 +1,149 @@
+{
+ "lessonId": "cmjjuxw2r00ccumkp7n6jttv7",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Cadrul Legal și Principii Contabile",
+ "lesson": "OMFP 1802/2014 - Reglementări contabile",
+ "category": "FINANCE_OPS",
+ "content": "# OMFP 1802/2014 - Reglementări contabile\n\n**OMFP 1802/2014** (Ordinul Ministrului Finanțelor Publice nr. 1802/29.12.2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate) este actul normativ care fundamentează contabilitatea de angajamente în România pentru majoritatea entităților economice — societăți comerciale, PFA-uri care optează pentru contabilitate în partidă dublă extinsă, regii autonome etc.\n\nActul a intrat în vigoare pentru situațiile financiare ale exercițiului financiar 2015, înlocuind vechiul OMFP 3055/2009, și transpune în legislația națională **Directiva 2013/34/UE** a Parlamentului European privind situațiile financiare anuale, situațiile financiare consolidate și rapoartele conexe ale anumitor tipuri de întreprinderi.\n\nStructura reglementării cuprinde, în esență:\n- **Dispoziții generale** — domeniu de aplicare, definiții (active, datorii, capitaluri proprii, venituri, cheltuieli);\n- **Criterii de mărime** — care determină încadrarea entităților în categorii și, implicit, obligațiile de raportare;\n- **Principii contabile generale** — continuitatea activității, prudența, contabilitatea de angajamente, permanența metodelor, intangibilitatea bilanțului de deschidere etc.;\n- **Reguli de recunoaștere și evaluare** a elementelor din situațiile financiare;\n- **Planul de conturi general** și funcțiunea conturilor;\n- **Formatul situațiilor financiare anuale** (bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie, note explicative) și **conținutul raportului administratorilor**.\n\nÎnțelegerea acestei structuri este esențială: de ea depinde ce set de situații financiare întocmești, dacă ai obligația de audit statutar și ce note explicative trebuie să prezinți la finalul exercițiului financiar.\n\nOMFP 1802/2014 clasifică entitățile în **trei categorii**, pe baza a **trei criterii de mărime**, verificate la data bilanțului:\n\n1. **Totalul activelor** (suma elementelor de la A la C din activul bilanțului, înainte de deduceri);\n2. **Cifra de afaceri netă** (veniturile din vânzarea de produse și prestarea de servicii, după deducerea reducerilor comerciale, TVA și altor taxe direct legate de cifra de afaceri);\n3. **Numărul mediu de salariați** în cursul exercițiului financiar.\n\nCele trei categorii rezultate sunt:\n- **Microentități** — nu depășesc, la data bilanțului, cel puțin 2 dintre cele 3 limite cele mai mici (praguri reduse pentru toate criteriile);\n- **Entități mici** — depășesc pragurile microentităților, dar nu depășesc pragurile intermediare pentru cel puțin 2 din cele 3 criterii;\n- **Entități mijlocii și mari** — depășesc pragurile categoriei „mici” pentru cel puțin 2 din cele 3 criterii.\n\n**Regula esențială de încadrare**: o entitate își schimbă categoria (și, deci, regimul de raportare) doar dacă depășește sau, după caz, nu mai depășește limitele a **2 din cele 3 criterii, timp de 2 exerciții financiare consecutive**. Această regulă evită schimbări bruște de regim din cauza unei singure fluctuații anuale (de exemplu, o creștere temporară a cifrei de afaceri într-un singur an nu scoate automat o microentitate din categoria ei).\n\n⚠️ Valorile exacte în lei ale pragurilor sunt stabilite prin actul normativ și au fost actualizate periodic (de exemplu prin OMFP 3781/2019, pentru alinierea la pragurile din euro prevăzute de Directiva 2013/34/UE). Deoarece pragurile pot fi revizuite prin acte normative ulterioare, verifică întotdeauna forma consolidată, în vigoare la data întocmirii situațiilor financiare, înainte de a face o încadrare oficială.\n\n**Entitățile de interes public (EIP)** reprezintă o categorie specială, definită de OMFP 1802/2014 prin raportare la impactul lor asupra publicului larg de investitori, creditori, salariați. Intră în această categorie, printre altele:\n- societățile ale căror valori mobiliare sunt admise la tranzacționare pe o piață reglementată;\n- instituțiile de credit;\n- societățile de asigurare/reasigurare;\n- instituțiile financiare nebancare înscrise în registrele BNR;\n- fondurile de pensii administrate privat și fondurile de pensii facultative, precum și administratorii acestora;\n- societățile de servicii de investiții financiare și societățile de administrare a investițiilor;\n- alte entități desemnate ca atare prin acte normative speciale (de exemplu, anumite companii de stat sau de interes strategic).\n\n**Consecința practică a statutului de EIP**: indiferent de valorile efective ale celor trei criterii de mărime (active, cifră de afaceri, salariați), o entitate de interes public este **întotdeauna încadrată în categoria „entități mijlocii și mari”**. Asta înseamnă:\n- obligația de a întocmi **situații financiare anuale complete** (bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie, note explicative extinse);\n- obligația de **audit statutar** al situațiilor financiare, efectuat de un auditor financiar autorizat;\n- cerințe suplimentare de transparență în raportul administratorilor (de exemplu, declarația nefinanciară, pentru entitățile mari care îndeplinesc criteriile suplimentare de interes public).\n\nAcest tratament diferențiat reflectă rațiunea directivei europene: cu cât o entitate afectează un cerc mai larg de utilizatori ai informației financiare, cu atât standardul de raportare și control trebuie să fie mai riguros, independent de dimensiunea sa efectivă.\n\n## Exemplu: Încadrarea unei societăți în categoria de mărime corectă\n**SRL Alfa Distribuție** prezintă, la 31 decembrie, următoarea situație pe doi ani consecutivi:\n\n| Criteriu | An N-1 | An N |\n|---|---|---|\n| Total active | 1.400.000 lei | 1.650.000 lei |\n| Cifră de afaceri netă | 2.900.000 lei | 3.400.000 lei |\n| Număr mediu salariați | 9 | 11 |\n\nPresupunem, pentru exercițiul de calcul, pragurile de referință pentru microentități: total active ≤ 1.500.000 lei, cifră de afaceri netă ≤ 3.000.000 lei, salariați ≤ 10 (⚠️ verifică valorile actualizate în forma în vigoare a OMFP 1802/2014 la data raportării).\n\n**Analiză:**\n- În anul N-1: societatea nu depășește niciunul dintre cele 3 praguri → se încadrează drept **microentitate**.\n- În anul N: societatea depășește toate cele 3 praguri (active, cifră de afaceri, salariați).\n\n**Concluzie:** deși în anul N sunt depășite toate criteriile, schimbarea de categorie **nu se aplică automat din anul N**, pentru că regula OMFP 1802/2014 cere depășirea a cel puțin 2 criterii timp de **2 exerciții financiare consecutive**. Alfa Distribuție rămâne microentitate pentru raportarea aferentă anului N; dacă și în anul N+1 depășește din nou cel puțin 2 din cele 3 praguri, abia atunci trece în categoria „entități mici” începând cu situațiile financiare ale anului N+1.\n\n## Exemplu: Ce se schimbă în raportare între microentitate și entitate mijlocie\nDiferența de categorie nu e doar teoretică — schimbă direct volumul de muncă al departamentului financiar-contabil:\n\n**Microentitate** (regim simplificat):\n- Bilanț prescurtat;\n- Cont de profit și pierdere (format prescurtat sau simplificat, în funcție de opțiune);\n- Note explicative reduse, cu informații minimale;\n- Nu are obligația de a întocmi situația modificărilor capitalului propriu și situația fluxurilor de trezorerie;\n- Nu are, de regulă, obligația auditului statutar (cu excepția cazurilor prevăzute expres de lege, de exemplu depășirea altor praguri speciale sau prevederi din actul constitutiv).\n\n**Entitate mijlocie și mare / EIP** (regim complet):\n- Bilanț în format complet (dezvoltat);\n- Cont de profit și pierdere complet;\n- Situația modificărilor capitalului propriu;\n- Situația fluxurilor de trezorerie (metoda directă sau indirectă);\n- Note explicative extinse (minimum 10 note standard: politici contabile, imobilizări, provizioane, active/datorii contingente, informații privind salariații și conducerea, evenimente ulterioare etc.);\n- Raport al administratorilor cu analiza poziției financiare și a performanței;\n- Obligația auditului statutar.\n\n**Exemplu practic:** dacă SRL Alfa Distribuție trece de la microentitate la entitate mică/mijlocie, contabilul-șef trebuie să pregătească, suplimentar, situația fluxurilor de trezorerie și cel puțin 10 note explicative standard, plus să contracteze un auditor financiar dacă pragurile de audit sunt atinse — o schimbare semnificativă de proces, nu doar de formular.\n\n> Temei legal: OMFP 1802/2014 Secțiunea 2.1 - Criterii de mărime (pct. privind încadrarea entităților) și Secțiunea privind entitățile de interes public (în vigoare de la 2015-01-01)\nOMFP 1802/29.12.2014, publicat în Monitorul Oficial nr. 963/30.12.2014, se aplică începând cu situațiile financiare anuale ale exercițiului financiar 2015. Criteriile de mărime și pragurile aferente au fost modificate ulterior prin acte normative de actualizare (de exemplu OMFP 3781/2019); pentru orice încadrare oficială, folosește forma consolidată, actualizată la zi, a reglementării.\n\n⚠ Pragurile în lei pentru criteriile de mărime (total active, cifră de afaceri netă) sunt actualizate periodic prin ordine ale ministrului finanțelor, pentru alinierea la limitele în euro stabilite de Directiva 2013/34/UE. Nu folosi cifre memorate din cursuri sau materiale vechi fără a verifica textul consolidat, în vigoare la data întocmirii situațiilor financiare — o încadrare greșită poate duce la omiterea unor situații financiare obligatorii (de exemplu situația fluxurilor de trezorerie) sau la neîndeplinirea obligației de audit statutar, ambele sancționabile.\n\n## Exercițiu\nSC Beta Servicii SRL nu este entitate de interes public. Datele sale, la 31 decembrie, pentru doi ani consecutivi, sunt:\n\n| Criteriu | An N-1 | An N |\n|---|---|---|\n| Total active | 16.000.000 lei | 18.200.000 lei |\n| Cifră de afaceri netă | 33.000.000 lei | 37.500.000 lei |\n| Număr mediu salariați | 48 | 55 |\n\nPresupune, pentru acest exercițiu, următoarele praguri de referință (a se verifica la zi în textul consolidat al OMFP 1802/2014): entități mici — total active ≤ 17.500.000 lei, cifră de afaceri netă ≤ 35.000.000 lei, salariați ≤ 50; peste aceste valori (pentru cel puțin 2 criterii) → entitate mijlocie/mare.\n\n**Cerință:** Determină dacă SC Beta Servicii SRL trece în categoria „entități mijlocii și mari” începând cu situațiile financiare ale anului N. Justifică pe baza regulii celor 2 exerciții financiare consecutive.\n\n**Soluție:** **Pasul 1 — verifică anul N-1:** niciun criteriu nu este depășit (active 16 mil. < 17,5 mil.; cifră de afaceri 33 mil. < 35 mil.; salariați 48 < 50) → în N-1, societatea se încadra ca **entitate mică**.\n\n**Pasul 2 — verifică anul N:** toate cele 3 criterii sunt depășite (active 18,2 mil. > 17,5 mil.; cifră de afaceri 37,5 mil. > 35 mil.; salariați 55 > 50) → în anul N sunt depășite cel puțin 2 din cele 3 praguri ale categoriei „mici”.\n\n**Pasul 3 — aplică regula celor 2 exerciții consecutive:** deoarece depășirea are loc doar în anul N (nu și în N-1), societatea **nu trece automat** în categoria „mijlocii și mari” din anul N. Ea rămâne, pentru raportarea aferentă anului N, în categoria „entități mici”.\n\n**Concluzie:** dacă și situațiile financiare ale anului N+1 confirmă depășirea a cel puțin 2 din cele 3 praguri, abia atunci SC Beta Servicii SRL va trece în categoria „entități mijlocii și mari”, cu obligațiile aferente (situații financiare complete, posibil audit statutar), începând cu situațiile financiare ale anului N+1.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "omfp-1802-2014-cadru-general",
+    "md": "**OMFP 1802/2014** (Ordinul Ministrului Finanțelor Publice nr. 1802/29.12.2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate) este actul normativ care fundamentează contabilitatea de angajamente în România pentru majoritatea entităților economice — societăți comerciale, PFA-uri care optează pentru contabilitate în partidă dublă extinsă, regii autonome etc.\n\nActul a intrat în vigoare pentru situațiile financiare ale exercițiului financiar 2015, înlocuind vechiul OMFP 3055/2009, și transpune în legislația națională **Directiva 2013/34/UE** a Parlamentului European privind situațiile financiare anuale, situațiile financiare consolidate și rapoartele conexe ale anumitor tipuri de întreprinderi.\n\nStructura reglementării cuprinde, în esență:\n- **Dispoziții generale** — domeniu de aplicare, definiții (active, datorii, capitaluri proprii, venituri, cheltuieli);\n- **Criterii de mărime** — care determină încadrarea entităților în categorii și, implicit, obligațiile de raportare;\n- **Principii contabile generale** — continuitatea activității, prudența, contabilitatea de angajamente, permanența metodelor, intangibilitatea bilanțului de deschidere etc.;\n- **Reguli de recunoaștere și evaluare** a elementelor din situațiile financiare;\n- **Planul de conturi general** și funcțiunea conturilor;\n- **Formatul situațiilor financiare anuale** (bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie, note explicative) și **conținutul raportului administratorilor**.\n\nÎnțelegerea acestei structuri este esențială: de ea depinde ce set de situații financiare întocmești, dacă ai obligația de audit statutar și ce note explicative trebuie să prezinți la finalul exercițiului financiar.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "criterii-marime-entitati-omfp-1802",
+    "md": "OMFP 1802/2014 clasifică entitățile în **trei categorii**, pe baza a **trei criterii de mărime**, verificate la data bilanțului:\n\n1. **Totalul activelor** (suma elementelor de la A la C din activul bilanțului, înainte de deduceri);\n2. **Cifra de afaceri netă** (veniturile din vânzarea de produse și prestarea de servicii, după deducerea reducerilor comerciale, TVA și altor taxe direct legate de cifra de afaceri);\n3. **Numărul mediu de salariați** în cursul exercițiului financiar.\n\nCele trei categorii rezultate sunt:\n- **Microentități** — nu depășesc, la data bilanțului, cel puțin 2 dintre cele 3 limite cele mai mici (praguri reduse pentru toate criteriile);\n- **Entități mici** — depășesc pragurile microentităților, dar nu depășesc pragurile intermediare pentru cel puțin 2 din cele 3 criterii;\n- **Entități mijlocii și mari** — depășesc pragurile categoriei „mici” pentru cel puțin 2 din cele 3 criterii.\n\n**Regula esențială de încadrare**: o entitate își schimbă categoria (și, deci, regimul de raportare) doar dacă depășește sau, după caz, nu mai depășește limitele a **2 din cele 3 criterii, timp de 2 exerciții financiare consecutive**. Această regulă evită schimbări bruște de regim din cauza unei singure fluctuații anuale (de exemplu, o creștere temporară a cifrei de afaceri într-un singur an nu scoate automat o microentitate din categoria ei).\n\n⚠️ Valorile exacte în lei ale pragurilor sunt stabilite prin actul normativ și au fost actualizate periodic (de exemplu prin OMFP 3781/2019, pentru alinierea la pragurile din euro prevăzute de Directiva 2013/34/UE). Deoarece pragurile pot fi revizuite prin acte normative ulterioare, verifică întotdeauna forma consolidată, în vigoare la data întocmirii situațiilor financiare, înainte de a face o încadrare oficială.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "entitati-interes-public-eip",
+    "md": "**Entitățile de interes public (EIP)** reprezintă o categorie specială, definită de OMFP 1802/2014 prin raportare la impactul lor asupra publicului larg de investitori, creditori, salariați. Intră în această categorie, printre altele:\n- societățile ale căror valori mobiliare sunt admise la tranzacționare pe o piață reglementată;\n- instituțiile de credit;\n- societățile de asigurare/reasigurare;\n- instituțiile financiare nebancare înscrise în registrele BNR;\n- fondurile de pensii administrate privat și fondurile de pensii facultative, precum și administratorii acestora;\n- societățile de servicii de investiții financiare și societățile de administrare a investițiilor;\n- alte entități desemnate ca atare prin acte normative speciale (de exemplu, anumite companii de stat sau de interes strategic).\n\n**Consecința practică a statutului de EIP**: indiferent de valorile efective ale celor trei criterii de mărime (active, cifră de afaceri, salariați), o entitate de interes public este **întotdeauna încadrată în categoria „entități mijlocii și mari”**. Asta înseamnă:\n- obligația de a întocmi **situații financiare anuale complete** (bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie, note explicative extinse);\n- obligația de **audit statutar** al situațiilor financiare, efectuat de un auditor financiar autorizat;\n- cerințe suplimentare de transparență în raportul administratorilor (de exemplu, declarația nefinanciară, pentru entitățile mari care îndeplinesc criteriile suplimentare de interes public).\n\nAcest tratament diferențiat reflectă rațiunea directivei europene: cu cât o entitate afectează un cerc mai larg de utilizatori ai informației financiare, cu atât standardul de raportare și control trebuie să fie mai riguros, independent de dimensiunea sa efectivă.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b3"
+   },
+   {
+    "type": "example",
+    "title": "Încadrarea unei societăți în categoria de mărime corectă",
+    "concept_key": "criterii-marime-entitati-omfp-1802",
+    "md": "**SRL Alfa Distribuție** prezintă, la 31 decembrie, următoarea situație pe doi ani consecutivi:\n\n| Criteriu | An N-1 | An N |\n|---|---|---|\n| Total active | 1.400.000 lei | 1.650.000 lei |\n| Cifră de afaceri netă | 2.900.000 lei | 3.400.000 lei |\n| Număr mediu salariați | 9 | 11 |\n\nPresupunem, pentru exercițiul de calcul, pragurile de referință pentru microentități: total active ≤ 1.500.000 lei, cifră de afaceri netă ≤ 3.000.000 lei, salariați ≤ 10 (⚠️ verifică valorile actualizate în forma în vigoare a OMFP 1802/2014 la data raportării).\n\n**Analiză:**\n- În anul N-1: societatea nu depășește niciunul dintre cele 3 praguri → se încadrează drept **microentitate**.\n- În anul N: societatea depășește toate cele 3 praguri (active, cifră de afaceri, salariați).\n\n**Concluzie:** deși în anul N sunt depășite toate criteriile, schimbarea de categorie **nu se aplică automat din anul N**, pentru că regula OMFP 1802/2014 cere depășirea a cel puțin 2 criterii timp de **2 exerciții financiare consecutive**. Alfa Distribuție rămâne microentitate pentru raportarea aferentă anului N; dacă și în anul N+1 depășește din nou cel puțin 2 din cele 3 praguri, abia atunci trece în categoria „entități mici” începând cu situațiile financiare ale anului N+1.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b4"
+   },
+   {
+    "type": "example",
+    "title": "Ce se schimbă în raportare între microentitate și entitate mijlocie",
+    "concept_key": "raportare-simplificata-vs-completa",
+    "md": "Diferența de categorie nu e doar teoretică — schimbă direct volumul de muncă al departamentului financiar-contabil:\n\n**Microentitate** (regim simplificat):\n- Bilanț prescurtat;\n- Cont de profit și pierdere (format prescurtat sau simplificat, în funcție de opțiune);\n- Note explicative reduse, cu informații minimale;\n- Nu are obligația de a întocmi situația modificărilor capitalului propriu și situația fluxurilor de trezorerie;\n- Nu are, de regulă, obligația auditului statutar (cu excepția cazurilor prevăzute expres de lege, de exemplu depășirea altor praguri speciale sau prevederi din actul constitutiv).\n\n**Entitate mijlocie și mare / EIP** (regim complet):\n- Bilanț în format complet (dezvoltat);\n- Cont de profit și pierdere complet;\n- Situația modificărilor capitalului propriu;\n- Situația fluxurilor de trezorerie (metoda directă sau indirectă);\n- Note explicative extinse (minimum 10 note standard: politici contabile, imobilizări, provizioane, active/datorii contingente, informații privind salariații și conducerea, evenimente ulterioare etc.);\n- Raport al administratorilor cu analiza poziției financiare și a performanței;\n- Obligația auditului statutar.\n\n**Exemplu practic:** dacă SRL Alfa Distribuție trece de la microentitate la entitate mică/mijlocie, contabilul-șef trebuie să pregătească, suplimentar, situația fluxurilor de trezorerie și cel puțin 10 note explicative standard, plus să contracteze un auditor financiar dacă pragurile de audit sunt atinse — o schimbare semnificativă de proces, nu doar de formular.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Secțiunea 2.1 - Criterii de mărime (pct. privind încadrarea entităților) și Secțiunea privind entitățile de interes public",
+    "effective": "2015-01-01",
+    "md": "OMFP 1802/29.12.2014, publicat în Monitorul Oficial nr. 963/30.12.2014, se aplică începând cu situațiile financiare anuale ale exercițiului financiar 2015. Criteriile de mărime și pragurile aferente au fost modificate ulterior prin acte normative de actualizare (de exemplu OMFP 3781/2019); pentru orice încadrare oficială, folosește forma consolidată, actualizată la zi, a reglementării.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Pragurile în lei pentru criteriile de mărime (total active, cifră de afaceri netă) sunt actualizate periodic prin ordine ale ministrului finanțelor, pentru alinierea la limitele în euro stabilite de Directiva 2013/34/UE. Nu folosi cifre memorate din cursuri sau materiale vechi fără a verifica textul consolidat, în vigoare la data întocmirii situațiilor financiare — o încadrare greșită poate duce la omiterea unor situații financiare obligatorii (de exemplu situația fluxurilor de trezorerie) sau la neîndeplinirea obligației de audit statutar, ambele sancționabile.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Beta Servicii SRL nu este entitate de interes public. Datele sale, la 31 decembrie, pentru doi ani consecutivi, sunt:\n\n| Criteriu | An N-1 | An N |\n|---|---|---|\n| Total active | 16.000.000 lei | 18.200.000 lei |\n| Cifră de afaceri netă | 33.000.000 lei | 37.500.000 lei |\n| Număr mediu salariați | 48 | 55 |\n\nPresupune, pentru acest exercițiu, următoarele praguri de referință (a se verifica la zi în textul consolidat al OMFP 1802/2014): entități mici — total active ≤ 17.500.000 lei, cifră de afaceri netă ≤ 35.000.000 lei, salariați ≤ 50; peste aceste valori (pentru cel puțin 2 criterii) → entitate mijlocie/mare.\n\n**Cerință:** Determină dacă SC Beta Servicii SRL trece în categoria „entități mijlocii și mari” începând cu situațiile financiare ale anului N. Justifică pe baza regulii celor 2 exerciții financiare consecutive.",
+    "solution_md": "**Pasul 1 — verifică anul N-1:** niciun criteriu nu este depășit (active 16 mil. < 17,5 mil.; cifră de afaceri 33 mil. < 35 mil.; salariați 48 < 50) → în N-1, societatea se încadra ca **entitate mică**.\n\n**Pasul 2 — verifică anul N:** toate cele 3 criterii sunt depășite (active 18,2 mil. > 17,5 mil.; cifră de afaceri 37,5 mil. > 35 mil.; salariați 55 > 50) → în anul N sunt depășite cel puțin 2 din cele 3 praguri ale categoriei „mici”.\n\n**Pasul 3 — aplică regula celor 2 exerciții consecutive:** deoarece depășirea are loc doar în anul N (nu și în N-1), societatea **nu trece automat** în categoria „mijlocii și mari” din anul N. Ea rămâne, pentru raportarea aferentă anului N, în categoria „entități mici”.\n\n**Concluzie:** dacă și situațiile financiare ale anului N+1 confirmă depășirea a cel puțin 2 din cele 3 praguri, abia atunci SC Beta Servicii SRL va trece în categoria „entități mijlocii și mari”, cu obligațiile aferente (situații financiare complete, posibil audit statutar), începând cu situațiile financiare ale anului N+1.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Câte criterii de mărime folosește OMFP 1802/2014 pentru încadrarea unei entități într-o categorie?",
+    "choices": [
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "answer": 1,
+    "explain": "Cele 3 criterii sunt: totalul activelor, cifra de afaceri netă și numărul mediu de salariați în cursul exercițiului financiar.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O entitate de interes public (EIP) cu doar 8 salariați și cifră de afaceri redusă este încadrată, conform OMFP 1802/2014, ca:",
+    "choices": [
+     "Microentitate, indiferent de statutul de EIP",
+     "Entitate mică, dacă îndeplinește criteriile de mărime",
+     "Entitate mijlocie și mare, indiferent de criteriile de mărime",
+     "Categorie stabilită exclusiv de ANAF, de la caz la caz"
+    ],
+    "answer": 2,
+    "explain": "Statutul de entitate de interes public plasează entitatea automat în categoria „mijlocii și mari”, indiferent de valorile efective ale celor 3 criterii de mărime, cu toate obligațiile de raportare completă și audit statutar aferente.",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte criterii de mărime definește OMFP 1802/2014 pentru încadrarea entităților?",
+    "back": "3 criterii: totalul activelor, cifra de afaceri netă și numărul mediu de salariați în cursul exercițiului financiar.",
+    "concept_key": "criterii-marime-entitati-omfp-1802",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementare contabilă a fost înlocuită de OMFP 1802/2014?",
+    "back": "OMFP 3055/2009, începând cu situațiile financiare ale exercițiului financiar 2015.",
+    "concept_key": "omfp-1802-2014-cadru-general",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 3 categorii de entități conform OMFP 1802/2014?",
+    "back": "Microentități, entități mici, entități mijlocii și mari.",
+    "concept_key": "criterii-marime-entitati-omfp-1802",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce regulă determină efectiv schimbarea categoriei de mărime a unei entități?",
+    "back": "Depășirea (sau, după caz, nedepășirea) a cel puțin 2 din cele 3 criterii de mărime, timp de 2 exerciții financiare consecutive.",
+    "concept_key": "criterii-marime-entitati-omfp-1802",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum este clasificată întotdeauna o entitate de interes public (EIP), indiferent de mărimea sa efectivă?",
+    "back": "Ca entitate mijlocie și mare — cu obligația situațiilor financiare complete și a auditului statutar.",
+    "concept_key": "entitati-interes-public-eip",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce directivă europeană transpune OMFP 1802/2014?",
+    "back": "Directiva 2013/34/UE privind situațiile financiare anuale, situațiile financiare consolidate și rapoartele conexe.",
+    "concept_key": "omfp-1802-2014-cadru-general",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce situații financiare NU are obligația să le întocmească o microentitate, spre deosebire de o entitate mijlocie/mare?",
+    "back": "Situația modificărilor capitalului propriu și situația fluxurilor de trezorerie.",
+    "concept_key": "raportare-simplificata-vs-completa",
+    "blockId": "cmjjuxw2r00ccumkp7n6jttv7-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1554,
+   "flashcards": 7
+  }
+ }
+}

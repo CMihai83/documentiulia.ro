@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxwi000orumkpwzv7arbr",
+ "courseId": "cmjjuxwhc00obumkpfv2f5s1h",
+ "course": "Time Management și Productivitate",
+ "module": "Prioritizare",
+ "lesson": "Prioritizare în echipă",
+ "category": "SOFT_SKILLS",
+ "content": "# Prioritizare în echipă\n\n## De ce prioritizarea individuală nu e de-ajuns\n\nȘtii deja să-ți prioritizezi propriile sarcini — cu matricea Eisenhower, cu regula 80/20 sau cu un simplu top 3 zilnic. Dar în echipă, prioritizarea individuală bine făcută nu garantează rezultate bune. De ce? Pentru că fiecare coleg poate avea propria listă „corectă” de priorități, construită izolat, fără să știe ce face celălalt.\n\nRezultatul tipic: doi oameni lucrează în paralel la variante ale aceleiași sarcini, altcineva așteaptă un input care nu vine pentru că nimeni nu i-a spus că e blocant, iar managerul află abia la finalul sprintului că „prioritatea 1” a echipei de vânzări nu s-a atins pentru că IT-ul o considera „prioritatea 4”.\n\n**Aliniere** înseamnă ca toți membrii echipei să răspundă la fel la întrebarea: „Ce e important acum și de ce?” Nu e nevoie ca toată lumea să facă aceleași lucruri — e nevoie ca toată lumea să înțeleagă aceeași ierarhie de importanță și motivul din spatele ei. Fără acest pas, orice tehnică individuală de time management se anulează la nivel de echipă, pentru că efortul se duce în direcții contradictorii.\n\nAlinierea nu se întâmplă spontan. Ea se construiește prin trei mecanisme, pe care le vom detalia în această lecție: un cadru comun de obiective (OKR), o comunicare explicită a priorităților și o gestionare deliberată a trade-off-urilor (compromisurilor) atunci când resursele sunt limitate — ceea ce, în practică, e mereu.\n\n## OKR — cadrul de aliniere a priorităților\n\n**OKR** (Objectives and Key Results — Obiective și Rezultate-Cheie) este un cadru de stabilire a priorităților folosit inițial la Intel și popularizat de Google, azi larg răspândit și în companii din România, de la startup-uri la corporații.\n\nStructura are două niveluri:\n\n- **Obiectivul (O)** — o direcție calitativă, ambițioasă, ușor de reținut. Răspunde la „unde vrem să ajungem”. Exemplu: „Devenim principalul furnizor local de mobilier personalizat din regiune”.\n- **Key Results (KR)** — 2-4 rezultate măsurabile, cu cifre și termen clar, care arată dacă obiectivul a fost atins. Răspund la „cum știm că am ajuns acolo”.\n\nDiferența față de un simplu KPI (indicator de performanță) este de scop: KPI-urile monitorizează sănătatea unui proces continuu (ex. rata de retenție a clienților), în timp ce OKR-urile sunt priorități temporare, de regulă cu cadență **trimestrială**, gândite să concentreze efortul echipei pe puține lucruri esențiale, nu pe tot ce s-ar putea face.\n\nÎn context românesc, OKR-urile funcționează cel mai bine atunci când:\n\n1. Sunt **puține** — maximum 3-5 obiective per echipă, altfel devin din nou o listă nediferențiată de sarcini.\n2. Sunt **vizibile pentru toată echipa**, nu doar pentru manager — afișate într-un document sau board partajat.\n3. Se face o **revizuire la mijlocul perioadei** (check-in), nu doar la final, pentru a corecta din mers dacă un Key Result devine nerealist.\n\nOKR-urile nu înlocuiesc lista zilnică de task-uri — ele îi dau sens. Când un coleg întreabă „de ce lucrăm la asta și nu la altceva”, răspunsul corect ar trebui să fie mereu trasabil până la un Key Result asumat de echipă.\n\n## Cum comunici prioritățile, nu doar le stabilești\n\nMulte echipe stabilesc priorități corecte, dar le comunică prost — și efectul practic e identic cu lipsa priorităților: fiecare face ce crede el că e mai important. Câteva practici verificate:\n\n**1. Vizibilitate publică, nu memorie colectivă.** Prioritățile trebuie să existe undeva scris — un board Kanban, un tabel simplu cu coloanele „Prioritate / Responsabil / Termen / Motiv” — nu doar în capul managerului sau într-un e-mail pierdut printre altele. Dacă cineva nu poate răspunde în 10 secunde „care e prioritatea 1 a echipei mele acum”, comunicarea a eșuat.\n\n**2. Regula unui singur top 3.** O echipă poate avea zeci de sarcini deschise, dar la un moment dat ar trebui să existe un consens clar asupra a maximum trei priorități curente. Dacă lista „prioritară” are 15 elemente, ea nu mai prioritizează nimic.\n\n**3. Sincronizări scurte și regulate.** Un stand-up de 10-15 minute (zilnic sau de câteva ori pe săptămână) în care fiecare spune pe ce lucrează și ce îl blochează previne dublarea efortului și scoate la iveală rapid conflictele de prioritate, înainte să devină crize.\n\n**4. Motivul contează la fel de mult ca decizia.** „Lucrăm la X, nu la Y” fără explicație generează rezistență tăcută. „Lucrăm la X pentru că afectează direct Key Result-ul de retenție a clienților din T3, iar Y poate aștepta o lună” generează înțelegere și, de multe ori, idei mai bune de la echipă despre cum să execute.\n\nComunicarea priorităților nu e un eveniment unic („le-am anunțat luni”), ci un proces continuu de reconfirmare, mai ales când apar cereri noi pe parcurs.\n\n## Trade-off-uri: a alege înseamnă a renunța la ceva\n\nÎn orice echipă, resursele — timp, oameni, buget — sunt limitate. De aceea, a prioritiza nu înseamnă doar a alege ce faci, ci, la fel de important, a decide explicit **ce nu faci** sau ce amâni. Acest compromis se numește **trade-off**.\n\nProblema cea mai frecventă în echipele din România nu e lipsa priorităților, ci **costul ascuns** al deciziilor: cineva de sus spune „da, facem și asta”, fără să spună ce se amână ca urmare. Rezultatul e o echipă suprasolicitată, care lucrează la toate cererile simultan, superficial, și nu finalizează bine niciuna.\n\nDouă instrumente practice pentru trade-off-uri sănătoase:\n\n**Matricea impact/efort la nivel de echipă.** Fiecare cerere nouă se plasează pe două axe — impactul asupra Key Results-urilor curente și efortul necesar. Cererile cu impact mare și efort mic intră imediat; cele cu impact mic, indiferent de cine le cere, se refuză politicos sau se amână explicit.\n\n**Regula „costului vizibil”.** Când accepți o cerere nouă în mijlocul perioadei, spui explicit, în fața celui care o cere și a echipei: „Acceptăm X, ceea ce înseamnă că Y se amână cu două săptămâni.” Acest pas transformă un „da” tacit — care ascunde costul — într-o decizie asumată de toți, inclusiv de cel care a cerut prioritizarea nouă. De multe ori, făcând costul vizibil, cel care cerea urgența își retrage singur cererea.\n\nTrade-off-urile sunt inevitabile; problema nu e că există, ci că sunt făcute pe ascuns, prin suprasolicitare tăcută, în loc să fie negociate deschis.\n\n## Exemplu: OKR pentru o echipă de marketing la o firmă românească\n**Verde Deco SRL**, producător de mobilier personalizat cu 25 de angajați, stabilește pentru trimestrul 3 din 2026 următorul OKR pentru echipa de marketing:\n\n**Obiectiv:** Creștem vizibilitatea brandului pe piața locală din Cluj și Timișoara.\n\n**Key Results:**\n- KR1: Creștem traficul organic pe site de la 5.000 la 8.000 de vizite/lună.\n- KR2: Publicăm 12 articole de blog optimizate SEO (media: 1/săptămână).\n- KR3: Obținem 150 de lead-uri calificate din campanii plătite, cu un cost sub 40 lei/lead.\n\nCu acest OKR afișat pe un board vizibil întregii echipe, orice cerere nouă primită în timpul trimestrului (de exemplu, „hai să facem și un catalog tipărit pentru un târg”) se evaluează prin întrebarea: contribuie la unul dintre cele trei KR-uri? Dacă răspunsul e nu, cererea nu dispare automat, dar devine o discuție explicită de trade-off, nu o sarcină adăugată tacit peste cele existente.\n\n## Exemplu: Conflict de priorități între Vânzări și IT — rezolvat prin trade-off explicit\nLa o firmă de servicii cu 40 de angajați, echipa IT (3 persoane) primește în aceeași săptămână două cereri urgente:\n\n- Vânzările cer integrarea rapidă a unui nou modul CRM, necesară pentru semnarea unui contract cu un client important.\n- Suportul tehnic raportează un bug care afectează experiența a circa 200 de utilizatori activi ai aplicației.\n\nÎn loc să accepte ambele „urgent”, managerul IT convoacă o discuție de 20 de minute cu reprezentanții ambelor echipe. Plasează cele două cereri pe o matrice impact/efort: bug-ul are impact mare (afectează 200 de utilizatori curenți, risc de pierdere a lor) și efort mediu (2 zile); integrarea CRM are impact mare pe termen lung (un contract nou), dar efort mare (5 zile) și un termen de livrare care permite o săptămână de flexibilitate.\n\nDecizia comunicată explicit tuturor: „Rezolvăm întâi bug-ul (2 zile), pentru că afectează clienți existenți acum. Integrarea CRM începe imediat după, cu livrare cu 3 zile mai târziu decât cerut inițial de vânzări — dacă acest termen nu funcționează pentru client, discutăm o soluție intermediară.” Costul trade-off-ului e vizibil pentru toți, iar decizia se ia pe criterii de impact, nu pe baza cine a cerut mai tare.\n\n⚠ Nu confunda un OKR cu o listă de sarcini. Dacă Key Results-urile tale sunt de tipul „Trimitem newsletter-ul lunar” sau „Facem ședința de echipă”, ai transformat cadrul de prioritizare într-un checklist operațional. Key Results bune descriu un rezultat măsurabil de business (trafic, venituri, rată de conversie, satisfacție), nu activități bifabile — activitățile sunt mijlocul, nu scopul.\n\n## Exercițiu\nAlege echipa sau proiectul la care lucrezi în prezent și parcurge următorii pași:\n\n1. Scrie un Obiectiv (O) pentru echipa ta pentru următorul trimestru — o frază calitativă, ambițioasă.\n2. Adaugă 2-3 Key Results măsurabile, cu cifre și termen, care ar arăta clar dacă obiectivul a fost atins.\n3. Identifică o cerere recentă primită de echipă (de la un coleg, un client sau un manager) care NU contribuie clar la niciun Key Result de mai sus.\n4. Formulează, în stilul „regulii costului vizibil”, o propoziție prin care ai comunica trade-off-ul dacă ai accepta totuși acea cerere acum.\n\n**Soluție:** Exemplu de rezolvare (echipă de suport clienți la o firmă de servicii software):\n\n**Obiectiv:** Reducem timpul de răspuns către clienți și creștem satisfacția lor în T4 2026.\n\n**Key Results:**\n- KR1: Scădem timpul mediu de primă răspuns de la 6 ore la 2 ore.\n- KR2: Creștem scorul de satisfacție (CSAT) de la 78% la 88%.\n- KR3: Reducem numărul de tichete redeschise cu 30%.\n\n**Cerere care nu contribuie:** un manager cere echipei să pregătească o prezentare internă despre activitatea trimestrială, pentru o ședință de board — utilă organizațional, dar fără legătură directă cu niciun KR de mai sus.\n\n**Trade-off comunicat explicit:** „Acceptăm să pregătim prezentarea, ceea ce înseamnă 1,5 zile de muncă a unei persoane din echipă — în această perioadă, timpul mediu de răspuns către clienți va crește temporar, punând presiune pe KR1. Dacă prezentarea poate aștepta o săptămână, o pregătim după ce stabilizăm KR1 la nivelul țintă.” Această formulare arată clar costul, nu doar acceptarea tacită a cererii.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "aliniere-prioritati-echipa",
+    "md": "## De ce prioritizarea individuală nu e de-ajuns\n\nȘtii deja să-ți prioritizezi propriile sarcini — cu matricea Eisenhower, cu regula 80/20 sau cu un simplu top 3 zilnic. Dar în echipă, prioritizarea individuală bine făcută nu garantează rezultate bune. De ce? Pentru că fiecare coleg poate avea propria listă „corectă” de priorități, construită izolat, fără să știe ce face celălalt.\n\nRezultatul tipic: doi oameni lucrează în paralel la variante ale aceleiași sarcini, altcineva așteaptă un input care nu vine pentru că nimeni nu i-a spus că e blocant, iar managerul află abia la finalul sprintului că „prioritatea 1” a echipei de vânzări nu s-a atins pentru că IT-ul o considera „prioritatea 4”.\n\n**Aliniere** înseamnă ca toți membrii echipei să răspundă la fel la întrebarea: „Ce e important acum și de ce?” Nu e nevoie ca toată lumea să facă aceleași lucruri — e nevoie ca toată lumea să înțeleagă aceeași ierarhie de importanță și motivul din spatele ei. Fără acest pas, orice tehnică individuală de time management se anulează la nivel de echipă, pentru că efortul se duce în direcții contradictorii.\n\nAlinierea nu se întâmplă spontan. Ea se construiește prin trei mecanisme, pe care le vom detalia în această lecție: un cadru comun de obiective (OKR), o comunicare explicită a priorităților și o gestionare deliberată a trade-off-urilor (compromisurilor) atunci când resursele sunt limitate — ceea ce, în practică, e mereu.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "okr-obiective-rezultate-cheie",
+    "md": "## OKR — cadrul de aliniere a priorităților\n\n**OKR** (Objectives and Key Results — Obiective și Rezultate-Cheie) este un cadru de stabilire a priorităților folosit inițial la Intel și popularizat de Google, azi larg răspândit și în companii din România, de la startup-uri la corporații.\n\nStructura are două niveluri:\n\n- **Obiectivul (O)** — o direcție calitativă, ambițioasă, ușor de reținut. Răspunde la „unde vrem să ajungem”. Exemplu: „Devenim principalul furnizor local de mobilier personalizat din regiune”.\n- **Key Results (KR)** — 2-4 rezultate măsurabile, cu cifre și termen clar, care arată dacă obiectivul a fost atins. Răspund la „cum știm că am ajuns acolo”.\n\nDiferența față de un simplu KPI (indicator de performanță) este de scop: KPI-urile monitorizează sănătatea unui proces continuu (ex. rata de retenție a clienților), în timp ce OKR-urile sunt priorități temporare, de regulă cu cadență **trimestrială**, gândite să concentreze efortul echipei pe puține lucruri esențiale, nu pe tot ce s-ar putea face.\n\nÎn context românesc, OKR-urile funcționează cel mai bine atunci când:\n\n1. Sunt **puține** — maximum 3-5 obiective per echipă, altfel devin din nou o listă nediferențiată de sarcini.\n2. Sunt **vizibile pentru toată echipa**, nu doar pentru manager — afișate într-un document sau board partajat.\n3. Se face o **revizuire la mijlocul perioadei** (check-in), nu doar la final, pentru a corecta din mers dacă un Key Result devine nerealist.\n\nOKR-urile nu înlocuiesc lista zilnică de task-uri — ele îi dau sens. Când un coleg întreabă „de ce lucrăm la asta și nu la altceva”, răspunsul corect ar trebui să fie mereu trasabil până la un Key Result asumat de echipă.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "comunicarea-prioritatilor-echipa",
+    "md": "## Cum comunici prioritățile, nu doar le stabilești\n\nMulte echipe stabilesc priorități corecte, dar le comunică prost — și efectul practic e identic cu lipsa priorităților: fiecare face ce crede el că e mai important. Câteva practici verificate:\n\n**1. Vizibilitate publică, nu memorie colectivă.** Prioritățile trebuie să existe undeva scris — un board Kanban, un tabel simplu cu coloanele „Prioritate / Responsabil / Termen / Motiv” — nu doar în capul managerului sau într-un e-mail pierdut printre altele. Dacă cineva nu poate răspunde în 10 secunde „care e prioritatea 1 a echipei mele acum”, comunicarea a eșuat.\n\n**2. Regula unui singur top 3.** O echipă poate avea zeci de sarcini deschise, dar la un moment dat ar trebui să existe un consens clar asupra a maximum trei priorități curente. Dacă lista „prioritară” are 15 elemente, ea nu mai prioritizează nimic.\n\n**3. Sincronizări scurte și regulate.** Un stand-up de 10-15 minute (zilnic sau de câteva ori pe săptămână) în care fiecare spune pe ce lucrează și ce îl blochează previne dublarea efortului și scoate la iveală rapid conflictele de prioritate, înainte să devină crize.\n\n**4. Motivul contează la fel de mult ca decizia.** „Lucrăm la X, nu la Y” fără explicație generează rezistență tăcută. „Lucrăm la X pentru că afectează direct Key Result-ul de retenție a clienților din T3, iar Y poate aștepta o lună” generează înțelegere și, de multe ori, idei mai bune de la echipă despre cum să execute.\n\nComunicarea priorităților nu e un eveniment unic („le-am anunțat luni”), ci un proces continuu de reconfirmare, mai ales când apar cereri noi pe parcurs.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "trade-off-uri-prioritizare",
+    "md": "## Trade-off-uri: a alege înseamnă a renunța la ceva\n\nÎn orice echipă, resursele — timp, oameni, buget — sunt limitate. De aceea, a prioritiza nu înseamnă doar a alege ce faci, ci, la fel de important, a decide explicit **ce nu faci** sau ce amâni. Acest compromis se numește **trade-off**.\n\nProblema cea mai frecventă în echipele din România nu e lipsa priorităților, ci **costul ascuns** al deciziilor: cineva de sus spune „da, facem și asta”, fără să spună ce se amână ca urmare. Rezultatul e o echipă suprasolicitată, care lucrează la toate cererile simultan, superficial, și nu finalizează bine niciuna.\n\nDouă instrumente practice pentru trade-off-uri sănătoase:\n\n**Matricea impact/efort la nivel de echipă.** Fiecare cerere nouă se plasează pe două axe — impactul asupra Key Results-urilor curente și efortul necesar. Cererile cu impact mare și efort mic intră imediat; cele cu impact mic, indiferent de cine le cere, se refuză politicos sau se amână explicit.\n\n**Regula „costului vizibil”.** Când accepți o cerere nouă în mijlocul perioadei, spui explicit, în fața celui care o cere și a echipei: „Acceptăm X, ceea ce înseamnă că Y se amână cu două săptămâni.” Acest pas transformă un „da” tacit — care ascunde costul — într-o decizie asumată de toți, inclusiv de cel care a cerut prioritizarea nouă. De multe ori, făcând costul vizibil, cel care cerea urgența își retrage singur cererea.\n\nTrade-off-urile sunt inevitabile; problema nu e că există, ci că sunt făcute pe ascuns, prin suprasolicitare tăcută, în loc să fie negociate deschis.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b4"
+   },
+   {
+    "type": "example",
+    "title": "OKR pentru o echipă de marketing la o firmă românească",
+    "concept_key": "okr-obiective-rezultate-cheie",
+    "md": "**Verde Deco SRL**, producător de mobilier personalizat cu 25 de angajați, stabilește pentru trimestrul 3 din 2026 următorul OKR pentru echipa de marketing:\n\n**Obiectiv:** Creștem vizibilitatea brandului pe piața locală din Cluj și Timișoara.\n\n**Key Results:**\n- KR1: Creștem traficul organic pe site de la 5.000 la 8.000 de vizite/lună.\n- KR2: Publicăm 12 articole de blog optimizate SEO (media: 1/săptămână).\n- KR3: Obținem 150 de lead-uri calificate din campanii plătite, cu un cost sub 40 lei/lead.\n\nCu acest OKR afișat pe un board vizibil întregii echipe, orice cerere nouă primită în timpul trimestrului (de exemplu, „hai să facem și un catalog tipărit pentru un târg”) se evaluează prin întrebarea: contribuie la unul dintre cele trei KR-uri? Dacă răspunsul e nu, cererea nu dispare automat, dar devine o discuție explicită de trade-off, nu o sarcină adăugată tacit peste cele existente.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b5"
+   },
+   {
+    "type": "example",
+    "title": "Conflict de priorități între Vânzări și IT — rezolvat prin trade-off explicit",
+    "concept_key": "trade-off-uri-prioritizare",
+    "md": "La o firmă de servicii cu 40 de angajați, echipa IT (3 persoane) primește în aceeași săptămână două cereri urgente:\n\n- Vânzările cer integrarea rapidă a unui nou modul CRM, necesară pentru semnarea unui contract cu un client important.\n- Suportul tehnic raportează un bug care afectează experiența a circa 200 de utilizatori activi ai aplicației.\n\nÎn loc să accepte ambele „urgent”, managerul IT convoacă o discuție de 20 de minute cu reprezentanții ambelor echipe. Plasează cele două cereri pe o matrice impact/efort: bug-ul are impact mare (afectează 200 de utilizatori curenți, risc de pierdere a lor) și efort mediu (2 zile); integrarea CRM are impact mare pe termen lung (un contract nou), dar efort mare (5 zile) și un termen de livrare care permite o săptămână de flexibilitate.\n\nDecizia comunicată explicit tuturor: „Rezolvăm întâi bug-ul (2 zile), pentru că afectează clienți existenți acum. Integrarea CRM începe imediat după, cu livrare cu 3 zile mai târziu decât cerut inițial de vânzări — dacă acest termen nu funcționează pentru client, discutăm o soluție intermediară.” Costul trade-off-ului e vizibil pentru toți, iar decizia se ia pe criterii de impact, nu pe baza cine a cerut mai tare.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda un OKR cu o listă de sarcini. Dacă Key Results-urile tale sunt de tipul „Trimitem newsletter-ul lunar” sau „Facem ședința de echipă”, ai transformat cadrul de prioritizare într-un checklist operațional. Key Results bune descriu un rezultat măsurabil de business (trafic, venituri, rată de conversie, satisfacție), nu activități bifabile — activitățile sunt mijlocul, nu scopul.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Alege echipa sau proiectul la care lucrezi în prezent și parcurge următorii pași:\n\n1. Scrie un Obiectiv (O) pentru echipa ta pentru următorul trimestru — o frază calitativă, ambițioasă.\n2. Adaugă 2-3 Key Results măsurabile, cu cifre și termen, care ar arăta clar dacă obiectivul a fost atins.\n3. Identifică o cerere recentă primită de echipă (de la un coleg, un client sau un manager) care NU contribuie clar la niciun Key Result de mai sus.\n4. Formulează, în stilul „regulii costului vizibil”, o propoziție prin care ai comunica trade-off-ul dacă ai accepta totuși acea cerere acum.",
+    "solution_md": "Exemplu de rezolvare (echipă de suport clienți la o firmă de servicii software):\n\n**Obiectiv:** Reducem timpul de răspuns către clienți și creștem satisfacția lor în T4 2026.\n\n**Key Results:**\n- KR1: Scădem timpul mediu de primă răspuns de la 6 ore la 2 ore.\n- KR2: Creștem scorul de satisfacție (CSAT) de la 78% la 88%.\n- KR3: Reducem numărul de tichete redeschise cu 30%.\n\n**Cerere care nu contribuie:** un manager cere echipei să pregătească o prezentare internă despre activitatea trimestrială, pentru o ședință de board — utilă organizațional, dar fără legătură directă cu niciun KR de mai sus.\n\n**Trade-off comunicat explicit:** „Acceptăm să pregătim prezentarea, ceea ce înseamnă 1,5 zile de muncă a unei persoane din echipă — în această perioadă, timpul mediu de răspuns către clienți va crește temporar, punând presiune pe KR1. Dacă prezentarea poate aștepta o săptămână, o pregătim după ce stabilizăm KR1 la nivelul țintă.” Această formulare arată clar costul, nu doar acceptarea tacită a cererii.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența principală dintre un Obiectiv (O) și un Key Result (KR) într-un cadru OKR?",
+    "choices": [
+     "Obiectivul este calitativ și direcțional, Key Result-ul este măsurabil, cu cifre și termen",
+     "Obiectivul se stabilește lunar, Key Result-ul se stabilește anual",
+     "Nu există nicio diferență, sunt termeni interschimbabili",
+     "Obiectivul este stabilit de angajați, Key Result-ul doar de manageri"
+    ],
+    "answer": 0,
+    "explain": "Obiectivul răspunde la „unde vrem să ajungem” (direcție, calitativ), iar Key Results răspund la „cum știm că am ajuns acolo” (2-4 rezultate măsurabile, cu cifre și termen concret).",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este cea mai eficientă practică pentru a gestiona sănătos un trade-off atunci când echipa acceptă o cerere nouă, urgentă?",
+    "choices": [
+     "Se acceptă tacit cererea, fără discuție, pentru a nu pierde timp",
+     "Se comunică explicit ce se amână sau se renunță ca urmare a acceptării cererii noi (regula costului vizibil)",
+     "Se lucrează suplimentar, peste program, fără să se schimbe nimic din prioritățile existente",
+     "Se respinge automat orice cerere care nu era planificată inițial"
+    ],
+    "answer": 1,
+    "explain": "Regula „costului vizibil” transformă un „da” tacit — care ascunde costul suprasolicitării — într-o decizie asumată transparent de toată echipa, inclusiv de cel care a cerut prioritizarea nouă.",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă OKR?",
+    "back": "Objectives and Key Results — Obiective și Rezultate-Cheie: un cadru de aliniere a priorităților format dintr-un Obiectiv calitativ și 2-4 Key Results măsurabile.",
+    "concept_key": "okr-obiective-rezultate-cheie",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cadența tipică de revizuire a OKR-urilor într-o echipă?",
+    "back": "Trimestrială, cu un check-in de verificare la mijlocul perioadei pentru a corecta din mers Key Results nerealiste.",
+    "concept_key": "okr-obiective-rezultate-cheie",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte Key Results sunt recomandate per Obiectiv?",
+    "back": "2-4 Key Results, măsurabile, cu cifre și termen clar — mai multe diluează concentrarea echipei pe ce contează cu adevărat.",
+    "concept_key": "okr-obiective-rezultate-cheie",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un trade-off în prioritizarea de echipă?",
+    "back": "Compromisul explicit prin care, alegând să faci o sarcină, decizi și comunici deschis ce sarcină nu se face sau se amână, dat fiind că resursele (timp, oameni, buget) sunt limitate.",
+    "concept_key": "trade-off-uri-prioritizare",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este „regula costului vizibil” în negocierea priorităților?",
+    "back": "Practica de a comunica explicit, atunci când se acceptă o cerere nouă, ce anume se amână sau se renunță ca urmare — pentru ca decizia să fie asumată transparent, nu ascunsă prin suprasolicitare tăcută.",
+    "concept_key": "trade-off-uri-prioritizare",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce eșuează prioritizarea individuală bine făcută la nivel de echipă?",
+    "back": "Pentru că fiecare membru poate avea propria ierarhie „corectă” de priorități, stabilită izolat, ceea ce duce la muncă dublată, blocaje neanunțate și efort direcționat contradictoriu — lipsește alinierea comună.",
+    "concept_key": "aliniere-prioritati-echipa",
+    "blockId": "cmjjuxwi000orumkpwzv7arbr-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1675,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwdj00l2umkp3uvorf14",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Accidente de Muncă și Incidente",
+ "lesson": "Quiz accidente",
+ "category": "HSE_SAFETY",
+ "content": "Test de evaluare — Quiz accidente (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Ce act normativ reglementează, la nivel de lege-cadru, securitatea și sănătatea în muncă (SSM) în România?",
+     "choices": [
+      "Legea 319/2006 privind securitatea și sănătatea în muncă",
+      "Legea 53/2003 (Codul Muncii)",
+      "Legea 307/2006 privind apărarea împotriva incendiilor",
+      "OMFP 1802/2014"
+     ],
+     "answer": 0,
+     "explain": "Legea 319/2006 este legea-cadru a SSM în România, completată de Normele metodologice de aplicare aprobate prin HG 1425/2006. Codul Muncii și legislația privind apărarea împotriva incendiilor reglementează alte domenii conexe, iar OMFP 1802/2014 privește raportările financiare.",
+     "concept_key": "legislatie_ssm"
+    },
+    {
+     "q": "Care este definiția legală a unui accident de muncă, potrivit Legii 319/2006?",
+     "choices": [
+      "Vătămarea violentă a organismului ori intoxicația acută profesională, produsă în timpul procesului de muncă sau în îndeplinirea îndatoririlor de serviciu, care provoacă incapacitate temporară de muncă de cel puțin 3 zile calendaristice, invaliditate sau deces",
+      "Orice eveniment produs la locul de muncă, indiferent de urmări sau de context",
+      "Doar evenimentele soldate cu decesul salariatului",
+      "Vătămarea produsă exclusiv în afara programului normal de lucru, fără legătură cu sarcinile de serviciu"
+     ],
+     "answer": 0,
+     "explain": "Legea 319/2006, art. 5 lit. g, definește accidentul de muncă prin trei elemente cumulative: vătămare/intoxicație acută, legătura cu procesul de muncă sau îndatoririle de serviciu și urmarea minimă — cel puțin 3 zile calendaristice de incapacitate temporară de muncă, invaliditate sau deces.",
+     "concept_key": "definitie_accident_munca"
+    },
+    {
+     "q": "Câte persoane trebuie să fie vătămate, în același timp și din aceeași cauză, pentru ca un accident să fie clasificat drept „accident colectiv”?",
+     "choices": [
+      "Cel puțin 3 persoane",
+      "Cel puțin 2 persoane",
+      "Cel puțin 5 persoane",
+      "Cel puțin 10 persoane"
+     ],
+     "answer": 0,
+     "explain": "Accidentul colectiv este definit ca evenimentul în care sunt accidentate cel puțin 3 persoane, în același timp și din aceeași cauză, indiferent de natura sau gravitatea consecințelor pentru fiecare victimă în parte.",
+     "concept_key": "clasificare_accidente"
+    },
+    {
+     "q": "Cui îi revine, în primul rând, obligația de a comunica producerea unui accident de muncă?",
+     "choices": [
+      "Angajatorului (prin reprezentantul său legal), de îndată ce ia cunoștință de producerea evenimentului",
+      "Exclusiv victimei accidentului, după externarea din spital",
+      "Medicului de familie al salariatului accidentat",
+      "Sindicatului, în termen de 30 de zile de la eveniment"
+     ],
+     "answer": 0,
+     "explain": "Conform Legii 319/2006, orice eveniment este comunicat de îndată conducătorului locului de muncă, care la rândul lui informează angajatorul; angajatorul are obligația legală de a comunica de îndată accidentul autorităților competente (ITM, asigurător).",
+     "concept_key": "comunicare_eveniment"
+    },
+    {
+     "q": "Pe lângă Inspectoratul Teritorial de Muncă (ITM), cui mai trebuie comunicat de îndată un accident de muncă mortal sau colectiv?",
+     "choices": [
+      "Organelor de urmărire penală competente și asigurătorului (casa de asigurare pentru accidente de muncă și boli profesionale)",
+      "Doar familiei victimei, fără altă notificare oficială",
+      "Camerei de Comerț și Industrie a județului",
+      "Consiliului local al localității unde s-a produs evenimentul"
+     ],
+     "answer": 0,
+     "explain": "Accidentele mortale sau colective impun comunicare imediată nu doar către ITM, ci și către organele de urmărire penală (existând suspiciunea unei fapte penale) și către asigurător, care gestionează prestațiile de asigurare pentru accidente de muncă și boli profesionale.",
+     "concept_key": "comunicare_accident_grav"
+    },
+    {
+     "q": "Cine efectuează cercetarea unui accident de muncă „ușor”, soldat doar cu incapacitate temporară de muncă, conform HG 1425/2006?",
+     "choices": [
+      "Angajatorul, printr-o comisie internă desemnată, în termen de 5 zile lucrătoare de la producerea evenimentului",
+      "Inspectoratul Teritorial de Muncă (ITM), în toate cazurile, fără excepție",
+      "Poliția, indiferent de gravitatea evenimentului",
+      "Casa Națională de Pensii Publice"
+     ],
+     "answer": 0,
+     "explain": "HG 1425/2006 stabilește că accidentele soldate cu incapacitate temporară de muncă sunt cercetate de angajator, prin comisie proprie, termenul legal fiind de 5 zile lucrătoare de la data producerii evenimentului, cu întocmirea dosarului de cercetare.",
+     "concept_key": "cercetare_accident"
+    },
+    {
+     "q": "Cine are obligația de a cercetare accidentele de muncă mortale și pe cele colective?",
+     "choices": [
+      "Inspectoratul Teritorial de Muncă (ITM) în a cărui rază teritorială s-a produs evenimentul",
+      "Angajatorul, prin comisia sa internă de cercetare",
+      "Comitetul de Securitate și Sănătate în Muncă al angajatorului",
+      "Medicul de medicina muncii al unității"
+     ],
+     "answer": 0,
+     "explain": "Spre deosebire de accidentele „ușoare”, cercetarea accidentelor mortale, colective sau a celor care au produs invaliditate este obligatoriu efectuată de Inspectoratul Teritorial de Muncă, dat fiind impactul și implicațiile juridice ale acestor evenimente.",
+     "concept_key": "cercetare_accident_grav"
+    },
+    {
+     "q": "Ce este un „incident periculos”, prin comparație cu un accident de muncă?",
+     "choices": [
+      "Un eveniment identificabil (explozie, incendiu, avarie, emisie majoră de noxe etc.), cauzat de o disfuncționalitate a echipamentului de muncă sau de un comportament necorespunzător al factorului uman, care nu a afectat lucrătorii, dar ar fi putut avea asemenea consecințe",
+      "Orice accident soldat cu o incapacitate temporară de muncă mai mică de 3 zile calendaristice",
+      "Un accident produs în afara incintei unității angajatorului",
+      "Un accident despre care angajatorul nu are obligația de a informa ITM"
+     ],
+     "answer": 0,
+     "explain": "Incidentul periculos este un eveniment cu potențial de vătămare care, spre deosebire de accidentul de muncă, nu s-a soldat efectiv cu vătămarea vreunui lucrător, dar prin natura lui (explozie, incendiu, avarie tehnică) ar fi putut produce astfel de consecințe, motiv pentru care este supus tot unei obligații de raportare și analiză.",
+     "concept_key": "incident_periculos"
+    },
+    {
+     "q": "Cum este definită „boala profesională” în legislația SSM?",
+     "choices": [
+      "Afecțiune produsă ca urmare a exercitării unei meserii sau profesii, cauzată de agenți nocivi fizici, chimici ori biologici caracteristici locului de muncă, sau de suprasolicitarea diferitelor organe/sisteme ale organismului în procesul de muncă",
+      "Orice boală cronică a unui salariat, indiferent de originea sau cauza acesteia",
+      "O boală contractată de salariat în timpul concediului de odihnă",
+      "O afecțiune declarată exclusiv de medicul de familie, fără nicio legătură cu locul de muncă"
+     ],
+     "answer": 0,
+     "explain": "Boala profesională presupune o legătură cauzală directă între afecțiune și condițiile specifice locului de muncă (agenți nocivi fizici, chimici, biologici) sau suprasolicitarea organismului în procesul de muncă, spre deosebire de o boală cronică oarecare, fără legătură cu activitatea profesională.",
+     "concept_key": "boala_profesionala"
+    },
+    {
+     "q": "Începând de la ce prag al numărului de lucrători angajatorul este obligat, conform Legii 319/2006, să constituie un Comitet de Securitate și Sănătate în Muncă (CSSM)?",
+     "choices": [
+      "Cel puțin 50 de lucrători",
+      "Cel puțin 10 lucrători",
+      "Cel puțin 100 de lucrători",
+      "Indiferent de numărul de lucrători, la orice angajator"
+     ],
+     "answer": 0,
+     "explain": "Legea 319/2006 prevede constituirea obligatorie a Comitetului de Securitate și Sănătate în Muncă la angajatorii cu cel puțin 50 de lucrători; sub acest prag, atribuțiile pot fi preluate de responsabilul cu SSM desemnat, fără a fi obligatorie o structură formală de comitet.",
+     "concept_key": "comitet_ssm"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwa100i7umkpc0vr9w7w",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Calculul Salariilor",
+ "lesson": "Contribuții sociale 2025",
+ "category": "HR_COMPLIANCE",
+ "content": "# Contribuții sociale 2025\n\n## Contribuțiile reținute din salariul angajatului\n\nÎn 2025 și 2026, structura contribuțiilor sociale obligatorii reținute lunar din salariul brut al unui angajat cu contract individual de muncă (CIM) în România rămâne **neschimbată**:\n\n| Contribuție | Cotă | Suportată de |\n|---|---|---|\n| **CAS** (asigurări sociale / pensii) | **25%** | Angajat |\n| **CASS** (asigurări sociale de sănătate) | **10%** | Angajat |\n| **Impozit pe venit** | **10%** | Angajat |\n| **CAM** (contribuția asiguratorie pentru muncă) | **2,25%** | Angajator |\n\nToate cele trei contribuții/impozite ale angajatului (CAS, CASS, impozit) se calculează la **aceeași bază de calcul**: salariul brut lunar, eventual diminuat cu partea netaxabilă aplicabilă la salariul minim (vezi lecția despre salariul minim mai jos) și cu deducerea personală de bază, acolo unde este cazul.\n\nOrdinea de calcul este obligatorie și fixă:\n\n1. Se calculează **CAS** = bază de calcul × 25%\n2. Se calculează **CASS** = bază de calcul × 10%\n3. Se determină baza impozabilă = bază de calcul − CAS − CASS − deducere personală (dacă se aplică)\n4. Se calculează **impozitul pe venit** = bază impozabilă × 10%\n5. **Salariul net** = salariul brut − CAS − CASS − impozit\n\nAceastă presiune fiscală cumulată (CAS + CASS + impozit, suportată de angajat, plus CAM suportată de angajator) reprezintă în prezent aproximativ **43% din costul total al muncii**, un reper util pentru orice buget de personal.\n\n## Contribuția angajatorului: CAM\n\nSpre deosebire de CAS, CASS și impozitul pe venit — care sunt **reținute din salariul brut al angajatului** și nu îi afectează costul angajatorului dincolo de salariul brut negociat — **CAM (contribuția asiguratorie pentru muncă)** este un cost **suplimentar, în afara salariului brut**, suportat integral de angajator.\n\n- Cota CAM: **2,25%**, aplicată la fondul de salarii brute realizate (baza de calcul este, în general, aceeași cu baza CAS).\n- CAM nu apare pe fluturașul de salariu al angajatului — este vizibilă doar în costul total al angajatorului și în declarația D112.\n- Formula costului total al angajatorului pentru un salariat:\n\n**Cost total angajator = Salariu brut + (Salariu brut × 2,25%)**\n\nAceastă distincție este esențială în practică: atunci când negociezi cu un candidat un salariu brut, costul real pentru companie este cu 2,25% mai mare decât suma brută afișată în contract. La calculul bugetelor de personal (headcount planning), recomandăm mereu raportarea la **costul total angajator**, nu doar la salariul brut.\n\n## Salariul minim brut și partea netaxabilă\n\nSalariul minim brut pe economie a fost stabilit prin HG nr. 146/2026 astfel:\n\n- **4.050 lei brut** — valabil 1 ianuarie – 30 iunie 2026\n- **4.325 lei brut** — valabil **de la 1 iulie 2026**, cu un net estimat de aproximativ **2.699 lei**\n- **4.582 lei brut** — sector construcții, neschimbat pe tot parcursul anului 2026 (regim special de facilități fiscale pentru acest sector)\n- Salariul minim diferențiat pentru sectorul agroalimentar a fost **abrogat**; de la 1 iulie 2026 aceste activități sunt aliniate la salariul minim național.\n\n### Partea netaxabilă (facilitate specifică salariului minim)\n\nPentru angajații plătiți exact la nivelul salariului minim brut pe economie, legea prevede o **parte din salariu care nu intră în baza de calcul** pentru CAS, CASS și impozitul pe venit:\n\n- **300 lei** — până la 30 iunie 2026\n- **200 lei** — de la 1 iulie 2026 (conform OUG nr. 89/2025)\n\nAceastă facilitate se aplică **doar** angajaților al căror salariu de bază este egal cu salariul minim brut pe economie (sau cu cel din construcții, după caz) și are rolul de a crește salariul net efectiv încasat, fără a modifica salariul brut negociat contractual.\n\n⚠ Pragurile de deducere personală de bază și valoarea maximă neimpozabilă a tichetelor de masă se modifică periodic — verificați întotdeauna grilele actualizate ANAF înainte de a rula stat de plată.\n\n## Exemplu: Calcul complet brut → net pentru un salariu de 6.000 lei\nUn angajat are un salariu brut de **6.000 lei/lună** (peste pragul de la care se acordă deducerea personală de bază, deci deducerea = 0 lei).\n\n**Pasul 1 — CAS (25%):**\n6.000 × 25% = **1.500 lei**\n\n**Pasul 2 — CASS (10%):**\n6.000 × 10% = **600 lei**\n\n**Pasul 3 — bază impozabilă:**\n6.000 − 1.500 − 600 = **3.900 lei**\n\n**Pasul 4 — impozit pe venit (10%):**\n3.900 × 10% = **390 lei**\n\n**Pasul 5 — salariu net:**\n6.000 − 1.500 − 600 − 390 = **3.510 lei net**\n\n**Costul angajatorului:**\nCAM = 6.000 × 2,25% = **135 lei**\nCost total angajator = 6.000 + 135 = **6.135 lei**\n\n**Verificare presiune fiscală totală:**\n(1.500 + 600 + 390 + 135) / 6.135 = 2.625 / 6.135 ≈ **42,8%**, confirmând reperul de ~43% din costul total al muncii îndreptat către contribuții și impozit.\n\n## Exemplu: Calcul pentru salariul minim brut (4.325 lei, de la 1 iulie 2026)\nUn angajat cu normă întreagă este plătit exact la nivelul salariului minim brut pe economie, aplicabil de la 1 iulie 2026: **4.325 lei brut**.\n\n**Pasul 1 — se scade partea netaxabilă:**\n4.325 − 200 = **4.125 lei** (bază de calcul pentru CAS, CASS și impozit)\n\n**Pasul 2 — CAS (25%):**\n4.125 × 25% = **1.031,25 lei**\n\n**Pasul 3 — CASS (10%):**\n4.125 × 10% = **412,50 lei**\n\n**Pasul 4 — bază impozabilă:**\n4.125 − 1.031,25 − 412,50 = **2.681,25 lei**\n\n**Pasul 5 — impozit pe venit (10%):**\n2.681,25 × 10% ≈ **268,13 lei**\n\n**Pasul 6 — salariu net (calcul simplificat, fără deducere personală suplimentară):**\n4.325 − 1.031,25 − 412,50 − 268,13 ≈ **2.613 lei net**\n\n⚠ Reperul oficial pentru netul minim pe economie de la 1 iulie 2026 este de aproximativ **2.699 lei** — diferența față de calculul simplificat de mai sus provine din aplicarea suplimentară a deducerii personale de bază pentru venituri mici, ale cărei praguri exacte trebuie verificate la zi în grila ANAF înainte de rularea statului de plată.\n\n**Costul angajatorului:**\nCAM = 4.325 × 2,25% ≈ **97,31 lei**\nCost total angajator ≈ 4.325 + 97,31 = **4.422,31 lei**\n\n> Temei legal: Legea nr. 227/2015 privind Codul fiscal (actualizată) și OUG nr. 89/2025 Titlul V – Contribuții sociale obligatorii (cotele CAS, CASS, CAM) și dispozițiile privind partea netaxabilă din salariul minim brut (în vigoare de la 2026-07-01)\nCotele contribuțiilor sociale (CAS 25%, CASS 10%, impozit pe venit 10%, CAM 2,25%) sunt reglementate de Titlul V din Legea nr. 227/2015 privind Codul fiscal, cu modificările ulterioare. Facilitatea privind partea netaxabilă din salariul minim brut pe economie a fost modificată prin OUG nr. 89/2025, care a redus valoarea acesteia de la 300 lei la **200 lei**, începând cu **1 iulie 2026**, odată cu majorarea salariului minim brut la 4.325 lei prin HG nr. 146/2026. Aceste acte normative trebuie verificate periodic în Monitorul Oficial, întrucât cotele și pragurile se pot modifica prin legi de aprobare a bugetului sau ordonanțe de urgență ulterioare.\n\n⚠ Cifrele din această lecție (cote CAS/CASS/impozit/CAM, salariul minim brut și partea netaxabilă) sunt verificate la 7 iulie 2026 și reflectă legislația în vigoare la acea dată. Unele elemente conexe calculului salarial — precum valoarea maximă neimpozabilă a tichetelor de masă (aproximativ 40,04 lei/tichet în 2025, cu regim fiscal de 10% impozit + CASS) sau pragurile exacte ale deducerii personale de bază — se actualizează frecvent și **trebuie verificate la zi** pe portalul ANAF sau în programul de salarizare utilizat, înainte de rularea fiecărui stat de plată. Această lecție are scop educațional și nu constituie consultanță juridică sau fiscală individuală; pentru situații atipice (contracte suspendate, cumul de funcții, salariați cu dizabilități, facilități sectoriale IT/construcții), consultați un expert contabil sau un consultant fiscal autorizat.\n\n## Exercițiu\nUn angajat are un salariu brut de **8.000 lei/lună** (peste pragul de acordare a deducerii personale de bază, deci deducere = 0 lei). Calculați, pas cu pas:\n\n1. CAS reținut\n2. CASS reținut\n3. Baza impozabilă și impozitul pe venit\n4. Salariul net\n5. CAM și costul total suportat de angajator\n6. Ponderea totală a contribuțiilor și impozitelor (CAS+CASS+impozit+CAM) în costul total al angajatorului\n\n**Soluție:** **1. CAS** = 8.000 × 25% = **2.000 lei**\n\n**2. CASS** = 8.000 × 10% = **800 lei**\n\n**3. Bază impozabilă** = 8.000 − 2.000 − 800 = 5.200 lei\n**Impozit** = 5.200 × 10% = **520 lei**\n\n**4. Salariu net** = 8.000 − 2.000 − 800 − 520 = **4.680 lei**\n\n**5. CAM** = 8.000 × 2,25% = 180 lei\n**Cost total angajator** = 8.000 + 180 = **8.180 lei**\n\n**6. Total contribuții și impozite** = 2.000 + 800 + 520 + 180 = 3.500 lei\nPondere = 3.500 / 8.180 ≈ **42,8%** din costul total al angajatorului — confirmând reperul de ~43% valabil pentru orice nivel de salarizare peste pragul deducerii personale.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "contributii-sociale-salariat-2025",
+    "md": "## Contribuțiile reținute din salariul angajatului\n\nÎn 2025 și 2026, structura contribuțiilor sociale obligatorii reținute lunar din salariul brut al unui angajat cu contract individual de muncă (CIM) în România rămâne **neschimbată**:\n\n| Contribuție | Cotă | Suportată de |\n|---|---|---|\n| **CAS** (asigurări sociale / pensii) | **25%** | Angajat |\n| **CASS** (asigurări sociale de sănătate) | **10%** | Angajat |\n| **Impozit pe venit** | **10%** | Angajat |\n| **CAM** (contribuția asiguratorie pentru muncă) | **2,25%** | Angajator |\n\nToate cele trei contribuții/impozite ale angajatului (CAS, CASS, impozit) se calculează la **aceeași bază de calcul**: salariul brut lunar, eventual diminuat cu partea netaxabilă aplicabilă la salariul minim (vezi lecția despre salariul minim mai jos) și cu deducerea personală de bază, acolo unde este cazul.\n\nOrdinea de calcul este obligatorie și fixă:\n\n1. Se calculează **CAS** = bază de calcul × 25%\n2. Se calculează **CASS** = bază de calcul × 10%\n3. Se determină baza impozabilă = bază de calcul − CAS − CASS − deducere personală (dacă se aplică)\n4. Se calculează **impozitul pe venit** = bază impozabilă × 10%\n5. **Salariul net** = salariul brut − CAS − CASS − impozit\n\nAceastă presiune fiscală cumulată (CAS + CASS + impozit, suportată de angajat, plus CAM suportată de angajator) reprezintă în prezent aproximativ **43% din costul total al muncii**, un reper util pentru orice buget de personal.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cam-contributie-angajator-2025",
+    "md": "## Contribuția angajatorului: CAM\n\nSpre deosebire de CAS, CASS și impozitul pe venit — care sunt **reținute din salariul brut al angajatului** și nu îi afectează costul angajatorului dincolo de salariul brut negociat — **CAM (contribuția asiguratorie pentru muncă)** este un cost **suplimentar, în afara salariului brut**, suportat integral de angajator.\n\n- Cota CAM: **2,25%**, aplicată la fondul de salarii brute realizate (baza de calcul este, în general, aceeași cu baza CAS).\n- CAM nu apare pe fluturașul de salariu al angajatului — este vizibilă doar în costul total al angajatorului și în declarația D112.\n- Formula costului total al angajatorului pentru un salariat:\n\n**Cost total angajator = Salariu brut + (Salariu brut × 2,25%)**\n\nAceastă distincție este esențială în practică: atunci când negociezi cu un candidat un salariu brut, costul real pentru companie este cu 2,25% mai mare decât suma brută afișată în contract. La calculul bugetelor de personal (headcount planning), recomandăm mereu raportarea la **costul total angajator**, nu doar la salariul brut.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "salariu-minim-brut-2026",
+    "md": "## Salariul minim brut și partea netaxabilă\n\nSalariul minim brut pe economie a fost stabilit prin HG nr. 146/2026 astfel:\n\n- **4.050 lei brut** — valabil 1 ianuarie – 30 iunie 2026\n- **4.325 lei brut** — valabil **de la 1 iulie 2026**, cu un net estimat de aproximativ **2.699 lei**\n- **4.582 lei brut** — sector construcții, neschimbat pe tot parcursul anului 2026 (regim special de facilități fiscale pentru acest sector)\n- Salariul minim diferențiat pentru sectorul agroalimentar a fost **abrogat**; de la 1 iulie 2026 aceste activități sunt aliniate la salariul minim național.\n\n### Partea netaxabilă (facilitate specifică salariului minim)\n\nPentru angajații plătiți exact la nivelul salariului minim brut pe economie, legea prevede o **parte din salariu care nu intră în baza de calcul** pentru CAS, CASS și impozitul pe venit:\n\n- **300 lei** — până la 30 iunie 2026\n- **200 lei** — de la 1 iulie 2026 (conform OUG nr. 89/2025)\n\nAceastă facilitate se aplică **doar** angajaților al căror salariu de bază este egal cu salariul minim brut pe economie (sau cu cel din construcții, după caz) și are rolul de a crește salariul net efectiv încasat, fără a modifica salariul brut negociat contractual.\n\n⚠ Pragurile de deducere personală de bază și valoarea maximă neimpozabilă a tichetelor de masă se modifică periodic — verificați întotdeauna grilele actualizate ANAF înainte de a rula stat de plată.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calcul complet brut → net pentru un salariu de 6.000 lei",
+    "concept_key": "calcul-salariu-brut-net-exemplu",
+    "md": "Un angajat are un salariu brut de **6.000 lei/lună** (peste pragul de la care se acordă deducerea personală de bază, deci deducerea = 0 lei).\n\n**Pasul 1 — CAS (25%):**\n6.000 × 25% = **1.500 lei**\n\n**Pasul 2 — CASS (10%):**\n6.000 × 10% = **600 lei**\n\n**Pasul 3 — bază impozabilă:**\n6.000 − 1.500 − 600 = **3.900 lei**\n\n**Pasul 4 — impozit pe venit (10%):**\n3.900 × 10% = **390 lei**\n\n**Pasul 5 — salariu net:**\n6.000 − 1.500 − 600 − 390 = **3.510 lei net**\n\n**Costul angajatorului:**\nCAM = 6.000 × 2,25% = **135 lei**\nCost total angajator = 6.000 + 135 = **6.135 lei**\n\n**Verificare presiune fiscală totală:**\n(1.500 + 600 + 390 + 135) / 6.135 = 2.625 / 6.135 ≈ **42,8%**, confirmând reperul de ~43% din costul total al muncii îndreptat către contribuții și impozit.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calcul pentru salariul minim brut (4.325 lei, de la 1 iulie 2026)",
+    "concept_key": "calcul-salariu-minim-brut-net",
+    "md": "Un angajat cu normă întreagă este plătit exact la nivelul salariului minim brut pe economie, aplicabil de la 1 iulie 2026: **4.325 lei brut**.\n\n**Pasul 1 — se scade partea netaxabilă:**\n4.325 − 200 = **4.125 lei** (bază de calcul pentru CAS, CASS și impozit)\n\n**Pasul 2 — CAS (25%):**\n4.125 × 25% = **1.031,25 lei**\n\n**Pasul 3 — CASS (10%):**\n4.125 × 10% = **412,50 lei**\n\n**Pasul 4 — bază impozabilă:**\n4.125 − 1.031,25 − 412,50 = **2.681,25 lei**\n\n**Pasul 5 — impozit pe venit (10%):**\n2.681,25 × 10% ≈ **268,13 lei**\n\n**Pasul 6 — salariu net (calcul simplificat, fără deducere personală suplimentară):**\n4.325 − 1.031,25 − 412,50 − 268,13 ≈ **2.613 lei net**\n\n⚠ Reperul oficial pentru netul minim pe economie de la 1 iulie 2026 este de aproximativ **2.699 lei** — diferența față de calculul simplificat de mai sus provine din aplicarea suplimentară a deducerii personale de bază pentru venituri mici, ale cărei praguri exacte trebuie verificate la zi în grila ANAF înainte de rularea statului de plată.\n\n**Costul angajatorului:**\nCAM = 4.325 × 2,25% ≈ **97,31 lei**\nCost total angajator ≈ 4.325 + 97,31 = **4.422,31 lei**",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 227/2015 privind Codul fiscal (actualizată) și OUG nr. 89/2025",
+    "article": "Titlul V – Contribuții sociale obligatorii (cotele CAS, CASS, CAM) și dispozițiile privind partea netaxabilă din salariul minim brut",
+    "effective": "2026-07-01",
+    "md": "Cotele contribuțiilor sociale (CAS 25%, CASS 10%, impozit pe venit 10%, CAM 2,25%) sunt reglementate de Titlul V din Legea nr. 227/2015 privind Codul fiscal, cu modificările ulterioare. Facilitatea privind partea netaxabilă din salariul minim brut pe economie a fost modificată prin OUG nr. 89/2025, care a redus valoarea acesteia de la 300 lei la **200 lei**, începând cu **1 iulie 2026**, odată cu majorarea salariului minim brut la 4.325 lei prin HG nr. 146/2026. Aceste acte normative trebuie verificate periodic în Monitorul Oficial, întrucât cotele și pragurile se pot modifica prin legi de aprobare a bugetului sau ordonanțe de urgență ulterioare.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cifrele din această lecție (cote CAS/CASS/impozit/CAM, salariul minim brut și partea netaxabilă) sunt verificate la 7 iulie 2026 și reflectă legislația în vigoare la acea dată. Unele elemente conexe calculului salarial — precum valoarea maximă neimpozabilă a tichetelor de masă (aproximativ 40,04 lei/tichet în 2025, cu regim fiscal de 10% impozit + CASS) sau pragurile exacte ale deducerii personale de bază — se actualizează frecvent și **trebuie verificate la zi** pe portalul ANAF sau în programul de salarizare utilizat, înainte de rularea fiecărui stat de plată. Această lecție are scop educațional și nu constituie consultanță juridică sau fiscală individuală; pentru situații atipice (contracte suspendate, cumul de funcții, salariați cu dizabilități, facilități sectoriale IT/construcții), consultați un expert contabil sau un consultant fiscal autorizat.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un angajat are un salariu brut de **8.000 lei/lună** (peste pragul de acordare a deducerii personale de bază, deci deducere = 0 lei). Calculați, pas cu pas:\n\n1. CAS reținut\n2. CASS reținut\n3. Baza impozabilă și impozitul pe venit\n4. Salariul net\n5. CAM și costul total suportat de angajator\n6. Ponderea totală a contribuțiilor și impozitelor (CAS+CASS+impozit+CAM) în costul total al angajatorului",
+    "solution_md": "**1. CAS** = 8.000 × 25% = **2.000 lei**\n\n**2. CASS** = 8.000 × 10% = **800 lei**\n\n**3. Bază impozabilă** = 8.000 − 2.000 − 800 = 5.200 lei\n**Impozit** = 5.200 × 10% = **520 lei**\n\n**4. Salariu net** = 8.000 − 2.000 − 800 − 520 = **4.680 lei**\n\n**5. CAM** = 8.000 × 2,25% = 180 lei\n**Cost total angajator** = 8.000 + 180 = **8.180 lei**\n\n**6. Total contribuții și impozite** = 2.000 + 800 + 520 + 180 = 3.500 lei\nPondere = 3.500 / 8.180 ≈ **42,8%** din costul total al angajatorului — confirmând reperul de ~43% valabil pentru orice nivel de salarizare peste pragul deducerii personale.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cotă CAS este reținută din salariul brut al angajatului, în 2025-2026?",
+    "choices": [
+     "25%",
+     "10%",
+     "2,25%",
+     "16%"
+    ],
+    "answer": 0,
+    "explain": "CAS (contribuția de asigurări sociale/pensii) este 25% din baza de calcul, reținută din salariul brut al angajatului. CASS este 10%, iar CAM (2,25%) este suportată separat de angajator.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De când este în vigoare salariul minim brut pe economie de 4.325 lei, cu o parte netaxabilă de 200 lei?",
+    "choices": [
+     "1 ianuarie 2026",
+     "1 iulie 2026",
+     "1 ianuarie 2025",
+     "1 octombrie 2025"
+    ],
+    "answer": 1,
+    "explain": "Prin HG nr. 146/2026, salariul minim brut crește la 4.325 lei începând cu 1 iulie 2026, iar partea netaxabilă asociată scade de la 300 la 200 lei prin OUG nr. 89/2025, valabilă de la aceeași dată.",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă CAS plătește angajatul din salariul brut (2025-2026)?",
+    "back": "25% din baza de calcul (salariul brut, eventual diminuat cu partea netaxabilă aplicabilă salariului minim).",
+    "concept_key": "contributii-sociale-salariat-2025",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă CASS reține angajatorul lunar din salariul angajatului?",
+    "back": "10% din baza de calcul, reținută din salariul brut al angajatului.",
+    "concept_key": "contributii-sociale-salariat-2025",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă de impozit pe venit se aplică salariilor în România (2025-2026)?",
+    "back": "10%, aplicat la baza impozabilă rămasă după scăderea CAS, CASS și, dacă e cazul, a deducerii personale de bază.",
+    "concept_key": "impozit-venit-salarii-2025",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este contribuția asiguratorie pentru muncă (CAM) suportată de angajator?",
+    "back": "2,25% din fondul de salarii brute — cost suplimentar, în afara salariului brut negociat cu angajatul.",
+    "concept_key": "cam-contributie-angajator-2025",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este salariul minim brut pe economie de la 1 iulie 2026 și ce parte este netaxabilă?",
+    "back": "4.325 lei brut (HG nr. 146/2026), cu 200 lei parte netaxabilă din baza de calcul CAS/CASS/impozit (OUG nr. 89/2025).",
+    "concept_key": "salariu-minim-brut-2026",
+    "blockId": "cmjjuxwa100i7umkpc0vr9w7w-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1295,
+   "flashcards": 5
+  }
+ }
+}

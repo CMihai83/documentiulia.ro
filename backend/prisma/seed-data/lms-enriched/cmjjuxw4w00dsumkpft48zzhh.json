@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw4w00dsumkpft48zzhh",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Raportare ANAF - SAF-T și e-Factura",
+ "lesson": "Exercițiu SAF-T",
+ "category": "FINANCE_OPS",
+ "content": "# Exercițiu SAF-T\n\nFișierul SAF-T (Standard Audit File for Tax) este o declarație informativă standardizată, depusă electronic la ANAF sub formularul **D406**, reglementată prin OMF 1783/2021. Structura este definită de o schemă XML (XSD) publicată de ANAF și cuprinde patru secțiuni principale:\n\n- **Header** - identificarea companiei și a perioadei raportate;\n- **MasterFiles** - planul de conturi, nomenclatorul de clienți/furnizori, articole de stoc, active fixe;\n- **GeneralLedgerEntries** - notele contabile și rulajele conturilor pentru perioada raportată, preluate din registrul jurnal;\n- **SourceDocuments** - documente sursă: facturi de vânzare, facturi de achiziție, plăți, mișcări de stoc.\n\nSecțiunea **Active** se depune o singură dată pe an, odată cu situațiile financiare anuale, iar secțiunea **Stocuri** se transmite doar la solicitarea expresă a ANAF, cu un termen minim de 30 de zile pentru pregătire. Celelalte secțiuni se depun periodic - lunar sau trimestrial, în funcție de categoria contribuabilului.\n\nCalendarul de obligativitate SAF-T este eșalonat pe categorii de contribuabili, stabilite de ANAF în funcție de cifra de afaceri și numărul de angajați:\n\n- contribuabili **mari** - obligație din ianuarie 2022;\n- contribuabili **mijlocii** - obligație din ianuarie 2023;\n- contribuabili **mici** - obligație din **1 ianuarie 2025**.\n\nFiecare categorie a beneficiat, la primele raportări, de o perioadă de grație (fără sancțiuni pentru întârziere), diferențiată ca durată (6/5/4/3/2 luni pentru raportarea lunară, respectiv 3 luni pentru prima raportare trimestrială). Această perioadă de grație **s-a epuizat integral în cursul anului 2025**, astfel încât, în 2026, toți contribuabilii obligați depun D406 la termenele standard, fără nicio marjă suplimentară.\n\nTermenul standard este **ultima zi a lunii următoare perioadei de raportare**:\n\n- lunar - pentru contribuabilii mari și mijlocii, precum și pentru orice plătitor de TVA cu perioadă fiscală lunară;\n- trimestrial - pentru ceilalți contribuabili (de regulă cei cu perioadă fiscală trimestrială de TVA).\n\nExemplu: pentru perioada aprilie 2026, termenul de depunere este 31 mai 2026 (zile calendaristice, nu lucrătoare).\n\nÎnainte de a transmite fișierul D406 în Spațiul Privat Virtual (SPV), fișierul XML trebuie validat local cu aplicația **DUKIntegrator**, pusă gratuit la dispoziție de ANAF. Validarea parcurge două niveluri:\n\n1. **Validare de schemă (XSD)** - verifică dacă structura XML respectă tag-urile, tipurile de date și cardinalitatea impuse de schema oficială (elemente obligatorii lipsă, formate de dată greșite, referințe rupte între secțiuni etc.).\n2. **Validare de reguli fiscale (business rules)** - verifică coerența datelor: de exemplu, ca totalul TVA din SourceDocuments să corespundă rulajelor conturilor de TVA din GeneralLedgerEntries, sau ca fiecare cont folosit în GeneralLedgerEntries să existe în planul de conturi din MasterFiles.\n\nRezultatul este un raport cu **erori blocante** (fișierul nu poate fi transmis) și **avertismente** (fișierul poate fi transmis, dar se recomandă verificare). Un fișier fără erori blocante generează un pachet .zip semnat electronic, gata de încărcare în SPV.\n\n## Exemplu: Structura simplificată a secțiunii Header\nPentru a înțelege ce conține practic un fișier SAF-T, iată o variantă simplificată (didactică, nu schema oficială completă) a secțiunii Header pentru firma fictivă Alfa Trading SRL, care raportează luna aprilie 2026:\n\n```xml\n<Header>\n  <AuditFileVersion>2.0</AuditFileVersion>\n  <AuditFileCountry>RO</AuditFileCountry>\n  <AuditFileDateCreated>2026-05-20</AuditFileDateCreated>\n  <SoftwareCompanyName>ERP Alfa</SoftwareCompanyName>\n  <Company>\n    <RegistrationNumber>RO12345678</RegistrationNumber>\n    <Name>ALFA TRADING SRL</Name>\n    <Address>\n      <City>Cluj-Napoca</City>\n      <Country>RO</Country>\n    </Address>\n  </Company>\n  <SelectionCriteria>\n    <SelectionStartDate>2026-04-01</SelectionStartDate>\n    <SelectionEndDate>2026-04-30</SelectionEndDate>\n  </SelectionCriteria>\n</Header>\n```\n\nObservă cele trei elemente pe care validarea DUKIntegrator le verifică imediat: codul de identificare fiscală (RegistrationNumber, cu prefixul RO), perioada raportată (SelectionStartDate/SelectionEndDate, care trebuie să corespundă exact intervalului declarat) și data generării fișierului. O eroare frecventă la firmele aflate la prima raportare este introducerea unei perioade care nu corespunde lunii/trimestrului selectat în SPV la depunere - fișierul e validat local cu succes, dar respins la încărcare.\n\n## Exemplu: Monografie: de la generarea fișierului la depunerea în SPV\nCompania Beta Distribution SRL este contribuabil mijlociu, plătitor de TVA cu perioadă fiscală lunară. Echipa financiar-contabilă parcurge următorii pași pentru raportarea SAF-T aferentă lunii mai 2026:\n\n1. **Închiderea lunii contabile** - toate notele contabile pentru mai 2026 sunt înregistrate, iar balanța de verificare este finalizată (de regulă până pe 15-20 iunie).\n2. **Export din ERP** - modulul de raportare al sistemului generează automat fișierul XML conform schemei D406, preluând planul de conturi, rulajele lunii și documentele sursă (facturi emise/primite) pentru perioada 1-31 mai 2026.\n3. **Validare locală** - fișierul este încărcat în DUKIntegrator. Raportul semnalează, de exemplu, 3 facturi de achiziție fără cod TVA valid al furnizorului și 1 cont folosit în GeneralLedgerEntries dar absent din planul de conturi (MasterFiles).\n4. **Corectarea erorilor** - echipa completează codurile TVA lipsă în ERP și adaugă contul omis în nomenclator, apoi regenerează fișierul.\n5. **Re-validare** - al doilea raport DUKIntegrator nu mai conține erori blocante, doar 2 avertismente minore (facturi cu valoare zero), considerate acceptabile.\n6. **Transmitere** - fișierul validat (.zip semnat) este încărcat în Spațiul Privat Virtual, secțiunea D406, cu termen-limită 30 iunie 2026 (ultima zi a lunii următoare perioadei raportate).\n\nÎntregul proces, de la închiderea lunii până la confirmarea de primire din SPV, este documentat intern printr-un jurnal de validare, util în cazul unui control ANAF ulterior.\n\n> Temei legal: OMF 1783/2021 Anexă - calendar de implementare și structura declarației D406 (în vigoare de la 2025-01-01)\nOMF 1783/2021 reglementează structura, formatul și calendarul de depunere a fișierului standard de control fiscal (SAF-T), formular D406. Conform calendarului stabilit, obligația s-a extins etapizat: contribuabili mari (ianuarie 2022), mijlocii (ianuarie 2023) și, ultima categorie, contribuabili mici, începând cu **1 ianuarie 2025**. Verifică întotdeauna încadrarea firmei tale în categoria de contribuabil (mare/mijlociu/mic), publicată de ANAF, deoarece aceasta determină atât data de start a obligației, cât și periodicitatea raportării (lunară sau trimestrială).\n\n⚠ Reține două capcane frecvente la exercițiile practice cu SAF-T: (1) Perioada de grație aplicabilă primelor raportări s-a epuizat integral în 2025 - în 2026 nu mai beneficiezi de nicio marjă suplimentară, termenul standard se aplică de la prima raportare din an. (2) Fișierul transmis nu poate depăși **500 MB**; dacă volumul de tranzacții al firmei generează un fișier mai mare, acesta trebuie împărțit pe subperioade sau secțiuni, conform instrucțiunilor tehnice ANAF. Nedepunerea sau depunerea cu întârziere a D406 este sancționată contravențional, cu amenzi al căror cuantum trebuie verificat direct pe portalul ANAF, conform reglementărilor în vigoare la data redactării (iulie 2026).\n\n## Exercițiu\nFirma **Alfa Trading SRL** este contribuabil mijlociu, plătitor de TVA cu perioadă fiscală lunară. Trebuie să genereze și să valideze fișierul D406 pentru luna aprilie 2026.\n\nCerințe:\n1. Determină termenul legal de depunere pentru perioada aprilie 2026.\n2. Enumeră, în ordine, pașii de validare locală cu DUKIntegrator înainte de transmiterea în SPV.\n3. Explică ce se întâmplă dacă raportul de validare arată erori blocante de schemă (XSD).\n\n**Soluție:** 1. **Termenul de depunere**: ultima zi a lunii următoare perioadei raportate → pentru aprilie 2026, termenul este **31 mai 2026**.\n2. **Pașii de validare**:\n   - export al fișierului XML din ERP pentru perioada 1-30 aprilie 2026;\n   - deschiderea aplicației DUKIntegrator și încărcarea fișierului;\n   - rularea validării de schemă (XSD) - verificare structură, tag-uri obligatorii, formate de date;\n   - rularea validării de reguli fiscale (business rules) - coerență între secțiuni (ex. TVA din SourceDocuments vs. GeneralLedgerEntries);\n   - analiza raportului: erori blocante (roșu) trebuie corectate obligatoriu, avertismentele (galben) sunt opționale de tratat;\n   - regenerarea fișierului din ERP după corectarea erorilor și re-validarea în DUKIntegrator.\n3. **Erori blocante de schemă**: fișierul NU poate fi transmis în SPV până la corectare. Trebuie identificată cauza (câmp lipsă, format greșit, referință ruptă între MasterFiles și GeneralLedgerEntries), corectată la sursă în ERP, iar fișierul regenerat și re-validat integral - nu doar secțiunea afectată - înainte de o nouă încercare de încărcare.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "saft-structura-fisier",
+    "md": "Fișierul SAF-T (Standard Audit File for Tax) este o declarație informativă standardizată, depusă electronic la ANAF sub formularul **D406**, reglementată prin OMF 1783/2021. Structura este definită de o schemă XML (XSD) publicată de ANAF și cuprinde patru secțiuni principale:\n\n- **Header** - identificarea companiei și a perioadei raportate;\n- **MasterFiles** - planul de conturi, nomenclatorul de clienți/furnizori, articole de stoc, active fixe;\n- **GeneralLedgerEntries** - notele contabile și rulajele conturilor pentru perioada raportată, preluate din registrul jurnal;\n- **SourceDocuments** - documente sursă: facturi de vânzare, facturi de achiziție, plăți, mișcări de stoc.\n\nSecțiunea **Active** se depune o singură dată pe an, odată cu situațiile financiare anuale, iar secțiunea **Stocuri** se transmite doar la solicitarea expresă a ANAF, cu un termen minim de 30 de zile pentru pregătire. Celelalte secțiuni se depun periodic - lunar sau trimestrial, în funcție de categoria contribuabilului.",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "saft-termene-depunere-2026",
+    "md": "Calendarul de obligativitate SAF-T este eșalonat pe categorii de contribuabili, stabilite de ANAF în funcție de cifra de afaceri și numărul de angajați:\n\n- contribuabili **mari** - obligație din ianuarie 2022;\n- contribuabili **mijlocii** - obligație din ianuarie 2023;\n- contribuabili **mici** - obligație din **1 ianuarie 2025**.\n\nFiecare categorie a beneficiat, la primele raportări, de o perioadă de grație (fără sancțiuni pentru întârziere), diferențiată ca durată (6/5/4/3/2 luni pentru raportarea lunară, respectiv 3 luni pentru prima raportare trimestrială). Această perioadă de grație **s-a epuizat integral în cursul anului 2025**, astfel încât, în 2026, toți contribuabilii obligați depun D406 la termenele standard, fără nicio marjă suplimentară.\n\nTermenul standard este **ultima zi a lunii următoare perioadei de raportare**:\n\n- lunar - pentru contribuabilii mari și mijlocii, precum și pentru orice plătitor de TVA cu perioadă fiscală lunară;\n- trimestrial - pentru ceilalți contribuabili (de regulă cei cu perioadă fiscală trimestrială de TVA).\n\nExemplu: pentru perioada aprilie 2026, termenul de depunere este 31 mai 2026 (zile calendaristice, nu lucrătoare).",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "saft-validare-dukintegrator",
+    "md": "Înainte de a transmite fișierul D406 în Spațiul Privat Virtual (SPV), fișierul XML trebuie validat local cu aplicația **DUKIntegrator**, pusă gratuit la dispoziție de ANAF. Validarea parcurge două niveluri:\n\n1. **Validare de schemă (XSD)** - verifică dacă structura XML respectă tag-urile, tipurile de date și cardinalitatea impuse de schema oficială (elemente obligatorii lipsă, formate de dată greșite, referințe rupte între secțiuni etc.).\n2. **Validare de reguli fiscale (business rules)** - verifică coerența datelor: de exemplu, ca totalul TVA din SourceDocuments să corespundă rulajelor conturilor de TVA din GeneralLedgerEntries, sau ca fiecare cont folosit în GeneralLedgerEntries să existe în planul de conturi din MasterFiles.\n\nRezultatul este un raport cu **erori blocante** (fișierul nu poate fi transmis) și **avertismente** (fișierul poate fi transmis, dar se recomandă verificare). Un fișier fără erori blocante generează un pachet .zip semnat electronic, gata de încărcare în SPV.",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b3"
+   },
+   {
+    "type": "example",
+    "title": "Structura simplificată a secțiunii Header",
+    "concept_key": "saft-exemplu-header-xml",
+    "md": "Pentru a înțelege ce conține practic un fișier SAF-T, iată o variantă simplificată (didactică, nu schema oficială completă) a secțiunii Header pentru firma fictivă Alfa Trading SRL, care raportează luna aprilie 2026:\n\n```xml\n<Header>\n  <AuditFileVersion>2.0</AuditFileVersion>\n  <AuditFileCountry>RO</AuditFileCountry>\n  <AuditFileDateCreated>2026-05-20</AuditFileDateCreated>\n  <SoftwareCompanyName>ERP Alfa</SoftwareCompanyName>\n  <Company>\n    <RegistrationNumber>RO12345678</RegistrationNumber>\n    <Name>ALFA TRADING SRL</Name>\n    <Address>\n      <City>Cluj-Napoca</City>\n      <Country>RO</Country>\n    </Address>\n  </Company>\n  <SelectionCriteria>\n    <SelectionStartDate>2026-04-01</SelectionStartDate>\n    <SelectionEndDate>2026-04-30</SelectionEndDate>\n  </SelectionCriteria>\n</Header>\n```\n\nObservă cele trei elemente pe care validarea DUKIntegrator le verifică imediat: codul de identificare fiscală (RegistrationNumber, cu prefixul RO), perioada raportată (SelectionStartDate/SelectionEndDate, care trebuie să corespundă exact intervalului declarat) și data generării fișierului. O eroare frecventă la firmele aflate la prima raportare este introducerea unei perioade care nu corespunde lunii/trimestrului selectat în SPV la depunere - fișierul e validat local cu succes, dar respins la încărcare.",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b4"
+   },
+   {
+    "type": "example",
+    "title": "Monografie: de la generarea fișierului la depunerea în SPV",
+    "concept_key": "saft-exemplu-monografie-depunere",
+    "md": "Compania Beta Distribution SRL este contribuabil mijlociu, plătitor de TVA cu perioadă fiscală lunară. Echipa financiar-contabilă parcurge următorii pași pentru raportarea SAF-T aferentă lunii mai 2026:\n\n1. **Închiderea lunii contabile** - toate notele contabile pentru mai 2026 sunt înregistrate, iar balanța de verificare este finalizată (de regulă până pe 15-20 iunie).\n2. **Export din ERP** - modulul de raportare al sistemului generează automat fișierul XML conform schemei D406, preluând planul de conturi, rulajele lunii și documentele sursă (facturi emise/primite) pentru perioada 1-31 mai 2026.\n3. **Validare locală** - fișierul este încărcat în DUKIntegrator. Raportul semnalează, de exemplu, 3 facturi de achiziție fără cod TVA valid al furnizorului și 1 cont folosit în GeneralLedgerEntries dar absent din planul de conturi (MasterFiles).\n4. **Corectarea erorilor** - echipa completează codurile TVA lipsă în ERP și adaugă contul omis în nomenclator, apoi regenerează fișierul.\n5. **Re-validare** - al doilea raport DUKIntegrator nu mai conține erori blocante, doar 2 avertismente minore (facturi cu valoare zero), considerate acceptabile.\n6. **Transmitere** - fișierul validat (.zip semnat) este încărcat în Spațiul Privat Virtual, secțiunea D406, cu termen-limită 30 iunie 2026 (ultima zi a lunii următoare perioadei raportate).\n\nÎntregul proces, de la închiderea lunii până la confirmarea de primire din SPV, este documentat intern printr-un jurnal de validare, util în cazul unui control ANAF ulterior.",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMF 1783/2021",
+    "article": "Anexă - calendar de implementare și structura declarației D406",
+    "effective": "2025-01-01",
+    "md": "OMF 1783/2021 reglementează structura, formatul și calendarul de depunere a fișierului standard de control fiscal (SAF-T), formular D406. Conform calendarului stabilit, obligația s-a extins etapizat: contribuabili mari (ianuarie 2022), mijlocii (ianuarie 2023) și, ultima categorie, contribuabili mici, începând cu **1 ianuarie 2025**. Verifică întotdeauna încadrarea firmei tale în categoria de contribuabil (mare/mijlociu/mic), publicată de ANAF, deoarece aceasta determină atât data de start a obligației, cât și periodicitatea raportării (lunară sau trimestrială).",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Reține două capcane frecvente la exercițiile practice cu SAF-T: (1) Perioada de grație aplicabilă primelor raportări s-a epuizat integral în 2025 - în 2026 nu mai beneficiezi de nicio marjă suplimentară, termenul standard se aplică de la prima raportare din an. (2) Fișierul transmis nu poate depăși **500 MB**; dacă volumul de tranzacții al firmei generează un fișier mai mare, acesta trebuie împărțit pe subperioade sau secțiuni, conform instrucțiunilor tehnice ANAF. Nedepunerea sau depunerea cu întârziere a D406 este sancționată contravențional, cu amenzi al căror cuantum trebuie verificat direct pe portalul ANAF, conform reglementărilor în vigoare la data redactării (iulie 2026).",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Firma **Alfa Trading SRL** este contribuabil mijlociu, plătitor de TVA cu perioadă fiscală lunară. Trebuie să genereze și să valideze fișierul D406 pentru luna aprilie 2026.\n\nCerințe:\n1. Determină termenul legal de depunere pentru perioada aprilie 2026.\n2. Enumeră, în ordine, pașii de validare locală cu DUKIntegrator înainte de transmiterea în SPV.\n3. Explică ce se întâmplă dacă raportul de validare arată erori blocante de schemă (XSD).",
+    "solution_md": "1. **Termenul de depunere**: ultima zi a lunii următoare perioadei raportate → pentru aprilie 2026, termenul este **31 mai 2026**.\n2. **Pașii de validare**:\n   - export al fișierului XML din ERP pentru perioada 1-30 aprilie 2026;\n   - deschiderea aplicației DUKIntegrator și încărcarea fișierului;\n   - rularea validării de schemă (XSD) - verificare structură, tag-uri obligatorii, formate de date;\n   - rularea validării de reguli fiscale (business rules) - coerență între secțiuni (ex. TVA din SourceDocuments vs. GeneralLedgerEntries);\n   - analiza raportului: erori blocante (roșu) trebuie corectate obligatoriu, avertismentele (galben) sunt opționale de tratat;\n   - regenerarea fișierului din ERP după corectarea erorilor și re-validarea în DUKIntegrator.\n3. **Erori blocante de schemă**: fișierul NU poate fi transmis în SPV până la corectare. Trebuie identificată cauza (câmp lipsă, format greșit, referință ruptă între MasterFiles și GeneralLedgerEntries), corectată la sursă în ERP, iar fișierul regenerat și re-validat integral - nu doar secțiunea afectată - înainte de o nouă încercare de încărcare.",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul de depunere D406 pentru un contribuabil mijlociu, plătitor lunar de TVA, pentru perioada mai 2026?",
+    "choices": [
+     "30 iunie 2026",
+     "25 iunie 2026",
+     "30 iulie 2026",
+     "5 iunie 2026"
+    ],
+    "answer": 0,
+    "explain": "Termenul standard este ultima zi a lunii următoare perioadei raportate; pentru mai 2026, aceasta este 30 iunie 2026.",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În anul 2026, mai beneficiază contribuabilii de perioadă de grație la depunerea SAF-T?",
+    "choices": [
+     "Da, toți beneficiază de 6 luni grație",
+     "Nu, perioada de grație s-a epuizat integral în 2025",
+     "Da, dar doar contribuabilii mici",
+     "Da, 3 luni pentru toate categoriile"
+    ],
+    "answer": 1,
+    "explain": "Perioadele de grație acordate la primele raportări (diferențiate pe categorii) s-au epuizat integral în cursul anului 2025; din 2026 se aplică termenele standard, fără marjă suplimentară.",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă SAF-T D406?",
+    "back": "Standard Audit File for Tax - declarație informativă standardizată, transmisă la ANAF conform OMF 1783/2021, sub formularul D406.",
+    "concept_key": "saft-definitie",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de depunere SAF-T pentru contribuabilii mari/mijlocii, plătitori lunari de TVA?",
+    "back": "Ultima zi a lunii următoare perioadei de raportare (raportare lunară).",
+    "concept_key": "saft-termen-lunar",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce aplicație folosești pentru validarea locală a fișierului SAF-T înainte de transmitere?",
+    "back": "DUKIntegrator - aplicația pusă la dispoziție de ANAF, care verifică schema XSD și regulile fiscale (business rules).",
+    "concept_key": "saft-validare-dukintegrator",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce dimensiune maximă poate avea un fișier SAF-T transmis?",
+    "back": "500 MB; peste această limită, fișierul trebuie împărțit pe subperioade sau secțiuni.",
+    "concept_key": "saft-dimensiune-maxima",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din ce dată au și contribuabilii mici obligația de raportare SAF-T?",
+    "back": "De la 1 ianuarie 2025, conform calendarului stabilit prin OMF 1783/2021.",
+    "concept_key": "saft-mici-data-obligatie",
+    "blockId": "cmjjuxw4w00dsumkpft48zzhh-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1198,
+   "flashcards": 5
+  }
+ }
+}

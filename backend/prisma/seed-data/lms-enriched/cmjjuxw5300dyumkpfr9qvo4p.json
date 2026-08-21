@@ -1,0 +1,156 @@
+{
+ "lessonId": "cmjjuxw5300dyumkpfr9qvo4p",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Situații Financiare Anuale",
+ "lesson": "Închiderea exercițiului",
+ "category": "FINANCE_OPS",
+ "content": "# Închiderea exercițiului\n\nÎnchiderea exercițiului financiar este procesul prin care o firmă își determină rezultatul contabil anual (profit sau pierdere) și pregătește situațiile financiare anuale, conform OMFP 1802/2014. Procesul cuprinde patru etape obligatorii, executate în această ordine:\n\n1. **Inventarierea generală a patrimoniului** – verificarea faptică a elementelor de activ și pasiv la 31 decembrie.\n2. **Regularizările de sfârșit de an** – înregistrarea amortizărilor, provizioanelor, ajustărilor de valoare și a diferențelor de curs valutar rezultate din inventariere.\n3. **Determinarea rezultatului contabil** – închiderea conturilor de venituri și cheltuieli prin contul 121 „Profit sau pierdere”.\n4. **Repartizarea profitului** – constituirea rezervelor legale și, dacă adunarea generală decide, distribuirea de dividende.\n\nFiecare etapă condiționează corectitudinea celei următoare: fără o inventariere completă, regularizările sunt incomplete; fără regularizări corecte, rezultatul contabil este denaturat; iar repartizarea se face întotdeauna pe baza profitului net, după impozitare.\n\nInventarierea anuală este obligatorie pentru toate entitățile, conform Legii contabilității nr. 82/1991 și normelor de aplicare din OMFP nr. 2861/2009. Ea constă în verificarea faptică (numărare, cântărire, măsurare) a tuturor elementelor de activ – imobilizări, stocuri, creanțe, disponibilități – și confirmarea sau, după caz, recalcularea elementelor de pasiv – datorii, provizioane, capitaluri proprii.\n\nComisia de inventariere, numită prin decizie a administratorului, compară soldurile faptice constatate cu soldurile scriptice din contabilitate. Diferențele identificate se clasifică astfel:\n- **Plusuri de inventar** – se înregistrează ca intrare de stoc, la valoarea justă;\n- **Minusuri de inventar** – dacă sunt neimputabile (perisabilități, deteriorări normale), se înregistrează pe cheltuieli; dacă sunt imputabile unei persoane, se recuperează de la aceasta, inclusiv TVA aferentă.\n\nRezultatele inventarierii stau la baza întocmirii Registrului-inventar, document obligatoriu care susține situațiile financiare anuale.\n\nPe baza rezultatelor inventarierii, contabilul efectuează regularizările care aduc valorile din bilanț la nivelul real, respectând principiul prudenței din OMFP 1802/2014:\n\n- **Amortizarea imobilizărilor** – se verifică dacă planul de amortizare a fost aplicat corect pe tot anul și se înregistrează ultima lună/tranșă.\n- **Ajustări pentru depreciere** – pentru creanțe incerte, stocuri cu mișcare lentă sau imobilizări a căror valoare de piață a scăzut sub valoarea contabilă, se constituie ajustări (conturile 491, 496, 397 etc.), pe seama cheltuielilor (contul 681/686).\n- **Provizioane pentru riscuri și cheltuieli** – se constituie atunci când firma are o obligație probabilă (litigii, garanții acordate clienților, restructurări) a cărei valoare poate fi estimată rezonabil (contul 151).\n- **Diferențe de curs valutar** – disponibilitățile, creanțele și datoriile în valută se reevaluează la cursul BNR din 31 decembrie, iar diferențele se înregistrează în conturile 665/765.\n\nToate aceste regularizări afectează direct rezultatul contabil al exercițiului, motiv pentru care trebuie finalizate înainte de închiderea conturilor de venituri și cheltuieli.\n\nDupă înregistrarea tuturor regularizărilor, se închid conturile de venituri (clasa 7) și cheltuieli (clasa 6) prin contul 121 „Profit sau pierdere”. Soldul creditor al contului 121 reprezintă profitul brut contabil; soldul debitor reprezintă pierderea.\n\nDin profitul brut se scade impozitul pe profit, calculat la cota de **16%** asupra profitului impozabil (care poate diferi de profitul contabil, din cauza cheltuielilor nedeductibile și veniturilor neimpozabile). Rezultă profitul net, care se repartizează astfel, în ordine:\n\n1. **Rezerva legală** – obligatoriu, minimum 5% din profitul brut anual, până când rezerva atinge 20% din capitalul social (Legea societăților nr. 31/1990, art. 183). Odată atins acest plafon, alocarea nu mai este obligatorie decât dacă rezerva scade sub 20%.\n2. **Alte rezerve statutare sau facultative**, dacă actul constitutiv sau adunarea generală le prevede.\n3. **Dividende**, dacă adunarea generală a asociaților/acționarilor decide distribuirea, în limita profitului rămas nerepartizat.\n\nDividendele distribuite persoanelor fizice sunt supuse impozitului pe dividende, iar cota aplicabilă depinde de data distribuirii efective – aspect detaliat în blocul de avertizare de mai jos.\n\n## Exemplu: Monografie contabilă – inventarierea mărfurilor și imputarea lipsei\nLa 31.12.20N, la depozitul central se constată la inventariere o lipsă de marfă în valoare de 500 lei (cost de achiziție), imputabilă gestionarului responsabil. Valoarea de imputare include TVA aferentă (21%, cota standard aplicabilă de la 1 august 2025).\n\n**1. Scoaterea din gestiune a lipsei constatate:**\n607 „Cheltuieli privind mărfurile” = 371 „Mărfuri” 500 lei\n\n**2. Imputarea lipsei către gestionar, la valoarea de 605 lei (500 lei + 105 lei TVA):**\n4282 „Alte creanțe în legătură cu personalul” = %\n    7588 „Alte venituri din exploatare” 500 lei\n    4427 „TVA colectată” 105 lei\n\n**3. Reținerea sumei din salariul gestionarului (rate lunare sau integral):**\n421 „Personal – salarii datorate” = 4282 „Alte creanțe în legătură cu personalul” 605 lei\n\nObservație: cheltuiala cu marfa lipsă (607) și venitul din imputare (7588) se compensează parțial ca efect asupra rezultatului, dar TVA colectată (105 lei) rămâne o obligație suplimentară de plată către bugetul de stat, generată de regularizarea de inventar.\n\n## Exemplu: Închiderea conturilor de venituri și cheltuieli\nO societate înregistrează, la 31.12.20N, după toate regularizările, total venituri de 500.000 lei (conturile clasa 7) și total cheltuieli de 300.000 lei (conturile clasa 6). Închiderea se face prin contul 121 „Profit sau pierdere”:\n\n**1. Închiderea conturilor de cheltuieli:**\n121 „Profit sau pierdere” = % 300.000 lei\n    601, 605, 621, 641, 681 etc. (conturile de cheltuieli, fiecare cu soldul său)\n\n**2. Închiderea conturilor de venituri:**\n% = 121 „Profit sau pierdere” 500.000 lei\n701, 704, 758, 766 etc. (conturile de venituri, fiecare cu soldul său)\n\nDupă aceste două înregistrări, contul 121 rămâne cu sold creditor de 200.000 lei, reprezentând profitul brut contabil al exercițiului. Acest sold stă la baza calculului impozitului pe profit și, ulterior, al repartizării profitului net – vezi exercițiul de la finalul lecției.\n\n> Temei legal: OMFP nr. 1802/2014 Secțiunea 9 – Situații financiare anuale (în vigoare de la 2015-01-01)\nOMFP nr. 1802/2014 pentru aprobarea reglementărilor contabile privind situațiile financiare anuale individuale și consolidate stabilește structura bilanțului, a contului de profit și pierdere, principiile contabile (prudența, continuitatea activității, independența exercițiului) și regulile de evaluare la închiderea exercițiului financiar.\n\n> Temei legal: Legea societăților nr. 31/1990 art. 183 (în vigoare de la 1990-11-17)\nPotrivit art. 183 din Legea nr. 31/1990 privind societățile, din profitul stabilit conform legii se prelevă minimum 5% pentru formarea rezervei legale, până când aceasta atinge minimum 20% din capitalul social. Rezerva legală reconstituită după ce a fost folosită pentru acoperirea pierderilor este, de asemenea, deductibilă în limitele legii.\n\n⚠ Cota impozitului pe dividende depinde de **data distribuirii efective**, nu de exercițiul financiar la care se referă profitul: 10% pentru distribuirile realizate până la 31 decembrie 2025 (inclusiv dividendele interimare din 2025, fără recalculare ulterioară) și **16% pentru distribuirile realizate începând cu 1 ianuarie 2026**, conform Legii nr. 141/2025. Dacă adunarea generală decide repartizarea profitului aferent exercițiului 20N abia în cursul anului 20N+1, se aplică cota în vigoare la data plății dividendelor. Verifică întotdeauna cota actuală înainte de a calcula impozitul, întrucât reglementările fiscale se pot modifica.\n\n## Exercițiu\nO societate comercială (SRL) are, la 31.12.20N, un capital social de 200.000 lei și o rezervă legală deja constituită de 35.000 lei. După închiderea conturilor de venituri și cheltuieli, profitul brut contabil este de 200.000 lei, egal cu profitul impozabil (nu există elemente de reconciliere fiscală). Adunarea generală decide, în cursul anului 20N+1 (după 1 ianuarie 2026), distribuirea integrală a profitului net rămas după constituirea rezervei legale, sub formă de dividende către asociatul persoană fizică.\n\nCalculează: (a) impozitul pe profit, (b) profitul net, (c) suma alocată rezervei legale, (d) profitul rămas de repartizat ca dividende, (e) impozitul pe dividende și (f) suma netă încasată de asociat.\n\n**Soluție:** **(a) Impozitul pe profit:** 200.000 lei × 16% = 32.000 lei.\n\n**(b) Profitul net:** 200.000 – 32.000 = 168.000 lei.\n\n**(c) Rezerva legală:** calculul standard ar indica 5% × 200.000 = 10.000 lei, dar rezerva este plafonată la 20% din capitalul social, adică 40.000 lei. Cum rezerva existentă este de 35.000 lei, mai poate fi alocată doar diferența până la plafon: 40.000 – 35.000 = **5.000 lei**. Se constituie deci 5.000 lei, nu 10.000 lei.\n\n**(d) Profit rămas de repartizat (dividende brute):** 168.000 – 5.000 = 163.000 lei.\n\n**(e) Impozitul pe dividende:** distribuirea are loc după 1 ianuarie 2026, deci se aplică cota de 16%: 163.000 × 16% = 26.080 lei.\n\n**(f) Suma netă încasată de asociat:** 163.000 – 26.080 = 136.920 lei.\n\nÎnregistrări contabile aferente:\n- 691 = 441 32.000 lei (impozit pe profit)\n- 129 = 106 5.000 lei (repartizare rezervă legală)\n- 117 = 457 163.000 lei (dividende de plată)\n- 457 = 446 26.080 lei (impozit pe dividende reținut)\n- 457 = 5121 136.920 lei (plata dividendelor nete către asociat)",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "inchidere-exercitiu-etape",
+    "md": "Închiderea exercițiului financiar este procesul prin care o firmă își determină rezultatul contabil anual (profit sau pierdere) și pregătește situațiile financiare anuale, conform OMFP 1802/2014. Procesul cuprinde patru etape obligatorii, executate în această ordine:\n\n1. **Inventarierea generală a patrimoniului** – verificarea faptică a elementelor de activ și pasiv la 31 decembrie.\n2. **Regularizările de sfârșit de an** – înregistrarea amortizărilor, provizioanelor, ajustărilor de valoare și a diferențelor de curs valutar rezultate din inventariere.\n3. **Determinarea rezultatului contabil** – închiderea conturilor de venituri și cheltuieli prin contul 121 „Profit sau pierdere”.\n4. **Repartizarea profitului** – constituirea rezervelor legale și, dacă adunarea generală decide, distribuirea de dividende.\n\nFiecare etapă condiționează corectitudinea celei următoare: fără o inventariere completă, regularizările sunt incomplete; fără regularizări corecte, rezultatul contabil este denaturat; iar repartizarea se face întotdeauna pe baza profitului net, după impozitare.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "inventariere-anuala-obligatorie",
+    "md": "Inventarierea anuală este obligatorie pentru toate entitățile, conform Legii contabilității nr. 82/1991 și normelor de aplicare din OMFP nr. 2861/2009. Ea constă în verificarea faptică (numărare, cântărire, măsurare) a tuturor elementelor de activ – imobilizări, stocuri, creanțe, disponibilități – și confirmarea sau, după caz, recalcularea elementelor de pasiv – datorii, provizioane, capitaluri proprii.\n\nComisia de inventariere, numită prin decizie a administratorului, compară soldurile faptice constatate cu soldurile scriptice din contabilitate. Diferențele identificate se clasifică astfel:\n- **Plusuri de inventar** – se înregistrează ca intrare de stoc, la valoarea justă;\n- **Minusuri de inventar** – dacă sunt neimputabile (perisabilități, deteriorări normale), se înregistrează pe cheltuieli; dacă sunt imputabile unei persoane, se recuperează de la aceasta, inclusiv TVA aferentă.\n\nRezultatele inventarierii stau la baza întocmirii Registrului-inventar, document obligatoriu care susține situațiile financiare anuale.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "regularizari-sfarsit-an",
+    "md": "Pe baza rezultatelor inventarierii, contabilul efectuează regularizările care aduc valorile din bilanț la nivelul real, respectând principiul prudenței din OMFP 1802/2014:\n\n- **Amortizarea imobilizărilor** – se verifică dacă planul de amortizare a fost aplicat corect pe tot anul și se înregistrează ultima lună/tranșă.\n- **Ajustări pentru depreciere** – pentru creanțe incerte, stocuri cu mișcare lentă sau imobilizări a căror valoare de piață a scăzut sub valoarea contabilă, se constituie ajustări (conturile 491, 496, 397 etc.), pe seama cheltuielilor (contul 681/686).\n- **Provizioane pentru riscuri și cheltuieli** – se constituie atunci când firma are o obligație probabilă (litigii, garanții acordate clienților, restructurări) a cărei valoare poate fi estimată rezonabil (contul 151).\n- **Diferențe de curs valutar** – disponibilitățile, creanțele și datoriile în valută se reevaluează la cursul BNR din 31 decembrie, iar diferențele se înregistrează în conturile 665/765.\n\nToate aceste regularizări afectează direct rezultatul contabil al exercițiului, motiv pentru care trebuie finalizate înainte de închiderea conturilor de venituri și cheltuieli.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "repartizare-profit-net",
+    "md": "După înregistrarea tuturor regularizărilor, se închid conturile de venituri (clasa 7) și cheltuieli (clasa 6) prin contul 121 „Profit sau pierdere”. Soldul creditor al contului 121 reprezintă profitul brut contabil; soldul debitor reprezintă pierderea.\n\nDin profitul brut se scade impozitul pe profit, calculat la cota de **16%** asupra profitului impozabil (care poate diferi de profitul contabil, din cauza cheltuielilor nedeductibile și veniturilor neimpozabile). Rezultă profitul net, care se repartizează astfel, în ordine:\n\n1. **Rezerva legală** – obligatoriu, minimum 5% din profitul brut anual, până când rezerva atinge 20% din capitalul social (Legea societăților nr. 31/1990, art. 183). Odată atins acest plafon, alocarea nu mai este obligatorie decât dacă rezerva scade sub 20%.\n2. **Alte rezerve statutare sau facultative**, dacă actul constitutiv sau adunarea generală le prevede.\n3. **Dividende**, dacă adunarea generală a asociaților/acționarilor decide distribuirea, în limita profitului rămas nerepartizat.\n\nDividendele distribuite persoanelor fizice sunt supuse impozitului pe dividende, iar cota aplicabilă depinde de data distribuirii efective – aspect detaliat în blocul de avertizare de mai jos.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b4"
+   },
+   {
+    "type": "example",
+    "title": "Monografie contabilă – inventarierea mărfurilor și imputarea lipsei",
+    "concept_key": "inventariere-lipsa-imputabila",
+    "md": "La 31.12.20N, la depozitul central se constată la inventariere o lipsă de marfă în valoare de 500 lei (cost de achiziție), imputabilă gestionarului responsabil. Valoarea de imputare include TVA aferentă (21%, cota standard aplicabilă de la 1 august 2025).\n\n**1. Scoaterea din gestiune a lipsei constatate:**\n607 „Cheltuieli privind mărfurile” = 371 „Mărfuri” 500 lei\n\n**2. Imputarea lipsei către gestionar, la valoarea de 605 lei (500 lei + 105 lei TVA):**\n4282 „Alte creanțe în legătură cu personalul” = %\n    7588 „Alte venituri din exploatare” 500 lei\n    4427 „TVA colectată” 105 lei\n\n**3. Reținerea sumei din salariul gestionarului (rate lunare sau integral):**\n421 „Personal – salarii datorate” = 4282 „Alte creanțe în legătură cu personalul” 605 lei\n\nObservație: cheltuiala cu marfa lipsă (607) și venitul din imputare (7588) se compensează parțial ca efect asupra rezultatului, dar TVA colectată (105 lei) rămâne o obligație suplimentară de plată către bugetul de stat, generată de regularizarea de inventar.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b5"
+   },
+   {
+    "type": "example",
+    "title": "Închiderea conturilor de venituri și cheltuieli",
+    "concept_key": "inchidere-conturi-venituri-cheltuieli",
+    "md": "O societate înregistrează, la 31.12.20N, după toate regularizările, total venituri de 500.000 lei (conturile clasa 7) și total cheltuieli de 300.000 lei (conturile clasa 6). Închiderea se face prin contul 121 „Profit sau pierdere”:\n\n**1. Închiderea conturilor de cheltuieli:**\n121 „Profit sau pierdere” = % 300.000 lei\n    601, 605, 621, 641, 681 etc. (conturile de cheltuieli, fiecare cu soldul său)\n\n**2. Închiderea conturilor de venituri:**\n% = 121 „Profit sau pierdere” 500.000 lei\n701, 704, 758, 766 etc. (conturile de venituri, fiecare cu soldul său)\n\nDupă aceste două înregistrări, contul 121 rămâne cu sold creditor de 200.000 lei, reprezentând profitul brut contabil al exercițiului. Acest sold stă la baza calculului impozitului pe profit și, ulterior, al repartizării profitului net – vezi exercițiul de la finalul lecției.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP nr. 1802/2014",
+    "article": "Secțiunea 9 – Situații financiare anuale",
+    "effective": "2015-01-01",
+    "md": "OMFP nr. 1802/2014 pentru aprobarea reglementărilor contabile privind situațiile financiare anuale individuale și consolidate stabilește structura bilanțului, a contului de profit și pierdere, principiile contabile (prudența, continuitatea activității, independența exercițiului) și regulile de evaluare la închiderea exercițiului financiar.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b7"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea societăților nr. 31/1990",
+    "article": "art. 183",
+    "effective": "1990-11-17",
+    "md": "Potrivit art. 183 din Legea nr. 31/1990 privind societățile, din profitul stabilit conform legii se prelevă minimum 5% pentru formarea rezervei legale, până când aceasta atinge minimum 20% din capitalul social. Rezerva legală reconstituită după ce a fost folosită pentru acoperirea pierderilor este, de asemenea, deductibilă în limitele legii.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Cota impozitului pe dividende depinde de **data distribuirii efective**, nu de exercițiul financiar la care se referă profitul: 10% pentru distribuirile realizate până la 31 decembrie 2025 (inclusiv dividendele interimare din 2025, fără recalculare ulterioară) și **16% pentru distribuirile realizate începând cu 1 ianuarie 2026**, conform Legii nr. 141/2025. Dacă adunarea generală decide repartizarea profitului aferent exercițiului 20N abia în cursul anului 20N+1, se aplică cota în vigoare la data plății dividendelor. Verifică întotdeauna cota actuală înainte de a calcula impozitul, întrucât reglementările fiscale se pot modifica.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "O societate comercială (SRL) are, la 31.12.20N, un capital social de 200.000 lei și o rezervă legală deja constituită de 35.000 lei. După închiderea conturilor de venituri și cheltuieli, profitul brut contabil este de 200.000 lei, egal cu profitul impozabil (nu există elemente de reconciliere fiscală). Adunarea generală decide, în cursul anului 20N+1 (după 1 ianuarie 2026), distribuirea integrală a profitului net rămas după constituirea rezervei legale, sub formă de dividende către asociatul persoană fizică.\n\nCalculează: (a) impozitul pe profit, (b) profitul net, (c) suma alocată rezervei legale, (d) profitul rămas de repartizat ca dividende, (e) impozitul pe dividende și (f) suma netă încasată de asociat.",
+    "solution_md": "**(a) Impozitul pe profit:** 200.000 lei × 16% = 32.000 lei.\n\n**(b) Profitul net:** 200.000 – 32.000 = 168.000 lei.\n\n**(c) Rezerva legală:** calculul standard ar indica 5% × 200.000 = 10.000 lei, dar rezerva este plafonată la 20% din capitalul social, adică 40.000 lei. Cum rezerva existentă este de 35.000 lei, mai poate fi alocată doar diferența până la plafon: 40.000 – 35.000 = **5.000 lei**. Se constituie deci 5.000 lei, nu 10.000 lei.\n\n**(d) Profit rămas de repartizat (dividende brute):** 168.000 – 5.000 = 163.000 lei.\n\n**(e) Impozitul pe dividende:** distribuirea are loc după 1 ianuarie 2026, deci se aplică cota de 16%: 163.000 × 16% = 26.080 lei.\n\n**(f) Suma netă încasată de asociat:** 163.000 – 26.080 = 136.920 lei.\n\nÎnregistrări contabile aferente:\n- 691 = 441 32.000 lei (impozit pe profit)\n- 129 = 106 5.000 lei (repartizare rezervă legală)\n- 117 = 457 163.000 lei (dividende de plată)\n- 457 = 446 26.080 lei (impozit pe dividende reținut)\n- 457 = 5121 136.920 lei (plata dividendelor nete către asociat)",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este cota minimă din profitul brut anual ce trebuie alocată obligatoriu rezervei legale, până la atingerea a 20% din capitalul social?",
+    "choices": [
+     "3%",
+     "5%",
+     "10%",
+     "20%"
+    ],
+    "answer": 1,
+    "explain": "Conform art. 183 din Legea nr. 31/1990, se prelevă minimum 5% din profit pentru rezerva legală, până când aceasta atinge 20% din capitalul social.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cotă de impozit pe dividende se aplică unei distribuiri de profit efectuate în martie 2026?",
+    "choices": [
+     "10%",
+     "5%",
+     "16%",
+     "19%"
+    ],
+    "answer": 2,
+    "explain": "Conform Legii nr. 141/2025, distribuirile de dividende efectuate începând cu 1 ianuarie 2026 sunt impozitate cu 16%, indiferent de exercițiul financiar la care se referă profitul repartizat.",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune inventarierea generală a patrimoniului la finalul exercițiului financiar?",
+    "back": "Verificarea faptică și valorică a tuturor elementelor de activ și pasiv, obligatorie anual conform Legii contabilității nr. 82/1991 și OMFP nr. 2861/2009.",
+    "concept_key": "inventariere-anuala-obligatorie",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este procentul minim din profitul brut ce trebuie alocat rezervei legale?",
+    "back": "Minimum 5% din profitul brut anual, până când rezerva legală atinge 20% din capitalul social (Legea nr. 31/1990, art. 183).",
+    "concept_key": "rezerva-legala-5-procente",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont contabil se utilizează pentru închiderea rezultatului exercițiului?",
+    "back": "Contul 121 „Profit sau pierdere”, creditat prin închiderea conturilor de venituri (clasa 7) și debitat prin închiderea conturilor de cheltuieli (clasa 6).",
+    "concept_key": "cont-121-profit-pierdere",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota impozitului pe profit aplicabilă în România în 2026?",
+    "back": "16%, cotă neschimbată față de anii anteriori.",
+    "concept_key": "impozit-profit-16-procente",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă de impozit pe dividende se aplică distribuirilor efectuate începând cu 1 ianuarie 2026?",
+    "back": "16%, conform Legii nr. 141/2025 (față de 10% pentru distribuirile realizate până la 31 decembrie 2025).",
+    "concept_key": "impozit-dividende-16-procente-2026",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document reglementează structura situațiilor financiare anuale în România?",
+    "back": "OMFP nr. 1802/2014, cu modificările ulterioare.",
+    "concept_key": "omfp-1802-2014-situatii-financiare",
+    "blockId": "cmjjuxw5300dyumkpfr9qvo4p-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1328,
+   "flashcards": 6
+  }
+ }
+}

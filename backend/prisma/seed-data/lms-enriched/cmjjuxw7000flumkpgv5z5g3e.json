@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxw7000flumkpgv5z5g3e",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Performance Management și Raportare",
+ "lesson": "Quiz performance mgmt",
+ "category": "FINANCE_OPS",
+ "content": "Test de evaluare — Quiz performance mgmt (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Ce reprezintă termenul „abatere” (variance) în contextul controlului bugetar și al raportării de performanță?",
+     "choices": [
+      "Diferența dintre valoarea bugetată (planificată) și valoarea realizată (efectivă) a unui indicator, analizată pentru a identifica cauzele și a stabili măsuri corective",
+      "Diferența dintre veniturile din anul curent și cele din anul precedent, indiferent de buget",
+      "Eroarea de calcul apărută la întocmirea situațiilor financiare conform OMFP 1802/2014",
+      "Procentul de creștere a cifrei de afaceri față de concurență"
+     ],
+     "answer": 0,
+     "explain": "Abaterea (variance) este diferența dintre planificat (buget) și realizat, folosită de management pentru a înțelege ce a generat diferența (preț, volum, eficiență) și a decide acțiuni corective. Nu se referă la comparații an-precedent, erori contabile sau poziția față de concurență.",
+     "concept_key": "variance_analysis_definitie"
+    },
+    {
+     "q": "O SRL înregistrează creanțe comerciale (clienți neîncasați) de 300.000 lei și vânzări anuale de 1.800.000 lei. Folosind formula DSO = (creanțe / vânzări) × 365, care este DSO (Days Sales Outstanding)?",
+     "choices": [
+      "61 zile",
+      "30 zile",
+      "91 zile",
+      "182 zile"
+     ],
+     "answer": 0,
+     "explain": "DSO = (300.000 / 1.800.000) × 365 = 0,1667 × 365 ≈ 60,8, rotunjit la 61 de zile. DSO arată în câte zile, în medie, firma își încasează creanțele de la clienți; un DSO mare semnalează probleme de colectare.",
+     "concept_key": "dso_formula"
+    },
+    {
+     "q": "Care este principala diferență între un buget static anual și un rolling forecast (prognoză glisantă)?",
+     "choices": [
+      "Rolling forecast-ul se actualizează periodic (ex. lunar sau trimestrial) și extinde orizontul de prognoză cu o nouă perioadă, în timp ce bugetul static rămâne fix pentru întregul an",
+      "Bugetul static se actualizează zilnic, iar rolling forecast-ul se întocmește o singură dată, la începutul anului",
+      "Rolling forecast-ul este obligatoriu conform OMFP 1802/2014, iar bugetul static este opțional",
+      "Nu există nicio diferență practică, cei doi termeni sunt sinonimi"
+     ],
+     "answer": 0,
+     "explain": "Bugetul static este fixat pentru un exercițiu financiar (de regulă anual) și nu se recalculează. Rolling forecast-ul este actualizat la intervale regulate (lunar/trimestrial), menținând un orizont constant (ex. 12 luni în avans), ceea ce oferă o imagine mai realistă în condiții de piață dinamice.",
+     "concept_key": "rolling_forecast_vs_buget_static"
+    },
+    {
+     "q": "O companie a bugetat un cost standard de 50 lei/buc pentru o producție de 10.000 buc (buget static = 500.000 lei). În realitate s-au produs doar 9.000 buc, cu un cost total real de 480.000 lei. Bugetul flexibil (recalculat la volumul real de 9.000 buc × 50 lei/buc) este 450.000 lei. Care este abaterea de cost (cost real vs. buget flexibil) și cum se interpretează?",
+     "choices": [
+      "30.000 lei abatere nefavorabilă (costul real de 480.000 lei depășește bugetul flexibil de 450.000 lei, ajustat la volumul real)",
+      "20.000 lei abatere favorabilă (buget static 500.000 lei minus cost real 480.000 lei)",
+      "50.000 lei abatere nefavorabilă (diferența dintre volumul bugetat și volumul realizat)",
+      "Abaterea nu poate fi calculată fără a cunoaște prețul materiei prime"
+     ],
+     "answer": 0,
+     "explain": "Compararea corectă se face cu bugetul flexibil (recalculat la volumul real), nu cu bugetul static, pentru a izola abaterea de cost/eficiență de cea de volum. 480.000 − 450.000 = 30.000 lei abatere nefavorabilă, adică firma a cheltuit mai mult decât era de așteptat pentru cele 9.000 buc produse efectiv.",
+     "concept_key": "flexible_budget_variance"
+    },
+    {
+     "q": "O SRL raportează venituri de 5.000.000 lei și EBITDA de 750.000 lei. Care este marja EBITDA (EBITDA margin = EBITDA / Venituri × 100)?",
+     "choices": [
+      "15%",
+      "7,5%",
+      "35%",
+      "75%"
+     ],
+     "answer": 0,
+     "explain": "Marja EBITDA = 750.000 / 5.000.000 × 100 = 15%. Acest indicator arată procentul din venituri care rămâne sub formă de profit operațional înainte de dobânzi, impozite, depreciere și amortizare, fiind folosit frecvent în rapoartele de performanță pentru a compara profitabilitatea operațională între perioade sau companii.",
+     "concept_key": "ebitda_margin"
+    },
+    {
+     "q": "Conform modelului Balanced Scorecard (Kaplan & Norton), care sunt cele patru perspective standard folosite pentru raportarea de performanță?",
+     "choices": [
+      "Financiară, Clienți, Procese interne, Învățare și dezvoltare",
+      "Financiară, Marketing, Producție, Resurse umane",
+      "Venituri, Costuri, Profit, Cash flow",
+      "Strategie, Operațiuni, Risc, Conformitate"
+     ],
+     "answer": 0,
+     "explain": "Balanced Scorecard-ul clasic combină indicatori financiari cu trei perspective non-financiare — Clienți, Procese interne și Învățare și dezvoltare — pentru a oferi o imagine echilibrată a performanței, nu doar rezultate financiare istorice.",
+     "concept_key": "balanced_scorecard_perspective"
+    },
+    {
+     "q": "Ce presupune practica de „cascadare a KPI-urilor” (KPI cascading) într-un sistem de management al performanței?",
+     "choices": [
+      "Descompunerea obiectivelor strategice de la nivel de companie în indicatori și ținte specifice pentru fiecare departament sau echipă, astfel încât acestea să contribuie măsurabil la obiectivul global",
+      "Raportarea acelorași KPI-uri financiare către toate departamentele, indiferent de rolul lor operațional",
+      "Reducerea numărului de KPI-uri raportați consiliului de administrație la un singur indicator",
+      "Transmiterea automată a facturilor către SPV, conform obligațiilor de e-Factura"
+     ],
+     "answer": 0,
+     "explain": "Cascadarea KPI-urilor înseamnă traducerea obiectivelor de la nivel strategic (ex. creșterea EBITDA cu X%) în ținte specifice, măsurabile, la nivel de departament/echipă, asigurând alinierea între execuția operațională și strategia companiei — nu are legătură cu e-Factura sau uniformizarea raportării.",
+     "concept_key": "kpi_cascading"
+    },
+    {
+     "q": "Ce este un „flash report” în raportarea financiară de performanță și când se folosește?",
+     "choices": [
+      "Un raport preliminar, sumar, emis la 1-3 zile lucrătoare după închiderea perioadei, cu estimări rapide ale principalilor indicatori (venituri, EBITDA, cash), înainte de finalizarea situațiilor financiare complete",
+      "Raportul oficial anual depus la ANAF, obligatoriu conform OMFP 1802/2014",
+      "Declarația SAF-T D406 transmisă lunar de contribuabilii mari și mijlocii",
+      "Un raport ad-hoc emis doar în cazul constatării unei fraude interne"
+     ],
+     "answer": 0,
+     "explain": "Flash report-ul oferă managementului o estimare rapidă, la câteva zile lucrătoare după închiderea lunii/trimestrului, a indicatorilor-cheie, permițând decizii timpurii, înainte ca situațiile financiare complete (conform OMFP 1802/2014) să fie finalizate și auditate.",
+     "concept_key": "flash_report"
+    },
+    {
+     "q": "O companie a prognozat vânzări de 1.000.000 lei pentru trimestrul curent, iar valoarea realizată a fost 1.100.000 lei. Folosind formula MAPE = |Real − Prognoză| / Real × 100, care este eroarea procentuală absolută (MAPE) a acestei prognoze?",
+     "choices": [
+      "9,09%",
+      "10%",
+      "0,91%",
+      "90,9%"
+     ],
+     "answer": 0,
+     "explain": "MAPE = |1.100.000 − 1.000.000| / 1.100.000 × 100 = 100.000 / 1.100.000 × 100 ≈ 9,09%. Indicatorul măsoară acuratețea prognozei raportată la valoarea realizată; un MAPE mai mic indică o prognoză mai precisă.",
+     "concept_key": "forecast_accuracy_mape"
+    },
+    {
+     "q": "O companie a bugetat vânzarea a 20.000 de unități la un preț de 25 lei/unitate (venit bugetat = 500.000 lei). Realizatul a fost 22.000 de unități vândute la 23 lei/unitate (venit real = 506.000 lei). Folosind formula abaterii de preț = (preț real − preț bugetat) × volum real, care este abaterea de preț și cum se interpretează în raport cu abaterea de volum?",
+     "choices": [
+      "−44.000 lei (abatere nefavorabilă de preț), compensată de o abatere favorabilă de volum de +50.000 lei, rezultând o abatere totală favorabilă de +6.000 lei",
+      "+6.000 lei, reprezentând întreaga diferență dintre venitul real și cel bugetat, fără a putea fi descompusă suplimentar",
+      "−2.000 lei, calculată ca diferență simplă între prețul real și cel bugetat, fără ajustare pentru volum",
+      "+50.000 lei, care reprezintă de fapt abaterea de preț, nu cea de volum"
+     ],
+     "answer": 0,
+     "explain": "Abaterea de preț = (23 − 25) × 22.000 = −44.000 lei (nefavorabilă, prețul de vânzare a scăzut). Abaterea de volum = (22.000 − 20.000) × 25 = +50.000 lei (favorabilă, s-au vândut mai multe unități). Suma lor (−44.000 + 50.000 = +6.000 lei) reproduce abaterea totală de venit (506.000 − 500.000), demonstrând de ce descompunerea preț/volum este esențială într-o analiză avansată de performanță.",
+     "concept_key": "price_volume_variance"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

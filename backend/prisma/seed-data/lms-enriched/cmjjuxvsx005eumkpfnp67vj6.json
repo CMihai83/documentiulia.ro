@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvsx005eumkpfnp67vj6",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Planificarea Proiectului",
+ "lesson": "Diagramă Gantt",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Diagramă Gantt\n\n## Ce este o diagramă Gantt\n\nDiagrama Gantt este cea mai folosită metodă de vizualizare a eșalonării (schedule-ului) unui proiect. Poartă numele lui **Henry Gantt**, inginer și consultant american care a popularizat acest instrument la începutul anilor 1910, deși structura de bază fusese schițată anterior de Karol Adamiecki.\n\nStructura unei diagrame Gantt este simplă: pe axa orizontală ai timpul (zile, săptămâni, luni), iar pe axa verticală ai lista activităților proiectului. Fiecare activitate este reprezentată printr-o bară orizontală a cărei lungime arată durata, iar poziția pe axa timpului arată când începe și când se termină. Între bare se desenează săgeți care marchează **dependențele** — relațiile logice dintre activități (de exemplu, \"Configurare modul financiar\" nu poate începe înainte de finalizarea \"Analizei cerințelor\").\n\nÎn PMBOK 7 și în practica agilă (Scrum Guide 2020), diagrama Gantt rămâne instrumentul standard pentru proiectele cu abordare predictivă (waterfall) sau hibridă, fiind mai puțin folosită în Scrum pur (unde planificarea se face pe sprinturi), dar extrem de utilă atunci când echipa de management trebuie să comunice stadiul unui proiect de tip implementare ERP, digitalizare sau construcție către sponsori și stakeholderi care nu sunt familiarizați cu terminologia agilă.\n\nCele patru tipuri de dependențe folosite cel mai frecvent sunt: **Finish-to-Start (FS)** — activitatea următoare începe după ce precedenta se termină (cea mai comună), **Start-to-Start (SS)** — cele două activități pornesc simultan, **Finish-to-Finish (FF)** — trebuie să se termine în același timp, și **Start-to-Finish (SF)** — rar întâlnită în practică.\n\n## Drumul critic (Critical Path)\n\n**Drumul critic** este cea mai lungă succesiune de activități dependente dintr-un proiect, măsurată de la începutul până la sfârșitul proiectului. Durata drumului critic determină durata minimă posibilă a întregului proiect: orice întârziere a unei activități aflate pe acest drum se propagă direct asupra datei finale de livrare.\n\nMetoda folosită pentru identificarea lui se numește **Critical Path Method (CPM)** și presupune doi pași:\n\n1. **Pasul înainte (forward pass)** — calculezi pentru fiecare activitate cel mai devreme moment posibil de start (**ES – Early Start**) și de finalizare (**EF – Early Finish**), pornind de la prima activitate spre ultima: EF = ES + durata.\n2. **Pasul înapoi (backward pass)** — pornind de la data finală a proiectului spre început, calculezi cel mai târziu moment posibil de start (**LS – Late Start**) și de finalizare (**LF – Late Finish**) pentru fiecare activitate, fără a întârzia proiectul: LS = LF − durata.\n\nActivitățile la care ES = LS (respectiv EF = LF) sunt activități **critice** — nu au nicio marjă de manevră. Lanțul format din aceste activități este drumul critic. Un proiect poate avea mai multe drumuri critice în paralel, dacă mai multe succesiuni de activități au exact aceeași durată totală.\n\n## Float / Slack (rezerva de timp)\n\n**Float-ul** (numit și *slack* sau, în română, *rezervă de timp*) reprezintă câte zile poate întârzia o activitate fără a afecta data de finalizare a proiectului.\n\nExistă două tipuri:\n\n- **Total float** = LS − ES = LF − EF. Arată cu cât poate întârzia o activitate fără a împinge data finală a întregului proiect, presupunând că toate activitățile ulterioare pot totuși respecta termenele lor.\n- **Free float** = diferența dintre cel mai devreme start al activității imediat următoare și cel mai devreme finish al activității curente. Arată cu cât poate întârzia o activitate fără a afecta *nici măcar* startul activității imediat următoare.\n\nActivitățile de pe drumul critic au întotdeauna **float = 0**. Activitățile necritice au float pozitiv, ceea ce oferă managerului de proiect flexibilitate în alocarea resurselor: o activitate cu float mare poate fi amânată sau i se pot muta resursele către activități mai urgente, fără riscuri pentru termenul final.\n\nAtenție: float-ul nu este un rezervor infinit. Dacă o activitate necritică consumă tot float-ul disponibil, ea devine critică, iar drumul critic al proiectului se poate **schimba** pe parcursul execuției.\n\n## Milestones și Baseline\n\nUn **milestone** (jalon) este un eveniment cu durată zero, folosit pentru a marca finalizarea unei faze importante sau a unui livrabil-cheie: aprobarea Project Charter-ului, finalizarea etapei de testare, semnarea recepției finale, data de go-live. În diagrama Gantt, milestone-urile se reprezintă de obicei printr-un romb, nu printr-o bară.\n\n**Baseline-ul de schedule** este planul de eșalonare aprobat oficial la finalul planificării — practic o \"fotografie\" a datelor de start/finish planificate pentru fiecare activitate. Baseline-ul devine referința fixă față de care măsori, pe tot parcursul execuției, abaterile (schedule variance): compari data reală de finalizare a unei activități cu data ei din baseline pentru a vedea dacă proiectul este în grafic, în avans sau în întârziere.\n\nConform PMBOK 7, baseline-ul **nu se modifică liber** — orice schimbare a lui trece printr-un proces formal de control al schimbărilor (change control), documentat și aprobat, pentru a păstra o linie de bază credibilă pentru raportare și pentru lecțiile învățate la finalul proiectului.\n\n## Exemplu: Calculul drumului critic — implementare ERP\nO firmă de distribuție din România implementează un sistem ERP. Activitățile, duratele (în zile lucrătoare) și dependențele sunt:\n\n| Cod | Activitate | Durată | Depinde de |\n|---|---|---|---|\n| A | Analiză cerințe | 5 | — |\n| B | Configurare modul financiar | 8 | A |\n| C | Configurare modul stocuri | 6 | A |\n| D | Migrare date | 4 | B, C |\n| E | Testare | 5 | D |\n| F | Instruire utilizatori | 3 | C |\n| G | Go-live | 1 | E, F |\n\n**Pasul înainte (ES/EF)**, proiect început în ziua 0:\n- A: ES 0, EF 5\n- B: ES 5, EF 13\n- C: ES 5, EF 11\n- D: ES = max(13, 11) = 13, EF 17\n- E: ES 17, EF 22\n- F: ES 11, EF 14\n- G: ES = max(22, 14) = 22, EF 23\n\nDurata totală a proiectului: **23 de zile lucrătoare**.\n\n**Pasul înapoi (LS/LF)**, pornind de la ziua 23:\n- G: LF 23, LS 22\n- E: LF 22, LS 17\n- F: LF 22, LS 19\n- D: LF 17, LS 13\n- C: LF = min(13, 19) = 13, LS 7\n- B: LF 13, LS 5\n- A: LF = min(5, 7) = 5, LS 0\n\n**Drumul critic**: A → B → D → E → G (5 + 8 + 4 + 5 + 1 = 23 zile). Activitățile C și F nu sunt critice — au float, așa cum vezi în exemplul următor.\n\n## Exemplu: De ce contează drumul critic în control — impactul unei întârzieri\nFolosind exemplul de mai sus, calculăm float-ul fiecărei activități (total float = LS − ES):\n\n| Activitate | ES | LS | Float | Status |\n|---|---|---|---|---|\n| A | 0 | 0 | 0 | Critică |\n| B | 5 | 5 | 0 | Critică |\n| C | 5 | 7 | 2 | Are rezervă |\n| D | 13 | 13 | 0 | Critică |\n| E | 17 | 17 | 0 | Critică |\n| F | 11 | 19 | 8 | Are rezervă mare |\n| G | 22 | 22 | 0 | Critică |\n\nActivitatea **F (Instruire utilizatori)** are 8 zile float — poate începe cu până la 8 zile mai târziu decât cel mai devreme moment posibil, fără să afecteze data de go-live. Managerul de proiect poate muta trainerul pe altă activitate urgentă în acest interval, fără niciun risc pentru termen.\n\nÎn schimb, la finalul primei luni de execuție se constată că activitatea **B**, care este critică, durează efectiv 10 zile în loc de 8 (întârziere de 2 zile, cauzată de disponibilitate redusă a consultantului financiar). Pentru că B este pe drumul critic (float = 0), întreaga durată a proiectului crește automat la 25 de zile — întârzierea se propagă direct în data de go-live, fără nicio marjă de absorbție. Acesta este motivul pentru care monitorizarea zilnică a activităților critice este prioritatea numărul unu a oricărui manager de proiect.\n\n⚠ Drumul critic **nu este fix pe toată durata proiectului**. Dacă o activitate necritică (cu float pozitiv) acumulează întârzieri suficiente încât să-și consume tot float-ul, ea devine critică și se poate crea un drum critic nou, uneori diferit de cel inițial. De aceea diagrama Gantt trebuie recalculată periodic (de exemplu săptămânal), nu doar desenată o singură dată la începutul proiectului. Un al doilea pericol frecvent: baseline-ul se modifică informal, \"din mers\", de fiecare dată când apare o întârziere — practică ce distruge utilitatea lui ca instrument de măsurare a performanței (schedule variance) și ascunde probleme reale de la sponsor.\n\n## Exercițiu\nO echipă planifică renovarea unui birou înainte de mutarea unei companii. Activitățile identificate sunt:\n\n| Cod | Activitate | Durată (zile) | Depinde de |\n|---|---|---|---|\n| P1 | Comandă și livrare mobilier | 10 | — |\n| P2 | Zugrăvit pereți | 3 | — |\n| P3 | Montaj mobilier | 2 | P1, P2 |\n| P4 | Instalare infrastructură IT | 4 | P3 |\n| P5 | Recepție finală | 1 | P4 |\n\nCerințe:\n1. Calculează ES/EF pentru fiecare activitate (pasul înainte).\n2. Calculează LS/LF pentru fiecare activitate (pasul înapoi).\n3. Identifică drumul critic și durata totală a proiectului.\n4. Calculează float-ul pentru fiecare activitate necritică și explică ce înseamnă practic pentru echipă.\n\n**Soluție:** **Pasul înainte (ES/EF)**, start în ziua 0:\n- P1: ES 0, EF 10\n- P2: ES 0, EF 3\n- P3: ES = max(10, 3) = 10, EF 12\n- P4: ES 12, EF 16\n- P5: ES 16, EF 17\n\nDurata totală a proiectului: **17 zile**.\n\n**Pasul înapoi (LS/LF)**, pornind de la ziua 17:\n- P5: LF 17, LS 16\n- P4: LF 16, LS 12\n- P3: LF 12, LS 10\n- P2: LF 10, LS 7\n- P1: LF 10, LS 0\n\n**Drumul critic**: P1 → P3 → P4 → P5 (10 + 2 + 4 + 1 = 17 zile).\n\n**Float**:\n- P1: LS − ES = 0 − 0 = 0 → critică.\n- P2: LS − ES = 7 − 0 = 7 zile float → zugrăvitul poate începe cu până la 7 zile mai târziu (sau poate dura până la 7 zile mai mult) fără a întârzia mutarea companiei, pentru că mobilierul oricum nu ajunge înainte de ziua 10.\n- P3, P4, P5: float 0 → critice.\n\nConcluzie practică: echipa trebuie să urmărească zilnic livrarea mobilierului (P1) — orice întârziere aici se transmite direct în data finală de recepție. Zugrăvirea (P2) poate fi reprogramată fără riscuri, oferind flexibilitate pentru echipa de zugravi.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "diagrama-gantt-definitie",
+    "md": "## Ce este o diagramă Gantt\n\nDiagrama Gantt este cea mai folosită metodă de vizualizare a eșalonării (schedule-ului) unui proiect. Poartă numele lui **Henry Gantt**, inginer și consultant american care a popularizat acest instrument la începutul anilor 1910, deși structura de bază fusese schițată anterior de Karol Adamiecki.\n\nStructura unei diagrame Gantt este simplă: pe axa orizontală ai timpul (zile, săptămâni, luni), iar pe axa verticală ai lista activităților proiectului. Fiecare activitate este reprezentată printr-o bară orizontală a cărei lungime arată durata, iar poziția pe axa timpului arată când începe și când se termină. Între bare se desenează săgeți care marchează **dependențele** — relațiile logice dintre activități (de exemplu, \"Configurare modul financiar\" nu poate începe înainte de finalizarea \"Analizei cerințelor\").\n\nÎn PMBOK 7 și în practica agilă (Scrum Guide 2020), diagrama Gantt rămâne instrumentul standard pentru proiectele cu abordare predictivă (waterfall) sau hibridă, fiind mai puțin folosită în Scrum pur (unde planificarea se face pe sprinturi), dar extrem de utilă atunci când echipa de management trebuie să comunice stadiul unui proiect de tip implementare ERP, digitalizare sau construcție către sponsori și stakeholderi care nu sunt familiarizați cu terminologia agilă.\n\nCele patru tipuri de dependențe folosite cel mai frecvent sunt: **Finish-to-Start (FS)** — activitatea următoare începe după ce precedenta se termină (cea mai comună), **Start-to-Start (SS)** — cele două activități pornesc simultan, **Finish-to-Finish (FF)** — trebuie să se termine în același timp, și **Start-to-Finish (SF)** — rar întâlnită în practică.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "drum-critic-critical-path",
+    "md": "## Drumul critic (Critical Path)\n\n**Drumul critic** este cea mai lungă succesiune de activități dependente dintr-un proiect, măsurată de la începutul până la sfârșitul proiectului. Durata drumului critic determină durata minimă posibilă a întregului proiect: orice întârziere a unei activități aflate pe acest drum se propagă direct asupra datei finale de livrare.\n\nMetoda folosită pentru identificarea lui se numește **Critical Path Method (CPM)** și presupune doi pași:\n\n1. **Pasul înainte (forward pass)** — calculezi pentru fiecare activitate cel mai devreme moment posibil de start (**ES – Early Start**) și de finalizare (**EF – Early Finish**), pornind de la prima activitate spre ultima: EF = ES + durata.\n2. **Pasul înapoi (backward pass)** — pornind de la data finală a proiectului spre început, calculezi cel mai târziu moment posibil de start (**LS – Late Start**) și de finalizare (**LF – Late Finish**) pentru fiecare activitate, fără a întârzia proiectul: LS = LF − durata.\n\nActivitățile la care ES = LS (respectiv EF = LF) sunt activități **critice** — nu au nicio marjă de manevră. Lanțul format din aceste activități este drumul critic. Un proiect poate avea mai multe drumuri critice în paralel, dacă mai multe succesiuni de activități au exact aceeași durată totală.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "float-slack-rezerva-timp",
+    "md": "## Float / Slack (rezerva de timp)\n\n**Float-ul** (numit și *slack* sau, în română, *rezervă de timp*) reprezintă câte zile poate întârzia o activitate fără a afecta data de finalizare a proiectului.\n\nExistă două tipuri:\n\n- **Total float** = LS − ES = LF − EF. Arată cu cât poate întârzia o activitate fără a împinge data finală a întregului proiect, presupunând că toate activitățile ulterioare pot totuși respecta termenele lor.\n- **Free float** = diferența dintre cel mai devreme start al activității imediat următoare și cel mai devreme finish al activității curente. Arată cu cât poate întârzia o activitate fără a afecta *nici măcar* startul activității imediat următoare.\n\nActivitățile de pe drumul critic au întotdeauna **float = 0**. Activitățile necritice au float pozitiv, ceea ce oferă managerului de proiect flexibilitate în alocarea resurselor: o activitate cu float mare poate fi amânată sau i se pot muta resursele către activități mai urgente, fără riscuri pentru termenul final.\n\nAtenție: float-ul nu este un rezervor infinit. Dacă o activitate necritică consumă tot float-ul disponibil, ea devine critică, iar drumul critic al proiectului se poate **schimba** pe parcursul execuției.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "milestone-baseline",
+    "md": "## Milestones și Baseline\n\nUn **milestone** (jalon) este un eveniment cu durată zero, folosit pentru a marca finalizarea unei faze importante sau a unui livrabil-cheie: aprobarea Project Charter-ului, finalizarea etapei de testare, semnarea recepției finale, data de go-live. În diagrama Gantt, milestone-urile se reprezintă de obicei printr-un romb, nu printr-o bară.\n\n**Baseline-ul de schedule** este planul de eșalonare aprobat oficial la finalul planificării — practic o \"fotografie\" a datelor de start/finish planificate pentru fiecare activitate. Baseline-ul devine referința fixă față de care măsori, pe tot parcursul execuției, abaterile (schedule variance): compari data reală de finalizare a unei activități cu data ei din baseline pentru a vedea dacă proiectul este în grafic, în avans sau în întârziere.\n\nConform PMBOK 7, baseline-ul **nu se modifică liber** — orice schimbare a lui trece printr-un proces formal de control al schimbărilor (change control), documentat și aprobat, pentru a păstra o linie de bază credibilă pentru raportare și pentru lecțiile învățate la finalul proiectului.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul drumului critic — implementare ERP",
+    "concept_key": "drum-critic-critical-path",
+    "md": "O firmă de distribuție din România implementează un sistem ERP. Activitățile, duratele (în zile lucrătoare) și dependențele sunt:\n\n| Cod | Activitate | Durată | Depinde de |\n|---|---|---|---|\n| A | Analiză cerințe | 5 | — |\n| B | Configurare modul financiar | 8 | A |\n| C | Configurare modul stocuri | 6 | A |\n| D | Migrare date | 4 | B, C |\n| E | Testare | 5 | D |\n| F | Instruire utilizatori | 3 | C |\n| G | Go-live | 1 | E, F |\n\n**Pasul înainte (ES/EF)**, proiect început în ziua 0:\n- A: ES 0, EF 5\n- B: ES 5, EF 13\n- C: ES 5, EF 11\n- D: ES = max(13, 11) = 13, EF 17\n- E: ES 17, EF 22\n- F: ES 11, EF 14\n- G: ES = max(22, 14) = 22, EF 23\n\nDurata totală a proiectului: **23 de zile lucrătoare**.\n\n**Pasul înapoi (LS/LF)**, pornind de la ziua 23:\n- G: LF 23, LS 22\n- E: LF 22, LS 17\n- F: LF 22, LS 19\n- D: LF 17, LS 13\n- C: LF = min(13, 19) = 13, LS 7\n- B: LF 13, LS 5\n- A: LF = min(5, 7) = 5, LS 0\n\n**Drumul critic**: A → B → D → E → G (5 + 8 + 4 + 5 + 1 = 23 zile). Activitățile C și F nu sunt critice — au float, așa cum vezi în exemplul următor.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b5"
+   },
+   {
+    "type": "example",
+    "title": "De ce contează drumul critic în control — impactul unei întârzieri",
+    "concept_key": "float-slack-rezerva-timp",
+    "md": "Folosind exemplul de mai sus, calculăm float-ul fiecărei activități (total float = LS − ES):\n\n| Activitate | ES | LS | Float | Status |\n|---|---|---|---|---|\n| A | 0 | 0 | 0 | Critică |\n| B | 5 | 5 | 0 | Critică |\n| C | 5 | 7 | 2 | Are rezervă |\n| D | 13 | 13 | 0 | Critică |\n| E | 17 | 17 | 0 | Critică |\n| F | 11 | 19 | 8 | Are rezervă mare |\n| G | 22 | 22 | 0 | Critică |\n\nActivitatea **F (Instruire utilizatori)** are 8 zile float — poate începe cu până la 8 zile mai târziu decât cel mai devreme moment posibil, fără să afecteze data de go-live. Managerul de proiect poate muta trainerul pe altă activitate urgentă în acest interval, fără niciun risc pentru termen.\n\nÎn schimb, la finalul primei luni de execuție se constată că activitatea **B**, care este critică, durează efectiv 10 zile în loc de 8 (întârziere de 2 zile, cauzată de disponibilitate redusă a consultantului financiar). Pentru că B este pe drumul critic (float = 0), întreaga durată a proiectului crește automat la 25 de zile — întârzierea se propagă direct în data de go-live, fără nicio marjă de absorbție. Acesta este motivul pentru care monitorizarea zilnică a activităților critice este prioritatea numărul unu a oricărui manager de proiect.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Drumul critic **nu este fix pe toată durata proiectului**. Dacă o activitate necritică (cu float pozitiv) acumulează întârzieri suficiente încât să-și consume tot float-ul, ea devine critică și se poate crea un drum critic nou, uneori diferit de cel inițial. De aceea diagrama Gantt trebuie recalculată periodic (de exemplu săptămânal), nu doar desenată o singură dată la începutul proiectului. Un al doilea pericol frecvent: baseline-ul se modifică informal, \"din mers\", de fiecare dată când apare o întârziere — practică ce distruge utilitatea lui ca instrument de măsurare a performanței (schedule variance) și ascunde probleme reale de la sponsor.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O echipă planifică renovarea unui birou înainte de mutarea unei companii. Activitățile identificate sunt:\n\n| Cod | Activitate | Durată (zile) | Depinde de |\n|---|---|---|---|\n| P1 | Comandă și livrare mobilier | 10 | — |\n| P2 | Zugrăvit pereți | 3 | — |\n| P3 | Montaj mobilier | 2 | P1, P2 |\n| P4 | Instalare infrastructură IT | 4 | P3 |\n| P5 | Recepție finală | 1 | P4 |\n\nCerințe:\n1. Calculează ES/EF pentru fiecare activitate (pasul înainte).\n2. Calculează LS/LF pentru fiecare activitate (pasul înapoi).\n3. Identifică drumul critic și durata totală a proiectului.\n4. Calculează float-ul pentru fiecare activitate necritică și explică ce înseamnă practic pentru echipă.",
+    "solution_md": "**Pasul înainte (ES/EF)**, start în ziua 0:\n- P1: ES 0, EF 10\n- P2: ES 0, EF 3\n- P3: ES = max(10, 3) = 10, EF 12\n- P4: ES 12, EF 16\n- P5: ES 16, EF 17\n\nDurata totală a proiectului: **17 zile**.\n\n**Pasul înapoi (LS/LF)**, pornind de la ziua 17:\n- P5: LF 17, LS 16\n- P4: LF 16, LS 12\n- P3: LF 12, LS 10\n- P2: LF 10, LS 7\n- P1: LF 10, LS 0\n\n**Drumul critic**: P1 → P3 → P4 → P5 (10 + 2 + 4 + 1 = 17 zile).\n\n**Float**:\n- P1: LS − ES = 0 − 0 = 0 → critică.\n- P2: LS − ES = 7 − 0 = 7 zile float → zugrăvitul poate începe cu până la 7 zile mai târziu (sau poate dura până la 7 zile mai mult) fără a întârzia mutarea companiei, pentru că mobilierul oricum nu ajunge înainte de ziua 10.\n- P3, P4, P5: float 0 → critice.\n\nConcluzie practică: echipa trebuie să urmărească zilnic livrarea mobilierului (P1) — orice întârziere aici se transmite direct în data finală de recepție. Zugrăvirea (P2) poate fi reprogramată fără riscuri, oferind flexibilitate pentru echipa de zugravi.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce înseamnă faptul că o activitate are float (slack) egal cu zero?",
+    "choices": [
+     "Activitatea nu are resurse alocate încă",
+     "Activitatea face parte din drumul critic și nu poate întârzia fără a afecta termenul final al proiectului",
+     "Activitatea a fost deja finalizată",
+     "Activitatea nu are nicio dependență cu alte activități"
+    ],
+    "answer": 1,
+    "explain": "Float zero (LS = ES, respectiv LF = EF) este definiția unei activități critice: orice întârziere a ei se propagă direct în data de finalizare a proiectului.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este rolul principal al unei schedule baseline într-un proiect?",
+    "choices": [
+     "Înlocuiește diagrama Gantt curentă cu una mai simplă",
+     "Servește drept plan de referință fix, folosit pentru a măsura abaterile (variance) față de execuția reală",
+     "Elimină nevoia de a calcula drumul critic",
+     "Se actualizează automat de fiecare dată când apare o întârziere"
+    ],
+    "answer": 1,
+    "explain": "Baseline-ul este \"fotografia\" planului aprobat inițial. Se modifică doar printr-un proces formal de control al schimbărilor, tocmai pentru a rămâne o referință credibilă pentru măsurarea performanței.",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este drumul critic (critical path) al unui proiect?",
+    "back": "Cea mai lungă succesiune de activități dependente dintr-un proiect; determină durata minimă posibilă a proiectului, iar orice întârziere pe acest drum întârzie întregul proiect.",
+    "concept_key": "drum-critic-critical-path",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează total float-ul unei activități?",
+    "back": "Total float = LS − ES = LF − EF (Late Start minus Early Start, respectiv Late Finish minus Early Finish).",
+    "concept_key": "float-slack-rezerva-timp",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce valoare de float au activitățile aflate pe drumul critic?",
+    "back": "Zero — nu au nicio marjă de întârziere fără a afecta data de finalizare a proiectului.",
+    "concept_key": "float-slack-rezerva-timp",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o schedule baseline?",
+    "back": "Planul de eșalonare aprobat inițial, folosit ca referință fixă pentru a măsura abaterile dintre plan și execuția reală; se modifică doar printr-un control formal de schimbare.",
+    "concept_key": "milestone-baseline",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un milestone (jalon) într-o diagramă Gantt?",
+    "back": "Un eveniment cu durată zero, reprezentat de obicei printr-un romb, care marchează finalizarea unei faze sau a unui livrabil important (ex: aprobare charter, go-live).",
+    "concept_key": "milestone-baseline",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine a popularizat diagrama Gantt și în ce perioadă?",
+    "back": "Henry Gantt, inginer și consultant american, la începutul anilor 1910.",
+    "concept_key": "diagrama-gantt-definitie",
+    "blockId": "cmjjuxvsx005eumkpfnp67vj6-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1535,
+   "flashcards": 6
+  }
+ }
+}

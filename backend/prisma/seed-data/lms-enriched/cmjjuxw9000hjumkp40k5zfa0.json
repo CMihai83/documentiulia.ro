@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw9000hjumkp40k5zfa0",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Dosarul de Personal",
+ "lesson": "Contractul individual de muncă detaliat",
+ "category": "HR_COMPLIANCE",
+ "content": "# Contractul individual de muncă detaliat\n\nContractul individual de muncă (CIM) este actul juridic prin care se stabilește raportul de muncă dintre angajator și salariat. Codul muncii (Legea nr. 53/2003, republicată) impune **forma scrisă obligatorie** a CIM, sub sancțiunea nulității absolute — un contract verbal nu produce efecte juridice valabile în România.\n\nÎnainte de semnare, angajatorul are obligația de **informare prealabilă** a viitorului salariat cu privire la elementele esențiale ale contractului (identitatea părților, locul muncii, funcția, salariul, durata muncii etc.), conform art. 17 din Codul muncii. Informarea poate fi realizată chiar prin proiectul de contract, dacă acesta conține toate elementele cerute de lege.\n\nUn pas esențial, adesea confundat cu simpla semnare: **înregistrarea în REVISAL** (Registrul general de evidență a salariaților) trebuie făcută cel târziu în ziua anterioară începerii activității. Dacă salariatul începe lucrul luni, contractul trebuie transmis în REVISAL cel mai târziu duminică, indiferent de zilele nelucrătoare.\n\nArt. 17 alin. (3) din Codul muncii enumeră elementele pe care CIM trebuie să le conțină obligatoriu. Un dosar de personal complet verifică prezența tuturor acestor clauze:\n\n- **identitatea părților** — angajator (denumire, sediu, CUI) și salariat (nume, CNP, domiciliu);\n- **locul muncii**, sau mențiunea că salariatul își desfășoară activitatea în diverse locuri, dacă nu există un loc fix;\n- **sediul/domiciliul angajatorului**;\n- **funcția/ocupația**, conform Clasificării Ocupațiilor din România (COR), și fișa postului cu atribuțiile aferente;\n- **criteriile de evaluare** a activității profesionale;\n- **riscurile specifice postului**;\n- **data de la care contractul își produce efectele**;\n- **durata contractului** — determinată (cu motivul concret) sau nedeterminată;\n- **durata concediului de odihnă** (minimum 20 de zile lucrătoare/an);\n- **condițiile de acordare a preavizului**;\n- **salariul de bază**, alte elemente constitutive ale veniturilor și periodicitatea plății;\n- **durata normală a muncii**, în ore/zi și ore/săptămână (40 h/săptămână pentru normă întreagă);\n- **contractul colectiv de muncă** aplicabil, dacă există;\n- **perioada de probă**, dacă este cazul.\n\nLipsa uneia dintre aceste clauze nu anulează automat contractul, dar expune angajatorul la sancțiuni la un control ITM și la contestații din partea salariatului.\n\nPe lângă clauzele obligatorii, Codul muncii reglementează expres trei **clauze specifice, opționale**, negociabile între părți:\n\n**Clauza de mobilitate (art. 25)** — permite angajatorului să solicite salariatului desfășurarea activității în locuri diferite, în schimbul unei prestații suplimentare, în bani sau în natură.\n\n**Clauza de confidențialitate (art. 26)** — obligă ambele părți să nu transmită date sau informații de care au luat cunoștință în timpul executării contractului. Nerespectarea atrage răspundere patrimonială.\n\n**Clauza de neconcurență (art. 21-24)** — cea mai sensibilă în practică. Obligă salariatul ca, după încetarea contractului, să nu presteze, în interes propriu sau al unui terț, o activitate concurentă cu cea prestată la angajatorul anterior, în schimbul unei **indemnizații lunare de neconcurență**. Condiții esențiale:\n\n- indemnizația este de **minimum 50%** din media veniturilor salariale brute din ultimele 6 luni anterioare încetării CIM;\n- clauza trebuie să precizeze concret activitățile interzise, terții vizați și aria geografică — nu poate interzice absolut exercitarea profesiei;\n- durata maximă a clauzei este de **2 ani** de la data încetării contractului.\n\nO clauză redactată vag, fără activități sau arie geografică precizate, este lovită de nulitate.\n\n## Exemplu: Calculul indemnizației de neconcurență\n**Situație:** O contabilă șefă are, în ultimele 6 luni de activitate, un venit salarial brut mediu de 6.500 lei/lună. La încetarea CIM, părțile negociază o clauză de neconcurență cu durata de 18 luni.\n\n**Calcul indemnizație minimă lunară:**\nIndemnizație minimă = 6.500 lei × 50% = **3.250 lei/lună**\n\n**Total indemnizație pe durata clauzei (18 luni):**\n3.250 lei × 18 = **58.500 lei**, sumă pe care fostul angajator este obligat să o plătească eșalonat, lunar, pe toată durata clauzei — indiferent dacă salariata găsește sau nu un loc de muncă neconcurent.\n\n⚠ Dacă fosta salariată nu respectă interdicția, este obligată să restituie indemnizația încasată și să repare eventualul prejudiciu. Tratamentul fiscal al acestei indemnizații trebuie verificat punctual cu un consultant fiscal, întrucât nu este un venit salarial curent.\n\n## Exemplu: De la salariul brut din CIM la salariul net\n**Situație:** Un salariat cu normă întreagă are salariul de bază înscris în CIM de 6.000 lei brut/lună, fără sporuri sau deduceri personale suplimentare.\n\n**Reținerile salariatului:**\n- CAS (pensii), 25%: 6.000 × 25% = 1.500 lei\n- CASS (sănătate), 10%: 6.000 × 10% = 600 lei\n- Bază de calcul impozit: 6.000 − 1.500 − 600 = 3.900 lei\n- Impozit pe venit, 10%: 3.900 × 10% = 390 lei\n\n**Salariu net:** 6.000 − 1.500 − 600 − 390 = **3.510 lei**\n\n**Cost angajator:**\n- CAM, 2,25%: 6.000 × 2,25% = 135 lei\n- Cost total angajator: 6.000 + 135 = **6.135 lei**\n\nAceastă structură trebuie reflectată corect în clauza salarială a CIM: salariul de bază brut, periodicitatea plății și eventualele elemente constitutive suplimentare (sporuri, tichete de masă etc.), conform art. 17 alin. (3) lit. k) din Codul muncii.\n\n> Temei legal: Legea nr. 53/2003 - Codul muncii, republicată, cu modificările și completările ulterioare Art. 17 alin. (3), Art. 20-26 (în vigoare de la 2011-05-18)\nArt. 17 alin. (3) stabilește lista elementelor obligatorii ale CIM, iar art. 20-26 reglementează clauzele specifice (formare profesională, mobilitate, confidențialitate, neconcurență). Verificați întotdeauna forma actualizată a Codului muncii, întrucât aceste articole au suferit modificări succesive de la republicarea din 18.05.2011.\n\n⚠ Înregistrarea cu întârziere în REVISAL a unui CIM nou sau a unui act adițional este una dintre cele mai frecvente abateri constatate de ITM la control. Dosarul de personal conține date cu caracter personal (CNP, domiciliu, uneori date medicale) — accesul trebuie restricționat la personalul HR autorizat, conform principiilor GDPR de minimizare a datelor. Prezentul material are scop informativ; pentru redactarea unor clauze cu impact financiar sau litigios (în special neconcurență sau mobilitate), recomandăm consultarea unui avocat specializat în dreptul muncii.\n\n## Exercițiu\nCompania ABC SRL angajează un contabil șef cu normă întreagă, începând de luni, 13 iulie 2026. Salariul de bază brut negociat este 8.000 lei/lună. Angajatorul dorește să introducă în CIM o clauză de neconcurență valabilă 24 de luni de la încetarea contractului, media veniturilor brute din ultimele 6 luni de activitate fiind estimativ tot 8.000 lei/lună.\n\nCerințe:\n1. Până când trebuie înregistrat CIM în REVISAL?\n2. Se încadrează cele 24 de luni propuse în durata maximă legală a clauzei de neconcurență?\n3. Care este indemnizația minimă lunară de neconcurență pe care angajatorul trebuie să o plătească?\n4. Enumerați încă 3 clauze obligatorii (diferite de salariu și neconcurență) care trebuie să apară în CIM.\n\n**Soluție:** 1. CIM trebuie înregistrat în REVISAL cel târziu duminică, 12 iulie 2026 (ziua anterioară începerii activității), indiferent că este zi nelucrătoare.\n\n2. Da — durata maximă legală a clauzei de neconcurență este de 2 ani (24 de luni) de la încetarea contractului; cele 24 de luni propuse se încadrează exact la limita maximă admisă de art. 22 din Codul muncii.\n\n3. Indemnizație minimă lunară = 8.000 lei × 50% = **4.000 lei/lună**, plătibilă pe toată durata clauzei (24 de luni), adică un minim de 96.000 lei în sarcina angajatorului.\n\n4. Alte clauze obligatorii de verificat: locul muncii (sediul/punctul de lucru); durata concediului de odihnă (minimum 20 de zile lucrătoare/an); condițiile de acordare a preavizului. Se pot menționa suplimentar criteriile de evaluare a activității profesionale sau perioada de probă (maximum 90 de zile calendaristice pentru funcții de execuție, respectiv 120 de zile pentru funcții de conducere — contabilul șef fiind, de regulă, funcție de conducere).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "cim-forma-si-continut",
+    "md": "Contractul individual de muncă (CIM) este actul juridic prin care se stabilește raportul de muncă dintre angajator și salariat. Codul muncii (Legea nr. 53/2003, republicată) impune **forma scrisă obligatorie** a CIM, sub sancțiunea nulității absolute — un contract verbal nu produce efecte juridice valabile în România.\n\nÎnainte de semnare, angajatorul are obligația de **informare prealabilă** a viitorului salariat cu privire la elementele esențiale ale contractului (identitatea părților, locul muncii, funcția, salariul, durata muncii etc.), conform art. 17 din Codul muncii. Informarea poate fi realizată chiar prin proiectul de contract, dacă acesta conține toate elementele cerute de lege.\n\nUn pas esențial, adesea confundat cu simpla semnare: **înregistrarea în REVISAL** (Registrul general de evidență a salariaților) trebuie făcută cel târziu în ziua anterioară începerii activității. Dacă salariatul începe lucrul luni, contractul trebuie transmis în REVISAL cel mai târziu duminică, indiferent de zilele nelucrătoare.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cim-clauze-obligatorii",
+    "md": "Art. 17 alin. (3) din Codul muncii enumeră elementele pe care CIM trebuie să le conțină obligatoriu. Un dosar de personal complet verifică prezența tuturor acestor clauze:\n\n- **identitatea părților** — angajator (denumire, sediu, CUI) și salariat (nume, CNP, domiciliu);\n- **locul muncii**, sau mențiunea că salariatul își desfășoară activitatea în diverse locuri, dacă nu există un loc fix;\n- **sediul/domiciliul angajatorului**;\n- **funcția/ocupația**, conform Clasificării Ocupațiilor din România (COR), și fișa postului cu atribuțiile aferente;\n- **criteriile de evaluare** a activității profesionale;\n- **riscurile specifice postului**;\n- **data de la care contractul își produce efectele**;\n- **durata contractului** — determinată (cu motivul concret) sau nedeterminată;\n- **durata concediului de odihnă** (minimum 20 de zile lucrătoare/an);\n- **condițiile de acordare a preavizului**;\n- **salariul de bază**, alte elemente constitutive ale veniturilor și periodicitatea plății;\n- **durata normală a muncii**, în ore/zi și ore/săptămână (40 h/săptămână pentru normă întreagă);\n- **contractul colectiv de muncă** aplicabil, dacă există;\n- **perioada de probă**, dacă este cazul.\n\nLipsa uneia dintre aceste clauze nu anulează automat contractul, dar expune angajatorul la sancțiuni la un control ITM și la contestații din partea salariatului.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cim-clauze-specifice-optionale",
+    "md": "Pe lângă clauzele obligatorii, Codul muncii reglementează expres trei **clauze specifice, opționale**, negociabile între părți:\n\n**Clauza de mobilitate (art. 25)** — permite angajatorului să solicite salariatului desfășurarea activității în locuri diferite, în schimbul unei prestații suplimentare, în bani sau în natură.\n\n**Clauza de confidențialitate (art. 26)** — obligă ambele părți să nu transmită date sau informații de care au luat cunoștință în timpul executării contractului. Nerespectarea atrage răspundere patrimonială.\n\n**Clauza de neconcurență (art. 21-24)** — cea mai sensibilă în practică. Obligă salariatul ca, după încetarea contractului, să nu presteze, în interes propriu sau al unui terț, o activitate concurentă cu cea prestată la angajatorul anterior, în schimbul unei **indemnizații lunare de neconcurență**. Condiții esențiale:\n\n- indemnizația este de **minimum 50%** din media veniturilor salariale brute din ultimele 6 luni anterioare încetării CIM;\n- clauza trebuie să precizeze concret activitățile interzise, terții vizați și aria geografică — nu poate interzice absolut exercitarea profesiei;\n- durata maximă a clauzei este de **2 ani** de la data încetării contractului.\n\nO clauză redactată vag, fără activități sau arie geografică precizate, este lovită de nulitate.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul indemnizației de neconcurență",
+    "concept_key": "cim-clauza-neconcurenta-calcul",
+    "md": "**Situație:** O contabilă șefă are, în ultimele 6 luni de activitate, un venit salarial brut mediu de 6.500 lei/lună. La încetarea CIM, părțile negociază o clauză de neconcurență cu durata de 18 luni.\n\n**Calcul indemnizație minimă lunară:**\nIndemnizație minimă = 6.500 lei × 50% = **3.250 lei/lună**\n\n**Total indemnizație pe durata clauzei (18 luni):**\n3.250 lei × 18 = **58.500 lei**, sumă pe care fostul angajator este obligat să o plătească eșalonat, lunar, pe toată durata clauzei — indiferent dacă salariata găsește sau nu un loc de muncă neconcurent.\n\n⚠ Dacă fosta salariată nu respectă interdicția, este obligată să restituie indemnizația încasată și să repare eventualul prejudiciu. Tratamentul fiscal al acestei indemnizații trebuie verificat punctual cu un consultant fiscal, întrucât nu este un venit salarial curent.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b4"
+   },
+   {
+    "type": "example",
+    "title": "De la salariul brut din CIM la salariul net",
+    "concept_key": "cim-salariu-brut-net-calcul",
+    "md": "**Situație:** Un salariat cu normă întreagă are salariul de bază înscris în CIM de 6.000 lei brut/lună, fără sporuri sau deduceri personale suplimentare.\n\n**Reținerile salariatului:**\n- CAS (pensii), 25%: 6.000 × 25% = 1.500 lei\n- CASS (sănătate), 10%: 6.000 × 10% = 600 lei\n- Bază de calcul impozit: 6.000 − 1.500 − 600 = 3.900 lei\n- Impozit pe venit, 10%: 3.900 × 10% = 390 lei\n\n**Salariu net:** 6.000 − 1.500 − 600 − 390 = **3.510 lei**\n\n**Cost angajator:**\n- CAM, 2,25%: 6.000 × 2,25% = 135 lei\n- Cost total angajator: 6.000 + 135 = **6.135 lei**\n\nAceastă structură trebuie reflectată corect în clauza salarială a CIM: salariul de bază brut, periodicitatea plății și eventualele elemente constitutive suplimentare (sporuri, tichete de masă etc.), conform art. 17 alin. (3) lit. k) din Codul muncii.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 - Codul muncii, republicată, cu modificările și completările ulterioare",
+    "article": "Art. 17 alin. (3), Art. 20-26",
+    "effective": "2011-05-18",
+    "md": "Art. 17 alin. (3) stabilește lista elementelor obligatorii ale CIM, iar art. 20-26 reglementează clauzele specifice (formare profesională, mobilitate, confidențialitate, neconcurență). Verificați întotdeauna forma actualizată a Codului muncii, întrucât aceste articole au suferit modificări succesive de la republicarea din 18.05.2011.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Înregistrarea cu întârziere în REVISAL a unui CIM nou sau a unui act adițional este una dintre cele mai frecvente abateri constatate de ITM la control. Dosarul de personal conține date cu caracter personal (CNP, domiciliu, uneori date medicale) — accesul trebuie restricționat la personalul HR autorizat, conform principiilor GDPR de minimizare a datelor. Prezentul material are scop informativ; pentru redactarea unor clauze cu impact financiar sau litigios (în special neconcurență sau mobilitate), recomandăm consultarea unui avocat specializat în dreptul muncii.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Compania ABC SRL angajează un contabil șef cu normă întreagă, începând de luni, 13 iulie 2026. Salariul de bază brut negociat este 8.000 lei/lună. Angajatorul dorește să introducă în CIM o clauză de neconcurență valabilă 24 de luni de la încetarea contractului, media veniturilor brute din ultimele 6 luni de activitate fiind estimativ tot 8.000 lei/lună.\n\nCerințe:\n1. Până când trebuie înregistrat CIM în REVISAL?\n2. Se încadrează cele 24 de luni propuse în durata maximă legală a clauzei de neconcurență?\n3. Care este indemnizația minimă lunară de neconcurență pe care angajatorul trebuie să o plătească?\n4. Enumerați încă 3 clauze obligatorii (diferite de salariu și neconcurență) care trebuie să apară în CIM.",
+    "solution_md": "1. CIM trebuie înregistrat în REVISAL cel târziu duminică, 12 iulie 2026 (ziua anterioară începerii activității), indiferent că este zi nelucrătoare.\n\n2. Da — durata maximă legală a clauzei de neconcurență este de 2 ani (24 de luni) de la încetarea contractului; cele 24 de luni propuse se încadrează exact la limita maximă admisă de art. 22 din Codul muncii.\n\n3. Indemnizație minimă lunară = 8.000 lei × 50% = **4.000 lei/lună**, plătibilă pe toată durata clauzei (24 de luni), adică un minim de 96.000 lei în sarcina angajatorului.\n\n4. Alte clauze obligatorii de verificat: locul muncii (sediul/punctul de lucru); durata concediului de odihnă (minimum 20 de zile lucrătoare/an); condițiile de acordare a preavizului. Se pot menționa suplimentar criteriile de evaluare a activității profesionale sau perioada de probă (maximum 90 de zile calendaristice pentru funcții de execuție, respectiv 120 de zile pentru funcții de conducere — contabilul șef fiind, de regulă, funcție de conducere).",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este perioada de probă maximă pentru o funcție de conducere, conform Codului muncii?",
+    "choices": [
+     "30 de zile calendaristice",
+     "90 de zile calendaristice",
+     "120 de zile calendaristice",
+     "180 de zile calendaristice"
+    ],
+    "answer": 2,
+    "explain": "Pentru funcțiile de execuție perioada de probă maximă este de 90 de zile calendaristice, iar pentru funcțiile de conducere, de 120 de zile calendaristice.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este indemnizația minimă lunară de neconcurență, raportată la veniturile salariale?",
+    "choices": [
+     "30% din media veniturilor brute din ultimele 3 luni",
+     "50% din media veniturilor brute din ultimele 6 luni",
+     "75% din ultimul salariu brut",
+     "100% din media veniturilor brute din ultimele 12 luni"
+    ],
+    "answer": 1,
+    "explain": "Art. 21 din Codul muncii stabilește un prag minim de 50% din media veniturilor salariale brute din ultimele 6 luni anterioare încetării contractului.",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata maximă a clauzei de neconcurență după încetarea CIM?",
+    "back": "Maximum 2 ani de la data încetării contractului individual de muncă (art. 22 Codul muncii).",
+    "concept_key": "cim-clauza-neconcurenta-durata",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este indemnizația minimă lunară pentru clauza de neconcurență?",
+    "back": "Minimum 50% din media veniturilor salariale brute ale salariatului din ultimele 6 luni anterioare încetării CIM.",
+    "concept_key": "cim-clauza-neconcurenta-indemnizatie",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când trebuie înregistrat un CIM în REVISAL?",
+    "back": "Cel târziu în ziua anterioară începerii activității de către salariat.",
+    "concept_key": "cim-revisal-termen",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 3 clauze specifice/opționale menționate expres de Codul muncii?",
+    "back": "Clauza de mobilitate (art. 25), clauza de confidențialitate (art. 26) și clauza de neconcurență (art. 21-24).",
+    "concept_key": "cim-clauze-specifice-lista",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este perioada de probă maximă pentru funcții de execuție, respectiv de conducere?",
+    "back": "90 de zile calendaristice pentru funcțiile de execuție; 120 de zile calendaristice pentru funcțiile de conducere.",
+    "concept_key": "cim-perioada-proba",
+    "blockId": "cmjjuxw9000hjumkp40k5zfa0-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1145,
+   "flashcards": 5
+  }
+ }
+}

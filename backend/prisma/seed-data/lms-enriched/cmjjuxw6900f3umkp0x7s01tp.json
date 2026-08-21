@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxw6900f3umkp0x7s01tp",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Cash Flow Management",
+ "lesson": "Working Capital Optimization",
+ "category": "FINANCE_OPS",
+ "content": "# Working Capital Optimization\n\n## De ce contează optimizarea capitalului de lucru\n\nCapitalul de lucru (working capital) reprezintă diferența dintre activele circulante (creanțe, stocuri, numerar) și datoriile curente (furnizori, datorii pe termen scurt) ale unei companii. Pentru un CFO sau controller, capitalul de lucru nu este doar un indicator de bilanț, ci o sursă de finanțare \"internă\", la fel de reală ca un credit bancar — doar că, spre deosebire de un credit, optimizarea lui nu costă dobândă.\n\nO companie care își blochează inutil banii în creanțe încasate greu sau în stocuri supradimensionate este forțată să apeleze la finanțare externă (linii de credit, factoring) pentru a-și acoperi nevoile curente, generând costuri financiare suplimentare. Invers, o companie care își gestionează eficient ciclul de încasări-plăți își eliberează lichidități pe care le poate folosi pentru investiții, reducerea datoriilor sau distribuire de dividende.\n\nCei trei indicatori centrali ai eficienței capitalului de lucru sunt **DSO** (viteza de încasare a creanțelor), **DIO** (viteza de rotație a stocurilor) și **DPO** (viteza de plată a furnizorilor). Combinați, aceștia formează **Ciclul de Conversie a Numerarului** (Cash Conversion Cycle – CCC), indicatorul-cheie pe care îl vei învăța să îl calculezi și să îl optimizezi în această lecție.\n\n## DSO – Days Sales Outstanding (durata medie de încasare a creanțelor)\n\nDSO măsoară câte zile, în medie, îi ia companiei să încaseze contravaloarea vânzărilor pe credit comercial.\n\n**Formulă:** DSO = (Creanțe comerciale medii / Vânzări nete) × 365\n\nCu cât DSO este mai mic, cu atât compania își încasează mai rapid clienții și își reduce nevoia de finanțare a ciclului de exploatare. Un DSO în creștere de la o perioadă la alta este de regulă un semnal de alarmă: fie politica de credit comercial este prea permisivă, fie departamentul de colectare (credit control) nu urmărește suficient de activ scadențele, fie apar probleme de solvabilitate la clienți.\n\nÎn practică, DSO se compară întotdeauna cu termenul de plată contractual (de exemplu, 30 sau 45 de zile). Dacă termenul contractual este de 30 de zile, iar DSO calculat este de 55 de zile, înseamnă că, în medie, clienții depășesc scadența cu aproape o lună — un semnal clar pentru revizuirea politicii de credit sau intensificarea colectării.\n\n## DIO și DPO – rotația stocurilor și plata furnizorilor\n\n**DIO (Days Inventory Outstanding)** arată câte zile stau, în medie, banii \"înghețați\" în stocuri înainte de a fi vânduți.\n\nFormulă: DIO = (Stocuri medii / Costul bunurilor vândute) × 365\n\nUn DIO ridicat poate indica stocuri supradimensionate, produse cu mișcare lentă (slow-moving) sau planificare deficitară a aprovizionării. Un DIO prea mic, la polul opus, poate genera rupturi de stoc și pierderi de vânzări — de aceea optimizarea DIO trebuie corelată cu politica de aprovizionare și cu variabilitatea cererii.\n\n**DPO (Days Payable Outstanding)** măsoară câte zile îi ia companiei să își plătească furnizorii.\n\nFormulă: DPO = (Datorii comerciale medii / Costul bunurilor vândute) × 365\n\nSpre deosebire de DSO și DIO, un DPO mai mare este, în general, favorabil pentru cash flow-ul companiei — furnizorii finanțează parțial ciclul de exploatare. Totuși, extinderea excesivă a DPO are limite: poate afecta relația cu furnizorii, poate duce la pierderea discounturilor de plată anticipată (early payment discount) și, dincolo de un anumit prag, poate semnala dificultăți financiare către piață.\n\n## Ciclul de Conversie a Numerarului (Cash Conversion Cycle)\n\nCCC combină cei trei indicatori într-o singură măsură a numărului de zile în care banii companiei sunt \"blocați\" în ciclul de exploatare, de la plata furnizorilor până la încasarea clienților.\n\n**Formulă:** CCC = DSO + DIO − DPO\n\nUn CCC mai mic înseamnă că firma își recuperează mai rapid numerarul investit în operațiuni, deci are nevoie de mai puțină finanțare externă pentru capitalul de lucru. Unele companii cu putere mare de negociere (retaileri mari, platforme e-commerce) reușesc chiar un **CCC negativ** — încasează de la clienți înainte să plătească furnizorii, folosind practic banii acestora din urmă pentru a-și finanța operațiunile.\n\nStrategiile principale de reducere a CCC se grupează pe cei trei piloni:\n\n- **Reducerea DSO:** facturare promptă și corectă (inclusiv prin e-Factura), politici de credit comercial mai stricte, discounturi pentru plata anticipată, urmărire activă a scadențarului, eventual factoring pentru creanțele cu risc ridicat.\n- **Reducerea DIO:** implementare de sisteme de tip Just-in-Time sau planificare a cererii (demand forecasting), eliminarea stocurilor cu mișcare lentă, negocierea unor livrări mai frecvente și în cantități mai mici cu furnizorii.\n- **Creșterea DPO:** renegocierea termenelor de plată cu furnizorii-cheie, consolidarea achizițiilor pentru putere de negociere mai mare, utilizarea de instrumente de tip supply chain finance (reverse factoring).\n\nImportant: optimizarea CCC nu înseamnă maximizarea fiecărei componente izolat, ci găsirea unui echilibru sustenabil — o reducere agresivă a DSO care sperie clienții sau o extindere a DPO care deteriorează relația cu furnizorii-cheie poate distruge mai multă valoare decât cea eliberată în numerar.\n\n## Exemplu: Calculul CCC pentru Alfa Distribuție SRL\nAlfa Distribuție SRL, companie de distribuție B2B, raportează următoarele date medii anuale (lei):\n\n| Indicator | Valoare |\n|---|---|\n| Vânzări nete anuale | 12.000.000 |\n| Cost bunuri vândute (COGS) | 8.400.000 |\n| Creanțe comerciale medii | 1.800.000 |\n| Stocuri medii | 1.400.000 |\n| Datorii furnizori medii | 1.100.000 |\n\n**DSO** = (1.800.000 / 12.000.000) × 365 = 0,15 × 365 ≈ **55 zile**\n\n**DIO** = (1.400.000 / 8.400.000) × 365 = 0,1667 × 365 ≈ **61 zile**\n\n**DPO** = (1.100.000 / 8.400.000) × 365 = 0,1310 × 365 ≈ **48 zile**\n\n**CCC** = 55 + 61 − 48 = **68 zile**\n\nInterpretare: Alfa Distribuție are nevoie de finanțare a capitalului de lucru pentru aproximativ 68 de zile de activitate. Aplicând CCC la vânzările zilnice medii (12.000.000 / 365 ≈ 32.877 lei/zi), rezultă un necesar de aproximativ 32.877 × 68 ≈ 2.235.600 lei blocați în ciclul de exploatare — sumă pe care compania o finanțează fie din capital propriu, fie din linii de credit purtătoare de dobândă.\n\n## Exemplu: Studiu de caz: reducerea CCC la Beta Manufacturing SRL\nBeta Manufacturing SRL, producător român de componente auto, a derulat un proiect de optimizare a capitalului de lucru pe parcursul unui an. Compania are o cifră de afaceri anuală de 18.250.000 lei (echivalent 50.000 lei/zi).\n\n**Situația inițială:**\n- DSO = 60 zile (termen contractual 45 zile, dar colectare lentă)\n- DIO = 75 zile (stocuri de siguranță supradimensionate)\n- DPO = 30 zile\n- CCC = 60 + 75 − 30 = **105 zile**\n\n**Măsuri implementate:**\n1. Automatizarea facturării și trimiterea facturilor în ziua livrării (inclusiv prin e-Factura), plus un discount de 2% pentru plata în 10 zile → DSO a scăzut la 45 zile.\n2. Implementarea unei planificări a cererii (demand planning) și reducerea stocurilor de produse cu mișcare lentă → DIO a scăzut la 55 zile.\n3. Renegocierea termenelor de plată cu principalii furnizori de la 30 la 45 de zile, în schimbul unor comenzi consolidate și predictibile → DPO a crescut la 45 zile.\n\n**Situația finală:**\n- CCC = 45 + 55 − 45 = **55 zile**\n\nReducerea de 50 de zile a CCC (105 → 55) a eliberat numerar în valoare de 50 zile × 50.000 lei/zi = **2.500.000 lei**, sumă pe care Beta Manufacturing a folosit-o pentru finanțarea unei linii noi de producție, fără a contracta un credit bancar suplimentar.\n\n> Temei legal: OMFP nr. 1802/2014 Structura bilanțului – Secțiunea C (Active circulante: creanțe, stocuri) și Secțiunea D (Datorii ce trebuie plătite într-o perioadă de până la un an) (în vigoare de la 2015-01-01)\nReglementările contabile aprobate prin OMFP nr. 1802/2014, aplicabile de la 1 ianuarie 2015, stabilesc structura bilanțului pe baza căruia se calculează indicatorii de capital de lucru: creanțele comerciale și stocurile sunt prezentate în cadrul activelor circulante, iar datoriile către furnizori se regăsesc la datoriile ce trebuie plătite într-o perioadă de până la un an. Valorile medii folosite în calculul DSO, DIO și DPO se determină, de regulă, ca medie între soldul de la începutul și sfârșitul perioadei de raportare, exact așa cum apar aceste poziții în situațiile financiare întocmite conform acestui ordin.\n\n⚠ Nu optimiza fiecare indicator izolat. O extindere agresivă a DPO peste limitele acceptate de furnizori poate duce la pierderea discounturilor comerciale, la înăsprirea condițiilor de livrare sau chiar la întreruperea colaborării cu furnizorii strategici. La fel, o reducere bruscă a DSO prin termene de plată foarte scurte poate afecta competitivitatea comercială față de concurenți cu politici de credit mai relaxate. Orice modificare a politicilor de credit comercial sau de plată trebuie analizată împreună cu departamentele de vânzări și achiziții, nu doar din perspectivă financiară.\n\n## Exercițiu\nGamma Trading SRL îți pune la dispoziție următoarele date medii anuale (lei):\n\n- Vânzări nete anuale: 7.300.000\n- Cost bunuri vândute (COGS): 5.475.000\n- Creanțe comerciale medii: 900.000\n- Stocuri medii: 675.000\n- Datorii furnizori medii: 450.000\n\nCerințe:\n1. Calculează DSO, DIO, DPO și CCC.\n2. Dacă termenul contractual de încasare de la clienți este de 30 de zile, ce concluzie tragi din DSO calculat?\n3. Propune o măsură concretă de reducere a CCC cu cel puțin 10 zile.\n\n**Soluție:** **1. Calcul indicatori**\n\nVânzări zilnice medii = 7.300.000 / 365 = 20.000 lei/zi\nCOGS zilnic mediu = 5.475.000 / 365 = 15.000 lei/zi\n\nDSO = 900.000 / 20.000 = **45 zile**\nDIO = 675.000 / 15.000 = **45 zile**\nDPO = 450.000 / 15.000 = **30 zile**\n\nCCC = 45 + 45 − 30 = **60 zile**\n\n**2. Interpretare DSO**\n\nTermenul contractual este de 30 de zile, dar DSO real este de 45 de zile — clienții depășesc scadența cu 15 zile în medie. Este un semnal clar că politica de colectare (credit control) trebuie intensificată: reamintiri automate înainte de scadență, escaladare pentru clienții cu întârzieri repetate, eventual revizuirea limitelor de credit acordate.\n\n**3. Măsură propusă**\n\nDe exemplu: renegocierea termenului de plată către furnizori de la 30 la 40 de zile (DPO +10 zile) ar reduce CCC la 50 de zile, fără a modifica deloc politica de creanțe sau stocuri. Alternativ, reducerea DIO cu 10 zile prin optimizarea stocului de siguranță ar produce același efect. Combinația celor două măsuri, aplicată moderat, este de regulă cea mai sustenabilă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "capital-de-lucru-optimizare",
+    "md": "## De ce contează optimizarea capitalului de lucru\n\nCapitalul de lucru (working capital) reprezintă diferența dintre activele circulante (creanțe, stocuri, numerar) și datoriile curente (furnizori, datorii pe termen scurt) ale unei companii. Pentru un CFO sau controller, capitalul de lucru nu este doar un indicator de bilanț, ci o sursă de finanțare \"internă\", la fel de reală ca un credit bancar — doar că, spre deosebire de un credit, optimizarea lui nu costă dobândă.\n\nO companie care își blochează inutil banii în creanțe încasate greu sau în stocuri supradimensionate este forțată să apeleze la finanțare externă (linii de credit, factoring) pentru a-și acoperi nevoile curente, generând costuri financiare suplimentare. Invers, o companie care își gestionează eficient ciclul de încasări-plăți își eliberează lichidități pe care le poate folosi pentru investiții, reducerea datoriilor sau distribuire de dividende.\n\nCei trei indicatori centrali ai eficienței capitalului de lucru sunt **DSO** (viteza de încasare a creanțelor), **DIO** (viteza de rotație a stocurilor) și **DPO** (viteza de plată a furnizorilor). Combinați, aceștia formează **Ciclul de Conversie a Numerarului** (Cash Conversion Cycle – CCC), indicatorul-cheie pe care îl vei învăța să îl calculezi și să îl optimizezi în această lecție.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dso-days-sales-outstanding",
+    "md": "## DSO – Days Sales Outstanding (durata medie de încasare a creanțelor)\n\nDSO măsoară câte zile, în medie, îi ia companiei să încaseze contravaloarea vânzărilor pe credit comercial.\n\n**Formulă:** DSO = (Creanțe comerciale medii / Vânzări nete) × 365\n\nCu cât DSO este mai mic, cu atât compania își încasează mai rapid clienții și își reduce nevoia de finanțare a ciclului de exploatare. Un DSO în creștere de la o perioadă la alta este de regulă un semnal de alarmă: fie politica de credit comercial este prea permisivă, fie departamentul de colectare (credit control) nu urmărește suficient de activ scadențele, fie apar probleme de solvabilitate la clienți.\n\nÎn practică, DSO se compară întotdeauna cu termenul de plată contractual (de exemplu, 30 sau 45 de zile). Dacă termenul contractual este de 30 de zile, iar DSO calculat este de 55 de zile, înseamnă că, în medie, clienții depășesc scadența cu aproape o lună — un semnal clar pentru revizuirea politicii de credit sau intensificarea colectării.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dio-dpo-inventar-si-furnizori",
+    "md": "## DIO și DPO – rotația stocurilor și plata furnizorilor\n\n**DIO (Days Inventory Outstanding)** arată câte zile stau, în medie, banii \"înghețați\" în stocuri înainte de a fi vânduți.\n\nFormulă: DIO = (Stocuri medii / Costul bunurilor vândute) × 365\n\nUn DIO ridicat poate indica stocuri supradimensionate, produse cu mișcare lentă (slow-moving) sau planificare deficitară a aprovizionării. Un DIO prea mic, la polul opus, poate genera rupturi de stoc și pierderi de vânzări — de aceea optimizarea DIO trebuie corelată cu politica de aprovizionare și cu variabilitatea cererii.\n\n**DPO (Days Payable Outstanding)** măsoară câte zile îi ia companiei să își plătească furnizorii.\n\nFormulă: DPO = (Datorii comerciale medii / Costul bunurilor vândute) × 365\n\nSpre deosebire de DSO și DIO, un DPO mai mare este, în general, favorabil pentru cash flow-ul companiei — furnizorii finanțează parțial ciclul de exploatare. Totuși, extinderea excesivă a DPO are limite: poate afecta relația cu furnizorii, poate duce la pierderea discounturilor de plată anticipată (early payment discount) și, dincolo de un anumit prag, poate semnala dificultăți financiare către piață.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cash-conversion-cycle",
+    "md": "## Ciclul de Conversie a Numerarului (Cash Conversion Cycle)\n\nCCC combină cei trei indicatori într-o singură măsură a numărului de zile în care banii companiei sunt \"blocați\" în ciclul de exploatare, de la plata furnizorilor până la încasarea clienților.\n\n**Formulă:** CCC = DSO + DIO − DPO\n\nUn CCC mai mic înseamnă că firma își recuperează mai rapid numerarul investit în operațiuni, deci are nevoie de mai puțină finanțare externă pentru capitalul de lucru. Unele companii cu putere mare de negociere (retaileri mari, platforme e-commerce) reușesc chiar un **CCC negativ** — încasează de la clienți înainte să plătească furnizorii, folosind practic banii acestora din urmă pentru a-și finanța operațiunile.\n\nStrategiile principale de reducere a CCC se grupează pe cei trei piloni:\n\n- **Reducerea DSO:** facturare promptă și corectă (inclusiv prin e-Factura), politici de credit comercial mai stricte, discounturi pentru plata anticipată, urmărire activă a scadențarului, eventual factoring pentru creanțele cu risc ridicat.\n- **Reducerea DIO:** implementare de sisteme de tip Just-in-Time sau planificare a cererii (demand forecasting), eliminarea stocurilor cu mișcare lentă, negocierea unor livrări mai frecvente și în cantități mai mici cu furnizorii.\n- **Creșterea DPO:** renegocierea termenelor de plată cu furnizorii-cheie, consolidarea achizițiilor pentru putere de negociere mai mare, utilizarea de instrumente de tip supply chain finance (reverse factoring).\n\nImportant: optimizarea CCC nu înseamnă maximizarea fiecărei componente izolat, ci găsirea unui echilibru sustenabil — o reducere agresivă a DSO care sperie clienții sau o extindere a DPO care deteriorează relația cu furnizorii-cheie poate distruge mai multă valoare decât cea eliberată în numerar.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul CCC pentru Alfa Distribuție SRL",
+    "concept_key": "cash-conversion-cycle",
+    "md": "Alfa Distribuție SRL, companie de distribuție B2B, raportează următoarele date medii anuale (lei):\n\n| Indicator | Valoare |\n|---|---|\n| Vânzări nete anuale | 12.000.000 |\n| Cost bunuri vândute (COGS) | 8.400.000 |\n| Creanțe comerciale medii | 1.800.000 |\n| Stocuri medii | 1.400.000 |\n| Datorii furnizori medii | 1.100.000 |\n\n**DSO** = (1.800.000 / 12.000.000) × 365 = 0,15 × 365 ≈ **55 zile**\n\n**DIO** = (1.400.000 / 8.400.000) × 365 = 0,1667 × 365 ≈ **61 zile**\n\n**DPO** = (1.100.000 / 8.400.000) × 365 = 0,1310 × 365 ≈ **48 zile**\n\n**CCC** = 55 + 61 − 48 = **68 zile**\n\nInterpretare: Alfa Distribuție are nevoie de finanțare a capitalului de lucru pentru aproximativ 68 de zile de activitate. Aplicând CCC la vânzările zilnice medii (12.000.000 / 365 ≈ 32.877 lei/zi), rezultă un necesar de aproximativ 32.877 × 68 ≈ 2.235.600 lei blocați în ciclul de exploatare — sumă pe care compania o finanțează fie din capital propriu, fie din linii de credit purtătoare de dobândă.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b5"
+   },
+   {
+    "type": "example",
+    "title": "Studiu de caz: reducerea CCC la Beta Manufacturing SRL",
+    "concept_key": "cash-conversion-cycle",
+    "md": "Beta Manufacturing SRL, producător român de componente auto, a derulat un proiect de optimizare a capitalului de lucru pe parcursul unui an. Compania are o cifră de afaceri anuală de 18.250.000 lei (echivalent 50.000 lei/zi).\n\n**Situația inițială:**\n- DSO = 60 zile (termen contractual 45 zile, dar colectare lentă)\n- DIO = 75 zile (stocuri de siguranță supradimensionate)\n- DPO = 30 zile\n- CCC = 60 + 75 − 30 = **105 zile**\n\n**Măsuri implementate:**\n1. Automatizarea facturării și trimiterea facturilor în ziua livrării (inclusiv prin e-Factura), plus un discount de 2% pentru plata în 10 zile → DSO a scăzut la 45 zile.\n2. Implementarea unei planificări a cererii (demand planning) și reducerea stocurilor de produse cu mișcare lentă → DIO a scăzut la 55 zile.\n3. Renegocierea termenelor de plată cu principalii furnizori de la 30 la 45 de zile, în schimbul unor comenzi consolidate și predictibile → DPO a crescut la 45 zile.\n\n**Situația finală:**\n- CCC = 45 + 55 − 45 = **55 zile**\n\nReducerea de 50 de zile a CCC (105 → 55) a eliberat numerar în valoare de 50 zile × 50.000 lei/zi = **2.500.000 lei**, sumă pe care Beta Manufacturing a folosit-o pentru finanțarea unei linii noi de producție, fără a contracta un credit bancar suplimentar.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP nr. 1802/2014",
+    "article": "Structura bilanțului – Secțiunea C (Active circulante: creanțe, stocuri) și Secțiunea D (Datorii ce trebuie plătite într-o perioadă de până la un an)",
+    "effective": "2015-01-01",
+    "md": "Reglementările contabile aprobate prin OMFP nr. 1802/2014, aplicabile de la 1 ianuarie 2015, stabilesc structura bilanțului pe baza căruia se calculează indicatorii de capital de lucru: creanțele comerciale și stocurile sunt prezentate în cadrul activelor circulante, iar datoriile către furnizori se regăsesc la datoriile ce trebuie plătite într-o perioadă de până la un an. Valorile medii folosite în calculul DSO, DIO și DPO se determină, de regulă, ca medie între soldul de la începutul și sfârșitul perioadei de raportare, exact așa cum apar aceste poziții în situațiile financiare întocmite conform acestui ordin.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu optimiza fiecare indicator izolat. O extindere agresivă a DPO peste limitele acceptate de furnizori poate duce la pierderea discounturilor comerciale, la înăsprirea condițiilor de livrare sau chiar la întreruperea colaborării cu furnizorii strategici. La fel, o reducere bruscă a DSO prin termene de plată foarte scurte poate afecta competitivitatea comercială față de concurenți cu politici de credit mai relaxate. Orice modificare a politicilor de credit comercial sau de plată trebuie analizată împreună cu departamentele de vânzări și achiziții, nu doar din perspectivă financiară.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Gamma Trading SRL îți pune la dispoziție următoarele date medii anuale (lei):\n\n- Vânzări nete anuale: 7.300.000\n- Cost bunuri vândute (COGS): 5.475.000\n- Creanțe comerciale medii: 900.000\n- Stocuri medii: 675.000\n- Datorii furnizori medii: 450.000\n\nCerințe:\n1. Calculează DSO, DIO, DPO și CCC.\n2. Dacă termenul contractual de încasare de la clienți este de 30 de zile, ce concluzie tragi din DSO calculat?\n3. Propune o măsură concretă de reducere a CCC cu cel puțin 10 zile.",
+    "solution_md": "**1. Calcul indicatori**\n\nVânzări zilnice medii = 7.300.000 / 365 = 20.000 lei/zi\nCOGS zilnic mediu = 5.475.000 / 365 = 15.000 lei/zi\n\nDSO = 900.000 / 20.000 = **45 zile**\nDIO = 675.000 / 15.000 = **45 zile**\nDPO = 450.000 / 15.000 = **30 zile**\n\nCCC = 45 + 45 − 30 = **60 zile**\n\n**2. Interpretare DSO**\n\nTermenul contractual este de 30 de zile, dar DSO real este de 45 de zile — clienții depășesc scadența cu 15 zile în medie. Este un semnal clar că politica de colectare (credit control) trebuie intensificată: reamintiri automate înainte de scadență, escaladare pentru clienții cu întârzieri repetate, eventual revizuirea limitelor de credit acordate.\n\n**3. Măsură propusă**\n\nDe exemplu: renegocierea termenului de plată către furnizori de la 30 la 40 de zile (DPO +10 zile) ar reduce CCC la 50 de zile, fără a modifica deloc politica de creanțe sau stocuri. Alternativ, reducerea DIO cu 10 zile prin optimizarea stocului de siguranță ar produce același efect. Combinația celor două măsuri, aplicată moderat, este de regulă cea mai sustenabilă.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă a Ciclului de Conversie a Numerarului (CCC)?",
+    "choices": [
+     "CCC = DSO + DIO − DPO",
+     "CCC = DSO − DIO + DPO",
+     "CCC = DIO + DPO − DSO",
+     "CCC = DSO + DPO − DIO"
+    ],
+    "answer": 0,
+    "explain": "CCC = DSO + DIO − DPO: se adună zilele în care banii stau blocați în creanțe și stocuri, apoi se scad zilele câștigate din finanțarea oferită de furnizori.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce indică, în general, o creștere a DPO (Days Payable Outstanding)?",
+    "choices": [
+     "Compania plătește furnizorii mai repede, ceea ce reduce necesarul de finanțare",
+     "Compania plătește furnizorii mai încet, finanțând parțial ciclul de exploatare din resursele furnizorilor",
+     "Compania încasează clienții mai încet",
+     "Compania are stocuri supradimensionate"
+    ],
+    "answer": 1,
+    "explain": "Un DPO mai mare înseamnă că firma reține mai mult timp banii datorați furnizorilor, folosindu-i ca sursă de finanțare gratuită a operațiunilor — dar cu limite, pentru a nu afecta relația comercială.",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula DSO (Days Sales Outstanding)?",
+    "back": "DSO = (Creanțe comerciale medii / Vânzări nete) × 365 — arată în câte zile, în medie, sunt încasați clienții.",
+    "concept_key": "dso-days-sales-outstanding",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula DPO (Days Payable Outstanding)?",
+    "back": "DPO = (Datorii comerciale medii / Costul bunurilor vândute) × 365 — arată în câte zile, în medie, sunt plătiți furnizorii.",
+    "concept_key": "dpo-days-payable-outstanding",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula DIO (Days Inventory Outstanding)?",
+    "back": "DIO = (Stocuri medii / Costul bunurilor vândute) × 365 — arată câte zile stau, în medie, banii blocați în stocuri.",
+    "concept_key": "dio-days-inventory-outstanding",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula Ciclului de Conversie a Numerarului (CCC)?",
+    "back": "CCC = DSO + DIO − DPO — numărul de zile în care numerarul companiei este blocat în ciclul de exploatare.",
+    "concept_key": "cash-conversion-cycle",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă un CCC negativ?",
+    "back": "Compania încasează clienții înainte să plătească furnizorii, finanțându-și practic operațiunile din banii furnizorilor (specific retailerilor mari și e-commerce).",
+    "concept_key": "ccc-negativ-model",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementare stabilește structura bilanțului din care se extrag creanțele, stocurile și datoriile comerciale folosite la calculul DSO/DIO/DPO?",
+    "back": "OMFP nr. 1802/2014, aplicabil de la 1 ianuarie 2015.",
+    "concept_key": "omfp-1802-2014-bilant",
+    "blockId": "cmjjuxw6900f3umkp0x7s01tp-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1560,
+   "flashcards": 6
+  }
+ }
+}

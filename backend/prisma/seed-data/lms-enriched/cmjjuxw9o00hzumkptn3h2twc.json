@@ -1,0 +1,154 @@
+{
+ "lessonId": "cmjjuxw9o00hzumkptn3h2twc",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "REVISAL și Raportări ITM",
+ "lesson": "Transmitere și corecții",
+ "category": "HR_COMPLIANCE",
+ "content": "# Transmitere și corecții\n\nREVISAL este denumirea uzuală a Registrului General de Evidență a Salariaților, documentul electronic pe care orice angajator din România are obligația să îl întocmească și să îl actualizeze pentru toți salariații cu care are încheiate contracte individuale de muncă (CIM). Registrul conține date esențiale despre fiecare salariat: date de identificare, tipul contractului, funcția/ocupația conform COR, salariul de bază, perioada de probă, precum și datele privind suspendarea, modificarea sau încetarea raporturilor de muncă.\n\nCadrul legal actual este dat de HG nr. 905/2017 privind registrul general de evidență a salariaților, care a înlocuit reglementările anterioare (HG nr. 161/2006, respectiv HG nr. 500/2011). Obligația de întocmire și transmitere revine exclusiv angajatorului; acesta poate delega operarea tehnică unui prestator extern de servicii (de exemplu, un birou de contabilitate sau o firmă specializată în HR), însă răspunderea juridică pentru corectitudinea datelor și transmiterea la termen rămâne, în toate cazurile, a angajatorului.\n\nRegistrul se completează și se transmite exclusiv în format electronic, prin platforma pusă la dispoziție de Inspectoratul Teritorial de Muncă/Inspecția Muncii. Nu mai există variantă de depunere pe suport hârtie sau pe suport magnetic transmis fizic la ITM.\n\nDin punct de vedere tehnic, transmiterea datelor către Inspecția Muncii se realizează online, folosind un certificat digital calificat (semnătură electronică) înregistrat pe numele angajatorului sau al persoanei împuternicite. Fiecare eveniment relevant din viața unui contract de muncă generează o transmitere distinctă:\n\n- înregistrarea unui contract individual de muncă nou;\n- modificarea elementelor contractuale (salariu, funcție, normă de lucru, loc de muncă) prin act adițional;\n- suspendarea contractului (concediu fără plată, concediu medical de lungă durată, detașare etc.);\n- încetarea raporturilor de muncă, indiferent de motiv.\n\nAngajatorul poate desemna, prin decizie internă sau prin contract de prestări servicii, o persoană responsabilă cu completarea și transmiterea registrului. Indiferent cine operează efectiv datele, angajatorul rămâne responsabil în fața ITM pentru orice eroare, omisiune sau depășire de termen — externalizarea operării nu transferă și răspunderea contravențională.\n\nTermenele de transmitere diferă în funcție de tipul evenimentului și trebuie respectate cu strictețe, întrucât depășirea lor constituie contravenție:\n\n- Angajarea unui salariat: contractul individual de muncă trebuie înregistrat în registru cel târziu în ziua anterioară începerii activității de către salariatul în cauză. Dacă un salariat începe lucrul luni, contractul trebuie transmis până cel târziu duminică (ziua calendaristică anterioară, indiferent de programul de lucru al angajatorului).\n- Modificarea elementelor contractuale prin act adițional: ca regulă generală, în termen de maximum 20 de zile lucrătoare de la data actului adițional pentru modificările privind salariul; pentru alte elemente contractuale termenele pot diferi. Recomandăm verificarea variantei actualizate a HG nr. 905/2017 la data operării, întrucât termenele au fost modificate legislativ în timp.\n- Suspendarea contractului: în termen de maximum 20 de zile lucrătoare de la data suspendării.\n- Încetarea contractului: cel târziu la data încetării efective a raporturilor de muncă.\n\nRespectarea termenelor pentru angajare și încetare este esențială, deoarece acestea sunt cel mai frecvent verificate în cadrul controalelor ITM, fiind și cele mai ușor de constatat prin compararea datei reale a începerii/încetării activității cu data înregistrării în registru.\n\nÎn practică, cele mai frecvente erori întâlnite la completarea și transmiterea registrului sunt:\n\n1. Înregistrarea contractului după data începerii activității — cea mai gravă și mai des sancționată eroare, echivalentă practic cu muncă nedeclarată până la momentul înregistrării.\n2. Introducerea greșită a codului COR (ocupația) sau a unui cod inexistent/inactiv în nomenclator.\n3. Nepotrivirea între salariul de bază înscris în registru și cel din contractul individual de muncă/statul de plată.\n4. Omiterea transmiterii actului adițional la modificarea salariului (de exemplu, la majorările legale ale salariului minim brut pe economie), situație frecventă atunci când angajatorul actualizează salariul în statul de plată, dar uită să opereze și în registru.\n5. Erori privind norma de lucru (întreagă/parțială), necorelate cu numărul real de ore lucrate.\n6. Transmiterea cu întârziere a încetării contractului, mai ales în cazul demisiilor sau al concedierilor disciplinare, unde procedurile interne pot întârzia operarea.\n\nFiecare dintre aceste erori poate fi identificată de inspectorii de muncă prin compararea registrului cu alte documente: contracte, state de plată, pontaje, declarația D112 depusă la ANAF.\n\nCorectarea (rectificarea) datelor eronate din registru se face tot prin transmitere electronică, printr-o nouă operare care înlocuiește sau completează informația greșită, cu mențiunea explicită a corecției. Nu este permisă ștergerea pur și simplu a unei date deja transmise; corecția trebuie să fie trasabilă, astfel încât istoricul modificărilor să rămână disponibil pentru control.\n\nPașii recomandați atunci când se descoperă o eroare:\n\n1. Identificarea exactă a evenimentului eronat (data, tipul de operațiune, salariatul vizat).\n2. Verificarea documentelor sursă (CIM, act adițional, decizie de încetare) pentru a stabili datele corecte.\n3. Operarea corecției în aplicație, cu data reală la care se face rectificarea — nu se poate retrodata transmiterea pentru a masca întârzierea, dar se transmite corect informația istorică (de exemplu, data reală de aplicare a unui salariu majorat).\n4. Păstrarea unei evidențe interne (notă explicativă, e-mail, proces-verbal) care documentează cauza erorii și data la care a fost corectată — utilă în cazul unui control ITM ulterior, ca dovadă de bună-credință și diligență.\n\nDacă eroarea este descoperită de angajator înainte de un control, corectarea promptă reduce semnificativ riscul de sancțiune sau poate fi tratată de inspector ca circumstanță atenuantă. Dacă eroarea este constatată în timpul unui control, inspectorul poate dispune corectarea într-un termen stabilit, alături de aplicarea sancțiunii contravenționale, dacă este cazul.\n\n## Exemplu: Calculul termenului de înregistrare pentru o angajare nouă\nCompania Alfa SRL angajează o casieră cu contract individual de muncă începând cu data de miercuri, 15 iulie 2026. Departamentul HR trebuie să înregistreze contractul în registru cel târziu marți, 14 iulie 2026 (ziua calendaristică anterioară începerii activității), indiferent de programul de lucru al companiei — termenul se raportează la data calendaristică, nu la zilele lucrătoare ale angajatorului.\n\nDacă HR-ul transmite contractul abia joi, 16 iulie 2026 (adică după ce salariata a lucrat deja o zi), fapta constituie contravenție: angajatorul a permis prestarea muncii de către o persoană pentru care nu exista, la momentul începerii activității, un contract înregistrat în registru. Situația este tratată de inspectorii de muncă drept muncă nedeclarată pentru intervalul respectiv, chiar dacă există un contract semnat pe hârtie la data corectă — semnătura pe contract nu înlocuiește obligația de înregistrare în registru.\n\n## Exemplu: Corectarea unei erori de salariu în registru\nLa un angajat cu funcția de contabil, salariul de bază brut a fost majorat prin act adițional de la 5.500 lei la 6.200 lei, începând cu 1 mai 2026. Statul de plată de mai a fost calculat corect, cu noul salariu de 6.200 lei, însă persoana responsabilă de HR a uitat să opereze modificarea și în registru, unde a rămas înregistrată suma de 5.500 lei.\n\nEroarea este descoperită în iunie 2026, cu ocazia unei verificări interne. Procedura de remediere:\n\n1. Se identifică actul adițional din 1 mai 2026 ca document sursă.\n2. Se operează în registru o transmitere de rectificare pentru salariatul respectiv, cu salariul corect de 6.200 lei și data reală de la care se aplică (1 mai 2026).\n3. Se transmite corecția în aceeași zi în care a fost descoperită eroarea, pentru a limita perioada de neconcordanță.\n4. Se păstrează la dosar o notă internă care explică faptul că eroarea a fost identificată și corectată din proprie inițiativă, înainte de orice control.\n\nDeși neconcordanța a existat pentru o perioadă (mai–iunie 2026), corectarea promptă și documentată reduce riscul de sancțiune și demonstrează diligența angajatorului.\n\n> Temei legal: HG nr. 905/2017 privind registrul general de evidență a salariaților art. 4 (în vigoare de la 2017-12-01)\nPotrivit art. 4 din HG nr. 905/2017, angajatorii au obligația de a înregistra contractul individual de muncă în registrul general de evidență a salariaților cel târziu în ziua anterioară începerii activității de către salariatul în cauză. Elementele contractului de muncă privind durata acestuia, timpul de muncă, salariul, funcția și tipul contractului se completează și se transmit conform structurii stabilite prin actul normativ, iar orice modificare a acestor elemente se înregistrează în registru în termenele prevăzute de aceeași hotărâre. Nerespectarea acestor obligații constituie contravenție și se sancționează potrivit prevederilor HG nr. 905/2017.\n\n⚠ Cuantumul amenzilor pentru nerespectarea obligațiilor privind registrul (neînregistrarea la termen, date incomplete sau incorecte, nedesemnarea unei persoane responsabile) este stabilit prin HG nr. 905/2017 și poate fi actualizat legislativ; valorile exacte în lei trebuie verificate la data faptei pe portalul Inspecției Muncii sau printr-o consultare de specialitate, întrucât acest material nu oferă consultanță juridică individuală. În practică, sancțiunile pentru neînregistrarea la termen a unui contract se numără printre cele mai severe din spectrul de contravenții aplicate de ITM, fiind adesea corelate cu procedura pentru muncă nedeclarată.\n\n## Exercițiu\nFirma Beta SRL angajează un agent de vânzări cu contract individual de muncă începând de luni, 3 august 2026. Din cauza unei erori de comunicare între HR și persoana care operează registrul, contractul este transmis abia miercuri, 5 august 2026, adică după ce salariatul lucrase deja două zile. Eroarea este observată de administratorul companiei joi, 6 august 2026, înainte de orice control ITM.\n\nCerințe:\na) Care era termenul legal de înregistrare pentru acest contract?\nb) Ce tip de neregulă a comis angajatorul prin transmiterea tardivă?\nc) Ce pași ar trebui să urmeze administratorul la momentul descoperirii erorii, chiar dacă întârzierea nu mai poate fi ștearsă?\n\n**Soluție:** a) Termenul legal era cel târziu duminică, 2 august 2026 (ziua calendaristică anterioară începerii activității de luni, 3 august 2026), conform art. 4 din HG nr. 905/2017.\n\nb) Prin transmiterea contractului abia pe 5 august, angajatorul a permis prestarea muncii, pentru două zile (3–4 august), de către o persoană al cărei contract nu era înregistrat în registru la momentul începerii activității — situație tratată de inspectorii de muncă drept muncă nedeclarată pentru intervalul respectiv, indiferent de existența unui contract semnat pe hârtie.\n\nc) Deși întârzierea în sine nu mai poate fi anulată retroactiv, administratorul ar trebui: (1) să se asigure că transmiterea a fost finalizată corect, cu datele reale ale începerii activității, nu o dată falsificată; (2) să documenteze intern cauza întârzierii și data la care a fost identificată; (3) să analizeze împreună cu un consultant de specialitate riscul de sancțiune și eventualele măsuri de remediere internă, de exemplu revizuirea circuitului de aprobare dintre HR și persoana care operează registrul, pentru a preveni repetarea erorii; și (4) să nu încerce modificarea retroactivă a datelor astfel încât să pară că înregistrarea s-a făcut la timp — o astfel de acțiune ar constitui o abatere suplimentară, mult mai gravă decât întârzierea inițială.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "revisal-definitie-cadru-legal",
+    "md": "REVISAL este denumirea uzuală a Registrului General de Evidență a Salariaților, documentul electronic pe care orice angajator din România are obligația să îl întocmească și să îl actualizeze pentru toți salariații cu care are încheiate contracte individuale de muncă (CIM). Registrul conține date esențiale despre fiecare salariat: date de identificare, tipul contractului, funcția/ocupația conform COR, salariul de bază, perioada de probă, precum și datele privind suspendarea, modificarea sau încetarea raporturilor de muncă.\n\nCadrul legal actual este dat de HG nr. 905/2017 privind registrul general de evidență a salariaților, care a înlocuit reglementările anterioare (HG nr. 161/2006, respectiv HG nr. 500/2011). Obligația de întocmire și transmitere revine exclusiv angajatorului; acesta poate delega operarea tehnică unui prestator extern de servicii (de exemplu, un birou de contabilitate sau o firmă specializată în HR), însă răspunderea juridică pentru corectitudinea datelor și transmiterea la termen rămâne, în toate cazurile, a angajatorului.\n\nRegistrul se completează și se transmite exclusiv în format electronic, prin platforma pusă la dispoziție de Inspectoratul Teritorial de Muncă/Inspecția Muncii. Nu mai există variantă de depunere pe suport hârtie sau pe suport magnetic transmis fizic la ITM.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-modalitati-transmitere",
+    "md": "Din punct de vedere tehnic, transmiterea datelor către Inspecția Muncii se realizează online, folosind un certificat digital calificat (semnătură electronică) înregistrat pe numele angajatorului sau al persoanei împuternicite. Fiecare eveniment relevant din viața unui contract de muncă generează o transmitere distinctă:\n\n- înregistrarea unui contract individual de muncă nou;\n- modificarea elementelor contractuale (salariu, funcție, normă de lucru, loc de muncă) prin act adițional;\n- suspendarea contractului (concediu fără plată, concediu medical de lungă durată, detașare etc.);\n- încetarea raporturilor de muncă, indiferent de motiv.\n\nAngajatorul poate desemna, prin decizie internă sau prin contract de prestări servicii, o persoană responsabilă cu completarea și transmiterea registrului. Indiferent cine operează efectiv datele, angajatorul rămâne responsabil în fața ITM pentru orice eroare, omisiune sau depășire de termen — externalizarea operării nu transferă și răspunderea contravențională.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-termene-transmitere",
+    "md": "Termenele de transmitere diferă în funcție de tipul evenimentului și trebuie respectate cu strictețe, întrucât depășirea lor constituie contravenție:\n\n- Angajarea unui salariat: contractul individual de muncă trebuie înregistrat în registru cel târziu în ziua anterioară începerii activității de către salariatul în cauză. Dacă un salariat începe lucrul luni, contractul trebuie transmis până cel târziu duminică (ziua calendaristică anterioară, indiferent de programul de lucru al angajatorului).\n- Modificarea elementelor contractuale prin act adițional: ca regulă generală, în termen de maximum 20 de zile lucrătoare de la data actului adițional pentru modificările privind salariul; pentru alte elemente contractuale termenele pot diferi. Recomandăm verificarea variantei actualizate a HG nr. 905/2017 la data operării, întrucât termenele au fost modificate legislativ în timp.\n- Suspendarea contractului: în termen de maximum 20 de zile lucrătoare de la data suspendării.\n- Încetarea contractului: cel târziu la data încetării efective a raporturilor de muncă.\n\nRespectarea termenelor pentru angajare și încetare este esențială, deoarece acestea sunt cel mai frecvent verificate în cadrul controalelor ITM, fiind și cele mai ușor de constatat prin compararea datei reale a începerii/încetării activității cu data înregistrării în registru.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-erori-frecvente",
+    "md": "În practică, cele mai frecvente erori întâlnite la completarea și transmiterea registrului sunt:\n\n1. Înregistrarea contractului după data începerii activității — cea mai gravă și mai des sancționată eroare, echivalentă practic cu muncă nedeclarată până la momentul înregistrării.\n2. Introducerea greșită a codului COR (ocupația) sau a unui cod inexistent/inactiv în nomenclator.\n3. Nepotrivirea între salariul de bază înscris în registru și cel din contractul individual de muncă/statul de plată.\n4. Omiterea transmiterii actului adițional la modificarea salariului (de exemplu, la majorările legale ale salariului minim brut pe economie), situație frecventă atunci când angajatorul actualizează salariul în statul de plată, dar uită să opereze și în registru.\n5. Erori privind norma de lucru (întreagă/parțială), necorelate cu numărul real de ore lucrate.\n6. Transmiterea cu întârziere a încetării contractului, mai ales în cazul demisiilor sau al concedierilor disciplinare, unde procedurile interne pot întârzia operarea.\n\nFiecare dintre aceste erori poate fi identificată de inspectorii de muncă prin compararea registrului cu alte documente: contracte, state de plată, pontaje, declarația D112 depusă la ANAF.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-procedura-corectie",
+    "md": "Corectarea (rectificarea) datelor eronate din registru se face tot prin transmitere electronică, printr-o nouă operare care înlocuiește sau completează informația greșită, cu mențiunea explicită a corecției. Nu este permisă ștergerea pur și simplu a unei date deja transmise; corecția trebuie să fie trasabilă, astfel încât istoricul modificărilor să rămână disponibil pentru control.\n\nPașii recomandați atunci când se descoperă o eroare:\n\n1. Identificarea exactă a evenimentului eronat (data, tipul de operațiune, salariatul vizat).\n2. Verificarea documentelor sursă (CIM, act adițional, decizie de încetare) pentru a stabili datele corecte.\n3. Operarea corecției în aplicație, cu data reală la care se face rectificarea — nu se poate retrodata transmiterea pentru a masca întârzierea, dar se transmite corect informația istorică (de exemplu, data reală de aplicare a unui salariu majorat).\n4. Păstrarea unei evidențe interne (notă explicativă, e-mail, proces-verbal) care documentează cauza erorii și data la care a fost corectată — utilă în cazul unui control ITM ulterior, ca dovadă de bună-credință și diligență.\n\nDacă eroarea este descoperită de angajator înainte de un control, corectarea promptă reduce semnificativ riscul de sancțiune sau poate fi tratată de inspector ca circumstanță atenuantă. Dacă eroarea este constatată în timpul unui control, inspectorul poate dispune corectarea într-un termen stabilit, alături de aplicarea sancțiunii contravenționale, dacă este cazul.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul termenului de înregistrare pentru o angajare nouă",
+    "concept_key": "revisal-termene-transmitere",
+    "md": "Compania Alfa SRL angajează o casieră cu contract individual de muncă începând cu data de miercuri, 15 iulie 2026. Departamentul HR trebuie să înregistreze contractul în registru cel târziu marți, 14 iulie 2026 (ziua calendaristică anterioară începerii activității), indiferent de programul de lucru al companiei — termenul se raportează la data calendaristică, nu la zilele lucrătoare ale angajatorului.\n\nDacă HR-ul transmite contractul abia joi, 16 iulie 2026 (adică după ce salariata a lucrat deja o zi), fapta constituie contravenție: angajatorul a permis prestarea muncii de către o persoană pentru care nu exista, la momentul începerii activității, un contract înregistrat în registru. Situația este tratată de inspectorii de muncă drept muncă nedeclarată pentru intervalul respectiv, chiar dacă există un contract semnat pe hârtie la data corectă — semnătura pe contract nu înlocuiește obligația de înregistrare în registru.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b6"
+   },
+   {
+    "type": "example",
+    "title": "Corectarea unei erori de salariu în registru",
+    "concept_key": "revisal-procedura-corectie",
+    "md": "La un angajat cu funcția de contabil, salariul de bază brut a fost majorat prin act adițional de la 5.500 lei la 6.200 lei, începând cu 1 mai 2026. Statul de plată de mai a fost calculat corect, cu noul salariu de 6.200 lei, însă persoana responsabilă de HR a uitat să opereze modificarea și în registru, unde a rămas înregistrată suma de 5.500 lei.\n\nEroarea este descoperită în iunie 2026, cu ocazia unei verificări interne. Procedura de remediere:\n\n1. Se identifică actul adițional din 1 mai 2026 ca document sursă.\n2. Se operează în registru o transmitere de rectificare pentru salariatul respectiv, cu salariul corect de 6.200 lei și data reală de la care se aplică (1 mai 2026).\n3. Se transmite corecția în aceeași zi în care a fost descoperită eroarea, pentru a limita perioada de neconcordanță.\n4. Se păstrează la dosar o notă internă care explică faptul că eroarea a fost identificată și corectată din proprie inițiativă, înainte de orice control.\n\nDeși neconcordanța a existat pentru o perioadă (mai–iunie 2026), corectarea promptă și documentată reduce riscul de sancțiune și demonstrează diligența angajatorului.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b7"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG nr. 905/2017 privind registrul general de evidență a salariaților",
+    "article": "art. 4",
+    "effective": "2017-12-01",
+    "md": "Potrivit art. 4 din HG nr. 905/2017, angajatorii au obligația de a înregistra contractul individual de muncă în registrul general de evidență a salariaților cel târziu în ziua anterioară începerii activității de către salariatul în cauză. Elementele contractului de muncă privind durata acestuia, timpul de muncă, salariul, funcția și tipul contractului se completează și se transmit conform structurii stabilite prin actul normativ, iar orice modificare a acestor elemente se înregistrează în registru în termenele prevăzute de aceeași hotărâre. Nerespectarea acestor obligații constituie contravenție și se sancționează potrivit prevederilor HG nr. 905/2017.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Cuantumul amenzilor pentru nerespectarea obligațiilor privind registrul (neînregistrarea la termen, date incomplete sau incorecte, nedesemnarea unei persoane responsabile) este stabilit prin HG nr. 905/2017 și poate fi actualizat legislativ; valorile exacte în lei trebuie verificate la data faptei pe portalul Inspecției Muncii sau printr-o consultare de specialitate, întrucât acest material nu oferă consultanță juridică individuală. În practică, sancțiunile pentru neînregistrarea la termen a unui contract se numără printre cele mai severe din spectrul de contravenții aplicate de ITM, fiind adesea corelate cu procedura pentru muncă nedeclarată.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "Firma Beta SRL angajează un agent de vânzări cu contract individual de muncă începând de luni, 3 august 2026. Din cauza unei erori de comunicare între HR și persoana care operează registrul, contractul este transmis abia miercuri, 5 august 2026, adică după ce salariatul lucrase deja două zile. Eroarea este observată de administratorul companiei joi, 6 august 2026, înainte de orice control ITM.\n\nCerințe:\na) Care era termenul legal de înregistrare pentru acest contract?\nb) Ce tip de neregulă a comis angajatorul prin transmiterea tardivă?\nc) Ce pași ar trebui să urmeze administratorul la momentul descoperirii erorii, chiar dacă întârzierea nu mai poate fi ștearsă?",
+    "solution_md": "a) Termenul legal era cel târziu duminică, 2 august 2026 (ziua calendaristică anterioară începerii activității de luni, 3 august 2026), conform art. 4 din HG nr. 905/2017.\n\nb) Prin transmiterea contractului abia pe 5 august, angajatorul a permis prestarea muncii, pentru două zile (3–4 august), de către o persoană al cărei contract nu era înregistrat în registru la momentul începerii activității — situație tratată de inspectorii de muncă drept muncă nedeclarată pentru intervalul respectiv, indiferent de existența unui contract semnat pe hârtie.\n\nc) Deși întârzierea în sine nu mai poate fi anulată retroactiv, administratorul ar trebui: (1) să se asigure că transmiterea a fost finalizată corect, cu datele reale ale începerii activității, nu o dată falsificată; (2) să documenteze intern cauza întârzierii și data la care a fost identificată; (3) să analizeze împreună cu un consultant de specialitate riscul de sancțiune și eventualele măsuri de remediere internă, de exemplu revizuirea circuitului de aprobare dintre HR și persoana care operează registrul, pentru a preveni repetarea erorii; și (4) să nu încerce modificarea retroactivă a datelor astfel încât să pară că înregistrarea s-a făcut la timp — o astfel de acțiune ar constitui o abatere suplimentară, mult mai gravă decât întârzierea inițială.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul legal pentru înregistrarea în registrul general de evidență a salariaților a unui contract individual de muncă nou-încheiat?",
+    "choices": [
+     "În termen de 20 de zile lucrătoare de la angajare",
+     "Cel târziu în ziua anterioară începerii activității de către salariat",
+     "În termen de 5 zile calendaristice de la semnarea contractului",
+     "Până la sfârșitul lunii în care a avut loc angajarea"
+    ],
+    "answer": 1,
+    "explain": "Conform art. 4 din HG nr. 905/2017, contractul trebuie înregistrat cel târziu în ziua anterioară celei în care salariatul începe efectiv activitatea, nu într-un termen ulterior.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cum trebuie tratată descoperirea unei erori de salariu în registru (de exemplu, salariul nu a fost actualizat după un act adițional)?",
+    "choices": [
+     "Se șterge înregistrarea greșită, fără altă mențiune",
+     "Se ignoră, dacă statul de plată este corect",
+     "Se transmite o corecție electronică, trasabilă, cu datele reale și documentarea cauzei erorii",
+     "Se așteaptă următorul control ITM pentru a corecta datele"
+    ],
+    "answer": 2,
+    "explain": "Corecțiile trebuie transmise electronic, cu păstrarea trasabilității istoricului, iar angajatorul ar trebui să documenteze intern cauza și momentul remedierii, mai ales dacă eroarea este descoperită înainte de un control.",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este REVISAL?",
+    "back": "Denumirea uzuală a Registrului General de Evidență a Salariaților, documentul electronic obligatoriu în care angajatorul înregistrează datele privind contractele individuale de muncă ale salariaților.",
+    "concept_key": "revisal-definitie-cadru-legal",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează în prezent registrul general de evidență a salariaților?",
+    "back": "HG nr. 905/2017 privind registrul general de evidență a salariaților.",
+    "concept_key": "revisal-definitie-cadru-legal",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de înregistrare a unui CIM nou în registru?",
+    "back": "Cel târziu în ziua anterioară începerii activității de către salariat.",
+    "concept_key": "revisal-termene-transmitere",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine răspunde juridic pentru corectitudinea și transmiterea la termen a registrului, chiar dacă operarea este externalizată?",
+    "back": "Angajatorul, în toate cazurile, indiferent dacă a delegat operarea tehnică unui prestator extern.",
+    "concept_key": "revisal-modalitati-transmitere",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se corectează o dată greșită deja transmisă în registru?",
+    "back": "Printr-o nouă transmitere electronică de rectificare, trasabilă, cu datele reale și data corectării — nu prin ștergerea simplă a înregistrării.",
+    "concept_key": "revisal-procedura-corectie",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce risc apare dacă un contract este înregistrat în registru după ce salariatul a început deja să lucreze?",
+    "back": "Este tratat, pentru intervalul dintre începerea activității și data înregistrării, drept muncă nedeclarată, cu sancțiuni contravenționale semnificative.",
+    "concept_key": "revisal-erori-frecvente",
+    "blockId": "cmjjuxw9o00hzumkptn3h2twc-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1696,
+   "flashcards": 6
+  }
+ }
+}

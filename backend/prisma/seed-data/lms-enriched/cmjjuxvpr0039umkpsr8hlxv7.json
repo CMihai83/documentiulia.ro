@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvpr0039umkpsr8hlxv7",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Programare VBA de Bază",
+ "lesson": "Variabile și tipuri de date",
+ "category": "EXCEL_VBA",
+ "content": "# Variabile și tipuri de date\n\nO **variabilă** este un spațiu de memorie căruia îi dai un nume, pentru a stoca temporar o valoare pe care codul o va folosi sau modifica: un preț, un nume de client, o dată calendaristică, un rezultat de calcul. În VBA (Visual Basic for Applications), o variabilă se declară cu cuvântul cheie `Dim` (prescurtare de la *Dimension*), urmat de nume și de tipul de date, folosind cuvântul cheie `As`:\n\n```vba\nDim numeClient As String\nDim cantitate As Long\n```\n\nDacă nu specifici tipul, VBA atribuie automat tipul `Variant`, care acceptă orice fel de conținut, dar consumă mai multă memorie și permite erori care ar trece neobservate cu un tip strict.\n\nCea mai importantă practică pentru un cod VBA robust este să scrii `Option Explicit` chiar pe primul rând al fiecărui modul, înaintea oricărei proceduri. Această instrucțiune obligă declararea explicită a tuturor variabilelor înainte de utilizare. Fără ea, o simplă greșeală de tastare (de exemplu, scrii `subtoal` în loc de `subtotal` într-un rând din procedură) creează silențios o variabilă nouă, goală, iar rezultatul calculului este greșit fără niciun mesaj de eroare. Cu `Option Explicit` activ, VBA oprește execuția la compilare și afișează eroarea „Variable not defined”, arătând exact rândul cu problema.\n\nPoți seta activarea automată a lui `Option Explicit` pentru toate modulele noi din Editorul VBA: **Tools → Options → Editor → Require Variable Declaration**. Este o setare pe care orice cursant serios ar trebui să o bifeze din prima zi de lucru cu VBA.\n\nVBA oferă mai multe tipuri de date, fiecare optimizat pentru un anumit fel de informație. Alegerea tipului corect economisește memorie și previne erori. Cele mai folosite tipuri sunt:\n\n- **String** – text (nume, coduri, adrese). Exemplu: `Dim numeFirma As String` → `numeFirma = \"Beta Trading SRL\"`.\n- **Integer** – numere întregi mici, de la -32.768 la 32.767 (16 biți). Potrivit pentru contoare mici, dar depășit rapid de nevoile reale în Excel.\n- **Long** – numere întregi mari, de la -2.147.483.648 la 2.147.483.647 (32 biți). Este tipul recomandat implicit pentru orice contor sau index de rând în Excel 365, care are 1.048.576 de rânduri pe foaie — peste limita lui Integer.\n- **Double** – numere zecimale cu precizie mare (virgulă mobilă pe 64 de biți). Se folosește pentru prețuri, cantități fracționare, procente, rezultate de calcule financiare.\n- **Boolean** – o singură valoare logică: `True` sau `False`. Util pentru indicatori (ex. `inStoc`, `facturaPlatita`).\n- **Date** – stochează atât data calendaristică, cât și ora. Se atribuie cu funcții precum `Date` (data curentă), `Now` (data și ora curentă) sau `DateSerial(an, luna, zi)`.\n- **Variant** – tipul universal, care poate reține orice fel de valoare și își schimbă tipul automat în funcție de conținut. Este flexibil (util, de exemplu, pentru a citi conținutul unei celule Excel care poate fi text, număr sau gol), dar mai lent la execuție și mai puțin sigur decât un tip explicit, pentru că erorile de tip nu sunt detectate la compilare.\n\nÎn cod, separatorul zecimal pentru valorile numerice scrise direct (literali) este întotdeauna punctul, indiferent de setările regionale ale Windows (`pretUnitar = 120.5`), în timp ce afișarea către utilizator (prin `MsgBox` sau `Format`) respectă formatul local, cu virgulă zecimală, dacă folosești funcția `Format`.\n\nLocul unde declari o variabilă îi determină **scopul** (vizibilitatea) și **durata de viață**:\n\n- Declarată cu `Dim` în interiorul unei proceduri (`Sub` sau `Function`), variabila este **locală**: există doar cât timp rulează procedura respectivă și nu poate fi accesată din altă procedură.\n- Declarată cu `Dim` sau `Private` la începutul unui modul, în afara oricărei proceduri, variabila este vizibilă în tot modulul respectiv, dar nu în celelalte module.\n- Declarată cu `Public` la începutul unui modul, variabila devine vizibilă din orice modul al proiectului VBA — utilă pentru valori partajate între mai multe macro-uri, dar de folosit cu măsură, pentru că un cod cu multe variabile publice devine greu de urmărit și de depanat.\n\nPentru denumire, respectă câteva reguli obligatorii ale VBA (fără spații, fără să înceapă cu o cifră, fără caractere speciale precum `-` sau `.`) și câteva convenții recomandate: nume descriptive în românește sau engleză consecvent (`stocCurent`, nu `x1`), scriere de tip camelCase (`pretUnitar`), și, opțional, un prefix scurt care indică tipul — o convenție moștenită din notația maghiară: `str` pentru String, `lng` pentru Long, `dbl` pentru Double, `bln` sau `b` pentru Boolean. Nu este obligatorie, dar ajută mult la citirea codului atunci când lucrezi cu multe variabile simultan, mai ales în proceduri lungi care automatizează rapoarte financiare.\n\n## Exemplu: Calculul unei facturi cu variabile tipizate corect\nCel mai bun mod de a înțelege de ce contează tipul de date este un exemplu complet, rulabil, cu numere reale de facturare. Codul de mai jos declară fiecare variabilă cu tipul potrivit conținutului ei și calculează subtotalul, TVA-ul și totalul unei facturi emise de o firmă românească:\n\n```vba\nOption Explicit\n\nSub CalculeazaFactura()\n    ' Declarăm variabile cu tipuri de date potrivite conținutului lor\n    Dim numeClient As String\n    Dim cantitate As Long\n    Dim pretUnitar As Double\n    Dim cotaTVA As Double\n    Dim subtotal As Double\n    Dim valoareTVA As Double\n    Dim totalFactura As Double\n    Dim dataEmiterii As Date\n\n    numeClient = \"Alfa Comert SRL\"\n    cantitate = 15\n    pretUnitar = 120        ' lei/bucată, punct ca separator zecimal în cod\n    cotaTVA = 0.21          ' 21% - cota standard de TVA în România, valabilă din august 2025\n    dataEmiterii = Date     ' data curentă a sistemului\n\n    subtotal = cantitate * pretUnitar\n    valoareTVA = Round(subtotal * cotaTVA, 2)\n    totalFactura = subtotal + valoareTVA\n\n    MsgBox \"Client: \" & numeClient & vbCrLf & _\n           \"Subtotal: \" & Format(subtotal, \"0.00\") & \" lei\" & vbCrLf & _\n           \"TVA (21%): \" & Format(valoareTVA, \"0.00\") & \" lei\" & vbCrLf & _\n           \"Total: \" & Format(totalFactura, \"0.00\") & \" lei\" & vbCrLf & _\n           \"Data: \" & Format(dataEmiterii, \"dd.mm.yyyy\")\nEnd Sub\n```\n\nCu `cantitate = 15` și `pretUnitar = 120`, subtotalul este 1.800,00 lei, TVA-ul (21%) este 378,00 lei, iar totalul facturii este 2.178,00 lei. Observă că `cantitate` este `Long` (nu `Integer`), obicei bun chiar și când valoarea actuală e mică, pentru că evită surpriza unei erori de depășire dacă mai târziu codul procesează cantități mari.\n\n## Exemplu: Variant și conversia explicită de tip\nTipul `Variant` este util atunci când nu știi dinainte ce va introduce utilizatorul — de exemplu, printr-un `InputBox`, care returnează întotdeauna un `String`, chiar dacă utilizatorul tastează cifre. Exemplul de mai jos citește o cantitate introdusă de utilizator, verifică dacă este numerică și abia apoi o convertește explicit în `Double` cu funcția `CDbl`:\n\n```vba\nOption Explicit\n\nSub DemonstratieVariant()\n    Dim intrare As Variant\n    Dim rezultat As Double\n\n    intrare = InputBox(\"Introdu o cantitate:\", \"Test Variant\", \"25\")\n\n    If IsNumeric(intrare) Then\n        rezultat = CDbl(intrare) * 1.21   ' conversie explicită din Variant/String în Double\n        MsgBox \"Valoare cu TVA inclus: \" & Format(rezultat, \"0.00\") & \" lei\"\n    Else\n        MsgBox \"Ai introdus o valoare care nu este numerică!\"\n    End If\nEnd Sub\n```\n\nFără verificarea `IsNumeric`, dacă utilizatorul tastează accidental text (de exemplu „douăzeci”), linia `CDbl(intrare)` ar genera o eroare de execuție („Type mismatch”) care ar opri macro-ul. Regula practică: folosește `Variant` doar când conținutul e cu adevărat imprevizibil (intrări de la utilizator, conținut de celule), validează-l, apoi convertește-l explicit către tipul de care ai nevoie pentru calcule.\n\n⚠ Nu folosi tipul `Integer` pentru numere de rând sau contoare de buclă în Excel 365. Limita superioară a lui `Integer` este 32.767, dar o foaie de calcul Excel 365 are 1.048.576 de rânduri. O buclă `For rand As Integer = 1 To Rows.Count` va genera eroarea „Run-time error 6: Overflow” imediat ce contorul depășește 32.767. Folosește întotdeauna `Long` pentru astfel de situații — costul suplimentar de memorie este neglijabil, iar riscul de eroare dispare complet.\n\n## Exercițiu\nScrie o procedură VBA numită `VerificaStoc` care respectă `Option Explicit` și declară următoarele variabile, fiecare cu tipul de date potrivit: `numeProdus` (text), `stocCurent` și `stocMinim` (numere întregi mari, potrivite pentru contoare de stoc), `pretAchizitie` (număr zecimal), `valoareStoc` (număr zecimal, calculat), `inStoc` (adevărat/fals) și `dataUltimeiIntrari` (dată calendaristică).\n\nAtribuie valorile: produsul „Hartie A4 500 coli”, stoc curent 340 bucăți, stoc minim 100 bucăți, preț de achiziție 18,5 lei/bucată, ultima intrare în stoc pe 15 iunie 2026. Calculează `valoareStoc` ca produsul dintre `stocCurent` și `pretAchizitie`, setează `inStoc` pe `True` dacă `stocCurent` este mai mare decât `stocMinim`, apoi afișează toate rezultatele într-un `MsgBox`.\n\n**Soluție:** ```vba\nOption Explicit\n\nSub VerificaStoc()\n    Dim numeProdus As String\n    Dim stocCurent As Long\n    Dim stocMinim As Long\n    Dim pretAchizitie As Double\n    Dim valoareStoc As Double\n    Dim inStoc As Boolean\n    Dim dataUltimeiIntrari As Date\n\n    numeProdus = \"Hartie A4 500 coli\"\n    stocCurent = 340\n    stocMinim = 100\n    pretAchizitie = 18.5\n    dataUltimeiIntrari = DateSerial(2026, 6, 15)\n\n    valoareStoc = stocCurent * pretAchizitie\n    inStoc = (stocCurent > stocMinim)\n\n    MsgBox \"Produs: \" & numeProdus & vbCrLf & _\n           \"Valoare stoc: \" & Format(valoareStoc, \"0.00\") & \" lei\" & vbCrLf & _\n           \"Stoc suficient: \" & inStoc & vbCrLf & _\n           \"Ultima intrare: \" & Format(dataUltimeiIntrari, \"dd.mm.yyyy\")\nEnd Sub\n```\n\nRezultat: valoarea stocului este 340 × 18,5 = 6.290,00 lei, iar `inStoc` este `True`, pentru că 340 este mai mare decât 100.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vba-declarare-variabile",
+    "md": "O **variabilă** este un spațiu de memorie căruia îi dai un nume, pentru a stoca temporar o valoare pe care codul o va folosi sau modifica: un preț, un nume de client, o dată calendaristică, un rezultat de calcul. În VBA (Visual Basic for Applications), o variabilă se declară cu cuvântul cheie `Dim` (prescurtare de la *Dimension*), urmat de nume și de tipul de date, folosind cuvântul cheie `As`:\n\n```vba\nDim numeClient As String\nDim cantitate As Long\n```\n\nDacă nu specifici tipul, VBA atribuie automat tipul `Variant`, care acceptă orice fel de conținut, dar consumă mai multă memorie și permite erori care ar trece neobservate cu un tip strict.\n\nCea mai importantă practică pentru un cod VBA robust este să scrii `Option Explicit` chiar pe primul rând al fiecărui modul, înaintea oricărei proceduri. Această instrucțiune obligă declararea explicită a tuturor variabilelor înainte de utilizare. Fără ea, o simplă greșeală de tastare (de exemplu, scrii `subtoal` în loc de `subtotal` într-un rând din procedură) creează silențios o variabilă nouă, goală, iar rezultatul calculului este greșit fără niciun mesaj de eroare. Cu `Option Explicit` activ, VBA oprește execuția la compilare și afișează eroarea „Variable not defined”, arătând exact rândul cu problema.\n\nPoți seta activarea automată a lui `Option Explicit` pentru toate modulele noi din Editorul VBA: **Tools → Options → Editor → Require Variable Declaration**. Este o setare pe care orice cursant serios ar trebui să o bifeze din prima zi de lucru cu VBA.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-tipuri-date-numerice-text",
+    "md": "VBA oferă mai multe tipuri de date, fiecare optimizat pentru un anumit fel de informație. Alegerea tipului corect economisește memorie și previne erori. Cele mai folosite tipuri sunt:\n\n- **String** – text (nume, coduri, adrese). Exemplu: `Dim numeFirma As String` → `numeFirma = \"Beta Trading SRL\"`.\n- **Integer** – numere întregi mici, de la -32.768 la 32.767 (16 biți). Potrivit pentru contoare mici, dar depășit rapid de nevoile reale în Excel.\n- **Long** – numere întregi mari, de la -2.147.483.648 la 2.147.483.647 (32 biți). Este tipul recomandat implicit pentru orice contor sau index de rând în Excel 365, care are 1.048.576 de rânduri pe foaie — peste limita lui Integer.\n- **Double** – numere zecimale cu precizie mare (virgulă mobilă pe 64 de biți). Se folosește pentru prețuri, cantități fracționare, procente, rezultate de calcule financiare.\n- **Boolean** – o singură valoare logică: `True` sau `False`. Util pentru indicatori (ex. `inStoc`, `facturaPlatita`).\n- **Date** – stochează atât data calendaristică, cât și ora. Se atribuie cu funcții precum `Date` (data curentă), `Now` (data și ora curentă) sau `DateSerial(an, luna, zi)`.\n- **Variant** – tipul universal, care poate reține orice fel de valoare și își schimbă tipul automat în funcție de conținut. Este flexibil (util, de exemplu, pentru a citi conținutul unei celule Excel care poate fi text, număr sau gol), dar mai lent la execuție și mai puțin sigur decât un tip explicit, pentru că erorile de tip nu sunt detectate la compilare.\n\nÎn cod, separatorul zecimal pentru valorile numerice scrise direct (literali) este întotdeauna punctul, indiferent de setările regionale ale Windows (`pretUnitar = 120.5`), în timp ce afișarea către utilizator (prin `MsgBox` sau `Format`) respectă formatul local, cu virgulă zecimală, dacă folosești funcția `Format`.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-scop-variabile",
+    "md": "Locul unde declari o variabilă îi determină **scopul** (vizibilitatea) și **durata de viață**:\n\n- Declarată cu `Dim` în interiorul unei proceduri (`Sub` sau `Function`), variabila este **locală**: există doar cât timp rulează procedura respectivă și nu poate fi accesată din altă procedură.\n- Declarată cu `Dim` sau `Private` la începutul unui modul, în afara oricărei proceduri, variabila este vizibilă în tot modulul respectiv, dar nu în celelalte module.\n- Declarată cu `Public` la începutul unui modul, variabila devine vizibilă din orice modul al proiectului VBA — utilă pentru valori partajate între mai multe macro-uri, dar de folosit cu măsură, pentru că un cod cu multe variabile publice devine greu de urmărit și de depanat.\n\nPentru denumire, respectă câteva reguli obligatorii ale VBA (fără spații, fără să înceapă cu o cifră, fără caractere speciale precum `-` sau `.`) și câteva convenții recomandate: nume descriptive în românește sau engleză consecvent (`stocCurent`, nu `x1`), scriere de tip camelCase (`pretUnitar`), și, opțional, un prefix scurt care indică tipul — o convenție moștenită din notația maghiară: `str` pentru String, `lng` pentru Long, `dbl` pentru Double, `bln` sau `b` pentru Boolean. Nu este obligatorie, dar ajută mult la citirea codului atunci când lucrezi cu multe variabile simultan, mai ales în proceduri lungi care automatizează rapoarte financiare.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul unei facturi cu variabile tipizate corect",
+    "concept_key": "vba-declarare-variabile",
+    "md": "Cel mai bun mod de a înțelege de ce contează tipul de date este un exemplu complet, rulabil, cu numere reale de facturare. Codul de mai jos declară fiecare variabilă cu tipul potrivit conținutului ei și calculează subtotalul, TVA-ul și totalul unei facturi emise de o firmă românească:\n\n```vba\nOption Explicit\n\nSub CalculeazaFactura()\n    ' Declarăm variabile cu tipuri de date potrivite conținutului lor\n    Dim numeClient As String\n    Dim cantitate As Long\n    Dim pretUnitar As Double\n    Dim cotaTVA As Double\n    Dim subtotal As Double\n    Dim valoareTVA As Double\n    Dim totalFactura As Double\n    Dim dataEmiterii As Date\n\n    numeClient = \"Alfa Comert SRL\"\n    cantitate = 15\n    pretUnitar = 120        ' lei/bucată, punct ca separator zecimal în cod\n    cotaTVA = 0.21          ' 21% - cota standard de TVA în România, valabilă din august 2025\n    dataEmiterii = Date     ' data curentă a sistemului\n\n    subtotal = cantitate * pretUnitar\n    valoareTVA = Round(subtotal * cotaTVA, 2)\n    totalFactura = subtotal + valoareTVA\n\n    MsgBox \"Client: \" & numeClient & vbCrLf & _\n           \"Subtotal: \" & Format(subtotal, \"0.00\") & \" lei\" & vbCrLf & _\n           \"TVA (21%): \" & Format(valoareTVA, \"0.00\") & \" lei\" & vbCrLf & _\n           \"Total: \" & Format(totalFactura, \"0.00\") & \" lei\" & vbCrLf & _\n           \"Data: \" & Format(dataEmiterii, \"dd.mm.yyyy\")\nEnd Sub\n```\n\nCu `cantitate = 15` și `pretUnitar = 120`, subtotalul este 1.800,00 lei, TVA-ul (21%) este 378,00 lei, iar totalul facturii este 2.178,00 lei. Observă că `cantitate` este `Long` (nu `Integer`), obicei bun chiar și când valoarea actuală e mică, pentru că evită surpriza unei erori de depășire dacă mai târziu codul procesează cantități mari.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b4"
+   },
+   {
+    "type": "example",
+    "title": "Variant și conversia explicită de tip",
+    "concept_key": "vba-tip-variant",
+    "md": "Tipul `Variant` este util atunci când nu știi dinainte ce va introduce utilizatorul — de exemplu, printr-un `InputBox`, care returnează întotdeauna un `String`, chiar dacă utilizatorul tastează cifre. Exemplul de mai jos citește o cantitate introdusă de utilizator, verifică dacă este numerică și abia apoi o convertește explicit în `Double` cu funcția `CDbl`:\n\n```vba\nOption Explicit\n\nSub DemonstratieVariant()\n    Dim intrare As Variant\n    Dim rezultat As Double\n\n    intrare = InputBox(\"Introdu o cantitate:\", \"Test Variant\", \"25\")\n\n    If IsNumeric(intrare) Then\n        rezultat = CDbl(intrare) * 1.21   ' conversie explicită din Variant/String în Double\n        MsgBox \"Valoare cu TVA inclus: \" & Format(rezultat, \"0.00\") & \" lei\"\n    Else\n        MsgBox \"Ai introdus o valoare care nu este numerică!\"\n    End If\nEnd Sub\n```\n\nFără verificarea `IsNumeric`, dacă utilizatorul tastează accidental text (de exemplu „douăzeci”), linia `CDbl(intrare)` ar genera o eroare de execuție („Type mismatch”) care ar opri macro-ul. Regula practică: folosește `Variant` doar când conținutul e cu adevărat imprevizibil (intrări de la utilizator, conținut de celule), validează-l, apoi convertește-l explicit către tipul de care ai nevoie pentru calcule.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Nu folosi tipul `Integer` pentru numere de rând sau contoare de buclă în Excel 365. Limita superioară a lui `Integer` este 32.767, dar o foaie de calcul Excel 365 are 1.048.576 de rânduri. O buclă `For rand As Integer = 1 To Rows.Count` va genera eroarea „Run-time error 6: Overflow” imediat ce contorul depășește 32.767. Folosește întotdeauna `Long` pentru astfel de situații — costul suplimentar de memorie este neglijabil, iar riscul de eroare dispare complet.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Scrie o procedură VBA numită `VerificaStoc` care respectă `Option Explicit` și declară următoarele variabile, fiecare cu tipul de date potrivit: `numeProdus` (text), `stocCurent` și `stocMinim` (numere întregi mari, potrivite pentru contoare de stoc), `pretAchizitie` (număr zecimal), `valoareStoc` (număr zecimal, calculat), `inStoc` (adevărat/fals) și `dataUltimeiIntrari` (dată calendaristică).\n\nAtribuie valorile: produsul „Hartie A4 500 coli”, stoc curent 340 bucăți, stoc minim 100 bucăți, preț de achiziție 18,5 lei/bucată, ultima intrare în stoc pe 15 iunie 2026. Calculează `valoareStoc` ca produsul dintre `stocCurent` și `pretAchizitie`, setează `inStoc` pe `True` dacă `stocCurent` este mai mare decât `stocMinim`, apoi afișează toate rezultatele într-un `MsgBox`.",
+    "solution_md": "```vba\nOption Explicit\n\nSub VerificaStoc()\n    Dim numeProdus As String\n    Dim stocCurent As Long\n    Dim stocMinim As Long\n    Dim pretAchizitie As Double\n    Dim valoareStoc As Double\n    Dim inStoc As Boolean\n    Dim dataUltimeiIntrari As Date\n\n    numeProdus = \"Hartie A4 500 coli\"\n    stocCurent = 340\n    stocMinim = 100\n    pretAchizitie = 18.5\n    dataUltimeiIntrari = DateSerial(2026, 6, 15)\n\n    valoareStoc = stocCurent * pretAchizitie\n    inStoc = (stocCurent > stocMinim)\n\n    MsgBox \"Produs: \" & numeProdus & vbCrLf & _\n           \"Valoare stoc: \" & Format(valoareStoc, \"0.00\") & \" lei\" & vbCrLf & _\n           \"Stoc suficient: \" & inStoc & vbCrLf & _\n           \"Ultima intrare: \" & Format(dataUltimeiIntrari, \"dd.mm.yyyy\")\nEnd Sub\n```\n\nRezultat: valoarea stocului este 340 × 18,5 = 6.290,00 lei, iar `inStoc` este `True`, pentru că 340 este mai mare decât 100.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă dacă folosești o variabilă nedeclarată într-un modul care are `Option Explicit` la început?",
+    "choices": [
+     "VBA o declară automat ca Variant și continuă execuția",
+     "Apare o eroare de compilare: „Variable not defined”, iar codul nu rulează",
+     "Excel o ignoră silențios și sare peste rândul respectiv",
+     "Variabila este tratată automat ca String"
+    ],
+    "answer": 1,
+    "explain": "`Option Explicit` obligă declararea cu `Dim` a fiecărei variabile înainte de utilizare. Dacă folosești un nume nedeclarat (de multe ori din greșeală de tastare), VBA oprește compilarea și afișează eroarea „Variable not defined”, indicând exact rândul problematic.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce tip de date este recomandat pentru a stoca numărul unui rând într-o foaie Excel 365, care are 1.048.576 de rânduri?",
+    "choices": [
+     "Integer",
+     "Byte",
+     "Long",
+     "Boolean"
+    ],
+    "answer": 2,
+    "explain": "Integer acceptă valori doar până la 32.767, mult sub numărul maxim de rânduri dintr-o foaie Excel 365. Long acceptă valori până la peste 2,1 miliarde, deci este alegerea corectă pentru contoare de rânduri sau bucle care parcurg foi întregi.",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face instrucțiunea `Option Explicit` la începutul unui modul VBA?",
+    "back": "Obligă declararea explicită cu `Dim` a tuturor variabilelor înainte de utilizare; fără ea, o greșeală de tastare la numele unei variabile creează silențios o nouă variabilă Variant, sursă frecventă de bug-uri greu de depistat.",
+    "concept_key": "vba-option-explicit",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este intervalul de valori al tipului Integer în VBA?",
+    "back": "De la -32.768 la 32.767 (16 biți); pentru numere mai mari, precum rânduri Excel sau cantități mari, se folosește Long.",
+    "concept_key": "vba-tip-integer",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este intervalul aproximativ al tipului Long în VBA?",
+    "back": "De la -2.147.483.648 la 2.147.483.647 (32 biți) — suficient pentru orice rând dintr-o foaie Excel 365 (maximum 1.048.576 rânduri).",
+    "concept_key": "vba-tip-long",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tip de date VBA poate stoca orice fel de valoare (text, număr, dată) și își schimbă tipul automat?",
+    "back": "Variant — tipul implicit dacă nu specifici altul explicit; este flexibil, dar mai lent și mai predispus la erori nedetectate la compilare decât un tip explicit.",
+    "concept_key": "vba-tip-variant",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cuvânt cheie declară o variabilă în VBA și cum se specifică tipul ei?",
+    "back": "`Dim numeVariabila As TipDeDate`. Exemplu: `Dim total As Double` declară o variabilă zecimală numită total.",
+    "concept_key": "vba-declarare-dim",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se declară o variabilă de tip dată calendaristică și cum îi atribui data curentă a sistemului?",
+    "back": "`Dim dataX As Date`, apoi `dataX = Date` pentru doar data curentă, sau `dataX = Now` pentru dată și oră curentă.",
+    "concept_key": "vba-tip-date",
+    "blockId": "cmjjuxvpr0039umkpsr8hlxv7-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1422,
+   "flashcards": 6
+  }
+ }
+}

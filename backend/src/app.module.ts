@@ -84,6 +84,7 @@ import { OnboardingModule } from './onboarding/onboarding.module';
 import { CollaborationModule } from './collaboration/collaboration.module';
 import { ResellerModule } from './reseller/reseller.module';
 import { AdminModule } from './admin/admin.module';
+import { SupportModule } from './support/support.module';
 import { DeveloperModule } from './developer/developer.module';
 import { IntegrationsModule } from './integrations/integrations.module';
 import { MarketingModule } from './marketing/marketing.module';
@@ -251,6 +252,7 @@ import { VatAliasController, SaftAliasController, DashboardAliasController, AiQu
     OnboardingModule,
     DeveloperModule,
     AdminModule,
+    SupportModule,
     MarketingModule,
     AutomationModule,
     WorkflowModule,

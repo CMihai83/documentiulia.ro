@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvq1003humkpmxjrtg6h",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Programare VBA de Bază",
+ "lesson": "Arrays și Collections",
+ "category": "EXCEL_VBA",
+ "content": "# Arrays și Collections\n\n## Array-uri statice\n\nUn **array** (tablou) este o structură de date care stochează mai multe valori de același tip sub un singur nume de variabilă, accesibile prin index. Într-un array **static**, dimensiunea este fixată la declarare și nu se poate modifica pe parcursul rulării codului.\n\nDeclarare: `Dim vanzari(1 To 12) As Double` creează un array cu 12 poziții (câte una pentru fiecare lună), indexate de la 1 la 12. Dacă omiți limita inferioară — `Dim vanzari(12) As Double` — VBA folosește implicit indexul 0 ca prim element (deci array-ul are de fapt 13 poziții, de la 0 la 12), cu excepția cazului în care ai declarat `Option Base 1` la începutul modulului.\n\nPentru a afla limitele unui array folosești funcțiile `LBound(array)` și `UBound(array)`, esențiale mai ales atunci când parcurgi array-ul într-o buclă `For`, fără să depinzi de valori 'hardcodate'. Array-urile statice sunt potrivite când cunoști dinainte numărul exact de elemente (12 luni, 31 de zile, un set fix de coduri de TVA etc.). Pot fi unidimensionale (o listă simplă) sau multidimensionale, de exemplu `Dim matrice(1 To 10, 1 To 5) As String`, similar unui tabel cu 10 rânduri și 5 coloane.\n\n## Array-uri dinamice\n\nCând numărul de elemente nu este cunoscut la momentul scrierii codului — de exemplu, numărul de rânduri completate într-o foaie Excel diferă de la o lună la alta — folosești un **array dinamic**. Se declară fără dimensiune, `Dim clienti() As String`, iar dimensiunea reală se stabilește ulterior, în timpul rulării, cu instrucțiunea `ReDim`: `ReDim clienti(1 To numarRanduri)`.\n\n**Atenție**: de fiecare dată când execuți `ReDim`, conținutul anterior al array-ului se pierde. Dacă vrei să păstrezi valorile deja introduse și doar să extinzi array-ul (de exemplu, adaugi încă un element la finalul unei liste care crește pe parcursul procesării), folosești `ReDim Preserve clienti(1 To numarRanduri + 1)`. `Preserve` funcționează doar dacă modifici **ultima dimensiune** a array-ului; la array-urile multidimensionale nu poți schimba dimensiunea primului index cu `Preserve`.\n\nArray-urile dinamice sunt folosite frecvent pentru a stoca rezultatul unei citiri dintr-un interval Excel (`Range`) într-o singură operație, a le procesa în memorie și apoi a le scrie înapoi tot dintr-o singură operație — mult mai rapid decât citirea sau scrierea celulă cu celulă.\n\n## Obiectul Collection\n\n`Collection` este o alternativă mai flexibilă la array, nativă în VBA (nu necesită nicio referință suplimentară). O colecție își ajustează automat dimensiunea — nu trebuie să specifici niciodată câte elemente va conține.\n\nSintaxă de bază:\n- `col.Add item, key` — adaugă un element, opțional cu o cheie text unică;\n- `col.Item(index)` sau `col.Item(key)` — citește un element (indexul implicit pornește de la **1**, nu de la 0!);\n- `col.Remove(index)` sau `col.Remove(key)` — șterge un element;\n- `col.Count` — numărul de elemente curente.\n\nDiferența majoră față de `Dictionary`: dacă încerci să accesezi o cheie inexistentă cu `Item(key)`, `Collection` generează o eroare de runtime, iar dacă adaugi de două ori aceeași cheie, primești eroare de cheie duplicată. `Collection` nu are o metodă nativă `Exists`, deci verificarea existenței unei chei necesită tratarea manuală a erorii (`On Error Resume Next`), ceea ce o face mai puțin comodă decât `Dictionary` pentru scenarii de tip 'caută sau adaugă'. În schimb, este mai simplă și suficientă atunci când ai nevoie doar de o listă ordonată de elemente, fără căutări frecvente după cheie.\n\n## Obiectul Dictionary\n\n`Dictionary` provine din biblioteca Microsoft Scripting Runtime și lucrează cu perechi cheie-valoare, oferind avantaje importante față de `Collection` pentru agregări și căutări.\n\nPentru a-l folosi ai două variante:\n1. **Early binding**: în editorul VBA mergi la Tools > References și bifezi *Microsoft Scripting Runtime*, apoi declari `Dim dict As New Dictionary`. Avantaj: auto-completare (IntelliSense) la scrierea codului.\n2. **Late binding**: `Dim dict As Object` urmat de `Set dict = CreateObject(\"Scripting.Dictionary\")`. Avantaj: codul funcționează și pe calculatoare unde referința nu este bifată manual — util când distribui fișierul altor colegi.\n\nMetode și proprietăți esențiale:\n- `dict.Add key, item` — adaugă o pereche cheie-valoare (eroare dacă cheia există deja);\n- `dict(key) = item` — adaugă SAU actualizează valoarea unei chei, fără eroare dacă cheia nu există încă;\n- `dict.Exists(key)` — returnează True/False, fără eroare — ideal pentru verificări rapide;\n- `dict.Keys` și `dict.Items` — returnează array-uri cu toate cheile, respectiv toate valorile;\n- `dict.Remove(key)`, `dict.RemoveAll`, `dict.Count`.\n\n`Dictionary` este instrumentul preferat pentru operații de tip 'numără aparițiile fiecărui produs dintr-o listă' sau 'grupează sumele pe fiecare client', înlocuind eficient formule complexe SUMIF/COUNTIF atunci când lucrezi cu volume mari de date direct în cod.\n\n## Exemplu: Array static: total și medie vânzări lunare\nPresupunem o foaie 'Vanzari' cu valorile lunare în coloana B, rândurile 2-13 (ianuarie-decembrie). Codul de mai jos citește valorile într-un array static, apoi calculează totalul și media prin parcurgere cu `For` și `LBound`/`UBound`:\n\n```vba\nSub TotalSiMediaVanzari()\n    Dim vanzari(1 To 12) As Double\n    Dim i As Integer\n    Dim total As Double\n    Dim medie As Double\n\n    ' Populăm array-ul cu valori din coloana B, rândurile 2-13 (ian-dec)\n    For i = 1 To 12\n        vanzari(i) = ThisWorkbook.Sheets(\"Vanzari\").Cells(i + 1, 2).Value\n    Next i\n\n    ' Calculăm totalul parcurgând array-ul\n    total = 0\n    For i = LBound(vanzari) To UBound(vanzari)\n        total = total + vanzari(i)\n    Next i\n\n    medie = total / (UBound(vanzari) - LBound(vanzari) + 1)\n\n    MsgBox \"Total vânzări an: \" & Format(total, \"#,##0.00\") & \" lei\" & vbCrLf & _\n           \"Medie lunară: \" & Format(medie, \"#,##0.00\") & \" lei\"\nEnd Sub\n```\n\nObservă folosirea `LBound`/`UBound` în loc de valorile 1 și 12 scrise direct: dacă mai târziu schimbi array-ul la 24 de luni, bucla se adaptează automat, fără să modifici altă linie de cod.\n\n## Exemplu: Dictionary: numărarea facturilor pe fiecare client\nAi o foaie 'Facturi' cu numele clientului în coloana A, o factură pe rând. Vrei să afli rapid câte facturi are fiecare client, fără formule PivotTable. `Dictionary` este alegerea potrivită pentru că verifică existența unei chei fără eroare:\n\n```vba\nSub NumaraFacturiPeClient()\n    Dim dict As Object\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n    Dim i As Long\n    Dim client As String\n\n    Set dict = CreateObject(\"Scripting.Dictionary\")\n    Set ws = ThisWorkbook.Sheets(\"Facturi\")\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n\n    For i = 2 To ultimulRand ' rândul 1 = antet\n        client = ws.Cells(i, 1).Value\n        If dict.Exists(client) Then\n            dict(client) = dict(client) + 1\n        Else\n            dict.Add client, 1\n        End If\n    Next i\n\n    ' Afișăm rezultatul într-o zonă liberă din foaie\n    Dim cheie As Variant\n    Dim r As Long\n    r = 2\n    ws.Cells(1, 5).Value = \"Client\"\n    ws.Cells(1, 6).Value = \"Nr. facturi\"\n    For Each cheie In dict.Keys\n        ws.Cells(r, 5).Value = cheie\n        ws.Cells(r, 6).Value = dict(cheie)\n        r = r + 1\n    Next cheie\nEnd Sub\n```\n\nAcest cod parcurge sute sau mii de rânduri o singură dată și obține agregarea completă, fără să scrie sau să citească celule în interiorul buclei de calcul — codul e rapid inclusiv pe seturi mari de date.\n\n⚠ Trei capcane frecvente la array-uri și colecții:\n\n1. **ReDim fără Preserve șterge tot** — dacă redimensionezi un array dinamic fără cuvântul cheie `Preserve`, toate valorile introduse anterior se pierd, iar array-ul repornește gol. Folosește `Preserve` de fiecare dată când vrei doar să extinzi array-ul, nu să-l resetezi.\n2. **Indexul implicit este 0, nu 1** — dacă declari `Dim arr(10)` fără `Option Base 1`, array-ul are 11 poziții (0 la 10). Colecția (`Collection`) pornește însă implicit de la 1. Confuzia dintre cele două convenții este o sursă comună de erori 'off-by-one'.\n3. **Referința Scripting Runtime lipsă la alt utilizator** — dacă folosești early binding (`Dim dict As New Dictionary`) și distribui fișierul unui coleg care nu are bifată referința Microsoft Scripting Runtime, codul se blochează cu eroare de compilare. Pentru fișiere distribuite, preferă late binding: `Dim dict As Object` + `CreateObject(\"Scripting.Dictionary\")`.\n\n## Exercițiu\nScrie o procedură VBA care citește lista de produse din coloana A a foii 'Stoc' (de la rândul 2 până la ultimul rând completat) și construiește un array dinamic care conține doar produsele cu stoc sub 10 bucăți (stocul se află în coloana B). La final, afișează într-un `MsgBox` câte produse au stoc critic și lista lor, separată prin virgulă.\n\n**Soluție:** ```vba\nSub ProduseStocCritic()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n    Dim i As Long\n    Dim nrCritice As Integer\n    Dim produseCritice() As String\n    Dim rezultat As String\n\n    Set ws = ThisWorkbook.Sheets(\"Stoc\")\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n\n    nrCritice = 0\n    ReDim produseCritice(1 To ultimulRand) ' dimensiune maximă posibilă\n\n    For i = 2 To ultimulRand\n        If ws.Cells(i, 2).Value < 10 Then\n            nrCritice = nrCritice + 1\n            produseCritice(nrCritice) = ws.Cells(i, 1).Value\n        End If\n    Next i\n\n    If nrCritice = 0 Then\n        MsgBox \"Niciun produs cu stoc critic.\"\n    Else\n        ReDim Preserve produseCritice(1 To nrCritice) ' redimensionăm exact la nr. găsit\n        rezultat = Join(produseCritice, \", \")\n        MsgBox \"Produse cu stoc critic (\" & nrCritice & \"): \" & rezultat\n    End If\nEnd Sub\n```\n\nSoluția rezervă inițial dimensiunea maximă posibilă a array-ului (`ultimulRand`), deoarece nu știm dinainte câte produse vor avea stoc critic. La final, `ReDim Preserve` micșorează array-ul exact la numărul real de elemente găsite, iar funcția `Join` transformă array-ul într-un singur text separat prin virgulă, gata de afișat.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "array-static-vba",
+    "md": "## Array-uri statice\n\nUn **array** (tablou) este o structură de date care stochează mai multe valori de același tip sub un singur nume de variabilă, accesibile prin index. Într-un array **static**, dimensiunea este fixată la declarare și nu se poate modifica pe parcursul rulării codului.\n\nDeclarare: `Dim vanzari(1 To 12) As Double` creează un array cu 12 poziții (câte una pentru fiecare lună), indexate de la 1 la 12. Dacă omiți limita inferioară — `Dim vanzari(12) As Double` — VBA folosește implicit indexul 0 ca prim element (deci array-ul are de fapt 13 poziții, de la 0 la 12), cu excepția cazului în care ai declarat `Option Base 1` la începutul modulului.\n\nPentru a afla limitele unui array folosești funcțiile `LBound(array)` și `UBound(array)`, esențiale mai ales atunci când parcurgi array-ul într-o buclă `For`, fără să depinzi de valori 'hardcodate'. Array-urile statice sunt potrivite când cunoști dinainte numărul exact de elemente (12 luni, 31 de zile, un set fix de coduri de TVA etc.). Pot fi unidimensionale (o listă simplă) sau multidimensionale, de exemplu `Dim matrice(1 To 10, 1 To 5) As String`, similar unui tabel cu 10 rânduri și 5 coloane.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "array-dinamic-redim",
+    "md": "## Array-uri dinamice\n\nCând numărul de elemente nu este cunoscut la momentul scrierii codului — de exemplu, numărul de rânduri completate într-o foaie Excel diferă de la o lună la alta — folosești un **array dinamic**. Se declară fără dimensiune, `Dim clienti() As String`, iar dimensiunea reală se stabilește ulterior, în timpul rulării, cu instrucțiunea `ReDim`: `ReDim clienti(1 To numarRanduri)`.\n\n**Atenție**: de fiecare dată când execuți `ReDim`, conținutul anterior al array-ului se pierde. Dacă vrei să păstrezi valorile deja introduse și doar să extinzi array-ul (de exemplu, adaugi încă un element la finalul unei liste care crește pe parcursul procesării), folosești `ReDim Preserve clienti(1 To numarRanduri + 1)`. `Preserve` funcționează doar dacă modifici **ultima dimensiune** a array-ului; la array-urile multidimensionale nu poți schimba dimensiunea primului index cu `Preserve`.\n\nArray-urile dinamice sunt folosite frecvent pentru a stoca rezultatul unei citiri dintr-un interval Excel (`Range`) într-o singură operație, a le procesa în memorie și apoi a le scrie înapoi tot dintr-o singură operație — mult mai rapid decât citirea sau scrierea celulă cu celulă.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "collection-vba",
+    "md": "## Obiectul Collection\n\n`Collection` este o alternativă mai flexibilă la array, nativă în VBA (nu necesită nicio referință suplimentară). O colecție își ajustează automat dimensiunea — nu trebuie să specifici niciodată câte elemente va conține.\n\nSintaxă de bază:\n- `col.Add item, key` — adaugă un element, opțional cu o cheie text unică;\n- `col.Item(index)` sau `col.Item(key)` — citește un element (indexul implicit pornește de la **1**, nu de la 0!);\n- `col.Remove(index)` sau `col.Remove(key)` — șterge un element;\n- `col.Count` — numărul de elemente curente.\n\nDiferența majoră față de `Dictionary`: dacă încerci să accesezi o cheie inexistentă cu `Item(key)`, `Collection` generează o eroare de runtime, iar dacă adaugi de două ori aceeași cheie, primești eroare de cheie duplicată. `Collection` nu are o metodă nativă `Exists`, deci verificarea existenței unei chei necesită tratarea manuală a erorii (`On Error Resume Next`), ceea ce o face mai puțin comodă decât `Dictionary` pentru scenarii de tip 'caută sau adaugă'. În schimb, este mai simplă și suficientă atunci când ai nevoie doar de o listă ordonată de elemente, fără căutări frecvente după cheie.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dictionary-vba-scripting",
+    "md": "## Obiectul Dictionary\n\n`Dictionary` provine din biblioteca Microsoft Scripting Runtime și lucrează cu perechi cheie-valoare, oferind avantaje importante față de `Collection` pentru agregări și căutări.\n\nPentru a-l folosi ai două variante:\n1. **Early binding**: în editorul VBA mergi la Tools > References și bifezi *Microsoft Scripting Runtime*, apoi declari `Dim dict As New Dictionary`. Avantaj: auto-completare (IntelliSense) la scrierea codului.\n2. **Late binding**: `Dim dict As Object` urmat de `Set dict = CreateObject(\"Scripting.Dictionary\")`. Avantaj: codul funcționează și pe calculatoare unde referința nu este bifată manual — util când distribui fișierul altor colegi.\n\nMetode și proprietăți esențiale:\n- `dict.Add key, item` — adaugă o pereche cheie-valoare (eroare dacă cheia există deja);\n- `dict(key) = item` — adaugă SAU actualizează valoarea unei chei, fără eroare dacă cheia nu există încă;\n- `dict.Exists(key)` — returnează True/False, fără eroare — ideal pentru verificări rapide;\n- `dict.Keys` și `dict.Items` — returnează array-uri cu toate cheile, respectiv toate valorile;\n- `dict.Remove(key)`, `dict.RemoveAll`, `dict.Count`.\n\n`Dictionary` este instrumentul preferat pentru operații de tip 'numără aparițiile fiecărui produs dintr-o listă' sau 'grupează sumele pe fiecare client', înlocuind eficient formule complexe SUMIF/COUNTIF atunci când lucrezi cu volume mari de date direct în cod.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b4"
+   },
+   {
+    "type": "example",
+    "title": "Array static: total și medie vânzări lunare",
+    "concept_key": "array-static-vba",
+    "md": "Presupunem o foaie 'Vanzari' cu valorile lunare în coloana B, rândurile 2-13 (ianuarie-decembrie). Codul de mai jos citește valorile într-un array static, apoi calculează totalul și media prin parcurgere cu `For` și `LBound`/`UBound`:\n\n```vba\nSub TotalSiMediaVanzari()\n    Dim vanzari(1 To 12) As Double\n    Dim i As Integer\n    Dim total As Double\n    Dim medie As Double\n\n    ' Populăm array-ul cu valori din coloana B, rândurile 2-13 (ian-dec)\n    For i = 1 To 12\n        vanzari(i) = ThisWorkbook.Sheets(\"Vanzari\").Cells(i + 1, 2).Value\n    Next i\n\n    ' Calculăm totalul parcurgând array-ul\n    total = 0\n    For i = LBound(vanzari) To UBound(vanzari)\n        total = total + vanzari(i)\n    Next i\n\n    medie = total / (UBound(vanzari) - LBound(vanzari) + 1)\n\n    MsgBox \"Total vânzări an: \" & Format(total, \"#,##0.00\") & \" lei\" & vbCrLf & _\n           \"Medie lunară: \" & Format(medie, \"#,##0.00\") & \" lei\"\nEnd Sub\n```\n\nObservă folosirea `LBound`/`UBound` în loc de valorile 1 și 12 scrise direct: dacă mai târziu schimbi array-ul la 24 de luni, bucla se adaptează automat, fără să modifici altă linie de cod.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b5"
+   },
+   {
+    "type": "example",
+    "title": "Dictionary: numărarea facturilor pe fiecare client",
+    "concept_key": "dictionary-vba-scripting",
+    "md": "Ai o foaie 'Facturi' cu numele clientului în coloana A, o factură pe rând. Vrei să afli rapid câte facturi are fiecare client, fără formule PivotTable. `Dictionary` este alegerea potrivită pentru că verifică existența unei chei fără eroare:\n\n```vba\nSub NumaraFacturiPeClient()\n    Dim dict As Object\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n    Dim i As Long\n    Dim client As String\n\n    Set dict = CreateObject(\"Scripting.Dictionary\")\n    Set ws = ThisWorkbook.Sheets(\"Facturi\")\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n\n    For i = 2 To ultimulRand ' rândul 1 = antet\n        client = ws.Cells(i, 1).Value\n        If dict.Exists(client) Then\n            dict(client) = dict(client) + 1\n        Else\n            dict.Add client, 1\n        End If\n    Next i\n\n    ' Afișăm rezultatul într-o zonă liberă din foaie\n    Dim cheie As Variant\n    Dim r As Long\n    r = 2\n    ws.Cells(1, 5).Value = \"Client\"\n    ws.Cells(1, 6).Value = \"Nr. facturi\"\n    For Each cheie In dict.Keys\n        ws.Cells(r, 5).Value = cheie\n        ws.Cells(r, 6).Value = dict(cheie)\n        r = r + 1\n    Next cheie\nEnd Sub\n```\n\nAcest cod parcurge sute sau mii de rânduri o singură dată și obține agregarea completă, fără să scrie sau să citească celule în interiorul buclei de calcul — codul e rapid inclusiv pe seturi mari de date.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Trei capcane frecvente la array-uri și colecții:\n\n1. **ReDim fără Preserve șterge tot** — dacă redimensionezi un array dinamic fără cuvântul cheie `Preserve`, toate valorile introduse anterior se pierd, iar array-ul repornește gol. Folosește `Preserve` de fiecare dată când vrei doar să extinzi array-ul, nu să-l resetezi.\n2. **Indexul implicit este 0, nu 1** — dacă declari `Dim arr(10)` fără `Option Base 1`, array-ul are 11 poziții (0 la 10). Colecția (`Collection`) pornește însă implicit de la 1. Confuzia dintre cele două convenții este o sursă comună de erori 'off-by-one'.\n3. **Referința Scripting Runtime lipsă la alt utilizator** — dacă folosești early binding (`Dim dict As New Dictionary`) și distribui fișierul unui coleg care nu are bifată referința Microsoft Scripting Runtime, codul se blochează cu eroare de compilare. Pentru fișiere distribuite, preferă late binding: `Dim dict As Object` + `CreateObject(\"Scripting.Dictionary\")`.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Scrie o procedură VBA care citește lista de produse din coloana A a foii 'Stoc' (de la rândul 2 până la ultimul rând completat) și construiește un array dinamic care conține doar produsele cu stoc sub 10 bucăți (stocul se află în coloana B). La final, afișează într-un `MsgBox` câte produse au stoc critic și lista lor, separată prin virgulă.",
+    "solution_md": "```vba\nSub ProduseStocCritic()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n    Dim i As Long\n    Dim nrCritice As Integer\n    Dim produseCritice() As String\n    Dim rezultat As String\n\n    Set ws = ThisWorkbook.Sheets(\"Stoc\")\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n\n    nrCritice = 0\n    ReDim produseCritice(1 To ultimulRand) ' dimensiune maximă posibilă\n\n    For i = 2 To ultimulRand\n        If ws.Cells(i, 2).Value < 10 Then\n            nrCritice = nrCritice + 1\n            produseCritice(nrCritice) = ws.Cells(i, 1).Value\n        End If\n    Next i\n\n    If nrCritice = 0 Then\n        MsgBox \"Niciun produs cu stoc critic.\"\n    Else\n        ReDim Preserve produseCritice(1 To nrCritice) ' redimensionăm exact la nr. găsit\n        rezultat = Join(produseCritice, \", \")\n        MsgBox \"Produse cu stoc critic (\" & nrCritice & \"): \" & rezultat\n    End If\nEnd Sub\n```\n\nSoluția rezervă inițial dimensiunea maximă posibilă a array-ului (`ultimulRand`), deoarece nu știm dinainte câte produse vor avea stoc critic. La final, `ReDim Preserve` micșorează array-ul exact la numărul real de elemente găsite, iar funcția `Join` transformă array-ul într-un singur text separat prin virgulă, gata de afișat.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă cu datele existente într-un array dinamic dacă execuți ReDim fără Preserve?",
+    "choices": [
+     "Rămân neschimbate",
+     "Sunt șterse și array-ul repornește gol",
+     "Se dublează automat",
+     "VBA generează eroare de compilare"
+    ],
+    "answer": 1,
+    "explain": "ReDim fără Preserve resetează complet array-ul, pierzând toate valorile anterioare. Pentru a le păstra la redimensionare trebuie folosit ReDim Preserve.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială între Collection și Dictionary la verificarea existenței unei chei?",
+    "choices": [
+     "Sunt identice, ambele au metoda Exists",
+     "Collection are metoda Exists, Dictionary nu",
+     "Dictionary are metoda Exists care nu generează eroare; Collection nu are Exists nativ și necesită tratarea manuală a erorii",
+     "Niciuna dintre ele nu poate verifica existența unei chei"
+    ],
+    "answer": 2,
+    "explain": "Dictionary.Exists(cheie) returnează True/False fără eroare; Collection nu oferă această metodă, deci verificarea manuală implică de obicei On Error Resume Next.",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce instrucțiune păstrează datele existente atunci când redimensionezi un array dinamic?",
+    "back": "ReDim Preserve",
+    "concept_key": "array-dinamic-redim",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este indexul implicit de start al unui array VBA dacă nu se specifică Option Base?",
+    "back": "0 (primul element are indexul 0, dacă nu s-a declarat Option Base 1)",
+    "concept_key": "array-static-vba",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce metodă a obiectului Dictionary verifică dacă o cheie există, fără a genera eroare?",
+    "back": ".Exists(cheie) — returnează True sau False",
+    "concept_key": "dictionary-vba-scripting",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care obiect VBA nativ (fără referință externă) permite adăugarea/ștergerea elementelor, opțional cu chei text?",
+    "back": "Collection",
+    "concept_key": "collection-vba",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum creezi un obiect Dictionary fără a bifa o referință în Tools > References?",
+    "back": "CreateObject(\"Scripting.Dictionary\") — tehnica de late binding",
+    "concept_key": "dictionary-vba-scripting",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce proprietate returnează numărul curent de elemente dintr-o Collection sau Dictionary?",
+    "back": ".Count",
+    "concept_key": "collection-vba",
+    "blockId": "cmjjuxvq1003humkpmxjrtg6h-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1504,
+   "flashcards": 6
+  }
+ }
+}

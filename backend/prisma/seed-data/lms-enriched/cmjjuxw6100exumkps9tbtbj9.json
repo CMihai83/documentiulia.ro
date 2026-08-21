@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxw6100exumkps9tbtbj9",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Modelare Financiară în Excel",
+ "lesson": "Proiect - Model complet",
+ "category": "FINANCE_OPS",
+ "content": "# Proiect - Model complet\n\n# Arhitectura unui model financiar complet pe 3 situații\n\nUn model financiar de proiect - precum cel pe care îl construiești acum pentru un start-up pe 3 ani - nu este un singur tabel, ci trei situații financiare interconectate, fiecare alimentând-o pe următoarea:\n\n1. **Contul de profit și pierdere (P&L)** - arată performanța operațională: venituri, costuri, marjă brută, EBITDA, rezultat net.\n2. **Bilanțul** - arată poziția financiară la un moment dat: ce deține firma (active) și cum e finanțată (capitaluri proprii + datorii).\n3. **Situația fluxurilor de numerar (cash flow)** - arată cum se transformă rezultatul contabil în bani reali în cont, ținând cont de variațiile de capital de lucru, investiții și finanțare.\n\nStructura recomandată pentru fișierul Excel:\n- Foaie **Ipoteze (Assumptions)** - toate driverii (creștere vânzări, marje, DSO/DPO, capex) centralizați într-un singur loc, cu celule input colorate distinct (convenție uzuală: albastru = input manual, negru = formulă, verde = link din altă foaie).\n- Foi **P&L, Bilanț, Cash Flow** - fiecare calculează, nu introduce manual cifre; toate valorile provin din Ipoteze prin formule.\n- Foaie **Dashboard** - grafice și indicatori-cheie, pentru prezentarea către investitori sau board.\n\nFolosește funcții Excel 365 moderne pentru robustețe: XLOOKUP în locul VLOOKUP pentru căutări în tabelul de ipoteze, LAMBDA pentru formule reutilizabile (de exemplu calculul DSO), și Power Query dacă imporți date istorice din extrase bancare sau din balanța de verificare. Regula de aur: fiecare cifră hardcodată în afara foii de Ipoteze este o sursă viitoare de eroare.\n\n# Ipotezele cheie (driverii) pentru un model de start-up\n\nSpre deosebire de o companie matură, un start-up are incertitudine mare, deci calitatea modelului depinde de calitatea ipotezelor, nu de complexitatea formulelor. Driverii esențiali pentru un model pe 3 ani:\n\n- **Creșterea veniturilor** - exprimată de regulă ca procent an-peste-an (YoY); pentru un start-up este realist ca ritmul să scadă în timp (de exemplu +80% în anul 2, +60% în anul 3), pe măsură ce baza de venituri crește.\n- **Marja brută** - procentul din venituri rămas după costul direct al bunurilor/serviciilor vândute (COGS); pentru software/servicii este de regulă 60-75%, pentru retail sau producție mult mai mică.\n- **Cheltuielile operaționale (SG&A)** - salarii, marketing, chirii, administrativ; se proiectează de obicei ca sumă absolută cu o rată proprie de creștere, nu ca procent fix din venituri (altfel maschezi economiile de scară pe măsură ce firma crește).\n- **Capitalul de lucru** - exprimat prin DSO (zile de încasare), DPO (zile de plată furnizori) și, dacă există stocuri, DIO (zile de stoc); afectează direct cash flow-ul chiar dacă firma este profitabilă pe hârtie.\n- **Investițiile de capital (Capex)** - echipamente, licențe software capitalizate, amenajări; generează amortizare, care reduce rezultatul contabil dar nu afectează direct cash-ul.\n- **Finanțarea** - capital social, împrumuturi de la asociați sau bancă, runde de investiții; determină cât cash are firma la dispoziție pentru a acoperi pierderile inițiale.\n\nFiecare ipoteză trebuie documentată cu sursa ei (benchmark de piață, negociere cu furnizori, target intern) - un model fără justificare a ipotezelor este greu de apărat în fața unui board sau a unui investitor.\n\n# Legătura dintre P&L, Bilanț și Cash Flow\n\nCele trei situații trebuie să fie perfect coerente - acesta este testul de calitate al oricărui model financiar:\n\n- Rezultatul net din P&L intră în Bilanț ca variație a rezultatului reportat.\n- Amortizarea din P&L (cheltuială non-cash) se adaugă înapoi în Cash Flow, pentru că nu reprezintă o ieșire reală de bani.\n- Variațiile creanțelor, stocurilor și datoriilor furnizori (capital de lucru) din Bilanț ajustează Cash Flow-ul din exploatare.\n- Capexul din Cash Flow-ul de investiții mărește mijloacele fixe brute din Bilanț.\n- Soldul final de trezorerie din Cash Flow devine soldul de casă/bancă din Bilanț la finalul perioadei.\n\nTestul final: **Activ = Capitaluri proprii + Datorii**, pentru fiecare an din model. Dacă bilanțul nu balansează, există o eroare de formulă undeva - cel mai frecvent, o legătură lipsă între Cash Flow și Bilanț.\n\nAtenție la **circularitate**: dacă firma are datorii cu dobândă calculată pe soldul mediu de cash/datorie, dobânda afectează rezultatul net, care afectează cash-ul, care afectează din nou dobânda. Excel poate rezolva acest ciclu doar dacă activezi calculul iterativ (File > Options > Formulas > Enable iterative calculation); altfel primești o eroare de referință circulară.\n\n## Exemplu: Proiecția contului de profit și pierdere pe 3 ani - TechStart SRL\nTechStart SRL este un start-up de software B2B din București, la început de activitate. Ipotezele de model: creștere venituri +80% în anul 2 și +60% în anul 3, marjă brută 65% (COGS 35% din venituri, reprezentând costuri de găzduire cloud și licențe terțe), cheltuieli operaționale care cresc cu 20% pe an, capex constant de 50.000 lei/an amortizat liniar pe 5 ani (10.000 lei amortizare/an suplimentară în fiecare an).\n\n| Indicator | An 1 | An 2 | An 3 |\n|---|---|---|---|\n| Venituri | 500.000 lei | 900.000 lei | 1.440.000 lei |\n| Cost servicii (COGS, 35%) | 175.000 lei | 315.000 lei | 504.000 lei |\n| Marjă brută (65%) | 325.000 lei | 585.000 lei | 936.000 lei |\n| Cheltuieli operaționale | 400.000 lei | 480.000 lei | 576.000 lei |\n| EBITDA | -75.000 lei | 105.000 lei | 360.000 lei |\n| Amortizare (cumulată) | 10.000 lei | 20.000 lei | 30.000 lei |\n| EBIT | -85.000 lei | 85.000 lei | 330.000 lei |\n| Impozit pe profit (16%, cotă neschimbată, valabilă și în iul 2026) | 0 lei | 0 lei* | 52.800 lei |\n| Rezultat net | -85.000 lei | 85.000 lei | 277.200 lei |\n\n*În Anul 2, profitul impozabil de 85.000 lei este integral compensat cu pierderea fiscală reportată din Anul 1 (reportul pierderii fiscale este permis pe 7 ani conform Codului fiscal), deci impozitul datorat este 0 lei. Abia din Anul 3, după epuizarea pierderii reportate, firma plătește impozit pe profit efectiv.\n\nObservă traiectoria tipică de start-up: pierdere operațională în Anul 1 (investiție în echipă și marketing înainte ca veniturile să acopere costurile fixe), prag de rentabilitate în Anul 2, și profitabilitate solidă în Anul 3, pe măsură ce cheltuielile operaționale cresc mai lent decât veniturile (efect de scalare).\n\n## Exemplu: Calculul capitalului de lucru și impactul asupra cash flow-ului\nChiar dacă TechStart SRL înregistrează o pierdere contabilă în Anul 1, cash flow-ul real diferă de rezultatul net din cauza capitalului de lucru și a elementelor non-cash. Reluăm cifrele din Anul 1 (venituri 500.000 lei, COGS 175.000 lei, rezultat net -85.000 lei, amortizare 10.000 lei) și calculăm indicatorii de capital de lucru:\n\n**DSO (Days Sales Outstanding)** = (Creanțe clienți / Venituri) × 365\nPresupunând un termen de încasare de 45 de zile: Creanțe clienți = Venituri × DSO / 365 = 500.000 × 45 / 365 ≈ **61.644 lei**.\n\n**DPO (Days Payable Outstanding)** = (Datorii furnizori / COGS) × 365\nPresupunând un termen de plată de 30 de zile către furnizori: Datorii furnizori = COGS × DPO / 365 = 175.000 × 30 / 365 ≈ **14.384 lei**.\n\nCash flow-ul din exploatare al Anului 1:\n\n| Element | Valoare |\n|---|---|\n| Rezultat net | -85.000 lei |\n| + Amortizare (non-cash) | +10.000 lei |\n| - Creștere creanțe clienți | -61.644 lei |\n| + Creștere datorii furnizori | +14.384 lei |\n| **Cash flow din exploatare** | **-122.260 lei** |\n\nLa acesta se adaugă cash flow-ul din investiții (-50.000 lei capex) și cash flow-ul din finanțare (+100.000 lei capital social + 200.000 lei împrumut asociați = +300.000 lei), rezultând o trezorerie finală de **127.740 lei** la sfârșitul Anului 1 - pozitivă, chiar dacă firma a înregistrat pierdere contabilă. Acesta este exact motivul pentru care un start-up are nevoie de un model de cash flow separat, nu doar de un buget de venituri și cheltuieli.\n\n> Temei legal: OMFP 1802/2014 Reglementările contabile privind situațiile financiare anuale individuale și consolidate - formatul bilanțului și contului de profit și pierdere (în vigoare de la 2015-01-01)\nStructura Bilanțului și a Contului de profit și pierdere din modelul tău Excel trebuie să respecte formatul standardizat impus de OMFP 1802/2014, aplicabil situațiilor financiare anuale ale firmelor din România începând cu exercițiul financiar 2015. Chiar dacă modelul tău de proiecție este simplificat față de o balanță de verificare completă, gruparea posturilor (active imobilizate, active circulante, capitaluri proprii, datorii) trebuie să rămână compatibilă cu acest format, pentru ca modelul să poată fi ușor de comparat cu situațiile financiare reale ale firmei.\n\n⚠ Circularitatea este cea mai frecventă cauză de blocaj (erori de calcul infinit) în modelele financiare care includ dobândă calculată pe soldul de cash. Dacă modelul tău calculează dobânda pe baza soldului mediu de trezorerie, activează calculul iterativ din Excel (File > Options > Formulas > Enable iterative calculation, cu maximum 100 de iterații și o eroare maximă de 0,001) înainte de a construi legătura. Altfel, riști erori greu de diagnosticat chiar înainte de o prezentare importantă.\n\n⚠ Cotele și plafoanele fiscale folosite ca ipoteze în model (impozit pe profit 16%, plafonul de 100.000 € pentru microîntreprinderi valabil din 2026, cota IMCA de 0,5% în 2026) se pot modifica prin acte normative ulterioare. Verifică întotdeauna valorile curente în Codul fiscal actualizat sau cu un consultant fiscal înainte de a le folosi într-un model destinat unei decizii reale de finanțare sau investiție - acest curs oferă cadrul metodologic, nu consultanță fiscală personalizată.\n\n## Exercițiu\nTechStart SRL a încheiat Anul 1 cu datele din exemplul anterior: rezultat net -85.000 lei, amortizare 10.000 lei, creanțe clienți 61.644 lei, datorii furnizori 14.384 lei, trezorerie finală 127.740 lei (calculată din cash flow). Capitalul social vărsat la înființare a fost de 100.000 lei, iar asociații au acordat un împrumut de 200.000 lei pentru finanțarea pierderilor inițiale. Capexul din Anul 1 a fost de 50.000 lei (mijloace fixe brute), cu o amortizare anuală de 10.000 lei.\n\nConstruiește bilanțul simplificat de la finalul Anului 1 și verifică dacă Activ = Capitaluri proprii + Datorii.\n\n**Soluție:** **Activ:**\n\n| Element | Valoare |\n|---|---|\n| Mijloace fixe nete (50.000 - 10.000) | 40.000 lei |\n| Creanțe clienți | 61.644 lei |\n| Trezorerie | 127.740 lei |\n| **Total Activ** | **229.384 lei** |\n\n**Capitaluri proprii și datorii:**\n\n| Element | Valoare |\n|---|---|\n| Capital social | 100.000 lei |\n| Rezultat reportat (pierdere Anul 1) | -85.000 lei |\n| Împrumut asociați | 200.000 lei |\n| Datorii furnizori | 14.384 lei |\n| **Total Capitaluri proprii + Datorii** | **229.384 lei** |\n\nBilanțul balansează: 229.384 lei = 229.384 lei. Acesta este testul obligatoriu pe care trebuie să-l treacă orice model financiar înainte să-l prezinți unui investitor sau board - dacă cele două totaluri nu coincid, există o eroare de formulă (cel mai frecvent: o legătură lipsă între cash flow și bilanț, sau o dublă contabilizare a amortizării).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "model-financiar-3-situatii",
+    "md": "# Arhitectura unui model financiar complet pe 3 situații\n\nUn model financiar de proiect - precum cel pe care îl construiești acum pentru un start-up pe 3 ani - nu este un singur tabel, ci trei situații financiare interconectate, fiecare alimentând-o pe următoarea:\n\n1. **Contul de profit și pierdere (P&L)** - arată performanța operațională: venituri, costuri, marjă brută, EBITDA, rezultat net.\n2. **Bilanțul** - arată poziția financiară la un moment dat: ce deține firma (active) și cum e finanțată (capitaluri proprii + datorii).\n3. **Situația fluxurilor de numerar (cash flow)** - arată cum se transformă rezultatul contabil în bani reali în cont, ținând cont de variațiile de capital de lucru, investiții și finanțare.\n\nStructura recomandată pentru fișierul Excel:\n- Foaie **Ipoteze (Assumptions)** - toate driverii (creștere vânzări, marje, DSO/DPO, capex) centralizați într-un singur loc, cu celule input colorate distinct (convenție uzuală: albastru = input manual, negru = formulă, verde = link din altă foaie).\n- Foi **P&L, Bilanț, Cash Flow** - fiecare calculează, nu introduce manual cifre; toate valorile provin din Ipoteze prin formule.\n- Foaie **Dashboard** - grafice și indicatori-cheie, pentru prezentarea către investitori sau board.\n\nFolosește funcții Excel 365 moderne pentru robustețe: XLOOKUP în locul VLOOKUP pentru căutări în tabelul de ipoteze, LAMBDA pentru formule reutilizabile (de exemplu calculul DSO), și Power Query dacă imporți date istorice din extrase bancare sau din balanța de verificare. Regula de aur: fiecare cifră hardcodată în afara foii de Ipoteze este o sursă viitoare de eroare.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "driveri-ipoteze-startup",
+    "md": "# Ipotezele cheie (driverii) pentru un model de start-up\n\nSpre deosebire de o companie matură, un start-up are incertitudine mare, deci calitatea modelului depinde de calitatea ipotezelor, nu de complexitatea formulelor. Driverii esențiali pentru un model pe 3 ani:\n\n- **Creșterea veniturilor** - exprimată de regulă ca procent an-peste-an (YoY); pentru un start-up este realist ca ritmul să scadă în timp (de exemplu +80% în anul 2, +60% în anul 3), pe măsură ce baza de venituri crește.\n- **Marja brută** - procentul din venituri rămas după costul direct al bunurilor/serviciilor vândute (COGS); pentru software/servicii este de regulă 60-75%, pentru retail sau producție mult mai mică.\n- **Cheltuielile operaționale (SG&A)** - salarii, marketing, chirii, administrativ; se proiectează de obicei ca sumă absolută cu o rată proprie de creștere, nu ca procent fix din venituri (altfel maschezi economiile de scară pe măsură ce firma crește).\n- **Capitalul de lucru** - exprimat prin DSO (zile de încasare), DPO (zile de plată furnizori) și, dacă există stocuri, DIO (zile de stoc); afectează direct cash flow-ul chiar dacă firma este profitabilă pe hârtie.\n- **Investițiile de capital (Capex)** - echipamente, licențe software capitalizate, amenajări; generează amortizare, care reduce rezultatul contabil dar nu afectează direct cash-ul.\n- **Finanțarea** - capital social, împrumuturi de la asociați sau bancă, runde de investiții; determină cât cash are firma la dispoziție pentru a acoperi pierderile inițiale.\n\nFiecare ipoteză trebuie documentată cu sursa ei (benchmark de piață, negociere cu furnizori, target intern) - un model fără justificare a ipotezelor este greu de apărat în fața unui board sau a unui investitor.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "circularitate-model-financiar",
+    "md": "# Legătura dintre P&L, Bilanț și Cash Flow\n\nCele trei situații trebuie să fie perfect coerente - acesta este testul de calitate al oricărui model financiar:\n\n- Rezultatul net din P&L intră în Bilanț ca variație a rezultatului reportat.\n- Amortizarea din P&L (cheltuială non-cash) se adaugă înapoi în Cash Flow, pentru că nu reprezintă o ieșire reală de bani.\n- Variațiile creanțelor, stocurilor și datoriilor furnizori (capital de lucru) din Bilanț ajustează Cash Flow-ul din exploatare.\n- Capexul din Cash Flow-ul de investiții mărește mijloacele fixe brute din Bilanț.\n- Soldul final de trezorerie din Cash Flow devine soldul de casă/bancă din Bilanț la finalul perioadei.\n\nTestul final: **Activ = Capitaluri proprii + Datorii**, pentru fiecare an din model. Dacă bilanțul nu balansează, există o eroare de formulă undeva - cel mai frecvent, o legătură lipsă între Cash Flow și Bilanț.\n\nAtenție la **circularitate**: dacă firma are datorii cu dobândă calculată pe soldul mediu de cash/datorie, dobânda afectează rezultatul net, care afectează cash-ul, care afectează din nou dobânda. Excel poate rezolva acest ciclu doar dacă activezi calculul iterativ (File > Options > Formulas > Enable iterative calculation); altfel primești o eroare de referință circulară.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b3"
+   },
+   {
+    "type": "example",
+    "title": "Proiecția contului de profit și pierdere pe 3 ani - TechStart SRL",
+    "concept_key": "proiectie-cont-profit-pierdere-startup",
+    "md": "TechStart SRL este un start-up de software B2B din București, la început de activitate. Ipotezele de model: creștere venituri +80% în anul 2 și +60% în anul 3, marjă brută 65% (COGS 35% din venituri, reprezentând costuri de găzduire cloud și licențe terțe), cheltuieli operaționale care cresc cu 20% pe an, capex constant de 50.000 lei/an amortizat liniar pe 5 ani (10.000 lei amortizare/an suplimentară în fiecare an).\n\n| Indicator | An 1 | An 2 | An 3 |\n|---|---|---|---|\n| Venituri | 500.000 lei | 900.000 lei | 1.440.000 lei |\n| Cost servicii (COGS, 35%) | 175.000 lei | 315.000 lei | 504.000 lei |\n| Marjă brută (65%) | 325.000 lei | 585.000 lei | 936.000 lei |\n| Cheltuieli operaționale | 400.000 lei | 480.000 lei | 576.000 lei |\n| EBITDA | -75.000 lei | 105.000 lei | 360.000 lei |\n| Amortizare (cumulată) | 10.000 lei | 20.000 lei | 30.000 lei |\n| EBIT | -85.000 lei | 85.000 lei | 330.000 lei |\n| Impozit pe profit (16%, cotă neschimbată, valabilă și în iul 2026) | 0 lei | 0 lei* | 52.800 lei |\n| Rezultat net | -85.000 lei | 85.000 lei | 277.200 lei |\n\n*În Anul 2, profitul impozabil de 85.000 lei este integral compensat cu pierderea fiscală reportată din Anul 1 (reportul pierderii fiscale este permis pe 7 ani conform Codului fiscal), deci impozitul datorat este 0 lei. Abia din Anul 3, după epuizarea pierderii reportate, firma plătește impozit pe profit efectiv.\n\nObservă traiectoria tipică de start-up: pierdere operațională în Anul 1 (investiție în echipă și marketing înainte ca veniturile să acopere costurile fixe), prag de rentabilitate în Anul 2, și profitabilitate solidă în Anul 3, pe măsură ce cheltuielile operaționale cresc mai lent decât veniturile (efect de scalare).",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul capitalului de lucru și impactul asupra cash flow-ului",
+    "concept_key": "capital-de-lucru-dso-dpo",
+    "md": "Chiar dacă TechStart SRL înregistrează o pierdere contabilă în Anul 1, cash flow-ul real diferă de rezultatul net din cauza capitalului de lucru și a elementelor non-cash. Reluăm cifrele din Anul 1 (venituri 500.000 lei, COGS 175.000 lei, rezultat net -85.000 lei, amortizare 10.000 lei) și calculăm indicatorii de capital de lucru:\n\n**DSO (Days Sales Outstanding)** = (Creanțe clienți / Venituri) × 365\nPresupunând un termen de încasare de 45 de zile: Creanțe clienți = Venituri × DSO / 365 = 500.000 × 45 / 365 ≈ **61.644 lei**.\n\n**DPO (Days Payable Outstanding)** = (Datorii furnizori / COGS) × 365\nPresupunând un termen de plată de 30 de zile către furnizori: Datorii furnizori = COGS × DPO / 365 = 175.000 × 30 / 365 ≈ **14.384 lei**.\n\nCash flow-ul din exploatare al Anului 1:\n\n| Element | Valoare |\n|---|---|\n| Rezultat net | -85.000 lei |\n| + Amortizare (non-cash) | +10.000 lei |\n| - Creștere creanțe clienți | -61.644 lei |\n| + Creștere datorii furnizori | +14.384 lei |\n| **Cash flow din exploatare** | **-122.260 lei** |\n\nLa acesta se adaugă cash flow-ul din investiții (-50.000 lei capex) și cash flow-ul din finanțare (+100.000 lei capital social + 200.000 lei împrumut asociați = +300.000 lei), rezultând o trezorerie finală de **127.740 lei** la sfârșitul Anului 1 - pozitivă, chiar dacă firma a înregistrat pierdere contabilă. Acesta este exact motivul pentru care un start-up are nevoie de un model de cash flow separat, nu doar de un buget de venituri și cheltuieli.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Reglementările contabile privind situațiile financiare anuale individuale și consolidate - formatul bilanțului și contului de profit și pierdere",
+    "effective": "2015-01-01",
+    "md": "Structura Bilanțului și a Contului de profit și pierdere din modelul tău Excel trebuie să respecte formatul standardizat impus de OMFP 1802/2014, aplicabil situațiilor financiare anuale ale firmelor din România începând cu exercițiul financiar 2015. Chiar dacă modelul tău de proiecție este simplificat față de o balanță de verificare completă, gruparea posturilor (active imobilizate, active circulante, capitaluri proprii, datorii) trebuie să rămână compatibilă cu acest format, pentru ca modelul să poată fi ușor de comparat cu situațiile financiare reale ale firmei.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Circularitatea este cea mai frecventă cauză de blocaj (erori de calcul infinit) în modelele financiare care includ dobândă calculată pe soldul de cash. Dacă modelul tău calculează dobânda pe baza soldului mediu de trezorerie, activează calculul iterativ din Excel (File > Options > Formulas > Enable iterative calculation, cu maximum 100 de iterații și o eroare maximă de 0,001) înainte de a construi legătura. Altfel, riști erori greu de diagnosticat chiar înainte de o prezentare importantă.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cotele și plafoanele fiscale folosite ca ipoteze în model (impozit pe profit 16%, plafonul de 100.000 € pentru microîntreprinderi valabil din 2026, cota IMCA de 0,5% în 2026) se pot modifica prin acte normative ulterioare. Verifică întotdeauna valorile curente în Codul fiscal actualizat sau cu un consultant fiscal înainte de a le folosi într-un model destinat unei decizii reale de finanțare sau investiție - acest curs oferă cadrul metodologic, nu consultanță fiscală personalizată.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "TechStart SRL a încheiat Anul 1 cu datele din exemplul anterior: rezultat net -85.000 lei, amortizare 10.000 lei, creanțe clienți 61.644 lei, datorii furnizori 14.384 lei, trezorerie finală 127.740 lei (calculată din cash flow). Capitalul social vărsat la înființare a fost de 100.000 lei, iar asociații au acordat un împrumut de 200.000 lei pentru finanțarea pierderilor inițiale. Capexul din Anul 1 a fost de 50.000 lei (mijloace fixe brute), cu o amortizare anuală de 10.000 lei.\n\nConstruiește bilanțul simplificat de la finalul Anului 1 și verifică dacă Activ = Capitaluri proprii + Datorii.",
+    "solution_md": "**Activ:**\n\n| Element | Valoare |\n|---|---|\n| Mijloace fixe nete (50.000 - 10.000) | 40.000 lei |\n| Creanțe clienți | 61.644 lei |\n| Trezorerie | 127.740 lei |\n| **Total Activ** | **229.384 lei** |\n\n**Capitaluri proprii și datorii:**\n\n| Element | Valoare |\n|---|---|\n| Capital social | 100.000 lei |\n| Rezultat reportat (pierdere Anul 1) | -85.000 lei |\n| Împrumut asociați | 200.000 lei |\n| Datorii furnizori | 14.384 lei |\n| **Total Capitaluri proprii + Datorii** | **229.384 lei** |\n\nBilanțul balansează: 229.384 lei = 229.384 lei. Acesta este testul obligatoriu pe care trebuie să-l treacă orice model financiar înainte să-l prezinți unui investitor sau board - dacă cele două totaluri nu coincid, există o eroare de formulă (cel mai frecvent: o legătură lipsă între cash flow și bilanț, sau o dublă contabilizare a amortizării).",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă pentru DSO (Days Sales Outstanding)?",
+    "choices": [
+     "(Creanțe clienți / Venituri) × 365",
+     "(Venituri / Creanțe clienți) × 365",
+     "(Datorii furnizori / COGS) × 365",
+     "(Trezorerie / Venituri) × 365"
+    ],
+    "answer": 0,
+    "explain": "DSO măsoară câte zile durează, în medie, încasarea unei vânzări: se calculează ca raport între creanțele clienți și venituri, înmulțit cu numărul de zile din perioadă (365 pentru un an).",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce poate apărea o eroare de referință circulară într-un model financiar pe 3 situații?",
+    "choices": [
+     "Pentru că dobânda calculată pe soldul de cash depinde de rezultatul net, care la rândul lui depinde de dobândă",
+     "Pentru că amortizarea se calculează greșit în foaia de Ipoteze",
+     "Pentru că DSO și DPO sunt exprimate în zile, nu în procente",
+     "Pentru că bilanțul nu conține o foaie de Dashboard"
+    ],
+    "answer": 0,
+    "explain": "Când dobânda depinde de soldul mediu de cash/datorie, iar acel sold depinde de rezultatul net (care include dobânda), formula se referă indirect la ea însăși - Excel rezolvă acest ciclu doar cu calculul iterativ activat.",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este DSO și cum se calculează?",
+    "back": "Days Sales Outstanding = perioada medie de încasare a creanțelor = (Creanțe clienți / Venituri) × 365 zile.",
+    "concept_key": "capital-de-lucru-dso-dpo",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este DPO și cum se calculează?",
+    "back": "Days Payable Outstanding = perioada medie de plată a furnizorilor = (Datorii furnizori / COGS) × 365 zile.",
+    "concept_key": "capital-de-lucru-dso-dpo",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 3 situații financiare interconectate într-un model financiar complet?",
+    "back": "Contul de profit și pierdere, Bilanțul și Situația fluxurilor de numerar (cash flow) - fiecare hrănește pe celelalte două, iar Activul trebuie să egaleze mereu Capitalurile proprii + Datoriile.",
+    "concept_key": "model-financiar-3-situatii",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă circularitate într-un model Excel și cum se rezolvă?",
+    "back": "Circularitatea apare când dobânda depinde de soldul de cash, iar soldul de cash depinde de rezultatul net care include dobânda; se rezolvă activând calculul iterativ (File > Options > Formulas > Enable iterative calculation).",
+    "concept_key": "circularitate-model-financiar",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota actuală a impozitului pe profit în România (iul 2026)?",
+    "back": "16%, neschimbată; firmele cu cifră de afaceri peste 50 mil. € datorează suplimentar IMCA de 0,5% în 2026 (redus de la 1%, se abrogă din 1 ianuarie 2027).",
+    "concept_key": "impozit-profit-imca-2026",
+    "blockId": "cmjjuxw6100exumkps9tbtbj9-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1656,
+   "flashcards": 5
+  }
+ }
+}

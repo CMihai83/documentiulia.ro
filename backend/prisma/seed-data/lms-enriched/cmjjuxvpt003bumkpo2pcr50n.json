@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvpt003bumkpo2pcr50n",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Programare VBA de Bază",
+ "lesson": "Operatori și expresii",
+ "category": "EXCEL_VBA",
+ "content": "# Operatori și expresii\n\n# Operatorii aritmetici în VBA\n\nÎn VBA, operatorii aritmetici permit efectuarea calculelor numerice direct în cod, la fel cum ai face-o într-o formulă Excel, dar cu o sintaxă proprie limbajului de programare.\n\nOperatorii de bază, în ordinea priorității de evaluare:\n\n| Operator | Semnificație | Exemplu | Rezultat |\n|---|---|---|---|\n| ^ | Ridicare la putere | 2 ^ 3 | 8 |\n| - | Negare (minus unar) | -5 | -5 |\n| * , / | Înmulțire, împărțire | 10 * 3 | 30 |\n| \\\\ | Împărțire întreagă | 17 \\\\ 5 | 3 |\n| Mod | Restul împărțirii | 17 Mod 5 | 2 |\n| + , - | Adunare, scădere | 10 + 5 | 15 |\n\nImportant: operatorul \\\\ (backslash) este diferit de / (slash). Primul rotunjește ambii operanzi la întreg și returnează câtul întreg al împărțirii; al doilea returnează rezultatul zecimal complet. De exemplu, 17 \\\\ 5 dă 3, în timp ce 17 / 5 dă 3.4.\n\nDeși în Excel, pe un calculator setat pentru România, vezi numerele afișate cu virgulă zecimală (de exemplu 3,4), în codul VBA valorile zecimale se scriu întotdeauna cu punct (3.4), indiferent de setările regionale Windows. Aceasta este o sursă frecventă de erori pentru cursanții începători.\n\nOrdinea de evaluare (precedența) contează: VBA evaluează mai întâi exponențierea, apoi negarea, apoi înmulțirea/împărțirea, apoi împărțirea întreagă, apoi Mod, și în final adunarea/scăderea. Când ai dubii, folosește paranteze rotunde pentru a controla explicit ordinea - de exemplu (Pret + Adaos) * CotaTVA este diferit de Pret + Adaos * CotaTVA.\n\n# Operatorii de comparație\n\nOperatorii de comparație compară două valori și returnează întotdeauna un rezultat de tip Boolean: True sau False. Sunt esențiali pentru structurile condiționale (If...Then) și buclele condiționate (Do While, Do Until), pe care le vei studia în lecțiile următoare.\n\nOperatori disponibili:\n- `=` egal cu\n- `<>` diferit de\n- `<` mai mic decât\n- `>` mai mare decât\n- `<=` mai mic sau egal cu\n- `>=` mai mare sau egal cu\n\nExemple: `100 > 50` returnează True; `\"Iulia\" = \"iulia\"` returnează False (VBA compară textul ca fiind case-sensitive, adică ține cont de majuscule/minuscule, în comparațiile implicite de tip binar); `#03/01/2026# > #02/15/2026#` returnează True pentru date calendaristice.\n\nPoți compara variabile de tip text, numeric sau dată, atât timp cât tipurile sunt compatibile. Dacă vrei ca VBA să ignore diferența de majuscule/minuscule la compararea textelor, adaugă instrucțiunea `Option Compare Text` la începutul modulului (înainte de orice procedură).\n\n# Operatori logici și concatenarea textului\n\nOperatorii logici combină mai multe condiții booleene (True/False) într-o singură expresie:\n- **And** - True doar dacă ambele condiții sunt True\n- **Or** - True dacă cel puțin una din condiții este True\n- **Not** - inversează valoarea (Not True = False)\n- **Xor** - True doar dacă exact una dintre condiții este True (SAU exclusiv)\n\nExemplu: `Vanzari > 5000 And ClientFidel = True` este True doar dacă vânzările depășesc 5.000 lei ȘI clientul este fidel, simultan.\n\nAtenție importantă: spre deosebire de alte limbaje (precum VB.NET, C# sau Python), VBA nu are evaluare \"short-circuit\" pentru And/Or - adică evaluează întotdeauna ambele condiții, chiar dacă prima ar fi suficientă pentru a decide rezultatul. Acest lucru contează atunci când a doua condiție ar genera o eroare (de exemplu, o împărțire la zero sau accesarea unui obiect care nu există).\n\nConcatenarea textului se face cu operatorul `&`, care unește două sau mai multe șiruri de caractere (sau valori convertite automat la text). De exemplu: `\"Total: \" & Total & \" lei\"`. Deși semnul `+` poate concatena text în anumite cazuri, este recomandat să folosești întotdeauna `&` pentru concatenare, deoarece `+` poate produce erori de tip (Type Mismatch) sau rezultate neașteptate atunci când unul dintre operanzi este Null sau are un tip numeric ambiguu.\n\n## Exemplu: Calcul preț cu TVA și discount\nCod complet, rulabil, care aplică operatorii aritmetici pentru a calcula prețul final al unui produs:\n\n```vba\nSub CalculPretFinal()\n    Dim PretFaraTVA As Double\n    Dim CotaTVA As Double\n    Dim Discount As Double\n    Dim PretCuTVA As Double\n    Dim PretFinal As Double\n    \n    PretFaraTVA = 1000        ' pret de lista, in lei, fara TVA\n    CotaTVA = 0.21             ' cota standard TVA, 21%, valabila din august 2025\n    Discount = 0.1             ' discount comercial de 10%\n    \n    PretCuTVA = PretFaraTVA * (1 + CotaTVA)   ' 1000 * 1.21 = 1210\n    PretFinal = PretCuTVA * (1 - Discount)    ' 1210 * 0.9 = 1089\n    \n    MsgBox \"Pret cu TVA: \" & PretCuTVA & \" lei\" & vbNewLine & _\n           \"Pret final dupa discount: \" & PretFinal & \" lei\"\nEnd Sub\n```\n\nRezultat: prețul cu TVA este 1.210 lei, iar prețul final, după aplicarea discountului de 10%, este 1.089 lei. Observă folosirea parantezelor pentru a controla ordinea calculelor: `(1 + CotaTVA)` se evaluează înaintea înmulțirii, garantând rezultatul corect.\n\n## Exemplu: Validare eligibilitate discount cu operatori logici\nCod complet care combină operatori logici și concatenare pentru a decide eligibilitatea unui client la discount:\n\n```vba\nSub VerificaEligibilitateDiscount()\n    Dim Vanzari As Double\n    Dim ClientFidel As Boolean\n    Dim Mesaj As String\n    \n    Vanzari = 7500\n    ClientFidel = True\n    \n    If Vanzari > 5000 And ClientFidel Then\n        Mesaj = \"Clientul beneficiaza de discount de 10%.\"\n    ElseIf Vanzari > 5000 Or ClientFidel Then\n        Mesaj = \"Clientul beneficiaza de discount de 5%.\"\n    Else\n        Mesaj = \"Clientul nu beneficiaza de discount.\"\n    End If\n    \n    MsgBox \"Vanzari: \" & Vanzari & \" lei\" & vbNewLine & Mesaj\nEnd Sub\n```\n\nAici, operatorul `And` impune ca ambele condiții (vânzări peste 5.000 lei și client fidel) să fie adevărate simultan pentru discountul maxim; operatorul `Or` oferă discountul redus dacă măcar una dintre condiții este îndeplinită. Concatenarea cu `&` construiește mesajul final afișat utilizatorului.\n\n⚠ Trei greșeli frecvente legate de operatori în VBA: (1) confuzia dintre `/` (împărțire zecimală) și `\\` (împărțire întreagă, cu rotunjire la întreg înainte de calcul) - `7 \\ 2` dă 3, nu 3,5; (2) folosirea `+` în loc de `&` pentru concatenare, care poate produce eroarea \"Type Mismatch\" dacă unul dintre operanzi este Null sau text; (3) uitarea faptului că VBA evaluează întotdeauna ambele părți ale unui `And`/`Or`, fără evaluare \"short-circuit\" - verifică mereu că a doua condiție nu poate genera o eroare de rulare (de exemplu, împărțire la zero).\n\n## Exercițiu\nScrie o procedură VBA care calculează comisionul unui agent de vânzări, după următoarele reguli:\n- dacă vânzările lunare depășesc 10.000 lei ȘI agentul a avut zero retururi, comisionul este 8% din vânzări;\n- dacă vânzările depășesc 10.000 lei SAU (vânzările sunt între 5.000 și 10.000 lei ȘI zero retururi), comisionul este 5%;\n- în rest, comisionul este 2%.\n\nAfișează comisionul calculat, folosind concatenare pentru mesaj. Testează cu Vanzari = 12000 și ZeroRetururi = True.\n\n**Soluție:** ```vba\nSub CalculComisionAgent()\n    Dim Vanzari As Double\n    Dim ZeroRetururi As Boolean\n    Dim Comision As Double\n    \n    Vanzari = 12000\n    ZeroRetururi = True\n    \n    If Vanzari > 10000 And ZeroRetururi Then\n        Comision = Vanzari * 0.08\n    ElseIf Vanzari > 10000 Or (Vanzari >= 5000 And Vanzari <= 10000 And ZeroRetururi) Then\n        Comision = Vanzari * 0.05\n    Else\n        Comision = Vanzari * 0.02\n    End If\n    \n    MsgBox \"Vanzari: \" & Vanzari & \" lei\" & vbNewLine & _\n           \"Comision calculat: \" & Comision & \" lei\"\nEnd Sub\n```\n\nPentru Vanzari = 12000 și ZeroRetururi = True, prima condiție (And) este îndeplinită, deci comisionul este 12000 * 0.08 = 960 lei.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vba-operatori-aritmetici",
+    "md": "# Operatorii aritmetici în VBA\n\nÎn VBA, operatorii aritmetici permit efectuarea calculelor numerice direct în cod, la fel cum ai face-o într-o formulă Excel, dar cu o sintaxă proprie limbajului de programare.\n\nOperatorii de bază, în ordinea priorității de evaluare:\n\n| Operator | Semnificație | Exemplu | Rezultat |\n|---|---|---|---|\n| ^ | Ridicare la putere | 2 ^ 3 | 8 |\n| - | Negare (minus unar) | -5 | -5 |\n| * , / | Înmulțire, împărțire | 10 * 3 | 30 |\n| \\\\ | Împărțire întreagă | 17 \\\\ 5 | 3 |\n| Mod | Restul împărțirii | 17 Mod 5 | 2 |\n| + , - | Adunare, scădere | 10 + 5 | 15 |\n\nImportant: operatorul \\\\ (backslash) este diferit de / (slash). Primul rotunjește ambii operanzi la întreg și returnează câtul întreg al împărțirii; al doilea returnează rezultatul zecimal complet. De exemplu, 17 \\\\ 5 dă 3, în timp ce 17 / 5 dă 3.4.\n\nDeși în Excel, pe un calculator setat pentru România, vezi numerele afișate cu virgulă zecimală (de exemplu 3,4), în codul VBA valorile zecimale se scriu întotdeauna cu punct (3.4), indiferent de setările regionale Windows. Aceasta este o sursă frecventă de erori pentru cursanții începători.\n\nOrdinea de evaluare (precedența) contează: VBA evaluează mai întâi exponențierea, apoi negarea, apoi înmulțirea/împărțirea, apoi împărțirea întreagă, apoi Mod, și în final adunarea/scăderea. Când ai dubii, folosește paranteze rotunde pentru a controla explicit ordinea - de exemplu (Pret + Adaos) * CotaTVA este diferit de Pret + Adaos * CotaTVA.",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-operatori-comparatie",
+    "md": "# Operatorii de comparație\n\nOperatorii de comparație compară două valori și returnează întotdeauna un rezultat de tip Boolean: True sau False. Sunt esențiali pentru structurile condiționale (If...Then) și buclele condiționate (Do While, Do Until), pe care le vei studia în lecțiile următoare.\n\nOperatori disponibili:\n- `=` egal cu\n- `<>` diferit de\n- `<` mai mic decât\n- `>` mai mare decât\n- `<=` mai mic sau egal cu\n- `>=` mai mare sau egal cu\n\nExemple: `100 > 50` returnează True; `\"Iulia\" = \"iulia\"` returnează False (VBA compară textul ca fiind case-sensitive, adică ține cont de majuscule/minuscule, în comparațiile implicite de tip binar); `#03/01/2026# > #02/15/2026#` returnează True pentru date calendaristice.\n\nPoți compara variabile de tip text, numeric sau dată, atât timp cât tipurile sunt compatibile. Dacă vrei ca VBA să ignore diferența de majuscule/minuscule la compararea textelor, adaugă instrucțiunea `Option Compare Text` la începutul modulului (înainte de orice procedură).",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-operatori-logici-concatenare",
+    "md": "# Operatori logici și concatenarea textului\n\nOperatorii logici combină mai multe condiții booleene (True/False) într-o singură expresie:\n- **And** - True doar dacă ambele condiții sunt True\n- **Or** - True dacă cel puțin una din condiții este True\n- **Not** - inversează valoarea (Not True = False)\n- **Xor** - True doar dacă exact una dintre condiții este True (SAU exclusiv)\n\nExemplu: `Vanzari > 5000 And ClientFidel = True` este True doar dacă vânzările depășesc 5.000 lei ȘI clientul este fidel, simultan.\n\nAtenție importantă: spre deosebire de alte limbaje (precum VB.NET, C# sau Python), VBA nu are evaluare \"short-circuit\" pentru And/Or - adică evaluează întotdeauna ambele condiții, chiar dacă prima ar fi suficientă pentru a decide rezultatul. Acest lucru contează atunci când a doua condiție ar genera o eroare (de exemplu, o împărțire la zero sau accesarea unui obiect care nu există).\n\nConcatenarea textului se face cu operatorul `&`, care unește două sau mai multe șiruri de caractere (sau valori convertite automat la text). De exemplu: `\"Total: \" & Total & \" lei\"`. Deși semnul `+` poate concatena text în anumite cazuri, este recomandat să folosești întotdeauna `&` pentru concatenare, deoarece `+` poate produce erori de tip (Type Mismatch) sau rezultate neașteptate atunci când unul dintre operanzi este Null sau are un tip numeric ambiguu.",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calcul preț cu TVA și discount",
+    "concept_key": "vba-operatori-aritmetici",
+    "md": "Cod complet, rulabil, care aplică operatorii aritmetici pentru a calcula prețul final al unui produs:\n\n```vba\nSub CalculPretFinal()\n    Dim PretFaraTVA As Double\n    Dim CotaTVA As Double\n    Dim Discount As Double\n    Dim PretCuTVA As Double\n    Dim PretFinal As Double\n    \n    PretFaraTVA = 1000        ' pret de lista, in lei, fara TVA\n    CotaTVA = 0.21             ' cota standard TVA, 21%, valabila din august 2025\n    Discount = 0.1             ' discount comercial de 10%\n    \n    PretCuTVA = PretFaraTVA * (1 + CotaTVA)   ' 1000 * 1.21 = 1210\n    PretFinal = PretCuTVA * (1 - Discount)    ' 1210 * 0.9 = 1089\n    \n    MsgBox \"Pret cu TVA: \" & PretCuTVA & \" lei\" & vbNewLine & _\n           \"Pret final dupa discount: \" & PretFinal & \" lei\"\nEnd Sub\n```\n\nRezultat: prețul cu TVA este 1.210 lei, iar prețul final, după aplicarea discountului de 10%, este 1.089 lei. Observă folosirea parantezelor pentru a controla ordinea calculelor: `(1 + CotaTVA)` se evaluează înaintea înmulțirii, garantând rezultatul corect.",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b4"
+   },
+   {
+    "type": "example",
+    "title": "Validare eligibilitate discount cu operatori logici",
+    "concept_key": "vba-operatori-logici-concatenare",
+    "md": "Cod complet care combină operatori logici și concatenare pentru a decide eligibilitatea unui client la discount:\n\n```vba\nSub VerificaEligibilitateDiscount()\n    Dim Vanzari As Double\n    Dim ClientFidel As Boolean\n    Dim Mesaj As String\n    \n    Vanzari = 7500\n    ClientFidel = True\n    \n    If Vanzari > 5000 And ClientFidel Then\n        Mesaj = \"Clientul beneficiaza de discount de 10%.\"\n    ElseIf Vanzari > 5000 Or ClientFidel Then\n        Mesaj = \"Clientul beneficiaza de discount de 5%.\"\n    Else\n        Mesaj = \"Clientul nu beneficiaza de discount.\"\n    End If\n    \n    MsgBox \"Vanzari: \" & Vanzari & \" lei\" & vbNewLine & Mesaj\nEnd Sub\n```\n\nAici, operatorul `And` impune ca ambele condiții (vânzări peste 5.000 lei și client fidel) să fie adevărate simultan pentru discountul maxim; operatorul `Or` oferă discountul redus dacă măcar una dintre condiții este îndeplinită. Concatenarea cu `&` construiește mesajul final afișat utilizatorului.",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Trei greșeli frecvente legate de operatori în VBA: (1) confuzia dintre `/` (împărțire zecimală) și `\\` (împărțire întreagă, cu rotunjire la întreg înainte de calcul) - `7 \\ 2` dă 3, nu 3,5; (2) folosirea `+` în loc de `&` pentru concatenare, care poate produce eroarea \"Type Mismatch\" dacă unul dintre operanzi este Null sau text; (3) uitarea faptului că VBA evaluează întotdeauna ambele părți ale unui `And`/`Or`, fără evaluare \"short-circuit\" - verifică mereu că a doua condiție nu poate genera o eroare de rulare (de exemplu, împărțire la zero).",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Scrie o procedură VBA care calculează comisionul unui agent de vânzări, după următoarele reguli:\n- dacă vânzările lunare depășesc 10.000 lei ȘI agentul a avut zero retururi, comisionul este 8% din vânzări;\n- dacă vânzările depășesc 10.000 lei SAU (vânzările sunt între 5.000 și 10.000 lei ȘI zero retururi), comisionul este 5%;\n- în rest, comisionul este 2%.\n\nAfișează comisionul calculat, folosind concatenare pentru mesaj. Testează cu Vanzari = 12000 și ZeroRetururi = True.",
+    "solution_md": "```vba\nSub CalculComisionAgent()\n    Dim Vanzari As Double\n    Dim ZeroRetururi As Boolean\n    Dim Comision As Double\n    \n    Vanzari = 12000\n    ZeroRetururi = True\n    \n    If Vanzari > 10000 And ZeroRetururi Then\n        Comision = Vanzari * 0.08\n    ElseIf Vanzari > 10000 Or (Vanzari >= 5000 And Vanzari <= 10000 And ZeroRetururi) Then\n        Comision = Vanzari * 0.05\n    Else\n        Comision = Vanzari * 0.02\n    End If\n    \n    MsgBox \"Vanzari: \" & Vanzari & \" lei\" & vbNewLine & _\n           \"Comision calculat: \" & Comision & \" lei\"\nEnd Sub\n```\n\nPentru Vanzari = 12000 și ZeroRetururi = True, prima condiție (And) este îndeplinită, deci comisionul este 12000 * 0.08 = 960 lei.",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este rezultatul expresiei 17 \\ 5 în VBA?",
+    "choices": [
+     "3,4",
+     "3",
+     "2",
+     "Eroare de tip"
+    ],
+    "answer": 1,
+    "explain": "Operatorul \\ face împărțire întreagă (rotunjește la întreg și păstrează doar câtul), deci 17 \\ 5 = 3. Rezultatul 3,4 s-ar obține cu operatorul / (17 / 5).",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce este recomandat să folosești & în loc de + pentru concatenarea textului în VBA?",
+    "choices": [
+     "Pentru că + este mai lent la execuție",
+     "Pentru că & evită erori de tip (Type Mismatch) când un operand este Null sau numeric",
+     "Pentru că + nu funcționează cu variabile String",
+     "Nu există nicio diferență între cei doi operatori"
+    ],
+    "answer": 1,
+    "explain": "Operatorul + poate genera erori sau rezultate neașteptate când unul dintre operanzi este Null sau are un tip numeric ambiguu; & convertește sigur la text și concatenează, motiv pentru care este preferat.",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e diferența dintre / și \\ în VBA?",
+    "back": "/ face împărțire zecimală completă (ex: 17/5 = 3.4); \\ face împărțire întreagă, rotunjind operanzii și păstrând doar câtul întreg (ex: 17\\5 = 3).",
+    "concept_key": "vba-operatori-aritmetici",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce returnează operatorul Mod în VBA?",
+    "back": "Restul împărțirii întregi. Exemplu: 17 Mod 5 = 2.",
+    "concept_key": "vba-operatori-aritmetici",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tip de valoare returnează un operator de comparație în VBA?",
+    "back": "Un Boolean: True sau False.",
+    "concept_key": "vba-operatori-comparatie",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Are VBA evaluare short-circuit pentru And/Or?",
+    "back": "Nu. VBA evaluează întotdeauna ambele condiții, spre deosebire de limbaje precum VB.NET sau Python.",
+    "concept_key": "vba-operatori-logici-concatenare",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce operator se recomandă pentru concatenarea textului în VBA și de ce?",
+    "back": "Operatorul &, deoarece evită erorile de tip (Type Mismatch) care pot apărea cu + atunci când un operand este Null sau numeric.",
+    "concept_key": "vba-operatori-logici-concatenare",
+    "blockId": "cmjjuxvpt003bumkpo2pcr50n-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1049,
+   "flashcards": 5
+  }
+ }
+}

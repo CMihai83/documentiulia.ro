@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxw2e00c5umkp0jv4adv6",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Decizii de Business cu Impact Financiar",
+ "lesson": "Quiz final",
+ "category": "FINANCE_OPS",
+ "content": "Test de evaluare — Quiz final (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este diferența esențială dintre profit și fluxul de numerar (cash flow)?",
+     "choices": [
+      "Nu există nicio diferență, cei doi termeni sunt sinonimi",
+      "Profitul este un indicator contabil (venituri minus cheltuieli, recunoscute la facturare), în timp ce fluxul de numerar reflectă banii efectiv încasați și plătiți",
+      "Fluxul de numerar se calculează doar o dată pe an, la închiderea exercițiului financiar",
+      "Profitul ține cont exclusiv de TVA-ul colectat de la clienți"
+     ],
+     "answer": 1,
+     "explain": "Profitul se determină pe principiul contabilității de angajamente (o vânzare facturată generează venit, chiar dacă nu a fost încasată), în timp ce cash flow-ul urmărește mișcările reale de numerar. O firmă poate fi profitabilă în contul de profit și pierdere și, în același timp, să aibă dificultăți de lichiditate dacă încasările de la clienți întârzie.",
+     "concept_key": "profit_vs_cash_flow"
+    },
+    {
+     "q": "O firmă SRL de mobilă plătește lunar 3.000 lei chirie pentru atelier, indiferent de volumul produs, iar costul lemnului crește direct proporțional cu numărul de piese fabricate. Cum se numesc aceste două categorii de costuri?",
+     "choices": [
+      "Costuri directe și costuri indirecte",
+      "Costuri fixe și costuri variabile",
+      "Costuri de capital și costuri operaționale",
+      "Costuri controlabile și costuri necontrolabile"
+     ],
+     "answer": 1,
+     "explain": "Costurile fixe (precum chiria) rămân constante pe termen scurt, indiferent de volumul de activitate. Costurile variabile (precum materia primă) variază proporțional cu volumul producției sau vânzărilor. Această distincție este baza pentru calculul pragului de rentabilitate.",
+     "concept_key": "costuri_fixe_variabile"
+    },
+    {
+     "q": "O firmă vinde un produs cu preț de 100 lei/bucată, cost variabil de 60 lei/bucată și costuri fixe lunare de 8.000 lei. Câte bucăți trebuie vândute lunar pentru a atinge pragul de rentabilitate (break-even)?",
+     "choices": [
+      "150 bucăți",
+      "200 bucăți",
+      "80 bucăți",
+      "267 bucăți"
+     ],
+     "answer": 1,
+     "explain": "Marja de contribuție unitară este 100 - 60 = 40 lei. Pragul de rentabilitate (BEP) = costuri fixe / marja de contribuție = 8.000 / 40 = 200 bucăți. Sub acest volum, firma înregistrează pierdere; peste el, profit.",
+     "concept_key": "prag_rentabilitate"
+    },
+    {
+     "q": "Cum se calculează marja de contribuție (contribution margin) pentru un produs?",
+     "choices": [
+      "Preț de vânzare minus cost variabil unitar",
+      "Preț de vânzare minus toate costurile, fixe și variabile",
+      "Venituri totale minus cheltuieli fixe",
+      "Profit net împărțit la venituri totale"
+     ],
+     "answer": 0,
+     "explain": "Marja de contribuție arată cât din prețul unui produs rămâne, după acoperirea costului variabil, pentru a acoperi costurile fixe și a genera profit. Este elementul central în calculul pragului de rentabilitate (vezi întrebarea anterioară: 100 - 60 = 40 lei).",
+     "concept_key": "marja_contributie"
+    },
+    {
+     "q": "O firmă are creanțe (sume de încasat de la clienți) de 150.000 lei și vânzări anuale de 1.200.000 lei. Care este indicatorul DSO (Days Sales Outstanding – durata medie de încasare a creanțelor)?",
+     "choices": [
+      "Aproximativ 15 zile",
+      "Aproximativ 46 zile",
+      "Aproximativ 120 zile",
+      "Aproximativ 365 zile"
+     ],
+     "answer": 1,
+     "explain": "DSO = (creanțe / vânzări) × 365 = (150.000 / 1.200.000) × 365 ≈ 45,6, deci aproximativ 46 de zile. Acest indicator arată în câte zile, în medie, firma își încasează facturile emise clienților; un DSO ridicat semnalează risc de blocaj de lichiditate.",
+     "concept_key": "dso_creante"
+    },
+    {
+     "q": "O firmă are venituri din vânzări de 500.000 lei și costul bunurilor vândute (COGS) de 350.000 lei. Care este marja brută (gross margin) procentuală?",
+     "choices": [
+      "70%",
+      "30%",
+      "50%",
+      "15%"
+     ],
+     "answer": 1,
+     "explain": "Marja brută = (Venituri - COGS) / Venituri × 100 = (500.000 - 350.000) / 500.000 × 100 = 30%. Această marjă arată cât din fiecare leu vândut rămâne după acoperirea costului direct al bunurilor vândute, înainte de cheltuielile administrative și de vânzare.",
+     "concept_key": "marja_bruta"
+    },
+    {
+     "q": "O companie investește 40.000 lei într-un utilaj nou care generează un profit suplimentar de 12.000 lei pe an. Care este ROI (Return on Investment) anual al acestei investiții?",
+     "choices": [
+      "3%",
+      "12%",
+      "30%",
+      "300%"
+     ],
+     "answer": 2,
+     "explain": "ROI = (câștig anual din investiție / costul investiției) × 100 = (12.000 / 40.000) × 100 = 30%. Un ROI de 30% pe an este un indicator utilizat frecvent pentru a compara rapid atractivitatea mai multor decizii de investiție.",
+     "concept_key": "roi_investitie"
+    },
+    {
+     "q": "Ce reprezintă capitalul de lucru (working capital) al unei firme, calculat pe baza bilanțului întocmit conform OMFP 1802/2014?",
+     "choices": [
+      "Diferența dintre active circulante și datorii curente, care indică resursele disponibile pentru finanțarea operațiunilor zilnice",
+      "Capitalul social vărsat de acționari sau asociați la înființarea firmei",
+      "Suma totală a tuturor activelor înregistrate în bilanț",
+      "Profitul net reinvestit în firmă la finalul exercițiului financiar"
+     ],
+     "answer": 0,
+     "explain": "Capitalul de lucru = Active circulante (stocuri, creanțe, disponibilități) - Datorii curente (de plătit în max. 12 luni). Un capital de lucru pozitiv arată că firma poate acoperi obligațiile pe termen scurt din resursele curente; unul negativ semnalează risc de lichiditate, chiar dacă firma este profitabilă.",
+     "concept_key": "capital_lucru"
+    },
+    {
+     "q": "O firmă SRL plătitoare de TVA vinde un produs alimentar de bază la un preț fără TVA de 10 lei. Conform Legii 141/2025, de la 1 august 2025 se aplică o cotă redusă unică de 11% pentru astfel de produse. Ce preț final, cu TVA inclus, va plăti clientul?",
+     "choices": [
+      "10,90 lei",
+      "11,10 lei",
+      "11,90 lei",
+      "12,10 lei"
+     ],
+     "answer": 1,
+     "explain": "Preț final cu TVA = preț fără TVA × (1 + cota de TVA) = 10 × 1,11 = 11,10 lei. Cota redusă unică de 11% (care a înlocuit cotele de 5% și 9%) se aplică, printre altele, alimentelor de bază. O decizie de preț corectă trebuie să țină cont de impactul TVA asupra prețului final perceput de client, nu doar asupra profitabilității interne a firmei.",
+     "concept_key": "tva_decizie_pret"
+    },
+    {
+     "q": "O firmă analizează simultan două decizii: (1) extinderea termenului de plată acordat clienților de la 30 la 60 de zile, pentru a stimula vânzările, și (2) achiziția unui utilaj cu o perioadă de recuperare a investiției (payback) estimată la 5 ani, în condițiile în care firma are nevoie de lichidități suplimentare în următoarele 12 luni. Care este interpretarea financiară corectă a acestei situații?",
+     "choices": [
+      "Ambele decizii sunt sigur benefice, deoarece cresc profitul contabil al firmei",
+      "Extinderea termenului de plată va crește DSO și poate agrava problema de lichiditate, iar investiția cu payback de 5 ani nu răspunde nevoii de cash pe termen scurt — firma trebuie să evalueze impactul asupra fluxului de numerar, nu doar profitabilitatea contabilă",
+      "Termenul de plată acordat clienților nu are niciun efect asupra fluxului de numerar, ci doar asupra bilanțului contabil",
+      "Un payback de 5 ani este ideal exact pentru o nevoie de lichiditate pe orizont de 12 luni"
+     ],
+     "answer": 1,
+     "explain": "Extinderea termenului de plată de la 30 la 60 de zile crește DSO (durata de încasare a creanțelor), ceea ce înseamnă bani blocați mai mult timp la clienți — agravând, nu ajutând, o problemă de lichiditate. O investiție cu payback de 5 ani își recuperează costul pe termen lung, deci nu rezolvă o nevoie de cash imediată, pe 12 luni. O decizie de business corectă combină analiza profitabilității (cont de profit și pierdere) cu analiza lichidității (flux de numerar), deoarece cele două nu evoluează întotdeauna în aceeași direcție.",
+     "concept_key": "decizii_lichiditate_investitii"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

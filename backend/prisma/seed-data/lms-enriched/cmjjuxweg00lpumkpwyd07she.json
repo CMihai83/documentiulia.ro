@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxweg00lpumkpwyd07she",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Contextul și Leadership (Cl. 4-5)",
+ "lesson": "Template politică SSM",
+ "category": "HSE_SAFETY",
+ "content": "# Template politică SSM\n\nPolitica de securitate și sănătate în muncă (SSM) este documentul strategic prin care conducerea de vârf a unei organizații își declară public angajamentul față de protecția lucrătorilor. Conform clauzei 5.2 din ISO 45001:2018, politica SSM nu este o simplă formalitate afișată pe perete, ci fundamentul pe care se construiește întregul sistem de management: din ea derivă obiectivele SSM, planurile de acțiune, alocarea resurselor și criteriile de evaluare a performanței. Standardul cere ca politica să fie stabilită, implementată și menținută de top management, adică de persoana sau grupul care conduce și controlează organizația la cel mai înalt nivel — administrator, director general sau consiliu de administrație, în funcție de forma juridică a firmei (SRL, SA, PFA cu angajați).\n\nO politică SSM eficientă are trei caracteristici esențiale. Este **specifică organizației**: reflectă natura, mărimea și riscurile reale ale activității, nu un text generic copiat de pe internet. Este **angajantă**: folosește verbe de acțiune și responsabilizare („ne angajăm”, „asigurăm”, „prevenim”), nu formulări vagi. Este **verificabilă**: fiecare afirmație din politică trebuie să poată fi tradusă ulterior în obiective măsurabile și proceduri concrete, altfel rămâne literă moartă și devine o vulnerabilitate majoră la auditul de certificare.\n\nClauza 5.2 din ISO 45001:2018 impune ca politica SSM să includă cel puțin **șase angajamente obligatorii**:\n\n1. **Condiții de muncă sigure și sănătoase** — prevenirea vătămărilor și îmbolnăvirilor profesionale, adaptată scopului, mărimii și contextului organizației, precum și naturii specifice a riscurilor și oportunităților sale SSM.\n2. **Cadru pentru obiective SSM** — furnizarea bazei pe care se stabilesc anual obiective concrete și măsurabile.\n3. **Îndeplinirea cerințelor legale** aplicabile și a altor cerințe (contractuale, de grup, ale clienților).\n4. **Eliminarea pericolelor și reducerea riscurilor SSM**, aplicând ierarhia măsurilor de control: eliminare, substituire, măsuri tehnice, măsuri organizatorice, echipament individual de protecție.\n5. **Îmbunătățirea continuă** a sistemului de management SSM, pentru creșterea performanței în timp.\n6. **Consultarea și participarea lucrătorilor** și, unde există, a reprezentanților acestora — un element central al filosofiei ISO 45001, care tratează lucrătorul ca partener activ, nu doar ca subiect al regulilor.\n\nAl șaselea angajament este cel mai frecvent omis din politicile improvizate, deși auditorii de certificare îi acordă atenție deosebită.\n\nDincolo de conținut, standardul stabilește și cerințe de formă. Politica trebuie:\n\n- păstrată ca **informație documentată** (semnată, datată, cu versiune și revizie identificabile);\n- **comunicată** în cadrul organizației, în limba și la nivelul de înțelegere al fiecărei categorii de personal — inclusiv muncitorilor fără studii superioare, lucrătorilor sezonieri sau celor care nu vorbesc limba română ca limbă maternă;\n- **disponibilă părților interesate relevante**, atunci când este cazul: clienți care cer dovada angajamentului SSM în licitații, Inspectoratul Teritorial de Muncă (ITM), organisme de certificare sau publicul larg, dacă organizația o publică pe site;\n- **relevantă și adecvată** — nu este scrisă o singură dată și uitată într-un sertar, ci este revizuită la ședințele de analiză efectuată de management (clauza 9.3), de regulă anual sau ori de câte ori se schimbă semnificativ activitatea, structura organizatorică sau legislația aplicabilă.\n\n## Exemplu: Model complet de politică SSM — Metalcom Prod SRL\n**Politica SSM a societății Metalcom Prod SRL**\n\nMetalcom Prod SRL, producător de subansamble metalice cu 85 de angajați și sediul în Ploiești, consideră securitatea și sănătatea în muncă o valoare fundamentală, nu un cost operațional. Prin prezenta politică, conducerea societății se angajează:\n\n1. Să asigure condiții de muncă sigure și sănătoase tuturor angajaților, colaboratorilor și vizitatorilor, orientate spre prevenirea accidentelor de muncă și a bolilor profesionale specifice activității de prelucrare a metalelor (zgomot, vibrații, praf metalic, manipulare manuală a maselor).\n2. Să stabilească anual obiective SSM măsurabile, aliniate cu riscurile identificate în evaluarea de risc, și să aloce resursele umane, financiare și tehnice necesare atingerii lor.\n3. Să respecte integral cerințele Legii nr. 319/2006 a securității și sănătății în muncă, ale normelor metodologice de aplicare (HG 1425/2006) și ale oricăror alte cerințe legale sau contractuale aplicabile.\n4. Să elimine pericolele și să reducă riscurile SSM prin aplicarea consecventă a ierarhiei măsurilor de control, prioritizând eliminarea și substituirea în fața echipamentului individual de protecție.\n5. Să îmbunătățească în mod continuu performanța sistemului de management SSM, prin monitorizare, audit intern și analiză periodică efectuată de management.\n6. Să consulte și să încurajeze participarea activă a tuturor lucrătorilor și a reprezentanților acestora în deciziile care le afectează securitatea și sănătatea, inclusiv prin comitetul de securitate și sănătate în muncă.\n\nAceastă politică este comunicată tuturor angajaților la angajare și cu ocazia instruirilor periodice, este afișată la sediul societății și pe platforma internă, și este pusă la dispoziția clienților, furnizorilor și autorităților de control, la cerere. Politica este revizuită anual sau ori de câte ori intervin modificări semnificative în activitatea societății.\n\n*Director General, Popescu Ion — Ploiești, 15 ianuarie 2026*\n\n## Exemplu: Corespondența dintre text și cerințele clauzei 5.2\nPentru a înțelege de ce fiecare frază din modelul de mai sus contează, este util să vedem corespondența directă cu cerințele standardului:\n\n- Fraza introductivă („valoare fundamentală, nu un cost”) arată **angajamentul de principiu al top managementului**, cerut de clauza 5.1.\n- Punctul 1 acoperă **condiții sigure, adaptate contextului** specific (producție metalică, nu birou).\n- Punctul 2 acoperă **cadrul pentru obiective SSM**.\n- Punctul 3 acoperă **angajamentul legal**, cu referire explicită la actul normativ.\n- Punctul 4 acoperă **eliminarea pericolelor** prin ierarhia măsurilor de control.\n- Punctul 5 acoperă **îmbunătățirea continuă**.\n- Punctul 6 acoperă **consultarea și participarea lucrătorilor**.\n- Paragraful final rezolvă cerințele de formă: **comunicare, disponibilitate pentru părți interesate și revizuire periodică**.\n\nSemnătura, funcția, data și localitatea transformă documentul din declarație de intenție în informație documentată auditabilă — exact elementele pe care un auditor de certificare le va cere la fața locului.\n\n> Temei legal: ISO 45001:2018 – Sisteme de management al securității și sănătății în muncă Clauza 5.2 – Politica SS (în vigoare de la 2018-03-12)\nStandardul internațional ISO 45001:2018, publicat la 12 martie 2018, stabilește la clauza 5.2 cerințele minime pe care top managementul trebuie să le respecte la stabilirea politicii SSM: adecvare la scopul și contextul organizației, cadru pentru obiective SSM, angajament de conformare legală, angajament de eliminare a pericolelor și reducere a riscurilor, angajament de îmbunătățire continuă și angajament privind consultarea și participarea lucrătorilor. Politica trebuie păstrată ca informație documentată, comunicată intern și disponibilă părților interesate relevante.\n\n⚠ O greșeală frecventă la firmele aflate la prima implementare este să trateze politica SSM ca pe un text de marketing, plin de superlative („cel mai sigur loc de muncă din România”), fără legătură cu riscurile reale sau cu resursele alocate efectiv. La auditul de certificare, auditorul verifică nu doar existența documentului, ci **coerența lui cu restul sistemului**: dacă politica promite „resurse suficiente pentru prevenire”, dar bugetul anual pentru echipament de protecție este zero, neconformitatea este aproape automată. La fel de gravă este **lipsa dovezii de comunicare** — o politică semnată, dar necunoscută de muncitorii de pe linia de producție, nu îndeplinește cerința clauzei 5.2. Verifică la fiecare revizuire dacă politica mai reflectă activitatea reală a firmei (de exemplu, dacă s-a adăugat o linie de producție nouă sau un sediu secundar).\n\n## Exercițiu\nEști responsabil SSM la o firmă de transport marfă cu 45 de angajați și o flotă de camioane. Riscurile principale sunt: oboseala șoferilor pe curse lungi, accidente rutiere, manipularea mărfii la încărcare/descărcare și munca în condiții meteo variate. Redactează un paragraf de politică SSM (6 puncte) care acoperă cele șase angajamente obligatorii ale clauzei 5.2, adaptat acestor riscuri specifice.\n\n**Soluție:** **Politica SSM a societății [Nume Transport SRL]**\n\nConducerea societății se angajează:\n\n1. Să asigure condiții de muncă sigure pentru șoferi și personalul de logistică, prevenind accidentele rutiere, oboseala la volan și accidentările la manipularea mărfii, prin respectarea strictă a timpilor de conducere și odihnă.\n2. Să stabilească anual obiective SSM măsurabile (de exemplu, reducerea numărului de incidente rutiere raportate) și să aloce resursele necesare pentru atingerea lor.\n3. Să respecte integral cerințele Legii nr. 319/2006, ale HG 1425/2006 și ale reglementărilor specifice transportului rutier de marfă (timpi de conducere, tahograf).\n4. Să elimine pericolele și să reducă riscurile prin planificarea rutelor, întreținerea preventivă a flotei, dotarea cu echipamente de manipulare a mărfii și echipament individual de protecție adecvat condițiilor meteo.\n5. Să îmbunătățească în mod continuu performanța SSM prin analiza cauzelor incidentelor rutiere și actualizarea procedurilor.\n6. Să consulte șoferii și personalul de logistică — cei mai expuși riscurilor operaționale — în stabilirea rutelor, a programului de lucru și a măsurilor de prevenire, inclusiv prin sesizări directe către responsabilul SSM.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "politica-ssm-scop-iso45001",
+    "md": "Politica de securitate și sănătate în muncă (SSM) este documentul strategic prin care conducerea de vârf a unei organizații își declară public angajamentul față de protecția lucrătorilor. Conform clauzei 5.2 din ISO 45001:2018, politica SSM nu este o simplă formalitate afișată pe perete, ci fundamentul pe care se construiește întregul sistem de management: din ea derivă obiectivele SSM, planurile de acțiune, alocarea resurselor și criteriile de evaluare a performanței. Standardul cere ca politica să fie stabilită, implementată și menținută de top management, adică de persoana sau grupul care conduce și controlează organizația la cel mai înalt nivel — administrator, director general sau consiliu de administrație, în funcție de forma juridică a firmei (SRL, SA, PFA cu angajați).\n\nO politică SSM eficientă are trei caracteristici esențiale. Este **specifică organizației**: reflectă natura, mărimea și riscurile reale ale activității, nu un text generic copiat de pe internet. Este **angajantă**: folosește verbe de acțiune și responsabilizare („ne angajăm”, „asigurăm”, „prevenim”), nu formulări vagi. Este **verificabilă**: fiecare afirmație din politică trebuie să poată fi tradusă ulterior în obiective măsurabile și proceduri concrete, altfel rămâne literă moartă și devine o vulnerabilitate majoră la auditul de certificare.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "elemente-obligatorii-politica-ssm-clauza-5-2",
+    "md": "Clauza 5.2 din ISO 45001:2018 impune ca politica SSM să includă cel puțin **șase angajamente obligatorii**:\n\n1. **Condiții de muncă sigure și sănătoase** — prevenirea vătămărilor și îmbolnăvirilor profesionale, adaptată scopului, mărimii și contextului organizației, precum și naturii specifice a riscurilor și oportunităților sale SSM.\n2. **Cadru pentru obiective SSM** — furnizarea bazei pe care se stabilesc anual obiective concrete și măsurabile.\n3. **Îndeplinirea cerințelor legale** aplicabile și a altor cerințe (contractuale, de grup, ale clienților).\n4. **Eliminarea pericolelor și reducerea riscurilor SSM**, aplicând ierarhia măsurilor de control: eliminare, substituire, măsuri tehnice, măsuri organizatorice, echipament individual de protecție.\n5. **Îmbunătățirea continuă** a sistemului de management SSM, pentru creșterea performanței în timp.\n6. **Consultarea și participarea lucrătorilor** și, unde există, a reprezentanților acestora — un element central al filosofiei ISO 45001, care tratează lucrătorul ca partener activ, nu doar ca subiect al regulilor.\n\nAl șaselea angajament este cel mai frecvent omis din politicile improvizate, deși auditorii de certificare îi acordă atenție deosebită.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cerinte-forma-comunicare-politica-ssm",
+    "md": "Dincolo de conținut, standardul stabilește și cerințe de formă. Politica trebuie:\n\n- păstrată ca **informație documentată** (semnată, datată, cu versiune și revizie identificabile);\n- **comunicată** în cadrul organizației, în limba și la nivelul de înțelegere al fiecărei categorii de personal — inclusiv muncitorilor fără studii superioare, lucrătorilor sezonieri sau celor care nu vorbesc limba română ca limbă maternă;\n- **disponibilă părților interesate relevante**, atunci când este cazul: clienți care cer dovada angajamentului SSM în licitații, Inspectoratul Teritorial de Muncă (ITM), organisme de certificare sau publicul larg, dacă organizația o publică pe site;\n- **relevantă și adecvată** — nu este scrisă o singură dată și uitată într-un sertar, ci este revizuită la ședințele de analiză efectuată de management (clauza 9.3), de regulă anual sau ori de câte ori se schimbă semnificativ activitatea, structura organizatorică sau legislația aplicabilă.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b3"
+   },
+   {
+    "type": "example",
+    "title": "Model complet de politică SSM — Metalcom Prod SRL",
+    "concept_key": "model-politica-ssm-template",
+    "md": "**Politica SSM a societății Metalcom Prod SRL**\n\nMetalcom Prod SRL, producător de subansamble metalice cu 85 de angajați și sediul în Ploiești, consideră securitatea și sănătatea în muncă o valoare fundamentală, nu un cost operațional. Prin prezenta politică, conducerea societății se angajează:\n\n1. Să asigure condiții de muncă sigure și sănătoase tuturor angajaților, colaboratorilor și vizitatorilor, orientate spre prevenirea accidentelor de muncă și a bolilor profesionale specifice activității de prelucrare a metalelor (zgomot, vibrații, praf metalic, manipulare manuală a maselor).\n2. Să stabilească anual obiective SSM măsurabile, aliniate cu riscurile identificate în evaluarea de risc, și să aloce resursele umane, financiare și tehnice necesare atingerii lor.\n3. Să respecte integral cerințele Legii nr. 319/2006 a securității și sănătății în muncă, ale normelor metodologice de aplicare (HG 1425/2006) și ale oricăror alte cerințe legale sau contractuale aplicabile.\n4. Să elimine pericolele și să reducă riscurile SSM prin aplicarea consecventă a ierarhiei măsurilor de control, prioritizând eliminarea și substituirea în fața echipamentului individual de protecție.\n5. Să îmbunătățească în mod continuu performanța sistemului de management SSM, prin monitorizare, audit intern și analiză periodică efectuată de management.\n6. Să consulte și să încurajeze participarea activă a tuturor lucrătorilor și a reprezentanților acestora în deciziile care le afectează securitatea și sănătatea, inclusiv prin comitetul de securitate și sănătate în muncă.\n\nAceastă politică este comunicată tuturor angajaților la angajare și cu ocazia instruirilor periodice, este afișată la sediul societății și pe platforma internă, și este pusă la dispoziția clienților, furnizorilor și autorităților de control, la cerere. Politica este revizuită anual sau ori de câte ori intervin modificări semnificative în activitatea societății.\n\n*Director General, Popescu Ion — Ploiești, 15 ianuarie 2026*",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b4"
+   },
+   {
+    "type": "example",
+    "title": "Corespondența dintre text și cerințele clauzei 5.2",
+    "concept_key": "corespondenta-text-clauza-5-2",
+    "md": "Pentru a înțelege de ce fiecare frază din modelul de mai sus contează, este util să vedem corespondența directă cu cerințele standardului:\n\n- Fraza introductivă („valoare fundamentală, nu un cost”) arată **angajamentul de principiu al top managementului**, cerut de clauza 5.1.\n- Punctul 1 acoperă **condiții sigure, adaptate contextului** specific (producție metalică, nu birou).\n- Punctul 2 acoperă **cadrul pentru obiective SSM**.\n- Punctul 3 acoperă **angajamentul legal**, cu referire explicită la actul normativ.\n- Punctul 4 acoperă **eliminarea pericolelor** prin ierarhia măsurilor de control.\n- Punctul 5 acoperă **îmbunătățirea continuă**.\n- Punctul 6 acoperă **consultarea și participarea lucrătorilor**.\n- Paragraful final rezolvă cerințele de formă: **comunicare, disponibilitate pentru părți interesate și revizuire periodică**.\n\nSemnătura, funcția, data și localitatea transformă documentul din declarație de intenție în informație documentată auditabilă — exact elementele pe care un auditor de certificare le va cere la fața locului.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "ISO 45001:2018 – Sisteme de management al securității și sănătății în muncă",
+    "article": "Clauza 5.2 – Politica SS",
+    "effective": "2018-03-12",
+    "md": "Standardul internațional ISO 45001:2018, publicat la 12 martie 2018, stabilește la clauza 5.2 cerințele minime pe care top managementul trebuie să le respecte la stabilirea politicii SSM: adecvare la scopul și contextul organizației, cadru pentru obiective SSM, angajament de conformare legală, angajament de eliminare a pericolelor și reducere a riscurilor, angajament de îmbunătățire continuă și angajament privind consultarea și participarea lucrătorilor. Politica trebuie păstrată ca informație documentată, comunicată intern și disponibilă părților interesate relevante.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b6"
+   },
+   {
+    "type": "warning",
+    "md": "O greșeală frecventă la firmele aflate la prima implementare este să trateze politica SSM ca pe un text de marketing, plin de superlative („cel mai sigur loc de muncă din România”), fără legătură cu riscurile reale sau cu resursele alocate efectiv. La auditul de certificare, auditorul verifică nu doar existența documentului, ci **coerența lui cu restul sistemului**: dacă politica promite „resurse suficiente pentru prevenire”, dar bugetul anual pentru echipament de protecție este zero, neconformitatea este aproape automată. La fel de gravă este **lipsa dovezii de comunicare** — o politică semnată, dar necunoscută de muncitorii de pe linia de producție, nu îndeplinește cerința clauzei 5.2. Verifică la fiecare revizuire dacă politica mai reflectă activitatea reală a firmei (de exemplu, dacă s-a adăugat o linie de producție nouă sau un sediu secundar).",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești responsabil SSM la o firmă de transport marfă cu 45 de angajați și o flotă de camioane. Riscurile principale sunt: oboseala șoferilor pe curse lungi, accidente rutiere, manipularea mărfii la încărcare/descărcare și munca în condiții meteo variate. Redactează un paragraf de politică SSM (6 puncte) care acoperă cele șase angajamente obligatorii ale clauzei 5.2, adaptat acestor riscuri specifice.",
+    "solution_md": "**Politica SSM a societății [Nume Transport SRL]**\n\nConducerea societății se angajează:\n\n1. Să asigure condiții de muncă sigure pentru șoferi și personalul de logistică, prevenind accidentele rutiere, oboseala la volan și accidentările la manipularea mărfii, prin respectarea strictă a timpilor de conducere și odihnă.\n2. Să stabilească anual obiective SSM măsurabile (de exemplu, reducerea numărului de incidente rutiere raportate) și să aloce resursele necesare pentru atingerea lor.\n3. Să respecte integral cerințele Legii nr. 319/2006, ale HG 1425/2006 și ale reglementărilor specifice transportului rutier de marfă (timpi de conducere, tahograf).\n4. Să elimine pericolele și să reducă riscurile prin planificarea rutelor, întreținerea preventivă a flotei, dotarea cu echipamente de manipulare a mărfii și echipament individual de protecție adecvat condițiilor meteo.\n5. Să îmbunătățească în mod continuu performanța SSM prin analiza cauzelor incidentelor rutiere și actualizarea procedurilor.\n6. Să consulte șoferii și personalul de logistică — cei mai expuși riscurilor operaționale — în stabilirea rutelor, a programului de lucru și a măsurilor de prevenire, inclusiv prin sesizări directe către responsabilul SSM.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Câte angajamente obligatorii impune clauza 5.2 din ISO 45001:2018 pentru politica SSM?",
+    "choices": [
+     "4",
+     "5",
+     "6",
+     "7"
+    ],
+    "answer": 2,
+    "explain": "Clauza 5.2 prevede șase angajamente: condiții sigure, cadru pentru obiective, conformare legală, eliminarea pericolelor/reducerea riscurilor, îmbunătățire continuă și consultarea/participarea lucrătorilor.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cine este responsabil, conform ISO 45001, de stabilirea și menținerea politicii SSM?",
+    "choices": [
+     "Responsabilul SSM desemnat",
+     "Top managementul organizației",
+     "Comitetul de securitate și sănătate în muncă",
+     "Inspectoratul Teritorial de Muncă (ITM)"
+    ],
+    "answer": 1,
+    "explain": "Clauza 5.2, coroborată cu clauza 5.1 (Leadership), stabilește că politica SSM trebuie stabilită, implementată și menținută de top management — persoana sau grupul care conduce organizația la cel mai înalt nivel.",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce clauză din ISO 45001:2018 reglementează politica SSM?",
+    "back": "Clauza 5.2 – Politica SS",
+    "concept_key": "politica-ssm-clauza-5-2",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte angajamente obligatorii trebuie să conțină politica SSM conform clauzei 5.2?",
+    "back": "Șase: condiții sigure, cadru pentru obiective, conformare legală, eliminarea pericolelor/reducerea riscurilor, îmbunătățire continuă, consultarea și participarea lucrătorilor",
+    "concept_key": "elemente-obligatorii-politica-ssm-clauza-5-2",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine trebuie să stabilească și să mențină politica SSM?",
+    "back": "Top managementul organizației",
+    "concept_key": "responsabilitate-politica-ssm",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ românesc reglementează securitatea și sănătatea în muncă?",
+    "back": "Legea nr. 319/2006 a securității și sănătății în muncă",
+    "concept_key": "legea-319-2006-ssm",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce autoritate controlează respectarea legislației SSM în România?",
+    "back": "Inspectoratul Teritorial de Muncă (ITM)",
+    "concept_key": "itm-autoritate-control-ssm",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce interval trebuie revizuită, de regulă, politica SSM?",
+    "back": "Anual sau ori de câte ori intervin schimbări semnificative în activitate, structură sau legislație",
+    "concept_key": "revizuire-politica-ssm",
+    "blockId": "cmjjuxweg00lpumkpwyd07she-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1333,
+   "flashcards": 6
+  }
+ }
+}

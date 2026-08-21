@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvra004bumkpqxxtu43e",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Automatizare și Integrări",
+ "lesson": "File operations",
+ "category": "EXCEL_VBA",
+ "content": "# File operations\n\n## De ce ai nevoie de operații cu fișiere în VBA\n\nMulte automatizări reale nu se opresc la interiorul unui singur registru de calcul: trebuie să citești fișiere CSV primite de la un furnizor, să exporți un raport ca fișier text pentru un sistem contabil extern, sau să parcurgi un folder întreg cu facturi și să le prelucrezi automat. VBA oferă două seturi de instrumente complementare pentru aceste sarcini:\n\n- **Instrucțiuni native** (`Dir`, `Open`, `Close`, `Line Input`, `Print`, `Write`) — rapide, fără dependințe externe, ideale pentru fișiere text simple (CSV, TXT, LOG).\n- **FileSystemObject (FSO)** — un obiect din biblioteca Microsoft Scripting Runtime, mai puternic pentru operații pe foldere (copiere, mutare, ștergere, verificare existență) și pentru citire/scriere text cu o sintaxă orientată pe obiecte.\n\nÎn practica de contabilitate și raportare, aceste tehnici se folosesc pentru: import extrase bancare CSV, export de balanțe în format text pentru alte aplicații, arhivarea automată a fișierelor procesate într-un subfolder și generarea de loguri de execuție pentru macro-urile tale.\n\n## Funcția Dir() — găsirea fișierelor dintr-un folder\n\n`Dir` este cea mai simplă modalitate de a verifica dacă un fișier există sau de a enumera fișierele dintr-un folder, fără a adăuga nicio referință suplimentară.\n\n**Verificarea existenței unui fișier:**\n\n```vba\nSub VerificaFisier()\n    Dim caleFisier As String\n    caleFisier = \"C:\\Rapoarte\\balanta_iunie.xlsx\"\n\n    If Dir(caleFisier) <> \"\" Then\n        MsgBox \"Fișierul există.\"\n    Else\n        MsgBox \"Fișierul nu a fost găsit.\"\n    End If\nEnd Sub\n```\n\n**Enumerarea tuturor fișierelor dintr-un folder** se face într-o buclă: primul apel `Dir(cale)` primește un pattern (poate conține `*` sau `?`), iar apelurile ulterioare `Dir()` fără argumente returnează, pe rând, următorul fișier găsit, până când rezultatul este șir vid (\"\"):\n\n```vba\nSub ListeazaFisiere()\n    Dim numeFisier As String\n    Dim folder As String\n    folder = \"C:\\Rapoarte\\\"\n\n    numeFisier = Dir(folder & \"*.csv\")\n    Do While numeFisier <> \"\"\n        Debug.Print numeFisier\n        numeFisier = Dir()\n    Loop\nEnd Sub\n```\n\nAtenție: `Dir` nu poate parcurge subfoldere recursiv și nu poate fi apelat imbricat (două bucle `Dir` active simultan se interferează). Pentru nevoi mai complexe, folosește FileSystemObject.\n\n## Open și Close — citire și scriere directă în fișiere text\n\nInstrucțiunea `Open` deschide un fișier pe un canal numeric (obținut cu `FreeFile`) și permite trei moduri principale:\n\n- `Open cale For Input As #n` — deschide fișierul **pentru citire**; folosești `Line Input #n, variabila` pentru a citi linie cu linie sau `Input #n` pentru valori delimitate prin virgulă.\n- `Open cale For Output As #n` — deschide fișierul **pentru scriere**, suprascriind conținutul existent.\n- `Open cale For Append As #n` — deschide fișierul pentru scriere, **adăugând** la finalul conținutului existent.\n\nScrierea se face cu `Print #n, text` (scrie textul ca atare) sau `Write #n, valoare1, valoare2` (adaugă automat ghilimele pentru text și virgule ca separator, util pentru CSV). La final, fișierul se închide obligatoriu cu `Close #n`, altfel riști blocarea fișierului sau pierderea datelor nescrise din buffer.\n\n```vba\nSub ScrieFisierText()\n    Dim nrCanal As Integer\n    nrCanal = FreeFile\n\n    Open \"C:\\Rapoarte\\log_export.txt\" For Append As #nrCanal\n    Print #nrCanal, Format(Now, \"dd.mm.yyyy hh:nn:ss\") & \" - Export finalizat cu succes\"\n    Close #nrCanal\nEnd Sub\n```\n\nFolosirea `FreeFile` este esențială: îți garantează un număr de canal liber, evitând eroarea „Fișierul este deja deschis” atunci când macro-ul rulează operații succesive pe fișiere.\n\n## FileSystemObject (FSO) — operații avansate pe fișiere și foldere\n\n`FileSystemObject` face parte din biblioteca **Microsoft Scripting Runtime** (`scrrun.dll`) și oferă o interfață orientată pe obiecte, mult mai bogată decât `Dir`/`Open`. Îl poți folosi în două moduri:\n\n1. **Legare târzie (late binding)** — recomandată, pentru că funcționează fără a bifa referința din VBA Editor (Tools → References):\n\n```vba\nSub ExempluFSO()\n    Dim fso As Object\n    Set fso = CreateObject(\"Scripting.FileSystemObject\")\n\n    If fso.FileExists(\"C:\\Rapoarte\\balanta.csv\") Then\n        MsgBox \"Dimensiune fișier: \" & fso.GetFile(\"C:\\Rapoarte\\balanta.csv\").Size & \" octeți\"\n    End If\nEnd Sub\n```\n\n2. **Legare timpurie (early binding)** — bifezi referința „Microsoft Scripting Runtime” și declari `Dim fso As New FileSystemObject`; avantajul este auto-completarea codului (IntelliSense), dezavantajul este dependența de referință pe alte calculatoare.\n\nMetode utile din FSO:\n\n- `fso.FileExists(cale)` / `fso.FolderExists(cale)` — verifică existența.\n- `fso.CreateFolder(cale)` — creează un folder nou.\n- `fso.CopyFile sursa, destinatie` / `fso.MoveFile` / `fso.DeleteFile` — gestionare fișiere.\n- `fso.CreateTextFile(cale, True)` — creează și deschide un fișier pentru scriere (al doilea parametru `True` permite suprascrierea).\n- `fso.OpenTextFile(cale, ForReading)` — deschide pentru citire, similar cu `Open ... For Input`.\n- `fso.GetFolder(cale).Files` — o colecție cu toate fișierele dintr-un folder, parcurgibilă cu `For Each`.\n\nFSO este alegerea potrivită atunci când ai nevoie de operații pe foldere (copiere, ștergere, verificare) sau când vrei cod mai lizibil pentru citire/scriere text.\n\n## Exemplu: Import date dintr-un fișier CSV cu Open/Line Input\nUn scenariu frecvent: primești zilnic un extras de cont în format CSV (separator „;”, cum este standard în România) și trebuie să-l imporți automat într-o foaie Excel numită „Import”.\n\n```vba\nSub ImportaExtrasCSV()\n    Dim nrCanal As Integer\n    Dim linieText As String\n    Dim elemente() As String\n    Dim rândDest As Long\n    Dim ws As Worksheet\n\n    Set ws = ThisWorkbook.Worksheets(\"Import\")\n    ws.Cells.Clear\n    rândDest = 1\n\n    nrCanal = FreeFile\n    Open \"C:\\Extrase\\extras_iunie.csv\" For Input As #nrCanal\n\n    Do While Not EOF(nrCanal)\n        Line Input #nrCanal, linieText\n        elemente = Split(linieText, \";\")\n\n        ws.Cells(rândDest, 1).Value = elemente(0) ' Data\n        ws.Cells(rândDest, 2).Value = elemente(1) ' Descriere\n        ws.Cells(rândDest, 3).Value = CDbl(Replace(elemente(2), \".\", \",\")) ' Sumă\n\n        rândDest = rândDest + 1\n    Loop\n\n    Close #nrCanal\n    MsgBox rândDest - 1 & \" linii importate cu succes.\"\nEnd Sub\n```\n\nFuncția `EOF(nrCanal)` returnează `True` când s-a ajuns la sfârșitul fișierului, oprind bucla. Observă conversia sumei: dacă fișierul sursă folosește punct ca separator zecimal (format internațional), trebuie să-l transformi în virgulă înainte de `CDbl`, altfel VBA va genera eroare de tip pe un sistem cu setări regionale românești.\n\n## Exemplu: Export raport text cu FileSystemObject\nPresupunem că vrei să exporți, dintr-o foaie „Raport”, un fișier text cu balanța de verificare simplificată, pentru a fi importat într-un alt sistem contabil.\n\n```vba\nSub ExportaRaportText()\n    Dim fso As Object\n    Dim fisierText As Object\n    Dim ws As Worksheet\n    Dim ultimulRând As Long\n    Dim i As Long\n\n    Set fso = CreateObject(\"Scripting.FileSystemObject\")\n    Set ws = ThisWorkbook.Worksheets(\"Raport\")\n    ultimulRând = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row\n\n    Set fisierText = fso.CreateTextFile(\"C:\\Rapoarte\\balanta_export.txt\", True)\n\n    For i = 2 To ultimulRând ' rândul 1 = antet\n        fisierText.WriteLine ws.Cells(i, 1).Value & \";\" & _\n                              ws.Cells(i, 2).Value & \";\" & _\n                              Format(ws.Cells(i, 3).Value, \"0.00\")\n    Next i\n\n    fisierText.Close\n    MsgBox \"Export finalizat: \" & (ultimulRând - 1) & \" rânduri scrise în balanta_export.txt\"\nEnd Sub\n```\n\nMetoda `WriteLine` adaugă automat un caracter de sfârșit de linie, echivalentul lui `Print #n` de la `Open`/`Close`. Diferența practică față de instrucțiunile native este că obiectul `fisierText` rămâne deschis până apelezi explicit `.Close` — dacă macro-ul se oprește dintr-o eroare înainte de această linie, fișierul poate rămâne blocat pentru alte procese până închizi Excel.\n\n⚠ Când lucrezi cu căi de fișiere și foldere în VBA, verifică mereu explicit existența lor înainte de a citi sau scrie (`Dir(cale) <> \"\"` sau `fso.FileExists`), pentru a evita erorile de execuție „File not found”. Folosește `On Error GoTo` pentru a închide canalele deschise (`Close #nrCanal`) chiar și atunci când apare o eroare, altfel fișierul poate rămâne blocat. De asemenea, dacă distribui macro-ul altor calculatoare, preferă legarea târzie (`CreateObject(\"Scripting.FileSystemObject\")`) în locul referinței bifate manual — eviți erori de tipul „Referință lipsă” pe stații fără biblioteca Microsoft Scripting Runtime înregistrată identic.\n\n## Exercițiu\n**Exercițiu:** Scrie o procedură VBA numită `ListeazaFisiereFolder` care parcurge folderul `C:\\Rapoarte\\` (poți schimba calea cu una reală de pe calculatorul tău), găsește toate fișierele cu extensia `.xlsx` folosind funcția `Dir`, și scrie numele fiecărui fișier găsit, împreună cu dimensiunea lui în KB, într-o foaie numită „Fisiere”, începând din celula A1 (antet: „Nume fișier” / „Dimensiune (KB)”). Folosește `FileLen` pentru dimensiune.\n\n**Soluție:** ```vba\nSub ListeazaFisiereFolder()\n    Dim folder As String\n    Dim numeFisier As String\n    Dim ws As Worksheet\n    Dim rândDest As Long\n\n    folder = \"C:\\Rapoarte\\\"\n    Set ws = ThisWorkbook.Worksheets(\"Fisiere\")\n    ws.Cells.Clear\n    ws.Cells(1, 1).Value = \"Nume fișier\"\n    ws.Cells(1, 2).Value = \"Dimensiune (KB)\"\n\n    rândDest = 2\n    numeFisier = Dir(folder & \"*.xlsx\")\n\n    Do While numeFisier <> \"\"\n        ws.Cells(rândDest, 1).Value = numeFisier\n        ws.Cells(rândDest, 2).Value = Format(FileLen(folder & numeFisier) / 1024, \"0.00\")\n        rândDest = rândDest + 1\n        numeFisier = Dir()\n    Loop\n\n    MsgBox rândDest - 2 & \" fișiere .xlsx găsite.\"\nEnd Sub\n```\n\nDacă foaia „Fisiere” nu există deja în registrul de calcul, adaug-o înainte de a rula codul (`Sheets.Add.Name = \"Fisiere\"`), altfel `Worksheets(\"Fisiere\")` va genera eroare de subscript.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vba-operatii-fisiere-intro",
+    "md": "## De ce ai nevoie de operații cu fișiere în VBA\n\nMulte automatizări reale nu se opresc la interiorul unui singur registru de calcul: trebuie să citești fișiere CSV primite de la un furnizor, să exporți un raport ca fișier text pentru un sistem contabil extern, sau să parcurgi un folder întreg cu facturi și să le prelucrezi automat. VBA oferă două seturi de instrumente complementare pentru aceste sarcini:\n\n- **Instrucțiuni native** (`Dir`, `Open`, `Close`, `Line Input`, `Print`, `Write`) — rapide, fără dependințe externe, ideale pentru fișiere text simple (CSV, TXT, LOG).\n- **FileSystemObject (FSO)** — un obiect din biblioteca Microsoft Scripting Runtime, mai puternic pentru operații pe foldere (copiere, mutare, ștergere, verificare existență) și pentru citire/scriere text cu o sintaxă orientată pe obiecte.\n\nÎn practica de contabilitate și raportare, aceste tehnici se folosesc pentru: import extrase bancare CSV, export de balanțe în format text pentru alte aplicații, arhivarea automată a fișierelor procesate într-un subfolder și generarea de loguri de execuție pentru macro-urile tale.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-functia-dir",
+    "md": "## Funcția Dir() — găsirea fișierelor dintr-un folder\n\n`Dir` este cea mai simplă modalitate de a verifica dacă un fișier există sau de a enumera fișierele dintr-un folder, fără a adăuga nicio referință suplimentară.\n\n**Verificarea existenței unui fișier:**\n\n```vba\nSub VerificaFisier()\n    Dim caleFisier As String\n    caleFisier = \"C:\\Rapoarte\\balanta_iunie.xlsx\"\n\n    If Dir(caleFisier) <> \"\" Then\n        MsgBox \"Fișierul există.\"\n    Else\n        MsgBox \"Fișierul nu a fost găsit.\"\n    End If\nEnd Sub\n```\n\n**Enumerarea tuturor fișierelor dintr-un folder** se face într-o buclă: primul apel `Dir(cale)` primește un pattern (poate conține `*` sau `?`), iar apelurile ulterioare `Dir()` fără argumente returnează, pe rând, următorul fișier găsit, până când rezultatul este șir vid (\"\"):\n\n```vba\nSub ListeazaFisiere()\n    Dim numeFisier As String\n    Dim folder As String\n    folder = \"C:\\Rapoarte\\\"\n\n    numeFisier = Dir(folder & \"*.csv\")\n    Do While numeFisier <> \"\"\n        Debug.Print numeFisier\n        numeFisier = Dir()\n    Loop\nEnd Sub\n```\n\nAtenție: `Dir` nu poate parcurge subfoldere recursiv și nu poate fi apelat imbricat (două bucle `Dir` active simultan se interferează). Pentru nevoi mai complexe, folosește FileSystemObject.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-open-close-fisiere-text",
+    "md": "## Open și Close — citire și scriere directă în fișiere text\n\nInstrucțiunea `Open` deschide un fișier pe un canal numeric (obținut cu `FreeFile`) și permite trei moduri principale:\n\n- `Open cale For Input As #n` — deschide fișierul **pentru citire**; folosești `Line Input #n, variabila` pentru a citi linie cu linie sau `Input #n` pentru valori delimitate prin virgulă.\n- `Open cale For Output As #n` — deschide fișierul **pentru scriere**, suprascriind conținutul existent.\n- `Open cale For Append As #n` — deschide fișierul pentru scriere, **adăugând** la finalul conținutului existent.\n\nScrierea se face cu `Print #n, text` (scrie textul ca atare) sau `Write #n, valoare1, valoare2` (adaugă automat ghilimele pentru text și virgule ca separator, util pentru CSV). La final, fișierul se închide obligatoriu cu `Close #n`, altfel riști blocarea fișierului sau pierderea datelor nescrise din buffer.\n\n```vba\nSub ScrieFisierText()\n    Dim nrCanal As Integer\n    nrCanal = FreeFile\n\n    Open \"C:\\Rapoarte\\log_export.txt\" For Append As #nrCanal\n    Print #nrCanal, Format(Now, \"dd.mm.yyyy hh:nn:ss\") & \" - Export finalizat cu succes\"\n    Close #nrCanal\nEnd Sub\n```\n\nFolosirea `FreeFile` este esențială: îți garantează un număr de canal liber, evitând eroarea „Fișierul este deja deschis” atunci când macro-ul rulează operații succesive pe fișiere.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-filesystemobject",
+    "md": "## FileSystemObject (FSO) — operații avansate pe fișiere și foldere\n\n`FileSystemObject` face parte din biblioteca **Microsoft Scripting Runtime** (`scrrun.dll`) și oferă o interfață orientată pe obiecte, mult mai bogată decât `Dir`/`Open`. Îl poți folosi în două moduri:\n\n1. **Legare târzie (late binding)** — recomandată, pentru că funcționează fără a bifa referința din VBA Editor (Tools → References):\n\n```vba\nSub ExempluFSO()\n    Dim fso As Object\n    Set fso = CreateObject(\"Scripting.FileSystemObject\")\n\n    If fso.FileExists(\"C:\\Rapoarte\\balanta.csv\") Then\n        MsgBox \"Dimensiune fișier: \" & fso.GetFile(\"C:\\Rapoarte\\balanta.csv\").Size & \" octeți\"\n    End If\nEnd Sub\n```\n\n2. **Legare timpurie (early binding)** — bifezi referința „Microsoft Scripting Runtime” și declari `Dim fso As New FileSystemObject`; avantajul este auto-completarea codului (IntelliSense), dezavantajul este dependența de referință pe alte calculatoare.\n\nMetode utile din FSO:\n\n- `fso.FileExists(cale)` / `fso.FolderExists(cale)` — verifică existența.\n- `fso.CreateFolder(cale)` — creează un folder nou.\n- `fso.CopyFile sursa, destinatie` / `fso.MoveFile` / `fso.DeleteFile` — gestionare fișiere.\n- `fso.CreateTextFile(cale, True)` — creează și deschide un fișier pentru scriere (al doilea parametru `True` permite suprascrierea).\n- `fso.OpenTextFile(cale, ForReading)` — deschide pentru citire, similar cu `Open ... For Input`.\n- `fso.GetFolder(cale).Files` — o colecție cu toate fișierele dintr-un folder, parcurgibilă cu `For Each`.\n\nFSO este alegerea potrivită atunci când ai nevoie de operații pe foldere (copiere, ștergere, verificare) sau când vrei cod mai lizibil pentru citire/scriere text.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b4"
+   },
+   {
+    "type": "example",
+    "title": "Import date dintr-un fișier CSV cu Open/Line Input",
+    "concept_key": "vba-import-csv-open",
+    "md": "Un scenariu frecvent: primești zilnic un extras de cont în format CSV (separator „;”, cum este standard în România) și trebuie să-l imporți automat într-o foaie Excel numită „Import”.\n\n```vba\nSub ImportaExtrasCSV()\n    Dim nrCanal As Integer\n    Dim linieText As String\n    Dim elemente() As String\n    Dim rândDest As Long\n    Dim ws As Worksheet\n\n    Set ws = ThisWorkbook.Worksheets(\"Import\")\n    ws.Cells.Clear\n    rândDest = 1\n\n    nrCanal = FreeFile\n    Open \"C:\\Extrase\\extras_iunie.csv\" For Input As #nrCanal\n\n    Do While Not EOF(nrCanal)\n        Line Input #nrCanal, linieText\n        elemente = Split(linieText, \";\")\n\n        ws.Cells(rândDest, 1).Value = elemente(0) ' Data\n        ws.Cells(rândDest, 2).Value = elemente(1) ' Descriere\n        ws.Cells(rândDest, 3).Value = CDbl(Replace(elemente(2), \".\", \",\")) ' Sumă\n\n        rândDest = rândDest + 1\n    Loop\n\n    Close #nrCanal\n    MsgBox rândDest - 1 & \" linii importate cu succes.\"\nEnd Sub\n```\n\nFuncția `EOF(nrCanal)` returnează `True` când s-a ajuns la sfârșitul fișierului, oprind bucla. Observă conversia sumei: dacă fișierul sursă folosește punct ca separator zecimal (format internațional), trebuie să-l transformi în virgulă înainte de `CDbl`, altfel VBA va genera eroare de tip pe un sistem cu setări regionale românești.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b5"
+   },
+   {
+    "type": "example",
+    "title": "Export raport text cu FileSystemObject",
+    "concept_key": "vba-export-fso",
+    "md": "Presupunem că vrei să exporți, dintr-o foaie „Raport”, un fișier text cu balanța de verificare simplificată, pentru a fi importat într-un alt sistem contabil.\n\n```vba\nSub ExportaRaportText()\n    Dim fso As Object\n    Dim fisierText As Object\n    Dim ws As Worksheet\n    Dim ultimulRând As Long\n    Dim i As Long\n\n    Set fso = CreateObject(\"Scripting.FileSystemObject\")\n    Set ws = ThisWorkbook.Worksheets(\"Raport\")\n    ultimulRând = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row\n\n    Set fisierText = fso.CreateTextFile(\"C:\\Rapoarte\\balanta_export.txt\", True)\n\n    For i = 2 To ultimulRând ' rândul 1 = antet\n        fisierText.WriteLine ws.Cells(i, 1).Value & \";\" & _\n                              ws.Cells(i, 2).Value & \";\" & _\n                              Format(ws.Cells(i, 3).Value, \"0.00\")\n    Next i\n\n    fisierText.Close\n    MsgBox \"Export finalizat: \" & (ultimulRând - 1) & \" rânduri scrise în balanta_export.txt\"\nEnd Sub\n```\n\nMetoda `WriteLine` adaugă automat un caracter de sfârșit de linie, echivalentul lui `Print #n` de la `Open`/`Close`. Diferența practică față de instrucțiunile native este că obiectul `fisierText` rămâne deschis până apelezi explicit `.Close` — dacă macro-ul se oprește dintr-o eroare înainte de această linie, fișierul poate rămâne blocat pentru alte procese până închizi Excel.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Când lucrezi cu căi de fișiere și foldere în VBA, verifică mereu explicit existența lor înainte de a citi sau scrie (`Dir(cale) <> \"\"` sau `fso.FileExists`), pentru a evita erorile de execuție „File not found”. Folosește `On Error GoTo` pentru a închide canalele deschise (`Close #nrCanal`) chiar și atunci când apare o eroare, altfel fișierul poate rămâne blocat. De asemenea, dacă distribui macro-ul altor calculatoare, preferă legarea târzie (`CreateObject(\"Scripting.FileSystemObject\")`) în locul referinței bifate manual — eviți erori de tipul „Referință lipsă” pe stații fără biblioteca Microsoft Scripting Runtime înregistrată identic.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Exercițiu:** Scrie o procedură VBA numită `ListeazaFisiereFolder` care parcurge folderul `C:\\Rapoarte\\` (poți schimba calea cu una reală de pe calculatorul tău), găsește toate fișierele cu extensia `.xlsx` folosind funcția `Dir`, și scrie numele fiecărui fișier găsit, împreună cu dimensiunea lui în KB, într-o foaie numită „Fisiere”, începând din celula A1 (antet: „Nume fișier” / „Dimensiune (KB)”). Folosește `FileLen` pentru dimensiune.",
+    "solution_md": "```vba\nSub ListeazaFisiereFolder()\n    Dim folder As String\n    Dim numeFisier As String\n    Dim ws As Worksheet\n    Dim rândDest As Long\n\n    folder = \"C:\\Rapoarte\\\"\n    Set ws = ThisWorkbook.Worksheets(\"Fisiere\")\n    ws.Cells.Clear\n    ws.Cells(1, 1).Value = \"Nume fișier\"\n    ws.Cells(1, 2).Value = \"Dimensiune (KB)\"\n\n    rândDest = 2\n    numeFisier = Dir(folder & \"*.xlsx\")\n\n    Do While numeFisier <> \"\"\n        ws.Cells(rândDest, 1).Value = numeFisier\n        ws.Cells(rândDest, 2).Value = Format(FileLen(folder & numeFisier) / 1024, \"0.00\")\n        rândDest = rândDest + 1\n        numeFisier = Dir()\n    Loop\n\n    MsgBox rândDest - 2 & \" fișiere .xlsx găsite.\"\nEnd Sub\n```\n\nDacă foaia „Fisiere” nu există deja în registrul de calcul, adaug-o înainte de a rula codul (`Sheets.Add.Name = \"Fisiere\"`), altfel `Worksheets(\"Fisiere\")` va genera eroare de subscript.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce returnează al doilea apel al funcției Dir(), fără argumente, într-o buclă de enumerare a fișierelor?",
+    "choices": [
+     "Primul fișier din folder, din nou",
+     "Următorul fișier care corespunde pattern-ului specificat la primul apel",
+     "Un șir vid întotdeauna",
+     "Numărul total de fișiere din folder"
+    ],
+    "answer": 1,
+    "explain": "Dir() apelat fără argumente continuă enumerarea de unde a rămas, returnând următorul fișier care corespunde pattern-ului furnizat la primul apel; când nu mai sunt fișiere, returnează șir vid.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența principală dintre Open ... For Output și Open ... For Append?",
+    "choices": [
+     "For Output citește fișierul, For Append îl scrie",
+     "For Output suprascrie conținutul existent, For Append adaugă la final",
+     "Nu există nicio diferență între ele",
+     "For Append necesită FileSystemObject, For Output nu"
+    ],
+    "answer": 1,
+    "explain": "For Output deschide fișierul pentru scriere de la zero, ștergând orice conținut anterior; For Append deschide fișierul pentru scriere, dar păstrează conținutul existent și adaugă textul nou la sfârșit.",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția Dir() în VBA?",
+    "back": "Caută fișiere/foldere care corespund unui pattern; primul apel primește calea și pattern-ul, apelurile ulterioare fără argumente returnează următoarea potrivire, până la șir vid.",
+    "concept_key": "vba-functia-dir",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei moduri principale ale instrucțiunii Open pentru fișiere text?",
+    "back": "For Input (citire), For Output (scriere cu suprascriere), For Append (scriere cu adăugare la final).",
+    "concept_key": "vba-open-close-fisiere-text",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce bibliotecă furnizează obiectul FileSystemObject?",
+    "back": "Microsoft Scripting Runtime (scrrun.dll); poate fi folosit cu legare târzie prin CreateObject(\"Scripting.FileSystemObject\").",
+    "concept_key": "vba-filesystemobject",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce folosește funcția FreeFile în VBA?",
+    "back": "Returnează un număr de canal liber pentru a deschide un fișier cu Open, evitând conflictul cu alte fișiere deschise simultan de macro.",
+    "concept_key": "vba-open-close-fisiere-text",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum verifici dacă un fișier există, folosind FileSystemObject?",
+    "back": "Cu metoda fso.FileExists(cale), care returnează True sau False.",
+    "concept_key": "vba-filesystemobject",
+    "blockId": "cmjjuxvra004bumkpqxxtu43e-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1361,
+   "flashcards": 5
+  }
+ }
+}

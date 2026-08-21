@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvpc002zumkppurtblwd",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Introducere în VBA",
+ "lesson": "Visual Basic Editor (VBE)",
+ "category": "EXCEL_VBA",
+ "content": "# Visual Basic Editor (VBE)\n\nVisual Basic Editor (VBE) este mediul de dezvoltare integrat în Excel unde scrii, editezi și depanezi codul VBA (Visual Basic for Applications). Spre deosebire de foaia de calcul, VBE nu face parte din interfața obișnuită Excel — se deschide separat, ca o fereastră proprie.\n\nCel mai rapid mod de a deschide VBE este combinația de taste **Alt+F11**, disponibilă din orice foaie Excel, indiferent dacă tab-ul Dezvoltator (Developer) este activat sau nu. Alternativ, poți activa tab-ul Dezvoltator din Fișier → Opțiuni → Personalizare panglică, bifând caseta „Dezvoltator”, apoi accesezi VBE din butonul Visual Basic aflat în extrema stângă a panglicii.\n\nLa prima deschidere, VBE afișează trei ferestre principale: Project Explorer (arborele de proiecte, în stânga sus), Properties (proprietățile obiectului selectat, în stânga jos) și fereastra de cod (zona mare din dreapta, unde scrii instrucțiunile). Dacă vreo fereastră lipsește, o readuci din meniul View. Pentru a reveni în Excel, folosești tot Alt+F11 sau Alt+Q (închide VBE) — codul rămâne salvat odată cu registrul de lucru, atât timp cât acesta este salvat în format .xlsm sau .xlsb.\n\nFereastra Project Explorer (Ctrl+R) afișează structura ierarhică a fiecărui registru de lucru deschis, sub forma unui „proiect” VBA (VBAProject). Fiecare registru are propriul proiect, iar în interiorul lui găsești mai multe categorii de module:\n\n- **Microsoft Excel Objects** — conține automat un modul pentru fiecare foaie de calcul (Sheet1, Sheet2 etc.) și unul pentru registrul de lucru (ThisWorkbook). Aceste module sunt legate de evenimente specifice obiectului respectiv (de exemplu, modificarea unei celule pe Sheet1).\n- **Module standard** (Modules) — module libere, adăugate de tine, unde scrii de regulă majoritatea codului: proceduri Sub și Function reutilizabile. Se adaugă din meniul Insert → Module.\n- **Module de clasă** (Class Modules) — folosite pentru a defini obiecte personalizate, cu proprietăți și metode proprii; subiect avansat, tratat în lecțiile despre programarea orientată pe obiecte.\n- **UserForms** — module cu interfață grafică (formulare), pentru ferestre de dialog personalizate; le vei aprofunda în modulul dedicat interfețelor utilizator.\n\nFiecare modul apare ca un nod separat în arbore, cu icon distinct. Dublu-clic pe orice modul deschide fereastra de cod asociată. Denumirea modulelor contează pentru organizare: recomandăm nume descriptive precum `modRapoarte` sau `modUtilitare`, în loc de „Module1”, mai ales când proiectul crește.\n\nCodul VBA se organizează în proceduri — blocuri de instrucțiuni cu un nume, care pot fi apelate independent. Există două tipuri principale:\n\n```\nSub NumeProcedura()\n    ' instrucțiuni\nEnd Sub\n```\n\nO procedură **Sub** execută o serie de acțiuni, dar nu returnează o valoare direct (deși poate modifica celule, afișa mesaje etc.). Este tipul cel mai folosit pentru macro-uri.\n\n```\nFunction NumeFunctie(parametru As Double) As Double\n    NumeFunctie = parametru * 2\nEnd Function\n```\n\nO procedură **Function** returnează o valoare și poate fi folosită atât în cod, cât și direct într-o celulă din foaia de calcul, ca o formulă personalizată.\n\nCând scrii `Sub` sau `Function` urmat de un nume și apeși Enter, VBE completează automat linia `End Sub` / `End Function`. Comentariile se introduc cu apostrof (`'`) la începutul liniei sau după o instrucțiune — VBE le colorează automat cu verde, ajutând la citirea rapidă a codului. Comentarea codului în limba română, cu explicații scurte ale scopului fiecărei secțiuni, este o practică recomandată pentru orice proiect destinat colegilor sau viitorului tău.\n\nFereastra **Immediate** (Ctrl+G, sau View → Immediate Window) este unul dintre cele mai utile instrumente de testare rapidă din VBE. Aici poți scrie o linie de cod și o execuți instant, apăsând Enter, fără să creezi o procedură completă — util pentru a verifica valoarea unei variabile, a testa o formulă sau a apela o funcție izolat.\n\nCea mai frecventă utilizare este împreună cu instrucțiunea `Debug.Print`, care afișează rezultatul unei expresii în fereastra Immediate în timpul rulării unui cod mai complex. Este echivalentul unui „printf de depanare”: îți arată ce se întâmplă „în culise” fără să întrerupi execuția cu ferestre MsgBox.\n\nDe exemplu, scriind direct în Immediate:\n```\n? 3 + 4\n```\nși apăsând Enter, VBE afișează `7` pe linia următoare. Simbolul `?` este o prescurtare pentru `Print`.\n\nFereastra Immediate este esențială și în depanare (debugging): când o procedură se oprește la un breakpoint (marcat cu F9) sau rulează pas cu pas (F8), poți interoga acolo valoarea curentă a oricărei variabile vizibile în acel moment, scriind numele ei precedat de `?`.\n\n## Exemplu: Primul modul și prima procedură Sub\nSă presupunem că lucrezi la un registru Excel numit `Raport_Vanzari.xlsm` și vrei să creezi un macro simplu care afișează un mesaj de bun venit.\n\nPași:\n1. Deschizi VBE cu **Alt+F11**.\n2. În Project Explorer, dai clic dreapta pe `VBAProject (Raport_Vanzari.xlsm)` → Insert → Module. Apare un nod nou, „Module1”.\n3. Redenumești modulul din fereastra Properties (F4), câmpul „(Name)”, în `modIntroducere`.\n4. Dublu-clic pe modul pentru a deschide fereastra de cod și scrii:\n\n```vba\nSub SalutBunVenit()\n    ' Afișează un mesaj simplu utilizatorului\n    MsgBox \"Bun venit în raportul de vânzări!\", vbInformation, \"Salut\"\nEnd Sub\n```\n\n5. Poziționezi cursorul oriunde în interiorul procedurii și apeși **F5** (sau butonul Run din bara de instrumente). Excel afișează fereastra de dialog cu mesajul, iconița de informare și titlul „Salut”.\n\nAceastă procedură simplă ilustrează structura de bază: numele procedurii (`SalutBunVenit`), corpul cu o singură instrucțiune și `End Sub` generat automat. Din acest moment, macro-ul este disponibil și din Excel, în lista de macro-uri (Alt+F8), unde poate fi rulat, editat sau atribuit unui buton.\n\n## Exemplu: Testare rapidă cu fereastra Immediate\nContinuăm exemplul anterior. Vrei să verifici, înainte de a scrie o formulă mai complicată în cod, cât reprezintă TVA la o valoare de 1.000 lei, cu cota standard de 21% (aplicabilă conform reglementărilor fiscale în vigoare din august 2025).\n\n1. Deschizi fereastra Immediate cu **Ctrl+G**.\n2. Scrii direct:\n\n```\n? 1000 * 0.21\n```\n\n3. Apeși Enter — VBE afișează `210` pe linia imediat următoare.\n\nPoți testa și apeluri de funcții proprii. Dacă ai deja definită într-un modul funcția:\n\n```vba\nFunction CalculTVA(suma As Double) As Double\n    CalculTVA = suma * 0.21\nEnd Function\n```\n\natunci în Immediate poți scrie:\n\n```\n? CalculTVA(1000)\n```\n\nși obții același rezultat, `210`, dar de această dată testând direct funcția pe care ai construit-o, fără să deschizi o foaie de calcul sau să rulezi întreaga procedură. Acest flux — scrii o funcție, o testezi imediat în Immediate, apoi o integrezi în restul codului — este cel mai eficient mod de a lucra în VBE și evită erorile care apar când testezi funcții direct în celule.\n\n⚠ Registrele de lucru care conțin cod VBA trebuie salvate în format **.xlsm** (Excel Macro-Enabled Workbook) sau **.xlsb**; dacă salvezi accidental în format .xlsx standard, Excel elimină tot codul, fără posibilitate de recuperare la redeschidere. La deschiderea unui fișier .xlsm primit de la altcineva, Excel poate bloca macro-urile din motive de securitate (Trust Center) — activează-le doar dacă ai încredere în sursa fișierului, din bara de avertizare „Enable Content” sau din Fișier → Opțiuni → Trust Center → Trust Center Settings → Macro Settings.\n\n## Exercițiu\nCreează un registru Excel nou, salvează-l ca `Exercitiu_VBE.xlsm`, apoi în VBE: (1) adaugă un modul standard denumit `modExercitiu`; (2) scrie o procedură Sub numită `AfiseazaData` care afișează într-o fereastră MsgBox data curentă a sistemului, folosind funcția `Date`; (3) rulează procedura cu F5; (4) folosește fereastra Immediate pentru a afișa, cu `Debug.Print`, textul „Ziua săptămânii: ” urmat de numele zilei curente (folosește funcția `Format(Date, \"dddd\")`).\n\n**Soluție:** ```vba\nSub AfiseazaData()\n    ' Afișează data curentă într-o fereastră de dialog\n    MsgBox \"Astăzi este \" & Date, vbInformation, \"Data curentă\"\nEnd Sub\n```\n\nDupă ce rulezi procedura cu F5, deschizi fereastra Immediate (Ctrl+G) și scrii:\n\n```\nDebug.Print \"Ziua săptămânii: \" & Format(Date, \"dddd\")\n```\n\napoi apeși Enter. Fereastra Immediate afișează, de exemplu, `Ziua săptămânii: miercuri` (rezultatul variază în funcție de data la care rulezi exercițiul). Observă diferența de utilizare: `MsgBox` întrerupe execuția și cere confirmare din partea utilizatorului, în timp ce `Debug.Print` scrie rezultatul în fundal, fără să oprească fluxul codului — de aceea este preferat pentru depanare, iar `MsgBox` pentru comunicarea cu utilizatorul final.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vbe-deschidere-interfata",
+    "md": "Visual Basic Editor (VBE) este mediul de dezvoltare integrat în Excel unde scrii, editezi și depanezi codul VBA (Visual Basic for Applications). Spre deosebire de foaia de calcul, VBE nu face parte din interfața obișnuită Excel — se deschide separat, ca o fereastră proprie.\n\nCel mai rapid mod de a deschide VBE este combinația de taste **Alt+F11**, disponibilă din orice foaie Excel, indiferent dacă tab-ul Dezvoltator (Developer) este activat sau nu. Alternativ, poți activa tab-ul Dezvoltator din Fișier → Opțiuni → Personalizare panglică, bifând caseta „Dezvoltator”, apoi accesezi VBE din butonul Visual Basic aflat în extrema stângă a panglicii.\n\nLa prima deschidere, VBE afișează trei ferestre principale: Project Explorer (arborele de proiecte, în stânga sus), Properties (proprietățile obiectului selectat, în stânga jos) și fereastra de cod (zona mare din dreapta, unde scrii instrucțiunile). Dacă vreo fereastră lipsește, o readuci din meniul View. Pentru a reveni în Excel, folosești tot Alt+F11 sau Alt+Q (închide VBE) — codul rămâne salvat odată cu registrul de lucru, atât timp cât acesta este salvat în format .xlsm sau .xlsb.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vbe-project-explorer-module",
+    "md": "Fereastra Project Explorer (Ctrl+R) afișează structura ierarhică a fiecărui registru de lucru deschis, sub forma unui „proiect” VBA (VBAProject). Fiecare registru are propriul proiect, iar în interiorul lui găsești mai multe categorii de module:\n\n- **Microsoft Excel Objects** — conține automat un modul pentru fiecare foaie de calcul (Sheet1, Sheet2 etc.) și unul pentru registrul de lucru (ThisWorkbook). Aceste module sunt legate de evenimente specifice obiectului respectiv (de exemplu, modificarea unei celule pe Sheet1).\n- **Module standard** (Modules) — module libere, adăugate de tine, unde scrii de regulă majoritatea codului: proceduri Sub și Function reutilizabile. Se adaugă din meniul Insert → Module.\n- **Module de clasă** (Class Modules) — folosite pentru a defini obiecte personalizate, cu proprietăți și metode proprii; subiect avansat, tratat în lecțiile despre programarea orientată pe obiecte.\n- **UserForms** — module cu interfață grafică (formulare), pentru ferestre de dialog personalizate; le vei aprofunda în modulul dedicat interfețelor utilizator.\n\nFiecare modul apare ca un nod separat în arbore, cu icon distinct. Dublu-clic pe orice modul deschide fereastra de cod asociată. Denumirea modulelor contează pentru organizare: recomandăm nume descriptive precum `modRapoarte` sau `modUtilitare`, în loc de „Module1”, mai ales când proiectul crește.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vbe-proceduri-sub-function",
+    "md": "Codul VBA se organizează în proceduri — blocuri de instrucțiuni cu un nume, care pot fi apelate independent. Există două tipuri principale:\n\n```\nSub NumeProcedura()\n    ' instrucțiuni\nEnd Sub\n```\n\nO procedură **Sub** execută o serie de acțiuni, dar nu returnează o valoare direct (deși poate modifica celule, afișa mesaje etc.). Este tipul cel mai folosit pentru macro-uri.\n\n```\nFunction NumeFunctie(parametru As Double) As Double\n    NumeFunctie = parametru * 2\nEnd Function\n```\n\nO procedură **Function** returnează o valoare și poate fi folosită atât în cod, cât și direct într-o celulă din foaia de calcul, ca o formulă personalizată.\n\nCând scrii `Sub` sau `Function` urmat de un nume și apeși Enter, VBE completează automat linia `End Sub` / `End Function`. Comentariile se introduc cu apostrof (`'`) la începutul liniei sau după o instrucțiune — VBE le colorează automat cu verde, ajutând la citirea rapidă a codului. Comentarea codului în limba română, cu explicații scurte ale scopului fiecărei secțiuni, este o practică recomandată pentru orice proiect destinat colegilor sau viitorului tău.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vbe-fereastra-immediate",
+    "md": "Fereastra **Immediate** (Ctrl+G, sau View → Immediate Window) este unul dintre cele mai utile instrumente de testare rapidă din VBE. Aici poți scrie o linie de cod și o execuți instant, apăsând Enter, fără să creezi o procedură completă — util pentru a verifica valoarea unei variabile, a testa o formulă sau a apela o funcție izolat.\n\nCea mai frecventă utilizare este împreună cu instrucțiunea `Debug.Print`, care afișează rezultatul unei expresii în fereastra Immediate în timpul rulării unui cod mai complex. Este echivalentul unui „printf de depanare”: îți arată ce se întâmplă „în culise” fără să întrerupi execuția cu ferestre MsgBox.\n\nDe exemplu, scriind direct în Immediate:\n```\n? 3 + 4\n```\nși apăsând Enter, VBE afișează `7` pe linia următoare. Simbolul `?` este o prescurtare pentru `Print`.\n\nFereastra Immediate este esențială și în depanare (debugging): când o procedură se oprește la un breakpoint (marcat cu F9) sau rulează pas cu pas (F8), poți interoga acolo valoarea curentă a oricărei variabile vizibile în acel moment, scriind numele ei precedat de `?`.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b4"
+   },
+   {
+    "type": "example",
+    "title": "Primul modul și prima procedură Sub",
+    "concept_key": "vbe-exemplu-modul-nou",
+    "md": "Să presupunem că lucrezi la un registru Excel numit `Raport_Vanzari.xlsm` și vrei să creezi un macro simplu care afișează un mesaj de bun venit.\n\nPași:\n1. Deschizi VBE cu **Alt+F11**.\n2. În Project Explorer, dai clic dreapta pe `VBAProject (Raport_Vanzari.xlsm)` → Insert → Module. Apare un nod nou, „Module1”.\n3. Redenumești modulul din fereastra Properties (F4), câmpul „(Name)”, în `modIntroducere`.\n4. Dublu-clic pe modul pentru a deschide fereastra de cod și scrii:\n\n```vba\nSub SalutBunVenit()\n    ' Afișează un mesaj simplu utilizatorului\n    MsgBox \"Bun venit în raportul de vânzări!\", vbInformation, \"Salut\"\nEnd Sub\n```\n\n5. Poziționezi cursorul oriunde în interiorul procedurii și apeși **F5** (sau butonul Run din bara de instrumente). Excel afișează fereastra de dialog cu mesajul, iconița de informare și titlul „Salut”.\n\nAceastă procedură simplă ilustrează structura de bază: numele procedurii (`SalutBunVenit`), corpul cu o singură instrucțiune și `End Sub` generat automat. Din acest moment, macro-ul este disponibil și din Excel, în lista de macro-uri (Alt+F8), unde poate fi rulat, editat sau atribuit unui buton.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b5"
+   },
+   {
+    "type": "example",
+    "title": "Testare rapidă cu fereastra Immediate",
+    "concept_key": "vbe-exemplu-immediate",
+    "md": "Continuăm exemplul anterior. Vrei să verifici, înainte de a scrie o formulă mai complicată în cod, cât reprezintă TVA la o valoare de 1.000 lei, cu cota standard de 21% (aplicabilă conform reglementărilor fiscale în vigoare din august 2025).\n\n1. Deschizi fereastra Immediate cu **Ctrl+G**.\n2. Scrii direct:\n\n```\n? 1000 * 0.21\n```\n\n3. Apeși Enter — VBE afișează `210` pe linia imediat următoare.\n\nPoți testa și apeluri de funcții proprii. Dacă ai deja definită într-un modul funcția:\n\n```vba\nFunction CalculTVA(suma As Double) As Double\n    CalculTVA = suma * 0.21\nEnd Function\n```\n\natunci în Immediate poți scrie:\n\n```\n? CalculTVA(1000)\n```\n\nși obții același rezultat, `210`, dar de această dată testând direct funcția pe care ai construit-o, fără să deschizi o foaie de calcul sau să rulezi întreaga procedură. Acest flux — scrii o funcție, o testezi imediat în Immediate, apoi o integrezi în restul codului — este cel mai eficient mod de a lucra în VBE și evită erorile care apar când testezi funcții direct în celule.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Registrele de lucru care conțin cod VBA trebuie salvate în format **.xlsm** (Excel Macro-Enabled Workbook) sau **.xlsb**; dacă salvezi accidental în format .xlsx standard, Excel elimină tot codul, fără posibilitate de recuperare la redeschidere. La deschiderea unui fișier .xlsm primit de la altcineva, Excel poate bloca macro-urile din motive de securitate (Trust Center) — activează-le doar dacă ai încredere în sursa fișierului, din bara de avertizare „Enable Content” sau din Fișier → Opțiuni → Trust Center → Trust Center Settings → Macro Settings.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Creează un registru Excel nou, salvează-l ca `Exercitiu_VBE.xlsm`, apoi în VBE: (1) adaugă un modul standard denumit `modExercitiu`; (2) scrie o procedură Sub numită `AfiseazaData` care afișează într-o fereastră MsgBox data curentă a sistemului, folosind funcția `Date`; (3) rulează procedura cu F5; (4) folosește fereastra Immediate pentru a afișa, cu `Debug.Print`, textul „Ziua săptămânii: ” urmat de numele zilei curente (folosește funcția `Format(Date, \"dddd\")`).",
+    "solution_md": "```vba\nSub AfiseazaData()\n    ' Afișează data curentă într-o fereastră de dialog\n    MsgBox \"Astăzi este \" & Date, vbInformation, \"Data curentă\"\nEnd Sub\n```\n\nDupă ce rulezi procedura cu F5, deschizi fereastra Immediate (Ctrl+G) și scrii:\n\n```\nDebug.Print \"Ziua săptămânii: \" & Format(Date, \"dddd\")\n```\n\napoi apeși Enter. Fereastra Immediate afișează, de exemplu, `Ziua săptămânii: miercuri` (rezultatul variază în funcție de data la care rulezi exercițiul). Observă diferența de utilizare: `MsgBox` întrerupe execuția și cere confirmare din partea utilizatorului, în timp ce `Debug.Print` scrie rezultatul în fundal, fără să oprească fluxul codului — de aceea este preferat pentru depanare, iar `MsgBox` pentru comunicarea cu utilizatorul final.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este combinația de taste pentru a deschide Visual Basic Editor din Excel?",
+    "choices": [
+     "Alt+F11",
+     "Ctrl+F11",
+     "Alt+F8",
+     "Ctrl+G"
+    ],
+    "answer": 0,
+    "explain": "Alt+F11 deschide VBE din orice foaie Excel. Alt+F8 deschide fereastra de macro-uri din Excel, iar Ctrl+G deschide fereastra Immediate în interiorul VBE.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce diferență esențială există între o procedură Sub și una Function în VBA?",
+    "choices": [
+     "Sub rulează mai rapid decât Function",
+     "Function returnează o valoare și poate fi folosită ca formulă în celulă, Sub nu returnează o valoare direct",
+     "Sub poate fi apelată doar din Immediate, Function doar din foaia de calcul",
+     "Nu există nicio diferență, sunt sinonime"
+    ],
+    "answer": 1,
+    "explain": "Function returnează o valoare (poate fi folosită și ca funcție personalizată direct în celule), în timp ce Sub execută acțiuni fără să returneze o valoare direct apelantului.",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce combinație de taste deschide Visual Basic Editor?",
+    "back": "Alt+F11",
+    "concept_key": "vbe-deschidere-interfata",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce format de fișier trebuie folosit pentru a păstra codul VBA la salvare?",
+    "back": ".xlsm (Excel Macro-Enabled Workbook) sau .xlsb",
+    "concept_key": "vbe-deschidere-interfata",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este combinația de taste pentru fereastra Immediate?",
+    "back": "Ctrl+G",
+    "concept_key": "vbe-fereastra-immediate",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce instrucțiune afișează rezultatul unei expresii în fereastra Immediate în timpul execuției codului?",
+    "back": "Debug.Print",
+    "concept_key": "vbe-fereastra-immediate",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între Sub și Function în VBA?",
+    "back": "Sub execută instrucțiuni fără să returneze o valoare direct; Function returnează o valoare și poate fi folosită ca formulă în celulă.",
+    "concept_key": "vbe-proceduri-sub-function",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Unde se adaugă un modul standard nou în VBE?",
+    "back": "Clic dreapta pe proiect (VBAProject) în Project Explorer → Insert → Module",
+    "concept_key": "vbe-project-explorer-module",
+    "blockId": "cmjjuxvpc002zumkppurtblwd-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1273,
+   "flashcards": 6
+  }
+ }
+}

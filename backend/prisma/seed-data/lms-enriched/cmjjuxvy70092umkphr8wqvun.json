@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvy70092umkphr8wqvun",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Predictive",
+ "lesson": "Schedule Management",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Schedule Management\n\nManagementul programului (Schedule Management) este aria de cunoștințe PMBOK responsabilă cu planificarea, dezvoltarea, controlul și finalizarea calendarului proiectului, astfel încât livrabilele să fie predate la termen. În abordarea predictivă (waterfall), aceasta cuprinde șase procese secvențiale, aliniate atât cu PMBOK 7, cât și cu Examination Content Outline (ECO) pentru examenul PMP:\n\n1. **Plan Schedule Management** – stabilește politicile, procedurile și documentația pentru planificarea, dezvoltarea, gestionarea, execuția și controlul programului proiectului. Rezultă în „Planul de management al programului”.\n2. **Define Activities** – descompune pachetele de lucru din WBS (Work Breakdown Structure) în activități specifice, măsurabile.\n3. **Sequence Activities** – identifică și documentează relațiile logice dintre activități.\n4. **Estimate Activity Durations** – estimează numărul de perioade de lucru necesare finalizării fiecărei activități.\n5. **Develop Schedule** – analizează secvențele, duratele, resursele și constrângerile pentru a construi modelul de program (de regulă folosind Metoda Drumului Critic – CPM, Critical Path Method).\n6. **Control Schedule** – monitorizează starea proiectului pentru actualizarea programului și gestionarea schimbărilor față de linia de bază (baseline).\n\nPentru examen, reține că cele șase procese nu sunt izolate: ele se derulează iterativ, iar în proiectele hibride pot coexista cu sprinturi agile pentru componentele cu incertitudine ridicată. Exemplu practic: la implementarea unui sistem ERP într-o companie de distribuție din România, echipa de proiect definește activitățile de configurare, migrare de date și testare UAT (User Acceptance Testing) în cadrul procesului Define Activities, apoi le secvențiază ținând cont că testarea nu poate începe înainte de finalizarea migrării datelor.\n\nSequence Activities stabilește ordinea logică de execuție folosind **Precedence Diagramming Method (PDM)**, tehnica standard în care activitățile sunt reprezentate ca noduri, iar săgețile arată dependențele. Există patru tipuri de relații:\n\n- **Finish-to-Start (FS)** – succesoarea nu poate începe până nu se termină predecesoarea (cea mai comună; ex.: nu poți începe testarea UAT până nu se termină migrarea datelor).\n- **Start-to-Start (SS)** – succesoarea nu poate începe până nu începe predecesoarea (ex.: configurarea modulului de facturare poate începe simultan cu configurarea modulului de stocuri).\n- **Finish-to-Finish (FF)** – succesoarea nu se poate termina până nu se termină predecesoarea (ex.: documentația de instruire se finalizează odată cu configurarea finală a sistemului).\n- **Start-to-Finish (SF)** – rar întâlnită – succesoarea nu se poate termina până nu începe predecesoarea (ex.: tura de suport a vechiului furnizor se închide abia când începe tura noului furnizor).\n\nDependențele mai pot fi clasificate după natura lor:\n- **Obligatorii (mandatory/hard logic)** – impuse de natura muncii (nu poți testa un modul software înainte să fie scris codul).\n- **Discreționare (discretionary/soft logic)** – alese de echipă, pe baza celor mai bune practici (ex.: se preferă finalizarea configurării complete înainte de a începe testarea integrată, deși tehnic s-ar putea testa parțial).\n- **Externe** – depind de o parte din afara proiectului (ex.: livrarea licențelor software de la furnizor).\n- **Interne** – sub controlul echipei de proiect.\n\nÎn plus, între activități pot exista **lead-uri** (accelerări – succesoarea începe înainte ca predecesoarea să se termine complet, notate cu timp negativ) și **lag-uri** (întârzieri impuse, notate cu timp pozitiv, ex.: un lag de 3 zile după turnarea fundației, pentru uscarea betonului).\n\nEstimarea duratelor activităților (Estimate Activity Durations) folosește mai multe tehnici, alese în funcție de informațiile disponibile:\n\n- **Estimarea analogă (analogous estimating)** – se bazează pe durata unor activități similare din proiecte anterioare; rapidă, dar mai puțin precisă.\n- **Estimarea parametrică (parametric estimating)** – folosește o relație statistică între variabile (ex.: 2 ore/pagină pentru migrarea documentației, aplicat la 500 de pagini = 1.000 de ore).\n- **Estimarea în trei puncte (three-point estimating / PERT – Program Evaluation and Review Technique)** – combină trei valori: optimistă (O), cea mai probabilă (M) și pesimistă (P), pentru a reduce riscul de subestimare.\n\nFormula PERT (distribuție beta, cea mai utilizată la examen):\n\n**E = (O + 4M + P) / 6**\n\nDeviația standard a activității: **σ = (P − O) / 6**\n\n- **Estimarea ascendentă (bottom-up estimating)** – se estimează fiecare componentă la nivelul cel mai granular, apoi se agregă; cea mai precisă, dar și cea mai costisitoare ca efort.\n\nReține pentru examen: PERT NU este identic cu media aritmetică simplă (O+M+P)/3 – ponderea de 4 pe valoarea cea mai probabilă este ceea ce diferențiază formula beta de o simplă medie și reduce eroarea de estimare.\n\n## Exemplu: Calculul PERT pentru o activitate de testare UAT\nO echipă de proiect estimează durata activității „Testare UAT” pentru modulul de facturare al unui ERP implementat la o firmă SRL din Cluj:\n\n- Optimist (O) = 8 zile\n- Cel mai probabil (M) = 12 zile\n- Pesimist (P) = 20 zile\n\nCalcul:\nE = (8 + 4×12 + 20) / 6 = (8 + 48 + 20) / 6 = 76 / 6 = **12,67 zile**\n\nDeviația standard:\nσ = (20 − 8) / 6 = 12 / 6 = **2 zile**\n\nInterpretare: durata estimată introdusă în programul proiectului este de aproximativ 12,67 zile (rotunjit, 13 zile), cu o incertitudine de ±2 zile. Statistic, există aproximativ 68% șanse ca durata reală să se încadreze între 10,67 și 14,67 zile (intervalul de o deviație standard).\n\n## Exemplu: CPM – drumul critic pentru un proiect de digitalizare\nO companie de servicii financiare din București derulează un proiect de digitalizare a arhivei fizice. Activitățile, duratele (în zile) și dependențele FS sunt:\n\n| Activitate | Durată | Predecesor |\n|---|---|---|\n| A – Scanare documente | 5 | – |\n| B – Indexare metadate | 4 | A |\n| C – Validare calitate | 3 | A |\n| D – Migrare în DMS | 6 | B, C |\n| E – Testare acces utilizatori | 2 | D |\n\nSe identifică două drumuri posibile de la început la sfârșit:\n- Drum 1: A → B → D → E = 5 + 4 + 6 + 2 = 17 zile\n- Drum 2: A → C → D → E = 5 + 3 + 6 + 2 = 16 zile\n\n**Drumul critic este A → B → D → E, cu durata totală de 17 zile** (cel mai lung drum din rețea determină durata minimă a proiectului).\n\nPentru activitatea C se calculează **rezerva totală (total float)**:\n- Early Start C = 5 (după A), Early Finish C = 8\n- Late Finish C = 14 (D trebuie să înceapă cel târziu în ziua 14, pentru ca proiectul să respecte 17 zile), Late Start C = 11\n- Float total C = Late Start − Early Start = 11 − 5 = **3 zile**\n\nActivitatea C poate fi întârziată cu până la 3 zile fără a afecta data de finalizare a proiectului. Activitățile de pe drumul critic (A, B, D, E) au float total = 0 zile.\n\nDevelop Schedule integrează secvențierea, duratele și disponibilitatea resurselor pentru a construi modelul de program, de regulă cu ajutorul unui software (MS Project, Primavera). Tehnicile-cheie:\n\n- **Resource Leveling (nivelarea resurselor)** – ajustează programul pentru a rezolva supra-alocările de resurse (ex.: un analist de business alocat simultan pe două activități); poate prelungi drumul critic, deoarece prioritizează disponibilitatea reală a resurselor față de logica pură a rețelei.\n- **Resource Smoothing** – ajustează activitățile doar în limita rezervelor disponibile (float), fără a modifica drumul critic.\n- **Schedule Compression** – tehnici pentru scurtarea programului fără a schimba scopul (scope):\n  - **Crashing** – adăugare de resurse suplimentare pe activitățile critice, cu cost suplimentar (analiza cost-durată identifică activitatea cu cel mai mic cost per zi economisită).\n  - **Fast-tracking** – execuția în paralel a activităților secvențiale, cu risc crescut de rework.\n\n**Control Schedule** monitorizează execuția prin tehnica valorii realizate (Earned Value Management):\n- **SV (Schedule Variance) = EV − PV** – dacă SV < 0, proiectul este în întârziere.\n- **SPI (Schedule Performance Index) = EV / PV** – dacă SPI < 1, proiectul avansează mai încet decât planificat.\n\nOrice modificare a datei de finalizare aprobate trece printr-un control integrat al schimbărilor (Integrated Change Control) și actualizează linia de bază a programului (schedule baseline) doar cu aprobare formală.\n\n⚠ Capcană frecventă la examen: nu confunda **crashing** cu **fast-tracking**. Crashing înseamnă adăugarea de resurse suplimentare (ex.: mai mulți dezvoltatori) pentru a scurta durata activităților de pe drumul critic, de regulă cu creșterea costurilor. Fast-tracking înseamnă executarea în paralel a unor activități normal secvențiale (ex.: începerea testării înainte de finalizarea completă a configurării), ceea ce nu crește costul direct, dar crește riscul de rework. Ambele tehnici se aplică DOAR pe activitățile de pe drumul critic – comprimarea unei activități cu rezervă (float) nu scurtează durata proiectului.\n\n## Exercițiu\nO activitate critică „Configurare server” are o durată normală de 10 zile la un cost de 8.000 lei. Prin adăugarea unei echipe suplimentare (crashing), durata poate fi redusă la 6 zile, dar costul crește la 14.000 lei. Proiectul are nevoie să recupere 3 zile pe drumul critic pentru a respecta termenul contractual.\n\na) Calculează costul de crashing per zi economisită pentru această activitate.\nb) Este eficientă comprimarea acestei activități pentru a recupera cele 3 zile? Justifică.\n\n**Soluție:** a) Cost de crashing per zi = (Cost comprimat − Cost normal) / (Durată normală − Durată comprimată) = (14.000 − 8.000) / (10 − 6) = 6.000 / 4 = **1.500 lei/zi**.\n\nb) Pentru a recupera 3 zile, costul suplimentar ar fi 3 × 1.500 = **4.500 lei**. Decizia depinde de comparația cu penalitățile contractuale sau costul întârzierii: dacă penalizarea pentru întârziere depășește 4.500 lei, comprimarea este justificată economic. Este important de verificat și dacă activitatea rămâne pe drumul critic după comprimare (o comprimare excesivă poate crea un nou drum critic) – analiza trebuie refăcută iterativ, activitate cu activitate, alegând mereu cea cu cel mai mic cost per zi economisită.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "schedule-management-procese-predictive",
+    "md": "Managementul programului (Schedule Management) este aria de cunoștințe PMBOK responsabilă cu planificarea, dezvoltarea, controlul și finalizarea calendarului proiectului, astfel încât livrabilele să fie predate la termen. În abordarea predictivă (waterfall), aceasta cuprinde șase procese secvențiale, aliniate atât cu PMBOK 7, cât și cu Examination Content Outline (ECO) pentru examenul PMP:\n\n1. **Plan Schedule Management** – stabilește politicile, procedurile și documentația pentru planificarea, dezvoltarea, gestionarea, execuția și controlul programului proiectului. Rezultă în „Planul de management al programului”.\n2. **Define Activities** – descompune pachetele de lucru din WBS (Work Breakdown Structure) în activități specifice, măsurabile.\n3. **Sequence Activities** – identifică și documentează relațiile logice dintre activități.\n4. **Estimate Activity Durations** – estimează numărul de perioade de lucru necesare finalizării fiecărei activități.\n5. **Develop Schedule** – analizează secvențele, duratele, resursele și constrângerile pentru a construi modelul de program (de regulă folosind Metoda Drumului Critic – CPM, Critical Path Method).\n6. **Control Schedule** – monitorizează starea proiectului pentru actualizarea programului și gestionarea schimbărilor față de linia de bază (baseline).\n\nPentru examen, reține că cele șase procese nu sunt izolate: ele se derulează iterativ, iar în proiectele hibride pot coexista cu sprinturi agile pentru componentele cu incertitudine ridicată. Exemplu practic: la implementarea unui sistem ERP într-o companie de distribuție din România, echipa de proiect definește activitățile de configurare, migrare de date și testare UAT (User Acceptance Testing) în cadrul procesului Define Activities, apoi le secvențiază ținând cont că testarea nu poate începe înainte de finalizarea migrării datelor.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sequence-activities-dependinte",
+    "md": "Sequence Activities stabilește ordinea logică de execuție folosind **Precedence Diagramming Method (PDM)**, tehnica standard în care activitățile sunt reprezentate ca noduri, iar săgețile arată dependențele. Există patru tipuri de relații:\n\n- **Finish-to-Start (FS)** – succesoarea nu poate începe până nu se termină predecesoarea (cea mai comună; ex.: nu poți începe testarea UAT până nu se termină migrarea datelor).\n- **Start-to-Start (SS)** – succesoarea nu poate începe până nu începe predecesoarea (ex.: configurarea modulului de facturare poate începe simultan cu configurarea modulului de stocuri).\n- **Finish-to-Finish (FF)** – succesoarea nu se poate termina până nu se termină predecesoarea (ex.: documentația de instruire se finalizează odată cu configurarea finală a sistemului).\n- **Start-to-Finish (SF)** – rar întâlnită – succesoarea nu se poate termina până nu începe predecesoarea (ex.: tura de suport a vechiului furnizor se închide abia când începe tura noului furnizor).\n\nDependențele mai pot fi clasificate după natura lor:\n- **Obligatorii (mandatory/hard logic)** – impuse de natura muncii (nu poți testa un modul software înainte să fie scris codul).\n- **Discreționare (discretionary/soft logic)** – alese de echipă, pe baza celor mai bune practici (ex.: se preferă finalizarea configurării complete înainte de a începe testarea integrată, deși tehnic s-ar putea testa parțial).\n- **Externe** – depind de o parte din afara proiectului (ex.: livrarea licențelor software de la furnizor).\n- **Interne** – sub controlul echipei de proiect.\n\nÎn plus, între activități pot exista **lead-uri** (accelerări – succesoarea începe înainte ca predecesoarea să se termine complet, notate cu timp negativ) și **lag-uri** (întârzieri impuse, notate cu timp pozitiv, ex.: un lag de 3 zile după turnarea fundației, pentru uscarea betonului).",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "estimate-durations-pert",
+    "md": "Estimarea duratelor activităților (Estimate Activity Durations) folosește mai multe tehnici, alese în funcție de informațiile disponibile:\n\n- **Estimarea analogă (analogous estimating)** – se bazează pe durata unor activități similare din proiecte anterioare; rapidă, dar mai puțin precisă.\n- **Estimarea parametrică (parametric estimating)** – folosește o relație statistică între variabile (ex.: 2 ore/pagină pentru migrarea documentației, aplicat la 500 de pagini = 1.000 de ore).\n- **Estimarea în trei puncte (three-point estimating / PERT – Program Evaluation and Review Technique)** – combină trei valori: optimistă (O), cea mai probabilă (M) și pesimistă (P), pentru a reduce riscul de subestimare.\n\nFormula PERT (distribuție beta, cea mai utilizată la examen):\n\n**E = (O + 4M + P) / 6**\n\nDeviația standard a activității: **σ = (P − O) / 6**\n\n- **Estimarea ascendentă (bottom-up estimating)** – se estimează fiecare componentă la nivelul cel mai granular, apoi se agregă; cea mai precisă, dar și cea mai costisitoare ca efort.\n\nReține pentru examen: PERT NU este identic cu media aritmetică simplă (O+M+P)/3 – ponderea de 4 pe valoarea cea mai probabilă este ceea ce diferențiază formula beta de o simplă medie și reduce eroarea de estimare.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul PERT pentru o activitate de testare UAT",
+    "concept_key": "estimate-durations-pert",
+    "md": "O echipă de proiect estimează durata activității „Testare UAT” pentru modulul de facturare al unui ERP implementat la o firmă SRL din Cluj:\n\n- Optimist (O) = 8 zile\n- Cel mai probabil (M) = 12 zile\n- Pesimist (P) = 20 zile\n\nCalcul:\nE = (8 + 4×12 + 20) / 6 = (8 + 48 + 20) / 6 = 76 / 6 = **12,67 zile**\n\nDeviația standard:\nσ = (20 − 8) / 6 = 12 / 6 = **2 zile**\n\nInterpretare: durata estimată introdusă în programul proiectului este de aproximativ 12,67 zile (rotunjit, 13 zile), cu o incertitudine de ±2 zile. Statistic, există aproximativ 68% șanse ca durata reală să se încadreze între 10,67 și 14,67 zile (intervalul de o deviație standard).",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b4"
+   },
+   {
+    "type": "example",
+    "title": "CPM – drumul critic pentru un proiect de digitalizare",
+    "concept_key": "cpm-drum-critic",
+    "md": "O companie de servicii financiare din București derulează un proiect de digitalizare a arhivei fizice. Activitățile, duratele (în zile) și dependențele FS sunt:\n\n| Activitate | Durată | Predecesor |\n|---|---|---|\n| A – Scanare documente | 5 | – |\n| B – Indexare metadate | 4 | A |\n| C – Validare calitate | 3 | A |\n| D – Migrare în DMS | 6 | B, C |\n| E – Testare acces utilizatori | 2 | D |\n\nSe identifică două drumuri posibile de la început la sfârșit:\n- Drum 1: A → B → D → E = 5 + 4 + 6 + 2 = 17 zile\n- Drum 2: A → C → D → E = 5 + 3 + 6 + 2 = 16 zile\n\n**Drumul critic este A → B → D → E, cu durata totală de 17 zile** (cel mai lung drum din rețea determină durata minimă a proiectului).\n\nPentru activitatea C se calculează **rezerva totală (total float)**:\n- Early Start C = 5 (după A), Early Finish C = 8\n- Late Finish C = 14 (D trebuie să înceapă cel târziu în ziua 14, pentru ca proiectul să respecte 17 zile), Late Start C = 11\n- Float total C = Late Start − Early Start = 11 − 5 = **3 zile**\n\nActivitatea C poate fi întârziată cu până la 3 zile fără a afecta data de finalizare a proiectului. Activitățile de pe drumul critic (A, B, D, E) au float total = 0 zile.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b5"
+   },
+   {
+    "type": "theory",
+    "concept_key": "resource-leveling-crashing-fast-tracking",
+    "md": "Develop Schedule integrează secvențierea, duratele și disponibilitatea resurselor pentru a construi modelul de program, de regulă cu ajutorul unui software (MS Project, Primavera). Tehnicile-cheie:\n\n- **Resource Leveling (nivelarea resurselor)** – ajustează programul pentru a rezolva supra-alocările de resurse (ex.: un analist de business alocat simultan pe două activități); poate prelungi drumul critic, deoarece prioritizează disponibilitatea reală a resurselor față de logica pură a rețelei.\n- **Resource Smoothing** – ajustează activitățile doar în limita rezervelor disponibile (float), fără a modifica drumul critic.\n- **Schedule Compression** – tehnici pentru scurtarea programului fără a schimba scopul (scope):\n  - **Crashing** – adăugare de resurse suplimentare pe activitățile critice, cu cost suplimentar (analiza cost-durată identifică activitatea cu cel mai mic cost per zi economisită).\n  - **Fast-tracking** – execuția în paralel a activităților secvențiale, cu risc crescut de rework.\n\n**Control Schedule** monitorizează execuția prin tehnica valorii realizate (Earned Value Management):\n- **SV (Schedule Variance) = EV − PV** – dacă SV < 0, proiectul este în întârziere.\n- **SPI (Schedule Performance Index) = EV / PV** – dacă SPI < 1, proiectul avansează mai încet decât planificat.\n\nOrice modificare a datei de finalizare aprobate trece printr-un control integrat al schimbărilor (Integrated Change Control) și actualizează linia de bază a programului (schedule baseline) doar cu aprobare formală.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană frecventă la examen: nu confunda **crashing** cu **fast-tracking**. Crashing înseamnă adăugarea de resurse suplimentare (ex.: mai mulți dezvoltatori) pentru a scurta durata activităților de pe drumul critic, de regulă cu creșterea costurilor. Fast-tracking înseamnă executarea în paralel a unor activități normal secvențiale (ex.: începerea testării înainte de finalizarea completă a configurării), ceea ce nu crește costul direct, dar crește riscul de rework. Ambele tehnici se aplică DOAR pe activitățile de pe drumul critic – comprimarea unei activități cu rezervă (float) nu scurtează durata proiectului.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O activitate critică „Configurare server” are o durată normală de 10 zile la un cost de 8.000 lei. Prin adăugarea unei echipe suplimentare (crashing), durata poate fi redusă la 6 zile, dar costul crește la 14.000 lei. Proiectul are nevoie să recupere 3 zile pe drumul critic pentru a respecta termenul contractual.\n\na) Calculează costul de crashing per zi economisită pentru această activitate.\nb) Este eficientă comprimarea acestei activități pentru a recupera cele 3 zile? Justifică.",
+    "solution_md": "a) Cost de crashing per zi = (Cost comprimat − Cost normal) / (Durată normală − Durată comprimată) = (14.000 − 8.000) / (10 − 6) = 6.000 / 4 = **1.500 lei/zi**.\n\nb) Pentru a recupera 3 zile, costul suplimentar ar fi 3 × 1.500 = **4.500 lei**. Decizia depinde de comparația cu penalitățile contractuale sau costul întârzierii: dacă penalizarea pentru întârziere depășește 4.500 lei, comprimarea este justificată economic. Este important de verificat și dacă activitatea rămâne pe drumul critic după comprimare (o comprimare excesivă poate crea un nou drum critic) – analiza trebuie refăcută iterativ, activitate cu activitate, alegând mereu cea cu cel mai mic cost per zi economisită.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă pentru estimarea PERT (three-point estimating) a duratei unei activități?",
+    "choices": [
+     "(O + M + P) / 3",
+     "(O + 4M + P) / 6",
+     "(O + 2M + P) / 4",
+     "(4O + M + P) / 6"
+    ],
+    "answer": 1,
+    "explain": "Formula PERT ponderează valoarea cea mai probabilă (M) de 4 ori, reflectând distribuția beta: E = (O + 4M + P) / 6. Media aritmetică simplă (O+M+P)/3 este o eroare frecventă la examen.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Pe drumul critic al unui proiect, care este valoarea rezervei totale (total float) a fiecărei activități?",
+    "choices": [
+     "Depinde de resursele alocate",
+     "Întotdeauna 0 zile",
+     "Egală cu deviația standard PERT",
+     "Egală cu durata celei mai scurte activități"
+    ],
+    "answer": 1,
+    "explain": "Prin definiție, activitățile de pe drumul critic au rezervă totală (total float) de 0 zile – orice întârziere a acestora întârzie direct data de finalizare a proiectului.",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă CPM și ce reprezintă drumul critic?",
+    "back": "CPM (Critical Path Method) este tehnica de analiză a rețelei de activități; drumul critic este cel mai lung lanț de activități dependente din proiect, care determină durata minimă posibilă a proiectului.",
+    "concept_key": "cpm-drum-critic",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula PERT pentru durata estimată a unei activități?",
+    "back": "E = (O + 4M + P) / 6, unde O = optimist, M = cel mai probabil, P = pesimist.",
+    "concept_key": "estimate-durations-pert",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este rezerva totală (total float)?",
+    "back": "Timpul cu care o activitate poate fi întârziată fără a afecta data de finalizare a proiectului; pe drumul critic, total float = 0.",
+    "concept_key": "cpm-drum-critic",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între crashing și fast-tracking?",
+    "back": "Crashing adaugă resurse pe activitățile critice pentru a scurta durata (cost mai mare); fast-tracking execută în paralel activități normal secvențiale (risc mai mare de rework), fără cost suplimentar direct.",
+    "concept_key": "resource-leveling-crashing-fast-tracking",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tip de dependență descrie relația 'testarea nu poate începe până nu se termină dezvoltarea'?",
+    "back": "Finish-to-Start (FS) – cea mai comună dependență în Precedence Diagramming Method (PDM).",
+    "concept_key": "sequence-activities-dependinte",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează Schedule Performance Index (SPI)?",
+    "back": "SPI = EV / PV (Earned Value / Planned Value). SPI < 1 înseamnă că proiectul este în întârziere față de plan.",
+    "concept_key": "resource-leveling-crashing-fast-tracking",
+    "blockId": "cmjjuxvy70092umkphr8wqvun-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1446,
+   "flashcards": 6
+  }
+ }
+}

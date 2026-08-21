@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvs9004yumkpg6phc7dg",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Inițierea Proiectului",
+ "lesson": "Business Case și ROI",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Business Case și ROI\n\n## Ce este un Business Case?\n\nÎnainte ca un proiect să primească undă verde, cineva trebuie să răspundă la întrebarea fundamentală: **de ce facem acest proiect?** Răspunsul documentat la această întrebare se numește **Business Case** (caz de afaceri/justificare economică).\n\nBusiness Case-ul este documentul care demonstrează, cu argumente și cifre, că investiția de timp, bani și resurse într-un proiect este justificată din perspectiva organizației. Este instrumentul pe baza căruia sponsorul proiectului sau comitetul director (steering committee) decide dacă un proiect trece la faza de inițiere formală, prin elaborarea Project Charter-ului.\n\nConform PMBOK 7 (ediția orientată pe principii și livrare de valoare), Business Case-ul este documentul-cheie care leagă proiectul de strategia organizației: un proiect nu se justifică prin faptul că este \"o idee bună\", ci prin faptul că generează **valoare măsurabilă** — financiară, operațională sau strategică — mai mare decât costul și riscurile asumate.\n\nÎn practică, la o firmă românească (SRL sau grup de firme), Business Case-ul este documentul pe care directorul financiar sau administratorul îl cere înainte de a aproba bugetul unui proiect precum implementarea unui ERP, digitalizarea unui flux de lucru sau deschiderea unei linii noi de producție. Fără el, deciziile de investiție se iau \"pe simțire\", ceea ce crește riscul de eșec și de risipă a resurselor.\n\nBusiness Case-ul precede Project Charter-ul: primul răspunde la \"de ce\", al doilea autorizează formal proiectul și numește managerul de proiect. Multe organizații le combină într-un singur document pentru proiecte mici, dar conceptual sunt etape distincte ale inițierii.\n\n## Structura unui Business Case\n\nUn Business Case bine construit conține, de regulă, următoarele secțiuni:\n\n1. **Rezumat executiv** – o pagină care sintetizează problema, soluția propusă și beneficiul așteptat, pentru decidenți care nu au timp să citească tot documentul.\n2. **Problema sau oportunitatea de afaceri** – ce nevoie reală declanșează proiectul (ex: pierderi din erori de stoc, timp excesiv pentru raportare, o oportunitate de piață).\n3. **Obiectivele proiectului** – ce anume trebuie să realizeze proiectul pentru a rezolva problema.\n4. **Analiza alternativelor** – minimum trei opțiuni comparate, dintre care una este întotdeauna **\"a nu face nimic\"** (do nothing), folosită ca punct de referință pentru a arăta costul inacțiunii.\n5. **Beneficiile așteptate** – cuantificabile (economii, venituri suplimentare) și necuantificabile (satisfacția clienților, imagine, conformitate).\n6. **Costurile estimate** – investiție inițială, costuri de operare, costuri ascunse (instruire, migrare de date, întreruperi temporare de activitate).\n7. **Analiza financiară** – indicatori precum ROI, perioada de recuperare (payback period) și, pentru proiecte mari, valoarea actualizată netă (NPV).\n8. **Riscurile majore** – ce poate merge prost și cum afectează beneficiile estimate.\n9. **Recomandarea** – varianta susținută, cu argumentare.\n10. **Criteriile de succes** – cum se va măsura, după implementare, dacă beneficiile promise s-au realizat efectiv.\n\nAceastă structură este compatibilă atât cu abordări predictive (waterfall), cât și cu proiecte agile — în Scrum Guide 2020, echivalentul conceptual apare în justificarea produsului și în viziunea produsului, dar logica economică rămâne aceeași: valoarea trebuie să depășească investiția.\n\n## Indicatori financiari cheie: ROI, Payback Period, NPV\n\nAnaliza financiară dintr-un Business Case se bazează pe câțiva indicatori standard, ușor de calculat și de explicat unui decident non-tehnic.\n\n**ROI (Return on Investment / Rentabilitatea investiției)**\n\n$$ROI = \\frac{Beneficii\\ nete - Costuri}{Costuri} \\times 100$$\n\nUnde \"Beneficii nete\" reprezintă suma beneficiilor generate pe perioada analizată (de obicei aceeași durată ca și costurile comparate). Un ROI de 50% înseamnă că, pentru fiecare leu investit, proiectul recuperează investiția și mai generează 0,5 lei profit net.\n\n**Perioada de recuperare (Payback Period)**\n\n$$Payback\\ Period = \\frac{Costul\\ investiției}{Beneficiul\\ net\\ anual}$$\n\nArată în câți ani/luni investiția inițială este recuperată integral din beneficiile generate. Este indicatorul preferat de firmele mici și mijlocii din România pentru că este simplu de comunicat: \"proiectul se plătește singur în 2 ani\".\n\n**NPV (Valoarea Actualizată Netă)** – pentru proiecte cu orizont de mai mulți ani, banii de peste 2-3 ani nu au aceeași valoare ca banii de azi. NPV actualizează fluxurile viitoare de numerar folosind o rată de discount (costul capitalului firmei) și le însumează cu investiția inițială (negativă). Un NPV pozitiv indică un proiect care creează valoare peste costul capitalului.\n\nÎn practică, pentru proiecte de digitalizare/ERP de complexitate medie, ROI și Payback Period sunt suficiente pentru decizie; NPV se folosește la proiecte mari, multianuale sau cu finanțare externă, unde rata de discount contează semnificativ. Rețineți: aceste formule sunt instrumente universale de analiză financiară, nu cifre fixe — valorile din exemplele de mai jos sunt ipotetice, pentru exersare, și trebuie recalculate cu datele reale ale fiecărui proiect.\n\n## Exemplu: Business Case pentru implementarea unui sistem ERP\n**Context:** o firmă de distribuție (SRL, 45 angajați) folosește Excel și un program de facturare vechi, needucat cu gestiunea de stoc. Apar frecvent erori de comandă și întârzieri în raportare.\n\n**Problema:** echipa de operațiuni pierde estimativ 20 ore/săptămână reconciliind manual stocurile între depozit și facturare, iar erorile de stoc generează pierderi (comenzi greșite, stoc blocat) estimate la 5.000 lei/lună.\n\n**Alternative analizate:**\n- **A – a nu face nimic:** costul actual continuă (~60.000 lei/an în erori și ore pierdute).\n- **B – implementare ERP cloud:** investiție inițială 150.000 lei (licențe, implementare, migrare date, instruire), cost de mentenanță 15.000 lei/an.\n- **C – upgrade parțial al sistemului actual:** investiție 40.000 lei, dar rezolvă doar 30% din problemă.\n\n**Beneficii estimate pentru varianta B:** eliminarea a 15 din cele 20 de ore pierdute săptămânal (echivalent ~35.000 lei/an în timp de muncă recuperat) plus reducerea erorilor de stoc cu 80% (~48.000 lei/an economisiți). Total beneficii brute anuale: 83.000 lei. Beneficiu net anual (după costul de mentenanță de 15.000 lei): 68.000 lei.\n\n**Calcul financiar (varianta B, orizont 3 ani):**\n- Beneficii nete cumulate (3 ani): 68.000 × 3 = 204.000 lei\n- ROI = (204.000 − 150.000) / 150.000 × 100 = **36%**\n- Payback Period = 150.000 / 68.000 ≈ **2,2 ani**\n\n**Recomandare:** varianta B este susținută, deoarece recuperează investiția în sub 2,5 ani și generează beneficii nete pozitive și după perioada de recuperare, spre deosebire de varianta C, care rezolvă doar parțial problema și nu elimină cauza principală a pierderilor.\n\n## Exemplu: Compararea a două alternative folosind ROI\nO companie de servicii trebuie să aleagă între două soluții pentru automatizarea facturării, ambele analizate pe un orizont de 2 ani:\n\n**Opțiunea 1 – Soluție software standard (SaaS):**\n- Cost total (abonament + implementare, 2 ani): 36.000 lei\n- Beneficiu net anual (timp economisit + reducere erori): 30.000 lei → 60.000 lei în 2 ani\n- ROI = (60.000 − 36.000) / 36.000 × 100 = **67%**\n- Payback Period = 36.000 / 30.000 = **1,2 ani**\n\n**Opțiunea 2 – Dezvoltare software personalizată (custom):**\n- Cost total (dezvoltare + mentenanță, 2 ani): 90.000 lei\n- Beneficiu net anual (mai mare, pentru că se potrivește exact pe procesele firmei): 55.000 lei → 110.000 lei în 2 ani\n- ROI = (110.000 − 90.000) / 90.000 × 100 = **22%**\n- Payback Period = 90.000 / 55.000 ≈ **1,6 ani**\n\n**Interpretare:** deși Opțiunea 2 generează un beneficiu net anual mai mare în valoare absolută, ROI-ul ei este mult mai mic pentru că investiția inițială este considerabil mai ridicată. Opțiunea 1 este mai eficientă din perspectiva ROI și recuperează investiția mai rapid. Decizia finală depinde însă și de factori necuantificați în ROI: Opțiunea 2 ar putea oferi avantaje strategice (flexibilitate, integrare mai bună pe termen lung) care justifică investiția suplimentară — de aceea Business Case-ul nu se rezumă niciodată la un singur indicator financiar.\n\n⚠ **Capcane frecvente în elaborarea Business Case-ului:**\n\n- **Supraestimarea beneficiilor** — echipele de proiect au tendința să fie optimiste. Folosește estimări conservatoare și, unde e posibil, cere validarea cifrelor de la departamentul financiar.\n- **Ignorarea costurilor ascunse** — instruirea angajaților, timpul de adaptare, întreruperile temporare de activitate în timpul tranziției sunt costuri reale, chiar dacă nu apar pe factură.\n- **Omiterea variantei \"a nu face nimic\"** — fără acest punct de referință, nu poți demonstra costul real al inacțiunii.\n- **Decizie bazată exclusiv pe ROI** — un ROI mare pe termen scurt poate ascunde riscuri strategice sau poate să nu se alinieze cu direcția pe termen lung a companiei. ROI-ul este un argument, nu singurul argument.\n\n## Exercițiu\nO firmă analizează un proiect de automatizare a depozitului. Investiția inițială este de **80.000 lei**, iar proiectul este estimat să genereze un beneficiu net de **40.000 lei pe an**, timp de 3 ani.\n\nCalculează:\n1. ROI-ul total pe cei 3 ani.\n2. Perioada de recuperare a investiției (payback period).\n3. Dacă firma acceptă doar proiecte cu payback sub 2,5 ani, este acest proiect acceptabil?\n\n**Soluție:** **1. ROI total pe 3 ani:**\n- Beneficii nete cumulate = 40.000 × 3 = 120.000 lei\n- ROI = (120.000 − 80.000) / 80.000 × 100 = **50%**\n\n**2. Payback Period:**\n- Payback = 80.000 / 40.000 = **2 ani**\n\n**3. Concluzie:** da, proiectul este acceptabil — perioada de recuperare de 2 ani este sub pragul de 2,5 ani stabilit de firmă, iar ROI-ul de 50% pe 3 ani arată o rentabilitate solidă a investiției.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "business-case-definitie",
+    "md": "## Ce este un Business Case?\n\nÎnainte ca un proiect să primească undă verde, cineva trebuie să răspundă la întrebarea fundamentală: **de ce facem acest proiect?** Răspunsul documentat la această întrebare se numește **Business Case** (caz de afaceri/justificare economică).\n\nBusiness Case-ul este documentul care demonstrează, cu argumente și cifre, că investiția de timp, bani și resurse într-un proiect este justificată din perspectiva organizației. Este instrumentul pe baza căruia sponsorul proiectului sau comitetul director (steering committee) decide dacă un proiect trece la faza de inițiere formală, prin elaborarea Project Charter-ului.\n\nConform PMBOK 7 (ediția orientată pe principii și livrare de valoare), Business Case-ul este documentul-cheie care leagă proiectul de strategia organizației: un proiect nu se justifică prin faptul că este \"o idee bună\", ci prin faptul că generează **valoare măsurabilă** — financiară, operațională sau strategică — mai mare decât costul și riscurile asumate.\n\nÎn practică, la o firmă românească (SRL sau grup de firme), Business Case-ul este documentul pe care directorul financiar sau administratorul îl cere înainte de a aproba bugetul unui proiect precum implementarea unui ERP, digitalizarea unui flux de lucru sau deschiderea unei linii noi de producție. Fără el, deciziile de investiție se iau \"pe simțire\", ceea ce crește riscul de eșec și de risipă a resurselor.\n\nBusiness Case-ul precede Project Charter-ul: primul răspunde la \"de ce\", al doilea autorizează formal proiectul și numește managerul de proiect. Multe organizații le combină într-un singur document pentru proiecte mici, dar conceptual sunt etape distincte ale inițierii.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "componente-business-case",
+    "md": "## Structura unui Business Case\n\nUn Business Case bine construit conține, de regulă, următoarele secțiuni:\n\n1. **Rezumat executiv** – o pagină care sintetizează problema, soluția propusă și beneficiul așteptat, pentru decidenți care nu au timp să citească tot documentul.\n2. **Problema sau oportunitatea de afaceri** – ce nevoie reală declanșează proiectul (ex: pierderi din erori de stoc, timp excesiv pentru raportare, o oportunitate de piață).\n3. **Obiectivele proiectului** – ce anume trebuie să realizeze proiectul pentru a rezolva problema.\n4. **Analiza alternativelor** – minimum trei opțiuni comparate, dintre care una este întotdeauna **\"a nu face nimic\"** (do nothing), folosită ca punct de referință pentru a arăta costul inacțiunii.\n5. **Beneficiile așteptate** – cuantificabile (economii, venituri suplimentare) și necuantificabile (satisfacția clienților, imagine, conformitate).\n6. **Costurile estimate** – investiție inițială, costuri de operare, costuri ascunse (instruire, migrare de date, întreruperi temporare de activitate).\n7. **Analiza financiară** – indicatori precum ROI, perioada de recuperare (payback period) și, pentru proiecte mari, valoarea actualizată netă (NPV).\n8. **Riscurile majore** – ce poate merge prost și cum afectează beneficiile estimate.\n9. **Recomandarea** – varianta susținută, cu argumentare.\n10. **Criteriile de succes** – cum se va măsura, după implementare, dacă beneficiile promise s-au realizat efectiv.\n\nAceastă structură este compatibilă atât cu abordări predictive (waterfall), cât și cu proiecte agile — în Scrum Guide 2020, echivalentul conceptual apare în justificarea produsului și în viziunea produsului, dar logica economică rămâne aceeași: valoarea trebuie să depășească investiția.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "indicatori-financiari-roi",
+    "md": "## Indicatori financiari cheie: ROI, Payback Period, NPV\n\nAnaliza financiară dintr-un Business Case se bazează pe câțiva indicatori standard, ușor de calculat și de explicat unui decident non-tehnic.\n\n**ROI (Return on Investment / Rentabilitatea investiției)**\n\n$$ROI = \\frac{Beneficii\\ nete - Costuri}{Costuri} \\times 100$$\n\nUnde \"Beneficii nete\" reprezintă suma beneficiilor generate pe perioada analizată (de obicei aceeași durată ca și costurile comparate). Un ROI de 50% înseamnă că, pentru fiecare leu investit, proiectul recuperează investiția și mai generează 0,5 lei profit net.\n\n**Perioada de recuperare (Payback Period)**\n\n$$Payback\\ Period = \\frac{Costul\\ investiției}{Beneficiul\\ net\\ anual}$$\n\nArată în câți ani/luni investiția inițială este recuperată integral din beneficiile generate. Este indicatorul preferat de firmele mici și mijlocii din România pentru că este simplu de comunicat: \"proiectul se plătește singur în 2 ani\".\n\n**NPV (Valoarea Actualizată Netă)** – pentru proiecte cu orizont de mai mulți ani, banii de peste 2-3 ani nu au aceeași valoare ca banii de azi. NPV actualizează fluxurile viitoare de numerar folosind o rată de discount (costul capitalului firmei) și le însumează cu investiția inițială (negativă). Un NPV pozitiv indică un proiect care creează valoare peste costul capitalului.\n\nÎn practică, pentru proiecte de digitalizare/ERP de complexitate medie, ROI și Payback Period sunt suficiente pentru decizie; NPV se folosește la proiecte mari, multianuale sau cu finanțare externă, unde rata de discount contează semnificativ. Rețineți: aceste formule sunt instrumente universale de analiză financiară, nu cifre fixe — valorile din exemplele de mai jos sunt ipotetice, pentru exersare, și trebuie recalculate cu datele reale ale fiecărui proiect.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b3"
+   },
+   {
+    "type": "example",
+    "title": "Business Case pentru implementarea unui sistem ERP",
+    "concept_key": "exemplu-business-case-erp",
+    "md": "**Context:** o firmă de distribuție (SRL, 45 angajați) folosește Excel și un program de facturare vechi, needucat cu gestiunea de stoc. Apar frecvent erori de comandă și întârzieri în raportare.\n\n**Problema:** echipa de operațiuni pierde estimativ 20 ore/săptămână reconciliind manual stocurile între depozit și facturare, iar erorile de stoc generează pierderi (comenzi greșite, stoc blocat) estimate la 5.000 lei/lună.\n\n**Alternative analizate:**\n- **A – a nu face nimic:** costul actual continuă (~60.000 lei/an în erori și ore pierdute).\n- **B – implementare ERP cloud:** investiție inițială 150.000 lei (licențe, implementare, migrare date, instruire), cost de mentenanță 15.000 lei/an.\n- **C – upgrade parțial al sistemului actual:** investiție 40.000 lei, dar rezolvă doar 30% din problemă.\n\n**Beneficii estimate pentru varianta B:** eliminarea a 15 din cele 20 de ore pierdute săptămânal (echivalent ~35.000 lei/an în timp de muncă recuperat) plus reducerea erorilor de stoc cu 80% (~48.000 lei/an economisiți). Total beneficii brute anuale: 83.000 lei. Beneficiu net anual (după costul de mentenanță de 15.000 lei): 68.000 lei.\n\n**Calcul financiar (varianta B, orizont 3 ani):**\n- Beneficii nete cumulate (3 ani): 68.000 × 3 = 204.000 lei\n- ROI = (204.000 − 150.000) / 150.000 × 100 = **36%**\n- Payback Period = 150.000 / 68.000 ≈ **2,2 ani**\n\n**Recomandare:** varianta B este susținută, deoarece recuperează investiția în sub 2,5 ani și generează beneficii nete pozitive și după perioada de recuperare, spre deosebire de varianta C, care rezolvă doar parțial problema și nu elimină cauza principală a pierderilor.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b4"
+   },
+   {
+    "type": "example",
+    "title": "Compararea a două alternative folosind ROI",
+    "concept_key": "comparatie-alternative-roi",
+    "md": "O companie de servicii trebuie să aleagă între două soluții pentru automatizarea facturării, ambele analizate pe un orizont de 2 ani:\n\n**Opțiunea 1 – Soluție software standard (SaaS):**\n- Cost total (abonament + implementare, 2 ani): 36.000 lei\n- Beneficiu net anual (timp economisit + reducere erori): 30.000 lei → 60.000 lei în 2 ani\n- ROI = (60.000 − 36.000) / 36.000 × 100 = **67%**\n- Payback Period = 36.000 / 30.000 = **1,2 ani**\n\n**Opțiunea 2 – Dezvoltare software personalizată (custom):**\n- Cost total (dezvoltare + mentenanță, 2 ani): 90.000 lei\n- Beneficiu net anual (mai mare, pentru că se potrivește exact pe procesele firmei): 55.000 lei → 110.000 lei în 2 ani\n- ROI = (110.000 − 90.000) / 90.000 × 100 = **22%**\n- Payback Period = 90.000 / 55.000 ≈ **1,6 ani**\n\n**Interpretare:** deși Opțiunea 2 generează un beneficiu net anual mai mare în valoare absolută, ROI-ul ei este mult mai mic pentru că investiția inițială este considerabil mai ridicată. Opțiunea 1 este mai eficientă din perspectiva ROI și recuperează investiția mai rapid. Decizia finală depinde însă și de factori necuantificați în ROI: Opțiunea 2 ar putea oferi avantaje strategice (flexibilitate, integrare mai bună pe termen lung) care justifică investiția suplimentară — de aceea Business Case-ul nu se rezumă niciodată la un singur indicator financiar.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b5"
+   },
+   {
+    "type": "warning",
+    "md": "**Capcane frecvente în elaborarea Business Case-ului:**\n\n- **Supraestimarea beneficiilor** — echipele de proiect au tendința să fie optimiste. Folosește estimări conservatoare și, unde e posibil, cere validarea cifrelor de la departamentul financiar.\n- **Ignorarea costurilor ascunse** — instruirea angajaților, timpul de adaptare, întreruperile temporare de activitate în timpul tranziției sunt costuri reale, chiar dacă nu apar pe factură.\n- **Omiterea variantei \"a nu face nimic\"** — fără acest punct de referință, nu poți demonstra costul real al inacțiunii.\n- **Decizie bazată exclusiv pe ROI** — un ROI mare pe termen scurt poate ascunde riscuri strategice sau poate să nu se alinieze cu direcția pe termen lung a companiei. ROI-ul este un argument, nu singurul argument.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă analizează un proiect de automatizare a depozitului. Investiția inițială este de **80.000 lei**, iar proiectul este estimat să genereze un beneficiu net de **40.000 lei pe an**, timp de 3 ani.\n\nCalculează:\n1. ROI-ul total pe cei 3 ani.\n2. Perioada de recuperare a investiției (payback period).\n3. Dacă firma acceptă doar proiecte cu payback sub 2,5 ani, este acest proiect acceptabil?",
+    "solution_md": "**1. ROI total pe 3 ani:**\n- Beneficii nete cumulate = 40.000 × 3 = 120.000 lei\n- ROI = (120.000 − 80.000) / 80.000 × 100 = **50%**\n\n**2. Payback Period:**\n- Payback = 80.000 / 40.000 = **2 ani**\n\n**3. Concluzie:** da, proiectul este acceptabil — perioada de recuperare de 2 ani este sub pragul de 2,5 ani stabilit de firmă, iar ROI-ul de 50% pe 3 ani arată o rentabilitate solidă a investiției.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al unui Business Case într-un proiect?",
+    "choices": [
+     "Să numească managerul de proiect și să autorizeze formal începerea lucrărilor",
+     "Să justifice, cu argumente și cifre, de ce merită făcută investiția în proiect",
+     "Să detalieze activitățile proiectului sub formă de WBS",
+     "Să stabilească echipa de proiect și rolurile acesteia"
+    ],
+    "answer": 1,
+    "explain": "Business Case-ul răspunde la întrebarea \"de ce facem acest proiect?\", demonstrând că valoarea generată justifică investiția. Autorizarea formală și numirea managerului de proiect se fac prin Project Charter, iar WBS-ul și echipa de proiect sunt elaborate în etape ulterioare de planificare.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O investiție de 100.000 lei generează un beneficiu net de 25.000 lei/an. Care este perioada de recuperare (payback period)?",
+    "choices": [
+     "1 an",
+     "2 ani",
+     "4 ani",
+     "25 ani"
+    ],
+    "answer": 2,
+    "explain": "Payback Period = Costul investiției / Beneficiul net anual = 100.000 / 25.000 = 4 ani.",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Business Case?",
+    "back": "Documentul care justifică, prin argumente și cifre, de ce merită realizată investiția într-un proiect — răspunde la întrebarea \"de ce facem acest proiect?\" și precedă Project Charter-ul.",
+    "concept_key": "business-case-definitie",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula ROI (Return on Investment)?",
+    "back": "ROI = (Beneficii nete − Costuri) / Costuri × 100. Exprimă rentabilitatea investiției ca procent.",
+    "concept_key": "indicatori-financiari-roi",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula perioadei de recuperare (Payback Period)?",
+    "back": "Payback Period = Costul investiției / Beneficiul net anual. Arată în câți ani se recuperează investiția inițială.",
+    "concept_key": "indicatori-financiari-roi",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce trebuie inclusă mereu varianta \"a nu face nimic\" în analiza alternativelor unui Business Case?",
+    "back": "Pentru că oferă un punct de referință care arată costul real al inacțiunii și permite compararea corectă a celorlalte alternative.",
+    "concept_key": "componente-business-case",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce indicator financiar ține cont de faptul că banii viitori au o valoare mai mică decât banii de azi?",
+    "back": "NPV (Valoarea Actualizată Netă) — actualizează fluxurile viitoare de numerar folosind o rată de discount și le însumează cu investiția inițială.",
+    "concept_key": "indicatori-financiari-roi",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu trebuie luată o decizie de proiect exclusiv pe baza ROI-ului?",
+    "back": "Pentru că ROI-ul nu captează riscurile, beneficiile necuantificabile sau alinierea strategică pe termen lung — un ROI mare pe termen scurt poate ascunde dezavantaje strategice.",
+    "concept_key": "componente-business-case",
+    "blockId": "cmjjuxvs9004yumkpg6phc7dg-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1442,
+   "flashcards": 6
+  }
+ }
+}

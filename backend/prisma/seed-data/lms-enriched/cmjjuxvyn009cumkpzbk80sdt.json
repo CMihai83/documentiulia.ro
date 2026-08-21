@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvyn009cumkpzbk80sdt",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Predictive",
+ "lesson": "Risk Management",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Risk Management\n\n## Managementul riscurilor în PMBOK 7 și ECO\n\nÎn PMBOK 6, Risk Management era o arie de cunoștințe separată, cu 7 procese distincte (Plan, Identify, Perform Qualitative Analysis, Perform Quantitative Analysis, Plan Responses, Implement Responses, Monitor Risks). PMBOK 7 mută accentul de la procese la principii și domenii de performanță: riscul este tratat în cadrul **domeniului de performanță Uncertainty (Incertitudine)**, alături de teme conexe precum complexitatea, ambiguitatea și volatilitatea mediului de proiect.\n\nPentru examenul PMP, ambele perspective contează: ECO (Examination Content Outline) testează atât conceptele PMBOK 7 (gândire adaptivă la incertitudine), cât și mecanica practică a proceselor clasice de risc, care rămân instrumentul operațional folosit în majoritatea proiectelor predictive din România (implementări ERP, construcții, IT).\n\n**Definiție:** un risc este un eveniment sau o condiție incertă care, dacă se produce, are un efect pozitiv sau negativ asupra a cel puțin unui obiectiv al proiectului (scop, cost, timp, calitate). Riscurile cu efect negativ se numesc **amenințări (threats)**, cele cu efect pozitiv sunt **oportunități (opportunities)**. O greșeală frecventă la examen este să tratezi riscul exclusiv ca pe ceva negativ — PMP cere să gestionezi simetric ambele categorii.\n\nManagementul riscurilor nu este o activitate punctuală, ci un ciclu continuu, repetat pe toată durata proiectului: identifici, analizezi, răspunzi, monitorizezi, apoi reidentifici — pentru că apar riscuri noi și cele vechi se schimbă.\n\n## Planificarea managementului riscurilor și identificarea riscurilor\n\n**Plan Risk Management** stabilește regulile jocului: cine e responsabil, ce metodologie se folosește, cum se definesc scalele de probabilitate și impact, cât de des se revizuiește registrul de riscuri și ce toleranță la risc are organizația. Rezultatul principal este **planul de management al riscurilor**, un document de guvernanță, nu o listă de riscuri.\n\n**Identify Risks** este procesul iterativ prin care riscurile individuale (și riscul general al proiectului) sunt identificate și documentate. Tehnicile principale pe care trebuie să le recunoști la examen:\n\n- **Brainstorming și interviuri cu experți** — colectare rapidă de idei de la echipă și stakeholderi.\n- **Tehnica Delphi** — chestionare anonime, iterative, aplicate unui grup de experți, pentru a evita influența de grup (\"groupthink\").\n- **Analiza SWOT** — identifică riscuri pornind de la punctele forte/slabe interne și oportunitățile/amenințările externe ale proiectului.\n- **Analiza asumpțiilor și constrângerilor** — verifică validitatea premiselor din carta proiectului; o asumpție greșită devine automat sursă de risc.\n- **Liste de verificare (checklists)** — bazate pe riscuri identificate în proiecte similare anterioare (ex. registrul de lecții învățate de la o implementare ERP precedentă).\n- **Analiza documentelor de proiect** — cerințe, estimări, contracte, planuri de lucru revizuite critic.\n\nRezultatul central al identificării este **registrul de riscuri (risk register)**, care conține minimum: ID risc, descriere, categorie, cauză, proprietar (risk owner), probabilitate, impact, strategie de răspuns și status curent. Registrul de riscuri se actualizează pe tot parcursul proiectului — nu este un document static creat o singură dată la inițiere.\n\n## Analiza calitativă și cantitativă a riscurilor\n\n**Analiza calitativă (Perform Qualitative Risk Analysis)** prioritizează riscurile rapid, pe bază de probabilitate și impact estimate subiectiv (de obicei pe scale de la 1 la 5 sau Scăzut/Mediu/Ridicat). Instrumentul central este **matricea probabilitate-impact**: fiecare risc primește un scor prin înmulțirea probabilității cu impactul, iar riscurile cu scor mare intră în zona roșie și primesc atenție prioritară. Analiza calitativă este rapidă, ieftină și se face în aproape orice proiect, indiferent de dimensiune.\n\n**Analiza cantitativă (Perform Quantitative Risk Analysis)** este opțională și se aplică de obicei doar proiectelor mari, complexe sau cu buget critic, unde impactul financiar al riscurilor trebuie exprimat în cifre concrete. Tehnicile cheie:\n\n- **Expected Monetary Value (EMV)** — valoarea așteptată a unui risc = probabilitate × impact monetar. EMV se folosește pentru a calcula rezerva de contingență a proiectului.\n- **Arborele decizional (decision tree)** — modelează opțiuni alternative de decizie, fiecare cu ramuri de probabilitate și rezultat monetar, pentru a alege varianta cu EMV cea mai favorabilă.\n- **Simularea Monte Carlo** — rulează mii de iterații ale modelului de cost sau durată a proiectului, atribuind aleator valori din distribuțiile de probabilitate ale fiecărei activități/risc, pentru a produce o curbă de probabilitate cumulată (ex. \"există 80% șanse ca proiectul să coste sub 950.000 lei\").\n- **Analiza de sensibilitate (tornado diagram)** — arată ce variabile au cel mai mare impact asupra rezultatului final al proiectului, ordonate descrescător.\n\nPentru examen, reține diferența esențială: calitativă = rapidă, subiectivă, prioritizare; cantitativă = numerică, riguroasă, folosită pentru decizii financiare majore și pentru stabilirea rezervelor de contingență și management.\n\n## Planificarea, implementarea și monitorizarea răspunsurilor la riscuri\n\n**Plan Risk Responses** transformă analiza în acțiune. PMP cere să cunoști cinci strategii pentru amenințări și cinci pentru oportunități — sunt aproape simetrice, dar cu sens opus:\n\n**Pentru amenințări (threats):**\n- **Evitare (avoid)** — elimini cauza riscului, de exemplu renunți la o cerință tehnică riscantă sau schimbi furnizorul.\n- **Atenuare (mitigate)** — reduci probabilitatea sau impactul, de exemplu faci teste suplimentare de migrare a datelor înainte de go-live ERP.\n- **Transfer** — muți impactul financiar către un terț, de exemplu printr-o asigurare sau o clauză contractuală de penalizare a furnizorului.\n- **Acceptare** — nu iei nicio acțiune specială; poate fi acceptare pasivă (doar constitui rezervă) sau activă (ai un plan de contingență pregătit).\n- **Escaladare** — riscul depășește autoritatea managerului de proiect și este transmis la nivel de program/portofoliu/organizație.\n\n**Pentru oportunități:**\n- **Exploatare (exploit)** — te asiguri că oportunitatea se materializează sigur, de exemplu aloci cei mai buni consultanți pentru a termina implementarea înainte de termen.\n- **Îmbunătățire (enhance)** — crești probabilitatea sau impactul pozitiv.\n- **Împărțire (share)** — te asociezi cu un terț mai capabil să valorifice oportunitatea (ex. parteneriat cu un integrator local).\n- **Acceptare** — profiți dacă apare, fără acțiune activă.\n- **Escaladare** — oportunitatea depășește nivelul de decizie al proiectului.\n\n**Implement Risk Responses** este procesul (adăugat explicit ca proces distinct în PMBOK 6, subliniat și mai mult în PMBOK 7 prin accentul pe execuție disciplinată) prin care planurile de răspuns aprobate sunt efectiv puse în practică — mulți manageri de proiect planifică bine, dar uită să execute răspunsurile la momentul potrivit.\n\n**Monitor Risks** este activitatea continuă de urmărire a riscurilor identificate, identificare de riscuri noi și evaluare a eficienței răspunsurilor, tipic realizată prin audituri de risc și revizuiri periodice ale registrului de riscuri în ședințele de status.\n\n## Exemplu: Calculul EMV pentru un risc de proiect ERP\nO firmă SRL din București implementează un sistem ERP pentru divizia de logistică. Echipa de proiect identifică un risc: **întârzierea livrării serverelor hardware** de către furnizor, care ar genera penalizări contractuale și costuri suplimentare de 50.000 lei. Echipa estimează probabilitatea acestui risc la 30%.\n\n**EMV = Probabilitate × Impact = 0,30 × (-50.000 lei) = -15.000 lei**\n\nÎn paralel, aceeași echipă identifică o oportunitate: dacă negociază cu succes un discount de volum la licențele software, economisește 20.000 lei. Probabilitatea de reușită estimată este 40%.\n\n**EMV = 0,40 × (+20.000 lei) = +8.000 lei**\n\n**Rezerva de contingență** a proiectului se calculează însumând EMV-urile tuturor riscurilor individuale identificate: -15.000 + 8.000 = **-7.000 lei net**, ceea ce înseamnă că managerul de proiect ar trebui să propună sponsorului o rezervă de contingență de minimum 7.000 lei, alocată explicit în bugetul proiectului, nu \"ascunsă\" în estimările activităților.\n\n## Exemplu: Simularea Monte Carlo pentru estimarea costului final\nContinuând proiectul ERP, managerul de proiect vrea un răspuns mai riguros decât o estimare punctuală de cost. În loc de o singură cifră (\"proiectul costă 900.000 lei\"), fiecare activitate din bugetul proiectului primește o **distribuție de probabilitate** (de exemplu triunghiulară: cost optimist 850.000 lei, cost cel mai probabil 900.000 lei, cost pesimist 1.000.000 lei).\n\nUn software de simulare rulează, de exemplu, 10.000 de iterații, generând de fiecare dată o valoare aleatorie pentru fiecare activitate (respectând distribuția ei) și însumând costul total al proiectului. Rezultatul nu este o cifră, ci o **curbă de probabilitate cumulată (S-curve)**, care permite afirmații de tipul: \"există o probabilitate de 80% ca proiectul să se încadreze sub 960.000 lei\" sau \"probabilitatea de a termina sub bugetul inițial de 900.000 lei este de doar 35%\".\n\nAceastă informație este mult mai utilă pentru sponsor decât o estimare punctuală, pentru că arată explicit nivelul de risc financiar asumat și susține decizia privind mărimea rezervei de management.\n\n⚠ Atenție la o capcană clasică de examen: nu confunda **rezerva de contingență** (calculată pe baza riscurilor cunoscute, identificate — folosind EMV — și controlată de managerul de proiect) cu **rezerva de management** (o sumă suplimentară pentru riscuri necunoscute, \"unknown-unknowns\", controlată de sponsor/organizație și eliberată doar cu aprobare formală de schimbare a bugetului de bază). PMP testează frecvent această distincție.\n\n## Exercițiu\nO firmă evaluează riscul de migrare a datelor la go-live-ul unui sistem ERP: probabilitatea de eșec parțial al migrării este 30%, iar impactul financiar (retestare, ore suplimentare, penalizări) este de -50.000 lei.\n\nEchipa propune o strategie de **atenuare**: rulează o migrare de test (dry-run) cu o săptămână înainte de go-live, la un cost cert de 5.000 lei, care reduce probabilitatea de eșec de la 30% la 10%.\n\n**Întrebare:** Calculează EMV-ul înainte și după aplicarea strategiei de atenuare și decide dacă atenuarea merită implementată din punct de vedere financiar.\n\n**Soluție:** **Fără atenuare:**\nEMV = 0,30 × (-50.000 lei) = **-15.000 lei** (cost așteptat)\n\n**Cu atenuare:**\nCost total așteptat = cost cert al acțiunii de atenuare + EMV-ul riscului rezidual\n= -5.000 lei + [0,10 × (-50.000 lei)]\n= -5.000 lei + (-5.000 lei)\n= **-10.000 lei**\n\n**Concluzie:** costul așteptat scade de la -15.000 lei la -10.000 lei, deci atenuarea generează o economie așteptată de 5.000 lei. Strategia merită implementată — este mai ieftin să previi parțial riscul decât să îl accepți integral.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "risk-management-uncertainty-domain",
+    "md": "## Managementul riscurilor în PMBOK 7 și ECO\n\nÎn PMBOK 6, Risk Management era o arie de cunoștințe separată, cu 7 procese distincte (Plan, Identify, Perform Qualitative Analysis, Perform Quantitative Analysis, Plan Responses, Implement Responses, Monitor Risks). PMBOK 7 mută accentul de la procese la principii și domenii de performanță: riscul este tratat în cadrul **domeniului de performanță Uncertainty (Incertitudine)**, alături de teme conexe precum complexitatea, ambiguitatea și volatilitatea mediului de proiect.\n\nPentru examenul PMP, ambele perspective contează: ECO (Examination Content Outline) testează atât conceptele PMBOK 7 (gândire adaptivă la incertitudine), cât și mecanica practică a proceselor clasice de risc, care rămân instrumentul operațional folosit în majoritatea proiectelor predictive din România (implementări ERP, construcții, IT).\n\n**Definiție:** un risc este un eveniment sau o condiție incertă care, dacă se produce, are un efect pozitiv sau negativ asupra a cel puțin unui obiectiv al proiectului (scop, cost, timp, calitate). Riscurile cu efect negativ se numesc **amenințări (threats)**, cele cu efect pozitiv sunt **oportunități (opportunities)**. O greșeală frecventă la examen este să tratezi riscul exclusiv ca pe ceva negativ — PMP cere să gestionezi simetric ambele categorii.\n\nManagementul riscurilor nu este o activitate punctuală, ci un ciclu continuu, repetat pe toată durata proiectului: identifici, analizezi, răspunzi, monitorizezi, apoi reidentifici — pentru că apar riscuri noi și cele vechi se schimbă.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "plan-risk-management-identify-risks",
+    "md": "## Planificarea managementului riscurilor și identificarea riscurilor\n\n**Plan Risk Management** stabilește regulile jocului: cine e responsabil, ce metodologie se folosește, cum se definesc scalele de probabilitate și impact, cât de des se revizuiește registrul de riscuri și ce toleranță la risc are organizația. Rezultatul principal este **planul de management al riscurilor**, un document de guvernanță, nu o listă de riscuri.\n\n**Identify Risks** este procesul iterativ prin care riscurile individuale (și riscul general al proiectului) sunt identificate și documentate. Tehnicile principale pe care trebuie să le recunoști la examen:\n\n- **Brainstorming și interviuri cu experți** — colectare rapidă de idei de la echipă și stakeholderi.\n- **Tehnica Delphi** — chestionare anonime, iterative, aplicate unui grup de experți, pentru a evita influența de grup (\"groupthink\").\n- **Analiza SWOT** — identifică riscuri pornind de la punctele forte/slabe interne și oportunitățile/amenințările externe ale proiectului.\n- **Analiza asumpțiilor și constrângerilor** — verifică validitatea premiselor din carta proiectului; o asumpție greșită devine automat sursă de risc.\n- **Liste de verificare (checklists)** — bazate pe riscuri identificate în proiecte similare anterioare (ex. registrul de lecții învățate de la o implementare ERP precedentă).\n- **Analiza documentelor de proiect** — cerințe, estimări, contracte, planuri de lucru revizuite critic.\n\nRezultatul central al identificării este **registrul de riscuri (risk register)**, care conține minimum: ID risc, descriere, categorie, cauză, proprietar (risk owner), probabilitate, impact, strategie de răspuns și status curent. Registrul de riscuri se actualizează pe tot parcursul proiectului — nu este un document static creat o singură dată la inițiere.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "analiza-calitativa-cantitativa-riscuri",
+    "md": "## Analiza calitativă și cantitativă a riscurilor\n\n**Analiza calitativă (Perform Qualitative Risk Analysis)** prioritizează riscurile rapid, pe bază de probabilitate și impact estimate subiectiv (de obicei pe scale de la 1 la 5 sau Scăzut/Mediu/Ridicat). Instrumentul central este **matricea probabilitate-impact**: fiecare risc primește un scor prin înmulțirea probabilității cu impactul, iar riscurile cu scor mare intră în zona roșie și primesc atenție prioritară. Analiza calitativă este rapidă, ieftină și se face în aproape orice proiect, indiferent de dimensiune.\n\n**Analiza cantitativă (Perform Quantitative Risk Analysis)** este opțională și se aplică de obicei doar proiectelor mari, complexe sau cu buget critic, unde impactul financiar al riscurilor trebuie exprimat în cifre concrete. Tehnicile cheie:\n\n- **Expected Monetary Value (EMV)** — valoarea așteptată a unui risc = probabilitate × impact monetar. EMV se folosește pentru a calcula rezerva de contingență a proiectului.\n- **Arborele decizional (decision tree)** — modelează opțiuni alternative de decizie, fiecare cu ramuri de probabilitate și rezultat monetar, pentru a alege varianta cu EMV cea mai favorabilă.\n- **Simularea Monte Carlo** — rulează mii de iterații ale modelului de cost sau durată a proiectului, atribuind aleator valori din distribuțiile de probabilitate ale fiecărei activități/risc, pentru a produce o curbă de probabilitate cumulată (ex. \"există 80% șanse ca proiectul să coste sub 950.000 lei\").\n- **Analiza de sensibilitate (tornado diagram)** — arată ce variabile au cel mai mare impact asupra rezultatului final al proiectului, ordonate descrescător.\n\nPentru examen, reține diferența esențială: calitativă = rapidă, subiectivă, prioritizare; cantitativă = numerică, riguroasă, folosită pentru decizii financiare majore și pentru stabilirea rezervelor de contingență și management.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "strategii-raspuns-riscuri",
+    "md": "## Planificarea, implementarea și monitorizarea răspunsurilor la riscuri\n\n**Plan Risk Responses** transformă analiza în acțiune. PMP cere să cunoști cinci strategii pentru amenințări și cinci pentru oportunități — sunt aproape simetrice, dar cu sens opus:\n\n**Pentru amenințări (threats):**\n- **Evitare (avoid)** — elimini cauza riscului, de exemplu renunți la o cerință tehnică riscantă sau schimbi furnizorul.\n- **Atenuare (mitigate)** — reduci probabilitatea sau impactul, de exemplu faci teste suplimentare de migrare a datelor înainte de go-live ERP.\n- **Transfer** — muți impactul financiar către un terț, de exemplu printr-o asigurare sau o clauză contractuală de penalizare a furnizorului.\n- **Acceptare** — nu iei nicio acțiune specială; poate fi acceptare pasivă (doar constitui rezervă) sau activă (ai un plan de contingență pregătit).\n- **Escaladare** — riscul depășește autoritatea managerului de proiect și este transmis la nivel de program/portofoliu/organizație.\n\n**Pentru oportunități:**\n- **Exploatare (exploit)** — te asiguri că oportunitatea se materializează sigur, de exemplu aloci cei mai buni consultanți pentru a termina implementarea înainte de termen.\n- **Îmbunătățire (enhance)** — crești probabilitatea sau impactul pozitiv.\n- **Împărțire (share)** — te asociezi cu un terț mai capabil să valorifice oportunitatea (ex. parteneriat cu un integrator local).\n- **Acceptare** — profiți dacă apare, fără acțiune activă.\n- **Escaladare** — oportunitatea depășește nivelul de decizie al proiectului.\n\n**Implement Risk Responses** este procesul (adăugat explicit ca proces distinct în PMBOK 6, subliniat și mai mult în PMBOK 7 prin accentul pe execuție disciplinată) prin care planurile de răspuns aprobate sunt efectiv puse în practică — mulți manageri de proiect planifică bine, dar uită să execute răspunsurile la momentul potrivit.\n\n**Monitor Risks** este activitatea continuă de urmărire a riscurilor identificate, identificare de riscuri noi și evaluare a eficienței răspunsurilor, tipic realizată prin audituri de risc și revizuiri periodice ale registrului de riscuri în ședințele de status.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul EMV pentru un risc de proiect ERP",
+    "concept_key": "emv-expected-monetary-value",
+    "md": "O firmă SRL din București implementează un sistem ERP pentru divizia de logistică. Echipa de proiect identifică un risc: **întârzierea livrării serverelor hardware** de către furnizor, care ar genera penalizări contractuale și costuri suplimentare de 50.000 lei. Echipa estimează probabilitatea acestui risc la 30%.\n\n**EMV = Probabilitate × Impact = 0,30 × (-50.000 lei) = -15.000 lei**\n\nÎn paralel, aceeași echipă identifică o oportunitate: dacă negociază cu succes un discount de volum la licențele software, economisește 20.000 lei. Probabilitatea de reușită estimată este 40%.\n\n**EMV = 0,40 × (+20.000 lei) = +8.000 lei**\n\n**Rezerva de contingență** a proiectului se calculează însumând EMV-urile tuturor riscurilor individuale identificate: -15.000 + 8.000 = **-7.000 lei net**, ceea ce înseamnă că managerul de proiect ar trebui să propună sponsorului o rezervă de contingență de minimum 7.000 lei, alocată explicit în bugetul proiectului, nu \"ascunsă\" în estimările activităților.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b5"
+   },
+   {
+    "type": "example",
+    "title": "Simularea Monte Carlo pentru estimarea costului final",
+    "concept_key": "simulare-monte-carlo",
+    "md": "Continuând proiectul ERP, managerul de proiect vrea un răspuns mai riguros decât o estimare punctuală de cost. În loc de o singură cifră (\"proiectul costă 900.000 lei\"), fiecare activitate din bugetul proiectului primește o **distribuție de probabilitate** (de exemplu triunghiulară: cost optimist 850.000 lei, cost cel mai probabil 900.000 lei, cost pesimist 1.000.000 lei).\n\nUn software de simulare rulează, de exemplu, 10.000 de iterații, generând de fiecare dată o valoare aleatorie pentru fiecare activitate (respectând distribuția ei) și însumând costul total al proiectului. Rezultatul nu este o cifră, ci o **curbă de probabilitate cumulată (S-curve)**, care permite afirmații de tipul: \"există o probabilitate de 80% ca proiectul să se încadreze sub 960.000 lei\" sau \"probabilitatea de a termina sub bugetul inițial de 900.000 lei este de doar 35%\".\n\nAceastă informație este mult mai utilă pentru sponsor decât o estimare punctuală, pentru că arată explicit nivelul de risc financiar asumat și susține decizia privind mărimea rezervei de management.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la o capcană clasică de examen: nu confunda **rezerva de contingență** (calculată pe baza riscurilor cunoscute, identificate — folosind EMV — și controlată de managerul de proiect) cu **rezerva de management** (o sumă suplimentară pentru riscuri necunoscute, \"unknown-unknowns\", controlată de sponsor/organizație și eliberată doar cu aprobare formală de schimbare a bugetului de bază). PMP testează frecvent această distincție.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă evaluează riscul de migrare a datelor la go-live-ul unui sistem ERP: probabilitatea de eșec parțial al migrării este 30%, iar impactul financiar (retestare, ore suplimentare, penalizări) este de -50.000 lei.\n\nEchipa propune o strategie de **atenuare**: rulează o migrare de test (dry-run) cu o săptămână înainte de go-live, la un cost cert de 5.000 lei, care reduce probabilitatea de eșec de la 30% la 10%.\n\n**Întrebare:** Calculează EMV-ul înainte și după aplicarea strategiei de atenuare și decide dacă atenuarea merită implementată din punct de vedere financiar.",
+    "solution_md": "**Fără atenuare:**\nEMV = 0,30 × (-50.000 lei) = **-15.000 lei** (cost așteptat)\n\n**Cu atenuare:**\nCost total așteptat = cost cert al acțiunii de atenuare + EMV-ul riscului rezidual\n= -5.000 lei + [0,10 × (-50.000 lei)]\n= -5.000 lei + (-5.000 lei)\n= **-10.000 lei**\n\n**Concluzie:** costul așteptat scade de la -15.000 lei la -10.000 lei, deci atenuarea generează o economie așteptată de 5.000 lei. Strategia merită implementată — este mai ieftin să previi parțial riscul decât să îl accepți integral.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un risc are o probabilitate de 25% și un impact estimat de -40.000 lei dacă se materializează. Care este EMV (Expected Monetary Value) al acestui risc?",
+    "choices": [
+     "-10.000 lei",
+     "-40.000 lei",
+     "-10 lei",
+     "+10.000 lei"
+    ],
+    "answer": 0,
+    "explain": "EMV = Probabilitate × Impact = 0,25 × (-40.000 lei) = -10.000 lei. Acest EMV se folosește pentru a calcula rezerva de contingență a proiectului.",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Managerul de proiect decide să nu întreprindă nicio acțiune specială pentru un risc minor și doar constituie o rezervă de contingență, urmând să reacționeze dacă riscul se materializează. Ce strategie de răspuns aplică?",
+    "choices": [
+     "Evitare (avoid)",
+     "Acceptare (accept)",
+     "Transfer (transfer)",
+     "Atenuare (mitigate)"
+    ],
+    "answer": 1,
+    "explain": "Acceptarea este strategia potrivită pentru riscuri cu impact scăzut sau când costul altor strategii depășește beneficiul; poate fi pasivă (doar rezervă) sau activă (plan de contingență pregătit).",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează EMV (Expected Monetary Value) al unui risc?",
+    "back": "EMV = Probabilitate × Impact monetar. Se folosește pentru a prioritiza cantitativ riscurile și pentru a calcula rezerva de contingență a proiectului.",
+    "concept_key": "emv-expected-monetary-value",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 strategii de răspuns pentru riscuri negative (threats)?",
+    "back": "Evitare, Atenuare (mitigate), Transfer, Acceptare, Escaladare.",
+    "concept_key": "strategii-raspuns-riscuri-negative",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 strategii de răspuns pentru riscuri pozitive (oportunități)?",
+    "back": "Exploatare, Îmbunătățire (enhance), Împărțire (share), Acceptare, Escaladare.",
+    "concept_key": "strategii-raspuns-oportunitati",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce conține, la minimum, un registru de riscuri (risk register)?",
+    "back": "ID risc, descriere, categorie, cauză, proprietar (risk owner), probabilitate, impact, strategie de răspuns și status curent. Se actualizează continuu pe tot parcursul proiectului.",
+    "concept_key": "risk-register",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este simularea Monte Carlo în managementul riscului de proiect?",
+    "back": "O tehnică cantitativă care rulează mii de iterații cu valori aleatorii, generate din distribuțiile de probabilitate ale activităților, pentru a produce o curbă de probabilitate cumulată a costului sau duratei totale a proiectului.",
+    "concept_key": "simulare-monte-carlo",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre rezerva de contingență și rezerva de management?",
+    "back": "Rezerva de contingență acoperă riscuri cunoscute (calculate prin EMV) și e controlată de managerul de proiect. Rezerva de management acoperă riscuri necunoscute și e controlată de sponsor, eliberată doar prin control formal de schimbare.",
+    "concept_key": "rezerva-contingenta-vs-management",
+    "blockId": "cmjjuxvyn009cumkpzbk80sdt-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1533,
+   "flashcards": 6
+  }
+ }
+}

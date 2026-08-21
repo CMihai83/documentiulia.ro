@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvxq008qumkpdj9zb0em",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "People Domain",
+ "lesson": "Mentoring și Coaching",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Mentoring și Coaching\n\n## Mentoring și coaching în People Domain\n\nÎn PMBOK 7, domeniul de performanță **People** cere managerului de proiect să dezvolte echipa nu doar prin alocarea sarcinilor, ci prin creșterea reală a competențelor oamenilor. Două instrumente cheie, adesea confundate, sunt **mentoring-ul** și **coaching-ul**. Deși ambele presupun o relație de sprijin între o persoană mai experimentată și una care se dezvoltă, mecanismele și obiectivele lor diferă fundamental.\n\n**Coaching-ul** este orientat spre performanță, pe termen scurt și mediu, și se concentrează pe o problemă sau un obiectiv concret (\"cum livrez la timp acest pachet de lucru?\"). Coach-ul nu trebuie neapărat să fie expert în domeniul tehnic al persoanei coachate — rolul lui este să pună întrebări care ajută persoana să-și găsească singură soluțiile, nu să ofere răspunsuri. Este o abordare **non-directivă**.\n\n**Mentoring-ul** este o relație pe termen lung, orientată spre dezvoltarea carierei și transferul de expertiză. Mentorul *este* expert în domeniu (de exemplu, un PM cu 10 ani de experiență în implementări ERP) și împărtășește activ cunoștințe, experiențe și rețea de contacte cu mentee-ul. Este o abordare mai **directivă**, bazată pe modelare și îndrumare, nu doar pe întrebări.\n\nÎn practică, un manager de proiect eficient folosește ambele: coaching zilnic pentru rezolvarea blocajelor curente ale echipei și mentoring structurat pentru dezvoltarea pe termen lung a membrilor-cheie ai echipei.\n\n## Modelul GROW — cea mai folosită tehnică de coaching\n\nCel mai răspândit cadru de coaching folosit de managerii de proiect este modelul **GROW**, dezvoltat inițial în contextul coaching-ului executiv, dar perfect aplicabil în proiecte:\n\n- **G — Goal (Obiectiv):** Ce vrea persoana să obțină? \"Ce înseamnă succes pentru tine în acest sprint?\"\n- **R — Reality (Realitate):** Care e situația actuală? \"Unde ești acum față de acest obiectiv? Ce ai încercat deja?\"\n- **O — Options (Opțiuni):** Ce variante există? \"Ce ai putea face diferit? Ce alte opțiuni mai sunt?\"\n- **W — Will / Way forward (Voință/Plan de acțiune):** Ce se angajează persoana să facă? \"Care e primul pas concret și până când îl faci?\"\n\nCheia modelului GROW este disciplina de a **întreba, nu de a spune**. Un manager de proiect obișnuit cu rolul de \"expert care rezolvă probleme\" trebuie să reziste tentației de a oferi direct soluția — pentru că o soluție descoperită de persoana coachată se însușește mult mai bine și crește autonomia echipei pe termen lung. Sesiunile de coaching eficiente durează de obicei 15-30 de minute și se pot desfășura săptămânal sau ori de câte ori apare un blocaj de performanță.\n\n## Dezvoltarea competențelor echipei de proiect\n\nUn manager de proiect responsabil cu People Domain trebuie să identifice sistematic lacunele de competențe ale echipei și să construiască un plan de dezvoltare, nu doar să reacționeze ad-hoc. Instrumente practice:\n\n1. **Matricea de competențe** — un tabel cu membrii echipei pe rânduri și competențele necesare proiectului (ex. gestiune de risc, negociere cu furnizori, configurare module ERP) pe coloane, evaluate pe o scală (ex. 1-4). Evidențiază rapid unde sunt golurile critice.\n2. **Plan individual de dezvoltare (IDP — Individual Development Plan)** — document scurt, agreat între PM și membru, cu 2-3 obiective de dezvoltare, acțiuni concrete și termene.\n3. **Regula 70-20-10** — un reper des folosit în dezvoltarea competențelor: aproximativ 70% din învățare vine din experiența directă la locul de muncă (sarcini provocatoare, \"stretch assignments\"), 20% din interacțiunea cu alții (mentoring, coaching, feedback), și doar 10% din training formal (cursuri, certificări). Concluzia practică pentru un PM: cel mai eficient mod de a dezvolta echipa este să aloce sarcini ușor peste nivelul curent de confort al fiecăruia, însoțite de sprijin prin coaching.\n4. **Pairing/shadowing** — un membru junior lucrează alături de unul senior pe aceeași activitate, învățând prin observație directă și practică ghidată.\n\nAceste instrumente transformă dezvoltarea echipei dintr-o activitate izolată (un curs anual) într-un proces continuu, integrat în activitatea zilnică a proiectului.\n\n## Knowledge transfer (transferul de cunoștințe)\n\nÎn proiecte, cea mai mare pierdere de valoare apare când o persoană cu expertiză critică (tehnică, de proces sau relațională cu un client) părăsește echipa fără ca acea cunoaștere să fi fost transferată. Managerul de proiect trebuie să trateze **knowledge transfer** ca pe un risc de proiect, nu ca pe o formalitate de final.\n\nTehnici eficiente de transfer de cunoștințe:\n\n- **Shadowing structurat** — persoana care preia rolul urmărește activ persoana care pleacă, pe o perioadă definită (ex. 2-4 săptămâni), cu o listă de activități-cheie de acoperit.\n- **Documentare \"just enough\"** — proceduri, decizii-cheie și \"lecții învățate\" scrise concis, nu documentație exhaustivă care nu va fi citită niciodată.\n- **Sesiuni de \"lessons learned\"** — organizate la finalul fiecărei faze majore, nu doar la închiderea proiectului, pentru a capta cunoștințele cât sunt încă proaspete.\n- **Comunități de practică** — grupuri informale (ex. \"comunitatea PM-ilor de implementare ERP\" dintr-o companie) unde experiența circulă orizontal, nu doar de sus în jos.\n- **Mentoring formal de tranziție** — persoana care pleacă devine, pentru o perioadă scurtă, mentor oficial al succesorului, cu obiective clare de transfer.\n\nCombinate, mentoring-ul, coaching-ul și knowledge transfer-ul formează un sistem coerent de dezvoltare a capitalului uman al proiectului — element esențial evaluat în ECO (Examination Content Outline) la tema \"Support team performance\".\n\n## Exemplu: Mentoring într-un proiect de implementare ERP\n**Context:** O firmă SRL din București implementează un sistem ERP pentru gestiunea stocurilor și facturării. Ana este manager de proiect senior, cu 8 ani de experiență. Bogdan este PM junior, la primul proiect de implementare software, responsabil cu modulul de facturare.\n\n**Relația de mentoring:**\n\n- Ana și Bogdan se întâlnesc o dată pe lună, 60 de minute, în afara ședințelor de proiect operaționale.\n- Ana îi explică lui Bogdan cum a gestionat ea, în proiecte anterioare, rezistența la schimbare a departamentului financiar-contabil — o experiență pe care Bogdan nu o are.\n- Ana îl introduce pe Bogdan în rețeaua ei de contacte: un consultant fiscal care poate confirma rapid cerințe de conformitate pentru modulul de facturare.\n- Discuțiile ating și obiective de carieră: Bogdan vrea să obțină certificarea PMP în 12 luni, iar Ana îl ajută să-și structureze un plan de studiu realist.\n\nAceasta este mentoring clasic: relație de lungă durată, orientată spre transfer de expertiză și dezvoltare de carieră, inițiată de o persoană cu mai multă experiență în domeniu.\n\n## Exemplu: Sesiune de coaching folosind modelul GROW\n**Context:** Maria, membră a echipei de proiect, întârzie constant livrarea rapoartelor de testare. Managerul de proiect, Radu, organizează o sesiune de coaching de 20 de minute, nu o discuție disciplinară.\n\n- **Goal:** Radu întreabă: \"Ce ai vrea să se schimbe la modul în care livrezi rapoartele de testare?\" Maria: \"Aș vrea să le pot preda la termen, fără să lucrez peste program vinerea.\"\n- **Reality:** \"Ce se întâmplă acum, concret, în cursul săptămânii?\" Maria realizează, explicând, că amână scrierea raportului până joi seara, deși testele se termină marți.\n- **Options:** \"Ce variante ai pentru a distribui munca altfel în săptămână?\" Maria propune să scrie raportul incremental, în fiecare zi, pe măsură ce rulează teste, în loc să-l lase pentru final.\n- **Will:** \"Care e primul pas, de mâine?\" Maria se angajează să aloce 30 de minute zilnic, de marți, pentru actualizarea raportului, și să comunice lui Radu miercuri dacă întâmpină blocaje.\n\nRadu nu a oferit nicio soluție — a ghidat-o pe Maria să-și găsească propriul plan, ceea ce crește șansele ca ea să-l și respecte, pentru că este al ei, nu impus.\n\n⚠ **Capcană frecventă la examenul PMP:** întrebările testează des diferența exactă coaching vs. mentoring vs. directing vs. facilitating. Reține regula rapidă: coaching = întrebări, pe termen scurt, despre performanță curentă; mentoring = expertiză împărtășită, pe termen lung, despre dezvoltare de carieră; directing = manager spune exact ce trebuie făcut (potrivit doar în situații de criză sau cu personal foarte junior); facilitating = manager ajută grupul să ajungă singur la o decizie, fără să impună soluția lui.\n\n## Exercițiu\nPentru fiecare situație de mai jos, precizează dacă managerul de proiect ar trebui să folosească **mentoring** sau **coaching** și motivează pe scurt alegerea:\n\n1. Un membru al echipei are dificultăți în a-și prioritiza sarcinile în sprintul curent.\n2. Un analist junior vrea sfaturi despre traiectoria lui de carieră pe termen de 3-5 ani și despre ce certificări să urmeze.\n3. Un dezvoltator nu reușește să estimeze corect durata unei sarcini tehnice specifice, deși are experiența necesară.\n4. Un coordonator de proiect nou-venit în companie vrea să înțeleagă cultura organizațională și rețeaua informală de decizie din firmă.\n\n**Soluție:** 1. **Coaching.** Este o problemă de performanță curentă, pe termen scurt, care se rezolvă mai bine ajutând persoana să-și găsească singură un sistem de prioritizare (ex. model GROW), nu oferindu-i direct un plan gata făcut.\n\n2. **Mentoring.** Este o discuție despre dezvoltare de carieră pe termen lung, care necesită expertiza și experiența acumulată a unui mentor, nu doar întrebări deschise.\n\n3. **Coaching.** Persoana are deja competența tehnică — problema e de proces/reflecție (de ce estimările sunt greșite, ce factori uită să ia în calcul), ceea ce se rezolvă cel mai eficient prin întrebări ghidate, nu prin transfer de expertiză tehnică nouă.\n\n4. **Mentoring.** Cunoașterea culturii organizaționale și a rețelei informale de decizie este un tip de cunoaștere tacită, acumulată în timp, pe care doar cineva cu vechime și experiență în companie (mentor) o poate transmite eficient.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "mentoring-vs-coaching-diferente",
+    "md": "## Mentoring și coaching în People Domain\n\nÎn PMBOK 7, domeniul de performanță **People** cere managerului de proiect să dezvolte echipa nu doar prin alocarea sarcinilor, ci prin creșterea reală a competențelor oamenilor. Două instrumente cheie, adesea confundate, sunt **mentoring-ul** și **coaching-ul**. Deși ambele presupun o relație de sprijin între o persoană mai experimentată și una care se dezvoltă, mecanismele și obiectivele lor diferă fundamental.\n\n**Coaching-ul** este orientat spre performanță, pe termen scurt și mediu, și se concentrează pe o problemă sau un obiectiv concret (\"cum livrez la timp acest pachet de lucru?\"). Coach-ul nu trebuie neapărat să fie expert în domeniul tehnic al persoanei coachate — rolul lui este să pună întrebări care ajută persoana să-și găsească singură soluțiile, nu să ofere răspunsuri. Este o abordare **non-directivă**.\n\n**Mentoring-ul** este o relație pe termen lung, orientată spre dezvoltarea carierei și transferul de expertiză. Mentorul *este* expert în domeniu (de exemplu, un PM cu 10 ani de experiență în implementări ERP) și împărtășește activ cunoștințe, experiențe și rețea de contacte cu mentee-ul. Este o abordare mai **directivă**, bazată pe modelare și îndrumare, nu doar pe întrebări.\n\nÎn practică, un manager de proiect eficient folosește ambele: coaching zilnic pentru rezolvarea blocajelor curente ale echipei și mentoring structurat pentru dezvoltarea pe termen lung a membrilor-cheie ai echipei.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "model-grow-coaching",
+    "md": "## Modelul GROW — cea mai folosită tehnică de coaching\n\nCel mai răspândit cadru de coaching folosit de managerii de proiect este modelul **GROW**, dezvoltat inițial în contextul coaching-ului executiv, dar perfect aplicabil în proiecte:\n\n- **G — Goal (Obiectiv):** Ce vrea persoana să obțină? \"Ce înseamnă succes pentru tine în acest sprint?\"\n- **R — Reality (Realitate):** Care e situația actuală? \"Unde ești acum față de acest obiectiv? Ce ai încercat deja?\"\n- **O — Options (Opțiuni):** Ce variante există? \"Ce ai putea face diferit? Ce alte opțiuni mai sunt?\"\n- **W — Will / Way forward (Voință/Plan de acțiune):** Ce se angajează persoana să facă? \"Care e primul pas concret și până când îl faci?\"\n\nCheia modelului GROW este disciplina de a **întreba, nu de a spune**. Un manager de proiect obișnuit cu rolul de \"expert care rezolvă probleme\" trebuie să reziste tentației de a oferi direct soluția — pentru că o soluție descoperită de persoana coachată se însușește mult mai bine și crește autonomia echipei pe termen lung. Sesiunile de coaching eficiente durează de obicei 15-30 de minute și se pot desfășura săptămânal sau ori de câte ori apare un blocaj de performanță.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dezvoltare-competente-echipa",
+    "md": "## Dezvoltarea competențelor echipei de proiect\n\nUn manager de proiect responsabil cu People Domain trebuie să identifice sistematic lacunele de competențe ale echipei și să construiască un plan de dezvoltare, nu doar să reacționeze ad-hoc. Instrumente practice:\n\n1. **Matricea de competențe** — un tabel cu membrii echipei pe rânduri și competențele necesare proiectului (ex. gestiune de risc, negociere cu furnizori, configurare module ERP) pe coloane, evaluate pe o scală (ex. 1-4). Evidențiază rapid unde sunt golurile critice.\n2. **Plan individual de dezvoltare (IDP — Individual Development Plan)** — document scurt, agreat între PM și membru, cu 2-3 obiective de dezvoltare, acțiuni concrete și termene.\n3. **Regula 70-20-10** — un reper des folosit în dezvoltarea competențelor: aproximativ 70% din învățare vine din experiența directă la locul de muncă (sarcini provocatoare, \"stretch assignments\"), 20% din interacțiunea cu alții (mentoring, coaching, feedback), și doar 10% din training formal (cursuri, certificări). Concluzia practică pentru un PM: cel mai eficient mod de a dezvolta echipa este să aloce sarcini ușor peste nivelul curent de confort al fiecăruia, însoțite de sprijin prin coaching.\n4. **Pairing/shadowing** — un membru junior lucrează alături de unul senior pe aceeași activitate, învățând prin observație directă și practică ghidată.\n\nAceste instrumente transformă dezvoltarea echipei dintr-o activitate izolată (un curs anual) într-un proces continuu, integrat în activitatea zilnică a proiectului.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "knowledge-transfer-tehnici",
+    "md": "## Knowledge transfer (transferul de cunoștințe)\n\nÎn proiecte, cea mai mare pierdere de valoare apare când o persoană cu expertiză critică (tehnică, de proces sau relațională cu un client) părăsește echipa fără ca acea cunoaștere să fi fost transferată. Managerul de proiect trebuie să trateze **knowledge transfer** ca pe un risc de proiect, nu ca pe o formalitate de final.\n\nTehnici eficiente de transfer de cunoștințe:\n\n- **Shadowing structurat** — persoana care preia rolul urmărește activ persoana care pleacă, pe o perioadă definită (ex. 2-4 săptămâni), cu o listă de activități-cheie de acoperit.\n- **Documentare \"just enough\"** — proceduri, decizii-cheie și \"lecții învățate\" scrise concis, nu documentație exhaustivă care nu va fi citită niciodată.\n- **Sesiuni de \"lessons learned\"** — organizate la finalul fiecărei faze majore, nu doar la închiderea proiectului, pentru a capta cunoștințele cât sunt încă proaspete.\n- **Comunități de practică** — grupuri informale (ex. \"comunitatea PM-ilor de implementare ERP\" dintr-o companie) unde experiența circulă orizontal, nu doar de sus în jos.\n- **Mentoring formal de tranziție** — persoana care pleacă devine, pentru o perioadă scurtă, mentor oficial al succesorului, cu obiective clare de transfer.\n\nCombinate, mentoring-ul, coaching-ul și knowledge transfer-ul formează un sistem coerent de dezvoltare a capitalului uman al proiectului — element esențial evaluat în ECO (Examination Content Outline) la tema \"Support team performance\".",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b4"
+   },
+   {
+    "type": "example",
+    "title": "Mentoring într-un proiect de implementare ERP",
+    "concept_key": "mentoring-vs-coaching-diferente",
+    "md": "**Context:** O firmă SRL din București implementează un sistem ERP pentru gestiunea stocurilor și facturării. Ana este manager de proiect senior, cu 8 ani de experiență. Bogdan este PM junior, la primul proiect de implementare software, responsabil cu modulul de facturare.\n\n**Relația de mentoring:**\n\n- Ana și Bogdan se întâlnesc o dată pe lună, 60 de minute, în afara ședințelor de proiect operaționale.\n- Ana îi explică lui Bogdan cum a gestionat ea, în proiecte anterioare, rezistența la schimbare a departamentului financiar-contabil — o experiență pe care Bogdan nu o are.\n- Ana îl introduce pe Bogdan în rețeaua ei de contacte: un consultant fiscal care poate confirma rapid cerințe de conformitate pentru modulul de facturare.\n- Discuțiile ating și obiective de carieră: Bogdan vrea să obțină certificarea PMP în 12 luni, iar Ana îl ajută să-și structureze un plan de studiu realist.\n\nAceasta este mentoring clasic: relație de lungă durată, orientată spre transfer de expertiză și dezvoltare de carieră, inițiată de o persoană cu mai multă experiență în domeniu.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b5"
+   },
+   {
+    "type": "example",
+    "title": "Sesiune de coaching folosind modelul GROW",
+    "concept_key": "model-grow-coaching",
+    "md": "**Context:** Maria, membră a echipei de proiect, întârzie constant livrarea rapoartelor de testare. Managerul de proiect, Radu, organizează o sesiune de coaching de 20 de minute, nu o discuție disciplinară.\n\n- **Goal:** Radu întreabă: \"Ce ai vrea să se schimbe la modul în care livrezi rapoartele de testare?\" Maria: \"Aș vrea să le pot preda la termen, fără să lucrez peste program vinerea.\"\n- **Reality:** \"Ce se întâmplă acum, concret, în cursul săptămânii?\" Maria realizează, explicând, că amână scrierea raportului până joi seara, deși testele se termină marți.\n- **Options:** \"Ce variante ai pentru a distribui munca altfel în săptămână?\" Maria propune să scrie raportul incremental, în fiecare zi, pe măsură ce rulează teste, în loc să-l lase pentru final.\n- **Will:** \"Care e primul pas, de mâine?\" Maria se angajează să aloce 30 de minute zilnic, de marți, pentru actualizarea raportului, și să comunice lui Radu miercuri dacă întâmpină blocaje.\n\nRadu nu a oferit nicio soluție — a ghidat-o pe Maria să-și găsească propriul plan, ceea ce crește șansele ca ea să-l și respecte, pentru că este al ei, nu impus.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Capcană frecventă la examenul PMP:** întrebările testează des diferența exactă coaching vs. mentoring vs. directing vs. facilitating. Reține regula rapidă: coaching = întrebări, pe termen scurt, despre performanță curentă; mentoring = expertiză împărtășită, pe termen lung, despre dezvoltare de carieră; directing = manager spune exact ce trebuie făcut (potrivit doar în situații de criză sau cu personal foarte junior); facilitating = manager ajută grupul să ajungă singur la o decizie, fără să impună soluția lui.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Pentru fiecare situație de mai jos, precizează dacă managerul de proiect ar trebui să folosească **mentoring** sau **coaching** și motivează pe scurt alegerea:\n\n1. Un membru al echipei are dificultăți în a-și prioritiza sarcinile în sprintul curent.\n2. Un analist junior vrea sfaturi despre traiectoria lui de carieră pe termen de 3-5 ani și despre ce certificări să urmeze.\n3. Un dezvoltator nu reușește să estimeze corect durata unei sarcini tehnice specifice, deși are experiența necesară.\n4. Un coordonator de proiect nou-venit în companie vrea să înțeleagă cultura organizațională și rețeaua informală de decizie din firmă.",
+    "solution_md": "1. **Coaching.** Este o problemă de performanță curentă, pe termen scurt, care se rezolvă mai bine ajutând persoana să-și găsească singură un sistem de prioritizare (ex. model GROW), nu oferindu-i direct un plan gata făcut.\n\n2. **Mentoring.** Este o discuție despre dezvoltare de carieră pe termen lung, care necesită expertiza și experiența acumulată a unui mentor, nu doar întrebări deschise.\n\n3. **Coaching.** Persoana are deja competența tehnică — problema e de proces/reflecție (de ce estimările sunt greșite, ce factori uită să ia în calcul), ceea ce se rezolvă cel mai eficient prin întrebări ghidate, nu prin transfer de expertiză tehnică nouă.\n\n4. **Mentoring.** Cunoașterea culturii organizaționale și a rețelei informale de decizie este un tip de cunoaștere tacită, acumulată în timp, pe care doar cineva cu vechime și experiență în companie (mentor) o poate transmite eficient.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ordinea corectă a pașilor în modelul de coaching GROW?",
+    "choices": [
+     "Goal, Reality, Options, Will",
+     "Goal, Options, Reality, Will",
+     "Reality, Goal, Will, Options",
+     "Options, Goal, Reality, Will"
+    ],
+    "answer": 0,
+    "explain": "GROW urmează secvența logică: mai întâi se clarifică obiectivul (Goal), apoi situația actuală (Reality), apoi variantele posibile (Options), și abia la final angajamentul de acțiune (Will/Way forward).",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența cheie dintre coaching și mentoring, conform People Domain din PMBOK 7?",
+    "choices": [
+     "Coaching este pe termen lung și necesită expertiză de domeniu, mentoring este pe termen scurt și non-directiv",
+     "Coaching este pe termen scurt, orientat pe performanță, non-directiv; mentoring este pe termen lung, orientat pe dezvoltarea carierei, bazat pe expertiza mentorului",
+     "Nu există nicio diferență semnificativă, termenii sunt interschimbabili în managementul de proiect",
+     "Coaching se aplică doar echipelor agile, mentoring doar echipelor predictive"
+    ],
+    "answer": 1,
+    "explain": "Coaching-ul se concentrează pe performanța curentă, folosește întrebări (non-directiv) și nu cere ca antrenorul să fie expert în domeniul tehnic. Mentoring-ul e o relație de lungă durată, bazată pe expertiza reală a mentorului, orientată spre dezvoltarea carierei.",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența principală dintre mentoring și coaching?",
+    "back": "Coaching = termen scurt, orientat pe performanța curentă, abordare non-directivă prin întrebări. Mentoring = termen lung, orientat pe dezvoltarea carierei, bazat pe transferul expertizei mentorului.",
+    "concept_key": "mentoring-vs-coaching-diferente",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul GROW în coaching?",
+    "back": "Goal (obiectiv), Reality (realitatea actuală), Options (opțiuni posibile), Will/Way forward (planul de acțiune și angajamentul).",
+    "concept_key": "model-grow-coaching",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un IDP în contextul dezvoltării echipei de proiect?",
+    "back": "Individual Development Plan — document scurt, agreat între manager de proiect și membrul echipei, cu 2-3 obiective de dezvoltare, acțiuni concrete și termene.",
+    "concept_key": "dezvoltare-competente-echipa",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune regula 70-20-10 în dezvoltarea competențelor?",
+    "back": "Aproximativ 70% din învățare vine din experiența directă la locul de muncă, 20% din interacțiunea cu alții (mentoring/coaching/feedback), 10% din training formal.",
+    "concept_key": "dezvoltare-competente-echipa",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tehnici previn pierderea cunoștințelor când un expert părăsește proiectul?",
+    "back": "Knowledge transfer structurat: shadowing, documentare concisă, sesiuni de lessons learned pe parcursul proiectului, comunități de practică și mentoring formal de tranziție.",
+    "concept_key": "knowledge-transfer-tehnici",
+    "blockId": "cmjjuxvxq008qumkpdj9zb0em-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1498,
+   "flashcards": 5
+  }
+ }
+}

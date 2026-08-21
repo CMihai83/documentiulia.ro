@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvzc009yumkpf03lvbv4",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Agile & Hybrid",
+ "lesson": "Value Delivery",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Value Delivery\n\n## Livrarea de valoare în abordările agile și hibride\n\nÎn PMBOK 7, unul dintre cele opt domenii de performanță este **Livrarea (Delivery)**, iar unul dintre cele 12 principii ale ghidului este \"Concentrează-te pe valoare\" (Focus on Value). Spre deosebire de abordarea predictivă, unde valoarea este livrată integral la finalul proiectului, abordările agile și hibride livrează valoare **incremental**, pe tot parcursul proiectului.\n\n**Livrarea incrementală** înseamnă că produsul este construit și predat clientului în bucăți funcționale succesive (increment), fiecare adăugând valoare de business utilizabilă imediat — nu doar cod nefinalizat sau documentație. Diferența față de livrarea **iterativă** este frecvent testată la examen:\n\n- **Iterativ** = rafinezi aceeași funcționalitate de mai multe ori, îmbunătățind calitatea sau completitudinea ei (de exemplu, mai multe sprinturi consecutive pe același modul).\n- **Incremental** = adaugi bucăți noi, distincte, de funcționalitate, fiecare utilizabilă separat (de exemplu, mai întâi modulul de facturare, apoi modulul de gestiune stocuri).\n\nÎn practică, majoritatea proiectelor agile combină ambele abordări: livrare **iterativ-incrementală**. Scopul este reducerea timpului până la prima valoare livrată (time-to-value) și obținerea de feedback real de la utilizatori cât mai devreme, ceea ce reduce riscul de a construi ceva ce nu răspunde nevoii reale a organizației.\n\n## MVP — Minimum Viable Product (Produs Minim Viabil)\n\nMVP este versiunea cu cel mai mic set de funcționalități care permite **testarea unei ipoteze de business** cu efort minim de dezvoltare. Conceptul provine din metodologia Lean Startup (Eric Ries) și a fost adoptat de PMBOK 7 ca instrument de livrare incrementală în proiecte agile/hibride.\n\nCaracteristici cheie ale unui MVP:\n\n1. **Nu este un produs incomplet sau de proastă calitate** — este complet funcțional pe scopul lui restrâns, dar minimal ca întindere.\n2. **Scop: validare, nu profit** — echipa lansează MVP-ul pentru a învăța dacă direcția aleasă generează valoarea așteptată, înainte de a investi în funcționalități suplimentare.\n3. **Ciclu Build-Measure-Learn** — construiești MVP-ul, măsori reacția utilizatorilor/pieței, înveți și decizi dacă continui, pivotezi sau oprești investiția.\n\nMVP-ul trebuie diferențiat de un **prototip** (care nu este funcțional, doar demonstrativ) și de un **MMF — Minimum Marketable Feature** (cea mai mică funcționalitate care poate fi vândută sau comercializată separat, folosită mai ales în produse software orientate spre piață externă).\n\n## MBI — Minimum Business Increment\n\nMBI este cea mai mică bucată de funcționalitate care, odată livrată, **generează valoare de business măsurabilă** pentru organizație, chiar dacă nu este destinată vânzării către o piață externă. Termenul provine din Disciplined Agile (DA) și este preluat de PMBOK 7 pentru proiectele de tip enterprise — inclusiv proiectele de implementare ERP, digitalizare sau transformare internă, foarte comune în companiile din România.\n\n**Diferența esențială între MVP și MBI**, frecvent testată la examen:\n\n| Aspect | MVP | MBI |\n|---|---|---|\n| Scop principal | Testează o ipoteză de business | Livrează valoare de business certă, imediată |\n| Beneficiar tipic | Piață externă / clienți | Organizație internă / beneficiari interni |\n| Rezultat | Poate fi respins dacă ipoteza nu se validează | Este păstrat — valoarea e deja confirmată prin analiza de business |\n\nÎn proiectele hibride tipice din România (de exemplu implementarea unui sistem ERP într-o companie de producție), echipa livrează frecvent MBI-uri: module funcționale complete, precum automatizarea aprobării facturilor sau raportarea automată a stocurilor, fiecare aducând o valoare de business clar cuantificabilă, fără a fi neapărat un \"produs\" în sensul de piață.\n\n## Realizarea valorii de business (Business Value Realization)\n\nA livra un increment nu înseamnă automat că valoarea a fost \"realizată\" — valoarea se consideră realizată abia când beneficiile sunt efectiv utilizate și măsurate în organizație (reducere de costuri, creștere de venit, timp economisit, risc redus). De aceea, project managerii lucrează cu conceptul de **flux de valoare (value stream)**: succesiunea de activități prin care o cerință de business ajunge să genereze rezultate concrete.\n\nPentru a prioritiza ce increment se livrează primul, echipele agile scalate (de exemplu SAFe) folosesc metoda **WSJF — Weighted Shortest Job First**:\n\n**WSJF = Cost of Delay (CoD) / Job Size (durata estimată)**\n\nCost of Delay (costul întârzierii) se compune, de regulă, din trei elemente scorate (adesea pe scală Fibonacci: 1, 2, 3, 5, 8, 13, 20):\n\n- **Business Value** — cât de mare este valoarea directă pentru business.\n- **Time Criticality** — cât de mult scade valoarea dacă livrarea întârzie (există un termen limită, o fereastră de oportunitate?).\n- **Risk Reduction / Opportunity Enablement** — cât reduce livrarea riscul proiectului sau deschide oportunități noi.\n\nCu cât WSJF este mai mare, cu atât acel increment ar trebui livrat mai devreme — raportul maximizează valoarea livrată pe unitatea de timp investită, principiu esențial al domeniului de performanță Livrare din PMBOK 7.\n\n## Exemplu: Livrare incrementală la implementarea unui ERP\nO companie de distribuție din Cluj, Distribution Expert SRL, implementează un sistem ERP nou. În loc de un go-live de tip \"big bang\" după 12 luni de dezvoltare (abordare predictivă clasică), echipa de proiect adoptă o abordare hibridă cu livrare incrementală:\n\n- **Luna 3**: modulul de contabilitate primară (MVP) — permite deja închiderea lunară automată, reducând timpul de închidere de la 5 zile la 2 zile lucrătoare.\n- **Luna 5**: modulul de facturare electronică — reduce timpul de emitere a unei facturi de la 15 minute (manual) la 2 minute.\n- **Luna 7**: modulul de gestiune stocuri — elimină inventarierea manuală pe hârtie și reduce diferențele de stoc constatate la inventar de la 3% la sub 0,5% din valoarea stocului.\n- **Luna 9**: modulul de raportare managerială (dashboard-uri).\n\nFiecare increment este un **MBI**: nu este un produs vândut pe piață, dar generează valoare de business măsurabilă imediat după livrare, fără să aștepte finalizarea completă a proiectului. Sponsorul poate vedea rentabilitatea investiției (ROI) acumulându-se progresiv, iar echipa primește feedback real de la utilizatorii din contabilitate, vânzări și logistică după fiecare increment — feedback care ajustează prioritățile pentru incrementele următoare.\n\n## Exemplu: MVP vs MBI în digitalizarea aprobării facturilor\nO companie de retail dorește să digitalizeze fluxul de aprobare a facturilor de la furnizori. Echipa are de ales între două tipuri de increment inițial:\n\n**Varianta MVP** (dacă ar fi un produs orientat spre piață, de exemplu un SaaS de aprobat facturi vândut altor firme): echipa ar construi cea mai simplă versiune posibilă a aplicației, ar publica-o pentru câțiva clienți-pilot externi și ar măsura dacă aceștia sunt dispuși să plătească pentru ea, înainte de a investi mai mult.\n\n**Varianta MBI** (situația reală aici, proiect intern): echipa livrează direct funcționalitatea de automatizare a aprobării facturilor cu valoare peste 5.000 lei, deoarece analiza de business a arătat deja, fără a fi nevoie de testare de piață, că acest prag generează 70% din volumul de aprobări manuale. Rezultatul: timpul mediu de aprobare scade de la 3 zile lucrătoare la 4 ore, iar valoarea de business (reducerea blocajelor de plată către furnizori și a penalităților de întârziere) este confirmată din prima lună de utilizare, fără nevoie de validare ulterioară a ipotezei.\n\nConcluzie pentru examen: alegi MVP când **nu ești sigur** că ideea generează valoare și vrei să testezi ieftin; alegi MBI când valoarea de business este deja clară din analiză, iar scopul este livrarea rapidă a celei mai mici bucăți care o realizează.\n\n⚠ Capcană frecventă la examenul PMP: nu confunda MVP cu \"o versiune slabă/incompletă a produsului final\". MVP este complet funcțional pe scopul lui restrâns — scopul e validarea unei ipoteze, nu livrarea unui produs neterminat. De asemenea, nu presupune că MBI se aplică doar în Disciplined Agile — PMBOK 7 îl include explicit în glosar ca instrument de livrare a valorii, aplicabil în orice proiect hibrid sau agil, inclusiv proiecte enterprise din România (ERP, digitalizare, transformare de procese).\n\n## Exercițiu\nEști project manager pe un proiect hibrid de digitalizare într-o companie din București. Backlogul are trei funcționalități candidate pentru următorul increment. Folosind scorurile de mai jos (scală Fibonacci) și formula WSJF = Cost of Delay / Job Size, calculează WSJF pentru fiecare și stabilește ordinea de livrare.\n\n| Funcționalitate | Business Value | Time Criticality | Risk Reduction | Job Size |\n|---|---|---|---|---|\n| A — Raport automat TVA | 8 | 5 | 3 | 5 |\n| B — Alertă termen scadent facturi | 5 | 8 | 2 | 3 |\n| C — Migrare arhivă documente vechi | 3 | 2 | 8 | 8 |\n\nCalculează Cost of Delay (CoD) și WSJF pentru fiecare funcționalitate și indică ordinea de prioritizare pentru livrare.\n\n**Soluție:** **Cost of Delay (CoD) = Business Value + Time Criticality + Risk Reduction**\n\n- Funcționalitatea A: CoD = 8 + 5 + 3 = 16 → WSJF = 16 / 5 = **3,2**\n- Funcționalitatea B: CoD = 5 + 8 + 2 = 15 → WSJF = 15 / 3 = **5,0**\n- Funcționalitatea C: CoD = 3 + 2 + 8 = 13 → WSJF = 13 / 8 = **1,625**\n\n**Ordinea de livrare (WSJF descrescător): B (5,0) → A (3,2) → C (1,625).**\n\nDeși funcționalitatea A are cel mai mare Business Value izolat (8), funcționalitatea B câștigă prioritatea pentru că are Time Criticality ridicată (termenele scadente ale facturilor sunt sensibile la timp) și un Job Size mic — deci generează cel mai mult din valoarea livrată pe unitatea de efort investită. Funcționalitatea C, deși reduce mult riscul (8), are Job Size mare și Business Value/Time Criticality reduse, așa că rămâne ultima în prioritate, chiar dacă merită livrată ulterior.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "value-delivery-agile",
+    "md": "## Livrarea de valoare în abordările agile și hibride\n\nÎn PMBOK 7, unul dintre cele opt domenii de performanță este **Livrarea (Delivery)**, iar unul dintre cele 12 principii ale ghidului este \"Concentrează-te pe valoare\" (Focus on Value). Spre deosebire de abordarea predictivă, unde valoarea este livrată integral la finalul proiectului, abordările agile și hibride livrează valoare **incremental**, pe tot parcursul proiectului.\n\n**Livrarea incrementală** înseamnă că produsul este construit și predat clientului în bucăți funcționale succesive (increment), fiecare adăugând valoare de business utilizabilă imediat — nu doar cod nefinalizat sau documentație. Diferența față de livrarea **iterativă** este frecvent testată la examen:\n\n- **Iterativ** = rafinezi aceeași funcționalitate de mai multe ori, îmbunătățind calitatea sau completitudinea ei (de exemplu, mai multe sprinturi consecutive pe același modul).\n- **Incremental** = adaugi bucăți noi, distincte, de funcționalitate, fiecare utilizabilă separat (de exemplu, mai întâi modulul de facturare, apoi modulul de gestiune stocuri).\n\nÎn practică, majoritatea proiectelor agile combină ambele abordări: livrare **iterativ-incrementală**. Scopul este reducerea timpului până la prima valoare livrată (time-to-value) și obținerea de feedback real de la utilizatori cât mai devreme, ceea ce reduce riscul de a construi ceva ce nu răspunde nevoii reale a organizației.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "mvp-minimum-viable-product",
+    "md": "## MVP — Minimum Viable Product (Produs Minim Viabil)\n\nMVP este versiunea cu cel mai mic set de funcționalități care permite **testarea unei ipoteze de business** cu efort minim de dezvoltare. Conceptul provine din metodologia Lean Startup (Eric Ries) și a fost adoptat de PMBOK 7 ca instrument de livrare incrementală în proiecte agile/hibride.\n\nCaracteristici cheie ale unui MVP:\n\n1. **Nu este un produs incomplet sau de proastă calitate** — este complet funcțional pe scopul lui restrâns, dar minimal ca întindere.\n2. **Scop: validare, nu profit** — echipa lansează MVP-ul pentru a învăța dacă direcția aleasă generează valoarea așteptată, înainte de a investi în funcționalități suplimentare.\n3. **Ciclu Build-Measure-Learn** — construiești MVP-ul, măsori reacția utilizatorilor/pieței, înveți și decizi dacă continui, pivotezi sau oprești investiția.\n\nMVP-ul trebuie diferențiat de un **prototip** (care nu este funcțional, doar demonstrativ) și de un **MMF — Minimum Marketable Feature** (cea mai mică funcționalitate care poate fi vândută sau comercializată separat, folosită mai ales în produse software orientate spre piață externă).",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "mbi-minimum-business-increment",
+    "md": "## MBI — Minimum Business Increment\n\nMBI este cea mai mică bucată de funcționalitate care, odată livrată, **generează valoare de business măsurabilă** pentru organizație, chiar dacă nu este destinată vânzării către o piață externă. Termenul provine din Disciplined Agile (DA) și este preluat de PMBOK 7 pentru proiectele de tip enterprise — inclusiv proiectele de implementare ERP, digitalizare sau transformare internă, foarte comune în companiile din România.\n\n**Diferența esențială între MVP și MBI**, frecvent testată la examen:\n\n| Aspect | MVP | MBI |\n|---|---|---|\n| Scop principal | Testează o ipoteză de business | Livrează valoare de business certă, imediată |\n| Beneficiar tipic | Piață externă / clienți | Organizație internă / beneficiari interni |\n| Rezultat | Poate fi respins dacă ipoteza nu se validează | Este păstrat — valoarea e deja confirmată prin analiza de business |\n\nÎn proiectele hibride tipice din România (de exemplu implementarea unui sistem ERP într-o companie de producție), echipa livrează frecvent MBI-uri: module funcționale complete, precum automatizarea aprobării facturilor sau raportarea automată a stocurilor, fiecare aducând o valoare de business clar cuantificabilă, fără a fi neapărat un \"produs\" în sensul de piață.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "business-value-realization",
+    "md": "## Realizarea valorii de business (Business Value Realization)\n\nA livra un increment nu înseamnă automat că valoarea a fost \"realizată\" — valoarea se consideră realizată abia când beneficiile sunt efectiv utilizate și măsurate în organizație (reducere de costuri, creștere de venit, timp economisit, risc redus). De aceea, project managerii lucrează cu conceptul de **flux de valoare (value stream)**: succesiunea de activități prin care o cerință de business ajunge să genereze rezultate concrete.\n\nPentru a prioritiza ce increment se livrează primul, echipele agile scalate (de exemplu SAFe) folosesc metoda **WSJF — Weighted Shortest Job First**:\n\n**WSJF = Cost of Delay (CoD) / Job Size (durata estimată)**\n\nCost of Delay (costul întârzierii) se compune, de regulă, din trei elemente scorate (adesea pe scală Fibonacci: 1, 2, 3, 5, 8, 13, 20):\n\n- **Business Value** — cât de mare este valoarea directă pentru business.\n- **Time Criticality** — cât de mult scade valoarea dacă livrarea întârzie (există un termen limită, o fereastră de oportunitate?).\n- **Risk Reduction / Opportunity Enablement** — cât reduce livrarea riscul proiectului sau deschide oportunități noi.\n\nCu cât WSJF este mai mare, cu atât acel increment ar trebui livrat mai devreme — raportul maximizează valoarea livrată pe unitatea de timp investită, principiu esențial al domeniului de performanță Livrare din PMBOK 7.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b4"
+   },
+   {
+    "type": "example",
+    "title": "Livrare incrementală la implementarea unui ERP",
+    "concept_key": "value-delivery-agile",
+    "md": "O companie de distribuție din Cluj, Distribution Expert SRL, implementează un sistem ERP nou. În loc de un go-live de tip \"big bang\" după 12 luni de dezvoltare (abordare predictivă clasică), echipa de proiect adoptă o abordare hibridă cu livrare incrementală:\n\n- **Luna 3**: modulul de contabilitate primară (MVP) — permite deja închiderea lunară automată, reducând timpul de închidere de la 5 zile la 2 zile lucrătoare.\n- **Luna 5**: modulul de facturare electronică — reduce timpul de emitere a unei facturi de la 15 minute (manual) la 2 minute.\n- **Luna 7**: modulul de gestiune stocuri — elimină inventarierea manuală pe hârtie și reduce diferențele de stoc constatate la inventar de la 3% la sub 0,5% din valoarea stocului.\n- **Luna 9**: modulul de raportare managerială (dashboard-uri).\n\nFiecare increment este un **MBI**: nu este un produs vândut pe piață, dar generează valoare de business măsurabilă imediat după livrare, fără să aștepte finalizarea completă a proiectului. Sponsorul poate vedea rentabilitatea investiției (ROI) acumulându-se progresiv, iar echipa primește feedback real de la utilizatorii din contabilitate, vânzări și logistică după fiecare increment — feedback care ajustează prioritățile pentru incrementele următoare.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b5"
+   },
+   {
+    "type": "example",
+    "title": "MVP vs MBI în digitalizarea aprobării facturilor",
+    "concept_key": "mbi-minimum-business-increment",
+    "md": "O companie de retail dorește să digitalizeze fluxul de aprobare a facturilor de la furnizori. Echipa are de ales între două tipuri de increment inițial:\n\n**Varianta MVP** (dacă ar fi un produs orientat spre piață, de exemplu un SaaS de aprobat facturi vândut altor firme): echipa ar construi cea mai simplă versiune posibilă a aplicației, ar publica-o pentru câțiva clienți-pilot externi și ar măsura dacă aceștia sunt dispuși să plătească pentru ea, înainte de a investi mai mult.\n\n**Varianta MBI** (situația reală aici, proiect intern): echipa livrează direct funcționalitatea de automatizare a aprobării facturilor cu valoare peste 5.000 lei, deoarece analiza de business a arătat deja, fără a fi nevoie de testare de piață, că acest prag generează 70% din volumul de aprobări manuale. Rezultatul: timpul mediu de aprobare scade de la 3 zile lucrătoare la 4 ore, iar valoarea de business (reducerea blocajelor de plată către furnizori și a penalităților de întârziere) este confirmată din prima lună de utilizare, fără nevoie de validare ulterioară a ipotezei.\n\nConcluzie pentru examen: alegi MVP când **nu ești sigur** că ideea generează valoare și vrei să testezi ieftin; alegi MBI când valoarea de business este deja clară din analiză, iar scopul este livrarea rapidă a celei mai mici bucăți care o realizează.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană frecventă la examenul PMP: nu confunda MVP cu \"o versiune slabă/incompletă a produsului final\". MVP este complet funcțional pe scopul lui restrâns — scopul e validarea unei ipoteze, nu livrarea unui produs neterminat. De asemenea, nu presupune că MBI se aplică doar în Disciplined Agile — PMBOK 7 îl include explicit în glosar ca instrument de livrare a valorii, aplicabil în orice proiect hibrid sau agil, inclusiv proiecte enterprise din România (ERP, digitalizare, transformare de procese).",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești project manager pe un proiect hibrid de digitalizare într-o companie din București. Backlogul are trei funcționalități candidate pentru următorul increment. Folosind scorurile de mai jos (scală Fibonacci) și formula WSJF = Cost of Delay / Job Size, calculează WSJF pentru fiecare și stabilește ordinea de livrare.\n\n| Funcționalitate | Business Value | Time Criticality | Risk Reduction | Job Size |\n|---|---|---|---|---|\n| A — Raport automat TVA | 8 | 5 | 3 | 5 |\n| B — Alertă termen scadent facturi | 5 | 8 | 2 | 3 |\n| C — Migrare arhivă documente vechi | 3 | 2 | 8 | 8 |\n\nCalculează Cost of Delay (CoD) și WSJF pentru fiecare funcționalitate și indică ordinea de prioritizare pentru livrare.",
+    "solution_md": "**Cost of Delay (CoD) = Business Value + Time Criticality + Risk Reduction**\n\n- Funcționalitatea A: CoD = 8 + 5 + 3 = 16 → WSJF = 16 / 5 = **3,2**\n- Funcționalitatea B: CoD = 5 + 8 + 2 = 15 → WSJF = 15 / 3 = **5,0**\n- Funcționalitatea C: CoD = 3 + 2 + 8 = 13 → WSJF = 13 / 8 = **1,625**\n\n**Ordinea de livrare (WSJF descrescător): B (5,0) → A (3,2) → C (1,625).**\n\nDeși funcționalitatea A are cel mai mare Business Value izolat (8), funcționalitatea B câștigă prioritatea pentru că are Time Criticality ridicată (termenele scadente ale facturilor sunt sensibile la timp) și un Job Size mic — deci generează cel mai mult din valoarea livrată pe unitatea de efort investită. Funcționalitatea C, deși reduce mult riscul (8), are Job Size mare și Business Value/Time Criticality reduse, așa că rămâne ultima în prioritate, chiar dacă merită livrată ulterior.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența corectă între livrarea iterativă și cea incrementală?",
+    "choices": [
+     "Iterativ înseamnă adăugarea de funcționalități noi, distincte; incremental înseamnă rafinarea aceleiași funcționalități",
+     "Iterativ înseamnă rafinarea repetată a aceleiași funcționalități; incremental înseamnă adăugarea de bucăți noi, distincte, de valoare",
+     "Cei doi termeni sunt sinonimi în PMBOK 7 și pot fi folosiți interschimbabil",
+     "Iterativ se aplică doar în Scrum, incremental doar în Kanban"
+    ],
+    "answer": 1,
+    "explain": "Livrarea iterativă rafinează aceeași funcționalitate în cicluri succesive; livrarea incrementală adaugă bucăți noi de funcționalitate, fiecare utilizabilă separat. Majoritatea proiectelor agile combină ambele abordări.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce caracterizează un MBI (Minimum Business Increment), spre deosebire de un MVP?",
+    "choices": [
+     "MBI testează o ipoteză de piață pe clienți externi, la fel ca MVP-ul",
+     "MBI livrează valoare de business deja confirmată de analiză, tipic pentru beneficiari interni, fără a fi neapărat destinat vânzării pe piață",
+     "MBI este întotdeauna mai mare ca scop decât un MVP",
+     "MBI se folosește exclusiv în proiectele complet predictive (waterfall)"
+    ],
+    "answer": 1,
+    "explain": "MBI este cea mai mică bucată de funcționalitate care generează valoare de business măsurabilă, folosită frecvent în proiecte enterprise/interne (ERP, digitalizare), unde valoarea e deja clară din analiza de business, spre deosebire de MVP, al cărui scop este testarea unei ipoteze.",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un MVP (Minimum Viable Product)?",
+    "back": "Versiunea cu cel mai mic set de funcționalități, complet funcțională pe scopul ei restrâns, folosită pentru a testa o ipoteză de business cu efort minim (ciclul Build-Measure-Learn).",
+    "concept_key": "mvp-minimum-viable-product",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un MBI (Minimum Business Increment)?",
+    "back": "Cea mai mică bucată de funcționalitate care, odată livrată, generează valoare de business măsurabilă pentru organizație, chiar dacă nu este destinată vânzării pe o piață externă (termen din Disciplined Agile, preluat de PMBOK 7).",
+    "concept_key": "mbi-minimum-business-increment",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula WSJF (Weighted Shortest Job First)?",
+    "back": "WSJF = Cost of Delay (CoD) / Job Size (durata estimată). Cu cât WSJF este mai mare, cu atât acel increment ar trebui livrat mai devreme.",
+    "concept_key": "business-value-realization",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din ce trei componente se compune Cost of Delay (CoD)?",
+    "back": "Business Value (valoarea directă pentru business) + Time Criticality (cât scade valoarea dacă livrarea întârzie) + Risk Reduction/Opportunity Enablement (cât reduce riscul sau deschide oportunități).",
+    "concept_key": "business-value-realization",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre livrarea incrementală și cea iterativă?",
+    "back": "Incremental = adaugi bucăți noi, distincte, de funcționalitate utilizabile separat. Iterativ = rafinezi aceeași funcționalitate în cicluri succesive, îmbunătățindu-i calitatea sau completitudinea.",
+    "concept_key": "value-delivery-agile",
+    "blockId": "cmjjuxvzc009yumkpf03lvbv4-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1432,
+   "flashcards": 5
+  }
+ }
+}

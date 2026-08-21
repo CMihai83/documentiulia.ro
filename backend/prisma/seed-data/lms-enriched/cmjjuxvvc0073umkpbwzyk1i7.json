@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxvvc0073umkpbwzyk1i7",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Events",
+ "lesson": "Daily Scrum",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Daily Scrum\n\n## Ce este Daily Scrum\n\nDaily Scrum este unul dintre cele patru evenimente formale ale Sprintului (alături de Sprint Planning, Sprint Review și Sprint Retrospective) și, probabil, cel mai frecvent — se ține în fiecare zi lucrătoare a Sprintului. Conform Scrum Guide 2020, scopul lui este strict: Developers **inspectează progresul către Sprint Goal** și **adaptează Sprint Backlogul** dacă e nevoie, ajustând planul de lucru pentru următoarele 24 de ore.\n\nObservă nuanța: Daily Scrum nu este o ședință de raportare individuală („ce am făcut eu ieri”), ci un exercițiu de planificare colectivă orientat spre un obiectiv comun — Sprint Goal-ul. Într-o echipă care, de exemplu, implementează un modul de facturare electronică într-un ERP pentru o companie din România, întrebarea centrală nu este „a terminat Andrei task-ul X?”, ci „mai suntem pe traiectorie să livrăm obiectivul Sprintului până vineri?”.\n\nDaily Scrum reduce complexitatea prin inspecție frecventă: în loc să aștepți două săptămâni pentru a afla că un obstacol tehnic a blocat integrarea cu ANAF, echipa îl identifică în cel mult 24 de ore și reacționează imediat. Este, în esență, mecanismul de auto-corecție zilnică al unui Sprint.\n\n## Regulile evenimentului\n\nScrum Guide 2020 fixează câteva reguli non-negociabile:\n\n- **Durată**: timebox de **15 minute**, indiferent de mărimea echipei (fie că sunt 3 sau 9 Developers).\n- **Frecvență**: în fiecare zi lucrătoare a Sprintului, la aceeași oră și în același loc — predictibilitatea reduce complexitatea coordonării și elimină nevoia de a „găsi un slot liber” în fiecare zi.\n- **Participanți**: evenimentul este organizat **de și pentru Developers**. Product Owner și Scrum Master nu sunt participanți obligatorii; ei iau parte doar dacă lucrează efectiv la itemi din Sprint Backlog, caz în care participă ca Developers, nu în rolul lor formal.\n- **Facilitare**: Developers sunt responsabili de conducerea propriei Daily Scrum. Scrum Master se asigură că evenimentul are loc și respectă timebox-ul, dar nu îl conduce — dacă echipa e nouă sau nesigură, Scrum Master poate facilita temporar, până când echipa preia obiceiul.\n\nUn detaliu important pentru examenul PSM I: Daily Scrum **nu este singurul moment** în care Developers pot ajusta planul. Ei pot avea discuții suplimentare oricând în timpul zilei pentru a re-planifica restul Sprintului — Daily Scrum este doar punctul minim garantat de sincronizare.\n\n## De la „cele trei întrebări” la formatul liber\n\nVersiunile mai vechi ale Scrum Guide (până la 2017) recomandau explicit structura celor trei întrebări: *Ce am făcut ieri pentru Sprint Goal? Ce voi face azi? Ce obstacole întâmpin?* Multe echipe și cursuri PSM încă predau acest format, pentru că este intuitiv și ușor de aplicat de echipele începătoare.\n\nScrum Guide 2020 **elimină formatul obligatoriu**. Echipa alege orice structură care o ajută să inspecteze progresul spre Sprint Goal: „walking the board” (parcurgerea Sprint Backlogului de la task-urile aproape terminate spre cele neîncepute), discuții tematice pe blocaje, sau chiar cele trei întrebări clasice — dacă echipa le consideră utile. Cheia este rezultatul: la finalul celor 15 minute, echipa trebuie să știe clar dacă Sprint Goal-ul este încă realizabil și ce ajustări sunt necesare.\n\nPentru examenul PSM I, reține: întrebarea „care este formatul obligatoriu al Daily Scrum?” are răspunsul corect „niciunul — echipa decide formatul, atâta timp cât rămâne focalizată pe Sprint Goal”.\n\n## Exemplu: Daily Scrum într-o echipă care implementează un ERP\nO echipă de 6 Developers lucrează la implementarea unui modul de gestiune a stocurilor pentru o companie de distribuție din Cluj. Sprint Goal-ul este: „Utilizatorii pot genera și tipări NIR-uri (Notă de Intrare-Recepție) direct din aplicație, cu validare automată a cantităților.”\n\nÎn ziua 6 din 10 a Sprintului, echipa se adună la 09:30, ca în fiecare zi, lângă tabla fizică cu Sprint Backlogul. În loc de raportare individuală, ei parcurg tabla de la dreapta la stânga (task-uri aproape gata → task-uri neîncepute):\n\n- Task-ul „validare cantități la recepție” este „Done” din ziua precedentă.\n- Task-ul „generare PDF NIR” este blocat: librăria de generare PDF aleasă inițial nu suportă diacritice corect.\n- Doi Developers decid pe loc să testeze o librărie alternativă în următoarele 2 ore, în loc să continue pe alte task-uri planificate.\n- Un al treilea Developer semnalează că testarea integrării cu modulul de facturare va dura mai mult decât estimat — echipa recalculează: dacă blocajul PDF nu se rezolvă azi, Sprint Goal-ul este în pericol.\n\nÎntregul schimb durează 12 minute. Product Owner-ul nu este prezent — nu lucrează la niciun item din Sprint Backlog — dar echipa notează că va avea nevoie de o discuție scurtă cu el pentru a clarifica dacă diacriticele sunt un criteriu de acceptanță obligatoriu sau pot fi amânate.\n\n## Exemplu: Anti-pattern: Daily Scrum transformat în raport de status\nÎntr-o altă echipă, dintr-o companie de retail online din București, Daily Scrum arată astfel: Scrum Master-ul stă în picioare cu un notebook, întreabă pe rând fiecare Developer „ce ai făcut ieri, ce faci azi, ai blocaje?”, notează răspunsurile și trece la următoarea persoană. Developers vorbesc doar cu Scrum Master-ul, nu între ei. Ședința durează 25 de minute pentru că fiecare persoană intră în detalii tehnice inutile pentru colegi.\n\nAcesta este un anti-pattern clasic: Daily Scrum a devenit un raport de status individual către o „autoritate”, nu o sesiune de planificare colectivă a echipei. Simptomele tipice:\n\n- Developers privesc spre Scrum Master când vorbesc, nu spre colegi.\n- Nu se discută despre Sprint Goal, ci despre task-uri izolate.\n- Depășirea constantă a timebox-ului de 15 minute.\n- Blocajele sunt „raportate” dar nu se decide nimic pe loc.\n\nCorectarea: Scrum Master-ul poate interveni discret, sugerând echipei să stea în cerc (nu în jurul lui), să privească tabla în loc să privească o persoană, și să reformuleze întrebarea de bază ca „mai atingem Sprint Goal-ul?” în loc de „ce a făcut fiecare ieri?”. De regulă, e nevoie de câteva sprinturi ca obiceiul vechi să dispară complet.\n\n> Temei legal: Scrum Guide Daily Scrum (în vigoare de la 2020-11-01)\nScrum Guide (ediția noiembrie 2020, Ken Schwaber & Jeff Sutherland) definește Daily Scrum ca eveniment de 15 minute, în fiecare zi lucrătoare a Sprintului, organizat de și pentru Developers, cu scopul de a inspecta progresul către Sprint Goal și de a adapta Sprint Backlogul. Ediția 2020 a eliminat formatul obligatoriu al celor „trei întrebări” prezent în edițiile anterioare (până la 2017), lăsând echipei libertatea de a alege structura discuției.\n\n⚠ Atenție la examenul PSM I: multe întrebări testează exact confuziile din anti-pattern-uri. Reține clar — Daily Scrum **nu** este o ședință de status pentru Scrum Master sau pentru manageri; participarea Product Owner-ului și a Scrum Master-ului este **opțională**, condiționată de a lucra efectiv la itemi din Sprint Backlog; depășirea celor 15 minute nu este „flexibilă” — este o încălcare a timebox-ului, chiar dacă echipa are discuții importante de purtat (acestea se mută după eveniment).\n\n## Exercițiu\nEchipa ta lucrează la un Sprint cu obiectivul „Clienții pot plăti online facturile emise din aplicație, prin card bancar”. La Daily Scrum din ziua 4, Product Owner-ul intră în sală și cere fiecărui Developer să raporteze pe rând stadiul task-urilor lui, pentru că vrea să actualizeze un raport pentru conducere. Ca Scrum Master, cum reacționezi în acel moment și ce spui echipei imediat după?\n\n**Soluție:** Reacția corectă: intervii politicos, dar ferm, și explici că Daily Scrum este un eveniment organizat de și pentru Developers, cu scopul de a inspecta progresul spre Sprint Goal — nu un canal de raportare pentru conducere. Îl inviți pe Product Owner să rămână doar dacă lucrează activ la un item din Sprint Backlog, sau, dacă are nevoie de informații pentru raportul lui, îi propui o discuție separată, în afara timebox-ului de 15 minute (de exemplu, imediat după, folosind Sprint Backlogul și burndown-ul, care sunt oricum informații transparente și disponibile oricui).\n\nDupă eveniment, discuți cu echipa (fără a acuza Product Owner-ul) despre importanța de a păstra Daily Scrum focalizat pe Sprint Goal și le reamintești că pot oricând să te contacteze pe tine ca „scut” dacă simt presiune să transforme evenimentul într-un raport de status. Este un exemplu clasic de rol al Scrum Master-ului ca facilitator care protejează integritatea evenimentelor Scrum, nu doar ca „administrator de agendă”.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "daily-scrum-definitie",
+    "md": "## Ce este Daily Scrum\n\nDaily Scrum este unul dintre cele patru evenimente formale ale Sprintului (alături de Sprint Planning, Sprint Review și Sprint Retrospective) și, probabil, cel mai frecvent — se ține în fiecare zi lucrătoare a Sprintului. Conform Scrum Guide 2020, scopul lui este strict: Developers **inspectează progresul către Sprint Goal** și **adaptează Sprint Backlogul** dacă e nevoie, ajustând planul de lucru pentru următoarele 24 de ore.\n\nObservă nuanța: Daily Scrum nu este o ședință de raportare individuală („ce am făcut eu ieri”), ci un exercițiu de planificare colectivă orientat spre un obiectiv comun — Sprint Goal-ul. Într-o echipă care, de exemplu, implementează un modul de facturare electronică într-un ERP pentru o companie din România, întrebarea centrală nu este „a terminat Andrei task-ul X?”, ci „mai suntem pe traiectorie să livrăm obiectivul Sprintului până vineri?”.\n\nDaily Scrum reduce complexitatea prin inspecție frecventă: în loc să aștepți două săptămâni pentru a afla că un obstacol tehnic a blocat integrarea cu ANAF, echipa îl identifică în cel mult 24 de ore și reacționează imediat. Este, în esență, mecanismul de auto-corecție zilnică al unui Sprint.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "daily-scrum-reguli-format",
+    "md": "## Regulile evenimentului\n\nScrum Guide 2020 fixează câteva reguli non-negociabile:\n\n- **Durată**: timebox de **15 minute**, indiferent de mărimea echipei (fie că sunt 3 sau 9 Developers).\n- **Frecvență**: în fiecare zi lucrătoare a Sprintului, la aceeași oră și în același loc — predictibilitatea reduce complexitatea coordonării și elimină nevoia de a „găsi un slot liber” în fiecare zi.\n- **Participanți**: evenimentul este organizat **de și pentru Developers**. Product Owner și Scrum Master nu sunt participanți obligatorii; ei iau parte doar dacă lucrează efectiv la itemi din Sprint Backlog, caz în care participă ca Developers, nu în rolul lor formal.\n- **Facilitare**: Developers sunt responsabili de conducerea propriei Daily Scrum. Scrum Master se asigură că evenimentul are loc și respectă timebox-ul, dar nu îl conduce — dacă echipa e nouă sau nesigură, Scrum Master poate facilita temporar, până când echipa preia obiceiul.\n\nUn detaliu important pentru examenul PSM I: Daily Scrum **nu este singurul moment** în care Developers pot ajusta planul. Ei pot avea discuții suplimentare oricând în timpul zilei pentru a re-planifica restul Sprintului — Daily Scrum este doar punctul minim garantat de sincronizare.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "daily-scrum-format-liber-2020",
+    "md": "## De la „cele trei întrebări” la formatul liber\n\nVersiunile mai vechi ale Scrum Guide (până la 2017) recomandau explicit structura celor trei întrebări: *Ce am făcut ieri pentru Sprint Goal? Ce voi face azi? Ce obstacole întâmpin?* Multe echipe și cursuri PSM încă predau acest format, pentru că este intuitiv și ușor de aplicat de echipele începătoare.\n\nScrum Guide 2020 **elimină formatul obligatoriu**. Echipa alege orice structură care o ajută să inspecteze progresul spre Sprint Goal: „walking the board” (parcurgerea Sprint Backlogului de la task-urile aproape terminate spre cele neîncepute), discuții tematice pe blocaje, sau chiar cele trei întrebări clasice — dacă echipa le consideră utile. Cheia este rezultatul: la finalul celor 15 minute, echipa trebuie să știe clar dacă Sprint Goal-ul este încă realizabil și ce ajustări sunt necesare.\n\nPentru examenul PSM I, reține: întrebarea „care este formatul obligatoriu al Daily Scrum?” are răspunsul corect „niciunul — echipa decide formatul, atâta timp cât rămâne focalizată pe Sprint Goal”.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b3"
+   },
+   {
+    "type": "example",
+    "title": "Daily Scrum într-o echipă care implementează un ERP",
+    "concept_key": "daily-scrum-exemplu-erp",
+    "md": "O echipă de 6 Developers lucrează la implementarea unui modul de gestiune a stocurilor pentru o companie de distribuție din Cluj. Sprint Goal-ul este: „Utilizatorii pot genera și tipări NIR-uri (Notă de Intrare-Recepție) direct din aplicație, cu validare automată a cantităților.”\n\nÎn ziua 6 din 10 a Sprintului, echipa se adună la 09:30, ca în fiecare zi, lângă tabla fizică cu Sprint Backlogul. În loc de raportare individuală, ei parcurg tabla de la dreapta la stânga (task-uri aproape gata → task-uri neîncepute):\n\n- Task-ul „validare cantități la recepție” este „Done” din ziua precedentă.\n- Task-ul „generare PDF NIR” este blocat: librăria de generare PDF aleasă inițial nu suportă diacritice corect.\n- Doi Developers decid pe loc să testeze o librărie alternativă în următoarele 2 ore, în loc să continue pe alte task-uri planificate.\n- Un al treilea Developer semnalează că testarea integrării cu modulul de facturare va dura mai mult decât estimat — echipa recalculează: dacă blocajul PDF nu se rezolvă azi, Sprint Goal-ul este în pericol.\n\nÎntregul schimb durează 12 minute. Product Owner-ul nu este prezent — nu lucrează la niciun item din Sprint Backlog — dar echipa notează că va avea nevoie de o discuție scurtă cu el pentru a clarifica dacă diacriticele sunt un criteriu de acceptanță obligatoriu sau pot fi amânate.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b4"
+   },
+   {
+    "type": "example",
+    "title": "Anti-pattern: Daily Scrum transformat în raport de status",
+    "concept_key": "daily-scrum-anti-pattern-status-report",
+    "md": "Într-o altă echipă, dintr-o companie de retail online din București, Daily Scrum arată astfel: Scrum Master-ul stă în picioare cu un notebook, întreabă pe rând fiecare Developer „ce ai făcut ieri, ce faci azi, ai blocaje?”, notează răspunsurile și trece la următoarea persoană. Developers vorbesc doar cu Scrum Master-ul, nu între ei. Ședința durează 25 de minute pentru că fiecare persoană intră în detalii tehnice inutile pentru colegi.\n\nAcesta este un anti-pattern clasic: Daily Scrum a devenit un raport de status individual către o „autoritate”, nu o sesiune de planificare colectivă a echipei. Simptomele tipice:\n\n- Developers privesc spre Scrum Master când vorbesc, nu spre colegi.\n- Nu se discută despre Sprint Goal, ci despre task-uri izolate.\n- Depășirea constantă a timebox-ului de 15 minute.\n- Blocajele sunt „raportate” dar nu se decide nimic pe loc.\n\nCorectarea: Scrum Master-ul poate interveni discret, sugerând echipei să stea în cerc (nu în jurul lui), să privească tabla în loc să privească o persoană, și să reformuleze întrebarea de bază ca „mai atingem Sprint Goal-ul?” în loc de „ce a făcut fiecare ieri?”. De regulă, e nevoie de câteva sprinturi ca obiceiul vechi să dispară complet.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Scrum Guide",
+    "article": "Daily Scrum",
+    "effective": "2020-11-01",
+    "md": "Scrum Guide (ediția noiembrie 2020, Ken Schwaber & Jeff Sutherland) definește Daily Scrum ca eveniment de 15 minute, în fiecare zi lucrătoare a Sprintului, organizat de și pentru Developers, cu scopul de a inspecta progresul către Sprint Goal și de a adapta Sprint Backlogul. Ediția 2020 a eliminat formatul obligatoriu al celor „trei întrebări” prezent în edițiile anterioare (până la 2017), lăsând echipei libertatea de a alege structura discuției.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la examenul PSM I: multe întrebări testează exact confuziile din anti-pattern-uri. Reține clar — Daily Scrum **nu** este o ședință de status pentru Scrum Master sau pentru manageri; participarea Product Owner-ului și a Scrum Master-ului este **opțională**, condiționată de a lucra efectiv la itemi din Sprint Backlog; depășirea celor 15 minute nu este „flexibilă” — este o încălcare a timebox-ului, chiar dacă echipa are discuții importante de purtat (acestea se mută după eveniment).",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Echipa ta lucrează la un Sprint cu obiectivul „Clienții pot plăti online facturile emise din aplicație, prin card bancar”. La Daily Scrum din ziua 4, Product Owner-ul intră în sală și cere fiecărui Developer să raporteze pe rând stadiul task-urilor lui, pentru că vrea să actualizeze un raport pentru conducere. Ca Scrum Master, cum reacționezi în acel moment și ce spui echipei imediat după?",
+    "solution_md": "Reacția corectă: intervii politicos, dar ferm, și explici că Daily Scrum este un eveniment organizat de și pentru Developers, cu scopul de a inspecta progresul spre Sprint Goal — nu un canal de raportare pentru conducere. Îl inviți pe Product Owner să rămână doar dacă lucrează activ la un item din Sprint Backlog, sau, dacă are nevoie de informații pentru raportul lui, îi propui o discuție separată, în afara timebox-ului de 15 minute (de exemplu, imediat după, folosind Sprint Backlogul și burndown-ul, care sunt oricum informații transparente și disponibile oricui).\n\nDupă eveniment, discuți cu echipa (fără a acuza Product Owner-ul) despre importanța de a păstra Daily Scrum focalizat pe Sprint Goal și le reamintești că pot oricând să te contacteze pe tine ca „scut” dacă simt presiune să transforme evenimentul într-un raport de status. Este un exemplu clasic de rol al Scrum Master-ului ca facilitator care protejează integritatea evenimentelor Scrum, nu doar ca „administrator de agendă”.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este durata fixă (timebox) a evenimentului Daily Scrum, indiferent de mărimea echipei?",
+    "choices": [
+     "10 minute",
+     "15 minute",
+     "30 minute",
+     "Variază în funcție de numărul de Developers"
+    ],
+    "answer": 1,
+    "explain": "Scrum Guide 2020 fixează timebox-ul Daily Scrum la 15 minute, indiferent dacă echipa are 3 sau 9 Developers. Depășirea acestui timp este o abatere de la practica Scrum.",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Scrum Guide 2020, care este scopul principal al Daily Scrum?",
+    "choices": [
+     "Ca fiecare Developer să raporteze individual progresul către Scrum Master",
+     "Ca Product Owner să prioritizeze Product Backlogul",
+     "Ca Developers să inspecteze progresul către Sprint Goal și să adapteze Sprint Backlogul",
+     "Ca echipa să estimeze story points pentru itemii viitori"
+    ],
+    "answer": 2,
+    "explain": "Scopul Daily Scrum este inspecția progresului către Sprint Goal și adaptarea Sprint Backlogului pentru următoarele 24 de ore — nu raportarea individuală și nu prioritizarea Product Backlogului (aceasta e responsabilitatea continuă a Product Owner-ului, în afara acestui eveniment).",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât durează Daily Scrum și cât de des are loc?",
+    "back": "15 minute (timebox fix), în fiecare zi lucrătoare a Sprintului, la aceeași oră și în același loc.",
+    "concept_key": "daily-scrum-reguli-format",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine este obligat să participe la Daily Scrum?",
+    "back": "Developers. Product Owner și Scrum Master participă doar dacă lucrează activ la itemi din Sprint Backlog, caz în care sunt tratați ca Developers.",
+    "concept_key": "daily-scrum-reguli-format",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este scopul principal al Daily Scrum conform Scrum Guide 2020?",
+    "back": "Inspectarea progresului către Sprint Goal și adaptarea Sprint Backlogului, ajustând planul pentru următoarele 24 de ore.",
+    "concept_key": "daily-scrum-definitie",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Este formatul celor „trei întrebări” (ce am făcut ieri / ce fac azi / ce blocaje am) obligatoriu în Scrum Guide 2020?",
+    "back": "Nu. Din 2020, echipa alege liber formatul discuției, atâta timp cât rămâne focalizată pe Sprint Goal.",
+    "concept_key": "daily-scrum-format-liber-2020",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine facilitează Daily Scrum și ce rol are Scrum Master-ul?",
+    "back": "Developers sunt responsabili de conducerea propriei Daily Scrum. Scrum Master se asigură că evenimentul are loc și respectă timebox-ul, dar nu îl conduce.",
+    "concept_key": "daily-scrum-reguli-format",
+    "blockId": "cmjjuxvvc0073umkpbwzyk1i7-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1312,
+   "flashcards": 5
+  }
+ }
+}

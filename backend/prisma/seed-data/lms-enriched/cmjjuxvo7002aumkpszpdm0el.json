@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvo7002aumkpszpdm0el",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Pivot și Modele de Date",
+ "lesson": "Relații între tabele",
+ "category": "EXCEL_VBA",
+ "content": "# Relații între tabele\n\nÎntr-un model de date Power Pivot, informațiile nu stau într-un singur tabel uriaș cu formule VLOOKUP peste tot, ci în mai multe tabele mai mici, conectate prin **relații** — exact ca într-o bază de date relațională. O relație leagă o coloană dintr-un tabel de o coloană cu valori corespunzătoare din alt tabel, permițând motorului Power Pivot (numit VertiPaq) să calculeze automat agregări — sume, medii, numărări — peste tabele diferite, fără să copiezi date sau să folosești căutări.\n\nDe exemplu, într-un model cu tabelul **Comenzi** (fiecare rând = o linie de comandă) și tabelul **Clienți** (fiecare rând = un client unic), relația dintre ele îți permite să calculezi „Total vânzări per client” direct într-un PivotTable, deși valoarea vânzării stă în Comenzi, iar numele clientului stă în Clienți.\n\nPentru ca o relație să funcționeze corect, coloanele implicate trebuie să conțină valori comparabile (de regulă un identificator: CodClient, CodProdus) și cel puțin una dintre ele trebuie să aibă valori unice, fără duplicate — aceasta devine partea „1” a relației, numită și **tabel de tip lookup**.\n\nPower Pivot recunoaște automat trei tipuri de cardinalitate atunci când creezi o relație:\n\n**One-to-many (1:*)** — cel mai frecvent tip. O valoare din tabelul „1” (ex. Clienți, cu CodClient unic) corespunde mai multor rânduri din tabelul „many” (ex. Comenzi, unde același CodClient apare de mai multe ori). Acesta este scheletul unui model de tip **schemă stea** (star schema): un tabel central de tranzacții (fapte) conectat la mai multe tabele de dimensiuni (Clienți, Produse, Date calendaristice).\n\n**One-to-one (1:1)** — rar, apare când ambele tabele au valori unice pe coloana de legătură (ex. un tabel Angajați și un tabel Detalii_Contract, câte un rând per angajat). De obicei e mai eficient să unești aceste tabele într-unul singur prin Power Query, decât să menții o relație separată.\n\n**Many-to-many (*:*)** — ambele tabele au duplicate pe coloana de legătură (ex. un Produs poate aparține mai multor Categorii, iar o Categorie conține mai multe Produse). Excel 365 permite relații many-to-many native, dar ele sunt mai greu de controlat și pot încetini calculele; de aceea, practica recomandată este introducerea unui **tabel-punte** (bridge table) care transformă relația într-un lanț de două relații one-to-many.\n\nFiecare relație are o **direcție de filtrare** (cross filter direction), care controlează cum „circulă” filtrele între tabele atunci când construiești un PivotTable sau o măsură DAX:\n\n- **Single (o singură direcție)** — implicit pentru relațiile one-to-many. Filtrele curg dinspre tabelul „1” către tabelul „many” (ex. filtrezi Regiune în Clienți și se filtrează automat comenzile aferente), dar nu invers.\n- **Both (bidirecțională)** — filtrele circulă în ambele sensuri. Este utilă în modele cu tabele-punte pentru many-to-many, dar folosită excesiv poate crea **căi de filtrare ambigue** și încetini raportul.\n\nO relație poate fi și **inactivă** (linie punctată în diagrama modelului), atunci când există deja o cale activă între aceleași două tabele pe altă coloană — de exemplu, ai două relații între Comenzi și Calendar: una pe „Data comenzii” (activă) și una pe „Data livrării” (inactivă). Relația inactivă poate fi activată punctual într-o măsură cu funcția DAX `USERELATIONSHIP`, fără să afecteze restul raportului.\n\n## Exemplu: Relație one-to-many între Comenzi și Clienți\nAi importat prin Power Query două tabele într-un model Power Pivot:\n\n- **Clienți**: CodClient (unic), NumeClient, Regiune\n- **Comenzi**: IDComanda, CodClient, CodProdus, Cantitate, PretUnitar\n\nPași pentru relație:\n1. În fereastra Power Pivot, deschizi **Diagram View** (sau Data > Relationships din Excel).\n2. Tragi o linie de la CodClient din tabelul Comenzi la CodClient din tabelul Clienți (sau folosești New Relationship și selectezi manual cele două coloane).\n3. Excel detectează automat cardinalitatea: **Clienți (1) → Comenzi (*)**, direcție de filtrare Single, dinspre Clienți spre Comenzi.\n\nRezultat: într-un PivotTable pui NumeClient pe rânduri și o măsură `Valoare Totala = SUMX(Comenzi, Comenzi[Cantitate]*Comenzi[PretUnitar])` pe valori. Pentru clientul „Alfa Trading SRL” (CodClient = C001, cu 12 comenzi în tabelul Comenzi însumând cantități × prețuri), rezultatul afișat automat este **45.320 lei** — calculat corect, chiar dacă numele clientului și valorile comenzilor stau în tabele diferite, fără nicio formulă VLOOKUP.\n\n## Exemplu: Many-to-many cu tabel-punte: Produse și Promoții\nUn Produs poate participa la mai multe Promoții, iar o Promoție poate include mai multe Produse — o relație many-to-many clasică. În loc de o relație directă *:* între Produse și Promoții, construiești un tabel-punte:\n\n- **Produse**: CodProdus (unic), NumeProdus\n- **Promoții**: CodPromotie (unic), NumePromotie, DataInceput, DataSfarsit\n- **Produse_Promoții** (bridge): CodProdus, CodPromotie (aici ambele coloane au duplicate)\n\nCreezi două relații one-to-many: **Produse (1) → Produse_Promoții (*)** și **Promoții (1) → Produse_Promoții (*)**. Ambele rămân cu direcție de filtrare Single, dinspre tabelele de dimensiune spre tabelul-punte.\n\nAcum poți pune NumePromotie pe rânduri într-un PivotTable și o măsură `Nr Produse in Promotie = DISTINCTCOUNT(Produse_Promoții[CodProdus])` pentru a vedea, de exemplu, că promoția „Reduceri Vară” include 8 produse distincte, iar produsul „Laptop XT200” apare în 3 promoții active. Structura pe tabel-punte evită ambiguitatea și menține modelul rapid, chiar și cu zeci de mii de rânduri.\n\n⚠ Nu seta direcția de filtrare **Both (bidirecțională)** implicit „ca să fie sigur”. Într-un model cu mai multe tabele de fapte (ex. Comenzi și Facturi) conectate la aceleași dimensiuni (Clienți, Produse), relațiile bidirecționale multiple pot crea **căi de filtrare ambigue** — Power Pivot fie blochează relația la creare, fie o dezactivează automat, fie (mai grav) întoarce rezultate greșite în măsuri complexe. Folosește Single ca implicit și activează Both doar acolo unde ai nevoie explicită (de regulă pe tabelele-punte many-to-many), testând rezultatele într-un PivotTable simplu înainte de a construi raportul final.\n\n## Exercițiu\nAi un model cu trei tabele:\n\n- **Clienți**: CodClient (unic), NumeClient, Regiune (Nord, Sud, Centru)\n- **Produse**: CodProdus (unic), NumeProdus, Categorie\n- **Comenzi**: IDComanda, CodClient, CodProdus, Cantitate, PretUnitar\n\nCerințe:\n1. Creează relațiile necesare între cele trei tabele (indică cine e „1” și cine e „*” pentru fiecare relație).\n2. Scrie o măsură DAX pentru valoarea totală a comenzilor.\n3. Explică, folosind direcția de filtrare, cum ai obține „Valoarea totală a comenzilor pentru Regiunea Nord” într-un PivotTable, deși Regiune stă doar în tabelul Clienți.\n\n**Soluție:** 1. Relații (ambele one-to-many, direcție Single, dinspre „1” spre „*”):\n   - **Clienți (1) → Comenzi (*)** pe coloana CodClient\n   - **Produse (1) → Comenzi (*)** pe coloana CodProdus\n\n   Comenzi este tabelul de fapte, aflat mereu pe partea „many” — el conține câte un rând per tranzacție, în timp ce Clienți și Produse au valori unice pe coloana de legătură.\n\n2. Măsură DAX:\n   `Valoare Totala Comenzi = SUMX(Comenzi, Comenzi[Cantitate] * Comenzi[PretUnitar])`\n\n3. Pui Regiune (din Clienți) pe rânduri într-un PivotTable și măsura Valoare Totala Comenzi pe valori. Deoarece relația Clienți → Comenzi are direcție de filtrare Single dinspre Clienți spre Comenzi, când filtrezi/grupezi după Regiune (aflat în Clienți), Power Pivot propagă automat filtrul către tabelul Comenzi, incluzând doar comenzile clienților din regiunea respectivă. Pentru Regiunea Nord, dacă există de exemplu 3 clienți din Nord cu comenzi însumând 12.500 + 8.200 + 5.100 lei, PivotTable-ul afișează direct **25.800 lei**, fără nicio formulă suplimentară — relația face propagarea automat.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "model-date-relational-power-pivot",
+    "md": "Într-un model de date Power Pivot, informațiile nu stau într-un singur tabel uriaș cu formule VLOOKUP peste tot, ci în mai multe tabele mai mici, conectate prin **relații** — exact ca într-o bază de date relațională. O relație leagă o coloană dintr-un tabel de o coloană cu valori corespunzătoare din alt tabel, permițând motorului Power Pivot (numit VertiPaq) să calculeze automat agregări — sume, medii, numărări — peste tabele diferite, fără să copiezi date sau să folosești căutări.\n\nDe exemplu, într-un model cu tabelul **Comenzi** (fiecare rând = o linie de comandă) și tabelul **Clienți** (fiecare rând = un client unic), relația dintre ele îți permite să calculezi „Total vânzări per client” direct într-un PivotTable, deși valoarea vânzării stă în Comenzi, iar numele clientului stă în Clienți.\n\nPentru ca o relație să funcționeze corect, coloanele implicate trebuie să conțină valori comparabile (de regulă un identificator: CodClient, CodProdus) și cel puțin una dintre ele trebuie să aibă valori unice, fără duplicate — aceasta devine partea „1” a relației, numită și **tabel de tip lookup**.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cardinalitate-relatii-power-pivot",
+    "md": "Power Pivot recunoaște automat trei tipuri de cardinalitate atunci când creezi o relație:\n\n**One-to-many (1:*)** — cel mai frecvent tip. O valoare din tabelul „1” (ex. Clienți, cu CodClient unic) corespunde mai multor rânduri din tabelul „many” (ex. Comenzi, unde același CodClient apare de mai multe ori). Acesta este scheletul unui model de tip **schemă stea** (star schema): un tabel central de tranzacții (fapte) conectat la mai multe tabele de dimensiuni (Clienți, Produse, Date calendaristice).\n\n**One-to-one (1:1)** — rar, apare când ambele tabele au valori unice pe coloana de legătură (ex. un tabel Angajați și un tabel Detalii_Contract, câte un rând per angajat). De obicei e mai eficient să unești aceste tabele într-unul singur prin Power Query, decât să menții o relație separată.\n\n**Many-to-many (*:*)** — ambele tabele au duplicate pe coloana de legătură (ex. un Produs poate aparține mai multor Categorii, iar o Categorie conține mai multe Produse). Excel 365 permite relații many-to-many native, dar ele sunt mai greu de controlat și pot încetini calculele; de aceea, practica recomandată este introducerea unui **tabel-punte** (bridge table) care transformă relația într-un lanț de două relații one-to-many.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "directie-filtrare-cross-filter-relatii",
+    "md": "Fiecare relație are o **direcție de filtrare** (cross filter direction), care controlează cum „circulă” filtrele între tabele atunci când construiești un PivotTable sau o măsură DAX:\n\n- **Single (o singură direcție)** — implicit pentru relațiile one-to-many. Filtrele curg dinspre tabelul „1” către tabelul „many” (ex. filtrezi Regiune în Clienți și se filtrează automat comenzile aferente), dar nu invers.\n- **Both (bidirecțională)** — filtrele circulă în ambele sensuri. Este utilă în modele cu tabele-punte pentru many-to-many, dar folosită excesiv poate crea **căi de filtrare ambigue** și încetini raportul.\n\nO relație poate fi și **inactivă** (linie punctată în diagrama modelului), atunci când există deja o cale activă între aceleași două tabele pe altă coloană — de exemplu, ai două relații între Comenzi și Calendar: una pe „Data comenzii” (activă) și una pe „Data livrării” (inactivă). Relația inactivă poate fi activată punctual într-o măsură cu funcția DAX `USERELATIONSHIP`, fără să afecteze restul raportului.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b3"
+   },
+   {
+    "type": "example",
+    "title": "Relație one-to-many între Comenzi și Clienți",
+    "concept_key": "exemplu-relatie-one-to-many",
+    "md": "Ai importat prin Power Query două tabele într-un model Power Pivot:\n\n- **Clienți**: CodClient (unic), NumeClient, Regiune\n- **Comenzi**: IDComanda, CodClient, CodProdus, Cantitate, PretUnitar\n\nPași pentru relație:\n1. În fereastra Power Pivot, deschizi **Diagram View** (sau Data > Relationships din Excel).\n2. Tragi o linie de la CodClient din tabelul Comenzi la CodClient din tabelul Clienți (sau folosești New Relationship și selectezi manual cele două coloane).\n3. Excel detectează automat cardinalitatea: **Clienți (1) → Comenzi (*)**, direcție de filtrare Single, dinspre Clienți spre Comenzi.\n\nRezultat: într-un PivotTable pui NumeClient pe rânduri și o măsură `Valoare Totala = SUMX(Comenzi, Comenzi[Cantitate]*Comenzi[PretUnitar])` pe valori. Pentru clientul „Alfa Trading SRL” (CodClient = C001, cu 12 comenzi în tabelul Comenzi însumând cantități × prețuri), rezultatul afișat automat este **45.320 lei** — calculat corect, chiar dacă numele clientului și valorile comenzilor stau în tabele diferite, fără nicio formulă VLOOKUP.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b4"
+   },
+   {
+    "type": "example",
+    "title": "Many-to-many cu tabel-punte: Produse și Promoții",
+    "concept_key": "exemplu-relatie-many-to-many-bridge",
+    "md": "Un Produs poate participa la mai multe Promoții, iar o Promoție poate include mai multe Produse — o relație many-to-many clasică. În loc de o relație directă *:* între Produse și Promoții, construiești un tabel-punte:\n\n- **Produse**: CodProdus (unic), NumeProdus\n- **Promoții**: CodPromotie (unic), NumePromotie, DataInceput, DataSfarsit\n- **Produse_Promoții** (bridge): CodProdus, CodPromotie (aici ambele coloane au duplicate)\n\nCreezi două relații one-to-many: **Produse (1) → Produse_Promoții (*)** și **Promoții (1) → Produse_Promoții (*)**. Ambele rămân cu direcție de filtrare Single, dinspre tabelele de dimensiune spre tabelul-punte.\n\nAcum poți pune NumePromotie pe rânduri într-un PivotTable și o măsură `Nr Produse in Promotie = DISTINCTCOUNT(Produse_Promoții[CodProdus])` pentru a vedea, de exemplu, că promoția „Reduceri Vară” include 8 produse distincte, iar produsul „Laptop XT200” apare în 3 promoții active. Structura pe tabel-punte evită ambiguitatea și menține modelul rapid, chiar și cu zeci de mii de rânduri.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Nu seta direcția de filtrare **Both (bidirecțională)** implicit „ca să fie sigur”. Într-un model cu mai multe tabele de fapte (ex. Comenzi și Facturi) conectate la aceleași dimensiuni (Clienți, Produse), relațiile bidirecționale multiple pot crea **căi de filtrare ambigue** — Power Pivot fie blochează relația la creare, fie o dezactivează automat, fie (mai grav) întoarce rezultate greșite în măsuri complexe. Folosește Single ca implicit și activează Both doar acolo unde ai nevoie explicită (de regulă pe tabelele-punte many-to-many), testând rezultatele într-un PivotTable simplu înainte de a construi raportul final.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai un model cu trei tabele:\n\n- **Clienți**: CodClient (unic), NumeClient, Regiune (Nord, Sud, Centru)\n- **Produse**: CodProdus (unic), NumeProdus, Categorie\n- **Comenzi**: IDComanda, CodClient, CodProdus, Cantitate, PretUnitar\n\nCerințe:\n1. Creează relațiile necesare între cele trei tabele (indică cine e „1” și cine e „*” pentru fiecare relație).\n2. Scrie o măsură DAX pentru valoarea totală a comenzilor.\n3. Explică, folosind direcția de filtrare, cum ai obține „Valoarea totală a comenzilor pentru Regiunea Nord” într-un PivotTable, deși Regiune stă doar în tabelul Clienți.",
+    "solution_md": "1. Relații (ambele one-to-many, direcție Single, dinspre „1” spre „*”):\n   - **Clienți (1) → Comenzi (*)** pe coloana CodClient\n   - **Produse (1) → Comenzi (*)** pe coloana CodProdus\n\n   Comenzi este tabelul de fapte, aflat mereu pe partea „many” — el conține câte un rând per tranzacție, în timp ce Clienți și Produse au valori unice pe coloana de legătură.\n\n2. Măsură DAX:\n   `Valoare Totala Comenzi = SUMX(Comenzi, Comenzi[Cantitate] * Comenzi[PretUnitar])`\n\n3. Pui Regiune (din Clienți) pe rânduri într-un PivotTable și măsura Valoare Totala Comenzi pe valori. Deoarece relația Clienți → Comenzi are direcție de filtrare Single dinspre Clienți spre Comenzi, când filtrezi/grupezi după Regiune (aflat în Clienți), Power Pivot propagă automat filtrul către tabelul Comenzi, incluzând doar comenzile clienților din regiunea respectivă. Pentru Regiunea Nord, dacă există de exemplu 3 clienți din Nord cu comenzi însumând 12.500 + 8.200 + 5.100 lei, PivotTable-ul afișează direct **25.800 lei**, fără nicio formulă suplimentară — relația face propagarea automat.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-o relație one-to-many între tabelul Clienți (CodClient unic) și tabelul Comenzi (CodClient repetat), care tabel reprezintă partea „many” (*) a relației?",
+    "choices": [
+     "Clienți",
+     "Comenzi",
+     "Ambele, în mod egal",
+     "Depinde de direcția de filtrare aleasă"
+    ],
+    "answer": 1,
+    "explain": "Partea „many” este întotdeauna tabelul unde valoarea de legătură se repetă — Comenzi, pentru că același client poate avea mai multe comenzi. Clienți este partea „1”, cu CodClient unic.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este riscul principal atunci când setezi direcția de filtrare Both (bidirecțională) pe mai multe relații simultan, între tabele de fapte multiple conectate la aceleași dimensiuni?",
+    "choices": [
+     "Modelul ocupă mai puțin spațiu pe disc",
+     "Se creează căi de filtrare ambigue, care pot bloca relația sau produce rezultate greșite",
+     "Power Pivot nu mai permite crearea de măsuri DAX",
+     "Coloanele calculate dispar automat din model"
+    ],
+    "answer": 1,
+    "explain": "Filtrarea bidirecțională multiplă poate genera mai multe căi posibile prin care un filtru ajunge la un tabel, ceea ce Power Pivot fie blochează la creare, fie poate produce agregări incorecte în măsuri complexe. Se recomandă Single ca implicit.",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o relație one-to-many (1:*) într-un model de date Power Pivot?",
+    "back": "O relație în care o valoare unică din tabelul „1” (ex. Clienți) corespunde mai multor rânduri din tabelul „many” (ex. Comenzi), permițând agregarea automată a datelor din tabelul de tranzacții pe baza atributelor din tabelul de dimensiune.",
+    "concept_key": "cardinalitate-relatii-power-pivot",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce simboluri folosește Power Pivot pentru a marca partea „unu” și partea „multe” într-o relație?",
+    "back": "„1” pentru tabelul cu valori unice pe coloana de legătură (partea lookup) și „*” pentru tabelul unde valoarea se poate repeta (partea de tranzacții).",
+    "concept_key": "cardinalitate-relatii-power-pivot",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un tabel-punte (bridge table) și când îl folosești?",
+    "back": "Un tabel intermediar folosit pentru a transforma o relație many-to-many între două tabele în două relații one-to-many, evitând ambiguitatea și problemele de performanță ale relațiilor *:* directe.",
+    "concept_key": "exemplu-relatie-many-to-many-bridge",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce funcție DAX activează temporar o relație inactivă într-o măsură?",
+    "back": "USERELATIONSHIP — se folosește în interiorul CALCULATE pentru a activa punctual o relație marcată ca inactivă în model, fără să schimbe relația activă implicită.",
+    "concept_key": "directie-filtrare-cross-filter-relatii",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este direcția implicită de filtrare (cross filter direction) pentru o relație one-to-many nou creată?",
+    "back": "Single (o singură direcție), cu filtrele propagate dinspre tabelul „1” (dimensiune) către tabelul „*” (fapte); direcția Both trebuie setată manual, doar unde e nevoie explicit.",
+    "concept_key": "directie-filtrare-cross-filter-relatii",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu se recomandă activarea filtrării bidirecționale (Both) pe toate relațiile dintr-un model complex?",
+    "back": "Pentru că poate crea căi de filtrare ambigue între tabele de fapte multiple și dimensiuni comune, ceea ce Power Pivot fie blochează, fie poate duce la rezultate incorecte în măsuri DAX complexe; se recomandă Single ca implicit.",
+    "concept_key": "directie-filtrare-cross-filter-relatii",
+    "blockId": "cmjjuxvo7002aumkpszpdm0el-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1128,
+   "flashcards": 6
+  }
+ }
+}

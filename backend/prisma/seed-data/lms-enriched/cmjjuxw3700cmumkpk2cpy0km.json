@@ -1,0 +1,155 @@
+{
+ "lessonId": "cmjjuxw3700cmumkpk2cpy0km",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Planul de Conturi Românesc",
+ "lesson": "Structura planului de conturi",
+ "category": "FINANCE_OPS",
+ "content": "# Structura planului de conturi\n\n## Ce este planul de conturi general\n\nPlanul de conturi general este \"harta\" oficială a contabilității din România: instrumentul care organizează toate operațiunile economice ale unei entități în conturi standardizate, astfel încât orice contabil, auditor sau inspector ANAF să poată \"citi\" aceleași informații în același mod, indiferent de firmă.\n\nÎn România, planul de conturi general este reglementat prin **OMFP nr. 1.802/2014** pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și consolidate. Toate entitățile care aplică acest set de reglementări (marea majoritate a societăților comerciale, cu excepția celor care raportează în IFRS ca bază de întocmire) trebuie să folosească simbolurile și denumirile de conturi din această anexă.\n\nPlanul este organizat pe **9 clase de conturi**, numerotate de la 1 la 9. Fiecare clasă grupează un tip de element patrimonial sau de rezultat:\n\n- **Clasa 1** – Conturi de capitaluri (capital social, rezerve, rezultat)\n- **Clasa 2** – Conturi de imobilizări (active pe termen lung)\n- **Clasa 3** – Conturi de stocuri și producție în curs de execuție\n- **Clasa 4** – Conturi de terți (clienți, furnizori, salariați, buget de stat)\n- **Clasa 5** – Conturi de trezorerie (bănci, casă, investiții pe termen scurt)\n- **Clasa 6** – Conturi de cheltuieli\n- **Clasa 7** – Conturi de venituri\n- **Clasa 8** – Conturi speciale (în afara bilanțului, extrabilanțiere)\n- **Clasa 9** – Conturi de gestiune, pentru contabilitatea de gestiune internă (opționale pentru multe entități)\n\nAceastă împărțire nu este întâmplătoare: clasele 1-5 furnizează informațiile pentru **bilanț**, clasele 6-7 furnizează informațiile pentru **contul de profit și pierdere**, iar clasele 8-9 au rol special, complementar.\n\n## Ierarhia simbolurilor de cont: de la clasă la analitic\n\nSimbolul unui cont contabil este construit zecimal, cifră cu cifră, iar fiecare cifră adăugată aduce un nivel suplimentar de detaliu:\n\n1. **Clasa** (1 cifră) – categoria mare (ex.: 4 = terți)\n2. **Grupa** (2 cifre) – subîmparte clasa pe tipuri de elemente înrudite (ex.: 41 = clienți și conturi asimilate)\n3. **Contul sintetic de gradul I** (3 cifre) – primul nivel de detaliu obligatoriu prin reglementare (ex.: 411 = Clienți)\n4. **Contul sintetic de gradul II** (4 cifre) – dezvoltă gradul I acolo unde reglementarea impune o distincție suplimentară (ex.: 4111 = Clienți, 4118 = Clienți incerți sau în litigiu)\n5. **Contul analitic** – dezvoltarea liberă, stabilită de fiecare entitate în funcție de nevoile proprii de gestiune (ex.: 4111.SC-ABC-SRL, pentru evidența pe fiecare client în parte)\n\nConturile sintetice (gradul I și II) sunt cele folosite în **balanța de verificare** și în situațiile financiare – ele sunt identice, ca simbol și denumire, la orice entitate care aplică OMFP 1802/2014. Conturile analitice sunt instrumentul de lucru zilnic al contabilului: permit urmărirea separată a fiecărui client, furnizor, mijloc fix, gestiune de stoc sau centru de cost, fără să afecteze comparabilitatea situațiilor financiare între firme.\n\nRegula practică: **totalul soldurilor conturilor analitice ale unui cont sintetic trebuie să fie mereu egal cu soldul contului sintetic respectiv.** Dacă balanța analitică a clienților nu se potrivește cu soldul sintetic 411, există o eroare de înregistrare care trebuie identificată înainte de închiderea lunii.\n\n## Funcțiunea conturilor: regula de debitare și creditare\n\nÎn partida dublă, orice operațiune se înregistrează simultan în cel puțin două conturi: unul se debitează, altul se creditează, cu aceeași sumă. Modul în care un cont \"reacționează\" la o creștere sau o scădere a elementului pe care îl reprezintă se numește **funcțiunea contului**, și depinde de natura lui:\n\n- **Conturi de activ** (majoritatea claselor 2, 3, 5, plus 6 – cheltuieli, care funcționează după aceeași regulă): se **debitează** la creșteri, se **creditează** la scăderi; soldul final normal este **debitor**.\n- **Conturi de pasiv** (majoritatea clasei 1, o parte din clasa 4, plus 7 – venituri, care funcționează după aceeași regulă): se **creditează** la creșteri, se **debitează** la scăderi; soldul final normal este **creditor**.\n- **Conturi bifuncționale**: pot avea, la un moment dat, fie sold debitor, fie sold creditor, în funcție de situația concretă (exemplul clasic este contul 121 \"Profit sau pierdere\": sold creditor = profit, sold debitor = pierdere).\n\nÎn clasa 4 (Terți) trebuie multă atenție, pentru că împarte conturi de activ (ex.: 411 Clienți, 4426 TVA deductibilă), conturi de pasiv (ex.: 401 Furnizori, 4427 TVA colectată) și conturi bifuncționale (ex.: 418 Clienți – facturi de întocmit, 4428 TVA neexigibilă, 473 Decontări din operații în curs de clarificare).\n\nClasele 6 și 7 au o particularitate: la sfârșitul fiecărei luni, conturile de cheltuieli și de venituri se **închid** prin contul 121 \"Profit sau pierdere\" (cheltuielile se creditează, veniturile se debitează), astfel încât la începutul lunii următoare pornesc mereu de la sold zero.\n\n> Temei legal: OMFP nr. 1.802/2014 privind Reglementările contabile referitoare la situațiile financiare anuale individuale și consolidate Anexa – Planul de conturi general (în vigoare de la 2015-01-01)\nPlanul de conturi general, cu cele 9 clase și simbolurile/denumirile conturilor sintetice de gradul I și II, este publicat ca anexă la OMFP 1.802/2014 și se aplică de la situațiile financiare ale exercițiului 2015. Entitățile pot dezvolta conturi analitice suplimentare, dar nu pot modifica sau elimina conturile sintetice reglementate.\n\n## Exemplu: De la clasă la cont analitic – descompunerea simbolului 411\nSă urmărim cum se construiește, cifră cu cifră, simbolul unui cont folosit zilnic de orice firmă: contul de clienți.\n\n| Nivel | Simbol | Denumire |\n|---|---|---|\n| Clasă | 4 | Conturi de terți |\n| Grupă | 41 | Clienți și conturi asimilate |\n| Cont sintetic gradul I | 411 | Clienți |\n| Cont sintetic gradul II | 4111 | Clienți |\n| Cont sintetic gradul II | 4118 | Clienți incerți sau în litigiu |\n| Cont analitic (stabilit de firmă) | 4111.001 | SC Exemplu Distribuție SRL |\n\nDacă SC Vânzări Rapide SRL are trei clienți activi – SC Exemplu Distribuție SRL, SC Nord Comercial SRL și PFA Popescu Andrei – contabilul va deschide trei analitice sub 4111: 4111.001, 4111.002 și 4111.003. La finalul lunii, suma soldurilor celor trei analitice trebuie să fie exact egală cu soldul sintetic 4111 din balanța de verificare. Dacă apare o diferență, înseamnă că o factură sau o încasare a fost înregistrată pe analiticul greșit sau direct pe sintetic, fără analitic.\n\n## Exemplu: Funcționarea unui cont de activ versus a unui cont de pasiv\nSC Exemplu SRL vinde marfă unui client cu prețul de 10.000 lei, TVA 21% (cotă standard, aplicabilă de la 1 august 2025, conform Legii 141/2025). Nota contabilă la facturare:\n\n**411 „Clienți” = %** 12.100 lei\n&nbsp;&nbsp;**707 „Venituri din vânzarea mărfurilor”** 10.000 lei\n&nbsp;&nbsp;**4427 „TVA colectată”** 2.100 lei\n\nContul 411 este de **activ**: creanța asupra clientului crește, deci contul se debitează; soldul final este debitor (firma are de încasat 12.100 lei). Contul 4427 este de **pasiv**: obligația de plată a TVA către bugetul de stat crește, deci contul se creditează.\n\nDupă o săptămână, SC Exemplu SRL plătește prin bancă o factură de 5.000 lei către un furnizor:\n\n**401 „Furnizori” = 5121 „Conturi la bănci în lei”** 5.000 lei\n\nContul 401 este de **pasiv**: la plată, obligația scade, deci contul se **debitează** (scădere pe pasiv = debit). Contul 5121 este de **activ**: disponibilul din bancă scade, deci contul se **creditează** (scădere pe activ = credit). Observă simetria: activul debitat la creștere se creditează la scădere, iar pasivul creditat la creștere se debitează la scădere.\n\n⚠ Nu presupune niciodată funcțiunea unui cont doar după clasa din care face parte, mai ales în clasa 4. Există conturi **bifuncționale** care pot avea sold debitor sau creditor în funcție de context: 121 „Profit sau pierdere”, 418 „Clienți – facturi de întocmit”, 4428 „TVA neexigibilă”, 473 „Decontări din operații în curs de clarificare”. Înainte de a înregistra o operațiune pe un cont nou pentru tine, verifică în monografia contabilă sau în planul de conturi oficial (anexa la OMFP 1.802/2014) care este funcțiunea exactă a contului respectiv.\n\n## Exercițiu\nPentru fiecare dintre conturile de mai jos, precizează: (a) clasa și grupa din care face parte, (b) funcțiunea (activ, pasiv sau bifuncțional) și (c) tipul de sold final normal.\n\n1. **371** – Mărfuri\n2. **421** – Personal – salarii datorate\n3. **512** – Conturi la bănci în lei\n4. **605** – Cheltuieli privind energia și apa\n5. **706** – Venituri din redevențe, locații de gestiune și chirii\n6. **1012** – Capital subscris vărsat\n\n**Soluție:** 1. **371 Mărfuri** – clasa 3 (Stocuri și producție în curs de execuție), grupa 37 (Mărfuri); cont de **activ**; sold final **debitor** (valoarea stocului de mărfuri deținut).\n2. **421 Personal – salarii datorate** – clasa 4 (Terți), grupa 42 (Personal și conturi asimilate); cont de **pasiv**; sold final **creditor** (datoria firmei către salariați).\n3. **512 Conturi la bănci în lei** – clasa 5 (Trezorerie), grupa 51 (Conturi la bănci); cont de **activ**; sold final **debitor** (disponibilul din cont).\n4. **605 Cheltuieli privind energia și apa** – clasa 6 (Cheltuieli); funcționează după regula activului: se **debitează** la înregistrarea consumului; se închide lunar prin 121, deci nu are sold la final de lună.\n5. **706 Venituri din redevențe, locații de gestiune și chirii** – clasa 7 (Venituri); funcționează după regula pasivului: se **creditează** la înregistrarea venitului; se închide lunar prin 121.\n6. **1012 Capital subscris vărsat** – clasa 1 (Capitaluri), grupa 10 (Capital și rezerve); cont de **pasiv**; sold final **creditor** (valoarea capitalului social vărsat de asociați/acționari).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "plan-conturi-general-omfp1802",
+    "md": "## Ce este planul de conturi general\n\nPlanul de conturi general este \"harta\" oficială a contabilității din România: instrumentul care organizează toate operațiunile economice ale unei entități în conturi standardizate, astfel încât orice contabil, auditor sau inspector ANAF să poată \"citi\" aceleași informații în același mod, indiferent de firmă.\n\nÎn România, planul de conturi general este reglementat prin **OMFP nr. 1.802/2014** pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și consolidate. Toate entitățile care aplică acest set de reglementări (marea majoritate a societăților comerciale, cu excepția celor care raportează în IFRS ca bază de întocmire) trebuie să folosească simbolurile și denumirile de conturi din această anexă.\n\nPlanul este organizat pe **9 clase de conturi**, numerotate de la 1 la 9. Fiecare clasă grupează un tip de element patrimonial sau de rezultat:\n\n- **Clasa 1** – Conturi de capitaluri (capital social, rezerve, rezultat)\n- **Clasa 2** – Conturi de imobilizări (active pe termen lung)\n- **Clasa 3** – Conturi de stocuri și producție în curs de execuție\n- **Clasa 4** – Conturi de terți (clienți, furnizori, salariați, buget de stat)\n- **Clasa 5** – Conturi de trezorerie (bănci, casă, investiții pe termen scurt)\n- **Clasa 6** – Conturi de cheltuieli\n- **Clasa 7** – Conturi de venituri\n- **Clasa 8** – Conturi speciale (în afara bilanțului, extrabilanțiere)\n- **Clasa 9** – Conturi de gestiune, pentru contabilitatea de gestiune internă (opționale pentru multe entități)\n\nAceastă împărțire nu este întâmplătoare: clasele 1-5 furnizează informațiile pentru **bilanț**, clasele 6-7 furnizează informațiile pentru **contul de profit și pierdere**, iar clasele 8-9 au rol special, complementar.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ierarhie-simboluri-cont",
+    "md": "## Ierarhia simbolurilor de cont: de la clasă la analitic\n\nSimbolul unui cont contabil este construit zecimal, cifră cu cifră, iar fiecare cifră adăugată aduce un nivel suplimentar de detaliu:\n\n1. **Clasa** (1 cifră) – categoria mare (ex.: 4 = terți)\n2. **Grupa** (2 cifre) – subîmparte clasa pe tipuri de elemente înrudite (ex.: 41 = clienți și conturi asimilate)\n3. **Contul sintetic de gradul I** (3 cifre) – primul nivel de detaliu obligatoriu prin reglementare (ex.: 411 = Clienți)\n4. **Contul sintetic de gradul II** (4 cifre) – dezvoltă gradul I acolo unde reglementarea impune o distincție suplimentară (ex.: 4111 = Clienți, 4118 = Clienți incerți sau în litigiu)\n5. **Contul analitic** – dezvoltarea liberă, stabilită de fiecare entitate în funcție de nevoile proprii de gestiune (ex.: 4111.SC-ABC-SRL, pentru evidența pe fiecare client în parte)\n\nConturile sintetice (gradul I și II) sunt cele folosite în **balanța de verificare** și în situațiile financiare – ele sunt identice, ca simbol și denumire, la orice entitate care aplică OMFP 1802/2014. Conturile analitice sunt instrumentul de lucru zilnic al contabilului: permit urmărirea separată a fiecărui client, furnizor, mijloc fix, gestiune de stoc sau centru de cost, fără să afecteze comparabilitatea situațiilor financiare între firme.\n\nRegula practică: **totalul soldurilor conturilor analitice ale unui cont sintetic trebuie să fie mereu egal cu soldul contului sintetic respectiv.** Dacă balanța analitică a clienților nu se potrivește cu soldul sintetic 411, există o eroare de înregistrare care trebuie identificată înainte de închiderea lunii.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "functiune-conturilor",
+    "md": "## Funcțiunea conturilor: regula de debitare și creditare\n\nÎn partida dublă, orice operațiune se înregistrează simultan în cel puțin două conturi: unul se debitează, altul se creditează, cu aceeași sumă. Modul în care un cont \"reacționează\" la o creștere sau o scădere a elementului pe care îl reprezintă se numește **funcțiunea contului**, și depinde de natura lui:\n\n- **Conturi de activ** (majoritatea claselor 2, 3, 5, plus 6 – cheltuieli, care funcționează după aceeași regulă): se **debitează** la creșteri, se **creditează** la scăderi; soldul final normal este **debitor**.\n- **Conturi de pasiv** (majoritatea clasei 1, o parte din clasa 4, plus 7 – venituri, care funcționează după aceeași regulă): se **creditează** la creșteri, se **debitează** la scăderi; soldul final normal este **creditor**.\n- **Conturi bifuncționale**: pot avea, la un moment dat, fie sold debitor, fie sold creditor, în funcție de situația concretă (exemplul clasic este contul 121 \"Profit sau pierdere\": sold creditor = profit, sold debitor = pierdere).\n\nÎn clasa 4 (Terți) trebuie multă atenție, pentru că împarte conturi de activ (ex.: 411 Clienți, 4426 TVA deductibilă), conturi de pasiv (ex.: 401 Furnizori, 4427 TVA colectată) și conturi bifuncționale (ex.: 418 Clienți – facturi de întocmit, 4428 TVA neexigibilă, 473 Decontări din operații în curs de clarificare).\n\nClasele 6 și 7 au o particularitate: la sfârșitul fiecărei luni, conturile de cheltuieli și de venituri se **închid** prin contul 121 \"Profit sau pierdere\" (cheltuielile se creditează, veniturile se debitează), astfel încât la începutul lunii următoare pornesc mereu de la sold zero.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP nr. 1.802/2014 privind Reglementările contabile referitoare la situațiile financiare anuale individuale și consolidate",
+    "article": "Anexa – Planul de conturi general",
+    "effective": "2015-01-01",
+    "md": "Planul de conturi general, cu cele 9 clase și simbolurile/denumirile conturilor sintetice de gradul I și II, este publicat ca anexă la OMFP 1.802/2014 și se aplică de la situațiile financiare ale exercițiului 2015. Entitățile pot dezvolta conturi analitice suplimentare, dar nu pot modifica sau elimina conturile sintetice reglementate.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b4"
+   },
+   {
+    "type": "example",
+    "title": "De la clasă la cont analitic – descompunerea simbolului 411",
+    "concept_key": "ierarhie-simboluri-cont",
+    "md": "Să urmărim cum se construiește, cifră cu cifră, simbolul unui cont folosit zilnic de orice firmă: contul de clienți.\n\n| Nivel | Simbol | Denumire |\n|---|---|---|\n| Clasă | 4 | Conturi de terți |\n| Grupă | 41 | Clienți și conturi asimilate |\n| Cont sintetic gradul I | 411 | Clienți |\n| Cont sintetic gradul II | 4111 | Clienți |\n| Cont sintetic gradul II | 4118 | Clienți incerți sau în litigiu |\n| Cont analitic (stabilit de firmă) | 4111.001 | SC Exemplu Distribuție SRL |\n\nDacă SC Vânzări Rapide SRL are trei clienți activi – SC Exemplu Distribuție SRL, SC Nord Comercial SRL și PFA Popescu Andrei – contabilul va deschide trei analitice sub 4111: 4111.001, 4111.002 și 4111.003. La finalul lunii, suma soldurilor celor trei analitice trebuie să fie exact egală cu soldul sintetic 4111 din balanța de verificare. Dacă apare o diferență, înseamnă că o factură sau o încasare a fost înregistrată pe analiticul greșit sau direct pe sintetic, fără analitic.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b5"
+   },
+   {
+    "type": "example",
+    "title": "Funcționarea unui cont de activ versus a unui cont de pasiv",
+    "concept_key": "functiune-conturilor",
+    "md": "SC Exemplu SRL vinde marfă unui client cu prețul de 10.000 lei, TVA 21% (cotă standard, aplicabilă de la 1 august 2025, conform Legii 141/2025). Nota contabilă la facturare:\n\n**411 „Clienți” = %** 12.100 lei\n&nbsp;&nbsp;**707 „Venituri din vânzarea mărfurilor”** 10.000 lei\n&nbsp;&nbsp;**4427 „TVA colectată”** 2.100 lei\n\nContul 411 este de **activ**: creanța asupra clientului crește, deci contul se debitează; soldul final este debitor (firma are de încasat 12.100 lei). Contul 4427 este de **pasiv**: obligația de plată a TVA către bugetul de stat crește, deci contul se creditează.\n\nDupă o săptămână, SC Exemplu SRL plătește prin bancă o factură de 5.000 lei către un furnizor:\n\n**401 „Furnizori” = 5121 „Conturi la bănci în lei”** 5.000 lei\n\nContul 401 este de **pasiv**: la plată, obligația scade, deci contul se **debitează** (scădere pe pasiv = debit). Contul 5121 este de **activ**: disponibilul din bancă scade, deci contul se **creditează** (scădere pe activ = credit). Observă simetria: activul debitat la creștere se creditează la scădere, iar pasivul creditat la creștere se debitează la scădere.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu presupune niciodată funcțiunea unui cont doar după clasa din care face parte, mai ales în clasa 4. Există conturi **bifuncționale** care pot avea sold debitor sau creditor în funcție de context: 121 „Profit sau pierdere”, 418 „Clienți – facturi de întocmit”, 4428 „TVA neexigibilă”, 473 „Decontări din operații în curs de clarificare”. Înainte de a înregistra o operațiune pe un cont nou pentru tine, verifică în monografia contabilă sau în planul de conturi oficial (anexa la OMFP 1.802/2014) care este funcțiunea exactă a contului respectiv.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Pentru fiecare dintre conturile de mai jos, precizează: (a) clasa și grupa din care face parte, (b) funcțiunea (activ, pasiv sau bifuncțional) și (c) tipul de sold final normal.\n\n1. **371** – Mărfuri\n2. **421** – Personal – salarii datorate\n3. **512** – Conturi la bănci în lei\n4. **605** – Cheltuieli privind energia și apa\n5. **706** – Venituri din redevențe, locații de gestiune și chirii\n6. **1012** – Capital subscris vărsat",
+    "solution_md": "1. **371 Mărfuri** – clasa 3 (Stocuri și producție în curs de execuție), grupa 37 (Mărfuri); cont de **activ**; sold final **debitor** (valoarea stocului de mărfuri deținut).\n2. **421 Personal – salarii datorate** – clasa 4 (Terți), grupa 42 (Personal și conturi asimilate); cont de **pasiv**; sold final **creditor** (datoria firmei către salariați).\n3. **512 Conturi la bănci în lei** – clasa 5 (Trezorerie), grupa 51 (Conturi la bănci); cont de **activ**; sold final **debitor** (disponibilul din cont).\n4. **605 Cheltuieli privind energia și apa** – clasa 6 (Cheltuieli); funcționează după regula activului: se **debitează** la înregistrarea consumului; se închide lunar prin 121, deci nu are sold la final de lună.\n5. **706 Venituri din redevențe, locații de gestiune și chirii** – clasa 7 (Venituri); funcționează după regula pasivului: se **creditează** la înregistrarea venitului; se închide lunar prin 121.\n6. **1012 Capital subscris vărsat** – clasa 1 (Capitaluri), grupa 10 (Capital și rezerve); cont de **pasiv**; sold final **creditor** (valoarea capitalului social vărsat de asociați/acționari).",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Câte clase de conturi conține planul de conturi general reglementat prin OMFP 1.802/2014?",
+    "choices": [
+     "7 clase",
+     "8 clase",
+     "9 clase",
+     "10 clase"
+    ],
+    "answer": 2,
+    "explain": "Planul de conturi general are 9 clase, de la clasa 1 (Capitaluri) la clasa 9 (Conturi de gestiune).",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un cont de pasiv, la creșterea valorii elementului patrimonial pe care îl reprezintă, se:",
+    "choices": [
+     "Debitează",
+     "Creditează",
+     "Nu se înregistrează, se raportează direct în bilanț",
+     "Depinde exclusiv de clasa din care face parte, nu de natura contului"
+    ],
+    "answer": 1,
+    "explain": "Regula pasivului: creșterile se înregistrează în credit, scăderile în debit, iar soldul final normal este creditor.",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele este un exemplu de cont bifuncțional, folosit frecvent în monografiile contabile?",
+    "choices": [
+     "411 Clienți",
+     "401 Furnizori",
+     "121 Profit sau pierdere",
+     "512 Conturi la bănci în lei"
+    ],
+    "answer": 2,
+    "explain": "Contul 121 poate avea sold creditor (profit) sau debitor (pierdere), în funcție de rezultatul perioadei; celelalte conturi din listă au funcțiune fixă (activ sau pasiv).",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte clase are planul de conturi general românesc și prin ce act este reglementat?",
+    "back": "9 clase (1-9), reglementate prin anexa la OMFP nr. 1.802/2014, aplicabile de la 1 ianuarie 2015.",
+    "concept_key": "plan-conturi-general-omfp1802",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă clasa 4 din planul de conturi general?",
+    "back": "Conturile de terți: relațiile de decontare cu clienții, furnizorii, personalul, bugetul de stat și alte entități.",
+    "concept_key": "plan-conturi-general-omfp1802",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt nivelurile ierarhice ale unui simbol de cont, de la general la particular?",
+    "back": "Clasă (1 cifră) → Grupă (2 cifre) → Cont sintetic gradul I (3 cifre) → Cont sintetic gradul II (4 cifre) → Cont analitic (dezvoltare liberă a entității).",
+    "concept_key": "ierarhie-simboluri-cont",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este regula de funcționare a unui cont de activ?",
+    "back": "Se debitează la creșteri, se creditează la scăderi; soldul final normal este debitor.",
+    "concept_key": "functiune-conturilor",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este regula de funcționare a unui cont de pasiv?",
+    "back": "Se creditează la creșteri, se debitează la scăderi; soldul final normal este creditor.",
+    "concept_key": "functiune-conturilor",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un cont bifuncțional? Dă un exemplu.",
+    "back": "Un cont care poate avea, la un moment dat, fie sold debitor, fie sold creditor, în funcție de situație (ex.: contul 121 „Profit sau pierdere”).",
+    "concept_key": "functiune-conturilor",
+    "blockId": "cmjjuxw3700cmumkpk2cpy0km-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1413,
+   "flashcards": 6
+  }
+ }
+}

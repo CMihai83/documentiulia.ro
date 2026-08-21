@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxw0400amumkp2vaxsfd2",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Exam Preparation",
+ "lesson": "Simulare 1 (90 întrebări)",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Simulare 1 (90 întrebări) (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "O firmă SRL din București inițiază un proiect de digitalizare a proceselor interne. Conform PMBOK 7, care este definiția corectă a unui „proiect”?",
+     "choices": [
+      "Un efort temporar, cu început și sfârșit definite, întreprins pentru a crea un produs, serviciu sau rezultat unic",
+      "O activitate operațională repetitivă, fără dată de finalizare stabilită",
+      "Un set de proceduri standard aplicate permanent în cadrul organizației",
+      "O inițiativă strategică fără obiective măsurabile"
+     ],
+     "answer": 0,
+     "explain": "PMBOK 7 definește proiectul ca un efort temporar (cu început și sfârșit clare) desfășurat pentru a produce un rezultat unic, spre deosebire de operațiuni, care sunt continue și repetitive.",
+     "concept_key": "definitie_proiect_pmbok7"
+    },
+    {
+     "q": "Câte domenii de performanță (performance domains) definește PMBOK 7 ca înlocuitor al grupurilor de procese din edițiile anterioare?",
+     "choices": [
+      "5",
+      "6",
+      "8",
+      "10"
+     ],
+     "answer": 2,
+     "explain": "PMBOK 7 renunță la cele 5 grupuri de procese și cele 10 arii de cunoștințe din PMBOK 6 în favoarea a 8 domenii de performanță: Stakeholderi, Echipă, Abordare de dezvoltare și ciclu de viață, Planificare, Lucrul la proiect, Livrare, Măsurare și Incertitudine.",
+     "concept_key": "domenii_performanta_pmbok7"
+    },
+    {
+     "q": "O companie RO implementează un ERP folosind Scrum. Conform Scrum Guide 2020, din cine este format Scrum Team-ul?",
+     "choices": [
+      "Sponsor, Manager de proiect și Echipa de execuție",
+      "Product Owner, Scrum Master și Dezvoltatori (Developers)",
+      "Product Owner, Business Analyst și Testeri",
+      "Scrum Master, Client și Echipa de suport tehnic"
+     ],
+     "answer": 1,
+     "explain": "Scrum Guide 2020 definește Scrum Team-ul ca fiind format din Product Owner, Scrum Master și Dezvoltatori (termenul „Development Team” a fost eliminat, echipa fiind considerată un tot unitar, auto-organizat).",
+     "concept_key": "scrum_team_roluri"
+    },
+    {
+     "q": "La finalul lunii 3 dintr-un proiect de implementare ERP, Valoarea Planificată (PV) este 100.000 lei, Valoarea Realizată (EV) este 90.000 lei, iar Costurile Reale (AC) sunt 95.000 lei. Care este interpretarea corectă?",
+     "choices": [
+      "Proiectul este atât în avans, cât și sub buget",
+      "CPI = EV/AC = 0,947, deci proiectul depășește bugetul planificat pentru munca realizată",
+      "SPI = AC/PV = 0,95, deci proiectul este în avans față de grafic",
+      "Proiectul este exact conform planificării (PV = EV = AC)"
+     ],
+     "answer": 1,
+     "explain": "CPI (Cost Performance Index) = EV/AC = 90.000/95.000 ≈ 0,947. O valoare sub 1 arată că proiectul cheltuiește mai mult decât valoarea muncii efectiv realizate, deci există o depășire de cost. SPI = EV/PV = 0,9, indicând și o întârziere față de grafic.",
+     "concept_key": "evm_cpi_spi"
+    },
+    {
+     "q": "Într-un proiect de digitalizare, activitatea „Migrare date” are o durată de 5 zile și poate fi amânată cu maximum 2 zile fără a afecta data de finalizare a proiectului. Cum se numește acest interval de 2 zile în metoda drumului critic (CPM)?",
+     "choices": [
+      "Free float (rezervă liberă)",
+      "Total float (rezervă totală)",
+      "Lead time (avans)",
+      "Lag time (întârziere)"
+     ],
+     "answer": 1,
+     "explain": "Total float (rezerva totală) reprezintă perioada cu care o activitate poate fi întârziată fără a afecta data de finalizare a întregului proiect. Free float se referă doar la impactul asupra activității imediat următoare.",
+     "concept_key": "cpm_total_float"
+    },
+    {
+     "q": "Managerul unui proiect de implementare ERP identifică riscul „posibila indisponibilitate a echipei de consultanți externi în perioada sărbătorilor legale”. Unde ar trebui documentat, în mod corect, acest risc împreună cu strategia de răspuns și proprietarul riscului?",
+     "choices": [
+      "În raportul de status săptămânal",
+      "În registrul de riscuri (risk register)",
+      "Doar în charterul proiectului",
+      "În planul de comunicare"
+     ],
+     "answer": 1,
+     "explain": "Registrul de riscuri (risk register) este documentul central în care se înregistrează fiecare risc identificat, categoria, probabilitatea, impactul, strategia de răspuns (evitare, transfer, atenuare, acceptare) și persoana responsabilă (risk owner).",
+     "concept_key": "risk_register"
+    },
+    {
+     "q": "O companie RO dorește să externalizeze dezvoltarea unui modul software către un furnizor, dar cerințele nu sunt complet definite la momentul semnării contractului. Ce tip de contract este cel mai potrivit pentru a proteja interesele companiei?",
+     "choices": [
+      "Preț fix (Fixed Price / FFP)",
+      "Timp și materiale (Time & Material - T&M)",
+      "Cost plus procent din cost (CPPC)",
+      "Preț fix cu ajustare economică (FP-EPA)"
+     ],
+     "answer": 1,
+     "explain": "Contractul Time & Material este recomandat când sfera lucrărilor nu poate fi definită precis de la început, permițând plata pe baza orelor lucrate și a materialelor consumate, cu flexibilitate pentru ambele părți. Contractele de preț fix presupun cerințe clare și stabile.",
+     "concept_key": "tipuri_contracte_achizitii"
+    },
+    {
+     "q": "În matricea de evaluare a angajamentului stakeholderilor (Stakeholder Engagement Assessment Matrix), sponsorul unui proiect de implementare ERP este momentan „Rezistent” (Resistant), iar nivelul dorit este „Susținător” (Supportive). Ce indică acest lucru pentru managerul de proiect?",
+     "choices": [
+      "Sponsorul trebuie exclus din comunicările despre proiect",
+      "Este nevoie de acțiuni specifice de engagement pentru a deplasa poziția sponsorului de la nivelul actual la cel dorit",
+      "Nu este necesară nicio acțiune, deoarece sponsorul nu execută activități tehnice",
+      "Proiectul trebuie oprit până la înlocuirea sponsorului"
+     ],
+     "answer": 1,
+     "explain": "Diferența dintre nivelul actual (C) și cel dorit (D) în matrice semnalează unde trebuie concentrate eforturile de engagement. Un sponsor „Rezistent” care trebuie adus la „Susținător” necesită acțiuni țintite de comunicare și implicare, nu excludere sau oprirea proiectului.",
+     "concept_key": "stakeholder_engagement_matrix"
+    },
+    {
+     "q": "În cadrul unui Sprint dintr-un proiect Agile de digitalizare, care este scopul principal al Sprint Retrospective, conform Scrum Guide 2020, spre deosebire de Sprint Review?",
+     "choices": [
+      "Sprint Retrospective prezintă incrementul de produs clienților pentru feedback, la fel ca Sprint Review",
+      "Sprint Retrospective analizează cum a decurs Sprintul din perspectiva oamenilor, proceselor și instrumentelor, pentru a identifica îmbunătățiri aplicabile în Sprintul următor",
+      "Sprint Retrospective este folosit exclusiv pentru a estima story points-urile pentru Sprintul următor",
+      "Sprint Retrospective înlocuiește Daily Scrum-ul atunci când echipa este sub presiune de termen"
+     ],
+     "answer": 1,
+     "explain": "Sprint Review se concentrează pe incrementul de produs și feedback de la stakeholderi privind ce s-a livrat. Sprint Retrospective se concentrează pe procesul de lucru al echipei (oameni, relații, procese, instrumente) pentru a stabili îmbunătățiri concrete pentru Sprintul următor.",
+     "concept_key": "sprint_retrospective_vs_review"
+    },
+    {
+     "q": "Un manager de proiect certificat PMP află, în cadrul unui proiect de implementare ERP, că un coleg a acceptat cadouri de valoare mare de la un furnizor implicat în licitația de achiziții, fapt necunoscut de organizație. Conform Codului de Etică și Conduită Profesională PMI, care este acțiunea corectă?",
+     "choices": [
+      "Ignoră situația, deoarece nu este direct responsabil de achiziții",
+      "Raportează situația conform politicilor organizației și, dacă este cazul, către PMI, respectând principiul responsabilității și onestității",
+      "Acceptă și el cadouri similare pentru a nu crea tensiuni în echipă",
+      "Rezolvă problema informal, discutând doar cu colegul, fără a documenta nimic"
+     ],
+     "answer": 1,
+     "explain": "Codul de Etică și Conduită Profesională PMI impune principiile de responsabilitate, respect, echitate și onestitate. Un practician PMP are obligația de a raporta comportamentele lipsite de etică (precum conflictele de interese nedivulgate) prin canalele corespunzătoare din organizație și, dacă este necesar, către PMI, nu de a le ignora sau de a le gestiona informal.",
+     "concept_key": "cod_etica_pmi"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

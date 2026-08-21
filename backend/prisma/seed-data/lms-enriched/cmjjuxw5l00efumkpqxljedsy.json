@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxw5l00efumkpqxljedsy",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Metodologii Moderne de Bugetare",
+ "lesson": "Activity-Based Budgeting",
+ "category": "FINANCE_OPS",
+ "content": "# Activity-Based Budgeting\n\n**Activity-Based Budgeting (ABB)**, sau bugetarea pe bază de activități, este o metodă de planificare financiară care pornește de la activitățile operaționale reale ale companiei — nu de la cheltuielile istorice ajustate cu un procent, cum se întâmplă în bugetarea incrementală clasică.\n\nABB este extensia firească a **Activity-Based Costing (ABC costing)**, metoda de calculație a costurilor care alocă cheltuielile indirecte (overhead) pe activități, iar apoi pe produse, servicii sau clienți, în funcție de consumul real al fiecărei activități.\n\nDiferența esențială: ABC costing răspunde la întrebarea „cât ne-a costat, istoric, fiecare activitate și fiecare produs?”, în timp ce ABB răspunde la „de câte resurse vom avea nevoie anul viitor, având în vedere volumele de activitate planificate?”. Practic, ABB inversează logica ABC costing: pornește de la volumul de producție sau vânzări bugetat, estimează câte activități (setup-uri, inspecții, comenzi, livrări etc.) sunt necesare pentru acel volum, și abia apoi calculează costul resurselor (personal, echipamente, consumabile) necesare pentru a susține activitățile respective.\n\nPentru un controller financiar, ABB oferă un avantaj esențial: face vizibilă relația cauzală dintre activități și costuri, eliminând alocările arbitrare de tipul „overhead-ul crește cu 5% față de anul trecut”, tipice bugetării tradiționale.\n\nImplementarea Activity-Based Budgeting urmează, de regulă, patru etape:\n\n1. **Identificarea activităților relevante** — se mapează procesele care consumă resurse semnificative (ex: setup mașini, control calitate, procesare comenzi, manipulare materiale, suport clienți). Activitățile trebuie să fie suficient de granulare pentru a reflecta realitatea, dar nu atât de multe încât modelul să devină ingerabil — practica recomandă între 10 și 30 de activități principale pentru majoritatea companiilor mijlocii.\n\n2. **Alegerea cost driverilor (inductorilor de cost)** — pentru fiecare activitate se stabilește o unitate de măsură care explică variația costului: numărul de setup-uri, numărul de inspecții de calitate, numărul de comenzi de achiziție, numărul de mutări de materiale etc. Un cost driver bun este măsurabil, disponibil în sistemele existente (ERP, MES) și corelat cauzal cu costul activității.\n\n3. **Estimarea volumelor de activitate bugetate** — pornind de la planul de vânzări/producție, se estimează câte unități din fiecare cost driver vor fi necesare (ex: câte setup-uri presupune planul de producție al liniei X).\n\n4. **Calculul costului bugetat** — se înmulțește volumul planificat al fiecărui cost driver cu costul unitar al activității (calculat, de regulă, din anul anterior sau ajustat pentru inflație și eficiență), obținându-se bugetul de overhead pe produs, linie, departament sau client.\n\nBugetarea tradițională (incrementală) pornește de la bugetul anului anterior și aplică un procent de creștere sau reducere, fără a analiza dacă activitățile care generează costul se schimbă. Rezultatul frecvent: departamentele cu volum de activitate în scădere rămân supra-finanțate, iar cele cu volum în creștere rămân sub-finanțate, pentru că bugetul urmărește istoricul, nu operațiunile reale.\n\nABB corectează această distorsiune: overhead-ul devine transparent și trasabil până la activitatea și, mai departe, până la produsul sau clientul care îl generează. Un beneficiu practic imediat este identificarea produselor sau clienților „subvenționați încrucișat” — acele linii de produs cu volum mic dar complexitate mare (multe setup-uri, multe comenzi mici), care în bugetarea tradițională par profitabile, dar care în realitate consumă disproporționat de multe resurse administrative.\n\nCostul implementării ABB este mai mare decât al bugetării incrementale — necesită un sistem de colectare a datelor operaționale (ERP/MES) și timp de analiză — motiv pentru care se recomandă în special pentru companii cu portofolii de produse sau clienți eterogene, unde alocarea proporțională cu volumul (de exemplu ore manoperă directă) ascunde diferențe reale de complexitate operațională.\n\n## Exemplu: Alocarea overhead-ului pe activități la MetalPro SRL\nMetalPro SRL, producător de piese metalice pentru industria auto, alocă bugetul anual de cheltuieli indirecte (overhead) de 1.200.000 lei pe patru activități principale, fiecare cu propriul cost driver:\n\n| Activitate | Buget cost pool (lei/an) | Cost driver | Volum anual estimat | Cost unitar |\n|---|---|---|---|---|\n| Setup mașini | 300.000 | nr. setup-uri | 500 | 600 lei/setup |\n| Control calitate | 250.000 | nr. inspecții | 2.500 | 100 lei/inspecție |\n| Manipulare materiale | 350.000 | nr. mutări materiale | 7.000 | 50 lei/mutare |\n| Comenzi de achiziție | 300.000 | nr. comenzi | 1.500 | 200 lei/comandă |\n\nPentru linia de produse A, planul de producție pentru anul următor presupune 220 de setup-uri, 1.100 de inspecții de calitate, 3.200 de mutări de materiale și 650 de comenzi de achiziție. Bugetul de overhead alocat liniei A se calculează astfel:\n\n- Setup: 220 × 600 lei = 132.000 lei\n- Control calitate: 1.100 × 100 lei = 110.000 lei\n- Manipulare materiale: 3.200 × 50 lei = 160.000 lei\n- Comenzi de achiziție: 650 × 200 lei = 130.000 lei\n\n**Total overhead bugetat pentru linia A: 532.000 lei.**\n\nAceastă sumă reflectă exact consumul de activități planificat pentru linia A, spre deosebire de o alocare tradițională pe baza volumului fizic produs, care ar fi ignorat faptul că linia A necesită proporțional mai multe setup-uri (loturi mici, schimbări frecvente de configurație).\n\n## Exemplu: ABB într-un departament de servicii\nABB se aplică la fel de bine în servicii. La ContaExpert SRL, firmă de outsourcing contabil, departamentul de procesare facturi are un buget anual de 480.000 lei, alocat pe două activități: „înregistrare factură” (cost driver: nr. facturi procesate, cost unitar 8 lei/factură) și „reconciliere cont” (cost driver: nr. reconcilieri, cost unitar 45 lei/reconciliere).\n\nPentru portofoliul de clienți planificat pentru anul următor — 45.000 de facturi și 2.400 de reconcilieri — bugetul ABB devine:\n\n- Procesare facturi: 45.000 × 8 lei = 360.000 lei\n- Reconcilieri: 2.400 × 45 lei = 108.000 lei\n\n**Total bugetat: 468.000 lei.**\n\nDiferența față de bugetul anului precedent (480.000 lei) reflectă reducerea reală a volumului de reconcilieri planificat, nu o ajustare arbitrară procentuală — exact avantajul central al ABB față de bugetarea incrementală.\n\n⚠ Activity-Based Budgeting necesită date operaționale de calitate (numărul real de setup-uri, comenzi, inspecții etc.), de regulă extrase din ERP sau sisteme MES. Dacă aceste date nu sunt disponibile sau sunt colectate manual și inconsistent, modelul ABB va produce bugete la fel de arbitrare ca metoda tradițională, dar cu un efort de calcul mult mai mare. Înainte de a implementa ABB la nivelul întregii companii, testează metoda pe un singur departament sau linie de produse timp de 1-2 cicluri bugetare, pentru a valida disponibilitatea și acuratețea datelor de cost driver.\n\n## Exercițiu\nElectroPlus SRL bugetează overhead-ul lunar al secției de asamblare pe trei activități:\n\n| Activitate | Cost pool lunar | Cost driver | Volum lunar | Cost unitar |\n|---|---|---|---|---|\n| Setup linie | 40.000 lei | nr. setup-uri | 100 | 400 lei/setup |\n| Control calitate | 30.000 lei | nr. inspecții | 600 | 50 lei/inspecție |\n| Comenzi achiziție | 20.000 lei | nr. comenzi | 200 | 100 lei/comandă |\n\nPentru luna următoare, linia de produs Y are planificate: 30 de setup-uri, 250 de inspecții și 80 de comenzi de achiziție.\n\n**Cerințe:**\n\na) Calculează bugetul de overhead alocat liniei Y pentru luna următoare, folosind metoda ABB.\n\nb) Linia Y reprezintă doar 15% din volumul fizic total produs în secție, dar consumă 30% din setup-uri. Ce concluzie desprinzi pentru managementul liniei Y, comparativ cu o alocare tradițională bazată pe volum fizic?\n\n**Soluție:** **a) Overhead ABB pentru linia Y:**\n\n- Setup: 30 × 400 lei = 12.000 lei\n- Control calitate: 250 × 50 lei = 12.500 lei\n- Comenzi achiziție: 80 × 100 lei = 8.000 lei\n\n**Total overhead bugetat pentru linia Y: 32.500 lei.**\n\n**b)** Overhead-ul total lunar al secției este 90.000 lei (40.000 + 30.000 + 20.000). Dacă acesta ar fi fost alocat proporțional cu volumul fizic (15%), linia Y ar fi primit doar 90.000 × 15% = 13.500 lei — cu 19.000 lei mai puțin decât valoarea reală calculată prin ABB.\n\nDiferența arată că linia Y este mult mai complexă operațional (loturi mici, schimbări frecvente de setup) decât sugerează volumul ei fizic. O alocare tradițională ar subestima costul real al liniei Y, ducând la decizii de preț sau marjă eronate; ABB expune corect faptul că linia Y „consumă” disproporționat de multe resurse administrative față de volumul produs.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "activity-based-budgeting-definitie",
+    "md": "**Activity-Based Budgeting (ABB)**, sau bugetarea pe bază de activități, este o metodă de planificare financiară care pornește de la activitățile operaționale reale ale companiei — nu de la cheltuielile istorice ajustate cu un procent, cum se întâmplă în bugetarea incrementală clasică.\n\nABB este extensia firească a **Activity-Based Costing (ABC costing)**, metoda de calculație a costurilor care alocă cheltuielile indirecte (overhead) pe activități, iar apoi pe produse, servicii sau clienți, în funcție de consumul real al fiecărei activități.\n\nDiferența esențială: ABC costing răspunde la întrebarea „cât ne-a costat, istoric, fiecare activitate și fiecare produs?”, în timp ce ABB răspunde la „de câte resurse vom avea nevoie anul viitor, având în vedere volumele de activitate planificate?”. Practic, ABB inversează logica ABC costing: pornește de la volumul de producție sau vânzări bugetat, estimează câte activități (setup-uri, inspecții, comenzi, livrări etc.) sunt necesare pentru acel volum, și abia apoi calculează costul resurselor (personal, echipamente, consumabile) necesare pentru a susține activitățile respective.\n\nPentru un controller financiar, ABB oferă un avantaj esențial: face vizibilă relația cauzală dintre activități și costuri, eliminând alocările arbitrare de tipul „overhead-ul crește cu 5% față de anul trecut”, tipice bugetării tradiționale.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "abb-etape-implementare",
+    "md": "Implementarea Activity-Based Budgeting urmează, de regulă, patru etape:\n\n1. **Identificarea activităților relevante** — se mapează procesele care consumă resurse semnificative (ex: setup mașini, control calitate, procesare comenzi, manipulare materiale, suport clienți). Activitățile trebuie să fie suficient de granulare pentru a reflecta realitatea, dar nu atât de multe încât modelul să devină ingerabil — practica recomandă între 10 și 30 de activități principale pentru majoritatea companiilor mijlocii.\n\n2. **Alegerea cost driverilor (inductorilor de cost)** — pentru fiecare activitate se stabilește o unitate de măsură care explică variația costului: numărul de setup-uri, numărul de inspecții de calitate, numărul de comenzi de achiziție, numărul de mutări de materiale etc. Un cost driver bun este măsurabil, disponibil în sistemele existente (ERP, MES) și corelat cauzal cu costul activității.\n\n3. **Estimarea volumelor de activitate bugetate** — pornind de la planul de vânzări/producție, se estimează câte unități din fiecare cost driver vor fi necesare (ex: câte setup-uri presupune planul de producție al liniei X).\n\n4. **Calculul costului bugetat** — se înmulțește volumul planificat al fiecărui cost driver cu costul unitar al activității (calculat, de regulă, din anul anterior sau ajustat pentru inflație și eficiență), obținându-se bugetul de overhead pe produs, linie, departament sau client.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "abb-vs-bugetare-traditionala",
+    "md": "Bugetarea tradițională (incrementală) pornește de la bugetul anului anterior și aplică un procent de creștere sau reducere, fără a analiza dacă activitățile care generează costul se schimbă. Rezultatul frecvent: departamentele cu volum de activitate în scădere rămân supra-finanțate, iar cele cu volum în creștere rămân sub-finanțate, pentru că bugetul urmărește istoricul, nu operațiunile reale.\n\nABB corectează această distorsiune: overhead-ul devine transparent și trasabil până la activitatea și, mai departe, până la produsul sau clientul care îl generează. Un beneficiu practic imediat este identificarea produselor sau clienților „subvenționați încrucișat” — acele linii de produs cu volum mic dar complexitate mare (multe setup-uri, multe comenzi mici), care în bugetarea tradițională par profitabile, dar care în realitate consumă disproporționat de multe resurse administrative.\n\nCostul implementării ABB este mai mare decât al bugetării incrementale — necesită un sistem de colectare a datelor operaționale (ERP/MES) și timp de analiză — motiv pentru care se recomandă în special pentru companii cu portofolii de produse sau clienți eterogene, unde alocarea proporțională cu volumul (de exemplu ore manoperă directă) ascunde diferențe reale de complexitate operațională.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b3"
+   },
+   {
+    "type": "example",
+    "title": "Alocarea overhead-ului pe activități la MetalPro SRL",
+    "concept_key": "abb-exemplu-productie",
+    "md": "MetalPro SRL, producător de piese metalice pentru industria auto, alocă bugetul anual de cheltuieli indirecte (overhead) de 1.200.000 lei pe patru activități principale, fiecare cu propriul cost driver:\n\n| Activitate | Buget cost pool (lei/an) | Cost driver | Volum anual estimat | Cost unitar |\n|---|---|---|---|---|\n| Setup mașini | 300.000 | nr. setup-uri | 500 | 600 lei/setup |\n| Control calitate | 250.000 | nr. inspecții | 2.500 | 100 lei/inspecție |\n| Manipulare materiale | 350.000 | nr. mutări materiale | 7.000 | 50 lei/mutare |\n| Comenzi de achiziție | 300.000 | nr. comenzi | 1.500 | 200 lei/comandă |\n\nPentru linia de produse A, planul de producție pentru anul următor presupune 220 de setup-uri, 1.100 de inspecții de calitate, 3.200 de mutări de materiale și 650 de comenzi de achiziție. Bugetul de overhead alocat liniei A se calculează astfel:\n\n- Setup: 220 × 600 lei = 132.000 lei\n- Control calitate: 1.100 × 100 lei = 110.000 lei\n- Manipulare materiale: 3.200 × 50 lei = 160.000 lei\n- Comenzi de achiziție: 650 × 200 lei = 130.000 lei\n\n**Total overhead bugetat pentru linia A: 532.000 lei.**\n\nAceastă sumă reflectă exact consumul de activități planificat pentru linia A, spre deosebire de o alocare tradițională pe baza volumului fizic produs, care ar fi ignorat faptul că linia A necesită proporțional mai multe setup-uri (loturi mici, schimbări frecvente de configurație).",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b4"
+   },
+   {
+    "type": "example",
+    "title": "ABB într-un departament de servicii",
+    "concept_key": "abb-exemplu-servicii",
+    "md": "ABB se aplică la fel de bine în servicii. La ContaExpert SRL, firmă de outsourcing contabil, departamentul de procesare facturi are un buget anual de 480.000 lei, alocat pe două activități: „înregistrare factură” (cost driver: nr. facturi procesate, cost unitar 8 lei/factură) și „reconciliere cont” (cost driver: nr. reconcilieri, cost unitar 45 lei/reconciliere).\n\nPentru portofoliul de clienți planificat pentru anul următor — 45.000 de facturi și 2.400 de reconcilieri — bugetul ABB devine:\n\n- Procesare facturi: 45.000 × 8 lei = 360.000 lei\n- Reconcilieri: 2.400 × 45 lei = 108.000 lei\n\n**Total bugetat: 468.000 lei.**\n\nDiferența față de bugetul anului precedent (480.000 lei) reflectă reducerea reală a volumului de reconcilieri planificat, nu o ajustare arbitrară procentuală — exact avantajul central al ABB față de bugetarea incrementală.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Activity-Based Budgeting necesită date operaționale de calitate (numărul real de setup-uri, comenzi, inspecții etc.), de regulă extrase din ERP sau sisteme MES. Dacă aceste date nu sunt disponibile sau sunt colectate manual și inconsistent, modelul ABB va produce bugete la fel de arbitrare ca metoda tradițională, dar cu un efort de calcul mult mai mare. Înainte de a implementa ABB la nivelul întregii companii, testează metoda pe un singur departament sau linie de produse timp de 1-2 cicluri bugetare, pentru a valida disponibilitatea și acuratețea datelor de cost driver.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "ElectroPlus SRL bugetează overhead-ul lunar al secției de asamblare pe trei activități:\n\n| Activitate | Cost pool lunar | Cost driver | Volum lunar | Cost unitar |\n|---|---|---|---|---|\n| Setup linie | 40.000 lei | nr. setup-uri | 100 | 400 lei/setup |\n| Control calitate | 30.000 lei | nr. inspecții | 600 | 50 lei/inspecție |\n| Comenzi achiziție | 20.000 lei | nr. comenzi | 200 | 100 lei/comandă |\n\nPentru luna următoare, linia de produs Y are planificate: 30 de setup-uri, 250 de inspecții și 80 de comenzi de achiziție.\n\n**Cerințe:**\n\na) Calculează bugetul de overhead alocat liniei Y pentru luna următoare, folosind metoda ABB.\n\nb) Linia Y reprezintă doar 15% din volumul fizic total produs în secție, dar consumă 30% din setup-uri. Ce concluzie desprinzi pentru managementul liniei Y, comparativ cu o alocare tradițională bazată pe volum fizic?",
+    "solution_md": "**a) Overhead ABB pentru linia Y:**\n\n- Setup: 30 × 400 lei = 12.000 lei\n- Control calitate: 250 × 50 lei = 12.500 lei\n- Comenzi achiziție: 80 × 100 lei = 8.000 lei\n\n**Total overhead bugetat pentru linia Y: 32.500 lei.**\n\n**b)** Overhead-ul total lunar al secției este 90.000 lei (40.000 + 30.000 + 20.000). Dacă acesta ar fi fost alocat proporțional cu volumul fizic (15%), linia Y ar fi primit doar 90.000 × 15% = 13.500 lei — cu 19.000 lei mai puțin decât valoarea reală calculată prin ABB.\n\nDiferența arată că linia Y este mult mai complexă operațional (loturi mici, schimbări frecvente de setup) decât sugerează volumul ei fizic. O alocare tradițională ar subestima costul real al liniei Y, ducând la decizii de preț sau marjă eronate; ABB expune corect faptul că linia Y „consumă” disproporționat de multe resurse administrative față de volumul produs.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială dintre ABC costing și Activity-Based Budgeting (ABB)?",
+    "choices": [
+     "ABC costing calculează costul istoric al activităților și produselor, iar ABB proiectează, pe baza volumelor de activitate planificate, resursele și costurile viitoare",
+     "ABC costing se aplică doar în producție, iar ABB doar în servicii",
+     "ABC costing este obligatoriu conform OMFP 1802/2014, iar ABB este opțional și fără valoare practică",
+     "Nu există nicio diferență, cei doi termeni sunt sinonimi și interschimbabili"
+    ],
+    "answer": 0,
+    "explain": "ABC costing este orientat spre trecut (cât a costat o activitate/un produs), iar ABB este orientat spre viitor (bugetul anului următor), folosind aceeași logică de alocare pe activități și cost driveri, dar aplicată volumelor planificate.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O activitate are un cost pool bugetat de 90.000 lei și un volum planificat de 450 de unități de cost driver. Care este costul unitar al activității?",
+    "choices": [
+     "100 lei/unitate",
+     "200 lei/unitate",
+     "450 lei/unitate",
+     "90 lei/unitate"
+    ],
+    "answer": 1,
+    "explain": "Costul unitar al activității = cost pool bugetat / volum cost driver = 90.000 lei / 450 = 200 lei/unitate.",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Activity-Based Budgeting (ABB)?",
+    "back": "Metodă de bugetare care pornește de la volumele de activitate planificate (nu de la cheltuielile istorice) și calculează resursele necesare pe baza cost driverilor fiecărei activități.",
+    "concept_key": "activity-based-budgeting-definitie",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este legătura dintre ABC costing și ABB?",
+    "back": "ABC costing calculează costul istoric al activităților și produselor; ABB folosește aceeași structură de activități și cost driveri, dar proiectează costurile viitoare pe baza volumelor bugetate.",
+    "concept_key": "abc-costing-abb-legatura",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un cost driver (inductor de cost)?",
+    "back": "Unitatea de măsură care explică variația costului unei activități (ex: nr. de setup-uri, nr. de inspecții, nr. de comenzi); trebuie să fie măsurabilă și corelată cauzal cu costul.",
+    "concept_key": "cost-driver-definitie",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 etape principale ale implementării ABB?",
+    "back": "1) Identificarea activităților, 2) Alegerea cost driverilor, 3) Estimarea volumelor de activitate bugetate, 4) Calculul costului bugetat (volum × cost unitar).",
+    "concept_key": "abb-etape-implementare",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce avantaj cheie oferă ABB față de bugetarea incrementală tradițională?",
+    "back": "Face overhead-ul transparent și trasabil până la activitatea generatoare, eliminând alocările arbitrare procentuale și evidențiind produsele/clienții care consumă disproporționat de multe resurse.",
+    "concept_key": "abb-vs-bugetare-traditionala",
+    "blockId": "cmjjuxw5l00efumkpqxljedsy-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1284,
+   "flashcards": 5
+  }
+ }
+}

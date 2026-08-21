@@ -1,0 +1,129 @@
+{
+ "lessonId": "cmjjuxw5j00edumkpv449k7kp",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Metodologii Moderne de Bugetare",
+ "lesson": "Driver-Based Planning",
+ "category": "FINANCE_OPS",
+ "content": "# Driver-Based Planning\n\n## Ce este planificarea bazată pe driveri (Driver-Based Planning)?\n\nBugetarea tradițională pornește de la cifrele anului anterior și le ajustează cu un procent (ex. „+5% față de anul trecut\"). Metoda e rapidă, dar oarbă: nu explică DE CE cresc sau scad rezultatele și devine inutilă când condițiile de piață se schimbă brusc.\n\nDriver-Based Planning (planificare bazată pe factori determinanți) construiește bugetul pornind de la driverii de business — variabilele operaționale care generează efectiv rezultatul financiar. În loc să bugetezi direct „Venituri: 8.400.000 lei\", modelezi:\n\n**Venituri = Nr. clienți activi × Valoare medie tranzacție × Frecvență de cumpărare**\n\nFiecare driver poate fi urmărit, măsurat și influențat de o echipă operațională (vânzări, marketing, producție), spre deosebire de o cifră agregată pe care nimeni nu o „deține\" direct.\n\nDiferența față de Zero-Based Budgeting (ZBB): ZBB reconstruiește fiecare linie de cost de la zero, justificând necesitatea ei; Driver-Based Planning explică rezultatul printr-o formulă matematică legată de driveri operaționali. Cele două abordări nu se exclud — multe companii combină ZBB pentru costuri cu Driver-Based pentru venituri și costuri variabile.\n\nBeneficiul central: odată construit modelul, actualizarea unui buget sau forecast se face schimbând o singură ipoteză (ex. „numărul de clienți activi crește cu 8% în loc de 5%\"), iar toate cifrele din P&L, cash flow și bilanț se recalculează automat. Asta face posibile rolling forecast-ul lunar și analiza de scenarii rapidă — instrumentele pe care CFO-ii le folosesc pentru a răspunde board-ului în timp real la întrebarea „ce se întâmplă dacă...?\"\n\n## Cum identifici driverii corecți\n\nNu orice variabilă merită să devină driver în model. Un driver bun respectă trei criterii: (1) are corelație puternică și demonstrabilă cu rezultatul financiar, (2) poate fi măsurat cu date disponibile (CRM, ERP, producție), (3) este influențabil de o funcție din organizație — altfel e doar un indicator de urmărit, nu o pârghie de acțiune.\n\nClasificare uzuală:\n\n- **Driveri operaționali de volum**: număr de clienți activi, rata de conversie, număr de tranzacții, capacitate de producție utilizată (%), număr de angajați productivi.\n- **Driveri de preț/marjă**: preț mediu de vânzare, discount mediu acordat, cost unitar de producție, mix de produse (product mix).\n- **Driveri financiari**: zile de încasare clienți (DSO), zile de plată furnizori (DPO), rata dobânzii la credite, curs valutar pentru achiziții în valută.\n\nTehnica **driver tree** (arbore de driveri) descompune un rezultat complex în componente tot mai granulare, până ajungi la variabile pe care le poate influența direct o echipă. Exemplu pentru o companie de retail:\n\nVenituri → Nr. magazine × (Clienți/zi × Bon mediu × Zile lucrătoare)\n\nFiecare ramură poate fi descompusă în continuare: „Clienți/zi\" depinde de traficul pietonal și rata de conversie; „Bon mediu\" depinde de preț mediu și numărul de articole per bon (basket size).\n\nRegula 80/20 se aplică și aici: majoritatea companiilor obțin un model util cu 4-6 driveri cheie, nu cu 30. Un model cu prea mulți driveri devine greu de întreținut, greu de explicat board-ului și, paradoxal, mai puțin precis, pentru că fiecare driver suplimentar introduce propria eroare de estimare.\n\n## Construirea modelului și actualizarea rapidă\n\nUn model driver-based robust în Excel are, de regulă, patru straturi separate:\n\n1. **Foaie de ipoteze (Assumptions/Drivers)** — toate variabilele de intrare, izolate într-un singur loc, colorate distinct (convenție uzuală: font albastru pentru input-uri manuale, negru pentru formule). Aici modifici driverii, niciodată direct în foile de calcul.\n2. **Motor de calcul** — formulele care transformă driverii în linii de P&L: venituri, costuri variabile, costuri fixe, EBITDA.\n3. **Output financiar** — Cont de Profit și Pierdere, Cash Flow, eventual Bilanț simplificat, conforme structurii din OMFP 1802/2014.\n4. **Panou de KPI și grafice** — pentru prezentarea către management/board.\n\nSepararea ipotezelor de calcul e ceea ce permite actualizarea rapidă („fast update\"): când vânzările reale de luna trecută diferă de forecast, actualizezi doar celula cu driverul afectat (ex. „rata de conversie realizată: 3,2% în loc de 3,5%\"), iar restul modelului — inclusiv lunile viitoare — se recalculează automat, fără să reconstruiești nimic.\n\nAceastă structură stă la baza **rolling forecast**-ului: în loc de un buget fix pe an calendaristic, actualizezi lunar sau trimestrial o fereastră mobilă (de exemplu, mereu următoarele 12 luni), înlocuind luna încheiată cu realizat și extinzând orizontul cu o lună nouă estimată pe baza driverilor actualizați.\n\nPentru **scenario planning**, cea mai simplă metodă în Excel este un „driver switch\": o celulă cu listă derulantă (Data Validation) cu opțiunile „Pesimist / Realist / Optimist\", care selectează prin funcțiile CHOOSE sau XLOOKUP setul de valori corespunzător pentru fiecare driver cheie. Astfel, întreg modelul comută instant între scenarii, iar impactul asupra EBITDA sau cash flow-ului devine vizibil în câteva secunde — exact ce îți cere un board în ședință.\n\n## Exemplu: Model driver-based pentru venituri — lanț de retail\nO companie RO cu 5 magazine de proximitate vrea un model driver-based pentru bugetul de venituri pe luna următoare. Driverii identificați:\n\n| Driver | Valoare bază |\n|---|---|\n| Număr de magazine | 5 |\n| Clienți/zi/magazin | 120 |\n| Bon mediu (valoare medie tranzacție) | 45 lei |\n| Zile lucrătoare/lună | 26 |\n\nFormula de calcul:\n\n**Venituri lunare = Nr. magazine × Clienți/zi/magazin × Bon mediu × Zile lucrătoare**\n\nCalcul scenariu de bază:\n5 × 120 × 45 lei × 26 = **702.000 lei/lună**\n\nAcum simulăm efectul unei campanii de marketing care crește traficul cu 10% (clienți/zi ajung la 132), fără nicio altă modificare:\n\nVenituri lunare (scenariu optimist trafic) = 5 × 132 × 45 lei × 26 = **772.200 lei/lună**\n\nDiferența de 70.200 lei (+10%) e vizibilă instant, pentru că am schimbat o singură celulă-driver („Clienți/zi/magazin\"). Managerul de marketing poate acum evalua dacă bugetul campaniei se justifică prin acest venit incremental, iar CFO-ul poate testa în câteva secunde și alte ipoteze (bon mediu +5%, deschidere magazin nou etc.), fără să reconstruiască nicio formulă.\n\n## Exemplu: Analiză de scenarii — impact asupra EBITDA\nO companie de servicii software cu abonament lunar are următorii driveri de bază: 2.000 de abonați activi, ARPU (venit mediu per abonat) 150 lei/lună, cost variabil 40 lei/abonat/lună și cost fix 180.000 lei/lună. Vrem să vedem impactul ratei de churn (rata de pierdere a clienților) asupra EBITDA după 3 luni, în trei scenarii:\n\n| Scenariu | Churn lunar | ARPU | Abonați (luna 3) | Venit | Cost variabil | EBITDA |\n|---|---|---|---|---|---|---|\n| Optimist | 1% | 155 lei | 1.941 | 300.855 lei | 77.640 lei | **43.215 lei** |\n| Realist | 2% | 150 lei | 1.882 | 282.300 lei | 75.280 lei | **27.020 lei** |\n| Pesimist | 4% | 145 lei | 1.770 | 256.650 lei | 70.800 lei | **5.850 lei** |\n\nCalcul abonați rămași: Nr. abonați × (1 − churn)³ (ex. pesimist: 2.000 × 0,96³ ≈ 1.770). EBITDA = Venit − Cost variabil − Cost fix (180.000 lei, constant în toate scenariile).\n\nObservă cât de sensibil e rezultatul: o diferență de doar 3 puncte procentuale în churn-ul lunar (1% vs 4%) și 10 lei în ARPU mută EBITDA de la 43.215 lei la doar 5.850 lei — aproape de pragul de rentabilitate. Acesta e exact motivul pentru care scenario planning-ul bazat pe driveri, nu bugetarea pe cifre agregate, îi arată CFO-ului unde este riscul real al planului.\n\n## Exercițiu\nO companie de distribuție are o echipă de 8 agenți de vânzări. Fiecare agent are un target lunar de 60.000 lei vânzări, iar rata medie istorică de atingere a target-ului (attainment rate) este 85%. Costul fix lunar (salarii fixe backoffice, chirie, utilități) este 250.000 lei, iar comisionul variabil este 6% din vânzările efectiv realizate.\n\n**Cerințe:**\na) Calculează venitul lunar bugetat folosind modelul driver-based.\nb) Calculează EBITDA lunar bugetat.\nc) Compania angajează încă 2 agenți noi, cu un cost fix suplimentar de 8.000 lei/agent/lună (salariu fix pe perioada de acomodare) și cu o rată de atingere a target-ului de doar 50% în prima lună (ramp-up). Recalculează venitul și EBITDA cu cei 10 agenți.\n\n**Soluție:** **a) Venit lunar bugetat (8 agenți):**\nVenit = Nr. agenți × Target/agent × Rata de atingere\nVenit = 8 × 60.000 lei × 0,85 = **408.000 lei**\n\n**b) EBITDA lunar bugetat:**\nComision variabil = 408.000 lei × 6% = 24.480 lei\nEBITDA = Venit − Comision − Cost fix = 408.000 − 24.480 − 250.000 = **133.520 lei**\n\n**c) Scenariu cu 2 agenți noi (ramp-up 50% în prima lună):**\nVenit agenți vechi (neschimbat) = 408.000 lei\nVenit agenți noi = 2 × 60.000 lei × 0,50 = 60.000 lei\nVenit total = 408.000 + 60.000 = **468.000 lei**\n\nComision variabil = 468.000 lei × 6% = 28.080 lei\nCost fix nou = 250.000 lei + (2 × 8.000 lei) = 266.000 lei\nEBITDA = 468.000 − 28.080 − 266.000 = **173.920 lei**\n\n**Concluzie:** deși agenții noi ating doar jumătate din target în prima lună, EBITDA crește cu 40.400 lei (de la 133.520 la 173.920 lei) față de scenariul cu 8 agenți. Modelul driver-based arată clar, în câteva celule, că investiția în cei 2 agenți se justifică financiar încă din prima lună — o concluzie greu de obținut dintr-un buget bazat pe ajustare procentuală a cifrelor istorice.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "driver-based-planning-definitie",
+    "md": "## Ce este planificarea bazată pe driveri (Driver-Based Planning)?\n\nBugetarea tradițională pornește de la cifrele anului anterior și le ajustează cu un procent (ex. „+5% față de anul trecut\"). Metoda e rapidă, dar oarbă: nu explică DE CE cresc sau scad rezultatele și devine inutilă când condițiile de piață se schimbă brusc.\n\nDriver-Based Planning (planificare bazată pe factori determinanți) construiește bugetul pornind de la driverii de business — variabilele operaționale care generează efectiv rezultatul financiar. În loc să bugetezi direct „Venituri: 8.400.000 lei\", modelezi:\n\n**Venituri = Nr. clienți activi × Valoare medie tranzacție × Frecvență de cumpărare**\n\nFiecare driver poate fi urmărit, măsurat și influențat de o echipă operațională (vânzări, marketing, producție), spre deosebire de o cifră agregată pe care nimeni nu o „deține\" direct.\n\nDiferența față de Zero-Based Budgeting (ZBB): ZBB reconstruiește fiecare linie de cost de la zero, justificând necesitatea ei; Driver-Based Planning explică rezultatul printr-o formulă matematică legată de driveri operaționali. Cele două abordări nu se exclud — multe companii combină ZBB pentru costuri cu Driver-Based pentru venituri și costuri variabile.\n\nBeneficiul central: odată construit modelul, actualizarea unui buget sau forecast se face schimbând o singură ipoteză (ex. „numărul de clienți activi crește cu 8% în loc de 5%\"), iar toate cifrele din P&L, cash flow și bilanț se recalculează automat. Asta face posibile rolling forecast-ul lunar și analiza de scenarii rapidă — instrumentele pe care CFO-ii le folosesc pentru a răspunde board-ului în timp real la întrebarea „ce se întâmplă dacă...?\"",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tipuri-driveri-business",
+    "md": "## Cum identifici driverii corecți\n\nNu orice variabilă merită să devină driver în model. Un driver bun respectă trei criterii: (1) are corelație puternică și demonstrabilă cu rezultatul financiar, (2) poate fi măsurat cu date disponibile (CRM, ERP, producție), (3) este influențabil de o funcție din organizație — altfel e doar un indicator de urmărit, nu o pârghie de acțiune.\n\nClasificare uzuală:\n\n- **Driveri operaționali de volum**: număr de clienți activi, rata de conversie, număr de tranzacții, capacitate de producție utilizată (%), număr de angajați productivi.\n- **Driveri de preț/marjă**: preț mediu de vânzare, discount mediu acordat, cost unitar de producție, mix de produse (product mix).\n- **Driveri financiari**: zile de încasare clienți (DSO), zile de plată furnizori (DPO), rata dobânzii la credite, curs valutar pentru achiziții în valută.\n\nTehnica **driver tree** (arbore de driveri) descompune un rezultat complex în componente tot mai granulare, până ajungi la variabile pe care le poate influența direct o echipă. Exemplu pentru o companie de retail:\n\nVenituri → Nr. magazine × (Clienți/zi × Bon mediu × Zile lucrătoare)\n\nFiecare ramură poate fi descompusă în continuare: „Clienți/zi\" depinde de traficul pietonal și rata de conversie; „Bon mediu\" depinde de preț mediu și numărul de articole per bon (basket size).\n\nRegula 80/20 se aplică și aici: majoritatea companiilor obțin un model util cu 4-6 driveri cheie, nu cu 30. Un model cu prea mulți driveri devine greu de întreținut, greu de explicat board-ului și, paradoxal, mai puțin precis, pentru că fiecare driver suplimentar introduce propria eroare de estimare.",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "model-driver-based-si-actualizare",
+    "md": "## Construirea modelului și actualizarea rapidă\n\nUn model driver-based robust în Excel are, de regulă, patru straturi separate:\n\n1. **Foaie de ipoteze (Assumptions/Drivers)** — toate variabilele de intrare, izolate într-un singur loc, colorate distinct (convenție uzuală: font albastru pentru input-uri manuale, negru pentru formule). Aici modifici driverii, niciodată direct în foile de calcul.\n2. **Motor de calcul** — formulele care transformă driverii în linii de P&L: venituri, costuri variabile, costuri fixe, EBITDA.\n3. **Output financiar** — Cont de Profit și Pierdere, Cash Flow, eventual Bilanț simplificat, conforme structurii din OMFP 1802/2014.\n4. **Panou de KPI și grafice** — pentru prezentarea către management/board.\n\nSepararea ipotezelor de calcul e ceea ce permite actualizarea rapidă („fast update\"): când vânzările reale de luna trecută diferă de forecast, actualizezi doar celula cu driverul afectat (ex. „rata de conversie realizată: 3,2% în loc de 3,5%\"), iar restul modelului — inclusiv lunile viitoare — se recalculează automat, fără să reconstruiești nimic.\n\nAceastă structură stă la baza **rolling forecast**-ului: în loc de un buget fix pe an calendaristic, actualizezi lunar sau trimestrial o fereastră mobilă (de exemplu, mereu următoarele 12 luni), înlocuind luna încheiată cu realizat și extinzând orizontul cu o lună nouă estimată pe baza driverilor actualizați.\n\nPentru **scenario planning**, cea mai simplă metodă în Excel este un „driver switch\": o celulă cu listă derulantă (Data Validation) cu opțiunile „Pesimist / Realist / Optimist\", care selectează prin funcțiile CHOOSE sau XLOOKUP setul de valori corespunzător pentru fiecare driver cheie. Astfel, întreg modelul comută instant între scenarii, iar impactul asupra EBITDA sau cash flow-ului devine vizibil în câteva secunde — exact ce îți cere un board în ședință.",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b3"
+   },
+   {
+    "type": "example",
+    "title": "Model driver-based pentru venituri — lanț de retail",
+    "concept_key": "exemplu-model-venituri-retail",
+    "md": "O companie RO cu 5 magazine de proximitate vrea un model driver-based pentru bugetul de venituri pe luna următoare. Driverii identificați:\n\n| Driver | Valoare bază |\n|---|---|\n| Număr de magazine | 5 |\n| Clienți/zi/magazin | 120 |\n| Bon mediu (valoare medie tranzacție) | 45 lei |\n| Zile lucrătoare/lună | 26 |\n\nFormula de calcul:\n\n**Venituri lunare = Nr. magazine × Clienți/zi/magazin × Bon mediu × Zile lucrătoare**\n\nCalcul scenariu de bază:\n5 × 120 × 45 lei × 26 = **702.000 lei/lună**\n\nAcum simulăm efectul unei campanii de marketing care crește traficul cu 10% (clienți/zi ajung la 132), fără nicio altă modificare:\n\nVenituri lunare (scenariu optimist trafic) = 5 × 132 × 45 lei × 26 = **772.200 lei/lună**\n\nDiferența de 70.200 lei (+10%) e vizibilă instant, pentru că am schimbat o singură celulă-driver („Clienți/zi/magazin\"). Managerul de marketing poate acum evalua dacă bugetul campaniei se justifică prin acest venit incremental, iar CFO-ul poate testa în câteva secunde și alte ipoteze (bon mediu +5%, deschidere magazin nou etc.), fără să reconstruiască nicio formulă.",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b4"
+   },
+   {
+    "type": "example",
+    "title": "Analiză de scenarii — impact asupra EBITDA",
+    "concept_key": "scenariu-planning-ebitda",
+    "md": "O companie de servicii software cu abonament lunar are următorii driveri de bază: 2.000 de abonați activi, ARPU (venit mediu per abonat) 150 lei/lună, cost variabil 40 lei/abonat/lună și cost fix 180.000 lei/lună. Vrem să vedem impactul ratei de churn (rata de pierdere a clienților) asupra EBITDA după 3 luni, în trei scenarii:\n\n| Scenariu | Churn lunar | ARPU | Abonați (luna 3) | Venit | Cost variabil | EBITDA |\n|---|---|---|---|---|---|---|\n| Optimist | 1% | 155 lei | 1.941 | 300.855 lei | 77.640 lei | **43.215 lei** |\n| Realist | 2% | 150 lei | 1.882 | 282.300 lei | 75.280 lei | **27.020 lei** |\n| Pesimist | 4% | 145 lei | 1.770 | 256.650 lei | 70.800 lei | **5.850 lei** |\n\nCalcul abonați rămași: Nr. abonați × (1 − churn)³ (ex. pesimist: 2.000 × 0,96³ ≈ 1.770). EBITDA = Venit − Cost variabil − Cost fix (180.000 lei, constant în toate scenariile).\n\nObservă cât de sensibil e rezultatul: o diferență de doar 3 puncte procentuale în churn-ul lunar (1% vs 4%) și 10 lei în ARPU mută EBITDA de la 43.215 lei la doar 5.850 lei — aproape de pragul de rentabilitate. Acesta e exact motivul pentru care scenario planning-ul bazat pe driveri, nu bugetarea pe cifre agregate, îi arată CFO-ului unde este riscul real al planului.",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b5"
+   },
+   {
+    "type": "exercise",
+    "md": "O companie de distribuție are o echipă de 8 agenți de vânzări. Fiecare agent are un target lunar de 60.000 lei vânzări, iar rata medie istorică de atingere a target-ului (attainment rate) este 85%. Costul fix lunar (salarii fixe backoffice, chirie, utilități) este 250.000 lei, iar comisionul variabil este 6% din vânzările efectiv realizate.\n\n**Cerințe:**\na) Calculează venitul lunar bugetat folosind modelul driver-based.\nb) Calculează EBITDA lunar bugetat.\nc) Compania angajează încă 2 agenți noi, cu un cost fix suplimentar de 8.000 lei/agent/lună (salariu fix pe perioada de acomodare) și cu o rată de atingere a target-ului de doar 50% în prima lună (ramp-up). Recalculează venitul și EBITDA cu cei 10 agenți.",
+    "solution_md": "**a) Venit lunar bugetat (8 agenți):**\nVenit = Nr. agenți × Target/agent × Rata de atingere\nVenit = 8 × 60.000 lei × 0,85 = **408.000 lei**\n\n**b) EBITDA lunar bugetat:**\nComision variabil = 408.000 lei × 6% = 24.480 lei\nEBITDA = Venit − Comision − Cost fix = 408.000 − 24.480 − 250.000 = **133.520 lei**\n\n**c) Scenariu cu 2 agenți noi (ramp-up 50% în prima lună):**\nVenit agenți vechi (neschimbat) = 408.000 lei\nVenit agenți noi = 2 × 60.000 lei × 0,50 = 60.000 lei\nVenit total = 408.000 + 60.000 = **468.000 lei**\n\nComision variabil = 468.000 lei × 6% = 28.080 lei\nCost fix nou = 250.000 lei + (2 × 8.000 lei) = 266.000 lei\nEBITDA = 468.000 − 28.080 − 266.000 = **173.920 lei**\n\n**Concluzie:** deși agenții noi ating doar jumătate din target în prima lună, EBITDA crește cu 40.400 lei (de la 133.520 la 173.920 lei) față de scenariul cu 8 agenți. Modelul driver-based arată clar, în câteva celule, că investiția în cei 2 agenți se justifică financiar încă din prima lună — o concluzie greu de obținut dintr-un buget bazat pe ajustare procentuală a cifrelor istorice.",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b6"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența principală dintre bugetarea incrementală și Driver-Based Planning?",
+    "choices": [
+     "Driver-Based Planning leagă rezultatul financiar de o formulă bazată pe variabile operaționale măsurabile, în timp ce bugetarea incrementală ajustează procentual cifrele istorice",
+     "Bugetarea incrementală este întotdeauna mai precisă pentru companiile mari",
+     "Driver-Based Planning se aplică doar costurilor, niciodată veniturilor",
+     "Nu există nicio diferență, cei doi termeni sunt sinonimi"
+    ],
+    "answer": 0,
+    "explain": "Driver-Based Planning modelează rezultatul financiar ca o funcție de driveri operaționali (ex. nr. clienți × preț mediu), permițând actualizare rapidă și scenarii; bugetarea incrementală doar ajustează cifra anului trecut cu un procent, fără să explice cauzele.",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un magazin are 100 de clienți/zi, un bon mediu de 50 lei și 25 de zile lucrătoare pe lună. Care este venitul lunar bugetat conform modelului driver-based?",
+    "choices": [
+     "112.500 lei",
+     "125.000 lei",
+     "150.000 lei",
+     "100.000 lei"
+    ],
+    "answer": 1,
+    "explain": "Venit = Clienți/zi × Bon mediu × Zile lucrătoare = 100 × 50 lei × 25 = 125.000 lei/lună.",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b8"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Driver-Based Planning?",
+    "back": "Metodă de bugetare/forecasting care leagă rezultatele financiare de driverii operaționali (variabile măsurabile precum nr. clienți, preț mediu, rata de conversie) printr-o formulă matematică, în loc să ajusteze procentual cifrele istorice.",
+    "concept_key": "driver-based-planning-definitie",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un „driver tree\" (arbore de driveri)?",
+    "back": "Tehnică de descompunere a unui rezultat financiar complex (ex. venituri) în componente tot mai granulare, până la variabile operaționale direct influențabile de o echipă (ex. Venituri = Nr. clienți × Rata de conversie × Bon mediu).",
+    "concept_key": "arbore-driveri",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este rolling forecast-ul?",
+    "back": "Actualizare periodică (lunară/trimestrială) a unei ferestre mobile de forecast (ex. mereu următoarele 12 luni), înlocuind luna încheiată cu realizat și extinzând orizontul cu o lună nouă estimată pe baza driverilor actualizați.",
+    "concept_key": "rolling-forecast-definitie",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câți driveri cheie recomandă regula 80/20 pentru un model util și ușor de întreținut?",
+    "back": "În general 4-6 driveri cheie; prea mulți driveri fac modelul greu de întreținut și mai puțin precis, pentru că fiecare driver suplimentar adaugă propria eroare de estimare.",
+    "concept_key": "numar-optim-driveri",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 3 criterii pentru un driver bun?",
+    "back": "1) Corelație puternică și demonstrabilă cu rezultatul financiar; 2) Măsurabil cu date disponibile (CRM/ERP); 3) Influențabil direct de o funcție din organizație.",
+    "concept_key": "criterii-driver-bun",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum implementezi rapid scenario planning în Excel pentru un model driver-based?",
+    "back": "Printr-un „driver switch\": o celulă cu listă derulantă (Data Validation) cu opțiuni precum Pesimist/Realist/Optimist, care selectează prin CHOOSE sau XLOOKUP setul de valori corespunzător pentru fiecare driver cheie.",
+    "concept_key": "scenario-planning-excel",
+    "blockId": "cmjjuxw5j00edumkpv449k7kp-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1458,
+   "flashcards": 6
+  }
+ }
+}

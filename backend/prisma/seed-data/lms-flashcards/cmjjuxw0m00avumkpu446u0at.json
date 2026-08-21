@@ -1,0 +1,63 @@
+{
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "category": "FINANCE_OPS",
+ "voice": "ro_RO-mihai-medium",
+ "forgeSession": 8,
+ "cards": [
+  {
+   "front": "Care este ecuația fundamentală a bilanțului?",
+   "back": "Active = Capitaluri proprii + Datorii. Total Active este întotdeauna egal cu Total Pasiv.",
+   "conceptKey": "bilant-ecuatia-fundamentala",
+   "lessonId": "cmjjuxw0t00azumkp986bl4j7",
+   "lesson": "Bilanțul - Ce deține și ce datorează compania",
+   "module": "Situațiile Financiare Explicate",
+   "blockId": "cmjjuxw0t00azumkp986bl4j7-b11"
+  },
+  {
+   "front": "Ce sunt activele circulante?",
+   "back": "Resurse care se transformă în numerar sau se consumă în maximum 12 luni: stocuri, creanțe, casă și conturi bancare.",
+   "conceptKey": "active-circulante-definitie",
+   "lessonId": "cmjjuxw0t00azumkp986bl4j7",
+   "lesson": "Bilanțul - Ce deține și ce datorează compania",
+   "module": "Situațiile Financiare Explicate",
+   "blockId": "cmjjuxw0t00azumkp986bl4j7-b12"
+  },
+  {
+   "front": "Ce sunt activele imobilizate?",
+   "back": "Resurse deținute pe termen lung (peste 1 an) pentru desfășurarea activității: clădiri, utilaje, licențe, participații financiare.",
+   "conceptKey": "active-imobilizate-definitie",
+   "lessonId": "cmjjuxw0t00azumkp986bl4j7",
+   "lesson": "Bilanțul - Ce deține și ce datorează compania",
+   "module": "Situațiile Financiare Explicate",
+   "blockId": "cmjjuxw0t00azumkp986bl4j7-b13"
+  },
+  {
+   "front": "Ce reglementează OMFP 1802/2014?",
+   "back": "Reglementările contabile privind situațiile financiare anuale individuale și consolidate din România, inclusiv formatul și structura bilanțului.",
+   "conceptKey": "omfp-1802-2014-reglementari-contabile",
+   "lessonId": "cmjjuxw0t00azumkp986bl4j7",
+   "lesson": "Bilanțul - Ce deține și ce datorează compania",
+   "module": "Situațiile Financiare Explicate",
+   "blockId": "cmjjuxw0t00azumkp986bl4j7-b14"
+  },
+  {
+   "front": "Ce este fondul de rulment și cum se calculează?",
+   "back": "Diferența dintre activele circulante și datoriile pe termen scurt; un fond de rulment pozitiv arată lichiditate suficientă pentru obligațiile pe termen scurt.",
+   "conceptKey": "fond-de-rulment-definitie",
+   "lessonId": "cmjjuxw0t00azumkp986bl4j7",
+   "lesson": "Bilanțul - Ce deține și ce datorează compania",
+   "module": "Situațiile Financiare Explicate",
+   "blockId": "cmjjuxw0t00azumkp986bl4j7-b15"
+  },
+  {
+   "front": "Din ce se compun capitalurile proprii?",
+   "back": "Capital social, prime de capital, rezerve, rezultatul reportat și rezultatul (profitul/pierderea) exercițiului curent.",
+   "conceptKey": "capitaluri-proprii-componente",
+   "lessonId": "cmjjuxw0t00azumkp986bl4j7",
+   "lesson": "Bilanțul - Ce deține și ce datorează compania",
+   "module": "Situațiile Financiare Explicate",
+   "blockId": "cmjjuxw0t00azumkp986bl4j7-b16"
+  }
+ ]
+}

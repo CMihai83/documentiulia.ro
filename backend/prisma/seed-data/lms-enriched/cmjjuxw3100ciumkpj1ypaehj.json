@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxw3100ciumkpj1ypaehj",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Cadrul Legal și Principii Contabile",
+ "lesson": "Quiz cadru legal",
+ "category": "FINANCE_OPS",
+ "content": "Test de evaluare — Quiz cadru legal (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este actul normativ fundamental care reglementează organizarea și conducerea contabilității în România?",
+     "choices": [
+      "Legea contabilității nr. 82/1991, republicată",
+      "OMFP 1802/2014",
+      "Legea societăților nr. 31/1990",
+      "Codul fiscal (Legea 227/2015)"
+     ],
+     "answer": 0,
+     "explain": "Legea nr. 82/1991, republicată și actualizată, este legea-cadru care stabilește obligațiile privind organizarea și conducerea contabilității, întocmirea situațiilor financiare și arhivarea documentelor. OMFP 1802/2014 este actul subsecvent care detaliază reglementările contabile conforme cu directivele europene, iar Legea 31/1990 privește funcționarea societăților, nu contabilitatea.",
+     "concept_key": "legea_82_1991"
+    },
+    {
+     "q": "Ce reglementează, în mod specific, OMFP nr. 1802/2014?",
+     "choices": [
+      "Cotele de TVA aplicabile operațiunilor economice",
+      "Reglementările contabile privind situațiile financiare anuale individuale și consolidate, conforme cu directivele europene",
+      "Procedura de înființare a unei firme la Registrul Comerțului",
+      "Salariul minim brut pe economie"
+     ],
+     "answer": 1,
+     "explain": "OMFP 1802/2014 este ordinul Ministerului Finanțelor care aprobă Reglementările contabile privind situațiile financiare anuale individuale și consolidate, aliniate Directivei 2013/34/UE. Nu are legătură cu cotele de TVA (reglementate de Codul fiscal), cu înființarea firmelor (Registrul Comerțului) sau cu salariul minim (act normativ distinct).",
+     "concept_key": "omfp_1802_2014"
+    },
+    {
+     "q": "Cine poartă răspunderea pentru organizarea și conducerea contabilității în cadrul unei entități (de ex. un SRL)?",
+     "choices": [
+      "Doar contabilul angajat sau firma de contabilitate externalizată",
+      "Administratorul (sau, după caz, persoana care are obligația gestionării entității)",
+      "Asociatul minoritar",
+      "ANAF, prin inspectorul fiscal desemnat"
+     ],
+     "answer": 1,
+     "explain": "Conform Legii 82/1991, răspunderea pentru organizarea și conducerea contabilității revine administratorului, ordonatorului de credite sau altei persoane care are obligația gestionării entității respective; contabilul sau firma de contabilitate execută tehnic lucrările, dar nu preiau răspunderea legală finală. Asociatul minoritar și ANAF nu au acest rol.",
+     "concept_key": "raspundere_contabilitate"
+    },
+    {
+     "q": "Care este, ca regulă generală, durata exercițiului financiar în România?",
+     "choices": [
+      "Coincide cu anul calendaristic: 1 ianuarie – 31 decembrie",
+      "Este întotdeauna de 6 luni",
+      "Se stabilește liber de fiecare firmă, indiferent de dată",
+      "Coincide cu anul fiscal american: octombrie–septembrie"
+     ],
+     "answer": 0,
+     "explain": "Regula generală este că exercițiul financiar coincide cu anul calendaristic (1 ianuarie – 31 decembrie). Există excepții reglementate expres (de exemplu, la firmele nou-înființate, exercițiul începe de la data înființării, iar la unele entități cu activitate specifică se pot aplica reguli particulare), dar acestea nu schimbă regula de bază.",
+     "concept_key": "exercitiu_financiar"
+    },
+    {
+     "q": "Ce presupune principiul continuității activității, unul dintre principiile contabile fundamentale din OMFP 1802/2014?",
+     "choices": [
+      "Se presupune că entitatea își continuă activitatea într-un viitor previzibil, fără intenția sau necesitatea de a intra în lichidare",
+      "Toate operațiunile se înregistrează doar la încasare/plată efectivă",
+      "Elementele de activ trebuie compensate cu cele de pasiv similare",
+      "Bilanțul de deschidere trebuie să difere de bilanțul de închidere al anului anterior"
+     ],
+     "answer": 0,
+     "explain": "Principiul continuității activității presupune că entitatea își va continua, în mod normal, activitatea, fără a intra în stare de lichidare sau reducere semnificativă a activității. Dacă administratorii cunosc elemente de nesiguranță legate de acest lucru, sunt obligați să le prezinte în notele explicative. Celelalte variante descriu contabilitatea de casă, necompensarea (principiu distinct) și, respectiv, o încălcare a principiului intangibilității.",
+     "concept_key": "principiul_continuitatii"
+    },
+    {
+     "q": "Principiul prudenței impune, printre altele, ca:",
+     "choices": [
+      "Toate veniturile probabile să fie recunoscute imediat, indiferent de gradul de certitudine",
+      "Să se țină cont de toate ajustările de valoare datorate deprecierilor și de toate datoriile previzibile și pierderile potențiale, chiar dacă acestea devin cunoscute între data bilanțului și data întocmirii lui",
+      "Cheltuielile să fie amânate până la exercițiul financiar următor pentru a îmbunătăți rezultatul",
+      "Activele să fie evaluate exclusiv la valoarea justă, fără ajustări de depreciere"
+     ],
+     "answer": 1,
+     "explain": "Principiul prudenței presupune o evaluare rezonabilă a operațiunilor, astfel încât să se evite supraevaluarea activelor/veniturilor și subevaluarea datoriilor/cheltuielilor; se recunosc toate deprecierile, datoriile previzibile și pierderile potențiale apărute în cursul exercițiului sau al unui exercițiu anterior, inclusiv cele identificate între data bilanțului și data întocmirii situațiilor financiare. Recunoașterea imediată a veniturilor incerte sau amânarea deliberată a cheltuielilor contravin acestui principiu.",
+     "concept_key": "principiul_prudentei"
+    },
+    {
+     "q": "O societate prestează un serviciu în decembrie 2026, dar emite factura și încasează contravaloarea abia în ianuarie 2027. Care principiu contabil impune înregistrarea venitului în exercițiul 2026 (contabilitate de angajamente)?",
+     "choices": [
+      "Principiul prudenței",
+      "Principiul independenței exercițiului",
+      "Principiul necompensării",
+      "Principiul intangibilității bilanțului de deschidere"
+     ],
+     "answer": 1,
+     "explain": "Principiul independenței exercițiului (contabilitatea de angajamente) impune ca veniturile și cheltuielile aferente exercițiului financiar să fie luate în calcul indiferent de data încasării/plății, deci venitul din serviciul prestat în decembrie 2026 se recunoaște în exercițiul 2026, chiar dacă factura și încasarea au loc în 2027. Prudența privește evaluarea rezonabilă a activelor/datoriilor, necompensarea interzice contopirea elementelor de activ cu cele de pasiv sau a veniturilor cu cheltuielile, iar intangibilitatea bilanțului de deschidere se referă la continuitatea soldurilor între exerciții.",
+     "concept_key": "principiul_independentei_exercitiului"
+    },
+    {
+     "q": "Ce impune principiul intangibilității bilanțului de deschidere?",
+     "choices": [
+      "Bilanțul de deschidere al unui exercițiu financiar trebuie să corespundă cu bilanțul de închidere al exercițiului financiar precedent",
+      "Bilanțul se poate modifica liber ori de câte ori administratorul consideră necesar",
+      "Activele din bilanțul de deschidere se reevaluează obligatoriu în fiecare an",
+      "Bilanțul de deschidere nu are legătură cu bilanțul de închidere al anului anterior"
+     ],
+     "answer": 0,
+     "explain": "Principiul intangibilității bilanțului de deschidere prevede că bilanțul de deschidere pentru fiecare exercițiu financiar trebuie să corespundă cu bilanțul de închidere al exercițiului financiar precedent, cu excepția corecțiilor impuse de aplicarea altor reglementări contabile (de exemplu, corectarea erorilor semnificative din exercițiile anterioare). Modificarea liberă sau lipsa oricărei legături între cele două bilanțuri ar încălca acest principiu.",
+     "concept_key": "principiul_intangibilitatii"
+    },
+    {
+     "q": "O firmă RO încheie un contract de leasing financiar pentru un utilaj: din punct de vedere juridic, proprietarul rămâne societatea de leasing, dar firma utilizatoare înregistrează utilajul în activele sale, deoarece își asumă practic riscurile și beneficiile folosinței. Ce principiu contabil justifică această înregistrare?",
+     "choices": [
+      "Principiul prevalenței economicului asupra juridicului (substance over form)",
+      "Principiul necompensării",
+      "Principiul pragului de semnificație",
+      "Principiul continuității activității"
+     ],
+     "answer": 0,
+     "explain": "Principiul prevalenței economicului asupra juridicului impune ca informațiile prezentate în situațiile financiare să reflecte realitatea economică a operațiunilor, nu doar forma lor juridică; de aceea, la leasingul financiar, utilizatorul recunoaște activul și datoria aferentă, deoarece în esență preia riscurile și beneficiile aferente bunului, deși titlul de proprietate rămâne la locator. Necompensarea privește elemente de activ/pasiv distincte, pragul de semnificație privește relevanța informației, iar continuitatea activității nu are legătură cu acest caz.",
+     "concept_key": "principiul_prevalentei_economicului"
+    },
+    {
+     "q": "O entitate constată, la sfârșitul exercițiului N, că are atât o creanță, cât și o datorie față de același partener de afaceri, provenite din contracte comerciale diferite. Contabilul dorește să prezinte în bilanț doar soldul net (creanță minus datorie), pentru a simplifica raportarea. Această practică este corectă din punct de vedere al principiilor contabile din OMFP 1802/2014?",
+     "choices": [
+      "Da, întotdeauna, deoarece simplifică raportarea financiară",
+      "Nu, deoarece principiul necompensării interzice compensarea între elemente de activ și de pasiv, respectiv între venituri și cheltuieli, cu excepția cazurilor expres prevăzute de reglementări",
+      "Da, dacă suma este sub pragul de semnificație stabilit de entitate",
+      "Nu, deoarece încalcă principiul continuității activității"
+     ],
+     "answer": 1,
+     "explain": "Principiul necompensării prevede că valorile elementelor de activ nu pot fi compensate cu valorile elementelor de pasiv, respectiv veniturile cu cheltuielile, decât dacă o reglementare contabilă permite expres acest lucru (de exemplu, compensări specifice reglementate). Creanța și datoria față de același partener trebuie prezentate distinct în bilanț, indiferent de mărimea sumelor sau de pragul de semnificație — acesta din urmă vizează relevanța informației pentru utilizatori, nu compensarea elementelor bilanțiere, iar continuitatea activității nu este afectată de acest caz.",
+     "concept_key": "principiul_necompensarii"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

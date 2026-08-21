@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxweu00m1umkp2ploakcl",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Planificare (Cl. 6)",
+ "lesson": "Exercițiu obiective",
+ "category": "HSE_SAFETY",
+ "content": "# Exercițiu obiective\n\n## Obiectivele SSM conform ISO 45001, clauza 6.2\n\nClauza 6.2 din ISO 45001:2018 cere organizației să stabilească **obiective de securitate și sănătate în muncă (SSM)** pentru funcțiile și nivelurile relevante ale organizației. Aceste obiective nu sunt declarații generale de intenție, ci ținte concrete, derivate din trei surse obligatorii:\n\n1. **Politica SSM** — obiectivele trebuie să fie coerente cu angajamentele asumate prin politică (prevenirea vătămărilor, îmbunătățirea continuă, conformarea legală).\n2. **Riscurile și oportunitățile** identificate la clauza 6.1 — de exemplu, dacă evaluarea de risc a arătat expunere ridicată la zgomot, un obiectiv trebuie să vizeze reducerea acestei expuneri.\n3. **Rezultatele auditurilor și analizelor de management anterioare** — neconformitățile constatate devin surse de obiective corective.\n\nStandardul cere ca fiecare obiectiv să fie **măsurabil** (dacă este posibil), **monitorizat**, **comunicat** personalului relevant și **actualizat** atunci când este cazul. Fără un indicator numeric asociat, un obiectiv SSM rămâne o intenție, nu un instrument de management — echipa de audit intern nu are cum să verifice progresul, iar analiza managementului (clauza 9.3) nu are date pe care să se bazeze.\n\n## Metoda SMART aplicată obiectivelor SSM\n\nCea mai eficientă metodă de a transforma o intenție SSM într-un obiectiv conform ISO 45001 este criteriul **SMART**, adaptat la contextul securității și sănătății în muncă:\n\n- **S — Specific**: obiectivul vizează o problemă concretă (ex: căderi de la înălțime la depozitul central), nu generalități de tipul \"reducem accidentele\".\n- **M — Măsurabil**: există un indicator numeric asociat (procent, număr, rată).\n- **A — Abordabil (realist)**: ținta este atinsă cu resursele alocate (buget, timp, personal), nu este aspirațională fără plan de acțiune.\n- **R — Relevant**: obiectivul este legat direct de un risc semnificativ identificat sau de o cerință legală aplicabilă.\n- **T — Timp determinat**: are un termen clar de finalizare sau de evaluare (trimestrial, anual).\n\nConform clauzei 6.2.2, pentru fiecare obiectiv SSM organizația trebuie să determine: **ce se va face**, **ce resurse sunt necesare**, **cine este responsabil**, **până când se finalizează** și **cum se evaluează rezultatele**, inclusiv indicatorii de monitorizare. Practic, fiecare obiectiv se documentează printr-un mini-plan de acțiune, nu doar printr-o frază.\n\n## Indicatori proactivi (leading) vs. indicatori reactivi (lagging)\n\nPentru ca un obiectiv SSM să fie măsurabil, ai nevoie de un indicator (KPI) potrivit. În practica SSM, indicatorii se împart în două categorii:\n\n**Indicatori reactivi (lagging)** — măsoară evenimente care s-au produs deja: numărul de accidente de muncă, numărul de zile de incapacitate temporară de muncă, indicele de frecvență a accidentelor (LTIFR — Lost Time Injury Frequency Rate, calculat ca număr de accidente cu oprire × 1.000.000 / numărul de ore lucrate). Sunt utili pentru a evalua tendința pe termen lung, dar nu previn nimic — arată ce s-a întâmplat.\n\n**Indicatori proactivi (leading)** — măsoară acțiunile preventive realizate înainte ca un incident să apară: procentul de angajați instruiți la termen, numărul de inspecții SSM efectuate lunar, procentul de neconformități închise în termenul stabilit, procentul de posturi de lucru cu evaluare de risc actualizată. Aceștia sunt esențiali pentru un sistem de management matur, deoarece permit intervenția înainte de producerea accidentului.\n\nUn set echilibrat de 5 obiective SSM ar trebui să combine ambele tipuri: cel puțin 2-3 indicatori proactivi (instruire, inspecții, EIP) și 1-2 indicatori reactivi (accidente, zile pierdute), pentru a avea atât control preventiv, cât și verificare a rezultatului final.\n\n## Exemplu: Obiectiv SSM complet formulat, cu toate elementele cerute de clauza 6.2.2\n**Context**: Depozit Logistic Alfa SRL, 48 de angajați, activitate de manipulare paleți cu stivuitor. Evaluarea de risc (clauza 6.1) a identificat riscul de coliziune stivuitor-pieton ca risc semnificativ.\n\n**Obiectiv formulat SMART**:\n\n- **Ce**: reducerea numărului de incidente de tip \"aproape-accident\" (near-miss) legate de circulația stivuitoarelor în depozit.\n- **Indicator**: numărul de evenimente near-miss raportate și investigate pe lună, raportat la numărul de ore de funcționare a stivuitoarelor.\n- **Țintă**: reducere de la 6 evenimente/lună (valoare de referință, ianuarie 2026) la maximum 2 evenimente/lună.\n- **Resurse**: marcaje de podea reflectorizante (buget 8.500 lei), instalare a 4 oglinzi convexe la intersecții (1.200 lei), instruire suplimentară operatori stivuitor (16 ore/operator).\n- **Responsabil**: șeful de depozit, cu sprijinul responsabilului SSM.\n- **Termen**: 31 decembrie 2026, cu evaluare intermediară la 30 iunie 2026.\n- **Metodă de evaluare**: raport lunar de incidente, analizat în ședința lunară SSM; analiză de tendință la 6 și 12 luni.\n\nAcest obiectiv respectă toate cerințele clauzei 6.2.2: are indicator numeric, resurse alocate, responsabil nominalizat, termen și metodă de monitorizare a rezultatului.\n\n## Exemplu: Set de 5 obiective SSM pentru o companie de producție (100 angajați)\nExemplu de tablou cu 5 obiective SSM diversificate, pentru anul de referință 2026, la o firmă de producție componente metalice:\n\n| Nr. | Obiectiv | Indicator (KPI) | Valoare inițială | Țintă | Termen |\n|---|---|---|---|---|---|\n| 1 | Creșterea gradului de instruire periodică SSM | % angajați instruiți la termenul planificat | 82% | 100% | trimestrial |\n| 2 | Reducerea expunerii la zgomot în secția de ștanțare | nr. posturi cu nivel de zgomot peste 85 dB(A) fără protecție adecvată | 7 posturi | 0 posturi | 30.09.2026 |\n| 3 | Scăderea ratei accidentelor cu incapacitate temporară de muncă | LTIFR (accidente/milion ore lucrate) | 4,2 | sub 2,0 | 31.12.2026 |\n| 4 | Creșterea numărului de inspecții SSM interne | nr. inspecții planificate efectuate/lună | 1/lună | 4/lună | 31.03.2026 |\n| 5 | Îmbunătățirea ratei de închidere a neconformităților din auditul intern | % neconformități închise în termen de 30 zile | 60% | 95% | trimestrial |\n\nObservă combinația: obiectivele 1, 2 și 4 sunt indicatori proactivi (leading) — previn producerea evenimentelor; obiectivul 3 este reactiv (lagging) — validează rezultatul final; obiectivul 5 măsoară funcționarea sistemului de management în sine (bucla de îmbunătățire continuă din clauza 10).\n\n> Temei legal: Legea nr. 319/2006 privind securitatea și sănătatea în muncă art. 7 alin. (4) lit. e), coroborat cu HG 1425/2006, art. 15 (în vigoare de la 2006-07-26)\nLegea 319/2006 obligă angajatorul să **elaboreze un plan de prevenire și protecție** compus din măsuri tehnice, sanitare, organizatorice și de altă natură, bazat pe evaluarea riscurilor. Normele metodologice de aplicare (HG 1425/2006, art. 15) detaliază conținutul minim al planului, care trebuie revizuit ori de câte ori intervin modificări ale condițiilor de muncă. Obiectivele SSM definite conform ISO 45001, clauza 6.2, se integrează practic în acest plan de prevenire și protecție cerut de legislația națională — standardul internațional nu înlocuiește obligația legală, ci oferă structura de management (indicatori, responsabili, termene, evaluare) prin care planul este monitorizat și îmbunătățit continuu. Verifică forma actualizată a actelor normative la data implementării, întrucât normele metodologice au suferit modificări succesive.\n\n⚠ **Capcana obiectivelor \"decorative\"**: multe organizații scriu obiective SSM de tipul \"reducerea numărului de accidente\" sau \"creșterea culturii de siguranță\", fără cifră de referință, fără țintă numerică și fără termen. Un auditor de certificare ISO 45001 va ridica neconformitate imediat, pentru că un astfel de obiectiv nu poate fi verificat obiectiv la analiza de management (clauza 9.3) sau la auditul intern (clauza 9.2). Alte greșeli frecvente: obiective fără resurse alocate (deci nerealizabile), obiective care nu au legătură cu riscurile reale identificate în evaluarea de risc, și obiective care nu sunt comunicate angajaților care ar trebui să contribuie la atingerea lor. Regula practică: dacă nu poți răspunde la întrebarea \"cum știm, cu o cifră, că am atins acest obiectiv?\", obiectivul nu este încă formulat corect.\n\n## Exercițiu\n**Cerință practică**: Ești responsabil SSM la \"Confort Metal SRL\", firmă cu 35 de angajați, producție de mobilier metalic (sudură, vopsire electrostatică, asamblare). Din evaluarea de risc (clauza 6.1) au rezultat ca riscuri semnificative: expunerea la fum de sudură, folosirea incompletă a echipamentului individual de protecție (EIP), și un istoric de 3 accidente ușoare în ultimul an legate de manipularea manuală a materialelor.\n\nDefinește **5 obiective SSM**, fiecare cu: indicator măsurabil, valoare de referință (poți estima rezonabil), țintă numerică, termen și responsabil. Asigură-te că ai cel puțin un indicator proactiv (leading) și cel puțin un indicator reactiv (lagging), conform explicațiilor din lecție.\n\n**Soluție:** **Propunere de soluție (una dintre variantele corecte posibile)**:\n\n1. **Reducerea expunerii la fum de sudură** — Indicator: nr. posturi de sudură fără sistem local de exhaustare funcțional. Referință: 4 posturi. Țintă: 0 posturi. Termen: 30.09.2026. Responsabil: șef secție sudură.\n\n2. **Creșterea conformității la purtarea EIP** — Indicator: % conformitate constatată la inspecțiile inopinate lunare. Referință: 70%. Țintă: 98%. Termen: trimestrial, evaluare continuă până la 31.12.2026. Responsabil: responsabil SSM.\n\n3. **Reducerea accidentelor legate de manipularea manuală** — Indicator: nr. accidente înregistrate cu manipulare manuală/an (indicator reactiv/lagging). Referință: 3 accidente/an. Țintă: maximum 1 accident/an. Termen: 31.12.2026. Responsabil: director de producție.\n\n4. **Creșterea numărului de instruiri practice pentru manipulare manuală și utilizare EIP** — Indicator: nr. sesiuni de instruire practică efectuate/trimestru (indicator proactiv/leading). Referință: 1 sesiune/trimestru. Țintă: 4 sesiuni/trimestru. Termen: începând cu T3 2026. Responsabil: responsabil resurse umane + responsabil SSM.\n\n5. **Îmbunătățirea ratei de raportare a evenimentelor near-miss** — Indicator: nr. evenimente near-miss raportate/lună (indicator proactiv, arată gradul de implicare al angajaților). Referință: 0-1/lună (subraportare probabilă). Țintă: minimum 5/lună, investigate integral. Termen: 30.06.2026. Responsabil: șefii de secție.\n\nObservă că fiecare obiectiv are toate elementele cerute de clauza 6.2.2: indicator, valoare de plecare, țintă, termen și responsabil — și că setul combină indicatori proactivi (1, 2, 4, 5) cu unul reactiv (3), exact structura recomandată pentru un sistem de management SSM matur.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "iso45001-clauza-6-2",
+    "md": "## Obiectivele SSM conform ISO 45001, clauza 6.2\n\nClauza 6.2 din ISO 45001:2018 cere organizației să stabilească **obiective de securitate și sănătate în muncă (SSM)** pentru funcțiile și nivelurile relevante ale organizației. Aceste obiective nu sunt declarații generale de intenție, ci ținte concrete, derivate din trei surse obligatorii:\n\n1. **Politica SSM** — obiectivele trebuie să fie coerente cu angajamentele asumate prin politică (prevenirea vătămărilor, îmbunătățirea continuă, conformarea legală).\n2. **Riscurile și oportunitățile** identificate la clauza 6.1 — de exemplu, dacă evaluarea de risc a arătat expunere ridicată la zgomot, un obiectiv trebuie să vizeze reducerea acestei expuneri.\n3. **Rezultatele auditurilor și analizelor de management anterioare** — neconformitățile constatate devin surse de obiective corective.\n\nStandardul cere ca fiecare obiectiv să fie **măsurabil** (dacă este posibil), **monitorizat**, **comunicat** personalului relevant și **actualizat** atunci când este cazul. Fără un indicator numeric asociat, un obiectiv SSM rămâne o intenție, nu un instrument de management — echipa de audit intern nu are cum să verifice progresul, iar analiza managementului (clauza 9.3) nu are date pe care să se bazeze.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "iso45001-obiective-smart",
+    "md": "## Metoda SMART aplicată obiectivelor SSM\n\nCea mai eficientă metodă de a transforma o intenție SSM într-un obiectiv conform ISO 45001 este criteriul **SMART**, adaptat la contextul securității și sănătății în muncă:\n\n- **S — Specific**: obiectivul vizează o problemă concretă (ex: căderi de la înălțime la depozitul central), nu generalități de tipul \"reducem accidentele\".\n- **M — Măsurabil**: există un indicator numeric asociat (procent, număr, rată).\n- **A — Abordabil (realist)**: ținta este atinsă cu resursele alocate (buget, timp, personal), nu este aspirațională fără plan de acțiune.\n- **R — Relevant**: obiectivul este legat direct de un risc semnificativ identificat sau de o cerință legală aplicabilă.\n- **T — Timp determinat**: are un termen clar de finalizare sau de evaluare (trimestrial, anual).\n\nConform clauzei 6.2.2, pentru fiecare obiectiv SSM organizația trebuie să determine: **ce se va face**, **ce resurse sunt necesare**, **cine este responsabil**, **până când se finalizează** și **cum se evaluează rezultatele**, inclusiv indicatorii de monitorizare. Practic, fiecare obiectiv se documentează printr-un mini-plan de acțiune, nu doar printr-o frază.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "indicatori-ssm-leading-lagging",
+    "md": "## Indicatori proactivi (leading) vs. indicatori reactivi (lagging)\n\nPentru ca un obiectiv SSM să fie măsurabil, ai nevoie de un indicator (KPI) potrivit. În practica SSM, indicatorii se împart în două categorii:\n\n**Indicatori reactivi (lagging)** — măsoară evenimente care s-au produs deja: numărul de accidente de muncă, numărul de zile de incapacitate temporară de muncă, indicele de frecvență a accidentelor (LTIFR — Lost Time Injury Frequency Rate, calculat ca număr de accidente cu oprire × 1.000.000 / numărul de ore lucrate). Sunt utili pentru a evalua tendința pe termen lung, dar nu previn nimic — arată ce s-a întâmplat.\n\n**Indicatori proactivi (leading)** — măsoară acțiunile preventive realizate înainte ca un incident să apară: procentul de angajați instruiți la termen, numărul de inspecții SSM efectuate lunar, procentul de neconformități închise în termenul stabilit, procentul de posturi de lucru cu evaluare de risc actualizată. Aceștia sunt esențiali pentru un sistem de management matur, deoarece permit intervenția înainte de producerea accidentului.\n\nUn set echilibrat de 5 obiective SSM ar trebui să combine ambele tipuri: cel puțin 2-3 indicatori proactivi (instruire, inspecții, EIP) și 1-2 indicatori reactivi (accidente, zile pierdute), pentru a avea atât control preventiv, cât și verificare a rezultatului final.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b3"
+   },
+   {
+    "type": "example",
+    "title": "Obiectiv SSM complet formulat, cu toate elementele cerute de clauza 6.2.2",
+    "concept_key": "iso45001-obiective-smart",
+    "md": "**Context**: Depozit Logistic Alfa SRL, 48 de angajați, activitate de manipulare paleți cu stivuitor. Evaluarea de risc (clauza 6.1) a identificat riscul de coliziune stivuitor-pieton ca risc semnificativ.\n\n**Obiectiv formulat SMART**:\n\n- **Ce**: reducerea numărului de incidente de tip \"aproape-accident\" (near-miss) legate de circulația stivuitoarelor în depozit.\n- **Indicator**: numărul de evenimente near-miss raportate și investigate pe lună, raportat la numărul de ore de funcționare a stivuitoarelor.\n- **Țintă**: reducere de la 6 evenimente/lună (valoare de referință, ianuarie 2026) la maximum 2 evenimente/lună.\n- **Resurse**: marcaje de podea reflectorizante (buget 8.500 lei), instalare a 4 oglinzi convexe la intersecții (1.200 lei), instruire suplimentară operatori stivuitor (16 ore/operator).\n- **Responsabil**: șeful de depozit, cu sprijinul responsabilului SSM.\n- **Termen**: 31 decembrie 2026, cu evaluare intermediară la 30 iunie 2026.\n- **Metodă de evaluare**: raport lunar de incidente, analizat în ședința lunară SSM; analiză de tendință la 6 și 12 luni.\n\nAcest obiectiv respectă toate cerințele clauzei 6.2.2: are indicator numeric, resurse alocate, responsabil nominalizat, termen și metodă de monitorizare a rezultatului.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b4"
+   },
+   {
+    "type": "example",
+    "title": "Set de 5 obiective SSM pentru o companie de producție (100 angajați)",
+    "concept_key": "indicatori-ssm-leading-lagging",
+    "md": "Exemplu de tablou cu 5 obiective SSM diversificate, pentru anul de referință 2026, la o firmă de producție componente metalice:\n\n| Nr. | Obiectiv | Indicator (KPI) | Valoare inițială | Țintă | Termen |\n|---|---|---|---|---|---|\n| 1 | Creșterea gradului de instruire periodică SSM | % angajați instruiți la termenul planificat | 82% | 100% | trimestrial |\n| 2 | Reducerea expunerii la zgomot în secția de ștanțare | nr. posturi cu nivel de zgomot peste 85 dB(A) fără protecție adecvată | 7 posturi | 0 posturi | 30.09.2026 |\n| 3 | Scăderea ratei accidentelor cu incapacitate temporară de muncă | LTIFR (accidente/milion ore lucrate) | 4,2 | sub 2,0 | 31.12.2026 |\n| 4 | Creșterea numărului de inspecții SSM interne | nr. inspecții planificate efectuate/lună | 1/lună | 4/lună | 31.03.2026 |\n| 5 | Îmbunătățirea ratei de închidere a neconformităților din auditul intern | % neconformități închise în termen de 30 zile | 60% | 95% | trimestrial |\n\nObservă combinația: obiectivele 1, 2 și 4 sunt indicatori proactivi (leading) — previn producerea evenimentelor; obiectivul 3 este reactiv (lagging) — validează rezultatul final; obiectivul 5 măsoară funcționarea sistemului de management în sine (bucla de îmbunătățire continuă din clauza 10).",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 privind securitatea și sănătatea în muncă",
+    "article": "art. 7 alin. (4) lit. e), coroborat cu HG 1425/2006, art. 15",
+    "effective": "2006-07-26",
+    "md": "Legea 319/2006 obligă angajatorul să **elaboreze un plan de prevenire și protecție** compus din măsuri tehnice, sanitare, organizatorice și de altă natură, bazat pe evaluarea riscurilor. Normele metodologice de aplicare (HG 1425/2006, art. 15) detaliază conținutul minim al planului, care trebuie revizuit ori de câte ori intervin modificări ale condițiilor de muncă. Obiectivele SSM definite conform ISO 45001, clauza 6.2, se integrează practic în acest plan de prevenire și protecție cerut de legislația națională — standardul internațional nu înlocuiește obligația legală, ci oferă structura de management (indicatori, responsabili, termene, evaluare) prin care planul este monitorizat și îmbunătățit continuu. Verifică forma actualizată a actelor normative la data implementării, întrucât normele metodologice au suferit modificări succesive.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Capcana obiectivelor \"decorative\"**: multe organizații scriu obiective SSM de tipul \"reducerea numărului de accidente\" sau \"creșterea culturii de siguranță\", fără cifră de referință, fără țintă numerică și fără termen. Un auditor de certificare ISO 45001 va ridica neconformitate imediat, pentru că un astfel de obiectiv nu poate fi verificat obiectiv la analiza de management (clauza 9.3) sau la auditul intern (clauza 9.2). Alte greșeli frecvente: obiective fără resurse alocate (deci nerealizabile), obiective care nu au legătură cu riscurile reale identificate în evaluarea de risc, și obiective care nu sunt comunicate angajaților care ar trebui să contribuie la atingerea lor. Regula practică: dacă nu poți răspunde la întrebarea \"cum știm, cu o cifră, că am atins acest obiectiv?\", obiectivul nu este încă formulat corect.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Cerință practică**: Ești responsabil SSM la \"Confort Metal SRL\", firmă cu 35 de angajați, producție de mobilier metalic (sudură, vopsire electrostatică, asamblare). Din evaluarea de risc (clauza 6.1) au rezultat ca riscuri semnificative: expunerea la fum de sudură, folosirea incompletă a echipamentului individual de protecție (EIP), și un istoric de 3 accidente ușoare în ultimul an legate de manipularea manuală a materialelor.\n\nDefinește **5 obiective SSM**, fiecare cu: indicator măsurabil, valoare de referință (poți estima rezonabil), țintă numerică, termen și responsabil. Asigură-te că ai cel puțin un indicator proactiv (leading) și cel puțin un indicator reactiv (lagging), conform explicațiilor din lecție.",
+    "solution_md": "**Propunere de soluție (una dintre variantele corecte posibile)**:\n\n1. **Reducerea expunerii la fum de sudură** — Indicator: nr. posturi de sudură fără sistem local de exhaustare funcțional. Referință: 4 posturi. Țintă: 0 posturi. Termen: 30.09.2026. Responsabil: șef secție sudură.\n\n2. **Creșterea conformității la purtarea EIP** — Indicator: % conformitate constatată la inspecțiile inopinate lunare. Referință: 70%. Țintă: 98%. Termen: trimestrial, evaluare continuă până la 31.12.2026. Responsabil: responsabil SSM.\n\n3. **Reducerea accidentelor legate de manipularea manuală** — Indicator: nr. accidente înregistrate cu manipulare manuală/an (indicator reactiv/lagging). Referință: 3 accidente/an. Țintă: maximum 1 accident/an. Termen: 31.12.2026. Responsabil: director de producție.\n\n4. **Creșterea numărului de instruiri practice pentru manipulare manuală și utilizare EIP** — Indicator: nr. sesiuni de instruire practică efectuate/trimestru (indicator proactiv/leading). Referință: 1 sesiune/trimestru. Țintă: 4 sesiuni/trimestru. Termen: începând cu T3 2026. Responsabil: responsabil resurse umane + responsabil SSM.\n\n5. **Îmbunătățirea ratei de raportare a evenimentelor near-miss** — Indicator: nr. evenimente near-miss raportate/lună (indicator proactiv, arată gradul de implicare al angajaților). Referință: 0-1/lună (subraportare probabilă). Țintă: minimum 5/lună, investigate integral. Termen: 30.06.2026. Responsabil: șefii de secție.\n\nObservă că fiecare obiectiv are toate elementele cerute de clauza 6.2.2: indicator, valoare de plecare, țintă, termen și responsabil — și că setul combină indicatori proactivi (1, 2, 4, 5) cu unul reactiv (3), exact structura recomandată pentru un sistem de management SSM matur.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele formulări reprezintă un obiectiv SSM corect conform ISO 45001, clauza 6.2?",
+    "choices": [
+     "\"Vom reduce numărul de accidente de muncă în perioada următoare.\"",
+     "\"Reducerea LTIFR de la 4,2 la sub 2,0 până la 31.12.2026, prin instruire suplimentară și dotare cu EIP nou, responsabil: șef producție.\"",
+     "\"Creșterea culturii de siguranță în organizație.\"",
+     "\"Respectarea legislației SSM în vigoare.\""
+    ],
+    "answer": 1,
+    "explain": "Doar varianta 2 conține toate elementele cerute de clauza 6.2.2: indicator numeric (LTIFR), valoare de referință, țintă, termen, acțiuni și responsabil. Celelalte variante sunt intenții generale, nemăsurabile și fără termen.",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un indicator care măsoară \"procentul de angajați instruiți SSM la termenul planificat\" este:",
+    "choices": [
+     "Un indicator reactiv (lagging), pentru că se referă la trecut",
+     "Un indicator proactiv (leading), pentru că măsoară o acțiune preventivă realizată înainte de producerea unui eventual incident",
+     "Un indicator financiar, nu SSM",
+     "Un indicator care nu poate fi folosit ca obiectiv conform ISO 45001"
+    ],
+    "answer": 1,
+    "explain": "Instruirea este o măsură preventivă; monitorizarea gradului de instruire este un indicator proactiv (leading), spre deosebire de numărul de accidente, care este un indicator reactiv (lagging).",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul SMART aplicat unui obiectiv SSM?",
+    "back": "Specific, Măsurabil, Abordabil (realist), Relevant, cu Termen definit.",
+    "concept_key": "iso45001-obiective-smart",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce elemente trebuie determinate pentru fiecare obiectiv SSM conform ISO 45001 clauza 6.2.2?",
+    "back": "Ce se va face, resursele necesare, responsabilul, termenul de finalizare și metoda de evaluare a rezultatelor (indicatori de monitorizare).",
+    "concept_key": "iso45001-clauza-6-2",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este LTIFR și cum se calculează?",
+    "back": "Lost Time Injury Frequency Rate — indicator reactiv (lagging): număr de accidente cu oprire a lucrului × 1.000.000 / numărul total de ore lucrate.",
+    "concept_key": "indicatori-ssm-leading-lagging",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre un indicator leading și unul lagging în SSM?",
+    "back": "Leading (proactiv) măsoară acțiuni preventive realizate înainte de un incident (ex: % instruire); lagging (reactiv) măsoară evenimente deja produse (ex: nr. accidente).",
+    "concept_key": "indicatori-ssm-leading-lagging",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ obligă angajatorul din România să elaboreze un plan de prevenire și protecție cu măsuri și obiective SSM?",
+    "back": "Legea 319/2006, art. 7 alin. (4) lit. e), detaliat prin HG 1425/2006, art. 15 (normele metodologice de aplicare).",
+    "concept_key": "iso45001-clauza-6-2",
+    "blockId": "cmjjuxweu00m1umkp2ploakcl-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1462,
+   "flashcards": 5
+  }
+ }
+}

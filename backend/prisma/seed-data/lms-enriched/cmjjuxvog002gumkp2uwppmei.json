@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvog002gumkp2uwppmei",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Pivot și Modele de Date",
+ "lesson": "Exercițiu - Model vânzări complet",
+ "category": "EXCEL_VBA",
+ "content": "# Exercițiu - Model vânzări complet\n\n## Schema stea: tabele Fact și Dimension\n\nOrice model de date solid în Power Pivot pornește de la principiul **schemei stea** (star schema): un singur tabel de tranzacții, numit **tabel Fact**, aflat în centru, conectat prin relații la mai multe **tabele Dimension**, care descriu contextul tranzacțiilor.\n\n- **Tabelul Fact** conține evenimente măsurabile — de regulă vânzări, comenzi, tranzacții — și are de obicei mii sau milioane de rânduri. Coloanele lui sunt fie chei către dimensiuni (ID_Produs, ID_Client, Data), fie valori numerice pe care le agregăm (Cantitate, Preț_Unitar, Cost_Unitar).\n- **Tabelele Dimension** descriu \"cine, ce, unde, când\": Dim_Produse (denumire, categorie, furnizor), Dim_Clienți (nume, regiune, segment), Dim_Data (an, lună, trimestru). Au relativ puține rânduri și nu se repetă.\n\nAvantajul acestei arhitecturi față de un singur tabel plat este dublu: (1) elimină duplicarea informației descriptive la fiecare rând din Fact, reducând dimensiunea fișierului; (2) permite Power Pivot să agregeze rapid milioane de rânduri, deoarece motorul VertiPaq comprimă coloanele repetitive din dimensiuni mult mai eficient decât ar comprima un tabel plat cu aceleași informații repetate de sute de ori.\n\n## Relații în modelul de date Power Pivot\n\nO relație leagă o coloană din tabelul Fact (partea \"multe\") de coloana cheie primară dintr-un tabel Dimension (partea \"unu\"). În fereastra Manage Relationships aceasta se numește relație **unu-la-mai-multe (1:*)** și are întotdeauna un sens de filtrare: dimensiunea filtrează faptele, nu invers.\n\nReguli practice pe care trebuie să le respecți:\n\n1. Coloana cheie din tabelul Dimension trebuie să conțină valori **unice** (fără duplicate) — altfel Power Pivot refuză relația sau o marchează ca eronată.\n2. O relație activă (linie continuă în diagrama modelului) este folosită automat de orice măsură. O relație inactivă (linie punctată) trebuie activată explicit în DAX cu funcția USERELATIONSHIP.\n3. Evită relațiile **many-to-many** directe (multe-la-multe) între două tabele Fact; dacă apar, introdu un tabel Dimension intermediar (bridge table) pentru a păstra un model curat și predictibil.\n4. Toate tabelele trebuie formatate ca **Table** (Ctrl+T) înainte de a fi adăugate în modelul de date, altfel actualizările ulterioare de date nu se propagă automat.\n\n## Măsuri DAX vs coloane calculate\n\nÎn Power Pivot ai două moduri de a produce valori derivate, iar alegerea greșită afectează atât performanța, cât și corectitudinea rapoartelor:\n\n- **Coloana calculată** se evaluează rând cu rând și se stochează fizic în tabel, ocupând memorie proporțional cu numărul de rânduri. Se folosește pentru valori care trebuie să existe la nivel de rând (ex. o categorie derivată dintr-un cod de produs).\n- **Măsura DAX** se calculează dinamic, în funcție de contextul de filtrare din raport (Pivot Table, slicer, filtru de lună etc.) și nu ocupă spațiu suplimentar în model. Este instrumentul potrivit pentru orice agregare: total, medie, procent, comparație an-peste-an.\n\nSintaxa unei măsuri de bază pentru vânzări:\n\n`Total Vânzări = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Preț_Unitar])`\n\nFuncția SUMX parcurge rând cu rând tabelul Fact_Vanzari și înmulțește cantitatea cu prețul unitar înainte de a însuma rezultatele — este echivalentul DAX al unui SUMPRODUCT, dar sensibil la contextul de filtrare aplicat de dimensiuni. Rețineți separatorul **punct și virgulă (;)** între argumente, conform setărilor regionale românești ale Excel, unde virgula este deja folosită ca separator zecimal.\n\n## Exemplu: Construirea tabelelor Fact și Dimension pentru un model de vânzări\nPresupune că firma **Comexim SRL** vinde produse electronice prin doi clienți parteneri. Structura minimă pentru modelul de date arată astfel:\n\n**Fact_Vanzari** (o linie pe fiecare comandă):\n\n| ID_Comandă | Data | ID_Produs | ID_Client | Cantitate | Preț_Unitar | Cost_Unitar |\n|---|---|---|---|---|---|---|\n| 1 | 05.01.2026 | P1 | C1 | 10 | 50 | 30 |\n| 2 | 12.01.2026 | P2 | C2 | 4 | 120 | 80 |\n\n**Dim_Produse**:\n\n| ID_Produs | Denumire | Categorie |\n|---|---|---|\n| P1 | Laptop Business 15\" | IT |\n| P2 | Monitor 27\" | Periferice |\n\n**Dim_Clienți**:\n\n| ID_Client | Nume_Client | Regiune |\n|---|---|---|\n| C1 | Alfa Distribuție SRL | București |\n| C2 | Beta Comerț SRL | Cluj |\n\n**Dim_Data**: un calendar cu o linie pe fiecare zi calendaristică, având coloane An, Lună, Trimestru — generat de obicei cu Power Query din DATE(An_start;1;1) până la sfârșitul perioadei analizate.\n\nÎn Power Pivot, importă cele patru tabele (Home > Manage Data Model), formatează-le ca Table, apoi în vizualizarea de diagramă trage câmpul ID_Produs din Fact_Vanzari peste ID_Produs din Dim_Produse; procedează identic pentru ID_Client și pentru Data. Rezultatul este o stea cu Fact_Vanzari în centru și trei dimensiuni conectate prin relații 1:*.\n\n## Exemplu: Măsuri DAX de bază: Vânzări, Cost, Marjă\nPornind de la cele două comenzi din exemplul anterior, scriem trei măsuri în Fact_Vanzari:\n\n```\nTotal Vânzări = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Preț_Unitar])\nCost Total = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Cost_Unitar])\nMarjă Lei = [Total Vânzări] - [Cost Total]\nMarjă % = DIVIDE([Marjă Lei]; [Total Vânzări])\n```\n\nCalcul manual de verificare pentru cele două comenzi:\n\n- Comanda 1: vânzări = 10 × 50 = 500 lei; cost = 10 × 30 = 300 lei; marjă = 200 lei.\n- Comanda 2: vânzări = 4 × 120 = 480 lei; cost = 4 × 80 = 320 lei; marjă = 160 lei.\n- **Total**: vânzări = 980 lei; cost = 620 lei; marjă = 360 lei; marjă % = 360 / 980 = 36,73%.\n\nObservă folosirea funcției **DIVIDE** în locul împărțirii simple (/): DIVIDE gestionează automat cazul de împărțire la zero, returnând un rezultat gol (sau o valoare alternativă specificată ca al treilea argument) în loc de eroarea #DIV/0!, ceea ce este esențial într-un raport care va fi filtrat pe diverse combinații de lună/client unde vânzările pot fi zero.\n\nPentru comparația an-peste-an, adaugă:\n\n`Vânzări An Anterior = CALCULATE([Total Vânzări]; SAMEPERIODLASTYEAR(Dim_Data[Data]))`\n\nAceastă măsură funcționează corect doar dacă Dim_Data este un tabel calendar continuu (fără zile lipsă) și relația dintre Fact_Vanzari și Dim_Data este activă.\n\n⚠ Cele mai frecvente greșeli la construirea unui model de vânzări în Power Pivot: (1) tabelul Dim_Data are goluri (lipsesc zile) sau nu acoperă tot intervalul din Fact — funcțiile de time intelligence precum SAMEPERIODLASTYEAR devin nesigure; (2) cheia din tabelul Dimension nu este unică, ceea ce blochează relația sau, mai grav, o creează greșit ca many-to-many; (3) se amestecă măsuri cu coloane calculate pentru agregări, ceea ce umflă inutil dimensiunea fișierului; (4) se filtrează tabelul Fact direct dintr-un slicer legat de o coloană din Fact în loc de dimensiune, ceea ce rupe logica de filtrare a schemei stea. Verifică întotdeauna diagrama modelului (Diagram View) înainte de a scrie măsuri complexe.\n\n## Exercițiu\nAi următorul set de date pentru firma **Comexim SRL**, ianuarie–februarie 2026:\n\n**Fact_Vanzari**\n\n| ID | Data | Produs | Client | Cantitate | Preț_Unitar | Cost_Unitar |\n|---|---|---|---|---|---|---|\n| 1 | 05.01.2026 | P1 | C1 | 10 | 50 | 30 |\n| 2 | 12.01.2026 | P2 | C2 | 4 | 200 | 140 |\n| 3 | 20.01.2026 | P1 | C2 | 6 | 50 | 30 |\n| 4 | 03.02.2026 | P2 | C1 | 3 | 200 | 140 |\n| 5 | 15.02.2026 | P1 | C1 | 8 | 50 | 30 |\n| 6 | 22.02.2026 | P2 | C2 | 5 | 200 | 140 |\n\n**Dim_Produse**: P1 = Laptop Business (Categorie IT); P2 = Monitor 27\" (Categorie Periferice).\n\n**Cerințe:**\n1. Construiește modelul de date (Fact_Vanzari + Dim_Produse + Dim_Clienți + Dim_Data) cu relațiile corecte.\n2. Scrie măsurile: Total Vânzări, Cost Total, Marjă Lei, Marjă %.\n3. Construiește un Pivot Table cu Lună pe rânduri și Categorie pe coloane, afișând Total Vânzări și Marjă %.\n4. Calculează manual, ca verificare, totalurile pe lună și categorie.\n\n**Soluție:** **Măsuri DAX** (identice cu cele din exemplul anterior):\n\n```\nTotal Vânzări = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Preț_Unitar])\nCost Total = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Cost_Unitar])\nMarjă Lei = [Total Vânzări] - [Cost Total]\nMarjă % = DIVIDE([Marjă Lei]; [Total Vânzări])\n```\n\n**Calcul manual pe lună și categorie:**\n\nIanuarie, categoria IT (P1, rândurile 1 și 3): cantitate 10+6=16; vânzări = 16×50 = 800 lei; cost = 16×30 = 480 lei; marjă = 320 lei.\n\nIanuarie, categoria Periferice (P2, rândul 2): cantitate 4; vânzări = 4×200 = 800 lei; cost = 4×140 = 560 lei; marjă = 240 lei.\n\n**Total Ianuarie**: vânzări 1.600 lei; cost 1.040 lei; marjă 560 lei; marjă % = 560/1.600 = 35,00%.\n\nFebruarie, categoria Periferice (P2, rândul 4): cantitate 3; vânzări = 600 lei; cost = 420 lei; marjă = 180 lei.\n\nFebruarie, categoria IT (P1, rândul 5): cantitate 8; vânzări = 400 lei; cost = 240 lei; marjă = 160 lei.\n\n**Total Februarie**: vânzări 1.000 lei; cost 660 lei; marjă 340 lei; marjă % = 340/1.000 = 34,00%.\n\n**Total general (ambele luni, ambele categorii)**: vânzări 2.600 lei; cost 1.700 lei; marjă 900 lei; marjă % = 900/2.600 = 34,62%.\n\nÎn Pivot Table, valorile din celule trebuie să corespundă exact acestor totaluri pe intersecția Lună × Categorie; dacă apar diferențe, verifică mai întâi dacă relațiile Fact_Vanzari–Dim_Produse și Fact_Vanzari–Dim_Data sunt active și corect orientate (1 spre Dimension, * spre Fact).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "schema-stea-fact-dimension",
+    "md": "## Schema stea: tabele Fact și Dimension\n\nOrice model de date solid în Power Pivot pornește de la principiul **schemei stea** (star schema): un singur tabel de tranzacții, numit **tabel Fact**, aflat în centru, conectat prin relații la mai multe **tabele Dimension**, care descriu contextul tranzacțiilor.\n\n- **Tabelul Fact** conține evenimente măsurabile — de regulă vânzări, comenzi, tranzacții — și are de obicei mii sau milioane de rânduri. Coloanele lui sunt fie chei către dimensiuni (ID_Produs, ID_Client, Data), fie valori numerice pe care le agregăm (Cantitate, Preț_Unitar, Cost_Unitar).\n- **Tabelele Dimension** descriu \"cine, ce, unde, când\": Dim_Produse (denumire, categorie, furnizor), Dim_Clienți (nume, regiune, segment), Dim_Data (an, lună, trimestru). Au relativ puține rânduri și nu se repetă.\n\nAvantajul acestei arhitecturi față de un singur tabel plat este dublu: (1) elimină duplicarea informației descriptive la fiecare rând din Fact, reducând dimensiunea fișierului; (2) permite Power Pivot să agregeze rapid milioane de rânduri, deoarece motorul VertiPaq comprimă coloanele repetitive din dimensiuni mult mai eficient decât ar comprima un tabel plat cu aceleași informații repetate de sute de ori.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "relatii-power-pivot",
+    "md": "## Relații în modelul de date Power Pivot\n\nO relație leagă o coloană din tabelul Fact (partea \"multe\") de coloana cheie primară dintr-un tabel Dimension (partea \"unu\"). În fereastra Manage Relationships aceasta se numește relație **unu-la-mai-multe (1:*)** și are întotdeauna un sens de filtrare: dimensiunea filtrează faptele, nu invers.\n\nReguli practice pe care trebuie să le respecți:\n\n1. Coloana cheie din tabelul Dimension trebuie să conțină valori **unice** (fără duplicate) — altfel Power Pivot refuză relația sau o marchează ca eronată.\n2. O relație activă (linie continuă în diagrama modelului) este folosită automat de orice măsură. O relație inactivă (linie punctată) trebuie activată explicit în DAX cu funcția USERELATIONSHIP.\n3. Evită relațiile **many-to-many** directe (multe-la-multe) între două tabele Fact; dacă apar, introdu un tabel Dimension intermediar (bridge table) pentru a păstra un model curat și predictibil.\n4. Toate tabelele trebuie formatate ca **Table** (Ctrl+T) înainte de a fi adăugate în modelul de date, altfel actualizările ulterioare de date nu se propagă automat.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "masuri-dax-vs-coloane-calculate",
+    "md": "## Măsuri DAX vs coloane calculate\n\nÎn Power Pivot ai două moduri de a produce valori derivate, iar alegerea greșită afectează atât performanța, cât și corectitudinea rapoartelor:\n\n- **Coloana calculată** se evaluează rând cu rând și se stochează fizic în tabel, ocupând memorie proporțional cu numărul de rânduri. Se folosește pentru valori care trebuie să existe la nivel de rând (ex. o categorie derivată dintr-un cod de produs).\n- **Măsura DAX** se calculează dinamic, în funcție de contextul de filtrare din raport (Pivot Table, slicer, filtru de lună etc.) și nu ocupă spațiu suplimentar în model. Este instrumentul potrivit pentru orice agregare: total, medie, procent, comparație an-peste-an.\n\nSintaxa unei măsuri de bază pentru vânzări:\n\n`Total Vânzări = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Preț_Unitar])`\n\nFuncția SUMX parcurge rând cu rând tabelul Fact_Vanzari și înmulțește cantitatea cu prețul unitar înainte de a însuma rezultatele — este echivalentul DAX al unui SUMPRODUCT, dar sensibil la contextul de filtrare aplicat de dimensiuni. Rețineți separatorul **punct și virgulă (;)** între argumente, conform setărilor regionale românești ale Excel, unde virgula este deja folosită ca separator zecimal.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b3"
+   },
+   {
+    "type": "example",
+    "title": "Construirea tabelelor Fact și Dimension pentru un model de vânzări",
+    "concept_key": "constructie-tabele-fact-dimension",
+    "md": "Presupune că firma **Comexim SRL** vinde produse electronice prin doi clienți parteneri. Structura minimă pentru modelul de date arată astfel:\n\n**Fact_Vanzari** (o linie pe fiecare comandă):\n\n| ID_Comandă | Data | ID_Produs | ID_Client | Cantitate | Preț_Unitar | Cost_Unitar |\n|---|---|---|---|---|---|---|\n| 1 | 05.01.2026 | P1 | C1 | 10 | 50 | 30 |\n| 2 | 12.01.2026 | P2 | C2 | 4 | 120 | 80 |\n\n**Dim_Produse**:\n\n| ID_Produs | Denumire | Categorie |\n|---|---|---|\n| P1 | Laptop Business 15\" | IT |\n| P2 | Monitor 27\" | Periferice |\n\n**Dim_Clienți**:\n\n| ID_Client | Nume_Client | Regiune |\n|---|---|---|\n| C1 | Alfa Distribuție SRL | București |\n| C2 | Beta Comerț SRL | Cluj |\n\n**Dim_Data**: un calendar cu o linie pe fiecare zi calendaristică, având coloane An, Lună, Trimestru — generat de obicei cu Power Query din DATE(An_start;1;1) până la sfârșitul perioadei analizate.\n\nÎn Power Pivot, importă cele patru tabele (Home > Manage Data Model), formatează-le ca Table, apoi în vizualizarea de diagramă trage câmpul ID_Produs din Fact_Vanzari peste ID_Produs din Dim_Produse; procedează identic pentru ID_Client și pentru Data. Rezultatul este o stea cu Fact_Vanzari în centru și trei dimensiuni conectate prin relații 1:*.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b4"
+   },
+   {
+    "type": "example",
+    "title": "Măsuri DAX de bază: Vânzări, Cost, Marjă",
+    "concept_key": "masuri-dax-vanzari-marja",
+    "md": "Pornind de la cele două comenzi din exemplul anterior, scriem trei măsuri în Fact_Vanzari:\n\n```\nTotal Vânzări = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Preț_Unitar])\nCost Total = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Cost_Unitar])\nMarjă Lei = [Total Vânzări] - [Cost Total]\nMarjă % = DIVIDE([Marjă Lei]; [Total Vânzări])\n```\n\nCalcul manual de verificare pentru cele două comenzi:\n\n- Comanda 1: vânzări = 10 × 50 = 500 lei; cost = 10 × 30 = 300 lei; marjă = 200 lei.\n- Comanda 2: vânzări = 4 × 120 = 480 lei; cost = 4 × 80 = 320 lei; marjă = 160 lei.\n- **Total**: vânzări = 980 lei; cost = 620 lei; marjă = 360 lei; marjă % = 360 / 980 = 36,73%.\n\nObservă folosirea funcției **DIVIDE** în locul împărțirii simple (/): DIVIDE gestionează automat cazul de împărțire la zero, returnând un rezultat gol (sau o valoare alternativă specificată ca al treilea argument) în loc de eroarea #DIV/0!, ceea ce este esențial într-un raport care va fi filtrat pe diverse combinații de lună/client unde vânzările pot fi zero.\n\nPentru comparația an-peste-an, adaugă:\n\n`Vânzări An Anterior = CALCULATE([Total Vânzări]; SAMEPERIODLASTYEAR(Dim_Data[Data]))`\n\nAceastă măsură funcționează corect doar dacă Dim_Data este un tabel calendar continuu (fără zile lipsă) și relația dintre Fact_Vanzari și Dim_Data este activă.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cele mai frecvente greșeli la construirea unui model de vânzări în Power Pivot: (1) tabelul Dim_Data are goluri (lipsesc zile) sau nu acoperă tot intervalul din Fact — funcțiile de time intelligence precum SAMEPERIODLASTYEAR devin nesigure; (2) cheia din tabelul Dimension nu este unică, ceea ce blochează relația sau, mai grav, o creează greșit ca many-to-many; (3) se amestecă măsuri cu coloane calculate pentru agregări, ceea ce umflă inutil dimensiunea fișierului; (4) se filtrează tabelul Fact direct dintr-un slicer legat de o coloană din Fact în loc de dimensiune, ceea ce rupe logica de filtrare a schemei stea. Verifică întotdeauna diagrama modelului (Diagram View) înainte de a scrie măsuri complexe.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai următorul set de date pentru firma **Comexim SRL**, ianuarie–februarie 2026:\n\n**Fact_Vanzari**\n\n| ID | Data | Produs | Client | Cantitate | Preț_Unitar | Cost_Unitar |\n|---|---|---|---|---|---|---|\n| 1 | 05.01.2026 | P1 | C1 | 10 | 50 | 30 |\n| 2 | 12.01.2026 | P2 | C2 | 4 | 200 | 140 |\n| 3 | 20.01.2026 | P1 | C2 | 6 | 50 | 30 |\n| 4 | 03.02.2026 | P2 | C1 | 3 | 200 | 140 |\n| 5 | 15.02.2026 | P1 | C1 | 8 | 50 | 30 |\n| 6 | 22.02.2026 | P2 | C2 | 5 | 200 | 140 |\n\n**Dim_Produse**: P1 = Laptop Business (Categorie IT); P2 = Monitor 27\" (Categorie Periferice).\n\n**Cerințe:**\n1. Construiește modelul de date (Fact_Vanzari + Dim_Produse + Dim_Clienți + Dim_Data) cu relațiile corecte.\n2. Scrie măsurile: Total Vânzări, Cost Total, Marjă Lei, Marjă %.\n3. Construiește un Pivot Table cu Lună pe rânduri și Categorie pe coloane, afișând Total Vânzări și Marjă %.\n4. Calculează manual, ca verificare, totalurile pe lună și categorie.",
+    "solution_md": "**Măsuri DAX** (identice cu cele din exemplul anterior):\n\n```\nTotal Vânzări = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Preț_Unitar])\nCost Total = SUMX(Fact_Vanzari; Fact_Vanzari[Cantitate]*Fact_Vanzari[Cost_Unitar])\nMarjă Lei = [Total Vânzări] - [Cost Total]\nMarjă % = DIVIDE([Marjă Lei]; [Total Vânzări])\n```\n\n**Calcul manual pe lună și categorie:**\n\nIanuarie, categoria IT (P1, rândurile 1 și 3): cantitate 10+6=16; vânzări = 16×50 = 800 lei; cost = 16×30 = 480 lei; marjă = 320 lei.\n\nIanuarie, categoria Periferice (P2, rândul 2): cantitate 4; vânzări = 4×200 = 800 lei; cost = 4×140 = 560 lei; marjă = 240 lei.\n\n**Total Ianuarie**: vânzări 1.600 lei; cost 1.040 lei; marjă 560 lei; marjă % = 560/1.600 = 35,00%.\n\nFebruarie, categoria Periferice (P2, rândul 4): cantitate 3; vânzări = 600 lei; cost = 420 lei; marjă = 180 lei.\n\nFebruarie, categoria IT (P1, rândul 5): cantitate 8; vânzări = 400 lei; cost = 240 lei; marjă = 160 lei.\n\n**Total Februarie**: vânzări 1.000 lei; cost 660 lei; marjă 340 lei; marjă % = 340/1.000 = 34,00%.\n\n**Total general (ambele luni, ambele categorii)**: vânzări 2.600 lei; cost 1.700 lei; marjă 900 lei; marjă % = 900/2.600 = 34,62%.\n\nÎn Pivot Table, valorile din celule trebuie să corespundă exact acestor totaluri pe intersecția Lună × Categorie; dacă apar diferențe, verifică mai întâi dacă relațiile Fact_Vanzari–Dim_Produse și Fact_Vanzari–Dim_Data sunt active și corect orientate (1 spre Dimension, * spre Fact).",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-o schemă stea, ce fel de relație se stabilește între un tabel Dimension și tabelul Fact?",
+    "choices": [
+     "Mai-mulți-la-mai-mulți (many-to-many)",
+     "Unu-la-mai-mulți (1:*), dimensiunea fiind partea \"unu\"",
+     "Unu-la-unu (1:1) obligatoriu",
+     "Nu este nevoie de nicio relație, se folosesc doar VLOOKUP-uri"
+    ],
+    "answer": 1,
+    "explain": "Dimensiunea conține chei unice și reprezintă partea \"unu\"; tabelul Fact conține chei repetate și reprezintă partea \"mulți\". Filtrarea circulă dinspre dimensiune spre fapte.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce se preferă DIVIDE(a; b) în locul operatorului simplu a/b într-o măsură DAX de tipul Marjă %?",
+    "choices": [
+     "DIVIDE rulează mai rapid întotdeauna, indiferent de context",
+     "DIVIDE returnează gol (sau o valoare alternativă) în loc de #DIV/0! când numitorul e zero",
+     "DIVIDE rotunjește automat rezultatul la două zecimale",
+     "DIVIDE este singura funcție DAX care acceptă coloane calculate"
+    ],
+    "answer": 1,
+    "explain": "Într-un raport filtrat pe diverse combinații (lună, client, categorie) apar frecvent celule cu vânzări zero; DIVIDE evită erorile #DIV/0! care ar strica formatarea și calculele ulterioare din raport.",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o schemă stea (star schema) în Power Pivot?",
+    "back": "Un model de date cu un tabel Fact central (evenimente/tranzacții) conectat prin relații 1:* la mai multe tabele Dimension (descrieri: produs, client, dată).",
+    "concept_key": "schema-stea-fact-dimension",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre un tabel Fact și un tabel Dimension?",
+    "back": "Fact conține valori numerice tranzacționale și chei către dimensiuni, cu multe rânduri; Dimension conține atribute descriptive, cu chei unice și puține rânduri.",
+    "concept_key": "schema-stea-fact-dimension",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula DAX pentru Marjă % folosind DIVIDE?",
+    "back": "Marjă % = DIVIDE([Marjă Lei]; [Total Vânzări]) — evită erori #DIV/0! când vânzările sunt zero.",
+    "concept_key": "masuri-dax-vs-coloane-calculate",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția DAX SAMEPERIODLASTYEAR?",
+    "back": "Deplasează contextul de filtrare al unei date cu exact un an în urmă, permițând calculul unei măsuri (ex. Vânzări An Anterior) pentru aceeași perioadă din anul precedent, cu condiția ca Dim_Data să fie un calendar continuu.",
+    "concept_key": "masuri-dax-vs-coloane-calculate",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce trebuie evitate relațiile many-to-many directe între tabele Fact?",
+    "back": "Pentru că fac ambiguă direcția de filtrare și pot dubla valorile agregate; soluția este introducerea unui tabel Dimension intermediar (bridge table).",
+    "concept_key": "relatii-power-pivot",
+    "blockId": "cmjjuxvog002gumkp2uwppmei-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1335,
+   "flashcards": 5
+  }
+ }
+}

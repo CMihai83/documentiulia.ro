@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjvav27000a10ia90oaya15",
+ "courseId": "cmjjvav1j000010iaawzrrca4",
+ "course": "Conformitate Fiscala Romania - e-Factura, SAF-T si ANAF Complet",
+ "module": "Fundamentele Sistemului Fiscal Romanesc",
+ "lesson": "Quiz - Sistemul fiscal romanesc",
+ "category": "FINANCE_OPS",
+ "content": "Test de evaluare — Quiz - Sistemul fiscal romanesc (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este cota standard de TVA aplicabilă în România începând cu 1 august 2025?",
+     "choices": [
+      "19%",
+      "21%",
+      "24%",
+      "11%"
+     ],
+     "answer": 1,
+     "explain": "Conform Legii 141/2025, de la 1 august 2025 cota standard de TVA este 21%, iar cota redusă unică este 11% (cotele anterioare de 5% și 9% au fost eliminate).",
+     "concept_key": "tva_cota_standard"
+    },
+    {
+     "q": "Care dintre următoarele NU se încadrează la cota redusă de TVA de 11% (valabilă de la 1 august 2025)?",
+     "choices": [
+      "Cazarea hotelieră",
+      "Medicamentele",
+      "Băuturile alcoolice",
+      "Cărțile și manualele (print și electronic)"
+     ],
+     "answer": 2,
+     "explain": "Băuturile alcoolice sunt excluse explicit de la cota redusă de 11%, fiind taxate la cota standard de 21%. Cazarea, medicamentele și cărțile/manualele se încadrează la 11% conform Legii 141/2025.",
+     "concept_key": "tva_cota_redusa_domeniu"
+    },
+    {
+     "q": "De când este obligatorie transmiterea facturii electronice (e-Factura) pentru tranzacțiile B2C (către persoane fizice)?",
+     "choices": [
+      "1 iulie 2024",
+      "1 ianuarie 2025",
+      "1 ianuarie 2026",
+      "1 august 2025"
+     ],
+     "answer": 1,
+     "explain": "e-Factura B2B a devenit obligatorie de la 1 iulie 2024, iar B2C de la 1 ianuarie 2025 (facturile simplificate fiind exceptate), conform OUG 120/2021 și modificărilor ulterioare (Legea 296/2023, OUG 69/2024).",
+     "concept_key": "efactura_b2c_termen"
+    },
+    {
+     "q": "Care este termenul de transmitere a facturii în sistemul RO e-Factura (SPV) începând cu 1 ianuarie 2026?",
+     "choices": [
+      "5 zile calendaristice",
+      "10 zile lucrătoare",
+      "5 zile lucrătoare",
+      "3 zile calendaristice"
+     ],
+     "answer": 2,
+     "explain": "Conform OUG 89/2025, termenul de 5 zile calendaristice (valabil până la 31 decembrie 2025) a fost înlocuit, de la 1 ianuarie 2026, cu 5 zile lucrătoare de la emiterea facturii.",
+     "concept_key": "efactura_termen_transmitere"
+    },
+    {
+     "q": "Ce amendă riscă o firmă mare pentru transmiterea tardivă a unei facturi în sistemul e-Factura, conform reglementărilor în vigoare la data redactării (iulie 2026)?",
+     "choices": [
+      "500-1.000 lei",
+      "1.000-2.500 lei",
+      "2.500-5.000 lei",
+      "5.000-10.000 lei"
+     ],
+     "answer": 3,
+     "explain": "Pentru contribuabilii mari, amenda pentru transmiterea tardivă în SPV este de 5.000-10.000 lei; contribuabilii mijlocii riscă 2.500-5.000 lei, iar cei mici/PF 1.000-2.500 lei (conform reglementărilor în vigoare la data redactării, iulie 2026).",
+     "concept_key": "efactura_amenzi"
+    },
+    {
+     "q": "De când este obligatorie depunerea declarației SAF-T (D406) pentru contribuabilii mici?",
+     "choices": [
+      "1 ianuarie 2022",
+      "1 ianuarie 2023",
+      "1 ianuarie 2025",
+      "1 ianuarie 2026"
+     ],
+     "answer": 2,
+     "explain": "Conform OMF 1783/2021, obligația SAF-T a fost introdusă gradual: contribuabili mari din 2022, mijlocii din 2023 și contribuabili mici de la 1 ianuarie 2025.",
+     "concept_key": "saft_contribuabili_mici"
+    },
+    {
+     "q": "Care este situația perioadei de grație pentru depunerea SAF-T (D406) în anul 2026?",
+     "choices": [
+      "Este de 6 luni pentru toți contribuabilii",
+      "S-a epuizat în 2025, în 2026 se aplică termenele standard",
+      "Este de 3 luni pentru contribuabilii mari",
+      "A fost prelungită până în 2027"
+     ],
+     "answer": 1,
+     "explain": "Perioadele de grație (6/5/4/3/2 luni pentru raportările lunare, respectiv 3 luni pentru prima raportare trimestrială) s-au epuizat în cursul anului 2025; în 2026 nu mai există grație, aplicându-se termenele standard (ultima zi a lunii următoare perioadei de raportare).",
+     "concept_key": "saft_perioada_gratie"
+    },
+    {
+     "q": "Din ce dată se aplică integral obligațiile de raportare e-Transport, după expirarea perioadei de grație?",
+     "choices": [
+      "1 iulie 2024",
+      "1 ianuarie 2025",
+      "1 ianuarie 2026",
+      "1 august 2025"
+     ],
+     "answer": 2,
+     "explain": "Conform OUG 41/2022, modificată prin OUG 129/2024, aplicarea integrală a obligațiilor e-Transport (inclusiv sancțiunile) este de la 1 ianuarie 2026, după expirarea perioadei de grație.",
+     "concept_key": "etransport_aplicare_integrala"
+    },
+    {
+     "q": "O companie cu cifră de afaceri de peste 50 milioane euro plătește, pe lângă impozitul pe profit de 16%, și impozitul suplimentar IMCA. Ce cotă are IMCA în anul 2026?",
+     "choices": [
+      "1%",
+      "0,5%",
+      "3%",
+      "16%"
+     ],
+     "answer": 1,
+     "explain": "IMCA (impozitul minim pe cifra de afaceri, aplicabil companiilor cu CA > 50 mil. €) a fost redus de la 1% la 0,5% în 2026 prin OUG 89/2025 și urmează să fie abrogat de la 1 ianuarie 2027. Impozitul pe profit standard rămâne 16%.",
+     "concept_key": "impozit_profit_imca"
+    },
+    {
+     "q": "O SRL plătitoare de impozit pe veniturile microîntreprinderilor distribuie dividende acționarilor în martie 2026. Ce cotă de impozit pe dividende se aplică, și care este cota de impozit pe veniturile microîntreprinderii pentru anul 2026 (presupunând că îndeplinește condițiile legale)?",
+     "choices": [
+      "10% dividende / 3% micro",
+      "16% dividende / 1% micro",
+      "16% dividende / 3% micro",
+      "10% dividende / 1% micro"
+     ],
+     "answer": 1,
+     "explain": "Pentru distribuirile de dividende efectuate de la 1 ianuarie 2026, cota de impozit pe dividende este 16% (Legea 141/2025), față de 10% aplicabil distribuirilor până la 31 decembrie 2025. Cota de impozit pe veniturile microîntreprinderilor pentru 2026 este 1% (cota de 3% fiind abrogată prin OUG 89/2025), plafonul fiind 100.000 €.",
+     "concept_key": "dividende_microintreprindere_2026"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

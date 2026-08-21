@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwbx00jmumkpyu4y5od4",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Evaluarea Riscurilor",
+ "lesson": "Ce este evaluarea riscurilor",
+ "category": "HSE_SAFETY",
+ "content": "# Ce este evaluarea riscurilor\n\n## Pericol, risc și măsuri de prevenire — trei concepte pe care nu ai voie să le confunzi\n\nEvaluarea riscurilor este activitatea centrală a oricărui sistem de securitate și sănătate în muncă (SSM). Toate celelalte documente pe care le vei întocmi ca responsabil SSM — planul de prevenire și protecție, fișele individuale de instructaj, necesarul de echipament individual de protecție (EIP) — pornesc de la rezultatele acestei evaluări. De aceea trebuie să stăpânești foarte clar cele trei noțiuni de bază.\n\n**Pericolul** este sursa, situația sau acțiunea cu potențial de a cauza vătămarea sau îmbolnăvirea unui lucrător. Pericolul există indiferent dacă cineva este expus la el sau nu: un utilaj cu piese în mișcare, o substanță chimică inflamabilă, o podea umedă sau un cablu electric deteriorat sunt pericole prin simpla lor prezență.\n\n**Riscul** este combinația dintre probabilitatea ca acel pericol să producă efectiv un eveniment nedorit și gravitatea consecințelor pe care le-ar avea acel eveniment asupra sănătății lucrătorului. Practic, riscul transformă un pericol abstract într-o mărime pe care o poți estima, compara și prioritiza: același utilaj periculos poate genera un risc scăzut dacă are protecții și acces restricționat, sau un risc ridicat dacă lucrătorii intervin frecvent lângă piesele în mișcare fără protecție.\n\n**Măsurile de prevenire și protecție** sunt acțiunile tehnice, organizatorice și de instruire prin care reduci sau elimini riscul. Ierarhia corectă de aplicare, în ordinea eficienței, este: eliminarea pericolului la sursă, înlocuirea cu o variantă mai puțin periculoasă, măsuri tehnice de izolare sau protecție colectivă, măsuri organizatorice (proceduri, rotația personalului, semnalizare) și, ca ultimă barieră, echipamentul individual de protecție. EIP-ul este întotdeauna ultima soluție, nu prima, pentru că protejează o singură persoană și depinde de utilizarea corectă și constantă.\n\n## De ce este evaluarea riscurilor obligatorie, nu opțională\n\nEvaluarea riscurilor profesionale nu este un exercițiu birocratic, ci fundamentul legal al întregului sistem de management SSM dintr-o companie. Fără o evaluare documentată, nu poți justifica în fața Inspectoratului Teritorial de Muncă (ITM) — autoritatea de control în domeniul SSM — de ce ai ales anumite echipamente de protecție, anumite tematici de instructaj sau anumite proceduri de lucru.\n\nEvaluarea trebuie realizată sau actualizată în următoarele situații:\n- la înființarea firmei sau a unui punct de lucru nou;\n- la angajarea pe un post nou sau la modificarea sarcinilor de muncă;\n- la introducerea unui echipament de muncă, unei substanțe sau unei tehnologii noi;\n- periodic, chiar dacă nu s-a schimbat nimic aparent (bunele practici recomandă o revizuire anuală);\n- imediat după producerea unui accident de muncă sau a unui incident cu potențial de accident (near-miss).\n\nResponsabilitatea evaluării aparține angajatorului, care poate delega execuția tehnică unui lucrător desemnat, unui serviciu intern de prevenire și protecție sau unui serviciu extern abilitat, dar obligația legală rămâne, în toate cazurile, a angajatorului.\n\n## Metodologia în 5 pași a evaluării riscurilor\n\nDeși legislația românească nu impune un format unic, practica general acceptată în SSM — regăsită și în ghidurile Agenției Europene pentru Securitate și Sănătate în Muncă (EU-OSHA) — structurează evaluarea în cinci pași:\n\n**Pasul 1 — Identificarea pericolelor.** Se face prin inspecția fizică a locului de muncă, analiza fișelor de post, consultarea lucrătorilor (ei cunosc cel mai bine realitatea zilnică) și analiza istoricului de accidente sau incidente.\n\n**Pasul 2 — Identificarea persoanelor expuse și a modului de expunere.** Nu toți lucrătorii sunt expuși în aceeași măsură: un electrician expus la risc electric are o expunere diferită de un contabil din același sediu. Se identifică inclusiv categoriile speciale — femei gravide, tineri sub 18 ani, lucrători cu dizabilități.\n\n**Pasul 3 — Evaluarea riscului.** Pentru fiecare pericol identificat se estimează probabilitatea de producere (P) și gravitatea consecințelor (G), de obicei pe o scală de la 1 la 5 fiecare. Nivelul de risc rezultă din produsul lor: Risc = P × G, cu valori între 1 (risc minim) și 25 (risc maxim). Această cuantificare permite prioritizarea acțiunilor: rezolvi mai întâi riscurile cu valoare mare.\n\n**Pasul 4 — Stabilirea măsurilor de prevenire și protecție.** Pentru fiecare risc peste pragul acceptat, se stabilesc măsuri concrete, responsabili și termene, respectând ierarhia eliminare → înlocuire → măsuri tehnice → măsuri organizatorice → EIP.\n\n**Pasul 5 — Înregistrarea, implementarea și revizuirea.** Rezultatele se consemnează într-un document scris (fișa de evaluare a riscurilor pe loc de muncă), măsurile se implementează cu termene clare, iar evaluarea se revizuiește periodic sau la orice schimbare semnificativă.\n\n## Exemplu: Exemplu — evaluarea riscurilor la un post de lucru de birou\nAna lucrează ca economistă într-un birou open-space. La aplicarea celor 5 pași, identifici următoarele:\n\n- **Pericol 1:** poziție statică prelungită în fața monitorului, fără reglare corectă a scaunului și a înălțimii ecranului → risc de afecțiuni musculo-scheletice. Probabilitate P=3 (expunere zilnică, 8 ore), Gravitate G=2 (afecțiune cronică, non-letală) → Risc = 3 × 2 = 6, nivel scăzut-mediu.\n- **Pericol 2:** prelungitor electric suprasolicitat sub birou, cu mai multe echipamente conectate → risc de incendiu sau electrocutare. P=2 (rar, dar posibil), G=5 (consecințe potențial grave) → Risc = 2 × 5 = 10, nivel mediu-ridicat, necesită acțiune prioritară.\n\nMăsurile stabilite: pentru pericolul 1, instruire ergonomică și scaun reglabil (măsură organizatorică + tehnică); pentru pericolul 2, înlocuirea prelungitorului cu unul certificat, cu protecție la supratensiune, și interzicerea conectării în serie a mai multor prelungitoare (măsură tehnică + organizatorică, aplicată imediat dat fiind riscul ridicat).\n\n## Exemplu: Exemplu — evaluarea riscurilor într-un depozit logistic\nFirma Logimob SRL operează un depozit unde lucrătorii manipulează manual cutii de până la 20 kg și circulă stivuitoare electrice.\n\n- **Pericol 1:** manipulare manuală a maselor peste limitele recomandate, cu tehnică incorectă de ridicare → risc de afecțiuni lombare. P=4 (activitate zilnică, frecventă), G=3 (afectare moderată, poate necesita concediu medical) → Risc = 4 × 3 = 12, nivel ridicat.\n- **Pericol 2:** coliziune între stivuitor și pieton pe același culoar de circulație → risc de accident cu invaliditate sau deces. P=2 (control existent, dar posibil), G=5 (consecințe potențial fatale) → Risc = 2 × 5 = 10, nivel ridicat.\n\nMăsuri: pentru pericolul 1, achiziționarea de echipamente de manipulare (cărucioare, transpaleți) și instruire specifică de tehnică a ridicării (eliminare parțială + organizatorică); pentru pericolul 2, separarea fizică a culoarelor pentru pietoni de cele pentru utilaje, cu marcaje și bariere (măsură tehnică), completată de instruire periodică (organizatorică).\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă Art. 7 alin. (4) lit. a) și b) (în vigoare de la 2006-10-01)\nConform Legii nr. 319/2006, angajatorul are obligația de a lua măsurile necesare pentru asigurarea securității și protecției sănătății lucrătorilor, inclusiv prevenirea riscurilor profesionale, informarea și instruirea lucrătorilor, precum și asigurarea cadrului organizatoric și a mijloacelor necesare. Evaluarea riscurilor este acțiunea premergătoare și obligatorie prin care angajatorul identifică ce anume trebuie prevenit, protejat și comunicat lucrătorilor — fără ea, celelalte obligații din lege nu pot fi îndeplinite corect. Normele metodologice de aplicare, aprobate prin HG nr. 1425/2006, detaliază modul de organizare a activităților de prevenire și protecție, inclusiv rolul lucrătorului desemnat sau al serviciului extern care realizează evaluarea.\n\n⚠ Evaluarea riscurilor NU este un document care se completează o singură dată și se arhivează. Este un instrument viu, care trebuie revizuit ori de câte ori apar schimbări (echipamente noi, procese noi, accidente) și, ca bună practică, cel puțin anual. La un control ITM, lipsa evaluării riscurilor sau o evaluare vădit neactualizată (de exemplu, care nu menționează echipamente introduse recent) este una dintre cele mai frecvente cauze de sancțiune contravențională pentru angajator. Evită și eroarea inversă — o evaluare copiată identic de pe internet, fără legătură cu locurile de muncă reale din firmă; controlorii ITM verifică exact această corespondență.\n\n## Exercițiu\nUn angajator din construcții are lucrători care montează schele la înălțimi de până la 4 metri, fără linie de viață montată permanent, dar cu control ocazional din partea șefului de șantier. Folosind matricea Risc = Probabilitate (P, 1-5) × Gravitate (G, 1-5):\n\n1. Estimează P și G pentru pericolul 'cădere de la înălțime', justificând valorile alese.\n2. Calculează nivelul de risc.\n3. Propune cel puțin două măsuri de prevenire, respectând ierarhia eliminare → înlocuire → tehnice → organizatorice → EIP.\n\n**Soluție:** 1. **Probabilitate P=2**: există un control ocazional, dar nu o măsură tehnică permanentă (linie de viață), deci evenimentul nu e frecvent, dar este posibil oricând lipsește supravegherea. **Gravitate G=5**: o cădere de la 4 metri are potențial de vătămare gravă sau deces.\n2. **Risc = P × G = 2 × 5 = 10** — nivel ridicat, care impune acțiune prioritară și imediată, nu doar o notă pentru revizuirea viitoare.\n3. Măsuri, în ordinea ierarhiei: (a) măsură tehnică — montarea permanentă a unei linii de viață sau a balustradelor de protecție pe schelă, eliminând dependența de supraveghere; (b) măsură organizatorică — interzicerea lucrului la înălțime în lipsa liniei de viață montate și verificarea zilnică a montajului schelei înainte de începerea lucrului; (c) EIP, ca ultimă barieră — hamuri de siguranță cu puncte de ancorare verificate, obligatorii indiferent de celelalte măsuri.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "pericol-risc-definitii",
+    "md": "## Pericol, risc și măsuri de prevenire — trei concepte pe care nu ai voie să le confunzi\n\nEvaluarea riscurilor este activitatea centrală a oricărui sistem de securitate și sănătate în muncă (SSM). Toate celelalte documente pe care le vei întocmi ca responsabil SSM — planul de prevenire și protecție, fișele individuale de instructaj, necesarul de echipament individual de protecție (EIP) — pornesc de la rezultatele acestei evaluări. De aceea trebuie să stăpânești foarte clar cele trei noțiuni de bază.\n\n**Pericolul** este sursa, situația sau acțiunea cu potențial de a cauza vătămarea sau îmbolnăvirea unui lucrător. Pericolul există indiferent dacă cineva este expus la el sau nu: un utilaj cu piese în mișcare, o substanță chimică inflamabilă, o podea umedă sau un cablu electric deteriorat sunt pericole prin simpla lor prezență.\n\n**Riscul** este combinația dintre probabilitatea ca acel pericol să producă efectiv un eveniment nedorit și gravitatea consecințelor pe care le-ar avea acel eveniment asupra sănătății lucrătorului. Practic, riscul transformă un pericol abstract într-o mărime pe care o poți estima, compara și prioritiza: același utilaj periculos poate genera un risc scăzut dacă are protecții și acces restricționat, sau un risc ridicat dacă lucrătorii intervin frecvent lângă piesele în mișcare fără protecție.\n\n**Măsurile de prevenire și protecție** sunt acțiunile tehnice, organizatorice și de instruire prin care reduci sau elimini riscul. Ierarhia corectă de aplicare, în ordinea eficienței, este: eliminarea pericolului la sursă, înlocuirea cu o variantă mai puțin periculoasă, măsuri tehnice de izolare sau protecție colectivă, măsuri organizatorice (proceduri, rotația personalului, semnalizare) și, ca ultimă barieră, echipamentul individual de protecție. EIP-ul este întotdeauna ultima soluție, nu prima, pentru că protejează o singură persoană și depinde de utilizarea corectă și constantă.",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "evaluare-riscuri-obligativitate",
+    "md": "## De ce este evaluarea riscurilor obligatorie, nu opțională\n\nEvaluarea riscurilor profesionale nu este un exercițiu birocratic, ci fundamentul legal al întregului sistem de management SSM dintr-o companie. Fără o evaluare documentată, nu poți justifica în fața Inspectoratului Teritorial de Muncă (ITM) — autoritatea de control în domeniul SSM — de ce ai ales anumite echipamente de protecție, anumite tematici de instructaj sau anumite proceduri de lucru.\n\nEvaluarea trebuie realizată sau actualizată în următoarele situații:\n- la înființarea firmei sau a unui punct de lucru nou;\n- la angajarea pe un post nou sau la modificarea sarcinilor de muncă;\n- la introducerea unui echipament de muncă, unei substanțe sau unei tehnologii noi;\n- periodic, chiar dacă nu s-a schimbat nimic aparent (bunele practici recomandă o revizuire anuală);\n- imediat după producerea unui accident de muncă sau a unui incident cu potențial de accident (near-miss).\n\nResponsabilitatea evaluării aparține angajatorului, care poate delega execuția tehnică unui lucrător desemnat, unui serviciu intern de prevenire și protecție sau unui serviciu extern abilitat, dar obligația legală rămâne, în toate cazurile, a angajatorului.",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "evaluare-riscuri-metodologie-5-pasi",
+    "md": "## Metodologia în 5 pași a evaluării riscurilor\n\nDeși legislația românească nu impune un format unic, practica general acceptată în SSM — regăsită și în ghidurile Agenției Europene pentru Securitate și Sănătate în Muncă (EU-OSHA) — structurează evaluarea în cinci pași:\n\n**Pasul 1 — Identificarea pericolelor.** Se face prin inspecția fizică a locului de muncă, analiza fișelor de post, consultarea lucrătorilor (ei cunosc cel mai bine realitatea zilnică) și analiza istoricului de accidente sau incidente.\n\n**Pasul 2 — Identificarea persoanelor expuse și a modului de expunere.** Nu toți lucrătorii sunt expuși în aceeași măsură: un electrician expus la risc electric are o expunere diferită de un contabil din același sediu. Se identifică inclusiv categoriile speciale — femei gravide, tineri sub 18 ani, lucrători cu dizabilități.\n\n**Pasul 3 — Evaluarea riscului.** Pentru fiecare pericol identificat se estimează probabilitatea de producere (P) și gravitatea consecințelor (G), de obicei pe o scală de la 1 la 5 fiecare. Nivelul de risc rezultă din produsul lor: Risc = P × G, cu valori între 1 (risc minim) și 25 (risc maxim). Această cuantificare permite prioritizarea acțiunilor: rezolvi mai întâi riscurile cu valoare mare.\n\n**Pasul 4 — Stabilirea măsurilor de prevenire și protecție.** Pentru fiecare risc peste pragul acceptat, se stabilesc măsuri concrete, responsabili și termene, respectând ierarhia eliminare → înlocuire → măsuri tehnice → măsuri organizatorice → EIP.\n\n**Pasul 5 — Înregistrarea, implementarea și revizuirea.** Rezultatele se consemnează într-un document scris (fișa de evaluare a riscurilor pe loc de muncă), măsurile se implementează cu termene clare, iar evaluarea se revizuiește periodic sau la orice schimbare semnificativă.",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b3"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu — evaluarea riscurilor la un post de lucru de birou",
+    "concept_key": "evaluare-riscuri-exemplu-birou",
+    "md": "Ana lucrează ca economistă într-un birou open-space. La aplicarea celor 5 pași, identifici următoarele:\n\n- **Pericol 1:** poziție statică prelungită în fața monitorului, fără reglare corectă a scaunului și a înălțimii ecranului → risc de afecțiuni musculo-scheletice. Probabilitate P=3 (expunere zilnică, 8 ore), Gravitate G=2 (afecțiune cronică, non-letală) → Risc = 3 × 2 = 6, nivel scăzut-mediu.\n- **Pericol 2:** prelungitor electric suprasolicitat sub birou, cu mai multe echipamente conectate → risc de incendiu sau electrocutare. P=2 (rar, dar posibil), G=5 (consecințe potențial grave) → Risc = 2 × 5 = 10, nivel mediu-ridicat, necesită acțiune prioritară.\n\nMăsurile stabilite: pentru pericolul 1, instruire ergonomică și scaun reglabil (măsură organizatorică + tehnică); pentru pericolul 2, înlocuirea prelungitorului cu unul certificat, cu protecție la supratensiune, și interzicerea conectării în serie a mai multor prelungitoare (măsură tehnică + organizatorică, aplicată imediat dat fiind riscul ridicat).",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b4"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu — evaluarea riscurilor într-un depozit logistic",
+    "concept_key": "evaluare-riscuri-exemplu-depozit",
+    "md": "Firma Logimob SRL operează un depozit unde lucrătorii manipulează manual cutii de până la 20 kg și circulă stivuitoare electrice.\n\n- **Pericol 1:** manipulare manuală a maselor peste limitele recomandate, cu tehnică incorectă de ridicare → risc de afecțiuni lombare. P=4 (activitate zilnică, frecventă), G=3 (afectare moderată, poate necesita concediu medical) → Risc = 4 × 3 = 12, nivel ridicat.\n- **Pericol 2:** coliziune între stivuitor și pieton pe același culoar de circulație → risc de accident cu invaliditate sau deces. P=2 (control existent, dar posibil), G=5 (consecințe potențial fatale) → Risc = 2 × 5 = 10, nivel ridicat.\n\nMăsuri: pentru pericolul 1, achiziționarea de echipamente de manipulare (cărucioare, transpaleți) și instruire specifică de tehnică a ridicării (eliminare parțială + organizatorică); pentru pericolul 2, separarea fizică a culoarelor pentru pietoni de cele pentru utilaje, cu marcaje și bariere (măsură tehnică), completată de instruire periodică (organizatorică).",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă",
+    "article": "Art. 7 alin. (4) lit. a) și b)",
+    "effective": "2006-10-01",
+    "md": "Conform Legii nr. 319/2006, angajatorul are obligația de a lua măsurile necesare pentru asigurarea securității și protecției sănătății lucrătorilor, inclusiv prevenirea riscurilor profesionale, informarea și instruirea lucrătorilor, precum și asigurarea cadrului organizatoric și a mijloacelor necesare. Evaluarea riscurilor este acțiunea premergătoare și obligatorie prin care angajatorul identifică ce anume trebuie prevenit, protejat și comunicat lucrătorilor — fără ea, celelalte obligații din lege nu pot fi îndeplinite corect. Normele metodologice de aplicare, aprobate prin HG nr. 1425/2006, detaliază modul de organizare a activităților de prevenire și protecție, inclusiv rolul lucrătorului desemnat sau al serviciului extern care realizează evaluarea.",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Evaluarea riscurilor NU este un document care se completează o singură dată și se arhivează. Este un instrument viu, care trebuie revizuit ori de câte ori apar schimbări (echipamente noi, procese noi, accidente) și, ca bună practică, cel puțin anual. La un control ITM, lipsa evaluării riscurilor sau o evaluare vădit neactualizată (de exemplu, care nu menționează echipamente introduse recent) este una dintre cele mai frecvente cauze de sancțiune contravențională pentru angajator. Evită și eroarea inversă — o evaluare copiată identic de pe internet, fără legătură cu locurile de muncă reale din firmă; controlorii ITM verifică exact această corespondență.",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un angajator din construcții are lucrători care montează schele la înălțimi de până la 4 metri, fără linie de viață montată permanent, dar cu control ocazional din partea șefului de șantier. Folosind matricea Risc = Probabilitate (P, 1-5) × Gravitate (G, 1-5):\n\n1. Estimează P și G pentru pericolul 'cădere de la înălțime', justificând valorile alese.\n2. Calculează nivelul de risc.\n3. Propune cel puțin două măsuri de prevenire, respectând ierarhia eliminare → înlocuire → tehnice → organizatorice → EIP.",
+    "solution_md": "1. **Probabilitate P=2**: există un control ocazional, dar nu o măsură tehnică permanentă (linie de viață), deci evenimentul nu e frecvent, dar este posibil oricând lipsește supravegherea. **Gravitate G=5**: o cădere de la 4 metri are potențial de vătămare gravă sau deces.\n2. **Risc = P × G = 2 × 5 = 10** — nivel ridicat, care impune acțiune prioritară și imediată, nu doar o notă pentru revizuirea viitoare.\n3. Măsuri, în ordinea ierarhiei: (a) măsură tehnică — montarea permanentă a unei linii de viață sau a balustradelor de protecție pe schelă, eliminând dependența de supraveghere; (b) măsură organizatorică — interzicerea lucrului la înălțime în lipsa liniei de viață montate și verificarea zilnică a montajului schelei înainte de începerea lucrului; (c) EIP, ca ultimă barieră — hamuri de siguranță cu puncte de ancorare verificate, obligatorii indiferent de celelalte măsuri.",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula standard pentru calculul nivelului de risc în evaluarea SSM?",
+    "choices": [
+     "Risc = Pericol + Gravitate",
+     "Risc = Probabilitate × Gravitate",
+     "Risc = Numărul de lucrători expuși × Pericol",
+     "Risc = Gravitate − Probabilitate"
+    ],
+    "answer": 1,
+    "explain": "Nivelul de risc rezultă din produsul dintre probabilitatea de producere a evenimentului periculos și gravitatea consecințelor asupra sănătății lucrătorului (Risc = P × G).",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ultima măsură din ierarhia de prevenire a riscurilor, folosită doar atunci când celelalte nu elimină suficient riscul?",
+    "choices": [
+     "Măsurile organizatorice",
+     "Echipamentul individual de protecție (EIP)",
+     "Eliminarea pericolului la sursă",
+     "Înlocuirea cu o variantă mai puțin periculoasă"
+    ],
+    "answer": 1,
+    "explain": "Ierarhia corectă este: eliminare, înlocuire, măsuri tehnice, măsuri organizatorice și, ca ultimă barieră, EIP — pentru că protejează o singură persoană și depinde de utilizarea corectă și constantă.",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un 'pericol' în SSM?",
+    "back": "Sursa, situația sau acțiunea cu potențial de a cauza vătămarea sau îmbolnăvirea unui lucrător, indiferent dacă cineva este expus la el sau nu.",
+    "concept_key": "pericol-risc-definitii",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este 'riscul' în SSM?",
+    "back": "Combinația dintre probabilitatea de producere a unui eveniment periculos și gravitatea consecințelor asociate acelui pericol.",
+    "concept_key": "pericol-risc-definitii",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula de calcul al nivelului de risc?",
+    "back": "Risc = Probabilitate (P) × Gravitate (G), fiecare estimată de obicei pe o scală de la 1 la 5.",
+    "concept_key": "evaluare-riscuri-metodologie-5-pasi",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Enumeră ierarhia măsurilor de prevenire a riscurilor.",
+    "back": "Eliminare la sursă → Înlocuire → Măsuri tehnice → Măsuri organizatorice → Echipament individual de protecție (EIP), ca ultimă barieră.",
+    "concept_key": "pericol-risc-definitii",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În ce situații trebuie actualizată evaluarea riscurilor?",
+    "back": "La înființarea firmei sau a unui punct de lucru nou, la angajare pe post nou, la introducerea unui echipament/tehnologii noi, periodic (recomandat anual) și imediat după un accident sau incident.",
+    "concept_key": "evaluare-riscuri-obligativitate",
+    "blockId": "cmjjuxwbx00jmumkpyu4y5od4-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1381,
+   "flashcards": 5
+  }
+ }
+}

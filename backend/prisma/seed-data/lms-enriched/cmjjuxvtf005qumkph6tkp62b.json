@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxvtf005qumkph6tkp62b",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Execuție și Control",
+ "lesson": "Monitorizare progres",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Monitorizare progres\n\nMonitorizarea progresului este activitatea prin care managerul de proiect verifică, în mod constant, dacă lucrările executate corespund cu ceea ce a fost planificat în privința termenelor, costurilor și calității. Fără monitorizare, un proiect poate părea că merge bine până în ultima lună, când devine evident că termenul-limită nu poate fi respectat sau că bugetul a fost depășit ireversibil.\n\nConform PMBOK 7 (Project Management Institute), monitorizarea și controlul se bazează pe compararea permanentă a performanței reale cu liniile de bază (baseline-urile) stabilite la planificare: baseline de scop (ce trebuie livrat), baseline de timp (graficul aprobat) și baseline de cost (bugetul aprobat). Orice abatere semnificativă (variance) trebuie analizată, comunicată către stakeholderi și, dacă e cazul, urmată de acțiuni corective sau de o cerere formală de schimbare (change request).\n\nPentru un PM dintr-un proiect real - de exemplu implementarea unui sistem ERP într-o companie de distribuție din România - monitorizarea înseamnă rapoarte săptămânale de status, actualizarea graficului de proiect și, cel puțin lunar, un calcul riguros al indicatorilor de cost și timp.\n\nIndicatorii cheie de performanță (KPI - Key Performance Indicators) folosiți în monitorizarea proiectelor acoperă, de regulă, patru dimensiuni:\n\n- Timp (schedule): procent din activități finalizate față de plan, întârzieri cumulate în zile, indicele de performanță a programului (SPI).\n- Cost: buget cheltuit față de buget planificat, indicele de performanță a costului (CPI), estimare la finalizare (EAC).\n- Scop și calitate: număr de cerințe livrate și acceptate, număr de defecte deschise, rata de retest eșuat.\n- Risc: număr de riscuri active cu impact ridicat, riscuri materializate față de riscuri identificate.\n\nUn set bun de KPI trebuie să fie SMART (specific, măsurabil, atins realist, relevant, încadrat în timp) și, mai ales, urmărit constant, nu doar calculat o singură dată. La proiectele conduse în Agile/Scrum (conform Scrum Guide 2020), indicatorii clasici sunt completați cu burn-down chart-ul sprintului și velocity-ul echipei (story points livrate pe sprint), care arată dacă echipa menține un ritm constant de livrare.\n\nAlegerea KPI-lor potriviți depinde de tipul proiectului: un proiect de construcții urmărește cu precădere costul și siguranța, un proiect IT urmărește viteza de livrare și calitatea codului.\n\nEarned Value Management (EVM) este metoda cea mai riguroasă de monitorizare integrată a costului și a timpului, recomandată de PMBOK 7 pentru proiectele de complexitate medie și mare. EVM se bazează pe trei valori măsurate la o dată de raportare (de exemplu, sfârșitul unei luni):\n\nPV (Planned Value) - valoarea planificată, adică bugetul alocat lucrărilor care ar fi trebuit finalizate până la data de raportare, conform planului aprobat. Se calculează ca procent planificat de completare × bugetul total al proiectului (BAC - Budget at Completion).\n\nEV (Earned Value) - valoarea realizată, adică bugetul corespunzător lucrărilor efectiv finalizate până la data de raportare, indiferent cât s-a cheltuit real. Se calculează ca procent real de completare × BAC. EV este indicatorul central al EVM, pentru că traduce progresul fizic în bani.\n\nAC (Actual Cost) - costul real, adică suma efectiv cheltuită până la data de raportare pentru lucrările realizate, preluată din contabilitatea de proiect (facturi, pontaje, comenzi plătite).\n\nDiferența dintre aceste trei cifre arată sănătatea reală a proiectului: dacă AC este mai mare decât EV, proiectul cheltuiește mai mult decât valorează lucrarea făcută; dacă PV este mai mare decât EV, proiectul este în urma programului.\n\nDin PV, EV și AC se calculează indicatorii derivați, esențiali pentru orice raport de status:\n\nSV (Schedule Variance) = EV - PV. Negativ înseamnă întârziere valorică; pozitiv înseamnă avans.\n\nCV (Cost Variance) = EV - AC. Negativ înseamnă depășire de buget; pozitiv înseamnă economie.\n\nSPI (Schedule Performance Index) = EV / PV. SPI = 1 înseamnă exact pe program; SPI < 1 înseamnă întârziere (de exemplu, SPI = 0,80 arată că proiectul avansează la 80% din ritmul planificat); SPI > 1 înseamnă avans.\n\nCPI (Cost Performance Index) = EV / AC. CPI = 1 înseamnă exact pe buget; CPI < 1 înseamnă că fiecare leu cheltuit produce mai puțin de un leu de valoare; CPI > 1 înseamnă eficiență peste plan.\n\nPe baza CPI se estimează costurile finale: EAC (Estimate at Completion) = BAC / CPI - costul total estimat la finalizare. ETC (Estimate to Complete) = EAC - AC - cât mai este de cheltuit până la finalizare. VAC (Variance at Completion) = BAC - EAC - depășirea sau economia finală estimată.\n\nRegula practică: dacă SPI și CPI sunt ambele sub 0,90, proiectul este într-o situație de risc ridicat și necesită o discuție formală cu sponsorul.\n\nUn dashboard de proiect este reprezentarea vizuală, sintetică, a indicatorilor de mai sus, actualizată la o cadență fixă (săptămânal pentru echipa de proiect, lunar pentru comitetul de conducere/steering committee). Un dashboard eficient conține, de regulă:\n\n- Status general exprimat prin culori RAG (Red-Amber-Green): verde = pe plan, galben = risc de abatere, roșu = abatere critică ce necesită escaladare.\n- Un grafic de tip S-curve, care arată evoluția în timp a PV, EV și AC pe aceeași axă.\n- Un tabel cu SPI, CPI, SV, CV, EAC pentru proiect și, dacă e relevant, pentru fiecare workstream.\n- Top riscuri active și acțiuni corective în curs, cu responsabili și termene.\n- Milestone-uri viitoare din următoarele 2-4 săptămâni.\n\nCheia unui dashboard bun nu este cantitatea de date, ci claritatea: un sponsor trebuie să înțeleagă starea proiectului în sub un minut de citire. Instrumente uzuale în companiile din România: Microsoft Project combinat cu Power BI, Excel cu grafice dinamice, sau module de raportare din Jira, Monday.com ori Smartsheet.\n\n## Exemplu: Calcul EVM pentru un proiect de implementare ERP\nO companie de distribuție din Ilfov implementează un sistem ERP cu un buget total (BAC) de 120.000 lei și o durată planificată de 6 luni. La sfârșitul lunii 3 (jumătate din durata proiectului), echipa colectează datele pentru raportul lunar de status:\n\n- Conform planului, ar fi trebuit finalizate lucrări în valoare de PV = 66.000 lei (55% din buget).\n- Progresul fizic real, verificat prin livrabilele acceptate, arată EV = 54.000 lei (45% din buget finalizat efectiv).\n- Costul real înregistrat în contabilitatea de proiect este AC = 62.000 lei.\n\nCalculul indicatorilor:\nSV = EV - PV = 54.000 - 66.000 = -12.000 lei → întârziere valorică.\nCV = EV - AC = 54.000 - 62.000 = -8.000 lei → depășire de cost.\nSPI = EV / PV = 54.000 / 66.000 ≈ 0,82 → proiectul avansează la 82% din ritmul planificat.\nCPI = EV / AC = 54.000 / 62.000 ≈ 0,87 → fiecare leu cheltuit produce doar 0,87 lei de valoare.\nEAC = BAC / CPI = 120.000 / 0,87 ≈ 137.800 lei → costul final estimat depășește bugetul cu aproape 18.000 lei.\n\nConcluzie pentru PM: proiectul este atât în întârziere, cât și peste buget; se impune o discuție cu sponsorul despre realocarea resurselor sau ajustarea scopului.\n\n## Exemplu: Interpretarea unui dashboard de proiect (status RAG)\nLa ședința lunară de steering committee pentru proiectul ERP de mai sus, PM-ul prezintă un dashboard cu trei workstream-uri:\n\n- Migrare date: SPI = 0,95, CPI = 1,02 → verde (aproape de plan, cost sub control).\n- Configurare și testare (UAT): SPI = 0,78, CPI = 0,85 → roșu (întârziere mare și depășire de cost, ambele sub 0,90).\n- Instruire utilizatori: SPI = 1,00, CPI = 0,97 → galben (pe program, dar cu o ușoară depășire de cost).\n\nStatusul general al proiectului se stabilește după cel mai slab workstream cu pondere semnificativă în buget, deci proiectul primește status roșu, cu escaladare către sponsor. Acțiunea corectivă propusă: suplimentarea temporară a echipei de testare cu doi consultanți externi pentru trei săptămâni, pentru a recupera întârzierea înainte de următorul milestone.\n\n⚠ EVM oferă o imagine numerică riguroasă, dar are limite: nu măsoară calitatea livrabilelor (procentul de completare fizică poate fi supraestimat dacă echipa raportează optimist), nu surprinde riscurile viitoare nematerializate încă și poate fi laborios de aplicat la proiecte foarte mici sau la proiecte Agile pure, unde se preferă burn-down chart-ul și velocity-ul. Recomandarea practică: combină EVM cu KPI de calitate (defecte, retururi UAT) și cu revizuiri periodice ale riscurilor, nu doar cu cifre de cost și timp.\n\n## Exercițiu\nUn proiect de digitalizare a arhivei unei primării are un buget total (BAC) de 80.000 lei și o durată planificată de 8 luni. La sfârșitul lunii 5, planul prevedea finalizarea a 70% din lucrări, iar progresul real constatat este de 60%. Costul real înregistrat până la această dată este AC = 53.000 lei.\n\nCalculează PV, EV, SV, CV, SPI, CPI și EAC, apoi interpretează situația proiectului.\n\n**Soluție:** PV = 70% × 80.000 = 56.000 lei\nEV = 60% × 80.000 = 48.000 lei\nAC = 53.000 lei (dat)\n\nSV = EV - PV = 48.000 - 56.000 = -8.000 lei → întârziere.\nCV = EV - AC = 48.000 - 53.000 = -5.000 lei → depășire de cost.\nSPI = EV / PV = 48.000 / 56.000 ≈ 0,86 → proiectul avansează la 86% din ritmul planificat.\nCPI = EV / AC = 48.000 / 53.000 ≈ 0,91 → fiecare leu cheltuit produce 0,91 lei de valoare.\nEAC = BAC / CPI = 80.000 / 0,91 ≈ 87.900 lei → depășire estimată de circa 7.900 lei față de bugetul inițial.\n\nInterpretare: proiectul este simultan în urma programului (SPI = 0,86) și ușor peste buget (CPI = 0,91), dar problema dominantă este întârzierea - prima măsură corectivă recomandată este realocarea temporară de resurse pe activitățile critice, nu reducerea cheltuielilor.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "monitorizare-progres-proiect-scop",
+    "md": "Monitorizarea progresului este activitatea prin care managerul de proiect verifică, în mod constant, dacă lucrările executate corespund cu ceea ce a fost planificat în privința termenelor, costurilor și calității. Fără monitorizare, un proiect poate părea că merge bine până în ultima lună, când devine evident că termenul-limită nu poate fi respectat sau că bugetul a fost depășit ireversibil.\n\nConform PMBOK 7 (Project Management Institute), monitorizarea și controlul se bazează pe compararea permanentă a performanței reale cu liniile de bază (baseline-urile) stabilite la planificare: baseline de scop (ce trebuie livrat), baseline de timp (graficul aprobat) și baseline de cost (bugetul aprobat). Orice abatere semnificativă (variance) trebuie analizată, comunicată către stakeholderi și, dacă e cazul, urmată de acțiuni corective sau de o cerere formală de schimbare (change request).\n\nPentru un PM dintr-un proiect real - de exemplu implementarea unui sistem ERP într-o companie de distribuție din România - monitorizarea înseamnă rapoarte săptămânale de status, actualizarea graficului de proiect și, cel puțin lunar, un calcul riguros al indicatorilor de cost și timp.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "kpi-monitorizare-proiect",
+    "md": "Indicatorii cheie de performanță (KPI - Key Performance Indicators) folosiți în monitorizarea proiectelor acoperă, de regulă, patru dimensiuni:\n\n- Timp (schedule): procent din activități finalizate față de plan, întârzieri cumulate în zile, indicele de performanță a programului (SPI).\n- Cost: buget cheltuit față de buget planificat, indicele de performanță a costului (CPI), estimare la finalizare (EAC).\n- Scop și calitate: număr de cerințe livrate și acceptate, număr de defecte deschise, rata de retest eșuat.\n- Risc: număr de riscuri active cu impact ridicat, riscuri materializate față de riscuri identificate.\n\nUn set bun de KPI trebuie să fie SMART (specific, măsurabil, atins realist, relevant, încadrat în timp) și, mai ales, urmărit constant, nu doar calculat o singură dată. La proiectele conduse în Agile/Scrum (conform Scrum Guide 2020), indicatorii clasici sunt completați cu burn-down chart-ul sprintului și velocity-ul echipei (story points livrate pe sprint), care arată dacă echipa menține un ritm constant de livrare.\n\nAlegerea KPI-lor potriviți depinde de tipul proiectului: un proiect de construcții urmărește cu precădere costul și siguranța, un proiect IT urmărește viteza de livrare și calitatea codului.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "evm-pv-ev-ac",
+    "md": "Earned Value Management (EVM) este metoda cea mai riguroasă de monitorizare integrată a costului și a timpului, recomandată de PMBOK 7 pentru proiectele de complexitate medie și mare. EVM se bazează pe trei valori măsurate la o dată de raportare (de exemplu, sfârșitul unei luni):\n\nPV (Planned Value) - valoarea planificată, adică bugetul alocat lucrărilor care ar fi trebuit finalizate până la data de raportare, conform planului aprobat. Se calculează ca procent planificat de completare × bugetul total al proiectului (BAC - Budget at Completion).\n\nEV (Earned Value) - valoarea realizată, adică bugetul corespunzător lucrărilor efectiv finalizate până la data de raportare, indiferent cât s-a cheltuit real. Se calculează ca procent real de completare × BAC. EV este indicatorul central al EVM, pentru că traduce progresul fizic în bani.\n\nAC (Actual Cost) - costul real, adică suma efectiv cheltuită până la data de raportare pentru lucrările realizate, preluată din contabilitatea de proiect (facturi, pontaje, comenzi plătite).\n\nDiferența dintre aceste trei cifre arată sănătatea reală a proiectului: dacă AC este mai mare decât EV, proiectul cheltuiește mai mult decât valorează lucrarea făcută; dacă PV este mai mare decât EV, proiectul este în urma programului.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "evm-spi-cpi-eac",
+    "md": "Din PV, EV și AC se calculează indicatorii derivați, esențiali pentru orice raport de status:\n\nSV (Schedule Variance) = EV - PV. Negativ înseamnă întârziere valorică; pozitiv înseamnă avans.\n\nCV (Cost Variance) = EV - AC. Negativ înseamnă depășire de buget; pozitiv înseamnă economie.\n\nSPI (Schedule Performance Index) = EV / PV. SPI = 1 înseamnă exact pe program; SPI < 1 înseamnă întârziere (de exemplu, SPI = 0,80 arată că proiectul avansează la 80% din ritmul planificat); SPI > 1 înseamnă avans.\n\nCPI (Cost Performance Index) = EV / AC. CPI = 1 înseamnă exact pe buget; CPI < 1 înseamnă că fiecare leu cheltuit produce mai puțin de un leu de valoare; CPI > 1 înseamnă eficiență peste plan.\n\nPe baza CPI se estimează costurile finale: EAC (Estimate at Completion) = BAC / CPI - costul total estimat la finalizare. ETC (Estimate to Complete) = EAC - AC - cât mai este de cheltuit până la finalizare. VAC (Variance at Completion) = BAC - EAC - depășirea sau economia finală estimată.\n\nRegula practică: dacă SPI și CPI sunt ambele sub 0,90, proiectul este într-o situație de risc ridicat și necesită o discuție formală cu sponsorul.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dashboard-proiect-rag",
+    "md": "Un dashboard de proiect este reprezentarea vizuală, sintetică, a indicatorilor de mai sus, actualizată la o cadență fixă (săptămânal pentru echipa de proiect, lunar pentru comitetul de conducere/steering committee). Un dashboard eficient conține, de regulă:\n\n- Status general exprimat prin culori RAG (Red-Amber-Green): verde = pe plan, galben = risc de abatere, roșu = abatere critică ce necesită escaladare.\n- Un grafic de tip S-curve, care arată evoluția în timp a PV, EV și AC pe aceeași axă.\n- Un tabel cu SPI, CPI, SV, CV, EAC pentru proiect și, dacă e relevant, pentru fiecare workstream.\n- Top riscuri active și acțiuni corective în curs, cu responsabili și termene.\n- Milestone-uri viitoare din următoarele 2-4 săptămâni.\n\nCheia unui dashboard bun nu este cantitatea de date, ci claritatea: un sponsor trebuie să înțeleagă starea proiectului în sub un minut de citire. Instrumente uzuale în companiile din România: Microsoft Project combinat cu Power BI, Excel cu grafice dinamice, sau module de raportare din Jira, Monday.com ori Smartsheet.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calcul EVM pentru un proiect de implementare ERP",
+    "concept_key": "evm-pv-ev-ac",
+    "md": "O companie de distribuție din Ilfov implementează un sistem ERP cu un buget total (BAC) de 120.000 lei și o durată planificată de 6 luni. La sfârșitul lunii 3 (jumătate din durata proiectului), echipa colectează datele pentru raportul lunar de status:\n\n- Conform planului, ar fi trebuit finalizate lucrări în valoare de PV = 66.000 lei (55% din buget).\n- Progresul fizic real, verificat prin livrabilele acceptate, arată EV = 54.000 lei (45% din buget finalizat efectiv).\n- Costul real înregistrat în contabilitatea de proiect este AC = 62.000 lei.\n\nCalculul indicatorilor:\nSV = EV - PV = 54.000 - 66.000 = -12.000 lei → întârziere valorică.\nCV = EV - AC = 54.000 - 62.000 = -8.000 lei → depășire de cost.\nSPI = EV / PV = 54.000 / 66.000 ≈ 0,82 → proiectul avansează la 82% din ritmul planificat.\nCPI = EV / AC = 54.000 / 62.000 ≈ 0,87 → fiecare leu cheltuit produce doar 0,87 lei de valoare.\nEAC = BAC / CPI = 120.000 / 0,87 ≈ 137.800 lei → costul final estimat depășește bugetul cu aproape 18.000 lei.\n\nConcluzie pentru PM: proiectul este atât în întârziere, cât și peste buget; se impune o discuție cu sponsorul despre realocarea resurselor sau ajustarea scopului.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b6"
+   },
+   {
+    "type": "example",
+    "title": "Interpretarea unui dashboard de proiect (status RAG)",
+    "concept_key": "dashboard-proiect-rag",
+    "md": "La ședința lunară de steering committee pentru proiectul ERP de mai sus, PM-ul prezintă un dashboard cu trei workstream-uri:\n\n- Migrare date: SPI = 0,95, CPI = 1,02 → verde (aproape de plan, cost sub control).\n- Configurare și testare (UAT): SPI = 0,78, CPI = 0,85 → roșu (întârziere mare și depășire de cost, ambele sub 0,90).\n- Instruire utilizatori: SPI = 1,00, CPI = 0,97 → galben (pe program, dar cu o ușoară depășire de cost).\n\nStatusul general al proiectului se stabilește după cel mai slab workstream cu pondere semnificativă în buget, deci proiectul primește status roșu, cu escaladare către sponsor. Acțiunea corectivă propusă: suplimentarea temporară a echipei de testare cu doi consultanți externi pentru trei săptămâni, pentru a recupera întârzierea înainte de următorul milestone.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b7"
+   },
+   {
+    "type": "warning",
+    "md": "EVM oferă o imagine numerică riguroasă, dar are limite: nu măsoară calitatea livrabilelor (procentul de completare fizică poate fi supraestimat dacă echipa raportează optimist), nu surprinde riscurile viitoare nematerializate încă și poate fi laborios de aplicat la proiecte foarte mici sau la proiecte Agile pure, unde se preferă burn-down chart-ul și velocity-ul. Recomandarea practică: combină EVM cu KPI de calitate (defecte, retururi UAT) și cu revizuiri periodice ale riscurilor, nu doar cu cifre de cost și timp.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Un proiect de digitalizare a arhivei unei primării are un buget total (BAC) de 80.000 lei și o durată planificată de 8 luni. La sfârșitul lunii 5, planul prevedea finalizarea a 70% din lucrări, iar progresul real constatat este de 60%. Costul real înregistrat până la această dată este AC = 53.000 lei.\n\nCalculează PV, EV, SV, CV, SPI, CPI și EAC, apoi interpretează situația proiectului.",
+    "solution_md": "PV = 70% × 80.000 = 56.000 lei\nEV = 60% × 80.000 = 48.000 lei\nAC = 53.000 lei (dat)\n\nSV = EV - PV = 48.000 - 56.000 = -8.000 lei → întârziere.\nCV = EV - AC = 48.000 - 53.000 = -5.000 lei → depășire de cost.\nSPI = EV / PV = 48.000 / 56.000 ≈ 0,86 → proiectul avansează la 86% din ritmul planificat.\nCPI = EV / AC = 48.000 / 53.000 ≈ 0,91 → fiecare leu cheltuit produce 0,91 lei de valoare.\nEAC = BAC / CPI = 80.000 / 0,91 ≈ 87.900 lei → depășire estimată de circa 7.900 lei față de bugetul inițial.\n\nInterpretare: proiectul este simultan în urma programului (SPI = 0,86) și ușor peste buget (CPI = 0,91), dar problema dominantă este întârzierea - prima măsură corectivă recomandată este realocarea temporară de resurse pe activitățile critice, nu reducerea cheltuielilor.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă pentru indicele de performanță a costului (CPI)?",
+    "choices": [
+     "CPI = EV / AC",
+     "CPI = AC / EV",
+     "CPI = PV / AC",
+     "CPI = EV / PV"
+    ],
+    "answer": 0,
+    "explain": "CPI (Cost Performance Index) se calculează ca EV / AC și arată câtă valoare a fost produsă pentru fiecare leu cheltuit efectiv.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un proiect are SPI = 0,75. Ce înseamnă acest lucru?",
+    "choices": [
+     "Proiectul este cu 25% peste buget",
+     "Proiectul avansează la doar 75% din ritmul planificat, deci este în întârziere",
+     "Proiectul a fost finalizat cu 75% din costul planificat",
+     "Indicatorul nu are legătură cu timpul"
+    ],
+    "answer": 1,
+    "explain": "SPI = EV/PV. O valoare de 0,75 arată că valoarea realizată reprezintă doar 75% din valoarea planificată la această dată, deci proiectul este în întârziere față de program.",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă PV (Planned Value) în Earned Value Management?",
+    "back": "Valoarea bugetară a lucrărilor care ar fi trebuit finalizate până la o dată de raportare, conform planului aprobat (% planificat × BAC).",
+    "concept_key": "evm-pv-ev-ac",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă EV (Earned Value)?",
+    "back": "Valoarea bugetară a lucrărilor efectiv finalizate până la data de raportare (% real de completare × BAC).",
+    "concept_key": "evm-pv-ev-ac",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă AC (Actual Cost)?",
+    "back": "Costul real, efectiv cheltuit până la data de raportare pentru lucrările realizate, preluat din contabilitatea de proiect.",
+    "concept_key": "evm-pv-ev-ac",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula SPI și cum se interpretează o valoare sub 1?",
+    "back": "SPI = EV / PV. O valoare sub 1 arată că proiectul este în întârziere față de programul planificat.",
+    "concept_key": "evm-spi-cpi-eac",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula CPI și cum se interpretează o valoare sub 1?",
+    "back": "CPI = EV / AC. O valoare sub 1 arată o depășire de cost - fiecare leu cheltuit produce mai puțin de un leu de valoare.",
+    "concept_key": "evm-spi-cpi-eac",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce culoare RAG (Red-Amber-Green) se folosește într-un dashboard când SPI și CPI sunt ambele sub 0,90?",
+    "back": "Roșu - abatere critică ce necesită escaladare către sponsor sau comitetul de conducere.",
+    "concept_key": "dashboard-proiect-rag",
+    "blockId": "cmjjuxvtf005qumkph6tkp62b-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1478,
+   "flashcards": 6
+  }
+ }
+}

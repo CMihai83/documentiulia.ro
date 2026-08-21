@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvsu005cumkptm9oiiwj",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Planificarea Proiectului",
+ "lesson": "Estimări și secvențiere",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Estimări și secvențiere\n\n## De ce estimăm în managementul de proiecte\n\nEstimarea este procesul prin care determini, cât mai realist posibil, durata, efortul, costul și resursele necesare pentru activitățile unui proiect. În PMBOK 7, estimarea face parte din domeniul de performanță **Planificare** și se leagă direct de domeniul **Livrare** — o estimare greșită la început se propagă în tot proiectul, afectând termenele, bugetul și încrederea stakeholderilor.\n\nUn principiu esențial: estimarea nu este o promisiune, ci o predicție cu un grad de incertitudine. De aceea distingem între **precizie** (cât de detaliată e cifra, ex. 5,25 zile) și **acuratețe** (cât de aproape e de realitate). O estimare de „aproximativ 5-6 zile” poate fi mai utilă decât una de „5,25 zile” dacă incertitudinea reală este mare.\n\nÎn proiectele reale — de exemplu implementarea unui sistem ERP într-o companie de distribuție din România — nu estimezi totul cu același nivel de detaliu de la început. Aplici **rolling wave planning**: activitățile din următoarele 2-4 săptămâni le estimezi granular (pe zile sau ore-om), iar cele îndepărtate rămân la nivel de fază, urmând să fie detaliate pe măsură ce te apropii de ele. Această abordare reduce efortul irosit pe estimări care oricum se vor schimba.\n\n## Trei tehnici clasice de estimare\n\n**1. Judecata experților (expert judgment)**\nTe bazezi pe experiența unei persoane sau a unui grup care a mai lucrat pe activități similare. Este rapidă și utilă când nu ai date istorice, dar depinde de subiectivitatea expertului și poate introduce optimism sau pesimism nejustificat. Exemplu: administratorul de sistem care a mai instalat module de facturare electronică estimează „din experiență” că integrarea cu e-Factura durează 8-10 zile lucrătoare.\n\n**2. Estimarea analogică (analogous estimating)**\nFolosești durata sau costul unui proiect/activitate anterioară similară și o ajustezi în funcție de diferențele cunoscute (complexitate, dimensiune, echipă). Este rapidă, dar mai puțin precisă — funcționează bine în fazele incipiente ale proiectului, când ai puține detalii. Exemplu: dacă implementarea modulului de gestiune stocuri la un client anterior a durat 6 săptămâni cu o echipă de 3 consultanți, iar noul client are un volum de tranzacții dublu, poți estima 8-9 săptămâni, ajustând proporțional.\n\n**3. Estimarea parametrică (parametric estimating)**\nFolosești o relație statistică între o variabilă măsurabilă și durata/costul activității (ex. ore per pagină de document migrat, zile per interfață dezvoltată). Este mai precisă decât cea analogică, dacă ai date istorice de calitate. Exemplu: dacă echipa ta migrează în medie 250 de înregistrări de clienți pe oră, iar clientul are 40.000 de înregistrări de migrat, estimarea parametrică este 40.000 / 250 = 160 ore, adică aproximativ 20 zile-om la 8 ore/zi.\n\n## Estimarea în trei puncte (three-point / PERT)\n\nCând incertitudinea este mare, o singură cifră de estimare ascunde riscul. Tehnica **three-point estimating**, populară în varianta PERT (Program Evaluation and Review Technique), cere trei valori pentru fiecare activitate:\n\n- **O (optimist)** — durata dacă totul merge bine\n- **M (cel mai probabil / most likely)** — durata realistă, în condiții normale\n- **P (pesimist)** — durata dacă apar probleme semnificative\n\nFormula PERT ponderată (beta) este:\n\n**E = (O + 4×M + P) / 6**\n\nPonderea de 4 pentru „cel mai probabil” reflectă faptul că distribuția e concentrată în jurul acestei valori, nu la extreme. Poți calcula și abaterea standard, utilă pentru a comunica intervalul de încredere:\n\n**σ = (P − O) / 6**\n\nAceastă tehnică este recomandată de PMBOK 7 și utilă mai ales pentru activități cu istoric limitat sau risc ridicat (ex. integrări tehnice noi, migrări de date complexe), unde o singură cifră ar da o falsă senzație de certitudine echipei și sponsorului.\n\n## Exemplu: Calcul PERT pentru o activitate de configurare ERP\nO echipă de implementare ERP estimează durata activității **„Configurare modul Financiar – Contabilitate generală”** astfel:\n\n- Optimist (O) = 3 zile lucrătoare\n- Cel mai probabil (M) = 5 zile lucrătoare\n- Pesimist (P) = 10 zile lucrătoare (dacă apar cerințe suplimentare de la client legate de conturi analitice)\n\nAplicăm formula PERT:\n\nE = (O + 4×M + P) / 6 = (3 + 4×5 + 10) / 6 = (3 + 20 + 10) / 6 = 33 / 6 = **5,5 zile lucrătoare**\n\nAbaterea standard: σ = (P − O) / 6 = (10 − 3) / 6 ≈ **1,17 zile**\n\nConcluzie pentru planificare: în graficul de proiect introduci 5,5 zile (rotunjit, 6 zile) ca durată estimată, dar comunici sponsorului că, în scenariul pesimist, activitatea poate ajunge la 10 zile — informație esențială pentru rezerva de timp (buffer) din planul general.\n\n## Secvențierea activităților: tipurile de dependențe\n\nDupă ce ai estimat durata fiecărei activități, trebuie să stabilești **ordinea** în care se execută — adică dependențele logice dintre ele. PMBOK 7 și metoda diagramei de precedență (PDM) recunosc patru tipuri:\n\n**Finish-to-Start (FS)** — activitatea succesoare nu poate începe până nu se termină predecesoarea. Este cea mai frecventă dependență (peste 90% din cazurile practice). Exemplu: nu poți începe **testarea** modulului ERP până nu se termină **configurarea** lui.\n\n**Start-to-Start (SS)** — succesoarea nu poate începe până nu începe predecesoarea; cele două pot rula în paralel. Exemplu: **migrarea datelor de test** poate începe imediat ce începe **configurarea mediului de testare**, fără să aștepte finalizarea completă a configurării.\n\n**Finish-to-Finish (FF)** — succesoarea nu se poate termina până nu se termină predecesoarea. Exemplu: **redactarea manualului de utilizare** nu se poate finaliza până nu se finalizează **testarea funcțională**, pentru că manualul trebuie să reflecte comportamentul final validat.\n\n**Start-to-Finish (SF)** — cea mai rară în practică; succesoarea nu se poate termina până nu începe predecesoarea. Exemplu clasic: **tura de noapte a suportului tehnic** nu se termină până nu începe **tura de zi** care preia activitatea.\n\nPe lângă tipul dependenței, poți adăuga **lead** (suprapunere, ex. „FS -2 zile” — succesoarea începe cu 2 zile înainte de finalul predecesoarei) sau **lag** (întârziere, ex. „FS +3 zile” — succesoarea așteaptă 3 zile după finalul predecesoarei, de exemplu timpul de uscare a unei vopsele sau timpul de aprobare internă a unui document).\n\n## Exemplu: Secvențiere activități – proiect de digitalizare documente\nO companie de servicii contabile digitalizează arhiva de documente. Activitățile și dependențele lor:\n\n| Activitate | Predecesor | Tip dependență | Lag |\n|---|---|---|---|\n| A. Scanare documente | — | — | — |\n| B. Indexare documente (OCR + etichetare) | A | SS | +1 zi |\n| C. Validare calitate scanare | A | FS | 0 |\n| D. Încărcare în sistemul de arhivare electronică | B, C | FS | 0 |\n| E. Aprobare internă arhivă (audit intern) | D | FS | +2 zile |\n\nCitire: **B** poate începe la o zi după ce a început **A** (dependență SS cu lag, pentru că indexarea poate porni pe loturile deja scanate, fără să aștepte scanarea completă). **C** începe abia după ce **A** se termină complet (FS). **D** are două predecesoare (B și C) — regula standard este că activitatea succesoare așteaptă finalizarea *tuturor* predecesoarelor sale. **E** are un lag de 2 zile după finalizarea lui D, timp necesar pentru programarea ședinței de audit intern.\n\nAceastă secvențiere, combinată cu duratele estimate (prin analogică sau PERT), stă la baza calculului drumului critic — subiect pe care îl aprofundăm în lecția următoare.\n\n⚠ Trei capcane frecvente în estimare și secvențiere:\n\n1. **Ancorarea (anchoring bias)** — prima cifră auzită (de multe ori de la sponsor sau client) influențează estimările echipei, chiar dacă nu are bază tehnică. Contracarezi prin estimare independentă, înainte de a discuta cifre cu stakeholderii.\n2. **Optimismul sistematic** — echipele tind să subestimeze activitățile noi sau complexe și să ignore timpul pentru revizuiri, aprobări și blocaje. Three-point estimating ajută tocmai prin forțarea unui scenariu pesimist explicit.\n3. **Omiterea lead-urilor și lag-urilor din graficul de proiect** — o dependență FS „simplă” fără lag, când în realitate există un timp de așteptare (aprobare, uscare, livrare furnizor), duce la termene nerealiste încă din faza de planificare.\n\n## Exercițiu\nO echipă de proiect de implementare a unui sistem de facturare electronică estimează activitatea **„Testare integrare cu platforma națională de facturare”** astfel: O = 4 zile, M = 6 zile, P = 14 zile (risc de blocaje la mediul de testare al autorității).\n\nCerințe:\n1. Calculează estimarea PERT (E) și abaterea standard (σ) pentru această activitate.\n2. Activitatea următoare, **„Instruire utilizatori finali”**, poate începe cu 1 zi înainte ca testarea să se termine complet (pentru pregătirea materialelor pe baza rezultatelor parțiale). Ce tip de dependență este aceasta și cum se notează?\n\n**Soluție:** 1. E = (O + 4×M + P) / 6 = (4 + 4×6 + 14) / 6 = (4 + 24 + 14) / 6 = 42 / 6 = **7 zile**\n   σ = (P − O) / 6 = (14 − 4) / 6 ≈ **1,67 zile**\n   Interpretare: planifici 7 zile în graficul de proiect, dar semnalezi sponsorului un risc de extindere până la 14 zile dacă mediul de testare al autorității are indisponibilități.\n\n2. Este o dependență **Finish-to-Start cu lead (FS -1 zi)**: „Instruire utilizatori finali” este succesoarea lui „Testare integrare”, dar poate începe cu o zi înainte de finalul testării — deci se notează FS cu lead de 1 zi (echivalent cu FS -1).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "estimare-scop-planificare-pm",
+    "md": "## De ce estimăm în managementul de proiecte\n\nEstimarea este procesul prin care determini, cât mai realist posibil, durata, efortul, costul și resursele necesare pentru activitățile unui proiect. În PMBOK 7, estimarea face parte din domeniul de performanță **Planificare** și se leagă direct de domeniul **Livrare** — o estimare greșită la început se propagă în tot proiectul, afectând termenele, bugetul și încrederea stakeholderilor.\n\nUn principiu esențial: estimarea nu este o promisiune, ci o predicție cu un grad de incertitudine. De aceea distingem între **precizie** (cât de detaliată e cifra, ex. 5,25 zile) și **acuratețe** (cât de aproape e de realitate). O estimare de „aproximativ 5-6 zile” poate fi mai utilă decât una de „5,25 zile” dacă incertitudinea reală este mare.\n\nÎn proiectele reale — de exemplu implementarea unui sistem ERP într-o companie de distribuție din România — nu estimezi totul cu același nivel de detaliu de la început. Aplici **rolling wave planning**: activitățile din următoarele 2-4 săptămâni le estimezi granular (pe zile sau ore-om), iar cele îndepărtate rămân la nivel de fază, urmând să fie detaliate pe măsură ce te apropii de ele. Această abordare reduce efortul irosit pe estimări care oricum se vor schimba.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tehnici-estimare-expert-analogica-parametrica",
+    "md": "## Trei tehnici clasice de estimare\n\n**1. Judecata experților (expert judgment)**\nTe bazezi pe experiența unei persoane sau a unui grup care a mai lucrat pe activități similare. Este rapidă și utilă când nu ai date istorice, dar depinde de subiectivitatea expertului și poate introduce optimism sau pesimism nejustificat. Exemplu: administratorul de sistem care a mai instalat module de facturare electronică estimează „din experiență” că integrarea cu e-Factura durează 8-10 zile lucrătoare.\n\n**2. Estimarea analogică (analogous estimating)**\nFolosești durata sau costul unui proiect/activitate anterioară similară și o ajustezi în funcție de diferențele cunoscute (complexitate, dimensiune, echipă). Este rapidă, dar mai puțin precisă — funcționează bine în fazele incipiente ale proiectului, când ai puține detalii. Exemplu: dacă implementarea modulului de gestiune stocuri la un client anterior a durat 6 săptămâni cu o echipă de 3 consultanți, iar noul client are un volum de tranzacții dublu, poți estima 8-9 săptămâni, ajustând proporțional.\n\n**3. Estimarea parametrică (parametric estimating)**\nFolosești o relație statistică între o variabilă măsurabilă și durata/costul activității (ex. ore per pagină de document migrat, zile per interfață dezvoltată). Este mai precisă decât cea analogică, dacă ai date istorice de calitate. Exemplu: dacă echipa ta migrează în medie 250 de înregistrări de clienți pe oră, iar clientul are 40.000 de înregistrări de migrat, estimarea parametrică este 40.000 / 250 = 160 ore, adică aproximativ 20 zile-om la 8 ore/zi.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "estimare-three-point-pert",
+    "md": "## Estimarea în trei puncte (three-point / PERT)\n\nCând incertitudinea este mare, o singură cifră de estimare ascunde riscul. Tehnica **three-point estimating**, populară în varianta PERT (Program Evaluation and Review Technique), cere trei valori pentru fiecare activitate:\n\n- **O (optimist)** — durata dacă totul merge bine\n- **M (cel mai probabil / most likely)** — durata realistă, în condiții normale\n- **P (pesimist)** — durata dacă apar probleme semnificative\n\nFormula PERT ponderată (beta) este:\n\n**E = (O + 4×M + P) / 6**\n\nPonderea de 4 pentru „cel mai probabil” reflectă faptul că distribuția e concentrată în jurul acestei valori, nu la extreme. Poți calcula și abaterea standard, utilă pentru a comunica intervalul de încredere:\n\n**σ = (P − O) / 6**\n\nAceastă tehnică este recomandată de PMBOK 7 și utilă mai ales pentru activități cu istoric limitat sau risc ridicat (ex. integrări tehnice noi, migrări de date complexe), unde o singură cifră ar da o falsă senzație de certitudine echipei și sponsorului.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calcul PERT pentru o activitate de configurare ERP",
+    "concept_key": "estimare-pert-exemplu-numeric",
+    "md": "O echipă de implementare ERP estimează durata activității **„Configurare modul Financiar – Contabilitate generală”** astfel:\n\n- Optimist (O) = 3 zile lucrătoare\n- Cel mai probabil (M) = 5 zile lucrătoare\n- Pesimist (P) = 10 zile lucrătoare (dacă apar cerințe suplimentare de la client legate de conturi analitice)\n\nAplicăm formula PERT:\n\nE = (O + 4×M + P) / 6 = (3 + 4×5 + 10) / 6 = (3 + 20 + 10) / 6 = 33 / 6 = **5,5 zile lucrătoare**\n\nAbaterea standard: σ = (P − O) / 6 = (10 − 3) / 6 ≈ **1,17 zile**\n\nConcluzie pentru planificare: în graficul de proiect introduci 5,5 zile (rotunjit, 6 zile) ca durată estimată, dar comunici sponsorului că, în scenariul pesimist, activitatea poate ajunge la 10 zile — informație esențială pentru rezerva de timp (buffer) din planul general.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dependente-activitati-tipuri",
+    "md": "## Secvențierea activităților: tipurile de dependențe\n\nDupă ce ai estimat durata fiecărei activități, trebuie să stabilești **ordinea** în care se execută — adică dependențele logice dintre ele. PMBOK 7 și metoda diagramei de precedență (PDM) recunosc patru tipuri:\n\n**Finish-to-Start (FS)** — activitatea succesoare nu poate începe până nu se termină predecesoarea. Este cea mai frecventă dependență (peste 90% din cazurile practice). Exemplu: nu poți începe **testarea** modulului ERP până nu se termină **configurarea** lui.\n\n**Start-to-Start (SS)** — succesoarea nu poate începe până nu începe predecesoarea; cele două pot rula în paralel. Exemplu: **migrarea datelor de test** poate începe imediat ce începe **configurarea mediului de testare**, fără să aștepte finalizarea completă a configurării.\n\n**Finish-to-Finish (FF)** — succesoarea nu se poate termina până nu se termină predecesoarea. Exemplu: **redactarea manualului de utilizare** nu se poate finaliza până nu se finalizează **testarea funcțională**, pentru că manualul trebuie să reflecte comportamentul final validat.\n\n**Start-to-Finish (SF)** — cea mai rară în practică; succesoarea nu se poate termina până nu începe predecesoarea. Exemplu clasic: **tura de noapte a suportului tehnic** nu se termină până nu începe **tura de zi** care preia activitatea.\n\nPe lângă tipul dependenței, poți adăuga **lead** (suprapunere, ex. „FS -2 zile” — succesoarea începe cu 2 zile înainte de finalul predecesoarei) sau **lag** (întârziere, ex. „FS +3 zile” — succesoarea așteaptă 3 zile după finalul predecesoarei, de exemplu timpul de uscare a unei vopsele sau timpul de aprobare internă a unui document).",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b5"
+   },
+   {
+    "type": "example",
+    "title": "Secvențiere activități – proiect de digitalizare documente",
+    "concept_key": "secventiere-exemplu-digitalizare",
+    "md": "O companie de servicii contabile digitalizează arhiva de documente. Activitățile și dependențele lor:\n\n| Activitate | Predecesor | Tip dependență | Lag |\n|---|---|---|---|\n| A. Scanare documente | — | — | — |\n| B. Indexare documente (OCR + etichetare) | A | SS | +1 zi |\n| C. Validare calitate scanare | A | FS | 0 |\n| D. Încărcare în sistemul de arhivare electronică | B, C | FS | 0 |\n| E. Aprobare internă arhivă (audit intern) | D | FS | +2 zile |\n\nCitire: **B** poate începe la o zi după ce a început **A** (dependență SS cu lag, pentru că indexarea poate porni pe loturile deja scanate, fără să aștepte scanarea completă). **C** începe abia după ce **A** se termină complet (FS). **D** are două predecesoare (B și C) — regula standard este că activitatea succesoare așteaptă finalizarea *tuturor* predecesoarelor sale. **E** are un lag de 2 zile după finalizarea lui D, timp necesar pentru programarea ședinței de audit intern.\n\nAceastă secvențiere, combinată cu duratele estimate (prin analogică sau PERT), stă la baza calculului drumului critic — subiect pe care îl aprofundăm în lecția următoare.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Trei capcane frecvente în estimare și secvențiere:\n\n1. **Ancorarea (anchoring bias)** — prima cifră auzită (de multe ori de la sponsor sau client) influențează estimările echipei, chiar dacă nu are bază tehnică. Contracarezi prin estimare independentă, înainte de a discuta cifre cu stakeholderii.\n2. **Optimismul sistematic** — echipele tind să subestimeze activitățile noi sau complexe și să ignore timpul pentru revizuiri, aprobări și blocaje. Three-point estimating ajută tocmai prin forțarea unui scenariu pesimist explicit.\n3. **Omiterea lead-urilor și lag-urilor din graficul de proiect** — o dependență FS „simplă” fără lag, când în realitate există un timp de așteptare (aprobare, uscare, livrare furnizor), duce la termene nerealiste încă din faza de planificare.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O echipă de proiect de implementare a unui sistem de facturare electronică estimează activitatea **„Testare integrare cu platforma națională de facturare”** astfel: O = 4 zile, M = 6 zile, P = 14 zile (risc de blocaje la mediul de testare al autorității).\n\nCerințe:\n1. Calculează estimarea PERT (E) și abaterea standard (σ) pentru această activitate.\n2. Activitatea următoare, **„Instruire utilizatori finali”**, poate începe cu 1 zi înainte ca testarea să se termine complet (pentru pregătirea materialelor pe baza rezultatelor parțiale). Ce tip de dependență este aceasta și cum se notează?",
+    "solution_md": "1. E = (O + 4×M + P) / 6 = (4 + 4×6 + 14) / 6 = (4 + 24 + 14) / 6 = 42 / 6 = **7 zile**\n   σ = (P − O) / 6 = (14 − 4) / 6 ≈ **1,67 zile**\n   Interpretare: planifici 7 zile în graficul de proiect, dar semnalezi sponsorului un risc de extindere până la 14 zile dacă mediul de testare al autorității are indisponibilități.\n\n2. Este o dependență **Finish-to-Start cu lead (FS -1 zi)**: „Instruire utilizatori finali” este succesoarea lui „Testare integrare”, dar poate începe cu o zi înainte de finalul testării — deci se notează FS cu lead de 1 zi (echivalent cu FS -1).",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă de estimare PERT (three-point)?",
+    "choices": [
+     "E = (O + M + P) / 3",
+     "E = (O + 4M + P) / 6",
+     "E = (O + 2M + P) / 4",
+     "E = (O + M + 4P) / 6"
+    ],
+    "answer": 1,
+    "explain": "PERT ponderează cel mai probabil (M) de patru ori, deoarece distribuția estimărilor este concentrată în jurul acestei valori: E = (O + 4M + P) / 6.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un proiect de renovare, nu poți monta parchetul până nu se usucă complet șapa turnată. Ce tip de dependență este aceasta?",
+    "choices": [
+     "Start-to-Start (SS)",
+     "Finish-to-Finish (FF)",
+     "Finish-to-Start (FS)",
+     "Start-to-Finish (SF)"
+    ],
+    "answer": 2,
+    "explain": "Montarea parchetului (succesor) nu poate începe până nu se termină complet uscarea șapei (predecesor) — este dependența cea mai comună, Finish-to-Start (FS), aici cu un lag egal cu timpul de uscare.",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula PERT (three-point estimating)?",
+    "back": "E = (O + 4×M + P) / 6, unde O = optimist, M = cel mai probabil, P = pesimist.",
+    "concept_key": "estimare-pert-three-point",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă dependența Finish-to-Start (FS)?",
+    "back": "Activitatea succesoare nu poate începe până nu se termină activitatea predecesoare. Este cel mai frecvent tip de dependență în practică.",
+    "concept_key": "dependente-activitati-tipuri",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este estimarea analogică (analogous estimating)?",
+    "back": "Tehnică de estimare rapidă bazată pe durata sau costul unui proiect/activitate similară anterioară, ajustată cu diferențele cunoscute.",
+    "concept_key": "tehnici-estimare-expert-analogica-parametrica",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre lead și lag într-o dependență?",
+    "back": "Lag = întârziere suplimentară între activități (timp de așteptare); lead = suprapunere care permite începerea succesoarei înainte ca predecesoarea să se termine complet.",
+    "concept_key": "dependente-activitati-tipuri",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este dependența Start-to-Start (SS)?",
+    "back": "Activitatea succesoare nu poate începe până nu începe activitatea predecesoare; cele două pot rula apoi în paralel.",
+    "concept_key": "dependente-activitati-tipuri",
+    "blockId": "cmjjuxvsu005cumkptm9oiiwj-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1394,
+   "flashcards": 5
+  }
+ }
+}

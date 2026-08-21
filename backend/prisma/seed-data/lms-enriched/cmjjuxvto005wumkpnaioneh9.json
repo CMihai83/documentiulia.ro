@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvto005wumkpnaioneh9",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Execuție și Control",
+ "lesson": "Quiz final",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Quiz final (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Conform PMBOK 7, ce reprezintă grupul de procese de \"Execuție\" într-un proiect?",
+     "choices": [
+      "Coordonarea resurselor umane și materiale pentru a realiza lucrările definite în planul de management al proiectului",
+      "Definirea inițială a scopului și a obiectivelor proiectului",
+      "Închiderea contractelor și arhivarea documentației finale",
+      "Elaborarea studiului de fezabilitate înainte de aprobarea proiectului"
+     ],
+     "answer": 0,
+     "explain": "Execuția este grupul de procese în care echipa realizează efectiv activitățile planificate, mobilizând oameni, materiale și buget conform planului de management al proiectului. Definirea scopului aparține inițierii/planificării, iar arhivarea documentației aparține închiderii.",
+     "concept_key": "executie_definitie"
+    },
+    {
+     "q": "Care este scopul principal al proceselor de Control într-un proiect?",
+     "choices": [
+      "Măsurarea și monitorizarea performanței proiectului pentru a identifica abaterile față de plan și a declanșa acțiuni corective",
+      "Stabilirea bugetului inițial al proiectului, înainte de demarare",
+      "Recrutarea și selecția echipei de proiect",
+      "Semnarea contractului comercial cu clientul"
+     ],
+     "answer": 0,
+     "explain": "Controlul (monitorizare și control) compară periodic performanța reală cu planul de referință (baseline) pe scop, timp și cost, pentru a detecta abateri și a decide măsuri corective sau preventive. Stabilirea bugetului și recrutarea aparțin planificării, iar semnarea contractului este de regulă parte din inițiere.",
+     "concept_key": "control_definitie"
+    },
+    {
+     "q": "Într-un proiect de implementare ERP la o firmă SRL din România, managerul de proiect constată că activitățile de configurare a modulului de contabilitate au întârziat cu două săptămâni. Ce document ar trebui actualizat, în primul rând, pentru a gestiona corect situația?",
+     "choices": [
+      "Jurnalul de probleme (issue log) și, dacă e cazul, registrul de riscuri",
+      "Carta proiectului (project charter)",
+      "Planul de comunicare al proiectului",
+      "Studiul de fezabilitate inițial"
+     ],
+     "answer": 0,
+     "explain": "Abaterile concrete apărute în execuție (întârzieri, blocaje) se înregistrează în jurnalul de probleme (issue log), iar cauzele/impactul viitor se evaluează și în registrul de riscuri. Carta proiectului și studiul de fezabilitate sunt documente de inițiere, folosite rar în gestionarea zilnică a execuției.",
+     "concept_key": "issue_log"
+    },
+    {
+     "q": "Ce reprezintă un \"Change Control Board\" (CCB - comitet de control al schimbărilor) în cadrul procesului de control integrat al schimbărilor?",
+     "choices": [
+      "Un grup desemnat să analizeze și să aprobe sau să respingă cererile formale de schimbare a scopului, bugetului sau calendarului",
+      "Echipa tehnică responsabilă cu testarea de acceptanță a livrabilelor",
+      "Departamentul financiar care aprobă facturile furnizorilor",
+      "Comitetul responsabil cu selecția furnizorilor la achiziții"
+     ],
+     "answer": 0,
+     "explain": "CCB este structura formală (frecvent folosită în proiecte de tip cascadă, dar și adaptată în medii hibride) care evaluează impactul cererilor de schimbare asupra scopului, costului și programului, aprobându-le sau respingându-le înainte de implementare.",
+     "concept_key": "ccb"
+    },
+    {
+     "q": "Ce este \"scope creep\" (deriva scopului) și cum se previne în faza de execuție și control?",
+     "choices": [
+      "Extinderea necontrolată a scopului proiectului, fără trecerea prin procesul formal de control al schimbărilor; se previne prin aprobare formală a oricărei modificări de scop",
+      "Reducerea planificată și aprobată a bugetului proiectului",
+      "Procesul oficial prin care o schimbare este documentată și aprobată de CCB",
+      "Actualizarea periodică, programată, a calendarului proiectului"
+     ],
+     "answer": 0,
+     "explain": "Scope creep apare atunci când se adaugă cerințe sau livrabile fără a trece prin controlul integrat al schimbărilor, ceea ce afectează bugetul și termenele. Prevenirea se face prin disciplină de proces: orice cerere de schimbare trece prin evaluare și aprobare formală.",
+     "concept_key": "scope_creep"
+    },
+    {
+     "q": "Conform Scrum Guide 2020, ce eveniment se desfășoară zilnic, în timpul unui Sprint, pentru a sincroniza echipa și a inspecta progresul spre obiectivul de Sprint?",
+     "choices": [
+      "Daily Scrum (întâlnirea zilnică de sincronizare)",
+      "Sprint Review (revizuirea de Sprint)",
+      "Sprint Retrospective (retrospectiva de Sprint)",
+      "Sprint Planning (planificarea de Sprint)"
+     ],
+     "answer": 0,
+     "explain": "Daily Scrum este un eveniment scurt, zilnic, în care echipa de dezvoltare inspectează progresul către obiectivul de Sprint și ajustează planul pentru următoarele 24 de ore. Sprint Review, Retrospective și Planning au loc o singură dată la începutul, respectiv sfârșitul fiecărui Sprint.",
+     "concept_key": "daily_scrum"
+    },
+    {
+     "q": "O echipă implicată într-un proiect de digitalizare a proceselor la o firmă din Cluj folosește un board Kanban și observă un număr mare de sarcini acumulate în coloana \"În testare\". Ce indică acest fapt și ce acțiune de control ar fi potrivită?",
+     "choices": [
+      "Un blocaj (bottleneck) la etapa de testare; managerul ar trebui să limiteze volumul de lucru în desfășurare (WIP) sau să realoce resurse către testare",
+      "Proiectul este finalizat cu succes și nu mai necesită nicio intervenție",
+      "Sprintul curent trebuie automat prelungit cu o săptămână, fără altă analiză",
+      "Bugetul proiectului trebuie majorat imediat, indiferent de cauza acumulării"
+     ],
+     "answer": 0,
+     "explain": "Acumularea sarcinilor într-o coloană Kanban semnalează un bottleneck. Practica standard de control în Kanban este limitarea WIP pe coloană și realocarea resurselor spre etapa blocată, pentru a restabili fluxul continuu de lucru.",
+     "concept_key": "kanban_wip"
+    },
+    {
+     "q": "Un proiect de implementare ERP are un buget total planificat (BAC) de 100.000 lei. La data controlului: valoarea planificată (PV) este 40.000 lei, valoarea realizată (EV) este 30.000 lei, iar costul real (AC) este 35.000 lei. Care este Indicele de Performanță a Costurilor (CPI) și ce arată acesta?",
+     "choices": [
+      "CPI = EV/AC = 30.000/35.000 ≈ 0,86; proiectul cheltuiește mai mult decât valoarea efectiv produsă (depășire de cost)",
+      "CPI = PV/AC = 40.000/35.000 ≈ 1,14; proiectul este sub buget",
+      "CPI = AC/EV = 35.000/30.000 ≈ 1,17; proiectul este pe buget",
+      "CPI = EV/PV = 30.000/40.000 = 0,75; proiectul este în întârziere"
+     ],
+     "answer": 0,
+     "explain": "CPI se calculează ca EV/AC. Aici CPI = 30.000/35.000 ≈ 0,86, sub 1, ceea ce arată că pentru fiecare leu cheltuit s-a produs mai puțin de un leu valoare - deci proiectul este peste buget (cost overrun).",
+     "concept_key": "evm_cpi"
+    },
+    {
+     "q": "Folosind aceleași date - PV = 40.000 lei, EV = 30.000 lei - care este Indicele de Performanță a Programului (SPI) și ce indică acesta despre stadiul proiectului?",
+     "choices": [
+      "SPI = EV/PV = 30.000/40.000 = 0,75; proiectul este în întârziere față de planificare",
+      "SPI = PV/EV = 40.000/30.000 ≈ 1,33; proiectul este înaintea planificării",
+      "SPI = EV/AC = 30.000/35.000 ≈ 0,86; proiectul este pe buget",
+      "SPI = AC/PV = 35.000/40.000 = 0,875; proiectul este finalizat"
+     ],
+     "answer": 0,
+     "explain": "SPI se calculează ca EV/PV. Aici SPI = 30.000/40.000 = 0,75, sub 1, ceea ce arată că s-a realizat doar 75% din lucrul planificat pentru această dată - proiectul este în întârziere față de calendarul stabilit.",
+     "concept_key": "evm_spi"
+    },
+    {
+     "q": "Pe baza calculelor anterioare pentru proiectul ERP (CPI ≈ 0,86 și SPI = 0,75), ce concluzie corectă poate trage managerul de proiect și ce acțiune de control ar fi adecvată?",
+     "choices": [
+      "Proiectul este atât peste buget, cât și în întârziere; trebuie identificate cauzele abaterilor și, dacă este necesar, inițiată o cerere formală de schimbare (re-planificare sau realocare de resurse) prin procesul de control integrat al schimbărilor",
+      "Proiectul se desfășoară perfect conform planului și nu necesită nicio acțiune de control",
+      "Este suficient să se majoreze bugetul, fără nicio analiză a cauzelor abaterilor",
+      "Se recomandă anularea imediată a proiectului, fără o analiză suplimentară a datelor"
+     ],
+     "answer": 0,
+     "explain": "Un CPI sub 1 și un SPI sub 1 indică simultan depășire de cost și întârziere. Procesul corect de control presupune analiza cauzelor (root cause), actualizarea prognozelor (ETC/EAC) și, dacă abaterile sunt semnificative, transmiterea unei cereri de schimbare către CCB pentru re-planificare sau realocare de resurse - nu acțiuni pripite precum anularea sau simpla majorare a bugetului.",
+     "concept_key": "evm_sinteza"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

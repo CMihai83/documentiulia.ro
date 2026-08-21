@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvv0006tumkpupe8tuli",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Framework",
+ "lesson": "Artifacts: Sprint Backlog & Increment",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Artifacts: Sprint Backlog & Increment\n\n## Sprint Backlog: ce conține\n\nSprint Backlog-ul este unul dintre cele trei artefacte Scrum (alături de Product Backlog și Increment) și reprezintă **planul Developers-ilor pentru Sprint**. Conform Scrum Guide 2020, Sprint Backlog-ul este compus din trei elemente inseparabile:\n\n1. **Sprint Goal** – de ce contează Sprintul (obiectivul care oferă coerență și direcție echipei).\n2. **Product Backlog Items (PBI) selectate** pentru acest Sprint – ce se va livra.\n3. **Un plan realist de livrare** a Increment-ului – cum se va face munca (de regulă descompusă în task-uri de maximum o zi).\n\nSprint Backlog-ul este **proprietatea exclusivă a Developers-ilor**. Doar ei îl pot modifica în timpul Sprintului, pe măsură ce află lucruri noi – de aceea este un plan **emergent**, nu unul fixat la Sprint Planning și înghețat până la final. Dacă o echipă la o firmă românească de retail online descoperă la mijlocul Sprintului că un task de integrare cu un curier estimat la 4 ore durează de fapt 12 ore, Developers-ii actualizează Sprint Backlog-ul – nu așteaptă aprobare de la Product Owner sau Scrum Master.\n\nSprint Backlog-ul trebuie să fie suficient de vizibil și actualizat încât progresul să poată fi discutat clar la Daily Scrum. Lipsa actualizării lui zilnice este unul dintre cele mai frecvente semne de Scrum aplicat superficial în echipele din România care adoptă framework-ul fără să înțeleagă rolul de auto-organizare al Developers-ilor.\n\n## Increment: definiție și cerințe\n\nUn **Increment** este o treaptă concretă și funcțională către Product Goal. Conform Scrum Guide 2020, fiecare Increment este **adițional** celor create anterior și este verificat temeinic, astfel încât toate Increment-urile să funcționeze împreună ca un tot unitar.\n\nCâteva precizări esențiale, adesea testate la examenul PSM I:\n\n- **Pot exista mai multe Increment-uri într-un singur Sprint.** Increment-ul nu este \"produsul livrat la finalul Sprintului\", ci suma cumulativă a tuturor PBI-urilor finalizate, oricând devin \"Done\" – chiar și de mai multe ori pe zi.\n- Increment-ul trebuie să fie **utilizabil (usable)**, indiferent dacă Product Owner alege efectiv să-l lanseze în producție. Decizia de a lansa aparține Product Owner-ului și poate fi influențată de factori de business (ex. o firmă de contabilitate RO poate amâna lansarea unui modul nou de raportare până la închiderea unei luni fiscale), dar tehnic Increment-ul trebuie să fie pregătit de lansare oricând.\n- **Sprint Review nu este un gate de aprobare** pentru ca munca să devină Increment. Munca nu poate fi considerată parte a unui Increment decât dacă îndeplinește Definition of Done – aceasta se întâmplă în timpul Sprintului, nu la Review.\n\nÎn practică, la o companie care digitalizează arhiva unei instituții publice, echipa Scrum poate produce trei Increment-uri distincte în același Sprint: scanarea automată a documentelor, modulul de indexare OCR și interfața de căutare – fiecare devenind \"Done\" separat, dar toate integrându-se într-un singur produs coerent.\n\n## Definition of Done (DoD): standardul de calitate\n\n**Definition of Done** este descrierea formală a stării pe care trebuie să o îndeplinească Increment-ul pentru a respecta măsurile de calitate cerute produsului. Un Product Backlog Item este considerat finalizat și devine parte a Increment-ului **doar** dacă respectă DoD-ul. Dacă un PBI nu îndeplinește DoD-ul, el **nu este \"Done\"** – se întoarce în Product Backlog pentru a fi luat în considerare într-un Sprint viitor.\n\nCine stabilește DoD-ul?\n\n- Dacă există **standarde de dezvoltare la nivel de organizație**, toate echipele Scrum trebuie să le respecte ca minim obligatoriu.\n- Dacă nu există un asemenea standard, **Developers-ii din Scrum Team definesc o Definition of Done** adecvată produsului, împreună cu Product Owner și Scrum Master.\n- Dacă mai multe echipe Scrum lucrează împreună la același produs (situație frecventă în implementările de ERP la scară largă în RO), ele trebuie **să convină în comun** o Definition of Done unică.\n\nDoD-ul crește **transparența** – al treilea pilon Scrum, alături de inspecție și adaptare. Fără o definiție comună și explicită a lui \"gata\", Product Owner nu poate lua decizii informate la Sprint Review, iar stakeholderii nu pot avea încredere reală în progresul raportat. De asemenea, DoD-ul poate **evolua** pe parcursul vieții produsului – de exemplu, o echipă poate adăuga \"acoperire de teste automate minimum 80%\" ca o cerință nouă, pe măsură ce maturizează practicile de inginerie – dar niciodată nu poate fi **relaxat** pentru a livra mai repede, fără o discuție transparentă cu toți stakeholderii.\n\n⚠ Cea mai frecventă greșeală la echipele din România aflate la început de drum cu Scrum: reducerea Definition of Done sub presiunea unui termen-limită (\"lăsăm testele automate pe mai târziu, marcăm task-ul Done\"). Acest lucru distruge transparența artefactelor – Increment-ul raportat ca finalizat nu este de fapt utilizabil, iar Product Owner ia decizii de business pe baza unor informații false. Dacă echipa constată constant că nu poate respecta DoD-ul în timpul alocat Sprintului, soluția corectă este renegocierea scopului Sprintului sau revizuirea capacității de estimare – nu diluarea calității.\n\n## Exemplu: Sprint Backlog la o firmă care implementează e-Factura într-un ERP\nO echipă Scrum dintr-o firmă de software contabil din Cluj lucrează la un modul de generare automată a facturilor electronice compatibile SPV (Spațiul Privat Virtual). Sprint Backlog-ul lor pentru un Sprint de două săptămâni arată astfel:\n\n**Sprint Goal:** \"Clienții pot genera și transmite automat facturi conforme e-Factura direct din ERP, fără export manual.\"\n\n**PBI-uri selectate din Product Backlog:**\n- Generare XML factură în format UBL 2.1 (8 story points)\n- Semnătură electronică și transmitere către SPV prin API (5 story points)\n- Validare erori de răspuns SPV și notificare utilizator (3 story points)\n- Jurnal de audit pentru facturile transmise (2 story points)\n\n**Planul de livrare (fragment, descompus de Developers pe task-uri de maximum o zi):**\n| PBI | Task | Estimare |\n|---|---|---|\n| Generare XML | Mapare câmpuri factură → schema UBL | 6h |\n| Generare XML | Scriere teste unitare validare schemă | 4h |\n| Transmitere SPV | Implementare client API + retry logic | 8h |\n| Transmitere SPV | Testare cu mediul de test ANAF | 5h |\n\nPe parcursul Sprintului, Developers-ii descoperă că API-ul de test ANAF are limite de rată neașteptate și adaugă un task nou de \"implementare coadă de retransmitere\" – decizie luată autonom, fără a cere aprobare, exact cum prevede Scrum Guide.\n\n## Exemplu: Definition of Done pentru un modul de raportare financiară\nAceeași echipă din Cluj a stabilit, împreună cu Product Owner și Scrum Master, următoarea Definition of Done pentru toate PBI-urile din produsul lor ERP:\n\n1. Codul respectă standardele de code style ale echipei și a trecut prin code review aprobat de minimum un alt Developer.\n2. Toate testele unitare relevante sunt scrise și trec (acoperire minimă 80% pentru codul nou).\n3. Testele de integrare cu mediul de test ANAF/SPV rulează fără erori.\n4. Funcționalitatea este testată manual pe mediul de staging de către un Developer diferit de autor.\n5. Documentația tehnică (API, schema de date) este actualizată.\n6. Nu există defecte critice sau majore deschise legate de PBI.\n7. Product Owner a validat că PBI-ul respectă criteriile de acceptare stabilite la Refinement.\n\nDoar când toate cele șapte condiții sunt bifate, PBI-ul intră în Increment. Un PBI care trece testele automate dar nu are documentația actualizată **nu este Done** – rămâne în lucru sau se întoarce în Sprint Backlog pentru finalizare.\n\n## Exercițiu\nO echipă Scrum dintr-o companie care digitalizează arhiva unei primării din România a terminat, cu două zile înainte de finalul Sprintului, funcționalitatea de \"căutare full-text în documente scanate\". Codul funcționează, a fost testat manual de dezvoltator și pare gata de prezentat la Sprint Review. Nu au fost scrise însă teste automate, iar code review-ul nu a fost încă efectuat de un coleg, deși acestea sunt cerințe explicite în Definition of Done a echipei.\n\n**Cerințe:**\n1. Poate Scrum Master să declare această funcționalitate parte a Increment-ului pentru Sprint Review? Justifică pe baza Scrum Guide.\n2. Ce ar trebui să facă echipa cu acest PBI?\n3. Scrie o Definition of Done minimală (4-5 criterii) potrivită pentru un proiect de digitalizare a unei arhive publice, unde conformitatea legală a datelor scanate este critică.\n\n**Soluție:** **1.** Nu. Funcționalitatea nu îndeplinește Definition of Done stabilită de echipă (lipsesc testele automate și code review-ul), deci **nu poate fi considerată \"Done\"** și nu face parte din Increment, indiferent cât de funcțională pare la testare manuală. Transparența Scrum cere ca standardul convenit să fie respectat integral, nu parțial.\n\n**2.** PBI-ul rămâne neterminat și **se întoarce în Product Backlog** (sau, dacă mai există timp real în Sprint, Developers-ii finalizează code review-ul și testele automate înainte de sfârșitul Sprintului). Nu se prezintă la Sprint Review ca funcționalitate finalizată; poate fi arătată eventual ca lucru în desfășurare, clar marcată ca atare.\n\n**3.** Exemplu de Definition of Done pentru digitalizarea arhivei unei primării:\n- Documentul scanat trece validarea de calitate a imaginii (rezoluție minimă, lizibilitate OCR peste un prag stabilit).\n- Metadatele obligatorii (număr de înregistrare, dată, tip document) sunt extrase și validate manual de un operator.\n- Codul de procesare a trecut code review și teste automate care acoperă cazurile critice de eroare.\n- Documentul este stocat conform cerințelor de arhivare electronică și poate fi regăsit prin căutare full-text.\n- Product Owner a confirmat că eșantionul testat respectă criteriile de acceptare convenite cu instituția publică.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "sprint-backlog-compozitie",
+    "md": "## Sprint Backlog: ce conține\n\nSprint Backlog-ul este unul dintre cele trei artefacte Scrum (alături de Product Backlog și Increment) și reprezintă **planul Developers-ilor pentru Sprint**. Conform Scrum Guide 2020, Sprint Backlog-ul este compus din trei elemente inseparabile:\n\n1. **Sprint Goal** – de ce contează Sprintul (obiectivul care oferă coerență și direcție echipei).\n2. **Product Backlog Items (PBI) selectate** pentru acest Sprint – ce se va livra.\n3. **Un plan realist de livrare** a Increment-ului – cum se va face munca (de regulă descompusă în task-uri de maximum o zi).\n\nSprint Backlog-ul este **proprietatea exclusivă a Developers-ilor**. Doar ei îl pot modifica în timpul Sprintului, pe măsură ce află lucruri noi – de aceea este un plan **emergent**, nu unul fixat la Sprint Planning și înghețat până la final. Dacă o echipă la o firmă românească de retail online descoperă la mijlocul Sprintului că un task de integrare cu un curier estimat la 4 ore durează de fapt 12 ore, Developers-ii actualizează Sprint Backlog-ul – nu așteaptă aprobare de la Product Owner sau Scrum Master.\n\nSprint Backlog-ul trebuie să fie suficient de vizibil și actualizat încât progresul să poată fi discutat clar la Daily Scrum. Lipsa actualizării lui zilnice este unul dintre cele mai frecvente semne de Scrum aplicat superficial în echipele din România care adoptă framework-ul fără să înțeleagă rolul de auto-organizare al Developers-ilor.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "increment-scrum",
+    "md": "## Increment: definiție și cerințe\n\nUn **Increment** este o treaptă concretă și funcțională către Product Goal. Conform Scrum Guide 2020, fiecare Increment este **adițional** celor create anterior și este verificat temeinic, astfel încât toate Increment-urile să funcționeze împreună ca un tot unitar.\n\nCâteva precizări esențiale, adesea testate la examenul PSM I:\n\n- **Pot exista mai multe Increment-uri într-un singur Sprint.** Increment-ul nu este \"produsul livrat la finalul Sprintului\", ci suma cumulativă a tuturor PBI-urilor finalizate, oricând devin \"Done\" – chiar și de mai multe ori pe zi.\n- Increment-ul trebuie să fie **utilizabil (usable)**, indiferent dacă Product Owner alege efectiv să-l lanseze în producție. Decizia de a lansa aparține Product Owner-ului și poate fi influențată de factori de business (ex. o firmă de contabilitate RO poate amâna lansarea unui modul nou de raportare până la închiderea unei luni fiscale), dar tehnic Increment-ul trebuie să fie pregătit de lansare oricând.\n- **Sprint Review nu este un gate de aprobare** pentru ca munca să devină Increment. Munca nu poate fi considerată parte a unui Increment decât dacă îndeplinește Definition of Done – aceasta se întâmplă în timpul Sprintului, nu la Review.\n\nÎn practică, la o companie care digitalizează arhiva unei instituții publice, echipa Scrum poate produce trei Increment-uri distincte în același Sprint: scanarea automată a documentelor, modulul de indexare OCR și interfața de căutare – fiecare devenind \"Done\" separat, dar toate integrându-se într-un singur produs coerent.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "definition-of-done",
+    "md": "## Definition of Done (DoD): standardul de calitate\n\n**Definition of Done** este descrierea formală a stării pe care trebuie să o îndeplinească Increment-ul pentru a respecta măsurile de calitate cerute produsului. Un Product Backlog Item este considerat finalizat și devine parte a Increment-ului **doar** dacă respectă DoD-ul. Dacă un PBI nu îndeplinește DoD-ul, el **nu este \"Done\"** – se întoarce în Product Backlog pentru a fi luat în considerare într-un Sprint viitor.\n\nCine stabilește DoD-ul?\n\n- Dacă există **standarde de dezvoltare la nivel de organizație**, toate echipele Scrum trebuie să le respecte ca minim obligatoriu.\n- Dacă nu există un asemenea standard, **Developers-ii din Scrum Team definesc o Definition of Done** adecvată produsului, împreună cu Product Owner și Scrum Master.\n- Dacă mai multe echipe Scrum lucrează împreună la același produs (situație frecventă în implementările de ERP la scară largă în RO), ele trebuie **să convină în comun** o Definition of Done unică.\n\nDoD-ul crește **transparența** – al treilea pilon Scrum, alături de inspecție și adaptare. Fără o definiție comună și explicită a lui \"gata\", Product Owner nu poate lua decizii informate la Sprint Review, iar stakeholderii nu pot avea încredere reală în progresul raportat. De asemenea, DoD-ul poate **evolua** pe parcursul vieții produsului – de exemplu, o echipă poate adăuga \"acoperire de teste automate minimum 80%\" ca o cerință nouă, pe măsură ce maturizează practicile de inginerie – dar niciodată nu poate fi **relaxat** pentru a livra mai repede, fără o discuție transparentă cu toți stakeholderii.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b3"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală la echipele din România aflate la început de drum cu Scrum: reducerea Definition of Done sub presiunea unui termen-limită (\"lăsăm testele automate pe mai târziu, marcăm task-ul Done\"). Acest lucru distruge transparența artefactelor – Increment-ul raportat ca finalizat nu este de fapt utilizabil, iar Product Owner ia decizii de business pe baza unor informații false. Dacă echipa constată constant că nu poate respecta DoD-ul în timpul alocat Sprintului, soluția corectă este renegocierea scopului Sprintului sau revizuirea capacității de estimare – nu diluarea calității.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b4"
+   },
+   {
+    "type": "example",
+    "title": "Sprint Backlog la o firmă care implementează e-Factura într-un ERP",
+    "concept_key": "sprint-backlog-compozitie",
+    "md": "O echipă Scrum dintr-o firmă de software contabil din Cluj lucrează la un modul de generare automată a facturilor electronice compatibile SPV (Spațiul Privat Virtual). Sprint Backlog-ul lor pentru un Sprint de două săptămâni arată astfel:\n\n**Sprint Goal:** \"Clienții pot genera și transmite automat facturi conforme e-Factura direct din ERP, fără export manual.\"\n\n**PBI-uri selectate din Product Backlog:**\n- Generare XML factură în format UBL 2.1 (8 story points)\n- Semnătură electronică și transmitere către SPV prin API (5 story points)\n- Validare erori de răspuns SPV și notificare utilizator (3 story points)\n- Jurnal de audit pentru facturile transmise (2 story points)\n\n**Planul de livrare (fragment, descompus de Developers pe task-uri de maximum o zi):**\n| PBI | Task | Estimare |\n|---|---|---|\n| Generare XML | Mapare câmpuri factură → schema UBL | 6h |\n| Generare XML | Scriere teste unitare validare schemă | 4h |\n| Transmitere SPV | Implementare client API + retry logic | 8h |\n| Transmitere SPV | Testare cu mediul de test ANAF | 5h |\n\nPe parcursul Sprintului, Developers-ii descoperă că API-ul de test ANAF are limite de rată neașteptate și adaugă un task nou de \"implementare coadă de retransmitere\" – decizie luată autonom, fără a cere aprobare, exact cum prevede Scrum Guide.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b5"
+   },
+   {
+    "type": "example",
+    "title": "Definition of Done pentru un modul de raportare financiară",
+    "concept_key": "definition-of-done",
+    "md": "Aceeași echipă din Cluj a stabilit, împreună cu Product Owner și Scrum Master, următoarea Definition of Done pentru toate PBI-urile din produsul lor ERP:\n\n1. Codul respectă standardele de code style ale echipei și a trecut prin code review aprobat de minimum un alt Developer.\n2. Toate testele unitare relevante sunt scrise și trec (acoperire minimă 80% pentru codul nou).\n3. Testele de integrare cu mediul de test ANAF/SPV rulează fără erori.\n4. Funcționalitatea este testată manual pe mediul de staging de către un Developer diferit de autor.\n5. Documentația tehnică (API, schema de date) este actualizată.\n6. Nu există defecte critice sau majore deschise legate de PBI.\n7. Product Owner a validat că PBI-ul respectă criteriile de acceptare stabilite la Refinement.\n\nDoar când toate cele șapte condiții sunt bifate, PBI-ul intră în Increment. Un PBI care trece testele automate dar nu are documentația actualizată **nu este Done** – rămâne în lucru sau se întoarce în Sprint Backlog pentru finalizare.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O echipă Scrum dintr-o companie care digitalizează arhiva unei primării din România a terminat, cu două zile înainte de finalul Sprintului, funcționalitatea de \"căutare full-text în documente scanate\". Codul funcționează, a fost testat manual de dezvoltator și pare gata de prezentat la Sprint Review. Nu au fost scrise însă teste automate, iar code review-ul nu a fost încă efectuat de un coleg, deși acestea sunt cerințe explicite în Definition of Done a echipei.\n\n**Cerințe:**\n1. Poate Scrum Master să declare această funcționalitate parte a Increment-ului pentru Sprint Review? Justifică pe baza Scrum Guide.\n2. Ce ar trebui să facă echipa cu acest PBI?\n3. Scrie o Definition of Done minimală (4-5 criterii) potrivită pentru un proiect de digitalizare a unei arhive publice, unde conformitatea legală a datelor scanate este critică.",
+    "solution_md": "**1.** Nu. Funcționalitatea nu îndeplinește Definition of Done stabilită de echipă (lipsesc testele automate și code review-ul), deci **nu poate fi considerată \"Done\"** și nu face parte din Increment, indiferent cât de funcțională pare la testare manuală. Transparența Scrum cere ca standardul convenit să fie respectat integral, nu parțial.\n\n**2.** PBI-ul rămâne neterminat și **se întoarce în Product Backlog** (sau, dacă mai există timp real în Sprint, Developers-ii finalizează code review-ul și testele automate înainte de sfârșitul Sprintului). Nu se prezintă la Sprint Review ca funcționalitate finalizată; poate fi arătată eventual ca lucru în desfășurare, clar marcată ca atare.\n\n**3.** Exemplu de Definition of Done pentru digitalizarea arhivei unei primării:\n- Documentul scanat trece validarea de calitate a imaginii (rezoluție minimă, lizibilitate OCR peste un prag stabilit).\n- Metadatele obligatorii (număr de înregistrare, dată, tip document) sunt extrase și validate manual de un operator.\n- Codul de procesare a trecut code review și teste automate care acoperă cazurile critice de eroare.\n- Documentul este stocat conform cerințelor de arhivare electronică și poate fi regăsit prin căutare full-text.\n- Product Owner a confirmat că eșantionul testat respectă criteriile de acceptare convenite cu instituția publică.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cine actualizează Sprint Backlog-ul pe parcursul unui Sprint, conform Scrum Guide 2020?",
+    "choices": [
+     "Scrum Master, la cererea Product Owner-ului",
+     "Developers, pe măsură ce află lucruri noi despre munca necesară",
+     "Product Owner, împreună cu stakeholderii",
+     "Un Project Manager desemnat pentru monitorizarea progresului"
+    ],
+    "answer": 1,
+    "explain": "Sprint Backlog-ul este proprietatea Developers-ilor. Ei îl actualizează în timp real, fără a avea nevoie de aprobare, deoarece este un plan emergent care reflectă înțelegerea curentă a muncii rămase.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă cu un Product Backlog Item care nu îndeplinește Definition of Done la finalul Sprintului?",
+    "choices": [
+     "Este inclus în Increment cu o notă de excepție și remediat ulterior",
+     "Se întoarce în Product Backlog pentru a fi reconsiderat într-un Sprint viitor",
+     "Devine automat parte a Sprint Goal-ului următor",
+     "Este eliminat definitiv din Product Backlog"
+    ],
+    "answer": 1,
+    "explain": "Un PBI care nu respectă integral Definition of Done nu este \"Done\" și, prin urmare, nu face parte din Increment. El rămâne neterminat și se întoarce în Product Backlog pentru reevaluare și reprioritizare.",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din ce trei elemente este compus Sprint Backlog-ul?",
+    "back": "Sprint Goal, Product Backlog Items selectate pentru Sprint, și un plan realist de livrare a Increment-ului (descompus de regulă pe task-uri zilnice).",
+    "concept_key": "sprint-backlog-compozitie",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine deține și actualizează Sprint Backlog-ul?",
+    "back": "Exclusiv Developers-ii. Este proprietatea lor și îl modifică pe parcursul Sprintului, fără a avea nevoie de aprobare externă.",
+    "concept_key": "sprint-backlog-compozitie",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Increment, conform Scrum Guide 2020?",
+    "back": "O treaptă concretă și utilizabilă către Product Goal, adițională Increment-urilor anterioare; pot exista mai multe Increment-uri într-un singur Sprint.",
+    "concept_key": "increment-scrum",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine stabilește Definition of Done atunci când nu există un standard organizațional?",
+    "back": "Developers-ii din Scrum Team, împreună cu Product Owner și Scrum Master, definesc o Definition of Done adecvată produsului.",
+    "concept_key": "definition-of-done",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce condiție trebuie îndeplinită pentru ca un PBI să devină parte a Increment-ului?",
+    "back": "PBI-ul trebuie să respecte integral Definition of Done convenită de echipă; altfel se întoarce în Product Backlog.",
+    "concept_key": "definition-of-done",
+    "blockId": "cmjjuxvv0006tumkpupe8tuli-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1492,
+   "flashcards": 5
+  }
+ }
+}

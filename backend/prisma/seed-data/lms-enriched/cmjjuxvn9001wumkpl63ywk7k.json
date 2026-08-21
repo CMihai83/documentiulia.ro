@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvn9001wumkpl63ywk7k",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Query - Transformare Date",
+ "lesson": "Introducere Power Query",
+ "category": "EXCEL_VBA",
+ "content": "# Introducere Power Query\n\n## Ce este Power Query\n\nPower Query este motorul ETL (**Extract, Transform, Load**) integrat nativ în Excel, disponibil în Excel 365 din meniul **Date (Data) → Obținere și transformare date (Get & Transform Data)**. Rolul lui este să automatizeze cele trei etape prin care trec datele înainte să ajungă utilizabile într-un raport:\n\n1. **Extract** – te conectezi la o sursă: fișier CSV, alt registru Excel, un folder cu mai multe fișiere, o bază de date SQL Server, un tabel de pe o pagină web sau un serviciu cloud (SharePoint, Azure).\n2. **Transform** – cureți și restructurezi datele: elimini rânduri goale, schimbi tipurile de date, desparți sau combini coloane, filtrezi, agregi, unești tabele.\n3. **Load** – rezultatul final este încărcat fie ca tabel obișnuit în foaie, fie direct în Modelul de date (Power Pivot), pentru analize ulterioare.\n\nDiferența esențială față de o transformare manuală cu formule este că Power Query **înregistrează fiecare pas** ca o rețetă reproductibilă. Data viitoare când sursa se schimbă (un nou export lunar, de exemplu), execuți un singur clic pe **Reîmprospătare (Refresh)** și toți pașii se re-aplică automat, fără să retastezi nimic.\n\nPentru un contabil sau analist financiar din România, asta înseamnă că un raport lunar de vânzări sau o consolidare de balanțe din mai multe gestiuni, care altfel ar necesita ore de copy-paste și formule, devine un proces de câteva secunde, repetabil la infinit.\n\n## Interfața Power Query Editor\n\nCând deschizi o interogare (query) pentru editare, se deschide o fereastră separată, **Power Query Editor**, împărțită în patru zone principale:\n\n- **Panoul Queries (stânga)** – lista tuturor interogărilor create în registrul de lucru. Poți avea zeci de interogări, organizate pe grupuri (foldere).\n- **Zona centrală (Preview)** – un eșantion din date, în care vezi imediat efectul fiecărei transformări aplicate.\n- **Applied Steps (dreapta)** – lista cronologică a pașilor aplicați asupra sursei: „Sursă\", „Antet promovat\", „Tip modificat\", „Rânduri filtrate\" etc. Fiecare pas poate fi redenumit, editat (prin iconița de setări), reordonat prin drag-and-drop sau șters. Acesta este, practic, „istoricul\" reproductibil al transformării.\n- **Bara de formule** – afișează codul din spatele pasului selectat, scris în limbajul **M** (Power Query Formula Language). Nu trebuie să scrii M manual pentru operațiile de bază – majoritatea acțiunilor din ribbon (Home, Transform, Add Column) generează automat codul corespunzător – dar înțelegerea lui devine utilă pentru transformări avansate sau depanare.\n\nUn detaliu important: transformările din Power Query **nu modifică niciodată sursa originală** (fișierul CSV, baza de date etc.). Tot ce vezi este o copie transformată, care se recalculează de fiecare dată când dai Refresh.\n\n## Surse de date și modul de încărcare\n\nPower Query se conectează la o gamă foarte largă de surse, grupate în ribbon-ul **Date → Obținere date (Get Data)**:\n\n- **Fișiere**: Excel, CSV/text, JSON, XML, PDF.\n- **Foldere**: importă și combină automat toate fișierele dintr-un director (de exemplu, 12 fișiere lunare de vânzări, unul pe lună).\n- **Baze de date**: SQL Server, Access, Oracle, MySQL.\n- **Online/Cloud**: SharePoint, pagini web (extragere de tabele HTML), Azure, servicii OData.\n\nDupă ce definești transformările, la final apeși **Închidere și încărcare (Close & Load)**, care oferă două variante:\n\n- **Close & Load To → Table** – rezultatul devine un tabel obișnuit într-o foaie de calcul, pe care îl poți folosi direct în formule sau grafice.\n- **Close & Load To → Only Create Connection** – interogarea este salvată, dar nu se afișează în foaie; este utilă pentru interogări intermediare care alimentează alte interogări (de exemplu, un tabel de referință folosit doar pentru a fi unit/merge-uit cu altul) sau pentru a încărca direct în Modelul de date (Power Pivot), fără duplicarea datelor în foi de calcul.\n\nAlegerea corectă a modului de încărcare contează pentru performanță: dacă ai zeci de mii de rânduri și le încarci ca tabel plus în Modelul de date, dublezi inutil volumul de memorie folosit de registrul de lucru.\n\n## Exemplu: Curățarea unui export CSV de vânzări\nPresupune că primești lunar, de la un colaborator, un fișier `vanzari_iunie.csv` cu următoarea structură brută, exportată dintr-un program de gestiune:\n\n| Produs | Cantitate | Pret_unitar | Observatii |\n|---|---|---|---|\n| Laptop Dell | 3 | 3200 | |\n| laptop dell | 2 | 3200 | comanda dubla |\n| Mouse Logitech | 15 | 45 | |\n| | | | rand gol |\n| Monitor LG | 8 | 850 | |\n\nFluxul tipic în Power Query (**Date → Din text/CSV → Transform Data**) ar fi:\n\n1. **Antet promovat** (Use First Row as Headers) – dacă exportul nu are deja anteturi corecte.\n2. **Tip de date modificat** – `Cantitate` și `Pret_unitar` la Număr întreg/Zecimal, altfel Excel le poate citi ca text din cauza formatului regional.\n3. **Eliminare rânduri goale** (Remove Blank Rows) – elimină rândul complet gol.\n4. **Text în minuscule uniformizat** apoi **eliminare duplicate** (Remove Duplicates) pe coloana `Produs`, ca „Laptop Dell\" și „laptop dell\" să nu fie tratate ca produse diferite.\n5. **Coloană personalizată** (Add Column → Custom Column): `Total = [Cantitate] * [Pret_unitar]`.\n\nRezultatul final, încărcat automat ca tabel:\n\n| Produs | Cantitate | Pret_unitar | Total |\n|---|---|---|---|\n| Laptop Dell | 5 | 3200 | 16000 |\n| Mouse Logitech | 15 | 45 | 675 |\n| Monitor LG | 8 | 850 | 6800 |\n\nLuna viitoare, când primești `vanzari_iulie.csv`, schimbi doar sursa fișierului (sau, și mai bine, folosești un folder ca sursă) și apeși **Refresh** – toți cei cinci pași se reaplică automat, fără nicio muncă manuală suplimentară.\n\n## Exemplu: Combinarea automată a fișierelor dintr-un folder\nUn scenariu foarte des întâlnit în departamentele financiare este consolidarea rapoartelor lunare venite de la mai multe sucursale, fiecare într-un fișier Excel separat, toate salvate în același folder (`\\\\Server\\Rapoarte\\2026\\`).\n\nÎn loc să deschizi manual fiecare fișier și să copiezi datele, folosești **Date → Obținere date → Din folder (From Folder)**:\n\n1. Selectezi calea folderului; Power Query listează toate fișierele găsite (nume, dată modificare, cale).\n2. Apeși **Combine & Transform Data** – Power Query analizează automat structura primului fișier și generează o interogare funcție (`Transform Sample File`) aplicată apoi tuturor fișierelor.\n3. Rezultatul este un singur tabel consolidat, cu o coloană suplimentară `Source.Name` care indică din ce fișier provine fiecare rând (util pentru a identifica sucursala).\n\nDacă luna viitoare se adaugă un al 13-lea fișier în folder, nu modifici nimic în interogare – la următorul Refresh, Power Query îl detectează și îl include automat în consolidare. Acesta este exact tipul de automatizare recurentă pe care Power Query o face fundamental diferită de o soluție bazată pe copy-paste sau pe formule statice.\n\n⚠ Power Query previzualizează, în mod implicit, doar un eșantion din date (de obicei primele câteva sute de rânduri) în timpul editării. Testează întotdeauna transformările pe fișierul complet, nu doar pe eșantion – unele probleme (valori nule, formate neașteptate) apar doar mai jos în setul de date și pot bloca reîmprospătarea ulterioară.\n\n## Exercițiu\nAi un fișier `stoc.csv` cu coloanele `Cod_produs`, `Denumire`, `Stoc_curent`, `Pret_achizitie`. Cerințe:\n\n1. Importă fișierul cu **Date → Din text/CSV**.\n2. Asigură-te că `Stoc_curent` și `Pret_achizitie` au tipul de date numeric corect.\n3. Elimină rândurile în care `Stoc_curent` este 0 (produse epuizate, nu interesează raportul curent).\n4. Adaugă o coloană personalizată `Valoare_stoc = Stoc_curent * Pret_achizitie`.\n5. Încarcă rezultatul ca tabel în foaia de calcul.\n\nDescrie pașii din Applied Steps pe care i-ai folosi, în ordine.\n\n**Soluție:** Ordinea corectă a pașilor (Applied Steps):\n\n1. **Sursă** – conexiunea la `stoc.csv`, generată automat la import.\n2. **Antet promovat** – dacă prima linie conține numele coloanelor și nu au fost deja recunoscute ca atare.\n3. **Tip modificat** – click dreapta pe `Stoc_curent` și `Pret_achizitie` → Change Type → Whole Number / Decimal Number. Acest pas este obligatoriu înainte de orice filtrare sau calcul numeric, altfel Power Query poate trata valorile ca text.\n4. **Rânduri filtrate** – pe coloana `Stoc_curent`, filtrezi „is not equal to 0\" (sau „greater than 0\").\n5. **Coloană personalizată adăugată** – Add Column → Custom Column, cu formula `= [Stoc_curent] * [Pret_achizitie]`, denumită `Valoare_stoc`.\n6. **Închidere și încărcare** – Close & Load To → Table, în foaia curentă sau într-una nouă.\n\nOrdinea contează: dacă filtrezi înainte de a schimba tipul de date, filtrul „is not equal to 0\" poate compara text cu numărul 0 și să nu funcționeze corect. La fel, coloana personalizată trebuie adăugată după ce tipurile numerice sunt corecte, altfel operația de înmulțire eșuează cu o eroare de tip.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "power-query-definitie-etl",
+    "md": "## Ce este Power Query\n\nPower Query este motorul ETL (**Extract, Transform, Load**) integrat nativ în Excel, disponibil în Excel 365 din meniul **Date (Data) → Obținere și transformare date (Get & Transform Data)**. Rolul lui este să automatizeze cele trei etape prin care trec datele înainte să ajungă utilizabile într-un raport:\n\n1. **Extract** – te conectezi la o sursă: fișier CSV, alt registru Excel, un folder cu mai multe fișiere, o bază de date SQL Server, un tabel de pe o pagină web sau un serviciu cloud (SharePoint, Azure).\n2. **Transform** – cureți și restructurezi datele: elimini rânduri goale, schimbi tipurile de date, desparți sau combini coloane, filtrezi, agregi, unești tabele.\n3. **Load** – rezultatul final este încărcat fie ca tabel obișnuit în foaie, fie direct în Modelul de date (Power Pivot), pentru analize ulterioare.\n\nDiferența esențială față de o transformare manuală cu formule este că Power Query **înregistrează fiecare pas** ca o rețetă reproductibilă. Data viitoare când sursa se schimbă (un nou export lunar, de exemplu), execuți un singur clic pe **Reîmprospătare (Refresh)** și toți pașii se re-aplică automat, fără să retastezi nimic.\n\nPentru un contabil sau analist financiar din România, asta înseamnă că un raport lunar de vânzări sau o consolidare de balanțe din mai multe gestiuni, care altfel ar necesita ore de copy-paste și formule, devine un proces de câteva secunde, repetabil la infinit.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-editor-interfata",
+    "md": "## Interfața Power Query Editor\n\nCând deschizi o interogare (query) pentru editare, se deschide o fereastră separată, **Power Query Editor**, împărțită în patru zone principale:\n\n- **Panoul Queries (stânga)** – lista tuturor interogărilor create în registrul de lucru. Poți avea zeci de interogări, organizate pe grupuri (foldere).\n- **Zona centrală (Preview)** – un eșantion din date, în care vezi imediat efectul fiecărei transformări aplicate.\n- **Applied Steps (dreapta)** – lista cronologică a pașilor aplicați asupra sursei: „Sursă\", „Antet promovat\", „Tip modificat\", „Rânduri filtrate\" etc. Fiecare pas poate fi redenumit, editat (prin iconița de setări), reordonat prin drag-and-drop sau șters. Acesta este, practic, „istoricul\" reproductibil al transformării.\n- **Bara de formule** – afișează codul din spatele pasului selectat, scris în limbajul **M** (Power Query Formula Language). Nu trebuie să scrii M manual pentru operațiile de bază – majoritatea acțiunilor din ribbon (Home, Transform, Add Column) generează automat codul corespunzător – dar înțelegerea lui devine utilă pentru transformări avansate sau depanare.\n\nUn detaliu important: transformările din Power Query **nu modifică niciodată sursa originală** (fișierul CSV, baza de date etc.). Tot ce vezi este o copie transformată, care se recalculează de fiecare dată când dai Refresh.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-surse-si-incarcare",
+    "md": "## Surse de date și modul de încărcare\n\nPower Query se conectează la o gamă foarte largă de surse, grupate în ribbon-ul **Date → Obținere date (Get Data)**:\n\n- **Fișiere**: Excel, CSV/text, JSON, XML, PDF.\n- **Foldere**: importă și combină automat toate fișierele dintr-un director (de exemplu, 12 fișiere lunare de vânzări, unul pe lună).\n- **Baze de date**: SQL Server, Access, Oracle, MySQL.\n- **Online/Cloud**: SharePoint, pagini web (extragere de tabele HTML), Azure, servicii OData.\n\nDupă ce definești transformările, la final apeși **Închidere și încărcare (Close & Load)**, care oferă două variante:\n\n- **Close & Load To → Table** – rezultatul devine un tabel obișnuit într-o foaie de calcul, pe care îl poți folosi direct în formule sau grafice.\n- **Close & Load To → Only Create Connection** – interogarea este salvată, dar nu se afișează în foaie; este utilă pentru interogări intermediare care alimentează alte interogări (de exemplu, un tabel de referință folosit doar pentru a fi unit/merge-uit cu altul) sau pentru a încărca direct în Modelul de date (Power Pivot), fără duplicarea datelor în foi de calcul.\n\nAlegerea corectă a modului de încărcare contează pentru performanță: dacă ai zeci de mii de rânduri și le încarci ca tabel plus în Modelul de date, dublezi inutil volumul de memorie folosit de registrul de lucru.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b3"
+   },
+   {
+    "type": "example",
+    "title": "Curățarea unui export CSV de vânzări",
+    "concept_key": "power-query-flux-transformare",
+    "md": "Presupune că primești lunar, de la un colaborator, un fișier `vanzari_iunie.csv` cu următoarea structură brută, exportată dintr-un program de gestiune:\n\n| Produs | Cantitate | Pret_unitar | Observatii |\n|---|---|---|---|\n| Laptop Dell | 3 | 3200 | |\n| laptop dell | 2 | 3200 | comanda dubla |\n| Mouse Logitech | 15 | 45 | |\n| | | | rand gol |\n| Monitor LG | 8 | 850 | |\n\nFluxul tipic în Power Query (**Date → Din text/CSV → Transform Data**) ar fi:\n\n1. **Antet promovat** (Use First Row as Headers) – dacă exportul nu are deja anteturi corecte.\n2. **Tip de date modificat** – `Cantitate` și `Pret_unitar` la Număr întreg/Zecimal, altfel Excel le poate citi ca text din cauza formatului regional.\n3. **Eliminare rânduri goale** (Remove Blank Rows) – elimină rândul complet gol.\n4. **Text în minuscule uniformizat** apoi **eliminare duplicate** (Remove Duplicates) pe coloana `Produs`, ca „Laptop Dell\" și „laptop dell\" să nu fie tratate ca produse diferite.\n5. **Coloană personalizată** (Add Column → Custom Column): `Total = [Cantitate] * [Pret_unitar]`.\n\nRezultatul final, încărcat automat ca tabel:\n\n| Produs | Cantitate | Pret_unitar | Total |\n|---|---|---|---|\n| Laptop Dell | 5 | 3200 | 16000 |\n| Mouse Logitech | 15 | 45 | 675 |\n| Monitor LG | 8 | 850 | 6800 |\n\nLuna viitoare, când primești `vanzari_iulie.csv`, schimbi doar sursa fișierului (sau, și mai bine, folosești un folder ca sursă) și apeși **Refresh** – toți cei cinci pași se reaplică automat, fără nicio muncă manuală suplimentară.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b4"
+   },
+   {
+    "type": "example",
+    "title": "Combinarea automată a fișierelor dintr-un folder",
+    "concept_key": "power-query-surse-si-incarcare",
+    "md": "Un scenariu foarte des întâlnit în departamentele financiare este consolidarea rapoartelor lunare venite de la mai multe sucursale, fiecare într-un fișier Excel separat, toate salvate în același folder (`\\\\Server\\Rapoarte\\2026\\`).\n\nÎn loc să deschizi manual fiecare fișier și să copiezi datele, folosești **Date → Obținere date → Din folder (From Folder)**:\n\n1. Selectezi calea folderului; Power Query listează toate fișierele găsite (nume, dată modificare, cale).\n2. Apeși **Combine & Transform Data** – Power Query analizează automat structura primului fișier și generează o interogare funcție (`Transform Sample File`) aplicată apoi tuturor fișierelor.\n3. Rezultatul este un singur tabel consolidat, cu o coloană suplimentară `Source.Name` care indică din ce fișier provine fiecare rând (util pentru a identifica sucursala).\n\nDacă luna viitoare se adaugă un al 13-lea fișier în folder, nu modifici nimic în interogare – la următorul Refresh, Power Query îl detectează și îl include automat în consolidare. Acesta este exact tipul de automatizare recurentă pe care Power Query o face fundamental diferită de o soluție bazată pe copy-paste sau pe formule statice.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Power Query previzualizează, în mod implicit, doar un eșantion din date (de obicei primele câteva sute de rânduri) în timpul editării. Testează întotdeauna transformările pe fișierul complet, nu doar pe eșantion – unele probleme (valori nule, formate neașteptate) apar doar mai jos în setul de date și pot bloca reîmprospătarea ulterioară.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai un fișier `stoc.csv` cu coloanele `Cod_produs`, `Denumire`, `Stoc_curent`, `Pret_achizitie`. Cerințe:\n\n1. Importă fișierul cu **Date → Din text/CSV**.\n2. Asigură-te că `Stoc_curent` și `Pret_achizitie` au tipul de date numeric corect.\n3. Elimină rândurile în care `Stoc_curent` este 0 (produse epuizate, nu interesează raportul curent).\n4. Adaugă o coloană personalizată `Valoare_stoc = Stoc_curent * Pret_achizitie`.\n5. Încarcă rezultatul ca tabel în foaia de calcul.\n\nDescrie pașii din Applied Steps pe care i-ai folosi, în ordine.",
+    "solution_md": "Ordinea corectă a pașilor (Applied Steps):\n\n1. **Sursă** – conexiunea la `stoc.csv`, generată automat la import.\n2. **Antet promovat** – dacă prima linie conține numele coloanelor și nu au fost deja recunoscute ca atare.\n3. **Tip modificat** – click dreapta pe `Stoc_curent` și `Pret_achizitie` → Change Type → Whole Number / Decimal Number. Acest pas este obligatoriu înainte de orice filtrare sau calcul numeric, altfel Power Query poate trata valorile ca text.\n4. **Rânduri filtrate** – pe coloana `Stoc_curent`, filtrezi „is not equal to 0\" (sau „greater than 0\").\n5. **Coloană personalizată adăugată** – Add Column → Custom Column, cu formula `= [Stoc_curent] * [Pret_achizitie]`, denumită `Valoare_stoc`.\n6. **Închidere și încărcare** – Close & Load To → Table, în foaia curentă sau într-una nouă.\n\nOrdinea contează: dacă filtrezi înainte de a schimba tipul de date, filtrul „is not equal to 0\" poate compara text cu numărul 0 și să nu funcționeze corect. La fel, coloana personalizată trebuie adăugată după ce tipurile numerice sunt corecte, altfel operația de înmulțire eșuează cu o eroare de tip.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Din ce meniu al Excel 365 accesezi Power Query pentru a importa date dintr-un fișier CSV?",
+    "choices": [
+     "Formule → Bibliotecă de funcții",
+     "Date → Obținere și transformare date (Get & Transform Data)",
+     "Inserare → Tabele",
+     "Revizuire → Comentarii"
+    ],
+    "answer": 1,
+    "explain": "Power Query se accesează din tab-ul Date (Data), grupul Obținere și transformare date (Get & Transform Data), de unde alegi sursa (Din text/CSV, Din folder, Din bază de date etc.).",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă cu fișierul sursă original (de exemplu, un CSV) atunci când aplici transformări în Power Query Editor?",
+    "choices": [
+     "Este suprascris automat cu datele transformate",
+     "Rămâne neschimbat; transformările produc doar o copie afișată în Excel",
+     "Este șters după prima reîmprospătare",
+     "Este convertit permanent în format Excel"
+    ],
+    "answer": 1,
+    "explain": "Power Query nu modifică niciodată sursa originală. Toate transformările sunt pași reproductibili aplicați asupra unei copii a datelor; sursa rămâne intactă și poate fi refolosită oricând, inclusiv la Refresh.",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul ETL în contextul Power Query?",
+    "back": "Extract, Transform, Load – extragerea datelor dintr-o sursă, transformarea/curățarea lor și încărcarea rezultatului în Excel sau în Modelul de date.",
+    "concept_key": "power-query-definitie-etl",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Unde găsești Power Query în Excel 365?",
+    "back": "În tab-ul Date (Data), grupul Obținere și transformare date (Get & Transform Data).",
+    "concept_key": "power-query-definitie-etl",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce limbaj de programare stă la baza pașilor generați în Power Query Editor?",
+    "back": "Limbajul M (Power Query Formula Language), vizibil în bara de formule pentru fiecare pas selectat.",
+    "concept_key": "power-query-editor-interfata",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce folosește panoul Applied Steps din Power Query Editor?",
+    "back": "Afișează lista cronologică a tuturor transformărilor aplicate asupra datelor; pașii pot fi redenumiți, reordonați, editați sau șterși, formând o rețetă reproductibilă la fiecare Refresh.",
+    "concept_key": "power-query-editor-interfata",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre Close & Load To → Table și Close & Load To → Only Create Connection?",
+    "back": "Table încarcă rezultatul ca tabel vizibil într-o foaie de calcul; Only Create Connection salvează interogarea fără să o afișeze în foaie, utilă pentru interogări intermediare sau pentru încărcare directă în Modelul de date (Power Pivot), evitând duplicarea datelor.",
+    "concept_key": "power-query-surse-si-incarcare",
+    "blockId": "cmjjuxvn9001wumkpl63ywk7k-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1279,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
+import { SupportService } from '../support/support.service';
 import { v4 as uuidv4 } from 'uuid';
 
 interface ContactFormData {
@@ -19,6 +20,7 @@ export class PublicContactService {
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
+    private support: SupportService,
   ) {}
 
   async processContactForm(data: ContactFormData): Promise<{ referenceId: string }> {
@@ -41,6 +43,18 @@ export class PublicContactService {
       });
 
       this.logger.log(`Contact form saved: ${referenceId}`);
+
+      // REQ-049: the submission also becomes a ticket in the staff inbox, so
+      // it is operated like any other client request instead of sitting in a
+      // table nobody reads.
+      try {
+        await this.support.createForGuest({
+          name: data.name, email: data.email, company: data.company,
+          subject: data.subject, body: data.message,
+        });
+      } catch (e) {
+        this.logger.warn(`Ticket creation from contact form failed: ${(e as Error).message}`);
+      }
 
       // In production, would send email notification here
       // For now, just log it

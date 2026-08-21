@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvxw008uumkp4cujm1ds",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "People Domain",
+ "lesson": "Quiz People Domain",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Quiz People Domain (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Ce reprezintă un \"team charter\" (cartă a echipei), elaborat la începutul unui proiect de implementare ERP într-o companie SRL?",
+     "choices": [
+      "Un document care stabilește valorile, regulile de colaborare și modul de luare a deciziilor în cadrul echipei",
+      "Un plan detaliat al bugetului proiectului",
+      "Un raport financiar trimis periodic sponsorului",
+      "O listă a riscurilor tehnice ale proiectului"
+     ],
+     "answer": 0,
+     "explain": "Team charter-ul este un instrument din domeniul People (PMBOK 7) care fixează valorile echipei, normele de comunicare și procesul decizional, construind o înțelegere comună încă din faza de inițiere.",
+     "concept_key": "team_charter"
+    },
+    {
+     "q": "Conform modelului Tuckman de dezvoltare a echipei, ce etapă urmează imediat după \"storming\" (etapa conflictelor)?",
+     "choices": [
+      "Forming",
+      "Norming",
+      "Performing",
+      "Adjourning"
+     ],
+     "answer": 1,
+     "explain": "Succesiunea Tuckman este Forming – Storming – Norming – Performing – Adjourning. După conflictele din storming, echipa intră în norming, unde se stabilesc reguli și coeziune.",
+     "concept_key": "tuckman_model"
+    },
+    {
+     "q": "Doi membri ai echipei de digitalizare au o divergență privind soluția tehnică. Project managerul preferă o soluție care satisface complet interesele ambelor părți, deși necesită mai mult timp de discuție. Ce stil de gestionare a conflictului aplică?",
+     "choices": [
+      "Evitare (withdraw/avoid)",
+      "Aplanare (smooth/accommodate)",
+      "Colaborare / rezolvare de probleme (collaborate/problem solve)",
+      "Forțare (force/direct)"
+     ],
+     "answer": 2,
+     "explain": "Colaborarea (win-win) urmărește o soluție care mulțumește pe deplin toate părțile implicate; este cea mai consumatoare de timp, dar și cea mai eficientă pe termen lung dintre cele cinci stiluri de gestionare a conflictului.",
+     "concept_key": "conflict_management_styles"
+    },
+    {
+     "q": "Ce caracterizează în principal \"servant leadership\" (conducerea în slujba echipei), abordare recomandată de PMBOK 7 pentru proiecte complexe precum implementările ERP?",
+     "choices": [
+      "Managerul ia toate deciziile singur, pentru a economisi timp",
+      "Managerul se concentrează pe eliminarea obstacolelor și dezvoltarea echipei, punând nevoile acesteia pe primul loc",
+      "Managerul controlează strict fiecare sarcină a membrilor echipei",
+      "Managerul evită orice implicare în problemele echipei"
+     ],
+     "answer": 1,
+     "explain": "Servant leadership presupune ca liderul să servească echipa: elimină blocaje, facilitează dezvoltarea profesională și creează un mediu de încredere, în locul controlului centralizat sau al pasivității.",
+     "concept_key": "servant_leadership"
+    },
+    {
+     "q": "Potrivit teoriei lui Herzberg, care dintre următoarele este un factor de igienă (hygiene factor), nu un factor motivator, pentru un analist implicat într-un proiect ERP?",
+     "choices": [
+      "Recunoașterea publică a realizărilor",
+      "Oportunitatea de a prelua responsabilități noi",
+      "Salariul și condițiile de lucru",
+      "Sentimentul de realizare profesională"
+     ],
+     "answer": 2,
+     "explain": "Factorii de igienă (salariu, condiții de lucru, politici ale companiei) previn nemulțumirea dacă sunt asigurați corespunzător, dar nu motivează suplimentar; motivatorii reali sunt recunoașterea, responsabilitatea și realizarea profesională.",
+     "concept_key": "herzberg_theory"
+    },
+    {
+     "q": "Un project manager consideră că membrii echipei sale sunt intrinsec motivați, responsabili și capabili să se autoconducă atunci când li se oferă autonomie. Această presupunere corespunde cărei teorii manageriale?",
+     "choices": [
+      "Teoria X a lui McGregor",
+      "Teoria Y a lui McGregor",
+      "Ierarhia nevoilor a lui Maslow",
+      "Teoria așteptărilor (Vroom)"
+     ],
+     "answer": 1,
+     "explain": "Teoria Y presupune că angajații sunt automotivați, își asumă responsabilitatea și pot lucra eficient cu autonomie, spre deosebire de Teoria X, care presupune nevoia de control și supraveghere constantă.",
+     "concept_key": "mcgregor_xy"
+    },
+    {
+     "q": "Conform modelului liderului situațional (Hersey-Blanchard), ce stil de leadership este recomandat pentru un membru nou al echipei, cu competențe reduse dar entuziasm ridicat, la începutul unui proiect de implementare ERP?",
+     "choices": [
+      "Delegare (delegating)",
+      "Susținere (supporting)",
+      "Îndrumare directivă (directing)",
+      "Participare (participating)"
+     ],
+     "answer": 2,
+     "explain": "Pentru un membru cu competențe scăzute dar angajament ridicat (nivelul de dezvoltare D1), stilul potrivit este directing (S1): instrucțiuni clare și supervizare atentă a sarcinilor, cu comportament relațional redus.",
+     "concept_key": "situational_leadership"
+    },
+    {
+     "q": "Care este cea mai eficientă practică pentru menținerea coeziunii unei echipe virtuale, distribuite în mai multe orașe din România, într-un proiect de digitalizare?",
+     "choices": [
+      "Eliminarea totală a întâlnirilor sincrone, pentru a economisi timp",
+      "Stabilirea unor reguli clare de comunicare, folosirea instrumentelor colaborative și organizarea periodică de întâlniri video cu componentă informală",
+      "Comunicarea exclusiv prin e-mail, fără instrumente de videoconferință",
+      "Impunerea acelorași ore de lucru pentru toți membrii, indiferent de context personal"
+     ],
+     "answer": 1,
+     "explain": "Echipele virtuale eficiente combină reguli de comunicare explicite, instrumente colaborative (chat, task boards, videoconferință) și momente informale periodice, care compensează lipsa interacțiunii față-în-față și mențin coeziunea.",
+     "concept_key": "virtual_teams"
+    },
+    {
+     "q": "În negocierea principială (principled negotiation, Fisher & Ury), aplicată de un project manager în discuția cu un furnizor de licențe ERP, care este principiul central?",
+     "choices": [
+      "Concentrarea pe pozițiile declarate inițial de fiecare parte",
+      "Separarea persoanelor de problemă și concentrarea pe interesele reale ale părților, nu pe poziții",
+      "Obținerea celui mai mic preț posibil, indiferent de relația pe termen lung cu furnizorul",
+      "Evitarea oricărei discuții directe și delegarea integrală către departamentul de achiziții"
+     ],
+     "answer": 1,
+     "explain": "Negocierea principială recomandă separarea oamenilor de problemă și identificarea intereselor reale din spatele pozițiilor declarate, pentru a ajunge la soluții reciproc avantajoase, obiective și durabile.",
+     "concept_key": "principled_negotiation"
+    },
+    {
+     "q": "Într-un proiect de implementare ERP la o companie SRL din București, un membru senior al echipei tehnice a scăzut brusc în performanță, ratează termene și evită comunicarea cu restul echipei. Ce ar trebui să facă mai întâi project managerul, aplicând principiile de leadership din domeniul People?",
+     "choices": [
+      "Escaladează imediat situația către sponsor și solicită înlocuirea persoanei",
+      "Aplică o sancțiune formală conform regulamentului intern, fără discuție prealabilă",
+      "Organizează o discuție privată, folosind ascultarea activă și inteligența emoțională, pentru a înțelege cauza reală a scăderii performanței, înainte de a decide o acțiune",
+      "Ignoră problema, presupunând că se va rezolva de la sine odată cu apropierea termenului limită"
+     ],
+     "answer": 2,
+     "explain": "Domeniul People din PMBOK 7 pune accent pe inteligența emoțională și ascultarea activă: înainte de orice acțiune corectivă sau escaladare, managerul trebuie să înțeleagă cauza reală a problemei printr-o discuție individuală, respectuoasă și confidențială.",
+     "concept_key": "emotional_intelligence_root_cause"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxw0700aoumkpe1lrakoq",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Exam Preparation",
+ "lesson": "Review Simulare 1",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Review Simulare 1\n\n## Cum citești raportul Simulării 1\n\nAcum, că ai finalizat Simularea 1, cel mai important pas nu este scorul brut, ci **analiza pe domenii**. Examenul PMP este construit pe Examination Content Outline (ECO), care împarte întrebările în trei domenii de performanță:\n\n- **People (Oameni) – aproximativ 42%** din întrebări: leadership, managementul conflictelor, motivarea echipei, negociere, servant leadership.\n- **Process (Proces) – aproximativ 50%**: planificare, execuție, monitorizare și control, integrare, scop, cost, timp, riscuri, achiziții.\n- **Business Environment (Mediul de afaceri) – aproximativ 8%**: conformitate, beneficii de business, schimbare organizațională.\n\nRaportul simulării îți arată procentul de răspunsuri corecte pe fiecare domeniu, dar și pe tip de abordare (predictivă/tradițională, agilă, hibridă). Un candidat care lucrează, de exemplu, la implementarea unui sistem ERP într-o companie de distribuție din România poate avea rezultate bune la Process (pentru că lucrează zilnic cu planuri de proiect, bugete, WBS), dar scoruri slabe la People (pentru că nu a exersat scenarii de conflict sau motivare a echipei).\n\n**Regula de aur:** dacă ai sub 70% corect într-un domeniu, acela devine prioritatea ta de studiu înainte de Simularea 2. Nu are sens să repeți la infinit întrebări din domeniul unde ești deja peste 85%, pentru că randamentul marginal al timpului investit este mic. Notează-ți în acest moment, pe o foaie separată, cele trei subteme (nu domenii, ci subteme punctuale, de exemplu „calcul EVM” sau „tehnici de rezolvare a conflictelor”) unde ai greșit cel mai des – vei reveni la ele în exercițiul de mai jos.\n\n## Mentalitatea PMI (\"PMI-ism\") pentru întrebările situaționale\n\nMajoritatea greșelilor la simulări nu vin din necunoașterea unei formule, ci din alegerea răspunsului „logic din punct de vedere managerial clasic”, dar greșit din perspectiva PMI. Examenul testează un mod specific de a gândi rolul de project manager, aliniat cu PMBOK 7 și cu principiile de leadership servitor (servant leadership). Când analizezi o întrebare situațională la care ai greșit, aplică acest arbore de decizie și verifică unde te-ai abătut:\n\n1. **PM-ul acționează proactiv, nu reactiv.** Dacă o problemă poate fi anticipată, răspunsul corect e cel care o previne, nu cel care o rezolvă după ce a apărut.\n2. **Comunicarea și colaborarea au prioritate față de escaladare.** Escaladarea la sponsor sau la superior este aproape întotdeauna ultima opțiune, nu prima. PM-ul discută mai întâi direct cu persoanele implicate.\n3. **Se respectă procesele, dar cu bun-simț.** Un răspuns care „sare peste proces” pentru viteză este de obicei greșit; la fel, un răspuns rigid care ignoră contextul (de exemplu urmează planul orbește când echipa semnalează o problemă reală) este greșit.\n4. **Documentarea și lecțiile învățate contează.** Dacă două variante par corecte, alege-o pe cea care include actualizarea unui document de proiect (registru de riscuri, lecții învățate, planul de management al proiectului), nu doar acțiunea punctuală.\n\nCând revii peste întrebările greșite din Simularea 1, marchează pentru fiecare dacă greșeala a fost de tip „nu am cunoscut informația” sau „am cunoscut informația, dar am ales reflexul greșit de mentalitate”. A doua categorie se corectează prin exercițiu repetat de recunoaștere a tiparului, nu prin memorare suplimentară.\n\n## Recapitulare rapidă: formulele de Earned Value Management (EVM)\n\nÎntrebările de calcul EVM apar frecvent în domeniul Process și sunt printre cele mai des greșite, nu din cauza formulelor în sine, ci din confuzia dintre indicatori. Recapitulăm:\n\n- **PV (Planned Value)** – valoarea planificată a lucrului la un moment dat.\n- **EV (Earned Value)** – valoarea lucrului efectiv realizat, exprimată la costul planificat.\n- **AC (Actual Cost)** – costul real cheltuit.\n- **CV (Cost Variance) = EV − AC** – dacă e negativ, proiectul e peste buget.\n- **SV (Schedule Variance) = EV − PV** – dacă e negativ, proiectul e în întârziere.\n- **CPI (Cost Performance Index) = EV / AC** – sub 1 înseamnă ineficiență a costurilor.\n- **SPI (Schedule Performance Index) = EV / PV** – sub 1 înseamnă întârziere.\n- **EAC (Estimate at Completion), varianta uzuală = BAC / CPI** – costul total estimat, presupunând că performanța actuală de cost se menține.\n- **ETC (Estimate to Complete) = EAC − AC** – cât mai este de cheltuit.\n- **TCPI (To-Complete Performance Index) = (BAC − EV) / (BAC − AC)** – ce eficiență de cost trebuie atinsă pe partea rămasă a proiectului pentru a respecta bugetul inițial.\n\nCapcana tipică: mulți candidați confundă CPI cu SPI pentru că ambele au EV la numărător. Trucul de reținut: **C**PI se compară cu **C**ost (AC), **S**PI se compară cu **S**chedule/planificare (PV). Vei exersa aceste formule pe un caz complet în blocurile următoare.\n\n## Exemplu: Întrebare People – conflict în echipa de implementare ERP\n**Scenariul din Simularea 1:** Doi analiști din echipa de implementare a unui ERP la o companie de distribuție din Cluj au opinii diferite despre modul de configurare a modulului de gestiune stocuri. Conflictul afectează deja termenul de livrare al sprintului curent. Ce ar trebui să facă în primul rând project managerul?\n\n**De ce varianta „PM-ul facilitează o discuție directă între cei doi analiști, pentru a ajunge la o soluție tehnică agreată de comun acord” este corectă:** aceasta corespunde tehnicii de **colaborare/rezolvare de probleme (collaborate/problem solve)**, considerată de PMI cea mai eficientă abordare pe termen lung, pentru că adresează cauza reală a conflictului și păstrează relația de lucru dintre membrii echipei.\n\n**De ce celelalte variante sunt distractori tipici:**\n- „PM-ul decide el însuși configurația corectă și le comunică celor doi analiști” = *forcing/directing* – rezolvă rapid, dar nu construiește consens și poate genera resentimente; corect doar în situații de urgență sau conformitate legală.\n- „PM-ul le cere să facă fiecare o parte din modul, ca un compromis” = *compromising* – o soluție „lose-lose” parțială, acceptabilă temporar, dar nu cea optimă când există timp pentru o rezolvare completă.\n- „PM-ul escaladează conflictul către sponsor” = greșit, pentru că nu s-au epuizat opțiunile de rezolvare la nivelul echipei; escaladarea este ultima soluție.\n\nAcest tipar – recunoașterea tehnicii de colaborare ca răspuns implicit „corect” în absența unei urgențe explicite – se repetă în multe întrebări de conflict din domeniul People.\n\n## Exemplu: Întrebare Process – calcul EVM pentru un proiect de digitalizare\n**Scenariul din Simularea 1:** Un proiect de digitalizare a arhivei unei primării are un buget total (BAC) de **200.000 lei**. La sfârșitul lunii 6, indicatorii sunt: PV = 80.000 lei, EV = 70.000 lei, AC = 90.000 lei. Care este starea proiectului și care este costul total estimat la finalizare?\n\n**Rezolvare pas cu pas:**\n\n- CV = EV − AC = 70.000 − 90.000 = **−20.000 lei** → proiectul este peste buget.\n- SV = EV − PV = 70.000 − 80.000 = **−10.000 lei** → proiectul este în întârziere.\n- CPI = EV / AC = 70.000 / 90.000 = **0,78** → pentru fiecare leu cheltuit, proiectul produce doar 0,78 lei valoare planificată; ineficiență de cost semnificativă.\n- SPI = EV / PV = 70.000 / 80.000 = **0,875** → proiectul avansează cu 87,5% din ritmul planificat.\n- EAC = BAC / CPI = 200.000 / 0,78 ≈ **256.410 lei** → dacă tendința de cost se menține, proiectul va costa cu aproximativ 56.410 lei mai mult decât bugetul inițial.\n- ETC = EAC − AC = 256.410 − 90.000 ≈ **166.410 lei** rămași de cheltuit.\n\n**Concluzie pentru răspunsul corect:** proiectul este simultan peste buget și în întârziere (CPI < 1 și SPI < 1), deci varianta corectă din simulare este cea care recomandă o **analiză a cauzelor** (de exemplu, estimări inițiale nerealiste sau productivitate scăzută a echipei) și **actualizarea planului de management al costurilor**, nu doar „solicitarea de buget suplimentar de la sponsor”, care tratează simptomul, nu cauza.\n\n⚠ **Capcana cea mai frecventă în Simularea 1:** alegerea reflexă a răspunsului care „sună eficient administrativ” (escaladare, aprobare formală, control strict al procesului) în locul răspunsului care reflectă colaborarea și rezolvarea la sursă a problemei. A doua capcană frecventă este de calcul: la întrebările EVM, verifică întotdeauna ce indicator ți se cere explicit (CPI vs. SPI, EAC vs. ETC) înainte de a alege un răspuns – multe variante greșite sunt rezultatul corect al altui indicator decât cel cerut, plasat intenționat ca distractor.\n\n## Exercițiu\nProiectul de implementare a unui sistem ERP într-o companie de distribuție are un buget total (BAC) de **500.000 lei**. La sfârșitul lunii 4: PV = 200.000 lei, EV = 160.000 lei, AC = 220.000 lei.\n\na) Calculează CPI și SPI.\nb) Interpretează starea proiectului (buget și termen).\nc) Dintre următoarele acțiuni, care este cea mai potrivită pentru project manager: (1) cere imediat buget suplimentar sponsorului; (2) analizează împreună cu echipa cauzele abaterilor și actualizează estimările (EAC, ETC) înainte de a comunica stakeholderilor; (3) reduce scopul proiectului fără a consulta echipa; (4) continuă execuția fără nicio modificare, sperând că abaterile se corectează singure?\n\n**Soluție:** **a) Calcul:**\n- CPI = EV / AC = 160.000 / 220.000 ≈ **0,73**\n- SPI = EV / PV = 160.000 / 200.000 = **0,80**\n\n**b) Interpretare:** CPI = 0,73 < 1 înseamnă că proiectul este semnificativ peste buget (pentru fiecare leu cheltuit se obține doar 0,73 lei valoare). SPI = 0,80 < 1 înseamnă că proiectul este în întârziere, realizând doar 80% din progresul planificat. Proiectul este deci simultan peste buget și în întârziere – o situație care necesită intervenție, nu doar monitorizare pasivă.\n\n**c) Răspuns corect: varianta (2).** Aceasta reflectă mentalitatea PMI: PM-ul investighează cauza reală (estimări nerealiste, productivitate scăzută, scope creep etc.) împreună cu echipa, actualizează prognozele (EAC = BAC/CPI = 500.000/0,73 ≈ 684.930 lei) și abia apoi comunică transparent stakeholderilor, cu date concrete și eventual opțiuni de remediere. Varianta (1) este un reflex de escaladare prematură, fără informații suficiente. Varianta (3) ignoră colaborarea cu echipa și principiul transparenței. Varianta (4) este pasivă și contravine responsabilității de monitorizare și control activ a proiectului.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "eco-domenii-examen-pmp",
+    "md": "## Cum citești raportul Simulării 1\n\nAcum, că ai finalizat Simularea 1, cel mai important pas nu este scorul brut, ci **analiza pe domenii**. Examenul PMP este construit pe Examination Content Outline (ECO), care împarte întrebările în trei domenii de performanță:\n\n- **People (Oameni) – aproximativ 42%** din întrebări: leadership, managementul conflictelor, motivarea echipei, negociere, servant leadership.\n- **Process (Proces) – aproximativ 50%**: planificare, execuție, monitorizare și control, integrare, scop, cost, timp, riscuri, achiziții.\n- **Business Environment (Mediul de afaceri) – aproximativ 8%**: conformitate, beneficii de business, schimbare organizațională.\n\nRaportul simulării îți arată procentul de răspunsuri corecte pe fiecare domeniu, dar și pe tip de abordare (predictivă/tradițională, agilă, hibridă). Un candidat care lucrează, de exemplu, la implementarea unui sistem ERP într-o companie de distribuție din România poate avea rezultate bune la Process (pentru că lucrează zilnic cu planuri de proiect, bugete, WBS), dar scoruri slabe la People (pentru că nu a exersat scenarii de conflict sau motivare a echipei).\n\n**Regula de aur:** dacă ai sub 70% corect într-un domeniu, acela devine prioritatea ta de studiu înainte de Simularea 2. Nu are sens să repeți la infinit întrebări din domeniul unde ești deja peste 85%, pentru că randamentul marginal al timpului investit este mic. Notează-ți în acest moment, pe o foaie separată, cele trei subteme (nu domenii, ci subteme punctuale, de exemplu „calcul EVM” sau „tehnici de rezolvare a conflictelor”) unde ai greșit cel mai des – vei reveni la ele în exercițiul de mai jos.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "pmi-ism-judecata-situationala",
+    "md": "## Mentalitatea PMI (\"PMI-ism\") pentru întrebările situaționale\n\nMajoritatea greșelilor la simulări nu vin din necunoașterea unei formule, ci din alegerea răspunsului „logic din punct de vedere managerial clasic”, dar greșit din perspectiva PMI. Examenul testează un mod specific de a gândi rolul de project manager, aliniat cu PMBOK 7 și cu principiile de leadership servitor (servant leadership). Când analizezi o întrebare situațională la care ai greșit, aplică acest arbore de decizie și verifică unde te-ai abătut:\n\n1. **PM-ul acționează proactiv, nu reactiv.** Dacă o problemă poate fi anticipată, răspunsul corect e cel care o previne, nu cel care o rezolvă după ce a apărut.\n2. **Comunicarea și colaborarea au prioritate față de escaladare.** Escaladarea la sponsor sau la superior este aproape întotdeauna ultima opțiune, nu prima. PM-ul discută mai întâi direct cu persoanele implicate.\n3. **Se respectă procesele, dar cu bun-simț.** Un răspuns care „sare peste proces” pentru viteză este de obicei greșit; la fel, un răspuns rigid care ignoră contextul (de exemplu urmează planul orbește când echipa semnalează o problemă reală) este greșit.\n4. **Documentarea și lecțiile învățate contează.** Dacă două variante par corecte, alege-o pe cea care include actualizarea unui document de proiect (registru de riscuri, lecții învățate, planul de management al proiectului), nu doar acțiunea punctuală.\n\nCând revii peste întrebările greșite din Simularea 1, marchează pentru fiecare dacă greșeala a fost de tip „nu am cunoscut informația” sau „am cunoscut informația, dar am ales reflexul greșit de mentalitate”. A doua categorie se corectează prin exercițiu repetat de recunoaștere a tiparului, nu prin memorare suplimentară.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "formule-evm-recapitulare",
+    "md": "## Recapitulare rapidă: formulele de Earned Value Management (EVM)\n\nÎntrebările de calcul EVM apar frecvent în domeniul Process și sunt printre cele mai des greșite, nu din cauza formulelor în sine, ci din confuzia dintre indicatori. Recapitulăm:\n\n- **PV (Planned Value)** – valoarea planificată a lucrului la un moment dat.\n- **EV (Earned Value)** – valoarea lucrului efectiv realizat, exprimată la costul planificat.\n- **AC (Actual Cost)** – costul real cheltuit.\n- **CV (Cost Variance) = EV − AC** – dacă e negativ, proiectul e peste buget.\n- **SV (Schedule Variance) = EV − PV** – dacă e negativ, proiectul e în întârziere.\n- **CPI (Cost Performance Index) = EV / AC** – sub 1 înseamnă ineficiență a costurilor.\n- **SPI (Schedule Performance Index) = EV / PV** – sub 1 înseamnă întârziere.\n- **EAC (Estimate at Completion), varianta uzuală = BAC / CPI** – costul total estimat, presupunând că performanța actuală de cost se menține.\n- **ETC (Estimate to Complete) = EAC − AC** – cât mai este de cheltuit.\n- **TCPI (To-Complete Performance Index) = (BAC − EV) / (BAC − AC)** – ce eficiență de cost trebuie atinsă pe partea rămasă a proiectului pentru a respecta bugetul inițial.\n\nCapcana tipică: mulți candidați confundă CPI cu SPI pentru că ambele au EV la numărător. Trucul de reținut: **C**PI se compară cu **C**ost (AC), **S**PI se compară cu **S**chedule/planificare (PV). Vei exersa aceste formule pe un caz complet în blocurile următoare.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b3"
+   },
+   {
+    "type": "example",
+    "title": "Întrebare People – conflict în echipa de implementare ERP",
+    "concept_key": "conflict-management-tuckman",
+    "md": "**Scenariul din Simularea 1:** Doi analiști din echipa de implementare a unui ERP la o companie de distribuție din Cluj au opinii diferite despre modul de configurare a modulului de gestiune stocuri. Conflictul afectează deja termenul de livrare al sprintului curent. Ce ar trebui să facă în primul rând project managerul?\n\n**De ce varianta „PM-ul facilitează o discuție directă între cei doi analiști, pentru a ajunge la o soluție tehnică agreată de comun acord” este corectă:** aceasta corespunde tehnicii de **colaborare/rezolvare de probleme (collaborate/problem solve)**, considerată de PMI cea mai eficientă abordare pe termen lung, pentru că adresează cauza reală a conflictului și păstrează relația de lucru dintre membrii echipei.\n\n**De ce celelalte variante sunt distractori tipici:**\n- „PM-ul decide el însuși configurația corectă și le comunică celor doi analiști” = *forcing/directing* – rezolvă rapid, dar nu construiește consens și poate genera resentimente; corect doar în situații de urgență sau conformitate legală.\n- „PM-ul le cere să facă fiecare o parte din modul, ca un compromis” = *compromising* – o soluție „lose-lose” parțială, acceptabilă temporar, dar nu cea optimă când există timp pentru o rezolvare completă.\n- „PM-ul escaladează conflictul către sponsor” = greșit, pentru că nu s-au epuizat opțiunile de rezolvare la nivelul echipei; escaladarea este ultima soluție.\n\nAcest tipar – recunoașterea tehnicii de colaborare ca răspuns implicit „corect” în absența unei urgențe explicite – se repetă în multe întrebări de conflict din domeniul People.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b4"
+   },
+   {
+    "type": "example",
+    "title": "Întrebare Process – calcul EVM pentru un proiect de digitalizare",
+    "concept_key": "evm-calcul-exemplu",
+    "md": "**Scenariul din Simularea 1:** Un proiect de digitalizare a arhivei unei primării are un buget total (BAC) de **200.000 lei**. La sfârșitul lunii 6, indicatorii sunt: PV = 80.000 lei, EV = 70.000 lei, AC = 90.000 lei. Care este starea proiectului și care este costul total estimat la finalizare?\n\n**Rezolvare pas cu pas:**\n\n- CV = EV − AC = 70.000 − 90.000 = **−20.000 lei** → proiectul este peste buget.\n- SV = EV − PV = 70.000 − 80.000 = **−10.000 lei** → proiectul este în întârziere.\n- CPI = EV / AC = 70.000 / 90.000 = **0,78** → pentru fiecare leu cheltuit, proiectul produce doar 0,78 lei valoare planificată; ineficiență de cost semnificativă.\n- SPI = EV / PV = 70.000 / 80.000 = **0,875** → proiectul avansează cu 87,5% din ritmul planificat.\n- EAC = BAC / CPI = 200.000 / 0,78 ≈ **256.410 lei** → dacă tendința de cost se menține, proiectul va costa cu aproximativ 56.410 lei mai mult decât bugetul inițial.\n- ETC = EAC − AC = 256.410 − 90.000 ≈ **166.410 lei** rămași de cheltuit.\n\n**Concluzie pentru răspunsul corect:** proiectul este simultan peste buget și în întârziere (CPI < 1 și SPI < 1), deci varianta corectă din simulare este cea care recomandă o **analiză a cauzelor** (de exemplu, estimări inițiale nerealiste sau productivitate scăzută a echipei) și **actualizarea planului de management al costurilor**, nu doar „solicitarea de buget suplimentar de la sponsor”, care tratează simptomul, nu cauza.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b5"
+   },
+   {
+    "type": "warning",
+    "md": "**Capcana cea mai frecventă în Simularea 1:** alegerea reflexă a răspunsului care „sună eficient administrativ” (escaladare, aprobare formală, control strict al procesului) în locul răspunsului care reflectă colaborarea și rezolvarea la sursă a problemei. A doua capcană frecventă este de calcul: la întrebările EVM, verifică întotdeauna ce indicator ți se cere explicit (CPI vs. SPI, EAC vs. ETC) înainte de a alege un răspuns – multe variante greșite sunt rezultatul corect al altui indicator decât cel cerut, plasat intenționat ca distractor.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Proiectul de implementare a unui sistem ERP într-o companie de distribuție are un buget total (BAC) de **500.000 lei**. La sfârșitul lunii 4: PV = 200.000 lei, EV = 160.000 lei, AC = 220.000 lei.\n\na) Calculează CPI și SPI.\nb) Interpretează starea proiectului (buget și termen).\nc) Dintre următoarele acțiuni, care este cea mai potrivită pentru project manager: (1) cere imediat buget suplimentar sponsorului; (2) analizează împreună cu echipa cauzele abaterilor și actualizează estimările (EAC, ETC) înainte de a comunica stakeholderilor; (3) reduce scopul proiectului fără a consulta echipa; (4) continuă execuția fără nicio modificare, sperând că abaterile se corectează singure?",
+    "solution_md": "**a) Calcul:**\n- CPI = EV / AC = 160.000 / 220.000 ≈ **0,73**\n- SPI = EV / PV = 160.000 / 200.000 = **0,80**\n\n**b) Interpretare:** CPI = 0,73 < 1 înseamnă că proiectul este semnificativ peste buget (pentru fiecare leu cheltuit se obține doar 0,73 lei valoare). SPI = 0,80 < 1 înseamnă că proiectul este în întârziere, realizând doar 80% din progresul planificat. Proiectul este deci simultan peste buget și în întârziere – o situație care necesită intervenție, nu doar monitorizare pasivă.\n\n**c) Răspuns corect: varianta (2).** Aceasta reflectă mentalitatea PMI: PM-ul investighează cauza reală (estimări nerealiste, productivitate scăzută, scope creep etc.) împreună cu echipa, actualizează prognozele (EAC = BAC/CPI = 500.000/0,73 ≈ 684.930 lei) și abia apoi comunică transparent stakeholderilor, cu date concrete și eventual opțiuni de remediere. Varianta (1) este un reflex de escaladare prematură, fără informații suficiente. Varianta (3) ignoră colaborarea cu echipa și principiul transparenței. Varianta (4) este pasivă și contravine responsabilității de monitorizare și control activ a proiectului.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform ECO (Examination Content Outline), care este ponderea aproximativă a domeniului People în examenul PMP?",
+    "choices": [
+     "8%",
+     "25%",
+     "42%",
+     "50%"
+    ],
+    "answer": 2,
+    "explain": "Domeniul People reprezintă aproximativ 42% din întrebările examenului PMP, Process aproximativ 50%, iar Business Environment aproximativ 8%.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-o întrebare situațională la care doi membri ai echipei sunt în conflict tehnic, fără urgență sau risc de conformitate, care este de regulă răspunsul preferat de PMI?",
+    "choices": [
+     "PM-ul escaladează imediat conflictul la sponsor",
+     "PM-ul decide singur soluția tehnică și o impune",
+     "PM-ul facilitează o discuție de colaborare între cei doi pentru o soluție agreată",
+     "PM-ul ignoră conflictul, sperând că se rezolvă de la sine"
+    ],
+    "answer": 2,
+    "explain": "Tehnica de colaborare/rezolvare de probleme (collaborate/problem solve) este preferată de PMI ca abordare implicită, pentru că adresează cauza reală și menține relația de lucru; escaladarea este ultima opțiune, iar impunerea unilaterală se folosește doar în urgențe.",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei domenii ECO ale examenului PMP și ponderile lor aproximative?",
+    "back": "People ≈ 42%, Process ≈ 50%, Business Environment ≈ 8%.",
+    "concept_key": "eco-domenii-examen-pmp",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula CPI (Cost Performance Index)?",
+    "back": "CPI = EV / AC. Sub 1 = proiect peste buget (ineficiență de cost).",
+    "concept_key": "formule-evm-recapitulare",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula SPI (Schedule Performance Index)?",
+    "back": "SPI = EV / PV. Sub 1 = proiect în întârziere față de plan.",
+    "concept_key": "formule-evm-recapitulare",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula uzuală pentru EAC (Estimate at Completion)?",
+    "back": "EAC = BAC / CPI, presupunând că performanța actuală de cost se menține până la finalul proiectului.",
+    "concept_key": "formule-evm-recapitulare",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este \"PMI-ism\" în contextul întrebărilor situaționale de la examenul PMP?",
+    "back": "Mentalitatea de leadership servitor promovată de PMI: PM-ul acționează proactiv, privilegiază comunicarea și colaborarea față de escaladare, respectă procesele cu bun-simț și documentează lecțiile învățate.",
+    "concept_key": "pmi-ism-judecata-situationala",
+    "blockId": "cmjjuxw0700aoumkpe1lrakoq-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1523,
+   "flashcards": 5
+  }
+ }
+}

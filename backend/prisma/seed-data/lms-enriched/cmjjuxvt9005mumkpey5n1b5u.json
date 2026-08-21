@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvt9005mumkpey5n1b5u",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Execuție și Control",
+ "lesson": "Gestionarea echipei",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Gestionarea echipei\n\n## Etapele dezvoltării echipei: modelul Tuckman\n\nCând formezi o echipă nouă de proiect, nu te aștepta ca performanța maximă să apară din prima săptămână. Psihologul Bruce Tuckman a descris, încă din 1965, un tipar previzibil prin care trec majoritatea echipelor, valabil și astăzi pentru proiecte de tip implementare ERP, digitalizare sau orice inițiativă cu o echipă nou formată. Modelul are patru etape principale, plus una finală, adăugată ulterior:\n\n1. **Forming (Formare)** – membrii se cunosc, sunt politicoși, dar rezervați. Așteaptă direcție clară de la project manager. Productivitatea e scăzută, entuziasmul e ridicat.\n2. **Storming (Conflict)** – apar primele tensiuni: dispute despre roluri, metode de lucru, priorități. E etapa cea mai dificilă, dar și esențială – fără ea echipa nu ajunge la coeziune reală.\n3. **Norming (Normare)** – echipa stabilește reguli nescrise, moduri comune de comunicare, încredere reciprocă. Conflictele scad, colaborarea crește.\n4. **Performing (Performanță)** – echipa funcționează autonom, ia decizii eficient, PM-ul poate delega mult mai mult.\n5. **Adjourning (Încheiere)** – la finalul proiectului, echipa se dizolvă; e important să marchezi reușitele și să faciliezi tranziția membrilor spre alte proiecte.\n\nRolul tău ca PM diferă radical de la o etapă la alta: în Forming ești directiv (oferi structură, obiective clare), în Storming ești mediator (faciliezi discuții, clarifici roluri prin documente precum matricea RACI), în Norming devii facilitator, iar în Performing – mai degrabă un susținător care înlătură obstacole. Confuzia frecventă a PM-ilor începători este să trateze Storming ca pe un eșec de leadership; de fapt, e o etapă normală, iar evitarea ei artificială (prin suprimarea discuțiilor) duce la conflicte latente care reapar mai târziu, cu efect mai mare asupra livrabilelor.\n\n## Motivarea echipei de proiect\n\nMotivarea nu înseamnă doar bonusuri financiare. Frederick Herzberg a distins între **factori igienici** (salariu, condiții de lucru, stabilitate) – a căror absență generează nemulțumire, dar a căror prezență nu generează automat motivație – și **factori motivatori** (recunoaștere, responsabilitate, dezvoltare profesională, sens al muncii) – care chiar cresc implicarea.\n\nPentru un PM, aplicarea practică înseamnă:\n\n- **Claritate privind scopul** – membrii echipei trebuie să înțeleagă de ce contează sarcina lor pentru proiect, nu doar ce au de făcut.\n- **Autonomie proporțională cu experiența** – cu cât cineva e mai senior, cu atât ai mai puțin de controlat pas cu pas.\n- **Recunoaștere vizibilă și promptă** – un simplu „mulțumesc, treaba ta de la modulul de facturare a scurtat testarea cu două zile” într-un stand-up are efect mai mare decât o evaluare anuală generică.\n- **Feedback constant, nu doar la finalul sprintului** – corectează din mers, nu aștepta retrospectiva.\n- **Eliminarea blocajelor** – una dintre cele mai motivante acțiuni ale unui PM e să înlăture rapid obstacolele (acces la sisteme, aprobări întârziate, dependențe neclare).\n\nDiferite persoane răspund la stimuli diferiți: unii sunt motivați de provocări tehnice, alții de vizibilitate în organizație, alții de echilibrul viață-muncă. Un PM eficient discută individual cu fiecare membru, nu presupune că toată echipa reacționează identic la aceleași măsuri.\n\n## Gestionarea conflictelor în echipă\n\nConflictul apare inevitabil, mai ales în etapa de Storming, și nu e neapărat un semn negativ – poate genera soluții mai bune dacă e gestionat constructiv. Modelul Thomas-Kilmann descrie cinci stiluri de abordare a conflictului, în funcție de doi factori: asertivitate (cât de mult îți impui interesul) și cooperare (cât de mult ții cont de interesul celuilalt):\n\n- **Competiție** – îți impui poziția; util în decizii urgente, dar erodează relația dacă e folosit des.\n- **Acomodare** – cedezi pentru a păstra relația; util când subiectul contează mai mult pentru celălalt.\n- **Evitare** – amâni sau ignori conflictul; potrivit doar pentru subiecte minore, riscant pe termen lung.\n- **Compromis** – fiecare parte cedează parțial; rapid, dar uneori lasă ambele părți nesatisfăcute.\n- **Colaborare** – se caută o soluție care satisface ambele părți; consumă mai mult timp, dar produce soluții durabile și e recomandată pentru conflictele importante din echipă.\n\nUn proces simplu de gestionare a conflictului, aplicabil în majoritatea proiectelor:\n\n1. Discută cu fiecare parte individual, înainte de întâlnirea comună.\n2. Separă persoana de problemă – concentrează discuția pe fapte și interese, nu pe acuzații.\n3. Facilitează o discuție comună, cu reguli clare (fiecare vorbește fără întrerupere).\n4. Caută soluții care rezolvă cauza, nu doar simptomul.\n5. Documentează decizia și urmărește aplicarea ei.\n\nEscaladarea către sponsor sau management ar trebui să fie ultima opțiune, folosită doar când conflictul afectează livrabilele și părțile nu ajung la o înțelegere.\n\n## Delegarea eficientă\n\nDelegarea nu înseamnă „a da de lucru”, ci a transfera atât sarcina, cât și autoritatea necesară pentru a o duce la bun sfârșit. Mulți PM începători fac una din două greșeli: nu deleagă deloc (devin blocaj pentru echipă) sau deleagă fără să ofere context și autoritate, ceea ce duce la rezultate slabe și la neîncredere reciprocă.\n\nUn model util este scala nivelurilor de delegare, de la control ridicat la autonomie completă:\n\n1. **Fă exact ce îți spun** – pentru sarcini critice sau persoane noi în echipă.\n2. **Cercetează și raportează-mi, eu decid** – pentru situații cu risc mediu.\n3. **Recomandă o soluție, decidem împreună** – nivel de colaborare.\n4. **Decide și informează-mă** – potrivit pentru membri experimentați.\n5. **Decide singur** – autonomie completă, pentru sarcini de rutină sau experți în domeniul lor.\n\nCând delegi o sarcină, folosește criterii clare: ce trebuie livrat, până când, ce resurse sunt disponibile, care sunt limitele deciziei și cum va fi verificat rezultatul. Evită micromanagementul – dacă ai delegat nivelul 4, nu cere actualizări zilnice, ci stabilește puncte de control rezonabile (de exemplu, la finalul fiecărei săptămâni).\n\nDelegarea corectă are un beneficiu dublu: te eliberează timp pentru activități strategice (planificare, gestionarea riscurilor, comunicare cu stakeholderii) și dezvoltă competențele echipei, crescând maturitatea acesteia spre etapa Performing din modelul Tuckman.\n\n## Exemplu: Etapele Tuckman într-un proiect de implementare ERP\nO firmă de distribuție din Cluj, cu 80 de angajați, formează o echipă mixtă (IT intern + consultanți externi) pentru implementarea unui sistem ERP.\n\n**Săptămâna 1 (Forming):** membrii se prezintă, PM-ul stabilește obiective și un calendar clar; toți sunt cooperanți, dar așteaptă instrucțiuni.\n\n**Săptămâna 3 (Storming):** consultanții externi propun un flux standard de facturare, echipa internă de contabilitate consideră că nu respectă particularitățile firmei; apar tensiuni în ședințe, unii membri devin defensivi. PM-ul organizează o sesiune dedicată, clarifică rolurile printr-o matrice RACI pe modulul de facturare și mediază o discuție structurată, alegând colaborarea în locul unui compromis rapid.\n\n**Săptămâna 6 (Norming):** echipa stabilește un ritual de sincronizare zilnică de 15 minute, iar deciziile tehnice se iau prin consens documentat.\n\n**Săptămâna 10 (Performing):** echipa livrează module de test fără supervizare constantă a PM-ului, care se concentrează acum pe managementul riscurilor și comunicarea cu conducerea.\n\n**La finalul proiectului (Adjourning):** PM-ul organizează o sesiune de lecții învățate și mulțumește public fiecărui membru pentru contribuția specifică.\n\n## Exemplu: Rezolvarea unui conflict între doi membri ai echipei\nÎntr-un proiect de digitalizare a arhivei unei companii de asigurări, doi specialiști – un analist de business și un dezvoltator – intră în conflict privind prioritatea sarcinilor: analistul cere modificări urgente la interfață, dezvoltatorul consideră că acestea afectează termenul pentru integrarea cu sistemul de plăți.\n\nDiscuțiile în ședințe devin tensionate, iar restul echipei observă atmosfera încordată. PM-ul discută individual cu fiecare, aflând că analistul e presat de un stakeholder extern, iar dezvoltatorul se teme să nu rateze un termen deja comunicat clientului.\n\nÎn ședința comună, PM-ul reformulează problema ca interes comun („cum livrăm ambele cerințe fără să compromitem termenul”), nu ca dispută de poziții. Folosind stilul de colaborare, cei trei stabilesc împreună o secvențiere: modificările de interfață se fac în paralel, cu un buffer de o zi preluat din rezerva de contingență a proiectului. Conflictul este documentat în registrul de riscuri, iar relația de lucru dintre cei doi rămâne funcțională.\n\n⚠ Nu confunda gestionarea conflictelor cu evitarea lor. Un PM care amână sistematic discuțiile dificile „ca să păstreze liniștea” lasă tensiunile să se acumuleze; ele reapar, de regulă, la un moment mai puțin convenabil (aproape de un termen critic) și cu impact mai mare asupra echipei și livrabilelor.\n\n## Exercițiu\nEști desemnat project manager pentru un proiect de digitalizare a proceselor de resurse umane într-o companie cu 150 de angajați. Echipa e formată din 5 persoane care nu au mai lucrat împreună: 2 din HR, 2 din IT și un consultant extern.\n\nLa a doua ședință de lucru, consultantul extern propune o soluție software pe care doi membri din IT o resping vehement, susținând că nu se integrează cu sistemele existente; discuția devine tensionată, iar unul dintre colegii din HR rămâne tăcut tot restul ședinței.\n\na) În ce etapă a modelului Tuckman se află echipa?\nb) Ce stil de rezolvare a conflictului din modelul Thomas-Kilmann recomanzi pentru disputa dintre IT și consultant?\nc) Ce acțiune concretă poți lua pentru colegul din HR care a rămas tăcut?\n\n**Soluție:** a) **Storming** – apar tensiuni legate de alegerea soluției tehnice și de metodele de lucru; e o etapă normală de maturizare a echipei, nu un eșec de leadership.\n\nb) **Colaborare** – alegerea soluției tehnice e importantă pentru livrabil, deci merită timpul necesar pentru o soluție care satisface ambele părți: de exemplu, o sesiune tehnică dedicată de evaluare a integrării, cu criterii obiective stabilite în avans (compatibilitate API, cost de mentenanță, timp de implementare), nu o decizie impusă de o singură parte.\n\nc) O discuție individuală, în afara ședinței, cu colegul din HR, pentru a înțelege dacă tăcerea vine dintr-un dezacord nerostit, din lipsă de confort în situații de conflict deschis sau din altă cauză. PM-ul poate stabili un canal alternativ de exprimare a opiniei (de exemplu, feedback scris trimis înainte de ședințele importante) și poate reafirma, în ședința comună, că toate perspectivele sunt binevenite.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "model-tuckman-etape-echipa",
+    "md": "## Etapele dezvoltării echipei: modelul Tuckman\n\nCând formezi o echipă nouă de proiect, nu te aștepta ca performanța maximă să apară din prima săptămână. Psihologul Bruce Tuckman a descris, încă din 1965, un tipar previzibil prin care trec majoritatea echipelor, valabil și astăzi pentru proiecte de tip implementare ERP, digitalizare sau orice inițiativă cu o echipă nou formată. Modelul are patru etape principale, plus una finală, adăugată ulterior:\n\n1. **Forming (Formare)** – membrii se cunosc, sunt politicoși, dar rezervați. Așteaptă direcție clară de la project manager. Productivitatea e scăzută, entuziasmul e ridicat.\n2. **Storming (Conflict)** – apar primele tensiuni: dispute despre roluri, metode de lucru, priorități. E etapa cea mai dificilă, dar și esențială – fără ea echipa nu ajunge la coeziune reală.\n3. **Norming (Normare)** – echipa stabilește reguli nescrise, moduri comune de comunicare, încredere reciprocă. Conflictele scad, colaborarea crește.\n4. **Performing (Performanță)** – echipa funcționează autonom, ia decizii eficient, PM-ul poate delega mult mai mult.\n5. **Adjourning (Încheiere)** – la finalul proiectului, echipa se dizolvă; e important să marchezi reușitele și să faciliezi tranziția membrilor spre alte proiecte.\n\nRolul tău ca PM diferă radical de la o etapă la alta: în Forming ești directiv (oferi structură, obiective clare), în Storming ești mediator (faciliezi discuții, clarifici roluri prin documente precum matricea RACI), în Norming devii facilitator, iar în Performing – mai degrabă un susținător care înlătură obstacole. Confuzia frecventă a PM-ilor începători este să trateze Storming ca pe un eșec de leadership; de fapt, e o etapă normală, iar evitarea ei artificială (prin suprimarea discuțiilor) duce la conflicte latente care reapar mai târziu, cu efect mai mare asupra livrabilelor.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "motivarea-echipei-proiect",
+    "md": "## Motivarea echipei de proiect\n\nMotivarea nu înseamnă doar bonusuri financiare. Frederick Herzberg a distins între **factori igienici** (salariu, condiții de lucru, stabilitate) – a căror absență generează nemulțumire, dar a căror prezență nu generează automat motivație – și **factori motivatori** (recunoaștere, responsabilitate, dezvoltare profesională, sens al muncii) – care chiar cresc implicarea.\n\nPentru un PM, aplicarea practică înseamnă:\n\n- **Claritate privind scopul** – membrii echipei trebuie să înțeleagă de ce contează sarcina lor pentru proiect, nu doar ce au de făcut.\n- **Autonomie proporțională cu experiența** – cu cât cineva e mai senior, cu atât ai mai puțin de controlat pas cu pas.\n- **Recunoaștere vizibilă și promptă** – un simplu „mulțumesc, treaba ta de la modulul de facturare a scurtat testarea cu două zile” într-un stand-up are efect mai mare decât o evaluare anuală generică.\n- **Feedback constant, nu doar la finalul sprintului** – corectează din mers, nu aștepta retrospectiva.\n- **Eliminarea blocajelor** – una dintre cele mai motivante acțiuni ale unui PM e să înlăture rapid obstacolele (acces la sisteme, aprobări întârziate, dependențe neclare).\n\nDiferite persoane răspund la stimuli diferiți: unii sunt motivați de provocări tehnice, alții de vizibilitate în organizație, alții de echilibrul viață-muncă. Un PM eficient discută individual cu fiecare membru, nu presupune că toată echipa reacționează identic la aceleași măsuri.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "gestionarea-conflictelor-echipa",
+    "md": "## Gestionarea conflictelor în echipă\n\nConflictul apare inevitabil, mai ales în etapa de Storming, și nu e neapărat un semn negativ – poate genera soluții mai bune dacă e gestionat constructiv. Modelul Thomas-Kilmann descrie cinci stiluri de abordare a conflictului, în funcție de doi factori: asertivitate (cât de mult îți impui interesul) și cooperare (cât de mult ții cont de interesul celuilalt):\n\n- **Competiție** – îți impui poziția; util în decizii urgente, dar erodează relația dacă e folosit des.\n- **Acomodare** – cedezi pentru a păstra relația; util când subiectul contează mai mult pentru celălalt.\n- **Evitare** – amâni sau ignori conflictul; potrivit doar pentru subiecte minore, riscant pe termen lung.\n- **Compromis** – fiecare parte cedează parțial; rapid, dar uneori lasă ambele părți nesatisfăcute.\n- **Colaborare** – se caută o soluție care satisface ambele părți; consumă mai mult timp, dar produce soluții durabile și e recomandată pentru conflictele importante din echipă.\n\nUn proces simplu de gestionare a conflictului, aplicabil în majoritatea proiectelor:\n\n1. Discută cu fiecare parte individual, înainte de întâlnirea comună.\n2. Separă persoana de problemă – concentrează discuția pe fapte și interese, nu pe acuzații.\n3. Facilitează o discuție comună, cu reguli clare (fiecare vorbește fără întrerupere).\n4. Caută soluții care rezolvă cauza, nu doar simptomul.\n5. Documentează decizia și urmărește aplicarea ei.\n\nEscaladarea către sponsor sau management ar trebui să fie ultima opțiune, folosită doar când conflictul afectează livrabilele și părțile nu ajung la o înțelegere.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "delegare-eficienta-pm",
+    "md": "## Delegarea eficientă\n\nDelegarea nu înseamnă „a da de lucru”, ci a transfera atât sarcina, cât și autoritatea necesară pentru a o duce la bun sfârșit. Mulți PM începători fac una din două greșeli: nu deleagă deloc (devin blocaj pentru echipă) sau deleagă fără să ofere context și autoritate, ceea ce duce la rezultate slabe și la neîncredere reciprocă.\n\nUn model util este scala nivelurilor de delegare, de la control ridicat la autonomie completă:\n\n1. **Fă exact ce îți spun** – pentru sarcini critice sau persoane noi în echipă.\n2. **Cercetează și raportează-mi, eu decid** – pentru situații cu risc mediu.\n3. **Recomandă o soluție, decidem împreună** – nivel de colaborare.\n4. **Decide și informează-mă** – potrivit pentru membri experimentați.\n5. **Decide singur** – autonomie completă, pentru sarcini de rutină sau experți în domeniul lor.\n\nCând delegi o sarcină, folosește criterii clare: ce trebuie livrat, până când, ce resurse sunt disponibile, care sunt limitele deciziei și cum va fi verificat rezultatul. Evită micromanagementul – dacă ai delegat nivelul 4, nu cere actualizări zilnice, ci stabilește puncte de control rezonabile (de exemplu, la finalul fiecărei săptămâni).\n\nDelegarea corectă are un beneficiu dublu: te eliberează timp pentru activități strategice (planificare, gestionarea riscurilor, comunicare cu stakeholderii) și dezvoltă competențele echipei, crescând maturitatea acesteia spre etapa Performing din modelul Tuckman.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b4"
+   },
+   {
+    "type": "example",
+    "title": "Etapele Tuckman într-un proiect de implementare ERP",
+    "concept_key": "model-tuckman-etape-echipa",
+    "md": "O firmă de distribuție din Cluj, cu 80 de angajați, formează o echipă mixtă (IT intern + consultanți externi) pentru implementarea unui sistem ERP.\n\n**Săptămâna 1 (Forming):** membrii se prezintă, PM-ul stabilește obiective și un calendar clar; toți sunt cooperanți, dar așteaptă instrucțiuni.\n\n**Săptămâna 3 (Storming):** consultanții externi propun un flux standard de facturare, echipa internă de contabilitate consideră că nu respectă particularitățile firmei; apar tensiuni în ședințe, unii membri devin defensivi. PM-ul organizează o sesiune dedicată, clarifică rolurile printr-o matrice RACI pe modulul de facturare și mediază o discuție structurată, alegând colaborarea în locul unui compromis rapid.\n\n**Săptămâna 6 (Norming):** echipa stabilește un ritual de sincronizare zilnică de 15 minute, iar deciziile tehnice se iau prin consens documentat.\n\n**Săptămâna 10 (Performing):** echipa livrează module de test fără supervizare constantă a PM-ului, care se concentrează acum pe managementul riscurilor și comunicarea cu conducerea.\n\n**La finalul proiectului (Adjourning):** PM-ul organizează o sesiune de lecții învățate și mulțumește public fiecărui membru pentru contribuția specifică.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b5"
+   },
+   {
+    "type": "example",
+    "title": "Rezolvarea unui conflict între doi membri ai echipei",
+    "concept_key": "gestionarea-conflictelor-echipa",
+    "md": "Într-un proiect de digitalizare a arhivei unei companii de asigurări, doi specialiști – un analist de business și un dezvoltator – intră în conflict privind prioritatea sarcinilor: analistul cere modificări urgente la interfață, dezvoltatorul consideră că acestea afectează termenul pentru integrarea cu sistemul de plăți.\n\nDiscuțiile în ședințe devin tensionate, iar restul echipei observă atmosfera încordată. PM-ul discută individual cu fiecare, aflând că analistul e presat de un stakeholder extern, iar dezvoltatorul se teme să nu rateze un termen deja comunicat clientului.\n\nÎn ședința comună, PM-ul reformulează problema ca interes comun („cum livrăm ambele cerințe fără să compromitem termenul”), nu ca dispută de poziții. Folosind stilul de colaborare, cei trei stabilesc împreună o secvențiere: modificările de interfață se fac în paralel, cu un buffer de o zi preluat din rezerva de contingență a proiectului. Conflictul este documentat în registrul de riscuri, iar relația de lucru dintre cei doi rămâne funcțională.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda gestionarea conflictelor cu evitarea lor. Un PM care amână sistematic discuțiile dificile „ca să păstreze liniștea” lasă tensiunile să se acumuleze; ele reapar, de regulă, la un moment mai puțin convenabil (aproape de un termen critic) și cu impact mai mare asupra echipei și livrabilelor.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești desemnat project manager pentru un proiect de digitalizare a proceselor de resurse umane într-o companie cu 150 de angajați. Echipa e formată din 5 persoane care nu au mai lucrat împreună: 2 din HR, 2 din IT și un consultant extern.\n\nLa a doua ședință de lucru, consultantul extern propune o soluție software pe care doi membri din IT o resping vehement, susținând că nu se integrează cu sistemele existente; discuția devine tensionată, iar unul dintre colegii din HR rămâne tăcut tot restul ședinței.\n\na) În ce etapă a modelului Tuckman se află echipa?\nb) Ce stil de rezolvare a conflictului din modelul Thomas-Kilmann recomanzi pentru disputa dintre IT și consultant?\nc) Ce acțiune concretă poți lua pentru colegul din HR care a rămas tăcut?",
+    "solution_md": "a) **Storming** – apar tensiuni legate de alegerea soluției tehnice și de metodele de lucru; e o etapă normală de maturizare a echipei, nu un eșec de leadership.\n\nb) **Colaborare** – alegerea soluției tehnice e importantă pentru livrabil, deci merită timpul necesar pentru o soluție care satisface ambele părți: de exemplu, o sesiune tehnică dedicată de evaluare a integrării, cu criterii obiective stabilite în avans (compatibilitate API, cost de mentenanță, timp de implementare), nu o decizie impusă de o singură parte.\n\nc) O discuție individuală, în afara ședinței, cu colegul din HR, pentru a înțelege dacă tăcerea vine dintr-un dezacord nerostit, din lipsă de confort în situații de conflict deschis sau din altă cauză. PM-ul poate stabili un canal alternativ de exprimare a opiniei (de exemplu, feedback scris trimis înainte de ședințele importante) și poate reafirma, în ședința comună, că toate perspectivele sunt binevenite.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un proiect nou, echipa începe să aibă dispute legate de roluri și metode de lucru, după o perioadă inițială de cooperare politicoasă. Conform modelului Tuckman, în ce etapă se află echipa?",
+    "choices": [
+     "Forming",
+     "Storming",
+     "Norming",
+     "Performing"
+    ],
+    "answer": 1,
+    "explain": "Storming este etapa marcată de conflicte legate de roluri, priorități și metode de lucru; este o etapă normală și necesară pentru maturizarea echipei.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform teoriei lui Herzberg, care dintre următorii este un factor motivator (nu doar igienic)?",
+    "choices": [
+     "Salariul competitiv",
+     "Recunoașterea publică a contribuției",
+     "Stabilitatea locului de muncă",
+     "Condițiile de birou"
+    ],
+    "answer": 1,
+    "explain": "Factorii igienici (salariu, stabilitate, condiții) previn nemulțumirea, dar nu cresc motivația; recunoașterea, responsabilitatea și dezvoltarea profesională sunt factori motivatori reali, conform lui Herzberg.",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 etape ale modelului Tuckman pentru dezvoltarea echipei?",
+    "back": "Forming, Storming, Norming, Performing, Adjourning.",
+    "concept_key": "model-tuckman-etape-echipa",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce caracterizează etapa Storming în modelul Tuckman?",
+    "back": "Apariția conflictelor legate de roluri, priorități și metode de lucru; este o etapă normală și necesară pentru maturizarea echipei.",
+    "concept_key": "model-tuckman-etape-echipa",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență face Herzberg între factori igienici și factori motivatori?",
+    "back": "Factorii igienici (salariu, condiții de lucru) previn nemulțumirea; factorii motivatori (recunoaștere, autonomie, dezvoltare) cresc efectiv implicarea.",
+    "concept_key": "motivarea-echipei-proiect",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 stiluri de rezolvare a conflictelor din modelul Thomas-Kilmann?",
+    "back": "Competiție, acomodare, evitare, compromis, colaborare.",
+    "concept_key": "gestionarea-conflictelor-echipa",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce stil de rezolvare a conflictelor produce soluții durabile, dar consumă mai mult timp?",
+    "back": "Colaborarea – se caută o soluție care satisface interesele ambelor părți implicate în conflict.",
+    "concept_key": "gestionarea-conflictelor-echipa",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă delegarea eficientă, dincolo de a da de lucru cuiva?",
+    "back": "Transferul sarcinii împreună cu autoritatea necesară pentru a o duce la bun sfârșit, potrivit nivelului de experiență al persoanei.",
+    "concept_key": "delegare-eficienta-pm",
+    "blockId": "cmjjuxvt9005mumkpey5n1b5u-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1544,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxvyp009eumkpk8tbg249",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Predictive",
+ "lesson": "Procurement Management",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Procurement Management\n\n## Procurement Management în abordarea predictivă\n\nÎn PMBOK 7 și în ECO (Examination Content Outline), Procurement Management rămâne unul dintre domeniile tehnice esențiale pentru proiectele predictive (waterfall). Practic, orice proiect de anvergură — de la implementarea unui ERP la o companie de distribuție, până la un proiect de digitalizare a fluxurilor financiare — depinde de resurse externe: licențe software, consultanță, hardware, servicii de integrare. Managementul achizițiilor de proiect este procesul prin care organizația cumpără sau obține produse, servicii ori rezultate de la furnizori externi echipei de proiect.\n\nProcesul are trei etape principale:\n\n1. **Plan Procurement Management** — se decide *ce* se cumpără, *cum* și *de la cine*. Aici se face **analiza make-or-buy** (a face intern vs. a cumpăra extern), comparând costul intern (ore de dezvoltare, întreținere) cu prețul unei soluții externe. Rezultă documentul de achiziție (procurement statement of work), criteriile de selecție și tipul de contract.\n2. **Conduct Procurements** — se obțin ofertele de la furnizori (prin RFP – Request for Proposal, RFQ – Request for Quotation sau IFB – Invitation for Bid), se evaluează conform criteriilor stabilite și se selectează furnizorul câștigător, finalizându-se contractul.\n3. **Control Procurements** — se gestionează relația contractuală pe parcursul execuției: se monitorizează performanța furnizorului, se administrează modificările contractuale (change control), se rezolvă eventualele **claims** (reclamații/pretenții contractuale) și se închide contractul la finalul livrării.\n\nPentru o firmă românească, de exemplu o SRL din retail care implementează un sistem ERP, aceste trei procese se traduc concret: se decide dacă modulul de gestiune stocuri se dezvoltă intern sau se cumpără de la un integrator SAP/Oracle local (Plan), se lansează RFP către 3-4 integratori și se semnează contractul cu câștigătorul (Conduct), apoi se urmăresc livrabilele, facturile parțiale și eventualele întârzieri pe durata proiectului (Control).\n\n## Tipurile de contract și alocarea riscului\n\nAlegerea tipului de contract este decizia centrală din Plan Procurement Management, pentru că determină **cine poartă riscul financiar** dacă lucrurile nu merg conform planului. Cele patru familii principale, testate constant la examenul PMP:\n\n- **FFP (Firm Fixed Price)** — preț fix, ferm. Furnizorul primește exact suma contractată, indiferent de costurile reale suportate. Riscul cade integral pe furnizor — el trebuie să estimeze corect și să-și gestioneze eficient costurile. Se folosește când scopul (scope) este bine definit și stabil. Exemplu: contract de 300.000 lei pentru livrarea și configurarea unei licențe ERP standard, fără personalizări.\n- **FPIF (Fixed Price Incentive Fee)** — preț fix cu bonus de performanță, legat de un obiectiv măsurabil (termen, calitate, cost).\n- **T&M (Time & Materials)** — plată pe oră/zi de muncă plus materiale, cu un plafon de tip **NTE (Not-To-Exceed)** recomandat pentru limitarea riscului cumpărătorului. Se folosește când scopul nu poate fi definit complet de la început — de exemplu servicii de consultanță SAP plătite cu 250 lei/oră consultant, pentru un volum de lucru estimat, dar nu fix.\n- **CPFF (Cost Plus Fixed Fee)** — cumpărătorul rambursează toate costurile reale ale furnizorului, plus un onorariu (fee) fix, stabilit dinainte, care nu variază indiferent de costul final. Riscul cade preponderent pe cumpărător.\n- **CPIF (Cost Plus Incentive Fee)** — cumpărătorul rambursează costurile reale, plus un onorariu care variază în funcție de performanță, împărțit între cumpărător și furnizor conform unui **raport de partajare (share ratio)**, de exemplu 80/20. Dacă furnizorul reduce costurile sub ținta stabilită, primește un procent din economie ca stimulent suplimentar.\n\nRegula generală de reținut pentru examen: cu cât scopul este mai puțin definit, cu atât contractul se mută dinspre FFP către CPFF/CPIF, iar riscul se mută dinspre furnizor către cumpărător.\n\n## Criterii de selecție a furnizorilor și evaluarea ofertelor\n\nÎn procesul Conduct Procurements, cumpărătorul trebuie să evalueze ofertele primite pe baza unor **criterii de selecție a sursei (source selection criteria)** stabilite încă din faza de planificare, nu inventate ad-hoc după primirea ofertelor — asta ar fi neetic și ar submina obiectivitatea procesului. Criteriile tipice includ:\n\n- **Preț/cost total** — nu doar prețul de achiziție, ci și costul total de proprietate (TCO), inclusiv mentenanța și licențierea ulterioară.\n- **Capacitate tehnică** — experiența echipei, metodologia propusă, referințele din proiecte similare (de exemplu, implementări ERP anterioare în același sector).\n- **Abordarea managementului de risc** — cum propune furnizorul să gestioneze riscurile proiectului.\n- **Capacitate financiară și de producție** — dacă furnizorul are resursele necesare să livreze la timp.\n- **Proprietate intelectuală și drepturi** — clarificarea cine deține codul sursă, personalizările, documentația.\n\nO practică frecventă și testată la examen este **sistemul de ponderare (weighting system)**: fiecare criteriu primește o pondere procentuală (ex. preț 30%, capacitate tehnică 40%, experiență 20%, plan de risc 10%), iar fiecare furnizor este punctat de la 1 la 10 pe fiecare criteriu. Scorul final ponderat determină câștigătorul — o metodă mult mai obiectivă decât alegerea exclusiv pe baza celui mai mic preț, care poate ascunde riscuri de calitate sau de întârziere.\n\n## Exemplu: Alegerea tipului de contract pentru un proiect de implementare ERP\n**Context:** Compania Alfa Distribuție SRL din Cluj-Napoca vrea să implementeze un sistem ERP nou. Scopul are două componente distincte:\n\n1. **Migrarea datelor și configurarea modulului financiar-contabil standard** — cerințele sunt clare, procesele contabile sunt bine documentate (conform OMFP 1802/2014), nu se așteaptă schimbări de scop. → Se alege **FFP**, contract la preț fix de 180.000 lei, cu termen de finalizare de 3 luni.\n2. **Dezvoltarea unui modul personalizat de gestiune a comisioanelor pentru agenții de vânzări** — cerințele nu sunt încă pe deplin clarificate, echipa de business urmează să le rafineze pe parcurs, în colaborare cu integratorul. → Se alege **T&M cu plafon NTE**, la 220 lei/oră consultant, cu un plafon maxim de 90.000 lei, pentru a limita expunerea financiară a Alfa Distribuție dacă volumul de lucru crește peste estimare.\n\nAceastă separare pe două contracte distincte, în funcție de maturitatea scopului fiecărei componente, este exact tipul de raționament testat la examenul PMP: nu există un singur tip de contract 'corect' pentru tot proiectul, ci alegerea se face component cu component, în funcție de cât de bine este definit scopul și de cine își asumă riscul.\n\n## Exemplu: Administrarea unui claim într-un proiect de digitalizare\n**Context:** În cadrul unui proiect de digitalizare a fluxului de aprobare a facturilor la o companie de servicii din București, furnizorul de soluție software înaintează un **claim** (pretenție contractuală) prin care solicită o prelungire de 15 zile lucrătoare și 25.000 lei costuri suplimentare, motivând că accesul la mediul de testare al clientului a fost livrat cu 10 zile întârziere față de data contractuală.\n\nProcesul de **claims administration** urmat de project manager:\n\n1. **Notificare formală** — furnizorul trimite claim-ul în scris, cu referire la clauza contractuală relevantă și documentele justificative (email-uri prin care s-a solicitat accesul, jurnalul de proiect).\n2. **Analiza cauzei** — echipa de proiect verifică jurnalul (project log) și confirmă că întârzierea de acces a fost, într-adevăr, cauzată de client, nu de furnizor.\n3. **Negociere** — cele două părți negociază: se acceptă prelungirea de 15 zile (motivată corect), dar costurile suplimentare se renegociază la 15.000 lei, pe baza documentelor de cost prezentate de furnizor.\n4. **Rezoluție și documentare** — se semnează un amendament la contract (change order), se actualizează calendarul proiectului și registrul de riscuri.\n\nDacă negocierea directă eșuează, următorul pas recomandat este **ADR (Alternative Dispute Resolution)** — mediere sau arbitraj — și doar ca ultimă soluție, litigiul în instanță, conform prevederilor Codului Civil privind contractele de prestări servicii/antrepriză.\n\n> Temei legal: Codul Civil (Legea nr. 287/2009) Art. 1851-1880 – Contractul de antrepriză (în vigoare de la 2011-10-01)\nContractele de achiziție pentru servicii de implementare software, consultanță sau lucrări încheiate de firme românești se încadrează, de regulă, în regimul juridic al **contractului de antrepriză** reglementat de Codul Civil. Acesta stabilește obligațiile de bază ale părților (executarea lucrării conform specificațiilor, plata prețului, recepția lucrării) și oferă cadrul legal pentru clauzele de penalități de întârziere, garanții și reziliere, care completează tipul de contract ales (FFP, T&M, CPFF, CPIF) din perspectiva managementului de proiect.\n\n⚠ Atenție la capcana frecventă din examen și din practică: alegerea unui contract **CPFF sau CPIF** pentru un proiect cu scop imatur, doar pentru că 'transferă riscul către cumpărător', nu este automat o decizie greșită — dar cumpărătorul trebuie să știe că își asumă responsabilitatea de a monitoriza atent costurile reale ale furnizorului (audit de costuri), altfel riscă depășiri bugetare fără control. Invers, alegerea unui **FFP** pe un scop neclar duce aproape sigur la claims și modificări de contract costisitoare, pentru că furnizorul va încerca să recupereze prin change order-uri orice cerință care nu a fost inclusă explicit în scope-ul inițial.\n\n## Exercițiu\nUn proiect de dezvoltare software este contractat în regim **CPIF (Cost Plus Incentive Fee)**, cu următorii parametri stabiliți în contract:\n\n- Cost țintă (target cost): 500.000 lei\n- Fee țintă (target fee): 50.000 lei\n- Raport de partajare (share ratio) cumpărător/furnizor: 80/20\n- Cost real (actual cost) la finalizare: 450.000 lei\n\nCalculează: (a) economia realizată, (b) partea din economie care revine furnizorului, (c) fee-ul final, (d) plata totală către furnizor.\n\n**Soluție:** **(a) Economia realizată** = Cost țintă − Cost real = 500.000 − 450.000 = **50.000 lei**\n\n**(b) Partea furnizorului din economie** = Economia × cota furnizorului din share ratio = 50.000 × 20% = **10.000 lei**\n\n(Partea cumpărătorului ar fi 50.000 × 80% = 40.000 lei, rămânând ca economie reținută de cumpărător.)\n\n**(c) Fee final** = Fee țintă + partea furnizorului din economie = 50.000 + 10.000 = **60.000 lei**\n\n**(d) Plata totală către furnizor** = Cost real + Fee final = 450.000 + 60.000 = **510.000 lei**\n\nDeci, deși costul real a fost cu 50.000 lei mai mic decât ținta, furnizorul este recompensat pentru eficiență, iar cumpărătorul beneficiază și el de 40.000 lei economie netă față de bugetul inițial de 550.000 lei (500.000 cost țintă + 50.000 fee țintă).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "procurement-management-procese",
+    "md": "## Procurement Management în abordarea predictivă\n\nÎn PMBOK 7 și în ECO (Examination Content Outline), Procurement Management rămâne unul dintre domeniile tehnice esențiale pentru proiectele predictive (waterfall). Practic, orice proiect de anvergură — de la implementarea unui ERP la o companie de distribuție, până la un proiect de digitalizare a fluxurilor financiare — depinde de resurse externe: licențe software, consultanță, hardware, servicii de integrare. Managementul achizițiilor de proiect este procesul prin care organizația cumpără sau obține produse, servicii ori rezultate de la furnizori externi echipei de proiect.\n\nProcesul are trei etape principale:\n\n1. **Plan Procurement Management** — se decide *ce* se cumpără, *cum* și *de la cine*. Aici se face **analiza make-or-buy** (a face intern vs. a cumpăra extern), comparând costul intern (ore de dezvoltare, întreținere) cu prețul unei soluții externe. Rezultă documentul de achiziție (procurement statement of work), criteriile de selecție și tipul de contract.\n2. **Conduct Procurements** — se obțin ofertele de la furnizori (prin RFP – Request for Proposal, RFQ – Request for Quotation sau IFB – Invitation for Bid), se evaluează conform criteriilor stabilite și se selectează furnizorul câștigător, finalizându-se contractul.\n3. **Control Procurements** — se gestionează relația contractuală pe parcursul execuției: se monitorizează performanța furnizorului, se administrează modificările contractuale (change control), se rezolvă eventualele **claims** (reclamații/pretenții contractuale) și se închide contractul la finalul livrării.\n\nPentru o firmă românească, de exemplu o SRL din retail care implementează un sistem ERP, aceste trei procese se traduc concret: se decide dacă modulul de gestiune stocuri se dezvoltă intern sau se cumpără de la un integrator SAP/Oracle local (Plan), se lansează RFP către 3-4 integratori și se semnează contractul cu câștigătorul (Conduct), apoi se urmăresc livrabilele, facturile parțiale și eventualele întârzieri pe durata proiectului (Control).",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tipuri-contracte-procurement",
+    "md": "## Tipurile de contract și alocarea riscului\n\nAlegerea tipului de contract este decizia centrală din Plan Procurement Management, pentru că determină **cine poartă riscul financiar** dacă lucrurile nu merg conform planului. Cele patru familii principale, testate constant la examenul PMP:\n\n- **FFP (Firm Fixed Price)** — preț fix, ferm. Furnizorul primește exact suma contractată, indiferent de costurile reale suportate. Riscul cade integral pe furnizor — el trebuie să estimeze corect și să-și gestioneze eficient costurile. Se folosește când scopul (scope) este bine definit și stabil. Exemplu: contract de 300.000 lei pentru livrarea și configurarea unei licențe ERP standard, fără personalizări.\n- **FPIF (Fixed Price Incentive Fee)** — preț fix cu bonus de performanță, legat de un obiectiv măsurabil (termen, calitate, cost).\n- **T&M (Time & Materials)** — plată pe oră/zi de muncă plus materiale, cu un plafon de tip **NTE (Not-To-Exceed)** recomandat pentru limitarea riscului cumpărătorului. Se folosește când scopul nu poate fi definit complet de la început — de exemplu servicii de consultanță SAP plătite cu 250 lei/oră consultant, pentru un volum de lucru estimat, dar nu fix.\n- **CPFF (Cost Plus Fixed Fee)** — cumpărătorul rambursează toate costurile reale ale furnizorului, plus un onorariu (fee) fix, stabilit dinainte, care nu variază indiferent de costul final. Riscul cade preponderent pe cumpărător.\n- **CPIF (Cost Plus Incentive Fee)** — cumpărătorul rambursează costurile reale, plus un onorariu care variază în funcție de performanță, împărțit între cumpărător și furnizor conform unui **raport de partajare (share ratio)**, de exemplu 80/20. Dacă furnizorul reduce costurile sub ținta stabilită, primește un procent din economie ca stimulent suplimentar.\n\nRegula generală de reținut pentru examen: cu cât scopul este mai puțin definit, cu atât contractul se mută dinspre FFP către CPFF/CPIF, iar riscul se mută dinspre furnizor către cumpărător.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "source-selection-criteria",
+    "md": "## Criterii de selecție a furnizorilor și evaluarea ofertelor\n\nÎn procesul Conduct Procurements, cumpărătorul trebuie să evalueze ofertele primite pe baza unor **criterii de selecție a sursei (source selection criteria)** stabilite încă din faza de planificare, nu inventate ad-hoc după primirea ofertelor — asta ar fi neetic și ar submina obiectivitatea procesului. Criteriile tipice includ:\n\n- **Preț/cost total** — nu doar prețul de achiziție, ci și costul total de proprietate (TCO), inclusiv mentenanța și licențierea ulterioară.\n- **Capacitate tehnică** — experiența echipei, metodologia propusă, referințele din proiecte similare (de exemplu, implementări ERP anterioare în același sector).\n- **Abordarea managementului de risc** — cum propune furnizorul să gestioneze riscurile proiectului.\n- **Capacitate financiară și de producție** — dacă furnizorul are resursele necesare să livreze la timp.\n- **Proprietate intelectuală și drepturi** — clarificarea cine deține codul sursă, personalizările, documentația.\n\nO practică frecventă și testată la examen este **sistemul de ponderare (weighting system)**: fiecare criteriu primește o pondere procentuală (ex. preț 30%, capacitate tehnică 40%, experiență 20%, plan de risc 10%), iar fiecare furnizor este punctat de la 1 la 10 pe fiecare criteriu. Scorul final ponderat determină câștigătorul — o metodă mult mai obiectivă decât alegerea exclusiv pe baza celui mai mic preț, care poate ascunde riscuri de calitate sau de întârziere.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b3"
+   },
+   {
+    "type": "example",
+    "title": "Alegerea tipului de contract pentru un proiect de implementare ERP",
+    "concept_key": "tipuri-contracte-procurement",
+    "md": "**Context:** Compania Alfa Distribuție SRL din Cluj-Napoca vrea să implementeze un sistem ERP nou. Scopul are două componente distincte:\n\n1. **Migrarea datelor și configurarea modulului financiar-contabil standard** — cerințele sunt clare, procesele contabile sunt bine documentate (conform OMFP 1802/2014), nu se așteaptă schimbări de scop. → Se alege **FFP**, contract la preț fix de 180.000 lei, cu termen de finalizare de 3 luni.\n2. **Dezvoltarea unui modul personalizat de gestiune a comisioanelor pentru agenții de vânzări** — cerințele nu sunt încă pe deplin clarificate, echipa de business urmează să le rafineze pe parcurs, în colaborare cu integratorul. → Se alege **T&M cu plafon NTE**, la 220 lei/oră consultant, cu un plafon maxim de 90.000 lei, pentru a limita expunerea financiară a Alfa Distribuție dacă volumul de lucru crește peste estimare.\n\nAceastă separare pe două contracte distincte, în funcție de maturitatea scopului fiecărei componente, este exact tipul de raționament testat la examenul PMP: nu există un singur tip de contract 'corect' pentru tot proiectul, ci alegerea se face component cu component, în funcție de cât de bine este definit scopul și de cine își asumă riscul.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b4"
+   },
+   {
+    "type": "example",
+    "title": "Administrarea unui claim într-un proiect de digitalizare",
+    "concept_key": "claims-administration",
+    "md": "**Context:** În cadrul unui proiect de digitalizare a fluxului de aprobare a facturilor la o companie de servicii din București, furnizorul de soluție software înaintează un **claim** (pretenție contractuală) prin care solicită o prelungire de 15 zile lucrătoare și 25.000 lei costuri suplimentare, motivând că accesul la mediul de testare al clientului a fost livrat cu 10 zile întârziere față de data contractuală.\n\nProcesul de **claims administration** urmat de project manager:\n\n1. **Notificare formală** — furnizorul trimite claim-ul în scris, cu referire la clauza contractuală relevantă și documentele justificative (email-uri prin care s-a solicitat accesul, jurnalul de proiect).\n2. **Analiza cauzei** — echipa de proiect verifică jurnalul (project log) și confirmă că întârzierea de acces a fost, într-adevăr, cauzată de client, nu de furnizor.\n3. **Negociere** — cele două părți negociază: se acceptă prelungirea de 15 zile (motivată corect), dar costurile suplimentare se renegociază la 15.000 lei, pe baza documentelor de cost prezentate de furnizor.\n4. **Rezoluție și documentare** — se semnează un amendament la contract (change order), se actualizează calendarul proiectului și registrul de riscuri.\n\nDacă negocierea directă eșuează, următorul pas recomandat este **ADR (Alternative Dispute Resolution)** — mediere sau arbitraj — și doar ca ultimă soluție, litigiul în instanță, conform prevederilor Codului Civil privind contractele de prestări servicii/antrepriză.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Codul Civil (Legea nr. 287/2009)",
+    "article": "Art. 1851-1880 – Contractul de antrepriză",
+    "effective": "2011-10-01",
+    "md": "Contractele de achiziție pentru servicii de implementare software, consultanță sau lucrări încheiate de firme românești se încadrează, de regulă, în regimul juridic al **contractului de antrepriză** reglementat de Codul Civil. Acesta stabilește obligațiile de bază ale părților (executarea lucrării conform specificațiilor, plata prețului, recepția lucrării) și oferă cadrul legal pentru clauzele de penalități de întârziere, garanții și reziliere, care completează tipul de contract ales (FFP, T&M, CPFF, CPIF) din perspectiva managementului de proiect.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la capcana frecventă din examen și din practică: alegerea unui contract **CPFF sau CPIF** pentru un proiect cu scop imatur, doar pentru că 'transferă riscul către cumpărător', nu este automat o decizie greșită — dar cumpărătorul trebuie să știe că își asumă responsabilitatea de a monitoriza atent costurile reale ale furnizorului (audit de costuri), altfel riscă depășiri bugetare fără control. Invers, alegerea unui **FFP** pe un scop neclar duce aproape sigur la claims și modificări de contract costisitoare, pentru că furnizorul va încerca să recupereze prin change order-uri orice cerință care nu a fost inclusă explicit în scope-ul inițial.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un proiect de dezvoltare software este contractat în regim **CPIF (Cost Plus Incentive Fee)**, cu următorii parametri stabiliți în contract:\n\n- Cost țintă (target cost): 500.000 lei\n- Fee țintă (target fee): 50.000 lei\n- Raport de partajare (share ratio) cumpărător/furnizor: 80/20\n- Cost real (actual cost) la finalizare: 450.000 lei\n\nCalculează: (a) economia realizată, (b) partea din economie care revine furnizorului, (c) fee-ul final, (d) plata totală către furnizor.",
+    "solution_md": "**(a) Economia realizată** = Cost țintă − Cost real = 500.000 − 450.000 = **50.000 lei**\n\n**(b) Partea furnizorului din economie** = Economia × cota furnizorului din share ratio = 50.000 × 20% = **10.000 lei**\n\n(Partea cumpărătorului ar fi 50.000 × 80% = 40.000 lei, rămânând ca economie reținută de cumpărător.)\n\n**(c) Fee final** = Fee țintă + partea furnizorului din economie = 50.000 + 10.000 = **60.000 lei**\n\n**(d) Plata totală către furnizor** = Cost real + Fee final = 450.000 + 60.000 = **510.000 lei**\n\nDeci, deși costul real a fost cu 50.000 lei mai mic decât ținta, furnizorul este recompensat pentru eficiență, iar cumpărătorul beneficiază și el de 40.000 lei economie netă față de bugetul inițial de 550.000 lei (500.000 cost țintă + 50.000 fee țintă).",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce tip de contract plasează cel mai mare risc financiar pe umerii furnizorului?",
+    "choices": [
+     "CPFF (Cost Plus Fixed Fee)",
+     "T&M (Time & Materials) fără plafon",
+     "FFP (Firm Fixed Price)",
+     "CPIF (Cost Plus Incentive Fee)"
+    ],
+    "answer": 2,
+    "explain": "În contractul FFP, furnizorul primește un preț fix indiferent de costurile reale suportate — dacă depășește bugetul intern estimat, pierderea este integral a lui. Contractele de tip Cost Plus transferă riscul de cost preponderent către cumpărător.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al unui sistem de ponderare (weighting system) în evaluarea ofertelor de la furnizori?",
+    "choices": [
+     "Să elimine automat oferta cu prețul cel mai mare",
+     "Să permită o evaluare obiectivă, combinând mai multe criterii (preț, tehnic, experiență) în loc de a alege doar pe baza prețului minim",
+     "Să calculeze automat fee-ul final într-un contract CPIF",
+     "Să stabilească plafonul NTE al unui contract T&M"
+    ],
+    "answer": 1,
+    "explain": "Weighting system-ul atribuie ponderi procentuale mai multor criterii de selecție (preț, capacitate tehnică, experiență, management de risc) și punctează fiecare furnizor pe fiecare criteriu, oferind o evaluare mai completă și mai obiectivă decât simpla comparație de preț.",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este analiza make-or-buy în Plan Procurement Management?",
+    "back": "Compararea costului de a executa o activitate intern (cu resurse proprii) versus costul de a o achiziționa de la un furnizor extern, pentru a decide ce se cumpără.",
+    "concept_key": "procurement-management-procese",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă FFP și cine poartă riscul de cost?",
+    "back": "Firm Fixed Price – preț fix, ferm, indiferent de costurile reale ale furnizorului. Riscul de cost cade integral pe furnizor.",
+    "concept_key": "tipuri-contracte-procurement",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când se folosește un contract T&M și ce clauză de protecție se recomandă?",
+    "back": "Când scopul nu poate fi definit complet de la început; se recomandă un plafon NTE (Not-To-Exceed) pentru a limita expunerea financiară a cumpărătorului.",
+    "concept_key": "tipuri-contracte-procurement",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un CPIF și cum funcționează share ratio-ul?",
+    "back": "Cost Plus Incentive Fee – cumpărătorul rambursează costurile reale plus un fee variabil; economiile față de costul țintă se împart între cumpărător și furnizor conform unui raport de partajare (ex. 80/20).",
+    "concept_key": "tipuri-contracte-procurement",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un claim în managementul achizițiilor de proiect?",
+    "back": "O pretenție/reclamație contractuală formală, prin care una dintre părți solicită compensație (timp, bani) pentru o abatere de la termenii contractului, documentată și supusă negocierii sau ADR.",
+    "concept_key": "claims-administration",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei procese principale ale Procurement Management în abordarea predictivă?",
+    "back": "Plan Procurement Management, Conduct Procurements, Control Procurements.",
+    "concept_key": "procurement-management-procese",
+    "blockId": "cmjjuxvyp009eumkpk8tbg249-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1541,
+   "flashcards": 6
+  }
+ }
+}

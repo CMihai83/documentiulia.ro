@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxvzu00acumkp7z20ms4n",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Business Environment Domain",
+ "lesson": "External Environment",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# External Environment\n\n## De ce contează mediul extern\n\nÎn PMBOK® 7, domeniul de performanță **Business Environment** (Mediul de afaceri) pleacă de la o premisă simplă, dar frecvent ignorată: niciun proiect nu trăiește într-un vid. Fiecare inițiativă — fie că este implementarea unui ERP la o firmă de distribuție din Cluj, fie digitalizarea arhivei unei primării — este influențată de forțe pe care echipa de proiect nu le poate controla, ci doar le poate monitoriza și la care se poate adapta.\n\nPMBOK 7 face distincția între:\n\n- **Mediul intern** — cultura organizației, structura de guvernanță, procesele existente, resursele disponibile, sistemele IT interne.\n- **Mediul extern** — condițiile de piață, cadrul legal și de reglementare, factorii economici, sociali, tehnologici, politici și de mediu (folosim acronimul **PESTLE**), precum și așteptările stakeholderilor externi.\n\nScopul acestui domeniu de performanță nu este să elimini incertitudinea externă (imposibil), ci să demonstrezi că proiectul livrează **valoare** ținând cont conștient de acești factori — de la analiza inițială a business case-ului, până la managementul beneficiilor după închiderea proiectului. Pentru examenul PMP, reține că întrebările din acest domeniu testează frecvent capacitatea ta de a recunoaște un factor extern într-un scenariu și de a alege reacția potrivită a project managerului (escaladare, ajustare de plan, comunicare către sponsor), nu de a rezolva tu problema externă în locul organizației.\n\n## Cadrul PESTLE aplicat proiectelor\n\nPESTLE este instrumentul standard prin care un project manager structurează scanarea mediului extern la inițierea și pe parcursul proiectului:\n\n1. **Politic (Political)** — schimbări de guvern, politici publice, relații comerciale internaționale, fonduri europene disponibile pentru digitalizare.\n2. **Economic (Economic)** — curs valutar (relevant pentru contracte de licențiere software în EUR/USD), inflație, costul creditului, disponibilitatea investițiilor.\n3. **Social (Social)** — deficit de forță de muncă calificată (ex. lipsa specialiștilor SAP/Oracle pe piața din România), rezistența angajaților la schimbare, așteptările generației tinere privind munca hibridă.\n4. **Tehnologic (Technological)** — apariția unor soluții cloud noi, obligativitatea interconectării cu sisteme naționale (ex. SPV, e-Factura, e-Transport), evoluția rapidă a AI-ului generativ în automatizarea proceselor.\n5. **Legal (Legal)** — legislația muncii, protecția datelor (GDPR), reglementări sectoriale (bancar, farma, energetic), obligații de raportare fiscală.\n6. **De mediu (Environmental)** — cerințe de sustenabilitate, raportare ESG, restricții privind consumul energetic al centrelor de date.\n\nUn PM eficient nu tratează PESTLE ca pe un exercițiu de check-box la kick-off, ci ca pe un instrument viu: factorii externi sunt revizuiți periodic (de exemplu la fiecare fază, sau la fiecare sprint review în context agil) și documentați în registrul de riscuri sau în business case-ul actualizat. La examen, dacă un scenariu descrie o schimbare legislativă apărută în timpul execuției, răspunsul corect aproape întotdeauna implică **reevaluarea business case-ului și comunicarea impactului către sponsor**, nu ignorarea ei pentru a respecta termenul inițial.\n\n## Condițiile de piață, stakeholderii externi și cultura organizațională\n\nTrei elemente din schița clasică a lecției merită detaliate, pentru că examenul PMP le testează separat:\n\n**Condițiile de piață** — includ nivelul de competiție, maturitatea tehnologică a sectorului, disponibilitatea furnizorilor și prețurile de piață. Exemplu: dacă doi integratori majori de ERP domină piața din România, timpii de livrare și prețurile licențelor pot fluctua independent de planificarea proiectului tău, iar acest risc trebuie inclus explicit în planul de achiziții.\n\n**Mediul stakeholderilor externi** — spre deosebire de stakeholderii interni (sponsor, echipă, management), cei externi nu răspund direct în fața project managerului: autorități de reglementare (ANAF, ANSPDCP, ITM), competitori, furnizori, comunități locale, mass-media, asociații profesionale. Influența lor este adesea indirectă, dar poate bloca proiectul (ex. o autoritate care întârzie o autorizație) sau îi poate schimba scopul (ex. o cerință legală nouă de raportare).\n\n**Cultura organizațională** — deși este parțial un factor intern, PMBOK 7 o tratează ca punte între intern și extern: o cultură deschisă la schimbare absoarbe mai ușor șocurile externe (o companie obișnuită cu transformări digitale se adaptează rapid la o nouă cerință e-Factura), în timp ce o cultură rigidă, ierarhică, poate amplifica impactul negativ al aceluiași factor extern. Pentru rolul de PM, concluzia practică este: evaluează nu doar *ce* factor extern apare, ci și *cât de pregătită* este organizația să reacționeze la el — acest lucru determină strategia de răspuns (mitigare proactivă vs. plan de contingență).\n\n## Exemplu: Implementare ERP la o firmă de distribuție — factori externi în acțiune\nO companie de distribuție de materiale de construcții din Timișoara, cu 180 de angajați, derulează un proiect de implementare a unui ERP nou, cu buget de 420.000 lei și durată planificată de 9 luni. La luna 4 din proiect apar simultan trei factori externi:\n\n- **Economic:** cursul EUR/RON crește cu 6%, iar licența software (facturată în EUR) depășește bugetul alocat cu aproximativ 18.000 lei.\n- **Legal:** ANAF anunță o modificare a formatului standard pentru e-Factura, aplicabilă de la 1 ianuarie anul următor, care impune module suplimentare de integrare.\n- **Social:** doi dintre cei trei consultanți ERP alocați de furnizor părăsesc firma de integrare, iar piața locală are un deficit acut de specialiști SAP Business One.\n\nProject managerul, în loc să încerce să «absoarbă» singur aceste șocuri, procedează astfel: actualizează registrul de riscuri cu cei trei factori identificați prin PESTLE, recalculează impactul financiar și de termen în business case, apoi convoacă sponsorul pentru a decide între suplimentarea bugetului (rezervă de management) sau amânarea modulului e-Factura într-o fază 2. Decizia este documentată, iar planul de proiect este actualizat printr-o cerere formală de schimbare (change request), aprobată prin comitetul de control al schimbărilor (CCB).\n\n## Exemplu: Digitalizarea arhivei unei primării — constrângere legală externă\nO primărie de municipiu reședință de județ derulează un proiect finanțat din fonduri europene pentru digitalizarea arhivei fizice (peste 2 milioane de documente). La analiza inițială PESTLE, echipa de proiect identifică drept constrângere externă dominantă factorul **Legal**: Regulamentul General privind Protecția Datelor (GDPR) impune reguli stricte privind stocarea, accesul și retenția documentelor care conțin date cu caracter personal (acte de identitate, certificate de naștere, dosare de asistență socială).\n\nAcest factor extern schimbă radical scopul tehnic al proiectului: soluția de arhivare electronică trebuie să includă criptare, jurnalizare a accesului (audit trail), politici de retenție și ștergere conforme, plus un proces de evaluare a impactului asupra protecției datelor (DPIA) înainte de go-live. Proiectul nu poate fi finalizat «mai repede» ocolind aceste cerințe, pentru că finanțarea europeană condiționează decontarea de conformitatea cu GDPR. Concluzia pentru orice PM: atunci când un factor extern legal este obligatoriu (nu opțional), el intră direct în scope baseline, nu în lista de «nice to have».\n\n> Temei legal: Regulamentul (UE) 2016/679 (GDPR) art. 5 și art. 35 — principii privind prelucrarea datelor și evaluarea impactului asupra protecției datelor (DPIA) (în vigoare de la 2018-05-25)\nRegulamentul General privind Protecția Datelor este un exemplu tipic de factor extern din categoria Legal (PESTLE) care devine constrângere obligatorie de scope pentru orice proiect ce prelucrează date cu caracter personal — inclusiv proiecte de digitalizare, ERP sau CRM derulate în România. Verifică întotdeauna, la data derulării proiectului tău, dacă există actualizări sau ghiduri emise de Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP).\n\n⚠ Greșeală frecventă la examen și în practică: project managerii tratează mediul extern ca pe un exercițiu făcut o singură dată, la inițiere (\"am completat PESTLE în charter, gata\"). PMBOK 7 privește scanarea mediului extern ca pe o activitate **continuă**, integrată în procesul de monitorizare a riscurilor pe tot parcursul ciclului de viață al proiectului — predictiv, agil sau hibrid. Dacă un scenariu de examen descrie apariția unui factor extern nou în mijlocul execuției, răspunsul așteptat este actualizarea registrului de riscuri și, dacă impactul este semnificativ, reevaluarea business case-ului — nu ignorarea lui pentru a respecta planul inițial.\n\n## Exercițiu\nEști project manager pentru implementarea unui sistem CRM la o companie de asigurări din București, buget 300.000 lei, durată 6 luni. În luna 3, Autoritatea de Supraveghere Financiară (ASF) publică o normă nouă care impune raportarea în timp real a anumitor tranzacții, cu termen de conformare în 4 luni. În paralel, principalul furnizor de servicii cloud anunță o creștere de preț de 12%, iar un competitor lansează o soluție similară care atrage doi membri cheie ai echipei tehnice interne.\n\nCerințe:\n1. Clasifică fiecare dintre cele trei evenimente conform cadrului PESTLE.\n2. Pentru fiecare, precizează dacă este vorba despre un factor din mediul extern sau intern.\n3. Propune, pe scurt, acțiunea corectă a project managerului pentru fiecare factor.\n\n**Soluție:** 1. **Norma ASF privind raportarea în timp real** → factor **Legal** (extern). Fiind o obligație de reglementare cu termen fix, PM-ul trebuie să evalueze impactul asupra scope-ului, să actualizeze business case-ul și registrul de riscuri, și să solicite formal, prin change request, includerea modulului de raportare în scope baseline — comunicând sponsorului implicațiile de buget și termen.\n\n2. **Creșterea prețului la serviciile cloud** → factor **Economic** (extern). PM-ul trebuie să reevalueze bugetul, să verifice dacă rezerva de management (contingency reserve) acoperă diferența și, dacă nu, să escaladeze către sponsor pentru suplimentare de fonduri sau renegociere cu furnizorul.\n\n3. **Plecarea a doi membri cheie ai echipei către competitor** → are o cauză externă (**Social** — competiție pe piața muncii, deficit de specialiști IT), dar efectul se manifestă ca risc **intern** de resurse. PM-ul trebuie să actualizeze planul de resurse umane, să activeze un plan de succesiune/knowledge transfer și să evalueze dacă este necesară recrutare externă sau realocare din alte proiecte — fără să aștepte ca situația să afecteze data de livrare înainte de a acționa.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "mediul-extern-pmbok7",
+    "md": "## De ce contează mediul extern\n\nÎn PMBOK® 7, domeniul de performanță **Business Environment** (Mediul de afaceri) pleacă de la o premisă simplă, dar frecvent ignorată: niciun proiect nu trăiește într-un vid. Fiecare inițiativă — fie că este implementarea unui ERP la o firmă de distribuție din Cluj, fie digitalizarea arhivei unei primării — este influențată de forțe pe care echipa de proiect nu le poate controla, ci doar le poate monitoriza și la care se poate adapta.\n\nPMBOK 7 face distincția între:\n\n- **Mediul intern** — cultura organizației, structura de guvernanță, procesele existente, resursele disponibile, sistemele IT interne.\n- **Mediul extern** — condițiile de piață, cadrul legal și de reglementare, factorii economici, sociali, tehnologici, politici și de mediu (folosim acronimul **PESTLE**), precum și așteptările stakeholderilor externi.\n\nScopul acestui domeniu de performanță nu este să elimini incertitudinea externă (imposibil), ci să demonstrezi că proiectul livrează **valoare** ținând cont conștient de acești factori — de la analiza inițială a business case-ului, până la managementul beneficiilor după închiderea proiectului. Pentru examenul PMP, reține că întrebările din acest domeniu testează frecvent capacitatea ta de a recunoaște un factor extern într-un scenariu și de a alege reacția potrivită a project managerului (escaladare, ajustare de plan, comunicare către sponsor), nu de a rezolva tu problema externă în locul organizației.",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "analiza-pestle-proiecte",
+    "md": "## Cadrul PESTLE aplicat proiectelor\n\nPESTLE este instrumentul standard prin care un project manager structurează scanarea mediului extern la inițierea și pe parcursul proiectului:\n\n1. **Politic (Political)** — schimbări de guvern, politici publice, relații comerciale internaționale, fonduri europene disponibile pentru digitalizare.\n2. **Economic (Economic)** — curs valutar (relevant pentru contracte de licențiere software în EUR/USD), inflație, costul creditului, disponibilitatea investițiilor.\n3. **Social (Social)** — deficit de forță de muncă calificată (ex. lipsa specialiștilor SAP/Oracle pe piața din România), rezistența angajaților la schimbare, așteptările generației tinere privind munca hibridă.\n4. **Tehnologic (Technological)** — apariția unor soluții cloud noi, obligativitatea interconectării cu sisteme naționale (ex. SPV, e-Factura, e-Transport), evoluția rapidă a AI-ului generativ în automatizarea proceselor.\n5. **Legal (Legal)** — legislația muncii, protecția datelor (GDPR), reglementări sectoriale (bancar, farma, energetic), obligații de raportare fiscală.\n6. **De mediu (Environmental)** — cerințe de sustenabilitate, raportare ESG, restricții privind consumul energetic al centrelor de date.\n\nUn PM eficient nu tratează PESTLE ca pe un exercițiu de check-box la kick-off, ci ca pe un instrument viu: factorii externi sunt revizuiți periodic (de exemplu la fiecare fază, sau la fiecare sprint review în context agil) și documentați în registrul de riscuri sau în business case-ul actualizat. La examen, dacă un scenariu descrie o schimbare legislativă apărută în timpul execuției, răspunsul corect aproape întotdeauna implică **reevaluarea business case-ului și comunicarea impactului către sponsor**, nu ignorarea ei pentru a respecta termenul inițial.",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "piata-stakeholderi-cultura-organizationala",
+    "md": "## Condițiile de piață, stakeholderii externi și cultura organizațională\n\nTrei elemente din schița clasică a lecției merită detaliate, pentru că examenul PMP le testează separat:\n\n**Condițiile de piață** — includ nivelul de competiție, maturitatea tehnologică a sectorului, disponibilitatea furnizorilor și prețurile de piață. Exemplu: dacă doi integratori majori de ERP domină piața din România, timpii de livrare și prețurile licențelor pot fluctua independent de planificarea proiectului tău, iar acest risc trebuie inclus explicit în planul de achiziții.\n\n**Mediul stakeholderilor externi** — spre deosebire de stakeholderii interni (sponsor, echipă, management), cei externi nu răspund direct în fața project managerului: autorități de reglementare (ANAF, ANSPDCP, ITM), competitori, furnizori, comunități locale, mass-media, asociații profesionale. Influența lor este adesea indirectă, dar poate bloca proiectul (ex. o autoritate care întârzie o autorizație) sau îi poate schimba scopul (ex. o cerință legală nouă de raportare).\n\n**Cultura organizațională** — deși este parțial un factor intern, PMBOK 7 o tratează ca punte între intern și extern: o cultură deschisă la schimbare absoarbe mai ușor șocurile externe (o companie obișnuită cu transformări digitale se adaptează rapid la o nouă cerință e-Factura), în timp ce o cultură rigidă, ierarhică, poate amplifica impactul negativ al aceluiași factor extern. Pentru rolul de PM, concluzia practică este: evaluează nu doar *ce* factor extern apare, ci și *cât de pregătită* este organizația să reacționeze la el — acest lucru determină strategia de răspuns (mitigare proactivă vs. plan de contingență).",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b3"
+   },
+   {
+    "type": "example",
+    "title": "Implementare ERP la o firmă de distribuție — factori externi în acțiune",
+    "concept_key": "mediul-extern-pmbok7",
+    "md": "O companie de distribuție de materiale de construcții din Timișoara, cu 180 de angajați, derulează un proiect de implementare a unui ERP nou, cu buget de 420.000 lei și durată planificată de 9 luni. La luna 4 din proiect apar simultan trei factori externi:\n\n- **Economic:** cursul EUR/RON crește cu 6%, iar licența software (facturată în EUR) depășește bugetul alocat cu aproximativ 18.000 lei.\n- **Legal:** ANAF anunță o modificare a formatului standard pentru e-Factura, aplicabilă de la 1 ianuarie anul următor, care impune module suplimentare de integrare.\n- **Social:** doi dintre cei trei consultanți ERP alocați de furnizor părăsesc firma de integrare, iar piața locală are un deficit acut de specialiști SAP Business One.\n\nProject managerul, în loc să încerce să «absoarbă» singur aceste șocuri, procedează astfel: actualizează registrul de riscuri cu cei trei factori identificați prin PESTLE, recalculează impactul financiar și de termen în business case, apoi convoacă sponsorul pentru a decide între suplimentarea bugetului (rezervă de management) sau amânarea modulului e-Factura într-o fază 2. Decizia este documentată, iar planul de proiect este actualizat printr-o cerere formală de schimbare (change request), aprobată prin comitetul de control al schimbărilor (CCB).",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b4"
+   },
+   {
+    "type": "example",
+    "title": "Digitalizarea arhivei unei primării — constrângere legală externă",
+    "concept_key": "analiza-pestle-proiecte",
+    "md": "O primărie de municipiu reședință de județ derulează un proiect finanțat din fonduri europene pentru digitalizarea arhivei fizice (peste 2 milioane de documente). La analiza inițială PESTLE, echipa de proiect identifică drept constrângere externă dominantă factorul **Legal**: Regulamentul General privind Protecția Datelor (GDPR) impune reguli stricte privind stocarea, accesul și retenția documentelor care conțin date cu caracter personal (acte de identitate, certificate de naștere, dosare de asistență socială).\n\nAcest factor extern schimbă radical scopul tehnic al proiectului: soluția de arhivare electronică trebuie să includă criptare, jurnalizare a accesului (audit trail), politici de retenție și ștergere conforme, plus un proces de evaluare a impactului asupra protecției datelor (DPIA) înainte de go-live. Proiectul nu poate fi finalizat «mai repede» ocolind aceste cerințe, pentru că finanțarea europeană condiționează decontarea de conformitatea cu GDPR. Concluzia pentru orice PM: atunci când un factor extern legal este obligatoriu (nu opțional), el intră direct în scope baseline, nu în lista de «nice to have».",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Regulamentul (UE) 2016/679 (GDPR)",
+    "article": "art. 5 și art. 35 — principii privind prelucrarea datelor și evaluarea impactului asupra protecției datelor (DPIA)",
+    "effective": "2018-05-25",
+    "md": "Regulamentul General privind Protecția Datelor este un exemplu tipic de factor extern din categoria Legal (PESTLE) care devine constrângere obligatorie de scope pentru orice proiect ce prelucrează date cu caracter personal — inclusiv proiecte de digitalizare, ERP sau CRM derulate în România. Verifică întotdeauna, la data derulării proiectului tău, dacă există actualizări sau ghiduri emise de Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP).",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Greșeală frecventă la examen și în practică: project managerii tratează mediul extern ca pe un exercițiu făcut o singură dată, la inițiere (\"am completat PESTLE în charter, gata\"). PMBOK 7 privește scanarea mediului extern ca pe o activitate **continuă**, integrată în procesul de monitorizare a riscurilor pe tot parcursul ciclului de viață al proiectului — predictiv, agil sau hibrid. Dacă un scenariu de examen descrie apariția unui factor extern nou în mijlocul execuției, răspunsul așteptat este actualizarea registrului de riscuri și, dacă impactul este semnificativ, reevaluarea business case-ului — nu ignorarea lui pentru a respecta planul inițial.",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești project manager pentru implementarea unui sistem CRM la o companie de asigurări din București, buget 300.000 lei, durată 6 luni. În luna 3, Autoritatea de Supraveghere Financiară (ASF) publică o normă nouă care impune raportarea în timp real a anumitor tranzacții, cu termen de conformare în 4 luni. În paralel, principalul furnizor de servicii cloud anunță o creștere de preț de 12%, iar un competitor lansează o soluție similară care atrage doi membri cheie ai echipei tehnice interne.\n\nCerințe:\n1. Clasifică fiecare dintre cele trei evenimente conform cadrului PESTLE.\n2. Pentru fiecare, precizează dacă este vorba despre un factor din mediul extern sau intern.\n3. Propune, pe scurt, acțiunea corectă a project managerului pentru fiecare factor.",
+    "solution_md": "1. **Norma ASF privind raportarea în timp real** → factor **Legal** (extern). Fiind o obligație de reglementare cu termen fix, PM-ul trebuie să evalueze impactul asupra scope-ului, să actualizeze business case-ul și registrul de riscuri, și să solicite formal, prin change request, includerea modulului de raportare în scope baseline — comunicând sponsorului implicațiile de buget și termen.\n\n2. **Creșterea prețului la serviciile cloud** → factor **Economic** (extern). PM-ul trebuie să reevalueze bugetul, să verifice dacă rezerva de management (contingency reserve) acoperă diferența și, dacă nu, să escaladeze către sponsor pentru suplimentare de fonduri sau renegociere cu furnizorul.\n\n3. **Plecarea a doi membri cheie ai echipei către competitor** → are o cauză externă (**Social** — competiție pe piața muncii, deficit de specialiști IT), dar efectul se manifestă ca risc **intern** de resurse. PM-ul trebuie să actualizeze planul de resurse umane, să activeze un plan de succesiune/knowledge transfer și să evalueze dacă este necesară recrutare externă sau realocare din alte proiecte — fără să aștepte ca situația să afecteze data de livrare înainte de a acționa.",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform PMBOK 7, în ce categorie PESTLE se încadrează apariția unei obligații legale noi de raportare fiscală în timpul execuției unui proiect?",
+    "choices": [
+     "Economic",
+     "Legal",
+     "Tehnologic",
+     "Social"
+    ],
+    "answer": 1,
+    "explain": "O obligație de raportare impusă de o autoritate (ex. ANAF, ASF) este un factor din categoria Legal — chiar dacă are și implicații economice indirecte, clasificarea principală ține de sursa reglementatoare.",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un scenariu de examen, echipa de proiect identifică un factor extern semnificativ (schimbare legislativă) la jumătatea execuției. Care este cea mai potrivită acțiune a project managerului?",
+    "choices": [
+     "Ignoră factorul, deoarece scope baseline a fost deja aprobat și nu poate fi modificat",
+     "Actualizează registrul de riscuri, reevaluează business case-ul și comunică impactul sponsorului, urmând procesul de control al schimbărilor",
+     "Oprește proiectul definitiv până la clarificarea legislativă",
+     "Rezolvă personal cerința legală, fără a implica sponsorul sau comitetul de schimbări"
+    ],
+    "answer": 1,
+    "explain": "Mediul extern se monitorizează continuu; un factor nou cu impact semnificativ trebuie documentat, evaluat în business case și gestionat prin procesul formal de control al schimbărilor, cu implicarea sponsorului — nu ignorat și nu rezolvat unilateral de PM.",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este PESTLE, în contextul managementului de proiect?",
+    "back": "Un cadru de analiză a mediului extern al proiectului, cu șase categorii de factori: Politic, Economic, Social, Tehnologic, Legal, De mediu (Environmental).",
+    "concept_key": "analiza-pestle-proiecte",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum definește PMBOK 7 mediul extern al unui proiect?",
+    "back": "Ansamblul factorilor din afara controlului direct al echipei de proiect — condiții de piață, cadru legal, factori economici, sociali, tehnologici, politici și de mediu — care influențează livrarea de valoare.",
+    "concept_key": "mediul-extern-pmbok7",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Dă un exemplu de stakeholder extern al unui proiect.",
+    "back": "O autoritate de reglementare (ex. ANAF, ASF, ANSPDCP), un competitor, un furnizor sau o comunitate locală — actori care influențează proiectul fără a răspunde direct în fața project managerului.",
+    "concept_key": "piata-stakeholderi-cultura-organizationala",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De la ce dată se aplică Regulamentul General privind Protecția Datelor (GDPR) în UE?",
+    "back": "25 mai 2018 — Regulamentul (UE) 2016/679.",
+    "concept_key": "mediul-extern-pmbok7",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce rol are cultura organizațională în relația dintre mediul intern și cel extern al unui proiect, conform PMBOK 7?",
+    "back": "Acționează ca punte: o cultură deschisă la schimbare absoarbe mai ușor șocurile externe, în timp ce o cultură rigidă le poate amplifica impactul.",
+    "concept_key": "piata-stakeholderi-cultura-organizationala",
+    "blockId": "cmjjuxvzu00acumkp7z20ms4n-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1483,
+   "flashcards": 5
+  }
+ }
+}

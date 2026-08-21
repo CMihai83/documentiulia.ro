@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvnv0024umkpxqnwvss7",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Query - Transformare Date",
+ "lesson": "Exercițiu - Pipeline date automat",
+ "category": "EXCEL_VBA",
+ "content": "# Exercițiu - Pipeline date automat\n\n## Ce este un pipeline de date automat\n\nUn **pipeline de date** este o secvență de pași repetabili prin care datele brute, venite din una sau mai multe surse, ajung într-o formă curată și utilizabilă pentru raportare — fără intervenție manuală de fiecare dată. În Power Query, acest concept se numește **ETL**: **E**xtract (extragere din surse), **T**ransform (curățare și restructurare), **L**oad (încărcare în Excel sau în modelul de date Power Pivot).\n\nDiferența față de munca „clasică” în Excel este esențială: în loc să copiezi și să lipești manual date din 3 fișiere în fiecare lună — cu riscul de a uita o coloană, a dubla un rând sau a greși un format — construiești o singură dată secvența de pași (numită în Power Query *Applied Steps*), iar apoi apeși **Refresh** (Actualizare) ori de câte ori sursele se schimbă. Toți pașii se reaplică automat, identic, de fiecare dată.\n\nAcest lucru este extrem de valoros pentru o firmă din România care primește, de exemplu, rapoarte lunare de vânzări de la mai multe gestiuni sau puncte de lucru: contabilul sau analistul nu mai reface manual centralizatorul, ci doar reîmprospătează interogarea, iar rezultatul e mereu corect și reproductibil, indiferent cine rulează raportul.\n\n## Conectarea la surse multiple de date\n\nUn pipeline automat pornește aproape întotdeauna de la mai multe surse eterogene. Power Query oferă conectori dedicați, accesibili din **Data → Get Data** (Obținere date):\n\n- **From File** — Excel Workbook, Text/CSV, XML, JSON — pentru fișiere individuale;\n- **From Folder** — cea mai puternică opțiune pentru automatizare: Power Query citește *toate* fișierele dintr-un folder (ex. toate CSV-urile lunare) și le combină automat, chiar dacă apar fișiere noi ulterior;\n- **From Database** — SQL Server, Access și alte baze de date relaționale;\n- **From Web / From SharePoint** — pentru surse online.\n\nCând sursele au aceeași structură de coloane (ex. trei fișiere de vânzări cu coloanele Data, Produs, Cantitate, PretUnitar), se folosește **Append Queries** (Adăugare interogări) pentru a le pune „unul sub altul”. Când sursele au coloane diferite dar o cheie comună (ex. un tabel de vânzări și un tabel de prețuri, legate prin codul de produs), se folosește **Merge Queries** (Îmbinare interogări), echivalentul unui JOIN din SQL sau al unui XLOOKUP extins la nivel de tabel întreg.\n\nAlegerea corectă între Append și Merge este primul pas critic în proiectarea oricărui pipeline cu surse multiple.\n\n## Curățarea datelor: pașii standard\n\nDupă extragere, datele brute rareori sunt gata de folosit. Power Query oferă un set de transformări standard, aplicabile din interfața grafică (fiecare click generează automat cod M în fundal):\n\n- **Change Type** — stabilește tipul corect (Number, Date, Text) pentru fiecare coloană; esențial, altfel calculele ulterioare eșuează sau produc erori;\n- **Trim / Clean** — elimină spațiile suplimentare și caracterele invizibile din text (frecvent la date exportate din ERP sau copiate din PDF);\n- **Remove Duplicates** — elimină rândurile identice, care apar des când aceleași date sunt exportate de mai multe ori;\n- **Remove Errors / Replace Errors** — tratează valorile care nu s-au putut converti corect;\n- **Fill Down** — completează celulele goale cu ultima valoare validă de deasupra (util la rapoarte cu celule combinate exportate din alte sisteme);\n- **Filter Rows** — elimină rânduri nedorite, de exemplu cele cu cantitate zero sau negativă.\n\nMarele avantaj: fiecare transformare devine un pas în lista **Applied Steps**, vizibil și editabil oricând. Pipeline-ul nu este o „cutie neagră” — poți inspecta și corecta orice pas, iar la următoarea actualizare toți pașii se reaplică automat pe datele noi, în aceeași ordine.\n\n## Exemplu: Combinarea a trei fișiere de vânzări cu Append Queries\nFirma SC ContaExemplu SRL primește lunar câte un fișier CSV de la fiecare din cele 3 gestiuni: `Vanzari_Nord.csv`, `Vanzari_Sud.csv`, `Vanzari_Est.csv`. Toate au aceleași coloane: Data, Produs, Cantitate, PretUnitar.\n\n**Pașii în Power Query:**\n\n1. `Data → Get Data → From File → From Text/CSV` pentru fiecare din cele 3 fișiere — se creează 3 interogări: `Nord`, `Sud`, `Est`.\n2. În fiecare interogare, se setează corect tipurile: Data = Date, Cantitate = Whole Number, PretUnitar = Decimal Number.\n3. Se selectează interogarea `Nord`, apoi `Home → Append Queries → Append Queries as New`, și se aleg toate cele 3 interogări (Nord, Sud, Est). Rezultă o interogare nouă, `VanzariTotale`, cu toate rândurile combinate.\n\nCodul M generat automat pentru pasul de combinare arată astfel:\n\n```\n= Table.Combine({Nord, Sud, Est})\n```\n\nFuncția `Table.Combine` este echivalentul M al operației Append: ia o listă de tabele cu structură compatibilă și le concatenează pe verticală, rând după rând, într-un singur tabel unificat. Dacă luna viitoare mai apare o gestiune nouă (ex. Vest), este suficient să adaugi interogarea ei în lista din `Table.Combine`.\n\n## Exemplu: Parametrizarea căii sursă pentru un pipeline portabil\nDacă fișierele sursă se schimbă des ca denumire sau ca locație (ex. sunt urcate lunar într-un folder OneDrive/SharePoint sincronizat), varianta robustă este să folosești **From Folder** combinat cu un **parametru**.\n\n**Pașii:**\n\n1. `Data → Get Data → Manage Parameters → New Parameter`, denumit `CaleFolderSurse`, tip Text, cu valoarea implicită căii folderului (ex. `C:\\ContaExemplu\\Vanzari\\2026-01`).\n2. `Data → Get Data → From File → From Folder`, dar în loc să introduci calea direct, o legi de parametrul creat.\n3. Power Query citește automat toate fișierele CSV din folder și le expandează într-un singur tabel, indiferent câte sunt.\n\nCodul M rezultat:\n\n```\nSursa = Folder.Files(CaleFolderSurse),\nFisiereCSV = Table.SelectRows(Sursa, each Text.EndsWith([Name], \".csv\")),\nContinut = Table.AddColumn(FisiereCSV, \"Date\", each Csv.Document([Content])),\nExpandat = Table.ExpandTableColumn(Continut, \"Date\", {\"Data\",\"Produs\",\"Cantitate\",\"PretUnitar\"})\n```\n\nAvantajul: dacă anul viitor structura de foldere se schimbă, modifici o singură dată valoarea parametrului `CaleFolderSurse` — nu editezi fiecare interogare în parte. Acesta este principiul de bază al unui pipeline **automat și portabil**, ușor de predat colegilor sau de mutat pe alt calculator.\n\n⚠ Când combini surse din locații diferite (ex. un fișier local și unul din SharePoint), Power Query poate bloca actualizarea cu eroarea **„Formula.Firewall: Query references other queries or steps, so it may not directly access a data source”**. Cauza este setarea de **Privacy Levels** (Niveluri de confidențialitate) din `File → Options and Settings → Query Options → Privacy`. Pentru un pipeline intern, unde ai încredere în toate sursele, poți seta nivelul la „Ignore Privacy Levels” — dar fă asta doar dacă sursele sunt cu adevărat de încredere, nu pentru date sensibile provenite din surse externe necunoscute.\n\n## Exercițiu\n**Cerință:** Construiește în Power Query un pipeline complet care importă, curăță și combină date din 3 surse de vânzări, apoi produce un centralizator pe produs.\n\nAi 3 fișiere CSV cu coloanele **Data, Produs, Cantitate, PretUnitar**:\n\n*Vanzari_Nord.csv*\n| Data | Produs | Cantitate | PretUnitar |\n|---|---|---|---|\n| 05.01.2026 | Laptop | 5 | 3200 |\n| 06.01.2026 | Mouse | 20 | 45 |\n\n*Vanzari_Sud.csv*\n| Data | Produs | Cantitate | PretUnitar |\n|---|---|---|---|\n| 05.01.2026 | Laptop | 3 | 3200 |\n| 07.01.2026 | Tastatura | 10 | 120 |\n\n*Vanzari_Est.csv*\n| Data | Produs | Cantitate | PretUnitar |\n|---|---|---|---|\n| 06.01.2026 | Mouse | 15 | 45 |\n| 08.01.2026 | Laptop | 2 | 3200 |\n\n**Pași ceruți:**\n1. Importă cele 3 fișiere ca interogări separate și setează corect tipurile de date (Data = Date, Cantitate = Whole Number, PretUnitar = Decimal Number).\n2. Combină-le într-o singură interogare `VanzariTotale` folosind Append Queries.\n3. Adaugă o coloană calculată `Valoare` = Cantitate × PretUnitar.\n4. Grupează rezultatul pe `Produs`, însumând `Valoare`, pentru a obține totalul vânzărilor pe fiecare produs.\n5. Calculează valoarea totală generală a vânzărilor din toate cele 3 gestiuni.\n\n**Soluție:** **Rezolvare pas cu pas:**\n\n1. Import + tipizare — pentru fiecare fișier: `Data → From Text/CSV`, apoi `Home → Data Type` pe fiecare coloană conform cerinței. Rezultă interogările `Nord`, `Sud`, `Est`.\n\n2. Combinare: `Home → Append Queries → Append Queries as New`, selectând Nord, Sud, Est. Codul M generat:\n```\n= Table.Combine({Nord, Sud, Est})\n```\nRezultă 6 rânduri în `VanzariTotale`.\n\n3. Coloană calculată: `Add Column → Custom Column`, denumită `Valoare`, cu formula:\n```\n= [Cantitate] * [PretUnitar]\n```\nRezultă: Laptop 5×3200=16000; Mouse 20×45=900; Laptop 3×3200=9600; Tastatura 10×120=1200; Mouse 15×45=675; Laptop 2×3200=6400.\n\n4. Grupare: `Transform → Group By`, câmp `Produs`, operație `Sum` pe `Valoare`. Codul M:\n```\n= Table.Group(VanzariTotale, {\"Produs\"}, {{\"ValoareTotala\", each List.Sum([Valoare]), type number}})\n```\nRezultat:\n- Laptop: 16000 + 9600 + 6400 = **32.000 lei**\n- Mouse: 900 + 675 = **1.575 lei**\n- Tastatura: **1.200 lei**\n\n5. Valoarea totală generală: 32.000 + 1.575 + 1.200 = **34.775 lei**.\n\nÎncarcă rezultatul în Excel cu `Close & Load`. La luna următoare, e suficient să înlocuiești cele 3 fișiere CSV cu aceleași nume și să apeși **Refresh** — toți pașii (tipizare, combinare, calcul, grupare) se reaplică automat, fără nicio muncă manuală suplimentară.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "power-query-pipeline-etl",
+    "md": "## Ce este un pipeline de date automat\n\nUn **pipeline de date** este o secvență de pași repetabili prin care datele brute, venite din una sau mai multe surse, ajung într-o formă curată și utilizabilă pentru raportare — fără intervenție manuală de fiecare dată. În Power Query, acest concept se numește **ETL**: **E**xtract (extragere din surse), **T**ransform (curățare și restructurare), **L**oad (încărcare în Excel sau în modelul de date Power Pivot).\n\nDiferența față de munca „clasică” în Excel este esențială: în loc să copiezi și să lipești manual date din 3 fișiere în fiecare lună — cu riscul de a uita o coloană, a dubla un rând sau a greși un format — construiești o singură dată secvența de pași (numită în Power Query *Applied Steps*), iar apoi apeși **Refresh** (Actualizare) ori de câte ori sursele se schimbă. Toți pașii se reaplică automat, identic, de fiecare dată.\n\nAcest lucru este extrem de valoros pentru o firmă din România care primește, de exemplu, rapoarte lunare de vânzări de la mai multe gestiuni sau puncte de lucru: contabilul sau analistul nu mai reface manual centralizatorul, ci doar reîmprospătează interogarea, iar rezultatul e mereu corect și reproductibil, indiferent cine rulează raportul.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-surse-multiple",
+    "md": "## Conectarea la surse multiple de date\n\nUn pipeline automat pornește aproape întotdeauna de la mai multe surse eterogene. Power Query oferă conectori dedicați, accesibili din **Data → Get Data** (Obținere date):\n\n- **From File** — Excel Workbook, Text/CSV, XML, JSON — pentru fișiere individuale;\n- **From Folder** — cea mai puternică opțiune pentru automatizare: Power Query citește *toate* fișierele dintr-un folder (ex. toate CSV-urile lunare) și le combină automat, chiar dacă apar fișiere noi ulterior;\n- **From Database** — SQL Server, Access și alte baze de date relaționale;\n- **From Web / From SharePoint** — pentru surse online.\n\nCând sursele au aceeași structură de coloane (ex. trei fișiere de vânzări cu coloanele Data, Produs, Cantitate, PretUnitar), se folosește **Append Queries** (Adăugare interogări) pentru a le pune „unul sub altul”. Când sursele au coloane diferite dar o cheie comună (ex. un tabel de vânzări și un tabel de prețuri, legate prin codul de produs), se folosește **Merge Queries** (Îmbinare interogări), echivalentul unui JOIN din SQL sau al unui XLOOKUP extins la nivel de tabel întreg.\n\nAlegerea corectă între Append și Merge este primul pas critic în proiectarea oricărui pipeline cu surse multiple.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-curatare-date",
+    "md": "## Curățarea datelor: pașii standard\n\nDupă extragere, datele brute rareori sunt gata de folosit. Power Query oferă un set de transformări standard, aplicabile din interfața grafică (fiecare click generează automat cod M în fundal):\n\n- **Change Type** — stabilește tipul corect (Number, Date, Text) pentru fiecare coloană; esențial, altfel calculele ulterioare eșuează sau produc erori;\n- **Trim / Clean** — elimină spațiile suplimentare și caracterele invizibile din text (frecvent la date exportate din ERP sau copiate din PDF);\n- **Remove Duplicates** — elimină rândurile identice, care apar des când aceleași date sunt exportate de mai multe ori;\n- **Remove Errors / Replace Errors** — tratează valorile care nu s-au putut converti corect;\n- **Fill Down** — completează celulele goale cu ultima valoare validă de deasupra (util la rapoarte cu celule combinate exportate din alte sisteme);\n- **Filter Rows** — elimină rânduri nedorite, de exemplu cele cu cantitate zero sau negativă.\n\nMarele avantaj: fiecare transformare devine un pas în lista **Applied Steps**, vizibil și editabil oricând. Pipeline-ul nu este o „cutie neagră” — poți inspecta și corecta orice pas, iar la următoarea actualizare toți pașii se reaplică automat pe datele noi, în aceeași ordine.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b3"
+   },
+   {
+    "type": "example",
+    "title": "Combinarea a trei fișiere de vânzări cu Append Queries",
+    "concept_key": "power-query-append-queries",
+    "md": "Firma SC ContaExemplu SRL primește lunar câte un fișier CSV de la fiecare din cele 3 gestiuni: `Vanzari_Nord.csv`, `Vanzari_Sud.csv`, `Vanzari_Est.csv`. Toate au aceleași coloane: Data, Produs, Cantitate, PretUnitar.\n\n**Pașii în Power Query:**\n\n1. `Data → Get Data → From File → From Text/CSV` pentru fiecare din cele 3 fișiere — se creează 3 interogări: `Nord`, `Sud`, `Est`.\n2. În fiecare interogare, se setează corect tipurile: Data = Date, Cantitate = Whole Number, PretUnitar = Decimal Number.\n3. Se selectează interogarea `Nord`, apoi `Home → Append Queries → Append Queries as New`, și se aleg toate cele 3 interogări (Nord, Sud, Est). Rezultă o interogare nouă, `VanzariTotale`, cu toate rândurile combinate.\n\nCodul M generat automat pentru pasul de combinare arată astfel:\n\n```\n= Table.Combine({Nord, Sud, Est})\n```\n\nFuncția `Table.Combine` este echivalentul M al operației Append: ia o listă de tabele cu structură compatibilă și le concatenează pe verticală, rând după rând, într-un singur tabel unificat. Dacă luna viitoare mai apare o gestiune nouă (ex. Vest), este suficient să adaugi interogarea ei în lista din `Table.Combine`.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b4"
+   },
+   {
+    "type": "example",
+    "title": "Parametrizarea căii sursă pentru un pipeline portabil",
+    "concept_key": "power-query-parametri-cale",
+    "md": "Dacă fișierele sursă se schimbă des ca denumire sau ca locație (ex. sunt urcate lunar într-un folder OneDrive/SharePoint sincronizat), varianta robustă este să folosești **From Folder** combinat cu un **parametru**.\n\n**Pașii:**\n\n1. `Data → Get Data → Manage Parameters → New Parameter`, denumit `CaleFolderSurse`, tip Text, cu valoarea implicită căii folderului (ex. `C:\\ContaExemplu\\Vanzari\\2026-01`).\n2. `Data → Get Data → From File → From Folder`, dar în loc să introduci calea direct, o legi de parametrul creat.\n3. Power Query citește automat toate fișierele CSV din folder și le expandează într-un singur tabel, indiferent câte sunt.\n\nCodul M rezultat:\n\n```\nSursa = Folder.Files(CaleFolderSurse),\nFisiereCSV = Table.SelectRows(Sursa, each Text.EndsWith([Name], \".csv\")),\nContinut = Table.AddColumn(FisiereCSV, \"Date\", each Csv.Document([Content])),\nExpandat = Table.ExpandTableColumn(Continut, \"Date\", {\"Data\",\"Produs\",\"Cantitate\",\"PretUnitar\"})\n```\n\nAvantajul: dacă anul viitor structura de foldere se schimbă, modifici o singură dată valoarea parametrului `CaleFolderSurse` — nu editezi fiecare interogare în parte. Acesta este principiul de bază al unui pipeline **automat și portabil**, ușor de predat colegilor sau de mutat pe alt calculator.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Când combini surse din locații diferite (ex. un fișier local și unul din SharePoint), Power Query poate bloca actualizarea cu eroarea **„Formula.Firewall: Query references other queries or steps, so it may not directly access a data source”**. Cauza este setarea de **Privacy Levels** (Niveluri de confidențialitate) din `File → Options and Settings → Query Options → Privacy`. Pentru un pipeline intern, unde ai încredere în toate sursele, poți seta nivelul la „Ignore Privacy Levels” — dar fă asta doar dacă sursele sunt cu adevărat de încredere, nu pentru date sensibile provenite din surse externe necunoscute.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "**Cerință:** Construiește în Power Query un pipeline complet care importă, curăță și combină date din 3 surse de vânzări, apoi produce un centralizator pe produs.\n\nAi 3 fișiere CSV cu coloanele **Data, Produs, Cantitate, PretUnitar**:\n\n*Vanzari_Nord.csv*\n| Data | Produs | Cantitate | PretUnitar |\n|---|---|---|---|\n| 05.01.2026 | Laptop | 5 | 3200 |\n| 06.01.2026 | Mouse | 20 | 45 |\n\n*Vanzari_Sud.csv*\n| Data | Produs | Cantitate | PretUnitar |\n|---|---|---|---|\n| 05.01.2026 | Laptop | 3 | 3200 |\n| 07.01.2026 | Tastatura | 10 | 120 |\n\n*Vanzari_Est.csv*\n| Data | Produs | Cantitate | PretUnitar |\n|---|---|---|---|\n| 06.01.2026 | Mouse | 15 | 45 |\n| 08.01.2026 | Laptop | 2 | 3200 |\n\n**Pași ceruți:**\n1. Importă cele 3 fișiere ca interogări separate și setează corect tipurile de date (Data = Date, Cantitate = Whole Number, PretUnitar = Decimal Number).\n2. Combină-le într-o singură interogare `VanzariTotale` folosind Append Queries.\n3. Adaugă o coloană calculată `Valoare` = Cantitate × PretUnitar.\n4. Grupează rezultatul pe `Produs`, însumând `Valoare`, pentru a obține totalul vânzărilor pe fiecare produs.\n5. Calculează valoarea totală generală a vânzărilor din toate cele 3 gestiuni.",
+    "solution_md": "**Rezolvare pas cu pas:**\n\n1. Import + tipizare — pentru fiecare fișier: `Data → From Text/CSV`, apoi `Home → Data Type` pe fiecare coloană conform cerinței. Rezultă interogările `Nord`, `Sud`, `Est`.\n\n2. Combinare: `Home → Append Queries → Append Queries as New`, selectând Nord, Sud, Est. Codul M generat:\n```\n= Table.Combine({Nord, Sud, Est})\n```\nRezultă 6 rânduri în `VanzariTotale`.\n\n3. Coloană calculată: `Add Column → Custom Column`, denumită `Valoare`, cu formula:\n```\n= [Cantitate] * [PretUnitar]\n```\nRezultă: Laptop 5×3200=16000; Mouse 20×45=900; Laptop 3×3200=9600; Tastatura 10×120=1200; Mouse 15×45=675; Laptop 2×3200=6400.\n\n4. Grupare: `Transform → Group By`, câmp `Produs`, operație `Sum` pe `Valoare`. Codul M:\n```\n= Table.Group(VanzariTotale, {\"Produs\"}, {{\"ValoareTotala\", each List.Sum([Valoare]), type number}})\n```\nRezultat:\n- Laptop: 16000 + 9600 + 6400 = **32.000 lei**\n- Mouse: 900 + 675 = **1.575 lei**\n- Tastatura: **1.200 lei**\n\n5. Valoarea totală generală: 32.000 + 1.575 + 1.200 = **34.775 lei**.\n\nÎncarcă rezultatul în Excel cu `Close & Load`. La luna următoare, e suficient să înlocuiești cele 3 fișiere CSV cu aceleași nume și să apeși **Refresh** — toți pașii (tipizare, combinare, calcul, grupare) se reaplică automat, fără nicio muncă manuală suplimentară.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un pipeline Power Query care combină 3 fișiere CSV cu aceleași coloane, ce comandă folosești pentru a le uni într-un singur tabel, unul sub altul?",
+    "choices": [
+     "Merge Queries",
+     "Append Queries",
+     "Group By",
+     "Pivot Column"
+    ],
+    "answer": 1,
+    "explain": "Append Queries concatenează rândurile din tabele cu structură de coloane compatibilă (echivalent Table.Combine în M). Merge Queries unește tabele pe o coloană-cheie comună, ca un JOIN, adăugând coloane, nu rânduri.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce este recomandat să folosești un parametru pentru calea folderului sursă într-un pipeline Power Query, în loc să scrii calea direct în fiecare interogare?",
+    "choices": [
+     "Pentru că Power Query nu acceptă căi de folder scrise direct în interogare",
+     "Pentru că parametrul permite schimbarea sursei dintr-un singur loc, fără a edita fiecare interogare în parte",
+     "Pentru că folosirea unui parametru mărește viteza de calcul a formulelor din foaia de lucru",
+     "Pentru că este o cerință obligatorie în Excel 365"
+    ],
+    "answer": 1,
+    "explain": "Un parametru centralizează o valoare reutilizabilă (ex. calea unui folder). Dacă locația sursei se schimbă, actualizezi o singură valoare, iar toate interogările care îl folosesc se adaptează automat — asta face pipeline-ul portabil și ușor de întreținut.",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul ETL în contextul Power Query?",
+    "back": "Extract-Transform-Load: extragere date din surse, transformare/curățare a datelor, apoi încărcare în Excel sau în modelul de date.",
+    "concept_key": "power-query-pipeline-etl",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între Append Queries și Merge Queries în Power Query?",
+    "back": "Append Queries adaugă rânduri (concatenează tabele cu coloane similare, unul sub altul). Merge Queries adaugă coloane (unește tabele după o cheie comună, ca un JOIN).",
+    "concept_key": "power-query-append-vs-merge",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este funcția M care combină mai multe tabele într-unul singur prin concatenare de rânduri?",
+    "back": "Table.Combine({Tabel1, Tabel2, Tabel3}) — echivalentul în cod M al operației Append Queries.",
+    "concept_key": "power-query-table-combine",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce buton folosești pentru a actualiza toate interogările dintr-un pipeline Power Query cu un singur click?",
+    "back": "Refresh All (Actualizează tot), disponibil în tab-ul Data — reaplică automat toți pașii salvați pe datele noi din surse.",
+    "concept_key": "power-query-refresh-all",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un parametru în Power Query și de ce e util într-un pipeline automat?",
+    "back": "O valoare denumită și reutilizabilă (ex. calea unui folder sursă) folosită în interogări; permite schimbarea sursei dintr-un singur loc, fără a edita fiecare interogare, făcând pipeline-ul portabil.",
+    "concept_key": "power-query-parametri-cale",
+    "blockId": "cmjjuxvnv0024umkpxqnwvss7-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1341,
+   "flashcards": 5
+  }
+ }
+}

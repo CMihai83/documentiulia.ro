@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxvpf0031umkp8cw7unwk",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Introducere în VBA",
+ "lesson": "Primul macro - Hello World",
+ "category": "EXCEL_VBA",
+ "content": "# Primul macro - Hello World\n\n**VBA (Visual Basic for Applications)** este limbajul de programare integrat în Excel, Word și celelalte aplicații Microsoft Office. Cu VBA poți automatiza orice acțiune repetitivă pe care o faci manual în Excel: formatări, calcule, generare de rapoarte, trimitere de e-mailuri sau prelucrare de fișiere.\n\nCa să scrii primul tău cod, deschizi **Visual Basic Editor (VBE)** — fereastra separată în care se scrie și se rulează codul VBA. Ai două variante:\n\n1. Apeși combinația de taste **Alt+F11** din Excel.\n2. Din fila **Dezvoltator** (Developer), butonul **Visual Basic** — dacă fila Dezvoltator nu apare, o activezi din Fișier → Opțiuni → Personalizare panglică → bifezi „Dezvoltator\".\n\nÎn VBE, codul se scrie într-un **modul** (Module). Adaugi unul nou din meniul **Insert → Module**. Fiecare modul este ca o „foaie de cod\" în care poți scrie una sau mai multe proceduri.\n\nUn detaliu important pentru firmele din România: un fișier Excel care conține macro-uri **nu poate fi salvat ca .xlsx** (formatul standard nu permite cod). Trebuie salvat cu extensia **.xlsm** (Excel Macro-Enabled Workbook), altfel Excel elimină automat tot codul la salvare.\n\nCea mai simplă unitate de cod VBA este o **procedură Sub**. Aceasta grupează o secvență de instrucțiuni care rulează împreună, sub un singur nume. Sintaxa de bază este:\n\n```vba\nSub NumeMacro()\n    ' instrucțiunile tale aici\nEnd Sub\n```\n\nReguli esențiale:\n- `Sub` marchează începutul procedurii, `End Sub` marchează finalul — Excel adaugă automat `End Sub` când apeși Enter după prima linie.\n- Numele macro-ului nu poate conține spații, cifre la început sau caractere speciale (diacritice incluse) — folosește, de exemplu, `SalutBunVenit`, nu `Salut Bun Venit!`.\n- Tot ce scrii între `Sub` și `End Sub` rulează secvențial, linie cu linie, de sus în jos.\n- O linie care începe cu apostrof (`'`) este **comentariu** — Excel o ignoră la rulare, dar te ajută pe tine sau pe colegii care preiau codul să înțeleagă ce face fiecare secțiune.\n\nExistă trei moduri principale de a rula un macro din VBE:\n1. Apeși **F5** cât timp cursorul este în interiorul procedurii.\n2. Din Excel, **Alt+F8** deschide lista de macro-uri disponibile, selectezi și apeși **Run**.\n3. Atașezi macro-ul unui buton desenat pe foaia de calcul (Insert → Shapes, apoi click-dreapta → Assign Macro) — varianta cea mai prietenoasă pentru utilizatorii care nu lucrează direct în VBE, de exemplu colegii din departamentul financiar.\n\nPrimele două instrumente cu care interacționezi cu utilizatorul în VBA sunt **MsgBox** și **InputBox**.\n\n**MsgBox** afișează o fereastră cu un mesaj și unul sau mai multe butoane. Forma simplă:\n\n```vba\nMsgBox \"Salut, lume!\"\n```\n\nForma completă permite un titlu și un set de butoane/iconițe:\n\n```vba\nMsgBox \"Factura a fost salvată.\", vbInformation, \"Confirmare\"\n```\n\nParametrii uzuali pentru al doilea argument: `vbInformation` (iconiță „i\"), `vbExclamation` (semn de exclamare), `vbCritical` (eroare), `vbOKCancel` sau `vbYesNo` (pentru a cere o decizie utilizatorului). Când folosești `vbYesNo`, rezultatul apăsării poate fi capturat într-o variabilă și verificat cu `If`, lucru pe care îl vei aprofunda în lecțiile despre condiții.\n\n**InputBox** face exact opusul: cere o valoare de la utilizator și o returnează ca text (`String`). Sintaxă:\n\n```vba\nDim numeFirma As String\nnumeFirma = InputBox(\"Introduceți numele firmei:\", \"Date companie\")\n```\n\nDacă utilizatorul apasă **Anulare (Cancel)**, `InputBox` returnează un text gol (`\"\"`), nu produce eroare — un aspect important de reținut, pentru că altfel macro-ul tău poate continua să ruleze cu o valoare goală și să genereze rezultate greșite. Vei învăța în lecțiile despre condiții (`If...Then`) cum să tratezi corect acest caz.\n\n## Exemplu: Primul macro: Hello World cu MsgBox\nDeschide Visual Basic Editor (Alt+F11), inserează un modul nou (Insert → Module) și scrie:\n\n```vba\nSub HelloWorld()\n    ' Primul meu macro - afișează un mesaj simplu\n    MsgBox \"Salut din VBA! Acesta este primul meu macro.\"\nEnd Sub\n```\n\nApasă **F5** (sau Alt+F8 din Excel, selectezi `HelloWorld` și apeși Run). Va apărea o fereastră cu mesajul tău și un singur buton **OK**.\n\nHaide să îl îmbunătățim puțin, adăugând un titlu și o iconiță informativă:\n\n```vba\nSub HelloWorldFormatat()\n    ' Macro cu titlu personalizat și iconiță de informare\n    MsgBox \"Bun venit în cursul de VBA pentru Excel!\", _\n           vbInformation, \"DocumentIulia.ro\"\nEnd Sub\n```\n\nObservă caracterul underscore ( `_` ) de la finalul primei linii din interiorul `MsgBox` — este **caracterul de continuare a liniei**, folosit în VBA pentru a împărți o instrucțiune lungă pe mai multe rânduri, fără să afecteze modul în care este interpretat codul. Îl vei folosi des atunci când liniile de cod devin lungi și greu de citit.\n\n## Exemplu: InputBox: mesaj personalizat cu numele firmei\nCombinăm acum `InputBox` cu `MsgBox` pentru a crea un macro care preia o informație de la utilizator și o folosește într-un mesaj personalizat — utilă, de exemplu, pentru un contabil care rulează același raport pentru mai multe firme client (SRL-uri sau PFA-uri).\n\n```vba\nSub SalutFirma()\n    Dim numeFirma As String\n\n    ' Cerem numele firmei de la utilizator\n    numeFirma = InputBox(\"Introduceți numele firmei (ex: Contab Expert SRL):\", _\n                          \"Date companie\")\n\n    ' Verificăm dacă utilizatorul a apăsat Anulare sau a lăsat câmpul gol\n    If numeFirma = \"\" Then\n        MsgBox \"Nu ați introdus niciun nume de firmă.\", vbExclamation, \"Atenție\"\n    Else\n        MsgBox \"Raportul lunar pentru \" & numeFirma & \" a fost generat cu succes.\", _\n               vbInformation, \"Raport generat\"\n    End If\nEnd Sub\n```\n\nDouă elemente noi apar aici:\n- Operatorul **`&`** concatenează (unește) text — `\"Raportul lunar pentru \" & numeFirma` lipește numele firmei introdus de utilizator direct în mesaj.\n- Structura **`If...Then...Else...End If`** verifică o condiție înainte de a decide ce mesaj se afișează. Vei studia în detaliu condițiile în lecția următoare, dar e util să vezi de pe acum cum se combină cu `InputBox` pentru un macro robust, care nu se blochează dacă utilizatorul nu completează nimic.\n\n⚠ Din motive de securitate, Excel dezactivează implicit macro-urile din fișierele descărcate de pe internet sau primite prin e-mail (fișierul se deschide cu o bară galbenă „Security Warning — Macros have been disabled\"). Nu activa macro-uri dintr-un fișier .xlsm a cărui origine nu o cunoști — un macro poate conține cod capabil să șteargă date, să trimită e-mailuri sau să acceseze fișiere de pe disc. Pentru fișierele proprii, cel mai sigur este să le salvezi într-un **Trusted Location** (Fișier → Opțiuni → Trust Center → Trust Center Settings → Trusted Locations), astfel încât Excel să le ruleze fără avertisment de fiecare dată.\n\n## Exercițiu\nScrie un macro numit `CalculTVA` care:\n1. Cere utilizatorului, printr-un `InputBox`, valoarea unei facturi fără TVA (introdusă ca text, de exemplu „1000\").\n2. Calculează TVA la cota standard de **21%** (cotă aplicabilă conform reglementărilor în vigoare din august 2025 — verifică la data rulării dacă legislația s-a schimbat).\n3. Afișează printr-un `MsgBox` valoarea TVA și valoarea totală (cu TVA inclus).\n\nIndiciu: valoarea returnată de `InputBox` este text (`String`), așa că trebuie convertită la un număr cu funcția `Val()` sau `CDbl()` înainte de a face calculul.\n\n**Soluție:** ```vba\nSub CalculTVA()\n    Dim valoareFaraTVA As Double\n    Dim valoareTVA As Double\n    Dim valoareTotala As Double\n    Dim textIntrodus As String\n\n    ' Preluăm valoarea facturii ca text\n    textIntrodus = InputBox(\"Introduceți valoarea facturii fără TVA (lei):\", \"Calcul TVA\")\n\n    ' Dacă utilizatorul anulează sau lasă câmpul gol, oprim macro-ul\n    If textIntrodus = \"\" Then\n        MsgBox \"Calculul a fost anulat.\", vbExclamation, \"Atenție\"\n        Exit Sub\n    End If\n\n    ' Convertim textul introdus într-un număr zecimal\n    valoareFaraTVA = Val(textIntrodus)\n\n    ' Calculăm TVA la cota standard de 21%\n    valoareTVA = valoareFaraTVA * 0.21\n    valoareTotala = valoareFaraTVA + valoareTVA\n\n    ' Afișăm rezultatul\n    MsgBox \"Valoare fără TVA: \" & valoareFaraTVA & \" lei\" & vbNewLine & _\n           \"TVA (21%): \" & valoareTVA & \" lei\" & vbNewLine & _\n           \"Total de plată: \" & valoareTotala & \" lei\", _\n           vbInformation, \"Rezultat calcul TVA\"\nEnd Sub\n```\n\nPentru o factură de 1000 lei fără TVA, macro-ul afișează: TVA = 210 lei, Total = 1210 lei. Observă `vbNewLine`, o constantă VBA care introduce o linie nouă în textul afișat de `MsgBox`, utilă pentru mesaje cu mai multe rânduri de informație.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vba-visual-basic-editor",
+    "md": "**VBA (Visual Basic for Applications)** este limbajul de programare integrat în Excel, Word și celelalte aplicații Microsoft Office. Cu VBA poți automatiza orice acțiune repetitivă pe care o faci manual în Excel: formatări, calcule, generare de rapoarte, trimitere de e-mailuri sau prelucrare de fișiere.\n\nCa să scrii primul tău cod, deschizi **Visual Basic Editor (VBE)** — fereastra separată în care se scrie și se rulează codul VBA. Ai două variante:\n\n1. Apeși combinația de taste **Alt+F11** din Excel.\n2. Din fila **Dezvoltator** (Developer), butonul **Visual Basic** — dacă fila Dezvoltator nu apare, o activezi din Fișier → Opțiuni → Personalizare panglică → bifezi „Dezvoltator\".\n\nÎn VBE, codul se scrie într-un **modul** (Module). Adaugi unul nou din meniul **Insert → Module**. Fiecare modul este ca o „foaie de cod\" în care poți scrie una sau mai multe proceduri.\n\nUn detaliu important pentru firmele din România: un fișier Excel care conține macro-uri **nu poate fi salvat ca .xlsx** (formatul standard nu permite cod). Trebuie salvat cu extensia **.xlsm** (Excel Macro-Enabled Workbook), altfel Excel elimină automat tot codul la salvare.",
+    "md_note": null,
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-sub-end-sub",
+    "md": "Cea mai simplă unitate de cod VBA este o **procedură Sub**. Aceasta grupează o secvență de instrucțiuni care rulează împreună, sub un singur nume. Sintaxa de bază este:\n\n```vba\nSub NumeMacro()\n    ' instrucțiunile tale aici\nEnd Sub\n```\n\nReguli esențiale:\n- `Sub` marchează începutul procedurii, `End Sub` marchează finalul — Excel adaugă automat `End Sub` când apeși Enter după prima linie.\n- Numele macro-ului nu poate conține spații, cifre la început sau caractere speciale (diacritice incluse) — folosește, de exemplu, `SalutBunVenit`, nu `Salut Bun Venit!`.\n- Tot ce scrii între `Sub` și `End Sub` rulează secvențial, linie cu linie, de sus în jos.\n- O linie care începe cu apostrof (`'`) este **comentariu** — Excel o ignoră la rulare, dar te ajută pe tine sau pe colegii care preiau codul să înțeleagă ce face fiecare secțiune.\n\nExistă trei moduri principale de a rula un macro din VBE:\n1. Apeși **F5** cât timp cursorul este în interiorul procedurii.\n2. Din Excel, **Alt+F8** deschide lista de macro-uri disponibile, selectezi și apeși **Run**.\n3. Atașezi macro-ul unui buton desenat pe foaia de calcul (Insert → Shapes, apoi click-dreapta → Assign Macro) — varianta cea mai prietenoasă pentru utilizatorii care nu lucrează direct în VBE, de exemplu colegii din departamentul financiar.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-msgbox-inputbox",
+    "md": "Primele două instrumente cu care interacționezi cu utilizatorul în VBA sunt **MsgBox** și **InputBox**.\n\n**MsgBox** afișează o fereastră cu un mesaj și unul sau mai multe butoane. Forma simplă:\n\n```vba\nMsgBox \"Salut, lume!\"\n```\n\nForma completă permite un titlu și un set de butoane/iconițe:\n\n```vba\nMsgBox \"Factura a fost salvată.\", vbInformation, \"Confirmare\"\n```\n\nParametrii uzuali pentru al doilea argument: `vbInformation` (iconiță „i\"), `vbExclamation` (semn de exclamare), `vbCritical` (eroare), `vbOKCancel` sau `vbYesNo` (pentru a cere o decizie utilizatorului). Când folosești `vbYesNo`, rezultatul apăsării poate fi capturat într-o variabilă și verificat cu `If`, lucru pe care îl vei aprofunda în lecțiile despre condiții.\n\n**InputBox** face exact opusul: cere o valoare de la utilizator și o returnează ca text (`String`). Sintaxă:\n\n```vba\nDim numeFirma As String\nnumeFirma = InputBox(\"Introduceți numele firmei:\", \"Date companie\")\n```\n\nDacă utilizatorul apasă **Anulare (Cancel)**, `InputBox` returnează un text gol (`\"\"`), nu produce eroare — un aspect important de reținut, pentru că altfel macro-ul tău poate continua să ruleze cu o valoare goală și să genereze rezultate greșite. Vei învăța în lecțiile despre condiții (`If...Then`) cum să tratezi corect acest caz.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b3"
+   },
+   {
+    "type": "example",
+    "title": "Primul macro: Hello World cu MsgBox",
+    "concept_key": "vba-hello-world-exemplu",
+    "md": "Deschide Visual Basic Editor (Alt+F11), inserează un modul nou (Insert → Module) și scrie:\n\n```vba\nSub HelloWorld()\n    ' Primul meu macro - afișează un mesaj simplu\n    MsgBox \"Salut din VBA! Acesta este primul meu macro.\"\nEnd Sub\n```\n\nApasă **F5** (sau Alt+F8 din Excel, selectezi `HelloWorld` și apeși Run). Va apărea o fereastră cu mesajul tău și un singur buton **OK**.\n\nHaide să îl îmbunătățim puțin, adăugând un titlu și o iconiță informativă:\n\n```vba\nSub HelloWorldFormatat()\n    ' Macro cu titlu personalizat și iconiță de informare\n    MsgBox \"Bun venit în cursul de VBA pentru Excel!\", _\n           vbInformation, \"DocumentIulia.ro\"\nEnd Sub\n```\n\nObservă caracterul underscore ( `_` ) de la finalul primei linii din interiorul `MsgBox` — este **caracterul de continuare a liniei**, folosit în VBA pentru a împărți o instrucțiune lungă pe mai multe rânduri, fără să afecteze modul în care este interpretat codul. Îl vei folosi des atunci când liniile de cod devin lungi și greu de citit.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b4"
+   },
+   {
+    "type": "example",
+    "title": "InputBox: mesaj personalizat cu numele firmei",
+    "concept_key": "vba-inputbox-nume-firma",
+    "md": "Combinăm acum `InputBox` cu `MsgBox` pentru a crea un macro care preia o informație de la utilizator și o folosește într-un mesaj personalizat — utilă, de exemplu, pentru un contabil care rulează același raport pentru mai multe firme client (SRL-uri sau PFA-uri).\n\n```vba\nSub SalutFirma()\n    Dim numeFirma As String\n\n    ' Cerem numele firmei de la utilizator\n    numeFirma = InputBox(\"Introduceți numele firmei (ex: Contab Expert SRL):\", _\n                          \"Date companie\")\n\n    ' Verificăm dacă utilizatorul a apăsat Anulare sau a lăsat câmpul gol\n    If numeFirma = \"\" Then\n        MsgBox \"Nu ați introdus niciun nume de firmă.\", vbExclamation, \"Atenție\"\n    Else\n        MsgBox \"Raportul lunar pentru \" & numeFirma & \" a fost generat cu succes.\", _\n               vbInformation, \"Raport generat\"\n    End If\nEnd Sub\n```\n\nDouă elemente noi apar aici:\n- Operatorul **`&`** concatenează (unește) text — `\"Raportul lunar pentru \" & numeFirma` lipește numele firmei introdus de utilizator direct în mesaj.\n- Structura **`If...Then...Else...End If`** verifică o condiție înainte de a decide ce mesaj se afișează. Vei studia în detaliu condițiile în lecția următoare, dar e util să vezi de pe acum cum se combină cu `InputBox` pentru un macro robust, care nu se blochează dacă utilizatorul nu completează nimic.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Din motive de securitate, Excel dezactivează implicit macro-urile din fișierele descărcate de pe internet sau primite prin e-mail (fișierul se deschide cu o bară galbenă „Security Warning — Macros have been disabled\"). Nu activa macro-uri dintr-un fișier .xlsm a cărui origine nu o cunoști — un macro poate conține cod capabil să șteargă date, să trimită e-mailuri sau să acceseze fișiere de pe disc. Pentru fișierele proprii, cel mai sigur este să le salvezi într-un **Trusted Location** (Fișier → Opțiuni → Trust Center → Trust Center Settings → Trusted Locations), astfel încât Excel să le ruleze fără avertisment de fiecare dată.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Scrie un macro numit `CalculTVA` care:\n1. Cere utilizatorului, printr-un `InputBox`, valoarea unei facturi fără TVA (introdusă ca text, de exemplu „1000\").\n2. Calculează TVA la cota standard de **21%** (cotă aplicabilă conform reglementărilor în vigoare din august 2025 — verifică la data rulării dacă legislația s-a schimbat).\n3. Afișează printr-un `MsgBox` valoarea TVA și valoarea totală (cu TVA inclus).\n\nIndiciu: valoarea returnată de `InputBox` este text (`String`), așa că trebuie convertită la un număr cu funcția `Val()` sau `CDbl()` înainte de a face calculul.",
+    "solution_md": "```vba\nSub CalculTVA()\n    Dim valoareFaraTVA As Double\n    Dim valoareTVA As Double\n    Dim valoareTotala As Double\n    Dim textIntrodus As String\n\n    ' Preluăm valoarea facturii ca text\n    textIntrodus = InputBox(\"Introduceți valoarea facturii fără TVA (lei):\", \"Calcul TVA\")\n\n    ' Dacă utilizatorul anulează sau lasă câmpul gol, oprim macro-ul\n    If textIntrodus = \"\" Then\n        MsgBox \"Calculul a fost anulat.\", vbExclamation, \"Atenție\"\n        Exit Sub\n    End If\n\n    ' Convertim textul introdus într-un număr zecimal\n    valoareFaraTVA = Val(textIntrodus)\n\n    ' Calculăm TVA la cota standard de 21%\n    valoareTVA = valoareFaraTVA * 0.21\n    valoareTotala = valoareFaraTVA + valoareTVA\n\n    ' Afișăm rezultatul\n    MsgBox \"Valoare fără TVA: \" & valoareFaraTVA & \" lei\" & vbNewLine & _\n           \"TVA (21%): \" & valoareTVA & \" lei\" & vbNewLine & _\n           \"Total de plată: \" & valoareTotala & \" lei\", _\n           vbInformation, \"Rezultat calcul TVA\"\nEnd Sub\n```\n\nPentru o factură de 1000 lei fără TVA, macro-ul afișează: TVA = 210 lei, Total = 1210 lei. Observă `vbNewLine`, o constantă VBA care introduce o linie nouă în textul afișat de `MsgBox`, utilă pentru mesaje cu mai multe rânduri de informație.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce extensie de fișier trebuie folosită pentru a salva un registru Excel care conține cod VBA?",
+    "choices": [
+     ".xlsx",
+     ".xlsm",
+     ".xls",
+     ".vba"
+    ],
+    "answer": 1,
+    "explain": "Fișierele Excel cu macro-uri trebuie salvate cu extensia .xlsm (Excel Macro-Enabled Workbook). Formatul standard .xlsx nu poate stoca cod VBA — la salvare, Excel elimină automat orice macro.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce returnează funcția InputBox dacă utilizatorul apasă butonul Anulare (Cancel), fără să scrie nimic?",
+    "choices": [
+     "O eroare de execuție (Run-time error)",
+     "Valoarea logică False",
+     "Un text gol (\"\")",
+     "Numărul 0"
+    ],
+    "answer": 2,
+    "explain": "InputBox returnează întotdeauna un String. Dacă utilizatorul apasă Anulare sau lasă câmpul gol și apasă OK, rezultatul este un text gol (\"\"), nu o eroare — de aceea e important să verifici acest caz cu If înainte de a continua macro-ul.",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce extensie trebuie să aibă un fișier Excel pentru a putea conține macro-uri VBA?",
+    "back": ".xlsm (Excel Macro-Enabled Workbook) — formatul standard .xlsx nu permite stocarea codului VBA.",
+    "concept_key": "vba-visual-basic-editor",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce combinație de taste deschide Visual Basic Editor din Excel?",
+    "back": "Alt+F11.",
+    "concept_key": "vba-visual-basic-editor",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cuvintele cheie care delimitează o procedură simplă în VBA?",
+    "back": "Sub NumeMacro() ... End Sub — tot codul dintre ele rulează secvențial la apelarea macro-ului.",
+    "concept_key": "vba-sub-end-sub",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tip de date returnează întotdeauna funcția InputBox?",
+    "back": "String (text) — chiar dacă utilizatorul introduce cifre, valoarea trebuie convertită cu Val() sau CDbl() înainte de a fi folosită într-un calcul.",
+    "concept_key": "vba-msgbox-inputbox",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce constantă VBA se folosește pentru a afișa un MsgBox cu iconița de informare?",
+    "back": "vbInformation, folosită ca al doilea argument: MsgBox \"text\", vbInformation, \"Titlu\".",
+    "concept_key": "vba-msgbox-inputbox",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce operator se folosește în VBA pentru a uni (concatena) două șiruri de text?",
+    "back": "Operatorul & (de exemplu: \"Total: \" & valoareTotala).",
+    "concept_key": "vba-inputbox-nume-firma",
+    "blockId": "cmjjuxvpf0031umkp8cw7unwk-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1232,
+   "flashcards": 6
+  }
+ }
+}

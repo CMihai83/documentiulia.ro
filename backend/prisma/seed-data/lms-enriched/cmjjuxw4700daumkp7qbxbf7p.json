@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxw4700daumkp7qbxbf7p",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "TVA în România",
+ "lesson": "Prorata TVA",
+ "category": "FINANCE_OPS",
+ "content": "# Prorata TVA\n\n## Ce este prorata TVA și cui i se aplică\n\nProrata TVA este mecanismul prin care o persoană impozabilă înregistrată în scop de TVA, care desfășoară simultan **operațiuni cu drept de deducere** (livrări/prestări taxabile la 21% sau 11%, exporturi, livrări intracomunitare) și **operațiuni fără drept de deducere** (operațiuni scutite conform art. 292 Cod fiscal – de exemplu servicii financiar-bancare, de asigurare, anumite operațiuni imobiliare, închiriere fără opțiune de taxare), își determină procentul de TVA deductibilă pentru achizițiile pe care nu le poate aloca direct uneia dintre cele două categorii de activitate.\n\nÎn practică, o firmă cu regim mixt (parte din activitate taxabilă, parte scutită fără drept de deducere) nu poate deduce integral TVA de pe facturile care deservesc ambele activități: chirie sediu, utilități, servicii de contabilitate, echipamente IT folosite de tot personalul. Pentru aceste achiziții mixte, legea impune aplicarea unui procent de deducere – prorata – calculat pe baza structurii veniturilor firmei.\n\nReține: dacă poți aloca direct o achiziție unei singure activități (de exemplu marfă cumpărată exclusiv pentru revânzare taxabilă), TVA se deduce integral sau deloc, fără a aplica prorata. Prorata se aplică STRICT achizițiilor de uz mixt, nealocabile direct unei operațiuni.\n\n## Prorata provizorie și prorata definitivă\n\nProrata se determină în două etape distincte, pe parcursul unui exercițiu fiscal:\n\n1. **Prorata provizorie** – se aplică pe parcursul anului fiscal curent, la fiecare achiziție mixtă, în momentul exercitării dreptului de deducere. Se stabilește, de regulă, egală cu prorata definitivă calculată pentru anul fiscal precedent. Pentru persoanele impozabile nou-înregistrate în scop de TVA, care nu au istoric, se aplică o prorata estimată, propusă de contribuabil și aprobată de organul fiscal competent.\n2. **Prorata definitivă** – se calculează o singură dată, la finalul anului fiscal, pe baza operațiunilor efectiv realizate în anul respectiv. Pe baza ei se face regularizarea TVA dedusă provizoriu în cursul anului.\n\nPe lângă prorata generală (aplicabilă la nivelul întregii activități), Codul fiscal permite, la cererea contribuabilului și cu aprobarea organului fiscal competent, aplicarea unei **prorate speciale**, calculate distinct pe sectoare de activitate, atunci când acest lucru reflectă mai fidel modul real de utilizare a achizițiilor mixte – util, de exemplu, unei firme cu activități foarte diferite: producție taxabilă și intermediere financiară scutită.\n\n## Formula de calcul a prorata\n\nProrata = [Operațiuni taxabile + operațiuni scutite cu drept de deducere (exporturi, livrări intracomunitare etc.)] ÷ [Totalul operațiunilor de mai sus + operațiuni scutite FĂRĂ drept de deducere] × 100\n\nAmbii termeni ai raportului se calculează cumulat, pe baza operațiunilor realizate în perioada de referință (anul calendaristic, pentru prorata definitivă).\n\nReguli importante de calcul:\n- **Rotunjire**: procentul rezultat se rotunjește prin adaos, la nivel de unitate procentuală întreagă (de exemplu, 82,01% devine 83%, iar 85,71% devine 86%).\n- **Excluderi din calcul**: nu se includ în formulă valoarea livrărilor de bunuri de capital utilizate de persoana impozabilă în propria activitate economică, precum și operațiunile imobiliare sau financiare cu caracter accesoriu față de activitatea principală (adică cele care nu reprezintă o prelungire directă, permanentă și necesară a activității de bază).\n- Subvențiile care nu sunt legate direct de preț nu intră, de regulă, în calculul prorata.\n\nO eroare de încadrare a unei operațiuni (taxabilă versus scutită fără drept de deducere) modifică procentul de deducere pentru TOATE achizițiile mixte ale anului, deci încadrarea corectă a veniturilor este esențială.\n\n## Regularizarea anuală și ajustarea pentru bunurile de capital\n\nLa finalul anului fiscal, după calculul prorata definitive, firma compară TVA dedusă efectiv (pe baza prorata provizorie aplicată lunar sau trimestrial) cu TVA care ar fi trebuit dedusă conform prorata definitive. Diferența, în plus sau în minus, se înscrie în decontul de TVA aferent ultimei perioade fiscale a anului: decembrie, pentru plătitorii lunari, respectiv trimestrul IV, pentru plătitorii trimestriali.\n\nPe lângă regularizarea anuală curentă, pentru **bunurile de capital** (imobilizări corporale sau necorporale a căror durată normală de utilizare depășește un an – utilaje, mijloace de transport, construcții) achiziționate sau produse pentru activitatea mixtă, Codul fiscal impune o ajustare eșalonată a TVA deduse, pe o perioadă de:\n- 5 ani, pentru bunurile de capital mobile;\n- 20 de ani, pentru construcții și terenuri achiziționate sau realizate.\n\nÎn fiecare an din perioada de ajustare se compară prorata definitivă a anului curent cu prorata din anul achiziției (sau al primei utilizări) și, dacă diferența depășește pragul stabilit de lege, se ajustează o cotă-parte din TVA dedusă inițial (1/5, respectiv 1/20 din TVA totală, înmulțită cu diferența de prorata). Acest mecanism previne atât deducerile excesive, cât și pe cele insuficiente, pe toată durata de folosire economică a bunului.\n\n> Temei legal: Legea 227/2015 privind Codul fiscal, Titlul VII – TVA art. 300 (Prorata) și art. 305 (Ajustarea taxei deductibile în cazul bunurilor de capital) (în vigoare de la 2016-01-01)\nCodul fiscal reglementează determinarea prorata (generală/specială, provizorie/definitivă) la art. 300, iar ajustarea TVA pentru bunurile de capital pe perioada lor de utilizare la art. 305. Normele metodologice de aplicare (HG 1/2016) detaliază modul de calcul, operațiunile excluse și termenele de regularizare. Verifică întotdeauna forma actualizată a Codului fiscal și a normelor metodologice, întrucât pot suferi modificări punctuale.\n\n⚠ Nu confunda prorata TVA cu ajustarea TVA pentru bunuri de capital: sunt mecanisme complementare, dar distincte. Prorata rezolvă deducerea curentă pentru achizițiile de uz mixt, în timp ce ajustarea bunurilor de capital urmărește, pe termen lung (5 sau 20 de ani), dacă procentul de utilizare taxabilă a unui activ s-a schimbat față de anul achiziției. Procedura exactă și eventualele praguri pot fi actualizate prin acte normative ulterioare – verifică forma în vigoare a Codului fiscal și a normelor metodologice înainte de a aplica ajustarea într-un caz concret, eventual cu sprijinul unui consultant fiscal.\n\n## Exemplu: Calculul prorata provizorie și deducerea TVA pe o achiziție mixtă\nSC Consult Financiar SRL prestează două tipuri de servicii:\n- consultanță fiscală și financiară (operațiune taxabilă, TVA 21%, cotă în vigoare de la 1 august 2025 conform Legii 141/2025);\n- intermediere de asigurări (operațiune scutită fără drept de deducere, conform art. 292 Cod fiscal).\n\nÎn anul 2025, firma a calculat o prorata definitivă de 82%. În consecință, pe tot parcursul anului 2026 aplică o prorata provizorie de 82% pentru toate achizițiile de uz mixt (chirie sediu, utilități, servicii IT folosite de tot personalul).\n\nÎn ianuarie 2026, firma primește o factură de chirie sediu: bază 5.000 lei + TVA 21% = 1.050 lei.\n\nCalcul TVA deductibilă provizorie:\nTVA deductibilă = 1.050 lei × 82% = 861 lei\n\nRestul de 189 lei (1.050 − 861) rămâne TVA nedeductibilă provizoriu, urmând ca la finalul anului, după calculul prorata definitive, situația să fie regularizată.\n\n## Exemplu: Calculul prorata definitivă și regularizarea de la finalul anului\nLa finalul anului 2026, SC Consult Financiar SRL centralizează operațiunile realizate:\n- venituri din consultanță (cu drept de deducere): 1.200.000 lei\n- venituri din intermediere de asigurări (fără drept de deducere): 250.000 lei\n- total operațiuni: 1.450.000 lei\n\nCalcul prorata definitivă:\nProrata = 1.200.000 ÷ 1.450.000 × 100 = 82,7586%\nRotunjire prin adaos → **83%**\n\nTotal TVA deductibilă aferentă achizițiilor de uz mixt din tot anul 2026 (chirie, utilități, servicii IT): 12.000 lei.\n\nTVA dedusă provizoriu (82%): 12.000 × 82% = 9.840 lei\nTVA deductibilă conform prorata definitive (83%): 12.000 × 83% = 9.960 lei\n\nDiferența de regularizat: 9.960 − 9.840 = **120 lei suplimentar de dedus**\n\nSuma se înscrie ca regularizare pozitivă în decontul de TVA (formularul 300) aferent ultimei perioade fiscale a anului 2026.\n\n## Exercițiu\nSC Tehnoinvest SRL are, pentru anul 2026, următoarea structură a operațiunilor:\n- livrări de bunuri taxabile (TVA 21%): 2.800.000 lei\n- exporturi în afara UE (scutite cu drept de deducere): 200.000 lei\n- venituri din închiriere de apartamente către persoane fizice, fără opțiune de taxare (scutite fără drept de deducere): 500.000 lei\n\nPe parcursul anului 2026, firma a aplicat o prorata provizorie de 85% (prorata definitivă a anului 2025). TVA deductibilă totală aferentă achizițiilor de uz mixt (chirie sediu administrativ, utilități, servicii de contabilitate) din tot anul 2026 este de 8.500 lei.\n\nCerințe:\n1. Calculați prorata definitivă pentru anul 2026.\n2. Calculați TVA dedusă provizoriu și TVA deductibilă conform prorata definitive.\n3. Stabiliți suma de regularizat și precizați unde se înscrie.\n\n**Soluție:** 1. Prorata definitivă:\nOperațiuni cu drept de deducere = 2.800.000 + 200.000 = 3.000.000 lei\nTotal operațiuni = 3.000.000 + 500.000 = 3.500.000 lei\nProrata = 3.000.000 ÷ 3.500.000 × 100 = 85,7142%\nRotunjire prin adaos → **86%**\n\n2. TVA dedusă provizoriu = 8.500 × 85% = 7.225 lei\nTVA deductibilă conform prorata definitive = 8.500 × 86% = 7.310 lei\n\n3. Diferență de regularizat = 7.310 − 7.225 = **85 lei suplimentar de dedus**.\nSuma se înscrie ca regularizare pozitivă în decontul de TVA (formularul 300) aferent ultimei perioade fiscale a anului 2026 (decembrie, dacă firma este plătitoare lunară de TVA, sau trimestrul IV, dacă este plătitoare trimestrială). Prorata definitivă de 86% devine, totodată, prorata provizorie aplicată pe parcursul anului 2027.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "prorata-tva-definitie",
+    "md": "## Ce este prorata TVA și cui i se aplică\n\nProrata TVA este mecanismul prin care o persoană impozabilă înregistrată în scop de TVA, care desfășoară simultan **operațiuni cu drept de deducere** (livrări/prestări taxabile la 21% sau 11%, exporturi, livrări intracomunitare) și **operațiuni fără drept de deducere** (operațiuni scutite conform art. 292 Cod fiscal – de exemplu servicii financiar-bancare, de asigurare, anumite operațiuni imobiliare, închiriere fără opțiune de taxare), își determină procentul de TVA deductibilă pentru achizițiile pe care nu le poate aloca direct uneia dintre cele două categorii de activitate.\n\nÎn practică, o firmă cu regim mixt (parte din activitate taxabilă, parte scutită fără drept de deducere) nu poate deduce integral TVA de pe facturile care deservesc ambele activități: chirie sediu, utilități, servicii de contabilitate, echipamente IT folosite de tot personalul. Pentru aceste achiziții mixte, legea impune aplicarea unui procent de deducere – prorata – calculat pe baza structurii veniturilor firmei.\n\nReține: dacă poți aloca direct o achiziție unei singure activități (de exemplu marfă cumpărată exclusiv pentru revânzare taxabilă), TVA se deduce integral sau deloc, fără a aplica prorata. Prorata se aplică STRICT achizițiilor de uz mixt, nealocabile direct unei operațiuni.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "prorata-tva-tipuri",
+    "md": "## Prorata provizorie și prorata definitivă\n\nProrata se determină în două etape distincte, pe parcursul unui exercițiu fiscal:\n\n1. **Prorata provizorie** – se aplică pe parcursul anului fiscal curent, la fiecare achiziție mixtă, în momentul exercitării dreptului de deducere. Se stabilește, de regulă, egală cu prorata definitivă calculată pentru anul fiscal precedent. Pentru persoanele impozabile nou-înregistrate în scop de TVA, care nu au istoric, se aplică o prorata estimată, propusă de contribuabil și aprobată de organul fiscal competent.\n2. **Prorata definitivă** – se calculează o singură dată, la finalul anului fiscal, pe baza operațiunilor efectiv realizate în anul respectiv. Pe baza ei se face regularizarea TVA dedusă provizoriu în cursul anului.\n\nPe lângă prorata generală (aplicabilă la nivelul întregii activități), Codul fiscal permite, la cererea contribuabilului și cu aprobarea organului fiscal competent, aplicarea unei **prorate speciale**, calculate distinct pe sectoare de activitate, atunci când acest lucru reflectă mai fidel modul real de utilizare a achizițiilor mixte – util, de exemplu, unei firme cu activități foarte diferite: producție taxabilă și intermediere financiară scutită.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "prorata-tva-calcul-formula",
+    "md": "## Formula de calcul a prorata\n\nProrata = [Operațiuni taxabile + operațiuni scutite cu drept de deducere (exporturi, livrări intracomunitare etc.)] ÷ [Totalul operațiunilor de mai sus + operațiuni scutite FĂRĂ drept de deducere] × 100\n\nAmbii termeni ai raportului se calculează cumulat, pe baza operațiunilor realizate în perioada de referință (anul calendaristic, pentru prorata definitivă).\n\nReguli importante de calcul:\n- **Rotunjire**: procentul rezultat se rotunjește prin adaos, la nivel de unitate procentuală întreagă (de exemplu, 82,01% devine 83%, iar 85,71% devine 86%).\n- **Excluderi din calcul**: nu se includ în formulă valoarea livrărilor de bunuri de capital utilizate de persoana impozabilă în propria activitate economică, precum și operațiunile imobiliare sau financiare cu caracter accesoriu față de activitatea principală (adică cele care nu reprezintă o prelungire directă, permanentă și necesară a activității de bază).\n- Subvențiile care nu sunt legate direct de preț nu intră, de regulă, în calculul prorata.\n\nO eroare de încadrare a unei operațiuni (taxabilă versus scutită fără drept de deducere) modifică procentul de deducere pentru TOATE achizițiile mixte ale anului, deci încadrarea corectă a veniturilor este esențială.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "prorata-tva-regularizare-bunuri-capital",
+    "md": "## Regularizarea anuală și ajustarea pentru bunurile de capital\n\nLa finalul anului fiscal, după calculul prorata definitive, firma compară TVA dedusă efectiv (pe baza prorata provizorie aplicată lunar sau trimestrial) cu TVA care ar fi trebuit dedusă conform prorata definitive. Diferența, în plus sau în minus, se înscrie în decontul de TVA aferent ultimei perioade fiscale a anului: decembrie, pentru plătitorii lunari, respectiv trimestrul IV, pentru plătitorii trimestriali.\n\nPe lângă regularizarea anuală curentă, pentru **bunurile de capital** (imobilizări corporale sau necorporale a căror durată normală de utilizare depășește un an – utilaje, mijloace de transport, construcții) achiziționate sau produse pentru activitatea mixtă, Codul fiscal impune o ajustare eșalonată a TVA deduse, pe o perioadă de:\n- 5 ani, pentru bunurile de capital mobile;\n- 20 de ani, pentru construcții și terenuri achiziționate sau realizate.\n\nÎn fiecare an din perioada de ajustare se compară prorata definitivă a anului curent cu prorata din anul achiziției (sau al primei utilizări) și, dacă diferența depășește pragul stabilit de lege, se ajustează o cotă-parte din TVA dedusă inițial (1/5, respectiv 1/20 din TVA totală, înmulțită cu diferența de prorata). Acest mecanism previne atât deducerile excesive, cât și pe cele insuficiente, pe toată durata de folosire economică a bunului.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b4"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea 227/2015 privind Codul fiscal, Titlul VII – TVA",
+    "article": "art. 300 (Prorata) și art. 305 (Ajustarea taxei deductibile în cazul bunurilor de capital)",
+    "effective": "2016-01-01",
+    "md": "Codul fiscal reglementează determinarea prorata (generală/specială, provizorie/definitivă) la art. 300, iar ajustarea TVA pentru bunurile de capital pe perioada lor de utilizare la art. 305. Normele metodologice de aplicare (HG 1/2016) detaliază modul de calcul, operațiunile excluse și termenele de regularizare. Verifică întotdeauna forma actualizată a Codului fiscal și a normelor metodologice, întrucât pot suferi modificări punctuale.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda prorata TVA cu ajustarea TVA pentru bunuri de capital: sunt mecanisme complementare, dar distincte. Prorata rezolvă deducerea curentă pentru achizițiile de uz mixt, în timp ce ajustarea bunurilor de capital urmărește, pe termen lung (5 sau 20 de ani), dacă procentul de utilizare taxabilă a unui activ s-a schimbat față de anul achiziției. Procedura exactă și eventualele praguri pot fi actualizate prin acte normative ulterioare – verifică forma în vigoare a Codului fiscal și a normelor metodologice înainte de a aplica ajustarea într-un caz concret, eventual cu sprijinul unui consultant fiscal.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calculul prorata provizorie și deducerea TVA pe o achiziție mixtă",
+    "concept_key": "prorata-tva-provizorie",
+    "md": "SC Consult Financiar SRL prestează două tipuri de servicii:\n- consultanță fiscală și financiară (operațiune taxabilă, TVA 21%, cotă în vigoare de la 1 august 2025 conform Legii 141/2025);\n- intermediere de asigurări (operațiune scutită fără drept de deducere, conform art. 292 Cod fiscal).\n\nÎn anul 2025, firma a calculat o prorata definitivă de 82%. În consecință, pe tot parcursul anului 2026 aplică o prorata provizorie de 82% pentru toate achizițiile de uz mixt (chirie sediu, utilități, servicii IT folosite de tot personalul).\n\nÎn ianuarie 2026, firma primește o factură de chirie sediu: bază 5.000 lei + TVA 21% = 1.050 lei.\n\nCalcul TVA deductibilă provizorie:\nTVA deductibilă = 1.050 lei × 82% = 861 lei\n\nRestul de 189 lei (1.050 − 861) rămâne TVA nedeductibilă provizoriu, urmând ca la finalul anului, după calculul prorata definitive, situația să fie regularizată.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b7"
+   },
+   {
+    "type": "example",
+    "title": "Calculul prorata definitivă și regularizarea de la finalul anului",
+    "concept_key": "prorata-tva-regularizare-bunuri-capital",
+    "md": "La finalul anului 2026, SC Consult Financiar SRL centralizează operațiunile realizate:\n- venituri din consultanță (cu drept de deducere): 1.200.000 lei\n- venituri din intermediere de asigurări (fără drept de deducere): 250.000 lei\n- total operațiuni: 1.450.000 lei\n\nCalcul prorata definitivă:\nProrata = 1.200.000 ÷ 1.450.000 × 100 = 82,7586%\nRotunjire prin adaos → **83%**\n\nTotal TVA deductibilă aferentă achizițiilor de uz mixt din tot anul 2026 (chirie, utilități, servicii IT): 12.000 lei.\n\nTVA dedusă provizoriu (82%): 12.000 × 82% = 9.840 lei\nTVA deductibilă conform prorata definitive (83%): 12.000 × 83% = 9.960 lei\n\nDiferența de regularizat: 9.960 − 9.840 = **120 lei suplimentar de dedus**\n\nSuma se înscrie ca regularizare pozitivă în decontul de TVA (formularul 300) aferent ultimei perioade fiscale a anului 2026.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Tehnoinvest SRL are, pentru anul 2026, următoarea structură a operațiunilor:\n- livrări de bunuri taxabile (TVA 21%): 2.800.000 lei\n- exporturi în afara UE (scutite cu drept de deducere): 200.000 lei\n- venituri din închiriere de apartamente către persoane fizice, fără opțiune de taxare (scutite fără drept de deducere): 500.000 lei\n\nPe parcursul anului 2026, firma a aplicat o prorata provizorie de 85% (prorata definitivă a anului 2025). TVA deductibilă totală aferentă achizițiilor de uz mixt (chirie sediu administrativ, utilități, servicii de contabilitate) din tot anul 2026 este de 8.500 lei.\n\nCerințe:\n1. Calculați prorata definitivă pentru anul 2026.\n2. Calculați TVA dedusă provizoriu și TVA deductibilă conform prorata definitive.\n3. Stabiliți suma de regularizat și precizați unde se înscrie.",
+    "solution_md": "1. Prorata definitivă:\nOperațiuni cu drept de deducere = 2.800.000 + 200.000 = 3.000.000 lei\nTotal operațiuni = 3.000.000 + 500.000 = 3.500.000 lei\nProrata = 3.000.000 ÷ 3.500.000 × 100 = 85,7142%\nRotunjire prin adaos → **86%**\n\n2. TVA dedusă provizoriu = 8.500 × 85% = 7.225 lei\nTVA deductibilă conform prorata definitive = 8.500 × 86% = 7.310 lei\n\n3. Diferență de regularizat = 7.310 − 7.225 = **85 lei suplimentar de dedus**.\nSuma se înscrie ca regularizare pozitivă în decontul de TVA (formularul 300) aferent ultimei perioade fiscale a anului 2026 (decembrie, dacă firma este plătitoare lunară de TVA, sau trimestrul IV, dacă este plătitoare trimestrială). Prorata definitivă de 86% devine, totodată, prorata provizorie aplicată pe parcursul anului 2027.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cum se determină prorata provizorie aplicată pe parcursul anului fiscal curent?",
+    "choices": [
+     "Se recalculează zilnic, pe baza operațiunilor din ziua respectivă",
+     "Este egală cu prorata definitivă a anului fiscal precedent (sau, pentru persoane nou-înregistrate, o prorata estimată, aprobată de organul fiscal competent)",
+     "Se stabilește prin negociere directă cu ANAF, indiferent de istoricul firmei",
+     "Este întotdeauna 50%, ca regulă implicită de prudență"
+    ],
+    "answer": 1,
+    "explain": "Prorata provizorie preia, de regulă, valoarea prorata definitive din anul anterior; pentru firmele fără istoric se folosește o estimare aprobată de organul fiscal competent.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cum se rotunjește procentul de prorata TVA (provizorie sau definitivă)?",
+    "choices": [
+     "Prin trunchiere, la cel mai apropiat număr întreg inferior",
+     "Prin adaos, la nivelul unei unități procentuale întregi (de exemplu, 82,01% devine 83%)",
+     "Nu se rotunjește, se folosește procentul exact cu zecimale",
+     "Se rotunjește matematic: sub 0,5 în jos, peste 0,5 în sus"
+    ],
+    "answer": 1,
+    "explain": "Regula de rotunjire prevăzută de Codul fiscal pentru prorata TVA este rotunjirea prin adaos, la cel mai apropiat procent întreg.",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este prorata TVA?",
+    "back": "Procentul de TVA deductibilă aplicabil achizițiilor de uz mixt, pentru persoanele impozabile cu regim mixt (operațiuni cu și fără drept de deducere).",
+    "concept_key": "prorata-tva-definitie",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula de calcul a prorata TVA?",
+    "back": "Prorata = (Operațiuni taxabile + scutite cu drept de deducere) ÷ (Total operațiuni, inclusiv scutite fără drept de deducere) × 100.",
+    "concept_key": "prorata-tva-calcul-formula",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se rotunjește procentul de prorata TVA?",
+    "back": "Prin adaos, la nivel de procent întreg (ex.: 82,01% devine 83%).",
+    "concept_key": "prorata-tva-calcul-formula",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între prorata provizorie și prorata definitivă?",
+    "back": "Provizorie = aplicată în cursul anului, egală cu prorata definitivă a anului anterior; Definitivă = calculată la final de an, pe baza operațiunilor reale, urmată de regularizare.",
+    "concept_key": "prorata-tva-tipuri",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când se face regularizarea prorata TVA?",
+    "back": "În decontul de TVA aferent ultimei perioade fiscale a anului (decembrie sau trimestrul IV), aplicând prorata definitivă asupra TVA deductibile din achizițiile mixte ale întregului an.",
+    "concept_key": "prorata-tva-regularizare-bunuri-capital",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Pe ce perioadă se ajustează TVA dedusă pentru bunurile de capital de uz mixt?",
+    "back": "5 ani pentru bunuri de capital mobile; 20 de ani pentru construcții și terenuri achiziționate sau realizate, conform art. 305 Cod fiscal.",
+    "concept_key": "prorata-tva-regularizare-bunuri-capital",
+    "blockId": "cmjjuxw4700daumkp7qbxbf7p-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1401,
+   "flashcards": 6
+  }
+ }
+}

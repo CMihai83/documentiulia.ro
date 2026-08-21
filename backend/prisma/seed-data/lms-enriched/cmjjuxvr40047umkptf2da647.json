@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvr40047umkptf2da647",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "UserForms și Interfețe",
+ "lesson": "Exercițiu - Formular intrare date",
+ "category": "EXCEL_VBA",
+ "content": "# Exercițiu - Formular intrare date\n\n## De ce un UserForm pentru introducerea datelor\n\nPână acum ai lucrat cu macro-uri care citesc sau scriu direct în celule. Când vrei ca o persoană din firmă (recepție, vânzări, contabilitate) să introducă date fără să vadă sau să strice structura foii de calcul, cea mai bună soluție este un **UserForm** — o fereastră de dialog personalizată, construită în editorul VBA (VBE), cu câmpuri de completat și butoane de acțiune.\n\nAvantajele unui UserForm față de completarea directă în celule:\n\n- **Control total asupra datelor introduse** – poți valida fiecare câmp înainte de a-l scrie în baza de date (de exemplu, CUI-ul trebuie să fie numeric, e-mailul trebuie să conțină \"@\").\n- **Protecție a structurii** – utilizatorul nu poate șterge accidental o formulă sau un antet de coloană, pentru că nu introduce date direct în foaie.\n- **Experiență ghidată** – câmpurile apar într-o ordine logică, cu etichete clare, eventual cu liste derulante (ComboBox) pentru valori predefinite (județ, categorie client etc.).\n- **Reutilizare** – același formular poate fi apelat de mai multe ori, de mai mulți utilizatori, fără să știe nimic despre VBA.\n\nÎn Excel, deschizi editorul VBA cu **Alt+F11**, apoi din meniul **Insert → UserForm** adaugi o fereastră nouă, pe care o construiești vizual, trăgând controale din caseta de instrumente (Toolbox).\n\n## Controalele de bază ale unui formular de intrare date\n\nUn formular tipic de introducere clienți folosește un set restrâns de controale, fiecare cu un rol precis:\n\n| Control | Rol | Proprietăți importante |\n|---|---|---|\n| **Label** | Etichetă text (ex. \"Nume firmă:\") | `Caption` |\n| **TextBox** | Câmp editabil (nume, CUI, adresă) | `Name`, `Text`/`Value`, `MaxLength` |\n| **ComboBox** | Listă derulantă cu valori predefinite | `Name`, `List`, `Value` |\n| **CommandButton** | Buton de acțiune (Salvează, Anulează) | `Name`, `Caption` |\n\nRegula de aur: **fiecare control primește un nume propriu, sugestiv**, folosind prefixul tipului de control — `txtNume`, `cboJudet`, `cmdSalveaza`. Astfel codul rămâne lizibil: `txtNume.Text` spune clar că citești textul dintr-un TextBox numit \"Nume\".\n\nAlte proprietăți utile:\n\n- **TabIndex** – ordinea în care cursorul \"sare\" între câmpuri când utilizatorul apasă Tab; se setează pentru o completare fluentă, de sus în jos.\n- **ControlSource** – poate lega direct un control de o celulă, dar în practică preferăm să citim/scriem valorile prin cod, pentru control total asupra validării.\n\nEvenimentul cel mai important al unui formular este `UserForm_Initialize`, care rulează automat când formularul se deschide (de exemplu, pentru a popula un ComboBox cu județe) și evenimentul `Click` al butoanelor, unde scrii logica de salvare sau de închidere.\n\n## Validarea datelor înainte de salvare\n\nUn formular fără validare este mai periculos decât completarea directă în foaie, pentru că utilizatorul are impresia că totul e verificat automat. De aceea, în evenimentul `Click` al butonului de salvare trebuie să verifici **înainte** de a scrie orice în foaia de calcul:\n\n1. **Câmpuri obligatorii completate** – folosește `Trim(txtNume.Text) = \"\"` pentru a detecta un câmp gol (Trim elimină spațiile de la capete, ca să nu accepți un câmp cu doar spații ca fiind completat).\n2. **Format corect** – de exemplu, CUI-ul trebuie să fie numeric: `IsNumeric(txtCUI.Text)`. Adresa de e-mail trebuie să conțină \"@\" și un punct după el.\n3. **Unicitate** – dacă baza de date nu trebuie să aibă CUI-uri duplicate, cauți în coloana respectivă înainte de a adăuga rândul nou.\n\nDacă o validare eșuează, afișezi un `MsgBox` cu mesaj clar, muți cursorul pe câmpul greșit cu `.SetFocus` și oprești execuția cu `Exit Sub` — **nu** continui spre scrierea în foaie. Această tehnică se numește \"validare defensivă\": presupui că utilizatorul va greși și construiești formularul astfel încât greșeala să fie oprită înainte să ajungă în baza de date.\n\n## Exemplu: Proiectarea formularului frmClienti\nConstruim formularul `frmClienti`, folosit pentru a adăuga clienți noi într-o foaie numită **Clienti** (antet pe rândul 1: Nume firmă, CUI, Adresă, Email, Telefon, Județ).\n\n**Pași în VBE (Alt+F11):**\n\n1. Insert → UserForm. Redenumești formularul `frmClienti` din fereastra Properties, iar `Caption` devine \"Adaugă client nou\".\n2. Adaugi 5 perechi Label + TextBox: `txtNume`, `txtCUI`, `txtAdresa`, `txtEmail`, `txtTelefon`.\n3. Adaugi un `ComboBox` numit `cboJudet`, pentru selecția județului dintr-o listă fixă.\n4. Adaugi două butoane: `cmdSalveaza` (Caption: \"Salvează\") și `cmdAnuleaza` (Caption: \"Anulează\").\n5. Setezi `TabIndex` de sus în jos: 0 pentru `txtNume`, 1 pentru `txtCUI` ș.a.m.d.\n\nLa deschiderea formularului, populăm lista de județe automat, ca utilizatorul să nu introducă text liber (evită greșeli de scriere):\n\n```vba\nPrivate Sub UserForm_Initialize()\n    ' Populează ComboBox-ul cu județe la deschiderea formularului\n    With cboJudet\n        .Clear\n        .AddItem \"Bucuresti\"\n        .AddItem \"Cluj\"\n        .AddItem \"Timis\"\n        .AddItem \"Iasi\"\n        .AddItem \"Constanta\"\n        .AddItem \"Brasov\"\n    End With\n    ' Primul câmp primește automat focusul\n    txtNume.SetFocus\nEnd Sub\n```\n\nFormularul se deschide dintr-un macro simplu, apelat de exemplu dintr-un buton pus direct pe foaia de calcul:\n\n```vba\nSub DeschideFormularClienti()\n    frmClienti.Show\nEnd Sub\n```\n\n## Exemplu: Codul complet pentru salvarea datelor în baza de date\nCodul de mai jos se scrie în modulul de cod al formularului (dublu-click pe butonul `cmdSalveaza` în modul design):\n\n```vba\nPrivate Sub cmdSalveaza_Click()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n\n    Set ws = ThisWorkbook.Worksheets(\"Clienti\")\n\n    ' 1. Validare: câmpuri obligatorii\n    If Trim(txtNume.Text) = \"\" Then\n        MsgBox \"Numele firmei este obligatoriu.\", vbExclamation\n        txtNume.SetFocus\n        Exit Sub\n    End If\n\n    If Not IsNumeric(txtCUI.Text) Then\n        MsgBox \"CUI-ul trebuie să conțină doar cifre.\", vbExclamation\n        txtCUI.SetFocus\n        Exit Sub\n    End If\n\n    If InStr(txtEmail.Text, \"@\") = 0 Then\n        MsgBox \"Adresa de email nu este validă.\", vbExclamation\n        txtEmail.SetFocus\n        Exit Sub\n    End If\n\n    ' 2. Găsește primul rând liber (sub antet)\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1\n\n    ' 3. Scrie datele din formular pe rândul liber\n    With ws\n        .Cells(ultimulRand, 1).Value = txtNume.Text\n        .Cells(ultimulRand, 2).Value = txtCUI.Text\n        .Cells(ultimulRand, 3).Value = txtAdresa.Text\n        .Cells(ultimulRand, 4).Value = txtEmail.Text\n        .Cells(ultimulRand, 5).Value = txtTelefon.Text\n        .Cells(ultimulRand, 6).Value = cboJudet.Value\n    End With\n\n    MsgBox \"Clientul a fost salvat cu succes!\", vbInformation\n\n    ' 4. Golește formularul pentru o intrare nouă\n    Me.Repaint\n    txtNume.Text = \"\": txtCUI.Text = \"\": txtAdresa.Text = \"\"\n    txtEmail.Text = \"\": txtTelefon.Text = \"\": cboJudet.Value = \"\"\n    txtNume.SetFocus\nEnd Sub\n\nPrivate Sub cmdAnuleaza_Click()\n    Unload Me\nEnd Sub\n```\n\nObservă că după salvare **nu** închidem formularul (`Unload Me`), ci doar golim câmpurile — util când utilizatorul introduce mai mulți clienți la rând, fără să redeschidă fereastra de fiecare dată.\n\n⚠ Greșeli frecvente la formularele de intrare date: (1) uitarea validării CUI-ului duce la clienți duplicați în baza de date — dacă lista trebuie să fie unică, verifică *explicit* existența CUI-ului cu `Application.WorksheetFunction.CountIf` înainte de scriere; (2) lipsa golirii formularului după salvare face ca următoarea completare să suprascrie accidental un câmp uitat cu valoarea anterioară; (3) folosirea `ActiveSheet` în loc de `ThisWorkbook.Worksheets(\"Clienti\")` poate scrie datele în foaia greșită dacă utilizatorul are altă foaie activă când apasă butonul.\n\n## Exercițiu\nExtinde formularul `frmClienti` construit mai sus astfel încât, înainte de a scrie un client nou, să verifice că **CUI-ul nu există deja** în foaia \"Clienti\" (coloana B). Dacă CUI-ul este duplicat, afișează un mesaj de avertizare și oprește salvarea, fără să golească formularul (astfel utilizatorul poate corecta CUI-ul greșit).\n\n**Soluție:** ```vba\nPrivate Sub cmdSalveaza_Click()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n\n    Set ws = ThisWorkbook.Worksheets(\"Clienti\")\n\n    ' Validări existente (nume, CUI numeric, email)\n    If Trim(txtNume.Text) = \"\" Then\n        MsgBox \"Numele firmei este obligatoriu.\", vbExclamation\n        txtNume.SetFocus\n        Exit Sub\n    End If\n\n    If Not IsNumeric(txtCUI.Text) Then\n        MsgBox \"CUI-ul trebuie să conțină doar cifre.\", vbExclamation\n        txtCUI.SetFocus\n        Exit Sub\n    End If\n\n    ' Validare nouă: CUI unic\n    If Application.WorksheetFunction.CountIf(ws.Columns(\"B\"), txtCUI.Text) > 0 Then\n        MsgBox \"Există deja un client cu acest CUI în baza de date.\", vbCritical\n        txtCUI.SetFocus\n        Exit Sub\n    End If\n\n    If InStr(txtEmail.Text, \"@\") = 0 Then\n        MsgBox \"Adresa de email nu este validă.\", vbExclamation\n        txtEmail.SetFocus\n        Exit Sub\n    End If\n\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1\n\n    With ws\n        .Cells(ultimulRand, 1).Value = txtNume.Text\n        .Cells(ultimulRand, 2).Value = txtCUI.Text\n        .Cells(ultimulRand, 3).Value = txtAdresa.Text\n        .Cells(ultimulRand, 4).Value = txtEmail.Text\n        .Cells(ultimulRand, 5).Value = txtTelefon.Text\n        .Cells(ultimulRand, 6).Value = cboJudet.Value\n    End With\n\n    MsgBox \"Clientul a fost salvat cu succes!\", vbInformation\n\n    txtNume.Text = \"\": txtCUI.Text = \"\": txtAdresa.Text = \"\"\n    txtEmail.Text = \"\": txtTelefon.Text = \"\": cboJudet.Value = \"\"\n    txtNume.SetFocus\nEnd Sub\n```\n\nObservă că verificarea de unicitate se face **înainte** de a determina `ultimulRand`, respectând ordinea logică: mai întâi validăm tot ce ține de conținutul câmpurilor, abia apoi scriem în foaie.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "userform-ce-este",
+    "md": "## De ce un UserForm pentru introducerea datelor\n\nPână acum ai lucrat cu macro-uri care citesc sau scriu direct în celule. Când vrei ca o persoană din firmă (recepție, vânzări, contabilitate) să introducă date fără să vadă sau să strice structura foii de calcul, cea mai bună soluție este un **UserForm** — o fereastră de dialog personalizată, construită în editorul VBA (VBE), cu câmpuri de completat și butoane de acțiune.\n\nAvantajele unui UserForm față de completarea directă în celule:\n\n- **Control total asupra datelor introduse** – poți valida fiecare câmp înainte de a-l scrie în baza de date (de exemplu, CUI-ul trebuie să fie numeric, e-mailul trebuie să conțină \"@\").\n- **Protecție a structurii** – utilizatorul nu poate șterge accidental o formulă sau un antet de coloană, pentru că nu introduce date direct în foaie.\n- **Experiență ghidată** – câmpurile apar într-o ordine logică, cu etichete clare, eventual cu liste derulante (ComboBox) pentru valori predefinite (județ, categorie client etc.).\n- **Reutilizare** – același formular poate fi apelat de mai multe ori, de mai mulți utilizatori, fără să știe nimic despre VBA.\n\nÎn Excel, deschizi editorul VBA cu **Alt+F11**, apoi din meniul **Insert → UserForm** adaugi o fereastră nouă, pe care o construiești vizual, trăgând controale din caseta de instrumente (Toolbox).",
+    "blockId": "cmjjuxvr40047umkptf2da647-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "userform-controale-principale",
+    "md": "## Controalele de bază ale unui formular de intrare date\n\nUn formular tipic de introducere clienți folosește un set restrâns de controale, fiecare cu un rol precis:\n\n| Control | Rol | Proprietăți importante |\n|---|---|---|\n| **Label** | Etichetă text (ex. \"Nume firmă:\") | `Caption` |\n| **TextBox** | Câmp editabil (nume, CUI, adresă) | `Name`, `Text`/`Value`, `MaxLength` |\n| **ComboBox** | Listă derulantă cu valori predefinite | `Name`, `List`, `Value` |\n| **CommandButton** | Buton de acțiune (Salvează, Anulează) | `Name`, `Caption` |\n\nRegula de aur: **fiecare control primește un nume propriu, sugestiv**, folosind prefixul tipului de control — `txtNume`, `cboJudet`, `cmdSalveaza`. Astfel codul rămâne lizibil: `txtNume.Text` spune clar că citești textul dintr-un TextBox numit \"Nume\".\n\nAlte proprietăți utile:\n\n- **TabIndex** – ordinea în care cursorul \"sare\" între câmpuri când utilizatorul apasă Tab; se setează pentru o completare fluentă, de sus în jos.\n- **ControlSource** – poate lega direct un control de o celulă, dar în practică preferăm să citim/scriem valorile prin cod, pentru control total asupra validării.\n\nEvenimentul cel mai important al unui formular este `UserForm_Initialize`, care rulează automat când formularul se deschide (de exemplu, pentru a popula un ComboBox cu județe) și evenimentul `Click` al butoanelor, unde scrii logica de salvare sau de închidere.",
+    "blockId": "cmjjuxvr40047umkptf2da647-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "validare-date-formular",
+    "md": "## Validarea datelor înainte de salvare\n\nUn formular fără validare este mai periculos decât completarea directă în foaie, pentru că utilizatorul are impresia că totul e verificat automat. De aceea, în evenimentul `Click` al butonului de salvare trebuie să verifici **înainte** de a scrie orice în foaia de calcul:\n\n1. **Câmpuri obligatorii completate** – folosește `Trim(txtNume.Text) = \"\"` pentru a detecta un câmp gol (Trim elimină spațiile de la capete, ca să nu accepți un câmp cu doar spații ca fiind completat).\n2. **Format corect** – de exemplu, CUI-ul trebuie să fie numeric: `IsNumeric(txtCUI.Text)`. Adresa de e-mail trebuie să conțină \"@\" și un punct după el.\n3. **Unicitate** – dacă baza de date nu trebuie să aibă CUI-uri duplicate, cauți în coloana respectivă înainte de a adăuga rândul nou.\n\nDacă o validare eșuează, afișezi un `MsgBox` cu mesaj clar, muți cursorul pe câmpul greșit cu `.SetFocus` și oprești execuția cu `Exit Sub` — **nu** continui spre scrierea în foaie. Această tehnică se numește \"validare defensivă\": presupui că utilizatorul va greși și construiești formularul astfel încât greșeala să fie oprită înainte să ajungă în baza de date.",
+    "blockId": "cmjjuxvr40047umkptf2da647-b3"
+   },
+   {
+    "type": "example",
+    "title": "Proiectarea formularului frmClienti",
+    "concept_key": "proiectare-formular-clienti",
+    "md": "Construim formularul `frmClienti`, folosit pentru a adăuga clienți noi într-o foaie numită **Clienti** (antet pe rândul 1: Nume firmă, CUI, Adresă, Email, Telefon, Județ).\n\n**Pași în VBE (Alt+F11):**\n\n1. Insert → UserForm. Redenumești formularul `frmClienti` din fereastra Properties, iar `Caption` devine \"Adaugă client nou\".\n2. Adaugi 5 perechi Label + TextBox: `txtNume`, `txtCUI`, `txtAdresa`, `txtEmail`, `txtTelefon`.\n3. Adaugi un `ComboBox` numit `cboJudet`, pentru selecția județului dintr-o listă fixă.\n4. Adaugi două butoane: `cmdSalveaza` (Caption: \"Salvează\") și `cmdAnuleaza` (Caption: \"Anulează\").\n5. Setezi `TabIndex` de sus în jos: 0 pentru `txtNume`, 1 pentru `txtCUI` ș.a.m.d.\n\nLa deschiderea formularului, populăm lista de județe automat, ca utilizatorul să nu introducă text liber (evită greșeli de scriere):\n\n```vba\nPrivate Sub UserForm_Initialize()\n    ' Populează ComboBox-ul cu județe la deschiderea formularului\n    With cboJudet\n        .Clear\n        .AddItem \"Bucuresti\"\n        .AddItem \"Cluj\"\n        .AddItem \"Timis\"\n        .AddItem \"Iasi\"\n        .AddItem \"Constanta\"\n        .AddItem \"Brasov\"\n    End With\n    ' Primul câmp primește automat focusul\n    txtNume.SetFocus\nEnd Sub\n```\n\nFormularul se deschide dintr-un macro simplu, apelat de exemplu dintr-un buton pus direct pe foaia de calcul:\n\n```vba\nSub DeschideFormularClienti()\n    frmClienti.Show\nEnd Sub\n```",
+    "blockId": "cmjjuxvr40047umkptf2da647-b4"
+   },
+   {
+    "type": "example",
+    "title": "Codul complet pentru salvarea datelor în baza de date",
+    "concept_key": "cod-salvare-client",
+    "md": "Codul de mai jos se scrie în modulul de cod al formularului (dublu-click pe butonul `cmdSalveaza` în modul design):\n\n```vba\nPrivate Sub cmdSalveaza_Click()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n\n    Set ws = ThisWorkbook.Worksheets(\"Clienti\")\n\n    ' 1. Validare: câmpuri obligatorii\n    If Trim(txtNume.Text) = \"\" Then\n        MsgBox \"Numele firmei este obligatoriu.\", vbExclamation\n        txtNume.SetFocus\n        Exit Sub\n    End If\n\n    If Not IsNumeric(txtCUI.Text) Then\n        MsgBox \"CUI-ul trebuie să conțină doar cifre.\", vbExclamation\n        txtCUI.SetFocus\n        Exit Sub\n    End If\n\n    If InStr(txtEmail.Text, \"@\") = 0 Then\n        MsgBox \"Adresa de email nu este validă.\", vbExclamation\n        txtEmail.SetFocus\n        Exit Sub\n    End If\n\n    ' 2. Găsește primul rând liber (sub antet)\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1\n\n    ' 3. Scrie datele din formular pe rândul liber\n    With ws\n        .Cells(ultimulRand, 1).Value = txtNume.Text\n        .Cells(ultimulRand, 2).Value = txtCUI.Text\n        .Cells(ultimulRand, 3).Value = txtAdresa.Text\n        .Cells(ultimulRand, 4).Value = txtEmail.Text\n        .Cells(ultimulRand, 5).Value = txtTelefon.Text\n        .Cells(ultimulRand, 6).Value = cboJudet.Value\n    End With\n\n    MsgBox \"Clientul a fost salvat cu succes!\", vbInformation\n\n    ' 4. Golește formularul pentru o intrare nouă\n    Me.Repaint\n    txtNume.Text = \"\": txtCUI.Text = \"\": txtAdresa.Text = \"\"\n    txtEmail.Text = \"\": txtTelefon.Text = \"\": cboJudet.Value = \"\"\n    txtNume.SetFocus\nEnd Sub\n\nPrivate Sub cmdAnuleaza_Click()\n    Unload Me\nEnd Sub\n```\n\nObservă că după salvare **nu** închidem formularul (`Unload Me`), ci doar golim câmpurile — util când utilizatorul introduce mai mulți clienți la rând, fără să redeschidă fereastra de fiecare dată.",
+    "blockId": "cmjjuxvr40047umkptf2da647-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Greșeli frecvente la formularele de intrare date: (1) uitarea validării CUI-ului duce la clienți duplicați în baza de date — dacă lista trebuie să fie unică, verifică *explicit* existența CUI-ului cu `Application.WorksheetFunction.CountIf` înainte de scriere; (2) lipsa golirii formularului după salvare face ca următoarea completare să suprascrie accidental un câmp uitat cu valoarea anterioară; (3) folosirea `ActiveSheet` în loc de `ThisWorkbook.Worksheets(\"Clienti\")` poate scrie datele în foaia greșită dacă utilizatorul are altă foaie activă când apasă butonul.",
+    "blockId": "cmjjuxvr40047umkptf2da647-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Extinde formularul `frmClienti` construit mai sus astfel încât, înainte de a scrie un client nou, să verifice că **CUI-ul nu există deja** în foaia \"Clienti\" (coloana B). Dacă CUI-ul este duplicat, afișează un mesaj de avertizare și oprește salvarea, fără să golească formularul (astfel utilizatorul poate corecta CUI-ul greșit).",
+    "solution_md": "```vba\nPrivate Sub cmdSalveaza_Click()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n\n    Set ws = ThisWorkbook.Worksheets(\"Clienti\")\n\n    ' Validări existente (nume, CUI numeric, email)\n    If Trim(txtNume.Text) = \"\" Then\n        MsgBox \"Numele firmei este obligatoriu.\", vbExclamation\n        txtNume.SetFocus\n        Exit Sub\n    End If\n\n    If Not IsNumeric(txtCUI.Text) Then\n        MsgBox \"CUI-ul trebuie să conțină doar cifre.\", vbExclamation\n        txtCUI.SetFocus\n        Exit Sub\n    End If\n\n    ' Validare nouă: CUI unic\n    If Application.WorksheetFunction.CountIf(ws.Columns(\"B\"), txtCUI.Text) > 0 Then\n        MsgBox \"Există deja un client cu acest CUI în baza de date.\", vbCritical\n        txtCUI.SetFocus\n        Exit Sub\n    End If\n\n    If InStr(txtEmail.Text, \"@\") = 0 Then\n        MsgBox \"Adresa de email nu este validă.\", vbExclamation\n        txtEmail.SetFocus\n        Exit Sub\n    End If\n\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1\n\n    With ws\n        .Cells(ultimulRand, 1).Value = txtNume.Text\n        .Cells(ultimulRand, 2).Value = txtCUI.Text\n        .Cells(ultimulRand, 3).Value = txtAdresa.Text\n        .Cells(ultimulRand, 4).Value = txtEmail.Text\n        .Cells(ultimulRand, 5).Value = txtTelefon.Text\n        .Cells(ultimulRand, 6).Value = cboJudet.Value\n    End With\n\n    MsgBox \"Clientul a fost salvat cu succes!\", vbInformation\n\n    txtNume.Text = \"\": txtCUI.Text = \"\": txtAdresa.Text = \"\"\n    txtEmail.Text = \"\": txtTelefon.Text = \"\": cboJudet.Value = \"\"\n    txtNume.SetFocus\nEnd Sub\n```\n\nObservă că verificarea de unicitate se face **înainte** de a determina `ultimulRand`, respectând ordinea logică: mai întâi validăm tot ce ține de conținutul câmpurilor, abia apoi scriem în foaie.",
+    "blockId": "cmjjuxvr40047umkptf2da647-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce instrucțiune folosești ca să oprești execuția unui `Sub` atunci când validarea unui câmp din UserForm eșuează, fără să continui spre scrierea în foaie?",
+    "choices": [
+     "End Sub",
+     "Exit Sub",
+     "Stop",
+     "Return"
+    ],
+    "answer": 1,
+    "explain": "`Exit Sub` oprește execuția procedurii curente imediat, ceea ce este exact comportamentul dorit după ce afișezi un MsgBox de eroare și readuci cursorul pe câmpul greșit cu .SetFocus.",
+    "blockId": "cmjjuxvr40047umkptf2da647-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce funcție folosești pentru a verifica dacă un CUI introdus într-un TextBox există deja într-o coloană din foaia de calcul, înainte de a salva un client nou?",
+    "choices": [
+     "Application.WorksheetFunction.CountIf",
+     "IsNumeric",
+     "Trim",
+     "InStr"
+    ],
+    "answer": 0,
+    "explain": "CountIf numără de câte ori apare o valoare într-un domeniu; dacă rezultatul este mai mare decât 0, CUI-ul există deja și trebuie blocată salvarea pentru a evita duplicatele.",
+    "blockId": "cmjjuxvr40047umkptf2da647-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce combinație de taste deschide editorul VBA din Excel pentru a insera un UserForm?",
+    "back": "Alt+F11, apoi Insert → UserForm.",
+    "concept_key": "userform-ce-este",
+    "blockId": "cmjjuxvr40047umkptf2da647-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce funcție VBA elimină spațiile de la începutul și sfârșitul unui text, folosită pentru a verifica dacă un TextBox e gol?",
+    "back": "Trim() — de exemplu, If Trim(txtNume.Text) = \"\" Then indică un câmp necompletat.",
+    "concept_key": "validare-date-formular",
+    "blockId": "cmjjuxvr40047umkptf2da647-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce eveniment al unui UserForm rulează automat imediat ce formularul este afișat, util pentru a popula un ComboBox?",
+    "back": "UserForm_Initialize.",
+    "concept_key": "userform-controale-principale",
+    "blockId": "cmjjuxvr40047umkptf2da647-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum găsești primul rând liber dintr-o coloană A a unei foi, pentru a adăuga un rând nou de date?",
+    "back": "ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1",
+    "concept_key": "cod-salvare-client",
+    "blockId": "cmjjuxvr40047umkptf2da647-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce funcție VBA folosești ca să verifici că un CUI introdus într-un formular nu există deja în baza de date?",
+    "back": "Application.WorksheetFunction.CountIf(interval, valoare) — dacă rezultatul e peste 0, valoarea e duplicată.",
+    "concept_key": "cod-salvare-client",
+    "blockId": "cmjjuxvr40047umkptf2da647-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1340,
+   "flashcards": 5
+  }
+ }
+}

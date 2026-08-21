@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwky00r2umkpl0li7fec",
+ "courseId": "cmjjuxwj000pkumkpt4dxuzge",
+ "course": "Negociere și Influențare",
+ "module": "Închiderea și Follow-up",
+ "lesson": "Quiz final negociere",
+ "category": "SOFT_SKILLS",
+ "content": "Test de evaluare — Quiz final negociere (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este scopul principal al etapei de închidere într-o negociere?",
+     "choices": [
+      "Obținerea unui acord ferm, clar și fezabil, care poate fi implementat de ambele părți",
+      "Impunerea condițiilor proprii asupra celeilalte părți, indiferent de consecințe",
+      "Prelungirea discuțiilor cât mai mult posibil pentru a obține concesii suplimentare",
+      "Încheierea rapidă a discuției, indiferent de rezultatul obținut"
+     ],
+     "answer": 0,
+     "explain": "Închiderea nu înseamnă doar terminarea discuției, ci consolidarea unui acord clar, echilibrat și implementabil pentru ambele părți, care va sta la baza colaborării ulterioare.",
+     "concept_key": "scop_inchiderii"
+    },
+    {
+     "q": "Care dintre următoarele reprezintă un semnal tipic că partenerul de negociere este pregătit pentru închidere?",
+     "choices": [
+      "Partenerul întreabă despre detalii de implementare, precum termenele de livrare sau modalitatea de plată",
+      "Partenerul repetă aceeași obiecție, fără a aduce argumente noi",
+      "Partenerul solicită o pauză pentru a se consulta cu superiorii ierarhici",
+      "Partenerul evită constant să răspundă la întrebări directe"
+     ],
+     "answer": 0,
+     "explain": "Întrebările despre aspecte practice (livrare, plată, implementare) sunt un semnal de cumpărare (buying signal) — arată că partenerul se proiectează deja în etapa post-acord, nu mai discută dacă va încheia înțelegerea, ci cum.",
+     "concept_key": "semnale_de_cumparare"
+    },
+    {
+     "q": "Un negociator dintr-o firmă SRL spune: „Preferați livrarea în 15 zile cu plata la 30 de zile, sau livrarea în 7 zile cu plata la livrare?” Ce tehnică de închidere folosește?",
+     "choices": [
+      "Închiderea alternativă — oferă două variante, ambele acceptabile pentru inițiator",
+      "Închiderea prin sumarizare a punctelor convenite anterior",
+      "Închiderea cu termen limită (deadline close)",
+      "Închiderea directă, prin solicitarea explicită a semnăturii"
+     ],
+     "answer": 0,
+     "explain": "Închiderea alternativă oferă partenerului senzația de control, prin alegerea între două opțiuni, dar ambele conduc la finalizarea acordului în termenii favorabili inițiatorului.",
+     "concept_key": "tehnici_inchidere"
+    },
+    {
+     "q": "Ce reprezintă tactica „nibbling” (ciupitul), folosită uneori chiar înainte de semnarea acordului final?",
+     "choices": [
+      "Solicitarea unor concesii mici, suplimentare, exact înainte de finalizarea formală a acordului",
+      "Oferirea unei reduceri semnificative pentru a grăbi decizia partenerului",
+      "Repetarea argumentelor-cheie pentru a întări poziția proprie",
+      "Stabilirea unui termen limită artificial pentru semnarea contractului"
+     ],
+     "answer": 0,
+     "explain": "„Nibbling” înseamnă a cere concesii mici, aparent neînsemnate, în ultimul moment, mizând pe faptul că partenerul nu va risca să compromită întregul acord pentru un detaliu minor.",
+     "concept_key": "tactica_nibbling"
+    },
+    {
+     "q": "Care este reacția recomandată atunci când partenerul solicită o concesie suplimentară de ultim moment („nibbling”), după ce punctele principale ale acordului fuseseră deja stabilite?",
+     "choices": [
+      "Se poate accepta condiționat, doar în schimbul unei contra-concesii echivalente din partea celuilalt",
+      "Se acceptă imediat, necondiționat, pentru a nu pune în pericol acordul",
+      "Se refuză categoric și se reia negocierea de la zero",
+      "Se ignoră solicitarea și se trece direct la semnarea contractului"
+     ],
+     "answer": 0,
+     "explain": "Principiul reciprocității rămâne valabil și la finalul negocierii: orice concesie suplimentară acordată trebuie compensată printr-o contra-concesie, altfel se creează un precedent care poate fi exploatat în viitor.",
+     "concept_key": "contracarare_nibbling"
+    },
+    {
+     "q": "De ce este recomandat ca, imediat după închiderea verbală a unei negocieri, să se trimită un e-mail de confirmare cu punctele convenite (memorandum de înțelegere)?",
+     "choices": [
+      "Pentru a elimina ambiguitățile și a preveni interpretările diferite ale acordului pe viitor",
+      "Pentru a impresiona partenerul cu profesionalismul echipei de negociere",
+      "Pentru că este o cerință legală obligatorie pentru orice negociere comercială din România",
+      "Pentru a întârzia semnarea contractului final și a câștiga timp de gândire"
+     ],
+     "answer": 0,
+     "explain": "Confirmarea scrisă nu este o formalitate legală obligatorie, ci o bună practică de follow-up: fixează în scris termenii conveniți verbal și reduce riscul de neînțelegeri sau reinterpretări ulterioare ale acordului.",
+     "concept_key": "confirmare_scrisa"
+    },
+    {
+     "q": "O echipă de negociere dintr-o firmă SRL din București a semnat un acord-cadru cu un furnizor. Care este practica recomandată de follow-up în primele zile după semnare?",
+     "choices": [
+      "Confirmarea în scris a pașilor următori, a responsabililor și a termenelor, urmată de un contact de verificare la data stabilită",
+      "Așteptarea pasivă până când furnizorul inițiază următorul contact",
+      "Renegocierea imediată a unor clauze considerate ulterior mai puțin favorabile",
+      "Trimiterea unui contract nou, diferit de cel discutat, pentru a testa reacția partenerului"
+     ],
+     "answer": 0,
+     "explain": "Un follow-up eficient presupune claritate asupra pașilor următori (cine, ce, până când) și un contact proactiv de verificare la termenul stabilit, nu așteptare pasivă sau redeschiderea unilaterală a discuțiilor.",
+     "concept_key": "follow_up_dupa_semnare"
+    },
+    {
+     "q": "În etapa de închidere, ce rol joacă BATNA (Best Alternative To a Negotiated Agreement)?",
+     "choices": [
+      "Oferă un reper obiectiv pentru a decide dacă acordul propus este mai avantajos decât alternativa de a nu ajunge la o înțelegere",
+      "Este relevant exclusiv la începutul negocierii, nemaifiind util în faza de închidere",
+      "Reprezintă concesia maximă pe care negociatorul este dispus să o facă",
+      "Este un document legal ce trebuie prezentat obligatoriu celeilalte părți înainte de semnare"
+     ],
+     "answer": 0,
+     "explain": "BATNA rămâne reperul de decizie și în faza de închidere: dacă acordul propus este mai slab decât cea mai bună alternativă disponibilă, negociatorul ar trebui să refuze închiderea, chiar dacă discuțiile sunt avansate.",
+     "concept_key": "batna_la_inchidere"
+    },
+    {
+     "q": "Care este o greșeală frecventă în etapa de închidere, care poate submina un acord altfel solid?",
+     "choices": [
+      "Grăbirea închiderii înainte ca toate punctele critice să fie clarificate, lăsând ambiguități ce pot genera conflicte ulterioare",
+      "Solicitarea unei confirmări scrise a termenilor conveniți verbal",
+      "Rezumarea punctelor de acord înainte de semnarea finală",
+      "Stabilirea clară a pașilor următori și a responsabililor implicați"
+     ],
+     "answer": 0,
+     "explain": "Presiunea de a finaliza rapid o negociere poate duce la ignorarea unor detalii esențiale (termene, responsabilități, condiții de calitate), ambiguități care ulterior devin surse de conflict sau de renegociere forțată.",
+     "concept_key": "greseli_la_inchidere"
+    },
+    {
+     "q": "O companie PFA a negociat un contract de colaborare pe termen lung cu un client important. La două luni după semnare, clientul solicită o modificare a termenilor de plată. Care este abordarea cea mai potrivită, aliniată bunelor practici de follow-up și menținere a relației?",
+     "choices": [
+      "Se reia dialogul ca o negociere punctuală, se evaluează impactul modificării și se caută o soluție care păstrează echilibrul acordului inițial și relația pe termen lung",
+      "Se refuză automat orice modificare, întrucât contractul semnat este definitiv și nenegociabil",
+      "Se acceptă necondiționat cererea, pentru a evita orice tensiune cu clientul",
+      "Se ignoră solicitarea, considerând că relația de negociere s-a încheiat odată cu semnarea contractului"
+     ],
+     "answer": 0,
+     "explain": "Follow-up-ul eficient nu se oprește la semnare: relația continuă, iar solicitările ulterioare trebuie tratate printr-un dialog structurat, care protejează atât echilibrul acordului inițial, cât și parteneriatul pe termen lung — nici refuz rigid, nici acceptare necondiționată.",
+     "concept_key": "gestionare_relatie_post_acord"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

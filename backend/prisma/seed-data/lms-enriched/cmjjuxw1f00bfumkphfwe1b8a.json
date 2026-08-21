@@ -1,0 +1,141 @@
+{
+ "lessonId": "cmjjuxw1f00bfumkphfwe1b8a",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Indicatori Financiari Cheie",
+ "lesson": "Indicatori de eficiență",
+ "category": "FINANCE_OPS",
+ "content": "# Indicatori de eficiență\n\n## Ce sunt indicatorii de eficiență operațională\n\nPână acum ai învățat să citești bilanțul și contul de profit și pierdere și să calculezi indicatori de profitabilitate și lichiditate. Indicatorii de eficiență operațională (numiți și indicatori de activitate sau de gestiune) răspund la o întrebare diferită, dar la fel de importantă: **cât de bine folosește firma resursele pe care le are deja** — stocurile, banii încasați de la clienți și cei plătiți către furnizori?\n\nDouă firme pot avea aceeași cifră de afaceri și același profit, dar una poate avea banii \"blocați\" 90 de zile în stocuri și creanțe, în timp ce cealaltă îi transformă în cash în doar 30 de zile. Firma a doua are nevoie de mult mai puțin capital de lucru (working capital) pentru a susține aceleași vânzări — deci este mai eficientă.\n\nCei trei indicatori pe care îi vei stăpâni în această lecție sunt:\n\n1. **Rotația stocurilor** (Inventory Turnover) — cât de repede se \"mișcă\" marfa din depozit.\n2. **Zile clienți (DSO – Days Sales Outstanding)** și **zile furnizori (DPO – Days Payable Outstanding)** — cât durează încasarea de la clienți, respectiv plata către furnizori.\n3. **Ciclul de conversie a numerarului (CCC – Cash Conversion Cycle)** — indicatorul sintetic care combină pe toți trei și arată câte zile stau banii firmei \"înghețați\" în activitate, de la plata furnizorului până la încasarea de la client.\n\nAcești indicatori sunt esențiali pentru un manager non-financiar pentru că explică direct de ce o firmă profitabilă pe hârtie poate avea probleme de cash — și unde trebuie să intervii ca să eliberezi bani blocați în operațiuni.\n\n## Rotația stocurilor (Inventory Turnover)\n\nRotația stocurilor arată de câte ori, într-un an, firma își \"reînnoiește\" complet stocul mediu prin vânzare. Se calculează raportând costul bunurilor vândute (COGS – Cost of Goods Sold) la stocul mediu, nu cifra de afaceri, pentru că ambii termeni trebuie exprimați la cost, nu la preț de vânzare:\n\n**Rotația stocurilor = Costul bunurilor vândute / Stocul mediu**\n\nStocul mediu se calculează, de regulă, ca medie între stocul de la începutul și cel de la finalul perioadei analizate: (Stoc inițial + Stoc final) / 2. Această medie evită distorsiunile date de un stoc anormal de mare sau de mic exact la data bilanțului.\n\nDin rotația anuală se obține un indicator mai intuitiv, **numărul de zile de stoc** (DIO – Days Inventory Outstanding):\n\n**Zile stoc (DIO) = 365 / Rotația stocurilor**\n\nCu cât rotația este mai mare (și, implicit, numărul de zile de stoc mai mic), cu atât firma își vinde marfa mai repede și ține mai puțin capital \"blocat\" pe rafturi. O rotație scăzută poate indica stocuri supradimensionate, produse cu mișcare lentă sau chiar stocuri greu vandabile (obsolete), care ar trebui provizionate contabil.\n\n## Zile clienți (DSO) și zile furnizori (DPO)\n\n**DSO (Days Sales Outstanding)** măsoară în medie câte zile trec de la momentul vânzării până la încasarea efectivă a banilor de la clienți:\n\n**DSO = (Creanțe comerciale medii / Cifra de afaceri) × 365**\n\nUn DSO mare înseamnă că firma acordă termene de plată generoase sau, mai grav, că are clienți care întârzie la plată — bani care ar putea fi folosiți în afacere stau \"înghețați\" în facturi neîncasate.\n\n**DPO (Days Payable Outstanding)** măsoară, simetric, câte zile în medie durează până când firma își plătește furnizorii:\n\n**DPO = (Datorii comerciale medii către furnizori / Achiziții sau costul bunurilor vândute) × 365**\n\nSpre deosebire de DSO, un DPO mai mare este, în general, favorabil pentru firmă — înseamnă că folosește banii furnizorilor ca sursă de finanțare gratuită pentru mai mult timp, fără dobândă. Există însă o limită: un DPO exagerat de mare, peste termenele contractuale, poate afecta relația cu furnizorii și poate duce la pierderea discounturilor de plată rapidă sau la înăsprirea condițiilor comerciale.\n\n## Ciclul de conversie a numerarului (Cash Conversion Cycle – CCC)\n\nCCC combină cei trei indicatori de mai sus într-un singur număr: câte zile trec, în medie, din momentul în care firma plătește pentru materiile prime/marfă până în momentul în care încasează banii de la clientul final.\n\n**CCC = DIO + DSO − DPO**\n\nInterpretarea este directă:\n\n- **CCC pozitiv și mare** — firma finanțează din resurse proprii (sau credit bancar) un decalaj lung între plata furnizorilor și încasarea de la clienți. Cu cât CCC este mai mare, cu atât firma are nevoie de mai mult capital de lucru.\n- **CCC mic** — firma recuperează rapid banii investiți în stocuri și creanțe.\n- **CCC negativ** — situație întâlnită la retaileri mari sau la firme cu putere de negociere ridicată: firma încasează de la clienți (adesea la vânzare, cash sau card) înainte să își plătească furnizorii. Practic, furnizorii finanțează gratuit activitatea firmei.\n\nCCC este un indicator excelent pentru discuțiile de management pentru că traduce direct în zile impactul deciziilor operaționale: negocierea unui termen de plată mai lung cu furnizorii, reducerea stocului mediu sau accelerarea încasărilor de la clienți reduc CCC și eliberează cash care poate fi folosit pentru investiții, plata datoriilor sau distribuire de dividende, fără să fie nevoie de un împrumut suplimentar.\n\n## Exemplu: Calculul complet al indicatorilor de eficiență — ComExpert SRL\nComExpert SRL este o firmă de distribuție. Din situațiile financiare anuale (întocmite conform OMFP 1802/2014) extragem:\n\n- Cifra de afaceri (vânzări nete): **3.600.000 lei**\n- Costul bunurilor vândute (COGS): **2.400.000 lei**\n- Stoc mediu de marfă: **400.000 lei**\n- Creanțe comerciale medii (clienți): **500.000 lei**\n- Datorii comerciale medii către furnizori: **300.000 lei**\n\n**Pasul 1 — Rotația stocurilor și DIO**\n\nRotația stocurilor = 2.400.000 / 400.000 = **6 rotații/an**\n\nDIO = 365 / 6 = **≈ 61 zile**\n\n**Pasul 2 — DSO**\n\nDSO = (500.000 / 3.600.000) × 365 = **≈ 51 zile**\n\n**Pasul 3 — DPO**\n\nDPO = (300.000 / 2.400.000) × 365 = **≈ 46 zile**\n\n**Pasul 4 — CCC**\n\nCCC = 61 + 51 − 46 = **66 zile**\n\nConcluzie: ComExpert are nevoie, în medie, de finanțare pentru 66 de zile de activitate — banii investiți în marfă și creanțe sunt recuperați efectiv după 66 de zile de la plata furnizorilor. Dacă managementul reușește să reducă stocul mediu sau să încaseze mai rapid de la clienți, firma eliberează cash fără să apeleze la un credit bancar suplimentar.\n\n## Exemplu: Impactul financiar al reducerii DSO\nContinuăm exemplul ComExpert SRL. Managementul își propune să reducă DSO de la 51 de zile la 30 de zile, prin urmărirea mai strictă a încasărilor și penalizarea întârzierilor la plată.\n\nCash-ul eliberat prin această îmbunătățire se calculează astfel:\n\n**Cash eliberat = [(DSO vechi − DSO nou) / 365] × Cifra de afaceri**\n\nCash eliberat = [(51 − 30) / 365] × 3.600.000 = (21/365) × 3.600.000 = **≈ 207.000 lei**\n\nAcești 207.000 lei nu sunt profit suplimentar — sunt bani care erau \"înghețați\" în facturi neîncasate și care devin disponibili în conturile firmei, fără ca aceasta să contracteze un credit. Este exact tipul de calcul pe care un manager non-financiar trebuie să îl poată face rapid pentru a susține, în fața conducerii, o propunere de îmbunătățire a procesului de încasare.\n\n> Temei legal: OMFP 1802/2014 Reglementări contabile privind situațiile financiare anuale individuale și consolidate (în vigoare de la 2015-01-01)\nIndicatorii de eficiență se calculează pe baza datelor din bilanț (stocuri, creanțe comerciale, datorii comerciale) și din contul de profit și pierdere (cifra de afaceri, costul bunurilor vândute), întocmite conform OMFP 1802/2014. Pentru relevanță, valorile de bilanț (stoc, creanțe, datorii) se folosesc ca **medie** între începutul și sfârșitul perioadei analizate, nu ca valoare punctuală de final de an, care poate fi distorsionată de sezonalitate sau de tranzacții realizate chiar înainte de închiderea exercițiului financiar.\n\n⚠ Indicatorii de eficiență se interpretează întotdeauna **în context**, nu izolat:\n\n- Compară o firmă doar cu firme din **același sector de activitate** — o rotație a stocurilor de 4 este normală pentru un producător de utilaje industriale, dar ar fi îngrijorătoare pentru un supermarket.\n- Ai grijă la **sezonalitate**: o firmă cu vânzări concentrate în decembrie poate avea un stoc final de an artificial de mare sau de mic față de media reală a anului — de aceea se recomandă stocul mediu, nu valoarea de la o singură dată.\n- Un DPO foarte mare nu este automat un semnal pozitiv — poate ascunde și dificultăți reale de plată către furnizori, nu doar putere de negociere. Verifică întotdeauna dacă termenele de plată respectă contractele semnate, nu doar rezultatul aritmetic.\n\n## Exercițiu\nAgrimex SRL, firmă de comerț cu produse agricole, îți pune la dispoziție următoarele date medii anuale:\n\n- Cifra de afaceri: **1.800.000 lei**\n- Costul bunurilor vândute (COGS): **1.200.000 lei**\n- Stoc mediu: **300.000 lei**\n- Creanțe comerciale medii: **250.000 lei**\n- Datorii comerciale medii către furnizori: **150.000 lei**\n\nCalculează: (a) DIO, (b) DSO, (c) DPO, (d) CCC. Interpretează rezultatul într-o frază.\n\n**Soluție:** **(a) DIO** = (Stoc mediu / COGS) × 365 = (300.000 / 1.200.000) × 365 = 0,25 × 365 = **≈ 91 zile**\n\n**(b) DSO** = (Creanțe medii / Cifra de afaceri) × 365 = (250.000 / 1.800.000) × 365 = **≈ 51 zile**\n\n**(c) DPO** = (Datorii furnizori medii / COGS) × 365 = (150.000 / 1.200.000) × 365 = **≈ 46 zile**\n\n**(d) CCC** = DIO + DSO − DPO = 91 + 51 − 46 = **96 zile**\n\n**Interpretare**: Agrimex SRL are nevoie de finanțare pentru aproape 3 luni (96 de zile) de activitate, în principal din cauza rotației lente a stocului (91 de zile) — un semnal clar că managementul ar trebui să analizeze dacă stocul de produse agricole este supradimensionat sau conține produse cu mișcare lentă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "indicatori-eficienta-operationala",
+    "md": "## Ce sunt indicatorii de eficiență operațională\n\nPână acum ai învățat să citești bilanțul și contul de profit și pierdere și să calculezi indicatori de profitabilitate și lichiditate. Indicatorii de eficiență operațională (numiți și indicatori de activitate sau de gestiune) răspund la o întrebare diferită, dar la fel de importantă: **cât de bine folosește firma resursele pe care le are deja** — stocurile, banii încasați de la clienți și cei plătiți către furnizori?\n\nDouă firme pot avea aceeași cifră de afaceri și același profit, dar una poate avea banii \"blocați\" 90 de zile în stocuri și creanțe, în timp ce cealaltă îi transformă în cash în doar 30 de zile. Firma a doua are nevoie de mult mai puțin capital de lucru (working capital) pentru a susține aceleași vânzări — deci este mai eficientă.\n\nCei trei indicatori pe care îi vei stăpâni în această lecție sunt:\n\n1. **Rotația stocurilor** (Inventory Turnover) — cât de repede se \"mișcă\" marfa din depozit.\n2. **Zile clienți (DSO – Days Sales Outstanding)** și **zile furnizori (DPO – Days Payable Outstanding)** — cât durează încasarea de la clienți, respectiv plata către furnizori.\n3. **Ciclul de conversie a numerarului (CCC – Cash Conversion Cycle)** — indicatorul sintetic care combină pe toți trei și arată câte zile stau banii firmei \"înghețați\" în activitate, de la plata furnizorului până la încasarea de la client.\n\nAcești indicatori sunt esențiali pentru un manager non-financiar pentru că explică direct de ce o firmă profitabilă pe hârtie poate avea probleme de cash — și unde trebuie să intervii ca să eliberezi bani blocați în operațiuni.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "rotatia-stocurilor",
+    "md": "## Rotația stocurilor (Inventory Turnover)\n\nRotația stocurilor arată de câte ori, într-un an, firma își \"reînnoiește\" complet stocul mediu prin vânzare. Se calculează raportând costul bunurilor vândute (COGS – Cost of Goods Sold) la stocul mediu, nu cifra de afaceri, pentru că ambii termeni trebuie exprimați la cost, nu la preț de vânzare:\n\n**Rotația stocurilor = Costul bunurilor vândute / Stocul mediu**\n\nStocul mediu se calculează, de regulă, ca medie între stocul de la începutul și cel de la finalul perioadei analizate: (Stoc inițial + Stoc final) / 2. Această medie evită distorsiunile date de un stoc anormal de mare sau de mic exact la data bilanțului.\n\nDin rotația anuală se obține un indicator mai intuitiv, **numărul de zile de stoc** (DIO – Days Inventory Outstanding):\n\n**Zile stoc (DIO) = 365 / Rotația stocurilor**\n\nCu cât rotația este mai mare (și, implicit, numărul de zile de stoc mai mic), cu atât firma își vinde marfa mai repede și ține mai puțin capital \"blocat\" pe rafturi. O rotație scăzută poate indica stocuri supradimensionate, produse cu mișcare lentă sau chiar stocuri greu vandabile (obsolete), care ar trebui provizionate contabil.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dso-dpo-zile-clienti-furnizori",
+    "md": "## Zile clienți (DSO) și zile furnizori (DPO)\n\n**DSO (Days Sales Outstanding)** măsoară în medie câte zile trec de la momentul vânzării până la încasarea efectivă a banilor de la clienți:\n\n**DSO = (Creanțe comerciale medii / Cifra de afaceri) × 365**\n\nUn DSO mare înseamnă că firma acordă termene de plată generoase sau, mai grav, că are clienți care întârzie la plată — bani care ar putea fi folosiți în afacere stau \"înghețați\" în facturi neîncasate.\n\n**DPO (Days Payable Outstanding)** măsoară, simetric, câte zile în medie durează până când firma își plătește furnizorii:\n\n**DPO = (Datorii comerciale medii către furnizori / Achiziții sau costul bunurilor vândute) × 365**\n\nSpre deosebire de DSO, un DPO mai mare este, în general, favorabil pentru firmă — înseamnă că folosește banii furnizorilor ca sursă de finanțare gratuită pentru mai mult timp, fără dobândă. Există însă o limită: un DPO exagerat de mare, peste termenele contractuale, poate afecta relația cu furnizorii și poate duce la pierderea discounturilor de plată rapidă sau la înăsprirea condițiilor comerciale.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cash-conversion-cycle",
+    "md": "## Ciclul de conversie a numerarului (Cash Conversion Cycle – CCC)\n\nCCC combină cei trei indicatori de mai sus într-un singur număr: câte zile trec, în medie, din momentul în care firma plătește pentru materiile prime/marfă până în momentul în care încasează banii de la clientul final.\n\n**CCC = DIO + DSO − DPO**\n\nInterpretarea este directă:\n\n- **CCC pozitiv și mare** — firma finanțează din resurse proprii (sau credit bancar) un decalaj lung între plata furnizorilor și încasarea de la clienți. Cu cât CCC este mai mare, cu atât firma are nevoie de mai mult capital de lucru.\n- **CCC mic** — firma recuperează rapid banii investiți în stocuri și creanțe.\n- **CCC negativ** — situație întâlnită la retaileri mari sau la firme cu putere de negociere ridicată: firma încasează de la clienți (adesea la vânzare, cash sau card) înainte să își plătească furnizorii. Practic, furnizorii finanțează gratuit activitatea firmei.\n\nCCC este un indicator excelent pentru discuțiile de management pentru că traduce direct în zile impactul deciziilor operaționale: negocierea unui termen de plată mai lung cu furnizorii, reducerea stocului mediu sau accelerarea încasărilor de la clienți reduc CCC și eliberează cash care poate fi folosit pentru investiții, plata datoriilor sau distribuire de dividende, fără să fie nevoie de un împrumut suplimentar.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul complet al indicatorilor de eficiență — ComExpert SRL",
+    "concept_key": "cash-conversion-cycle",
+    "md": "ComExpert SRL este o firmă de distribuție. Din situațiile financiare anuale (întocmite conform OMFP 1802/2014) extragem:\n\n- Cifra de afaceri (vânzări nete): **3.600.000 lei**\n- Costul bunurilor vândute (COGS): **2.400.000 lei**\n- Stoc mediu de marfă: **400.000 lei**\n- Creanțe comerciale medii (clienți): **500.000 lei**\n- Datorii comerciale medii către furnizori: **300.000 lei**\n\n**Pasul 1 — Rotația stocurilor și DIO**\n\nRotația stocurilor = 2.400.000 / 400.000 = **6 rotații/an**\n\nDIO = 365 / 6 = **≈ 61 zile**\n\n**Pasul 2 — DSO**\n\nDSO = (500.000 / 3.600.000) × 365 = **≈ 51 zile**\n\n**Pasul 3 — DPO**\n\nDPO = (300.000 / 2.400.000) × 365 = **≈ 46 zile**\n\n**Pasul 4 — CCC**\n\nCCC = 61 + 51 − 46 = **66 zile**\n\nConcluzie: ComExpert are nevoie, în medie, de finanțare pentru 66 de zile de activitate — banii investiți în marfă și creanțe sunt recuperați efectiv după 66 de zile de la plata furnizorilor. Dacă managementul reușește să reducă stocul mediu sau să încaseze mai rapid de la clienți, firma eliberează cash fără să apeleze la un credit bancar suplimentar.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b5"
+   },
+   {
+    "type": "example",
+    "title": "Impactul financiar al reducerii DSO",
+    "concept_key": "dso-dpo-zile-clienti-furnizori",
+    "md": "Continuăm exemplul ComExpert SRL. Managementul își propune să reducă DSO de la 51 de zile la 30 de zile, prin urmărirea mai strictă a încasărilor și penalizarea întârzierilor la plată.\n\nCash-ul eliberat prin această îmbunătățire se calculează astfel:\n\n**Cash eliberat = [(DSO vechi − DSO nou) / 365] × Cifra de afaceri**\n\nCash eliberat = [(51 − 30) / 365] × 3.600.000 = (21/365) × 3.600.000 = **≈ 207.000 lei**\n\nAcești 207.000 lei nu sunt profit suplimentar — sunt bani care erau \"înghețați\" în facturi neîncasate și care devin disponibili în conturile firmei, fără ca aceasta să contracteze un credit. Este exact tipul de calcul pe care un manager non-financiar trebuie să îl poată face rapid pentru a susține, în fața conducerii, o propunere de îmbunătățire a procesului de încasare.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Reglementări contabile privind situațiile financiare anuale individuale și consolidate",
+    "effective": "2015-01-01",
+    "md": "Indicatorii de eficiență se calculează pe baza datelor din bilanț (stocuri, creanțe comerciale, datorii comerciale) și din contul de profit și pierdere (cifra de afaceri, costul bunurilor vândute), întocmite conform OMFP 1802/2014. Pentru relevanță, valorile de bilanț (stoc, creanțe, datorii) se folosesc ca **medie** între începutul și sfârșitul perioadei analizate, nu ca valoare punctuală de final de an, care poate fi distorsionată de sezonalitate sau de tranzacții realizate chiar înainte de închiderea exercițiului financiar.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Indicatorii de eficiență se interpretează întotdeauna **în context**, nu izolat:\n\n- Compară o firmă doar cu firme din **același sector de activitate** — o rotație a stocurilor de 4 este normală pentru un producător de utilaje industriale, dar ar fi îngrijorătoare pentru un supermarket.\n- Ai grijă la **sezonalitate**: o firmă cu vânzări concentrate în decembrie poate avea un stoc final de an artificial de mare sau de mic față de media reală a anului — de aceea se recomandă stocul mediu, nu valoarea de la o singură dată.\n- Un DPO foarte mare nu este automat un semnal pozitiv — poate ascunde și dificultăți reale de plată către furnizori, nu doar putere de negociere. Verifică întotdeauna dacă termenele de plată respectă contractele semnate, nu doar rezultatul aritmetic.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Agrimex SRL, firmă de comerț cu produse agricole, îți pune la dispoziție următoarele date medii anuale:\n\n- Cifra de afaceri: **1.800.000 lei**\n- Costul bunurilor vândute (COGS): **1.200.000 lei**\n- Stoc mediu: **300.000 lei**\n- Creanțe comerciale medii: **250.000 lei**\n- Datorii comerciale medii către furnizori: **150.000 lei**\n\nCalculează: (a) DIO, (b) DSO, (c) DPO, (d) CCC. Interpretează rezultatul într-o frază.",
+    "solution_md": "**(a) DIO** = (Stoc mediu / COGS) × 365 = (300.000 / 1.200.000) × 365 = 0,25 × 365 = **≈ 91 zile**\n\n**(b) DSO** = (Creanțe medii / Cifra de afaceri) × 365 = (250.000 / 1.800.000) × 365 = **≈ 51 zile**\n\n**(c) DPO** = (Datorii furnizori medii / COGS) × 365 = (150.000 / 1.200.000) × 365 = **≈ 46 zile**\n\n**(d) CCC** = DIO + DSO − DPO = 91 + 51 − 46 = **96 zile**\n\n**Interpretare**: Agrimex SRL are nevoie de finanțare pentru aproape 3 luni (96 de zile) de activitate, în principal din cauza rotației lente a stocului (91 de zile) — un semnal clar că managementul ar trebui să analizeze dacă stocul de produse agricole este supradimensionat sau conține produse cu mișcare lentă.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are rotația stocurilor 4 (adică stocul se \"reînnoiește\" de 4 ori pe an). Câte zile de stoc (DIO) are firma, aproximativ?",
+    "choices": [
+     "≈ 40 zile",
+     "≈ 91 zile",
+     "≈ 122 zile",
+     "≈ 180 zile"
+    ],
+    "answer": 1,
+    "explain": "DIO = 365 / Rotația stocurilor = 365 / 4 = 91,25, deci aproximativ 91 de zile.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce înseamnă un Cash Conversion Cycle (CCC) negativ pentru o firmă?",
+    "choices": [
+     "Firma este în pierdere",
+     "Firma încasează de la clienți înainte să își plătească furnizorii, practic finanțată gratuit de aceștia",
+     "Firma nu are deloc stocuri",
+     "Firma nu are datorii către furnizori"
+    ],
+    "answer": 1,
+    "explain": "Un CCC negativ apare când DPO (zilele de plată către furnizori) depășesc suma DIO + DSO — firma încasează banii de la clienți înainte de a plăti furnizorii, folosind astfel finanțarea acestora fără cost.",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula rotației stocurilor?",
+    "back": "Rotația stocurilor = Costul bunurilor vândute (COGS) / Stocul mediu. Arată de câte ori pe an se \"reînnoiește\" stocul prin vânzare.",
+    "concept_key": "rotatia-stocurilor",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula DSO (Days Sales Outstanding)?",
+    "back": "DSO = (Creanțe comerciale medii / Cifra de afaceri) × 365. Arată în câte zile, în medie, firma încasează banii de la clienți.",
+    "concept_key": "dso-dpo-zile-clienti-furnizori",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula DPO (Days Payable Outstanding)?",
+    "back": "DPO = (Datorii comerciale medii către furnizori / COGS) × 365. Arată în câte zile, în medie, firma își plătește furnizorii.",
+    "concept_key": "dso-dpo-zile-clienti-furnizori",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula Cash Conversion Cycle (CCC)?",
+    "back": "CCC = DIO (zile stoc) + DSO (zile clienți) − DPO (zile furnizori). Arată câte zile stau banii firmei \"blocați\" în operațiuni, de la plata furnizorilor până la încasarea de la clienți.",
+    "concept_key": "cash-conversion-cycle",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă un CCC negativ?",
+    "back": "Firma încasează de la clienți înainte să plătească furnizorii — este finanțată gratuit de furnizori (frecvent la retaileri mari cu vânzări cash/card și termene lungi de plată către furnizori).",
+    "concept_key": "ccc-negativ",
+    "blockId": "cmjjuxw1f00bfumkphfwe1b8a-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1459,
+   "flashcards": 5
+  }
+ }
+}

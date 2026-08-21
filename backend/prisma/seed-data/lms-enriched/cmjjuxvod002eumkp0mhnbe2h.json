@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvod002eumkp0mhnbe2h",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Pivot și Modele de Date",
+ "lesson": "Măsuri calculate",
+ "category": "EXCEL_VBA",
+ "content": "# Măsuri calculate\n\n## Ce este o măsură calculată (DAX)\n\nÎntr-un model de date Power Pivot, o **măsură calculată** (calculated measure) este o formulă scrisă în limbajul **DAX** (Data Analysis Expressions) care agregă date dinamic, în funcție de contextul de filtrare din raport (filtre, segmente de date - slicere, rânduri/coloane din PivotTable). Spre deosebire de o **coloană calculată**, care se evaluează rând cu rând și ocupă spațiu în memorie pentru fiecare înregistrare din tabel, o măsură nu stochează valori fixe - ea se recalculează în timp real de fiecare dată când contextul se schimbă (de exemplu, când selectezi o altă lună într-un slicer).\n\nSintaxa de bază pentru a crea o măsură în Power Pivot este:\n\n`Nume Măsură = expresie_DAX`\n\nExemplu simplu, pentru un tabel `Vanzari` cu coloana `Valoare`:\n\n`Total Vanzari = SUM(Vanzari[Valoare])`\n\nCentrul limbajului DAX este funcția **CALCULATE**, singura funcție care poate modifica contextul de filtrare implicit al unei măsuri. Aproape toate măsurile avansate (YTD, QTD, comparații cu perioada anterioară, procente de creștere) se construiesc pornind de la CALCULATE. Sintaxa generală:\n\n`CALCULATE(expresie; filtru1; filtru2; ...)`\n\nDe reținut: în versiunea românească de Excel, separatorul de argumente în formule (inclusiv DAX) este **punct și virgulă ( ; )**, nu virgula, pentru că virgula este folosită ca separator zecimal.\n\n## Context de rând și context de filtrare\n\nCa să scrii măsuri corecte, trebuie să înțelegi cele două tipuri de context de evaluare din DAX:\n\n- **Contextul de rând (row context)** apare atunci când o formulă se evaluează rând cu rând - de exemplu, într-o coloană calculată sau în interiorul unei funcții iterative precum SUMX, FILTER sau AVERAGEX. DAX \"știe\" în ce rând se află și poate citi valorile celorlalte coloane din acel rând.\n- **Contextul de filtrare (filter context)** este mulțimea de filtre active la un moment dat: filtrele venite dintr-un PivotTable (rânduri, coloane, slicere), dintr-un raport Power BI sau introduse explicit cu CALCULATE. O măsură se recalculează pentru fiecare combinație de filtre din raport.\n\nFuncția CALCULATE ia expresia din primul argument și o evaluează într-un context de filtrare **modificat** de argumentele următoare. De exemplu:\n\n`Vanzari Produse Electronice = CALCULATE([Total Vanzari]; Produse[Categorie] = \"Electronice\")`\n\nAici, indiferent ce filtre există deja în raport (an, regiune, client), CALCULATE adaugă (sau suprascrie, pentru coloana Categorie) condiția ca articolul să fie din categoria \"Electronice\". Acest mecanism de suprascriere a contextului este exact ceea ce face posibile funcțiile de tip Time Intelligence pe care le vom folosi pentru YTD, QTD și comparații cu perioada anterioară.\n\n## Funcțiile Time Intelligence\n\nDAX oferă un set de funcții dedicate calculelor pe axa timpului, numite **Time Intelligence**. Cele mai folosite pentru rapoarte de KPI sunt:\n\n- `TOTALYTD(expresie; coloana_data; [filtru])` - total cumulat de la începutul anului fiscal până la data curentă (Year-To-Date).\n- `TOTALQTD(expresie; coloana_data)` - total cumulat de la începutul trimestrului (Quarter-To-Date).\n- `TOTALMTD(expresie; coloana_data)` - total cumulat de la începutul lunii (Month-To-Date).\n- `SAMEPERIODLASTYEAR(coloana_data)` - returnează aceeași perioadă din anul precedent, utilă în CALCULATE pentru comparații an-la-an.\n- `DATEADD(coloana_data; nr_perioade; interval)` - deplasează perioada curentă cu un număr de zile/luni/trimestre/ani (interval poate fi DAY, MONTH, QUARTER, YEAR).\n- `PARALLELPERIOD(coloana_data; nr_perioade; interval)` - similar cu DATEADD, dar returnează perioade întregi (luna/trimestrul/anul complet).\n\n**Condiție obligatorie**: toate aceste funcții au nevoie de un **tabel de date calendaristice** (Date Table) separat, care conține o serie neîntreruptă de date calendaristice (fără goluri, de la prima la ultima zi relevantă) și este marcat explicit în Power Pivot ca \"Mark as Date Table\" (Table > Date > Mark as Date Table). Fără acest pas, funcțiile de Time Intelligence generează erori sau rezultate incorecte, pentru că DAX nu are cum să știe care coloană reprezintă axa temporală continuă a modelului.\n\n## Exemplu: Măsuri YTD, QTD, Previous Period și Growth %\nPresupunem modelul de date al unei firme fictive **Contoso Distribuție SRL**, cu tabelul de fapte `Vanzari` (coloana `Valoare`, în lei) și tabelul de dimensiune `Calendar` (coloana `Data`, marcat ca Date Table), legate printr-o relație pe cheia de dată.\n\n**1. Măsura de bază:**\n\n`Total Vanzari = SUM(Vanzari[Valoare])`\n\n**2. Vânzări YTD (cumulat de la 1 ianuarie):**\n\n`Vanzari YTD = TOTALYTD([Total Vanzari]; Calendar[Data])`\n\n**3. Vânzări QTD (cumulat de la începutul trimestrului):**\n\n`Vanzari QTD = TOTALQTD([Total Vanzari]; Calendar[Data])`\n\n**4. Vânzări perioada anterioară (aceeași lună, anul trecut):**\n\n`Vanzari Anul Precedent = CALCULATE([Total Vanzari]; SAMEPERIODLASTYEAR(Calendar[Data]))`\n\n**5. Creștere procentuală față de anul precedent (Growth %):**\n\n`Growth % = DIVIDE([Total Vanzari] - [Vanzari Anul Precedent]; [Vanzari Anul Precedent])`\n\nSe folosește funcția `DIVIDE` (nu operatorul `/`) pentru că gestionează automat împărțirea la zero, returnând un rezultat gol (blank) în loc de eroare `#DIV/0!`.\n\n**Exemplu numeric concret:** dacă în luna iunie 2026 vânzările cumulate YTD sunt 842.500 lei, iar în aceeași perioadă a anului 2025 vânzările YTD au fost 715.000 lei, atunci:\n\n`Growth % = (842.500 - 715.000) / 715.000 = 0,1783` adică o creștere de **17,83%** față de anul precedent. Formatezi măsura ca procent cu două zecimale direct din panoul de proprietăți al măsurii (Format: Percentage).\n\n## Exemplu: Running Total (total cumulat) fără funcții de an fiscal\nNu orice total cumulat trebuie să urmeze anul calendaristic - uneori ai nevoie de un **Running Total** general, care se acumulează continuu de-a lungul întregii axe temporale afișate în raport (de exemplu, sold cumulat de trezorerie sau stoc cumulat). Pentru asta, cea mai robustă formulă este:\n\n`Running Total = CALCULATE([Total Vanzari]; FILTER(ALL(Calendar); Calendar[Data] <= MAX(Calendar[Data])))`\n\nExplicație pas cu pas:\n\n- `ALL(Calendar)` elimină toate filtrele existente pe tabelul Calendar, astfel încât CALCULATE să \"vadă\" toate datele, nu doar luna curentă din context.\n- `FILTER(...; Calendar[Data] <= MAX(Calendar[Data]))` reconstruiește un filtru care păstrează doar rândurile cu data mai mică sau egală cu ultima dată vizibilă în contextul curent (de exemplu, luna selectată în raport).\n- `CALCULATE` aplică acest nou filtru peste măsura `[Total Vanzari]`, obținând suma cumulată de la începutul seriei de timp până la data curentă.\n\n**Exemplu numeric**, pe vânzări lunare la Contoso Distribuție SRL:\n\n| Lună | Vânzări lună (lei) | Running Total (lei) |\n|---|---|---|\n| Ianuarie 2026 | 120.000 | 120.000 |\n| Februarie 2026 | 95.000 | 215.000 |\n| Martie 2026 | 140.000 | 355.000 |\n\nÎn martie, Running Total = 120.000 + 95.000 + 140.000 = 355.000 lei, exact suma tuturor lunilor de la începutul seriei până la martie inclusiv. Acest tipar (ALL + FILTER + MAX pe coloana de dată) este reutilizabil pentru orice tip de total cumulat, indiferent dacă axa este zilnică, lunară sau anuală.\n\n⚠ Funcțiile Time Intelligence (TOTALYTD, TOTALQTD, SAMEPERIODLASTYEAR, DATEADD etc.) funcționează corect **doar** dacă tabelul de calendar are o serie continuă de date (fără zile lipsă) și este marcat explicit ca tabel de date: selectează tabelul în Power Pivot, apoi **Design > Mark as Date Table** și alege coloana cu tipul de dată. Dacă omiți acest pas, poți primi rezultate tăcut greșite (nu neapărat o eroare vizibilă), pentru că DAX nu identifică ierarhia an-trimestru-lună necesară calculelor cumulate.\n\n## Exercițiu\nAi modelul de date al firmei **Verde Agro SRL**, cu tabelul de fapte `Comenzi` (coloana `ValoareComanda`, în lei) și tabelul `Calendar` (coloana `Data`, deja marcat ca Date Table, relaționat cu `Comenzi`).\n\nConstruiește trei măsuri calculate:\n\n1. `Total Comenzi` - suma valorii comenzilor.\n2. `Comenzi YTD` - totalul cumulat de la începutul anului fiscal.\n3. `Crestere vs Anul Precedent %` - procentul de creștere al valorii YTD față de aceeași perioadă din anul precedent (folosește DIVIDE pentru a evita erorile de împărțire la zero).\n\nScrie formulele DAX complete pentru toate cele trei măsuri.\n\n**Soluție:** **1. Măsura de bază:**\n\n`Total Comenzi = SUM(Comenzi[ValoareComanda])`\n\n**2. Comenzi YTD:**\n\n`Comenzi YTD = TOTALYTD([Total Comenzi]; Calendar[Data])`\n\n**3. Comenzi YTD anul precedent (măsură intermediară necesară pentru comparație):**\n\n`Comenzi YTD Anul Precedent = CALCULATE([Comenzi YTD]; SAMEPERIODLASTYEAR(Calendar[Data]))`\n\n**4. Creșterea procentuală:**\n\n`Crestere vs Anul Precedent % = DIVIDE([Comenzi YTD] - [Comenzi YTD Anul Precedent]; [Comenzi YTD Anul Precedent])`\n\nObservație: SAMEPERIODLASTYEAR trebuie aplicat peste măsura YTD, nu peste `Total Comenzi` direct, altfel obții doar vânzările din ziua/luna corespunzătoare anului trecut, nu cumulul de la începutul anului - o greșeală frecventă la construirea comparațiilor YTD.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "dax-masura-calculata",
+    "md": "## Ce este o măsură calculată (DAX)\n\nÎntr-un model de date Power Pivot, o **măsură calculată** (calculated measure) este o formulă scrisă în limbajul **DAX** (Data Analysis Expressions) care agregă date dinamic, în funcție de contextul de filtrare din raport (filtre, segmente de date - slicere, rânduri/coloane din PivotTable). Spre deosebire de o **coloană calculată**, care se evaluează rând cu rând și ocupă spațiu în memorie pentru fiecare înregistrare din tabel, o măsură nu stochează valori fixe - ea se recalculează în timp real de fiecare dată când contextul se schimbă (de exemplu, când selectezi o altă lună într-un slicer).\n\nSintaxa de bază pentru a crea o măsură în Power Pivot este:\n\n`Nume Măsură = expresie_DAX`\n\nExemplu simplu, pentru un tabel `Vanzari` cu coloana `Valoare`:\n\n`Total Vanzari = SUM(Vanzari[Valoare])`\n\nCentrul limbajului DAX este funcția **CALCULATE**, singura funcție care poate modifica contextul de filtrare implicit al unei măsuri. Aproape toate măsurile avansate (YTD, QTD, comparații cu perioada anterioară, procente de creștere) se construiesc pornind de la CALCULATE. Sintaxa generală:\n\n`CALCULATE(expresie; filtru1; filtru2; ...)`\n\nDe reținut: în versiunea românească de Excel, separatorul de argumente în formule (inclusiv DAX) este **punct și virgulă ( ; )**, nu virgula, pentru că virgula este folosită ca separator zecimal.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "context-evaluare-dax",
+    "md": "## Context de rând și context de filtrare\n\nCa să scrii măsuri corecte, trebuie să înțelegi cele două tipuri de context de evaluare din DAX:\n\n- **Contextul de rând (row context)** apare atunci când o formulă se evaluează rând cu rând - de exemplu, într-o coloană calculată sau în interiorul unei funcții iterative precum SUMX, FILTER sau AVERAGEX. DAX \"știe\" în ce rând se află și poate citi valorile celorlalte coloane din acel rând.\n- **Contextul de filtrare (filter context)** este mulțimea de filtre active la un moment dat: filtrele venite dintr-un PivotTable (rânduri, coloane, slicere), dintr-un raport Power BI sau introduse explicit cu CALCULATE. O măsură se recalculează pentru fiecare combinație de filtre din raport.\n\nFuncția CALCULATE ia expresia din primul argument și o evaluează într-un context de filtrare **modificat** de argumentele următoare. De exemplu:\n\n`Vanzari Produse Electronice = CALCULATE([Total Vanzari]; Produse[Categorie] = \"Electronice\")`\n\nAici, indiferent ce filtre există deja în raport (an, regiune, client), CALCULATE adaugă (sau suprascrie, pentru coloana Categorie) condiția ca articolul să fie din categoria \"Electronice\". Acest mecanism de suprascriere a contextului este exact ceea ce face posibile funcțiile de tip Time Intelligence pe care le vom folosi pentru YTD, QTD și comparații cu perioada anterioară.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "time-intelligence-functii",
+    "md": "## Funcțiile Time Intelligence\n\nDAX oferă un set de funcții dedicate calculelor pe axa timpului, numite **Time Intelligence**. Cele mai folosite pentru rapoarte de KPI sunt:\n\n- `TOTALYTD(expresie; coloana_data; [filtru])` - total cumulat de la începutul anului fiscal până la data curentă (Year-To-Date).\n- `TOTALQTD(expresie; coloana_data)` - total cumulat de la începutul trimestrului (Quarter-To-Date).\n- `TOTALMTD(expresie; coloana_data)` - total cumulat de la începutul lunii (Month-To-Date).\n- `SAMEPERIODLASTYEAR(coloana_data)` - returnează aceeași perioadă din anul precedent, utilă în CALCULATE pentru comparații an-la-an.\n- `DATEADD(coloana_data; nr_perioade; interval)` - deplasează perioada curentă cu un număr de zile/luni/trimestre/ani (interval poate fi DAY, MONTH, QUARTER, YEAR).\n- `PARALLELPERIOD(coloana_data; nr_perioade; interval)` - similar cu DATEADD, dar returnează perioade întregi (luna/trimestrul/anul complet).\n\n**Condiție obligatorie**: toate aceste funcții au nevoie de un **tabel de date calendaristice** (Date Table) separat, care conține o serie neîntreruptă de date calendaristice (fără goluri, de la prima la ultima zi relevantă) și este marcat explicit în Power Pivot ca \"Mark as Date Table\" (Table > Date > Mark as Date Table). Fără acest pas, funcțiile de Time Intelligence generează erori sau rezultate incorecte, pentru că DAX nu are cum să știe care coloană reprezintă axa temporală continuă a modelului.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b3"
+   },
+   {
+    "type": "example",
+    "title": "Măsuri YTD, QTD, Previous Period și Growth %",
+    "concept_key": "masuri-ytd-qtd-growth",
+    "md": "Presupunem modelul de date al unei firme fictive **Contoso Distribuție SRL**, cu tabelul de fapte `Vanzari` (coloana `Valoare`, în lei) și tabelul de dimensiune `Calendar` (coloana `Data`, marcat ca Date Table), legate printr-o relație pe cheia de dată.\n\n**1. Măsura de bază:**\n\n`Total Vanzari = SUM(Vanzari[Valoare])`\n\n**2. Vânzări YTD (cumulat de la 1 ianuarie):**\n\n`Vanzari YTD = TOTALYTD([Total Vanzari]; Calendar[Data])`\n\n**3. Vânzări QTD (cumulat de la începutul trimestrului):**\n\n`Vanzari QTD = TOTALQTD([Total Vanzari]; Calendar[Data])`\n\n**4. Vânzări perioada anterioară (aceeași lună, anul trecut):**\n\n`Vanzari Anul Precedent = CALCULATE([Total Vanzari]; SAMEPERIODLASTYEAR(Calendar[Data]))`\n\n**5. Creștere procentuală față de anul precedent (Growth %):**\n\n`Growth % = DIVIDE([Total Vanzari] - [Vanzari Anul Precedent]; [Vanzari Anul Precedent])`\n\nSe folosește funcția `DIVIDE` (nu operatorul `/`) pentru că gestionează automat împărțirea la zero, returnând un rezultat gol (blank) în loc de eroare `#DIV/0!`.\n\n**Exemplu numeric concret:** dacă în luna iunie 2026 vânzările cumulate YTD sunt 842.500 lei, iar în aceeași perioadă a anului 2025 vânzările YTD au fost 715.000 lei, atunci:\n\n`Growth % = (842.500 - 715.000) / 715.000 = 0,1783` adică o creștere de **17,83%** față de anul precedent. Formatezi măsura ca procent cu două zecimale direct din panoul de proprietăți al măsurii (Format: Percentage).",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b4"
+   },
+   {
+    "type": "example",
+    "title": "Running Total (total cumulat) fără funcții de an fiscal",
+    "concept_key": "masura-running-total",
+    "md": "Nu orice total cumulat trebuie să urmeze anul calendaristic - uneori ai nevoie de un **Running Total** general, care se acumulează continuu de-a lungul întregii axe temporale afișate în raport (de exemplu, sold cumulat de trezorerie sau stoc cumulat). Pentru asta, cea mai robustă formulă este:\n\n`Running Total = CALCULATE([Total Vanzari]; FILTER(ALL(Calendar); Calendar[Data] <= MAX(Calendar[Data])))`\n\nExplicație pas cu pas:\n\n- `ALL(Calendar)` elimină toate filtrele existente pe tabelul Calendar, astfel încât CALCULATE să \"vadă\" toate datele, nu doar luna curentă din context.\n- `FILTER(...; Calendar[Data] <= MAX(Calendar[Data]))` reconstruiește un filtru care păstrează doar rândurile cu data mai mică sau egală cu ultima dată vizibilă în contextul curent (de exemplu, luna selectată în raport).\n- `CALCULATE` aplică acest nou filtru peste măsura `[Total Vanzari]`, obținând suma cumulată de la începutul seriei de timp până la data curentă.\n\n**Exemplu numeric**, pe vânzări lunare la Contoso Distribuție SRL:\n\n| Lună | Vânzări lună (lei) | Running Total (lei) |\n|---|---|---|\n| Ianuarie 2026 | 120.000 | 120.000 |\n| Februarie 2026 | 95.000 | 215.000 |\n| Martie 2026 | 140.000 | 355.000 |\n\nÎn martie, Running Total = 120.000 + 95.000 + 140.000 = 355.000 lei, exact suma tuturor lunilor de la începutul seriei până la martie inclusiv. Acest tipar (ALL + FILTER + MAX pe coloana de dată) este reutilizabil pentru orice tip de total cumulat, indiferent dacă axa este zilnică, lunară sau anuală.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Funcțiile Time Intelligence (TOTALYTD, TOTALQTD, SAMEPERIODLASTYEAR, DATEADD etc.) funcționează corect **doar** dacă tabelul de calendar are o serie continuă de date (fără zile lipsă) și este marcat explicit ca tabel de date: selectează tabelul în Power Pivot, apoi **Design > Mark as Date Table** și alege coloana cu tipul de dată. Dacă omiți acest pas, poți primi rezultate tăcut greșite (nu neapărat o eroare vizibilă), pentru că DAX nu identifică ierarhia an-trimestru-lună necesară calculelor cumulate.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai modelul de date al firmei **Verde Agro SRL**, cu tabelul de fapte `Comenzi` (coloana `ValoareComanda`, în lei) și tabelul `Calendar` (coloana `Data`, deja marcat ca Date Table, relaționat cu `Comenzi`).\n\nConstruiește trei măsuri calculate:\n\n1. `Total Comenzi` - suma valorii comenzilor.\n2. `Comenzi YTD` - totalul cumulat de la începutul anului fiscal.\n3. `Crestere vs Anul Precedent %` - procentul de creștere al valorii YTD față de aceeași perioadă din anul precedent (folosește DIVIDE pentru a evita erorile de împărțire la zero).\n\nScrie formulele DAX complete pentru toate cele trei măsuri.",
+    "solution_md": "**1. Măsura de bază:**\n\n`Total Comenzi = SUM(Comenzi[ValoareComanda])`\n\n**2. Comenzi YTD:**\n\n`Comenzi YTD = TOTALYTD([Total Comenzi]; Calendar[Data])`\n\n**3. Comenzi YTD anul precedent (măsură intermediară necesară pentru comparație):**\n\n`Comenzi YTD Anul Precedent = CALCULATE([Comenzi YTD]; SAMEPERIODLASTYEAR(Calendar[Data]))`\n\n**4. Creșterea procentuală:**\n\n`Crestere vs Anul Precedent % = DIVIDE([Comenzi YTD] - [Comenzi YTD Anul Precedent]; [Comenzi YTD Anul Precedent])`\n\nObservație: SAMEPERIODLASTYEAR trebuie aplicat peste măsura YTD, nu peste `Total Comenzi` direct, altfel obții doar vânzările din ziua/luna corespunzătoare anului trecut, nu cumulul de la începutul anului - o greșeală frecventă la construirea comparațiilor YTD.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce rol are funcția CALCULATE într-o măsură DAX?",
+    "choices": [
+     "Sortează valorile dintr-un tabel",
+     "Evaluează o expresie într-un context de filtrare modificat de argumentele sale",
+     "Creează o coloană calculată nouă în model",
+     "Formatează rezultatul măsurii ca procent"
+    ],
+    "answer": 1,
+    "explain": "CALCULATE este singura funcție DAX care poate modifica (adăuga, înlocui sau elimina) filtre din contextul de evaluare al unei expresii, ceea ce o face fundamentul tuturor măsurilor avansate: YTD, QTD, comparații cu perioada anterioară etc.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce se folosește DIVIDE([Total] - [Total Anul Trecut]; [Total Anul Trecut]) în loc de operatorul / la calculul Growth %?",
+    "choices": [
+     "DIVIDE este mai rapid la calcul pentru volume mari de date",
+     "DIVIDE rotunjește automat rezultatul la două zecimale",
+     "DIVIDE returnează blank în loc de eroare #DIV/0! când numitorul este zero",
+     "DIVIDE este singura funcție acceptată de Power Pivot pentru împărțiri"
+    ],
+    "answer": 2,
+    "explain": "Funcția DIVIDE are un parametru opțional pentru valoarea de rezervă (implicit blank) atunci când numitorul este zero, evitând eroarea #DIV/0! care ar apărea cu operatorul standard / - important când anul precedent nu are date.",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o măsură calculată (DAX) în Power Pivot?",
+    "back": "O formulă DAX care agregă date dinamic, în funcție de contextul de filtrare din raport, spre deosebire de o coloană calculată care se evaluează rând cu rând și ocupă memorie fixă.",
+    "concept_key": "dax-masura-calculata",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este sintaxa funcției TOTALYTD?",
+    "back": "TOTALYTD(expresie; coloana_data; [filtru]) - calculează totalul cumulat de la începutul anului fiscal până la data curentă din context.",
+    "concept_key": "time-intelligence-functii",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce condiție trebuie îndeplinită pentru ca funcțiile Time Intelligence să funcționeze corect?",
+    "back": "Trebuie să existe un tabel de calendar cu serie continuă de date (fără goluri), marcat explicit prin Design > Mark as Date Table.",
+    "concept_key": "time-intelligence-functii",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția SAMEPERIODLASTYEAR(Calendar[Data]) folosită în CALCULATE?",
+    "back": "Returnează aceeași perioadă (interval de date) din anul precedent, permițând comparații an-la-an peste orice măsură de bază.",
+    "concept_key": "masuri-ytd-qtd-growth",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este tiparul standard pentru o măsură Running Total (total cumulat general)?",
+    "back": "CALCULATE([Măsură]; FILTER(ALL(Calendar); Calendar[Data] <= MAX(Calendar[Data]))) - elimină filtrele cu ALL, apoi le reconstruiește doar până la data curentă din context.",
+    "concept_key": "masura-running-total",
+    "blockId": "cmjjuxvod002eumkp0mhnbe2h-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1281,
+   "flashcards": 5
+  }
+ }
+}
