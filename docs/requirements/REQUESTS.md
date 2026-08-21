@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 48 · logged: 3 · planned: 4 · in_progress: 3 · shipped: 36 · parked: 2 · rejected: 0
+Total: 49 · logged: 3 · planned: 4 · in_progress: 4 · shipped: 36 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -53,3 +53,4 @@ Total: 48 · logged: 3 · planned: 4 · in_progress: 3 · shipped: 36 · parked:
 | REQ-046 | 2026-07-24 | **shipped** | PRE-EXISTING BUG found during REQ-043 cleanup: DealsService.createDeal does not reject non-existent pipelineId (deals.service.spec.ts test f… |  |
 | REQ-047 | 2026-07-24 | **shipped** | continue with the REGES-Online API integration | PR#44 |
 | REQ-048 | 2026-08-13 | **shipped** | do full review of entire platform and span multiple agents to close gaps and enhance functionality and accuracy and operability of the platf… | PR#48,PR#49,PR#50,docs/architecture/platform-review-req-048.md |
+| REQ-049 | 2026-08-19 | **in_progress** | full comprehensive review to make this fully usable; include an admin/staff section where CRM and various tools are in place to operate the … |  |
