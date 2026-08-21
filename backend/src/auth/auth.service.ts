@@ -415,6 +415,9 @@ export class AuthService {
   }
 
   async validateUser(userId: string) {
+    // REQ-049 B5: /auth/me is the frontend's source of truth for identity on
+    // load; without role/org the UI kept a stale role from localStorage until
+    // re-login (staff role/tier changes were invisible).
     return this.prisma.user.findUnique({
       where: { id: userId },
       select: {
@@ -424,6 +427,11 @@ export class AuthService {
         company: true,
         cui: true,
         tier: true,
+        role: true,
+        language: true,
+        emailVerified: true,
+        mfaEnabled: true,
+        activeOrganizationId: true,
       },
     });
   }
