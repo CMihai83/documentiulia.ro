@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw9f00htumkpxs3zm14z",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "REVISAL și Raportări ITM",
+ "lesson": "Ce este REVISAL",
+ "category": "HR_COMPLIANCE",
+ "content": "# Ce este REVISAL\n\n**REVISAL** este abrevierea pentru **Registrul General de Evidență a Salariaților**, o bază de date electronică unică la nivel național în care fiecare angajator din România are obligația să înregistreze toți salariații cu care are încheiate contracte individuale de muncă (CIM).\n\nRegistrul este reglementat prin **HG nr. 905/2017** privind registrul general de evidență a salariaților, act care a înlocuit vechea reglementare (HG nr. 500/2011) și a generalizat transmiterea datelor exclusiv electronic, prin aplicația Revisal pusă la dispoziție gratuit de Inspecția Muncii.\n\nScopul REVISAL este dublu: pe de o parte oferă statului o evidență centralizată și actualizată în timp real a raporturilor de muncă active la nivel național, utilă pentru controale, statistici și verificarea corectitudinii declarațiilor fiscale (D112); pe de altă parte, protejează salariatul, deoarece orice element esențial al contractului său – salariu, funcție, tip de normă, suspendare, încetare – trebuie reflectat oficial în registru, ceea ce reduce riscul muncii nedeclarate sau al contractelor \"la negru\".\n\nRegistrul conține, pentru fiecare salariat, un set standardizat de informații:\n\n- **date de identificare** ale angajatorului (CUI, denumire, sediu) și ale salariatului (nume, CNP, cetățenie);\n- **elementele contractului individual de muncă**: numărul și data încheierii CIM, funcția/ocupația conform Clasificării Ocupațiilor din România (COR), tipul contractului (determinat sau nedeterminat), tipul normei (întreagă sau parțială, cu numărul de ore/săptămână), data începerii activității și, dacă este cazul, durata perioadei de probă;\n- **salariul de bază lunar brut**, așa cum este stabilit prin CIM și prin eventualele acte adiționale ulterioare;\n- **modificările intervenite** pe parcursul derulării contractului: majorări sau diminuări salariale, schimbări de funcție, mutări temporare (detașare, delegare), suspendări (concediu medical, concediu creștere copil, concediu fără plată etc.);\n- **data și temeiul legal al încetării** contractului individual de muncă.\n\nToate aceste date se transmit electronic către inspectoratul teritorial de muncă (ITM) în raza căruia își are sediul angajatorul, prin intermediul aplicației Revisal, iar fiecare transmitere generează un fișier cu extensie .rvs care constituie dovada operațiunii.\n\n**Cine are obligația de a ține REVISAL?** Orice angajator, persoană fizică sau juridică, din momentul în care încheie primul contract individual de muncă. Angajatorul poate desemna intern una sau mai multe persoane responsabile cu completarea și transmiterea registrului (de regulă din departamentul HR sau contabilitate), dar răspunderea legală pentru corectitudinea și actualitatea datelor rămâne a angajatorului, ca persoană juridică.\n\n**Cine are acces la datele din registru?**\n- **Inspecția Muncii**, prin inspectoratele teritoriale de muncă, are acces permanent la datele transmise, pe care le folosește pentru controale, statistici și verificarea legalității raporturilor de muncă;\n- alte **autorități publice** (de exemplu ANAF, instituții de asigurări sociale) pot obține date din REVISAL în condițiile legii, pentru verificări încrucișate privind contribuțiile sociale și impozitul pe venit;\n- **salariatul** are dreptul să solicite angajatorului, în scris, un extras din registru referitor la propriile date, pe care angajatorul este obligat să îl elibereze într-un termen rezonabil.\n\nAccesul publicului larg la conținutul registrului nu este permis, datele fiind protejate conform principiilor GDPR – se colectează și se prelucrează strict datele necesare scopului legal, cu acces restricționat la personalul autorizat.\n\n> Temei legal: HG nr. 905/2017 privind registrul general de evidență a salariaților Art. 4 (în vigoare de la 2017-12-01)\nPotrivit **art. 4 din HG nr. 905/2017**, angajatorul are obligația de a înregistra în REVISAL elementele CIM cel târziu **în ziua anterioară începerii activității** de către salariat. Pentru **modificările** ulterioare ale elementelor esențiale ale contractului (de exemplu majorarea salariului, schimbarea funcției sau a duratei timpului de muncă), actul normativ prevede termene distincte de operare, unele situații (precum suspendarea sau încetarea contractului) având termene mai scurte decât regula generală.\n\n⚠ Termenele exacte pentru fiecare tip de modificare au suferit ajustări legislative de-a lungul timpului – recomandăm verificarea variantei actualizate a HG nr. 905/2017 la data la care operați o modificare, pentru a evita înregistrarea cu întârziere.\n\n## Exemplu: Înregistrarea unui CIM nou în REVISAL\n**Situație:** SC Exemplu Contabil SRL angajează o persoană pe postul de economist, cu contract individual de muncă pe durată nedeterminată, normă întreagă (40 ore/săptămână), salariu de bază brut 5.000 lei, perioadă de probă 90 de zile calendaristice, cu data începerii activității stabilită pentru **luni, 20 iulie 2026**.\n\n**Ce trebuie să facă angajatorul:**\n1. Încheie CIM-ul în formă scrisă, cu toate clauzele obligatorii (art. 17 din Codul muncii);\n2. Completează în aplicația Revisal datele de identificare ale salariatului, funcția (cod COR), tipul contractului, norma, salariul brut și data începerii activității;\n3. Transmite electronic fișierul .rvs către ITM **cel târziu duminică, 19 iulie 2026** – adică în ziua calendaristică anterioară începerii activității;\n4. Păstrează dovada transmiterii (confirmarea electronică din aplicația Revisal) în dosarul de personal.\n\nDacă angajatorul transmite datele abia luni, 20 iulie 2026 (ziua în care salariatul se prezintă efectiv la muncă) sau ulterior, înregistrarea este considerată tardivă și constituie contravenție.\n\n## Exemplu: Act adițional pentru majorare salarială – actualizare REVISAL\n**Situație:** Un salariat angajat cu salariul minim brut de 4.325 lei (nivelul aplicabil de la 1 iulie 2026) primește, în urma unei evaluări de performanță, o majorare salarială la 4.800 lei brut, începând cu 1 august 2026.\n\n**Pașii angajatorului:**\n1. Se întocmește **actul adițional la CIM**, semnat de ambele părți, care menționează noul cuantum al salariului de bază și data de la care produce efecte;\n2. Un exemplar al actului adițional se atașează la dosarul de personal al salariatului;\n3. Modificarea salariului se **operează în REVISAL** în termenul legal prevăzut de HG nr. 905/2017 pentru acest tip de modificare (recomandăm verificarea termenului exact în vigoare la data operațiunii, întrucât acesta a fost modificat legislativ de mai multe ori);\n4. Noul salariu se reflectă în statul de plată începând cu luna august 2026 și se raportează corespunzător prin D112.\n\nOrice discrepanță între salariul din REVISAL și cel din statul de plată/D112 este un semnal de risc pe care ITM și ANAF îl pot verifica încrucișat.\n\n⚠ Neînregistrarea sau înregistrarea cu întârziere a datelor în REVISAL constituie **contravenție** potrivit HG nr. 905/2017, sancționată cu amendă. ⚠ Cuantumul exact al amenzilor trebuie verificat la zi, deoarece a fost actualizat legislativ.\n\nMai grav, dacă un salariat prestează activitate fără ca CIM să fi fost înregistrat în REVISAL înainte de începerea activității, situația poate fi calificată drept **muncă nedeclarată** (\"muncă la negru\"), faptă sancționată mult mai sever conform Codului muncii și legislației privind Inspecția Muncii, inclusiv cu amenzi semnificativ mai mari și răspundere contravențională/penală în cazuri grave sau repetate. Din acest motiv, transmiterea la timp a datelor în REVISAL trebuie tratată ca o obligație critică, nu ca o formalitate administrativă secundară.\n\n## Exercițiu\nSC Model Servicii SRL angajează o casieră cu CIM pe durată determinată de 6 luni, normă întreagă, salariu brut 4.325 lei, cu data începerii activității stabilită pentru **luni, 20 iulie 2026**. Din cauza unei erori interne, departamentul HR transmite datele în Revisal abia **marți, 21 iulie 2026**.\n\nÎntrebări:\n1. Care era termenul legal limită pentru înregistrarea CIM în REVISAL?\n2. A respectat angajatorul acest termen?\n3. Ce risc își asumă angajatorul în această situație?\n\n**Soluție:** 1. Conform art. 4 din HG nr. 905/2017, CIM trebuie înregistrat în REVISAL **cel târziu în ziua anterioară începerii activității**. Cum activitatea începea luni, 20 iulie 2026, termenul limită era **duminică, 19 iulie 2026**.\n\n2. Nu. Angajatorul a transmis datele abia marți, 21 iulie 2026, deci cu întârziere față de termenul legal – atât față de 19 iulie (termenul propriu-zis), cât și față de 20 iulie (ziua începerii efective a activității).\n\n3. Angajatorul riscă sancțiune contravențională pentru înregistrare tardivă în REVISAL. În plus, pentru perioada 20–21 iulie 2026, salariata a prestat activitate fără ca aceasta să fie reflectată în registru la momentul respectiv, ceea ce expune angajatorul riscului de calificare drept muncă nedeclarată pentru acel interval, cu consecințe sancționatorii mult mai severe. Recomandarea practică este ca înregistrarea în Revisal să fie finalizată cu cel puțin o zi lucrătoare înainte de data programată de începere a activității, ca măsură de siguranță.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "revisal-definitie",
+    "md": "**REVISAL** este abrevierea pentru **Registrul General de Evidență a Salariaților**, o bază de date electronică unică la nivel național în care fiecare angajator din România are obligația să înregistreze toți salariații cu care are încheiate contracte individuale de muncă (CIM).\n\nRegistrul este reglementat prin **HG nr. 905/2017** privind registrul general de evidență a salariaților, act care a înlocuit vechea reglementare (HG nr. 500/2011) și a generalizat transmiterea datelor exclusiv electronic, prin aplicația Revisal pusă la dispoziție gratuit de Inspecția Muncii.\n\nScopul REVISAL este dublu: pe de o parte oferă statului o evidență centralizată și actualizată în timp real a raporturilor de muncă active la nivel național, utilă pentru controale, statistici și verificarea corectitudinii declarațiilor fiscale (D112); pe de altă parte, protejează salariatul, deoarece orice element esențial al contractului său – salariu, funcție, tip de normă, suspendare, încetare – trebuie reflectat oficial în registru, ceea ce reduce riscul muncii nedeclarate sau al contractelor \"la negru\".",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-continut-date",
+    "md": "Registrul conține, pentru fiecare salariat, un set standardizat de informații:\n\n- **date de identificare** ale angajatorului (CUI, denumire, sediu) și ale salariatului (nume, CNP, cetățenie);\n- **elementele contractului individual de muncă**: numărul și data încheierii CIM, funcția/ocupația conform Clasificării Ocupațiilor din România (COR), tipul contractului (determinat sau nedeterminat), tipul normei (întreagă sau parțială, cu numărul de ore/săptămână), data începerii activității și, dacă este cazul, durata perioadei de probă;\n- **salariul de bază lunar brut**, așa cum este stabilit prin CIM și prin eventualele acte adiționale ulterioare;\n- **modificările intervenite** pe parcursul derulării contractului: majorări sau diminuări salariale, schimbări de funcție, mutări temporare (detașare, delegare), suspendări (concediu medical, concediu creștere copil, concediu fără plată etc.);\n- **data și temeiul legal al încetării** contractului individual de muncă.\n\nToate aceste date se transmit electronic către inspectoratul teritorial de muncă (ITM) în raza căruia își are sediul angajatorul, prin intermediul aplicației Revisal, iar fiecare transmitere generează un fișier cu extensie .rvs care constituie dovada operațiunii.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-obligatii-angajator-acces",
+    "md": "**Cine are obligația de a ține REVISAL?** Orice angajator, persoană fizică sau juridică, din momentul în care încheie primul contract individual de muncă. Angajatorul poate desemna intern una sau mai multe persoane responsabile cu completarea și transmiterea registrului (de regulă din departamentul HR sau contabilitate), dar răspunderea legală pentru corectitudinea și actualitatea datelor rămâne a angajatorului, ca persoană juridică.\n\n**Cine are acces la datele din registru?**\n- **Inspecția Muncii**, prin inspectoratele teritoriale de muncă, are acces permanent la datele transmise, pe care le folosește pentru controale, statistici și verificarea legalității raporturilor de muncă;\n- alte **autorități publice** (de exemplu ANAF, instituții de asigurări sociale) pot obține date din REVISAL în condițiile legii, pentru verificări încrucișate privind contribuțiile sociale și impozitul pe venit;\n- **salariatul** are dreptul să solicite angajatorului, în scris, un extras din registru referitor la propriile date, pe care angajatorul este obligat să îl elibereze într-un termen rezonabil.\n\nAccesul publicului larg la conținutul registrului nu este permis, datele fiind protejate conform principiilor GDPR – se colectează și se prelucrează strict datele necesare scopului legal, cu acces restricționat la personalul autorizat.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG nr. 905/2017 privind registrul general de evidență a salariaților",
+    "article": "Art. 4",
+    "effective": "2017-12-01",
+    "md": "Potrivit **art. 4 din HG nr. 905/2017**, angajatorul are obligația de a înregistra în REVISAL elementele CIM cel târziu **în ziua anterioară începerii activității** de către salariat. Pentru **modificările** ulterioare ale elementelor esențiale ale contractului (de exemplu majorarea salariului, schimbarea funcției sau a duratei timpului de muncă), actul normativ prevede termene distincte de operare, unele situații (precum suspendarea sau încetarea contractului) având termene mai scurte decât regula generală.\n\n⚠ Termenele exacte pentru fiecare tip de modificare au suferit ajustări legislative de-a lungul timpului – recomandăm verificarea variantei actualizate a HG nr. 905/2017 la data la care operați o modificare, pentru a evita înregistrarea cu întârziere.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b4"
+   },
+   {
+    "type": "example",
+    "title": "Înregistrarea unui CIM nou în REVISAL",
+    "concept_key": "revisal-inregistrare-angajare",
+    "md": "**Situație:** SC Exemplu Contabil SRL angajează o persoană pe postul de economist, cu contract individual de muncă pe durată nedeterminată, normă întreagă (40 ore/săptămână), salariu de bază brut 5.000 lei, perioadă de probă 90 de zile calendaristice, cu data începerii activității stabilită pentru **luni, 20 iulie 2026**.\n\n**Ce trebuie să facă angajatorul:**\n1. Încheie CIM-ul în formă scrisă, cu toate clauzele obligatorii (art. 17 din Codul muncii);\n2. Completează în aplicația Revisal datele de identificare ale salariatului, funcția (cod COR), tipul contractului, norma, salariul brut și data începerii activității;\n3. Transmite electronic fișierul .rvs către ITM **cel târziu duminică, 19 iulie 2026** – adică în ziua calendaristică anterioară începerii activității;\n4. Păstrează dovada transmiterii (confirmarea electronică din aplicația Revisal) în dosarul de personal.\n\nDacă angajatorul transmite datele abia luni, 20 iulie 2026 (ziua în care salariatul se prezintă efectiv la muncă) sau ulterior, înregistrarea este considerată tardivă și constituie contravenție.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b5"
+   },
+   {
+    "type": "example",
+    "title": "Act adițional pentru majorare salarială – actualizare REVISAL",
+    "concept_key": "revisal-act-aditional-modificare",
+    "md": "**Situație:** Un salariat angajat cu salariul minim brut de 4.325 lei (nivelul aplicabil de la 1 iulie 2026) primește, în urma unei evaluări de performanță, o majorare salarială la 4.800 lei brut, începând cu 1 august 2026.\n\n**Pașii angajatorului:**\n1. Se întocmește **actul adițional la CIM**, semnat de ambele părți, care menționează noul cuantum al salariului de bază și data de la care produce efecte;\n2. Un exemplar al actului adițional se atașează la dosarul de personal al salariatului;\n3. Modificarea salariului se **operează în REVISAL** în termenul legal prevăzut de HG nr. 905/2017 pentru acest tip de modificare (recomandăm verificarea termenului exact în vigoare la data operațiunii, întrucât acesta a fost modificat legislativ de mai multe ori);\n4. Noul salariu se reflectă în statul de plată începând cu luna august 2026 și se raportează corespunzător prin D112.\n\nOrice discrepanță între salariul din REVISAL și cel din statul de plată/D112 este un semnal de risc pe care ITM și ANAF îl pot verifica încrucișat.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Neînregistrarea sau înregistrarea cu întârziere a datelor în REVISAL constituie **contravenție** potrivit HG nr. 905/2017, sancționată cu amendă. ⚠ Cuantumul exact al amenzilor trebuie verificat la zi, deoarece a fost actualizat legislativ.\n\nMai grav, dacă un salariat prestează activitate fără ca CIM să fi fost înregistrat în REVISAL înainte de începerea activității, situația poate fi calificată drept **muncă nedeclarată** (\"muncă la negru\"), faptă sancționată mult mai sever conform Codului muncii și legislației privind Inspecția Muncii, inclusiv cu amenzi semnificativ mai mari și răspundere contravențională/penală în cazuri grave sau repetate. Din acest motiv, transmiterea la timp a datelor în REVISAL trebuie tratată ca o obligație critică, nu ca o formalitate administrativă secundară.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Model Servicii SRL angajează o casieră cu CIM pe durată determinată de 6 luni, normă întreagă, salariu brut 4.325 lei, cu data începerii activității stabilită pentru **luni, 20 iulie 2026**. Din cauza unei erori interne, departamentul HR transmite datele în Revisal abia **marți, 21 iulie 2026**.\n\nÎntrebări:\n1. Care era termenul legal limită pentru înregistrarea CIM în REVISAL?\n2. A respectat angajatorul acest termen?\n3. Ce risc își asumă angajatorul în această situație?",
+    "solution_md": "1. Conform art. 4 din HG nr. 905/2017, CIM trebuie înregistrat în REVISAL **cel târziu în ziua anterioară începerii activității**. Cum activitatea începea luni, 20 iulie 2026, termenul limită era **duminică, 19 iulie 2026**.\n\n2. Nu. Angajatorul a transmis datele abia marți, 21 iulie 2026, deci cu întârziere față de termenul legal – atât față de 19 iulie (termenul propriu-zis), cât și față de 20 iulie (ziua începerii efective a activității).\n\n3. Angajatorul riscă sancțiune contravențională pentru înregistrare tardivă în REVISAL. În plus, pentru perioada 20–21 iulie 2026, salariata a prestat activitate fără ca aceasta să fie reflectată în registru la momentul respectiv, ceea ce expune angajatorul riscului de calificare drept muncă nedeclarată pentru acel interval, cu consecințe sancționatorii mult mai severe. Recomandarea practică este ca înregistrarea în Revisal să fie finalizată cu cel puțin o zi lucrătoare înainte de data programată de începere a activității, ca măsură de siguranță.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce este REVISAL?",
+    "choices": [
+     "Registrul general de evidență a salariaților, bază de date electronică în care angajatorii înregistrează contractele individuale de muncă",
+     "Declarația lunară privind obligațiile de plată a contribuțiilor sociale (D112)",
+     "Un tip de contract individual de muncă pe durată determinată",
+     "Registrul unic de control folosit la inspecțiile ITM"
+    ],
+    "answer": 0,
+    "explain": "REVISAL este Registrul General de Evidență a Salariaților, reglementat prin HG nr. 905/2017, distinct de D112 (declarația fiscală lunară) și de registrul unic de control.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Până când trebuie înregistrat în REVISAL un contract individual de muncă nou, potrivit HG nr. 905/2017?",
+    "choices": [
+     "În termen de 30 de zile calendaristice de la angajare",
+     "Cel târziu în ziua anterioară începerii activității de către salariat",
+     "Până la data de 25 a lunii următoare angajării, odată cu D112",
+     "În termen de 5 zile lucrătoare de la data semnării CIM"
+    ],
+    "answer": 1,
+    "explain": "Art. 4 din HG nr. 905/2017 impune înregistrarea CIM în REVISAL cel târziu în ziua calendaristică anterioară celei în care salariatul începe efectiv activitatea.",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă REVISAL?",
+    "back": "Registrul General de Evidență a Salariaților – baza de date electronică în care fiecare angajator înregistrează toate contractele individuale de muncă (CIM).",
+    "concept_key": "revisal-definitie",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Prin ce act normativ este reglementat REVISAL?",
+    "back": "Prin HG nr. 905/2017 privind registrul general de evidență a salariaților, care a înlocuit HG nr. 500/2011.",
+    "concept_key": "revisal-cadru-legal",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când trebuie înregistrat în REVISAL un CIM nou?",
+    "back": "Cel târziu în ziua calendaristică anterioară celei în care salariatul începe efectiv activitatea.",
+    "concept_key": "revisal-termen-angajare",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine, pe lângă angajator, are acces la datele din REVISAL?",
+    "back": "Inspecția Muncii (prin ITM), care poate efectua controale, precum și alte autorități publice (de ex. ANAF) în condițiile legii; salariatul poate solicita un extras cu propriile date.",
+    "concept_key": "revisal-acces-date",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce trebuie făcut în REVISAL când se modifică salariul unui angajat printr-un act adițional?",
+    "back": "Modificarea trebuie operată în REVISAL în termenul legal prevăzut de HG nr. 905/2017 pentru acest tip de schimbare – termenul exact trebuie verificat la data operațiunii, întrucât a fost modificat legislativ de mai multe ori.",
+    "concept_key": "revisal-act-aditional-modificare",
+    "blockId": "cmjjuxw9f00htumkpxs3zm14z-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1256,
+   "flashcards": 5
+  }
+ }
+}

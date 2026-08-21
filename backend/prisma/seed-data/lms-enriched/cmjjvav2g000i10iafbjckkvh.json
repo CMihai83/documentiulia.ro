@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjvav2g000i10iafbjckkvh",
+ "courseId": "cmjjvav1j000010iaawzrrca4",
+ "course": "Conformitate Fiscala Romania - e-Factura, SAF-T si ANAF Complet",
+ "module": "e-Factura - Sistemul National de Facturare Electronica",
+ "lesson": "Quiz si exercitii practice e-Factura",
+ "category": "FINANCE_OPS",
+ "content": "Test de evaluare — Quiz si exercitii practice e-Factura (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "De când este obligatorie transmiterea facturilor electronice prin sistemul e-Factura pentru relațiile B2B (business-to-business) în România?",
+     "choices": [
+      "1 iulie 2024",
+      "1 ianuarie 2024",
+      "1 ianuarie 2025",
+      "1 iulie 2025"
+     ],
+     "answer": 0,
+     "explain": "Conform OUG 120/2021, astfel cum a fost modificată, utilizarea sistemului RO e-Factura a devenit obligatorie pentru relațiile B2B începând cu 1 iulie 2024. B2G este obligatoriu din 2024, iar B2C din 1 ianuarie 2025.",
+     "concept_key": "efactura_b2b_termen"
+    },
+    {
+     "q": "De când este obligatorie e-Factura pentru relațiile B2C (business-to-consumer), cu excepția facturilor simplificate?",
+     "choices": [
+      "1 iulie 2024",
+      "1 ianuarie 2025",
+      "1 iulie 2025",
+      "1 ianuarie 2026"
+     ],
+     "answer": 1,
+     "explain": "Obligativitatea e-Factura pentru tranzacțiile B2C a intrat în vigoare la 1 ianuarie 2025, facturile simplificate fiind exceptate de la această obligație.",
+     "concept_key": "efactura_b2c_termen"
+    },
+    {
+     "q": "Care este formatul standard obligatoriu al facturilor electronice transmise prin Spațiul Privat Virtual (SPV)?",
+     "choices": [
+      "PDF/A-3 cu semnătură electronică",
+      "RO_CIUS UBL 2.1",
+      "XML generic, fără schemă predefinită",
+      "Format EDI clasic"
+     ],
+     "answer": 1,
+     "explain": "Facturile electronice transmise prin SPV trebuie să respecte formatul standard național RO_CIUS, bazat pe schema UBL 2.1 (Universal Business Language).",
+     "concept_key": "efactura_format"
+    },
+    {
+     "q": "Ce reprezintă, din punct de vedere juridic, factura descărcată din SPV după validare?",
+     "choices": [
+      "O simplă notificare, fără valoare probatorie",
+      "O ciornă ce necesită confirmare separată din partea clientului",
+      "Exemplarul original al facturii",
+      "O copie informativă, fără efecte fiscale"
+     ],
+     "answer": 2,
+     "explain": "Odată validată în SPV, factura electronică descărcată din sistem constituie exemplarul original al facturii, cu deplină valoare juridică și fiscală.",
+     "concept_key": "efactura_valoare_juridica"
+    },
+    {
+     "q": "Care este termenul de transmitere a facturii în SPV, aplicabil de la 1 ianuarie 2026?",
+     "choices": [
+      "5 zile calendaristice de la emitere",
+      "5 zile lucrătoare de la emitere",
+      "10 zile lucrătoare de la emitere",
+      "30 zile calendaristice de la emitere"
+     ],
+     "answer": 1,
+     "explain": "Prin OUG 89/2025, termenul de transmitere în SPV s-a modificat: până la 31 decembrie 2025 era de 5 zile calendaristice, iar de la 1 ianuarie 2026 este de 5 zile lucrătoare de la data emiterii facturii.",
+     "concept_key": "efactura_termen_transmitere"
+    },
+    {
+     "q": "O societate încadrată drept contribuabil mare transmite o factură B2B în SPV cu întârziere. Ce interval al amenzii se aplică, conform reglementărilor în vigoare la data redactării (iulie 2026)?",
+     "choices": [
+      "500 - 1.000 lei",
+      "1.000 - 2.500 lei",
+      "2.500 - 5.000 lei",
+      "5.000 - 10.000 lei"
+     ],
+     "answer": 3,
+     "explain": "Pentru contribuabilii mari, amenda pentru transmiterea tardivă a facturilor în SPV este de 5.000-10.000 lei, conform reglementărilor în vigoare la data redactării (iulie 2026). Contribuabilii mijlocii riscă 2.500-5.000 lei, iar cei mici/PF 1.000-2.500 lei.",
+     "concept_key": "efactura_amenzi_mari"
+    },
+    {
+     "q": "O persoană fizică autorizată (PFA) transmite tardiv o factură în SPV. Ce amendă riscă, conform reglementărilor în vigoare la data redactării (iulie 2026)?",
+     "choices": [
+      "1.000 - 2.500 lei",
+      "2.500 - 5.000 lei",
+      "5.000 - 10.000 lei",
+      "Doar avertisment, fără amendă"
+     ],
+     "answer": 0,
+     "explain": "Contribuabilii mici și persoanele fizice autorizate (PF) riscă amenzi de 1.000-2.500 lei pentru transmiterea tardivă a facturilor în SPV, conform reglementărilor în vigoare la data redactării (iulie 2026).",
+     "concept_key": "efactura_amenzi_mici"
+    },
+    {
+     "q": "De când se aplică sancțiuni pentru transmiterea tardivă a facturilor emise în relația B2C prin SPV?",
+     "choices": [
+      "1 iulie 2024",
+      "1 ianuarie 2025",
+      "1 iulie 2025",
+      "1 ianuarie 2026"
+     ],
+     "answer": 2,
+     "explain": "Deși obligația de emitere e-Factura pentru B2C a intrat în vigoare la 1 ianuarie 2025, sancționarea transmiterii tardive a facturilor B2C se aplică abia de la 1 iulie 2025, la aceleași niveluri ca pentru B2B.",
+     "concept_key": "efactura_sanctiuni_b2c"
+    },
+    {
+     "q": "Ce extindere aduce sistemul e-Factura începând cu 1 ianuarie 2026?",
+     "choices": [
+      "Aplicarea sistemului la livrările interne către clienți înregistrați în scop de TVA fără sediu fix în România",
+      "Extinderea obligației la toate tranzacțiile intracomunitare B2B",
+      "Eliminarea obligației de raportare pentru microîntreprinderi",
+      "Introducerea facturării exclusiv în valută, fără echivalent în lei"
+     ],
+     "answer": 0,
+     "explain": "De la 1 ianuarie 2026, obligația de raportare prin e-Factura se extinde și la livrările interne efectuate către clienți înregistrați în scop de TVA în România, dar fără sediu fix pe teritoriul țării.",
+     "concept_key": "efactura_extindere_2026"
+    },
+    {
+     "q": "Care este cadrul legal principal ce reglementează sistemul național privind factura electronică (RO e-Factura)?",
+     "choices": [
+      "OUG 120/2021, Legea 296/2023, OUG 69/2024, OUG 89/2025",
+      "Legea 227/2015 (Codul fiscal), exclusiv",
+      "OMF 1783/2021, actul normativ pentru SAF-T",
+      "Legea 141/2025, referitoare la cotele de TVA"
+     ],
+     "answer": 0,
+     "explain": "Sistemul RO e-Factura este reglementat prin OUG 120/2021 (actul de bază) și modificările succesive aduse de Legea 296/2023, OUG 69/2024 și OUG 89/2025. OMF 1783/2021 reglementează SAF-T, iar Legea 141/2025 privește cotele de TVA — acte normative distincte.",
+     "concept_key": "efactura_cadru_legal"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

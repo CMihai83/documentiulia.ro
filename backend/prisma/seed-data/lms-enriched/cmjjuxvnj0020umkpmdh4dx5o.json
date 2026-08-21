@@ -1,0 +1,139 @@
+{
+ "lessonId": "cmjjuxvnj0020umkpmdh4dx5o",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Query - Transformare Date",
+ "lesson": "Transformări esențiale",
+ "category": "EXCEL_VBA",
+ "content": "# Transformări esențiale\n\n## Power Query: motorul de curățare a datelor din Excel 365\n\nPower Query (numit în ribbon **Date > Obținere și transformare date** / *Get & Transform*) este instrumentul din Excel 365 conceput special pentru a importa, curăța și restructura date brute înainte ca acestea să ajungă în foaia de calcul sau într-un model Power Pivot. Spre deosebire de formulele clasice, Power Query nu lucrează direct pe celule, ci pe un **tabel de lucru** (numit „interogare” sau *query*) deschis într-o fereastră separată — Editorul Power Query.\n\nFiecare acțiune pe care o aplici (filtrare, sortare, redenumire coloană, schimbare tip de date etc.) este înregistrată automat ca un **pas** în panoul **Applied Steps** (Pași aplicați), aflat în partea dreaptă a editorului. Aceste transformări nu sunt improvizații pe care trebuie să le repeți manual — ele generează cod în limbajul **M**, iar la fiecare reîmprospătare (*Refresh*) a datelor, Excel reia automat toți pașii, în ordine, pe datele noi. Practic, construiești o „rețetă” reutilizabilă: dacă luna viitoare primești un nou fișier cu aceeași structură, un singur clic pe **Refresh** reface întreaga curățare.\n\nPoți edita, șterge sau reordona orice pas din listă, iar Power Query recalculează automat pașii următori. Această natură non-distructivă este motivul pentru care Power Query este superior copierii manuale de date: sursa originală rămâne neatinsă, iar transformările sunt complet auditabile.\n\n## Filtrare și sortare\n\nFiltrarea în Power Query seamănă la prima vedere cu AutoFilter din Excel: dai clic pe săgeata din antetul coloanei și alegi valori specifice sau criterii (Text Filters, Number Filters, Date Filters — de exemplu „este mai mare decât”, „conține”, „este între”). Diferența esențială este că, spre deosebire de AutoFilter, filtrul din Power Query **elimină efectiv rândurile** din setul de date (nu doar le ascunde) și devine un pas permanent, reproductibil la fiecare reîmprospătare.\n\nSortarea funcționează similar: din același meniu al coloanei alegi **Sort Ascending** (A-Z, 1-9) sau **Sort Descending** (Z-A, 9-1). Poți aplica sortări multiple pe mai multe coloane, aplicând sortările succesiv — Power Query le combină într-un singur pas de tip *Sorted Rows*, respectând ordinea de prioritate în care ai sortat coloanele.\n\nUn detaliu important: filtrarea și sortarea consumă resurse mai eficient în Power Query decât în Excel clasic, deoarece motorul de interogare poate „împinge” aceste operații către sursă (de exemplu, către o bază de date SQL), transferând mai puține date către Excel — un avantaj real pentru seturi mari de date.\n\n## Pivot Columns și Unpivot Columns\n\n**Unpivot Columns** (din fila **Transform**) este probabil cea mai valoroasă transformare pentru pregătirea datelor destinate unui model Power Pivot sau unui grafic dinamic. Multe rapoarte primite de la colegi vin în format „lat” (*wide*) — de exemplu, o coloană separată pentru fiecare lună (Ian, Feb, Mar...). Acest format e greu de analizat cu tabele pivot sau funcții DAX. Unpivot Columns transformă antetele acelor coloane în valori ale unei singure coloane „Attribute” (pe care o poți redenumi, de exemplu, „Lună”), iar valorile corespunzătoare devin o coloană „Value” („Vânzări”). Rezultatul e un format „lung” (*long*), ideal pentru analiză.\n\n**Pivot Columns** face operația inversă: ia valorile unice dintr-o coloană și le transformă în anteturi noi de coloane, agregând (de obicei prin Sum) valorile dintr-o altă coloană aleasă. Se folosește mai rar în etapa de curățare, dar este util atunci când vrei să reconstruiești un format tabelar pentru prezentare.\n\nReține regula practică: **datele „lungi” sunt cele corecte pentru analiză** (Power Pivot, tabele pivot, grafice); formatul „lat” este potrivit doar pentru afișare finală către utilizator.\n\n## Merge Queries vs. Append Queries\n\nAcestea sunt cele două moduri de a combina mai multe interogări, dar au scopuri complet diferite:\n\n**Merge Queries** (din fila **Home > Combine > Merge Queries**) alătură pe orizontală coloane din două tabele, pe baza unei chei comune (de exemplu, „ID Client”) — este echivalentul unui JOIN din SQL sau al unui XLOOKUP „la scară”. Alegi tipul de îmbinare (*Join Kind*):\n- **Left Outer** (implicit): păstrează toate rândurile din primul tabel și adaugă coloanele potrivite din al doilea;\n- **Right Outer**: invers, păstrează tot al doilea tabel;\n- **Inner**: păstrează doar rândurile cu potrivire în ambele tabele;\n- **Full Outer**: păstrează toate rândurile din ambele tabele;\n- **Left Anti / Right Anti**: păstrează doar rândurile FĂRĂ potrivire (util pentru a găsi comenzi fără client asociat, de exemplu).\n\nRezultatul Merge este o coloană nouă ce conține un „tabel imbricat” — trebuie să dai clic pe pictograma de expandare pentru a alege ce coloane extragi din el.\n\n**Append Queries** (tot din **Combine**) adaugă rândurile unui tabel sub altul, pe verticală — practic o concatenare. Se folosește atunci când ai mai multe fișiere/foi cu **aceeași structură de coloane** (de exemplu, 12 fișiere CSV, câte unul pentru fiecare lună) și vrei să obții un singur tabel consolidat, cu toate rândurile la un loc.\n\n## Split Columns, Replace Values, Change Type și Remove Duplicates\n\n**Split Column by Delimiter** (Transform > Split Column) împarte o coloană în mai multe, folosind un separator (virgulă, spațiu, punct și virgulă) sau după un număr fix de caractere/poziții — util pentru a separa „Nume Prenume” în două coloane distincte sau un cod „RO-2026-001” în componentele lui.\n\n**Replace Values** (clic dreapta pe coloană sau Transform > Replace Values) înlocuiește o valoare specifică cu alta în întreaga coloană — esențial pentru standardizarea datelor introduse inconsecvent (ex. „Bucuresti”, „BUCURESTI”, „Buc.” trebuie aduse toate la „București”).\n\n**Change Type** este pasul cel mai frecvent ignorat, dar critic: Power Query **nu detectează automat și corect tipurile de date** așa cum face Excel într-o celulă obișnuită — o coloană importată ca text, deși conține numere, nu va putea fi însumată sau folosită într-o relație Power Pivot. Verifică mereu, pentru fiecare coloană, tipul afișat în antet (ABC = text, 1️⃣ = întreg, 1.2 = zecimal, calendar = dată) și corectează-l explicit din Home > Data Type.\n\n**Remove Duplicates** (Home > Remove Rows > Remove Duplicates) elimină rândurile identice, păstrând prima apariție. Important: dacă selectezi doar anumite coloane înainte de a aplica pasul, duplicatele sunt evaluate DOAR pe baza acelor coloane, nu pe rândul întreg — o sursă frecventă de confuzie.\n\n## Exemplu: Curățarea unui tabel brut de vânzări\nAi un export brut din sistemul de facturare, cu 3.000 de rânduri și coloanele: `Data`, `Client`, `Produs`, `Cantitate`, `Valoare`, `Status`. Cerința: păstrează doar comenzile cu `Status = \"Finalizat\"`, sortate descrescător după `Valoare`, fără rânduri duplicate.\n\nPașii aplicați în Power Query Editor:\n1. **Change Type**: coloana `Data` → Date; `Cantitate` → Whole Number; `Valoare` → Decimal Number.\n2. **Filter Rows**: pe coloana `Status`, bifezi doar „Finalizat” (celelalte, ex. „Anulat”, „În așteptare”, dispar din rezultat).\n3. **Remove Duplicates**: selectezi toate coloanele și aplici Remove Rows > Remove Duplicates, eliminând eventualele rânduri identice provenite din reexportări.\n4. **Sort Descending** pe coloana `Valoare`.\n\nÎn panoul Applied Steps vezi acum patru pași distincți (`Changed Type`, `Filtered Rows`, `Removed Duplicates`, `Sorted Rows`), fiecare editabil individual. Dacă luna viitoare primești un nou export cu 3.500 de rânduri, dai **Refresh** și toți cei patru pași se reaplică automat, fără nicio intervenție manuală.\n\n## Exemplu: Unpivot pentru raportul lunar de vânzări\nPrimești un raport cu structura: coloana `Regiune` urmată de 12 coloane, câte una pentru fiecare lună (`Ian`, `Feb`, ..., `Dec`), fiecare conținând valoarea vânzărilor. Vrei să construiești un model Power Pivot cu o axă temporală corectă, dar formatul „lat” nu permite acest lucru.\n\nPași:\n1. Selectezi coloana `Regiune` (clic dreapta) și alegi **Unpivot Other Columns** — astfel Power Query știe să lase `Regiune` neschimbată și să „despacheteze” restul de 12 coloane.\n2. Rezultatul: două coloane noi, `Attribute` (conține „Ian”, „Feb”, ...) și `Value` (conține valoarea vânzărilor).\n3. Redenumești `Attribute` în `Lună` și `Value` în `Vânzări` (dublu-clic pe antet).\n\nÎn loc de 12 coloane și, să spunem, 8 rânduri (câte o regiune), obții un singur tabel „lung” cu 96 de rânduri (8 regiuni × 12 luni), gata de încărcat în modelul de date pentru o axă temporală corectă în tabele pivot și grafice.\n\n⚠ Verifică întotdeauna pasul **Changed Type** generat automat la importul datelor (Power Query adaugă acest pas implicit, ghicind tipurile pe baza primelor 1.000 de rânduri). Ghicitul automat poate fi greșit dacă rândurile de la început diferă structural de restul — de exemplu, o coloană numerică ce are valori text la început (goale sau cu text explicativ) poate fi detectată eronat ca „Text”, iar calculele ulterioare vor eșua silențios sau vor genera erori. De asemenea, la Merge Queries, dacă cheia de îmbinare nu este unică în al doilea tabel (relație „unu-la-mai-mulți” nedorită), rândurile din primul tabel se pot multiplica în rezultat — verifică întotdeauna numărul de rânduri înainte și după merge.\n\n## Exercițiu\nAi două tabele importate în Power Query:\n\n**Comenzi**: `IDComanda`, `IDClient`, `Produs`, `ValoareComanda`\n**Clienti**: `IDClient`, `NumeClient`, `Judet`\n\nCerință: construiește o interogare finală care conține toate comenzile, cu numele clientului și județul alăturate, sortată descrescător după `ValoareComanda`, fără rânduri duplicate. Comenzile fără client asociat (IDClient inexistent în tabelul Clienti) trebuie păstrate.\n\nDescrie pașii necesari, inclusiv tipul de îmbinare (Join Kind) corect.\n\n**Soluție:** 1. Din interogarea **Comenzi**, deschide **Home > Combine > Merge Queries**.\n2. Selectezi interogarea **Clienti** ca a doua sursă.\n3. Alegi coloana de potrivire `IDClient` în ambele tabele.\n4. La **Join Kind**, alegi **Left Outer** — astfel păstrezi TOATE rândurile din Comenzi (inclusiv cele fără client în Clienti), iar din Clienti aduci doar potrivirile (dacă nu există, coloanele apar ca `null`). Right Outer sau Inner ar fi greșite, deoarece ar putea elimina comenzi fără client asociat.\n5. Dai clic pe pictograma de expandare a noii coloane (numită implicit `Clienti`) și selectezi doar `NumeClient` și `Judet` (debifezi „Use original column name as prefix” dacă vrei nume curate).\n6. Aplici **Remove Duplicates** pe toate coloanele, pentru a elimina eventualele rânduri identice provenite din surse duplicate.\n7. Aplici **Sort Descending** pe coloana `ValoareComanda`.\n8. Închizi editorul cu **Close & Load** pentru a încărca rezultatul final în foaia de calcul sau în modelul de date.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "power-query-applied-steps",
+    "md": "## Power Query: motorul de curățare a datelor din Excel 365\n\nPower Query (numit în ribbon **Date > Obținere și transformare date** / *Get & Transform*) este instrumentul din Excel 365 conceput special pentru a importa, curăța și restructura date brute înainte ca acestea să ajungă în foaia de calcul sau într-un model Power Pivot. Spre deosebire de formulele clasice, Power Query nu lucrează direct pe celule, ci pe un **tabel de lucru** (numit „interogare” sau *query*) deschis într-o fereastră separată — Editorul Power Query.\n\nFiecare acțiune pe care o aplici (filtrare, sortare, redenumire coloană, schimbare tip de date etc.) este înregistrată automat ca un **pas** în panoul **Applied Steps** (Pași aplicați), aflat în partea dreaptă a editorului. Aceste transformări nu sunt improvizații pe care trebuie să le repeți manual — ele generează cod în limbajul **M**, iar la fiecare reîmprospătare (*Refresh*) a datelor, Excel reia automat toți pașii, în ordine, pe datele noi. Practic, construiești o „rețetă” reutilizabilă: dacă luna viitoare primești un nou fișier cu aceeași structură, un singur clic pe **Refresh** reface întreaga curățare.\n\nPoți edita, șterge sau reordona orice pas din listă, iar Power Query recalculează automat pașii următori. Această natură non-distructivă este motivul pentru care Power Query este superior copierii manuale de date: sursa originală rămâne neatinsă, iar transformările sunt complet auditabile.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-filtrare-sortare",
+    "md": "## Filtrare și sortare\n\nFiltrarea în Power Query seamănă la prima vedere cu AutoFilter din Excel: dai clic pe săgeata din antetul coloanei și alegi valori specifice sau criterii (Text Filters, Number Filters, Date Filters — de exemplu „este mai mare decât”, „conține”, „este între”). Diferența esențială este că, spre deosebire de AutoFilter, filtrul din Power Query **elimină efectiv rândurile** din setul de date (nu doar le ascunde) și devine un pas permanent, reproductibil la fiecare reîmprospătare.\n\nSortarea funcționează similar: din același meniu al coloanei alegi **Sort Ascending** (A-Z, 1-9) sau **Sort Descending** (Z-A, 9-1). Poți aplica sortări multiple pe mai multe coloane, aplicând sortările succesiv — Power Query le combină într-un singur pas de tip *Sorted Rows*, respectând ordinea de prioritate în care ai sortat coloanele.\n\nUn detaliu important: filtrarea și sortarea consumă resurse mai eficient în Power Query decât în Excel clasic, deoarece motorul de interogare poate „împinge” aceste operații către sursă (de exemplu, către o bază de date SQL), transferând mai puține date către Excel — un avantaj real pentru seturi mari de date.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-pivot-unpivot",
+    "md": "## Pivot Columns și Unpivot Columns\n\n**Unpivot Columns** (din fila **Transform**) este probabil cea mai valoroasă transformare pentru pregătirea datelor destinate unui model Power Pivot sau unui grafic dinamic. Multe rapoarte primite de la colegi vin în format „lat” (*wide*) — de exemplu, o coloană separată pentru fiecare lună (Ian, Feb, Mar...). Acest format e greu de analizat cu tabele pivot sau funcții DAX. Unpivot Columns transformă antetele acelor coloane în valori ale unei singure coloane „Attribute” (pe care o poți redenumi, de exemplu, „Lună”), iar valorile corespunzătoare devin o coloană „Value” („Vânzări”). Rezultatul e un format „lung” (*long*), ideal pentru analiză.\n\n**Pivot Columns** face operația inversă: ia valorile unice dintr-o coloană și le transformă în anteturi noi de coloane, agregând (de obicei prin Sum) valorile dintr-o altă coloană aleasă. Se folosește mai rar în etapa de curățare, dar este util atunci când vrei să reconstruiești un format tabelar pentru prezentare.\n\nReține regula practică: **datele „lungi” sunt cele corecte pentru analiză** (Power Pivot, tabele pivot, grafice); formatul „lat” este potrivit doar pentru afișare finală către utilizator.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-merge-append",
+    "md": "## Merge Queries vs. Append Queries\n\nAcestea sunt cele două moduri de a combina mai multe interogări, dar au scopuri complet diferite:\n\n**Merge Queries** (din fila **Home > Combine > Merge Queries**) alătură pe orizontală coloane din două tabele, pe baza unei chei comune (de exemplu, „ID Client”) — este echivalentul unui JOIN din SQL sau al unui XLOOKUP „la scară”. Alegi tipul de îmbinare (*Join Kind*):\n- **Left Outer** (implicit): păstrează toate rândurile din primul tabel și adaugă coloanele potrivite din al doilea;\n- **Right Outer**: invers, păstrează tot al doilea tabel;\n- **Inner**: păstrează doar rândurile cu potrivire în ambele tabele;\n- **Full Outer**: păstrează toate rândurile din ambele tabele;\n- **Left Anti / Right Anti**: păstrează doar rândurile FĂRĂ potrivire (util pentru a găsi comenzi fără client asociat, de exemplu).\n\nRezultatul Merge este o coloană nouă ce conține un „tabel imbricat” — trebuie să dai clic pe pictograma de expandare pentru a alege ce coloane extragi din el.\n\n**Append Queries** (tot din **Combine**) adaugă rândurile unui tabel sub altul, pe verticală — practic o concatenare. Se folosește atunci când ai mai multe fișiere/foi cu **aceeași structură de coloane** (de exemplu, 12 fișiere CSV, câte unul pentru fiecare lună) și vrei să obții un singur tabel consolidat, cu toate rândurile la un loc.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-split-replace-tipuri-duplicate",
+    "md": "## Split Columns, Replace Values, Change Type și Remove Duplicates\n\n**Split Column by Delimiter** (Transform > Split Column) împarte o coloană în mai multe, folosind un separator (virgulă, spațiu, punct și virgulă) sau după un număr fix de caractere/poziții — util pentru a separa „Nume Prenume” în două coloane distincte sau un cod „RO-2026-001” în componentele lui.\n\n**Replace Values** (clic dreapta pe coloană sau Transform > Replace Values) înlocuiește o valoare specifică cu alta în întreaga coloană — esențial pentru standardizarea datelor introduse inconsecvent (ex. „Bucuresti”, „BUCURESTI”, „Buc.” trebuie aduse toate la „București”).\n\n**Change Type** este pasul cel mai frecvent ignorat, dar critic: Power Query **nu detectează automat și corect tipurile de date** așa cum face Excel într-o celulă obișnuită — o coloană importată ca text, deși conține numere, nu va putea fi însumată sau folosită într-o relație Power Pivot. Verifică mereu, pentru fiecare coloană, tipul afișat în antet (ABC = text, 1️⃣ = întreg, 1.2 = zecimal, calendar = dată) și corectează-l explicit din Home > Data Type.\n\n**Remove Duplicates** (Home > Remove Rows > Remove Duplicates) elimină rândurile identice, păstrând prima apariție. Important: dacă selectezi doar anumite coloane înainte de a aplica pasul, duplicatele sunt evaluate DOAR pe baza acelor coloane, nu pe rândul întreg — o sursă frecventă de confuzie.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b5"
+   },
+   {
+    "type": "example",
+    "title": "Curățarea unui tabel brut de vânzări",
+    "concept_key": "power-query-filtrare-sortare",
+    "md": "Ai un export brut din sistemul de facturare, cu 3.000 de rânduri și coloanele: `Data`, `Client`, `Produs`, `Cantitate`, `Valoare`, `Status`. Cerința: păstrează doar comenzile cu `Status = \"Finalizat\"`, sortate descrescător după `Valoare`, fără rânduri duplicate.\n\nPașii aplicați în Power Query Editor:\n1. **Change Type**: coloana `Data` → Date; `Cantitate` → Whole Number; `Valoare` → Decimal Number.\n2. **Filter Rows**: pe coloana `Status`, bifezi doar „Finalizat” (celelalte, ex. „Anulat”, „În așteptare”, dispar din rezultat).\n3. **Remove Duplicates**: selectezi toate coloanele și aplici Remove Rows > Remove Duplicates, eliminând eventualele rânduri identice provenite din reexportări.\n4. **Sort Descending** pe coloana `Valoare`.\n\nÎn panoul Applied Steps vezi acum patru pași distincți (`Changed Type`, `Filtered Rows`, `Removed Duplicates`, `Sorted Rows`), fiecare editabil individual. Dacă luna viitoare primești un nou export cu 3.500 de rânduri, dai **Refresh** și toți cei patru pași se reaplică automat, fără nicio intervenție manuală.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b6"
+   },
+   {
+    "type": "example",
+    "title": "Unpivot pentru raportul lunar de vânzări",
+    "concept_key": "power-query-pivot-unpivot",
+    "md": "Primești un raport cu structura: coloana `Regiune` urmată de 12 coloane, câte una pentru fiecare lună (`Ian`, `Feb`, ..., `Dec`), fiecare conținând valoarea vânzărilor. Vrei să construiești un model Power Pivot cu o axă temporală corectă, dar formatul „lat” nu permite acest lucru.\n\nPași:\n1. Selectezi coloana `Regiune` (clic dreapta) și alegi **Unpivot Other Columns** — astfel Power Query știe să lase `Regiune` neschimbată și să „despacheteze” restul de 12 coloane.\n2. Rezultatul: două coloane noi, `Attribute` (conține „Ian”, „Feb”, ...) și `Value` (conține valoarea vânzărilor).\n3. Redenumești `Attribute` în `Lună` și `Value` în `Vânzări` (dublu-clic pe antet).\n\nÎn loc de 12 coloane și, să spunem, 8 rânduri (câte o regiune), obții un singur tabel „lung” cu 96 de rânduri (8 regiuni × 12 luni), gata de încărcat în modelul de date pentru o axă temporală corectă în tabele pivot și grafice.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Verifică întotdeauna pasul **Changed Type** generat automat la importul datelor (Power Query adaugă acest pas implicit, ghicind tipurile pe baza primelor 1.000 de rânduri). Ghicitul automat poate fi greșit dacă rândurile de la început diferă structural de restul — de exemplu, o coloană numerică ce are valori text la început (goale sau cu text explicativ) poate fi detectată eronat ca „Text”, iar calculele ulterioare vor eșua silențios sau vor genera erori. De asemenea, la Merge Queries, dacă cheia de îmbinare nu este unică în al doilea tabel (relație „unu-la-mai-mulți” nedorită), rândurile din primul tabel se pot multiplica în rezultat — verifică întotdeauna numărul de rânduri înainte și după merge.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai două tabele importate în Power Query:\n\n**Comenzi**: `IDComanda`, `IDClient`, `Produs`, `ValoareComanda`\n**Clienti**: `IDClient`, `NumeClient`, `Judet`\n\nCerință: construiește o interogare finală care conține toate comenzile, cu numele clientului și județul alăturate, sortată descrescător după `ValoareComanda`, fără rânduri duplicate. Comenzile fără client asociat (IDClient inexistent în tabelul Clienti) trebuie păstrate.\n\nDescrie pașii necesari, inclusiv tipul de îmbinare (Join Kind) corect.",
+    "solution_md": "1. Din interogarea **Comenzi**, deschide **Home > Combine > Merge Queries**.\n2. Selectezi interogarea **Clienti** ca a doua sursă.\n3. Alegi coloana de potrivire `IDClient` în ambele tabele.\n4. La **Join Kind**, alegi **Left Outer** — astfel păstrezi TOATE rândurile din Comenzi (inclusiv cele fără client în Clienti), iar din Clienti aduci doar potrivirile (dacă nu există, coloanele apar ca `null`). Right Outer sau Inner ar fi greșite, deoarece ar putea elimina comenzi fără client asociat.\n5. Dai clic pe pictograma de expandare a noii coloane (numită implicit `Clienti`) și selectezi doar `NumeClient` și `Judet` (debifezi „Use original column name as prefix” dacă vrei nume curate).\n6. Aplici **Remove Duplicates** pe toate coloanele, pentru a elimina eventualele rânduri identice provenite din surse duplicate.\n7. Aplici **Sort Descending** pe coloana `ValoareComanda`.\n8. Închizi editorul cu **Close & Load** pentru a încărca rezultatul final în foaia de calcul sau în modelul de date.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența principală dintre Merge Queries și Append Queries?",
+    "choices": [
+     "Merge combină coloane din două tabele pe baza unei chei comune; Append adaugă rândurile unui tabel sub altul",
+     "Merge și Append fac exact același lucru, doar denumirea diferă",
+     "Merge funcționează doar cu date numerice, Append doar cu text",
+     "Append combină coloane, Merge adaugă rânduri"
+    ],
+    "answer": 0,
+    "explain": "Merge Queries realizează o îmbinare pe orizontală (tip JOIN), aducând coloane suplimentare pe baza unei chei comune, în timp ce Append Queries stivuiește rândurile mai multor tabele cu structură similară, pe verticală.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă dacă aplici Remove Duplicates selectând doar coloana `Client`, într-un tabel care are și coloanele `Data` și `Valoare`?",
+    "choices": [
+     "Se elimină doar rândurile complet identice pe toate coloanele",
+     "Se elimină rândurile care au aceeași valoare în coloana Client, chiar dacă Data sau Valoare diferă, păstrând prima apariție",
+     "Comanda generează o eroare, deoarece trebuie selectate toate coloanele",
+     "Se elimină automat toate rândurile goale din tabel"
+    ],
+    "answer": 1,
+    "explain": "Remove Duplicates evaluează unicitatea DOAR pe baza coloanelor selectate în momentul aplicării pasului — dacă alegi doar `Client`, orice al doilea rând cu același client va fi șters, indiferent de valorile din celelalte coloane.",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face Unpivot Columns în Power Query?",
+    "back": "Transformă coloane (format lat / wide) în rânduri (format lung / long), creând perechi Attribute-Value dintr-un set de coloane selectate.",
+    "concept_key": "power-query-pivot-unpivot",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e diferența dintre Merge Queries și Append Queries?",
+    "back": "Merge combină coloane din două tabele pe baza unei chei comune (ca un JOIN/XLOOKUP); Append adaugă rândurile unui tabel sub altul (concatenare pe verticală, pentru tabele cu structură similară).",
+    "concept_key": "power-query-merge-append",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este panoul Applied Steps?",
+    "back": "Lista pașilor de transformare aplicați secvențial unei interogări în Power Query, editabilă și reordonabilă, care generează automat codul M și se reaplică la fiecare Refresh.",
+    "concept_key": "power-query-applied-steps",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tip de Join Kind alegi când vrei să păstrezi toate rândurile din primul tabel, chiar dacă nu au potrivire în al doilea?",
+    "back": "Left Outer (implicit în Merge Queries) — păstrează toate rândurile din primul tabel și adaugă doar potrivirile găsite în al doilea.",
+    "concept_key": "power-query-merge-append",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce este critic pasul Change Type în Power Query?",
+    "back": "Pentru că Power Query nu detectează întotdeauna corect tipul de date la import (se bazează pe primele 1.000 de rânduri); un tip greșit (ex. număr detectat ca Text) provoacă erori sau rezultate greșite în calcule și în relațiile Power Pivot.",
+    "concept_key": "power-query-split-replace-tipuri-duplicate",
+    "blockId": "cmjjuxvnj0020umkpmdh4dx5o-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1575,
+   "flashcards": 5
+  }
+ }
+}

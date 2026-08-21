@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvo40028umkphu96xj0e",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Pivot și Modele de Date",
+ "lesson": "Ce este Power Pivot",
+ "category": "EXCEL_VBA",
+ "content": "# Ce este Power Pivot\n\n## Ce este Power Pivot\n\n**Power Pivot** este un supliment (add-in) inclus gratuit în Excel 365, Excel 2019 și Excel 2016 (ediții Windows), care îți permite să construiești un **model de date relațional** direct în interiorul unui fișier Excel. În loc să lucrezi cu un singur tabel uriaș plin de VLOOKUP-uri și coloane duplicate, aduci mai multe tabele (vânzări, clienți, produse, sucursale) în model și le conectezi prin **relații**, exact cum ai face într-o bază de date Access sau SQL Server.\n\nMotorul din spatele Power Pivot se numește **Vertipaq** (cunoscut și ca xVelocity) — un motor de stocare **columnar și comprimat**, care ține datele în memoria RAM, nu în celule de foaie de calcul. Practic, un tabel Power Pivot cu câteva milioane de rânduri ocupă de multe ori mai puțin spațiu decât același volum de date într-o foaie Excel clasică, iar calculele rulează semnificativ mai rapid.\n\nPentru o firmă tipică din România — de exemplu o SRL cu distribuție națională care primește lunar fișiere de vânzări de la mai multe depozite — Power Pivot înseamnă că poți centraliza toate lunile într-un singur model, fără să copiezi manual date dintr-un fișier în altul și fără să te lovești de limita clasică de 1.048.576 rânduri pe foaie.\n\n## Power Pivot versus tabelul pivot clasic\n\nUn tabel pivot \"clasic\" din Excel lucrează pe **un singur interval de date sau un singur tabel**. Dacă ai nevoie de informații din două surse (de exemplu, valoarea vânzărilor dintr-un tabel și regiunea clientului din alt tabel), ești nevoit să faci în prealabil un VLOOKUP sau XLOOKUP pentru a \"aduce\" coloana lipsă într-un tabel unic, înainte de a construi pivotul.\n\nPower Pivot elimină acest pas. Încarci fiecare tabel așa cum este, definești o **relație** între ele (de exemplu, coloana `ID_Client` din tabelul Vânzări se leagă de coloana `ID_Client` din tabelul Clienți) și modelul \"știe\" cum să combine datele la cerere, în momentul în care construiești raportul. Relațiile pot fi de tip unu-la-mai-mulți (cel mai frecvent caz: un client are mai multe vânzări) și pot lega oricâte tabele, formând o structură cunoscută sub numele de **schemă stea** (star schema) — un tabel central de fapte (ex. Vânzări) înconjurat de tabele de dimensiuni (Clienți, Produse, Timp).\n\nUn alt avantaj practic: dacă mâine se schimbă un preț de listă sau apare un client nou, actualizezi doar tabelul de dimensiune respectiv, nu miile de rânduri din tabelul de vânzări.\n\n## DAX — limbajul de calcul din Power Pivot\n\nÎn interiorul modelului de date, formulele clasice de Excel (`=SUM()`, `=IF()` scrise în celule) nu mai funcționează, pentru că nu mai lucrezi cu celule, ci cu coloane și tabele întregi. În schimb, Power Pivot folosește **DAX** (Data Analysis Expressions) — un limbaj de formule specializat pentru modele de date, cu o sintaxă asemănătoare Excel-ului, dar cu concepte proprii.\n\nÎn DAX construiești în principal două tipuri de calcule:\n\n- **Coloane calculate** — o formulă care se evaluează rând cu rând și rezultatul este stocat fizic în model (de exemplu, o coloană `Marjă = Vanzari[Valoare] - Vanzari[Cost]`).\n- **Măsuri (measures)** — formule care se calculează dinamic, în funcție de contextul din raport (filtrele aplicate, rândurile și coloanele dintr-un tabel pivot). Măsurile sunt inima Power Pivot, pentru că se recalculează automat pentru fiecare combinație de filtre, fără să ocupe spațiu suplimentar în model.\n\nCele mai folosite funcții DAX pentru început sunt `SUM`, `SUMX`, `COUNTROWS`, `DISTINCTCOUNT` și, mai ales, `CALCULATE` — funcția care modifică filtrele aplicate unei măsuri și stă la baza majorității calculelor avansate (comparații an-peste-an, procente din total, cote de piață).\n\n## Exemplu: Model de date pentru o firmă de distribuție\n**Scenariu**: Comercial Prod SRL primește lunar un export din sistemul de gestiune cu peste 10.000 de linii de vânzări. Fișierul conține un tabel `Vanzari` (coloane: `Data`, `ID_Client`, `ID_Produs`, `Cantitate`, `Valoare`) și un tabel separat `Clienti` (coloane: `ID_Client`, `Denumire`, `Judet`, `Categorie`).\n\nÎn Power Pivot, pașii sunt:\n\n1. Încarci ambele tabele în model (din Power Query sau direct din Excel Tables — vezi lecția despre Power Query).\n2. În fereastra **Diagram View** din Power Pivot, tragi o linie de la `Vanzari[ID_Client]` la `Clienti[ID_Client]` — se creează o relație unu-la-mai-mulți (un client, mai multe vânzări).\n3. Construiești un tabel pivot obișnuit, dar în lista de câmpuri apar acum ambele tabele. Poți pune `Clienti[Judet]` pe rânduri și `Vanzari[Valoare]` ca valoare — Excel calculează automat totalurile pe județ, fără niciun VLOOKUP intermediar.\n\nRezultatul: un raport de vânzări pe județe și categorii de clienți, actualizabil în câteva secunde, chiar dacă tabelul de vânzări crește la câteva sute de mii de rânduri.\n\n## Exemplu: O măsură DAX simplă cu CALCULATE\nPornind de la modelul de mai sus, creezi în Power Pivot două măsuri:\n\n```\nTotal Vanzari := SUM(Vanzari[Valoare])\nVanzari Bucuresti := CALCULATE([Total Vanzari]; Clienti[Judet] = \"Bucuresti\")\n```\n\n- `Total Vanzari` însumează pur și simplu coloana `Valoare` din tabelul de fapte.\n- `Vanzari Bucuresti` pornește de la aceeași măsură, dar `CALCULATE` suprascrie contextul de filtrare și păstrează doar rândurile în care `Clienti[Judet]` este \"Bucuresti\".\n\nDacă `Total Vanzari` pentru luna curentă este **1.250.000 lei**, iar clienții din București reprezintă 320.000 lei din această sumă, poți construi imediat, cu o singură măsură suplimentară, un indicator de tip \"% din total\":\n\n```\n% Bucuresti := DIVIDE([Vanzari Bucuresti]; [Total Vanzari])\n```\n\nRezultat: 320.000 / 1.250.000 = **25,6%**. Această măsură se recalculează automat pentru orice combinație de filtre pui în raport (pe lună, pe categorie de produs, pe reprezentant de vânzări), fără să scrii altă formulă.\n\n⚠ Nu confunda **Power Pivot** cu **Power Query**: Power Query aduce și transformă datele (curăță, combină, filtrează surse), în timp ce Power Pivot construiește modelul relațional și calculele DAX peste datele deja curate — cele două lucrează împreună, dar au roluri diferite. De asemenea, Power Pivot ca add-in vizual complet este disponibil doar în Excel pentru Windows (365, 2019, 2016); pe Excel pentru Mac, funcționalitatea de model de date este limitată, iar interfața clasică de gestionare a suplimentelor COM nu există.\n\n## Exercițiu\nAi două tabele într-un registru Excel:\n\n- `Comenzi`: `ID_Comanda`, `ID_Produs`, `Cantitate`, `Pret_Unitar`\n- `Produse`: `ID_Produs`, `Denumire_Produs`, `Categorie`\n\nDescrie, pas cu pas, ce trebuie să faci în Power Pivot pentru a obține un tabel pivot care afișează valoarea totală a comenzilor (`Cantitate` × `Pret_Unitar`) grupată pe `Categorie`, fără să adaugi manual coloana `Categorie` în tabelul `Comenzi`.\n\n**Soluție:** 1. Adaugi ambele tabele (`Comenzi` și `Produse`) în modelul de date Power Pivot (Power Pivot → Add to Data Model, sau direct din Power Query).\n2. În **Diagram View**, creezi relația `Comenzi[ID_Produs]` → `Produse[ID_Produs]` (unu-la-mai-mulți: un produs apare în mai multe comenzi).\n3. Creezi o coloană calculată în `Comenzi`: `Valoare = Comenzi[Cantitate] * Comenzi[Pret_Unitar]` — sau, mai eficient, o măsură DAX: `Total Valoare := SUMX(Comenzi; Comenzi[Cantitate] * Comenzi[Pret_Unitar])`.\n4. Construiești un tabel pivot nou (Insert → PivotTable, sursă: Use this workbook's Data Model).\n5. Pui `Produse[Categorie]` pe rânduri și măsura `Total Valoare` în zona de valori.\n\nRelația definită la pasul 2 face ca Excel să știe automat cărei categorii îi aparține fiecare comandă, deși coloana `Categorie` fizic există doar în tabelul `Produse`.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "power-pivot-definitie",
+    "md": "## Ce este Power Pivot\n\n**Power Pivot** este un supliment (add-in) inclus gratuit în Excel 365, Excel 2019 și Excel 2016 (ediții Windows), care îți permite să construiești un **model de date relațional** direct în interiorul unui fișier Excel. În loc să lucrezi cu un singur tabel uriaș plin de VLOOKUP-uri și coloane duplicate, aduci mai multe tabele (vânzări, clienți, produse, sucursale) în model și le conectezi prin **relații**, exact cum ai face într-o bază de date Access sau SQL Server.\n\nMotorul din spatele Power Pivot se numește **Vertipaq** (cunoscut și ca xVelocity) — un motor de stocare **columnar și comprimat**, care ține datele în memoria RAM, nu în celule de foaie de calcul. Practic, un tabel Power Pivot cu câteva milioane de rânduri ocupă de multe ori mai puțin spațiu decât același volum de date într-o foaie Excel clasică, iar calculele rulează semnificativ mai rapid.\n\nPentru o firmă tipică din România — de exemplu o SRL cu distribuție națională care primește lunar fișiere de vânzări de la mai multe depozite — Power Pivot înseamnă că poți centraliza toate lunile într-un singur model, fără să copiezi manual date dintr-un fișier în altul și fără să te lovești de limita clasică de 1.048.576 rânduri pe foaie.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-pivot-vs-tabel-pivot-clasic",
+    "md": "## Power Pivot versus tabelul pivot clasic\n\nUn tabel pivot \"clasic\" din Excel lucrează pe **un singur interval de date sau un singur tabel**. Dacă ai nevoie de informații din două surse (de exemplu, valoarea vânzărilor dintr-un tabel și regiunea clientului din alt tabel), ești nevoit să faci în prealabil un VLOOKUP sau XLOOKUP pentru a \"aduce\" coloana lipsă într-un tabel unic, înainte de a construi pivotul.\n\nPower Pivot elimină acest pas. Încarci fiecare tabel așa cum este, definești o **relație** între ele (de exemplu, coloana `ID_Client` din tabelul Vânzări se leagă de coloana `ID_Client` din tabelul Clienți) și modelul \"știe\" cum să combine datele la cerere, în momentul în care construiești raportul. Relațiile pot fi de tip unu-la-mai-mulți (cel mai frecvent caz: un client are mai multe vânzări) și pot lega oricâte tabele, formând o structură cunoscută sub numele de **schemă stea** (star schema) — un tabel central de fapte (ex. Vânzări) înconjurat de tabele de dimensiuni (Clienți, Produse, Timp).\n\nUn alt avantaj practic: dacă mâine se schimbă un preț de listă sau apare un client nou, actualizezi doar tabelul de dimensiune respectiv, nu miile de rânduri din tabelul de vânzări.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dax-limbaj-formule",
+    "md": "## DAX — limbajul de calcul din Power Pivot\n\nÎn interiorul modelului de date, formulele clasice de Excel (`=SUM()`, `=IF()` scrise în celule) nu mai funcționează, pentru că nu mai lucrezi cu celule, ci cu coloane și tabele întregi. În schimb, Power Pivot folosește **DAX** (Data Analysis Expressions) — un limbaj de formule specializat pentru modele de date, cu o sintaxă asemănătoare Excel-ului, dar cu concepte proprii.\n\nÎn DAX construiești în principal două tipuri de calcule:\n\n- **Coloane calculate** — o formulă care se evaluează rând cu rând și rezultatul este stocat fizic în model (de exemplu, o coloană `Marjă = Vanzari[Valoare] - Vanzari[Cost]`).\n- **Măsuri (measures)** — formule care se calculează dinamic, în funcție de contextul din raport (filtrele aplicate, rândurile și coloanele dintr-un tabel pivot). Măsurile sunt inima Power Pivot, pentru că se recalculează automat pentru fiecare combinație de filtre, fără să ocupe spațiu suplimentar în model.\n\nCele mai folosite funcții DAX pentru început sunt `SUM`, `SUMX`, `COUNTROWS`, `DISTINCTCOUNT` și, mai ales, `CALCULATE` — funcția care modifică filtrele aplicate unei măsuri și stă la baza majorității calculelor avansate (comparații an-peste-an, procente din total, cote de piață).",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b3"
+   },
+   {
+    "type": "example",
+    "title": "Model de date pentru o firmă de distribuție",
+    "concept_key": "model-date-relational",
+    "md": "**Scenariu**: Comercial Prod SRL primește lunar un export din sistemul de gestiune cu peste 10.000 de linii de vânzări. Fișierul conține un tabel `Vanzari` (coloane: `Data`, `ID_Client`, `ID_Produs`, `Cantitate`, `Valoare`) și un tabel separat `Clienti` (coloane: `ID_Client`, `Denumire`, `Judet`, `Categorie`).\n\nÎn Power Pivot, pașii sunt:\n\n1. Încarci ambele tabele în model (din Power Query sau direct din Excel Tables — vezi lecția despre Power Query).\n2. În fereastra **Diagram View** din Power Pivot, tragi o linie de la `Vanzari[ID_Client]` la `Clienti[ID_Client]` — se creează o relație unu-la-mai-mulți (un client, mai multe vânzări).\n3. Construiești un tabel pivot obișnuit, dar în lista de câmpuri apar acum ambele tabele. Poți pune `Clienti[Judet]` pe rânduri și `Vanzari[Valoare]` ca valoare — Excel calculează automat totalurile pe județ, fără niciun VLOOKUP intermediar.\n\nRezultatul: un raport de vânzări pe județe și categorii de clienți, actualizabil în câteva secunde, chiar dacă tabelul de vânzări crește la câteva sute de mii de rânduri.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b4"
+   },
+   {
+    "type": "example",
+    "title": "O măsură DAX simplă cu CALCULATE",
+    "concept_key": "dax-measure-calculate",
+    "md": "Pornind de la modelul de mai sus, creezi în Power Pivot două măsuri:\n\n```\nTotal Vanzari := SUM(Vanzari[Valoare])\nVanzari Bucuresti := CALCULATE([Total Vanzari]; Clienti[Judet] = \"Bucuresti\")\n```\n\n- `Total Vanzari` însumează pur și simplu coloana `Valoare` din tabelul de fapte.\n- `Vanzari Bucuresti` pornește de la aceeași măsură, dar `CALCULATE` suprascrie contextul de filtrare și păstrează doar rândurile în care `Clienti[Judet]` este \"Bucuresti\".\n\nDacă `Total Vanzari` pentru luna curentă este **1.250.000 lei**, iar clienții din București reprezintă 320.000 lei din această sumă, poți construi imediat, cu o singură măsură suplimentară, un indicator de tip \"% din total\":\n\n```\n% Bucuresti := DIVIDE([Vanzari Bucuresti]; [Total Vanzari])\n```\n\nRezultat: 320.000 / 1.250.000 = **25,6%**. Această măsură se recalculează automat pentru orice combinație de filtre pui în raport (pe lună, pe categorie de produs, pe reprezentant de vânzări), fără să scrii altă formulă.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda **Power Pivot** cu **Power Query**: Power Query aduce și transformă datele (curăță, combină, filtrează surse), în timp ce Power Pivot construiește modelul relațional și calculele DAX peste datele deja curate — cele două lucrează împreună, dar au roluri diferite. De asemenea, Power Pivot ca add-in vizual complet este disponibil doar în Excel pentru Windows (365, 2019, 2016); pe Excel pentru Mac, funcționalitatea de model de date este limitată, iar interfața clasică de gestionare a suplimentelor COM nu există.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai două tabele într-un registru Excel:\n\n- `Comenzi`: `ID_Comanda`, `ID_Produs`, `Cantitate`, `Pret_Unitar`\n- `Produse`: `ID_Produs`, `Denumire_Produs`, `Categorie`\n\nDescrie, pas cu pas, ce trebuie să faci în Power Pivot pentru a obține un tabel pivot care afișează valoarea totală a comenzilor (`Cantitate` × `Pret_Unitar`) grupată pe `Categorie`, fără să adaugi manual coloana `Categorie` în tabelul `Comenzi`.",
+    "solution_md": "1. Adaugi ambele tabele (`Comenzi` și `Produse`) în modelul de date Power Pivot (Power Pivot → Add to Data Model, sau direct din Power Query).\n2. În **Diagram View**, creezi relația `Comenzi[ID_Produs]` → `Produse[ID_Produs]` (unu-la-mai-mulți: un produs apare în mai multe comenzi).\n3. Creezi o coloană calculată în `Comenzi`: `Valoare = Comenzi[Cantitate] * Comenzi[Pret_Unitar]` — sau, mai eficient, o măsură DAX: `Total Valoare := SUMX(Comenzi; Comenzi[Cantitate] * Comenzi[Pret_Unitar])`.\n4. Construiești un tabel pivot nou (Insert → PivotTable, sursă: Use this workbook's Data Model).\n5. Pui `Produse[Categorie]` pe rânduri și măsura `Total Valoare` în zona de valori.\n\nRelația definită la pasul 2 face ca Excel să știe automat cărei categorii îi aparține fiecare comandă, deși coloana `Categorie` fizic există doar în tabelul `Produse`.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența principală dintre Power Query și Power Pivot?",
+    "choices": [
+     "Power Query importă și transformă date, Power Pivot construiește modelul relațional și calculele DAX",
+     "Sunt exact același instrument, cu două nume diferite",
+     "Power Pivot importă date, Power Query face doar grafice",
+     "Power Query funcționează doar pe Mac, Power Pivot doar pe Windows"
+    ],
+    "answer": 0,
+    "explain": "Power Query se ocupă de extragerea și curățarea datelor din surse externe; Power Pivot preia datele deja pregătite și construiește modelul de date (relații, măsuri DAX) pentru analiză.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce face funcția CALCULATE într-o măsură DAX?",
+    "choices": [
+     "Șterge coloanele calculate din model",
+     "Modifică sau suprascrie contextul de filtrare al unei alte măsuri/expresii",
+     "Calculează automat suma tuturor coloanelor numerice",
+     "Importă date noi din Power Query"
+    ],
+    "answer": 1,
+    "explain": "CALCULATE evaluează o expresie într-un context de filtrare modificat — de exemplu, aplicând o condiție suplimentară precum un anumit județ sau o anumită categorie.",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Power Pivot?",
+    "back": "Un supliment (add-in) al Excel pentru Windows (365/2019/2016) care permite construirea unui model de date relațional, cu relații între tabele și calcule DAX, folosind motorul de stocare comprimat Vertipaq.",
+    "concept_key": "power-pivot-definitie",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce limbaj de formule folosește Power Pivot pentru calcule?",
+    "back": "DAX (Data Analysis Expressions) — folosit pentru coloane calculate și măsuri.",
+    "concept_key": "dax-limbaj-formule",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este limita clasică de rânduri pe o foaie Excel obișnuită?",
+    "back": "1.048.576 rânduri pe foaie; Power Pivot depășește această limită lucrând cu modele de date de milioane de rânduri în memorie.",
+    "concept_key": "power-pivot-vs-tabel-pivot-clasic",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o relație unu-la-mai-mulți în Power Pivot?",
+    "back": "O legătură între două tabele în care o valoare dintr-un tabel de dimensiune (ex. un client) corespunde mai multor rânduri dintr-un tabel de fapte (ex. vânzările clientului respectiv).",
+    "concept_key": "model-date-relational",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Diferența dintre o coloană calculată și o măsură în DAX?",
+    "back": "Coloana calculată se evaluează rând cu rând și este stocată fizic în model; măsura se calculează dinamic, în funcție de filtrele din raport, fără a ocupa spațiu suplimentar.",
+    "concept_key": "dax-measure-calculate",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția DIVIDE în DAX și de ce e preferată față de simplul operator /?",
+    "back": "DIVIDE împarte două valori și gestionează automat cazul de împărțire la zero, returnând un rezultat gol sau o valoare alternativă în loc de eroare.",
+    "concept_key": "dax-measure-calculate",
+    "blockId": "cmjjuxvo40028umkphu96xj0e-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1146,
+   "flashcards": 6
+  }
+ }
+}

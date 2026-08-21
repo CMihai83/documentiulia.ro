@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwa400i9umkpy3iyephm",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Calculul Salariilor",
+ "lesson": "Deduceri personale",
+ "category": "HR_COMPLIANCE",
+ "content": "# Deduceri personale\n\n**Deducerea personală** este o sumă care se scade din venitul net din salarii, înainte de calculul impozitului pe venit de 10%, reducând astfel baza impozabilă și, implicit, impozitul reținut lunar salariatului. Ea se aplică exclusiv veniturilor din salarii realizate la **funcția de bază** — adică la locul de muncă pentru care salariatul a depus o declarație prin care solicită ca acel loc de muncă să fie considerat funcție de bază.\n\nUn salariat cu mai multe contracte individuale de muncă simultan poate beneficia de deducere personală la **un singur angajator**, niciodată cumulat la mai multe funcții de bază în aceeași lună. La celelalte contracte (considerate „locuri de muncă suplimentare”), impozitul se calculează fără deducere personală.\n\nDin perspectiva departamentului de resurse umane și salarizare, deducerea personală este un element variabil al statului de plată, care trebuie recalculat ori de câte ori se modifică venitul brut al salariatului sau numărul persoanelor aflate în întreținere declarate de acesta. O eroare aici afectează direct impozitul reținut și poate genera, la un control ITM/ANAF, diferențe de recuperat sau de restituit salariatului.\n\nValoarea deducerii personale depinde de doi factori, combinați într-o grilă stabilită prin Codul fiscal:\n\n1. **Nivelul venitului brut lunar** realizat de salariat la funcția de bază — mecanismul este **degresiv**: cu cât venitul brut este mai mare, cu atât deducerea acordată este mai mică.\n2. **Numărul persoanelor aflate în întreținere** ale salariatului — cu cât acesta este mai mare, cu atât deducerea este mai generoasă, la același nivel de venit.\n\nPeste un anumit plafon de venit brut lunar, stabilit prin grila oficială, deducerea personală devine **zero**, indiferent de numărul persoanelor în întreținere. Practic, salariații cu venituri ridicate nu mai beneficiază de acest tip de reducere a bazei impozabile.\n\nImportant pentru practica de salarizare: grila exactă de calcul (pragurile de venit și sumele aferente fiecărei trepte) este publicată de Ministerul Finanțelor/ANAF în aplicarea Codului fiscal și trebuie verificată la fiecare actualizare legislativă, deoarece pragurile au fost, istoric, corelate cu nivelul salariului minim brut pe economie. Când salariul minim crește — precum majorarea de la 1 iulie 2026, la 4.325 lei — este recomandat să verifici dacă grila de deduceri a fost și ea actualizată, pentru a evita aplicarea unor valori depășite.\n\nEste considerată **persoană aflată în întreținere**, în sensul deducerii personale, ruda salariatului (copil sau altă persoană din familie) care nu realizează venituri proprii sau ale cărei venituri nu depășesc un plafon lunar stabilit de lege, și pentru care salariatul susține integral sau în principal cheltuielile de întreținere. Categoriile tipice sunt: copiii minori, copiii majori aflați la studii (dacă nu realizează venituri proprii), soțul/soția fără venituri proprii, precum și alte rude apropiate, în condițiile prevăzute de lege.\n\nPentru a beneficia de deducere personală majorată în funcție de persoanele în întreținere, salariatul trebuie să depună la angajator o **declarație pe propria răspundere**, însoțită de documentele justificative (certificate de naștere, certificate medicale, declarații privind veniturile persoanei întreținute etc.). Angajatorul, prin departamentul HR/salarizare, are obligația să actualizeze deducerea aplicată de îndată ce salariatul comunică o modificare a situației familiale — apariția sau ieșirea din întreținere a unei persoane, modificarea veniturilor acesteia etc.\n\nAceste documente fac parte din dosarul de personal și trebuie păstrate cu acces restricționat, conform principiului minimizării datelor din GDPR: doar persoanele din HR/salarizare care procesează efectiv statul de plată ar trebui să aibă acces la ele.\n\n## Exemplu: Calcul complet pentru un venit peste plafonul de deducere\nUn salariat fără persoane în întreținere are un venit brut lunar de **8.000 lei** la funcția de bază — nivel care depășește plafonul din grila de deduceri personale, deci deducerea aplicabilă este 0 lei.\n\n- CAS (25%) = 8.000 × 25% = **2.000 lei**\n- CASS (10%) = 8.000 × 10% = **800 lei**\n- Venit net înainte de impozit = 8.000 – 2.000 – 800 = **5.200 lei**\n- Deducere personală = **0 lei** (venitul depășește plafonul grilei)\n- Bază impozabilă = 5.200 – 0 = **5.200 lei**\n- Impozit pe venit (10%) = 5.200 × 10% = **520 lei**\n- **Salariu net = 5.200 – 520 = 4.680 lei**\n\nSeparat, angajatorul suportă contribuția asiguratorie pentru muncă (CAM 2,25%) = 8.000 × 2,25% = 180 lei — cost adițional care nu afectează salariul net al angajatului.\n\n## Exemplu: Salariat la nivelul salariului minim, cu o persoană în întreținere\nUn salariat cu normă întreagă are un venit brut egal cu salariul minim brut pe economie aplicabil de la 1 iulie 2026 (**4.325 lei**) și declară 1 copil în întreținere.\n\n- CAS (25%) = 4.325 × 25% = **1.081,25 lei**\n- CASS (10%) = 4.325 × 10% = **432,50 lei**\n- Venit net înainte de impozit = 4.325 – 1.081,25 – 432,50 = **2.811,25 lei**\n\nLa acest nivel de venit, cu 1 persoană în întreținere, salariatul se situează, de regulă, în treapta cu deducere personală ridicată din grilă — valoarea exactă (notată mai jos „D”) trebuie preluată din grila oficială în vigoare la data plății (Codul fiscal, art. 77), nu presupusă din memorie.\n\nÎn plus, distinct de deducerea personală, pentru veniturile la nivelul salariului minim brut pe economie se aplică o **parte suplimentară netaxabilă**: 200 lei/lună de la 1 iulie 2026 (redusă de la 300 lei, conform OUG 89/2025).\n\nFormula bazei impozabile devine: Bază impozabilă = Venit net – D (deducere personală, din grilă) – 200 lei (parte netaxabilă salariu minim), cu un minim de 0 lei. Impozitul = 10% × Bază impozabilă. Cele două beneficii se cumulează, dar sunt mecanisme distincte, cu reguli de acordare diferite.\n\n> Temei legal: Legea nr. 227/2015 privind Codul fiscal (cu modificările și completările ulterioare) art. 77 – Deduceri personale (în vigoare de la 2016-01-01)\nCodul fiscal reglementează, la art. 77, mecanismul deducerilor personale acordate salariaților la funcția de bază, stabilind că acestea se determină în funcție de venitul brut lunar realizat și de numărul persoanelor aflate în întreținere, în limitele și grilele prevăzute de actul normativ și de actualizările sale ulterioare. Grila efectivă de calcul (pragurile de venit și sumele aferente fiecărei trepte) este emisă/actualizată periodic de Ministerul Finanțelor și trebuie consultată în forma aflată în vigoare la data plății salariului, întrucât pragurile pot fi recorelate cu nivelul salariului minim brut pe economie.\n\n⚠ Nu aplica niciodată, din memorie, o grilă veche de deduceri personale: verifică întotdeauna, înainte de rularea statului de plată, versiunea în vigoare publicată de ANAF/Ministerul Finanțelor — în special după o majorare a salariului minim, precum cea de la 1 iulie 2026 (4.325 lei), când pragurile aferente se pot modifica. De asemenea, reține că deducerea personală și partea netaxabilă suplimentară aplicabilă strict la nivelul salariului minim (200 lei de la 1 iulie 2026, conform OUG 89/2025) sunt **două mecanisme distincte**, care se cumulează, dar nu trebuie confundate în calcul. Documentele justificative pentru persoanele în întreținere se păstrează la dosarul de personal, cu acces restricționat. Acest material nu constituie consultanță fiscală individuală — pentru situații punctuale (persoane în întreținere cu venituri mixte, studenți peste o anumită vârstă, situații de coparentalitate etc.) recomandă întotdeauna consultarea unui expert contabil sau fiscal autorizat.\n\n## Exercițiu\nUn salariat cu normă întreagă, fără persoane în întreținere, are un venit brut lunar de 9.500 lei la funcția de bază — nivel situat peste plafonul din grila de deduceri personale. Calculează, pas cu pas: (a) CAS reținut, (b) CASS reținut, (c) venitul net înainte de impozit, (d) baza impozabilă, (e) impozitul pe venit, (f) salariul net primit de angajat.\n\n**Soluție:** (a) CAS = 25% × 9.500 = 2.375 lei\n(b) CASS = 10% × 9.500 = 950 lei\n(c) Venit net înainte de impozit = 9.500 – 2.375 – 950 = 6.175 lei\n(d) Deoarece venitul brut depășește plafonul grilei de deduceri personale, deducerea personală este 0 lei, deci baza impozabilă = 6.175 – 0 = 6.175 lei\n(e) Impozit pe venit = 10% × 6.175 = 617,50 lei\n(f) Salariul net = 6.175 – 617,50 = 5.557,50 lei\n\nNotă: dacă venitul brut al salariatului s-ar situa sub plafonul grilei, la pasul (d) ar trebui scăzută și deducerea personală efectivă (D), preluată din grila oficială în vigoare la data plății, înainte de aplicarea impozitului de 10%.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "deducere-personala-definitie",
+    "md": "**Deducerea personală** este o sumă care se scade din venitul net din salarii, înainte de calculul impozitului pe venit de 10%, reducând astfel baza impozabilă și, implicit, impozitul reținut lunar salariatului. Ea se aplică exclusiv veniturilor din salarii realizate la **funcția de bază** — adică la locul de muncă pentru care salariatul a depus o declarație prin care solicită ca acel loc de muncă să fie considerat funcție de bază.\n\nUn salariat cu mai multe contracte individuale de muncă simultan poate beneficia de deducere personală la **un singur angajator**, niciodată cumulat la mai multe funcții de bază în aceeași lună. La celelalte contracte (considerate „locuri de muncă suplimentare”), impozitul se calculează fără deducere personală.\n\nDin perspectiva departamentului de resurse umane și salarizare, deducerea personală este un element variabil al statului de plată, care trebuie recalculat ori de câte ori se modifică venitul brut al salariatului sau numărul persoanelor aflate în întreținere declarate de acesta. O eroare aici afectează direct impozitul reținut și poate genera, la un control ITM/ANAF, diferențe de recuperat sau de restituit salariatului.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "deducere-personala-factori",
+    "md": "Valoarea deducerii personale depinde de doi factori, combinați într-o grilă stabilită prin Codul fiscal:\n\n1. **Nivelul venitului brut lunar** realizat de salariat la funcția de bază — mecanismul este **degresiv**: cu cât venitul brut este mai mare, cu atât deducerea acordată este mai mică.\n2. **Numărul persoanelor aflate în întreținere** ale salariatului — cu cât acesta este mai mare, cu atât deducerea este mai generoasă, la același nivel de venit.\n\nPeste un anumit plafon de venit brut lunar, stabilit prin grila oficială, deducerea personală devine **zero**, indiferent de numărul persoanelor în întreținere. Practic, salariații cu venituri ridicate nu mai beneficiază de acest tip de reducere a bazei impozabile.\n\nImportant pentru practica de salarizare: grila exactă de calcul (pragurile de venit și sumele aferente fiecărei trepte) este publicată de Ministerul Finanțelor/ANAF în aplicarea Codului fiscal și trebuie verificată la fiecare actualizare legislativă, deoarece pragurile au fost, istoric, corelate cu nivelul salariului minim brut pe economie. Când salariul minim crește — precum majorarea de la 1 iulie 2026, la 4.325 lei — este recomandat să verifici dacă grila de deduceri a fost și ea actualizată, pentru a evita aplicarea unor valori depășite.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "persoane-in-intretinere-definitie",
+    "md": "Este considerată **persoană aflată în întreținere**, în sensul deducerii personale, ruda salariatului (copil sau altă persoană din familie) care nu realizează venituri proprii sau ale cărei venituri nu depășesc un plafon lunar stabilit de lege, și pentru care salariatul susține integral sau în principal cheltuielile de întreținere. Categoriile tipice sunt: copiii minori, copiii majori aflați la studii (dacă nu realizează venituri proprii), soțul/soția fără venituri proprii, precum și alte rude apropiate, în condițiile prevăzute de lege.\n\nPentru a beneficia de deducere personală majorată în funcție de persoanele în întreținere, salariatul trebuie să depună la angajator o **declarație pe propria răspundere**, însoțită de documentele justificative (certificate de naștere, certificate medicale, declarații privind veniturile persoanei întreținute etc.). Angajatorul, prin departamentul HR/salarizare, are obligația să actualizeze deducerea aplicată de îndată ce salariatul comunică o modificare a situației familiale — apariția sau ieșirea din întreținere a unei persoane, modificarea veniturilor acesteia etc.\n\nAceste documente fac parte din dosarul de personal și trebuie păstrate cu acces restricționat, conform principiului minimizării datelor din GDPR: doar persoanele din HR/salarizare care procesează efectiv statul de plată ar trebui să aibă acces la ele.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calcul complet pentru un venit peste plafonul de deducere",
+    "concept_key": "deducere-personala-calcul-peste-plafon",
+    "md": "Un salariat fără persoane în întreținere are un venit brut lunar de **8.000 lei** la funcția de bază — nivel care depășește plafonul din grila de deduceri personale, deci deducerea aplicabilă este 0 lei.\n\n- CAS (25%) = 8.000 × 25% = **2.000 lei**\n- CASS (10%) = 8.000 × 10% = **800 lei**\n- Venit net înainte de impozit = 8.000 – 2.000 – 800 = **5.200 lei**\n- Deducere personală = **0 lei** (venitul depășește plafonul grilei)\n- Bază impozabilă = 5.200 – 0 = **5.200 lei**\n- Impozit pe venit (10%) = 5.200 × 10% = **520 lei**\n- **Salariu net = 5.200 – 520 = 4.680 lei**\n\nSeparat, angajatorul suportă contribuția asiguratorie pentru muncă (CAM 2,25%) = 8.000 × 2,25% = 180 lei — cost adițional care nu afectează salariul net al angajatului.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b4"
+   },
+   {
+    "type": "example",
+    "title": "Salariat la nivelul salariului minim, cu o persoană în întreținere",
+    "concept_key": "deducere-personala-salariu-minim-2026",
+    "md": "Un salariat cu normă întreagă are un venit brut egal cu salariul minim brut pe economie aplicabil de la 1 iulie 2026 (**4.325 lei**) și declară 1 copil în întreținere.\n\n- CAS (25%) = 4.325 × 25% = **1.081,25 lei**\n- CASS (10%) = 4.325 × 10% = **432,50 lei**\n- Venit net înainte de impozit = 4.325 – 1.081,25 – 432,50 = **2.811,25 lei**\n\nLa acest nivel de venit, cu 1 persoană în întreținere, salariatul se situează, de regulă, în treapta cu deducere personală ridicată din grilă — valoarea exactă (notată mai jos „D”) trebuie preluată din grila oficială în vigoare la data plății (Codul fiscal, art. 77), nu presupusă din memorie.\n\nÎn plus, distinct de deducerea personală, pentru veniturile la nivelul salariului minim brut pe economie se aplică o **parte suplimentară netaxabilă**: 200 lei/lună de la 1 iulie 2026 (redusă de la 300 lei, conform OUG 89/2025).\n\nFormula bazei impozabile devine: Bază impozabilă = Venit net – D (deducere personală, din grilă) – 200 lei (parte netaxabilă salariu minim), cu un minim de 0 lei. Impozitul = 10% × Bază impozabilă. Cele două beneficii se cumulează, dar sunt mecanisme distincte, cu reguli de acordare diferite.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 227/2015 privind Codul fiscal (cu modificările și completările ulterioare)",
+    "article": "art. 77 – Deduceri personale",
+    "effective": "2016-01-01",
+    "md": "Codul fiscal reglementează, la art. 77, mecanismul deducerilor personale acordate salariaților la funcția de bază, stabilind că acestea se determină în funcție de venitul brut lunar realizat și de numărul persoanelor aflate în întreținere, în limitele și grilele prevăzute de actul normativ și de actualizările sale ulterioare. Grila efectivă de calcul (pragurile de venit și sumele aferente fiecărei trepte) este emisă/actualizată periodic de Ministerul Finanțelor și trebuie consultată în forma aflată în vigoare la data plății salariului, întrucât pragurile pot fi recorelate cu nivelul salariului minim brut pe economie.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu aplica niciodată, din memorie, o grilă veche de deduceri personale: verifică întotdeauna, înainte de rularea statului de plată, versiunea în vigoare publicată de ANAF/Ministerul Finanțelor — în special după o majorare a salariului minim, precum cea de la 1 iulie 2026 (4.325 lei), când pragurile aferente se pot modifica. De asemenea, reține că deducerea personală și partea netaxabilă suplimentară aplicabilă strict la nivelul salariului minim (200 lei de la 1 iulie 2026, conform OUG 89/2025) sunt **două mecanisme distincte**, care se cumulează, dar nu trebuie confundate în calcul. Documentele justificative pentru persoanele în întreținere se păstrează la dosarul de personal, cu acces restricționat. Acest material nu constituie consultanță fiscală individuală — pentru situații punctuale (persoane în întreținere cu venituri mixte, studenți peste o anumită vârstă, situații de coparentalitate etc.) recomandă întotdeauna consultarea unui expert contabil sau fiscal autorizat.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un salariat cu normă întreagă, fără persoane în întreținere, are un venit brut lunar de 9.500 lei la funcția de bază — nivel situat peste plafonul din grila de deduceri personale. Calculează, pas cu pas: (a) CAS reținut, (b) CASS reținut, (c) venitul net înainte de impozit, (d) baza impozabilă, (e) impozitul pe venit, (f) salariul net primit de angajat.",
+    "solution_md": "(a) CAS = 25% × 9.500 = 2.375 lei\n(b) CASS = 10% × 9.500 = 950 lei\n(c) Venit net înainte de impozit = 9.500 – 2.375 – 950 = 6.175 lei\n(d) Deoarece venitul brut depășește plafonul grilei de deduceri personale, deducerea personală este 0 lei, deci baza impozabilă = 6.175 – 0 = 6.175 lei\n(e) Impozit pe venit = 10% × 6.175 = 617,50 lei\n(f) Salariul net = 6.175 – 617,50 = 5.557,50 lei\n\nNotă: dacă venitul brut al salariatului s-ar situa sub plafonul grilei, la pasul (d) ar trebui scăzută și deducerea personală efectivă (D), preluată din grila oficială în vigoare la data plății, înainte de aplicarea impozitului de 10%.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Deducerea personală se acordă salariatului:",
+    "choices": [
+     "La toate locurile de muncă unde este angajat, simultan",
+     "Doar la funcția de bază, la un singur angajator",
+     "Doar dacă are cel puțin 2 persoane în întreținere",
+     "Doar salariaților cu contract pe perioadă determinată"
+    ],
+    "answer": 1,
+    "explain": "Deducerea personală se aplică exclusiv veniturilor din salarii realizate la funcția de bază declarată de salariat la un singur angajator; nu se cumulează la mai multe locuri de muncă simultan.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă cu deducerea personală atunci când venitul brut lunar al salariatului depășește plafonul stabilit de grila oficială?",
+    "choices": [
+     "Se dublează automat",
+     "Rămâne neschimbată indiferent de venit",
+     "Devine zero — nu se mai acordă",
+     "Se transformă automat în parte netaxabilă din salariul minim"
+    ],
+    "answer": 2,
+    "explain": "Mecanismul este degresiv: peste plafonul de venit stabilit prin grilă, deducerea personală scade la zero, indiferent de numărul persoanelor aflate în întreținere.",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este deducerea personală?",
+    "back": "Sumă scăzută din venitul net din salarii, la funcția de bază, înainte de aplicarea impozitului pe venit de 10%, reducând baza impozabilă.",
+    "concept_key": "deducere-personala-definitie",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce doi factori depinde valoarea deducerii personale?",
+    "back": "De venitul brut lunar realizat la funcția de bază și de numărul persoanelor aflate în întreținere ale salariatului.",
+    "concept_key": "deducere-personala-factori",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La câte contracte de muncă simultan poate beneficia un salariat de deducere personală?",
+    "back": "La un singur angajator, la funcția de bază declarată ca atare — niciodată cumulat la mai multe locuri de muncă în aceeași lună.",
+    "concept_key": "deducere-personala-functie-baza",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se întâmplă cu deducerea personală peste plafonul de venit stabilit de grila oficială?",
+    "back": "Devine zero — nu se mai acordă, indiferent de numărul persoanelor aflate în întreținere.",
+    "concept_key": "deducere-personala-plafon",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este partea netaxabilă suplimentară aplicabilă salariului minim brut de la 1 iulie 2026?",
+    "back": "200 lei/lună (redusă de la 300 lei), conform OUG 89/2025 — distinctă de deducerea personală, dar cumulabilă cu aceasta.",
+    "concept_key": "parte-netaxabila-salariu-minim-2026",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este actul normativ de bază ce reglementează deducerile personale?",
+    "back": "Legea nr. 227/2015 privind Codul fiscal, art. 77 – Deduceri personale, cu modificările și completările ulterioare.",
+    "concept_key": "deducere-personala-baza-legala",
+    "blockId": "cmjjuxwa400i9umkpy3iyephm-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1265,
+   "flashcards": 6
+  }
+ }
+}

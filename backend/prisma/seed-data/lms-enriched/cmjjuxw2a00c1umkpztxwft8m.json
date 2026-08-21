@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw2a00c1umkpztxwft8m",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Decizii de Business cu Impact Financiar",
+ "lesson": "CapEx vs OpEx",
+ "category": "FINANCE_OPS",
+ "content": "# CapEx vs OpEx\n\n## CapEx vs OpEx: diferența fundamentală\n\nOrice cheltuială pe care o face o firmă se împarte, din punct de vedere financiar-contabil, în una din două categorii:\n\n**CapEx (Capital Expenditure — cheltuială de capital)** reprezintă banii investiți în active pe care firma le va folosi pe o perioadă mai lungă de un an și de la care așteaptă beneficii economice viitoare. CapEx nu se recunoaște imediat ca o cheltuială în contul de profit și pierdere (P&L). În schimb, se **capitalizează**: valoarea intră în bilanț ca imobilizare corporală sau necorporală, iar costul ei se transferă treptat pe P&L, an de an, prin **amortizare**.\n\nExemple tipice de CapEx: achiziția unei clădiri sau a unui teren, cumpărarea de utilaje și echipamente de producție, mijloace de transport, licențe software cu utilizare multianuală, lucrări majore de modernizare a unei hale.\n\n**OpEx (Operating Expenditure — cheltuială operațională)** reprezintă costurile necesare funcționării curente a afacerii, al căror beneficiu se consumă în perioada în care apar. OpEx se recunoaște integral ca și cheltuială în P&L, în luna sau anul în care este realizată, indiferent dacă a fost sau nu plătită efectiv (principiul contabilității de angajamente).\n\nExemple tipice de OpEx: chiria sediului, salariile, utilitățile (energie, apă, internet), materiile prime consumate, mentenanța curentă, abonamentele software de tip SaaS (Software as a Service), cheltuielile de marketing.\n\nDistincția pare simplă în teorie, dar în practică multe decizii de business (cumpăr sau închiriez? dezvolt intern sau externalizez? investesc într-un utilaj sau plătesc un serviciu lunar?) se reduc exact la alegerea între CapEx și OpEx — iar consecințele asupra bilanțului, profitului și cash flow-ului sunt foarte diferite.\n\n## Când se capitalizează o cheltuială?\n\nConform reglementărilor contabile aplicabile în România (OMFP 1802/2014, armonizat cu directivele europene), o cheltuială poate fi recunoscută drept imobilizare (deci tratată ca CapEx) doar dacă îndeplinește **cumulativ** trei condiții:\n\n1. **Este probabil ca activul să genereze beneficii economice viitoare** pentru entitate (de exemplu, va fi folosit în producție, în prestarea de servicii sau va genera venituri direct sau indirect).\n2. **Costul activului poate fi evaluat în mod credibil** — există documente justificative clare (factură, contract, proces-verbal de recepție) care atestă valoarea de intrare.\n3. **Entitatea intenționează să utilizeze activul pe o perioadă mai mare de un an.**\n\nÎn plus, firmele stabilesc prin propriile politici contabile un **prag valoric** sub care o achiziție, deși îndeplinește condițiile de mai sus, este totuși trecută direct pe cheltuieli din motive de simplificare (de exemplu, un obiect de inventar de valoare mică). Acest prag este reglementat și prin Codul fiscal pentru scopuri de amortizare fiscală — verifică valoarea în vigoare la data achiziției, deoarece poate fi actualizată periodic prin lege.\n\nUn punct esențial pentru manageri non-financiari: **nu contează cum este numită cheltuiala în factură, ci natura ei economică**. O „reparație” care doar menține un utilaj funcțional este OpEx; o „modernizare” care îi prelungește durata de viață sau îi crește capacitatea este CapEx și trebuie capitalizată.\n\n## Impactul pe bilanț, P&L și cash flow\n\n**Bilanț:** CapEx crește valoarea imobilizărilor corporale/necorporale (un activ). OpEx nu apare niciodată în bilanț ca activ — se consumă integral în perioada curentă și, cel mult, generează o datorie temporară (furnizori neplătiți).\n\n**Cont de profit și pierdere (P&L):** OpEx afectează imediat și integral profitul din exploatare, în perioada în care apare cheltuiala. CapEx nu afectează P&L în anul achiziției (decât indirect); în schimb, generează o cheltuială de **amortizare** care se distribuie uniform (în cazul metodei liniare) pe toată durata normală de funcționare a activului, stabilită conform reglementărilor în vigoare pentru fiecare categorie de mijloc fix.\n\n**Cash flow:** CapEx presupune, de regulă, o ieșire mare de numerar concentrată la momentul achiziției, reflectată în situația fluxurilor de numerar la secțiunea „activități de investiții”. OpEx generează ieșiri de numerar mai mici, dar recurente, la secțiunea „activități de exploatare”.\n\n**Indicatori financiari:** Amortizarea (consecința CapEx) este o cheltuială **nemonetară** — nu implică o ieșire de cash în anul respectiv, dar reduce profitul contabil. De aceea, indicatorul EBITDA (Earnings Before Interest, Taxes, Depreciation and Amortization — profit înainte de dobânzi, impozite, depreciere și amortizare) exclude explicit amortizarea, tocmai pentru a permite comparații între firme cu strategii diferite de CapEx vs OpEx. O firmă cu CapEx ridicat poate arăta un EBITDA solid, dar un profit net mult mai mic din cauza amortizării.\n\n**Impact fiscal:** amortizarea CapEx reduce baza de calcul a impozitului pe profit (cotă 16%, neschimbată) treptat, an de an — un „scut fiscal” distribuit în timp — spre deosebire de OpEx, care reduce integral baza impozabilă chiar în anul cheltuielii.\n\n## Exemplu: Exemplu numeric: achiziția unui utilaj de producție\nO firmă de producție achiziționează un utilaj la începutul anului, în valoare de **120.000 lei**, cu o durată normală de funcționare stabilită la **5 ani** (metoda de amortizare liniară).\n\n**An 1 — impact CapEx:**\n- Bilanț: apare o imobilizare corporală de 120.000 lei; cash-ul scade cu 120.000 lei la achiziție (flux de investiții).\n- P&L: se înregistrează o cheltuială cu amortizarea de 120.000 lei / 5 ani = **24.000 lei**, nu întreaga sumă.\n- La finalul anului 1, valoarea netă contabilă a utilajului în bilanț este 120.000 − 24.000 = **96.000 lei**.\n\n**Anii 2-5:** aceeași cheltuială anuală de 24.000 lei se recunoaște în P&L, până când valoarea netă contabilă ajunge la zero (sau la valoarea reziduală, dacă există).\n\nDacă firma ar fi tratat greșit întreaga sumă ca o cheltuială curentă (OpEx) în anul 1, profitul din exploatare ar fi fost subestimat cu 96.000 lei, iar bilanțul nu ar reflecta corect valoarea activului deținut — o distorsiune care afectează atât raportarea către acționari și bănci, cât și indicatorii de performanță.\n\n## Exemplu: Exemplu comparativ: cumpărare (CapEx) vs abonament cloud (OpEx)\nO firmă de servicii are nevoie de capacitate de procesare IT suplimentară și analizează două variante:\n\n**Varianta A — CapEx:** cumpără un server propriu de 60.000 lei, cu durată normală de funcționare de 4 ani. Amortizare anuală = 60.000 / 4 = **15.000 lei/an**, recunoscută în P&L. Cash-ul iese integral (60.000 lei) în luna achiziției. Bilanțul crește cu o imobilizare de 60.000 lei.\n\n**Varianta B — OpEx:** contractează un serviciu cloud la 1.500 lei/lună, adică **18.000 lei/an**, recunoscuți integral ca cheltuială operațională, fără nicio imobilizare în bilanț. Cash-ul iese lunar, în rate mici.\n\n**Comparație an 1:** Varianta B generează o cheltuială mai mare în P&L (18.000 lei față de 15.000 lei), deci un profit contabil ușor mai mic. Însă Varianta A blochează 60.000 lei de cash dintr-o dată, ceea ce poate afecta lichiditatea firmei, mai ales dacă aceasta are alte priorități de investiții sau acces limitat la finanțare.\n\nConcluzia practică pentru un manager non-financiar: decizia „cumpăr sau abonez” nu se ia doar din perspectiva costului total, ci ținând cont de impactul asupra cash flow-ului, al bilanțului și al indicatorilor pe care banca sau investitorii îi urmăresc (de exemplu, gradul de îndatorare sau EBITDA).\n\n> Temei legal: OMFP 1802/2014 Secțiunea privind recunoașterea și evaluarea imobilizărilor corporale (în vigoare de la 2015-01-01)\nReglementările contabile aprobate prin OMFP 1802/2014, aplicabile situațiilor financiare anuale individuale, stabilesc criteriile de recunoaștere a unei imobilizări corporale: probabilitatea beneficiilor economice viitoare, posibilitatea evaluării credibile a costului și utilizarea pe o perioadă mai mare de un an. Aceleași reglementări definesc amortizarea drept alocarea sistematică a valorii amortizabile a unui activ pe durata sa normală de utilizare economică.\n\n⚠ Capcana clasică: capitalizarea greșită a unor cheltuieli curente (de exemplu, reparații de întreținere, servicii recurente) pentru a „umfla” artificial profitul din anul curent — activul apare în bilanț, iar cheltuiala reală este amânată pe mai mulți ani prin amortizare. Această practică este o formă de manipulare contabilă (au existat cazuri celebre la nivel internațional care au dus la falimente răsunătoare) și contravine principiului imaginii fidele din OMFP 1802/2014. Ca manager non-financiar, dacă ai dubii cu privire la clasificarea unei cheltuieli semnificative, discută cu departamentul financiar-contabil înainte de a aproba tratamentul contabil, mai ales pentru sume mari sau pentru cheltuieli la limita dintre reparație și modernizare.\n\n## Exercițiu\nO firmă trebuie să aleagă între două variante pentru un utilaj necesar producției:\n\n**Varianta 1 (CapEx):** cumpără utilajul la 90.000 lei, cu durată normală de funcționare de 6 ani, amortizare liniară, pus în funcțiune de la 1 ianuarie.\n\n**Varianta 2 (OpEx):** închiriază un utilaj echivalent, cu o chirie lunară de 1.400 lei (include și mentenanța), adică 16.800 lei/an.\n\nCerințe:\na) Calculează impactul fiecărei variante asupra contului de profit și pierdere în primul an.\nb) Explică ce se întâmplă cu bilanțul în fiecare variantă.\nc) Care variantă generează o ieșire de cash mai mare în anul 1?\n\n**Soluție:** **a) Impact P&L an 1:**\n- Varianta 1 (CapEx): cheltuiala cu amortizarea = 90.000 lei / 6 ani = **15.000 lei**.\n- Varianta 2 (OpEx): cheltuiala cu chiria = **16.800 lei** (integral, în anul curent).\n→ Varianta 2 generează o cheltuială cu 1.800 lei mai mare în P&L în anul 1, deci un profit contabil ușor mai mic.\n\n**b) Impact bilanț:**\n- Varianta 1: apare o imobilizare corporală în valoare netă de 90.000 − 15.000 = 75.000 lei la finalul anului 1.\n- Varianta 2: nu apare niciun activ nou în bilanț; eventual doar o datorie curentă pentru chiria neplătită la data raportării.\n\n**c) Impact cash flow:**\n- Varianta 1: ieșire de cash de 90.000 lei, concentrată la achiziție (activitate de investiții).\n- Varianta 2: ieșire de cash de 16.800 lei, distribuită lunar (activitate de exploatare).\n→ Varianta 1 (CapEx) presupune o ieșire de cash de peste 5 ori mai mare în anul 1, deși afectează mai puțin profitul contabil. Decizia finală depinde de disponibilitatea de numerar a firmei, de orizontul real de utilizare a utilajului și de strategia fiscală.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "capex-vs-opex-definitie",
+    "md": "## CapEx vs OpEx: diferența fundamentală\n\nOrice cheltuială pe care o face o firmă se împarte, din punct de vedere financiar-contabil, în una din două categorii:\n\n**CapEx (Capital Expenditure — cheltuială de capital)** reprezintă banii investiți în active pe care firma le va folosi pe o perioadă mai lungă de un an și de la care așteaptă beneficii economice viitoare. CapEx nu se recunoaște imediat ca o cheltuială în contul de profit și pierdere (P&L). În schimb, se **capitalizează**: valoarea intră în bilanț ca imobilizare corporală sau necorporală, iar costul ei se transferă treptat pe P&L, an de an, prin **amortizare**.\n\nExemple tipice de CapEx: achiziția unei clădiri sau a unui teren, cumpărarea de utilaje și echipamente de producție, mijloace de transport, licențe software cu utilizare multianuală, lucrări majore de modernizare a unei hale.\n\n**OpEx (Operating Expenditure — cheltuială operațională)** reprezintă costurile necesare funcționării curente a afacerii, al căror beneficiu se consumă în perioada în care apar. OpEx se recunoaște integral ca și cheltuială în P&L, în luna sau anul în care este realizată, indiferent dacă a fost sau nu plătită efectiv (principiul contabilității de angajamente).\n\nExemple tipice de OpEx: chiria sediului, salariile, utilitățile (energie, apă, internet), materiile prime consumate, mentenanța curentă, abonamentele software de tip SaaS (Software as a Service), cheltuielile de marketing.\n\nDistincția pare simplă în teorie, dar în practică multe decizii de business (cumpăr sau închiriez? dezvolt intern sau externalizez? investesc într-un utilaj sau plătesc un serviciu lunar?) se reduc exact la alegerea între CapEx și OpEx — iar consecințele asupra bilanțului, profitului și cash flow-ului sunt foarte diferite.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "criterii-recunoastere-imobilizare",
+    "md": "## Când se capitalizează o cheltuială?\n\nConform reglementărilor contabile aplicabile în România (OMFP 1802/2014, armonizat cu directivele europene), o cheltuială poate fi recunoscută drept imobilizare (deci tratată ca CapEx) doar dacă îndeplinește **cumulativ** trei condiții:\n\n1. **Este probabil ca activul să genereze beneficii economice viitoare** pentru entitate (de exemplu, va fi folosit în producție, în prestarea de servicii sau va genera venituri direct sau indirect).\n2. **Costul activului poate fi evaluat în mod credibil** — există documente justificative clare (factură, contract, proces-verbal de recepție) care atestă valoarea de intrare.\n3. **Entitatea intenționează să utilizeze activul pe o perioadă mai mare de un an.**\n\nÎn plus, firmele stabilesc prin propriile politici contabile un **prag valoric** sub care o achiziție, deși îndeplinește condițiile de mai sus, este totuși trecută direct pe cheltuieli din motive de simplificare (de exemplu, un obiect de inventar de valoare mică). Acest prag este reglementat și prin Codul fiscal pentru scopuri de amortizare fiscală — verifică valoarea în vigoare la data achiziției, deoarece poate fi actualizată periodic prin lege.\n\nUn punct esențial pentru manageri non-financiari: **nu contează cum este numită cheltuiala în factură, ci natura ei economică**. O „reparație” care doar menține un utilaj funcțional este OpEx; o „modernizare” care îi prelungește durata de viață sau îi crește capacitatea este CapEx și trebuie capitalizată.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "impact-bilant-p&l-cashflow",
+    "md": "## Impactul pe bilanț, P&L și cash flow\n\n**Bilanț:** CapEx crește valoarea imobilizărilor corporale/necorporale (un activ). OpEx nu apare niciodată în bilanț ca activ — se consumă integral în perioada curentă și, cel mult, generează o datorie temporară (furnizori neplătiți).\n\n**Cont de profit și pierdere (P&L):** OpEx afectează imediat și integral profitul din exploatare, în perioada în care apare cheltuiala. CapEx nu afectează P&L în anul achiziției (decât indirect); în schimb, generează o cheltuială de **amortizare** care se distribuie uniform (în cazul metodei liniare) pe toată durata normală de funcționare a activului, stabilită conform reglementărilor în vigoare pentru fiecare categorie de mijloc fix.\n\n**Cash flow:** CapEx presupune, de regulă, o ieșire mare de numerar concentrată la momentul achiziției, reflectată în situația fluxurilor de numerar la secțiunea „activități de investiții”. OpEx generează ieșiri de numerar mai mici, dar recurente, la secțiunea „activități de exploatare”.\n\n**Indicatori financiari:** Amortizarea (consecința CapEx) este o cheltuială **nemonetară** — nu implică o ieșire de cash în anul respectiv, dar reduce profitul contabil. De aceea, indicatorul EBITDA (Earnings Before Interest, Taxes, Depreciation and Amortization — profit înainte de dobânzi, impozite, depreciere și amortizare) exclude explicit amortizarea, tocmai pentru a permite comparații între firme cu strategii diferite de CapEx vs OpEx. O firmă cu CapEx ridicat poate arăta un EBITDA solid, dar un profit net mult mai mic din cauza amortizării.\n\n**Impact fiscal:** amortizarea CapEx reduce baza de calcul a impozitului pe profit (cotă 16%, neschimbată) treptat, an de an — un „scut fiscal” distribuit în timp — spre deosebire de OpEx, care reduce integral baza impozabilă chiar în anul cheltuielii.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b3"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu numeric: achiziția unui utilaj de producție",
+    "concept_key": "amortizare-liniara-exemplu",
+    "md": "O firmă de producție achiziționează un utilaj la începutul anului, în valoare de **120.000 lei**, cu o durată normală de funcționare stabilită la **5 ani** (metoda de amortizare liniară).\n\n**An 1 — impact CapEx:**\n- Bilanț: apare o imobilizare corporală de 120.000 lei; cash-ul scade cu 120.000 lei la achiziție (flux de investiții).\n- P&L: se înregistrează o cheltuială cu amortizarea de 120.000 lei / 5 ani = **24.000 lei**, nu întreaga sumă.\n- La finalul anului 1, valoarea netă contabilă a utilajului în bilanț este 120.000 − 24.000 = **96.000 lei**.\n\n**Anii 2-5:** aceeași cheltuială anuală de 24.000 lei se recunoaște în P&L, până când valoarea netă contabilă ajunge la zero (sau la valoarea reziduală, dacă există).\n\nDacă firma ar fi tratat greșit întreaga sumă ca o cheltuială curentă (OpEx) în anul 1, profitul din exploatare ar fi fost subestimat cu 96.000 lei, iar bilanțul nu ar reflecta corect valoarea activului deținut — o distorsiune care afectează atât raportarea către acționari și bănci, cât și indicatorii de performanță.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b4"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu comparativ: cumpărare (CapEx) vs abonament cloud (OpEx)",
+    "concept_key": "capex-vs-opex-decizie-business",
+    "md": "O firmă de servicii are nevoie de capacitate de procesare IT suplimentară și analizează două variante:\n\n**Varianta A — CapEx:** cumpără un server propriu de 60.000 lei, cu durată normală de funcționare de 4 ani. Amortizare anuală = 60.000 / 4 = **15.000 lei/an**, recunoscută în P&L. Cash-ul iese integral (60.000 lei) în luna achiziției. Bilanțul crește cu o imobilizare de 60.000 lei.\n\n**Varianta B — OpEx:** contractează un serviciu cloud la 1.500 lei/lună, adică **18.000 lei/an**, recunoscuți integral ca cheltuială operațională, fără nicio imobilizare în bilanț. Cash-ul iese lunar, în rate mici.\n\n**Comparație an 1:** Varianta B generează o cheltuială mai mare în P&L (18.000 lei față de 15.000 lei), deci un profit contabil ușor mai mic. Însă Varianta A blochează 60.000 lei de cash dintr-o dată, ceea ce poate afecta lichiditatea firmei, mai ales dacă aceasta are alte priorități de investiții sau acces limitat la finanțare.\n\nConcluzia practică pentru un manager non-financiar: decizia „cumpăr sau abonez” nu se ia doar din perspectiva costului total, ci ținând cont de impactul asupra cash flow-ului, al bilanțului și al indicatorilor pe care banca sau investitorii îi urmăresc (de exemplu, gradul de îndatorare sau EBITDA).",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Secțiunea privind recunoașterea și evaluarea imobilizărilor corporale",
+    "effective": "2015-01-01",
+    "md": "Reglementările contabile aprobate prin OMFP 1802/2014, aplicabile situațiilor financiare anuale individuale, stabilesc criteriile de recunoaștere a unei imobilizări corporale: probabilitatea beneficiilor economice viitoare, posibilitatea evaluării credibile a costului și utilizarea pe o perioadă mai mare de un an. Aceleași reglementări definesc amortizarea drept alocarea sistematică a valorii amortizabile a unui activ pe durata sa normală de utilizare economică.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Capcana clasică: capitalizarea greșită a unor cheltuieli curente (de exemplu, reparații de întreținere, servicii recurente) pentru a „umfla” artificial profitul din anul curent — activul apare în bilanț, iar cheltuiala reală este amânată pe mai mulți ani prin amortizare. Această practică este o formă de manipulare contabilă (au existat cazuri celebre la nivel internațional care au dus la falimente răsunătoare) și contravine principiului imaginii fidele din OMFP 1802/2014. Ca manager non-financiar, dacă ai dubii cu privire la clasificarea unei cheltuieli semnificative, discută cu departamentul financiar-contabil înainte de a aproba tratamentul contabil, mai ales pentru sume mari sau pentru cheltuieli la limita dintre reparație și modernizare.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă trebuie să aleagă între două variante pentru un utilaj necesar producției:\n\n**Varianta 1 (CapEx):** cumpără utilajul la 90.000 lei, cu durată normală de funcționare de 6 ani, amortizare liniară, pus în funcțiune de la 1 ianuarie.\n\n**Varianta 2 (OpEx):** închiriază un utilaj echivalent, cu o chirie lunară de 1.400 lei (include și mentenanța), adică 16.800 lei/an.\n\nCerințe:\na) Calculează impactul fiecărei variante asupra contului de profit și pierdere în primul an.\nb) Explică ce se întâmplă cu bilanțul în fiecare variantă.\nc) Care variantă generează o ieșire de cash mai mare în anul 1?",
+    "solution_md": "**a) Impact P&L an 1:**\n- Varianta 1 (CapEx): cheltuiala cu amortizarea = 90.000 lei / 6 ani = **15.000 lei**.\n- Varianta 2 (OpEx): cheltuiala cu chiria = **16.800 lei** (integral, în anul curent).\n→ Varianta 2 generează o cheltuială cu 1.800 lei mai mare în P&L în anul 1, deci un profit contabil ușor mai mic.\n\n**b) Impact bilanț:**\n- Varianta 1: apare o imobilizare corporală în valoare netă de 90.000 − 15.000 = 75.000 lei la finalul anului 1.\n- Varianta 2: nu apare niciun activ nou în bilanț; eventual doar o datorie curentă pentru chiria neplătită la data raportării.\n\n**c) Impact cash flow:**\n- Varianta 1: ieșire de cash de 90.000 lei, concentrată la achiziție (activitate de investiții).\n- Varianta 2: ieșire de cash de 16.800 lei, distribuită lunar (activitate de exploatare).\n→ Varianta 1 (CapEx) presupune o ieșire de cash de peste 5 ori mai mare în anul 1, deși afectează mai puțin profitul contabil. Decizia finală depinde de disponibilitatea de numerar a firmei, de orizontul real de utilizare a utilajului și de strategia fiscală.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele este un exemplu tipic de CapEx?",
+    "choices": [
+     "Chiria lunară a sediului",
+     "Achiziția unei clădiri pentru sediul firmei",
+     "Salariile echipei de vânzări",
+     "Abonamentul lunar la un software SaaS"
+    ],
+    "answer": 1,
+    "explain": "Achiziția unei clădiri este o investiție pe termen lung, capitalizată în bilanț ca imobilizare și amortizată treptat — deci CapEx. Celelalte trei sunt costuri curente, recunoscute integral ca OpEx.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă cu o cheltuială clasificată drept CapEx, din perspectiva contului de profit și pierdere, în anul achiziției activului?",
+    "choices": [
+     "Se recunoaște integral ca cheltuială în anul achiziției",
+     "Nu afectează niciodată contul de profit și pierdere",
+     "Afectează P&L treptat, prin amortizare, pe durata de utilizare a activului",
+     "Se scade direct din TVA de plată"
+    ],
+    "answer": 2,
+    "explain": "CapEx nu generează o cheltuială integrală în anul achiziției; costul activului se transferă pe P&L treptat, prin amortizare, pe toată durata normală de funcționare.",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este CapEx?",
+    "back": "Cheltuială de capital: achiziție de active pe termen lung (peste 1 an), care se capitalizează în bilanț ca imobilizare și se amortizează treptat, nu se recunoaște integral în P&L la achiziție.",
+    "concept_key": "capex-vs-opex-definitie",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este OpEx?",
+    "back": "Cheltuială operațională: cost curent, recunoscut integral ca cheltuială în perioada în care apare, afectând direct și imediat contul de profit și pierdere.",
+    "concept_key": "capex-vs-opex-definitie",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 3 condiții cumulative pentru capitalizarea unei cheltuieli (OMFP 1802/2014)?",
+    "back": "1) Beneficii economice viitoare probabile; 2) costul poate fi evaluat credibil; 3) utilizare planificată pe o perioadă mai mare de un an.",
+    "concept_key": "criterii-recunoastere-imobilizare",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum afectează CapEx bilanțul și cash flow-ul în anul achiziției?",
+    "back": "Crește imobilizările în bilanț (activ) și generează o ieșire mare de cash reflectată la activități de investiții — dar nu apare ca o cheltuială integrală în P&L.",
+    "concept_key": "impact-bilant-p&l-cashflow",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce EBITDA exclude amortizarea și ce legătură are cu CapEx?",
+    "back": "EBITDA (profit înainte de dobânzi, impozite, depreciere și amortizare) exclude amortizarea pentru a permite comparații între firme cu strategii diferite de investiții — firmele cu CapEx ridicat pot avea EBITDA solid, dar profit net mai mic din cauza amortizării.",
+    "concept_key": "impact-bilant-p&l-cashflow",
+    "blockId": "cmjjuxw2a00c1umkpztxwft8m-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1566,
+   "flashcards": 5
+  }
+ }
+}

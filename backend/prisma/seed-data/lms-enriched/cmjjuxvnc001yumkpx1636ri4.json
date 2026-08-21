@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvnc001yumkpx1636ri4",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Query - Transformare Date",
+ "lesson": "Conectare la surse de date",
+ "category": "EXCEL_VBA",
+ "content": "# Conectare la surse de date\n\n**Power Query** (numit în Excel 365 „Obține și transformă date”, engleză *Get & Transform Data*) este motorul de ETL (Extract, Transform, Load) integrat nativ în Excel, disponibil începând cu Excel 2016 și complet integrat în Excel 365. Rolul lui este să automatizeze procesul prin care aduci date brute din surse externe, le cureți, le remodelezi și le încarci într-un tabel, într-un model de date Power Pivot sau doar ca o conexiune — fără cod VBA și fără copiere manuală de celule.\n\nPunctul de pornire pentru orice conectare este fila **Date** (Data) din panglică, secțiunea **Obține și transformă date**, unde butonul **Obține date** (*Get Data*) deschide un meniu cu categoriile principale de surse: *Din fișier*, *Din bază de date*, *Din Azure*, *Din servicii online* și *Din alte surse*.\n\nDiferența esențială față de o simplă copiere de date este că fiecare pas de conectare și transformare este înregistrat ca o „rețetă” reutilizabilă: la următoarea actualizare (*Refresh*), Excel repetă automat toți pașii pe datele proaspete, fără intervenția ta. Acesta este motivul pentru care Power Query este piatra de temelie a rapoartelor recurente automatizate.\n\nPower Query acceptă trei mari categorii de surse de date, fiecare cu particularități proprii de conectare:\n\n1. **Fișiere** — text/CSV, Excel (.xlsx/.xls), JSON, XML, PDF sau un folder întreg de fișiere similare (ex. rapoarte lunare identice ca structură). Conectarea cere doar calea către fișier sau folder.\n2. **Baze de date** — SQL Server, Oracle, MySQL, PostgreSQL, Access, IBM DB2. Conectarea cere de regulă numele serverului (și, pentru unele, portul), numele bazei de date și, pentru Oracle/MySQL, instalarea prealabilă a unui client sau driver pe stația de lucru.\n3. **Servicii online și web** — pagini Web (tabele HTML detectate automat), API-uri REST (opțiunea *Web*, cu URL și eventual antete HTTP), liste sau foldere SharePoint Online, fluxuri OData, resurse Azure (Blob Storage, SQL Database, Data Lake).\n\nIndiferent de sursă, primul ecran cerut de Excel este întotdeauna o fereastră de conectare (adresă server, cale fișier sau URL), urmată — pentru surse cu mai multe obiecte (tabele, foi, liste) — de fereastra **Navigator**, unde alegi ce anume vrei să imporți și vezi o previzualizare a datelor înainte de a continua.\n\nFluxul standard de conectare are patru etape:\n\n1. **Get Data** — alegi tipul sursei și introduci parametrii de conectare (cale, server, URL).\n2. **Navigator** — selectezi obiectul (tabel, foaie, listă) și vezi o previzualizare; dacă selectezi mai multe obiecte, poți bifa *Select multiple items*.\n3. **Load** vs **Transform Data** — butonul *Load* încarcă datele direct ca tabel, fără nicio curățare; butonul *Transform Data* deschide **Power Query Editor**, unde poți filtra, redenumi coloane, schimba tipuri de date sau elimina duplicate înainte de încărcare.\n4. **Close & Load** / **Close & Load To…** — la final alegi destinația: tabel obisnuit pe o foaie, doar conexiune (fără a ocupa spațiu în foaie), sau încărcare directă în **modelul de date** (Power Pivot), utilă pentru volume mari sau relații între tabele.\n\nÎn Power Query Editor, fiecare acțiune (filtrare, redenumire, schimbare tip) apare în panoul **Pași aplicați** (*Applied Steps*), din dreapta. Pașii pot fi redenumiți, reordonați, editați sau ștersi individual, iar codul din spatele lor este generat automat în limbajul **M** — vizibil prin *Advanced Editor*.\n\nCând combini date din surse diferite (ex. un fișier local cu un tabel dintr-o bază de date), Power Query cere să setezi un **nivel de confidențialitate** pentru fiecare sursă: **Organizational** (date interne firmei, pot fi combinate cu alte surse organizaționale), **Private** (date sensibile, nu se combină cu nimic altceva) sau **Public** (date publice, fără restricții). Setarea greșită sau lipsa ei poate genera eroarea *Formula.Firewall: Query '...' references other queries or steps, so it may not directly access a data source*.\n\nLa conectarea propriu-zisă, Excel cere și metoda de **autentificare**, care variază după sursă: *Windows* (contul curent din domeniu), *Database* (utilizator și parolă proprii bazei de date), *Basic*, *Cont organizațional* (OAuth2, folosit la SharePoint/Azure/servicii Microsoft 365), *API Key* sau *Anonymous* (pentru surse web publice, fără autentificare). Aceste credențiale se salvează per sursă în Excel și pot fi gestionate din **Data → Get Data → Data Source Settings**.\n\n## Exemplu: Conectare la un fișier CSV\nAi primit de la departamentul de vânzări fișierul `vanzari_iulie2026.csv`, cu coloanele Data, Client, Produs, Cantitate, Valoare. Pașii de conectare:\n\n1. **Data → Obține date → Din fișier → Din text/CSV**.\n2. Selectezi fișierul `vanzari_iulie2026.csv` din explorer.\n3. Apare fereastra de previzualizare: Excel detectează automat delimitatorul (virgulă) și codificarea (UTF-8), afișând primele 200 de rânduri și tipul de date propus pentru fiecare coloană (ex. Data → dată calendaristică, Valoare → zecimal).\n4. Dacă datele arată corect, apeși **Transform Data** (nu *Load* direct) pentru a deschide Power Query Editor și a verifica tipurile de date — de exemplu, dacă Valoare a fost detectată ca text din cauza separatorului zecimal, o schimbi manual în *Decimal Number*.\n5. Apeși **Close & Load** — datele apar într-un tabel Excel nou, iar interogarea este salvată în panoul **Interogări și conexiuni** (*Queries & Connections*), gata de reîmprospătare data viitoare când primești un fișier nou cu același nume și aceeași structură.\n\n## Exemplu: Conectare la o bază de date SQL Server\nFirma folosește un ERP care stochează facturile într-o bază SQL Server internă. Vrei să aduci direct tabelul de facturi în Excel, fără export manual:\n\n1. **Data → Obține date → Din bază de date → Din baza de date SQL Server**.\n2. Introduci numele serverului, de exemplu `SRV-CONTAB01`, și, opțional, numele bazei de date, `ERP_Vanzari`.\n3. Alegi modul de conectare **Import** (Power Query în Excel lucrează exclusiv în modul Import — datele sunt copiate local în model, nu interogate live ca la DirectQuery din Power BI).\n4. La cererea de autentificare, alegi **Windows** (dacă ești deja autentificat în domeniul companiei cu drepturi pe server) sau **Database**, introducând un utilizator și o parolă dedicate.\n5. În fereastra **Navigator**, extinzi `ERP_Vanzari → dbo` și bifezi tabelul `dbo.Facturi`; previzualizarea îți arată primele rânduri.\n6. Apeși **Transform Data** pentru a filtra doar facturile din anul curent și a elimina coloanele tehnice (ex. `RowVersion`), apoi **Close & Load To… → Doar conexiune → Se adaugă la modelul de date**, dacă intenționezi să combini tabelul cu altele în Power Pivot.\n\n⚠ Power Query blochează implicit opțiunea **Native Database Query** (interogări SQL scrise manual, ex. printr-un pas *Value.NativeQuery*) și cere confirmare explicită de fiecare dată când o interogare o folosește, deoarece o comandă SQL introdusă manual poate ocoli filtrele de securitate ale bazei și expune riscuri de tip injecție SQL sau acces neautorizat la tabele. Activează opțiunea *Enable native database queries* doar dacă ai încredere deplină în sursa interogării și în persoana care a scris comanda SQL. La fel, evită să slăbești nivelurile de confidențialitate (setându-le pe toate ca *Public*) doar pentru a scăpa de eroarea Formula.Firewall — verifică întâi dacă sursele conțin într-adevăr date fără restricții de acces.\n\n## Exercițiu\nDepartamentul financiar îți trimite lunar câte un fișier CSV cu vânzările lunii respective, toate cu aceeași structură de coloane (Data, Client, Produs, Cantitate, Valoare), salvate într-un folder unic `C:\\Rapoarte\\Vanzari2026`, cu nume precum `ianuarie2026.csv`, `februarie2026.csv` ș.a.m.d. Vrei un singur tabel Excel care să conțină automat toate lunile disponibile în folder, actualizabil printr-un simplu Refresh atunci când apare un fișier nou. Descrie pașii de conectare folosind Power Query, fără să deschizi și să combini fișierele manual unul câte unul.\n\n**Soluție:** 1. **Data → Obține date → Din fișier → Din folder**.\n2. Introduci calea `C:\\Rapoarte\\Vanzari2026` — Power Query listează toate fișierele din folder cu metadatele lor (nume, extensie, dată modificare), fără să le deschidă încă.\n3. Apeși **Combine → Combine & Transform Data** (sau butonul **Combine Files** din partea de jos a ferestrei). Excel identifică automat un fișier „exemplu” pentru a-i deduce structura de coloane și tipurile de date.\n4. În fereastra de previzualizare a combinării, confirmi delimitatorul (virgulă) și tipurile de coloane; Excel creează automat o interogare părinte plus o funcție de transformare aplicată fiecărui fișier.\n5. Rezultatul conține toate rândurile din toate fișierele CSV din folder, plus o coloană suplimentară `Source.Name` cu numele fișierului de proveniență — utilă pentru a filtra sau grupa ulterior pe lună.\n6. Apeși **Close & Load**. Data viitoare când adaugi `iulie2026.csv` în același folder, un simplu **Refresh All** (Actualizează tot) din fila Date reia automat pașii pentru toate fișierele, inclusiv cel nou, fără nicio configurare suplimentară.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "power-query-introducere",
+    "md": "**Power Query** (numit în Excel 365 „Obține și transformă date”, engleză *Get & Transform Data*) este motorul de ETL (Extract, Transform, Load) integrat nativ în Excel, disponibil începând cu Excel 2016 și complet integrat în Excel 365. Rolul lui este să automatizeze procesul prin care aduci date brute din surse externe, le cureți, le remodelezi și le încarci într-un tabel, într-un model de date Power Pivot sau doar ca o conexiune — fără cod VBA și fără copiere manuală de celule.\n\nPunctul de pornire pentru orice conectare este fila **Date** (Data) din panglică, secțiunea **Obține și transformă date**, unde butonul **Obține date** (*Get Data*) deschide un meniu cu categoriile principale de surse: *Din fișier*, *Din bază de date*, *Din Azure*, *Din servicii online* și *Din alte surse*.\n\nDiferența esențială față de o simplă copiere de date este că fiecare pas de conectare și transformare este înregistrat ca o „rețetă” reutilizabilă: la următoarea actualizare (*Refresh*), Excel repetă automat toți pașii pe datele proaspete, fără intervenția ta. Acesta este motivul pentru care Power Query este piatra de temelie a rapoartelor recurente automatizate.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-tipuri-surse-date",
+    "md": "Power Query acceptă trei mari categorii de surse de date, fiecare cu particularități proprii de conectare:\n\n1. **Fișiere** — text/CSV, Excel (.xlsx/.xls), JSON, XML, PDF sau un folder întreg de fișiere similare (ex. rapoarte lunare identice ca structură). Conectarea cere doar calea către fișier sau folder.\n2. **Baze de date** — SQL Server, Oracle, MySQL, PostgreSQL, Access, IBM DB2. Conectarea cere de regulă numele serverului (și, pentru unele, portul), numele bazei de date și, pentru Oracle/MySQL, instalarea prealabilă a unui client sau driver pe stația de lucru.\n3. **Servicii online și web** — pagini Web (tabele HTML detectate automat), API-uri REST (opțiunea *Web*, cu URL și eventual antete HTTP), liste sau foldere SharePoint Online, fluxuri OData, resurse Azure (Blob Storage, SQL Database, Data Lake).\n\nIndiferent de sursă, primul ecran cerut de Excel este întotdeauna o fereastră de conectare (adresă server, cale fișier sau URL), urmată — pentru surse cu mai multe obiecte (tabele, foi, liste) — de fereastra **Navigator**, unde alegi ce anume vrei să imporți și vezi o previzualizare a datelor înainte de a continua.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-flux-conectare-editor",
+    "md": "Fluxul standard de conectare are patru etape:\n\n1. **Get Data** — alegi tipul sursei și introduci parametrii de conectare (cale, server, URL).\n2. **Navigator** — selectezi obiectul (tabel, foaie, listă) și vezi o previzualizare; dacă selectezi mai multe obiecte, poți bifa *Select multiple items*.\n3. **Load** vs **Transform Data** — butonul *Load* încarcă datele direct ca tabel, fără nicio curățare; butonul *Transform Data* deschide **Power Query Editor**, unde poți filtra, redenumi coloane, schimba tipuri de date sau elimina duplicate înainte de încărcare.\n4. **Close & Load** / **Close & Load To…** — la final alegi destinația: tabel obisnuit pe o foaie, doar conexiune (fără a ocupa spațiu în foaie), sau încărcare directă în **modelul de date** (Power Pivot), utilă pentru volume mari sau relații între tabele.\n\nÎn Power Query Editor, fiecare acțiune (filtrare, redenumire, schimbare tip) apare în panoul **Pași aplicați** (*Applied Steps*), din dreapta. Pașii pot fi redenumiți, reordonați, editați sau ștersi individual, iar codul din spatele lor este generat automat în limbajul **M** — vizibil prin *Advanced Editor*.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "power-query-niveluri-confidentialitate",
+    "md": "Când combini date din surse diferite (ex. un fișier local cu un tabel dintr-o bază de date), Power Query cere să setezi un **nivel de confidențialitate** pentru fiecare sursă: **Organizational** (date interne firmei, pot fi combinate cu alte surse organizaționale), **Private** (date sensibile, nu se combină cu nimic altceva) sau **Public** (date publice, fără restricții). Setarea greșită sau lipsa ei poate genera eroarea *Formula.Firewall: Query '...' references other queries or steps, so it may not directly access a data source*.\n\nLa conectarea propriu-zisă, Excel cere și metoda de **autentificare**, care variază după sursă: *Windows* (contul curent din domeniu), *Database* (utilizator și parolă proprii bazei de date), *Basic*, *Cont organizațional* (OAuth2, folosit la SharePoint/Azure/servicii Microsoft 365), *API Key* sau *Anonymous* (pentru surse web publice, fără autentificare). Aceste credențiale se salvează per sursă în Excel și pot fi gestionate din **Data → Get Data → Data Source Settings**.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b4"
+   },
+   {
+    "type": "example",
+    "title": "Conectare la un fișier CSV",
+    "concept_key": "conectare-fisier-csv",
+    "md": "Ai primit de la departamentul de vânzări fișierul `vanzari_iulie2026.csv`, cu coloanele Data, Client, Produs, Cantitate, Valoare. Pașii de conectare:\n\n1. **Data → Obține date → Din fișier → Din text/CSV**.\n2. Selectezi fișierul `vanzari_iulie2026.csv` din explorer.\n3. Apare fereastra de previzualizare: Excel detectează automat delimitatorul (virgulă) și codificarea (UTF-8), afișând primele 200 de rânduri și tipul de date propus pentru fiecare coloană (ex. Data → dată calendaristică, Valoare → zecimal).\n4. Dacă datele arată corect, apeși **Transform Data** (nu *Load* direct) pentru a deschide Power Query Editor și a verifica tipurile de date — de exemplu, dacă Valoare a fost detectată ca text din cauza separatorului zecimal, o schimbi manual în *Decimal Number*.\n5. Apeși **Close & Load** — datele apar într-un tabel Excel nou, iar interogarea este salvată în panoul **Interogări și conexiuni** (*Queries & Connections*), gata de reîmprospătare data viitoare când primești un fișier nou cu același nume și aceeași structură.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b5"
+   },
+   {
+    "type": "example",
+    "title": "Conectare la o bază de date SQL Server",
+    "concept_key": "conectare-baza-date-sql-server",
+    "md": "Firma folosește un ERP care stochează facturile într-o bază SQL Server internă. Vrei să aduci direct tabelul de facturi în Excel, fără export manual:\n\n1. **Data → Obține date → Din bază de date → Din baza de date SQL Server**.\n2. Introduci numele serverului, de exemplu `SRV-CONTAB01`, și, opțional, numele bazei de date, `ERP_Vanzari`.\n3. Alegi modul de conectare **Import** (Power Query în Excel lucrează exclusiv în modul Import — datele sunt copiate local în model, nu interogate live ca la DirectQuery din Power BI).\n4. La cererea de autentificare, alegi **Windows** (dacă ești deja autentificat în domeniul companiei cu drepturi pe server) sau **Database**, introducând un utilizator și o parolă dedicate.\n5. În fereastra **Navigator**, extinzi `ERP_Vanzari → dbo` și bifezi tabelul `dbo.Facturi`; previzualizarea îți arată primele rânduri.\n6. Apeși **Transform Data** pentru a filtra doar facturile din anul curent și a elimina coloanele tehnice (ex. `RowVersion`), apoi **Close & Load To… → Doar conexiune → Se adaugă la modelul de date**, dacă intenționezi să combini tabelul cu altele în Power Pivot.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Power Query blochează implicit opțiunea **Native Database Query** (interogări SQL scrise manual, ex. printr-un pas *Value.NativeQuery*) și cere confirmare explicită de fiecare dată când o interogare o folosește, deoarece o comandă SQL introdusă manual poate ocoli filtrele de securitate ale bazei și expune riscuri de tip injecție SQL sau acces neautorizat la tabele. Activează opțiunea *Enable native database queries* doar dacă ai încredere deplină în sursa interogării și în persoana care a scris comanda SQL. La fel, evită să slăbești nivelurile de confidențialitate (setându-le pe toate ca *Public*) doar pentru a scăpa de eroarea Formula.Firewall — verifică întâi dacă sursele conțin într-adevăr date fără restricții de acces.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Departamentul financiar îți trimite lunar câte un fișier CSV cu vânzările lunii respective, toate cu aceeași structură de coloane (Data, Client, Produs, Cantitate, Valoare), salvate într-un folder unic `C:\\Rapoarte\\Vanzari2026`, cu nume precum `ianuarie2026.csv`, `februarie2026.csv` ș.a.m.d. Vrei un singur tabel Excel care să conțină automat toate lunile disponibile în folder, actualizabil printr-un simplu Refresh atunci când apare un fișier nou. Descrie pașii de conectare folosind Power Query, fără să deschizi și să combini fișierele manual unul câte unul.",
+    "solution_md": "1. **Data → Obține date → Din fișier → Din folder**.\n2. Introduci calea `C:\\Rapoarte\\Vanzari2026` — Power Query listează toate fișierele din folder cu metadatele lor (nume, extensie, dată modificare), fără să le deschidă încă.\n3. Apeși **Combine → Combine & Transform Data** (sau butonul **Combine Files** din partea de jos a ferestrei). Excel identifică automat un fișier „exemplu” pentru a-i deduce structura de coloane și tipurile de date.\n4. În fereastra de previzualizare a combinării, confirmi delimitatorul (virgulă) și tipurile de coloane; Excel creează automat o interogare părinte plus o funcție de transformare aplicată fiecărui fișier.\n5. Rezultatul conține toate rândurile din toate fișierele CSV din folder, plus o coloană suplimentară `Source.Name` cu numele fișierului de proveniență — utilă pentru a filtra sau grupa ulterior pe lună.\n6. Apeși **Close & Load**. Data viitoare când adaugi `iulie2026.csv` în același folder, un simplu **Refresh All** (Actualizează tot) din fila Date reia automat pașii pentru toate fișierele, inclusiv cel nou, fără nicio configurare suplimentară.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă panoul „Pași aplicați” (Applied Steps) din Power Query Editor?",
+    "choices": [
+     "O listă needitabilă a coloanelor din sursă",
+     "Istoricul cronologic, editabil, al tuturor transformărilor aplicate unei interogări",
+     "Un raport de erori generate la conectare",
+     "Lista utilizatorilor care au modificat interogarea"
+    ],
+    "answer": 1,
+    "explain": "Fiecare acțiune (filtrare, redenumire, schimbare de tip) apare ca un pas separat în acest panou; pașii pot fi redenumiți, reordonați sau șterși, iar codul din spate este generat automat în limbajul M.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce cere Power Query un nivel de confidențialitate (Organizational/Private/Public) pentru fiecare sursă de date combinată?",
+    "choices": [
+     "Este doar o formalitate fără efect practic",
+     "Pentru a preveni combinarea neautorizată a datelor sensibile și a evita erori de tip Formula.Firewall",
+     "Pentru a stabili limba interfeței Power Query",
+     "Pentru a alege automat tipul de grafic din raport"
+    ],
+    "answer": 1,
+    "explain": "Nivelurile de confidențialitate controlează dacă datele din surse diferite pot fi trimise împreună către un motor de interogare; o setare greșită blochează combinarea și afișează eroarea Formula.Firewall.",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Power Query?",
+    "back": "Motorul ETL (Extract, Transform, Load) integrat nativ în Excel, care importă, transformă și încarcă automat date din surse externe, fără VBA.",
+    "concept_key": "power-query-introducere",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Unde găsești butonul de conectare la o sursă nouă de date în Excel?",
+    "back": "În fila Date (Data), secțiunea Obține și transformă date, butonul Obține date (Get Data).",
+    "concept_key": "power-query-introducere",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce mod de conectare folosește exclusiv Power Query în Excel pentru baze de date (SQL Server etc.)?",
+    "back": "Modul Import — datele sunt copiate local; DirectQuery (interogare live) nu există în Excel, doar în Power BI.",
+    "concept_key": "conectare-baza-date-sql-server",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei niveluri de confidențialitate pe care le poți seta unei surse de date în Power Query?",
+    "back": "Organizational, Private și Public.",
+    "concept_key": "power-query-niveluri-confidentialitate",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce funcție Power Query combină automat mai multe fișiere identice ca structură dintr-un folder într-un singur tabel?",
+    "back": "Combine Files (Combine & Transform Data), accesibilă din Get Data → Din folder.",
+    "concept_key": "conectare-fisier-csv",
+    "blockId": "cmjjuxvnc001yumkpx1636ri4-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1340,
+   "flashcards": 5
+  }
+ }
+}

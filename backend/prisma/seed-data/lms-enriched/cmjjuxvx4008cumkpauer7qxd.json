@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvx4008cumkpauer7qxd",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Introducere PMP și PMBOK 7",
+ "lesson": "Quiz Capitolul 1",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Quiz Capitolul 1 (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Ce reprezintă acronimul PMBOK, ghidul de referință pentru certificarea PMP (Project Management Professional)?",
+     "choices": [
+      "Project Management Body of Knowledge",
+      "Project Management Best Outcomes",
+      "Practical Methods Book of Knowledge",
+      "Program Management Body of Knowledge"
+     ],
+     "answer": 0,
+     "explain": "PMBOK înseamnă „Project Management Body of Knowledge” și este publicat de PMI (Project Management Institute), organizația care administrează și certificarea PMP.",
+     "concept_key": "pmi_pmbok"
+    },
+    {
+     "q": "Câte domenii de performanță (performance domains) definește PMBOK 7 (ediția a 7-a, 2021)?",
+     "choices": [
+      "5",
+      "8",
+      "10",
+      "12"
+     ],
+     "answer": 1,
+     "explain": "PMBOK 7 introduce 8 domenii de performanță: Stakeholderi, Echipă, Abordare de dezvoltare și ciclu de viață, Planificare, Lucrul în cadrul proiectului, Livrare, Măsurare și Incertitudine.",
+     "concept_key": "pmbok7_domains"
+    },
+    {
+     "q": "Care este principala diferență de structură între PMBOK ediția a 6-a (2017) și PMBOK 7 (2021)?",
+     "choices": [
+      "PMBOK 7 elimină complet abordările Agile din ghid",
+      "PMBOK 6 era organizat pe 49 de procese grupate în 5 grupuri de procese, iar PMBOK 7 este organizat pe principii și domenii de performanță orientate spre valoare",
+      "PMBOK 7 se aplică doar proiectelor din domeniul IT",
+      "PMBOK 6 introduce pentru prima dată Agile, iar PMBOK 7 îl elimină"
+     ],
+     "answer": 1,
+     "explain": "PMBOK 6 avea o structură rigidă bazată pe 49 de procese și 5 grupuri de procese (inițiere, planificare, execuție, monitorizare-control, închidere). PMBOK 7 trece la o structură principle-based (bazată pe principii) și pe 8 domenii de performanță, punând accent pe livrarea de valoare și adaptarea la context, nu pe urmărirea rigidă a proceselor.",
+     "concept_key": "pmbok6_vs_pmbok7"
+    },
+    {
+     "q": "Câte principii fundamentale (principles) ghidează comportamentul managerului de proiect conform PMBOK 7?",
+     "choices": [
+      "6",
+      "8",
+      "10",
+      "12"
+     ],
+     "answer": 3,
+     "explain": "PMBOK 7 definește 12 principii, printre care Stewardship (administrare diligentă), Echipă, Stakeholderi, Valoare, Gândire sistemică, Leadership, Tailoring, Calitate, Complexitate, Risc, Adaptabilitate și reziliență, respectiv Schimbare.",
+     "concept_key": "pmbok7_principles"
+    },
+    {
+     "q": "Conform PMP Examination Content Outline (2021), examenul PMP este structurat pe trei domenii. Care este ponderea aproximativă a domeniului „Process” în examen?",
+     "choices": [
+      "42%",
+      "50%",
+      "8%",
+      "33%"
+     ],
+     "answer": 1,
+     "explain": "Examenul PMP are trei domenii: People (Oameni) — aproximativ 42%, Process (Proces) — aproximativ 50%, Business Environment (Mediul de afaceri) — aproximativ 8%. Domeniul Process are cea mai mare pondere.",
+     "concept_key": "pmp_exam_domains"
+    },
+    {
+     "q": "Într-un proiect de implementare ERP la o companie RO, echipa combină faze predictive (plan-driven) pentru infrastructura tehnică cu sprinturi Agile pentru dezvoltarea modulelor custom. Ce domeniu de performanță PMBOK 7 abordează explicit alegerea și combinarea abordărilor de livrare (predictivă, adaptivă, hibridă)?",
+     "choices": [
+      "Planificare",
+      "Lucrul în cadrul proiectului",
+      "Abordare de dezvoltare și ciclu de viață (Development Approach and Life Cycle)",
+      "Măsurare"
+     ],
+     "answer": 2,
+     "explain": "Domeniul „Abordare de dezvoltare și ciclu de viață” tratează explicit selectarea și combinarea abordărilor de livrare — predictivă, adaptivă (Agile) sau hibridă — în funcție de natura livrabilelor și de contextul proiectului, exact scenariul unui proiect ERP cu componente diferite.",
+     "concept_key": "development_approach_domain"
+    },
+    {
+     "q": "Principiul „Gândire sistemică” (Systems Thinking) din PMBOK 7 se referă în principal la:",
+     "choices": [
+      "Recunoașterea și evaluarea interacțiunilor dinamice dintre componentele interne și externe ale proiectului, deoarece proiectul funcționează ca un sistem aflat în interacțiune cu mediul organizațional",
+      "Folosirea exclusivă a diagramelor de rețea (network diagrams) pentru planificarea activităților",
+      "Aplicarea automată a metodologiei Agile în toate tipurile de proiecte",
+      "Reducerea numărului de stakeholderi implicați, pentru a simplifica comunicarea"
+     ],
+     "answer": 0,
+     "explain": "Gândirea sistemică presupune ca managerul de proiect să înțeleagă proiectul ca parte a unui sistem mai larg (organizație, piață, alte proiecte) și să evalueze cum interacțiunile dintre aceste componente influențează rezultatele — de exemplu, cum o schimbare în echipa de vânzări afectează cerințele unui proiect de digitalizare.",
+     "concept_key": "systems_thinking_principle"
+    },
+    {
+     "q": "Principiul „Tailoring” (adaptare) din PMBOK 7 recomandă managerului de proiect să:",
+     "choices": [
+      "Aplice identic, fără nicio modificare, toate procesele descrise în ghid, indiferent de context",
+      "Adapteze abordarea, guvernanța și procesele la caracteristicile specifice ale proiectului, organizației și mediului, folosind principiul „doar atât cât este necesar”",
+      "Delege integral deciziile de adaptare a metodologiei către sponsorul proiectului",
+      "Evite orice combinare a metodologiilor predictive și adaptive"
+     ],
+     "answer": 1,
+     "explain": "Tailoring înseamnă adaptarea proceselor, instrumentelor și nivelului de guvernanță la nevoile reale ale proiectului — de exemplu, un proiect mic de digitalizare a facturării într-un SRL nu necesită aceeași structură de guvernanță ca o implementare ERP la nivel de grup, deși ambele pot folosi PMBOK ca reper.",
+     "concept_key": "tailoring_principle"
+    },
+    {
+     "q": "Conform principiului „Valoare” (Value) din PMBOK 7, succesul unui proiect de digitalizare a proceselor de facturare într-o companie RO ar trebui evaluat în primul rând prin:",
+     "choices": [
+      "Respectarea strictă a bugetului și a termenului inițial, indiferent de rezultatele obținute",
+      "Numărul de livrabile tehnice finalizate conform planului",
+      "Măsura în care rezultatele (outcomes) generează beneficii reale de business — de exemplu reducerea timpului de facturare și a erorilor — nu doar finalizarea outputurilor tehnice",
+      "Volumul documentației de proiect produse pe parcursul implementării"
+     ],
+     "answer": 2,
+     "explain": "Principiul Valoare mută accentul de la livrarea de outputuri (rapoarte, module software) la generarea de outcomes reale pentru business — beneficii măsurabile precum reducerea timpilor de procesare, scăderea erorilor sau creșterea satisfacției clienților.",
+     "concept_key": "value_principle"
+    },
+    {
+     "q": "O echipă care implementează un ERP la o companie de producție din România descoperă la mijlocul proiectului o schimbare majoră de reglementare fiscală ce impune modificarea modulului de facturare. Managerul de proiect reevaluează planul, ajustează scopul, comunică impactul către stakeholderi și tratează schimbarea ca pe o oportunitate de a livra mai multă valoare, nu doar ca pe o abatere de la plan. Ce principii PMBOK 7 sunt cel mai bine ilustrate de această reacție?",
+     "choices": [
+      "Doar principiul Calitate",
+      "Adaptabilitate și reziliență, împreună cu principiul Schimbare (Change) — permițând evoluția către starea viitoare dorită",
+      "Doar principiul Risc, fără nicio legătură cu gestionarea schimbării",
+      "Principiul conformității contractuale stricte, aplicat rigid indiferent de context"
+     ],
+     "answer": 1,
+     "explain": "Reacția descrisă combină principiul „Adaptabilitate și reziliență” (capacitatea echipei de a se adapta la condiții schimbătoare și de a-și reveni rapid) cu principiul „Schimbare” (Change), care încurajează managerul de proiect să faciliteze tranziția către o nouă stare dorită, tratând schimbarea ca oportunitate de valoare, nu doar ca risc de deviere de la plan.",
+     "concept_key": "principles_application_scenario"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

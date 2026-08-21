@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvyz009mumkpgvr30jqe",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Agile & Hybrid",
+ "lesson": "Agile Principles pe examenul PMP",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Agile Principles pe examenul PMP\n\n## Manifestul Agile: cele 4 valori\n\nÎn 2001, un grup de 17 practicieni din dezvoltarea software au semnat **Manifestul pentru Dezvoltare Agile de Software**, document care stă la baza tuturor abordărilor agile testate la examenul PMP (Scrum, Kanban, XP, Lean, hibrid). Manifestul definește patru valori fundamentale, exprimate ca preferințe relative — nu ca excluderi:\n\n1. **Indivizii și interacțiunile** mai presus de procese și instrumente.\n2. **Software-ul funcțional** (generalizat: livrabilul funcțional) mai presus de documentația exhaustivă.\n3. **Colaborarea cu clientul** mai presus de negocierea contractuală.\n4. **Răspunsul la schimbare** mai presus de urmărirea rigidă a unui plan.\n\nAtenție la formularea din ECO (Examination Content Outline): fiecare valoare recunoaște că elementul din dreapta are valoare, dar elementul din stânga este prioritizat. Pe examen, dacă vezi un răspuns care elimină complet documentația sau planificarea, este greșit — Agile nu înseamnă „fără proces\", ci „proces în slujba adaptabilității\".\n\nPentru un manager de proiect care lucrează, de exemplu, la implementarea unui ERP într-o companie de distribuție din România, această valoare se traduce astfel: preferi o discuție zilnică de 15 minute cu echipa de implementare și beneficiarul intern, în locul unui raport lunar de 20 de pagini care ajunge prea târziu ca să mai poată influența deciziile.\n\n## Cele 12 principii din spatele Manifestului\n\nManifestul este însoțit de 12 principii care detaliază cum se aplică cele 4 valori în practică. Pentru examenul PMP nu trebuie să le memorezi cuvânt cu cuvânt, dar trebuie să recunoști ideile-cheie, pentru că multe întrebări situaționale testează exact aceste principii:\n\n- **Satisfacția clientului** prin livrare timpurie și continuă de valoare.\n- **Bun venit schimbărilor**, chiar și târziu în proiect — Agile valorifică schimbarea ca avantaj competitiv pentru client.\n- **Livrări frecvente**, de la câteva săptămâni la câteva luni, cu preferință pentru intervale scurte.\n- **Colaborare zilnică** între oamenii de business și dezvoltatori, pe toată durata proiectului.\n- **Proiecte construite în jurul indivizilor motivați**, cărora li se oferă mediul și sprijinul necesar și încrederea că își vor face treaba.\n- **Comunicarea față în față** este cea mai eficientă metodă de a transmite informație în cadrul unei echipe.\n- **Livrabilul funcțional** este principala măsură a progresului.\n- **Ritm sustenabil** — sponsorii, dezvoltatorii și utilizatorii ar trebui să poată menține un ritm constant, nedefinit.\n- **Atenție continuă la excelența tehnică** și la un design bun, care sporesc agilitatea.\n- **Simplitatea** — arta de a maximiza cantitatea de muncă nefăcută — este esențială.\n- **Cele mai bune arhitecturi, cerințe și design-uri** apar din echipe auto-organizate.\n- **Reflecție periodică** — la intervale regulate, echipa analizează cum poate deveni mai eficientă și își ajustează comportamentul (retrospective).\n\nAceste principii formează scheletul evaluărilor de tip „ce ar trebui să facă managerul de proiect\" din secțiunea de examen dedicată abordărilor agile și hibride.\n\n## Mindset agile vs. mindset predictiv, în logica ECO\n\nECO-ul PMP este organizat pe trei domenii de performanță (People, Process, Business Environment) și testează candidatul pe **toate cele trei abordări**: predictivă (waterfall), agilă și hibridă. Diferența esențială pe care examenul o testează constant:\n\n- În abordarea **predictivă**, scope-ul este relativ fix, iar timpul și costul se estimează în funcție de scope; planificarea detaliată se face la început (big design up front).\n- În abordarea **agilă**, timpul (sprint/iterație) și costul (echipă stabilă) sunt relativ fixe, iar scope-ul este variabil — se livrează valoarea maximă posibilă în intervalul disponibil, prin backlog prioritizat și rafinat continuu.\n\nUn mindset agile autentic presupune: încredere în echipă, toleranță la incertitudine, decizii descentralizate, feedback rapid și îmbunătățire continuă. Pe examen, când un scenariu descrie un sponsor care cere planul detaliat de succes cu 12 luni înainte, într-un proiect cu cerințe volatile, răspunsul corect va reflecta, de regulă, educarea sponsorului privind livrarea iterativă și estimarea prin intervale (nu prin cifre exacte), nu impunerea unui plan rigid doar pentru liniștea acestuia.\n\nReține și diferența servant leadership vs. command-and-control: în context agile, managerul de proiect (adesea în rolul de Scrum Master sau team coach) elimină obstacole, facilitează, protejează echipa de întreruperi — nu alocă sarcini individuale.\n\n## Exemplu: Aplicarea principiilor Agile la implementarea unui ERP\nO companie de distribuție din Cluj, cu 120 de angajați, implementează un sistem ERP nou pentru gestiunea stocurilor și facturare. Inițial, echipa de proiect a planificat o abordare predictivă clasică: 6 luni de analiză, apoi 4 luni de dezvoltare/configurare, apoi 2 luni de testare și go-live.\n\nDupă primele workshop-uri de analiză, echipa constată că departamentele (vânzări, depozit, contabilitate) au cerințe care se schimbă pe măsură ce văd prototipuri funcționale — un simptom tipic de proiect cu cerințe volatile, potrivit pentru o abordare agilă sau hibridă.\n\nSoluția aplicată, aliniată principiilor Agile:\n\n- Backlog-ul de cerințe este prioritizat de un Product Owner intern (directorul financiar), care decide ce modul ERP se livrează primul (facturare, apoi stocuri, apoi rapoarte).\n- Echipa lucrează în sprint-uri de 2 săptămâni, cu o demonstrație funcțională la finalul fiecărui sprint pentru utilizatorii-cheie.\n- La fiecare retrospectivă, echipa identifică cel puțin o îmbunătățire de proces (de exemplu, testarea în paralel cu dezvoltarea, nu după).\n- Documentația se reduce la strictul necesar pentru configurare și instruire, nu la specificații exhaustive scrise înainte de a vedea sistemul funcționând.\n\nRezultatul: primul modul (facturare) ajunge live în 6 săptămâni, generând feedback real care influențează prioritizarea modulelor următoare — exact ideea din spatele valorii „răspunsul la schimbare mai presus de urmărirea unui plan\".\n\n## Exemplu: Cum arată o întrebare situațională de examen pe acest subiect\nEnunț tipic de examen: „Într-un proiect agile, un membru senior al echipei observă că un coleg mai puțin experimentat întâmpină dificultăți la o sarcină tehnică. Ce ar trebui să facă managerul de proiect?\"\n\nOpțiuni tipice: (a) reatribuie sarcina colegului senior; (b) instruiește managerul să rezolve el sarcina; (c) încurajează colaborarea și programarea în pereche (pair programming) în cadrul echipei auto-organizate; (d) escaladează problema către sponsor.\n\nRăspunsul corect este (c), pentru că reflectă principiul echipelor auto-organizate și al colaborării zilnice — managerul de proiect facilitează, nu decide în locul echipei cine face ce sarcină. Rețeta pentru acest tip de întrebare: identifică mai întâi dacă scenariul este agile (cuvinte-cheie: sprint, backlog, echipă auto-organizată, Scrum Master, retrospectivă) și apoi alege răspunsul care întărește autonomia echipei și colaborarea, nu controlul centralizat.\n\n⚠ Capcană frecventă la examen: nu confunda **Manifestul Agile** (4 valori + 12 principii, cadru general, aplicabil oricărei metode agile) cu **Scrum Guide** (framework specific, cu roluri, evenimente și artefacte proprii — Scrum Master, Product Owner, Sprint, Daily Scrum, Sprint Review, Sprint Retrospective). O întrebare care cere „unul dintre cele 12 principii Agile\" nu va accepta ca răspuns corect un termen specific Scrum (de exemplu „Sprint Planning\"), pentru că manifestul este agnostic la framework. De asemenea, PMI se așteaptă ca varianta corectă să reflecte mindset-ul (încredere, adaptabilitate, transparență), nu doar aplicarea mecanică a unui ritual.\n\n## Exercițiu\nEști managerul unui proiect hibrid de digitalizare a fluxului de aprobare a facturilor într-o companie de producție din România. Componenta de integrare cu sistemul contabil existent este predictivă (cerințe fixe, impuse de auditul financiar), iar componenta de interfață utilizator este dezvoltată agil, cu backlog și sprint-uri de 2 săptămâni.\n\nLa sprint review-ul 3, un utilizator-cheie din departamentul financiar cere o funcționalitate nouă, care nu era în backlog-ul inițial și care ar necesita realocarea capacității echipei din sprintul următor.\n\nCe faci, aplicând principiile Agile din Manifest?\n\n**Soluție:** Nu adaugi funcționalitatea direct în sprintul curent (ar încălca stabilitatea sprintului și ritmul sustenabil al echipei). Pași corecți:\n\n1. Mulțumești utilizatorului pentru feedback — este exact comportamentul dorit („răspunsul la schimbare\" este o valoare, nu o excepție).\n2. Adaugi cerința ca element nou în backlog, cu o descriere suficientă pentru estimare.\n3. Lași Product Owner-ul să (re)prioritizeze backlog-ul înaintea următorului sprint planning, cântărind valoarea noii cerințe față de ce este deja planificat.\n4. Nu modifici scope-ul componentei predictive (integrarea contabilă) fără control formal de schimbare, pentru că acolo cerințele sunt fixate de audit.\n\nAceastă abordare respectă simultan principiul „bun venit schimbărilor\" pentru partea agilă și disciplina de control al scope-ului pentru partea predictivă — esența unei abordări hibride corect gestionate.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "manifest-agile-valori",
+    "md": "## Manifestul Agile: cele 4 valori\n\nÎn 2001, un grup de 17 practicieni din dezvoltarea software au semnat **Manifestul pentru Dezvoltare Agile de Software**, document care stă la baza tuturor abordărilor agile testate la examenul PMP (Scrum, Kanban, XP, Lean, hibrid). Manifestul definește patru valori fundamentale, exprimate ca preferințe relative — nu ca excluderi:\n\n1. **Indivizii și interacțiunile** mai presus de procese și instrumente.\n2. **Software-ul funcțional** (generalizat: livrabilul funcțional) mai presus de documentația exhaustivă.\n3. **Colaborarea cu clientul** mai presus de negocierea contractuală.\n4. **Răspunsul la schimbare** mai presus de urmărirea rigidă a unui plan.\n\nAtenție la formularea din ECO (Examination Content Outline): fiecare valoare recunoaște că elementul din dreapta are valoare, dar elementul din stânga este prioritizat. Pe examen, dacă vezi un răspuns care elimină complet documentația sau planificarea, este greșit — Agile nu înseamnă „fără proces\", ci „proces în slujba adaptabilității\".\n\nPentru un manager de proiect care lucrează, de exemplu, la implementarea unui ERP într-o companie de distribuție din România, această valoare se traduce astfel: preferi o discuție zilnică de 15 minute cu echipa de implementare și beneficiarul intern, în locul unui raport lunar de 20 de pagini care ajunge prea târziu ca să mai poată influența deciziile.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "principii-agile-12",
+    "md": "## Cele 12 principii din spatele Manifestului\n\nManifestul este însoțit de 12 principii care detaliază cum se aplică cele 4 valori în practică. Pentru examenul PMP nu trebuie să le memorezi cuvânt cu cuvânt, dar trebuie să recunoști ideile-cheie, pentru că multe întrebări situaționale testează exact aceste principii:\n\n- **Satisfacția clientului** prin livrare timpurie și continuă de valoare.\n- **Bun venit schimbărilor**, chiar și târziu în proiect — Agile valorifică schimbarea ca avantaj competitiv pentru client.\n- **Livrări frecvente**, de la câteva săptămâni la câteva luni, cu preferință pentru intervale scurte.\n- **Colaborare zilnică** între oamenii de business și dezvoltatori, pe toată durata proiectului.\n- **Proiecte construite în jurul indivizilor motivați**, cărora li se oferă mediul și sprijinul necesar și încrederea că își vor face treaba.\n- **Comunicarea față în față** este cea mai eficientă metodă de a transmite informație în cadrul unei echipe.\n- **Livrabilul funcțional** este principala măsură a progresului.\n- **Ritm sustenabil** — sponsorii, dezvoltatorii și utilizatorii ar trebui să poată menține un ritm constant, nedefinit.\n- **Atenție continuă la excelența tehnică** și la un design bun, care sporesc agilitatea.\n- **Simplitatea** — arta de a maximiza cantitatea de muncă nefăcută — este esențială.\n- **Cele mai bune arhitecturi, cerințe și design-uri** apar din echipe auto-organizate.\n- **Reflecție periodică** — la intervale regulate, echipa analizează cum poate deveni mai eficientă și își ajustează comportamentul (retrospective).\n\nAceste principii formează scheletul evaluărilor de tip „ce ar trebui să facă managerul de proiect\" din secțiunea de examen dedicată abordărilor agile și hibride.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "mindset-agile-pmp",
+    "md": "## Mindset agile vs. mindset predictiv, în logica ECO\n\nECO-ul PMP este organizat pe trei domenii de performanță (People, Process, Business Environment) și testează candidatul pe **toate cele trei abordări**: predictivă (waterfall), agilă și hibridă. Diferența esențială pe care examenul o testează constant:\n\n- În abordarea **predictivă**, scope-ul este relativ fix, iar timpul și costul se estimează în funcție de scope; planificarea detaliată se face la început (big design up front).\n- În abordarea **agilă**, timpul (sprint/iterație) și costul (echipă stabilă) sunt relativ fixe, iar scope-ul este variabil — se livrează valoarea maximă posibilă în intervalul disponibil, prin backlog prioritizat și rafinat continuu.\n\nUn mindset agile autentic presupune: încredere în echipă, toleranță la incertitudine, decizii descentralizate, feedback rapid și îmbunătățire continuă. Pe examen, când un scenariu descrie un sponsor care cere planul detaliat de succes cu 12 luni înainte, într-un proiect cu cerințe volatile, răspunsul corect va reflecta, de regulă, educarea sponsorului privind livrarea iterativă și estimarea prin intervale (nu prin cifre exacte), nu impunerea unui plan rigid doar pentru liniștea acestuia.\n\nReține și diferența servant leadership vs. command-and-control: în context agile, managerul de proiect (adesea în rolul de Scrum Master sau team coach) elimină obstacole, facilitează, protejează echipa de întreruperi — nu alocă sarcini individuale.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b3"
+   },
+   {
+    "type": "example",
+    "title": "Aplicarea principiilor Agile la implementarea unui ERP",
+    "concept_key": "exemplu-erp-agile",
+    "md": "O companie de distribuție din Cluj, cu 120 de angajați, implementează un sistem ERP nou pentru gestiunea stocurilor și facturare. Inițial, echipa de proiect a planificat o abordare predictivă clasică: 6 luni de analiză, apoi 4 luni de dezvoltare/configurare, apoi 2 luni de testare și go-live.\n\nDupă primele workshop-uri de analiză, echipa constată că departamentele (vânzări, depozit, contabilitate) au cerințe care se schimbă pe măsură ce văd prototipuri funcționale — un simptom tipic de proiect cu cerințe volatile, potrivit pentru o abordare agilă sau hibridă.\n\nSoluția aplicată, aliniată principiilor Agile:\n\n- Backlog-ul de cerințe este prioritizat de un Product Owner intern (directorul financiar), care decide ce modul ERP se livrează primul (facturare, apoi stocuri, apoi rapoarte).\n- Echipa lucrează în sprint-uri de 2 săptămâni, cu o demonstrație funcțională la finalul fiecărui sprint pentru utilizatorii-cheie.\n- La fiecare retrospectivă, echipa identifică cel puțin o îmbunătățire de proces (de exemplu, testarea în paralel cu dezvoltarea, nu după).\n- Documentația se reduce la strictul necesar pentru configurare și instruire, nu la specificații exhaustive scrise înainte de a vedea sistemul funcționând.\n\nRezultatul: primul modul (facturare) ajunge live în 6 săptămâni, generând feedback real care influențează prioritizarea modulelor următoare — exact ideea din spatele valorii „răspunsul la schimbare mai presus de urmărirea unui plan\".",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b4"
+   },
+   {
+    "type": "example",
+    "title": "Cum arată o întrebare situațională de examen pe acest subiect",
+    "concept_key": "exemplu-intrebare-examen",
+    "md": "Enunț tipic de examen: „Într-un proiect agile, un membru senior al echipei observă că un coleg mai puțin experimentat întâmpină dificultăți la o sarcină tehnică. Ce ar trebui să facă managerul de proiect?\"\n\nOpțiuni tipice: (a) reatribuie sarcina colegului senior; (b) instruiește managerul să rezolve el sarcina; (c) încurajează colaborarea și programarea în pereche (pair programming) în cadrul echipei auto-organizate; (d) escaladează problema către sponsor.\n\nRăspunsul corect este (c), pentru că reflectă principiul echipelor auto-organizate și al colaborării zilnice — managerul de proiect facilitează, nu decide în locul echipei cine face ce sarcină. Rețeta pentru acest tip de întrebare: identifică mai întâi dacă scenariul este agile (cuvinte-cheie: sprint, backlog, echipă auto-organizată, Scrum Master, retrospectivă) și apoi alege răspunsul care întărește autonomia echipei și colaborarea, nu controlul centralizat.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană frecventă la examen: nu confunda **Manifestul Agile** (4 valori + 12 principii, cadru general, aplicabil oricărei metode agile) cu **Scrum Guide** (framework specific, cu roluri, evenimente și artefacte proprii — Scrum Master, Product Owner, Sprint, Daily Scrum, Sprint Review, Sprint Retrospective). O întrebare care cere „unul dintre cele 12 principii Agile\" nu va accepta ca răspuns corect un termen specific Scrum (de exemplu „Sprint Planning\"), pentru că manifestul este agnostic la framework. De asemenea, PMI se așteaptă ca varianta corectă să reflecte mindset-ul (încredere, adaptabilitate, transparență), nu doar aplicarea mecanică a unui ritual.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești managerul unui proiect hibrid de digitalizare a fluxului de aprobare a facturilor într-o companie de producție din România. Componenta de integrare cu sistemul contabil existent este predictivă (cerințe fixe, impuse de auditul financiar), iar componenta de interfață utilizator este dezvoltată agil, cu backlog și sprint-uri de 2 săptămâni.\n\nLa sprint review-ul 3, un utilizator-cheie din departamentul financiar cere o funcționalitate nouă, care nu era în backlog-ul inițial și care ar necesita realocarea capacității echipei din sprintul următor.\n\nCe faci, aplicând principiile Agile din Manifest?",
+    "solution_md": "Nu adaugi funcționalitatea direct în sprintul curent (ar încălca stabilitatea sprintului și ritmul sustenabil al echipei). Pași corecți:\n\n1. Mulțumești utilizatorului pentru feedback — este exact comportamentul dorit („răspunsul la schimbare\" este o valoare, nu o excepție).\n2. Adaugi cerința ca element nou în backlog, cu o descriere suficientă pentru estimare.\n3. Lași Product Owner-ul să (re)prioritizeze backlog-ul înaintea următorului sprint planning, cântărind valoarea noii cerințe față de ce este deja planificat.\n4. Nu modifici scope-ul componentei predictive (integrarea contabilă) fără control formal de schimbare, pentru că acolo cerințele sunt fixate de audit.\n\nAceastă abordare respectă simultan principiul „bun venit schimbărilor\" pentru partea agilă și disciplina de control al scope-ului pentru partea predictivă — esența unei abordări hibride corect gestionate.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Manifestului Agile, care dintre următoarele perechi de valori este corect formulată?",
+    "choices": [
+     "Documentația exhaustivă mai presus de software-ul funcțional",
+     "Software-ul funcțional mai presus de documentația exhaustivă",
+     "Negocierea contractuală mai presus de colaborarea cu clientul",
+     "Urmărirea planului mai presus de răspunsul la schimbare"
+    ],
+    "answer": 1,
+    "explain": "Manifestul Agile prioritizează software-ul (livrabilul) funcțional în fața documentației exhaustive — fără a elimina complet documentația, doar reducând-o la strictul necesar.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un Product Owner descoperă, la mijlocul unui sprint, că prioritatea de business s-a schimbat radical. Conform principiilor Agile, care este atitudinea corectă?",
+    "choices": [
+     "Sprintul este blocat, schimbările se acceptă doar între sprint-uri, niciodată în timpul unuia",
+     "Se actualizează imediat sprint backlog-ul curent, indiferent de impact, pentru a reflecta noua prioritate",
+     "Noua prioritate se adaugă în product backlog și se ia în calcul la următorul sprint planning, protejând angajamentul echipei pentru sprintul curent",
+     "Se anulează sprintul curent și se repornește planificarea de la zero"
+    ],
+    "answer": 2,
+    "explain": "Principiul „bun venit schimbărilor\" se referă la backlog-ul de produs, nu la sprintul deja angajat; echipa protejează sprintul curent (ritm sustenabil, angajament clar) și integrează schimbarea la următoarea planificare.",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 valori ale Manifestului Agile?",
+    "back": "Indivizii și interacțiunile > procese și instrumente; Software-ul funcțional > documentația exhaustivă; Colaborarea cu clientul > negocierea contractuală; Răspunsul la schimbare > urmărirea unui plan.",
+    "concept_key": "manifest-agile-valori",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte principii însoțesc Manifestul Agile?",
+    "back": "12 principii, care detaliază aplicarea practică a celor 4 valori.",
+    "concept_key": "principii-agile-12",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este relativ fix și ce este variabil în abordarea agilă, spre deosebire de cea predictivă?",
+    "back": "În Agile, timpul (durata iterației) și costul (echipa stabilă) sunt fixe; scope-ul este variabil, prioritizat continuu prin backlog.",
+    "concept_key": "mindset-agile-pmp",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine decide reprioritizarea backlog-ului de produs?",
+    "back": "Product Owner-ul, pe baza valorii de business — nu managerul de proiect unilateral.",
+    "concept_key": "mindset-agile-pmp",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce eveniment agil este dedicat identificării îmbunătățirilor de proces la finalul unei iterații?",
+    "back": "Retrospectiva (reflecție periodică) — al 12-lea principiu din Manifestul Agile.",
+    "concept_key": "principii-agile-12",
+    "blockId": "cmjjuxvyz009mumkpgvr30jqe-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1291,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxw5x00etumkplodzjhf0",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Modelare Financiară în Excel",
+ "lesson": "Sensitivity și Scenario Analysis",
+ "category": "FINANCE_OPS",
+ "content": "# Sensitivity și Scenario Analysis\n\n## De ce ai nevoie de sensitivity și scenario analysis\n\nUn model financiar bun nu produce un singur număr — produce un interval de rezultate posibile, însoțit de explicația factorilor care îl determină. La nivel de CFO sau controller, întrebarea rareori este „Cât va fi EBITDA anul viitor?”, ci „Cu cât se schimbă EBITDA dacă prețul de vânzare scade cu 5%?” sau „Ce se întâmplă dacă cursul EUR/RON crește cu 3%?”.\n\n**Sensitivity analysis** (analiza de sensibilitate) izolează impactul unei singure variabile de intrare (driver) asupra unui rezultat (de regulă profit, EBITDA sau cash flow), menținând toate celelalte ipoteze constante („ceteris paribus”). Răspunde la întrebarea: cât de sensibil e rezultatul la variabila X?\n\n**Scenario analysis** (analiza de scenarii) combină mai multe variabile simultan, într-un set coerent de ipoteze (ex. scenariul „recesiune”: vânzări -15%, costuri +8%, curs valutar +5%). Răspunde la întrebarea: ce se întâmplă dacă lumea arată în felul acesta?\n\nÎn Excel, cele două tehnici se implementează cu instrumente diferite: Data Tables pentru sensitivity analysis pe una sau două variabile, și Scenario Manager pentru combinații de mai multe variabile. Tornado charts vizualizează rezultatele sensitivity analysis sub formă de ranking, iar Monte Carlo simulation extinde analiza la distribuții de probabilitate complete, nu doar la câteva puncte discrete.\n\n## Data Tables: One-way și Two-way\n\nData Table este un instrument Excel din grupul What-If Analysis (tab Data → What-If Analysis → Data Table) care recalculează automat o formulă pentru o listă de valori de intrare, fără să scrii formula de mai multe ori.\n\n**One-way Data Table** (o singură variabilă): testezi cum variază un rezultat (ex. EBITDA) în funcție de o singură variabilă de intrare (ex. volumul vânzărilor). Structura: pe coloană așezi valorile variabilei de test, iar în colțul din dreapta-sus al intervalului pui formula de output (de obicei o referință la celula EBITDA). La rulare, completezi doar „Column Input Cell” cu celula din model care conține variabila testată.\n\n**Two-way Data Table** (două variabile): testezi impactul combinat a două variabile (ex. preț și volum) asupra aceluiași rezultat. Valorile primei variabile se așează pe rând (orizontal), ale celei de-a doua pe coloană (vertical), iar formula de output se pune în colțul din stânga-sus al intervalului. Se completează atât „Row Input Cell” (celula variabilei de pe rând), cât și „Column Input Cell” (celula variabilei de pe coloană).\n\nAtenție: Data Table recalculează întreg workbook-ul la fiecare rulare dacă modul de calcul e Automatic — pentru modele mari, setează Calculation Options pe „Automatic Except for Data Tables” (Formulas → Calculation Options) pentru performanță.\n\n## Scenario Manager\n\nScenario Manager (Data → What-If Analysis → Scenario Manager) permite salvarea unor seturi complete de ipoteze — de regulă 3 până la 5 celule de input — sub un nume (ex. „Pesimist”, „De bază”, „Optimist”) și comutarea instantă între ele pentru a vedea impactul asupra întregului model.\n\nPași de construcție: (1) identifici celulele de input cheie din model (Preț, Volum, Cost variabil unitar, Cost fix); (2) deschizi Scenario Manager → Add → dai un nume scenariului și selectezi celulele changing cells; (3) introduci valorile specifice fiecărui scenariu; (4) repeți pentru fiecare scenariu; (5) generezi un Summary Report, care creează automat o foaie nouă cu toate scenariile și rezultatele-cheie (EBITDA, cash flow, marjă) alăturate, pentru comparație rapidă.\n\nBună practică pentru prezentările către board: limitează-te la 3 scenarii clare (pesimist / de bază / optimist), fiecare cu o narativă de business explicită în spate (nu doar cifre), astfel încât board-ul să înțeleagă ce eveniment economic declanșează fiecare scenariu.\n\n## Tornado charts și Monte Carlo simulation\n\n**Tornado chart** este un grafic bar orizontal care clasifică variabilele de intrare după impactul lor asupra rezultatului, de la cea mai influentă (bara cea mai lată, sus) la cea mai puțin influentă (jos) — forma rezultată seamănă cu o tornadă. Se construiește rulând sensitivity analysis pentru fiecare variabilă în parte, la ±X% față de baseline, și afișând intervalul (min–max) al rezultatului. Utilitate managerială: îți spune pe ce variabile merită să te concentrezi în negocieri, controale de cost sau due diligence — de regulă doar 2-3 variabile explică majoritatea variației rezultatului.\n\n**Monte Carlo simulation** duce analiza mai departe: în loc de 2-3 valori discrete per variabilă (pesimist/bază/optimist), atribui fiecărei variabile o distribuție de probabilitate (de regulă normală sau triunghiulară) și rulezi modelul de sute sau mii de ori, de fiecare dată cu valori generate aleator. Rezultatul nu mai e un singur număr, ci o distribuție completă a rezultatelor posibile, din care poți citi, de exemplu, „probabilitatea ca EBITDA să fie sub 0 este de X%”.\n\nÎn Excel nativ (fără VBA sau add-in-uri precum @RISK), Monte Carlo se poate implementa cu funcția NORM.INV(RAND(); medie; deviație_standard) pentru a genera valori aleatoare pentru fiecare variabilă, combinată cu un one-way Data Table „trick”: pui o coloană cu numere de la 1 la 1.000 (simulările), legi Column Input Cell la o celulă goală (fără utilizare reală în formulă), iar formula de output referă rezultatul modelului (ex. EBITDA), care la fiecare rulare a Data Table recalculează toate funcțiile RAND() din model. Rezultatul e o listă de 1.000 valori de EBITDA simulate, pe care aplici apoi un histogram (Insert → Chart → Histogram) și funcții precum PERCENTILE.INC pentru a citi percentilele de interes (P10, P50, P90).\n\n## Exemplu: Data Table one-way și two-way pentru EBITDA\n### Studiu de caz: FarmaPlus SRL — distribuitor produse cosmetice\n\nIpoteze de bază (baseline):\n- Preț mediu de vânzare: 50 lei/unitate\n- Volum vânzări: 20.000 unități/an\n- Cost variabil unitar: 30 lei/unitate\n- Costuri fixe anuale: 250.000 lei\n\nFormulă: EBITDA = Volum × (Preț − Cost variabil unitar) − Costuri fixe\n\nBaseline: EBITDA = 20.000 × (50 − 30) − 250.000 = 400.000 − 250.000 = **150.000 lei**\n\n**One-way Data Table** — sensitivitatea EBITDA la volumul vânzărilor (Column Input Cell = celula Volum):\n\n| Volum (unități) | EBITDA (lei) |\n|---|---|\n| 15.000 | 50.000 |\n| 17.500 | 100.000 |\n| 20.000 (baseline) | 150.000 |\n| 22.500 | 200.000 |\n| 25.000 | 250.000 |\n\nObservație: fiecare pas de 2.500 unități (12,5% din baseline) modifică EBITDA cu exact 50.000 lei — relația e liniară, pentru că marja de contribuție unitară (20 lei) e constantă.\n\n**Two-way Data Table** — EBITDA în funcție de Preț (rând) și Volum (coloană):\n\n| Preț / Volum | 15.000 | 20.000 | 25.000 |\n|---|---|---|---|\n| 45 lei | -25.000 | 50.000 | 125.000 |\n| 50 lei | 50.000 | 150.000 | 250.000 |\n| 55 lei | 125.000 | 250.000 | 375.000 |\n\nCitire rapidă: dacă negociezi un discount de 10% la preț (50 → 45 lei) în același timp cu o scădere de volum la 15.000 unități, EBITDA devine negativ (-25.000 lei) — un semnal clar pentru echipa de vânzări că discounturile agresive combinate cu scăderea cererii pun compania pe pierdere operațională.\n\n## Exemplu: Scenario Manager și Tornado Chart\n### Scenario Manager și Tornado Chart pentru același model\n\n**Trei scenarii construite în Scenario Manager** (changing cells: Preț, Volum, Cost variabil unitar, Costuri fixe):\n\n| Scenariu | Preț | Volum | Cost var. unitar | Costuri fixe | EBITDA |\n|---|---|---|---|---|---|\n| Pesimist | 45 lei | 17.000 | 32 lei | 260.000 lei | **-39.000 lei** |\n| De bază | 50 lei | 20.000 | 30 lei | 250.000 lei | **150.000 lei** |\n| Optimist | 55 lei | 24.000 | 28 lei | 240.000 lei | **408.000 lei** |\n\nCalcul scenariu Pesimist: Venituri = 45 × 17.000 = 765.000 lei; Cost variabil total = 32 × 17.000 = 544.000 lei; Marja de contribuție = 765.000 − 544.000 = 221.000 lei; EBITDA = 221.000 − 260.000 = **-39.000 lei**.\n\n**Tornado chart** — impactul asupra EBITDA al unei variații de ±10% aplicate pe rând fiecărei variabile, față de baseline (150.000 lei):\n\n| Variabilă | EBITDA la -10% | EBITDA la +10% | Interval (range) |\n|---|---|---|---|\n| Preț | 50.000 | 250.000 | 200.000 |\n| Cost variabil unitar | 210.000 | 90.000 | 120.000 |\n| Volum | 110.000 | 190.000 | 80.000 |\n| Costuri fixe | 175.000 | 125.000 | 50.000 |\n\nÎn tornado chart, barele se ordonează descrescător după range: Preț apare sus (bara cea mai lată), Costuri fixe jos (cea mai îngustă). Concluzia pentru CFO: puterea de negociere a prețului de listă are un impact de 4x mai mare asupra EBITDA decât variația costurilor fixe — orice discuție de buget ar trebui să prioritizeze politica de preț înaintea tăierilor de costuri fixe.\n\n⚠ Când construiești simulări Monte Carlo cu Data Table „trick” în Excel, funcțiile RAND() sau NORM.INV(RAND();...) se recalculează la fiecare F9 sau la fiecare recalculare a workbook-ului. Dacă ai și alte Data Tables sau formule volatile în același fișier, rularea poate deveni foarte lentă pe modele mari. Setează Calculation Options pe „Automatic Except for Data Tables” și rulează recalcularea manuală (F9) doar când ai nevoie de un nou set de rezultate, altfel riști ca rezultatele afișate să nu mai corespundă ipotezelor curente din model.\n\n## Exercițiu\n### Exercițiu\n\nElectroMax SRL, retailer de electrocasnice, are următoarele ipoteze de bază:\n- Preț mediu de vânzare: 800 lei/unitate\n- Volum vânzări: 5.000 unități/an\n- Cost variabil unitar: 550 lei/unitate\n- Costuri fixe anuale: 900.000 lei\n\nCerințe:\n1. Calculează EBITDA de bază (baseline).\n2. Construiește scenariul „Pesimist”: volumul scade cu 20%, iar costul variabil unitar crește cu 5%. Calculează noul EBITDA.\n3. Cuantifică impactul (în lei) al trecerii de la baseline la scenariul Pesimist.\n\n**Soluție:** **1. EBITDA baseline:**\nVenituri = 800 × 5.000 = 4.000.000 lei\nCost variabil total = 550 × 5.000 = 2.750.000 lei\nMarja de contribuție = 4.000.000 − 2.750.000 = 1.250.000 lei\nEBITDA = 1.250.000 − 900.000 = **350.000 lei**\n\n**2. Scenariul Pesimist:**\nVolum nou = 5.000 × (1 − 0,20) = 4.000 unități\nCost variabil unitar nou = 550 × (1 + 0,05) = 577,5 lei\nVenituri = 800 × 4.000 = 3.200.000 lei\nCost variabil total = 577,5 × 4.000 = 2.310.000 lei\nMarja de contribuție = 3.200.000 − 2.310.000 = 890.000 lei\nEBITDA = 890.000 − 900.000 = **-10.000 lei**\n\n**3. Impact:**\nΔEBITDA = -10.000 − 350.000 = **-360.000 lei**\n\nO scădere de doar 20% a volumului, combinată cu o creștere de 5% a costului variabil, transformă un profit operațional solid (350.000 lei) într-o pierdere operațională (-10.000 lei) — o scădere de 360.000 lei, adică peste 100% din EBITDA-ul de bază. Acesta este exact tipul de concluzie pe care sensitivity analysis trebuie să-l scoată la iveală înainte de a fi prezentată board-ului.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "sensitivity-analysis-scop",
+    "md": "## De ce ai nevoie de sensitivity și scenario analysis\n\nUn model financiar bun nu produce un singur număr — produce un interval de rezultate posibile, însoțit de explicația factorilor care îl determină. La nivel de CFO sau controller, întrebarea rareori este „Cât va fi EBITDA anul viitor?”, ci „Cu cât se schimbă EBITDA dacă prețul de vânzare scade cu 5%?” sau „Ce se întâmplă dacă cursul EUR/RON crește cu 3%?”.\n\n**Sensitivity analysis** (analiza de sensibilitate) izolează impactul unei singure variabile de intrare (driver) asupra unui rezultat (de regulă profit, EBITDA sau cash flow), menținând toate celelalte ipoteze constante („ceteris paribus”). Răspunde la întrebarea: cât de sensibil e rezultatul la variabila X?\n\n**Scenario analysis** (analiza de scenarii) combină mai multe variabile simultan, într-un set coerent de ipoteze (ex. scenariul „recesiune”: vânzări -15%, costuri +8%, curs valutar +5%). Răspunde la întrebarea: ce se întâmplă dacă lumea arată în felul acesta?\n\nÎn Excel, cele două tehnici se implementează cu instrumente diferite: Data Tables pentru sensitivity analysis pe una sau două variabile, și Scenario Manager pentru combinații de mai multe variabile. Tornado charts vizualizează rezultatele sensitivity analysis sub formă de ranking, iar Monte Carlo simulation extinde analiza la distribuții de probabilitate complete, nu doar la câteva puncte discrete.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "excel-data-table",
+    "md": "## Data Tables: One-way și Two-way\n\nData Table este un instrument Excel din grupul What-If Analysis (tab Data → What-If Analysis → Data Table) care recalculează automat o formulă pentru o listă de valori de intrare, fără să scrii formula de mai multe ori.\n\n**One-way Data Table** (o singură variabilă): testezi cum variază un rezultat (ex. EBITDA) în funcție de o singură variabilă de intrare (ex. volumul vânzărilor). Structura: pe coloană așezi valorile variabilei de test, iar în colțul din dreapta-sus al intervalului pui formula de output (de obicei o referință la celula EBITDA). La rulare, completezi doar „Column Input Cell” cu celula din model care conține variabila testată.\n\n**Two-way Data Table** (două variabile): testezi impactul combinat a două variabile (ex. preț și volum) asupra aceluiași rezultat. Valorile primei variabile se așează pe rând (orizontal), ale celei de-a doua pe coloană (vertical), iar formula de output se pune în colțul din stânga-sus al intervalului. Se completează atât „Row Input Cell” (celula variabilei de pe rând), cât și „Column Input Cell” (celula variabilei de pe coloană).\n\nAtenție: Data Table recalculează întreg workbook-ul la fiecare rulare dacă modul de calcul e Automatic — pentru modele mari, setează Calculation Options pe „Automatic Except for Data Tables” (Formulas → Calculation Options) pentru performanță.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "excel-scenario-manager",
+    "md": "## Scenario Manager\n\nScenario Manager (Data → What-If Analysis → Scenario Manager) permite salvarea unor seturi complete de ipoteze — de regulă 3 până la 5 celule de input — sub un nume (ex. „Pesimist”, „De bază”, „Optimist”) și comutarea instantă între ele pentru a vedea impactul asupra întregului model.\n\nPași de construcție: (1) identifici celulele de input cheie din model (Preț, Volum, Cost variabil unitar, Cost fix); (2) deschizi Scenario Manager → Add → dai un nume scenariului și selectezi celulele changing cells; (3) introduci valorile specifice fiecărui scenariu; (4) repeți pentru fiecare scenariu; (5) generezi un Summary Report, care creează automat o foaie nouă cu toate scenariile și rezultatele-cheie (EBITDA, cash flow, marjă) alăturate, pentru comparație rapidă.\n\nBună practică pentru prezentările către board: limitează-te la 3 scenarii clare (pesimist / de bază / optimist), fiecare cu o narativă de business explicită în spate (nu doar cifre), astfel încât board-ul să înțeleagă ce eveniment economic declanșează fiecare scenariu.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tornado-chart-monte-carlo",
+    "md": "## Tornado charts și Monte Carlo simulation\n\n**Tornado chart** este un grafic bar orizontal care clasifică variabilele de intrare după impactul lor asupra rezultatului, de la cea mai influentă (bara cea mai lată, sus) la cea mai puțin influentă (jos) — forma rezultată seamănă cu o tornadă. Se construiește rulând sensitivity analysis pentru fiecare variabilă în parte, la ±X% față de baseline, și afișând intervalul (min–max) al rezultatului. Utilitate managerială: îți spune pe ce variabile merită să te concentrezi în negocieri, controale de cost sau due diligence — de regulă doar 2-3 variabile explică majoritatea variației rezultatului.\n\n**Monte Carlo simulation** duce analiza mai departe: în loc de 2-3 valori discrete per variabilă (pesimist/bază/optimist), atribui fiecărei variabile o distribuție de probabilitate (de regulă normală sau triunghiulară) și rulezi modelul de sute sau mii de ori, de fiecare dată cu valori generate aleator. Rezultatul nu mai e un singur număr, ci o distribuție completă a rezultatelor posibile, din care poți citi, de exemplu, „probabilitatea ca EBITDA să fie sub 0 este de X%”.\n\nÎn Excel nativ (fără VBA sau add-in-uri precum @RISK), Monte Carlo se poate implementa cu funcția NORM.INV(RAND(); medie; deviație_standard) pentru a genera valori aleatoare pentru fiecare variabilă, combinată cu un one-way Data Table „trick”: pui o coloană cu numere de la 1 la 1.000 (simulările), legi Column Input Cell la o celulă goală (fără utilizare reală în formulă), iar formula de output referă rezultatul modelului (ex. EBITDA), care la fiecare rulare a Data Table recalculează toate funcțiile RAND() din model. Rezultatul e o listă de 1.000 valori de EBITDA simulate, pe care aplici apoi un histogram (Insert → Chart → Histogram) și funcții precum PERCENTILE.INC pentru a citi percentilele de interes (P10, P50, P90).",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b4"
+   },
+   {
+    "type": "example",
+    "title": "Data Table one-way și two-way pentru EBITDA",
+    "concept_key": "excel-data-table",
+    "md": "### Studiu de caz: FarmaPlus SRL — distribuitor produse cosmetice\n\nIpoteze de bază (baseline):\n- Preț mediu de vânzare: 50 lei/unitate\n- Volum vânzări: 20.000 unități/an\n- Cost variabil unitar: 30 lei/unitate\n- Costuri fixe anuale: 250.000 lei\n\nFormulă: EBITDA = Volum × (Preț − Cost variabil unitar) − Costuri fixe\n\nBaseline: EBITDA = 20.000 × (50 − 30) − 250.000 = 400.000 − 250.000 = **150.000 lei**\n\n**One-way Data Table** — sensitivitatea EBITDA la volumul vânzărilor (Column Input Cell = celula Volum):\n\n| Volum (unități) | EBITDA (lei) |\n|---|---|\n| 15.000 | 50.000 |\n| 17.500 | 100.000 |\n| 20.000 (baseline) | 150.000 |\n| 22.500 | 200.000 |\n| 25.000 | 250.000 |\n\nObservație: fiecare pas de 2.500 unități (12,5% din baseline) modifică EBITDA cu exact 50.000 lei — relația e liniară, pentru că marja de contribuție unitară (20 lei) e constantă.\n\n**Two-way Data Table** — EBITDA în funcție de Preț (rând) și Volum (coloană):\n\n| Preț / Volum | 15.000 | 20.000 | 25.000 |\n|---|---|---|---|\n| 45 lei | -25.000 | 50.000 | 125.000 |\n| 50 lei | 50.000 | 150.000 | 250.000 |\n| 55 lei | 125.000 | 250.000 | 375.000 |\n\nCitire rapidă: dacă negociezi un discount de 10% la preț (50 → 45 lei) în același timp cu o scădere de volum la 15.000 unități, EBITDA devine negativ (-25.000 lei) — un semnal clar pentru echipa de vânzări că discounturile agresive combinate cu scăderea cererii pun compania pe pierdere operațională.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b5"
+   },
+   {
+    "type": "example",
+    "title": "Scenario Manager și Tornado Chart",
+    "concept_key": "excel-scenario-manager",
+    "md": "### Scenario Manager și Tornado Chart pentru același model\n\n**Trei scenarii construite în Scenario Manager** (changing cells: Preț, Volum, Cost variabil unitar, Costuri fixe):\n\n| Scenariu | Preț | Volum | Cost var. unitar | Costuri fixe | EBITDA |\n|---|---|---|---|---|---|\n| Pesimist | 45 lei | 17.000 | 32 lei | 260.000 lei | **-39.000 lei** |\n| De bază | 50 lei | 20.000 | 30 lei | 250.000 lei | **150.000 lei** |\n| Optimist | 55 lei | 24.000 | 28 lei | 240.000 lei | **408.000 lei** |\n\nCalcul scenariu Pesimist: Venituri = 45 × 17.000 = 765.000 lei; Cost variabil total = 32 × 17.000 = 544.000 lei; Marja de contribuție = 765.000 − 544.000 = 221.000 lei; EBITDA = 221.000 − 260.000 = **-39.000 lei**.\n\n**Tornado chart** — impactul asupra EBITDA al unei variații de ±10% aplicate pe rând fiecărei variabile, față de baseline (150.000 lei):\n\n| Variabilă | EBITDA la -10% | EBITDA la +10% | Interval (range) |\n|---|---|---|---|\n| Preț | 50.000 | 250.000 | 200.000 |\n| Cost variabil unitar | 210.000 | 90.000 | 120.000 |\n| Volum | 110.000 | 190.000 | 80.000 |\n| Costuri fixe | 175.000 | 125.000 | 50.000 |\n\nÎn tornado chart, barele se ordonează descrescător după range: Preț apare sus (bara cea mai lată), Costuri fixe jos (cea mai îngustă). Concluzia pentru CFO: puterea de negociere a prețului de listă are un impact de 4x mai mare asupra EBITDA decât variația costurilor fixe — orice discuție de buget ar trebui să prioritizeze politica de preț înaintea tăierilor de costuri fixe.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Când construiești simulări Monte Carlo cu Data Table „trick” în Excel, funcțiile RAND() sau NORM.INV(RAND();...) se recalculează la fiecare F9 sau la fiecare recalculare a workbook-ului. Dacă ai și alte Data Tables sau formule volatile în același fișier, rularea poate deveni foarte lentă pe modele mari. Setează Calculation Options pe „Automatic Except for Data Tables” și rulează recalcularea manuală (F9) doar când ai nevoie de un nou set de rezultate, altfel riști ca rezultatele afișate să nu mai corespundă ipotezelor curente din model.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "### Exercițiu\n\nElectroMax SRL, retailer de electrocasnice, are următoarele ipoteze de bază:\n- Preț mediu de vânzare: 800 lei/unitate\n- Volum vânzări: 5.000 unități/an\n- Cost variabil unitar: 550 lei/unitate\n- Costuri fixe anuale: 900.000 lei\n\nCerințe:\n1. Calculează EBITDA de bază (baseline).\n2. Construiește scenariul „Pesimist”: volumul scade cu 20%, iar costul variabil unitar crește cu 5%. Calculează noul EBITDA.\n3. Cuantifică impactul (în lei) al trecerii de la baseline la scenariul Pesimist.",
+    "solution_md": "**1. EBITDA baseline:**\nVenituri = 800 × 5.000 = 4.000.000 lei\nCost variabil total = 550 × 5.000 = 2.750.000 lei\nMarja de contribuție = 4.000.000 − 2.750.000 = 1.250.000 lei\nEBITDA = 1.250.000 − 900.000 = **350.000 lei**\n\n**2. Scenariul Pesimist:**\nVolum nou = 5.000 × (1 − 0,20) = 4.000 unități\nCost variabil unitar nou = 550 × (1 + 0,05) = 577,5 lei\nVenituri = 800 × 4.000 = 3.200.000 lei\nCost variabil total = 577,5 × 4.000 = 2.310.000 lei\nMarja de contribuție = 3.200.000 − 2.310.000 = 890.000 lei\nEBITDA = 890.000 − 900.000 = **-10.000 lei**\n\n**3. Impact:**\nΔEBITDA = -10.000 − 350.000 = **-360.000 lei**\n\nO scădere de doar 20% a volumului, combinată cu o creștere de 5% a costului variabil, transformă un profit operațional solid (350.000 lei) într-o pierdere operațională (-10.000 lei) — o scădere de 360.000 lei, adică peste 100% din EBITDA-ul de bază. Acesta este exact tipul de concluzie pe care sensitivity analysis trebuie să-l scoată la iveală înainte de a fi prezentată board-ului.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un Data Table cu două variabile (two-way) în Excel, ce reprezintă „Column Input Cell”?",
+    "choices": [
+     "Celula din model legată la variabila ale cărei valori de test sunt așezate pe coloană",
+     "Celula care conține formula de output a modelului",
+     "Celula unde Excel scrie automat rezultatul final al simulării",
+     "Celula unde se introduce numele scenariului curent"
+    ],
+    "answer": 0,
+    "explain": "Column Input Cell este celula din model (nu din tabel) care conține variabila ale cărei valori de test sunt așezate pe coloana Data Table-ului; Row Input Cell joacă rolul echivalent pentru valorile așezate pe rând.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce funcție Excel se folosește tipic pentru a genera o valoare aleatoare dintr-o distribuție normală, cu medie și deviație standard date, într-o simulare Monte Carlo?",
+    "choices": [
+     "RANDBETWEEN(min; max)",
+     "NORM.INV(RAND(); medie; deviație_standard)",
+     "TREND(cunoscut_y; cunoscut_x)",
+     "FORECAST.LINEAR(x; cunoscut_y; cunoscut_x)"
+    ],
+    "answer": 1,
+    "explain": "NORM.INV(RAND(); medie; deviație_standard) transformă un număr aleator uniform generat de RAND() într-o valoare aleatoare dintr-o distribuție normală cu media și deviația standard specificate — tehnica standard pentru Monte Carlo nativ în Excel, fără VBA sau add-in-uri.",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Data Table one-way în Excel?",
+    "back": "Un instrument What-If Analysis care recalculează automat o formulă de output pentru o listă de valori ale unei singure variabile de intrare, folosind Column Input Cell pentru a lega valorile de test la celula variabilei din model.",
+    "concept_key": "excel-data-table",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula marjei de contribuție?",
+    "back": "Marja de contribuție = Venituri − Costuri variabile totale (ex. 1.000.000 lei − 600.000 lei = 400.000 lei).",
+    "concept_key": "marja-contributie",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte scenarii standard se recomandă în Scenario Manager pentru o prezentare de board?",
+    "back": "3 scenarii clare: Pesimist, De bază, Optimist — fiecare cu o narativă de business explicită în spatele cifrelor.",
+    "concept_key": "excel-scenario-manager",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce arată un tornado chart?",
+    "back": "Un ranking al variabilelor de intrare după impactul lor (range min–max) asupra unui rezultat precum EBITDA, de la cea mai influentă (sus) la cea mai puțin influentă (jos).",
+    "concept_key": "tornado-chart-monte-carlo",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum generezi în Excel nativ o valoare aleatoare cu distribuție normală pentru Monte Carlo?",
+    "back": "Cu funcția NORM.INV(RAND(); medie; deviație_standard), combinată de regulă cu un Data Table pentru a rula sute sau mii de simulări.",
+    "concept_key": "tornado-chart-monte-carlo",
+    "blockId": "cmjjuxw5x00etumkplodzjhf0-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1667,
+   "flashcards": 5
+  }
+ }
+}

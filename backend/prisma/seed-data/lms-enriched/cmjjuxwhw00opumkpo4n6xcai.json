@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxwhw00opumkpo4n6xcai",
+ "courseId": "cmjjuxwhc00obumkpfv2f5s1h",
+ "course": "Time Management și Productivitate",
+ "module": "Prioritizare",
+ "lesson": "Alte tehnici de prioritizare",
+ "category": "SOFT_SKILLS",
+ "content": "# Alte tehnici de prioritizare\n\n## De ce ai nevoie de mai multe tehnici de prioritizare\n\nMatricea Eisenhower (urgent/important) este un punct de plecare excelent, dar nu acoperă toate situațiile din viața profesională reală. Când ai de-a face cu un backlog de 30 de sarcini, cu un proiect care are zeci de cerințe de la stakeholderi diferiți sau cu o listă de idei de îmbunătățire pentru echipa ta, ai nevoie de instrumente mai granulare, care să îți permită să compari sarcinile între ele, nu doar să le plasezi în patru cadrane.\n\nÎn această lecție vei învăța patru tehnici complementare, folosite frecvent în managementul de proiect, în dezvoltarea de produs și în organizarea personală a timpului: **metoda MoSCoW**, **metoda ABCDE**, **matricea valoare vs. efort** și **scorul ICE**. Fiecare are punctele ei forte — alege-o pe cea potrivită contextului, nu încerca să le aplici pe toate simultan pentru aceeași listă de sarcini.\n\n## Metoda MoSCoW\n\nMoSCoW este un acronim folosit intens în managementul cerințelor de proiect (de exemplu la implementarea unui sistem ERP sau la lansarea unui produs), dar funcționează la fel de bine pentru organizarea sarcinilor personale sau ale echipei. Numele vine de la patru categorii:\n\n- **Must have (M)** — ești obligat să le livrezi; fără ele, proiectul sau rezultatul eșuează ori nu are sens.\n- **Should have (S)** — importante, dar nu critice; proiectul poate funcționa fără ele pe termen scurt, însă absența lor afectează calitatea.\n- **Could have (C)** — de dorit, dar cu impact mic dacă lipsesc; le faci doar dacă rămâne timp și resurse.\n- **Won't have (W)** — excluse conștient din scopul curent; le notezi explicit ca să eviți discuțiile repetate („de ce nu facem și X?”).\n\nDiferența esențială față de o listă simplă de priorități este categoria „Won't have”: ea forțează o decizie explicită de excludere, ceea ce reduce scope creep-ul (extinderea necontrolată a sarcinilor) și clarifică așteptările tuturor celor implicați.\n\n## Metoda ABCDE (Brian Tracy)\n\nMetoda ABCDE, popularizată de autorul Brian Tracy în cartea „Eat That Frog!”, este o rafinare a listei simple de priorități. Fiecare sarcină primește o literă:\n\n- **A** — consecințe serioase dacă nu o faci (poți pierde un client, un contract, poziția din companie). Dacă ai mai multe sarcini A, le numerotezi A1, A2, A3 în ordinea priorității.\n- **B** — consecințe moderate dacă nu o faci (cineva se supără, dar nu e o criză).\n- **C** — fără consecințe reale dacă nu o faci — sarcini plăcute, dar fără impact (verificarea rețelelor sociale, o cafea cu un coleg).\n- **D — Delegate**: sarcini pe care altcineva le poate face, chiar dacă nu la fel de bine ca tine. Regula lui Tracy: dacă altcineva poate face o sarcină la 70% din calitatea ta, deleg-o.\n- **E — Eliminate**: sarcini care nu mai aduc valoare și pot fi scoase complet din listă.\n\nRegula de aur a metodei: nu treci niciodată la o sarcină B înainte de a termina toate sarcinile A. Este ușor să te refugiezi în sarcini B sau C pentru că sunt mai simple sau mai plăcute — disciplina ABCDE previne exact acest comportament, cunoscut ca „procrastinare productivă”.\n\n## Matricea valoare vs. efort\n\nAceastă matrice este folosită frecvent în product management pentru a prioritiza funcționalități, dar se aplică excelent și sarcinilor din activitatea zilnică sau proiectelor de echipă. Construiești un grafic cu două axe: **valoare/impact** (orizontal) și **efort necesar** (vertical), împărțit în patru cadrane:\n\n- **Victorii rapide (Quick wins)** — valoare mare, efort mic. Le faci primele — au cel mai bun raport rezultat/timp investit.\n- **Proiecte majore (Major projects)** — valoare mare, efort mare. Merită investiția, dar necesită planificare, resurse și, adesea, împărțire pe etape.\n- **Sarcini de umplutură (Fill-ins)** — valoare mică, efort mic. Le faci în intervalele moarte dintre sarcini importante, nu le programezi cu prioritate.\n- **Sarcini ingrate (Thankless tasks)** — valoare mică, efort mare. Evită-le sau elimină-le; dacă sunt obligatorii, caută să reduci efortul (automatizare, delegare) sau renegociază necesitatea lor.\n\nAvantajul acestei matrice față de MoSCoW este vizual: poți plasa 15-20 de sarcini pe același grafic și vezi imediat unde se aglomerează efortul irosit.\n\n## Scorul ICE (Impact, Confidence, Ease)\n\nICE este o tehnică de prioritizare cantitativă, împrumutată din growth marketing și managementul de produs, utilă atunci când ai zeci de idei sau inițiative de comparat și ai nevoie de un criteriu numeric, nu doar de intuiție. Fiecare sarcină sau idee primește trei scoruri, de la 1 la 10:\n\n- **Impact (I)** — cât de mult contribuie sarcina la obiectivul urmărit.\n- **Confidence (C)** — cât de sigur ești că estimarea de impact este corectă (nu ești sigur? dai o notă mică).\n- **Ease (E)** — cât de ușor/rapid este de implementat (10 = foarte ușor, 1 = foarte greu).\n\nScorul final se calculează ca medie: **ICE = (Impact + Confidence + Ease) / 3**. Sarcinile cu scorul cel mai mare intră primele în plan. Utilitatea reală a metodei nu este precizia matematică (scorurile rămân subiective), ci faptul că te obligă să separi explicit „cât de mare e câștigul” de „cât de sigur sunt” și de „cât de greu e de făcut” — trei dimensiuni pe care, altfel, tindem să le amestecăm într-o singură impresie generală de tipul „pare o idee bună”.\n\n## Exemplu: MoSCoW aplicat la lansarea unui magazin online\nAna coordonează lansarea unui magazin online pentru un SRL care vinde produse handmade. Cu două săptămâni înainte de lansare, are 12 sarcini pe listă. Aplică MoSCoW:\n\n**Must have:** integrare procesator de plăți, pagină de produs funcțională, politica de retur vizibilă (cerință legală pentru comerțul online), formular de contact.\n\n**Should have:** cont de client cu istoric comenzi, notificări email la comandă confirmată.\n\n**Could have:** recenzii ale clienților, program de fidelitate cu puncte.\n\n**Won't have (pentru această lansare):** aplicație mobilă dedicată, chat live cu asistent virtual, program de afiliere.\n\nRezultat: Ana lansează magazinul la termen cu toate elementele Must have, adaugă elementele Should have în prima lună de funcționare și comunică echipei, explicit, că elementele Won't have nu sunt „uitate”, ci amânate conștient pentru o etapă viitoare — ceea ce oprește discuțiile repetate din ședințe de genul „dar nu ar trebui să avem și chat live?”.\n\n## Exemplu: Scor ICE pentru o listă de îmbunătățiri de proces\nUn manager de operațiuni la o firmă de distribuție are patru propuneri de îmbunătățire a procesului de facturare și vrea să decidă cu ce începe:\n\n| Inițiativă | Impact | Confidence | Ease | ICE |\n|---|---|---|---|---|\n| Automatizare trimitere facturi prin email | 8 | 9 | 8 | 8,3 |\n| Renegociere termene de plată cu furnizorii | 9 | 4 | 3 | 5,3 |\n| Curs de utilizare avansată Excel pentru echipă | 5 | 7 | 6 | 6,0 |\n| Migrare la un nou soft de facturare | 9 | 6 | 2 | 5,7 |\n\nCalculul pentru prima linie: ICE = (8 + 9 + 8) / 3 = 8,33. Automatizarea trimiterii facturilor prin email are cel mai mare scor — impact ridicat, echipa este foarte sigură de rezultat (a mai implementat automatizări similare) și efortul este mic. Migrarea la un soft nou de facturare are impact mare, dar Ease foarte mic (proiect complex, riscant), deci scorul final o plasează pe ultimul loc, deși „pe hârtie” pare cea mai ambițioasă inițiativă.\n\n⚠ Nu combina toate aceste tehnici pentru aceeași listă de sarcini — riști să pierzi mai mult timp prioritizând decât lucrând efectiv. Alege o singură tehnică potrivită contextului: MoSCoW pentru negocierea scopului unui proiect cu stakeholderi, ABCDE pentru organizarea zilei de lucru, matricea valoare/efort pentru sesiuni de brainstorming vizual în echipă, ICE atunci când compari numeric mai multe inițiative sau idei de îmbunătățire.\n\n## Exercițiu\nAi următoarele șase sarcini pe lista de azi, la biroul tău de contabilitate/PFA:\n\n1. Trimiterea declarației fiscale către un client, cu termen mâine.\n2. Actualizarea unui șablon Excel intern folosit ocazional.\n3. Răspuns la un email de la un coleg care întreabă ceva ce poate găsi și singur în manual.\n4. Pregătirea unui raport lunar pentru un client important, cerut de acesta azi.\n5. Organizarea arhivei de documente din ultimii 3 ani (nimeni nu a cerut-o).\n6. Un apel telefonic de follow-up cu un lead nou, potențial client mare.\n\nAplică metoda ABCDE: atribuie fiecărei sarcini o literă (A, B, C, D sau E) și, pentru sarcinile A, un număr de prioritate (A1, A2...).\n\n**Soluție:** - **A1** — Trimiterea declarației fiscale (termen mâine — consecințe serioase: penalizări pentru client, risc reputațional pentru tine).\n- **A2** — Apelul cu lead-ul nou, potențial client mare (consecință serioasă dacă pierzi oportunitatea — un concurent poate prelua clientul dacă întârzii răspunsul).\n- **B** — Raportul lunar pentru clientul important (cerut azi, dar fără termen legal strict — consecință moderată dacă întârzie o zi, clientul se poate supăra).\n- **C** — Răspunsul la emailul colegului (fără consecințe reale dacă răspunzi mâine, dar nici nu costă mult acum — o poți face rapid, între alte sarcini).\n- **D** — Actualizarea șablonului Excel intern (poate fi delegată unui coleg junior sau unui asistent — nu necesită expertiza ta directă).\n- **E** — Organizarea arhivei din ultimii 3 ani (nimeni nu a cerut-o, nu are termen, nu contribuie la niciun obiectiv curent — elimin-o din listă, sau reevalueaz-o peste câteva luni dacă devine necesară).\n\nObservă disciplina cheie a metodei: chiar dacă raportul pentru clientul important (B) pare urgent emoțional, el rămâne după A1 și A2, pentru că declarația fiscală are termen legal, iar lead-ul nou are o fereastră de oportunitate care se poate închide.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "tehnici-prioritizare-alternative",
+    "md": "## De ce ai nevoie de mai multe tehnici de prioritizare\n\nMatricea Eisenhower (urgent/important) este un punct de plecare excelent, dar nu acoperă toate situațiile din viața profesională reală. Când ai de-a face cu un backlog de 30 de sarcini, cu un proiect care are zeci de cerințe de la stakeholderi diferiți sau cu o listă de idei de îmbunătățire pentru echipa ta, ai nevoie de instrumente mai granulare, care să îți permită să compari sarcinile între ele, nu doar să le plasezi în patru cadrane.\n\nÎn această lecție vei învăța patru tehnici complementare, folosite frecvent în managementul de proiect, în dezvoltarea de produs și în organizarea personală a timpului: **metoda MoSCoW**, **metoda ABCDE**, **matricea valoare vs. efort** și **scorul ICE**. Fiecare are punctele ei forte — alege-o pe cea potrivită contextului, nu încerca să le aplici pe toate simultan pentru aceeași listă de sarcini.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "moscow-method",
+    "md": "## Metoda MoSCoW\n\nMoSCoW este un acronim folosit intens în managementul cerințelor de proiect (de exemplu la implementarea unui sistem ERP sau la lansarea unui produs), dar funcționează la fel de bine pentru organizarea sarcinilor personale sau ale echipei. Numele vine de la patru categorii:\n\n- **Must have (M)** — ești obligat să le livrezi; fără ele, proiectul sau rezultatul eșuează ori nu are sens.\n- **Should have (S)** — importante, dar nu critice; proiectul poate funcționa fără ele pe termen scurt, însă absența lor afectează calitatea.\n- **Could have (C)** — de dorit, dar cu impact mic dacă lipsesc; le faci doar dacă rămâne timp și resurse.\n- **Won't have (W)** — excluse conștient din scopul curent; le notezi explicit ca să eviți discuțiile repetate („de ce nu facem și X?”).\n\nDiferența esențială față de o listă simplă de priorități este categoria „Won't have”: ea forțează o decizie explicită de excludere, ceea ce reduce scope creep-ul (extinderea necontrolată a sarcinilor) și clarifică așteptările tuturor celor implicați.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "abcde-method",
+    "md": "## Metoda ABCDE (Brian Tracy)\n\nMetoda ABCDE, popularizată de autorul Brian Tracy în cartea „Eat That Frog!”, este o rafinare a listei simple de priorități. Fiecare sarcină primește o literă:\n\n- **A** — consecințe serioase dacă nu o faci (poți pierde un client, un contract, poziția din companie). Dacă ai mai multe sarcini A, le numerotezi A1, A2, A3 în ordinea priorității.\n- **B** — consecințe moderate dacă nu o faci (cineva se supără, dar nu e o criză).\n- **C** — fără consecințe reale dacă nu o faci — sarcini plăcute, dar fără impact (verificarea rețelelor sociale, o cafea cu un coleg).\n- **D — Delegate**: sarcini pe care altcineva le poate face, chiar dacă nu la fel de bine ca tine. Regula lui Tracy: dacă altcineva poate face o sarcină la 70% din calitatea ta, deleg-o.\n- **E — Eliminate**: sarcini care nu mai aduc valoare și pot fi scoase complet din listă.\n\nRegula de aur a metodei: nu treci niciodată la o sarcină B înainte de a termina toate sarcinile A. Este ușor să te refugiezi în sarcini B sau C pentru că sunt mai simple sau mai plăcute — disciplina ABCDE previne exact acest comportament, cunoscut ca „procrastinare productivă”.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "value-effort-matrix",
+    "md": "## Matricea valoare vs. efort\n\nAceastă matrice este folosită frecvent în product management pentru a prioritiza funcționalități, dar se aplică excelent și sarcinilor din activitatea zilnică sau proiectelor de echipă. Construiești un grafic cu două axe: **valoare/impact** (orizontal) și **efort necesar** (vertical), împărțit în patru cadrane:\n\n- **Victorii rapide (Quick wins)** — valoare mare, efort mic. Le faci primele — au cel mai bun raport rezultat/timp investit.\n- **Proiecte majore (Major projects)** — valoare mare, efort mare. Merită investiția, dar necesită planificare, resurse și, adesea, împărțire pe etape.\n- **Sarcini de umplutură (Fill-ins)** — valoare mică, efort mic. Le faci în intervalele moarte dintre sarcini importante, nu le programezi cu prioritate.\n- **Sarcini ingrate (Thankless tasks)** — valoare mică, efort mare. Evită-le sau elimină-le; dacă sunt obligatorii, caută să reduci efortul (automatizare, delegare) sau renegociază necesitatea lor.\n\nAvantajul acestei matrice față de MoSCoW este vizual: poți plasa 15-20 de sarcini pe același grafic și vezi imediat unde se aglomerează efortul irosit.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ice-scoring",
+    "md": "## Scorul ICE (Impact, Confidence, Ease)\n\nICE este o tehnică de prioritizare cantitativă, împrumutată din growth marketing și managementul de produs, utilă atunci când ai zeci de idei sau inițiative de comparat și ai nevoie de un criteriu numeric, nu doar de intuiție. Fiecare sarcină sau idee primește trei scoruri, de la 1 la 10:\n\n- **Impact (I)** — cât de mult contribuie sarcina la obiectivul urmărit.\n- **Confidence (C)** — cât de sigur ești că estimarea de impact este corectă (nu ești sigur? dai o notă mică).\n- **Ease (E)** — cât de ușor/rapid este de implementat (10 = foarte ușor, 1 = foarte greu).\n\nScorul final se calculează ca medie: **ICE = (Impact + Confidence + Ease) / 3**. Sarcinile cu scorul cel mai mare intră primele în plan. Utilitatea reală a metodei nu este precizia matematică (scorurile rămân subiective), ci faptul că te obligă să separi explicit „cât de mare e câștigul” de „cât de sigur sunt” și de „cât de greu e de făcut” — trei dimensiuni pe care, altfel, tindem să le amestecăm într-o singură impresie generală de tipul „pare o idee bună”.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b5"
+   },
+   {
+    "type": "example",
+    "title": "MoSCoW aplicat la lansarea unui magazin online",
+    "concept_key": "moscow-method",
+    "md": "Ana coordonează lansarea unui magazin online pentru un SRL care vinde produse handmade. Cu două săptămâni înainte de lansare, are 12 sarcini pe listă. Aplică MoSCoW:\n\n**Must have:** integrare procesator de plăți, pagină de produs funcțională, politica de retur vizibilă (cerință legală pentru comerțul online), formular de contact.\n\n**Should have:** cont de client cu istoric comenzi, notificări email la comandă confirmată.\n\n**Could have:** recenzii ale clienților, program de fidelitate cu puncte.\n\n**Won't have (pentru această lansare):** aplicație mobilă dedicată, chat live cu asistent virtual, program de afiliere.\n\nRezultat: Ana lansează magazinul la termen cu toate elementele Must have, adaugă elementele Should have în prima lună de funcționare și comunică echipei, explicit, că elementele Won't have nu sunt „uitate”, ci amânate conștient pentru o etapă viitoare — ceea ce oprește discuțiile repetate din ședințe de genul „dar nu ar trebui să avem și chat live?”.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b6"
+   },
+   {
+    "type": "example",
+    "title": "Scor ICE pentru o listă de îmbunătățiri de proces",
+    "concept_key": "ice-scoring",
+    "md": "Un manager de operațiuni la o firmă de distribuție are patru propuneri de îmbunătățire a procesului de facturare și vrea să decidă cu ce începe:\n\n| Inițiativă | Impact | Confidence | Ease | ICE |\n|---|---|---|---|---|\n| Automatizare trimitere facturi prin email | 8 | 9 | 8 | 8,3 |\n| Renegociere termene de plată cu furnizorii | 9 | 4 | 3 | 5,3 |\n| Curs de utilizare avansată Excel pentru echipă | 5 | 7 | 6 | 6,0 |\n| Migrare la un nou soft de facturare | 9 | 6 | 2 | 5,7 |\n\nCalculul pentru prima linie: ICE = (8 + 9 + 8) / 3 = 8,33. Automatizarea trimiterii facturilor prin email are cel mai mare scor — impact ridicat, echipa este foarte sigură de rezultat (a mai implementat automatizări similare) și efortul este mic. Migrarea la un soft nou de facturare are impact mare, dar Ease foarte mic (proiect complex, riscant), deci scorul final o plasează pe ultimul loc, deși „pe hârtie” pare cea mai ambițioasă inițiativă.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu combina toate aceste tehnici pentru aceeași listă de sarcini — riști să pierzi mai mult timp prioritizând decât lucrând efectiv. Alege o singură tehnică potrivită contextului: MoSCoW pentru negocierea scopului unui proiect cu stakeholderi, ABCDE pentru organizarea zilei de lucru, matricea valoare/efort pentru sesiuni de brainstorming vizual în echipă, ICE atunci când compari numeric mai multe inițiative sau idei de îmbunătățire.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai următoarele șase sarcini pe lista de azi, la biroul tău de contabilitate/PFA:\n\n1. Trimiterea declarației fiscale către un client, cu termen mâine.\n2. Actualizarea unui șablon Excel intern folosit ocazional.\n3. Răspuns la un email de la un coleg care întreabă ceva ce poate găsi și singur în manual.\n4. Pregătirea unui raport lunar pentru un client important, cerut de acesta azi.\n5. Organizarea arhivei de documente din ultimii 3 ani (nimeni nu a cerut-o).\n6. Un apel telefonic de follow-up cu un lead nou, potențial client mare.\n\nAplică metoda ABCDE: atribuie fiecărei sarcini o literă (A, B, C, D sau E) și, pentru sarcinile A, un număr de prioritate (A1, A2...).",
+    "solution_md": "- **A1** — Trimiterea declarației fiscale (termen mâine — consecințe serioase: penalizări pentru client, risc reputațional pentru tine).\n- **A2** — Apelul cu lead-ul nou, potențial client mare (consecință serioasă dacă pierzi oportunitatea — un concurent poate prelua clientul dacă întârzii răspunsul).\n- **B** — Raportul lunar pentru clientul important (cerut azi, dar fără termen legal strict — consecință moderată dacă întârzie o zi, clientul se poate supăra).\n- **C** — Răspunsul la emailul colegului (fără consecințe reale dacă răspunzi mâine, dar nici nu costă mult acum — o poți face rapid, între alte sarcini).\n- **D** — Actualizarea șablonului Excel intern (poate fi delegată unui coleg junior sau unui asistent — nu necesită expertiza ta directă).\n- **E** — Organizarea arhivei din ultimii 3 ani (nimeni nu a cerut-o, nu are termen, nu contribuie la niciun obiectiv curent — elimin-o din listă, sau reevalueaz-o peste câteva luni dacă devine necesară).\n\nObservă disciplina cheie a metodei: chiar dacă raportul pentru clientul important (B) pare urgent emoțional, el rămâne după A1 și A2, pentru că declarația fiscală are termen legal, iar lead-ul nou are o fereastră de oportunitate care se poate închide.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În metoda MoSCoW, ce reprezintă categoria „Won't have”?",
+    "choices": [
+     "Sarcini de care nimeni nu și-a amintit să le includă în plan",
+     "Sarcini excluse conștient din scopul curent, comunicate explicit echipei",
+     "Sarcini delegate altor persoane din echipă",
+     "Sarcini fără nicio valoare pentru proiect, care se elimină definitiv"
+    ],
+    "answer": 1,
+    "explain": "„Won't have” nu înseamnă că sarcina e fără valoare sau uitată, ci că a fost exclusă în mod deliberat din scopul actual, pentru a preveni discuții repetate și extinderea necontrolată a proiectului (scope creep).",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă pentru scorul ICE?",
+    "choices": [
+     "ICE = Impact × Confidence × Ease",
+     "ICE = (Impact + Confidence + Ease) / 3",
+     "ICE = Impact − Effort",
+     "ICE = (Valoare + Urgență) / Efort"
+    ],
+    "answer": 1,
+    "explain": "ICE se calculează ca medie aritmetică a celor trei scoruri (fiecare de la 1 la 10): Impact, Confidence (încrederea în estimare) și Ease (ușurința implementării). Sarcinile cu media cea mai mare au prioritate.",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul MoSCoW în prioritizare?",
+    "back": "Must have, Should have, Could have, Won't have — patru categorii pentru clasificarea cerințelor/sarcinilor după obligativitate.",
+    "concept_key": "moscow-method",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În metoda ABCDE, ce faci cu o sarcină categorisită „D”?",
+    "back": "O delegi altcuiva — regula lui Brian Tracy: dacă altcineva o poate face la cel puțin 70% din calitatea ta, deleg-o.",
+    "concept_key": "abcde-method",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În matricea valoare vs. efort, care este cadranul cu cea mai bună prioritate?",
+    "back": "„Victoriile rapide” (Quick wins) — valoare mare, efort mic; se fac primele.",
+    "concept_key": "value-effort-matrix",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula scorului ICE?",
+    "back": "ICE = (Impact + Confidence + Ease) / 3, fiecare componentă notată de la 1 la 10.",
+    "concept_key": "ice-scoring",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce regulă de disciplină impune metoda ABCDE?",
+    "back": "Nu treci niciodată la o sarcină B înainte de a termina toate sarcinile A — previne „procrastinarea productivă”.",
+    "concept_key": "abcde-method",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine a popularizat metoda ABCDE și în ce carte?",
+    "back": "Brian Tracy, în cartea „Eat That Frog!”.",
+    "concept_key": "abcde-method",
+    "blockId": "cmjjuxwhw00opumkpo4n6xcai-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1478,
+   "flashcards": 6
+  }
+ }
+}

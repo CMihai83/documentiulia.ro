@@ -1,0 +1,153 @@
+{
+ "lessonId": "cmjjuxw1y00brumkpq63l53rk",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Bugetare și Planificare Financiară",
+ "lesson": "Forecasting basics",
+ "category": "FINANCE_OPS",
+ "content": "# Forecasting basics\n\n**Forecasting-ul financiar** (previziunea financiară) este procesul de estimare a rezultatelor financiare viitoare ale unei companii — venituri, costuri, profit, cash-flow — pe baza datelor istorice, a tendințelor curente și a ipotezelor despre viitor.\n\nDeși bugetul și forecasting-ul par similare, au roluri diferite:\n\n- **Bugetul** este un plan financiar fix, aprobat de obicei o dată pe an, care stabilește ținte și limite de cheltuieli pentru anul respectiv. Odată aprobat, rareori se modifică în cursul anului.\n- **Forecasting-ul** este o estimare dinamică, actualizată periodic (lunar sau trimestrial), care reflectă cea mai recentă informație disponibilă despre cum evoluează afacerea față de buget.\n\nDe exemplu, un SRL de distribuție își stabilește bugetul anual în decembrie 2025 pentru anul 2026, cu o țintă de vânzări de 6.000.000 lei. În martie 2026, după primul trimestru, compania realizează un forecast actualizat: dacă vânzările din T1 au fost cu 8% peste plan din cauza unui contract nou, forecasting-ul pentru restul anului se ajustează în sus, chiar dacă bugetul inițial rămâne neschimbat ca reper de comparație.\n\nRolul principal al forecasting-ului este să sprijine decizii operative rapide: angajări, investiții în stoc, negocieri de credit, ajustarea cheltuielilor — toate bazate pe cea mai recentă realitate, nu pe un plan vechi de câteva luni.\n\n**Rolling forecast** (previziune glisantă) este o tehnică prin care compania menține mereu o perspectivă de un anumit număr de luni în avans, indiferent de momentul din anul calendaristic — spre deosebire de bugetul anual clasic, care „se termină\" pe 31 decembrie.\n\nCel mai folosit format este modelul **12+3**: la sfârșitul fiecărui trimestru, compania adaugă un nou trimestru la orizontul de previziune, astfel încât să aibă mereu 12 luni vizibile în față.\n\nExemplu de mecanism: în ianuarie 2026, forecasting-ul acoperă perioada ianuarie–decembrie 2026 (12 luni). La sfârșitul lunii martie 2026, compania actualizează previziunea folosind rezultatele reale din T1 și adaugă trimestrul ianuarie–martie 2027, astfel încât noul orizont devine aprilie 2026–martie 2027 — tot 12 luni, dar „mutate\" cu un trimestru înainte.\n\nAvantajele rolling forecast față de bugetul static:\n\n1. Reacție rapidă la schimbări de piață (cerere, prețuri materii prime, curs valutar).\n2. Reduce efectul de „buget învechit\" din trimestrul 4, când planul din ianuarie nu mai reflectă realitatea.\n3. Obligă echipa de management să discute periodic despre ipotezele de business, nu doar o dată pe an.\n\nDezavantajul principal este efortul administrativ: actualizarea frecventă cere date curate și un proces disciplinat de colectare, motiv pentru care multe companii mici încep cu o actualizare trimestrială, nu lunară.\n\n**Analiza de scenarii** (scenario planning) presupune construirea mai multor variante de forecast, fiecare bazată pe un set diferit de ipoteze despre viitor. Cel mai frecvent se folosesc trei scenarii:\n\n- **Scenariul de bază** (base case): ipoteze realiste, cele mai probabile — de regulă cel folosit pentru raportarea internă curentă.\n- **Scenariul optimist** (best case): ipoteze favorabile — creștere de piață peste așteptări, costuri sub control, contracte noi.\n- **Scenariul pesimist** (worst case): ipoteze nefavorabile — scădere de cerere, întârzieri de plăți, creșterea costurilor cu materiile prime sau a dobânzilor.\n\nScopul nu este să „ghicești\" scenariul corect, ci să înțelegi plaja de rezultate posibile și să pregătești planuri de acțiune pentru fiecare situație: ce cheltuieli se pot amâna dacă vânzările scad cu 15%? Ce capacitate suplimentară e nevoie dacă cererea crește cu 20%?\n\nScenariile sunt utile mai ales în discuțiile cu banca sau investitorii: a arăta că știi cum arată afacerea și în varianta pesimistă crește credibilitatea planului financiar.\n\n**Analiza de sensibilitate** (sensitivity analysis) răspunde la întrebarea: „Cât de mult se schimbă rezultatul financiar dacă modific o singură variabilă cheie, păstrând restul constante?\"\n\nSpre deosebire de scenarii (care schimbă simultan mai multe ipoteze), analiza de sensibilitate izolează o variabilă odată — de exemplu doar prețul de vânzare, doar volumul, sau doar cursul valutar — pentru a identifica care variabile au cel mai mare impact asupra profitului.\n\nVariabilele cheie testate cel mai des într-un forecast de afaceri din România:\n\n- Volumul de vânzări (cantitate/număr de clienți)\n- Prețul de vânzare mediu\n- Costul materiilor prime sau al mărfurilor (mai ales dacă sunt importate și expuse la curs valutar)\n- Costurile cu personalul (creșteri salariale, angajări noi)\n- Rata dobânzii, pentru companiile cu credite\n\nRezultatul analizei de sensibilitate se prezintă adesea sub forma unui „tornado chart\" — un grafic cu bare orizontale ordonate descrescător, care arată care variabilă mișcă cel mai mult profitul atunci când variază cu un procent standard (de exemplu ±10%). Variabila din vârful graficului este cea pe care managementul trebuie să o monitorizeze cel mai atent.\n\n## Exemplu: Rolling forecast pentru un SRL de retail\nO firmă SRL cu activitate de retail are un buget anual 2026 de 4.800.000 lei venituri și 4.200.000 lei costuri totale, deci un profit brut planificat de 600.000 lei.\n\nLa sfârșitul lunii martie 2026 (T1 realizat), rezultatele reale arată:\n\n- Venituri T1 realizate: 1.350.000 lei (față de 1.200.000 lei planificat, +12,5%)\n- Costuri T1 realizate: 1.220.000 lei (față de 1.050.000 lei planificat, +16,2%, din cauza creșterii prețului la energie și marfă)\n\nEchipa financiară actualizează rolling forecast-ul pentru următoarele 9 luni (aprilie–decembrie 2026), păstrând tendința de vânzări peste plan, dar aplicând și creșterea de costuri observată:\n\n- Venituri estimate aprilie–decembrie (plan 3.600.000 lei, ajustat cu +10%): 3.960.000 lei\n- Costuri estimate aprilie–decembrie (plan 3.150.000 lei, ajustat cu +14%): 3.591.000 lei\n\n**Forecast total 2026 recalculat:**\n\n- Venituri: 1.350.000 + 3.960.000 = 5.310.000 lei\n- Costuri: 1.220.000 + 3.591.000 = 4.811.000 lei\n- Profit brut estimat: 499.000 lei\n\nDeși veniturile sunt peste plan, profitul brut estimat este cu 101.000 lei mai mic decât bugetul inițial de 600.000 lei, pentru că, în T1, costurile au crescut proporțional mai mult decât veniturile. Acest tip de semnal timpuriu permite managementului să acționeze din aprilie — de exemplu renegocierea prețurilor cu furnizorii — și nu abia în decembrie, când marja s-ar fi erodat deja pe tot anul.\n\n## Exemplu: Scenarii și analiză de sensibilitate pentru o investiție\nO companie de producție analizează achiziția unei linii noi de ambalare, cu un impact estimat asupra profitului net anual, în scenariul de bază, de 250.000 lei.\n\nScenariile construite de echipa financiară:\n\n- **Optimist:** cerere +15% peste plan, costuri neschimbate → profit net estimat 340.000 lei\n- **Bază:** ipotezele curente → profit net estimat 250.000 lei\n- **Pesimist:** cerere -10%, cost energie +8% → profit net estimat 140.000 lei\n\nPlaja de rezultate (140.000–340.000 lei) arată managementului că investiția rămâne profitabilă chiar și în scenariul pesimist, ceea ce reduce riscul perceput al deciziei.\n\nPentru a înțelege ce variabilă contează cel mai mult, echipa rulează o analiză de sensibilitate, testând impactul unei variații de ±10% pentru fiecare variabilă, pe rând, față de scenariul de bază (250.000 lei):\n\n- Volum vânzări ±10% → profit net 210.000–290.000 lei (variație de ±40.000 lei)\n- Preț de vânzare ±10% → profit net 190.000–310.000 lei (variație de ±60.000 lei)\n- Cost materie primă ±10% → profit net 220.000–280.000 lei (variație de ±30.000 lei)\n- Curs valutar EUR/RON ±10% → profit net 230.000–270.000 lei (variație de ±20.000 lei)\n\n**Concluzie:** prețul de vânzare este variabila cu cel mai mare impact asupra profitului (±60.000 lei), urmată de volum. Managementul ar trebui să prioritizeze monitorizarea atentă a politicii de preț și a negocierilor cu clienții mari, mai degrabă decât cursul valutar, care are aici impact mai mic.\n\n⚠ Rolling forecast-ul cere disciplină de date: dacă informațiile contabile (facturi emise, facturi primite, stocuri) nu sunt introduse la zi în sistemul contabil sau ERP, actualizarea lunară sau trimestrială a forecast-ului devine greșită sau întârziată. Fără date curate și la zi, un rolling forecast sofisticat poate induce în eroare mai mult decât un buget anual simplu, dar corect.\n\n## Exercițiu\nO firmă de servicii estimează pentru anul curent un forecast de bază cu următoarele ipoteze: 500 de contracte, preț mediu de 2.000 lei/contract, cost variabil de 1.500 lei/contract și costuri fixe anuale de 220.000 lei.\n\na) Calculează profitul net în scenariul de bază.\n\nb) Calculează profitul net în scenariul pesimist, în care volumul scade cu 10%, iar prețul mediu scade cu 5% (costul variabil unitar și costurile fixe rămân neschimbate).\n\nc) Calculează profitul net în scenariul optimist, în care volumul crește cu 10%, iar costul variabil unitar crește cu 3% din cauza cererii suplimentare.\n\nd) Realizează o analiză de sensibilitate: testează separat impactul unei variații de ±10% doar asupra volumului și, separat, doar asupra prețului (față de scenariul de bază, cu celelalte variabile neschimbate). Care dintre cele două variabile are impact mai mare asupra profitului net?\n\n**Soluție:** **a) Scenariul de bază**\n\nVenituri = 500 × 2.000 = 1.000.000 lei\nCosturi variabile = 500 × 1.500 = 750.000 lei\nMarjă de contribuție = 250.000 lei\nProfit net = 250.000 − 220.000 = **30.000 lei**\n\n**b) Scenariul pesimist**\n\nVolum = 500 × 0,9 = 450 contracte; Preț = 2.000 × 0,95 = 1.900 lei\nVenituri = 450 × 1.900 = 855.000 lei\nCosturi variabile = 450 × 1.500 = 675.000 lei\nMarjă de contribuție = 180.000 lei\nProfit net = 180.000 − 220.000 = **−40.000 lei (pierdere)**\n\n**c) Scenariul optimist**\n\nVolum = 500 × 1,1 = 550 contracte; Cost variabil unitar = 1.500 × 1,03 = 1.545 lei\nVenituri = 550 × 2.000 = 1.100.000 lei\nCosturi variabile = 550 × 1.545 = 849.750 lei\nMarjă de contribuție = 250.250 lei\nProfit net = 250.250 − 220.000 = **30.250 lei**\n\n**d) Analiza de sensibilitate (izolată, față de baza de 30.000 lei)**\n\n*Doar volumul ±10% (preț și cost variabil neschimbate):*\n- 450 contracte: venituri 900.000 − costuri variabile 675.000 = 225.000 − 220.000 = 5.000 lei\n- 550 contracte: venituri 1.100.000 − costuri variabile 825.000 = 275.000 − 220.000 = 55.000 lei\n- Interval: 5.000–55.000 lei → variație de ±25.000 lei\n\n*Doar prețul ±10% (volum și cost variabil neschimbate):*\n- Preț 1.800 lei: venituri 900.000 − costuri variabile 750.000 = 150.000 − 220.000 = −70.000 lei\n- Preț 2.200 lei: venituri 1.100.000 − costuri variabile 750.000 = 350.000 − 220.000 = 130.000 lei\n- Interval: −70.000–130.000 lei → variație de ±100.000 lei\n\n**Concluzie:** prețul de vânzare are un impact mult mai mare asupra profitului net (±100.000 lei) decât volumul (±25.000 lei). Într-un business cu marjă unitară relativ mică, o mișcare de preț afectează profitul mai puternic decât o mișcare echivalentă de volum.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "forecasting-vs-buget",
+    "md": "**Forecasting-ul financiar** (previziunea financiară) este procesul de estimare a rezultatelor financiare viitoare ale unei companii — venituri, costuri, profit, cash-flow — pe baza datelor istorice, a tendințelor curente și a ipotezelor despre viitor.\n\nDeși bugetul și forecasting-ul par similare, au roluri diferite:\n\n- **Bugetul** este un plan financiar fix, aprobat de obicei o dată pe an, care stabilește ținte și limite de cheltuieli pentru anul respectiv. Odată aprobat, rareori se modifică în cursul anului.\n- **Forecasting-ul** este o estimare dinamică, actualizată periodic (lunar sau trimestrial), care reflectă cea mai recentă informație disponibilă despre cum evoluează afacerea față de buget.\n\nDe exemplu, un SRL de distribuție își stabilește bugetul anual în decembrie 2025 pentru anul 2026, cu o țintă de vânzări de 6.000.000 lei. În martie 2026, după primul trimestru, compania realizează un forecast actualizat: dacă vânzările din T1 au fost cu 8% peste plan din cauza unui contract nou, forecasting-ul pentru restul anului se ajustează în sus, chiar dacă bugetul inițial rămâne neschimbat ca reper de comparație.\n\nRolul principal al forecasting-ului este să sprijine decizii operative rapide: angajări, investiții în stoc, negocieri de credit, ajustarea cheltuielilor — toate bazate pe cea mai recentă realitate, nu pe un plan vechi de câteva luni.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "rolling-forecast",
+    "md": "**Rolling forecast** (previziune glisantă) este o tehnică prin care compania menține mereu o perspectivă de un anumit număr de luni în avans, indiferent de momentul din anul calendaristic — spre deosebire de bugetul anual clasic, care „se termină\" pe 31 decembrie.\n\nCel mai folosit format este modelul **12+3**: la sfârșitul fiecărui trimestru, compania adaugă un nou trimestru la orizontul de previziune, astfel încât să aibă mereu 12 luni vizibile în față.\n\nExemplu de mecanism: în ianuarie 2026, forecasting-ul acoperă perioada ianuarie–decembrie 2026 (12 luni). La sfârșitul lunii martie 2026, compania actualizează previziunea folosind rezultatele reale din T1 și adaugă trimestrul ianuarie–martie 2027, astfel încât noul orizont devine aprilie 2026–martie 2027 — tot 12 luni, dar „mutate\" cu un trimestru înainte.\n\nAvantajele rolling forecast față de bugetul static:\n\n1. Reacție rapidă la schimbări de piață (cerere, prețuri materii prime, curs valutar).\n2. Reduce efectul de „buget învechit\" din trimestrul 4, când planul din ianuarie nu mai reflectă realitatea.\n3. Obligă echipa de management să discute periodic despre ipotezele de business, nu doar o dată pe an.\n\nDezavantajul principal este efortul administrativ: actualizarea frecventă cere date curate și un proces disciplinat de colectare, motiv pentru care multe companii mici încep cu o actualizare trimestrială, nu lunară.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "analiza-scenarii",
+    "md": "**Analiza de scenarii** (scenario planning) presupune construirea mai multor variante de forecast, fiecare bazată pe un set diferit de ipoteze despre viitor. Cel mai frecvent se folosesc trei scenarii:\n\n- **Scenariul de bază** (base case): ipoteze realiste, cele mai probabile — de regulă cel folosit pentru raportarea internă curentă.\n- **Scenariul optimist** (best case): ipoteze favorabile — creștere de piață peste așteptări, costuri sub control, contracte noi.\n- **Scenariul pesimist** (worst case): ipoteze nefavorabile — scădere de cerere, întârzieri de plăți, creșterea costurilor cu materiile prime sau a dobânzilor.\n\nScopul nu este să „ghicești\" scenariul corect, ci să înțelegi plaja de rezultate posibile și să pregătești planuri de acțiune pentru fiecare situație: ce cheltuieli se pot amâna dacă vânzările scad cu 15%? Ce capacitate suplimentară e nevoie dacă cererea crește cu 20%?\n\nScenariile sunt utile mai ales în discuțiile cu banca sau investitorii: a arăta că știi cum arată afacerea și în varianta pesimistă crește credibilitatea planului financiar.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "analiza-sensibilitate",
+    "md": "**Analiza de sensibilitate** (sensitivity analysis) răspunde la întrebarea: „Cât de mult se schimbă rezultatul financiar dacă modific o singură variabilă cheie, păstrând restul constante?\"\n\nSpre deosebire de scenarii (care schimbă simultan mai multe ipoteze), analiza de sensibilitate izolează o variabilă odată — de exemplu doar prețul de vânzare, doar volumul, sau doar cursul valutar — pentru a identifica care variabile au cel mai mare impact asupra profitului.\n\nVariabilele cheie testate cel mai des într-un forecast de afaceri din România:\n\n- Volumul de vânzări (cantitate/număr de clienți)\n- Prețul de vânzare mediu\n- Costul materiilor prime sau al mărfurilor (mai ales dacă sunt importate și expuse la curs valutar)\n- Costurile cu personalul (creșteri salariale, angajări noi)\n- Rata dobânzii, pentru companiile cu credite\n\nRezultatul analizei de sensibilitate se prezintă adesea sub forma unui „tornado chart\" — un grafic cu bare orizontale ordonate descrescător, care arată care variabilă mișcă cel mai mult profitul atunci când variază cu un procent standard (de exemplu ±10%). Variabila din vârful graficului este cea pe care managementul trebuie să o monitorizeze cel mai atent.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b4"
+   },
+   {
+    "type": "example",
+    "title": "Rolling forecast pentru un SRL de retail",
+    "concept_key": "rolling-forecast",
+    "md": "O firmă SRL cu activitate de retail are un buget anual 2026 de 4.800.000 lei venituri și 4.200.000 lei costuri totale, deci un profit brut planificat de 600.000 lei.\n\nLa sfârșitul lunii martie 2026 (T1 realizat), rezultatele reale arată:\n\n- Venituri T1 realizate: 1.350.000 lei (față de 1.200.000 lei planificat, +12,5%)\n- Costuri T1 realizate: 1.220.000 lei (față de 1.050.000 lei planificat, +16,2%, din cauza creșterii prețului la energie și marfă)\n\nEchipa financiară actualizează rolling forecast-ul pentru următoarele 9 luni (aprilie–decembrie 2026), păstrând tendința de vânzări peste plan, dar aplicând și creșterea de costuri observată:\n\n- Venituri estimate aprilie–decembrie (plan 3.600.000 lei, ajustat cu +10%): 3.960.000 lei\n- Costuri estimate aprilie–decembrie (plan 3.150.000 lei, ajustat cu +14%): 3.591.000 lei\n\n**Forecast total 2026 recalculat:**\n\n- Venituri: 1.350.000 + 3.960.000 = 5.310.000 lei\n- Costuri: 1.220.000 + 3.591.000 = 4.811.000 lei\n- Profit brut estimat: 499.000 lei\n\nDeși veniturile sunt peste plan, profitul brut estimat este cu 101.000 lei mai mic decât bugetul inițial de 600.000 lei, pentru că, în T1, costurile au crescut proporțional mai mult decât veniturile. Acest tip de semnal timpuriu permite managementului să acționeze din aprilie — de exemplu renegocierea prețurilor cu furnizorii — și nu abia în decembrie, când marja s-ar fi erodat deja pe tot anul.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b5"
+   },
+   {
+    "type": "example",
+    "title": "Scenarii și analiză de sensibilitate pentru o investiție",
+    "concept_key": "analiza-scenarii",
+    "md": "O companie de producție analizează achiziția unei linii noi de ambalare, cu un impact estimat asupra profitului net anual, în scenariul de bază, de 250.000 lei.\n\nScenariile construite de echipa financiară:\n\n- **Optimist:** cerere +15% peste plan, costuri neschimbate → profit net estimat 340.000 lei\n- **Bază:** ipotezele curente → profit net estimat 250.000 lei\n- **Pesimist:** cerere -10%, cost energie +8% → profit net estimat 140.000 lei\n\nPlaja de rezultate (140.000–340.000 lei) arată managementului că investiția rămâne profitabilă chiar și în scenariul pesimist, ceea ce reduce riscul perceput al deciziei.\n\nPentru a înțelege ce variabilă contează cel mai mult, echipa rulează o analiză de sensibilitate, testând impactul unei variații de ±10% pentru fiecare variabilă, pe rând, față de scenariul de bază (250.000 lei):\n\n- Volum vânzări ±10% → profit net 210.000–290.000 lei (variație de ±40.000 lei)\n- Preț de vânzare ±10% → profit net 190.000–310.000 lei (variație de ±60.000 lei)\n- Cost materie primă ±10% → profit net 220.000–280.000 lei (variație de ±30.000 lei)\n- Curs valutar EUR/RON ±10% → profit net 230.000–270.000 lei (variație de ±20.000 lei)\n\n**Concluzie:** prețul de vânzare este variabila cu cel mai mare impact asupra profitului (±60.000 lei), urmată de volum. Managementul ar trebui să prioritizeze monitorizarea atentă a politicii de preț și a negocierilor cu clienții mari, mai degrabă decât cursul valutar, care are aici impact mai mic.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Rolling forecast-ul cere disciplină de date: dacă informațiile contabile (facturi emise, facturi primite, stocuri) nu sunt introduse la zi în sistemul contabil sau ERP, actualizarea lunară sau trimestrială a forecast-ului devine greșită sau întârziată. Fără date curate și la zi, un rolling forecast sofisticat poate induce în eroare mai mult decât un buget anual simplu, dar corect.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă de servicii estimează pentru anul curent un forecast de bază cu următoarele ipoteze: 500 de contracte, preț mediu de 2.000 lei/contract, cost variabil de 1.500 lei/contract și costuri fixe anuale de 220.000 lei.\n\na) Calculează profitul net în scenariul de bază.\n\nb) Calculează profitul net în scenariul pesimist, în care volumul scade cu 10%, iar prețul mediu scade cu 5% (costul variabil unitar și costurile fixe rămân neschimbate).\n\nc) Calculează profitul net în scenariul optimist, în care volumul crește cu 10%, iar costul variabil unitar crește cu 3% din cauza cererii suplimentare.\n\nd) Realizează o analiză de sensibilitate: testează separat impactul unei variații de ±10% doar asupra volumului și, separat, doar asupra prețului (față de scenariul de bază, cu celelalte variabile neschimbate). Care dintre cele două variabile are impact mai mare asupra profitului net?",
+    "solution_md": "**a) Scenariul de bază**\n\nVenituri = 500 × 2.000 = 1.000.000 lei\nCosturi variabile = 500 × 1.500 = 750.000 lei\nMarjă de contribuție = 250.000 lei\nProfit net = 250.000 − 220.000 = **30.000 lei**\n\n**b) Scenariul pesimist**\n\nVolum = 500 × 0,9 = 450 contracte; Preț = 2.000 × 0,95 = 1.900 lei\nVenituri = 450 × 1.900 = 855.000 lei\nCosturi variabile = 450 × 1.500 = 675.000 lei\nMarjă de contribuție = 180.000 lei\nProfit net = 180.000 − 220.000 = **−40.000 lei (pierdere)**\n\n**c) Scenariul optimist**\n\nVolum = 500 × 1,1 = 550 contracte; Cost variabil unitar = 1.500 × 1,03 = 1.545 lei\nVenituri = 550 × 2.000 = 1.100.000 lei\nCosturi variabile = 550 × 1.545 = 849.750 lei\nMarjă de contribuție = 250.250 lei\nProfit net = 250.250 − 220.000 = **30.250 lei**\n\n**d) Analiza de sensibilitate (izolată, față de baza de 30.000 lei)**\n\n*Doar volumul ±10% (preț și cost variabil neschimbate):*\n- 450 contracte: venituri 900.000 − costuri variabile 675.000 = 225.000 − 220.000 = 5.000 lei\n- 550 contracte: venituri 1.100.000 − costuri variabile 825.000 = 275.000 − 220.000 = 55.000 lei\n- Interval: 5.000–55.000 lei → variație de ±25.000 lei\n\n*Doar prețul ±10% (volum și cost variabil neschimbate):*\n- Preț 1.800 lei: venituri 900.000 − costuri variabile 750.000 = 150.000 − 220.000 = −70.000 lei\n- Preț 2.200 lei: venituri 1.100.000 − costuri variabile 750.000 = 350.000 − 220.000 = 130.000 lei\n- Interval: −70.000–130.000 lei → variație de ±100.000 lei\n\n**Concluzie:** prețul de vânzare are un impact mult mai mare asupra profitului net (±100.000 lei) decât volumul (±25.000 lei). Într-un business cu marjă unitară relativ mică, o mișcare de preț afectează profitul mai puternic decât o mișcare echivalentă de volum.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre buget și rolling forecast?",
+    "choices": [
+     "Bugetul se actualizează lunar, forecast-ul o dată pe an",
+     "Bugetul este un plan fix aprobat anual, forecast-ul este actualizat periodic pe baza celor mai recente date",
+     "Nu există nicio diferență, sunt sinonime",
+     "Forecast-ul se folosește doar pentru cash-flow, bugetul doar pentru profit"
+    ],
+    "answer": 1,
+    "explain": "Bugetul rămâne fix pe durata anului aprobat, în timp ce rolling forecast-ul se actualizează periodic (lunar/trimestrial) pentru a reflecta cele mai recente rezultate și ipoteze.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un model de rolling forecast de tip 12+3, ce se întâmplă la sfârșitul fiecărui trimestru?",
+    "choices": [
+     "Se șterge tot forecast-ul și se reia de la zero",
+     "Se adaugă un nou trimestru la orizontul de previziune, menținând mereu 12 luni vizibile în față",
+     "Se compară doar cu anul precedent, fără nicio actualizare",
+     "Bugetul anual este înlocuit definitiv de forecast"
+    ],
+    "answer": 1,
+    "explain": "Modelul 12+3 „mută\" orizontul de previziune înainte cu un trimestru de fiecare dată, păstrând mereu 12 luni vizibile în față, indiferent de luna calendaristică curentă.",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce testează, în mod specific, analiza de sensibilitate, spre deosebire de analiza de scenarii?",
+    "choices": [
+     "Impactul simultan al tuturor variabilelor modificate în același timp",
+     "Doar rezultatele din anul precedent",
+     "Impactul izolat al unei singure variabile, păstrând restul constante",
+     "Doar variația cursului valutar"
+    ],
+    "answer": 2,
+    "explain": "Analiza de sensibilitate izolează o singură variabilă (ex. preț sau volum) pentru a măsura impactul ei individual, spre deosebire de scenarii, unde mai multe ipoteze se schimbă simultan într-o poveste coerentă (optimist/bază/pesimist).",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un rolling forecast?",
+    "back": "O previziune financiară actualizată periodic (de obicei trimestrial), care menține mereu un orizont fix (ex. 12 luni) în avans, spre deosebire de bugetul anual static.",
+    "concept_key": "rolling-forecast",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența principală dintre buget și forecast?",
+    "back": "Bugetul este un plan fix aprobat anual; forecast-ul este o estimare dinamică, actualizată periodic pe baza celor mai recente date reale.",
+    "concept_key": "forecasting-vs-buget",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei scenarii standard folosite în planificarea financiară?",
+    "back": "Scenariul de bază (base case, ipoteze realiste), scenariul optimist (best case) și scenariul pesimist (worst case).",
+    "concept_key": "analiza-scenarii",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce testează analiza de sensibilitate?",
+    "back": "Impactul modificării unei singure variabile cheie (ex. preț, volum) asupra rezultatului financiar, păstrând celelalte variabile constante.",
+    "concept_key": "analiza-sensibilitate",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un model de rolling forecast 12+3?",
+    "back": "Un model în care, la sfârșitul fiecărui trimestru, se adaugă un nou trimestru la orizontul de previziune, păstrând mereu 12 luni vizibile în față.",
+    "concept_key": "rolling-forecast",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un tornado chart în analiza de sensibilitate?",
+    "back": "Un grafic cu bare orizontale ordonate descrescător, care arată ce variabilă are cel mai mare impact asupra profitului la o variație standard (ex. ±10%).",
+    "concept_key": "analiza-sensibilitate",
+    "blockId": "cmjjuxw1y00brumkpq63l53rk-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1709,
+   "flashcards": 6
+  }
+ }
+}

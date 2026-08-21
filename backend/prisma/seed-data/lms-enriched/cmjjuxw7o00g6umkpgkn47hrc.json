@@ -1,0 +1,154 @@
+{
+ "lessonId": "cmjjuxw7o00g6umkpgkn47hrc",
+ "courseId": "cmjjuxw7400fmumkp9cm4a9vj",
+ "course": "HR Fundamentals - Managementul Resurselor Umane",
+ "module": "Recrutare și Selecție",
+ "lesson": "Assessment și Selecție",
+ "category": "HR_COMPLIANCE",
+ "content": "# Assessment și Selecție\n\nDupă preselecția pe CV și un prim interviu, etapa de **assessment și selecție** este momentul în care aduni dovezi obiective despre candidații rămași, ca să decizi cu argumente, nu pe bază de impresie sau simpatie. Cercetarea în psihologia organizațională arată clar că metodele structurate (teste de competențe, assessment centers, verificarea combinată a mai multor surse) prezic performanța viitoare la job mult mai bine decât un interviu liber, nestructurat.\n\nRegula de bază: cu cât combini mai multe metode independente (test + exercițiu practic + interviu structurat + verificare de referințe), cu atât decizia finală este mai fiabilă și mai ușor de apărat dacă un candidat respins contestă procesul. Rezultatele obținute în această etapă nu înlocuiesc însă perioada de probă de la angajare (maximum 90 de zile calendaristice pentru funcții de execuție, 120 de zile pentru funcții de conducere) — assessment-ul de dinainte de angajare și proba efectivă la locul de muncă sunt două filtre complementare, nu unul îl înlocuiește pe celălalt.\n\nCa recruiter sau specialist HR, rolul tău în această etapă este dublu: să alegi metodele potrivite pentru postul respectiv (nu ai nevoie de assessment center pentru un post de operator depozit) și să te asiguri că fiecare instrument folosit este relevant, corect aplicat și documentat.\n\n**Testele de competențe** verifică dacă un candidat știe și poate face ceva concret legat de job: un test de contabilitate pentru un candidat pe post de economist, un test de scriere de cod pentru un developer, un test de limbă străină pentru un rol cu clienți internaționali. Sunt ușor de construit, direct legate de fișa postului și, în general, greu de contestat.\n\n**Testele psihometrice** măsoară trăsături mai stabile: aptitudini cognitive (raționament numeric, verbal, abstract) și personalitate (de exemplu modele de tip Big Five – deschidere, conștiinciozitate, extraversie, agreabilitate, stabilitate emoțională). Acestea nu au răspunsuri corecte sau greșite, ci oferă un profil comportamental util mai ales pentru roluri de conducere sau vânzări.\n\nDouă precauții esențiale: (1) folosește doar teste validate științific, ideal administrate sau interpretate cu sprijinul unui psiholog atestat de Colegiul Psihologilor din România, mai ales pentru testele de personalitate; (2) rezultatul unui test psihometric nu trebuie să fie niciodată singurul criteriu de decizie — se citește împreună cu rezultatele interviului și ale exercițiilor practice, nu izolat.\n\nUn **assessment center** nu este un singur test, ci o metodologie: mai mulți candidați (sau un singur candidat, la roluri senior) parcurg mai multe exerciții simulate, într-o singură zi sau pe parcursul a două zile, fiind observați de mai mulți evaluatori independenți care notează comportamente concrete, nu impresii generale.\n\nExercițiile tipice includ:\n- **in-basket** (coș de sarcini) — candidatul primește un inbox simulat cu 10-15 solicitări (emailuri, rapoarte, cereri urgente) și trebuie să prioritizeze și să răspundă într-un timp limitat;\n- **roleplay** — o discuție dificilă simulată, de exemplu cu un angajat subperformant sau un client nemulțumit;\n- **studiu de caz individual sau de grup** — analiza unei probleme de business și prezentarea unei soluții;\n- **discuție de grup fără lider desemnat** — observă cine își asumă natural rolul de coordonare.\n\nAssessment center-ul este costisitor în timp și resurse (evaluatori dedicați, sală, materiale), de aceea se folosește mai ales pentru poziții de management, programe de traineeship sau roluri cu impact mare asupra echipei, nu pentru fiecare angajare.\n\n**Reference check-ul** (verificarea de referințe) este pasul în care contactezi un fost angajator, de regulă fostul manager direct al candidatului, pentru a confirma informații și a obține o perspectivă externă asupra performanței și comportamentului acestuia. Este util mai ales pentru a valida ce a spus candidatul în interviu, nu pentru a-l \"prinde cu minciuna\".\n\nÎntrebări utile de pus: Care au fost atribuțiile efective ale persoanei? Cum ar descrie performanța ei? Care a fost motivul plecării, din perspectiva companiei? Ar reangaja-o pe acest post?\n\nDouă reguli obligatorii: ai nevoie de **consimțământul candidatului** înainte de a contacta un fost angajator (îi ceri, ideal, o listă de persoane de contact agreate) și trebuie să tratezi informațiile obținute ca date cu caracter personal, cu acces restricționat doar la echipa implicată în decizia de angajare, conform principiilor GDPR. Un reference check nu se face niciodată la angajatorul actual al candidatului, fără acordul lui explicit — riști să îi afectezi relația de muncă în vigoare.\n\nO **matrice de decizie** (decision matrix) este instrumentul care transformă toate informațiile adunate (teste, assessment center, interviu, referințe) într-un scor comparabil, obiectiv, pentru fiecare candidat rămas în cursă final.\n\nPașii de construcție:\n1. Stabilești 4-6 criterii relevante pentru post (ex: competențe tehnice, experiență relevantă, comunicare, fit cultural, potențial de dezvoltare).\n2. Aloci fiecărui criteriu o pondere procentuală, în funcție de cât de important este pentru succesul în rol, astfel încât suma ponderilor să fie 100%.\n3. Fiecare evaluator notează fiecare candidat pe fiecare criteriu, de regulă pe o scală de 1-5.\n4. Calculezi scorul ponderat: scor criteriu × pondere criteriu, însumat pentru fiecare candidat.\n\nAvantajul major este că matricea forțează echipa de recrutare să discute explicit ce contează cu adevărat pentru post, înainte de a vedea rezultatele, ceea ce reduce bias-ul de tip \"mi-a plăcut de el\" sau favorizarea candidatului care seamănă cu recruiterul.\n\n## Exemplu: Structura unui assessment center de o zi pentru un post de Team Leader\nAgenda tipică pentru evaluarea a 4 candidați finali la un post de Team Leader în producție:\n\n- **09:00** – Prezentarea companiei și a agendei zilei, semnarea acordului GDPR privind prelucrarea rezultatelor.\n- **09:30** – Test psihometric de personalitate (45 min), administrat individual.\n- **10:30** – Exercițiu **in-basket**: candidatul primește un inbox simulat cu 15 sarcini (o urgență de producție, o cerere de concediu, un conflict între doi colegi, un raport cerut de manager) și are 45 de minute să decidă ordinea de rezolvare și să redacteze răspunsuri scurte.\n- **12:00** – Pauză de masă.\n- **13:00** – **Roleplay**: candidatul joacă rolul de team leader într-o discuție cu un \"angajat\" (jucat de un evaluator) care are scăderi repetate de performanță. Durată: 20 minute + 10 minute feedback din partea evaluatorului.\n- **14:00** – **Studiu de caz de grup**: cei 4 candidați primesc împreună o problemă de eficiență a liniei de producție și au 40 de minute să propună o soluție comună, prezentată apoi în 5 minute.\n- **15:30** – Interviu comportamental individual final (30 min/candidat, în paralel pe mai multe săli dacă sunt suficienți intervievatori).\n- **16:30** – Debrief: cei 3 evaluatori independenți își compară notele pe fiecare exercițiu, pe o grilă comună, înainte de a discuta o concluzie finală.\n\nObservația cheie: fiecare evaluator notează separat, pe baza unor comportamente predefinite (ex: \"a stabilit priorități clare în primele 10 minute\"), nu pe baza impresiei generale — abia apoi se compară notele în debrief.\n\n## Exemplu: Calcul scor ponderat în matrice de decizie pentru 3 candidați\nPost: Specialist Achiziții. Criterii și ponderi stabilite înainte de evaluare:\n\n| Criteriu | Pondere |\n|---|---|\n| Competențe tehnice (negociere contracte) | 35% |\n| Experiență relevantă în domeniu | 25% |\n| Comunicare | 20% |\n| Fit cultural cu echipa | 20% |\n\nScoruri acordate (scală 1-5) după testele de competențe, interviu și assessment:\n\n**Candidat A**: tehnic 5, experiență 3, comunicare 4, fit 4\nScor = 5×0,35 + 3×0,25 + 4×0,20 + 4×0,20 = 1,75 + 0,75 + 0,80 + 0,80 = **4,10**\n\n**Candidat B**: tehnic 4, experiență 5, comunicare 3, fit 3\nScor = 4×0,35 + 5×0,25 + 3×0,20 + 3×0,20 = 1,40 + 1,25 + 0,60 + 0,60 = **3,85**\n\n**Candidat C**: tehnic 3, experiență 4, comunicare 5, fit 5\nScor = 3×0,35 + 4×0,25 + 5×0,20 + 5×0,20 = 1,05 + 1,00 + 1,00 + 1,00 = **4,05**\n\nConcluzie: Candidatul A câștigă la limită (4,10 față de 4,05 pentru C). Diferența este suficient de mică încât, înainte de oferta finală, merită un reference check suplimentar pentru ambii, mai ales pe zona de negociere contracte, criteriul cu ponderea cea mai mare.\n\n> Temei legal: Legea nr. 53/2003 – Codul Muncii, republicată art. 5 (în vigoare de la 2011-05-18)\nCodul Muncii consacră principiul egalității de tratament față de toți salariații și candidații la angajare și interzice orice discriminare directă sau indirectă bazată pe criterii precum sex, orientare sexuală, vârstă, apartenență națională, rasă, etnie, religie, opțiune politică, origine socială, handicap, situație sau responsabilitate familială, apartenență sau activitate sindicală.\n\nÎn practică, acest principiu se aplică integral și în etapa de assessment: testele, exercițiile de assessment center și întrebările din interviu trebuie să evalueze exclusiv competențe și comportamente relevante pentru post, nu caracteristici personale fără legătură cu cerințele jobului. O întrebare despre planurile de a avea copii sau despre vârstă, folosită ca filtru de selecție, poate constitui discriminare la angajare și poate atrage răspunderea contravențională a angajatorului.\n\nAceastă secțiune are caracter informativ general; pentru o situație concretă de suspiciune de discriminare în procesul de recrutare, recomandăm consultarea unui jurist specializat în dreptul muncii sau a Consiliului Național pentru Combaterea Discriminării.\n\n⚠ Datele generate în etapa de assessment (rezultate la teste psihometrice, note de la assessment center, concluziile reference check-ului) sunt date cu caracter personal, uneori sensibile (ex. trăsături de personalitate). Aplică principiul minimizării: colectează și păstrează doar ce este strict necesar deciziei de angajare, limitează accesul la echipa implicată direct în recrutare și stabilește o perioadă clară de păstrare (de regulă, rezultatele candidaților nerespinși se șterg după finalizarea procesului, cu excepția cazului în care candidatul consimte la păstrarea CV-ului pentru oportunități viitoare). Candidatul are dreptul să afle, la cerere, ce date deții despre el și pe ce criterii a fost evaluat.\n\n## Exercițiu\nEști responsabil de recrutare pentru un post de **Recruiter Senior** și trebuie să alegi între doi candidați finali, folosind o matrice de decizie cu următoarele criterii și ponderi:\n\n| Criteriu | Pondere |\n|---|---|\n| Cunoștințe tehnici de recrutare | 30% |\n| Experiență în industrie | 20% |\n| Abilități de negociere | 25% |\n| Comunicare | 25% |\n\nScoruri (scală 1-5):\n- **Candidat X**: cunoștințe 4, experiență 3, negociere 5, comunicare 4\n- **Candidat Y**: cunoștințe 3, experiență 5, negociere 4, comunicare 5\n\nCalculează scorul ponderat pentru fiecare candidat și spune pe cine ai recomanda pentru angajare, motivând răspunsul.\n\n**Soluție:** **Candidat X**:\n4×0,30 + 3×0,20 + 5×0,25 + 4×0,25 = 1,20 + 0,60 + 1,25 + 1,00 = **4,05**\n\n**Candidat Y**:\n3×0,30 + 5×0,20 + 4×0,25 + 5×0,25 = 0,90 + 1,00 + 1,00 + 1,25 = **4,15**\n\nCandidatul Y obține scorul mai mare (4,15 față de 4,05), deci ar fi recomandarea formală în urma matricei de decizie. Diferența este însă foarte mică (0,10 puncte), ceea ce înseamnă că decizia nu ar trebui luată exclusiv pe baza acestui calcul: recomand un reference check suplimentar pentru amândoi, cu accent pe abilitățile de negociere (al doilea criteriu ca pondere), înainte de oferta finală, exact pentru a evita ca o diferență minoră de scor să decidă singură o angajare importantă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "assessment-selectie-scop",
+    "md": "După preselecția pe CV și un prim interviu, etapa de **assessment și selecție** este momentul în care aduni dovezi obiective despre candidații rămași, ca să decizi cu argumente, nu pe bază de impresie sau simpatie. Cercetarea în psihologia organizațională arată clar că metodele structurate (teste de competențe, assessment centers, verificarea combinată a mai multor surse) prezic performanța viitoare la job mult mai bine decât un interviu liber, nestructurat.\n\nRegula de bază: cu cât combini mai multe metode independente (test + exercițiu practic + interviu structurat + verificare de referințe), cu atât decizia finală este mai fiabilă și mai ușor de apărat dacă un candidat respins contestă procesul. Rezultatele obținute în această etapă nu înlocuiesc însă perioada de probă de la angajare (maximum 90 de zile calendaristice pentru funcții de execuție, 120 de zile pentru funcții de conducere) — assessment-ul de dinainte de angajare și proba efectivă la locul de muncă sunt două filtre complementare, nu unul îl înlocuiește pe celălalt.\n\nCa recruiter sau specialist HR, rolul tău în această etapă este dublu: să alegi metodele potrivite pentru postul respectiv (nu ai nevoie de assessment center pentru un post de operator depozit) și să te asiguri că fiecare instrument folosit este relevant, corect aplicat și documentat.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "teste-competente-psihometrice",
+    "md": "**Testele de competențe** verifică dacă un candidat știe și poate face ceva concret legat de job: un test de contabilitate pentru un candidat pe post de economist, un test de scriere de cod pentru un developer, un test de limbă străină pentru un rol cu clienți internaționali. Sunt ușor de construit, direct legate de fișa postului și, în general, greu de contestat.\n\n**Testele psihometrice** măsoară trăsături mai stabile: aptitudini cognitive (raționament numeric, verbal, abstract) și personalitate (de exemplu modele de tip Big Five – deschidere, conștiinciozitate, extraversie, agreabilitate, stabilitate emoțională). Acestea nu au răspunsuri corecte sau greșite, ci oferă un profil comportamental util mai ales pentru roluri de conducere sau vânzări.\n\nDouă precauții esențiale: (1) folosește doar teste validate științific, ideal administrate sau interpretate cu sprijinul unui psiholog atestat de Colegiul Psihologilor din România, mai ales pentru testele de personalitate; (2) rezultatul unui test psihometric nu trebuie să fie niciodată singurul criteriu de decizie — se citește împreună cu rezultatele interviului și ale exercițiilor practice, nu izolat.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "assessment-center-definitie",
+    "md": "Un **assessment center** nu este un singur test, ci o metodologie: mai mulți candidați (sau un singur candidat, la roluri senior) parcurg mai multe exerciții simulate, într-o singură zi sau pe parcursul a două zile, fiind observați de mai mulți evaluatori independenți care notează comportamente concrete, nu impresii generale.\n\nExercițiile tipice includ:\n- **in-basket** (coș de sarcini) — candidatul primește un inbox simulat cu 10-15 solicitări (emailuri, rapoarte, cereri urgente) și trebuie să prioritizeze și să răspundă într-un timp limitat;\n- **roleplay** — o discuție dificilă simulată, de exemplu cu un angajat subperformant sau un client nemulțumit;\n- **studiu de caz individual sau de grup** — analiza unei probleme de business și prezentarea unei soluții;\n- **discuție de grup fără lider desemnat** — observă cine își asumă natural rolul de coordonare.\n\nAssessment center-ul este costisitor în timp și resurse (evaluatori dedicați, sală, materiale), de aceea se folosește mai ales pentru poziții de management, programe de traineeship sau roluri cu impact mare asupra echipei, nu pentru fiecare angajare.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "verificare-referinte",
+    "md": "**Reference check-ul** (verificarea de referințe) este pasul în care contactezi un fost angajator, de regulă fostul manager direct al candidatului, pentru a confirma informații și a obține o perspectivă externă asupra performanței și comportamentului acestuia. Este util mai ales pentru a valida ce a spus candidatul în interviu, nu pentru a-l \"prinde cu minciuna\".\n\nÎntrebări utile de pus: Care au fost atribuțiile efective ale persoanei? Cum ar descrie performanța ei? Care a fost motivul plecării, din perspectiva companiei? Ar reangaja-o pe acest post?\n\nDouă reguli obligatorii: ai nevoie de **consimțământul candidatului** înainte de a contacta un fost angajator (îi ceri, ideal, o listă de persoane de contact agreate) și trebuie să tratezi informațiile obținute ca date cu caracter personal, cu acces restricționat doar la echipa implicată în decizia de angajare, conform principiilor GDPR. Un reference check nu se face niciodată la angajatorul actual al candidatului, fără acordul lui explicit — riști să îi afectezi relația de muncă în vigoare.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "matrice-decizie-candidati",
+    "md": "O **matrice de decizie** (decision matrix) este instrumentul care transformă toate informațiile adunate (teste, assessment center, interviu, referințe) într-un scor comparabil, obiectiv, pentru fiecare candidat rămas în cursă final.\n\nPașii de construcție:\n1. Stabilești 4-6 criterii relevante pentru post (ex: competențe tehnice, experiență relevantă, comunicare, fit cultural, potențial de dezvoltare).\n2. Aloci fiecărui criteriu o pondere procentuală, în funcție de cât de important este pentru succesul în rol, astfel încât suma ponderilor să fie 100%.\n3. Fiecare evaluator notează fiecare candidat pe fiecare criteriu, de regulă pe o scală de 1-5.\n4. Calculezi scorul ponderat: scor criteriu × pondere criteriu, însumat pentru fiecare candidat.\n\nAvantajul major este că matricea forțează echipa de recrutare să discute explicit ce contează cu adevărat pentru post, înainte de a vedea rezultatele, ceea ce reduce bias-ul de tip \"mi-a plăcut de el\" sau favorizarea candidatului care seamănă cu recruiterul.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b5"
+   },
+   {
+    "type": "example",
+    "title": "Structura unui assessment center de o zi pentru un post de Team Leader",
+    "concept_key": "assessment-center-definitie",
+    "md": "Agenda tipică pentru evaluarea a 4 candidați finali la un post de Team Leader în producție:\n\n- **09:00** – Prezentarea companiei și a agendei zilei, semnarea acordului GDPR privind prelucrarea rezultatelor.\n- **09:30** – Test psihometric de personalitate (45 min), administrat individual.\n- **10:30** – Exercițiu **in-basket**: candidatul primește un inbox simulat cu 15 sarcini (o urgență de producție, o cerere de concediu, un conflict între doi colegi, un raport cerut de manager) și are 45 de minute să decidă ordinea de rezolvare și să redacteze răspunsuri scurte.\n- **12:00** – Pauză de masă.\n- **13:00** – **Roleplay**: candidatul joacă rolul de team leader într-o discuție cu un \"angajat\" (jucat de un evaluator) care are scăderi repetate de performanță. Durată: 20 minute + 10 minute feedback din partea evaluatorului.\n- **14:00** – **Studiu de caz de grup**: cei 4 candidați primesc împreună o problemă de eficiență a liniei de producție și au 40 de minute să propună o soluție comună, prezentată apoi în 5 minute.\n- **15:30** – Interviu comportamental individual final (30 min/candidat, în paralel pe mai multe săli dacă sunt suficienți intervievatori).\n- **16:30** – Debrief: cei 3 evaluatori independenți își compară notele pe fiecare exercițiu, pe o grilă comună, înainte de a discuta o concluzie finală.\n\nObservația cheie: fiecare evaluator notează separat, pe baza unor comportamente predefinite (ex: \"a stabilit priorități clare în primele 10 minute\"), nu pe baza impresiei generale — abia apoi se compară notele în debrief.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calcul scor ponderat în matrice de decizie pentru 3 candidați",
+    "concept_key": "matrice-decizie-candidati",
+    "md": "Post: Specialist Achiziții. Criterii și ponderi stabilite înainte de evaluare:\n\n| Criteriu | Pondere |\n|---|---|\n| Competențe tehnice (negociere contracte) | 35% |\n| Experiență relevantă în domeniu | 25% |\n| Comunicare | 20% |\n| Fit cultural cu echipa | 20% |\n\nScoruri acordate (scală 1-5) după testele de competențe, interviu și assessment:\n\n**Candidat A**: tehnic 5, experiență 3, comunicare 4, fit 4\nScor = 5×0,35 + 3×0,25 + 4×0,20 + 4×0,20 = 1,75 + 0,75 + 0,80 + 0,80 = **4,10**\n\n**Candidat B**: tehnic 4, experiență 5, comunicare 3, fit 3\nScor = 4×0,35 + 5×0,25 + 3×0,20 + 3×0,20 = 1,40 + 1,25 + 0,60 + 0,60 = **3,85**\n\n**Candidat C**: tehnic 3, experiență 4, comunicare 5, fit 5\nScor = 3×0,35 + 4×0,25 + 5×0,20 + 5×0,20 = 1,05 + 1,00 + 1,00 + 1,00 = **4,05**\n\nConcluzie: Candidatul A câștigă la limită (4,10 față de 4,05 pentru C). Diferența este suficient de mică încât, înainte de oferta finală, merită un reference check suplimentar pentru ambii, mai ales pe zona de negociere contracte, criteriul cu ponderea cea mai mare.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b7"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 – Codul Muncii, republicată",
+    "article": "art. 5",
+    "effective": "2011-05-18",
+    "md": "Codul Muncii consacră principiul egalității de tratament față de toți salariații și candidații la angajare și interzice orice discriminare directă sau indirectă bazată pe criterii precum sex, orientare sexuală, vârstă, apartenență națională, rasă, etnie, religie, opțiune politică, origine socială, handicap, situație sau responsabilitate familială, apartenență sau activitate sindicală.\n\nÎn practică, acest principiu se aplică integral și în etapa de assessment: testele, exercițiile de assessment center și întrebările din interviu trebuie să evalueze exclusiv competențe și comportamente relevante pentru post, nu caracteristici personale fără legătură cu cerințele jobului. O întrebare despre planurile de a avea copii sau despre vârstă, folosită ca filtru de selecție, poate constitui discriminare la angajare și poate atrage răspunderea contravențională a angajatorului.\n\nAceastă secțiune are caracter informativ general; pentru o situație concretă de suspiciune de discriminare în procesul de recrutare, recomandăm consultarea unui jurist specializat în dreptul muncii sau a Consiliului Național pentru Combaterea Discriminării.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Datele generate în etapa de assessment (rezultate la teste psihometrice, note de la assessment center, concluziile reference check-ului) sunt date cu caracter personal, uneori sensibile (ex. trăsături de personalitate). Aplică principiul minimizării: colectează și păstrează doar ce este strict necesar deciziei de angajare, limitează accesul la echipa implicată direct în recrutare și stabilește o perioadă clară de păstrare (de regulă, rezultatele candidaților nerespinși se șterg după finalizarea procesului, cu excepția cazului în care candidatul consimte la păstrarea CV-ului pentru oportunități viitoare). Candidatul are dreptul să afle, la cerere, ce date deții despre el și pe ce criterii a fost evaluat.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești responsabil de recrutare pentru un post de **Recruiter Senior** și trebuie să alegi între doi candidați finali, folosind o matrice de decizie cu următoarele criterii și ponderi:\n\n| Criteriu | Pondere |\n|---|---|\n| Cunoștințe tehnici de recrutare | 30% |\n| Experiență în industrie | 20% |\n| Abilități de negociere | 25% |\n| Comunicare | 25% |\n\nScoruri (scală 1-5):\n- **Candidat X**: cunoștințe 4, experiență 3, negociere 5, comunicare 4\n- **Candidat Y**: cunoștințe 3, experiență 5, negociere 4, comunicare 5\n\nCalculează scorul ponderat pentru fiecare candidat și spune pe cine ai recomanda pentru angajare, motivând răspunsul.",
+    "solution_md": "**Candidat X**:\n4×0,30 + 3×0,20 + 5×0,25 + 4×0,25 = 1,20 + 0,60 + 1,25 + 1,00 = **4,05**\n\n**Candidat Y**:\n3×0,30 + 5×0,20 + 4×0,25 + 5×0,25 = 0,90 + 1,00 + 1,00 + 1,25 = **4,15**\n\nCandidatul Y obține scorul mai mare (4,15 față de 4,05), deci ar fi recomandarea formală în urma matricei de decizie. Diferența este însă foarte mică (0,10 puncte), ceea ce înseamnă că decizia nu ar trebui luată exclusiv pe baza acestui calcul: recomand un reference check suplimentar pentru amândoi, cu accent pe abilitățile de negociere (al doilea criteriu ca pondere), înainte de oferta finală, exact pentru a evita ca o diferență minoră de scor să decidă singură o angajare importantă.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce diferențiază un assessment center de un interviu clasic de angajare?",
+    "choices": [
+     "Este un singur interviu structurat de 30 de minute, susținut de un singur manager",
+     "Este o metodologie cu mai multe exerciții simulate (in-basket, roleplay, studiu de caz), evaluate independent de mai mulți evaluatori",
+     "Este testul de personalitate aplicat online tuturor candidaților înainte de CV",
+     "Este verificarea automată a CV-ului făcută de un software ATS"
+    ],
+    "answer": 1,
+    "explain": "Assessment center-ul presupune mai multe exerciții practice, parcurse de candidat, observate și notate independent de mai mulți evaluatori, nu un singur test sau un singur interviu.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce este obligatoriu înainte de a contacta un fost angajator pentru un reference check?",
+    "choices": [
+     "Nimic — HR poate suna oricând, fără să anunțe candidatul",
+     "Consimțământul candidatului, ideal cu o listă agreată de persoane de contact",
+     "Aprobarea scrisă a Inspectoratului Teritorial de Muncă",
+     "Depunerea unui formular la ANAF"
+    ],
+    "answer": 1,
+    "explain": "Verificarea de referințe presupune date cu caracter personal despre candidat; ai nevoie de consimțământul lui explicit înainte de a contacta un fost angajator, conform principiilor GDPR.",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un assessment center?",
+    "back": "O metodologie de evaluare cu mai multe exerciții simulate (in-basket, roleplay, studiu de caz, discuție de grup), observate independent de mai mulți evaluatori, folosită mai ales pentru roluri de management.",
+    "concept_key": "assessment-center-definitie",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele mai frecvente 3 tipuri de exerciții dintr-un assessment center?",
+    "back": "In-basket (coș de sarcini), roleplay (discuție simulată dificilă) și studiu de caz individual sau de grup.",
+    "concept_key": "assessment-center-definitie",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce verifică, în esență, un reference check?",
+    "back": "Confirmă atribuțiile reale, performanța și motivul plecării candidatului de la un fost angajator, pe baza consimțământului candidatului.",
+    "concept_key": "verificare-referinte",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata maximă a perioadei de probă pentru funcții de execuție, conform Codului Muncii?",
+    "back": "90 de zile calendaristice pentru funcții de execuție; 120 de zile calendaristice pentru funcții de conducere.",
+    "concept_key": "assessment-selectie-scop",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o matrice de decizie (decision matrix) în recrutare?",
+    "back": "Un instrument de scor ponderat pe criterii relevante pentru post, care permite compararea obiectivă a candidaților finali.",
+    "concept_key": "matrice-decizie-candidati",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu din Codul Muncii trebuie respectat în orice etapă de selecție, inclusiv la testare?",
+    "back": "Principiul egalității de tratament și interzicerea discriminării (Legea 53/2003, art. 5) — criteriile de evaluare trebuie să vizeze exclusiv competențele relevante pentru post.",
+    "concept_key": "assessment-selectie-scop",
+    "blockId": "cmjjuxw7o00g6umkpgkn47hrc-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1724,
+   "flashcards": 6
+  }
+ }
+}

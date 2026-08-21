@@ -1,0 +1,149 @@
+{
+ "lessonId": "cmjjuxweo00lvumkpmtqapxs2",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Planificare (Cl. 6)",
+ "lesson": "Identificarea pericolelor",
+ "category": "HSE_SAFETY",
+ "content": "# Identificarea pericolelor\n\n## Ce înseamnă identificarea pericolelor în ISO 45001\n\nClauza 6.1.2.1 din ISO 45001:2018 cere organizației să stabilească, implementeze și mențină un **proces de identificare continuă și proactivă a pericolelor**. Un pericol (hazard) este orice sursă, situație sau acțiune cu potențial de a cauza vătămare corporală sau îmbolnăvire profesională - de exemplu o suprafață alunecoasă, un utilaj neprotejat, expunerea la zgomot sau chiar un program de lucru prelungit generator de oboseală.\n\nDiferența față de un simplu \"registru de accidente\" este esențială: identificarea pericolelor **nu se limitează la ce s-a întâmplat deja**, ci caută activ ce s-ar putea întâmpla, inclusiv în activități de rutină și non-rutină (mentenanță, curățenie, situații de urgență), factori umani (oboseală, competență, factori psihosociali), schimbări în organizație (proces nou, echipament nou, personal nou) și infrastructura din vecinătatea locului de muncă (de exemplu trafic auto la poarta depozitului).\n\nProcesul trebuie să fie documentat, actualizat periodic și disponibil ca informație documentată (de regulă sub forma unui **registru de pericole și riscuri SSM**), pe care auditorii interni și externi îl vor verifica direct în timpul auditului de certificare.\n\n## Metodologii sistematice de identificare\n\nStandardul nu impune o metodă unică, dar cere ca procesul să fie **sistematic**, nu întâmplător. În practica organizațiilor românești certificate ISO 45001, cele mai folosite metodologii sunt:\n\n- **JSA / Analiza de securitate a sarcinii de lucru (Job Safety Analysis)** - se descompune o activitate în pași și se identifică pericolul la fiecare pas (ex. ridicare manuală, folosire polizor unghiular).\n- **Liste de verificare (checklist-uri)** - utile pentru activități repetitive și pentru audituri interne de securitate.\n- **Inspecții și observare directă la fața locului** - realizate de responsabilul SSM împreună cu șeful de secție.\n- **Analiza istoricului de incidente, accidente și evenimente \"near-miss\"** (evenimente care ar fi putut produce vătămare, dar nu au produs-o) - sursă esențială, deseori neglijată.\n- **Brainstorming \"what-if\"** și, pentru procese tehnologice complexe (chimie, petrochimie), **HAZOP** (Hazard and Operability Study).\n- **Consultarea lucrătorilor și a reprezentanților acestora** - obligatorie conform clauzei 5.4, deoarece persoana care execută sarcina cunoaște cel mai bine riscurile reale, nu doar cele din procedură.\n- **Analiza documentației tehnice** - fișe de date de securitate (FDS/SDS) pentru substanțe chimice, cărți tehnice ale echipamentelor, proiecte de execuție.\n\nCombinarea a minimum două-trei metode (de exemplu JSA + consultarea lucrătorilor + analiza incidentelor) oferă o imagine mult mai completă decât aplicarea unei singure metodologii.\n\n## Ierarhia controalelor (clauza 8.1.2)\n\nDupă identificarea unui pericol, ISO 45001 cere aplicarea măsurilor de control **în ordine strictă de eficacitate**, cunoscută drept ierarhia controalelor:\n\n1. **Eliminare** - se elimină complet pericolul (ex. renunțarea la o operațiune manuală periculoasă prin automatizare).\n2. **Substituire** - se înlocuiește cu ceva mai puțin periculos (ex. un solvent toxic cu unul pe bază de apă).\n3. **Controale tehnice (inginerești)** - bariere fizice, ventilație, apărători de protecție, sisteme de blocare (interlock).\n4. **Controale administrative** - proceduri de lucru, semnalizare, instruire, rotația personalului, permise de lucru.\n5. **Echipament individual de protecție (EIP)** - ultima linie de apărare (mănuși, ochelari, antifoane, mască).\n\nGreșeala frecventă în organizațiile mai puțin mature este să se sară direct la EIP, fără a analiza dacă pericolul poate fi eliminat sau redus prin măsuri superioare în ierarhie. Un auditor de certificare va cere justificare documentată ori de câte ori se alege un control inferior (de exemplu EIP) fără să se fi analizat opțiunile de eliminare/substituire/control tehnic.\n\n## Exemplu: Identificarea pericolelor pe o secție de producție\nO firmă SRL cu 60 de angajați, producătoare de mobilier, aplică JSA pentru postul de operator freză CNC. Pașii activității sunt: (1) pornirea utilajului, (2) fixarea piesei, (3) prelucrarea, (4) îndepărtarea așchiilor, (5) curățare la final de schimb.\n\nAplicând JSA, echipa SSM identifică:\n- la pasul 2 - risc de strivire a mâinilor la fixarea piesei (lipsă apărătoare reglabilă);\n- la pasul 3 - expunere la zgomot peste 85 dB și la pulberi de lemn;\n- la pasul 4 - contact cu așchii ascuțite, fără mănuși rezistente la tăiere prevăzute în dotare.\n\nPentru pericolul de zgomot, ierarhia controalelor s-ar aplica astfel: eliminare - nu este posibilă (procesul de frezare produce zgomot); substituire - nu se aplică; control tehnic - carcasă fonoizolantă parțială pe freză; control administrativ - limitarea timpului de expunere prin rotația personalului; EIP - antifoane cu atenuare de minimum 25 dB, purtate obligatoriu, conform fișei de instruire semnate de fiecare operator.\n\n## Exemplu: Actualizarea registrului de pericole la o schimbare organizațională\nO companie de distribuție introduce un nou stivuitor electric în depozit, înlocuind unul cu motor termic. Deși schimbarea pare pozitivă (elimină emisiile de CO în spații închise), procesul de identificare a pericolelor trebuie reluat, nu doar arhivat ca \"îmbunătățire\".\n\nEchipa SSM identifică pericole noi, specifice: risc electric la stațiile de încărcare a bateriilor, risc de degajare de hidrogen în timpul încărcării (spațiu neventilat corespunzător) și zgomot redus al utilajului, care crește riscul de a nu fi auzit de pietoni în depozit (risc de coliziune).\n\nRegistrul de pericole se actualizează cu data schimbării, sursa (achiziție echipament nou), pericolele noi identificate și măsurile aferente: ventilație suplimentară la stația de încărcare, instruire specifică la locul de muncă pentru noii operatori (conform HG 1425/2006) și montarea de semnale sonore artificiale (reverse alarm) pe stivuitor pentru compensarea zgomotului redus.\n\n> Temei legal: Legea 319/2006 a securității și sănătății în muncă art. 7 alin. (4) lit. a) și art. 12 alin. (1) lit. a) (în vigoare de la 2006-10-01)\nLegea 319/2006 (cu modificările ulterioare) obligă angajatorul, conform art. 7 alin. (4) lit. a), să **realizeze și să dețină o evaluare a riscurilor pentru securitatea și sănătatea în muncă**, inclusiv pentru grupurile sensibile la riscuri specifice (femei gravide, tineri, persoane cu dizabilități). Art. 12 alin. (1) lit. a) completează prin obligația de a asigura instruirea adecvată în domeniul SSM.\n\nMetodologia de evaluare a riscurilor și conținutul documentației (inclusiv fișa de identificare a factorilor de risc) sunt detaliate prin normele metodologice aprobate prin **HG 1425/2006**. Aceste acte reprezintă baza legală națională peste care se suprapune cerința ISO 45001 de identificare sistematică și continuă a pericolelor - implementarea standardului nu înlocuiește obligațiile legale, ci le structurează într-un sistem de management auditabil. Verifică varianta consolidată în vigoare la data auditului, deoarece ambele acte au suferit modificări succesive.\n\n⚠ Cea mai frecventă neconformitate constatată la auditurile de certificare ISO 45001 pe clauza 6.1.2.1 este **registrul de pericole \"înghețat\"** - completat o singură dată, la implementare, și niciodată actualizat. Alte capcane des întâlnite: identificarea se bazează exclusiv pe accidentele deja produse și ignoră evenimentele \"near-miss\"; lucrătorii care execută efectiv sarcina nu sunt consultați, iar pericolele sunt stabilite doar \"de la birou\"; activitățile non-rutină (mentenanță, intervenții de urgență, lucrări ale contractorilor externi) sunt omise din analiză, deși statistic generează o proporție mare din accidentele grave.\n\n## Exercițiu\nO secție de sudură a unei SRL cu 40 de angajați dorește să implementeze procesul de identificare a pericolelor cerut de clauza 6.1.2.1. Activitățile includ: sudură cu arc electric, manipulare butelii de gaz, polizare piese metalice și transport intern cu cărucior manual.\n\nCerință: (a) identifică minimum 5 pericole distincte pentru aceste activități; (b) pentru două dintre ele, aplică ierarhia controalelor și propune câte o măsură pentru fiecare din cele 5 niveluri, acolo unde este posibil.\n\n**Soluție:** (a) Pericole identificate: 1) radiații UV/IR și arc electric la sudură (risc de arsuri și leziuni oculare); 2) fum de sudură cu compuși metalici (risc respirator); 3) explozie/scurgere la buteliile de gaz (butelii neasigurate sau depozitate necorespunzător); 4) proiectare de particule metalice la polizare (risc ocular și de tăiere); 5) strivire/lovire la transportul manual cu căruciorul (risc musculo-scheletal și de coliziune cu personalul).\n\n(b) Aplicarea ierarhiei controalelor:\n\n**Fum de sudură** - eliminare: nu este posibilă (procesul necesar); substituire: schimbarea electrodului cu unul cu emisii reduse, unde tehnologic este posibil; control tehnic: instalarea unui sistem de exhaustare/aspirare localizată la sursă; control administrativ: rotația operatorilor și limitarea timpului de expunere continuă; EIP: mască de protecție respiratorie cu filtru adecvat pentru fum de sudură.\n\n**Butelii de gaz** - eliminare: nu se aplică; substituire: nu se aplică; control tehnic: suporți de fixare antirăsturnare și supape de siguranță/clapete antiretur; control administrativ: procedură scrisă de manipulare și depozitare separată a buteliilor pline de cele goale, cu instruire specifică la locul de muncă conform HG 1425/2006; EIP: mănuși rezistente la temperatură pentru manipularea robinetului buteliei.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "identificare-pericole-iso45001",
+    "md": "## Ce înseamnă identificarea pericolelor în ISO 45001\n\nClauza 6.1.2.1 din ISO 45001:2018 cere organizației să stabilească, implementeze și mențină un **proces de identificare continuă și proactivă a pericolelor**. Un pericol (hazard) este orice sursă, situație sau acțiune cu potențial de a cauza vătămare corporală sau îmbolnăvire profesională - de exemplu o suprafață alunecoasă, un utilaj neprotejat, expunerea la zgomot sau chiar un program de lucru prelungit generator de oboseală.\n\nDiferența față de un simplu \"registru de accidente\" este esențială: identificarea pericolelor **nu se limitează la ce s-a întâmplat deja**, ci caută activ ce s-ar putea întâmpla, inclusiv în activități de rutină și non-rutină (mentenanță, curățenie, situații de urgență), factori umani (oboseală, competență, factori psihosociali), schimbări în organizație (proces nou, echipament nou, personal nou) și infrastructura din vecinătatea locului de muncă (de exemplu trafic auto la poarta depozitului).\n\nProcesul trebuie să fie documentat, actualizat periodic și disponibil ca informație documentată (de regulă sub forma unui **registru de pericole și riscuri SSM**), pe care auditorii interni și externi îl vor verifica direct în timpul auditului de certificare.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metodologii-identificare-pericole",
+    "md": "## Metodologii sistematice de identificare\n\nStandardul nu impune o metodă unică, dar cere ca procesul să fie **sistematic**, nu întâmplător. În practica organizațiilor românești certificate ISO 45001, cele mai folosite metodologii sunt:\n\n- **JSA / Analiza de securitate a sarcinii de lucru (Job Safety Analysis)** - se descompune o activitate în pași și se identifică pericolul la fiecare pas (ex. ridicare manuală, folosire polizor unghiular).\n- **Liste de verificare (checklist-uri)** - utile pentru activități repetitive și pentru audituri interne de securitate.\n- **Inspecții și observare directă la fața locului** - realizate de responsabilul SSM împreună cu șeful de secție.\n- **Analiza istoricului de incidente, accidente și evenimente \"near-miss\"** (evenimente care ar fi putut produce vătămare, dar nu au produs-o) - sursă esențială, deseori neglijată.\n- **Brainstorming \"what-if\"** și, pentru procese tehnologice complexe (chimie, petrochimie), **HAZOP** (Hazard and Operability Study).\n- **Consultarea lucrătorilor și a reprezentanților acestora** - obligatorie conform clauzei 5.4, deoarece persoana care execută sarcina cunoaște cel mai bine riscurile reale, nu doar cele din procedură.\n- **Analiza documentației tehnice** - fișe de date de securitate (FDS/SDS) pentru substanțe chimice, cărți tehnice ale echipamentelor, proiecte de execuție.\n\nCombinarea a minimum două-trei metode (de exemplu JSA + consultarea lucrătorilor + analiza incidentelor) oferă o imagine mult mai completă decât aplicarea unei singure metodologii.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ierarhia-controalelor",
+    "md": "## Ierarhia controalelor (clauza 8.1.2)\n\nDupă identificarea unui pericol, ISO 45001 cere aplicarea măsurilor de control **în ordine strictă de eficacitate**, cunoscută drept ierarhia controalelor:\n\n1. **Eliminare** - se elimină complet pericolul (ex. renunțarea la o operațiune manuală periculoasă prin automatizare).\n2. **Substituire** - se înlocuiește cu ceva mai puțin periculos (ex. un solvent toxic cu unul pe bază de apă).\n3. **Controale tehnice (inginerești)** - bariere fizice, ventilație, apărători de protecție, sisteme de blocare (interlock).\n4. **Controale administrative** - proceduri de lucru, semnalizare, instruire, rotația personalului, permise de lucru.\n5. **Echipament individual de protecție (EIP)** - ultima linie de apărare (mănuși, ochelari, antifoane, mască).\n\nGreșeala frecventă în organizațiile mai puțin mature este să se sară direct la EIP, fără a analiza dacă pericolul poate fi eliminat sau redus prin măsuri superioare în ierarhie. Un auditor de certificare va cere justificare documentată ori de câte ori se alege un control inferior (de exemplu EIP) fără să se fi analizat opțiunile de eliminare/substituire/control tehnic.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b3"
+   },
+   {
+    "type": "example",
+    "title": "Identificarea pericolelor pe o secție de producție",
+    "concept_key": "metodologii-identificare-pericole",
+    "md": "O firmă SRL cu 60 de angajați, producătoare de mobilier, aplică JSA pentru postul de operator freză CNC. Pașii activității sunt: (1) pornirea utilajului, (2) fixarea piesei, (3) prelucrarea, (4) îndepărtarea așchiilor, (5) curățare la final de schimb.\n\nAplicând JSA, echipa SSM identifică:\n- la pasul 2 - risc de strivire a mâinilor la fixarea piesei (lipsă apărătoare reglabilă);\n- la pasul 3 - expunere la zgomot peste 85 dB și la pulberi de lemn;\n- la pasul 4 - contact cu așchii ascuțite, fără mănuși rezistente la tăiere prevăzute în dotare.\n\nPentru pericolul de zgomot, ierarhia controalelor s-ar aplica astfel: eliminare - nu este posibilă (procesul de frezare produce zgomot); substituire - nu se aplică; control tehnic - carcasă fonoizolantă parțială pe freză; control administrativ - limitarea timpului de expunere prin rotația personalului; EIP - antifoane cu atenuare de minimum 25 dB, purtate obligatoriu, conform fișei de instruire semnate de fiecare operator.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b4"
+   },
+   {
+    "type": "example",
+    "title": "Actualizarea registrului de pericole la o schimbare organizațională",
+    "concept_key": "identificare-pericole-iso45001",
+    "md": "O companie de distribuție introduce un nou stivuitor electric în depozit, înlocuind unul cu motor termic. Deși schimbarea pare pozitivă (elimină emisiile de CO în spații închise), procesul de identificare a pericolelor trebuie reluat, nu doar arhivat ca \"îmbunătățire\".\n\nEchipa SSM identifică pericole noi, specifice: risc electric la stațiile de încărcare a bateriilor, risc de degajare de hidrogen în timpul încărcării (spațiu neventilat corespunzător) și zgomot redus al utilajului, care crește riscul de a nu fi auzit de pietoni în depozit (risc de coliziune).\n\nRegistrul de pericole se actualizează cu data schimbării, sursa (achiziție echipament nou), pericolele noi identificate și măsurile aferente: ventilație suplimentară la stația de încărcare, instruire specifică la locul de muncă pentru noii operatori (conform HG 1425/2006) și montarea de semnale sonore artificiale (reverse alarm) pe stivuitor pentru compensarea zgomotului redus.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea 319/2006 a securității și sănătății în muncă",
+    "article": "art. 7 alin. (4) lit. a) și art. 12 alin. (1) lit. a)",
+    "effective": "2006-10-01",
+    "md": "Legea 319/2006 (cu modificările ulterioare) obligă angajatorul, conform art. 7 alin. (4) lit. a), să **realizeze și să dețină o evaluare a riscurilor pentru securitatea și sănătatea în muncă**, inclusiv pentru grupurile sensibile la riscuri specifice (femei gravide, tineri, persoane cu dizabilități). Art. 12 alin. (1) lit. a) completează prin obligația de a asigura instruirea adecvată în domeniul SSM.\n\nMetodologia de evaluare a riscurilor și conținutul documentației (inclusiv fișa de identificare a factorilor de risc) sunt detaliate prin normele metodologice aprobate prin **HG 1425/2006**. Aceste acte reprezintă baza legală națională peste care se suprapune cerința ISO 45001 de identificare sistematică și continuă a pericolelor - implementarea standardului nu înlocuiește obligațiile legale, ci le structurează într-un sistem de management auditabil. Verifică varianta consolidată în vigoare la data auditului, deoarece ambele acte au suferit modificări succesive.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă neconformitate constatată la auditurile de certificare ISO 45001 pe clauza 6.1.2.1 este **registrul de pericole \"înghețat\"** - completat o singură dată, la implementare, și niciodată actualizat. Alte capcane des întâlnite: identificarea se bazează exclusiv pe accidentele deja produse și ignoră evenimentele \"near-miss\"; lucrătorii care execută efectiv sarcina nu sunt consultați, iar pericolele sunt stabilite doar \"de la birou\"; activitățile non-rutină (mentenanță, intervenții de urgență, lucrări ale contractorilor externi) sunt omise din analiză, deși statistic generează o proporție mare din accidentele grave.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O secție de sudură a unei SRL cu 40 de angajați dorește să implementeze procesul de identificare a pericolelor cerut de clauza 6.1.2.1. Activitățile includ: sudură cu arc electric, manipulare butelii de gaz, polizare piese metalice și transport intern cu cărucior manual.\n\nCerință: (a) identifică minimum 5 pericole distincte pentru aceste activități; (b) pentru două dintre ele, aplică ierarhia controalelor și propune câte o măsură pentru fiecare din cele 5 niveluri, acolo unde este posibil.",
+    "solution_md": "(a) Pericole identificate: 1) radiații UV/IR și arc electric la sudură (risc de arsuri și leziuni oculare); 2) fum de sudură cu compuși metalici (risc respirator); 3) explozie/scurgere la buteliile de gaz (butelii neasigurate sau depozitate necorespunzător); 4) proiectare de particule metalice la polizare (risc ocular și de tăiere); 5) strivire/lovire la transportul manual cu căruciorul (risc musculo-scheletal și de coliziune cu personalul).\n\n(b) Aplicarea ierarhiei controalelor:\n\n**Fum de sudură** - eliminare: nu este posibilă (procesul necesar); substituire: schimbarea electrodului cu unul cu emisii reduse, unde tehnologic este posibil; control tehnic: instalarea unui sistem de exhaustare/aspirare localizată la sursă; control administrativ: rotația operatorilor și limitarea timpului de expunere continuă; EIP: mască de protecție respiratorie cu filtru adecvat pentru fum de sudură.\n\n**Butelii de gaz** - eliminare: nu se aplică; substituire: nu se aplică; control tehnic: suporți de fixare antirăsturnare și supape de siguranță/clapete antiretur; control administrativ: procedură scrisă de manipulare și depozitare separată a buteliilor pline de cele goale, cu instruire specifică la locul de muncă conform HG 1425/2006; EIP: mănuși rezistente la temperatură pentru manipularea robinetului buteliei.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ordinea corectă a ierarhiei controalelor conform ISO 45001, de la cel mai eficace la cel mai puțin eficace?",
+    "choices": [
+     "EIP, controale administrative, controale tehnice, substituire, eliminare",
+     "Eliminare, substituire, controale tehnice, controale administrative, EIP",
+     "Controale tehnice, eliminare, substituire, EIP, controale administrative",
+     "Substituire, eliminare, EIP, controale tehnice, controale administrative"
+    ],
+    "answer": 1,
+    "explain": "Ierarhia controalelor pornește întotdeauna de la măsura cea mai eficace - eliminarea completă a pericolului - și se termină cu EIP, considerat ultima linie de apărare, nu prima soluție.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Legii 319/2006, cine are obligația legală de a realiza și deține evaluarea riscurilor SSM la locul de muncă?",
+    "choices": [
+     "Fiecare lucrător, individual, pentru propriul post",
+     "Angajatorul",
+     "Doar inspectoratul teritorial de muncă (ITM), la cerere",
+     "Furnizorul echipamentelor de lucru"
+    ],
+    "answer": 1,
+    "explain": "Art. 7 alin. (4) lit. a) din Legea 319/2006 stabilește clar că angajatorul este cel obligat să realizeze și să dețină evaluarea riscurilor pentru securitatea și sănătatea în muncă; ITM are rol de autoritate de control, nu de executant al evaluării.",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un \"pericol\" (hazard) conform ISO 45001?",
+    "back": "O sursă, situație sau acțiune cu potențial de a cauza vătămare corporală sau îmbolnăvire profesională.",
+    "concept_key": "identificare-pericole-iso45001",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce clauză din ISO 45001:2018 tratează identificarea pericolelor?",
+    "back": "Clauza 6.1.2.1 - Identificarea pericolelor.",
+    "concept_key": "identificare-pericole-iso45001",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 5 niveluri ale ierarhiei controalelor, în ordine?",
+    "back": "Eliminare, substituire, controale tehnice, controale administrative, echipament individual de protecție (EIP).",
+    "concept_key": "ierarhia-controalelor",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce clauză ISO 45001 tratează eliminarea pericolelor și reducerea riscurilor SSM?",
+    "back": "Clauza 8.1.2.",
+    "concept_key": "ierarhia-controalelor",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce obligă art. 7 alin. (4) lit. a) din Legea 319/2006 angajatorului?",
+    "back": "Să realizeze și să dețină o evaluare a riscurilor pentru securitatea și sănătatea în muncă.",
+    "concept_key": "metodologii-identificare-pericole",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un eveniment \"near-miss\"?",
+    "back": "Un eveniment care avea potențialul de a cauza vătămare sau daună, dar care nu a produs efectiv o consecință negativă.",
+    "concept_key": "metodologii-identificare-pericole",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ detaliază metodologia națională de evaluare a riscurilor SSM?",
+    "back": "HG 1425/2006, normele metodologice de aplicare a Legii 319/2006.",
+    "concept_key": "identificare-pericole-iso45001",
+    "blockId": "cmjjuxweo00lvumkpmtqapxs2-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1308,
+   "flashcards": 7
+  }
+ }
+}

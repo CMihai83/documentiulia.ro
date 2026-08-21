@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw4j00diumkpjhayh6a5",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Raportare ANAF - SAF-T și e-Factura",
+ "lesson": "SAF-T D406 - Cerințe și structură",
+ "category": "FINANCE_OPS",
+ "content": "# SAF-T D406 - Cerințe și structură\n\n**SAF-T** (Standard Audit File for Tax) este un standard internațional dezvoltat de OECD pentru schimbul electronic de date contabile și fiscale între contribuabili și administrațiile fiscale. În România, standardul a fost adaptat de ANAF sub forma declarației informative **D406**, reglementată prin **Ordinul ministrului finanțelor (OMF) nr. 1.783/2021**.\n\nSpre deosebire de un decont clasic (ex. D300 pentru TVA), SAF-T D406 nu este o declarație de impunere, ci o **declarație informativă**: prin ea, contribuabilul transmite către ANAF, într-un fișier XML structurat, o \"copie\" detaliată a datelor din contabilitate — jurnalul de tranzacții, planul de conturi, facturile emise și primite, plățile, activele imobilizate și, la cerere, stocurile.\n\nScopul declarat al SAF-T este dublu: pe de o parte, oferă ANAF un instrument de analiză de risc și control încrucișat mult mai rapid decât inspecțiile fiscale clasice; pe de altă parte, este parte din strategia mai amplă de digitalizare fiscală a României, alături de e-Factura și e-Transport, toate alimentând un ecosistem de date pe care ANAF îl corelează automat.\n\nImplementarea SAF-T D406 s-a făcut **gradual, pe categorii de contribuabili**, în funcție de mărimea acestora conform criteriilor ANAF (cifră de afaceri, active, angajați):\n\n- **Contribuabilii mari** — obligați să depună SAF-T începând cu anul **2022** (primii vizați de reformă).\n- **Contribuabilii mijlocii** — obligați din anul **2023**.\n- **Contribuabilii mici** (inclusiv microîntreprinderi) — obligați din **1 ianuarie 2025**, ultimul val de implementare.\n\nFiecare categorie a beneficiat, la începutul obligativității, de o **perioadă de grație** pentru primele raportări (fără sancțiuni pentru depunere cu întârziere sau erori de conținut): 6, 5, 4, 3 sau 2 luni pentru primele declarații lunare, respectiv 3 luni pentru prima declarație trimestrială, în funcție de valul de implementare.\n\n**Important pentru 2026**: perioadele de grație aferente tuturor categoriilor de contribuabili **s-au epuizat în cursul anului 2025**. Practic, în 2026 nu mai există nicio \"marjă de eroare\" instituționalizată — toți contribuabilii obligați depun SAF-T la termenele standard, iar întârzierile sau erorile sunt tratate conform regulilor generale de sancționare.\n\nFișierul SAF-T D406 este un document **XML structurat pe secțiuni**, dintre care cele mai importante sunt:\n\n- **Header** — date de identificare ale firmei și ale perioadei raportate;\n- **GeneralLedgerEntries** — jurnalul contabil, cu toate înregistrările din perioadă (conturi, sume, documente-sursă);\n- **MasterFiles** — planul de conturi, lista clienților/furnizorilor, produse/servicii;\n- **SourceDocuments** — facturi emise/primite, plăți, alte documente justificative;\n- **Assets (Active)** — imobilizările corporale și necorporale;\n- **Inventory (Stocuri)** — situația stocurilor.\n\nNu toate secțiunile se depun cu aceeași frecvență:\n\n- Secțiunile de bază (jurnal, facturi, plăți) se depun **lunar**, pentru contribuabilii mari, mijlocii și pentru orice contribuabil care este **plătitor lunar de TVA**; se depun **trimestrial** pentru contribuabilii care aplică perioadă fiscală trimestrială de TVA.\n- Secțiunea **Active** se depune **o singură dată pe an**, odată cu situațiile financiare anuale.\n- Secțiunea **Stocuri** se depune **doar la cererea explicită a ANAF**, cu un termen de minimum 30 de zile de la solicitare.\n\n**Termenul general de depunere** este **ultima zi a lunii următoare** perioadei de raportare (lunare sau trimestriale, după caz). Fișierul se generează și se transmite prin intermediul aplicației **DUKIntegrator** (pusă la dispoziție gratuit de ANAF), care validează structura XML înainte de încărcare în Spațiul Privat Virtual. Dimensiunea fișierului este limitată la **sub 500 MB** — peste acest prag, datele se împart în fișiere multiple, conform specificațiilor tehnice ANAF.\n\n## Exemplu: Termen de depunere pentru un contribuabil mijlociu, plătitor lunar de TVA\n**Situație:** SC Atlas Industrial SRL este încadrată de ANAF ca **contribuabil mijlociu** (raportează SAF-T din 2023) și este **plătitoare lunară de TVA**.\n\n**Cerință:** care este termenul de depunere a SAF-T D406 pentru luna **mai 2026**?\n\n**Rezolvare:**\n1. Fiind contribuabil mijlociu și plătitor lunar de TVA, Atlas Industrial depune secțiunile curente ale SAF-T **lunar**.\n2. Perioada raportată este luna mai 2026.\n3. Termenul de depunere este **ultima zi a lunii următoare** perioadei raportate, deci ultima zi a lunii iunie 2026.\n4. **Termen-limită: 30 iunie 2026.**\n\nDacă societatea ar fi avut, ipotetic, secțiunea Active de raportat pentru exercițiul financiar 2025, aceasta s-ar fi depus separat, o singură dată, odată cu situațiile financiare anuale ale exercițiului respectiv — nu lunar.\n\n## Exemplu: Diferența dintre secțiunea Active și secțiunea Stocuri\n**Active:** SC Terra Verde SRL depune anual, odată cu situațiile financiare, secțiunea Active din SAF-T, cuprinzând mijloacele fixe (clădiri, utilaje, mijloace de transport) cu valorile de intrare, amortizarea cumulată și valoarea netă contabilă la finalul exercițiului. Nu este nevoie de o solicitare separată din partea ANAF — depunerea este automată, ca parte a ciclului anual de raportare.\n\n**Stocuri:** Aceeași societate primește, în luna martie 2026, o **solicitare oficială din partea ANAF** pentru secțiunea Stocuri, cu un termen de răspuns de 30 de zile de la comunicare. Abia în acest moment Terra Verde SRL este obligată să genereze și să transmită situația detaliată a stocurilor (materii prime, produse finite, mărfuri) prin SAF-T — nu depune această secțiune periodic, din proprie inițiativă, ci doar reactiv, când ANAF o solicită explicit.\n\n> Temei legal: Ordinul ministrului finanțelor nr. 1.783/2021 privind natura veniturilor... obligația de depunere prin mijloace electronice a Fișierului standard de control fiscal (SAF-T) (în vigoare de la 2021-12-01)\nOMF 1783/2021 este actul normativ care instituie obligația SAF-T D406 în România și stabilește calendarul de implementare pe categorii de contribuabili (mari, mijlocii, mici), structura tehnică a fișierului XML și termenele de depunere. Actele ulterioare de aplicare și instrucțiunile tehnice ANAF completează acest ordin cu detalii de format și validare (schema XSD, aplicația DUKIntegrator).\n\n⚠ Din 2026, **perioadele de grație pentru toate categoriile de contribuabili (mari, mijlocii, mici) s-au epuizat** — nu mai există nicio marjă de toleranță pentru întârzieri sau erori de conținut la SAF-T. Nedepunerea, depunerea cu întârziere sau depunerea eronată a declarației D406 atrage sancțiuni contravenționale prevăzute de Codul de procedură fiscală. **Cuantumul exact al amenzilor trebuie verificat la data faptei, conform reglementărilor în vigoare la data redactării acestui material (iulie 2026)** — nu te baza pe cifre memorate din surse mai vechi. Recomandarea practică: automatizează generarea SAF-T direct din softul de contabilitate (dacă suportă export DUKIntegrator) pentru a evita erorile de mapare manuală a planului de conturi.\n\n## Exercițiu\nSC Micron Design SRL este microîntreprindere, încadrată de ANAF drept **contribuabil mic** (obligată să depună SAF-T începând cu 1 ianuarie 2025) și este **plătitoare trimestrială de TVA**.\n\nCare este termenul de depunere a SAF-T D406 pentru **trimestrul II 2026** (aprilie–iunie 2026)?\n\n**Soluție:** 1. Fiind plătitoare **trimestrială** de TVA (nu lunară), Micron Design depune secțiunile curente ale SAF-T **trimestrial**, nu lunar — chiar dacă este contribuabil mic obligat din 2025.\n2. Perioada raportată este trimestrul II 2026 (aprilie–mai–iunie).\n3. Termenul de depunere este ultima zi a lunii următoare perioadei raportate, adică ultima zi a lunii iulie 2026.\n4. **Termen-limită: 31 iulie 2026.**\n\nObservație: dacă Micron Design ar fi optat pentru sau ar fi devenit plătitoare lunară de TVA, ar fi trecut la raportare SAF-T lunară pentru secțiunile curente, indiferent de statutul de \"contribuabil mic\".",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "saft-definitie",
+    "md": "**SAF-T** (Standard Audit File for Tax) este un standard internațional dezvoltat de OECD pentru schimbul electronic de date contabile și fiscale între contribuabili și administrațiile fiscale. În România, standardul a fost adaptat de ANAF sub forma declarației informative **D406**, reglementată prin **Ordinul ministrului finanțelor (OMF) nr. 1.783/2021**.\n\nSpre deosebire de un decont clasic (ex. D300 pentru TVA), SAF-T D406 nu este o declarație de impunere, ci o **declarație informativă**: prin ea, contribuabilul transmite către ANAF, într-un fișier XML structurat, o \"copie\" detaliată a datelor din contabilitate — jurnalul de tranzacții, planul de conturi, facturile emise și primite, plățile, activele imobilizate și, la cerere, stocurile.\n\nScopul declarat al SAF-T este dublu: pe de o parte, oferă ANAF un instrument de analiză de risc și control încrucișat mult mai rapid decât inspecțiile fiscale clasice; pe de altă parte, este parte din strategia mai amplă de digitalizare fiscală a României, alături de e-Factura și e-Transport, toate alimentând un ecosistem de date pe care ANAF îl corelează automat.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "saft-calendar-mari",
+    "md": "Implementarea SAF-T D406 s-a făcut **gradual, pe categorii de contribuabili**, în funcție de mărimea acestora conform criteriilor ANAF (cifră de afaceri, active, angajați):\n\n- **Contribuabilii mari** — obligați să depună SAF-T începând cu anul **2022** (primii vizați de reformă).\n- **Contribuabilii mijlocii** — obligați din anul **2023**.\n- **Contribuabilii mici** (inclusiv microîntreprinderi) — obligați din **1 ianuarie 2025**, ultimul val de implementare.\n\nFiecare categorie a beneficiat, la începutul obligativității, de o **perioadă de grație** pentru primele raportări (fără sancțiuni pentru depunere cu întârziere sau erori de conținut): 6, 5, 4, 3 sau 2 luni pentru primele declarații lunare, respectiv 3 luni pentru prima declarație trimestrială, în funcție de valul de implementare.\n\n**Important pentru 2026**: perioadele de grație aferente tuturor categoriilor de contribuabili **s-au epuizat în cursul anului 2025**. Practic, în 2026 nu mai există nicio \"marjă de eroare\" instituționalizată — toți contribuabilii obligați depun SAF-T la termenele standard, iar întârzierile sau erorile sunt tratate conform regulilor generale de sancționare.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "saft-structura-si-termene",
+    "md": "Fișierul SAF-T D406 este un document **XML structurat pe secțiuni**, dintre care cele mai importante sunt:\n\n- **Header** — date de identificare ale firmei și ale perioadei raportate;\n- **GeneralLedgerEntries** — jurnalul contabil, cu toate înregistrările din perioadă (conturi, sume, documente-sursă);\n- **MasterFiles** — planul de conturi, lista clienților/furnizorilor, produse/servicii;\n- **SourceDocuments** — facturi emise/primite, plăți, alte documente justificative;\n- **Assets (Active)** — imobilizările corporale și necorporale;\n- **Inventory (Stocuri)** — situația stocurilor.\n\nNu toate secțiunile se depun cu aceeași frecvență:\n\n- Secțiunile de bază (jurnal, facturi, plăți) se depun **lunar**, pentru contribuabilii mari, mijlocii și pentru orice contribuabil care este **plătitor lunar de TVA**; se depun **trimestrial** pentru contribuabilii care aplică perioadă fiscală trimestrială de TVA.\n- Secțiunea **Active** se depune **o singură dată pe an**, odată cu situațiile financiare anuale.\n- Secțiunea **Stocuri** se depune **doar la cererea explicită a ANAF**, cu un termen de minimum 30 de zile de la solicitare.\n\n**Termenul general de depunere** este **ultima zi a lunii următoare** perioadei de raportare (lunare sau trimestriale, după caz). Fișierul se generează și se transmite prin intermediul aplicației **DUKIntegrator** (pusă la dispoziție gratuit de ANAF), care validează structura XML înainte de încărcare în Spațiul Privat Virtual. Dimensiunea fișierului este limitată la **sub 500 MB** — peste acest prag, datele se împart în fișiere multiple, conform specificațiilor tehnice ANAF.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b3"
+   },
+   {
+    "type": "example",
+    "title": "Termen de depunere pentru un contribuabil mijlociu, plătitor lunar de TVA",
+    "concept_key": "saft-termen-depunere",
+    "md": "**Situație:** SC Atlas Industrial SRL este încadrată de ANAF ca **contribuabil mijlociu** (raportează SAF-T din 2023) și este **plătitoare lunară de TVA**.\n\n**Cerință:** care este termenul de depunere a SAF-T D406 pentru luna **mai 2026**?\n\n**Rezolvare:**\n1. Fiind contribuabil mijlociu și plătitor lunar de TVA, Atlas Industrial depune secțiunile curente ale SAF-T **lunar**.\n2. Perioada raportată este luna mai 2026.\n3. Termenul de depunere este **ultima zi a lunii următoare** perioadei raportate, deci ultima zi a lunii iunie 2026.\n4. **Termen-limită: 30 iunie 2026.**\n\nDacă societatea ar fi avut, ipotetic, secțiunea Active de raportat pentru exercițiul financiar 2025, aceasta s-ar fi depus separat, o singură dată, odată cu situațiile financiare anuale ale exercițiului respectiv — nu lunar.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b4"
+   },
+   {
+    "type": "example",
+    "title": "Diferența dintre secțiunea Active și secțiunea Stocuri",
+    "concept_key": "saft-active-stocuri",
+    "md": "**Active:** SC Terra Verde SRL depune anual, odată cu situațiile financiare, secțiunea Active din SAF-T, cuprinzând mijloacele fixe (clădiri, utilaje, mijloace de transport) cu valorile de intrare, amortizarea cumulată și valoarea netă contabilă la finalul exercițiului. Nu este nevoie de o solicitare separată din partea ANAF — depunerea este automată, ca parte a ciclului anual de raportare.\n\n**Stocuri:** Aceeași societate primește, în luna martie 2026, o **solicitare oficială din partea ANAF** pentru secțiunea Stocuri, cu un termen de răspuns de 30 de zile de la comunicare. Abia în acest moment Terra Verde SRL este obligată să genereze și să transmită situația detaliată a stocurilor (materii prime, produse finite, mărfuri) prin SAF-T — nu depune această secțiune periodic, din proprie inițiativă, ci doar reactiv, când ANAF o solicită explicit.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Ordinul ministrului finanțelor nr. 1.783/2021",
+    "article": "privind natura veniturilor... obligația de depunere prin mijloace electronice a Fișierului standard de control fiscal (SAF-T)",
+    "effective": "2021-12-01",
+    "md": "OMF 1783/2021 este actul normativ care instituie obligația SAF-T D406 în România și stabilește calendarul de implementare pe categorii de contribuabili (mari, mijlocii, mici), structura tehnică a fișierului XML și termenele de depunere. Actele ulterioare de aplicare și instrucțiunile tehnice ANAF completează acest ordin cu detalii de format și validare (schema XSD, aplicația DUKIntegrator).",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Din 2026, **perioadele de grație pentru toate categoriile de contribuabili (mari, mijlocii, mici) s-au epuizat** — nu mai există nicio marjă de toleranță pentru întârzieri sau erori de conținut la SAF-T. Nedepunerea, depunerea cu întârziere sau depunerea eronată a declarației D406 atrage sancțiuni contravenționale prevăzute de Codul de procedură fiscală. **Cuantumul exact al amenzilor trebuie verificat la data faptei, conform reglementărilor în vigoare la data redactării acestui material (iulie 2026)** — nu te baza pe cifre memorate din surse mai vechi. Recomandarea practică: automatizează generarea SAF-T direct din softul de contabilitate (dacă suportă export DUKIntegrator) pentru a evita erorile de mapare manuală a planului de conturi.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Micron Design SRL este microîntreprindere, încadrată de ANAF drept **contribuabil mic** (obligată să depună SAF-T începând cu 1 ianuarie 2025) și este **plătitoare trimestrială de TVA**.\n\nCare este termenul de depunere a SAF-T D406 pentru **trimestrul II 2026** (aprilie–iunie 2026)?",
+    "solution_md": "1. Fiind plătitoare **trimestrială** de TVA (nu lunară), Micron Design depune secțiunile curente ale SAF-T **trimestrial**, nu lunar — chiar dacă este contribuabil mic obligat din 2025.\n2. Perioada raportată este trimestrul II 2026 (aprilie–mai–iunie).\n3. Termenul de depunere este ultima zi a lunii următoare perioadei raportate, adică ultima zi a lunii iulie 2026.\n4. **Termen-limită: 31 iulie 2026.**\n\nObservație: dacă Micron Design ar fi optat pentru sau ar fi devenit plătitoare lunară de TVA, ar fi trecut la raportare SAF-T lunară pentru secțiunile curente, indiferent de statutul de \"contribuabil mic\".",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De la ce dată sunt obligați contribuabilii mici să depună SAF-T D406?",
+    "choices": [
+     "1 ianuarie 2022",
+     "1 ianuarie 2023",
+     "1 ianuarie 2025",
+     "1 ianuarie 2026"
+    ],
+    "answer": 2,
+    "explain": "Contribuabilii mari raportează din 2022, cei mijlocii din 2023, iar contribuabilii mici — ultimul val de implementare — din 1 ianuarie 2025.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care secțiune a SAF-T D406 se depune doar la cererea explicită a ANAF, cu termen minim de 30 de zile?",
+    "choices": [
+     "Header",
+     "Active",
+     "Stocuri",
+     "GeneralLedgerEntries"
+    ],
+    "answer": 2,
+    "explain": "Secțiunea Stocuri nu se depune periodic din proprie inițiativă, ci doar reactiv, când ANAF solicită explicit acest lucru, cu un termen de minimum 30 de zile de la comunicare. Secțiunea Active, în schimb, se depune anual, automat, odată cu situațiile financiare.",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul SAF-T și ce declarație reprezintă în România?",
+    "back": "Standard Audit File for Tax — standard OECD de raportare fiscală electronică, implementat în România ca declarația informativă D406.",
+    "concept_key": "saft-definitie",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează obligația SAF-T D406 în România?",
+    "back": "Ordinul ministrului finanțelor (OMF) nr. 1.783/2021.",
+    "concept_key": "saft-omf-1783-2021",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este calendarul de implementare SAF-T pe categorii de contribuabili?",
+    "back": "Contribuabili mari — din 2022; contribuabili mijlocii — din 2023; contribuabili mici — din 1 ianuarie 2025.",
+    "concept_key": "saft-calendar-mari",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Mai există perioadă de grație pentru SAF-T în 2026?",
+    "back": "Nu. Perioadele de grație pentru toate categoriile de contribuabili s-au epuizat în cursul anului 2025; din 2026 se aplică termenele standard, fără toleranță.",
+    "concept_key": "saft-grace-period-2026",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul general de depunere a SAF-T D406?",
+    "back": "Ultima zi a lunii următoare perioadei de raportare — lunar pentru contribuabilii mari/mijlocii și plătitorii lunari de TVA; trimestrial pentru ceilalți.",
+    "concept_key": "saft-termen-depunere",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cu ce aplicație se generează și validează fișierul SAF-T înainte de transmiterea la ANAF?",
+    "back": "DUKIntegrator, aplicația gratuită pusă la dispoziție de ANAF, care validează structura XML; fișierul trebuie să fie sub 500 MB.",
+    "concept_key": "saft-dukintegrator",
+    "blockId": "cmjjuxw4j00diumkpjhayh6a5-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1089,
+   "flashcards": 6
+  }
+ }
+}

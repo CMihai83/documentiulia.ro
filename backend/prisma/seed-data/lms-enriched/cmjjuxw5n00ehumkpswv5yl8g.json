@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw5n00ehumkpswv5yl8g",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Metodologii Moderne de Bugetare",
+ "lesson": "Rolling Forecasts",
+ "category": "FINANCE_OPS",
+ "content": "# Rolling Forecasts\n\n## Rolling forecast: definiție și rațiune de a exista\n\nBugetul static anual este instantaneul unei singure decizii: la finalul lunii octombrie sau noiembrie, echipa de planificare financiară stabilește ținte de venituri, costuri și profit pentru anul fiscal următor, iar acel document rămâne, de regulă, neschimbat 12 luni. Problema? Piața nu așteaptă ca ipotezele tale să se confirme. Un client mare care întârzie o comandă, o materie primă al cărei preț crește cu 15%, o campanie de marketing care depășește așteptările — toate acestea fac ca bugetul static să devină, la jumătatea anului, un document mai degrabă istoric decât un instrument de decizie.\n\nRolling forecast (forecast glisant sau reactualizat continuu) rezolvă exact această problemă: în loc să previzionezi o singură dată pentru un an fiscal fix, reactualizezi periodic previziunea, menținând mereu un orizont constant înainte (de exemplu, întotdeauna următoarele 12 luni sau următoarele 4-5 trimestre), indiferent câte luni au trecut din anul fiscal curent. Practic, la finalul fiecărui trimestru „cazi” trimestrul încheiat (devenit istoric/actual) și „adaugi” un trimestru nou la capătul orizontului, păstrând mereu aceeași fereastră de vizibilitate.\n\nAvantajul central pentru un CFO sau controller este agilitatea: deciziile de investiții, angajare sau finanțare se bazează pe cea mai recentă realitate operațională, nu pe ipoteze vechi de 8-10 luni. Dezavantajul, dacă procesul nu este bine guvernat, este efortul administrativ — motiv pentru care rolling forecast funcționează cel mai bine când este driver-based și parțial automatizat, nu construit linie cu linie în fiecare ciclu.\n\n## Frecvența de actualizare și orizontul de previziune\n\nCele mai frecvente cadențe întâlnite în practică sunt lunară și trimestrială. Actualizarea lunară oferă cea mai mare reactivitate și este potrivită pentru companii cu ciclu operațional rapid (retail, distribuție, servicii cu cash flow volatil), dar consumă resurse FP&A (Financial Planning & Analysis — planificare și analiză financiară) semnificative. Actualizarea trimestrială este standardul majorității companiilor mari și mijlocii din România și al filialelor multinaționale: suficient de frecventă pentru a corecta abaterile relevante, suficient de rară pentru a nu transforma forecasting-ul într-un exercițiu birocratic permanent.\n\nOrizontul rămâne, de regulă, fix: întotdeauna următoarele 12 luni (formatul N+4, adică patru trimestre glisante) sau până la finalul anului fiscal următor, pentru companii cu vizibilitate mai mare pe portofoliul de contracte. Diferența esențială față de un simplu „reforecast” al bugetului anual (care se oprește la finalul anului fiscal curent) este tocmai acest orizont constant: pe măsură ce trece timpul, fereastra de vizibilitate nu se micșorează niciodată.\n\nÎn practică, multe companii combină cele două cadențe: revizuire lunară ușoară (flash forecast) doar pe indicatorii-cheie (venituri, marjă brută, cash), și revizuire trimestrială completă, cu toate liniile de P&L (profit și pierdere) și bilanț relevante pentru raportarea către board.\n\n## Nivelul de detaliu și integrarea cu bugetul anual\n\nUn rolling forecast eficient nu recalculează fiecare linie contabilă din balanța de verificare. Regula de aur este: detaliezi doar acolo unde decizia depinde de acel nivel de granularitate. Veniturile se previzionează, de regulă, pe drivere operaționale (volum × preț × mix de produse/servicii), nu prin extrapolare simplă a lunii precedente — aceasta este esența driver-based budgeting aplicată în forecasting. Costurile variabile urmează driverul de volum; costurile fixe se revizuiesc doar dacă există o schimbare structurală (angajări, chirii noi, contracte renegociate).\n\nIntegrarea cu bugetul anual se face prin păstrarea bugetului aprobat ca linie de referință (baseline) neschimbată pe tot parcursul anului — folosită pentru comparațiile de tip „actual vs. buget” cerute de guvernanța corporativă — în timp ce rolling forecast devine linia de lucru pentru deciziile curente, de tip „actual plus forecast vs. buget”. Rapoartele către board prezintă, de regulă, trei coloane: buget aprobat, ultimul rolling forecast și realizatul de la începutul anului (year-to-date), astfel încât diferențele de ipoteze să fie vizibile și explicabile, nu ascunse. Fără această disciplină, rolling forecast riscă să devină un instrument paralel, necorelat cu bugetul oficial, ceea ce subminează credibilitatea întregului proces de planificare financiară.\n\n## Exemplu: Rolling forecast trimestrial la Tehnoplast SRL\nTehnoplast SRL, producător de repere din plastic pentru industria auto din Argeș, aplică rolling forecast trimestrial cu orizont fix de 12 luni (4 trimestre glisante). La finalul lunii iunie 2026 (închiderea trimestrului 2), echipa de control de gestiune actualizează previziunea astfel:\n\n| Trimestru | Statut la 30 iunie 2026 | Venituri (lei) |\n|---|---|---|\n| T1 2026 | Realizat (actual) | 2.400.000 |\n| T2 2026 | Realizat (actual) | 2.600.000 |\n| T3 2026 | Forecast (recalculat) | 2.750.000 |\n| T4 2026 | Forecast (recalculat) | 2.900.000 |\n| T1 2027 | Forecast (adăugat acum, pentru păstrarea orizontului de 12 luni) | 2.550.000 |\n\nObservă mecanismul: la ciclul anterior (martie 2026), orizontul se oprea la T4 2026. Acum T1 2026 a devenit realizat, iar T3-T4 2026 au fost recalculate pe baza driverelor actualizate (comenzi ferme de la principalul client OEM, curs valutar EUR/RON, preț materie primă polimer). În plus, s-a adăugat T1 2027, astfel încât orizontul de vizibilitate rămâne mereu de 12 luni înainte, indiferent de luna calendaristică în care se face actualizarea.\n\n## Exemplu: Integrarea rolling forecast cu bugetul anual — filială a unui grup multinațional\nO filială românească a unui grup multinațional de bunuri de larg consum raportează lunar către sediul central un flash forecast pe 5 indicatori-cheie (venituri, marjă brută, EBITDA, cash disponibil, headcount) și trimestrial un rolling forecast complet. Bugetul anual aprobat pentru 2026 prevedea venituri de 48.000.000 lei. La finalul trimestrului 2, realizatul cumulat (year-to-date) este de 23.500.000 lei, iar noul rolling forecast pentru întregul an ajunge la 46.200.000 lei — cu 1.800.000 lei sub bugetul aprobat, din cauza unei întârzieri de lansare pe un canal de retail modern.\n\nRaportul prezentat board-ului conține explicit trei valori pentru linia de venituri: buget aprobat (48.000.000 lei), rolling forecast actual (46.200.000 lei) și cauza abaterii, detaliată în două componente: întârziere de lansare (aproximativ 1.500.000 lei) și efect nefavorabil de curs valutar (300.000 lei). Această structură permite board-ului să distingă între o abatere de execuție (care cere acțiune corectivă) și o abatere de ipoteze externe (curs valutar), fără a renunța la bugetul aprobat ca reper de guvernanță.\n\n> Temei legal: OMFP 1802/2014 Reglementări contabile privind situațiile financiare anuale individuale și consolidate — principii generale și structura situațiilor financiare (în vigoare de la 2015-01-01)\nDeși rolling forecast este un instrument de gestiune internă, nesupus reglementării contabile, bunele practici de FP&A recomandă ca structura de conturi și categoriile folosite în forecast (venituri, cheltuieli de exploatare, EBITDA, rezultat net) să rămână aliniate cu formatul situațiilor financiare anuale reglementat de OMFP 1802/2014, aplicabil situațiilor financiare începând cu exercițiul financiar 2015. Această aliniere facilitează reconcilierea rapidă între forecast, buget și situațiile financiare reale, evitând ca departamentul financiar să întrețină taxonomii paralele de raportare.\n\n⚠ Cele mai frecvente capcane ale rolling forecast: (1) oboseala de forecast — actualizarea prea deasă (săptămânal) fără o schimbare reală în ipoteze consumă timpul echipei FP&A fără a adăuga valoare decizională; (2) precizia falsă — a prezenta cifre cu două zecimale pentru un orizont de 9-12 luni creează impresia unei certitudini pe care niciun model nu o poate oferi; documentează întotdeauna ipotezele-cheie (driverul de volum, cursul valutar, inflația) alături de cifre; (3) decuplarea de bugetul aprobat — dacă rolling forecast înlocuiește complet bugetul în raportare, board-ul pierde reperul de guvernanță pe care bugetul anual îl oferă; păstrează ambele linii vizibile; (4) lipsa unui proprietar clar pe fiecare ipoteză — fără responsabili nominalizați (de regulă directorii de vânzări, achiziții, producție), actualizarea devine un exercițiu izolat al departamentului financiar, deconectat de realitatea operațională.\n\n## Exercițiu\nCompania ABC SRL aplică rolling forecast trimestrial driver-based pentru linia de venituri. Date disponibile la finalul trimestrului 2 (T2): venituri realizate T2 = 1.900.000 lei. Rata de creștere trimestrială (driver validat de directorul comercial, pe baza pipeline-ului de comenzi și a sezonalității istorice) = 3% trimestru peste trimestru. Cerință: calculează rolling forecast pentru T3 și T4 ale anului curent, aplicând rata de creștere succesiv (T3 pe baza T2, T4 pe baza T3), și determină totalul previzionat pentru al doilea semestru (T3+T4).\n\n**Soluție:** Pas 1 — T3 = T2 × (1 + 3%) = 1.900.000 × 1,03 = 1.957.000 lei.\nPas 2 — T4 = T3 × (1 + 3%) = 1.957.000 × 1,03 = 2.015.710 lei.\nPas 3 — Total previzionat H2 (T3+T4) = 1.957.000 + 2.015.710 = 3.972.710 lei.\n\nNotă metodologică: acesta este un forecast driver-based simplu, cu un singur driver (rata de creștere trimestrială). În practică, rata de 3% ar trebui descompusă în componente (creștere de volum, efect de preț/mix), fiecare validată de departamentul operațional relevant, nu doar extrapolată statistic — altfel rolling forecast riscă să reproducă aceeași slăbiciune a bugetului static: o ipoteză neverificată aplicată mecanic pe mai multe perioade.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "rolling-forecast-vs-buget-static",
+    "md": "## Rolling forecast: definiție și rațiune de a exista\n\nBugetul static anual este instantaneul unei singure decizii: la finalul lunii octombrie sau noiembrie, echipa de planificare financiară stabilește ținte de venituri, costuri și profit pentru anul fiscal următor, iar acel document rămâne, de regulă, neschimbat 12 luni. Problema? Piața nu așteaptă ca ipotezele tale să se confirme. Un client mare care întârzie o comandă, o materie primă al cărei preț crește cu 15%, o campanie de marketing care depășește așteptările — toate acestea fac ca bugetul static să devină, la jumătatea anului, un document mai degrabă istoric decât un instrument de decizie.\n\nRolling forecast (forecast glisant sau reactualizat continuu) rezolvă exact această problemă: în loc să previzionezi o singură dată pentru un an fiscal fix, reactualizezi periodic previziunea, menținând mereu un orizont constant înainte (de exemplu, întotdeauna următoarele 12 luni sau următoarele 4-5 trimestre), indiferent câte luni au trecut din anul fiscal curent. Practic, la finalul fiecărui trimestru „cazi” trimestrul încheiat (devenit istoric/actual) și „adaugi” un trimestru nou la capătul orizontului, păstrând mereu aceeași fereastră de vizibilitate.\n\nAvantajul central pentru un CFO sau controller este agilitatea: deciziile de investiții, angajare sau finanțare se bazează pe cea mai recentă realitate operațională, nu pe ipoteze vechi de 8-10 luni. Dezavantajul, dacă procesul nu este bine guvernat, este efortul administrativ — motiv pentru care rolling forecast funcționează cel mai bine când este driver-based și parțial automatizat, nu construit linie cu linie în fiecare ciclu.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "frecventa-rolling-forecast",
+    "md": "## Frecvența de actualizare și orizontul de previziune\n\nCele mai frecvente cadențe întâlnite în practică sunt lunară și trimestrială. Actualizarea lunară oferă cea mai mare reactivitate și este potrivită pentru companii cu ciclu operațional rapid (retail, distribuție, servicii cu cash flow volatil), dar consumă resurse FP&A (Financial Planning & Analysis — planificare și analiză financiară) semnificative. Actualizarea trimestrială este standardul majorității companiilor mari și mijlocii din România și al filialelor multinaționale: suficient de frecventă pentru a corecta abaterile relevante, suficient de rară pentru a nu transforma forecasting-ul într-un exercițiu birocratic permanent.\n\nOrizontul rămâne, de regulă, fix: întotdeauna următoarele 12 luni (formatul N+4, adică patru trimestre glisante) sau până la finalul anului fiscal următor, pentru companii cu vizibilitate mai mare pe portofoliul de contracte. Diferența esențială față de un simplu „reforecast” al bugetului anual (care se oprește la finalul anului fiscal curent) este tocmai acest orizont constant: pe măsură ce trece timpul, fereastra de vizibilitate nu se micșorează niciodată.\n\nÎn practică, multe companii combină cele două cadențe: revizuire lunară ușoară (flash forecast) doar pe indicatorii-cheie (venituri, marjă brută, cash), și revizuire trimestrială completă, cu toate liniile de P&L (profit și pierdere) și bilanț relevante pentru raportarea către board.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "driver-based-forecast",
+    "md": "## Nivelul de detaliu și integrarea cu bugetul anual\n\nUn rolling forecast eficient nu recalculează fiecare linie contabilă din balanța de verificare. Regula de aur este: detaliezi doar acolo unde decizia depinde de acel nivel de granularitate. Veniturile se previzionează, de regulă, pe drivere operaționale (volum × preț × mix de produse/servicii), nu prin extrapolare simplă a lunii precedente — aceasta este esența driver-based budgeting aplicată în forecasting. Costurile variabile urmează driverul de volum; costurile fixe se revizuiesc doar dacă există o schimbare structurală (angajări, chirii noi, contracte renegociate).\n\nIntegrarea cu bugetul anual se face prin păstrarea bugetului aprobat ca linie de referință (baseline) neschimbată pe tot parcursul anului — folosită pentru comparațiile de tip „actual vs. buget” cerute de guvernanța corporativă — în timp ce rolling forecast devine linia de lucru pentru deciziile curente, de tip „actual plus forecast vs. buget”. Rapoartele către board prezintă, de regulă, trei coloane: buget aprobat, ultimul rolling forecast și realizatul de la începutul anului (year-to-date), astfel încât diferențele de ipoteze să fie vizibile și explicabile, nu ascunse. Fără această disciplină, rolling forecast riscă să devină un instrument paralel, necorelat cu bugetul oficial, ceea ce subminează credibilitatea întregului proces de planificare financiară.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b3"
+   },
+   {
+    "type": "example",
+    "title": "Rolling forecast trimestrial la Tehnoplast SRL",
+    "concept_key": "orizont-rolling-forecast",
+    "md": "Tehnoplast SRL, producător de repere din plastic pentru industria auto din Argeș, aplică rolling forecast trimestrial cu orizont fix de 12 luni (4 trimestre glisante). La finalul lunii iunie 2026 (închiderea trimestrului 2), echipa de control de gestiune actualizează previziunea astfel:\n\n| Trimestru | Statut la 30 iunie 2026 | Venituri (lei) |\n|---|---|---|\n| T1 2026 | Realizat (actual) | 2.400.000 |\n| T2 2026 | Realizat (actual) | 2.600.000 |\n| T3 2026 | Forecast (recalculat) | 2.750.000 |\n| T4 2026 | Forecast (recalculat) | 2.900.000 |\n| T1 2027 | Forecast (adăugat acum, pentru păstrarea orizontului de 12 luni) | 2.550.000 |\n\nObservă mecanismul: la ciclul anterior (martie 2026), orizontul se oprea la T4 2026. Acum T1 2026 a devenit realizat, iar T3-T4 2026 au fost recalculate pe baza driverelor actualizate (comenzi ferme de la principalul client OEM, curs valutar EUR/RON, preț materie primă polimer). În plus, s-a adăugat T1 2027, astfel încât orizontul de vizibilitate rămâne mereu de 12 luni înainte, indiferent de luna calendaristică în care se face actualizarea.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b4"
+   },
+   {
+    "type": "example",
+    "title": "Integrarea rolling forecast cu bugetul anual — filială a unui grup multinațional",
+    "concept_key": "integrare-rolling-forecast-buget",
+    "md": "O filială românească a unui grup multinațional de bunuri de larg consum raportează lunar către sediul central un flash forecast pe 5 indicatori-cheie (venituri, marjă brută, EBITDA, cash disponibil, headcount) și trimestrial un rolling forecast complet. Bugetul anual aprobat pentru 2026 prevedea venituri de 48.000.000 lei. La finalul trimestrului 2, realizatul cumulat (year-to-date) este de 23.500.000 lei, iar noul rolling forecast pentru întregul an ajunge la 46.200.000 lei — cu 1.800.000 lei sub bugetul aprobat, din cauza unei întârzieri de lansare pe un canal de retail modern.\n\nRaportul prezentat board-ului conține explicit trei valori pentru linia de venituri: buget aprobat (48.000.000 lei), rolling forecast actual (46.200.000 lei) și cauza abaterii, detaliată în două componente: întârziere de lansare (aproximativ 1.500.000 lei) și efect nefavorabil de curs valutar (300.000 lei). Această structură permite board-ului să distingă între o abatere de execuție (care cere acțiune corectivă) și o abatere de ipoteze externe (curs valutar), fără a renunța la bugetul aprobat ca reper de guvernanță.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Reglementări contabile privind situațiile financiare anuale individuale și consolidate — principii generale și structura situațiilor financiare",
+    "effective": "2015-01-01",
+    "md": "Deși rolling forecast este un instrument de gestiune internă, nesupus reglementării contabile, bunele practici de FP&A recomandă ca structura de conturi și categoriile folosite în forecast (venituri, cheltuieli de exploatare, EBITDA, rezultat net) să rămână aliniate cu formatul situațiilor financiare anuale reglementat de OMFP 1802/2014, aplicabil situațiilor financiare începând cu exercițiul financiar 2015. Această aliniere facilitează reconcilierea rapidă între forecast, buget și situațiile financiare reale, evitând ca departamentul financiar să întrețină taxonomii paralele de raportare.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cele mai frecvente capcane ale rolling forecast: (1) oboseala de forecast — actualizarea prea deasă (săptămânal) fără o schimbare reală în ipoteze consumă timpul echipei FP&A fără a adăuga valoare decizională; (2) precizia falsă — a prezenta cifre cu două zecimale pentru un orizont de 9-12 luni creează impresia unei certitudini pe care niciun model nu o poate oferi; documentează întotdeauna ipotezele-cheie (driverul de volum, cursul valutar, inflația) alături de cifre; (3) decuplarea de bugetul aprobat — dacă rolling forecast înlocuiește complet bugetul în raportare, board-ul pierde reperul de guvernanță pe care bugetul anual îl oferă; păstrează ambele linii vizibile; (4) lipsa unui proprietar clar pe fiecare ipoteză — fără responsabili nominalizați (de regulă directorii de vânzări, achiziții, producție), actualizarea devine un exercițiu izolat al departamentului financiar, deconectat de realitatea operațională.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Compania ABC SRL aplică rolling forecast trimestrial driver-based pentru linia de venituri. Date disponibile la finalul trimestrului 2 (T2): venituri realizate T2 = 1.900.000 lei. Rata de creștere trimestrială (driver validat de directorul comercial, pe baza pipeline-ului de comenzi și a sezonalității istorice) = 3% trimestru peste trimestru. Cerință: calculează rolling forecast pentru T3 și T4 ale anului curent, aplicând rata de creștere succesiv (T3 pe baza T2, T4 pe baza T3), și determină totalul previzionat pentru al doilea semestru (T3+T4).",
+    "solution_md": "Pas 1 — T3 = T2 × (1 + 3%) = 1.900.000 × 1,03 = 1.957.000 lei.\nPas 2 — T4 = T3 × (1 + 3%) = 1.957.000 × 1,03 = 2.015.710 lei.\nPas 3 — Total previzionat H2 (T3+T4) = 1.957.000 + 2.015.710 = 3.972.710 lei.\n\nNotă metodologică: acesta este un forecast driver-based simplu, cu un singur driver (rata de creștere trimestrială). În practică, rata de 3% ar trebui descompusă în componente (creștere de volum, efect de preț/mix), fiecare validată de departamentul operațional relevant, nu doar extrapolată statistic — altfel rolling forecast riscă să reproducă aceeași slăbiciune a bugetului static: o ipoteză neverificată aplicată mecanic pe mai multe perioade.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre un rolling forecast și un buget static anual?",
+    "choices": [
+     "Rolling forecast folosește doar cifre lunare, bugetul static doar trimestriale",
+     "Rolling forecast menține un orizont constant de previziune (ex. 12 luni glisante), în timp ce bugetul static rămâne fix pentru anul fiscal",
+     "Rolling forecast este obligatoriu prin OMFP 1802/2014, bugetul static este opțional",
+     "Nu există nicio diferență metodologică, doar de denumire"
+    ],
+    "answer": 1,
+    "explain": "Esența rolling forecast este orizontul glisant: la fiecare actualizare se adaugă o perioadă nouă la capătul orizontului și se elimină perioada încheiată, menținând mereu aceeași fereastră de vizibilitate înainte, spre deosebire de bugetul static care rămâne neschimbat pe tot anul fiscal.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este cea mai potrivită cadență de actualizare a rolling forecast pentru majoritatea companiilor mari și mijlocii din România?",
+    "choices": [
+     "Zilnică",
+     "Săptămânală",
+     "Lunară pentru indicatori-cheie (flash forecast) și trimestrială pentru forecast complet",
+     "O singură dată pe an, la fel ca bugetul static"
+    ],
+    "answer": 2,
+    "explain": "Standardul de piață combină o revizuire lunară ușoară pe indicatorii-cheie (venituri, marjă, cash) cu o revizuire trimestrială completă pe toate liniile relevante de P&L și bilanț, echilibrând reactivitatea cu efortul administrativ.",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un rolling forecast?",
+    "back": "O previziune financiară reactualizată periodic (lunar sau trimestrial), care menține mereu un orizont constant de vizibilitate înainte (ex. 12 luni), spre deosebire de bugetul static care rămâne fix pe anul fiscal.",
+    "concept_key": "rolling-forecast-definitie",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce orizont de previziune are, de regulă, un rolling forecast?",
+    "back": "Un orizont fix, tipic 12 luni sau 4 trimestre glisante (format N+4): la fiecare actualizare se elimină perioada încheiată și se adaugă o perioadă nouă la capăt.",
+    "concept_key": "orizont-rolling-forecast",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă abordarea driver-based într-un rolling forecast?",
+    "back": "Previzionarea liniilor financiare pe baza factorilor operaționali reali (volum, preț, mix de produse), nu prin simpla extrapolare istorică a cifrelor din perioada precedentă.",
+    "concept_key": "driver-based-forecast",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cu ce frecvență se actualizează, de regulă, un rolling forecast complet în companii mature?",
+    "back": "Trimestrial pentru forecast-ul complet (toate liniile de P&L și bilanț), adesea completat cu un flash forecast lunar pe indicatorii-cheie.",
+    "concept_key": "frecventa-rolling-forecast",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferențiază rolling forecast de bugetul static anual în raportarea către board?",
+    "back": "Bugetul aprobat rămâne linia de referință neschimbată pentru guvernanță; rolling forecast este linia de lucru actualizată periodic, iar rapoartele bune arată ambele, plus realizatul, în paralel.",
+    "concept_key": "rolling-forecast-vs-buget-static",
+    "blockId": "cmjjuxw5n00ehumkpswv5yl8g-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1384,
+   "flashcards": 5
+  }
+ }
+}

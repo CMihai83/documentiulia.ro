@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvzs00aaumkpm6n91dus",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Business Environment Domain",
+ "lesson": "Project Selection",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Project Selection\n\n## Selecția proiectelor în managementul portofoliului\n\nÎn Business Environment Domain al PMBOK 7, selecția proiectelor este punctul de plecare al oricărui proiect: înainte ca un project manager să primească un charter, organizația trebuie să decidă *care* inițiative merită finanțate din resursele limitate disponibile.\n\nManagementul portofoliului (portfolio management) reunește proiecte, programe și operațiuni conexe, grupate pentru a atinge obiectivele strategice ale organizației. Deciziile de selecție nu se iau izolat, la nivelul unui singur proiect, ci prin raportare la întregul portofoliu: un comitet de guvernanță (Portfolio Review Board sau PMO strategic) evaluează periodic propunerile noi față de portofoliul existent, ținând cont de capacitatea de resurse, apetitul de risc și prioritățile strategice.\n\nPentru o companie românească aflată în plin proces de digitalizare — de exemplu o distribuție națională de materiale de construcții care ia în calcul implementarea unui sistem ERP — selecția proiectelor înseamnă compararea acestei investiții cu alte inițiative concurente (extindere depozit, automatizare linie de producție, platformă e-commerce), toate concurând pentru același buget anual de capital.\n\nAlinierea strategică (strategic alignment) este criteriul central: un proiect este selectat nu pentru că este „bun” în sine, ci pentru că sprijină obiectivele strategice formalizate — de regulă documentate în business case și în strategia de portofoliu a organizației. PMI definește această legătură prin componentele portofoliului (portfolio components): proiecte, programe și alte lucrări conexe, toate gestionate ca un grup pentru a atinge obiective strategice de business.\n\n## Metode de selecție: modele de măsurare a beneficiilor vs. modele de optimizare\n\nLiteratura PMI clasifică metodele de selecție a proiectelor în două mari categorii, relevante pentru examenul PMP:\n\n**1. Modele de măsurare a beneficiilor (benefit measurement methods)** — metode comparative, aplicabile majorității organizațiilor:\n- **Modele de punctaj ponderat (weighted scoring models)** — fiecare proiect candidat este evaluat pe criterii multiple (aliniere strategică, risc, ROI, resurse necesare), fiecare criteriu având o pondere procentuală; scorul final rezultă din suma produselor scor × pondere.\n- **Comitete de evaluare (murder boards)** — un panel de experți testează critic fiecare propunere de proiect, prin întrebări dificile, pentru a filtra ideile fără fundament solid.\n- **Modele economice (economic models)** — folosesc indicatori financiari cuantificabili: valoarea actualizată netă (NPV), rata internă de rentabilitate (IRR), termenul de recuperare a investiției (payback period) și rata beneficiu-cost (BCR).\n\n**2. Modele de optimizare constrânsă (constrained optimization methods)** — algoritmi matematici (programare liniară, programare întreagă, programare dinamică, programare multi-obiectiv) folosiți pentru portofolii complexe, cu multe variabile și constrângeri simultane (buget, resurse umane, capacitate tehnică). Aceste modele sunt rar calculate manual în practică, dar candidatul PMP trebuie să le recunoască drept categorie distinctă la examen.\n\nÎn practica organizațiilor românești de dimensiune medie, modelele de punctaj ponderat și modelele economice domină, deoarece sunt ușor de explicat consiliului director și nu necesită software specializat de optimizare.\n\n## Modelele economice în detaliu: formule și interpretare\n\nPentru examen, trebuie să recunoști rapid patru indicatori economici și logica lor de decizie:\n\n**Valoarea actualizată netă (NPV — Net Present Value)**\nFormula: NPV = Σ [CFₜ / (1+r)ᵗ] − Investiția inițială, unde CFₜ este fluxul de numerar din anul t, iar r este rata de discount (costul capitalului). Regulă de decizie: se acceptă proiectul dacă NPV > 0; între mai multe proiecte, se preferă cel cu NPV mai mare.\n\n**Rata internă de rentabilitate (IRR — Internal Rate of Return)**\nEste rata de discount la care NPV = 0. Regulă de decizie: se acceptă proiectul dacă IRR > costul capitalului (rata minimă acceptată); între variante, se preferă IRR mai mare.\n\n**Termenul de recuperare a investiției (Payback Period)**\nNumărul de perioade necesare pentru ca fluxurile de numerar cumulate să acopere investiția inițială. Regulă de decizie: se preferă proiectul cu payback period mai scurt — dar atenție, acest indicator ignoră valoarea în timp a banilor (varianta discounted payback period o corectează) și ignoră complet fluxurile ulterioare recuperării investiției.\n\n**Rata beneficiu-cost (BCR — Benefit-Cost Ratio)**\nBCR = Valoarea actualizată a beneficiilor / Valoarea actualizată a costurilor. Regulă de decizie: BCR > 1 înseamnă proiect fezabil (beneficiile depășesc costurile); BCR = 1 este pragul de echilibru; BCR < 1 înseamnă respingere.\n\nUn aspect frecvent testat la examen: **costul de oportunitate** (opportunity cost) reprezintă valoarea celei mai bune alternative la care se renunță atunci când se alege un proiect în locul altuia — este întotdeauna relevant în decizia de selecție. În schimb, **costurile scufundate (sunk costs)** — banii deja cheltuiți — NU trebuie luate în calcul în decizia de a continua sau abandona un proiect; acesta este una dintre cele mai frecvente capcane de examen.\n\n## Exemplu: Model de punctaj ponderat pentru selecția unui modul ERP\nO SRL din retail decide între trei module ERP posibile de implementat anul acesta, cu buget suficient doar pentru unul: **Financiar-Contabil (A)**, **CRM (B)** și **SCM/Logistică (C)**. Comitetul de portofoliu stabilește următoarea grilă de evaluare (scor 1–10, ponderi însumând 100%):\n\n| Criteriu | Pondere | A (Financiar-Contabil) | B (CRM) | C (SCM/Logistică) |\n|---|---|---|---|---|\n| Aliniere strategică | 30% | 8 | 6 | 9 |\n| ROI așteptat | 25% | 7 | 8 | 6 |\n| Risc de implementare (10 = risc minim) | 20% | 6 | 5 | 7 |\n| Disponibilitate resurse interne | 15% | 9 | 6 | 7 |\n| Timp de implementare (10 = cel mai rapid) | 10% | 7 | 8 | 5 |\n\nScorul ponderat pentru fiecare opțiune se calculează ca sumă a produselor scor × pondere. Pentru opțiunea A:\n\n8×0,30 + 7×0,25 + 6×0,20 + 9×0,15 + 7×0,10 = 2,40 + 1,75 + 1,20 + 1,35 + 0,70 = **7,40**\n\nAplicând același calcul pentru celelalte două opțiuni obținem: B = **6,50**, C = **7,15**.\n\n**Concluzie:** modulul Financiar-Contabil (A) obține scorul cel mai mare (7,40) și este selectat pentru implementare, deși modulul SCM (C) avea alinierea strategică cea mai bună — diferența a fost făcută de resursele interne disponibile și de riscul mai scăzut de implementare al opțiunii A.\n\n## Exemplu: Calculul NPV, IRR, Payback și BCR pentru un proiect de digitalizare\nO companie de distribuție evaluează implementarea unui sistem ERP cu o investiție inițială de **500.000 lei**. Fluxurile de numerar nete estimate pentru următorii 4 ani sunt: An1 = 150.000 lei, An2 = 200.000 lei, An3 = 250.000 lei, An4 = 200.000 lei. Rata de discount (costul capitalului) este de **10%**.\n\n**Calcul NPV:**\n\n| An | Cash flow | Factor actualizare (1,10ᵗ) | Valoare actualizată |\n|---|---|---|---|\n| 1 | 150.000 | 1,10 | 136.363,64 |\n| 2 | 200.000 | 1,21 | 165.289,26 |\n| 3 | 250.000 | 1,331 | 187.829,45 |\n| 4 | 200.000 | 1,4641 | 136.608,15 |\n\nSuma valorilor actualizate = 626.090,50 lei.\n\nNPV = 626.090,50 − 500.000 = **126.090,50 lei** → pozitiv, deci proiectul este acceptabil.\n\n**IRR:** testând rate succesive de discount, NPV devine zero la o rată de aproximativ **20,5%**, valoare care depășește costul capitalului de 10% — confirmă fezabilitatea proiectului.\n\n**Payback Period (simplu):** cumulat An1+An2 = 350.000 lei; mai este nevoie de 150.000 lei din An3 (250.000 lei), adică 150.000/250.000 = 0,6 din An3. Payback = 2 + 0,6 = **2,6 ani** (aproximativ 2 ani și 7 luni).\n\n**BCR** = 626.090,50 / 500.000 = **1,25** → fiecare leu investit generează 1,25 lei în beneficii actualizate.\n\nToți cei patru indicatori confirmă selecția proiectului: NPV pozitiv, IRR peste costul capitalului, payback rezonabil și BCR supraunitar.\n\n⚠ Capcană frecventă de examen: nu confunda costul de oportunitate cu costurile scufundate (sunk costs). Costurile scufundate — banii deja cheltuiți — NU trebuie să influențeze niciodată decizia de a continua sau abandona un proiect, indiferent de suma investită anterior. De asemenea, formula simplă a payback period ignoră valoarea în timp a banilor; dacă enunțul menționează explicit actualizarea fluxurilor de numerar, folosește discounted payback period, nu formula simplă prezentată mai sus.\n\n## Exercițiu\nO companie de distribuție trebuie să aleagă, din cauza bugetului limitat, între două proiecte de automatizare a depozitului, ambele evaluate exclusiv prin criteriul payback period:\n\n**Proiectul A** — investiție inițială 300.000 lei; cash flow-uri: An1 = 120.000 lei, An2 = 150.000 lei, An3 = 100.000 lei.\n\n**Proiectul B** — investiție inițială 400.000 lei; cash flow-uri: An1 = 100.000 lei, An2 = 180.000 lei, An3 = 220.000 lei.\n\nCalculează termenul de recuperare a investiției (payback period) pentru fiecare proiect și precizează care ar fi selectat dacă payback period este singurul criteriu de decizie. Menționează și o limită a acestei metode.\n\n**Soluție:** **Proiectul A:**\nCumulat An1 = 120.000 lei. Cumulat An1+An2 = 270.000 lei. Rămân de recuperat 300.000 − 270.000 = 30.000 lei din An3 (100.000 lei), adică 30.000/100.000 = 0,3.\nPayback A = 2 + 0,3 = **2,3 ani**.\n\n**Proiectul B:**\nCumulat An1 = 100.000 lei. Cumulat An1+An2 = 280.000 lei. Rămân de recuperat 400.000 − 280.000 = 120.000 lei din An3 (220.000 lei), adică 120.000/220.000 ≈ 0,545.\nPayback B = 2 + 0,545 ≈ **2,55 ani**.\n\n**Decizie:** folosind exclusiv criteriul payback period, se selectează **Proiectul A** (2,3 ani, mai scurt decât 2,55 ani ale Proiectului B).\n\n**Limita metodei:** payback period ignoră complet fluxurile de numerar generate după momentul recuperării investiției și nu ține cont de valoarea în timp a banilor (varianta simplă) — un proiect cu payback mai lung poate genera totuși un NPV mai mare pe termen lung. De aceea, în practică, decizia finală ar trebui completată cu un calcul NPV/IRR, nu bazată exclusiv pe payback period.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "selectia-proiectelor-portofoliu",
+    "md": "## Selecția proiectelor în managementul portofoliului\n\nÎn Business Environment Domain al PMBOK 7, selecția proiectelor este punctul de plecare al oricărui proiect: înainte ca un project manager să primească un charter, organizația trebuie să decidă *care* inițiative merită finanțate din resursele limitate disponibile.\n\nManagementul portofoliului (portfolio management) reunește proiecte, programe și operațiuni conexe, grupate pentru a atinge obiectivele strategice ale organizației. Deciziile de selecție nu se iau izolat, la nivelul unui singur proiect, ci prin raportare la întregul portofoliu: un comitet de guvernanță (Portfolio Review Board sau PMO strategic) evaluează periodic propunerile noi față de portofoliul existent, ținând cont de capacitatea de resurse, apetitul de risc și prioritățile strategice.\n\nPentru o companie românească aflată în plin proces de digitalizare — de exemplu o distribuție națională de materiale de construcții care ia în calcul implementarea unui sistem ERP — selecția proiectelor înseamnă compararea acestei investiții cu alte inițiative concurente (extindere depozit, automatizare linie de producție, platformă e-commerce), toate concurând pentru același buget anual de capital.\n\nAlinierea strategică (strategic alignment) este criteriul central: un proiect este selectat nu pentru că este „bun” în sine, ci pentru că sprijină obiectivele strategice formalizate — de regulă documentate în business case și în strategia de portofoliu a organizației. PMI definește această legătură prin componentele portofoliului (portfolio components): proiecte, programe și alte lucrări conexe, toate gestionate ca un grup pentru a atinge obiective strategice de business.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metode-selectie-proiecte-beneficii",
+    "md": "## Metode de selecție: modele de măsurare a beneficiilor vs. modele de optimizare\n\nLiteratura PMI clasifică metodele de selecție a proiectelor în două mari categorii, relevante pentru examenul PMP:\n\n**1. Modele de măsurare a beneficiilor (benefit measurement methods)** — metode comparative, aplicabile majorității organizațiilor:\n- **Modele de punctaj ponderat (weighted scoring models)** — fiecare proiect candidat este evaluat pe criterii multiple (aliniere strategică, risc, ROI, resurse necesare), fiecare criteriu având o pondere procentuală; scorul final rezultă din suma produselor scor × pondere.\n- **Comitete de evaluare (murder boards)** — un panel de experți testează critic fiecare propunere de proiect, prin întrebări dificile, pentru a filtra ideile fără fundament solid.\n- **Modele economice (economic models)** — folosesc indicatori financiari cuantificabili: valoarea actualizată netă (NPV), rata internă de rentabilitate (IRR), termenul de recuperare a investiției (payback period) și rata beneficiu-cost (BCR).\n\n**2. Modele de optimizare constrânsă (constrained optimization methods)** — algoritmi matematici (programare liniară, programare întreagă, programare dinamică, programare multi-obiectiv) folosiți pentru portofolii complexe, cu multe variabile și constrângeri simultane (buget, resurse umane, capacitate tehnică). Aceste modele sunt rar calculate manual în practică, dar candidatul PMP trebuie să le recunoască drept categorie distinctă la examen.\n\nÎn practica organizațiilor românești de dimensiune medie, modelele de punctaj ponderat și modelele economice domină, deoarece sunt ușor de explicat consiliului director și nu necesită software specializat de optimizare.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "modele-economice-npv-irr-payback",
+    "md": "## Modelele economice în detaliu: formule și interpretare\n\nPentru examen, trebuie să recunoști rapid patru indicatori economici și logica lor de decizie:\n\n**Valoarea actualizată netă (NPV — Net Present Value)**\nFormula: NPV = Σ [CFₜ / (1+r)ᵗ] − Investiția inițială, unde CFₜ este fluxul de numerar din anul t, iar r este rata de discount (costul capitalului). Regulă de decizie: se acceptă proiectul dacă NPV > 0; între mai multe proiecte, se preferă cel cu NPV mai mare.\n\n**Rata internă de rentabilitate (IRR — Internal Rate of Return)**\nEste rata de discount la care NPV = 0. Regulă de decizie: se acceptă proiectul dacă IRR > costul capitalului (rata minimă acceptată); între variante, se preferă IRR mai mare.\n\n**Termenul de recuperare a investiției (Payback Period)**\nNumărul de perioade necesare pentru ca fluxurile de numerar cumulate să acopere investiția inițială. Regulă de decizie: se preferă proiectul cu payback period mai scurt — dar atenție, acest indicator ignoră valoarea în timp a banilor (varianta discounted payback period o corectează) și ignoră complet fluxurile ulterioare recuperării investiției.\n\n**Rata beneficiu-cost (BCR — Benefit-Cost Ratio)**\nBCR = Valoarea actualizată a beneficiilor / Valoarea actualizată a costurilor. Regulă de decizie: BCR > 1 înseamnă proiect fezabil (beneficiile depășesc costurile); BCR = 1 este pragul de echilibru; BCR < 1 înseamnă respingere.\n\nUn aspect frecvent testat la examen: **costul de oportunitate** (opportunity cost) reprezintă valoarea celei mai bune alternative la care se renunță atunci când se alege un proiect în locul altuia — este întotdeauna relevant în decizia de selecție. În schimb, **costurile scufundate (sunk costs)** — banii deja cheltuiți — NU trebuie luate în calcul în decizia de a continua sau abandona un proiect; acesta este una dintre cele mai frecvente capcane de examen.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b3"
+   },
+   {
+    "type": "example",
+    "title": "Model de punctaj ponderat pentru selecția unui modul ERP",
+    "concept_key": "model-punctaj-ponderat",
+    "md": "O SRL din retail decide între trei module ERP posibile de implementat anul acesta, cu buget suficient doar pentru unul: **Financiar-Contabil (A)**, **CRM (B)** și **SCM/Logistică (C)**. Comitetul de portofoliu stabilește următoarea grilă de evaluare (scor 1–10, ponderi însumând 100%):\n\n| Criteriu | Pondere | A (Financiar-Contabil) | B (CRM) | C (SCM/Logistică) |\n|---|---|---|---|---|\n| Aliniere strategică | 30% | 8 | 6 | 9 |\n| ROI așteptat | 25% | 7 | 8 | 6 |\n| Risc de implementare (10 = risc minim) | 20% | 6 | 5 | 7 |\n| Disponibilitate resurse interne | 15% | 9 | 6 | 7 |\n| Timp de implementare (10 = cel mai rapid) | 10% | 7 | 8 | 5 |\n\nScorul ponderat pentru fiecare opțiune se calculează ca sumă a produselor scor × pondere. Pentru opțiunea A:\n\n8×0,30 + 7×0,25 + 6×0,20 + 9×0,15 + 7×0,10 = 2,40 + 1,75 + 1,20 + 1,35 + 0,70 = **7,40**\n\nAplicând același calcul pentru celelalte două opțiuni obținem: B = **6,50**, C = **7,15**.\n\n**Concluzie:** modulul Financiar-Contabil (A) obține scorul cel mai mare (7,40) și este selectat pentru implementare, deși modulul SCM (C) avea alinierea strategică cea mai bună — diferența a fost făcută de resursele interne disponibile și de riscul mai scăzut de implementare al opțiunii A.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul NPV, IRR, Payback și BCR pentru un proiect de digitalizare",
+    "concept_key": "calcul-npv-irr-exemplu",
+    "md": "O companie de distribuție evaluează implementarea unui sistem ERP cu o investiție inițială de **500.000 lei**. Fluxurile de numerar nete estimate pentru următorii 4 ani sunt: An1 = 150.000 lei, An2 = 200.000 lei, An3 = 250.000 lei, An4 = 200.000 lei. Rata de discount (costul capitalului) este de **10%**.\n\n**Calcul NPV:**\n\n| An | Cash flow | Factor actualizare (1,10ᵗ) | Valoare actualizată |\n|---|---|---|---|\n| 1 | 150.000 | 1,10 | 136.363,64 |\n| 2 | 200.000 | 1,21 | 165.289,26 |\n| 3 | 250.000 | 1,331 | 187.829,45 |\n| 4 | 200.000 | 1,4641 | 136.608,15 |\n\nSuma valorilor actualizate = 626.090,50 lei.\n\nNPV = 626.090,50 − 500.000 = **126.090,50 lei** → pozitiv, deci proiectul este acceptabil.\n\n**IRR:** testând rate succesive de discount, NPV devine zero la o rată de aproximativ **20,5%**, valoare care depășește costul capitalului de 10% — confirmă fezabilitatea proiectului.\n\n**Payback Period (simplu):** cumulat An1+An2 = 350.000 lei; mai este nevoie de 150.000 lei din An3 (250.000 lei), adică 150.000/250.000 = 0,6 din An3. Payback = 2 + 0,6 = **2,6 ani** (aproximativ 2 ani și 7 luni).\n\n**BCR** = 626.090,50 / 500.000 = **1,25** → fiecare leu investit generează 1,25 lei în beneficii actualizate.\n\nToți cei patru indicatori confirmă selecția proiectului: NPV pozitiv, IRR peste costul capitalului, payback rezonabil și BCR supraunitar.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană frecventă de examen: nu confunda costul de oportunitate cu costurile scufundate (sunk costs). Costurile scufundate — banii deja cheltuiți — NU trebuie să influențeze niciodată decizia de a continua sau abandona un proiect, indiferent de suma investită anterior. De asemenea, formula simplă a payback period ignoră valoarea în timp a banilor; dacă enunțul menționează explicit actualizarea fluxurilor de numerar, folosește discounted payback period, nu formula simplă prezentată mai sus.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O companie de distribuție trebuie să aleagă, din cauza bugetului limitat, între două proiecte de automatizare a depozitului, ambele evaluate exclusiv prin criteriul payback period:\n\n**Proiectul A** — investiție inițială 300.000 lei; cash flow-uri: An1 = 120.000 lei, An2 = 150.000 lei, An3 = 100.000 lei.\n\n**Proiectul B** — investiție inițială 400.000 lei; cash flow-uri: An1 = 100.000 lei, An2 = 180.000 lei, An3 = 220.000 lei.\n\nCalculează termenul de recuperare a investiției (payback period) pentru fiecare proiect și precizează care ar fi selectat dacă payback period este singurul criteriu de decizie. Menționează și o limită a acestei metode.",
+    "solution_md": "**Proiectul A:**\nCumulat An1 = 120.000 lei. Cumulat An1+An2 = 270.000 lei. Rămân de recuperat 300.000 − 270.000 = 30.000 lei din An3 (100.000 lei), adică 30.000/100.000 = 0,3.\nPayback A = 2 + 0,3 = **2,3 ani**.\n\n**Proiectul B:**\nCumulat An1 = 100.000 lei. Cumulat An1+An2 = 280.000 lei. Rămân de recuperat 400.000 − 280.000 = 120.000 lei din An3 (220.000 lei), adică 120.000/220.000 ≈ 0,545.\nPayback B = 2 + 0,545 ≈ **2,55 ani**.\n\n**Decizie:** folosind exclusiv criteriul payback period, se selectează **Proiectul A** (2,3 ani, mai scurt decât 2,55 ani ale Proiectului B).\n\n**Limita metodei:** payback period ignoră complet fluxurile de numerar generate după momentul recuperării investiției și nu ține cont de valoarea în timp a banilor (varianta simplă) — un proiect cu payback mai lung poate genera totuși un NPV mai mare pe termen lung. De aceea, în practică, decizia finală ar trebui completată cu un calcul NPV/IRR, nu bazată exclusiv pe payback period.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este regula de decizie corectă pentru NPV atunci când evaluezi un singur proiect candidat la selecție?",
+    "choices": [
+     "Se acceptă proiectul doar dacă NPV este exact egal cu investiția inițială",
+     "Se acceptă proiectul dacă NPV este mai mare decât zero",
+     "Se acceptă proiectul dacă NPV este mai mic decât zero",
+     "NPV nu se folosește în selecția proiectelor, ci doar în controlul costurilor"
+    ],
+    "answer": 1,
+    "explain": "NPV pozitiv înseamnă că valoarea actualizată a beneficiilor viitoare depășește investiția inițială, deci proiectul creează valoare și este acceptabil din punct de vedere economic.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un manager de proiect argumentează că un proiect trebuie continuat deoarece organizația a investit deja 800.000 lei în el, chiar dacă analiza actuală arată că nu mai este viabil. Ce concept explică de ce acest argument este greșit?",
+    "choices": [
+     "Costul de oportunitate",
+     "Rata beneficiu-cost (BCR)",
+     "Costurile scufundate (sunk cost)",
+     "Valoarea actualizată netă (NPV)"
+    ],
+    "answer": 2,
+    "explain": "Costurile scufundate sunt cheltuieli deja făcute și ireversibile; ele nu ar trebui să influențeze decizia de a continua sau abandona un proiect, care trebuie bazată doar pe costurile și beneficiile viitoare.",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă NPV și care este regula de decizie de bază?",
+    "back": "NPV (Net Present Value / valoarea actualizată netă) = suma valorilor actualizate ale fluxurilor de numerar viitoare minus investiția inițială; se acceptă proiectul dacă NPV > 0.",
+    "concept_key": "modele-economice-npv-irr-payback",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este IRR (Internal Rate of Return)?",
+    "back": "Rata de discount la care NPV = 0; proiectul se acceptă dacă IRR depășește costul capitalului (rata minimă acceptată).",
+    "concept_key": "modele-economice-npv-irr-payback",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează BCR și ce înseamnă un BCR de 1,25?",
+    "back": "BCR = valoarea actualizată a beneficiilor / valoarea actualizată a costurilor; un BCR de 1,25 înseamnă că fiecare leu investit generează 1,25 lei în beneficii actualizate, deci proiectul este fezabil.",
+    "concept_key": "modele-economice-npv-irr-payback",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu trebuie luate în calcul costurile scufundate (sunk costs) în decizia de continuare a unui proiect?",
+    "back": "Pentru că sunt cheltuieli deja făcute și ireversibile, care nu influențează valoarea viitoare a proiectului; decizia trebuie bazată doar pe costurile și beneficiile viitoare.",
+    "concept_key": "modele-economice-npv-irr-payback",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce sunt modelele de punctaj ponderat (weighted scoring models)?",
+    "back": "Metode de selecție a proiectelor în care fiecare criteriu (ex. aliniere strategică, ROI, risc) primește o pondere procentuală, iar scorul final este suma produselor scor × pondere; se selectează proiectul cu scorul total cel mai mare.",
+    "concept_key": "metode-selectie-proiecte-beneficii",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre modelele de măsurare a beneficiilor și modelele de optimizare constrânsă?",
+    "back": "Modelele de măsurare a beneficiilor (scoring, economice) sunt metode comparative simple; modelele de optimizare constrânsă folosesc algoritmi matematici (programare liniară/întreagă/dinamică) pentru portofolii complexe cu multe constrângeri.",
+    "concept_key": "metode-selectie-proiecte-beneficii",
+    "blockId": "cmjjuxvzs00aaumkpm6n91dus-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1469,
+   "flashcards": 6
+  }
+ }
+}

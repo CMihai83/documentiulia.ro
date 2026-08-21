@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw0w00b1umkp7453n8ds",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Situațiile Financiare Explicate",
+ "lesson": "Contul de Profit și Pierdere",
+ "category": "FINANCE_OPS",
+ "content": "# Contul de Profit și Pierdere\n\n## Ce este Contul de Profit și Pierdere\n\nContul de Profit și Pierdere (CPP) — numit uneori și „cont de rezultate” — este situația financiară care îți arată dacă activitatea firmei a fost profitabilă într-o perioadă dată (de obicei un an, dar poate fi și lunar sau trimestrial). Spre deosebire de bilanț, care este o „fotografie” la un moment fix, CPP este un „film”: adună toate veniturile și toate cheltuielile generate între două date.\n\nEcuația de bază este simplă:\n\n**Venituri − Cheltuieli = Profit (sau Pierdere)**\n\nÎn România, structura și conținutul CPP sunt reglementate prin **OMFP 1802/2014**, care armonizează raportarea financiară cu directivele europene. Practic, orice firmă care depune situații financiare anuale (SRL, SA etc.) trebuie să prezinte CPP într-un format standardizat, împărțit pe secțiuni: rezultatul din exploatare, rezultatul financiar și, dacă e cazul, elemente extraordinare.\n\nCa manager non-financiar, nu trebuie să memorezi formatul oficial linie cu linie. Ce contează este să înțelegi *logica în cascadă*: pornești de la venituri, scazi succesiv diferite categorii de cheltuieli și obții, la fiecare pas, un indicator intermediar util pentru decizii diferite — marja brută, rezultatul din exploatare (EBIT), EBITDA și, în final, profitul net.\n\n## Venituri și cheltuieli din exploatare vs. financiare\n\nCPP separă activitatea firmei în două zone distincte, pentru că ele spun povești diferite despre sănătatea afacerii:\n\n**1. Activitatea de exploatare (operațională)** — tot ce ține de „miezul” afacerii: vânzarea produselor/serviciilor, producția, logistica, salariile echipei operaționale.\n- *Venituri din exploatare*: cifra de afaceri (vânzări de produse/servicii/mărfuri) + alte venituri din exploatare (ex. venituri din vânzarea de active, subvenții de exploatare).\n- *Cheltuieli din exploatare*: materii prime și materiale, mărfuri vândute, cheltuieli cu personalul, amortizarea, utilități, chirii, servicii cu terții, alte cheltuieli de exploatare.\n\n**2. Activitatea financiară** — tot ce ține de modul în care firma își finanțează operațiunile și de gestionarea numerarului.\n- *Venituri financiare*: dobânzi încasate, diferențe de curs valutar favorabile, dividende primite din participații.\n- *Cheltuieli financiare*: dobânzi plătite la credite, diferențe de curs valutar nefavorabile, comisioane bancare aferente finanțării.\n\nDe ce contează separarea asta? Pentru că o firmă poate avea o activitate operațională excelentă (produsul se vinde bine, marjele sunt sănătoase), dar profitul net să fie mic sau negativ din cauza dobânzilor mari la un credit de investiții. Dacă te uiți doar la profitul net, poți trage concluzia greșită că „afacerea nu merge” — când, de fapt, problema e structura de finanțare, nu produsul. Analizând separat rezultatul din exploatare și rezultatul financiar, identifici corect *unde* este problema și cine e responsabil să o rezolve: echipa operațională sau cea financiară/de trezorerie.\n\n## Marja brută, EBITDA, EBIT și profitul net — cascada indicatorilor\n\nPornind de la cifra de afaceri, indicatorii se calculează în cascadă, fiecare eliminând o categorie suplimentară de costuri:\n\n**1. Marja brută (Gross Margin)**\n`Marja brută = Venituri − Costul direct al bunurilor/serviciilor vândute`\nArată cât rămâne din fiecare leu vândut după ce acoperi costul direct (materii prime, marfă cumpărată pentru revânzare, manoperă directă). Se exprimă și procentual: `Marja brută % = Marja brută / Venituri × 100`.\n\n**2. EBITDA** (Earnings Before Interest, Taxes, Depreciation and Amortization — profit înainte de dobânzi, impozite, depreciere și amortizare)\n`EBITDA = Rezultat din exploatare + Amortizare și depreciere`\nEste indicatorul preferat de bănci și investitori pentru că elimină efectul deciziilor contabile (metoda de amortizare) și al structurii de finanțare, apropiindu-se de „cash-ul brut” generat de operațiuni. Nu apare ca linie separată în CPP-ul oficial din România — este un indicator calculat, folosit în analiză, nu o obligație de raportare.\n\n**3. EBIT / Rezultatul din exploatare** (Earnings Before Interest and Taxes)\n`EBIT ≈ Rezultatul din exploatare = Venituri din exploatare − Cheltuieli din exploatare`\nSpre deosebire de EBITDA, EBIT include deja amortizarea ca și cheltuială. Arată profitabilitatea operațională „pură”, înainte de costul finanțării și de impozitare.\n\n**4. Rezultatul curent (brut)**\n`Rezultat brut = Rezultat din exploatare + Rezultat financiar`\n\n**5. Profitul net (Rezultatul exercițiului)**\n`Profit net = Rezultat brut − Impozit pe profit`\nÎn România, cota standard a impozitului pe profit este **16%** (aplicabilă microîntreprinderilor le corespunde un regim diferit, cu cotă de 1% pe venit, nu pe profit — vezi lecțiile despre fiscalitate). Profitul net este ceea ce rămâne efectiv pentru acționari/asociați, fie ca dividende, fie reinvestit în firmă.\n\n> Temei legal: OMFP 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate Structura Contului de Profit și Pierdere (formatul listă) (în vigoare de la 2015-01-01)\nOMFP 1802/2014 stabilește formatul obligatoriu al Contului de Profit și Pierdere pentru entitățile din România, în format listă, cu separarea clară a rezultatului din exploatare, a rezultatului financiar și a rezultatului brut/net al exercițiului. Firmele care aplică reglementările simplificate (micro-entități) pot folosi un format prescurtat, dar logica de cascadă (venituri → cheltuieli → rezultat) rămâne aceeași.\n\n## Exemplu: CPP complet pentru o firmă de producție — Confort Design SRL\nConfort Design SRL produce mobilier la comandă. Iată CPP-ul simplificat pentru anul fiscal încheiat, calculat în cascadă:\n\n| Element | Valoare (lei) |\n|---|---|\n| Cifra de afaceri (venituri din exploatare) | 2.400.000 |\n| (−) Costul materiilor prime și al mărfurilor | 1.440.000 |\n| **= Marja brută** | **960.000** (40% din CA) |\n| (−) Cheltuieli cu personalul | 420.000 |\n| (−) Cheltuieli cu amortizarea | 80.000 |\n| (−) Alte cheltuieli de exploatare (chirii, utilități, servicii) | 150.000 |\n| **= Rezultat din exploatare (EBIT)** | **310.000** |\n| (+) Amortizare și depreciere | 80.000 |\n| **= EBITDA** | **390.000** |\n| Venituri financiare (dobânzi încasate) | 10.000 |\n| (−) Cheltuieli financiare (dobânzi credit) | 60.000 |\n| **= Rezultat financiar** | **−50.000** |\n| **= Rezultat brut (înainte de impozitare)** | **260.000** (310.000 − 50.000) |\n| (−) Impozit pe profit (16%) | 41.600 |\n| **= Profit net** | **218.400** |\n\nObservă cascada: marja brută de 40% arată că produsul e profitabil la nivel de cost direct. Rezultatul din exploatare de 310.000 lei confirmă că și după cheltuielile de funcționare firma e sănătoasă operațional. Dar rezultatul financiar negativ (−50.000 lei, din dobânzi la creditul de investiții) „mănâncă” aproape 16% din rezultatul din exploatare înainte să ajungem la profitul net final de 218.400 lei.\n\n## Exemplu: De ce EBITDA poate induce în eroare dacă e privit izolat\nDouă firme din retail au același EBITDA de 500.000 lei într-un an:\n\n- **Firma A** nu are datorii bancare și amortizează echipamente vechi, deja depreciate aproape complet (amortizare anuală: 20.000 lei). Rezultatul ei din exploatare (EBIT) este 480.000 lei, iar profitul net, după impozitare, ajunge la aproximativ 403.000 lei.\n- **Firma B** are un credit mare pentru extindere (dobânzi anuale: 180.000 lei) și echipamente noi, amortizate accelerat (amortizare anuală: 150.000 lei). EBIT-ul ei este doar 350.000 lei, rezultatul financiar este −180.000 lei, iar rezultatul brut ajunge la 170.000 lei — profitul net final este de aproximativ 143.000 lei, de aproape trei ori mai mic decât al firmei A, deși EBITDA-ul a fost identic.\n\nConcluzia practică: EBITDA e util pentru a compara *eficiența operațională* a două firme, indiferent de cum sunt finanțate sau ce politică de amortizare aplică. Dar dacă te oprești la EBITDA într-o decizie de investiție sau creditare, riști să ignori un nivel de îndatorare care poate face firma nesustenabilă. EBITDA arată potențialul operațional, nu realitatea financiară completă.\n\n⚠ **EBITDA nu este cash flow.** Este o greșeală frecventă în ședințele de management să se folosească EBITDA ca sinonim pentru „bani disponibili”. EBITDA ignoră complet: investițiile în echipamente (capex), variația necesarului de fond de rulment (stocuri, creanțe, datorii către furnizori), rambursările de credit (principalul, nu doar dobânda) și impozitul pe profit efectiv plătit. O firmă poate raporta EBITDA pozitiv și solid și, în același timp, să aibă probleme reale de lichiditate dacă investește masiv în stocuri sau dacă clienții plătesc cu întârziere. Pentru o imagine completă a numerarului, EBITDA trebuie coroborat întotdeauna cu Situația Fluxurilor de Numerar (cash flow statement), nu privit izolat.\n\n## Exercițiu\nTechnoServ SRL oferă servicii IT. Situația financiară a anului arată astfel:\n\n- Cifra de afaceri: 1.800.000 lei\n- Cheltuieli cu materiale și servicii de la terți: 300.000 lei\n- Cheltuieli cu personalul: 900.000 lei\n- Cheltuieli cu amortizarea: 60.000 lei\n- Alte cheltuieli de exploatare: 90.000 lei\n- Venituri financiare: 5.000 lei\n- Cheltuieli financiare: 25.000 lei\n- Cota impozitului pe profit: 16%\n\nCalculează, în ordine: Rezultatul din exploatare (EBIT), EBITDA, Rezultatul financiar, Rezultatul brut și Profitul net.\n\n**Soluție:** **1. Rezultat din exploatare (EBIT):**\n1.800.000 − 300.000 − 900.000 − 60.000 − 90.000 = **450.000 lei**\n\n**2. EBITDA:**\n450.000 (EBIT) + 60.000 (amortizare) = **510.000 lei**\n\n**3. Rezultat financiar:**\n5.000 − 25.000 = **−20.000 lei**\n\n**4. Rezultat brut (înainte de impozitare):**\n450.000 + (−20.000) = **430.000 lei**\n\n**5. Profit net:**\nImpozit pe profit = 430.000 × 16% = 68.800 lei\nProfit net = 430.000 − 68.800 = **361.200 lei**\n\nObservație: marja EBITDA a firmei este 510.000 / 1.800.000 ≈ 28,3%, un nivel tipic pentru servicii IT cu costuri de personal ridicate, dar fără investiții mari în active fixe.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "structura-cont-profit-pierdere",
+    "md": "## Ce este Contul de Profit și Pierdere\n\nContul de Profit și Pierdere (CPP) — numit uneori și „cont de rezultate” — este situația financiară care îți arată dacă activitatea firmei a fost profitabilă într-o perioadă dată (de obicei un an, dar poate fi și lunar sau trimestrial). Spre deosebire de bilanț, care este o „fotografie” la un moment fix, CPP este un „film”: adună toate veniturile și toate cheltuielile generate între două date.\n\nEcuația de bază este simplă:\n\n**Venituri − Cheltuieli = Profit (sau Pierdere)**\n\nÎn România, structura și conținutul CPP sunt reglementate prin **OMFP 1802/2014**, care armonizează raportarea financiară cu directivele europene. Practic, orice firmă care depune situații financiare anuale (SRL, SA etc.) trebuie să prezinte CPP într-un format standardizat, împărțit pe secțiuni: rezultatul din exploatare, rezultatul financiar și, dacă e cazul, elemente extraordinare.\n\nCa manager non-financiar, nu trebuie să memorezi formatul oficial linie cu linie. Ce contează este să înțelegi *logica în cascadă*: pornești de la venituri, scazi succesiv diferite categorii de cheltuieli și obții, la fiecare pas, un indicator intermediar util pentru decizii diferite — marja brută, rezultatul din exploatare (EBIT), EBITDA și, în final, profitul net.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "venituri-exploatare-vs-financiare",
+    "md": "## Venituri și cheltuieli din exploatare vs. financiare\n\nCPP separă activitatea firmei în două zone distincte, pentru că ele spun povești diferite despre sănătatea afacerii:\n\n**1. Activitatea de exploatare (operațională)** — tot ce ține de „miezul” afacerii: vânzarea produselor/serviciilor, producția, logistica, salariile echipei operaționale.\n- *Venituri din exploatare*: cifra de afaceri (vânzări de produse/servicii/mărfuri) + alte venituri din exploatare (ex. venituri din vânzarea de active, subvenții de exploatare).\n- *Cheltuieli din exploatare*: materii prime și materiale, mărfuri vândute, cheltuieli cu personalul, amortizarea, utilități, chirii, servicii cu terții, alte cheltuieli de exploatare.\n\n**2. Activitatea financiară** — tot ce ține de modul în care firma își finanțează operațiunile și de gestionarea numerarului.\n- *Venituri financiare*: dobânzi încasate, diferențe de curs valutar favorabile, dividende primite din participații.\n- *Cheltuieli financiare*: dobânzi plătite la credite, diferențe de curs valutar nefavorabile, comisioane bancare aferente finanțării.\n\nDe ce contează separarea asta? Pentru că o firmă poate avea o activitate operațională excelentă (produsul se vinde bine, marjele sunt sănătoase), dar profitul net să fie mic sau negativ din cauza dobânzilor mari la un credit de investiții. Dacă te uiți doar la profitul net, poți trage concluzia greșită că „afacerea nu merge” — când, de fapt, problema e structura de finanțare, nu produsul. Analizând separat rezultatul din exploatare și rezultatul financiar, identifici corect *unde* este problema și cine e responsabil să o rezolve: echipa operațională sau cea financiară/de trezorerie.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ebitda-ebit-profit-net",
+    "md": "## Marja brută, EBITDA, EBIT și profitul net — cascada indicatorilor\n\nPornind de la cifra de afaceri, indicatorii se calculează în cascadă, fiecare eliminând o categorie suplimentară de costuri:\n\n**1. Marja brută (Gross Margin)**\n`Marja brută = Venituri − Costul direct al bunurilor/serviciilor vândute`\nArată cât rămâne din fiecare leu vândut după ce acoperi costul direct (materii prime, marfă cumpărată pentru revânzare, manoperă directă). Se exprimă și procentual: `Marja brută % = Marja brută / Venituri × 100`.\n\n**2. EBITDA** (Earnings Before Interest, Taxes, Depreciation and Amortization — profit înainte de dobânzi, impozite, depreciere și amortizare)\n`EBITDA = Rezultat din exploatare + Amortizare și depreciere`\nEste indicatorul preferat de bănci și investitori pentru că elimină efectul deciziilor contabile (metoda de amortizare) și al structurii de finanțare, apropiindu-se de „cash-ul brut” generat de operațiuni. Nu apare ca linie separată în CPP-ul oficial din România — este un indicator calculat, folosit în analiză, nu o obligație de raportare.\n\n**3. EBIT / Rezultatul din exploatare** (Earnings Before Interest and Taxes)\n`EBIT ≈ Rezultatul din exploatare = Venituri din exploatare − Cheltuieli din exploatare`\nSpre deosebire de EBITDA, EBIT include deja amortizarea ca și cheltuială. Arată profitabilitatea operațională „pură”, înainte de costul finanțării și de impozitare.\n\n**4. Rezultatul curent (brut)**\n`Rezultat brut = Rezultat din exploatare + Rezultat financiar`\n\n**5. Profitul net (Rezultatul exercițiului)**\n`Profit net = Rezultat brut − Impozit pe profit`\nÎn România, cota standard a impozitului pe profit este **16%** (aplicabilă microîntreprinderilor le corespunde un regim diferit, cu cotă de 1% pe venit, nu pe profit — vezi lecțiile despre fiscalitate). Profitul net este ceea ce rămâne efectiv pentru acționari/asociați, fie ca dividende, fie reinvestit în firmă.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate",
+    "article": "Structura Contului de Profit și Pierdere (formatul listă)",
+    "effective": "2015-01-01",
+    "md": "OMFP 1802/2014 stabilește formatul obligatoriu al Contului de Profit și Pierdere pentru entitățile din România, în format listă, cu separarea clară a rezultatului din exploatare, a rezultatului financiar și a rezultatului brut/net al exercițiului. Firmele care aplică reglementările simplificate (micro-entități) pot folosi un format prescurtat, dar logica de cascadă (venituri → cheltuieli → rezultat) rămâne aceeași.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b4"
+   },
+   {
+    "type": "example",
+    "title": "CPP complet pentru o firmă de producție — Confort Design SRL",
+    "concept_key": "ebitda-ebit-profit-net",
+    "md": "Confort Design SRL produce mobilier la comandă. Iată CPP-ul simplificat pentru anul fiscal încheiat, calculat în cascadă:\n\n| Element | Valoare (lei) |\n|---|---|\n| Cifra de afaceri (venituri din exploatare) | 2.400.000 |\n| (−) Costul materiilor prime și al mărfurilor | 1.440.000 |\n| **= Marja brută** | **960.000** (40% din CA) |\n| (−) Cheltuieli cu personalul | 420.000 |\n| (−) Cheltuieli cu amortizarea | 80.000 |\n| (−) Alte cheltuieli de exploatare (chirii, utilități, servicii) | 150.000 |\n| **= Rezultat din exploatare (EBIT)** | **310.000** |\n| (+) Amortizare și depreciere | 80.000 |\n| **= EBITDA** | **390.000** |\n| Venituri financiare (dobânzi încasate) | 10.000 |\n| (−) Cheltuieli financiare (dobânzi credit) | 60.000 |\n| **= Rezultat financiar** | **−50.000** |\n| **= Rezultat brut (înainte de impozitare)** | **260.000** (310.000 − 50.000) |\n| (−) Impozit pe profit (16%) | 41.600 |\n| **= Profit net** | **218.400** |\n\nObservă cascada: marja brută de 40% arată că produsul e profitabil la nivel de cost direct. Rezultatul din exploatare de 310.000 lei confirmă că și după cheltuielile de funcționare firma e sănătoasă operațional. Dar rezultatul financiar negativ (−50.000 lei, din dobânzi la creditul de investiții) „mănâncă” aproape 16% din rezultatul din exploatare înainte să ajungem la profitul net final de 218.400 lei.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b5"
+   },
+   {
+    "type": "example",
+    "title": "De ce EBITDA poate induce în eroare dacă e privit izolat",
+    "concept_key": "ebitda-ebit-profit-net",
+    "md": "Două firme din retail au același EBITDA de 500.000 lei într-un an:\n\n- **Firma A** nu are datorii bancare și amortizează echipamente vechi, deja depreciate aproape complet (amortizare anuală: 20.000 lei). Rezultatul ei din exploatare (EBIT) este 480.000 lei, iar profitul net, după impozitare, ajunge la aproximativ 403.000 lei.\n- **Firma B** are un credit mare pentru extindere (dobânzi anuale: 180.000 lei) și echipamente noi, amortizate accelerat (amortizare anuală: 150.000 lei). EBIT-ul ei este doar 350.000 lei, rezultatul financiar este −180.000 lei, iar rezultatul brut ajunge la 170.000 lei — profitul net final este de aproximativ 143.000 lei, de aproape trei ori mai mic decât al firmei A, deși EBITDA-ul a fost identic.\n\nConcluzia practică: EBITDA e util pentru a compara *eficiența operațională* a două firme, indiferent de cum sunt finanțate sau ce politică de amortizare aplică. Dar dacă te oprești la EBITDA într-o decizie de investiție sau creditare, riști să ignori un nivel de îndatorare care poate face firma nesustenabilă. EBITDA arată potențialul operațional, nu realitatea financiară completă.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**EBITDA nu este cash flow.** Este o greșeală frecventă în ședințele de management să se folosească EBITDA ca sinonim pentru „bani disponibili”. EBITDA ignoră complet: investițiile în echipamente (capex), variația necesarului de fond de rulment (stocuri, creanțe, datorii către furnizori), rambursările de credit (principalul, nu doar dobânda) și impozitul pe profit efectiv plătit. O firmă poate raporta EBITDA pozitiv și solid și, în același timp, să aibă probleme reale de lichiditate dacă investește masiv în stocuri sau dacă clienții plătesc cu întârziere. Pentru o imagine completă a numerarului, EBITDA trebuie coroborat întotdeauna cu Situația Fluxurilor de Numerar (cash flow statement), nu privit izolat.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "TechnoServ SRL oferă servicii IT. Situația financiară a anului arată astfel:\n\n- Cifra de afaceri: 1.800.000 lei\n- Cheltuieli cu materiale și servicii de la terți: 300.000 lei\n- Cheltuieli cu personalul: 900.000 lei\n- Cheltuieli cu amortizarea: 60.000 lei\n- Alte cheltuieli de exploatare: 90.000 lei\n- Venituri financiare: 5.000 lei\n- Cheltuieli financiare: 25.000 lei\n- Cota impozitului pe profit: 16%\n\nCalculează, în ordine: Rezultatul din exploatare (EBIT), EBITDA, Rezultatul financiar, Rezultatul brut și Profitul net.",
+    "solution_md": "**1. Rezultat din exploatare (EBIT):**\n1.800.000 − 300.000 − 900.000 − 60.000 − 90.000 = **450.000 lei**\n\n**2. EBITDA:**\n450.000 (EBIT) + 60.000 (amortizare) = **510.000 lei**\n\n**3. Rezultat financiar:**\n5.000 − 25.000 = **−20.000 lei**\n\n**4. Rezultat brut (înainte de impozitare):**\n450.000 + (−20.000) = **430.000 lei**\n\n**5. Profit net:**\nImpozit pe profit = 430.000 × 16% = 68.800 lei\nProfit net = 430.000 − 68.800 = **361.200 lei**\n\nObservație: marja EBITDA a firmei este 510.000 / 1.800.000 ≈ 28,3%, un nivel tipic pentru servicii IT cu costuri de personal ridicate, dar fără investiții mari în active fixe.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă indicatorul EBITDA?",
+    "choices": [
+     "Profitul net rămas după plata tuturor impozitelor și dobânzilor",
+     "Profitul din exploatare înainte de deducerea dobânzilor, impozitelor, amortizării și deprecierii",
+     "Cifra de afaceri minus TVA-ul colectat",
+     "Totalul veniturilor financiare ale unei firme"
+    ],
+    "answer": 1,
+    "explain": "EBITDA (Earnings Before Interest, Taxes, Depreciation and Amortization) se calculează adăugând amortizarea și deprecierea înapoi la rezultatul din exploatare (EBIT). Este un indicator al capacității operaționale de generare a numerarului, nu profitul final rămas acționarilor.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are Rezultat din exploatare (EBIT) de 400.000 lei și Rezultat financiar de −100.000 lei (dobânzi la un credit). Care este Rezultatul brut (înainte de impozitare)?",
+    "choices": [
+     "500.000 lei",
+     "400.000 lei",
+     "300.000 lei",
+     "100.000 lei"
+    ],
+    "answer": 2,
+    "explain": "Rezultat brut = Rezultat din exploatare + Rezultat financiar = 400.000 + (−100.000) = 300.000 lei. Din acest rezultat brut se scade apoi impozitul pe profit (16%) pentru a obține profitul net.",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul EBITDA?",
+    "back": "Earnings Before Interest, Taxes, Depreciation and Amortization — profitul din exploatare înainte de deducerea dobânzilor, impozitelor, amortizării și deprecierii. Se calculează: EBITDA = Rezultat din exploatare + Amortizare și depreciere.",
+    "concept_key": "ebitda-ebit-profit-net",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula marjei brute?",
+    "back": "Marja brută = Venituri − Costul direct al bunurilor/serviciilor vândute. Exprimată procentual: Marja brută % = Marja brută / Venituri × 100.",
+    "concept_key": "ebitda-ebit-profit-net",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre EBIT și EBITDA?",
+    "back": "EBIT = rezultatul din exploatare, care include deja amortizarea ca și cheltuială dedusă. EBITDA = EBIT + amortizare și depreciere (adăugate înapoi), fiind mai apropiat de numerarul generat de operațiuni.",
+    "concept_key": "ebitda-ebit-profit-net",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota standard a impozitului pe profit în România?",
+    "back": "16%, aplicată asupra rezultatului brut (profitului impozabil) pentru a obține profitul net. Microîntreprinderile aplică un regim separat, cu impozit de 1% pe venit, nu pe profit.",
+    "concept_key": "ebitda-ebit-profit-net",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează structura Contului de Profit și Pierdere în România?",
+    "back": "OMFP 1802/2014, care stabilește formatul obligatoriu (format listă) al CPP, cu separarea rezultatului din exploatare de rezultatul financiar.",
+    "concept_key": "structura-cont-profit-pierdere",
+    "blockId": "cmjjuxw0w00b1umkp7453n8ds-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1379,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvsc0050umkpc0d6dxv5",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Inițierea Proiectului",
+ "lesson": "Project Charter",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Project Charter\n\n## Ce este Project Charter-ul\n\n**Project Charter-ul** (Cartă de Proiect, uneori numit și „document de inițiere a proiectului”) este documentul care **autorizează formal existența unui proiect** și oferă managerului de proiect (PM) autoritatea de a folosi resursele organizației pentru activitățile proiectului. Conform PMBOK 7 (Project Management Institute), charter-ul este artefactul-cheie al **domeniului de performanță „Start Up”**: el marchează trecerea de la idee/oportunitate de business la un proiect recunoscut oficial, cu buget, sponsor și responsabil desemnat.\n\nÎn practica din România, charter-ul apare cel mai des la proiecte interne (implementare ERP, digitalizarea unui flux de facturare, lansarea unui produs nou) și este semnat de **sponsorul executiv** – de regulă un director general, director financiar sau director de operațiuni – care își asumă astfel susținerea proiectului în fața organizației.\n\nCharter-ul răspunde la întrebarea „**de ce facem acest proiect și cine are autoritatea să-l conducă?**”, nu la „cum îl vom face pas cu pas” – acel nivel de detaliu aparține planului de management al proiectului, document separat, elaborat ulterior de PM împreună cu echipa.\n\n## Componentele esențiale ale unui Charter\n\nUn Project Charter complet, aliniat PMBOK 7, conține de regulă:\n\n1. **Scopul și justificarea proiectului (business case)** – de ce se face proiectul, ce problemă rezolvă sau ce oportunitate valorifică.\n2. **Obiective SMART** – rezultate măsurabile (ex: reducerea timpului de facturare cu 30% în 6 luni).\n3. **Scope high-level** – ce este inclus și, la fel de important, ce este exclus din proiect (out of scope).\n4. **Stakeholderi cheie** – sponsor, PM, echipă-nucleu, beneficiari, furnizori externi.\n5. **Desemnarea PM-ului și nivelul său de autoritate** – ce decizii poate lua singur (ex: realocări de buget sub un anumit prag) și ce trebuie escaladat la sponsor.\n6. **Buget preliminar (ordin de mărime)** – o estimare high-level, nu bugetul detaliat pe activități.\n7. **Constrângeri și asumpții majore** – termene fixe, resurse limitate, dependențe de alte proiecte.\n8. **Riscuri de nivel înalt** – identificate la momentul inițierii, fără analiză cantitativă detaliată.\n9. **Criterii de succes și de închidere** – cum se știe că proiectul s-a încheiat cu succes.\n\nCharter-ul rămâne **la nivel de sumar** – de obicei 2-4 pagini. Detalierea (WBS, planul de resurse, planul de riscuri) vine în etapele următoare de planificare, nu în charter.\n\n## Cine îl redactează, cine îl aprobă\n\nÎn majoritatea organizațiilor, **sponsorul** inițiază cererea de proiect, dar **PM-ul redactează charter-ul** împreună cu sponsorul, pe baza unui business case sau a unei cereri de schimbare aprobate. Charter-ul este apoi **semnat de sponsor** (sau de un comitet de guvernanță/steering committee, în proiectele mari), moment din care proiectul este considerat oficial autorizat.\n\nAceastă semnătură are trei efecte practice imediate:\n\n- **Legitimează PM-ul** în fața organizației – colegii și departamentele știu că persoana respectivă are mandat să solicite resurse, timp și informații.\n- **Blochează bugetul preliminar** – de regulă declanșează alocarea unui cod de proiect/centru de cost în sistemul financiar-contabil.\n- **Stabilește un reper (baseline) de referință** – orice schimbare majoră de scop, buget sau termen se compară ulterior cu ce a fost autorizat inițial prin charter.\n\nÎn abordările agile (Scrum Guide 2020), un document echivalent charter-ului nu este obligatoriu formal, dar practica recomandată este ca înainte de primul Sprint să existe claritate scrisă asupra viziunii produsului, sponsorului și limitelor de buget/timp – rolul charter-ului rămâne relevant, doar formatul poate fi mai suplu (ex: o singură pagină, tip „Project Vision Statement”).\n\n## Exemplu: Charter pentru implementarea unui sistem ERP\n**Compania:** ContaExpert SRL, distribuitor de materiale de construcții, 85 angajați.\n\n**Business case:** Sistemul actual de gestiune (Excel + un soft de facturare vechi) generează erori de stoc și întârzieri la închiderea lunară de 4-5 zile lucrătoare.\n\n**Extras din charter:**\n\n| Secțiune | Conținut |\n|---|---|\n| Obiectiv | Implementarea unui ERP integrat (financiar-contabil, stocuri, vânzări) până la 31 martie, cu reducerea timpului de închidere lunară la maximum 1 zi |\n| Scope high-level | Inclus: module Financiar, Stocuri, Vânzări, migrarea datelor din ultimii 2 ani. Exclus: modulul de producție (fază ulterioară) |\n| Sponsor | Director Financiar, Ana Ionescu |\n| PM desemnat | Radu Popescu, cu autoritate de a realoca până la 15.000 lei între linii bugetare fără aprobare suplimentară |\n| Buget preliminar | 180.000 lei (licențe + implementare + instruire), sumă orientativă, va fi detaliată în planul de proiect |\n| Constrângeri | Go-live obligatoriu înainte de închiderea exercițiului financiar anual |\n| Riscuri majore | Rezistență la schimbare din partea echipei de contabilitate; dependență de disponibilitatea furnizorului extern de implementare |\n| Criteriu de succes | Sistem funcțional în producție, cu date migrate validate și echipa instruită, acceptat de sponsor |\n\nAcest extras arată nivelul de detaliu potrivit unui charter: suficient cât să autorizeze proiectul și să dea mandat PM-ului, dar fără planul detaliat de activități – acela se construiește separat, după semnare.\n\n## Exemplu: Charter pentru un proiect de digitalizare a fluxului de aprobări\n**Compania:** LogiTrans SRL, firmă de transport și logistică, 40 angajați.\n\n**Context:** Aprobarea facturilor de la furnizori se face în prezent pe hârtie, cu semnături fizice, proces care durează în medie 12 zile și blochează plățile la termen.\n\n**Extras din charter:**\n\n- **Obiectiv:** Digitalizarea fluxului de aprobare a facturilor (soluție de tip workflow electronic), reducerea timpului mediu de aprobare de la 12 la 3 zile, în termen de 4 luni de la autorizare.\n- **Stakeholderi:** Sponsor – Directorul General; PM – responsabil IT intern; stakeholderi cheie – șefii de departamente care aprobă facturi, departamentul financiar-contabil.\n- **Buget preliminar:** 25.000 lei (licență software + configurare), sumă estimativă care va fi rafinată după etapa de analiză a cerințelor.\n- **Constrângere majoră:** Soluția trebuie să fie compatibilă cu sistemul contabil existent, fără migrare de date istorice.\n- **Autoritate PM:** Poate selecta furnizorul dintr-o listă pre-aprobată de 3 soluții, fără aprobare suplimentară a sponsorului.\n\nObservă că, deși proiectul este mic ca anvergură, charter-ul tot conține elementele esențiale: obiectiv măsurabil, buget orientativ, sponsor clar și limite de autoritate pentru PM. Dimensiunea documentului se adaptează la dimensiunea proiectului, dar structura logică rămâne aceeași.\n\n⚠ Charter-ul **nu este planul de proiect**. O greșeală frecventă în organizațiile din România este includerea unui WBS detaliat sau a unui grafic Gantt complet direct în charter, ceea ce îl transformă într-un document greoi, greu de aprobat rapid de sponsor. Charter-ul rămâne la nivel de sumar (2-4 pagini); detalierea vine ulterior, în etapa de planificare.\n\n## Exercițiu\nEști desemnat PM pentru un proiect de relocare a depozitului unei firme de distribuție (SC Bunuri Rapide SRL) într-o hală nouă, mai mare. Sponsorul (Directorul de Operațiuni) îți cere să redactezi Project Charter-ul. Ai următoarele informații: relocarea trebuie finalizată în 3 luni, fără întreruperea livrărilor către clienți; bugetul orientativ discutat cu sponsorul este de 350.000 lei; principalul risc este suprapunerea perioadei de relocare cu sezonul de vârf al comenzilor (lunile de vară). Scrie, pe scurt, secțiunile: Obiectiv, Scope high-level (inclus/exclus), Buget preliminar, Constrângere principală și Risc major, așa cum ar apărea în charter.\n\n**Soluție:** **Obiectiv:** Relocarea completă a depozitului central în noua hală în maximum 3 luni de la autorizarea proiectului, fără nicio zi de întrerupere a livrărilor către clienți.\n\n**Scope high-level:**\n- Inclus: transportul stocurilor existente, montarea rafturilor și echipamentelor, transferul sistemului de gestiune a stocurilor la noua locație, testarea fluxurilor de recepție/expediție în noua hală.\n- Exclus: extinderea flotei de transport, angajarea de personal suplimentar (se tratează ca proiecte separate, dacă va fi nevoie).\n\n**Buget preliminar:** 350.000 lei (transport, montaj, eventuale reparații/amenajări), sumă orientativă ce va fi detaliată în planul de proiect.\n\n**Constrângere principală:** Activitatea de livrare către clienți nu poate fi întreruptă în niciun moment al relocării – relocarea trebuie făcută în etape sau în afara orelor de operare.\n\n**Risc major:** Suprapunerea relocării cu sezonul de vârf al comenzilor (vara) poate crește presiunea pe echipă și riscul de erori operaționale; se recomandă demararea relocării cât mai devreme sau eșalonarea ei pe module, pentru a evita perioada de vârf.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "project-charter-definitie",
+    "md": "## Ce este Project Charter-ul\n\n**Project Charter-ul** (Cartă de Proiect, uneori numit și „document de inițiere a proiectului”) este documentul care **autorizează formal existența unui proiect** și oferă managerului de proiect (PM) autoritatea de a folosi resursele organizației pentru activitățile proiectului. Conform PMBOK 7 (Project Management Institute), charter-ul este artefactul-cheie al **domeniului de performanță „Start Up”**: el marchează trecerea de la idee/oportunitate de business la un proiect recunoscut oficial, cu buget, sponsor și responsabil desemnat.\n\nÎn practica din România, charter-ul apare cel mai des la proiecte interne (implementare ERP, digitalizarea unui flux de facturare, lansarea unui produs nou) și este semnat de **sponsorul executiv** – de regulă un director general, director financiar sau director de operațiuni – care își asumă astfel susținerea proiectului în fața organizației.\n\nCharter-ul răspunde la întrebarea „**de ce facem acest proiect și cine are autoritatea să-l conducă?**”, nu la „cum îl vom face pas cu pas” – acel nivel de detaliu aparține planului de management al proiectului, document separat, elaborat ulterior de PM împreună cu echipa.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "project-charter-componente",
+    "md": "## Componentele esențiale ale unui Charter\n\nUn Project Charter complet, aliniat PMBOK 7, conține de regulă:\n\n1. **Scopul și justificarea proiectului (business case)** – de ce se face proiectul, ce problemă rezolvă sau ce oportunitate valorifică.\n2. **Obiective SMART** – rezultate măsurabile (ex: reducerea timpului de facturare cu 30% în 6 luni).\n3. **Scope high-level** – ce este inclus și, la fel de important, ce este exclus din proiect (out of scope).\n4. **Stakeholderi cheie** – sponsor, PM, echipă-nucleu, beneficiari, furnizori externi.\n5. **Desemnarea PM-ului și nivelul său de autoritate** – ce decizii poate lua singur (ex: realocări de buget sub un anumit prag) și ce trebuie escaladat la sponsor.\n6. **Buget preliminar (ordin de mărime)** – o estimare high-level, nu bugetul detaliat pe activități.\n7. **Constrângeri și asumpții majore** – termene fixe, resurse limitate, dependențe de alte proiecte.\n8. **Riscuri de nivel înalt** – identificate la momentul inițierii, fără analiză cantitativă detaliată.\n9. **Criterii de succes și de închidere** – cum se știe că proiectul s-a încheiat cu succes.\n\nCharter-ul rămâne **la nivel de sumar** – de obicei 2-4 pagini. Detalierea (WBS, planul de resurse, planul de riscuri) vine în etapele următoare de planificare, nu în charter.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "project-charter-autoritate-aprobare",
+    "md": "## Cine îl redactează, cine îl aprobă\n\nÎn majoritatea organizațiilor, **sponsorul** inițiază cererea de proiect, dar **PM-ul redactează charter-ul** împreună cu sponsorul, pe baza unui business case sau a unei cereri de schimbare aprobate. Charter-ul este apoi **semnat de sponsor** (sau de un comitet de guvernanță/steering committee, în proiectele mari), moment din care proiectul este considerat oficial autorizat.\n\nAceastă semnătură are trei efecte practice imediate:\n\n- **Legitimează PM-ul** în fața organizației – colegii și departamentele știu că persoana respectivă are mandat să solicite resurse, timp și informații.\n- **Blochează bugetul preliminar** – de regulă declanșează alocarea unui cod de proiect/centru de cost în sistemul financiar-contabil.\n- **Stabilește un reper (baseline) de referință** – orice schimbare majoră de scop, buget sau termen se compară ulterior cu ce a fost autorizat inițial prin charter.\n\nÎn abordările agile (Scrum Guide 2020), un document echivalent charter-ului nu este obligatoriu formal, dar practica recomandată este ca înainte de primul Sprint să existe claritate scrisă asupra viziunii produsului, sponsorului și limitelor de buget/timp – rolul charter-ului rămâne relevant, doar formatul poate fi mai suplu (ex: o singură pagină, tip „Project Vision Statement”).",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b3"
+   },
+   {
+    "type": "example",
+    "title": "Charter pentru implementarea unui sistem ERP",
+    "concept_key": "project-charter-exemplu-erp",
+    "md": "**Compania:** ContaExpert SRL, distribuitor de materiale de construcții, 85 angajați.\n\n**Business case:** Sistemul actual de gestiune (Excel + un soft de facturare vechi) generează erori de stoc și întârzieri la închiderea lunară de 4-5 zile lucrătoare.\n\n**Extras din charter:**\n\n| Secțiune | Conținut |\n|---|---|\n| Obiectiv | Implementarea unui ERP integrat (financiar-contabil, stocuri, vânzări) până la 31 martie, cu reducerea timpului de închidere lunară la maximum 1 zi |\n| Scope high-level | Inclus: module Financiar, Stocuri, Vânzări, migrarea datelor din ultimii 2 ani. Exclus: modulul de producție (fază ulterioară) |\n| Sponsor | Director Financiar, Ana Ionescu |\n| PM desemnat | Radu Popescu, cu autoritate de a realoca până la 15.000 lei între linii bugetare fără aprobare suplimentară |\n| Buget preliminar | 180.000 lei (licențe + implementare + instruire), sumă orientativă, va fi detaliată în planul de proiect |\n| Constrângeri | Go-live obligatoriu înainte de închiderea exercițiului financiar anual |\n| Riscuri majore | Rezistență la schimbare din partea echipei de contabilitate; dependență de disponibilitatea furnizorului extern de implementare |\n| Criteriu de succes | Sistem funcțional în producție, cu date migrate validate și echipa instruită, acceptat de sponsor |\n\nAcest extras arată nivelul de detaliu potrivit unui charter: suficient cât să autorizeze proiectul și să dea mandat PM-ului, dar fără planul detaliat de activități – acela se construiește separat, după semnare.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b4"
+   },
+   {
+    "type": "example",
+    "title": "Charter pentru un proiect de digitalizare a fluxului de aprobări",
+    "concept_key": "project-charter-exemplu-digitalizare",
+    "md": "**Compania:** LogiTrans SRL, firmă de transport și logistică, 40 angajați.\n\n**Context:** Aprobarea facturilor de la furnizori se face în prezent pe hârtie, cu semnături fizice, proces care durează în medie 12 zile și blochează plățile la termen.\n\n**Extras din charter:**\n\n- **Obiectiv:** Digitalizarea fluxului de aprobare a facturilor (soluție de tip workflow electronic), reducerea timpului mediu de aprobare de la 12 la 3 zile, în termen de 4 luni de la autorizare.\n- **Stakeholderi:** Sponsor – Directorul General; PM – responsabil IT intern; stakeholderi cheie – șefii de departamente care aprobă facturi, departamentul financiar-contabil.\n- **Buget preliminar:** 25.000 lei (licență software + configurare), sumă estimativă care va fi rafinată după etapa de analiză a cerințelor.\n- **Constrângere majoră:** Soluția trebuie să fie compatibilă cu sistemul contabil existent, fără migrare de date istorice.\n- **Autoritate PM:** Poate selecta furnizorul dintr-o listă pre-aprobată de 3 soluții, fără aprobare suplimentară a sponsorului.\n\nObservă că, deși proiectul este mic ca anvergură, charter-ul tot conține elementele esențiale: obiectiv măsurabil, buget orientativ, sponsor clar și limite de autoritate pentru PM. Dimensiunea documentului se adaptează la dimensiunea proiectului, dar structura logică rămâne aceeași.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Charter-ul **nu este planul de proiect**. O greșeală frecventă în organizațiile din România este includerea unui WBS detaliat sau a unui grafic Gantt complet direct în charter, ceea ce îl transformă într-un document greoi, greu de aprobat rapid de sponsor. Charter-ul rămâne la nivel de sumar (2-4 pagini); detalierea vine ulterior, în etapa de planificare.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești desemnat PM pentru un proiect de relocare a depozitului unei firme de distribuție (SC Bunuri Rapide SRL) într-o hală nouă, mai mare. Sponsorul (Directorul de Operațiuni) îți cere să redactezi Project Charter-ul. Ai următoarele informații: relocarea trebuie finalizată în 3 luni, fără întreruperea livrărilor către clienți; bugetul orientativ discutat cu sponsorul este de 350.000 lei; principalul risc este suprapunerea perioadei de relocare cu sezonul de vârf al comenzilor (lunile de vară). Scrie, pe scurt, secțiunile: Obiectiv, Scope high-level (inclus/exclus), Buget preliminar, Constrângere principală și Risc major, așa cum ar apărea în charter.",
+    "solution_md": "**Obiectiv:** Relocarea completă a depozitului central în noua hală în maximum 3 luni de la autorizarea proiectului, fără nicio zi de întrerupere a livrărilor către clienți.\n\n**Scope high-level:**\n- Inclus: transportul stocurilor existente, montarea rafturilor și echipamentelor, transferul sistemului de gestiune a stocurilor la noua locație, testarea fluxurilor de recepție/expediție în noua hală.\n- Exclus: extinderea flotei de transport, angajarea de personal suplimentar (se tratează ca proiecte separate, dacă va fi nevoie).\n\n**Buget preliminar:** 350.000 lei (transport, montaj, eventuale reparații/amenajări), sumă orientativă ce va fi detaliată în planul de proiect.\n\n**Constrângere principală:** Activitatea de livrare către clienți nu poate fi întreruptă în niciun moment al relocării – relocarea trebuie făcută în etape sau în afara orelor de operare.\n\n**Risc major:** Suprapunerea relocării cu sezonul de vârf al comenzilor (vara) poate crește presiunea pe echipă și riscul de erori operaționale; se recomandă demararea relocării cât mai devreme sau eșalonarea ei pe module, pentru a evita perioada de vârf.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al unui Project Charter?",
+    "choices": [
+     "Să detalieze activitățile proiectului pas cu pas (WBS)",
+     "Să autorizeze formal proiectul și să dea PM-ului mandat de a folosi resurse",
+     "Să înlocuiască raportările periodice de progres",
+     "Să stabilească salariile echipei de proiect"
+    ],
+    "answer": 1,
+    "explain": "Charter-ul autorizează oficial proiectul și oferă PM-ului autoritatea necesară pentru a mobiliza resurse. Detalierea activităților (WBS) și planificarea detaliată vin ulterior, în etapa de planificare.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce ar trebui să conțină bugetul menționat în Project Charter?",
+    "choices": [
+     "Bugetul detaliat pe fiecare activitate din WBS",
+     "O estimare preliminară, la nivel de ordin de mărime",
+     "Doar costurile de personal",
+     "Bugetul final aprobat de acționari, nemodificabil ulterior"
+    ],
+    "answer": 1,
+    "explain": "Charter-ul include un buget preliminar, orientativ, pentru a autoriza proiectul. Detalierea pe activități se face ulterior, în planul de management al costurilor.",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Project Charter-ul?",
+    "back": "Documentul care autorizează formal proiectul și acordă PM-ului autoritatea de a folosi resursele organizației.",
+    "concept_key": "project-charter-definitie",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine semnează, de regulă, Project Charter-ul?",
+    "back": "Sponsorul executiv al proiectului (ex: director general, director financiar), care își asumă susținerea proiectului.",
+    "concept_key": "project-charter-autoritate-aprobare",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Numește 4 componente obligatorii ale unui Project Charter.",
+    "back": "Obiective, scope high-level, stakeholderi, desemnarea PM-ului (plus buget preliminar și riscuri majore).",
+    "concept_key": "project-charter-componente",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între Project Charter și planul de proiect?",
+    "back": "Charter-ul autorizează proiectul la nivel de sumar (2-4 pagini); planul de proiect detaliază activitățile, resursele și termenele (ex: WBS, Gantt).",
+    "concept_key": "project-charter-definitie",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce nivel de detaliu are bugetul din charter?",
+    "back": "Un buget preliminar, orientativ (ordin de mărime), nu bugetul detaliat pe activități, care se stabilește în planificare.",
+    "concept_key": "project-charter-componente",
+    "blockId": "cmjjuxvsc0050umkpc0d6dxv5-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1255,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,154 @@
+{
+ "lessonId": "cmjjuxw7f00fwumkpv9wix3l6",
+ "courseId": "cmjjuxw7400fmumkp9cm4a9vj",
+ "course": "HR Fundamentals - Managementul Resurselor Umane",
+ "module": "Introducere în HR",
+ "lesson": "HR Metrics esențiale",
+ "category": "HR_COMPLIANCE",
+ "content": "# HR Metrics esențiale\n\n## De ce contează metricile HR\n\nHR-ul modern nu se mai bazează pe intuiție, ci pe date. Un departament de resurse umane care măsoară constant performanța proceselor sale poate demonstra impactul financiar al deciziilor de personal către conducere și poate identifica din timp problemele înainte ca acestea să devină costisitoare.\n\nCinci metrici formează fundația oricărui sistem de HR analytics:\n\n1. **Time to hire** – cât de repede ocupi un post vacant.\n2. **Cost per hire** – cât te costă fiecare angajare.\n3. **Turnover rate** – cât de mulți angajați pleacă și cu ce ritm.\n4. **Engagement score** – cât de implicați și motivați sunt angajații.\n5. **Training hours** – cât investești în dezvoltarea competențelor echipei.\n\nAceste metrici nu se citesc izolat. Un time to hire foarte scurt combinat cu un turnover ridicat în primele 90 de zile poate indica un proces de selecție superficial. Un cost per hire mare, dar cu retenție bună pe termen lung, poate fi de fapt o investiție eficientă.\n\n## Time to hire vs. time to fill\n\nCei doi termeni se confundă des, dar măsoară lucruri diferite:\n\n- **Time to fill** = numărul de zile de la deschiderea oficială a postului (aprobarea recrutării) până la acceptarea ofertei de către candidat.\n- **Time to hire** = numărul de zile de la primul contact cu un candidat (aplicare sau abordare directă) până la acceptarea ofertei.\n\nFormula standard:\n\n`Time to hire = Data acceptării ofertei − Data primului contact cu candidatul`\n\nSe calculează, de regulă, ca medie pentru toate pozițiile ocupate într-o lună sau un trimestru, pe departament sau tip de rol, pentru că un post de management durează întotdeauna mai mult decât unul de execuție.\n\nUn time to hire mic nu este automat un obiectiv bun: dacă e prea scurt, riști să sari peste etape de evaluare esențiale (interviuri tehnice, verificare referințe). Reperul util este comparația în timp, pe același tip de rol, nu o cifră absolută impusă din exterior.\n\n## Cost per hire\n\nCost per hire arată cât cheltuiește organizația, în medie, pentru a ocupa un post. Formula agreată la nivel internațional (standardul ANSI/SHRM) este:\n\n`Cost per hire = (Costuri externe de recrutare + Costuri interne de recrutare) / Numărul de angajări dintr-o perioadă`\n\n**Costuri externe** includ: onorarii agenții de recrutare, anunțuri plătite pe joburi.ro/LinkedIn, participare la târguri de carieră, teste de evaluare externalizate, verificări de background.\n\n**Costuri interne** includ: timpul recrutorilor și al managerilor implicați în interviuri (convertit în cost orar), bonusuri de recomandare (referral), costuri de relocare, materiale de onboarding.\n\nCost per hire se calculează separat pe categorii de posturi, pentru că un rol de conducere implică un proces de recrutare mult mai costisitor decât unul operațional. Metrica este utilă mai ales urmărită în timp: o creștere bruscă poate semnala o piață a muncii mai competitivă sau un proces de selecție ineficient, cu prea multe runde.\n\n## Rata de fluctuație de personal (turnover rate)\n\nTurnover rate măsoară procentul de angajați care părăsesc organizația într-o perioadă dată.\n\n`Turnover rate = (Număr plecări în perioadă / Număr mediu de angajați în perioadă) × 100`\n\nNumărul mediu de angajați se calculează, de obicei, ca medie între efectivul de la începutul și cel de la finalul perioadei analizate.\n\nEste esențial să separi:\n\n- **Turnover voluntar** – angajatul demisionează din proprie inițiativă, conform prevederilor Codului muncii referitoare la demisie.\n- **Turnover involuntar** – încetarea are loc din inițiativa angajatorului (concediere) sau prin încetarea de drept a contractului individual de muncă.\n\nO distincție suplimentară, utilă strategic, este între **turnover regretabil** (pleacă un angajat performant, pe care ai fi vrut să-l păstrezi) și **neregretabil** (plecarea rezolvă, de fapt, o problemă de performanță). Doar urmărirea cifrei brute de turnover, fără această nuanță, poate duce la concluzii greșite despre sănătatea organizației. Pentru încadrarea juridică exactă a fiecărui tip de încetare a contractului, consultă un specialist în legislația muncii.\n\n## Engagement score și training hours\n\n**Engagement score** măsoară nivelul de implicare, motivație și atașament al angajaților față de organizație. Cea mai utilizată metodă este **eNPS (Employee Net Promoter Score)**, calculat printr-o singură întrebare: „Cât de probabil este să recomanzi această companie ca loc de muncă unui prieten?”, pe o scală de la 0 la 10.\n\n`eNPS = % Promotori (scor 9-10) − % Detractori (scor 0-6)`\n\nScorul rezultat variază între -100 și +100. Nu există un „prag universal bun” – reperul relevant este evoluția scorului propriu în timp și comparația pe departamente.\n\n**Training hours** (ore de formare) urmărește investiția în dezvoltarea competențelor:\n\n`Training hours per angajat = Total ore de formare furnizate / Număr total de angajați`\n\nAceastă metrică are și o componentă legală: angajatorii au obligații privind formarea profesională a salariaților conform Codului muncii, cu periodicitate diferențiată în funcție de mărimea companiei – detaliile trebuie verificate în forma actualizată a legii, deoarece pragurile pot fi modificate prin acte normative ulterioare. Recomandăm consultarea unui specialist sau a textului consolidat al Codului muncii pentru cifrele exacte aplicabile la momentul planificării bugetului de training.\n\n## Exemplu: Calcul cost per hire pentru un post de contabil senior\nO companie a ocupat, într-un trimestru, 4 posturi de contabil senior. Costurile înregistrate au fost:\n\n**Costuri externe:**\n- Onorariu agenție de recrutare: 8.000 lei\n- Anunțuri plătite (joburi.ro, LinkedIn): 1.200 lei\n- Testare psihometrică externalizată: 800 lei\n\nTotal costuri externe: 10.000 lei\n\n**Costuri interne:**\n- Timp recrutor HR (40 ore × 80 lei/oră): 3.200 lei\n- Timp manageri în interviuri (20 ore × 150 lei/oră): 3.000 lei\n- Bonus referral acordat pentru 1 candidat: 1.500 lei\n\nTotal costuri interne: 7.700 lei\n\n**Total general:** 10.000 + 7.700 = 17.700 lei\n\n**Cost per hire** = 17.700 lei / 4 angajări = **4.425 lei/angajare**\n\nInterpretare: dacă în trimestrul anterior cost per hire era de 3.200 lei pentru același tip de post, creșterea de peste 1.200 lei semnalează fie o piață a muncii mai competitivă (nevoie de mai multă publicitate plătită), fie un proces de selecție mai lung, cu mai multe runde de interviu.\n\n## Exemplu: Calcul turnover rate lunar\nO companie are, la 1 iunie, 48 de angajați activi, iar la 30 iunie, 52 de angajați activi. În luna iunie au plecat 3 angajați: 2 prin demisie și 1 prin încetarea contractului pe perioadă determinată la termen.\n\nNumăr mediu de angajați = (48 + 52) / 2 = 50\n\nTurnover rate = (3 / 50) × 100 = **6% pe lună**\n\nDacă vrei rata anualizată (pentru comparație cu benchmark-uri de industrie, de regulă raportate anual), înmulțești rata lunară cu 12: 6% × 12 = 72% turnover anualizat aproximativ – o cifră foarte ridicată, care ar trebui să declanșeze o analiză a cauzelor (exit interviews, satisfacție salarială, cultură organizațională).\n\nNotă: dintre cele 3 plecări, doar cele 2 demisii sunt considerate turnover voluntar; încetarea la termen a contractului pe perioadă determinată e o încetare de drept, nu o alegere activă a angajatului sau a angajatorului, și de multe ori se exclude din calculul turnover-ului „real” pentru a nu distorsiona indicatorul.\n\n> Temei legal: Legea nr. 53/2003 – Codul Muncii, republicată, cu modificările și completările ulterioare Art. 16 alin. (1) (în vigoare de la 2003-03-01)\nContractul individual de muncă se încheie, potrivit Codului muncii, în formă scrisă, în limba română, iar angajatorul are obligația de a transmite elementele contractului către Registrul general de evidență a salariaților (REVISAL) cel târziu în ziua anterioară începerii efective a activității de către salariat. Relevanța pentru HR metrics: după ce metrica „time to hire” se închide (candidatul acceptă oferta), procesul nu se termină – urmează etapa administrativă obligatorie de înregistrare REVISAL, care are propriul termen legal strict și nu poate fi omisă sau întârziată, indiferent cât de eficient a fost procesul de recrutare până în acel punct.\n\n⚠ Datele folosite pentru calculul metricilor HR (CV-uri, evaluări de performanță, motive de plecare, scoruri individuale de engagement) sunt date cu caracter personal și, uneori, date sensibile. Colectează și păstrează doar informațiile strict necesare calculului agregat (principiul minimizării datelor, Regulamentul UE 2016/679 – GDPR), limitează accesul la rapoartele individuale la persoanele care au nevoie efectivă de ele și anonimizează sau agregă datele înainte de a le prezenta în rapoarte interne mai largi. Informațiile din această lecție au scop educațional general și nu constituie consultanță juridică; pentru situații concrete de încadrare a contractelor, concediere sau conformitate REVISAL, consultă un avocat specializat în dreptul muncii sau un consultant de resurse umane autorizat.\n\n## Exercițiu\nDepartamentul de vânzări al unei companii a avut, în luna aprilie, următoarea situație:\n\n- Un post de Sales Executive a fost deschis pe 3 aprilie (primul candidat contactat).\n- Oferta a fost acceptată de candidatul selectat pe 24 aprilie.\n- Procesul a implicat 15 ore de timp al recrutorului (cost 80 lei/oră) și 6 ore de timp al Sales Managerului (cost 180 lei/oră) în interviuri.\n- Nu s-au folosit agenții externe, dar s-a plătit un anunț pe LinkedIn de 450 lei.\n\nCerințe:\n1. Calculează time to hire pentru acest post.\n2. Calculează cost per hire pentru acest post.\n3. Interpretează cele două rezultate: este acesta un proces eficient?\n\n**Soluție:** 1. **Time to hire** = 24 aprilie − 3 aprilie = **21 de zile**.\n\n2. **Cost per hire**:\n   - Costuri interne: (15 ore × 80 lei) + (6 ore × 180 lei) = 1.200 + 1.080 = 2.280 lei\n   - Costuri externe: 450 lei\n   - Total: 2.280 + 450 = **2.730 lei** (pentru o singură angajare)\n\n3. **Interpretare**: 21 de zile este un time to hire relativ rapid pentru un post de vânzări cu experiență, ceea ce sugerează un pipeline activ de candidați sau o piață favorabilă angajatorului. Costul de 2.730 lei este redus tocmai pentru că nu s-a apelat la o agenție externă – arată eficiența canalelor proprii de recrutare (LinkedIn, rețea internă). Concluzia corectă nu e doar „e ieftin și rapid”, ci trebuie corelată cu retenția: dacă acest angajat pleacă în primele 3 luni, costul real (inclusiv reluarea procesului) devine mult mai mare decât cei 2.730 lei inițiali.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "hr-metrics-intro",
+    "md": "## De ce contează metricile HR\n\nHR-ul modern nu se mai bazează pe intuiție, ci pe date. Un departament de resurse umane care măsoară constant performanța proceselor sale poate demonstra impactul financiar al deciziilor de personal către conducere și poate identifica din timp problemele înainte ca acestea să devină costisitoare.\n\nCinci metrici formează fundația oricărui sistem de HR analytics:\n\n1. **Time to hire** – cât de repede ocupi un post vacant.\n2. **Cost per hire** – cât te costă fiecare angajare.\n3. **Turnover rate** – cât de mulți angajați pleacă și cu ce ritm.\n4. **Engagement score** – cât de implicați și motivați sunt angajații.\n5. **Training hours** – cât investești în dezvoltarea competențelor echipei.\n\nAceste metrici nu se citesc izolat. Un time to hire foarte scurt combinat cu un turnover ridicat în primele 90 de zile poate indica un proces de selecție superficial. Un cost per hire mare, dar cu retenție bună pe termen lung, poate fi de fapt o investiție eficientă.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "time-to-hire",
+    "md": "## Time to hire vs. time to fill\n\nCei doi termeni se confundă des, dar măsoară lucruri diferite:\n\n- **Time to fill** = numărul de zile de la deschiderea oficială a postului (aprobarea recrutării) până la acceptarea ofertei de către candidat.\n- **Time to hire** = numărul de zile de la primul contact cu un candidat (aplicare sau abordare directă) până la acceptarea ofertei.\n\nFormula standard:\n\n`Time to hire = Data acceptării ofertei − Data primului contact cu candidatul`\n\nSe calculează, de regulă, ca medie pentru toate pozițiile ocupate într-o lună sau un trimestru, pe departament sau tip de rol, pentru că un post de management durează întotdeauna mai mult decât unul de execuție.\n\nUn time to hire mic nu este automat un obiectiv bun: dacă e prea scurt, riști să sari peste etape de evaluare esențiale (interviuri tehnice, verificare referințe). Reperul util este comparația în timp, pe același tip de rol, nu o cifră absolută impusă din exterior.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cost-per-hire",
+    "md": "## Cost per hire\n\nCost per hire arată cât cheltuiește organizația, în medie, pentru a ocupa un post. Formula agreată la nivel internațional (standardul ANSI/SHRM) este:\n\n`Cost per hire = (Costuri externe de recrutare + Costuri interne de recrutare) / Numărul de angajări dintr-o perioadă`\n\n**Costuri externe** includ: onorarii agenții de recrutare, anunțuri plătite pe joburi.ro/LinkedIn, participare la târguri de carieră, teste de evaluare externalizate, verificări de background.\n\n**Costuri interne** includ: timpul recrutorilor și al managerilor implicați în interviuri (convertit în cost orar), bonusuri de recomandare (referral), costuri de relocare, materiale de onboarding.\n\nCost per hire se calculează separat pe categorii de posturi, pentru că un rol de conducere implică un proces de recrutare mult mai costisitor decât unul operațional. Metrica este utilă mai ales urmărită în timp: o creștere bruscă poate semnala o piață a muncii mai competitivă sau un proces de selecție ineficient, cu prea multe runde.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "turnover-rate",
+    "md": "## Rata de fluctuație de personal (turnover rate)\n\nTurnover rate măsoară procentul de angajați care părăsesc organizația într-o perioadă dată.\n\n`Turnover rate = (Număr plecări în perioadă / Număr mediu de angajați în perioadă) × 100`\n\nNumărul mediu de angajați se calculează, de obicei, ca medie între efectivul de la începutul și cel de la finalul perioadei analizate.\n\nEste esențial să separi:\n\n- **Turnover voluntar** – angajatul demisionează din proprie inițiativă, conform prevederilor Codului muncii referitoare la demisie.\n- **Turnover involuntar** – încetarea are loc din inițiativa angajatorului (concediere) sau prin încetarea de drept a contractului individual de muncă.\n\nO distincție suplimentară, utilă strategic, este între **turnover regretabil** (pleacă un angajat performant, pe care ai fi vrut să-l păstrezi) și **neregretabil** (plecarea rezolvă, de fapt, o problemă de performanță). Doar urmărirea cifrei brute de turnover, fără această nuanță, poate duce la concluzii greșite despre sănătatea organizației. Pentru încadrarea juridică exactă a fiecărui tip de încetare a contractului, consultă un specialist în legislația muncii.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "engagement-score-enps",
+    "md": "## Engagement score și training hours\n\n**Engagement score** măsoară nivelul de implicare, motivație și atașament al angajaților față de organizație. Cea mai utilizată metodă este **eNPS (Employee Net Promoter Score)**, calculat printr-o singură întrebare: „Cât de probabil este să recomanzi această companie ca loc de muncă unui prieten?”, pe o scală de la 0 la 10.\n\n`eNPS = % Promotori (scor 9-10) − % Detractori (scor 0-6)`\n\nScorul rezultat variază între -100 și +100. Nu există un „prag universal bun” – reperul relevant este evoluția scorului propriu în timp și comparația pe departamente.\n\n**Training hours** (ore de formare) urmărește investiția în dezvoltarea competențelor:\n\n`Training hours per angajat = Total ore de formare furnizate / Număr total de angajați`\n\nAceastă metrică are și o componentă legală: angajatorii au obligații privind formarea profesională a salariaților conform Codului muncii, cu periodicitate diferențiată în funcție de mărimea companiei – detaliile trebuie verificate în forma actualizată a legii, deoarece pragurile pot fi modificate prin acte normative ulterioare. Recomandăm consultarea unui specialist sau a textului consolidat al Codului muncii pentru cifrele exacte aplicabile la momentul planificării bugetului de training.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calcul cost per hire pentru un post de contabil senior",
+    "concept_key": "cost-per-hire",
+    "md": "O companie a ocupat, într-un trimestru, 4 posturi de contabil senior. Costurile înregistrate au fost:\n\n**Costuri externe:**\n- Onorariu agenție de recrutare: 8.000 lei\n- Anunțuri plătite (joburi.ro, LinkedIn): 1.200 lei\n- Testare psihometrică externalizată: 800 lei\n\nTotal costuri externe: 10.000 lei\n\n**Costuri interne:**\n- Timp recrutor HR (40 ore × 80 lei/oră): 3.200 lei\n- Timp manageri în interviuri (20 ore × 150 lei/oră): 3.000 lei\n- Bonus referral acordat pentru 1 candidat: 1.500 lei\n\nTotal costuri interne: 7.700 lei\n\n**Total general:** 10.000 + 7.700 = 17.700 lei\n\n**Cost per hire** = 17.700 lei / 4 angajări = **4.425 lei/angajare**\n\nInterpretare: dacă în trimestrul anterior cost per hire era de 3.200 lei pentru același tip de post, creșterea de peste 1.200 lei semnalează fie o piață a muncii mai competitivă (nevoie de mai multă publicitate plătită), fie un proces de selecție mai lung, cu mai multe runde de interviu.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calcul turnover rate lunar",
+    "concept_key": "turnover-rate",
+    "md": "O companie are, la 1 iunie, 48 de angajați activi, iar la 30 iunie, 52 de angajați activi. În luna iunie au plecat 3 angajați: 2 prin demisie și 1 prin încetarea contractului pe perioadă determinată la termen.\n\nNumăr mediu de angajați = (48 + 52) / 2 = 50\n\nTurnover rate = (3 / 50) × 100 = **6% pe lună**\n\nDacă vrei rata anualizată (pentru comparație cu benchmark-uri de industrie, de regulă raportate anual), înmulțești rata lunară cu 12: 6% × 12 = 72% turnover anualizat aproximativ – o cifră foarte ridicată, care ar trebui să declanșeze o analiză a cauzelor (exit interviews, satisfacție salarială, cultură organizațională).\n\nNotă: dintre cele 3 plecări, doar cele 2 demisii sunt considerate turnover voluntar; încetarea la termen a contractului pe perioadă determinată e o încetare de drept, nu o alegere activă a angajatului sau a angajatorului, și de multe ori se exclude din calculul turnover-ului „real” pentru a nu distorsiona indicatorul.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b7"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 – Codul Muncii, republicată, cu modificările și completările ulterioare",
+    "article": "Art. 16 alin. (1)",
+    "effective": "2003-03-01",
+    "md": "Contractul individual de muncă se încheie, potrivit Codului muncii, în formă scrisă, în limba română, iar angajatorul are obligația de a transmite elementele contractului către Registrul general de evidență a salariaților (REVISAL) cel târziu în ziua anterioară începerii efective a activității de către salariat. Relevanța pentru HR metrics: după ce metrica „time to hire” se închide (candidatul acceptă oferta), procesul nu se termină – urmează etapa administrativă obligatorie de înregistrare REVISAL, care are propriul termen legal strict și nu poate fi omisă sau întârziată, indiferent cât de eficient a fost procesul de recrutare până în acel punct.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Datele folosite pentru calculul metricilor HR (CV-uri, evaluări de performanță, motive de plecare, scoruri individuale de engagement) sunt date cu caracter personal și, uneori, date sensibile. Colectează și păstrează doar informațiile strict necesare calculului agregat (principiul minimizării datelor, Regulamentul UE 2016/679 – GDPR), limitează accesul la rapoartele individuale la persoanele care au nevoie efectivă de ele și anonimizează sau agregă datele înainte de a le prezenta în rapoarte interne mai largi. Informațiile din această lecție au scop educațional general și nu constituie consultanță juridică; pentru situații concrete de încadrare a contractelor, concediere sau conformitate REVISAL, consultă un avocat specializat în dreptul muncii sau un consultant de resurse umane autorizat.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "Departamentul de vânzări al unei companii a avut, în luna aprilie, următoarea situație:\n\n- Un post de Sales Executive a fost deschis pe 3 aprilie (primul candidat contactat).\n- Oferta a fost acceptată de candidatul selectat pe 24 aprilie.\n- Procesul a implicat 15 ore de timp al recrutorului (cost 80 lei/oră) și 6 ore de timp al Sales Managerului (cost 180 lei/oră) în interviuri.\n- Nu s-au folosit agenții externe, dar s-a plătit un anunț pe LinkedIn de 450 lei.\n\nCerințe:\n1. Calculează time to hire pentru acest post.\n2. Calculează cost per hire pentru acest post.\n3. Interpretează cele două rezultate: este acesta un proces eficient?",
+    "solution_md": "1. **Time to hire** = 24 aprilie − 3 aprilie = **21 de zile**.\n\n2. **Cost per hire**:\n   - Costuri interne: (15 ore × 80 lei) + (6 ore × 180 lei) = 1.200 + 1.080 = 2.280 lei\n   - Costuri externe: 450 lei\n   - Total: 2.280 + 450 = **2.730 lei** (pentru o singură angajare)\n\n3. **Interpretare**: 21 de zile este un time to hire relativ rapid pentru un post de vânzări cu experiență, ceea ce sugerează un pipeline activ de candidați sau o piață favorabilă angajatorului. Costul de 2.730 lei este redus tocmai pentru că nu s-a apelat la o agenție externă – arată eficiența canalelor proprii de recrutare (LinkedIn, rețea internă). Concluzia corectă nu e doar „e ieftin și rapid”, ci trebuie corelată cu retenția: dacă acest angajat pleacă în primele 3 luni, costul real (inclusiv reluarea procesului) devine mult mai mare decât cei 2.730 lei inițiali.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă pentru cost per hire, conform standardului ANSI/SHRM?",
+    "choices": [
+     "(Costuri externe + Costuri interne) / Numărul de angajări",
+     "Costuri externe / Numărul de candidați intervievați",
+     "Salariul anual al noului angajat / Numărul de zile de recrutare",
+     "Costuri interne × Numărul de angajări"
+    ],
+    "answer": 0,
+    "explain": "Cost per hire însumează toate costurile de recrutare (externe + interne) dintr-o perioadă și le împarte la numărul total de angajări realizate în acea perioadă.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O companie are 40 de angajați la începutul lunii și 44 la final, cu 2 plecări în cursul lunii. Care este turnover rate lunar?",
+    "choices": [
+     "2%",
+     "4,76%",
+     "5%",
+     "10%"
+    ],
+    "answer": 1,
+    "explain": "Numărul mediu de angajați este (40 + 44) / 2 = 42. Turnover rate = (2 / 42) × 100 ≈ 4,76%.",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula standard pentru time to hire?",
+    "back": "Time to hire = Data acceptării ofertei de către candidat − Data primului contact cu acel candidat.",
+    "concept_key": "time-to-hire",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce include categoria „costuri externe” în calculul cost per hire?",
+    "back": "Onorarii agenții de recrutare, anunțuri de angajare plătite, târguri de carieră, testări externalizate, verificări de background.",
+    "concept_key": "cost-per-hire",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează rata de turnover?",
+    "back": "Turnover rate = (Număr plecări în perioadă / Număr mediu de angajați în perioadă) × 100.",
+    "concept_key": "turnover-rate",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este eNPS și cum se calculează?",
+    "back": "Employee Net Promoter Score = % Promotori (scor 9-10 la întrebarea de recomandare) minus % Detractori (scor 0-6); rezultatul variază între -100 și +100.",
+    "concept_key": "engagement-score-enps",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între turnover regretabil și neregretabil?",
+    "back": "Regretabil = pleacă un angajat performant pe care organizația și-ar fi dorit să-l păstreze; neregretabil = plecarea rezolvă, de fapt, o problemă de performanță sau de potrivire cu rolul.",
+    "concept_key": "turnover-rate",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când trebuie înregistrat un contract individual de muncă în REVISAL, conform Codului muncii?",
+    "back": "Cel târziu în ziua anterioară începerii efective a activității de către salariat.",
+    "concept_key": "revisal-inregistrare-cim",
+    "blockId": "cmjjuxw7f00fwumkpv9wix3l6-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1557,
+   "flashcards": 6
+  }
+ }
+}

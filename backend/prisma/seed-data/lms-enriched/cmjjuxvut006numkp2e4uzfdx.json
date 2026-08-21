@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvut006numkp2e4uzfdx",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Framework",
+ "lesson": "Scrum Team: Scrum Master",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Scrum Team: Scrum Master\n\n## Cine este Scrum Master?\n\nScrum Master este unul dintre cele trei roluri ale Scrum Team-ului, alături de Product Owner și Developeri, definit de Scrum Guide 2020. Scrum Master este responsabil pentru stabilirea Scrum-ului așa cum este definit în Scrum Guide: ajută pe toți cei implicați să înțeleagă teoria și practica Scrum, atât în cadrul Scrum Team-ului, cât și în organizație.\n\nCel mai important lucru de reținut: Scrum Master este un **servant leader** (lider care servește) — rolul său nu este să comande, ci să creeze condițiile în care echipa să performeze la potențial maxim. Nu este șef, nu este manager de proiect, nu distribuie sarcini și nu ia decizii tehnice sau de conținut în locul echipei.\n\nÎntr-o firmă românească, de exemplu la o companie care implementează un sistem ERP (SRL cu 40 de angajați), Scrum Master-ul este persoana care organizează și facilitează evenimentele Scrum (Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective), protejează echipa de întreruperi externe și elimină impedimentele care încetinesc livrarea. Scrum Master-ul răspunde de eficacitatea Scrum Team-ului — nu de rezultatul tehnic în sine, ci de procesul prin care echipa ajunge la acel rezultat.\n\n## Cele trei categorii de servicii ale Scrum Master-ului\n\nScrum Guide 2020 descrie serviciile Scrum Master-ului pe trei paliere distincte.\n\n### 1. Servicii pentru Scrum Team\n- Coach-uiește echipa în auto-organizare (self-management) și în lucrul cross-funcțional.\n- Ajută echipa să se concentreze pe crearea de Increment-e de valoare ridicată, care respectă Definiția de Done (Definition of Done).\n- Elimină impedimentele în progresul echipei.\n- Facilitează evenimentele Scrum, la cerere sau la nevoie.\n\n### 2. Servicii pentru Product Owner\n- Ajută la găsirea de tehnici pentru definirea clară a obiectivelor de produs (Product Goal) și gestionarea Product Backlog-ului.\n- Ajută echipa să înțeleagă nevoia unor elemente de Product Backlog clare și concise.\n- Ajută la stabilirea planificării produsului pe termen scurt și lung, într-un mediu empiric.\n- Facilitează colaborarea cu părțile interesate (stakeholders), la cerere.\n\n### 3. Servicii pentru organizație\n- Conduce, instruiește și antrenează organizația în adoptarea Scrum.\n- Planifică și susține implementarea Scrum în organizație.\n- Ajută angajații și părțile interesate să înțeleagă și să aplice o abordare empirică pentru munca complexă.\n- Elimină barierele dintre părțile interesate și Scrum Teams.\n\nAceastă structură pe trei niveluri este esențială pentru examenul PSM I — multe întrebări testează exact la ce categorie aparține o anumită activitate a Scrum Master-ului.\n\n## Scrum Master vs. Project Manager tradițional\n\nÎn România, multe organizații provin dintr-o cultură de management de proiect clasic (waterfall), unde Project Managerul planifică, alocă sarcini, urmărește termene și raportează status-ul către conducere. Scrum Master-ul NU este un înlocuitor direct al acestui rol.\n\n| Aspect | Project Manager tradițional | Scrum Master |\n|---|---|---|\n| Alocarea sarcinilor | Da, decide cine ce face | Nu, echipa decide singură |\n| Autoritate | Ierarhică, de comandă | Fără autoritate formală, doar influență |\n| Planificare | Detaliată, pe termen lung | Facilitează planificarea empirică, pe Sprint |\n| Raportare status | Către management | Transparență prin artefacte Scrum |\n| Rol principal | Control și execuție | Coaching, facilitare, eliminare impedimente |\n\nO greșeală frecventă la organizațiile care adoptă Agile este numirea unui fost Project Manager ca Scrum Master fără schimbarea mentalității — persoana continuă să aloce sarcini și să controleze echipa, ceea ce contrazice principiul de auto-organizare din Scrum Guide 2020 și subminează rolul de servant leader.\n\n⚠ Atenție la o capcană comună la certificarea PSM I: întrebările care descriu un Scrum Master ce „decide”, „alocă” sau „ordonă” ceva echipei sunt aproape întotdeauna răspunsuri greșite. Scrum Master facilitează, ajută, elimină impedimente și antrenează — nu comandă. Dacă un răspuns sugerează autoritate ierarhică asupra echipei, este foarte probabil incorect.\n\n## Exemplu: Eliminarea unui impediment într-un proiect de implementare ERP\nCompania ContaSoft SRL implementează un modul de facturare electronică (e-Factura) integrat cu ERP-ul intern. În timpul Daily Scrum, un developer semnalează că este blocat de trei zile: are nevoie de acces la mediul de testare al ANAF (Agenția Națională de Administrare Fiscală), dar departamentul IT intern nu i-a aprobat încă accesul.\n\nScrum Master-ul notează impedimentul (nu îl rezolvă în ședință, pentru a nu prelungi Daily Scrum-ul peste cele 15 minute recomandate) și, imediat după eveniment, contactează direct managerul IT pentru a debloca accesul în aceeași zi. Aceasta este exact rolul de „impediment remover”: Scrum Master-ul nu așteaptă ca developerul să rezolve singur o problemă organizațională, ci acționează activ pentru a proteja fluxul de lucru al echipei.\n\nObservă diferența: Scrum Master-ul nu a spus developerului ce task să facă în loc de cel blocat — a eliminat obstacolul din calea echipei, lăsând echipa să decidă singură cum își reorganizează munca în Sprint.\n\n## Exemplu: Facilitarea unei Sprint Retrospective dificile\nLa firma LogiTrans SRL (curierat și logistică), echipa de dezvoltare a unei aplicații de tracking colete are o Sprint Retrospective tensionată: doi developeri se acuză reciproc pentru întârzierea unei funcționalități. Scrum Master-ul nu ia parte și nu impune o soluție, ci folosește o tehnică de facilitare — de exemplu „Starfish Retrospective” (Start, Stop, Continue, More of, Less of) — pentru a muta discuția de la persoane la procese.\n\nÎn loc să lase conversația să devină un schimb de acuzații, Scrum Master-ul pune întrebări deschise: „Ce anume din procesul nostru de lucru a dus la această întârziere?” și „Ce am putea schimba, ca echipă, pentru Sprintul următor?”. La final, echipa formulează 1-2 acțiuni concrete de îmbunătățire, pe care Scrum Master-ul le notează și le urmărește în Sprintul următor.\n\nAcesta este rolul de facilitator neutru: Scrum Master-ul creează spațiul și structura pentru ca echipa să ajungă singură la concluzii, fără să impună propria opinie asupra soluției tehnice sau organizatorice.\n\n## Exercițiu\nEști Scrum Master la o echipă care dezvoltă un modul de raportare financiară pentru un client SRL din retail. În ziua a treia a Sprintului, Product Owner-ul vine direct la un developer și îi cere să înceapă lucrul la o funcționalitate nouă, urgentă, cerută de client, fără să treacă prin Sprint Backlog sau prin discuție cu echipa.\n\nCe ar trebui să faci, ca Scrum Master, în această situație? Descrie pașii corecți și explică de ce.\n\n**Soluție:** Scrum Master-ul trebuie să intervină ca protector al procesului Scrum, nu doar al developerului individual. Pașii corecți:\n\n1. Discută separat cu Product Owner-ul și explică de ce solicitarea directă către un developer, ocolind Sprint Backlog-ul, încalcă principiul de auto-organizare a echipei și afectează Sprint Goal-ul deja stabilit.\n2. Reamintește Product Owner-ului că orice cerere nouă, oricât de urgentă, trebuie adăugată în Product Backlog și prioritizată; dacă este cu adevărat urgentă, poate fi discutată cu întreaga echipă, care decide dacă Sprintul curent poate fi renegociat (conform Scrum Guide, doar Developerii pot renegocia scope-ul Sprintului împreună cu Product Owner-ul, dacă Sprint Goal-ul rămâne valabil).\n3. Facilitează o discuție scurtă cu echipa completă (nu doar cu developerul vizat) pentru a decide transparent dacă și cum se integrează cererea.\n\nGreșit ar fi: Scrum Master-ul să decidă el însuși dacă developerul face sau nu task-ul nou, sau să ignore situația considerând că „nu e treaba lui”. Rolul de servant leader presupune protejarea integrității procesului Scrum pentru toți cei implicați, nu doar medierea unui conflict punctual.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "scrum-master-definitie",
+    "md": "## Cine este Scrum Master?\n\nScrum Master este unul dintre cele trei roluri ale Scrum Team-ului, alături de Product Owner și Developeri, definit de Scrum Guide 2020. Scrum Master este responsabil pentru stabilirea Scrum-ului așa cum este definit în Scrum Guide: ajută pe toți cei implicați să înțeleagă teoria și practica Scrum, atât în cadrul Scrum Team-ului, cât și în organizație.\n\nCel mai important lucru de reținut: Scrum Master este un **servant leader** (lider care servește) — rolul său nu este să comande, ci să creeze condițiile în care echipa să performeze la potențial maxim. Nu este șef, nu este manager de proiect, nu distribuie sarcini și nu ia decizii tehnice sau de conținut în locul echipei.\n\nÎntr-o firmă românească, de exemplu la o companie care implementează un sistem ERP (SRL cu 40 de angajați), Scrum Master-ul este persoana care organizează și facilitează evenimentele Scrum (Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective), protejează echipa de întreruperi externe și elimină impedimentele care încetinesc livrarea. Scrum Master-ul răspunde de eficacitatea Scrum Team-ului — nu de rezultatul tehnic în sine, ci de procesul prin care echipa ajunge la acel rezultat.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scrum-master-trei-categorii-servicii",
+    "md": "## Cele trei categorii de servicii ale Scrum Master-ului\n\nScrum Guide 2020 descrie serviciile Scrum Master-ului pe trei paliere distincte.\n\n### 1. Servicii pentru Scrum Team\n- Coach-uiește echipa în auto-organizare (self-management) și în lucrul cross-funcțional.\n- Ajută echipa să se concentreze pe crearea de Increment-e de valoare ridicată, care respectă Definiția de Done (Definition of Done).\n- Elimină impedimentele în progresul echipei.\n- Facilitează evenimentele Scrum, la cerere sau la nevoie.\n\n### 2. Servicii pentru Product Owner\n- Ajută la găsirea de tehnici pentru definirea clară a obiectivelor de produs (Product Goal) și gestionarea Product Backlog-ului.\n- Ajută echipa să înțeleagă nevoia unor elemente de Product Backlog clare și concise.\n- Ajută la stabilirea planificării produsului pe termen scurt și lung, într-un mediu empiric.\n- Facilitează colaborarea cu părțile interesate (stakeholders), la cerere.\n\n### 3. Servicii pentru organizație\n- Conduce, instruiește și antrenează organizația în adoptarea Scrum.\n- Planifică și susține implementarea Scrum în organizație.\n- Ajută angajații și părțile interesate să înțeleagă și să aplice o abordare empirică pentru munca complexă.\n- Elimină barierele dintre părțile interesate și Scrum Teams.\n\nAceastă structură pe trei niveluri este esențială pentru examenul PSM I — multe întrebări testează exact la ce categorie aparține o anumită activitate a Scrum Master-ului.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scrum-master-vs-project-manager",
+    "md": "## Scrum Master vs. Project Manager tradițional\n\nÎn România, multe organizații provin dintr-o cultură de management de proiect clasic (waterfall), unde Project Managerul planifică, alocă sarcini, urmărește termene și raportează status-ul către conducere. Scrum Master-ul NU este un înlocuitor direct al acestui rol.\n\n| Aspect | Project Manager tradițional | Scrum Master |\n|---|---|---|\n| Alocarea sarcinilor | Da, decide cine ce face | Nu, echipa decide singură |\n| Autoritate | Ierarhică, de comandă | Fără autoritate formală, doar influență |\n| Planificare | Detaliată, pe termen lung | Facilitează planificarea empirică, pe Sprint |\n| Raportare status | Către management | Transparență prin artefacte Scrum |\n| Rol principal | Control și execuție | Coaching, facilitare, eliminare impedimente |\n\nO greșeală frecventă la organizațiile care adoptă Agile este numirea unui fost Project Manager ca Scrum Master fără schimbarea mentalității — persoana continuă să aloce sarcini și să controleze echipa, ceea ce contrazice principiul de auto-organizare din Scrum Guide 2020 și subminează rolul de servant leader.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b3"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la o capcană comună la certificarea PSM I: întrebările care descriu un Scrum Master ce „decide”, „alocă” sau „ordonă” ceva echipei sunt aproape întotdeauna răspunsuri greșite. Scrum Master facilitează, ajută, elimină impedimente și antrenează — nu comandă. Dacă un răspuns sugerează autoritate ierarhică asupra echipei, este foarte probabil incorect.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b4"
+   },
+   {
+    "type": "example",
+    "title": "Eliminarea unui impediment într-un proiect de implementare ERP",
+    "concept_key": "scrum-master-eliminare-impediment",
+    "md": "Compania ContaSoft SRL implementează un modul de facturare electronică (e-Factura) integrat cu ERP-ul intern. În timpul Daily Scrum, un developer semnalează că este blocat de trei zile: are nevoie de acces la mediul de testare al ANAF (Agenția Națională de Administrare Fiscală), dar departamentul IT intern nu i-a aprobat încă accesul.\n\nScrum Master-ul notează impedimentul (nu îl rezolvă în ședință, pentru a nu prelungi Daily Scrum-ul peste cele 15 minute recomandate) și, imediat după eveniment, contactează direct managerul IT pentru a debloca accesul în aceeași zi. Aceasta este exact rolul de „impediment remover”: Scrum Master-ul nu așteaptă ca developerul să rezolve singur o problemă organizațională, ci acționează activ pentru a proteja fluxul de lucru al echipei.\n\nObservă diferența: Scrum Master-ul nu a spus developerului ce task să facă în loc de cel blocat — a eliminat obstacolul din calea echipei, lăsând echipa să decidă singură cum își reorganizează munca în Sprint.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b5"
+   },
+   {
+    "type": "example",
+    "title": "Facilitarea unei Sprint Retrospective dificile",
+    "concept_key": "scrum-master-facilitare-evenimente",
+    "md": "La firma LogiTrans SRL (curierat și logistică), echipa de dezvoltare a unei aplicații de tracking colete are o Sprint Retrospective tensionată: doi developeri se acuză reciproc pentru întârzierea unei funcționalități. Scrum Master-ul nu ia parte și nu impune o soluție, ci folosește o tehnică de facilitare — de exemplu „Starfish Retrospective” (Start, Stop, Continue, More of, Less of) — pentru a muta discuția de la persoane la procese.\n\nÎn loc să lase conversația să devină un schimb de acuzații, Scrum Master-ul pune întrebări deschise: „Ce anume din procesul nostru de lucru a dus la această întârziere?” și „Ce am putea schimba, ca echipă, pentru Sprintul următor?”. La final, echipa formulează 1-2 acțiuni concrete de îmbunătățire, pe care Scrum Master-ul le notează și le urmărește în Sprintul următor.\n\nAcesta este rolul de facilitator neutru: Scrum Master-ul creează spațiul și structura pentru ca echipa să ajungă singură la concluzii, fără să impună propria opinie asupra soluției tehnice sau organizatorice.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești Scrum Master la o echipă care dezvoltă un modul de raportare financiară pentru un client SRL din retail. În ziua a treia a Sprintului, Product Owner-ul vine direct la un developer și îi cere să înceapă lucrul la o funcționalitate nouă, urgentă, cerută de client, fără să treacă prin Sprint Backlog sau prin discuție cu echipa.\n\nCe ar trebui să faci, ca Scrum Master, în această situație? Descrie pașii corecți și explică de ce.",
+    "solution_md": "Scrum Master-ul trebuie să intervină ca protector al procesului Scrum, nu doar al developerului individual. Pașii corecți:\n\n1. Discută separat cu Product Owner-ul și explică de ce solicitarea directă către un developer, ocolind Sprint Backlog-ul, încalcă principiul de auto-organizare a echipei și afectează Sprint Goal-ul deja stabilit.\n2. Reamintește Product Owner-ului că orice cerere nouă, oricât de urgentă, trebuie adăugată în Product Backlog și prioritizată; dacă este cu adevărat urgentă, poate fi discutată cu întreaga echipă, care decide dacă Sprintul curent poate fi renegociat (conform Scrum Guide, doar Developerii pot renegocia scope-ul Sprintului împreună cu Product Owner-ul, dacă Sprint Goal-ul rămâne valabil).\n3. Facilitează o discuție scurtă cu echipa completă (nu doar cu developerul vizat) pentru a decide transparent dacă și cum se integrează cererea.\n\nGreșit ar fi: Scrum Master-ul să decidă el însuși dacă developerul face sau nu task-ul nou, sau să ignore situația considerând că „nu e treaba lui”. Rolul de servant leader presupune protejarea integrității procesului Scrum pentru toți cei implicați, nu doar medierea unui conflict punctual.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele NU este o responsabilitate a Scrum Master-ului, conform Scrum Guide 2020?",
+    "choices": [
+     "Elimină impedimentele care blocează progresul echipei",
+     "Alocă sarcini individuale fiecărui developer în Sprint",
+     "Facilitează evenimentele Scrum la cerere",
+     "Antrenează organizația în adoptarea Scrum"
+    ],
+    "answer": 1,
+    "explain": "Alocarea sarcinilor este responsabilitatea echipei de Developeri, care se auto-organizează; Scrum Master-ul nu are autoritate ierarhică asupra echipei și nu decide cine ce task execută.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Scrum Guide 2020 descrie serviciile Scrum Master-ului pe trei categorii. Care sunt acestea?",
+    "choices": [
+     "Scrum Team, Product Owner, Organizație",
+     "Client, Furnizor, Management",
+     "Planificare, Execuție, Control",
+     "Sprint Planning, Daily Scrum, Retrospective"
+    ],
+    "answer": 0,
+    "explain": "Scrum Master servește Scrum Team-ul, Product Owner-ul și organizația în ansamblu — cele trei paliere descrise explicit în Scrum Guide 2020.",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Scrum Master, pe scurt?",
+    "back": "Un servant leader responsabil pentru stabilirea și eficacitatea Scrum-ului în cadrul Scrum Team-ului și al organizației, conform Scrum Guide 2020.",
+    "concept_key": "scrum-master-definitie",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă „servant leader” aplicat la Scrum Master?",
+    "back": "Un lider care servește echipa — creează condiții pentru performanță, nu comandă, nu alocă sarcini și nu ia decizii tehnice în locul echipei.",
+    "concept_key": "scrum-master-servant-leader",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine decide ce task face fiecare persoană în Sprint — Scrum Master sau echipa?",
+    "back": "Echipa de Developeri, prin auto-organizare (self-management); Scrum Master-ul nu alocă sarcini individuale.",
+    "concept_key": "scrum-master-alocare-sarcini",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei categorii de servicii ale Scrum Master-ului?",
+    "back": "Servicii pentru Scrum Team, servicii pentru Product Owner și servicii pentru organizație.",
+    "concept_key": "scrum-master-trei-categorii-servicii",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență esențială există între Scrum Master și Project Manager tradițional?",
+    "back": "Project Managerul are autoritate ierarhică și alocă sarcini; Scrum Master-ul nu are autoritate formală asupra echipei, ci doar rol de facilitare, coaching și eliminare a impedimentelor.",
+    "concept_key": "scrum-master-vs-project-manager",
+    "blockId": "cmjjuxvut006numkp2e4uzfdx-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1160,
+   "flashcards": 5
+  }
+ }
+}

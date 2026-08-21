@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjvav30000z10ia0v654wfk",
+ "courseId": "cmjjvav2p000p10iau02k3xg6",
+ "course": "Inteligenta Artificiala in Business - De la Concept la Implementare",
+ "module": "Fundamentele Inteligentei Artificiale pentru Business",
+ "lesson": "Quiz - Fundamentele AI",
+ "category": "FINANCE_OPS",
+ "content": "Test de evaluare — Quiz - Fundamentele AI (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Ce este inteligența artificială (AI), în sensul folosit în context de business?",
+     "choices": [
+      "Un set de reguli fixe programate explicit pentru fiecare scenariu posibil, fără capacitate de adaptare (automatizare clasică bazată pe reguli)",
+      "Un domeniu al informaticii prin care sistemele învață din date și tipare pentru a lua decizii sau a face predicții, adaptându-se fără a fi reprogramate explicit pentru fiecare caz nou",
+      "Un sinonim exact pentru automatizarea proceselor robotizate (RPA)",
+      "O tehnologie folosită exclusiv pentru generarea de text și imagini"
+     ],
+     "answer": 1,
+     "explain": "AI se diferențiază de automatizarea clasică (bazată pe reguli fixe, tip RPA) prin capacitatea de a învăța din date istorice și de a se adapta la situații noi, fără reprogramare manuală pentru fiecare caz.",
+     "concept_key": "definitie_ai"
+    },
+    {
+     "q": "Care este relația corectă dintre machine learning (ML) și deep learning (DL)?",
+     "choices": [
+      "ML și DL sunt termeni echivalenți, folosiți interschimbabil",
+      "DL este o subcategorie a ML care utilizează rețele neuronale cu multiple straturi (\"adânci\") pentru a învăța tipare complexe din volume mari de date",
+      "ML este o subcategorie a DL, aplicabilă doar la analiza textelor",
+      "DL nu are legătură cu AI, fiind un concept separat de statistica clasică"
+     ],
+     "answer": 1,
+     "explain": "Deep learning este o ramură specializată a machine learning, bazată pe rețele neuronale cu multiple straturi ascunse, potrivită pentru volume mari de date și tipare complexe (imagini, text, voce).",
+     "concept_key": "ml_vs_dl"
+    },
+    {
+     "q": "O companie RO dorește să antreneze un model care să clasifice facturile primite ca \"urgente\" sau \"neurgente\", folosind un set de date istorice deja etichetat de contabili. Ce tip de învățare automată se potrivește?",
+     "choices": [
+      "Învățare nesupervizată (unsupervised learning)",
+      "Învățare prin întărire (reinforcement learning)",
+      "Învățare supervizată (supervised learning), deoarece datele de antrenament sunt deja etichetate cu răspunsul corect",
+      "Deep learning generativ, fără date de antrenament"
+     ],
+     "answer": 2,
+     "explain": "Când există date istorice etichetate corect (input + răspunsul dorit), modelul învață prin învățare supervizată, potrivind exemple de intrare cu eticheta cunoscută pentru a generaliza pe cazuri noi.",
+     "concept_key": "tipuri_invatare_automata"
+    },
+    {
+     "q": "Un departament de suport clienți al unui SRL implementează un chatbot AI care înțelege întrebările scrise de clienți în limba română și oferă răspunsuri relevante. Ce tehnologie stă la baza acestei capacități?",
+     "choices": [
+      "Computer vision (viziune artificială)",
+      "Procesarea limbajului natural (NLP - Natural Language Processing)",
+      "RPA clasic, bazat exclusiv pe reguli predefinite",
+      "Optimizare matematică de tip linear programming"
+     ],
+     "answer": 1,
+     "explain": "NLP este ramura AI care permite unui sistem să înțeleagă, să interpreteze și să genereze limbaj uman scris sau vorbit, fiind tehnologia de bază a chatboților și asistenților conversaționali.",
+     "concept_key": "nlp_aplicatii_business"
+    },
+    {
+     "q": "Ce caracterizează un model AI generativ de tip LLM (Large Language Model), precum cele folosite pentru redactarea de rapoarte sau e-mailuri de business?",
+     "choices": [
+      "Execută doar calcule numerice predefinite, fără nicio componentă lingvistică",
+      "Este antrenat pe volume mari de text și poate genera conținut nou pe baza tiparelor învățate, dar poate produce uneori informații incorecte prezentate plauzibil (\"halucinații\")",
+      "Funcționează exclusiv offline și nu necesită nicio etapă de antrenare prealabilă",
+      "Nu poate fi folosit în context de business, fiind limitat la conversații informale"
+     ],
+     "answer": 1,
+     "explain": "Un LLM generează text nou pe baza tiparelor statistice învățate din volume mari de date, ceea ce îl face util pentru redactare, dar cu riscul de \"halucinații\" (informații incorecte prezentate cu încredere) care impun verificare umană.",
+     "concept_key": "llm_generative_ai"
+    },
+    {
+     "q": "O companie RO folosește un model AI de analiză predictivă pentru a estima fluxul de numerar (cash-flow) din următoarele 3 luni, pe baza istoricului de încasări și plăți. Care este principalul avantaj al acestei abordări față de previziunea manuală clasică?",
+     "choices": [
+      "Elimină complet nevoia de verificare umană a rezultatelor generate",
+      "Modelul identifică automat tipare complexe și sezoniere din volume mari de date istorice, oferind previziuni actualizate rapid pe măsură ce apar date noi",
+      "Garantează previziuni 100% exacte, fără nicio marjă de eroare",
+      "Înlocuiește obligația legală de întocmire a situațiilor financiare conform OMFP 1802/2014"
+     ],
+     "answer": 1,
+     "explain": "Avantajul AI în previziunea cash-flow este capacitatea de a procesa rapid volume mari de date istorice și de a identifica tipare (inclusiv sezonalitate) greu de sesizat manual; previziunile rămân estimări cu marjă de eroare, nu certitudini, și necesită validare umană.",
+     "concept_key": "analiza_predictiva_cashflow"
+    },
+    {
+     "q": "Un SRL implementează o soluție AI (OCR + NLP) care extrage automat datele din facturile primite de la furnizori (sumă, cotă TVA, dată scadență) și le încarcă în sistemul ERP, reducând introducerea manuală. Ce risc operațional trebuie monitorizat activ de echipa financiară în acest caz?",
+     "choices": [
+      "Soluția AI preia automat și obligația legală de transmitere a facturilor în SPV conform e-Factura",
+      "Erorile de extragere (de exemplu citirea greșită a unei cote de TVA sau a unei sume) pot trece neobservate dacă nu există un proces de validare umană a rezultatelor generate de AI",
+      "Utilizarea AI elimină complet necesitatea arhivării electronice a facturilor",
+      "AI garantează automat conformitatea facturilor cu formatul RO_CIUS UBL 2.1"
+     ],
+     "answer": 1,
+     "explain": "AI automatizează extragerea datelor, dar nu elimină riscul de eroare (citire greșită a unei cote de TVA sau sume) și nici obligațiile legale existente (transmitere în SPV, format RO_CIUS). Principiul \"human in the loop\" - validare umană periodică - rămâne esențial.",
+     "concept_key": "riscuri_automatizare_ai_facturi"
+    },
+    {
+     "q": "Care este principiul cunoscut sub numele de \"garbage in, garbage out\", aplicat unui model AI de scoring al clienților pentru acordarea de credit comercial?",
+     "choices": [
+      "Modelul AI corectează automat orice eroare sau lipsă din datele de intrare",
+      "Calitatea și corectitudinea deciziilor unui model AI depind direct de calitatea datelor de antrenament; date incomplete, incorecte sau părtinitoare (bias) produc decizii eronate sau discriminatorii",
+      "Cu cât volumul de date este mai mare, cu atât calitatea acestora contează mai puțin în rezultatul final",
+      "Bias-ul (părtinirea) apare doar la modelele de tip reinforcement learning"
+     ],
+     "answer": 1,
+     "explain": "Un model AI nu poate compensa date de intrare de proastă calitate: dacă datele de antrenament sunt incomplete, eronate sau părtinitoare, deciziile/predicțiile modelului vor reproduce și amplifica aceste probleme, indiferent de volumul de date.",
+     "concept_key": "calitate_date_bias_ai"
+    },
+    {
+     "q": "Reglementarea europeană privind inteligența artificială (AI Act, Regulamentul UE 2024/1689) clasifică sistemele AI pe niveluri de risc. O companie care implementează un sistem AI pentru evaluarea automată a candidaților la angajare se încadrează, în general, în ce categorie?",
+     "choices": [
+      "Risc minim, fără nicio obligație suplimentară",
+      "Risc inacceptabil, sistemul fiind interzis complet oriunde în UE",
+      "Risc ridicat (\"high-risk\"), ceea ce implică obligații suplimentare de transparență, documentare a modelului și supraveghere umană",
+      "Categorie nereglementată, aplicabilă doar sistemelor generative de tip LLM"
+     ],
+     "answer": 2,
+     "explain": "AI Act clasifică sistemele folosite pentru decizii de angajare/evaluare a candidaților ca fiind cu risc ridicat, având impact direct asupra drepturilor persoanelor, ceea ce atrage obligații suplimentare de documentare, transparență și supraveghere umană a deciziilor.",
+     "concept_key": "ai_act_clasificare_risc"
+    },
+    {
+     "q": "O companie RO analizează implementarea unui chatbot AI pentru suportul clienți. Costul implementării este de 60.000 lei (cifră ipotetică), iar economiile anuale estimate prin reducerea timpului echipei de suport sunt de 90.000 lei/an. Care este perioada de recuperare a investiției (payback period), în luni?",
+     "choices": [
+      "6 luni",
+      "8 luni",
+      "10 luni",
+      "12 luni"
+     ],
+     "answer": 1,
+     "explain": "Payback period = Cost investiție / Economie lunară = 60.000 lei / (90.000 lei ÷ 12 luni) = 60.000 / 7.500 = 8 luni.",
+     "concept_key": "roi_implementare_ai"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

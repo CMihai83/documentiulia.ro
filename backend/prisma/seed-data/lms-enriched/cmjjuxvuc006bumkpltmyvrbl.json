@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvuc006bumkpltmyvrbl",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Fundamente Agile",
+ "lesson": "Agile Manifesto și Principii",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Agile Manifesto și Principii\n\n## Originea Manifestului Agile\n\nÎn februarie 2001, 17 dezvoltatori de software s-au întâlnit la o stațiune de schi din Snowbird, Utah, nemulțumiți de modul greoi în care se livrau proiectele software prin metode tradiționale de tip „cascadă” (waterfall) — documentații stufoase, planuri rigide stabilite cu luni înainte și livrare a produsului abia la final, când cerințele clientului se schimbaseră deja. Din această întâlnire a rezultat **Manifestul pentru Dezvoltare Agilă de Software** (Agile Manifesto), un document scurt care a schimbat fundamental industria IT și, ulterior, managementul de proiect în general.\n\nManifestul definește **4 valori fundamentale**, exprimate ca preferințe relative, nu ca excludere totală:\n\n1. **Indivizii și interacțiunile** mai mult decât procesele și instrumentele.\n2. **Software-ul funcțional** mai mult decât documentația exhaustivă.\n3. **Colaborarea cu clientul** mai mult decât negocierea contractuală.\n4. **Răspunsul la schimbare** mai mult decât urmărirea rigidă a unui plan.\n\nEste esențial pentru examenul PSM I (Professional Scrum Master I) să reții formularea exactă: manifestul NU spune că procesele, documentația, contractele sau planurile nu contează — spune că, atunci când trebuie să alegi între cele două, elementul din stânga are prioritate mai mare. O echipă agilă tot semnează contracte și tot scrie documentație, dar nu lasă aceste lucruri să blocheze livrarea de valoare sau adaptarea la nevoile reale ale clientului.\n\n## Cele 12 principii din spatele Manifestului\n\nCele 4 valori sunt detaliate prin **12 principii**, care oferă îndrumări practice pentru echipe. Le poți grupa astfel pentru a le memora mai ușor:\n\n**Despre satisfacția clientului și livrare:**\n1. Prioritatea noastră este satisfacerea clientului prin livrarea timpurie și continuă de software valoros.\n2. Acceptăm schimbarea cerințelor, chiar și târziu în dezvoltare — Agile valorifică schimbarea în avantajul competitiv al clientului.\n3. Livrăm software funcțional frecvent, de la câteva săptămâni la câteva luni, cu preferință pentru intervalul cel mai scurt.\n\n**Despre colaborare și oameni:**\n4. Oamenii din business și dezvoltatorii trebuie să colaboreze zilnic pe tot parcursul proiectului.\n5. Construim proiecte în jurul unor indivizi motivați; le oferim mediul și sprijinul necesar și avem încredere că își vor face treaba.\n6. Cea mai eficientă metodă de a transmite informație este conversația față în față.\n\n**Despre calitate și ritm sustenabil:**\n7. Software-ul funcțional este principala măsură a progresului.\n8. Procesele agile promovează dezvoltarea sustenabilă — sponsorii, dezvoltatorii și utilizatorii ar trebui să poată menține un ritm constant, la nesfârșit.\n9. Atenția continuă la excelența tehnică și un design bun sporesc agilitatea.\n\n**Despre simplitate și îmbunătățire continuă:**\n10. Simplitatea — arta de a maximiza cantitatea de muncă nefăcută — este esențială.\n11. Cele mai bune arhitecturi, cerințe și design-uri apar din echipe auto-organizate.\n12. La intervale regulate, echipa reflectează asupra modului în care poate deveni mai eficientă și își ajustează comportamentul în consecință.\n\nAcest ultim principiu este fundația directă a evenimentului Scrum numit **Sprint Retrospective**, iar principiile 1-3 stau la baza conceptului de **Sprint** și livrare incrementală.\n\n## Agile este un mindset, nu o metodologie\n\nO greșeală frecventă — inclusiv la examenul PSM I — este confundarea Agile cu Scrum sau cu orice alt cadru de lucru (framework). Agile **nu este** o metodologie cu pași fixați: este un set de valori și principii, o filozofie de lucru. Scrum, Kanban, Extreme Programming (XP) sau SAFe sunt **implementări concrete** care pun în practică aceste valori, fiecare cu propriile reguli, roluri și artefacte.\n\nScrum Guide (versiunea 2020, referință oficială pentru certificarea PSM I) nu citează literal Manifestul Agile, dar se bazează pe aceleași fundamente: empirism (transparență, inspecție, adaptare) și valorile Scrum (angajament, curaj, focalizare, deschidere, respect), care sunt, în esență, o extensie practică a celor 4 valori și 12 principii agile.\n\nÎn contextul unei companii românești care implementează, de exemplu, un sistem ERP sau dezvoltă o aplicație internă, a fi „agil” înseamnă a adopta acest mindset — indiferent dacă echipa folosește Scrum, Kanban sau o combinație (Scrumban). Un Scrum Master eficient nu impune reguli rigide de dragul procesului, ci verifică permanent dacă deciziile echipei sunt aliniate cu valorile și principiile Agile, iar nu doar cu litera unui cadru de lucru.\n\n## Exemplu: Colaborare vs. negociere contractuală — implementare ERP\nO firmă de consultanță IT din Cluj implementează un modul de facturare electronică pentru o companie de distribuție cu 200 de angajați. Contractul clasic ar prevedea o specificație fixă, semnată la început, cu penalizări pentru orice modificare ulterioară — o abordare tipică „negociere contractuală”.\n\nÎn schimb, echipa aplică valoarea **„colaborarea cu clientul mai mult decât negocierea contractuală”**: stabilesc un contract-cadru (buget și interval de timp), dar detaliile funcționale se clarifică incremental, în ședințe săptămânale cu reprezentantul departamentului financiar al clientului. După primele două sprinturi, clientul realizează că are nevoie și de integrare cu sistemul de emitere a facturilor conform e-Factura, cerință neprevăzută inițial.\n\nDeoarece contractul permite ajustarea Product Backlog-ului (nu doar execuția mecanică a unei specificații fixe), echipa poate include rapid această cerință în sprinturile următoare, fără litigii contractuale. Rezultatul: clientul primește un produs care rezolvă problema lui reală, nu doar ceea ce fusese estimat cu 6 luni înainte — exact ideea din spatele principiului 2 („acceptăm schimbarea cerințelor, chiar și târziu în dezvoltare”).\n\n## Exemplu: Software funcțional ca măsură a progresului\nO echipă dintr-un startup din București dezvoltă o aplicație de gestiune a stocurilor pentru micile PFA-uri. Managementul obișnuia să ceară rapoarte de status stufoase (Gantt charts, documente de 30 de pagini) pentru a „dovedi” progresul.\n\nEchipa Scrum propune o schimbare aliniată cu principiul 7 („software-ul funcțional este principala măsură a progresului”): la finalul fiecărui Sprint de 2 săptămâni, organizează un **Sprint Review** în care demonstrează live funcționalitățile finalizate — de exemplu, modulul de scanare coduri de bare conectat la stocul real. Stakeholderii văd exact ce funcționează, oferă feedback imediat, iar orice neînțelegere despre cerințe iese la iveală în câteva minute, nu după luni de dezvoltare „pe hârtie”.\n\nAcest exemplu ilustrează și valoarea „software funcțional mai mult decât documentație exhaustivă”: echipa tot documentează (are un Product Backlog, note tehnice minime), dar nu produce documentație doar pentru a bifa un proces birocratic — documentația servește un scop clar, iar dovada reală a progresului este produsul care rulează.\n\n⚠ **Capcane frecvente la examenul PSM I:** Agile nu înseamnă „fără documentație” și nu înseamnă „fără planificare”. Multe întrebări din examen testează exact această nuanță prin formulări de tip „echipa NU mai trebuie să...” — răspunsul corect aproape niciodată nu elimină complet un element (documentație, plan, contract), ci arată o schimbare de prioritate. De asemenea, rețin: cele 4 valori și cele 12 principii aparțin **Manifestului Agile**, nu Scrum Guide-ului — Scrum Guide-ul definește separat cele 5 valori Scrum (angajament, curaj, focalizare, deschidere, respect). Nu le confunda la examen.\n\n## Exercițiu\n**Scenariu:** Ești Scrum Master într-o companie românească ce dezvoltă software de facturare. La mijlocul unui Sprint de 2 săptămâni, Product Owner-ul vine la echipă și spune că un client important a cerut o modificare urgentă a unui raport, modificare care nu era în Sprint Backlog. Un membru senior al echipei reacționează: „Nu putem schimba nimic acum, avem un plan de Sprint aprobat și trebuie să-l respectăm întocmai, altfel nu mai livrăm nimic la timp.”\n\n**Cerință:** Identifică (a) ce valoare/principiu Agile este ignorat de colegul senior și (b) cum ar trebui să intervii, ca Scrum Master, ținând cont și de regula Scrum conform căreia scopul Sprintului (Sprint Goal) nu se schimbă în timpul Sprintului.\n\n**Soluție:** **(a) Valoarea/principiul ignorat:** Colegul aplică rigid „urmărirea unui plan” în detrimentul valorii **„răspunsul la schimbare mai mult decât urmărirea unui plan”** și ignoră principiul 2 („acceptăm schimbarea cerințelor, chiar și târziu în dezvoltare”).\n\n**(b) Intervenția corectă ca Scrum Master:** Nu înseamnă că orice cerere se bagă automat în Sprintul curent — Scrum Guide protejează **Sprint Goal-ul**: acesta rămâne stabil, iar conținutul exact al Sprint Backlog-ului poate fi renegociat între Developeri și Product Owner dacă noua informație o cere. Pașii corecți: (1) verifici împreună cu Product Owner-ul dacă cererea pune în pericol Sprint Goal-ul; (2) dacă NU periclitează scopul, echipa poate negocia să înlocuiască un element de scop echivalent din Sprint Backlog cu noua cerință urgentă; (3) dacă cererea schimbă fundamental Sprint Goal-ul, soluția corectă este anularea Sprintului de către Product Owner (rar folosită) sau, mai frecvent, amânarea cererii pentru următorul Sprint Planning. În ambele cazuri, decizia rămâne flexibilă și centrată pe valoare livrată clientului, nu pe respectarea mecanică a unui plan fixat cu două săptămâni în urmă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "agile-manifesto-context-si-valori",
+    "md": "## Originea Manifestului Agile\n\nÎn februarie 2001, 17 dezvoltatori de software s-au întâlnit la o stațiune de schi din Snowbird, Utah, nemulțumiți de modul greoi în care se livrau proiectele software prin metode tradiționale de tip „cascadă” (waterfall) — documentații stufoase, planuri rigide stabilite cu luni înainte și livrare a produsului abia la final, când cerințele clientului se schimbaseră deja. Din această întâlnire a rezultat **Manifestul pentru Dezvoltare Agilă de Software** (Agile Manifesto), un document scurt care a schimbat fundamental industria IT și, ulterior, managementul de proiect în general.\n\nManifestul definește **4 valori fundamentale**, exprimate ca preferințe relative, nu ca excludere totală:\n\n1. **Indivizii și interacțiunile** mai mult decât procesele și instrumentele.\n2. **Software-ul funcțional** mai mult decât documentația exhaustivă.\n3. **Colaborarea cu clientul** mai mult decât negocierea contractuală.\n4. **Răspunsul la schimbare** mai mult decât urmărirea rigidă a unui plan.\n\nEste esențial pentru examenul PSM I (Professional Scrum Master I) să reții formularea exactă: manifestul NU spune că procesele, documentația, contractele sau planurile nu contează — spune că, atunci când trebuie să alegi între cele două, elementul din stânga are prioritate mai mare. O echipă agilă tot semnează contracte și tot scrie documentație, dar nu lasă aceste lucruri să blocheze livrarea de valoare sau adaptarea la nevoile reale ale clientului.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "agile-manifesto-12-principii",
+    "md": "## Cele 12 principii din spatele Manifestului\n\nCele 4 valori sunt detaliate prin **12 principii**, care oferă îndrumări practice pentru echipe. Le poți grupa astfel pentru a le memora mai ușor:\n\n**Despre satisfacția clientului și livrare:**\n1. Prioritatea noastră este satisfacerea clientului prin livrarea timpurie și continuă de software valoros.\n2. Acceptăm schimbarea cerințelor, chiar și târziu în dezvoltare — Agile valorifică schimbarea în avantajul competitiv al clientului.\n3. Livrăm software funcțional frecvent, de la câteva săptămâni la câteva luni, cu preferință pentru intervalul cel mai scurt.\n\n**Despre colaborare și oameni:**\n4. Oamenii din business și dezvoltatorii trebuie să colaboreze zilnic pe tot parcursul proiectului.\n5. Construim proiecte în jurul unor indivizi motivați; le oferim mediul și sprijinul necesar și avem încredere că își vor face treaba.\n6. Cea mai eficientă metodă de a transmite informație este conversația față în față.\n\n**Despre calitate și ritm sustenabil:**\n7. Software-ul funcțional este principala măsură a progresului.\n8. Procesele agile promovează dezvoltarea sustenabilă — sponsorii, dezvoltatorii și utilizatorii ar trebui să poată menține un ritm constant, la nesfârșit.\n9. Atenția continuă la excelența tehnică și un design bun sporesc agilitatea.\n\n**Despre simplitate și îmbunătățire continuă:**\n10. Simplitatea — arta de a maximiza cantitatea de muncă nefăcută — este esențială.\n11. Cele mai bune arhitecturi, cerințe și design-uri apar din echipe auto-organizate.\n12. La intervale regulate, echipa reflectează asupra modului în care poate deveni mai eficientă și își ajustează comportamentul în consecință.\n\nAcest ultim principiu este fundația directă a evenimentului Scrum numit **Sprint Retrospective**, iar principiile 1-3 stau la baza conceptului de **Sprint** și livrare incrementală.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "agile-mindset-vs-cadru-scrum",
+    "md": "## Agile este un mindset, nu o metodologie\n\nO greșeală frecventă — inclusiv la examenul PSM I — este confundarea Agile cu Scrum sau cu orice alt cadru de lucru (framework). Agile **nu este** o metodologie cu pași fixați: este un set de valori și principii, o filozofie de lucru. Scrum, Kanban, Extreme Programming (XP) sau SAFe sunt **implementări concrete** care pun în practică aceste valori, fiecare cu propriile reguli, roluri și artefacte.\n\nScrum Guide (versiunea 2020, referință oficială pentru certificarea PSM I) nu citează literal Manifestul Agile, dar se bazează pe aceleași fundamente: empirism (transparență, inspecție, adaptare) și valorile Scrum (angajament, curaj, focalizare, deschidere, respect), care sunt, în esență, o extensie practică a celor 4 valori și 12 principii agile.\n\nÎn contextul unei companii românești care implementează, de exemplu, un sistem ERP sau dezvoltă o aplicație internă, a fi „agil” înseamnă a adopta acest mindset — indiferent dacă echipa folosește Scrum, Kanban sau o combinație (Scrumban). Un Scrum Master eficient nu impune reguli rigide de dragul procesului, ci verifică permanent dacă deciziile echipei sunt aliniate cu valorile și principiile Agile, iar nu doar cu litera unui cadru de lucru.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b3"
+   },
+   {
+    "type": "example",
+    "title": "Colaborare vs. negociere contractuală — implementare ERP",
+    "concept_key": "agile-manifesto-context-si-valori",
+    "md": "O firmă de consultanță IT din Cluj implementează un modul de facturare electronică pentru o companie de distribuție cu 200 de angajați. Contractul clasic ar prevedea o specificație fixă, semnată la început, cu penalizări pentru orice modificare ulterioară — o abordare tipică „negociere contractuală”.\n\nÎn schimb, echipa aplică valoarea **„colaborarea cu clientul mai mult decât negocierea contractuală”**: stabilesc un contract-cadru (buget și interval de timp), dar detaliile funcționale se clarifică incremental, în ședințe săptămânale cu reprezentantul departamentului financiar al clientului. După primele două sprinturi, clientul realizează că are nevoie și de integrare cu sistemul de emitere a facturilor conform e-Factura, cerință neprevăzută inițial.\n\nDeoarece contractul permite ajustarea Product Backlog-ului (nu doar execuția mecanică a unei specificații fixe), echipa poate include rapid această cerință în sprinturile următoare, fără litigii contractuale. Rezultatul: clientul primește un produs care rezolvă problema lui reală, nu doar ceea ce fusese estimat cu 6 luni înainte — exact ideea din spatele principiului 2 („acceptăm schimbarea cerințelor, chiar și târziu în dezvoltare”).",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b4"
+   },
+   {
+    "type": "example",
+    "title": "Software funcțional ca măsură a progresului",
+    "concept_key": "agile-manifesto-12-principii",
+    "md": "O echipă dintr-un startup din București dezvoltă o aplicație de gestiune a stocurilor pentru micile PFA-uri. Managementul obișnuia să ceară rapoarte de status stufoase (Gantt charts, documente de 30 de pagini) pentru a „dovedi” progresul.\n\nEchipa Scrum propune o schimbare aliniată cu principiul 7 („software-ul funcțional este principala măsură a progresului”): la finalul fiecărui Sprint de 2 săptămâni, organizează un **Sprint Review** în care demonstrează live funcționalitățile finalizate — de exemplu, modulul de scanare coduri de bare conectat la stocul real. Stakeholderii văd exact ce funcționează, oferă feedback imediat, iar orice neînțelegere despre cerințe iese la iveală în câteva minute, nu după luni de dezvoltare „pe hârtie”.\n\nAcest exemplu ilustrează și valoarea „software funcțional mai mult decât documentație exhaustivă”: echipa tot documentează (are un Product Backlog, note tehnice minime), dar nu produce documentație doar pentru a bifa un proces birocratic — documentația servește un scop clar, iar dovada reală a progresului este produsul care rulează.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b5"
+   },
+   {
+    "type": "warning",
+    "md": "**Capcane frecvente la examenul PSM I:** Agile nu înseamnă „fără documentație” și nu înseamnă „fără planificare”. Multe întrebări din examen testează exact această nuanță prin formulări de tip „echipa NU mai trebuie să...” — răspunsul corect aproape niciodată nu elimină complet un element (documentație, plan, contract), ci arată o schimbare de prioritate. De asemenea, rețin: cele 4 valori și cele 12 principii aparțin **Manifestului Agile**, nu Scrum Guide-ului — Scrum Guide-ul definește separat cele 5 valori Scrum (angajament, curaj, focalizare, deschidere, respect). Nu le confunda la examen.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "**Scenariu:** Ești Scrum Master într-o companie românească ce dezvoltă software de facturare. La mijlocul unui Sprint de 2 săptămâni, Product Owner-ul vine la echipă și spune că un client important a cerut o modificare urgentă a unui raport, modificare care nu era în Sprint Backlog. Un membru senior al echipei reacționează: „Nu putem schimba nimic acum, avem un plan de Sprint aprobat și trebuie să-l respectăm întocmai, altfel nu mai livrăm nimic la timp.”\n\n**Cerință:** Identifică (a) ce valoare/principiu Agile este ignorat de colegul senior și (b) cum ar trebui să intervii, ca Scrum Master, ținând cont și de regula Scrum conform căreia scopul Sprintului (Sprint Goal) nu se schimbă în timpul Sprintului.",
+    "solution_md": "**(a) Valoarea/principiul ignorat:** Colegul aplică rigid „urmărirea unui plan” în detrimentul valorii **„răspunsul la schimbare mai mult decât urmărirea unui plan”** și ignoră principiul 2 („acceptăm schimbarea cerințelor, chiar și târziu în dezvoltare”).\n\n**(b) Intervenția corectă ca Scrum Master:** Nu înseamnă că orice cerere se bagă automat în Sprintul curent — Scrum Guide protejează **Sprint Goal-ul**: acesta rămâne stabil, iar conținutul exact al Sprint Backlog-ului poate fi renegociat între Developeri și Product Owner dacă noua informație o cere. Pașii corecți: (1) verifici împreună cu Product Owner-ul dacă cererea pune în pericol Sprint Goal-ul; (2) dacă NU periclitează scopul, echipa poate negocia să înlocuiască un element de scop echivalent din Sprint Backlog cu noua cerință urgentă; (3) dacă cererea schimbă fundamental Sprint Goal-ul, soluția corectă este anularea Sprintului de către Product Owner (rar folosită) sau, mai frecvent, amânarea cererii pentru următorul Sprint Planning. În ambele cazuri, decizia rămâne flexibilă și centrată pe valoare livrată clientului, nu pe respectarea mecanică a unui plan fixat cu două săptămâni în urmă.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele NU este una dintre cele 4 valori ale Manifestului Agile?",
+    "choices": [
+     "Indivizii și interacțiunile mai mult decât procesele și instrumentele",
+     "Software-ul funcțional mai mult decât documentația exhaustivă",
+     "Respectarea strictă a bugetului mai mult decât satisfacția clientului",
+     "Răspunsul la schimbare mai mult decât urmărirea unui plan"
+    ],
+    "answer": 2,
+    "explain": "Cele 4 valori oficiale sunt: indivizi și interacțiuni > procese și instrumente; software funcțional > documentație exhaustivă; colaborare cu clientul > negociere contractuală; răspuns la schimbare > urmărirea unui plan. Bugetul nu apare ca element opus satisfacției clientului în niciuna dintre cele 4 valori.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform celor 12 principii Agile, care este metoda considerată cea mai eficientă și eficace de a transmite informație în cadrul și către o echipă de dezvoltare?",
+    "choices": [
+     "Documentația tehnică detaliată trimisă pe e-mail",
+     "Conversația față în față",
+     "Rapoartele de status săptămânale scrise",
+     "Ședințele formale cu proces-verbal semnat"
+    ],
+    "answer": 1,
+    "explain": "Principiul 6 afirmă explicit: „Cea mai eficientă și eficace metodă de a transmite informație către și în cadrul unei echipe de dezvoltare este conversația față în față.” Documentația și rapoartele au rolul lor, dar nu sunt considerate la fel de eficiente.",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când și unde a fost creat Manifestul Agile?",
+    "back": "În februarie 2001, la Snowbird, Utah (SUA), de către 17 dezvoltatori de software.",
+    "concept_key": "agile-manifesto-context-si-valori",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 valori ale Manifestului Agile?",
+    "back": "1) Indivizi și interacțiuni > procese și instrumente; 2) Software funcțional > documentație exhaustivă; 3) Colaborare cu clientul > negociere contractuală; 4) Răspuns la schimbare > urmărirea unui plan.",
+    "concept_key": "agile-manifesto-context-si-valori",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte principii detaliază Manifestul Agile?",
+    "back": "12 principii.",
+    "concept_key": "agile-manifesto-12-principii",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu Agile stă la baza evenimentului Scrum „Sprint Retrospective”?",
+    "back": "Principiul 12: la intervale regulate, echipa reflectează asupra modului de a deveni mai eficientă și își ajustează comportamentul în consecință.",
+    "concept_key": "agile-manifesto-12-principii",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Agile este o metodologie sau un mindset?",
+    "back": "Un mindset (set de valori și principii). Scrum, Kanban și XP sunt framework-uri/metodologii care implementează practic acest mindset.",
+    "concept_key": "agile-mindset-vs-cadru-scrum",
+    "blockId": "cmjjuxvuc006bumkpltmyvrbl-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1354,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwh900oaumkpoxwsd33f",
+ "courseId": "cmjjuxwfu00muumkpg2yfuclq",
+ "course": "Communication Skills pentru Profesioniști",
+ "module": "Prezentări cu Impact",
+ "lesson": "Quiz final comunicare",
+ "category": "SOFT_SKILLS",
+ "content": "Test de evaluare — Quiz final comunicare (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este rolul principal al introducerii într-o prezentare de business (primele 1-2 minute)?",
+     "choices": [
+      "Să capteze atenția publicului și să anunțe clar mesajul central al prezentării",
+      "Să prezinte în detaliu toate datele și cifrele care vor fi discutate ulterior",
+      "Să mulțumească organizatorilor și să facă prezentări individuale ale participanților",
+      "Să citească textual agenda de pe primul slide, punct cu punct"
+     ],
+     "answer": 0,
+     "explain": "O introducere eficientă captează atenția publicului (printr-o întrebare, o statistică sau o poveste scurtă) și comunică din start mesajul-cheie, astfel încât ascultătorii știu de la început ce vor afla și de ce contează pentru ei. Detaliile și cifrele au locul lor în cuprins, nu în deschidere.",
+     "concept_key": "introducere_prezentare"
+    },
+    {
+     "q": "Conform regulii 10-20-30 a lui Guy Kawasaki, des recomandată pentru prezentări de tip pitch, care este structura ideală?",
+     "choices": [
+      "10 slide-uri, 20 de minute de prezentare, font de minimum 30 puncte",
+      "10 minute introducere, 20 de slide-uri, 30 de întrebări din public",
+      "10 grafice, 20 de cuvinte pe slide, 30 de secunde per slide",
+      "10 participanți, 20 de sondaje, 30 de exemple practice"
+     ],
+     "answer": 0,
+     "explain": "Regula 10-20-30 recomandă maximum 10 slide-uri, o durată de prezentare de aproximativ 20 de minute (chiar dacă timpul alocat e mai mare, pentru a lăsa loc discuțiilor) și un font de minimum 30 de puncte, care obligă la simplificarea conținutului de pe fiecare slide.",
+     "concept_key": "regula_10_20_30"
+    },
+    {
+     "q": "Care dintre următoarele este o practică recomandată privind limbajul corporal în timpul unei prezentări?",
+     "choices": [
+      "Menținerea contactului vizual cu diferite zone ale sălii, pe rând, pentru a include tot publicul",
+      "Ținerea brațelor încrucișate pe piept pentru a transmite siguranță și autoritate",
+      "Citirea textului direct de pe slide-uri, cuvânt cu cuvânt, pentru acuratețe maximă",
+      "Evitarea completă a gesturilor, pentru a nu distrage atenția publicului de la mesaj"
+     ],
+     "answer": 0,
+     "explain": "Contactul vizual distribuit către diferite zone ale sălii face publicul să se simtă inclus și crește credibilitatea vorbitorului. Brațele încrucișate transmit închidere, nu autoritate; citirea de pe slide-uri reduce conexiunea cu publicul; gesturile naturale, folosite moderat, susțin mesajul în loc să distragă.",
+     "concept_key": "limbaj_corporal"
+    },
+    {
+     "q": "Care este o tehnică practică, recomandată pentru gestionarea tracului înainte de o prezentare importantă?",
+     "choices": [
+      "Exerciții de respirație controlată (ex. inspirație 4 secunde, expirație 6 secunde) combinate cu repetiția prezentării cu voce tare",
+      "Consumul unei cantități mari de cafea pentru a crește nivelul de energie și vigilență",
+      "Memorarea cuvânt cu cuvânt a întregului text al prezentării, fără nicio abatere",
+      "Evitarea oricărui contact cu publicul înainte de prezentare, pentru a reduce presiunea"
+     ],
+     "answer": 0,
+     "explain": "Respirația controlată reduce activarea sistemului nervos simpatic (responsabil de senzația de trac), iar repetiția cu voce tare crește încrederea prin familiaritate cu conținutul. Cofeina în exces poate amplifica anxietatea, memorarea rigidă crește riscul de blocaj, iar izolarea de public nu rezolvă cauza tracului.",
+     "concept_key": "gestionare_trac"
+    },
+    {
+     "q": "Într-o prezentare de tip storytelling aplicată la mediul de afaceri, care este structura recomandată a unei povești eficiente?",
+     "choices": [
+      "Situație inițială – provocare/conflict – rezolvare cu rezultat concret",
+      "Listă de fapte tehnice prezentate în ordine cronologică strictă, fără accent narativ",
+      "Descrierea detaliată a companiei, urmată de organigramă și apoi de concluzii",
+      "Prezentarea simultană a tuturor departamentelor implicate, fără un fir narativ central"
+     ],
+     "answer": 0,
+     "explain": "O poveste de business eficientă urmează structura clasică situație–provocare–rezolvare: se stabilește contextul, se descrie obstacolul întâmpinat (de exemplu, o firmă SRL care pierde clienți), apoi se prezintă soluția aplicată și rezultatul măsurabil. Această structură creează tensiune narativă și face mesajul memorabil, spre deosebire de o simplă listă de fapte.",
+     "concept_key": "storytelling_business"
+    },
+    {
+     "q": "Ce reprezintă conceptul de \"mesaj cheie\" (key message) într-o prezentare structurată?",
+     "choices": [
+      "O singură idee centrală, formulată clar, pe care publicul trebuie să și-o amintească după prezentare",
+      "Totalitatea informațiilor prezentate pe toate slide-urile, fără o ordine de prioritate",
+      "Un rezumat citit la finalul prezentării, care repetă integral conținutul anterior",
+      "Titlul primului slide, ales aleatoriu în funcție de subiectul general al ședinței"
+     ],
+     "answer": 0,
+     "explain": "Mesajul cheie este ideea centrală, unică, în jurul căreia se construiește întreaga prezentare — toate argumentele, datele și exemplele trebuie să o susțină. O prezentare cu prea multe mesaje concurente reduce impactul și claritatea, pentru că publicul nu mai reține prioritatea reală.",
+     "concept_key": "mesaj_cheie"
+    },
+    {
+     "q": "Un manager prezintă rezultate financiare unei echipe și primește o întrebare dificilă, ostilă, din partea unui coleg. Care este abordarea recomandată?",
+     "choices": [
+      "Reformulează întrebarea pe scurt, răspunde calm cu fapte și, dacă nu are răspunsul, promite o revenire cu detalii",
+      "Ignoră întrebarea și trece direct la următorul slide, pentru a păstra ritmul prezentării",
+      "Răspunde imediat cu o presupunere, chiar dacă nu este sigur de acuratețea informației",
+      "Devine defensiv și pune la îndoială motivele colegului de a adresa acea întrebare"
+     ],
+     "answer": 0,
+     "explain": "Reformularea întrebării arată că vorbitorul a înțeles-o corect și dă timp de gândire; răspunsul calm, bazat pe fapte, menține credibilitatea. Dacă răspunsul nu este cunoscut, este preferabil să se recunoască acest lucru și să se promită o revenire, decât să se ofere informații nesigure sau să se reacționeze defensiv, ceea ce ar afecta încrederea echipei.",
+     "concept_key": "intrebari_dificile"
+    },
+    {
+     "q": "Ce rol au pauzele (tăcerea intenționată) în vorbirea în public?",
+     "choices": [
+      "Subliniază ideile importante și oferă publicului timp să proceseze informația",
+      "Sunt un semn de nesiguranță și trebuie evitate complet în orice prezentare",
+      "Servesc exclusiv pentru ca vorbitorul să verifice notițele scrise pe hârtie",
+      "Trebuie folosite doar la finalul prezentării, niciodată în timpul acesteia"
+     ],
+     "answer": 0,
+     "explain": "Pauzele scurte, plasate strategic după o idee importantă sau o cifră relevantă, atrag atenția și oferă publicului timp să asimileze informația, crescând impactul mesajului. Folosite corect, pauzele transmit control și încredere, nu nesiguranță, și pot apărea oriunde pe parcursul prezentării.",
+     "concept_key": "pauze_voce"
+    },
+    {
+     "q": "Care este principala greșeală de design a slide-urilor care afectează impactul unei prezentări?",
+     "choices": [
+      "Includerea unui volum mare de text și a mai multor idei diferite pe același slide",
+      "Folosirea unui singur grafic relevant, însoțit de o cifră-cheie evidențiată clar",
+      "Utilizarea unui titlu scurt care rezumă concluzia principală a slide-ului respectiv",
+      "Alegerea unei palete de culori consistente pe parcursul întregii prezentări"
+     ],
+     "answer": 0,
+     "explain": "Un slide supraîncărcat cu text și idei multiple obligă publicul să aleagă între a citi și a asculta vorbitorul, ceea ce reduce reținerea mesajului. Bunele practici recomandă un singur mesaj sau grafic per slide, titluri formulate ca și concluzii, și o paletă de culori consistentă pentru claritate vizuală.",
+     "concept_key": "design_slide"
+    },
+    {
+     "q": "După o prezentare importantă susținută în fața conducerii unei companii, care este cea mai utilă practică pentru îmbunătățirea continuă a abilităților de prezentare?",
+     "choices": [
+      "Solicitarea de feedback specific (ce a funcționat, ce poate fi îmbunătățit) de la persoane de încredere din public",
+      "Evitarea oricărei discuții ulterioare despre prezentare, pentru a nu genera critici inutile",
+      "Repetarea exact a aceleiași structuri la toate prezentările viitoare, indiferent de context",
+      "Compararea propriei prestații exclusiv cu cea a colegilor, fără raportare la obiectivele proprii"
+     ],
+     "answer": 0,
+     "explain": "Feedback-ul specific și orientat spre acțiune, cerut de la colegi sau superiori de încredere, permite identificarea punctelor forte și a zonelor de îmbunătățit într-un mod concret și aplicabil. Evitarea feedback-ului sau repetarea rigidă a unei structuri, indiferent de public și context, blochează dezvoltarea reală a competențelor de prezentare.",
+     "concept_key": "feedback_prezentare"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

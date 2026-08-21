@@ -1,0 +1,155 @@
+{
+ "lessonId": "cmjjuxw1000b5umkp83na1dg2",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Situațiile Financiare Explicate",
+ "lesson": "Exercițiu - Analiza unui set complet",
+ "category": "FINANCE_OPS",
+ "content": "# Exercițiu - Analiza unui set complet\n\n## Cum citești un set complet de situații financiare\n\nUn set complet de situații financiare anuale, conform **OMFP 1802/2014**, cuprinde: **bilanțul** (poziția financiară la un moment dat), **contul de profit și pierdere** (performanța economică pe un exercițiu financiar), **situația modificărilor capitalului propriu**, **situația fluxurilor de trezorerie** și **notele explicative** — ultimele două fiind obligatorii doar pentru entitățile mijlocii și mari, potrivit criteriilor de mărime din reglementare.\n\nCând analizezi un asemenea set, parcurge trei pași, în această ordine:\n\n1. **Structura** — ce pondere are fiecare post în total? (ex.: cât din activele circulante sunt creanțe, cât din finanțare vine din datorii versus capitaluri proprii);\n2. **Evoluția** — cum s-au schimbat cifrele față de anul anterior sau față de un buget/țintă?\n3. **Indicatorii** — ce spun rapoartele de lichiditate, solvabilitate și rentabilitate despre sănătatea financiară a firmei, comparativ cu firme similare din același sector?\n\nAcest exercițiu îți arată exact acești trei pași, aplicați pe un set de situații financiare simplificat, cu cifre ilustrative.\n\n## Indicatori de lichiditate și solvabilitate\n\n**Lichiditatea curentă** măsoară dacă activele care se transformă în bani în maximum un an acoperă datoriile scadente în aceeași perioadă:\n\n> Lichiditate curentă = Active circulante / Datorii curente\n\nO valoare peste 1 înseamnă, în principiu, că firma își poate onora datoriile pe termen scurt; sub 1 semnalează un risc de lichiditate.\n\n**Lichiditatea imediată** (quick ratio) este mai conservatoare — elimină stocurile, care nu se transformă întotdeauna rapid în numerar:\n\n> Lichiditate imediată = (Active circulante − Stocuri) / Datorii curente\n\n**Rata solvabilității generale** arată de câte ori activele totale acoperă datoriile totale:\n\n> Solvabilitate generală = Total active / Total datorii\n\n**Gradul de îndatorare** compară finanțarea prin datorii cu cea prin capitaluri proprii:\n\n> Grad de îndatorare = Total datorii / Capitaluri proprii\n\nO valoare supraunitară arată o firmă finanțată predominant din datorii — nu e neapărat negativ, dar crește sensibilitatea la dobânzi și la capacitatea de rambursare.\n\n## Indicatori de rentabilitate și de gestiune a creanțelor\n\n**Marja EBIT** (rezultatul din exploatare raportat la cifra de afaceri) arată eficiența operațională, înainte de costurile de finanțare și de impozitare:\n\n> Marja EBIT = Rezultat din exploatare (EBIT) / Cifra de afaceri\n\n**Marja netă** arată cât rămâne, ca profit, din fiecare leu vândut, după toate cheltuielile:\n\n> Marja netă = Rezultat net / Cifra de afaceri\n\n**ROE (Return on Equity)** măsoară randamentul obținut de asociați/acționari la capitalul investit:\n\n> ROE = Rezultat net / Capitaluri proprii\n\n**ROA (Return on Assets)** măsoară cât profit generează firma din totalul activelor administrate:\n\n> ROA = Rezultat net / Total active\n\n**DSO (Days Sales Outstanding)** arată în câte zile, în medie, firma își încasează facturile de la clienți:\n\n> DSO = (Creanțe comerciale / Cifra de afaceri) × 365\n\nUn DSO în creștere de la un an la altul, la cifră de afaceri constantă, este un semnal de atenție: firma încasează tot mai greu, ceea ce pune presiune pe cash-flow chiar dacă profitul contabil arată bine.\n\n> Temei legal: OMFP 1802/2014 pct. 3-6 (structura situațiilor financiare anuale) (în vigoare de la 2015-01-01)\nOrdinul Ministrului Finanțelor Publice nr. 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate stabilește structura obligatorie a situațiilor financiare anuale în România: bilanț, cont de profit și pierdere și, pentru entitățile mijlocii și mari, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și notele explicative. Reglementarea se aplică începând cu situațiile financiare ale exercițiului financiar 2015 și este actualizată periodic prin ordine ulterioare ale Ministerului Finanțelor.\n\n## Exemplu: Bilanțul și contul de profit și pierdere ale ExemploTech SRL (exercițiul 2025)\n*Notă: ExemploTech SRL este o companie fictivă, folosită exclusiv pentru acest exercițiu; cifrele sunt exprimate în mii lei.*\n\n**Bilanț la 31.12.2025**\n\n| Post | Valoare (mii lei) |\n|---|---|\n| Active imobilizate (corporale + necorporale) | 850 |\n| Active circulante, din care: | 650 |\n| — Stocuri | 180 |\n| — Creanțe comerciale | 320 |\n| — Casă și conturi la bănci | 150 |\n| **Total active** | **1.500** |\n| Capitaluri proprii, din care: | 700 |\n| — Capital social | 200 |\n| — Rezultat reportat | 290 |\n| — Rezultatul exercițiului (profit net) | 210 |\n| Datorii pe termen lung (credit bancar) | 350 |\n| Datorii curente, din care: | 450 |\n| — Furnizori | 250 |\n| — Credite curente | 150 |\n| — Alte datorii (salarii, TVA de plată) | 50 |\n| **Total capitaluri + datorii** | **1.500** |\n\n**Cont de profit și pierdere — exercițiul 2025**\n\n| Post | Valoare (mii lei) |\n|---|---|\n| Cifra de afaceri | 2.400 |\n| Cheltuieli de exploatare, din care: | 2.060 |\n| — Materii prime/mărfuri | 1.200 |\n| — Cheltuieli cu personalul | 550 |\n| — Amortizare | 100 |\n| — Alte cheltuieli de exploatare | 210 |\n| **Rezultat din exploatare (EBIT)** | **340** |\n| Cheltuieli financiare (dobânzi) | 90 |\n| **Rezultat brut** | **250** |\n| Impozit pe profit (16%) | 40 |\n| **Rezultat net** | **210** |\n\nObservă că rezultatul net din contul de profit și pierdere (210) apare și în bilanț, la rândul „Rezultatul exercițiului” — cele două situații sunt legate direct: profitul unui an intră în capitalurile proprii ale bilanțului de la finalul aceluiași an.\n\n## Exemplu: Calculul și interpretarea indicatorilor pentru ExemploTech SRL\nPornind de la cifrele de mai sus, calculăm indicatorii cheie:\n\n**Lichiditate curentă** = 650 / 450 = **1,44** → firma are 1,44 lei în active circulante pentru fiecare leu de datorie curentă; peste pragul de 1, deci confortabil pe termen scurt.\n\n**Lichiditate imediată** = (650 − 180) / 450 = 470 / 450 = **1,04** → chiar fără a conta pe vânzarea stocurilor, firma își acoperă datoriile curente.\n\n**Solvabilitate generală** = 1.500 / 800 = **1,88** → activele totale acoperă de aproape două ori datoriile totale.\n\n**Grad de îndatorare** = 800 / 700 = **1,14** (114%) → datoriile depășesc ușor capitalurile proprii; nu e alarmant, dar merită urmărit dacă tendința e crescătoare de la un an la altul.\n\n**Marja EBIT** = 340 / 2.400 = **14,2%** → din fiecare 100 lei vânduți, 14,2 lei rămân ca profit din operare, înainte de dobânzi și impozit.\n\n**Marja netă** = 210 / 2.400 = **8,75%**.\n\n**ROE** = 210 / 700 = **30%** → un randament atractiv pentru asociați, dar parțial „umflat” de gradul de îndatorare (efect de levier financiar) — de aceea se citește mereu alături de ROA.\n\n**ROA** = 210 / 1.500 = **14%** → eficiența reală de utilizare a activelor, indiferent de cum sunt finanțate.\n\n**DSO** = (320 / 2.400) × 365 ≈ **49 zile** → în medie, ExemploTech SRL încasează o factură emisă unui client în aproape 7 săptămâni de la vânzare. Dacă termenul contractual de plată este de 30 de zile, un DSO de 49 arată întârzieri sistematice la încasare, cu impact direct asupra cash-flow-ului, chiar dacă profitul contabil arată bine.\n\n⚠ Cifrele folosite în exemplele și exercițiul de mai jos sunt **ipotetice**, construite special în scop didactic, pentru a-ți exersa calculul și interpretarea indicatorilor — nu provin din situațiile financiare publicate ale unei companii anume. Când analizezi o firmă reală, preia datele din situațiile financiare depuse la Ministerul Finanțelor Publice (portalul public de bilanțuri) sau, pentru companiile listate, din rapoartele publicate pe site-ul Bursei de Valori București, și interpretează întotdeauna un indicator în context: comparat cu anul anterior, cu bugetul și cu firme similare din același sector de activitate — niciodată izolat.\n\n## Exercițiu\n**Exercițiu — Distribuție Nord SRL**\n\nAi la dispoziție următoarele date, extrase (simplificat, în lei) din situațiile financiare ipotetice ale companiei Distribuție Nord SRL pentru exercițiul 2025:\n\n| Post | Valoare (lei) |\n|---|---|\n| Active circulante, din care: | 900.000 |\n| — Stocuri | 300.000 |\n| — Creanțe comerciale | 400.000 |\n| — Casă și conturi la bănci | 200.000 |\n| Total active | 2.000.000 |\n| Datorii curente | 600.000 |\n| Total datorii | 1.200.000 |\n| Capitaluri proprii | 800.000 |\n| Cifra de afaceri | 3.650.000 |\n| Rezultat net | 160.000 |\n\n**Cerințe:**\n\n1. Calculează lichiditatea curentă. Compania are un nivel confortabil de lichiditate?\n2. Calculează gradul de îndatorare. Cum este finanțată predominant firma?\n3. Calculează ROE. Cum se compară cu ROE-ul de 30% calculat pentru ExemploTech SRL?\n4. Calculează DSO. Dacă termenul de plată agreat cu clienții este de 30 de zile, care este concluzia ta?\n\n**Soluție:** **1. Lichiditate curentă** = 900.000 / 600.000 = **1,5** → firma are 1,5 lei în active circulante pentru fiecare leu de datorie curentă; nivel confortabil, peste pragul de 1.\n\n**2. Grad de îndatorare** = 1.200.000 / 800.000 = **1,5** (150%) → firma este finanțată mai mult din datorii (1,5 lei datorii la fiecare leu de capitaluri proprii) decât din surse proprii; merită analizat costul acestor datorii (dobânzi) și capacitatea de rambursare.\n\n**3. ROE** = 160.000 / 800.000 = **20%** → mai mic decât ROE-ul de 30% al ExemploTech SRL. Randamentul pentru asociați este bun, dar inferior; diferența poate veni fie dintr-o rentabilitate operațională mai mică, fie dintr-un levier financiar mai redus — pentru un răspuns complet ar trebui comparate și marjele și gradul de îndatorare ale celor două firme.\n\n**4. DSO** = (400.000 / 3.650.000) × 365 = **40 zile** → cu 10 zile peste termenul contractual de 30 de zile. Concluzie: Distribuție Nord SRL încasează, în medie, cu întârziere față de termenul agreat; este un semnal pentru a analiza procesul de urmărire a creanțelor (follow-up facturi, eventuale penalități de întârziere, politica de credit comercial acordată clienților).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "analiza-situatii-financiare-pas-cu-pas",
+    "md": "## Cum citești un set complet de situații financiare\n\nUn set complet de situații financiare anuale, conform **OMFP 1802/2014**, cuprinde: **bilanțul** (poziția financiară la un moment dat), **contul de profit și pierdere** (performanța economică pe un exercițiu financiar), **situația modificărilor capitalului propriu**, **situația fluxurilor de trezorerie** și **notele explicative** — ultimele două fiind obligatorii doar pentru entitățile mijlocii și mari, potrivit criteriilor de mărime din reglementare.\n\nCând analizezi un asemenea set, parcurge trei pași, în această ordine:\n\n1. **Structura** — ce pondere are fiecare post în total? (ex.: cât din activele circulante sunt creanțe, cât din finanțare vine din datorii versus capitaluri proprii);\n2. **Evoluția** — cum s-au schimbat cifrele față de anul anterior sau față de un buget/țintă?\n3. **Indicatorii** — ce spun rapoartele de lichiditate, solvabilitate și rentabilitate despre sănătatea financiară a firmei, comparativ cu firme similare din același sector?\n\nAcest exercițiu îți arată exact acești trei pași, aplicați pe un set de situații financiare simplificat, cu cifre ilustrative.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "indicatori-lichiditate-solvabilitate",
+    "md": "## Indicatori de lichiditate și solvabilitate\n\n**Lichiditatea curentă** măsoară dacă activele care se transformă în bani în maximum un an acoperă datoriile scadente în aceeași perioadă:\n\n> Lichiditate curentă = Active circulante / Datorii curente\n\nO valoare peste 1 înseamnă, în principiu, că firma își poate onora datoriile pe termen scurt; sub 1 semnalează un risc de lichiditate.\n\n**Lichiditatea imediată** (quick ratio) este mai conservatoare — elimină stocurile, care nu se transformă întotdeauna rapid în numerar:\n\n> Lichiditate imediată = (Active circulante − Stocuri) / Datorii curente\n\n**Rata solvabilității generale** arată de câte ori activele totale acoperă datoriile totale:\n\n> Solvabilitate generală = Total active / Total datorii\n\n**Gradul de îndatorare** compară finanțarea prin datorii cu cea prin capitaluri proprii:\n\n> Grad de îndatorare = Total datorii / Capitaluri proprii\n\nO valoare supraunitară arată o firmă finanțată predominant din datorii — nu e neapărat negativ, dar crește sensibilitatea la dobânzi și la capacitatea de rambursare.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "indicatori-rentabilitate-dso",
+    "md": "## Indicatori de rentabilitate și de gestiune a creanțelor\n\n**Marja EBIT** (rezultatul din exploatare raportat la cifra de afaceri) arată eficiența operațională, înainte de costurile de finanțare și de impozitare:\n\n> Marja EBIT = Rezultat din exploatare (EBIT) / Cifra de afaceri\n\n**Marja netă** arată cât rămâne, ca profit, din fiecare leu vândut, după toate cheltuielile:\n\n> Marja netă = Rezultat net / Cifra de afaceri\n\n**ROE (Return on Equity)** măsoară randamentul obținut de asociați/acționari la capitalul investit:\n\n> ROE = Rezultat net / Capitaluri proprii\n\n**ROA (Return on Assets)** măsoară cât profit generează firma din totalul activelor administrate:\n\n> ROA = Rezultat net / Total active\n\n**DSO (Days Sales Outstanding)** arată în câte zile, în medie, firma își încasează facturile de la clienți:\n\n> DSO = (Creanțe comerciale / Cifra de afaceri) × 365\n\nUn DSO în creștere de la un an la altul, la cifră de afaceri constantă, este un semnal de atenție: firma încasează tot mai greu, ceea ce pune presiune pe cash-flow chiar dacă profitul contabil arată bine.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "pct. 3-6 (structura situațiilor financiare anuale)",
+    "effective": "2015-01-01",
+    "md": "Ordinul Ministrului Finanțelor Publice nr. 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate stabilește structura obligatorie a situațiilor financiare anuale în România: bilanț, cont de profit și pierdere și, pentru entitățile mijlocii și mari, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și notele explicative. Reglementarea se aplică începând cu situațiile financiare ale exercițiului financiar 2015 și este actualizată periodic prin ordine ulterioare ale Ministerului Finanțelor.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b4"
+   },
+   {
+    "type": "example",
+    "title": "Bilanțul și contul de profit și pierdere ale ExemploTech SRL (exercițiul 2025)",
+    "concept_key": "exemplu-bilant-cpp-exemplotech",
+    "md": "*Notă: ExemploTech SRL este o companie fictivă, folosită exclusiv pentru acest exercițiu; cifrele sunt exprimate în mii lei.*\n\n**Bilanț la 31.12.2025**\n\n| Post | Valoare (mii lei) |\n|---|---|\n| Active imobilizate (corporale + necorporale) | 850 |\n| Active circulante, din care: | 650 |\n| — Stocuri | 180 |\n| — Creanțe comerciale | 320 |\n| — Casă și conturi la bănci | 150 |\n| **Total active** | **1.500** |\n| Capitaluri proprii, din care: | 700 |\n| — Capital social | 200 |\n| — Rezultat reportat | 290 |\n| — Rezultatul exercițiului (profit net) | 210 |\n| Datorii pe termen lung (credit bancar) | 350 |\n| Datorii curente, din care: | 450 |\n| — Furnizori | 250 |\n| — Credite curente | 150 |\n| — Alte datorii (salarii, TVA de plată) | 50 |\n| **Total capitaluri + datorii** | **1.500** |\n\n**Cont de profit și pierdere — exercițiul 2025**\n\n| Post | Valoare (mii lei) |\n|---|---|\n| Cifra de afaceri | 2.400 |\n| Cheltuieli de exploatare, din care: | 2.060 |\n| — Materii prime/mărfuri | 1.200 |\n| — Cheltuieli cu personalul | 550 |\n| — Amortizare | 100 |\n| — Alte cheltuieli de exploatare | 210 |\n| **Rezultat din exploatare (EBIT)** | **340** |\n| Cheltuieli financiare (dobânzi) | 90 |\n| **Rezultat brut** | **250** |\n| Impozit pe profit (16%) | 40 |\n| **Rezultat net** | **210** |\n\nObservă că rezultatul net din contul de profit și pierdere (210) apare și în bilanț, la rândul „Rezultatul exercițiului” — cele două situații sunt legate direct: profitul unui an intră în capitalurile proprii ale bilanțului de la finalul aceluiași an.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul și interpretarea indicatorilor pentru ExemploTech SRL",
+    "concept_key": "calcul-indicatori-exemplotech",
+    "md": "Pornind de la cifrele de mai sus, calculăm indicatorii cheie:\n\n**Lichiditate curentă** = 650 / 450 = **1,44** → firma are 1,44 lei în active circulante pentru fiecare leu de datorie curentă; peste pragul de 1, deci confortabil pe termen scurt.\n\n**Lichiditate imediată** = (650 − 180) / 450 = 470 / 450 = **1,04** → chiar fără a conta pe vânzarea stocurilor, firma își acoperă datoriile curente.\n\n**Solvabilitate generală** = 1.500 / 800 = **1,88** → activele totale acoperă de aproape două ori datoriile totale.\n\n**Grad de îndatorare** = 800 / 700 = **1,14** (114%) → datoriile depășesc ușor capitalurile proprii; nu e alarmant, dar merită urmărit dacă tendința e crescătoare de la un an la altul.\n\n**Marja EBIT** = 340 / 2.400 = **14,2%** → din fiecare 100 lei vânduți, 14,2 lei rămân ca profit din operare, înainte de dobânzi și impozit.\n\n**Marja netă** = 210 / 2.400 = **8,75%**.\n\n**ROE** = 210 / 700 = **30%** → un randament atractiv pentru asociați, dar parțial „umflat” de gradul de îndatorare (efect de levier financiar) — de aceea se citește mereu alături de ROA.\n\n**ROA** = 210 / 1.500 = **14%** → eficiența reală de utilizare a activelor, indiferent de cum sunt finanțate.\n\n**DSO** = (320 / 2.400) × 365 ≈ **49 zile** → în medie, ExemploTech SRL încasează o factură emisă unui client în aproape 7 săptămâni de la vânzare. Dacă termenul contractual de plată este de 30 de zile, un DSO de 49 arată întârzieri sistematice la încasare, cu impact direct asupra cash-flow-ului, chiar dacă profitul contabil arată bine.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cifrele folosite în exemplele și exercițiul de mai jos sunt **ipotetice**, construite special în scop didactic, pentru a-ți exersa calculul și interpretarea indicatorilor — nu provin din situațiile financiare publicate ale unei companii anume. Când analizezi o firmă reală, preia datele din situațiile financiare depuse la Ministerul Finanțelor Publice (portalul public de bilanțuri) sau, pentru companiile listate, din rapoartele publicate pe site-ul Bursei de Valori București, și interpretează întotdeauna un indicator în context: comparat cu anul anterior, cu bugetul și cu firme similare din același sector de activitate — niciodată izolat.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Exercițiu — Distribuție Nord SRL**\n\nAi la dispoziție următoarele date, extrase (simplificat, în lei) din situațiile financiare ipotetice ale companiei Distribuție Nord SRL pentru exercițiul 2025:\n\n| Post | Valoare (lei) |\n|---|---|\n| Active circulante, din care: | 900.000 |\n| — Stocuri | 300.000 |\n| — Creanțe comerciale | 400.000 |\n| — Casă și conturi la bănci | 200.000 |\n| Total active | 2.000.000 |\n| Datorii curente | 600.000 |\n| Total datorii | 1.200.000 |\n| Capitaluri proprii | 800.000 |\n| Cifra de afaceri | 3.650.000 |\n| Rezultat net | 160.000 |\n\n**Cerințe:**\n\n1. Calculează lichiditatea curentă. Compania are un nivel confortabil de lichiditate?\n2. Calculează gradul de îndatorare. Cum este finanțată predominant firma?\n3. Calculează ROE. Cum se compară cu ROE-ul de 30% calculat pentru ExemploTech SRL?\n4. Calculează DSO. Dacă termenul de plată agreat cu clienții este de 30 de zile, care este concluzia ta?",
+    "solution_md": "**1. Lichiditate curentă** = 900.000 / 600.000 = **1,5** → firma are 1,5 lei în active circulante pentru fiecare leu de datorie curentă; nivel confortabil, peste pragul de 1.\n\n**2. Grad de îndatorare** = 1.200.000 / 800.000 = **1,5** (150%) → firma este finanțată mai mult din datorii (1,5 lei datorii la fiecare leu de capitaluri proprii) decât din surse proprii; merită analizat costul acestor datorii (dobânzi) și capacitatea de rambursare.\n\n**3. ROE** = 160.000 / 800.000 = **20%** → mai mic decât ROE-ul de 30% al ExemploTech SRL. Randamentul pentru asociați este bun, dar inferior; diferența poate veni fie dintr-o rentabilitate operațională mai mică, fie dintr-un levier financiar mai redus — pentru un răspuns complet ar trebui comparate și marjele și gradul de îndatorare ale celor două firme.\n\n**4. DSO** = (400.000 / 3.650.000) × 365 = **40 zile** → cu 10 zile peste termenul contractual de 30 de zile. Concluzie: Distribuție Nord SRL încasează, în medie, cu întârziere față de termenul agreat; este un semnal pentru a analiza procesul de urmărire a creanțelor (follow-up facturi, eventuale penalități de întârziere, politica de credit comercial acordată clienților).",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula ratei de lichiditate curentă?",
+    "choices": [
+     "Active circulante / Datorii curente",
+     "Active circulante / Total active",
+     "Capitaluri proprii / Total datorii",
+     "Rezultat net / Cifra de afaceri"
+    ],
+    "answer": 0,
+    "explain": "Lichiditatea curentă compară activele care se transformă în bani în maximum un an cu datoriile scadente în aceeași perioadă: Active circulante / Datorii curente.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Pentru ExemploTech SRL (active circulante 650 mii lei, datorii curente 450 mii lei), cât este lichiditatea curentă?",
+    "choices": [
+     "0,69",
+     "1,44",
+     "1,88",
+     "2,00"
+    ],
+    "answer": 1,
+    "explain": "650 / 450 = 1,44 — firma are 1,44 lei în active circulante pentru fiecare leu de datorie curentă.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Dacă DSO-ul unei firme crește de la un an la altul, la cifră de afaceri constantă, ce indică cel mai probabil acest lucru?",
+    "choices": [
+     "Firma încasează mai greu creanțele de la clienți, cu presiune asupra cash-flow-ului",
+     "Firma a redus stocurile",
+     "Firma a crescut capitalul social",
+     "Firma a plătit mai repede furnizorii"
+    ],
+    "answer": 0,
+    "explain": "Un DSO în creștere, la vânzări constante, arată că timpul mediu de încasare a facturilor se prelungește, reducând lichiditățile disponibile chiar dacă profitul contabil rămâne neschimbat.",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă rata de lichiditate curentă și cum se calculează?",
+    "back": "Active circulante / Datorii curente — arată capacitatea firmei de a-și achita datoriile pe termen scurt din activele care se transformă în lichidități în maximum un an.",
+    "concept_key": "lichiditate-curenta",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Formula DSO (Days Sales Outstanding)",
+    "back": "DSO = (Creanțe comerciale / Cifra de afaceri) × 365 — numărul mediu de zile în care firma își încasează facturile de la clienți.",
+    "concept_key": "dso-formula",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce arată indicatorul ROE (Return on Equity)?",
+    "back": "ROE = Rezultat net / Capitaluri proprii — randamentul obținut de asociați/acționari la capitalul investit în firmă.",
+    "concept_key": "roe-formula",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din ce se compune un set complet de situații financiare conform OMFP 1802/2014?",
+    "back": "Bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și note explicative (ultimele două obligatorii doar pentru entitățile mijlocii și mari).",
+    "concept_key": "structura-situatii-financiare",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce indică un grad de îndatorare (Datorii totale/Capitaluri proprii) supraunitar?",
+    "back": "Firma este finanțată mai mult din datorii decât din capitaluri proprii — risc financiar mai ridicat, dependent de nivelul dobânzilor și de capacitatea de rambursare.",
+    "concept_key": "grad-indatorare",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota impozitului pe profit în România în 2026?",
+    "back": "16%, cotă neschimbată față de anii anteriori.",
+    "concept_key": "impozit-profit-cota-2026",
+    "blockId": "cmjjuxw1000b5umkp83na1dg2-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1371,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,139 @@
+{
+ "lessonId": "cmjjuxvqs003zumkpupjw65x9",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "UserForms și Interfețe",
+ "lesson": "Creare UserForm",
+ "category": "EXCEL_VBA",
+ "content": "# Creare UserForm\n\n## Ce este un UserForm?\n\nUn **UserForm** este o fereastră de dialog personalizată, construită de tine în VBA Editor (VBE), care permite colectarea de date de la utilizator, afișarea de informații sau ghidarea unui flux de lucru direct din Excel. Spre deosebire de InputBox sau MsgBox, care sunt limitate la o singură valoare sau un mesaj simplu, un UserForm combină mai multe controale — casete de text, butoane, liste, casete de bifat — într-o singură interfață, similar unei aplicații desktop.\n\nÎn activitatea de zi cu zi din contabilitate și operațiuni, UserForms se folosesc frecvent pentru:\n\n- Introducerea structurată a datelor (adăugare client, factură, produs, angajat) fără ca utilizatorul să scrie direct în celule.\n- Validarea datelor înainte ca acestea să fie salvate în foaia de calcul.\n- Ferestre de configurare pentru un raport sau un macro (ex: alegerea perioadei, a departamentului).\n- Confirmări sau avertizări mai elaborate decât un MsgBox simplu.\n\nUn UserForm este un obiect separat, vizibil în Project Explorer sub folderul **Forms**, și este afișat peste fereastra Excel atunci când codul apelează metoda `.Show`.\n\n## Cum inserezi un UserForm nou\n\nPentru a crea un UserForm, urmează acești pași în VBA Editor:\n\n1. Deschide VBE cu **Alt+F11** din Excel.\n2. În Project Explorer, click dreapta pe numele proiectului (ex: `VBAProject (NumeFisier.xlsm)`) și alege **Insert > UserForm**. Poți face același lucru din meniul Insert al VBE.\n3. Apare un formular gol, împreună cu **Toolbox**-ul (paleta de controale) și fereastra **Properties** (dacă nu e vizibilă, apasă **F4**).\n4. Redenumește formularul imediat, din fereastra Properties, proprietatea `(Name)` — de exemplu `frmClient`. Prefixul `frm` este o convenție utilă pentru a recunoaște rapid tipul obiectului în cod.\n5. Adaugă controale trăgându-le din Toolbox pe suprafața formularului.\n\nEste important să redenumești fiecare control **înainte** de a scrie codul din spatele lui, pentru că referințele din cod folosesc proprietatea `(Name)`, nu `Caption`. Dacă redenumești un control după ce ai scris deja cod care îl referențiază, trebuie să actualizezi manual referințele.\n\nPentru a rula formularul, poți apăsa **F5** din VBE (dacă formularul este activ) sau poți scrie o procedură separată, într-un modul standard, care apelează `frmClient.Show`.\n\n## Proprietățile principale ale UserForm\n\nFereastra Properties (F4) îți permite să configurezi vizual comportamentul și aspectul formularului, fără cod. Cele mai folosite proprietăți sunt:\n\n- **(Name)** — identificatorul folosit în cod (ex: `frmClient`). Nu conține spații.\n- **Caption** — textul afișat în bara de titlu a ferestrei (ex: „Adăugare client nou”).\n- **Width / Height** — dimensiunile formularului, în puncte.\n- **BackColor** — culoarea de fundal.\n- **StartUpPosition** — poziția la afișare: 0-Manual, 1-CenterOwner, 2-CenterScreen (recomandat), 3-WindowsDefault.\n- **Font** — fontul implicit pentru controalele adăugate ulterior.\n- **ShowModal** — dacă este True (implicit), utilizatorul nu poate interacționa cu Excel cât timp formularul este deschis.\n\nToate aceste proprietăți pot fi și citite/setate din cod, la runtime:\n\n```vba\nfrmClient.Caption = \"Client nr. \" & urmatorulID\nfrmClient.StartUpPosition = 2\n```\n\nUn `StartUpPosition = 2` (centrat pe ecran) și un `Caption` descriptiv fac formularul să pară profesional din prima interacțiune cu utilizatorul.\n\n## Controalele standard din Toolbox\n\nToolbox-ul conține controalele pe care le poți plasa pe formular. Cele mai folosite sunt:\n\n- **Label** — text static, needitabil (ex: eticheta „Nume client:”). Proprietate cheie: `Caption`.\n- **TextBox** — casetă unde utilizatorul introduce text sau numere. Proprietate cheie: `Text` (sau `Value`).\n- **CommandButton** — buton pe care utilizatorul îl apasă pentru a declanșa o acțiune. Proprietate cheie: `Caption`; evenimentul cel mai folosit este `Click`.\n- **ComboBox** — listă derulantă cu o singură selecție, editabilă sau nu. Se populează cu `AddItem`; proprietate cheie: `Value`.\n- **ListBox** — listă cu una sau mai multe selecții vizibile simultan.\n- **CheckBox** — casetă de bifat pentru opțiuni Da/Nu. Proprietate cheie: `Value` (True/False).\n- **OptionButton** — buton radio, folosit în grupuri (de obicei într-un `Frame`) pentru selecție exclusivă.\n- **Frame** — container vizual pentru gruparea logică a altor controale.\n- **SpinButton / ScrollBar** — pentru incrementare/decrementare numerică.\n\nConvenția de denumire cu prefix pe tipul controlului (`lbl`, `txt`, `cmd`, `cbo`, `lst`, `chk`, `opt`, `fra`) face codul mult mai lizibil: `txtNume`, `cmdSalveaza`, `cboLuna`. Nu este obligatorie pentru ca VBA să funcționeze, dar reduce erorile atunci când revii peste cod după câteva luni.\n\n## Afișarea formularului: Show și modul modal\n\nUn UserForm nu apare automat — trebuie afișat explicit din cod, de obicei dintr-o procedură dintr-un modul standard:\n\n```vba\nSub DeschideFormular()\n    frmClient.Show\nEnd Sub\n```\n\nImplicit, `.Show` afișează formularul **modal** (echivalent cu `frmClient.Show vbModal`): utilizatorul nu poate reveni în Excel până nu închide formularul. Poți afișa un formular **nemodal** cu `frmClient.Show vbModeless`, caz în care utilizatorul poate comuta liber între formular și foaia de calcul.\n\nPentru a închide formularul ai două opțiuni cu efecte diferite: `Unload Me` elimină formularul din memorie (valorile controalelor se pierd), iar `Me.Hide` doar îl ascunde, păstrând valorile controalelor pentru a fi citite ulterior din cod.\n\n## Exemplu: Formular de confirmare cu nume și butoane OK/Anulează\nCreează un UserForm numit `frmConfirmare` cu:\n\n- `lblMesaj` (Label, Caption „Introduceți numele:”)\n- `txtNume` (TextBox)\n- `cmdOK` (CommandButton, Caption „OK”)\n- `cmdAnuleaza` (CommandButton, Caption „Anulează”)\n\nCodul din spatele formularului (dublu-click pe fiecare buton pentru a genera automat conturul procedurii):\n\n```vba\nPrivate Sub cmdOK_Click()\n    If Trim(txtNume.Text) = \"\" Then\n        MsgBox \"Te rog introdu un nume.\", vbExclamation\n        Exit Sub\n    End If\n    MsgBox \"Salut, \" & txtNume.Text & \"!\", vbInformation\n    Unload Me\nEnd Sub\n\nPrivate Sub cmdAnuleaza_Click()\n    Unload Me\nEnd Sub\n```\n\nÎntr-un modul standard, adaugi procedura care afișează formularul:\n\n```vba\nSub AfiseazaConfirmare()\n    frmConfirmare.Show\nEnd Sub\n```\n\nRulează `AfiseazaConfirmare` cu F5. Dacă lași câmpul `txtNume` gol și apeși OK, apare avertizarea; dacă introduci un nume, primești mesajul de salut și formularul se închide.\n\n## Exemplu: ComboBox populat automat la deschiderea formularului\nCreează un UserForm `frmSelecteazaLuna` cu un `ComboBox` numit `cboLuna` și un buton `cmdSelecteaza` (Caption „Selectează”). Vrei ca lista de luni să fie generată automat când formularul se deschide, nu introdusă manual din Properties.\n\nFolosește evenimentul `UserForm_Initialize`, care rulează automat imediat înainte ca formularul să devină vizibil:\n\n```vba\nPrivate Sub UserForm_Initialize()\n    Dim i As Integer\n    Dim numeLuni As Variant\n    numeLuni = Array(\"Ianuarie\", \"Februarie\", \"Martie\", \"Aprilie\", \"Mai\", \"Iunie\", _\n                      \"Iulie\", \"August\", \"Septembrie\", \"Octombrie\", \"Noiembrie\", \"Decembrie\")\n    For i = LBound(numeLuni) To UBound(numeLuni)\n        cboLuna.AddItem numeLuni(i)\n    Next i\n    cboLuna.ListIndex = 0 ' prima lună selectată implicit\nEnd Sub\n\nPrivate Sub cmdSelecteaza_Click()\n    If cboLuna.ListIndex = -1 Then\n        MsgBox \"Selectează o lună.\", vbExclamation\n        Exit Sub\n    End If\n    ActiveCell.Value = cboLuna.Value\n    Unload Me\nEnd Sub\n```\n\nLa deschidere, `cboLuna` apare deja completat cu cele 12 luni, iar la apăsarea butonului, luna selectată este scrisă în celula activă.\n\n⚠ Atenție la două capcane frecvente când lucrezi cu UserForms:\n\n1. **Redenumește controalele înainte de a scrie cod.** Dacă scrii `cmdOK_Click` și apoi redenumești butonul, VBA nu actualizează automat referința — trebuie să redenumești manual și procedura, altfel codul rămâne „orfan” și nu mai este apelat la click.\n2. **Utilizatorul poate închide formularul din X-ul din colțul din dreapta sus**, ocolind complet butoanele OK/Anulează. Acest lucru declanșează evenimentul `QueryClose`, nu `Click`. Dacă ai cod critic care trebuie să ruleze la închidere (ex: validare sau salvare obligatorie), tratează-l în `Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)`, nu doar în evenimentele butoanelor.\n\nÎn plus, pentru ca orice macro (inclusiv codul din spatele unui UserForm) să ruleze, fișierul trebuie salvat ca `.xlsm`, iar utilizatorul trebuie să activeze macro-urile din Trust Center la deschidere.\n\n## Exercițiu\nCreează un UserForm numit `frmClient` pentru înregistrarea rapidă a unui client nou, cu următoarele controale:\n\n- `txtNume` (TextBox) — numele clientului\n- `txtCUI` (TextBox) — codul unic de identificare fiscală\n- `txtEmail` (TextBox) — adresa de email\n- `cmdSalveaza` (CommandButton, Caption „Salvează”) — scrie datele pe primul rând liber din Sheet1 (coloanele A, B, C) și golește câmpurile pentru o nouă înregistrare\n- `cmdInchide` (CommandButton, Caption „Închide”) — închide formularul\n\nScrie codul din spatele celor două butoane. Bonus: validează că `txtNume` și `txtCUI` nu sunt goale înainte de salvare.\n\n**Soluție:** ```vba\nPrivate Sub cmdSalveaza_Click()\n    Dim ws As Worksheet\n    Dim urmatorulRand As Long\n\n    If Trim(txtNume.Text) = \"\" Or Trim(txtCUI.Text) = \"\" Then\n        MsgBox \"Numele și CUI-ul sunt obligatorii.\", vbExclamation\n        Exit Sub\n    End If\n\n    Set ws = ThisWorkbook.Sheets(\"Sheet1\")\n    urmatorulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1\n\n    ws.Cells(urmatorulRand, 1).Value = txtNume.Text\n    ws.Cells(urmatorulRand, 2).Value = txtCUI.Text\n    ws.Cells(urmatorulRand, 3).Value = txtEmail.Text\n\n    MsgBox \"Client salvat cu succes.\", vbInformation\n\n    txtNume.Text = \"\"\n    txtCUI.Text = \"\"\n    txtEmail.Text = \"\"\n    txtNume.SetFocus\nEnd Sub\n\nPrivate Sub cmdInchide_Click()\n    Unload Me\nEnd Sub\n```\n\nObservă folosirea lui `ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1` — tehnica standard pentru a găsi primul rând liber, indiferent câte rânduri de date există deja.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "userform-definitie",
+    "md": "## Ce este un UserForm?\n\nUn **UserForm** este o fereastră de dialog personalizată, construită de tine în VBA Editor (VBE), care permite colectarea de date de la utilizator, afișarea de informații sau ghidarea unui flux de lucru direct din Excel. Spre deosebire de InputBox sau MsgBox, care sunt limitate la o singură valoare sau un mesaj simplu, un UserForm combină mai multe controale — casete de text, butoane, liste, casete de bifat — într-o singură interfață, similar unei aplicații desktop.\n\nÎn activitatea de zi cu zi din contabilitate și operațiuni, UserForms se folosesc frecvent pentru:\n\n- Introducerea structurată a datelor (adăugare client, factură, produs, angajat) fără ca utilizatorul să scrie direct în celule.\n- Validarea datelor înainte ca acestea să fie salvate în foaia de calcul.\n- Ferestre de configurare pentru un raport sau un macro (ex: alegerea perioadei, a departamentului).\n- Confirmări sau avertizări mai elaborate decât un MsgBox simplu.\n\nUn UserForm este un obiect separat, vizibil în Project Explorer sub folderul **Forms**, și este afișat peste fereastra Excel atunci când codul apelează metoda `.Show`.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "userform-inserare-vbe",
+    "md": "## Cum inserezi un UserForm nou\n\nPentru a crea un UserForm, urmează acești pași în VBA Editor:\n\n1. Deschide VBE cu **Alt+F11** din Excel.\n2. În Project Explorer, click dreapta pe numele proiectului (ex: `VBAProject (NumeFisier.xlsm)`) și alege **Insert > UserForm**. Poți face același lucru din meniul Insert al VBE.\n3. Apare un formular gol, împreună cu **Toolbox**-ul (paleta de controale) și fereastra **Properties** (dacă nu e vizibilă, apasă **F4**).\n4. Redenumește formularul imediat, din fereastra Properties, proprietatea `(Name)` — de exemplu `frmClient`. Prefixul `frm` este o convenție utilă pentru a recunoaște rapid tipul obiectului în cod.\n5. Adaugă controale trăgându-le din Toolbox pe suprafața formularului.\n\nEste important să redenumești fiecare control **înainte** de a scrie codul din spatele lui, pentru că referințele din cod folosesc proprietatea `(Name)`, nu `Caption`. Dacă redenumești un control după ce ai scris deja cod care îl referențiază, trebuie să actualizezi manual referințele.\n\nPentru a rula formularul, poți apăsa **F5** din VBE (dacă formularul este activ) sau poți scrie o procedură separată, într-un modul standard, care apelează `frmClient.Show`.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "userform-proprietati-principale",
+    "md": "## Proprietățile principale ale UserForm\n\nFereastra Properties (F4) îți permite să configurezi vizual comportamentul și aspectul formularului, fără cod. Cele mai folosite proprietăți sunt:\n\n- **(Name)** — identificatorul folosit în cod (ex: `frmClient`). Nu conține spații.\n- **Caption** — textul afișat în bara de titlu a ferestrei (ex: „Adăugare client nou”).\n- **Width / Height** — dimensiunile formularului, în puncte.\n- **BackColor** — culoarea de fundal.\n- **StartUpPosition** — poziția la afișare: 0-Manual, 1-CenterOwner, 2-CenterScreen (recomandat), 3-WindowsDefault.\n- **Font** — fontul implicit pentru controalele adăugate ulterior.\n- **ShowModal** — dacă este True (implicit), utilizatorul nu poate interacționa cu Excel cât timp formularul este deschis.\n\nToate aceste proprietăți pot fi și citite/setate din cod, la runtime:\n\n```vba\nfrmClient.Caption = \"Client nr. \" & urmatorulID\nfrmClient.StartUpPosition = 2\n```\n\nUn `StartUpPosition = 2` (centrat pe ecran) și un `Caption` descriptiv fac formularul să pară profesional din prima interacțiune cu utilizatorul.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "toolbox-controale-standard",
+    "md": "## Controalele standard din Toolbox\n\nToolbox-ul conține controalele pe care le poți plasa pe formular. Cele mai folosite sunt:\n\n- **Label** — text static, needitabil (ex: eticheta „Nume client:”). Proprietate cheie: `Caption`.\n- **TextBox** — casetă unde utilizatorul introduce text sau numere. Proprietate cheie: `Text` (sau `Value`).\n- **CommandButton** — buton pe care utilizatorul îl apasă pentru a declanșa o acțiune. Proprietate cheie: `Caption`; evenimentul cel mai folosit este `Click`.\n- **ComboBox** — listă derulantă cu o singură selecție, editabilă sau nu. Se populează cu `AddItem`; proprietate cheie: `Value`.\n- **ListBox** — listă cu una sau mai multe selecții vizibile simultan.\n- **CheckBox** — casetă de bifat pentru opțiuni Da/Nu. Proprietate cheie: `Value` (True/False).\n- **OptionButton** — buton radio, folosit în grupuri (de obicei într-un `Frame`) pentru selecție exclusivă.\n- **Frame** — container vizual pentru gruparea logică a altor controale.\n- **SpinButton / ScrollBar** — pentru incrementare/decrementare numerică.\n\nConvenția de denumire cu prefix pe tipul controlului (`lbl`, `txt`, `cmd`, `cbo`, `lst`, `chk`, `opt`, `fra`) face codul mult mai lizibil: `txtNume`, `cmdSalveaza`, `cboLuna`. Nu este obligatorie pentru ca VBA să funcționeze, dar reduce erorile atunci când revii peste cod după câteva luni.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "userform-afisare-show-modal",
+    "md": "## Afișarea formularului: Show și modul modal\n\nUn UserForm nu apare automat — trebuie afișat explicit din cod, de obicei dintr-o procedură dintr-un modul standard:\n\n```vba\nSub DeschideFormular()\n    frmClient.Show\nEnd Sub\n```\n\nImplicit, `.Show` afișează formularul **modal** (echivalent cu `frmClient.Show vbModal`): utilizatorul nu poate reveni în Excel până nu închide formularul. Poți afișa un formular **nemodal** cu `frmClient.Show vbModeless`, caz în care utilizatorul poate comuta liber între formular și foaia de calcul.\n\nPentru a închide formularul ai două opțiuni cu efecte diferite: `Unload Me` elimină formularul din memorie (valorile controalelor se pierd), iar `Me.Hide` doar îl ascunde, păstrând valorile controalelor pentru a fi citite ulterior din cod.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b5"
+   },
+   {
+    "type": "example",
+    "title": "Formular de confirmare cu nume și butoane OK/Anulează",
+    "concept_key": "userform-exemplu-confirmare",
+    "md": "Creează un UserForm numit `frmConfirmare` cu:\n\n- `lblMesaj` (Label, Caption „Introduceți numele:”)\n- `txtNume` (TextBox)\n- `cmdOK` (CommandButton, Caption „OK”)\n- `cmdAnuleaza` (CommandButton, Caption „Anulează”)\n\nCodul din spatele formularului (dublu-click pe fiecare buton pentru a genera automat conturul procedurii):\n\n```vba\nPrivate Sub cmdOK_Click()\n    If Trim(txtNume.Text) = \"\" Then\n        MsgBox \"Te rog introdu un nume.\", vbExclamation\n        Exit Sub\n    End If\n    MsgBox \"Salut, \" & txtNume.Text & \"!\", vbInformation\n    Unload Me\nEnd Sub\n\nPrivate Sub cmdAnuleaza_Click()\n    Unload Me\nEnd Sub\n```\n\nÎntr-un modul standard, adaugi procedura care afișează formularul:\n\n```vba\nSub AfiseazaConfirmare()\n    frmConfirmare.Show\nEnd Sub\n```\n\nRulează `AfiseazaConfirmare` cu F5. Dacă lași câmpul `txtNume` gol și apeși OK, apare avertizarea; dacă introduci un nume, primești mesajul de salut și formularul se închide.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b6"
+   },
+   {
+    "type": "example",
+    "title": "ComboBox populat automat la deschiderea formularului",
+    "concept_key": "userform-exemplu-combobox",
+    "md": "Creează un UserForm `frmSelecteazaLuna` cu un `ComboBox` numit `cboLuna` și un buton `cmdSelecteaza` (Caption „Selectează”). Vrei ca lista de luni să fie generată automat când formularul se deschide, nu introdusă manual din Properties.\n\nFolosește evenimentul `UserForm_Initialize`, care rulează automat imediat înainte ca formularul să devină vizibil:\n\n```vba\nPrivate Sub UserForm_Initialize()\n    Dim i As Integer\n    Dim numeLuni As Variant\n    numeLuni = Array(\"Ianuarie\", \"Februarie\", \"Martie\", \"Aprilie\", \"Mai\", \"Iunie\", _\n                      \"Iulie\", \"August\", \"Septembrie\", \"Octombrie\", \"Noiembrie\", \"Decembrie\")\n    For i = LBound(numeLuni) To UBound(numeLuni)\n        cboLuna.AddItem numeLuni(i)\n    Next i\n    cboLuna.ListIndex = 0 ' prima lună selectată implicit\nEnd Sub\n\nPrivate Sub cmdSelecteaza_Click()\n    If cboLuna.ListIndex = -1 Then\n        MsgBox \"Selectează o lună.\", vbExclamation\n        Exit Sub\n    End If\n    ActiveCell.Value = cboLuna.Value\n    Unload Me\nEnd Sub\n```\n\nLa deschidere, `cboLuna` apare deja completat cu cele 12 luni, iar la apăsarea butonului, luna selectată este scrisă în celula activă.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la două capcane frecvente când lucrezi cu UserForms:\n\n1. **Redenumește controalele înainte de a scrie cod.** Dacă scrii `cmdOK_Click` și apoi redenumești butonul, VBA nu actualizează automat referința — trebuie să redenumești manual și procedura, altfel codul rămâne „orfan” și nu mai este apelat la click.\n2. **Utilizatorul poate închide formularul din X-ul din colțul din dreapta sus**, ocolind complet butoanele OK/Anulează. Acest lucru declanșează evenimentul `QueryClose`, nu `Click`. Dacă ai cod critic care trebuie să ruleze la închidere (ex: validare sau salvare obligatorie), tratează-l în `Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)`, nu doar în evenimentele butoanelor.\n\nÎn plus, pentru ca orice macro (inclusiv codul din spatele unui UserForm) să ruleze, fișierul trebuie salvat ca `.xlsm`, iar utilizatorul trebuie să activeze macro-urile din Trust Center la deschidere.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Creează un UserForm numit `frmClient` pentru înregistrarea rapidă a unui client nou, cu următoarele controale:\n\n- `txtNume` (TextBox) — numele clientului\n- `txtCUI` (TextBox) — codul unic de identificare fiscală\n- `txtEmail` (TextBox) — adresa de email\n- `cmdSalveaza` (CommandButton, Caption „Salvează”) — scrie datele pe primul rând liber din Sheet1 (coloanele A, B, C) și golește câmpurile pentru o nouă înregistrare\n- `cmdInchide` (CommandButton, Caption „Închide”) — închide formularul\n\nScrie codul din spatele celor două butoane. Bonus: validează că `txtNume` și `txtCUI` nu sunt goale înainte de salvare.",
+    "solution_md": "```vba\nPrivate Sub cmdSalveaza_Click()\n    Dim ws As Worksheet\n    Dim urmatorulRand As Long\n\n    If Trim(txtNume.Text) = \"\" Or Trim(txtCUI.Text) = \"\" Then\n        MsgBox \"Numele și CUI-ul sunt obligatorii.\", vbExclamation\n        Exit Sub\n    End If\n\n    Set ws = ThisWorkbook.Sheets(\"Sheet1\")\n    urmatorulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1\n\n    ws.Cells(urmatorulRand, 1).Value = txtNume.Text\n    ws.Cells(urmatorulRand, 2).Value = txtCUI.Text\n    ws.Cells(urmatorulRand, 3).Value = txtEmail.Text\n\n    MsgBox \"Client salvat cu succes.\", vbInformation\n\n    txtNume.Text = \"\"\n    txtCUI.Text = \"\"\n    txtEmail.Text = \"\"\n    txtNume.SetFocus\nEnd Sub\n\nPrivate Sub cmdInchide_Click()\n    Unload Me\nEnd Sub\n```\n\nObservă folosirea lui `ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row + 1` — tehnica standard pentru a găsi primul rând liber, indiferent câte rânduri de date există deja.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este comanda din VBA Editor pentru a adăuga un UserForm nou într-un proiect?",
+    "choices": [
+     "Insert > Module",
+     "Insert > UserForm",
+     "Insert > Class Module",
+     "Insert > Procedure"
+    ],
+    "answer": 1,
+    "explain": "UserForms se inserează separat de module de cod, din meniul Insert > UserForm (sau click dreapta pe proiect în Project Explorer).",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce proprietate a unui UserForm determină textul afișat în bara de titlu a ferestrei?",
+    "choices": [
+     "(Name)",
+     "Caption",
+     "Tag",
+     "BackColor"
+    ],
+    "answer": 1,
+    "explain": "(Name) este identificatorul folosit în cod și nu conține spații; Caption este textul vizibil pentru utilizator, inclusiv în bara de titlu a formularului.",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un UserForm în VBA?",
+    "back": "O fereastră de dialog personalizată, creată în VBA Editor, care combină controale (TextBox, CommandButton, ComboBox etc.) într-o interfață pentru a colecta sau afișa date, similar unei aplicații desktop.",
+    "concept_key": "userform-definitie",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum inserezi un UserForm nou în proiectul VBA?",
+    "back": "Alt+F11 pentru a deschide VBE, apoi click dreapta pe proiect (sau meniul Insert) și alegi Insert > UserForm.",
+    "concept_key": "userform-inserare-vbe",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre proprietatea (Name) și Caption la un UserForm sau control?",
+    "back": "(Name) este identificatorul folosit în cod (fără spații), iar Caption este textul afișat vizual utilizatorului (ex: în bara de titlu sau pe un buton).",
+    "concept_key": "userform-proprietati-principale",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce metodă afișează un UserForm și care este comportamentul implicit?",
+    "back": "Metoda .Show; implicit afișează formularul modal (vbModal), blocând interacțiunea cu Excel până la închiderea formularului.",
+    "concept_key": "userform-afisare-show-modal",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce eveniment rulează automat, imediat înainte ca un UserForm să devină vizibil, și e util pentru a popula controale?",
+    "back": "Evenimentul UserForm_Initialize — folosit, de exemplu, pentru a popula un ComboBox cu AddItem înainte ca formularul să apară pe ecran.",
+    "concept_key": "userform-exemplu-combobox",
+    "blockId": "cmjjuxvqs003zumkpupjw65x9-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1354,
+   "flashcards": 5
+  }
+ }
+}

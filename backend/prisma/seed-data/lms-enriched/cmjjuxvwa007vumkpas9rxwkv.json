@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvwa007vumkpas9rxwkv",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scaling Agile și Pregătire Examen",
+ "lesson": "Pregătire PSM I",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Pregătire PSM I\n\n**Professional Scrum Master I (PSM I)** este certificarea oferită de Scrum.org care validează cunoștințele fundamentale despre Scrum, așa cum sunt definite exclusiv în *Scrum Guide 2020*. Este cea mai recunoscută certificare de intrare pentru rolul de Scrum Master la nivel internațional, inclusiv în companiile din România care lucrează cu echipe Agile pe proiecte de dezvoltare software, implementări ERP sau digitalizare.\n\n**Structura examenului:**\n- 80 de întrebări, în format grilă: alegere unică, alegere multiplă, adevărat/fals și ordonare de pași.\n- Durată: 60 de minute — aproximativ 45 de secunde pe întrebare, ceea ce impune un ritm alert și cunoștințe bine consolidate, nu doar 'căutate' pe loc.\n- Prag de promovare: istoric ridicat, în jurul a 85% răspunsuri corecte. Verifică pragul exact pe pagina oficială scrum.org înainte de înscriere, întrucât Scrum.org poate ajusta periodic aceste valori.\n- Taxă de examinare: aproximativ 150 USD — valoare orientativă; prețul curent trebuie confirmat pe scrum.org la momentul înscrierii, deoarece se poate modifica.\n- Format: examen individual, susținut online, fără proctorizare video obligatorie pentru PSM I; tehnic poți avea Scrum Guide-ul deschis, dar timpul este atât de strâns încât căutarea răspunsurilor consumă resursa cea mai prețioasă — timpul.\n- Sursă unică a conținutului testat: *Scrum Guide 2020* (13 pagini). Nu se testează versiuni anterioare ale ghidului și nici practici 'de facto' din industrie care nu apar explicit în text (de exemplu, 'backlog grooming' ca eveniment formal sau 'user story' ca artefact obligatoriu).\n\nPregătirea eficientă pentru PSM I se bazează pe un set restrâns, dar bine folosit, de resurse oficiale:\n\n1. **Scrum Guide 2020** — documentul sursă unic; se recomandă citirea repetată, cuvânt cu cuvânt, nu prin rezumate sau cursuri terțe care parafrazează inexact definițiile.\n2. **Scrum Open Assessment** — test gratuit, online, oferit de Scrum.org, cu itemi de dificultate similară examenului real. Poate fi reluat de un număr nelimitat de ori și oferă feedback imediat pe fiecare întrebare greșită.\n3. **Glosarul Scrum.org** — definiții oficiale ale termenilor (Sprint, Increment, Definition of Done, Product Backlog etc.), utile pentru a evita confuzia dintre termeni asemănători dar diferiți în sens.\n4. **Blogul și articolele Scrum.org** — clarificări scrise de Trainerii Autorizați Profesional (PST) despre zone frecvent greșit înțelese (de exemplu, diferența dintre Sprint Backlog și Product Backlog, sau rolul exact al Scrum Master-ului în raport cu echipa).\n5. **Nexus Guide** — nu este obligatoriu pentru PSM I (relevant mai degrabă pentru scalare), dar o lectură rapidă ajută la înțelegerea contextului mai larg al scalării Agile, temă atinsă tangențial în câteva întrebări de examen.\n\nEvită sursele neoficiale care combină Scrum cu alte cadre (Kanban, SAFe, PMBOK) fără să delimiteze clar ce este strict Scrum Guide și ce este practică adiacentă — acest amestec este principala cauză de răspunsuri greșite la examen.\n\nO strategie de pregătire eficientă pentru PSM I urmează trei principii:\n\n**1. Studiază Scrum Guide-ul literal, nu interpretativ.** Multe întrebări testează exact formularea din ghid (de exemplu, cine 'este responsabil' versus cine 'participă'). O interpretare liberă, chiar corectă în spirit, poate duce la răspunsuri greșite dacă nu respectă termenii exacți folosiți în document.\n\n**2. Înțelege 'de ce', nu doar 'ce'.** Scrum se bazează pe empirism — transparență, inspecție, adaptare — și pe cele cinci valori (angajament, curaj, focalizare, deschidere, respect). Întrebările de nivel avansat cer aplicarea acestor principii într-un scenariu, nu recitarea unei definiții. Dacă înțelegi de ce există Daily Scrum (inspecția progresului către Sprint Goal, nu raportare către Scrum Master), poți răspunde corect chiar și la întrebări formulate diferit de cele exersate.\n\n**3. Exersează masiv cu Scrum Open Assessment.** Recomandarea practică: repetă testul până obții constant peste 95%, analizând fiecare răspuns greșit direct în Scrum Guide, nu doar memorând răspunsul corect. Ținta este să elimini complet întrebările 'capcană' care descriu practici comune de organizație (de exemplu, un Scrum Master care alocă sarcini echipei) prezentate ca fiind conforme cu Scrum, când de fapt contravin ghidului.\n\n## Exemplu: Exemplu de întrebare tip examen: anularea unui Sprint\n**Întrebare tipică:** 'Un Sprint poate fi anulat înainte de expirarea timeboxului. Cine are autoritatea de a face acest lucru?'\n\nOpțiuni tipice de răspuns: Scrum Master, echipa de dezvoltare, Product Owner, sponsorul proiectului sau organizația.\n\n**Răspunsul corect, conform Scrum Guide 2020:** doar **Product Owner-ul** are autoritatea de a anula un Sprint, de regulă atunci când Sprint Goal-ul devine învechit (de exemplu, o schimbare majoră de strategie de business face ca obiectivul Sprintului să nu mai fie relevant).\n\n**De ce greșesc mulți candidați:** intuitiv, mulți asociază 'controlul procesului' cu Scrum Master-ul, pentru că acesta facilitează evenimentele Scrum. Însă Scrum Guide separă clar responsabilitățile: Scrum Master-ul este responsabil de eficacitatea Scrum Team-ului și de respectarea cadrului, dar deciziile despre *ce* produs se construiește și *dacă* Sprintul mai are sens țin de Product Owner, care maximizează valoarea produsului rezultat din munca Scrum Team-ului.\n\n## Exemplu: Caz practic: o echipă românească de implementare ERP se pregătește pentru PSM I\nO firmă SRL din București, furnizor de soluții ERP pentru clienți din retail și distribuție, decide să certifice PSM I întregul departament de livrare (5 Scrum Masteri interni). Motivul: echipele lucrează deja în Scrum pe proiecte de implementare, dar Scrum Masterii proveneau din foste roluri de Project Manager clasic și amestecau practici de tip 'cascadă' (alocare de sarcini, rapoarte de status către management) cu evenimentele Scrum.\n\n**Planul de pregătire aplicat, pe 3 săptămâni:**\n- Săptămâna 1: fiecare Scrum Master citește integral Scrum Guide 2020 de două ori și notează definițiile exacte ale celor trei roluri, cele cinci evenimente și cele trei artefacte, împreună cu angajamentele lor (Sprint Goal, Definition of Done, Product Goal).\n- Săptămâna 2: sesiuni zilnice de 15 minute de discuție de grup pe câte un capitol din ghid, urmate de un set de 15-20 de întrebări din Scrum Open Assessment, cu analiză colectivă a greșelilor.\n- Săptămâna 3: două simulări complete de examen (80 de întrebări, 60 de minute, cronometrate strict), urmate de recapitularea individuală a fiecărei întrebări greșite direct din text.\n\n**Rezultat:** toți cei cinci Scrum Masteri au promovat examenul din prima încercare, iar organizația a observat, ulterior, o reducere vizibilă a practicilor hibride care distorsionau rolul de Product Owner în proiectele de implementare ERP — un beneficiu indirect, dar concret, al pregătirii riguroase pentru certificare.\n\n⚠ **Greșeli comune la examenul PSM I:**\n\n1. **Confuzia între practici comune de organizație și regulile Scrum Guide.** Termeni ca 'backlog grooming', 'story points obligatorii' sau 'estimare în ore' sunt practici larg răspândite, dar nu apar în Scrum Guide 2020 ca cerințe. Examenul testează ce spune ghidul, nu ce se întâmplă de obicei în companii.\n2. **Memorarea fără înțelegerea empirismului.** A ști definiția unui eveniment nu e suficient dacă nu înțelegi scopul lui (inspecție și adaptare) — întrebările de scenariu penalizează răspunsurile 'pe de rost'.\n3. **Ignorarea Definition of Done ca angajament al Incrementului.** Mulți candidați confundă Definition of Done cu criteriile de acceptanță ale unui singur Product Backlog Item, deși cele două concepte sunt distincte în ghid.\n4. **Gestionarea greșită a timpului în examen.** Cu 45 de secunde pe întrebare în medie, oprirea prelungită la o singură întrebare dificilă poate compromite finalizarea testului. Recomandarea practică: marchează întrebarea, continuă, revino la final dacă rămâne timp.\n5. **Subestimarea rolului Scrum Master ca 'lider slujitor' (servant leader).** Multe răspunsuri greșite provin din a atribui Scrum Masterului autoritate de management de proiect clasic (alocare de sarcini, raportare ierarhică), rol pe care Scrum Guide nu îl susține.\n\n## Exercițiu\nSimulează un mini-test de 5 întrebări, în stilul PSM I, fără a consulta Scrum Guide-ul înainte de a răspunde. Notează-ți răspunsurile, apoi verifică-le cu soluția.\n\n1. Cine stabilește Sprint Goal-ul?\n2. Ce se întâmplă cu elementele neterminate dintr-un Sprint la finalul acestuia?\n3. Cât durează, ca timebox maxim, un Daily Scrum, indiferent de durata Sprintului?\n4. Cine este responsabil pentru Product Backlog, inclusiv conținutul, disponibilitatea și ordonarea acestuia?\n5. Poate un Scrum Team să aibă mai mult de un Scrum Master?\n\n**Soluție:** 1. **Sprint Goal-ul este creat împreună de întregul Scrum Team în timpul Sprint Planning**, pornind de la obiectivul propus de Product Owner și de la ce poate livra realist echipa de dezvoltare — nu este impus unilateral de Product Owner.\n2. **Elementele neterminate se întorc în Product Backlog**, pentru re-estimare și re-prioritizare de către Product Owner; nu se consideră automat parte a următorului Sprint.\n3. **15 minute**, indiferent de durata Sprintului (timebox fix, conform Scrum Guide 2020).\n4. **Product Owner-ul** este singurul responsabil pentru Product Backlog — poate delega activități altora, dar responsabilitatea finală rămâne a sa.\n5. **Nu.** Un Scrum Team are un singur Scrum Master; acesta este responsabil pentru eficacitatea întregului Scrum Team, nu doar a unei părți din el.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "psm-i-structura-examen",
+    "md": "**Professional Scrum Master I (PSM I)** este certificarea oferită de Scrum.org care validează cunoștințele fundamentale despre Scrum, așa cum sunt definite exclusiv în *Scrum Guide 2020*. Este cea mai recunoscută certificare de intrare pentru rolul de Scrum Master la nivel internațional, inclusiv în companiile din România care lucrează cu echipe Agile pe proiecte de dezvoltare software, implementări ERP sau digitalizare.\n\n**Structura examenului:**\n- 80 de întrebări, în format grilă: alegere unică, alegere multiplă, adevărat/fals și ordonare de pași.\n- Durată: 60 de minute — aproximativ 45 de secunde pe întrebare, ceea ce impune un ritm alert și cunoștințe bine consolidate, nu doar 'căutate' pe loc.\n- Prag de promovare: istoric ridicat, în jurul a 85% răspunsuri corecte. Verifică pragul exact pe pagina oficială scrum.org înainte de înscriere, întrucât Scrum.org poate ajusta periodic aceste valori.\n- Taxă de examinare: aproximativ 150 USD — valoare orientativă; prețul curent trebuie confirmat pe scrum.org la momentul înscrierii, deoarece se poate modifica.\n- Format: examen individual, susținut online, fără proctorizare video obligatorie pentru PSM I; tehnic poți avea Scrum Guide-ul deschis, dar timpul este atât de strâns încât căutarea răspunsurilor consumă resursa cea mai prețioasă — timpul.\n- Sursă unică a conținutului testat: *Scrum Guide 2020* (13 pagini). Nu se testează versiuni anterioare ale ghidului și nici practici 'de facto' din industrie care nu apar explicit în text (de exemplu, 'backlog grooming' ca eveniment formal sau 'user story' ca artefact obligatoriu).",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "psm-i-resurse-oficiale",
+    "md": "Pregătirea eficientă pentru PSM I se bazează pe un set restrâns, dar bine folosit, de resurse oficiale:\n\n1. **Scrum Guide 2020** — documentul sursă unic; se recomandă citirea repetată, cuvânt cu cuvânt, nu prin rezumate sau cursuri terțe care parafrazează inexact definițiile.\n2. **Scrum Open Assessment** — test gratuit, online, oferit de Scrum.org, cu itemi de dificultate similară examenului real. Poate fi reluat de un număr nelimitat de ori și oferă feedback imediat pe fiecare întrebare greșită.\n3. **Glosarul Scrum.org** — definiții oficiale ale termenilor (Sprint, Increment, Definition of Done, Product Backlog etc.), utile pentru a evita confuzia dintre termeni asemănători dar diferiți în sens.\n4. **Blogul și articolele Scrum.org** — clarificări scrise de Trainerii Autorizați Profesional (PST) despre zone frecvent greșit înțelese (de exemplu, diferența dintre Sprint Backlog și Product Backlog, sau rolul exact al Scrum Master-ului în raport cu echipa).\n5. **Nexus Guide** — nu este obligatoriu pentru PSM I (relevant mai degrabă pentru scalare), dar o lectură rapidă ajută la înțelegerea contextului mai larg al scalării Agile, temă atinsă tangențial în câteva întrebări de examen.\n\nEvită sursele neoficiale care combină Scrum cu alte cadre (Kanban, SAFe, PMBOK) fără să delimiteze clar ce este strict Scrum Guide și ce este practică adiacentă — acest amestec este principala cauză de răspunsuri greșite la examen.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "psm-i-strategie-pregatire",
+    "md": "O strategie de pregătire eficientă pentru PSM I urmează trei principii:\n\n**1. Studiază Scrum Guide-ul literal, nu interpretativ.** Multe întrebări testează exact formularea din ghid (de exemplu, cine 'este responsabil' versus cine 'participă'). O interpretare liberă, chiar corectă în spirit, poate duce la răspunsuri greșite dacă nu respectă termenii exacți folosiți în document.\n\n**2. Înțelege 'de ce', nu doar 'ce'.** Scrum se bazează pe empirism — transparență, inspecție, adaptare — și pe cele cinci valori (angajament, curaj, focalizare, deschidere, respect). Întrebările de nivel avansat cer aplicarea acestor principii într-un scenariu, nu recitarea unei definiții. Dacă înțelegi de ce există Daily Scrum (inspecția progresului către Sprint Goal, nu raportare către Scrum Master), poți răspunde corect chiar și la întrebări formulate diferit de cele exersate.\n\n**3. Exersează masiv cu Scrum Open Assessment.** Recomandarea practică: repetă testul până obții constant peste 95%, analizând fiecare răspuns greșit direct în Scrum Guide, nu doar memorând răspunsul corect. Ținta este să elimini complet întrebările 'capcană' care descriu practici comune de organizație (de exemplu, un Scrum Master care alocă sarcini echipei) prezentate ca fiind conforme cu Scrum, când de fapt contravin ghidului.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b3"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu de întrebare tip examen: anularea unui Sprint",
+    "concept_key": "psm-i-exemplu-anulare-sprint",
+    "md": "**Întrebare tipică:** 'Un Sprint poate fi anulat înainte de expirarea timeboxului. Cine are autoritatea de a face acest lucru?'\n\nOpțiuni tipice de răspuns: Scrum Master, echipa de dezvoltare, Product Owner, sponsorul proiectului sau organizația.\n\n**Răspunsul corect, conform Scrum Guide 2020:** doar **Product Owner-ul** are autoritatea de a anula un Sprint, de regulă atunci când Sprint Goal-ul devine învechit (de exemplu, o schimbare majoră de strategie de business face ca obiectivul Sprintului să nu mai fie relevant).\n\n**De ce greșesc mulți candidați:** intuitiv, mulți asociază 'controlul procesului' cu Scrum Master-ul, pentru că acesta facilitează evenimentele Scrum. Însă Scrum Guide separă clar responsabilitățile: Scrum Master-ul este responsabil de eficacitatea Scrum Team-ului și de respectarea cadrului, dar deciziile despre *ce* produs se construiește și *dacă* Sprintul mai are sens țin de Product Owner, care maximizează valoarea produsului rezultat din munca Scrum Team-ului.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b4"
+   },
+   {
+    "type": "example",
+    "title": "Caz practic: o echipă românească de implementare ERP se pregătește pentru PSM I",
+    "concept_key": "psm-i-caz-echipa-erp",
+    "md": "O firmă SRL din București, furnizor de soluții ERP pentru clienți din retail și distribuție, decide să certifice PSM I întregul departament de livrare (5 Scrum Masteri interni). Motivul: echipele lucrează deja în Scrum pe proiecte de implementare, dar Scrum Masterii proveneau din foste roluri de Project Manager clasic și amestecau practici de tip 'cascadă' (alocare de sarcini, rapoarte de status către management) cu evenimentele Scrum.\n\n**Planul de pregătire aplicat, pe 3 săptămâni:**\n- Săptămâna 1: fiecare Scrum Master citește integral Scrum Guide 2020 de două ori și notează definițiile exacte ale celor trei roluri, cele cinci evenimente și cele trei artefacte, împreună cu angajamentele lor (Sprint Goal, Definition of Done, Product Goal).\n- Săptămâna 2: sesiuni zilnice de 15 minute de discuție de grup pe câte un capitol din ghid, urmate de un set de 15-20 de întrebări din Scrum Open Assessment, cu analiză colectivă a greșelilor.\n- Săptămâna 3: două simulări complete de examen (80 de întrebări, 60 de minute, cronometrate strict), urmate de recapitularea individuală a fiecărei întrebări greșite direct din text.\n\n**Rezultat:** toți cei cinci Scrum Masteri au promovat examenul din prima încercare, iar organizația a observat, ulterior, o reducere vizibilă a practicilor hibride care distorsionau rolul de Product Owner în proiectele de implementare ERP — un beneficiu indirect, dar concret, al pregătirii riguroase pentru certificare.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b5"
+   },
+   {
+    "type": "warning",
+    "md": "**Greșeli comune la examenul PSM I:**\n\n1. **Confuzia între practici comune de organizație și regulile Scrum Guide.** Termeni ca 'backlog grooming', 'story points obligatorii' sau 'estimare în ore' sunt practici larg răspândite, dar nu apar în Scrum Guide 2020 ca cerințe. Examenul testează ce spune ghidul, nu ce se întâmplă de obicei în companii.\n2. **Memorarea fără înțelegerea empirismului.** A ști definiția unui eveniment nu e suficient dacă nu înțelegi scopul lui (inspecție și adaptare) — întrebările de scenariu penalizează răspunsurile 'pe de rost'.\n3. **Ignorarea Definition of Done ca angajament al Incrementului.** Mulți candidați confundă Definition of Done cu criteriile de acceptanță ale unui singur Product Backlog Item, deși cele două concepte sunt distincte în ghid.\n4. **Gestionarea greșită a timpului în examen.** Cu 45 de secunde pe întrebare în medie, oprirea prelungită la o singură întrebare dificilă poate compromite finalizarea testului. Recomandarea practică: marchează întrebarea, continuă, revino la final dacă rămâne timp.\n5. **Subestimarea rolului Scrum Master ca 'lider slujitor' (servant leader).** Multe răspunsuri greșite provin din a atribui Scrum Masterului autoritate de management de proiect clasic (alocare de sarcini, raportare ierarhică), rol pe care Scrum Guide nu îl susține.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Simulează un mini-test de 5 întrebări, în stilul PSM I, fără a consulta Scrum Guide-ul înainte de a răspunde. Notează-ți răspunsurile, apoi verifică-le cu soluția.\n\n1. Cine stabilește Sprint Goal-ul?\n2. Ce se întâmplă cu elementele neterminate dintr-un Sprint la finalul acestuia?\n3. Cât durează, ca timebox maxim, un Daily Scrum, indiferent de durata Sprintului?\n4. Cine este responsabil pentru Product Backlog, inclusiv conținutul, disponibilitatea și ordonarea acestuia?\n5. Poate un Scrum Team să aibă mai mult de un Scrum Master?",
+    "solution_md": "1. **Sprint Goal-ul este creat împreună de întregul Scrum Team în timpul Sprint Planning**, pornind de la obiectivul propus de Product Owner și de la ce poate livra realist echipa de dezvoltare — nu este impus unilateral de Product Owner.\n2. **Elementele neterminate se întorc în Product Backlog**, pentru re-estimare și re-prioritizare de către Product Owner; nu se consideră automat parte a următorului Sprint.\n3. **15 minute**, indiferent de durata Sprintului (timebox fix, conform Scrum Guide 2020).\n4. **Product Owner-ul** este singurul responsabil pentru Product Backlog — poate delega activități altora, dar responsabilitatea finală rămâne a sa.\n5. **Nu.** Un Scrum Team are un singur Scrum Master; acesta este responsabil pentru eficacitatea întregului Scrum Team, nu doar a unei părți din el.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este singura sursă oficială de conținut testat la examenul PSM I?",
+    "choices": [
+     "PMBOK Guide, ediția 7",
+     "Scrum Guide 2020",
+     "Nexus Guide",
+     "SAFe Framework Guide"
+    ],
+    "answer": 1,
+    "explain": "PSM I testează exclusiv conținutul din Scrum Guide 2020, publicat de Ken Schwaber și Jeff Sutherland; alte cadre (PMBOK, SAFe) nu fac parte din materia de examen.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cine are autoritatea de a anula (cancel) un Sprint?",
+    "choices": [
+     "Scrum Master",
+     "Echipa de dezvoltare",
+     "Product Owner",
+     "Sponsorul proiectului"
+    ],
+    "answer": 2,
+    "explain": "Doar Product Owner-ul poate anula un Sprint, de regulă când Sprint Goal-ul devine învechit; Scrum Master-ul facilitează procesul, dar nu ia această decizie.",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte întrebări are examenul PSM I și în cât timp trebuie rezolvate?",
+    "back": "80 de întrebări în 60 de minute — aproximativ 45 de secunde pe întrebare.",
+    "concept_key": "psm-i-structura-examen",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este documentul sursă unic pentru conținutul testat la PSM I?",
+    "back": "Scrum Guide 2020, publicat de Ken Schwaber și Jeff Sutherland.",
+    "concept_key": "psm-i-resurse-oficiale",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce test gratuit oferă Scrum.org pentru exersare înainte de PSM I?",
+    "back": "Scrum Open Assessment — test online gratuit, repetabil nelimitat, cu itemi similari examenului real.",
+    "concept_key": "psm-i-resurse-oficiale",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine poate anula un Sprint conform Scrum Guide?",
+    "back": "Doar Product Owner-ul poate anula un Sprint, de regulă când Sprint Goal-ul devine învechit.",
+    "concept_key": "psm-i-exemplu-anulare-sprint",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce prag de promovare vizează, în general, examenul PSM I?",
+    "back": "Aproximativ 85% răspunsuri corecte — verifică valoarea curentă pe scrum.org, deoarece poate fi ajustată periodic.",
+    "concept_key": "psm-i-structura-examen",
+    "blockId": "cmjjuxvwa007vumkpas9rxwkv-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1395,
+   "flashcards": 5
+  }
+ }
+}

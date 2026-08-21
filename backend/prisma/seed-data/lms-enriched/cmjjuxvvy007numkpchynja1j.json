@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvvy007numkpchynja1j",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Practici și Tehnici Agile",
+ "lesson": "Definition of Done și Quality",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Definition of Done și Quality\n\n## Ce este Definition of Done (DoD)\n\n**Definition of Done (DoD)** — \"Definiția lui Gata\" — este un acord formal, asumat de întreaga echipă Scrum, care stabilește ce condiții trebuie îndeplinite pentru ca un increment (o funcționalitate, un User Story, un element din Sprint Backlog) să fie considerat finalizat. Scrum Guide 2020 o definește ca fiind **\"o descriere formală a stării incrementului atunci când îndeplinește măsurile de calitate cerute pentru produs\"**.\n\nDoD nu este o listă de intenții, ci un criteriu obiectiv și verificabil, aplicat uniform tuturor elementelor livrate. Dacă un Product Backlog Item nu respectă DoD, el **nu poate fi prezentat la Sprint Review ca \"Done\"** și nu intră în incrementul livrat — indiferent cât de aproape de finalizare pare.\n\nDoD are un rol dublu în echipă:\n- **Transparență** — Product Owner, Dezvoltatori și stakeholderii au aceeași înțelegere despre ce înseamnă \"gata\", eliminând discuțiile de tipul \"e 90% gata\".\n- **Protecție a calității** — previne livrarea de cod nefuncțional, netestat sau nedocumentat sub presiunea termenelor de Sprint.\n\nDacă organizația are un standard de calitate la nivel de companie, echipele Scrum trebuie să îl respecte ca prag minim și îl pot extinde cu criterii proprii, mai stricte. Dacă nu există un asemenea standard, Scrum Team-ul este responsabil să își definească propriul DoD, adecvat pentru produsul dezvoltat.\n\n## Componentele unui DoD funcțional\n\nUn DoD bine construit acoperă, de regulă, patru categorii de criterii:\n\n**1. Criterii de cod** — codul respectă standardele de stil ale echipei, a trecut prin code review (de obicei prin pull request aprobat de cel puțin un alt dezvoltator), nu introduce avertismente critice la compilare/linting.\n\n**2. Criterii de testare** — teste unitare scrise și trecute (de regulă cu un prag de acoperire agreat, de exemplu minimum 80% pentru codul nou), teste de integrare rulate, teste manuale de regresie pentru zonele critice.\n\n**3. Criterii de integrare și livrare** — codul este integrat în branch-ul principal, build-ul trece în pipeline-ul de Continuous Integration (CI), aplicația rulează fără erori pe mediul de staging.\n\n**4. Criterii de documentație și conformitate** — documentația tehnică și de utilizator este actualizată, eventualele cerințe de securitate sau GDPR sunt respectate, Product Owner-ul a validat funcțional livrabilul față de Acceptance Criteria din User Story.\n\nDoD-ul se aplică **la nivel de increment**, nu doar la nivel de task individual — de aceea criteriile de integrare (build verde, deploy pe staging) sunt esențiale: un cod \"gata\" pe laptopul unui dezvoltator, dar care nu se integrează cu restul sistemului, nu respectă DoD.\n\nUn DoD matur evoluează în timp: pe măsură ce echipa capătă experiență, poate adăuga criterii noi (de exemplu teste de performanță sau teste de securitate automatizate), ceea ce reflectă maturizarea capacității tehnice a echipei, nu birocrație suplimentară.\n\n## Datoria tehnică, Continuous Integration și practicile de testare\n\n**Datoria tehnică (technical debt)** este costul implicit al muncii viitoare generat de alegerea unei soluții rapide, dar imperfecte, în locul unei soluții corecte, dar mai lente. Termenul, introdus de Ward Cunningham, folosește o metaforă financiară: la fel ca un împrumut, datoria tehnică generează \"dobândă\" — timp suplimentar de mentenanță, bug-uri, cod greu de extins.\n\nUn DoD riguros este cel mai eficient instrument al unei echipe Scrum împotriva acumulării necontrolate de datorie tehnică: dacă \"teste unitare scrise\" și \"code review efectuat\" sunt condiții obligatorii pentru ca un Item să fie \"Done\", echipa nu poate amâna la infinit calitatea codului în numele vitezei.\n\n**Continuous Integration (CI)** este practica de a integra codul fiecărui dezvoltator în branch-ul principal de mai multe ori pe zi, fiecare integrare fiind verificată automat printr-un build și un set de teste automate (pipeline CI — de exemplu GitLab CI, GitHub Actions, Azure DevOps). CI reduce drastic riscul de \"integration hell\" — problemele majore descoperite abia la finalul Sprintului, când integrarea contribuțiilor mai multor dezvoltatori relevă conflicte greu de rezolvat. Includerea unui build CI verde ca și criteriu de DoD obligă echipa să mențină codul mereu într-o stare livrabilă.\n\n**Practicile de testare** care susțin un DoD solid includ: TDD (Test-Driven Development — scrierea testului înainte de implementare), testare automatizată la nivel de unitate și de integrare, și testare exploratorie manuală pentru scenarii complexe de business. Automatizarea testelor este esențială în Scrum pentru că Sprint-urile scurte (1-4 săptămâni) nu lasă timp pentru cicluri lungi de testare manuală repetitivă la fiecare livrare.\n\n## Exemplu: DoD pentru un modul de facturare într-un proiect de implementare ERP\nO echipă Scrum dintr-o firmă SRL de servicii IT implementează un modul de facturare electronică pentru un client din retail. Definition of Done agreat de echipă pentru orice Product Backlog Item din acest proiect arată astfel:\n\n1. Codul este scris conform standardelor de codare ale echipei și a trecut printr-un code review aprobat de minimum un coleg.\n2. Testele unitare acoperă minimum 80% din codul nou și toate trec cu succes.\n3. Testele de integrare cu modulul de contabilitate (generare notă contabilă automată la emiterea facturii) rulează fără erori.\n4. Build-ul trece în pipeline-ul de CI fără avertismente critice.\n5. Funcționalitatea a fost validată manual pe mediul de staging, inclusiv scenariul de emitere factură cu TVA la cotă standard și scenariul de stornare.\n6. Documentația tehnică (API) și ghidul de utilizare pentru operatorul de facturare au fost actualizate.\n7. Product Owner-ul a confirmat că funcționalitatea respectă Acceptance Criteria din User Story.\n\nDoar după bifarea tuturor celor șapte puncte, Item-ul poate fi prezentat ca \"Done\" la Sprint Review. Dacă, spre exemplu, punctul 3 nu este îndeplinit pentru că integrarea cu modulul contabil nu a fost testată, Item-ul rămâne \"în lucru\", chiar dacă interfața vizuală arată complet funcțională.\n\n## Exemplu: Definition of Done vs. Acceptance Criteria\nConfuzia dintre DoD și Acceptance Criteria (criterii de acceptanță) este una dintre cele mai frecvente greșeli ale echipelor Agile la început de drum.\n\n**Acceptance Criteria** sunt specifice fiecărui User Story în parte și descriu comportamentul funcțional așteptat din perspectiva utilizatorului. Exemplu, pentru User Story-ul \"Ca operator de facturare, vreau să emit o factură cu TVA la cotă redusă pentru produse alimentare, ca să respect legislația fiscală\":\n- Dat fiind că selectez un produs din categoria alimentară, sistemul aplică automat cota de TVA corectă.\n- Dat fiind că factura este emisă, PDF-ul generat conține toate elementele obligatorii (serie, număr, CUI, cotă TVA).\n\n**Definition of Done** este independent de o anumită funcționalitate — se aplică **identic tuturor** Item-urilor din Sprint Backlog și acoperă condițiile de calitate tehnică (teste, code review, build CI, documentație), nu comportamentul funcțional specific.\n\nRelația corectă între cele două: un Item este \"Done\" doar dacă **îndeplinește simultan** Acceptance Criteria proprii ȘI Definition of Done comun al echipei. Acceptance Criteria răspund la întrebarea \"Face ce trebuie?\", iar DoD răspunde la întrebarea \"E construit așa cum trebuie?\".\n\n⚠ Un DoD superficial (de exemplu doar \"codul compilează\") este mai periculos decât lipsa completă a unui DoD, pentru că oferă o falsă senzație de siguranță: echipa raportează Item-uri \"Done\", dar datoria tehnică se acumulează nevăzută, iar problemele apar abia peste câteva Sprint-uri, când costul de remediere este mult mai mare. Revizuiește periodic DoD-ul în Retrospective și extinde-l pe măsură ce echipa își dezvoltă capacitatea tehnică — dar niciodată nu relaxa criteriile existente doar pentru a respecta un termen de Sprint.\n\n## Exercițiu\nO echipă Scrum dintr-o companie de digitalizare a proceselor financiare are următorul Definition of Done, aplicat de trei Sprint-uri:\n\n1. Codul compilează fără erori.\n2. Funcționalitatea a fost verificată vizual de dezvoltator pe mediul local.\n\nDupă al treilea Sprint, Product Owner-ul observă că, deși toate Item-urile au fost raportate \"Done\", clientul a semnalat bug-uri de integrare (module care nu comunică corect între ele) și echipa petrece tot mai mult timp remediind cod vechi în loc să dezvolte funcționalități noi.\n\n**Cerință:** Identifică ce lipsește din acest DoD și propune o versiune îmbunătățită, cu minimum 5 criterii, care ar fi prevenit problemele semnalate.\n\n**Soluție:** **Ce lipsește:** DoD-ul actual nu conține niciun criteriu de testare automată, code review, integrare (CI) sau documentație — verifică doar că \"pare să funcționeze\" pe mașina dezvoltatorului. Absența testelor de integrare explică exact bug-urile de comunicare între module, iar absența code review-ului și a testelor unitare explică acumularea de datorie tehnică ce încetinește echipa.\n\n**DoD îmbunătățit:**\n1. Codul compilează fără erori și respectă standardele de stil ale echipei.\n2. Codul a trecut printr-un code review aprobat de cel puțin un alt dezvoltator.\n3. Testele unitare pentru codul nou sunt scrise și trec cu succes.\n4. Testele de integrare dintre modulele afectate rulează fără erori în pipeline-ul de CI.\n5. Funcționalitatea a fost validată pe mediul de staging, nu doar local.\n6. Documentația tehnică relevantă a fost actualizată.\n\nAceastă versiune adaugă exact verigile lipsă — review, testare automată și integrare continuă — care ar fi prins problemele de comunicare între module înainte ca Item-urile să fie raportate \"Done\".",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "definition-of-done",
+    "md": "## Ce este Definition of Done (DoD)\n\n**Definition of Done (DoD)** — \"Definiția lui Gata\" — este un acord formal, asumat de întreaga echipă Scrum, care stabilește ce condiții trebuie îndeplinite pentru ca un increment (o funcționalitate, un User Story, un element din Sprint Backlog) să fie considerat finalizat. Scrum Guide 2020 o definește ca fiind **\"o descriere formală a stării incrementului atunci când îndeplinește măsurile de calitate cerute pentru produs\"**.\n\nDoD nu este o listă de intenții, ci un criteriu obiectiv și verificabil, aplicat uniform tuturor elementelor livrate. Dacă un Product Backlog Item nu respectă DoD, el **nu poate fi prezentat la Sprint Review ca \"Done\"** și nu intră în incrementul livrat — indiferent cât de aproape de finalizare pare.\n\nDoD are un rol dublu în echipă:\n- **Transparență** — Product Owner, Dezvoltatori și stakeholderii au aceeași înțelegere despre ce înseamnă \"gata\", eliminând discuțiile de tipul \"e 90% gata\".\n- **Protecție a calității** — previne livrarea de cod nefuncțional, netestat sau nedocumentat sub presiunea termenelor de Sprint.\n\nDacă organizația are un standard de calitate la nivel de companie, echipele Scrum trebuie să îl respecte ca prag minim și îl pot extinde cu criterii proprii, mai stricte. Dacă nu există un asemenea standard, Scrum Team-ul este responsabil să își definească propriul DoD, adecvat pentru produsul dezvoltat.",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "definition-of-done",
+    "md": "## Componentele unui DoD funcțional\n\nUn DoD bine construit acoperă, de regulă, patru categorii de criterii:\n\n**1. Criterii de cod** — codul respectă standardele de stil ale echipei, a trecut prin code review (de obicei prin pull request aprobat de cel puțin un alt dezvoltator), nu introduce avertismente critice la compilare/linting.\n\n**2. Criterii de testare** — teste unitare scrise și trecute (de regulă cu un prag de acoperire agreat, de exemplu minimum 80% pentru codul nou), teste de integrare rulate, teste manuale de regresie pentru zonele critice.\n\n**3. Criterii de integrare și livrare** — codul este integrat în branch-ul principal, build-ul trece în pipeline-ul de Continuous Integration (CI), aplicația rulează fără erori pe mediul de staging.\n\n**4. Criterii de documentație și conformitate** — documentația tehnică și de utilizator este actualizată, eventualele cerințe de securitate sau GDPR sunt respectate, Product Owner-ul a validat funcțional livrabilul față de Acceptance Criteria din User Story.\n\nDoD-ul se aplică **la nivel de increment**, nu doar la nivel de task individual — de aceea criteriile de integrare (build verde, deploy pe staging) sunt esențiale: un cod \"gata\" pe laptopul unui dezvoltator, dar care nu se integrează cu restul sistemului, nu respectă DoD.\n\nUn DoD matur evoluează în timp: pe măsură ce echipa capătă experiență, poate adăuga criterii noi (de exemplu teste de performanță sau teste de securitate automatizate), ceea ce reflectă maturizarea capacității tehnice a echipei, nu birocrație suplimentară.",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "technical-debt",
+    "md": "## Datoria tehnică, Continuous Integration și practicile de testare\n\n**Datoria tehnică (technical debt)** este costul implicit al muncii viitoare generat de alegerea unei soluții rapide, dar imperfecte, în locul unei soluții corecte, dar mai lente. Termenul, introdus de Ward Cunningham, folosește o metaforă financiară: la fel ca un împrumut, datoria tehnică generează \"dobândă\" — timp suplimentar de mentenanță, bug-uri, cod greu de extins.\n\nUn DoD riguros este cel mai eficient instrument al unei echipe Scrum împotriva acumulării necontrolate de datorie tehnică: dacă \"teste unitare scrise\" și \"code review efectuat\" sunt condiții obligatorii pentru ca un Item să fie \"Done\", echipa nu poate amâna la infinit calitatea codului în numele vitezei.\n\n**Continuous Integration (CI)** este practica de a integra codul fiecărui dezvoltator în branch-ul principal de mai multe ori pe zi, fiecare integrare fiind verificată automat printr-un build și un set de teste automate (pipeline CI — de exemplu GitLab CI, GitHub Actions, Azure DevOps). CI reduce drastic riscul de \"integration hell\" — problemele majore descoperite abia la finalul Sprintului, când integrarea contribuțiilor mai multor dezvoltatori relevă conflicte greu de rezolvat. Includerea unui build CI verde ca și criteriu de DoD obligă echipa să mențină codul mereu într-o stare livrabilă.\n\n**Practicile de testare** care susțin un DoD solid includ: TDD (Test-Driven Development — scrierea testului înainte de implementare), testare automatizată la nivel de unitate și de integrare, și testare exploratorie manuală pentru scenarii complexe de business. Automatizarea testelor este esențială în Scrum pentru că Sprint-urile scurte (1-4 săptămâni) nu lasă timp pentru cicluri lungi de testare manuală repetitivă la fiecare livrare.",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b3"
+   },
+   {
+    "type": "example",
+    "title": "DoD pentru un modul de facturare într-un proiect de implementare ERP",
+    "concept_key": "definition-of-done",
+    "md": "O echipă Scrum dintr-o firmă SRL de servicii IT implementează un modul de facturare electronică pentru un client din retail. Definition of Done agreat de echipă pentru orice Product Backlog Item din acest proiect arată astfel:\n\n1. Codul este scris conform standardelor de codare ale echipei și a trecut printr-un code review aprobat de minimum un coleg.\n2. Testele unitare acoperă minimum 80% din codul nou și toate trec cu succes.\n3. Testele de integrare cu modulul de contabilitate (generare notă contabilă automată la emiterea facturii) rulează fără erori.\n4. Build-ul trece în pipeline-ul de CI fără avertismente critice.\n5. Funcționalitatea a fost validată manual pe mediul de staging, inclusiv scenariul de emitere factură cu TVA la cotă standard și scenariul de stornare.\n6. Documentația tehnică (API) și ghidul de utilizare pentru operatorul de facturare au fost actualizate.\n7. Product Owner-ul a confirmat că funcționalitatea respectă Acceptance Criteria din User Story.\n\nDoar după bifarea tuturor celor șapte puncte, Item-ul poate fi prezentat ca \"Done\" la Sprint Review. Dacă, spre exemplu, punctul 3 nu este îndeplinit pentru că integrarea cu modulul contabil nu a fost testată, Item-ul rămâne \"în lucru\", chiar dacă interfața vizuală arată complet funcțională.",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b4"
+   },
+   {
+    "type": "example",
+    "title": "Definition of Done vs. Acceptance Criteria",
+    "concept_key": "acceptance-criteria-vs-dod",
+    "md": "Confuzia dintre DoD și Acceptance Criteria (criterii de acceptanță) este una dintre cele mai frecvente greșeli ale echipelor Agile la început de drum.\n\n**Acceptance Criteria** sunt specifice fiecărui User Story în parte și descriu comportamentul funcțional așteptat din perspectiva utilizatorului. Exemplu, pentru User Story-ul \"Ca operator de facturare, vreau să emit o factură cu TVA la cotă redusă pentru produse alimentare, ca să respect legislația fiscală\":\n- Dat fiind că selectez un produs din categoria alimentară, sistemul aplică automat cota de TVA corectă.\n- Dat fiind că factura este emisă, PDF-ul generat conține toate elementele obligatorii (serie, număr, CUI, cotă TVA).\n\n**Definition of Done** este independent de o anumită funcționalitate — se aplică **identic tuturor** Item-urilor din Sprint Backlog și acoperă condițiile de calitate tehnică (teste, code review, build CI, documentație), nu comportamentul funcțional specific.\n\nRelația corectă între cele două: un Item este \"Done\" doar dacă **îndeplinește simultan** Acceptance Criteria proprii ȘI Definition of Done comun al echipei. Acceptance Criteria răspund la întrebarea \"Face ce trebuie?\", iar DoD răspunde la întrebarea \"E construit așa cum trebuie?\".",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Un DoD superficial (de exemplu doar \"codul compilează\") este mai periculos decât lipsa completă a unui DoD, pentru că oferă o falsă senzație de siguranță: echipa raportează Item-uri \"Done\", dar datoria tehnică se acumulează nevăzută, iar problemele apar abia peste câteva Sprint-uri, când costul de remediere este mult mai mare. Revizuiește periodic DoD-ul în Retrospective și extinde-l pe măsură ce echipa își dezvoltă capacitatea tehnică — dar niciodată nu relaxa criteriile existente doar pentru a respecta un termen de Sprint.",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O echipă Scrum dintr-o companie de digitalizare a proceselor financiare are următorul Definition of Done, aplicat de trei Sprint-uri:\n\n1. Codul compilează fără erori.\n2. Funcționalitatea a fost verificată vizual de dezvoltator pe mediul local.\n\nDupă al treilea Sprint, Product Owner-ul observă că, deși toate Item-urile au fost raportate \"Done\", clientul a semnalat bug-uri de integrare (module care nu comunică corect între ele) și echipa petrece tot mai mult timp remediind cod vechi în loc să dezvolte funcționalități noi.\n\n**Cerință:** Identifică ce lipsește din acest DoD și propune o versiune îmbunătățită, cu minimum 5 criterii, care ar fi prevenit problemele semnalate.",
+    "solution_md": "**Ce lipsește:** DoD-ul actual nu conține niciun criteriu de testare automată, code review, integrare (CI) sau documentație — verifică doar că \"pare să funcționeze\" pe mașina dezvoltatorului. Absența testelor de integrare explică exact bug-urile de comunicare între module, iar absența code review-ului și a testelor unitare explică acumularea de datorie tehnică ce încetinește echipa.\n\n**DoD îmbunătățit:**\n1. Codul compilează fără erori și respectă standardele de stil ale echipei.\n2. Codul a trecut printr-un code review aprobat de cel puțin un alt dezvoltator.\n3. Testele unitare pentru codul nou sunt scrise și trec cu succes.\n4. Testele de integrare dintre modulele afectate rulează fără erori în pipeline-ul de CI.\n5. Funcționalitatea a fost validată pe mediul de staging, nu doar local.\n6. Documentația tehnică relevantă a fost actualizată.\n\nAceastă versiune adaugă exact verigile lipsă — review, testare automată și integrare continuă — care ar fi prins problemele de comunicare între module înainte ca Item-urile să fie raportate \"Done\".",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Scrum Guide 2020, ce se întâmplă cu un Product Backlog Item care nu respectă Definition of Done?",
+    "choices": [
+     "Poate fi prezentat la Sprint Review ca fiind parțial finalizat",
+     "Nu poate fi considerat parte a incrementului și nu poate fi prezentat ca \"Done\"",
+     "Este automat mutat în următorul Sprint fără discuție",
+     "Product Owner-ul decide individual dacă îl acceptă, indiferent de DoD"
+    ],
+    "answer": 1,
+    "explain": "DoD este un criteriu obiectiv aplicat uniform: dacă un Item nu îl respectă, nu poate face parte din increment, indiferent de cât de aproape pare de finalizare sau de presiunea termenului.",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială dintre Acceptance Criteria și Definition of Done?",
+    "choices": [
+     "Acceptance Criteria sunt specifice unui User Story și descriu comportamentul funcțional; DoD este comun tuturor Item-urilor și descrie standardele de calitate tehnică",
+     "Acceptance Criteria sunt stabilite de echipa de dezvoltare, iar DoD este stabilit exclusiv de client",
+     "Nu există nicio diferență, cei doi termeni sunt sinonimi în Scrum",
+     "DoD se aplică doar la finalul proiectului, iar Acceptance Criteria la finalul fiecărui Sprint"
+    ],
+    "answer": 0,
+    "explain": "Acceptance Criteria răspund la \"Face ce trebuie?\" pentru un User Story specific, iar DoD răspunde la \"E construit așa cum trebuie?\" pentru orice Item din Sprint Backlog, indiferent de conținutul funcțional.",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Definition of Done (DoD)?",
+    "back": "Un acord formal al echipei Scrum care stabilește condițiile obiective pe care trebuie să le îndeplinească un increment pentru a fi considerat finalizat (\"Done\").",
+    "concept_key": "definition-of-done",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 categorii tipice de criterii dintr-un DoD?",
+    "back": "Criterii de cod (review, standarde), criterii de testare (teste unitare/integrare), criterii de integrare-livrare (build CI, staging) și criterii de documentație/conformitate.",
+    "concept_key": "definition-of-done",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Prin ce se diferențiază Acceptance Criteria de Definition of Done?",
+    "back": "Acceptance Criteria sunt specifice unui User Story și descriu comportamentul funcțional; DoD este comun tuturor Item-urilor și descrie standardele de calitate tehnică ale echipei.",
+    "concept_key": "acceptance-criteria-vs-dod",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este datoria tehnică (technical debt)?",
+    "back": "Costul implicit de muncă viitoare generat de alegerea unei soluții rapide, dar imperfecte, în locul unei soluții corecte; un DoD riguros previne acumularea ei necontrolată.",
+    "concept_key": "technical-debt",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Continuous Integration (CI)?",
+    "back": "Practica de a integra codul fiecărui dezvoltator în branch-ul principal de mai multe ori pe zi, cu build și teste automate rulate la fiecare integrare, pentru a evita \"integration hell\".",
+    "concept_key": "continuous-integration",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se întâmplă dacă un Product Backlog Item nu respectă DoD-ul echipei?",
+    "back": "Nu poate fi considerat parte a incrementului livrat și nu poate fi prezentat ca \"Done\" la Sprint Review, indiferent de termenul de Sprint.",
+    "concept_key": "definition-of-done",
+    "blockId": "cmjjuxvvy007numkpchynja1j-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1432,
+   "flashcards": 6
+  }
+ }
+}

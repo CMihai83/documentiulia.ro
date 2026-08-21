@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxvvw007lumkpf02kbrdd",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Practici și Tehnici Agile",
+ "lesson": "Metrics în Agile",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Metrics în Agile\n\n## De ce măsurăm în Agile?\n\nÎn echipele Agile, metricile nu există pentru a evalua performanța individuală a membrilor echipei, ci pentru a răspunde la trei întrebări: **Cât de predictibilă este livrarea noastră?**, **Unde apar blocajele în flux?** și **Cum ne îmbunătățim de la un sprint la altul?**\n\nUn Scrum Master care folosește metrici pentru a presa echipa („de ce velocity a scăzut săptămâna asta?”) distruge încrederea și încurajează raportarea trucată (gaming). Scopul corect este transparența: metricile alimentează discuțiile din Sprint Retrospective și Daily Scrum, nu evaluările de performanță din HR.\n\nExistă două familii de metrici pe care le vei folosi constant într-un proiect real (de exemplu, o implementare ERP pentru o companie de distribuție din România):\n\n1. **Metrici de volum** — cât lucru finalizează echipa într-o perioadă (Velocity).\n2. **Metrici de flux** — cât de rapid și de previzibil se deplasează un element de lucru prin sistem (Cycle Time, Lead Time, Cumulative Flow Diagram).\n\nAmbele completează Burndown-ul și Burnup-ul, care arată progresul vizual către un obiectiv de sprint sau de release.\n\n## Velocity\n\n**Velocity** este suma story points-urilor pentru elementele de Product Backlog finalizate complet (conform Definition of Done) într-un Sprint. Nu este o unitate de timp și nu este comparabilă între echipe diferite, pentru că fiecare echipă estimează în raport cu propria scală relativă de story points.\n\nVelocity se calculează după fiecare sprint, iar pentru forecasting se folosește **media ultimelor 3-5 sprinturi**, nu un singur sprint izolat (care poate fi distorsionat de concedii, sărbători legale sau incidente neprevăzute).\n\nUtilizări corecte:\n- Estimarea numărului de sprinturi necesare pentru a finaliza un Product Backlog de dimensiune cunoscută.\n- Detectarea tendințelor: velocity constant vs. în scădere/creștere.\n\nUtilizări incorecte (de evitat):\n- Compararea velocity-ului între echipe diferite.\n- Fixarea unui target de velocity ca obiectiv în sine — echipa va infla estimările (velocity theatre) fără să livreze mai multă valoare reală.\n\n## Burndown chart vs. Burnup chart\n\n**Sprint Burndown chart** arată munca rămasă (în ore sau story points) pe axa verticală, în funcție de zilele sprintului pe axa orizontală. Linia ideală coboară liniar spre zero; linia reală arată ritmul efectiv de finalizare. Dacă linia reală rămâne peste linia ideală spre finalul sprintului, echipa riscă să nu finalizeze Sprint Backlog-ul.\n\nProblema burndown-ului clasic: dacă apare muncă suplimentară (scope crescut în timpul sprintului), linia poate urca brusc, iar cititorul nu vede clar *de ce* — pare doar o „regresie”.\n\n**Burnup chart** rezolvă această limitare: are două linii — una pentru munca finalizată (crește spre dreapta) și una pentru scope-ul total (orizontală, dar care poate „sări” în sus dacă se adaugă muncă nouă). Astfel se vede simultan progresul *și* schimbările de scope, ceea ce îl face preferat pentru Release-uri și pentru comunicarea cu stakeholderii dintr-un proiect de digitalizare pe termen mai lung.\n\n## Cycle Time și Lead Time\n\n**Lead Time** este intervalul de la momentul în care un element de lucru este *cerut/înregistrat* (ex. introdus în Product Backlog) până la livrarea sa către client. Măsoară experiența clientului — cât așteaptă de la cerere la rezultat.\n\n**Cycle Time** este intervalul de la momentul în care echipa *începe efectiv lucrul* la un element (intră în „In Progress”) până la finalizarea lui. Măsoară eficiența internă a echipei.\n\nRelația dintre ele, prin **Legea lui Little** (Little's Law), aplicată frecvent în Kanban:\n\n**Cycle Time = WIP (Work in Progress) / Throughput**\n\nunde Throughput este numărul de elemente finalizate pe unitate de timp (ex. elemente/zi). Reducerea WIP-ului (limitarea muncii în curs) este cea mai eficientă pârghie pentru a scurta Cycle Time-ul, fără a crește efortul echipei — un principiu central în Kanban și Lean.\n\n## Cumulative Flow Diagram (CFD)\n\n**Cumulative Flow Diagram** este un grafic cu zone colorate stivuite, unde fiecare zonă reprezintă o stare a fluxului de lucru (ex. To Do, In Progress, Testing, Done), iar axa orizontală reprezintă timpul. Numărul cumulat de elemente din fiecare stare crește de-a lungul proiectului.\n\nCe citești dintr-un CFD:\n- **Lățimea orizontală** a unei zone, la un moment dat, arată Cycle Time-ul mediu pentru acea etapă.\n- **Lățimea verticală** a unei zone arată WIP-ul curent pentru acea etapă.\n- Dacă o zonă (ex. „Testing”) se **lărgește constant** în timp, este semn clar de **bottleneck** — elementele intră mai repede decât ies din acea etapă.\n- Benzile paralele și de grosime constantă indică un flux sănătos și predictibil.\n\nCFD este instrumentul preferat pentru Sprint Review și pentru discuții de îmbunătățire continuă în Retrospective, pentru că expune vizual unde se blochează fluxul, nu doar cât s-a livrat.\n\n## Exemplu: Calculul Velocity și forecasting pentru un proiect ERP\nO echipă Scrum care implementează un modul de facturare electronică pentru o companie de distribuție din Cluj a finalizat următoarele story points în ultimele 4 sprinturi:\n\n| Sprint | Story points finalizați |\n|---|---|\n| Sprint 12 | 32 |\n| Sprint 13 | 28 |\n| Sprint 14 | 35 |\n| Sprint 15 | 30 |\n\n**Velocity mediu** = (32 + 28 + 35 + 30) / 4 = 125 / 4 = **31,25 story points/sprint** (rotunjit conservator la 31).\n\nProduct Backlog-ul rămas pentru modulul de facturare are 279 de story points estimați.\n\n**Forecast**: 279 / 31 ≈ **9 sprinturi** (cu sprinturi de 2 săptămâni, aproximativ 18 săptămâni, plus o marjă de rezervă pentru sprinturi sub medie).\n\nAcest calcul se comunică stakeholderilor ca interval (8-10 sprinturi), nu ca dată fixă, tocmai pentru că velocity are variație naturală de la un sprint la altul.\n\n## Exemplu: Citirea unui Cumulative Flow Diagram cu bottleneck\nÎntr-un proiect de digitalizare a proceselor de aprovizionare, echipa observă în CFD-ul din ultimele 3 săptămâni următorul tipar:\n\n- Zona „To Do” rămâne relativ constantă ca lățime.\n- Zona „In Progress” are lățime stabilă.\n- Zona „Testing” se **lărgește continuu**, de la o bandă subțire în săptămâna 1 la o bandă de 3 ori mai lată în săptămâna 3.\n- Zona „Done” crește tot mai lent.\n\n**Interpretare**: elementele intră în testare mai repede decât reușește echipa de QA să le valideze — un bottleneck clasic la etapa de testare, posibil cauzat de lipsa unui al doilea tester sau de teste manuale repetitive care ar putea fi automatizate.\n\n**Acțiune recomandată în Retrospective**: fie se introduce o limită WIP pentru coloana „Testing”, fie se alocă temporar un dezvoltator pentru automatizarea testelor de regresie, pentru a reduce Cycle Time-ul acelei etape.\n\n⚠ Nu transforma velocity într-un target de performanță și nu compara velocity-ul între echipe diferite — fiecare echipă are propria scală de story points, iar presiunea pe o cifră de velocity duce aproape întotdeauna la „inflaționarea” estimărilor (echipa raportează story points mai mari pentru aceeași muncă), nu la livrare reală de valoare suplimentară. Folosește velocity strict pentru forecasting intern al aceleiași echipe.\n\n## Exercițiu\nO echipă Kanban care lucrează la suportul unei aplicații de contabilitate are un WIP mediu de 8 elemente de lucru și un Throughput de 4 elemente finalizate pe zi.\n\n1. Calculează Cycle Time-ul mediu, folosind Legea lui Little.\n\nÎn plus, aceeași echipă (care rulează și sprinturi Scrum pentru funcționalități noi) a raportat următoarele story points finalizați în ultimele 4 sprinturi: 25, 30, 22, 27.\n\n2. Calculează velocity-ul mediu al echipei.\n\n3. Dacă Product Backlog-ul rămas are 156 story points, câte sprinturi mai sunt necesare, aproximativ?\n\n**Soluție:** **1. Cycle Time (Legea lui Little)**\n\nCycle Time = WIP / Throughput = 8 / 4 = **2 zile** în medie per element de lucru.\n\n**2. Velocity mediu**\n\n(25 + 30 + 22 + 27) / 4 = 104 / 4 = **26 story points/sprint**.\n\n**3. Forecast sprinturi rămase**\n\n156 / 26 = **6 sprinturi** (fără marjă de siguranță; în comunicarea către stakeholderi se recomandă un interval, de exemplu 6-7 sprinturi, pentru a acoperi variația naturală a velocity-ului).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "metrici-agile-scop",
+    "md": "## De ce măsurăm în Agile?\n\nÎn echipele Agile, metricile nu există pentru a evalua performanța individuală a membrilor echipei, ci pentru a răspunde la trei întrebări: **Cât de predictibilă este livrarea noastră?**, **Unde apar blocajele în flux?** și **Cum ne îmbunătățim de la un sprint la altul?**\n\nUn Scrum Master care folosește metrici pentru a presa echipa („de ce velocity a scăzut săptămâna asta?”) distruge încrederea și încurajează raportarea trucată (gaming). Scopul corect este transparența: metricile alimentează discuțiile din Sprint Retrospective și Daily Scrum, nu evaluările de performanță din HR.\n\nExistă două familii de metrici pe care le vei folosi constant într-un proiect real (de exemplu, o implementare ERP pentru o companie de distribuție din România):\n\n1. **Metrici de volum** — cât lucru finalizează echipa într-o perioadă (Velocity).\n2. **Metrici de flux** — cât de rapid și de previzibil se deplasează un element de lucru prin sistem (Cycle Time, Lead Time, Cumulative Flow Diagram).\n\nAmbele completează Burndown-ul și Burnup-ul, care arată progresul vizual către un obiectiv de sprint sau de release.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "velocity-scrum",
+    "md": "## Velocity\n\n**Velocity** este suma story points-urilor pentru elementele de Product Backlog finalizate complet (conform Definition of Done) într-un Sprint. Nu este o unitate de timp și nu este comparabilă între echipe diferite, pentru că fiecare echipă estimează în raport cu propria scală relativă de story points.\n\nVelocity se calculează după fiecare sprint, iar pentru forecasting se folosește **media ultimelor 3-5 sprinturi**, nu un singur sprint izolat (care poate fi distorsionat de concedii, sărbători legale sau incidente neprevăzute).\n\nUtilizări corecte:\n- Estimarea numărului de sprinturi necesare pentru a finaliza un Product Backlog de dimensiune cunoscută.\n- Detectarea tendințelor: velocity constant vs. în scădere/creștere.\n\nUtilizări incorecte (de evitat):\n- Compararea velocity-ului între echipe diferite.\n- Fixarea unui target de velocity ca obiectiv în sine — echipa va infla estimările (velocity theatre) fără să livreze mai multă valoare reală.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "burndown-burnup-chart",
+    "md": "## Burndown chart vs. Burnup chart\n\n**Sprint Burndown chart** arată munca rămasă (în ore sau story points) pe axa verticală, în funcție de zilele sprintului pe axa orizontală. Linia ideală coboară liniar spre zero; linia reală arată ritmul efectiv de finalizare. Dacă linia reală rămâne peste linia ideală spre finalul sprintului, echipa riscă să nu finalizeze Sprint Backlog-ul.\n\nProblema burndown-ului clasic: dacă apare muncă suplimentară (scope crescut în timpul sprintului), linia poate urca brusc, iar cititorul nu vede clar *de ce* — pare doar o „regresie”.\n\n**Burnup chart** rezolvă această limitare: are două linii — una pentru munca finalizată (crește spre dreapta) și una pentru scope-ul total (orizontală, dar care poate „sări” în sus dacă se adaugă muncă nouă). Astfel se vede simultan progresul *și* schimbările de scope, ceea ce îl face preferat pentru Release-uri și pentru comunicarea cu stakeholderii dintr-un proiect de digitalizare pe termen mai lung.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cycle-time-lead-time",
+    "md": "## Cycle Time și Lead Time\n\n**Lead Time** este intervalul de la momentul în care un element de lucru este *cerut/înregistrat* (ex. introdus în Product Backlog) până la livrarea sa către client. Măsoară experiența clientului — cât așteaptă de la cerere la rezultat.\n\n**Cycle Time** este intervalul de la momentul în care echipa *începe efectiv lucrul* la un element (intră în „In Progress”) până la finalizarea lui. Măsoară eficiența internă a echipei.\n\nRelația dintre ele, prin **Legea lui Little** (Little's Law), aplicată frecvent în Kanban:\n\n**Cycle Time = WIP (Work in Progress) / Throughput**\n\nunde Throughput este numărul de elemente finalizate pe unitate de timp (ex. elemente/zi). Reducerea WIP-ului (limitarea muncii în curs) este cea mai eficientă pârghie pentru a scurta Cycle Time-ul, fără a crește efortul echipei — un principiu central în Kanban și Lean.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cumulative-flow-diagram",
+    "md": "## Cumulative Flow Diagram (CFD)\n\n**Cumulative Flow Diagram** este un grafic cu zone colorate stivuite, unde fiecare zonă reprezintă o stare a fluxului de lucru (ex. To Do, In Progress, Testing, Done), iar axa orizontală reprezintă timpul. Numărul cumulat de elemente din fiecare stare crește de-a lungul proiectului.\n\nCe citești dintr-un CFD:\n- **Lățimea orizontală** a unei zone, la un moment dat, arată Cycle Time-ul mediu pentru acea etapă.\n- **Lățimea verticală** a unei zone arată WIP-ul curent pentru acea etapă.\n- Dacă o zonă (ex. „Testing”) se **lărgește constant** în timp, este semn clar de **bottleneck** — elementele intră mai repede decât ies din acea etapă.\n- Benzile paralele și de grosime constantă indică un flux sănătos și predictibil.\n\nCFD este instrumentul preferat pentru Sprint Review și pentru discuții de îmbunătățire continuă în Retrospective, pentru că expune vizual unde se blochează fluxul, nu doar cât s-a livrat.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul Velocity și forecasting pentru un proiect ERP",
+    "concept_key": "velocity-scrum",
+    "md": "O echipă Scrum care implementează un modul de facturare electronică pentru o companie de distribuție din Cluj a finalizat următoarele story points în ultimele 4 sprinturi:\n\n| Sprint | Story points finalizați |\n|---|---|\n| Sprint 12 | 32 |\n| Sprint 13 | 28 |\n| Sprint 14 | 35 |\n| Sprint 15 | 30 |\n\n**Velocity mediu** = (32 + 28 + 35 + 30) / 4 = 125 / 4 = **31,25 story points/sprint** (rotunjit conservator la 31).\n\nProduct Backlog-ul rămas pentru modulul de facturare are 279 de story points estimați.\n\n**Forecast**: 279 / 31 ≈ **9 sprinturi** (cu sprinturi de 2 săptămâni, aproximativ 18 săptămâni, plus o marjă de rezervă pentru sprinturi sub medie).\n\nAcest calcul se comunică stakeholderilor ca interval (8-10 sprinturi), nu ca dată fixă, tocmai pentru că velocity are variație naturală de la un sprint la altul.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b6"
+   },
+   {
+    "type": "example",
+    "title": "Citirea unui Cumulative Flow Diagram cu bottleneck",
+    "concept_key": "cumulative-flow-diagram",
+    "md": "Într-un proiect de digitalizare a proceselor de aprovizionare, echipa observă în CFD-ul din ultimele 3 săptămâni următorul tipar:\n\n- Zona „To Do” rămâne relativ constantă ca lățime.\n- Zona „In Progress” are lățime stabilă.\n- Zona „Testing” se **lărgește continuu**, de la o bandă subțire în săptămâna 1 la o bandă de 3 ori mai lată în săptămâna 3.\n- Zona „Done” crește tot mai lent.\n\n**Interpretare**: elementele intră în testare mai repede decât reușește echipa de QA să le valideze — un bottleneck clasic la etapa de testare, posibil cauzat de lipsa unui al doilea tester sau de teste manuale repetitive care ar putea fi automatizate.\n\n**Acțiune recomandată în Retrospective**: fie se introduce o limită WIP pentru coloana „Testing”, fie se alocă temporar un dezvoltator pentru automatizarea testelor de regresie, pentru a reduce Cycle Time-ul acelei etape.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu transforma velocity într-un target de performanță și nu compara velocity-ul între echipe diferite — fiecare echipă are propria scală de story points, iar presiunea pe o cifră de velocity duce aproape întotdeauna la „inflaționarea” estimărilor (echipa raportează story points mai mari pentru aceeași muncă), nu la livrare reală de valoare suplimentară. Folosește velocity strict pentru forecasting intern al aceleiași echipe.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "O echipă Kanban care lucrează la suportul unei aplicații de contabilitate are un WIP mediu de 8 elemente de lucru și un Throughput de 4 elemente finalizate pe zi.\n\n1. Calculează Cycle Time-ul mediu, folosind Legea lui Little.\n\nÎn plus, aceeași echipă (care rulează și sprinturi Scrum pentru funcționalități noi) a raportat următoarele story points finalizați în ultimele 4 sprinturi: 25, 30, 22, 27.\n\n2. Calculează velocity-ul mediu al echipei.\n\n3. Dacă Product Backlog-ul rămas are 156 story points, câte sprinturi mai sunt necesare, aproximativ?",
+    "solution_md": "**1. Cycle Time (Legea lui Little)**\n\nCycle Time = WIP / Throughput = 8 / 4 = **2 zile** în medie per element de lucru.\n\n**2. Velocity mediu**\n\n(25 + 30 + 22 + 27) / 4 = 104 / 4 = **26 story points/sprint**.\n\n**3. Forecast sprinturi rămase**\n\n156 / 26 = **6 sprinturi** (fără marjă de siguranță; în comunicarea către stakeholderi se recomandă un interval, de exemplu 6-7 sprinturi, pentru a acoperi variația naturală a velocity-ului).",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este cea mai corectă utilizare a metricii Velocity?",
+    "choices": [
+     "Compararea performanței între două echipe Scrum diferite",
+     "Forecasting-ul intern al aceleiași echipe, pe baza mediei ultimelor 3-5 sprinturi",
+     "Stabilirea unui target fix pe care echipa trebuie să-l atingă în fiecare sprint",
+     "Evaluarea performanței individuale a membrilor echipei"
+    ],
+    "answer": 1,
+    "explain": "Velocity este specific fiecărei echipe (scală proprie de story points) și variază natural de la un sprint la altul; folosirea corectă este forecasting intern pe bază de medie, nu comparație externă sau target fix.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce diferență cheie are Burnup chart față de Burndown chart?",
+    "choices": [
+     "Burnup afișează timpul în ore, iar Burndown în zile",
+     "Burnup arată explicit atât progresul finalizat, cât și modificările de scope, printr-o linie separată pentru scope total",
+     "Burnup se folosește doar în Kanban, Burndown doar în Scrum",
+     "Burndown este mai precis pentru proiecte cu scope fix, iar Burnup nu poate fi folosit acolo"
+    ],
+    "answer": 1,
+    "explain": "Burnup-ul are două linii — munca finalizată și scope-ul total — ceea ce face vizibile schimbările de scope, spre deosebire de burndown, unde o creștere de scope apare doar ca o urcare bruscă greu de interpretat.",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează Velocity într-un Sprint?",
+    "back": "Suma story points-urilor pentru elementele de Product Backlog finalizate complet (conform Definition of Done) în acel Sprint.",
+    "concept_key": "velocity-scrum",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre Lead Time și Cycle Time?",
+    "back": "Lead Time = de la momentul cererii/înregistrării elementului până la livrare (experiența clientului). Cycle Time = de la începerea efectivă a lucrului până la finalizare (eficiența echipei).",
+    "concept_key": "cycle-time-lead-time",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula Legii lui Little aplicată în Agile/Kanban?",
+    "back": "Cycle Time = WIP (Work in Progress) / Throughput.",
+    "concept_key": "cycle-time-lead-time",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce indică o zonă care se lărgește constant într-un Cumulative Flow Diagram?",
+    "back": "Un bottleneck (blocaj) în etapa respectivă — elementele intră în acea stare mai repede decât ies din ea.",
+    "concept_key": "cumulative-flow-diagram",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce este preferat Burnup chart-ul pentru comunicarea cu stakeholderii pe un Release?",
+    "back": "Pentru că arată simultan progresul finalizat și schimbările de scope, evitând confuzia unui burndown care doar 'urcă' brusc când se adaugă muncă nouă.",
+    "concept_key": "burndown-burnup-chart",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce risc apare când echipa este presată pe o cifră fixă de Velocity?",
+    "back": "Inflaționarea estimărilor (echipa raportează story points mai mari pentru aceeași muncă) fără creșterea reală a valorii livrate — un antipattern numit 'velocity theatre'.",
+    "concept_key": "velocity-scrum",
+    "blockId": "cmjjuxvvw007lumkpf02kbrdd-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1218,
+   "flashcards": 6
+  }
+ }
+}

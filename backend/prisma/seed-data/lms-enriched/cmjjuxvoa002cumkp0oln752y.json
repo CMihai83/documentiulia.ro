@@ -1,0 +1,152 @@
+{
+ "lessonId": "cmjjuxvoa002cumkp0oln752y",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Pivot și Modele de Date",
+ "lesson": "Introducere în DAX",
+ "category": "EXCEL_VBA",
+ "content": "# Introducere în DAX\n\n**DAX (Data Analysis Expressions)** este limbajul de formule folosit în Power Pivot, în tabelele native de date din Excel 365 și în Power BI. Spre deosebire de formulele Excel clasice, care se scriu într-o celulă și se referă la alte celule (de exemplu =A2*B2), formulele DAX lucrează la nivel de tabel și coloană întreagă, nu la nivel de celulă individuală.\n\nÎntr-un model de date Power Pivot poți adăuga două tipuri de formule DAX:\n\n- **Coloană calculată** — se adaugă ca o coloană nouă în tabel, se evaluează rând cu rând (la fel ca o formulă Excel copiată pe toată coloana) și ocupă spațiu în memoria modelului.\n- **Măsură (measure)** — nu ocupă spațiu în tabel; se calculează dinamic în momentul în care este folosită într-un PivotTable sau raport și reacționează la filtrele curente (an, regiune, categorie de produs etc.).\n\nExemplu de măsură simplă:\n`Total Vânzări := SUM(Vanzari[Valoare])`\n\nRegula practică pentru o firmă (SRL) care analizează vânzări: dacă rezultatul trebuie să varieze în funcție de filtrele din raport, folosește o măsură. Dacă ai nevoie de o valoare fixă, calculată o singură dată pe fiecare rând (de exemplu categoria unui produs adusă dintr-un tabel de dimensiuni), folosește o coloană calculată.\n\nConceptul care separă DAX de Excel clasic este **contextul de evaluare**. Orice formulă DAX este calculată într-un context, iar rezultatul depinde de acest context, nu doar de argumentele explicite ale funcției.\n\n- **Contextul de rând** apare la coloanele calculate și în funcțiile iteratoare (cele care se termină în X, precum SUMX): formula \"vede\" un singur rând din tabel odată, ca și cum ai completa manual o coloană Excel rând cu rând.\n- **Contextul de filtrare** apare la măsuri: atunci când o măsură este afișată într-un PivotTable, Excel aplică automat filtrele din rândurile, coloanele și slicer-ele raportului (de exemplu \"Regiune = Nord\" și \"An = 2026\") înainte de a evalua formula.\n\nAceastă distincție explică de ce aceeași măsură, ex. `SUM(Vanzari[Valoare])`, afișează valori diferite pentru fiecare celulă a unui PivotTable: nu formula se schimbă, ci contextul de filtrare aplicat de raport. Înțelegerea celor două contexte este cheia pentru a folosi corect toate funcțiile DAX avansate din această lecție.\n\n**CALCULATE** este considerată cea mai importantă funcție din DAX, pentru că este singura funcție care poate modifica direct contextul de filtrare în care se evaluează o expresie.\n\nSintaxă (Excel în limba română folosește punct și virgulă ca separator de argumente):\n`CALCULATE(<expresie>; <filtru1>; <filtru2>; ...)`\n\nCALCULATE preia expresia din primul argument (de obicei o măsură sau un agregat precum SUM) și o recalculează după ce aplică filtrele suplimentare din argumentele următoare, peste sau în locul filtrelor deja existente din raport.\n\nExemplu:\n`Vanzari_Nord := CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Regiune]=\"Nord\")`\n\nAceastă măsură returnează totalul vânzărilor pentru regiunea Nord, indiferent de filtrul de regiune ales de utilizator în PivotTable — filtrul explicit din CALCULATE îl suprascrie pe cel din raport pentru coloana Regiune. Fără CALCULATE, marea majoritate a analizelor \"condiționate\" din DAX (top produs, comparație an curent vs. an anterior, procent din total) ar fi imposibil de construit.\n\nDouă funcții completează CALCULATE în aproape orice model de date avansat:\n\n**FILTER(<tabel>; <condiție>)** returnează un subset de rânduri dintr-un tabel, pe baza unei condiții logice. Se folosește de obicei ca argument în CALCULATE, atunci când condiția este mai complexă decât o simplă comparație de coloană (de exemplu, mai multe condiții combinate cu ȘI/SAU, sau condiții pe o expresie calculată).\n\nExemplu: `CALCULATE(SUM(Vanzari[Valoare]); FILTER(Vanzari; Vanzari[Cantitate]>5))`\n\n**ALL(<tabel>)** sau **ALL(<coloană>)** elimină filtrele existente asupra tabelului sau coloanei respective, indiferent de ce filtre a aplicat utilizatorul în raport. Este esențială pentru a calcula un total general \"absolut\", folosit apoi ca numitor la un procent din total.\n\nExemplu: `Total_General := CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari))`\n\nCombinația CALCULATE + FILTER + ALL este tiparul standard pentru rapoarte de tip \"pondere din total\", \"comparație față de medie\" sau \"top N clienți\", frecvent cerute în rapoartele de management ale unui SRL.\n\n**RELATED(<coloană din alt tabel>)** aduce o valoare dintr-un tabel relaționat în tabelul curent, folosind o relație activă definită în modelul de date Power Pivot (vezi lecțiile anterioare din acest modul despre relații 1-la-mai-mulți).\n\nRELATED funcționează doar dinspre partea \"mai mulți\" către partea \"1\" a relației și doar într-un context de rând (deci, de regulă, în coloane calculate sau în interiorul funcțiilor iteratoare precum SUMX). Nu poate fi folosită direct într-o măsură simplă, fără un context de rând.\n\nExemplu tipic: ai un tabel fapt `Vanzari` (cu ProdusID, Cantitate, Preț) și un tabel dimensiune `Produse` (cu ProdusID, Denumire, Categorie), legate printr-o relație pe ProdusID. Pentru a analiza vânzările pe categorie, adaugi în tabelul Vanzari o coloană calculată:\n\n`Categorie := RELATED(Produse[Categorie])`\n\nAstfel, fiecare rând din Vanzari \"moștenește\" categoria produsului din tabelul dimensiune, fără să dubleze fizic informația și fără VLOOKUP/XLOOKUP — relația din model face legătura automat.\n\nFuncțiile care se termină în **X** (SUMX, AVERAGEX, COUNTX, MAXX etc.) sunt funcții iteratoare: parcurg un tabel rând cu rând, evaluează o expresie pentru fiecare rând (în context de rând) și apoi agregă rezultatele.\n\n**SUMX(<tabel>; <expresie>)** — evaluează expresia pentru fiecare rând, apoi însumează. Se folosește obligatoriu atunci când rezultatul nu este o simplă sumă a unei coloane existente, ci produsul sau o combinație a mai multor coloane, calculate diferit pentru fiecare rând.\n\nExemplu: dacă tabelul Vanzari are doar coloanele Cantitate și Pret_Unitar (fără o coloană Valoare deja calculată), totalul vânzărilor se obține astfel:\n\n`Valoare_Totala := SUMX(Vanzari; Vanzari[Cantitate]*Vanzari[Pret_Unitar])`\n\n**AVERAGEX** funcționează identic, dar calculează media expresiei pe toate rândurile, nu suma — util, de exemplu, pentru prețul mediu ponderat sau marja medie pe factură. Diferența esențială față de SUM/AVERAGE: acestea din urmă lucrează pe o singură coloană deja existentă, în timp ce SUMX/AVERAGEX calculează întâi o expresie proprie, rând cu rând.\n\n## Exemplu: Total și pondere pe regiune cu CALCULATE, condiție și ALL\nModel de date: tabelul `Vanzari` conține coloanele Regiune și Valoare, cu totaluri agregate astfel: Nord = 45.230 lei, Sud = 52.100 lei, Est = 38.900 lei, Vest = 51.270 lei. Total general = 187.500 lei.\n\n**Măsura 1 — total pe o regiune fixă:**\n`Vanzari_Nord := CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Regiune]=\"Nord\")`\nRezultat: 45.230 lei, indiferent de filtrele aplicate în PivotTable.\n\n**Măsura 2 — total general, ignorând orice filtru de regiune:**\n`Total_General := CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari[Regiune]))`\nRezultat: 187.500 lei.\n\n**Măsura 3 — pondere procentuală a fiecărei regiuni în total:**\n`Pondere_Regiune := DIVIDE(SUM(Vanzari[Valoare]); CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari[Regiune])))`\n\nPentru regiunea Nord: 45.230 / 187.500 = 0,2412, afișat ca 24,12%. Observă că folosim `DIVIDE` în locul împărțirii simple (/) pentru a evita eroarea #DIV/0! atunci când numitorul este zero — DIVIDE are un al treilea argument opțional pentru valoarea de rezervă.\n\n## Exemplu: Calculul valorii totale cu SUMX când lipsește o coloană de Valoare\nTabelul `Vanzari` conține doar coloanele Cantitate și Pret_Unitar (nu există o coloană Valoare pre-calculată):\n\n| Cantitate | Pret_Unitar |\n|---|---|\n| 10 | 25,50 lei |\n| 5 | 120,00 lei |\n| 8 | 45,75 lei |\n\nO formulă SUM simplă nu poate rezolva situația, pentru că nu există o coloană unică de însumat — e nevoie de o înmulțire pe fiecare rând, apoi de o sumă. Măsura corectă:\n\n`Valoare_Totala := SUMX(Vanzari; Vanzari[Cantitate]*Vanzari[Pret_Unitar])`\n\nCalcul pas cu pas, rând cu rând (context de rând):\n- Rândul 1: 10 × 25,50 = 255,00 lei\n- Rândul 2: 5 × 120,00 = 600,00 lei\n- Rândul 3: 8 × 45,75 = 366,00 lei\n\nSuma finală: 255,00 + 600,00 + 366,00 = **1.221,00 lei**.\n\nDacă ai încerca `SUM(Vanzari[Cantitate]*Vanzari[Pret_Unitar])`, formula ar genera eroare, pentru că SUM acceptă o singură coloană ca argument, nu o expresie calculată rând cu rând — exact rolul pe care îl joacă SUMX.\n\n⚠ Nu abuza de coloanele calculate atunci când poți obține același rezultat printr-o măsură. Coloanele calculate ocupă memorie permanent în model (se recalculează la fiecare reîmprospătare a datelor și rămân stocate pentru fiecare rând), în timp ce măsurile se calculează \"la cerere\", doar când sunt afișate, și nu cresc dimensiunea fișierului. Regula practică: folosește o coloană calculată doar când ai nevoie de rezultat în context de rând (de exemplu pentru RELATED, pentru segmentare/slicer, sau ca bază pentru o altă coloană calculată) — pentru orice agregare afișată într-un raport (total, medie, pondere), folosește o măsură.\n\n## Exercițiu\nAi un model de date Power Pivot cu două tabele relaționate prin ProdusID:\n\n**Produse** (dimensiune): ProdusID, Denumire, Categorie\n\n**Vanzari** (fapt): ProdusID, Cantitate, Pret_Unitar, Valoare\n\nDate concrete din Vanzari:\n\n| ProdusID | Denumire | Categorie | Valoare |\n|---|---|---|---|\n|101|Hârtie A4|Birotică|900,00 lei|\n|102|Pixuri|Birotică|500,00 lei|\n|103|Monitor|Electronice|3.400,00 lei|\n|104|Scaun|Mobilier|1.920,00 lei|\n\nCerințe:\n1. Adaugă în tabelul Vanzari o coloană calculată `Categorie`, care preia categoria din tabelul Produse folosind relația existentă.\n2. Construiește o măsură `Vanzari_Birotica` care calculează, folosind CALCULATE, totalul valorii vânzărilor doar pentru categoria \"Birotică\".\n3. Construiește o măsură `Pondere_Birotica` care arată ponderea procentuală a categoriei Birotică în totalul general al vânzărilor (folosește ALL pentru a ignora orice filtru de categorie la numitor și DIVIDE pentru împărțire sigură).\n\n**Soluție:** **1. Coloană calculată (context de rând, în tabelul Vanzari):**\n`Categorie := RELATED(Produse[Categorie])`\n→ fiecare rând din Vanzari primește automat categoria produsului corespunzător (Birotică, Electronice sau Mobilier), preluată prin relația ProdusID.\n\n**2. Măsura pentru totalul categoriei Birotică:**\n`Vanzari_Birotica := CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Categorie]=\"Birotică\")`\nCalcul: 900,00 + 500,00 = **1.400,00 lei**.\n\n**3. Măsura pentru pondere procentuală:**\n`Pondere_Birotica := DIVIDE(CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Categorie]=\"Birotică\"); CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari)))`\n\nTotal general = 900,00 + 500,00 + 3.400,00 + 1.920,00 = 6.720,00 lei.\nPondere Birotică = 1.400,00 / 6.720,00 = 0,2083, adică **20,83%** din vânzările totale.\n\nObservă structura repetitivă CALCULATE(SUM(...); condiție) — acesta este tiparul de bază pe care îl vei regăsi în aproape orice raport DAX avansat: numărător filtrat, numitor cu ALL, împărțire cu DIVIDE.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "dax-introducere",
+    "md": "**DAX (Data Analysis Expressions)** este limbajul de formule folosit în Power Pivot, în tabelele native de date din Excel 365 și în Power BI. Spre deosebire de formulele Excel clasice, care se scriu într-o celulă și se referă la alte celule (de exemplu =A2*B2), formulele DAX lucrează la nivel de tabel și coloană întreagă, nu la nivel de celulă individuală.\n\nÎntr-un model de date Power Pivot poți adăuga două tipuri de formule DAX:\n\n- **Coloană calculată** — se adaugă ca o coloană nouă în tabel, se evaluează rând cu rând (la fel ca o formulă Excel copiată pe toată coloana) și ocupă spațiu în memoria modelului.\n- **Măsură (measure)** — nu ocupă spațiu în tabel; se calculează dinamic în momentul în care este folosită într-un PivotTable sau raport și reacționează la filtrele curente (an, regiune, categorie de produs etc.).\n\nExemplu de măsură simplă:\n`Total Vânzări := SUM(Vanzari[Valoare])`\n\nRegula practică pentru o firmă (SRL) care analizează vânzări: dacă rezultatul trebuie să varieze în funcție de filtrele din raport, folosește o măsură. Dacă ai nevoie de o valoare fixă, calculată o singură dată pe fiecare rând (de exemplu categoria unui produs adusă dintr-un tabel de dimensiuni), folosește o coloană calculată.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dax-context-evaluare",
+    "md": "Conceptul care separă DAX de Excel clasic este **contextul de evaluare**. Orice formulă DAX este calculată într-un context, iar rezultatul depinde de acest context, nu doar de argumentele explicite ale funcției.\n\n- **Contextul de rând** apare la coloanele calculate și în funcțiile iteratoare (cele care se termină în X, precum SUMX): formula \"vede\" un singur rând din tabel odată, ca și cum ai completa manual o coloană Excel rând cu rând.\n- **Contextul de filtrare** apare la măsuri: atunci când o măsură este afișată într-un PivotTable, Excel aplică automat filtrele din rândurile, coloanele și slicer-ele raportului (de exemplu \"Regiune = Nord\" și \"An = 2026\") înainte de a evalua formula.\n\nAceastă distincție explică de ce aceeași măsură, ex. `SUM(Vanzari[Valoare])`, afișează valori diferite pentru fiecare celulă a unui PivotTable: nu formula se schimbă, ci contextul de filtrare aplicat de raport. Înțelegerea celor două contexte este cheia pentru a folosi corect toate funcțiile DAX avansate din această lecție.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dax-calculate-functie",
+    "md": "**CALCULATE** este considerată cea mai importantă funcție din DAX, pentru că este singura funcție care poate modifica direct contextul de filtrare în care se evaluează o expresie.\n\nSintaxă (Excel în limba română folosește punct și virgulă ca separator de argumente):\n`CALCULATE(<expresie>; <filtru1>; <filtru2>; ...)`\n\nCALCULATE preia expresia din primul argument (de obicei o măsură sau un agregat precum SUM) și o recalculează după ce aplică filtrele suplimentare din argumentele următoare, peste sau în locul filtrelor deja existente din raport.\n\nExemplu:\n`Vanzari_Nord := CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Regiune]=\"Nord\")`\n\nAceastă măsură returnează totalul vânzărilor pentru regiunea Nord, indiferent de filtrul de regiune ales de utilizator în PivotTable — filtrul explicit din CALCULATE îl suprascrie pe cel din raport pentru coloana Regiune. Fără CALCULATE, marea majoritate a analizelor \"condiționate\" din DAX (top produs, comparație an curent vs. an anterior, procent din total) ar fi imposibil de construit.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dax-filter-all",
+    "md": "Două funcții completează CALCULATE în aproape orice model de date avansat:\n\n**FILTER(<tabel>; <condiție>)** returnează un subset de rânduri dintr-un tabel, pe baza unei condiții logice. Se folosește de obicei ca argument în CALCULATE, atunci când condiția este mai complexă decât o simplă comparație de coloană (de exemplu, mai multe condiții combinate cu ȘI/SAU, sau condiții pe o expresie calculată).\n\nExemplu: `CALCULATE(SUM(Vanzari[Valoare]); FILTER(Vanzari; Vanzari[Cantitate]>5))`\n\n**ALL(<tabel>)** sau **ALL(<coloană>)** elimină filtrele existente asupra tabelului sau coloanei respective, indiferent de ce filtre a aplicat utilizatorul în raport. Este esențială pentru a calcula un total general \"absolut\", folosit apoi ca numitor la un procent din total.\n\nExemplu: `Total_General := CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari))`\n\nCombinația CALCULATE + FILTER + ALL este tiparul standard pentru rapoarte de tip \"pondere din total\", \"comparație față de medie\" sau \"top N clienți\", frecvent cerute în rapoartele de management ale unui SRL.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dax-related-functie",
+    "md": "**RELATED(<coloană din alt tabel>)** aduce o valoare dintr-un tabel relaționat în tabelul curent, folosind o relație activă definită în modelul de date Power Pivot (vezi lecțiile anterioare din acest modul despre relații 1-la-mai-mulți).\n\nRELATED funcționează doar dinspre partea \"mai mulți\" către partea \"1\" a relației și doar într-un context de rând (deci, de regulă, în coloane calculate sau în interiorul funcțiilor iteratoare precum SUMX). Nu poate fi folosită direct într-o măsură simplă, fără un context de rând.\n\nExemplu tipic: ai un tabel fapt `Vanzari` (cu ProdusID, Cantitate, Preț) și un tabel dimensiune `Produse` (cu ProdusID, Denumire, Categorie), legate printr-o relație pe ProdusID. Pentru a analiza vânzările pe categorie, adaugi în tabelul Vanzari o coloană calculată:\n\n`Categorie := RELATED(Produse[Categorie])`\n\nAstfel, fiecare rând din Vanzari \"moștenește\" categoria produsului din tabelul dimensiune, fără să dubleze fizic informația și fără VLOOKUP/XLOOKUP — relația din model face legătura automat.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b5"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dax-functii-x-sumx-averagex",
+    "md": "Funcțiile care se termină în **X** (SUMX, AVERAGEX, COUNTX, MAXX etc.) sunt funcții iteratoare: parcurg un tabel rând cu rând, evaluează o expresie pentru fiecare rând (în context de rând) și apoi agregă rezultatele.\n\n**SUMX(<tabel>; <expresie>)** — evaluează expresia pentru fiecare rând, apoi însumează. Se folosește obligatoriu atunci când rezultatul nu este o simplă sumă a unei coloane existente, ci produsul sau o combinație a mai multor coloane, calculate diferit pentru fiecare rând.\n\nExemplu: dacă tabelul Vanzari are doar coloanele Cantitate și Pret_Unitar (fără o coloană Valoare deja calculată), totalul vânzărilor se obține astfel:\n\n`Valoare_Totala := SUMX(Vanzari; Vanzari[Cantitate]*Vanzari[Pret_Unitar])`\n\n**AVERAGEX** funcționează identic, dar calculează media expresiei pe toate rândurile, nu suma — util, de exemplu, pentru prețul mediu ponderat sau marja medie pe factură. Diferența esențială față de SUM/AVERAGE: acestea din urmă lucrează pe o singură coloană deja existentă, în timp ce SUMX/AVERAGEX calculează întâi o expresie proprie, rând cu rând.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b6"
+   },
+   {
+    "type": "example",
+    "title": "Total și pondere pe regiune cu CALCULATE, condiție și ALL",
+    "concept_key": "dax-calculate-functie",
+    "md": "Model de date: tabelul `Vanzari` conține coloanele Regiune și Valoare, cu totaluri agregate astfel: Nord = 45.230 lei, Sud = 52.100 lei, Est = 38.900 lei, Vest = 51.270 lei. Total general = 187.500 lei.\n\n**Măsura 1 — total pe o regiune fixă:**\n`Vanzari_Nord := CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Regiune]=\"Nord\")`\nRezultat: 45.230 lei, indiferent de filtrele aplicate în PivotTable.\n\n**Măsura 2 — total general, ignorând orice filtru de regiune:**\n`Total_General := CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari[Regiune]))`\nRezultat: 187.500 lei.\n\n**Măsura 3 — pondere procentuală a fiecărei regiuni în total:**\n`Pondere_Regiune := DIVIDE(SUM(Vanzari[Valoare]); CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari[Regiune])))`\n\nPentru regiunea Nord: 45.230 / 187.500 = 0,2412, afișat ca 24,12%. Observă că folosim `DIVIDE` în locul împărțirii simple (/) pentru a evita eroarea #DIV/0! atunci când numitorul este zero — DIVIDE are un al treilea argument opțional pentru valoarea de rezervă.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b7"
+   },
+   {
+    "type": "example",
+    "title": "Calculul valorii totale cu SUMX când lipsește o coloană de Valoare",
+    "concept_key": "dax-functii-x-sumx-averagex",
+    "md": "Tabelul `Vanzari` conține doar coloanele Cantitate și Pret_Unitar (nu există o coloană Valoare pre-calculată):\n\n| Cantitate | Pret_Unitar |\n|---|---|\n| 10 | 25,50 lei |\n| 5 | 120,00 lei |\n| 8 | 45,75 lei |\n\nO formulă SUM simplă nu poate rezolva situația, pentru că nu există o coloană unică de însumat — e nevoie de o înmulțire pe fiecare rând, apoi de o sumă. Măsura corectă:\n\n`Valoare_Totala := SUMX(Vanzari; Vanzari[Cantitate]*Vanzari[Pret_Unitar])`\n\nCalcul pas cu pas, rând cu rând (context de rând):\n- Rândul 1: 10 × 25,50 = 255,00 lei\n- Rândul 2: 5 × 120,00 = 600,00 lei\n- Rândul 3: 8 × 45,75 = 366,00 lei\n\nSuma finală: 255,00 + 600,00 + 366,00 = **1.221,00 lei**.\n\nDacă ai încerca `SUM(Vanzari[Cantitate]*Vanzari[Pret_Unitar])`, formula ar genera eroare, pentru că SUM acceptă o singură coloană ca argument, nu o expresie calculată rând cu rând — exact rolul pe care îl joacă SUMX.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Nu abuza de coloanele calculate atunci când poți obține același rezultat printr-o măsură. Coloanele calculate ocupă memorie permanent în model (se recalculează la fiecare reîmprospătare a datelor și rămân stocate pentru fiecare rând), în timp ce măsurile se calculează \"la cerere\", doar când sunt afișate, și nu cresc dimensiunea fișierului. Regula practică: folosește o coloană calculată doar când ai nevoie de rezultat în context de rând (de exemplu pentru RELATED, pentru segmentare/slicer, sau ca bază pentru o altă coloană calculată) — pentru orice agregare afișată într-un raport (total, medie, pondere), folosește o măsură.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai un model de date Power Pivot cu două tabele relaționate prin ProdusID:\n\n**Produse** (dimensiune): ProdusID, Denumire, Categorie\n\n**Vanzari** (fapt): ProdusID, Cantitate, Pret_Unitar, Valoare\n\nDate concrete din Vanzari:\n\n| ProdusID | Denumire | Categorie | Valoare |\n|---|---|---|---|\n|101|Hârtie A4|Birotică|900,00 lei|\n|102|Pixuri|Birotică|500,00 lei|\n|103|Monitor|Electronice|3.400,00 lei|\n|104|Scaun|Mobilier|1.920,00 lei|\n\nCerințe:\n1. Adaugă în tabelul Vanzari o coloană calculată `Categorie`, care preia categoria din tabelul Produse folosind relația existentă.\n2. Construiește o măsură `Vanzari_Birotica` care calculează, folosind CALCULATE, totalul valorii vânzărilor doar pentru categoria \"Birotică\".\n3. Construiește o măsură `Pondere_Birotica` care arată ponderea procentuală a categoriei Birotică în totalul general al vânzărilor (folosește ALL pentru a ignora orice filtru de categorie la numitor și DIVIDE pentru împărțire sigură).",
+    "solution_md": "**1. Coloană calculată (context de rând, în tabelul Vanzari):**\n`Categorie := RELATED(Produse[Categorie])`\n→ fiecare rând din Vanzari primește automat categoria produsului corespunzător (Birotică, Electronice sau Mobilier), preluată prin relația ProdusID.\n\n**2. Măsura pentru totalul categoriei Birotică:**\n`Vanzari_Birotica := CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Categorie]=\"Birotică\")`\nCalcul: 900,00 + 500,00 = **1.400,00 lei**.\n\n**3. Măsura pentru pondere procentuală:**\n`Pondere_Birotica := DIVIDE(CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Categorie]=\"Birotică\"); CALCULATE(SUM(Vanzari[Valoare]); ALL(Vanzari)))`\n\nTotal general = 900,00 + 500,00 + 3.400,00 + 1.920,00 = 6.720,00 lei.\nPondere Birotică = 1.400,00 / 6.720,00 = 0,2083, adică **20,83%** din vânzările totale.\n\nObservă structura repetitivă CALCULATE(SUM(...); condiție) — acesta este tiparul de bază pe care îl vei regăsi în aproape orice raport DAX avansat: numărător filtrat, numitor cu ALL, împărțire cu DIVIDE.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială dintre o coloană calculată și o măsură (measure) în DAX?",
+    "choices": [
+     "Coloana calculată se evaluează rând cu rând și se stochează în tabel; măsura se calculează dinamic, în funcție de contextul de filtrare curent",
+     "Coloana calculată este mereu mai rapidă decât o măsură",
+     "Măsurile pot fi folosite doar în Power BI, nu în Excel",
+     "Nu există nicio diferență funcțională, doar de denumire"
+    ],
+    "answer": 0,
+    "explain": "Coloana calculată ocupă spațiu în model și se evaluează o singură dată pe fiecare rând (context de rând); măsura nu ocupă spațiu suplimentar și se recalculează de fiecare dată când este afișată, ținând cont de filtrele active (context de filtrare).",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce rol are funcția ALL în interiorul unei formule CALCULATE?",
+    "choices": [
+     "Selectează toate coloanele dintr-un tabel pentru afișare",
+     "Elimină filtrele existente asupra unui tabel sau coloană, permițând calculul unui total independent de filtrele curente din raport",
+     "Adună automat toate valorile numerice dintr-un tabel",
+     "Verifică dacă toate condițiile dintr-un FILTER sunt adevărate"
+    ],
+    "answer": 1,
+    "explain": "ALL(tabel) sau ALL(coloană) elimină filtrele aplicate, fiind folosită de obicei ca numitor la calculul unei ponderi procentuale sau al unui total general, indiferent de selecțiile utilizatorului din PivotTable.",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția CALCULATE în DAX?",
+    "back": "Evaluează o expresie într-un context de filtrare modificat, aplicând condiții suplimentare — de exemplu CALCULATE(SUM(Vanzari[Valoare]); Vanzari[Regiune]=\"Nord\").",
+    "concept_key": "dax-calculate-functie",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e diferența dintre o coloană calculată și o măsură DAX?",
+    "back": "Coloana calculată se stochează în tabel și se calculează o singură dată pe fiecare rând (context de rând); măsura se calculează dinamic, la afișare, în funcție de filtrele aplicate (context de filtrare).",
+    "concept_key": "dax-context-evaluare",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce folosește funcția ALL în DAX?",
+    "back": "Elimină filtrele aplicate unei coloane sau unui tabel, permițând calculul unui total general, independent de filtrele curente din raport — de obicei folosită ca numitor pentru un procent din total.",
+    "concept_key": "dax-filter-all",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția RELATED în DAX?",
+    "back": "Aduce o valoare dintr-un tabel relaționat (partea \"1\" a relației) în tabelul curent, folosind relația definită în modelul de date; funcționează doar în context de rând.",
+    "concept_key": "dax-related-functie",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e diferența dintre SUM și SUMX?",
+    "back": "SUM adună direct valorile unei coloane existente; SUMX evaluează o expresie (de exemplu o înmulțire între două coloane) pentru fiecare rând al unui tabel, apoi însumează rezultatele obținute.",
+    "concept_key": "dax-functii-x-sumx-averagex",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce se folosește DIVIDE în loc de operatorul / la calculul unei ponderi în DAX?",
+    "back": "DIVIDE(numărător; numitor; [valoare_alternativă]) evită eroarea #DIV/0! atunci când numitorul este zero, returnând implicit gol sau o valoare de rezervă specificată.",
+    "concept_key": "dax-calculate-functie",
+    "blockId": "cmjjuxvoa002cumkp0oln752y-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1609,
+   "flashcards": 6
+  }
+ }
+}

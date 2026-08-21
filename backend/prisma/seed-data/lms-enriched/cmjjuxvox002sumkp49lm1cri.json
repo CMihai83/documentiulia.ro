@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvox002sumkp49lm1cri",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Funcții Array Dinamice (Excel 365)",
+ "lesson": "Exercițiu - Raport dinamic",
+ "category": "EXCEL_VBA",
+ "content": "# Exercițiu - Raport dinamic\n\n## Ce înseamnă un „raport dinamic” în Excel 365\n\nÎn Excel Avansat, un raport dinamic este un tabel construit exclusiv din formule array moderne (`UNIQUE`, `SORT`, `FILTER`, `XLOOKUP`), care **se actualizează automat** de fiecare dată când datele sursă se modifică, fără a mai apăsa F9, fără macro-uri și fără copiere manuală de formule.\n\nPână la Excel 2019, o singură formulă returna o singură valoare într-o singură celulă. În Excel 365, funcțiile array pot returna mai multe valori simultan, care se „revarsă” automat în celulele adiacente — fenomenul se numește **spill** (interval de revărsare). Excel marchează un interval de spill cu un chenar albastru punctat atunci când celula respectivă este selectată.\n\nUn raport dinamic tipic combină trei etape într-un singur lanț de formule:\n\n1. **Extragere** — se aleg doar rândurile relevante dintr-un tabel sursă (funcția `FILTER`).\n2. **Organizare** — rezultatul este ordonat crescător/descrescător (funcția `SORT` sau `SORTBY`).\n3. **Îmbogățire** — se completează coloane suplimentare din alte tabele (funcția `XLOOKUP`).\n\nDeoarece cele trei funcții pot fi imbricate una în alta, poți construi un raport complet într-o singură formulă, ancorată într-o singură celulă. Restul raportului se generează automat prin spill.\n\n**Notă privind separatorii**: pe setările regionale românești, Excel folosește virgula ca separator zecimal, deci argumentele funcțiilor se separă cu punct și virgulă (`;`), nu cu virgulă. Toate exemplele din această lecție respectă această convenție.\n\n## UNIQUE și SORT — baza oricărui raport dinamic\n\n**`UNIQUE(interval; [dupa_coloana]; [o_singura_data])`** extrage valorile distincte dintr-un interval, păstrând ordinea de apariție din sursă. Este funcția ideală pentru a genera liste de selecție (regiuni, produse, clienți) care se actualizează singure când apar înregistrări noi.\n\nExemplu: dacă în coloana `B2:B50` ai regiunile de vânzare (cu duplicate, deoarece fiecare vânzare are un rând), formula:\n\n`=UNIQUE(B2:B50)`\n\nreturnează, prin spill, doar regiunile distincte, o singură dată fiecare — de exemplu „București”, „Cluj”, „Timișoara” — indiferent de câte rânduri conține tabelul sursă.\n\n**`SORT(interval; [index_coloana]; [ordine]; [dupa_coloana])`** ordonează un interval (sau rezultatul altei funcții array) după o coloană dată. `ordine` este `1` pentru crescător (implicit) și `-1` pentru descrescător.\n\nCele două funcții se combină frecvent:\n\n`=SORT(UNIQUE(B2:B50);1;1)`\n\nobține lista de regiuni distincte, sortată alfabetic. Aceasta este formula standard pentru a popula o listă de validare (dropdown) sau anteturile unui raport pivot fără PivotTable.\n\nDacă ai nevoie de sortare după mai multe criterii simultan, folosește `SORTBY(interval; interval_criteriu1; ordine1; interval_criteriu2; ordine2; ...)` — util, de exemplu, când vrei să sortezi clienții mai întâi după regiune, apoi descrescător după valoarea vânzărilor.\n\n## FILTER — inima raportului dinamic\n\n**`FILTER(interval_date; interval_conditii; [daca_gol])`** returnează doar rândurile care îndeplinesc o condiție logică, fără a folosi AutoFilter sau macro-uri. Rezultatul este un array care se revarsă automat.\n\nExemplu simplu — toate vânzările din regiunea aflată în celula `F1`:\n\n`=FILTER(A2:D50;C2:C50=F1;\"Nicio vânzare găsită\")`\n\nArgumentul al treilea (`daca_gol`) evită eroarea `#CALC!` atunci când nu există rânduri care să corespundă condiției — esențial într-un raport care va fi folosit de alți utilizatori.\n\n**Condiții multiple** se construiesc cu operatorii aritmetici, nu cu ȘI/SAU text:\n\n- **ȘI (AND)** — condițiile se înmulțesc: `=FILTER(A2:D50;(C2:C50=F1)*(D2:D50>10000))` — regiunea din F1 **și** valoare peste 10.000 lei.\n- **SAU (OR)** — condițiile se adună: `=FILTER(A2:D50;(C2:C50=\"Cluj\")+(C2:C50=\"București\"))` — Cluj **sau** București.\n\nDeoarece `FILTER` returnează un array, îl poți combina direct cu `SORT`, fără celule intermediare:\n\n`=SORT(FILTER(A2:D50;C2:C50=F1);4;-1)`\n\nAceastă singură formulă filtrează vânzările din regiunea selectată în F1 și le ordonează descrescător după valoare (coloana 4) — practic scheletul unui raport dinamic complet.\n\n## XLOOKUP — completarea automată a coloanelor lipsă\n\n**`XLOOKUP(valoare_cautata; interval_cautare; interval_returnat; [daca_nu_gaseste])`** înlocuiește `VLOOKUP`/`HLOOKUP` și elimină cele mai mari limitări ale acestora: caută în orice direcție, nu depinde de poziția coloanei și acceptă un mesaj explicit pentru „nu s-a găsit”, în loc de eroarea `#N/A`.\n\nDiferența majoră față de `VLOOKUP` pentru rapoarte dinamice: **`XLOOKUP` acceptă ca prim argument un array întreg**, nu doar o singură celulă. Dacă `valoare_cautata` este rezultatul unei funcții `FILTER` sau `UNIQUE`, `XLOOKUP` returnează automat câte o valoare pentru fiecare element din array, revărsându-se pe toată coloana — fără să copiezi formula manual.\n\nExemplu: ai lista de coduri de produs generată dinamic în `F2#` (rezultatul unui `UNIQUE`) și vrei prețul curent din tabelul `PretList` (coloanele `Cod` și `Pret`):\n\n`=XLOOKUP(F2#;PretList[Cod];PretList[Pret];\"Preț indisponibil\")`\n\nSemnul `#` după `F2` este **operatorul spill**: face referire la întregul interval revărsat pornit din F2, nu doar la celula F2. Astfel, dacă lista din F2 crește sau scade (pentru că sursa s-a schimbat), formula `XLOOKUP` se ajustează automat, fără nicio intervenție manuală.\n\nAceastă tehnică — array filtrat/sortat plus `XLOOKUP` cu operatorul `#` — este modul standard de a construi un raport care rămâne corect indiferent câte rânduri noi se adaugă în sursă.\n\n## Exemplu: Top clienți după valoarea vânzărilor\nTabelul sursă `A2:C9` conține (Client; Regiune; Valoare lei):\n\n| Client | Regiune | Valoare |\n|---|---|---|\n| Ana Popescu | București | 12.500 |\n| Ion Marinescu | Cluj | 8.300 |\n| Maria Ionescu | București | 15.200 |\n| Vasile Dumitru | Timișoara | 6.100 |\n| Elena Radu | Cluj | 9.400 |\n| Andrei Stan | București | 11.000 |\n| Cristina Vlad | Timișoara | 7.200 |\n| Mihai Georgescu | Cluj | 13.800 |\n\nÎn celula `E1` scriem o singură formulă:\n\n`=SORT(A2:C9;3;-1)`\n\nExcel revarsă instantaneu toate cele 8 rânduri, ordonate descrescător după valoare. Primele trei rânduri afișate sunt automat „top 3 clienți”: Maria Ionescu (15.200 lei), Mihai Georgescu (13.800 lei), Ana Popescu (12.500 lei) — fără PivotTable, fără sortare manuală. Dacă adaugi un rând nou în tabelul sursă (de exemplu un client cu 20.000 lei), la următoarea recalculare acesta apare automat pe prima poziție, iar restul raportului se reordonează singur.\n\n## Exemplu: Panou de bord cu selector de regiune\nFolosind același tabel sursă `A2:C9`, construim un mini-panou de bord:\n\n- Celula `F1` este o listă de validare alimentată cu `=SORT(UNIQUE(B2:B9))` — utilizatorul alege o regiune din dropdown.\n- Celula `F3` conține raportul filtrat și sortat:\n\n`=SORT(FILTER(A2:C9;B2:C9=F1;\"Nicio vânzare pentru această regiune\");3;-1)`\n\n(observă că, pentru un rezultat corect, condiția de filtrare trebuie să refere doar coloana B: `B2:B9=F1`).\n\n- Sub raport, celula `F10` calculează totalul dinamic folosind referința la intervalul de spill:\n\n`=SUM(FILTER(C2:C9;B2:B9=F1))`\n\nDacă `F1` = „Cluj”, `F3#` afișează cei trei clienți din Cluj sortați descrescător (Mihai Georgescu 13.800, Elena Radu 9.400, Ion Marinescu 8.300), iar `F10` calculează automat 31.500 lei. Schimbând valoarea din `F1` în „București”, întregul panou — listă, sortare și total — se recalculează instantaneu la 38.700 lei, fără nicio formulă nouă.\n\n⚠ Atenție la trei capcane frecvente când lucrezi cu funcții array:\n\n1. **Nu lăsa celule ocupate în calea unui interval de spill.** Dacă sub formula ta există orice conținut (chiar și un spațiu gol), Excel afișează eroarea `#SPILL!` deoarece nu are unde revărsa rezultatul. Rezervă întotdeauna spațiu liber sub/în dreapta celulei cu formula.\n2. **Nu referi intervale fixe generoase inutil (ex. `A2:A100000`) în tabele mici** — recalcularea devine lentă. Folosește tabele Excel structurate (`Ctrl+T`) cu referințe de tip `Tabel[Coloana]`, care se extind automat fără a bloca performanța.\n3. **Operatorul spill `#`** funcționează doar dacă celula-ancoră conține efectiv o formulă array activă; dacă ștergi accidental formula din celula de start și lași doar valorile revărsate, referințele cu `#` din alte formule devin `#REF!`.\n\n## Exercițiu\nAi tabelul de vânzări `A2:E9` cu coloanele: Client, Regiune, Produs, Valoare, Dată. Construiește un raport dinamic într-o foaie nouă care:\n\n1. În celula `H1`, generează automat, sortată alfabetic, lista distinctă a regiunilor din coloana B.\n2. În celula `H2` (listă de validare), utilizatorul alege o regiune din lista generată la pasul 1.\n3. În celula `J1`, afișează toate vânzările din regiunea aleasă în `H2`, sortate descrescător după Valoare (coloana D), cu mesaj personalizat dacă nu există rezultate.\n4. În celula `J10`, calculează totalul valorii vânzărilor pentru regiunea selectată.\n\nDate de test: București (Ana Popescu 12.500; Maria Ionescu 15.200; Andrei Stan 11.000), Cluj (Ion Marinescu 8.300; Elena Radu 9.400; Mihai Georgescu 13.800), Timișoara (Vasile Dumitru 6.100; Cristina Vlad 7.200).\n\n**Soluție:** Formulele corecte sunt:\n\n**H1** — listă distinctă și sortată de regiuni:\n`=SORT(UNIQUE(B2:B9))`\n(revarsă „București”, „Cluj”, „Timișoara”, în ordine alfabetică)\n\n**H2** — celulă cu validare de date (Data > Data Validation > List), cu sursa `=$H$1#` (operatorul spill face lista dinamică, incluzând automat orice regiune nouă apărută în sursă).\n\n**J1** — raport filtrat și sortat:\n`=SORT(FILTER(A2:E9;B2:B9=H2;\"Nicio vânzare pentru această regiune\");4;-1)`\n\n**J10** — total dinamic:\n`=SUM(FILTER(D2:D9;B2:B9=H2))`\n\nVerificare cu datele de test: dacă `H2` = „București”, `J1#` afișează Maria Ionescu (15.200), Ana Popescu (12.500), Andrei Stan (11.000), iar `J10` = 38.700 lei. Pentru „Cluj”: Mihai Georgescu (13.800), Elena Radu (9.400), Ion Marinescu (8.300), total `J10` = 31.500 lei. Pentru „Timișoara”: Cristina Vlad (7.200), Vasile Dumitru (6.100), total `J10` = 13.300 lei. Dacă adaugi un client nou în tabelul sursă, raportul, lista de regiuni și totalul se actualizează automat la următoarea recalculare, fără nicio intervenție manuală.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "raport-dinamic-array-functions",
+    "md": "## Ce înseamnă un „raport dinamic” în Excel 365\n\nÎn Excel Avansat, un raport dinamic este un tabel construit exclusiv din formule array moderne (`UNIQUE`, `SORT`, `FILTER`, `XLOOKUP`), care **se actualizează automat** de fiecare dată când datele sursă se modifică, fără a mai apăsa F9, fără macro-uri și fără copiere manuală de formule.\n\nPână la Excel 2019, o singură formulă returna o singură valoare într-o singură celulă. În Excel 365, funcțiile array pot returna mai multe valori simultan, care se „revarsă” automat în celulele adiacente — fenomenul se numește **spill** (interval de revărsare). Excel marchează un interval de spill cu un chenar albastru punctat atunci când celula respectivă este selectată.\n\nUn raport dinamic tipic combină trei etape într-un singur lanț de formule:\n\n1. **Extragere** — se aleg doar rândurile relevante dintr-un tabel sursă (funcția `FILTER`).\n2. **Organizare** — rezultatul este ordonat crescător/descrescător (funcția `SORT` sau `SORTBY`).\n3. **Îmbogățire** — se completează coloane suplimentare din alte tabele (funcția `XLOOKUP`).\n\nDeoarece cele trei funcții pot fi imbricate una în alta, poți construi un raport complet într-o singură formulă, ancorată într-o singură celulă. Restul raportului se generează automat prin spill.\n\n**Notă privind separatorii**: pe setările regionale românești, Excel folosește virgula ca separator zecimal, deci argumentele funcțiilor se separă cu punct și virgulă (`;`), nu cu virgulă. Toate exemplele din această lecție respectă această convenție.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "functie-unique-sort",
+    "md": "## UNIQUE și SORT — baza oricărui raport dinamic\n\n**`UNIQUE(interval; [dupa_coloana]; [o_singura_data])`** extrage valorile distincte dintr-un interval, păstrând ordinea de apariție din sursă. Este funcția ideală pentru a genera liste de selecție (regiuni, produse, clienți) care se actualizează singure când apar înregistrări noi.\n\nExemplu: dacă în coloana `B2:B50` ai regiunile de vânzare (cu duplicate, deoarece fiecare vânzare are un rând), formula:\n\n`=UNIQUE(B2:B50)`\n\nreturnează, prin spill, doar regiunile distincte, o singură dată fiecare — de exemplu „București”, „Cluj”, „Timișoara” — indiferent de câte rânduri conține tabelul sursă.\n\n**`SORT(interval; [index_coloana]; [ordine]; [dupa_coloana])`** ordonează un interval (sau rezultatul altei funcții array) după o coloană dată. `ordine` este `1` pentru crescător (implicit) și `-1` pentru descrescător.\n\nCele două funcții se combină frecvent:\n\n`=SORT(UNIQUE(B2:B50);1;1)`\n\nobține lista de regiuni distincte, sortată alfabetic. Aceasta este formula standard pentru a popula o listă de validare (dropdown) sau anteturile unui raport pivot fără PivotTable.\n\nDacă ai nevoie de sortare după mai multe criterii simultan, folosește `SORTBY(interval; interval_criteriu1; ordine1; interval_criteriu2; ordine2; ...)` — util, de exemplu, când vrei să sortezi clienții mai întâi după regiune, apoi descrescător după valoarea vânzărilor.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "functie-filter-conditii",
+    "md": "## FILTER — inima raportului dinamic\n\n**`FILTER(interval_date; interval_conditii; [daca_gol])`** returnează doar rândurile care îndeplinesc o condiție logică, fără a folosi AutoFilter sau macro-uri. Rezultatul este un array care se revarsă automat.\n\nExemplu simplu — toate vânzările din regiunea aflată în celula `F1`:\n\n`=FILTER(A2:D50;C2:C50=F1;\"Nicio vânzare găsită\")`\n\nArgumentul al treilea (`daca_gol`) evită eroarea `#CALC!` atunci când nu există rânduri care să corespundă condiției — esențial într-un raport care va fi folosit de alți utilizatori.\n\n**Condiții multiple** se construiesc cu operatorii aritmetici, nu cu ȘI/SAU text:\n\n- **ȘI (AND)** — condițiile se înmulțesc: `=FILTER(A2:D50;(C2:C50=F1)*(D2:D50>10000))` — regiunea din F1 **și** valoare peste 10.000 lei.\n- **SAU (OR)** — condițiile se adună: `=FILTER(A2:D50;(C2:C50=\"Cluj\")+(C2:C50=\"București\"))` — Cluj **sau** București.\n\nDeoarece `FILTER` returnează un array, îl poți combina direct cu `SORT`, fără celule intermediare:\n\n`=SORT(FILTER(A2:D50;C2:C50=F1);4;-1)`\n\nAceastă singură formulă filtrează vânzările din regiunea selectată în F1 și le ordonează descrescător după valoare (coloana 4) — practic scheletul unui raport dinamic complet.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "functie-xlookup-imbogatire",
+    "md": "## XLOOKUP — completarea automată a coloanelor lipsă\n\n**`XLOOKUP(valoare_cautata; interval_cautare; interval_returnat; [daca_nu_gaseste])`** înlocuiește `VLOOKUP`/`HLOOKUP` și elimină cele mai mari limitări ale acestora: caută în orice direcție, nu depinde de poziția coloanei și acceptă un mesaj explicit pentru „nu s-a găsit”, în loc de eroarea `#N/A`.\n\nDiferența majoră față de `VLOOKUP` pentru rapoarte dinamice: **`XLOOKUP` acceptă ca prim argument un array întreg**, nu doar o singură celulă. Dacă `valoare_cautata` este rezultatul unei funcții `FILTER` sau `UNIQUE`, `XLOOKUP` returnează automat câte o valoare pentru fiecare element din array, revărsându-se pe toată coloana — fără să copiezi formula manual.\n\nExemplu: ai lista de coduri de produs generată dinamic în `F2#` (rezultatul unui `UNIQUE`) și vrei prețul curent din tabelul `PretList` (coloanele `Cod` și `Pret`):\n\n`=XLOOKUP(F2#;PretList[Cod];PretList[Pret];\"Preț indisponibil\")`\n\nSemnul `#` după `F2` este **operatorul spill**: face referire la întregul interval revărsat pornit din F2, nu doar la celula F2. Astfel, dacă lista din F2 crește sau scade (pentru că sursa s-a schimbat), formula `XLOOKUP` se ajustează automat, fără nicio intervenție manuală.\n\nAceastă tehnică — array filtrat/sortat plus `XLOOKUP` cu operatorul `#` — este modul standard de a construi un raport care rămâne corect indiferent câte rânduri noi se adaugă în sursă.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b4"
+   },
+   {
+    "type": "example",
+    "title": "Top clienți după valoarea vânzărilor",
+    "concept_key": "functie-sort",
+    "md": "Tabelul sursă `A2:C9` conține (Client; Regiune; Valoare lei):\n\n| Client | Regiune | Valoare |\n|---|---|---|\n| Ana Popescu | București | 12.500 |\n| Ion Marinescu | Cluj | 8.300 |\n| Maria Ionescu | București | 15.200 |\n| Vasile Dumitru | Timișoara | 6.100 |\n| Elena Radu | Cluj | 9.400 |\n| Andrei Stan | București | 11.000 |\n| Cristina Vlad | Timișoara | 7.200 |\n| Mihai Georgescu | Cluj | 13.800 |\n\nÎn celula `E1` scriem o singură formulă:\n\n`=SORT(A2:C9;3;-1)`\n\nExcel revarsă instantaneu toate cele 8 rânduri, ordonate descrescător după valoare. Primele trei rânduri afișate sunt automat „top 3 clienți”: Maria Ionescu (15.200 lei), Mihai Georgescu (13.800 lei), Ana Popescu (12.500 lei) — fără PivotTable, fără sortare manuală. Dacă adaugi un rând nou în tabelul sursă (de exemplu un client cu 20.000 lei), la următoarea recalculare acesta apare automat pe prima poziție, iar restul raportului se reordonează singur.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b5"
+   },
+   {
+    "type": "example",
+    "title": "Panou de bord cu selector de regiune",
+    "concept_key": "functie-filter-conditii",
+    "md": "Folosind același tabel sursă `A2:C9`, construim un mini-panou de bord:\n\n- Celula `F1` este o listă de validare alimentată cu `=SORT(UNIQUE(B2:B9))` — utilizatorul alege o regiune din dropdown.\n- Celula `F3` conține raportul filtrat și sortat:\n\n`=SORT(FILTER(A2:C9;B2:C9=F1;\"Nicio vânzare pentru această regiune\");3;-1)`\n\n(observă că, pentru un rezultat corect, condiția de filtrare trebuie să refere doar coloana B: `B2:B9=F1`).\n\n- Sub raport, celula `F10` calculează totalul dinamic folosind referința la intervalul de spill:\n\n`=SUM(FILTER(C2:C9;B2:B9=F1))`\n\nDacă `F1` = „Cluj”, `F3#` afișează cei trei clienți din Cluj sortați descrescător (Mihai Georgescu 13.800, Elena Radu 9.400, Ion Marinescu 8.300), iar `F10` calculează automat 31.500 lei. Schimbând valoarea din `F1` în „București”, întregul panou — listă, sortare și total — se recalculează instantaneu la 38.700 lei, fără nicio formulă nouă.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la trei capcane frecvente când lucrezi cu funcții array:\n\n1. **Nu lăsa celule ocupate în calea unui interval de spill.** Dacă sub formula ta există orice conținut (chiar și un spațiu gol), Excel afișează eroarea `#SPILL!` deoarece nu are unde revărsa rezultatul. Rezervă întotdeauna spațiu liber sub/în dreapta celulei cu formula.\n2. **Nu referi intervale fixe generoase inutil (ex. `A2:A100000`) în tabele mici** — recalcularea devine lentă. Folosește tabele Excel structurate (`Ctrl+T`) cu referințe de tip `Tabel[Coloana]`, care se extind automat fără a bloca performanța.\n3. **Operatorul spill `#`** funcționează doar dacă celula-ancoră conține efectiv o formulă array activă; dacă ștergi accidental formula din celula de start și lași doar valorile revărsate, referințele cu `#` din alte formule devin `#REF!`.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai tabelul de vânzări `A2:E9` cu coloanele: Client, Regiune, Produs, Valoare, Dată. Construiește un raport dinamic într-o foaie nouă care:\n\n1. În celula `H1`, generează automat, sortată alfabetic, lista distinctă a regiunilor din coloana B.\n2. În celula `H2` (listă de validare), utilizatorul alege o regiune din lista generată la pasul 1.\n3. În celula `J1`, afișează toate vânzările din regiunea aleasă în `H2`, sortate descrescător după Valoare (coloana D), cu mesaj personalizat dacă nu există rezultate.\n4. În celula `J10`, calculează totalul valorii vânzărilor pentru regiunea selectată.\n\nDate de test: București (Ana Popescu 12.500; Maria Ionescu 15.200; Andrei Stan 11.000), Cluj (Ion Marinescu 8.300; Elena Radu 9.400; Mihai Georgescu 13.800), Timișoara (Vasile Dumitru 6.100; Cristina Vlad 7.200).",
+    "solution_md": "Formulele corecte sunt:\n\n**H1** — listă distinctă și sortată de regiuni:\n`=SORT(UNIQUE(B2:B9))`\n(revarsă „București”, „Cluj”, „Timișoara”, în ordine alfabetică)\n\n**H2** — celulă cu validare de date (Data > Data Validation > List), cu sursa `=$H$1#` (operatorul spill face lista dinamică, incluzând automat orice regiune nouă apărută în sursă).\n\n**J1** — raport filtrat și sortat:\n`=SORT(FILTER(A2:E9;B2:B9=H2;\"Nicio vânzare pentru această regiune\");4;-1)`\n\n**J10** — total dinamic:\n`=SUM(FILTER(D2:D9;B2:B9=H2))`\n\nVerificare cu datele de test: dacă `H2` = „București”, `J1#` afișează Maria Ionescu (15.200), Ana Popescu (12.500), Andrei Stan (11.000), iar `J10` = 38.700 lei. Pentru „Cluj”: Mihai Georgescu (13.800), Elena Radu (9.400), Ion Marinescu (8.300), total `J10` = 31.500 lei. Pentru „Timișoara”: Cristina Vlad (7.200), Vasile Dumitru (6.100), total `J10` = 13.300 lei. Dacă adaugi un client nou în tabelul sursă, raportul, lista de regiuni și totalul se actualizează automat la următoarea recalculare, fără nicio intervenție manuală.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce formulă extrage corect vânzările peste 10.000 lei DIN regiunea „Cluj”, folosind condiții multiple de tip ȘI (AND) în FILTER?",
+    "choices": [
+     "=FILTER(A2:D50;(C2:C50=\"Cluj\")+(D2:D50>10000))",
+     "=FILTER(A2:D50;(C2:C50=\"Cluj\")*(D2:D50>10000))",
+     "=FILTER(A2:D50;C2:C50=\"Cluj\";D2:D50>10000)",
+     "=FILTER(A2:D50;OR(C2:C50=\"Cluj\";D2:D50>10000))"
+    ],
+    "answer": 1,
+    "explain": "Condițiile de tip ȘI (AND) în FILTER se combină prin înmulțire (*), nu prin adunare (+, care reprezintă SAU/OR) și nu se pot separa prin virgulă ca argumente distincte — al treilea argument al FILTER este rezervat pentru valoarea afișată când nu există rezultate.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă operatorul `#` folosit după o referință de celulă, de exemplu `F2#`, în Excel 365?",
+    "choices": [
+     "Marchează o eroare de formulă care trebuie corectată",
+     "Face referire la întregul interval de spill (revărsare) generat de formula din F2",
+     "Transformă intervalul într-un tabel Excel structurat",
+     "Blochează referința ca fiind absolută, echivalent cu $F$2"
+    ],
+    "answer": 1,
+    "explain": "Operatorul spill (#) face referire dinamică la toate celulele în care s-a revărsat rezultatul unei formule array pornite din celula-ancoră — dacă rezultatul crește sau se micșorează, referința se ajustează automat, fără $ sau intervale fixe.",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face funcția UNIQUE în Excel 365?",
+    "back": "Extrage valorile distincte dintr-un interval, păstrând ordinea de apariție din sursă; rezultatul se revarsă automat (spill) în celulele adiacente.",
+    "concept_key": "functie-unique-sort",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se combină două condiții de tip ȘI (AND) în interiorul funcției FILTER?",
+    "back": "Prin înmulțirea condițiilor: (interval1=criteriu1)*(interval2=criteriu2). Pentru SAU (OR) se folosește adunarea (+).",
+    "concept_key": "functie-filter-conditii",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este avantajul principal al XLOOKUP față de VLOOKUP într-un raport dinamic?",
+    "back": "XLOOKUP acceptă ca prim argument un array întreg (rezultat din FILTER sau UNIQUE) și returnează automat câte o valoare pentru fiecare element, revărsându-se pe toată coloana, fără copiere manuală de formule.",
+    "concept_key": "functie-xlookup-imbogatire",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un „interval de spill” în Excel 365?",
+    "back": "Zona de celule adiacente în care se revarsă automat rezultatul unei formule array (ex. UNIQUE, SORT, FILTER), marcată vizual cu un chenar albastru punctat.",
+    "concept_key": "raport-dinamic-array-functions",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă operatorul spill `#`, de exemplu în F2#?",
+    "back": "Face referire dinamică la întregul interval de revărsare generat de formula-ancoră din F2; dacă rezultatul crește sau scade, referința se ajustează automat.",
+    "concept_key": "functie-xlookup-imbogatire",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce apare eroarea #SPILL! și cum se evită?",
+    "back": "Apare când o formulă array nu are unde revărsa rezultatul deoarece celulele din cale sunt ocupate; se evită păstrând spațiu liber suficient sub/în dreapta celulei-ancoră.",
+    "concept_key": "raport-dinamic-array-functions",
+    "blockId": "cmjjuxvox002sumkp49lm1cri-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1478,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvno0022umkpmzhgy6as",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Power Query - Transformare Date",
+ "lesson": "Funcții M avansate",
+ "category": "EXCEL_VBA",
+ "content": "# Funcții M avansate\n\n## Ce este limbajul M\n\nFiecare interogare Power Query este, în spate, un mic program scris în **limbajul M** — un limbaj funcțional, sensibil la majuscule (`Table.AddColumn` ≠ `table.addcolumn`), pe care Excel îl generează automat când folosești interfața grafică (Adăugare coloană, Filtrare, Grupare etc.). Poți vedea și edita acest cod direct din **Power Query Editor → View → Advanced Editor**.\n\nStructura standard a unei interogări M este:\n\n```\nlet\n    Sursa = Excel.CurrentWorkbook(){[Name=\"Comenzi\"]}[Content],\n    TipuriSchimbate = Table.TransformColumnTypes(Sursa,{{\"Data\", type date}}),\n    Rezultat = Table.SelectRows(TipuriSchimbate, each [Cantitate] > 0)\nin\n    Rezultat\n```\n\nObservă tiparul: `let` deschide o listă de **pași denumiți**, fiecare pas fiind rezultatul unei funcții aplicate pasului anterior, iar `in` indică ce pas final se returnează ca rezultat al interogării. Numele pașilor (Sursa, TipuriSchimbate, Rezultat) sunt alese de tine — bune practici cer nume descriptive în română, fără diacritice sau spații (Power Query le tolerează între ghilimele, dar codul rămâne mai curat fără ele).\n\nSpre deosebire de formulele Excel, unde separatorul de argumente este punct și virgulă (;) în versiunea românească, **limbajul M folosește întotdeauna virgula (,) ca separator de argumente**, indiferent de setările regionale ale sistemului — pentru că motorul M este independent de locale. Această diferență derutează frecvent utilizatorii care vin din formule Excel clasice.\n\n## List.Transform — aplicarea unei funcții pe fiecare element\n\n`List.Transform` este funcția M echivalentă conceptual cu o coloană calculată aplicată element cu element pe o listă (nu pe un tabel). Sintaxa este:\n\n```\nList.Transform(listă, funcție)\n```\n\nFuncția a doua se scrie de regulă cu cuvântul cheie `each`, care este o prescurtare pentru o funcție anonimă cu parametrul implicit `_`:\n\n```\nList.Transform({1,2,3}, each _ * 1.21)\n// rezultat: {1.21, 2.42, 3.63}\n```\n\n`each _ * 1.21` este echivalent cu scrierea explicită `(x) => x * 1.21`. Ambele forme sunt valide; `each` este preferat pentru claritate atunci când funcția e simplă, iar sintaxa `(x) => ...` devine utilă când ai nevoie de un nume de parametru explicit sau de mai mulți parametri.\n\n`List.Transform` este blocul de bază pentru multe alte funcții M: `Table.AddColumn` cu o funcție personalizată, în esență, aplică aceeași logică rând cu rând pe un tabel, iar `Text.Combine` are adesea nevoie de o listă rezultată dintr-un `List.Transform` pentru a converti valori numerice sau date calendaristice în text înainte de concatenare.\n\n## Table.AddColumn cu funcții personalizate\n\n`Table.AddColumn` este funcția din spatele opțiunii **Add Column → Custom Column** din interfața grafică, dar folosită direct în Advanced Editor oferă control total. Sintaxa completă:\n\n```\nTable.AddColumn(tabel, \"NumeColoanaNoua\", each <expresie>, opțional tip)\n```\n\nÎn interiorul expresiei `each`, ai acces la fiecare coloană a rândului curent scriind numele ei între paranteze pătrate: `[NumeColoana]`. De exemplu:\n\n```\nTable.AddColumn(Comenzi, \"ValoareTVA\", each [PretUnitar] * [Cantitate] * 0.21, type number)\n```\n\nPoți apela și funcții personalizate mai complexe, definite anterior ca pași separați în `let`, ceea ce permite reutilizarea logicii și un cod mult mai ușor de citit decât o expresie unică, lungă:\n\n```\nlet\n    CalculTVA = (pret as number, cantitate as number) as number => pret * cantitate * 0.21,\n    CuTVA = Table.AddColumn(Comenzi, \"ValoareTVA\", each CalculTVA([PretUnitar], [Cantitate]), type number)\nin\n    CuTVA\n```\n\nAici `CalculTVA` este o **funcție M definită de utilizator**, cu parametri tipizați (`as number`) și tip de returnare declarat — o practică recomandată pentru funcții reutilizabile, deoarece Power Query semnalează erori de tip mult mai devreme și codul devine auto-documentat.\n\n## Text.Combine — concatenare sigură de text\n\n`Text.Combine` unește elementele unei liste de text într-un singur șir, folosind un separator dat:\n\n```\nText.Combine(listaDeText, separator)\n```\n\nExemplu simplu:\n\n```\nText.Combine({\"SRL\", \"Alfa\", \"2026\"}, \"-\")\n// rezultat: \"SRL-Alfa-2026\"\n```\n\nSpre deosebire de operatorul `&` folosit pentru concatenare directă (`[Prenume] & \" \" & [Nume]`), `Text.Combine` are un avantaj important: **ignoră automat valorile `null`** din listă, în loc să genereze o eroare. Acest lucru este esențial când concatenezi coloane care pot avea celule goale — de exemplu, la construirea unei adrese complete din Strada, Numărul și Bloc, unde Bloc poate lipsi pentru multe înregistrări.\n\nÎn interiorul unui `Table.AddColumn`, `Text.Combine` se folosește de regulă împreună cu `Text.From` (pentru a converti numere sau date calendaristice în text înainte de concatenare, deoarece `Text.Combine` acceptă doar liste de tip text):\n\n```\nText.Combine({[CodClient], Text.From([Data])}, \"_\")\n```\n\nOmiterea conversiei cu `Text.From` este cea mai frecventă cauză de eroare (\"We cannot convert the value ... to type Text\") pentru cei care trec de la formule Excel, unde conversia text-număr se face implicit.\n\n## Exemplu: List.Transform pentru normalizarea codurilor de produs\nAi o listă de coduri de produs introduse inconsecvent de operatori (litere mici, spații, formate diferite) și vrei să le aduci la un format standard: majuscule, fără spații, prefix „PRD-”.\n\n```\nlet\n    CoduriBrute = {\" a101 \", \"b202\", \" C303\"},\n    Standardizate = List.Transform(\n        CoduriBrute,\n        each \"PRD-\" & Text.Upper(Text.Trim(_))\n    )\nin\n    Standardizate\n```\n\nRezultat: `{\"PRD-A101\", \"PRD-B202\", \"PRD-C303\"}`.\n\nExplicație pas cu pas: `Text.Trim(_)` elimină spațiile de la început și sfârșit din fiecare element (`_` reprezintă elementul curent al listei), `Text.Upper(...)` convertește totul în majuscule, iar concatenarea cu `\"PRD-\" &` adaugă prefixul standard. `List.Transform` aplică această succesiune de operații pe fiecare element al listei, independent, fără a scrie o buclă explicită — comportament tipic pentru limbajele funcționale.\n\nAceastă tehnică este utilă mai ales când lista provine dintr-o coloană extrasă cu `Table.Column(Tabel, \"CodProdus\")`, permițându-ți să cureți datele înainte de a le reintroduce în tabel cu `Table.ReplaceColumn`.\n\n## Exemplu: Table.AddColumn cu funcție personalizată și Text.Combine pentru un raport de comenzi\nFirma Contafex SRL are un tabel `Comenzi` cu coloanele `CodClient`, `Data`, `PretUnitar` și `Cantitate`. Vrei să adaugi două coloane: valoarea comenzii cu TVA (cotă standard 21%, valabilă din 01.08.2025 conform reglementărilor fiscale în vigoare — verifică mereu cota curentă la data emiterii raportului) și un identificator unic de rând, format din codul clientului și data comenzii.\n\n```\nlet\n    Sursa = Excel.CurrentWorkbook(){[Name=\"Comenzi\"]}[Content],\n\n    CalculValoareCuTVA = (pret as number, cantitate as number) as number =>\n        Number.Round(pret * cantitate * 1.21, 2),\n\n    AdaugaValoareTVA = Table.AddColumn(\n        Sursa, \"ValoareCuTVA\",\n        each CalculValoareCuTVA([PretUnitar], [Cantitate]),\n        type number\n    ),\n\n    AdaugaIdentificator = Table.AddColumn(\n        AdaugaValoareTVA, \"IDComanda\",\n        each Text.Combine({[CodClient], Text.From([Data])}, \"_\"),\n        type text\n    )\nin\n    AdaugaIdentificator\n```\n\nPentru un rând cu `PretUnitar = 150`, `Cantitate = 4`, `CodClient = \"CL017\"`, `Data = 2026-07-08`:\n\n- `ValoareCuTVA` = 150 × 4 × 1,21 = 726,00 lei\n- `IDComanda` = „CL017_2026-07-08”\n\nObservă cum funcția `CalculValoareCuTVA` este definită o singură dată și reutilizată pentru fiecare rând — dacă mâine cota TVA se schimbă, modifici valoarea `1.21` într-un singur loc, nu în fiecare formulă.\n\n⚠ Atenție la tipuri de date în M: `Text.Combine` acceptă **exclusiv** liste de tip `text`. Dacă o coloană conține numere sau date calendaristice, trebuie convertită explicit cu `Text.From([Coloana])` înainte de a fi pusă în listă — altfel interogarea eșuează cu eroarea „We cannot convert the value ... to type Text”. De asemenea, funcțiile personalizate definite cu tipuri stricte (ex. `as number`) opresc procesarea cu eroare dacă primesc `null` — pentru coloane cu valori lipsă, tratează cazul cu `each if [Cantitate] = null then 0 else CalculValoareCuTVA(...)` înainte de a apela funcția.\n\n## Exercițiu\nAi un tabel `Angajati` cu coloanele `Nume`, `Prenume`, `SalariuBrut` (lei) și `Departament`. Scrie o interogare M completă (structură `let...in`) care:\n\n1. Definește o funcție personalizată `CalculNet` care primește `SalariuBrut` (number) și returnează salariul net aproximativ, calculat ca `SalariuBrut * 0.635` (aproximare uzuală pentru CAS+CASS+impozit, doar în scop didactic — nu folosi această formulă pentru calcule reale de salarizare).\n2. Adaugă o coloană `SalariuNet` folosind `Table.AddColumn` și funcția de mai sus, rotunjită la 2 zecimale cu `Number.Round`.\n3. Adaugă o coloană `NumeComplet`, folosind `Text.Combine` pentru a concatena `Prenume` și `Nume` cu un spațiu ca separator.\n\nAplică pentru un angajat cu `Nume = \"Popescu\"`, `Prenume = \"Ana\"`, `SalariuBrut = 6000`.\n\n**Soluție:** ```\nlet\n    Sursa = Excel.CurrentWorkbook(){[Name=\"Angajati\"]}[Content],\n\n    CalculNet = (salariuBrut as number) as number =>\n        Number.Round(salariuBrut * 0.635, 2),\n\n    AdaugaSalariuNet = Table.AddColumn(\n        Sursa, \"SalariuNet\",\n        each CalculNet([SalariuBrut]),\n        type number\n    ),\n\n    AdaugaNumeComplet = Table.AddColumn(\n        AdaugaSalariuNet, \"NumeComplet\",\n        each Text.Combine({[Prenume], [Nume]}, \" \"),\n        type text\n    )\nin\n    AdaugaNumeComplet\n```\n\nPentru angajatul Ana Popescu, cu `SalariuBrut = 6000`:\n\n- `SalariuNet` = 6000 × 0,635 = 3810,00 lei\n- `NumeComplet` = „Ana Popescu”\n\nStructura respectă tiparul standard: pasul `CalculNet` este o funcție reutilizabilă cu tip declarat, iar cele două `Table.AddColumn` se înlănțuie, fiecare pornind de la rezultatul pasului anterior — exact modul în care Power Query construiește intern orice interogare, indiferent cât de complexă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "limbaj-m-structura-let-in",
+    "md": "## Ce este limbajul M\n\nFiecare interogare Power Query este, în spate, un mic program scris în **limbajul M** — un limbaj funcțional, sensibil la majuscule (`Table.AddColumn` ≠ `table.addcolumn`), pe care Excel îl generează automat când folosești interfața grafică (Adăugare coloană, Filtrare, Grupare etc.). Poți vedea și edita acest cod direct din **Power Query Editor → View → Advanced Editor**.\n\nStructura standard a unei interogări M este:\n\n```\nlet\n    Sursa = Excel.CurrentWorkbook(){[Name=\"Comenzi\"]}[Content],\n    TipuriSchimbate = Table.TransformColumnTypes(Sursa,{{\"Data\", type date}}),\n    Rezultat = Table.SelectRows(TipuriSchimbate, each [Cantitate] > 0)\nin\n    Rezultat\n```\n\nObservă tiparul: `let` deschide o listă de **pași denumiți**, fiecare pas fiind rezultatul unei funcții aplicate pasului anterior, iar `in` indică ce pas final se returnează ca rezultat al interogării. Numele pașilor (Sursa, TipuriSchimbate, Rezultat) sunt alese de tine — bune practici cer nume descriptive în română, fără diacritice sau spații (Power Query le tolerează între ghilimele, dar codul rămâne mai curat fără ele).\n\nSpre deosebire de formulele Excel, unde separatorul de argumente este punct și virgulă (;) în versiunea românească, **limbajul M folosește întotdeauna virgula (,) ca separator de argumente**, indiferent de setările regionale ale sistemului — pentru că motorul M este independent de locale. Această diferență derutează frecvent utilizatorii care vin din formule Excel clasice.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "list-transform-functie",
+    "md": "## List.Transform — aplicarea unei funcții pe fiecare element\n\n`List.Transform` este funcția M echivalentă conceptual cu o coloană calculată aplicată element cu element pe o listă (nu pe un tabel). Sintaxa este:\n\n```\nList.Transform(listă, funcție)\n```\n\nFuncția a doua se scrie de regulă cu cuvântul cheie `each`, care este o prescurtare pentru o funcție anonimă cu parametrul implicit `_`:\n\n```\nList.Transform({1,2,3}, each _ * 1.21)\n// rezultat: {1.21, 2.42, 3.63}\n```\n\n`each _ * 1.21` este echivalent cu scrierea explicită `(x) => x * 1.21`. Ambele forme sunt valide; `each` este preferat pentru claritate atunci când funcția e simplă, iar sintaxa `(x) => ...` devine utilă când ai nevoie de un nume de parametru explicit sau de mai mulți parametri.\n\n`List.Transform` este blocul de bază pentru multe alte funcții M: `Table.AddColumn` cu o funcție personalizată, în esență, aplică aceeași logică rând cu rând pe un tabel, iar `Text.Combine` are adesea nevoie de o listă rezultată dintr-un `List.Transform` pentru a converti valori numerice sau date calendaristice în text înainte de concatenare.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "table-addcolumn-functie-personalizata",
+    "md": "## Table.AddColumn cu funcții personalizate\n\n`Table.AddColumn` este funcția din spatele opțiunii **Add Column → Custom Column** din interfața grafică, dar folosită direct în Advanced Editor oferă control total. Sintaxa completă:\n\n```\nTable.AddColumn(tabel, \"NumeColoanaNoua\", each <expresie>, opțional tip)\n```\n\nÎn interiorul expresiei `each`, ai acces la fiecare coloană a rândului curent scriind numele ei între paranteze pătrate: `[NumeColoana]`. De exemplu:\n\n```\nTable.AddColumn(Comenzi, \"ValoareTVA\", each [PretUnitar] * [Cantitate] * 0.21, type number)\n```\n\nPoți apela și funcții personalizate mai complexe, definite anterior ca pași separați în `let`, ceea ce permite reutilizarea logicii și un cod mult mai ușor de citit decât o expresie unică, lungă:\n\n```\nlet\n    CalculTVA = (pret as number, cantitate as number) as number => pret * cantitate * 0.21,\n    CuTVA = Table.AddColumn(Comenzi, \"ValoareTVA\", each CalculTVA([PretUnitar], [Cantitate]), type number)\nin\n    CuTVA\n```\n\nAici `CalculTVA` este o **funcție M definită de utilizator**, cu parametri tipizați (`as number`) și tip de returnare declarat — o practică recomandată pentru funcții reutilizabile, deoarece Power Query semnalează erori de tip mult mai devreme și codul devine auto-documentat.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "text-combine-concatenare",
+    "md": "## Text.Combine — concatenare sigură de text\n\n`Text.Combine` unește elementele unei liste de text într-un singur șir, folosind un separator dat:\n\n```\nText.Combine(listaDeText, separator)\n```\n\nExemplu simplu:\n\n```\nText.Combine({\"SRL\", \"Alfa\", \"2026\"}, \"-\")\n// rezultat: \"SRL-Alfa-2026\"\n```\n\nSpre deosebire de operatorul `&` folosit pentru concatenare directă (`[Prenume] & \" \" & [Nume]`), `Text.Combine` are un avantaj important: **ignoră automat valorile `null`** din listă, în loc să genereze o eroare. Acest lucru este esențial când concatenezi coloane care pot avea celule goale — de exemplu, la construirea unei adrese complete din Strada, Numărul și Bloc, unde Bloc poate lipsi pentru multe înregistrări.\n\nÎn interiorul unui `Table.AddColumn`, `Text.Combine` se folosește de regulă împreună cu `Text.From` (pentru a converti numere sau date calendaristice în text înainte de concatenare, deoarece `Text.Combine` acceptă doar liste de tip text):\n\n```\nText.Combine({[CodClient], Text.From([Data])}, \"_\")\n```\n\nOmiterea conversiei cu `Text.From` este cea mai frecventă cauză de eroare (\"We cannot convert the value ... to type Text\") pentru cei care trec de la formule Excel, unde conversia text-număr se face implicit.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b4"
+   },
+   {
+    "type": "example",
+    "title": "List.Transform pentru normalizarea codurilor de produs",
+    "concept_key": "list-transform-functie",
+    "md": "Ai o listă de coduri de produs introduse inconsecvent de operatori (litere mici, spații, formate diferite) și vrei să le aduci la un format standard: majuscule, fără spații, prefix „PRD-”.\n\n```\nlet\n    CoduriBrute = {\" a101 \", \"b202\", \" C303\"},\n    Standardizate = List.Transform(\n        CoduriBrute,\n        each \"PRD-\" & Text.Upper(Text.Trim(_))\n    )\nin\n    Standardizate\n```\n\nRezultat: `{\"PRD-A101\", \"PRD-B202\", \"PRD-C303\"}`.\n\nExplicație pas cu pas: `Text.Trim(_)` elimină spațiile de la început și sfârșit din fiecare element (`_` reprezintă elementul curent al listei), `Text.Upper(...)` convertește totul în majuscule, iar concatenarea cu `\"PRD-\" &` adaugă prefixul standard. `List.Transform` aplică această succesiune de operații pe fiecare element al listei, independent, fără a scrie o buclă explicită — comportament tipic pentru limbajele funcționale.\n\nAceastă tehnică este utilă mai ales când lista provine dintr-o coloană extrasă cu `Table.Column(Tabel, \"CodProdus\")`, permițându-ți să cureți datele înainte de a le reintroduce în tabel cu `Table.ReplaceColumn`.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b5"
+   },
+   {
+    "type": "example",
+    "title": "Table.AddColumn cu funcție personalizată și Text.Combine pentru un raport de comenzi",
+    "concept_key": "table-addcolumn-functie-personalizata",
+    "md": "Firma Contafex SRL are un tabel `Comenzi` cu coloanele `CodClient`, `Data`, `PretUnitar` și `Cantitate`. Vrei să adaugi două coloane: valoarea comenzii cu TVA (cotă standard 21%, valabilă din 01.08.2025 conform reglementărilor fiscale în vigoare — verifică mereu cota curentă la data emiterii raportului) și un identificator unic de rând, format din codul clientului și data comenzii.\n\n```\nlet\n    Sursa = Excel.CurrentWorkbook(){[Name=\"Comenzi\"]}[Content],\n\n    CalculValoareCuTVA = (pret as number, cantitate as number) as number =>\n        Number.Round(pret * cantitate * 1.21, 2),\n\n    AdaugaValoareTVA = Table.AddColumn(\n        Sursa, \"ValoareCuTVA\",\n        each CalculValoareCuTVA([PretUnitar], [Cantitate]),\n        type number\n    ),\n\n    AdaugaIdentificator = Table.AddColumn(\n        AdaugaValoareTVA, \"IDComanda\",\n        each Text.Combine({[CodClient], Text.From([Data])}, \"_\"),\n        type text\n    )\nin\n    AdaugaIdentificator\n```\n\nPentru un rând cu `PretUnitar = 150`, `Cantitate = 4`, `CodClient = \"CL017\"`, `Data = 2026-07-08`:\n\n- `ValoareCuTVA` = 150 × 4 × 1,21 = 726,00 lei\n- `IDComanda` = „CL017_2026-07-08”\n\nObservă cum funcția `CalculValoareCuTVA` este definită o singură dată și reutilizată pentru fiecare rând — dacă mâine cota TVA se schimbă, modifici valoarea `1.21` într-un singur loc, nu în fiecare formulă.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la tipuri de date în M: `Text.Combine` acceptă **exclusiv** liste de tip `text`. Dacă o coloană conține numere sau date calendaristice, trebuie convertită explicit cu `Text.From([Coloana])` înainte de a fi pusă în listă — altfel interogarea eșuează cu eroarea „We cannot convert the value ... to type Text”. De asemenea, funcțiile personalizate definite cu tipuri stricte (ex. `as number`) opresc procesarea cu eroare dacă primesc `null` — pentru coloane cu valori lipsă, tratează cazul cu `each if [Cantitate] = null then 0 else CalculValoareCuTVA(...)` înainte de a apela funcția.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai un tabel `Angajati` cu coloanele `Nume`, `Prenume`, `SalariuBrut` (lei) și `Departament`. Scrie o interogare M completă (structură `let...in`) care:\n\n1. Definește o funcție personalizată `CalculNet` care primește `SalariuBrut` (number) și returnează salariul net aproximativ, calculat ca `SalariuBrut * 0.635` (aproximare uzuală pentru CAS+CASS+impozit, doar în scop didactic — nu folosi această formulă pentru calcule reale de salarizare).\n2. Adaugă o coloană `SalariuNet` folosind `Table.AddColumn` și funcția de mai sus, rotunjită la 2 zecimale cu `Number.Round`.\n3. Adaugă o coloană `NumeComplet`, folosind `Text.Combine` pentru a concatena `Prenume` și `Nume` cu un spațiu ca separator.\n\nAplică pentru un angajat cu `Nume = \"Popescu\"`, `Prenume = \"Ana\"`, `SalariuBrut = 6000`.",
+    "solution_md": "```\nlet\n    Sursa = Excel.CurrentWorkbook(){[Name=\"Angajati\"]}[Content],\n\n    CalculNet = (salariuBrut as number) as number =>\n        Number.Round(salariuBrut * 0.635, 2),\n\n    AdaugaSalariuNet = Table.AddColumn(\n        Sursa, \"SalariuNet\",\n        each CalculNet([SalariuBrut]),\n        type number\n    ),\n\n    AdaugaNumeComplet = Table.AddColumn(\n        AdaugaSalariuNet, \"NumeComplet\",\n        each Text.Combine({[Prenume], [Nume]}, \" \"),\n        type text\n    )\nin\n    AdaugaNumeComplet\n```\n\nPentru angajatul Ana Popescu, cu `SalariuBrut = 6000`:\n\n- `SalariuNet` = 6000 × 0,635 = 3810,00 lei\n- `NumeComplet` = „Ana Popescu”\n\nStructura respectă tiparul standard: pasul `CalculNet` este o funcție reutilizabilă cu tip declarat, iar cele două `Table.AddColumn` se înlănțuie, fiecare pornind de la rezultatul pasului anterior — exact modul în care Power Query construiește intern orice interogare, indiferent cât de complexă.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce diferență esențială există între operatorul `&` și funcția `Text.Combine` la concatenarea de text în M?",
+    "choices": [
+     "Nu există nicio diferență, sunt echivalente în orice situație",
+     "Text.Combine ignoră automat valorile null din listă, în timp ce & generează eroare la întâlnirea unui null",
+     "& este mai rapid, dar Text.Combine este mai lent pe tabele mari",
+     "Text.Combine funcționează doar pe coloane numerice"
+    ],
+    "answer": 1,
+    "explain": "Text.Combine este proiectată special pentru a gestiona liste cu valori lipsă (null), sărindu-le fără eroare — spre deosebire de operatorul &, care aruncă o eroare dacă oricare operand este null.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă cuvântul cheie `each` într-o expresie precum `List.Transform(lista, each _ * 2)`?",
+    "choices": [
+     "Un operator de buclă explicită (for each), similar cu VBA",
+     "O prescurtare pentru o funcție anonimă cu parametrul implicit notat _",
+     "O funcție separată care trebuie definită înainte de utilizare",
+     "Un cuvânt cheie folosit exclusiv în Table.AddColumn, nu și în List.Transform"
+    ],
+    "answer": 1,
+    "explain": "each este sintaxă prescurtată pentru o funcție anonimă de forma (_) => ...; parametrul implicit se notează cu liniuță de subliniere (_) și poate fi folosit la fel în List.Transform, Table.AddColumn, Table.SelectRows și alte funcții M care primesc o funcție ca argument.",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce separator de argumente folosește limbajul M în interiorul funcțiilor (ex. Table.AddColumn)?",
+    "back": "Virgula (,), indiferent de setările regionale ale sistemului — spre deosebire de formulele Excel din interfața românească, unde separatorul este punct și virgulă (;).",
+    "concept_key": "limbaj-m-structura-let-in",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face List.Transform(lista, funcție)?",
+    "back": "Aplică funcția dată fiecărui element al listei, independent, și returnează o listă nouă cu rezultatele — echivalentul funcțional al unei bucle pe elementele unei liste.",
+    "concept_key": "list-transform-functie",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este sintaxa de bază a Table.AddColumn?",
+    "back": "Table.AddColumn(tabel, \"NumeColoanaNoua\", each <expresie>, tip_opțional) — adaugă o coloană calculată rând cu rând, unde [NumeColoana] accesează valoarea coloanei respective din rândul curent.",
+    "concept_key": "table-addcolumn-functie-personalizata",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce trebuie folosit Text.From înainte de a pune o valoare numerică sau o dată calendaristică într-un Text.Combine?",
+    "back": "Pentru că Text.Combine acceptă exclusiv liste de tip text; fără conversia explicită cu Text.From, interogarea generează eroarea „We cannot convert the value ... to type Text”.",
+    "concept_key": "text-combine-concatenare",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este structura standard a unei interogări M?",
+    "back": "let ... in, unde blocul let definește o serie de pași denumiți (fiecare bazat pe pasul anterior), iar in indică ce pas final se returnează ca rezultat al interogării.",
+    "concept_key": "limbaj-m-structura-let-in",
+    "blockId": "cmjjuxvno0022umkpmzhgy6as-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1333,
+   "flashcards": 5
+  }
+ }
+}

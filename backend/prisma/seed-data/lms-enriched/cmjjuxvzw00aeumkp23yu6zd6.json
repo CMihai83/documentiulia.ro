@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvzw00aeumkp23yu6zd6",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Business Environment Domain",
+ "lesson": "Quiz Business Environment",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Quiz Business Environment (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este scopul principal al domeniului de performanță „Business Environment” (Mediul de Afaceri) în Ghidul PMBOK, ediția a 7-a?",
+     "choices": [
+      "Gestionarea detaliată a bugetului proiectului",
+      "Alinierea proiectului la strategia organizațională și la factorii externi de mediu de afaceri",
+      "Planificarea resurselor umane ale echipei de proiect",
+      "Managementul zilnic al echipei de proiect"
+     ],
+     "answer": 1,
+     "explain": "Domeniul Business Environment se concentrează pe asigurarea faptului că proiectul rămâne aliniat la strategia organizației și răspunde adecvat schimbărilor din mediul extern (legal, economic, competițional etc.), nu pe activități operaționale precum bugetarea sau managementul zilnic al echipei.",
+     "concept_key": "business_environment_scop"
+    },
+    {
+     "q": "Ce document justifică, de regulă, inițierea unui proiect printr-o analiză cost-beneficiu și alinierea la obiectivele strategice ale organizației?",
+     "choices": [
+      "Carta proiectului (project charter)",
+      "Planul de management al proiectului",
+      "Business case (justificarea de afaceri)",
+      "Registrul de riscuri"
+     ],
+     "answer": 2,
+     "explain": "Business case-ul documentează necesitatea de afaceri, analiza cost-beneficiu și alinierea strategică ce justifică investiția în proiect; carta proiectului autorizează formal proiectul pe baza acestui document, dar nu conține analiza economică detaliată.",
+     "concept_key": "business_case"
+    },
+    {
+     "q": "O firmă românească ce implementează un sistem ERP trebuie să respecte Regulamentul UE 2016/679 (GDPR) privind protecția datelor cu caracter personal. Această cerință aparține cărei categorii de conformitate din domeniul Business Environment?",
+     "choices": [
+      "Conformitate organizațională internă",
+      "Conformitate legală/reglementară externă",
+      "Conformitate contractuală cu furnizorul de software",
+      "Conformitate privind standardele de calitate ISO"
+     ],
+     "answer": 1,
+     "explain": "GDPR este o reglementare legală impusă la nivel de Uniune Europeană, deci reprezintă o cerință de conformitate legală/reglementară externă, categorie pe care managerul de proiect trebuie să o identifice și să o gestioneze proactiv.",
+     "concept_key": "conformitate_legala"
+    },
+    {
+     "q": "Planul de management al beneficiilor (benefits management plan) se elaborează, în principal, pentru:",
+     "choices": [
+      "A documenta riscurile tehnice ale soluției implementate",
+      "A defini cum, când și de către cine vor fi livrate, măsurate și susținute beneficiile proiectului",
+      "A stabili bugetul detaliat pe activități",
+      "A defini structura organizatorică a echipei de proiect"
+     ],
+     "answer": 1,
+     "explain": "Planul de management al beneficiilor stabilește indicatorii de măsurare, momentul realizării beneficiilor, responsabilii de urmărire și modul de susținere a acestora pe termen lung, asigurând legătura dintre livrabile și valoarea de afaceri urmărită.",
+     "concept_key": "plan_beneficii"
+    },
+    {
+     "q": "La analiza mediului extern de afaceri (de tip PESTLE) pentru un proiect de digitalizare al unei bănci din România, factorii legați de rata inflației și cursul EUR/RON fac parte din categoria:",
+     "choices": [
+      "Politică",
+      "Economică",
+      "Socială",
+      "Tehnologică"
+     ],
+     "answer": 1,
+     "explain": "Indicatorii macroeconomici precum inflația și cursul valutar aparțin categoriei economice din analiza PESTLE, distinctă de factorii politici (legislație, stabilitate guvernamentală), sociali (demografie, cultură) sau tehnologici (inovație, infrastructură IT).",
+     "concept_key": "pestle_economic"
+    },
+    {
+     "q": "Managerul de proiect află că o nouă lege privind protecția datelor va intra în vigoare în timpul execuției proiectului. Conform domeniului Business Environment, ce ar trebui să facă în primul rând?",
+     "choices": [
+      "Ignoră situația, deoarece legislația nu ține de scopul proiectului",
+      "Evaluează impactul asupra scopului și riscurilor proiectului și actualizează planul de management al proiectului, în colaborare cu sponsorul",
+      "Oprește imediat proiectul fără analiză",
+      "Deleagă întreaga responsabilitate sponsorului, fără a comunica riscul identificat"
+     ],
+     "answer": 1,
+     "explain": "Rolul managerului de proiect în acest domeniu este de a monitoriza activ schimbările din mediul extern, de a evalua impactul lor asupra scopului, riscurilor și livrabilelor, și de a actualiza documentele de proiect în consecință, informând sponsorul și echipa de guvernanță.",
+     "concept_key": "schimbare_mediu_extern"
+    },
+    {
+     "q": "Într-un proiect Agile de digitalizare, sponsorul solicită raportare periodică a valorii livrate. Conform PMBOK 7, care este cel mai potrivit mecanism pentru a demonstra realizarea incrementală a beneficiilor?",
+     "choices": [
+      "Diagrama Gantt actualizată săptămânal",
+      "Backlog-ul de produs prioritizat pe valoare, cu revizuiri (sprint reviews) la finalul fiecărei iterații",
+      "Matricea de responsabilități RACI",
+      "Dicționarul structurii de descompunere a activităților (WBS dictionary)"
+     ],
+     "answer": 1,
+     "explain": "În abordările Agile, valoarea este demonstrată incremental prin livrabile funcționale prezentate la sprint review, iar backlog-ul prioritizat pe valoare de afaceri este instrumentul central pentru urmărirea beneficiilor livrate progresiv, spre deosebire de instrumentele predictive precum Gantt sau WBS.",
+     "concept_key": "valoare_incrementala_agile"
+    },
+    {
+     "q": "Care model de management al schimbării este frecvent utilizat pentru a susține adoptarea de către angajați a schimbărilor organizaționale generate de un proiect (de exemplu, implementarea unui nou sistem ERP)?",
+     "choices": [
+      "Modelul ADKAR (Awareness, Desire, Knowledge, Ability, Reinforcement)",
+      "Modelul Waterfall (cascadă)",
+      "Matricea RACI",
+      "Ciclul DMAIC din Six Sigma"
+     ],
+     "answer": 0,
+     "explain": "ADKAR este un model consacrat de management al schimbării organizaționale, axat pe conștientizare, dorință, cunoștințe, abilități și consolidare la nivel individual, fiind potrivit pentru susținerea adopției schimbărilor aduse de proiect; celelalte opțiuni sunt metodologii de execuție a proiectului sau de îmbunătățire a proceselor, nu de change management.",
+     "concept_key": "model_adkar"
+    },
+    {
+     "q": "O organizație din România derulează un proiect de transformare digitală; la finalul proiectului se constată că beneficiile estimate (reducerea costurilor operaționale cu 15%) nu au fost niciodată măsurate. Care este principala cauză de proces, din perspectiva domeniului Business Environment?",
+     "choices": [
+      "Lipsa unui plan de management al beneficiilor cu indicatori clari și responsabil desemnat pentru măsurarea post-implementare",
+      "Lipsa unei diagrame de rețea a activităților",
+      "Bugetul insuficient alocat echipei de proiect",
+      "Absența unui sponsor executiv desemnat"
+     ],
+     "answer": 0,
+     "explain": "Fără un plan de management al beneficiilor care să definească indicatorii de măsurare, momentul evaluării și responsabilul post-implementare, beneficiile așteptate nu pot fi urmărite și confirmate, chiar dacă livrabilele tehnice ale proiectului au fost finalizate cu succes.",
+     "concept_key": "masurare_beneficii"
+    },
+    {
+     "q": "Compania Alfa SRL implementează un sistem ERP; pe parcursul proiectului, un concurent major lansează o soluție similară la un preț mult mai mic, schimbând semnificativ condițiile pieței. Conform domeniului Business Environment, care este acțiunea cea mai adecvată pentru managerul de proiect?",
+     "choices": [
+      "Continuă proiectul neschimbat, deoarece scopul a fost deja aprobat formal",
+      "Colaborează cu sponsorul și comitetul de guvernanță pentru a reevalua business case-ul și, dacă este necesar, propune ajustarea scopului sau chiar oprirea proiectului",
+      "Reduce unilateral bugetul echipei pentru a compensa presiunea competițională",
+      "Ascunde informația despre concurență pentru a evita întârzierea proiectului"
+     ],
+     "answer": 1,
+     "explain": "O schimbare majoră a mediului competițional poate invalida justificarea economică inițială a proiectului; managerul de proiect trebuie să semnaleze acest lucru guvernanței și sponsorului pentru reevaluarea business case-ului, ceea ce poate duce la ajustarea scopului sau chiar la decizia de a opri proiectul (kill the project), decizie care nu îi aparține exclusiv managerului de proiect.",
+     "concept_key": "reevaluare_business_case"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

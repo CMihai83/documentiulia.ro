@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxvui006fumkpjvk3j0xp",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Fundamente Agile",
+ "lesson": "Framework-uri Agile",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Framework-uri Agile\n\n**Agile** este un set de valori și principii definite în Manifestul Agile (2001), nu o metodologie unică. Din aceste valori au apărut, în timp, mai multe **framework-uri** concrete, fiecare cu reguli, roluri și artefacte proprii. Confuzia frecventă la cursanți este să trateze „Agile” ca sinonim cu „Scrum” — de fapt Scrum este doar cel mai popular framework Agile, alături de Kanban, Extreme Programming (XP), Lean, Crystal și, la nivel de organizație, Scaled Agile Framework (SAFe).\n\nAlegerea framework-ului potrivit depinde de trei variabile:\n- **Natura produsului** — cât de complex și de incert este;\n- **Mărimea și structura echipei** — o echipă mică, colocată, are nevoi diferite față de un program cu 8 echipe distribuite;\n- **Tipul de lucru** — livrări în cicluri fixe (produs nou) versus flux continuu de cereri (mentenanță, suport).\n\nÎn această lecție treci în revistă cele mai folosite framework-uri Agile — ce sunt și când alegi unul în locul altuia, cu exemple dintr-un proiect ERP dintr-o firmă românească. Reține: framework-urile nu sunt reguli rigide de bifat, ci instrumente adaptate contextului.\n\n**Scrum**, definit oficial în Scrum Guide (ultima revizie 2020), este cel mai adoptat framework Agile pentru dezvoltarea de produse complexe. Se bazează pe cicluri scurte, de lungime fixă, numite **Sprint-uri** (de obicei 1-4 săptămâni, cel mai des 2), la finalul cărora echipa livrează un increment funcțional al produsului.\n\nScrum definește trei roluri: **Product Owner** (maximizează valoarea produsului, deține Product Backlog-ul), **Scrum Master** (facilitează procesul, elimină blocaje) și **Developers** (echipa cross-funcțională care produce incrementul).\n\nCinci evenimente structurează fiecare Sprint: **Sprint Planning**, **Daily Scrum** (sincronizare zilnică de 15 minute), Sprintul propriu-zis, **Sprint Review** și **Sprint Retrospective**.\n\nTrei artefacte fac progresul transparent: **Product Backlog**, **Sprint Backlog** și **Increment** (validat prin Definiția de „Gata”).\n\n**Când alegi Scrum:** produs nou sau evoluție majoră, cerințe incerte, echipă mică ce poate livra ceva demonstrabil la fiecare 1-4 săptămâni — de exemplu, o echipă care dezvoltă un modul nou de facturare electronică într-un ERP.\n\n**Kanban** este un framework de gestionare a fluxului de lucru, provenit din producția Toyota, adaptat la munca de cunoaștere. Spre deosebire de Scrum, nu impune roluri, cicluri fixe sau evenimente obligatorii — se bazează pe un **tablou Kanban** (coloane: De făcut, În lucru, Gata) și pe limitarea lucrului în desfășurare, numită **WIP limit** (Work in Progress limit).\n\nPrincipii de bază: vizualizează fluxul; limitează WIP-ul; gestionează fluxul (identifică blocaje); fă politicile explicite; implementează bucle de feedback; îmbunătățește continuu.\n\nKanban folosește un sistem **pull** — o sarcină nouă intră în lucru doar când se eliberează capacitate. Metricile cheie sunt **lead time** (de la cerere la livrare), **cycle time** (timpul efectiv „în lucru”) și **throughput** (elemente livrate pe unitate de timp).\n\n**Când alegi Kanban:** flux continuu de cereri fără beneficiu din gruparea în cicluri — de exemplu, echipa de suport tehnic al unui ERP, care primește zilnic tichete de rezolvat.\n\nAlte trei familii de practici merită cunoscute:\n\n**Extreme Programming (XP)** este axat pe disciplina tehnică a echipelor de dezvoltare, adesea combinat cu Scrum. Practici principale: **pair programming**, **Test-Driven Development (TDD)**, integrare continuă (CI), refactorizare constantă și viteză sustenabilă. Alegi XP când calitatea tehnică a codului e critică și riscul unor bug-uri costisitoare e mare.\n\n**Lean** aplică principiile din producția Toyota la dezvoltarea de produse: elimină cele 7 tipuri de risipă (așteptare, supra-producție, defecte, mișcări inutile, transport, inventar excesiv, procesare inutilă) și optimizează fluxul de valoare (Value Stream Mapping). Lean nu e un proces de execuție zilnică precum Scrum, ci o filosofie care stă la baza atât a Scrum, cât și a Kanban.\n\n**Crystal** este o familie de metode (Crystal Clear, Yellow, Orange etc.), adaptată în funcție de mărimea echipei și criticitatea proiectului, cu accent pe comunicare directă între oameni mai degrabă decât pe un set fix de practici.\n\n**Când alegi:** XP pentru calitate tehnică (de regulă suplimentar la Scrum); Lean pentru reducerea risipei dintr-un proces; Crystal pentru echipe mici, experimentate, care preferă flexibilitate maximă.\n\nScrum și Kanban funcționează bine la nivelul unei singure echipe (5-10 persoane). Când o organizație are zeci sau sute de persoane lucrând la același produs, apare nevoia de **scalare** — coordonarea mai multor echipe Agile fără a reveni la un proces birocratic clasic.\n\n**SAFe (Scaled Agile Framework)** este cel mai folosit framework de scalare enterprise. Organizează echipele în **Agile Release Trains (ART)** — grupuri de 5-12 echipe (aprox. 50-125 persoane) care lucrează sincronizat, cu planificare comună la fiecare 8-12 săptămâni, în evenimentul **PI Planning** (Program Increment Planning). SAFe adaugă niveluri suplimentare (Portfolio, Large Solution) pentru organizații foarte mari.\n\nAlte alternative de scalare, întâlnite la interviuri: **LeSS** (Large-Scale Scrum) și **Scrum@Scale**. Pentru PSM I nu ai nevoie de detalii SAFe, dar trebuie să înțelegi conceptul: scalarea presupune sincronizare la nivel de organizație, nu doar Scrum aplicat corect într-o singură echipă.\n\n**Când alegi SAFe:** organizații mari, cu echipe interdependente, unde lipsa sincronizării la nivel de portofoliu produce blocaje netratate.\n\n## Exemplu: Alegerea framework-ului pentru un proiect ERP la o firmă românească\nO firmă SRL din București, cu 120 de angajați, implementează un ERP nou. Proiectul are trei componente:\n\n1. **Dezvoltarea modulelor custom** (facturare electronică, integrare SAF-T) — cerințe încă neclare, negociate pe parcurs. Compania alege **Scrum**: sprint-uri de 2 săptămâni, Product Owner din departamentul financiar, review-uri bisăptămânale cu stakeholderii.\n\n2. **Suportul tehnic post-livrare** — cereri care apar oricând, fără tipar previzibil. Echipa de suport alege **Kanban**: tablou cu coloane „Raportat → Analiză → În lucru → Testat → Închis”, cu WIP limit de 4 tichete „În lucru” per persoană.\n\n3. **Calitatea codului** din modulele custom — o eroare de calcul TVA ar avea impact financiar direct, așa că echipa adoptă practici **XP**: code review obligatoriu, teste automate și integrare continuă înainte de fiecare merge.\n\nCompania nu alege un singur framework pentru tot, ci potrivește fiecare framework cu natura muncii: livrare planificată (Scrum), flux continuu (Kanban) și disciplină tehnică (XP).\n\n## Exemplu: Calculul Cycle Time și Throughput pe un tablou Kanban\nEchipa de suport ERP ține evidența tichetelor rezolvate într-o lună (20 de zile lucrătoare):\n- Au fost **închise 40 de tichete**;\n- Timpul total (de la intrarea în „În lucru” până la „Închis”), însumat pentru toate cele 40, este de 320 zile-tichet.\n\n**Cycle Time mediu** = timp total / număr de tichete = 320 / 40 = **8 zile/tichet**.\n\n**Throughput** = tichete finalizate / perioadă = 40 / 20 zile = **2 tichete/zi**.\n\nFolosind **Legea lui Little** (valabilă și pentru fluxurile Kanban):\n\nWIP mediu = Throughput × Cycle Time = 2 × 8 = **16 tichete în lucru, în medie**.\n\nDacă WIP-ul real de pe tablou este de 30 de tichete (aproape dublu față de cele 16 calculate), înseamnă că echipa a depășit capacitatea reală, iar cycle time-ul va crește în continuare — semnal clar că **WIP limit-ul** trebuie coborât, nu ridicat, pentru a reduce timpul de așteptare al utilizatorilor interni.\n\n⚠ Cea mai frecventă greșeală a echipelor la început este „cargo-cultingul” — copierea ritualurilor unui framework (de exemplu, ținerea unui Daily Scrum de 15 minute) fără să înțeleagă scopul lor real (sincronizare rapidă, nu raportare către manager). Scrum Guide numește acest fenomen informal „Scrum-but” („facem Scrum, dar…”) — o versiune diluată care pierde beneficiile reale ale framework-ului. Adaptează framework-ul la context, dar nu elimina elementele lui esențiale doar pentru confort pe termen scurt.\n\n## Exercițiu\nPentru fiecare dintre situațiile de mai jos, dintr-o companie românească, alege framework-ul Agile cel mai potrivit (Scrum, Kanban sau XP) și motivează pe scurt (1-2 propoziții):\n\n1. O echipă de 6 dezvoltatori construiește de la zero un modul nou de gestiune a stocurilor pentru un ERP, cu cerințe care se clarifică treptat împreună cu clientul, livrând ceva demonstrabil la fiecare 2 săptămâni.\n2. Departamentul IT intern primește zilnic, în număr variabil și imprevizibil, cereri de resetare acces, mici bug-uri și solicitări de rapoarte ad-hoc.\n3. O echipă lucrează la un modul de calcul al salariilor, unde orice eroare de calcul are impact financiar direct asupra angajaților, iar compania vrea să reducă drastic bug-urile ajunse în producție.\n\n**Soluție:** 1. **Scrum** — proiect nou, livrare planificată în cicluri fixe (sprint-uri de 2 săptămâni), cerințe clarificate progresiv prin colaborare cu clientul.\n\n2. **Kanban** — volum de cereri variabil și imprevizibil, fără beneficiu din gruparea în cicluri fixe; un tablou cu WIP limit gestionează fluxul continuu mai bine decât un sprint planificat dinainte.\n\n3. **XP** (de regulă combinat cu Scrum pentru procesul de lucru) — miza fiind calitatea tehnică, practicile XP (TDD, code review, integrare continuă) atacă direct riscul de bug-uri critice.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "framework-uri-agile-panorama",
+    "md": "**Agile** este un set de valori și principii definite în Manifestul Agile (2001), nu o metodologie unică. Din aceste valori au apărut, în timp, mai multe **framework-uri** concrete, fiecare cu reguli, roluri și artefacte proprii. Confuzia frecventă la cursanți este să trateze „Agile” ca sinonim cu „Scrum” — de fapt Scrum este doar cel mai popular framework Agile, alături de Kanban, Extreme Programming (XP), Lean, Crystal și, la nivel de organizație, Scaled Agile Framework (SAFe).\n\nAlegerea framework-ului potrivit depinde de trei variabile:\n- **Natura produsului** — cât de complex și de incert este;\n- **Mărimea și structura echipei** — o echipă mică, colocată, are nevoi diferite față de un program cu 8 echipe distribuite;\n- **Tipul de lucru** — livrări în cicluri fixe (produs nou) versus flux continuu de cereri (mentenanță, suport).\n\nÎn această lecție treci în revistă cele mai folosite framework-uri Agile — ce sunt și când alegi unul în locul altuia, cu exemple dintr-un proiect ERP dintr-o firmă românească. Reține: framework-urile nu sunt reguli rigide de bifat, ci instrumente adaptate contextului.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scrum-framework-overview",
+    "md": "**Scrum**, definit oficial în Scrum Guide (ultima revizie 2020), este cel mai adoptat framework Agile pentru dezvoltarea de produse complexe. Se bazează pe cicluri scurte, de lungime fixă, numite **Sprint-uri** (de obicei 1-4 săptămâni, cel mai des 2), la finalul cărora echipa livrează un increment funcțional al produsului.\n\nScrum definește trei roluri: **Product Owner** (maximizează valoarea produsului, deține Product Backlog-ul), **Scrum Master** (facilitează procesul, elimină blocaje) și **Developers** (echipa cross-funcțională care produce incrementul).\n\nCinci evenimente structurează fiecare Sprint: **Sprint Planning**, **Daily Scrum** (sincronizare zilnică de 15 minute), Sprintul propriu-zis, **Sprint Review** și **Sprint Retrospective**.\n\nTrei artefacte fac progresul transparent: **Product Backlog**, **Sprint Backlog** și **Increment** (validat prin Definiția de „Gata”).\n\n**Când alegi Scrum:** produs nou sau evoluție majoră, cerințe incerte, echipă mică ce poate livra ceva demonstrabil la fiecare 1-4 săptămâni — de exemplu, o echipă care dezvoltă un modul nou de facturare electronică într-un ERP.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "kanban-framework-overview",
+    "md": "**Kanban** este un framework de gestionare a fluxului de lucru, provenit din producția Toyota, adaptat la munca de cunoaștere. Spre deosebire de Scrum, nu impune roluri, cicluri fixe sau evenimente obligatorii — se bazează pe un **tablou Kanban** (coloane: De făcut, În lucru, Gata) și pe limitarea lucrului în desfășurare, numită **WIP limit** (Work in Progress limit).\n\nPrincipii de bază: vizualizează fluxul; limitează WIP-ul; gestionează fluxul (identifică blocaje); fă politicile explicite; implementează bucle de feedback; îmbunătățește continuu.\n\nKanban folosește un sistem **pull** — o sarcină nouă intră în lucru doar când se eliberează capacitate. Metricile cheie sunt **lead time** (de la cerere la livrare), **cycle time** (timpul efectiv „în lucru”) și **throughput** (elemente livrate pe unitate de timp).\n\n**Când alegi Kanban:** flux continuu de cereri fără beneficiu din gruparea în cicluri — de exemplu, echipa de suport tehnic al unui ERP, care primește zilnic tichete de rezolvat.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "xp-lean-crystal-overview",
+    "md": "Alte trei familii de practici merită cunoscute:\n\n**Extreme Programming (XP)** este axat pe disciplina tehnică a echipelor de dezvoltare, adesea combinat cu Scrum. Practici principale: **pair programming**, **Test-Driven Development (TDD)**, integrare continuă (CI), refactorizare constantă și viteză sustenabilă. Alegi XP când calitatea tehnică a codului e critică și riscul unor bug-uri costisitoare e mare.\n\n**Lean** aplică principiile din producția Toyota la dezvoltarea de produse: elimină cele 7 tipuri de risipă (așteptare, supra-producție, defecte, mișcări inutile, transport, inventar excesiv, procesare inutilă) și optimizează fluxul de valoare (Value Stream Mapping). Lean nu e un proces de execuție zilnică precum Scrum, ci o filosofie care stă la baza atât a Scrum, cât și a Kanban.\n\n**Crystal** este o familie de metode (Crystal Clear, Yellow, Orange etc.), adaptată în funcție de mărimea echipei și criticitatea proiectului, cu accent pe comunicare directă între oameni mai degrabă decât pe un set fix de practici.\n\n**Când alegi:** XP pentru calitate tehnică (de regulă suplimentar la Scrum); Lean pentru reducerea risipei dintr-un proces; Crystal pentru echipe mici, experimentate, care preferă flexibilitate maximă.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "safe-scalare-agila",
+    "md": "Scrum și Kanban funcționează bine la nivelul unei singure echipe (5-10 persoane). Când o organizație are zeci sau sute de persoane lucrând la același produs, apare nevoia de **scalare** — coordonarea mai multor echipe Agile fără a reveni la un proces birocratic clasic.\n\n**SAFe (Scaled Agile Framework)** este cel mai folosit framework de scalare enterprise. Organizează echipele în **Agile Release Trains (ART)** — grupuri de 5-12 echipe (aprox. 50-125 persoane) care lucrează sincronizat, cu planificare comună la fiecare 8-12 săptămâni, în evenimentul **PI Planning** (Program Increment Planning). SAFe adaugă niveluri suplimentare (Portfolio, Large Solution) pentru organizații foarte mari.\n\nAlte alternative de scalare, întâlnite la interviuri: **LeSS** (Large-Scale Scrum) și **Scrum@Scale**. Pentru PSM I nu ai nevoie de detalii SAFe, dar trebuie să înțelegi conceptul: scalarea presupune sincronizare la nivel de organizație, nu doar Scrum aplicat corect într-o singură echipă.\n\n**Când alegi SAFe:** organizații mari, cu echipe interdependente, unde lipsa sincronizării la nivel de portofoliu produce blocaje netratate.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b5"
+   },
+   {
+    "type": "example",
+    "title": "Alegerea framework-ului pentru un proiect ERP la o firmă românească",
+    "concept_key": "alegere-framework-caz-erp",
+    "md": "O firmă SRL din București, cu 120 de angajați, implementează un ERP nou. Proiectul are trei componente:\n\n1. **Dezvoltarea modulelor custom** (facturare electronică, integrare SAF-T) — cerințe încă neclare, negociate pe parcurs. Compania alege **Scrum**: sprint-uri de 2 săptămâni, Product Owner din departamentul financiar, review-uri bisăptămânale cu stakeholderii.\n\n2. **Suportul tehnic post-livrare** — cereri care apar oricând, fără tipar previzibil. Echipa de suport alege **Kanban**: tablou cu coloane „Raportat → Analiză → În lucru → Testat → Închis”, cu WIP limit de 4 tichete „În lucru” per persoană.\n\n3. **Calitatea codului** din modulele custom — o eroare de calcul TVA ar avea impact financiar direct, așa că echipa adoptă practici **XP**: code review obligatoriu, teste automate și integrare continuă înainte de fiecare merge.\n\nCompania nu alege un singur framework pentru tot, ci potrivește fiecare framework cu natura muncii: livrare planificată (Scrum), flux continuu (Kanban) și disciplină tehnică (XP).",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calculul Cycle Time și Throughput pe un tablou Kanban",
+    "concept_key": "kanban-cycle-time-throughput",
+    "md": "Echipa de suport ERP ține evidența tichetelor rezolvate într-o lună (20 de zile lucrătoare):\n- Au fost **închise 40 de tichete**;\n- Timpul total (de la intrarea în „În lucru” până la „Închis”), însumat pentru toate cele 40, este de 320 zile-tichet.\n\n**Cycle Time mediu** = timp total / număr de tichete = 320 / 40 = **8 zile/tichet**.\n\n**Throughput** = tichete finalizate / perioadă = 40 / 20 zile = **2 tichete/zi**.\n\nFolosind **Legea lui Little** (valabilă și pentru fluxurile Kanban):\n\nWIP mediu = Throughput × Cycle Time = 2 × 8 = **16 tichete în lucru, în medie**.\n\nDacă WIP-ul real de pe tablou este de 30 de tichete (aproape dublu față de cele 16 calculate), înseamnă că echipa a depășit capacitatea reală, iar cycle time-ul va crește în continuare — semnal clar că **WIP limit-ul** trebuie coborât, nu ridicat, pentru a reduce timpul de așteptare al utilizatorilor interni.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală a echipelor la început este „cargo-cultingul” — copierea ritualurilor unui framework (de exemplu, ținerea unui Daily Scrum de 15 minute) fără să înțeleagă scopul lor real (sincronizare rapidă, nu raportare către manager). Scrum Guide numește acest fenomen informal „Scrum-but” („facem Scrum, dar…”) — o versiune diluată care pierde beneficiile reale ale framework-ului. Adaptează framework-ul la context, dar nu elimina elementele lui esențiale doar pentru confort pe termen scurt.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Pentru fiecare dintre situațiile de mai jos, dintr-o companie românească, alege framework-ul Agile cel mai potrivit (Scrum, Kanban sau XP) și motivează pe scurt (1-2 propoziții):\n\n1. O echipă de 6 dezvoltatori construiește de la zero un modul nou de gestiune a stocurilor pentru un ERP, cu cerințe care se clarifică treptat împreună cu clientul, livrând ceva demonstrabil la fiecare 2 săptămâni.\n2. Departamentul IT intern primește zilnic, în număr variabil și imprevizibil, cereri de resetare acces, mici bug-uri și solicitări de rapoarte ad-hoc.\n3. O echipă lucrează la un modul de calcul al salariilor, unde orice eroare de calcul are impact financiar direct asupra angajaților, iar compania vrea să reducă drastic bug-urile ajunse în producție.",
+    "solution_md": "1. **Scrum** — proiect nou, livrare planificată în cicluri fixe (sprint-uri de 2 săptămâni), cerințe clarificate progresiv prin colaborare cu clientul.\n\n2. **Kanban** — volum de cereri variabil și imprevizibil, fără beneficiu din gruparea în cicluri fixe; un tablou cu WIP limit gestionează fluxul continuu mai bine decât un sprint planificat dinainte.\n\n3. **XP** (de regulă combinat cu Scrum pentru procesul de lucru) — miza fiind calitatea tehnică, practicile XP (TDD, code review, integrare continuă) atacă direct riscul de bug-uri critice.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență structurală dintre Scrum și Kanban?",
+    "choices": [
+     "Scrum funcționează în cicluri fixe (Sprint-uri) cu roluri definite, în timp ce Kanban gestionează un flux continuu prin limitarea lucrului în desfășurare (WIP)",
+     "Scrum se folosește doar în IT, iar Kanban doar în producție industrială",
+     "Kanban impune un Product Owner și un Scrum Master, la fel ca Scrum",
+     "Scrum nu are metrici de performanță, iar Kanban se bazează exclusiv pe cycle time"
+    ],
+    "answer": 0,
+    "explain": "Scrum structurează munca în Sprint-uri de lungime fixă cu trei roluri definite; Kanban nu impune cicluri sau roluri, ci vizualizează și limitează fluxul de lucru continuu prin WIP limits.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O organizație cu 8 echipe Agile interdependente, care trebuie să livreze sincronizat aceeași soluție, ar trebui să ia în calcul în primul rând:",
+    "choices": [
+     "Crystal Clear, pentru flexibilitate maximă la nivel de echipă",
+     "Un framework de scalare precum SAFe, pentru sincronizare la nivel de Agile Release Train",
+     "Renunțarea la Agile și revenirea la managementul clasic de tip cascadă (waterfall)",
+     "Extreme Programming, pentru că rezolvă orice problemă de coordonare între echipe"
+    ],
+    "answer": 1,
+    "explain": "Când mai multe echipe interdependente trebuie sincronizate la nivel de organizație, framework-urile de scalare precum SAFe (prin Agile Release Trains și PI Planning) sunt concepute exact pentru acest scop; Crystal și XP operează la nivel de echipă individuală.",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Sprint în Scrum și care este durata sa tipică?",
+    "back": "Un ciclu de lucru de lungime fixă în care echipa livrează un increment funcțional al produsului; durata tipică este de 1-4 săptămâni, cel mai frecvent 2 săptămâni.",
+    "concept_key": "scrum-framework-overview",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă WIP limit în Kanban?",
+    "back": "Limita maximă de sarcini permise simultan într-o etapă a fluxului de lucru (de exemplu, coloana „În lucru”), menită să reducă multitasking-ul și să scurteze cycle time-ul.",
+    "concept_key": "kanban-framework-overview",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt două practici tehnice esențiale în Extreme Programming (XP)?",
+    "back": "Pair programming (doi dezvoltatori lucrează împreună la aceeași sarcină) și Test-Driven Development - TDD (testul se scrie înaintea codului).",
+    "concept_key": "xp-lean-crystal-overview",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Agile Release Train (ART) în SAFe?",
+    "back": "Un grup de aproximativ 5-12 echipe Agile (circa 50-125 persoane) care lucrează sincronizat pe aceeași soluție, cu planificare comună la fiecare 8-12 săptămâni (PI Planning).",
+    "concept_key": "safe-scalare-agila",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează Throughput-ul într-un sistem Kanban?",
+    "back": "Throughput = numărul de elemente finalizate / perioada de timp analizată (de exemplu, tichete rezolvate pe zi lucrătoare).",
+    "concept_key": "kanban-cycle-time-throughput",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este „Scrum-but”?",
+    "back": "Termen folosit pentru aplicarea parțială sau diluată a Scrum, unde echipa respectă doar formal ritualurile fără să înțeleagă sau să obțină beneficiile reale ale framework-ului.",
+    "concept_key": "scrum-framework-overview",
+    "blockId": "cmjjuxvui006fumkpjvk3j0xp-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1369,
+   "flashcards": 6
+  }
+ }
+}

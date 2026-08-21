@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwan00inumkpbi0l9pq5",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Concedii și Absențe",
+ "lesson": "Concedii medicale",
+ "category": "HR_COMPLIANCE",
+ "content": "# Concedii medicale\n\nConcediul medical (numit legal \"incapacitate temporară de muncă\") este perioada în care un salariat nu poate presta munca din motive de sănătate, dovedită printr-un **certificat de concediu medical** eliberat de medicul curant sau de comisiile de expertiză medicală. Certificatul poartă un cod de indemnizație (de exemplu cod 01 pentru boală obișnuită, coduri distincte pentru urgențe medico-chirurgicale, sarcină și lăuzie, îngrijire copil bolnav, boli infecto-contagioase etc.), cod care determină atât cuantumul indemnizației, cât și regimul de suportare a acesteia.\n\nSalariatul are obligația să anunțe angajatorul despre incapacitatea temporară de muncă imediat ce este posibil și să depună certificatul medical original la departamentul de resurse umane. În practică, certificatele trebuie predate angajatorului, de regulă, cel târziu până la data de 5 a lunii următoare celei pentru care au fost emise, astfel încât să poată fi incluse în statul de plată aferent perioadei respective; depunerea cu întârziere din culpa salariatului poate afecta dreptul la indemnizație pentru zilele întârziate.\n\nDin punct de vedere al Codului muncii, pe durata concediului medical **contractul individual de muncă se suspendă de drept** (art. 50 lit. b din Legea 53/2003), ceea ce înseamnă că salariatul nu prestează activitate și nu i se pot aplica sancțiuni disciplinare sau i se poate desface contractul din inițiativa angajatorului pe motive care țin de persoana salariatului, cu excepțiile prevăzute de lege (de exemplu, falimentul angajatorului).\n\nIndemnizația de concediu medical nu este un salariu, ci o **prestație de asigurări sociale de sănătate**, plătită din două surse succesive:\n\n- **Primele 5 zile lucrătoare** de incapacitate temporară de muncă sunt suportate integral de **angajator**, din fondul de salarii al firmei.\n- **Începând cu a 6-a zi lucrătoare**, indemnizația este suportată din **bugetul Fondului Național Unic de Asigurări Sociale de Sănătate (FNUASS)**. În practică, angajatorul plătește salariatului întreaga sumă la data obișnuită de plată a salariilor, iar partea aferentă zilelor din a 6-a zi încolo o recuperează prin diminuarea contribuției de asigurări sociale de sănătate (CASS) datorate bugetului de stat, declarată prin Declarația 112 (\"recuperare CASS\").\n\nCuantumul indemnizației este, ca regulă generală, de **75% din baza de calcul** pentru concediul medical cod 01 (boală obișnuită). Pentru anumite situații considerate mai grave — urgențe medico-chirurgicale, boli infecto-contagioase din grupa A, tuberculoză, neoplazii, SIDA, boli cardiovasculare, precum și pentru sarcină și lăuzie — legea prevede un cuantum de **100% din baza de calcul**.\n\nBaza de calcul zilnică se determină ca: (media veniturilor brute realizate de salariat în ultimele 6 luni anterioare lunii concediului medical) / (numărul de zile lucrătoare din luna în care se acordă concediul medical). Indemnizația se acordă doar pentru zilele lucrătoare cuprinse în perioada certificatului medical, nu și pentru zilele de repaus săptămânal sau sărbătorile legale.\n\nLegea limitează suma pe care se calculează indemnizația, astfel încât baza lunară de calcul nu poate depăși **12 salarii minime brute pe economie**, indiferent cât de mare este venitul real al salariatului. Această limită se recalculează automat de fiecare dată când se modifică salariul minim brut pe economie.\n\nRaportat la valoarea salariului minim brut aplicabilă de la 1 iulie 2026 (4.325 lei, conform HG 146/2026), plafonul lunar al bazei de calcul pentru indemnizațiile de asigurări sociale de sănătate este de 12 × 4.325 lei = **51.900 lei/lună**. Pentru salariați cu venituri brute lunare peste acest plafon, indemnizația de concediu medical se calculează raportat la 51.900 lei, nu la venitul real, mai mare.\n\nDin punct de vedere fiscal, indemnizația de concediu medical este supusă **impozitului pe venit de 10%**, dar — spre deosebire de salariu — **nu se mai datorează CAS (25%) și CASS (10%)** asupra ei, întrucât indemnizația este ea însăși o prestație a sistemului de asigurări sociale de sănătate, finanțată din contribuțiile deja plătite. Deducerea personală, atunci când se aplică, se calculează cumulat cu eventualele venituri salariale din aceeași lună.\n\n## Exemplu: Calcul indemnizație pentru boală obișnuită (cod 01, 75%)\nUn salariat are salariul brut lunar constant de **5.000 lei** în ultimele 6 luni. În luna curentă sunt 21 de zile lucrătoare. Salariatul prezintă un certificat medical cod 01 (boală obișnuită) pentru **7 zile lucrătoare**.\n\n**Pas 1 — baza de calcul zilnică:**\n5.000 lei / 21 zile lucrătoare = 238,10 lei/zi\n\n**Pas 2 — indemnizația zilnică (75%):**\n238,10 lei × 75% = 178,57 lei/zi\n\n**Pas 3 — indemnizația brută totală (7 zile):**\n178,57 lei × 7 = 1.250,03 lei brut\n\n**Pas 4 — repartizarea plății:**\n- angajator (primele 5 zile): 178,57 × 5 = 892,88 lei\n- FNUASS, recuperat prin D112 (zilele 6-7): 178,57 × 2 = 357,15 lei\n\n**Pas 5 — impozitare (10%, fără CAS/CASS):**\n1.250,03 lei × 90% = **1.125,03 lei net**, sumă pe care salariatul o primește integral de la angajator, indiferent de sursa de finanțare a celor două tranșe.\n\n## Exemplu: Concediu medical cu indemnizație 100% (urgență medicală)\nAceeași salariată din exemplul anterior (bază de calcul zilnică 238,10 lei) primește de această dată un certificat medical cu cod pentru **urgență medico-chirurgicală**, pentru 4 zile lucrătoare. În acest caz cuantumul este de 100% din baza de calcul, nu 75%.\n\n**Indemnizație zilnică:** 238,10 lei × 100% = 238,10 lei/zi\n**Total brut (4 zile):** 238,10 × 4 = 952,40 lei\n\nÎntrucât toate cele 4 zile se încadrează în primele 5 zile ale incapacității, întreaga sumă este suportată de **angajator**, fără recuperare din FNUASS în această situație.\n\n**Net (impozit 10%, fără CAS/CASS):** 952,40 × 90% = **857,16 lei**.\n\nObservație practică: dacă aceeași perioadă de incapacitate s-ar fi prelungit peste 5 zile lucrătoare, doar zilele 6 și următoarele ar fi trecut pe recuperare CASS; primele 5 zile rămân întotdeauna în sarcina angajatorului, indiferent de codul certificatului.\n\n> Temei legal: OUG nr. 158/2005 privind concediile și indemnizațiile de asigurări sociale de sănătate, cu modificările și completările ulterioare art. 9, art. 10, art. 12 și art. 40 (forma consolidată) (în vigoare de la 2006-01-01)\nOUG 158/2005 este actul normativ care reglementează sistemul de concedii și indemnizații de asigurări sociale de sănătate: baza de calcul (media veniturilor brute din ultimele 6 luni), plafonarea la 12 salarii minime brute pe economie, cuantumul de 75%, respectiv 100% pentru situațiile speciale, precum și regula suportării primelor 5 zile lucrătoare de angajator și a restului din bugetul FNUASS. Complementar, art. 50 lit. b) din Legea 53/2003 (Codul muncii, republicată, cu modificările ulterioare) stabilește suspendarea de drept a contractului individual de muncă pe durata incapacității temporare de muncă. Numerotarea exactă a articolelor din OUG 158/2005 a suferit modificări succesive prin acte ulterioare; pentru aplicații concrete se recomandă consultarea formei consolidate în vigoare la data acordării concediului.\n\n⚠ Certificatul medical conține **date privind sănătatea salariatului**, categorie de date cu caracter special în sensul GDPR (art. 9 din Regulamentul UE 2016/679). Accesul la aceste documente trebuie restricționat strict la persoanele care gestionează salarizarea (HR/payroll), iar certificatele se arhivează separat, cu măsuri de securitate adecvate, nu în dosarul general de personal accesibil oricărui manager.\n\nValorile numerice folosite în această lecție (salariul minim brut de 4.325 lei și plafonul de 51.900 lei) sunt valabile începând cu 1 iulie 2026, conform HG 146/2026, și se modifică automat la orice actualizare ulterioară a salariului minim — verificați valoarea în vigoare la data calculului. De asemenea, acest material are caracter informativ general; pentru situații particulare (concedii medicale care se suprapun cu concediul de odihnă, recalculări, contestații la decizii ale casei de asigurări de sănătate etc.) recomandăm consultarea unui specialist în salarizare sau a casei de asigurări de sănătate competente, întrucât nu constituie consultanță juridică individuală.\n\n## Exercițiu\nUn salariat are salariul brut lunar constant de **6.300 lei** în ultimele 6 luni. În luna curentă sunt 22 de zile lucrătoare. Salariatul prezintă un certificat medical cod 01 (boală obișnuită) pentru **12 zile lucrătoare**.\n\nCalculați:\n1. Baza de calcul zilnică\n2. Indemnizația brută totală\n3. Suma suportată de angajator și suma recuperată din FNUASS\n4. Indemnizația netă aproximativă (impozit 10%, fără deducere personală, fără CAS/CASS)\n\n**Soluție:** **1. Baza de calcul zilnică:**\n6.300 lei / 22 zile = 286,36 lei/zi\n\n**2. Indemnizația zilnică (75%) și totalul brut:**\n286,36 × 75% = 214,77 lei/zi\n214,77 × 12 zile = **2.577,24 lei brut**\n\n**3. Repartizarea plății:**\n- angajator (primele 5 zile): 214,77 × 5 = 1.073,85 lei\n- FNUASS, recuperat prin D112 (zilele 6-12, adică 7 zile): 214,77 × 7 = 1.503,39 lei\n\n**4. Indemnizația netă:**\n2.577,24 × 90% = **2.319,52 lei net**, plătită integral salariatului de către angajator, la aceeași dată la care se plătesc salariile.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "concediu-medical-definitie",
+    "md": "Concediul medical (numit legal \"incapacitate temporară de muncă\") este perioada în care un salariat nu poate presta munca din motive de sănătate, dovedită printr-un **certificat de concediu medical** eliberat de medicul curant sau de comisiile de expertiză medicală. Certificatul poartă un cod de indemnizație (de exemplu cod 01 pentru boală obișnuită, coduri distincte pentru urgențe medico-chirurgicale, sarcină și lăuzie, îngrijire copil bolnav, boli infecto-contagioase etc.), cod care determină atât cuantumul indemnizației, cât și regimul de suportare a acesteia.\n\nSalariatul are obligația să anunțe angajatorul despre incapacitatea temporară de muncă imediat ce este posibil și să depună certificatul medical original la departamentul de resurse umane. În practică, certificatele trebuie predate angajatorului, de regulă, cel târziu până la data de 5 a lunii următoare celei pentru care au fost emise, astfel încât să poată fi incluse în statul de plată aferent perioadei respective; depunerea cu întârziere din culpa salariatului poate afecta dreptul la indemnizație pentru zilele întârziate.\n\nDin punct de vedere al Codului muncii, pe durata concediului medical **contractul individual de muncă se suspendă de drept** (art. 50 lit. b din Legea 53/2003), ceea ce înseamnă că salariatul nu prestează activitate și nu i se pot aplica sancțiuni disciplinare sau i se poate desface contractul din inițiativa angajatorului pe motive care țin de persoana salariatului, cu excepțiile prevăzute de lege (de exemplu, falimentul angajatorului).",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "indemnizatie-concediu-medical-calcul",
+    "md": "Indemnizația de concediu medical nu este un salariu, ci o **prestație de asigurări sociale de sănătate**, plătită din două surse succesive:\n\n- **Primele 5 zile lucrătoare** de incapacitate temporară de muncă sunt suportate integral de **angajator**, din fondul de salarii al firmei.\n- **Începând cu a 6-a zi lucrătoare**, indemnizația este suportată din **bugetul Fondului Național Unic de Asigurări Sociale de Sănătate (FNUASS)**. În practică, angajatorul plătește salariatului întreaga sumă la data obișnuită de plată a salariilor, iar partea aferentă zilelor din a 6-a zi încolo o recuperează prin diminuarea contribuției de asigurări sociale de sănătate (CASS) datorate bugetului de stat, declarată prin Declarația 112 (\"recuperare CASS\").\n\nCuantumul indemnizației este, ca regulă generală, de **75% din baza de calcul** pentru concediul medical cod 01 (boală obișnuită). Pentru anumite situații considerate mai grave — urgențe medico-chirurgicale, boli infecto-contagioase din grupa A, tuberculoză, neoplazii, SIDA, boli cardiovasculare, precum și pentru sarcină și lăuzie — legea prevede un cuantum de **100% din baza de calcul**.\n\nBaza de calcul zilnică se determină ca: (media veniturilor brute realizate de salariat în ultimele 6 luni anterioare lunii concediului medical) / (numărul de zile lucrătoare din luna în care se acordă concediul medical). Indemnizația se acordă doar pentru zilele lucrătoare cuprinse în perioada certificatului medical, nu și pentru zilele de repaus săptămânal sau sărbătorile legale.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "plafon-baza-calcul-concediu-medical",
+    "md": "Legea limitează suma pe care se calculează indemnizația, astfel încât baza lunară de calcul nu poate depăși **12 salarii minime brute pe economie**, indiferent cât de mare este venitul real al salariatului. Această limită se recalculează automat de fiecare dată când se modifică salariul minim brut pe economie.\n\nRaportat la valoarea salariului minim brut aplicabilă de la 1 iulie 2026 (4.325 lei, conform HG 146/2026), plafonul lunar al bazei de calcul pentru indemnizațiile de asigurări sociale de sănătate este de 12 × 4.325 lei = **51.900 lei/lună**. Pentru salariați cu venituri brute lunare peste acest plafon, indemnizația de concediu medical se calculează raportat la 51.900 lei, nu la venitul real, mai mare.\n\nDin punct de vedere fiscal, indemnizația de concediu medical este supusă **impozitului pe venit de 10%**, dar — spre deosebire de salariu — **nu se mai datorează CAS (25%) și CASS (10%)** asupra ei, întrucât indemnizația este ea însăși o prestație a sistemului de asigurări sociale de sănătate, finanțată din contribuțiile deja plătite. Deducerea personală, atunci când se aplică, se calculează cumulat cu eventualele venituri salariale din aceeași lună.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calcul indemnizație pentru boală obișnuită (cod 01, 75%)",
+    "concept_key": "exemplu-calcul-indemnizatie-boala-obisnuita",
+    "md": "Un salariat are salariul brut lunar constant de **5.000 lei** în ultimele 6 luni. În luna curentă sunt 21 de zile lucrătoare. Salariatul prezintă un certificat medical cod 01 (boală obișnuită) pentru **7 zile lucrătoare**.\n\n**Pas 1 — baza de calcul zilnică:**\n5.000 lei / 21 zile lucrătoare = 238,10 lei/zi\n\n**Pas 2 — indemnizația zilnică (75%):**\n238,10 lei × 75% = 178,57 lei/zi\n\n**Pas 3 — indemnizația brută totală (7 zile):**\n178,57 lei × 7 = 1.250,03 lei brut\n\n**Pas 4 — repartizarea plății:**\n- angajator (primele 5 zile): 178,57 × 5 = 892,88 lei\n- FNUASS, recuperat prin D112 (zilele 6-7): 178,57 × 2 = 357,15 lei\n\n**Pas 5 — impozitare (10%, fără CAS/CASS):**\n1.250,03 lei × 90% = **1.125,03 lei net**, sumă pe care salariatul o primește integral de la angajator, indiferent de sursa de finanțare a celor două tranșe.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b4"
+   },
+   {
+    "type": "example",
+    "title": "Concediu medical cu indemnizație 100% (urgență medicală)",
+    "concept_key": "exemplu-calcul-urgenta-medicala-100",
+    "md": "Aceeași salariată din exemplul anterior (bază de calcul zilnică 238,10 lei) primește de această dată un certificat medical cu cod pentru **urgență medico-chirurgicală**, pentru 4 zile lucrătoare. În acest caz cuantumul este de 100% din baza de calcul, nu 75%.\n\n**Indemnizație zilnică:** 238,10 lei × 100% = 238,10 lei/zi\n**Total brut (4 zile):** 238,10 × 4 = 952,40 lei\n\nÎntrucât toate cele 4 zile se încadrează în primele 5 zile ale incapacității, întreaga sumă este suportată de **angajator**, fără recuperare din FNUASS în această situație.\n\n**Net (impozit 10%, fără CAS/CASS):** 952,40 × 90% = **857,16 lei**.\n\nObservație practică: dacă aceeași perioadă de incapacitate s-ar fi prelungit peste 5 zile lucrătoare, doar zilele 6 și următoarele ar fi trecut pe recuperare CASS; primele 5 zile rămân întotdeauna în sarcina angajatorului, indiferent de codul certificatului.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OUG nr. 158/2005 privind concediile și indemnizațiile de asigurări sociale de sănătate, cu modificările și completările ulterioare",
+    "article": "art. 9, art. 10, art. 12 și art. 40 (forma consolidată)",
+    "effective": "2006-01-01",
+    "md": "OUG 158/2005 este actul normativ care reglementează sistemul de concedii și indemnizații de asigurări sociale de sănătate: baza de calcul (media veniturilor brute din ultimele 6 luni), plafonarea la 12 salarii minime brute pe economie, cuantumul de 75%, respectiv 100% pentru situațiile speciale, precum și regula suportării primelor 5 zile lucrătoare de angajator și a restului din bugetul FNUASS. Complementar, art. 50 lit. b) din Legea 53/2003 (Codul muncii, republicată, cu modificările ulterioare) stabilește suspendarea de drept a contractului individual de muncă pe durata incapacității temporare de muncă. Numerotarea exactă a articolelor din OUG 158/2005 a suferit modificări succesive prin acte ulterioare; pentru aplicații concrete se recomandă consultarea formei consolidate în vigoare la data acordării concediului.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Certificatul medical conține **date privind sănătatea salariatului**, categorie de date cu caracter special în sensul GDPR (art. 9 din Regulamentul UE 2016/679). Accesul la aceste documente trebuie restricționat strict la persoanele care gestionează salarizarea (HR/payroll), iar certificatele se arhivează separat, cu măsuri de securitate adecvate, nu în dosarul general de personal accesibil oricărui manager.\n\nValorile numerice folosite în această lecție (salariul minim brut de 4.325 lei și plafonul de 51.900 lei) sunt valabile începând cu 1 iulie 2026, conform HG 146/2026, și se modifică automat la orice actualizare ulterioară a salariului minim — verificați valoarea în vigoare la data calculului. De asemenea, acest material are caracter informativ general; pentru situații particulare (concedii medicale care se suprapun cu concediul de odihnă, recalculări, contestații la decizii ale casei de asigurări de sănătate etc.) recomandăm consultarea unui specialist în salarizare sau a casei de asigurări de sănătate competente, întrucât nu constituie consultanță juridică individuală.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un salariat are salariul brut lunar constant de **6.300 lei** în ultimele 6 luni. În luna curentă sunt 22 de zile lucrătoare. Salariatul prezintă un certificat medical cod 01 (boală obișnuită) pentru **12 zile lucrătoare**.\n\nCalculați:\n1. Baza de calcul zilnică\n2. Indemnizația brută totală\n3. Suma suportată de angajator și suma recuperată din FNUASS\n4. Indemnizația netă aproximativă (impozit 10%, fără deducere personală, fără CAS/CASS)",
+    "solution_md": "**1. Baza de calcul zilnică:**\n6.300 lei / 22 zile = 286,36 lei/zi\n\n**2. Indemnizația zilnică (75%) și totalul brut:**\n286,36 × 75% = 214,77 lei/zi\n214,77 × 12 zile = **2.577,24 lei brut**\n\n**3. Repartizarea plății:**\n- angajator (primele 5 zile): 214,77 × 5 = 1.073,85 lei\n- FNUASS, recuperat prin D112 (zilele 6-12, adică 7 zile): 214,77 × 7 = 1.503,39 lei\n\n**4. Indemnizația netă:**\n2.577,24 × 90% = **2.319,52 lei net**, plătită integral salariatului de către angajator, la aceeași dată la care se plătesc salariile.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cine suportă indemnizația de concediu medical aferentă primelor 5 zile lucrătoare de incapacitate temporară de muncă?",
+    "choices": [
+     "Exclusiv bugetul FNUASS",
+     "Angajatorul, din fondul de salarii",
+     "Casa de Pensii",
+     "Salariatul, prin reținere ulterioară din salariu"
+    ],
+    "answer": 1,
+    "explain": "Conform OUG 158/2005, primele 5 zile lucrătoare de concediu medical se suportă integral de angajator; abia din a 6-a zi lucrătoare plata trece pe seama bugetului FNUASS, sumă pe care angajatorul o recuperează ulterior prin declarația D112.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce regim fiscal se aplică indemnizației de concediu medical?",
+    "choices": [
+     "25% CAS + 10% CASS + 10% impozit pe venit, ca la salariu",
+     "10% impozit pe venit, fără CAS și fără CASS",
+     "Este complet neimpozabilă",
+     "16% impozit pe venit, fără alte rețineri"
+    ],
+    "answer": 1,
+    "explain": "Indemnizația de concediu medical este o prestație de asigurări sociale de sănătate, nu salariu; se impozitează cu 10% impozit pe venit, dar nu se mai datorează CAS (25%) și CASS (10%) asupra ei.",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine suportă indemnizația de concediu medical pentru primele 5 zile lucrătoare de incapacitate?",
+    "back": "Angajatorul, din fondul de salarii; începând cu a 6-a zi lucrătoare, indemnizația se suportă din bugetul FNUASS și se recuperează de angajator prin D112.",
+    "concept_key": "indemnizatie-concediu-medical-calcul",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cuantumul standard al indemnizației pentru concediu medical cod 01 (boală obișnuită)?",
+    "back": "75% din baza de calcul (media veniturilor brute realizate în ultimele 6 luni).",
+    "concept_key": "indemnizatie-concediu-medical-calcul",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În ce situații indemnizația de concediu medical este 100% din baza de calcul?",
+    "back": "Urgențe medico-chirurgicale, boli infecto-contagioase din grupa A, tuberculoză, neoplazii, SIDA, boli cardiovasculare, sarcină și lăuzie.",
+    "concept_key": "exemplu-calcul-urgenta-medicala-100",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este plafonul maxim al bazei de calcul lunare pentru indemnizațiile de asigurări sociale de sănătate, valabil de la 1 iulie 2026?",
+    "back": "12 salarii minime brute pe economie = 12 × 4.325 lei = 51.900 lei/lună.",
+    "concept_key": "plafon-baza-calcul-concediu-medical",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Se datorează CAS și CASS pentru indemnizația de concediu medical?",
+    "back": "Nu; indemnizația este supusă doar impozitului pe venit de 10%, fără CAS (25%) și fără CASS (10%).",
+    "concept_key": "plafon-baza-calcul-concediu-medical",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se întâmplă cu contractul individual de muncă pe durata concediului medical, conform Codului muncii?",
+    "back": "Se suspendă de drept, conform art. 50 lit. b) din Legea 53/2003, iar angajatorul înregistrează suspendarea în Revisal.",
+    "concept_key": "concediu-medical-definitie",
+    "blockId": "cmjjuxwan00inumkpbi0l9pq5-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1344,
+   "flashcards": 6
+  }
+ }
+}

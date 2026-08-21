@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvvs007humkpy16jk0j2",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Practici și Tehnici Agile",
+ "lesson": "Estimation: Story Points",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Estimation: Story Points\n\nStory Points sunt unitatea de măsură pe care majoritatea echipelor Scrum o folosesc pentru a estima dimensiunea elementelor din Product Backlog — de regulă User Stories. Spre deosebire de estimarea în ore sau zile-om (estimare absolută), Story Points exprimă o estimare relativă: nu răspund la întrebarea „cât timp durează?\", ci la întrebarea „cât de mare/complex/riscant este acest element în comparație cu altele pe care le cunoaștem deja?\". Un Story Point combină trei dimensiuni într-un singur număr: efortul de implementare, complexitatea tehnică și incertitudinea/riscul (cerințe neclare, dependențe externe, tehnologie nouă).\n\nMotivul pentru care estimarea relativă funcționează mai bine decât cea absolută este psihologic și empiric în același timp: oamenii sunt mult mai buni la a compara mărimi („acest story pare de două ori mai complex decât celălalt\") decât la a estima direct în ore, mai ales devreme, când multe necunoscute nu sunt încă rezolvate. În practică, echipa alege un element de referință deja implementat sau bine înțeles, îi atribuie o valoare (de exemplu 3 puncte), apoi estimează restul elementelor prin comparație cu acest ancoră.\n\nScrum Guide 2020 nu impune Story Points ca tehnică obligatorie — Sprint Backlog trebuie doar să conțină un plan suficient de detaliat, iar Product Backlog trebuie rafinat („Product Backlog refinement\") de către Developers. Story Points și Planning Poker sunt practici consacrate în comunitatea Agile, adoptate pe scară largă pentru că reduc timpul petrecut în estimări și cresc acuratețea pe termen mediu.\n\nPlanning Poker este tehnica de facilitare cel mai des folosită pentru a ajunge la un consens rapid asupra Story Points. Procesul standard arată astfel: Product Owner sau un membru al echipei citește user story-ul și clarifică eventualele întrebări. Fiecare Developer are un set de cărți cu valori (de obicei secvența Fibonacci modificată: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100, plus cărțile „?\" pentru incertitudine mare și „cafea\" pentru pauză). După discuție, fiecare membru alege în secret cartea corespunzătoare estimării proprii, iar toate cărțile sunt întoarse simultan.\n\nSimultaneitatea este esențială: previne fenomenul de ancorare (anchoring bias), în care prima persoană care spune un număr cu voce tare influențează inconștient răspunsurile celorlalți. Dacă valorile converg (de exemplu toți aleg 5 sau 8), estimarea se acceptă direct. Dacă apar diferențe mari (de exemplu unii aleg 3, alții 13), persoanele cu valorile extreme explică raționamentul — de multe ori diferența relevă o neînțelegere a cerinței sau un risc tehnic pe care unii membri îl cunoșteau și alții nu. Se discută, apoi se re-votează, de obicei de maximum 2-3 ori, pentru a evita paralizia prin analiză excesivă.\n\nBeneficiul real al Planning Poker nu este cifra finală, ci conversația generată: fiecare membru al echipei trebuie să se poziționeze activ, ceea ce scoate la iveală presupuneri ascunse, dependențe uitate și cerințe ambigue, cu mult înainte ca acestea să devină blocaje în Sprint.\n\nSecvența Fibonacci modificată (1, 2, 3, 5, 8, 13, 20, 40, 100) este preferată unei scale liniare (1, 2, 3, 4, 5...) dintr-un motiv concret: pe măsură ce elementele cresc în dimensiune, crește și incertitudinea legată de estimarea lor, iar distanța tot mai mare dintre valorile succesive reflectă exact acest fenomen. Diferența dintre un story de 2 puncte și unul de 3 puncte trebuie să fie clară și ușor de argumentat; diferența dintre un story de 40 și unul de 100 nu mai are sens să fie estimată cu precizie — la acel nivel, singurul răspuns rezonabil este „este mare, trebuie descompus\".\n\nAceastă proprietate a scalei încurajează un comportament sănătos: orice element estimat la 13 puncte sau mai mult ar trebui tratat ca un semnal de alarmă și descompus în user stories mai mici înainte de a intra într-un Sprint, conform principiului INVEST (Independent, Negotiable, Valuable, Estimable, Small, Testable). Elemente foarte mari, greu estimabile cu acuratețe, cresc riscul de a nu fi finalizate („Done\") până la sfârșitul Sprintului.\n\nVelocity este suma Story Points aferente elementelor finalizate complet (conform Definition of Done) de către o echipă într-un Sprint. Dacă echipa a livrat „Done\" trei user stories de 5, 8 și 3 puncte, velocity pentru acel Sprint este 16. Velocity nu se calculează pe baza a ceea ce a fost planificat, ci strict pe baza a ceea ce a fost efectiv terminat — un story parțial implementat contribuie cu zero puncte, indiferent cât de aproape era de finalizare.\n\nVelocity se folosește exclusiv pentru forecasting empiric al aceleiași echipe: pe baza mediei ultimelor 3-4 Sprinturi, Product Owner-ul poate estima câte Sprinturi mai sunt necesare pentru a finaliza Product Backlog-ul rămas. Este o unealtă de planificare, nu o metrică de performanță.\n\nCapacity planning este un proces diferit, dar complementar, folosit în Sprint Planning: echipa estimează timpul real disponibil (ore sau zile-persoană) pentru Sprintul următor, ținând cont de concedii, sărbători legale, întâlniri administrative și alte angajamente. Capacity ajută echipa să valideze, la nivel de bun-simț, dacă volumul de Story Points pe care intenționează să-l preia în Sprint Backlog este realist, dar nu înlocuiește velocity ca instrument principal de forecasting pe termen mediu — cele două se folosesc împreună, ca verificări încrucișate.\n\n⚠ Cea mai frecventă greșeală legată de Story Points este transformarea lor într-o metrică de performanță sau productivitate. Compararea velocity între echipe diferite („echipa A are velocity 40, echipa B doar 25, deci echipa A e mai productivă\") este un anti-pattern grav: scalele de estimare sunt relative și specifice fiecărei echipe, deci cifrele nu sunt comparabile între echipe. La fel de dăunătoare este conversia rigidă a punctelor în ore (de exemplu „1 punct = 4 ore\"), care anulează tot scopul estimării relative și transformă Planning Poker într-un exercițiu contabil. Presiunea de a „crește velocity\" duce frecvent la inflaționarea estimărilor (echipa alege cifre mai mari pentru aceleași story-uri), fenomen cunoscut ca „velocity gaming\", care distruge utilitatea metricii ca instrument de forecasting.\n\n## Exemplu: Un Sprint de Planning Poker cu risc tehnic ascuns\nEchipa Scrum a unei companii care implementează un modul de facturare electronică estimează user story-ul: „Ca utilizator, vreau să exportez raportul de vânzări lunar în format PDF, pentru a-l putea trimite contabilului.\" Product Owner citește cerința și explică faptul că raportul trebuie să includă filtrare pe perioadă și pe categorie de produs.\n\nPrimul tur de Planning Poker: cei cinci Developeri aleg simultan 3, 5, 5, 8 și 13 puncte. Diferența dintre 3 și 13 este mare, așa că facilitatorul cere explicații de la extreme. Developer-ul care a ales 13 puncte explică faptul că nu există încă o librărie de generare PDF integrată în proiect și consideră necesară o cercetare tehnică (spike). Developer-ul care a ales 3 puncte nu știa acest detaliu. După discuție, echipa decide să separe cercetarea tehnică într-un spike distinct, urmând ca story-ul de export să fie re-estimat ulterior, o dată ce necunoscuta tehnică e clarificată.\n\nAl doilea tur de Planning Poker, după ce echipa a convenit să trateze cercetarea librăriei PDF separat: toți cei cinci Developeri aleg 5 puncte. Estimarea converge și este acceptată. Conversația generată de diferența inițială a scos la iveală un risc tehnic real, cu mult înainte de Sprint.\n\n## Exemplu: Calculul velocity și al capacității pentru Sprint Planning\nO echipă Scrum urmărește velocity pe ultimele patru Sprinturi: 23, 27, 25 și 24 Story Points finalizate („Done\"). Velocity mediu se calculează astfel: (23 + 27 + 25 + 24) / 4 = 99 / 4 = 24,75 puncte pe Sprint.\n\nProduct Backlog-ul rămas conține 148 Story Points în total. Numărul estimat de Sprinturi necesare pentru finalizare este 148 / 24,75 ≈ 5,98, deci echipa comunică stakeholderilor un forecast de aproximativ 6 Sprinturi, cu mențiunea că este o estimare empirică, actualizabilă la fiecare Sprint pe măsură ce apar informații noi (conform empirismului din Scrum: transparență, inspecție, adaptare).\n\nSeparat, pentru Sprint Planning-ul imediat următor, echipa calculează și capacity: are 5 Developeri, fiecare disponibil în medie 6 ore pe zi pentru lucru efectiv (restul timpului fiind ocupat de Daily Scrum, întâlniri și context-switching), pe un Sprint de 10 zile lucrătoare. Capacitatea totală este 5 × 6 × 10 = 300 de ore-persoană. Această cifră nu se traduce direct în Story Points, dar oferă echipei un reper de bun-simț: dacă unul dintre Developeri este în concediu 3 zile în Sprintul respectiv, capacitatea scade cu 3 × 6 = 18 ore, iar echipa ar trebui să preia mai puține Story Points în Sprint Backlog decât media istorică de 24,75, ajustând planificarea în consecință.\n\n## Exercițiu\nEchipa Scrum ta a finalizat, în ultimele 4 Sprinturi, respectiv 18, 22, 20 și 24 Story Points (toate „Done\"). Product Backlog-ul curent conține 6 user stories, estimate prin Planning Poker la: 8, 13, 5, 21, 13 și 8 puncte.\n\na) Calculează velocity mediu al echipei pe baza ultimelor 4 Sprinturi.\nb) Calculează totalul de Story Points din Product Backlog-ul curent.\nc) Estimează câte Sprinturi sunt necesare pentru finalizarea backlog-ului curent, presupunând velocity constant.\nd) Unul dintre elementele estimate la 21 de puncte este considerat prea mare pentru a intra direct într-un Sprint. Ce ar trebui să facă echipa înainte de a-l planifica?\n\n**Soluție:** a) Velocity mediu = (18 + 22 + 20 + 24) / 4 = 84 / 4 = 21 Story Points/Sprint.\n\nb) Total Backlog = 8 + 13 + 5 + 21 + 13 + 8 = 68 Story Points.\n\nc) Număr de Sprinturi = 68 / 21 ≈ 3,24. Pentru un forecast conservator, se rotunjește în sus: echipa comunică un estimat de 4 Sprinturi, întrucât un Sprint nu poate fi „parțial\" — orice rest de puncte necesită un Sprint suplimentar complet.\n\nd) Elementul de 21 de puncte depășește pragul practic recomandat (de regulă sub 13 puncte pentru elemente ce intră într-un Sprint) și ar trebui descompus în user stories mai mici, aplicând principiul INVEST, înainte de Sprint Planning. Descompunerea reduce incertitudinea, permite o estimare mai precisă și scade riscul ca elementul să rămână neterminat la finalul Sprintului.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "story-points-estimare-relativa",
+    "md": "Story Points sunt unitatea de măsură pe care majoritatea echipelor Scrum o folosesc pentru a estima dimensiunea elementelor din Product Backlog — de regulă User Stories. Spre deosebire de estimarea în ore sau zile-om (estimare absolută), Story Points exprimă o estimare relativă: nu răspund la întrebarea „cât timp durează?\", ci la întrebarea „cât de mare/complex/riscant este acest element în comparație cu altele pe care le cunoaștem deja?\". Un Story Point combină trei dimensiuni într-un singur număr: efortul de implementare, complexitatea tehnică și incertitudinea/riscul (cerințe neclare, dependențe externe, tehnologie nouă).\n\nMotivul pentru care estimarea relativă funcționează mai bine decât cea absolută este psihologic și empiric în același timp: oamenii sunt mult mai buni la a compara mărimi („acest story pare de două ori mai complex decât celălalt\") decât la a estima direct în ore, mai ales devreme, când multe necunoscute nu sunt încă rezolvate. În practică, echipa alege un element de referință deja implementat sau bine înțeles, îi atribuie o valoare (de exemplu 3 puncte), apoi estimează restul elementelor prin comparație cu acest ancoră.\n\nScrum Guide 2020 nu impune Story Points ca tehnică obligatorie — Sprint Backlog trebuie doar să conțină un plan suficient de detaliat, iar Product Backlog trebuie rafinat („Product Backlog refinement\") de către Developers. Story Points și Planning Poker sunt practici consacrate în comunitatea Agile, adoptate pe scară largă pentru că reduc timpul petrecut în estimări și cresc acuratețea pe termen mediu.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "planning-poker-proces",
+    "md": "Planning Poker este tehnica de facilitare cel mai des folosită pentru a ajunge la un consens rapid asupra Story Points. Procesul standard arată astfel: Product Owner sau un membru al echipei citește user story-ul și clarifică eventualele întrebări. Fiecare Developer are un set de cărți cu valori (de obicei secvența Fibonacci modificată: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100, plus cărțile „?\" pentru incertitudine mare și „cafea\" pentru pauză). După discuție, fiecare membru alege în secret cartea corespunzătoare estimării proprii, iar toate cărțile sunt întoarse simultan.\n\nSimultaneitatea este esențială: previne fenomenul de ancorare (anchoring bias), în care prima persoană care spune un număr cu voce tare influențează inconștient răspunsurile celorlalți. Dacă valorile converg (de exemplu toți aleg 5 sau 8), estimarea se acceptă direct. Dacă apar diferențe mari (de exemplu unii aleg 3, alții 13), persoanele cu valorile extreme explică raționamentul — de multe ori diferența relevă o neînțelegere a cerinței sau un risc tehnic pe care unii membri îl cunoșteau și alții nu. Se discută, apoi se re-votează, de obicei de maximum 2-3 ori, pentru a evita paralizia prin analiză excesivă.\n\nBeneficiul real al Planning Poker nu este cifra finală, ci conversația generată: fiecare membru al echipei trebuie să se poziționeze activ, ceea ce scoate la iveală presupuneri ascunse, dependențe uitate și cerințe ambigue, cu mult înainte ca acestea să devină blocaje în Sprint.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "fibonacci-estimare-agile",
+    "md": "Secvența Fibonacci modificată (1, 2, 3, 5, 8, 13, 20, 40, 100) este preferată unei scale liniare (1, 2, 3, 4, 5...) dintr-un motiv concret: pe măsură ce elementele cresc în dimensiune, crește și incertitudinea legată de estimarea lor, iar distanța tot mai mare dintre valorile succesive reflectă exact acest fenomen. Diferența dintre un story de 2 puncte și unul de 3 puncte trebuie să fie clară și ușor de argumentat; diferența dintre un story de 40 și unul de 100 nu mai are sens să fie estimată cu precizie — la acel nivel, singurul răspuns rezonabil este „este mare, trebuie descompus\".\n\nAceastă proprietate a scalei încurajează un comportament sănătos: orice element estimat la 13 puncte sau mai mult ar trebui tratat ca un semnal de alarmă și descompus în user stories mai mici înainte de a intra într-un Sprint, conform principiului INVEST (Independent, Negotiable, Valuable, Estimable, Small, Testable). Elemente foarte mari, greu estimabile cu acuratețe, cresc riscul de a nu fi finalizate („Done\") până la sfârșitul Sprintului.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "velocity-capacity-planning",
+    "md": "Velocity este suma Story Points aferente elementelor finalizate complet (conform Definition of Done) de către o echipă într-un Sprint. Dacă echipa a livrat „Done\" trei user stories de 5, 8 și 3 puncte, velocity pentru acel Sprint este 16. Velocity nu se calculează pe baza a ceea ce a fost planificat, ci strict pe baza a ceea ce a fost efectiv terminat — un story parțial implementat contribuie cu zero puncte, indiferent cât de aproape era de finalizare.\n\nVelocity se folosește exclusiv pentru forecasting empiric al aceleiași echipe: pe baza mediei ultimelor 3-4 Sprinturi, Product Owner-ul poate estima câte Sprinturi mai sunt necesare pentru a finaliza Product Backlog-ul rămas. Este o unealtă de planificare, nu o metrică de performanță.\n\nCapacity planning este un proces diferit, dar complementar, folosit în Sprint Planning: echipa estimează timpul real disponibil (ore sau zile-persoană) pentru Sprintul următor, ținând cont de concedii, sărbători legale, întâlniri administrative și alte angajamente. Capacity ajută echipa să valideze, la nivel de bun-simț, dacă volumul de Story Points pe care intenționează să-l preia în Sprint Backlog este realist, dar nu înlocuiește velocity ca instrument principal de forecasting pe termen mediu — cele două se folosesc împreună, ca verificări încrucișate.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b4"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală legată de Story Points este transformarea lor într-o metrică de performanță sau productivitate. Compararea velocity între echipe diferite („echipa A are velocity 40, echipa B doar 25, deci echipa A e mai productivă\") este un anti-pattern grav: scalele de estimare sunt relative și specifice fiecărei echipe, deci cifrele nu sunt comparabile între echipe. La fel de dăunătoare este conversia rigidă a punctelor în ore (de exemplu „1 punct = 4 ore\"), care anulează tot scopul estimării relative și transformă Planning Poker într-un exercițiu contabil. Presiunea de a „crește velocity\" duce frecvent la inflaționarea estimărilor (echipa alege cifre mai mari pentru aceleași story-uri), fenomen cunoscut ca „velocity gaming\", care distruge utilitatea metricii ca instrument de forecasting.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b5"
+   },
+   {
+    "type": "example",
+    "title": "Un Sprint de Planning Poker cu risc tehnic ascuns",
+    "concept_key": "planning-poker-proces",
+    "md": "Echipa Scrum a unei companii care implementează un modul de facturare electronică estimează user story-ul: „Ca utilizator, vreau să exportez raportul de vânzări lunar în format PDF, pentru a-l putea trimite contabilului.\" Product Owner citește cerința și explică faptul că raportul trebuie să includă filtrare pe perioadă și pe categorie de produs.\n\nPrimul tur de Planning Poker: cei cinci Developeri aleg simultan 3, 5, 5, 8 și 13 puncte. Diferența dintre 3 și 13 este mare, așa că facilitatorul cere explicații de la extreme. Developer-ul care a ales 13 puncte explică faptul că nu există încă o librărie de generare PDF integrată în proiect și consideră necesară o cercetare tehnică (spike). Developer-ul care a ales 3 puncte nu știa acest detaliu. După discuție, echipa decide să separe cercetarea tehnică într-un spike distinct, urmând ca story-ul de export să fie re-estimat ulterior, o dată ce necunoscuta tehnică e clarificată.\n\nAl doilea tur de Planning Poker, după ce echipa a convenit să trateze cercetarea librăriei PDF separat: toți cei cinci Developeri aleg 5 puncte. Estimarea converge și este acceptată. Conversația generată de diferența inițială a scos la iveală un risc tehnic real, cu mult înainte de Sprint.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calculul velocity și al capacității pentru Sprint Planning",
+    "concept_key": "velocity-capacity-planning",
+    "md": "O echipă Scrum urmărește velocity pe ultimele patru Sprinturi: 23, 27, 25 și 24 Story Points finalizate („Done\"). Velocity mediu se calculează astfel: (23 + 27 + 25 + 24) / 4 = 99 / 4 = 24,75 puncte pe Sprint.\n\nProduct Backlog-ul rămas conține 148 Story Points în total. Numărul estimat de Sprinturi necesare pentru finalizare este 148 / 24,75 ≈ 5,98, deci echipa comunică stakeholderilor un forecast de aproximativ 6 Sprinturi, cu mențiunea că este o estimare empirică, actualizabilă la fiecare Sprint pe măsură ce apar informații noi (conform empirismului din Scrum: transparență, inspecție, adaptare).\n\nSeparat, pentru Sprint Planning-ul imediat următor, echipa calculează și capacity: are 5 Developeri, fiecare disponibil în medie 6 ore pe zi pentru lucru efectiv (restul timpului fiind ocupat de Daily Scrum, întâlniri și context-switching), pe un Sprint de 10 zile lucrătoare. Capacitatea totală este 5 × 6 × 10 = 300 de ore-persoană. Această cifră nu se traduce direct în Story Points, dar oferă echipei un reper de bun-simț: dacă unul dintre Developeri este în concediu 3 zile în Sprintul respectiv, capacitatea scade cu 3 × 6 = 18 ore, iar echipa ar trebui să preia mai puține Story Points în Sprint Backlog decât media istorică de 24,75, ajustând planificarea în consecință.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Echipa Scrum ta a finalizat, în ultimele 4 Sprinturi, respectiv 18, 22, 20 și 24 Story Points (toate „Done\"). Product Backlog-ul curent conține 6 user stories, estimate prin Planning Poker la: 8, 13, 5, 21, 13 și 8 puncte.\n\na) Calculează velocity mediu al echipei pe baza ultimelor 4 Sprinturi.\nb) Calculează totalul de Story Points din Product Backlog-ul curent.\nc) Estimează câte Sprinturi sunt necesare pentru finalizarea backlog-ului curent, presupunând velocity constant.\nd) Unul dintre elementele estimate la 21 de puncte este considerat prea mare pentru a intra direct într-un Sprint. Ce ar trebui să facă echipa înainte de a-l planifica?",
+    "solution_md": "a) Velocity mediu = (18 + 22 + 20 + 24) / 4 = 84 / 4 = 21 Story Points/Sprint.\n\nb) Total Backlog = 8 + 13 + 5 + 21 + 13 + 8 = 68 Story Points.\n\nc) Număr de Sprinturi = 68 / 21 ≈ 3,24. Pentru un forecast conservator, se rotunjește în sus: echipa comunică un estimat de 4 Sprinturi, întrucât un Sprint nu poate fi „parțial\" — orice rest de puncte necesită un Sprint suplimentar complet.\n\nd) Elementul de 21 de puncte depășește pragul practic recomandat (de regulă sub 13 puncte pentru elemente ce intră într-un Sprint) și ar trebui descompus în user stories mai mici, aplicând principiul INVEST, înainte de Sprint Planning. Descompunerea reduce incertitudinea, permite o estimare mai precisă și scade riscul ca elementul să rămână neterminat la finalul Sprintului.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce se preferă secvența Fibonacci modificată în locul unei scale liniare (1, 2, 3, 4, 5...) pentru Story Points?",
+    "choices": [
+     "Fiindcă este mai ușor de calculat matematic",
+     "Fiindcă reflectă incertitudinea crescândă pentru elementele mai mari, forțând discuții și descompunere",
+     "Fiindcă Scrum Guide o impune ca standard oficial obligatoriu",
+     "Fiindcă permite conversia directă a punctelor în ore"
+    ],
+    "answer": 1,
+    "explain": "Distanța tot mai mare dintre valorile succesive (5→8→13→20) reflectă faptul că, la elemente mari, precizia estimării scade natural, iar echipa este împinsă să descompună elementele foarte mari în bucăți mai mici și mai estimabile.",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele este un anti-pattern legat de velocity?",
+    "choices": [
+     "Folosirea velocity doar pentru forecasting intern al aceleiași echipe",
+     "Compararea velocity între două echipe diferite, ca măsură de performanță",
+     "Recalcularea velocity la finalul fiecărui Sprint, pe baza Story Points „Done\"",
+     "Folosirea mediei ultimelor 3-4 Sprinturi pentru estimări de forecasting"
+    ],
+    "answer": 1,
+    "explain": "Story Points sunt relative și specifice fiecărei echipe, deci velocity nu este comparabil între echipe diferite. Folosirea lui ca metrică de performanță comparativă generează presiune de inflaționare a estimărilor („velocity gaming\").",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Story Point?",
+    "back": "O unitate de estimare relativă care combină efort, complexitate și incertitudine pentru un element din Product Backlog, fără legătură directă cu orele de lucru.",
+    "concept_key": "story-points-estimare-relativa",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Planning Poker?",
+    "back": "O tehnică de estimare colaborativă în care membrii echipei votează simultan, folosind cărți cu valori Fibonacci, dimensiunea unui user story, discutând diferențele mari până la convergență.",
+    "concept_key": "planning-poker-proces",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce se folosește secvența Fibonacci modificată la estimare?",
+    "back": "Pentru că distanța crescândă între valori (1, 2, 3, 5, 8, 13, 20...) reflectă incertitudinea tot mai mare la elementele mari și încurajează descompunerea lor în bucăți mai mici.",
+    "concept_key": "fibonacci-estimare-agile",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează velocity al unei echipe Scrum?",
+    "back": "Velocity = suma Story Points ale elementelor finalizate („Done\") într-un Sprint; se folosește media ultimelor 3-4 Sprinturi pentru forecasting empiric.",
+    "concept_key": "velocity-capacity-planning",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este capacity planning în Scrum?",
+    "back": "Estimarea timpului real disponibil al echipei (ore/zile-persoană) pentru un Sprint, folosită în Sprint Planning pentru a valida realismul volumului de Story Points preluat, distinct de velocity istoric.",
+    "concept_key": "velocity-capacity-planning",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu se compară velocity între echipe diferite?",
+    "back": "Pentru că Story Points sunt relative și specifice fiecărei echipe (scala de referință diferă între echipe); compararea creează presiune de inflaționare a estimărilor și nu reflectă productivitate reală.",
+    "concept_key": "velocity-capacity-planning",
+    "blockId": "cmjjuxvvs007humkpy16jk0j2-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1595,
+   "flashcards": 6
+  }
+ }
+}

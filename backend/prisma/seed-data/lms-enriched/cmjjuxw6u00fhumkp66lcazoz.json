@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxw6u00fhumkp66lcazoz",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Performance Management și Raportare",
+ "lesson": "Management Reporting",
+ "category": "FINANCE_OPS",
+ "content": "# Management Reporting\n\n**Management reporting** reprezintă ansamblul de rapoarte interne pe care compartimentul financiar le pregătește pentru echipa de conducere (CEO, CFO, directori de departament) și pentru board, cu scopul de a susține decizii operaționale și strategice.\n\nEste esențial să faci distincția între:\n- **Raportarea financiară statutară** — bilanț, cont de profit și pierdere, note explicative, întocmite conform OMFP 1802/2014, destinate terților (ANAF, acționari, bănci, auditori), cu frecvență anuală/semestrială.\n- **Management reporting** — rapoarte interne, necertificate, cu frecvență lunară, săptămânală sau chiar zilnică (flash), granularitate mult mai fină (pe centru de cost, produs, client, canal de vânzare) și orientare spre acțiune, nu doar spre conformitate.\n\nDiferența cheie: raportarea statutară răspunde la întrebarea „ce s-a întâmplat?”, în timp ce management reporting-ul de calitate răspunde la „de ce s-a întâmplat și ce facem acum?”.\n\nUn **flash report** (raport rapid/preliminar) este primul semnal pe care îl primește managementul după închiderea unei perioade, cu mult înainte ca închiderea contabilă completă (closing) să fie finalizată.\n\nCaracteristici tipice:\n- **Timing**: emis de regulă în 1-3 zile lucrătoare de la finalul lunii, față de closing-ul complet care poate dura 5-10 zile lucrătoare.\n- **Conținut**: venituri estimate (pe baza facturilor emise sau a comenzilor confirmate), principalii KPI operaționali, cash disponibil, abateri majore față de buget, flag-uri de risc (de ex. un client mare care întârzie plata).\n- **Precizie**: date parțiale sau estimate, cu marjă de eroare acceptată — scopul nu e exactitatea contabilă, ci viteza de reacție.\n- **Format**: de regulă o singură pagină sau un dashboard, ușor de parcurs în 2-3 minute.\n\nFlash report-ul nu înlocuiește monthly pack-ul; îl precede și oferă managementului timp suplimentar de reacție înainte ca cifrele finale să fie disponibile.\n\n**Monthly pack-ul** (pachetul lunar de raportare) este documentul complet, structurat, livrat după finalizarea closing-ului contabil. O structură matură include, de regulă, în această ordine:\n\n1. **Executive summary** — o pagină cu mesajele cheie ale lunii (3-5 puncte), nu detalii.\n2. **P&L cu variance** — realizat vs. buget și vs. aceeași lună anul anterior, pe linii principale (venituri, marjă brută, cheltuieli operaționale, EBITDA).\n3. **Cash flow și poziție de cash** — sold disponibil, runway, principalele intrări/ieșiri.\n4. **Indicatori bilanțieri esențiali** — DSO, DPO, DIO, nivel de îndatorare.\n5. **Dashboard KPI operaționali** — specifici business-ului (volum vânzări, rată de conversie, cost per unitate etc.).\n6. **Comentarii pe variance-urile semnificative** — nu pe toate liniile, ci pe cele care depășesc un prag stabilit (valoric și/sau procentual).\n7. **Rolling forecast actualizat** — reestimarea restului de an pe baza informațiilor curente.\n8. **Riscuri, oportunități și acțiuni corective** — ce face echipa pentru a corecta abaterile nefavorabile.\n\nUn monthly pack bun nu are mai mult de 10-15 pagini; volumul mare de date fără ierarhizare este cea mai frecventă greșeală.\n\n**Storytelling cu date** înseamnă transformarea unui șir de cifre într-un mesaj clar, memorabil și acționabil. Trei principii practice:\n\n1. **Regula „So What?”** — pentru fiecare cifră sau grafic pe care îl incluzi, întreabă-te: dacă cititorul reține un singur lucru din acest slide, care e concluzia? Dacă nu poți răspunde într-o propoziție, cifra nu are ce căuta acolo.\n2. **De la „ce” la „de ce” și „ce facem”** — un comentariu de tipul „veniturile au scăzut cu 8%” e incomplet. Comentariul de calitate explică driverul (volum, preț, mix de produse, sezonalitate, pierdere de client) și propune o acțiune sau un termen de rezolvare.\n3. **Ierarhie vizuală** — folosește grafice de tip **waterfall/bridge** pentru a descompune o variație (de exemplu EBITDA realizat vs. bugetat) pe componentele ei, în loc de tabele dense cu zeci de rânduri. Ochiul uman reține mult mai ușor un bridge chart decât un tabel.\n\nLimitează orice pachet de raportare la 3-5 mesaje-cheie; restul informației există ca anexă, nu ca parte din narativul principal.\n\n## Exemplu: Flash report ipotetic — SRL de distribuție\nCompania **Alfa Distrib SRL** (exemplu ipotetic) închide luna iunie 2026. La D+2 (2 zile lucrătoare de la finalul lunii), echipa financiară emite flash report-ul, înainte ca toate facturile de furnizori să fie înregistrate:\n\n| Indicator | Buget iunie | Estimat flash (D+2) | Abatere |\n|---|---|---|---|\n| Venituri | 850.000 lei | 810.000 lei | -4,7% |\n| Marjă brută estimată | 25% | 23% | -2 pp |\n| Cash disponibil | — | 195.000 lei | — |\n| Comenzi restante nefacturate | — | 62.000 lei | — |\n\nComentariu flash: „Veniturile estimate sunt sub buget cu aproximativ 40.000 lei, generate în principal de întârzierea unei livrări către un client cheie (comandă de 55.000 lei, facturabilă probabil în primele zile din iulie). Marja brută estimată e sub buget din cauza unei promoții aplicate pe un lot de stoc cu vânzare lentă. Cash-ul disponibil e confortabil, fără risc de runway pe termen scurt.”\n\nAceastă estimare rapidă permite managementului să decidă deja — înainte de closing-ul complet — dacă e nevoie de o discuție cu clientul respectiv sau de o ajustare a forecast-ului pentru trimestrul următor.\n\n## Exemplu: Variance bridge și comentarii pentru monthly pack\nPentru monthly pack-ul complet al lunii iunie 2026, Alfa Distrib SRL (exemplu ipotetic) prezintă EBITDA realizat vs. bugetat printr-un bridge simplu:\n\n- EBITDA bugetat: 120.000 lei\n- Efect volum (venituri sub buget, marjă constantă): -32.000 lei\n- Efect preț/mix (promoție aplicată): -8.000 lei\n- Efect cost operațional (economii la cheltuieli de transport, renegociere cu curierul): +15.000 lei\n- EBITDA realizat: 95.000 lei\n\nComentariul care însoțește bridge-ul: „Abaterea de -25.000 lei față de buget (-20,8%) este dominată de efectul de volum (-32.000 lei), cauzat de întârzierea livrării menționate în flash report. Efectul de preț/mix reflectă promoția de lichidare de stoc, o decizie tactică, nu o problemă structurală de pricing. Economiile la cheltuielile de transport (+15.000 lei) provin din renegocierea contractului cu furnizorul de curierat, în vigoare din luna mai, și sunt recurente. Acțiune: urmărim facturarea comenzii restante în prima săptămână din iulie; dacă se confirmă, EBITDA-ul cumulat pe trimestru rămâne în linie cu bugetul.”\n\nObservă structura comentariului: cifră → cauză → caracter (temporar/structural) → acțiune. Aceasta este diferența dintre un tabel de variance și un raport managerial care generează încredere.\n\n> Temei legal: OMFP 1802/2014 structura situațiilor financiare anuale (formatul contului de profit și pierdere) (în vigoare de la 2015-01-01)\nDeși management reporting-ul este intern și nu urmează formatele obligatorii pentru terți, majoritatea companiilor din România pornesc structura P&L-ului managerial de la formatul contului de profit și pierdere reglementat prin OMFP 1802/2014 (aplicabil de la 1 ianuarie 2015), pe care ulterior îl extind cu linii de granularitate managerială (pe centre de cost, produse, canale). Această ancorare facilitează reconcilierea rapidă între cifrele manageriale și cele statutare la finalul exercițiului financiar.\n\n⚠ Cea mai frecventă capcană a management reporting-ului: **cifrele manageriale care nu se reconciliază cu cele statutare**. Dacă flash report-ul sau monthly pack-ul folosesc definiții diferite de venit, cost sau EBITDA față de situațiile financiare oficiale, iar aceste diferențe nu sunt documentate explicit, încrederea board-ului în raportare scade rapid. Documentează întotdeauna, într-o anexă tehnică, orice ajustare managerială (de exemplu excluderea unor elemente non-recurente) și păstrează o reconciliere clară către cifrele statutare întocmite conform OMFP 1802/2014.\n\n## Exercițiu\nEști controller financiar la o companie ipotetică de servicii, „Beta Consult SRL”. Pentru luna mai 2026 ai următoarele date:\n\n- Venituri bugetate: 500.000 lei; venituri realizate: 460.000 lei\n- Cheltuieli operaționale bugetate: 380.000 lei; realizate: 350.000 lei\n- Un client important a reziliat un contract de mentenanță de 45.000 lei/lună începând cu 1 mai 2026, parțial compensat de alte vânzări noi (+5.000 lei net în luna mai)\n- Echipa a redus cheltuielile cu deplasările cu 20.000 lei față de buget, printr-o politică de călătorii mai strictă, aplicată permanent de la 1 aprilie 2026 (restul economiilor, 10.000 lei, provin din alte linii de cost)\n\nCerință: calculează EBITDA bugetat și realizat, apoi scrie comentariul de variance folosind structura cifră → cauză → caracter (temporar/structural) → acțiune, așa cum ai văzut în exemplul de mai sus.\n\n**Soluție:** **Calcul:**\n- EBITDA bugetat = 500.000 - 380.000 = 120.000 lei\n- EBITDA realizat = 460.000 - 350.000 = 110.000 lei\n- Abatere = -10.000 lei (-8,3%)\n\n**Descompunere:**\n- Efect venituri: -45.000 lei (contract reziliat) + 5.000 lei (vânzări noi) = -40.000 lei net\n- Efect costuri operaționale: +30.000 lei economii totale, din care 20.000 lei din politica de deplasări și 10.000 lei din alte linii\n\n**Comentariu model:** „EBITDA realizat este sub buget cu 10.000 lei (-8,3%). Cauza principală este pierderea contractului de mentenanță al unui client cheie (-45.000 lei/lună), reziliat de la 1 mai 2026 — un efect **structural**, care va continua să afecteze veniturile lunilor următoare dacă nu este compensat. Efectul a fost parțial atenuat de economiile la cheltuielile operaționale (+30.000 lei), din care 20.000 lei provin din politica de deplasări aplicată permanent din aprilie 2026 — un efect **structural pozitiv**, recurent. Acțiune: echipa de vânzări identifică până la finalul lunii iunie 2026 cel puțin un client nou care să acopere parțial pierderea de venit; forecast-ul rolling pentru trimestrul III va reflecta acest risc până la confirmare.”",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "management-reporting-definitie",
+    "md": "**Management reporting** reprezintă ansamblul de rapoarte interne pe care compartimentul financiar le pregătește pentru echipa de conducere (CEO, CFO, directori de departament) și pentru board, cu scopul de a susține decizii operaționale și strategice.\n\nEste esențial să faci distincția între:\n- **Raportarea financiară statutară** — bilanț, cont de profit și pierdere, note explicative, întocmite conform OMFP 1802/2014, destinate terților (ANAF, acționari, bănci, auditori), cu frecvență anuală/semestrială.\n- **Management reporting** — rapoarte interne, necertificate, cu frecvență lunară, săptămânală sau chiar zilnică (flash), granularitate mult mai fină (pe centru de cost, produs, client, canal de vânzare) și orientare spre acțiune, nu doar spre conformitate.\n\nDiferența cheie: raportarea statutară răspunde la întrebarea „ce s-a întâmplat?”, în timp ce management reporting-ul de calitate răspunde la „de ce s-a întâmplat și ce facem acum?”.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "flash-report",
+    "md": "Un **flash report** (raport rapid/preliminar) este primul semnal pe care îl primește managementul după închiderea unei perioade, cu mult înainte ca închiderea contabilă completă (closing) să fie finalizată.\n\nCaracteristici tipice:\n- **Timing**: emis de regulă în 1-3 zile lucrătoare de la finalul lunii, față de closing-ul complet care poate dura 5-10 zile lucrătoare.\n- **Conținut**: venituri estimate (pe baza facturilor emise sau a comenzilor confirmate), principalii KPI operaționali, cash disponibil, abateri majore față de buget, flag-uri de risc (de ex. un client mare care întârzie plata).\n- **Precizie**: date parțiale sau estimate, cu marjă de eroare acceptată — scopul nu e exactitatea contabilă, ci viteza de reacție.\n- **Format**: de regulă o singură pagină sau un dashboard, ușor de parcurs în 2-3 minute.\n\nFlash report-ul nu înlocuiește monthly pack-ul; îl precede și oferă managementului timp suplimentar de reacție înainte ca cifrele finale să fie disponibile.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "monthly-reporting-pack",
+    "md": "**Monthly pack-ul** (pachetul lunar de raportare) este documentul complet, structurat, livrat după finalizarea closing-ului contabil. O structură matură include, de regulă, în această ordine:\n\n1. **Executive summary** — o pagină cu mesajele cheie ale lunii (3-5 puncte), nu detalii.\n2. **P&L cu variance** — realizat vs. buget și vs. aceeași lună anul anterior, pe linii principale (venituri, marjă brută, cheltuieli operaționale, EBITDA).\n3. **Cash flow și poziție de cash** — sold disponibil, runway, principalele intrări/ieșiri.\n4. **Indicatori bilanțieri esențiali** — DSO, DPO, DIO, nivel de îndatorare.\n5. **Dashboard KPI operaționali** — specifici business-ului (volum vânzări, rată de conversie, cost per unitate etc.).\n6. **Comentarii pe variance-urile semnificative** — nu pe toate liniile, ci pe cele care depășesc un prag stabilit (valoric și/sau procentual).\n7. **Rolling forecast actualizat** — reestimarea restului de an pe baza informațiilor curente.\n8. **Riscuri, oportunități și acțiuni corective** — ce face echipa pentru a corecta abaterile nefavorabile.\n\nUn monthly pack bun nu are mai mult de 10-15 pagini; volumul mare de date fără ierarhizare este cea mai frecventă greșeală.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "storytelling-date-financiare",
+    "md": "**Storytelling cu date** înseamnă transformarea unui șir de cifre într-un mesaj clar, memorabil și acționabil. Trei principii practice:\n\n1. **Regula „So What?”** — pentru fiecare cifră sau grafic pe care îl incluzi, întreabă-te: dacă cititorul reține un singur lucru din acest slide, care e concluzia? Dacă nu poți răspunde într-o propoziție, cifra nu are ce căuta acolo.\n2. **De la „ce” la „de ce” și „ce facem”** — un comentariu de tipul „veniturile au scăzut cu 8%” e incomplet. Comentariul de calitate explică driverul (volum, preț, mix de produse, sezonalitate, pierdere de client) și propune o acțiune sau un termen de rezolvare.\n3. **Ierarhie vizuală** — folosește grafice de tip **waterfall/bridge** pentru a descompune o variație (de exemplu EBITDA realizat vs. bugetat) pe componentele ei, în loc de tabele dense cu zeci de rânduri. Ochiul uman reține mult mai ușor un bridge chart decât un tabel.\n\nLimitează orice pachet de raportare la 3-5 mesaje-cheie; restul informației există ca anexă, nu ca parte din narativul principal.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b4"
+   },
+   {
+    "type": "example",
+    "title": "Flash report ipotetic — SRL de distribuție",
+    "concept_key": "flash-report",
+    "md": "Compania **Alfa Distrib SRL** (exemplu ipotetic) închide luna iunie 2026. La D+2 (2 zile lucrătoare de la finalul lunii), echipa financiară emite flash report-ul, înainte ca toate facturile de furnizori să fie înregistrate:\n\n| Indicator | Buget iunie | Estimat flash (D+2) | Abatere |\n|---|---|---|---|\n| Venituri | 850.000 lei | 810.000 lei | -4,7% |\n| Marjă brută estimată | 25% | 23% | -2 pp |\n| Cash disponibil | — | 195.000 lei | — |\n| Comenzi restante nefacturate | — | 62.000 lei | — |\n\nComentariu flash: „Veniturile estimate sunt sub buget cu aproximativ 40.000 lei, generate în principal de întârzierea unei livrări către un client cheie (comandă de 55.000 lei, facturabilă probabil în primele zile din iulie). Marja brută estimată e sub buget din cauza unei promoții aplicate pe un lot de stoc cu vânzare lentă. Cash-ul disponibil e confortabil, fără risc de runway pe termen scurt.”\n\nAceastă estimare rapidă permite managementului să decidă deja — înainte de closing-ul complet — dacă e nevoie de o discuție cu clientul respectiv sau de o ajustare a forecast-ului pentru trimestrul următor.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b5"
+   },
+   {
+    "type": "example",
+    "title": "Variance bridge și comentarii pentru monthly pack",
+    "concept_key": "variance-bridge-ebitda",
+    "md": "Pentru monthly pack-ul complet al lunii iunie 2026, Alfa Distrib SRL (exemplu ipotetic) prezintă EBITDA realizat vs. bugetat printr-un bridge simplu:\n\n- EBITDA bugetat: 120.000 lei\n- Efect volum (venituri sub buget, marjă constantă): -32.000 lei\n- Efect preț/mix (promoție aplicată): -8.000 lei\n- Efect cost operațional (economii la cheltuieli de transport, renegociere cu curierul): +15.000 lei\n- EBITDA realizat: 95.000 lei\n\nComentariul care însoțește bridge-ul: „Abaterea de -25.000 lei față de buget (-20,8%) este dominată de efectul de volum (-32.000 lei), cauzat de întârzierea livrării menționate în flash report. Efectul de preț/mix reflectă promoția de lichidare de stoc, o decizie tactică, nu o problemă structurală de pricing. Economiile la cheltuielile de transport (+15.000 lei) provin din renegocierea contractului cu furnizorul de curierat, în vigoare din luna mai, și sunt recurente. Acțiune: urmărim facturarea comenzii restante în prima săptămână din iulie; dacă se confirmă, EBITDA-ul cumulat pe trimestru rămâne în linie cu bugetul.”\n\nObservă structura comentariului: cifră → cauză → caracter (temporar/structural) → acțiune. Aceasta este diferența dintre un tabel de variance și un raport managerial care generează încredere.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "structura situațiilor financiare anuale (formatul contului de profit și pierdere)",
+    "effective": "2015-01-01",
+    "md": "Deși management reporting-ul este intern și nu urmează formatele obligatorii pentru terți, majoritatea companiilor din România pornesc structura P&L-ului managerial de la formatul contului de profit și pierdere reglementat prin OMFP 1802/2014 (aplicabil de la 1 ianuarie 2015), pe care ulterior îl extind cu linii de granularitate managerială (pe centre de cost, produse, canale). Această ancorare facilitează reconcilierea rapidă între cifrele manageriale și cele statutare la finalul exercițiului financiar.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă capcană a management reporting-ului: **cifrele manageriale care nu se reconciliază cu cele statutare**. Dacă flash report-ul sau monthly pack-ul folosesc definiții diferite de venit, cost sau EBITDA față de situațiile financiare oficiale, iar aceste diferențe nu sunt documentate explicit, încrederea board-ului în raportare scade rapid. Documentează întotdeauna, într-o anexă tehnică, orice ajustare managerială (de exemplu excluderea unor elemente non-recurente) și păstrează o reconciliere clară către cifrele statutare întocmite conform OMFP 1802/2014.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești controller financiar la o companie ipotetică de servicii, „Beta Consult SRL”. Pentru luna mai 2026 ai următoarele date:\n\n- Venituri bugetate: 500.000 lei; venituri realizate: 460.000 lei\n- Cheltuieli operaționale bugetate: 380.000 lei; realizate: 350.000 lei\n- Un client important a reziliat un contract de mentenanță de 45.000 lei/lună începând cu 1 mai 2026, parțial compensat de alte vânzări noi (+5.000 lei net în luna mai)\n- Echipa a redus cheltuielile cu deplasările cu 20.000 lei față de buget, printr-o politică de călătorii mai strictă, aplicată permanent de la 1 aprilie 2026 (restul economiilor, 10.000 lei, provin din alte linii de cost)\n\nCerință: calculează EBITDA bugetat și realizat, apoi scrie comentariul de variance folosind structura cifră → cauză → caracter (temporar/structural) → acțiune, așa cum ai văzut în exemplul de mai sus.",
+    "solution_md": "**Calcul:**\n- EBITDA bugetat = 500.000 - 380.000 = 120.000 lei\n- EBITDA realizat = 460.000 - 350.000 = 110.000 lei\n- Abatere = -10.000 lei (-8,3%)\n\n**Descompunere:**\n- Efect venituri: -45.000 lei (contract reziliat) + 5.000 lei (vânzări noi) = -40.000 lei net\n- Efect costuri operaționale: +30.000 lei economii totale, din care 20.000 lei din politica de deplasări și 10.000 lei din alte linii\n\n**Comentariu model:** „EBITDA realizat este sub buget cu 10.000 lei (-8,3%). Cauza principală este pierderea contractului de mentenanță al unui client cheie (-45.000 lei/lună), reziliat de la 1 mai 2026 — un efect **structural**, care va continua să afecteze veniturile lunilor următoare dacă nu este compensat. Efectul a fost parțial atenuat de economiile la cheltuielile operaționale (+30.000 lei), din care 20.000 lei provin din politica de deplasări aplicată permanent din aprilie 2026 — un efect **structural pozitiv**, recurent. Acțiune: echipa de vânzări identifică până la finalul lunii iunie 2026 cel puțin un client nou care să acopere parțial pierderea de venit; forecast-ul rolling pentru trimestrul III va reflecta acest risc până la confirmare.”",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență de scop între un flash report și monthly pack-ul complet?",
+    "choices": [
+     "Flash report-ul e mai precis, monthly pack-ul e doar estimativ",
+     "Flash report-ul oferă o imagine rapidă și estimativă înainte de closing, monthly pack-ul e complet și structurat după închiderea contabilă",
+     "Flash report-ul se emite doar trimestrial, monthly pack-ul lunar",
+     "Nu există nicio diferență, sunt sinonime"
+    ],
+    "answer": 1,
+    "explain": "Flash report-ul prioritizează viteza (date estimate, emis la 1-3 zile lucrătoare de la finalul perioadei), în timp ce monthly pack-ul e livrat după closing complet și oferă analiza structurată, cu variance-uri și comentarii.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă un variance bridge (waterfall chart) într-un monthly pack?",
+    "choices": [
+     "Un grafic care arată doar evoluția cash-ului în timp",
+     "Un tabel cu toate conturile din balanța de verificare",
+     "Un grafic care descompune diferența dintre o cifră bugetată și cea realizată pe componentele ei (volum, preț/mix, cost)",
+     "Un raport statutar reglementat prin OMFP 1802/2014"
+    ],
+    "answer": 2,
+    "explain": "Bridge-ul (waterfall) leagă vizual bugetul de realizat prin pașii intermediari care explică abaterea, fiind mult mai ușor de interpretat decât un tabel dens.",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un flash report?",
+    "back": "Raport preliminar, rapid, emis de regulă în 1-3 zile lucrătoare de la finalul perioadei, cu date estimate, pentru o primă imagine înainte de closing-ul contabil complet.",
+    "concept_key": "flash-report",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt primele trei componente ale unui monthly pack matur?",
+    "back": "Executive summary (mesaje cheie), P&L cu variance vs. buget și vs. an anterior, cash flow și poziția de cash.",
+    "concept_key": "monthly-reporting-pack",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă regula „So What?” în storytelling cu date financiare?",
+    "back": "Pentru fiecare cifră sau grafic prezentat, trebuie să poți formula într-o propoziție concluzia acțională pe care cititorul trebuie să o rețină.",
+    "concept_key": "storytelling-date-financiare",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act normativ reglementează structura situațiilor financiare anuale în România?",
+    "back": "OMFP 1802/2014, aplicabil de la 1 ianuarie 2015.",
+    "concept_key": "omfp-1802-2014-structura-situatii-financiare",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un variance bridge (waterfall)?",
+    "back": "Un grafic care descompune abaterea dintre buget și realizat pe componentele ei explicative (ex. volum, preț/mix, cost), facilitând interpretarea rapidă.",
+    "concept_key": "variance-bridge-ebitda",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este structura recomandată pentru un comentariu de variance de calitate?",
+    "back": "Cifră → cauză → caracter (temporar/structural) → acțiune.",
+    "concept_key": "storytelling-date-financiare",
+    "blockId": "cmjjuxw6u00fhumkp66lcazoz-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1450,
+   "flashcards": 6
+  }
+ }
+}

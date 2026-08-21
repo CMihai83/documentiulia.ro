@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw2100btumkpsexlcjgb",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Bugetare și Planificare Financiară",
+ "lesson": "Exercițiu bugetare",
+ "category": "FINANCE_OPS",
+ "content": "# Exercițiu bugetare\n\n## Ce este un buget departamental?\n\nUn **buget departamental** este planul financiar detaliat al unui singur departament (Marketing, IT, Resurse Umane, Producție, Vânzări etc.) pentru o perioadă determinată — de regulă un an calendaristic, defalcat pe luni sau trimestre. El traduce obiectivele departamentului în cifre: câți lei se pot cheltui, pe ce categorii și cu ce rezultat așteptat.\n\nSpre deosebire de bugetul general al firmei (care agregă toate departamentele și include venituri, investiții și finanțare), bugetul departamental se concentrează, în marea majoritate a cazurilor, pe **costuri** — pentru că majoritatea departamentelor (HR, IT, Contabilitate, Marketing) nu generează direct venituri, ci susțin activitatea firmei.\n\nProcesul tipic într-o firmă românească (SRL cu structură funcțională):\n1. Departamentul de Finanțe trimite un șablon și un termen de predare (de obicei octombrie–noiembrie pentru anul următor).\n2. Fiecare manager de departament estimează necesarul de resurse pe categorii de cheltuieli.\n3. Finanțe consolidează, verifică încadrarea în plafonul global aprobat de management/acționari și negociază ajustări.\n4. Bugetul aprobat devine reperul față de care se urmărește lunar execuția (buget vs. realizat).\n\nCa non-financiar care propune sau gestionează un buget departamental, rolul tău nu este să faci contabilitate, ci să estimezi realist nevoile echipei tale și să justifici fiecare linie cu argumente de business.\n\n## Tipuri de costuri într-un buget departamental\n\nCa să construiești un buget coerent, trebuie să clasifici corect cheltuielile:\n\n- **Costuri fixe** — nu variază semnificativ cu volumul de activitate pe termen scurt: salarii de bază, chirii de spații/echipamente, abonamente software, licențe.\n- **Costuri variabile** — cresc sau scad proporțional cu activitatea: comisioane de vânzări, materiale consumabile, ore suplimentare, costuri de transport legate de volum.\n- **Costuri directe** — pot fi atribuite clar unui departament sau proiect (ex. salariul unui specialist Marketing, bugetul de campanii publicitare).\n- **Costuri indirecte (alocate)** — sunt comune mai multor departamente și se repartizează pe o cheie de alocare (ex. chiria sediului, utilitățile, IT-ul central) — de obicei procentual, în funcție de numărul de angajați sau suprafața ocupată.\n\nDistincția este importantă din două motive practice: (1) costurile fixe au marjă mică de negociere pe termen scurt, deci eforturile de reducere a bugetului trebuie direcționate spre costurile variabile; (2) atunci când compari „bugetul tău\" cu „bugetul altui departament\", trebuie să știi dacă vorbiți despre aceleași categorii (costuri directe) sau dacă unul include și alocări indirecte pe care celălalt nu le are.\n\n## Două metode uzuale de bugetare\n\n**Bugetarea incrementală** pornește de la bugetul anului anterior și îl ajustează cu un procent (ex. +5% pentru inflație sau creștere de activitate). Este rapidă și ușor de aplicat, dar tinde să perpetueze cheltuieli deja existente, chiar dacă nu mai sunt justificate — un abonament software nefolosit rămâne în buget an de an doar pentru că „așa a fost și anul trecut\".\n\n**Bugetarea de la zero (Zero-Based Budgeting – ZBB)** pornește de la premisa că fiecare linie de cheltuială trebuie rejustificată de la valoarea zero, indiferent de bugetul anterior. Managerul trebuie să demonstreze, pentru fiecare cost, necesitatea și valoarea așteptată. Este mult mai riguroasă și scoate la iveală cheltuieli redundante, dar consumă mult mai mult timp de analiză.\n\nÎn practică, majoritatea firmelor românești folosesc un **model hibrid**: bugetarea incrementală pentru costurile fixe stabile (salarii, chirii) și bugetarea de la zero pentru categoriile discreționare (marketing, training, deplasări), unde există risc real de cheltuieli neeficiente.\n\n## Exemplu: Buget lunar – departament Marketing la SC Ionescu Trading SRL\nDepartamentul Marketing al unei firme de distribuție (15 angajați în firmă, 3 în Marketing) primește un plafon lunar de 45.000 lei pentru luna octombrie. Managerul de departament defalcă astfel:\n\n| Categorie | Tip cost | Sumă (lei) |\n|---|---|---|\n| Salarii + contribuții echipă Marketing | Fix, direct | 22.000 |\n| Campanii publicitare online (Google/Meta Ads) | Variabil, direct | 12.000 |\n| Abonamente software (CRM, design) | Fix, direct | 2.500 |\n| Materiale tipărite / evenimente | Variabil, direct | 4.500 |\n| Alocare cotă-parte chirie + IT central | Fix, indirect | 3.500 |\n| Rezervă pentru neprevăzute (5%) | Variabil | 500 |\n| **Total** | | **45.000** |\n\nObservă structura: costurile fixe (salarii + abonamente + alocare) însumează 28.000 lei (62% din buget) — greu de redus pe termen scurt. Marja reală de manevră a managerului stă în cei 17.000 lei de costuri variabile (campanii, materiale, rezervă), unde poate realoca sume dacă o campanie performează sub așteptări.\n\n## Exemplu: Calculul abaterii bugetare (variance)\nDupă încheierea lunii, Finanțe compară bugetul aprobat cu cheltuielile reale (execuția). Formula abaterii (variance) este:\n\n**Abatere (%) = (Realizat − Buget) / Buget × 100**\n\nDacă rezultatul este pozitiv, departamentul a cheltuit **peste** buget (depășire); dacă este negativ, a cheltuit **sub** buget (economie).\n\nExemplu: departamentul Marketing de mai sus a bugetat 45.000 lei, dar a cheltuit efectiv 48.600 lei (campania de Ads a costat mai mult decât estimat).\n\nAbatere = (48.600 − 45.000) / 45.000 × 100 = **+8%**\n\nO abatere de 8% depășire necesită, de regulă, o explicație scrisă către Finanțe: ce categorie a generat diferența (în acest caz, campaniile Ads), dacă este un cost punctual sau recurent și ce măsuri se iau pentru luna următoare. Praguri uzuale de alertă în firmele din România: abateri sub ±5% se consideră normale (variații de estimare), între 5–10% necesită justificare, peste 10% necesită plan de corecție aprobat de management.\n\n> Temei legal: OMFP 1802/2014 Reglementări contabile privind situațiile financiare anuale individuale și consolidate (în vigoare de la 2015-01-01)\nDeși bugetul departamental este un instrument intern de management (nu o obligație legală de raportare), este recomandat ca structura categoriilor de cheltuieli din buget să respecte clasificarea din planul de conturi reglementat prin OMFP 1802/2014 (ex. cheltuieli cu personalul, cheltuieli cu serviciile executate de terți, cheltuieli cu chiriile). Astfel, la finalul lunii, compararea buget-vs-realizat se poate face direct pe baza balanței contabile, fără reconcilieri manuale suplimentare.\n\n⚠ Cea mai frecventă greșeală a managerilor non-financiari la primul buget departamental este **subestimarea costurilor indirecte alocate** (chirie, IT central, utilități) — pentru că nu apar ca linii vizibile în activitatea zilnică a echipei. Cere întotdeauna de la Finanțe cheia de alocare folosită (de obicei procent din numărul de angajați sau din suprafața ocupată), altfel bugetul propus va fi respins la consolidare pentru că nu acoperă costul real total al departamentului.\n\n## Exercițiu\nEști manager al departamentului IT (5 angajați) într-o firmă cu 40 de angajați în total. Pentru luna noiembrie ai următoarele estimări:\n\n- Salarii + contribuții echipă IT: 28.000 lei\n- Licențe software (antivirus, backup, monitorizare): 3.200 lei\n- Mentenanță echipamente (contract externalizat): 1.800 lei\n- Achiziție 2 laptopuri de înlocuire: 6.000 lei\n- Alocare cotă-parte chirie + utilități (IT reprezintă 12,5% din numărul total de angajați): cota-parte totală chirie+utilități a firmei este 16.000 lei/lună\n\nCerințe:\n1. Calculează suma alocată din chirie+utilități pentru departamentul IT.\n2. Calculează bugetul total propus pentru luna noiembrie.\n3. La finalul lunii, cheltuielile reale au fost 42.300 lei. Calculează abaterea bugetară (%) și precizează dacă este depășire sau economie.\n\n**Soluție:** **1. Alocare chirie + utilități:**\n16.000 lei × 12,5% = **2.000 lei**\n\n**2. Buget total noiembrie:**\n28.000 + 3.200 + 1.800 + 6.000 + 2.000 = **41.000 lei**\n\n**3. Abaterea bugetară:**\nAbatere = (Realizat − Buget) / Buget × 100 = (42.300 − 41.000) / 41.000 × 100 = **+3,17%**\n\nEste o **depășire de buget** de 3,17%, sub pragul uzual de alertă de 5% — deci se încadrează în variația normală de estimare și, în majoritatea firmelor, nu necesită justificare scrisă separată către Finanțe, deși este bine să notezi cauza (de exemplu, un cost de mentenanță neprevăzut) pentru referință viitoare.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "buget-departamental-definitie",
+    "md": "## Ce este un buget departamental?\n\nUn **buget departamental** este planul financiar detaliat al unui singur departament (Marketing, IT, Resurse Umane, Producție, Vânzări etc.) pentru o perioadă determinată — de regulă un an calendaristic, defalcat pe luni sau trimestre. El traduce obiectivele departamentului în cifre: câți lei se pot cheltui, pe ce categorii și cu ce rezultat așteptat.\n\nSpre deosebire de bugetul general al firmei (care agregă toate departamentele și include venituri, investiții și finanțare), bugetul departamental se concentrează, în marea majoritate a cazurilor, pe **costuri** — pentru că majoritatea departamentelor (HR, IT, Contabilitate, Marketing) nu generează direct venituri, ci susțin activitatea firmei.\n\nProcesul tipic într-o firmă românească (SRL cu structură funcțională):\n1. Departamentul de Finanțe trimite un șablon și un termen de predare (de obicei octombrie–noiembrie pentru anul următor).\n2. Fiecare manager de departament estimează necesarul de resurse pe categorii de cheltuieli.\n3. Finanțe consolidează, verifică încadrarea în plafonul global aprobat de management/acționari și negociază ajustări.\n4. Bugetul aprobat devine reperul față de care se urmărește lunar execuția (buget vs. realizat).\n\nCa non-financiar care propune sau gestionează un buget departamental, rolul tău nu este să faci contabilitate, ci să estimezi realist nevoile echipei tale și să justifici fiecare linie cu argumente de business.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tipuri-costuri-bugetare",
+    "md": "## Tipuri de costuri într-un buget departamental\n\nCa să construiești un buget coerent, trebuie să clasifici corect cheltuielile:\n\n- **Costuri fixe** — nu variază semnificativ cu volumul de activitate pe termen scurt: salarii de bază, chirii de spații/echipamente, abonamente software, licențe.\n- **Costuri variabile** — cresc sau scad proporțional cu activitatea: comisioane de vânzări, materiale consumabile, ore suplimentare, costuri de transport legate de volum.\n- **Costuri directe** — pot fi atribuite clar unui departament sau proiect (ex. salariul unui specialist Marketing, bugetul de campanii publicitare).\n- **Costuri indirecte (alocate)** — sunt comune mai multor departamente și se repartizează pe o cheie de alocare (ex. chiria sediului, utilitățile, IT-ul central) — de obicei procentual, în funcție de numărul de angajați sau suprafața ocupată.\n\nDistincția este importantă din două motive practice: (1) costurile fixe au marjă mică de negociere pe termen scurt, deci eforturile de reducere a bugetului trebuie direcționate spre costurile variabile; (2) atunci când compari „bugetul tău\" cu „bugetul altui departament\", trebuie să știi dacă vorbiți despre aceleași categorii (costuri directe) sau dacă unul include și alocări indirecte pe care celălalt nu le are.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metode-bugetare-incremental-baza-zero",
+    "md": "## Două metode uzuale de bugetare\n\n**Bugetarea incrementală** pornește de la bugetul anului anterior și îl ajustează cu un procent (ex. +5% pentru inflație sau creștere de activitate). Este rapidă și ușor de aplicat, dar tinde să perpetueze cheltuieli deja existente, chiar dacă nu mai sunt justificate — un abonament software nefolosit rămâne în buget an de an doar pentru că „așa a fost și anul trecut\".\n\n**Bugetarea de la zero (Zero-Based Budgeting – ZBB)** pornește de la premisa că fiecare linie de cheltuială trebuie rejustificată de la valoarea zero, indiferent de bugetul anterior. Managerul trebuie să demonstreze, pentru fiecare cost, necesitatea și valoarea așteptată. Este mult mai riguroasă și scoate la iveală cheltuieli redundante, dar consumă mult mai mult timp de analiză.\n\nÎn practică, majoritatea firmelor românești folosesc un **model hibrid**: bugetarea incrementală pentru costurile fixe stabile (salarii, chirii) și bugetarea de la zero pentru categoriile discreționare (marketing, training, deplasări), unde există risc real de cheltuieli neeficiente.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b3"
+   },
+   {
+    "type": "example",
+    "title": "Buget lunar – departament Marketing la SC Ionescu Trading SRL",
+    "concept_key": "exemplu-buget-marketing",
+    "md": "Departamentul Marketing al unei firme de distribuție (15 angajați în firmă, 3 în Marketing) primește un plafon lunar de 45.000 lei pentru luna octombrie. Managerul de departament defalcă astfel:\n\n| Categorie | Tip cost | Sumă (lei) |\n|---|---|---|\n| Salarii + contribuții echipă Marketing | Fix, direct | 22.000 |\n| Campanii publicitare online (Google/Meta Ads) | Variabil, direct | 12.000 |\n| Abonamente software (CRM, design) | Fix, direct | 2.500 |\n| Materiale tipărite / evenimente | Variabil, direct | 4.500 |\n| Alocare cotă-parte chirie + IT central | Fix, indirect | 3.500 |\n| Rezervă pentru neprevăzute (5%) | Variabil | 500 |\n| **Total** | | **45.000** |\n\nObservă structura: costurile fixe (salarii + abonamente + alocare) însumează 28.000 lei (62% din buget) — greu de redus pe termen scurt. Marja reală de manevră a managerului stă în cei 17.000 lei de costuri variabile (campanii, materiale, rezervă), unde poate realoca sume dacă o campanie performează sub așteptări.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul abaterii bugetare (variance)",
+    "concept_key": "abatere-bugetara-variance",
+    "md": "După încheierea lunii, Finanțe compară bugetul aprobat cu cheltuielile reale (execuția). Formula abaterii (variance) este:\n\n**Abatere (%) = (Realizat − Buget) / Buget × 100**\n\nDacă rezultatul este pozitiv, departamentul a cheltuit **peste** buget (depășire); dacă este negativ, a cheltuit **sub** buget (economie).\n\nExemplu: departamentul Marketing de mai sus a bugetat 45.000 lei, dar a cheltuit efectiv 48.600 lei (campania de Ads a costat mai mult decât estimat).\n\nAbatere = (48.600 − 45.000) / 45.000 × 100 = **+8%**\n\nO abatere de 8% depășire necesită, de regulă, o explicație scrisă către Finanțe: ce categorie a generat diferența (în acest caz, campaniile Ads), dacă este un cost punctual sau recurent și ce măsuri se iau pentru luna următoare. Praguri uzuale de alertă în firmele din România: abateri sub ±5% se consideră normale (variații de estimare), între 5–10% necesită justificare, peste 10% necesită plan de corecție aprobat de management.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Reglementări contabile privind situațiile financiare anuale individuale și consolidate",
+    "effective": "2015-01-01",
+    "md": "Deși bugetul departamental este un instrument intern de management (nu o obligație legală de raportare), este recomandat ca structura categoriilor de cheltuieli din buget să respecte clasificarea din planul de conturi reglementat prin OMFP 1802/2014 (ex. cheltuieli cu personalul, cheltuieli cu serviciile executate de terți, cheltuieli cu chiriile). Astfel, la finalul lunii, compararea buget-vs-realizat se poate face direct pe baza balanței contabile, fără reconcilieri manuale suplimentare.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală a managerilor non-financiari la primul buget departamental este **subestimarea costurilor indirecte alocate** (chirie, IT central, utilități) — pentru că nu apar ca linii vizibile în activitatea zilnică a echipei. Cere întotdeauna de la Finanțe cheia de alocare folosită (de obicei procent din numărul de angajați sau din suprafața ocupată), altfel bugetul propus va fi respins la consolidare pentru că nu acoperă costul real total al departamentului.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești manager al departamentului IT (5 angajați) într-o firmă cu 40 de angajați în total. Pentru luna noiembrie ai următoarele estimări:\n\n- Salarii + contribuții echipă IT: 28.000 lei\n- Licențe software (antivirus, backup, monitorizare): 3.200 lei\n- Mentenanță echipamente (contract externalizat): 1.800 lei\n- Achiziție 2 laptopuri de înlocuire: 6.000 lei\n- Alocare cotă-parte chirie + utilități (IT reprezintă 12,5% din numărul total de angajați): cota-parte totală chirie+utilități a firmei este 16.000 lei/lună\n\nCerințe:\n1. Calculează suma alocată din chirie+utilități pentru departamentul IT.\n2. Calculează bugetul total propus pentru luna noiembrie.\n3. La finalul lunii, cheltuielile reale au fost 42.300 lei. Calculează abaterea bugetară (%) și precizează dacă este depășire sau economie.",
+    "solution_md": "**1. Alocare chirie + utilități:**\n16.000 lei × 12,5% = **2.000 lei**\n\n**2. Buget total noiembrie:**\n28.000 + 3.200 + 1.800 + 6.000 + 2.000 = **41.000 lei**\n\n**3. Abaterea bugetară:**\nAbatere = (Realizat − Buget) / Buget × 100 = (42.300 − 41.000) / 41.000 × 100 = **+3,17%**\n\nEste o **depășire de buget** de 3,17%, sub pragul uzual de alertă de 5% — deci se încadrează în variația normală de estimare și, în majoritatea firmelor, nu necesită justificare scrisă separată către Finanțe, deși este bine să notezi cauza (de exemplu, un cost de mentenanță neprevăzut) pentru referință viitoare.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un departament HR a bugetat 30.000 lei pentru o lună, iar cheltuielile reale au fost 27.600 lei. Care este abaterea bugetară și ce înseamnă ea?",
+    "choices": [
+     "+8%, depășire de buget",
+     "−8%, economie de buget",
+     "+2,4%, depășire de buget",
+     "−2,4%, economie de buget"
+    ],
+    "answer": 1,
+    "explain": "Abatere = (27.600 − 30.000)/30.000 × 100 = −8%. Semnul negativ arată că departamentul a cheltuit sub buget, deci este o economie, nu o depășire.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce este bugetarea de la zero (Zero-Based Budgeting) considerată mai riguroasă decât bugetarea incrementală, dar și mai costisitoare ca timp?",
+    "choices": [
+     "Pentru că se aplică doar costurilor variabile, niciodată celor fixe",
+     "Pentru că fiecare linie de cheltuială trebuie rejustificată de la zero, indiferent de bugetul anului anterior, ceea ce cere o analiză detaliată a fiecărei categorii",
+     "Pentru că este obligatorie prin OMFP 1802/2014 pentru toate firmele mari",
+     "Pentru că elimină nevoia de a compara bugetul cu realizatul la final de lună"
+    ],
+    "answer": 1,
+    "explain": "ZBB pornește de la premisa că nicio cheltuială nu este automat justificată de existența ei în anii anteriori — fiecare linie trebuie argumentată din nou, ceea ce scoate la iveală costuri redundante dar consumă mult timp de analiză, spre deosebire de bugetarea incrementală care doar ajustează procentual bugetul anterior.",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula abaterii bugetare (variance)?",
+    "back": "Abatere (%) = (Realizat − Buget) / Buget × 100. Rezultat pozitiv = depășire de buget; rezultat negativ = economie.",
+    "concept_key": "abatere-bugetara-variance",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce diferență există între costurile directe și cele indirecte (alocate) într-un buget departamental?",
+    "back": "Costurile directe pot fi atribuite clar unui departament (ex. salariile echipei); costurile indirecte sunt comune mai multor departamente și se repartizează pe o cheie de alocare (ex. chirie, utilități, IT central), de obicei procentual după numărul de angajați.",
+    "concept_key": "tipuri-costuri-bugetare",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este bugetarea incrementală?",
+    "back": "Metodă de bugetare care pornește de la bugetul anului anterior și îl ajustează cu un procent (ex. pentru inflație sau creștere de activitate), fără a rejustifica fiecare linie de la zero.",
+    "concept_key": "metode-bugetare-incremental-baza-zero",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Zero-Based Budgeting (ZBB)?",
+    "back": "Metodă de bugetare în care fiecare linie de cheltuială trebuie rejustificată de la valoarea zero, indiferent de bugetul anilor anteriori, scoțând la iveală cheltuielile redundante.",
+    "concept_key": "metode-bugetare-incremental-baza-zero",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este pragul uzual de alertă pentru abaterile bugetare în firmele din România?",
+    "back": "Abateri sub ±5% sunt considerate normale; între 5–10% necesită justificare scrisă; peste 10% necesită plan de corecție aprobat de management.",
+    "concept_key": "abatere-bugetara-variance",
+    "blockId": "cmjjuxw2100btumkpsexlcjgb-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1169,
+   "flashcards": 5
+  }
+ }
+}

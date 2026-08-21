@@ -1,0 +1,169 @@
+{
+ "lessonId": "cmjjuxwax00ixumkpmtys0s9z",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Declarații Fiscale HR",
+ "lesson": "Declarația 112",
+ "category": "HR_COMPLIANCE",
+ "content": "# Declarația 112\n\n**Declarația 112** — denumirea oficială este *„Declarație privind obligațiile de plată a contribuțiilor sociale, impozitului pe venit și evidența nominală a persoanelor asigurate”* — este declarația fiscală unificată prin care orice angajator din România își îndeplinește, într-un singur document lunar, trei obligații distincte:\n\n1. **Declararea și plata contribuțiilor sociale** — CAS (25%, reținută din brutul salariatului), CASS (10%, reținută din brutul salariatului) și CAM (2,25%, suportată integral de angajator din fondul propriu de salarii).\n2. **Declararea și plata impozitului pe venitul din salarii** (10%, aplicat după deduceri).\n3. **Evidența nominală a persoanelor asigurate** — datele individuale ale fiecărui salariat (CNP, venit brut, zile lucrate, stagiu de cotizare), transmise mai departe către Casa Națională de Pensii Publice (CNPP) și Casa Națională de Asigurări de Sănătate (CNAS).\n\nSunt obligați să depună D112 toți angajatorii care au cel puțin un salariat cu contract individual de muncă activ, indiferent dacă în luna respectivă s-au plătit sau nu venituri (de exemplu, un salariat aflat integral în concediu fără plată tot generează, în anumite situații, obligația de declarare a evidenței nominale). Declarația se depune **lunar**, exclusiv electronic, prin mijloace de transmitere la distanță puse la dispoziție de ANAF.\n\nNu confundați D112 cu REVISAL: REVISAL este registrul care ține evidența contractelor de muncă (angajare, modificări, încetare), în timp ce D112 este declarația fiscală lunară prin care se raportează și se plătesc sumele bănești datorate statului pentru veniturile salariale.\n\nFormularul 112 are o structură pe secțiuni și anexe, gândită să acopere atât situația centralizată a angajatorului, cât și detaliul pe fiecare salariat:\n\n- **Date de identificare a angajatorului** — denumire, CUI, cod CAEN, număr mediu de salariați, sediu.\n- **Anexa 1.1 — Situație centralizatoare** — totalizează, pe fiecare tip de obligație bugetară (CAS angajator/asigurat, CASS, impozit pe venit, CAM), sumele datorate de întreaga entitate pentru luna respectivă, pe conturile bugetare corespunzătoare.\n- **Anexa 1.2 — Evidența nominală a asiguraților** — se completează individual, pentru fiecare salariat: CNP, funcție, tip contract, venit brut realizat, zile lucrate/absențe, baza de calcul CAS/CASS, sumele reținute, precum și informații relevante pentru stagiul de cotizare (esențiale la calculul viitoarei pensii) și pentru concediile medicale.\n\nDeoarece Anexa 1.2 conține date cu caracter personal sensibile (CNP, venit, uneori informații medicale legate de concedii), accesul la aceste date în cadrul companiei trebuie restricționat strict la personalul de HR/salarizare autorizat, conform principiului minimizării datelor din regulamentul GDPR. Exportul sau transmiterea acestor date către terți (contabili externi, auditori) trebuie să se facă doar în baza unui temei contractual clar.\n\nD112 se încadrează într-un flux lunar de salarizare care are o secvență fixă:\n\n**Pontaj** (zile lucrate, concedii, absențe) → **stat de plată** (calculul brut-net pentru fiecare salariat) → **D112** (consolidarea și declararea sumelor) → **plata efectivă a contribuțiilor și impozitului către buget**.\n\n**Termenul legal de depunere și plată este data de 25 a lunii următoare** celei pentru care se plătesc veniturile salariale. De exemplu, pentru salariile aferente lunii iunie, plătite în iulie, D112 se depune și contribuțiile se plătesc cel târziu pe **25 iulie**. Dacă data de 25 cade într-o zi nelucrătoare, termenul se prorogă la următoarea zi lucrătoare, conform regulilor generale din Codul de procedură fiscală.\n\nÎn paralel cu D112, angajatorul are obligația de a emite lunar **fluturașul de salariu** pentru fiecare angajat — un document individual care detaliază brutul, reținerile și netul, obligatoriu conform Codului muncii. Statele de plată care stau la baza D112 trebuie păstrate de angajator timp de **50 de ani**, dat fiind rolul lor de dovadă pentru stagiul de cotizare la pensie.\n\n> Temei legal: Legea nr. 227/2015 privind Codul fiscal (actualizată) art. 147 alin. (1) (în vigoare de la 2016-01-01)\nCodul fiscal stabilește regula generală conform căreia contribuabilii care au calitatea de angajatori au obligația de a calcula, reține la sursă și plăti lunar contribuțiile sociale obligatorii, precum și de a declara aceste sume, până la **data de 25 inclusiv a lunii următoare** celei pentru care se datorează. Această normă este temeiul legal al termenului aplicat pentru depunerea Declarației 112, indiferent de forma de organizare a angajatorului (societate comercială, PFA cu angajați, ONG etc.).\n\n## Exemplu: Calculul salarial pentru un angajat la salariul minim (iulie 2026) și raportarea în D112\nIonela lucrează cu normă întreagă la Societatea ABC SRL și este remunerată la nivelul salariului minim brut pe economie aplicabil de la **1 iulie 2026: 4.325 lei**.\n\n**Pasul 1 — scutirea aferentă salariului minim**\nPentru salariații plătiți exact la nivelul salariului minim brut pe economie, o parte din venit este exceptată din baza de calcul a CAS, CASS și a impozitului pe venit. De la 1 iulie 2026, această parte netaxabilă este de **200 lei** (redusă de la 300 lei, conform OUG 89/2025).\n\nBază de calcul CAS/CASS/impozit = 4.325 – 200 = **4.125 lei**\n\n**Pasul 2 — contribuțiile reținute salariatei**\n- CAS (25%): 4.125 × 25% = **1.031,25 lei**\n- CASS (10%): 4.125 × 10% = **412,50 lei**\n\n**Pasul 3 — impozitul pe venit**\nDin baza rămasă (4.125 – 1.031,25 – 412,50 = 2.681,25 lei) se scade deducerea personală aplicabilă conform grilei ANAF în vigoare pentru acest nivel de venit, iar diferența se impozitează cu cota de **10%**.\n\n**Rezultat**: după aplicarea deducerii personale și a impozitului, netul încasat de Ionela este de aproximativ **2.699 lei** — valoarea comunicată oficial pentru salariul minim aplicabil de la 1 iulie 2026.\n\n**Pasul 4 — contribuția angajatorului (CAM)**\nSeparat, din fondul propriu, angajatorul datorează Contribuția Asiguratorie pentru Muncă: 4.325 × 2,25% = **97,31 lei**.\n\n**În D112**, aceste sume apar astfel:\n- **Anexa 1.2** (evidența nominală): venit brut 4.325 lei, scutire aplicată 200 lei, bază de calcul 4.125 lei, CAS 1.031,25 lei, CASS 412,50 lei, impozit calculat, zile lucrate în lună.\n- **Anexa 1.1** (situație centralizată): totalul CAS, CASS și impozit reținut de la toți salariații, plus CAM datorată de angajator, defalcate pe conturile bugetare corespunzătoare.\n\nDeclarația se depune electronic, iar sumele rezultate se virează până la același termen — 25 ale lunii următoare.\n\n## Exemplu: Corectarea unei erori descoperite ulterior — declarația rectificativă 112\nÎn septembrie, departamentul de salarizare al firmei ABC SRL descoperă că, pentru luna iulie (declarată pe 25 august), orele suplimentare ale unui angajat nu au fost incluse corect în baza de calcul, ceea ce a dus la o subdeclarare a CAS, CASS și impozitului pe venit pentru acel salariat.\n\n**Pașii corecți de urmat:**\n1. Se recalculează corect venitul brut al salariatului pentru luna iulie, incluzând orele suplimentare.\n2. Se întocmește o **declarație rectificativă 112** pentru luna iulie — aceasta **înlocuiește integral** declarația inițială depusă pentru acea lună (nu se declară doar diferența), fiind marcată explicit ca „declarație rectificativă” la depunere.\n3. Se recalculează toate sumele afectate (CAS, CASS, impozit, CAM) pentru întreaga lună, nu doar pentru salariatul cu eroarea.\n4. Diferența de sumă rezultată (dacă este de plată) se achită către bugetul de stat, urmând ca ANAF să calculeze eventuale accesorii (dobânzi și penalități de întârziere) aferente perioadei scurse între termenul legal inițial și data plății efective a diferenței.\n\nPentru situații cu impact pe mai multe luni, mai mulți salariați sau care pot atrage sancțiuni contravenționale, recomandăm consultarea unui expert contabil sau a unui consultant fiscal autorizat înainte de depunerea rectificativei, întrucât fiecare caz concret poate avea particularități care depășesc cadrul general prezentat aici.\n\n⚠ Nedepunerea D112 în termen sau depunerea cu date eronate poate atrage sancțiuni contravenționale conform Codului de procedură fiscală, precum și calculul de dobânzi și penalități de întârziere pentru sumele neplătite la termen. Orice eroare constatată ulterior trebuie corectată printr-o **declarație rectificativă** — niciodată prin compensare informală cu o lună viitoare sau prin ajustări „pe hârtie” în evidența internă fără reflectare în declarația fiscală. Pentru cazuri de eșalonare la plată, erori istorice pe perioade mai vechi sau controale ITM/ANAF în curs, consultați un expert contabil sau un consultant fiscal autorizat — informațiile din această lecție au caracter general și educativ, nu constituie consultanță fiscală individuală.\n\n## Exercițiu\nFirma XYZ SRL are doi angajați cu normă întreagă, plătiți peste nivelul salariului minim (deci fără a beneficia de scutirea de 200 lei aplicabilă doar la salariul minim). Pentru simplificarea calculului, considerați deducerea personală egală cu zero pentru ambii salariați.\n\n- Angajatul A: salariu brut lunar = **5.000 lei**\n- Angajatul B: salariu brut lunar = **6.000 lei**\n\nCerințe:\n1. Calculați CAS, CASS și impozitul pe venit reținute pentru fiecare angajat.\n2. Calculați CAM datorată de angajator pentru fiecare angajat.\n3. Determinați suma totală pe care firma trebuie să o declare în D112 și să o vireze către bugetul de stat pentru luna respectivă.\n4. Dacă salariile sunt aferente lunii iunie, care este termenul-limită de depunere a D112 și de plată a sumelor?\n\n**Soluție:** **Angajatul A (brut 5.000 lei):**\n- CAS (25%): 5.000 × 25% = 1.250 lei\n- CASS (10%): 5.000 × 10% = 500 lei\n- Bază impozit: 5.000 – 1.250 – 500 = 3.250 lei\n- Impozit (10%): 3.250 × 10% = 325 lei\n- Net: 5.000 – 1.250 – 500 – 325 = 2.925 lei\n\n**Angajatul B (brut 6.000 lei):**\n- CAS (25%): 6.000 × 25% = 1.500 lei\n- CASS (10%): 6.000 × 10% = 600 lei\n- Bază impozit: 6.000 – 1.500 – 600 = 3.900 lei\n- Impozit (10%): 3.900 × 10% = 390 lei\n- Net: 6.000 – 1.500 – 600 – 390 = 3.510 lei\n\n**CAM angajator:**\n- Total fond de salarii brute: 5.000 + 6.000 = 11.000 lei\n- CAM (2,25%): 11.000 × 2,25% = 247,50 lei\n\n**Total de declarat și plătit prin D112:**\n- CAS total: 1.250 + 1.500 = 2.750 lei\n- CASS total: 500 + 600 = 1.100 lei\n- Impozit total: 325 + 390 = 715 lei\n- CAM: 247,50 lei\n- **Sumă totală de virat către stat: 2.750 + 1.100 + 715 + 247,50 = 4.812,50 lei**\n\n**Termen:** salariile din iunie se declară și se plătesc cel târziu pe **25 iulie** (25 ale lunii următoare celei pentru care se datorează veniturile).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "d112-ce-este-si-scop",
+    "md": "**Declarația 112** — denumirea oficială este *„Declarație privind obligațiile de plată a contribuțiilor sociale, impozitului pe venit și evidența nominală a persoanelor asigurate”* — este declarația fiscală unificată prin care orice angajator din România își îndeplinește, într-un singur document lunar, trei obligații distincte:\n\n1. **Declararea și plata contribuțiilor sociale** — CAS (25%, reținută din brutul salariatului), CASS (10%, reținută din brutul salariatului) și CAM (2,25%, suportată integral de angajator din fondul propriu de salarii).\n2. **Declararea și plata impozitului pe venitul din salarii** (10%, aplicat după deduceri).\n3. **Evidența nominală a persoanelor asigurate** — datele individuale ale fiecărui salariat (CNP, venit brut, zile lucrate, stagiu de cotizare), transmise mai departe către Casa Națională de Pensii Publice (CNPP) și Casa Națională de Asigurări de Sănătate (CNAS).\n\nSunt obligați să depună D112 toți angajatorii care au cel puțin un salariat cu contract individual de muncă activ, indiferent dacă în luna respectivă s-au plătit sau nu venituri (de exemplu, un salariat aflat integral în concediu fără plată tot generează, în anumite situații, obligația de declarare a evidenței nominale). Declarația se depune **lunar**, exclusiv electronic, prin mijloace de transmitere la distanță puse la dispoziție de ANAF.\n\nNu confundați D112 cu REVISAL: REVISAL este registrul care ține evidența contractelor de muncă (angajare, modificări, încetare), în timp ce D112 este declarația fiscală lunară prin care se raportează și se plătesc sumele bănești datorate statului pentru veniturile salariale.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "d112-structura-anexe",
+    "md": "Formularul 112 are o structură pe secțiuni și anexe, gândită să acopere atât situația centralizată a angajatorului, cât și detaliul pe fiecare salariat:\n\n- **Date de identificare a angajatorului** — denumire, CUI, cod CAEN, număr mediu de salariați, sediu.\n- **Anexa 1.1 — Situație centralizatoare** — totalizează, pe fiecare tip de obligație bugetară (CAS angajator/asigurat, CASS, impozit pe venit, CAM), sumele datorate de întreaga entitate pentru luna respectivă, pe conturile bugetare corespunzătoare.\n- **Anexa 1.2 — Evidența nominală a asiguraților** — se completează individual, pentru fiecare salariat: CNP, funcție, tip contract, venit brut realizat, zile lucrate/absențe, baza de calcul CAS/CASS, sumele reținute, precum și informații relevante pentru stagiul de cotizare (esențiale la calculul viitoarei pensii) și pentru concediile medicale.\n\nDeoarece Anexa 1.2 conține date cu caracter personal sensibile (CNP, venit, uneori informații medicale legate de concedii), accesul la aceste date în cadrul companiei trebuie restricționat strict la personalul de HR/salarizare autorizat, conform principiului minimizării datelor din regulamentul GDPR. Exportul sau transmiterea acestor date către terți (contabili externi, auditori) trebuie să se facă doar în baza unui temei contractual clar.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "d112-termen-flux-lunar",
+    "md": "D112 se încadrează într-un flux lunar de salarizare care are o secvență fixă:\n\n**Pontaj** (zile lucrate, concedii, absențe) → **stat de plată** (calculul brut-net pentru fiecare salariat) → **D112** (consolidarea și declararea sumelor) → **plata efectivă a contribuțiilor și impozitului către buget**.\n\n**Termenul legal de depunere și plată este data de 25 a lunii următoare** celei pentru care se plătesc veniturile salariale. De exemplu, pentru salariile aferente lunii iunie, plătite în iulie, D112 se depune și contribuțiile se plătesc cel târziu pe **25 iulie**. Dacă data de 25 cade într-o zi nelucrătoare, termenul se prorogă la următoarea zi lucrătoare, conform regulilor generale din Codul de procedură fiscală.\n\nÎn paralel cu D112, angajatorul are obligația de a emite lunar **fluturașul de salariu** pentru fiecare angajat — un document individual care detaliază brutul, reținerile și netul, obligatoriu conform Codului muncii. Statele de plată care stau la baza D112 trebuie păstrate de angajator timp de **50 de ani**, dat fiind rolul lor de dovadă pentru stagiul de cotizare la pensie.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 227/2015 privind Codul fiscal (actualizată)",
+    "article": "art. 147 alin. (1)",
+    "effective": "2016-01-01",
+    "md": "Codul fiscal stabilește regula generală conform căreia contribuabilii care au calitatea de angajatori au obligația de a calcula, reține la sursă și plăti lunar contribuțiile sociale obligatorii, precum și de a declara aceste sume, până la **data de 25 inclusiv a lunii următoare** celei pentru care se datorează. Această normă este temeiul legal al termenului aplicat pentru depunerea Declarației 112, indiferent de forma de organizare a angajatorului (societate comercială, PFA cu angajați, ONG etc.).",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul salarial pentru un angajat la salariul minim (iulie 2026) și raportarea în D112",
+    "concept_key": "d112-exemplu-salariu-minim",
+    "md": "Ionela lucrează cu normă întreagă la Societatea ABC SRL și este remunerată la nivelul salariului minim brut pe economie aplicabil de la **1 iulie 2026: 4.325 lei**.\n\n**Pasul 1 — scutirea aferentă salariului minim**\nPentru salariații plătiți exact la nivelul salariului minim brut pe economie, o parte din venit este exceptată din baza de calcul a CAS, CASS și a impozitului pe venit. De la 1 iulie 2026, această parte netaxabilă este de **200 lei** (redusă de la 300 lei, conform OUG 89/2025).\n\nBază de calcul CAS/CASS/impozit = 4.325 – 200 = **4.125 lei**\n\n**Pasul 2 — contribuțiile reținute salariatei**\n- CAS (25%): 4.125 × 25% = **1.031,25 lei**\n- CASS (10%): 4.125 × 10% = **412,50 lei**\n\n**Pasul 3 — impozitul pe venit**\nDin baza rămasă (4.125 – 1.031,25 – 412,50 = 2.681,25 lei) se scade deducerea personală aplicabilă conform grilei ANAF în vigoare pentru acest nivel de venit, iar diferența se impozitează cu cota de **10%**.\n\n**Rezultat**: după aplicarea deducerii personale și a impozitului, netul încasat de Ionela este de aproximativ **2.699 lei** — valoarea comunicată oficial pentru salariul minim aplicabil de la 1 iulie 2026.\n\n**Pasul 4 — contribuția angajatorului (CAM)**\nSeparat, din fondul propriu, angajatorul datorează Contribuția Asiguratorie pentru Muncă: 4.325 × 2,25% = **97,31 lei**.\n\n**În D112**, aceste sume apar astfel:\n- **Anexa 1.2** (evidența nominală): venit brut 4.325 lei, scutire aplicată 200 lei, bază de calcul 4.125 lei, CAS 1.031,25 lei, CASS 412,50 lei, impozit calculat, zile lucrate în lună.\n- **Anexa 1.1** (situație centralizată): totalul CAS, CASS și impozit reținut de la toți salariații, plus CAM datorată de angajator, defalcate pe conturile bugetare corespunzătoare.\n\nDeclarația se depune electronic, iar sumele rezultate se virează până la același termen — 25 ale lunii următoare.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b5"
+   },
+   {
+    "type": "example",
+    "title": "Corectarea unei erori descoperite ulterior — declarația rectificativă 112",
+    "concept_key": "d112-rectificativa",
+    "md": "În septembrie, departamentul de salarizare al firmei ABC SRL descoperă că, pentru luna iulie (declarată pe 25 august), orele suplimentare ale unui angajat nu au fost incluse corect în baza de calcul, ceea ce a dus la o subdeclarare a CAS, CASS și impozitului pe venit pentru acel salariat.\n\n**Pașii corecți de urmat:**\n1. Se recalculează corect venitul brut al salariatului pentru luna iulie, incluzând orele suplimentare.\n2. Se întocmește o **declarație rectificativă 112** pentru luna iulie — aceasta **înlocuiește integral** declarația inițială depusă pentru acea lună (nu se declară doar diferența), fiind marcată explicit ca „declarație rectificativă” la depunere.\n3. Se recalculează toate sumele afectate (CAS, CASS, impozit, CAM) pentru întreaga lună, nu doar pentru salariatul cu eroarea.\n4. Diferența de sumă rezultată (dacă este de plată) se achită către bugetul de stat, urmând ca ANAF să calculeze eventuale accesorii (dobânzi și penalități de întârziere) aferente perioadei scurse între termenul legal inițial și data plății efective a diferenței.\n\nPentru situații cu impact pe mai multe luni, mai mulți salariați sau care pot atrage sancțiuni contravenționale, recomandăm consultarea unui expert contabil sau a unui consultant fiscal autorizat înainte de depunerea rectificativei, întrucât fiecare caz concret poate avea particularități care depășesc cadrul general prezentat aici.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nedepunerea D112 în termen sau depunerea cu date eronate poate atrage sancțiuni contravenționale conform Codului de procedură fiscală, precum și calculul de dobânzi și penalități de întârziere pentru sumele neplătite la termen. Orice eroare constatată ulterior trebuie corectată printr-o **declarație rectificativă** — niciodată prin compensare informală cu o lună viitoare sau prin ajustări „pe hârtie” în evidența internă fără reflectare în declarația fiscală. Pentru cazuri de eșalonare la plată, erori istorice pe perioade mai vechi sau controale ITM/ANAF în curs, consultați un expert contabil sau un consultant fiscal autorizat — informațiile din această lecție au caracter general și educativ, nu constituie consultanță fiscală individuală.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Firma XYZ SRL are doi angajați cu normă întreagă, plătiți peste nivelul salariului minim (deci fără a beneficia de scutirea de 200 lei aplicabilă doar la salariul minim). Pentru simplificarea calculului, considerați deducerea personală egală cu zero pentru ambii salariați.\n\n- Angajatul A: salariu brut lunar = **5.000 lei**\n- Angajatul B: salariu brut lunar = **6.000 lei**\n\nCerințe:\n1. Calculați CAS, CASS și impozitul pe venit reținute pentru fiecare angajat.\n2. Calculați CAM datorată de angajator pentru fiecare angajat.\n3. Determinați suma totală pe care firma trebuie să o declare în D112 și să o vireze către bugetul de stat pentru luna respectivă.\n4. Dacă salariile sunt aferente lunii iunie, care este termenul-limită de depunere a D112 și de plată a sumelor?",
+    "solution_md": "**Angajatul A (brut 5.000 lei):**\n- CAS (25%): 5.000 × 25% = 1.250 lei\n- CASS (10%): 5.000 × 10% = 500 lei\n- Bază impozit: 5.000 – 1.250 – 500 = 3.250 lei\n- Impozit (10%): 3.250 × 10% = 325 lei\n- Net: 5.000 – 1.250 – 500 – 325 = 2.925 lei\n\n**Angajatul B (brut 6.000 lei):**\n- CAS (25%): 6.000 × 25% = 1.500 lei\n- CASS (10%): 6.000 × 10% = 600 lei\n- Bază impozit: 6.000 – 1.500 – 600 = 3.900 lei\n- Impozit (10%): 3.900 × 10% = 390 lei\n- Net: 6.000 – 1.500 – 600 – 390 = 3.510 lei\n\n**CAM angajator:**\n- Total fond de salarii brute: 5.000 + 6.000 = 11.000 lei\n- CAM (2,25%): 11.000 × 2,25% = 247,50 lei\n\n**Total de declarat și plătit prin D112:**\n- CAS total: 1.250 + 1.500 = 2.750 lei\n- CASS total: 500 + 600 = 1.100 lei\n- Impozit total: 325 + 390 = 715 lei\n- CAM: 247,50 lei\n- **Sumă totală de virat către stat: 2.750 + 1.100 + 715 + 247,50 = 4.812,50 lei**\n\n**Termen:** salariile din iunie se declară și se plătesc cel târziu pe **25 iulie** (25 ale lunii următoare celei pentru care se datorează veniturile).",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul legal de depunere a Declarației 112?",
+    "choices": [
+     "Până pe 25 ale lunii curente",
+     "Până pe 25 ale lunii următoare celei pentru care se datorează veniturile",
+     "Până în ultima zi a lunii curente",
+     "Până pe 15 ale lunii următoare"
+    ],
+    "answer": 1,
+    "explain": "Conform art. 147 alin. (1) din Codul fiscal, contribuțiile și impozitul aferent unei luni se declară și se plătesc până pe data de 25 a lunii următoare.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cotă reprezintă CAM (Contribuția Asiguratorie pentru Muncă), datorată de angajator în 2026?",
+    "choices": [
+     "2,25% din fondul de salarii brute",
+     "10% din salariul net",
+     "25% din salariul brut al fiecărui angajat",
+     "4,25% din cifra de afaceri"
+    ],
+    "answer": 0,
+    "explain": "CAM este 2,25% și este suportată integral de angajator, din fondul propriu de salarii — nu se reține din venitul salariatului, spre deosebire de CAS și CASS.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce trebuie să facă angajatorul dacă descoperă, două luni mai târziu, o eroare în D112 depusă pentru o lună anterioară?",
+    "choices": [
+     "Ajustează diferența în D112 din luna curentă, fără a menționa eroarea",
+     "Depune o declarație rectificativă pentru luna cu eroarea, care înlocuiește integral declarația inițială",
+     "Nu poate face nimic, D112 este definitivă odată depusă",
+     "Anunță telefonic ANAF, fără a mai depune vreun document"
+    ],
+    "answer": 1,
+    "explain": "Corectarea se face exclusiv printr-o declarație rectificativă pentru luna afectată, care înlocuiește complet declarația inițială — nu prin compensări informale în lunile ulterioare.",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Declarația 112?",
+    "back": "Declarația unificată lunară prin care angajatorul declară CAS, CASS, CAM, impozitul pe venit din salarii și evidența nominală a persoanelor asigurate.",
+    "concept_key": "d112-definitie",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de depunere și plată al D112?",
+    "back": "Până la data de 25 a lunii următoare celei pentru care se plătesc veniturile salariale.",
+    "concept_key": "d112-termen-depunere",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă CAS reține angajatorul din brutul salariatului (2026)?",
+    "back": "25%.",
+    "concept_key": "cas-cota-salariat-2026",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă CASS reține angajatorul din brutul salariatului (2026)?",
+    "back": "10%.",
+    "concept_key": "cass-cota-salariat-2026",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este CAM și cine o suportă?",
+    "back": "Contribuția Asiguratorie pentru Muncă, 2,25% din fondul de salarii brute, suportată integral de angajator, nu de salariat.",
+    "concept_key": "cam-cota-angajator-2026",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document individual trebuie emis lunar pentru fiecare salariat, pe lângă D112?",
+    "back": "Fluturașul de salariu, cu detalierea brutului, reținerilor și netului.",
+    "concept_key": "fluturas-salariu-obligatoriu",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câți ani trebuie păstrate statele de plată care stau la baza D112?",
+    "back": "50 de ani, deoarece dovedesc stagiul de cotizare la pensie.",
+    "concept_key": "arhivare-state-plata-50-ani",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b18"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se corectează o eroare descoperită într-o D112 deja depusă?",
+    "back": "Printr-o declarație rectificativă pentru luna respectivă, care înlocuiește integral declarația inițială.",
+    "concept_key": "d112-rectificativa-mod-corectare",
+    "blockId": "cmjjuxwax00ixumkpmtys0s9z-b19"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1566,
+   "flashcards": 8
+  }
+ }
+}

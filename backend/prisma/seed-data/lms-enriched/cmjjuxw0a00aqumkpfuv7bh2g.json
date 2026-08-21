@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxw0a00aqumkpfuv7bh2g",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Exam Preparation",
+ "lesson": "Simulare 2 (90 întrebări)",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Simulare 2 (90 întrebări) (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Examenul de certificare PMP (Project Management Professional) evaluează candidatul pe trei domenii de performanță definite de PMI. Care sunt acestea?",
+     "choices": [
+      "Inițiere, Planificare, Închidere",
+      "Persoane (People), Proces (Process), Mediu de afaceri (Business Environment)",
+      "Cost, Timp, Calitate",
+      "Predictiv, Agil, Hibrid"
+     ],
+     "answer": 1,
+     "explain": "Conform PMI Examination Content Outline, examenul PMP este structurat pe trei domenii: Persoane (~42%, aspecte de leadership și echipă), Proces (~50%, aspecte tehnice de management de proiect) și Mediu de afaceri (~8%, alinierea proiectelor cu strategia organizației). Un exemplu practic: la un proiect de implementare ERP într-o companie SRL din România, domeniul „Persoane\" acoperă gestionarea rezistenței la schimbare a angajaților, iar „Mediu de afaceri\" acoperă alinierea proiectului cu obiectivele strategice ale companiei.",
+     "concept_key": "pmp_exam_domains"
+    },
+    {
+     "q": "Potrivit ghidului PMBOK 7 (ediția a 7-a), managementul de proiect este organizat în jurul a 8 domenii de performanță (performance domains), spre deosebire de structura pe procese și arii de cunoștințe din PMBOK 6. Care dintre următoarele NU este un domeniu de performanță din PMBOK 7?",
+     "choices": [
+      "Stakeholders (Părți interesate)",
+      "Planning (Planificare)",
+      "Procurement Management (Managementul achizițiilor)",
+      "Delivery (Livrare)"
+     ],
+     "answer": 2,
+     "explain": "PMBOK 7 definește 8 domenii de performanță: Stakeholders, Team, Development Approach and Life Cycle, Planning, Project Work, Delivery, Measurement și Uncertainty. „Procurement Management\" era o arie de cunoștințe (knowledge area) în PMBOK 6, dar PMBOK 7 a trecut de la o abordare orientată pe procese la una orientată pe principii și rezultate (outcome-based), integrând achizițiile în domeniile de performanță relevante, nu ca domeniu separat.",
+     "concept_key": "pmbok7_performance_domains"
+    },
+    {
+     "q": "O companie de digitalizare din București folosește Scrum pentru dezvoltarea unei aplicații interne. Conform Scrum Guide 2020, cum este denumit rolul responsabil cu maximizarea valorii produsului rezultat din munca echipei de dezvoltare?",
+     "choises": [],
+     "choices": [
+      "Project Manager",
+      "Scrum Master",
+      "Product Owner",
+      "Team Lead"
+     ],
+     "answer": 2,
+     "explain": "Product Owner este responsabil de maximizarea valorii produsului, gestionând Product Backlog-ul și prioritizând cerințele. Scrum Master facilitează procesul și înlătură blocajele (impediments), iar de la Scrum Guide 2020, termenul „Development Team\" a fost înlocuit cu „Developers\", membri egali ai unei echipe Scrum unice și auto-organizate (self-managing).",
+     "concept_key": "scrum_roles"
+    },
+    {
+     "q": "O echipă de proiect implementează un sistem ERP pentru o firmă SRL. La momentul evaluării: Valoarea Planificată (PV) = 300.000 lei, Valoarea Realizată/Earned Value (EV) = 270.000 lei, Costul Real (AC) = 280.000 lei. Ce indică indicii de performanță CPI (EV/AC) și SPI (EV/PV) calculați pentru acest proiect?",
+     "choices": [
+      "CPI = 1,04 și SPI = 1,11 — proiectul este sub buget și înaintea programului",
+      "CPI ≈ 0,96 și SPI = 0,90 — proiectul este peste buget și în urma programului",
+      "CPI = 0,90 și SPI ≈ 0,96 — proiectul este peste buget dar înaintea programului",
+      "CPI și SPI nu pot fi calculate fără BAC (Buget la Finalizare)"
+     ],
+     "answer": 1,
+     "explain": "CPI = EV/AC = 270.000/280.000 ≈ 0,96 (subunitar, deci proiectul cheltuiește mai mult decât valoarea produsă — este peste buget). SPI = EV/PV = 270.000/300.000 = 0,90 (subunitar, deci proiectul este în urma programului planificat). Ambii indici se calculează independent de BAC, folosind doar PV, EV și AC din momentul respectiv (data curentă a analizei, status date).",
+     "concept_key": "evm_cpi_spi"
+    },
+    {
+     "q": "În cadrul procesului „Perform Qualitative Risk Analysis\" (Analiza calitativă a riscurilor), managerul de proiect folosește o matrice probabilitate-impact pentru a prioritiza riscurile identificate în registrul de riscuri (risk register). Care este scopul principal al acestei tehnici?",
+     "choices": [
+      "Estimarea exactă în lei a costului fiecărui risc, folosind simulări Monte Carlo",
+      "Clasificarea riscurilor pe baza combinației dintre probabilitatea de apariție și impactul asupra obiectivelor proiectului, pentru prioritizarea analizei ulterioare",
+      "Eliminarea completă a tuturor riscurilor identificate înainte de faza de execuție",
+      "Transferul automat al tuturor riscurilor către un furnizor extern prin contract"
+     ],
+     "answer": 1,
+     "explain": "Matricea probabilitate-impact este o tehnică de analiză calitativă (subiectivă, rapidă) care clasifică riscurile după o scală (ex. scăzut/mediu/ridicat) combinând probabilitatea de apariție cu severitatea impactului. Aceasta permite prioritizarea riscurilor pentru analiza cantitativă ulterioară (ex. Monte Carlo) sau pentru planificarea directă a răspunsurilor, fără a le elimina automat — strategiile de răspuns (evitare, atenuare, transfer, acceptare) se stabilesc separat, în procesul „Plan Risk Responses\".",
+     "concept_key": "risk_register"
+    },
+    {
+     "q": "Un manager de proiect agil dintr-o echipă hibridă (predictiv-agil) implementată la o companie de servicii din Cluj adoptă un stil de „servant leadership\" (lider slujitor). Care dintre următoarele comportamente reflectă CEL MAI BINE această abordare?",
+     "choices": [
+      "Stabilește singur toate task-urile echipei și verifică zilnic execuția lor pas cu pas",
+      "Elimină obstacolele echipei, facilitează colaborarea și își pune prioritate pe dezvoltarea și împuternicirea (empowerment) membrilor echipei",
+      "Deleagă complet toate deciziile de proiect către sponsor, fără implicare directă",
+      "Impune metodologia Waterfall întregii echipe pentru a păstra controlul centralizat"
+     ],
+     "answer": 1,
+     "explain": "Servant leadership, principiu central în PMBOK 7 și în Scrum Guide, presupune ca liderul să pună nevoile echipei pe primul loc: elimină impedimentele, facilitează, antrenează (coaching) și împuternicește echipa să ia decizii, în loc să comande și să controleze (command-and-control). Acest stil crește autonomia și motivația echipei, esențiale în special în context agil/hibrid.",
+     "concept_key": "servant_leadership"
+    },
+    {
+     "q": "O companie SRL contractează un furnizor extern pentru dezvoltarea unui modul software, cu specificații tehnice clare și bine definite de la început. Furnizorul acceptă un preț fix de 150.000 lei pentru întregul livrabil, indiferent de orele efectiv lucrate. Ce tip de contract este acesta și care este principalul risc pentru furnizor?",
+     "choices": [
+      "Cost Reimbursable (Cost Plus) — riscul principal este suportat de cumpărător",
+      "Time and Materials (T&M) — riscul principal este suportat de cumpărător",
+      "Firm Fixed Price (FFP) — riscul principal este suportat de furnizor, care trebuie să acopere eventualele depășiri de cost",
+      "Fixed Price Incentive Fee (FPIF) — riscul este împărțit egal prin formula de partajare"
+     ],
+     "answer": 2,
+     "explain": "Firm Fixed Price (FFP) este un contract cu preț fix, unde furnizorul se angajează să livreze produsul la un preț stabilit indiferent de costurile reale suportate. Riscul este transferat aproape integral către furnizor: dacă apar depășiri de cost neprevăzute, acesta suportă pierderea, motiv pentru care FFP se folosește când cerințele sunt clare și stabile de la început, spre deosebire de T&M sau Cost Plus, unde riscul de cost rămâne parțial sau total la cumpărător.",
+     "concept_key": "contract_types"
+    },
+    {
+     "q": "Managerul unui proiect de digitalizare identifică 6 părți interesate cu niveluri diferite de implicare curentă și dorită (unaware, resistant, neutral, supportive, leading). Ce instrument din PMBOK recomandă compararea nivelului actual de implicare cu cel dorit, pentru a orienta strategia de comunicare?",
+     "choices": [
+      "Matricea RACI (Responsible, Accountable, Consulted, Informed)",
+      "Matricea de evaluare a implicării părților interesate (Stakeholder Engagement Assessment Matrix)",
+      "Diagrama Ishikawa (cauză-efect)",
+      "Structura de descompunere a activităților (WBS)"
+     ],
+     "answer": 1,
+     "explain": "Stakeholder Engagement Assessment Matrix compară, pentru fiecare parte interesată, nivelul actual (C) de implicare cu nivelul dorit (D), pe o scală de la „unaware\" (neinformat) la „leading\" (lider susținător). Diferența dintre C și D orientează acțiunile de comunicare necesare. Matricea RACI clarifică rolurile în activități, nu nivelul de implicare, iar diagrama Ishikawa este un instrument de analiză a cauzelor problemelor de calitate.",
+     "concept_key": "stakeholder_matrix"
+    },
+    {
+     "q": "O organizație RO derulează un proiect de transformare digitală în care cerințele pentru infrastructura hardware sunt fixe și bine cunoscute, dar cerințele pentru interfața aplicației mobile evoluează constant pe baza feedback-ului utilizatorilor. Conform PMBOK 7, ce abordare de dezvoltare (development approach) este cel mai potrivit să adopte echipa de proiect?",
+     "choices": [
+      "Abordare exclusiv predictivă (waterfall) pentru ambele componente, pentru a menține un singur set de procese",
+      "Abordare exclusiv agilă (Scrum) pentru ambele componente, indiferent de gradul de certitudine al cerințelor",
+      "Abordare hibridă — predictivă pentru componenta hardware (cerințe stabile) și agilă/iterativă pentru interfața mobilă (cerințe în evoluție)",
+      "Abordarea Kanban aplicată strict achizițiilor hardware, fără legătură cu restul proiectului"
+     ],
+     "answer": 2,
+     "explain": "PMBOK 7 recomandă alegerea abordării de dezvoltare în funcție de gradul de certitudine al cerințelor și de variabilitatea livrabilelor (domeniul de performanță „Development Approach and Life Cycle\"). Când o parte a proiectului are cerințe stabile (hardware), o abordare predictivă este eficientă; când cerințele evoluează pe baza feedback-ului (interfața mobilă), o abordare agilă/iterativă permite adaptare rapidă. Combinarea celor două în cadrul aceluiași proiect definește o abordare hibridă.",
+     "concept_key": "hybrid_approach"
+    },
+    {
+     "q": "La finalul unei etape a proiectului ERP, se cunosc: BAC (Buget la Finalizare) = 500.000 lei, EV = 270.000 lei, AC = 280.000 lei. Presupunând că abaterile de cost întâlnite până acum sunt tipice și se vor repeta în ritmul actual până la finalul proiectului, care este formula corectă pentru estimarea EAC (Estimate at Completion) și valoarea rezultată (CPI ≈ 0,964)?",
+     "choices": [
+      "EAC = AC + (BAC − EV) = 280.000 + 230.000 = 510.000 lei",
+      "EAC = BAC / CPI = 500.000 / 0,964 ≈ 518.900 lei",
+      "EAC = BAC − CV = 500.000 − (−10.000) = 510.000 lei",
+      "EAC = AC × SPI = 280.000 × 0,90 = 252.000 lei"
+     ],
+     "answer": 1,
+     "explain": "Când performanța de cost observată este considerată reprezentativă pentru restul proiectului, formula recomandată este EAC = BAC / CPI, deoarece presupune că abaterile actuale de eficiență a costului (CPI ≈ 0,964) se vor menține până la finalizare. Aplicată: 500.000 / 0,964 ≈ 518.900 lei — proiectul este estimat să depășească bugetul inițial. Formula EAC = AC + (BAC − EV) se folosește când se presupune că viitoarele activități vor fi executate la rata bugetată, un scenariu diferit de cel descris.",
+     "concept_key": "evm_eac"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

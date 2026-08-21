@@ -1,0 +1,149 @@
+{
+ "lessonId": "cmjjuxwea00llumkpw5r18onf",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Contextul și Leadership (Cl. 4-5)",
+ "lesson": "Consultare și participare",
+ "category": "HSE_SAFETY",
+ "content": "# Consultare și participare\n\n## Consultare și participare: fundamentul unui SMSSM viu\n\nClauza **5.4 din ISO 45001:2018** cere organizației să stabilească, implementeze și mențină procese de **consultare și participare** a lucrătorilor la toate nivelurile și funcțiile relevante, inclusiv, acolo unde există, reprezentanții lucrătorilor.\n\nCele două noțiuni nu sunt sinonime, iar la audit confuzia dintre ele este una dintre cele mai frecvente neconformități:\n\n- **Informarea** este comunicare într-un singur sens: angajatorul transmite lucrătorilor decizii, reguli sau rezultate deja stabilite (afișe, e-mail, ședințe de raportare). Lucrătorul primește, nu influențează.\n- **Consultarea** presupune dialog bidirecțional: angajatorul cere opinia lucrătorilor **înainte** de a lua o decizie care îi afectează (ex. o modificare de proces, un echipament nou, o evaluare de risc) și demonstrează că a ținut cont de acel input, chiar dacă nu a adoptat integral propunerea.\n- **Participarea** este un pas mai departe: lucrătorii contribuie activ la construirea sistemului — identifică pericole, propun măsuri, investighează incidente, testează proceduri, fac parte din echipe de audit intern.\n\nUn SMSSM (Sistem de Management al Securității și Sănătății în Muncă) care se limitează la afișarea instrucțiunilor pe panou nu îndeplinește cerința 5.4, oricât de complete ar fi documentele. Auditorul va căuta dovezi concrete: procese-verbale de consultare, propuneri ale lucrătorilor înregistrate și tratate, rezultate ale evaluărilor de risc la care au contribuit lucrătorii direct expuși.\n\n## Comitetul de Securitate și Sănătate în Muncă (CSSM)\n\nÎn România, principalul mecanism instituțional de consultare este **Comitetul de Securitate și Sănătate în Muncă (CSSM)**, reglementat de Legea nr. 319/2006 și de Normele metodologice aprobate prin HG nr. 1425/2006.\n\n**Componență paritară**: CSSM include reprezentanți ai angajatorului (de regulă conducerea executivă și responsabilul cu SSM) și reprezentanți ai lucrătorilor cu răspunderi specifice în domeniul SSM, aleși de lucrători. Numărul membrilor variază proporțional cu numărul total de angajați, stabilit prin regulamentul intern al comitetului.\n\n**Atribuții principale**:\n- analizează planul de prevenire și protecție și propune completări;\n- urmărește realizarea măsurilor din planul anual de SSM;\n- analizează cauzele evenimentelor și accidentelor de muncă și propune măsuri de prevenire a repetării;\n- efectuează vizite la locurile de muncă înainte de a emite avize;\n- dezbate raportul anual al angajatorului privind situația SSM.\n\nÎn contextul ISO 45001, CSSM este \"organul\" formal prin care se documentează consultarea la nivel de organizație. Pentru certificare, nu este suficient ca acest comitet să existe pe hârtie — auditorul de certificare va cere minute de ședință, ordinea de zi, prezența membrilor lucrători și dovezi că propunerile lor au fost analizate și, unde e cazul, implementate.\n\n## Reprezentantul lucrătorilor și canale suplimentare de participare\n\nChiar și în unitățile unde CSSM nu este obligatoriu (sub pragul legal), Legea 319/2006 prevede posibilitatea alegerii unui **reprezentant al lucrătorilor cu răspunderi specifice în domeniul securității și sănătății în muncă**. Acesta este consultat de angajator asupra oricărei acțiuni care poate afecta securitatea și sănătatea lucrătorilor și are dreptul de a face propuneri.\n\nPentru un sistem ISO 45001 matur, comitetul formal trebuie completat cu **canale suplimentare de participare**, care cresc frecvența și granularitatea consultării:\n\n1. **Talk-uri SSM zilnice/săptămânale (\"toolbox talks\")** — discuții scurte la începutul schimbului, în care lucrătorii semnalează riscuri observate.\n2. **Registrul de propuneri/sesizări** — fizic sau digital, cu termen de răspuns asumat (ex. maximum 10 zile lucrătoare) și responsabil desemnat.\n3. **Participare la evaluarea riscurilor** — lucrătorii care execută efectiv sarcina sunt implicați direct în identificarea pericolelor specifice postului, nu doar responsabilul SSM din birou.\n4. **Investigarea incidentelor și aproape-accidentelor** — echipa de investigare include cel puțin un coleg din linia operațională, nu doar management.\n5. **Consultare la achiziția de echipamente și EIP** — testarea echipamentului individual de protecție (EIP) de către utilizatorii finali înainte de achiziția în masă.\n\nAceste canale trebuie documentate ca proceduri în manualul SMSSM, cu responsabili, frecvență și dovezi de înregistrare (procese-verbale, formulare de propunere, semnături), pentru a putea fi verificate la auditul intern și la cel de certificare.\n\n## Exemplu: Constituirea CSSM la o firmă de logistică cu 120 de angajați\n**Compania Transilvania Logistics SRL**, cu 120 de angajați repartizați între depozit (85), transport (25) și birouri administrative (10), depășește pragul legal de 50 de lucrători și trebuie să constituie CSSM.\n\n**Pași aplicați**:\n1. Directorul general emite decizia de constituire a CSSM, stabilind numărul de membri (6, câte 3 din partea angajatorului și 3 reprezentanți ai lucrătorilor).\n2. Reprezentanții lucrătorilor sunt aleși prin vot secret, la adunarea generală a lucrătorilor, câte unul pentru fiecare secție (depozit, transport, administrativ) — asigurând reprezentativitate pe toate ariile de risc.\n3. Se elaborează regulamentul intern de funcționare: CSSM se întrunește trimestrial și ori de câte ori este necesar (de exemplu, după un accident de muncă).\n4. La fiecare ședință se întocmește proces-verbal, cu ordinea de zi, propunerile discutate și termenele de rezolvare.\n5. Rezultatul unei ședințe: un lucrător din depozit a semnalat un risc de alunecare pe rampa de încărcare pe timp de ploaie. CSSM a propus montarea unei benzi antiderapante și instalarea unui copertine; măsura a fost inclusă în planul anual de prevenire cu termen 45 de zile și buget alocat de 8.500 lei.\n\nAceastă urmă documentară (decizie, proces-verbal, plan de acțiune, dovadă de implementare) este exact ce va verifica auditorul de certificare ISO 45001 pentru clauza 5.4.\n\n## Exemplu: Consultarea lucrătorilor în evaluarea de risc la o linie de asamblare\n**Compania MetalPro Industrial SRL** actualizează evaluarea de risc pentru linia de asamblare componente metalice, după introducerea unui nou echipament de sudură.\n\n**Abordare fără consultare reală (greșită)**: responsabilul SSM completează singur fișa de evaluare pe baza fișei tehnice a echipamentului și o afișează la panou. Lucrătorii semnează \"luare la cunoștință\".\n\n**Abordare conformă cu 5.4 (corectă)**:\n1. Responsabilul SSM organizează o sesiune de 30 de minute cu cei 6 operatori care vor folosi echipamentul, înainte de finalizarea evaluării.\n2. Operatorii semnalează două pericole neluate în calcul de fișa tehnică: radiația luminoasă intensă la unghiul de lucru specific stației 3 și acumularea de fum de sudură în zona fără ventilație suplimentară.\n3. Evaluarea de risc este revizuită: se adaugă măsura de protecție cu ecrane de sudură suplimentare (cost 1.200 lei) și se solicită o evaluare a sistemului de ventilație de la un furnizor autorizat.\n4. Rezultatul consultării (pericolele identificate de operatori, măsurile adoptate) este consemnat explicit în formularul de evaluare a riscurilor, cu numele participanților și data.\n\nDiferența dintre cele două abordări nu este birocratică — al doilea proces produce o evaluare de risc reală, bazată pe cunoașterea practică a postului, în timp ce primul produce doar un document formal, vulnerabil la neconformitate în audit.\n\n> Temei legal: Legea nr. 319/2006 privind securitatea și sănătatea în muncă art. 18 (în vigoare de la 2006-10-01)\nArt. 18 din Legea nr. 319/2006 obligă fiecare angajator cu **cel puțin 50 de lucrători** să constituie un Comitet de Securitate și Sănătate în Muncă (CSSM), cu scopul de a asigura implicarea acestora în elaborarea și aplicarea deciziilor din domeniul SSM. La unitățile cu mai puțin de 50 de lucrători, inspectorul de muncă poate solicita constituirea comitetului atunci când condițiile de muncă sunt considerate deosebite (grele, periculoase). Normele metodologice de aplicare, aprobate prin HG nr. 1425/2006, detaliază componența paritară, modul de alegere a reprezentanților lucrătorilor și obligația comitetului de a se întruni **cel puțin o dată pe trimestru** și ori de câte ori este necesar. ⚠ Verifică la data implementării eventualele modificări ulterioare ale Legii 319/2006 sau ale HG 1425/2006, publicate în Monitorul Oficial.\n\n⚠ **Capcana consultării formale.** Cea mai frecventă neconformitate constatată de auditori la clauza 5.4 nu este lipsa unui comitet SSM, ci existența unuia \"de fațadă\": procese-verbale generice, semnate fără discuții reale, fără propuneri ale lucrătorilor și fără termene de rezolvare urmărite. O simplă semnătură de \"luare la cunoștință\" pe un document deja finalizat **nu este consultare** — este informare. Pentru a trece un audit de certificare, trebuie să poți demonstra, cu dovezi scrise (propuneri, minute detaliate, acțiuni corective urmărite), că opinia lucrătorilor a fost cerută **înainte** de decizie și că a avut un impact vizibil asupra deciziei finale, chiar dacă nu a fost adoptată integral.\n\n## Exercițiu\n**Situație**: Ești responsabil SSM la o firmă de construcții cu 80 de angajați, activi pe 3 șantiere diferite simultan, plus un birou administrativ. Firma vrea să treacă la certificarea ISO 45001 și trebuie să proiecteze mecanismul de consultare și participare conform clauzei 5.4.\n\n**Cerință**: Propune un mecanism complet (structuri, canale, frecvență) care să acopere atât obligația legală, cât și cerințele ISO 45001, ținând cont că lucrătorii sunt dispersați geografic.\n\n**Soluție:** **Soluție propusă**:\n\n1. **CSSM obligatoriu** (peste pragul de 50 de lucrători, conform Legii 319/2006 art. 18): se constituie comitetul central, cu reprezentanți ai angajatorului și câte un reprezentant al lucrătorilor ales de pe fiecare din cele 3 șantiere plus unul din administrativ (4 reprezentanți lucrători + membri din conducere). Întrunire trimestrială obligatorie, plus ședințe extraordinare după orice accident sau eveniment periculos.\n\n2. **Toolbox talk zilnic pe fiecare șantier** — 10 minute la începutul programului, condus de șeful de echipă, cu proces-verbal simplificat (pericole zilei, măsuri, prezență). Rezolvă limitarea geografică prin descentralizare.\n\n3. **Registru de propuneri SSM digital** (aplicație sau formular online accesibil de pe telefon), cu termen de răspuns de maximum 10 zile lucrătoare și responsabil desemnat pe fiecare șantier pentru triaj.\n\n4. **Participare obligatorie a lucrătorilor direct implicați** la orice evaluare de risc nouă sau revizuită pe șantierul respectiv, consemnată nominal în formularul de evaluare.\n\n5. **Echipă mixtă de investigare a incidentelor**, incluzând întotdeauna cel puțin un coleg din linia operațională a șantierului unde s-a produs evenimentul.\n\n6. **Raport trimestrial de sinteză** transmis de CSSM central către toate șantierele, cu propunerile primite, stadiul rezolvării și deciziile luate — închide bucla de feedback către lucrători, element esențial cerut de ISO 45001 pentru a dovedi că input-ul lor a fost considerat.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "consultare-vs-participare-ssm",
+    "md": "## Consultare și participare: fundamentul unui SMSSM viu\n\nClauza **5.4 din ISO 45001:2018** cere organizației să stabilească, implementeze și mențină procese de **consultare și participare** a lucrătorilor la toate nivelurile și funcțiile relevante, inclusiv, acolo unde există, reprezentanții lucrătorilor.\n\nCele două noțiuni nu sunt sinonime, iar la audit confuzia dintre ele este una dintre cele mai frecvente neconformități:\n\n- **Informarea** este comunicare într-un singur sens: angajatorul transmite lucrătorilor decizii, reguli sau rezultate deja stabilite (afișe, e-mail, ședințe de raportare). Lucrătorul primește, nu influențează.\n- **Consultarea** presupune dialog bidirecțional: angajatorul cere opinia lucrătorilor **înainte** de a lua o decizie care îi afectează (ex. o modificare de proces, un echipament nou, o evaluare de risc) și demonstrează că a ținut cont de acel input, chiar dacă nu a adoptat integral propunerea.\n- **Participarea** este un pas mai departe: lucrătorii contribuie activ la construirea sistemului — identifică pericole, propun măsuri, investighează incidente, testează proceduri, fac parte din echipe de audit intern.\n\nUn SMSSM (Sistem de Management al Securității și Sănătății în Muncă) care se limitează la afișarea instrucțiunilor pe panou nu îndeplinește cerința 5.4, oricât de complete ar fi documentele. Auditorul va căuta dovezi concrete: procese-verbale de consultare, propuneri ale lucrătorilor înregistrate și tratate, rezultate ale evaluărilor de risc la care au contribuit lucrătorii direct expuși.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "comitet-ssm-rol-componenta",
+    "md": "## Comitetul de Securitate și Sănătate în Muncă (CSSM)\n\nÎn România, principalul mecanism instituțional de consultare este **Comitetul de Securitate și Sănătate în Muncă (CSSM)**, reglementat de Legea nr. 319/2006 și de Normele metodologice aprobate prin HG nr. 1425/2006.\n\n**Componență paritară**: CSSM include reprezentanți ai angajatorului (de regulă conducerea executivă și responsabilul cu SSM) și reprezentanți ai lucrătorilor cu răspunderi specifice în domeniul SSM, aleși de lucrători. Numărul membrilor variază proporțional cu numărul total de angajați, stabilit prin regulamentul intern al comitetului.\n\n**Atribuții principale**:\n- analizează planul de prevenire și protecție și propune completări;\n- urmărește realizarea măsurilor din planul anual de SSM;\n- analizează cauzele evenimentelor și accidentelor de muncă și propune măsuri de prevenire a repetării;\n- efectuează vizite la locurile de muncă înainte de a emite avize;\n- dezbate raportul anual al angajatorului privind situația SSM.\n\nÎn contextul ISO 45001, CSSM este \"organul\" formal prin care se documentează consultarea la nivel de organizație. Pentru certificare, nu este suficient ca acest comitet să existe pe hârtie — auditorul de certificare va cere minute de ședință, ordinea de zi, prezența membrilor lucrători și dovezi că propunerile lor au fost analizate și, unde e cazul, implementate.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "reprezentant-lucratori-ssm",
+    "md": "## Reprezentantul lucrătorilor și canale suplimentare de participare\n\nChiar și în unitățile unde CSSM nu este obligatoriu (sub pragul legal), Legea 319/2006 prevede posibilitatea alegerii unui **reprezentant al lucrătorilor cu răspunderi specifice în domeniul securității și sănătății în muncă**. Acesta este consultat de angajator asupra oricărei acțiuni care poate afecta securitatea și sănătatea lucrătorilor și are dreptul de a face propuneri.\n\nPentru un sistem ISO 45001 matur, comitetul formal trebuie completat cu **canale suplimentare de participare**, care cresc frecvența și granularitatea consultării:\n\n1. **Talk-uri SSM zilnice/săptămânale (\"toolbox talks\")** — discuții scurte la începutul schimbului, în care lucrătorii semnalează riscuri observate.\n2. **Registrul de propuneri/sesizări** — fizic sau digital, cu termen de răspuns asumat (ex. maximum 10 zile lucrătoare) și responsabil desemnat.\n3. **Participare la evaluarea riscurilor** — lucrătorii care execută efectiv sarcina sunt implicați direct în identificarea pericolelor specifice postului, nu doar responsabilul SSM din birou.\n4. **Investigarea incidentelor și aproape-accidentelor** — echipa de investigare include cel puțin un coleg din linia operațională, nu doar management.\n5. **Consultare la achiziția de echipamente și EIP** — testarea echipamentului individual de protecție (EIP) de către utilizatorii finali înainte de achiziția în masă.\n\nAceste canale trebuie documentate ca proceduri în manualul SMSSM, cu responsabili, frecvență și dovezi de înregistrare (procese-verbale, formulare de propunere, semnături), pentru a putea fi verificate la auditul intern și la cel de certificare.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b3"
+   },
+   {
+    "type": "example",
+    "title": "Constituirea CSSM la o firmă de logistică cu 120 de angajați",
+    "concept_key": "comitet-ssm-rol-componenta",
+    "md": "**Compania Transilvania Logistics SRL**, cu 120 de angajați repartizați între depozit (85), transport (25) și birouri administrative (10), depășește pragul legal de 50 de lucrători și trebuie să constituie CSSM.\n\n**Pași aplicați**:\n1. Directorul general emite decizia de constituire a CSSM, stabilind numărul de membri (6, câte 3 din partea angajatorului și 3 reprezentanți ai lucrătorilor).\n2. Reprezentanții lucrătorilor sunt aleși prin vot secret, la adunarea generală a lucrătorilor, câte unul pentru fiecare secție (depozit, transport, administrativ) — asigurând reprezentativitate pe toate ariile de risc.\n3. Se elaborează regulamentul intern de funcționare: CSSM se întrunește trimestrial și ori de câte ori este necesar (de exemplu, după un accident de muncă).\n4. La fiecare ședință se întocmește proces-verbal, cu ordinea de zi, propunerile discutate și termenele de rezolvare.\n5. Rezultatul unei ședințe: un lucrător din depozit a semnalat un risc de alunecare pe rampa de încărcare pe timp de ploaie. CSSM a propus montarea unei benzi antiderapante și instalarea unui copertine; măsura a fost inclusă în planul anual de prevenire cu termen 45 de zile și buget alocat de 8.500 lei.\n\nAceastă urmă documentară (decizie, proces-verbal, plan de acțiune, dovadă de implementare) este exact ce va verifica auditorul de certificare ISO 45001 pentru clauza 5.4.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b4"
+   },
+   {
+    "type": "example",
+    "title": "Consultarea lucrătorilor în evaluarea de risc la o linie de asamblare",
+    "concept_key": "consultare-vs-participare-ssm",
+    "md": "**Compania MetalPro Industrial SRL** actualizează evaluarea de risc pentru linia de asamblare componente metalice, după introducerea unui nou echipament de sudură.\n\n**Abordare fără consultare reală (greșită)**: responsabilul SSM completează singur fișa de evaluare pe baza fișei tehnice a echipamentului și o afișează la panou. Lucrătorii semnează \"luare la cunoștință\".\n\n**Abordare conformă cu 5.4 (corectă)**:\n1. Responsabilul SSM organizează o sesiune de 30 de minute cu cei 6 operatori care vor folosi echipamentul, înainte de finalizarea evaluării.\n2. Operatorii semnalează două pericole neluate în calcul de fișa tehnică: radiația luminoasă intensă la unghiul de lucru specific stației 3 și acumularea de fum de sudură în zona fără ventilație suplimentară.\n3. Evaluarea de risc este revizuită: se adaugă măsura de protecție cu ecrane de sudură suplimentare (cost 1.200 lei) și se solicită o evaluare a sistemului de ventilație de la un furnizor autorizat.\n4. Rezultatul consultării (pericolele identificate de operatori, măsurile adoptate) este consemnat explicit în formularul de evaluare a riscurilor, cu numele participanților și data.\n\nDiferența dintre cele două abordări nu este birocratică — al doilea proces produce o evaluare de risc reală, bazată pe cunoașterea practică a postului, în timp ce primul produce doar un document formal, vulnerabil la neconformitate în audit.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 privind securitatea și sănătatea în muncă",
+    "article": "art. 18",
+    "effective": "2006-10-01",
+    "md": "Art. 18 din Legea nr. 319/2006 obligă fiecare angajator cu **cel puțin 50 de lucrători** să constituie un Comitet de Securitate și Sănătate în Muncă (CSSM), cu scopul de a asigura implicarea acestora în elaborarea și aplicarea deciziilor din domeniul SSM. La unitățile cu mai puțin de 50 de lucrători, inspectorul de muncă poate solicita constituirea comitetului atunci când condițiile de muncă sunt considerate deosebite (grele, periculoase). Normele metodologice de aplicare, aprobate prin HG nr. 1425/2006, detaliază componența paritară, modul de alegere a reprezentanților lucrătorilor și obligația comitetului de a se întruni **cel puțin o dată pe trimestru** și ori de câte ori este necesar. ⚠ Verifică la data implementării eventualele modificări ulterioare ale Legii 319/2006 sau ale HG 1425/2006, publicate în Monitorul Oficial.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Capcana consultării formale.** Cea mai frecventă neconformitate constatată de auditori la clauza 5.4 nu este lipsa unui comitet SSM, ci existența unuia \"de fațadă\": procese-verbale generice, semnate fără discuții reale, fără propuneri ale lucrătorilor și fără termene de rezolvare urmărite. O simplă semnătură de \"luare la cunoștință\" pe un document deja finalizat **nu este consultare** — este informare. Pentru a trece un audit de certificare, trebuie să poți demonstra, cu dovezi scrise (propuneri, minute detaliate, acțiuni corective urmărite), că opinia lucrătorilor a fost cerută **înainte** de decizie și că a avut un impact vizibil asupra deciziei finale, chiar dacă nu a fost adoptată integral.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Situație**: Ești responsabil SSM la o firmă de construcții cu 80 de angajați, activi pe 3 șantiere diferite simultan, plus un birou administrativ. Firma vrea să treacă la certificarea ISO 45001 și trebuie să proiecteze mecanismul de consultare și participare conform clauzei 5.4.\n\n**Cerință**: Propune un mecanism complet (structuri, canale, frecvență) care să acopere atât obligația legală, cât și cerințele ISO 45001, ținând cont că lucrătorii sunt dispersați geografic.",
+    "solution_md": "**Soluție propusă**:\n\n1. **CSSM obligatoriu** (peste pragul de 50 de lucrători, conform Legii 319/2006 art. 18): se constituie comitetul central, cu reprezentanți ai angajatorului și câte un reprezentant al lucrătorilor ales de pe fiecare din cele 3 șantiere plus unul din administrativ (4 reprezentanți lucrători + membri din conducere). Întrunire trimestrială obligatorie, plus ședințe extraordinare după orice accident sau eveniment periculos.\n\n2. **Toolbox talk zilnic pe fiecare șantier** — 10 minute la începutul programului, condus de șeful de echipă, cu proces-verbal simplificat (pericole zilei, măsuri, prezență). Rezolvă limitarea geografică prin descentralizare.\n\n3. **Registru de propuneri SSM digital** (aplicație sau formular online accesibil de pe telefon), cu termen de răspuns de maximum 10 zile lucrătoare și responsabil desemnat pe fiecare șantier pentru triaj.\n\n4. **Participare obligatorie a lucrătorilor direct implicați** la orice evaluare de risc nouă sau revizuită pe șantierul respectiv, consemnată nominal în formularul de evaluare.\n\n5. **Echipă mixtă de investigare a incidentelor**, incluzând întotdeauna cel puțin un coleg din linia operațională a șantierului unde s-a produs evenimentul.\n\n6. **Raport trimestrial de sinteză** transmis de CSSM central către toate șantierele, cu propunerile primite, stadiul rezolvării și deciziile luate — închide bucla de feedback către lucrători, element esențial cerut de ISO 45001 pentru a dovedi că input-ul lor a fost considerat.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este pragul minim de lucrători de la care constituirea Comitetului de Securitate și Sănătate în Muncă (CSSM) devine obligatorie conform Legii nr. 319/2006?",
+    "choices": [
+     "20 de lucrători",
+     "50 de lucrători",
+     "100 de lucrători",
+     "Nu există prag, este întotdeauna obligatoriu"
+    ],
+    "answer": 1,
+    "explain": "Art. 18 din Legea 319/2006 stabilește pragul de minimum 50 de lucrători pentru constituirea obligatorie a CSSM. Sub acest prag, inspectorul de muncă poate solicita totuși constituirea lui dacă activitatea prezintă riscuri deosebite.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce diferențiază fundamental \"consultarea\" de \"informarea\" lucrătorilor, conform clauzei 5.4 din ISO 45001?",
+    "choices": [
+     "Consultarea se face doar în scris, informarea doar verbal",
+     "Consultarea presupune obținerea opiniei lucrătorilor înainte de decizie și considerarea acesteia, informarea este comunicare într-un singur sens",
+     "Nu există nicio diferență practică, termenii sunt interschimbabili",
+     "Informarea este obligatorie prin lege, consultarea este opțională"
+    ],
+    "answer": 1,
+    "explain": "Informarea transmite decizii deja luate; consultarea cere opinia lucrătorilor înainte de decizie și trebuie să demonstreze că acel input a fost analizat, chiar dacă nu adoptat integral — element verificat explicit la auditul de certificare.",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce prag de lucrători devine obligatorie constituirea CSSM conform Legii 319/2006?",
+    "back": "La minimum 50 de lucrători (art. 18, Legea nr. 319/2006).",
+    "concept_key": "comitet-ssm-rol-componenta",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce clauză din ISO 45001:2018 reglementează consultarea și participarea lucrătorilor?",
+    "back": "Clauza 5.4 — Consultation and participation of workers.",
+    "concept_key": "consultare-vs-participare-ssm",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cu ce frecvență minimă trebuie să se întrunească CSSM conform HG 1425/2006?",
+    "back": "Cel puțin o dată pe trimestru, plus ori de câte ori este necesar (de ex. după un accident de muncă).",
+    "concept_key": "comitet-ssm-rol-componenta",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența cheie dintre informare și consultare în SSM?",
+    "back": "Informarea e comunicare unidirecțională (decizie deja luată); consultarea presupune dialog bidirecțional, cu obținerea opiniei lucrătorilor înainte de decizie și dovada că a fost luată în considerare.",
+    "concept_key": "consultare-vs-participare-ssm",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum este structurată componența Comitetului de Securitate și Sănătate în Muncă (CSSM)?",
+    "back": "Paritar: reprezentanți ai angajatorului și reprezentanți ai lucrătorilor, aceștia din urmă aleși de lucrători.",
+    "concept_key": "comitet-ssm-rol-componenta",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce poate face inspectorul de muncă la o firmă cu sub 50 de lucrători, în privința CSSM?",
+    "back": "Poate solicita constituirea CSSM dacă activitatea prezintă condiții de muncă deosebite (grele sau periculoase).",
+    "concept_key": "comitet-ssm-rol-componenta",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce mecanism SSM poate exista chiar și sub pragul legal de 50 de lucrători, conform Legii 319/2006?",
+    "back": "Reprezentantul lucrătorilor cu răspunderi specifice în domeniul securității și sănătății în muncă, ales de lucrători.",
+    "concept_key": "reprezentant-lucratori-ssm",
+    "blockId": "cmjjuxwea00llumkpw5r18onf-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1552,
+   "flashcards": 7
+  }
+ }
+}

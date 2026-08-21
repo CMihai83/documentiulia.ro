@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvv7006zumkpmqr2qw0v",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Events",
+ "lesson": "Sprint - Containerul",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Sprint - Containerul\n\n## Sprintul: evenimentul care conține toate celelalte evenimente\n\nÎn Scrum, **Sprintul** este inima cadrului de lucru — un interval de timp fix (time-box) de maximum o lună calendaristică, în practică între 1 și 4 săptămâni, în care Echipa Scrum transformă elemente din Product Backlog într-un Increment „Done\", potențial livrabil.\n\nSprintul este numit adesea „eveniment-container\" pentru că **toate celelalte evenimente Scrum se desfășoară în interiorul lui**: Sprint Planning la început, Daily Scrum în fiecare zi, Sprint Review și Sprint Retrospective la final. Nu există activitate Scrum în afara unui Sprint activ — chiar și rafinarea Product Backlogului (Backlog Refinement) are loc, de regulă, tot în interiorul Sprintului curent, ca pregătire pentru cele viitoare.\n\nCaracteristici esențiale ale Sprintului:\n- **Durată fixă și consecventă**: odată stabilită (de exemplu 2 săptămâni), durata rămâne constantă de la un Sprint la altul, pentru a crea un ritm previzibil (cadență) de livrare.\n- **Fără întreruperi**: un nou Sprint începe imediat ce se încheie cel anterior — nu există pauze între Sprinturi.\n- **Durata NU se prelungește**: dacă obiectivele nu sunt atinse, Sprintul nu se extinde. Munca neterminată se reîntoarce în Product Backlog și poate fi reprioritizată.\n- Sprinturi mai scurte (1-2 săptămâni) reduc riscul și oferă feedback mai rapid; Sprinturi mai lungi (3-4 săptămâni) pot fi potrivite pentru echipe la început de drum sau proiecte cu complexitate ridicată, dar niciodată nu depășesc o lună.\n\n## Sprint Goal: busola Sprintului\n\n**Sprint Goal-ul** este obiectivul unic, coerent, formulat de Echipa de Dezvoltare împreună cu Product Ownerul în timpul Sprint Planning. El răspunde la întrebarea „De ce merită acest Sprint pentru părțile interesate?\" și oferă coerență și scop elementelor selectate din Product Backlog.\n\nSpre deosebire de o simplă listă de user story-uri, Sprint Goal-ul este un angajament pe care Echipa de Dezvoltare îl face pentru **rezultat**, nu pentru scop fix (fixed scope). Asta înseamnă că echipa are flexibilitate în privința modului exact în care implementează elementele din Sprint Backlog, atât timp cât Sprint Goal-ul este atins.\n\nExemplu de Sprint Goal bine formulat: „La finalul acestui Sprint, utilizatorii pot genera și exporta factura fiscală direct din modulul de vânzări, fără intervenție manuală în contabilitate.\" Acesta este specific, testabil și orientat spre valoare — nu doar o listă tehnică de task-uri.\n\n## Ce se poate schimba în timpul Sprintului — și ce nu\n\nUn Sprint nu este o „cutie neagră\" rigidă. Pe măsură ce echipa lucrează, apar informații noi, iar Scrum Guide permite o formă de flexibilitate controlată:\n\n- **Scopul (domeniul de lucru) poate fi clarificat și renegociat** între Product Owner și Echipa de Dezvoltare, pe măsură ce se află mai multe despre munca respectivă. Dacă un element din Sprint Backlog se dovedește mai complex decât s-a estimat, echipa și PO pot decide împreună să ajusteze ce anume este inclus.\n- **Sprint Goal-ul NU se schimbă și nu este compromis.** Orice renegociere de scop trebuie să păstreze intact obiectivul Sprintului. Dacă munca arată diferit față de ce s-a planificat inițial, echipa adaptează *modul* în care atinge Sprint Goal-ul, nu abandonează obiectivul.\n- **Calitatea nu scade niciodată** pentru a compensa presiunea de timp sau scopul suplimentar. Standardele de „Done\" rămân constante.\n- Elemente noi pot fi adăugate în Sprint Backlog doar dacă nu pun în pericol Sprint Goal-ul; altfel, sunt amânate pentru Sprintul următor.\n\nAceastă flexibilitate este ceea ce diferențiază Scrum de un contract cu scop fix: echipa răspunde pentru un rezultat de valoare, nu pentru bifarea mecanică a unei liste.\n\n## Anularea Sprintului\n\nDeși rar întâlnită în practică, anularea unui Sprint este un mecanism prevăzut explicit de Scrum Guide, pentru situații excepționale.\n\n- **Doar Product Ownerul are autoritatea de a anula un Sprint.** Nicio altă persoană — nici Scrum Master, nici Echipa de Dezvoltare, nici un manager extern — nu poate lua această decizie unilateral.\n- Un Sprint este anulat atunci când **Sprint Goal-ul devine obsolet** — de exemplu, o schimbare majoră de strategie organizațională, o modificare de tehnologie, de piață sau de condiții de business face ca obiectivul stabilit să nu mai aibă sens să fie urmărit.\n- Product Ownerul poate fi influențat de Echipa Scrum, de conducerea organizației sau de client, dar decizia finală îi aparține exclusiv.\n- La anulare, **elementele „Done\" din Sprint Backlog sunt evaluate**; dacă alcătuiesc un Increment potențial livrabil, Product Ownerul le acceptă de regulă. Elementele neterminate sunt re-estimate și reîntoarse în Product Backlog.\n- Anularea unui Sprint consumă resurse (Sprint Planning refăcut, reorientare echipă), motiv pentru care este considerată o măsură rară și costisitoare — folosită doar atunci când continuarea Sprintului ar fi o pierdere mai mare decât oprirea lui.\n\n## Exemplu: Sprint de 2 săptămâni la implementarea unui ERP\nLa firma FiscalNet SRL, o companie de servicii contabile din Cluj-Napoca, echipa de digitalizare implementează un modul de facturare electronică într-un sistem ERP.\n\n**Sprint #7**, cu durata de 2 săptămâni (10-21 august 2026), are Sprint Goal-ul: „Contabilii pot valida și transmite facturi către SPV (Sistemul Privat Virtual ANAF) direct din ERP, fără export manual în Excel.\"\n\nLa Sprint Planning, echipa selectează 8 elemente din Product Backlog, însumând 34 de story points, estimate ca fiind suficiente pentru a atinge obiectivul. În a 4-a zi a Sprintului, Daily Scrum scoate la iveală o complicație: API-ul ANAF impune validare suplimentară de schemă XML, netratată în estimarea inițială.\n\nEchipa de Dezvoltare discută cu Product Ownerul: elementul „generare rapoarte statistice de facturare\" (5 story points, prioritate mai mică) este scos din Sprint Backlog pentru a face loc timpului necesar validării XML. **Scopul se renegociază, dar Sprint Goal-ul rămâne neschimbat** — la finalul Sprintului, contabilii pot într-adevăr valida și transmite facturi către SPV direct din ERP. Raportul statistic amânat este reintrodus în Product Backlog pentru Sprintul următor.\n\n## Exemplu: Anularea unui Sprint după schimbare de strategie\nO companie de retail online din București derulează Sprintul #12 (2 săptămâni), cu Sprint Goal: „Clienții pot plăti cu voucher de fidelitate direct în coșul de cumpărături.\"\n\nÎn a 3-a zi a Sprintului, conducerea anunță achiziția unei platforme de e-commerce concurente, decizie care schimbă radical arhitectura tehnică plănuită — sistemul de vouchere urmează să fie înlocuit complet cu cel al platformei achiziționate, în următoarele 3 luni.\n\nProduct Ownerul evaluează situația: a continua Sprintul ar însemna să livreze o funcționalitate care va fi înlocuită curând, deci fără valoare reală pentru client. **Product Ownerul decide anularea Sprintului #12.** Cele 2 elemente deja finalizate și „Done\" (ecranul UI pentru introducerea codului de voucher) sunt evaluate ca Increment parțial și păstrate ca bază de lucru. Restul elementelor neterminate se întorc în Product Backlog. Echipa organizează un nou Sprint Planning pentru a redefini prioritățile în lumina noii direcții strategice.\n\n⚠ Greșeli frecvente legate de Sprint: (1) **Prelungirea Sprintului** când echipa nu termină la timp — contravine principiului time-box-ului fix și distruge cadența previzibilă. (2) **Confundarea Sprint Backlog-ului cu Sprint Goal-ul** — a schimba lista de task-uri nu înseamnă automat că obiectivul e compromis, dar orice modificare trebuie verificată în raport cu Sprint Goal-ul. (3) **Anularea Sprintului decisă de Scrum Master sau de un manager extern** — la examenul PSM I, rețineți clar: doar Product Ownerul are această autoritate.\n\n## Exercițiu\nEchipa Scrum de la o companie de logistică din Timișoara lucrează la Sprintul #5 (3 săptămâni), cu Sprint Goal: „Dispecerii pot aloca automat curse către șoferi disponibili, pe baza distanței și a orelor de lucru rămase.\"\n\nÎn ziua 6 din 15, Daily Scrum arată că algoritmul de alocare automată necesită integrare cu un API extern de trafic, nedescoperit la Planning. Echipa estimează încă 4 zile de lucru suplimentar pentru integrare, dar Sprint Goal-ul rămâne fezabil dacă se renunță la elementul secundar „export PDF al curselor alocate\" (prioritate scăzută, 3 story points).\n\nÎntrebări:\n1. Poate echipa să scoată elementul „export PDF\" din Sprint Backlog? Cine decide?\n2. Este nevoie de anularea Sprintului în acest caz? De ce da/nu?\n3. Ce s-ar întâmpla dacă, în schimb, clientul cere o funcționalitate complet nouă, fără legătură cu alocarea automată a curselor, care ar necesita înlocuirea Sprint Goal-ului?\n\n**Soluție:** 1. Da. Scopul (Sprint Backlog) poate fi renegociat între Echipa de Dezvoltare și Product Owner pe măsură ce apar informații noi, atât timp cât Sprint Goal-ul nu este pus în pericol. Decizia se ia împreună, nu unilateral de către echipă.\n2. Nu este nevoie de anulare. Sprint Goal-ul („alocare automată a curselor\") rămâne fezabil și neschimbat — doar scopul secundar se ajustează. Anularea este rezervată situațiilor în care obiectivul însuși devine obsolet sau imposibil de atins, nu pentru ajustări normale de scop.\n3. Dacă noua cerință a clientului nu are legătură cu Sprint Goal-ul curent și ar necesita înlocuirea lui, cererea NU se introduce în Sprintul activ. Corect este ca Product Ownerul să o adauge în Product Backlog, prioritizată pentru un Sprint viitor. Doar dacă obiectivul curent devine complet lipsit de valoare (obsolet), Product Ownerul ar putea evalua anularea Sprintului — dar o simplă cerere nouă, oricât de urgentă, nu justifică automat anularea.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "sprint-eveniment-container",
+    "md": "## Sprintul: evenimentul care conține toate celelalte evenimente\n\nÎn Scrum, **Sprintul** este inima cadrului de lucru — un interval de timp fix (time-box) de maximum o lună calendaristică, în practică între 1 și 4 săptămâni, în care Echipa Scrum transformă elemente din Product Backlog într-un Increment „Done\", potențial livrabil.\n\nSprintul este numit adesea „eveniment-container\" pentru că **toate celelalte evenimente Scrum se desfășoară în interiorul lui**: Sprint Planning la început, Daily Scrum în fiecare zi, Sprint Review și Sprint Retrospective la final. Nu există activitate Scrum în afara unui Sprint activ — chiar și rafinarea Product Backlogului (Backlog Refinement) are loc, de regulă, tot în interiorul Sprintului curent, ca pregătire pentru cele viitoare.\n\nCaracteristici esențiale ale Sprintului:\n- **Durată fixă și consecventă**: odată stabilită (de exemplu 2 săptămâni), durata rămâne constantă de la un Sprint la altul, pentru a crea un ritm previzibil (cadență) de livrare.\n- **Fără întreruperi**: un nou Sprint începe imediat ce se încheie cel anterior — nu există pauze între Sprinturi.\n- **Durata NU se prelungește**: dacă obiectivele nu sunt atinse, Sprintul nu se extinde. Munca neterminată se reîntoarce în Product Backlog și poate fi reprioritizată.\n- Sprinturi mai scurte (1-2 săptămâni) reduc riscul și oferă feedback mai rapid; Sprinturi mai lungi (3-4 săptămâni) pot fi potrivite pentru echipe la început de drum sau proiecte cu complexitate ridicată, dar niciodată nu depășesc o lună.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sprint-goal-definitie",
+    "md": "## Sprint Goal: busola Sprintului\n\n**Sprint Goal-ul** este obiectivul unic, coerent, formulat de Echipa de Dezvoltare împreună cu Product Ownerul în timpul Sprint Planning. El răspunde la întrebarea „De ce merită acest Sprint pentru părțile interesate?\" și oferă coerență și scop elementelor selectate din Product Backlog.\n\nSpre deosebire de o simplă listă de user story-uri, Sprint Goal-ul este un angajament pe care Echipa de Dezvoltare îl face pentru **rezultat**, nu pentru scop fix (fixed scope). Asta înseamnă că echipa are flexibilitate în privința modului exact în care implementează elementele din Sprint Backlog, atât timp cât Sprint Goal-ul este atins.\n\nExemplu de Sprint Goal bine formulat: „La finalul acestui Sprint, utilizatorii pot genera și exporta factura fiscală direct din modulul de vânzări, fără intervenție manuală în contabilitate.\" Acesta este specific, testabil și orientat spre valoare — nu doar o listă tehnică de task-uri.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sprint-flexibilitate-scop-vs-obiectiv",
+    "md": "## Ce se poate schimba în timpul Sprintului — și ce nu\n\nUn Sprint nu este o „cutie neagră\" rigidă. Pe măsură ce echipa lucrează, apar informații noi, iar Scrum Guide permite o formă de flexibilitate controlată:\n\n- **Scopul (domeniul de lucru) poate fi clarificat și renegociat** între Product Owner și Echipa de Dezvoltare, pe măsură ce se află mai multe despre munca respectivă. Dacă un element din Sprint Backlog se dovedește mai complex decât s-a estimat, echipa și PO pot decide împreună să ajusteze ce anume este inclus.\n- **Sprint Goal-ul NU se schimbă și nu este compromis.** Orice renegociere de scop trebuie să păstreze intact obiectivul Sprintului. Dacă munca arată diferit față de ce s-a planificat inițial, echipa adaptează *modul* în care atinge Sprint Goal-ul, nu abandonează obiectivul.\n- **Calitatea nu scade niciodată** pentru a compensa presiunea de timp sau scopul suplimentar. Standardele de „Done\" rămân constante.\n- Elemente noi pot fi adăugate în Sprint Backlog doar dacă nu pun în pericol Sprint Goal-ul; altfel, sunt amânate pentru Sprintul următor.\n\nAceastă flexibilitate este ceea ce diferențiază Scrum de un contract cu scop fix: echipa răspunde pentru un rezultat de valoare, nu pentru bifarea mecanică a unei liste.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "anulare-sprint",
+    "md": "## Anularea Sprintului\n\nDeși rar întâlnită în practică, anularea unui Sprint este un mecanism prevăzut explicit de Scrum Guide, pentru situații excepționale.\n\n- **Doar Product Ownerul are autoritatea de a anula un Sprint.** Nicio altă persoană — nici Scrum Master, nici Echipa de Dezvoltare, nici un manager extern — nu poate lua această decizie unilateral.\n- Un Sprint este anulat atunci când **Sprint Goal-ul devine obsolet** — de exemplu, o schimbare majoră de strategie organizațională, o modificare de tehnologie, de piață sau de condiții de business face ca obiectivul stabilit să nu mai aibă sens să fie urmărit.\n- Product Ownerul poate fi influențat de Echipa Scrum, de conducerea organizației sau de client, dar decizia finală îi aparține exclusiv.\n- La anulare, **elementele „Done\" din Sprint Backlog sunt evaluate**; dacă alcătuiesc un Increment potențial livrabil, Product Ownerul le acceptă de regulă. Elementele neterminate sunt re-estimate și reîntoarse în Product Backlog.\n- Anularea unui Sprint consumă resurse (Sprint Planning refăcut, reorientare echipă), motiv pentru care este considerată o măsură rară și costisitoare — folosită doar atunci când continuarea Sprintului ar fi o pierdere mai mare decât oprirea lui.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b4"
+   },
+   {
+    "type": "example",
+    "title": "Sprint de 2 săptămâni la implementarea unui ERP",
+    "concept_key": "sprint-exemplu-erp",
+    "md": "La firma FiscalNet SRL, o companie de servicii contabile din Cluj-Napoca, echipa de digitalizare implementează un modul de facturare electronică într-un sistem ERP.\n\n**Sprint #7**, cu durata de 2 săptămâni (10-21 august 2026), are Sprint Goal-ul: „Contabilii pot valida și transmite facturi către SPV (Sistemul Privat Virtual ANAF) direct din ERP, fără export manual în Excel.\"\n\nLa Sprint Planning, echipa selectează 8 elemente din Product Backlog, însumând 34 de story points, estimate ca fiind suficiente pentru a atinge obiectivul. În a 4-a zi a Sprintului, Daily Scrum scoate la iveală o complicație: API-ul ANAF impune validare suplimentară de schemă XML, netratată în estimarea inițială.\n\nEchipa de Dezvoltare discută cu Product Ownerul: elementul „generare rapoarte statistice de facturare\" (5 story points, prioritate mai mică) este scos din Sprint Backlog pentru a face loc timpului necesar validării XML. **Scopul se renegociază, dar Sprint Goal-ul rămâne neschimbat** — la finalul Sprintului, contabilii pot într-adevăr valida și transmite facturi către SPV direct din ERP. Raportul statistic amânat este reintrodus în Product Backlog pentru Sprintul următor.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b5"
+   },
+   {
+    "type": "example",
+    "title": "Anularea unui Sprint după schimbare de strategie",
+    "concept_key": "sprint-exemplu-anulare",
+    "md": "O companie de retail online din București derulează Sprintul #12 (2 săptămâni), cu Sprint Goal: „Clienții pot plăti cu voucher de fidelitate direct în coșul de cumpărături.\"\n\nÎn a 3-a zi a Sprintului, conducerea anunță achiziția unei platforme de e-commerce concurente, decizie care schimbă radical arhitectura tehnică plănuită — sistemul de vouchere urmează să fie înlocuit complet cu cel al platformei achiziționate, în următoarele 3 luni.\n\nProduct Ownerul evaluează situația: a continua Sprintul ar însemna să livreze o funcționalitate care va fi înlocuită curând, deci fără valoare reală pentru client. **Product Ownerul decide anularea Sprintului #12.** Cele 2 elemente deja finalizate și „Done\" (ecranul UI pentru introducerea codului de voucher) sunt evaluate ca Increment parțial și păstrate ca bază de lucru. Restul elementelor neterminate se întorc în Product Backlog. Echipa organizează un nou Sprint Planning pentru a redefini prioritățile în lumina noii direcții strategice.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Greșeli frecvente legate de Sprint: (1) **Prelungirea Sprintului** când echipa nu termină la timp — contravine principiului time-box-ului fix și distruge cadența previzibilă. (2) **Confundarea Sprint Backlog-ului cu Sprint Goal-ul** — a schimba lista de task-uri nu înseamnă automat că obiectivul e compromis, dar orice modificare trebuie verificată în raport cu Sprint Goal-ul. (3) **Anularea Sprintului decisă de Scrum Master sau de un manager extern** — la examenul PSM I, rețineți clar: doar Product Ownerul are această autoritate.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Echipa Scrum de la o companie de logistică din Timișoara lucrează la Sprintul #5 (3 săptămâni), cu Sprint Goal: „Dispecerii pot aloca automat curse către șoferi disponibili, pe baza distanței și a orelor de lucru rămase.\"\n\nÎn ziua 6 din 15, Daily Scrum arată că algoritmul de alocare automată necesită integrare cu un API extern de trafic, nedescoperit la Planning. Echipa estimează încă 4 zile de lucru suplimentar pentru integrare, dar Sprint Goal-ul rămâne fezabil dacă se renunță la elementul secundar „export PDF al curselor alocate\" (prioritate scăzută, 3 story points).\n\nÎntrebări:\n1. Poate echipa să scoată elementul „export PDF\" din Sprint Backlog? Cine decide?\n2. Este nevoie de anularea Sprintului în acest caz? De ce da/nu?\n3. Ce s-ar întâmpla dacă, în schimb, clientul cere o funcționalitate complet nouă, fără legătură cu alocarea automată a curselor, care ar necesita înlocuirea Sprint Goal-ului?",
+    "solution_md": "1. Da. Scopul (Sprint Backlog) poate fi renegociat între Echipa de Dezvoltare și Product Owner pe măsură ce apar informații noi, atât timp cât Sprint Goal-ul nu este pus în pericol. Decizia se ia împreună, nu unilateral de către echipă.\n2. Nu este nevoie de anulare. Sprint Goal-ul („alocare automată a curselor\") rămâne fezabil și neschimbat — doar scopul secundar se ajustează. Anularea este rezervată situațiilor în care obiectivul însuși devine obsolet sau imposibil de atins, nu pentru ajustări normale de scop.\n3. Dacă noua cerință a clientului nu are legătură cu Sprint Goal-ul curent și ar necesita înlocuirea lui, cererea NU se introduce în Sprintul activ. Corect este ca Product Ownerul să o adauge în Product Backlog, prioritizată pentru un Sprint viitor. Doar dacă obiectivul curent devine complet lipsit de valoare (obsolet), Product Ownerul ar putea evalua anularea Sprintului — dar o simplă cerere nouă, oricât de urgentă, nu justifică automat anularea.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este durata maximă permisă pentru un Sprint, conform Scrum Guide?",
+    "choices": [
+     "O săptămână",
+     "O lună calendaristică",
+     "Trei luni",
+     "Nu există limită, se stabilește liber de echipă"
+    ],
+    "answer": 1,
+    "explain": "Scrum Guide stabilește Sprintul ca time-box de maximum o lună calendaristică; în practică, majoritatea echipelor aleg între 1 și 4 săptămâni pentru a menține un ritm predictibil de livrare.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cine are autoritatea de a anula un Sprint?",
+    "choices": [
+     "Scrum Masterul",
+     "Echipa de Dezvoltare, prin vot majoritar",
+     "Product Ownerul",
+     "Managementul organizației"
+    ],
+    "answer": 2,
+    "explain": "Doar Product Ownerul poate anula un Sprint, de regulă atunci când Sprint Goal-ul devine obsolet. Alte părți pot influența decizia, dar autoritatea formală îi aparține exclusiv Product Ownerului.",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata unui Sprint conform Scrum Guide?",
+    "back": "Maximum o lună calendaristică; în practică, de obicei 1-4 săptămâni, cu durată fixă și consecventă de la un Sprint la altul.",
+    "concept_key": "sprint-durata",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Sprint Goal-ul?",
+    "back": "Obiectivul unic și coerent al Sprintului, stabilit de Echipa de Dezvoltare împreună cu Product Ownerul la Sprint Planning; oferă scop și direcție elementelor din Sprint Backlog.",
+    "concept_key": "sprint-goal-definitie",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Poate fi renegociat scopul (Sprint Backlog) în timpul Sprintului?",
+    "back": "Da, între Echipa de Dezvoltare și Product Owner, pe măsură ce se află informații noi — dar fără a compromite Sprint Goal-ul.",
+    "concept_key": "sprint-flexibilitate-scop-vs-obiectiv",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine poate anula un Sprint?",
+    "back": "Doar Product Ownerul, de regulă atunci când Sprint Goal-ul devine obsolet.",
+    "concept_key": "anulare-sprint",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se întâmplă cu elementele neterminate când un Sprint este anulat?",
+    "back": "Sunt re-estimate și reîntoarse în Product Backlog pentru reprioritizare.",
+    "concept_key": "anulare-sprint",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Se prelungește un Sprint dacă echipa nu termină la timp?",
+    "back": "Nu. Durata Sprintului este fixă; munca neterminată revine în Product Backlog, nu se extinde time-box-ul.",
+    "concept_key": "sprint-eveniment-container",
+    "blockId": "cmjjuxvv7006zumkpmqr2qw0v-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1451,
+   "flashcards": 6
+  }
+ }
+}

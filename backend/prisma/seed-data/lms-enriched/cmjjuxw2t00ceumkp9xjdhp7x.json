@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxw2t00ceumkp9xjdhp7x",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Cadrul Legal și Principii Contabile",
+ "lesson": "Principii contabile fundamentale",
+ "category": "FINANCE_OPS",
+ "content": "# Principii contabile fundamentale\n\nPrincipiile contabile generale sunt regulile de bază care ghidează recunoașterea, evaluarea și prezentarea elementelor din situațiile financiare. În România sunt reglementate prin OMFP 1802/2014 (Reglementările contabile privind situațiile financiare anuale individuale și consolidate, cu modificările ulterioare), armonizat cu Directiva 2013/34/UE. Abaterea de la aceste principii trebuie justificată și prezentată în notele explicative, împreună cu efectul ei asupra activelor, datoriilor, poziției financiare și a rezultatului.\n\n### Principiul continuității activității (going concern)\n\nSituațiile financiare se întocmesc pornind de la premisa că entitatea își continuă activitatea în mod normal, previzibil, fără intenția sau nevoia de a intra în lichidare, de a-și înceta activitatea ori de a-și reduce semnificativ operațiunile. Dacă administratorii cunosc elemente de nesiguranță semnificativă privind capacitatea entității de a-și continua activitatea (pierderi repetate, capitaluri proprii negative, incapacitate de plată iminentă), acest fapt trebuie prezentat explicit în notele explicative.\n\nDacă premisa continuității nu mai este valabilă (societate în lichidare sau cu încetarea activității), evaluarea elementelor din bilanț se face la valoarea de lichidare, nu la cost istoric, iar acest fapt și motivele care l-au determinat se menționează distinct.\n\n### Permanența metodelor\n\nMetodele de evaluare și politicile contabile adoptate (metoda de amortizare, metoda de evaluare a stocurilor - FIFO sau cost mediu ponderat) trebuie aplicate consecvent de la un exercițiu financiar la altul, pentru a asigura comparabilitatea în timp a situațiilor financiare. Schimbarea unei metode este permisă doar în cazuri excepționale (modificarea reglementărilor sau obținerea unor informații mai relevante) și trebuie prezentată în notele explicative, cu justificare și cu efectul cuantificat asupra poziției financiare și a performanței.\n\n### Principiul independenței exercițiului (contabilitatea de angajamente)\n\nVeniturile și cheltuielile se recunosc în contabilitate în exercițiul financiar la care se referă, indiferent de data încasării, respectiv a plății - fundamentul contabilității de angajamente (accrual accounting), opusă contabilității de casă. O factură de vânzare emisă în decembrie 2025, dar încasată în februarie 2026, generează venit al anului 2025. Simetric, o cheltuială cu utilitățile aferentă lunii decembrie 2025, dar facturată în ianuarie 2026, se înregistrează tot ca cheltuială a anului 2025.\n\nInstrumentele care operaționalizează principiul sunt conturile de regularizare: 471 „Cheltuieli înregistrate în avans\", 472 „Venituri înregistrate în avans\", 408 „Furnizori - facturi nesosite\" și 418 „Clienți - facturi de întocmit\".\n\n### Principiul prudenței\n\nPrudența impune ca evaluarea să se facă pe o bază prudentă: activele și veniturile nu se supraevaluează, iar datoriile și cheltuielile nu se subevaluează. Concret, entitatea trebuie să recunoască:\n\n- toate ajustările de valoare datorate deprecierilor (stocuri, creanțe, imobilizări), indiferent dacă exercițiul se încheie cu profit sau cu pierdere;\n- toate datoriile previzibile și pierderile potențiale apărute în cursul exercițiului sau al unui exercițiu anterior, chiar dacă devin cunoscute abia între data bilanțului și data întocmirii situațiilor financiare;\n- provizioanele pentru riscuri și cheltuieli, indiferent de rezultatul exercițiului.\n\nPrudența nu înseamnă subevaluare deliberată sau constituirea de rezerve ascunse (provizioane excesive, nejustificate economic) - acestea contravin imaginii fidele la fel ca supraevaluarea.\n\n### Evaluarea la cost istoric\n\nElementele din situațiile financiare se evaluează, de regulă, la costul istoric: activele se înregistrează la costul de achiziție sau de producție, care rămâne baza de evaluare ulterioară, ajustată cu amortizarea cumulată și ajustările pentru depreciere. Creșterea valorii de piață a unui activ nu se reflectă automat prin majorarea valorii contabile, cu excepția cazului în care entitatea optează pentru reevaluarea imobilizărilor corporale - procedură distinctă, realizată de evaluatori autorizați, cu reguli proprii de înregistrare (rezerva din reevaluare).\n\n### Principiul necompensării\n\nValoarea elementelor de activ nu se compensează cu valoarea elementelor de pasiv, iar veniturile nu se compensează cu cheltuielile, cu excepția situațiilor expres permise de reglementările contabile. O creanță de 20.000 lei față de un client și o datorie de 15.000 lei față de același client, fără o convenție de compensare legal valabilă, se prezintă separat în bilanț, la valoarea brută - nu ca o singură poziție netă de 5.000 lei.\n\n### Prevalența economicului asupra juridicului\n\nInformațiile din situațiile financiare trebuie să reflecte realitatea economică a operațiunilor, nu doar forma lor juridică. Exemplul clasic este leasingul financiar: juridic, locatorul rămâne proprietarul bunului, dar economic, locatarul preia riscurile și beneficiile aferente activului, motiv pentru care bunul se recunoaște în contabilitatea locatarului ca imobilizare amortizabilă, cu o datorie corespunzătoare, nu ca o simplă cheltuială cu chiria.\n\n### Pragul de semnificație și intangibilitatea bilanțului de deschidere\n\nElementele nesemnificative ca valoare pot fi agregate în prezentare, cu condiția ca agregarea să nu afecteze imaginea fidelă (pragul de semnificație/materialitate). Bilanțul de deschidere al fiecărui exercițiu trebuie să corespundă bilanțului de închidere al exercițiului precedent (intangibilitatea bilanțului de deschidere) - corectarea erorilor din exerciții anterioare se face prin rezultatul reportat, nu prin modificarea retroactivă a bilanțului deja raportat.\n\n## Exemplu: Chirie încasată în avans - aplicarea independenței exercițiului\nAlfa Birouri SRL încasează la 1 decembrie 2025, prin ordin de plată, suma de 12.000 lei reprezentând chirie pentru un spațiu închiriat, aferentă perioadei 1 decembrie 2025 - 30 noiembrie 2026 (12 luni, 1.000 lei/lună).\n\nConform independenței exercițiului, Alfa Birouri SRL nu poate recunoaște integral cei 12.000 lei ca venit al lunii decembrie 2025. Înregistrarea corectă:\n\n1. La încasare (1 decembrie 2025): 5121 „Conturi la bănci în lei\" = 472 „Venituri înregistrate în avans\", 12.000 lei.\n2. Lunar, pe măsură ce serviciul se prestează efectiv: 472 = 706 „Venituri din redevențe, locații de gestiune și chirii\", câte 1.000 lei/lună.\n\nAstfel, exercițiul 2025 recunoaște doar 1.000 lei venit (luna decembrie), iar diferența de 11.000 lei rămâne în soldul contului 472, recunoscută eșalonat pe parcursul anului 2026. Dacă societatea ar fi recunoscut integral cei 12.000 lei în 2025, ar fi supraevaluat profitul din 2025 și l-ar fi subevaluat pe cel din 2026 - exact ce interzice independența exercițiului.\n\n## Exemplu: Provizion pentru client în insolvență - aplicarea prudenței\nBeta Distribuție SRL are, la 31 decembrie 2025, o creanță comercială de 50.000 lei față de un client aflat în insolvență. Pe baza informațiilor de la administratorul judiciar, societatea estimează o probabilitate de recuperare de doar 40%.\n\nPrudența impune recunoașterea unei ajustări pentru depreciere, chiar dacă pierderea nu e încă certă - riscul de neîncasare e previzibil la data bilanțului:\n\n- Valoare estimată nerecuperabilă = 50.000 lei × (100% - 40%) = 30.000 lei.\n- Înregistrare: 6814 „Cheltuieli de exploatare privind ajustările pentru deprecierea activelor circulante\" = 491 „Ajustări pentru deprecierea creanțelor - clienți\", 30.000 lei.\n\nÎn bilanț, creanța apare la valoarea netă de 20.000 lei (50.000 - 30.000), iar cheltuiala de 30.000 lei diminuează rezultatul exercițiului 2025. Dacă în 2026 se recuperează efectiv doar 15.000 lei, ajustarea se reia la venituri (7814) în limita sumei nemaifiind necesară, iar diferența irecuperabilă se trece pe pierdere (6541). Fără acest provizion, bilanțul ar prezenta o creanță supraevaluată cu 30.000 lei, contrar imaginii fidele.\n\n> Temei legal: OMFP 1802/2014 Principii generale de evaluare (continuitate, permanența metodelor, prudență, independența exercițiului, evaluare separată, necompensare) (în vigoare de la 2015-01-01)\nOMFP 1802/2014, aplicabil de la exercițiul financiar 2015, reglementează în secțiunea dedicată principiilor generale de evaluare regulile prezentate în această lecție (continuitate, permanența metodelor, prudență, independența exercițiului, evaluare separată, necompensare). Reglementarea este armonizată cu Directiva 2013/34/UE. Verifică întotdeauna forma consolidată, actualizată a ordinului, întrucât a fost modificat succesiv prin ordine ulterioare (de exemplu OMFP 3781/2019).\n\n⚠ Nu confunda principiile contabile generale cu politicile contabile ale entității. Principiile (continuitate, prudență, permanența metodelor etc.) sunt reguli obligatorii, de la care nu te poți abate decât în cazuri excepționale, justificate și prezentate în notele explicative. Politicile contabile (de exemplu metoda de amortizare aleasă sau metoda de evaluare a stocurilor) sunt opțiuni concrete pe care entitatea le stabilește în cadrul acestor principii, prin decizie internă, și pe care trebuie să le aplice consecvent (permanența metodelor). Schimbarea nejustificată a unei politici contabile de la un an la altul, fără prezentarea motivelor și a efectelor în note, poate fi interpretată de auditor sau de organul de control ca o încălcare a permanenței metodelor și a imaginii fidele.\n\n## Exercițiu\nGamma Producție SRL a achiziționat la 1 ianuarie 2023 un utilaj la costul de achiziție de 100.000 lei, amortizabil liniar pe o durată normală de funcționare de 10 ani (amortizare anuală = 10.000 lei). La 31 decembrie 2025, valoarea de piață a unui utilaj similar, nou, este de 130.000 lei, iar societatea nu a optat pentru reevaluarea imobilizărilor corporale.\n\nCerință: la ce valoare trebuie prezentat utilajul în bilanțul de la 31 decembrie 2025? Ce principiu stă la baza acestei evaluări și de ce nu se poate folosi valoarea de piață de 130.000 lei?\n\n**Soluție:** Se aplică evaluarea la cost istoric: în lipsa unei opțiuni exprese pentru reevaluare, activele rămân înregistrate la costul de achiziție, ajustat doar cu amortizarea cumulată și eventualele ajustări pentru depreciere - nu în funcție de valoarea de piață curentă.\n\nCalcul:\n- Amortizare cumulată la 31.12.2025 (2023, 2024, 2025 - 3 ani întregi) = 3 × 10.000 lei = 30.000 lei.\n- Valoare contabilă netă la 31.12.2025 = 100.000 lei - 30.000 lei = 70.000 lei.\n\nUtilajul se prezintă în bilanț la 70.000 lei, indiferent că valoarea de piață a crescut la 130.000 lei. Singura cale legală de a reflecta valoarea de piață mai mare ar fi reevaluarea imobilizării, realizată de un evaluator autorizat, caz în care diferența s-ar înregistra ca rezervă din reevaluare - o procedură separată de evaluarea curentă la cost istoric.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "continuitatea-activitatii",
+    "md": "Principiile contabile generale sunt regulile de bază care ghidează recunoașterea, evaluarea și prezentarea elementelor din situațiile financiare. În România sunt reglementate prin OMFP 1802/2014 (Reglementările contabile privind situațiile financiare anuale individuale și consolidate, cu modificările ulterioare), armonizat cu Directiva 2013/34/UE. Abaterea de la aceste principii trebuie justificată și prezentată în notele explicative, împreună cu efectul ei asupra activelor, datoriilor, poziției financiare și a rezultatului.\n\n### Principiul continuității activității (going concern)\n\nSituațiile financiare se întocmesc pornind de la premisa că entitatea își continuă activitatea în mod normal, previzibil, fără intenția sau nevoia de a intra în lichidare, de a-și înceta activitatea ori de a-și reduce semnificativ operațiunile. Dacă administratorii cunosc elemente de nesiguranță semnificativă privind capacitatea entității de a-și continua activitatea (pierderi repetate, capitaluri proprii negative, incapacitate de plată iminentă), acest fapt trebuie prezentat explicit în notele explicative.\n\nDacă premisa continuității nu mai este valabilă (societate în lichidare sau cu încetarea activității), evaluarea elementelor din bilanț se face la valoarea de lichidare, nu la cost istoric, iar acest fapt și motivele care l-au determinat se menționează distinct.",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "permanenta-metodelor-independenta-exercitiului",
+    "md": "### Permanența metodelor\n\nMetodele de evaluare și politicile contabile adoptate (metoda de amortizare, metoda de evaluare a stocurilor - FIFO sau cost mediu ponderat) trebuie aplicate consecvent de la un exercițiu financiar la altul, pentru a asigura comparabilitatea în timp a situațiilor financiare. Schimbarea unei metode este permisă doar în cazuri excepționale (modificarea reglementărilor sau obținerea unor informații mai relevante) și trebuie prezentată în notele explicative, cu justificare și cu efectul cuantificat asupra poziției financiare și a performanței.\n\n### Principiul independenței exercițiului (contabilitatea de angajamente)\n\nVeniturile și cheltuielile se recunosc în contabilitate în exercițiul financiar la care se referă, indiferent de data încasării, respectiv a plății - fundamentul contabilității de angajamente (accrual accounting), opusă contabilității de casă. O factură de vânzare emisă în decembrie 2025, dar încasată în februarie 2026, generează venit al anului 2025. Simetric, o cheltuială cu utilitățile aferentă lunii decembrie 2025, dar facturată în ianuarie 2026, se înregistrează tot ca cheltuială a anului 2025.\n\nInstrumentele care operaționalizează principiul sunt conturile de regularizare: 471 „Cheltuieli înregistrate în avans\", 472 „Venituri înregistrate în avans\", 408 „Furnizori - facturi nesosite\" și 418 „Clienți - facturi de întocmit\".",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "prudenta-cost-istoric",
+    "md": "### Principiul prudenței\n\nPrudența impune ca evaluarea să se facă pe o bază prudentă: activele și veniturile nu se supraevaluează, iar datoriile și cheltuielile nu se subevaluează. Concret, entitatea trebuie să recunoască:\n\n- toate ajustările de valoare datorate deprecierilor (stocuri, creanțe, imobilizări), indiferent dacă exercițiul se încheie cu profit sau cu pierdere;\n- toate datoriile previzibile și pierderile potențiale apărute în cursul exercițiului sau al unui exercițiu anterior, chiar dacă devin cunoscute abia între data bilanțului și data întocmirii situațiilor financiare;\n- provizioanele pentru riscuri și cheltuieli, indiferent de rezultatul exercițiului.\n\nPrudența nu înseamnă subevaluare deliberată sau constituirea de rezerve ascunse (provizioane excesive, nejustificate economic) - acestea contravin imaginii fidele la fel ca supraevaluarea.\n\n### Evaluarea la cost istoric\n\nElementele din situațiile financiare se evaluează, de regulă, la costul istoric: activele se înregistrează la costul de achiziție sau de producție, care rămâne baza de evaluare ulterioară, ajustată cu amortizarea cumulată și ajustările pentru depreciere. Creșterea valorii de piață a unui activ nu se reflectă automat prin majorarea valorii contabile, cu excepția cazului în care entitatea optează pentru reevaluarea imobilizărilor corporale - procedură distinctă, realizată de evaluatori autorizați, cu reguli proprii de înregistrare (rezerva din reevaluare).",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "necompensare-prevalenta-economicului-prag-semnificatie",
+    "md": "### Principiul necompensării\n\nValoarea elementelor de activ nu se compensează cu valoarea elementelor de pasiv, iar veniturile nu se compensează cu cheltuielile, cu excepția situațiilor expres permise de reglementările contabile. O creanță de 20.000 lei față de un client și o datorie de 15.000 lei față de același client, fără o convenție de compensare legal valabilă, se prezintă separat în bilanț, la valoarea brută - nu ca o singură poziție netă de 5.000 lei.\n\n### Prevalența economicului asupra juridicului\n\nInformațiile din situațiile financiare trebuie să reflecte realitatea economică a operațiunilor, nu doar forma lor juridică. Exemplul clasic este leasingul financiar: juridic, locatorul rămâne proprietarul bunului, dar economic, locatarul preia riscurile și beneficiile aferente activului, motiv pentru care bunul se recunoaște în contabilitatea locatarului ca imobilizare amortizabilă, cu o datorie corespunzătoare, nu ca o simplă cheltuială cu chiria.\n\n### Pragul de semnificație și intangibilitatea bilanțului de deschidere\n\nElementele nesemnificative ca valoare pot fi agregate în prezentare, cu condiția ca agregarea să nu afecteze imaginea fidelă (pragul de semnificație/materialitate). Bilanțul de deschidere al fiecărui exercițiu trebuie să corespundă bilanțului de închidere al exercițiului precedent (intangibilitatea bilanțului de deschidere) - corectarea erorilor din exerciții anterioare se face prin rezultatul reportat, nu prin modificarea retroactivă a bilanțului deja raportat.",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b4"
+   },
+   {
+    "type": "example",
+    "title": "Chirie încasată în avans - aplicarea independenței exercițiului",
+    "concept_key": "independenta-exercitiilor-venituri-in-avans",
+    "md": "Alfa Birouri SRL încasează la 1 decembrie 2025, prin ordin de plată, suma de 12.000 lei reprezentând chirie pentru un spațiu închiriat, aferentă perioadei 1 decembrie 2025 - 30 noiembrie 2026 (12 luni, 1.000 lei/lună).\n\nConform independenței exercițiului, Alfa Birouri SRL nu poate recunoaște integral cei 12.000 lei ca venit al lunii decembrie 2025. Înregistrarea corectă:\n\n1. La încasare (1 decembrie 2025): 5121 „Conturi la bănci în lei\" = 472 „Venituri înregistrate în avans\", 12.000 lei.\n2. Lunar, pe măsură ce serviciul se prestează efectiv: 472 = 706 „Venituri din redevențe, locații de gestiune și chirii\", câte 1.000 lei/lună.\n\nAstfel, exercițiul 2025 recunoaște doar 1.000 lei venit (luna decembrie), iar diferența de 11.000 lei rămâne în soldul contului 472, recunoscută eșalonat pe parcursul anului 2026. Dacă societatea ar fi recunoscut integral cei 12.000 lei în 2025, ar fi supraevaluat profitul din 2025 și l-ar fi subevaluat pe cel din 2026 - exact ce interzice independența exercițiului.",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b5"
+   },
+   {
+    "type": "example",
+    "title": "Provizion pentru client în insolvență - aplicarea prudenței",
+    "concept_key": "prudenta-provizion-creante-clienti",
+    "md": "Beta Distribuție SRL are, la 31 decembrie 2025, o creanță comercială de 50.000 lei față de un client aflat în insolvență. Pe baza informațiilor de la administratorul judiciar, societatea estimează o probabilitate de recuperare de doar 40%.\n\nPrudența impune recunoașterea unei ajustări pentru depreciere, chiar dacă pierderea nu e încă certă - riscul de neîncasare e previzibil la data bilanțului:\n\n- Valoare estimată nerecuperabilă = 50.000 lei × (100% - 40%) = 30.000 lei.\n- Înregistrare: 6814 „Cheltuieli de exploatare privind ajustările pentru deprecierea activelor circulante\" = 491 „Ajustări pentru deprecierea creanțelor - clienți\", 30.000 lei.\n\nÎn bilanț, creanța apare la valoarea netă de 20.000 lei (50.000 - 30.000), iar cheltuiala de 30.000 lei diminuează rezultatul exercițiului 2025. Dacă în 2026 se recuperează efectiv doar 15.000 lei, ajustarea se reia la venituri (7814) în limita sumei nemaifiind necesară, iar diferența irecuperabilă se trece pe pierdere (6541). Fără acest provizion, bilanțul ar prezenta o creanță supraevaluată cu 30.000 lei, contrar imaginii fidele.",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Principii generale de evaluare (continuitate, permanența metodelor, prudență, independența exercițiului, evaluare separată, necompensare)",
+    "effective": "2015-01-01",
+    "md": "OMFP 1802/2014, aplicabil de la exercițiul financiar 2015, reglementează în secțiunea dedicată principiilor generale de evaluare regulile prezentate în această lecție (continuitate, permanența metodelor, prudență, independența exercițiului, evaluare separată, necompensare). Reglementarea este armonizată cu Directiva 2013/34/UE. Verifică întotdeauna forma consolidată, actualizată a ordinului, întrucât a fost modificat succesiv prin ordine ulterioare (de exemplu OMFP 3781/2019).",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda principiile contabile generale cu politicile contabile ale entității. Principiile (continuitate, prudență, permanența metodelor etc.) sunt reguli obligatorii, de la care nu te poți abate decât în cazuri excepționale, justificate și prezentate în notele explicative. Politicile contabile (de exemplu metoda de amortizare aleasă sau metoda de evaluare a stocurilor) sunt opțiuni concrete pe care entitatea le stabilește în cadrul acestor principii, prin decizie internă, și pe care trebuie să le aplice consecvent (permanența metodelor). Schimbarea nejustificată a unei politici contabile de la un an la altul, fără prezentarea motivelor și a efectelor în note, poate fi interpretată de auditor sau de organul de control ca o încălcare a permanenței metodelor și a imaginii fidele.",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Gamma Producție SRL a achiziționat la 1 ianuarie 2023 un utilaj la costul de achiziție de 100.000 lei, amortizabil liniar pe o durată normală de funcționare de 10 ani (amortizare anuală = 10.000 lei). La 31 decembrie 2025, valoarea de piață a unui utilaj similar, nou, este de 130.000 lei, iar societatea nu a optat pentru reevaluarea imobilizărilor corporale.\n\nCerință: la ce valoare trebuie prezentat utilajul în bilanțul de la 31 decembrie 2025? Ce principiu stă la baza acestei evaluări și de ce nu se poate folosi valoarea de piață de 130.000 lei?",
+    "solution_md": "Se aplică evaluarea la cost istoric: în lipsa unei opțiuni exprese pentru reevaluare, activele rămân înregistrate la costul de achiziție, ajustat doar cu amortizarea cumulată și eventualele ajustări pentru depreciere - nu în funcție de valoarea de piață curentă.\n\nCalcul:\n- Amortizare cumulată la 31.12.2025 (2023, 2024, 2025 - 3 ani întregi) = 3 × 10.000 lei = 30.000 lei.\n- Valoare contabilă netă la 31.12.2025 = 100.000 lei - 30.000 lei = 70.000 lei.\n\nUtilajul se prezintă în bilanț la 70.000 lei, indiferent că valoarea de piață a crescut la 130.000 lei. Singura cale legală de a reflecta valoarea de piață mai mare ar fi reevaluarea imobilizării, realizată de un evaluator autorizat, caz în care diferența s-ar înregistra ca rezervă din reevaluare - o procedură separată de evaluarea curentă la cost istoric.",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care principiu contabil impune recunoașterea unei cheltuieli sau a unui provizion pentru un risc previzibil, chiar dacă exercițiul financiar se încheie cu pierdere?",
+    "choices": [
+     "Principiul permanenței metodelor",
+     "Principiul prudenței",
+     "Principiul necompensării",
+     "Principiul continuității activității"
+    ],
+    "answer": 1,
+    "explain": "Prudența impune recunoașterea tuturor datoriilor previzibile, pierderilor potențiale și ajustărilor de depreciere, indiferent de rezultatul (profit sau pierdere) al exercițiului financiar.",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O societate încasează în decembrie 2025 o chirie pentru serviciul din ianuarie-decembrie 2026. Conform cărui principiu venitul aferent lunii decembrie 2025 este singurul recunoscut în exercițiul 2025?",
+    "choices": [
+     "Principiul prevalenței economicului asupra juridicului",
+     "Principiul pragului de semnificație",
+     "Principiul independenței exercițiului",
+     "Principiul intangibilității bilanțului de deschidere"
+    ],
+    "answer": 2,
+    "explain": "Independența exercițiului (contabilitatea de angajamente) impune recunoașterea veniturilor și cheltuielilor în exercițiul la care se referă efectiv, nu în funcție de data încasării sau plății; diferența se reflectă prin contul 472 „Venituri înregistrate în avans\".",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune principiul continuității activității?",
+    "back": "Situațiile financiare se întocmesc pe premisa că entitatea își continuă activitatea normal, fără intenția sau nevoia de a intra în lichidare ori de a-și reduce semnificativ operațiunile.",
+    "concept_key": "continuitatea-activitatii",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune principiul permanenței metodelor?",
+    "back": "Metodele de evaluare și politicile contabile se aplică consecvent de la un exercițiu la altul; schimbarea lor se justifică și se prezintă, cu efectul cuantificat, în notele explicative.",
+    "concept_key": "permanenta-metodelor",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este independența exercițiului (contabilitatea de angajamente)?",
+    "back": "Veniturile și cheltuielile se recunosc în exercițiul financiar la care se referă, indiferent de data încasării sau a plății (accrual accounting).",
+    "concept_key": "independenta-exercitiilor",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce impune principiul prudenței?",
+    "back": "Nu se supraevaluează activele/veniturile și nu se subevaluează datoriile/cheltuielile; se recunosc toate ajustările de depreciere și riscurile previzibile, indiferent de rezultatul exercițiului.",
+    "concept_key": "prudenta",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune necompensarea?",
+    "back": "Activele nu se compensează cu pasivele, iar veniturile nu se compensează cu cheltuielile, cu excepția cazurilor expres permise de reglementările contabile.",
+    "concept_key": "necompensare",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este prevalența economicului asupra juridicului?",
+    "back": "Operațiunile se înregistrează conform realității economice, nu doar formei juridice - exemplu clasic: leasingul financiar, recunoscut ca activ la locatar.",
+    "concept_key": "prevalenta-economicului-asupra-juridicului",
+    "blockId": "cmjjuxw2t00ceumkp9xjdhp7x-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1483,
+   "flashcards": 6
+  }
+ }
+}

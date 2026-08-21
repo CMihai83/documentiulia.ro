@@ -1,0 +1,169 @@
+{
+ "lessonId": "cmjjuxw4r00doumkpcr35dyez",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Raportare ANAF - SAF-T și e-Factura",
+ "lesson": "e-Transport și alte declarații",
+ "category": "FINANCE_OPS",
+ "content": "# e-Transport și alte declarații\n\n## Ce este sistemul e-Transport\n\nSistemul **e-Transport** este un instrument de monitorizare în timp real a transporturilor rutiere de bunuri, dezvoltat de ANAF în baza **OUG 41/2022**, modificată prin **OUG 129/2024**. Scopul declarat este combaterea evaziunii fiscale asociată circulației mărfurilor \"fantomă\" — bunuri care circulă pe drumurile publice fără documente fiscale corespunzătoare sau fără să fie ulterior evidențiate corect în contabilitate.\n\nObligația de raportare vizează două categorii de transporturi:\n\n1. **Transporturile interne** de bunuri cu **risc fiscal ridicat** — o listă de categorii de produse stabilită prin ordin al președintelui ANAF (de exemplu produse agroalimentare, produse din categorii sensibile la fraudă TVA), dacă sunt transportate cu vehicule de peste 2,5 tone masă maximă autorizată.\n2. **Toate transporturile rutiere internaționale** de bunuri (intracomunitare și cu țări terțe), cu vehicule de peste 2,5 tone, cu praguri suplimentare pe greutate și valoare a lotului transportat.\n\nDupă o perioadă îndelungată de aplicare graduală și amânări succesive, **de la 1 ianuarie 2026 obligațiile de raportare în e-Transport se aplică integral**, fără nicio perioadă de grație rămasă. Practic, orice firmă care expediază, primește sau transportă bunuri care se încadrează în criteriile de mai sus trebuie să respecte procedura completă, sub sancțiunea amenzilor și, în caz de abateri repetate, a confiscării graduale a contravalorii bunurilor nedeclarate.\n\n## Codul UIT — obținere și utilizare\n\nElementul central al sistemului este **codul UIT (Unic de Identificare a Transportului)**. Acesta se generează **înainte de începerea deplasării bunurilor**, prin declararea în platforma ANAF (aplicația e-Transport, disponibilă în Spațiul Privat Virtual) a datelor despre:\n\n- expeditor, destinatar și, după caz, transportator;\n- locul de încărcare și locul de descărcare;\n- descrierea, cantitatea și valoarea bunurilor transportate;\n- datele vehiculului (numărul de înmatriculare) și data estimată a începerii transportului.\n\nCodul UIT se obține **per partidă de bunuri** — pentru fiecare transport în parte, nu este un cod valabil pe o perioadă sau pentru mai multe curse. Odată generat, codul rămâne valabil doar pentru datele declarate inițial; orice modificare a rutei, a vehiculului sau a datelor esențiale ale transportului impune actualizarea declarației înainte de continuarea deplasării.\n\nÎn practică, entitatea obligată să declare este de regulă expeditorul (furnizorul bunurilor) sau destinatarul, în funcție de tipul operațiunii (livrare, achiziție intracomunitară, transfer între gestiuni proprii etc.), iar transportatorul are obligația să dețină codul UIT la bordul vehiculului pe toată durata deplasării, disponibil pentru control.\n\n## Sancțiuni și regimul de confiscare graduală\n\nNerespectarea obligațiilor e-Transport (lipsa codului UIT, declarare incorectă sau tardivă) atrage sancțiuni contravenționale semnificative, aplicabile **conform reglementărilor în vigoare la data redactării acestei lecții (iulie 2026)** — verifică întotdeauna cuantumurile actualizate pe site-ul ANAF sau în Monitorul Oficial înainte de a le folosi ca referință definitivă:\n\n- **10.000–50.000 lei** pentru persoane fizice;\n- **20.000–100.000 lei** pentru persoane juridice.\n\nPe lângă amendă, legea prevede un mecanism de **confiscare graduală a contravalorii bunurilor** nedeclarate corect, aplicat progresiv în funcție de numărul de abateri constatate într-o fereastră de **12 luni**:\n\n- abaterea 1: 0% (doar amendă);\n- abaterea 2: 15% din valoarea bunurilor;\n- abaterea 3: 50% din valoarea bunurilor;\n- abaterea 4 și următoarele: 100% din valoarea bunurilor.\n\nAcest mecanism progresiv descurajează firmele care ar trata amenda inițială ca pe un simplu \"cost de a face afaceri\". Cea mai eficientă protecție este integrarea generării codului UIT direct în fluxul de facturare/expediție al firmei (ERP conectat la API-ul e-Transport), astfel încât nicio expediție să nu poată pleca fără codul deja generat.\n\n## RO e-TVA — decontul precompletat și notificările de conformare\n\n**RO e-TVA**, introdus prin **OUG 70/2024**, este mecanismul prin care ANAF pune la dispoziția plătitorilor de TVA un **decont precompletat (P300)**, generat automat pe baza datelor deja deținute de administrația fiscală: e-Factura, e-Transport, case de marcat electronice, declarații vamale etc. Decontul precompletat se emite, în continuare, **până cel târziu în data de 5 a lunii următoare termenului legal de depunere a decontului de TVA**.\n\nInițial, legislația prevedea că, în cazul unor diferențe semnificative între decontul depus de contribuabil și decontul precompletat de ANAF, contribuabilul primea o **notificare de conformare** la care era obligat să răspundă, sub sancțiuni specifice. Această obligativitate a suferit o schimbare importantă: prin modificările aduse de **OUG 89/2025** și **OUG 13/2026**, **începând cu ianuarie 2026, obligația de a răspunde la notificările de conformare RO e-TVA, precum și sancțiunile aferente nerespectării acestei obligații, au fost abrogate**.\n\nÎn prezent, răspunsul la o notificare de conformare rămâne **voluntar și recomandat** — util pentru clarificarea diferențelor (de exemplu facturi neprimite încă în SPV, decalaje de raportare), dar fără termen legal obligatoriu și fără amendă asociată lipsei răspunsului. Ignorarea sistematică a notificărilor rămâne totuși un semnal de risc care poate influența selecția pentru inspecție fiscală.\n\n## Exemplu: Obținerea codului UIT pentru un transport intern cu risc fiscal ridicat\n**Situație:** SC Agro Prod SRL, producător de cereale, vinde unui client din altă localitate un lot de 25 de tone de grâu, transportat cu un camion de 12 tone capacitate, în valoare de 45.000 lei. Grâul se încadrează în categoria produselor agroalimentare cu risc fiscal ridicat.\n\n**Pași de conformare:**\n\n1. Înainte de plecarea camionului din depozit, responsabilul de expediții din Agro Prod SRL accesează aplicația e-Transport din SPV și completează datele: expeditor (Agro Prod SRL), destinatar (clientul), locul de încărcare, locul de descărcare, descrierea bunurilor (grâu, 25 tone), valoarea (45.000 lei), numărul de înmatriculare al camionului și data estimată a plecării.\n2. Sistemul generează **codul UIT**, pe care firma îl transmite transportatorului (poate fi salariat propriu sau firmă de transport terță).\n3. Transportatorul păstrează codul UIT disponibil pe toată durata deplasării (poate fi verificat de organele de control — Poliție, ANAF — prin scanare/interogare în sistem).\n4. Fiind transport intern cu risc fiscal ridicat și camion peste 2,5 tone, obligația de raportare există indiferent de valoarea mărfii — pragul de 2,5 tone al vehiculului este cel care declanșează obligația, nu doar valoarea lotului.\n\nDacă firma ar fi omis generarea codului UIT înainte de plecare, la un eventual control rutier ar risca o amendă (20.000–100.000 lei, ca persoană juridică, conform reglementărilor în vigoare la data redactării) și, dacă este prima abatere într-o fereastră de 12 luni, fără confiscare — dar riscul crește semnificativ la abaterile ulterioare.\n\n## Exemplu: Calculul confiscării graduale la abateri repetate\n**Situație:** SC Distrib Rapid SRL este constatată de trei ori într-o fereastră de 12 luni că a transportat bunuri fără codul UIT generat corect. La a treia abatere, valoarea lotului de bunuri transportat era de **80.000 lei**.\n\n**Calcul:**\n\n- Abaterea 1 (cu 4 luni în urmă): doar amendă contravențională (persoană juridică: 20.000–100.000 lei), fără confiscare (0%).\n- Abaterea 2 (cu 2 luni în urmă): amendă + confiscare 15% din valoarea bunurilor din acea partidă.\n- Abaterea 3 (constatare curentă, valoare lot 80.000 lei): amendă contravențională **plus confiscarea a 50% din valoarea bunurilor**, adică:\n\n80.000 lei × 50% = **40.000 lei confiscați**, pe lângă amenda contravențională aplicată separat.\n\nDacă firma ar fi constatată o a patra oară în aceeași fereastră de 12 luni, procentul de confiscare ar ajunge la 100% din valoarea bunurilor din acea partidă — un cost care, cumulat cu amenda și cu întreruperea livrării (marfa poate fi reținută), depășește cu mult costul unei implementări corecte a fluxului de generare a codului UIT în ERP-ul firmei.\n\n> Temei legal: OUG 41/2022, modificată prin OUG 129/2024 cadru general e-Transport (în vigoare de la 2026-01-01)\nSistemul e-Transport este reglementat prin OUG 41/2022, cu modificările ulterioare aduse prin OUG 129/2024. Perioada de grație pentru aplicarea completă a sancțiunilor a expirat, iar **de la 1 ianuarie 2026 obligațiile se aplică integral**, atât pentru transporturile interne de bunuri cu risc fiscal ridicat, cât și pentru toate transporturile rutiere internaționale efectuate cu vehicule de peste 2,5 tone.\n\n> Temei legal: OUG 70/2024, modificată prin OUG 89/2025 și OUG 13/2026 RO e-TVA — notificări de conformare (în vigoare de la 2026-01-01)\nMecanismul RO e-TVA și decontul precompletat P300 au fost introduse prin OUG 70/2024. Prin modificările ulterioare (OUG 89/2025, OUG 13/2026), **de la ianuarie 2026 a fost abrogată obligația de a răspunde la notificările de conformare**, precum și sancțiunile asociate nerespectării acestei obligații. Decontul precompletat continuă să fie emis de ANAF până cel târziu în data de 5 a lunii următoare termenului legal de depunere a decontului de TVA.\n\n⚠ Cuantumurile amenzilor și procentele de confiscare prezentate în această lecție sunt cele **conform reglementărilor în vigoare la data redactării (iulie 2026)**. Legislația fiscală românească se modifică frecvent prin ordonanțe de urgență — verifică întotdeauna varianta actualizată pe site-ul ANAF (anaf.ro) sau prin consultarea unui expert contabil/consultant fiscal înainte de a lua decizii pe baza acestor cifre, mai ales dacă lecția este parcursă la o dată ulterioară redactării.\n\n## Exercițiu\nSC Metal Trans SRL transportă intern, cu un camion de 6 tone, un utilaj industrial (nu este pe lista de bunuri cu risc fiscal ridicat) în valoare de 120.000 lei, către un client din alt județ. Separat, aceeași firmă expediază, cu un alt camion de 3,5 tone, un lot de 8 tone de produse agroalimentare (risc fiscal ridicat) în valoare de 15.000 lei.\n\nÎntrebări:\n\n1. Care dintre cele două transporturi intră sub incidența obligației de raportare e-Transport și de ce?\n2. Dacă firma a mai avut o abatere similară (nedeclarare) în urmă cu 3 luni și este constatată acum la a doua abatere pe transportul de produse agroalimentare, ce sancțiune riscă (amendă + procent de confiscare aplicat la valoarea de 15.000 lei)?\n\n**Soluție:** **1. Analiza celor două transporturi:**\n\n- Utilajul industrial (120.000 lei, camion 6 tone): fiind transport **intern**, obligația de raportare e-Transport se aplică doar dacă bunul se încadrează în categoriile cu **risc fiscal ridicat** stabilite de ANAF. Un utilaj industrial obișnuit nu face parte, de regulă, din aceste categorii, deci acest transport **nu intră sub incidența obligației**, deși depășește pragul de 2,5 tone al vehiculului.\n- Lotul de produse agroalimentare (15.000 lei, camion 3,5 tone): se încadrează la categoria de bunuri cu risc fiscal ridicat și vehiculul depășește 2,5 tone → **obligația de a genera cod UIT înainte de plecare există**, indiferent de valoarea relativ mică a lotului.\n\n**2. Sancțiunea la a doua abatere (transport agroalimentar, 15.000 lei):**\n\n- Amendă contravențională pentru persoană juridică: **20.000–100.000 lei** (conform reglementărilor în vigoare la data redactării), aplicată indiferent de valoarea mărfii.\n- Confiscare: fiind **a doua abatere** într-o fereastră de 12 luni, procentul aplicabil este **15%** din valoarea bunurilor:\n\n15.000 lei × 15% = **2.250 lei confiscați**.\n\nConcluzie: firma riscă atât amenda contravențională, cât și confiscarea a 2.250 lei din valoarea lotului agroalimentar, în timp ce transportul utilajului nu generează niciun risc din perspectiva e-Transport, atâta timp cât utilajul nu este inclus în lista de bunuri cu risc fiscal ridicat.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "e-transport-cadru-general",
+    "md": "## Ce este sistemul e-Transport\n\nSistemul **e-Transport** este un instrument de monitorizare în timp real a transporturilor rutiere de bunuri, dezvoltat de ANAF în baza **OUG 41/2022**, modificată prin **OUG 129/2024**. Scopul declarat este combaterea evaziunii fiscale asociată circulației mărfurilor \"fantomă\" — bunuri care circulă pe drumurile publice fără documente fiscale corespunzătoare sau fără să fie ulterior evidențiate corect în contabilitate.\n\nObligația de raportare vizează două categorii de transporturi:\n\n1. **Transporturile interne** de bunuri cu **risc fiscal ridicat** — o listă de categorii de produse stabilită prin ordin al președintelui ANAF (de exemplu produse agroalimentare, produse din categorii sensibile la fraudă TVA), dacă sunt transportate cu vehicule de peste 2,5 tone masă maximă autorizată.\n2. **Toate transporturile rutiere internaționale** de bunuri (intracomunitare și cu țări terțe), cu vehicule de peste 2,5 tone, cu praguri suplimentare pe greutate și valoare a lotului transportat.\n\nDupă o perioadă îndelungată de aplicare graduală și amânări succesive, **de la 1 ianuarie 2026 obligațiile de raportare în e-Transport se aplică integral**, fără nicio perioadă de grație rămasă. Practic, orice firmă care expediază, primește sau transportă bunuri care se încadrează în criteriile de mai sus trebuie să respecte procedura completă, sub sancțiunea amenzilor și, în caz de abateri repetate, a confiscării graduale a contravalorii bunurilor nedeclarate.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "e-transport-cod-uit",
+    "md": "## Codul UIT — obținere și utilizare\n\nElementul central al sistemului este **codul UIT (Unic de Identificare a Transportului)**. Acesta se generează **înainte de începerea deplasării bunurilor**, prin declararea în platforma ANAF (aplicația e-Transport, disponibilă în Spațiul Privat Virtual) a datelor despre:\n\n- expeditor, destinatar și, după caz, transportator;\n- locul de încărcare și locul de descărcare;\n- descrierea, cantitatea și valoarea bunurilor transportate;\n- datele vehiculului (numărul de înmatriculare) și data estimată a începerii transportului.\n\nCodul UIT se obține **per partidă de bunuri** — pentru fiecare transport în parte, nu este un cod valabil pe o perioadă sau pentru mai multe curse. Odată generat, codul rămâne valabil doar pentru datele declarate inițial; orice modificare a rutei, a vehiculului sau a datelor esențiale ale transportului impune actualizarea declarației înainte de continuarea deplasării.\n\nÎn practică, entitatea obligată să declare este de regulă expeditorul (furnizorul bunurilor) sau destinatarul, în funcție de tipul operațiunii (livrare, achiziție intracomunitară, transfer între gestiuni proprii etc.), iar transportatorul are obligația să dețină codul UIT la bordul vehiculului pe toată durata deplasării, disponibil pentru control.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "e-transport-sanctiuni",
+    "md": "## Sancțiuni și regimul de confiscare graduală\n\nNerespectarea obligațiilor e-Transport (lipsa codului UIT, declarare incorectă sau tardivă) atrage sancțiuni contravenționale semnificative, aplicabile **conform reglementărilor în vigoare la data redactării acestei lecții (iulie 2026)** — verifică întotdeauna cuantumurile actualizate pe site-ul ANAF sau în Monitorul Oficial înainte de a le folosi ca referință definitivă:\n\n- **10.000–50.000 lei** pentru persoane fizice;\n- **20.000–100.000 lei** pentru persoane juridice.\n\nPe lângă amendă, legea prevede un mecanism de **confiscare graduală a contravalorii bunurilor** nedeclarate corect, aplicat progresiv în funcție de numărul de abateri constatate într-o fereastră de **12 luni**:\n\n- abaterea 1: 0% (doar amendă);\n- abaterea 2: 15% din valoarea bunurilor;\n- abaterea 3: 50% din valoarea bunurilor;\n- abaterea 4 și următoarele: 100% din valoarea bunurilor.\n\nAcest mecanism progresiv descurajează firmele care ar trata amenda inițială ca pe un simplu \"cost de a face afaceri\". Cea mai eficientă protecție este integrarea generării codului UIT direct în fluxul de facturare/expediție al firmei (ERP conectat la API-ul e-Transport), astfel încât nicio expediție să nu poată pleca fără codul deja generat.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ro-e-tva-precompletat",
+    "md": "## RO e-TVA — decontul precompletat și notificările de conformare\n\n**RO e-TVA**, introdus prin **OUG 70/2024**, este mecanismul prin care ANAF pune la dispoziția plătitorilor de TVA un **decont precompletat (P300)**, generat automat pe baza datelor deja deținute de administrația fiscală: e-Factura, e-Transport, case de marcat electronice, declarații vamale etc. Decontul precompletat se emite, în continuare, **până cel târziu în data de 5 a lunii următoare termenului legal de depunere a decontului de TVA**.\n\nInițial, legislația prevedea că, în cazul unor diferențe semnificative între decontul depus de contribuabil și decontul precompletat de ANAF, contribuabilul primea o **notificare de conformare** la care era obligat să răspundă, sub sancțiuni specifice. Această obligativitate a suferit o schimbare importantă: prin modificările aduse de **OUG 89/2025** și **OUG 13/2026**, **începând cu ianuarie 2026, obligația de a răspunde la notificările de conformare RO e-TVA, precum și sancțiunile aferente nerespectării acestei obligații, au fost abrogate**.\n\nÎn prezent, răspunsul la o notificare de conformare rămâne **voluntar și recomandat** — util pentru clarificarea diferențelor (de exemplu facturi neprimite încă în SPV, decalaje de raportare), dar fără termen legal obligatoriu și fără amendă asociată lipsei răspunsului. Ignorarea sistematică a notificărilor rămâne totuși un semnal de risc care poate influența selecția pentru inspecție fiscală.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b4"
+   },
+   {
+    "type": "example",
+    "title": "Obținerea codului UIT pentru un transport intern cu risc fiscal ridicat",
+    "concept_key": "e-transport-cod-uit",
+    "md": "**Situație:** SC Agro Prod SRL, producător de cereale, vinde unui client din altă localitate un lot de 25 de tone de grâu, transportat cu un camion de 12 tone capacitate, în valoare de 45.000 lei. Grâul se încadrează în categoria produselor agroalimentare cu risc fiscal ridicat.\n\n**Pași de conformare:**\n\n1. Înainte de plecarea camionului din depozit, responsabilul de expediții din Agro Prod SRL accesează aplicația e-Transport din SPV și completează datele: expeditor (Agro Prod SRL), destinatar (clientul), locul de încărcare, locul de descărcare, descrierea bunurilor (grâu, 25 tone), valoarea (45.000 lei), numărul de înmatriculare al camionului și data estimată a plecării.\n2. Sistemul generează **codul UIT**, pe care firma îl transmite transportatorului (poate fi salariat propriu sau firmă de transport terță).\n3. Transportatorul păstrează codul UIT disponibil pe toată durata deplasării (poate fi verificat de organele de control — Poliție, ANAF — prin scanare/interogare în sistem).\n4. Fiind transport intern cu risc fiscal ridicat și camion peste 2,5 tone, obligația de raportare există indiferent de valoarea mărfii — pragul de 2,5 tone al vehiculului este cel care declanșează obligația, nu doar valoarea lotului.\n\nDacă firma ar fi omis generarea codului UIT înainte de plecare, la un eventual control rutier ar risca o amendă (20.000–100.000 lei, ca persoană juridică, conform reglementărilor în vigoare la data redactării) și, dacă este prima abatere într-o fereastră de 12 luni, fără confiscare — dar riscul crește semnificativ la abaterile ulterioare.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul confiscării graduale la abateri repetate",
+    "concept_key": "e-transport-confiscare-graduala",
+    "md": "**Situație:** SC Distrib Rapid SRL este constatată de trei ori într-o fereastră de 12 luni că a transportat bunuri fără codul UIT generat corect. La a treia abatere, valoarea lotului de bunuri transportat era de **80.000 lei**.\n\n**Calcul:**\n\n- Abaterea 1 (cu 4 luni în urmă): doar amendă contravențională (persoană juridică: 20.000–100.000 lei), fără confiscare (0%).\n- Abaterea 2 (cu 2 luni în urmă): amendă + confiscare 15% din valoarea bunurilor din acea partidă.\n- Abaterea 3 (constatare curentă, valoare lot 80.000 lei): amendă contravențională **plus confiscarea a 50% din valoarea bunurilor**, adică:\n\n80.000 lei × 50% = **40.000 lei confiscați**, pe lângă amenda contravențională aplicată separat.\n\nDacă firma ar fi constatată o a patra oară în aceeași fereastră de 12 luni, procentul de confiscare ar ajunge la 100% din valoarea bunurilor din acea partidă — un cost care, cumulat cu amenda și cu întreruperea livrării (marfa poate fi reținută), depășește cu mult costul unei implementări corecte a fluxului de generare a codului UIT în ERP-ul firmei.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OUG 41/2022, modificată prin OUG 129/2024",
+    "article": "cadru general e-Transport",
+    "effective": "2026-01-01",
+    "md": "Sistemul e-Transport este reglementat prin OUG 41/2022, cu modificările ulterioare aduse prin OUG 129/2024. Perioada de grație pentru aplicarea completă a sancțiunilor a expirat, iar **de la 1 ianuarie 2026 obligațiile se aplică integral**, atât pentru transporturile interne de bunuri cu risc fiscal ridicat, cât și pentru toate transporturile rutiere internaționale efectuate cu vehicule de peste 2,5 tone.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b7"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OUG 70/2024, modificată prin OUG 89/2025 și OUG 13/2026",
+    "article": "RO e-TVA — notificări de conformare",
+    "effective": "2026-01-01",
+    "md": "Mecanismul RO e-TVA și decontul precompletat P300 au fost introduse prin OUG 70/2024. Prin modificările ulterioare (OUG 89/2025, OUG 13/2026), **de la ianuarie 2026 a fost abrogată obligația de a răspunde la notificările de conformare**, precum și sancțiunile asociate nerespectării acestei obligații. Decontul precompletat continuă să fie emis de ANAF până cel târziu în data de 5 a lunii următoare termenului legal de depunere a decontului de TVA.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Cuantumurile amenzilor și procentele de confiscare prezentate în această lecție sunt cele **conform reglementărilor în vigoare la data redactării (iulie 2026)**. Legislația fiscală românească se modifică frecvent prin ordonanțe de urgență — verifică întotdeauna varianta actualizată pe site-ul ANAF (anaf.ro) sau prin consultarea unui expert contabil/consultant fiscal înainte de a lua decizii pe baza acestor cifre, mai ales dacă lecția este parcursă la o dată ulterioară redactării.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Metal Trans SRL transportă intern, cu un camion de 6 tone, un utilaj industrial (nu este pe lista de bunuri cu risc fiscal ridicat) în valoare de 120.000 lei, către un client din alt județ. Separat, aceeași firmă expediază, cu un alt camion de 3,5 tone, un lot de 8 tone de produse agroalimentare (risc fiscal ridicat) în valoare de 15.000 lei.\n\nÎntrebări:\n\n1. Care dintre cele două transporturi intră sub incidența obligației de raportare e-Transport și de ce?\n2. Dacă firma a mai avut o abatere similară (nedeclarare) în urmă cu 3 luni și este constatată acum la a doua abatere pe transportul de produse agroalimentare, ce sancțiune riscă (amendă + procent de confiscare aplicat la valoarea de 15.000 lei)?",
+    "solution_md": "**1. Analiza celor două transporturi:**\n\n- Utilajul industrial (120.000 lei, camion 6 tone): fiind transport **intern**, obligația de raportare e-Transport se aplică doar dacă bunul se încadrează în categoriile cu **risc fiscal ridicat** stabilite de ANAF. Un utilaj industrial obișnuit nu face parte, de regulă, din aceste categorii, deci acest transport **nu intră sub incidența obligației**, deși depășește pragul de 2,5 tone al vehiculului.\n- Lotul de produse agroalimentare (15.000 lei, camion 3,5 tone): se încadrează la categoria de bunuri cu risc fiscal ridicat și vehiculul depășește 2,5 tone → **obligația de a genera cod UIT înainte de plecare există**, indiferent de valoarea relativ mică a lotului.\n\n**2. Sancțiunea la a doua abatere (transport agroalimentar, 15.000 lei):**\n\n- Amendă contravențională pentru persoană juridică: **20.000–100.000 lei** (conform reglementărilor în vigoare la data redactării), aplicată indiferent de valoarea mărfii.\n- Confiscare: fiind **a doua abatere** într-o fereastră de 12 luni, procentul aplicabil este **15%** din valoarea bunurilor:\n\n15.000 lei × 15% = **2.250 lei confiscați**.\n\nConcluzie: firma riscă atât amenda contravențională, cât și confiscarea a 2.250 lei din valoarea lotului agroalimentar, în timp ce transportul utilajului nu generează niciun risc din perspectiva e-Transport, atâta timp cât utilajul nu este inclus în lista de bunuri cu risc fiscal ridicat.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De la ce dată se aplică integral, fără perioadă de grație, obligațiile din sistemul e-Transport?",
+    "choices": [
+     "1 iulie 2024",
+     "1 ianuarie 2025",
+     "1 ianuarie 2026",
+     "1 august 2026"
+    ],
+    "answer": 2,
+    "explain": "Perioada de grație pentru sancțiunile e-Transport a expirat în 2025, iar de la 1 ianuarie 2026 obligațiile de raportare se aplică integral, fără excepții tranzitorii.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă este constatată pentru a treia oară, în 12 luni, că a transportat bunuri fără cod UIT valid. Ce procent din valoarea bunurilor poate fi confiscat, pe lângă amenda contravențională?",
+    "choices": [
+     "0%",
+     "15%",
+     "50%",
+     "100%"
+    ],
+    "answer": 2,
+    "explain": "Regimul de confiscare graduală prevede: 0% la prima abatere, 15% la a doua, 50% la a treia și 100% de la a patra abatere în sus, în aceeași fereastră de 12 luni.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b12"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce s-a schimbat la mecanismul RO e-TVA începând cu ianuarie 2026?",
+    "choices": [
+     "Decontul precompletat P300 a fost eliminat complet",
+     "Obligația de a răspunde la notificările de conformare și sancțiunile aferente au fost abrogate",
+     "Termenul de depunere a decontului de TVA s-a redus la 3 zile",
+     "S-a introdus o amendă nouă pentru neconcordanțe minore"
+    ],
+    "answer": 1,
+    "explain": "Prin OUG 89/2025 și OUG 13/2026, obligativitatea de a răspunde la notificările de conformare RO e-TVA și sancțiunile asociate au fost abrogate; decontul precompletat P300 continuă însă să fie emis, iar răspunsul la notificări rămâne voluntar.",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este codul UIT în sistemul e-Transport?",
+    "back": "Codul Unic de Identificare a Transportului, generat în aplicația e-Transport (SPV) înainte de începerea deplasării bunurilor, valabil per partidă de transport.",
+    "concept_key": "e-transport-cod-uit",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De la ce dată se aplică integral, fără grație, obligațiile e-Transport?",
+    "back": "De la 1 ianuarie 2026, perioada de grație a expirat în 2025.",
+    "concept_key": "e-transport-aplicare-integrala-2026",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este pragul de greutate al vehiculului pentru obligația de raportare e-Transport?",
+    "back": "Vehicule cu masă maximă autorizată de peste 2,5 tone, atât pentru transporturi interne cu risc fiscal ridicat, cât și pentru toate transporturile rutiere internaționale.",
+    "concept_key": "e-transport-prag-vehicul",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt procentele regimului de confiscare graduală în e-Transport (fereastră de 12 luni)?",
+    "back": "0% la prima abatere, 15% la a doua, 50% la a treia, 100% de la a patra abatere în sus.",
+    "concept_key": "e-transport-confiscare-graduala",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cadru legal reglementează e-Transport?",
+    "back": "OUG 41/2022, modificată prin OUG 129/2024.",
+    "concept_key": "e-transport-cadru-legal",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b18"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce s-a abrogat la RO e-TVA începând cu ianuarie 2026?",
+    "back": "Obligația de a răspunde la notificările de conformare și sancțiunile aferente nerespectării acestei obligații (OUG 89/2025, OUG 13/2026); răspunsul rămâne voluntar.",
+    "concept_key": "ro-e-tva-abrogare-obligatie-raspuns",
+    "blockId": "cmjjuxw4r00doumkpcr35dyez-b19"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1724,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "lessonId": "cmjjuxvvu007jumkpmzqavunc",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Practici și Tehnici Agile",
+ "lesson": "Kanban Board și Flow",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Kanban Board și Flow\n\n**Kanban** (japoneză pentru \"semnal vizual\" / \"cartelă\") este o metodă de management al fluxului de lucru dezvoltată de Taiichi Ohno la Toyota, adaptată pentru munca de cunoaștere (knowledge work - activități intelectuale precum dezvoltare software, analiză, suport) de David J. Anderson în anii 2000. Spre deosebire de Scrum, care organizează munca în Sprint-uri time-boxed (intervale fixe de 1-4 săptămâni) cu roluri definite (Product Owner, Scrum Master, Developers), Kanban este o metodă evolutivă: se suprapune peste procesul existent al echipei, fără a impune roluri noi sau iterații fixe, iar livrarea se face în flux continuu (continuous flow), pe măsură ce elementele sunt gata.\n\nCele șase practici fundamentale (David J. Anderson, *Kanban: Successful Evolutionary Change for Your Technology Business*) sunt:\n\n1. **Vizualizează fluxul de lucru** - fiecare etapă a procesului devine o coloană pe un board, iar fiecare cerință devine un card.\n2. **Limitează WIP** (*Work In Progress* - lucrul în desfășurare) - se stabilește un număr maxim de carduri permise simultan pe fiecare coloană.\n3. **Gestionează fluxul** - se urmăresc și se optimizează vitezele de mișcare a cardurilor prin sistem, nu doar volumul de muncă pornit.\n4. **Fă politicile explicite** - regulile de \"gata\" (Definition of Done) pentru fiecare coloană sunt scrise și vizibile pentru toată echipa.\n5. **Implementează bucle de feedback** - întâlniri regulate (ex. stand-up zilnic, revizuiri de flux) pentru a observa și corecta abaterile.\n6. **Îmbunătățește colaborativ, evoluează experimental** - schimbările se fac incremental, pe bază de date, nu prin reorganizări radicale.\n\nAceste principii fac din Kanban o metodă potrivită pentru echipe cu flux de lucru variabil sau imprevizibil (suport tehnic, mentenanță, echipe operaționale), unde impunerea unor Sprint-uri fixe ar fi artificială.\n\nUn **board Kanban** este format din coloane care reprezintă etapele reale ale fluxului de lucru al echipei, de exemplu: *Backlog → Analiză → Dezvoltare → Testare → UAT (User Acceptance Testing) → Finalizat*. Fiecare coloană poartă un **WIP limit** (limita de lucru în desfășurare) - un număr maxim de carduri permise simultan în acea etapă. Când o coloană atinge limita, echipa nu mai poate introduce elemente noi în ea; membrii echipei sunt astfel încurajați să colaboreze pentru a \"trage\" (pull) cardurile blocate spre finalizare, în loc să înceapă lucruri noi (principiul *pull system*, opus unui *push system* unde munca este împinsă în sistem indiferent de capacitate).\n\nBoard-ul poate fi împărțit orizontal în **swimlane-uri** (culoare de lucru) pentru a separa vizual tipuri diferite de cereri - de exemplu o linie pentru task-uri urgente (\"expedite\"), una pentru cereri standard și una pentru mentenanță/bug-uri. Fiecare card conține, de regulă: titlul cererii, responsabilul curent, estimarea de efort, prioritatea și data la care a intrat în coloana curentă - informații esențiale pentru calculul metricilor de flux.\n\nWIP limit-urile joacă un rol dublu: (1) previn supraîncărcarea echipei (multitasking excesiv, care scade productivitatea reală), și (2) scot rapid la iveală **blocajele** (bottlenecks) - coloanele care se umplu constant la limită semnalează o etapă subdimensionată în raport cu restul fluxului, unde este nevoie de capacitate suplimentară sau de realocare temporară a oamenilor.\n\nGestionarea fluxului în Kanban se bazează pe trei metrici principale:\n\n- **Lead Time** - timpul total scurs din momentul în care o cerere intră în sistem (de exemplu, este adăugată în Backlog) până este livrată clientului.\n- **Cycle Time** - timpul cât o cerere este activă în lucru, măsurat de regulă din momentul în care intră în coloana \"Dezvoltare\" (sau prima coloană de lucru efectiv) până în \"Finalizat\". Cycle Time este întotdeauna mai mic sau egal cu Lead Time.\n- **Throughput** - numărul de elemente (user stories, task-uri, tichete) finalizate într-o unitate de timp (ex. pe săptămână).\n\nRelația dintre aceste trei metrici este descrisă de **Legea lui Little** (Little's Law), un rezultat din teoria cozilor de așteptare aplicat la managementul fluxului:\n\n**WIP mediu = Throughput mediu × Cycle Time mediu**\n\nAceastă formulă permite echipei să estimeze, pe bază de date istorice reale, cât de mult lucru poate ține simultan \"în zbor\" (WIP) pentru un anumit ritm de livrare dorit, sau invers, să estimeze Cycle Time-ul așteptat dacă se cunosc WIP-ul curent și Throughput-ul istoric. Legea funcționează corect doar dacă sistemul este relativ stabil (WIP-ul nu crește sau scade constant pe termen lung) - de aceea disciplina WIP limit-urilor este esențială pentru ca metricile de flux să fie predictibile.\n\n**Diagrama Fluxului Cumulativ** (*Cumulative Flow Diagram* - CFD) este instrumentul vizual standard pentru monitorizarea sănătății unui flux Kanban. CFD este un grafic cu zone stivuite (stacked area chart), în care axa orizontală reprezintă timpul, iar fiecare zonă colorată reprezintă numărul cumulat de elemente aflate într-o anumită stare (Backlog, Dezvoltare, Testare, Finalizat) la un moment dat.\n\nDin CFD se pot citi direct: **Lead Time-ul** (distanța orizontală între curba de intrare și cea de finalizare pentru un element), **WIP-ul** (distanța verticală între cele două curbe la un moment dat) și **Throughput-ul** (panta curbei de \"Finalizat\"). Dacă lățimea unei zone intermediare (de exemplu, \"Testare\") crește constant în timp, în timp ce zona \"Finalizat\" rămâne plată, acesta este un semnal clar de **blocaj**: elementele se acumulează în acea etapă mai repede decât pot fi procesate, iar echipa trebuie să intervină - fie realocând oameni către acea etapă, fie reducând WIP limit-ul din amonte pentru a opri alimentarea blocajului.\n\n**Scrumban** este un model hibrid ce combină cadențele și ritualurile din Scrum (Sprint Planning, Retrospective, uneori Sprint Review) cu vizualizarea fluxului și WIP limit-urile din Kanban. Este util pentru echipe care doresc predictibilitatea dată de întâlnirile periodice de planificare și îmbunătățire continuă, dar al căror flux de lucru real este prea variabil pentru Sprint-uri stricte (de exemplu echipe de mentenanță ERP, unde cererile de tip incident nu pot aștepta următorul Sprint).\n\nÎn Scrumban, backlogul nu mai este \"umplut\" integral la începutul unui Sprint, ci este reaprovizionat pe măsură ce coloana de intrare (\"Ready\") scade sub un anumit prag (*replenishment trigger*), iar livrarea se face continuu, nu doar la finalul Sprint-ului. Multe organizații românești care fac tranziția de la Scrum clasic la un model mai flexibil - de exemplu echipe de suport post-implementare ERP sau echipe DevOps - adoptă Scrumban ca punte între cele două metode, păstrând disciplina de planificare, dar câștigând agilitatea fluxului continuu.\n\n## Exemplu: Board Kanban la implementarea unui ERP\nEchipa de implementare ERP a firmei **ConectaSoft SRL** folosește un board Kanban cu coloanele: *Backlog (fără limită) → Analiză (WIP 3) → Dezvoltare (WIP 5) → Testare (WIP 3) → UAT (WIP 2) → Finalizat*.\n\nÎntr-o zi de miercuri, situația board-ului este: Analiză = 3 carduri (la limită), Dezvoltare = 5 carduri (la limită), Testare = 3 carduri (la limită), UAT = 1 card (sub limită). Un dezvoltator termină un card în \"Dezvoltare\" și vrea să preia unul nou din \"Analiză\", dar observă că \"Testare\" este deja la limita sa de 3 - regula WIP spune că nu se pot introduce cereri noi în \"Testare\" până nu se eliberează un loc.\n\nAcesta este exact rolul WIP limit-urilor: în loc ca dezvoltatorul să pornească un card nou (creând mai mult lucru neterminat), Scrum Master-ul/Kanban coach-ul echipei propune un **swarming** temporar - dezvoltatorul ajută testerul să finalizeze unul dintre cele trei carduri blocate în \"Testare\". Rezultatul: cardul iese spre UAT, se eliberează un loc în \"Testare\", iar fluxul general al echipei se reia, în loc să se acumuleze lucru neterminat în amonte.\n\n## Exemplu: Calculul Cycle Time cu Legea lui Little\nO echipă Kanban dintr-un departament de suport ERP are, pe baza datelor din ultimele 8 săptămâni, un **Throughput mediu de 2 tichete finalizate pe zi lucrătoare** și un **WIP mediu observat pe board de 10 tichete**.\n\nAplicând Legea lui Little (WIP mediu = Throughput mediu × Cycle Time mediu), se calculează Cycle Time-ul mediu:\n\nCycle Time mediu = WIP mediu ÷ Throughput mediu = 10 tichete ÷ 2 tichete/zi = **5 zile lucrătoare**\n\nAceasta înseamnă că, în medie, un tichet stă activ în lucru 5 zile lucrătoare din momentul în care intră efectiv în procesare până este finalizat. Dacă managementul dorește să reducă acest Cycle Time la 3 zile pentru a respecta un SLA (Service Level Agreement - acord de nivel de servicii) mai strict față de clienți, echipa are două pârghii, conform aceleiași formule: fie crește Throughput-ul (mai multă capacitate sau eliminarea blocajelor), fie reduce WIP-ul mediu (WIP limit-uri mai stricte pe coloane), pentru a menține 3 zile = WIP ÷ 2, adică un WIP țintă de maximum 6 tichete.\n\n## Exercițiu\nEchipa de suport post-implementare ERP a firmei **Digitax Solutions SRL** a finalizat **24 de task-uri în ultimele 4 săptămâni**. WIP-ul mediu observat pe board în aceeași perioadă a fost de **12 task-uri**. Săptămâna de lucru are 5 zile lucrătoare.\n\nCerințe:\na) Calculează Throughput-ul mediu săptămânal.\nb) Calculează Cycle Time-ul mediu (folosind Legea lui Little), exprimat în săptămâni și apoi în zile lucrătoare.\nc) Firma are un SLA intern care impune un Cycle Time maxim de 5 zile lucrătoare pentru finalizarea task-urilor de suport. Este echipa în interiorul SLA-ului? Ce acțiune ar trebui să ia dacă nu?\n\n**Soluție:** a) Throughput mediu săptămânal = 24 task-uri ÷ 4 săptămâni = **6 task-uri/săptămână**.\n\nb) Conform Legii lui Little: WIP mediu = Throughput mediu × Cycle Time mediu, deci:\nCycle Time mediu = WIP mediu ÷ Throughput mediu = 12 task-uri ÷ 6 task-uri/săptămână = **2 săptămâni**.\nExprimat în zile lucrătoare: 2 săptămâni × 5 zile/săptămână = **10 zile lucrătoare**.\n\nc) Cycle Time-ul real (10 zile lucrătoare) depășește cu 100% SLA-ul intern de 5 zile lucrătoare, deci echipa **nu se încadrează** în SLA. Conform formulei Little, pentru a atinge un Cycle Time de 5 zile lucrătoare (1 săptămână) la același Throughput de 6 task-uri/săptămână, WIP-ul mediu ar trebui redus la: WIP țintă = Throughput × Cycle Time țintă = 6 × 1 = **6 task-uri**. Echipa ar trebui deci să reducă WIP limit-urile de pe board (de exemplu, înjumătățindu-le) și să investigheze coloana unde se acumulează cele mai multe task-uri, pentru a elimina blocajul care menține WIP-ul curent la 12.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "kanban-principii-fundamentale",
+    "md": "**Kanban** (japoneză pentru \"semnal vizual\" / \"cartelă\") este o metodă de management al fluxului de lucru dezvoltată de Taiichi Ohno la Toyota, adaptată pentru munca de cunoaștere (knowledge work - activități intelectuale precum dezvoltare software, analiză, suport) de David J. Anderson în anii 2000. Spre deosebire de Scrum, care organizează munca în Sprint-uri time-boxed (intervale fixe de 1-4 săptămâni) cu roluri definite (Product Owner, Scrum Master, Developers), Kanban este o metodă evolutivă: se suprapune peste procesul existent al echipei, fără a impune roluri noi sau iterații fixe, iar livrarea se face în flux continuu (continuous flow), pe măsură ce elementele sunt gata.\n\nCele șase practici fundamentale (David J. Anderson, *Kanban: Successful Evolutionary Change for Your Technology Business*) sunt:\n\n1. **Vizualizează fluxul de lucru** - fiecare etapă a procesului devine o coloană pe un board, iar fiecare cerință devine un card.\n2. **Limitează WIP** (*Work In Progress* - lucrul în desfășurare) - se stabilește un număr maxim de carduri permise simultan pe fiecare coloană.\n3. **Gestionează fluxul** - se urmăresc și se optimizează vitezele de mișcare a cardurilor prin sistem, nu doar volumul de muncă pornit.\n4. **Fă politicile explicite** - regulile de \"gata\" (Definition of Done) pentru fiecare coloană sunt scrise și vizibile pentru toată echipa.\n5. **Implementează bucle de feedback** - întâlniri regulate (ex. stand-up zilnic, revizuiri de flux) pentru a observa și corecta abaterile.\n6. **Îmbunătățește colaborativ, evoluează experimental** - schimbările se fac incremental, pe bază de date, nu prin reorganizări radicale.\n\nAceste principii fac din Kanban o metodă potrivită pentru echipe cu flux de lucru variabil sau imprevizibil (suport tehnic, mentenanță, echipe operaționale), unde impunerea unor Sprint-uri fixe ar fi artificială.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "kanban-board-wip-limits",
+    "md": "Un **board Kanban** este format din coloane care reprezintă etapele reale ale fluxului de lucru al echipei, de exemplu: *Backlog → Analiză → Dezvoltare → Testare → UAT (User Acceptance Testing) → Finalizat*. Fiecare coloană poartă un **WIP limit** (limita de lucru în desfășurare) - un număr maxim de carduri permise simultan în acea etapă. Când o coloană atinge limita, echipa nu mai poate introduce elemente noi în ea; membrii echipei sunt astfel încurajați să colaboreze pentru a \"trage\" (pull) cardurile blocate spre finalizare, în loc să înceapă lucruri noi (principiul *pull system*, opus unui *push system* unde munca este împinsă în sistem indiferent de capacitate).\n\nBoard-ul poate fi împărțit orizontal în **swimlane-uri** (culoare de lucru) pentru a separa vizual tipuri diferite de cereri - de exemplu o linie pentru task-uri urgente (\"expedite\"), una pentru cereri standard și una pentru mentenanță/bug-uri. Fiecare card conține, de regulă: titlul cererii, responsabilul curent, estimarea de efort, prioritatea și data la care a intrat în coloana curentă - informații esențiale pentru calculul metricilor de flux.\n\nWIP limit-urile joacă un rol dublu: (1) previn supraîncărcarea echipei (multitasking excesiv, care scade productivitatea reală), și (2) scot rapid la iveală **blocajele** (bottlenecks) - coloanele care se umplu constant la limită semnalează o etapă subdimensionată în raport cu restul fluxului, unde este nevoie de capacitate suplimentară sau de realocare temporară a oamenilor.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "kanban-metrici-flow-little-law",
+    "md": "Gestionarea fluxului în Kanban se bazează pe trei metrici principale:\n\n- **Lead Time** - timpul total scurs din momentul în care o cerere intră în sistem (de exemplu, este adăugată în Backlog) până este livrată clientului.\n- **Cycle Time** - timpul cât o cerere este activă în lucru, măsurat de regulă din momentul în care intră în coloana \"Dezvoltare\" (sau prima coloană de lucru efectiv) până în \"Finalizat\". Cycle Time este întotdeauna mai mic sau egal cu Lead Time.\n- **Throughput** - numărul de elemente (user stories, task-uri, tichete) finalizate într-o unitate de timp (ex. pe săptămână).\n\nRelația dintre aceste trei metrici este descrisă de **Legea lui Little** (Little's Law), un rezultat din teoria cozilor de așteptare aplicat la managementul fluxului:\n\n**WIP mediu = Throughput mediu × Cycle Time mediu**\n\nAceastă formulă permite echipei să estimeze, pe bază de date istorice reale, cât de mult lucru poate ține simultan \"în zbor\" (WIP) pentru un anumit ritm de livrare dorit, sau invers, să estimeze Cycle Time-ul așteptat dacă se cunosc WIP-ul curent și Throughput-ul istoric. Legea funcționează corect doar dacă sistemul este relativ stabil (WIP-ul nu crește sau scade constant pe termen lung) - de aceea disciplina WIP limit-urilor este esențială pentru ca metricile de flux să fie predictibile.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "kanban-cfd-blocaje",
+    "md": "**Diagrama Fluxului Cumulativ** (*Cumulative Flow Diagram* - CFD) este instrumentul vizual standard pentru monitorizarea sănătății unui flux Kanban. CFD este un grafic cu zone stivuite (stacked area chart), în care axa orizontală reprezintă timpul, iar fiecare zonă colorată reprezintă numărul cumulat de elemente aflate într-o anumită stare (Backlog, Dezvoltare, Testare, Finalizat) la un moment dat.\n\nDin CFD se pot citi direct: **Lead Time-ul** (distanța orizontală între curba de intrare și cea de finalizare pentru un element), **WIP-ul** (distanța verticală între cele două curbe la un moment dat) și **Throughput-ul** (panta curbei de \"Finalizat\"). Dacă lățimea unei zone intermediare (de exemplu, \"Testare\") crește constant în timp, în timp ce zona \"Finalizat\" rămâne plată, acesta este un semnal clar de **blocaj**: elementele se acumulează în acea etapă mai repede decât pot fi procesate, iar echipa trebuie să intervină - fie realocând oameni către acea etapă, fie reducând WIP limit-ul din amonte pentru a opri alimentarea blocajului.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scrumban-hibrid",
+    "md": "**Scrumban** este un model hibrid ce combină cadențele și ritualurile din Scrum (Sprint Planning, Retrospective, uneori Sprint Review) cu vizualizarea fluxului și WIP limit-urile din Kanban. Este util pentru echipe care doresc predictibilitatea dată de întâlnirile periodice de planificare și îmbunătățire continuă, dar al căror flux de lucru real este prea variabil pentru Sprint-uri stricte (de exemplu echipe de mentenanță ERP, unde cererile de tip incident nu pot aștepta următorul Sprint).\n\nÎn Scrumban, backlogul nu mai este \"umplut\" integral la începutul unui Sprint, ci este reaprovizionat pe măsură ce coloana de intrare (\"Ready\") scade sub un anumit prag (*replenishment trigger*), iar livrarea se face continuu, nu doar la finalul Sprint-ului. Multe organizații românești care fac tranziția de la Scrum clasic la un model mai flexibil - de exemplu echipe de suport post-implementare ERP sau echipe DevOps - adoptă Scrumban ca punte între cele două metode, păstrând disciplina de planificare, dar câștigând agilitatea fluxului continuu.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b5"
+   },
+   {
+    "type": "example",
+    "title": "Board Kanban la implementarea unui ERP",
+    "concept_key": "kanban-board-wip-limits",
+    "md": "Echipa de implementare ERP a firmei **ConectaSoft SRL** folosește un board Kanban cu coloanele: *Backlog (fără limită) → Analiză (WIP 3) → Dezvoltare (WIP 5) → Testare (WIP 3) → UAT (WIP 2) → Finalizat*.\n\nÎntr-o zi de miercuri, situația board-ului este: Analiză = 3 carduri (la limită), Dezvoltare = 5 carduri (la limită), Testare = 3 carduri (la limită), UAT = 1 card (sub limită). Un dezvoltator termină un card în \"Dezvoltare\" și vrea să preia unul nou din \"Analiză\", dar observă că \"Testare\" este deja la limita sa de 3 - regula WIP spune că nu se pot introduce cereri noi în \"Testare\" până nu se eliberează un loc.\n\nAcesta este exact rolul WIP limit-urilor: în loc ca dezvoltatorul să pornească un card nou (creând mai mult lucru neterminat), Scrum Master-ul/Kanban coach-ul echipei propune un **swarming** temporar - dezvoltatorul ajută testerul să finalizeze unul dintre cele trei carduri blocate în \"Testare\". Rezultatul: cardul iese spre UAT, se eliberează un loc în \"Testare\", iar fluxul general al echipei se reia, în loc să se acumuleze lucru neterminat în amonte.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b6"
+   },
+   {
+    "type": "example",
+    "title": "Calculul Cycle Time cu Legea lui Little",
+    "concept_key": "kanban-metrici-flow-little-law",
+    "md": "O echipă Kanban dintr-un departament de suport ERP are, pe baza datelor din ultimele 8 săptămâni, un **Throughput mediu de 2 tichete finalizate pe zi lucrătoare** și un **WIP mediu observat pe board de 10 tichete**.\n\nAplicând Legea lui Little (WIP mediu = Throughput mediu × Cycle Time mediu), se calculează Cycle Time-ul mediu:\n\nCycle Time mediu = WIP mediu ÷ Throughput mediu = 10 tichete ÷ 2 tichete/zi = **5 zile lucrătoare**\n\nAceasta înseamnă că, în medie, un tichet stă activ în lucru 5 zile lucrătoare din momentul în care intră efectiv în procesare până este finalizat. Dacă managementul dorește să reducă acest Cycle Time la 3 zile pentru a respecta un SLA (Service Level Agreement - acord de nivel de servicii) mai strict față de clienți, echipa are două pârghii, conform aceleiași formule: fie crește Throughput-ul (mai multă capacitate sau eliminarea blocajelor), fie reduce WIP-ul mediu (WIP limit-uri mai stricte pe coloane), pentru a menține 3 zile = WIP ÷ 2, adică un WIP țintă de maximum 6 tichete.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Echipa de suport post-implementare ERP a firmei **Digitax Solutions SRL** a finalizat **24 de task-uri în ultimele 4 săptămâni**. WIP-ul mediu observat pe board în aceeași perioadă a fost de **12 task-uri**. Săptămâna de lucru are 5 zile lucrătoare.\n\nCerințe:\na) Calculează Throughput-ul mediu săptămânal.\nb) Calculează Cycle Time-ul mediu (folosind Legea lui Little), exprimat în săptămâni și apoi în zile lucrătoare.\nc) Firma are un SLA intern care impune un Cycle Time maxim de 5 zile lucrătoare pentru finalizarea task-urilor de suport. Este echipa în interiorul SLA-ului? Ce acțiune ar trebui să ia dacă nu?",
+    "solution_md": "a) Throughput mediu săptămânal = 24 task-uri ÷ 4 săptămâni = **6 task-uri/săptămână**.\n\nb) Conform Legii lui Little: WIP mediu = Throughput mediu × Cycle Time mediu, deci:\nCycle Time mediu = WIP mediu ÷ Throughput mediu = 12 task-uri ÷ 6 task-uri/săptămână = **2 săptămâni**.\nExprimat în zile lucrătoare: 2 săptămâni × 5 zile/săptămână = **10 zile lucrătoare**.\n\nc) Cycle Time-ul real (10 zile lucrătoare) depășește cu 100% SLA-ul intern de 5 zile lucrătoare, deci echipa **nu se încadrează** în SLA. Conform formulei Little, pentru a atinge un Cycle Time de 5 zile lucrătoare (1 săptămână) la același Throughput de 6 task-uri/săptămână, WIP-ul mediu ar trebui redus la: WIP țintă = Throughput × Cycle Time țintă = 6 × 1 = **6 task-uri**. Echipa ar trebui deci să reducă WIP limit-urile de pe board (de exemplu, înjumătățindu-le) și să investigheze coloana unde se acumulează cele mai multe task-uri, pentru a elimina blocajul care menține WIP-ul curent la 12.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula corectă a Legii lui Little aplicată pe un board Kanban?",
+    "choices": [
+     "Lead Time = Cycle Time + Throughput",
+     "WIP mediu = Throughput mediu × Cycle Time mediu",
+     "Throughput = WIP mediu - Cycle Time mediu",
+     "Cycle Time = Lead Time × numărul de coloane"
+    ],
+    "answer": 1,
+    "explain": "Legea lui Little afirmă că WIP-ul mediu dintr-un sistem stabil este egal cu produsul dintre Throughput-ul mediu și Cycle Time-ul mediu. Din această relație se poate deriva oricare dintre cele trei mărimi, cunoscându-le pe celelalte două.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce practică Kanban previne direct supraîncărcarea echipei prin multitasking excesiv?",
+    "choices": [
+     "Vizualizarea fluxului de lucru pe board",
+     "Limitarea WIP (Work In Progress) pe coloane",
+     "Diagrama Fluxului Cumulativ (CFD)",
+     "Organizarea în swimlane-uri"
+    ],
+    "answer": 1,
+    "explain": "WIP limit-urile stabilesc un număr maxim de elemente permise simultan într-o coloană; când limita este atinsă, echipa este forțată să colaboreze pentru finalizarea lucrului existent înainte de a începe altul nou, prevenind astfel multitasking-ul și supraîncărcarea.",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă WIP într-un sistem Kanban?",
+    "back": "Work In Progress - lucrul în desfășurare; numărul de elemente (carduri) aflate simultan în lucru pe board, într-o coloană sau în întregul sistem.",
+    "concept_key": "kanban-board-wip-limits",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula Legii lui Little aplicată în Kanban?",
+    "back": "WIP mediu = Throughput mediu × Cycle Time mediu.",
+    "concept_key": "kanban-metrici-flow-little-law",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența esențială dintre Kanban și Scrum?",
+    "back": "Kanban gestionează un flux continuu de lucru, fără iterații fixe sau roluri impuse; Scrum organizează munca în Sprint-uri time-boxed (1-4 săptămâni) cu roluri definite (Product Owner, Scrum Master, Developers).",
+    "concept_key": "kanban-principii-fundamentale",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Cycle Time?",
+    "back": "Timpul cât un element rămâne activ în lucru, măsurat de la intrarea în prima coloană de lucru efectiv până la finalizare; este întotdeauna mai mic sau egal cu Lead Time.",
+    "concept_key": "kanban-metrici-flow-little-law",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce arată o Diagramă a Fluxului Cumulativ (CFD) atunci când o zonă intermediară se lărgește constant?",
+    "back": "Un blocaj (bottleneck): elementele se acumulează în acea etapă mai repede decât pot fi procesate, semnal că echipa trebuie să realoce capacitate sau să reducă WIP-ul din amonte.",
+    "concept_key": "kanban-cfd-blocaje",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Scrumban?",
+    "back": "Model hibrid ce combină cadențele Scrum (Sprint Planning, Retrospective) cu vizualizarea fluxului și WIP limit-urile din Kanban, potrivit echipelor cu flux variabil care vor totuși ritualuri de planificare periodică.",
+    "concept_key": "scrumban-hibrid",
+    "blockId": "cmjjuxvvu007jumkpmzqavunc-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1616,
+   "flashcards": 6
+  }
+ }
+}

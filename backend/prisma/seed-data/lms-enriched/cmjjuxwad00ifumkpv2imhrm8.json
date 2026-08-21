@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxwad00ifumkpv2imhrm8",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Calculul Salariilor",
+ "lesson": "Exercițiu calcul salariu",
+ "category": "HR_COMPLIANCE",
+ "content": "# Exercițiu calcul salariu\n\n## De la salariul brut la salariul net\n\nÎn România, salariul **brut** este suma trecută în contractul individual de muncă (CIM) și în statul de plată. Salariul **net** este suma pe care angajatul o încasează efectiv, după ce se scad din brut trei reținere obligatorii, calculate în cascadă, în această ordine:\n\n1. **CAS** (contribuția de asigurări sociale) – 25% din brut\n2. **CASS** (contribuția de asigurări sociale de sănătate) – 10% din brut\n3. **Impozitul pe venit** – 10%, aplicat nu la brut, ci la baza impozabilă rămasă după scăderea CAS și CASS\n\nFormula generală este:\n\n**Net = Brut − CAS(25%×Brut) − CASS(10%×Brut) − Impozit[10%×(Brut−CAS−CASS−deduceri)]**\n\nAceste cote (25% CAS, 10% CASS, 10% impozit) sunt valabile și neschimbate în 2026. Reținerea corectă a acestor sume este responsabilitatea angajatorului, prin intermediul statului de plată lunar.\n\n## Baza impozabilă și deducerile\n\nImpozitul pe venit de 10% nu se aplică niciodată direct la salariul brut, ci la **baza impozabilă**, obținută astfel:\n\nBaza impozabilă = Brut − CAS − CASS − deduceri aplicabile\n\nDintre deduceri, cele mai frecvente în practică sunt:\n\n- **Deducerea personală de bază**, aplicabilă în anumite condiții de venit și de persoane aflate în întreținere, stabilită prin Codul Fiscal (Legea nr. 227/2015) — cuantumul exact variază în funcție de nivelul venitului brut și numărul de persoane în întreținere, motiv pentru care nu poate fi generalizat printr-o singură cifră; verificați grila în vigoare pentru fiecare caz concret.\n- **Contribuțiile la fonduri de pensii facultative sau abonamente medicale**, în limitele legale, dacă angajatorul le suportă.\n\nÎn exercițiile din această lecție lucrăm cu situația cea mai simplă — angajat fără persoane în întreținere și fără alte deduceri —, tocmai pentru a fixa mecanismul de calcul înainte de a adăuga excepții.\n\n## CAM și costul total pentru angajator\n\nSalariul net al angajatului nu reprezintă costul real al angajării pentru firmă. Pe lângă salariul brut, angajatorul datorează statului o contribuție suplimentară, suportată integral de firmă, fără a afecta salariul net al angajatului:\n\n- **CAM** (contribuția asiguratorie pentru muncă) = **2,25% din salariul brut**\n\nCostul total al unui angajat pentru firmă se calculează astfel:\n\n**Cost total angajator = Salariul brut + CAM**\n\nAceastă distincție este esențială în discuțiile de angajare: candidatul negociază de regulă salariul brut sau net, dar bugetul companiei trebuie construit pornind de la costul total. Cumulând reținerile angajatului (CAS, CASS, impozit) cu CAM-ul suportat de angajator, presiunea fiscală totală asupra unui raport de muncă standard se apropie de **43% din salariul brut**.\n\n## Facilitatea fiscală pentru salariul minim (regim special)\n\nPentru angajații care au salariul brut la nivelul salariului minim pe economie (locul de muncă principal, normă întreagă), legislația prevede o **parte netaxabilă** din salariu, exclusă din baza de calcul a contribuțiilor și a impozitului. Această sumă a fost **300 lei până la 30 iunie 2026** și este **200 lei începând cu 1 iulie 2026** (OUG nr. 89/2025). Cu salariul minim brut de **4.325 lei** (valabil de la 1 iulie 2026, conform HG nr. 146/2026), salariul net rezultat este de aproximativ **2.699 lei**.\n\nMecanismul exact de aplicare a acestei facilități (condiții de eligibilitate, interacțiunea cu alte deduceri) are particularități legale care depășesc scopul acestei lecții introductive — pentru cazuri reale de salariați la nivelul minimului pe economie, verificați reglementarea în vigoare sau consultați un specialist în salarizare. În exercițiile de mai jos lucrăm exclusiv cu salarii peste minimul pe economie, unde se aplică formula generală, fără această facilitate specială.\n\n## Exemplu: Calcul complet pentru un salariu brut de 5.000 lei\nUn angajat cu normă întreagă are salariul brut de **5.000 lei**, fără persoane în întreținere. Calculul pas cu pas:\n\n| Element | Calcul | Valoare |\n|---|---|---|\n| Salariu brut | — | 5.000 lei |\n| CAS (25%) | 25% × 5.000 | 1.250 lei |\n| CASS (10%) | 10% × 5.000 | 500 lei |\n| Bază impozabilă | 5.000 − 1.250 − 500 | 3.250 lei |\n| Impozit pe venit (10%) | 10% × 3.250 | 325 lei |\n| **Salariu net** | 5.000 − 1.250 − 500 − 325 | **2.925 lei** |\n\nTotalul reținerilor din salariul angajatului este de 2.075 lei (1.250+500+325), adică aproximativ 41,5% din brut — apropiat de presiunea fiscală medie de ~43% menționată anterior, care include și contribuția CAM suportată de angajator.\n\n## Exemplu: De la salariul brut la costul total pentru angajator\nPornind de la același salariu brut de **5.000 lei**, calculăm cât costă efectiv acest angajat firma:\n\n- CAM (2,25%) = 2,25% × 5.000 = **112,50 lei**\n- Cost total angajator = 5.000 + 112,50 = **5.112,50 lei**\n\nAșadar, pentru un salariu net de 2.925 lei încasat de angajat, firma cheltuiește în total 5.112,50 lei/lună. Diferența dintre cost total și net (5.112,50 − 2.925 = 2.187,50 lei) reprezintă suma vărsată către bugetul de stat sub formă de CAS, CASS, impozit pe venit și CAM.\n\n> Temei legal: Legea nr. 227/2015 privind Codul Fiscal art. 64 alin. (1) — cota de impozit pe venit; art. 138 — cota CAS; art. 156 — cota CASS (în vigoare de la 2016-01-01)\nCodul Fiscal stabilește cotele reținerilor salariale aplicate la nivel național: impozitul pe venit din salarii de 10% (art. 64 alin. 1), contribuția de asigurări sociale (CAS) de 25% în sarcina angajatului (art. 138) și contribuția de asigurări sociale de sănătate (CASS) de 10% în sarcina angajatului (art. 156). Aceste cote, verificate la 7 iulie 2026, rămân neschimbate față de anii anteriori. Orice modificare legislativă a acestor cote trebuie verificată direct în forma actualizată a Codului Fiscal înainte de a fi aplicată în calculul salarial.\n\n⚠ Exercițiile din această lecție folosesc cazul cel mai simplu de calcul (angajat fără persoane în întreținere, fără tichete de masă, fără alte beneficii), pentru a fixa mecanismul de bază. În practică, elemente precum tichetele de masă (impozitate cu 10% + CASS, dar scutite de CAS, cu o valoare nominală maximă actualizată periodic — verificați valoarea în vigoare la data calculului), deducerile personale sau sporurile pot modifica rezultatul final. Aceste calcule au scop didactic și nu înlocuiesc verificarea cu un specialist în salarizare sau contabilitate pentru situații reale ale angajaților dumneavoastră.\n\n## Exercițiu\nCalculați salariul net pentru fiecare dintre următorii trei angajați cu normă întreagă, fără persoane în întreținere și fără alte deduceri sau beneficii. Pentru fiecare, determinați CAS, CASS, baza impozabilă, impozitul pe venit și salariul net.\n\n**Scenariul A** — Angajat junior, salariu brut: 4.500 lei\n\n**Scenariul B** — Angajat cu experiență medie, salariu brut: 5.750 lei\n\n**Scenariul C** — Specialist senior, salariu brut: 8.200 lei\n\n**Soluție:** **Scenariul A — Brut 4.500 lei**\n- CAS (25%) = 1.125 lei\n- CASS (10%) = 450 lei\n- Bază impozabilă = 4.500 − 1.125 − 450 = 2.925 lei\n- Impozit (10%) = 292,50 lei\n- **Net = 4.500 − 1.125 − 450 − 292,50 = 2.632,50 lei**\n\n**Scenariul B — Brut 5.750 lei**\n- CAS (25%) = 1.437,50 lei\n- CASS (10%) = 575 lei\n- Bază impozabilă = 5.750 − 1.437,50 − 575 = 3.737,50 lei\n- Impozit (10%) = 373,75 lei\n- **Net = 5.750 − 1.437,50 − 575 − 373,75 = 3.363,75 lei**\n\n**Scenariul C — Brut 8.200 lei**\n- CAS (25%) = 2.050 lei\n- CASS (10%) = 820 lei\n- Bază impozabilă = 8.200 − 2.050 − 820 = 5.330 lei\n- Impozit (10%) = 533 lei\n- **Net = 8.200 − 2.050 − 820 − 533 = 4.797 lei**\n\nObservație: toate cele trei salarii brute depășesc salariul minim pe economie de 4.325 lei (valabil de la 1 iulie 2026), motiv pentru care se aplică formula generală, fără facilitatea specială a părții netaxabile.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "formula-calcul-salariu-net",
+    "md": "## De la salariul brut la salariul net\n\nÎn România, salariul **brut** este suma trecută în contractul individual de muncă (CIM) și în statul de plată. Salariul **net** este suma pe care angajatul o încasează efectiv, după ce se scad din brut trei reținere obligatorii, calculate în cascadă, în această ordine:\n\n1. **CAS** (contribuția de asigurări sociale) – 25% din brut\n2. **CASS** (contribuția de asigurări sociale de sănătate) – 10% din brut\n3. **Impozitul pe venit** – 10%, aplicat nu la brut, ci la baza impozabilă rămasă după scăderea CAS și CASS\n\nFormula generală este:\n\n**Net = Brut − CAS(25%×Brut) − CASS(10%×Brut) − Impozit[10%×(Brut−CAS−CASS−deduceri)]**\n\nAceste cote (25% CAS, 10% CASS, 10% impozit) sunt valabile și neschimbate în 2026. Reținerea corectă a acestor sume este responsabilitatea angajatorului, prin intermediul statului de plată lunar.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "baza-impozabila-venituri-salariale",
+    "md": "## Baza impozabilă și deducerile\n\nImpozitul pe venit de 10% nu se aplică niciodată direct la salariul brut, ci la **baza impozabilă**, obținută astfel:\n\nBaza impozabilă = Brut − CAS − CASS − deduceri aplicabile\n\nDintre deduceri, cele mai frecvente în practică sunt:\n\n- **Deducerea personală de bază**, aplicabilă în anumite condiții de venit și de persoane aflate în întreținere, stabilită prin Codul Fiscal (Legea nr. 227/2015) — cuantumul exact variază în funcție de nivelul venitului brut și numărul de persoane în întreținere, motiv pentru care nu poate fi generalizat printr-o singură cifră; verificați grila în vigoare pentru fiecare caz concret.\n- **Contribuțiile la fonduri de pensii facultative sau abonamente medicale**, în limitele legale, dacă angajatorul le suportă.\n\nÎn exercițiile din această lecție lucrăm cu situația cea mai simplă — angajat fără persoane în întreținere și fără alte deduceri —, tocmai pentru a fixa mecanismul de calcul înainte de a adăuga excepții.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cost-total-angajator-cam",
+    "md": "## CAM și costul total pentru angajator\n\nSalariul net al angajatului nu reprezintă costul real al angajării pentru firmă. Pe lângă salariul brut, angajatorul datorează statului o contribuție suplimentară, suportată integral de firmă, fără a afecta salariul net al angajatului:\n\n- **CAM** (contribuția asiguratorie pentru muncă) = **2,25% din salariul brut**\n\nCostul total al unui angajat pentru firmă se calculează astfel:\n\n**Cost total angajator = Salariul brut + CAM**\n\nAceastă distincție este esențială în discuțiile de angajare: candidatul negociază de regulă salariul brut sau net, dar bugetul companiei trebuie construit pornind de la costul total. Cumulând reținerile angajatului (CAS, CASS, impozit) cu CAM-ul suportat de angajator, presiunea fiscală totală asupra unui raport de muncă standard se apropie de **43% din salariul brut**.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "regim-special-salariu-minim",
+    "md": "## Facilitatea fiscală pentru salariul minim (regim special)\n\nPentru angajații care au salariul brut la nivelul salariului minim pe economie (locul de muncă principal, normă întreagă), legislația prevede o **parte netaxabilă** din salariu, exclusă din baza de calcul a contribuțiilor și a impozitului. Această sumă a fost **300 lei până la 30 iunie 2026** și este **200 lei începând cu 1 iulie 2026** (OUG nr. 89/2025). Cu salariul minim brut de **4.325 lei** (valabil de la 1 iulie 2026, conform HG nr. 146/2026), salariul net rezultat este de aproximativ **2.699 lei**.\n\nMecanismul exact de aplicare a acestei facilități (condiții de eligibilitate, interacțiunea cu alte deduceri) are particularități legale care depășesc scopul acestei lecții introductive — pentru cazuri reale de salariați la nivelul minimului pe economie, verificați reglementarea în vigoare sau consultați un specialist în salarizare. În exercițiile de mai jos lucrăm exclusiv cu salarii peste minimul pe economie, unde se aplică formula generală, fără această facilitate specială.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calcul complet pentru un salariu brut de 5.000 lei",
+    "concept_key": "formula-calcul-salariu-net",
+    "md": "Un angajat cu normă întreagă are salariul brut de **5.000 lei**, fără persoane în întreținere. Calculul pas cu pas:\n\n| Element | Calcul | Valoare |\n|---|---|---|\n| Salariu brut | — | 5.000 lei |\n| CAS (25%) | 25% × 5.000 | 1.250 lei |\n| CASS (10%) | 10% × 5.000 | 500 lei |\n| Bază impozabilă | 5.000 − 1.250 − 500 | 3.250 lei |\n| Impozit pe venit (10%) | 10% × 3.250 | 325 lei |\n| **Salariu net** | 5.000 − 1.250 − 500 − 325 | **2.925 lei** |\n\nTotalul reținerilor din salariul angajatului este de 2.075 lei (1.250+500+325), adică aproximativ 41,5% din brut — apropiat de presiunea fiscală medie de ~43% menționată anterior, care include și contribuția CAM suportată de angajator.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b5"
+   },
+   {
+    "type": "example",
+    "title": "De la salariul brut la costul total pentru angajator",
+    "concept_key": "cost-total-angajator-cam",
+    "md": "Pornind de la același salariu brut de **5.000 lei**, calculăm cât costă efectiv acest angajat firma:\n\n- CAM (2,25%) = 2,25% × 5.000 = **112,50 lei**\n- Cost total angajator = 5.000 + 112,50 = **5.112,50 lei**\n\nAșadar, pentru un salariu net de 2.925 lei încasat de angajat, firma cheltuiește în total 5.112,50 lei/lună. Diferența dintre cost total și net (5.112,50 − 2.925 = 2.187,50 lei) reprezintă suma vărsată către bugetul de stat sub formă de CAS, CASS, impozit pe venit și CAM.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 227/2015 privind Codul Fiscal",
+    "article": "art. 64 alin. (1) — cota de impozit pe venit; art. 138 — cota CAS; art. 156 — cota CASS",
+    "effective": "2016-01-01",
+    "md": "Codul Fiscal stabilește cotele reținerilor salariale aplicate la nivel național: impozitul pe venit din salarii de 10% (art. 64 alin. 1), contribuția de asigurări sociale (CAS) de 25% în sarcina angajatului (art. 138) și contribuția de asigurări sociale de sănătate (CASS) de 10% în sarcina angajatului (art. 156). Aceste cote, verificate la 7 iulie 2026, rămân neschimbate față de anii anteriori. Orice modificare legislativă a acestor cote trebuie verificată direct în forma actualizată a Codului Fiscal înainte de a fi aplicată în calculul salarial.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Exercițiile din această lecție folosesc cazul cel mai simplu de calcul (angajat fără persoane în întreținere, fără tichete de masă, fără alte beneficii), pentru a fixa mecanismul de bază. În practică, elemente precum tichetele de masă (impozitate cu 10% + CASS, dar scutite de CAS, cu o valoare nominală maximă actualizată periodic — verificați valoarea în vigoare la data calculului), deducerile personale sau sporurile pot modifica rezultatul final. Aceste calcule au scop didactic și nu înlocuiesc verificarea cu un specialist în salarizare sau contabilitate pentru situații reale ale angajaților dumneavoastră.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Calculați salariul net pentru fiecare dintre următorii trei angajați cu normă întreagă, fără persoane în întreținere și fără alte deduceri sau beneficii. Pentru fiecare, determinați CAS, CASS, baza impozabilă, impozitul pe venit și salariul net.\n\n**Scenariul A** — Angajat junior, salariu brut: 4.500 lei\n\n**Scenariul B** — Angajat cu experiență medie, salariu brut: 5.750 lei\n\n**Scenariul C** — Specialist senior, salariu brut: 8.200 lei",
+    "solution_md": "**Scenariul A — Brut 4.500 lei**\n- CAS (25%) = 1.125 lei\n- CASS (10%) = 450 lei\n- Bază impozabilă = 4.500 − 1.125 − 450 = 2.925 lei\n- Impozit (10%) = 292,50 lei\n- **Net = 4.500 − 1.125 − 450 − 292,50 = 2.632,50 lei**\n\n**Scenariul B — Brut 5.750 lei**\n- CAS (25%) = 1.437,50 lei\n- CASS (10%) = 575 lei\n- Bază impozabilă = 5.750 − 1.437,50 − 575 = 3.737,50 lei\n- Impozit (10%) = 373,75 lei\n- **Net = 5.750 − 1.437,50 − 575 − 373,75 = 3.363,75 lei**\n\n**Scenariul C — Brut 8.200 lei**\n- CAS (25%) = 2.050 lei\n- CASS (10%) = 820 lei\n- Bază impozabilă = 8.200 − 2.050 − 820 = 5.330 lei\n- Impozit (10%) = 533 lei\n- **Net = 8.200 − 2.050 − 820 − 533 = 4.797 lei**\n\nObservație: toate cele trei salarii brute depășesc salariul minim pe economie de 4.325 lei (valabil de la 1 iulie 2026), motiv pentru care se aplică formula generală, fără facilitatea specială a părții netaxabile.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ordinea corectă de aplicare a reținerilor pentru a obține salariul net, pornind de la salariul brut?",
+    "choices": [
+     "Impozitul de 10% se aplică direct la salariul brut, apoi se scad CAS și CASS",
+     "CAS (25%) și CASS (10%) se scad din brut, apoi impozitul de 10% se aplică la baza rămasă (brut − CAS − CASS)",
+     "CAM se scade din salariul brut al angajatului, apoi CAS și CASS",
+     "Impozitul se calculează primul, iar CAS și CASS se aplică ulterior la salariul net"
+    ],
+    "answer": 1,
+    "explain": "Impozitul pe venit se calculează la baza impozabilă, adică la brut din care s-au scăzut deja CAS (25%) și CASS (10%), nu direct la brut.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă CAM (2,25%) în structura costurilor salariale?",
+    "choices": [
+     "O reținere suplimentară scăzută din salariul net al angajatului",
+     "O contribuție suportată integral de angajator, peste salariul brut, care nu afectează salariul net al angajatului",
+     "O componentă inclusă în cota impozitului pe venit de 10%",
+     "O taxă aplicată exclusiv tichetelor de masă"
+    ],
+    "answer": 1,
+    "explain": "CAM este o contribuție de 2,25% pe care angajatorul o plătește în plus față de salariul brut; nu se scade din salariul angajatului și nu îi influențează salariul net.",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota CAS (contribuția de asigurări sociale) reținută din salariul brut al angajatului?",
+    "back": "25% din salariul brut.",
+    "concept_key": "cas-cota-angajat",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota CASS (contribuția de asigurări sociale de sănătate) reținută din salariul brut?",
+    "back": "10% din salariul brut.",
+    "concept_key": "cass-cota-angajat",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este cota impozitului pe venit aplicată salariilor și la ce se aplică?",
+    "back": "10%, aplicată la baza impozabilă (brut − CAS − CASS − deduceri), nu direct la salariul brut.",
+    "concept_key": "impozit-venit-salarii-cota",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce contribuție plătește angajatorul, în plus față de salariul brut, pentru fiecare angajat?",
+    "back": "CAM (contribuția asiguratorie pentru muncă), de 2,25% din salariul brut.",
+    "concept_key": "cam-cota-angajator",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula generală de calcul a salariului net pornind de la brut?",
+    "back": "Net = Brut − CAS(25%×Brut) − CASS(10%×Brut) − Impozit[10%×(Brut−CAS−CASS−deduceri)]",
+    "concept_key": "formula-calcul-salariu-net",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât era salariul minim brut pe economie în România de la 1 iulie 2026?",
+    "back": "4.325 lei (conform HG nr. 146/2026), cu excepția construcțiilor, unde este 4.582 lei.",
+    "concept_key": "salariu-minim-brut-2026-iulie",
+    "blockId": "cmjjuxwad00ifumkpv2imhrm8-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1154,
+   "flashcards": 6
+  }
+ }
+}

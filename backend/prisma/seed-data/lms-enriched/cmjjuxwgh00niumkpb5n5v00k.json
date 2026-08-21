@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxwgh00niumkpb5n5v00k",
+ "courseId": "cmjjuxwfu00muumkpg2yfuclq",
+ "course": "Communication Skills pentru Profesioniști",
+ "module": "Feedback Constructiv",
+ "lesson": "Importanța feedback-ului",
+ "category": "SOFT_SKILLS",
+ "content": "# Importanța feedback-ului\n\n## Ce este feedback-ul și de ce contează\n\nFeedback-ul este informația pe care o oferi unei persoane despre un comportament observat și despre efectul acelui comportament, cu scopul de a-i susține dezvoltarea sau de a confirma o direcție bună. Nu este o părere generală despre cine este cineva („ești neglijent”), ci o observație concretă despre ce a făcut și ce a rezultat din asta („ai trimis factura fără seria corectă, iar clientul a refuzat plata”).\n\nÎn mediul profesional din România, feedback-ul are trei roluri esențiale:\n\n1. **Corectează traiectoria** — semnalează din timp o abatere de la standard, înainte ca aceasta să devină obicei sau să genereze pierderi (o eroare repetată în balanța contabilă, un ton nepotrivit în comunicarea cu clienții etc.).\n2. **Confirmă și întărește** — arată ce funcționează bine, astfel încât persoana să repete acel comportament cu încredere. Mulți manageri oferă feedback doar când ceva merge prost, ceea ce sărăcește relația și scade motivația echipei.\n3. **Accelerează învățarea** — înlocuiește încercarea-eroare lentă cu informație directă. Un angajat nou într-un departament financiar învață mult mai repede dacă primește feedback punctual pe fiecare raport, decât dacă așteaptă evaluarea anuală.\n\nFeedback-ul bun este specific, bazat pe fapte observabile, oferit la timp și orientat spre viitor — nu spre a stabili vinovății, ci spre a stabili ce se schimbă de acum înainte.\n\n## Feedback constructiv vs. critică sau laudă goală\n\nO greșeală frecventă este confundarea feedback-ului cu critica sau cu lauda generică. Diferența nu ține de tonul folosit, ci de structura mesajului:\n\n- **Critica** evaluează persoana sau caracterul ei: „Nu ești atent la detalii.” Este vagă, greu de contestat sau de aplicat, și declanșează reacții defensive.\n- **Lauda generică** motivează pe moment, dar nu oferă informație utilă: „Bravo, ai făcut treabă bună!” Persoana nu știe exact ce să repete.\n- **Feedback-ul constructiv** descrie un comportament specific și impactul lui, indiferent dacă mesajul e pozitiv sau de îmbunătățit.\n\nUn model consacrat pentru a structura feedback-ul este **SBI — Situație, Comportament, Impact**:\n\n- **Situație**: contextul exact în care s-a întâmplat („La ședința de ieri cu clientul X”)\n- **Comportament**: ce a făcut concret persoana, observabil, fără interpretări („ai întrerupt colegul de trei ori înainte să termine ideea”)\n- **Impact**: efectul asupra ta, echipei sau rezultatului („clientul a părut nesigur pe informația primită și a cerut o reconfirmare în scris”)\n\nAcest model funcționează la fel de bine pentru feedback pozitiv și pentru feedback de dezvoltare, pentru că separă faptele de judecata de valoare și lasă interlocutorului control asupra soluției.\n\n## Frecvența feedback-ului: de la evaluarea anuală la feedback continuu\n\nModelul tradițional — o singură discuție formală de evaluare pe an — are o limită clară: feedback-ul ajunge prea târziu ca să mai poată corecta ceva util. Dacă o eroare de raportare financiară s-a produs în martie și este discutată abia în evaluarea din decembrie, angajatul a repetat-o posibil de nouă ori, iar detaliile contextului s-au pierdut.\n\nPractica recomandată în organizațiile moderne, inclusiv în firme din România care aplică metodologii agile sau structuri de tip OKR, este **feedback-ul continuu**: observații scurte, oferite cât mai aproape de momentul faptei, completate periodic (săptămânal sau lunar, în funcție de rolul echipei) de discuții mai ample de tip 1-la-1.\n\nAcest lucru nu elimină evaluarea anuală — ea rămâne utilă pentru a privi în ansamblu evoluția, obiectivele de carieră și deciziile de compensare — dar o transformă într-un rezumat al unor conversații deja avute, nu într-o surpriză. Angajatul care primește feedback constant nu are motive să fie luat prin surprindere la evaluare, pentru că a auzit deja aceste observații pe parcurs, cu timp să le corecteze.\n\nCa regulă practică: feedback-ul de corecție se dă în maximum 24-48 de ore de la eveniment, cât timp contextul este proaspăt pentru ambele părți, iar feedback-ul de recunoaștere se dă imediat, fără să aștepți \"momentul potrivit\".\n\n## Cultura feedback-ului într-o organizație\n\nFeedback-ul individual, oricât de bine formulat, are efect limitat dacă este un eveniment izolat într-o cultură organizațională unde a primi observații e perceput ca amenințare. O cultură sănătoasă a feedback-ului se sprijină pe **siguranță psihologică** — convingerea că poți exprima o observație, o greșeală sau o nelămurire fără teamă de umilire sau represalii.\n\nSemnele unei culturi funcționale de feedback:\n\n- Feedback-ul circulă în ambele sensuri: nu doar manager → angajat, ci și angajat → manager și între colegi (feedback pe orizontală).\n- Este normalizat, nu excepțional: apare firesc în ședințe, în retrospective de proiect, în discuții 1-la-1, nu doar la evaluări.\n- Se separă persoana de comportament: echipa discută „ce s-a întâmplat cu acest raport”, nu „cine e vinovat”.\n- Există urmărire: feedback-ul dat este revizitat ulterior („ai reușit să implementezi ce am discutat?”), altfel devine ritual gol.\n\nÎntr-o firmă mică sau un PFA cu câțiva colaboratori, cultura feedback-ului se construiește prin exemplul personal al liderului: dacă antreprenorul cere el însuși feedback de la echipă și reacționează deschis, chiar și la observații incomode, echipa va prelua acest comportament. Dacă orice observație e urmată de justificări sau iritare, feedback-ul dispare treptat din organizație, iar problemele rămân nespuse până devin costisitoare.\n\n## Exemplu: Feedback constructiv cu modelul SBI într-un birou contabil\n**Context:** Ana este manager la un birou de contabilitate (SRL cu 8 angajați) din Cluj. Colega ei, Bianca, a trimis unui client declarația fiscală cu o zi întârziere, fără să anunțe din timp.\n\n**Feedback slab (de evitat):** „Bianca, iar ai întârziat cu declarația. Trebuie să fii mai organizată.” — vag, acuzator, nu spune ce anume trebuie schimbat.\n\n**Feedback constructiv, folosind SBI:**\n\n- *Situație*: „Ieri, când am trimis declarația 112 pentru clientul Vertex SRL...”\n- *Comportament*: „...am observat că a plecat cu o zi peste termen și că nu am fost anunțată în avans că exista risc de întârziere.”\n- *Impact*: „Clientul a primit o notificare de penalizare de la ANAF și a trebuit să sun eu să clarific situația, ceea ce ne-a afectat imaginea de profesionalism.”\n\nAna continuă apoi cu o întrebare deschisă: „Ce s-a întâmplat de nu ai reușit să anunți din timp? Cum putem organiza fluxul ca să evităm asta pe viitor?” Această ultimă parte transformă feedback-ul dintr-un monolog într-o conversație — Bianca rămâne parte activă a soluției, nu doar destinatar al unei critici.\n\n## Exemplu: Consecințele lipsei de feedback\n**Context:** Radu conduce departamentul de vânzări al unei companii mijlocii de distribuție. Unul dintre agenți, Mihai, folosește constant un ton agresiv în negocierile cu clienții, dar aduce rezultate bune pe termen scurt, așa că Radu nu îi spune nimic timp de opt luni.\n\n**Ce s-a întâmplat:** Trei clienți importanți au migrat treptat către concurență, motivând informal că „nu se simțeau confortabil” în discuții. Când Radu află abia la evaluarea anuală și îi comunică lui Mihai observația, acesta reacționează surprins și frustrat: „De ce nu mi-ai spus în ultimele opt luni? Aș fi putut corecta asta demult.”\n\n**Lecția:** absența feedback-ului nu este un act neutru — este o decizie cu cost. Radu a pierdut nu doar clienți, ci și încrederea lui Mihai, care simte acum că a fost \"lăsat să greșească\" fără avertisment. Feedback-ul întârziat sau evitat din dorința de a nu crea disconfort produce, de regulă, un disconfort mai mare mai târziu, plus pierderi care ar fi putut fi prevenite printr-o discuție de cinci minute la timpul potrivit.\n\n⚠ Evită aceste trei capcane frecvente în feedback:\n\n1. **\"Sandwich-ul\" forțat** (pozitiv-negativ-pozitiv aplicat mecanic) — interlocutorii experimentați îl recunosc instant și așteaptă doar partea negativă, ignorând complimentele, pe care le percep ca decor.\n2. **Feedback vag**: „trebuie să comunici mai bine” nu oferă niciun reper acțional. Întreabă-te mereu: ar putea persoana să repete exact acest comportament dacă i l-aș descrie pas cu pas?\n3. **Feedback negativ oferit public**: chiar dacă intenția e corectă, o observație critică spusă în fața echipei generează rușine și rezistență, nu deschidere. Feedback-ul de corecție se dă întotdeauna individual; recunoașterea publică, în schimb, este binevenită.\n\n## Exercițiu\nColegul tău, Dragoș, contabil junior, a introdus de două ori consecutiv date greșite în programul de gestiune (a inversat cifrele la o factură de achiziție), iar tu ai fost cea care a găsit și corectat eroarea abia la închiderea lunii, sub presiune de timp.\n\nTransformă următorul feedback slab într-un feedback constructiv, folosind modelul SBI (Situație-Comportament-Impact) și o întrebare deschisă finală:\n\n*Feedback slab*: \"Dragoș, trebuie să fii mai atent, iar ai greșit facturile.\"\n\n**Soluție:** Exemplu de răspuns folosind SBI:\n\n- **Situație**: \"La închiderea lunii trecute, când am verificat facturile de achiziție introduse de tine...\"\n- **Comportament**: \"...am găsit două facturi cu cifrele inversate la valoarea totală, iar eroarea nu a fost semnalată de tine înainte de închidere.\"\n- **Impact**: \"A trebuit să refac verificarea integrală a lunii sub presiune de timp, iar asta ne-a întârziat raportarea către director cu o zi.\"\n- **Întrebare deschisă**: \"Ce te-ar ajuta să verifici mai sigur aceste date înainte de introducere — o listă de control, mai mult timp alocat, sau o resimulare împreună data viitoare?\"\n\nObservă diferența: feedback-ul original judeca persoana (\"trebuie să fii mai atent\"), în timp ce versiunea SBI descrie un fapt verificabil, arată consecința reală și invită la o soluție comună, păstrând relația de colaborare.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "feedback-definitie-rol",
+    "md": "## Ce este feedback-ul și de ce contează\n\nFeedback-ul este informația pe care o oferi unei persoane despre un comportament observat și despre efectul acelui comportament, cu scopul de a-i susține dezvoltarea sau de a confirma o direcție bună. Nu este o părere generală despre cine este cineva („ești neglijent”), ci o observație concretă despre ce a făcut și ce a rezultat din asta („ai trimis factura fără seria corectă, iar clientul a refuzat plata”).\n\nÎn mediul profesional din România, feedback-ul are trei roluri esențiale:\n\n1. **Corectează traiectoria** — semnalează din timp o abatere de la standard, înainte ca aceasta să devină obicei sau să genereze pierderi (o eroare repetată în balanța contabilă, un ton nepotrivit în comunicarea cu clienții etc.).\n2. **Confirmă și întărește** — arată ce funcționează bine, astfel încât persoana să repete acel comportament cu încredere. Mulți manageri oferă feedback doar când ceva merge prost, ceea ce sărăcește relația și scade motivația echipei.\n3. **Accelerează învățarea** — înlocuiește încercarea-eroare lentă cu informație directă. Un angajat nou într-un departament financiar învață mult mai repede dacă primește feedback punctual pe fiecare raport, decât dacă așteaptă evaluarea anuală.\n\nFeedback-ul bun este specific, bazat pe fapte observabile, oferit la timp și orientat spre viitor — nu spre a stabili vinovății, ci spre a stabili ce se schimbă de acum înainte.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "feedback-vs-critica",
+    "md": "## Feedback constructiv vs. critică sau laudă goală\n\nO greșeală frecventă este confundarea feedback-ului cu critica sau cu lauda generică. Diferența nu ține de tonul folosit, ci de structura mesajului:\n\n- **Critica** evaluează persoana sau caracterul ei: „Nu ești atent la detalii.” Este vagă, greu de contestat sau de aplicat, și declanșează reacții defensive.\n- **Lauda generică** motivează pe moment, dar nu oferă informație utilă: „Bravo, ai făcut treabă bună!” Persoana nu știe exact ce să repete.\n- **Feedback-ul constructiv** descrie un comportament specific și impactul lui, indiferent dacă mesajul e pozitiv sau de îmbunătățit.\n\nUn model consacrat pentru a structura feedback-ul este **SBI — Situație, Comportament, Impact**:\n\n- **Situație**: contextul exact în care s-a întâmplat („La ședința de ieri cu clientul X”)\n- **Comportament**: ce a făcut concret persoana, observabil, fără interpretări („ai întrerupt colegul de trei ori înainte să termine ideea”)\n- **Impact**: efectul asupra ta, echipei sau rezultatului („clientul a părut nesigur pe informația primită și a cerut o reconfirmare în scris”)\n\nAcest model funcționează la fel de bine pentru feedback pozitiv și pentru feedback de dezvoltare, pentru că separă faptele de judecata de valoare și lasă interlocutorului control asupra soluției.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "feedback-frecventa",
+    "md": "## Frecvența feedback-ului: de la evaluarea anuală la feedback continuu\n\nModelul tradițional — o singură discuție formală de evaluare pe an — are o limită clară: feedback-ul ajunge prea târziu ca să mai poată corecta ceva util. Dacă o eroare de raportare financiară s-a produs în martie și este discutată abia în evaluarea din decembrie, angajatul a repetat-o posibil de nouă ori, iar detaliile contextului s-au pierdut.\n\nPractica recomandată în organizațiile moderne, inclusiv în firme din România care aplică metodologii agile sau structuri de tip OKR, este **feedback-ul continuu**: observații scurte, oferite cât mai aproape de momentul faptei, completate periodic (săptămânal sau lunar, în funcție de rolul echipei) de discuții mai ample de tip 1-la-1.\n\nAcest lucru nu elimină evaluarea anuală — ea rămâne utilă pentru a privi în ansamblu evoluția, obiectivele de carieră și deciziile de compensare — dar o transformă într-un rezumat al unor conversații deja avute, nu într-o surpriză. Angajatul care primește feedback constant nu are motive să fie luat prin surprindere la evaluare, pentru că a auzit deja aceste observații pe parcurs, cu timp să le corecteze.\n\nCa regulă practică: feedback-ul de corecție se dă în maximum 24-48 de ore de la eveniment, cât timp contextul este proaspăt pentru ambele părți, iar feedback-ul de recunoaștere se dă imediat, fără să aștepți \"momentul potrivit\".",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cultura-feedback-organizatie",
+    "md": "## Cultura feedback-ului într-o organizație\n\nFeedback-ul individual, oricât de bine formulat, are efect limitat dacă este un eveniment izolat într-o cultură organizațională unde a primi observații e perceput ca amenințare. O cultură sănătoasă a feedback-ului se sprijină pe **siguranță psihologică** — convingerea că poți exprima o observație, o greșeală sau o nelămurire fără teamă de umilire sau represalii.\n\nSemnele unei culturi funcționale de feedback:\n\n- Feedback-ul circulă în ambele sensuri: nu doar manager → angajat, ci și angajat → manager și între colegi (feedback pe orizontală).\n- Este normalizat, nu excepțional: apare firesc în ședințe, în retrospective de proiect, în discuții 1-la-1, nu doar la evaluări.\n- Se separă persoana de comportament: echipa discută „ce s-a întâmplat cu acest raport”, nu „cine e vinovat”.\n- Există urmărire: feedback-ul dat este revizitat ulterior („ai reușit să implementezi ce am discutat?”), altfel devine ritual gol.\n\nÎntr-o firmă mică sau un PFA cu câțiva colaboratori, cultura feedback-ului se construiește prin exemplul personal al liderului: dacă antreprenorul cere el însuși feedback de la echipă și reacționează deschis, chiar și la observații incomode, echipa va prelua acest comportament. Dacă orice observație e urmată de justificări sau iritare, feedback-ul dispare treptat din organizație, iar problemele rămân nespuse până devin costisitoare.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b4"
+   },
+   {
+    "type": "example",
+    "title": "Feedback constructiv cu modelul SBI într-un birou contabil",
+    "concept_key": "model-sbi",
+    "md": "**Context:** Ana este manager la un birou de contabilitate (SRL cu 8 angajați) din Cluj. Colega ei, Bianca, a trimis unui client declarația fiscală cu o zi întârziere, fără să anunțe din timp.\n\n**Feedback slab (de evitat):** „Bianca, iar ai întârziat cu declarația. Trebuie să fii mai organizată.” — vag, acuzator, nu spune ce anume trebuie schimbat.\n\n**Feedback constructiv, folosind SBI:**\n\n- *Situație*: „Ieri, când am trimis declarația 112 pentru clientul Vertex SRL...”\n- *Comportament*: „...am observat că a plecat cu o zi peste termen și că nu am fost anunțată în avans că exista risc de întârziere.”\n- *Impact*: „Clientul a primit o notificare de penalizare de la ANAF și a trebuit să sun eu să clarific situația, ceea ce ne-a afectat imaginea de profesionalism.”\n\nAna continuă apoi cu o întrebare deschisă: „Ce s-a întâmplat de nu ai reușit să anunți din timp? Cum putem organiza fluxul ca să evităm asta pe viitor?” Această ultimă parte transformă feedback-ul dintr-un monolog într-o conversație — Bianca rămâne parte activă a soluției, nu doar destinatar al unei critici.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b5"
+   },
+   {
+    "type": "example",
+    "title": "Consecințele lipsei de feedback",
+    "concept_key": "consecinte-lipsa-feedback",
+    "md": "**Context:** Radu conduce departamentul de vânzări al unei companii mijlocii de distribuție. Unul dintre agenți, Mihai, folosește constant un ton agresiv în negocierile cu clienții, dar aduce rezultate bune pe termen scurt, așa că Radu nu îi spune nimic timp de opt luni.\n\n**Ce s-a întâmplat:** Trei clienți importanți au migrat treptat către concurență, motivând informal că „nu se simțeau confortabil” în discuții. Când Radu află abia la evaluarea anuală și îi comunică lui Mihai observația, acesta reacționează surprins și frustrat: „De ce nu mi-ai spus în ultimele opt luni? Aș fi putut corecta asta demult.”\n\n**Lecția:** absența feedback-ului nu este un act neutru — este o decizie cu cost. Radu a pierdut nu doar clienți, ci și încrederea lui Mihai, care simte acum că a fost \"lăsat să greșească\" fără avertisment. Feedback-ul întârziat sau evitat din dorința de a nu crea disconfort produce, de regulă, un disconfort mai mare mai târziu, plus pierderi care ar fi putut fi prevenite printr-o discuție de cinci minute la timpul potrivit.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Evită aceste trei capcane frecvente în feedback:\n\n1. **\"Sandwich-ul\" forțat** (pozitiv-negativ-pozitiv aplicat mecanic) — interlocutorii experimentați îl recunosc instant și așteaptă doar partea negativă, ignorând complimentele, pe care le percep ca decor.\n2. **Feedback vag**: „trebuie să comunici mai bine” nu oferă niciun reper acțional. Întreabă-te mereu: ar putea persoana să repete exact acest comportament dacă i l-aș descrie pas cu pas?\n3. **Feedback negativ oferit public**: chiar dacă intenția e corectă, o observație critică spusă în fața echipei generează rușine și rezistență, nu deschidere. Feedback-ul de corecție se dă întotdeauna individual; recunoașterea publică, în schimb, este binevenită.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Colegul tău, Dragoș, contabil junior, a introdus de două ori consecutiv date greșite în programul de gestiune (a inversat cifrele la o factură de achiziție), iar tu ai fost cea care a găsit și corectat eroarea abia la închiderea lunii, sub presiune de timp.\n\nTransformă următorul feedback slab într-un feedback constructiv, folosind modelul SBI (Situație-Comportament-Impact) și o întrebare deschisă finală:\n\n*Feedback slab*: \"Dragoș, trebuie să fii mai atent, iar ai greșit facturile.\"",
+    "solution_md": "Exemplu de răspuns folosind SBI:\n\n- **Situație**: \"La închiderea lunii trecute, când am verificat facturile de achiziție introduse de tine...\"\n- **Comportament**: \"...am găsit două facturi cu cifrele inversate la valoarea totală, iar eroarea nu a fost semnalată de tine înainte de închidere.\"\n- **Impact**: \"A trebuit să refac verificarea integrală a lunii sub presiune de timp, iar asta ne-a întârziat raportarea către director cu o zi.\"\n- **Întrebare deschisă**: \"Ce te-ar ajuta să verifici mai sigur aceste date înainte de introducere — o listă de control, mai mult timp alocat, sau o resimulare împreună data viitoare?\"\n\nObservă diferența: feedback-ul original judeca persoana (\"trebuie să fii mai atent\"), în timp ce versiunea SBI descrie un fapt verificabil, arată consecința reală și invită la o soluție comună, păstrând relația de colaborare.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre feedback-ul constructiv și critică?",
+    "choices": [
+     "Feedback-ul constructiv se dă doar în scris, critica doar verbal",
+     "Feedback-ul constructiv descrie comportamente și impact concret; critica evaluează persoana sau caracterul acesteia",
+     "Feedback-ul constructiv se dă doar de către manageri, critica de către oricine",
+     "Nu există nicio diferență, sunt termeni echivalenți"
+    ],
+    "answer": 1,
+    "explain": "Feedback-ul constructiv este specific și bazat pe fapte observabile (comportament + impact), în timp ce critica formulează judecăți generale despre persoană, ceea ce declanșează reacții defensive și nu oferă un reper acțional.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce este recomandat feedback-ul continuu în locul evaluării anuale unice?",
+    "choices": [
+     "Pentru că evaluarea anuală este interzisă prin lege în România",
+     "Pentru că feedback-ul dat aproape de momentul faptei permite corecție rapidă, cât contextul este încă proaspăt",
+     "Pentru că angajații preferă mai multe ședințe formale",
+     "Pentru că evaluarea anuală nu poate include obiective de carieră"
+    ],
+    "answer": 1,
+    "explain": "Feedback-ul continuu reduce decalajul dintre eveniment și corecție, evitând repetarea unei erori luni de zile până la evaluarea formală; evaluarea anuală rămâne utilă pentru bilanț și decizii de carieră, dar nu trebuie să fie singurul canal de feedback.",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este feedback-ul, în sens profesional?",
+    "back": "Informație despre un comportament observat și efectul lui, oferită cu scopul de a susține dezvoltarea sau a confirma o direcție bună — nu o judecată generală despre persoană.",
+    "concept_key": "feedback-definitie-rol",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă modelul SBI pentru feedback?",
+    "back": "Situație (contextul exact), Comportament (ce a făcut concret persoana, observabil), Impact (efectul asupra ta, echipei sau rezultatului).",
+    "concept_key": "model-sbi",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre feedback constructiv și critică?",
+    "back": "Feedback-ul constructiv descrie fapte și impact concret și lasă control asupra soluției; critica evaluează caracterul persoanei și declanșează reacții defensive.",
+    "concept_key": "feedback-vs-critica",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În cât timp e recomandat să dai feedback de corecție, ca regulă practică?",
+    "back": "În maximum 24-48 de ore de la eveniment, cât timp contextul este încă proaspăt pentru ambele părți.",
+    "concept_key": "feedback-frecventa",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este siguranța psihologică într-o cultură de feedback?",
+    "back": "Convingerea că poți exprima o observație, o greșeală sau o nelămurire fără teamă de umilire sau represalii — condiție esențială pentru ca feedback-ul să circule liber în organizație.",
+    "concept_key": "cultura-feedback-organizatie",
+    "blockId": "cmjjuxwgh00niumkpb5n5v00k-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1499,
+   "flashcards": 5
+  }
+ }
+}

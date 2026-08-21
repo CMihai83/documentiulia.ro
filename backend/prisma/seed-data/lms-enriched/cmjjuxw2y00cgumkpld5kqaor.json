@@ -1,0 +1,154 @@
+{
+ "lessonId": "cmjjuxw2y00cgumkpld5kqaor",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Cadrul Legal și Principii Contabile",
+ "lesson": "Politici contabile și estimări",
+ "category": "FINANCE_OPS",
+ "content": "# Politici contabile și estimări\n\n## Ce sunt politicile contabile\n\nO politică contabilă reprezintă ansamblul principiilor, bazelor de evaluare, convențiilor, regulilor și practicilor specifice pe care o entitate le aplică la întocmirea și prezentarea situațiilor financiare anuale, conform OMFP 1802/2014. Nu este vorba despre reguli fiscale, ci despre alegeri contabile permise de reglementări atunci când acestea oferă mai multe variante.\n\nExemple curente de politici contabile pe care le stabilește fiecare entitate:\n- metoda de evaluare la ieșire a stocurilor (FIFO sau costul mediu ponderat – CMP);\n- metoda de amortizare a imobilizărilor (liniară, degresivă, accelerată);\n- modelul de evaluare ulterioară a imobilizărilor corporale (modelul bazat pe cost sau modelul reevaluării);\n- recunoașterea veniturilor din contracte pe termen lung (metoda procentului de finalizare, dacă este cazul).\n\nAdministratorii sau persoana responsabilă cu conducerea contabilității stabilesc politicile contabile ale entității, le documentează într-un manual propriu de politici contabile (obligatoriu conform OMFP 1802/2014) și le aplică consecvent de la un exercițiu financiar la altul, în virtutea principiului permanenței metodelor – esențial pentru comparabilitatea situațiilor financiare în timp.\n\n## Când și cum se schimbă o politică contabilă\n\nO politică contabilă odată aleasă nu se schimbă oricând, din confort sau din dorința de a optimiza un indicator. Schimbarea este permisă doar în două situații:\n1. este impusă de o modificare a reglementărilor contabile (ex. o nouă normă emisă de Ministerul Finanțelor);\n2. entitatea demonstrează că noua politică oferă informații mai relevante și mai credibile despre poziția financiară și performanța sa.\n\nTratamentul contabil al schimbării este, în principiu, **retroactiv**: se recalculează situația ca și cum noua politică ar fi fost aplicată dintotdeauna, iar diferența cumulată se înregistrează ca ajustare a rezultatului reportat de la începutul celei mai vechi perioade pentru care recalcularea este posibilă. Dacă efectul cumulat nu poate fi determinat în mod credibil (de exemplu lipsesc date istorice), schimbarea se aplică **prospectiv**, de la data de la care aplicarea devine posibilă. În notele explicative se prezintă obligatoriu natura schimbării, motivul acesteia și valoarea ajustării.\n\n## Estimările contabile și tratamentul lor\n\nO estimare contabilă este o aproximare necesară atunci când un element din situațiile financiare nu poate fi măsurat cu exactitate, ci doar evaluat pe baza celor mai recente informații disponibile și a raționamentului profesional. Exemple frecvente: durata de viață utilă și valoarea reziduală a unei imobilizări, nivelul unui provizion pentru litigii sau garanții, ajustarea pentru depreciere a creanțelor incerte, gradul de finalizare a unei lucrări.\n\nSpre deosebire de o politică contabilă, o estimare se revizuiește firesc atunci când apar informații noi sau circumstanțe schimbate – nu este o eroare și nu este o schimbare de politică. Tratamentul este exclusiv **prospectiv**: efectul reestimării se recunoaște în rezultatul exercițiului curent și, dacă e cazul, al exercițiilor viitoare afectate, fără recalcularea sau ajustarea sumelor deja înregistrate în anii anteriori și fără a atinge rezultatul reportat.\n\n## Corectarea erorilor contabile aferente exercițiilor anterioare\n\nO eroare contabilă apare din omisiuni sau denaturări legate de fapte care existau deja la data întocmirii situațiilor financiare anterioare: greșeli de calcul, aplicarea greșită a unei politici contabile, ignorarea sau interpretarea eronată a unor informații disponibile la acel moment, fraudă.\n\nÎn RO GAAP (OMFP 1802/2014), tratamentul erorilor semnificative descoperite după depunerea situațiilor financiare ale exercițiilor anterioare este **diferit față de retratarea completă din IFRS**: corecția se înregistrează pe seama rezultatului reportat, în exercițiul curent, fără a modifica sau redepune situațiile financiare deja aprobate și depuse ale anilor anteriori. Erorile nesemnificative (sub pragul de semnificație stabilit de entitate în manualul propriu de politici contabile) se corectează direct pe seama contului de profit și pierdere al perioadei curente, ca venit sau cheltuială curentă.\n\n## Ce trebuie să conțină notele explicative\n\nIndiferent de tipul modificării, notele explicative la situațiile financiare trebuie să documenteze:\n- politicile contabile semnificative aplicate de entitate (descriere sintetică);\n- pentru schimbările de politică: natura schimbării, motivul, valoarea ajustării rezultatului reportat și exercițiile afectate;\n- pentru schimbările de estimare: natura estimării, efectul asupra exercițiului curent și, dacă poate fi cuantificat, asupra exercițiilor viitoare;\n- pentru corectarea erorilor: natura erorii, exercițiul/exercițiile în care a apărut, valoarea corecției pe fiecare post afectat din bilanț și din contul de profit și pierdere.\n\nAceastă transparență este esențială atât pentru utilizatorii situațiilor financiare (bănci, asociați, ANAF), cât și pentru auditorul financiar, dacă entitatea are obligația de audit.\n\n## Exemplu: Schimbarea politicii contabile de evaluare a stocurilor (FIFO → CMP)\nABC SRL evaluează stocurile de materii prime prin metoda FIFO. La 31 decembrie N-1, stocul final era de 45.000 lei conform FIFO. Din cauza volatilității ridicate a prețurilor de achiziție din ultimii doi ani, conducerea decide, de la 1 ianuarie N, trecerea la metoda costului mediu ponderat (CMP), considerând că aceasta oferă o imagine mai fidelă a costului real al stocurilor.\n\nRecalculând stocul de la 31 decembrie N-1 conform CMP, valoarea rezultă 48.000 lei (diferență de +3.000 lei față de FIFO).\n\nDeoarece este o **schimbare de politică contabilă**, tratamentul este retroactiv: se ajustează soldul stocului și, în contrapartidă, rezultatul reportat, ca și cum CMP s-ar fi aplicat dintotdeauna:\n\n371 'Materii prime' = 117 'Rezultatul reportat' (analitic distinct pentru schimbarea politicii contabile) cu 3.000 lei\n\nÎn notele explicative se prezintă: politica veche (FIFO), noua politică (CMP), motivul schimbării (imagine mai fidelă în context de volatilitate a prețurilor) și efectul de 3.000 lei asupra rezultatului reportat.\n\n## Exemplu: Schimbarea unei estimări contabile - durata de viață utilă a unui utilaj\nUn utilaj a fost achiziționat la valoarea de 120.000 lei și amortizat liniar pe o durată de viață utilă inițial estimată la 10 ani, deci amortizare anuală de 12.000 lei.\n\nDupă 4 ani de exploatare, amortizarea cumulată este de 48.000 lei, iar valoarea rămasă neamortizată este de 120.000 - 48.000 = 72.000 lei. Un raport tehnic de specialitate arată că, din cauza intensității de utilizare mai mari decât s-a estimat inițial, durata de viață utilă rămasă este de doar 4 ani, nu 6 ani cum rezulta din planul de amortizare inițial.\n\nAceasta este o **schimbare de estimare contabilă**. Noua amortizare anuală se calculează prospectiv:\n\n72.000 lei / 4 ani = 18.000 lei/an\n\nAmortizarea de 18.000 lei/an se aplică începând cu exercițiul curent și următorii 3 ani, fără a recalcula sau corecta amortizarea de 12.000 lei/an înregistrată în primii 4 ani. Rezultatul reportat nu este afectat. Nota explicativă menționează motivul reestimării (raportul tehnic) și efectul asupra amortizării viitoare (+6.000 lei/an față de planul inițial).\n\n> Temei legal: OMFP 1802/2014 Secțiunea dedicată politicilor contabile, estimărilor contabile și corectării erorilor (aprox. pct. 63-72) (în vigoare de la 2015-01-01)\nReglementările contabile aprobate prin OMFP 1802/2014 se aplică începând cu situațiile financiare ale exercițiului financiar 2015 și cuprind o secțiune dedicată politicilor contabile, care stabilește: condițiile în care o politică contabilă poate fi schimbată, tratamentul retroactiv al schimbărilor de politică (cu ajustarea rezultatului reportat, dacă efectul poate fi cuantificat), tratamentul prospectiv al schimbărilor de estimare și modul de corectare a erorilor semnificative din exerciții anterioare pe seama rezultatului reportat, fără retratarea situațiilor financiare deja depuse. Actul a fost modificat prin ordine ulterioare ale Ministerului Finanțelor; recomandăm verificarea formei consolidate în vigoare la data aplicării.\n\n⚠ Cea mai frecventă greșeală practică este confundarea unei schimbări de estimare cu o schimbare de politică contabilă. Consecințele diferă fundamental: o estimare se tratează prospectiv (fără a atinge rezultatul reportat), în timp ce o schimbare de politică impune, de regulă, ajustarea retroactivă a rezultatului reportat. Încadrarea greșită poate distorsiona rezultatul reportat și poate fi semnalată de auditorul financiar sau la un control ANAF. De asemenea, pragul de semnificație pentru erorile contabile trebuie stabilit și documentat explicit în manualul propriu de politici contabile al entității – nu există un prag unic, general valabil, stabilit prin lege pentru toate entitățile.\n\n## Exercițiu\nSocietatea XYZ SRL deține o clădire cu valoare de intrare 800.000 lei, amortizată liniar pe o durată de viață utilă inițial estimată la 40 de ani (amortizare anuală = 20.000 lei/an). După 10 ani de utilizare, un raport tehnic de specialitate arată că durata de viață utilă rămasă este de doar 20 de ani (nu 30 de ani, cât rezultă din planul de amortizare inițial), din cauza unor condiții de exploatare mai severe decât s-a anticipat.\n\nCerințe:\na) Calculați valoarea rămasă neamortizată la momentul reestimării.\nb) Calculați noua amortizare anuală.\nc) Precizați tipul modificării (politică, estimare sau eroare) și tratamentul contabil corespunzător (retroactiv sau prospectiv), inclusiv dacă este necesară ajustarea rezultatului reportat.\n\n**Soluție:** a) Amortizare cumulată în primii 10 ani = 10 ani × 20.000 lei/an = 200.000 lei.\nValoare rămasă neamortizată = 800.000 - 200.000 = 600.000 lei.\n\nb) Noua amortizare anuală = 600.000 lei / 20 ani (noua durată de viață utilă rămasă) = 30.000 lei/an.\n\nc) Este o **schimbare de estimare contabilă**, nu o schimbare de politică și nu o eroare, pentru că durata de viață utilă a unui activ se bazează prin natura ei pe cele mai recente informații disponibile (raportul tehnic). Tratamentul este **prospectiv**: noua amortizare de 30.000 lei/an se aplică începând cu exercițiul curent și cu exercițiile viitoare, fără recalcularea amortizării de 20.000 lei/an deja înregistrate în primii 10 ani și fără nicio ajustare a rezultatului reportat. În notele explicative se menționează motivul reestimării (raportul tehnic) și efectul asupra amortizării viitoare (+10.000 lei/an față de planul inițial).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "politici-contabile-definitie-caracteristici",
+    "md": "## Ce sunt politicile contabile\n\nO politică contabilă reprezintă ansamblul principiilor, bazelor de evaluare, convențiilor, regulilor și practicilor specifice pe care o entitate le aplică la întocmirea și prezentarea situațiilor financiare anuale, conform OMFP 1802/2014. Nu este vorba despre reguli fiscale, ci despre alegeri contabile permise de reglementări atunci când acestea oferă mai multe variante.\n\nExemple curente de politici contabile pe care le stabilește fiecare entitate:\n- metoda de evaluare la ieșire a stocurilor (FIFO sau costul mediu ponderat – CMP);\n- metoda de amortizare a imobilizărilor (liniară, degresivă, accelerată);\n- modelul de evaluare ulterioară a imobilizărilor corporale (modelul bazat pe cost sau modelul reevaluării);\n- recunoașterea veniturilor din contracte pe termen lung (metoda procentului de finalizare, dacă este cazul).\n\nAdministratorii sau persoana responsabilă cu conducerea contabilității stabilesc politicile contabile ale entității, le documentează într-un manual propriu de politici contabile (obligatoriu conform OMFP 1802/2014) și le aplică consecvent de la un exercițiu financiar la altul, în virtutea principiului permanenței metodelor – esențial pentru comparabilitatea situațiilor financiare în timp.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "schimbare-politica-contabila-conditii-tratament",
+    "md": "## Când și cum se schimbă o politică contabilă\n\nO politică contabilă odată aleasă nu se schimbă oricând, din confort sau din dorința de a optimiza un indicator. Schimbarea este permisă doar în două situații:\n1. este impusă de o modificare a reglementărilor contabile (ex. o nouă normă emisă de Ministerul Finanțelor);\n2. entitatea demonstrează că noua politică oferă informații mai relevante și mai credibile despre poziția financiară și performanța sa.\n\nTratamentul contabil al schimbării este, în principiu, **retroactiv**: se recalculează situația ca și cum noua politică ar fi fost aplicată dintotdeauna, iar diferența cumulată se înregistrează ca ajustare a rezultatului reportat de la începutul celei mai vechi perioade pentru care recalcularea este posibilă. Dacă efectul cumulat nu poate fi determinat în mod credibil (de exemplu lipsesc date istorice), schimbarea se aplică **prospectiv**, de la data de la care aplicarea devine posibilă. În notele explicative se prezintă obligatoriu natura schimbării, motivul acesteia și valoarea ajustării.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "estimari-contabile-definitie-tratament-prospectiv",
+    "md": "## Estimările contabile și tratamentul lor\n\nO estimare contabilă este o aproximare necesară atunci când un element din situațiile financiare nu poate fi măsurat cu exactitate, ci doar evaluat pe baza celor mai recente informații disponibile și a raționamentului profesional. Exemple frecvente: durata de viață utilă și valoarea reziduală a unei imobilizări, nivelul unui provizion pentru litigii sau garanții, ajustarea pentru depreciere a creanțelor incerte, gradul de finalizare a unei lucrări.\n\nSpre deosebire de o politică contabilă, o estimare se revizuiește firesc atunci când apar informații noi sau circumstanțe schimbate – nu este o eroare și nu este o schimbare de politică. Tratamentul este exclusiv **prospectiv**: efectul reestimării se recunoaște în rezultatul exercițiului curent și, dacă e cazul, al exercițiilor viitoare afectate, fără recalcularea sau ajustarea sumelor deja înregistrate în anii anteriori și fără a atinge rezultatul reportat.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "corectare-erori-contabile-anterioare",
+    "md": "## Corectarea erorilor contabile aferente exercițiilor anterioare\n\nO eroare contabilă apare din omisiuni sau denaturări legate de fapte care existau deja la data întocmirii situațiilor financiare anterioare: greșeli de calcul, aplicarea greșită a unei politici contabile, ignorarea sau interpretarea eronată a unor informații disponibile la acel moment, fraudă.\n\nÎn RO GAAP (OMFP 1802/2014), tratamentul erorilor semnificative descoperite după depunerea situațiilor financiare ale exercițiilor anterioare este **diferit față de retratarea completă din IFRS**: corecția se înregistrează pe seama rezultatului reportat, în exercițiul curent, fără a modifica sau redepune situațiile financiare deja aprobate și depuse ale anilor anteriori. Erorile nesemnificative (sub pragul de semnificație stabilit de entitate în manualul propriu de politici contabile) se corectează direct pe seama contului de profit și pierdere al perioadei curente, ca venit sau cheltuială curentă.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "note-explicative-politici-erori-estimari",
+    "md": "## Ce trebuie să conțină notele explicative\n\nIndiferent de tipul modificării, notele explicative la situațiile financiare trebuie să documenteze:\n- politicile contabile semnificative aplicate de entitate (descriere sintetică);\n- pentru schimbările de politică: natura schimbării, motivul, valoarea ajustării rezultatului reportat și exercițiile afectate;\n- pentru schimbările de estimare: natura estimării, efectul asupra exercițiului curent și, dacă poate fi cuantificat, asupra exercițiilor viitoare;\n- pentru corectarea erorilor: natura erorii, exercițiul/exercițiile în care a apărut, valoarea corecției pe fiecare post afectat din bilanț și din contul de profit și pierdere.\n\nAceastă transparență este esențială atât pentru utilizatorii situațiilor financiare (bănci, asociați, ANAF), cât și pentru auditorul financiar, dacă entitatea are obligația de audit.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b5"
+   },
+   {
+    "type": "example",
+    "title": "Schimbarea politicii contabile de evaluare a stocurilor (FIFO → CMP)",
+    "concept_key": "exemplu-schimbare-politica-stocuri",
+    "md": "ABC SRL evaluează stocurile de materii prime prin metoda FIFO. La 31 decembrie N-1, stocul final era de 45.000 lei conform FIFO. Din cauza volatilității ridicate a prețurilor de achiziție din ultimii doi ani, conducerea decide, de la 1 ianuarie N, trecerea la metoda costului mediu ponderat (CMP), considerând că aceasta oferă o imagine mai fidelă a costului real al stocurilor.\n\nRecalculând stocul de la 31 decembrie N-1 conform CMP, valoarea rezultă 48.000 lei (diferență de +3.000 lei față de FIFO).\n\nDeoarece este o **schimbare de politică contabilă**, tratamentul este retroactiv: se ajustează soldul stocului și, în contrapartidă, rezultatul reportat, ca și cum CMP s-ar fi aplicat dintotdeauna:\n\n371 'Materii prime' = 117 'Rezultatul reportat' (analitic distinct pentru schimbarea politicii contabile) cu 3.000 lei\n\nÎn notele explicative se prezintă: politica veche (FIFO), noua politică (CMP), motivul schimbării (imagine mai fidelă în context de volatilitate a prețurilor) și efectul de 3.000 lei asupra rezultatului reportat.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b6"
+   },
+   {
+    "type": "example",
+    "title": "Schimbarea unei estimări contabile - durata de viață utilă a unui utilaj",
+    "concept_key": "exemplu-schimbare-estimare-durata-viata",
+    "md": "Un utilaj a fost achiziționat la valoarea de 120.000 lei și amortizat liniar pe o durată de viață utilă inițial estimată la 10 ani, deci amortizare anuală de 12.000 lei.\n\nDupă 4 ani de exploatare, amortizarea cumulată este de 48.000 lei, iar valoarea rămasă neamortizată este de 120.000 - 48.000 = 72.000 lei. Un raport tehnic de specialitate arată că, din cauza intensității de utilizare mai mari decât s-a estimat inițial, durata de viață utilă rămasă este de doar 4 ani, nu 6 ani cum rezulta din planul de amortizare inițial.\n\nAceasta este o **schimbare de estimare contabilă**. Noua amortizare anuală se calculează prospectiv:\n\n72.000 lei / 4 ani = 18.000 lei/an\n\nAmortizarea de 18.000 lei/an se aplică începând cu exercițiul curent și următorii 3 ani, fără a recalcula sau corecta amortizarea de 12.000 lei/an înregistrată în primii 4 ani. Rezultatul reportat nu este afectat. Nota explicativă menționează motivul reestimării (raportul tehnic) și efectul asupra amortizării viitoare (+6.000 lei/an față de planul inițial).",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b7"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Secțiunea dedicată politicilor contabile, estimărilor contabile și corectării erorilor (aprox. pct. 63-72)",
+    "effective": "2015-01-01",
+    "md": "Reglementările contabile aprobate prin OMFP 1802/2014 se aplică începând cu situațiile financiare ale exercițiului financiar 2015 și cuprind o secțiune dedicată politicilor contabile, care stabilește: condițiile în care o politică contabilă poate fi schimbată, tratamentul retroactiv al schimbărilor de politică (cu ajustarea rezultatului reportat, dacă efectul poate fi cuantificat), tratamentul prospectiv al schimbărilor de estimare și modul de corectare a erorilor semnificative din exerciții anterioare pe seama rezultatului reportat, fără retratarea situațiilor financiare deja depuse. Actul a fost modificat prin ordine ulterioare ale Ministerului Finanțelor; recomandăm verificarea formei consolidate în vigoare la data aplicării.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală practică este confundarea unei schimbări de estimare cu o schimbare de politică contabilă. Consecințele diferă fundamental: o estimare se tratează prospectiv (fără a atinge rezultatul reportat), în timp ce o schimbare de politică impune, de regulă, ajustarea retroactivă a rezultatului reportat. Încadrarea greșită poate distorsiona rezultatul reportat și poate fi semnalată de auditorul financiar sau la un control ANAF. De asemenea, pragul de semnificație pentru erorile contabile trebuie stabilit și documentat explicit în manualul propriu de politici contabile al entității – nu există un prag unic, general valabil, stabilit prin lege pentru toate entitățile.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b9"
+   },
+   {
+    "type": "exercise",
+    "md": "Societatea XYZ SRL deține o clădire cu valoare de intrare 800.000 lei, amortizată liniar pe o durată de viață utilă inițial estimată la 40 de ani (amortizare anuală = 20.000 lei/an). După 10 ani de utilizare, un raport tehnic de specialitate arată că durata de viață utilă rămasă este de doar 20 de ani (nu 30 de ani, cât rezultă din planul de amortizare inițial), din cauza unor condiții de exploatare mai severe decât s-a anticipat.\n\nCerințe:\na) Calculați valoarea rămasă neamortizată la momentul reestimării.\nb) Calculați noua amortizare anuală.\nc) Precizați tipul modificării (politică, estimare sau eroare) și tratamentul contabil corespunzător (retroactiv sau prospectiv), inclusiv dacă este necesară ajustarea rezultatului reportat.",
+    "solution_md": "a) Amortizare cumulată în primii 10 ani = 10 ani × 20.000 lei/an = 200.000 lei.\nValoare rămasă neamortizată = 800.000 - 200.000 = 600.000 lei.\n\nb) Noua amortizare anuală = 600.000 lei / 20 ani (noua durată de viață utilă rămasă) = 30.000 lei/an.\n\nc) Este o **schimbare de estimare contabilă**, nu o schimbare de politică și nu o eroare, pentru că durata de viață utilă a unui activ se bazează prin natura ei pe cele mai recente informații disponibile (raportul tehnic). Tratamentul este **prospectiv**: noua amortizare de 30.000 lei/an se aplică începând cu exercițiul curent și cu exercițiile viitoare, fără recalcularea amortizării de 20.000 lei/an deja înregistrate în primii 10 ani și fără nicio ajustare a rezultatului reportat. În notele explicative se menționează motivul reestimării (raportul tehnic) și efectul asupra amortizării viitoare (+10.000 lei/an față de planul inițial).",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este tratamentul contabil corect atunci când o entitate schimbă o politică contabilă (de exemplu trecerea de la metoda costului la modelul reevaluării pentru imobilizări corporale), iar efectul poate fi determinat credibil?",
+    "choices": [
+     "Se recunoaște doar prospectiv, în rezultatul exercițiilor viitoare",
+     "Se ajustează retroactiv rezultatul reportat, ca și cum noua politică ar fi fost aplicată dintotdeauna",
+     "Se ignoră, întrucât politicile contabile nu se pot schimba niciodată",
+     "Se raportează exclusiv la ANAF, fără nicio înregistrare contabilă"
+    ],
+    "answer": 1,
+    "explain": "Schimbarea unei politici contabile, atunci când efectul poate fi cuantificat credibil, se tratează retroactiv: se recalculează situația ca și cum noua politică ar fi fost aplicată dintotdeauna, iar diferența se înregistrează ca ajustare a rezultatului reportat.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O eroare contabilă semnificativă, aferentă unui exercițiu financiar anterior deja depus la ANAF, este descoperită în exercițiul curent. Cum se corectează, conform OMFP 1802/2014?",
+    "choices": [
+     "Prin retratarea integrală și redepunerea situațiilor financiare ale anului anterior, ca la IFRS",
+     "Pe seama rezultatului reportat al exercițiului curent, cu prezentare în notele explicative, fără redepunerea situațiilor financiare anterioare",
+     "Se ignoră dacă valoarea este pozitivă pentru entitate",
+     "Automat, de către ANAF, prin recalculare la următorul control fiscal"
+    ],
+    "answer": 1,
+    "explain": "Spre deosebire de IFRS, unde erorile semnificative impun retratarea completă a comparativelor, în RO GAAP corecția erorilor semnificative din exerciții anterioare se face pe seama rezultatului reportat al exercițiului curent, fără a modifica situațiile financiare deja depuse; efectul se prezintă în notele explicative.",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o politică contabilă?",
+    "back": "Ansamblul principiilor, bazelor de evaluare, convențiilor, regulilor și practicilor specifice aplicate de o entitate la întocmirea situațiilor financiare (ex. metoda de evaluare a stocurilor, metoda de amortizare).",
+    "concept_key": "politici-contabile-definitie-caracteristici",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e diferența de tratament dintre schimbarea unei politici contabile și schimbarea unei estimări contabile?",
+    "back": "Politica contabilă: tratament retroactiv, cu ajustarea rezultatului reportat. Estimarea contabilă: tratament prospectiv, doar în exercițiul curent și cele viitoare, fără a atinge rezultatul reportat.",
+    "concept_key": "schimbare-politica-contabila-conditii-tratament",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se corectează o eroare contabilă semnificativă aferentă unui exercițiu anterior, în RO GAAP?",
+    "back": "Pe seama rezultatului reportat al exercițiului curent, cu prezentare în notele explicative, fără retratarea sau redepunerea situațiilor financiare ale anilor anteriori (diferit de retratarea completă din IFRS).",
+    "concept_key": "corectare-erori-contabile-anterioare",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când este permisă schimbarea unei politici contabile?",
+    "back": "Doar dacă este impusă de o modificare a reglementărilor contabile sau dacă entitatea demonstrează că noua politică oferă informații mai relevante și mai credibile.",
+    "concept_key": "schimbare-politica-contabila-conditii-tratament",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu impune aplicarea consecventă a acelorași politici contabile de la un exercițiu la altul?",
+    "back": "Principiul permanenței metodelor, esențial pentru comparabilitatea în timp a situațiilor financiare.",
+    "concept_key": "politici-contabile-definitie-caracteristici",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Dă un exemplu de estimare contabilă frecvent revizuită.",
+    "back": "Durata de viață utilă și valoarea reziduală a unei imobilizări, nivelul unui provizion pentru litigii/garanții sau ajustarea pentru depreciere a creanțelor incerte.",
+    "concept_key": "estimari-contabile-definitie-tratament-prospectiv",
+    "blockId": "cmjjuxw2y00cgumkpld5kqaor-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1479,
+   "flashcards": 6
+  }
+ }
+}

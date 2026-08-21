@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxwhn00ojumkpg7r97z4k",
+ "courseId": "cmjjuxwhc00obumkpfv2f5s1h",
+ "course": "Time Management și Productivitate",
+ "module": "Fundamente Time Management",
+ "lesson": "Exercițiu audit timp",
+ "category": "SOFT_SKILLS",
+ "content": "# Exercițiu audit timp\n\n## Ce este un audit de timp\n\nUn **audit de timp** este un exercițiu de observare disciplinată: timp de una sau mai multe zile, notezi *exact* ce faci, în ce interval, fără să filtrezi sau să înfrumusețezi realitatea. Nu este un plan, nu este o listă de \"ce ar trebui să fac\" — este o fotografie obiectivă a felului în care îți cheltuiești, de fapt, orele.\n\nDiferența dintre cum crezi că îți petreci ziua și cum o petrești în realitate este, pentru majoritatea profesioniștilor, surprinzător de mare. Estimările subiective sunt distorsionate de memorie selectivă: reținem ședințele importante și sarcinile finalizate, dar uităm cele 20 de minute pierdute în verificarea telefonului, cele trei întreruperi de la un coleg sau cele 45 de minute în care ai \"lucrat\" dar de fapt ai comutat între trei taskuri fără să termini niciunul.\n\nAuditul de timp este primul pas obligatoriu înainte de orice tehnică de prioritizare sau planificare (Eisenhower, time blocking, Pomodoro etc.). Nu poți optimiza ceva ce nu ai măsurat. La fel cum o firmă nu poate reduce costurile fără o balanță analitică, nu poți crește productivitatea fără să știi unde se scurge timpul.\n\n## Cum se face practic un audit de timp\n\nMetoda are trei reguli simple, dar strict necesare pentru ca rezultatul să fie util:\n\n1. **Interval scurt de notare** — înregistrezi activitatea la fiecare 15-30 de minute, nu retrospectiv la finalul zilei. Memoria de la ora 18:00 despre ce ai făcut la 10:15 este nesigură; notarea în timp real elimină acest bias.\n2. **Notează activitatea reală, nu intenția** — dacă ai deschis un raport financiar dar ai petrecut 10 din cele 30 de minute răspunzând la mesaje pe WhatsApp, notezi ambele, nu doar \"am lucrat la raport\".\n3. **Durata minimă recomandată** — o singură zi oferă un semnal, dar poate fi atipică (o zi cu multe ședințe neplanificate, de exemplu). Pentru un tablou fidel, ideal este să repeți exercițiul timp de **5-7 zile lucrătoare**, inclusiv o zi \"aglomerată\" și una \"obișnuită\".\n\nInstrumentele pot fi la fel de simple ca un carnețel și un cronometru, sau un tabel în Excel/Google Sheets cu coloanele: *Oră start*, *Oră stop*, *Activitate*, *Categorie*. Aplicațiile de time-tracking (de tip Toggl sau similare) automatizează partea de cronometrare, dar categorizarea manuală rămâne esențială — algoritmul nu știe dacă o oră petrecută în Excel a fost muncă concentrată sau verificare repetată a e-mailului.\n\n## Cadrul de clasificare a activităților\n\nCa să transformi jurnalul brut în informație utilă, fiecare activitate notată trebuie încadrată într-o categorie. Un cadru simplu și eficient folosește patru categorii:\n\n- **Deep work (muncă de concentrare)** — sarcini care cer atenție susținută și produc valoare reală: redactarea unui raport, analiza unui buget, negocierea unui contract. Sunt activitățile greu de reluat după o întrerupere.\n- **Shallow work (muncă superficială)** — sarcini administrative, necesare dar cu valoare adăugată mică per minut: e-mailuri de rutină, completare de formulare, ședințe de status fără decizii.\n- **Time wasters (pierderi de timp)** — activități fără scop profesional sau personal asumat: scroll pe rețele sociale, întreruperi neplanificate la care ai putea răspunde mai târziu, așteptare pasivă.\n- **Recuperare/energie** — pauze, mese, mișcare. Nu sunt \"pierdere\", sunt necesare, dar merită urmărite separat ca să vezi dacă sunt suficiente sau, dimpotrivă, excesive ca formă de evitare a unei sarcini dificile (procrastinare mascată).\n\nUn fenomen specific de urmărit este **scurgerea de timp** (\"time leakage\"): nu marile blocuri pierdute (o ședință de 2 ore anulată o observi oricum), ci sumele mici, repetate — 5 minute de verificat telefonul, de 15 ori pe zi, înseamnă 75 de minute, adică aproape un interval întreg de muncă de concentrare, dispărut fără să-l observi.\n\n## Exemplu: Fragment de jurnal de timp (o oră de dimineață)\nIată cum arată o notare corectă, la interval de 15 minute, pentru un contabil junior la o firmă de servicii:\n\n| Oră | Activitate | Categorie |\n|---|---|---|\n| 09:00-09:15 | Verificare e-mail și răspunsuri urgente | Shallow work |\n| 09:15-09:30 | Continuare e-mail + 1 mesaj personal pe telefon | Time waster (parțial) |\n| 09:30-10:15 | Întocmire notă contabilă pentru închiderea de lună | Deep work |\n| 10:15-10:20 | Coleg intră în birou să întrebe ceva neurgent | Time waster |\n| 10:20-11:00 | Continuare notă contabilă (reluare după întrerupere) | Deep work |\n\nObservă două lucruri importante din acest fragment, tipice pentru orice audit real:\n\n1. Blocul de \"deep work\" de 45 de minute (09:30-10:15) a fost întrerupt de coleg, iar reluarea sarcinii a mai durat 40 de minute — costul unei întreruperi de 5 minute nu este 5 minute, ci timpul de revenire la concentrare completă.\n2. Verificarea e-mailului a \"contaminat\" 15 minute cu un mesaj personal — un exemplu clasic de scurgere mică, invizibilă la finalul zilei dacă nu ai notat-o în timp real.\n\n## Exemplu: Analiza unei zile complete de audit\nPresupunem că, după notare pe intervale de 30 de minute, o zi de lucru de 9 ore (540 de minute, de la 08:30 la 17:30, minus pauza de masă deja exclusă) a fost clasificată astfel:\n\n- Deep work: 150 de minute → 150/540 = **27,8%**\n- Shallow work: 210 de minute → 210/540 = **38,9%**\n- Time wasters: 90 de minute → 90/540 = **16,7%**\n- Recuperare/energie: 90 de minute → 90/540 = **16,7%**\n\nCalculul procentual este simplu: (minute din categorie / total minute lucrate) × 100. Aici, cifra care sare în ochi este raportul dintre deep work (27,8%) și shallow work (38,9%): mai mult din ziua de lucru s-a dus pe sarcini administrative de valoare mică decât pe munca ce chiar mișcă rezultatele importante ale postului.\n\nCombinat cu cele 16,7% time wasters (90 de minute, echivalentul unui bloc întreg de lucru concentrat, pierdut), concluzia practică este clară: o singură intervenție — de exemplu, blocarea notificărilor telefonului între 09:00-11:00 și gruparea e-mailurilor în două sesiuni fixe (10:30 și 15:00) — ar putea muta 60-90 de minute dinspre shallow work și time wasters spre deep work, fără nicio oră suplimentară lucrată.\n\n⚠ Auditul de timp este util doar dacă rămâne **descriptiv, nu evaluativ**, în faza de notare. Dacă în timp ce notezi începi deja să te judeci (\"iar am pierdut timp, sunt dezorganizat\"), tendința naturală este să înfrumusețezi jurnalul sau să renunți după prima zi. Separă strict cele două etape: 1) notezi onest, fără comentarii, timp de 5-7 zile; 2) abia după ce ai datele complete, analizezi și tragi concluzii. Judecata prematură este cea mai frecventă cauză pentru care oamenii abandonează exercițiul înainte să obțină un rezultat util.\n\n## Exercițiu\n**Exercițiul zilei: auditul tău de timp**\n\n1. Alege o zi de lucru tipică (nu o zi excepțional de aglomerată sau de liniștită).\n2. Timp de 8-9 ore, notează la fiecare 30 de minute ce ai făcut, folosind un tabel cu coloanele: *Oră*, *Activitate*, *Categorie* (Deep work / Shallow work / Time waster / Recuperare). Poți folosi telefonul ca alarmă recurentă, pentru a nu uita să notezi.\n3. La finalul zilei, calculează procentul de timp din fiecare categorie, folosind formula: (minute din categorie / total minute lucrate) × 100.\n4. Identifică: (a) cea mai lungă activitate de tip *deep work* neîntreruptă din ziua ta, și (b) cea mai frecventă categorie de *time waster*.\n5. Propune o singură schimbare concretă, aplicabilă mâine, care ar putea reduce cu cel puțin 30 de minute categoria *time waster* sau *shallow work* în favoarea *deep work*.\n\n**Soluție:** Nu există un răspuns unic — soluția depinde de datele tale reale. Un exemplu de rezolvare corect structurată:\n\n**Total: 480 minute (8 ore).**\n- Deep work: 180 min → 180/480 = 37,5%\n- Shallow work: 165 min → 165/480 = 34,4%\n- Time wasters: 75 min → 75/480 = 15,6%\n- Recuperare: 60 min → 60/480 = 12,5%\n\n**(a)** Cel mai lung bloc de deep work neîntrerupt: 55 de minute, între 09:10-10:05, redactare ofertă comercială.\n\n**(b)** Cel mai frecvent time waster: verificarea telefonului (notificări social media), apărută de 6 ori a câte 10-15 minute, total aproximativ 70 din cele 75 de minute de time wasters.\n\n**Schimbare propusă pentru mâine:** telefonul intră în mod \"Do Not Disturb\" între 09:00-11:00 și 14:00-16:00 (cele două intervale în care s-au înregistrat cele mai multe verificări), cu excepția apelurilor marcate ca favorite. Obiectiv: reducerea time wasters de la 75 la sub 45 de minute, fără nicio schimbare a orelor de lucru.\n\nEste corect exercițiul dacă: (1) procentele celor patru categorii însumează 100%, (2) schimbarea propusă este specifică (oră, acțiune, prag măsurabil), nu generică de tipul \"o să fiu mai atent\".",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "audit-timp-definitie",
+    "md": "## Ce este un audit de timp\n\nUn **audit de timp** este un exercițiu de observare disciplinată: timp de una sau mai multe zile, notezi *exact* ce faci, în ce interval, fără să filtrezi sau să înfrumusețezi realitatea. Nu este un plan, nu este o listă de \"ce ar trebui să fac\" — este o fotografie obiectivă a felului în care îți cheltuiești, de fapt, orele.\n\nDiferența dintre cum crezi că îți petreci ziua și cum o petrești în realitate este, pentru majoritatea profesioniștilor, surprinzător de mare. Estimările subiective sunt distorsionate de memorie selectivă: reținem ședințele importante și sarcinile finalizate, dar uităm cele 20 de minute pierdute în verificarea telefonului, cele trei întreruperi de la un coleg sau cele 45 de minute în care ai \"lucrat\" dar de fapt ai comutat între trei taskuri fără să termini niciunul.\n\nAuditul de timp este primul pas obligatoriu înainte de orice tehnică de prioritizare sau planificare (Eisenhower, time blocking, Pomodoro etc.). Nu poți optimiza ceva ce nu ai măsurat. La fel cum o firmă nu poate reduce costurile fără o balanță analitică, nu poți crește productivitatea fără să știi unde se scurge timpul.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metoda-audit-timp",
+    "md": "## Cum se face practic un audit de timp\n\nMetoda are trei reguli simple, dar strict necesare pentru ca rezultatul să fie util:\n\n1. **Interval scurt de notare** — înregistrezi activitatea la fiecare 15-30 de minute, nu retrospectiv la finalul zilei. Memoria de la ora 18:00 despre ce ai făcut la 10:15 este nesigură; notarea în timp real elimină acest bias.\n2. **Notează activitatea reală, nu intenția** — dacă ai deschis un raport financiar dar ai petrecut 10 din cele 30 de minute răspunzând la mesaje pe WhatsApp, notezi ambele, nu doar \"am lucrat la raport\".\n3. **Durata minimă recomandată** — o singură zi oferă un semnal, dar poate fi atipică (o zi cu multe ședințe neplanificate, de exemplu). Pentru un tablou fidel, ideal este să repeți exercițiul timp de **5-7 zile lucrătoare**, inclusiv o zi \"aglomerată\" și una \"obișnuită\".\n\nInstrumentele pot fi la fel de simple ca un carnețel și un cronometru, sau un tabel în Excel/Google Sheets cu coloanele: *Oră start*, *Oră stop*, *Activitate*, *Categorie*. Aplicațiile de time-tracking (de tip Toggl sau similare) automatizează partea de cronometrare, dar categorizarea manuală rămâne esențială — algoritmul nu știe dacă o oră petrecută în Excel a fost muncă concentrată sau verificare repetată a e-mailului.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "categorii-activitati-timp",
+    "md": "## Cadrul de clasificare a activităților\n\nCa să transformi jurnalul brut în informație utilă, fiecare activitate notată trebuie încadrată într-o categorie. Un cadru simplu și eficient folosește patru categorii:\n\n- **Deep work (muncă de concentrare)** — sarcini care cer atenție susținută și produc valoare reală: redactarea unui raport, analiza unui buget, negocierea unui contract. Sunt activitățile greu de reluat după o întrerupere.\n- **Shallow work (muncă superficială)** — sarcini administrative, necesare dar cu valoare adăugată mică per minut: e-mailuri de rutină, completare de formulare, ședințe de status fără decizii.\n- **Time wasters (pierderi de timp)** — activități fără scop profesional sau personal asumat: scroll pe rețele sociale, întreruperi neplanificate la care ai putea răspunde mai târziu, așteptare pasivă.\n- **Recuperare/energie** — pauze, mese, mișcare. Nu sunt \"pierdere\", sunt necesare, dar merită urmărite separat ca să vezi dacă sunt suficiente sau, dimpotrivă, excesive ca formă de evitare a unei sarcini dificile (procrastinare mascată).\n\nUn fenomen specific de urmărit este **scurgerea de timp** (\"time leakage\"): nu marile blocuri pierdute (o ședință de 2 ore anulată o observi oricum), ci sumele mici, repetate — 5 minute de verificat telefonul, de 15 ori pe zi, înseamnă 75 de minute, adică aproape un interval întreg de muncă de concentrare, dispărut fără să-l observi.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b3"
+   },
+   {
+    "type": "example",
+    "title": "Fragment de jurnal de timp (o oră de dimineață)",
+    "concept_key": "jurnal-timp-exemplu",
+    "md": "Iată cum arată o notare corectă, la interval de 15 minute, pentru un contabil junior la o firmă de servicii:\n\n| Oră | Activitate | Categorie |\n|---|---|---|\n| 09:00-09:15 | Verificare e-mail și răspunsuri urgente | Shallow work |\n| 09:15-09:30 | Continuare e-mail + 1 mesaj personal pe telefon | Time waster (parțial) |\n| 09:30-10:15 | Întocmire notă contabilă pentru închiderea de lună | Deep work |\n| 10:15-10:20 | Coleg intră în birou să întrebe ceva neurgent | Time waster |\n| 10:20-11:00 | Continuare notă contabilă (reluare după întrerupere) | Deep work |\n\nObservă două lucruri importante din acest fragment, tipice pentru orice audit real:\n\n1. Blocul de \"deep work\" de 45 de minute (09:30-10:15) a fost întrerupt de coleg, iar reluarea sarcinii a mai durat 40 de minute — costul unei întreruperi de 5 minute nu este 5 minute, ci timpul de revenire la concentrare completă.\n2. Verificarea e-mailului a \"contaminat\" 15 minute cu un mesaj personal — un exemplu clasic de scurgere mică, invizibilă la finalul zilei dacă nu ai notat-o în timp real.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b4"
+   },
+   {
+    "type": "example",
+    "title": "Analiza unei zile complete de audit",
+    "concept_key": "analiza-audit-timp",
+    "md": "Presupunem că, după notare pe intervale de 30 de minute, o zi de lucru de 9 ore (540 de minute, de la 08:30 la 17:30, minus pauza de masă deja exclusă) a fost clasificată astfel:\n\n- Deep work: 150 de minute → 150/540 = **27,8%**\n- Shallow work: 210 de minute → 210/540 = **38,9%**\n- Time wasters: 90 de minute → 90/540 = **16,7%**\n- Recuperare/energie: 90 de minute → 90/540 = **16,7%**\n\nCalculul procentual este simplu: (minute din categorie / total minute lucrate) × 100. Aici, cifra care sare în ochi este raportul dintre deep work (27,8%) și shallow work (38,9%): mai mult din ziua de lucru s-a dus pe sarcini administrative de valoare mică decât pe munca ce chiar mișcă rezultatele importante ale postului.\n\nCombinat cu cele 16,7% time wasters (90 de minute, echivalentul unui bloc întreg de lucru concentrat, pierdut), concluzia practică este clară: o singură intervenție — de exemplu, blocarea notificărilor telefonului între 09:00-11:00 și gruparea e-mailurilor în două sesiuni fixe (10:30 și 15:00) — ar putea muta 60-90 de minute dinspre shallow work și time wasters spre deep work, fără nicio oră suplimentară lucrată.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Auditul de timp este util doar dacă rămâne **descriptiv, nu evaluativ**, în faza de notare. Dacă în timp ce notezi începi deja să te judeci (\"iar am pierdut timp, sunt dezorganizat\"), tendința naturală este să înfrumusețezi jurnalul sau să renunți după prima zi. Separă strict cele două etape: 1) notezi onest, fără comentarii, timp de 5-7 zile; 2) abia după ce ai datele complete, analizezi și tragi concluzii. Judecata prematură este cea mai frecventă cauză pentru care oamenii abandonează exercițiul înainte să obțină un rezultat util.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "**Exercițiul zilei: auditul tău de timp**\n\n1. Alege o zi de lucru tipică (nu o zi excepțional de aglomerată sau de liniștită).\n2. Timp de 8-9 ore, notează la fiecare 30 de minute ce ai făcut, folosind un tabel cu coloanele: *Oră*, *Activitate*, *Categorie* (Deep work / Shallow work / Time waster / Recuperare). Poți folosi telefonul ca alarmă recurentă, pentru a nu uita să notezi.\n3. La finalul zilei, calculează procentul de timp din fiecare categorie, folosind formula: (minute din categorie / total minute lucrate) × 100.\n4. Identifică: (a) cea mai lungă activitate de tip *deep work* neîntreruptă din ziua ta, și (b) cea mai frecventă categorie de *time waster*.\n5. Propune o singură schimbare concretă, aplicabilă mâine, care ar putea reduce cu cel puțin 30 de minute categoria *time waster* sau *shallow work* în favoarea *deep work*.",
+    "solution_md": "Nu există un răspuns unic — soluția depinde de datele tale reale. Un exemplu de rezolvare corect structurată:\n\n**Total: 480 minute (8 ore).**\n- Deep work: 180 min → 180/480 = 37,5%\n- Shallow work: 165 min → 165/480 = 34,4%\n- Time wasters: 75 min → 75/480 = 15,6%\n- Recuperare: 60 min → 60/480 = 12,5%\n\n**(a)** Cel mai lung bloc de deep work neîntrerupt: 55 de minute, între 09:10-10:05, redactare ofertă comercială.\n\n**(b)** Cel mai frecvent time waster: verificarea telefonului (notificări social media), apărută de 6 ori a câte 10-15 minute, total aproximativ 70 din cele 75 de minute de time wasters.\n\n**Schimbare propusă pentru mâine:** telefonul intră în mod \"Do Not Disturb\" între 09:00-11:00 și 14:00-16:00 (cele două intervale în care s-au înregistrat cele mai multe verificări), cu excepția apelurilor marcate ca favorite. Obiectiv: reducerea time wasters de la 75 la sub 45 de minute, fără nicio schimbare a orelor de lucru.\n\nEste corect exercițiul dacă: (1) procentele celor patru categorii însumează 100%, (2) schimbarea propusă este specifică (oră, acțiune, prag măsurabil), nu generică de tipul \"o să fiu mai atent\".",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre un audit de timp și o listă obișnuită de sarcini (to-do list)?",
+    "choices": [
+     "Auditul de timp înregistrează retrospectiv, la finalul zilei, ce ai planificat să faci",
+     "Auditul de timp descrie ce ai făcut efectiv, în timp real, indiferent dacă era planificat sau nu",
+     "Auditul de timp se face o singură dată, la începutul anului",
+     "Auditul de timp înlocuiește complet planificarea zilnică"
+    ],
+    "answer": 1,
+    "explain": "Auditul de timp este un instrument de observare obiectivă a realității (ce s-a întâmplat efectiv, notat în timp real), nu de planificare a intențiilor. Abia după ce ai datele reale poți construi un plan mai bun.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce se recomandă notarea activităților la fiecare 15-30 de minute, în timp real, și nu retrospectiv la finalul zilei?",
+    "choices": [
+     "Pentru că aplicațiile de time-tracking cer această frecvență",
+     "Pentru că memoria retrospectivă tinde să omită întreruperile mici și activitățile de rutină, distorsionând rezultatul",
+     "Pentru că altfel calculul procentual nu ar fi posibil matematic",
+     "Pentru că legislația muncii impune evidența la 30 de minute"
+    ],
+    "answer": 1,
+    "explain": "Notarea retrospectivă suferă de bias de memorie selectivă: reținem sarcinile importante, dar uităm micile scurgeri de timp (telefon, întreruperi scurte), exact partea pe care auditul vrea să o scoată la lumină.",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un audit de timp?",
+    "back": "Un exercițiu de observare obiectivă și disciplinată în care notezi, în timp real, exact ce activități desfășori și cât timp le aloci, fără să filtrezi sau să corectezi comportamentul în timpul notării.",
+    "concept_key": "audit-timp-definitie",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce interval se recomandă notarea activităților într-un audit de timp?",
+    "back": "La fiecare 15-30 de minute, în timp real — nu retrospectiv la finalul zilei, pentru a evita distorsiunile memoriei.",
+    "concept_key": "metoda-audit-timp",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte zile lucrătoare este recomandat să dureze un audit de timp complet?",
+    "back": "5-7 zile lucrătoare, incluzând atât o zi aglomerată, cât și una obișnuită, pentru un tablou reprezentativ.",
+    "concept_key": "metoda-audit-timp",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele patru categorii standard folosite la clasificarea activităților într-un audit de timp?",
+    "back": "Deep work (muncă de concentrare), shallow work (muncă administrativă/superficială), time wasters (pierderi de timp) și recuperare/energie (pauze, mese, mișcare).",
+    "concept_key": "categorii-activitati-timp",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este \"time leakage\" (scurgerea de timp)?",
+    "back": "Suma multor pierderi mici și repetate de timp (ex. 5 minute de verificat telefonul, de mai multe ori pe zi) care, adunate, ajung la un interval semnificativ, dar rămân invizibile dacă nu sunt notate în timp real.",
+    "concept_key": "categorii-activitati-timp",
+    "blockId": "cmjjuxwhn00ojumkpg7r97z4k-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1380,
+   "flashcards": 5
+  }
+ }
+}

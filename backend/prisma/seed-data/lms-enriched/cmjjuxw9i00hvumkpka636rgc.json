@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw9i00hvumkpka636rgc",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "REVISAL și Raportări ITM",
+ "lesson": "Înregistrări obligatorii",
+ "category": "HR_COMPLIANCE",
+ "content": "# Înregistrări obligatorii\n\n## Ce este REVISAL\n\nRegistrul General de Evidență a Salariaților (REVISAL) este aplicația informatică prin care fiecare angajator din România înregistrează, actualizează și transmite la Inspectoratul Teritorial de Muncă (ITM) datele esențiale despre salariați și despre raporturile de muncă pe care le derulează cu aceștia.\n\nObligația de a ține REVISAL revine **oricărui angajator**, indiferent de forma de organizare (societate, PFA cu salariați, ONG, instituție publică etc.), din momentul în care angajează prima persoană cu contract individual de muncă (CIM). Registrul conține, pentru fiecare salariat, cel puțin:\n\n- datele de identificare (nume, CNP);\n- data încheierii, tipul și durata CIM;\n- funcția/ocupația, conform Clasificării Ocupațiilor din România (COR);\n- tipul de normă (întreagă/parțială) și durata timpului de muncă;\n- salariul de bază brut lunar;\n- perioadele de suspendare a contractului și motivul acestora;\n- data și temeiul legal al încetării contractului.\n\nRolul REVISAL este dublu: este instrumentul principal prin care ITM verifică dacă un salariat este angajat legal (muncă declarată) și, totodată, istoricul oficial al carierei profesionale, relevant pentru calculul vechimii și al drepturilor de asigurări sociale.\n\n## Înregistrarea angajării: termenul-cheie\n\nCea mai importantă regulă de reținut, verificată constant în controalele ITM, este următoarea:\n\n> **Contractul individual de muncă trebuie înregistrat în REVISAL cel târziu în ziua anterioară începerii activității de către salariat.**\n\nAcest lucru înseamnă că, indiferent când s-a semnat CIM-ul, transmiterea în registru trebuie să existe **înainte** ca persoana să pună efectiv piciorul la locul de muncă. Practic:\n\n- dacă un salariat urmează să înceapă activitatea luni, 14 septembrie, înregistrarea în REVISAL trebuie făcută cel târziu duminică, 13 septembrie (majoritatea angajatorilor transmit înregistrarea cu cel puțin o zi lucrătoare înainte, ca măsură de siguranță, pentru a nu depinde de disponibilitatea aplicației în weekend);\n- absența înregistrării la această dată transformă prestarea muncii, chiar și pentru o singură zi, în **muncă nedeclarată** – una dintre cele mai grave abateri sancționate de legislația muncii.\n\nFluxul corect în orice departament de HR este: semnare CIM → înregistrare REVISAL → abia apoi prima zi de lucru, niciodată invers.\n\n## Modificări, suspendări și încetări: ce se înregistrează și când\n\nREVISAL nu se completează o singură dată, la angajare, ci trebuie actualizat pe toată durata raportului de muncă, ori de câte ori apare unul dintre următoarele evenimente:\n\n**1. Modificarea CIM.** Orice schimbare a unui element esențial – salariul, funcția, norma de lucru, locul muncii, durata contractului – se face printr-un **act adițional** la CIM, semnat de ambele părți, urmat de înregistrarea modificării în REVISAL. Pentru modificarea salariului, termenul legal de transmitere este, la data actualizării acestui material, de **20 de zile lucrătoare** de la data modificării – acest termen a suferit modificări prin acte normative succesive, așa că verificați forma în vigoare a HG 905/2017 înainte de a-l aplica într-un caz concret.\n\n**2. Suspendarea CIM.** Suspendarea (concediu de creștere a copilului, concediu fără plată, incapacitate temporară de muncă de lungă durată, detașare etc.) trebuie înregistrată în REVISAL, ca regulă generală, înainte de sau cel târziu la momentul producerii evenimentului care o determină, cu excepții pentru situațiile pe care angajatorul nu le poate anticipa (de exemplu, absența nemotivată). Termenul exact diferă pe tip de suspendare – verificați-l în forma actualizată a hotărârii.\n\n**3. Încetarea CIM.** Încetarea raportului de muncă (demisie, concediere, acord al părților, pensionare etc.) trebuie înregistrată în REVISAL, ca regulă, cel târziu la data încetării efective a contractului sau, dacă angajatorul ia cunoștință ulterior de motivul încetării, într-un termen scurt de la acel moment. Verificați termenul exact în textul actualizat al normei, pentru a evita aplicarea unei versiuni depășite.\n\nRegula practică pentru orice specialist HR: **niciun eveniment din viața contractului de muncă nu rămâne doar în dosarul de personal – toate trebuie oglindite în REVISAL**, în termenele prevăzute de lege.\n\n## Exemplu: Calculul termenului de înregistrare la angajare\nO societate angajează o casieră care urmează să înceapă activitatea **marți, 15 septembrie 2026**. CIM-ul se semnează cu o săptămână înainte, pe 8 septembrie 2026.\n\n**Întrebare:** până când trebuie transmisă înregistrarea în REVISAL?\n\n**Răspuns:** cel târziu **luni, 14 septembrie 2026** (ziua anterioară începerii activității). Faptul că CIM-ul a fost semnat mai devreme, pe 8 septembrie, nu schimbă termenul-limită – angajatorul poate (și este recomandat să) transmită înregistrarea imediat după semnare, dar termenul legal maxim rămâne ziua anterioară începerii efective a muncii. Dacă angajata s-ar prezenta la lucru pe 15 septembrie fără ca înregistrarea să existe deja în sistem la acea dată, situația ar fi calificată drept muncă nedeclarată, chiar dacă înregistrarea s-ar face ulterior, în aceeași zi.\n\n## Exemplu: Act adițional pentru majorare de salariu\nUn angajat primește o majorare salarială de la 4.325 lei brut (salariul minim aplicabil din 1 iulie 2026) la 5.000 lei brut, cu aplicare de la **luni, 3 august 2026**.\n\nAngajatorul întocmește actul adițional și îl semnează pe 20 iulie 2026, dar termenul de înregistrare în REVISAL curge de la **data la care modificarea produce efecte** (3 august 2026), nu de la data semnării actului.\n\nAplicând ipoteza celor 20 de zile lucrătoare (valoare de verificat la zi), numărătoarea arată astfel:\n\n- Săptămâna 1: 3–7 august (zilele 1–5)\n- Săptămâna 2: 10–14 august (zilele 6–10)\n- Săptămâna 3: 17–21 august (zilele 11–15)\n- Săptămâna 4: 24–28 august (zilele 16–20)\n\nRezultat: înregistrarea ar trebui făcută **cel târziu vineri, 28 august 2026**. Recomandare practică: nu așteptați termenul-limită – actualizați REVISAL în aceeași săptămână cu semnarea actului adițional, ca să eliminați riscul de eroare de calcul sau de omisiune.\n\n> Temei legal: HG nr. 905/2017 privind registrul general de evidență a salariaților Art. 4 (în vigoare de la 2017-08-01)\nPotrivit art. 4 din HG 905/2017, angajatorul are obligația de a înregistra, cel târziu în ziua anterioară începerii activității, elementele contractului individual de muncă în registrul general de evidență a salariaților, precum și de a transmite ulterior în registru orice modificare, suspendare sau încetare a acestuia, în termenele stabilite de aceeași hotărâre. Actul a fost modificat succesiv prin norme ulterioare; verificați forma consolidată în vigoare înainte de a aplica un termen exact la un caz concret.\n\n⚠ **Atenție la riscuri și la protecția datelor:**\n\n- Lipsa totală a înregistrării unui salariat în REVISAL este calificată drept **muncă nedeclarată** și este sancționată extrem de sever conform Codului Muncii – printre cele mai aspre amenzi contravenționale din legislația muncii; cuantumul exact se modifică periodic, așa că verificați valoarea actualizată înainte de a o comunica intern.\n- Întârzierea înregistrării unei modificări, suspendări sau încetări față de termenul legal aplicabil constituie de asemenea contravenție, chiar dacă mai puțin gravă decât neînregistrarea completă.\n- Dosarul de personal și datele transmise în REVISAL conțin date cu caracter personal (CNP, salariu, situație medicală în cazul suspendărilor pentru incapacitate). Conform principiilor GDPR, accesul la aceste date trebuie limitat strict la persoanele din HR/salarizare cu atribuții directe, iar dosarele fizice trebuie păstrate în condiții de securitate.\n- Acest material oferă un cadru general de lucru; pentru situații punctuale (litigii, interpretări speciale ale unui termen), consultați un specialist în legislația muncii sau ITM-ul teritorial.\n\n## Exercițiu\nSunteți specialist HR la o firmă cu 40 de angajați. Aveți de gestionat, în aceeași săptămână, patru evenimente. Stabiliți, pentru fiecare, principiul de termen aplicabil pentru înregistrarea în REVISAL:\n\n1. **Angajata A** este angajată nou și urmează să înceapă activitatea **miercuri, 16 septembrie 2026**.\n2. **Angajatul B** primește, prin act adițional, o majorare de salariu aplicabilă de la **1 septembrie 2026**.\n3. **Angajata C** intră în **concediu de creștere a copilului** începând cu **21 septembrie 2026**.\n4. **Angajatul D** își dă demisia, cu ultima zi lucrată **30 septembrie 2026**.\n\nPentru fiecare caz, indicați principiul de termen aplicabil (nu recalculați zile lucrătoare exacte dacă nu aveți la îndemână forma actualizată a HG 905/2017).\n\n**Soluție:** 1. **Angajata A** – CIM nou: înregistrare cel târziu **marți, 15 septembrie 2026** (ziua anterioară începerii activității) – termenul cel mai strict și mai des controlat de ITM; nu-l lăsați niciodată pe ultima sută de metri.\n\n2. **Angajatul B** – modificare de salariu prin act adițional: termenul curge de la data de aplicare a noului salariu (1 septembrie 2026), în intervalul legal pentru modificări (indicativ 20 de zile lucrătoare, valoare de verificat la zi). Recomandare: transmiteți înregistrarea imediat ce actul adițional este semnat.\n\n3. **Angajata C** – suspendare pentru concediu de creștere a copilului: fiind un eveniment previzibil (cerere și acte depuse din timp), înregistrarea trebuie reflectată în REVISAL înainte de sau cel târziu la data la care suspendarea produce efecte (21 septembrie 2026); verificați termenul exact aplicabil acestui tip de suspendare.\n\n4. **Angajatul D** – încetare prin demisie: înregistrarea încetării trebuie făcută cel târziu la data încetării efective a contractului (30 septembrie 2026) sau în termenul scurt prevăzut de lege de la acel moment. Nu amânați această înregistrare dincolo de ultima zi lucrată.\n\n**Regulă generală:** cu cât evenimentul este mai previzibil, cu atât mai puțin se justifică așteptarea până la termenul-limită legal – buna practică de HR este înregistrarea imediată, termenul legal fiind doar plasa de siguranță, nu ținta.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "revisal-ce-este",
+    "md": "## Ce este REVISAL\n\nRegistrul General de Evidență a Salariaților (REVISAL) este aplicația informatică prin care fiecare angajator din România înregistrează, actualizează și transmite la Inspectoratul Teritorial de Muncă (ITM) datele esențiale despre salariați și despre raporturile de muncă pe care le derulează cu aceștia.\n\nObligația de a ține REVISAL revine **oricărui angajator**, indiferent de forma de organizare (societate, PFA cu salariați, ONG, instituție publică etc.), din momentul în care angajează prima persoană cu contract individual de muncă (CIM). Registrul conține, pentru fiecare salariat, cel puțin:\n\n- datele de identificare (nume, CNP);\n- data încheierii, tipul și durata CIM;\n- funcția/ocupația, conform Clasificării Ocupațiilor din România (COR);\n- tipul de normă (întreagă/parțială) și durata timpului de muncă;\n- salariul de bază brut lunar;\n- perioadele de suspendare a contractului și motivul acestora;\n- data și temeiul legal al încetării contractului.\n\nRolul REVISAL este dublu: este instrumentul principal prin care ITM verifică dacă un salariat este angajat legal (muncă declarată) și, totodată, istoricul oficial al carierei profesionale, relevant pentru calculul vechimii și al drepturilor de asigurări sociale.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-angajare-termen",
+    "md": "## Înregistrarea angajării: termenul-cheie\n\nCea mai importantă regulă de reținut, verificată constant în controalele ITM, este următoarea:\n\n> **Contractul individual de muncă trebuie înregistrat în REVISAL cel târziu în ziua anterioară începerii activității de către salariat.**\n\nAcest lucru înseamnă că, indiferent când s-a semnat CIM-ul, transmiterea în registru trebuie să existe **înainte** ca persoana să pună efectiv piciorul la locul de muncă. Practic:\n\n- dacă un salariat urmează să înceapă activitatea luni, 14 septembrie, înregistrarea în REVISAL trebuie făcută cel târziu duminică, 13 septembrie (majoritatea angajatorilor transmit înregistrarea cu cel puțin o zi lucrătoare înainte, ca măsură de siguranță, pentru a nu depinde de disponibilitatea aplicației în weekend);\n- absența înregistrării la această dată transformă prestarea muncii, chiar și pentru o singură zi, în **muncă nedeclarată** – una dintre cele mai grave abateri sancționate de legislația muncii.\n\nFluxul corect în orice departament de HR este: semnare CIM → înregistrare REVISAL → abia apoi prima zi de lucru, niciodată invers.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-modificari-suspendari-incetari",
+    "md": "## Modificări, suspendări și încetări: ce se înregistrează și când\n\nREVISAL nu se completează o singură dată, la angajare, ci trebuie actualizat pe toată durata raportului de muncă, ori de câte ori apare unul dintre următoarele evenimente:\n\n**1. Modificarea CIM.** Orice schimbare a unui element esențial – salariul, funcția, norma de lucru, locul muncii, durata contractului – se face printr-un **act adițional** la CIM, semnat de ambele părți, urmat de înregistrarea modificării în REVISAL. Pentru modificarea salariului, termenul legal de transmitere este, la data actualizării acestui material, de **20 de zile lucrătoare** de la data modificării – acest termen a suferit modificări prin acte normative succesive, așa că verificați forma în vigoare a HG 905/2017 înainte de a-l aplica într-un caz concret.\n\n**2. Suspendarea CIM.** Suspendarea (concediu de creștere a copilului, concediu fără plată, incapacitate temporară de muncă de lungă durată, detașare etc.) trebuie înregistrată în REVISAL, ca regulă generală, înainte de sau cel târziu la momentul producerii evenimentului care o determină, cu excepții pentru situațiile pe care angajatorul nu le poate anticipa (de exemplu, absența nemotivată). Termenul exact diferă pe tip de suspendare – verificați-l în forma actualizată a hotărârii.\n\n**3. Încetarea CIM.** Încetarea raportului de muncă (demisie, concediere, acord al părților, pensionare etc.) trebuie înregistrată în REVISAL, ca regulă, cel târziu la data încetării efective a contractului sau, dacă angajatorul ia cunoștință ulterior de motivul încetării, într-un termen scurt de la acel moment. Verificați termenul exact în textul actualizat al normei, pentru a evita aplicarea unei versiuni depășite.\n\nRegula practică pentru orice specialist HR: **niciun eveniment din viața contractului de muncă nu rămâne doar în dosarul de personal – toate trebuie oglindite în REVISAL**, în termenele prevăzute de lege.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul termenului de înregistrare la angajare",
+    "concept_key": "revisal-angajare-termen",
+    "md": "O societate angajează o casieră care urmează să înceapă activitatea **marți, 15 septembrie 2026**. CIM-ul se semnează cu o săptămână înainte, pe 8 septembrie 2026.\n\n**Întrebare:** până când trebuie transmisă înregistrarea în REVISAL?\n\n**Răspuns:** cel târziu **luni, 14 septembrie 2026** (ziua anterioară începerii activității). Faptul că CIM-ul a fost semnat mai devreme, pe 8 septembrie, nu schimbă termenul-limită – angajatorul poate (și este recomandat să) transmită înregistrarea imediat după semnare, dar termenul legal maxim rămâne ziua anterioară începerii efective a muncii. Dacă angajata s-ar prezenta la lucru pe 15 septembrie fără ca înregistrarea să existe deja în sistem la acea dată, situația ar fi calificată drept muncă nedeclarată, chiar dacă înregistrarea s-ar face ulterior, în aceeași zi.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b4"
+   },
+   {
+    "type": "example",
+    "title": "Act adițional pentru majorare de salariu",
+    "concept_key": "revisal-modificari-suspendari-incetari",
+    "md": "Un angajat primește o majorare salarială de la 4.325 lei brut (salariul minim aplicabil din 1 iulie 2026) la 5.000 lei brut, cu aplicare de la **luni, 3 august 2026**.\n\nAngajatorul întocmește actul adițional și îl semnează pe 20 iulie 2026, dar termenul de înregistrare în REVISAL curge de la **data la care modificarea produce efecte** (3 august 2026), nu de la data semnării actului.\n\nAplicând ipoteza celor 20 de zile lucrătoare (valoare de verificat la zi), numărătoarea arată astfel:\n\n- Săptămâna 1: 3–7 august (zilele 1–5)\n- Săptămâna 2: 10–14 august (zilele 6–10)\n- Săptămâna 3: 17–21 august (zilele 11–15)\n- Săptămâna 4: 24–28 august (zilele 16–20)\n\nRezultat: înregistrarea ar trebui făcută **cel târziu vineri, 28 august 2026**. Recomandare practică: nu așteptați termenul-limită – actualizați REVISAL în aceeași săptămână cu semnarea actului adițional, ca să eliminați riscul de eroare de calcul sau de omisiune.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG nr. 905/2017 privind registrul general de evidență a salariaților",
+    "article": "Art. 4",
+    "effective": "2017-08-01",
+    "md": "Potrivit art. 4 din HG 905/2017, angajatorul are obligația de a înregistra, cel târziu în ziua anterioară începerii activității, elementele contractului individual de muncă în registrul general de evidență a salariaților, precum și de a transmite ulterior în registru orice modificare, suspendare sau încetare a acestuia, în termenele stabilite de aceeași hotărâre. Actul a fost modificat succesiv prin norme ulterioare; verificați forma consolidată în vigoare înainte de a aplica un termen exact la un caz concret.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Atenție la riscuri și la protecția datelor:**\n\n- Lipsa totală a înregistrării unui salariat în REVISAL este calificată drept **muncă nedeclarată** și este sancționată extrem de sever conform Codului Muncii – printre cele mai aspre amenzi contravenționale din legislația muncii; cuantumul exact se modifică periodic, așa că verificați valoarea actualizată înainte de a o comunica intern.\n- Întârzierea înregistrării unei modificări, suspendări sau încetări față de termenul legal aplicabil constituie de asemenea contravenție, chiar dacă mai puțin gravă decât neînregistrarea completă.\n- Dosarul de personal și datele transmise în REVISAL conțin date cu caracter personal (CNP, salariu, situație medicală în cazul suspendărilor pentru incapacitate). Conform principiilor GDPR, accesul la aceste date trebuie limitat strict la persoanele din HR/salarizare cu atribuții directe, iar dosarele fizice trebuie păstrate în condiții de securitate.\n- Acest material oferă un cadru general de lucru; pentru situații punctuale (litigii, interpretări speciale ale unui termen), consultați un specialist în legislația muncii sau ITM-ul teritorial.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Sunteți specialist HR la o firmă cu 40 de angajați. Aveți de gestionat, în aceeași săptămână, patru evenimente. Stabiliți, pentru fiecare, principiul de termen aplicabil pentru înregistrarea în REVISAL:\n\n1. **Angajata A** este angajată nou și urmează să înceapă activitatea **miercuri, 16 septembrie 2026**.\n2. **Angajatul B** primește, prin act adițional, o majorare de salariu aplicabilă de la **1 septembrie 2026**.\n3. **Angajata C** intră în **concediu de creștere a copilului** începând cu **21 septembrie 2026**.\n4. **Angajatul D** își dă demisia, cu ultima zi lucrată **30 septembrie 2026**.\n\nPentru fiecare caz, indicați principiul de termen aplicabil (nu recalculați zile lucrătoare exacte dacă nu aveți la îndemână forma actualizată a HG 905/2017).",
+    "solution_md": "1. **Angajata A** – CIM nou: înregistrare cel târziu **marți, 15 septembrie 2026** (ziua anterioară începerii activității) – termenul cel mai strict și mai des controlat de ITM; nu-l lăsați niciodată pe ultima sută de metri.\n\n2. **Angajatul B** – modificare de salariu prin act adițional: termenul curge de la data de aplicare a noului salariu (1 septembrie 2026), în intervalul legal pentru modificări (indicativ 20 de zile lucrătoare, valoare de verificat la zi). Recomandare: transmiteți înregistrarea imediat ce actul adițional este semnat.\n\n3. **Angajata C** – suspendare pentru concediu de creștere a copilului: fiind un eveniment previzibil (cerere și acte depuse din timp), înregistrarea trebuie reflectată în REVISAL înainte de sau cel târziu la data la care suspendarea produce efecte (21 septembrie 2026); verificați termenul exact aplicabil acestui tip de suspendare.\n\n4. **Angajatul D** – încetare prin demisie: înregistrarea încetării trebuie făcută cel târziu la data încetării efective a contractului (30 septembrie 2026) sau în termenul scurt prevăzut de lege de la acel moment. Nu amânați această înregistrare dincolo de ultima zi lucrată.\n\n**Regulă generală:** cu cât evenimentul este mai previzibil, cu atât mai puțin se justifică așteptarea până la termenul-limită legal – buna practică de HR este înregistrarea imediată, termenul legal fiind doar plasa de siguranță, nu ținta.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul legal de înregistrare în REVISAL a unui contract individual de muncă nou-încheiat?",
+    "choices": [
+     "În aceeași zi în care salariatul începe activitatea",
+     "Cel târziu în ziua anterioară începerii activității de către salariat",
+     "În termen de 5 zile lucrătoare de la angajare",
+     "Până la sfârșitul lunii în care a avut loc angajarea"
+    ],
+    "answer": 1,
+    "explain": "Conform HG 905/2017, angajatorul trebuie să înregistreze CIM-ul în REVISAL cel târziu în ziua anterioară începerii efective a activității – niciodată după acest moment.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce document stă la baza înregistrării în REVISAL a unei modificări a salariului unui angajat?",
+    "choices": [
+     "O simplă notă internă de HR, fără altă formalitate",
+     "Un act adițional la contractul individual de muncă, semnat de ambele părți",
+     "O decizie unilaterală a angajatorului comunicată verbal",
+     "Nu este necesară nicio formalitate, modificarea se reflectă direct în stat de plată"
+    ],
+    "answer": 1,
+    "explain": "Orice modificare a unui element esențial al CIM (inclusiv salariul) necesită un act adițional semnat de angajator și salariat, urmat de înregistrarea modificării în REVISAL, în termenul legal aplicabil.",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de înregistrare în REVISAL a unui contract individual de muncă nou?",
+    "back": "Cel târziu în ziua anterioară începerii activității de către salariat.",
+    "concept_key": "revisal-angajare-termen",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementează HG 905/2017?",
+    "back": "Registrul general de evidență a salariaților (REVISAL) - înființarea, completarea și transmiterea acestuia.",
+    "concept_key": "revisal-ce-este",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act se întocmește pentru modificarea unui element al CIM (ex: salariul)?",
+    "back": "Actul adițional la contractul individual de muncă, urmat de înregistrarea în REVISAL.",
+    "concept_key": "revisal-modificari-suspendari-incetari",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine are obligația legală de a ține și transmite REVISAL?",
+    "back": "Angajatorul, prin aplicația REVISAL, către Inspectoratul Teritorial de Muncă.",
+    "concept_key": "revisal-ce-este",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se întâmplă dacă un angajator nu înregistrează deloc un salariat în REVISAL?",
+    "back": "Fapta este calificată muncă nedeclarată, sancționată foarte sever conform Codului Muncii; valoarea exactă a amenzii trebuie verificată la zi.",
+    "concept_key": "revisal-sanctiuni",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu GDPR se aplică datelor din dosarul de personal și din REVISAL?",
+    "back": "Acces restricționat doar la persoanele autorizate din HR/salarizare și colectarea doar a datelor minime necesare.",
+    "concept_key": "dosar-personal-gdpr",
+    "blockId": "cmjjuxw9i00hvumkpka636rgc-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1428,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "lessonId": "cmjjuxw1500b9umkp2zakksrh",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Indicatori Financiari Cheie",
+ "lesson": "Indicatori de lichiditate",
+ "category": "FINANCE_OPS",
+ "content": "# Indicatori de lichiditate\n\n## Ce înseamnă „lichiditate” pentru o firmă\n\nLichiditatea măsoară **capacitatea unei companii de a-și onora obligațiile pe termen scurt** (facturi către furnizori, rate de credit scadente în următoarele 12 luni, salarii, taxe) folosind resursele pe care le poate transforma rapid în bani.\n\nO firmă poate fi **profitabilă pe hârtie** (are profit în contul de profit și pierdere) și, în același timp, să intre în incapacitate de plată dacă nu are suficient numerar sau active ușor transformabile în numerar exact atunci când trebuie să plătească o factură. De aceea indicatorii de lichiditate sunt printre primii pe care îi verifică o bancă, un furnizor sau un investitor înainte de a-ți acorda credit sau termen de plată.\n\nCei trei indicatori clasici de lichiditate compară **activele circulante** (sau o parte din ele) cu **datoriile curente** (datoriile care trebuie plătite într-un an), dar diferă prin cât de „strict” definesc ce înseamnă o resursă ușor de transformat în bani:\n\n- **Current ratio** (lichiditate curentă/generală) — cel mai permisiv, include toate activele circulante.\n- **Quick ratio** (lichiditate imediată, numit și „acid test”) — exclude stocurile.\n- **Cash ratio** (lichiditate la vedere) — cel mai strict, ia în calcul doar numerarul și echivalentele de numerar.\n\nToți trei se citesc ca „de câte ori activele lichide acoperă datoriile curente” — un rezultat de 1,5 înseamnă că firma are 1,5 lei de resurse lichide pentru fiecare leu de datorie curentă.\n\n## Current Ratio (lichiditate curentă/generală)\n\n**Formulă:**\n\n> Current Ratio = Active circulante / Datorii curente\n\nUnde:\n- **Active circulante** = stocuri + creanțe comerciale + casă și conturi la bănci + alte active pe termen scurt (investiții financiare pe termen scurt, cheltuieli în avans etc.);\n- **Datorii curente** = datoriile care trebuie plătite într-o perioadă de până la un an (furnizori, credite pe termen scurt, rate scadente din credite pe termen lung, salarii datorate, taxe de plată).\n\n**Interpretare orientativă** (variază de la un sector la altul — un retailer cu rotație rapidă a stocurilor poate funcționa sănătos și cu un ratio mai mic decât o firmă de construcții):\n\n| Valoare | Interpretare |\n|---|---|\n| < 1 | Datoriile curente depășesc activele circulante — risc de plată, firma ar putea avea nevoie de finanțare suplimentară sau de renegocierea termenelor. |\n| 1,2 – 2 | Zonă considerată, în general, sănătoasă. |\n| > 2–3 | Poate indica lichiditate confortabilă, dar și posibile active circulante folosite ineficient (stocuri prea mari, creanțe care nu se încasează la timp). |\n\nCurent ratio-ul are un punct slab: tratează la fel de „lichid” un stoc de marfă greu vandabilă și un cont curent cu bani gheață. De aici nevoia indicatorilor mai stricți — quick ratio și cash ratio.\n\n## Quick Ratio (lichiditate imediată / „acid test”)\n\n**Formulă:**\n\n> Quick Ratio = (Active circulante − Stocuri) / Datorii curente\n\nsau, echivalent:\n\n> Quick Ratio = (Creanțe + Casă și conturi la bănci + investiții financiare pe termen scurt) / Datorii curente\n\nDe ce excludem stocurile? Pentru că, din cele trei mari categorii de active circulante, stocurile sunt de regulă **cele mai greu de transformat rapid în numerar la valoarea lor contabilă** — pot sta luni în depozit, pot necesita discounturi mari pentru a fi lichidate urgent sau, în cazuri extreme, pot fi chiar nevandabile (produse expirate, învechite tehnologic).\n\nQuick ratio-ul răspunde la o întrebare mai dură decât current ratio-ul: „Dacă mâine ar trebui să-mi plătesc toate datoriile curente, aș reuși folosind doar banii din cont și ce urmează să încasez de la clienți, fără să mă bazez pe vânzarea stocului?”\n\n**Reper orientativ:** un quick ratio în jurul valorii de **1** este considerat, în general, confortabil. Sub 1, firma depinde de viteza cu care își vinde stocurile sau își încasează creanțele pentru a-și acoperi datoriile scadente — nu neapărat un semnal de criză, dar un semnal că merită urmărit împreună cu ciclul de încasare a creanțelor (DSO) și rotația stocurilor.\n\n## Cash Ratio (lichiditate la vedere)\n\n**Formulă:**\n\n> Cash Ratio = (Numerar și echivalente de numerar + investiții financiare pe termen scurt ușor lichidabile) / Datorii curente\n\nEste cel mai conservator dintre cei trei indicatori: exclude atât stocurile, cât și creanțele comerciale, păstrând doar ce este deja bani sau aproape bani (depozite la vedere, conturi curente, uneori titluri de stat cu scadență foarte scurtă).\n\nRăspunde la întrebarea extremă: „Dacă toate datoriile curente ar deveni scadente chiar acum, câte pot acoperi doar din numerarul disponibil imediat, fără să aștept nicio încasare?”\n\n**Reper orientativ:** valori de **0,2–0,5** sunt frecvent considerate rezonabile pentru multe firme — un cash ratio de 1 sau mai mare ar însemna că firma ține foarte mult numerar neinvestit, ceea ce poate fi un semn de precauție excesivă (bani care ar putea lucra în afacere) mai degrabă decât o virtute automată. Ca și la ceilalți doi indicatori, pragurile „bune” diferă mult pe sectoare: o firmă de comerț cu numerar zilnic ridicat va avea, de regulă, alt profil decât o firmă de construcții cu proiecte pe termen lung.\n\n> Temei legal: OMFP 1802/2014 (reglementări contabile privind situațiile financiare anuale) structura bilanțului – active circulante și datorii care trebuie plătite într-o perioadă de până la un an (în vigoare de la 2015-01-01)\nCifrele folosite pentru calculul indicatorilor de lichiditate se preiau direct din **bilanț**, întocmit conform OMFP 1802/2014: activele circulante (stocuri, creanțe, casă și conturi la bănci, investiții financiare pe termen scurt) și datoriile care trebuie plătite într-o perioadă de până la un an (echivalentul „datoriilor curente”). Această clasificare pe orizonturi de timp este ceea ce face posibilă compararea directă active-lichide vs. datorii-scadente-curând.\n\n## Exemplu: Alfa Trading SRL — o structură financiară echilibrată\n**Bilanț simplificat (lei):**\n\n| Active circulante | Valoare |\n|---|---|\n| Stocuri | 150.000 |\n| Creanțe comerciale | 200.000 |\n| Casă și conturi la bănci | 80.000 |\n| **Total active circulante** | **430.000** |\n\n| Datorii curente | Valoare |\n|---|---|\n| **Total datorii curente** | **250.000** |\n\n**Calcul:**\n\n- Current Ratio = 430.000 / 250.000 = **1,72**\n- Quick Ratio = (430.000 − 150.000) / 250.000 = 280.000 / 250.000 = **1,12**\n- Cash Ratio = 80.000 / 250.000 = **0,32**\n\n**Interpretare:** Alfa Trading SRL are un current ratio confortabil (1,72), un quick ratio peste 1 (poate acoperi datoriile curente fără să vândă stocul) și un cash ratio de 0,32, în intervalul considerat rezonabil. Este profilul unei firme cu lichiditate solidă, fără resurse „blocate” excesiv în numerar neutilizat.\n\n## Exemplu: Beta Servicii SRL — semnale de avertizare\n**Bilanț simplificat (lei):**\n\n| Active circulante | Valoare |\n|---|---|\n| Stocuri | 20.000 |\n| Creanțe comerciale | 100.000 |\n| Casă și conturi la bănci | 10.000 |\n| **Total active circulante** | **130.000** |\n\n| Datorii curente | Valoare |\n|---|---|\n| **Total datorii curente** | **180.000** |\n\n**Calcul:**\n\n- Current Ratio = 130.000 / 180.000 = **0,72**\n- Quick Ratio = (130.000 − 20.000) / 180.000 = 110.000 / 180.000 = **0,61**\n- Cash Ratio = 10.000 / 180.000 = **0,06**\n\n**Interpretare:** Toți cei trei indicatori sunt sub pragurile orientative uzuale. Datoriile curente (180.000 lei) depășesc activele circulante (130.000 lei) — Beta Servicii SRL ar putea întâmpina dificultăți în a-și plăti la timp furnizorii sau ratele scadente, mai ales dacă încasarea creanțelor de 100.000 lei întârzie. Un manager ar trebui să investigheze urgent: de ce sunt creanțele atât de mari față de numerar, și dacă există un plan de accelerare a încasărilor sau de renegociere a datoriilor pe termen scurt.\n\n⚠ Indicatorii de lichiditate se citesc **întotdeauna în context**, nu ca praguri absolute și universale:\n\n- Compararea are sens mai ales **în timp** (evoluția aceleiași firme de la un trimestru la altul) și **cu firme din același sector** (un retailer alimentar cu stocuri care se rotesc în câteva zile poate funcționa sănătos cu un current ratio mai mic decât o firmă de construcții cu proiecte pe termen lung).\n- Un current ratio foarte ridicat (de exemplu peste 3) nu este automat un lucru bun — poate ascunde stocuri supradimensionate sau creanțe greu de încasat, adică bani „înghețați” care nu lucrează în afacere.\n- Indicatorii se bazează pe valori contabile la un moment dat (bilanț), nu pe fluxul real de numerar din perioada următoare — de aceea se corelează, în practică, cu bugetul de trezorerie (cash-flow forecast) pentru o imagine completă.\n\n## Exercițiu\n**Gamma Distribuție SRL** are următorul bilanț simplificat, la 31 decembrie:\n\n| Active circulante | Valoare (lei) |\n|---|---|\n| Stocuri | 300.000 |\n| Creanțe comerciale | 250.000 |\n| Casă și conturi la bănci | 50.000 |\n| **Total active circulante** | **600.000** |\n\n| Datorii curente | Valoare (lei) |\n|---|---|\n| **Total datorii curente** | **400.000** |\n\nCalculează Current Ratio, Quick Ratio și Cash Ratio pentru Gamma Distribuție SRL și interpretează pe scurt rezultatele: firma pare să aibă o lichiditate confortabilă sau există semnale de urmărit?\n\n**Soluție:** **Calcul:**\n\n- Current Ratio = 600.000 / 400.000 = **1,50**\n- Quick Ratio = (600.000 − 300.000) / 400.000 = 300.000 / 400.000 = **0,75**\n- Cash Ratio = 50.000 / 400.000 = **0,125 ≈ 0,13**\n\n**Interpretare:** Current ratio-ul de 1,50 pare, la prima vedere, confortabil — activele circulante depășesc cu 50% datoriile curente. Însă quick ratio-ul de 0,75 (sub 1) arată că, fără a vinde stocul de 300.000 lei, firma nu ar putea acoperi integral datoriile curente doar din creanțe și numerar. Cash ratio-ul de 0,13 este în zona orientativă rezonabilă, deci nu există un risc imediat de a nu putea plăti facturile curente din bani gheață, dar situația depinde puternic de cât de repede se vinde stocul și de cât de repede se încasează creanțele. Recomandare practică: se urmărește rotația stocurilor și DSO-ul (durata medie de încasare a creanțelor) pentru a confirma dacă cei 300.000 lei de stoc chiar se transformă rapid în bani.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "lichiditate-definitie",
+    "md": "## Ce înseamnă „lichiditate” pentru o firmă\n\nLichiditatea măsoară **capacitatea unei companii de a-și onora obligațiile pe termen scurt** (facturi către furnizori, rate de credit scadente în următoarele 12 luni, salarii, taxe) folosind resursele pe care le poate transforma rapid în bani.\n\nO firmă poate fi **profitabilă pe hârtie** (are profit în contul de profit și pierdere) și, în același timp, să intre în incapacitate de plată dacă nu are suficient numerar sau active ușor transformabile în numerar exact atunci când trebuie să plătească o factură. De aceea indicatorii de lichiditate sunt printre primii pe care îi verifică o bancă, un furnizor sau un investitor înainte de a-ți acorda credit sau termen de plată.\n\nCei trei indicatori clasici de lichiditate compară **activele circulante** (sau o parte din ele) cu **datoriile curente** (datoriile care trebuie plătite într-un an), dar diferă prin cât de „strict” definesc ce înseamnă o resursă ușor de transformat în bani:\n\n- **Current ratio** (lichiditate curentă/generală) — cel mai permisiv, include toate activele circulante.\n- **Quick ratio** (lichiditate imediată, numit și „acid test”) — exclude stocurile.\n- **Cash ratio** (lichiditate la vedere) — cel mai strict, ia în calcul doar numerarul și echivalentele de numerar.\n\nToți trei se citesc ca „de câte ori activele lichide acoperă datoriile curente” — un rezultat de 1,5 înseamnă că firma are 1,5 lei de resurse lichide pentru fiecare leu de datorie curentă.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "current-ratio-formula",
+    "md": "## Current Ratio (lichiditate curentă/generală)\n\n**Formulă:**\n\n> Current Ratio = Active circulante / Datorii curente\n\nUnde:\n- **Active circulante** = stocuri + creanțe comerciale + casă și conturi la bănci + alte active pe termen scurt (investiții financiare pe termen scurt, cheltuieli în avans etc.);\n- **Datorii curente** = datoriile care trebuie plătite într-o perioadă de până la un an (furnizori, credite pe termen scurt, rate scadente din credite pe termen lung, salarii datorate, taxe de plată).\n\n**Interpretare orientativă** (variază de la un sector la altul — un retailer cu rotație rapidă a stocurilor poate funcționa sănătos și cu un ratio mai mic decât o firmă de construcții):\n\n| Valoare | Interpretare |\n|---|---|\n| < 1 | Datoriile curente depășesc activele circulante — risc de plată, firma ar putea avea nevoie de finanțare suplimentară sau de renegocierea termenelor. |\n| 1,2 – 2 | Zonă considerată, în general, sănătoasă. |\n| > 2–3 | Poate indica lichiditate confortabilă, dar și posibile active circulante folosite ineficient (stocuri prea mari, creanțe care nu se încasează la timp). |\n\nCurent ratio-ul are un punct slab: tratează la fel de „lichid” un stoc de marfă greu vandabilă și un cont curent cu bani gheață. De aici nevoia indicatorilor mai stricți — quick ratio și cash ratio.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "quick-ratio-formula",
+    "md": "## Quick Ratio (lichiditate imediată / „acid test”)\n\n**Formulă:**\n\n> Quick Ratio = (Active circulante − Stocuri) / Datorii curente\n\nsau, echivalent:\n\n> Quick Ratio = (Creanțe + Casă și conturi la bănci + investiții financiare pe termen scurt) / Datorii curente\n\nDe ce excludem stocurile? Pentru că, din cele trei mari categorii de active circulante, stocurile sunt de regulă **cele mai greu de transformat rapid în numerar la valoarea lor contabilă** — pot sta luni în depozit, pot necesita discounturi mari pentru a fi lichidate urgent sau, în cazuri extreme, pot fi chiar nevandabile (produse expirate, învechite tehnologic).\n\nQuick ratio-ul răspunde la o întrebare mai dură decât current ratio-ul: „Dacă mâine ar trebui să-mi plătesc toate datoriile curente, aș reuși folosind doar banii din cont și ce urmează să încasez de la clienți, fără să mă bazez pe vânzarea stocului?”\n\n**Reper orientativ:** un quick ratio în jurul valorii de **1** este considerat, în general, confortabil. Sub 1, firma depinde de viteza cu care își vinde stocurile sau își încasează creanțele pentru a-și acoperi datoriile scadente — nu neapărat un semnal de criză, dar un semnal că merită urmărit împreună cu ciclul de încasare a creanțelor (DSO) și rotația stocurilor.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cash-ratio-formula",
+    "md": "## Cash Ratio (lichiditate la vedere)\n\n**Formulă:**\n\n> Cash Ratio = (Numerar și echivalente de numerar + investiții financiare pe termen scurt ușor lichidabile) / Datorii curente\n\nEste cel mai conservator dintre cei trei indicatori: exclude atât stocurile, cât și creanțele comerciale, păstrând doar ce este deja bani sau aproape bani (depozite la vedere, conturi curente, uneori titluri de stat cu scadență foarte scurtă).\n\nRăspunde la întrebarea extremă: „Dacă toate datoriile curente ar deveni scadente chiar acum, câte pot acoperi doar din numerarul disponibil imediat, fără să aștept nicio încasare?”\n\n**Reper orientativ:** valori de **0,2–0,5** sunt frecvent considerate rezonabile pentru multe firme — un cash ratio de 1 sau mai mare ar însemna că firma ține foarte mult numerar neinvestit, ceea ce poate fi un semn de precauție excesivă (bani care ar putea lucra în afacere) mai degrabă decât o virtute automată. Ca și la ceilalți doi indicatori, pragurile „bune” diferă mult pe sectoare: o firmă de comerț cu numerar zilnic ridicat va avea, de regulă, alt profil decât o firmă de construcții cu proiecte pe termen lung.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b4"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014 (reglementări contabile privind situațiile financiare anuale)",
+    "article": "structura bilanțului – active circulante și datorii care trebuie plătite într-o perioadă de până la un an",
+    "effective": "2015-01-01",
+    "md": "Cifrele folosite pentru calculul indicatorilor de lichiditate se preiau direct din **bilanț**, întocmit conform OMFP 1802/2014: activele circulante (stocuri, creanțe, casă și conturi la bănci, investiții financiare pe termen scurt) și datoriile care trebuie plătite într-o perioadă de până la un an (echivalentul „datoriilor curente”). Această clasificare pe orizonturi de timp este ceea ce face posibilă compararea directă active-lichide vs. datorii-scadente-curând.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b5"
+   },
+   {
+    "type": "example",
+    "title": "Alfa Trading SRL — o structură financiară echilibrată",
+    "concept_key": "current-ratio-formula",
+    "md": "**Bilanț simplificat (lei):**\n\n| Active circulante | Valoare |\n|---|---|\n| Stocuri | 150.000 |\n| Creanțe comerciale | 200.000 |\n| Casă și conturi la bănci | 80.000 |\n| **Total active circulante** | **430.000** |\n\n| Datorii curente | Valoare |\n|---|---|\n| **Total datorii curente** | **250.000** |\n\n**Calcul:**\n\n- Current Ratio = 430.000 / 250.000 = **1,72**\n- Quick Ratio = (430.000 − 150.000) / 250.000 = 280.000 / 250.000 = **1,12**\n- Cash Ratio = 80.000 / 250.000 = **0,32**\n\n**Interpretare:** Alfa Trading SRL are un current ratio confortabil (1,72), un quick ratio peste 1 (poate acoperi datoriile curente fără să vândă stocul) și un cash ratio de 0,32, în intervalul considerat rezonabil. Este profilul unei firme cu lichiditate solidă, fără resurse „blocate” excesiv în numerar neutilizat.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b6"
+   },
+   {
+    "type": "example",
+    "title": "Beta Servicii SRL — semnale de avertizare",
+    "concept_key": "quick-ratio-excludere-stocuri",
+    "md": "**Bilanț simplificat (lei):**\n\n| Active circulante | Valoare |\n|---|---|\n| Stocuri | 20.000 |\n| Creanțe comerciale | 100.000 |\n| Casă și conturi la bănci | 10.000 |\n| **Total active circulante** | **130.000** |\n\n| Datorii curente | Valoare |\n|---|---|\n| **Total datorii curente** | **180.000** |\n\n**Calcul:**\n\n- Current Ratio = 130.000 / 180.000 = **0,72**\n- Quick Ratio = (130.000 − 20.000) / 180.000 = 110.000 / 180.000 = **0,61**\n- Cash Ratio = 10.000 / 180.000 = **0,06**\n\n**Interpretare:** Toți cei trei indicatori sunt sub pragurile orientative uzuale. Datoriile curente (180.000 lei) depășesc activele circulante (130.000 lei) — Beta Servicii SRL ar putea întâmpina dificultăți în a-și plăti la timp furnizorii sau ratele scadente, mai ales dacă încasarea creanțelor de 100.000 lei întârzie. Un manager ar trebui să investigheze urgent: de ce sunt creanțele atât de mari față de numerar, și dacă există un plan de accelerare a încasărilor sau de renegociere a datoriilor pe termen scurt.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Indicatorii de lichiditate se citesc **întotdeauna în context**, nu ca praguri absolute și universale:\n\n- Compararea are sens mai ales **în timp** (evoluția aceleiași firme de la un trimestru la altul) și **cu firme din același sector** (un retailer alimentar cu stocuri care se rotesc în câteva zile poate funcționa sănătos cu un current ratio mai mic decât o firmă de construcții cu proiecte pe termen lung).\n- Un current ratio foarte ridicat (de exemplu peste 3) nu este automat un lucru bun — poate ascunde stocuri supradimensionate sau creanțe greu de încasat, adică bani „înghețați” care nu lucrează în afacere.\n- Indicatorii se bazează pe valori contabile la un moment dat (bilanț), nu pe fluxul real de numerar din perioada următoare — de aceea se corelează, în practică, cu bugetul de trezorerie (cash-flow forecast) pentru o imagine completă.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "**Gamma Distribuție SRL** are următorul bilanț simplificat, la 31 decembrie:\n\n| Active circulante | Valoare (lei) |\n|---|---|\n| Stocuri | 300.000 |\n| Creanțe comerciale | 250.000 |\n| Casă și conturi la bănci | 50.000 |\n| **Total active circulante** | **600.000** |\n\n| Datorii curente | Valoare (lei) |\n|---|---|\n| **Total datorii curente** | **400.000** |\n\nCalculează Current Ratio, Quick Ratio și Cash Ratio pentru Gamma Distribuție SRL și interpretează pe scurt rezultatele: firma pare să aibă o lichiditate confortabilă sau există semnale de urmărit?",
+    "solution_md": "**Calcul:**\n\n- Current Ratio = 600.000 / 400.000 = **1,50**\n- Quick Ratio = (600.000 − 300.000) / 400.000 = 300.000 / 400.000 = **0,75**\n- Cash Ratio = 50.000 / 400.000 = **0,125 ≈ 0,13**\n\n**Interpretare:** Current ratio-ul de 1,50 pare, la prima vedere, confortabil — activele circulante depășesc cu 50% datoriile curente. Însă quick ratio-ul de 0,75 (sub 1) arată că, fără a vinde stocul de 300.000 lei, firma nu ar putea acoperi integral datoriile curente doar din creanțe și numerar. Cash ratio-ul de 0,13 este în zona orientativă rezonabilă, deci nu există un risc imediat de a nu putea plăti facturile curente din bani gheață, dar situația depinde puternic de cât de repede se vinde stocul și de cât de repede se încasează creanțele. Recomandare practică: se urmărește rotația stocurilor și DSO-ul (durata medie de încasare a creanțelor) pentru a confirma dacă cei 300.000 lei de stoc chiar se transformă rapid în bani.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are active circulante de 500.000 lei (din care stocuri 200.000 lei) și datorii curente de 300.000 lei. Cât este Quick Ratio?",
+    "choices": [
+     "1,67",
+     "1,00",
+     "0,67",
+     "2,50"
+    ],
+    "answer": 1,
+    "explain": "Quick Ratio = (Active circulante − Stocuri) / Datorii curente = (500.000 − 200.000) / 300.000 = 300.000 / 300.000 = 1,00.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are Cash Ratio = 0,05. Ce înseamnă, cel mai probabil, acest lucru?",
+    "choices": [
+     "Firma poate acoperi instant toate datoriile curente doar din numerar, fără nicio problemă.",
+     "Numerarul disponibil imediat acoperă doar o mică parte din datoriile curente; nu e neapărat critic, dar merită corelat cu creanțele, stocurile și viteza lor de transformare în bani.",
+     "Firma este automat în incapacitate de plată.",
+     "Indicatorul nu are nicio relevanță practică."
+    ],
+    "answer": 1,
+    "explain": "Un cash ratio scăzut arată doar că partea strict lichidă (numerar) e mică față de datoriile curente — nu înseamnă automat criză, mai ales dacă firma are creanțe și stocuri care se transformă rapid în bani. Trebuie corelat cu quick ratio și current ratio, plus bugetul de trezorerie.",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula Current Ratio (lichiditate curentă)?",
+    "back": "Current Ratio = Active circulante / Datorii curente.",
+    "concept_key": "current-ratio-formula",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Prin ce diferă Quick Ratio față de Current Ratio?",
+    "back": "Quick Ratio exclude stocurile din activele circulante, măsurând capacitatea de plată fără a conta pe vânzarea stocului: Quick Ratio = (Active circulante − Stocuri) / Datorii curente.",
+    "concept_key": "quick-ratio-formula",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula Cash Ratio?",
+    "back": "Cash Ratio = (Numerar și echivalente de numerar) / Datorii curente — cel mai strict dintre cei trei indicatori de lichiditate.",
+    "concept_key": "cash-ratio-formula",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce interval este considerat, orientativ, „sănătos” pentru Current Ratio?",
+    "back": "De regulă 1,2–2: sub 1 semnalează risc de plată, peste 2–3 poate indica active circulante folosite ineficient (praguri care variază pe sector).",
+    "concept_key": "current-ratio-formula",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce se exclud stocurile la calculul Quick Ratio?",
+    "back": "Pentru că stocurile sunt, de regulă, cel mai puțin lichide active circulante — pot dura mult să fie vândute sau pot necesita discounturi mari pentru lichidare rapidă.",
+    "concept_key": "quick-ratio-excludere-stocuri",
+    "blockId": "cmjjuxw1500b9umkp2zakksrh-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1474,
+   "flashcards": 5
+  }
+ }
+}

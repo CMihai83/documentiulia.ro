@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw6i00f9umkpjfva8yef",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Cash Flow Management",
+ "lesson": "Exercițiu cash forecast",
+ "category": "FINANCE_OPS",
+ "content": "# Exercițiu cash forecast\n\n## Ce este un cash flow pe 13 săptămâni (13WCF)\n\nCash flow-ul pe 13 săptămâni (13-week cash flow, 13WCF) este cel mai folosit instrument de trezorerie pentru companiile care au nevoie de vizibilitate detaliată asupra lichidității pe termen scurt. Spre deosebire de bugetul anual de cash, care lucrează cu cifre lunare sau trimestriale agregate, 13WCF-ul coboară la nivel de săptămână și acoperă un orizont rulant (rolling) de aproximativ un trimestru calendaristic.\n\nDe ce exact 13 săptămâni? Orizontul este suficient de lung pentru ca trezorierul sau CFO-ul să anticipeze din timp un deficit de numerar și să negocieze o linie de credit sau să reprogrameze plăți, dar suficient de scurt pentru ca fiecare cifră să rămână ancorată în date concrete (facturi emise, contracte de plată, scadențe reale), nu în estimări bugetare abstracte. În practică, 13WCF-ul este instrumentul preferat de trezorerie în perioade de restructurare, criză de lichiditate, due diligence pentru finanțare sau pur și simplu ca disciplină operațională într-o companie matură.\n\nSpre deosebire de bugetul anual, care se aprobă o dată și se urmărește lunar, 13WCF-ul se actualizează în fiecare săptămână: se înlocuiesc cifrele estimate cu cele reale, se recalculează soldul și se extinde orizontul cu încă o săptămână, astfel încât ai mereu 13 săptămâni vizibile înainte.\n\n## Structura pe metoda directă\n\n13WCF-ul se construiește prin metoda directă (direct method): urmărești fluxurile efective de numerar — cine plătește și cine încasează — nu rezultatul contabil ajustat cu elemente nemonetare, așa cum se procedează la situația fluxurilor de trezorerie statutară (vezi referința legală de mai jos). Structura tipică, pe fiecare săptămână, are patru zone:\n\n1. **Sold inițial** — soldul de casă/bancă de la sfârșitul săptămânii precedente.\n2. **Încasări operaționale** — încasări de la clienți (defalcate, dacă e relevant, pe clienți mari sau categorii), rambursări de TVA, alte încasări operaționale.\n3. **Plăți operaționale** — furnizori de marfă/materii prime, salarii nete și contribuții, chirii și utilități, rate de leasing sau credit, TVA de plată, alte plăți administrative.\n4. **Sold final** = Sold inițial + Încasări − Plăți. Acesta devine soldul inițial al săptămânii următoare.\n\nOpțional, se adaugă o secțiune separată pentru fluxuri de finanțare și investiții (trageri/rambursări de credite, achiziții de imobilizări), pentru a nu amesteca activitatea operațională curentă cu deciziile de finanțare. Fiecare linie trebuie ancorată într-un document real — o factură emisă cu scadență cunoscută, un stat de plată, un contract de leasing — nu într-o medie lunară împărțită la patru.\n\n## Procesul rolling: actualizare săptămânală și variance analysis\n\nValoarea reală a unui 13WCF nu stă în forecastul inițial, ci în disciplina de actualizare săptămânală. La finalul fiecărei săptămâni:\n\n1. Înlocuiești cifrele forecastate ale săptămânii încheiate cu sumele efectiv încasate și plătite (actual).\n2. Calculezi variance-ul (abaterea): Actual − Forecast, atât pentru încasări, cât și pentru plăți, și identifici cauza fiecărei abateri semnificative (client întârziat, plată urgentă neplanificată, discount neanticipat).\n3. Folosești cauzele identificate pentru a recalibra forecastul săptămânilor următoare — de exemplu, dacă un client mare a întârziat plata, muți încasarea respectivă în săptămâna următoare, nu o ștergi.\n4. Adaugi o săptămână nouă de forecast la finalul orizontului (dacă tocmai ai încheiat săptămâna 1, adaugi acum o estimare pentru săptămâna 14), astfel încât ai mereu 13 săptămâni vizibile înainte.\n\nAcest proces transformă 13WCF-ul dintr-un exercițiu static de bugetare într-un instrument de early-warning: orice deficit proiectat sub pragul minim de casă (minimum cash threshold) stabilit de conducere apare cu câteva săptămâni înainte de a deveni o criză reală, lăsând timp pentru negocierea unei linii de credit, accelerarea încasărilor sau amânarea unor plăți neesențiale.\n\n> Temei legal: OMFP 1802/2014 Reglementări contabile privind situațiile financiare anuale — situația fluxurilor de trezorerie (în vigoare de la 2015-01-01)\nSituația fluxurilor de trezorerie (cash flow statement) prevăzută de reglementările contabile aprobate prin OMFP 1802/2014 este un raport financiar anual, întocmit de regulă prin metoda indirectă, pornind de la rezultatul net ajustat cu elementele nemonetare. Cash flow-ul pe 13 săptămâni NU este acest raport statutar — este un instrument intern de management al trezoreriei, construit prin metoda directă, cu frecvență săptămânală. Cele două coexistă: 13WCF-ul servește deciziilor operaționale de zi cu zi, situația fluxurilor de trezorerie servește raportării anuale către acționari și autorități.\n\n⚠ Cele mai frecvente greșeli la construirea unui 13WCF:\n\n- **Încasări prea optimiste** — presupui că toți clienții plătesc exact la scadență, ignorând istoricul real de întârzieri (DSO efectiv).\n- **Confuzia între încasări certe și incerte** — o comandă semnată nu e o încasare; doar factura emisă cu scadență clară intră în forecast cu grad ridicat de certitudine.\n- **Ignorarea sezonalității plăților** — TVA, salarii și rate de leasing cad frecvent în aceeași săptămână (de exemplu, ultima săptămână a lunii), creând vârfuri de plăți care pot fi invizibile într-o medie lunară.\n- **Forecast static** — construit o dată și nefolosit ca instrument de lucru săptămânal; fără actualizare și variance analysis, 13WCF-ul își pierde valoarea de early-warning.\n- **Lipsa unui prag minim de casă explicit** — fără un minimum cash threshold stabilit de conducere, nu ai un criteriu clar pentru a declanșa la timp o discuție despre finanțare pe termen scurt.\n\n## Exemplu: Construirea unui 13WCF — Atlas Distribution SRL, săptămâna 1\nAtlas Distribution SRL, companie de distribuție cu sediul în Cluj-Napoca, își construiește primul 13WCF pornind de la soldul de bancă din prima zi a săptămânii 1: **200.000 lei**.\n\n| Poziție | Suma (lei) |\n|---|---|\n| Sold inițial S1 | 200.000 |\n| Încasări de la clienți | 350.000 |\n| Alte încasări | 0 |\n| **Total încasări** | **350.000** |\n| Plăți furnizori marfă | 220.000 |\n| Salarii și contribuții | 60.000 |\n| Chirie și utilități | 15.000 |\n| Rată leasing auto | 8.000 |\n| TVA de plată | 25.000 |\n| Alte plăți administrative | 5.000 |\n| **Total plăți** | **333.000** |\n| **Cash flow net S1** | **17.000** |\n| **Sold final S1** | **217.000** |\n\nSoldul final al săptămânii 1 (217.000 lei) devine automat soldul inițial al săptămânii 2. Departamentul de trezorerie repetă acest calcul pentru fiecare din cele 13 săptămâni, folosind ca sursă facturile emise cu scadențe cunoscute, statul de plată aprobat, contractele de leasing și graficul de plată TVA — nu medii lunare împărțite artificial pe săptămâni.\n\n## Exemplu: Actualizare săptămânală și variance analysis\nLa finalul săptămânii 1, echipa de trezorerie a Atlas Distribution SRL compară forecastul cu realizatul:\n\n| Poziție | Forecast S1 | Actual S1 | Variance |\n|---|---|---|---|\n| Încasări de la clienți | 350.000 | 310.000 | -40.000 |\n| Total plăți | 333.000 | 340.000 | +7.000 |\n| Sold final | 217.000 | 170.000 | -47.000 |\n\nCauza principală: un client mare (30% din facturarea săptămânii) a solicitat o amânare de 7 zile, iar o plată urgentă de 7.000 lei către un furnizor critic de transport nu fusese inclusă în forecastul inițial.\n\nTrezorierul acționează astfel:\n1. Mută cei 40.000 lei neîncasați în forecastul săptămânii 2 (nu îi elimină din model).\n2. Notează cauza abaterii pentru a ajusta ipoteza de colectare a acelui client în lunile următoare.\n3. Adaugă o nouă săptămână de forecast la finalul orizontului (S14), menținând mereu 13 săptămâni vizibile.\n4. Recalculează soldul minim proiectat pe orizontul rămas și verifică dacă rămâne peste pragul minim de casă stabilit de conducere (în acest caz, 25.000 lei).\n\nAcest ciclu săptămânal — actualizare, variance analysis, recalibrare, extindere — este esența unui 13WCF funcțional; fără el, instrumentul devine doar un tabel Excel static.\n\n## Exercițiu\nNordic Trade SRL are un sold inițial de casă de **60.000 lei** la începutul săptămânii 1 și un prag minim de casă (minimum cash threshold) stabilit de conducere la **25.000 lei**. Ai la dispoziție forecastul de încasări și plăți pentru primele 6 săptămâni (fără a lua în calcul nicio finanțare suplimentară):\n\n| Săptămână | Încasări (lei) | Plăți (lei) |\n|---|---|---|\n| S1 | 95.000 | 110.000 |\n| S2 | 130.000 | 90.000 |\n| S3 | 80.000 | 160.000 |\n| S4 | 105.000 | 70.000 |\n| S5 | 60.000 | 95.000 |\n| S6 | 140.000 | 85.000 |\n\nCerințe:\n1. Calculează soldul final al fiecărei săptămâni (fără finanțare suplimentară).\n2. Identifică prima săptămână în care soldul proiectat scade sub pragul minim de 25.000 lei.\n3. Calculează suma minimă de finanțare pe termen scurt (linie de credit) necesară în acea săptămână pentru a readuce soldul exact la pragul minim.\n4. Determină în ce săptămână linia de credit trasă poate fi rambursată integral, fără ca soldul să scadă din nou sub prag.\n\n**Soluție:** **1-2. Calculul soldurilor săptămânale (fără finanțare):**\n\n| Săpt. | Sold inițial | Încasări | Plăți | Sold final |\n|---|---|---|---|---|\n| S1 | 60.000 | 95.000 | 110.000 | 45.000 |\n| S2 | 45.000 | 130.000 | 90.000 | 85.000 |\n| S3 | 85.000 | 80.000 | 160.000 | **5.000** |\n| S4 | 5.000 | 105.000 | 70.000 | 40.000 |\n| S5 | 40.000 | 60.000 | 95.000 | 5.000 |\n| S6 | 5.000 | 140.000 | 85.000 | 60.000 |\n\nÎn săptămâna 3, soldul proiectat (5.000 lei) scade sub pragul minim de 25.000 lei — acesta este semnalul de early-warning oferit de 13WCF.\n\n**3. Suma de finanțare necesară în S3:**\nDeficit față de prag = 25.000 − 5.000 = **20.000 lei**. Trezoreria trage o linie de credit de 20.000 lei la începutul săptămânii 3, astfel încât soldul final S3 devine 5.000 + 20.000 = 25.000 lei (exact la prag).\n\nRecalculând seria cu finanțarea inclusă:\n\n| Săpt. | Sold inițial | Încasări | Plăți | Tragere/Rambursare credit | Sold final |\n|---|---|---|---|---|---|\n| S3 | 85.000 | 80.000 | 160.000 | +20.000 | 25.000 |\n| S4 | 25.000 | 105.000 | 70.000 | 0 | 60.000 |\n| S5 | 60.000 | 60.000 | 95.000 | 0 | 25.000 |\n| S6 | 25.000 | 140.000 | 85.000 | −20.000 (rambursare) | 60.000 |\n\n**4. Rambursarea:** Linia de credit de 20.000 lei poate fi rambursată integral în **săptămâna 6**, când soldul înainte de rambursare ar fi 80.000 lei (25.000 + 140.000 − 85.000), suficient pentru a acoperi rambursarea și a rămâne cu 60.000 lei, confortabil peste pragul minim de 25.000 lei.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "cash-flow-13-saptamani-definitie",
+    "md": "## Ce este un cash flow pe 13 săptămâni (13WCF)\n\nCash flow-ul pe 13 săptămâni (13-week cash flow, 13WCF) este cel mai folosit instrument de trezorerie pentru companiile care au nevoie de vizibilitate detaliată asupra lichidității pe termen scurt. Spre deosebire de bugetul anual de cash, care lucrează cu cifre lunare sau trimestriale agregate, 13WCF-ul coboară la nivel de săptămână și acoperă un orizont rulant (rolling) de aproximativ un trimestru calendaristic.\n\nDe ce exact 13 săptămâni? Orizontul este suficient de lung pentru ca trezorierul sau CFO-ul să anticipeze din timp un deficit de numerar și să negocieze o linie de credit sau să reprogrameze plăți, dar suficient de scurt pentru ca fiecare cifră să rămână ancorată în date concrete (facturi emise, contracte de plată, scadențe reale), nu în estimări bugetare abstracte. În practică, 13WCF-ul este instrumentul preferat de trezorerie în perioade de restructurare, criză de lichiditate, due diligence pentru finanțare sau pur și simplu ca disciplină operațională într-o companie matură.\n\nSpre deosebire de bugetul anual, care se aprobă o dată și se urmărește lunar, 13WCF-ul se actualizează în fiecare săptămână: se înlocuiesc cifrele estimate cu cele reale, se recalculează soldul și se extinde orizontul cu încă o săptămână, astfel încât ai mereu 13 săptămâni vizibile înainte.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metoda-directa-13wcf-structura",
+    "md": "## Structura pe metoda directă\n\n13WCF-ul se construiește prin metoda directă (direct method): urmărești fluxurile efective de numerar — cine plătește și cine încasează — nu rezultatul contabil ajustat cu elemente nemonetare, așa cum se procedează la situația fluxurilor de trezorerie statutară (vezi referința legală de mai jos). Structura tipică, pe fiecare săptămână, are patru zone:\n\n1. **Sold inițial** — soldul de casă/bancă de la sfârșitul săptămânii precedente.\n2. **Încasări operaționale** — încasări de la clienți (defalcate, dacă e relevant, pe clienți mari sau categorii), rambursări de TVA, alte încasări operaționale.\n3. **Plăți operaționale** — furnizori de marfă/materii prime, salarii nete și contribuții, chirii și utilități, rate de leasing sau credit, TVA de plată, alte plăți administrative.\n4. **Sold final** = Sold inițial + Încasări − Plăți. Acesta devine soldul inițial al săptămânii următoare.\n\nOpțional, se adaugă o secțiune separată pentru fluxuri de finanțare și investiții (trageri/rambursări de credite, achiziții de imobilizări), pentru a nu amesteca activitatea operațională curentă cu deciziile de finanțare. Fiecare linie trebuie ancorată într-un document real — o factură emisă cu scadență cunoscută, un stat de plată, un contract de leasing — nu într-o medie lunară împărțită la patru.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "rolling-forecast-variance-13wcf",
+    "md": "## Procesul rolling: actualizare săptămânală și variance analysis\n\nValoarea reală a unui 13WCF nu stă în forecastul inițial, ci în disciplina de actualizare săptămânală. La finalul fiecărei săptămâni:\n\n1. Înlocuiești cifrele forecastate ale săptămânii încheiate cu sumele efectiv încasate și plătite (actual).\n2. Calculezi variance-ul (abaterea): Actual − Forecast, atât pentru încasări, cât și pentru plăți, și identifici cauza fiecărei abateri semnificative (client întârziat, plată urgentă neplanificată, discount neanticipat).\n3. Folosești cauzele identificate pentru a recalibra forecastul săptămânilor următoare — de exemplu, dacă un client mare a întârziat plata, muți încasarea respectivă în săptămâna următoare, nu o ștergi.\n4. Adaugi o săptămână nouă de forecast la finalul orizontului (dacă tocmai ai încheiat săptămâna 1, adaugi acum o estimare pentru săptămâna 14), astfel încât ai mereu 13 săptămâni vizibile înainte.\n\nAcest proces transformă 13WCF-ul dintr-un exercițiu static de bugetare într-un instrument de early-warning: orice deficit proiectat sub pragul minim de casă (minimum cash threshold) stabilit de conducere apare cu câteva săptămâni înainte de a deveni o criză reală, lăsând timp pentru negocierea unei linii de credit, accelerarea încasărilor sau amânarea unor plăți neesențiale.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Reglementări contabile privind situațiile financiare anuale — situația fluxurilor de trezorerie",
+    "effective": "2015-01-01",
+    "md": "Situația fluxurilor de trezorerie (cash flow statement) prevăzută de reglementările contabile aprobate prin OMFP 1802/2014 este un raport financiar anual, întocmit de regulă prin metoda indirectă, pornind de la rezultatul net ajustat cu elementele nemonetare. Cash flow-ul pe 13 săptămâni NU este acest raport statutar — este un instrument intern de management al trezoreriei, construit prin metoda directă, cu frecvență săptămânală. Cele două coexistă: 13WCF-ul servește deciziilor operaționale de zi cu zi, situația fluxurilor de trezorerie servește raportării anuale către acționari și autorități.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b4"
+   },
+   {
+    "type": "warning",
+    "md": "Cele mai frecvente greșeli la construirea unui 13WCF:\n\n- **Încasări prea optimiste** — presupui că toți clienții plătesc exact la scadență, ignorând istoricul real de întârzieri (DSO efectiv).\n- **Confuzia între încasări certe și incerte** — o comandă semnată nu e o încasare; doar factura emisă cu scadență clară intră în forecast cu grad ridicat de certitudine.\n- **Ignorarea sezonalității plăților** — TVA, salarii și rate de leasing cad frecvent în aceeași săptămână (de exemplu, ultima săptămână a lunii), creând vârfuri de plăți care pot fi invizibile într-o medie lunară.\n- **Forecast static** — construit o dată și nefolosit ca instrument de lucru săptămânal; fără actualizare și variance analysis, 13WCF-ul își pierde valoarea de early-warning.\n- **Lipsa unui prag minim de casă explicit** — fără un minimum cash threshold stabilit de conducere, nu ai un criteriu clar pentru a declanșa la timp o discuție despre finanțare pe termen scurt.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b5"
+   },
+   {
+    "type": "example",
+    "title": "Construirea unui 13WCF — Atlas Distribution SRL, săptămâna 1",
+    "concept_key": "metoda-directa-13wcf-structura",
+    "md": "Atlas Distribution SRL, companie de distribuție cu sediul în Cluj-Napoca, își construiește primul 13WCF pornind de la soldul de bancă din prima zi a săptămânii 1: **200.000 lei**.\n\n| Poziție | Suma (lei) |\n|---|---|\n| Sold inițial S1 | 200.000 |\n| Încasări de la clienți | 350.000 |\n| Alte încasări | 0 |\n| **Total încasări** | **350.000** |\n| Plăți furnizori marfă | 220.000 |\n| Salarii și contribuții | 60.000 |\n| Chirie și utilități | 15.000 |\n| Rată leasing auto | 8.000 |\n| TVA de plată | 25.000 |\n| Alte plăți administrative | 5.000 |\n| **Total plăți** | **333.000** |\n| **Cash flow net S1** | **17.000** |\n| **Sold final S1** | **217.000** |\n\nSoldul final al săptămânii 1 (217.000 lei) devine automat soldul inițial al săptămânii 2. Departamentul de trezorerie repetă acest calcul pentru fiecare din cele 13 săptămâni, folosind ca sursă facturile emise cu scadențe cunoscute, statul de plată aprobat, contractele de leasing și graficul de plată TVA — nu medii lunare împărțite artificial pe săptămâni.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b6"
+   },
+   {
+    "type": "example",
+    "title": "Actualizare săptămânală și variance analysis",
+    "concept_key": "rolling-forecast-variance-13wcf",
+    "md": "La finalul săptămânii 1, echipa de trezorerie a Atlas Distribution SRL compară forecastul cu realizatul:\n\n| Poziție | Forecast S1 | Actual S1 | Variance |\n|---|---|---|---|\n| Încasări de la clienți | 350.000 | 310.000 | -40.000 |\n| Total plăți | 333.000 | 340.000 | +7.000 |\n| Sold final | 217.000 | 170.000 | -47.000 |\n\nCauza principală: un client mare (30% din facturarea săptămânii) a solicitat o amânare de 7 zile, iar o plată urgentă de 7.000 lei către un furnizor critic de transport nu fusese inclusă în forecastul inițial.\n\nTrezorierul acționează astfel:\n1. Mută cei 40.000 lei neîncasați în forecastul săptămânii 2 (nu îi elimină din model).\n2. Notează cauza abaterii pentru a ajusta ipoteza de colectare a acelui client în lunile următoare.\n3. Adaugă o nouă săptămână de forecast la finalul orizontului (S14), menținând mereu 13 săptămâni vizibile.\n4. Recalculează soldul minim proiectat pe orizontul rămas și verifică dacă rămâne peste pragul minim de casă stabilit de conducere (în acest caz, 25.000 lei).\n\nAcest ciclu săptămânal — actualizare, variance analysis, recalibrare, extindere — este esența unui 13WCF funcțional; fără el, instrumentul devine doar un tabel Excel static.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Nordic Trade SRL are un sold inițial de casă de **60.000 lei** la începutul săptămânii 1 și un prag minim de casă (minimum cash threshold) stabilit de conducere la **25.000 lei**. Ai la dispoziție forecastul de încasări și plăți pentru primele 6 săptămâni (fără a lua în calcul nicio finanțare suplimentară):\n\n| Săptămână | Încasări (lei) | Plăți (lei) |\n|---|---|---|\n| S1 | 95.000 | 110.000 |\n| S2 | 130.000 | 90.000 |\n| S3 | 80.000 | 160.000 |\n| S4 | 105.000 | 70.000 |\n| S5 | 60.000 | 95.000 |\n| S6 | 140.000 | 85.000 |\n\nCerințe:\n1. Calculează soldul final al fiecărei săptămâni (fără finanțare suplimentară).\n2. Identifică prima săptămână în care soldul proiectat scade sub pragul minim de 25.000 lei.\n3. Calculează suma minimă de finanțare pe termen scurt (linie de credit) necesară în acea săptămână pentru a readuce soldul exact la pragul minim.\n4. Determină în ce săptămână linia de credit trasă poate fi rambursată integral, fără ca soldul să scadă din nou sub prag.",
+    "solution_md": "**1-2. Calculul soldurilor săptămânale (fără finanțare):**\n\n| Săpt. | Sold inițial | Încasări | Plăți | Sold final |\n|---|---|---|---|---|\n| S1 | 60.000 | 95.000 | 110.000 | 45.000 |\n| S2 | 45.000 | 130.000 | 90.000 | 85.000 |\n| S3 | 85.000 | 80.000 | 160.000 | **5.000** |\n| S4 | 5.000 | 105.000 | 70.000 | 40.000 |\n| S5 | 40.000 | 60.000 | 95.000 | 5.000 |\n| S6 | 5.000 | 140.000 | 85.000 | 60.000 |\n\nÎn săptămâna 3, soldul proiectat (5.000 lei) scade sub pragul minim de 25.000 lei — acesta este semnalul de early-warning oferit de 13WCF.\n\n**3. Suma de finanțare necesară în S3:**\nDeficit față de prag = 25.000 − 5.000 = **20.000 lei**. Trezoreria trage o linie de credit de 20.000 lei la începutul săptămânii 3, astfel încât soldul final S3 devine 5.000 + 20.000 = 25.000 lei (exact la prag).\n\nRecalculând seria cu finanțarea inclusă:\n\n| Săpt. | Sold inițial | Încasări | Plăți | Tragere/Rambursare credit | Sold final |\n|---|---|---|---|---|---|\n| S3 | 85.000 | 80.000 | 160.000 | +20.000 | 25.000 |\n| S4 | 25.000 | 105.000 | 70.000 | 0 | 60.000 |\n| S5 | 60.000 | 60.000 | 95.000 | 0 | 25.000 |\n| S6 | 25.000 | 140.000 | 85.000 | −20.000 (rambursare) | 60.000 |\n\n**4. Rambursarea:** Linia de credit de 20.000 lei poate fi rambursată integral în **săptămâna 6**, când soldul înainte de rambursare ar fi 80.000 lei (25.000 + 140.000 − 85.000), suficient pentru a acoperi rambursarea și a rămâne cu 60.000 lei, confortabil peste pragul minim de 25.000 lei.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce trezorierii preferă un cash flow pe 13 săptămâni în locul bugetului anual de cash pentru gestiunea lichidității pe termen scurt?",
+    "choices": [
+     "Pentru că este obligatoriu conform OMFP 1802/2014",
+     "Pentru că oferă granularitate săptămânală și un orizont suficient de lung pentru a anticipa și rezolva un deficit de numerar",
+     "Pentru că înlocuiește complet situația fluxurilor de trezorerie statutară",
+     "Pentru că se actualizează o singură dată pe an, la fel ca bugetul"
+    ],
+    "answer": 1,
+    "explain": "13WCF combină granularitatea săptămânală (bazată pe facturi și scadențe reale, nu medii lunare) cu un orizont de aproximativ un trimestru, suficient pentru a negocia din timp finanțare pe termen scurt. Nu este un raport statutar și nu înlocuiește situația fluxurilor de trezorerie din OMFP 1802/2014.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce metodă contabilă stă la baza construirii unui 13WCF?",
+    "choices": [
+     "Metoda indirectă, pornind de la rezultatul net",
+     "Metoda directă, pe baza încasărilor și plăților efective de numerar",
+     "Metoda proporțională, pe baza cifrei de afaceri lunare",
+     "Metoda de amortizare accelerată"
+    ],
+    "answer": 1,
+    "explain": "Spre deosebire de situația fluxurilor de trezorerie statutară (frecvent construită prin metoda indirectă), 13WCF-ul urmărește fluxurile efective de numerar — metoda directă — deoarece scopul e gestiunea operațională a lichidității, nu raportarea financiară anuală.",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un 13-week cash flow (13WCF)?",
+    "back": "Un forecast de trezorerie pe orizont rulant de 13 săptămâni (aproximativ un trimestru), actualizat săptămânal, folosit pentru gestiunea lichidității pe termen scurt.",
+    "concept_key": "cash-flow-13-saptamani-definitie",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce metodă contabilă stă la baza 13WCF?",
+    "back": "Metoda directă (direct method) — încasări și plăți efective de numerar, grupate pe categorii, nu pe baza rezultatului contabil ajustat.",
+    "concept_key": "metoda-directa-13wcf-structura",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este \"rolling forecast\" în contextul 13WCF?",
+    "back": "Procesul prin care, la finalul fiecărei săptămâni, forecastul e înlocuit cu actualul, se calculează variance, și se adaugă o săptămână nouă la finalul orizontului, menținând mereu 13 săptămâni vizibile înainte.",
+    "concept_key": "rolling-forecast-variance-13wcf",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este variance analysis într-un 13WCF?",
+    "back": "Compararea săptămânală dintre sumele forecastate și cele realizate (actual), pentru încasări și plăți, cu identificarea cauzelor abaterilor și ajustarea forecastului viitor.",
+    "concept_key": "rolling-forecast-variance-13wcf",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementare guvernează situația fluxurilor de trezorerie statutară în România?",
+    "back": "OMFP 1802/2014 (reglementările contabile privind situațiile financiare anuale) — dar 13WCF este un instrument de management intern, nu un raport statutar.",
+    "concept_key": "cash-flow-statutar-omfp-1802",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este pragul minim de casă (minimum cash threshold)?",
+    "back": "Nivelul minim de numerar pe care conducerea decide să îl păstreze permanent ca rezervă de siguranță; dacă soldul forecastat scade sub acest prag, e nevoie de finanțare pe termen scurt.",
+    "concept_key": "prag-minim-casa-13wcf",
+    "blockId": "cmjjuxw6i00f9umkpjfva8yef-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1555,
+   "flashcards": 6
+  }
+ }
+}

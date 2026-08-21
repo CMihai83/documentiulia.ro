@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvv2006vumkpbwanvi99",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Framework",
+ "lesson": "Quiz Scrum Framework",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Quiz Scrum Framework (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Conform Scrum Guide 2020, din ce roluri este formată Echipa Scrum (Scrum Team)?",
+     "choices": [
+      "Product Owner, Scrum Master și Dezvoltatori (Developers)",
+      "Product Owner, Project Manager și Echipa de dezvoltare",
+      "Scrum Master, Team Leader și Analiști",
+      "Sponsor, Product Owner și Scrum Master"
+     ],
+     "answer": 0,
+     "explain": "Scrum Guide 2020 elimină termenul „Development Team” ca sub-echipă separată și definește Echipa Scrum ca fiind formată din trei roluri egale ca importanță: Product Owner, Scrum Master și Dezvoltatori, fără ierarhii interne.",
+     "concept_key": "scrum_roles"
+    },
+    {
+     "q": "Care este durata maximă permisă a unui Sprint conform Scrum Guide 2020?",
+     "choices": [
+      "2 săptămâni, fixă pentru toate proiectele",
+      "O lună calendaristică",
+      "6 săptămâni",
+      "Nu există o limită standard, se negociază cu clientul"
+     ],
+     "answer": 1,
+     "explain": "Sprintul este un eveniment cu durată fixă (time-box) de maximum o lună; poate fi mai scurt (de exemplu, una sau două săptămâni), dar niciodată mai lung, pentru a limita riscul și a permite adaptare frecventă.",
+     "concept_key": "sprint_duration"
+    },
+    {
+     "q": "Care este time-box-ul standard al evenimentului Daily Scrum, indiferent de durata Sprintului?",
+     "choices": [
+      "30 de minute",
+      "15 minute",
+      "60 de minute",
+      "Nu are un time-box fix, durează cât este necesar"
+     ],
+     "answer": 1,
+     "explain": "Daily Scrum este limitat la maximum 15 minute pentru a menține echipa de Dezvoltatori sincronizată zilnic, fără a se transforma într-o ședință de status extinsă.",
+     "concept_key": "daily_scrum_timebox"
+    },
+    {
+     "q": "În timpul unei implementări ERP la o firmă românească, Scrum Master-ul facilitează Sprint Planning. Care sunt cele trei subiecte abordate conform Scrum Guide 2020?",
+     "choices": [
+      "De ce este valoros acest Sprint, Ce poate fi realizat în acest Sprint, Cum va fi realizată munca aleasă",
+      "Bugetul alocat, riscurile identificate și resursele disponibile",
+      "Cine participă, cât costă și cât durează proiectul",
+      "Revizuirea Backlog-ului, planificarea Sprintului și retrospectiva anterioară"
+     ],
+     "answer": 0,
+     "explain": "Sprint Planning răspunde la trei întrebări: de ce este valoros Sprintul (Sprint Goal), ce elemente din Product Backlog pot fi realizate (Sprint Backlog) și cum va fi organizată munca de către Dezvoltatori.",
+     "concept_key": "sprint_planning_topics"
+    },
+    {
+     "q": "Cine poartă responsabilitatea finală pentru ordonarea elementelor din Product Backlog?",
+     "choices": [
+      "Scrum Master",
+      "Product Owner",
+      "Toată echipa, prin vot la fiecare Sprint",
+      "Sponsorul proiectului de digitalizare"
+     ],
+     "answer": 1,
+     "explain": "Product Owner-ul este singurul responsabil pentru gestionarea Product Backlog-ului, inclusiv ordonarea elementelor pentru a maximiza valoarea livrată; poate delega activitatea tehnică, dar responsabilitatea rămâne a sa.",
+     "concept_key": "product_backlog_ownership"
+    },
+    {
+     "q": "Care este diferența esențială dintre Sprint Review și Sprint Retrospectivă?",
+     "choices": [
+      "Sprint Review inspectează Incrementul și adaptează Product Backlog-ul împreună cu stakeholderii; Retrospectiva inspectează modul de lucru al echipei și planifică îmbunătățiri interne",
+      "Sunt evenimente identice, doar denumirea diferă între organizații",
+      "Retrospectiva se desfășoară cu clienții, iar Review-ul este strict intern echipei",
+      "Sprint Review este opțional, iar Retrospectiva este obligatorie doar la finalul proiectului"
+     ],
+     "answer": 0,
+     "explain": "Sprint Review este o sesiune de colaborare cu stakeholderii pentru a inspecta Incrementul și a adapta Product Backlog-ul, în timp ce Retrospectiva este internă echipei Scrum și vizează îmbunătățirea proceselor, instrumentelor și relațiilor de lucru.",
+     "concept_key": "review_vs_retro"
+    },
+    {
+     "q": "Ce reprezintă „Definiția de Gata” (Definition of Done) în Scrum?",
+     "choices": [
+      "Lista de user story-uri planificate pentru Sprintul următor",
+      "Un standard formal care descrie condițiile de calitate pe care trebuie să le îndeplinească un Increment pentru a fi considerat complet",
+      "Un document contractual semnat de client la finalul proiectului",
+      "Estimarea în story points a întregului Product Backlog"
+     ],
+     "answer": 1,
+     "explain": "Definiția de Gata este un angajament formal care stabilește criteriile de calitate obligatorii pentru ca un element de lucru să fie considerat parte a unui Increment; garantează transparența asupra stadiului real al muncii.",
+     "concept_key": "definition_of_done"
+    },
+    {
+     "q": "Care este asocierea corectă între cele trei artefacte Scrum și „angajamentele” (commitments) aferente, conform Scrum Guide 2020?",
+     "choices": [
+      "Product Backlog – Product Goal; Sprint Backlog – Sprint Goal; Increment – Definiția de Gata",
+      "Product Backlog – Sprint Goal; Sprint Backlog – Product Goal; Increment – Definiția de Gata",
+      "Toate cele trei artefacte au același angajament: Definiția de Gata",
+      "Doar Sprint Backlog-ul are un angajament asociat, celelalte nu"
+     ],
+     "answer": 0,
+     "explain": "Fiecare artefact are un commitment care aduce transparență și focalizare: Product Backlog-ul este ancorat de Product Goal, Sprint Backlog-ul de Sprint Goal, iar Incrementul de Definiția de Gata.",
+     "concept_key": "artifact_commitments"
+    },
+    {
+     "q": "Într-o firmă RO care implementează un ERP, Scrum Master-ul observă că echipa nu reușește să livreze un Increment „Done” la finalul fiecărui Sprint deoarece testarea este mereu amânată. Ce ar trebui să recomande, aliniat principiilor Scrum?",
+     "choices": [
+      "Să elimine Definiția de Gata pentru a livra mai rapid elementele planificate",
+      "Să revizuiască împreună cu echipa Definiția de Gata, integrând testarea (inclusiv automată) în fluxul fiecărui Sprint, chiar dacă asta înseamnă reducerea scope-ului per Sprint",
+      "Să extindă durata Sprintului la 3 luni pentru a avea suficient timp de testare",
+      "Să elimine rolul de Product Owner din procesul de dezvoltare"
+     ],
+     "answer": 1,
+     "explain": "Soluția corectă păstrează integritatea Definiției de Gata: echipa trebuie să includă testarea în interiorul Sprintului și, dacă e nevoie, să ia mai puține elemente din Product Backlog, nu să compromită calitatea sau să mărească artificial durata Sprintului.",
+     "concept_key": "definition_of_done_application"
+    },
+    {
+     "q": "La Daily Scrum, un Dezvoltator dintr-o echipă care lucrează la un proiect de digitalizare semnalează deschis un impediment critic, deși recunoașterea lui înseamnă că echipa nu va atinge Sprint Goal-ul. Care valori Scrum sunt ilustrate predominant prin acest comportament?",
+     "choices": [
+      "Angajament (Commitment) și Focalizare (Focus)",
+      "Deschidere (Openness) și Curaj (Courage)",
+      "Respect (Respect) și Angajament (Commitment)",
+      "Focalizare (Focus) și Respect (Respect)"
+     ],
+     "answer": 1,
+     "explain": "Cele cinci valori Scrum sunt Angajament, Curaj, Focalizare, Respect și Deschidere. A comunica transparent un impediment, chiar cu riscul de a nu atinge Sprint Goal-ul, ilustrează în primul rând Deschiderea (transparența asupra dificultăților) și Curajul de a aborda probleme incomode.",
+     "concept_key": "scrum_values"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

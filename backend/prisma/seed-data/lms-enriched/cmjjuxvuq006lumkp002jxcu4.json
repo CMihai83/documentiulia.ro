@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvuq006lumkp002jxcu4",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Framework",
+ "lesson": "Scrum Team: Product Owner",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Scrum Team: Product Owner\n\n**Product Owner-ul (PO)** este unul dintre cele trei accountabilities (responsabilități-cheie) din Scrum Team, alături de Scrum Master și Dezvoltatori (Developers). Conform Scrum Guide 2020, Scrum Team-ul este o echipă mică și coezivă formată din aceste trei accountabilities — nu mai există separarea „echipă de dezvoltare” versus „Product Owner extern”, ci un singur Scrum Team în care PO este membru cu drepturi depline, nu un client extern și nici un manager de proiect deghizat.\n\nPO este întotdeauna **o singură persoană**, niciodată un comitet. Într-o companie românească ce implementează, de exemplu, un ERP financiar-contabil, PO poate fi directorul financiar, un product manager intern sau un consultant funcțional desemnat — dar responsabilitatea finală pentru valoarea produsului rămâne la o singură persoană, ușor de identificat și de contactat de întreaga echipă în orice moment.\n\nRolul PO nu este acela de „șef” al Dezvoltatorilor: PO nu alocă sarcini tehnice și nu dictează modul de lucru al echipei — aceste decizii aparțin exclusiv Dezvoltatorilor. PO decide **CE** se construiește și **în ce ordine**, nu **CUM** se implementează tehnic.\n\nResponsabilitatea centrală a Product Owner-ului este **maximizarea valorii produsului** rezultat din activitatea Scrum Team-ului. Această responsabilitate se traduce, conform Scrum Guide 2020, prin gestionarea eficientă a **Product Backlog-ului**, care include:\n\n- **Dezvoltarea și comunicarea explicită a Product Goal-ului** — obiectivul pe termen mediu/lung al produsului, care oferă direcție întregului Scrum Team;\n- **Crearea și comunicarea clară** a elementelor din Product Backlog (user stories, bug-uri, cerințe tehnice);\n- **Ordonarea elementelor** din Product Backlog, astfel încât cele cu cea mai mare valoare să fie livrate primele;\n- **Asigurarea transparenței, vizibilității și înțelegerii** Product Backlog-ului de către toți cei implicați — Dezvoltatori și stakeholderi deopotrivă.\n\nPO poate delega executarea acestor activități — de exemplu, poate cere unui Dezvoltator să scrie draftul unei user story sau poate lăsa echipa să estimeze efortul — dar **accountabilitatea rămâne integral a PO**. Dacă Product Backlog-ul e neclar sau prost ordonat, răspunderea este a Product Owner-ului, indiferent cine a scris efectiv elementele.\n\nPentru ca PO să reușească, întreaga organizație trebuie să îi respecte deciziile: acestea devin vizibile prin conținutul, ordinea, disponibilitatea și transparența Product Backlog-ului, niciodată prin comenzi date direct Dezvoltatorilor pe canale paralele.\n\nCursanții care vin din proiecte tradiționale (waterfall) confundă frecvent Product Owner-ul cu **Project Manager-ul** sau cu un **Business Analyst**. Diferențele sunt esențiale:\n\n- **Project Manager-ul clasic** urmărește triunghiul scop-timp-cost pe un plan fix, aprobat la începutul proiectului; Scrum nu are un rol formal echivalent, pentru că planificarea e adaptivă, sprint cu sprint.\n- **Business Analyst-ul** culege și documentează cerințe, dar de regulă nu are autoritate finală de decizie asupra priorităților de business; PO are exact această autoritate.\n- **Product Owner-ul** este orientat spre **valoare**, nu spre respectarea unui plan fix: își reordonează constant Product Backlog-ul pe baza feedback-ului de piață, al stakeholderilor și al datelor din Sprint Review-uri.\n\nÎn organizațiile românești aflate în tranziție de la managementul de proiect clasic la Agile, o greșeală comună este numirea unui Project Manager existent drept PO, fără a-i acorda și autoritatea reală de decizie asupra priorităților produsului. Fără această autoritate, rolul devine decorativ, iar Scrum Team-ul primește direcții contradictorii din surse multiple.\n\n## Exemplu: Ordonarea Product Backlog-ului la o implementare ERP\nO companie de distribuție, ContaFlex SRL, implementează un modul de gestiune a stocurilor în ERP-ul propriu. Product Owner-ul, Ana, are în Product Backlog patru user stories candidate pentru următorul sprint, fiecare cu o valoare de business estimată (scală 0-100, stabilită împreună cu stakeholderii) și un efort estimat de Dezvoltatori (story points):\n\n- **US1** — „Raport stocuri în timp real”: valoare 80 (elimină ~15 ore/lună de reconciliere manuală), efort 8 story points\n- **US2** — „Integrare cu scanner coduri de bare”: valoare 60, efort 13 story points\n- **US3** — „Alertă automată la stoc minim”: valoare 90, efort 5 story points\n- **US4** — „Export stocuri în Excel”: valoare 30, efort 3 story points\n\nAna calculează raportul valoare/efort pentru fiecare: US3 = 90/5 = 18; US1 = 80/8 = 10; US4 = 30/3 = 10; US2 = 60/13 ≈ 4,6.\n\nOrdinea rezultată în Product Backlog: **US3, apoi US1 și US4** (raport egal — Ana discută cu echipa care se leagă mai bine de Product Goal-ul curent), **apoi US2**. Această ordonare explicită, nu o listă plată de cerințe „importante”, este principalul instrument prin care PO maximizează valoarea produsului.\n\n## Exemplu: Gestionarea unui conflict între stakeholderi\nLa aceeași companie, departamentul de vânzări cere ca „Integrare cu scanner coduri de bare” (US2) să fie livrată imediat, pentru că un client mare o cere contractual, în timp ce departamentul financiar insistă pe „Alertă automată la stoc minim” (US3), care reduce pierderile din rupturi de stoc.\n\nAna, ca PO, nu decide pe baza cine „țipă mai tare”, ci pe baza impactului asupra Product Goal-ului trimestrial: „Reducerea pierderilor operaționale din gestiunea defectuoasă a stocurilor”. Verifică valoarea de business reală a US2 — clientul respectiv reprezintă doar 3% din cifra de afaceri și există o soluție manuală temporară — și decide să mențină US3 pe primul loc, dar comunică transparent vânzărilor motivul deciziei și un termen estimat pentru US2 în sprintul următor. Acesta este exact rolul PO: singura sursă de adevăr privind prioritățile, cu decizii explicabile pe baza valorii, nu a presiunii politice.\n\n⚠ O greșeală frecventă în organizațiile românești este ca PO să fie de fapt un „proxy” fără autoritate reală — cineva care doar transmite mai departe cerințele unui manager superior, fără puterea de a lua decizii. Scrum Guide 2020 este explicit: pentru ca PO să reușească, întreaga organizație trebuie să îi respecte deciziile. Dacă deciziile PO sunt sistematic suprascrise de un sponsor extern sau de un director care „sare” peste PO direct la Dezvoltatori, rolul devine decorativ, iar Scrum Team-ul pierde o direcție clară și consecventă.\n\n## Exercițiu\nEști Product Owner la firma LogiTrans SRL, care dezvoltă o aplicație internă de gestiune a flotei auto. În Product Backlog ai următoarele patru elemente, cu valoare de business (scală 0-100) și efort estimat (story points) stabilite împreună cu Dezvoltatorii:\n\n| # | User Story | Valoare | Efort |\n|---|---|---|---|\n| A | Notificare expirare ITP/RCA | 70 | 5 |\n| B | Hartă live a vehiculelor | 50 | 20 |\n| C | Raport consum combustibil lunar | 60 | 6 |\n| D | Export date către contabilitate | 40 | 4 |\n\nSarcină: calculează raportul valoare/efort pentru fiecare element și ordonează Product Backlog-ul pentru următorul Sprint Planning. Ce ai face dacă directorul general îți cere să pui B pe primul loc doar pentru că „arată bine în prezentări”?\n\n**Soluție:** Calcul valoare/efort:\n- A: 70/5 = 14\n- B: 50/20 = 2,5\n- C: 60/6 = 10\n- D: 40/4 = 10\n\nOrdinea recomandată în Product Backlog: **A (14)**, apoi **C și D (10 — discuți cu echipa care se leagă mai bine de Product Goal)**, apoi **B (2,5)**.\n\nB rămâne jos în Backlog pentru că raportul valoare/efort e cel mai slab: efort foarte mare pentru o valoare de business doar moderată. Ca PO, asculți argumentul directorului general (impact vizual, marketing intern), dar decizia finală de ordonare îți aparține ție, pe baza valorii reale pentru produs, nu a preferințelor individuale. O soluție constructivă: propui ca B să fie reevaluat printr-un „spike” tehnic sau împărțit în user stories mai mici, cu efort redus, pentru a-i crește raportul valoare/efort înainte de a-l prioritiza.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "product-owner-definitie",
+    "md": "**Product Owner-ul (PO)** este unul dintre cele trei accountabilities (responsabilități-cheie) din Scrum Team, alături de Scrum Master și Dezvoltatori (Developers). Conform Scrum Guide 2020, Scrum Team-ul este o echipă mică și coezivă formată din aceste trei accountabilities — nu mai există separarea „echipă de dezvoltare” versus „Product Owner extern”, ci un singur Scrum Team în care PO este membru cu drepturi depline, nu un client extern și nici un manager de proiect deghizat.\n\nPO este întotdeauna **o singură persoană**, niciodată un comitet. Într-o companie românească ce implementează, de exemplu, un ERP financiar-contabil, PO poate fi directorul financiar, un product manager intern sau un consultant funcțional desemnat — dar responsabilitatea finală pentru valoarea produsului rămâne la o singură persoană, ușor de identificat și de contactat de întreaga echipă în orice moment.\n\nRolul PO nu este acela de „șef” al Dezvoltatorilor: PO nu alocă sarcini tehnice și nu dictează modul de lucru al echipei — aceste decizii aparțin exclusiv Dezvoltatorilor. PO decide **CE** se construiește și **în ce ordine**, nu **CUM** se implementează tehnic.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "product-owner-responsabilitati",
+    "md": "Responsabilitatea centrală a Product Owner-ului este **maximizarea valorii produsului** rezultat din activitatea Scrum Team-ului. Această responsabilitate se traduce, conform Scrum Guide 2020, prin gestionarea eficientă a **Product Backlog-ului**, care include:\n\n- **Dezvoltarea și comunicarea explicită a Product Goal-ului** — obiectivul pe termen mediu/lung al produsului, care oferă direcție întregului Scrum Team;\n- **Crearea și comunicarea clară** a elementelor din Product Backlog (user stories, bug-uri, cerințe tehnice);\n- **Ordonarea elementelor** din Product Backlog, astfel încât cele cu cea mai mare valoare să fie livrate primele;\n- **Asigurarea transparenței, vizibilității și înțelegerii** Product Backlog-ului de către toți cei implicați — Dezvoltatori și stakeholderi deopotrivă.\n\nPO poate delega executarea acestor activități — de exemplu, poate cere unui Dezvoltator să scrie draftul unei user story sau poate lăsa echipa să estimeze efortul — dar **accountabilitatea rămâne integral a PO**. Dacă Product Backlog-ul e neclar sau prost ordonat, răspunderea este a Product Owner-ului, indiferent cine a scris efectiv elementele.\n\nPentru ca PO să reușească, întreaga organizație trebuie să îi respecte deciziile: acestea devin vizibile prin conținutul, ordinea, disponibilitatea și transparența Product Backlog-ului, niciodată prin comenzi date direct Dezvoltatorilor pe canale paralele.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "product-owner-vs-project-manager",
+    "md": "Cursanții care vin din proiecte tradiționale (waterfall) confundă frecvent Product Owner-ul cu **Project Manager-ul** sau cu un **Business Analyst**. Diferențele sunt esențiale:\n\n- **Project Manager-ul clasic** urmărește triunghiul scop-timp-cost pe un plan fix, aprobat la începutul proiectului; Scrum nu are un rol formal echivalent, pentru că planificarea e adaptivă, sprint cu sprint.\n- **Business Analyst-ul** culege și documentează cerințe, dar de regulă nu are autoritate finală de decizie asupra priorităților de business; PO are exact această autoritate.\n- **Product Owner-ul** este orientat spre **valoare**, nu spre respectarea unui plan fix: își reordonează constant Product Backlog-ul pe baza feedback-ului de piață, al stakeholderilor și al datelor din Sprint Review-uri.\n\nÎn organizațiile românești aflate în tranziție de la managementul de proiect clasic la Agile, o greșeală comună este numirea unui Project Manager existent drept PO, fără a-i acorda și autoritatea reală de decizie asupra priorităților produsului. Fără această autoritate, rolul devine decorativ, iar Scrum Team-ul primește direcții contradictorii din surse multiple.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b3"
+   },
+   {
+    "type": "example",
+    "title": "Ordonarea Product Backlog-ului la o implementare ERP",
+    "concept_key": "product-owner-exemplu-erp",
+    "md": "O companie de distribuție, ContaFlex SRL, implementează un modul de gestiune a stocurilor în ERP-ul propriu. Product Owner-ul, Ana, are în Product Backlog patru user stories candidate pentru următorul sprint, fiecare cu o valoare de business estimată (scală 0-100, stabilită împreună cu stakeholderii) și un efort estimat de Dezvoltatori (story points):\n\n- **US1** — „Raport stocuri în timp real”: valoare 80 (elimină ~15 ore/lună de reconciliere manuală), efort 8 story points\n- **US2** — „Integrare cu scanner coduri de bare”: valoare 60, efort 13 story points\n- **US3** — „Alertă automată la stoc minim”: valoare 90, efort 5 story points\n- **US4** — „Export stocuri în Excel”: valoare 30, efort 3 story points\n\nAna calculează raportul valoare/efort pentru fiecare: US3 = 90/5 = 18; US1 = 80/8 = 10; US4 = 30/3 = 10; US2 = 60/13 ≈ 4,6.\n\nOrdinea rezultată în Product Backlog: **US3, apoi US1 și US4** (raport egal — Ana discută cu echipa care se leagă mai bine de Product Goal-ul curent), **apoi US2**. Această ordonare explicită, nu o listă plată de cerințe „importante”, este principalul instrument prin care PO maximizează valoarea produsului.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b4"
+   },
+   {
+    "type": "example",
+    "title": "Gestionarea unui conflict între stakeholderi",
+    "concept_key": "product-owner-prioritizare-backlog",
+    "md": "La aceeași companie, departamentul de vânzări cere ca „Integrare cu scanner coduri de bare” (US2) să fie livrată imediat, pentru că un client mare o cere contractual, în timp ce departamentul financiar insistă pe „Alertă automată la stoc minim” (US3), care reduce pierderile din rupturi de stoc.\n\nAna, ca PO, nu decide pe baza cine „țipă mai tare”, ci pe baza impactului asupra Product Goal-ului trimestrial: „Reducerea pierderilor operaționale din gestiunea defectuoasă a stocurilor”. Verifică valoarea de business reală a US2 — clientul respectiv reprezintă doar 3% din cifra de afaceri și există o soluție manuală temporară — și decide să mențină US3 pe primul loc, dar comunică transparent vânzărilor motivul deciziei și un termen estimat pentru US2 în sprintul următor. Acesta este exact rolul PO: singura sursă de adevăr privind prioritățile, cu decizii explicabile pe baza valorii, nu a presiunii politice.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b5"
+   },
+   {
+    "type": "warning",
+    "md": "O greșeală frecventă în organizațiile românești este ca PO să fie de fapt un „proxy” fără autoritate reală — cineva care doar transmite mai departe cerințele unui manager superior, fără puterea de a lua decizii. Scrum Guide 2020 este explicit: pentru ca PO să reușească, întreaga organizație trebuie să îi respecte deciziile. Dacă deciziile PO sunt sistematic suprascrise de un sponsor extern sau de un director care „sare” peste PO direct la Dezvoltatori, rolul devine decorativ, iar Scrum Team-ul pierde o direcție clară și consecventă.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești Product Owner la firma LogiTrans SRL, care dezvoltă o aplicație internă de gestiune a flotei auto. În Product Backlog ai următoarele patru elemente, cu valoare de business (scală 0-100) și efort estimat (story points) stabilite împreună cu Dezvoltatorii:\n\n| # | User Story | Valoare | Efort |\n|---|---|---|---|\n| A | Notificare expirare ITP/RCA | 70 | 5 |\n| B | Hartă live a vehiculelor | 50 | 20 |\n| C | Raport consum combustibil lunar | 60 | 6 |\n| D | Export date către contabilitate | 40 | 4 |\n\nSarcină: calculează raportul valoare/efort pentru fiecare element și ordonează Product Backlog-ul pentru următorul Sprint Planning. Ce ai face dacă directorul general îți cere să pui B pe primul loc doar pentru că „arată bine în prezentări”?",
+    "solution_md": "Calcul valoare/efort:\n- A: 70/5 = 14\n- B: 50/20 = 2,5\n- C: 60/6 = 10\n- D: 40/4 = 10\n\nOrdinea recomandată în Product Backlog: **A (14)**, apoi **C și D (10 — discuți cu echipa care se leagă mai bine de Product Goal)**, apoi **B (2,5)**.\n\nB rămâne jos în Backlog pentru că raportul valoare/efort e cel mai slab: efort foarte mare pentru o valoare de business doar moderată. Ca PO, asculți argumentul directorului general (impact vizual, marketing intern), dar decizia finală de ordonare îți aparține ție, pe baza valorii reale pentru produs, nu a preferințelor individuale. O soluție constructivă: propui ca B să fie reevaluat printr-un „spike” tehnic sau împărțit în user stories mai mici, cu efort redus, pentru a-i crește raportul valoare/efort înainte de a-l prioritiza.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cine este responsabil, conform Scrum Guide 2020, de ordonarea elementelor din Product Backlog?",
+    "choices": [
+     "Product Owner-ul",
+     "Scrum Master-ul",
+     "Dezvoltatorii (Developers)",
+     "Sponsorul proiectului"
+    ],
+    "answer": 0,
+    "explain": "Ordonarea Product Backlog-ului este o responsabilitate exclusivă a Product Owner-ului, chiar dacă poate delega execuția activității, accountabilitatea rămâne a lui.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce NU are voie să facă Product Owner-ul conform Scrum Guide 2020?",
+    "choices": [
+     "Să delege activități de gestionare a Product Backlog-ului către Dezvoltatori",
+     "Să fie o singură persoană responsabilă",
+     "Să decidă ordinea elementelor din Backlog",
+     "Să dicteze Dezvoltatorilor modul tehnic de implementare a unei user story"
+    ],
+    "answer": 3,
+    "explain": "PO decide CE se construiește și în ce ordine (valoarea produsului), dar modul tehnic de implementare (CUM) este decizia exclusivă a Dezvoltatorilor.",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte persoane pot îndeplini rolul de Product Owner într-un Scrum Team?",
+    "back": "Una singură — Product Owner-ul este întotdeauna o singură persoană, niciodată un comitet.",
+    "concept_key": "product-owner-definitie",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este scopul principal al Product Owner-ului conform Scrum Guide 2020?",
+    "back": "Maximizarea valorii produsului rezultat din activitatea Scrum Team-ului.",
+    "concept_key": "product-owner-responsabilitati",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document dezvoltă și comunică explicit Product Owner-ul pentru a oferi direcție echipei?",
+    "back": "Product Goal-ul — obiectivul pe termen mediu/lung al produsului.",
+    "concept_key": "product-owner-responsabilitati",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Product Owner-ul decide CE se construiește. Cine decide CUM se construiește tehnic?",
+    "back": "Dezvoltatorii (Developers) — PO nu dictează soluții tehnice sau modul de lucru al echipei.",
+    "concept_key": "product-owner-vs-project-manager",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se întâmplă cu accountabilitatea PO dacă delegă gestionarea Product Backlog-ului altcuiva?",
+    "back": "PO rămâne accountable — poate delega executarea activității, dar nu și răspunderea finală.",
+    "concept_key": "product-owner-responsabilitati",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce formulă simplă poate folosi PO pentru a ordona rapid Product Backlog-ul?",
+    "back": "Raportul valoare de business / efort (story points) — cu cât raportul e mai mare, cu atât prioritatea e mai mare.",
+    "concept_key": "product-owner-prioritizare-backlog",
+    "blockId": "cmjjuxvuq006lumkp002jxcu4-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1180,
+   "flashcards": 6
+  }
+ }
+}

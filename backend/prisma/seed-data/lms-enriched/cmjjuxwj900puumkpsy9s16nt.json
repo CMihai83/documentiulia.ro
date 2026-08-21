@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxwj900puumkpsy9s16nt",
+ "courseId": "cmjjuxwj000pkumkpt4dxuzge",
+ "course": "Negociere și Influențare",
+ "module": "Fundamente Negociere",
+ "lesson": "Quiz fundamente",
+ "category": "SOFT_SKILLS",
+ "content": "Test de evaluare — Quiz fundamente (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este definiția cea mai potrivită a negocierii, în context profesional?",
+     "choices": [
+      "Un proces de comunicare prin care două sau mai multe părți, cu interese parțial diferite, caută un acord reciproc avantajos",
+      "O confruntare în care câștigătorul impune necondiționat termenii celeilalte părți",
+      "O discuție informală fără obiective clare, al cărei rezultat este lăsat la voia întâmplării",
+      "Un proces exclusiv juridic, aplicabil doar la semnarea contractelor comerciale"
+     ],
+     "answer": 0,
+     "explain": "Negocierea este un proces de comunicare și decizie între părți cu interese parțial convergente și parțial divergente, al cărui scop este ajungerea la un acord pe care ambele îl consideră mai bun decât alternativa de a nu se înțelege. Nu este o confruntare de tip câștig-pierdere obligatorie și nu se limitează la sfera juridică.",
+     "concept_key": "definitie_negociere"
+    },
+    {
+     "q": "Ce reprezintă BATNA (Best Alternative to a Negotiated Agreement) într-o negociere?",
+     "choices": [
+      "Prima ofertă pe care o faci partenerului de negociere, menită să ancoreze discuția",
+      "Cea mai bună variantă pe care o ai la dispoziție dacă negocierea curentă eșuează și nu se ajunge la un acord",
+      "Prețul minim absolut pe care ești dispus să îl accepți, comunicat direct celeilalte părți",
+      "Un document scris care rezumă la final termenii acordului negociat"
+     ],
+     "answer": 1,
+     "explain": "BATNA este cea mai bună alternativă pe care o ai în afara mesei de negociere, dacă discuția actuală nu duce la un acord (de exemplu, o altă ofertă de la un alt furnizor sau angajator). Cunoașterea propriei BATNA îți oferă putere de negociere, pentru că știi din ce moment este mai avantajos să te retragi decât să accepți.",
+     "concept_key": "batna"
+    },
+    {
+     "q": "Ce desemnează termenul ZOPA (Zone of Possible Agreement) într-o negociere de tip preț?",
+     "choices": [
+      "Zona geografică în care se desfășoară întâlnirea de negociere",
+      "Intervalul de valori cuprins între limita minimă acceptată de vânzător și limita maximă acceptată de cumpărător, în care un acord este posibil",
+      "Suma tuturor concesiilor pe care le poate face o singură parte pe parcursul discuției",
+      "Perioada de timp alocată oficial pentru desfășurarea negocierii"
+     ],
+     "answer": 1,
+     "explain": "ZOPA este intervalul dintre pragul minim al vânzătorului (sub care nu vinde) și pragul maxim al cumpărătorului (peste care nu cumpără). Dacă aceste două praguri se suprapun, există o zonă de acord posibil; dacă nu se suprapun, orice acord este imposibil, indiferent de abilitatea negociatorilor.",
+     "concept_key": "zopa"
+    },
+    {
+     "q": "Potrivit metodei Fisher și Ury (negocierea principială), care este diferența esențială între „poziții” și „interese”?",
+     "choices": [
+      "Pozițiile sunt întotdeauna scrise în contract, iar interesele rămân verbale",
+      "Nu există nicio diferență practică; termenii sunt interschimbabili în negociere",
+      "Poziția este cererea explicită formulată de o parte („vreau 10.000 lei”), iar interesul este motivul real din spatele ei („am nevoie de lichiditate rapidă”); concentrarea pe interese deschide soluții pe care poziția rigidă le blochează",
+      "Poziția se referă la negocierile interne dintr-o companie, iar interesul se referă la negocierile cu clienți externi"
+     ],
+     "answer": 2,
+     "explore": "",
+     "explain": "Poziția este cererea concretă declarată, iar interesul este nevoia sau motivația din spatele ei. Doi negociatori pot avea poziții incompatibile, dar interese compatibile — de aceea explorarea interesului real permite găsirea de soluții creative pe care negocierea centrată doar pe poziții le-ar fi ratat.",
+     "concept_key": "pozitii_vs_interese"
+    },
+    {
+     "q": "Ce efect urmărește tehnica de „ancorare” (anchoring) atunci când o parte face prima ofertă într-o negociere de preț?",
+     "choices": [
+      "Să evite orice discuție ulterioară despre preț, închizând negocierea imediat",
+      "Să influențeze percepția celeilalte părți asupra intervalului rezonabil de valori, folosind prima cifră menționată ca punct de referință psihologic pentru restul discuției",
+      "Să transfere responsabilitatea deciziei finale exclusiv către partenerul de negociere",
+      "Să elimine necesitatea cunoașterii propriei BATNA înainte de întâlnire"
+     ],
+     "answer": 1,
+     "explain": "Ancorarea exploatează un efect cognitiv: prima cifră credibilă menționată devine punct de referință, iar discuțiile ulterioare gravitează în jurul ei. O ofertă inițială bine calibrată (nu nerealistă) poate deplasa în favoarea ta intervalul perceput ca „rezonabil”, fără să elimine nevoia de a-ți cunoaște BATNA.",
+     "concept_key": "ancorare"
+    },
+    {
+     "q": "Care este diferența dintre negocierea distributivă și cea integrativă?",
+     "choices": [
+      "Negocierea distributivă implică mai multe părți simultan, iar cea integrativă implică doar două părți",
+      "Negocierea distributivă este de tip „sumă fixă” (ce câștigă o parte pierde cealaltă, ex. împărțirea unui buget fix), iar cea integrativă urmărește crearea de valoare suplimentară pentru ambele părți (ex. schimb de concesii pe interese diferite)",
+      "Negocierea distributivă se aplică doar în mediul B2B, iar cea integrativă doar în relațiile cu consumatorii finali",
+      "Nu există diferență funcțională; termenii diferă doar în literatura anglo-saxonă față de cea românească"
+     ],
+     "answer": 1,
+     "explain": "Negocierea distributivă tratează resursa ca fiind fixă, deci orice câștig al unei părți este o pierdere pentru cealaltă (de exemplu, împărțirea strictă a unui preț). Negocierea integrativă caută să „mărească tortul” înainte de a-l împărți, exploatând faptul că părțile au priorități diferite (de exemplu, una preferă termenul de plată, cealaltă prețul), ceea ce permite schimburi avantajoase pentru ambele.",
+     "concept_key": "distributiva_vs_integrativa"
+    },
+    {
+     "q": "Conform modelului Thomas-Kilmann de stiluri de gestionare a conflictului/negocierii, ce caracterizează stilul „collaborating” (colaborare)?",
+     "choices": [
+      "Asertivitate ridicată și cooperare ridicată — părțile lucrează activ împreună pentru o soluție care satisface pe deplin interesele ambelor",
+      "Asertivitate scăzută și cooperare scăzută — evitarea completă a subiectului aflat în discuție",
+      "Asertivitate ridicată și cooperare scăzută — impunerea propriei poziții indiferent de interesele celeilalte părți",
+      "Asertivitate scăzută și cooperare ridicată — cedarea completă în fața cerințelor celeilalte părți, pentru păstrarea relației"
+     ],
+     "answer": 0,
+     "explain": "În grila Thomas-Kilmann, stilul „collaborating” combină asertivitate ridicată (îți susții ferm propriile interese) cu cooperare ridicată (ești atent și la interesele celeilalte părți), fiind stilul recomandat pentru negocierile integrative cu miză mare și relație pe termen lung. Celelalte opțiuni descriu, în ordine, „avoiding”, „competing” și „accommodating”.",
+     "concept_key": "stiluri_thomas_kilmann"
+    },
+    {
+     "q": "De ce este recomandat ca, în schimbul de concesii, o parte să ceară mereu ceva în schimbul fiecărei concesii oferite (principiul reciprocității condiționate)?",
+     "choices": [
+      "Pentru că legea comerțului din România impune consemnarea scrisă a fiecărei concesii acordate",
+      "Pentru că previne percepția că negociatorul este slab și oprește partenerul să ceară concesii suplimentare fără contrapartidă, protejând totodată valoarea acordului final",
+      "Pentru că elimină complet necesitatea de a cunoaște BATNA proprie sau ZOPA discuției",
+      "Pentru că este singura modalitate prin care se poate ajunge la o negociere de tip integrativ"
+     ],
+     "answer": 1,
+     "explain": "O concesie oferită „gratuit”, fără nimic în schimb, transmite semnalul că negociatorul poate fi presat să cedeze din nou; formula „dacă X, atunci Y” (concesie condiționată) protejează valoarea creată și descurajează cererile repetate nejustificate. Nu înlocuiește însă cunoașterea BATNA/ZOPA, care rămâne esențială separat.",
+     "concept_key": "reciprocitate_concesii"
+    },
+    {
+     "q": "Într-o negociere, de ce este considerată ascultarea activă (parafrazare, întrebări deschise, clarificare) mai eficientă decât argumentarea continuă a propriei poziții?",
+     "choices": [
+      "Pentru că întrerupe orice posibilitate ca partenerul să facă o contraofertă",
+      "Pentru că prelungește artificial discuția până când cealaltă parte cedează din oboseală",
+      "Pentru că ajută la identificarea intereselor reale ale celeilalte părți, reduce neînțelegerile și construiește încredere, condiții care facilitează soluții integrative",
+      "Pentru că înlocuiește nevoia de pregătire prealabilă a negocierii (stabilirea BATNA și a obiectivelor)"
+     ],
+     "answer": 2,
+     "explain": "Ascultarea activă nu este o tehnică de „epuizare” a partenerului, ci un instrument de diagnostic: prin întrebări deschise și parafrazare afli interesele reale din spatele pozițiilor declarate, reduci riscul de interpretare greșită și construiești încrederea necesară soluțiilor de tip câștig-câștig. Pregătirea prealabilă (BATNA, obiective) rămâne, în continuare, obligatorie și distinctă.",
+     "concept_key": "ascultare_activa"
+    },
+    {
+     "q": "Un manager român negociază achiziția unui utilaj: furnizorul cere 120.000 lei, iar BATNA managerului (ofertă alternativă de la alt furnizor) este 110.000 lei. Furnizorul lasă de înțeles, printr-un ton grăbit și fraze de tipul „trebuie să închidem azi”, că vrea o decizie rapidă. Care este cea mai potrivită reacție strategică a managerului?",
+     "choices": [
+      "Să accepte imediat 120.000 lei, pentru a evita orice risc de a pierde oferta, fără a mai verifica alte opțiuni",
+      "Să comunice ferm propria limită (nu peste 110.000 lei, echivalentul BATNA), să ceară timp de reflecție dacă presiunea pare artificială și să exploreze dacă există o zonă de acord posibil sub acest prag, fără a se lăsa grăbit de tactica presiunii timpului",
+      "Să refuze complet orice discuție ulterioară, considerând presiunea temporală drept un semn de rea-credință totală din partea furnizorului",
+      "Să dubleze imediat presiunea, anunțând un ultimatum propriu, fără a verifica dacă există într-adevăr o zonă de acord posibil"
+     ],
+     "answer": 1,
+     "explain": "Presiunea timpului („trebuie să închidem azi”) este o tactică frecventă și nu trebuie să determine automat cedarea sau ruperea discuției. Strategia corectă este ancorarea deciziei în date obiective: BATNA proprie (110.000 lei) stabilește pragul peste care retragerea este mai avantajoasă decât acordul, iar verificarea calmă a ZOPA (dacă furnizorul poate scădea sub 120.000 lei) permite un acord informat, fără reacții impulsive de acceptare sau ruptură totală.",
+     "concept_key": "aplicare_integrata_negociere"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

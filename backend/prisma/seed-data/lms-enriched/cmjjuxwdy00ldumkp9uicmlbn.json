@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwdy00ldumkp9uicmlbn",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Introducere ISO 45001",
+ "lesson": "Quiz introducere",
+ "category": "HSE_SAFETY",
+ "content": "Test de evaluare — Quiz introducere (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Ce reprezintă standardul ISO 45001?",
+     "choices": [
+      "Un standard internațional pentru sisteme de management al securității și sănătății în muncă (SSM), care oferă un cadru pentru prevenirea accidentelor și îmbolnăvirilor profesionale",
+      "O lege românească ce înlocuiește Legea 319/2006",
+      "Un standard exclusiv pentru managementul calității produselor alimentare",
+      "Un certificat obligatoriu emis de ITM pentru toate firmele din România"
+     ],
+     "answer": 0,
+     "explain": "ISO 45001 este primul standard internațional de sistem de management SSM, publicat în 2018, oferind un cadru voluntar pentru identificarea riscurilor, prevenirea accidentelor și îmbunătățirea continuă a condițiilor de muncă. Nu este o lege și nu înlocuiește legislația națională precum Legea 319/2006, ci o completează.",
+     "concept_key": "definitie_iso45001"
+    },
+    {
+     "q": "Ce standard a fost înlocuit, în mare parte, de ISO 45001 după publicarea sa în anul 2018?",
+     "choices": [
+      "ISO 9001",
+      "OHSAS 18001",
+      "ISO 14001",
+      "ISO 31000"
+     ],
+     "answer": 1,
+     "explain": "ISO 45001:2018 a preluat și extins conceptele din OHSAS 18001 (standardul britanic pentru managementul SSM), organizațiile certificate OHSAS 18001 având o perioadă de tranziție pentru migrare la noul standard.",
+     "concept_key": "istoric_ohsas18001"
+    },
+    {
+     "q": "Pe ce structură este construit ISO 45001, comună tuturor standardelor moderne de sistem de management (ex. ISO 9001, ISO 14001)?",
+     "choices": [
+      "Structura de Nivel Înalt (High Level Structure / Anexa SL)",
+      "Structura PERT",
+      "Modelul SWOT",
+      "Ciclul Deming aplicat doar la nivel financiar"
+     ],
+     "answer": 0,
+     "explain": "ISO 45001 respectă Structura de Nivel Înalt (HLS, Anexa SL a ISO), cu 10 capitole comune tuturor standardelor de management recente, ceea ce facilitează integrarea cu alte sisteme precum ISO 9001 sau ISO 14001.",
+     "concept_key": "structura_hls"
+    },
+    {
+     "q": "Câte capitole (clauze) are structura de nivel înalt pe care se bazează ISO 45001?",
+     "choices": [
+      "5",
+      "7",
+      "10",
+      "12"
+     ],
+     "answer": 2,
+     "explain": "Structura de Nivel Înalt cuprinde 10 capitole: de la 1. Domeniu de aplicare până la 10. Îmbunătățire, capitolele 4-10 conținând cerințele efective ale sistemului de management.",
+     "concept_key": "capitole_hls"
+    },
+    {
+     "q": "Ce principiu managerial stă la baza abordării ISO 45001 pentru îmbunătățirea continuă a SSM?",
+     "choices": [
+      "Ciclul PDCA (Plan-Do-Check-Act / Planifică-Efectuează-Verifică-Acționează)",
+      "Metoda 5S",
+      "Diagrama Ishikawa",
+      "Analiza SWOT"
+     ],
+     "answer": 0,
+     "explain": "La fel ca celelalte standarde de management, ISO 45001 se bazează pe ciclul PDCA: planificarea măsurilor SSM, implementarea lor, verificarea eficacității prin audituri și indicatori, urmată de acțiuni corective și îmbunătățire continuă.",
+     "concept_key": "ciclu_pdca"
+    },
+    {
+     "q": "Care este relația dintre ISO 45001 și legislația românească privind securitatea și sănătatea în muncă (Legea 319/2006 și HG 1425/2006)?",
+     "choices": [
+      "ISO 45001 înlocuiește legislația națională, aplicarea legii nemaifiind necesară după certificare",
+      "ISO 45001 este un standard voluntar care oferă un cadru de sistem de management, dar organizația trebuie să respecte în continuare, obligatoriu, Legea 319/2006 și normele metodologice din HG 1425/2006",
+      "Legea 319/2006 se aplică doar firmelor mari, iar ISO 45001 doar IMM-urilor",
+      "HG 1425/2006 a fost abrogată odată cu apariția ISO 45001"
+     ],
+     "answer": 1,
+     "explain": "Certificarea ISO 45001 este voluntară și nu înlocuiește obligațiile legale. În România, angajatorii trebuie să respecte întotdeauna Legea 319/2006 (legea SSM) și normele metodologice de aplicare din HG 1425/2006; ISO 45001 oferă un cadru suplimentar de sistematizare și îmbunătățire a managementului SSM.",
+     "concept_key": "relatie_legislatie_ro"
+    },
+    {
+     "q": "Conform legislației românești (Legea 319/2006), care sunt cele trei tipuri obligatorii de instruire în domeniul SSM pe care angajatorul trebuie să le asigure lucrătorilor?",
+     "choices": [
+      "Instruire introductiv-generală, instruire la locul de muncă și instruire periodică",
+      "Instruire online, instruire practică și instruire de weekend",
+      "Instruire inițială, instruire finală și instruire de audit",
+      "Instruire ISO, instruire OHSAS și instruire internă"
+     ],
+     "answer": 0,
+     "explain": "Legea 319/2006 și normele de aplicare (HG 1425/2006) prevăd trei etape obligatorii de instruire: introductiv-generală (la angajare), la locul de muncă (specifică postului) și periodică (repetată conform intervalelor stabilite), toate fiind documentate prin fișa individuală de instructaj.",
+     "concept_key": "instruiri_obligatorii"
+    },
+    {
+     "q": "Care este instituția din România cu rol de autoritate de control în domeniul securității și sănătății în muncă?",
+     "choices": [
+      "ANAF",
+      "Inspecția Muncii / Inspectoratul Teritorial de Muncă (ITM)",
+      "Registrul Comerțului",
+      "Organismul de certificare ISO"
+     ],
+     "answer": 1,
+     "explain": "Inspecția Muncii, prin Inspectoratele Teritoriale de Muncă (ITM), este autoritatea de stat care verifică respectarea legislației SSM (Legea 319/2006, HG 1425/2006), aplică sancțiuni contravenționale și poate dispune sistarea activității în caz de pericol grav și iminent. Certificarea ISO 45001 este realizată de organisme de certificare distincte, private, nu de ITM.",
+     "concept_key": "rol_itm"
+    },
+    {
+     "q": "Care este una dintre cerințele-cheie introduse de ISO 45001 (față de OHSAS 18001), ce vizează implicarea activă a angajaților în sistemul de management SSM?",
+     "choices": [
+      "Consultarea și participarea lucrătorilor (inclusiv a celor fără funcții de conducere) în procesele de identificare a pericolelor, evaluare a riscurilor și luare a deciziilor SSM",
+      "Obligativitatea ca doar directorul general să semneze politica SSM",
+      "Eliminarea completă a auditurilor interne",
+      "Renunțarea la evaluarea riscurilor în favoarea exclusiv a instruirilor"
+     ],
+     "answer": 0,
+     "explain": "Unul dintre elementele distinctive ale ISO 45001 este accentul pus pe consultarea și participarea activă a lucrătorilor și a reprezentanților acestora (de exemplu, comitetele de securitate și sănătate în muncă) la toate nivelurile sistemului de management, nu doar informarea lor pasivă, așa cum era caracteristic OHSAS 18001.",
+     "concept_key": "participarea_lucratorilor"
+    },
+    {
+     "q": "O companie de producție din România deține deja certificarea ISO 45001 și un sistem funcțional de management SSM. În timpul unui control, inspectorul ITM constată o neconformitate față de HG 1425/2006. Ce concluzie corectă poate fi trasă din această situație?",
+     "choices": [
+      "Certificarea ISO 45001 este automat anulată de ITM, întrucât cele două sisteme sunt identice",
+      "Compania este exceptată de la sancțiuni, deoarece este certificată ISO 45001",
+      "Compania poate primi sancțiuni contravenționale din partea ITM, deoarece certificarea ISO 45001 nu înlocuiește obligația de conformare cu legislația națională obligatorie; cele două sisteme coexistă și trebuie respectate simultan",
+      "HG 1425/2006 nu se mai aplică firmelor certificate ISO 45001"
+     ],
+     "answer": 2,
+     "explain": "Certificarea ISO 45001 (voluntară, acordată de un organism de certificare) și conformarea cu legislația SSM (obligatorie, verificată de ITM) sunt două planuri distincte care coexistă. O organizație certificată ISO 45001 rămâne pe deplin responsabilă pentru respectarea Legii 319/2006 și a HG 1425/2006, iar ITM poate aplica sancțiuni pentru neconformități legale indiferent de statutul certificării.",
+     "concept_key": "coexistenta_iso_legislatie"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

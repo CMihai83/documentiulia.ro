@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvqj003tumkp3mratffp",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Obiecte Excel în VBA",
+ "lesson": "Events - Cod care reacționează",
+ "category": "EXCEL_VBA",
+ "content": "# Events - Cod care reacționează\n\n## Ce sunt evenimentele în VBA?\n\nPână acum ai scris proceduri `Sub` pe care le rulai manual: apăsai F5, un buton sau o combinație de taste. Un **eveniment** (event) este o categorie specială de procedură care se execută automat, declanșată de o acțiune a utilizatorului sau a aplicației — deschiderea unui registru, modificarea unei celule, schimbarea foii active, salvarea fișierului etc.\n\nSpre deosebire de macro-urile obișnuite, codul pentru evenimente NU se scrie într-un modul standard (Insert → Module). El trebuie scris în **modulul obiectului** căruia îi aparține evenimentul, vizibil în Project Explorer (Ctrl+R în VBE):\n\n- `ThisWorkbook` — evenimente la nivel de registru de calcul (deschidere, salvare, închidere)\n- `Sheet1`, `Sheet2`... (sau numele foii) — evenimente la nivel de foaie de calcul (modificare celulă, selecție, dublu-click)\n\nNumele unei proceduri eveniment respectă convenția `Obiect_Eveniment`, de exemplu `Workbook_Open` sau `Worksheet_Change`. VBA generează automat antetul corect dacă selectezi obiectul din lista din stânga sus a editorului de cod și evenimentul din lista din dreapta sus — nu trebuie să-l scrii de mână și să riști o greșeală de sintaxă.\n\n## Evenimentul Workbook_Open\n\n`Workbook_Open` se declanșează o singură dată, automat, imediat după ce utilizatorul deschide registrul de calcul (fișierul .xlsm). Este locul ideal pentru:\n\n- afișarea unui mesaj de bun venit sau a unor instrucțiuni;\n- activarea foii de lucru corecte (de exemplu, un dashboard);\n- actualizarea automată a datei curente sau a unor formule;\n- verificarea unor condiții (versiune Excel, macro-uri activate) înainte ca utilizatorul să înceapă lucrul.\n\nCodul se scrie exclusiv în modulul `ThisWorkbook`:\n\n```vba\nPrivate Sub Workbook_Open()\n    MsgBox \"Bine ai venit! Registrul a fost actualizat ultima dată azi.\", vbInformation\n    Sheets(\"Dashboard\").Activate\nEnd Sub\n```\n\nObservă cuvântul cheie `Private` — procedurile eveniment sunt private la modulul obiectului și nu pot fi apelate direct din alte module cu numele lor simplu. Fișierul trebuie salvat cu extensia `.xlsm` (Excel Macro-Enabled Workbook), altfel codul VBA se pierde la salvare.\n\n## Evenimentul Worksheet_Change și parametrul Target\n\n`Worksheet_Change` se declanșează automat de fiecare dată când utilizatorul (sau alt cod) modifică valoarea unei celule din foaia respectivă — introducere manuală, ștergere, lipire (paste) sau completare automată. Codul se scrie în modulul foii (dublu-click pe numele foii din Project Explorer), nu în `ThisWorkbook`.\n\nProcedura primește automat un parametru `Target As Range`, care reprezintă exact celula sau grupul de celule modificate:\n\n```vba\nPrivate Sub Worksheet_Change(ByVal Target As Range)\n    If Not Intersect(Target, Range(\"B2:B100\")) Is Nothing Then\n        MsgBox \"Ai modificat celula \" & Target.Address\n    End If\nEnd Sub\n```\n\nFuncția `Intersect(Target, Range(...))` verifică dacă celula modificată se află în intervalul de interes; dacă rezultatul nu este `Nothing`, înseamnă că se suprapun. Această tehnică este esențială — fără ea, orice modificare din întreaga foaie ar declanșa codul, chiar și în celule fără nicio legătură cu logica ta.\n\n## Evenimentul Worksheet_SelectionChange\n\n`Worksheet_SelectionChange` se declanșează de fiecare dată când se schimbă celula sau intervalul selectat — printr-un click, cu săgețile de pe tastatură sau prin Name Box. Spre deosebire de `Worksheet_Change`, acest eveniment NU modifică nicio valoare, doar reacționează la navigare.\n\nUtilizări tipice:\n\n- evidențierea (highlight) rândului și coloanei celulei active, ca un „reticul” vizual;\n- afișarea de informații contextuale în bara de stare (`Application.StatusBar`);\n- restricționarea selecției la un anumit interval al foii.\n\n```vba\nPrivate Sub Worksheet_SelectionChange(ByVal Target As Range)\n    Application.StatusBar = \"Celula selectată: \" & Target.Address & \" | Valoare: \" & Target.Value\nEnd Sub\n```\n\nDeoarece acest eveniment se declanșează foarte des (la fiecare mișcare a cursorului), codul din interior trebuie să fie rapid și simplu — evită bucle lungi sau calcule complexe aici, pentru a nu încetini interfața Excel.\n\n⚠ Atenție la buclele infinite! Dacă în interiorul unei proceduri `Worksheet_Change` modifici tu însuți o celulă (de exemplu `Target.Offset(0,1).Value = ...`), acea modificare declanșează din nou evenimentul `Worksheet_Change`, care modifică din nou o celulă, și tot așa — Excel se poate bloca. Soluția standard este dezactivarea temporară a evenimentelor:\n\n```vba\nPrivate Sub Worksheet_Change(ByVal Target As Range)\n    Application.EnableEvents = False\n    Target.Offset(0, 1).Value = Now\n    Application.EnableEvents = True\nEnd Sub\n```\n\nReactivează întotdeauna `EnableEvents` la finalul procedurii — inclusiv pe ramurile de eroare — altfel toate celelalte evenimente din registru rămân dezactivate până la închiderea și redeschiderea fișierului.\n\n## Exemplu: Mesaj de bun venit și verificare zi lucrătoare la deschidere\nO firmă de contabilitate folosește un registru partajat pentru evidența facturilor. La deschidere, dorește ca utilizatorul să vadă data curentă și un avertisment dacă este weekend (posibil ca datele să nu fie la zi).\n\n```vba\n' Modulul ThisWorkbook\nPrivate Sub Workbook_Open()\n    Dim ziuaSaptamanii As Integer\n    ziuaSaptamanii = Weekday(Date, vbMonday) ' 1=Luni ... 7=Duminică\n\n    Sheets(\"Facturi\").Activate\n    Range(\"A1\").Select\n\n    If ziuaSaptamanii >= 6 Then\n        MsgBox \"Atenție: astăzi este weekend. Datele s-ar putea să nu fie actualizate de la ultima zi lucrătoare.\", vbExclamation, \"Avertisment\"\n    Else\n        Application.StatusBar = \"Registru deschis pe \" & Format(Date, \"dd.mm.yyyy\") & \" — foaia Facturi este activă.\"\n    End If\nEnd Sub\n```\n\nCodul activează automat foaia corectă (`Facturi`), astfel încât utilizatorul nu trebuie să caute manual, și afișează un avertisment relevant doar când este necesar.\n\n## Exemplu: Validare automată a prețurilor introduse într-o coloană\nÎntr-o listă de produse, coloana C conține prețul unitar (lei) și trebuie să fie mereu un număr pozitiv. Dacă utilizatorul introduce text sau o valoare negativă, celula se colorează automat în roșu și primește un mesaj de avertizare; dacă valoarea e corectă, fundalul redevine alb.\n\n```vba\n' Modulul foii (ex: Sheet1)\nPrivate Sub Worksheet_Change(ByVal Target As Range)\n    Dim celula As Range\n\n    If Intersect(Target, Range(\"C2:C500\")) Is Nothing Then Exit Sub\n\n    Application.EnableEvents = False\n\n    For Each celula In Intersect(Target, Range(\"C2:C500\"))\n        If Not IsNumeric(celula.Value) Or celula.Value <= 0 Then\n            celula.Interior.Color = RGB(255, 199, 206)\n            MsgBox \"Prețul din \" & celula.Address & \" trebuie să fie un număr pozitiv.\", vbCritical\n        Else\n            celula.Interior.ColorIndex = xlNone\n        End If\n    Next celula\n\n    Application.EnableEvents = True\nEnd Sub\n```\n\nObservă bucla `For Each` peste `Intersect(Target, Range(\"C2:C500\"))` — necesară pentru cazul în care utilizatorul lipește (paste) mai multe celule simultan, nu doar una singură. Am dezactivat evenimentele pe durata rulării codului ca bună practică, pentru a preveni orice declanșare secundară în cazul în care extinzi ulterior codul (de exemplu, adaugi și scrierea unei valori în altă celulă).\n\n## Exercițiu\nAi o foaie de calcul „Stoc” cu produse listate începând din rândul 2, coloana A (denumire) și coloana B (cantitate). Scrie codul pentru evenimentul `Worksheet_SelectionChange` astfel încât, atunci când utilizatorul selectează orice celulă din coloana B, întregul rând (de la coloana A la coloana B) al celulei selectate să se evidențieze cu un fundal galben deschis, iar la trecerea pe alt rând, evidențierea anterioară să dispară. În plus, afișează în bara de stare cantitatea curentă selectată.\n\n**Soluție:** ```vba\n' Modulul foii Stoc\nPrivate Sub Worksheet_SelectionChange(ByVal Target As Range)\n    ' Șterge orice evidențiere anterioară din zona de date\n    Range(\"A2:B1000\").Interior.ColorIndex = xlNone\n\n    ' Evidențiază doar dacă selecția este în coloana B\n    If Not Intersect(Target, Range(\"B2:B1000\")) Is Nothing Then\n        Range(\"A\" & Target.Row & \":B\" & Target.Row).Interior.Color = RGB(255, 255, 153)\n        Application.StatusBar = \"Cantitate selectată: \" & Target.Value\n    Else\n        Application.StatusBar = False ' revine la bara de stare implicită\n    End If\nEnd Sub\n```\n\nExplicație: la fiecare schimbare de selecție, se șterge întâi evidențierea din tot intervalul (`A2:B1000`), apoi — doar dacă noua celulă selectată face parte din coloana B — se colorează rândul respectiv și se actualizează bara de stare. `Application.StatusBar = False` restabilește comportamentul implicit al barei de stare din Excel când selecția iese din zona de interes.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vba-events-evenimente-concept",
+    "md": "## Ce sunt evenimentele în VBA?\n\nPână acum ai scris proceduri `Sub` pe care le rulai manual: apăsai F5, un buton sau o combinație de taste. Un **eveniment** (event) este o categorie specială de procedură care se execută automat, declanșată de o acțiune a utilizatorului sau a aplicației — deschiderea unui registru, modificarea unei celule, schimbarea foii active, salvarea fișierului etc.\n\nSpre deosebire de macro-urile obișnuite, codul pentru evenimente NU se scrie într-un modul standard (Insert → Module). El trebuie scris în **modulul obiectului** căruia îi aparține evenimentul, vizibil în Project Explorer (Ctrl+R în VBE):\n\n- `ThisWorkbook` — evenimente la nivel de registru de calcul (deschidere, salvare, închidere)\n- `Sheet1`, `Sheet2`... (sau numele foii) — evenimente la nivel de foaie de calcul (modificare celulă, selecție, dublu-click)\n\nNumele unei proceduri eveniment respectă convenția `Obiect_Eveniment`, de exemplu `Workbook_Open` sau `Worksheet_Change`. VBA generează automat antetul corect dacă selectezi obiectul din lista din stânga sus a editorului de cod și evenimentul din lista din dreapta sus — nu trebuie să-l scrii de mână și să riști o greșeală de sintaxă.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "workbook-open-event",
+    "md": "## Evenimentul Workbook_Open\n\n`Workbook_Open` se declanșează o singură dată, automat, imediat după ce utilizatorul deschide registrul de calcul (fișierul .xlsm). Este locul ideal pentru:\n\n- afișarea unui mesaj de bun venit sau a unor instrucțiuni;\n- activarea foii de lucru corecte (de exemplu, un dashboard);\n- actualizarea automată a datei curente sau a unor formule;\n- verificarea unor condiții (versiune Excel, macro-uri activate) înainte ca utilizatorul să înceapă lucrul.\n\nCodul se scrie exclusiv în modulul `ThisWorkbook`:\n\n```vba\nPrivate Sub Workbook_Open()\n    MsgBox \"Bine ai venit! Registrul a fost actualizat ultima dată azi.\", vbInformation\n    Sheets(\"Dashboard\").Activate\nEnd Sub\n```\n\nObservă cuvântul cheie `Private` — procedurile eveniment sunt private la modulul obiectului și nu pot fi apelate direct din alte module cu numele lor simplu. Fișierul trebuie salvat cu extensia `.xlsm` (Excel Macro-Enabled Workbook), altfel codul VBA se pierde la salvare.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "worksheet-change-event",
+    "md": "## Evenimentul Worksheet_Change și parametrul Target\n\n`Worksheet_Change` se declanșează automat de fiecare dată când utilizatorul (sau alt cod) modifică valoarea unei celule din foaia respectivă — introducere manuală, ștergere, lipire (paste) sau completare automată. Codul se scrie în modulul foii (dublu-click pe numele foii din Project Explorer), nu în `ThisWorkbook`.\n\nProcedura primește automat un parametru `Target As Range`, care reprezintă exact celula sau grupul de celule modificate:\n\n```vba\nPrivate Sub Worksheet_Change(ByVal Target As Range)\n    If Not Intersect(Target, Range(\"B2:B100\")) Is Nothing Then\n        MsgBox \"Ai modificat celula \" & Target.Address\n    End If\nEnd Sub\n```\n\nFuncția `Intersect(Target, Range(...))` verifică dacă celula modificată se află în intervalul de interes; dacă rezultatul nu este `Nothing`, înseamnă că se suprapun. Această tehnică este esențială — fără ea, orice modificare din întreaga foaie ar declanșa codul, chiar și în celule fără nicio legătură cu logica ta.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "worksheet-selectionchange-event",
+    "md": "## Evenimentul Worksheet_SelectionChange\n\n`Worksheet_SelectionChange` se declanșează de fiecare dată când se schimbă celula sau intervalul selectat — printr-un click, cu săgețile de pe tastatură sau prin Name Box. Spre deosebire de `Worksheet_Change`, acest eveniment NU modifică nicio valoare, doar reacționează la navigare.\n\nUtilizări tipice:\n\n- evidențierea (highlight) rândului și coloanei celulei active, ca un „reticul” vizual;\n- afișarea de informații contextuale în bara de stare (`Application.StatusBar`);\n- restricționarea selecției la un anumit interval al foii.\n\n```vba\nPrivate Sub Worksheet_SelectionChange(ByVal Target As Range)\n    Application.StatusBar = \"Celula selectată: \" & Target.Address & \" | Valoare: \" & Target.Value\nEnd Sub\n```\n\nDeoarece acest eveniment se declanșează foarte des (la fiecare mișcare a cursorului), codul din interior trebuie să fie rapid și simplu — evită bucle lungi sau calcule complexe aici, pentru a nu încetini interfața Excel.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b4"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la buclele infinite! Dacă în interiorul unei proceduri `Worksheet_Change` modifici tu însuți o celulă (de exemplu `Target.Offset(0,1).Value = ...`), acea modificare declanșează din nou evenimentul `Worksheet_Change`, care modifică din nou o celulă, și tot așa — Excel se poate bloca. Soluția standard este dezactivarea temporară a evenimentelor:\n\n```vba\nPrivate Sub Worksheet_Change(ByVal Target As Range)\n    Application.EnableEvents = False\n    Target.Offset(0, 1).Value = Now\n    Application.EnableEvents = True\nEnd Sub\n```\n\nReactivează întotdeauna `EnableEvents` la finalul procedurii — inclusiv pe ramurile de eroare — altfel toate celelalte evenimente din registru rămân dezactivate până la închiderea și redeschiderea fișierului.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b5"
+   },
+   {
+    "type": "example",
+    "title": "Mesaj de bun venit și verificare zi lucrătoare la deschidere",
+    "concept_key": "workbook-open-event",
+    "md": "O firmă de contabilitate folosește un registru partajat pentru evidența facturilor. La deschidere, dorește ca utilizatorul să vadă data curentă și un avertisment dacă este weekend (posibil ca datele să nu fie la zi).\n\n```vba\n' Modulul ThisWorkbook\nPrivate Sub Workbook_Open()\n    Dim ziuaSaptamanii As Integer\n    ziuaSaptamanii = Weekday(Date, vbMonday) ' 1=Luni ... 7=Duminică\n\n    Sheets(\"Facturi\").Activate\n    Range(\"A1\").Select\n\n    If ziuaSaptamanii >= 6 Then\n        MsgBox \"Atenție: astăzi este weekend. Datele s-ar putea să nu fie actualizate de la ultima zi lucrătoare.\", vbExclamation, \"Avertisment\"\n    Else\n        Application.StatusBar = \"Registru deschis pe \" & Format(Date, \"dd.mm.yyyy\") & \" — foaia Facturi este activă.\"\n    End If\nEnd Sub\n```\n\nCodul activează automat foaia corectă (`Facturi`), astfel încât utilizatorul nu trebuie să caute manual, și afișează un avertisment relevant doar când este necesar.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b6"
+   },
+   {
+    "type": "example",
+    "title": "Validare automată a prețurilor introduse într-o coloană",
+    "concept_key": "worksheet-change-event",
+    "md": "Într-o listă de produse, coloana C conține prețul unitar (lei) și trebuie să fie mereu un număr pozitiv. Dacă utilizatorul introduce text sau o valoare negativă, celula se colorează automat în roșu și primește un mesaj de avertizare; dacă valoarea e corectă, fundalul redevine alb.\n\n```vba\n' Modulul foii (ex: Sheet1)\nPrivate Sub Worksheet_Change(ByVal Target As Range)\n    Dim celula As Range\n\n    If Intersect(Target, Range(\"C2:C500\")) Is Nothing Then Exit Sub\n\n    Application.EnableEvents = False\n\n    For Each celula In Intersect(Target, Range(\"C2:C500\"))\n        If Not IsNumeric(celula.Value) Or celula.Value <= 0 Then\n            celula.Interior.Color = RGB(255, 199, 206)\n            MsgBox \"Prețul din \" & celula.Address & \" trebuie să fie un număr pozitiv.\", vbCritical\n        Else\n            celula.Interior.ColorIndex = xlNone\n        End If\n    Next celula\n\n    Application.EnableEvents = True\nEnd Sub\n```\n\nObservă bucla `For Each` peste `Intersect(Target, Range(\"C2:C500\"))` — necesară pentru cazul în care utilizatorul lipește (paste) mai multe celule simultan, nu doar una singură. Am dezactivat evenimentele pe durata rulării codului ca bună practică, pentru a preveni orice declanșare secundară în cazul în care extinzi ulterior codul (de exemplu, adaugi și scrierea unei valori în altă celulă).",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai o foaie de calcul „Stoc” cu produse listate începând din rândul 2, coloana A (denumire) și coloana B (cantitate). Scrie codul pentru evenimentul `Worksheet_SelectionChange` astfel încât, atunci când utilizatorul selectează orice celulă din coloana B, întregul rând (de la coloana A la coloana B) al celulei selectate să se evidențieze cu un fundal galben deschis, iar la trecerea pe alt rând, evidențierea anterioară să dispară. În plus, afișează în bara de stare cantitatea curentă selectată.",
+    "solution_md": "```vba\n' Modulul foii Stoc\nPrivate Sub Worksheet_SelectionChange(ByVal Target As Range)\n    ' Șterge orice evidențiere anterioară din zona de date\n    Range(\"A2:B1000\").Interior.ColorIndex = xlNone\n\n    ' Evidențiază doar dacă selecția este în coloana B\n    If Not Intersect(Target, Range(\"B2:B1000\")) Is Nothing Then\n        Range(\"A\" & Target.Row & \":B\" & Target.Row).Interior.Color = RGB(255, 255, 153)\n        Application.StatusBar = \"Cantitate selectată: \" & Target.Value\n    Else\n        Application.StatusBar = False ' revine la bara de stare implicită\n    End If\nEnd Sub\n```\n\nExplicație: la fiecare schimbare de selecție, se șterge întâi evidențierea din tot intervalul (`A2:B1000`), apoi — doar dacă noua celulă selectată face parte din coloana B — se colorează rândul respectiv și se actualizează bara de stare. `Application.StatusBar = False` restabilește comportamentul implicit al barei de stare din Excel când selecția iese din zona de interes.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În ce modul din Project Explorer trebuie scris codul pentru evenimentul Workbook_Open?",
+    "choices": [
+     "Într-un modul standard nou (Insert → Module)",
+     "În modulul ThisWorkbook",
+     "În modulul foii active (Sheet1)",
+     "Într-un modul de clasă (Class Module) creat manual"
+    ],
+    "answer": 1,
+    "explain": "Evenimentele la nivel de registru de calcul, precum Workbook_Open, Workbook_BeforeSave sau Workbook_BeforeClose, se scriu exclusiv în modulul ThisWorkbook, vizibil în Project Explorer.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă parametrul Target din procedura Worksheet_Change(ByVal Target As Range)?",
+    "choices": [
+     "Foaia de calcul pe care s-a produs modificarea",
+     "Numele registrului de calcul",
+     "Celula sau intervalul de celule care au fost modificate",
+     "Valoarea anterioară a celulei, înainte de modificare"
+    ],
+    "answer": 2,
+    "explain": "Target este un obiect Range care indică exact celula sau grupul de celule a căror valoare tocmai a fost modificată — de aici poți citi Target.Value, Target.Address, Target.Row etc.",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența principală dintre o procedură eveniment și un macro obișnuit?",
+    "back": "Macro-ul obișnuit (Sub dintr-un modul standard) se rulează manual; procedura eveniment (Obiect_Eveniment) se execută automat, declanșată de o acțiune (deschidere fișier, modificare celulă etc.) și se scrie în modulul obiectului respectiv.",
+    "concept_key": "vba-events-evenimente-concept",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În ce modul se scrie codul pentru Workbook_Open?",
+    "back": "În modulul ThisWorkbook, vizibil în Project Explorer (Ctrl+R în VBE).",
+    "concept_key": "workbook-open-event",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce parametru primește automat Worksheet_Change și ce reprezintă?",
+    "back": "Target As Range — celula sau intervalul de celule a căror valoare tocmai a fost modificată.",
+    "concept_key": "worksheet-change-event",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce folosește Application.EnableEvents = False într-un event handler?",
+    "back": "Dezactivează temporar declanșarea evenimentelor, prevenind buclele infinite atunci când codul modifică el însuși o celulă din interiorul unui Worksheet_Change.",
+    "concept_key": "worksheet-change-event",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce eveniment se declanșează la fiecare schimbare a celulei/intervalului selectat (click sau săgeți), fără modificare de valoare?",
+    "back": "Worksheet_SelectionChange.",
+    "concept_key": "worksheet-selectionchange-event",
+    "blockId": "cmjjuxvqj003tumkp3mratffp-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1187,
+   "flashcards": 5
+  }
+ }
+}

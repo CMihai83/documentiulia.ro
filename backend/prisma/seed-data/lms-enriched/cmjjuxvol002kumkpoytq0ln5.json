@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvol002kumkpoytq0ln5",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Funcții Array Dinamice (Excel 365)",
+ "lesson": "FILTER - Filtrare dinamică",
+ "category": "EXCEL_VBA",
+ "content": "# FILTER - Filtrare dinamică\n\n## FILTER: filtrare dinamică fără formule ajutătoare\n\nFuncția **FILTER** (în versiunile Excel cu interfață românească apare sub numele FILTRARE, dar în acest curs folosim denumirea engleză, cea mai des întâlnită în practică și în documentația Microsoft) este una dintre funcțiile array dinamice introduse în Excel 365. Ea extrage automat rândurile dintr-un interval care îndeplinesc o condiție logică, fără să ai nevoie de o coloană ajutătoare cu TRUE/FALSE, fără AutoFilter și fără formule matriciale complicate.\n\nSintaxa completă este:\n\n`=FILTER(array; include; [if_empty])`\n\n- **array** – intervalul de date din care extragi rândurile (poate include mai multe coloane deodată);\n- **include** – condiția logică, exprimată de obicei ca o comparație pe o coloană din array (ex: `B2:B11=\"Vânzări\"`), care generează un array de TRUE/FALSE cu aceeași înălțime ca array;\n- **if_empty** – argument opțional, dar recomandat: valoarea sau textul afișat dacă niciun rând nu îndeplinește condiția.\n\nRezultatul FILTER este un **array dinamic**: introduci formula într-o singură celulă, iar Excel \"revarsă\" (spill, din engleză \"a se revărsa\") automat rezultatele în celulele adiacente, atâta timp cât acestea sunt goale. Nu mai copiezi formula în jos și nu mai folosești CTRL+SHIFT+ENTER ca la vechile formule matriciale.\n\n## Comportamentul spill și referirea la rezultate\n\nCând scrii FILTER într-o celulă, de exemplu E2, iar rezultatul are 5 rânduri și 3 coloane, Excel completează automat zona E2:G6 cu valorile filtrate. Aceste celule nu conțin fiecare o formulă proprie — doar E2 are formula reală, iar restul celulelor afișează o \"formulă fantomă\" (ghost formula), care nu poate fi editată direct.\n\nPentru a te referi la întregul rezultat (de exemplu într-un SUM sau într-un alt FILTER imbricat), folosești operatorul **spill (#)** imediat după adresa celulei de start: `E2#`. Această referință se ajustează automat dacă numărul de rânduri filtrate se schimbă, deci rămâne corectă indiferent câte rezultate produce filtrarea.\n\nDacă zona în care ar trebui să se reverse rezultatul nu este complet liberă (există deja date în celulele de dedesubt sau din dreapta), Excel afișează eroarea **#SPILL!**. Soluția este să muți formula într-o zonă goală sau să elimini/muți conținutul care blochează revărsarea.\n\nDacă niciun rând nu corespunde criteriului și argumentul if_empty nu este completat, FILTER returnează eroarea **#CALC!**. De aceea este bună practică să completezi mereu al treilea argument, chiar și cu un text simplu precum \"Nu există rezultate\".\n\n## Criterii multiple: ȘI (AND) și SAU (OR)\n\nArgumentul include al funcției FILTER acceptă orice expresie care generează un array boolean, deci poți combina mai multe condiții direct în formulă — dar nu cu funcțiile clasice AND/OR, care agregă întregul array la un singur TRUE/FALSE și nu funcționează rând cu rând în acest context.\n\n- Pentru logica **ȘI** (toate condițiile trebuie îndeplinite simultan), înmulțești condițiile: `(condiție1)*(condiție2)`. Matematic, TRUE=1 și FALSE=0, deci produsul este 1 (adică TRUE) doar dacă ambele condiții sunt adevărate pe același rând.\n- Pentru logica **SAU** (cel puțin o condiție trebuie îndeplinită), aduni condițiile: `(condiție1)+(condiție2)`. Suma este cel puțin 1 (deci TRUE) dacă măcar o condiție este adevărată.\n\nPoți combina oricâte condiții, inclusiv un amestec de ȘI și SAU, folosind paranteze pentru a controla ordinea operațiilor, exact ca într-o formulă matematică obișnuită.\n\nFILTER se poate combina și cu alte funcții array moderne: **SORT** pentru a ordona rezultatul, **UNIQUE** pentru a elimina duplicate din rezultat, sau **XLOOKUP** pentru a aduce informații suplimentare pe baza rezultatului filtrat. Tiparul `SORT(FILTER(...))` sau `FILTER(SORT(...))` este extrem de frecvent în rapoartele automatizate, pentru că elimină nevoia de a filtra manual și apoi sorta manual, de fiecare dată când datele se schimbă.\n\n## Exemplu: Filtrare simplă a angajaților dintr-un singur departament\nAi un tabel cu angajații unei firme, în intervalul A1:C11 (antet pe rândul 1):\n\n| Nume | Departament | Salariu (lei) |\n|---|---|---|\n| Ana Popescu | Vânzări | 4200 |\n| Mihai Ionescu | IT | 6100 |\n| Cristina Dumitru | Vânzări | 3900 |\n| Radu Stan | Contabilitate | 5300 |\n| Elena Marin | Vânzări | 4700 |\n| Andrei Voicu | IT | 5800 |\n| Ioana Radu | Vânzări | 4100 |\n| George Pavel | Contabilitate | 4900 |\n| Simona Neagu | Vânzări | 5200 |\n| Bogdan Iliescu | IT | 6300 |\n\nVrei să extragi doar angajații din departamentul Vânzări, într-o celulă, de exemplu E2:\n\n`=FILTER(A2:C11; B2:B11=\"Vânzări\"; \"Nu există rezultate\")`\n\nFormula analizează coloana B (Departament), construiește un array de TRUE/FALSE (TRUE pentru rândurile cu \"Vânzări\"), și returnează doar rândurile corespunzătoare din A2:C11. Rezultatul se revarsă automat în E2:G6, cu cei 5 angajați din Vânzări, fără să atingi manual vreun filtru și fără să adaugi coloane ajutătoare. Dacă mai adaugi ulterior un angajat nou din Vânzări în tabel, rezultatul filtrat se actualizează automat la următoarea recalculare.\n\n## Exemplu: Filtrare cu criterii multiple și sortare descrescătoare\nExtinzi tabelul anterior la 20 de angajați, în intervalul A2:D21, adăugând o coloană D cu bonusul anual (lei). Vrei un raport care extrage doar angajații din Vânzări cu salariul peste 4000 lei, sortați descrescător după salariu, pentru a identifica rapid cei mai bine plătiți oameni din echipa de vânzări.\n\nCombini FILTER cu SORT într-o singură formulă, în celula F2:\n\n`=SORT(FILTER(A2:D21; (B2:B21=\"Vânzări\")*(C2:C21>4000); \"—\"); 3; -1)`\n\nExplicație pas cu pas:\n\n1. `(B2:B21=\"Vânzări\")` generează un array TRUE/FALSE pentru condiția de departament;\n2. `(C2:C21>4000)` generează un array TRUE/FALSE pentru condiția de salariu;\n3. înmulțirea celor două array-uri aplică logica ȘI: doar rândurile care satisfac ambele condiții rămân TRUE (adică 1);\n4. FILTER extrage rândurile corespunzătoare din A2:D21, iar dacă nu există niciun rezultat afișează linia \"—\";\n5. SORT primește rezultatul FILTER ca array de intrare și îl sortează după a treia coloană (Salariu), cu argumentul -1 pentru ordine descrescătoare.\n\nToată această logică rulează într-o singură celulă, se recalculează automat la orice modificare a datelor sursă și nu necesită nicio coloană ajutătoare sau pas manual de sortare/filtrare.\n\n⚠ FILTER, SORT, UNIQUE, XLOOKUP și LAMBDA sunt disponibile doar în **Excel 365** și **Excel pentru web**; nu funcționează în Excel 2019, 2016 sau versiuni mai vechi, care nu au motorul de array-uri dinamice. Dacă trimiți un fișier care folosește FILTER către un coleg cu Excel 2016, formula va afișa eroarea **#NAME?**. Completează întotdeauna argumentul if_empty — altfel, un rezultat gol produce eroarea #CALC!, ceea ce poate strica formule ulterioare (ex: un SUM peste rezultatul FILTER).\n\n## Exercițiu\nAi un registru de facturi emise, în intervalul A2:D31 (30 de facturi), cu coloanele: A – Client, B – Nr. Factură, C – Valoare (lei), D – Status (\"Încasată\" sau \"Neîncasată\"). \n\nConstruiește, în celula F2, o singură formulă care:\n1. extrage toate facturile cu Status = \"Neîncasată\" ȘI Valoare peste 3000 lei;\n2. sortează rezultatul descrescător după valoare (coloana C, a treia coloană din rezultat);\n3. afișează textul \"Nu există facturi restante peste 3000 lei\" dacă nu există niciun rezultat.\n\n**Soluție:** Formula corectă combină FILTER (cu criterii ȘI, folosind operatorul *) și SORT:\n\n`=SORT(FILTER(A2:D31; (D2:D31=\"Neîncasată\")*(C2:C31>3000); \"Nu există facturi restante peste 3000 lei\"); 3; -1)`\n\nExplicație:\n- `(D2:D31=\"Neîncasată\")*(C2:C31>3000)` combină cele două condiții cu logica ȘI (înmulțire), producând TRUE doar pentru facturile neîncasate și cu valoare peste 3000 lei;\n- FILTER extrage rândurile corespunzătoare, sau afișează mesajul dacă nu există potriviri;\n- SORT(...; 3; -1) sortează rezultatul descrescător după a treia coloană a array-ului rezultat, adică Valoare.\n\nRezultatul se revarsă automat sub F2 și se actualizează singur de fiecare dată când modifici statusul sau valoarea unei facturi în tabelul sursă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "filter-sintaxa-de-baza",
+    "md": "## FILTER: filtrare dinamică fără formule ajutătoare\n\nFuncția **FILTER** (în versiunile Excel cu interfață românească apare sub numele FILTRARE, dar în acest curs folosim denumirea engleză, cea mai des întâlnită în practică și în documentația Microsoft) este una dintre funcțiile array dinamice introduse în Excel 365. Ea extrage automat rândurile dintr-un interval care îndeplinesc o condiție logică, fără să ai nevoie de o coloană ajutătoare cu TRUE/FALSE, fără AutoFilter și fără formule matriciale complicate.\n\nSintaxa completă este:\n\n`=FILTER(array; include; [if_empty])`\n\n- **array** – intervalul de date din care extragi rândurile (poate include mai multe coloane deodată);\n- **include** – condiția logică, exprimată de obicei ca o comparație pe o coloană din array (ex: `B2:B11=\"Vânzări\"`), care generează un array de TRUE/FALSE cu aceeași înălțime ca array;\n- **if_empty** – argument opțional, dar recomandat: valoarea sau textul afișat dacă niciun rând nu îndeplinește condiția.\n\nRezultatul FILTER este un **array dinamic**: introduci formula într-o singură celulă, iar Excel \"revarsă\" (spill, din engleză \"a se revărsa\") automat rezultatele în celulele adiacente, atâta timp cât acestea sunt goale. Nu mai copiezi formula în jos și nu mai folosești CTRL+SHIFT+ENTER ca la vechile formule matriciale.",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "filter-spill-range-dinamic",
+    "md": "## Comportamentul spill și referirea la rezultate\n\nCând scrii FILTER într-o celulă, de exemplu E2, iar rezultatul are 5 rânduri și 3 coloane, Excel completează automat zona E2:G6 cu valorile filtrate. Aceste celule nu conțin fiecare o formulă proprie — doar E2 are formula reală, iar restul celulelor afișează o \"formulă fantomă\" (ghost formula), care nu poate fi editată direct.\n\nPentru a te referi la întregul rezultat (de exemplu într-un SUM sau într-un alt FILTER imbricat), folosești operatorul **spill (#)** imediat după adresa celulei de start: `E2#`. Această referință se ajustează automat dacă numărul de rânduri filtrate se schimbă, deci rămâne corectă indiferent câte rezultate produce filtrarea.\n\nDacă zona în care ar trebui să se reverse rezultatul nu este complet liberă (există deja date în celulele de dedesubt sau din dreapta), Excel afișează eroarea **#SPILL!**. Soluția este să muți formula într-o zonă goală sau să elimini/muți conținutul care blochează revărsarea.\n\nDacă niciun rând nu corespunde criteriului și argumentul if_empty nu este completat, FILTER returnează eroarea **#CALC!**. De aceea este bună practică să completezi mereu al treilea argument, chiar și cu un text simplu precum \"Nu există rezultate\".",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "filter-criterii-multiple-and-or",
+    "md": "## Criterii multiple: ȘI (AND) și SAU (OR)\n\nArgumentul include al funcției FILTER acceptă orice expresie care generează un array boolean, deci poți combina mai multe condiții direct în formulă — dar nu cu funcțiile clasice AND/OR, care agregă întregul array la un singur TRUE/FALSE și nu funcționează rând cu rând în acest context.\n\n- Pentru logica **ȘI** (toate condițiile trebuie îndeplinite simultan), înmulțești condițiile: `(condiție1)*(condiție2)`. Matematic, TRUE=1 și FALSE=0, deci produsul este 1 (adică TRUE) doar dacă ambele condiții sunt adevărate pe același rând.\n- Pentru logica **SAU** (cel puțin o condiție trebuie îndeplinită), aduni condițiile: `(condiție1)+(condiție2)`. Suma este cel puțin 1 (deci TRUE) dacă măcar o condiție este adevărată.\n\nPoți combina oricâte condiții, inclusiv un amestec de ȘI și SAU, folosind paranteze pentru a controla ordinea operațiilor, exact ca într-o formulă matematică obișnuită.\n\nFILTER se poate combina și cu alte funcții array moderne: **SORT** pentru a ordona rezultatul, **UNIQUE** pentru a elimina duplicate din rezultat, sau **XLOOKUP** pentru a aduce informații suplimentare pe baza rezultatului filtrat. Tiparul `SORT(FILTER(...))` sau `FILTER(SORT(...))` este extrem de frecvent în rapoartele automatizate, pentru că elimină nevoia de a filtra manual și apoi sorta manual, de fiecare dată când datele se schimbă.",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b3"
+   },
+   {
+    "type": "example",
+    "title": "Filtrare simplă a angajaților dintr-un singur departament",
+    "concept_key": "filter-sintaxa-de-baza",
+    "md": "Ai un tabel cu angajații unei firme, în intervalul A1:C11 (antet pe rândul 1):\n\n| Nume | Departament | Salariu (lei) |\n|---|---|---|\n| Ana Popescu | Vânzări | 4200 |\n| Mihai Ionescu | IT | 6100 |\n| Cristina Dumitru | Vânzări | 3900 |\n| Radu Stan | Contabilitate | 5300 |\n| Elena Marin | Vânzări | 4700 |\n| Andrei Voicu | IT | 5800 |\n| Ioana Radu | Vânzări | 4100 |\n| George Pavel | Contabilitate | 4900 |\n| Simona Neagu | Vânzări | 5200 |\n| Bogdan Iliescu | IT | 6300 |\n\nVrei să extragi doar angajații din departamentul Vânzări, într-o celulă, de exemplu E2:\n\n`=FILTER(A2:C11; B2:B11=\"Vânzări\"; \"Nu există rezultate\")`\n\nFormula analizează coloana B (Departament), construiește un array de TRUE/FALSE (TRUE pentru rândurile cu \"Vânzări\"), și returnează doar rândurile corespunzătoare din A2:C11. Rezultatul se revarsă automat în E2:G6, cu cei 5 angajați din Vânzări, fără să atingi manual vreun filtru și fără să adaugi coloane ajutătoare. Dacă mai adaugi ulterior un angajat nou din Vânzări în tabel, rezultatul filtrat se actualizează automat la următoarea recalculare.",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b4"
+   },
+   {
+    "type": "example",
+    "title": "Filtrare cu criterii multiple și sortare descrescătoare",
+    "concept_key": "filter-criterii-multiple-and-or",
+    "md": "Extinzi tabelul anterior la 20 de angajați, în intervalul A2:D21, adăugând o coloană D cu bonusul anual (lei). Vrei un raport care extrage doar angajații din Vânzări cu salariul peste 4000 lei, sortați descrescător după salariu, pentru a identifica rapid cei mai bine plătiți oameni din echipa de vânzări.\n\nCombini FILTER cu SORT într-o singură formulă, în celula F2:\n\n`=SORT(FILTER(A2:D21; (B2:B21=\"Vânzări\")*(C2:C21>4000); \"—\"); 3; -1)`\n\nExplicație pas cu pas:\n\n1. `(B2:B21=\"Vânzări\")` generează un array TRUE/FALSE pentru condiția de departament;\n2. `(C2:C21>4000)` generează un array TRUE/FALSE pentru condiția de salariu;\n3. înmulțirea celor două array-uri aplică logica ȘI: doar rândurile care satisfac ambele condiții rămân TRUE (adică 1);\n4. FILTER extrage rândurile corespunzătoare din A2:D21, iar dacă nu există niciun rezultat afișează linia \"—\";\n5. SORT primește rezultatul FILTER ca array de intrare și îl sortează după a treia coloană (Salariu), cu argumentul -1 pentru ordine descrescătoare.\n\nToată această logică rulează într-o singură celulă, se recalculează automat la orice modificare a datelor sursă și nu necesită nicio coloană ajutătoare sau pas manual de sortare/filtrare.",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b5"
+   },
+   {
+    "type": "warning",
+    "md": "FILTER, SORT, UNIQUE, XLOOKUP și LAMBDA sunt disponibile doar în **Excel 365** și **Excel pentru web**; nu funcționează în Excel 2019, 2016 sau versiuni mai vechi, care nu au motorul de array-uri dinamice. Dacă trimiți un fișier care folosește FILTER către un coleg cu Excel 2016, formula va afișa eroarea **#NAME?**. Completează întotdeauna argumentul if_empty — altfel, un rezultat gol produce eroarea #CALC!, ceea ce poate strica formule ulterioare (ex: un SUM peste rezultatul FILTER).",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai un registru de facturi emise, în intervalul A2:D31 (30 de facturi), cu coloanele: A – Client, B – Nr. Factură, C – Valoare (lei), D – Status (\"Încasată\" sau \"Neîncasată\"). \n\nConstruiește, în celula F2, o singură formulă care:\n1. extrage toate facturile cu Status = \"Neîncasată\" ȘI Valoare peste 3000 lei;\n2. sortează rezultatul descrescător după valoare (coloana C, a treia coloană din rezultat);\n3. afișează textul \"Nu există facturi restante peste 3000 lei\" dacă nu există niciun rezultat.",
+    "solution_md": "Formula corectă combină FILTER (cu criterii ȘI, folosind operatorul *) și SORT:\n\n`=SORT(FILTER(A2:D31; (D2:D31=\"Neîncasată\")*(C2:C31>3000); \"Nu există facturi restante peste 3000 lei\"); 3; -1)`\n\nExplicație:\n- `(D2:D31=\"Neîncasată\")*(C2:C31>3000)` combină cele două condiții cu logica ȘI (înmulțire), producând TRUE doar pentru facturile neîncasate și cu valoare peste 3000 lei;\n- FILTER extrage rândurile corespunzătoare, sau afișează mesajul dacă nu există potriviri;\n- SORT(...; 3; -1) sortează rezultatul descrescător după a treia coloană a array-ului rezultat, adică Valoare.\n\nRezultatul se revarsă automat sub F2 și se actualizează singur de fiecare dată când modifici statusul sau valoarea unei facturi în tabelul sursă.",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce returnează funcția FILTER dacă niciun rând nu îndeplinește criteriul și argumentul if_empty NU este completat?",
+    "choices": [
+     "Un șir gol, fără eroare",
+     "Eroarea #CALC!",
+     "Valoarea 0 în celula respectivă",
+     "Eroarea #N/A"
+    ],
+    "answer": 1,
+    "explain": "Fără al treilea argument (if_empty), un rezultat fără nicio potrivire produce eroarea #CALC!. Din acest motiv este recomandat să completezi mereu if_empty, de exemplu cu un text explicativ.",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cum combini corect două condiții cu logica ȘI direct în argumentul include al funcției FILTER?",
+    "choices": [
+     "Cu operatorul + între cele două condiții, ex: (condiție1)+(condiție2)",
+     "Cu operatorul * între cele două condiții, ex: (condiție1)*(condiție2)",
+     "Cu funcția AND(condiție1; condiție2), care evaluează corect fiecare rând al array-ului",
+     "Nu este posibil în FILTER, este nevoie de o coloană ajutătoare"
+    ],
+    "answer": 1,
+    "explain": "Operatorul * aplicat între două array-uri boolean echivalează cu ȘI element cu element (TRUE*TRUE=1, orice combinație cu FALSE=0). Funcția clasică AND() agregă tot array-ul la un singur TRUE/FALSE și nu poate evalua rând cu rând în acest context, deci nu se poate folosi aici.",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este sintaxa completă a funcției FILTER în Excel 365?",
+    "back": "=FILTER(array; include; [if_empty]) — array este intervalul de date, include este condiția logică (array de TRUE/FALSE), if_empty este valoarea afișată dacă niciun rând nu se potrivește.",
+    "concept_key": "filter-sintaxa-de-baza",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce eroare apare dacă FILTER nu găsește nicio potrivire și argumentul if_empty lipsește?",
+    "back": "Eroarea #CALC!",
+    "concept_key": "filter-spill-range-dinamic",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum combini două condiții cu logica ȘI (AND) direct în argumentul include al lui FILTER?",
+    "back": "Se înmulțesc: (condiție1)*(condiție2) — produsul este TRUE (1) doar dacă ambele condiții sunt adevărate pe același rând.",
+    "concept_key": "filter-criterii-multiple-and-or",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum combini două condiții cu logica SAU (OR) direct în argumentul include al lui FILTER?",
+    "back": "Se adună: (condiție1)+(condiție2) — suma este cel puțin 1 (TRUE) dacă măcar o condiție este adevărată.",
+    "concept_key": "filter-criterii-multiple-and-or",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un 'spill range' și cum te referi la el într-o formulă?",
+    "back": "Zona în care se revarsă automat rezultatul unei formule dinamice; se referă cu simbolul # după adresa celulei de start, ex: E2#.",
+    "concept_key": "filter-spill-range-dinamic",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În ce versiuni de Excel este disponibilă funcția FILTER?",
+    "back": "Excel 365 și Excel pentru web; nu este disponibilă în Excel 2019, 2016 sau versiuni anterioare (produce eroarea #NAME?).",
+    "concept_key": "filter-sintaxa-de-baza",
+    "blockId": "cmjjuxvol002kumkpoytq0ln5-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1182,
+   "flashcards": 6
+  }
+ }
+}

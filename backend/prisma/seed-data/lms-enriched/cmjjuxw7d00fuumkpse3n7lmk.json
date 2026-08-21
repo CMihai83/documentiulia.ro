@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw7d00fuumkpse3n7lmk",
+ "courseId": "cmjjuxw7400fmumkp9cm4a9vj",
+ "course": "HR Fundamentals - Managementul Resurselor Umane",
+ "module": "Introducere în HR",
+ "lesson": "HR Technology și HRIS",
+ "category": "HR_COMPLIANCE",
+ "content": "# HR Technology și HRIS\n\n## Ce este un HRIS?\n\nUn **HRIS** (Human Resources Information System) este sistemul informatic integrat care centralizează toate datele și procesele legate de angajați, de la momentul candidaturii până la exit. În loc ca fiecare activitate HR să trăiască separat (un Excel pentru pontaj, un dosar fizic pentru contracte, un e-mail pentru cereri de concediu), HRIS-ul le aduce sub o singură platformă, cu o singură sursă de adevăr pentru datele fiecărui angajat.\n\nUn HRIS complet include, de regulă, următoarele module:\n\n- **Recrutare și selecție (ATS – Applicant Tracking System)**: publicare joburi, colectare CV-uri, filtrare candidați, programare interviuri.\n- **Administrare personal**: dosar electronic de personal, organigramă, istoric contractual, acte adiționale.\n- **Salarizare (payroll)**: calcul brut-net, generare state de plată, fluturași electronici.\n- **Self-service** pentru angajați și manageri (ESS/MSS).\n- **Managementul performanței**: obiective, evaluări periodice, feedback 360°.\n- **Learning & Development**: traininguri, certificări, planuri de dezvoltare.\n- **HR Analytics**: rapoarte și indicatori (fluctuație, absenteism, cost per hire).\n\nÎn România, particularitatea HRIS-urilor locale este necesitatea de a se integra cu obligațiile legale specifice: Registrul General de Evidență a Salariaților (**REVISAL**) și declarația unică **D112** transmisă lunar către ANAF. Un HRIS bine ales nu este doar un instrument de eficiență, ci și un partener de conformitate legală.\n\n## Self-service și analytics – de la administrare la strategie\n\nDouă module transformă radical rolul departamentului HR: **self-service-ul** și **analytics-ul**.\n\n**Employee Self-Service (ESS)** permite angajatului să își vadă fluturașul de salariu, să solicite concediu de odihnă, să își actualizeze datele de contact sau să descarce adeverințe, fără să mai treacă printr-un schimb de e-mailuri cu HR. **Manager Self-Service (MSS)** oferă managerilor de linie acces direct la aprobarea cererilor echipei, la rapoarte de prezență și la istoricul performanței subordonaților.\n\nAceastă delegare are un efect direct: departamentul HR trece de la rolul de „ghișeu administrativ” la rolul de partener strategic, pentru că timpul eliberat din activități repetitive (procesare cereri, răspunsuri la întrebări recurente) poate fi realocat spre recrutare, retenție și dezvoltare organizațională.\n\n**HR Analytics** înseamnă transformarea datelor brute din sistem în indicatori utili pentru decizie: rata de fluctuație (turnover), timpul mediu până la angajare (time-to-hire), costul per angajare (cost-per-hire), rata de absenteism, distribuția pe departamente a orelor suplimentare. Un dashboard actualizat automat, alimentat direct din pontaj și din modulul de salarizare, oferă managementului o imagine în timp real, în loc de rapoarte lunare compilate manual.\n\nDin punct de vedere tehnic, soluțiile moderne sunt de regulă **cloud (SaaS)**, cu aplicații mobile pentru self-service, spre deosebire de vechile sisteme on-premise, instalate local și greu de actualizat la fiecare modificare legislativă.\n\n## Integrarea HRIS cu fluxul legal de salarizare\n\nAutomatizarea HR nu elimină obligațiile legale — le face mai rapide și mai puțin predispuse la erori umane. Fluxul lunar tipic, susținut de un HRIS, arată astfel:\n\n1. **Pontaj** – colectat automat (cartelă, aplicație mobilă, integrare cu sistemul de acces) sau introdus manual pentru excepții.\n2. **Stat de plată** – generat automat de modulul de payroll, pe baza pontajului, a contractului activ și a modificărilor recente (act adițional de salariu, spor, concediu medical).\n3. **Declarația D112** – transmisă lunar către ANAF, până pe data de **25 a lunii următoare** celei pentru care se datorează contribuțiile.\n4. **Plata contribuțiilor** – CAS, CASS, impozit pe venit, CAM.\n5. **Fluturașul de salariu** – obligatoriu prin lege, distribuit electronic prin self-service.\n\nUn HRIS bine configurat trebuie actualizat rapid la fiecare modificare legislativă — de exemplu, salariul minim brut pe economie a crescut la **4.325 lei începând cu 1 iulie 2026** (de la 4.050 lei), iar partea netaxabilă aplicabilă salariului minim a scăzut la 200 lei de la aceeași dată (OUG 89/2025). Dacă parametrii nu sunt actualizați în sistem la timp, riscul de calcul eronat al salariilor și de raportare incorectă în D112 este direct.\n\nÎn plus, statele de plată trebuie păstrate **50 de ani** (obligație de arhivare), motiv pentru care majoritatea HRIS-urilor oferă module de arhivare electronică securizată, cu valoare legală probatorie.\n\n## Exemplu: Reducerea time-to-hire cu un ATS\nO companie primește **120 de candidaturi pe lună** pentru posturile deschise.\n\n**Fără ATS**: recrutorul triază manual fiecare CV, alocând în medie 10 minute per candidat pentru o primă evaluare.\n- Timp total: 120 × 10 min = 1.200 minute = **20 de ore/lună** doar pentru triaj inițial.\n\n**Cu ATS**: sistemul filtrează automat candidaturile pe baza unor criterii predefinite (cuvinte-cheie, ani de experiență, nivel de studii), iar recrutorul validează rapid rezultatele filtrării.\n- Timp de validare: 120 × 2 min = 240 minute = **4 ore/lună**.\n\n**Economie**: 20 − 4 = **16 ore/lună** realocate către interviuri și follow-up cu candidații.\n\nEfectul practic observat frecvent: timpul mediu de angajare (time-to-hire) pentru poziții administrative scade de la aproximativ 45 de zile la 28-30 de zile, pentru că recrutorii au timp disponibil să contacteze candidații relevanți mai devreme în proces, nu doar să parcurgă CV-uri irelevante.\n\n## Exemplu: Cost total angajator – calcul brut-net cu payroll automatizat\nUn angajat are salariul brut de **8.000 lei/lună** (peste plafonul de aplicare a deducerii personale, deci deducerea personală = 0 lei, pentru simplificarea exemplului).\n\n**Reținerile salariatului:**\n- CAS (pensie) 25%: 8.000 × 25% = **2.000 lei**\n- CASS (sănătate) 10%: 8.000 × 10% = **800 lei**\n- Bază impozabilă: 8.000 − 2.000 − 800 = 5.200 lei\n- Impozit pe venit 10%: 5.200 × 10% = **520 lei**\n\n**Salariu net**: 8.000 − 2.000 − 800 − 520 = **4.680 lei**\n\n**Contribuția angajatorului:**\n- CAM 2,25%: 8.000 × 2,25% = **180 lei**\n\n**Cost total angajator**: 8.000 + 180 = **8.180 lei/lună**\n\nÎntr-un HRIS cu modul de payroll integrat, acest calcul se face automat pentru toți angajații, statul de plată se generează instant, iar fișierul necesar declarației D112 se pregătește fără reintroducerea manuală a datelor — reducând semnificativ riscul de eroare de calcul, mai ales atunci când apar modificări (spor, ore suplimentare, concediu medical) în aceeași lună.\n\n> Temei legal: Legea nr. 53/2003 – Codul Muncii, republicată, cu modificările ulterioare art. 16 alin. (1) (în vigoare de la 2003-03-01)\nContractul individual de muncă se încheie în baza consimțământului părților, în formă scrisă, în limba română, cel târziu în ziua anterioară începerii activității de către salariat. Angajatorul are obligația de a transmite datele contractului către Registrul General de Evidență a Salariaților (**REVISAL**) tot până la acest termen. Norma de aplicare a registrului este dată de HG nr. 905/2017, care detaliază structura și termenele de transmitere, inclusiv pentru actele adiționale ulterioare (de exemplu, modificarea salariului). Un HRIS conectat cu REVISAL reduce riscul de întârziere la înregistrare, dar responsabilitatea legală a corectitudinii și a termenelor rămâne integral a angajatorului.\n\n⚠ Datele din dosarul electronic de personal (CNP, date de sănătate, situație familială, date bancare) intră sub incidența **Regulamentului (UE) 2016/679 (GDPR)**. Principiul de bază este **minimizarea datelor**: HRIS-ul trebuie configurat să colecteze și să păstreze doar informațiile strict necesare scopului declarat, cu drepturi de acces diferențiate (HR vs. manager direct vs. angajat propriu). Atenție deosebită la soluțiile cloud găzduite în afara Spațiului Economic European — orice transfer de date personale în afara UE/SEE necesită garanții contractuale specifice. Aceasta nu este consultanță juridică individuală; pentru configurarea conformă GDPR a unui HRIS, consultați un specialist în protecția datelor (DPO) sau un avocat specializat.\n\n## Exercițiu\nO companie are 150 de angajați. În medie, fiecare angajat generează 4 cereri administrative pe lună către HR (adeverințe, cereri de concediu, actualizări de date). Procesarea manuală a unei cereri durează 15 minute. Costul orar mediu al unui specialist HR este de 40 lei/oră.\n\nCompania implementează un portal de self-service care reduce timpul de procesare la 2 minute per cerere (doar validare, restul fiind automat).\n\n**Cerințe:**\n1. Calculați numărul total de ore lunare petrecute pe aceste cereri, înainte și după implementarea self-service-ului.\n2. Calculați economia lunară și anuală, în ore și în lei.\n\n**Soluție:** **Numărul de cereri pe lună**: 150 angajați × 4 cereri = 600 cereri/lună.\n\n**Scenariul manual:**\n600 cereri × 15 minute = 9.000 minute = 150 ore/lună.\n\n**Scenariul cu self-service:**\n600 cereri × 2 minute = 1.200 minute = 20 ore/lună.\n\n**Economie de timp:**\n150 − 20 = **130 ore/lună**.\n\n**Economie în bani:**\n130 ore × 40 lei/oră = **5.200 lei/lună**.\n\n**Economie anuală:**\n130 ore × 12 luni = 1.560 ore/an → 1.560 × 40 lei = **62.400 lei/an**.\n\nAceste ore economisite pot fi realocate spre activități cu valoare adăugată mai mare: recrutare, retenție, dezvoltare organizațională.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "hris-definitie-si-componente",
+    "md": "## Ce este un HRIS?\n\nUn **HRIS** (Human Resources Information System) este sistemul informatic integrat care centralizează toate datele și procesele legate de angajați, de la momentul candidaturii până la exit. În loc ca fiecare activitate HR să trăiască separat (un Excel pentru pontaj, un dosar fizic pentru contracte, un e-mail pentru cereri de concediu), HRIS-ul le aduce sub o singură platformă, cu o singură sursă de adevăr pentru datele fiecărui angajat.\n\nUn HRIS complet include, de regulă, următoarele module:\n\n- **Recrutare și selecție (ATS – Applicant Tracking System)**: publicare joburi, colectare CV-uri, filtrare candidați, programare interviuri.\n- **Administrare personal**: dosar electronic de personal, organigramă, istoric contractual, acte adiționale.\n- **Salarizare (payroll)**: calcul brut-net, generare state de plată, fluturași electronici.\n- **Self-service** pentru angajați și manageri (ESS/MSS).\n- **Managementul performanței**: obiective, evaluări periodice, feedback 360°.\n- **Learning & Development**: traininguri, certificări, planuri de dezvoltare.\n- **HR Analytics**: rapoarte și indicatori (fluctuație, absenteism, cost per hire).\n\nÎn România, particularitatea HRIS-urilor locale este necesitatea de a se integra cu obligațiile legale specifice: Registrul General de Evidență a Salariaților (**REVISAL**) și declarația unică **D112** transmisă lunar către ANAF. Un HRIS bine ales nu este doar un instrument de eficiență, ci și un partener de conformitate legală.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "module-hris-self-service-analytics",
+    "md": "## Self-service și analytics – de la administrare la strategie\n\nDouă module transformă radical rolul departamentului HR: **self-service-ul** și **analytics-ul**.\n\n**Employee Self-Service (ESS)** permite angajatului să își vadă fluturașul de salariu, să solicite concediu de odihnă, să își actualizeze datele de contact sau să descarce adeverințe, fără să mai treacă printr-un schimb de e-mailuri cu HR. **Manager Self-Service (MSS)** oferă managerilor de linie acces direct la aprobarea cererilor echipei, la rapoarte de prezență și la istoricul performanței subordonaților.\n\nAceastă delegare are un efect direct: departamentul HR trece de la rolul de „ghișeu administrativ” la rolul de partener strategic, pentru că timpul eliberat din activități repetitive (procesare cereri, răspunsuri la întrebări recurente) poate fi realocat spre recrutare, retenție și dezvoltare organizațională.\n\n**HR Analytics** înseamnă transformarea datelor brute din sistem în indicatori utili pentru decizie: rata de fluctuație (turnover), timpul mediu până la angajare (time-to-hire), costul per angajare (cost-per-hire), rata de absenteism, distribuția pe departamente a orelor suplimentare. Un dashboard actualizat automat, alimentat direct din pontaj și din modulul de salarizare, oferă managementului o imagine în timp real, în loc de rapoarte lunare compilate manual.\n\nDin punct de vedere tehnic, soluțiile moderne sunt de regulă **cloud (SaaS)**, cu aplicații mobile pentru self-service, spre deosebire de vechile sisteme on-premise, instalate local și greu de actualizat la fiecare modificare legislativă.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "integrare-hris-revisal-d112",
+    "md": "## Integrarea HRIS cu fluxul legal de salarizare\n\nAutomatizarea HR nu elimină obligațiile legale — le face mai rapide și mai puțin predispuse la erori umane. Fluxul lunar tipic, susținut de un HRIS, arată astfel:\n\n1. **Pontaj** – colectat automat (cartelă, aplicație mobilă, integrare cu sistemul de acces) sau introdus manual pentru excepții.\n2. **Stat de plată** – generat automat de modulul de payroll, pe baza pontajului, a contractului activ și a modificărilor recente (act adițional de salariu, spor, concediu medical).\n3. **Declarația D112** – transmisă lunar către ANAF, până pe data de **25 a lunii următoare** celei pentru care se datorează contribuțiile.\n4. **Plata contribuțiilor** – CAS, CASS, impozit pe venit, CAM.\n5. **Fluturașul de salariu** – obligatoriu prin lege, distribuit electronic prin self-service.\n\nUn HRIS bine configurat trebuie actualizat rapid la fiecare modificare legislativă — de exemplu, salariul minim brut pe economie a crescut la **4.325 lei începând cu 1 iulie 2026** (de la 4.050 lei), iar partea netaxabilă aplicabilă salariului minim a scăzut la 200 lei de la aceeași dată (OUG 89/2025). Dacă parametrii nu sunt actualizați în sistem la timp, riscul de calcul eronat al salariilor și de raportare incorectă în D112 este direct.\n\nÎn plus, statele de plată trebuie păstrate **50 de ani** (obligație de arhivare), motiv pentru care majoritatea HRIS-urilor oferă module de arhivare electronică securizată, cu valoare legală probatorie.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b3"
+   },
+   {
+    "type": "example",
+    "title": "Reducerea time-to-hire cu un ATS",
+    "concept_key": "roi-self-service-hr",
+    "md": "O companie primește **120 de candidaturi pe lună** pentru posturile deschise.\n\n**Fără ATS**: recrutorul triază manual fiecare CV, alocând în medie 10 minute per candidat pentru o primă evaluare.\n- Timp total: 120 × 10 min = 1.200 minute = **20 de ore/lună** doar pentru triaj inițial.\n\n**Cu ATS**: sistemul filtrează automat candidaturile pe baza unor criterii predefinite (cuvinte-cheie, ani de experiență, nivel de studii), iar recrutorul validează rapid rezultatele filtrării.\n- Timp de validare: 120 × 2 min = 240 minute = **4 ore/lună**.\n\n**Economie**: 20 − 4 = **16 ore/lună** realocate către interviuri și follow-up cu candidații.\n\nEfectul practic observat frecvent: timpul mediu de angajare (time-to-hire) pentru poziții administrative scade de la aproximativ 45 de zile la 28-30 de zile, pentru că recrutorii au timp disponibil să contacteze candidații relevanți mai devreme în proces, nu doar să parcurgă CV-uri irelevante.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b4"
+   },
+   {
+    "type": "example",
+    "title": "Cost total angajator – calcul brut-net cu payroll automatizat",
+    "concept_key": "calcul-salarial-brut-net-payroll",
+    "md": "Un angajat are salariul brut de **8.000 lei/lună** (peste plafonul de aplicare a deducerii personale, deci deducerea personală = 0 lei, pentru simplificarea exemplului).\n\n**Reținerile salariatului:**\n- CAS (pensie) 25%: 8.000 × 25% = **2.000 lei**\n- CASS (sănătate) 10%: 8.000 × 10% = **800 lei**\n- Bază impozabilă: 8.000 − 2.000 − 800 = 5.200 lei\n- Impozit pe venit 10%: 5.200 × 10% = **520 lei**\n\n**Salariu net**: 8.000 − 2.000 − 800 − 520 = **4.680 lei**\n\n**Contribuția angajatorului:**\n- CAM 2,25%: 8.000 × 2,25% = **180 lei**\n\n**Cost total angajator**: 8.000 + 180 = **8.180 lei/lună**\n\nÎntr-un HRIS cu modul de payroll integrat, acest calcul se face automat pentru toți angajații, statul de plată se generează instant, iar fișierul necesar declarației D112 se pregătește fără reintroducerea manuală a datelor — reducând semnificativ riscul de eroare de calcul, mai ales atunci când apar modificări (spor, ore suplimentare, concediu medical) în aceeași lună.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 – Codul Muncii, republicată, cu modificările ulterioare",
+    "article": "art. 16 alin. (1)",
+    "effective": "2003-03-01",
+    "md": "Contractul individual de muncă se încheie în baza consimțământului părților, în formă scrisă, în limba română, cel târziu în ziua anterioară începerii activității de către salariat. Angajatorul are obligația de a transmite datele contractului către Registrul General de Evidență a Salariaților (**REVISAL**) tot până la acest termen. Norma de aplicare a registrului este dată de HG nr. 905/2017, care detaliază structura și termenele de transmitere, inclusiv pentru actele adiționale ulterioare (de exemplu, modificarea salariului). Un HRIS conectat cu REVISAL reduce riscul de întârziere la înregistrare, dar responsabilitatea legală a corectitudinii și a termenelor rămâne integral a angajatorului.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Datele din dosarul electronic de personal (CNP, date de sănătate, situație familială, date bancare) intră sub incidența **Regulamentului (UE) 2016/679 (GDPR)**. Principiul de bază este **minimizarea datelor**: HRIS-ul trebuie configurat să colecteze și să păstreze doar informațiile strict necesare scopului declarat, cu drepturi de acces diferențiate (HR vs. manager direct vs. angajat propriu). Atenție deosebită la soluțiile cloud găzduite în afara Spațiului Economic European — orice transfer de date personale în afara UE/SEE necesită garanții contractuale specifice. Aceasta nu este consultanță juridică individuală; pentru configurarea conformă GDPR a unui HRIS, consultați un specialist în protecția datelor (DPO) sau un avocat specializat.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O companie are 150 de angajați. În medie, fiecare angajat generează 4 cereri administrative pe lună către HR (adeverințe, cereri de concediu, actualizări de date). Procesarea manuală a unei cereri durează 15 minute. Costul orar mediu al unui specialist HR este de 40 lei/oră.\n\nCompania implementează un portal de self-service care reduce timpul de procesare la 2 minute per cerere (doar validare, restul fiind automat).\n\n**Cerințe:**\n1. Calculați numărul total de ore lunare petrecute pe aceste cereri, înainte și după implementarea self-service-ului.\n2. Calculați economia lunară și anuală, în ore și în lei.",
+    "solution_md": "**Numărul de cereri pe lună**: 150 angajați × 4 cereri = 600 cereri/lună.\n\n**Scenariul manual:**\n600 cereri × 15 minute = 9.000 minute = 150 ore/lună.\n\n**Scenariul cu self-service:**\n600 cereri × 2 minute = 1.200 minute = 20 ore/lună.\n\n**Economie de timp:**\n150 − 20 = **130 ore/lună**.\n\n**Economie în bani:**\n130 ore × 40 lei/oră = **5.200 lei/lună**.\n\n**Economie anuală:**\n130 ore × 12 luni = 1.560 ore/an → 1.560 × 40 lei = **62.400 lei/an**.\n\nAceste ore economisite pot fi realocate spre activități cu valoare adăugată mai mare: recrutare, retenție, dezvoltare organizațională.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Codului Muncii, până când trebuie înregistrat un contract individual de muncă în REVISAL?",
+    "choices": [
+     "În maximum 20 de zile lucrătoare de la angajare",
+     "Cel târziu în ziua anterioară începerii activității de către salariat",
+     "În termen de 30 de zile calendaristice de la semnare",
+     "La sfârșitul lunii în care a început activitatea"
+    ],
+    "answer": 1,
+    "explain": "Art. 16 alin. (1) din Codul Muncii impune înregistrarea contractului în REVISAL cel târziu cu o zi înainte ca salariatul să înceapă efectiv activitatea.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principalul beneficiu al modulului de Employee Self-Service (ESS) dintr-un HRIS?",
+    "choices": [
+     "Elimină complet nevoia de departament HR",
+     "Permite angajaților să își gestioneze singuri cererile curente, eliberând timp pentru activități HR strategice",
+     "Înlocuiește obligația legală de a transmite date către REVISAL",
+     "Calculează automat impozitele fără intervenție umană în orice situație"
+    ],
+    "answer": 1,
+    "explain": "ESS reduce volumul de cereri administrative gestionate manual de HR, dar nu elimină responsabilitățile legale ale angajatorului sau nevoia de supervizare umană a proceselor.",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un HRIS?",
+    "back": "Sistem informatic integrat care centralizează datele și procesele de HR: recrutare, administrare personal, salarizare, self-service, performanță și analytics.",
+    "concept_key": "hris-definitie-si-componente",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când trebuie înregistrat un CIM în REVISAL?",
+    "back": "Cel târziu în ziua anterioară începerii activității de către salariat (art. 16 alin. (1) Codul Muncii).",
+    "concept_key": "integrare-hris-revisal-d112",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este self-service HR (ESS/MSS)?",
+    "back": "Portal prin care angajații (ESS) și managerii (MSS) își gestionează direct cererile curente — concediu, adeverințe, aprobări — fără intervenția directă a departamentului HR.",
+    "concept_key": "module-hris-self-service-analytics",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când se depune declarația D112?",
+    "back": "Până pe data de 25 a lunii următoare celei pentru care se datorează contribuțiile sociale și impozitul pe venit.",
+    "concept_key": "integrare-hris-revisal-d112",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu GDPR guvernează dosarul electronic de personal dintr-un HRIS?",
+    "back": "Principiul minimizării datelor: se colectează și se păstrează doar datele strict necesare, cu drepturi de acces restricționate și diferențiate.",
+    "concept_key": "gdpr-dosar-personal-hris",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât timp trebuie păstrate statele de plată (obligație de arhivare)?",
+    "back": "50 de ani.",
+    "concept_key": "integrare-hris-revisal-d112",
+    "blockId": "cmjjuxw7d00fuumkpse3n7lmk-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1334,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvzl00a4umkp4ch0vpc1",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Business Environment Domain",
+ "lesson": "Benefits Management",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Benefits Management\n\nManagementul beneficiilor (Benefits Management) este procesul prin care o organizație identifică, planifică, urmărește și susține beneficiile generate de un proiect, program sau portofoliu. Spre deosebire de managementul clasic al proiectului – axat pe livrarea la timp, în buget și la standardul de calitate stabilit – managementul beneficiilor răspunde la întrebarea „De ce facem acest proiect?” și, mai important, „Am obținut, în realitate, valoarea promisă?”\n\nConform PMBOK 7, beneficiile reprezintă câștigurile sau rezultatele avantajoase pe care organizația le obține din livrabilele proiectului. Un proiect poate fi livrat perfect tehnic – la timp, în buget – și totuși să eșueze dacă beneficiile așteptate (creștere de venituri, reducere de costuri, conformitate legală, satisfacție a clienților) nu se materializează.\n\nCiclul de realizare a beneficiilor are trei etape:\n\n- **Identify (Identificare)** – în faza de inițiere, sponsorul și echipa definesc beneficiile țintă, indicatorii de măsurare (KPI) și valorile de referință (baseline).\n- **Execute (Execuție)** – pe parcursul proiectului, livrabilele sunt create, dar beneficiile propriu-zise apar adesea doar parțial în această fază.\n- **Sustain (Susținere)** – după închiderea proiectului, organizația monitorizează și susține beneficiile pe termen lung, adesea luni sau ani.\n\nAceastă ultimă etapă explică de ce responsabilitatea finală revine sponsorului sau unui responsabil de beneficii desemnat (business owner), nu managerului de proiect, al cărui mandat se încheie la închidere. Documentul central care ghidează procesul este **Planul de Management al Beneficiilor**, elaborat din faza de inițiere, alături de business case.\n\nBusiness case-ul (studiul de fezabilitate) este documentul care justifică economic necesitatea proiectului și fundamentează decizia de a aloca resurse. Fără un business case solid, beneficiile nu pot fi definite corect, pentru că lipsește un punct de plecare clar privind problema de business și opțiunile de rezolvare.\n\nUn business case complet conține, de regulă:\n\n- **Nevoia de business** – problema sau oportunitatea care justifică proiectul (ex: procesarea manuală a facturilor generează întârzieri și erori).\n- **Analiza situației** – context, cauze, impact dacă nu se acționează.\n- **Analiza opțiunilor** – minimum trei variante: a nu face nimic, o soluție minimă și o soluție completă, fiecare cu costuri, beneficii și riscuri estimate.\n- **Recomandarea** – varianta aleasă, justificată prin analiza cost-beneficiu.\n- **Criteriile de succes** – indicatorii care confirmă realizarea beneficiilor (ex: reducere cu 30% a timpului de procesare a facturilor).\n\nÎn practica firmelor din România, business case-ul pentru un proiect de digitalizare sau implementare ERP este evaluat, de regulă, de conducere înainte de aprobarea bugetului, iar analiza cost-beneficiu se face cu indicatori financiari standard: ROI, NPV, IRR și payback period. Aceștia transformă beneficiile calitative în argumente cuantificabile, comparabile între mai multe proiecte concurente pentru același buget.\n\nPatru indicatori financiari stau la baza oricărei analize cost-beneficiu riguroase:\n\n**ROI (Return on Investment / Rentabilitatea investiției)**\nROI = (Beneficii totale − Cost investiție) / Cost investiție × 100%\nIndică procentual câștigul net raportat la suma investită, dar nu ține cont de momentul în timp în care apar fluxurile de numerar.\n\n**NPV (Net Present Value / Valoarea Actualizată Netă, VAN)**\nNPV = Σ [CFt / (1+r)^t] − Investiția inițială\nunde CFt este fluxul de numerar din anul t, iar r este rata de actualizare (discount rate), care reflectă costul capitalului companiei. Un NPV pozitiv înseamnă că proiectul creează valoare peste costul capitalului; un NPV negativ înseamnă că investiția distruge valoare, chiar dacă generează profit contabil.\n\n**IRR (Internal Rate of Return / Rata Internă de Rentabilitate, RIR)**\nIRR este rata de actualizare r pentru care NPV = 0. Cu alte cuvinte, este rentabilitatea „reală” a proiectului. Un proiect este atractiv atunci când IRR depășește rata de actualizare minimă acceptată (costul capitalului). Se calculează de obicei prin interpolare sau cu funcții software (Excel: funcția IRR).\n\n**Payback Period (Perioada de recuperare a investiției)**\nEste timpul necesar ca fluxurile de numerar cumulate să egaleze investiția inițială. Este ușor de calculat și de comunicat, dar are o limitare importantă: ignoră valoarea în timp a banilor și orice flux de numerar generat după momentul recuperării investiției.\n\nÎn practică, aceste patru instrumente se folosesc împreună: ROI și payback oferă o imagine rapidă și intuitivă, în timp ce NPV și IRR oferă o evaluare riguroasă, ajustată la riscul și costul capitalului, recomandată pentru decizii de investiții mai mari sau pe termen mai lung.\n\n## Exemplu: Analiza cost-beneficiu pentru implementarea unui sistem ERP\nO firmă de distribuție din București, SRL cu 80 de angajați, evaluează implementarea unui sistem ERP pentru a înlocui gestiunea separată în Excel a stocurilor, facturării și contabilității.\n\n**Datele proiectului:**\n- Investiție inițială (Anul 0): 500.000 lei (licențe, implementare, migrare date, instruire)\n- Beneficii anuale estimate (Anii 1-4): 180.000 lei/an, din reducerea erorilor de facturare, eliminarea muncii duplicate și scăderea stocurilor moarte\n- Rata de actualizare folosită de companie: 10% (costul capitalului)\n\n**Calculul NPV:**\nNPV = −500.000 + 180.000/1,1 + 180.000/1,1^2 + 180.000/1,1^3 + 180.000/1,1^4\nNPV = −500.000 + 163.636 + 148.760 + 135.237 + 122.942\nNPV = −500.000 + 570.576 = **+70.576 lei**\n\nDeoarece NPV este pozitiv, proiectul creează valoare peste costul capitalului de 10% și este recomandat spre aprobare.\n\n**Calculul Payback Period:**\n- După Anul 1: 180.000 lei recuperați (cumulat)\n- După Anul 2: 360.000 lei recuperați (cumulat)\n- Rămân de recuperat: 500.000 − 360.000 = 140.000 lei\n- 140.000 / 180.000 = 0,78 din Anul 3\n\nPayback Period ≈ 2,78 ani (aproximativ 2 ani și 9 luni).\n\n**Calculul ROI simplu (necumulat, pe 4 ani):**\nROI = (4 × 180.000 − 500.000) / 500.000 × 100% = 220.000/500.000 × 100% = **44%** pe durata de 4 ani a analizei.\n\n**IRR (calculat prin interpolare/Excel):**\nTestând rate succesive de actualizare, NPV devine zero la aproximativ **16,4%**. Cum acest IRR depășește costul capitalului de 10%, proiectul rămâne atractiv chiar și într-un scenariu în care costul finanțării ar crește moderat.\n\nConcluzia business case-ului: proiectul se recomandă spre aprobare, cu mențiunea că beneficiile trebuie monitorizate lunar de un responsabil de beneficii desemnat, nu doar estimate în faza de planificare.\n\n## Exemplu: Registrul de beneficii — de la aprobare la susținere\nRevenind la proiectul ERP de mai sus, la 12 luni de la go-live, sponsorul de proiect (directorul financiar) organizează o revizuire a beneficiilor, folosind un registru de beneficii (benefits register) inclus în Planul de Management al Beneficiilor:\n\n| Beneficiu țintă | Indicator (KPI) | Valoare de referință | Țintă la 12 luni | Valoare reală la 12 luni | Responsabil |\n|---|---|---|---|---|---|\n| Reducerea erorilor de facturare | Facturi corectate/lună | 45/lună | 10/lună | 14/lună | Șef Financiar |\n| Reducerea stocului mort | Valoare stoc mort | 220.000 lei | 130.000 lei | 150.000 lei | Șef Logistică |\n| Timp de procesare comandă | Ore/comandă | 3,5 ore | 1,5 ore | 1,2 ore | Șef Vânzări |\n\nDin revizuire reiese că un indicator (timpul de procesare) a depășit ținta, altul (stocul mort) este parțial atins, iar al treilea (erorile de facturare) e sub țintă, dar în progres. Diferența este normală: multe beneficii ating maturitatea deplină la 18-24 de luni de la implementare, nu imediat după închiderea proiectului.\n\nRolul managerului de proiect s-a încheiat la livrarea sistemului funcțional; rolul de a susține și raporta beneficiile revine acum sponsorului și responsabililor de departamente – exact etapa „Sustain” din ciclul de realizare a beneficiilor. Fără acest registru și fără proprietari clar desemnați pentru fiecare KPI, beneficiile promise în business case riscă să rămână doar pe hârtie.\n\n⚠ Cea mai frecventă greșeală în managementul beneficiilor este echivalarea „proiect finalizat cu succes” cu „beneficii realizate”. Un proiect poate respecta integral constrângerile de timp, cost și scop, și totuși beneficiile de business să nu apară niciodată, din cauza lipsei unui responsabil desemnat după închidere, a unor ținte nerealiste sau a schimbării contextului de piață. Atenție și la alegerea ratei de actualizare (r) din calculul NPV: o rată prea mică supraestimează atractivitatea proiectului, iar una prea mare respinge investiții valide. Rata trebuie să reflecte costul real al capitalului companiei, nu o cifră arbitrară.\n\n## Exercițiu\nO firmă de servicii contabile din Cluj-Napoca analizează digitalizarea arhivei de documente (scanare, OCR, arhivare electronică). Datele proiectului:\n- Investiție inițială: 200.000 lei\n- Economii anuale estimate (reducere personal administrativ, spațiu de arhivare, timp de căutare documente): 90.000 lei/an, pe o durată de analiză de 3 ani\n- Rata de actualizare a companiei: 8%\n\nCerințe:\n1. Calculează NPV la 3 ani.\n2. Calculează Payback Period.\n3. Calculează ROI simplu pe 3 ani.\n4. Recomanzi aprobarea proiectului? Justifică pe baza NPV.\n\n**Soluție:** **1. NPV:**\nNPV = −200.000 + 90.000/1,08 + 90.000/1,08^2 + 90.000/1,08^3\nNPV = −200.000 + 83.333 + 77.160 + 71.445\nNPV = −200.000 + 231.939 = **+31.939 lei**\n\n**2. Payback Period:**\n- După Anul 1: 90.000 lei (cumulat)\n- După Anul 2: 180.000 lei (cumulat) → rămân 20.000 lei\n- 20.000/90.000 = 0,22 din Anul 3\nPayback ≈ **2,22 ani** (aproximativ 2 ani și 3 luni)\n\n**3. ROI simplu:**\nROI = (3 × 90.000 − 200.000)/200.000 × 100% = 70.000/200.000 × 100% = **35%** pe 3 ani\n\n**4. Recomandare:**\nDa, proiectul se recomandă spre aprobare: NPV este pozitiv (+31.939 lei), ceea ce înseamnă că investiția generează valoare peste costul capitalului de 8%. Payback-ul de 2,22 ani este considerat rezonabil pentru o investiție în digitalizare. Recomandarea finală trebuie completată cu un plan de susținere a beneficiilor (responsabil desemnat, KPI monitorizați lunar) pentru a evita ca economiile estimate să rămână doar teoretice.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "benefits-management-ciclu",
+    "md": "Managementul beneficiilor (Benefits Management) este procesul prin care o organizație identifică, planifică, urmărește și susține beneficiile generate de un proiect, program sau portofoliu. Spre deosebire de managementul clasic al proiectului – axat pe livrarea la timp, în buget și la standardul de calitate stabilit – managementul beneficiilor răspunde la întrebarea „De ce facem acest proiect?” și, mai important, „Am obținut, în realitate, valoarea promisă?”\n\nConform PMBOK 7, beneficiile reprezintă câștigurile sau rezultatele avantajoase pe care organizația le obține din livrabilele proiectului. Un proiect poate fi livrat perfect tehnic – la timp, în buget – și totuși să eșueze dacă beneficiile așteptate (creștere de venituri, reducere de costuri, conformitate legală, satisfacție a clienților) nu se materializează.\n\nCiclul de realizare a beneficiilor are trei etape:\n\n- **Identify (Identificare)** – în faza de inițiere, sponsorul și echipa definesc beneficiile țintă, indicatorii de măsurare (KPI) și valorile de referință (baseline).\n- **Execute (Execuție)** – pe parcursul proiectului, livrabilele sunt create, dar beneficiile propriu-zise apar adesea doar parțial în această fază.\n- **Sustain (Susținere)** – după închiderea proiectului, organizația monitorizează și susține beneficiile pe termen lung, adesea luni sau ani.\n\nAceastă ultimă etapă explică de ce responsabilitatea finală revine sponsorului sau unui responsabil de beneficii desemnat (business owner), nu managerului de proiect, al cărui mandat se încheie la închidere. Documentul central care ghidează procesul este **Planul de Management al Beneficiilor**, elaborat din faza de inițiere, alături de business case.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "business-case-componente",
+    "md": "Business case-ul (studiul de fezabilitate) este documentul care justifică economic necesitatea proiectului și fundamentează decizia de a aloca resurse. Fără un business case solid, beneficiile nu pot fi definite corect, pentru că lipsește un punct de plecare clar privind problema de business și opțiunile de rezolvare.\n\nUn business case complet conține, de regulă:\n\n- **Nevoia de business** – problema sau oportunitatea care justifică proiectul (ex: procesarea manuală a facturilor generează întârzieri și erori).\n- **Analiza situației** – context, cauze, impact dacă nu se acționează.\n- **Analiza opțiunilor** – minimum trei variante: a nu face nimic, o soluție minimă și o soluție completă, fiecare cu costuri, beneficii și riscuri estimate.\n- **Recomandarea** – varianta aleasă, justificată prin analiza cost-beneficiu.\n- **Criteriile de succes** – indicatorii care confirmă realizarea beneficiilor (ex: reducere cu 30% a timpului de procesare a facturilor).\n\nÎn practica firmelor din România, business case-ul pentru un proiect de digitalizare sau implementare ERP este evaluat, de regulă, de conducere înainte de aprobarea bugetului, iar analiza cost-beneficiu se face cu indicatori financiari standard: ROI, NPV, IRR și payback period. Aceștia transformă beneficiile calitative în argumente cuantificabile, comparabile între mai multe proiecte concurente pentru același buget.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "roi-npv-irr-payback-formule",
+    "md": "Patru indicatori financiari stau la baza oricărei analize cost-beneficiu riguroase:\n\n**ROI (Return on Investment / Rentabilitatea investiției)**\nROI = (Beneficii totale − Cost investiție) / Cost investiție × 100%\nIndică procentual câștigul net raportat la suma investită, dar nu ține cont de momentul în timp în care apar fluxurile de numerar.\n\n**NPV (Net Present Value / Valoarea Actualizată Netă, VAN)**\nNPV = Σ [CFt / (1+r)^t] − Investiția inițială\nunde CFt este fluxul de numerar din anul t, iar r este rata de actualizare (discount rate), care reflectă costul capitalului companiei. Un NPV pozitiv înseamnă că proiectul creează valoare peste costul capitalului; un NPV negativ înseamnă că investiția distruge valoare, chiar dacă generează profit contabil.\n\n**IRR (Internal Rate of Return / Rata Internă de Rentabilitate, RIR)**\nIRR este rata de actualizare r pentru care NPV = 0. Cu alte cuvinte, este rentabilitatea „reală” a proiectului. Un proiect este atractiv atunci când IRR depășește rata de actualizare minimă acceptată (costul capitalului). Se calculează de obicei prin interpolare sau cu funcții software (Excel: funcția IRR).\n\n**Payback Period (Perioada de recuperare a investiției)**\nEste timpul necesar ca fluxurile de numerar cumulate să egaleze investiția inițială. Este ușor de calculat și de comunicat, dar are o limitare importantă: ignoră valoarea în timp a banilor și orice flux de numerar generat după momentul recuperării investiției.\n\nÎn practică, aceste patru instrumente se folosesc împreună: ROI și payback oferă o imagine rapidă și intuitivă, în timp ce NPV și IRR oferă o evaluare riguroasă, ajustată la riscul și costul capitalului, recomandată pentru decizii de investiții mai mari sau pe termen mai lung.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b3"
+   },
+   {
+    "type": "example",
+    "title": "Analiza cost-beneficiu pentru implementarea unui sistem ERP",
+    "concept_key": "roi-npv-irr-payback-formule",
+    "md": "O firmă de distribuție din București, SRL cu 80 de angajați, evaluează implementarea unui sistem ERP pentru a înlocui gestiunea separată în Excel a stocurilor, facturării și contabilității.\n\n**Datele proiectului:**\n- Investiție inițială (Anul 0): 500.000 lei (licențe, implementare, migrare date, instruire)\n- Beneficii anuale estimate (Anii 1-4): 180.000 lei/an, din reducerea erorilor de facturare, eliminarea muncii duplicate și scăderea stocurilor moarte\n- Rata de actualizare folosită de companie: 10% (costul capitalului)\n\n**Calculul NPV:**\nNPV = −500.000 + 180.000/1,1 + 180.000/1,1^2 + 180.000/1,1^3 + 180.000/1,1^4\nNPV = −500.000 + 163.636 + 148.760 + 135.237 + 122.942\nNPV = −500.000 + 570.576 = **+70.576 lei**\n\nDeoarece NPV este pozitiv, proiectul creează valoare peste costul capitalului de 10% și este recomandat spre aprobare.\n\n**Calculul Payback Period:**\n- După Anul 1: 180.000 lei recuperați (cumulat)\n- După Anul 2: 360.000 lei recuperați (cumulat)\n- Rămân de recuperat: 500.000 − 360.000 = 140.000 lei\n- 140.000 / 180.000 = 0,78 din Anul 3\n\nPayback Period ≈ 2,78 ani (aproximativ 2 ani și 9 luni).\n\n**Calculul ROI simplu (necumulat, pe 4 ani):**\nROI = (4 × 180.000 − 500.000) / 500.000 × 100% = 220.000/500.000 × 100% = **44%** pe durata de 4 ani a analizei.\n\n**IRR (calculat prin interpolare/Excel):**\nTestând rate succesive de actualizare, NPV devine zero la aproximativ **16,4%**. Cum acest IRR depășește costul capitalului de 10%, proiectul rămâne atractiv chiar și într-un scenariu în care costul finanțării ar crește moderat.\n\nConcluzia business case-ului: proiectul se recomandă spre aprobare, cu mențiunea că beneficiile trebuie monitorizate lunar de un responsabil de beneficii desemnat, nu doar estimate în faza de planificare.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b4"
+   },
+   {
+    "type": "example",
+    "title": "Registrul de beneficii — de la aprobare la susținere",
+    "concept_key": "ciclu-realizare-beneficii",
+    "md": "Revenind la proiectul ERP de mai sus, la 12 luni de la go-live, sponsorul de proiect (directorul financiar) organizează o revizuire a beneficiilor, folosind un registru de beneficii (benefits register) inclus în Planul de Management al Beneficiilor:\n\n| Beneficiu țintă | Indicator (KPI) | Valoare de referință | Țintă la 12 luni | Valoare reală la 12 luni | Responsabil |\n|---|---|---|---|---|---|\n| Reducerea erorilor de facturare | Facturi corectate/lună | 45/lună | 10/lună | 14/lună | Șef Financiar |\n| Reducerea stocului mort | Valoare stoc mort | 220.000 lei | 130.000 lei | 150.000 lei | Șef Logistică |\n| Timp de procesare comandă | Ore/comandă | 3,5 ore | 1,5 ore | 1,2 ore | Șef Vânzări |\n\nDin revizuire reiese că un indicator (timpul de procesare) a depășit ținta, altul (stocul mort) este parțial atins, iar al treilea (erorile de facturare) e sub țintă, dar în progres. Diferența este normală: multe beneficii ating maturitatea deplină la 18-24 de luni de la implementare, nu imediat după închiderea proiectului.\n\nRolul managerului de proiect s-a încheiat la livrarea sistemului funcțional; rolul de a susține și raporta beneficiile revine acum sponsorului și responsabililor de departamente – exact etapa „Sustain” din ciclul de realizare a beneficiilor. Fără acest registru și fără proprietari clar desemnați pentru fiecare KPI, beneficiile promise în business case riscă să rămână doar pe hârtie.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală în managementul beneficiilor este echivalarea „proiect finalizat cu succes” cu „beneficii realizate”. Un proiect poate respecta integral constrângerile de timp, cost și scop, și totuși beneficiile de business să nu apară niciodată, din cauza lipsei unui responsabil desemnat după închidere, a unor ținte nerealiste sau a schimbării contextului de piață. Atenție și la alegerea ratei de actualizare (r) din calculul NPV: o rată prea mică supraestimează atractivitatea proiectului, iar una prea mare respinge investiții valide. Rata trebuie să reflecte costul real al capitalului companiei, nu o cifră arbitrară.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă de servicii contabile din Cluj-Napoca analizează digitalizarea arhivei de documente (scanare, OCR, arhivare electronică). Datele proiectului:\n- Investiție inițială: 200.000 lei\n- Economii anuale estimate (reducere personal administrativ, spațiu de arhivare, timp de căutare documente): 90.000 lei/an, pe o durată de analiză de 3 ani\n- Rata de actualizare a companiei: 8%\n\nCerințe:\n1. Calculează NPV la 3 ani.\n2. Calculează Payback Period.\n3. Calculează ROI simplu pe 3 ani.\n4. Recomanzi aprobarea proiectului? Justifică pe baza NPV.",
+    "solution_md": "**1. NPV:**\nNPV = −200.000 + 90.000/1,08 + 90.000/1,08^2 + 90.000/1,08^3\nNPV = −200.000 + 83.333 + 77.160 + 71.445\nNPV = −200.000 + 231.939 = **+31.939 lei**\n\n**2. Payback Period:**\n- După Anul 1: 90.000 lei (cumulat)\n- După Anul 2: 180.000 lei (cumulat) → rămân 20.000 lei\n- 20.000/90.000 = 0,22 din Anul 3\nPayback ≈ **2,22 ani** (aproximativ 2 ani și 3 luni)\n\n**3. ROI simplu:**\nROI = (3 × 90.000 − 200.000)/200.000 × 100% = 70.000/200.000 × 100% = **35%** pe 3 ani\n\n**4. Recomandare:**\nDa, proiectul se recomandă spre aprobare: NPV este pozitiv (+31.939 lei), ceea ce înseamnă că investiția generează valoare peste costul capitalului de 8%. Payback-ul de 2,22 ani este considerat rezonabil pentru o investiție în digitalizare. Recomandarea finală trebuie completată cu un plan de susținere a beneficiilor (responsabil desemnat, KPI monitorizați lunar) pentru a evita ca economiile estimate să rămână doar teoretice.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala limitare a Payback Period ca indicator de evaluare a unei investiții?",
+    "choices": [
+     "Este prea complex de calculat pentru echipele financiare",
+     "Ignoră valoarea în timp a banilor și fluxurile de numerar de după recuperarea investiției",
+     "Nu poate fi folosit pentru proiecte cu durată mai mare de un an",
+     "Necesită întotdeauna un software specializat de calcul financiar"
+    ],
+    "answer": 1,
+    "explain": "Payback Period oferă rapid o imagine a riscului de lichiditate, dar nu actualizează fluxurile de numerar (spre deosebire de NPV) și ignoră complet ce se întâmplă cu fluxurile de numerar după momentul recuperării investiției.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cine este, de regulă, responsabil de susținerea (Sustain) beneficiilor unui proiect după închiderea acestuia?",
+    "choices": [
+     "Managerul de proiect, până la următorul proiect",
+     "Echipa de proiect, prin acordul de mentenanță",
+     "Sponsorul de proiect sau un responsabil de beneficii desemnat (business owner)",
+     "Furnizorul extern care a implementat soluția"
+    ],
+    "answer": 2,
+    "explain": "Mandatul managerului de proiect se încheie, de regulă, la închiderea proiectului. Realizarea efectivă a beneficiilor se întâmplă adesea luni sau ani mai târziu, motiv pentru care responsabilitatea revine sponsorului sau unui responsabil de beneficii desemnat prin Planul de Management al Beneficiilor.",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei etape ale ciclului de realizare a beneficiilor?",
+    "back": "Identify (identificare) – Execute (execuție) – Sustain (susținere).",
+    "concept_key": "ciclu-realizare-beneficii",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula NPV (Valoarea Actualizată Netă)?",
+    "back": "NPV = Σ [CFt / (1+r)^t] − Investiția inițială, unde r este rata de actualizare.",
+    "concept_key": "roi-npv-irr-payback-formule",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă IRR (Rata Internă de Rentabilitate)?",
+    "back": "Rata de actualizare (r) pentru care NPV = 0; proiectul este atractiv dacă IRR depășește costul capitalului.",
+    "concept_key": "roi-npv-irr-payback-formule",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula ROI (Return on Investment)?",
+    "back": "ROI = (Beneficii totale − Cost investiție) / Cost investiție × 100%.",
+    "concept_key": "roi-npv-irr-payback-formule",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce limitare majoră are Payback Period?",
+    "back": "Ignoră valoarea în timp a banilor și fluxurile de numerar generate după recuperarea investiției.",
+    "concept_key": "roi-npv-irr-payback-formule",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine deține responsabilitatea beneficiilor unui proiect după închiderea acestuia?",
+    "back": "Sponsorul de proiect sau responsabilul de beneficii desemnat (business owner), nu managerul de proiect.",
+    "concept_key": "benefits-management-ciclu",
+    "blockId": "cmjjuxvzl00a4umkp4ch0vpc1-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1497,
+   "flashcards": 6
+  }
+ }
+}

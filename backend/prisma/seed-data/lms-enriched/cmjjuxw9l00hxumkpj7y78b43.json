@@ -1,0 +1,141 @@
+{
+ "lessonId": "cmjjuxw9l00hxumkpj7y78b43",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "REVISAL și Raportări ITM",
+ "lesson": "Coduri COR și utilizare",
+ "category": "HR_COMPLIANCE",
+ "content": "# Coduri COR și utilizare\n\n## Ce este Clasificarea Ocupațiilor din România (COR)\n\nCOR este nomenclatorul oficial al ocupațiilor existente pe piața muncii din România. Este elaborat de Ministerul Muncii, împreună cu Institutul Național de Statistică (INS), și are la bază standardul internațional ISCO-08 (International Standard Classification of Occupations), adaptat la specificul pieței muncii românești.\n\nFiecare ocupație din COR primește un **cod numeric de 6 cifre**, unic, care identifică fără echivoc funcția/ocupația unui salariat, indiferent de denumirea folosită intern de angajator (de exemplu, \"specialist HR\", \"referent resurse umane\" și \"inspector resurse umane\" pot corespunde, în funcție de atribuțiile reale, aceleiași ocupații COR sau unor ocupații diferite).\n\nCodul COR este obligatoriu în două documente esențiale ale relației de muncă:\n- **Contractul individual de muncă (CIM)** - la rubrica privind funcția/ocupația;\n- **Registrul general de evidență a salariaților (REVISAL)** - ca element de identificare a fiecărui salariat.\n\nFără un cod COR corect, înregistrarea în REVISAL este incompletă sau eronată, situație ce poate atrage observații și sancțiuni la un control ITM.\n\n## Structura codului COR pe 6 cifre\n\nCodul COR nu este un simplu număr de ordine, ci are o structură ierarhică, moștenită din ISCO-08:\n\n1. **Prima cifră** - grupa majoră (de exemplu: 1 = manageri, 2 = specialiști cu studii superioare, 3 = tehnicieni și alți specialiști cu studii medii, 4 = funcționari administrativi...);\n2. **A doua cifră** - subgrupa majoră;\n3. **A treia cifră** - grupa minoră;\n4. **A patra cifră** - grupa de bază (aceste patru cifre corespund exact codului ISCO-08 la nivel internațional);\n5. **Ultimele două cifre** - poziția specifică a ocupației în cadrul grupei de bază, particularitate a nomenclatorului românesc, care detaliază ocupațiile concrete existente pe piața muncii locală.\n\nDe exemplu, un cod din familia 33xx aparține grupei majore 3 (\"tehnicieni și alți specialiști cu nivel mediu de calificare\") - subgrupa 33 acoperă profesii administrative și financiare de nivel mediu, precum contabili sau inspectori de resurse umane. Ultimele două cifre disting, în interiorul aceleiași grupe de bază, ocupații înrudite dar distincte.\n\nAceastă structură pe niveluri este utilă practic: dacă nu găsești imediat ocupația exactă, poți identifica măcar grupa de bază corectă și restrânge căutarea la ocupațiile din acea familie.\n\n## Cum alegi codul COR corect pentru o funcție\n\nAlegerea codului COR nu se face după denumirea funcției din organigramă, ci după **atribuțiile efective** ale postului, așa cum rezultă din fișa postului. Pașii recomandați:\n\n1. **Analizează fișa postului** - identifică sarcinile principale, nivelul de studii cerut și gradul de responsabilitate/decizie.\n2. **Caută pe portalul oficial cor.gov.ro** - folosește căutarea după cuvinte-cheie (de exemplu \"contabil\", \"agent vânzări\", \"operator introducere date\") pentru a găsi ocupațiile disponibile și codurile aferente.\n3. **Compară variantele apropiate** - COR conține adesea mai multe ocupații înrudite, diferențiate după nivelul de calificare (funcții de execuție vs. funcții de conducere/coordonare) sau după domeniul de activitate. Alege varianta care descrie cel mai fidel atribuțiile reale.\n4. **Dacă nu găsești o potrivire exactă** - alege cea mai apropiată ocupație existentă din grupa de bază relevantă; nu inventa un cod și nu îl aproxima la întâmplare.\n5. **Documentează alegerea** - păstrează o notă internă (fișa postului + codul ales) pentru a putea justifica opțiunea la un eventual control ITM.\n\nCOR este actualizat periodic prin ordine ale Ministerului Muncii, care introduc ocupații noi apărute pe piața muncii (de exemplu, ocupații din economia digitală). Dacă funcția pe care o încadrezi este relativ nouă (specialist marketing digital, administrator rețele sociale, analist date etc.), verifică întâi dacă a fost deja introdusă în COR, înainte de a alege o ocupație apropiată ca substitut.\n\n## Legătura dintre codul COR, CIM și REVISAL\n\nCodul COR însoțește salariatul pe tot parcursul raportului de muncă și trebuie actualizat de fiecare dată când se schimbă efectiv ocupația:\n\n- La **angajare**, codul COR se stabilește o dată cu redactarea CIM și se transmite în REVISAL, cel târziu în ziua anterioară începerii activității.\n- La **promovare sau schimbare de funcție** (de exemplu din \"contabil\" în \"contabil șef\", sau din \"inspector resurse umane\" în \"specialist resurse umane\"), se încheie un **act adițional** la CIM, iar noul cod COR trebuie actualizat corespunzător în REVISAL.\n- O simplă schimbare de denumire internă a postului, fără modificarea reală a atribuțiilor, nu impune neapărat schimbarea codului COR - contează conținutul efectiv al muncii prestate, nu eticheta din organigramă.\n\nUn cod COR corect și actualizat protejează atât angajatorul (evidență corectă la control), cât și salariatul (vechime și atribuții corect reflectate, relevante pentru viitoare angajări sau pentru dosarul de pensionare).\n\n## Exemplu: Descompunerea unui cod COR\nSă presupunem că, în urma căutării pe cor.gov.ro pentru funcția de \"contabil\", identifici codul **331302**. Descompunerea codului:\n\n- **3** - grupa majoră: tehnicieni și alți specialiști cu nivel mediu de calificare;\n- **33** - subgrupa majoră: specialiști în domeniul financiar-administrativ;\n- **331** - grupa minoră: specialiști financiari și contabili de nivel mediu;\n- **3313** - grupa de bază: contabili;\n- **02** - poziția specifică: ocupația \"contabil\", distinctă de alte ocupații din aceeași grupă de bază (de exemplu \"contabil șef\" sau alte specializări conexe).\n\nRecomandare practică: codurile exacte se pot modifica prin actualizări ale COR, așa că, înainte de a-l introduce în REVISAL, verifică întotdeauna forma curentă direct pe cor.gov.ro, nu doar pe baza unor liste vechi păstrate intern.\n\n## Exemplu: Diferențierea între funcții HR înrudite\nO greșeală frecventă în departamentele HR este utilizarea aceluiași cod COR pentru toți angajații din compartimentul de resurse umane, indiferent de nivelul postului. În realitate, COR diferențiază, de regulă, cel puțin două niveluri pentru activitatea de resurse umane:\n\n- o ocupație de nivel **mediu**, orientată spre activități administrative de personal (întocmire dosare, evidență concedii, pontaj) - asociată de regulă studiilor medii sau superioare de scurtă durată;\n- o ocupație de nivel **superior**, orientată spre activități de specialitate (recrutare, politici de salarizare, relații de muncă) - asociată studiilor superioare de lungă durată și unui grad mai mare de autonomie decizională.\n\nDacă angajatul tău are doar atribuții administrative de evidență, alegerea unei ocupații de nivel \"specialist\" (superior) doar pentru că sună mai bine în organigramă poate crea neconcordanțe la un control: nivelul de studii cerut de ocupația aleasă în COR nu se potrivește cu dosarul de personal al angajatului. Verifică deci nu doar denumirea, ci și cerințele de calificare asociate fiecărei ocupații înrudite din COR.\n\n> Temei legal: HG nr. 500/2011 privind registrul general de evidență a salariaților (Revisal) Art. 3 - elemente obligatorii înregistrate pentru fiecare salariat (în vigoare de la 2011-08-01)\nPotrivit HG nr. 500/2011 privind registrul general de evidență a salariaților (Revisal), printre elementele obligatorii înregistrate pentru fiecare salariat se numără funcția/ocupația, exprimată prin codul din Clasificarea Ocupațiilor din România (COR) sau, după caz, prin alte acte normative aplicabile. Angajatorul răspunde pentru corectitudinea datelor transmise în Revisal, inclusiv pentru codul COR utilizat. Recomandăm verificarea formei consolidate, actualizate, a acestui act normativ înainte de a-l cita într-un document oficial, întrucât a suferit modificări ulterioare.\n\n⚠ Nu alege codul COR \"după ureche\" sau prin copiere de la un alt angajator, fără verificare. Un cod COR incorect în REVISAL poate fi calificat, la un control ITM, drept o eroare de evidență a raporturilor de muncă și poate genera solicitări de corecție sau sancțiuni contravenționale, iar în cazuri grave, suspiciuni privind funcția reală prestată de salariat. În plus, un cod COR greșit poate afecta ulterior calculul unor drepturi legate de vechime sau de condiții speciale/deosebite de muncă, atunci când acestea sunt corelate cu anumite ocupații. Când ai dubii, mai ales pentru ocupații noi sau atipice, solicită un punct de vedere de la un specialist Revisal/ITM sau de la un consultant de resurse umane - acest ghid nu înlocuiește o consultanță juridică individuală.\n\n## Exercițiu\nCompania ta angajează o persoană nouă pe un post de \"Specialist marketing digital\", o funcție relativ nouă în organizația voastră, axată pe gestionarea campaniilor pe rețele sociale, analiza rezultatelor și coordonarea conținutului online. Descrie, pas cu pas, cum procedezi pentru a identifica și valida codul COR corect pentru acest post, înainte de a completa CIM și REVISAL.\n\n**Soluție:** Pașii corecți:\n\n1. **Analizezi fișa postului**: atribuții principale (marketing digital, social media, analiză de conținut), nivelul de studii cerut (de regulă superior) și gradul de autonomie (execuție sau coordonare de echipă).\n2. **Cauți pe cor.gov.ro** folosind cuvinte-cheie precum \"marketing digital\", \"specialist marketing\" sau \"social media\", pentru a vedea dacă ocupația există deja explicit în COR (nomenclatorul este actualizat periodic tocmai pentru a include ocupații noi, apărute în economia digitală).\n3. **Dacă găsești o potrivire exactă** - preiei codul de 6 cifre afișat și verifici grupa de bază din care face parte, pentru a confirma coerența cu nivelul de studii și atribuțiile din fișa postului.\n4. **Dacă nu găsești o potrivire exactă** - alegi ocupația cea mai apropiată ca și conținut al activității din grupa de bază relevantă (de exemplu din familia ocupațiilor de marketing/comunicare), documentând motivul alegerii într-o notă internă.\n5. **Introduci codul ales în CIM**, la rubrica privind funcția/ocupația, și îl transmiți în REVISAL cel târziu în ziua anterioară începerii activității salariatului.\n6. **Păstrezi dovada verificării** (captură/print de pe cor.gov.ro, cu data căutării) în dosarul de personal, pentru a putea justifica alegerea la un eventual control ITM.\n\nNu introduce niciodată un cod \"generic\" sau aproximat fără verificare prealabilă pe portalul oficial, mai ales pentru ocupații noi, apărute recent pe piața muncii.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "cor-definitie-structura",
+    "md": "## Ce este Clasificarea Ocupațiilor din România (COR)\n\nCOR este nomenclatorul oficial al ocupațiilor existente pe piața muncii din România. Este elaborat de Ministerul Muncii, împreună cu Institutul Național de Statistică (INS), și are la bază standardul internațional ISCO-08 (International Standard Classification of Occupations), adaptat la specificul pieței muncii românești.\n\nFiecare ocupație din COR primește un **cod numeric de 6 cifre**, unic, care identifică fără echivoc funcția/ocupația unui salariat, indiferent de denumirea folosită intern de angajator (de exemplu, \"specialist HR\", \"referent resurse umane\" și \"inspector resurse umane\" pot corespunde, în funcție de atribuțiile reale, aceleiași ocupații COR sau unor ocupații diferite).\n\nCodul COR este obligatoriu în două documente esențiale ale relației de muncă:\n- **Contractul individual de muncă (CIM)** - la rubrica privind funcția/ocupația;\n- **Registrul general de evidență a salariaților (REVISAL)** - ca element de identificare a fiecărui salariat.\n\nFără un cod COR corect, înregistrarea în REVISAL este incompletă sau eronată, situație ce poate atrage observații și sancțiuni la un control ITM.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cor-structura-cod-6-cifre",
+    "md": "## Structura codului COR pe 6 cifre\n\nCodul COR nu este un simplu număr de ordine, ci are o structură ierarhică, moștenită din ISCO-08:\n\n1. **Prima cifră** - grupa majoră (de exemplu: 1 = manageri, 2 = specialiști cu studii superioare, 3 = tehnicieni și alți specialiști cu studii medii, 4 = funcționari administrativi...);\n2. **A doua cifră** - subgrupa majoră;\n3. **A treia cifră** - grupa minoră;\n4. **A patra cifră** - grupa de bază (aceste patru cifre corespund exact codului ISCO-08 la nivel internațional);\n5. **Ultimele două cifre** - poziția specifică a ocupației în cadrul grupei de bază, particularitate a nomenclatorului românesc, care detaliază ocupațiile concrete existente pe piața muncii locală.\n\nDe exemplu, un cod din familia 33xx aparține grupei majore 3 (\"tehnicieni și alți specialiști cu nivel mediu de calificare\") - subgrupa 33 acoperă profesii administrative și financiare de nivel mediu, precum contabili sau inspectori de resurse umane. Ultimele două cifre disting, în interiorul aceleiași grupe de bază, ocupații înrudite dar distincte.\n\nAceastă structură pe niveluri este utilă practic: dacă nu găsești imediat ocupația exactă, poți identifica măcar grupa de bază corectă și restrânge căutarea la ocupațiile din acea familie.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cor-alegere-cod-corect",
+    "md": "## Cum alegi codul COR corect pentru o funcție\n\nAlegerea codului COR nu se face după denumirea funcției din organigramă, ci după **atribuțiile efective** ale postului, așa cum rezultă din fișa postului. Pașii recomandați:\n\n1. **Analizează fișa postului** - identifică sarcinile principale, nivelul de studii cerut și gradul de responsabilitate/decizie.\n2. **Caută pe portalul oficial cor.gov.ro** - folosește căutarea după cuvinte-cheie (de exemplu \"contabil\", \"agent vânzări\", \"operator introducere date\") pentru a găsi ocupațiile disponibile și codurile aferente.\n3. **Compară variantele apropiate** - COR conține adesea mai multe ocupații înrudite, diferențiate după nivelul de calificare (funcții de execuție vs. funcții de conducere/coordonare) sau după domeniul de activitate. Alege varianta care descrie cel mai fidel atribuțiile reale.\n4. **Dacă nu găsești o potrivire exactă** - alege cea mai apropiată ocupație existentă din grupa de bază relevantă; nu inventa un cod și nu îl aproxima la întâmplare.\n5. **Documentează alegerea** - păstrează o notă internă (fișa postului + codul ales) pentru a putea justifica opțiunea la un eventual control ITM.\n\nCOR este actualizat periodic prin ordine ale Ministerului Muncii, care introduc ocupații noi apărute pe piața muncii (de exemplu, ocupații din economia digitală). Dacă funcția pe care o încadrezi este relativ nouă (specialist marketing digital, administrator rețele sociale, analist date etc.), verifică întâi dacă a fost deja introdusă în COR, înainte de a alege o ocupație apropiată ca substitut.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cor-legatura-cim-revisal",
+    "md": "## Legătura dintre codul COR, CIM și REVISAL\n\nCodul COR însoțește salariatul pe tot parcursul raportului de muncă și trebuie actualizat de fiecare dată când se schimbă efectiv ocupația:\n\n- La **angajare**, codul COR se stabilește o dată cu redactarea CIM și se transmite în REVISAL, cel târziu în ziua anterioară începerii activității.\n- La **promovare sau schimbare de funcție** (de exemplu din \"contabil\" în \"contabil șef\", sau din \"inspector resurse umane\" în \"specialist resurse umane\"), se încheie un **act adițional** la CIM, iar noul cod COR trebuie actualizat corespunzător în REVISAL.\n- O simplă schimbare de denumire internă a postului, fără modificarea reală a atribuțiilor, nu impune neapărat schimbarea codului COR - contează conținutul efectiv al muncii prestate, nu eticheta din organigramă.\n\nUn cod COR corect și actualizat protejează atât angajatorul (evidență corectă la control), cât și salariatul (vechime și atribuții corect reflectate, relevante pentru viitoare angajări sau pentru dosarul de pensionare).",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b4"
+   },
+   {
+    "type": "example",
+    "title": "Descompunerea unui cod COR",
+    "concept_key": "cor-exemplu-descompunere",
+    "md": "Să presupunem că, în urma căutării pe cor.gov.ro pentru funcția de \"contabil\", identifici codul **331302**. Descompunerea codului:\n\n- **3** - grupa majoră: tehnicieni și alți specialiști cu nivel mediu de calificare;\n- **33** - subgrupa majoră: specialiști în domeniul financiar-administrativ;\n- **331** - grupa minoră: specialiști financiari și contabili de nivel mediu;\n- **3313** - grupa de bază: contabili;\n- **02** - poziția specifică: ocupația \"contabil\", distinctă de alte ocupații din aceeași grupă de bază (de exemplu \"contabil șef\" sau alte specializări conexe).\n\nRecomandare practică: codurile exacte se pot modifica prin actualizări ale COR, așa că, înainte de a-l introduce în REVISAL, verifică întotdeauna forma curentă direct pe cor.gov.ro, nu doar pe baza unor liste vechi păstrate intern.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b5"
+   },
+   {
+    "type": "example",
+    "title": "Diferențierea între funcții HR înrudite",
+    "concept_key": "cor-exemplu-diferentiere-functii-inrudite",
+    "md": "O greșeală frecventă în departamentele HR este utilizarea aceluiași cod COR pentru toți angajații din compartimentul de resurse umane, indiferent de nivelul postului. În realitate, COR diferențiază, de regulă, cel puțin două niveluri pentru activitatea de resurse umane:\n\n- o ocupație de nivel **mediu**, orientată spre activități administrative de personal (întocmire dosare, evidență concedii, pontaj) - asociată de regulă studiilor medii sau superioare de scurtă durată;\n- o ocupație de nivel **superior**, orientată spre activități de specialitate (recrutare, politici de salarizare, relații de muncă) - asociată studiilor superioare de lungă durată și unui grad mai mare de autonomie decizională.\n\nDacă angajatul tău are doar atribuții administrative de evidență, alegerea unei ocupații de nivel \"specialist\" (superior) doar pentru că sună mai bine în organigramă poate crea neconcordanțe la un control: nivelul de studii cerut de ocupația aleasă în COR nu se potrivește cu dosarul de personal al angajatului. Verifică deci nu doar denumirea, ci și cerințele de calificare asociate fiecărei ocupații înrudite din COR.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG nr. 500/2011 privind registrul general de evidență a salariaților (Revisal)",
+    "article": "Art. 3 - elemente obligatorii înregistrate pentru fiecare salariat",
+    "effective": "2011-08-01",
+    "md": "Potrivit HG nr. 500/2011 privind registrul general de evidență a salariaților (Revisal), printre elementele obligatorii înregistrate pentru fiecare salariat se numără funcția/ocupația, exprimată prin codul din Clasificarea Ocupațiilor din România (COR) sau, după caz, prin alte acte normative aplicabile. Angajatorul răspunde pentru corectitudinea datelor transmise în Revisal, inclusiv pentru codul COR utilizat. Recomandăm verificarea formei consolidate, actualizate, a acestui act normativ înainte de a-l cita într-un document oficial, întrucât a suferit modificări ulterioare.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu alege codul COR \"după ureche\" sau prin copiere de la un alt angajator, fără verificare. Un cod COR incorect în REVISAL poate fi calificat, la un control ITM, drept o eroare de evidență a raporturilor de muncă și poate genera solicitări de corecție sau sancțiuni contravenționale, iar în cazuri grave, suspiciuni privind funcția reală prestată de salariat. În plus, un cod COR greșit poate afecta ulterior calculul unor drepturi legate de vechime sau de condiții speciale/deosebite de muncă, atunci când acestea sunt corelate cu anumite ocupații. Când ai dubii, mai ales pentru ocupații noi sau atipice, solicită un punct de vedere de la un specialist Revisal/ITM sau de la un consultant de resurse umane - acest ghid nu înlocuiește o consultanță juridică individuală.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Compania ta angajează o persoană nouă pe un post de \"Specialist marketing digital\", o funcție relativ nouă în organizația voastră, axată pe gestionarea campaniilor pe rețele sociale, analiza rezultatelor și coordonarea conținutului online. Descrie, pas cu pas, cum procedezi pentru a identifica și valida codul COR corect pentru acest post, înainte de a completa CIM și REVISAL.",
+    "solution_md": "Pașii corecți:\n\n1. **Analizezi fișa postului**: atribuții principale (marketing digital, social media, analiză de conținut), nivelul de studii cerut (de regulă superior) și gradul de autonomie (execuție sau coordonare de echipă).\n2. **Cauți pe cor.gov.ro** folosind cuvinte-cheie precum \"marketing digital\", \"specialist marketing\" sau \"social media\", pentru a vedea dacă ocupația există deja explicit în COR (nomenclatorul este actualizat periodic tocmai pentru a include ocupații noi, apărute în economia digitală).\n3. **Dacă găsești o potrivire exactă** - preiei codul de 6 cifre afișat și verifici grupa de bază din care face parte, pentru a confirma coerența cu nivelul de studii și atribuțiile din fișa postului.\n4. **Dacă nu găsești o potrivire exactă** - alegi ocupația cea mai apropiată ca și conținut al activității din grupa de bază relevantă (de exemplu din familia ocupațiilor de marketing/comunicare), documentând motivul alegerii într-o notă internă.\n5. **Introduci codul ales în CIM**, la rubrica privind funcția/ocupația, și îl transmiți în REVISAL cel târziu în ziua anterioară începerii activității salariatului.\n6. **Păstrezi dovada verificării** (captură/print de pe cor.gov.ro, cu data căutării) în dosarul de personal, pentru a putea justifica alegerea la un eventual control ITM.\n\nNu introduce niciodată un cod \"generic\" sau aproximat fără verificare prealabilă pe portalul oficial, mai ales pentru ocupații noi, apărute recent pe piața muncii.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Din câte cifre este format codul unei ocupații în COR (nivel ocupație)?",
+    "choices": [
+     "4 cifre",
+     "6 cifre",
+     "8 cifre",
+     "2 cifre"
+    ],
+    "answer": 1,
+    "explain": "Codul COR la nivel de ocupație are 6 cifre: primele 4 corespund structurii ISCO-08 (grupă majoră, subgrupă, grupă minoră, grupă de bază), iar ultimele 2 identifică ocupația specifică din nomenclatorul românesc.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce trebuie să facă angajatorul când un salariat este promovat pe o funcție diferită, cu un cod COR diferit?",
+    "choices": [
+     "Nimic, codul COR se schimbă automat în REVISAL",
+     "Încheie un act adițional la CIM și actualizează codul COR în REVISAL",
+     "Anunță doar ITM telefonic",
+     "Așteaptă următorul control ITM pentru a face modificarea"
+    ],
+    "answer": 1,
+    "explain": "Orice schimbare reală a funcției/ocupației presupune încheierea unui act adițional la contractul individual de muncă și actualizarea corespunzătoare a codului COR în REVISAL, în termenul legal.",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este COR?",
+    "back": "Clasificarea Ocupațiilor din România - nomenclatorul oficial al ocupațiilor, elaborat de Ministerul Muncii și INS, obligatoriu în CIM și REVISAL.",
+    "concept_key": "cor-definitie-structura",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din câte cifre este format codul COR la nivel de ocupație?",
+    "back": "6 cifre: primele 4 corespund grupei ISCO-08 (majoră, submajoră, minoră, de bază), ultimele 2 identifică ocupația specifică românească.",
+    "concept_key": "cor-structura-cod-6-cifre",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Unde se caută codul COR corect pentru o funcție?",
+    "back": "Pe portalul oficial cor.gov.ro, prin căutare după cuvinte-cheie preluate din fișa postului, urmată de compararea variantelor apropiate.",
+    "concept_key": "cor-alegere-cod-corect",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Trebuie actualizat codul COR în REVISAL la schimbarea funcției salariatului?",
+    "back": "Da - orice schimbare reală de funcție/ocupație se înregistrează printr-un act adițional la CIM și se actualizează în REVISAL.",
+    "concept_key": "cor-legatura-cim-revisal",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document Revisal impune înregistrarea codului COR pentru fiecare salariat?",
+    "back": "HG nr. 500/2011 privind registrul general de evidență a salariaților, care prevede funcția/ocupația conform COR ca element obligatoriu de înregistrat.",
+    "concept_key": "cor-definitie-structura",
+    "blockId": "cmjjuxw9l00hxumkpj7y78b43-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1468,
+   "flashcards": 5
+  }
+ }
+}

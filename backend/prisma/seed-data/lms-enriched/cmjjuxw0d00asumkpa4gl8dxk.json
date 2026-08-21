@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxw0d00asumkpa4gl8dxk",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Exam Preparation",
+ "lesson": "Review Simulare 2",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Review Simulare 2\n\n## De ce contează review-ul unei simulări, nu doar scorul\n\nAi terminat Simularea 2. Ai un scor, un cronometru oprit și, probabil, un amestec de ușurare și frustrare. Aici începe partea care chiar te pregătește pentru examenul real: **review-ul structurat**.\n\nMulți candidați tratează o simulare ca pe un test de \"trecere/picare\" — se uită la procentul final, respiră ușurați sau îngrijorați, și trec mai departe la următoarea simulare. Această abordare irosește 80% din valoarea exercițiului. Simularea nu e scopul; ea e **instrumentul de diagnostic**. Scopul e să afli exact unde gândirea ta diferă de mentalitatea PMI (\"PMI mindset\") și să corectezi acel decalaj înainte de ziua examenului.\n\nUn review corect al Simulării 2 are trei etape obligatorii:\n\n1. **Analiza cantitativă** — scorul pe fiecare domeniu de performanță (People, Process, Business Environment), nu doar scorul global.\n2. **Analiza calitativă** — pentru fiecare întrebare greșită, identifici *tipul* de greșeală (nu doar faptul că ai greșit).\n3. **Planul de acțiune** — traduci diagnosticul în pași concreți de studiu pentru următoarele zile.\n\nDacă ai parcurs deja Simularea 1, această lecție te ajută și să compari evoluția între cele două simulări — un indicator mult mai relevant decât un singur scor izolat, pentru că îți arată dacă strategia ta de pregătire funcționează sau trebuie ajustată.\n\n## Structura examenului PMP conform ECO\n\nExamination Content Outline (ECO) al PMI împarte examenul PMP pe trei domenii de performanță, fiecare cu o pondere fixă în numărul de întrebări:\n\n- **People (Oameni) — 42%**: leadership, gestionarea conflictelor, motivarea echipei, servant leadership, negociere, dezvoltarea echipei.\n- **Process (Proces) — 50%**: managementul scope-ului, timpului, costurilor, riscurilor, calității, achizițiilor — atât în abordare predictivă, cât și agilă/hibridă.\n- **Business Environment (Mediul de afaceri) — 8%**: conformitate, beneficii și valoare pentru organizație, schimbări organizaționale generate de proiect.\n\nExamenul conține 180 de întrebări, susținute în 230 de minute, cu două pauze opționale de 10 minute. Formatul de întrebări e mixt: alegere unică, alegere multiplă (\"select two\" / \"select three\"), potrivire (matching) și \"hotspot\" (selectezi o zonă dintr-o diagramă sau tabel).\n\nUn detaliu esențial: aproximativ jumătate din întrebări testează abordări **agile sau hibride**, nu doar predictive (waterfall). Dacă la Simularea 2 ai greșit disproporționat de mult la întrebările marcate agile, acesta e un semnal clar despre unde trebuie să concentrezi revizuirea — nu doar Scrum Guide 2020, ci și cum se combină practicile agile cu elemente predictive în proiecte hibride, tipice pentru implementările ERP sau de digitalizare din companiile românești.\n\n> Notă: procentele ECO au rămas stabile de la actualizarea din 2021; verifică totuși varianta curentă pe site-ul PMI înainte de programarea examenului, în cazul unei revizuiri ulterioare.\n\n## Cele patru categorii de greșeli — și de ce contează distincția\n\nCând analizezi o întrebare greșită la Simularea 2, primul instinct e să citești explicația și să treci mai departe. Greșit. Fiecare eroare trebuie clasificată într-una din patru categorii, pentru că fiecare cere un remediu diferit:\n\n1. **Lipsă de cunoștințe (\"knowledge gap\")** — nu cunoșteai conceptul, formula sau procesul. Remediu: revii la materialul teoretic al domeniului respectiv.\n2. **Interpretare greșită a situației (\"situational misread\")** — cunoșteai conceptul, dar ai citit greșit contextul întrebării (ex. ai crezut că e o problemă de risc, când de fapt era o problemă de comunicare). Remediu: exersezi identificarea cuvintelor-cheie din enunț.\n3. **Capcană de mentalitate (\"mindset trap\")** — ai răspuns din experiența ta personală de la locul de muncă, nu din perspectiva \"PMI mindset\" (proactivă, colaborativă, orientată spre valoare). Remediu: revezi principiile de leadership servitor și rolul managerului de proiect ca facilitator.\n4. **Eroare de gestionare a timpului** — ai grăbit răspunsul din lipsă de timp și ai bifat prima opțiune plauzibilă. Remediu: exersezi ritmul (aprox. 76 de secunde per întrebare) și tehnica de marcare pentru revizuire ulterioară.\n\nȚine un tabel simplu (chiar și în Excel) cu patru coloane — una per categorie — și notează, pentru fiecare întrebare greșită din Simularea 2, categoria corespunzătoare. Distribuția rezultată e diagnosticul tău real, mult mai util decât procentul final.\n\n## Exemplu: Interpretarea scorurilor pe domenii — un caz ipotetic\nSă presupunem că la Simularea 2 ai obținut următoarea distribuție (exemplu ipotetic, pentru ilustrare):\n\n| Domeniu | Întrebări | Corecte | Scor |\n|---|---|---|---|\n| People (42%) | 76 | 61 | 80% |\n| Process (50%) | 90 | 63 | 70% |\n| Business Environment (8%) | 14 | 9 | 64% |\n| **Total** | **180** | **133** | **74%** |\n\nUn scor global de 74% pare confortabil, dar analiza pe domenii arată o problemă: **Process** cântărește 50% din examen și ai doar 70% acolo — exact zona cu cel mai mare impact asupra scorului final. În plus, **Business Environment**, deși cântărește doar 8%, are cel mai slab rezultat (64%), ceea ce sugerează o lacună de cunoștințe (categoria 1) mai degrabă decât o eroare de interpretare.\n\nConcluzia practică: alocă disproporțional din timpul rămas până la examen pe procesele de management al scope-ului, costurilor și riscurilor (domeniul Process), pentru că fiecare punct procentual câștigat acolo valorează mai mult decât unul câștigat la Business Environment. Nu ignora complet domeniul mic — dar nu-i acorda 50% din timpul de studiu doar pentru că a avut cel mai slab scor procentual.\n\n## Exemplu: Anatomia unei întrebări situaționale greșite\nEnunț tipic (parafrazat): *\"În timpul unui sprint, un membru al echipei îți spune confidențial că un coleg copiază constant munca altora și o prezintă drept a sa în demo-uri. Ce faci mai întâi?\"*\n\nRăspuns \"evident\" ales de mulți candidați: *\"Convoci imediat o discuție cu întreaga echipă pentru a stabili reguli clare de atribuire a muncii.\"* — pare proactiv și orientat spre proces, dar este **greșit**.\n\nRăspunsul corect conform mentalității PMI: *\"Discuți individual și confidențial cu membrul care a semnalat problema, pentru a înțelege complet situația, apoi abordezi direct persoana în cauză, respectând confidențialitatea, înainte de a lua orice măsură la nivel de echipă.\"*\n\nDe ce greșești răspunsul \"evident\": este o **capcană de mentalitate** (categoria 3). Instinctul de manager tradițional e să rezolve rapid și vizibil, la nivel de grup. Mentalitatea PMI cere însă escaladare graduală, respect pentru confidențialitate și tratarea persoanelor implicate cu integritate înainte de acțiuni colective — principii din Codul de Etică și Conduită Profesională PMI. Dacă ai greșit o întrebare similară la Simularea 2, marcheaz-o explicit drept \"mindset trap\", nu \"knowledge gap\" — remediul e diferit: recitești secțiunea despre leadership etic și servant leadership, nu procesele tehnice.\n\n⚠ Cea mai frecventă capcană la simulările PMP este eliminarea variantelor care sună \"a impune\", \"a decide unilateral\" sau \"a escalada imediat la sponsor\", în favoarea variantelor care sună \"a comunica\", \"a facilita\", \"a colabora\" — **dar fără să verifici dacă varianta \"blândă\" rezolvă efectiv problema din enunț**. PMI penalizează la fel de mult pasivitatea nejustificată (ex. \"aștepți să vezi dacă situația se rezolvă singură\") ca și autoritarismul. Regula practică: alege întotdeauna acțiunea care abordează *cauza* problemei, respectând procesul corect (de obicei: înțelegi situația → comunici direct cu persoana/persoanele relevante → escaladezi doar dacă e necesar), nu acțiunea care sună cel mai \"prietenos\".\n\n## Exercițiu\nDeschide rezultatele tale complete de la Simularea 2 (raportul pe domenii, plus lista întrebărilor greșite cu explicații).\n\n1. Construiește tabelul de scoruri pe domenii (People / Process / Business Environment), ca în exemplul de mai sus.\n2. Pentru fiecare din cele 20 (sau mai puține, dacă ai greșit mai puțin) întrebări greșite, clasific-o într-una din cele patru categorii: lipsă de cunoștințe, interpretare greșită, capcană de mentalitate, gestionare timp.\n3. Calculează procentul de greșeli din fiecare categorie.\n4. Scrie un plan de acțiune de 3 puncte pentru următoarele 5 zile de studiu, prioritizat după impactul asupra scorului (domeniul cu ponderea cea mai mare din ECO, ajustat cu procentul actual de erori).\n\n**Soluție:** Model de rezolvare (structura contează mai mult decât cifrele exacte, care diferă de la un candidat la altul):\n\n**Pasul 1-2 (exemplu):** din 20 de întrebări greșite: 8 lipsă de cunoștințe, 6 interpretare greșită, 4 capcană de mentalitate, 2 gestionare timp.\n\n**Pasul 3:** 40% lipsă de cunoștințe, 30% interpretare, 20% mentalitate, 10% timp.\n\n**Pasul 4 — plan de acțiune prioritizat:**\n1. *Zilele 1-2:* Revizuiești procesele din domeniul Process (cea mai mare pondere ECO, 50%) unde ai avut lipsă de cunoștințe — în special managementul riscurilor și al achizițiilor, dacă acolo au fost concentrate erorile de tip 1.\n2. *Ziua 3:* Faci 30-40 de întrebări situaționale exclusiv din domeniul People, cronometrat, concentrându-te pe identificarea cuvintelor-cheie din enunț înainte de a citi variantele de răspuns (corectează categoria \"interpretare greșită\").\n3. *Ziua 4:* Recitești capitolul despre Codul de Etică PMI și principiile de leadership servitor, apoi rezolvi 15-20 de întrebări de tip \"ce faci mai întâi\" pentru a antrena mentalitatea PMI (corectează categoria \"capcană de mentalitate\").\n4. *Ziua 5:* Simulare cronometrată completă, cu accent pe ritmul de răspuns (~76 secunde/întrebare), pentru a reduce erorile de gestionare a timpului.\n\nAcest plan transformă un scor brut de 74% într-un traseu de studiu concret, direcționat exact spre lacunele identificate — nu spre o recitire generală, ineficientă, a întregului material.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "scop-review-simulare-examen-pmp",
+    "md": "## De ce contează review-ul unei simulări, nu doar scorul\n\nAi terminat Simularea 2. Ai un scor, un cronometru oprit și, probabil, un amestec de ușurare și frustrare. Aici începe partea care chiar te pregătește pentru examenul real: **review-ul structurat**.\n\nMulți candidați tratează o simulare ca pe un test de \"trecere/picare\" — se uită la procentul final, respiră ușurați sau îngrijorați, și trec mai departe la următoarea simulare. Această abordare irosește 80% din valoarea exercițiului. Simularea nu e scopul; ea e **instrumentul de diagnostic**. Scopul e să afli exact unde gândirea ta diferă de mentalitatea PMI (\"PMI mindset\") și să corectezi acel decalaj înainte de ziua examenului.\n\nUn review corect al Simulării 2 are trei etape obligatorii:\n\n1. **Analiza cantitativă** — scorul pe fiecare domeniu de performanță (People, Process, Business Environment), nu doar scorul global.\n2. **Analiza calitativă** — pentru fiecare întrebare greșită, identifici *tipul* de greșeală (nu doar faptul că ai greșit).\n3. **Planul de acțiune** — traduci diagnosticul în pași concreți de studiu pentru următoarele zile.\n\nDacă ai parcurs deja Simularea 1, această lecție te ajută și să compari evoluția între cele două simulări — un indicator mult mai relevant decât un singur scor izolat, pentru că îți arată dacă strategia ta de pregătire funcționează sau trebuie ajustată.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "structura-examen-eco-domenii",
+    "md": "## Structura examenului PMP conform ECO\n\nExamination Content Outline (ECO) al PMI împarte examenul PMP pe trei domenii de performanță, fiecare cu o pondere fixă în numărul de întrebări:\n\n- **People (Oameni) — 42%**: leadership, gestionarea conflictelor, motivarea echipei, servant leadership, negociere, dezvoltarea echipei.\n- **Process (Proces) — 50%**: managementul scope-ului, timpului, costurilor, riscurilor, calității, achizițiilor — atât în abordare predictivă, cât și agilă/hibridă.\n- **Business Environment (Mediul de afaceri) — 8%**: conformitate, beneficii și valoare pentru organizație, schimbări organizaționale generate de proiect.\n\nExamenul conține 180 de întrebări, susținute în 230 de minute, cu două pauze opționale de 10 minute. Formatul de întrebări e mixt: alegere unică, alegere multiplă (\"select two\" / \"select three\"), potrivire (matching) și \"hotspot\" (selectezi o zonă dintr-o diagramă sau tabel).\n\nUn detaliu esențial: aproximativ jumătate din întrebări testează abordări **agile sau hibride**, nu doar predictive (waterfall). Dacă la Simularea 2 ai greșit disproporționat de mult la întrebările marcate agile, acesta e un semnal clar despre unde trebuie să concentrezi revizuirea — nu doar Scrum Guide 2020, ci și cum se combină practicile agile cu elemente predictive în proiecte hibride, tipice pentru implementările ERP sau de digitalizare din companiile românești.\n\n> Notă: procentele ECO au rămas stabile de la actualizarea din 2021; verifică totuși varianta curentă pe site-ul PMI înainte de programarea examenului, în cazul unei revizuiri ulterioare.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "clasificare-tipuri-greseli-simulare",
+    "md": "## Cele patru categorii de greșeli — și de ce contează distincția\n\nCând analizezi o întrebare greșită la Simularea 2, primul instinct e să citești explicația și să treci mai departe. Greșit. Fiecare eroare trebuie clasificată într-una din patru categorii, pentru că fiecare cere un remediu diferit:\n\n1. **Lipsă de cunoștințe (\"knowledge gap\")** — nu cunoșteai conceptul, formula sau procesul. Remediu: revii la materialul teoretic al domeniului respectiv.\n2. **Interpretare greșită a situației (\"situational misread\")** — cunoșteai conceptul, dar ai citit greșit contextul întrebării (ex. ai crezut că e o problemă de risc, când de fapt era o problemă de comunicare). Remediu: exersezi identificarea cuvintelor-cheie din enunț.\n3. **Capcană de mentalitate (\"mindset trap\")** — ai răspuns din experiența ta personală de la locul de muncă, nu din perspectiva \"PMI mindset\" (proactivă, colaborativă, orientată spre valoare). Remediu: revezi principiile de leadership servitor și rolul managerului de proiect ca facilitator.\n4. **Eroare de gestionare a timpului** — ai grăbit răspunsul din lipsă de timp și ai bifat prima opțiune plauzibilă. Remediu: exersezi ritmul (aprox. 76 de secunde per întrebare) și tehnica de marcare pentru revizuire ulterioară.\n\nȚine un tabel simplu (chiar și în Excel) cu patru coloane — una per categorie — și notează, pentru fiecare întrebare greșită din Simularea 2, categoria corespunzătoare. Distribuția rezultată e diagnosticul tău real, mult mai util decât procentul final.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b3"
+   },
+   {
+    "type": "example",
+    "title": "Interpretarea scorurilor pe domenii — un caz ipotetic",
+    "concept_key": "interpretare-scor-pe-domenii",
+    "md": "Să presupunem că la Simularea 2 ai obținut următoarea distribuție (exemplu ipotetic, pentru ilustrare):\n\n| Domeniu | Întrebări | Corecte | Scor |\n|---|---|---|---|\n| People (42%) | 76 | 61 | 80% |\n| Process (50%) | 90 | 63 | 70% |\n| Business Environment (8%) | 14 | 9 | 64% |\n| **Total** | **180** | **133** | **74%** |\n\nUn scor global de 74% pare confortabil, dar analiza pe domenii arată o problemă: **Process** cântărește 50% din examen și ai doar 70% acolo — exact zona cu cel mai mare impact asupra scorului final. În plus, **Business Environment**, deși cântărește doar 8%, are cel mai slab rezultat (64%), ceea ce sugerează o lacună de cunoștințe (categoria 1) mai degrabă decât o eroare de interpretare.\n\nConcluzia practică: alocă disproporțional din timpul rămas până la examen pe procesele de management al scope-ului, costurilor și riscurilor (domeniul Process), pentru că fiecare punct procentual câștigat acolo valorează mai mult decât unul câștigat la Business Environment. Nu ignora complet domeniul mic — dar nu-i acorda 50% din timpul de studiu doar pentru că a avut cel mai slab scor procentual.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b4"
+   },
+   {
+    "type": "example",
+    "title": "Anatomia unei întrebări situaționale greșite",
+    "concept_key": "anatomia-intrebare-situationala",
+    "md": "Enunț tipic (parafrazat): *\"În timpul unui sprint, un membru al echipei îți spune confidențial că un coleg copiază constant munca altora și o prezintă drept a sa în demo-uri. Ce faci mai întâi?\"*\n\nRăspuns \"evident\" ales de mulți candidați: *\"Convoci imediat o discuție cu întreaga echipă pentru a stabili reguli clare de atribuire a muncii.\"* — pare proactiv și orientat spre proces, dar este **greșit**.\n\nRăspunsul corect conform mentalității PMI: *\"Discuți individual și confidențial cu membrul care a semnalat problema, pentru a înțelege complet situația, apoi abordezi direct persoana în cauză, respectând confidențialitatea, înainte de a lua orice măsură la nivel de echipă.\"*\n\nDe ce greșești răspunsul \"evident\": este o **capcană de mentalitate** (categoria 3). Instinctul de manager tradițional e să rezolve rapid și vizibil, la nivel de grup. Mentalitatea PMI cere însă escaladare graduală, respect pentru confidențialitate și tratarea persoanelor implicate cu integritate înainte de acțiuni colective — principii din Codul de Etică și Conduită Profesională PMI. Dacă ai greșit o întrebare similară la Simularea 2, marcheaz-o explicit drept \"mindset trap\", nu \"knowledge gap\" — remediul e diferit: recitești secțiunea despre leadership etic și servant leadership, nu procesele tehnice.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă capcană la simulările PMP este eliminarea variantelor care sună \"a impune\", \"a decide unilateral\" sau \"a escalada imediat la sponsor\", în favoarea variantelor care sună \"a comunica\", \"a facilita\", \"a colabora\" — **dar fără să verifici dacă varianta \"blândă\" rezolvă efectiv problema din enunț**. PMI penalizează la fel de mult pasivitatea nejustificată (ex. \"aștepți să vezi dacă situația se rezolvă singură\") ca și autoritarismul. Regula practică: alege întotdeauna acțiunea care abordează *cauza* problemei, respectând procesul corect (de obicei: înțelegi situația → comunici direct cu persoana/persoanele relevante → escaladezi doar dacă e necesar), nu acțiunea care sună cel mai \"prietenos\".",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Deschide rezultatele tale complete de la Simularea 2 (raportul pe domenii, plus lista întrebărilor greșite cu explicații).\n\n1. Construiește tabelul de scoruri pe domenii (People / Process / Business Environment), ca în exemplul de mai sus.\n2. Pentru fiecare din cele 20 (sau mai puține, dacă ai greșit mai puțin) întrebări greșite, clasific-o într-una din cele patru categorii: lipsă de cunoștințe, interpretare greșită, capcană de mentalitate, gestionare timp.\n3. Calculează procentul de greșeli din fiecare categorie.\n4. Scrie un plan de acțiune de 3 puncte pentru următoarele 5 zile de studiu, prioritizat după impactul asupra scorului (domeniul cu ponderea cea mai mare din ECO, ajustat cu procentul actual de erori).",
+    "solution_md": "Model de rezolvare (structura contează mai mult decât cifrele exacte, care diferă de la un candidat la altul):\n\n**Pasul 1-2 (exemplu):** din 20 de întrebări greșite: 8 lipsă de cunoștințe, 6 interpretare greșită, 4 capcană de mentalitate, 2 gestionare timp.\n\n**Pasul 3:** 40% lipsă de cunoștințe, 30% interpretare, 20% mentalitate, 10% timp.\n\n**Pasul 4 — plan de acțiune prioritizat:**\n1. *Zilele 1-2:* Revizuiești procesele din domeniul Process (cea mai mare pondere ECO, 50%) unde ai avut lipsă de cunoștințe — în special managementul riscurilor și al achizițiilor, dacă acolo au fost concentrate erorile de tip 1.\n2. *Ziua 3:* Faci 30-40 de întrebări situaționale exclusiv din domeniul People, cronometrat, concentrându-te pe identificarea cuvintelor-cheie din enunț înainte de a citi variantele de răspuns (corectează categoria \"interpretare greșită\").\n3. *Ziua 4:* Recitești capitolul despre Codul de Etică PMI și principiile de leadership servitor, apoi rezolvi 15-20 de întrebări de tip \"ce faci mai întâi\" pentru a antrena mentalitatea PMI (corectează categoria \"capcană de mentalitate\").\n4. *Ziua 5:* Simulare cronometrată completă, cu accent pe ritmul de răspuns (~76 secunde/întrebare), pentru a reduce erorile de gestionare a timpului.\n\nAcest plan transformă un scor brut de 74% într-un traseu de studiu concret, direcționat exact spre lacunele identificate — nu spre o recitire generală, ineficientă, a întregului material.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform ECO (Examination Content Outline), care domeniu de performanță are cea mai mare pondere în examenul PMP?",
+    "choices": [
+     "Business Environment (8%)",
+     "People (42%)",
+     "Process (50%)",
+     "Toate au pondere egală"
+    ],
+    "answer": 2,
+    "explain": "Domeniul Process are ponderea cea mai mare, 50% din întrebările examenului, urmat de People cu 42% și Business Environment cu 8%. De aceea o greșeală de cunoștințe în Process are cel mai mare impact asupra scorului final.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un candidat alege răspunsul care sună cel mai \"colaborativ\" la o întrebare situațională, fără să verifice dacă acea acțiune rezolvă efectiv cauza problemei descrise. Ce tip de greșeală este aceasta, conform clasificării din această lecție?",
+    "choices": [
+     "Eroare de gestionare a timpului",
+     "Lipsă de cunoștințe",
+     "Capcană de mentalitate (mindset trap)",
+     "Eroare de formatare a răspunsului"
+    ],
+    "answer": 2,
+    "explain": "Alegerea automată a variantei care \"sună bine\" (colaborativă, blândă) fără a evalua dacă rezolvă cauza reală a problemei este o capcană de mentalitate — candidatul cunoaște conceptul, dar aplică superficial \"PMI mindset\", fără analiză situațională corectă.",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei domenii de performanță ECO și ponderea lor în examenul PMP?",
+    "back": "People 42%, Process 50%, Business Environment 8%.",
+    "concept_key": "structura-examen-eco-domenii",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte întrebări are examenul PMP și în cât timp trebuie susținute?",
+    "back": "180 de întrebări, în 230 de minute, cu două pauze opționale de 10 minute.",
+    "concept_key": "structura-examen-eco-domenii",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele patru categorii de greșeli folosite la analiza unei simulări PMP?",
+    "back": "Lipsă de cunoștințe, interpretare greșită a situației, capcană de mentalitate (mindset trap), eroare de gestionare a timpului.",
+    "concept_key": "clasificare-tipuri-greseli-simulare",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu trebuie alocat automat cel mai mult timp de studiu domeniului cu cel mai slab scor procentual la o simulare?",
+    "back": "Pentru că impactul asupra scorului final depinde și de ponderea domeniului în ECO — un domeniu mic (ex. Business Environment, 8%) are impact redus chiar dacă scorul e slab, spre deosebire de un domeniu mare precum Process (50%).",
+    "concept_key": "interpretare-scor-pe-domenii",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce ritm mediu de răspuns trebuie exersat pentru a termina cele 180 de întrebări în 230 de minute?",
+    "back": "Aproximativ 76 de secunde per întrebare (230 minute / 180 întrebări).",
+    "concept_key": "clasificare-tipuri-greseli-simulare",
+    "blockId": "cmjjuxw0d00asumkpa4gl8dxk-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1419,
+   "flashcards": 5
+  }
+ }
+}

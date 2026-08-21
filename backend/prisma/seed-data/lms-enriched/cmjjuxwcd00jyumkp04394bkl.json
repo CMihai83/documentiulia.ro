@@ -1,0 +1,149 @@
+{
+ "lessonId": "cmjjuxwcd00jyumkp04394bkl",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Evaluarea Riscurilor",
+ "lesson": "Template evaluare riscuri",
+ "category": "HSE_SAFETY",
+ "content": "# Template evaluare riscuri\n\n## De ce ai nevoie de o fișă de evaluare a riscurilor\n\nEvaluarea riscurilor profesionale nu este un exercițiu birocratic opțional, ci **obligația legală de bază** a oricărui angajator din România, indiferent de mărimea firmei sau de domeniul de activitate. Conform Legii 319/2006 a securității și sănătății în muncă, angajatorul trebuie să identifice pericolele de la fiecare loc de muncă și să stabilească măsuri concrete de prevenire, înainte ca un accident sau o îmbolnăvire profesională să se producă.\n\nFișa de evaluare a riscurilor (numită uneori \"fișă de identificare și evaluare a factorilor de risc\") este documentul prin care demonstrezi, în fața unui control ITM (Inspectoratul Teritorial de Muncă) sau în cazul unui accident de muncă, că ai analizat sistematic pericolele și ai luat măsuri. Fără acest document, orice altă activitate SSM (instruiri, dotare cu echipament individual de protecție, plan de prevenire) rămâne fără fundament — nu poți proteja lucrătorii de riscuri pe care nu le-ai identificat formal.\n\nEvaluarea se realizează **pe fiecare loc de muncă/post de lucru**, nu generic pe firmă, pentru că un operator de producție, un șofer și un angajat de birou sunt expuși la pericole complet diferite. Documentul trebuie revizuit ori de câte ori apar modificări relevante: proces tehnologic nou, echipament nou, accident produs, modificare a spațiului de lucru sau, în lipsa oricărei schimbări, cel puțin periodic (bună practică: anual), pentru a rămâne actual.\n\n## Metoda de calcul: matricea Probabilitate x Severitate\n\nCea mai folosită metodă practică în evaluările SSM din România este **matricea de risc 5x5**, care combină două variabile:\n\n- **Probabilitatea (P)** — cât de des se poate produce evenimentul periculos, notată de la 1 (foarte rar) la 5 (foarte frecvent/aproape sigur).\n- **Severitatea/Gravitatea (S)** — cât de grave ar fi consecințele dacă evenimentul s-ar produce, notată de la 1 (fără consecințe/vătămare minoră) la 5 (deces sau invaliditate permanentă).\n\nNivelul de risc se obține prin înmulțire: **Nivel de risc (NR) = P x S**, rezultând un scor între 1 și 25. Scorul se încadrează apoi în categorii de acțiune:\n\n- **1-4: Risc minor** — se monitorizează, fără măsuri urgente.\n- **5-9: Risc moderat/tolerabil** — se recomandă măsuri de reducere pe termen mediu.\n- **10-15: Risc important** — măsuri obligatorii, cu termen clar de implementare.\n- **16-25: Risc inacceptabil/critic** — se oprește activitatea până la implementarea imediată a măsurilor.\n\nExistă și metoda oficializată de Institutul Național de Cercetare-Dezvoltare pentru Protecția Muncii (INCDPM), mai riguroasă, care descompune riscul în 7 factori (F1-F7: executant, sarcină de muncă, mijloace de producție, mediu de muncă etc.) și calculează un nivel de risc ponderat pe scală 1-7. Pentru firme mici și mijlocii, matricea 5x5 este suficientă și mai ușor de aplicat și de înțeles de către lucrători; metoda INCDPM este recomandată pentru activități cu risc ridicat (construcții, industrie grea) sau când evaluarea este contestată.\n\n## Structura obligatorie a fișei de evaluare a riscurilor\n\nUn template complet de evaluare a riscurilor trebuie să conțină, pentru fiecare loc de muncă analizat, următoarele secțiuni:\n\n1. **Date de identificare**: denumire loc de muncă/post, secție/departament, număr de lucrători expuși, data evaluării, numele evaluatorului (responsabil SSM intern sau serviciu extern de prevenire).\n2. **Descrierea activității**: operațiile efectuate, echipamentele/utilajele folosite, substanțele utilizate, condițiile de mediu de lucru.\n3. **Identificarea pericolelor**: listarea sistematică pe categorii — pericole mecanice (tăiere, strivire, proiectare de particule), electrice, chimice, biologice, ergonomice (poziții forțate, ridicare de greutăți), fizice (zgomot, vibrații, temperatură), psihosociale (stres, muncă în ture) și pericole de incendiu/explozie.\n4. **Evaluarea fiecărui risc identificat**: coloanele P (probabilitate), S (severitate), NR (nivel de risc = P×S) și categoria rezultată (minor/moderat/important/critic).\n5. **Măsuri de prevenire/protecție existente**: ce este deja implementat (EIP, protecții pe utilaje, instruiri).\n6. **Măsuri suplimentare propuse**: acțiuni concrete, responsabil de implementare și termen.\n7. **Reevaluare**: nivel de risc rezidual după aplicarea măsurilor și data următoarei revizuiri.\n\nAcest tabel devine, practic, coloana vertebrală a **Planului de prevenire și protecție** al firmei — fiecare rând cu risc important sau critic trebuie să genereze cel puțin o acțiune concretă în plan, cu termen și responsabil nominalizat.\n\n## Exemplu: Fișă completată — Operator mașină de debitat (atelier producție)\n**Loc de muncă:** Operator mașină de debitat metal, atelier producție, 3 lucrători expuși.\n\n| Pericol identificat | P | S | NR (P×S) | Categorie | Măsură propusă |\n|---|---|---|---|---|---|\n| Prindere/strivire mână la zona de tăiere | 3 | 5 | 15 | Important | Verificare lunară apărători de protecție + interblocare electrică |\n| Proiectare așchii metalice în ochi | 4 | 3 | 12 | Important | Obligativitate ochelari de protecție, afișaj la post |\n| Zgomot peste 85 dB pe durata schimbului | 5 | 2 | 10 | Important | Antifoane + măsurători periodice de zgomot |\n| Alunecare pe pardoseală cu ulei de răcire | 2 | 3 | 6 | Moderat | Curățare zilnică + semnalizare zonă alunecoasă |\n\nDupă implementarea măsurilor (apărători funcționale, EIP purtat corect, program de mentenanță), nivelul de risc rezidual pentru prinderea mâinii scade de la 15 la 6 (P scade de la 3 la 2, pentru că interblocarea reduce frecvența expunerii reale la pericol). Această scădere demonstrată este exact ce caută un inspector ITM: dovada că măsurile nu sunt doar bifate pe hârtie, ci reduc efectiv riscul.\n\n## Exemplu: Fișă completată — Angajat birou (muncă la calculator)\n**Loc de muncă:** Economist/contabil, activitate de birou cu calculator, 8 ore/zi, 5 lucrători expuși.\n\n| Pericol identificat | P | S | NR (P×S) | Categorie | Măsură propusă |\n|---|---|---|---|---|---|\n| Afecțiuni musculo-scheletice (poziție statică prelungită) | 4 | 2 | 8 | Moderat | Pauze de 5 min/oră, scaun ergonomic reglabil |\n| Oboseală vizuală (expunere ecran) | 4 | 1 | 4 | Minor | Pauze vizuale, iluminat corespunzător la post |\n| Electrocutare (cablaj/prize defecte) | 1 | 5 | 5 | Moderat | Verificare periodică instalație electrică (PRAM) |\n| Incendiu (echipamente electrice, materiale combustibile) | 1 | 5 | 5 | Moderat | Stingătoare la îndemână, instruire PSI anuală |\n\nDe reținut: chiar și pentru o activitate aparent \"fără riscuri\" precum munca de birou, fișa NU poate rămâne goală. Riscul ergonomic este cel mai frecvent subestimat în evaluările de birou, deși generează cele mai multe boli profesionale pe termen lung (afecțiuni de coloană, sindrom de tunel carpian).\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă Art. 7 alin. (4) lit. a) (în vigoare de la 2006-08-25)\nLegea 319/2006, publicată în Monitorul Oficial nr. 646/26.07.2006, stabilește la art. 7 alin. (4) lit. a) obligația angajatorului de \"a evalua riscurile pentru securitatea și sănătatea lucrătorilor, inclusiv la alegerea echipamentelor de muncă, a substanțelor sau preparatelor chimice utilizate și la amenajarea locurilor de muncă\". Modul concret de întocmire a documentației de evaluare este detaliat în Normele metodologice de aplicare, aprobate prin HG 1425/2006, care impun ca evaluarea să fie realizată pentru fiecare loc de muncă și să stea la baza planului de prevenire și protecție al angajatorului. Nerespectarea acestei obligații reprezintă contravenție sancționabilă la control ITM și poate agrava răspunderea angajatorului în cazul unui accident de muncă.\n\n⚠ **Greșeli frecvente care invalidează o fișă de evaluare a riscurilor la control ITM:**\n\n- Folosirea unei singure fișe \"generice\" pentru toată firma, în loc de câte o fișă per loc de muncă/post distinct.\n- Lipsa datei evaluării și a semnăturii evaluatorului — fișa devine nedatabilă și greu de apărat ca document valid.\n- Scoruri de risc \"cosmetizate\" (toate riscurile trecute ca minore), fără nicio măsură suplimentară propusă — un inspector experimentat identifică imediat o evaluare formală, nesusținută de realitate.\n- Absența reevaluării după un accident de muncă produs la acel post — legea impune revizuirea imediată, nu doar la termenul periodic planificat.\n- Confuzia între fișa de evaluare a riscurilor și fișa de post sau fișa de instructaj SSM — sunt documente distincte, deși complementare.\n\n## Exercițiu\nEști responsabil SSM la o firmă de distribuție și trebuie să completezi fișa de evaluare a riscurilor pentru postul de **manipulant marfă în depozit** (ridicare/mutare manuală de cutii, utilizare stivuitor electric, circulație pietonală printre rafturi înalte). Identifică minimum 3 pericole relevante pentru acest post, atribuie-le note de probabilitate (P) și severitate (S) pe scala 1-5, calculează nivelul de risc (NR = P×S), încadrează-le în categorie și propune câte o măsură de prevenire pentru fiecare.\n\n**Soluție:** Exemplu de soluție corectă (valorile P/S pot varia ușor în funcție de condițiile reale din depozit, dar logica de calcul și încadrare trebuie să fie aceasta):\n\n| Pericol | P | S | NR | Categorie | Măsură propusă |\n|---|---|---|---|---|---|\n| Coliziune stivuitor-pieton pe culoarele de circulație | 3 | 5 | 15 | Important | Marcaje de circulație separate, oglinzi la intersecții, instruire specifică operatori stivuitor |\n| Afecțiuni ale coloanei vertebrale la ridicarea manuală de greutăți | 4 | 3 | 12 | Important | Instruire tehnică de ridicare corectă + limitarea greutății manipulate manual la maximum admis, cărucioare pentru sarcini grele |\n| Cădere de obiecte de la înălțime (rafturi înalte) | 2 | 4 | 8 | Moderat | Fixare/asigurare marfă pe raft, interdicție de circulație sub zona de stivuire în timpul operării |\n| Alunecare/împiedicare (paleți, cabluri pe sol) | 3 | 2 | 6 | Moderat | Menținerea culoarelor libere, curățenie zilnică, semnalizare obstacole temporare |\n\nOrice pericol cu NR ≥ 10 (aici: coliziunea cu stivuitorul și ridicarea manuală) trebuie preluat obligatoriu în Planul de prevenire și protecție, cu termen concret de implementare a măsurii și un responsabil nominalizat.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "evaluare-riscuri-obligativitate-legala",
+    "md": "## De ce ai nevoie de o fișă de evaluare a riscurilor\n\nEvaluarea riscurilor profesionale nu este un exercițiu birocratic opțional, ci **obligația legală de bază** a oricărui angajator din România, indiferent de mărimea firmei sau de domeniul de activitate. Conform Legii 319/2006 a securității și sănătății în muncă, angajatorul trebuie să identifice pericolele de la fiecare loc de muncă și să stabilească măsuri concrete de prevenire, înainte ca un accident sau o îmbolnăvire profesională să se producă.\n\nFișa de evaluare a riscurilor (numită uneori \"fișă de identificare și evaluare a factorilor de risc\") este documentul prin care demonstrezi, în fața unui control ITM (Inspectoratul Teritorial de Muncă) sau în cazul unui accident de muncă, că ai analizat sistematic pericolele și ai luat măsuri. Fără acest document, orice altă activitate SSM (instruiri, dotare cu echipament individual de protecție, plan de prevenire) rămâne fără fundament — nu poți proteja lucrătorii de riscuri pe care nu le-ai identificat formal.\n\nEvaluarea se realizează **pe fiecare loc de muncă/post de lucru**, nu generic pe firmă, pentru că un operator de producție, un șofer și un angajat de birou sunt expuși la pericole complet diferite. Documentul trebuie revizuit ori de câte ori apar modificări relevante: proces tehnologic nou, echipament nou, accident produs, modificare a spațiului de lucru sau, în lipsa oricărei schimbări, cel puțin periodic (bună practică: anual), pentru a rămâne actual.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "matrice-risc-probabilitate-severitate",
+    "md": "## Metoda de calcul: matricea Probabilitate x Severitate\n\nCea mai folosită metodă practică în evaluările SSM din România este **matricea de risc 5x5**, care combină două variabile:\n\n- **Probabilitatea (P)** — cât de des se poate produce evenimentul periculos, notată de la 1 (foarte rar) la 5 (foarte frecvent/aproape sigur).\n- **Severitatea/Gravitatea (S)** — cât de grave ar fi consecințele dacă evenimentul s-ar produce, notată de la 1 (fără consecințe/vătămare minoră) la 5 (deces sau invaliditate permanentă).\n\nNivelul de risc se obține prin înmulțire: **Nivel de risc (NR) = P x S**, rezultând un scor între 1 și 25. Scorul se încadrează apoi în categorii de acțiune:\n\n- **1-4: Risc minor** — se monitorizează, fără măsuri urgente.\n- **5-9: Risc moderat/tolerabil** — se recomandă măsuri de reducere pe termen mediu.\n- **10-15: Risc important** — măsuri obligatorii, cu termen clar de implementare.\n- **16-25: Risc inacceptabil/critic** — se oprește activitatea până la implementarea imediată a măsurilor.\n\nExistă și metoda oficializată de Institutul Național de Cercetare-Dezvoltare pentru Protecția Muncii (INCDPM), mai riguroasă, care descompune riscul în 7 factori (F1-F7: executant, sarcină de muncă, mijloace de producție, mediu de muncă etc.) și calculează un nivel de risc ponderat pe scală 1-7. Pentru firme mici și mijlocii, matricea 5x5 este suficientă și mai ușor de aplicat și de înțeles de către lucrători; metoda INCDPM este recomandată pentru activități cu risc ridicat (construcții, industrie grea) sau când evaluarea este contestată.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "structura-fisa-evaluare-riscuri",
+    "md": "## Structura obligatorie a fișei de evaluare a riscurilor\n\nUn template complet de evaluare a riscurilor trebuie să conțină, pentru fiecare loc de muncă analizat, următoarele secțiuni:\n\n1. **Date de identificare**: denumire loc de muncă/post, secție/departament, număr de lucrători expuși, data evaluării, numele evaluatorului (responsabil SSM intern sau serviciu extern de prevenire).\n2. **Descrierea activității**: operațiile efectuate, echipamentele/utilajele folosite, substanțele utilizate, condițiile de mediu de lucru.\n3. **Identificarea pericolelor**: listarea sistematică pe categorii — pericole mecanice (tăiere, strivire, proiectare de particule), electrice, chimice, biologice, ergonomice (poziții forțate, ridicare de greutăți), fizice (zgomot, vibrații, temperatură), psihosociale (stres, muncă în ture) și pericole de incendiu/explozie.\n4. **Evaluarea fiecărui risc identificat**: coloanele P (probabilitate), S (severitate), NR (nivel de risc = P×S) și categoria rezultată (minor/moderat/important/critic).\n5. **Măsuri de prevenire/protecție existente**: ce este deja implementat (EIP, protecții pe utilaje, instruiri).\n6. **Măsuri suplimentare propuse**: acțiuni concrete, responsabil de implementare și termen.\n7. **Reevaluare**: nivel de risc rezidual după aplicarea măsurilor și data următoarei revizuiri.\n\nAcest tabel devine, practic, coloana vertebrală a **Planului de prevenire și protecție** al firmei — fiecare rând cu risc important sau critic trebuie să genereze cel puțin o acțiune concretă în plan, cu termen și responsabil nominalizat.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b3"
+   },
+   {
+    "type": "example",
+    "title": "Fișă completată — Operator mașină de debitat (atelier producție)",
+    "concept_key": "exemplu-fisa-risc-operator",
+    "md": "**Loc de muncă:** Operator mașină de debitat metal, atelier producție, 3 lucrători expuși.\n\n| Pericol identificat | P | S | NR (P×S) | Categorie | Măsură propusă |\n|---|---|---|---|---|---|\n| Prindere/strivire mână la zona de tăiere | 3 | 5 | 15 | Important | Verificare lunară apărători de protecție + interblocare electrică |\n| Proiectare așchii metalice în ochi | 4 | 3 | 12 | Important | Obligativitate ochelari de protecție, afișaj la post |\n| Zgomot peste 85 dB pe durata schimbului | 5 | 2 | 10 | Important | Antifoane + măsurători periodice de zgomot |\n| Alunecare pe pardoseală cu ulei de răcire | 2 | 3 | 6 | Moderat | Curățare zilnică + semnalizare zonă alunecoasă |\n\nDupă implementarea măsurilor (apărători funcționale, EIP purtat corect, program de mentenanță), nivelul de risc rezidual pentru prinderea mâinii scade de la 15 la 6 (P scade de la 3 la 2, pentru că interblocarea reduce frecvența expunerii reale la pericol). Această scădere demonstrată este exact ce caută un inspector ITM: dovada că măsurile nu sunt doar bifate pe hârtie, ci reduc efectiv riscul.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b4"
+   },
+   {
+    "type": "example",
+    "title": "Fișă completată — Angajat birou (muncă la calculator)",
+    "concept_key": "exemplu-fisa-risc-birou",
+    "md": "**Loc de muncă:** Economist/contabil, activitate de birou cu calculator, 8 ore/zi, 5 lucrători expuși.\n\n| Pericol identificat | P | S | NR (P×S) | Categorie | Măsură propusă |\n|---|---|---|---|---|---|\n| Afecțiuni musculo-scheletice (poziție statică prelungită) | 4 | 2 | 8 | Moderat | Pauze de 5 min/oră, scaun ergonomic reglabil |\n| Oboseală vizuală (expunere ecran) | 4 | 1 | 4 | Minor | Pauze vizuale, iluminat corespunzător la post |\n| Electrocutare (cablaj/prize defecte) | 1 | 5 | 5 | Moderat | Verificare periodică instalație electrică (PRAM) |\n| Incendiu (echipamente electrice, materiale combustibile) | 1 | 5 | 5 | Moderat | Stingătoare la îndemână, instruire PSI anuală |\n\nDe reținut: chiar și pentru o activitate aparent \"fără riscuri\" precum munca de birou, fișa NU poate rămâne goală. Riscul ergonomic este cel mai frecvent subestimat în evaluările de birou, deși generează cele mai multe boli profesionale pe termen lung (afecțiuni de coloană, sindrom de tunel carpian).",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă",
+    "article": "Art. 7 alin. (4) lit. a)",
+    "effective": "2006-08-25",
+    "md": "Legea 319/2006, publicată în Monitorul Oficial nr. 646/26.07.2006, stabilește la art. 7 alin. (4) lit. a) obligația angajatorului de \"a evalua riscurile pentru securitatea și sănătatea lucrătorilor, inclusiv la alegerea echipamentelor de muncă, a substanțelor sau preparatelor chimice utilizate și la amenajarea locurilor de muncă\". Modul concret de întocmire a documentației de evaluare este detaliat în Normele metodologice de aplicare, aprobate prin HG 1425/2006, care impun ca evaluarea să fie realizată pentru fiecare loc de muncă și să stea la baza planului de prevenire și protecție al angajatorului. Nerespectarea acestei obligații reprezintă contravenție sancționabilă la control ITM și poate agrava răspunderea angajatorului în cazul unui accident de muncă.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Greșeli frecvente care invalidează o fișă de evaluare a riscurilor la control ITM:**\n\n- Folosirea unei singure fișe \"generice\" pentru toată firma, în loc de câte o fișă per loc de muncă/post distinct.\n- Lipsa datei evaluării și a semnăturii evaluatorului — fișa devine nedatabilă și greu de apărat ca document valid.\n- Scoruri de risc \"cosmetizate\" (toate riscurile trecute ca minore), fără nicio măsură suplimentară propusă — un inspector experimentat identifică imediat o evaluare formală, nesusținută de realitate.\n- Absența reevaluării după un accident de muncă produs la acel post — legea impune revizuirea imediată, nu doar la termenul periodic planificat.\n- Confuzia între fișa de evaluare a riscurilor și fișa de post sau fișa de instructaj SSM — sunt documente distincte, deși complementare.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești responsabil SSM la o firmă de distribuție și trebuie să completezi fișa de evaluare a riscurilor pentru postul de **manipulant marfă în depozit** (ridicare/mutare manuală de cutii, utilizare stivuitor electric, circulație pietonală printre rafturi înalte). Identifică minimum 3 pericole relevante pentru acest post, atribuie-le note de probabilitate (P) și severitate (S) pe scala 1-5, calculează nivelul de risc (NR = P×S), încadrează-le în categorie și propune câte o măsură de prevenire pentru fiecare.",
+    "solution_md": "Exemplu de soluție corectă (valorile P/S pot varia ușor în funcție de condițiile reale din depozit, dar logica de calcul și încadrare trebuie să fie aceasta):\n\n| Pericol | P | S | NR | Categorie | Măsură propusă |\n|---|---|---|---|---|---|\n| Coliziune stivuitor-pieton pe culoarele de circulație | 3 | 5 | 15 | Important | Marcaje de circulație separate, oglinzi la intersecții, instruire specifică operatori stivuitor |\n| Afecțiuni ale coloanei vertebrale la ridicarea manuală de greutăți | 4 | 3 | 12 | Important | Instruire tehnică de ridicare corectă + limitarea greutății manipulate manual la maximum admis, cărucioare pentru sarcini grele |\n| Cădere de obiecte de la înălțime (rafturi înalte) | 2 | 4 | 8 | Moderat | Fixare/asigurare marfă pe raft, interdicție de circulație sub zona de stivuire în timpul operării |\n| Alunecare/împiedicare (paleți, cabluri pe sol) | 3 | 2 | 6 | Moderat | Menținerea culoarelor libere, curățenie zilnică, semnalizare obstacole temporare |\n\nOrice pericol cu NR ≥ 10 (aici: coliziunea cu stivuitorul și ridicarea manuală) trebuie preluat obligatoriu în Planul de prevenire și protecție, cu termen concret de implementare a măsurii și un responsabil nominalizat.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula standard folosită în matricea de risc 5x5 pentru a calcula nivelul de risc (NR)?",
+    "choices": [
+     "NR = Probabilitate + Severitate",
+     "NR = Probabilitate × Severitate",
+     "NR = Severitate / Probabilitate",
+     "NR = numărul de lucrători expuși × Severitate"
+    ],
+    "answer": 1,
+    "explain": "Nivelul de risc se obține prin înmulțirea probabilității de producere a evenimentului (P) cu severitatea consecințelor (S): NR = P × S, rezultând un scor între 1 și 25 în matricea 5x5.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce document normativ detaliază modul concret de aplicare a obligației de evaluare a riscurilor stabilite prin Legea 319/2006?",
+    "choices": [
+     "HG 1425/2006 — Normele metodologice de aplicare a Legii 319/2006",
+     "Codul Muncii (Legea 53/2003)",
+     "OMFP 1802/2014",
+     "Legea 307/2006 privind apărarea împotriva incendiilor"
+    ],
+    "answer": 0,
+    "explain": "HG 1425/2006 conține Normele metodologice de aplicare a Legii 319/2006 și stabilește, printre altele, modul de întocmire a evaluării riscurilor pe fiecare loc de muncă și legătura ei cu planul de prevenire și protecție.",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula nivelului de risc în matricea 5x5 folosită în SSM?",
+    "back": "NR (Nivel de Risc) = Probabilitate (P) × Severitate (S), fiecare notată pe o scală de la 1 la 5, rezultând un scor între 1 și 25.",
+    "concept_key": "matrice-risc-probabilitate-severitate",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce interval minim ar trebui revizuită o fișă de evaluare a riscurilor, dacă nu apar modificări în procesul de muncă?",
+    "back": "Cel puțin anual, ca bună practică; obligatoriu imediat, indiferent de termenul planificat, după orice accident de muncă produs la acel post sau modificare relevantă (echipament nou, proces nou).",
+    "concept_key": "evaluare-riscuri-obligativitate-legala",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce articol din Legea 319/2006 stabilește obligația angajatorului de a evalua riscurile pentru securitatea și sănătatea lucrătorilor?",
+    "back": "Art. 7 alin. (4) lit. a) din Legea 319/2006.",
+    "concept_key": "evaluare-riscuri-obligativitate-legala",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 categorii de încadrare a nivelului de risc în matricea 5x5 (scor 1-25)?",
+    "back": "1-4: Risc minor; 5-9: Risc moderat/tolerabil; 10-15: Risc important; 16-25: Risc inacceptabil/critic.",
+    "concept_key": "matrice-risc-probabilitate-severitate",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce trebuie întocmită câte o fișă de evaluare a riscurilor separată pentru fiecare loc de muncă, și nu una generică pe toată firma?",
+    "back": "Pentru că fiecare post expune lucrătorii la pericole diferite (ex. un operator de producție vs. un angajat de birou); o fișă generică nu identifică real pericolele specifice și nu rezistă la control ITM.",
+    "concept_key": "structura-fisa-evaluare-riscuri",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care document rezultă direct din fișele de evaluare a riscurilor cu nivel important sau critic (NR ≥ 10)?",
+    "back": "Planul de prevenire și protecție al angajatorului, în care fiecare risc important/critic trebuie să aibă o măsură concretă, un responsabil nominalizat și un termen de implementare.",
+    "concept_key": "structura-fisa-evaluare-riscuri",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este metoda alternativă, mai riguroasă, la matricea 5x5, recomandată pentru activități cu risc ridicat (construcții, industrie grea)?",
+    "back": "Metoda oficializată INCDPM (Institutul Național de Cercetare-Dezvoltare pentru Protecția Muncii), care descompune riscul în 7 factori (F1-F7) evaluați pe scală 1-7.",
+    "concept_key": "matrice-risc-probabilitate-severitate",
+    "blockId": "cmjjuxwcd00jyumkp04394bkl-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1421,
+   "flashcards": 7
+  }
+ }
+}

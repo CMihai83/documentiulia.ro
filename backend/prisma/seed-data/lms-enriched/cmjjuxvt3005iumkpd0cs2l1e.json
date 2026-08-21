@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvt3005iumkpd0cs2l1e",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Planificarea Proiectului",
+ "lesson": "Exercițiu - Plan proiect",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Exercițiu - Plan proiect\n\n## Ce este WBS (Work Breakdown Structure)\n\n**WBS** (Structura de Descompunere a Activităților) este un instrument central în planificarea proiectelor, recunoscut atât de PMBOK 7, cât și de practicile Agile sub forma *backlog-ului ierarhizat*. WBS descompune întregul proiect în componente mai mici și mai ușor de gestionat, numite **pachete de lucru** (*work packages*).\n\nScopul WBS nu este să listeze activități la întâmplare, ci să răspundă la întrebarea: „Ce trebuie livrat, în totalitate, pentru ca proiectul să fie considerat finalizat?” De aceea WBS este orientat pe **livrabile** (deliverables), nu pe acțiuni izolate. Un livrabil precum „Modul Contabilitate configurat” este un nod din WBS; „trimite email către furnizor” nu este.\n\nPrincipiul fundamental al WBS este **regula 100%**: suma tuturor elementelor de la un nivel al WBS trebuie să acopere 100% din scopul definit la nivelul superior — nici mai puțin (risc de scope necuprins), nici mai mult (risc de scope creep, adică extindere necontrolată a proiectului dincolo de ce s-a agreat inițial).\n\nÎn proiectele de implementare software (ERP, CRM, module de facturare etc.), WBS este documentul de referință pentru estimarea bugetului, alocarea resurselor și, ulterior, pentru construcția diagramei Gantt.\n\n## Niveluri de descompunere și pachete de lucru\n\nWBS se construiește de sus în jos, de obicei pe 3-4 niveluri:\n\n1. **Nivelul 0 – Proiectul** (ex: „Implementare sistem ERP la firma X SRL”)\n2. **Nivelul 1 – Faze sau componente majore** (ex: Analiză, Configurare, Migrare date, Testare, Instruire, Go-live)\n3. **Nivelul 2 – Livrabile** (ex: în faza „Configurare”: Modul Financiar-Contabil configurat, Modul Stocuri configurat)\n4. **Nivelul 3 – Pachete de lucru** — cel mai jos nivel, suficient de mic încât să poată fi estimat, atribuit unei singure persoane/echipe și urmărit ca finalizat/nefinalizat. Regula practică folosită frecvent este **„regula celor 8 ore – 80 de ore”**: un pachet de lucru nu ar trebui să dureze mai puțin de o zi, dar nici mai mult de două săptămâni de efort; sub această limită, descompunerea devine ineficientă (prea mult detaliu de gestionat), iar peste ea, riscul de a pierde controlul asupra progresului crește.\n\nFiecare pachet de lucru primește, în practică, un cod unic (ex: 1.2.3), un responsabil, o durată estimată și criterii clare de \"gata\" (definition of done). Acest ultim element este esențial: fără un criteriu obiectiv de finalizare, un pachet de lucru rămâne „aproape gata” la nesfârșit.\n\nWBS **nu** conține informații despre ordinea de execuție sau despre durată — acestea se adaugă ulterior, atunci când se construiește diagrama Gantt.\n\n## Diagrama Gantt: succesiune, dependențe și drum critic\n\nDupă ce WBS stabilește **ce** trebuie făcut, diagrama Gantt răspunde la întrebarea **când** se face fiecare activitate. Este o reprezentare vizuală, sub formă de bare orizontale plasate pe o axă a timpului, în care fiecare bară corespunde unui pachet de lucru din WBS.\n\nConstrucția unei diagrame Gantt utile presupune trei pași:\n\n1. **Estimarea duratei** fiecărui pachet de lucru (în zile sau săptămâni lucrătoare).\n2. **Stabilirea dependențelor** dintre activități. Cel mai comun tip este **Sfârșit-Început (Finish-to-Start, FS)**: activitatea B nu poate începe înainte ca activitatea A să se termine (ex: „Migrarea datelor” nu poate începe înainte ca „Curățarea datelor sursă” să fie finalizată). Există și dependențe Început-Început (SS) sau Sfârșit-Sfârșit (FF), folosite când activități se pot desfășura parțial în paralel.\n3. **Identificarea drumului critic** — succesiunea de activități dependente care determină durata minimă totală a proiectului. Orice întârziere pe drumul critic întârzie automat data de finalizare a proiectului; activitățile care nu sunt pe drumul critic au o anumită **rezervă de timp** (*float* sau *slack*) și pot fi decalate ușor fără impact asupra termenului final.\n\nÎn proiectele de implementare software, drumul critic trece aproape întotdeauna prin lanțul: analiză → configurare → migrare date → testare → go-live, deoarece aceste activități sunt strict secvențiale, în timp ce instruirea utilizatorilor sau documentația se pot desfășura adesea în paralel.\n\n## Exemplu: Exemplu WBS – Implementare ERP la o firmă de distribuție\nFirma Comexim Distrib SRL implementează un sistem ERP pentru a înlocui evidența ținută în Excel. Iată WBS-ul simplificat, pe 3 niveluri:\n\n**1. Analiză și planificare**\n- 1.1 Cerințe de business documentate\n- 1.2 Project Charter aprobat\n\n**2. Configurare sistem**\n- 2.1 Modul Financiar-Contabil configurat\n- 2.2 Modul Stocuri și Aprovizionare configurat\n- 2.3 Modul Vânzări și Facturare configurat\n\n**3. Migrare date**\n- 3.1 Date curățate și validate în format sursă\n- 3.2 Nomenclatoare (clienți, furnizori, articole) migrate\n- 3.3 Solduri inițiale migrate\n\n**4. Testare**\n- 4.1 Teste unitare pe fiecare modul\n- 4.2 Test integrat (UAT – User Acceptance Testing) semnat de client\n\n**5. Instruire utilizatori**\n- 5.1 Materiale de instruire pregătite\n- 5.2 Sesiuni de instruire livrate pe departamente\n\n**6. Go-live și suport**\n- 6.1 Sistem lansat în producție\n- 6.2 Suport post-lansare (hypercare) 2 săptămâni\n\nObservă că fiecare element de nivel 2 este un **livrabil verificabil** (ex: „configurat”, „migrate”, „livrate”), nu o simplă acțiune. Suma livrabilelor de la nivelul 2 acoperă 100% din scopul fazei de nivel 1 corespunzătoare — aceasta este regula 100% aplicată practic.\n\n## Exemplu: Exemplu Gantt – dependențe și drum critic pentru proiectul ERP\nPornind de la WBS-ul de mai sus, echipa de proiect estimează durate (în zile lucrătoare) și dependențe Sfârșit-Început (FS):\n\n| Activitate | Durată | Predecesor | Start | Final |\n|---|---|---|---|---|\n| 1. Analiză și planificare | 5 zile | – | Ziua 1 | Ziua 5 |\n| 2. Configurare sistem | 15 zile | 1 | Ziua 6 | Ziua 20 |\n| 3. Migrare date | 8 zile | 2 | Ziua 21 | Ziua 28 |\n| 4. Testare (UAT) | 6 zile | 3 | Ziua 29 | Ziua 34 |\n| 5. Instruire utilizatori | 4 zile | 2 (paralel cu 3 și 4) | Ziua 21 | Ziua 24 |\n| 6. Go-live și hypercare | 10 zile | 4 | Ziua 35 | Ziua 44 |\n\nDurata totală a proiectului este de **44 de zile lucrătoare** (aproximativ 9 săptămâni). Drumul critic este 1 → 2 → 3 → 4 → 6, deoarece aceste activități sunt strict secvențiale și însumează cele 44 de zile. Activitatea 5 (Instruire) nu este pe drumul critic: poate începe imediat după configurare și are o rezervă (*float*) de aproximativ 10 zile față de momentul în care trebuie finalizată (înainte de go-live) — o întârziere de câteva zile la instruire nu împinge automat data de lansare.\n\n⚠ Cea mai frecventă greșeală la construirea WBS este includerea de acțiuni prea granulare (ex: „trimite email de confirmare”) alături de livrabile majore (ex: „modul configurat”), ceea ce face structura inconsistentă și greu de estimat. Ține fiecare nivel al WBS la un nivel de detaliu omogen și verifică mereu regula 100% înainte de a trece la estimarea duratelor.\n\n## Exercițiu\n**Scenariu:** Firma LogiFlow SRL, distribuitor de piese auto, implementează un sistem CRM pentru echipa de vânzări (12 agenți). Ai la dispoziție următoarele informații:\n\n- Analiza cerințelor și Project Charter: 4 zile, fără predecesor.\n- Configurarea CRM (pipeline vânzări, câmpuri custom, rapoarte): 10 zile, începe după analiză.\n- Migrarea bazei de clienți existente (aprox. 3.000 de contacte) din Excel: 5 zile, începe după configurare.\n- Integrarea CRM cu sistemul de facturare existent: 6 zile, începe după configurare (se poate desfășura în paralel cu migrarea).\n- Testarea integrată (UAT): 4 zile, începe după ce migrarea ȘI integrarea sunt ambele finalizate.\n- Instruirea celor 12 agenți de vânzări: 3 zile, începe după configurare (poate rula în paralel cu migrarea și integrarea).\n- Go-live și suport post-lansare: 7 zile, începe după UAT.\n\n**Cerințe:**\n1. Construiește WBS-ul pe 2 niveluri (faze + livrabile) pentru acest proiect.\n2. Construiește diagrama Gantt (tabel cu start/final pentru fiecare activitate, presupunând start în Ziua 1).\n3. Identifică drumul critic și durata totală a proiectului.\n4. Precizează care activitate are cea mai mare rezervă de timp (float) și cât de mare este aceasta.\n\n**Soluție:** **1. WBS (2 niveluri)**\n\n1. Analiză și planificare\n   - 1.1 Cerințe documentate și Project Charter aprobat\n2. Configurare CRM\n   - 2.1 Pipeline de vânzări și câmpuri custom configurate\n   - 2.2 Rapoarte standard configurate\n3. Migrare și integrare date\n   - 3.1 Baza de clienți migrată\n   - 3.2 Integrare cu sistemul de facturare finalizată\n4. Testare\n   - 4.1 UAT semnat de echipa de vânzări\n5. Instruire\n   - 5.1 Cei 12 agenți instruiți\n6. Go-live\n   - 6.1 Sistem lansat și hypercare finalizat\n\n**2. Diagrama Gantt (start Ziua 1)**\n\n| Activitate | Durată | Predecesor | Start | Final |\n|---|---|---|---|---|\n| 1. Analiză | 4 zile | – | Ziua 1 | Ziua 4 |\n| 2. Configurare CRM | 10 zile | 1 | Ziua 5 | Ziua 14 |\n| 3. Migrare date | 5 zile | 2 | Ziua 15 | Ziua 19 |\n| 4. Integrare facturare | 6 zile | 2 | Ziua 15 | Ziua 20 |\n| 5. Instruire agenți | 3 zile | 2 | Ziua 15 | Ziua 17 |\n| 6. UAT | 4 zile | 3 și 4 | Ziua 21 | Ziua 24 |\n| 7. Go-live și hypercare | 7 zile | 6 | Ziua 25 | Ziua 31 |\n\n**3. Drum critic și durată totală**\n\nUAT (activitatea 6) așteaptă finalizarea **ambelor** activități 3 și 4. Activitatea 4 (Integrare facturare) se termină în Ziua 20, mai târziu decât Activitatea 3 (Migrare, Ziua 19) — deci activitatea 4 este cea care blochează startul UAT. Drumul critic este: 1 → 2 → 4 → 6 → 7, cu o durată totală de **31 de zile lucrătoare**.\n\n**4. Activitatea cu cea mai mare rezervă (float)**\n\nActivitatea 5 (Instruire agenți) durează doar 3 zile și se termină în Ziua 17, dar nu este necesară decât înainte de go-live (Ziua 25 – momentul în care UAT se termină și activitatea 6 se poate încheia). Rezerva ei este de 24 − 17 = **7 zile lucrătoare** — poate fi decalată cu până la 7 zile fără a afecta termenul final al proiectului.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "wbs-definitie-scop",
+    "md": "## Ce este WBS (Work Breakdown Structure)\n\n**WBS** (Structura de Descompunere a Activităților) este un instrument central în planificarea proiectelor, recunoscut atât de PMBOK 7, cât și de practicile Agile sub forma *backlog-ului ierarhizat*. WBS descompune întregul proiect în componente mai mici și mai ușor de gestionat, numite **pachete de lucru** (*work packages*).\n\nScopul WBS nu este să listeze activități la întâmplare, ci să răspundă la întrebarea: „Ce trebuie livrat, în totalitate, pentru ca proiectul să fie considerat finalizat?” De aceea WBS este orientat pe **livrabile** (deliverables), nu pe acțiuni izolate. Un livrabil precum „Modul Contabilitate configurat” este un nod din WBS; „trimite email către furnizor” nu este.\n\nPrincipiul fundamental al WBS este **regula 100%**: suma tuturor elementelor de la un nivel al WBS trebuie să acopere 100% din scopul definit la nivelul superior — nici mai puțin (risc de scope necuprins), nici mai mult (risc de scope creep, adică extindere necontrolată a proiectului dincolo de ce s-a agreat inițial).\n\nÎn proiectele de implementare software (ERP, CRM, module de facturare etc.), WBS este documentul de referință pentru estimarea bugetului, alocarea resurselor și, ulterior, pentru construcția diagramei Gantt.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "wbs-niveluri-descompunere",
+    "md": "## Niveluri de descompunere și pachete de lucru\n\nWBS se construiește de sus în jos, de obicei pe 3-4 niveluri:\n\n1. **Nivelul 0 – Proiectul** (ex: „Implementare sistem ERP la firma X SRL”)\n2. **Nivelul 1 – Faze sau componente majore** (ex: Analiză, Configurare, Migrare date, Testare, Instruire, Go-live)\n3. **Nivelul 2 – Livrabile** (ex: în faza „Configurare”: Modul Financiar-Contabil configurat, Modul Stocuri configurat)\n4. **Nivelul 3 – Pachete de lucru** — cel mai jos nivel, suficient de mic încât să poată fi estimat, atribuit unei singure persoane/echipe și urmărit ca finalizat/nefinalizat. Regula practică folosită frecvent este **„regula celor 8 ore – 80 de ore”**: un pachet de lucru nu ar trebui să dureze mai puțin de o zi, dar nici mai mult de două săptămâni de efort; sub această limită, descompunerea devine ineficientă (prea mult detaliu de gestionat), iar peste ea, riscul de a pierde controlul asupra progresului crește.\n\nFiecare pachet de lucru primește, în practică, un cod unic (ex: 1.2.3), un responsabil, o durată estimată și criterii clare de \"gata\" (definition of done). Acest ultim element este esențial: fără un criteriu obiectiv de finalizare, un pachet de lucru rămâne „aproape gata” la nesfârșit.\n\nWBS **nu** conține informații despre ordinea de execuție sau despre durată — acestea se adaugă ulterior, atunci când se construiește diagrama Gantt.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "diagrama-gantt-dependente",
+    "md": "## Diagrama Gantt: succesiune, dependențe și drum critic\n\nDupă ce WBS stabilește **ce** trebuie făcut, diagrama Gantt răspunde la întrebarea **când** se face fiecare activitate. Este o reprezentare vizuală, sub formă de bare orizontale plasate pe o axă a timpului, în care fiecare bară corespunde unui pachet de lucru din WBS.\n\nConstrucția unei diagrame Gantt utile presupune trei pași:\n\n1. **Estimarea duratei** fiecărui pachet de lucru (în zile sau săptămâni lucrătoare).\n2. **Stabilirea dependențelor** dintre activități. Cel mai comun tip este **Sfârșit-Început (Finish-to-Start, FS)**: activitatea B nu poate începe înainte ca activitatea A să se termine (ex: „Migrarea datelor” nu poate începe înainte ca „Curățarea datelor sursă” să fie finalizată). Există și dependențe Început-Început (SS) sau Sfârșit-Sfârșit (FF), folosite când activități se pot desfășura parțial în paralel.\n3. **Identificarea drumului critic** — succesiunea de activități dependente care determină durata minimă totală a proiectului. Orice întârziere pe drumul critic întârzie automat data de finalizare a proiectului; activitățile care nu sunt pe drumul critic au o anumită **rezervă de timp** (*float* sau *slack*) și pot fi decalate ușor fără impact asupra termenului final.\n\nÎn proiectele de implementare software, drumul critic trece aproape întotdeauna prin lanțul: analiză → configurare → migrare date → testare → go-live, deoarece aceste activități sunt strict secvențiale, în timp ce instruirea utilizatorilor sau documentația se pot desfășura adesea în paralel.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b3"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu WBS – Implementare ERP la o firmă de distribuție",
+    "concept_key": "wbs-definitie-scop",
+    "md": "Firma Comexim Distrib SRL implementează un sistem ERP pentru a înlocui evidența ținută în Excel. Iată WBS-ul simplificat, pe 3 niveluri:\n\n**1. Analiză și planificare**\n- 1.1 Cerințe de business documentate\n- 1.2 Project Charter aprobat\n\n**2. Configurare sistem**\n- 2.1 Modul Financiar-Contabil configurat\n- 2.2 Modul Stocuri și Aprovizionare configurat\n- 2.3 Modul Vânzări și Facturare configurat\n\n**3. Migrare date**\n- 3.1 Date curățate și validate în format sursă\n- 3.2 Nomenclatoare (clienți, furnizori, articole) migrate\n- 3.3 Solduri inițiale migrate\n\n**4. Testare**\n- 4.1 Teste unitare pe fiecare modul\n- 4.2 Test integrat (UAT – User Acceptance Testing) semnat de client\n\n**5. Instruire utilizatori**\n- 5.1 Materiale de instruire pregătite\n- 5.2 Sesiuni de instruire livrate pe departamente\n\n**6. Go-live și suport**\n- 6.1 Sistem lansat în producție\n- 6.2 Suport post-lansare (hypercare) 2 săptămâni\n\nObservă că fiecare element de nivel 2 este un **livrabil verificabil** (ex: „configurat”, „migrate”, „livrate”), nu o simplă acțiune. Suma livrabilelor de la nivelul 2 acoperă 100% din scopul fazei de nivel 1 corespunzătoare — aceasta este regula 100% aplicată practic.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b4"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu Gantt – dependențe și drum critic pentru proiectul ERP",
+    "concept_key": "diagrama-gantt-dependente",
+    "md": "Pornind de la WBS-ul de mai sus, echipa de proiect estimează durate (în zile lucrătoare) și dependențe Sfârșit-Început (FS):\n\n| Activitate | Durată | Predecesor | Start | Final |\n|---|---|---|---|---|\n| 1. Analiză și planificare | 5 zile | – | Ziua 1 | Ziua 5 |\n| 2. Configurare sistem | 15 zile | 1 | Ziua 6 | Ziua 20 |\n| 3. Migrare date | 8 zile | 2 | Ziua 21 | Ziua 28 |\n| 4. Testare (UAT) | 6 zile | 3 | Ziua 29 | Ziua 34 |\n| 5. Instruire utilizatori | 4 zile | 2 (paralel cu 3 și 4) | Ziua 21 | Ziua 24 |\n| 6. Go-live și hypercare | 10 zile | 4 | Ziua 35 | Ziua 44 |\n\nDurata totală a proiectului este de **44 de zile lucrătoare** (aproximativ 9 săptămâni). Drumul critic este 1 → 2 → 3 → 4 → 6, deoarece aceste activități sunt strict secvențiale și însumează cele 44 de zile. Activitatea 5 (Instruire) nu este pe drumul critic: poate începe imediat după configurare și are o rezervă (*float*) de aproximativ 10 zile față de momentul în care trebuie finalizată (înainte de go-live) — o întârziere de câteva zile la instruire nu împinge automat data de lansare.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală la construirea WBS este includerea de acțiuni prea granulare (ex: „trimite email de confirmare”) alături de livrabile majore (ex: „modul configurat”), ceea ce face structura inconsistentă și greu de estimat. Ține fiecare nivel al WBS la un nivel de detaliu omogen și verifică mereu regula 100% înainte de a trece la estimarea duratelor.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "**Scenariu:** Firma LogiFlow SRL, distribuitor de piese auto, implementează un sistem CRM pentru echipa de vânzări (12 agenți). Ai la dispoziție următoarele informații:\n\n- Analiza cerințelor și Project Charter: 4 zile, fără predecesor.\n- Configurarea CRM (pipeline vânzări, câmpuri custom, rapoarte): 10 zile, începe după analiză.\n- Migrarea bazei de clienți existente (aprox. 3.000 de contacte) din Excel: 5 zile, începe după configurare.\n- Integrarea CRM cu sistemul de facturare existent: 6 zile, începe după configurare (se poate desfășura în paralel cu migrarea).\n- Testarea integrată (UAT): 4 zile, începe după ce migrarea ȘI integrarea sunt ambele finalizate.\n- Instruirea celor 12 agenți de vânzări: 3 zile, începe după configurare (poate rula în paralel cu migrarea și integrarea).\n- Go-live și suport post-lansare: 7 zile, începe după UAT.\n\n**Cerințe:**\n1. Construiește WBS-ul pe 2 niveluri (faze + livrabile) pentru acest proiect.\n2. Construiește diagrama Gantt (tabel cu start/final pentru fiecare activitate, presupunând start în Ziua 1).\n3. Identifică drumul critic și durata totală a proiectului.\n4. Precizează care activitate are cea mai mare rezervă de timp (float) și cât de mare este aceasta.",
+    "solution_md": "**1. WBS (2 niveluri)**\n\n1. Analiză și planificare\n   - 1.1 Cerințe documentate și Project Charter aprobat\n2. Configurare CRM\n   - 2.1 Pipeline de vânzări și câmpuri custom configurate\n   - 2.2 Rapoarte standard configurate\n3. Migrare și integrare date\n   - 3.1 Baza de clienți migrată\n   - 3.2 Integrare cu sistemul de facturare finalizată\n4. Testare\n   - 4.1 UAT semnat de echipa de vânzări\n5. Instruire\n   - 5.1 Cei 12 agenți instruiți\n6. Go-live\n   - 6.1 Sistem lansat și hypercare finalizat\n\n**2. Diagrama Gantt (start Ziua 1)**\n\n| Activitate | Durată | Predecesor | Start | Final |\n|---|---|---|---|---|\n| 1. Analiză | 4 zile | – | Ziua 1 | Ziua 4 |\n| 2. Configurare CRM | 10 zile | 1 | Ziua 5 | Ziua 14 |\n| 3. Migrare date | 5 zile | 2 | Ziua 15 | Ziua 19 |\n| 4. Integrare facturare | 6 zile | 2 | Ziua 15 | Ziua 20 |\n| 5. Instruire agenți | 3 zile | 2 | Ziua 15 | Ziua 17 |\n| 6. UAT | 4 zile | 3 și 4 | Ziua 21 | Ziua 24 |\n| 7. Go-live și hypercare | 7 zile | 6 | Ziua 25 | Ziua 31 |\n\n**3. Drum critic și durată totală**\n\nUAT (activitatea 6) așteaptă finalizarea **ambelor** activități 3 și 4. Activitatea 4 (Integrare facturare) se termină în Ziua 20, mai târziu decât Activitatea 3 (Migrare, Ziua 19) — deci activitatea 4 este cea care blochează startul UAT. Drumul critic este: 1 → 2 → 4 → 6 → 7, cu o durată totală de **31 de zile lucrătoare**.\n\n**4. Activitatea cu cea mai mare rezervă (float)**\n\nActivitatea 5 (Instruire agenți) durează doar 3 zile și se termină în Ziua 17, dar nu este necesară decât înainte de go-live (Ziua 25 – momentul în care UAT se termină și activitatea 6 se poate încheia). Rezerva ei este de 24 − 17 = **7 zile lucrătoare** — poate fi decalată cu până la 7 zile fără a afecta termenul final al proiectului.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este regula fundamentală pe care trebuie să o respecte fiecare nivel al unui WBS?",
+    "choices": [
+     "Regula 8-80 (fiecare pachet de lucru durează între 8 și 80 de ore)",
+     "Regula 100% (elementele unui nivel acoperă în totalitate scopul nivelului superior, fără mai puțin sau mai mult)",
+     "Regula 20-80 (principiul Pareto aplicat la estimarea duratelor)",
+     "Regula FS (toate dependențele trebuie să fie de tip Sfârșit-Început)"
+    ],
+    "answer": 1,
+    "explain": "Regula 100% este principiul de bază al WBS: suma componentelor unui nivel trebuie să acopere exact scopul nivelului părinte, fără scope necuprins și fără scope creep. Regula 8-80 este un ghid practic pentru dimensiunea pachetelor de lucru, nu regula fundamentală a WBS-ului.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce reprezintă drumul critic într-o diagramă Gantt?",
+    "choices": [
+     "Activitatea cu cea mai mare durată individuală din proiect",
+     "Succesiunea de activități dependente care determină durata minimă totală a proiectului, fără nicio rezervă de timp",
+     "Lista activităților care pot fi executate în paralel",
+     "Activitățile care au cel mai mare buget alocat"
+    ],
+    "answer": 1,
+    "explain": "Drumul critic este lanțul de activități dependente a căror durată însumată dă durata minimă a proiectului; orice întârziere pe acest lanț întârzie proiectul. Activitățile din afara drumului critic au rezervă de timp (float) și pot fi decalate fără impact asupra termenului final.",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este WBS (Work Breakdown Structure)?",
+    "back": "Structura de Descompunere a Activităților – descompune proiectul în livrabile și pachete de lucru mai mici, ușor de estimat și atribuit.",
+    "concept_key": "wbs-definitie-scop",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce spune regula 100% în WBS?",
+    "back": "Suma elementelor de la un nivel al WBS trebuie să acopere exact 100% din scopul nivelului superior – nici mai puțin, nici mai mult (fără scope necuprins sau scope creep).",
+    "concept_key": "wbs-definitie-scop",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un pachet de lucru (work package)?",
+    "back": "Cel mai jos nivel din WBS: o unitate de lucru suficient de mică pentru a fi estimată, atribuită unei persoane/echipe și urmărită ca finalizată sau nu, de obicei cu durată între 1 zi și 2 săptămâni (regula 8-80).",
+    "concept_key": "wbs-niveluri-descompunere",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tip de dependență este cea mai comună în diagrama Gantt?",
+    "back": "Sfârșit-Început (Finish-to-Start, FS): activitatea următoare nu poate începe înainte ca activitatea precedentă să se fi terminat.",
+    "concept_key": "diagrama-gantt-dependente",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este drumul critic (critical path)?",
+    "back": "Succesiunea de activități dependente, fără rezervă de timp (float), a cărei durată totală determină durata minimă a întregului proiect; orice întârziere pe acest drum întârzie proiectul.",
+    "concept_key": "diagrama-gantt-dependente",
+    "blockId": "cmjjuxvt3005iumkpd0cs2l1e-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1504,
+   "flashcards": 5
+  }
+ }
+}

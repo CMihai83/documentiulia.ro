@@ -1,0 +1,140 @@
+{
+ "lessonId": "cmjjuxvvl007bumkpvzjmbjwd",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Events",
+ "lesson": "Simulare Sprint complet",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Simulare Sprint complet\n\n## Sprintul: containerul tuturor evenimentelor Scrum\n\nConform Scrum Guide 2020, **Sprintul** este \"inima\" Scrum — un interval de timp fix (time-box) de maximum o lună calendaristică, în care echipa creează un Increment de produs \"Done\", utilizabil și potențial livrabil. Sprintul este el însuși un eveniment care le conține pe toate celelalte patru:\n\n1. **Sprint Planning** — deschide Sprintul, stabilește ce se va face și cum.\n2. **Daily Scrum** — se repetă zilnic, 15 minute, pentru inspecția progresului.\n3. **Sprint Review** — închide partea de \"lucru pe produs\", inspectează Incrementul cu stakeholderii.\n4. **Sprint Retrospectivă** — închide Sprintul, inspectează modul de lucru al echipei.\n\nToate aceste evenimente sunt **time-boxate** (au o durată maximă fixă) și se desfășoară în interiorul aceluiași Sprint, fără pauze între ele. Un Sprint nu poate fi scurtat prin anularea unui eveniment — dacă un eveniment lipsește, se pierd oportunități de inspecție și adaptare, iar echipa lucrează practic în regim de cascadă (waterfall) deghizat în Scrum.\n\nUn Sprint nou începe imediat după încheierea celui anterior — nu există \"zile libere\" între Sprinturi. Durata unui Sprint rămâne constantă pe tot parcursul unui proiect (de exemplu, mereu 2 săptămâni), pentru a crea un ritm predictibil (cadență) pentru echipă și stakeholderi.\n\n## Sprint Planning: cele trei întrebări\n\nSprint Planning inițiază Sprintul, propunând munca ce va fi realizată. Planul rezultat este construit prin efortul colaborativ al întregii echipe Scrum (Product Owner, Scrum Master, Developers) și răspunde la trei întrebări:\n\n**Topic 1 — De ce este valoros acest Sprint?** Product Owner-ul propune cum ar putea produsul să crească în valoare, iar întreaga echipă colaborează pentru a defini un **Sprint Goal** — un obiectiv unic, coerent, care oferă flexibilitate Developerilor privind exact ce se livrează.\n\n**Topic 2 — Ce poate fi Done în acest Sprint?** Developerii selectează elemente din Product Backlog (deja rafinate în ședințele de Backlog Refinement) pe care estimează că le pot finaliza, ținând cont de capacitatea reală a echipei (zile-om disponibile, concedii, alte angajamente).\n\n**Topic 3 — Cum va fi făcută munca aleasă?** Developerii descompun elementele selectate în activități concrete, de regulă de cel mult o zi, formând **Sprint Backlog-ul**: Sprint Goal + elementele selectate + planul de livrare.\n\n**Time-box:** maximum 8 ore pentru un Sprint de o lună; proporțional mai scurt pentru Sprinturi mai scurte (de exemplu, aproximativ 4 ore pentru un Sprint de 2 săptămâni).\n\n## Daily Scrum: sincronizare de 15 minute\n\nDaily Scrum este un eveniment de **15 minute**, ținut în fiecare zi lucrătoare a Sprintului, la aceeași oră și în același loc, pentru a reduce complexitatea. Scopul lui este să inspecteze progresul către Sprint Goal și să adapteze Sprint Backlog-ul dacă este necesar, ajustând munca planificată pentru următoarele 24 de ore.\n\nParticipă **Developerii** — ei sunt responsabili de conducerea evenimentului, iar formatul este ales de ei (întrebările clasice \"ce am făcut ieri / ce fac azi / ce blocaje am\" sunt doar un exemplu, nu o regulă obligatorie). Scrum Master-ul asigură că evenimentul are loc și respectă time-box-ul, dar nu trebuie să fie prezent; Product Owner-ul poate participa dacă lucrează activ la elemente din Sprint Backlog.\n\nGreșeala frecventă în organizațiile românești care adoptă Scrum este transformarea Daily Scrum-ului într-un **raport de status către manager**. Acest lucru contrazice scopul evenimentului: el este o ședință de planificare tehnică a echipei, nu o ședință de control ierarhic.\n\n## Exemplu: Sprint Planning la TehnoConta SRL — implementare modul de facturare electronică\nEchipa Scrum de la **TehnoConta SRL** (firmă care implementează un ERP pentru clienți din retail) lucrează în Sprinturi de **2 săptămâni** (10 zile lucrătoare). Echipa are 5 Developeri.\n\n**Time-box Sprint Planning:** proporțional cu 8h/lună → aproximativ **4 ore**.\n\n**Topic 1 (aprox. 45 min):** Product Owner-ul propune: \"Clienții noștri au nevoie ca facturile emise din ERP să respecte formatul e-Factura RO_CIUS.\" Echipa formulează Sprint Goal-ul: *\"La finalul Sprintului, un utilizator poate genera și transmite automat o factură electronică validă din modulul de facturare.\"*\n\n**Topic 2 (aprox. 1h30):** Developerii analizează Product Backlog-ul rafinat și selectează 6 elemente (user stories), estimate anterior în Story Points prin Planning Poker: generare XML RO_CIUS (5 SP), semnătură digitală (3 SP), transmitere către SPV (8 SP), validare erori (5 SP), interfață utilizator (3 SP), teste de integrare (5 SP) — total 29 SP. Capacitatea istorică (velocity) a echipei este de 28-30 SP/Sprint, deci selecția este realistă.\n\n**Topic 3 (aprox. 1h45):** echipa descompune fiecare user story în task-uri de maximum 1 zi (de exemplu, \"transmitere către SPV\" devine: configurare API SPV, tratare coduri de răspuns, retry logic, logging), rezultând Sprint Backlog-ul final, afișat pe un board Kanban (To Do / In Progress / Done).\n\n## Sprint Review și Sprint Retrospectivă\n\n**Sprint Review** are loc la finalul Sprintului, pentru a inspecta rezultatul (Incrementul) și a adapta Product Backlog-ul. Echipa Scrum prezintă rezultatul muncii stakeholderilor cheie, discută ce a mers bine, ce probleme au apărut și cum s-a schimbat piața sau nevoile clientului. Nu este o simplă demonstrație unidirecțională, ci o sesiune de lucru colaborativă. **Time-box:** maximum 4 ore pentru un Sprint de o lună (proporțional, aproximativ 2 ore pentru un Sprint de 2 săptămâni).\n\n**Sprint Retrospectivă** are loc după Sprint Review și înainte de următorul Sprint Planning. Scopul ei este să planifice modalități de a crește calitatea și eficacitatea echipei — nu produsul, ci **procesul de lucru**: colaborare, instrumente, Definition of Done, relații interpersonale. Echipa identifică ce a mers bine, ce probleme a avut și cum le va rezolva. **Time-box:** maximum 3 ore pentru un Sprint de o lună (proporțional, aproximativ 1,5 ore pentru un Sprint de 2 săptămâni).\n\nDiferența esențială: Review = inspectăm **produsul**, cu stakeholderii; Retrospectivă = inspectăm **procesul**, doar echipa Scrum.\n\n## Exemplu: O zi din viața Sprintului: de la Daily Scrum la Retrospectivă\n**Ziua 7 din Sprint — Daily Scrum (15 min):** Developerul Andrei spune: \"Am terminat semnătura digitală ieri. Azi lucrez la transmiterea către SPV, dar am o blocare: nu avem încă acces la mediul de test al ANAF.\" Echipa decide, chiar în cele 15 minute, ca Scrum Master-ul să escaladeze urgent obținerea accesului, iar Andrei să lucreze între timp la validarea erorilor XML.\n\n**Ziua 10 — Sprint Review (aprox. 2 ore):** Echipa demonstrează live modulul: se generează o factură, se semnează digital și se transmite către mediul de test SPV. Reprezentantul clientului (retailer) observă: \"Ar fi util să vedem și un istoric al facturilor respinse, cu motivul respingerii.\" Product Owner-ul notează acest element nou direct în Product Backlog, ca prioritate pentru rafinare.\n\n**Aceeași zi — Sprint Retrospectivă (aprox. 1,5 ore):** folosind formatul \"Start / Stop / Continue\", echipa concluzionează: *Start* — să ceară accesul la medii de test cu 3 zile înainte de Sprint Planning; *Stop* — să nu mai estimeze task-uri de integrare externă fără o etapă de \"spike\" (investigare tehnică) anterioară; *Continue* — board-ul Kanban vizual, care a ajutat mult la transparență. Aceste acțiuni intră ca elemente concrete în următorul Sprint Backlog.\n\n⚠ **Greșeli frecvente în simularea sau aplicarea unui Sprint complet:**\n\n- **Sărirea Retrospectivei** sub pretextul \"nu avem timp\" — este cea mai frecventă greșeală și duce, pe termen mediu, la stagnarea îmbunătățirii echipei.\n- **Daily Scrum transformat în raport către Scrum Master/manager**, în loc de sincronizare între Developeri.\n- **Sprint Review fără stakeholderi reali** — devine o demonstrație internă fără valoare de adaptare a Product Backlog-ului.\n- **Depășirea time-box-urilor** — un Sprint Planning care durează 6 ore pentru un Sprint de 2 săptămâni (dublu față de referința proporțională de ~4 ore) semnalează, de regulă, un Product Backlog insuficient rafinat înainte de Planning.\n- **Confuzia Review-Retrospectivă** — discutarea problemelor de proces (comunicare, unelte) în fața stakeholderilor, în loc să fie rezervată Retrospectivei.\n\n## Exercițiu\nEchipa Scrum de la firma **DigitalERP SRL** lucrează cu Sprinturi de **3 săptămâni** (15 zile lucrătoare). Ai la dispoziție următoarele informații:\n\n- Echipa are 6 Developeri.\n- Product Owner-ul propune un Sprint Goal legat de modulul de gestiune stocuri.\n- În Sprintul anterior, Retrospectiva a fost anulată \"din lipsă de timp\", iar Daily Scrum-ul se ține cu managerul de proiect care cere fiecărui Developer un raport individual de status.\n\n**Cerințe:**\n1. Calculează time-box-urile corecte (proporționale) pentru Sprint Planning, Sprint Review și Sprint Retrospectivă pentru acest Sprint de 3 săptămâni.\n2. Identifică cele două abateri de la Scrum Guide 2020 din practica echipei și explică de ce sunt problematice.\n3. Propune o corecție pentru fiecare abatere.\n\n**Soluție:** **1. Time-box-uri (referință: 8h/4h/3h pentru Sprint de 1 lună ≈ 4 săptămâni, deci proporția este ~3/4 din valorile lunare pentru un Sprint de 3 săptămâni):**\n- Sprint Planning: aproximativ 6 ore (8h × 3/4)\n- Sprint Review: aproximativ 3 ore (4h × 3/4)\n- Sprint Retrospectivă: aproximativ 2,25 ore (3h × 3/4)\n- Daily Scrum: rămâne fix 15 minute, indiferent de lungimea Sprintului.\n\n**2. Abaterile identificate:**\n- **Anularea Retrospectivei** — contrazice principiul de inspecție-adaptare continuă a procesului; echipa pierde ocazia de a corecta probleme recurente și riscă să repete aceleași blocaje Sprint după Sprint.\n- **Daily Scrum condus de managerul de proiect ca raport individual** — Daily Scrum aparține Developerilor și are ca scop planificarea următoarelor 24 de ore pentru atingerea Sprint Goal-ului, nu raportarea ierarhică a activității individuale.\n\n**3. Corecții propuse:**\n- Retrospectiva se reprogramează obligatoriu la finalul fiecărui Sprint, cu time-box fix de 2,25 ore; dacă timpul e insuficient, se reduce mai degrabă amploarea Sprint Review-ului decât se elimină Retrospectiva.\n- Scrum Master-ul discută cu managerul de proiect rolul corect al Daily Scrum-ului (coaching pe Scrum Guide), iar managerul primește vizibilitate prin Sprint Backlog și board-ul Kanban, nu prin participare activă cu cerințe de raportare în Daily Scrum.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "sprint-ciclu-evenimente",
+    "md": "## Sprintul: containerul tuturor evenimentelor Scrum\n\nConform Scrum Guide 2020, **Sprintul** este \"inima\" Scrum — un interval de timp fix (time-box) de maximum o lună calendaristică, în care echipa creează un Increment de produs \"Done\", utilizabil și potențial livrabil. Sprintul este el însuși un eveniment care le conține pe toate celelalte patru:\n\n1. **Sprint Planning** — deschide Sprintul, stabilește ce se va face și cum.\n2. **Daily Scrum** — se repetă zilnic, 15 minute, pentru inspecția progresului.\n3. **Sprint Review** — închide partea de \"lucru pe produs\", inspectează Incrementul cu stakeholderii.\n4. **Sprint Retrospectivă** — închide Sprintul, inspectează modul de lucru al echipei.\n\nToate aceste evenimente sunt **time-boxate** (au o durată maximă fixă) și se desfășoară în interiorul aceluiași Sprint, fără pauze între ele. Un Sprint nu poate fi scurtat prin anularea unui eveniment — dacă un eveniment lipsește, se pierd oportunități de inspecție și adaptare, iar echipa lucrează practic în regim de cascadă (waterfall) deghizat în Scrum.\n\nUn Sprint nou începe imediat după încheierea celui anterior — nu există \"zile libere\" între Sprinturi. Durata unui Sprint rămâne constantă pe tot parcursul unui proiect (de exemplu, mereu 2 săptămâni), pentru a crea un ritm predictibil (cadență) pentru echipă și stakeholderi.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sprint-planning-detaliat",
+    "md": "## Sprint Planning: cele trei întrebări\n\nSprint Planning inițiază Sprintul, propunând munca ce va fi realizată. Planul rezultat este construit prin efortul colaborativ al întregii echipe Scrum (Product Owner, Scrum Master, Developers) și răspunde la trei întrebări:\n\n**Topic 1 — De ce este valoros acest Sprint?** Product Owner-ul propune cum ar putea produsul să crească în valoare, iar întreaga echipă colaborează pentru a defini un **Sprint Goal** — un obiectiv unic, coerent, care oferă flexibilitate Developerilor privind exact ce se livrează.\n\n**Topic 2 — Ce poate fi Done în acest Sprint?** Developerii selectează elemente din Product Backlog (deja rafinate în ședințele de Backlog Refinement) pe care estimează că le pot finaliza, ținând cont de capacitatea reală a echipei (zile-om disponibile, concedii, alte angajamente).\n\n**Topic 3 — Cum va fi făcută munca aleasă?** Developerii descompun elementele selectate în activități concrete, de regulă de cel mult o zi, formând **Sprint Backlog-ul**: Sprint Goal + elementele selectate + planul de livrare.\n\n**Time-box:** maximum 8 ore pentru un Sprint de o lună; proporțional mai scurt pentru Sprinturi mai scurte (de exemplu, aproximativ 4 ore pentru un Sprint de 2 săptămâni).",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "daily-scrum-scop",
+    "md": "## Daily Scrum: sincronizare de 15 minute\n\nDaily Scrum este un eveniment de **15 minute**, ținut în fiecare zi lucrătoare a Sprintului, la aceeași oră și în același loc, pentru a reduce complexitatea. Scopul lui este să inspecteze progresul către Sprint Goal și să adapteze Sprint Backlog-ul dacă este necesar, ajustând munca planificată pentru următoarele 24 de ore.\n\nParticipă **Developerii** — ei sunt responsabili de conducerea evenimentului, iar formatul este ales de ei (întrebările clasice \"ce am făcut ieri / ce fac azi / ce blocaje am\" sunt doar un exemplu, nu o regulă obligatorie). Scrum Master-ul asigură că evenimentul are loc și respectă time-box-ul, dar nu trebuie să fie prezent; Product Owner-ul poate participa dacă lucrează activ la elemente din Sprint Backlog.\n\nGreșeala frecventă în organizațiile românești care adoptă Scrum este transformarea Daily Scrum-ului într-un **raport de status către manager**. Acest lucru contrazice scopul evenimentului: el este o ședință de planificare tehnică a echipei, nu o ședință de control ierarhic.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b3"
+   },
+   {
+    "type": "example",
+    "title": "Sprint Planning la TehnoConta SRL — implementare modul de facturare electronică",
+    "concept_key": "sprint-planning-detaliat",
+    "md": "Echipa Scrum de la **TehnoConta SRL** (firmă care implementează un ERP pentru clienți din retail) lucrează în Sprinturi de **2 săptămâni** (10 zile lucrătoare). Echipa are 5 Developeri.\n\n**Time-box Sprint Planning:** proporțional cu 8h/lună → aproximativ **4 ore**.\n\n**Topic 1 (aprox. 45 min):** Product Owner-ul propune: \"Clienții noștri au nevoie ca facturile emise din ERP să respecte formatul e-Factura RO_CIUS.\" Echipa formulează Sprint Goal-ul: *\"La finalul Sprintului, un utilizator poate genera și transmite automat o factură electronică validă din modulul de facturare.\"*\n\n**Topic 2 (aprox. 1h30):** Developerii analizează Product Backlog-ul rafinat și selectează 6 elemente (user stories), estimate anterior în Story Points prin Planning Poker: generare XML RO_CIUS (5 SP), semnătură digitală (3 SP), transmitere către SPV (8 SP), validare erori (5 SP), interfață utilizator (3 SP), teste de integrare (5 SP) — total 29 SP. Capacitatea istorică (velocity) a echipei este de 28-30 SP/Sprint, deci selecția este realistă.\n\n**Topic 3 (aprox. 1h45):** echipa descompune fiecare user story în task-uri de maximum 1 zi (de exemplu, \"transmitere către SPV\" devine: configurare API SPV, tratare coduri de răspuns, retry logic, logging), rezultând Sprint Backlog-ul final, afișat pe un board Kanban (To Do / In Progress / Done).",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sprint-review-retrospectiva",
+    "md": "## Sprint Review și Sprint Retrospectivă\n\n**Sprint Review** are loc la finalul Sprintului, pentru a inspecta rezultatul (Incrementul) și a adapta Product Backlog-ul. Echipa Scrum prezintă rezultatul muncii stakeholderilor cheie, discută ce a mers bine, ce probleme au apărut și cum s-a schimbat piața sau nevoile clientului. Nu este o simplă demonstrație unidirecțională, ci o sesiune de lucru colaborativă. **Time-box:** maximum 4 ore pentru un Sprint de o lună (proporțional, aproximativ 2 ore pentru un Sprint de 2 săptămâni).\n\n**Sprint Retrospectivă** are loc după Sprint Review și înainte de următorul Sprint Planning. Scopul ei este să planifice modalități de a crește calitatea și eficacitatea echipei — nu produsul, ci **procesul de lucru**: colaborare, instrumente, Definition of Done, relații interpersonale. Echipa identifică ce a mers bine, ce probleme a avut și cum le va rezolva. **Time-box:** maximum 3 ore pentru un Sprint de o lună (proporțional, aproximativ 1,5 ore pentru un Sprint de 2 săptămâni).\n\nDiferența esențială: Review = inspectăm **produsul**, cu stakeholderii; Retrospectivă = inspectăm **procesul**, doar echipa Scrum.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b5"
+   },
+   {
+    "type": "example",
+    "title": "O zi din viața Sprintului: de la Daily Scrum la Retrospectivă",
+    "concept_key": "sprint-review-retrospectiva",
+    "md": "**Ziua 7 din Sprint — Daily Scrum (15 min):** Developerul Andrei spune: \"Am terminat semnătura digitală ieri. Azi lucrez la transmiterea către SPV, dar am o blocare: nu avem încă acces la mediul de test al ANAF.\" Echipa decide, chiar în cele 15 minute, ca Scrum Master-ul să escaladeze urgent obținerea accesului, iar Andrei să lucreze între timp la validarea erorilor XML.\n\n**Ziua 10 — Sprint Review (aprox. 2 ore):** Echipa demonstrează live modulul: se generează o factură, se semnează digital și se transmite către mediul de test SPV. Reprezentantul clientului (retailer) observă: \"Ar fi util să vedem și un istoric al facturilor respinse, cu motivul respingerii.\" Product Owner-ul notează acest element nou direct în Product Backlog, ca prioritate pentru rafinare.\n\n**Aceeași zi — Sprint Retrospectivă (aprox. 1,5 ore):** folosind formatul \"Start / Stop / Continue\", echipa concluzionează: *Start* — să ceară accesul la medii de test cu 3 zile înainte de Sprint Planning; *Stop* — să nu mai estimeze task-uri de integrare externă fără o etapă de \"spike\" (investigare tehnică) anterioară; *Continue* — board-ul Kanban vizual, care a ajutat mult la transparență. Aceste acțiuni intră ca elemente concrete în următorul Sprint Backlog.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Greșeli frecvente în simularea sau aplicarea unui Sprint complet:**\n\n- **Sărirea Retrospectivei** sub pretextul \"nu avem timp\" — este cea mai frecventă greșeală și duce, pe termen mediu, la stagnarea îmbunătățirii echipei.\n- **Daily Scrum transformat în raport către Scrum Master/manager**, în loc de sincronizare între Developeri.\n- **Sprint Review fără stakeholderi reali** — devine o demonstrație internă fără valoare de adaptare a Product Backlog-ului.\n- **Depășirea time-box-urilor** — un Sprint Planning care durează 6 ore pentru un Sprint de 2 săptămâni (dublu față de referința proporțională de ~4 ore) semnalează, de regulă, un Product Backlog insuficient rafinat înainte de Planning.\n- **Confuzia Review-Retrospectivă** — discutarea problemelor de proces (comunicare, unelte) în fața stakeholderilor, în loc să fie rezervată Retrospectivei.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Echipa Scrum de la firma **DigitalERP SRL** lucrează cu Sprinturi de **3 săptămâni** (15 zile lucrătoare). Ai la dispoziție următoarele informații:\n\n- Echipa are 6 Developeri.\n- Product Owner-ul propune un Sprint Goal legat de modulul de gestiune stocuri.\n- În Sprintul anterior, Retrospectiva a fost anulată \"din lipsă de timp\", iar Daily Scrum-ul se ține cu managerul de proiect care cere fiecărui Developer un raport individual de status.\n\n**Cerințe:**\n1. Calculează time-box-urile corecte (proporționale) pentru Sprint Planning, Sprint Review și Sprint Retrospectivă pentru acest Sprint de 3 săptămâni.\n2. Identifică cele două abateri de la Scrum Guide 2020 din practica echipei și explică de ce sunt problematice.\n3. Propune o corecție pentru fiecare abatere.",
+    "solution_md": "**1. Time-box-uri (referință: 8h/4h/3h pentru Sprint de 1 lună ≈ 4 săptămâni, deci proporția este ~3/4 din valorile lunare pentru un Sprint de 3 săptămâni):**\n- Sprint Planning: aproximativ 6 ore (8h × 3/4)\n- Sprint Review: aproximativ 3 ore (4h × 3/4)\n- Sprint Retrospectivă: aproximativ 2,25 ore (3h × 3/4)\n- Daily Scrum: rămâne fix 15 minute, indiferent de lungimea Sprintului.\n\n**2. Abaterile identificate:**\n- **Anularea Retrospectivei** — contrazice principiul de inspecție-adaptare continuă a procesului; echipa pierde ocazia de a corecta probleme recurente și riscă să repete aceleași blocaje Sprint după Sprint.\n- **Daily Scrum condus de managerul de proiect ca raport individual** — Daily Scrum aparține Developerilor și are ca scop planificarea următoarelor 24 de ore pentru atingerea Sprint Goal-ului, nu raportarea ierarhică a activității individuale.\n\n**3. Corecții propuse:**\n- Retrospectiva se reprogramează obligatoriu la finalul fiecărui Sprint, cu time-box fix de 2,25 ore; dacă timpul e insuficient, se reduce mai degrabă amploarea Sprint Review-ului decât se elimină Retrospectiva.\n- Scrum Master-ul discută cu managerul de proiect rolul corect al Daily Scrum-ului (coaching pe Scrum Guide), iar managerul primește vizibilitate prin Sprint Backlog și board-ul Kanban, nu prin participare activă cu cerințe de raportare în Daily Scrum.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este time-box-ul maxim pentru Sprint Review, într-un Sprint de o lună calendaristică?",
+    "choices": [
+     "15 minute",
+     "2 ore",
+     "4 ore",
+     "8 ore"
+    ],
+    "answer": 2,
+    "explain": "Conform Scrum Guide 2020, Sprint Review are un time-box maxim de 4 ore pentru un Sprint de o lună; pentru Sprinturi mai scurte, durata se reduce proporțional.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce diferențiază, în esență, Sprint Review de Sprint Retrospectivă?",
+    "choices": [
+     "Review inspectează produsul cu stakeholderii; Retrospectiva inspectează procesul de lucru al echipei",
+     "Review este opțională, Retrospectiva este obligatorie",
+     "Review durează mai puțin decât Retrospectiva",
+     "Review se ține doar de Product Owner, Retrospectiva doar de Scrum Master"
+    ],
+    "answer": 0,
+    "explain": "Sprint Review inspectează Incrementul (produsul) împreună cu stakeholderii și adaptează Product Backlog-ul, în timp ce Sprint Retrospectivă inspectează modul de lucru al echipei Scrum (proces, colaborare, unelte) și planifică îmbunătățiri interne.",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele patru evenimente conținute în Sprint, conform Scrum Guide 2020?",
+    "back": "Sprint Planning, Daily Scrum, Sprint Review și Sprint Retrospectivă.",
+    "concept_key": "sprint-ciclu-evenimente",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este time-box-ul maxim al Sprint Planning pentru un Sprint de o lună?",
+    "back": "Maximum 8 ore.",
+    "concept_key": "sprint-planning-detaliat",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât durează Daily Scrum și cine participă obligatoriu?",
+    "back": "15 minute, în fiecare zi lucrătoare a Sprintului; participă Developerii (ei conduc evenimentul).",
+    "concept_key": "daily-scrum-scop",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei întrebări (topicuri) discutate în Sprint Planning?",
+    "back": "1) De ce este valoros acest Sprint? (Sprint Goal) 2) Ce poate fi Done? 3) Cum va fi făcută munca?",
+    "concept_key": "sprint-planning-detaliat",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este time-box-ul maxim al Sprint Retrospectivei pentru un Sprint de o lună?",
+    "back": "Maximum 3 ore.",
+    "concept_key": "sprint-review-retrospectiva",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu trebuie sărită Sprint Retrospectiva, chiar sub presiune de timp?",
+    "back": "Pentru că este singurul eveniment dedicat exclusiv inspecției și adaptării procesului de lucru al echipei; fără ea, problemele recurente nu se corectează.",
+    "concept_key": "sprint-review-retrospectiva",
+    "blockId": "cmjjuxvvl007bumkpvzjmbjwd-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1538,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwau00itumkpxnpq5705",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Concedii și Absențe",
+ "lesson": "Gestionarea în software HR",
+ "category": "HR_COMPLIANCE",
+ "content": "# Gestionarea în software HR\n\n## Rolul software-ului HR în gestionarea concediilor și absențelor\n\nÎn orice companie cu mai mult de câțiva angajați, evidența concediilor \"pe hârtie\" sau în fișiere Excel separate devine rapid o sursă de erori: zile de concediu numărate greșit, suprapuneri de absențe nedetectate, sau — cel mai costisitor — diferențe între ce apare în pontaj și ce se declară în stat de plată și în D112.\n\nUn software HR modern integrează într-un singur flux digital:\n\n- **Cererile de concediu** ale salariaților (odihnă, medical, fără plată, evenimente speciale);\n- **Pontajul** (evidența orelor lucrate zilnic, obligatorie conform Codului Muncii);\n- **Calculul salarial**, care preia automat zilele/orele de absență pentru a genera statul de plată;\n- **Raportarea către REVISAL**, atunci când absența implică o modificare a contractului (de exemplu, suspendarea CIM pe perioada concediului de creștere a copilului).\n\nAvantajul central al digitalizării nu este doar viteza, ci **trasabilitatea**: fiecare cerere de concediu are un istoric (cine a solicitat, cine a aprobat, când), ceea ce este exact ce va cere un inspector ITM la un control sau un auditor intern. Angajatorul are obligația legală de a ține evidența orelor de muncă prestate zilnic de fiecare salariat, iar software-ul de pontaj este, în practică, instrumentul prin care această obligație se îndeplinește.\n\nO regulă simplă de reținut: **software-ul nu \"decide\" nimic în locul angajatorului** — el aplică regulile de calcul introduse de specialistul de salarizare. Dacă regulile (de exemplu, formula de proraltare a salariului pentru zile lucrate) sunt configurate greșit, eroarea se va repeta automat, în fiecare lună, pentru toți salariații afectați.\n\n## Tipuri de absențe și cum le tratează software-ul\n\nNu toate absențele au același regim legal și fiscal, iar un software HR bine configurat le tratează diferit în calculul salarial:\n\n1. **Concediul de odihnă (CO)** — durata minimă legală este de 20 de zile lucrătoare pe an. Nu se plătește cu salariul de bază prorata, ci cu o **indemnizație de concediu** calculată pe baza mediei veniturilor din ultimele 3 luni anterioare lunii în care se efectuează concediul. Software-ul ar trebui să calculeze automat această medie, nu să aplice pur și simplu salariul de bază.\n2. **Concediul medical** — se suportă din bugetul FNUASS (fondul național unic de asigurări sociale de sănătate), cu reguli proprii de calcul al indemnizației, diferite de salariul obișnuit. Zilele de concediu medical nu se scad din soldul de concediu de odihnă.\n3. **Concediul de creștere a copilului (până la 2 ani)** — presupune de regulă suspendarea contractului individual de muncă, ceea ce înseamnă o **modificare obligatorie în REVISAL**, nu doar o înregistrare internă de absență.\n4. **Concediul fără plată** — zilele respective nu generează venit salarial și nu se plătesc contribuții sociale pentru acestea; salariul lunii se calculează prorata pentru zilele efectiv lucrate.\n5. **Zilele libere legale și învoirile** — tratate distinct, în funcție de politica internă (unele sunt plătite integral, altele se recuperează).\n\nUn software HR de calitate permite configurarea fiecărui tip de absență cu regula sa proprie de calcul, astfel încât utilizatorul din departamentul de salarizare să nu trebuiască să \"corecteze manual\" rezultatul în fiecare lună.\n\n## Fluxul digital de aprobare a unei cereri de concediu\n\nUn flux tipic de aprobare într-un software HR are, de regulă, următoarele etape:\n\n1. **Depunerea cererii** — salariatul introduce în portalul de self-service perioada solicitată; sistemul verifică automat soldul disponibil de zile de concediu de odihnă.\n2. **Aprobarea de către manager** — managerul direct primește notificare și aprobă sau respinge cererea, ținând cont de planificarea echipei (sistemul poate semnaliza suprapuneri cu alți membri ai echipei).\n3. **Validarea de către HR/salarizare** — departamentul de resurse umane verifică dacă absența necesită acțiuni suplimentare (act adițional, modificare REVISAL, documente medicale) și blochează perioada în calendarul de pontaj, pentru a evita introducerea manuală eronată a orelor lucrate în acele zile.\n4. **Sincronizarea cu modulul de salarizare** — absența aprobată trebuie să ajungă în modulul de calcul salarial **înainte de închiderea lunii de pontaj**, astfel încât statul de plată și D112 să reflecte corect situația reală. Practic, orice cerere aprobată după data de cut-off internă (de regulă cu câteva zile înainte de data de 25, termenul-limită de depunere a D112) riscă să genereze o regularizare în luna următoare.\n5. **Arhivarea** — cererea, aprobarea și documentele justificative (certificat medical, de exemplu) rămân atașate dosarului de personal, supus acelorași reguli de acces restricționat impuse de protecția datelor.\n\nUn workflow bine proiectat reduce dramatic timpul petrecut de specialistul de salarizare cu \"vânătoarea\" de aprobări la finalul lunii și scade riscul de erori în stat de plată.\n\n## Exemplu: Impactul unei zile de concediu fără plată calculat automat de software\nUn salariat are salariul de bază brut de **5.000 lei/lună** și, în luna respectivă, sunt **21 de zile lucrătoare**. Salariatul a avut **2 zile de concediu fără plată**, aprobate în sistem.\n\nSoftware-ul HR calculează automat:\n\n- Zile efectiv plătite = 21 − 2 = **19 zile**\n- Salariu brut cuvenit = 5.000 / 21 × 19 = **4.523,81 lei**\n\nReținerile salariatului:\n\n- CAS (25%) = 4.523,81 × 0,25 = **1.130,95 lei**\n- CASS (10%) = 4.523,81 × 0,10 = **452,38 lei**\n- Bază de calcul impozit = 4.523,81 − 1.130,95 − 452,38 = **2.940,48 lei**\n- Impozit pe venit (10%) = **294,05 lei**\n- **Salariu net = 2.940,48 − 294,05 = 2.646,43 lei**\n\nCostul angajatorului include și contribuția asiguratorie pentru muncă (CAM):\n\n- CAM (2,25%) = 4.523,81 × 0,0225 = **101,79 lei**\n- **Cost total angajator = 4.523,81 + 101,79 = 4.625,60 lei**\n\nAcest calcul se face automat de software doar dacă absența a fost introdusă corect și aprobată **înainte** de generarea statului de plată. O cerere introdusă cu întârziere obligă la o regularizare manuală în luna următoare.\n\n## Exemplu: Exemplu de flux de aprobare a unei cereri de concediu de odihnă\nAna, contabilă, dorește să efectueze 5 zile de concediu de odihnă, între 17 și 21 august 2026.\n\n- **10 august** — Ana introduce cererea în portalul de self-service; sistemul afișează soldul disponibil (12 zile rămase din cele 20 minime legale plus eventuale zile suplimentare acordate prin contract).\n- **11 august** — Managerul ei primește notificare automată, verifică planificarea echipei (nu există suprapuneri cu alți colegi din departamentul financiar) și aprobă cererea.\n- **12 august** — Departamentul HR validează cererea, confirmă că nu este necesar niciun act adițional (concediul de odihnă nu modifică datele din REVISAL) și blochează automat cele 5 zile în modulul de pontaj, astfel încât nimeni nu mai poate introduce ore lucrate pentru acel interval.\n- **20 august** — Modulul de salarizare preia automat absența pentru calculul indemnizației de concediu, pe baza mediei veniturilor din perioada mai–iulie 2026.\n- **25 august** — Statul de plată și D112 se generează cu datele corecte, fără intervenție manuală suplimentară.\n\nDacă oricare dintre pașii 1–3 ar fi întârziat după data de cut-off internă (de regulă cu 2–3 zile lucrătoare înainte de 25), calculul ar fi trebuit regularizat manual, cu risc de eroare.\n\n> Temei legal: Legea nr. 53/2003 — Codul Muncii, republicată art. 145 alin. (1) și art. 119 (în vigoare de la 2011-05-18)\nConform art. 145 alin. (1) din Codul Muncii, **durata minimă a concediului de odihnă anual este de 20 de zile lucrătoare**. Orice reglementare internă (regulament intern, contract colectiv de muncă) poate acorda zile suplimentare, dar niciodată mai puțin de acest minim.\n\nConform art. 119 din Codul Muncii, **angajatorul are obligația de a ține evidența orelor de muncă prestate zilnic de fiecare salariat**, evidență care trebuie pusă la dispoziția inspectorilor de muncă la cerere. În practică, această obligație se îndeplinește prin software-ul de pontaj, motiv pentru care acuratețea datelor introduse în sistem nu este doar o chestiune de organizare internă, ci o obligație legală directă a angajatorului.\n\n⚠ Un software HR bine configurat reduce riscurile, dar nu elimină responsabilitatea legală a angajatorului. Atenție la două puncte critice:\n\n1. **GDPR și dosarul de personal** — sistemul HR trebuie să colecteze doar datele strict necesare gestionării concediilor și calculului salarial (de exemplu, certificatele medicale nu trebuie să conțină diagnosticul, ci doar codul de indemnizație), iar accesul la aceste date trebuie restricționat pe roluri (self-service pentru salariat, drepturi extinse doar pentru HR/salarizare).\n2. **Erorile de sincronizare** — o absență aprobată dar neintrodusă la timp în modulul de salarizare poate genera diferențe între pontaj, stat de plată și D112, exact ceea ce verifică prioritar un control ITM sau ANAF.\n\nAceastă lecție are scop informativ general și nu reprezintă consultanță juridică individuală. Pentru situații specifice (litigii de muncă, interpretări punctuale ale contractului colectiv aplicabil), recomandăm consultarea unui avocat specializat în dreptul muncii sau a unui expert în legislația muncii.\n\n## Exercițiu\nUn salariat are salariul de bază brut de **6.000 lei/lună**. În luna septembrie 2026 sunt **22 de zile lucrătoare**. În această lună, salariatul are **4 zile de concediu de odihnă** (aprobate în sistem) și **1 zi de concediu fără plată**.\n\nCerințe:\na) Câte zile sunt remunerate din salariul de bază (excluzând zilele de concediu de odihnă, care se plătesc separat, cu indemnizație)?\nb) Care este salariul brut cuvenit pentru zilele efectiv lucrate, calculat prorata?\nc) Ce se întâmplă cu ziua de concediu fără plată din punct de vedere al contribuțiilor sociale?\n\n**Soluție:** a) Zile lucrate efectiv = 22 zile lucrătoare − 4 zile CO − 1 zi fără plată = **17 zile**.\n\nb) Salariu brut cuvenit pentru zilele lucrate = 6.000 / 22 × 17 = **4.636,36 lei**.\n\nCele 4 zile de concediu de odihnă **nu** se plătesc din acest calcul — ele se remunerează separat, cu o indemnizație de concediu calculată pe baza mediei veniturilor din ultimele 3 luni anterioare (iunie–august 2026), conform regulilor Codului Muncii.\n\nc) Ziua de concediu fără plată **nu generează venit salarial** și, prin urmare, **nu se datorează contribuții sociale (CAS, CASS) sau impozit pentru aceasta** — ea este pur și simplu scăzută din baza de calcul a salariului lunar.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "software-hr-rol-gestionare-concedii",
+    "md": "## Rolul software-ului HR în gestionarea concediilor și absențelor\n\nÎn orice companie cu mai mult de câțiva angajați, evidența concediilor \"pe hârtie\" sau în fișiere Excel separate devine rapid o sursă de erori: zile de concediu numărate greșit, suprapuneri de absențe nedetectate, sau — cel mai costisitor — diferențe între ce apare în pontaj și ce se declară în stat de plată și în D112.\n\nUn software HR modern integrează într-un singur flux digital:\n\n- **Cererile de concediu** ale salariaților (odihnă, medical, fără plată, evenimente speciale);\n- **Pontajul** (evidența orelor lucrate zilnic, obligatorie conform Codului Muncii);\n- **Calculul salarial**, care preia automat zilele/orele de absență pentru a genera statul de plată;\n- **Raportarea către REVISAL**, atunci când absența implică o modificare a contractului (de exemplu, suspendarea CIM pe perioada concediului de creștere a copilului).\n\nAvantajul central al digitalizării nu este doar viteza, ci **trasabilitatea**: fiecare cerere de concediu are un istoric (cine a solicitat, cine a aprobat, când), ceea ce este exact ce va cere un inspector ITM la un control sau un auditor intern. Angajatorul are obligația legală de a ține evidența orelor de muncă prestate zilnic de fiecare salariat, iar software-ul de pontaj este, în practică, instrumentul prin care această obligație se îndeplinește.\n\nO regulă simplă de reținut: **software-ul nu \"decide\" nimic în locul angajatorului** — el aplică regulile de calcul introduse de specialistul de salarizare. Dacă regulile (de exemplu, formula de proraltare a salariului pentru zile lucrate) sunt configurate greșit, eroarea se va repeta automat, în fiecare lună, pentru toți salariații afectați.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "tipuri-absente-clasificare-software",
+    "md": "## Tipuri de absențe și cum le tratează software-ul\n\nNu toate absențele au același regim legal și fiscal, iar un software HR bine configurat le tratează diferit în calculul salarial:\n\n1. **Concediul de odihnă (CO)** — durata minimă legală este de 20 de zile lucrătoare pe an. Nu se plătește cu salariul de bază prorata, ci cu o **indemnizație de concediu** calculată pe baza mediei veniturilor din ultimele 3 luni anterioare lunii în care se efectuează concediul. Software-ul ar trebui să calculeze automat această medie, nu să aplice pur și simplu salariul de bază.\n2. **Concediul medical** — se suportă din bugetul FNUASS (fondul național unic de asigurări sociale de sănătate), cu reguli proprii de calcul al indemnizației, diferite de salariul obișnuit. Zilele de concediu medical nu se scad din soldul de concediu de odihnă.\n3. **Concediul de creștere a copilului (până la 2 ani)** — presupune de regulă suspendarea contractului individual de muncă, ceea ce înseamnă o **modificare obligatorie în REVISAL**, nu doar o înregistrare internă de absență.\n4. **Concediul fără plată** — zilele respective nu generează venit salarial și nu se plătesc contribuții sociale pentru acestea; salariul lunii se calculează prorata pentru zilele efectiv lucrate.\n5. **Zilele libere legale și învoirile** — tratate distinct, în funcție de politica internă (unele sunt plătite integral, altele se recuperează).\n\nUn software HR de calitate permite configurarea fiecărui tip de absență cu regula sa proprie de calcul, astfel încât utilizatorul din departamentul de salarizare să nu trebuiască să \"corecteze manual\" rezultatul în fiecare lună.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "flux-aprobare-concedii-software",
+    "md": "## Fluxul digital de aprobare a unei cereri de concediu\n\nUn flux tipic de aprobare într-un software HR are, de regulă, următoarele etape:\n\n1. **Depunerea cererii** — salariatul introduce în portalul de self-service perioada solicitată; sistemul verifică automat soldul disponibil de zile de concediu de odihnă.\n2. **Aprobarea de către manager** — managerul direct primește notificare și aprobă sau respinge cererea, ținând cont de planificarea echipei (sistemul poate semnaliza suprapuneri cu alți membri ai echipei).\n3. **Validarea de către HR/salarizare** — departamentul de resurse umane verifică dacă absența necesită acțiuni suplimentare (act adițional, modificare REVISAL, documente medicale) și blochează perioada în calendarul de pontaj, pentru a evita introducerea manuală eronată a orelor lucrate în acele zile.\n4. **Sincronizarea cu modulul de salarizare** — absența aprobată trebuie să ajungă în modulul de calcul salarial **înainte de închiderea lunii de pontaj**, astfel încât statul de plată și D112 să reflecte corect situația reală. Practic, orice cerere aprobată după data de cut-off internă (de regulă cu câteva zile înainte de data de 25, termenul-limită de depunere a D112) riscă să genereze o regularizare în luna următoare.\n5. **Arhivarea** — cererea, aprobarea și documentele justificative (certificat medical, de exemplu) rămân atașate dosarului de personal, supus acelorași reguli de acces restricționat impuse de protecția datelor.\n\nUn workflow bine proiectat reduce dramatic timpul petrecut de specialistul de salarizare cu \"vânătoarea\" de aprobări la finalul lunii și scade riscul de erori în stat de plată.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b3"
+   },
+   {
+    "type": "example",
+    "title": "Impactul unei zile de concediu fără plată calculat automat de software",
+    "concept_key": "calcul-salariu-prorata-concediu-fara-plata",
+    "md": "Un salariat are salariul de bază brut de **5.000 lei/lună** și, în luna respectivă, sunt **21 de zile lucrătoare**. Salariatul a avut **2 zile de concediu fără plată**, aprobate în sistem.\n\nSoftware-ul HR calculează automat:\n\n- Zile efectiv plătite = 21 − 2 = **19 zile**\n- Salariu brut cuvenit = 5.000 / 21 × 19 = **4.523,81 lei**\n\nReținerile salariatului:\n\n- CAS (25%) = 4.523,81 × 0,25 = **1.130,95 lei**\n- CASS (10%) = 4.523,81 × 0,10 = **452,38 lei**\n- Bază de calcul impozit = 4.523,81 − 1.130,95 − 452,38 = **2.940,48 lei**\n- Impozit pe venit (10%) = **294,05 lei**\n- **Salariu net = 2.940,48 − 294,05 = 2.646,43 lei**\n\nCostul angajatorului include și contribuția asiguratorie pentru muncă (CAM):\n\n- CAM (2,25%) = 4.523,81 × 0,0225 = **101,79 lei**\n- **Cost total angajator = 4.523,81 + 101,79 = 4.625,60 lei**\n\nAcest calcul se face automat de software doar dacă absența a fost introdusă corect și aprobată **înainte** de generarea statului de plată. O cerere introdusă cu întârziere obligă la o regularizare manuală în luna următoare.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b4"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu de flux de aprobare a unei cereri de concediu de odihnă",
+    "concept_key": "exemplu-flux-aprobare-co",
+    "md": "Ana, contabilă, dorește să efectueze 5 zile de concediu de odihnă, între 17 și 21 august 2026.\n\n- **10 august** — Ana introduce cererea în portalul de self-service; sistemul afișează soldul disponibil (12 zile rămase din cele 20 minime legale plus eventuale zile suplimentare acordate prin contract).\n- **11 august** — Managerul ei primește notificare automată, verifică planificarea echipei (nu există suprapuneri cu alți colegi din departamentul financiar) și aprobă cererea.\n- **12 august** — Departamentul HR validează cererea, confirmă că nu este necesar niciun act adițional (concediul de odihnă nu modifică datele din REVISAL) și blochează automat cele 5 zile în modulul de pontaj, astfel încât nimeni nu mai poate introduce ore lucrate pentru acel interval.\n- **20 august** — Modulul de salarizare preia automat absența pentru calculul indemnizației de concediu, pe baza mediei veniturilor din perioada mai–iulie 2026.\n- **25 august** — Statul de plată și D112 se generează cu datele corecte, fără intervenție manuală suplimentară.\n\nDacă oricare dintre pașii 1–3 ar fi întârziat după data de cut-off internă (de regulă cu 2–3 zile lucrătoare înainte de 25), calculul ar fi trebuit regularizat manual, cu risc de eroare.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 — Codul Muncii, republicată",
+    "article": "art. 145 alin. (1) și art. 119",
+    "effective": "2011-05-18",
+    "md": "Conform art. 145 alin. (1) din Codul Muncii, **durata minimă a concediului de odihnă anual este de 20 de zile lucrătoare**. Orice reglementare internă (regulament intern, contract colectiv de muncă) poate acorda zile suplimentare, dar niciodată mai puțin de acest minim.\n\nConform art. 119 din Codul Muncii, **angajatorul are obligația de a ține evidența orelor de muncă prestate zilnic de fiecare salariat**, evidență care trebuie pusă la dispoziția inspectorilor de muncă la cerere. În practică, această obligație se îndeplinește prin software-ul de pontaj, motiv pentru care acuratețea datelor introduse în sistem nu este doar o chestiune de organizare internă, ci o obligație legală directă a angajatorului.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Un software HR bine configurat reduce riscurile, dar nu elimină responsabilitatea legală a angajatorului. Atenție la două puncte critice:\n\n1. **GDPR și dosarul de personal** — sistemul HR trebuie să colecteze doar datele strict necesare gestionării concediilor și calculului salarial (de exemplu, certificatele medicale nu trebuie să conțină diagnosticul, ci doar codul de indemnizație), iar accesul la aceste date trebuie restricționat pe roluri (self-service pentru salariat, drepturi extinse doar pentru HR/salarizare).\n2. **Erorile de sincronizare** — o absență aprobată dar neintrodusă la timp în modulul de salarizare poate genera diferențe între pontaj, stat de plată și D112, exact ceea ce verifică prioritar un control ITM sau ANAF.\n\nAceastă lecție are scop informativ general și nu reprezintă consultanță juridică individuală. Pentru situații specifice (litigii de muncă, interpretări punctuale ale contractului colectiv aplicabil), recomandăm consultarea unui avocat specializat în dreptul muncii sau a unui expert în legislația muncii.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un salariat are salariul de bază brut de **6.000 lei/lună**. În luna septembrie 2026 sunt **22 de zile lucrătoare**. În această lună, salariatul are **4 zile de concediu de odihnă** (aprobate în sistem) și **1 zi de concediu fără plată**.\n\nCerințe:\na) Câte zile sunt remunerate din salariul de bază (excluzând zilele de concediu de odihnă, care se plătesc separat, cu indemnizație)?\nb) Care este salariul brut cuvenit pentru zilele efectiv lucrate, calculat prorata?\nc) Ce se întâmplă cu ziua de concediu fără plată din punct de vedere al contribuțiilor sociale?",
+    "solution_md": "a) Zile lucrate efectiv = 22 zile lucrătoare − 4 zile CO − 1 zi fără plată = **17 zile**.\n\nb) Salariu brut cuvenit pentru zilele lucrate = 6.000 / 22 × 17 = **4.636,36 lei**.\n\nCele 4 zile de concediu de odihnă **nu** se plătesc din acest calcul — ele se remunerează separat, cu o indemnizație de concediu calculată pe baza mediei veniturilor din ultimele 3 luni anterioare (iunie–august 2026), conform regulilor Codului Muncii.\n\nc) Ziua de concediu fără plată **nu generează venit salarial** și, prin urmare, **nu se datorează contribuții sociale (CAS, CASS) sau impozit pentru aceasta** — ea este pur și simplu scăzută din baza de calcul a salariului lunar.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Codului Muncii, care este durata minimă legală a concediului de odihnă anual?",
+    "choices": [
+     "15 zile lucrătoare",
+     "18 zile lucrătoare",
+     "20 de zile lucrătoare",
+     "21 de zile lucrătoare"
+    ],
+    "answer": 2,
+    "explain": "Art. 145 alin. (1) din Codul Muncii stabilește un minim legal de 20 de zile lucrătoare pe an; contractul colectiv sau regulamentul intern pot acorda mai multe, niciodată mai puține.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce se întâmplă dacă o cerere de concediu aprobată în software este introdusă cu întârziere în modulul de salarizare, după generarea statului de plată?",
+    "choices": [
+     "Nu are niciun efect, software-ul corectează automat retroactiv fără intervenție",
+     "Este nevoie de o regularizare manuală în luna următoare",
+     "Angajatul pierde automat zilele de concediu solicitate",
+     "Se generează automat un act adițional în REVISAL"
+    ],
+    "answer": 1,
+    "explain": "Dacă absența nu ajunge la timp în modulul de salarizare, statul de plată și D112 din luna curentă nu reflectă situația reală, iar diferența trebuie corectată manual, printr-o regularizare în luna următoare.",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata minimă legală a concediului de odihnă anual în România?",
+    "back": "20 de zile lucrătoare pe an, conform art. 145 alin. (1) din Codul Muncii (Legea nr. 53/2003).",
+    "concept_key": "concediu-odihna-durata-minima",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce obligație legală are angajatorul privind evidența orelor de muncă?",
+    "back": "Trebuie să țină evidența orelor lucrate zilnic de fiecare salariat, conform art. 119 din Codul Muncii — în practică, prin software-ul de pontaj.",
+    "concept_key": "evidenta-timp-munca-art119",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează salariul de bază pentru zilele efectiv lucrate, când există concediu fără plată în lună?",
+    "back": "Salariu brut / numărul de zile lucrătoare din lună × numărul de zile efectiv lucrate; zilele de concediu fără plată nu se remunerează și nu generează contribuții.",
+    "concept_key": "formula-salariu-zile-lucrate",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cu ce se plătește concediul de odihnă — cu salariul de bază prorata sau altfel?",
+    "back": "Cu o indemnizație de concediu, calculată pe baza mediei veniturilor din ultimele 3 luni anterioare lunii de concediu, nu cu salariul de bază prorata pe zile.",
+    "concept_key": "indemnizatie-concediu-odihna-calcul",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce date minime trebuie să colecteze un software HR privind concediile, conform GDPR?",
+    "back": "Doar datele strict necesare scopului (perioadă, tip absență, cod indemnizație), cu acces restricționat pe roluri — nu, de exemplu, diagnosticul medical complet.",
+    "concept_key": "gdpr-dosar-personal-date-minime",
+    "blockId": "cmjjuxwau00itumkpxnpq5705-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1555,
+   "flashcards": 5
+  }
+ }
+}

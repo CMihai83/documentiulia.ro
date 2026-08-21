@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvuv006pumkpspy245h4",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Framework",
+ "lesson": "Scrum Team: Developers",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Scrum Team: Developers\n\n## Cine sunt Developers în Scrum Team\n\nÎn terminologia Scrum, **Developers** desemnează totalitatea persoanelor din Scrum Team care se angajează, în fiecare Sprint, să creeze orice aspect al unui **Increment** utilizabil. Termenul nu se referă exclusiv la programatori: pot fi Developers și testeri, analiști de business, designeri UX, arhitecți de sistem, specialiști în baze de date sau experți în domeniu (business analysts) — orice persoană care contribuie direct la construirea produsului. Într-un proiect de implementare ERP la o firmă din România, de exemplu, echipa de Developers poate include un configurator ABAP, un tester funcțional, un analist de procese contabile și un specialist în migrare de date; toți sunt, din perspectiva Scrum, \"Developers\".\n\nGhidul Scrum (Scrum Guide 2020) definește patru responsabilități (accountabilities) specifice Developers, distincte de cele ale Product Owner-ului și ale Scrum Masterului:\n\n1. **Crearea planului pentru Sprint** — Sprint Backlog-ul, adică descompunerea elementelor selectate din Product Backlog în sarcini concrete de lucru.\n2. **Instilarea calității** prin respectarea Definiției de \"Done\" (Definition of Done) — Developers nu livrează cod sau documente \"pe jumătate gata\"; ei sunt responsabili colectiv pentru calitatea Increment-ului.\n3. **Adaptarea zilnică a planului** către Sprint Goal — pe măsură ce apar informații noi (bug-uri, blocaje, cerințe clarificate), Developers își reajustează planul de lucru, nu doar o dată pe Sprint, ci zilnic.\n4. **Responsabilizarea reciprocă** ca profesioniști — Developers se trag la răspundere unii pe alții pentru respectarea standardelor de calitate și pentru atingerea Sprint Goal, fără a aștepta ca acest lucru să vină de la un manager extern echipei.\n\nAceste patru responsabilități transformă Developers dintr-un simplu grup de executanți într-o echipă cu autonomie reală asupra modului în care produce valoare.\n\n## Cross-functional și self-managing\n\nDouă caracteristici structurale definesc echipa de Developers: este **cross-functional** (pluridisciplinară) și **self-managing** (auto-condusă).\n\n**Cross-functional** înseamnă că echipa deține, colectiv, toate competențele necesare pentru a crea Increment-ul, fără să depindă de persoane din afara Scrum Team pentru pașii esențiali ai livrării (analiză, dezvoltare, testare, integrare). Dacă o echipă are nevoie constant de aprobarea sau intervenția unui departament extern pentru a duce o funcționalitate la \"Done\", echipa nu este cu adevărat cross-functional, iar acest lucru va încetini fiecare Sprint.\n\n**Self-managing** este termenul introdus în Scrum Guide 2020, în locul termenului mai vechi \"self-organizing\" folosit în versiunea din 2017. Diferența este importantă pentru examenul PSM I: \"self-organizing\" descria mai ales modul în care echipa se formează și își distribuie competențele; \"self-managing\" merge mai departe și afirmă explicit că Developers decid intern **cine** lucrează la ce, **cum** se face munca (ce tehnici, ce instrumente) și **când** se execută fiecare sarcină în cadrul Sprintului. Nu există un team lead, un project manager sau un Scrum Master care alocă task-uri individuale — aceasta ar contrazice direct principiul self-managing.\n\nÎn practică, self-managing nu înseamnă absența oricărei structuri. Developers pot avea, informal, un coordonator tehnic sau un \"tech lead\", dar deciziile de zi cu zi despre alocarea muncii rămân ale echipei, nu impuse de o autoritate ierarhică externă. Scrum Masterul are rolul de a proteja și facilita acest mod de lucru, nu de a-l înlocui cu management tradițional de tip comandă-control.\n\n## Mărimea echipei și implicațiile ei\n\nScrum Guide 2020 recomandă ca Scrum Team (Product Owner, Scrum Master și Developers împreună) să fie suficient de mic pentru a rămâne agil și suficient de mare pentru a realiza o cantitate semnificativă de muncă într-un Sprint — de regulă **10 sau mai puțini membri**. Nu este o regulă rigidă, ci un ghid practic: echipele mai mari tind să acumuleze complexitate de comunicare (numărul de canale de comunicare crește exponențial cu numărul de membri), coordonare mai lentă și diluarea sentimentului de proprietate asupra Increment-ului.\n\nCând un proiect necesită mai multe persoane decât încape într-un singur Scrum Team — de exemplu, o implementare ERP la nivel de grup cu module de contabilitate, achiziții, producție și HR — soluția recomandată de framework nu este mărirea unei singure echipe, ci organizarea mai multor Scrum Team-uri (\"scaling\", subiect tratat separat în curs, la modulul despre scalarea Agile la nivel organizațional).\n\nUn corolar practic: dacă echipa ta de Developers depășește frecvent 10-11 persoane și Daily Scrum-urile durează mult peste 15 minute sau devin greu de sincronizat, acesta este un semnal clar că echipa ar trebui împărțită, nu doar \"gestionată mai bine\".\n\n## Exemplu: Echipă de Developers într-un proiect de implementare ERP\nO companie de distribuție din Cluj implementează un modul nou de gestiune a stocurilor peste sistemul ERP existent. Scrum Team-ul are 7 Developers: 2 dezvoltatori backend, 1 dezvoltator frontend, 1 tester QA, 1 analist de business (fost contabil-șef, cunoaște fluxurile de recepție marfă), 1 specialist migrare date și 1 arhitect de soluție part-time.\n\nLa Sprint Planning, echipa selectează din Product Backlog user story-ul \"Ca gestionar de depozit, vreau să văd stocul disponibil în timp real pe fiecare gestiune, ca să nu accept comenzi peste stocul fizic\". Deși titulaturile lor profesionale diferă radical (de la programator la fost contabil), toți cei 7 sunt, din perspectiva Scrum Guide, \"Developers\" — pentru că toți contribuie direct la transformarea acestui user story într-un Increment testat și utilizabil. Analistul de business scrie criteriile de acceptanță împreună cu testerul, specialistul de migrare pregătește datele istorice de stoc, iar dezvoltatorii implementează funcționalitatea. Nimeni din afara acestor 7 persoane nu este necesar pentru a duce story-ul la \"Done\" — acesta este semnul unei echipe cu adevărat cross-functional.\n\n## Exemplu: Self-managing în practică: alocarea muncii într-un Sprint\nLa începutul Sprintului, Sprint Backlog-ul conține 8 elemente descompuse în 23 de sarcini tehnice. Într-o echipă condusă tradițional (comandă-control), un project manager ar aloca fiecare sarcină unui membru, pe baza unui plan Gantt.\n\nÎntr-o echipă Scrum self-managing, lucrurile stau diferit: la Daily Scrum, fiecare Developer analizează progresul spre Sprint Goal și își alege următoarea sarcină pe baza priorității și a propriilor competențe, nu pe baza unei atribuiri de sus în jos. Dacă testerul QA observă că cele două sarcini de dezvoltare backend planificate pentru ziua respectivă sunt blocate de o dependență externă, echipa decide împreună, chiar în cadrul Daily Scrum, să realoce efortul spre o altă sarcină din Sprint Backlog care aduce mai multă valoare spre Sprint Goal — de exemplu, avansarea testării unei funcționalități deja dezvoltate. Scrum Masterul nu intervine în decizia de realocare; rolul lui este să elimine, ulterior, blocajul cu dependența externă (de exemplu, contactând echipa de infrastructură), astfel încât echipa să-și poată relua planul inițial în ziua următoare.\n\n⚠ Atenție la o confuzie foarte frecventă la examenul PSM I: termenul **\"Developer\"** în Scrum nu este sinonim cu **\"programator\"**. Orice persoană care contribuie la crearea Increment-ului (tester, analist, designer, specialist în date) este Developer în sensul Scrum Guide, indiferent de titulatura ei profesională din organigrama companiei. De asemenea, nu confunda **self-managing** cu \"fără nicio structură\" sau \"fiecare face ce vrea\": Developers rămân responsabili colectiv pentru Sprint Goal și pentru Definiția de \"Done\" — autonomia este asupra procesului de lucru, nu asupra scopului sau standardelor de calitate.\n\n## Exercițiu\nCitește scenariul și identifică ce anume încalcă principiul self-managing al Developers, apoi propune corecția potrivită.\n\nScenariu: Într-o companie care implementează un CRM propriu, managerul de departament IT participă la fiecare Daily Scrum și, la finalul întâlnirii, atribuie explicit fiecărui Developer sarcina pentru ziua următoare, \"ca să fie sigur că se respectă termenul\". Scrum Masterul asistă la aceste întâlniri, dar nu intervine, considerând că \"oricum echipa e nouă și are nevoie de îndrumare\".\n\nCerințe:\n1. Ce accountability din cele patru ale Developers este încălcat?\n2. Ce ar trebui să facă Scrum Masterul în această situație?\n\n**Soluție:** 1. Este încălcată direct responsabilitatea Developers de a-și **crea și adapta propriul plan** pentru Sprint (Sprint Backlog) — atribuirea sarcinilor de către un manager extern echipei elimină autonomia self-managing prevăzută de Scrum Guide 2020. Practic, Daily Scrum-ul devine un instrument de raportare către manager, în loc să rămână un eveniment de inspecție și adaptare condus de Developers pentru ei înșiși.\n\n2. Scrum Masterul are exact rolul de a interveni aici — una dintre responsabilitățile lui este să sprijine Scrum Team-ul, inclusiv prin înlăturarea barierelor dintre echipă și organizație și prin \"coaching\" al echipei în auto-management. Concret, Scrum Masterul ar trebui: (a) să discute individual cu managerul IT, explicând de ce alocarea de sus în jos a sarcinilor subminează angajamentul echipei față de Sprint Goal și responsabilizarea reciprocă; (b) să propună ca managerul să participe ca observator tăcut, nu ca alocator de sarcini, sau chiar să nu mai participe deloc la Daily Scrum, care este un eveniment intern al Developers; (c) să coach-uiască echipa, care este \"nouă\", să preia treptat decizia de auto-alocare a sarcinilor — faptul că e nouă e un motiv de facilitare mai atentă, nu un motiv de a menține un manager extern care decide în locul ei.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "developers-rol-scrum",
+    "md": "## Cine sunt Developers în Scrum Team\n\nÎn terminologia Scrum, **Developers** desemnează totalitatea persoanelor din Scrum Team care se angajează, în fiecare Sprint, să creeze orice aspect al unui **Increment** utilizabil. Termenul nu se referă exclusiv la programatori: pot fi Developers și testeri, analiști de business, designeri UX, arhitecți de sistem, specialiști în baze de date sau experți în domeniu (business analysts) — orice persoană care contribuie direct la construirea produsului. Într-un proiect de implementare ERP la o firmă din România, de exemplu, echipa de Developers poate include un configurator ABAP, un tester funcțional, un analist de procese contabile și un specialist în migrare de date; toți sunt, din perspectiva Scrum, \"Developers\".\n\nGhidul Scrum (Scrum Guide 2020) definește patru responsabilități (accountabilities) specifice Developers, distincte de cele ale Product Owner-ului și ale Scrum Masterului:\n\n1. **Crearea planului pentru Sprint** — Sprint Backlog-ul, adică descompunerea elementelor selectate din Product Backlog în sarcini concrete de lucru.\n2. **Instilarea calității** prin respectarea Definiției de \"Done\" (Definition of Done) — Developers nu livrează cod sau documente \"pe jumătate gata\"; ei sunt responsabili colectiv pentru calitatea Increment-ului.\n3. **Adaptarea zilnică a planului** către Sprint Goal — pe măsură ce apar informații noi (bug-uri, blocaje, cerințe clarificate), Developers își reajustează planul de lucru, nu doar o dată pe Sprint, ci zilnic.\n4. **Responsabilizarea reciprocă** ca profesioniști — Developers se trag la răspundere unii pe alții pentru respectarea standardelor de calitate și pentru atingerea Sprint Goal, fără a aștepta ca acest lucru să vină de la un manager extern echipei.\n\nAceste patru responsabilități transformă Developers dintr-un simplu grup de executanți într-o echipă cu autonomie reală asupra modului în care produce valoare.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cross-functional-self-managing",
+    "md": "## Cross-functional și self-managing\n\nDouă caracteristici structurale definesc echipa de Developers: este **cross-functional** (pluridisciplinară) și **self-managing** (auto-condusă).\n\n**Cross-functional** înseamnă că echipa deține, colectiv, toate competențele necesare pentru a crea Increment-ul, fără să depindă de persoane din afara Scrum Team pentru pașii esențiali ai livrării (analiză, dezvoltare, testare, integrare). Dacă o echipă are nevoie constant de aprobarea sau intervenția unui departament extern pentru a duce o funcționalitate la \"Done\", echipa nu este cu adevărat cross-functional, iar acest lucru va încetini fiecare Sprint.\n\n**Self-managing** este termenul introdus în Scrum Guide 2020, în locul termenului mai vechi \"self-organizing\" folosit în versiunea din 2017. Diferența este importantă pentru examenul PSM I: \"self-organizing\" descria mai ales modul în care echipa se formează și își distribuie competențele; \"self-managing\" merge mai departe și afirmă explicit că Developers decid intern **cine** lucrează la ce, **cum** se face munca (ce tehnici, ce instrumente) și **când** se execută fiecare sarcină în cadrul Sprintului. Nu există un team lead, un project manager sau un Scrum Master care alocă task-uri individuale — aceasta ar contrazice direct principiul self-managing.\n\nÎn practică, self-managing nu înseamnă absența oricărei structuri. Developers pot avea, informal, un coordonator tehnic sau un \"tech lead\", dar deciziile de zi cu zi despre alocarea muncii rămân ale echipei, nu impuse de o autoritate ierarhică externă. Scrum Masterul are rolul de a proteja și facilita acest mod de lucru, nu de a-l înlocui cu management tradițional de tip comandă-control.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "developers-marime-echipa",
+    "md": "## Mărimea echipei și implicațiile ei\n\nScrum Guide 2020 recomandă ca Scrum Team (Product Owner, Scrum Master și Developers împreună) să fie suficient de mic pentru a rămâne agil și suficient de mare pentru a realiza o cantitate semnificativă de muncă într-un Sprint — de regulă **10 sau mai puțini membri**. Nu este o regulă rigidă, ci un ghid practic: echipele mai mari tind să acumuleze complexitate de comunicare (numărul de canale de comunicare crește exponențial cu numărul de membri), coordonare mai lentă și diluarea sentimentului de proprietate asupra Increment-ului.\n\nCând un proiect necesită mai multe persoane decât încape într-un singur Scrum Team — de exemplu, o implementare ERP la nivel de grup cu module de contabilitate, achiziții, producție și HR — soluția recomandată de framework nu este mărirea unei singure echipe, ci organizarea mai multor Scrum Team-uri (\"scaling\", subiect tratat separat în curs, la modulul despre scalarea Agile la nivel organizațional).\n\nUn corolar practic: dacă echipa ta de Developers depășește frecvent 10-11 persoane și Daily Scrum-urile durează mult peste 15 minute sau devin greu de sincronizat, acesta este un semnal clar că echipa ar trebui împărțită, nu doar \"gestionată mai bine\".",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b3"
+   },
+   {
+    "type": "example",
+    "title": "Echipă de Developers într-un proiect de implementare ERP",
+    "concept_key": "developers-rol-scrum",
+    "md": "O companie de distribuție din Cluj implementează un modul nou de gestiune a stocurilor peste sistemul ERP existent. Scrum Team-ul are 7 Developers: 2 dezvoltatori backend, 1 dezvoltator frontend, 1 tester QA, 1 analist de business (fost contabil-șef, cunoaște fluxurile de recepție marfă), 1 specialist migrare date și 1 arhitect de soluție part-time.\n\nLa Sprint Planning, echipa selectează din Product Backlog user story-ul \"Ca gestionar de depozit, vreau să văd stocul disponibil în timp real pe fiecare gestiune, ca să nu accept comenzi peste stocul fizic\". Deși titulaturile lor profesionale diferă radical (de la programator la fost contabil), toți cei 7 sunt, din perspectiva Scrum Guide, \"Developers\" — pentru că toți contribuie direct la transformarea acestui user story într-un Increment testat și utilizabil. Analistul de business scrie criteriile de acceptanță împreună cu testerul, specialistul de migrare pregătește datele istorice de stoc, iar dezvoltatorii implementează funcționalitatea. Nimeni din afara acestor 7 persoane nu este necesar pentru a duce story-ul la \"Done\" — acesta este semnul unei echipe cu adevărat cross-functional.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b4"
+   },
+   {
+    "type": "example",
+    "title": "Self-managing în practică: alocarea muncii într-un Sprint",
+    "concept_key": "cross-functional-self-managing",
+    "md": "La începutul Sprintului, Sprint Backlog-ul conține 8 elemente descompuse în 23 de sarcini tehnice. Într-o echipă condusă tradițional (comandă-control), un project manager ar aloca fiecare sarcină unui membru, pe baza unui plan Gantt.\n\nÎntr-o echipă Scrum self-managing, lucrurile stau diferit: la Daily Scrum, fiecare Developer analizează progresul spre Sprint Goal și își alege următoarea sarcină pe baza priorității și a propriilor competențe, nu pe baza unei atribuiri de sus în jos. Dacă testerul QA observă că cele două sarcini de dezvoltare backend planificate pentru ziua respectivă sunt blocate de o dependență externă, echipa decide împreună, chiar în cadrul Daily Scrum, să realoce efortul spre o altă sarcină din Sprint Backlog care aduce mai multă valoare spre Sprint Goal — de exemplu, avansarea testării unei funcționalități deja dezvoltate. Scrum Masterul nu intervine în decizia de realocare; rolul lui este să elimine, ulterior, blocajul cu dependența externă (de exemplu, contactând echipa de infrastructură), astfel încât echipa să-și poată relua planul inițial în ziua următoare.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la o confuzie foarte frecventă la examenul PSM I: termenul **\"Developer\"** în Scrum nu este sinonim cu **\"programator\"**. Orice persoană care contribuie la crearea Increment-ului (tester, analist, designer, specialist în date) este Developer în sensul Scrum Guide, indiferent de titulatura ei profesională din organigrama companiei. De asemenea, nu confunda **self-managing** cu \"fără nicio structură\" sau \"fiecare face ce vrea\": Developers rămân responsabili colectiv pentru Sprint Goal și pentru Definiția de \"Done\" — autonomia este asupra procesului de lucru, nu asupra scopului sau standardelor de calitate.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Citește scenariul și identifică ce anume încalcă principiul self-managing al Developers, apoi propune corecția potrivită.\n\nScenariu: Într-o companie care implementează un CRM propriu, managerul de departament IT participă la fiecare Daily Scrum și, la finalul întâlnirii, atribuie explicit fiecărui Developer sarcina pentru ziua următoare, \"ca să fie sigur că se respectă termenul\". Scrum Masterul asistă la aceste întâlniri, dar nu intervine, considerând că \"oricum echipa e nouă și are nevoie de îndrumare\".\n\nCerințe:\n1. Ce accountability din cele patru ale Developers este încălcat?\n2. Ce ar trebui să facă Scrum Masterul în această situație?",
+    "solution_md": "1. Este încălcată direct responsabilitatea Developers de a-și **crea și adapta propriul plan** pentru Sprint (Sprint Backlog) — atribuirea sarcinilor de către un manager extern echipei elimină autonomia self-managing prevăzută de Scrum Guide 2020. Practic, Daily Scrum-ul devine un instrument de raportare către manager, în loc să rămână un eveniment de inspecție și adaptare condus de Developers pentru ei înșiși.\n\n2. Scrum Masterul are exact rolul de a interveni aici — una dintre responsabilitățile lui este să sprijine Scrum Team-ul, inclusiv prin înlăturarea barierelor dintre echipă și organizație și prin \"coaching\" al echipei în auto-management. Concret, Scrum Masterul ar trebui: (a) să discute individual cu managerul IT, explicând de ce alocarea de sus în jos a sarcinilor subminează angajamentul echipei față de Sprint Goal și responsabilizarea reciprocă; (b) să propună ca managerul să participe ca observator tăcut, nu ca alocator de sarcini, sau chiar să nu mai participe deloc la Daily Scrum, care este un eveniment intern al Developers; (c) să coach-uiască echipa, care este \"nouă\", să preia treptat decizia de auto-alocare a sarcinilor — faptul că e nouă e un motiv de facilitare mai atentă, nu un motiv de a menține un manager extern care decide în locul ei.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este numărul corect de responsabilități (accountabilities) atribuite Developers în Scrum Guide 2020?",
+    "choices": [
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "answer": 2,
+    "explain": "Developers au patru responsabilități: crearea planului pentru Sprint (Sprint Backlog), instilarea calității prin respectarea Definiției de \"Done\", adaptarea zilnică a planului către Sprint Goal și responsabilizarea reciprocă ca profesioniști.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce termen a înlocuit \"self-organizing\" în Scrum Guide 2020, cu referire la echipa de Developers?",
+    "choices": [
+     "self-directed",
+     "self-managing",
+     "self-sufficient",
+     "self-driven"
+    ],
+    "answer": 1,
+    "explain": "Scrum Guide 2020 folosește \"self-managing\" pentru a sublinia că Developers decid intern cine, cum și când se face munca, fără alocare externă de sarcini.",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un \"Developer\" în terminologia Scrum?",
+    "back": "Orice membru al Scrum Team angajat să creeze un aspect al Increment-ului utilizabil în fiecare Sprint, indiferent de titulatura profesională (programator, tester, analist, designer etc.).",
+    "concept_key": "developers-rol-scrum",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele patru responsabilități (accountabilities) ale Developers conform Scrum Guide 2020?",
+    "back": "1) Crearea planului pentru Sprint (Sprint Backlog); 2) Instilarea calității prin Definiția de \"Done\"; 3) Adaptarea zilnică a planului spre Sprint Goal; 4) Responsabilizarea reciprocă ca profesioniști.",
+    "concept_key": "developers-rol-scrum",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă \"cross-functional\" pentru echipa de Developers?",
+    "back": "Echipa deține, colectiv, toate competențele necesare pentru a crea Increment-ul, fără dependență de persoane din afara Scrum Team.",
+    "concept_key": "cross-functional-self-managing",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce termen a înlocuit \"self-organizing\" în Scrum Guide 2020?",
+    "back": "\"Self-managing\" — Developers decid intern cine, cum și când se face munca, fără alocare de sarcini de către o autoritate externă.",
+    "concept_key": "cross-functional-self-managing",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este dimensiunea recomandată a Scrum Team conform Scrum Guide 2020?",
+    "back": "De regulă 10 sau mai puțini membri (Product Owner, Scrum Master și Developers împreună) — suficient de mică pentru agilitate, suficient de mare pentru muncă semnificativă într-un Sprint.",
+    "concept_key": "developers-marime-echipa",
+    "blockId": "cmjjuxvuv006pumkpspy245h4-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1448,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxvyu009iumkpggeb17dh",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Predictive",
+ "lesson": "Quiz Process Predictive",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "Test de evaluare — Quiz Process Predictive (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care document autorizează oficial începerea unui proiect și acordă managerului de proiect autoritatea de a folosi resursele organizaționale, în conformitate cu PMBOK 7?",
+     "choices": [
+      "Planul de management al proiectului",
+      "Charter-ul proiectului (Project Charter)",
+      "Registrul părților interesate (Stakeholder Register)",
+      "Enunțul de lucru (Statement of Work)"
+     ],
+     "answer": 1,
+     "explain": "Charter-ul proiectului este documentul emis de sponsor sau inițiator care autorizează formal existența proiectului și îi conferă managerului de proiect autoritatea de a aloca resurse organizaționale. De exemplu, la implementarea unui sistem ERP într-o companie de distribuție din România, charter-ul este semnat de directorul general înainte ca managerul de proiect să poată forma echipa.",
+     "concept_key": "project_charter"
+    },
+    {
+     "q": "O echipă de proiect descompune livrabilul „Modul de facturare” al unui proiect de digitalizare într-o structură ierarhică de activități. Care este regula fundamentală pe care trebuie să o respecte Structura de Descompunere a Activităților (WBS)?",
+     "choices": [
+      "Fiecare pachet de lucru trebuie să dureze exact o săptămână",
+      "Regula 100% — WBS trebuie să cuprindă tot scopul proiectului, fără suprapuneri sau omisiuni",
+      "WBS trebuie să conțină minimum trei niveluri ierarhice",
+      "Fiecare element WBS trebuie să aibă un cost identic"
+     ],
+     "answer": 1,
+     "explain": "Regula 100% este principiul de bază al WBS: suma elementelor de la un nivel inferior trebuie să reprezinte integral scopul elementului-părinte, fără a include activități în afara scopului și fără suprapuneri între pachetele de lucru. Aceasta garantează că nimic din scopul proiectului nu este omis sau dublat.",
+     "concept_key": "wbs_100_percent_rule"
+    },
+    {
+     "q": "Într-o diagramă de rețea a unui proiect predictiv, ce reprezintă „drumul critic” (Critical Path)?",
+     "choices": [
+      "Secvența de activități cu cel mai mic număr de dependințe",
+      "Cea mai lungă secvență de activități dependente, care determină durata minimă posibilă a proiectului",
+      "Activitatea cu cel mai mare cost din proiect",
+      "Lista activităților care pot fi realizate în paralel fără restricții"
+     ],
+     "answer": 1,
+     "explain": "Drumul critic este calculat prin Metoda Drumului Critic (CPM) și reprezintă cea mai lungă cale de activități dependente din rețea; orice întârziere pe acest drum întârzie direct data de finalizare a întregului proiect. Activitățile de pe drumul critic au, prin definiție, rezervă de timp (float) egală cu zero.",
+     "concept_key": "critical_path_method"
+    },
+    {
+     "q": "Într-un proiect de implementare a unui depozit de date, activitatea „Testare integrare” poate începe cel mai devreme în ziua 10 și cel mai târziu în ziua 14, fără a întârzia proiectul. Care este rezerva de timp (float) a acestei activități?",
+     "choices": [
+      "0 zile — activitatea este pe drumul critic",
+      "4 zile",
+      "10 zile",
+      "14 zile"
+     ],
+     "answer": 1,
+     "explain": "Float-ul (rezerva totală) se calculează ca diferența dintre cea mai târzie și cea mai devreme dată posibilă de începere (sau finalizare) a unei activități: 14 - 10 = 4 zile. O activitate cu float mai mare decât zero nu se află pe drumul critic și poate fi întârziată în limita acestor 4 zile fără a afecta data finală a proiectului.",
+     "concept_key": "total_float_calculation"
+    },
+    {
+     "q": "O firmă RO dorește să externalizeze dezvoltarea unui modul software către un furnizor, dar scopul exact al lucrărilor nu poate fi definit complet de la început. Ce tip de contract de achiziție este cel mai potrivit pentru a limita riscul furnizorului și a permite flexibilitate?",
+     "choices": [
+      "Preț Fix (Firm Fixed Price – FFP)",
+      "Cost Rambursabil cu Fee Fix (Cost Plus Fixed Fee – CPFF)",
+      "Timp și Materiale (Time and Materials – T&M)",
+      "Preț Fix cu Ajustare Economică a Prețului"
+     ],
+     "answer": 2,
+     "explain": "Contractul de tip Timp și Materiale (T&M) este un hibrid folosit când scopul lucrărilor nu poate fi specificat precis de la început: cumpărătorul plătește pe baza tarifelor orare/zilnice plus costul materialelor, oferind flexibilitate ambelor părți. Contractele cu preț fix presupun un scop clar definit, riscul fiind transferat furnizorului, ceea ce nu este fezabil aici.",
+     "concept_key": "contract_types_procurement"
+    },
+    {
+     "q": "În Managementul Valorii Realizate (Earned Value Management – EVM), cum se definesc corect cei trei parametri fundamentali PV, EV și AC?",
+     "choices": [
+      "PV = costul real cheltuit; EV = costul planificat; AC = valoarea muncii finalizate",
+      "PV = valoarea planificată a lucrărilor programate; EV = valoarea muncii efectiv finalizate, exprimată în buget; AC = costul real cheltuit pentru lucrările executate",
+      "PV = valoarea muncii finalizate; EV = costul real cheltuit; AC = valoarea planificată",
+      "PV, EV și AC sunt sinonime folosite interschimbabil în PMBOK 7"
+     ],
+     "answer": 1,
+     "explain": "PV (Planned Value) este bugetul alocat lucrărilor programate până la un moment dat; EV (Earned Value) este valoarea bugetară a lucrărilor efectiv finalizate; AC (Actual Cost) este costul real cheltuit pentru acele lucrări. Distincția corectă între acești trei termeni este esențială pentru a calcula ulterior indicii de performanță CPI și SPI.",
+     "concept_key": "evm_pv_ev_ac_definitions"
+    },
+    {
+     "q": "La un proiect de implementare ERP cu buget total (BAC) de 200.000 lei, la o evaluare intermediară se măsoară: PV = 80.000 lei, EV = 70.000 lei, AC = 90.000 lei. Care este Indicele de Performanță a Costurilor (CPI) și ce indică acesta?",
+     "choices": [
+      "CPI = 1,29 — proiectul este sub buget",
+      "CPI ≈ 0,78 — proiectul cheltuiește mai mult decât valoarea muncii realizate (peste buget)",
+      "CPI = 0,88 — proiectul este în avans față de program",
+      "CPI = 1,00 — proiectul respectă exact bugetul planificat"
+     ],
+     "answer": 1,
+     "explain": "CPI = EV / AC = 70.000 / 90.000 ≈ 0,78. Un CPI subunitar arată că, pentru fiecare leu cheltuit, proiectul a produs doar aproximativ 0,78 lei de valoare realizată, deci proiectul este peste buget (ineficiență a costurilor) și necesită acțiuni corective, cum ar fi realocarea resurselor sau renegocierea cu furnizorii.",
+     "concept_key": "evm_cpi_calculation"
+    },
+    {
+     "q": "Folosind aceleași date din proiectul ERP (PV = 80.000 lei, EV = 70.000 lei, AC = 90.000 lei), care este Indicele de Performanță a Programului (SPI) și ce concluzie rezultă?",
+     "choices": [
+      "SPI = 0,875 — proiectul este în întârziere față de programul planificat",
+      "SPI = 1,14 — proiectul este în avans față de program",
+      "SPI = 0,78 — proiectul este peste buget, dar la timp",
+      "SPI nu poate fi calculat fără durata totală a proiectului"
+     ],
+     "answer": 0,
+     "explain": "SPI = EV / PV = 70.000 / 80.000 = 0,875. Un SPI subunitar indică faptul că s-a realizat mai puțină muncă decât cea programată la acest moment, deci proiectul are întârzieri față de planul inițial. Managerul de proiect ar trebui să analizeze cauzele (resurse insuficiente, dependințe blocate) și să ajusteze planul de management al schimbărilor.",
+     "concept_key": "evm_spi_calculation"
+    },
+    {
+     "q": "O echipă de proiect identifică riscul „întârzierea livrării licențelor software de la furnizor” și îl evaluează atât din perspectiva probabilității de apariție, cât și a impactului asupra costurilor și programului. În ce document/instrument se înregistrează acest risc, împreună cu proprietarul riscului și strategia de răspuns?",
+     "choices": [
+      "Planul de management al comunicării",
+      "Registrul riscurilor (Risk Register)",
+      "Structura de Descompunere a Activităților (WBS)",
+      "Matricea de alocare a responsabilităților (RACI)"
+     ],
+     "answer": 1,
+     "explain": "Registrul riscurilor este instrumentul central al Managementului Riscului în proiectele predictive: conține descrierea riscului, categoria, probabilitatea și impactul, scorul de prioritizare, proprietarul riscului și strategia de răspuns aleasă (evitare, transfer, atenuare, acceptare). Matricea probabilitate-impact este folosită pentru analiza calitativă, dar rezultatul este documentat în registrul riscurilor.",
+     "concept_key": "risk_register"
+    },
+    {
+     "q": "Pentru proiectul de digitalizare cu BAC = 200.000 lei și CPI ≈ 0,78 (calculat anterior), presupunând că performanța costurilor rămâne constantă până la finalizare, care este estimarea la finalizare (EAC) folosind formula EAC = BAC / CPI?",
+     "choices": [
+      "EAC ≈ 156.000 lei",
+      "EAC ≈ 200.000 lei, deoarece CPI nu influențează EAC",
+      "EAC ≈ 257.143 lei",
+      "EAC ≈ 90.000 lei"
+     ],
+     "answer": 2,
+     "explain": "EAC = BAC / CPI = 200.000 / 0,7778 ≈ 257.143 lei. Această formulă se aplică atunci când se presupune că abaterile de cost observate până acum vor continua în același ritm până la finalizarea proiectului, fiind cea mai frecvent folosită variantă de calcul a EAC la examenul PMP pentru proiecte predictive.",
+     "concept_key": "evm_eac_calculation"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

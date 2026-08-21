@@ -1,0 +1,72 @@
+{
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "category": "HSE_SAFETY",
+ "voice": "ro_RO-mihai-medium",
+ "forgeSession": 10,
+ "cards": [
+  {
+   "front": "Ce lege reglementează securitatea și sănătatea în muncă (SSM) în România și de când este în vigoare?",
+   "back": "Legea nr. 319/2006 privind securitatea și sănătatea în muncă, în vigoare din 1 octombrie 2006 (publicată în M.Of. nr. 646/26.07.2006).",
+   "conceptKey": "legea-319-2006-obiect-domeniu",
+   "lessonId": "cmjjuxwbb00j8umkp5itpwo9q",
+   "lesson": "Legea 319/2006 - Principii",
+   "module": "Cadrul Legal SSM",
+   "blockId": "cmjjuxwbb00j8umkp5itpwo9q-b12"
+  },
+  {
+   "front": "Ce act normativ conține normele metodologice de aplicare a Legii 319/2006?",
+   "back": "HG 1425/2006.",
+   "conceptKey": "hg-1425-2006-norme-metodologice",
+   "lessonId": "cmjjuxwbb00j8umkp5itpwo9q",
+   "lesson": "Legea 319/2006 - Principii",
+   "module": "Cadrul Legal SSM",
+   "blockId": "cmjjuxwbb00j8umkp5itpwo9q-b13"
+  },
+  {
+   "front": "De la câți lucrători este obligatorie constituirea Comitetului de Securitate și Sănătate în Muncă (CSSM)?",
+   "back": "De la 50 de lucrători, conform Legii 319/2006.",
+   "conceptKey": "cssm-prag-50-lucratori",
+   "lessonId": "cmjjuxwbb00j8umkp5itpwo9q",
+   "lesson": "Legea 319/2006 - Principii",
+   "module": "Cadrul Legal SSM",
+   "blockId": "cmjjuxwbb00j8umkp5itpwo9q-b14"
+  },
+  {
+   "front": "Ce drept are lucrătorul în cazul unui pericol grav și iminent la locul de muncă?",
+   "back": "Dreptul de a se retrage din situația periculoasă, cu obligația de a anunța imediat angajatorul; nu poate fi sancționat pentru această decizie (art. 23, Legea 319/2006).",
+   "conceptKey": "drept-retragere-pericol-grav-iminent",
+   "lessonId": "cmjjuxwbb00j8umkp5itpwo9q",
+   "lesson": "Legea 319/2006 - Principii",
+   "module": "Cadrul Legal SSM",
+   "blockId": "cmjjuxwbb00j8umkp5itpwo9q-b15"
+  },
+  {
+   "front": "Prin ce trei modalități poate angajatorul organiza activitatea de prevenire și protecție SSM?",
+   "back": "1) Desemnarea unui/unor lucrător(i) intern(i); 2) organizarea unui serviciu intern de prevenire și protecție; 3) apelarea la servicii externe abilitate.",
+   "conceptKey": "organizarea-activitatii-ssm",
+   "lessonId": "cmjjuxwbb00j8umkp5itpwo9q",
+   "lesson": "Legea 319/2006 - Principii",
+   "module": "Cadrul Legal SSM",
+   "blockId": "cmjjuxwbb00j8umkp5itpwo9q-b16"
+  },
+  {
+   "front": "Ce autoritate controlează aplicarea legislației SSM în România?",
+   "back": "Inspectoratul Teritorial de Muncă (ITM).",
+   "conceptKey": "itm-autoritate-control-ssm",
+   "lessonId": "cmjjuxwbb00j8umkp5itpwo9q",
+   "lesson": "Legea 319/2006 - Principii",
+   "module": "Cadrul Legal SSM",
+   "blockId": "cmjjuxwbb00j8umkp5itpwo9q-b17"
+  },
+  {
+   "front": "Poate angajatorul să transfere costurile măsurilor SSM către lucrători?",
+   "back": "Nu. Legea 319/2006 prevede explicit că măsurile privind securitatea și sănătatea în muncă nu pot genera obligații financiare pentru lucrători.",
+   "conceptKey": "obligatiile-angajatorului-ssm",
+   "lessonId": "cmjjuxwbb00j8umkp5itpwo9q",
+   "lesson": "Legea 319/2006 - Principii",
+   "module": "Cadrul Legal SSM",
+   "blockId": "cmjjuxwbb00j8umkp5itpwo9q-b18"
+  }
+ ]
+}

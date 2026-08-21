@@ -1,0 +1,155 @@
+{
+ "lessonId": "cmjjuxw5000dwumkpd8n21goj",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Situații Financiare Anuale",
+ "lesson": "Componente și termene",
+ "category": "FINANCE_OPS",
+ "content": "# Componente și termene\n\nSituațiile financiare anuale reprezintă raportarea contabilă de sinteză prin care o entitate prezintă, la finalul exercițiului financiar, poziția financiară, performanța și modificările survenite în cursul anului. Conform OMFP 1802/2014 pentru reglementările contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate, componentele obligatorii diferă în funcție de categoria entității (micro, mică, mijlocie sau mare):\n\n- **Micro-entități și entități mici**: bilanț (în format prescurtat), cont de profit și pierdere și note explicative. Aceste entități pot opta, dar nu sunt obligate, să întocmească și situația modificărilor capitalului propriu și situația fluxurilor de trezorerie.\n- **Entități mijlocii, mari și entități de interes public** (bănci, societăți de asigurare, societăți listate etc.): set complet de situații financiare, format din bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și note explicative.\n\nAlături de setul propriu-zis, entitățile mijlocii, mari și cele de interes public depun obligatoriu și un raport al administratorilor, iar cele care depășesc pragurile de audit statutar atașează și raportul auditorului. Toate entitățile depun, odată cu situațiile financiare, și formularele de date informative solicitate de ANAF (cod 30) și situația activelor imobilizate.\n\nÎncadrarea unei entități într-o categorie (micro, mică, mijlocie sau mare) se face la data bilanțului, pe baza a trei criterii cumulate: totalul activelor, cifra de afaceri netă și numărul mediu de salariați în cursul exercițiului financiar. O entitate se încadrează într-o categorie dacă, la data bilanțului, nu depășește (sau depășește) limitele a cel puțin două dintre cele trei criterii, aplicate pe două exerciții financiare consecutive.\n\nPragurile valorice exacte pentru fiecare criteriu sunt stabilite prin OMFP 1802/2014 și pot fi actualizate periodic prin ordine ale ministrului finanțelor; recomandăm verificarea formei consolidate, în vigoare la data raportării, pe site-ul Ministerului Finanțelor. Ceea ce rămâne stabil este logica: cu cât entitatea este mai mare, cu atât setul de raportare este mai detaliat, iar obligațiile de audit statutar și de întocmire a raportului administratorilor devin aplicabile începând cu categoria mijlocie.\n\nTermenele de depunere a situațiilor financiare anuale sunt reglementate de Legea contabilității nr. 82/1991, art. 36, și diferă în funcție de tipul entității:\n\n- **150 de zile calendaristice** de la încheierea exercițiului financiar - pentru societățile comerciale (SRL, SA, SCS, SNC), societăți/companii naționale, regii autonome și institute naționale de cercetare-dezvoltare.\n- **120 de zile calendaristice** de la încheierea exercițiului financiar - pentru celelalte categorii de persoane juridice care au obligația întocmirii situațiilor financiare anuale (de exemplu asociații, fundații și alte persoane juridice fără scop patrimonial).\n\nEste esențial de reținut că termenele se calculează în **zile calendaristice, nu zile lucrătoare** - se numără toate zilele, inclusiv weekendurile și sărbătorile legale. Dacă ultima zi a termenului cade într-o zi nelucrătoare, termenul se prelungește până în prima zi lucrătoare următoare. Depunerea se face electronic, prin Spațiul Privat Virtual (SPV) al ANAF, cu semnătură electronică calificată, la unitatea fiscală teritorială în raza căreia entitatea își are sediul social.\n\nDepunerea situațiilor financiare anuale nu este un demers izolat - se corelează cu celelalte raportări pe care entitatea le transmite către ANAF. De exemplu, contribuabilii care intră în sfera de aplicare a SAF-T (declarația informativă D406) trebuie să transmită secțiunea 'Active' odată cu situațiile financiare anuale, ca parte a calendarului integrat de raportare. De la 1 ianuarie 2025, obligația SAF-T s-a extins și la contribuabilii mici, astfel încât un număr tot mai mare de entități trebuie să sincronizeze depunerea situațiilor financiare cu celelalte declarații fiscale și contabile electronice.\n\nPractic, este recomandat ca responsabilul financiar-contabil să pregătească un calendar intern care să includă: data finalizării balanței de verificare anuale, data aprobării situațiilor financiare de către AGA/asociați, data depunerii efective la ANAF și, dacă este cazul, data depunerii la Registrul Comerțului (pentru anumite categorii de entități) sau publicarea în Monitorul Oficial.\n\n> Temei legal: OMFP 1802/2014 componentele setului de situații financiare anuale, pct. 3-4 din reglementări (în vigoare de la 2015-01-01)\nOMFP nr. 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate se aplică începând cu situațiile financiare ale exercițiului financiar 2015 și stabilește, în funcție de categoria entității, componentele obligatorii ale setului de situații financiare anuale, formatul bilanțului (prescurtat sau dezvoltat) și conținutul minim al notelor explicative.\n\n## Exemplu: Calculul termenului de depunere pentru o societate cu exercițiu financiar calendaristic\nSC Solar Tech SRL are exercițiu financiar calendaristic, încheiat la 31.12.2025. Fiind societate comercială (SRL), i se aplică termenul de 150 de zile calendaristice prevăzut de Legea contabilității 82/1991, art. 36.\n\nCalcul: 31.12.2025 + 150 de zile calendaristice = **30.05.2026**.\n\nÎnsă 30.05.2026 este sâmbătă, deci o zi nelucrătoare. Conform regulii de prelungire, termenul se mută în prima zi lucrătoare următoare, adică **luni, 01.06.2026**. Aceasta este data-limită efectivă până la care SC Solar Tech SRL trebuie să depună situațiile financiare la ANAF, prin SPV.\n\nPentru comparație, o asociație (ONG) cu același exercițiu financiar calendaristic ar avea termenul de 120 de zile calendaristice: 31.12.2025 + 120 de zile = **30.04.2026**, zi de joi (lucrătoare), deci fără prelungire.\n\n## Exemplu: De la rezultatul brut la rezultatul net în contul de profit și pierdere\nO entitate mică raportează la 31.12.2025 următoarele solduri, extrase din balanța de verificare:\n\n- Venituri din exploatare: 850.000 lei\n- Cheltuieli din exploatare: 700.000 lei\n- Venituri financiare: 5.000 lei\n- Cheltuieli financiare (dobânzi la un credit): 20.000 lei\n\n**Calcul:**\n- Rezultat din exploatare = 850.000 - 700.000 = **150.000 lei**\n- Rezultat financiar = 5.000 - 20.000 = **-15.000 lei**\n- Rezultat brut (înainte de impozitare) = 150.000 + (-15.000) = **135.000 lei**\n- Impozit pe profit (cotă 16%) = 135.000 × 16% = **21.600 lei**\n- Rezultat net al exercițiului = 135.000 - 21.600 = **113.400 lei**\n\nAceastă structură (rezultat din exploatare → rezultat financiar → rezultat brut → impozit → rezultat net) este cea impusă de formatul contului de profit și pierdere conform OMFP 1802/2014 și se regăsește identic, indiferent de categoria entității; doar nivelul de detaliere al pozițiilor diferă între formatul prescurtat și cel dezvoltat.\n\n⚠ Nedepunerea la termen a situațiilor financiare anuale constituie contravenție potrivit Legii contabilității nr. 82/1991 și atrage sancțiuni contravenționale, gradate în funcție de perioada de întârziere. Cuantumurile exacte ale amenzilor trebuie verificate în forma actualizată a legii, conform reglementărilor în vigoare la data redactării (iulie 2026), întrucât pot fi modificate prin acte normative ulterioare. Dincolo de sancțiunea propriu-zisă, întârzierea afectează istoricul de conformare fiscală al entității și poate declanșa verificări suplimentare din partea ANAF.\n\n## Exercițiu\nSC Solar Tech SRL este o entitate încadrată în categoria 'mijlocie' (depășește limitele pentru cel puțin două din cele trei criterii aplicabile categoriei 'mici'). Societatea are exercițiu financiar calendaristic, încheiat la 31.12.2025.\n\na) Ce componente trebuie să includă setul de situații financiare anuale al societății?\nb) Care este termenul legal de depunere și care este data calendaristică exactă?\nc) Ce se întâmplă dacă data calculată la punctul b) cade într-o zi nelucrătoare?\n\n**Soluție:** a) Fiind entitate mijlocie, SC Solar Tech SRL trebuie să întocmească **setul complet** de situații financiare anuale: bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și note explicative. Suplimentar, întocmește obligatoriu **raportul administratorilor** și, dacă depășește pragurile de audit statutar, atașează și raportul auditorului.\n\nb) Fiind societate comercială (SRL), se aplică termenul de **150 de zile calendaristice** de la încheierea exercițiului financiar (Legea 82/1991, art. 36). Calcul: 31.12.2025 + 150 zile = **30.05.2026**.\n\nc) 30.05.2026 este sâmbătă, deci zi nelucrătoare. Termenul se prelungește până în prima zi lucrătoare următoare, adică **luni, 01.06.2026** - aceasta este data-limită efectivă de depunere la ANAF.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "situatii-financiare-anuale-componente",
+    "md": "Situațiile financiare anuale reprezintă raportarea contabilă de sinteză prin care o entitate prezintă, la finalul exercițiului financiar, poziția financiară, performanța și modificările survenite în cursul anului. Conform OMFP 1802/2014 pentru reglementările contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate, componentele obligatorii diferă în funcție de categoria entității (micro, mică, mijlocie sau mare):\n\n- **Micro-entități și entități mici**: bilanț (în format prescurtat), cont de profit și pierdere și note explicative. Aceste entități pot opta, dar nu sunt obligate, să întocmească și situația modificărilor capitalului propriu și situația fluxurilor de trezorerie.\n- **Entități mijlocii, mari și entități de interes public** (bănci, societăți de asigurare, societăți listate etc.): set complet de situații financiare, format din bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și note explicative.\n\nAlături de setul propriu-zis, entitățile mijlocii, mari și cele de interes public depun obligatoriu și un raport al administratorilor, iar cele care depășesc pragurile de audit statutar atașează și raportul auditorului. Toate entitățile depun, odată cu situațiile financiare, și formularele de date informative solicitate de ANAF (cod 30) și situația activelor imobilizate.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "categorii-entitati-omfp-1802",
+    "md": "Încadrarea unei entități într-o categorie (micro, mică, mijlocie sau mare) se face la data bilanțului, pe baza a trei criterii cumulate: totalul activelor, cifra de afaceri netă și numărul mediu de salariați în cursul exercițiului financiar. O entitate se încadrează într-o categorie dacă, la data bilanțului, nu depășește (sau depășește) limitele a cel puțin două dintre cele trei criterii, aplicate pe două exerciții financiare consecutive.\n\nPragurile valorice exacte pentru fiecare criteriu sunt stabilite prin OMFP 1802/2014 și pot fi actualizate periodic prin ordine ale ministrului finanțelor; recomandăm verificarea formei consolidate, în vigoare la data raportării, pe site-ul Ministerului Finanțelor. Ceea ce rămâne stabil este logica: cu cât entitatea este mai mare, cu atât setul de raportare este mai detaliat, iar obligațiile de audit statutar și de întocmire a raportului administratorilor devin aplicabile începând cu categoria mijlocie.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "termen-depunere-situatii-financiare",
+    "md": "Termenele de depunere a situațiilor financiare anuale sunt reglementate de Legea contabilității nr. 82/1991, art. 36, și diferă în funcție de tipul entității:\n\n- **150 de zile calendaristice** de la încheierea exercițiului financiar - pentru societățile comerciale (SRL, SA, SCS, SNC), societăți/companii naționale, regii autonome și institute naționale de cercetare-dezvoltare.\n- **120 de zile calendaristice** de la încheierea exercițiului financiar - pentru celelalte categorii de persoane juridice care au obligația întocmirii situațiilor financiare anuale (de exemplu asociații, fundații și alte persoane juridice fără scop patrimonial).\n\nEste esențial de reținut că termenele se calculează în **zile calendaristice, nu zile lucrătoare** - se numără toate zilele, inclusiv weekendurile și sărbătorile legale. Dacă ultima zi a termenului cade într-o zi nelucrătoare, termenul se prelungește până în prima zi lucrătoare următoare. Depunerea se face electronic, prin Spațiul Privat Virtual (SPV) al ANAF, cu semnătură electronică calificată, la unitatea fiscală teritorială în raza căreia entitatea își are sediul social.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "depunere-electronica-corelare-anaf",
+    "md": "Depunerea situațiilor financiare anuale nu este un demers izolat - se corelează cu celelalte raportări pe care entitatea le transmite către ANAF. De exemplu, contribuabilii care intră în sfera de aplicare a SAF-T (declarația informativă D406) trebuie să transmită secțiunea 'Active' odată cu situațiile financiare anuale, ca parte a calendarului integrat de raportare. De la 1 ianuarie 2025, obligația SAF-T s-a extins și la contribuabilii mici, astfel încât un număr tot mai mare de entități trebuie să sincronizeze depunerea situațiilor financiare cu celelalte declarații fiscale și contabile electronice.\n\nPractic, este recomandat ca responsabilul financiar-contabil să pregătească un calendar intern care să includă: data finalizării balanței de verificare anuale, data aprobării situațiilor financiare de către AGA/asociați, data depunerii efective la ANAF și, dacă este cazul, data depunerii la Registrul Comerțului (pentru anumite categorii de entități) sau publicarea în Monitorul Oficial.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b4"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "componentele setului de situații financiare anuale, pct. 3-4 din reglementări",
+    "effective": "2015-01-01",
+    "md": "OMFP nr. 1802/2014 pentru aprobarea Reglementărilor contabile privind situațiile financiare anuale individuale și situațiile financiare anuale consolidate se aplică începând cu situațiile financiare ale exercițiului financiar 2015 și stabilește, în funcție de categoria entității, componentele obligatorii ale setului de situații financiare anuale, formatul bilanțului (prescurtat sau dezvoltat) și conținutul minim al notelor explicative.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul termenului de depunere pentru o societate cu exercițiu financiar calendaristic",
+    "concept_key": "termen-150-zile-societati",
+    "md": "SC Solar Tech SRL are exercițiu financiar calendaristic, încheiat la 31.12.2025. Fiind societate comercială (SRL), i se aplică termenul de 150 de zile calendaristice prevăzut de Legea contabilității 82/1991, art. 36.\n\nCalcul: 31.12.2025 + 150 de zile calendaristice = **30.05.2026**.\n\nÎnsă 30.05.2026 este sâmbătă, deci o zi nelucrătoare. Conform regulii de prelungire, termenul se mută în prima zi lucrătoare următoare, adică **luni, 01.06.2026**. Aceasta este data-limită efectivă până la care SC Solar Tech SRL trebuie să depună situațiile financiare la ANAF, prin SPV.\n\nPentru comparație, o asociație (ONG) cu același exercițiu financiar calendaristic ar avea termenul de 120 de zile calendaristice: 31.12.2025 + 120 de zile = **30.04.2026**, zi de joi (lucrătoare), deci fără prelungire.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b6"
+   },
+   {
+    "type": "example",
+    "title": "De la rezultatul brut la rezultatul net în contul de profit și pierdere",
+    "concept_key": "cont-profit-pierdere-structura",
+    "md": "O entitate mică raportează la 31.12.2025 următoarele solduri, extrase din balanța de verificare:\n\n- Venituri din exploatare: 850.000 lei\n- Cheltuieli din exploatare: 700.000 lei\n- Venituri financiare: 5.000 lei\n- Cheltuieli financiare (dobânzi la un credit): 20.000 lei\n\n**Calcul:**\n- Rezultat din exploatare = 850.000 - 700.000 = **150.000 lei**\n- Rezultat financiar = 5.000 - 20.000 = **-15.000 lei**\n- Rezultat brut (înainte de impozitare) = 150.000 + (-15.000) = **135.000 lei**\n- Impozit pe profit (cotă 16%) = 135.000 × 16% = **21.600 lei**\n- Rezultat net al exercițiului = 135.000 - 21.600 = **113.400 lei**\n\nAceastă structură (rezultat din exploatare → rezultat financiar → rezultat brut → impozit → rezultat net) este cea impusă de formatul contului de profit și pierdere conform OMFP 1802/2014 și se regăsește identic, indiferent de categoria entității; doar nivelul de detaliere al pozițiilor diferă între formatul prescurtat și cel dezvoltat.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nedepunerea la termen a situațiilor financiare anuale constituie contravenție potrivit Legii contabilității nr. 82/1991 și atrage sancțiuni contravenționale, gradate în funcție de perioada de întârziere. Cuantumurile exacte ale amenzilor trebuie verificate în forma actualizată a legii, conform reglementărilor în vigoare la data redactării (iulie 2026), întrucât pot fi modificate prin acte normative ulterioare. Dincolo de sancțiunea propriu-zisă, întârzierea afectează istoricul de conformare fiscală al entității și poate declanșa verificări suplimentare din partea ANAF.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Solar Tech SRL este o entitate încadrată în categoria 'mijlocie' (depășește limitele pentru cel puțin două din cele trei criterii aplicabile categoriei 'mici'). Societatea are exercițiu financiar calendaristic, încheiat la 31.12.2025.\n\na) Ce componente trebuie să includă setul de situații financiare anuale al societății?\nb) Care este termenul legal de depunere și care este data calendaristică exactă?\nc) Ce se întâmplă dacă data calculată la punctul b) cade într-o zi nelucrătoare?",
+    "solution_md": "a) Fiind entitate mijlocie, SC Solar Tech SRL trebuie să întocmească **setul complet** de situații financiare anuale: bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și note explicative. Suplimentar, întocmește obligatoriu **raportul administratorilor** și, dacă depășește pragurile de audit statutar, atașează și raportul auditorului.\n\nb) Fiind societate comercială (SRL), se aplică termenul de **150 de zile calendaristice** de la încheierea exercițiului financiar (Legea 82/1991, art. 36). Calcul: 31.12.2025 + 150 zile = **30.05.2026**.\n\nc) 30.05.2026 este sâmbătă, deci zi nelucrătoare. Termenul se prelungește până în prima zi lucrătoare următoare, adică **luni, 01.06.2026** - aceasta este data-limită efectivă de depunere la ANAF.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul legal de depunere a situațiilor financiare anuale pentru o societate comercială (SRL) cu exercițiu financiar calendaristic?",
+    "choices": [
+     "90 de zile calendaristice de la încheierea exercițiului financiar",
+     "120 de zile calendaristice de la încheierea exercițiului financiar",
+     "150 de zile calendaristice de la încheierea exercițiului financiar",
+     "150 de zile lucrătoare de la încheierea exercițiului financiar"
+    ],
+    "answer": 2,
+    "explain": "Societățile comerciale (SRL, SA etc.) au termen de 150 de zile calendaristice, conform Legii contabilității 82/1991, art. 36. Termenul se numără în zile calendaristice, nu lucrătoare.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele componente NU este obligatorie pentru o entitate încadrată în categoria 'micro-entități'?",
+    "choices": [
+     "Bilanț prescurtat",
+     "Cont de profit și pierdere",
+     "Situația fluxurilor de trezorerie",
+     "Note explicative (informații minime)"
+    ],
+    "answer": 2,
+    "explain": "Situația fluxurilor de trezorerie este obligatorie doar pentru entitățile mijlocii, mari și cele de interes public; micro-entitățile o pot întocmi opțional, dar nu sunt obligate.",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte zile calendaristice au societățile comerciale pentru depunerea situațiilor financiare anuale?",
+    "back": "150 de zile calendaristice de la încheierea exercițiului financiar (Legea contabilității 82/1991, art. 36).",
+    "concept_key": "termen-150-zile-societati",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte zile au asociațiile, fundațiile și alte entități fără scop patrimonial pentru depunerea situațiilor financiare?",
+    "back": "120 de zile calendaristice de la încheierea exercițiului financiar.",
+    "concept_key": "termen-120-zile-alte-entitati",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce componente conține setul complet de situații financiare anuale (entități mijlocii/mari)?",
+    "back": "Bilanț, cont de profit și pierdere, situația modificărilor capitalului propriu, situația fluxurilor de trezorerie și note explicative.",
+    "concept_key": "situatii-financiare-anuale-componente",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce depun micro-entitățile și entitățile mici în locul bilanțului complet?",
+    "back": "Bilanț prescurtat, însoțit de cont de profit și pierdere și note explicative (opțional, situația modificărilor capitalului propriu și fluxurilor de trezorerie).",
+    "concept_key": "bilant-prescurtat",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Pe ce bază se stabilește categoria unei entități (micro/mică/mijlocie/mare)?",
+    "back": "Pe baza a trei criterii - total active, cifră de afaceri netă, număr mediu de salariați - dacă entitatea depășește sau nu limitele a cel puțin două din cele trei, la data bilanțului.",
+    "concept_key": "categorii-entitati-omfp-1802",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se întâmplă dacă termenul de depunere cade într-o zi nelucrătoare?",
+    "back": "Termenul se prelungește până în prima zi lucrătoare următoare.",
+    "concept_key": "termen-depunere-zi-nelucratoare",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Unde se depun electronic situațiile financiare anuale la ANAF?",
+    "back": "Prin Spațiul Privat Virtual (SPV), cu semnătură electronică calificată.",
+    "concept_key": "depunere-electronica-spv",
+    "blockId": "cmjjuxw5000dwumkpd8n21goj-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1208,
+   "flashcards": 7
+  }
+ }
+}

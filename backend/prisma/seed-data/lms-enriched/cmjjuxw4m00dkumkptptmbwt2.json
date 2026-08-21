@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw4m00dkumkptptmbwt2",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Raportare ANAF - SAF-T și e-Factura",
+ "lesson": "Generarea fișierului SAF-T",
+ "category": "FINANCE_OPS",
+ "content": "# Generarea fișierului SAF-T\n\n## Ce este fișierul SAF-T (declarația D406)\n\n**SAF-T** (Standard Audit File for Tax) este formatul standardizat, structurat pe XML, prin care firmele transmit către ANAF, periodic, informații detaliate din contabilitate: jurnalul de la cartea mare, facturile emise și primite, plățile, mijloacele fixe și, la cerere, stocurile. În România, obligația este reglementată prin **OMF 1783/2021** și se depune sub denumirea **declarația D406**.\n\nCalendarul de intrare în obligativitate a fost gradual:\n- contribuabili **mari** — din 2022;\n- contribuabili **mijlocii** — din 2023;\n- contribuabili **mici** — de la **1 ianuarie 2025**.\n\nPerioada de grație (acordată la prima raportare, diferențiată pe categorii — 6/5/4/3/2 luni pentru raportarea lunară și 3 luni pentru prima raportare trimestrială) **s-a epuizat integral în 2025**. Practic, în 2026 nu mai beneficiezi de nicio perioadă de grație: termenele standard se aplică de la prima ta raportare.\n\nStructura fișierului XML respectă schema publicată de ANAF și conține, în linii mari, două zone mari:\n- **MasterFiles** — nomenclatoare (plan de conturi, parteneri, produse, mijloace fixe);\n- **GeneralLedgerEntries** și **SourceDocuments** — înregistrările contabile efective și documentele sursă (facturi, încasări, plăți).\n\nDeclarația D406 este o **declarație informativă** — nu generează obligații de plată directe, dar netransmiterea sau transmiterea eronată atrage sancțiuni, deci acuratețea mapării datelor este esențială.\n\n## Maparea datelor contabile pe structura SAF-T\n\nÎnainte ca softul tău de contabilitate să poată genera fișierul XML, fiecare element din contabilitatea internă trebuie „tradus\" în nomenclatoarele standardizate cerute de ANAF. Este pasul cel mai sensibil al proiectului, pentru că majoritatea erorilor de raportare pornesc de aici, nu din softul de generare.\n\nCe se mapează, în practică:\n\n1. **Planul de conturi intern → conturile standard SAF-T.** Chiar dacă folosești planul de conturi din OMFP 1802/2014, unele firme au conturi analitice proprii (ex. 411.01.CLIENT_X) care trebuie asociate corect contului sintetic raportabil.\n2. **Codurile de TVA** aplicate pe fiecare tranzacție — cota standard 21%, cota redusă 11% (de la 1 august 2025, conform Legii 141/2025), scutiri, taxare inversă — trebuie să corespundă exact codurilor din nomenclatorul ANAF, altfel validarea eșuează sau, mai grav, trece dar raportează cote greșite.\n3. **Partenerii (clienți/furnizori)** — CUI, cod țară, cod județ (nomenclator ANAF pentru localități) — date adesea incomplete în bazele istorice.\n4. **Codurile de produse/servicii și unitățile de măsură**, mapate pe nomenclatorul UN/CEFACT cerut de schemă.\n5. **Mijloacele fixe**, raportate în secțiunea Active — aceasta se transmite **o dată cu situațiile financiare anuale**, nu lunar/trimestrial.\n6. **Stocurile** — secțiune separată, transmisă **doar la cererea explicită a ANAF**, cu un termen de minimum 30 de zile pentru pregătire.\n\nÎn practică, maparea se face o singură dată (configurare inițială), dar trebuie revizuită de fiecare dată când adaugi conturi analitice noi, parteneri noi din afara UE sau produse noi în nomenclator.\n\n## DUKIntegrator — validarea și generarea fișierului final\n\n**DUKIntegrator** este aplicația oficială pusă la dispoziție de ANAF pentru validarea locală a fișierelor SAF-T înainte de depunere. Fluxul tipic de lucru este:\n\n1. **Generarea XML-ului** din softul de contabilitate, pe baza mapării deja configurate (planul de conturi, codurile TVA, partenerii etc.).\n2. **Validarea în DUKIntegrator** — aplicația verifică fișierul XML față de schema XSD publicată de ANAF: structura elementelor, tipurile de date, nomenclatoarele obligatorii, precum și încadrarea în dimensiunea maximă acceptată de **500 MB**.\n3. Dacă validarea reușește, DUKIntegrator generează un **fișier index/PDF cu semnătură** (hash-ul fișierului XML), care se atașează alături de XML la depunere.\n4. **Depunerea prin SPV** (Spațiul Privat Virtual) — se încarcă atât XML-ul, cât și fișierul generat de DUKIntegrator.\n\nDacă fișierul depășește 500 MB, trebuie împărțit în mai multe fișiere (split), fiecare validat separat — o situație frecventă la firmele cu volum mare de tranzacții și facturi cu multe linii.\n\nTermenul de depunere diferă în funcție de categoria contribuabilului și de perioada fiscală de TVA:\n- **lunar** — pentru contribuabilii mari și mijlocii, precum și pentru plătitorii lunari de TVA — până în **ultima zi a lunii următoare** perioadei raportate;\n- **trimestrial** — pentru restul contribuabililor (inclusiv majoritatea celor mici, plătitori trimestriali de TVA) — tot până în **ultima zi a lunii următoare** trimestrului raportat.\n\n## Exemplu: Mapare cont contabil → cod SAF-T\nO firmă SRL emite o factură către clientul „Alfa Comert SRL\" în valoare de 10.000 lei + TVA 21% (2.100 lei), înregistrată contabil astfel:\n\n- 4111 „Clienți\" = 704 „Venituri din servicii prestate\" + 4427 „TVA colectată\" — 12.100 lei\n\nPentru raportarea SAF-T, această operațiune trebuie mapată astfel:\n- contul **4111** → cod cont standard SAF-T pentru creanțe comerciale, cu asocierea partenerului (CUI-ul „Alfa Comert SRL\", cod județ conform nomenclatorului ANAF);\n- contul **704** → cod cont de venituri, cu tipul de tranzacție „vânzare servicii\";\n- contul **4427** → cod TVA colectată, cu **cota 21%** marcată explicit — cota standard aplicabilă de la 1 august 2025 (Legea 141/2025); dacă factura ar fi conținut un produs cu cotă redusă (ex. alimente de bază), s-ar fi folosit codul de TVA 11%, cu nomenclatorul de cotă redusă asociat corect, nu cel standard.\n\nDacă maparea codului de TVA este greșită (de exemplu, o factură cu cotă 11% e mapată pe codul standard), fișierul poate trece validarea structurală din DUKIntegrator — pentru că din punct de vedere XSD e valid — dar va raporta către ANAF o cotă incorectă, ceea ce poate genera discrepanțe la o eventuală inspecție fiscală.\n\n## Exemplu: Flux de validare cu DUKIntegrator și erori comune\nO firmă mijlocie pregătește raportarea SAF-T pentru luna mai 2026. Pașii parcurși de echipa contabilă:\n\n1. Softul de contabilitate exportă fișierul `D406_mai2026.xml`.\n2. Fișierul este deschis în DUKIntegrator pentru validare. Aplicația semnalează trei erori:\n   - **cod de partener lipsă** — un furnizor nou introdus în lună nu are CUI completat corect în fișă;\n   - **cont analitic nemapat** — un cont nou de cheltuieli (628.05) adăugat recent nu are corespondent în nomenclatorul standard SAF-T;\n   - **caractere speciale nevalide** — denumirea unui produs conține un caracter care nu respectă encoding-ul XML acceptat.\n3. Erorile se corectează la sursă (în softul de contabilitate — se completează CUI-ul, se mapează contul nou, se curăță denumirea produsului), apoi se regenerează XML-ul.\n4. A doua validare în DUKIntegrator trece fără erori; aplicația generează fișierul index cu semnătura.\n5. Ambele fișiere se încarcă în SPV, înainte de termenul-limită.\n\nAceastă situație e tipică: cele mai frecvente erori de validare nu țin de softul de generare, ci de **date incomplete sau nemapate** — conturi analitice noi, parteneri fără CUI valid, coduri de produs fără unitate de măsură standard. De aceea, recomandarea practică este rularea unei validări de test cu câteva zile lucrătoare înainte de termen, nu în ultima zi.\n\n> Temei legal: OMF 1783/2021 Anexele privind structura fișierului standard de control fiscal (SAF-T) și termenele de depunere pe categorii de contribuabili (în vigoare de la 2022-01-01)\nOMF 1783/2021 reglementează structura, conținutul și termenele de depunere a declarației informative D406 (SAF-T). Calendarul de aplicare: contribuabili mari din 2022, mijlocii din 2023, mici de la 1 ianuarie 2025. Perioadele de grație acordate la prima raportare pe fiecare categorie s-au epuizat integral în 2025 — începând cu 2026 se aplică termenele standard, fără nicio perioadă suplimentară de adaptare.\n\n⚠ Din 2026 **nu mai există nicio perioadă de grație** pentru depunerea SAF-T, indiferent de categoria contribuabilului — inclusiv pentru firmele mici care au intrat în obligativitate abia din 1 ianuarie 2025. Nedepunerea sau depunerea cu întârziere a declarației D406 este sancționată contravențional, iar cuantumurile amenzilor trebuie verificate direct pe portalul ANAF sau cu un consultant fiscal, conform reglementărilor în vigoare la data redactării (iulie 2026) — acest material nu constituie consultanță fiscală personalizată. Nu confunda termenul SAF-T cu termenul de transmitere a facturilor în SPV pentru e-Factura (5 zile lucrătoare de la 1 ianuarie 2026) — sunt obligații distincte, cu termene și sancțiuni separate.\n\n## Exercițiu\nO firmă SRL este încadrată drept **contribuabil mic** și este **plătitoare trimestrială de TVA**. Trebuie să depună SAF-T pentru **trimestrul I 2026** (ianuarie–martie 2026), fără nicio perioadă de grație (epuizată deja în 2025).\n\nStabilește: (a) cu ce frecvență raportează firma SAF-T și (b) care este termenul-limită de depunere pentru acest trimestru.\n\n**Soluție:** (a) Fiind contribuabil mic și plătitor **trimestrial** de TVA, firma raportează SAF-T **trimestrial**, nu lunar (raportarea lunară este obligatorie doar pentru contribuabilii mari/mijlocii și pentru plătitorii lunari de TVA).\n\n(b) Termenul de depunere este **ultima zi a lunii următoare** perioadei raportate. Trimestrul I 2026 se încheie la 31 martie 2026, deci luna următoare este aprilie 2026, iar termenul-limită este **30 aprilie 2026**. Firma trebuie să genereze fișierul XML din softul de contabilitate, să îl valideze în DUKIntegrator (verificând mapările de conturi, parteneri și coduri TVA), să corecteze eventualele erori semnalate și să depună atât XML-ul, cât și fișierul index generat, prin SPV, până la această dată.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "saf-t-d406-definitie-structura",
+    "md": "## Ce este fișierul SAF-T (declarația D406)\n\n**SAF-T** (Standard Audit File for Tax) este formatul standardizat, structurat pe XML, prin care firmele transmit către ANAF, periodic, informații detaliate din contabilitate: jurnalul de la cartea mare, facturile emise și primite, plățile, mijloacele fixe și, la cerere, stocurile. În România, obligația este reglementată prin **OMF 1783/2021** și se depune sub denumirea **declarația D406**.\n\nCalendarul de intrare în obligativitate a fost gradual:\n- contribuabili **mari** — din 2022;\n- contribuabili **mijlocii** — din 2023;\n- contribuabili **mici** — de la **1 ianuarie 2025**.\n\nPerioada de grație (acordată la prima raportare, diferențiată pe categorii — 6/5/4/3/2 luni pentru raportarea lunară și 3 luni pentru prima raportare trimestrială) **s-a epuizat integral în 2025**. Practic, în 2026 nu mai beneficiezi de nicio perioadă de grație: termenele standard se aplică de la prima ta raportare.\n\nStructura fișierului XML respectă schema publicată de ANAF și conține, în linii mari, două zone mari:\n- **MasterFiles** — nomenclatoare (plan de conturi, parteneri, produse, mijloace fixe);\n- **GeneralLedgerEntries** și **SourceDocuments** — înregistrările contabile efective și documentele sursă (facturi, încasări, plăți).\n\nDeclarația D406 este o **declarație informativă** — nu generează obligații de plată directe, dar netransmiterea sau transmiterea eronată atrage sancțiuni, deci acuratețea mapării datelor este esențială.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "saf-t-mapare-date-contabile",
+    "md": "## Maparea datelor contabile pe structura SAF-T\n\nÎnainte ca softul tău de contabilitate să poată genera fișierul XML, fiecare element din contabilitatea internă trebuie „tradus\" în nomenclatoarele standardizate cerute de ANAF. Este pasul cel mai sensibil al proiectului, pentru că majoritatea erorilor de raportare pornesc de aici, nu din softul de generare.\n\nCe se mapează, în practică:\n\n1. **Planul de conturi intern → conturile standard SAF-T.** Chiar dacă folosești planul de conturi din OMFP 1802/2014, unele firme au conturi analitice proprii (ex. 411.01.CLIENT_X) care trebuie asociate corect contului sintetic raportabil.\n2. **Codurile de TVA** aplicate pe fiecare tranzacție — cota standard 21%, cota redusă 11% (de la 1 august 2025, conform Legii 141/2025), scutiri, taxare inversă — trebuie să corespundă exact codurilor din nomenclatorul ANAF, altfel validarea eșuează sau, mai grav, trece dar raportează cote greșite.\n3. **Partenerii (clienți/furnizori)** — CUI, cod țară, cod județ (nomenclator ANAF pentru localități) — date adesea incomplete în bazele istorice.\n4. **Codurile de produse/servicii și unitățile de măsură**, mapate pe nomenclatorul UN/CEFACT cerut de schemă.\n5. **Mijloacele fixe**, raportate în secțiunea Active — aceasta se transmite **o dată cu situațiile financiare anuale**, nu lunar/trimestrial.\n6. **Stocurile** — secțiune separată, transmisă **doar la cererea explicită a ANAF**, cu un termen de minimum 30 de zile pentru pregătire.\n\nÎn practică, maparea se face o singură dată (configurare inițială), dar trebuie revizuită de fiecare dată când adaugi conturi analitice noi, parteneri noi din afara UE sau produse noi în nomenclator.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "saf-t-dukintegrator-validare",
+    "md": "## DUKIntegrator — validarea și generarea fișierului final\n\n**DUKIntegrator** este aplicația oficială pusă la dispoziție de ANAF pentru validarea locală a fișierelor SAF-T înainte de depunere. Fluxul tipic de lucru este:\n\n1. **Generarea XML-ului** din softul de contabilitate, pe baza mapării deja configurate (planul de conturi, codurile TVA, partenerii etc.).\n2. **Validarea în DUKIntegrator** — aplicația verifică fișierul XML față de schema XSD publicată de ANAF: structura elementelor, tipurile de date, nomenclatoarele obligatorii, precum și încadrarea în dimensiunea maximă acceptată de **500 MB**.\n3. Dacă validarea reușește, DUKIntegrator generează un **fișier index/PDF cu semnătură** (hash-ul fișierului XML), care se atașează alături de XML la depunere.\n4. **Depunerea prin SPV** (Spațiul Privat Virtual) — se încarcă atât XML-ul, cât și fișierul generat de DUKIntegrator.\n\nDacă fișierul depășește 500 MB, trebuie împărțit în mai multe fișiere (split), fiecare validat separat — o situație frecventă la firmele cu volum mare de tranzacții și facturi cu multe linii.\n\nTermenul de depunere diferă în funcție de categoria contribuabilului și de perioada fiscală de TVA:\n- **lunar** — pentru contribuabilii mari și mijlocii, precum și pentru plătitorii lunari de TVA — până în **ultima zi a lunii următoare** perioadei raportate;\n- **trimestrial** — pentru restul contribuabililor (inclusiv majoritatea celor mici, plătitori trimestriali de TVA) — tot până în **ultima zi a lunii următoare** trimestrului raportat.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b3"
+   },
+   {
+    "type": "example",
+    "title": "Mapare cont contabil → cod SAF-T",
+    "concept_key": "saf-t-mapare-date-contabile",
+    "md": "O firmă SRL emite o factură către clientul „Alfa Comert SRL\" în valoare de 10.000 lei + TVA 21% (2.100 lei), înregistrată contabil astfel:\n\n- 4111 „Clienți\" = 704 „Venituri din servicii prestate\" + 4427 „TVA colectată\" — 12.100 lei\n\nPentru raportarea SAF-T, această operațiune trebuie mapată astfel:\n- contul **4111** → cod cont standard SAF-T pentru creanțe comerciale, cu asocierea partenerului (CUI-ul „Alfa Comert SRL\", cod județ conform nomenclatorului ANAF);\n- contul **704** → cod cont de venituri, cu tipul de tranzacție „vânzare servicii\";\n- contul **4427** → cod TVA colectată, cu **cota 21%** marcată explicit — cota standard aplicabilă de la 1 august 2025 (Legea 141/2025); dacă factura ar fi conținut un produs cu cotă redusă (ex. alimente de bază), s-ar fi folosit codul de TVA 11%, cu nomenclatorul de cotă redusă asociat corect, nu cel standard.\n\nDacă maparea codului de TVA este greșită (de exemplu, o factură cu cotă 11% e mapată pe codul standard), fișierul poate trece validarea structurală din DUKIntegrator — pentru că din punct de vedere XSD e valid — dar va raporta către ANAF o cotă incorectă, ceea ce poate genera discrepanțe la o eventuală inspecție fiscală.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b4"
+   },
+   {
+    "type": "example",
+    "title": "Flux de validare cu DUKIntegrator și erori comune",
+    "concept_key": "saf-t-dukintegrator-validare",
+    "md": "O firmă mijlocie pregătește raportarea SAF-T pentru luna mai 2026. Pașii parcurși de echipa contabilă:\n\n1. Softul de contabilitate exportă fișierul `D406_mai2026.xml`.\n2. Fișierul este deschis în DUKIntegrator pentru validare. Aplicația semnalează trei erori:\n   - **cod de partener lipsă** — un furnizor nou introdus în lună nu are CUI completat corect în fișă;\n   - **cont analitic nemapat** — un cont nou de cheltuieli (628.05) adăugat recent nu are corespondent în nomenclatorul standard SAF-T;\n   - **caractere speciale nevalide** — denumirea unui produs conține un caracter care nu respectă encoding-ul XML acceptat.\n3. Erorile se corectează la sursă (în softul de contabilitate — se completează CUI-ul, se mapează contul nou, se curăță denumirea produsului), apoi se regenerează XML-ul.\n4. A doua validare în DUKIntegrator trece fără erori; aplicația generează fișierul index cu semnătura.\n5. Ambele fișiere se încarcă în SPV, înainte de termenul-limită.\n\nAceastă situație e tipică: cele mai frecvente erori de validare nu țin de softul de generare, ci de **date incomplete sau nemapate** — conturi analitice noi, parteneri fără CUI valid, coduri de produs fără unitate de măsură standard. De aceea, recomandarea practică este rularea unei validări de test cu câteva zile lucrătoare înainte de termen, nu în ultima zi.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMF 1783/2021",
+    "article": "Anexele privind structura fișierului standard de control fiscal (SAF-T) și termenele de depunere pe categorii de contribuabili",
+    "effective": "2022-01-01",
+    "md": "OMF 1783/2021 reglementează structura, conținutul și termenele de depunere a declarației informative D406 (SAF-T). Calendarul de aplicare: contribuabili mari din 2022, mijlocii din 2023, mici de la 1 ianuarie 2025. Perioadele de grație acordate la prima raportare pe fiecare categorie s-au epuizat integral în 2025 — începând cu 2026 se aplică termenele standard, fără nicio perioadă suplimentară de adaptare.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Din 2026 **nu mai există nicio perioadă de grație** pentru depunerea SAF-T, indiferent de categoria contribuabilului — inclusiv pentru firmele mici care au intrat în obligativitate abia din 1 ianuarie 2025. Nedepunerea sau depunerea cu întârziere a declarației D406 este sancționată contravențional, iar cuantumurile amenzilor trebuie verificate direct pe portalul ANAF sau cu un consultant fiscal, conform reglementărilor în vigoare la data redactării (iulie 2026) — acest material nu constituie consultanță fiscală personalizată. Nu confunda termenul SAF-T cu termenul de transmitere a facturilor în SPV pentru e-Factura (5 zile lucrătoare de la 1 ianuarie 2026) — sunt obligații distincte, cu termene și sancțiuni separate.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă SRL este încadrată drept **contribuabil mic** și este **plătitoare trimestrială de TVA**. Trebuie să depună SAF-T pentru **trimestrul I 2026** (ianuarie–martie 2026), fără nicio perioadă de grație (epuizată deja în 2025).\n\nStabilește: (a) cu ce frecvență raportează firma SAF-T și (b) care este termenul-limită de depunere pentru acest trimestru.",
+    "solution_md": "(a) Fiind contribuabil mic și plătitor **trimestrial** de TVA, firma raportează SAF-T **trimestrial**, nu lunar (raportarea lunară este obligatorie doar pentru contribuabilii mari/mijlocii și pentru plătitorii lunari de TVA).\n\n(b) Termenul de depunere este **ultima zi a lunii următoare** perioadei raportate. Trimestrul I 2026 se încheie la 31 martie 2026, deci luna următoare este aprilie 2026, iar termenul-limită este **30 aprilie 2026**. Firma trebuie să genereze fișierul XML din softul de contabilitate, să îl valideze în DUKIntegrator (verificând mapările de conturi, parteneri și coduri TVA), să corecteze eventualele erori semnalate și să depună atât XML-ul, cât și fișierul index generat, prin SPV, până la această dată.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De la ce dată sunt obligați contribuabilii mici să depună declarația SAF-T D406?",
+    "choices": [
+     "1 ianuarie 2022",
+     "1 ianuarie 2023",
+     "1 ianuarie 2025",
+     "1 ianuarie 2026"
+    ],
+    "answer": 2,
+    "explain": "Calendarul de aplicare OMF 1783/2021 este: mari din 2022, mijlocii din 2023, mici de la 1 ianuarie 2025. Perioada de grație aferentă acestei categorii s-a epuizat în 2025.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce aplicație folosești pentru a valida structura fișierului XML D406 înainte de a-l depune prin SPV?",
+    "choices": [
+     "DUKIntegrator",
+     "e-Factura Checker",
+     "ANAF Validator Online",
+     "SPV Wizard"
+    ],
+    "answer": 0,
+    "explain": "DUKIntegrator este aplicația oficială ANAF care validează fișierul față de schema XSD și generează fișierul index/semnătură necesar la depunere.",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă SAF-T și cum se numește declarația aferentă în România?",
+    "back": "Standard Audit File for Tax — declarația informativă D406, reglementată prin OMF 1783/2021.",
+    "concept_key": "saf-t-d406-definitie-structura",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De la ce dată depun contribuabilii mici declarația SAF-T D406?",
+    "back": "De la 1 ianuarie 2025.",
+    "concept_key": "saf-t-d406-definitie-structura",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este dimensiunea maximă acceptată a unui fișier SAF-T la depunere?",
+    "back": "500 MB; peste această dimensiune, fișierul trebuie împărțit (split) în mai multe fișiere validate separat.",
+    "concept_key": "saf-t-dukintegrator-validare",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face aplicația DUKIntegrator?",
+    "back": "Validează fișierul XML D406 față de schema XSD ANAF și generează fișierul index cu semnătura necesar la depunerea prin SPV.",
+    "concept_key": "saf-t-dukintegrator-validare",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul standard de depunere SAF-T pentru contribuabilii mari/mijlocii și plătitorii lunari de TVA?",
+    "back": "Ultima zi a lunii următoare perioadei de raportare (lunar); pentru ceilalți, raportarea e trimestrială, tot până în ultima zi a lunii următoare.",
+    "concept_key": "saf-t-dukintegrator-validare",
+    "blockId": "cmjjuxw4m00dkumkptptmbwt2-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1376,
+   "flashcards": 5
+  }
+ }
+}

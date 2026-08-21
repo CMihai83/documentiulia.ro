@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvuf006dumkp4nrl865c",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Fundamente Agile",
+ "lesson": "Agile vs Waterfall detaliat",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Agile vs Waterfall detaliat\n\n## Modelul Waterfall (cascadă)\n\nModelul Waterfall (\"cascadă\") este abordarea tradițională de management de proiect, descrisă pentru prima dată de Winston Royce în 1970 ca un flux **secvențial și liniar**, în care fiecare fază trebuie finalizată și aprobată înainte de a începe următoarea:\n\n1. **Colectarea și analiza cerințelor** — se documentează integral ce trebuie livrat (ex. un document SRS — Software Requirements Specification).\n2. **Proiectare (Design)** — arhitectura tehnică și funcțională se stabilește pe baza cerințelor înghețate.\n3. **Implementare** — dezvoltarea propriu-zisă a soluției conform proiectării.\n4. **Testare** — verificarea conformității cu cerințele inițiale.\n5. **Punere în producție (Deployment)**.\n6. **Mentenanță**.\n\nCaracteristica esențială este că scope-ul, bugetul și termenul (\"triunghiul de fier\") se fixează încă din faza de analiză, iar orice modificare ulterioară necesită un proces formal de **change request**, de regulă costisitor și lent. Waterfall funcționează bine acolo unde cerințele sunt stabile și bine cunoscute de la început — de exemplu proiecte de construcții, sisteme critice de siguranță sau proiecte reglementate strict, unde documentația completă este o cerință contractuală sau legală, nu o opțiune.\n\n## Manifestul Agile și abordarea iterativă\n\nÎn 2001, un grup de 17 practicieni a publicat **Manifestul Agile**, format din **4 valori** și **12 principii**. Cele 4 valori fundamentale sunt:\n\n- **Indivizi și interacțiuni** mai presus de procese și instrumente\n- **Software funcțional** mai presus de documentație exhaustivă\n- **Colaborare cu clientul** mai presus de negocierea contractului\n- **Răspuns la schimbare** mai presus de urmarea rigidă a unui plan\n\nImportant: valorile din dreapta nu sunt eliminate, ci doar au prioritate mai mică decât cele din stânga — documentația, contractele și planificarea rămân necesare, dar nu blochează adaptarea.\n\nSpre deosebire de Waterfall, Agile propune livrarea **iterativă și incrementală**: proiectul este împărțit în cicluri scurte (în Scrum numite **Sprinturi**, tipic 1-4 săptămâni, conform Scrum Guide 2020), la finalul fiecărui ciclu obținându-se un increment funcțional de produs. Cerințele sunt organizate într-un **Product Backlog** prioritizat dinamic, care se poate reordona la fiecare Sprint în funcție de feedback-ul real primit de la client sau de piață. Riscul nu mai este \"tot sau nimic\" la finalul proiectului, ci este descoperit și gestionat incremental, sprint după sprint.\n\n## Comparație pe criterii-cheie\n\n| Criteriu | Waterfall | Agile / Scrum |\n|---|---|---|\n| **Predictibilitate** | Ridicată la nivel de scope, cost și termen — planificate integral de la început | Ridicată la nivel de ritm (velocity), dar scope-ul final se poate schimba |\n| **Flexibilitate** | Redusă — schimbările necesită change request formal, de regulă costisitor | Ridicată — backlog-ul se reprioritizează la fiecare Sprint Planning |\n| **Documentație** | Extensivă, formală, produsă înainte de dezvoltare (SRS, specificații de design) | \"Suficientă cât e nevoie\" — accent pe produsul funcțional, documentația se produce continuu |\n| **Implicarea clientului** | Punctuală — la începutul proiectului (cerințe) și la final (acceptanță) | Continuă — clientul/Product Owner participă la Sprint Review și influențează backlog-ul permanent |\n| **Risc** | Se manifestă târziu, adesea la testare sau UAT, când costul corecției este maxim | Se descoperă devreme, la finalul fiecărui Sprint, când costul corecției este mic |\n\nÎn practică, alegerea nu este întotdeauna \"ori-ori\": multe organizații din România folosesc abordări **hibride** (ex. faza de arhitectură inițială gestionată în stil Waterfall, urmată de dezvoltare Agile), mai ales în proiecte cu componente reglementate (bancar, sănătate, sector public).\n\n## Exemplu: Implementare ERP cu Waterfall — cazul unei firme de distribuție\nO firmă SRL de distribuție din Cluj-Napoca, cu 80 de angajați, contractează implementarea unui sistem ERP cu un integrator local. Contractul stabilește un preț fix și un termen de 8 luni, pe baza unui document de cerințe de 120 de pagini semnat în prima lună.\n\nÎn luna 5, echipa de vânzări cere integrarea ERP-ului cu un marketplace nou-apărut pe piață, cerință care nu exista în specificațiile inițiale. Pentru că proiectul e organizat Waterfall, această solicitare declanșează un **change request** oficial: integratorul recalculează impactul asupra arhitecturii deja proiectate, propune un preț suplimentar de câteva zeci de mii de lei și o prelungire de 6 săptămâni a termenului. Managementul firmei trebuie să aprobe formal modificarea înainte ca dezvoltarea să continue, iar testarea integrării noi se face abia în penultima lună, aproape de go-live — moment în care orice defect descoperit este foarte costisitor de corectat.\n\n## Exemplu: Același proiect ERP cu Scrum — abordare adaptivă\nAceeași firmă, la o a doua implementare (pentru un depozit nou), alege un furnizor care lucrează în Scrum. Proiectul este organizat în Sprinturi de 2 săptămâni, cu un Product Backlog prioritizat de Product Owner-ul din partea firmei.\n\nÎn Sprintul 3, la Sprint Review, echipa de vânzări cere aceeași integrare cu marketplace-ul. Cerința este descrisă ca un nou set de elemente în Product Backlog, estimată de echipa de dezvoltare și introdusă în planificarea Sprintului 6, prin simpla reordonare a priorităților — fără proces formal de \"schimbare de contract\", pentru că flexibilitatea la schimbare face parte din modul de lucru convenit de la început. Integrarea este testată și demonstrată clientului chiar la finalul Sprintului 6, cu 10 sprinturi înainte de go-live-ul planificat, lăsând timp suficient pentru ajustări dacă e nevoie.\n\n⚠ Atenție la **\"cargo cult agile\"**: multe echipe din România introduc un daily stand-up de 15 minute și numesc asta \"suntem Agile\", fără să schimbe și restul — planificare rigidă, cerințe înghețate, lipsă de feedback real de la client. Adoptarea superficială a ritualurilor Scrum, fără schimbarea reală a modului de lucru (transparență, inspecție, adaptare — cei 3 piloni ai Scrum), nu aduce beneficiile reale ale Agile și poate crea impresia falsă că \"Agile nu funcționează\" atunci când, de fapt, nu a fost aplicat corect.\n\n## Exercițiu\nO bancă din România dorește să dezvolte două soluții în paralel:\n\n**A.** Un modul de raportare către BNR (Banca Națională a României), cu format de date impus prin reglementare, termen legal fix de livrare și fără marjă de interpretare asupra cerințelor.\n\n**B.** O aplicație mobilă nouă pentru clienți retail, unde banca vrea să testeze rapid ce funcționalități atrag cei mai mulți utilizatori și să ajusteze produsul pe baza feedback-ului real din piață.\n\nPentru fiecare proiect (A și B), recomandă Waterfall sau Agile/Scrum și justifică alegerea folosind cel puțin 2 dintre criteriile: predictibilitate, flexibilitate, documentație, implicarea clientului, risc.\n\n**Soluție:**",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "waterfall-model-definitie",
+    "md": "## Modelul Waterfall (cascadă)\n\nModelul Waterfall (\"cascadă\") este abordarea tradițională de management de proiect, descrisă pentru prima dată de Winston Royce în 1970 ca un flux **secvențial și liniar**, în care fiecare fază trebuie finalizată și aprobată înainte de a începe următoarea:\n\n1. **Colectarea și analiza cerințelor** — se documentează integral ce trebuie livrat (ex. un document SRS — Software Requirements Specification).\n2. **Proiectare (Design)** — arhitectura tehnică și funcțională se stabilește pe baza cerințelor înghețate.\n3. **Implementare** — dezvoltarea propriu-zisă a soluției conform proiectării.\n4. **Testare** — verificarea conformității cu cerințele inițiale.\n5. **Punere în producție (Deployment)**.\n6. **Mentenanță**.\n\nCaracteristica esențială este că scope-ul, bugetul și termenul (\"triunghiul de fier\") se fixează încă din faza de analiză, iar orice modificare ulterioară necesită un proces formal de **change request**, de regulă costisitor și lent. Waterfall funcționează bine acolo unde cerințele sunt stabile și bine cunoscute de la început — de exemplu proiecte de construcții, sisteme critice de siguranță sau proiecte reglementate strict, unde documentația completă este o cerință contractuală sau legală, nu o opțiune.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "agile-manifesto-principii",
+    "md": "## Manifestul Agile și abordarea iterativă\n\nÎn 2001, un grup de 17 practicieni a publicat **Manifestul Agile**, format din **4 valori** și **12 principii**. Cele 4 valori fundamentale sunt:\n\n- **Indivizi și interacțiuni** mai presus de procese și instrumente\n- **Software funcțional** mai presus de documentație exhaustivă\n- **Colaborare cu clientul** mai presus de negocierea contractului\n- **Răspuns la schimbare** mai presus de urmarea rigidă a unui plan\n\nImportant: valorile din dreapta nu sunt eliminate, ci doar au prioritate mai mică decât cele din stânga — documentația, contractele și planificarea rămân necesare, dar nu blochează adaptarea.\n\nSpre deosebire de Waterfall, Agile propune livrarea **iterativă și incrementală**: proiectul este împărțit în cicluri scurte (în Scrum numite **Sprinturi**, tipic 1-4 săptămâni, conform Scrum Guide 2020), la finalul fiecărui ciclu obținându-se un increment funcțional de produs. Cerințele sunt organizate într-un **Product Backlog** prioritizat dinamic, care se poate reordona la fiecare Sprint în funcție de feedback-ul real primit de la client sau de piață. Riscul nu mai este \"tot sau nimic\" la finalul proiectului, ci este descoperit și gestionat incremental, sprint după sprint.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "agile-vs-waterfall-criterii-comparatie",
+    "md": "## Comparație pe criterii-cheie\n\n| Criteriu | Waterfall | Agile / Scrum |\n|---|---|---|\n| **Predictibilitate** | Ridicată la nivel de scope, cost și termen — planificate integral de la început | Ridicată la nivel de ritm (velocity), dar scope-ul final se poate schimba |\n| **Flexibilitate** | Redusă — schimbările necesită change request formal, de regulă costisitor | Ridicată — backlog-ul se reprioritizează la fiecare Sprint Planning |\n| **Documentație** | Extensivă, formală, produsă înainte de dezvoltare (SRS, specificații de design) | \"Suficientă cât e nevoie\" — accent pe produsul funcțional, documentația se produce continuu |\n| **Implicarea clientului** | Punctuală — la începutul proiectului (cerințe) și la final (acceptanță) | Continuă — clientul/Product Owner participă la Sprint Review și influențează backlog-ul permanent |\n| **Risc** | Se manifestă târziu, adesea la testare sau UAT, când costul corecției este maxim | Se descoperă devreme, la finalul fiecărui Sprint, când costul corecției este mic |\n\nÎn practică, alegerea nu este întotdeauna \"ori-ori\": multe organizații din România folosesc abordări **hibride** (ex. faza de arhitectură inițială gestionată în stil Waterfall, urmată de dezvoltare Agile), mai ales în proiecte cu componente reglementate (bancar, sănătate, sector public).",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b3"
+   },
+   {
+    "type": "example",
+    "title": "Implementare ERP cu Waterfall — cazul unei firme de distribuție",
+    "concept_key": "agile-vs-waterfall-criterii-comparatie",
+    "md": "O firmă SRL de distribuție din Cluj-Napoca, cu 80 de angajați, contractează implementarea unui sistem ERP cu un integrator local. Contractul stabilește un preț fix și un termen de 8 luni, pe baza unui document de cerințe de 120 de pagini semnat în prima lună.\n\nÎn luna 5, echipa de vânzări cere integrarea ERP-ului cu un marketplace nou-apărut pe piață, cerință care nu exista în specificațiile inițiale. Pentru că proiectul e organizat Waterfall, această solicitare declanșează un **change request** oficial: integratorul recalculează impactul asupra arhitecturii deja proiectate, propune un preț suplimentar de câteva zeci de mii de lei și o prelungire de 6 săptămâni a termenului. Managementul firmei trebuie să aprobe formal modificarea înainte ca dezvoltarea să continue, iar testarea integrării noi se face abia în penultima lună, aproape de go-live — moment în care orice defect descoperit este foarte costisitor de corectat.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b4"
+   },
+   {
+    "type": "example",
+    "title": "Același proiect ERP cu Scrum — abordare adaptivă",
+    "concept_key": "agile-vs-waterfall-criterii-comparatie",
+    "md": "Aceeași firmă, la o a doua implementare (pentru un depozit nou), alege un furnizor care lucrează în Scrum. Proiectul este organizat în Sprinturi de 2 săptămâni, cu un Product Backlog prioritizat de Product Owner-ul din partea firmei.\n\nÎn Sprintul 3, la Sprint Review, echipa de vânzări cere aceeași integrare cu marketplace-ul. Cerința este descrisă ca un nou set de elemente în Product Backlog, estimată de echipa de dezvoltare și introdusă în planificarea Sprintului 6, prin simpla reordonare a priorităților — fără proces formal de \"schimbare de contract\", pentru că flexibilitatea la schimbare face parte din modul de lucru convenit de la început. Integrarea este testată și demonstrată clientului chiar la finalul Sprintului 6, cu 10 sprinturi înainte de go-live-ul planificat, lăsând timp suficient pentru ajustări dacă e nevoie.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la **\"cargo cult agile\"**: multe echipe din România introduc un daily stand-up de 15 minute și numesc asta \"suntem Agile\", fără să schimbe și restul — planificare rigidă, cerințe înghețate, lipsă de feedback real de la client. Adoptarea superficială a ritualurilor Scrum, fără schimbarea reală a modului de lucru (transparență, inspecție, adaptare — cei 3 piloni ai Scrum), nu aduce beneficiile reale ale Agile și poate crea impresia falsă că \"Agile nu funcționează\" atunci când, de fapt, nu a fost aplicat corect.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O bancă din România dorește să dezvolte două soluții în paralel:\n\n**A.** Un modul de raportare către BNR (Banca Națională a României), cu format de date impus prin reglementare, termen legal fix de livrare și fără marjă de interpretare asupra cerințelor.\n\n**B.** O aplicație mobilă nouă pentru clienți retail, unde banca vrea să testeze rapid ce funcționalități atrag cei mai mulți utilizatori și să ajusteze produsul pe baza feedback-ului real din piață.\n\nPentru fiecare proiect (A și B), recomandă Waterfall sau Agile/Scrum și justifică alegerea folosind cel puțin 2 dintre criteriile: predictibilitate, flexibilitate, documentație, implicarea clientului, risc.",
+    " solution_md": "**Proiectul A (raportare BNR): Waterfall** este recomandat.\n- *Predictibilitate*: cerințele sunt impuse de reglementator, nu se pot schimba pe parcurs — nu există nevoie reală de flexibilitate, ci de conformitate exactă.\n- *Documentație*: formatul de raportare trebuie documentat exhaustiv și trasabil, pentru audit.\n- *Risc*: riscul principal este non-conformitatea legală, care trebuie eliminată complet înainte de livrare, nu descoperită incremental.\n\n**Proiectul B (aplicație mobilă retail): Agile/Scrum** este recomandat.\n- *Flexibilitate*: funcționalitățile câștigătoare nu sunt cunoscute dinainte — backlog-ul trebuie să se poată reprioritiza pe baza datelor reale de utilizare.\n- *Implicarea clientului*: feedback-ul utilizatorilor finali trebuie integrat continuu, prin Sprint Review și testare incrementală, nu doar la final.\n- *Risc*: livrarea în incremente mici permite oprirea rapidă a funcționalităților nepotrivite, minimizând investiția pierdută.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență privind gestionarea schimbării cerințelor între Waterfall și Agile?",
+    "choices": [
+     "În Waterfall schimbările sunt gestionate prin change request formal după înghețarea cerințelor; în Agile backlog-ul se reprioritizează la fiecare Sprint",
+     "Waterfall nu permite niciodată modificarea cerințelor, indiferent de fază",
+     "Agile înghează cerințele chiar de la primul Sprint, la fel ca Waterfall",
+     "Nu există nicio diferență, ambele modele tratează schimbarea identic"
+    ],
+    "answer": 0,
+    "explain": "Waterfall fixează scope-ul la început, iar orice modificare trece printr-un proces formal de change request, adesea costisitor. Agile tratează schimbarea ca normală, prin reprioritizarea continuă a Product Backlog-ului la fiecare Sprint Planning.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Manifestului Agile (2001), care dintre următoarele perechi de valori reflectă corect prioritățile Agile?",
+    "choices": [
+     "Documentație exhaustivă mai presus de software funcțional",
+     "Urmarea rigidă a unui plan mai presus de răspunsul la schimbare",
+     "Software funcțional mai presus de documentație exhaustivă",
+     "Negocierea contractului mai presus de colaborarea cu clientul"
+    ],
+    "answer": 2,
+    "explain": "Una dintre cele 4 valori ale Manifestului Agile este 'Software funcțional mai presus de documentație exhaustivă' — documentația rămâne utilă, dar nu are prioritate mai mare decât livrarea de valoare funcțională.",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este modelul Waterfall?",
+    "back": "Model de management de proiect secvențial-liniar (Royce, 1970): cerințe → design → implementare → testare → deployment → mentenanță, cu fiecare fază finalizată înainte de următoare și scope/cost/termen fixate de la început.",
+    "concept_key": "waterfall-model-definitie",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte valori și principii are Manifestul Agile (2001)?",
+    "back": "4 valori și 12 principii, publicate în 2001 de 17 practicieni.",
+    "concept_key": "agile-manifesto-principii",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum gestionează Agile schimbarea cerințelor, spre deosebire de Waterfall?",
+    "back": "Agile reprioritizează Product Backlog-ul la fiecare Sprint, fără proces formal de change request; Waterfall necesită aprobare formală și adesea costuri suplimentare pentru orice modificare după înghețarea cerințelor.",
+    "concept_key": "agile-vs-waterfall-criterii-comparatie",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Pentru ce tip de proiecte este recomandat Waterfall?",
+    "back": "Proiecte cu cerințe stabile și cunoscute de la început, deseori reglementate strict (construcții, sisteme critice de siguranță, raportări către autorități), unde documentația exhaustivă este obligatorie.",
+    "concept_key": "waterfall-model-definitie",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este 'cargo cult agile'?",
+    "back": "Adoptarea superficială a ritualurilor Scrum (ex. doar daily stand-up) fără schimbarea reală a modului de lucru (transparență, inspecție, adaptare), ceea ce nu aduce beneficiile reale ale Agile.",
+    "concept_key": "capcana-cargo-cult-agile",
+    "blockId": "cmjjuxvuf006dumkp4nrl865c-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 970,
+   "flashcards": 5
+  }
+ }
+}

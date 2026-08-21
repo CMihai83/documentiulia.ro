@@ -1,0 +1,147 @@
+{
+ "lessonId": "cmjjuxvz3009qumkptgo5029y",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Agile & Hybrid",
+ "lesson": "Kanban, XP și alte practici",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Kanban, XP și alte practici\n\n## Kanban: managementul vizual al fluxului de lucru\n\nKanban înseamnă „semnal vizual” în japoneză. Metoda provine din Toyota Production System și a fost adaptată pentru dezvoltarea software de David J. Anderson. Spre deosebire de Scrum, care este **prescriptiv** (roluri fixe, sprinturi de lungime fixă, evenimente obligatorii), Kanban este o metodă **evolutivă**: pornești de la procesul existent al echipei tale și îl îmbunătățești incremental, fără o restructurare bruscă.\n\nAnderson definește **6 practici fundamentale**:\n\n1. **Vizualizează fluxul de lucru** – un board cu coloane (de exemplu Backlog → Analiză → Dezvoltare → Testare → Gata de lansare → Lansat), fiecare task fiind reprezentat printr-un card.\n2. **Limitează lucrul în curs (WIP – Work In Progress)** – fiecare coloană primește un număr maxim de carduri active, limită ce nu se depășește niciodată.\n3. **Gestionează fluxul** – urmărești indicatori precum lead time, cycle time și throughput pentru a identifica blocajele.\n4. **Fă politicile explicite** – definești clar ce înseamnă „gata” pentru fiecare coloană (o Definition of Done pe etapă, nu doar una globală).\n5. **Implementează bucle de feedback** – întâlniri de cadență (daily standup, revizuiri de flux, retrospective) pentru a discuta blocajele.\n6. **Îmbunătățește colaborativ, evolutiv** – schimbări mici, experimentale, bazate pe date, nu reorganizări radicale.\n\nPentru examenul PMP, reține că Kanban este o abordare **pull-based**: o echipă preia (pull) un task nou doar când are capacitate liberă, spre deosebire de modelul push, în care task-urile sunt alocate din exterior indiferent de capacitatea echipei disponibile.\n\n## Extreme Programming (XP): disciplina tehnică a agilității\n\nXP a fost creat de Kent Beck la sfârșitul anilor 1990 și este metodologia agile cu cel mai puternic accent pe **excelență tehnică** și cicluri scurte de feedback. Valorile XP sunt comunicare, simplitate, feedback, curaj și respect.\n\nPracticile tehnice cheie, relevante pentru ECO (Examination Content Outline):\n\n- **TDD (Test-Driven Development)** – testul se scrie înainte de codul de producție, urmând ciclul **Red-Green-Refactor**: scrii un test care eșuează (roșu), scrii codul minim care îl trece (verde), apoi refactorizezi păstrând testele verzi.\n- **Pair Programming** – doi dezvoltatori lucrează la aceeași stație: unul este *driver* (scrie codul), celălalt este *navigator* (revizuiește în timp real, gândește strategic). Rolurile se schimbă frecvent.\n- **Integrare continuă (CI)** – codul se integrează în repository-ul principal de mai multe ori pe zi; fiecare integrare declanșează build automat și rulare de teste.\n- **Refactorizare** – îmbunătățirea structurii interne a codului fără a-i schimba comportamentul extern, făcută constant, nu doar la final de proiect.\n- **Design simplu (Simplicity / YAGNI – You Aren't Gonna Need It)** – implementezi cea mai simplă soluție care satisface cerințele curente, fără funcționalități „pentru orice eventualitate”.\n- **Proprietate colectivă a codului** – orice membru al echipei poate modifica orice parte a codului, ceea ce reduce riscul de \"knowledge silo\".\n- **Standard de codare comun** și **ritm sustenabil** (echipa nu lucrează supra-normă în mod constant, pentru a evita epuizarea și scăderea calității).\n- **Planificare incrementală** – release planning și iteration planning, cu implicarea directă a clientului (whole team / on-site customer).\n\nLa examenul PMP, XP apare frecvent în întrebări despre calitate încorporată (built-in quality) și livrare frecventă de valoare cu risc tehnic redus.\n\n## Lean: eliminarea risipei și optimizarea întregului sistem\n\nLean provine tot din Toyota Production System, fiind adaptat pentru dezvoltarea de produse software de Mary și Tom Poppendieck. PMBOK 7 tratează Lean ca parte a abordărilor adaptive/hibride, alături de Kanban și XP.\n\n**Cele 7 principii Lean** aplicate în proiecte:\n\n1. **Elimină risipa (muda)** – cele 8 tipuri clasice de risipă, adaptate software: cod nefolosit, funcționalități neterminate (partially done work), schimbarea constantă a task-urilor (task switching), așteptare, defecte, cunoștințe pierdute (handoff-uri), mișcare inutilă și supra-procesare.\n2. **Amplifică învățarea** – iterații scurte, prototipuri, teste, feedback rapid de la client.\n3. **Decide cât mai târziu posibil** – „last responsible moment”: amâni deciziile ireversibile până când ai informații suficiente, păstrând opțiunile deschise.\n4. **Livrează cât mai repede posibil** – cicluri scurte de livrare reduc riscul și accelerează feedback-ul real de la piață.\n5. **Împuternicește echipa** – deciziile tehnice se iau de cei care execută munca, nu doar de management.\n6. **Construiește integritate (calitate încorporată)** – calitatea nu se „inspectează la final”, ci se construiește în fiecare etapă (asemănător cu built-in quality din XP).\n7. **Vezi întregul** – optimizezi fluxul de valoare de la un capăt la altul (end-to-end), nu doar performanța unui departament izolat; instrumentul clasic pentru asta este **Value Stream Mapping (VSM)**.\n\nDiferența esențială pentru examen: Kanban este un **instrument** de vizualizare și control al fluxului, XP este un **set de practici tehnice**, iar Lean este **filosofia** care stă la baza amândurora – reducerea risipei și optimizarea sistemului ca întreg.\n\n## Exemplu: Board Kanban pentru implementarea unui modul ERP\nFirma **ContaSoft SRL** implementează un modul de facturare electronică (e-Factura) pentru clienții săi. Echipa de 6 dezvoltatori folosește un board Kanban cu coloanele:\n\n`Backlog | Analiză (WIP=2) | Dezvoltare (WIP=3) | Testare (WIP=2) | Gata de lansare | Lansat`\n\nÎntr-o zi, coloana **Testare** ajunge la limita ei de 2 task-uri, iar un al treilea task finalizat în Dezvoltare este blocat, pentru că nu mai poate fi \"tras\" (pulled) în Testare. Conform principiilor Kanban, echipa **nu adaugă un al treilea task în Testare** – în schimb, dezvoltatorii care ar fi început un task nou se opresc și fac *swarming*: ajută la finalizarea testării task-urilor deja aflate acolo, pentru a debloca fluxul.\n\n**Calcul cu Legea lui Little (Little's Law):**\n\nFormula: `Cycle Time = WIP mediu / Throughput`\n\nDacă echipa are, în medie, **7 task-uri** active simultan pe întregul flux (WIP mediu) și finalizează **5 task-uri pe săptămână** (throughput), atunci:\n\nCycle Time = 7 / 5 = **1,4 săptămâni per task** (aproximativ 10 zile lucrătoare)\n\nAcest indicator ajută managerul de proiect să estimeze realist cât va dura finalizarea unui task nou introdus în flux, fără a folosi estimări subiective.\n\n## Exemplu: Ciclul TDD și integrarea continuă la o platformă de facturare\nO echipă care dezvoltă un modul de calcul al TVA pentru o platformă de facturare aplică TDD astfel:\n\n**Pasul 1 – Red (test eșuat):**\n```\ntest \"calculeaza_tva_pentru_cota_standard\":\n    rezultat = calculeaza_tva(valoare=1000, cota=0.21)\n    assert rezultat == 210\n```\nTestul rulează și eșuează, deoarece funcția `calculeaza_tva` nu există încă.\n\n**Pasul 2 – Green (cod minim care trece testul):**\n```\nfunctie calculeaza_tva(valoare, cota):\n    return valoare * cota\n```\nTestul trece. Codul e minimalist, dar corect pentru cazul testat.\n\n**Pasul 3 – Refactor:**\nDezvoltatorul curăță codul (denumiri mai clare, validare de bază) fără a schimba comportamentul, testul rămânând verde tot timpul.\n\n**Integrare continuă (CI):** de fiecare dată când cineva face commit, un server CI (ex. GitHub Actions, Azure DevOps) rulează automat build-ul și întreaga suită de teste. Dacă un test eșuează, echipa aplică principiul Lean **\"Stop the Line\"** (împrumutat de la andon cord-ul Toyota): nimeni nu mai adaugă cod nou peste build-ul roșu, prioritatea absolută devine repararea imediată a defectului, pentru a nu propaga eroarea mai departe în sistem.\n\n⚠ Atenție la examen: Kanban **nu interzice** iterațiile de tip sprint – o echipă poate folosi Kanban în cadrul unor cutii de timp (asta se numește uneori \"Scrumban\"). Totuși, în forma sa pură, Kanban nu are sprinturi, roluri obligatorii (Scrum Master, Product Owner) sau evenimente fixe. Nu confunda limita WIP cu o \"capacitate maximă a echipei\" – WIP se aplică la nivel de **coloană/etapă a fluxului**, nu la nivelul întregului backlog.\n\n## Exercițiu\nEchipa de dezvoltare de la firma **LogiTrans SRL** are un board Kanban cu limita WIP = 4 la coloana \"Dezvoltare\". În prezent sunt deja 4 task-uri active în acea coloană. Apare un task nou, cu prioritate foarte mare pentru un client cheie (integrare API de tracking GPS pentru flotă).\n\n**Cerințe:**\n1. Ce ar trebui să facă echipa, respectând principiile Kanban, față de noul task prioritar?\n2. Calculează cycle time-ul mediu pe întregul flux, știind că WIP mediu total este de 9 task-uri, iar throughput-ul este de 6 task-uri/săptămână.\n\n**Soluție:** **1.** Echipa **nu depășește** limita WIP=4 la Dezvoltare, indiferent de prioritatea noului task. Opțiunile corecte, conform Kanban, sunt:\n- să finalizeze/mute un task existent din Dezvoltare mai departe în flux, eliberând un loc, apoi să tragă (pull) noul task; sau\n- dacă task-ul e cu adevărat critic, să se ia o decizie explicită de politică (de exemplu, o \"expedite lane\" — o coloană dedicată urgențelor, definită anterior ca politică a echipei), nu o încălcare ad-hoc a limitei.\nÎn niciun caz nu se adaugă pur și simplu un al 5-lea task peste limita WIP, pentru că asta anulează beneficiul de bază al Kanban: expunerea blocajelor și reducerea multitasking-ului.\n\n**2.** Folosind Legea lui Little: Cycle Time = WIP mediu / Throughput = 9 / 6 = **1,5 săptămâni** (aproximativ 7-8 zile lucrătoare) este timpul mediu necesar pentru ca un task să parcurgă întregul flux, de la intrare până la finalizare.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "kanban-practici-fundamentale",
+    "md": "## Kanban: managementul vizual al fluxului de lucru\n\nKanban înseamnă „semnal vizual” în japoneză. Metoda provine din Toyota Production System și a fost adaptată pentru dezvoltarea software de David J. Anderson. Spre deosebire de Scrum, care este **prescriptiv** (roluri fixe, sprinturi de lungime fixă, evenimente obligatorii), Kanban este o metodă **evolutivă**: pornești de la procesul existent al echipei tale și îl îmbunătățești incremental, fără o restructurare bruscă.\n\nAnderson definește **6 practici fundamentale**:\n\n1. **Vizualizează fluxul de lucru** – un board cu coloane (de exemplu Backlog → Analiză → Dezvoltare → Testare → Gata de lansare → Lansat), fiecare task fiind reprezentat printr-un card.\n2. **Limitează lucrul în curs (WIP – Work In Progress)** – fiecare coloană primește un număr maxim de carduri active, limită ce nu se depășește niciodată.\n3. **Gestionează fluxul** – urmărești indicatori precum lead time, cycle time și throughput pentru a identifica blocajele.\n4. **Fă politicile explicite** – definești clar ce înseamnă „gata” pentru fiecare coloană (o Definition of Done pe etapă, nu doar una globală).\n5. **Implementează bucle de feedback** – întâlniri de cadență (daily standup, revizuiri de flux, retrospective) pentru a discuta blocajele.\n6. **Îmbunătățește colaborativ, evolutiv** – schimbări mici, experimentale, bazate pe date, nu reorganizări radicale.\n\nPentru examenul PMP, reține că Kanban este o abordare **pull-based**: o echipă preia (pull) un task nou doar când are capacitate liberă, spre deosebire de modelul push, în care task-urile sunt alocate din exterior indiferent de capacitatea echipei disponibile.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "extreme-programming-practici",
+    "md": "## Extreme Programming (XP): disciplina tehnică a agilității\n\nXP a fost creat de Kent Beck la sfârșitul anilor 1990 și este metodologia agile cu cel mai puternic accent pe **excelență tehnică** și cicluri scurte de feedback. Valorile XP sunt comunicare, simplitate, feedback, curaj și respect.\n\nPracticile tehnice cheie, relevante pentru ECO (Examination Content Outline):\n\n- **TDD (Test-Driven Development)** – testul se scrie înainte de codul de producție, urmând ciclul **Red-Green-Refactor**: scrii un test care eșuează (roșu), scrii codul minim care îl trece (verde), apoi refactorizezi păstrând testele verzi.\n- **Pair Programming** – doi dezvoltatori lucrează la aceeași stație: unul este *driver* (scrie codul), celălalt este *navigator* (revizuiește în timp real, gândește strategic). Rolurile se schimbă frecvent.\n- **Integrare continuă (CI)** – codul se integrează în repository-ul principal de mai multe ori pe zi; fiecare integrare declanșează build automat și rulare de teste.\n- **Refactorizare** – îmbunătățirea structurii interne a codului fără a-i schimba comportamentul extern, făcută constant, nu doar la final de proiect.\n- **Design simplu (Simplicity / YAGNI – You Aren't Gonna Need It)** – implementezi cea mai simplă soluție care satisface cerințele curente, fără funcționalități „pentru orice eventualitate”.\n- **Proprietate colectivă a codului** – orice membru al echipei poate modifica orice parte a codului, ceea ce reduce riscul de \"knowledge silo\".\n- **Standard de codare comun** și **ritm sustenabil** (echipa nu lucrează supra-normă în mod constant, pentru a evita epuizarea și scăderea calității).\n- **Planificare incrementală** – release planning și iteration planning, cu implicarea directă a clientului (whole team / on-site customer).\n\nLa examenul PMP, XP apare frecvent în întrebări despre calitate încorporată (built-in quality) și livrare frecventă de valoare cu risc tehnic redus.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "lean-principii-managementul-proiectelor",
+    "md": "## Lean: eliminarea risipei și optimizarea întregului sistem\n\nLean provine tot din Toyota Production System, fiind adaptat pentru dezvoltarea de produse software de Mary și Tom Poppendieck. PMBOK 7 tratează Lean ca parte a abordărilor adaptive/hibride, alături de Kanban și XP.\n\n**Cele 7 principii Lean** aplicate în proiecte:\n\n1. **Elimină risipa (muda)** – cele 8 tipuri clasice de risipă, adaptate software: cod nefolosit, funcționalități neterminate (partially done work), schimbarea constantă a task-urilor (task switching), așteptare, defecte, cunoștințe pierdute (handoff-uri), mișcare inutilă și supra-procesare.\n2. **Amplifică învățarea** – iterații scurte, prototipuri, teste, feedback rapid de la client.\n3. **Decide cât mai târziu posibil** – „last responsible moment”: amâni deciziile ireversibile până când ai informații suficiente, păstrând opțiunile deschise.\n4. **Livrează cât mai repede posibil** – cicluri scurte de livrare reduc riscul și accelerează feedback-ul real de la piață.\n5. **Împuternicește echipa** – deciziile tehnice se iau de cei care execută munca, nu doar de management.\n6. **Construiește integritate (calitate încorporată)** – calitatea nu se „inspectează la final”, ci se construiește în fiecare etapă (asemănător cu built-in quality din XP).\n7. **Vezi întregul** – optimizezi fluxul de valoare de la un capăt la altul (end-to-end), nu doar performanța unui departament izolat; instrumentul clasic pentru asta este **Value Stream Mapping (VSM)**.\n\nDiferența esențială pentru examen: Kanban este un **instrument** de vizualizare și control al fluxului, XP este un **set de practici tehnice**, iar Lean este **filosofia** care stă la baza amândurora – reducerea risipei și optimizarea sistemului ca întreg.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b3"
+   },
+   {
+    "type": "example",
+    "title": "Board Kanban pentru implementarea unui modul ERP",
+    "concept_key": "kanban-board-wip-limits",
+    "md": "Firma **ContaSoft SRL** implementează un modul de facturare electronică (e-Factura) pentru clienții săi. Echipa de 6 dezvoltatori folosește un board Kanban cu coloanele:\n\n`Backlog | Analiză (WIP=2) | Dezvoltare (WIP=3) | Testare (WIP=2) | Gata de lansare | Lansat`\n\nÎntr-o zi, coloana **Testare** ajunge la limita ei de 2 task-uri, iar un al treilea task finalizat în Dezvoltare este blocat, pentru că nu mai poate fi \"tras\" (pulled) în Testare. Conform principiilor Kanban, echipa **nu adaugă un al treilea task în Testare** – în schimb, dezvoltatorii care ar fi început un task nou se opresc și fac *swarming*: ajută la finalizarea testării task-urilor deja aflate acolo, pentru a debloca fluxul.\n\n**Calcul cu Legea lui Little (Little's Law):**\n\nFormula: `Cycle Time = WIP mediu / Throughput`\n\nDacă echipa are, în medie, **7 task-uri** active simultan pe întregul flux (WIP mediu) și finalizează **5 task-uri pe săptămână** (throughput), atunci:\n\nCycle Time = 7 / 5 = **1,4 săptămâni per task** (aproximativ 10 zile lucrătoare)\n\nAcest indicator ajută managerul de proiect să estimeze realist cât va dura finalizarea unui task nou introdus în flux, fără a folosi estimări subiective.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b4"
+   },
+   {
+    "type": "example",
+    "title": "Ciclul TDD și integrarea continuă la o platformă de facturare",
+    "concept_key": "tdd-ci-exemplu",
+    "md": "O echipă care dezvoltă un modul de calcul al TVA pentru o platformă de facturare aplică TDD astfel:\n\n**Pasul 1 – Red (test eșuat):**\n```\ntest \"calculeaza_tva_pentru_cota_standard\":\n    rezultat = calculeaza_tva(valoare=1000, cota=0.21)\n    assert rezultat == 210\n```\nTestul rulează și eșuează, deoarece funcția `calculeaza_tva` nu există încă.\n\n**Pasul 2 – Green (cod minim care trece testul):**\n```\nfunctie calculeaza_tva(valoare, cota):\n    return valoare * cota\n```\nTestul trece. Codul e minimalist, dar corect pentru cazul testat.\n\n**Pasul 3 – Refactor:**\nDezvoltatorul curăță codul (denumiri mai clare, validare de bază) fără a schimba comportamentul, testul rămânând verde tot timpul.\n\n**Integrare continuă (CI):** de fiecare dată când cineva face commit, un server CI (ex. GitHub Actions, Azure DevOps) rulează automat build-ul și întreaga suită de teste. Dacă un test eșuează, echipa aplică principiul Lean **\"Stop the Line\"** (împrumutat de la andon cord-ul Toyota): nimeni nu mai adaugă cod nou peste build-ul roșu, prioritatea absolută devine repararea imediată a defectului, pentru a nu propaga eroarea mai departe în sistem.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Atenție la examen: Kanban **nu interzice** iterațiile de tip sprint – o echipă poate folosi Kanban în cadrul unor cutii de timp (asta se numește uneori \"Scrumban\"). Totuși, în forma sa pură, Kanban nu are sprinturi, roluri obligatorii (Scrum Master, Product Owner) sau evenimente fixe. Nu confunda limita WIP cu o \"capacitate maximă a echipei\" – WIP se aplică la nivel de **coloană/etapă a fluxului**, nu la nivelul întregului backlog.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Echipa de dezvoltare de la firma **LogiTrans SRL** are un board Kanban cu limita WIP = 4 la coloana \"Dezvoltare\". În prezent sunt deja 4 task-uri active în acea coloană. Apare un task nou, cu prioritate foarte mare pentru un client cheie (integrare API de tracking GPS pentru flotă).\n\n**Cerințe:**\n1. Ce ar trebui să facă echipa, respectând principiile Kanban, față de noul task prioritar?\n2. Calculează cycle time-ul mediu pe întregul flux, știind că WIP mediu total este de 9 task-uri, iar throughput-ul este de 6 task-uri/săptămână.",
+    "solution_md": "**1.** Echipa **nu depășește** limita WIP=4 la Dezvoltare, indiferent de prioritatea noului task. Opțiunile corecte, conform Kanban, sunt:\n- să finalizeze/mute un task existent din Dezvoltare mai departe în flux, eliberând un loc, apoi să tragă (pull) noul task; sau\n- dacă task-ul e cu adevărat critic, să se ia o decizie explicită de politică (de exemplu, o \"expedite lane\" — o coloană dedicată urgențelor, definită anterior ca politică a echipei), nu o încălcare ad-hoc a limitei.\nÎn niciun caz nu se adaugă pur și simplu un al 5-lea task peste limita WIP, pentru că asta anulează beneficiul de bază al Kanban: expunerea blocajelor și reducerea multitasking-ului.\n\n**2.** Folosind Legea lui Little: Cycle Time = WIP mediu / Throughput = 9 / 6 = **1,5 săptămâni** (aproximativ 7-8 zile lucrătoare) este timpul mediu necesar pentru ca un task să parcurgă întregul flux, de la intrare până la finalizare.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al limitării lucrului în curs (WIP) în Kanban?",
+    "choices": [
+     "Să reducă numărul total de membri din echipă",
+     "Să expună blocajele din flux și să reducă multitasking-ul, îmbunătățind astfel viteza reală de livrare",
+     "Să elimine necesitatea testării înainte de lansare",
+     "Să stabilească un buget fix pentru fiecare sprint"
+    ],
+    "answer": 1,
+    "explain": "Limitarea WIP forțează echipa să finalizeze task-urile existente înainte de a începe altele noi, ceea ce scoate la iveală blocajele (bottlenecks) și reduce risipa generată de comutarea constantă între task-uri (task switching).",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care practică XP presupune ca doi dezvoltatori să lucreze simultan la aceeași stație de lucru, cu roluri alternante de driver și navigator?",
+    "choices": [
+     "Test-Driven Development (TDD)",
+     "Integrare continuă (CI)",
+     "Pair Programming",
+     "Proprietatea colectivă a codului"
+    ],
+    "answer": 2,
+    "explain": "Pair Programming este practica XP în care doi dezvoltatori colaborează la o singură stație: unul scrie codul (driver), celălalt revizuiește și gândește strategic (navigator), rolurile schimbându-se frecvent.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce diferențiază fundamental Kanban de Scrum, din perspectiva livrării?",
+    "choices": [
+     "Kanban interzice folosirea board-urilor vizuale, Scrum le impune",
+     "Kanban are flux continuu de tip pull, fără sprinturi fixe; Scrum livrează în cutii de timp fixe (sprinturi)",
+     "Kanban necesită obligatoriu un Scrum Master, Scrum nu",
+     "Kanban se aplică doar la proiecte hardware, Scrum doar la software"
+    ],
+    "answer": 1,
+    "explain": "Kanban este o abordare evolutivă, cu flux continuu și livrare pull-based, fără sprinturi obligatorii sau roluri prescrise. Scrum, în schimb, este prescriptiv: sprinturi de lungime fixă, roluri definite (Scrum Master, Product Owner) și evenimente obligatorii.",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă WIP în contextul Kanban?",
+    "back": "Work In Progress – lucrul aflat efectiv în curs de execuție într-o etapă a fluxului; se limitează explicit pentru a expune blocajele și a reduce multitasking-ul.",
+    "concept_key": "wip-limit",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este TDD și care este ciclul său de bază?",
+    "back": "Test-Driven Development – practică XP în care testul se scrie înainte de codul de producție, urmând ciclul Red (test eșuat) → Green (cod minim funcțional) → Refactor (curățarea codului).",
+    "concept_key": "tdd",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine a creat metodologia Extreme Programming (XP) și în ce perioadă?",
+    "back": "Kent Beck, la sfârșitul anilor 1990.",
+    "concept_key": "xp-kent-beck",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula Legii lui Little folosită pentru a calcula timpul de ciclu într-un flux Kanban?",
+    "back": "Cycle Time = WIP mediu / Throughput (timpul mediu de ciclu = lucrul mediu în curs împărțit la rata de finalizare).",
+    "concept_key": "little-law-formula",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 6 practici fundamentale Kanban definite de David Anderson?",
+    "back": "1) Vizualizează fluxul, 2) Limitează WIP, 3) Gestionează fluxul, 4) Fă politicile explicite, 5) Implementează bucle de feedback, 6) Îmbunătățește colaborativ și evolutiv.",
+    "concept_key": "kanban-practici-fundamentale",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă principiul \"Stop the Line\" (andon) aplicat în dezvoltarea software cu integrare continuă?",
+    "back": "Când build-ul CI eșuează (devine \"roșu\"), echipa oprește adăugarea de cod nou și rezolvă imediat defectul, înainte de a continua alte lucrări, pentru a nu propaga eroarea mai departe în sistem.",
+    "concept_key": "stop-the-line-andon",
+    "blockId": "cmjjuxvz3009qumkptgo5029y-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1400,
+   "flashcards": 6
+  }
+ }
+}

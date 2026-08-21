@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwfn00mrumkpjpy7s73a",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Evaluare și Îmbunătățire (Cl. 9-10)",
+ "lesson": "Neconformități și acțiuni corective",
+ "category": "HSE_SAFETY",
+ "content": "# Neconformități și acțiuni corective\n\n## Ce este o neconformitate în ISO 45001\n\nO neconformitate reprezintă nerespectarea unei cerințe: poate fi o cerință proprie sistemului de management SSM (procedură internă, instrucțiune de lucru, obiectiv SSM), o cerință legală aplicabilă (Legea 319/2006, HG 1425/2006, alte reglementări ITM) sau o cerință a standardului ISO 45001:2018 însuși.\n\nSursele tipice de neconformități sunt:\n- Audituri interne sau de certificare (clauza 9.2) - abateri constatate față de documentația SMSSM.\n- Incidente și accidente de muncă - evenimente care au produs sau ar fi putut produce vătămare sau îmbolnăvire.\n- Semnalări ale lucrătorilor prin consultare și participare (clauza 5.4) - de exemplu un lucrător raportează o instalație electrică defectă.\n- Inspecții de rutină, patrule SSM, controale ITM.\n\nClauza 10.2 din ISO 45001:2018 (Neconformitate și acțiune corectivă) cere ca, la apariția unei neconformități - inclusiv a unui incident - organizația să reacționeze prompt, să analizeze cauza reală și să implementeze acțiuni care previn recurența, nu doar să elimine efectul vizibil.\n\n## Corecție vs. acțiune corectivă: nu sunt același lucru\n\nConfuzia cea mai frecventă la implementarea clauzei 10.2 este tratarea corecției ca fiind suficientă.\n\n- Corecția înseamnă eliminarea imediată a efectului neconformității: curăț lichidul vărsat, montez rapid balustrada lipsă, retrag din uz un utilaj defect. Corecția răspunde la întrebarea 'cum opresc răul acum?', dar nu previne repetarea.\n- Acțiunea corectivă elimină cauza care a generat neconformitatea, astfel încât aceasta să nu mai reapară - nici în același loc, nici în alte zone cu condiții similare. Răspunde la întrebarea 'de ce s-a întâmplat și cum mă asigur că nu se mai întâmplă?'\n\nStandardul descrie procesul de tratare în șase pași, aplicabili oricărei neconformități, indiferent de sursă:\n1. Reacție - control și corecție imediată, tratarea consecințelor (prim ajutor, izolarea zonei, oprirea echipamentului).\n2. Evaluarea necesității de acțiune - se stabilește dacă este necesară o acțiune corectivă, verificând dacă neconformități similare există sau ar putea apărea în altă parte a organizației.\n3. Analiza cauzei rădăcină - identificarea factorilor reali care au dus la neconformitate, nu doar a simptomului.\n4. Determinarea acțiunilor - stabilirea măsurilor concrete, cu responsabil și termen.\n5. Implementarea acțiunilor - punerea în practică a măsurilor stabilite.\n6. Evaluarea eficacității - verificarea, după o perioadă rezonabilă, că acțiunea a funcționat și neconformitatea nu s-a repetat; dacă e cazul, actualizarea riscurilor și oportunităților din clauza 6.1 și eventual modificarea SMSSM.\n\nToate etapele trebuie păstrate ca informații documentate (clauza 7.5): natura neconformității, acțiunile întreprinse, rezultatele acțiunii corective.\n\n## Metode de analiză a cauzei rădăcină\n\nO acțiune corectivă construită pe o cauză greșit identificată eșuează garantat - neconformitatea revine, de regulă în formă mai gravă. De aceea, analiza cauzei rădăcină (root cause analysis) este pasul cel mai important, nu o formalitate birocratică.\n\nCele mai utilizate tehnici în auditul SSM:\n\n- Metoda 5 De ce (5 Whys) - se pornește de la simptomul observat și se întreabă 'de ce?' în mod repetat (de regulă de 5 ori), fiecare răspuns devenind punctul de plecare pentru următoarea întrebare, până se ajunge la o cauză sistemică (proces, instruire, resurse), nu la o cauză superficială de tipul 'lucrătorul nu a fost atent'.\n- Diagrama Ishikawa (cauză-efect, 'os de pește') - grupează cauzele posibile pe categorii, de regulă cele 6M: Manoperă (om), Metodă (proces), Mașină (echipament), Material, Mediu, Management. Utilă când o neconformitate are cauze multiple și concurente.\n- Analiza arborelui de defecte (Fault Tree Analysis) - pentru neconformități complexe, cu multiple căi posibile către eveniment, folosită mai ales pentru incidente grave sau aproape-accidente (near-miss) cu potențial ridicat de vătămare.\n\nIndiferent de metodă, o cauză rădăcină corect identificată este de regulă legată de un element al sistemului de management (procedură inexistentă sau neclară, instruire insuficientă, lipsă de resurse, comunicare deficitară) - nu de o simplă eroare umană izolată, care rareori explică singură de ce neconformitatea s-a produs.\n\n## Exemplu: Studiu de caz: alunecare pe scări - analiza 5 De ce\nUn lucrător alunecă pe scara de acces la depozit și se accidentează ușor la gleznă (incident minor, cu ITM sub pragul de raportare obligatorie, dar înregistrat intern).\n\nAplicarea metodei 5 De ce:\n1. De ce a alunecat lucrătorul? Treapta era umedă și fără bandă antiderapantă.\n2. De ce era umedă și fără bandă? Banda antiderapantă se desprinsese de câteva săptămâni.\n3. De ce nu a fost înlocuită? Nu exista o procedură de verificare periodică a benzilor antiderapante.\n4. De ce nu exista o astfel de procedură? Responsabilitatea de mentenanță pentru elemente minore (benzi, balustrade, marcaje) nu era alocată clar în planul de mentenanță SSM.\n5. De ce nu era alocată clar? Planul de mentenanță SSM nu fusese revizuit de la implementarea inițială a SMSSM, cu trei ani în urmă.\n\nCauza rădăcină: lipsa unui proces de revizuire periodică a planului de mentenanță preventivă SSM.\n\nAcțiune corectivă: introducerea unei liste de verificare lunară pentru elemente de siguranță minore (bandă antiderapantă, balustrade, marcaje), cu responsabil desemnat (șef depozit) și revizuire anuală a întregului plan de mentenanță.\n\nVerificare eficacitate: audit intern la 3 luni de la implementare, plus urmărirea a 6 luni fără evenimente similare înainte de închiderea definitivă a neconformității.\n\nObservă diferența: dacă analiza s-ar fi oprit la primul răspuns ('treapta era umedă'), acțiunea ar fi fost doar o corecție (ștergerea treptei) - insuficientă pe termen lung. Al cincilea răspuns duce la o acțiune corectivă sistemică, care previne recurența în orice zonă cu risc similar.\n\n## Exemplu: Template raport de neconformitate și acțiune corectivă (NC/AC)\nUn formular NC/AC standardizat facilitează trasabilitatea cerută de clauza 7.5 și pregătește organizația pentru auditul de certificare. Câmpurile minime recomandate:\n\n- Nr. înregistrare și dată deschidere\n- Sursă: audit intern / incident-accident / reclamație lucrător / inspecție ITM\n- Descrierea neconformității: cerința încălcată + dovada obiectivă observată\n- Corecție imediată aplicată, responsabil și dată\n- Analiza cauzei rădăcină: metoda folosită (5 De ce / Ishikawa) și persoanele implicate\n- Acțiunea corectivă propusă\n- Responsabil implementare și termen\n- Resurse necesare (cost estimat, timp alocat)\n- Data verificării eficacității și criteriul de eficacitate (ex. zero recurențe în 6 luni)\n- Decizie de închidere a neconformității, cu semnătura responsabilului SSM\n\nExemplu completat: în urma unei reclamații a unui lucrător privind nivelul de zgomot din secția de debitare, se constată că protecțiile auditive disponibile nu acoperă toate posturile de lucru. Corecție imediată: redistribuirea căștilor antifonice existente către posturile cele mai expuse, în aceeași zi. Cauză rădăcină (5 De ce): planul de dotare cu echipament individual de protecție (EIP) nu a fost actualizat după extinderea secției cu două posturi noi. Acțiune corectivă: achiziția a 20 de seturi suplimentare de căști antifonice (cost estimat 1.500 lei) și actualizarea procedurii de dotare EIP, cu revizuire la fiecare modificare de flux tehnologic. Responsabil: șef secție, termen 30 de zile. Verificare eficacitate: control la 60 de zile - toate posturile din zona cu zgomot peste pragul de acțiune au EIP corespunzător.\n\n> Temei legal: HG 1425/2006 pentru aprobarea Normelor metodologice de aplicare a Legii 319/2006 Titlul referitor la comunicarea, cercetarea, înregistrarea, raportarea și evidența accidentelor de muncă și a incidentelor periculoase (verificați numerotarea exactă a articolelor în forma consolidată, actualizată) (în vigoare de la 2006-10-30)\nHG 1425/2006, actul de aplicare a Legii 319/2006, obligă angajatorul să comunice, să cerceteze, să înregistreze și să raporteze accidentele de muncă și incidentele periculoase. Cercetarea evenimentului - stabilirea împrejurărilor, cauzelor și persoanelor responsabile - este, în esență, o analiză a cauzei rădăcină impusă prin lege, cu termene și componență a comisiei de cercetare stabilite normativ. Un sistem SMSSM matur aliniază procesul intern de tratare a neconformităților (clauza 10.2 ISO 45001) cu această obligație legală, astfel încât cercetarea unui accident să alimenteze direct dosarul de neconformitate și acțiunea corectivă, fără duplicarea documentației. Verifică întotdeauna forma consolidată, în vigoare la data cercetării, întrucât normele metodologice au suferit modificări succesive.\n\n⚠ Nu confunda închiderea administrativă a unei neconformități cu eficacitatea reală a acțiunii corective. Implementarea unei acțiuni (de exemplu, o instruire suplimentară sau achiziția unui echipament) nu înseamnă automat că problema a fost rezolvată. Standardul cere verificarea eficacității după o perioadă de observație rezonabilă - stabilită de organizație în funcție de riscul asociat, tipic 3-6 luni. Dacă o neconformitate similară reapare în acest interval, acțiunea corectivă trebuie revizuită și, eventual, reluat întregul proces de analiză a cauzei - nu doar redeschisă administrativ ca formalitate de audit.\n\n## Exercițiu\nScenariu: un lucrător cade de pe o schelă neasigurată corespunzător pe un șantier de renovare. Nu a rezultat vătămare gravă (eveniment de tip near-miss), dar situația a fost semnalată prin sistemul de consultare a lucrătorilor (clauza 5.4).\n\nCerință: aplică metoda 5 De ce pentru a identifica o posibilă cauză rădăcină și propune o acțiune corectivă completă, cu responsabil, termen și criteriu de verificare a eficacității.\n\n**Soluție:** 1. De ce a căzut lucrătorul? Schela nu avea balustradă de protecție montată pe latura deschisă.\n2. De ce nu avea balustradă? Montajul schelei fusese finalizat parțial, iar echipa trecuse la altă activitate înainte de finalizarea completă.\n3. De ce s-a lucrat pe o schelă neterminată? Nu exista un proces de recepție/inspecție a schelei înainte de punerea în exploatare (nicio fișă de verificare semnată de un responsabil de montaj).\n4. De ce nu exista această verificare? Procedura internă de montaj schele nu prevedea un punct de control obligatoriu ('stop point') înainte de utilizare.\n5. De ce procedura nu prevedea acest punct de control? Procedura fusese elaborată înainte de implementarea SMSSM și nu a fost actualizată odată cu introducerea ISO 45001.\n\nCauza rădăcină: procedura de montaj schele nu include un punct de control obligatoriu de recepție înainte de utilizare.\n\nAcțiune corectivă: actualizarea procedurii de montaj schele cu introducerea unei fișe de recepție semnate de un verificator de schele autorizat, obligatorie înainte de orice utilizare; instruirea tuturor echipelor de montaj cu privire la noua cerință.\n\nResponsabil: responsabil SSM șantier. Termen: 15 zile calendaristice.\n\nCriteriu de eficacitate: audit intern la 3 luni - toate schelele active de pe șantier au fișă de recepție completată și semnată; zero incidente similare în următoarele 6 luni.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "neconformitate-iso-45001",
+    "md": "## Ce este o neconformitate în ISO 45001\n\nO neconformitate reprezintă nerespectarea unei cerințe: poate fi o cerință proprie sistemului de management SSM (procedură internă, instrucțiune de lucru, obiectiv SSM), o cerință legală aplicabilă (Legea 319/2006, HG 1425/2006, alte reglementări ITM) sau o cerință a standardului ISO 45001:2018 însuși.\n\nSursele tipice de neconformități sunt:\n- Audituri interne sau de certificare (clauza 9.2) - abateri constatate față de documentația SMSSM.\n- Incidente și accidente de muncă - evenimente care au produs sau ar fi putut produce vătămare sau îmbolnăvire.\n- Semnalări ale lucrătorilor prin consultare și participare (clauza 5.4) - de exemplu un lucrător raportează o instalație electrică defectă.\n- Inspecții de rutină, patrule SSM, controale ITM.\n\nClauza 10.2 din ISO 45001:2018 (Neconformitate și acțiune corectivă) cere ca, la apariția unei neconformități - inclusiv a unui incident - organizația să reacționeze prompt, să analizeze cauza reală și să implementeze acțiuni care previn recurența, nu doar să elimine efectul vizibil.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "corectie-vs-actiune-corectiva",
+    "md": "## Corecție vs. acțiune corectivă: nu sunt același lucru\n\nConfuzia cea mai frecventă la implementarea clauzei 10.2 este tratarea corecției ca fiind suficientă.\n\n- Corecția înseamnă eliminarea imediată a efectului neconformității: curăț lichidul vărsat, montez rapid balustrada lipsă, retrag din uz un utilaj defect. Corecția răspunde la întrebarea 'cum opresc răul acum?', dar nu previne repetarea.\n- Acțiunea corectivă elimină cauza care a generat neconformitatea, astfel încât aceasta să nu mai reapară - nici în același loc, nici în alte zone cu condiții similare. Răspunde la întrebarea 'de ce s-a întâmplat și cum mă asigur că nu se mai întâmplă?'\n\nStandardul descrie procesul de tratare în șase pași, aplicabili oricărei neconformități, indiferent de sursă:\n1. Reacție - control și corecție imediată, tratarea consecințelor (prim ajutor, izolarea zonei, oprirea echipamentului).\n2. Evaluarea necesității de acțiune - se stabilește dacă este necesară o acțiune corectivă, verificând dacă neconformități similare există sau ar putea apărea în altă parte a organizației.\n3. Analiza cauzei rădăcină - identificarea factorilor reali care au dus la neconformitate, nu doar a simptomului.\n4. Determinarea acțiunilor - stabilirea măsurilor concrete, cu responsabil și termen.\n5. Implementarea acțiunilor - punerea în practică a măsurilor stabilite.\n6. Evaluarea eficacității - verificarea, după o perioadă rezonabilă, că acțiunea a funcționat și neconformitatea nu s-a repetat; dacă e cazul, actualizarea riscurilor și oportunităților din clauza 6.1 și eventual modificarea SMSSM.\n\nToate etapele trebuie păstrate ca informații documentate (clauza 7.5): natura neconformității, acțiunile întreprinse, rezultatele acțiunii corective.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "analiza-cauza-radacina",
+    "md": "## Metode de analiză a cauzei rădăcină\n\nO acțiune corectivă construită pe o cauză greșit identificată eșuează garantat - neconformitatea revine, de regulă în formă mai gravă. De aceea, analiza cauzei rădăcină (root cause analysis) este pasul cel mai important, nu o formalitate birocratică.\n\nCele mai utilizate tehnici în auditul SSM:\n\n- Metoda 5 De ce (5 Whys) - se pornește de la simptomul observat și se întreabă 'de ce?' în mod repetat (de regulă de 5 ori), fiecare răspuns devenind punctul de plecare pentru următoarea întrebare, până se ajunge la o cauză sistemică (proces, instruire, resurse), nu la o cauză superficială de tipul 'lucrătorul nu a fost atent'.\n- Diagrama Ishikawa (cauză-efect, 'os de pește') - grupează cauzele posibile pe categorii, de regulă cele 6M: Manoperă (om), Metodă (proces), Mașină (echipament), Material, Mediu, Management. Utilă când o neconformitate are cauze multiple și concurente.\n- Analiza arborelui de defecte (Fault Tree Analysis) - pentru neconformități complexe, cu multiple căi posibile către eveniment, folosită mai ales pentru incidente grave sau aproape-accidente (near-miss) cu potențial ridicat de vătămare.\n\nIndiferent de metodă, o cauză rădăcină corect identificată este de regulă legată de un element al sistemului de management (procedură inexistentă sau neclară, instruire insuficientă, lipsă de resurse, comunicare deficitară) - nu de o simplă eroare umană izolată, care rareori explică singură de ce neconformitatea s-a produs.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b3"
+   },
+   {
+    "type": "example",
+    "title": "Studiu de caz: alunecare pe scări - analiza 5 De ce",
+    "concept_key": "analiza-cauza-radacina",
+    "md": "Un lucrător alunecă pe scara de acces la depozit și se accidentează ușor la gleznă (incident minor, cu ITM sub pragul de raportare obligatorie, dar înregistrat intern).\n\nAplicarea metodei 5 De ce:\n1. De ce a alunecat lucrătorul? Treapta era umedă și fără bandă antiderapantă.\n2. De ce era umedă și fără bandă? Banda antiderapantă se desprinsese de câteva săptămâni.\n3. De ce nu a fost înlocuită? Nu exista o procedură de verificare periodică a benzilor antiderapante.\n4. De ce nu exista o astfel de procedură? Responsabilitatea de mentenanță pentru elemente minore (benzi, balustrade, marcaje) nu era alocată clar în planul de mentenanță SSM.\n5. De ce nu era alocată clar? Planul de mentenanță SSM nu fusese revizuit de la implementarea inițială a SMSSM, cu trei ani în urmă.\n\nCauza rădăcină: lipsa unui proces de revizuire periodică a planului de mentenanță preventivă SSM.\n\nAcțiune corectivă: introducerea unei liste de verificare lunară pentru elemente de siguranță minore (bandă antiderapantă, balustrade, marcaje), cu responsabil desemnat (șef depozit) și revizuire anuală a întregului plan de mentenanță.\n\nVerificare eficacitate: audit intern la 3 luni de la implementare, plus urmărirea a 6 luni fără evenimente similare înainte de închiderea definitivă a neconformității.\n\nObservă diferența: dacă analiza s-ar fi oprit la primul răspuns ('treapta era umedă'), acțiunea ar fi fost doar o corecție (ștergerea treptei) - insuficientă pe termen lung. Al cincilea răspuns duce la o acțiune corectivă sistemică, care previne recurența în orice zonă cu risc similar.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b4"
+   },
+   {
+    "type": "example",
+    "title": "Template raport de neconformitate și acțiune corectivă (NC/AC)",
+    "concept_key": "neconformitate-iso-45001",
+    "md": "Un formular NC/AC standardizat facilitează trasabilitatea cerută de clauza 7.5 și pregătește organizația pentru auditul de certificare. Câmpurile minime recomandate:\n\n- Nr. înregistrare și dată deschidere\n- Sursă: audit intern / incident-accident / reclamație lucrător / inspecție ITM\n- Descrierea neconformității: cerința încălcată + dovada obiectivă observată\n- Corecție imediată aplicată, responsabil și dată\n- Analiza cauzei rădăcină: metoda folosită (5 De ce / Ishikawa) și persoanele implicate\n- Acțiunea corectivă propusă\n- Responsabil implementare și termen\n- Resurse necesare (cost estimat, timp alocat)\n- Data verificării eficacității și criteriul de eficacitate (ex. zero recurențe în 6 luni)\n- Decizie de închidere a neconformității, cu semnătura responsabilului SSM\n\nExemplu completat: în urma unei reclamații a unui lucrător privind nivelul de zgomot din secția de debitare, se constată că protecțiile auditive disponibile nu acoperă toate posturile de lucru. Corecție imediată: redistribuirea căștilor antifonice existente către posturile cele mai expuse, în aceeași zi. Cauză rădăcină (5 De ce): planul de dotare cu echipament individual de protecție (EIP) nu a fost actualizat după extinderea secției cu două posturi noi. Acțiune corectivă: achiziția a 20 de seturi suplimentare de căști antifonice (cost estimat 1.500 lei) și actualizarea procedurii de dotare EIP, cu revizuire la fiecare modificare de flux tehnologic. Responsabil: șef secție, termen 30 de zile. Verificare eficacitate: control la 60 de zile - toate posturile din zona cu zgomot peste pragul de acțiune au EIP corespunzător.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG 1425/2006 pentru aprobarea Normelor metodologice de aplicare a Legii 319/2006",
+    "article": "Titlul referitor la comunicarea, cercetarea, înregistrarea, raportarea și evidența accidentelor de muncă și a incidentelor periculoase (verificați numerotarea exactă a articolelor în forma consolidată, actualizată)",
+    "effective": "2006-10-30",
+    "md": "HG 1425/2006, actul de aplicare a Legii 319/2006, obligă angajatorul să comunice, să cerceteze, să înregistreze și să raporteze accidentele de muncă și incidentele periculoase. Cercetarea evenimentului - stabilirea împrejurărilor, cauzelor și persoanelor responsabile - este, în esență, o analiză a cauzei rădăcină impusă prin lege, cu termene și componență a comisiei de cercetare stabilite normativ. Un sistem SMSSM matur aliniază procesul intern de tratare a neconformităților (clauza 10.2 ISO 45001) cu această obligație legală, astfel încât cercetarea unui accident să alimenteze direct dosarul de neconformitate și acțiunea corectivă, fără duplicarea documentației. Verifică întotdeauna forma consolidată, în vigoare la data cercetării, întrucât normele metodologice au suferit modificări succesive.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda închiderea administrativă a unei neconformități cu eficacitatea reală a acțiunii corective. Implementarea unei acțiuni (de exemplu, o instruire suplimentară sau achiziția unui echipament) nu înseamnă automat că problema a fost rezolvată. Standardul cere verificarea eficacității după o perioadă de observație rezonabilă - stabilită de organizație în funcție de riscul asociat, tipic 3-6 luni. Dacă o neconformitate similară reapare în acest interval, acțiunea corectivă trebuie revizuită și, eventual, reluat întregul proces de analiză a cauzei - nu doar redeschisă administrativ ca formalitate de audit.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Scenariu: un lucrător cade de pe o schelă neasigurată corespunzător pe un șantier de renovare. Nu a rezultat vătămare gravă (eveniment de tip near-miss), dar situația a fost semnalată prin sistemul de consultare a lucrătorilor (clauza 5.4).\n\nCerință: aplică metoda 5 De ce pentru a identifica o posibilă cauză rădăcină și propune o acțiune corectivă completă, cu responsabil, termen și criteriu de verificare a eficacității.",
+    "solution_md": "1. De ce a căzut lucrătorul? Schela nu avea balustradă de protecție montată pe latura deschisă.\n2. De ce nu avea balustradă? Montajul schelei fusese finalizat parțial, iar echipa trecuse la altă activitate înainte de finalizarea completă.\n3. De ce s-a lucrat pe o schelă neterminată? Nu exista un proces de recepție/inspecție a schelei înainte de punerea în exploatare (nicio fișă de verificare semnată de un responsabil de montaj).\n4. De ce nu exista această verificare? Procedura internă de montaj schele nu prevedea un punct de control obligatoriu ('stop point') înainte de utilizare.\n5. De ce procedura nu prevedea acest punct de control? Procedura fusese elaborată înainte de implementarea SMSSM și nu a fost actualizată odată cu introducerea ISO 45001.\n\nCauza rădăcină: procedura de montaj schele nu include un punct de control obligatoriu de recepție înainte de utilizare.\n\nAcțiune corectivă: actualizarea procedurii de montaj schele cu introducerea unei fișe de recepție semnate de un verificator de schele autorizat, obligatorie înainte de orice utilizare; instruirea tuturor echipelor de montaj cu privire la noua cerință.\n\nResponsabil: responsabil SSM șantier. Termen: 15 zile calendaristice.\n\nCriteriu de eficacitate: audit intern la 3 luni - toate schelele active de pe șantier au fișă de recepție completată și semnată; zero incidente similare în următoarele 6 luni.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența principală dintre o corecție și o acțiune corectivă, conform ISO 45001 clauza 10.2?",
+    "choices": [
+     "Corecția elimină efectul imediat al neconformității; acțiunea corectivă elimină cauza, prevenind recurența.",
+     "Corecția este obligatorie doar pentru accidente grave, acțiunea corectivă pentru toate celelalte cazuri.",
+     "Corecția și acțiunea corectivă sunt sinonime în terminologia ISO 45001.",
+     "Acțiunea corectivă se aplică doar în urma auditurilor externe de certificare."
+    ],
+    "answer": 0,
+    "explain": "Corecția tratează simptomul (efectul vizibil, imediat), în timp ce acțiunea corectivă tratează cauza rădăcină identificată prin analiză, pentru a preveni repetarea neconformității.",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele sunt tehnici de analiză a cauzei rădăcină menționate în lecție?",
+    "choices": [
+     "Diagrama Gantt, analiza SWOT, matricea BCG",
+     "5 De ce, diagrama Ishikawa, analiza arborelui de defecte",
+     "Analiza PESTLE, benchmarking, brainstorming liber",
+     "Metoda Kaizen, 5S, SMED"
+    ],
+    "answer": 1,
+    "explain": "5 De ce, diagrama Ishikawa (bazată pe cele 6M) și analiza arborelui de defecte sunt instrumente consacrate de root cause analysis în managementul SSM; celelalte instrumente enumerate aparțin altor domenii (strategie, lean operations).",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o neconformitate conform ISO 45001?",
+    "back": "Nerespectarea unei cerințe - proprie sistemului de management SSM, legală (ex. Legea 319/2006) sau a standardului ISO 45001 însuși.",
+    "concept_key": "neconformitate-iso-45001",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre corecție și acțiune corectivă?",
+    "back": "Corecția elimină efectul imediat al neconformității; acțiunea corectivă elimină cauza rădăcină, prevenind recurența.",
+    "concept_key": "corectie-vs-actiune-corectiva",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câți pași are procesul de tratare a neconformității în clauza 10.2 din ISO 45001?",
+    "back": "Șase: reacție/corecție, evaluarea necesității acțiunii, analiza cauzei rădăcină, determinarea acțiunilor, implementare, evaluarea eficacității.",
+    "concept_key": "corectie-vs-actiune-corectiva",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este metoda 5 De ce (5 Whys)?",
+    "back": "Tehnică de analiză a cauzei rădăcină: se întreabă repetat 'de ce', de regulă de 5 ori, pornind de la simptom până la o cauză sistemică.",
+    "concept_key": "analiza-cauza-radacina",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă diagrama Ishikawa în context SSM?",
+    "back": "Instrument vizual (os de pește) care grupează cauzele posibile pe categoriile 6M: Manoperă, Metodă, Mașină, Material, Mediu, Management.",
+    "concept_key": "analiza-cauza-radacina",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reglementare impune cercetarea accidentelor de muncă în România?",
+    "back": "HG 1425/2006 (normele metodologice de aplicare a Legii 319/2006) obligă la comunicarea, cercetarea, înregistrarea și evidența accidentelor de muncă și incidentelor periculoase.",
+    "concept_key": "cercetare-evenimente-hg1425",
+    "blockId": "cmjjuxwfn00mrumkpjpy7s73a-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1545,
+   "flashcards": 6
+  }
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwcb00jwumkpt59l3ttc",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Evaluarea Riscurilor",
+ "lesson": "Exercițiu evaluare risc",
+ "category": "HSE_SAFETY",
+ "content": "# Exercițiu evaluare risc\n\n## Ce înseamnă „evaluarea riscurilor” la un post de muncă\n\nEvaluarea riscurilor este procesul prin care identifici pericolele dintr-un loc de muncă, stabilești cine și cum poate fi afectat, măsori nivelul de risc și decizi ce măsuri de prevenire sunt necesare. Nu este un exercițiu birocratic, ci instrumentul de bază prin care previi accidentele de muncă și îmbolnăvirile profesionale înainte să se producă.\n\nÎn practică, evaluarea urmează cinci pași, aplicabili oricărui post de muncă, inclusiv celor de birou:\n\n1. **Identifică pericolele** — orice sursă care poate produce vătămare (cablu neordonat, scaun defect, iluminat slab, termen limită permanent).\n2. **Identifică cine este expus și cum** — angajatul de la acel birou, colegii care trec prin zonă, vizitatorii.\n3. **Evaluează riscul** — estimezi probabilitatea și gravitatea consecinței, ținând cont de măsurile deja existente.\n4. **Stabilește măsuri suplimentare** — acțiuni concrete, cu responsabil și termen, care reduc riscul la un nivel acceptabil.\n5. **Documentează și revizuiește periodic** — orice evaluare se scrie și se actualizează la schimbarea condițiilor de muncă, după un accident/incident sau la un interval stabilit intern.\n\nAcest proces se aplică indiferent de domeniul de activitate — un birou administrativ are riscuri diferite ca natură față de o hală de producție, dar metodologia de analiză este identică.\n\n## Cum se calculează, în practică, nivelul de risc\n\nO metodă simplă și larg folosită în practica SSM din România pentru a estima nivelul de risc este matricea **Probabilitate × Gravitate**:\n\n- **Probabilitate (P)** — cât de des se poate produce expunerea la pericol, notată de la 1 (foarte rar) la 5 (aproape sigur, zilnic).\n- **Gravitate (G)** — cât de severă ar fi consecința dacă s-ar produce evenimentul, notată de la 1 (fără consecințe/leziune minoră) la 5 (deces sau invaliditate permanentă).\n- **Nivelul de risc (R) = P × G**, cu valori între 1 și 25.\n\nÎncadrarea rezultatului se face, de regulă, astfel:\n\n| Interval R | Nivel de risc | Acțiune |\n|---|---|---|\n| 1–8 | Risc mic (acceptabil) | Se monitorizează, fără măsuri suplimentare urgente |\n| 9–15 | Risc mediu (tolerabil) | Măsuri de reducere pe termen mediu, cu termen stabilit |\n| 16–25 | Risc mare (inacceptabil) | Măsuri imediate, activitatea nu continuă nesupravegheat |\n\nAceastă grilă este un instrument practic de lucru, nu un tabel impus explicit prin lege cu aceste praguri exacte — legea impune *obligația de evaluare documentată*, nu o formulă unică. Important este ca metoda aleasă să fie aplicată **consecvent**, pentru toate posturile din organizație, astfel încât rezultatele să fie comparabile.\n\n## Riscurile tipice pentru un post de muncă în birou\n\nMunca de birou este adesea subestimată din perspectivă SSM, pentru că nu implică utilaje grele sau substanțe periculoase. Totuși, un post de birou are un set clar de riscuri specifice, pe care evaluarea trebuie să le acopere:\n\n- **Riscuri ergonomice** — poziție șezândă prelungită, monitor la înălțime greșită, scaun neadaptat, mouse/tastatură poziționate incorect → dureri lombare, cervicale, sindrom de tunel carpian.\n- **Riscuri electrice** — prize supraîncărcate, cabluri neordonate, echipamente cu izolație deteriorată.\n- **Risc de incendiu** — surse de căldură (imprimante, încărcătoare), materiale combustibile (hârtie), căi de evacuare blocate.\n- **Risc de alunecare/împiedicare/cădere** — cabluri pe jos, pardoseală udă, obiecte depozitate pe culoare.\n- **Riscuri psihosociale** — termene limită permanente, volum de muncă excesiv, relații tensionate, care pot duce la stres cronic și epuizare (burnout).\n- **Microclimat și iluminat necorespunzător** — temperatură, umiditate sau lumină inadecvate, care afectează concentrarea și confortul vizual.\n\nAceste categorii trebuie parcurse sistematic pentru fiecare post evaluat, nu doar cele „vizibile” (de exemplu, riscul electric), pentru ca evaluarea să fie completă și utilă în practică.\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă art. 7 alin. (4) lit. a); coroborat cu HG nr. 1425/2006, art. 15 (în vigoare de la 2006-10-01)\nConform **Legii nr. 319/2006, art. 7 alin. (4) lit. a)**, angajatorul are obligația de a asigura evaluarea riscurilor pentru securitatea și sănătatea lucrătorilor, inclusiv la alegerea echipamentelor de muncă, a substanțelor utilizate și la amenajarea locurilor de muncă. **HG nr. 1425/2006** (Normele metodologice de aplicare) prevede, la art. 15, că evaluarea riscurilor de accidentare și îmbolnăvire profesională pentru fiecare loc de muncă/post de lucru se numără printre documentele obligatorii pe care angajatorul trebuie să le dețină și să le prezinte la control. Nerespectarea acestei obligații poate fi sancționată de **Inspectoratul Teritorial de Muncă (ITM)**, autoritatea de control în domeniul SSM.\n\n## Exemplu: Exemplu 1 — Risc de împiedicare din cauza cablurilor neordonate\n**Situație:** Sub biroul unui contabil trec trei cabluri (monitor, laptop, imprimantă de rețea), lăsate liber pe podea, pe traseul de trecere spre imprimantă, folosit de 4-5 colegi zilnic.\n\n**Evaluare înainte de măsuri:**\n- Probabilitate (P) = 3 — expunere frecventă, dar nu la fiecare trecere se produce împiedicare\n- Gravitate (G) = 3 — o cădere poate produce o entorsă sau chiar o fractură\n- **R = P × G = 3 × 3 = 9 → risc mediu**\n\n**Măsuri stabilite:** montarea unui canal de cablu (cable trunking) fixat pe podea, reorganizarea traseului cablurilor pe lângă perete, verificare lunară a stării canalului.\n\n**Evaluare după implementarea măsurilor:**\n- P = 1 (expunerea la pericol e practic eliminată)\n- G = 3 (gravitatea potențială rămâne aceeași dacă protecția ar ceda)\n- **R = 1 × 3 = 3 → risc mic**\n\nAcest exemplu arată clar rolul evaluării „înainte/după”: nu elimini gravitatea unei posibile căderi, dar reduci drastic probabilitatea de producere.\n\n## Exemplu: Exemplu 2 — Risc ergonomic la lucrul prelungit la calculator\n**Situație:** Un angajat lucrează 8 ore/zi la calculator, cu monitorul poziționat mai jos decât nivelul ochilor și scaun fără suport lombar reglabil.\n\n**Evaluare înainte de măsuri:**\n- Probabilitate (P) = 5 — expunerea este zilnică, pentru toată durata programului\n- Gravitate (G) = 2 — afecțiuni musculo-scheletice cronice (dureri cervicale, lombare), instalate progresiv, fără invaliditate\n- **R = 5 × 2 = 10 → risc mediu**\n\n**Măsuri stabilite:** înlocuirea scaunului cu unul ergonomic (suport lombar reglabil), ridicarea monitorului pe un suport la înălțimea ochilor, introducerea unei pauze de 5 minute la fiecare 50 de minute de lucru la ecran, instruire scurtă despre postura corectă.\n\n**Evaluare după implementarea măsurilor:**\n- P = 2 (riscul de postură incorectă scade semnificativ, dar nu dispare complet — depinde și de disciplina angajatului)\n- G = 2 (gravitatea rămâne moderată, natura afecțiunii nu se schimbă)\n- **R = 2 × 2 = 4 → risc mic**\n\nAcest tip de risc este frecvent ignorat în evaluările de birou, deși este una dintre cauzele principale de absenteism pe termen lung în activitățile administrative.\n\n⚠ **Greșeli frecvente la evaluarea riscurilor într-un birou:**\n\n- Tratarea evaluării ca pe un formular completat o singură dată, la deschiderea firmei, și niciodată actualizat — deși mobilierul, echipamentele sau organizarea muncii se schimbă.\n- Ignorarea riscurilor psihosociale (stres, presiunea termenelor) pe motiv că „nu sunt riscuri fizice reale” — acestea sunt riscuri de sănătate în muncă recunoscute și trebuie evaluate ca atare.\n- Evaluarea făcută exclusiv de responsabilul SSM, fără consultarea lucrătorilor care cunosc cel mai bine condițiile reale de la postul lor.\n- Stabilirea de măsuri generice („se va avea grijă”) fără responsabil, termen și mod de verificare a eficienței — o măsură fără termen nu se implementează niciodată.\n\n## Exercițiu\n**Exercițiu practic:** Ești responsabil SSM și trebuie să evaluezi riscurile pentru postul de „operator introducere date”, într-un birou open-space. La acest post ai identificat următoarele situații:\n\n1. Prelungitor electric supraîncărcat, cu mai multe echipamente conectate simultan (imprimantă, încărcător laptop, ventilator), amplasat lângă piciorul biroului.\n2. Iluminat artificial insuficient deasupra ecranului, cauzând oboseală vizuală după 3-4 ore de lucru.\n3. Volum de muncă cu termene zilnice stricte, presiune constantă din partea supervizorului, fără pauze structurate.\n4. Scaunul de birou are rotile defecte pe o parte, ceea ce creează instabilitate la ridicare/așezare.\n\n**Cerință:** Pentru fiecare dintre cele 4 situații, stabilește Probabilitate (1-5), Gravitate (1-5), calculează Riscul (R = P×G), încadrează-l (mic/mediu/mare) și propune o măsură concretă de reducere, cu termen de implementare.\n\n**Soluție:** **Soluție propusă:**\n\n| Nr. | Pericol | P | G | R | Nivel | Măsură propusă (termen) |\n|---|---|---|---|---|---|---|\n| 1 | Prelungitor supraîncărcat | 3 | 4 | 12 | Mediu | Redistribuire echipamente pe 2 prize distincte + prelungitor cu protecție la suprasarcină; termen: 5 zile lucrătoare |\n| 2 | Iluminat insuficient | 4 | 2 | 8 | Mic-mediu (limită) | Montare lampă de birou cu LED reglabil; termen: 10 zile |\n| 3 | Presiune/termene, fără pauze | 5 | 3 | 15 | Mediu | Introducerea a două pauze scurte planificate (10 min) și revizuirea distribuției volumului de muncă cu supervizorul; termen: următoarea ședință de planificare (2 săptămâni) |\n| 4 | Scaun cu rotile defecte | 3 | 3 | 9 | Mediu | Înlocuirea imediată a scaunului sau a rotilelor defecte; termen: 3 zile lucrătoare |\n\n**Observație:** Notele de mai sus sunt un exemplu rezonabil de argumentare — în evaluarea reală, cifrele exacte pot varia ușor în funcție de contextul specific (frecvența reală de expunere, istoricul de incidente). Important este ca fiecare notă acordată să fie **justificată în scris** (de ce probabilitate 3 și nu 5, de ce gravitate 4 și nu 2), astfel încât evaluarea să poată fi verificată și, la nevoie, contestată sau revizuită de un alt evaluator sau de inspectorul ITM.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "metodologia-evaluarii-riscurilor",
+    "md": "## Ce înseamnă „evaluarea riscurilor” la un post de muncă\n\nEvaluarea riscurilor este procesul prin care identifici pericolele dintr-un loc de muncă, stabilești cine și cum poate fi afectat, măsori nivelul de risc și decizi ce măsuri de prevenire sunt necesare. Nu este un exercițiu birocratic, ci instrumentul de bază prin care previi accidentele de muncă și îmbolnăvirile profesionale înainte să se producă.\n\nÎn practică, evaluarea urmează cinci pași, aplicabili oricărui post de muncă, inclusiv celor de birou:\n\n1. **Identifică pericolele** — orice sursă care poate produce vătămare (cablu neordonat, scaun defect, iluminat slab, termen limită permanent).\n2. **Identifică cine este expus și cum** — angajatul de la acel birou, colegii care trec prin zonă, vizitatorii.\n3. **Evaluează riscul** — estimezi probabilitatea și gravitatea consecinței, ținând cont de măsurile deja existente.\n4. **Stabilește măsuri suplimentare** — acțiuni concrete, cu responsabil și termen, care reduc riscul la un nivel acceptabil.\n5. **Documentează și revizuiește periodic** — orice evaluare se scrie și se actualizează la schimbarea condițiilor de muncă, după un accident/incident sau la un interval stabilit intern.\n\nAcest proces se aplică indiferent de domeniul de activitate — un birou administrativ are riscuri diferite ca natură față de o hală de producție, dar metodologia de analiză este identică.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "matrice-risc-probabilitate-gravitate",
+    "md": "## Cum se calculează, în practică, nivelul de risc\n\nO metodă simplă și larg folosită în practica SSM din România pentru a estima nivelul de risc este matricea **Probabilitate × Gravitate**:\n\n- **Probabilitate (P)** — cât de des se poate produce expunerea la pericol, notată de la 1 (foarte rar) la 5 (aproape sigur, zilnic).\n- **Gravitate (G)** — cât de severă ar fi consecința dacă s-ar produce evenimentul, notată de la 1 (fără consecințe/leziune minoră) la 5 (deces sau invaliditate permanentă).\n- **Nivelul de risc (R) = P × G**, cu valori între 1 și 25.\n\nÎncadrarea rezultatului se face, de regulă, astfel:\n\n| Interval R | Nivel de risc | Acțiune |\n|---|---|---|\n| 1–8 | Risc mic (acceptabil) | Se monitorizează, fără măsuri suplimentare urgente |\n| 9–15 | Risc mediu (tolerabil) | Măsuri de reducere pe termen mediu, cu termen stabilit |\n| 16–25 | Risc mare (inacceptabil) | Măsuri imediate, activitatea nu continuă nesupravegheat |\n\nAceastă grilă este un instrument practic de lucru, nu un tabel impus explicit prin lege cu aceste praguri exacte — legea impune *obligația de evaluare documentată*, nu o formulă unică. Important este ca metoda aleasă să fie aplicată **consecvent**, pentru toate posturile din organizație, astfel încât rezultatele să fie comparabile.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "riscuri-specifice-munca-de-birou",
+    "md": "## Riscurile tipice pentru un post de muncă în birou\n\nMunca de birou este adesea subestimată din perspectivă SSM, pentru că nu implică utilaje grele sau substanțe periculoase. Totuși, un post de birou are un set clar de riscuri specifice, pe care evaluarea trebuie să le acopere:\n\n- **Riscuri ergonomice** — poziție șezândă prelungită, monitor la înălțime greșită, scaun neadaptat, mouse/tastatură poziționate incorect → dureri lombare, cervicale, sindrom de tunel carpian.\n- **Riscuri electrice** — prize supraîncărcate, cabluri neordonate, echipamente cu izolație deteriorată.\n- **Risc de incendiu** — surse de căldură (imprimante, încărcătoare), materiale combustibile (hârtie), căi de evacuare blocate.\n- **Risc de alunecare/împiedicare/cădere** — cabluri pe jos, pardoseală udă, obiecte depozitate pe culoare.\n- **Riscuri psihosociale** — termene limită permanente, volum de muncă excesiv, relații tensionate, care pot duce la stres cronic și epuizare (burnout).\n- **Microclimat și iluminat necorespunzător** — temperatură, umiditate sau lumină inadecvate, care afectează concentrarea și confortul vizual.\n\nAceste categorii trebuie parcurse sistematic pentru fiecare post evaluat, nu doar cele „vizibile” (de exemplu, riscul electric), pentru ca evaluarea să fie completă și utilă în practică.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă",
+    "article": "art. 7 alin. (4) lit. a); coroborat cu HG nr. 1425/2006, art. 15",
+    "effective": "2006-10-01",
+    "md": "Conform **Legii nr. 319/2006, art. 7 alin. (4) lit. a)**, angajatorul are obligația de a asigura evaluarea riscurilor pentru securitatea și sănătatea lucrătorilor, inclusiv la alegerea echipamentelor de muncă, a substanțelor utilizate și la amenajarea locurilor de muncă. **HG nr. 1425/2006** (Normele metodologice de aplicare) prevede, la art. 15, că evaluarea riscurilor de accidentare și îmbolnăvire profesională pentru fiecare loc de muncă/post de lucru se numără printre documentele obligatorii pe care angajatorul trebuie să le dețină și să le prezinte la control. Nerespectarea acestei obligații poate fi sancționată de **Inspectoratul Teritorial de Muncă (ITM)**, autoritatea de control în domeniul SSM.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b4"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu 1 — Risc de împiedicare din cauza cablurilor neordonate",
+    "concept_key": "exemplu-risc-cabluri-birou",
+    "md": "**Situație:** Sub biroul unui contabil trec trei cabluri (monitor, laptop, imprimantă de rețea), lăsate liber pe podea, pe traseul de trecere spre imprimantă, folosit de 4-5 colegi zilnic.\n\n**Evaluare înainte de măsuri:**\n- Probabilitate (P) = 3 — expunere frecventă, dar nu la fiecare trecere se produce împiedicare\n- Gravitate (G) = 3 — o cădere poate produce o entorsă sau chiar o fractură\n- **R = P × G = 3 × 3 = 9 → risc mediu**\n\n**Măsuri stabilite:** montarea unui canal de cablu (cable trunking) fixat pe podea, reorganizarea traseului cablurilor pe lângă perete, verificare lunară a stării canalului.\n\n**Evaluare după implementarea măsurilor:**\n- P = 1 (expunerea la pericol e practic eliminată)\n- G = 3 (gravitatea potențială rămâne aceeași dacă protecția ar ceda)\n- **R = 1 × 3 = 3 → risc mic**\n\nAcest exemplu arată clar rolul evaluării „înainte/după”: nu elimini gravitatea unei posibile căderi, dar reduci drastic probabilitatea de producere.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b5"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu 2 — Risc ergonomic la lucrul prelungit la calculator",
+    "concept_key": "exemplu-risc-ergonomic-calculator",
+    "md": "**Situație:** Un angajat lucrează 8 ore/zi la calculator, cu monitorul poziționat mai jos decât nivelul ochilor și scaun fără suport lombar reglabil.\n\n**Evaluare înainte de măsuri:**\n- Probabilitate (P) = 5 — expunerea este zilnică, pentru toată durata programului\n- Gravitate (G) = 2 — afecțiuni musculo-scheletice cronice (dureri cervicale, lombare), instalate progresiv, fără invaliditate\n- **R = 5 × 2 = 10 → risc mediu**\n\n**Măsuri stabilite:** înlocuirea scaunului cu unul ergonomic (suport lombar reglabil), ridicarea monitorului pe un suport la înălțimea ochilor, introducerea unei pauze de 5 minute la fiecare 50 de minute de lucru la ecran, instruire scurtă despre postura corectă.\n\n**Evaluare după implementarea măsurilor:**\n- P = 2 (riscul de postură incorectă scade semnificativ, dar nu dispare complet — depinde și de disciplina angajatului)\n- G = 2 (gravitatea rămâne moderată, natura afecțiunii nu se schimbă)\n- **R = 2 × 2 = 4 → risc mic**\n\nAcest tip de risc este frecvent ignorat în evaluările de birou, deși este una dintre cauzele principale de absenteism pe termen lung în activitățile administrative.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b6"
+   },
+   {
+    "type": "warning",
+    "md": "**Greșeli frecvente la evaluarea riscurilor într-un birou:**\n\n- Tratarea evaluării ca pe un formular completat o singură dată, la deschiderea firmei, și niciodată actualizat — deși mobilierul, echipamentele sau organizarea muncii se schimbă.\n- Ignorarea riscurilor psihosociale (stres, presiunea termenelor) pe motiv că „nu sunt riscuri fizice reale” — acestea sunt riscuri de sănătate în muncă recunoscute și trebuie evaluate ca atare.\n- Evaluarea făcută exclusiv de responsabilul SSM, fără consultarea lucrătorilor care cunosc cel mai bine condițiile reale de la postul lor.\n- Stabilirea de măsuri generice („se va avea grijă”) fără responsabil, termen și mod de verificare a eficienței — o măsură fără termen nu se implementează niciodată.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Exercițiu practic:** Ești responsabil SSM și trebuie să evaluezi riscurile pentru postul de „operator introducere date”, într-un birou open-space. La acest post ai identificat următoarele situații:\n\n1. Prelungitor electric supraîncărcat, cu mai multe echipamente conectate simultan (imprimantă, încărcător laptop, ventilator), amplasat lângă piciorul biroului.\n2. Iluminat artificial insuficient deasupra ecranului, cauzând oboseală vizuală după 3-4 ore de lucru.\n3. Volum de muncă cu termene zilnice stricte, presiune constantă din partea supervizorului, fără pauze structurate.\n4. Scaunul de birou are rotile defecte pe o parte, ceea ce creează instabilitate la ridicare/așezare.\n\n**Cerință:** Pentru fiecare dintre cele 4 situații, stabilește Probabilitate (1-5), Gravitate (1-5), calculează Riscul (R = P×G), încadrează-l (mic/mediu/mare) și propune o măsură concretă de reducere, cu termen de implementare.",
+    "solution_md": "**Soluție propusă:**\n\n| Nr. | Pericol | P | G | R | Nivel | Măsură propusă (termen) |\n|---|---|---|---|---|---|---|\n| 1 | Prelungitor supraîncărcat | 3 | 4 | 12 | Mediu | Redistribuire echipamente pe 2 prize distincte + prelungitor cu protecție la suprasarcină; termen: 5 zile lucrătoare |\n| 2 | Iluminat insuficient | 4 | 2 | 8 | Mic-mediu (limită) | Montare lampă de birou cu LED reglabil; termen: 10 zile |\n| 3 | Presiune/termene, fără pauze | 5 | 3 | 15 | Mediu | Introducerea a două pauze scurte planificate (10 min) și revizuirea distribuției volumului de muncă cu supervizorul; termen: următoarea ședință de planificare (2 săptămâni) |\n| 4 | Scaun cu rotile defecte | 3 | 3 | 9 | Mediu | Înlocuirea imediată a scaunului sau a rotilelor defecte; termen: 3 zile lucrătoare |\n\n**Observație:** Notele de mai sus sunt un exemplu rezonabil de argumentare — în evaluarea reală, cifrele exacte pot varia ușor în funcție de contextul specific (frecvența reală de expunere, istoricul de incidente). Important este ca fiecare notă acordată să fie **justificată în scris** (de ce probabilitate 3 și nu 5, de ce gravitate 4 și nu 2), astfel încât evaluarea să poată fi verificată și, la nevoie, contestată sau revizuită de un alt evaluator sau de inspectorul ITM.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este formula standard pentru calculul nivelului de risc în metoda Probabilitate-Gravitate?",
+    "choices": [
+     "Risc = Probabilitate + Gravitate",
+     "Risc = Probabilitate × Gravitate",
+     "Risc = Gravitate − Probabilitate",
+     "Risc = Probabilitate / Gravitate"
+    ],
+    "answer": 1,
+    "explain": "Nivelul de risc se obține prin înmulțirea probabilității de apariție a evenimentului cu gravitatea consecinței (R = P × G), rezultând o scală care permite ierarhizarea și prioritizarea măsurilor de prevenire.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un post de birou are un scaun cu suport lombar necorespunzător folosit 8 ore/zi de fiecare angajat. Care este cea mai probabilă evaluare a probabilității (P) de expunere?",
+    "choices": [
+     "P = 1, expunere aproape inexistentă",
+     "P = 5, expunere zilnică și constantă pe toată durata programului",
+     "P = 2, expunere ocazională, o dată pe săptămână",
+     "Probabilitatea nu poate fi evaluată pentru riscuri ergonomice"
+    ],
+    "answer": 1,
+    "explain": "Deoarece angajatul folosește scaunul necorespunzător în fiecare zi, pe toată durata programului de lucru, expunerea este constantă și frecventă, ceea ce corespunde unei probabilități maxime (P=5) în grila 1-5.",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula de calcul a nivelului de risc în metoda Probabilitate × Gravitate?",
+    "back": "Risc (R) = Probabilitate (P) × Gravitate (G), rezultat pe o scală de la 1 la 25.",
+    "concept_key": "formula-risc-p-x-g",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce obligație are angajatorul conform Legii nr. 319/2006 privind riscurile la locul de muncă?",
+    "back": "Să asigure evaluarea riscurilor pentru securitatea și sănătatea lucrătorilor, inclusiv la amenajarea locurilor de muncă (art. 7 alin. 4 lit. a)).",
+    "concept_key": "obligatie-evaluare-riscuri-legea-319",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document, conform HG nr. 1425/2006 art. 15, trebuie să existe pentru fiecare post de lucru?",
+    "back": "Evaluarea riscurilor de accidentare și îmbolnăvire profesională pentru fiecare loc de muncă/post de lucru, ca document obligatoriu prezentat la control.",
+    "concept_key": "document-evaluare-riscuri-hg-1425",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt principalele categorii de riscuri specifice unui post de muncă de birou?",
+    "back": "Riscuri ergonomice, electrice, de incendiu, de alunecare/împiedicare și psihosociale (stres, volum de muncă).",
+    "concept_key": "categorii-riscuri-birou",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce trebuie actualizată periodic o evaluare a riscurilor, chiar dacă nu s-a produs niciun accident?",
+    "back": "Pentru că schimbările din organizare (echipamente noi, reamenajări, modificări de proces) modifică nivelul real de expunere la risc, iar o evaluare veche nu mai reflectă situația actuală.",
+    "concept_key": "actualizare-periodica-evaluare-risc",
+    "blockId": "cmjjuxwcb00jwumkpt59l3ttc-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1371,
+   "flashcards": 5
+  }
+ }
+}

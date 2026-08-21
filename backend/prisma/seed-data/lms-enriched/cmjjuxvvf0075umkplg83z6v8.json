@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvvf0075umkplg83z6v8",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scrum Events",
+ "lesson": "Sprint Review",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Sprint Review\n\n## Ce este Sprint Review\n\nSprint Review este al treilea eveniment din Sprint, organizat la finalul acestuia, imediat înainte de Sprint Retrospective. Scopul lui, conform Scrum Guide 2020, este să **inspecteze rezultatul Sprintului (Increment-ul)** și să stabilească, împreună cu stakeholderii, ce ajustări sunt necesare în Product Backlog.\n\nLa Sprint Review participă întreaga Scrum Team (Developers, Scrum Master, Product Owner) și stakeholderii cheie: sponsor de proiect, reprezentanți ai clientului, utilizatori finali, alte echipe dependente. Pentru o echipă care implementează un sistem ERP pentru o companie de distribuție din România, stakeholderii pot include directorul financiar, șeful de depozit și un reprezentant din departamentul de vânzări — oamenii care vor folosi efectiv funcționalitățile livrate.\n\nTimebox-ul recomandat este de **maximum 4 ore pentru un Sprint de o lună**; pentru sprinturi mai scurte (de exemplu două săptămâni), evenimentul este de regulă proporțional mai scurt, tipic 2 ore. Scrum Master este responsabil ca evenimentul să aibă loc și să respecte acest timebox, dar nu este obligatoriu ca el să îl faciliteze personal — deseori Product Owner sau Developers preiau facilitarea părților tehnice.\n\n## Ce se discută efectiv în Sprint Review\n\nScrum Guide 2020 descrie Sprint Review ca o **sesiune de lucru**, nu o ședință de raportare. Elementele tipice includ:\n\n1. **Product Owner explică ce elemente din Product Backlog au fost \"Done\" (terminate conform Definition of Done) și care nu au fost finalizate**, și de ce.\n2. **Developers demonstrează Increment-ul** — adică arată munca terminată funcționând, răspund la întrebări și discută ce probleme au apărut și cum au fost rezolvate.\n3. **Toți participanții colaborează** pe ce ar trebui făcut în continuare, ceea ce oferă input valoros pentru următoarea ședință de Sprint Planning.\n4. Grupul **revizuiește bugetul, capacitățile posibile viitoare, piața și utilizarea prevăzută a produsului** — orice ar putea ajusta priorizarea din Product Backlog.\n5. **Product Owner poate revizui Product Backlog-ul** pe baza discuției — adaugă, elimină sau repriorizează elemente.\n\nRezultatul Sprint Review este un **Product Backlog revizuit**, care identifică elementele probabile pentru următorul Sprint. Product Backlog-ul poate fi ajustat oricând pentru a răspunde noilor oportunități, dar Sprint Review este momentul formal în care aceste ajustări sunt discutate deschis cu toți cei implicați.\n\n## Demo, nu prezentare de status\n\nCea mai frecventă greșeală a echipelor Agile la început este să transforme Sprint Review într-o **prezentare PowerPoint** despre ce s-a lucrat, în loc de o **demonstrație funcțională** a produsului. Diferența e esențială: o prezentare descrie munca, un demo o arată în funcțiune.\n\n- **Prezentare (anti-pattern):** \"Am implementat modulul de facturare, am scris 40 de teste unitare, am rezolvat 12 bug-uri.\" — stakeholderii ascultă pasiv, fără să vadă sau să atingă nimic.\n- **Demo (corect):** Developer-ul deschide aplicația ERP live (sau într-un mediu de staging), emite o factură reală pentru un client fictiv, arată cum se generează PDF-ul, cum se sincronizează cu modulul de contabilitate. Stakeholderii pot pune întrebări, pot cere să testeze un scenariu neobișnuit pe loc.\n\nDoar elementele care respectă **Definition of Done** (DoD) sunt demonstrate ca \"terminate\". Un element parțial funcțional, fără teste sau fără documentație conform DoD, nu se prezintă drept Increment finalizat — se discută transparent ca lucru în curs. Această transparență este ceea ce face Sprint Review un instrument real de inspect-and-adapt, nu un teatru de status.\n\n## Exemplu: Sprint Review la o implementare ERP\n**Context:** O echipă Scrum lucrează la implementarea unui modul de gestiune stocuri pentru un ERP folosit de o companie de distribuție din Cluj. Sprintul a durat două săptămâni, iar Sprint Review este timeboxat la 2 ore.\n\n**Desfășurare:**\n\n- *Minutul 0–10:* Product Owner deschide sesiunea, reamintește obiectivul Sprintului (Sprint Goal): \"Utilizatorii de depozit pot înregistra recepții de marfă cu scanare de cod de bare.\"\n- *Minutul 10–70:* Doi Developers demonstrează live: scanează un cod de bare pe un terminal mobil conectat la mediul de test, arată cum stocul se actualizează automat în timp real, cum se generează NIR-ul (Notă de Intrare-Recepție) electronic. Șeful de depozit, prezent ca stakeholder, testează el însuși scanarea unui produs cu cod deteriorat și observă că aplicația nu tratează corect acest caz.\n- *Minutul 70–100:* Se discută deschis: elementul \"validare coduri de bare deteriorate\" nu a fost inclus în Sprint-ul curent și devine candidat prioritar pentru Product Backlog. Directorul financiar întreabă despre integrarea cu modulul de contabilitate — Product Owner notează cererea ca un nou Product Backlog Item.\n- *Minutul 100–120:* Product Owner rezumă ajustările convenite în Product Backlog și mulțumește participanților.\n\n**Rezultat:** Product Backlog-ul este actualizat cu două elemente noi, prioritizate pentru discuție la următorul Sprint Planning. Nimeni nu a văzut un slide — toată lumea a văzut produsul funcționând și a putut interacționa direct cu el.\n\n## Exemplu: Feedback-ul stakeholderilor schimbă direcția produsului\n**Situație:** La o companie de e-commerce din București, echipa dezvoltă un modul de recomandări de produse. Sprint Goal-ul a fost \"Afișarea produselor similare pe pagina de produs\". La Sprint Review, reprezentantul departamentului de marketing (stakeholder) observă că algoritmul recomandă produse din aceeași categorie, dar cu preț mult mai mare decât produsul vizualizat — ceea ce, spune el, scade rata de conversie în loc să o crească, pe baza datelor din campaniile anterioare.\n\n**Ce se întâmplă:** Product Owner nu ignoră observația pentru că \"nu era în scope-ul Sprintului\". În schimb, notează un nou Product Backlog Item: \"Limitarea recomandărilor la un interval de preț ±20% față de produsul curent\", cu prioritate ridicată, pentru a fi discutat în Sprint Planning-ul următor.\n\n**De ce contează:** Acesta este exact mecanismul pentru care Sprint Review există — validarea empirică a Increment-ului cu oameni care înțeleg contextul de business, nu doar cu echipa tehnică. Fără acest feedback, echipa ar fi continuat să dezvolte funcționalități pe un fundament care, în realitate, nu servea obiectivul de business.\n\n⚠ Sprint Review **nu înlocuiește** un User Acceptance Testing (UAT) formal sau un audit de calitate, și nu este momentul în care Product Owner acceptă sau respinge munca echipei ca într-o relație client-furnizor clasică. Este o sesiune colaborativă de inspecție și adaptare. De asemenea, dacă echipa amână constant Sprint Review sau îl transformă într-o formalitate de 15 minute fără stakeholderi reali prezenți, semnalul e clar: organizația tratează Scrum ca proces birocratic, nu ca instrument de învățare empirică — un anti-pattern des întâlnit la echipele aflate la început de tranziție Agile în companiile românești.\n\n## Exercițiu\nO echipă Scrum dintr-o firmă de fintech din Timișoara tocmai a încheiat un Sprint de două săptămâni. Scrum Master-ul propune să anuleze Sprint Review-ul, argumentând: \"Increment-ul nu e gata 100%, mai avem un bug minor de rezolvat, e mai bine să așteptăm Sprintul următor ca să arătăm ceva complet stakeholderilor.\"\n\n**Cerințe:**\n1. Este corectă decizia de a anula Sprint Review? Explică folosind scopul evenimentului conform Scrum Guide 2020.\n2. Ce ar trebui să se întâmple efectiv la finalul acestui Sprint?\n3. Cum ar trebui tratat elementul cu bug-ul minor în cadrul evenimentului?\n\n**Soluție:** 1. **Nu, decizia este greșită.** Sprint Review este un eveniment obligatoriu, timeboxat, care are loc la finalul **fiecărui** Sprint, indiferent dacă tot ce s-a planificat este 100% \"Done\". Anularea lui rupe cadența de inspect-and-adapt și privează echipa de feedback-ul stakeholderilor tocmai atunci când ar fi cel mai util.\n\n2. Sprint Review trebuie să aibă loc conform planului. Product Owner prezintă transparent ce elemente din Sprint Backlog respectă Definition of Done și sunt demonstrabile, și ce elemente nu sunt terminate. Elementele terminate se demonstrează live stakeholderilor; se colectează feedback și se ajustează Product Backlog-ul în consecință.\n\n3. Elementul cu bug-ul minor **nu respectă Definition of Done**, deci nu se prezintă ca \"terminat\". Se comunică deschis stakeholderilor stadiul real (\"funcționalitatea X este aproape gata, mai are un defect în curs de rezolvare\") și rămâne în Product Backlog / Sprint Backlog pentru a fi finalizat, de regulă ca prioritate în Sprintul următor. Transparența despre ce nu e gata este la fel de valoroasă ca demonstrarea a ce e gata.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "sprint-review-definitie",
+    "md": "## Ce este Sprint Review\n\nSprint Review este al treilea eveniment din Sprint, organizat la finalul acestuia, imediat înainte de Sprint Retrospective. Scopul lui, conform Scrum Guide 2020, este să **inspecteze rezultatul Sprintului (Increment-ul)** și să stabilească, împreună cu stakeholderii, ce ajustări sunt necesare în Product Backlog.\n\nLa Sprint Review participă întreaga Scrum Team (Developers, Scrum Master, Product Owner) și stakeholderii cheie: sponsor de proiect, reprezentanți ai clientului, utilizatori finali, alte echipe dependente. Pentru o echipă care implementează un sistem ERP pentru o companie de distribuție din România, stakeholderii pot include directorul financiar, șeful de depozit și un reprezentant din departamentul de vânzări — oamenii care vor folosi efectiv funcționalitățile livrate.\n\nTimebox-ul recomandat este de **maximum 4 ore pentru un Sprint de o lună**; pentru sprinturi mai scurte (de exemplu două săptămâni), evenimentul este de regulă proporțional mai scurt, tipic 2 ore. Scrum Master este responsabil ca evenimentul să aibă loc și să respecte acest timebox, dar nu este obligatoriu ca el să îl faciliteze personal — deseori Product Owner sau Developers preiau facilitarea părților tehnice.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sprint-review-continut",
+    "md": "## Ce se discută efectiv în Sprint Review\n\nScrum Guide 2020 descrie Sprint Review ca o **sesiune de lucru**, nu o ședință de raportare. Elementele tipice includ:\n\n1. **Product Owner explică ce elemente din Product Backlog au fost \"Done\" (terminate conform Definition of Done) și care nu au fost finalizate**, și de ce.\n2. **Developers demonstrează Increment-ul** — adică arată munca terminată funcționând, răspund la întrebări și discută ce probleme au apărut și cum au fost rezolvate.\n3. **Toți participanții colaborează** pe ce ar trebui făcut în continuare, ceea ce oferă input valoros pentru următoarea ședință de Sprint Planning.\n4. Grupul **revizuiește bugetul, capacitățile posibile viitoare, piața și utilizarea prevăzută a produsului** — orice ar putea ajusta priorizarea din Product Backlog.\n5. **Product Owner poate revizui Product Backlog-ul** pe baza discuției — adaugă, elimină sau repriorizează elemente.\n\nRezultatul Sprint Review este un **Product Backlog revizuit**, care identifică elementele probabile pentru următorul Sprint. Product Backlog-ul poate fi ajustat oricând pentru a răspunde noilor oportunități, dar Sprint Review este momentul formal în care aceste ajustări sunt discutate deschis cu toți cei implicați.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sprint-review-demo-nu-prezentare",
+    "md": "## Demo, nu prezentare de status\n\nCea mai frecventă greșeală a echipelor Agile la început este să transforme Sprint Review într-o **prezentare PowerPoint** despre ce s-a lucrat, în loc de o **demonstrație funcțională** a produsului. Diferența e esențială: o prezentare descrie munca, un demo o arată în funcțiune.\n\n- **Prezentare (anti-pattern):** \"Am implementat modulul de facturare, am scris 40 de teste unitare, am rezolvat 12 bug-uri.\" — stakeholderii ascultă pasiv, fără să vadă sau să atingă nimic.\n- **Demo (corect):** Developer-ul deschide aplicația ERP live (sau într-un mediu de staging), emite o factură reală pentru un client fictiv, arată cum se generează PDF-ul, cum se sincronizează cu modulul de contabilitate. Stakeholderii pot pune întrebări, pot cere să testeze un scenariu neobișnuit pe loc.\n\nDoar elementele care respectă **Definition of Done** (DoD) sunt demonstrate ca \"terminate\". Un element parțial funcțional, fără teste sau fără documentație conform DoD, nu se prezintă drept Increment finalizat — se discută transparent ca lucru în curs. Această transparență este ceea ce face Sprint Review un instrument real de inspect-and-adapt, nu un teatru de status.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b3"
+   },
+   {
+    "type": "example",
+    "title": "Sprint Review la o implementare ERP",
+    "concept_key": "sprint-review-exemplu-erp",
+    "md": "**Context:** O echipă Scrum lucrează la implementarea unui modul de gestiune stocuri pentru un ERP folosit de o companie de distribuție din Cluj. Sprintul a durat două săptămâni, iar Sprint Review este timeboxat la 2 ore.\n\n**Desfășurare:**\n\n- *Minutul 0–10:* Product Owner deschide sesiunea, reamintește obiectivul Sprintului (Sprint Goal): \"Utilizatorii de depozit pot înregistra recepții de marfă cu scanare de cod de bare.\"\n- *Minutul 10–70:* Doi Developers demonstrează live: scanează un cod de bare pe un terminal mobil conectat la mediul de test, arată cum stocul se actualizează automat în timp real, cum se generează NIR-ul (Notă de Intrare-Recepție) electronic. Șeful de depozit, prezent ca stakeholder, testează el însuși scanarea unui produs cu cod deteriorat și observă că aplicația nu tratează corect acest caz.\n- *Minutul 70–100:* Se discută deschis: elementul \"validare coduri de bare deteriorate\" nu a fost inclus în Sprint-ul curent și devine candidat prioritar pentru Product Backlog. Directorul financiar întreabă despre integrarea cu modulul de contabilitate — Product Owner notează cererea ca un nou Product Backlog Item.\n- *Minutul 100–120:* Product Owner rezumă ajustările convenite în Product Backlog și mulțumește participanților.\n\n**Rezultat:** Product Backlog-ul este actualizat cu două elemente noi, prioritizate pentru discuție la următorul Sprint Planning. Nimeni nu a văzut un slide — toată lumea a văzut produsul funcționând și a putut interacționa direct cu el.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b4"
+   },
+   {
+    "type": "example",
+    "title": "Feedback-ul stakeholderilor schimbă direcția produsului",
+    "concept_key": "sprint-review-feedback-stakeholder",
+    "md": "**Situație:** La o companie de e-commerce din București, echipa dezvoltă un modul de recomandări de produse. Sprint Goal-ul a fost \"Afișarea produselor similare pe pagina de produs\". La Sprint Review, reprezentantul departamentului de marketing (stakeholder) observă că algoritmul recomandă produse din aceeași categorie, dar cu preț mult mai mare decât produsul vizualizat — ceea ce, spune el, scade rata de conversie în loc să o crească, pe baza datelor din campaniile anterioare.\n\n**Ce se întâmplă:** Product Owner nu ignoră observația pentru că \"nu era în scope-ul Sprintului\". În schimb, notează un nou Product Backlog Item: \"Limitarea recomandărilor la un interval de preț ±20% față de produsul curent\", cu prioritate ridicată, pentru a fi discutat în Sprint Planning-ul următor.\n\n**De ce contează:** Acesta este exact mecanismul pentru care Sprint Review există — validarea empirică a Increment-ului cu oameni care înțeleg contextul de business, nu doar cu echipa tehnică. Fără acest feedback, echipa ar fi continuat să dezvolte funcționalități pe un fundament care, în realitate, nu servea obiectivul de business.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Sprint Review **nu înlocuiește** un User Acceptance Testing (UAT) formal sau un audit de calitate, și nu este momentul în care Product Owner acceptă sau respinge munca echipei ca într-o relație client-furnizor clasică. Este o sesiune colaborativă de inspecție și adaptare. De asemenea, dacă echipa amână constant Sprint Review sau îl transformă într-o formalitate de 15 minute fără stakeholderi reali prezenți, semnalul e clar: organizația tratează Scrum ca proces birocratic, nu ca instrument de învățare empirică — un anti-pattern des întâlnit la echipele aflate la început de tranziție Agile în companiile românești.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O echipă Scrum dintr-o firmă de fintech din Timișoara tocmai a încheiat un Sprint de două săptămâni. Scrum Master-ul propune să anuleze Sprint Review-ul, argumentând: \"Increment-ul nu e gata 100%, mai avem un bug minor de rezolvat, e mai bine să așteptăm Sprintul următor ca să arătăm ceva complet stakeholderilor.\"\n\n**Cerințe:**\n1. Este corectă decizia de a anula Sprint Review? Explică folosind scopul evenimentului conform Scrum Guide 2020.\n2. Ce ar trebui să se întâmple efectiv la finalul acestui Sprint?\n3. Cum ar trebui tratat elementul cu bug-ul minor în cadrul evenimentului?",
+    "solution_md": "1. **Nu, decizia este greșită.** Sprint Review este un eveniment obligatoriu, timeboxat, care are loc la finalul **fiecărui** Sprint, indiferent dacă tot ce s-a planificat este 100% \"Done\". Anularea lui rupe cadența de inspect-and-adapt și privează echipa de feedback-ul stakeholderilor tocmai atunci când ar fi cel mai util.\n\n2. Sprint Review trebuie să aibă loc conform planului. Product Owner prezintă transparent ce elemente din Sprint Backlog respectă Definition of Done și sunt demonstrabile, și ce elemente nu sunt terminate. Elementele terminate se demonstrează live stakeholderilor; se colectează feedback și se ajustează Product Backlog-ul în consecință.\n\n3. Elementul cu bug-ul minor **nu respectă Definition of Done**, deci nu se prezintă ca \"terminat\". Se comunică deschis stakeholderilor stadiul real (\"funcționalitatea X este aproape gata, mai are un defect în curs de rezolvare\") și rămâne în Product Backlog / Sprint Backlog pentru a fi finalizat, de regulă ca prioritate în Sprintul următor. Transparența despre ce nu e gata este la fel de valoroasă ca demonstrarea a ce e gata.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este timebox-ul recomandat de Scrum Guide 2020 pentru Sprint Review, la un Sprint de o lună?",
+    "choices": [
+     "Maximum 8 ore",
+     "Maximum 4 ore",
+     "Maximum 2 ore",
+     "Fără timebox, durează cât e nevoie"
+    ],
+    "answer": 1,
+    "explain": "Pentru un Sprint de o lună, Sprint Review este timeboxat la maximum 4 ore; pentru sprinturi mai scurte, evenimentul este de regulă proporțional mai scurt.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al Sprint Review conform Scrum Guide 2020?",
+    "choices": [
+     "Evaluarea performanței individuale a fiecărui membru al echipei",
+     "Inspectarea Increment-ului și adaptarea Product Backlog-ului pe baza feedback-ului stakeholderilor",
+     "Planificarea detaliată a task-urilor pentru următorul Sprint",
+     "Semnarea unui document formal de acceptanță a livrabilelor de către client"
+    ],
+    "answer": 1,
+    "explain": "Sprint Review este un eveniment de inspect-and-adapt: echipa arată Increment-ul, colectează feedback de la stakeholderi și, pe baza acestuia, Product Owner ajustează Product Backlog-ul.",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce se inspectează în Sprint Review?",
+    "back": "Increment-ul (rezultatul Sprintului) — ce s-a construit și dacă respectă Definition of Done.",
+    "concept_key": "sprint-review-definitie",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este timebox-ul Sprint Review pentru un Sprint de o lună?",
+    "back": "Maximum 4 ore; pentru sprinturi mai scurte, timebox-ul e de regulă proporțional mai mic (ex. 2 ore pentru un Sprint de două săptămâni).",
+    "concept_key": "sprint-review-timebox",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine participă la Sprint Review pe lângă Scrum Team?",
+    "back": "Stakeholderii cheie invitați de Product Owner — sponsori, clienți, utilizatori finali, alte echipe dependente.",
+    "concept_key": "sprint-review-continut",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este rezultatul concret al unui Sprint Review?",
+    "back": "Un Product Backlog revizuit, cu elemente adăugate, eliminate sau repriorizate pe baza discuției cu stakeholderii.",
+    "concept_key": "sprint-review-continut",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre un demo corect și o prezentare de status la Sprint Review?",
+    "back": "Demo-ul arată produsul funcționând live, cu interacțiune reală; prezentarea de status doar descrie munca (ex. slide-uri), fără să demonstreze funcționalitatea.",
+    "concept_key": "sprint-review-demo-nu-prezentare",
+    "blockId": "cmjjuxvvf0075umkplg83z6v8-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1293,
+   "flashcards": 5
+  }
+ }
+}

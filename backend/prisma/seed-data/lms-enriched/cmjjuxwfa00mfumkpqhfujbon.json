@@ -1,0 +1,155 @@
+{
+ "lessonId": "cmjjuxwfa00mfumkpqhfujbon",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Suport și Operare (Cl. 7-8)",
+ "lesson": "Achiziții și contractori",
+ "category": "HSE_SAFETY",
+ "content": "# Achiziții și contractori\n\nClauza 8.1.4 din ISO 45001:2018 („Achiziții”) este una dintre cele mai subestimate cerințe ale standardului, deși riscurile SSM generate de terți (furnizori, contractori, procese externalizate) figurează constant printre cauzele accidentelor grave. Clauza are trei componente:\n\n- **8.1.4.1 General** — organizația trebuie să stabilească, implementeze și mențină un proces de achiziție care să controleze riscurile SSM asociate produselor și serviciilor cumpărate, înainte ca acestea să fie utilizate.\n- **8.1.4.2 Contractori** — organizația trebuie să își coordoneze procesul de achiziție cu contractorii, pentru a identifica pericolele și a evalua/controla riscurile SSM apărute din activitățile contractorilor care afectează organizația, precum și cele generate de activitatea proprie asupra lucrătorilor contractorului.\n- **8.1.4.3 Outsourcing (externalizare)** — organizația trebuie să se asigure că procesele și funcțiile externalizate sunt controlate, definind tipul și gradul de control exercitat asupra acestor procese.\n\nIdeea centrală: cumpărarea unui utilaj, angajarea unei firme de mentenanță sau externalizarea transportului nu transferă responsabilitatea SSM către furnizor sau contractor. Organizația rămâne responsabilă de rezultatele SSM pe propriul amplasament și față de propriii lucrători, indiferent cine execută efectiv activitatea.\n\nProcesul de achiziții trebuie să integreze criterii SSM încă din faza de specificare, nu abia la recepție. Pași practici pentru achiziția de echipamente, materiale sau substanțe chimice:\n\n1. **Identificarea cerințelor SSM** în caietul de sarcini: marcaj CE, standarde aplicabile, dispozitive de protecție, fișă cu date de securitate (FDS/SDS) pentru substanțe chimice, manual de utilizare în limba română.\n2. **Evaluarea ofertanților** pe criterii tehnice SSM, nu doar preț — un echipament mai ieftin fără protecții adecvate generează costuri ulterioare (accidente, opriri, amenzi ITM).\n3. **Verificarea la recepție**: conformitatea documentației, funcționarea dispozitivelor de siguranță, existența verificărilor tehnice obligatorii (de ex. verificări ISCIR pentru echipamente sub presiune sau de ridicat).\n4. **Informarea și instruirea utilizatorilor** înainte de punerea în funcțiune — un echipament nou introdus impune actualizarea evaluării de risc și, dacă e cazul, o instruire specifică suplimentară față de instructajul periodic.\n5. **Actualizarea instrucțiunilor de lucru** interne, dacă noul produs/echipament schimbă modul de operare.\n\nAceastă abordare transformă achiziția dintr-o simplă tranzacție comercială într-un punct de control SSM — cea mai ieftină formă de prevenire este să nu introduci pericolul în organizație de la bun început.\n\nUn contractor este orice persoană fizică sau juridică externă organizației, care prestează lucrări sau servicii pe amplasamentul acesteia sau în numele ei (mentenanță, construcții-montaj, curățenie industrială, transport, servicii de proiectare etc.). Managementul contractorilor se derulează în patru etape:\n\n**1. Pre-calificare** — înainte de contractare, organizația evaluează capabilitatea SSM a contractorului: autorizații specifice activității (ex. ISCIR pentru lucrări la instalații sub presiune, ANRE pentru electricieni autorizați), istoricul de accidente de muncă din ultimii 2-3 ani, existența unui sistem de management SSM sau a unei politici SSM proprii, asigurări de răspundere civilă.\n\n**2. Contractare** — clauzele SSM devin parte integrantă a contractului: obligația de a respecta regulamentul intern SSM al beneficiarului, obligația de a raporta imediat orice incident, dreptul beneficiarului de a opri lucrarea în caz de pericol iminent, penalități pentru nerespectarea cerințelor SSM.\n\n**3. Instruire și supraveghere pe durata activității** — instructaj SSM specific la intrarea pe amplasament (distinct de instructajele proprii ale contractorului), eliberarea de permise de lucru pentru activități cu risc ridicat (lucru la înălțime, spații închise, lucrări cu foc deschis, lucru sub tensiune), audituri și inspecții pe parcursul execuției.\n\n**4. Evaluare finală** — la finalizarea lucrării se evaluează performanța SSM a contractorului (incidente, abateri, conformitate), rezultat care alimentează baza de date pentru viitoarele pre-calificări.\n\nExternalizarea (outsourcing) unui proces — de exemplu mentenanța clădirii, paza, medicina muncii sau formarea profesională — nu scutește organizația de obligațiile SSM legate de acel proces. Standardul cere ca organizația să definească explicit **tipul și gradul de control** pe care îl exercită: control contractual direct (specificații SSM detaliate, audituri periodice), monitorizare a indicatorilor de performanță SSM ai furnizorului, sau, acolo unde controlul direct nu e posibil, cel puțin evaluarea riscului rezidual pentru propria organizație.\n\nUn caz frecvent este cel al mai multor angajatori care lucrează simultan în același loc de muncă (de exemplu, beneficiar + două firme contractante pe un șantier). În această situație este obligatorie **coordonarea activităților SSM** între angajatori: cooperare în implementarea măsurilor de prevenire, coordonare a acțiunilor pentru limitarea riscurilor reciproce, informare reciprocă asupra pericolelor specifice și informarea propriilor lucrători și a reprezentanților acestora. Instrumentul practic recomandat este un **Plan de coordonare SSM**, semnat de toți angajatorii implicați, care stabilește responsabilul de coordonare, regulile comune de acces, permisele de lucru și modul de gestionare a situațiilor de urgență comune.\n\n## Exemplu: Achiziție de echipament de ridicat cu cerințe SSM integrate\nSC ProdMet SRL, producător de structuri metalice, achiziționează un pod rulant de 5 tone pentru hala de producție. Departamentul SSM colaborează cu departamentul de achiziții pentru a include în caietul de sarcini:\n\n- marcaj CE și declarație de conformitate UE;\n- limitator de sarcină și limitator de cursă (dispozitive de siguranță obligatorii);\n- manual de utilizare și întreținere în limba română;\n- verificare tehnică inițială conform prescripțiilor tehnice ISCIR, efectuată înainte de punerea în funcțiune;\n- instruire practică a celor 3 operatori de pod rulant, cu durată de 8 ore, susținută de furnizor și confirmată prin proces-verbal.\n\nLa recepție, echipa SSM verifică fiecare punct din listă înainte de semnarea procesului-verbal de recepție. Se constată că manualul de utilizare este livrat doar în limba engleză — recepția este condiționată de traducerea autorizată a documentației înainte de punerea în funcțiune. Astfel, o cerință SSM stabilită încă din faza de achiziție previne utilizarea echipamentului fără instrucțiuni pe înțelesul operatorilor, un pericol real de accident.\n\n## Exemplu: Contractor de mentenanță electrică — de la selecție la finalizare\nSC Depozit Log SRL, operator al unui depozit logistic, contractează firma ElectroServ SRL pentru mentenanța anuală a instalației electrice.\n\n1. **Pre-calificare**: se verifică autorizarea electricienilor ANRE, se solicită situația accidentelor de muncă din ultimii 3 ani (0 accidente raportate) și polița de asigurare de răspundere civilă în valoare de 100.000 lei.\n2. **Contract**: se introduce o clauză de oprire imediată a lucrărilor de către beneficiar în caz de pericol iminent și penalități de 5% din valoarea contractului pentru fiecare abatere SSM constatată și neremediată.\n3. **Instructaj la fața locului**: înainte de începerea lucrărilor, cei 4 electricieni ai ElectroServ SRL parcurg un instructaj de 2 ore privind riscurile specifice depozitului (trafic de utilaje de manipulare, zone cu stivuire la înălțime), finalizat cu un test scris.\n4. **Permis de lucru**: pentru lucrările la tabloul electric general se emite permis de lucru pentru lucrul sub tensiune, semnat de responsabilul SSM al beneficiarului și de șeful de echipă al contractorului.\n5. **Supraveghere**: pe durata celor 5 zile de lucrări, responsabilul SSM efectuează două inspecții neanunțate; nu se constată abateri.\n6. **Evaluare finală**: contractorul primește un scor de 92/100 în fișa de evaluare, folosit la viitoarele decizii de re-contractare.\n\nAcest flux arată cum cerințele SSM se aplică pe tot ciclul de viață al relației cu contractorul, nu doar la semnarea contractului.\n\n> Temei legal: Legea nr. 319/2006 privind securitatea și sănătatea în muncă Art. 8 alin. (4) (în vigoare de la 2006-07-26)\nLegea nr. 319/2006 (publicată în Monitorul Oficial nr. 646 din 26 iulie 2006, cu modificările și completările ulterioare) prevede, în esență, că atunci când la același loc de muncă își desfășoară activitatea lucrători din mai multe întreprinderi și/sau unități, angajatorii acestora au obligația să coopereze în vederea implementării prevederilor privind securitatea și sănătatea în muncă, ținând seama de natura activităților, să își coordoneze acțiunile pentru protecția lucrătorilor și prevenirea riscurilor profesionale, să se informeze reciproc despre riscurile profesionale și să informeze propriii lucrători și/sau reprezentanții acestora. Normele metodologice de aplicare, aprobate prin HG nr. 1425/2006, detaliază modul de coordonare (inclusiv desemnarea unui coordonator SSM și elaborarea unui plan de coordonare, atunci când situația o impune). Pentru situația concretă a organizației tale, verifică forma consolidată, actualizată, a celor două acte normative, publicată pe portalul Legislație.just.ro.\n\n⚠ Cea mai frecventă greșeală în relația cu contractorii este convingerea că „SSM-ul contractorului e problema contractorului”. Clauza 8.1.4.2 din ISO 45001 și Legea nr. 319/2006 impun exact opusul: organizația-gazdă rămâne responsabilă pentru controlul riscurilor pe propriul amplasament, inclusiv al riscurilor pe care activitatea contractorului le generează pentru lucrătorii proprii, vizitatori sau alți contractori, precum și al riscurilor pe care activitatea organizației le generează pentru lucrătorii contractorului. Lipsa instructajului specific la intrarea pe amplasament, absența permiselor de lucru pentru activități periculoase sau neverificarea autorizațiilor contractorului expun organizația la sancțiuni ITM și, mai grav, la accidente de muncă cu răspundere partajată sau exclusivă a beneficiarului.\n\n## Exercițiu\nEști responsabil SSM la SC Frigo Trans SRL, care externalizează spălarea și dezinfecția periodică a spațiilor de depozitare frigorifică către o firmă specializată în curățenie industrială. Elaborează o listă de verificare (checklist) de pre-calificare SSM, cu minimum 8 puncte, pe care trebuie să o completeze orice contractor înainte de a fi acceptat pe amplasament.\n\n**Soluție:** Checklist de pre-calificare SSM pentru contractori — SC Frigo Trans SRL:\n\n1. Certificat constatator/dovadă a obiectului de activitate autorizat pentru servicii de curățenie industrială.\n2. Existența unei persoane desemnate cu atribuții SSM sau a unui serviciu extern de prevenire și protecție.\n3. Situația accidentelor de muncă și a evenimentelor SSM din ultimii 2-3 ani (declarație pe propria răspundere).\n4. Dovada instruirii SSM a propriilor angajați (instructaj introductiv-general, la locul de muncă, periodic), conform Legea nr. 319/2006.\n5. Fișele cu date de securitate (FDS) pentru substanțele chimice de curățare/dezinfecție utilizate.\n6. Dotarea cu echipament individual de protecție adecvat mediului cu temperaturi scăzute (spații frigorifice).\n7. Polița de asigurare de răspundere civilă profesională, valabilă pe durata contractului.\n8. Acordul scris de a respecta regulamentul intern SSM al beneficiarului și procedurile de acces în spațiile frigorifice.\n9. Persoană de contact desemnată pentru coordonarea SSM cu beneficiarul, conform Legea nr. 319/2006, art. 8 alin. (4).\n10. Angajamentul de raportare imediată a oricărui incident sau aproape-accident către responsabilul SSM al beneficiarului.\n\nOrice punct nebifat sau nedocumentat se tratează ca risc de neconformitate și se rezolvă înainte de accesul contractorului pe amplasament, nu ulterior.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "achizitii-contractori-clauza-8-1-4",
+    "md": "Clauza 8.1.4 din ISO 45001:2018 („Achiziții”) este una dintre cele mai subestimate cerințe ale standardului, deși riscurile SSM generate de terți (furnizori, contractori, procese externalizate) figurează constant printre cauzele accidentelor grave. Clauza are trei componente:\n\n- **8.1.4.1 General** — organizația trebuie să stabilească, implementeze și mențină un proces de achiziție care să controleze riscurile SSM asociate produselor și serviciilor cumpărate, înainte ca acestea să fie utilizate.\n- **8.1.4.2 Contractori** — organizația trebuie să își coordoneze procesul de achiziție cu contractorii, pentru a identifica pericolele și a evalua/controla riscurile SSM apărute din activitățile contractorilor care afectează organizația, precum și cele generate de activitatea proprie asupra lucrătorilor contractorului.\n- **8.1.4.3 Outsourcing (externalizare)** — organizația trebuie să se asigure că procesele și funcțiile externalizate sunt controlate, definind tipul și gradul de control exercitat asupra acestor procese.\n\nIdeea centrală: cumpărarea unui utilaj, angajarea unei firme de mentenanță sau externalizarea transportului nu transferă responsabilitatea SSM către furnizor sau contractor. Organizația rămâne responsabilă de rezultatele SSM pe propriul amplasament și față de propriii lucrători, indiferent cine execută efectiv activitatea.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cerinte-ssm-achizitii",
+    "md": "Procesul de achiziții trebuie să integreze criterii SSM încă din faza de specificare, nu abia la recepție. Pași practici pentru achiziția de echipamente, materiale sau substanțe chimice:\n\n1. **Identificarea cerințelor SSM** în caietul de sarcini: marcaj CE, standarde aplicabile, dispozitive de protecție, fișă cu date de securitate (FDS/SDS) pentru substanțe chimice, manual de utilizare în limba română.\n2. **Evaluarea ofertanților** pe criterii tehnice SSM, nu doar preț — un echipament mai ieftin fără protecții adecvate generează costuri ulterioare (accidente, opriri, amenzi ITM).\n3. **Verificarea la recepție**: conformitatea documentației, funcționarea dispozitivelor de siguranță, existența verificărilor tehnice obligatorii (de ex. verificări ISCIR pentru echipamente sub presiune sau de ridicat).\n4. **Informarea și instruirea utilizatorilor** înainte de punerea în funcțiune — un echipament nou introdus impune actualizarea evaluării de risc și, dacă e cazul, o instruire specifică suplimentară față de instructajul periodic.\n5. **Actualizarea instrucțiunilor de lucru** interne, dacă noul produs/echipament schimbă modul de operare.\n\nAceastă abordare transformă achiziția dintr-o simplă tranzacție comercială într-un punct de control SSM — cea mai ieftină formă de prevenire este să nu introduci pericolul în organizație de la bun început.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "managementul-contractorilor",
+    "md": "Un contractor este orice persoană fizică sau juridică externă organizației, care prestează lucrări sau servicii pe amplasamentul acesteia sau în numele ei (mentenanță, construcții-montaj, curățenie industrială, transport, servicii de proiectare etc.). Managementul contractorilor se derulează în patru etape:\n\n**1. Pre-calificare** — înainte de contractare, organizația evaluează capabilitatea SSM a contractorului: autorizații specifice activității (ex. ISCIR pentru lucrări la instalații sub presiune, ANRE pentru electricieni autorizați), istoricul de accidente de muncă din ultimii 2-3 ani, existența unui sistem de management SSM sau a unei politici SSM proprii, asigurări de răspundere civilă.\n\n**2. Contractare** — clauzele SSM devin parte integrantă a contractului: obligația de a respecta regulamentul intern SSM al beneficiarului, obligația de a raporta imediat orice incident, dreptul beneficiarului de a opri lucrarea în caz de pericol iminent, penalități pentru nerespectarea cerințelor SSM.\n\n**3. Instruire și supraveghere pe durata activității** — instructaj SSM specific la intrarea pe amplasament (distinct de instructajele proprii ale contractorului), eliberarea de permise de lucru pentru activități cu risc ridicat (lucru la înălțime, spații închise, lucrări cu foc deschis, lucru sub tensiune), audituri și inspecții pe parcursul execuției.\n\n**4. Evaluare finală** — la finalizarea lucrării se evaluează performanța SSM a contractorului (incidente, abateri, conformitate), rezultat care alimentează baza de date pentru viitoarele pre-calificări.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "outsourcing-si-coordonare-ssm",
+    "md": "Externalizarea (outsourcing) unui proces — de exemplu mentenanța clădirii, paza, medicina muncii sau formarea profesională — nu scutește organizația de obligațiile SSM legate de acel proces. Standardul cere ca organizația să definească explicit **tipul și gradul de control** pe care îl exercită: control contractual direct (specificații SSM detaliate, audituri periodice), monitorizare a indicatorilor de performanță SSM ai furnizorului, sau, acolo unde controlul direct nu e posibil, cel puțin evaluarea riscului rezidual pentru propria organizație.\n\nUn caz frecvent este cel al mai multor angajatori care lucrează simultan în același loc de muncă (de exemplu, beneficiar + două firme contractante pe un șantier). În această situație este obligatorie **coordonarea activităților SSM** între angajatori: cooperare în implementarea măsurilor de prevenire, coordonare a acțiunilor pentru limitarea riscurilor reciproce, informare reciprocă asupra pericolelor specifice și informarea propriilor lucrători și a reprezentanților acestora. Instrumentul practic recomandat este un **Plan de coordonare SSM**, semnat de toți angajatorii implicați, care stabilește responsabilul de coordonare, regulile comune de acces, permisele de lucru și modul de gestionare a situațiilor de urgență comune.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b4"
+   },
+   {
+    "type": "example",
+    "title": "Achiziție de echipament de ridicat cu cerințe SSM integrate",
+    "concept_key": "achizitie-echipament-ridicat",
+    "md": "SC ProdMet SRL, producător de structuri metalice, achiziționează un pod rulant de 5 tone pentru hala de producție. Departamentul SSM colaborează cu departamentul de achiziții pentru a include în caietul de sarcini:\n\n- marcaj CE și declarație de conformitate UE;\n- limitator de sarcină și limitator de cursă (dispozitive de siguranță obligatorii);\n- manual de utilizare și întreținere în limba română;\n- verificare tehnică inițială conform prescripțiilor tehnice ISCIR, efectuată înainte de punerea în funcțiune;\n- instruire practică a celor 3 operatori de pod rulant, cu durată de 8 ore, susținută de furnizor și confirmată prin proces-verbal.\n\nLa recepție, echipa SSM verifică fiecare punct din listă înainte de semnarea procesului-verbal de recepție. Se constată că manualul de utilizare este livrat doar în limba engleză — recepția este condiționată de traducerea autorizată a documentației înainte de punerea în funcțiune. Astfel, o cerință SSM stabilită încă din faza de achiziție previne utilizarea echipamentului fără instrucțiuni pe înțelesul operatorilor, un pericol real de accident.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b5"
+   },
+   {
+    "type": "example",
+    "title": "Contractor de mentenanță electrică — de la selecție la finalizare",
+    "concept_key": "contractor-mentenanta-proces",
+    "md": "SC Depozit Log SRL, operator al unui depozit logistic, contractează firma ElectroServ SRL pentru mentenanța anuală a instalației electrice.\n\n1. **Pre-calificare**: se verifică autorizarea electricienilor ANRE, se solicită situația accidentelor de muncă din ultimii 3 ani (0 accidente raportate) și polița de asigurare de răspundere civilă în valoare de 100.000 lei.\n2. **Contract**: se introduce o clauză de oprire imediată a lucrărilor de către beneficiar în caz de pericol iminent și penalități de 5% din valoarea contractului pentru fiecare abatere SSM constatată și neremediată.\n3. **Instructaj la fața locului**: înainte de începerea lucrărilor, cei 4 electricieni ai ElectroServ SRL parcurg un instructaj de 2 ore privind riscurile specifice depozitului (trafic de utilaje de manipulare, zone cu stivuire la înălțime), finalizat cu un test scris.\n4. **Permis de lucru**: pentru lucrările la tabloul electric general se emite permis de lucru pentru lucrul sub tensiune, semnat de responsabilul SSM al beneficiarului și de șeful de echipă al contractorului.\n5. **Supraveghere**: pe durata celor 5 zile de lucrări, responsabilul SSM efectuează două inspecții neanunțate; nu se constată abateri.\n6. **Evaluare finală**: contractorul primește un scor de 92/100 în fișa de evaluare, folosit la viitoarele decizii de re-contractare.\n\nAcest flux arată cum cerințele SSM se aplică pe tot ciclul de viață al relației cu contractorul, nu doar la semnarea contractului.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 privind securitatea și sănătatea în muncă",
+    "article": "Art. 8 alin. (4)",
+    "effective": "2006-07-26",
+    "md": "Legea nr. 319/2006 (publicată în Monitorul Oficial nr. 646 din 26 iulie 2006, cu modificările și completările ulterioare) prevede, în esență, că atunci când la același loc de muncă își desfășoară activitatea lucrători din mai multe întreprinderi și/sau unități, angajatorii acestora au obligația să coopereze în vederea implementării prevederilor privind securitatea și sănătatea în muncă, ținând seama de natura activităților, să își coordoneze acțiunile pentru protecția lucrătorilor și prevenirea riscurilor profesionale, să se informeze reciproc despre riscurile profesionale și să informeze propriii lucrători și/sau reprezentanții acestora. Normele metodologice de aplicare, aprobate prin HG nr. 1425/2006, detaliază modul de coordonare (inclusiv desemnarea unui coordonator SSM și elaborarea unui plan de coordonare, atunci când situația o impune). Pentru situația concretă a organizației tale, verifică forma consolidată, actualizată, a celor două acte normative, publicată pe portalul Legislație.just.ro.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală în relația cu contractorii este convingerea că „SSM-ul contractorului e problema contractorului”. Clauza 8.1.4.2 din ISO 45001 și Legea nr. 319/2006 impun exact opusul: organizația-gazdă rămâne responsabilă pentru controlul riscurilor pe propriul amplasament, inclusiv al riscurilor pe care activitatea contractorului le generează pentru lucrătorii proprii, vizitatori sau alți contractori, precum și al riscurilor pe care activitatea organizației le generează pentru lucrătorii contractorului. Lipsa instructajului specific la intrarea pe amplasament, absența permiselor de lucru pentru activități periculoase sau neverificarea autorizațiilor contractorului expun organizația la sancțiuni ITM și, mai grav, la accidente de muncă cu răspundere partajată sau exclusivă a beneficiarului.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești responsabil SSM la SC Frigo Trans SRL, care externalizează spălarea și dezinfecția periodică a spațiilor de depozitare frigorifică către o firmă specializată în curățenie industrială. Elaborează o listă de verificare (checklist) de pre-calificare SSM, cu minimum 8 puncte, pe care trebuie să o completeze orice contractor înainte de a fi acceptat pe amplasament.",
+    "solution_md": "Checklist de pre-calificare SSM pentru contractori — SC Frigo Trans SRL:\n\n1. Certificat constatator/dovadă a obiectului de activitate autorizat pentru servicii de curățenie industrială.\n2. Existența unei persoane desemnate cu atribuții SSM sau a unui serviciu extern de prevenire și protecție.\n3. Situația accidentelor de muncă și a evenimentelor SSM din ultimii 2-3 ani (declarație pe propria răspundere).\n4. Dovada instruirii SSM a propriilor angajați (instructaj introductiv-general, la locul de muncă, periodic), conform Legea nr. 319/2006.\n5. Fișele cu date de securitate (FDS) pentru substanțele chimice de curățare/dezinfecție utilizate.\n6. Dotarea cu echipament individual de protecție adecvat mediului cu temperaturi scăzute (spații frigorifice).\n7. Polița de asigurare de răspundere civilă profesională, valabilă pe durata contractului.\n8. Acordul scris de a respecta regulamentul intern SSM al beneficiarului și procedurile de acces în spațiile frigorifice.\n9. Persoană de contact desemnată pentru coordonarea SSM cu beneficiarul, conform Legea nr. 319/2006, art. 8 alin. (4).\n10. Angajamentul de raportare imediată a oricărui incident sau aproape-accident către responsabilul SSM al beneficiarului.\n\nOrice punct nebifat sau nedocumentat se tratează ca risc de neconformitate și se rezolvă înainte de accesul contractorului pe amplasament, nu ulterior.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care sunt cele trei sub-clauze ale clauzei 8.1.4 „Achiziții” din ISO 45001:2018?",
+    "choices": [
+     "General, Contractori, Outsourcing",
+     "Planificare, Executare, Verificare",
+     "Furnizori, Clienți, Parteneri",
+     "Evaluare, Selecție, Contractare"
+    ],
+    "answer": 0,
+    "explain": "Clauza 8.1.4 se împarte în 8.1.4.1 General (achiziții), 8.1.4.2 Contractori și 8.1.4.3 Outsourcing (externalizare).",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Când o organizație externalizează un proces (ex. mentenanța), cine rămâne responsabil pentru rezultatele SSM ale acelui proces?",
+    "choices": [
+     "Exclusiv furnizorul căruia i s-a externalizat procesul",
+     "Organizația care externalizează, care trebuie să definească gradul de control exercitat",
+     "Nimeni, responsabilitatea se transferă automat prin contract",
+     "Doar inspectoratul teritorial de muncă (ITM)"
+    ],
+    "answer": 1,
+    "explain": "Conform 8.1.4.3, organizația trebuie să se asigure că procesele externalizate rămân controlate, definind tipul și gradul de control exercitat — responsabilitatea SSM nu se transferă prin simpla externalizare.",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cuprinde clauza 8.1.4 din ISO 45001:2018?",
+    "back": "8.1.4.1 General (achiziții), 8.1.4.2 Contractori, 8.1.4.3 Outsourcing (externalizare).",
+    "concept_key": "achizitii-contractori-clauza-8-1-4",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un contractor, în sensul ISO 45001?",
+    "back": "Persoană fizică sau juridică externă organizației care prestează lucrări sau servicii pe amplasamentul acesteia sau în numele ei.",
+    "concept_key": "managementul-contractorilor",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce trebuie să conțină caietul de sarcini la achiziția unui echipament cu risc SSM?",
+    "back": "Marcaj CE, dispozitive de siguranță, manual în limba română, verificări tehnice obligatorii (ex. ISCIR), cerințe de instruire a operatorilor.",
+    "concept_key": "cerinte-ssm-achizitii",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce lege reglementează cooperarea SSM între angajatori care lucrează în același loc de muncă?",
+    "back": "Legea nr. 319/2006, art. 8 alin. (4) — obligație de cooperare, coordonare și informare reciprocă între angajatori.",
+    "concept_key": "outsourcing-si-coordonare-ssm",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine rămâne responsabil de SSM când o organizație externalizează un proces?",
+    "back": "Organizația care externalizează — trebuie să definească și să mențină tipul și gradul de control asupra procesului externalizat.",
+    "concept_key": "outsourcing-si-coordonare-ssm",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document coordonează SSM între mai mulți angajatori pe același amplasament?",
+    "back": "Planul de coordonare SSM, elaborat conform normelor metodologice din HG nr. 1425/2006, semnat de toți angajatorii implicați.",
+    "concept_key": "outsourcing-si-coordonare-ssm",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 etape ale managementului contractorilor?",
+    "back": "Pre-calificare, contractare (clauze SSM), instruire și supraveghere pe durata activității, evaluare finală a performanței SSM.",
+    "concept_key": "managementul-contractorilor",
+    "blockId": "cmjjuxwfa00mfumkpqhfujbon-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1615,
+   "flashcards": 7
+  }
+ }
+}

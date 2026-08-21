@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxvqd003pumkp41drcoo2",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Obiecte Excel în VBA",
+ "lesson": "Worksheet și Workbook",
+ "category": "EXCEL_VBA",
+ "content": "# Worksheet și Workbook\n\n# ActiveSheet, ThisWorkbook și ActiveWorkbook — cele trei repere de bază\n\nCând automatizezi Excel cu VBA, primul pas este să înțelegi clar ce anume controlează codul tău: un workbook (fișierul .xlsx) și, în interiorul lui, una sau mai multe worksheet-uri (foi de calcul). VBA îți pune la dispoziție trei obiecte pe care le vei folosi în aproape fiecare macro:\n\n- **ActiveSheet** – foaia de calcul activă în acel moment, în orice workbook deschis. Se schimbă automat dacă utilizatorul face clic pe alt tab sau deschide alt fișier.\n- **ThisWorkbook** – workbook-ul în care este scris și rulează codul VBA (fișierul care conține modulul). Nu se schimbă niciodată în timpul execuției, indiferent ce alt fișier are utilizatorul deschis sau activ.\n- **ActiveWorkbook** – workbook-ul activ în acel moment, care poate fi diferit de ThisWorkbook dacă utilizatorul lucrează simultan cu mai multe fișiere Excel.\n\nRegula de aur în programare profesională: **evită ActiveSheet și ActiveWorkbook** ori de câte ori poți și folosește referințe explicite de tipul `ThisWorkbook.Worksheets(\"NumeFoaie\")`. Diferența pare minoră pe un fișier de test, dar devine critică într-un raport folosit de mai mulți angajați, unde nu poți controla ce foaie sau ce fișier are utilizatorul activ în momentul apăsării butonului care rulează macro-ul tău.\n\n# Colecțiile Sheets și Worksheets\n\nUn workbook conține o colecție de foi, la care poți ajunge prin două proprietăți diferite:\n\n- **Worksheets** – conține doar foile de calcul obișnuite (grid-uri cu celule).\n- **Sheets** – conține toate tipurile de foi, inclusiv foile de calcul și chart sheet-urile (foi dedicate exclusiv unui grafic, rar folosite azi).\n\nÎn practică, pentru majoritatea situațiilor vei folosi `Worksheets`, deoarece lucrezi cu date în celule. Poți accesa o foaie din colecție în trei moduri:\n\n1. **După nume**: `ThisWorkbook.Worksheets(\"Vanzari\")` — cel mai clar și recomandat, dar se strică dacă cineva redenumește tab-ul.\n2. **După poziție (index)**: `ThisWorkbook.Worksheets(1)` — prima foaie din stânga la dreapta; fragil, pentru că ordinea se poate schimba.\n3. **După CodeName**: `Sheet1` — identificatorul fix atribuit de VBA Editor la crearea foii (vizibil în fereastra Project Explorer, între paranteze). CodeName-ul **nu se schimbă** niciodată când utilizatorul redenumește tab-ul vizibil, ceea ce îl face cea mai robustă metodă de referire într-un fișier cu structură fixă.\n\nPoți afla câte foi conține un workbook cu `ThisWorkbook.Worksheets.Count` și poți parcurge toate foile cu o buclă `For Each`, lucru extrem de util pentru rapoarte care trebuie aplicate identic pe zeci de foi.\n\n# Add, Delete, Copy și Move — gestionarea foilor prin cod\n\nColecția Worksheets oferă metode pentru a crea, șterge, copia și muta foi, exact ca operațiile pe care le faci manual din clic-dreapta pe tab-ul unei foi.\n\n**Add** creează o foaie nouă goală. Poți controla poziția cu `Before` sau `After`:\n```vba\nWorksheets.Add After:=Worksheets(Worksheets.Count)\n```\naceastă linie adaugă foaia nouă la finalul workbook-ului. Fără parametri, Excel o adaugă înaintea foii active.\n\n**Delete** șterge o foaie definitiv (fără Undo!). Excel afișează implicit un dialog de confirmare; pentru automatizare completă îl dezactivezi temporar:\n```vba\nApplication.DisplayAlerts = False\nThisWorkbook.Worksheets(\"Ciorna\").Delete\nApplication.DisplayAlerts = True\n```\nNu uita niciodată să reactivezi `DisplayAlerts` imediat după, altfel riști să ascunzi și alte avertismente importante mai târziu în execuție.\n\n**Copy** duplică o foaie, cu tot cu formule, formatare și grafice, într-o poziție specificată prin `Before` sau `After`. Foaia copiată primește automat un nume de tipul „NumeFoaie (2)”, pe care de obicei îl redenumești imediat prin proprietatea `.Name`.\n\n**Move** mută o foaie existentă în altă poziție în cadrul aceluiași workbook, tot cu `Before`/`After`.\n\nProprietatea `.Name` are o limitare importantă: numele unei foi poate avea maximum 31 de caractere și nu poate conține simbolurile `: \\ / ? * [ ]`. Dacă încerci să atribui un nume invalid sau deja existent, VBA generează o eroare de execuție (Run-time error), așa că verifică întotdeauna existența unui nume înainte de a-l folosi.\n\n## Exemplu: Adăugarea unei foi noi cu verificare de existență\nCel mai frecvent scenariu într-o macro de raportare este să creezi o foaie nouă doar dacă aceasta nu există deja, pentru a evita eroarea „nume de foaie duplicat”.\n\n```vba\nSub AdaugaFoaieRaport()\n    ' Verifică dacă foaia \"Raport\" există deja și o creează dacă lipsește\n    Dim ws As Worksheet\n    Dim existaFoaie As Boolean\n    existaFoaie = False\n\n    For Each ws In ThisWorkbook.Worksheets\n        If ws.Name = \"Raport\" Then\n            existaFoaie = True\n            Exit For\n        End If\n    Next ws\n\n    If existaFoaie Then\n        MsgBox \"Foaia 'Raport' există deja.\", vbInformation\n    Else\n        Dim wsNou As Worksheet\n        Set wsNou = ThisWorkbook.Worksheets.Add(After:=ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count))\n        wsNou.Name = \"Raport\"\n        wsNou.Range(\"A1\").Value = \"Raport generat automat\"\n        MsgBox \"Foaia 'Raport' a fost creată.\", vbInformation\n    End If\nEnd Sub\n```\n\nObservă că referim mereu `ThisWorkbook`, nu `ActiveWorkbook` sau vreun fișier implicit — astfel macro-ul funcționează corect indiferent câte alte fișiere Excel are utilizatorul deschise în paralel.\n\n## Exemplu: Iterarea prin toate foile și copierea unui șablon lunar\nA doua nevoie frecventă este să parcurgi toate foile unui workbook (de exemplu pentru a genera un sumar) și să copiezi o foaie-șablon pentru un raport periodic.\n\n```vba\nSub RaporteazaToateFoile()\n    Dim ws As Worksheet\n    For Each ws In ThisWorkbook.Worksheets\n        Debug.Print ws.Name & \" - \" & ws.Cells(ws.Rows.Count, 1).End(xlUp).Row & \" rânduri completate\"\n    Next ws\nEnd Sub\n\nSub CopiazaSablonLunar()\n    Dim numeLuna As String\n    Dim wsNou As Worksheet\n    numeLuna = Format(Date, \"mmmm yyyy\")\n\n    ' Copiază foaia \"Template\" la finalul workbook-ului\n    ThisWorkbook.Worksheets(\"Template\").Copy After:=ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n\n    ' Foaia copiată devine mereu ultima din colecție, deci o referim direct prin poziție\n    Set wsNou = ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n    wsNou.Name = numeLuna\nEnd Sub\n```\n\n`Format(Date, \"mmmm yyyy\")` returnează numele lunii scris cu litere, în funcție de setările regionale ale calculatorului (pe un sistem cu limba română va afișa, de exemplu, „iulie 2026”). Observă că am evitat `ActiveSheet` chiar și imediat după `Copy`, folosind în schimb poziția din colecție — o practică mai sigură pentru cod reutilizabil.\n\n⚠ ⚠️ **Atenție la trei capcane frecvente:**\n\n1. Folosirea `ActiveSheet` în cod care rulează din butoane sau din Ribbon poate acționa din greșeală pe altă foaie decât cea intenționată, dacă utilizatorul a navigat în altă parte chiar înainte de a rula macro-ul. Preferă întotdeauna referințe explicite de tipul `ThisWorkbook.Worksheets(\"NumeFoaie\")`.\n2. `Worksheets(...).Delete` șterge definitiv, fără posibilitate de Undo (spre deosebire de ștergerea manuală, care poate fi anulată cu Ctrl+Z într-o singură sesiune, dar nu mai este disponibilă odată ce fișierul a fost salvat și închis). Testează întotdeauna codul de ștergere pe o copie a fișierului.\n3. Dacă setezi `Application.DisplayAlerts = False` și codul întâlnește o eroare înainte de linia care îl repune pe `True`, toate avertismentele Excel rămân dezactivate pentru restul sesiunii utilizatorului, inclusiv cele importante (de exemplu, suprascrierea unui fișier existent). Folosește un handler de eroare (`On Error GoTo`) pentru a garanta reactivarea, mai ales în macro-uri lungi.\n\n## Exercițiu\nScrie o macro numită `CreeazaRaportLunar` care face automat următoarele, pornind de la un workbook care conține deja o foaie șablon numită **„Template”**:\n\n1. Determină numele lunii curente în format „iulie 2026” (folosește funcția `Format` cu `Date`).\n2. Verifică dacă există deja o foaie cu acest nume; dacă da, o șterge (fără dialogul de confirmare Excel).\n3. Copiază foaia „Template” la finalul workbook-ului.\n4. Redenumește foaia nou copiată cu numele lunii curente.\n5. Afișează un `MsgBox` de confirmare cu numele foii create.\n\nIndiciu: ai nevoie de o buclă `For Each` pentru verificarea existenței foii, similară celei din primul exemplu.\n\n**Soluție:** ```vba\nSub CreeazaRaportLunar()\n    Dim numeLuna As String\n    Dim ws As Worksheet\n    Dim existaFoaie As Boolean\n    Dim wsNou As Worksheet\n\n    numeLuna = Format(Date, \"mmmm yyyy\")\n    existaFoaie = False\n\n    ' Pasul 1-2: verifică dacă foaia lunii curente există deja\n    For Each ws In ThisWorkbook.Worksheets\n        If ws.Name = numeLuna Then\n            existaFoaie = True\n            Exit For\n        End If\n    Next ws\n\n    If existaFoaie Then\n        Application.DisplayAlerts = False\n        ThisWorkbook.Worksheets(numeLuna).Delete\n        Application.DisplayAlerts = True\n    End If\n\n    ' Pasul 3: copiază șablonul la finalul workbook-ului\n    ThisWorkbook.Worksheets(\"Template\").Copy After:=ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n\n    ' Pasul 4: redenumește foaia nou creată (este mereu ultima din colecție)\n    Set wsNou = ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n    wsNou.Name = numeLuna\n\n    ' Pasul 5: confirmare\n    MsgBox \"Foaia '\" & numeLuna & \"' a fost creată din șablon.\", vbInformation\nEnd Sub\n```\n\nCodul reutilizează exact tiparele din exemplele lecției: verificare cu `For Each`, ștergere sigură cu `DisplayAlerts`, copiere prin `Copy After:=` și referire la foaia nouă prin poziție, nu prin `ActiveSheet`.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "activesheet-thisworkbook-differences",
+    "md": "# ActiveSheet, ThisWorkbook și ActiveWorkbook — cele trei repere de bază\n\nCând automatizezi Excel cu VBA, primul pas este să înțelegi clar ce anume controlează codul tău: un workbook (fișierul .xlsx) și, în interiorul lui, una sau mai multe worksheet-uri (foi de calcul). VBA îți pune la dispoziție trei obiecte pe care le vei folosi în aproape fiecare macro:\n\n- **ActiveSheet** – foaia de calcul activă în acel moment, în orice workbook deschis. Se schimbă automat dacă utilizatorul face clic pe alt tab sau deschide alt fișier.\n- **ThisWorkbook** – workbook-ul în care este scris și rulează codul VBA (fișierul care conține modulul). Nu se schimbă niciodată în timpul execuției, indiferent ce alt fișier are utilizatorul deschis sau activ.\n- **ActiveWorkbook** – workbook-ul activ în acel moment, care poate fi diferit de ThisWorkbook dacă utilizatorul lucrează simultan cu mai multe fișiere Excel.\n\nRegula de aur în programare profesională: **evită ActiveSheet și ActiveWorkbook** ori de câte ori poți și folosește referințe explicite de tipul `ThisWorkbook.Worksheets(\"NumeFoaie\")`. Diferența pare minoră pe un fișier de test, dar devine critică într-un raport folosit de mai mulți angajați, unde nu poți controla ce foaie sau ce fișier are utilizatorul activ în momentul apăsării butonului care rulează macro-ul tău.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "colectia-sheets-worksheets",
+    "md": "# Colecțiile Sheets și Worksheets\n\nUn workbook conține o colecție de foi, la care poți ajunge prin două proprietăți diferite:\n\n- **Worksheets** – conține doar foile de calcul obișnuite (grid-uri cu celule).\n- **Sheets** – conține toate tipurile de foi, inclusiv foile de calcul și chart sheet-urile (foi dedicate exclusiv unui grafic, rar folosite azi).\n\nÎn practică, pentru majoritatea situațiilor vei folosi `Worksheets`, deoarece lucrezi cu date în celule. Poți accesa o foaie din colecție în trei moduri:\n\n1. **După nume**: `ThisWorkbook.Worksheets(\"Vanzari\")` — cel mai clar și recomandat, dar se strică dacă cineva redenumește tab-ul.\n2. **După poziție (index)**: `ThisWorkbook.Worksheets(1)` — prima foaie din stânga la dreapta; fragil, pentru că ordinea se poate schimba.\n3. **După CodeName**: `Sheet1` — identificatorul fix atribuit de VBA Editor la crearea foii (vizibil în fereastra Project Explorer, între paranteze). CodeName-ul **nu se schimbă** niciodată când utilizatorul redenumește tab-ul vizibil, ceea ce îl face cea mai robustă metodă de referire într-un fișier cu structură fixă.\n\nPoți afla câte foi conține un workbook cu `ThisWorkbook.Worksheets.Count` și poți parcurge toate foile cu o buclă `For Each`, lucru extrem de util pentru rapoarte care trebuie aplicate identic pe zeci de foi.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "worksheets-add-delete-copy",
+    "md": "# Add, Delete, Copy și Move — gestionarea foilor prin cod\n\nColecția Worksheets oferă metode pentru a crea, șterge, copia și muta foi, exact ca operațiile pe care le faci manual din clic-dreapta pe tab-ul unei foi.\n\n**Add** creează o foaie nouă goală. Poți controla poziția cu `Before` sau `After`:\n```vba\nWorksheets.Add After:=Worksheets(Worksheets.Count)\n```\naceastă linie adaugă foaia nouă la finalul workbook-ului. Fără parametri, Excel o adaugă înaintea foii active.\n\n**Delete** șterge o foaie definitiv (fără Undo!). Excel afișează implicit un dialog de confirmare; pentru automatizare completă îl dezactivezi temporar:\n```vba\nApplication.DisplayAlerts = False\nThisWorkbook.Worksheets(\"Ciorna\").Delete\nApplication.DisplayAlerts = True\n```\nNu uita niciodată să reactivezi `DisplayAlerts` imediat după, altfel riști să ascunzi și alte avertismente importante mai târziu în execuție.\n\n**Copy** duplică o foaie, cu tot cu formule, formatare și grafice, într-o poziție specificată prin `Before` sau `After`. Foaia copiată primește automat un nume de tipul „NumeFoaie (2)”, pe care de obicei îl redenumești imediat prin proprietatea `.Name`.\n\n**Move** mută o foaie existentă în altă poziție în cadrul aceluiași workbook, tot cu `Before`/`After`.\n\nProprietatea `.Name` are o limitare importantă: numele unei foi poate avea maximum 31 de caractere și nu poate conține simbolurile `: \\ / ? * [ ]`. Dacă încerci să atribui un nume invalid sau deja existent, VBA generează o eroare de execuție (Run-time error), așa că verifică întotdeauna existența unui nume înainte de a-l folosi.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b3"
+   },
+   {
+    "type": "example",
+    "title": "Adăugarea unei foi noi cu verificare de existență",
+    "concept_key": "exemplu-add-foaie-verificare",
+    "md": "Cel mai frecvent scenariu într-o macro de raportare este să creezi o foaie nouă doar dacă aceasta nu există deja, pentru a evita eroarea „nume de foaie duplicat”.\n\n```vba\nSub AdaugaFoaieRaport()\n    ' Verifică dacă foaia \"Raport\" există deja și o creează dacă lipsește\n    Dim ws As Worksheet\n    Dim existaFoaie As Boolean\n    existaFoaie = False\n\n    For Each ws In ThisWorkbook.Worksheets\n        If ws.Name = \"Raport\" Then\n            existaFoaie = True\n            Exit For\n        End If\n    Next ws\n\n    If existaFoaie Then\n        MsgBox \"Foaia 'Raport' există deja.\", vbInformation\n    Else\n        Dim wsNou As Worksheet\n        Set wsNou = ThisWorkbook.Worksheets.Add(After:=ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count))\n        wsNou.Name = \"Raport\"\n        wsNou.Range(\"A1\").Value = \"Raport generat automat\"\n        MsgBox \"Foaia 'Raport' a fost creată.\", vbInformation\n    End If\nEnd Sub\n```\n\nObservă că referim mereu `ThisWorkbook`, nu `ActiveWorkbook` sau vreun fișier implicit — astfel macro-ul funcționează corect indiferent câte alte fișiere Excel are utilizatorul deschise în paralel.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b4"
+   },
+   {
+    "type": "example",
+    "title": "Iterarea prin toate foile și copierea unui șablon lunar",
+    "concept_key": "exemplu-iterare-copiere-sablon",
+    "md": "A doua nevoie frecventă este să parcurgi toate foile unui workbook (de exemplu pentru a genera un sumar) și să copiezi o foaie-șablon pentru un raport periodic.\n\n```vba\nSub RaporteazaToateFoile()\n    Dim ws As Worksheet\n    For Each ws In ThisWorkbook.Worksheets\n        Debug.Print ws.Name & \" - \" & ws.Cells(ws.Rows.Count, 1).End(xlUp).Row & \" rânduri completate\"\n    Next ws\nEnd Sub\n\nSub CopiazaSablonLunar()\n    Dim numeLuna As String\n    Dim wsNou As Worksheet\n    numeLuna = Format(Date, \"mmmm yyyy\")\n\n    ' Copiază foaia \"Template\" la finalul workbook-ului\n    ThisWorkbook.Worksheets(\"Template\").Copy After:=ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n\n    ' Foaia copiată devine mereu ultima din colecție, deci o referim direct prin poziție\n    Set wsNou = ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n    wsNou.Name = numeLuna\nEnd Sub\n```\n\n`Format(Date, \"mmmm yyyy\")` returnează numele lunii scris cu litere, în funcție de setările regionale ale calculatorului (pe un sistem cu limba română va afișa, de exemplu, „iulie 2026”). Observă că am evitat `ActiveSheet` chiar și imediat după `Copy`, folosind în schimb poziția din colecție — o practică mai sigură pentru cod reutilizabil.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b5"
+   },
+   {
+    "type": "warning",
+    "md": "⚠️ **Atenție la trei capcane frecvente:**\n\n1. Folosirea `ActiveSheet` în cod care rulează din butoane sau din Ribbon poate acționa din greșeală pe altă foaie decât cea intenționată, dacă utilizatorul a navigat în altă parte chiar înainte de a rula macro-ul. Preferă întotdeauna referințe explicite de tipul `ThisWorkbook.Worksheets(\"NumeFoaie\")`.\n2. `Worksheets(...).Delete` șterge definitiv, fără posibilitate de Undo (spre deosebire de ștergerea manuală, care poate fi anulată cu Ctrl+Z într-o singură sesiune, dar nu mai este disponibilă odată ce fișierul a fost salvat și închis). Testează întotdeauna codul de ștergere pe o copie a fișierului.\n3. Dacă setezi `Application.DisplayAlerts = False` și codul întâlnește o eroare înainte de linia care îl repune pe `True`, toate avertismentele Excel rămân dezactivate pentru restul sesiunii utilizatorului, inclusiv cele importante (de exemplu, suprascrierea unui fișier existent). Folosește un handler de eroare (`On Error GoTo`) pentru a garanta reactivarea, mai ales în macro-uri lungi.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Scrie o macro numită `CreeazaRaportLunar` care face automat următoarele, pornind de la un workbook care conține deja o foaie șablon numită **„Template”**:\n\n1. Determină numele lunii curente în format „iulie 2026” (folosește funcția `Format` cu `Date`).\n2. Verifică dacă există deja o foaie cu acest nume; dacă da, o șterge (fără dialogul de confirmare Excel).\n3. Copiază foaia „Template” la finalul workbook-ului.\n4. Redenumește foaia nou copiată cu numele lunii curente.\n5. Afișează un `MsgBox` de confirmare cu numele foii create.\n\nIndiciu: ai nevoie de o buclă `For Each` pentru verificarea existenței foii, similară celei din primul exemplu.",
+    "solution_md": "```vba\nSub CreeazaRaportLunar()\n    Dim numeLuna As String\n    Dim ws As Worksheet\n    Dim existaFoaie As Boolean\n    Dim wsNou As Worksheet\n\n    numeLuna = Format(Date, \"mmmm yyyy\")\n    existaFoaie = False\n\n    ' Pasul 1-2: verifică dacă foaia lunii curente există deja\n    For Each ws In ThisWorkbook.Worksheets\n        If ws.Name = numeLuna Then\n            existaFoaie = True\n            Exit For\n        End If\n    Next ws\n\n    If existaFoaie Then\n        Application.DisplayAlerts = False\n        ThisWorkbook.Worksheets(numeLuna).Delete\n        Application.DisplayAlerts = True\n    End If\n\n    ' Pasul 3: copiază șablonul la finalul workbook-ului\n    ThisWorkbook.Worksheets(\"Template\").Copy After:=ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n\n    ' Pasul 4: redenumește foaia nou creată (este mereu ultima din colecție)\n    Set wsNou = ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count)\n    wsNou.Name = numeLuna\n\n    ' Pasul 5: confirmare\n    MsgBox \"Foaia '\" & numeLuna & \"' a fost creată din șablon.\", vbInformation\nEnd Sub\n```\n\nCodul reutilizează exact tiparele din exemplele lecției: verificare cu `For Each`, ștergere sigură cu `DisplayAlerts`, copiere prin `Copy After:=` și referire la foaia nouă prin poziție, nu prin `ActiveSheet`.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre ThisWorkbook și ActiveWorkbook?",
+    "choices": [
+     "Nu există nicio diferență, sunt sinonime",
+     "ThisWorkbook este workbook-ul care conține codul VBA și nu se schimbă niciodată în timpul execuției, în timp ce ActiveWorkbook este fișierul activ în acel moment și se poate schimba",
+     "ActiveWorkbook se referă mereu la prima foaie din colecția Worksheets",
+     "ThisWorkbook funcționează doar pentru fișiere salvate cu extensia .xlsm"
+    ],
+    "answer": 1,
+    "explain": "ThisWorkbook rămâne fix pe fișierul care conține macro-ul, indiferent ce alt workbook deschide sau activează utilizatorul. ActiveWorkbook urmărește fișierul aflat curent în prim-plan, ceea ce îl face nesigur pentru cod automatizat.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce trebuie să faci înainte de a apela Worksheets(...).Delete pentru a evita dialogul de confirmare afișat de Excel?",
+    "choices": [
+     "Application.ScreenUpdating = False",
+     "Application.EnableEvents = False",
+     "Application.DisplayAlerts = False",
+     "Application.Calculation = xlManual"
+    ],
+    "answer": 2,
+    "explain": "Application.DisplayAlerts = False suprimă dialogurile de avertizare, inclusiv confirmarea de ștergere a unei foi. Nu uita să îl readuci pe True imediat după operație, ideal cu un handler de eroare care garantează reactivarea.",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă ThisWorkbook în VBA?",
+    "back": "Workbook-ul care conține codul VBA care rulează, indiferent ce alt fișier are utilizatorul deschis sau activ în acel moment.",
+    "concept_key": "thisworkbook-vs-activeworkbook",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre Sheets și Worksheets?",
+    "back": "Sheets include toate tipurile de foi (foi de calcul + chart sheets), în timp ce Worksheets conține doar foile de calcul obișnuite.",
+    "concept_key": "sheets-vs-worksheets-colectie",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum dezactivezi dialogul de confirmare Excel la ștergerea unei foi din VBA?",
+    "back": "Setezi Application.DisplayAlerts = False înainte de .Delete, apoi îl readuci pe True imediat după.",
+    "concept_key": "displayalerts-delete-foaie",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este CodeName-ul unei foi și de ce e util?",
+    "back": "Este identificatorul fix atribuit de VBA Editor (ex. Sheet1), vizibil în Project Explorer; rămâne neschimbat chiar dacă utilizatorul redenumește tab-ul vizibil al foii.",
+    "concept_key": "codename-foaie-vba",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este sintaxa pentru a adăuga o foaie nouă după ultima foaie existentă?",
+    "back": "Worksheets.Add(After:=Worksheets(Worksheets.Count))",
+    "concept_key": "worksheets-add-sintaxa",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce risc apare dacă folosești ActiveSheet în loc de o referință explicită?",
+    "back": "Codul poate modifica din greșeală altă foaie decât cea dorită, dacă utilizatorul a schimbat foaia activă chiar înainte de rularea macro-ului.",
+    "concept_key": "risc-activesheet",
+    "blockId": "cmjjuxvqd003pumkp41drcoo2-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1346,
+   "flashcards": 6
+  }
+ }
+}

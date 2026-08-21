@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvpw003dumkp8alltl1f",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Programare VBA de Bază",
+ "lesson": "Structuri de decizie (If, Select Case)",
+ "category": "EXCEL_VBA",
+ "content": "# Structuri de decizie (If, Select Case)\n\n## If...Then...Else — decizia simplă\n\nStructura `If...Then...Else` este instrumentul de bază pentru a lua decizii în VBA: codul verifică o condiție (o expresie care este adevărată sau falsă) și execută un set de instrucțiuni sau altul, în funcție de rezultat.\n\nExistă două forme de scriere:\n\n**Forma pe o singură linie** (potrivită pentru decizii simple, fără `End If`):\n```vba\nIf vanzari > 10000 Then MsgBox \"Vânzare mare!\"\n```\n\n**Forma bloc** (recomandată când ai mai multe instrucțiuni de executat), care se închide obligatoriu cu `End If`:\n```vba\nIf vanzari > 10000 Then\n    MsgBox \"Vânzare mare!\"\n    Range(\"D2\").Value = \"Prioritar\"\nElse\n    Range(\"D2\").Value = \"Standard\"\nEnd If\n```\n\nDacă omiți `End If` la forma bloc, VBA afișează eroare de compilare încă înainte de a rula codul. Ramura `Else` este opțională — dacă lipsește și condiția e falsă, codul trece pur și simplu mai departe, fără să execute nimic.\n\nCondițiile se construiesc cu operatori de comparație: `=`, `<>` (diferit), `>`, `<`, `>=`, `<=`. Rezultatul unei comparații este întotdeauna o valoare booleană: `True` sau `False`.\n\n## ElseIf — condiții multiple, exclusive\n\nCând ai mai mult de două ramuri posibile (nu doar \"da/nu\"), folosești `ElseIf` pentru a înlănțui mai multe condiții într-o singură structură:\n\n```vba\nIf conditie1 Then\n    ' instrucțiuni pentru cazul 1\nElseIf conditie2 Then\n    ' instrucțiuni pentru cazul 2\nElseIf conditie3 Then\n    ' instrucțiuni pentru cazul 3\nElse\n    ' instrucțiuni dacă nicio condiție de mai sus nu e adevărată\nEnd If\n```\n\nPunctul esențial: VBA evaluează ramurile **de sus în jos** și execută **doar prima condiție care este adevărată** — apoi sare direct la `End If`, ignorând restul, chiar dacă și acestea ar fi teoretic adevărate. De aceea, ordinea condițiilor contează foarte mult, mai ales când lucrezi cu intervale numerice (de exemplu tranșe de comision sau cote de TVA aplicabile pe categorii): dacă pui mai întâi condiția cea mai largă, celelalte nu vor mai fi verificate niciodată pentru valorile care s-ar încadra și acolo.\n\nO regulă practică pentru intervale: ordonează condițiile de la cea mai mică valoare la cea mai mare (sau invers), folosind operatori `<` / `>` cumulativi, așa cum vei vedea în exemplul cu comisioane de mai jos.\n\n## Select Case — alternativa elegantă pentru multe valori\n\nCând testezi **aceeași variabilă** față de multe valori sau intervale posibile, un lanț lung de `ElseIf` devine greu de citit. `Select Case` rezolvă exact acest caz:\n\n```vba\nSelect Case variabila\n    Case valoare1\n        ' instrucțiuni\n    Case valoare2, valoare3\n        ' instrucțiuni (pentru mai multe valori exacte, separate prin virgulă)\n    Case valoareMin To valoareMax\n        ' instrucțiuni pentru un interval\n    Case Is > prag\n        ' instrucțiuni când valoarea depășește un prag (cuvântul cheie Is se folosește doar aici)\n    Case Else\n        ' instrucțiuni dacă nimic de mai sus nu se potrivește\nEnd Select\n```\n\nAvantajele față de `If...ElseIf`: codul e mai citibil, iar `Case 1 To 10` sau `Case Is > 100` exprimă direct intenția, fără operatori de comparație repetitivi. Ca și la `If`, doar prima ramură care se potrivește este executată, iar `Case Else` este opțional, dar recomandat — te protejează de valori neprevăzute (de exemplu un text introdus greșit într-un câmp numeric).\n\n## Combinarea condițiilor: And, Or, Not\n\nAtât `If`, cât și `Select Case` (prin `Case Is`) pot folosi condiții compuse cu operatorii logici `And` (și), `Or` (sau) și `Not` (negație):\n\n```vba\nIf vanzari > 10000 And clientVechi = True Then\n    discount = 0.1\nEnd If\n\nIf luna = 12 Or luna = 1 Then\n    sezon = \"Iarnă\"\nEnd If\n```\n\nAtenție la o capcană frecventă: `And` cere ca **ambele** condiții să fie adevărate, `Or` cere ca **cel puțin una** să fie adevărată. Când combini mai mulți operatori, folosește paranteze pentru a controla ordinea de evaluare — VBA nu întotdeauna evaluează exact așa cum \"citești\" fraza în română:\n\n```vba\nIf (vanzari > 10000 Or clientVIP = True) And regiune = \"București\" Then\n    ' logica ta aici\nEnd If\n```\n\nFără paranteze, expresiile pot fi interpretate diferit de intenția ta, iar rezultatul greșit e greu de depistat ulterior.\n\n## Exemplu: Calculul comisionului de vânzări pe tranșe (If...ElseIf)\nO firmă SRL plătește agenților de vânzări un comision procentual care crește pe tranșe, în funcție de valoarea vânzărilor lunare:\n\n- sub 5.000 lei → 2%\n- 5.000–14.999 lei → 4%\n- 15.000–29.999 lei → 6%\n- 30.000 lei sau mai mult → 8%\n\n```vba\nSub CalculComision()\n    Dim vanzari As Double\n    Dim comision As Double\n\n    vanzari = Range(\"B2\").Value ' valoarea vânzărilor introdusă în celula B2\n\n    If vanzari < 5000 Then\n        comision = vanzari * 0.02\n    ElseIf vanzari < 15000 Then\n        comision = vanzari * 0.04\n    ElseIf vanzari < 30000 Then\n        comision = vanzari * 0.06\n    Else\n        comision = vanzari * 0.08\n    End If\n\n    Range(\"C2\").Value = comision\n    MsgBox \"Comisionul calculat este \" & Format(comision, \"#,##0.00\") & \" lei\"\nEnd Sub\n```\n\nPentru `vanzari = 18000`: prima condiție (`< 5000`) e falsă, a doua (`< 15000`) e falsă, a treia (`< 30000`) e adevărată → se aplică 6%, deci `comision = 18000 * 0.06 = 1.080,00 lei`. Observă că fiecare prag din `ElseIf` se raportează implicit la faptul că pragurile anterioare au fost deja excluse — de aceea `< 15000` acoperă de fapt intervalul 5.000–14.999, nu de la 0.\n\n## Exemplu: Clasificarea riscului facturilor restante (Select Case)\nDepartamentul financiar vrea să clasifice automat facturile neîncasate, în funcție de numărul de zile de întârziere față de scadență, pentru a decide dacă e nevoie de provizion contabil:\n\n```vba\nFunction ClasificaRisc(zileIntarziere As Integer) As String\n    Select Case zileIntarziere\n        Case 0\n            ClasificaRisc = \"La zi\"\n        Case 1 To 30\n            ClasificaRisc = \"Risc scăzut\"\n        Case 31 To 60\n            ClasificaRisc = \"Risc mediu\"\n        Case 61 To 90\n            ClasificaRisc = \"Risc ridicat\"\n        Case Is > 90\n            ClasificaRisc = \"Litigiu / provizion\"\n        Case Else\n            ClasificaRisc = \"Valoare invalidă\"\n    End Select\nEnd Function\n```\n\nApelată din foaia de calcul cu `=ClasificaRisc(D2)` (după ce ai declarat funcția ca `Public`), pentru o factură cu 45 de zile întârziere returnează `\"Risc mediu\"`, iar pentru una cu 120 de zile returnează `\"Litigiu / provizion\"` — semnal pentru contabil să analizeze constituirea unui provizion pentru creanțe incerte, conform politicilor interne bazate pe OMFP 1802/2014. Observă cât de citibil e codul comparativ cu un lanț echivalent de `If...ElseIf`: fiecare interval e vizibil dintr-o privire.\n\n⚠ Cele mai frecvente greșeli la structurile de decizie în VBA:\n\n1. **Uitarea `End If`** la forma bloc — VBA nu compilează deloc codul, nu doar linia respectivă.\n2. **Ordinea greșită în ElseIf** — dacă pui întâi condiția cea mai permisivă (de exemplu `vanzari > 0`), toate ramurile de sub ea devin inaccesibile, pentru că prima condiție adevărată \"fură\" execuția.\n3. **`Case Is`** funcționează *doar* în interiorul unui `Select Case` — nu poți scrie `If Is > 100 Then` în afara lui.\n4. **Confuzia `=` vs `Is`** — pentru comparații de valori (numere, text) folosești `=`; `Is` se folosește pentru compararea referințelor de obiecte (de exemplu `If Selection Is Nothing`), respectiv ca parte din sintaxa `Case Is` din `Select Case`.\n5. **Separatorul zecimal în cod** — indiferent de setările regionale ale Excel-ului (care în România afișează zecimalele cu virgulă), literalii numerici *scriși direct în codul VBA* folosesc întotdeauna punctul (`0.06`, nu `0,06`). Virgula apare doar în formatarea afișată în celule, cu funcții precum `Format`.\n\n## Exercițiu\nScrie o funcție VBA `CalculeazaDiscount(cantitate As Integer) As Double` care returnează procentul de discount aplicat unei comenzi, folosind `Select Case`, conform politicii comerciale a firmei:\n\n- 1–9 bucăți → 0% discount\n- 10–49 bucăți → 5% discount\n- 50–99 bucăți → 10% discount\n- 100 bucăți sau mai mult → 15% discount\n- orice valoare negativă sau zero → tratează ca eroare și returnează 0\n\nTestează funcția pentru `cantitate = 75` (rezultat așteptat: 0,10) și pentru `cantitate = 5` (rezultat așteptat: 0).\n\n**Soluție:** ```vba\nFunction CalculeazaDiscount(cantitate As Integer) As Double\n    Select Case cantitate\n        Case Is <= 0\n            CalculeazaDiscount = 0 ' valoare invalidă, tratată sigur\n        Case 1 To 9\n            CalculeazaDiscount = 0\n        Case 10 To 49\n            CalculeazaDiscount = 0.05\n        Case 50 To 99\n            CalculeazaDiscount = 0.1\n        Case Is >= 100\n            CalculeazaDiscount = 0.15\n    End Select\nEnd Function\n\nSub TestDiscount()\n    MsgBox CalculeazaDiscount(75) ' returnează 0,1 (10%)\n    MsgBox CalculeazaDiscount(5)  ' returnează 0 (0%)\nEnd Sub\n```\n\nObservă ordinea ramurilor: am pus prima dată cazul invalid (`Is <= 0`), astfel încât să fie interceptat înainte de a ajunge la intervalele normale. Pentru `cantitate = 75`, VBA găsește potrivirea la `Case 50 To 99` și returnează `0.1`; pentru `cantitate = 5`, se potrivește `Case 1 To 9` și returnează `0`.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "vba-if-then-else",
+    "md": "## If...Then...Else — decizia simplă\n\nStructura `If...Then...Else` este instrumentul de bază pentru a lua decizii în VBA: codul verifică o condiție (o expresie care este adevărată sau falsă) și execută un set de instrucțiuni sau altul, în funcție de rezultat.\n\nExistă două forme de scriere:\n\n**Forma pe o singură linie** (potrivită pentru decizii simple, fără `End If`):\n```vba\nIf vanzari > 10000 Then MsgBox \"Vânzare mare!\"\n```\n\n**Forma bloc** (recomandată când ai mai multe instrucțiuni de executat), care se închide obligatoriu cu `End If`:\n```vba\nIf vanzari > 10000 Then\n    MsgBox \"Vânzare mare!\"\n    Range(\"D2\").Value = \"Prioritar\"\nElse\n    Range(\"D2\").Value = \"Standard\"\nEnd If\n```\n\nDacă omiți `End If` la forma bloc, VBA afișează eroare de compilare încă înainte de a rula codul. Ramura `Else` este opțională — dacă lipsește și condiția e falsă, codul trece pur și simplu mai departe, fără să execute nimic.\n\nCondițiile se construiesc cu operatori de comparație: `=`, `<>` (diferit), `>`, `<`, `>=`, `<=`. Rezultatul unei comparații este întotdeauna o valoare booleană: `True` sau `False`.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-elseif",
+    "md": "## ElseIf — condiții multiple, exclusive\n\nCând ai mai mult de două ramuri posibile (nu doar \"da/nu\"), folosești `ElseIf` pentru a înlănțui mai multe condiții într-o singură structură:\n\n```vba\nIf conditie1 Then\n    ' instrucțiuni pentru cazul 1\nElseIf conditie2 Then\n    ' instrucțiuni pentru cazul 2\nElseIf conditie3 Then\n    ' instrucțiuni pentru cazul 3\nElse\n    ' instrucțiuni dacă nicio condiție de mai sus nu e adevărată\nEnd If\n```\n\nPunctul esențial: VBA evaluează ramurile **de sus în jos** și execută **doar prima condiție care este adevărată** — apoi sare direct la `End If`, ignorând restul, chiar dacă și acestea ar fi teoretic adevărate. De aceea, ordinea condițiilor contează foarte mult, mai ales când lucrezi cu intervale numerice (de exemplu tranșe de comision sau cote de TVA aplicabile pe categorii): dacă pui mai întâi condiția cea mai largă, celelalte nu vor mai fi verificate niciodată pentru valorile care s-ar încadra și acolo.\n\nO regulă practică pentru intervale: ordonează condițiile de la cea mai mică valoare la cea mai mare (sau invers), folosind operatori `<` / `>` cumulativi, așa cum vei vedea în exemplul cu comisioane de mai jos.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-select-case",
+    "md": "## Select Case — alternativa elegantă pentru multe valori\n\nCând testezi **aceeași variabilă** față de multe valori sau intervale posibile, un lanț lung de `ElseIf` devine greu de citit. `Select Case` rezolvă exact acest caz:\n\n```vba\nSelect Case variabila\n    Case valoare1\n        ' instrucțiuni\n    Case valoare2, valoare3\n        ' instrucțiuni (pentru mai multe valori exacte, separate prin virgulă)\n    Case valoareMin To valoareMax\n        ' instrucțiuni pentru un interval\n    Case Is > prag\n        ' instrucțiuni când valoarea depășește un prag (cuvântul cheie Is se folosește doar aici)\n    Case Else\n        ' instrucțiuni dacă nimic de mai sus nu se potrivește\nEnd Select\n```\n\nAvantajele față de `If...ElseIf`: codul e mai citibil, iar `Case 1 To 10` sau `Case Is > 100` exprimă direct intenția, fără operatori de comparație repetitivi. Ca și la `If`, doar prima ramură care se potrivește este executată, iar `Case Else` este opțional, dar recomandat — te protejează de valori neprevăzute (de exemplu un text introdus greșit într-un câmp numeric).",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "vba-operatori-logici-conditii",
+    "md": "## Combinarea condițiilor: And, Or, Not\n\nAtât `If`, cât și `Select Case` (prin `Case Is`) pot folosi condiții compuse cu operatorii logici `And` (și), `Or` (sau) și `Not` (negație):\n\n```vba\nIf vanzari > 10000 And clientVechi = True Then\n    discount = 0.1\nEnd If\n\nIf luna = 12 Or luna = 1 Then\n    sezon = \"Iarnă\"\nEnd If\n```\n\nAtenție la o capcană frecventă: `And` cere ca **ambele** condiții să fie adevărate, `Or` cere ca **cel puțin una** să fie adevărată. Când combini mai mulți operatori, folosește paranteze pentru a controla ordinea de evaluare — VBA nu întotdeauna evaluează exact așa cum \"citești\" fraza în română:\n\n```vba\nIf (vanzari > 10000 Or clientVIP = True) And regiune = \"București\" Then\n    ' logica ta aici\nEnd If\n```\n\nFără paranteze, expresiile pot fi interpretate diferit de intenția ta, iar rezultatul greșit e greu de depistat ulterior.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul comisionului de vânzări pe tranșe (If...ElseIf)",
+    "concept_key": "vba-if-then-else",
+    "md": "O firmă SRL plătește agenților de vânzări un comision procentual care crește pe tranșe, în funcție de valoarea vânzărilor lunare:\n\n- sub 5.000 lei → 2%\n- 5.000–14.999 lei → 4%\n- 15.000–29.999 lei → 6%\n- 30.000 lei sau mai mult → 8%\n\n```vba\nSub CalculComision()\n    Dim vanzari As Double\n    Dim comision As Double\n\n    vanzari = Range(\"B2\").Value ' valoarea vânzărilor introdusă în celula B2\n\n    If vanzari < 5000 Then\n        comision = vanzari * 0.02\n    ElseIf vanzari < 15000 Then\n        comision = vanzari * 0.04\n    ElseIf vanzari < 30000 Then\n        comision = vanzari * 0.06\n    Else\n        comision = vanzari * 0.08\n    End If\n\n    Range(\"C2\").Value = comision\n    MsgBox \"Comisionul calculat este \" & Format(comision, \"#,##0.00\") & \" lei\"\nEnd Sub\n```\n\nPentru `vanzari = 18000`: prima condiție (`< 5000`) e falsă, a doua (`< 15000`) e falsă, a treia (`< 30000`) e adevărată → se aplică 6%, deci `comision = 18000 * 0.06 = 1.080,00 lei`. Observă că fiecare prag din `ElseIf` se raportează implicit la faptul că pragurile anterioare au fost deja excluse — de aceea `< 15000` acoperă de fapt intervalul 5.000–14.999, nu de la 0.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b5"
+   },
+   {
+    "type": "example",
+    "title": "Clasificarea riscului facturilor restante (Select Case)",
+    "concept_key": "vba-select-case",
+    "md": "Departamentul financiar vrea să clasifice automat facturile neîncasate, în funcție de numărul de zile de întârziere față de scadență, pentru a decide dacă e nevoie de provizion contabil:\n\n```vba\nFunction ClasificaRisc(zileIntarziere As Integer) As String\n    Select Case zileIntarziere\n        Case 0\n            ClasificaRisc = \"La zi\"\n        Case 1 To 30\n            ClasificaRisc = \"Risc scăzut\"\n        Case 31 To 60\n            ClasificaRisc = \"Risc mediu\"\n        Case 61 To 90\n            ClasificaRisc = \"Risc ridicat\"\n        Case Is > 90\n            ClasificaRisc = \"Litigiu / provizion\"\n        Case Else\n            ClasificaRisc = \"Valoare invalidă\"\n    End Select\nEnd Function\n```\n\nApelată din foaia de calcul cu `=ClasificaRisc(D2)` (după ce ai declarat funcția ca `Public`), pentru o factură cu 45 de zile întârziere returnează `\"Risc mediu\"`, iar pentru una cu 120 de zile returnează `\"Litigiu / provizion\"` — semnal pentru contabil să analizeze constituirea unui provizion pentru creanțe incerte, conform politicilor interne bazate pe OMFP 1802/2014. Observă cât de citibil e codul comparativ cu un lanț echivalent de `If...ElseIf`: fiecare interval e vizibil dintr-o privire.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cele mai frecvente greșeli la structurile de decizie în VBA:\n\n1. **Uitarea `End If`** la forma bloc — VBA nu compilează deloc codul, nu doar linia respectivă.\n2. **Ordinea greșită în ElseIf** — dacă pui întâi condiția cea mai permisivă (de exemplu `vanzari > 0`), toate ramurile de sub ea devin inaccesibile, pentru că prima condiție adevărată \"fură\" execuția.\n3. **`Case Is`** funcționează *doar* în interiorul unui `Select Case` — nu poți scrie `If Is > 100 Then` în afara lui.\n4. **Confuzia `=` vs `Is`** — pentru comparații de valori (numere, text) folosești `=`; `Is` se folosește pentru compararea referințelor de obiecte (de exemplu `If Selection Is Nothing`), respectiv ca parte din sintaxa `Case Is` din `Select Case`.\n5. **Separatorul zecimal în cod** — indiferent de setările regionale ale Excel-ului (care în România afișează zecimalele cu virgulă), literalii numerici *scriși direct în codul VBA* folosesc întotdeauna punctul (`0.06`, nu `0,06`). Virgula apare doar în formatarea afișată în celule, cu funcții precum `Format`.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Scrie o funcție VBA `CalculeazaDiscount(cantitate As Integer) As Double` care returnează procentul de discount aplicat unei comenzi, folosind `Select Case`, conform politicii comerciale a firmei:\n\n- 1–9 bucăți → 0% discount\n- 10–49 bucăți → 5% discount\n- 50–99 bucăți → 10% discount\n- 100 bucăți sau mai mult → 15% discount\n- orice valoare negativă sau zero → tratează ca eroare și returnează 0\n\nTestează funcția pentru `cantitate = 75` (rezultat așteptat: 0,10) și pentru `cantitate = 5` (rezultat așteptat: 0).",
+    "solution_md": "```vba\nFunction CalculeazaDiscount(cantitate As Integer) As Double\n    Select Case cantitate\n        Case Is <= 0\n            CalculeazaDiscount = 0 ' valoare invalidă, tratată sigur\n        Case 1 To 9\n            CalculeazaDiscount = 0\n        Case 10 To 49\n            CalculeazaDiscount = 0.05\n        Case 50 To 99\n            CalculeazaDiscount = 0.1\n        Case Is >= 100\n            CalculeazaDiscount = 0.15\n    End Select\nEnd Function\n\nSub TestDiscount()\n    MsgBox CalculeazaDiscount(75) ' returnează 0,1 (10%)\n    MsgBox CalculeazaDiscount(5)  ' returnează 0 (0%)\nEnd Sub\n```\n\nObservă ordinea ramurilor: am pus prima dată cazul invalid (`Is <= 0`), astfel încât să fie interceptat înainte de a ajunge la intervalele normale. Pentru `cantitate = 75`, VBA găsește potrivirea la `Case 50 To 99` și returnează `0.1`; pentru `cantitate = 5`, se potrivește `Case 1 To 9` și returnează `0`.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Într-un lanț If...ElseIf...ElseIf...Else, dacă mai multe condiții ar fi teoretic adevărate simultan, care ramură se execută?",
+    "choices": [
+     "Ultima condiție adevărată din listă",
+     "Toate ramurile adevărate, pe rând",
+     "Prima condiție adevărată întâlnită, de sus în jos; restul sunt ignorate",
+     "Se generează eroare de compilare"
+    ],
+    "answer": 2,
+    "explain": "VBA evaluează condițiile în ordine, de sus în jos, și execută instrucțiunile din prima ramură a cărei condiție este adevărată, apoi sare direct la End If — de aceea ordinea condițiilor este critică, mai ales la intervale numerice suprapuse.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cum testezi corect, într-un bloc Select Case, dacă o variabilă este cuprinsă între 10 și 20 (inclusiv)?",
+    "choices": [
+     "Case 10 - 20",
+     "Case Between 10 And 20",
+     "Case 10 To 20",
+     "Case Is 10 To 20"
+    ],
+    "answer": 2,
+    "explain": "Sintaxa corectă pentru un interval în Select Case este \"Case valoareMin To valoareMax\", de exemplu Case 10 To 20. Cuvântul cheie Is se folosește separat, pentru comparații de tip Case Is > prag, nu pentru intervale.",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cuvânt cheie obligatoriu închide un If...Then...Else scris pe mai multe linii (forma bloc)?",
+    "back": "End If — fără el, VBA generează eroare de compilare, chiar dacă restul codului e corect.",
+    "concept_key": "vba-if-then-else",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este ordinea de evaluare a ramurilor ElseIf?",
+    "back": "De sus în jos; se execută doar prima ramură a cărei condiție este adevărată, restul fiind ignorate.",
+    "concept_key": "vba-elseif",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum scrii, în Select Case, un test de tipul \"valoarea depășește 100\"?",
+    "back": "Case Is > 100 — cuvântul cheie Is se folosește exclusiv în interiorul lui Select Case.",
+    "concept_key": "vba-select-case",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum specifici un interval numeric într-un Select Case, de exemplu între 1 și 10?",
+    "back": "Case 1 To 10",
+    "concept_key": "vba-select-case",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce separator zecimal folosesc literalii numerici scriși direct în codul VBA, indiferent de setările regionale ale Excel-ului?",
+    "back": "Punctul (de exemplu 0.06), niciodată virgula, chiar dacă în celule zecimalele se afișează cu virgulă conform setărilor RO.",
+    "concept_key": "vba-if-then-else",
+    "blockId": "cmjjuxvpw003dumkp8alltl1f-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1299,
+   "flashcards": 5
+  }
+ }
+}

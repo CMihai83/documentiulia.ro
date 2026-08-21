@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvsi0054umkp811a9c0s",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Inițierea Proiectului",
+ "lesson": "Template Project Charter",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Template Project Charter\n\n## Ce este un Project Charter?\n\nProject Charter-ul (document de constituire a proiectului) este documentul oficial prin care sponsorul autorizează existența unui proiect și acordă managerului de proiect (PM) autoritatea de a folosi resursele organizației pentru a-l duce la îndeplinire. Este primul document formal al unui proiect, elaborat imediat după decizia de a-l demara, în etapa de inițiere.\n\nConform PMBOK 7, charter-ul nu descrie *cum* se va face proiectul (asta e rolul planului de management al proiectului), ci *de ce* există proiectul și *cine* are autoritate asupra lui. Practic, este „contractul” dintre sponsor și PM: sponsorul confirmă obiectivele de business și bugetul estimat, iar PM-ul primește mandatul formal de a coordona echipa, de a lua decizii operaționale și de a raporta progresul.\n\nDe ce contează atât de mult acest document, mai ales în organizațiile din România unde proiectele pornesc adesea „pe repede înainte”, fără o autorizare clară? Fără charter, PM-ul nu are pârghie reală: nu poate cere prioritate pentru resurse, nu poate justifica deciziile în fața departamentelor implicate și nu are un punct de referință atunci când apar cereri de schimbare a scopului (scope creep). Charter-ul semnat de sponsor este, de fapt, argumentul de autoritate al PM-ului în fața organizației.\n\nCharter-ul rămâne un document la nivel înalt (high-level) — de regulă 2-4 pagini — și nu se modifică frecvent pe parcursul proiectului. Dacă obiectivele fundamentale se schimbă radical, charter-ul trebuie revizuit și reaprobat de sponsor.\n\n## Structura standard a unui Project Charter\n\nDeși fiecare organizație își adaptează formatul, un Project Charter complet, aliniat cu practicile PMBOK 7, conține următoarele secțiuni:\n\n1. **Titlul și scurta descriere a proiectului** — numele proiectului și 2-3 fraze despre ce urmează să se livreze.\n2. **Business case / justificare** — de ce se face proiectul: ce problemă rezolvă sau ce oportunitate valorifică, legat de strategia organizației.\n3. **Obiective și criterii de succes** — formulate SMART (Specifice, Măsurabile, Realizabile, Relevante, încadrate în Timp).\n4. **Scopul la nivel înalt** — ce este inclus (in-scope) și ce este explicit exclus (out-of-scope), pentru a preveni neînțelegerile ulterioare.\n5. **Livrabile-cheie** — rezultatele principale așteptate (ex. sistem ERP funcțional, manual de proceduri, echipă instruită).\n6. **Milestone-uri majore și buget estimat** — la nivel de ordin de mărime, nu detaliat (detalierea vine în planul de proiect).\n7. **Riscuri și presupuneri (assumptions) inițiale** — factori care pot afecta proiectul, identificați încă din faza de inițiere.\n8. **Stakeholderi-cheie** — sponsor, PM desemnat, comitet director, principalii beneficiari.\n9. **Autoritatea PM-ului** — ce decizii poate lua PM-ul fără aprobare suplimentară (ex. realocări de buget sub un anumit prag).\n10. **Aprobare și semnături** — data și semnătura sponsorului (și, ideal, a PM-ului care acceptă mandatul).\n\nOrdinea secțiunilor poate varia, dar toate trebuie să existe într-o formă sau alta — un charter fără secțiunea de autoritate a PM-ului sau fără semnătura sponsorului este incomplet și nu își atinge scopul.\n\n## Cum se completează charter-ul, pas cu pas\n\nCharter-ul nu se scrie izolat de către PM: se elaborează împreună cu sponsorul, într-o discuție structurată de inițiere.\n\n- **Obiective SMART**: în loc de „îmbunătățim eficiența operațională”, scrie „reducem timpul de procesare a unei comenzi de la 48 la 24 de ore, până la sfârșitul trimestrului 4”. Un obiectiv măsurabil permite verificarea ulterioară a succesului.\n- **Business case pe scurt**: leagă proiectul de un beneficiu cuantificabil sau strategic (economie de costuri, conformitate, avantaj competitiv). Dacă beneficiul nu poate fi articulat clar, e un semnal că proiectul poate să nu merite resursele alocate.\n- **Scop in/out**: listează explicit ce NU face proiectul. Este cea mai bună asigurare împotriva cererilor ulterioare de genul „mai adaugă și asta, doar suntem deja aici”.\n- **Buget și termene la nivel de ordin de mărime**: charter-ul oferă un interval realist (ex. „180.000-210.000 lei, 5-7 luni”), nu cifre exacte care vor fi rafinate abia după planificarea detaliată (WBS și estimări).\n- **Tailoring (adaptare)**: PMBOK 7 pune accent pe principiul adaptării — pentru un proiect mic, intern, charter-ul poate încăpea pe o singură pagină; pentru un proiect mare, cu mai mulți furnizori, poate avea anexe detaliate de riscuri și guvernanță. Nu exagera cu birocrația proporțional cu mărimea proiectului.\n\nDupă ce documentul e redactat, el se trimite sponsorului pentru validare și semnătură — abia din acel moment proiectul este oficial autorizat, iar PM-ul poate începe planificarea detaliată.\n\n## Exemplu: Project Charter completat — Implementare sistem ERP\n## Exemplu ipotetic: Alfa Distribuție SRL — Implementare ERP\n\nMai jos găsești un Project Charter completat pentru un proiect tipic de digitalizare la o firmă românească de distribuție (exemplu ilustrativ, cifrele sunt orientative):\n\n**Titlu proiect**: Implementare sistem ERP la Alfa Distribuție SRL\n\n**Business case**: Firma folosește în prezent 3 aplicații separate (facturare, gestiune stoc, contabilitate) care nu comunică între ele, ceea ce generează erori de raportare și dublarea muncii de introducere a datelor. Implementarea unui ERP unificat este estimată să reducă timpul lunar de închidere contabilă de la 10 zile la 4 zile.\n\n**Obiective SMART**:\n- Migrarea datelor de stoc și facturare în noul ERP până în luna 4 a proiectului.\n- Reducerea timpului de închidere contabilă lunară la maximum 4 zile lucrătoare, începând din luna 6.\n- Instruirea a minimum 25 de angajați din departamentele financiar, vânzări și logistică.\n\n**Scop (in-scope)**: modulele Financiar, Stocuri, Vânzări, Achiziții; migrarea datelor din ultimii 2 ani; instruire utilizatori-cheie.\n**Scop (out-of-scope)**: modulul de resurse umane și salarizare (rămâne pe sistemul actual); integrarea cu magazinul online (proiect separat, ulterior).\n\n**Livrabile-cheie**: ERP configurat și funcțional, plan de migrare a datelor, manual de utilizare intern, echipă instruită.\n\n**Milestone-uri și buget estimat**: buget estimat 180.000-210.000 lei; durată estimată 6 luni; milestone-uri principale la finalul lunii 2 (configurare finalizată), lunii 4 (migrare date) și lunii 6 (go-live).\n\n**Riscuri inițiale**: rezistență la schimbare din partea angajaților cu vechime; posibile întârzieri ale furnizorului de ERP în etapa de configurare.\n\n**Stakeholderi-cheie**: Sponsor — Director General; Manager de proiect — desemnat din departamentul IT; Comitet director — Director Financiar și Director Operațiuni.\n\n**Autoritatea PM-ului**: poate realoca până la 10% din bugetul aprobat între categorii de cheltuieli, fără aprobare suplimentară; orice depășire a bugetului total necesită aprobarea sponsorului.\n\n**Aprobare**: semnat de Director General, cu data de start oficial a proiectului.\n\nObservă cum fiecare secțiune răspunde la o întrebare concretă — nu există fraze vagi de tipul „îmbunătățim procesele”.\n\n## Exemplu: Adaptarea charter-ului pentru un proiect mic\n## Exemplu de adaptare: charter pentru un proiect mic\n\nPentru un proiect mic — digitalizarea arhivei fizice de documente la un cabinet de contabilitate cu 8 angajați — charter-ul complet de mai sus ar fi disproporționat. Principiul de tailoring din PMBOK 7 recomandă o versiune condensată, pe o singură pagină:\n\n- **Business case**: eliminarea riscului de pierdere a documentelor fizice și reducerea timpului de căutare a unui document de la aproximativ 15 minute la sub 2 minute.\n- **Obiectiv**: scanarea și indexarea a 100% din arhiva ultimilor 3 ani, până în 8 săptămâni.\n- **Scop**: în scop — scanare, indexare, backup în cloud; în afara scopului — arhivarea documentelor mai vechi de 3 ani.\n- **Buget**: aproximativ 15.000 lei (echipament de scanare + ore de lucru).\n- **Sponsor**: administratorul cabinetului, care semnează charter-ul pe o singură pagină.\n\nAceeași logică, aceleași secțiuni esențiale — dar fără anexe de guvernanță sau comitete multiple, pentru că mărimea și riscul proiectului nu le justifică. Regula practică: charter-ul trebuie să fie suficient de detaliat cât să elimine ambiguitatea, dar nu mai mult de atât.\n\n⚠ Cele mai frecvente greșeli la redactarea unui Project Charter: (1) obiective formulate vag, fără cifre sau termene verificabile — imposibil de evaluat succesul; (2) lipsa secțiunii out-of-scope, care lasă loc extinderii necontrolate a proiectului (scope creep); (3) charter semnat doar de PM, nu de sponsor — fără semnătura sponsorului, documentul nu are autoritate reală; (4) charter „uitat într-un sertar” după semnare, deși ar trebui reconsultat ori de câte ori apare o schimbare majoră de scop sau buget.\n\n## Exercițiu\nEști desemnat manager de proiect pentru digitalizarea procesului de aprobare a facturilor la o firmă cu 40 de angajați (în prezent, aprobarea se face pe hârtie și durează în medie 5 zile lucrătoare). Sponsorul dorește reducerea acestui timp și eliminarea facturilor pierdute.\n\nRedactează, în 5-6 rânduri, secțiunile **Business case**, **Obiectiv SMART** și **Scop (in/out)** pentru charter-ul acestui proiect.\n\n**Soluție:** **Business case**: Aprobarea manuală pe hârtie generează întârzieri de plată către furnizori și risc de pierdere a facturilor, afectând relația cu partenerii și disciplina financiară a firmei.\n\n**Obiectiv SMART**: Reducerea timpului mediu de aprobare a unei facturi de la 5 zile lucrătoare la maximum 1 zi lucrătoare, în termen de 3 luni de la lansarea sistemului digital, pentru minimum 90% din facturile procesate.\n\n**Scop — in**: implementarea unui flux digital de aprobare (workflow), notificări automate, arhivare electronică a facturilor aprobate.\n**Scop — out**: integrarea cu sistemul de plăți bancare (rămâne proces manual, proiect viitor); facturile de la furnizori externi din UE (regim separat, tratat ulterior).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "project-charter-definitie",
+    "md": "## Ce este un Project Charter?\n\nProject Charter-ul (document de constituire a proiectului) este documentul oficial prin care sponsorul autorizează existența unui proiect și acordă managerului de proiect (PM) autoritatea de a folosi resursele organizației pentru a-l duce la îndeplinire. Este primul document formal al unui proiect, elaborat imediat după decizia de a-l demara, în etapa de inițiere.\n\nConform PMBOK 7, charter-ul nu descrie *cum* se va face proiectul (asta e rolul planului de management al proiectului), ci *de ce* există proiectul și *cine* are autoritate asupra lui. Practic, este „contractul” dintre sponsor și PM: sponsorul confirmă obiectivele de business și bugetul estimat, iar PM-ul primește mandatul formal de a coordona echipa, de a lua decizii operaționale și de a raporta progresul.\n\nDe ce contează atât de mult acest document, mai ales în organizațiile din România unde proiectele pornesc adesea „pe repede înainte”, fără o autorizare clară? Fără charter, PM-ul nu are pârghie reală: nu poate cere prioritate pentru resurse, nu poate justifica deciziile în fața departamentelor implicate și nu are un punct de referință atunci când apar cereri de schimbare a scopului (scope creep). Charter-ul semnat de sponsor este, de fapt, argumentul de autoritate al PM-ului în fața organizației.\n\nCharter-ul rămâne un document la nivel înalt (high-level) — de regulă 2-4 pagini — și nu se modifică frecvent pe parcursul proiectului. Dacă obiectivele fundamentale se schimbă radical, charter-ul trebuie revizuit și reaprobat de sponsor.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "project-charter-structura",
+    "md": "## Structura standard a unui Project Charter\n\nDeși fiecare organizație își adaptează formatul, un Project Charter complet, aliniat cu practicile PMBOK 7, conține următoarele secțiuni:\n\n1. **Titlul și scurta descriere a proiectului** — numele proiectului și 2-3 fraze despre ce urmează să se livreze.\n2. **Business case / justificare** — de ce se face proiectul: ce problemă rezolvă sau ce oportunitate valorifică, legat de strategia organizației.\n3. **Obiective și criterii de succes** — formulate SMART (Specifice, Măsurabile, Realizabile, Relevante, încadrate în Timp).\n4. **Scopul la nivel înalt** — ce este inclus (in-scope) și ce este explicit exclus (out-of-scope), pentru a preveni neînțelegerile ulterioare.\n5. **Livrabile-cheie** — rezultatele principale așteptate (ex. sistem ERP funcțional, manual de proceduri, echipă instruită).\n6. **Milestone-uri majore și buget estimat** — la nivel de ordin de mărime, nu detaliat (detalierea vine în planul de proiect).\n7. **Riscuri și presupuneri (assumptions) inițiale** — factori care pot afecta proiectul, identificați încă din faza de inițiere.\n8. **Stakeholderi-cheie** — sponsor, PM desemnat, comitet director, principalii beneficiari.\n9. **Autoritatea PM-ului** — ce decizii poate lua PM-ul fără aprobare suplimentară (ex. realocări de buget sub un anumit prag).\n10. **Aprobare și semnături** — data și semnătura sponsorului (și, ideal, a PM-ului care acceptă mandatul).\n\nOrdinea secțiunilor poate varia, dar toate trebuie să existe într-o formă sau alta — un charter fără secțiunea de autoritate a PM-ului sau fără semnătura sponsorului este incomplet și nu își atinge scopul.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "project-charter-completare",
+    "md": "## Cum se completează charter-ul, pas cu pas\n\nCharter-ul nu se scrie izolat de către PM: se elaborează împreună cu sponsorul, într-o discuție structurată de inițiere.\n\n- **Obiective SMART**: în loc de „îmbunătățim eficiența operațională”, scrie „reducem timpul de procesare a unei comenzi de la 48 la 24 de ore, până la sfârșitul trimestrului 4”. Un obiectiv măsurabil permite verificarea ulterioară a succesului.\n- **Business case pe scurt**: leagă proiectul de un beneficiu cuantificabil sau strategic (economie de costuri, conformitate, avantaj competitiv). Dacă beneficiul nu poate fi articulat clar, e un semnal că proiectul poate să nu merite resursele alocate.\n- **Scop in/out**: listează explicit ce NU face proiectul. Este cea mai bună asigurare împotriva cererilor ulterioare de genul „mai adaugă și asta, doar suntem deja aici”.\n- **Buget și termene la nivel de ordin de mărime**: charter-ul oferă un interval realist (ex. „180.000-210.000 lei, 5-7 luni”), nu cifre exacte care vor fi rafinate abia după planificarea detaliată (WBS și estimări).\n- **Tailoring (adaptare)**: PMBOK 7 pune accent pe principiul adaptării — pentru un proiect mic, intern, charter-ul poate încăpea pe o singură pagină; pentru un proiect mare, cu mai mulți furnizori, poate avea anexe detaliate de riscuri și guvernanță. Nu exagera cu birocrația proporțional cu mărimea proiectului.\n\nDupă ce documentul e redactat, el se trimite sponsorului pentru validare și semnătură — abia din acel moment proiectul este oficial autorizat, iar PM-ul poate începe planificarea detaliată.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b3"
+   },
+   {
+    "type": "example",
+    "title": "Project Charter completat — Implementare sistem ERP",
+    "concept_key": "project-charter-exemplu-erp",
+    "md": "## Exemplu ipotetic: Alfa Distribuție SRL — Implementare ERP\n\nMai jos găsești un Project Charter completat pentru un proiect tipic de digitalizare la o firmă românească de distribuție (exemplu ilustrativ, cifrele sunt orientative):\n\n**Titlu proiect**: Implementare sistem ERP la Alfa Distribuție SRL\n\n**Business case**: Firma folosește în prezent 3 aplicații separate (facturare, gestiune stoc, contabilitate) care nu comunică între ele, ceea ce generează erori de raportare și dublarea muncii de introducere a datelor. Implementarea unui ERP unificat este estimată să reducă timpul lunar de închidere contabilă de la 10 zile la 4 zile.\n\n**Obiective SMART**:\n- Migrarea datelor de stoc și facturare în noul ERP până în luna 4 a proiectului.\n- Reducerea timpului de închidere contabilă lunară la maximum 4 zile lucrătoare, începând din luna 6.\n- Instruirea a minimum 25 de angajați din departamentele financiar, vânzări și logistică.\n\n**Scop (in-scope)**: modulele Financiar, Stocuri, Vânzări, Achiziții; migrarea datelor din ultimii 2 ani; instruire utilizatori-cheie.\n**Scop (out-of-scope)**: modulul de resurse umane și salarizare (rămâne pe sistemul actual); integrarea cu magazinul online (proiect separat, ulterior).\n\n**Livrabile-cheie**: ERP configurat și funcțional, plan de migrare a datelor, manual de utilizare intern, echipă instruită.\n\n**Milestone-uri și buget estimat**: buget estimat 180.000-210.000 lei; durată estimată 6 luni; milestone-uri principale la finalul lunii 2 (configurare finalizată), lunii 4 (migrare date) și lunii 6 (go-live).\n\n**Riscuri inițiale**: rezistență la schimbare din partea angajaților cu vechime; posibile întârzieri ale furnizorului de ERP în etapa de configurare.\n\n**Stakeholderi-cheie**: Sponsor — Director General; Manager de proiect — desemnat din departamentul IT; Comitet director — Director Financiar și Director Operațiuni.\n\n**Autoritatea PM-ului**: poate realoca până la 10% din bugetul aprobat între categorii de cheltuieli, fără aprobare suplimentară; orice depășire a bugetului total necesită aprobarea sponsorului.\n\n**Aprobare**: semnat de Director General, cu data de start oficial a proiectului.\n\nObservă cum fiecare secțiune răspunde la o întrebare concretă — nu există fraze vagi de tipul „îmbunătățim procesele”.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b4"
+   },
+   {
+    "type": "example",
+    "title": "Adaptarea charter-ului pentru un proiect mic",
+    "concept_key": "project-charter-tailoring",
+    "md": "## Exemplu de adaptare: charter pentru un proiect mic\n\nPentru un proiect mic — digitalizarea arhivei fizice de documente la un cabinet de contabilitate cu 8 angajați — charter-ul complet de mai sus ar fi disproporționat. Principiul de tailoring din PMBOK 7 recomandă o versiune condensată, pe o singură pagină:\n\n- **Business case**: eliminarea riscului de pierdere a documentelor fizice și reducerea timpului de căutare a unui document de la aproximativ 15 minute la sub 2 minute.\n- **Obiectiv**: scanarea și indexarea a 100% din arhiva ultimilor 3 ani, până în 8 săptămâni.\n- **Scop**: în scop — scanare, indexare, backup în cloud; în afara scopului — arhivarea documentelor mai vechi de 3 ani.\n- **Buget**: aproximativ 15.000 lei (echipament de scanare + ore de lucru).\n- **Sponsor**: administratorul cabinetului, care semnează charter-ul pe o singură pagină.\n\nAceeași logică, aceleași secțiuni esențiale — dar fără anexe de guvernanță sau comitete multiple, pentru că mărimea și riscul proiectului nu le justifică. Regula practică: charter-ul trebuie să fie suficient de detaliat cât să elimine ambiguitatea, dar nu mai mult de atât.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cele mai frecvente greșeli la redactarea unui Project Charter: (1) obiective formulate vag, fără cifre sau termene verificabile — imposibil de evaluat succesul; (2) lipsa secțiunii out-of-scope, care lasă loc extinderii necontrolate a proiectului (scope creep); (3) charter semnat doar de PM, nu de sponsor — fără semnătura sponsorului, documentul nu are autoritate reală; (4) charter „uitat într-un sertar” după semnare, deși ar trebui reconsultat ori de câte ori apare o schimbare majoră de scop sau buget.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești desemnat manager de proiect pentru digitalizarea procesului de aprobare a facturilor la o firmă cu 40 de angajați (în prezent, aprobarea se face pe hârtie și durează în medie 5 zile lucrătoare). Sponsorul dorește reducerea acestui timp și eliminarea facturilor pierdute.\n\nRedactează, în 5-6 rânduri, secțiunile **Business case**, **Obiectiv SMART** și **Scop (in/out)** pentru charter-ul acestui proiect.",
+    "solution_md": "**Business case**: Aprobarea manuală pe hârtie generează întârzieri de plată către furnizori și risc de pierdere a facturilor, afectând relația cu partenerii și disciplina financiară a firmei.\n\n**Obiectiv SMART**: Reducerea timpului mediu de aprobare a unei facturi de la 5 zile lucrătoare la maximum 1 zi lucrătoare, în termen de 3 luni de la lansarea sistemului digital, pentru minimum 90% din facturile procesate.\n\n**Scop — in**: implementarea unui flux digital de aprobare (workflow), notificări automate, arhivare electronică a facturilor aprobate.\n**Scop — out**: integrarea cu sistemul de plăți bancare (rămâne proces manual, proiect viitor); facturile de la furnizori externi din UE (regim separat, tratat ulterior).",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al unui Project Charter?",
+    "choices": [
+     "Să detalieze pas cu pas toate activitățile proiectului",
+     "Să autorizeze oficial proiectul și să acorde PM-ului autoritatea de a folosi resurse",
+     "Să înlocuiască planul de management al proiectului",
+     "Să servească drept raport final de proiect"
+    ],
+    "answer": 1,
+    "explain": "Charter-ul autorizează existența proiectului și mandatează PM-ul; detalierea activităților se face ulterior, în planul de proiect și WBS.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De ce este importantă secțiunea „out-of-scope” într-un Project Charter?",
+    "choices": [
+     "Pentru că este cerută de legislația română",
+     "Pentru a preveni extinderea necontrolată a scopului proiectului (scope creep)",
+     "Pentru a stabili salariul echipei de proiect",
+     "Pentru că înlocuiește nevoia de buget estimat"
+    ],
+    "answer": 1,
+    "explain": "Definirea clară a ceea ce NU este inclus în proiect previne cererile ulterioare de adăugare a unor livrabile neaprobate, care ar afecta bugetul și termenele.",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un Project Charter?",
+    "back": "Documentul oficial prin care sponsorul autorizează proiectul și acordă PM-ului autoritatea de a folosi resursele organizației.",
+    "concept_key": "project-charter-definitie",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine semnează și aprobă Project Charter-ul?",
+    "back": "Sponsorul proiectului — semnătura lui conferă autoritate formală documentului.",
+    "concept_key": "project-charter-aprobare",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă „scope creep” și cum previne charter-ul acest risc?",
+    "back": "Extinderea necontrolată a scopului proiectului fără aprobare; secțiunea out-of-scope din charter previne acest fenomen prin delimitare clară.",
+    "concept_key": "project-charter-scope-creep",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce formă trebuie să aibă obiectivele dintr-un Project Charter?",
+    "back": "SMART — Specifice, Măsurabile, Realizabile, Relevante, încadrate în Timp.",
+    "concept_key": "project-charter-obiective-smart",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu din PMBOK 7 justifică un charter de o singură pagină pentru un proiect mic?",
+    "back": "Principiul de tailoring (adaptare) — nivelul de detaliu al documentelor trebuie proporțional cu mărimea și riscul proiectului.",
+    "concept_key": "project-charter-tailoring",
+    "blockId": "cmjjuxvsi0054umkp811a9c0s-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1449,
+   "flashcards": 5
+  }
+ }
+}

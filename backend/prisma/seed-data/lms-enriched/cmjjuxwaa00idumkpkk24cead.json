@@ -1,0 +1,174 @@
+{
+ "lessonId": "cmjjuxwaa00idumkpkk24cead",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Calculul Salariilor",
+ "lesson": "Ore suplimentare și sporuri",
+ "category": "HR_COMPLIANCE",
+ "content": "# Ore suplimentare și sporuri\n\nProgramul normal de lucru pentru un salariat cu normă întreagă este de 40 de ore pe săptămână, repartizate de regulă în 8 ore pe zi, 5 zile lucrătoare (art. 111-112, Legea 53/2003 – Codul Muncii, republicată). Orice oră prestată peste această durată, la cererea angajatorului, este **muncă suplimentară**.\n\nMunca suplimentară nu poate fi impusă unilateral decât în caz de forță majoră sau pentru lucrări urgente; în rest, se prestează doar cu acordul salariatului. Durata maximă legală de lucru, incluzând orele suplimentare, nu poate depăși 48 de ore pe săptămână, calculate în medie pe o perioadă de referință de 4 luni.\n\nPentru departamentul de salarizare, munca suplimentară înseamnă două obligații: evidența corectă în pontaj și compensarea ei, în termenele legale, fie prin timp liber, fie prin spor bănesc. Omisiunea acestor pași este una dintre cele mai frecvente neconformități depistate la controalele ITM.\n\nLegea prevede două modalități de compensare a muncii suplimentare, într-o ordine clară:\n\n1. **Compensare prin ore libere plătite** – soluția implicită, acordată în următoarele **90 de zile calendaristice** de la prestarea muncii suplimentare.\n2. **Plată cu spor** – dacă timp liber nu s-a putut acorda în acest termen, orele suplimentare se plătesc cu un spor de **minimum 75%** din salariul de bază.\n\nProcentul de 75% este un minim legal; contractul colectiv de muncă sau contractul individual pot prevedea procente mai mari, niciodată mai mici. Baza de calcul este salariul de bază (fără alte sporuri), împărțit la numărul de ore lucrătoare normale din luna respectivă, pentru a obține tariful orar folosit apoi la calculul valorii orei suplimentare.\n\nMunca de noapte este activitatea prestată între orele **22:00 și 06:00**. Este considerat „lucrător de noapte” salariatul care prestează astfel de muncă cel puțin 3 ore din programul zilnic, în mod obișnuit, sau cel puțin 30% din timpul lunar de lucru.\n\nPentru orele lucrate în acest interval, angajatorul trebuie să acorde una dintre următoarele:\n- reducerea programului cu o oră față de durata normală, fără diminuarea salariului; sau\n- un **spor de minimum 25%** din salariul de bază, pentru fiecare oră de noapte prestată.\n\nVerificați contractul colectiv de muncă aplicabil – procentul poate fi mai mare decât minimul legal. Dacă o oră suplimentară coincide cu intervalul de noapte, salariatul cumulează, de regulă, ambele sporuri.\n\nSpre deosebire de sporul de noapte, Codul Muncii **nu fixează un procent** pentru munca prestată în zilele de repaus săptămânal (de regulă sâmbătă-duminică) sau pentru condiții deosebite, grele ori periculoase de muncă.\n\nDacă activitatea impune lucrul în zilele de repaus săptămânal, angajatorul trebuie să acorde repaus compensatoriu în următoarele 30 de zile; contractul colectiv de muncă sau regulamentul intern poate adăuga un spor bănesc, dar fără un minim impus de lege.\n\nLa fel, sporurile pentru condiții deosebite/speciale se stabilesc prin CCM, regulament intern sau CIM, de regulă pe baza evaluării/expertizării locului de muncă, și nu printr-un procent din Codul Muncii. Orice spor peste minimul legal (75% ore suplimentare, 25% noapte) trebuie prevăzut explicit în CIM, act adițional sau CCM, ca să fie opozabil la un control ITM.\n\n## Exemplu: Calculul plății pentru ore suplimentare (spor 75%)\nUn salariat are salariul de bază brut de **6.800 lei/lună**, iar în luna de referință programul normal însumează 170 de ore. În aceeași lună, salariatul prestează **8 ore suplimentare**, care nu au putut fi compensate prin timp liber în termenul de 90 de zile, astfel că se plătesc cu spor.\n\n1. Tarif orar = 6.800 / 170 = **40 lei/oră**\n2. Valoarea orei suplimentare (spor minim 75%) = 40 + 40 × 0,75 = **70 lei/oră**\n3. Plată ore suplimentare = 8 × 70 = **560 lei**\n4. Salariu brut total = 6.800 + 560 = **7.360 lei**\n\nCalcul net (CAS 25%, CASS 10%, impozit 10%, fără deduceri personale):\n- CAS = 7.360 × 25% = 1.840 lei\n- CASS = 7.360 × 10% = 736 lei\n- Bază impozit = 7.360 − 1.840 − 736 = 4.784 lei\n- Impozit = 4.784 × 10% = 478,40 lei\n- **Net = 7.360 − 1.840 − 736 − 478,40 = 4.305,60 lei**\n\nAngajatorul suportă suplimentar contribuția asiguratorie pentru muncă (CAM) de 2,25%, adică 7.360 × 2,25% = 165,60 lei, cost care nu se scade din salariul angajatului.\n\n## Exemplu: Calculul sporului de noapte\nUn salariat are salariul de bază brut de **5.100 lei/lună**, cu un program normal lunar de 170 de ore. În luna respectivă lucrează **16 ore în intervalul 22:00–06:00**.\n\n1. Tarif orar = 5.100 / 170 = **30 lei/oră**\n2. Spor noapte (25%) = 30 × 0,25 = **7,5 lei/oră**\n3. Valoare spor pentru 16 ore = 16 × 7,5 = **120 lei**\n4. Salariu brut total = 5.100 + 120 = **5.220 lei**\n\nCalcul net:\n- CAS = 5.220 × 25% = 1.305 lei\n- CASS = 5.220 × 10% = 522 lei\n- Bază impozit = 5.220 − 1.305 − 522 = 3.393 lei\n- Impozit = 3.393 × 10% = 339,30 lei\n- **Net = 5.220 − 1.305 − 522 − 339,30 = 3.053,70 lei**\n\nDacă orele de noapte s-ar suprapune și cu ore suplimentare, cele două sporuri se cumulează, fiecare calculat la aceeași bază – salariul de bază orar.\n\n> Temei legal: Legea 53/2003 – Codul Muncii, republicată art. 111-112, 122-123 (în vigoare de la 2003-03-01)\nDurata normală a timpului de muncă este de 40 de ore pe săptămână (art. 111-112). Munca suplimentară se compensează, cu prioritate, prin ore libere plătite acordate în următoarele 90 de zile calendaristice de la prestarea ei; dacă acest lucru nu este posibil, se plătește cu un spor de minimum 75% din salariul de bază (art. 122-123). Verificați forma consolidată a legii pentru eventuale modificări ulterioare ale termenelor.\n\n> Temei legal: Legea 53/2003 – Codul Muncii, republicată art. 125-128 (în vigoare de la 2003-03-01)\nMunca de noapte este cea prestată între orele 22:00 și 06:00. Lucrătorul de noapte beneficiază, pentru orele astfel lucrate, fie de reducerea programului cu o oră fără diminuarea salariului, fie de un spor de minimum 25% din salariul de bază pentru fiecare oră de noapte prestată. Contractul colectiv de muncă aplicabil poate stabili un procent superior minimului legal.\n\n⚠ Nu confundați sporul de noapte sau de ore suplimentare cu facilitatea fiscală aplicabilă salariului minim: de la 1 iulie 2026, partea netaxabilă din salariul minim brut este de 200 lei (redusă de la 300 lei, conform OUG 89/2025), aplicabilă doar acelor salariați al căror salariu de bază este la nivelul minim și pentru care acesta este singurul loc de muncă. Adăugarea de sporuri poate schimba încadrarea salariatului față de această facilitate – verificați punctual cu un specialist de salarizare înainte de a o aplica.\n\n⚠ Procentele de 75% (ore suplimentare) și 25% (muncă de noapte) sunt **minime legale**; sporurile pentru weekend și condiții deosebite/speciale nu au un procent fixat de Codul Muncii și depind de CCM, regulamentul intern sau CIM. Acest conținut are scop informativ și nu constituie consultanță juridică individuală – pentru situații specifice sau litigioase, consultați un avocat specializat în dreptul muncii sau un expert în salarizare.\n\n## Exercițiu\nUn salariat are salariul de bază brut de **5.160 lei/lună**, iar programul normal al lunii însumează 172 de ore. În luna respectivă, salariatul prestează **12 ore suplimentare**, care nu au fost compensate cu timp liber în termenul de 90 de zile.\n\nCalculați: a) tariful orar; b) valoarea orei suplimentare (spor minim 75%); c) suma brută pentru orele suplimentare; d) salariul brut total; e) salariul net (CAS 25%, CASS 10%, impozit 10%, fără deduceri personale).\n\n**Soluție:** a) Tarif orar = 5.160 / 172 = 30 lei/oră\nb) Valoare oră suplimentară = 30 + 30 × 0,75 = 52,5 lei/oră\nc) Sumă brută ore suplimentare = 12 × 52,5 = 630 lei\nd) Salariu brut total = 5.160 + 630 = 5.790 lei\ne) CAS = 5.790 × 25% = 1.447,50 lei; CASS = 5.790 × 10% = 579 lei; Bază impozit = 5.790 − 1.447,50 − 579 = 3.763,50 lei; Impozit = 376,35 lei; **Net = 5.790 − 1.447,50 − 579 − 376,35 = 3.387,15 lei**",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "ore-suplimentare-definitie",
+    "md": "Programul normal de lucru pentru un salariat cu normă întreagă este de 40 de ore pe săptămână, repartizate de regulă în 8 ore pe zi, 5 zile lucrătoare (art. 111-112, Legea 53/2003 – Codul Muncii, republicată). Orice oră prestată peste această durată, la cererea angajatorului, este **muncă suplimentară**.\n\nMunca suplimentară nu poate fi impusă unilateral decât în caz de forță majoră sau pentru lucrări urgente; în rest, se prestează doar cu acordul salariatului. Durata maximă legală de lucru, incluzând orele suplimentare, nu poate depăși 48 de ore pe săptămână, calculate în medie pe o perioadă de referință de 4 luni.\n\nPentru departamentul de salarizare, munca suplimentară înseamnă două obligații: evidența corectă în pontaj și compensarea ei, în termenele legale, fie prin timp liber, fie prin spor bănesc. Omisiunea acestor pași este una dintre cele mai frecvente neconformități depistate la controalele ITM.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "compensare-ore-suplimentare",
+    "md": "Legea prevede două modalități de compensare a muncii suplimentare, într-o ordine clară:\n\n1. **Compensare prin ore libere plătite** – soluția implicită, acordată în următoarele **90 de zile calendaristice** de la prestarea muncii suplimentare.\n2. **Plată cu spor** – dacă timp liber nu s-a putut acorda în acest termen, orele suplimentare se plătesc cu un spor de **minimum 75%** din salariul de bază.\n\nProcentul de 75% este un minim legal; contractul colectiv de muncă sau contractul individual pot prevedea procente mai mari, niciodată mai mici. Baza de calcul este salariul de bază (fără alte sporuri), împărțit la numărul de ore lucrătoare normale din luna respectivă, pentru a obține tariful orar folosit apoi la calculul valorii orei suplimentare.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "spor-munca-noapte",
+    "md": "Munca de noapte este activitatea prestată între orele **22:00 și 06:00**. Este considerat „lucrător de noapte” salariatul care prestează astfel de muncă cel puțin 3 ore din programul zilnic, în mod obișnuit, sau cel puțin 30% din timpul lunar de lucru.\n\nPentru orele lucrate în acest interval, angajatorul trebuie să acorde una dintre următoarele:\n- reducerea programului cu o oră față de durata normală, fără diminuarea salariului; sau\n- un **spor de minimum 25%** din salariul de bază, pentru fiecare oră de noapte prestată.\n\nVerificați contractul colectiv de muncă aplicabil – procentul poate fi mai mare decât minimul legal. Dacă o oră suplimentară coincide cu intervalul de noapte, salariatul cumulează, de regulă, ambele sporuri.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "spor-weekend-conditii-speciale",
+    "md": "Spre deosebire de sporul de noapte, Codul Muncii **nu fixează un procent** pentru munca prestată în zilele de repaus săptămânal (de regulă sâmbătă-duminică) sau pentru condiții deosebite, grele ori periculoase de muncă.\n\nDacă activitatea impune lucrul în zilele de repaus săptămânal, angajatorul trebuie să acorde repaus compensatoriu în următoarele 30 de zile; contractul colectiv de muncă sau regulamentul intern poate adăuga un spor bănesc, dar fără un minim impus de lege.\n\nLa fel, sporurile pentru condiții deosebite/speciale se stabilesc prin CCM, regulament intern sau CIM, de regulă pe baza evaluării/expertizării locului de muncă, și nu printr-un procent din Codul Muncii. Orice spor peste minimul legal (75% ore suplimentare, 25% noapte) trebuie prevăzut explicit în CIM, act adițional sau CCM, ca să fie opozabil la un control ITM.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul plății pentru ore suplimentare (spor 75%)",
+    "concept_key": "calcul-ore-suplimentare",
+    "md": "Un salariat are salariul de bază brut de **6.800 lei/lună**, iar în luna de referință programul normal însumează 170 de ore. În aceeași lună, salariatul prestează **8 ore suplimentare**, care nu au putut fi compensate prin timp liber în termenul de 90 de zile, astfel că se plătesc cu spor.\n\n1. Tarif orar = 6.800 / 170 = **40 lei/oră**\n2. Valoarea orei suplimentare (spor minim 75%) = 40 + 40 × 0,75 = **70 lei/oră**\n3. Plată ore suplimentare = 8 × 70 = **560 lei**\n4. Salariu brut total = 6.800 + 560 = **7.360 lei**\n\nCalcul net (CAS 25%, CASS 10%, impozit 10%, fără deduceri personale):\n- CAS = 7.360 × 25% = 1.840 lei\n- CASS = 7.360 × 10% = 736 lei\n- Bază impozit = 7.360 − 1.840 − 736 = 4.784 lei\n- Impozit = 4.784 × 10% = 478,40 lei\n- **Net = 7.360 − 1.840 − 736 − 478,40 = 4.305,60 lei**\n\nAngajatorul suportă suplimentar contribuția asiguratorie pentru muncă (CAM) de 2,25%, adică 7.360 × 2,25% = 165,60 lei, cost care nu se scade din salariul angajatului.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calculul sporului de noapte",
+    "concept_key": "calcul-spor-noapte",
+    "md": "Un salariat are salariul de bază brut de **5.100 lei/lună**, cu un program normal lunar de 170 de ore. În luna respectivă lucrează **16 ore în intervalul 22:00–06:00**.\n\n1. Tarif orar = 5.100 / 170 = **30 lei/oră**\n2. Spor noapte (25%) = 30 × 0,25 = **7,5 lei/oră**\n3. Valoare spor pentru 16 ore = 16 × 7,5 = **120 lei**\n4. Salariu brut total = 5.100 + 120 = **5.220 lei**\n\nCalcul net:\n- CAS = 5.220 × 25% = 1.305 lei\n- CASS = 5.220 × 10% = 522 lei\n- Bază impozit = 5.220 − 1.305 − 522 = 3.393 lei\n- Impozit = 3.393 × 10% = 339,30 lei\n- **Net = 5.220 − 1.305 − 522 − 339,30 = 3.053,70 lei**\n\nDacă orele de noapte s-ar suprapune și cu ore suplimentare, cele două sporuri se cumulează, fiecare calculat la aceeași bază – salariul de bază orar.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea 53/2003 – Codul Muncii, republicată",
+    "article": "art. 111-112, 122-123",
+    "effective": "2003-03-01",
+    "md": "Durata normală a timpului de muncă este de 40 de ore pe săptămână (art. 111-112). Munca suplimentară se compensează, cu prioritate, prin ore libere plătite acordate în următoarele 90 de zile calendaristice de la prestarea ei; dacă acest lucru nu este posibil, se plătește cu un spor de minimum 75% din salariul de bază (art. 122-123). Verificați forma consolidată a legii pentru eventuale modificări ulterioare ale termenelor.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b7"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea 53/2003 – Codul Muncii, republicată",
+    "article": "art. 125-128",
+    "effective": "2003-03-01",
+    "md": "Munca de noapte este cea prestată între orele 22:00 și 06:00. Lucrătorul de noapte beneficiază, pentru orele astfel lucrate, fie de reducerea programului cu o oră fără diminuarea salariului, fie de un spor de minimum 25% din salariul de bază pentru fiecare oră de noapte prestată. Contractul colectiv de muncă aplicabil poate stabili un procent superior minimului legal.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b8"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confundați sporul de noapte sau de ore suplimentare cu facilitatea fiscală aplicabilă salariului minim: de la 1 iulie 2026, partea netaxabilă din salariul minim brut este de 200 lei (redusă de la 300 lei, conform OUG 89/2025), aplicabilă doar acelor salariați al căror salariu de bază este la nivelul minim și pentru care acesta este singurul loc de muncă. Adăugarea de sporuri poate schimba încadrarea salariatului față de această facilitate – verificați punctual cu un specialist de salarizare înainte de a o aplica.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b9"
+   },
+   {
+    "type": "warning",
+    "md": "Procentele de 75% (ore suplimentare) și 25% (muncă de noapte) sunt **minime legale**; sporurile pentru weekend și condiții deosebite/speciale nu au un procent fixat de Codul Muncii și depind de CCM, regulamentul intern sau CIM. Acest conținut are scop informativ și nu constituie consultanță juridică individuală – pentru situații specifice sau litigioase, consultați un avocat specializat în dreptul muncii sau un expert în salarizare.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b10"
+   },
+   {
+    "type": "exercise",
+    "md": "Un salariat are salariul de bază brut de **5.160 lei/lună**, iar programul normal al lunii însumează 172 de ore. În luna respectivă, salariatul prestează **12 ore suplimentare**, care nu au fost compensate cu timp liber în termenul de 90 de zile.\n\nCalculați: a) tariful orar; b) valoarea orei suplimentare (spor minim 75%); c) suma brută pentru orele suplimentare; d) salariul brut total; e) salariul net (CAS 25%, CASS 10%, impozit 10%, fără deduceri personale).",
+    "solution_md": "a) Tarif orar = 5.160 / 172 = 30 lei/oră\nb) Valoare oră suplimentară = 30 + 30 × 0,75 = 52,5 lei/oră\nc) Sumă brută ore suplimentare = 12 × 52,5 = 630 lei\nd) Salariu brut total = 5.160 + 630 = 5.790 lei\ne) CAS = 5.790 × 25% = 1.447,50 lei; CASS = 5.790 × 10% = 579 lei; Bază impozit = 5.790 − 1.447,50 − 579 = 3.763,50 lei; Impozit = 376,35 lei; **Net = 5.790 − 1.447,50 − 579 − 376,35 = 3.387,15 lei**",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este sporul minim legal pentru orele suplimentare care nu au fost compensate prin timp liber în termenul legal?",
+    "choices": [
+     "25%",
+     "50%",
+     "75%",
+     "100%"
+    ],
+    "answer": 2,
+    "explain": "Conform art. 123 din Codul Muncii, dacă munca suplimentară nu poate fi compensată prin ore libere plătite în termenul de 90 de zile, ea se plătește cu un spor de minimum 75% din salariul de bază.",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b12"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În câte zile calendaristice trebuie compensată munca suplimentară prin ore libere plătite, conform Codului Muncii?",
+    "choices": [
+     "30 de zile",
+     "60 de zile",
+     "90 de zile",
+     "120 de zile"
+    ],
+    "answer": 2,
+    "explain": "Termenul legal pentru compensarea prin ore libere plătite este de 90 de zile calendaristice de la prestarea muncii suplimentare (art. 122 Codul Muncii).",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b13"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este procentul minim al sporului pentru munca de noapte (22:00-06:00)?",
+    "choices": [
+     "10%",
+     "15%",
+     "25%",
+     "50%"
+    ],
+    "answer": 2,
+    "explain": "Codul Muncii prevede un spor de minimum 25% din salariul de bază pentru fiecare oră de muncă de noapte prestată (sau, alternativ, reducerea programului cu o oră).",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata normală a timpului de muncă pentru un salariat cu normă întreagă?",
+    "back": "40 de ore pe săptămână, de regulă 8 ore/zi, 5 zile lucrătoare (art. 111-112 Codul Muncii).",
+    "concept_key": "norma-40-ore-saptamana",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În câte zile trebuie compensată munca suplimentară prin ore libere plătite?",
+    "back": "În următoarele 90 de zile calendaristice de la prestarea ei; dacă nu este posibil, se plătește cu spor minim 75%.",
+    "concept_key": "compensare-ore-suplimentare",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce procent minim are sporul pentru munca de noapte?",
+    "back": "Minimum 25% din salariul de bază pentru fiecare oră lucrată între 22:00-06:00 (sau reducerea programului cu o oră).",
+    "concept_key": "spor-munca-noapte",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se stabilește sporul pentru munca în zilele de repaus săptămânal (weekend)?",
+    "back": "Nu are un procent fix în Codul Muncii; se stabilește prin CCM sau regulament intern, alături de repaus compensatoriu în 30 de zile.",
+    "concept_key": "spor-weekend",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b18"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este salariul minim brut pe economie de la 1 iulie 2026?",
+    "back": "4.325 lei brut (net aprox. 2.699 lei), conform HG 146/2026.",
+    "concept_key": "salariu-minim-iulie-2026",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b19"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este partea netaxabilă din salariul minim de la 1 iulie 2026?",
+    "back": "200 lei (redusă de la 300 lei), conform OUG 89/2025.",
+    "concept_key": "parte-netaxabila-salariu-minim",
+    "blockId": "cmjjuxwaa00idumkpkk24cead-b20"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1256,
+   "flashcards": 6
+  }
+ }
+}

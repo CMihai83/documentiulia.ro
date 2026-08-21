@@ -1,0 +1,159 @@
+{
+ "lessonId": "cmjjuxw6f00f7umkph6mjjaar",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Cash Flow Management",
+ "lesson": "Treasury și Liquidity Management",
+ "category": "FINANCE_OPS",
+ "content": "# Treasury și Liquidity Management\n\n## Managementul trezoreriei: rolul strategic al funcției de treasury\n\nTrezoreria (*treasury*) este funcția financiară responsabilă cu gestionarea lichidității, a riscului financiar și a relației cu băncile și piețele de capital. Într-o companie matură sau într-un grup cu mai multe filiale, treasury nu înseamnă doar „să ai bani în cont” — este o funcție strategică ce raportează CFO-ului și, adesea, direct board-ului.\n\nManagementul trezoreriei urmărește trei obiective centrale:\n\n1. **Lichiditate** — capacitatea firmei de a onora plățile scadente (salarii, furnizori, rate de credit) fără întreruperi, indiferent de fluctuațiile sezoniere ale cash flow-ului operațional.\n2. **Optimizarea costului capitalului** — minimizarea dobânzilor plătite la finanțare și maximizarea randamentului excedentului de numerar, fără a compromite siguranța fondurilor.\n3. **Gestionarea riscurilor financiare** — risc valutar (FX), risc de rată a dobânzii și risc de contraparte (banca sau partenerul cu care tranzacționezi).\n\nÎn grupurile cu mai multe entități legale (de exemplu mai multe SRL-uri sub un holding), treasury centralizează deciziile de finanțare și investire, pentru a evita situația în care o filială plătește dobândă la un credit în timp ce alta ține bani neproductivi într-un cont curent. Instrumentul standard pentru această centralizare este **cash pooling-ul**, pe care îl detaliem în continuare.\n\n## Cash pooling: centralizarea lichidității la nivel de grup\n\nCash pooling-ul este mecanismul prin care un grup de companii își concentrează soldurile bancare într-un cont central (*master account*), compensând excedentele unor entități cu deficitele altora. Există două forme principale.\n\n### Zero-balancing pooling (physical pooling)\nLa finalul fiecărei zile bancare, soldurile conturilor participante sunt transferate automat (*sweep*) către sau dinspre contul master, astfel încât fiecare cont ajunge la zero. Contabil, fiecare transfer generează un împrumut intra-grup (*intercompany loan*) între filială și entitatea care deține contul master (adesea un *in-house bank* sau societatea-mamă).\n\n### Notional pooling\nBanca nu mută efectiv banii, ci compensează *virtual* soldurile doar pentru calculul dobânzii — grupul plătește sau încasează dobândă la soldul net agregat, deși fiecare cont își păstrează soldul real. Acest model a devenit mai puțin utilizat după introducerea cerințelor de capital Basel III, care îl fac mai costisitor pentru bănci, deci mai scump pentru client.\n\n### Atenție la prețurile de transfer\nPentru grupurile cu entități în România, dobânda practicată la împrumuturile intra-grup generate de cash pooling trebuie să respecte principiul valorii de piață (*arm's length*), conform regulilor de prețuri de transfer. O dobândă anormal de mică sau de mare față de piață poate fi ajustată de ANAF la un control fiscal. Recomandarea practică: documentează politica de cash pooling într-un fișier de prețuri de transfer și folosește ca referință rate de piață curente (de exemplu ROBOR/IRCC plus o marjă justificată), actualizate periodic.\n\n## Linii de credit: tamponul de lichiditate\n\nO companie care se bazează exclusiv pe cash flow-ul operațional pentru a-și acoperi nevoile de plată este vulnerabilă la orice întârziere de încasare. De aceea, treasury negociază proactiv linii de credit ca „plasă de siguranță”, chiar dacă nu sunt trase imediat.\n\nCele mai comune tipuri:\n\n- **Descoperit de cont (overdraft)** — permite soldul negativ al contului curent până la un plafon, cu dobândă calculată zilnic doar pe suma efectiv folosită. Flexibil, dar de regulă cel mai scump per leu utilizat.\n- **Linie de credit revolving (Revolving Credit Facility – RCF)** — plafon pe care compania îl poate trage și rambursa repetat, pe durata contractului, folosit tipic pentru finanțarea capitalului de lucru (stocuri, creanțe).\n- **Linie de credit pentru capital de lucru dedicată** — adesea legată de un activ specific drept garanție (stocuri, creanțe cesionate) sau de un ciclu sezonier de afaceri.\n\nAceste facilități vin aproape întotdeauna cu **covenants** (clauze contractuale de monitorizare financiară) — de exemplu un plafon maxim al gradului de îndatorare (*leverage ratio* = Datorie netă/EBITDA) sau un prag minim de acoperire a serviciului datoriei (*DSCR*). Depășirea unui covenant poate declanșa scadența anticipată a creditului, chiar dacă firma nu a întârziat nicio plată — de aceea monitorizarea covenants-urilor este o sarcină permanentă a trezorierului, nu doar un exercițiu la raportarea anuală.\n\n## Investirea excedentului de numerar: piramida siguranță – lichiditate – randament\n\nCând o companie are surplus temporar de cash (de exemplu după o încasare mare sau într-un vârf sezonier), tentația este să caute randamentul maxim. Regula de aur a trezoreriei corporative este însă inversă: pentru numerarul operațional, criteriile se aplică în această ordine strictă:\n\n1. **Siguranța capitalului** — nu-ți permiți să pierzi banii de care depinde plata salariilor sau a furnizorilor luna viitoare.\n2. **Lichiditatea** — capacitatea de a converti rapid investiția în cash, fără penalizări mari, dacă apare o nevoie neprevăzută.\n3. **Randamentul** — abia al treilea criteriu; se optimizează *după* ce primele două sunt îndeplinite.\n\nInstrumentele tipice pentru excedentul de trezorerie, în ordinea crescătoare a orizontului de plasare, sunt: depozitele bancare la termen (overnight până la 3 luni), certificatele de depozit, titlurile de stat pe termen scurt și fondurile de piață monetară (*money market funds*). Instrumentele speculative (acțiuni, criptoactive, produse structurate cu risc de capital) nu au ce căuta în gestiunea trezoreriei operaționale — acestea aparțin, cel mult, unei politici separate de investiții pe termen lung a excedentelor structurale, aprobată explicit de board.\n\n## FX hedging: tipuri de expunere și instrumente de acoperire\n\nOrice companie care încasează sau plătește în altă monedă decât cea funcțională este expusă riscului valutar. Se disting trei tipuri de expunere:\n\n- **Expunere tranzacțională** — o factură de încasat sau de plătit într-o valută, cu decontare la o dată viitoare (cel mai frecvent caz în import-export).\n- **Expunere translațională** — apare la consolidarea situațiilor financiare ale unei filiale străine în moneda grupului; nu generează cash flow direct, dar afectează bilanțul consolidat.\n- **Expunere economică** — impactul pe termen lung al cursului de schimb asupra competitivității și fluxurilor viitoare ale afacerii, chiar și fără tranzacții contractate încă.\n\nInstrumentele principale de acoperire (*hedging*):\n\n- **Natural hedging** — potrivirea veniturilor și costurilor în aceeași monedă (de exemplu, contractarea unui împrumut în EUR pentru o firmă care facturează majoritar în EUR), fără costuri suplimentare de instrumente financiare.\n- **Contract forward** — fixează azi cursul de schimb pentru o sumă și o dată viitoare certă; elimină incertitudinea, dar și potențialul câștig dacă piața evoluează favorabil.\n- **Opțiuni valutare** — oferă dreptul, nu obligația, de a schimba valuta la un curs prestabilit; costă o primă, dar păstrează potențialul de câștig dacă piața evoluează favorabil.\n\nDecizia de a acoperi sau nu o expunere ar trebui să urmeze o politică de hedging aprobată de board, cu reguli clare privind pragul de materialitate (de exemplu, se acoperă expunerile peste o anumită sumă) și procentul minim/maxim acoperit — nu decizii ad-hoc ale trezorierului.\n\n## Exemplu: Cash pooling zero-balancing – calculul economiei de dobândă la nivel de grup\nUn grup cu trei filiale are, la finalul lunii, următoarele solduri de cont curent (rate ilustrative de dobândă bancară, pentru exemplificare):\n\n- Filiala A: sold creditor +500.000 lei\n- Filiala B: sold debitor (descoperit de cont) −300.000 lei\n- Filiala C: sold creditor +150.000 lei\n\nBanca acordă 3%/an la soldurile creditoare și percepe 9%/an la descoperitul de cont.\n\n**Fără cash pooling** (fiecare filială își gestionează separat contul):\n- A: venit dobândă anual = 500.000 × 3% = 15.000 lei\n- B: cost dobândă anual = 300.000 × 9% = 27.000 lei\n- C: venit dobândă anual = 150.000 × 3% = 4.500 lei\n- **Rezultat net grup: 15.000 + 4.500 − 27.000 = −7.500 lei/an (cost net)**\n\n**Cu zero-balancing cash pooling** (soldurile sunt compensate zilnic la nivel de grup):\n- Sold net grup = 500.000 − 300.000 + 150.000 = 350.000 lei (creditor)\n- Venit dobândă grup = 350.000 × 3% = 10.500 lei/an\n\n**Economie anuală generată de cash pooling = 10.500 − (−7.500) = 18.000 lei.** Diferența provine exclusiv din faptul că grupul nu mai plătește dobândă de descoperit de cont pentru B în timp ce A și C stau cu bani neproductivi la un randament mai mic decât costul creditului.\n\n## Exemplu: Acoperirea riscului valutar printr-un contract forward\nO firmă românească importă echipamente și are de plătit 100.000 EUR peste 3 luni către furnizorul din Germania. Cursul spot (ilustrativ, pentru exemplu — cursul real se verifică la BNR la data tranzacției) este 5,05 lei/EUR, iar banca oferă un curs forward la 3 luni de 5,09 lei/EUR (diferența reflectă diferențialul de dobândă lei–EUR pe perioada respectivă).\n\n**Fără hedging:** costul plății peste 3 luni depinde de cursul spot din acel moment. Dacă leul se depreciază la 5,20 lei/EUR, plata costă 100.000 × 5,20 = 520.000 lei — cu 15.000 lei mai mult decât la cursul actual.\n\n**Cu forward:** firma încheie azi un contract forward de cumpărare EUR la 5,09 lei/EUR. Indiferent de evoluția pieței, costul este fixat la 100.000 × 5,09 = 509.000 lei.\n\nAvantajul forward-ului este certitudinea bugetară — folositoare mai ales când marja companiei pe acel contract comercial este mică și o depreciere a leului ar putea anula profitul tranzacției. Costul „ascuns” este renunțarea la beneficiul unei eventuale aprecieri a leului sub 5,09 lei/EUR.\n\n⚠ Cash pooling-ul transfrontalier și instrumentele derivate FX (forward, opțiuni) implică aspecte de prețuri de transfer, contabilitate de acoperire (*hedge accounting*, conform IFRS 9 pentru companiile care raportează IFRS) și, uneori, autorizări interne stricte din partea board-ului. Conținutul acestei lecții este educațional și ilustrativ — pentru orice tranzacție reală de cash pooling sau hedging, verifică termenii cu banca, cu un consultant fiscal (pentru documentarea prețurilor de transfer) și cu politica internă de risc a companiei, nu doar cu exemplele numerice de aici.\n\n## Exercițiu\nGrupul „DocumentIulia Trading” are trei filiale (X, Y, Z) cu următoarele solduri de cont curent la finalul lunii:\n\n- X: sold creditor +800.000 lei\n- Y: sold debitor (descoperit de cont) −450.000 lei\n- Z: sold debitor (descoperit de cont) −100.000 lei\n\nBanca practică (rate ilustrative, aplicate simplificat pe bază lunară): 3,2%/an la soldurile creditoare și 8,5%/an la descoperitul de cont.\n\nCalculează:\na) Costul/venitul net lunar de dobândă **fără** cash pooling (fiecare filială separat).\nb) Costul/venitul net lunar **cu** zero-balancing cash pooling la nivel de grup.\nc) Economia lunară generată de cash pooling.\n\n**Soluție:** **a) Fără cash pooling:**\n- X: venit = 800.000 × 3,2% / 12 = 2.133,33 lei\n- Y: cost = 450.000 × 8,5% / 12 = 3.187,50 lei\n- Z: cost = 100.000 × 8,5% / 12 = 708,33 lei\n- Rezultat net grup = 2.133,33 − 3.187,50 − 708,33 = **−1.762,50 lei/lună (cost net)**\n\n**b) Cu zero-balancing cash pooling:**\n- Sold net grup = 800.000 − 450.000 − 100.000 = 250.000 lei (creditor)\n- Venit dobândă grup = 250.000 × 3,2% / 12 = **666,67 lei/lună**\n\n**c) Economie lunară = 666,67 − (−1.762,50) = 2.429,17 lei/lună**, adică aproximativ 29.150 lei/an. Concluzia: chiar și cu doar trei entități, compensarea soldurilor la nivel de grup transformă un cost net de dobândă într-un venit net, exclusiv prin eliminarea situației în care o filială plătește dobândă de descoperit de cont în timp ce altele stau cu lichiditate neinvestită.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "treasury-management-obiective",
+    "md": "## Managementul trezoreriei: rolul strategic al funcției de treasury\n\nTrezoreria (*treasury*) este funcția financiară responsabilă cu gestionarea lichidității, a riscului financiar și a relației cu băncile și piețele de capital. Într-o companie matură sau într-un grup cu mai multe filiale, treasury nu înseamnă doar „să ai bani în cont” — este o funcție strategică ce raportează CFO-ului și, adesea, direct board-ului.\n\nManagementul trezoreriei urmărește trei obiective centrale:\n\n1. **Lichiditate** — capacitatea firmei de a onora plățile scadente (salarii, furnizori, rate de credit) fără întreruperi, indiferent de fluctuațiile sezoniere ale cash flow-ului operațional.\n2. **Optimizarea costului capitalului** — minimizarea dobânzilor plătite la finanțare și maximizarea randamentului excedentului de numerar, fără a compromite siguranța fondurilor.\n3. **Gestionarea riscurilor financiare** — risc valutar (FX), risc de rată a dobânzii și risc de contraparte (banca sau partenerul cu care tranzacționezi).\n\nÎn grupurile cu mai multe entități legale (de exemplu mai multe SRL-uri sub un holding), treasury centralizează deciziile de finanțare și investire, pentru a evita situația în care o filială plătește dobândă la un credit în timp ce alta ține bani neproductivi într-un cont curent. Instrumentul standard pentru această centralizare este **cash pooling-ul**, pe care îl detaliem în continuare.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cash-pooling-tipuri",
+    "md": "## Cash pooling: centralizarea lichidității la nivel de grup\n\nCash pooling-ul este mecanismul prin care un grup de companii își concentrează soldurile bancare într-un cont central (*master account*), compensând excedentele unor entități cu deficitele altora. Există două forme principale.\n\n### Zero-balancing pooling (physical pooling)\nLa finalul fiecărei zile bancare, soldurile conturilor participante sunt transferate automat (*sweep*) către sau dinspre contul master, astfel încât fiecare cont ajunge la zero. Contabil, fiecare transfer generează un împrumut intra-grup (*intercompany loan*) între filială și entitatea care deține contul master (adesea un *in-house bank* sau societatea-mamă).\n\n### Notional pooling\nBanca nu mută efectiv banii, ci compensează *virtual* soldurile doar pentru calculul dobânzii — grupul plătește sau încasează dobândă la soldul net agregat, deși fiecare cont își păstrează soldul real. Acest model a devenit mai puțin utilizat după introducerea cerințelor de capital Basel III, care îl fac mai costisitor pentru bănci, deci mai scump pentru client.\n\n### Atenție la prețurile de transfer\nPentru grupurile cu entități în România, dobânda practicată la împrumuturile intra-grup generate de cash pooling trebuie să respecte principiul valorii de piață (*arm's length*), conform regulilor de prețuri de transfer. O dobândă anormal de mică sau de mare față de piață poate fi ajustată de ANAF la un control fiscal. Recomandarea practică: documentează politica de cash pooling într-un fișier de prețuri de transfer și folosește ca referință rate de piață curente (de exemplu ROBOR/IRCC plus o marjă justificată), actualizate periodic.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "linii-credit-facilitati",
+    "md": "## Linii de credit: tamponul de lichiditate\n\nO companie care se bazează exclusiv pe cash flow-ul operațional pentru a-și acoperi nevoile de plată este vulnerabilă la orice întârziere de încasare. De aceea, treasury negociază proactiv linii de credit ca „plasă de siguranță”, chiar dacă nu sunt trase imediat.\n\nCele mai comune tipuri:\n\n- **Descoperit de cont (overdraft)** — permite soldul negativ al contului curent până la un plafon, cu dobândă calculată zilnic doar pe suma efectiv folosită. Flexibil, dar de regulă cel mai scump per leu utilizat.\n- **Linie de credit revolving (Revolving Credit Facility – RCF)** — plafon pe care compania îl poate trage și rambursa repetat, pe durata contractului, folosit tipic pentru finanțarea capitalului de lucru (stocuri, creanțe).\n- **Linie de credit pentru capital de lucru dedicată** — adesea legată de un activ specific drept garanție (stocuri, creanțe cesionate) sau de un ciclu sezonier de afaceri.\n\nAceste facilități vin aproape întotdeauna cu **covenants** (clauze contractuale de monitorizare financiară) — de exemplu un plafon maxim al gradului de îndatorare (*leverage ratio* = Datorie netă/EBITDA) sau un prag minim de acoperire a serviciului datoriei (*DSCR*). Depășirea unui covenant poate declanșa scadența anticipată a creditului, chiar dacă firma nu a întârziat nicio plată — de aceea monitorizarea covenants-urilor este o sarcină permanentă a trezorierului, nu doar un exercițiu la raportarea anuală.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "investitii-termen-scurt-piramida",
+    "md": "## Investirea excedentului de numerar: piramida siguranță – lichiditate – randament\n\nCând o companie are surplus temporar de cash (de exemplu după o încasare mare sau într-un vârf sezonier), tentația este să caute randamentul maxim. Regula de aur a trezoreriei corporative este însă inversă: pentru numerarul operațional, criteriile se aplică în această ordine strictă:\n\n1. **Siguranța capitalului** — nu-ți permiți să pierzi banii de care depinde plata salariilor sau a furnizorilor luna viitoare.\n2. **Lichiditatea** — capacitatea de a converti rapid investiția în cash, fără penalizări mari, dacă apare o nevoie neprevăzută.\n3. **Randamentul** — abia al treilea criteriu; se optimizează *după* ce primele două sunt îndeplinite.\n\nInstrumentele tipice pentru excedentul de trezorerie, în ordinea crescătoare a orizontului de plasare, sunt: depozitele bancare la termen (overnight până la 3 luni), certificatele de depozit, titlurile de stat pe termen scurt și fondurile de piață monetară (*money market funds*). Instrumentele speculative (acțiuni, criptoactive, produse structurate cu risc de capital) nu au ce căuta în gestiunea trezoreriei operaționale — acestea aparțin, cel mult, unei politici separate de investiții pe termen lung a excedentelor structurale, aprobată explicit de board.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "fx-hedging-tipuri-expunere-instrumente",
+    "md": "## FX hedging: tipuri de expunere și instrumente de acoperire\n\nOrice companie care încasează sau plătește în altă monedă decât cea funcțională este expusă riscului valutar. Se disting trei tipuri de expunere:\n\n- **Expunere tranzacțională** — o factură de încasat sau de plătit într-o valută, cu decontare la o dată viitoare (cel mai frecvent caz în import-export).\n- **Expunere translațională** — apare la consolidarea situațiilor financiare ale unei filiale străine în moneda grupului; nu generează cash flow direct, dar afectează bilanțul consolidat.\n- **Expunere economică** — impactul pe termen lung al cursului de schimb asupra competitivității și fluxurilor viitoare ale afacerii, chiar și fără tranzacții contractate încă.\n\nInstrumentele principale de acoperire (*hedging*):\n\n- **Natural hedging** — potrivirea veniturilor și costurilor în aceeași monedă (de exemplu, contractarea unui împrumut în EUR pentru o firmă care facturează majoritar în EUR), fără costuri suplimentare de instrumente financiare.\n- **Contract forward** — fixează azi cursul de schimb pentru o sumă și o dată viitoare certă; elimină incertitudinea, dar și potențialul câștig dacă piața evoluează favorabil.\n- **Opțiuni valutare** — oferă dreptul, nu obligația, de a schimba valuta la un curs prestabilit; costă o primă, dar păstrează potențialul de câștig dacă piața evoluează favorabil.\n\nDecizia de a acoperi sau nu o expunere ar trebui să urmeze o politică de hedging aprobată de board, cu reguli clare privind pragul de materialitate (de exemplu, se acoperă expunerile peste o anumită sumă) și procentul minim/maxim acoperit — nu decizii ad-hoc ale trezorierului.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b5"
+   },
+   {
+    "type": "example",
+    "title": "Cash pooling zero-balancing – calculul economiei de dobândă la nivel de grup",
+    "concept_key": "cash-pooling-tipuri",
+    "md": "Un grup cu trei filiale are, la finalul lunii, următoarele solduri de cont curent (rate ilustrative de dobândă bancară, pentru exemplificare):\n\n- Filiala A: sold creditor +500.000 lei\n- Filiala B: sold debitor (descoperit de cont) −300.000 lei\n- Filiala C: sold creditor +150.000 lei\n\nBanca acordă 3%/an la soldurile creditoare și percepe 9%/an la descoperitul de cont.\n\n**Fără cash pooling** (fiecare filială își gestionează separat contul):\n- A: venit dobândă anual = 500.000 × 3% = 15.000 lei\n- B: cost dobândă anual = 300.000 × 9% = 27.000 lei\n- C: venit dobândă anual = 150.000 × 3% = 4.500 lei\n- **Rezultat net grup: 15.000 + 4.500 − 27.000 = −7.500 lei/an (cost net)**\n\n**Cu zero-balancing cash pooling** (soldurile sunt compensate zilnic la nivel de grup):\n- Sold net grup = 500.000 − 300.000 + 150.000 = 350.000 lei (creditor)\n- Venit dobândă grup = 350.000 × 3% = 10.500 lei/an\n\n**Economie anuală generată de cash pooling = 10.500 − (−7.500) = 18.000 lei.** Diferența provine exclusiv din faptul că grupul nu mai plătește dobândă de descoperit de cont pentru B în timp ce A și C stau cu bani neproductivi la un randament mai mic decât costul creditului.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b6"
+   },
+   {
+    "type": "example",
+    "title": "Acoperirea riscului valutar printr-un contract forward",
+    "concept_key": "fx-hedging-tipuri-expunere-instrumente",
+    "md": "O firmă românească importă echipamente și are de plătit 100.000 EUR peste 3 luni către furnizorul din Germania. Cursul spot (ilustrativ, pentru exemplu — cursul real se verifică la BNR la data tranzacției) este 5,05 lei/EUR, iar banca oferă un curs forward la 3 luni de 5,09 lei/EUR (diferența reflectă diferențialul de dobândă lei–EUR pe perioada respectivă).\n\n**Fără hedging:** costul plății peste 3 luni depinde de cursul spot din acel moment. Dacă leul se depreciază la 5,20 lei/EUR, plata costă 100.000 × 5,20 = 520.000 lei — cu 15.000 lei mai mult decât la cursul actual.\n\n**Cu forward:** firma încheie azi un contract forward de cumpărare EUR la 5,09 lei/EUR. Indiferent de evoluția pieței, costul este fixat la 100.000 × 5,09 = 509.000 lei.\n\nAvantajul forward-ului este certitudinea bugetară — folositoare mai ales când marja companiei pe acel contract comercial este mică și o depreciere a leului ar putea anula profitul tranzacției. Costul „ascuns” este renunțarea la beneficiul unei eventuale aprecieri a leului sub 5,09 lei/EUR.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cash pooling-ul transfrontalier și instrumentele derivate FX (forward, opțiuni) implică aspecte de prețuri de transfer, contabilitate de acoperire (*hedge accounting*, conform IFRS 9 pentru companiile care raportează IFRS) și, uneori, autorizări interne stricte din partea board-ului. Conținutul acestei lecții este educațional și ilustrativ — pentru orice tranzacție reală de cash pooling sau hedging, verifică termenii cu banca, cu un consultant fiscal (pentru documentarea prețurilor de transfer) și cu politica internă de risc a companiei, nu doar cu exemplele numerice de aici.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Grupul „DocumentIulia Trading” are trei filiale (X, Y, Z) cu următoarele solduri de cont curent la finalul lunii:\n\n- X: sold creditor +800.000 lei\n- Y: sold debitor (descoperit de cont) −450.000 lei\n- Z: sold debitor (descoperit de cont) −100.000 lei\n\nBanca practică (rate ilustrative, aplicate simplificat pe bază lunară): 3,2%/an la soldurile creditoare și 8,5%/an la descoperitul de cont.\n\nCalculează:\na) Costul/venitul net lunar de dobândă **fără** cash pooling (fiecare filială separat).\nb) Costul/venitul net lunar **cu** zero-balancing cash pooling la nivel de grup.\nc) Economia lunară generată de cash pooling.",
+    "solution_md": "**a) Fără cash pooling:**\n- X: venit = 800.000 × 3,2% / 12 = 2.133,33 lei\n- Y: cost = 450.000 × 8,5% / 12 = 3.187,50 lei\n- Z: cost = 100.000 × 8,5% / 12 = 708,33 lei\n- Rezultat net grup = 2.133,33 − 3.187,50 − 708,33 = **−1.762,50 lei/lună (cost net)**\n\n**b) Cu zero-balancing cash pooling:**\n- Sold net grup = 800.000 − 450.000 − 100.000 = 250.000 lei (creditor)\n- Venit dobândă grup = 250.000 × 3,2% / 12 = **666,67 lei/lună**\n\n**c) Economie lunară = 666,67 − (−1.762,50) = 2.429,17 lei/lună**, adică aproximativ 29.150 lei/an. Concluzia: chiar și cu doar trei entități, compensarea soldurilor la nivel de grup transformă un cost net de dobândă într-un venit net, exclusiv prin eliminarea situației în care o filială plătește dobândă de descoperit de cont în timp ce altele stau cu lichiditate neinvestită.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre zero-balancing (physical) cash pooling și notional pooling?",
+    "choices": [
+     "Zero-balancing implică transferuri fizice zilnice de bani între conturi, generând împrumuturi intra-grup; notional pooling compensează doar virtual soldurile pentru calculul dobânzii, fără mutarea efectivă a fondurilor",
+     "Notional pooling se aplică doar companiilor listate la bursă, iar zero-balancing doar SRL-urilor",
+     "Zero-balancing este interzis pentru grupurile cu filiale în România",
+     "Cele două sunt sinonime, diferă doar denumirea folosită de fiecare bancă"
+    ],
+    "answer": 0,
+    "explain": "Zero-balancing mută efectiv banii zilnic către un cont master (generând contabil un împrumut intra-grup), în timp ce notional pooling doar compensează virtual soldurile pentru a calcula dobânda netă a grupului, fără transfer fizic de fonduri.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În piramida investirii excedentului de numerar operațional, care este ordinea corectă de prioritate pentru un trezorier?",
+    "choices": [
+     "Randament, apoi lichiditate, apoi siguranță",
+     "Lichiditate, apoi randament, apoi siguranță",
+     "Siguranță, apoi lichiditate, apoi randament",
+     "Toate trei criterii au prioritate egală, indiferent de context"
+    ],
+    "answer": 2,
+    "explain": "Regula de bază a trezoreriei corporative: mai întâi te asiguri că nu pierzi capitalul (siguranță), apoi că îl poți recupera rapid la nevoie (lichiditate), și abia apoi optimizezi randamentul.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce fixează, din punct de vedere financiar, un contract forward valutar cumpărat de un importator?",
+    "choices": [
+     "Cursul de schimb pentru o sumă și o dată viitoare stabilite azi",
+     "Un profit garantat indiferent de evoluția pieței valutare",
+     "Scutirea automată de comisioane bancare la transferul valutar",
+     "Conversia gratuită și nelimitată a oricărei sume în valută"
+    ],
+    "answer": 0,
+    "explain": "Forward-ul elimină incertitudinea cursului de schimb pentru o tranzacție viitoare, dar nu garantează profit — doar certitudine bugetară; dacă piața evoluează favorabil, compania renunță la acel câștig potențial.",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este cash pooling-ul?",
+    "back": "Mecanismul prin care un grup de companii își centralizează soldurile bancare ale filialelor pentru a compensa excedentele unora cu deficitele altora, reducând costul net de finanțare la nivel de grup.",
+    "concept_key": "cash-pooling-tipuri",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Zero-balancing vs notional pooling – diferența cheie?",
+    "back": "Zero-balancing transferă fizic banii zilnic către un cont master (generează împrumuturi intra-grup); notional pooling compensează doar virtual soldurile pentru calculul dobânzii, fără mutare de fonduri.",
+    "concept_key": "cash-pooling-tipuri",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o Revolving Credit Facility (RCF)?",
+    "back": "O linie de credit reînnoibilă pe care compania o poate trage și rambursa repetat, până la un plafon aprobat, folosită ca tampon de lichiditate pentru nevoi de capital de lucru.",
+    "concept_key": "linii-credit-facilitati",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este ordinea priorităților la investirea excedentului de cash operațional?",
+    "back": "Siguranță, apoi lichiditate, apoi randament — instrumentele speculative nu au ce căuta în trezoreria operațională.",
+    "concept_key": "investitii-termen-scurt-piramida",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este natural hedging în managementul riscului valutar?",
+    "back": "Reducerea expunerii FX prin potrivirea veniturilor și costurilor în aceeași monedă (ex: împrumut în EUR pentru o firmă cu venituri în EUR), fără a folosi instrumente derivate.",
+    "concept_key": "fx-hedging-tipuri-expunere-instrumente",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce fixează un contract forward valutar?",
+    "back": "Cursul de schimb pentru o tranzacție viitoare, la o dată și sumă stabilite azi — elimină incertitudinea cursului, dar renunți și la câștigul potențial dacă piața evoluează favorabil.",
+    "concept_key": "fx-hedging-tipuri-expunere-instrumente",
+    "blockId": "cmjjuxw6f00f7umkph6mjjaar-b18"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1774,
+   "flashcards": 6
+  }
+ }
+}

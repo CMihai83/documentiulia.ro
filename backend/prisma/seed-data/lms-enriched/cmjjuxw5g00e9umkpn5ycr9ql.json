@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw5g00e9umkpn5ycr9ql",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Metodologii Moderne de Bugetare",
+ "lesson": "De la Traditional la Modern Budgeting",
+ "category": "FINANCE_OPS",
+ "content": "# De la Traditional la Modern Budgeting\n\n## De ce bugetarea tradițională își pierde din relevanță\n\nModelul clasic de bugetare — construit anual, pe bază **incrementală** (bugetul anului curent = bugetul anului trecut ± un procent de creștere) — a dominat practica financiară din companiile românești și multinaționale timp de decenii. Motivul e simplu: e previzibil, ușor de explicat board-ului și se integrează natural cu ciclul contabil anual din **OMFP 1802/2014**.\n\nProblema e că această predictibilitate ascunde costuri reale:\n\n- **Rigiditate**: un buget fixat în octombrie pentru anul următor devine irelevant dacă piața se schimbă în martie (inflație, curs valutar, un client mare care pleacă). Compania continuă să raporteze \"abateri\" față de un plan care nu mai reflectă realitatea.\n- **Ciclu lung și costisitor**: procesul de bugetare tradițional poate consuma 3-6 luni din timpul echipei de management, cu zeci de iterații Excel trimise pe e-mail.\n- **Efectul de \"gaming\"**: managerii de departament au un stimulent să ceară bugete umflate sau să cheltuiască tot bugetul rămas la final de an (\"use it or lose it\"), ca să nu li se reducă alocarea anul viitor.\n- **Decuplare de strategie**: bugetul devine un exercițiu contabil separat de planul strategic, în loc să fie instrumentul prin care strategia se traduce în cifre.\n- **Evaluare pe ținte greșite**: bonusurile legate strict de \"atingerea bugetului\" pot împinge managerii să negocieze ținte ușor de atins, nu performanță reală.\n\nAceste limitări au dus, începând cu anii '90, la apariția unor mișcări și metodologii alternative — pe care le vei folosi practic în modulele următoare ale acestui curs.\n\n## Beyond Budgeting: nu \"fără buget\", ci \"dincolo de buget\"\n\n**Beyond Budgeting** este un curent de management financiar apărut la sfârșitul anilor '90, promovat inițial de consorțiul CAM-I (Consortium for Advanced Manufacturing-International) și dezvoltat sistematic de Jeremy Hope și Robin Fraser prin **Beyond Budgeting Round Table (BBRT)**. Numele induce uneori confuzie: mișcarea nu propune eliminarea completă a planificării financiare, ci renunțarea la **bugetul fix anual** ca instrument central de control.\n\nCele 12 principii Beyond Budgeting sunt grupate în două categorii:\n\n**Principii de leadership** (cultură organizațională):\n- Valori și scopuri clare, nu reguli rigide\n- Guvernanță prin valori comune, nu bugete detaliate\n- Transparență radicală a informației financiare\n- Autonomie decizională la nivel de echipă, nu doar la vârf\n\n**Principii de proces** (mecanica financiară):\n- Ținte relative (față de competiție sau piață), nu fixe și negociate intern\n- Planificare continuă (**rolling forecasts**), nu ciclu anual\n- Resurse alocate dinamic, la nevoie, nu \"blocate\" într-un buget anual\n- Control prin indicatori relativi (KPI, benchmark) în locul comparației cu un plan static\n\nExemple frecvent citate în literatura de specialitate: banca suedeză **Handelsbanken**, care funcționează fără buget anual clasic de zeci de ani, sau grupul norvegian de energie **Statoil (azi Equinor)**, care a înlocuit bugetarea tradițională cu un sistem de rolling forecast și ținte relative de performanță.\n\n## Best practices actuale: un mix pragmatic, nu o revoluție totală\n\nÎn practică, puține companii din România sau din regiune adoptă Beyond Budgeting \"pur\" (fără niciun buget). Tendința dominantă în 2026 este un **model hibrid**, care păstrează disciplina bugetului dar corectează limitările lui:\n\n- **Driver-Based Budgeting**: în loc să crești fiecare linie de cost cu un procent istoric, legi bugetul de **driverii operaționali reali** — număr de clienți, rată de conversie, headcount, consum de materie primă per unitate produsă. Dacă driverul se schimbă, bugetul se recalculează automat, nu manual.\n- **Rolling Forecast**: în loc de un buget fix ianuarie-decembrie, menții un orizont mobil (de regulă 12-18 luni), actualizat lunar sau trimestrial. Nu mai \"expiră\" în decembrie — se extinde permanent cu o lună nouă.\n- **Zero-Based Budgeting (ZBB)** aplicat punctual, pe categorii de cost administrativ, pentru a rupe inerția bugetelor istorice (îl vei aprofunda într-o lecție dedicată din acest modul).\n- **Tehnologie ca accelerator**: instrumente FP&A dedicate și funcții moderne din Excel 365 (Power Query pentru consolidare automată din ERP, modele dinamice cu scenarii what-if) reduc ciclul de bugetare de la luni la săptămâni.\n- **Schimbare culturală**: rolul controllerului financiar se mută de la \"polițist al bugetului\" la partener de decizie — analiza de variație devine un dialog despre cauze, nu un formular de justificare.\n\n## Exemplu: Studiu de caz: o companie de producție românească renunță la bugetul anual rigid\nO companie ipotetică, **Metalex Prod SRL**, producător de componente auto din Brașov, cu cifră de afaceri anuală de aproximativ 40 milioane lei (cifre ipotetice), aplica bugetarea tradițională: în octombrie, fiecare departament propunea un buget pentru anul următor, negociat cu directorul general și \"înghețat\" în decembrie.\n\nProblema a apărut în anul în care un client major (30% din cifra de afaceri) a redus comenzile cu 25% începând din martie, în timp ce costul energiei electrice a crescut cu 18% față de estimarea din buget. Compania a continuat să raporteze lunar \"abateri față de buget\" fără ca acest lucru să genereze o decizie concretă — bugetul devenise un exercițiu de contabilitate, nu de management.\n\nÎn anul următor, echipa financiară a introdus un **rolling forecast pe 18 luni**, actualizat trimestrial, construit pe driveri reali: volum de producție (bucăți), preț mediu per componentă, cost per kWh, headcount pe linia de producție. Când driverii s-au schimbat, forecastul s-a recalculat automat, iar directorul general a putut lua decizii de ajustare a capacității cu 2-3 luni mai devreme decât în anul precedent. Bugetul anual nu a dispărut complet — a rămas ca reper pentru raportarea statutară conform OMFP 1802/2014 — dar deciziile operaționale s-au mutat pe forecastul mobil.\n\n## Exemplu: Comparație numerică: buget incremental vs. buget driver-based\nPresupunem o divizie de vânzări cu venituri anul trecut de **2.400.000 lei** (cifre ipotetice, doar pentru exercițiu).\n\n**Abordare tradițională (incrementală)**: departamentul financiar aplică o creștere istorică de 8% aplicată uniform: 2.400.000 × 1,08 = **2.592.000 lei** pentru anul următor. Cifra nu ține cont de faptul că firma a pierdut 15 clienți activi în ultimul trimestru și a câștigat 40 de clienți noi, cu valoare medie de comandă mai mică.\n\n**Abordare driver-based**: se recalculează pe baza driverilor reali:\n- Nr. clienți activi estimat: 385 (față de 360 anul trecut)\n- Valoare medie anuală per client: 6.100 lei (față de 6.667 lei anul trecut, din cauza mixului de clienți noi, mai mici)\n\nVenit estimat = 385 × 6.100 = **2.348.500 lei**.\n\nDiferența față de metoda incrementală este de **243.500 lei** (aproximativ 9,4%) — o eroare semnificativă pentru un plan de cash flow sau pentru negocierea unei linii de credit cu banca. Metoda driver-based nu doar corectează cifra, ci oferă și cauza abaterii (mix de clienți), utilă pentru decizii comerciale.\n\n> Temei legal: OMFP 1802/2014 privind situațiile financiare anuale și consolidate (în vigoare de la 2015-01-01)\nChiar și atunci când o companie trece la rolling forecast sau la principii Beyond Budgeting pentru managementul intern, raportarea financiară statutară rămâne guvernată de **OMFP 1802/2014**, care reglementează structura și calendarul situațiilor financiare anuale și consolidate în România. Bugetul intern (rolling sau tradițional) este un instrument de management decizional; el nu înlocuiește obligațiile de raportare financiară anuală față de autorități, care rămân aliniate la exercițiul financiar calendaristic, indiferent de metodologia de planificare adoptată intern.\n\n⚠ Cifrele folosite în exemplele de mai sus (venituri, procente de creștere, valori per client) sunt **ipotetice**, construite exclusiv pentru a ilustra diferența de metodologie. Nu le folosi ca benchmark de industrie. La aplicarea acestor tehnici în compania ta, folosește întotdeauna driverii și istoricul propriu, verificați cu departamentul financiar și, dacă e cazul, cu un consultant extern.\n\n## Exercițiu\nCompania **Vega Distrib SRL** a avut anul trecut venituri de 5.000.000 lei, provenite de la 200 de clienți activi, cu valoare medie anuală per client de 25.000 lei.\n\nPentru anul următor, departamentul comercial estimează:\n- 230 de clienți activi (creștere prin extindere geografică)\n- Valoare medie anuală per client în scădere la 21.000 lei (clienții noi comandă volume mai mici)\n\nCerințe:\n1. Calculează bugetul de venituri folosind metoda **incrementală clasică**, presupunând o creștere istorică medie de 10% aplicată direct la cifra anului trecut.\n2. Calculează bugetul de venituri folosind metoda **driver-based**, pe baza numărului de clienți și a valorii medii per client estimate.\n3. Explică într-o frază de ce cele două cifre diferă și care dintre ele oferă managementului o informație mai utilă pentru decizii comerciale.\n\n**Soluție:** **1. Metoda incrementală**: 5.000.000 × 1,10 = **5.500.000 lei**.\n\n**2. Metoda driver-based**: 230 clienți × 21.000 lei/client = **4.830.000 lei**.\n\n**3. Explicație**: diferența (670.000 lei, aproximativ 12% din cifra incrementală) apare pentru că metoda incrementală presupune că structura afacerii rămâne neschimbată și doar \"crește\" uniform, în timp ce metoda driver-based captează faptul real că firma câștigă mai mulți clienți, dar cu valoare medie de comandă mai mică. Metoda driver-based oferă informație mai utilă pentru decizii comerciale, pentru că arată managementului *de ce* se schimbă venitul (mix de clienți), nu doar *cât* se schimbă — permițând, de exemplu, o decizie despre creșterea valorii medii de comandă la clienții noi printr-o strategie de upsell.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "bugetare-traditionala-limitari",
+    "md": "## De ce bugetarea tradițională își pierde din relevanță\n\nModelul clasic de bugetare — construit anual, pe bază **incrementală** (bugetul anului curent = bugetul anului trecut ± un procent de creștere) — a dominat practica financiară din companiile românești și multinaționale timp de decenii. Motivul e simplu: e previzibil, ușor de explicat board-ului și se integrează natural cu ciclul contabil anual din **OMFP 1802/2014**.\n\nProblema e că această predictibilitate ascunde costuri reale:\n\n- **Rigiditate**: un buget fixat în octombrie pentru anul următor devine irelevant dacă piața se schimbă în martie (inflație, curs valutar, un client mare care pleacă). Compania continuă să raporteze \"abateri\" față de un plan care nu mai reflectă realitatea.\n- **Ciclu lung și costisitor**: procesul de bugetare tradițional poate consuma 3-6 luni din timpul echipei de management, cu zeci de iterații Excel trimise pe e-mail.\n- **Efectul de \"gaming\"**: managerii de departament au un stimulent să ceară bugete umflate sau să cheltuiască tot bugetul rămas la final de an (\"use it or lose it\"), ca să nu li se reducă alocarea anul viitor.\n- **Decuplare de strategie**: bugetul devine un exercițiu contabil separat de planul strategic, în loc să fie instrumentul prin care strategia se traduce în cifre.\n- **Evaluare pe ținte greșite**: bonusurile legate strict de \"atingerea bugetului\" pot împinge managerii să negocieze ținte ușor de atins, nu performanță reală.\n\nAceste limitări au dus, începând cu anii '90, la apariția unor mișcări și metodologii alternative — pe care le vei folosi practic în modulele următoare ale acestui curs.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "beyond-budgeting-principii",
+    "md": "## Beyond Budgeting: nu \"fără buget\", ci \"dincolo de buget\"\n\n**Beyond Budgeting** este un curent de management financiar apărut la sfârșitul anilor '90, promovat inițial de consorțiul CAM-I (Consortium for Advanced Manufacturing-International) și dezvoltat sistematic de Jeremy Hope și Robin Fraser prin **Beyond Budgeting Round Table (BBRT)**. Numele induce uneori confuzie: mișcarea nu propune eliminarea completă a planificării financiare, ci renunțarea la **bugetul fix anual** ca instrument central de control.\n\nCele 12 principii Beyond Budgeting sunt grupate în două categorii:\n\n**Principii de leadership** (cultură organizațională):\n- Valori și scopuri clare, nu reguli rigide\n- Guvernanță prin valori comune, nu bugete detaliate\n- Transparență radicală a informației financiare\n- Autonomie decizională la nivel de echipă, nu doar la vârf\n\n**Principii de proces** (mecanica financiară):\n- Ținte relative (față de competiție sau piață), nu fixe și negociate intern\n- Planificare continuă (**rolling forecasts**), nu ciclu anual\n- Resurse alocate dinamic, la nevoie, nu \"blocate\" într-un buget anual\n- Control prin indicatori relativi (KPI, benchmark) în locul comparației cu un plan static\n\nExemple frecvent citate în literatura de specialitate: banca suedeză **Handelsbanken**, care funcționează fără buget anual clasic de zeci de ani, sau grupul norvegian de energie **Statoil (azi Equinor)**, care a înlocuit bugetarea tradițională cu un sistem de rolling forecast și ținte relative de performanță.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "driver-based-rolling-forecast",
+    "md": "## Best practices actuale: un mix pragmatic, nu o revoluție totală\n\nÎn practică, puține companii din România sau din regiune adoptă Beyond Budgeting \"pur\" (fără niciun buget). Tendința dominantă în 2026 este un **model hibrid**, care păstrează disciplina bugetului dar corectează limitările lui:\n\n- **Driver-Based Budgeting**: în loc să crești fiecare linie de cost cu un procent istoric, legi bugetul de **driverii operaționali reali** — număr de clienți, rată de conversie, headcount, consum de materie primă per unitate produsă. Dacă driverul se schimbă, bugetul se recalculează automat, nu manual.\n- **Rolling Forecast**: în loc de un buget fix ianuarie-decembrie, menții un orizont mobil (de regulă 12-18 luni), actualizat lunar sau trimestrial. Nu mai \"expiră\" în decembrie — se extinde permanent cu o lună nouă.\n- **Zero-Based Budgeting (ZBB)** aplicat punctual, pe categorii de cost administrativ, pentru a rupe inerția bugetelor istorice (îl vei aprofunda într-o lecție dedicată din acest modul).\n- **Tehnologie ca accelerator**: instrumente FP&A dedicate și funcții moderne din Excel 365 (Power Query pentru consolidare automată din ERP, modele dinamice cu scenarii what-if) reduc ciclul de bugetare de la luni la săptămâni.\n- **Schimbare culturală**: rolul controllerului financiar se mută de la \"polițist al bugetului\" la partener de decizie — analiza de variație devine un dialog despre cauze, nu un formular de justificare.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b3"
+   },
+   {
+    "type": "example",
+    "title": "Studiu de caz: o companie de producție românească renunță la bugetul anual rigid",
+    "concept_key": "beyond-budgeting-caz-productie",
+    "md": "O companie ipotetică, **Metalex Prod SRL**, producător de componente auto din Brașov, cu cifră de afaceri anuală de aproximativ 40 milioane lei (cifre ipotetice), aplica bugetarea tradițională: în octombrie, fiecare departament propunea un buget pentru anul următor, negociat cu directorul general și \"înghețat\" în decembrie.\n\nProblema a apărut în anul în care un client major (30% din cifra de afaceri) a redus comenzile cu 25% începând din martie, în timp ce costul energiei electrice a crescut cu 18% față de estimarea din buget. Compania a continuat să raporteze lunar \"abateri față de buget\" fără ca acest lucru să genereze o decizie concretă — bugetul devenise un exercițiu de contabilitate, nu de management.\n\nÎn anul următor, echipa financiară a introdus un **rolling forecast pe 18 luni**, actualizat trimestrial, construit pe driveri reali: volum de producție (bucăți), preț mediu per componentă, cost per kWh, headcount pe linia de producție. Când driverii s-au schimbat, forecastul s-a recalculat automat, iar directorul general a putut lua decizii de ajustare a capacității cu 2-3 luni mai devreme decât în anul precedent. Bugetul anual nu a dispărut complet — a rămas ca reper pentru raportarea statutară conform OMFP 1802/2014 — dar deciziile operaționale s-au mutat pe forecastul mobil.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b4"
+   },
+   {
+    "type": "example",
+    "title": "Comparație numerică: buget incremental vs. buget driver-based",
+    "concept_key": "driver-based-vs-traditional-exemplu",
+    "md": "Presupunem o divizie de vânzări cu venituri anul trecut de **2.400.000 lei** (cifre ipotetice, doar pentru exercițiu).\n\n**Abordare tradițională (incrementală)**: departamentul financiar aplică o creștere istorică de 8% aplicată uniform: 2.400.000 × 1,08 = **2.592.000 lei** pentru anul următor. Cifra nu ține cont de faptul că firma a pierdut 15 clienți activi în ultimul trimestru și a câștigat 40 de clienți noi, cu valoare medie de comandă mai mică.\n\n**Abordare driver-based**: se recalculează pe baza driverilor reali:\n- Nr. clienți activi estimat: 385 (față de 360 anul trecut)\n- Valoare medie anuală per client: 6.100 lei (față de 6.667 lei anul trecut, din cauza mixului de clienți noi, mai mici)\n\nVenit estimat = 385 × 6.100 = **2.348.500 lei**.\n\nDiferența față de metoda incrementală este de **243.500 lei** (aproximativ 9,4%) — o eroare semnificativă pentru un plan de cash flow sau pentru negocierea unei linii de credit cu banca. Metoda driver-based nu doar corectează cifra, ci oferă și cauza abaterii (mix de clienți), utilă pentru decizii comerciale.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "privind situațiile financiare anuale și consolidate",
+    "effective": "2015-01-01",
+    "md": "Chiar și atunci când o companie trece la rolling forecast sau la principii Beyond Budgeting pentru managementul intern, raportarea financiară statutară rămâne guvernată de **OMFP 1802/2014**, care reglementează structura și calendarul situațiilor financiare anuale și consolidate în România. Bugetul intern (rolling sau tradițional) este un instrument de management decizional; el nu înlocuiește obligațiile de raportare financiară anuală față de autorități, care rămân aliniate la exercițiul financiar calendaristic, indiferent de metodologia de planificare adoptată intern.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cifrele folosite în exemplele de mai sus (venituri, procente de creștere, valori per client) sunt **ipotetice**, construite exclusiv pentru a ilustra diferența de metodologie. Nu le folosi ca benchmark de industrie. La aplicarea acestor tehnici în compania ta, folosește întotdeauna driverii și istoricul propriu, verificați cu departamentul financiar și, dacă e cazul, cu un consultant extern.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Compania **Vega Distrib SRL** a avut anul trecut venituri de 5.000.000 lei, provenite de la 200 de clienți activi, cu valoare medie anuală per client de 25.000 lei.\n\nPentru anul următor, departamentul comercial estimează:\n- 230 de clienți activi (creștere prin extindere geografică)\n- Valoare medie anuală per client în scădere la 21.000 lei (clienții noi comandă volume mai mici)\n\nCerințe:\n1. Calculează bugetul de venituri folosind metoda **incrementală clasică**, presupunând o creștere istorică medie de 10% aplicată direct la cifra anului trecut.\n2. Calculează bugetul de venituri folosind metoda **driver-based**, pe baza numărului de clienți și a valorii medii per client estimate.\n3. Explică într-o frază de ce cele două cifre diferă și care dintre ele oferă managementului o informație mai utilă pentru decizii comerciale.",
+    "solution_md": "**1. Metoda incrementală**: 5.000.000 × 1,10 = **5.500.000 lei**.\n\n**2. Metoda driver-based**: 230 clienți × 21.000 lei/client = **4.830.000 lei**.\n\n**3. Explicație**: diferența (670.000 lei, aproximativ 12% din cifra incrementală) apare pentru că metoda incrementală presupune că structura afacerii rămâne neschimbată și doar \"crește\" uniform, în timp ce metoda driver-based captează faptul real că firma câștigă mai mulți clienți, dar cu valoare medie de comandă mai mică. Metoda driver-based oferă informație mai utilă pentru decizii comerciale, pentru că arată managementului *de ce* se schimbă venitul (mix de clienți), nu doar *cât* se schimbă — permițând, de exemplu, o decizie despre creșterea valorii medii de comandă la clienții noi printr-o strategie de upsell.",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala limitare a bugetării tradiționale incrementale, menționată în lecție?",
+    "choices": [
+     "Necesită prea multe softuri specializate",
+     "Se bazează pe creșterea istorică și nu reflectă schimbările reale din piață pe parcursul anului",
+     "Este interzisă de OMFP 1802/2014",
+     "Nu poate fi folosită de companii cu peste 100 de angajați"
+    ],
+    "answer": 1,
+    "explain": "Bugetarea incrementală aplică un procent de creștere istoric peste bugetul anului trecut, ceea ce o face rigidă și decuplată de schimbările reale de piață (pierderea unui client mare, creșteri neprevăzute de costuri etc.).",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce presupune, în esență, mișcarea Beyond Budgeting?",
+    "choices": [
+     "Eliminarea completă a oricărei planificări financiare",
+     "Înlocuirea bugetului fix anual cu ținte relative, planificare continuă (rolling forecast) și alocare dinamică de resurse",
+     "Folosirea exclusivă a Zero-Based Budgeting pentru toate costurile",
+     "Creșterea automată a bugetului cu rata inflației"
+    ],
+    "answer": 1,
+    "explain": "Beyond Budgeting nu elimină planificarea financiară, ci renunță la bugetul fix anual ca instrument central de control, înlocuindu-l cu ținte relative, rolling forecasts și descentralizare decizională, conform celor 12 principii dezvoltate de BBRT (Hope & Fraser).",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este bugetarea incrementală și care e principala ei problemă?",
+    "back": "Metodă în care bugetul anului curent se calculează aplicând un procent de creștere/scădere la bugetul anului anterior. Problema: nu reflectă schimbările reale de piață și poate genera \"gaming\" (cheltuirea bugetului rămas doar ca să nu fie redus anul viitor).",
+    "concept_key": "bugetare-traditionala-limitari",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine a dezvoltat sistematic mișcarea Beyond Budgeting și prin ce organizație?",
+    "back": "Jeremy Hope și Robin Fraser, prin Beyond Budgeting Round Table (BBRT), pornind de la lucrările consorțiului CAM-I din anii '90.",
+    "concept_key": "beyond-budgeting-principii",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte principii propune modelul Beyond Budgeting și în ce categorii sunt grupate?",
+    "back": "12 principii, grupate în principii de leadership (cultură, valori, transparență, autonomie) și principii de proces (ținte relative, rolling forecast, alocare dinamică de resurse, control prin KPI relativi).",
+    "concept_key": "beyond-budgeting-principii",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Driver-Based Budgeting?",
+    "back": "Metodă de bugetare care leagă fiecare linie bugetară de driverii operaționali reali (nr. clienți, volum producție, headcount etc.), astfel încât bugetul se recalculează automat când driverii se schimbă, în loc să crească uniform pe bază istorică.",
+    "concept_key": "driver-based-rolling-forecast",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un rolling forecast și cum diferă de bugetul anual clasic?",
+    "back": "Un forecast pe orizont mobil (de regulă 12-18 luni), actualizat periodic (lunar/trimestrial), care se extinde continuu cu o lună/trimestru nou, spre deosebire de bugetul anual clasic care e fix și \"expiră\" în decembrie.",
+    "concept_key": "driver-based-rolling-forecast",
+    "blockId": "cmjjuxw5g00e9umkpn5ycr9ql-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1425,
+   "flashcards": 5
+  }
+ }
+}

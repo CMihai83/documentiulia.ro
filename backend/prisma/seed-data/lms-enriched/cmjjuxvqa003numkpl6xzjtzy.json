@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvqa003numkpl6xzjtzy",
+ "courseId": "cmjjuxvp2002tumkpc9g2ozzd",
+ "course": "VBA pentru Excel - De la Zero la Automatizare",
+ "module": "Obiecte Excel în VBA",
+ "lesson": "Range Object",
+ "category": "EXCEL_VBA",
+ "content": "# Range Object\n\n## Ce este obiectul Range\n\nObiectul **Range** este cel mai folosit obiect din modelul de obiecte al Excel VBA. El reprezintă o celulă, un interval de celule adiacente, un rând întreg, o coloană întreagă sau chiar o selecție formată din mai multe zone neadiacente. Aproape orice macro care citește, scrie, formatează sau calculează date în Excel lucrează, la un moment dat, cu un obiect Range.\n\nÎn ierarhia obiectelor Excel, Range se află sub Worksheet: `Application → Workbook → Worksheet → Range`. Există mai multe moduri de a referi un Range în cod:\n\n```vba\nRange(\"A1\")              ' o singură celulă\nRange(\"A1:C10\")          ' un interval dreptunghiular\nRange(\"A1,C3,E5\")        ' celule neadiacente (uniune de zone)\nRange(\"TabelVanzari\")    ' un interval numit (named range)\n```\n\nDacă nu specifici explicit foaia de lucru, `Range(\"A1\")` se referă implicit la foaia activă (`ActiveSheet`) — practică riscantă în cod profesional, unde este recomandat să califici mereu referința: `Worksheets(\"Foaie1\").Range(\"A1\")`. Această disciplină previne erori greu de depistat atunci când macro-ul rulează pe un registru de lucru (workbook) cu mai multe foi și utilizatorul schimbă foaia activă între apeluri.\n\n## Cells, Offset și Resize\n\nProprietatea **Cells** a unei foi de lucru oferă acces la o celulă prin coordonate numerice: `Cells(rând, coloană)`. Spre deosebire de `Range(\"A1\")`, care cere o adresă de tip text, `Cells` este ideală în bucle `For...Next`, unde rândul și coloana sunt variabile:\n\n```vba\nDim i As Long\nFor i = 1 To 10\n    Cells(i, 1).Value = i        ' scrie 1...10 în coloana A\nNext i\n```\n\nAici `Cells(1,1)` este A1, iar `Cells(2,3)` este C2 (rândul 2, coloana 3).\n\n**Offset(rânduri, coloane)** deplasează o referință Range relativ la poziția curentă, fără să îi schimbe dimensiunea. `Range(\"A1\").Offset(1,0)` este A2 (un rând mai jos), iar `Range(\"A1\").Offset(0,2)` este C1 (două coloane la dreapta). Poți folosi valori negative pentru a te deplasa în sus sau la stânga.\n\n**Resize(rânduri, coloane)** păstrează celula de start a unui Range, dar îi modifică dimensiunea. `Range(\"A1\").Resize(5,3)` transformă A1 într-un interval de 5 rânduri și 3 coloane, adică A1:C5.\n\nCombinate, Offset și Resize sunt extrem de puternice pentru a lucra cu tabele de dimensiune variabilă — de exemplu, pentru a selecta toate datele de sub un antet, fără a cunoaște dinainte câte rânduri are tabelul:\n\n```vba\nDim ultimulRand As Long\nultimulRand = Cells(Rows.Count, 1).End(xlUp).Row\nRange(\"A2\").Resize(ultimulRand - 1, 1).Select   ' toată coloana A, sub antet\n```\n\n## Value, Formula și FormulaLocal\n\nProprietatea **Value** citește sau scrie valoarea propriu-zisă a unei celule (număr, text, dată calendaristică sau boolean). Este proprietatea implicită a obiectului Range, deci `Range(\"A1\") = 100` este echivalent cu `Range(\"A1\").Value = 100`, dar în cod profesional se recomandă să scrii explicit `.Value` pentru claritate.\n\nProprietatea **Formula** scrie sau citește formula unei celule folosind sintaxa engleză/americană (US) internă a Excel: virgulă ca separator de argumente și punct ca separator zecimal, indiferent de setările regionale ale calculatorului:\n\n```vba\nRange(\"D1\").Formula = \"=SUM(A1:C1)\"\nRange(\"D2\").Formula = \"=IF(D1>1000,\\\"Depășit\\\",\\\"OK\\\")\"\n```\n\nDacă vrei să scrii sau să citești formula folosind setările regionale locale — pentru Excel în limba română, unde separatorul de argumente este punct și virgulă (`;`), iar cel zecimal este virgula (`,`) — folosești **FormulaLocal**:\n\n```vba\nRange(\"D1\").FormulaLocal = \"=SUM(A1;C1)\"\n```\n\nAceastă distincție este esențială când generezi cod care afișează formula ca text unui utilizator RO sau când citești formule introduse manual de utilizator în interfața locală de Excel.\n\n## End și CurrentRegion\n\nMetoda **End(direcție)** simulează combinația de taste Ctrl+Săgeată din Excel și returnează prima celulă completată cu date, pornind de la o celulă și mergând în direcția specificată. Direcțiile posibile sunt `xlUp`, `xlDown`, `xlToLeft` și `xlToRight`.\n\nCel mai frecvent tipar folosit pentru a găsi ultimul rând completat dintr-o coloană este:\n\n```vba\nDim ultimulRand As Long\nultimulRand = Cells(Rows.Count, \"A\").End(xlUp).Row\n```\n\nAici pornim de la ultima celulă posibilă din coloana A (rândul 1.048.576 în Excel 365) și „urcăm” cu End(xlUp) până găsim prima celulă cu date — exact ce s-ar întâmpla dacă ai apăsa Ctrl+Săgeată sus stând pe acea celulă goală.\n\nProprietatea **CurrentRegion** returnează întreaga zonă de date contiguă din jurul unei celule, delimitată de rânduri și coloane complet goale — echivalentul acțiunii Ctrl+Shift+* (sau Ctrl+* în versiuni mai vechi). Este utilă pentru a selecta rapid un tabel întreg, fără să cunoști dinainte dimensiunile lui:\n\n```vba\nDim tabel As Range\nSet tabel = Range(\"A1\").CurrentRegion\nMsgBox \"Tabelul are \" & tabel.Rows.Count & \" rânduri și \" & tabel.Columns.Count & \" coloane\"\n```\n\nDiferența cheie față de End: CurrentRegion se oprește la prima linie sau coloană complet goală în orice direcție, în timp ce End se deplasează strict pe o singură direcție (sus/jos/stânga/dreapta).\n\n## Exemplu: Calcul total automat cu End(xlUp)\nPresupunem o listă de facturi în coloana A (Foaie1), începând cu antetul din A1 și valori de la A2 în jos, de lungime necunoscută. Vrem să scriem automat suma pe primul rând liber, imediat sub ultima valoare:\n\n```vba\nSub CalculeazaTotalFacturi()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n\n    Set ws = Worksheets(\"Foaie1\")\n\n    ' Găsim ultimul rând cu date din coloana A, pornind de la baza foii\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n\n    ' Scriem eticheta și formula pe rândul imediat următor\n    ws.Cells(ultimulRand + 1, 1).Value = \"TOTAL\"\n    ws.Cells(ultimulRand + 1, 2).Formula = \"=SUM(B2:B\" & ultimulRand & \")\"\nEnd Sub\n```\n\nAcest tipar este preferat metodei `Range(\"A1000\").End(xlUp)` (fixarea unui rând mare „la întâmplare\"), deoarece folosește `Rows.Count`, care se adaptează automat la numărul real de rânduri din versiunea de Excel instalată (1.048.576 în Excel 2007+).\n\n## Exemplu: Selectarea și formatarea unui tabel cu CurrentRegion, Offset și Resize\nAvem un tabel cu antet pe rândul 1 (A1:D1) și date dedesubt, dimensiune necunoscută. Vrem să colorăm doar zona de date (fără antet) cu o culoare de fundal:\n\n```vba\nSub FormateazaDateleTabelului()\n    Dim tabelComplet As Range\n    Dim doarDate As Range\n\n    ' CurrentRegion prinde tot tabelul, inclusiv antetul\n    Set tabelComplet = Worksheets(\"Foaie1\").Range(\"A1\").CurrentRegion\n\n    ' Excludem antetul: coborâm un rând (Offset) și micșorăm\n    ' numărul de rânduri cu 1 (Resize), păstrând coloanele\n    Set doarDate = tabelComplet.Offset(1, 0).Resize(tabelComplet.Rows.Count - 1, tabelComplet.Columns.Count)\n\n    doarDate.Interior.Color = RGB(220, 235, 255)   ' albastru deschis\nEnd Sub\n```\n\nObservă lanțul `Offset(1,0).Resize(...)`: mai întâi deplasăm punctul de start cu un rând în jos (sărim peste antet), apoi redimensionăm intervalul astfel încât să acopere exact restul tabelului, indiferent câte rânduri sau coloane are acesta.\n\n⚠ Evită `.Select` și `.Activate` urmate de `Selection.ceva` — acest tipar (moștenit din Recorder-ul de macro-uri) forțează Excel să redeseneze ecranul la fiecare pas și rulează vizibil mai lent pe tabele mari. Preferă referirea directă la Range, ca în exemplele de mai sus. De asemenea, reține diferența dintre `.Formula` (sintaxă US, virgulă separator/punct zecimal) și `.FormulaLocal` (setări regionale RO, punct și virgulă separator/virgulă zecimal): amestecarea lor este o sursă frecventă de erori de tip „Application-defined or object-defined error\" la scrierea formulelor din cod.\n\n## Exercițiu\nScrie o macro `GenereazaListaProduse` care, pornind de la celula `A1` a foii active:\n\n1. Scrie antetele „Produs\" (A1) și „Preț\" (B1).\n2. Populează 10 rânduri (A2:B11) cu produse generice (\"Produs 1\"...\"Produs 10\") și prețuri (orice valori numerice, de exemplu rândul × 10).\n3. Folosește `Offset` și `Resize` pentru a găsi zona de date de sub antet, fără să scrii manual \"A2:B11\".\n4. Calculează și scrie, cu `End(xlUp)`, totalul prețurilor pe rândul imediat următor listei, în coloana B.\n\n**Soluție:** ```vba\nSub GenereazaListaProduse()\n    Dim ws As Worksheet\n    Dim i As Long\n    Dim ultimulRand As Long\n\n    Set ws = ActiveSheet\n\n    ' 1. Antete\n    ws.Cells(1, 1).Value = \"Produs\"\n    ws.Cells(1, 2).Value = \"Preț\"\n\n    ' 2. Populare 10 rânduri cu produse și prețuri\n    For i = 1 To 10\n        ws.Cells(i + 1, 1).Value = \"Produs \" & i\n        ws.Cells(i + 1, 2).Value = i * 10\n    Next i\n\n    ' 3. Zona de date, calculată cu Offset/Resize pornind din A1\n    Dim zonaDate As Range\n    Set zonaDate = ws.Range(\"A1\").Offset(1, 0).Resize(10, 2)\n\n    ' 4. Total, folosind End(xlUp) pentru a găsi ultimul rând completat\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n    ws.Cells(ultimulRand + 1, 1).Value = \"TOTAL\"\n    ws.Cells(ultimulRand + 1, 2).Formula = \"=SUM(B2:B\" & ultimulRand & \")\"\nEnd Sub\n```\n\nZona `zonaDate` confirmă că datele generate ocupă exact A2:B11 (10 rânduri, 2 coloane), iar totalul apare automat pe rândul 12, indiferent dacă am fi generat 10 sau 50 de produse — pentru că folosim `End(xlUp)` în loc de un număr de rând fix.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "range-object-definitie",
+    "md": "## Ce este obiectul Range\n\nObiectul **Range** este cel mai folosit obiect din modelul de obiecte al Excel VBA. El reprezintă o celulă, un interval de celule adiacente, un rând întreg, o coloană întreagă sau chiar o selecție formată din mai multe zone neadiacente. Aproape orice macro care citește, scrie, formatează sau calculează date în Excel lucrează, la un moment dat, cu un obiect Range.\n\nÎn ierarhia obiectelor Excel, Range se află sub Worksheet: `Application → Workbook → Worksheet → Range`. Există mai multe moduri de a referi un Range în cod:\n\n```vba\nRange(\"A1\")              ' o singură celulă\nRange(\"A1:C10\")          ' un interval dreptunghiular\nRange(\"A1,C3,E5\")        ' celule neadiacente (uniune de zone)\nRange(\"TabelVanzari\")    ' un interval numit (named range)\n```\n\nDacă nu specifici explicit foaia de lucru, `Range(\"A1\")` se referă implicit la foaia activă (`ActiveSheet`) — practică riscantă în cod profesional, unde este recomandat să califici mereu referința: `Worksheets(\"Foaie1\").Range(\"A1\")`. Această disciplină previne erori greu de depistat atunci când macro-ul rulează pe un registru de lucru (workbook) cu mai multe foi și utilizatorul schimbă foaia activă între apeluri.",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "range-cells-offset-resize",
+    "md": "## Cells, Offset și Resize\n\nProprietatea **Cells** a unei foi de lucru oferă acces la o celulă prin coordonate numerice: `Cells(rând, coloană)`. Spre deosebire de `Range(\"A1\")`, care cere o adresă de tip text, `Cells` este ideală în bucle `For...Next`, unde rândul și coloana sunt variabile:\n\n```vba\nDim i As Long\nFor i = 1 To 10\n    Cells(i, 1).Value = i        ' scrie 1...10 în coloana A\nNext i\n```\n\nAici `Cells(1,1)` este A1, iar `Cells(2,3)` este C2 (rândul 2, coloana 3).\n\n**Offset(rânduri, coloane)** deplasează o referință Range relativ la poziția curentă, fără să îi schimbe dimensiunea. `Range(\"A1\").Offset(1,0)` este A2 (un rând mai jos), iar `Range(\"A1\").Offset(0,2)` este C1 (două coloane la dreapta). Poți folosi valori negative pentru a te deplasa în sus sau la stânga.\n\n**Resize(rânduri, coloane)** păstrează celula de start a unui Range, dar îi modifică dimensiunea. `Range(\"A1\").Resize(5,3)` transformă A1 într-un interval de 5 rânduri și 3 coloane, adică A1:C5.\n\nCombinate, Offset și Resize sunt extrem de puternice pentru a lucra cu tabele de dimensiune variabilă — de exemplu, pentru a selecta toate datele de sub un antet, fără a cunoaște dinainte câte rânduri are tabelul:\n\n```vba\nDim ultimulRand As Long\nultimulRand = Cells(Rows.Count, 1).End(xlUp).Row\nRange(\"A2\").Resize(ultimulRand - 1, 1).Select   ' toată coloana A, sub antet\n```",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "range-value-formula",
+    "md": "## Value, Formula și FormulaLocal\n\nProprietatea **Value** citește sau scrie valoarea propriu-zisă a unei celule (număr, text, dată calendaristică sau boolean). Este proprietatea implicită a obiectului Range, deci `Range(\"A1\") = 100` este echivalent cu `Range(\"A1\").Value = 100`, dar în cod profesional se recomandă să scrii explicit `.Value` pentru claritate.\n\nProprietatea **Formula** scrie sau citește formula unei celule folosind sintaxa engleză/americană (US) internă a Excel: virgulă ca separator de argumente și punct ca separator zecimal, indiferent de setările regionale ale calculatorului:\n\n```vba\nRange(\"D1\").Formula = \"=SUM(A1:C1)\"\nRange(\"D2\").Formula = \"=IF(D1>1000,\\\"Depășit\\\",\\\"OK\\\")\"\n```\n\nDacă vrei să scrii sau să citești formula folosind setările regionale locale — pentru Excel în limba română, unde separatorul de argumente este punct și virgulă (`;`), iar cel zecimal este virgula (`,`) — folosești **FormulaLocal**:\n\n```vba\nRange(\"D1\").FormulaLocal = \"=SUM(A1;C1)\"\n```\n\nAceastă distincție este esențială când generezi cod care afișează formula ca text unui utilizator RO sau când citești formule introduse manual de utilizator în interfața locală de Excel.",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "range-end-currentregion",
+    "md": "## End și CurrentRegion\n\nMetoda **End(direcție)** simulează combinația de taste Ctrl+Săgeată din Excel și returnează prima celulă completată cu date, pornind de la o celulă și mergând în direcția specificată. Direcțiile posibile sunt `xlUp`, `xlDown`, `xlToLeft` și `xlToRight`.\n\nCel mai frecvent tipar folosit pentru a găsi ultimul rând completat dintr-o coloană este:\n\n```vba\nDim ultimulRand As Long\nultimulRand = Cells(Rows.Count, \"A\").End(xlUp).Row\n```\n\nAici pornim de la ultima celulă posibilă din coloana A (rândul 1.048.576 în Excel 365) și „urcăm” cu End(xlUp) până găsim prima celulă cu date — exact ce s-ar întâmpla dacă ai apăsa Ctrl+Săgeată sus stând pe acea celulă goală.\n\nProprietatea **CurrentRegion** returnează întreaga zonă de date contiguă din jurul unei celule, delimitată de rânduri și coloane complet goale — echivalentul acțiunii Ctrl+Shift+* (sau Ctrl+* în versiuni mai vechi). Este utilă pentru a selecta rapid un tabel întreg, fără să cunoști dinainte dimensiunile lui:\n\n```vba\nDim tabel As Range\nSet tabel = Range(\"A1\").CurrentRegion\nMsgBox \"Tabelul are \" & tabel.Rows.Count & \" rânduri și \" & tabel.Columns.Count & \" coloane\"\n```\n\nDiferența cheie față de End: CurrentRegion se oprește la prima linie sau coloană complet goală în orice direcție, în timp ce End se deplasează strict pe o singură direcție (sus/jos/stânga/dreapta).",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calcul total automat cu End(xlUp)",
+    "concept_key": "range-end-currentregion",
+    "md": "Presupunem o listă de facturi în coloana A (Foaie1), începând cu antetul din A1 și valori de la A2 în jos, de lungime necunoscută. Vrem să scriem automat suma pe primul rând liber, imediat sub ultima valoare:\n\n```vba\nSub CalculeazaTotalFacturi()\n    Dim ws As Worksheet\n    Dim ultimulRand As Long\n\n    Set ws = Worksheets(\"Foaie1\")\n\n    ' Găsim ultimul rând cu date din coloana A, pornind de la baza foii\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n\n    ' Scriem eticheta și formula pe rândul imediat următor\n    ws.Cells(ultimulRand + 1, 1).Value = \"TOTAL\"\n    ws.Cells(ultimulRand + 1, 2).Formula = \"=SUM(B2:B\" & ultimulRand & \")\"\nEnd Sub\n```\n\nAcest tipar este preferat metodei `Range(\"A1000\").End(xlUp)` (fixarea unui rând mare „la întâmplare\"), deoarece folosește `Rows.Count`, care se adaptează automat la numărul real de rânduri din versiunea de Excel instalată (1.048.576 în Excel 2007+).",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b5"
+   },
+   {
+    "type": "example",
+    "title": "Selectarea și formatarea unui tabel cu CurrentRegion, Offset și Resize",
+    "concept_key": "range-cells-offset-resize",
+    "md": "Avem un tabel cu antet pe rândul 1 (A1:D1) și date dedesubt, dimensiune necunoscută. Vrem să colorăm doar zona de date (fără antet) cu o culoare de fundal:\n\n```vba\nSub FormateazaDateleTabelului()\n    Dim tabelComplet As Range\n    Dim doarDate As Range\n\n    ' CurrentRegion prinde tot tabelul, inclusiv antetul\n    Set tabelComplet = Worksheets(\"Foaie1\").Range(\"A1\").CurrentRegion\n\n    ' Excludem antetul: coborâm un rând (Offset) și micșorăm\n    ' numărul de rânduri cu 1 (Resize), păstrând coloanele\n    Set doarDate = tabelComplet.Offset(1, 0).Resize(tabelComplet.Rows.Count - 1, tabelComplet.Columns.Count)\n\n    doarDate.Interior.Color = RGB(220, 235, 255)   ' albastru deschis\nEnd Sub\n```\n\nObservă lanțul `Offset(1,0).Resize(...)`: mai întâi deplasăm punctul de start cu un rând în jos (sărim peste antet), apoi redimensionăm intervalul astfel încât să acopere exact restul tabelului, indiferent câte rânduri sau coloane are acesta.",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Evită `.Select` și `.Activate` urmate de `Selection.ceva` — acest tipar (moștenit din Recorder-ul de macro-uri) forțează Excel să redeseneze ecranul la fiecare pas și rulează vizibil mai lent pe tabele mari. Preferă referirea directă la Range, ca în exemplele de mai sus. De asemenea, reține diferența dintre `.Formula` (sintaxă US, virgulă separator/punct zecimal) și `.FormulaLocal` (setări regionale RO, punct și virgulă separator/virgulă zecimal): amestecarea lor este o sursă frecventă de erori de tip „Application-defined or object-defined error\" la scrierea formulelor din cod.",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Scrie o macro `GenereazaListaProduse` care, pornind de la celula `A1` a foii active:\n\n1. Scrie antetele „Produs\" (A1) și „Preț\" (B1).\n2. Populează 10 rânduri (A2:B11) cu produse generice (\"Produs 1\"...\"Produs 10\") și prețuri (orice valori numerice, de exemplu rândul × 10).\n3. Folosește `Offset` și `Resize` pentru a găsi zona de date de sub antet, fără să scrii manual \"A2:B11\".\n4. Calculează și scrie, cu `End(xlUp)`, totalul prețurilor pe rândul imediat următor listei, în coloana B.",
+    "solution_md": "```vba\nSub GenereazaListaProduse()\n    Dim ws As Worksheet\n    Dim i As Long\n    Dim ultimulRand As Long\n\n    Set ws = ActiveSheet\n\n    ' 1. Antete\n    ws.Cells(1, 1).Value = \"Produs\"\n    ws.Cells(1, 2).Value = \"Preț\"\n\n    ' 2. Populare 10 rânduri cu produse și prețuri\n    For i = 1 To 10\n        ws.Cells(i + 1, 1).Value = \"Produs \" & i\n        ws.Cells(i + 1, 2).Value = i * 10\n    Next i\n\n    ' 3. Zona de date, calculată cu Offset/Resize pornind din A1\n    Dim zonaDate As Range\n    Set zonaDate = ws.Range(\"A1\").Offset(1, 0).Resize(10, 2)\n\n    ' 4. Total, folosind End(xlUp) pentru a găsi ultimul rând completat\n    ultimulRand = ws.Cells(ws.Rows.Count, \"A\").End(xlUp).Row\n    ws.Cells(ultimulRand + 1, 1).Value = \"TOTAL\"\n    ws.Cells(ultimulRand + 1, 2).Formula = \"=SUM(B2:B\" & ultimulRand & \")\"\nEnd Sub\n```\n\nZona `zonaDate` confirmă că datele generate ocupă exact A2:B11 (10 rânduri, 2 coloane), iar totalul apare automat pe rândul 12, indiferent dacă am fi generat 10 sau 50 de produse — pentru că folosim `End(xlUp)` în loc de un număr de rând fix.",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce interval de celule reprezintă `Range(\"B2\").Resize(3,2)`?",
+    "choices": [
+     "B2:C4",
+     "B2:D2",
+     "A1:B3",
+     "B2:C2"
+    ],
+    "answer": 0,
+    "explain": "Resize(3,2) păstrează celula de start (B2) și extinde intervalul la 3 rânduri și 2 coloane, adică B2, B3, B4, C2, C3, C4 — deci B2:C4.",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care metodă găsește automat ultima celulă completată cu date dintr-o coloană, simulând Ctrl+Săgeată jos?",
+    "choices": [
+     "Offset(xlDown)",
+     "Resize(xlDown)",
+     "End(xlDown)",
+     "CurrentRegion(xlDown)"
+    ],
+    "answer": 2,
+    "explain": "End(xlDown) simulează exact combinația Ctrl+Săgeată jos, oprindu-se la ultima celulă completată consecutiv cu date, pornind de la celula curentă.",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce celulă returnează `Cells(2,3)`?",
+    "back": "Celula C2 (rândul 2, coloana 3) — Cells folosește coordonate numerice (rând, coloană).",
+    "concept_key": "range-cells-offset-resize",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce returnează `Range(\"A1\").Offset(1,2)`?",
+    "back": "Celula C2: o deplasare relativă de 1 rând în jos și 2 coloane la dreapta față de A1, fără a schimba dimensiunea intervalului.",
+    "concept_key": "range-cells-offset-resize",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre `.Formula` și `.FormulaLocal`?",
+    "back": "Formula folosește sintaxa US internă (virgulă separator de argumente, punct zecimal); FormulaLocal folosește setările regionale (RO: punct și virgulă separator, virgulă zecimal).",
+    "concept_key": "range-value-formula",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face `Cells(Rows.Count, \"A\").End(xlUp).Row`?",
+    "back": "Returnează numărul ultimului rând completat cu date din coloana A, pornind de la baza foii și „urcând\" până la prima celulă neagolă — echivalent Ctrl+Săgeată sus.",
+    "concept_key": "range-end-currentregion",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce returnează proprietatea `CurrentRegion`?",
+    "back": "Întreaga zonă de date contiguă din jurul celulei de referință, delimitată de rânduri/coloane complet goale — echivalent Ctrl+Shift+*.",
+    "concept_key": "range-end-currentregion",
+    "blockId": "cmjjuxvqa003numkpl6xzjtzy-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1395,
+   "flashcards": 5
+  }
+ }
+}

@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxw9y00i5umkp75m1gw5d",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Calculul Salariilor",
+ "lesson": "Structura salariului în România",
+ "category": "HR_COMPLIANCE",
+ "content": "# Structura salariului în România\n\nCând vorbim despre \"salariu\", în limbaj curent ne referim adesea doar la suma care ajunge în cont. Din punct de vedere legal însă, salariul este o structură cu mai multe componente, definite de art. 159-160 din Codul Muncii (Legea nr. 53/2003, republicată).\n\nSalariul cuprinde:\n- **Salariul de bază** — suma fixă, negociată prin contractul individual de muncă (CIM), corespunzătoare funcției și normei de lucru;\n- **Sporurile** — sume adiționale pentru condiții speciale de muncă: vechime, condiții deosebite/periculoase, muncă de noapte, ore suplimentare;\n- **Indemnizațiile** — sume acordate în anumite situații: indemnizația de concediu de odihnă, indemnizația de delegare/detașare, indemnizația pentru funcții de conducere;\n- **Alte adaosuri (bonusuri)** — prime de performanță, al 13-lea salariu, bonusuri de sărbători, comisioane.\n\nToate aceste elemente formează **salariul brut**, baza de calcul pentru contribuțiile sociale și impozitul pe venit. Separat de salariu, angajatorul poate acorda **beneficii extrasalariale** (tichete de masă, tichete cadou, abonamente medicale, decontare transport), care au un regim fiscal propriu, diferit de cel al salariului.\n\nÎnțelegerea corectă a acestei structuri este esențială pentru specialistul HR: fiecare componentă are reguli proprii de includere în baza de calcul CAS/CASS, de impozitare și de raportare în REVISAL și D112.\n\nSalariul de bază nu poate fi negociat sub **salariul minim brut pe țară garantat în plată**, stabilit periodic prin Hotărâre de Guvern (art. 164 Codul Muncii).\n\nSituația la zi (verificată iulie 2026):\n- 1 ianuarie – 30 iunie 2026: salariul minim brut a fost **4.050 lei**;\n- **de la 1 iulie 2026: 4.325 lei brut** (HG nr. 146/2026), cu un net estimat oficial de aproximativ **2.699 lei** pentru un salariat fără persoane în întreținere;\n- pentru sectorul **construcții**, salariul minim rămâne **4.582 lei**, neschimbat pe tot parcursul anului 2026;\n- salariul minim distinct pentru sectorul agro-alimentar a fost abrogat, domeniul fiind aliniat la salariul minim național începând cu 1 iulie 2026.\n\nO noutate importantă introdusă prin OUG nr. 89/2025 este reducerea **părții netaxabile din salariul minim** — suma din salariul minim brut care este scutită de impozitul pe venit — de la 300 lei (valabilă până la 30 iunie 2026) la **200 lei, începând cu 1 iulie 2026**. Practic, acest lucru înseamnă un impozit ceva mai mare reținut la salariile situate la nivelul minim pe economie, comparativ cu prima jumătate a anului.\n\nCa specialist de payroll, trebuie să verifici la fiecare actualizare a salariului minim dacă toate CIM-urile cu salariul de bază la nivel minim au fost actualizate prin act adițional, pentru a evita neconformități depistate la control ITM.\n\nSporurile și indemnizațiile completează salariul de bază și, de regulă, intră în baza de calcul a contribuțiilor sociale, exact ca și salariul de bază.\n\nCele mai frecvente sporuri întâlnite în practică:\n- **Sporul de vechime** — procentual, stabilit prin contractul colectiv de muncă sau politica internă (nu mai este obligatoriu prin lege pentru toți angajatorii din mediul privat, dar rămâne uzual);\n- **Sporul pentru condiții deosebite/periculoase** — obligatoriu acolo unde există evaluare de risc care îl justifică;\n- **Sporul de muncă de noapte** — minimum 25% din salariul de bază, pentru munca prestată între orele 22:00-06:00;\n- **Sporul pentru ore suplimentare** — orele suplimentare se compensează, de regulă, cu timp liber corespunzător în următoarele 90 de zile calendaristice; dacă nu este posibil, se plătește un spor de minimum 75% din salariul de bază (art. 123 Codul Muncii).\n\nIndemnizațiile cele mai des întâlnite:\n- **Indemnizația de concediu de odihnă** — se calculează pe baza mediei veniturilor din ultimele 3 luni și se plătește înainte de plecarea în concediu;\n- **Indemnizația de concediu medical** — suportată parțial de angajator, parțial din FNUASS, conform certificatului medical;\n- **Indemnizația de delegare/detașare** — acoperă costurile suplimentare generate de deplasarea în interes de serviciu.\n\nToate aceste sume trebuie evidențiate distinct în statul de plată și pe fluturașul de salariu, pentru trasabilitate și pentru corectitudinea raportării în D112.\n\nDiferența dintre salariul brut (ce apare în CIM) și salariul net (ce încasează efectiv angajatul) este dată de contribuțiile reținute la sursă de angajator și virate statului.\n\nDin salariul brut se rețin, în această ordine:\n1. **CAS (contribuția de asigurări sociale/pensie): 25%** din brut;\n2. **CASS (contribuția de asigurări sociale de sănătate): 10%** din brut;\n3. **Impozitul pe venit: 10%**, aplicat asupra bazei rămase după scăderea CAS, CASS și a eventualelor deduceri personale.\n\nAceste cote sunt neschimbate în 2026 față de anii anteriori.\n\nSuplimentar, angajatorul datorează, în afara salariului brut și fără a fi reținută din venitul angajatului, **CAM (contribuția asiguratorie pentru muncă): 2,25%** din fondul de salarii — acesta este un cost integral suportat de angajator.\n\nPresiunea fiscală totală asupra unui salariu (contribuții angajat + impozit + CAM angajator, raportate la costul total) se situează în jurul valorii de **43%**, ceea ce face din costul salarial una dintre cele mai importante linii bugetare pentru orice organizație.\n\nCa regulă generală de lucru: **brut → CAS → CASS → bază impozabilă → impozit → net**, iar CAM se calculează separat, ca și cost suplimentar de angajator, fără a influența netul angajatului.\n\n## Exemplu: Compunerea salariului brut pentru un post de contabil\nIonela ocupă postul de contabil, cu salariul de bază negociat prin CIM la **4.500 lei**. Are o vechime în muncă ce îi conferă, conform politicii interne, un spor de vechime de 5%.\n\nCompunerea salariului brut lunar:\n- Salariu de bază: 4.500 lei\n- Spor de vechime (5%): 4.500 × 5% = 225 lei\n- **Total salariu brut: 4.725 lei**\n\nSeparat, Ionela primește și **tichete de masă**, în valoare stabilită de angajator (plafonul valoric maxim neimpozabil se actualizează periodic — verifică valoarea în vigoare înainte de a o comunica angajaților). Tichetele de masă **nu se adaugă la salariul brut** folosit pentru calculul CAS/CASS aferent salariului, dar valoarea lor este supusă impozitului pe venit de 10% și, după caz, CASS, conform regulilor specifice acestui beneficiu.\n\nAcest exemplu ilustrează diferența dintre elementele de salariu (bază + sporuri, care intră integral în baza CAS/CASS) și beneficiile extrasalariale (care au un regim de calcul separat).\n\n## Exemplu: Calcul complet brut → net pentru un salariu de 6.000 lei\nUn angajat are salariul brut total (bază + sporuri) de **6.000 lei**, fără persoane în întreținere și fără alte deduceri speciale. Calculul complet:\n\n1. CAS (25%): 6.000 × 25% = **1.500 lei**\n2. CASS (10%): 6.000 × 10% = **600 lei**\n3. Bază de calcul impozit: 6.000 − 1.500 − 600 = **3.900 lei**\n4. Impozit pe venit (10%): 3.900 × 10% = **390 lei**\n5. **Salariu net: 6.000 − 1.500 − 600 − 390 = 3.510 lei**\n\nCostul suplimentar pentru angajator (CAM, 2,25%, nu se scade din venitul angajatului):\n6.000 × 2,25% = **135 lei**\n\n**Cost total angajator pentru acest salariat: 6.000 + 135 = 6.135 lei**, în timp ce angajatul încasează efectiv 3.510 lei. Diferența dintre costul total și net (2.625 lei) reprezintă suma virată către bugetul de stat prin CAS, CASS, impozit și CAM.\n\n> Temei legal: Legea nr. 53/2003 - Codul Muncii (republicată) și HG nr. 146/2026 art. 159-160 și art. 164 Codul Muncii; HG nr. 146/2026 privind salariul minim brut pe țară garantat în plată (în vigoare de la 2026-07-01)\nArt. 159-160 Codul Muncii definesc salariul ca fiind format din salariul de bază, indemnizații, sporuri și alte adaosuri, stabilite prin negociere individuală sau colectivă, cu respectarea limitelor legale. Art. 164 interzice negocierea unui salariu de bază sub nivelul minim brut pe țară garantat în plată, stabilit prin Hotărâre de Guvern.\n\nÎncepând cu **1 iulie 2026**, prin HG nr. 146/2026, salariul minim brut pe economie este de **4.325 lei**, cu excepția sectorului construcții, unde rămâne **4.582 lei** pe întreg anul 2026. Orice CIM cu salariul de bază situat sub aceste praguri trebuie actualizat prin act adițional, înregistrat corespunzător în REVISAL.\n\n⚠ Valorile plafoanelor pentru beneficii extrasalariale (de exemplu, valoarea maximă neimpozabilă a unui tichet de masă) se actualizează periodic și nu sunt fixe pe termen lung — verifică întotdeauna valoarea în vigoare la data plății, înainte de a o folosi în calculul de payroll sau în comunicarea către angajați.\n\nConținutul acestei lecții are caracter informativ și educațional, pentru formarea competențelor de administrare personal. Pentru situații particulare (contracte atipice, spețe de interpretare a Codului Muncii, litigii de muncă), recomandarea este să consulți un avocat specializat în dreptul muncii sau un expert în legislația muncii — acest curs nu constituie consultanță juridică individuală.\n\n## Exercițiu\nUn angajat are următoarea structură a salariului brut lunar:\n- Salariu de bază: 5.000 lei\n- Spor de vechime (10%): ?\n- Spor pentru condiții deosebite (5%): ?\n\nCerințe:\n1. Calculează salariul brut total.\n2. Calculează CAS (25%), CASS (10%) și impozitul pe venit (10%).\n3. Determină salariul net.\n4. Determină costul CAM (2,25%) datorat de angajator.\n\n**Soluție:** 1. Salariu brut total:\n- Spor vechime: 5.000 × 10% = 500 lei\n- Spor condiții deosebite: 5.000 × 5% = 250 lei\n- **Brut total: 5.000 + 500 + 250 = 5.750 lei**\n\n2. Rețineri:\n- CAS (25%): 5.750 × 25% = 1.437,50 lei\n- CASS (10%): 5.750 × 10% = 575 lei\n- Bază impozabilă: 5.750 − 1.437,50 − 575 = 3.737,50 lei\n- Impozit (10%): 3.737,50 × 10% = 373,75 lei\n\n3. **Salariu net: 5.750 − 1.437,50 − 575 − 373,75 = 3.363,75 lei**\n\n4. CAM angajator: 5.750 × 2,25% = 129,38 lei (rotunjit)\n\n**Cost total angajator: 5.750 + 129,38 = 5.879,38 lei**",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "structura-salariului-componente",
+    "md": "Când vorbim despre \"salariu\", în limbaj curent ne referim adesea doar la suma care ajunge în cont. Din punct de vedere legal însă, salariul este o structură cu mai multe componente, definite de art. 159-160 din Codul Muncii (Legea nr. 53/2003, republicată).\n\nSalariul cuprinde:\n- **Salariul de bază** — suma fixă, negociată prin contractul individual de muncă (CIM), corespunzătoare funcției și normei de lucru;\n- **Sporurile** — sume adiționale pentru condiții speciale de muncă: vechime, condiții deosebite/periculoase, muncă de noapte, ore suplimentare;\n- **Indemnizațiile** — sume acordate în anumite situații: indemnizația de concediu de odihnă, indemnizația de delegare/detașare, indemnizația pentru funcții de conducere;\n- **Alte adaosuri (bonusuri)** — prime de performanță, al 13-lea salariu, bonusuri de sărbători, comisioane.\n\nToate aceste elemente formează **salariul brut**, baza de calcul pentru contribuțiile sociale și impozitul pe venit. Separat de salariu, angajatorul poate acorda **beneficii extrasalariale** (tichete de masă, tichete cadou, abonamente medicale, decontare transport), care au un regim fiscal propriu, diferit de cel al salariului.\n\nÎnțelegerea corectă a acestei structuri este esențială pentru specialistul HR: fiecare componentă are reguli proprii de includere în baza de calcul CAS/CASS, de impozitare și de raportare în REVISAL și D112.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "salariu-minim-brut-garantat",
+    "md": "Salariul de bază nu poate fi negociat sub **salariul minim brut pe țară garantat în plată**, stabilit periodic prin Hotărâre de Guvern (art. 164 Codul Muncii).\n\nSituația la zi (verificată iulie 2026):\n- 1 ianuarie – 30 iunie 2026: salariul minim brut a fost **4.050 lei**;\n- **de la 1 iulie 2026: 4.325 lei brut** (HG nr. 146/2026), cu un net estimat oficial de aproximativ **2.699 lei** pentru un salariat fără persoane în întreținere;\n- pentru sectorul **construcții**, salariul minim rămâne **4.582 lei**, neschimbat pe tot parcursul anului 2026;\n- salariul minim distinct pentru sectorul agro-alimentar a fost abrogat, domeniul fiind aliniat la salariul minim național începând cu 1 iulie 2026.\n\nO noutate importantă introdusă prin OUG nr. 89/2025 este reducerea **părții netaxabile din salariul minim** — suma din salariul minim brut care este scutită de impozitul pe venit — de la 300 lei (valabilă până la 30 iunie 2026) la **200 lei, începând cu 1 iulie 2026**. Practic, acest lucru înseamnă un impozit ceva mai mare reținut la salariile situate la nivelul minim pe economie, comparativ cu prima jumătate a anului.\n\nCa specialist de payroll, trebuie să verifici la fiecare actualizare a salariului minim dacă toate CIM-urile cu salariul de bază la nivel minim au fost actualizate prin act adițional, pentru a evita neconformități depistate la control ITM.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "sporuri-indemnizatii-salariale",
+    "md": "Sporurile și indemnizațiile completează salariul de bază și, de regulă, intră în baza de calcul a contribuțiilor sociale, exact ca și salariul de bază.\n\nCele mai frecvente sporuri întâlnite în practică:\n- **Sporul de vechime** — procentual, stabilit prin contractul colectiv de muncă sau politica internă (nu mai este obligatoriu prin lege pentru toți angajatorii din mediul privat, dar rămâne uzual);\n- **Sporul pentru condiții deosebite/periculoase** — obligatoriu acolo unde există evaluare de risc care îl justifică;\n- **Sporul de muncă de noapte** — minimum 25% din salariul de bază, pentru munca prestată între orele 22:00-06:00;\n- **Sporul pentru ore suplimentare** — orele suplimentare se compensează, de regulă, cu timp liber corespunzător în următoarele 90 de zile calendaristice; dacă nu este posibil, se plătește un spor de minimum 75% din salariul de bază (art. 123 Codul Muncii).\n\nIndemnizațiile cele mai des întâlnite:\n- **Indemnizația de concediu de odihnă** — se calculează pe baza mediei veniturilor din ultimele 3 luni și se plătește înainte de plecarea în concediu;\n- **Indemnizația de concediu medical** — suportată parțial de angajator, parțial din FNUASS, conform certificatului medical;\n- **Indemnizația de delegare/detașare** — acoperă costurile suplimentare generate de deplasarea în interes de serviciu.\n\nToate aceste sume trebuie evidențiate distinct în statul de plată și pe fluturașul de salariu, pentru trasabilitate și pentru corectitudinea raportării în D112.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "brut-net-contributii-sociale",
+    "md": "Diferența dintre salariul brut (ce apare în CIM) și salariul net (ce încasează efectiv angajatul) este dată de contribuțiile reținute la sursă de angajator și virate statului.\n\nDin salariul brut se rețin, în această ordine:\n1. **CAS (contribuția de asigurări sociale/pensie): 25%** din brut;\n2. **CASS (contribuția de asigurări sociale de sănătate): 10%** din brut;\n3. **Impozitul pe venit: 10%**, aplicat asupra bazei rămase după scăderea CAS, CASS și a eventualelor deduceri personale.\n\nAceste cote sunt neschimbate în 2026 față de anii anteriori.\n\nSuplimentar, angajatorul datorează, în afara salariului brut și fără a fi reținută din venitul angajatului, **CAM (contribuția asiguratorie pentru muncă): 2,25%** din fondul de salarii — acesta este un cost integral suportat de angajator.\n\nPresiunea fiscală totală asupra unui salariu (contribuții angajat + impozit + CAM angajator, raportate la costul total) se situează în jurul valorii de **43%**, ceea ce face din costul salarial una dintre cele mai importante linii bugetare pentru orice organizație.\n\nCa regulă generală de lucru: **brut → CAS → CASS → bază impozabilă → impozit → net**, iar CAM se calculează separat, ca și cost suplimentar de angajator, fără a influența netul angajatului.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b4"
+   },
+   {
+    "type": "example",
+    "title": "Compunerea salariului brut pentru un post de contabil",
+    "concept_key": "structura-salariului-componente",
+    "md": "Ionela ocupă postul de contabil, cu salariul de bază negociat prin CIM la **4.500 lei**. Are o vechime în muncă ce îi conferă, conform politicii interne, un spor de vechime de 5%.\n\nCompunerea salariului brut lunar:\n- Salariu de bază: 4.500 lei\n- Spor de vechime (5%): 4.500 × 5% = 225 lei\n- **Total salariu brut: 4.725 lei**\n\nSeparat, Ionela primește și **tichete de masă**, în valoare stabilită de angajator (plafonul valoric maxim neimpozabil se actualizează periodic — verifică valoarea în vigoare înainte de a o comunica angajaților). Tichetele de masă **nu se adaugă la salariul brut** folosit pentru calculul CAS/CASS aferent salariului, dar valoarea lor este supusă impozitului pe venit de 10% și, după caz, CASS, conform regulilor specifice acestui beneficiu.\n\nAcest exemplu ilustrează diferența dintre elementele de salariu (bază + sporuri, care intră integral în baza CAS/CASS) și beneficiile extrasalariale (care au un regim de calcul separat).",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b5"
+   },
+   {
+    "type": "example",
+    "title": "Calcul complet brut → net pentru un salariu de 6.000 lei",
+    "concept_key": "brut-net-contributii-sociale",
+    "md": "Un angajat are salariul brut total (bază + sporuri) de **6.000 lei**, fără persoane în întreținere și fără alte deduceri speciale. Calculul complet:\n\n1. CAS (25%): 6.000 × 25% = **1.500 lei**\n2. CASS (10%): 6.000 × 10% = **600 lei**\n3. Bază de calcul impozit: 6.000 − 1.500 − 600 = **3.900 lei**\n4. Impozit pe venit (10%): 3.900 × 10% = **390 lei**\n5. **Salariu net: 6.000 − 1.500 − 600 − 390 = 3.510 lei**\n\nCostul suplimentar pentru angajator (CAM, 2,25%, nu se scade din venitul angajatului):\n6.000 × 2,25% = **135 lei**\n\n**Cost total angajator pentru acest salariat: 6.000 + 135 = 6.135 lei**, în timp ce angajatul încasează efectiv 3.510 lei. Diferența dintre costul total și net (2.625 lei) reprezintă suma virată către bugetul de stat prin CAS, CASS, impozit și CAM.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 - Codul Muncii (republicată) și HG nr. 146/2026",
+    "article": "art. 159-160 și art. 164 Codul Muncii; HG nr. 146/2026 privind salariul minim brut pe țară garantat în plată",
+    "effective": "2026-07-01",
+    "md": "Art. 159-160 Codul Muncii definesc salariul ca fiind format din salariul de bază, indemnizații, sporuri și alte adaosuri, stabilite prin negociere individuală sau colectivă, cu respectarea limitelor legale. Art. 164 interzice negocierea unui salariu de bază sub nivelul minim brut pe țară garantat în plată, stabilit prin Hotărâre de Guvern.\n\nÎncepând cu **1 iulie 2026**, prin HG nr. 146/2026, salariul minim brut pe economie este de **4.325 lei**, cu excepția sectorului construcții, unde rămâne **4.582 lei** pe întreg anul 2026. Orice CIM cu salariul de bază situat sub aceste praguri trebuie actualizat prin act adițional, înregistrat corespunzător în REVISAL.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Valorile plafoanelor pentru beneficii extrasalariale (de exemplu, valoarea maximă neimpozabilă a unui tichet de masă) se actualizează periodic și nu sunt fixe pe termen lung — verifică întotdeauna valoarea în vigoare la data plății, înainte de a o folosi în calculul de payroll sau în comunicarea către angajați.\n\nConținutul acestei lecții are caracter informativ și educațional, pentru formarea competențelor de administrare personal. Pentru situații particulare (contracte atipice, spețe de interpretare a Codului Muncii, litigii de muncă), recomandarea este să consulți un avocat specializat în dreptul muncii sau un expert în legislația muncii — acest curs nu constituie consultanță juridică individuală.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Un angajat are următoarea structură a salariului brut lunar:\n- Salariu de bază: 5.000 lei\n- Spor de vechime (10%): ?\n- Spor pentru condiții deosebite (5%): ?\n\nCerințe:\n1. Calculează salariul brut total.\n2. Calculează CAS (25%), CASS (10%) și impozitul pe venit (10%).\n3. Determină salariul net.\n4. Determină costul CAM (2,25%) datorat de angajator.",
+    "solution_md": "1. Salariu brut total:\n- Spor vechime: 5.000 × 10% = 500 lei\n- Spor condiții deosebite: 5.000 × 5% = 250 lei\n- **Brut total: 5.000 + 500 + 250 = 5.750 lei**\n\n2. Rețineri:\n- CAS (25%): 5.750 × 25% = 1.437,50 lei\n- CASS (10%): 5.750 × 10% = 575 lei\n- Bază impozabilă: 5.750 − 1.437,50 − 575 = 3.737,50 lei\n- Impozit (10%): 3.737,50 × 10% = 373,75 lei\n\n3. **Salariu net: 5.750 − 1.437,50 − 575 − 373,75 = 3.363,75 lei**\n\n4. CAM angajator: 5.750 × 2,25% = 129,38 lei (rotunjit)\n\n**Cost total angajator: 5.750 + 129,38 = 5.879,38 lei**",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cotă se reține din salariul brut cu titlu de CAS (contribuția de asigurări sociale)?",
+    "choices": [
+     "25%",
+     "10%",
+     "2,25%",
+     "16%"
+    ],
+    "answer": 0,
+    "explain": "CAS este 25% din salariul brut, reținut din venitul angajatului, alături de CASS (10%) și impozitul pe venit (10%).",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De la ce dată se aplică salariul minim brut de 4.325 lei pe economie?",
+    "choices": [
+     "1 ianuarie 2026",
+     "1 iulie 2026",
+     "1 septembrie 2026",
+     "1 ianuarie 2027"
+    ],
+    "answer": 1,
+    "explain": "Conform HG nr. 146/2026, salariul minim brut de 4.325 lei se aplică începând cu 1 iulie 2026; anterior acestei date, salariul minim a fost de 4.050 lei.",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt principalele componente ale salariului conform Codului Muncii?",
+    "back": "Salariul de bază, sporurile, indemnizațiile și alte adaosuri (bonusuri) — art. 159-160, Legea nr. 53/2003.",
+    "concept_key": "structura-salariului-componente",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este salariul minim brut pe economie de la 1 iulie 2026?",
+    "back": "4.325 lei brut (net estimat oficial ≈ 2.699 lei), conform HG nr. 146/2026.",
+    "concept_key": "salariu-minim-brut-garantat",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este salariul minim brut în sectorul construcții în 2026?",
+    "back": "4.582 lei, valoare neschimbată pe tot parcursul anului 2026.",
+    "concept_key": "salariu-minim-brut-garantat",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cotă CAS și ce cotă CASS se rețin din salariul brut al angajatului?",
+    "back": "CAS 25% și CASS 10%, cote neschimbate în 2026.",
+    "concept_key": "brut-net-contributii-sociale",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este contribuția asiguratorie pentru muncă (CAM) datorată de angajator?",
+    "back": "2,25% din fondul de salarii, cost suplimentar suportat integral de angajator (nu se scade din venitul angajatului).",
+    "concept_key": "brut-net-contributii-sociale",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât este partea netaxabilă din salariul minim de la 1 iulie 2026?",
+    "back": "200 lei (redusă de la 300 lei), conform OUG nr. 89/2025.",
+    "concept_key": "salariu-minim-brut-garantat",
+    "blockId": "cmjjuxw9y00i5umkp75m1gw5d-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1452,
+   "flashcards": 6
+  }
+ }
+}

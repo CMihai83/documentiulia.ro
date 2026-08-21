@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw3d00cqumkp967d7k9l",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Planul de Conturi Românesc",
+ "lesson": "Clasa 2 - Imobilizări",
+ "category": "FINANCE_OPS",
+ "content": "# Clasa 2 - Imobilizări\n\n## Clasa 2 – Conturi de imobilizări\n\nÎn Planul de conturi general (OMFP 1802/2014), Clasa 2 grupează toate activele pe care o entitate le deține pe termen lung (peste un an), destinate utilizării continue în activitate, nu revânzării. Toate conturile din această clasă sunt **conturi de activ**: se debitează la intrarea imobilizării în patrimoniu și se creditează la ieșire (vânzare, casare, cedare).\n\nStructura principală:\n\n- **Grupa 20 – Imobilizări necorporale**: 201 „Cheltuieli de constituire\", 203 „Cheltuieli de dezvoltare\", 205 „Concesiuni, brevete, licențe, mărci comerciale, drepturi și active similare\", 207 „Fond comercial\", 208 „Alte imobilizări necorporale\" (ex. programe informatice cumpărate sau dezvoltate intern).\n- **Grupa 21 – Imobilizări corporale**: 211 „Terenuri și amenajări de terenuri\", 212 „Construcții\", 213 „Instalații tehnice și mijloace de transport\", 214 „Mobilier, aparatură birotică, echipamente de protecție\", 215 „Investiții imobiliare\", 216 „Active biologice productive\".\n- **Grupa 23 – Imobilizări în curs și avansuri**: 231 „Imobilizări corporale în curs de execuție\", 233 „Imobilizări necorporale în curs de execuție\", plus conturile de avansuri 232 și 234. Se folosesc cât timp activul nu este încă recepționat/pus în funcțiune.\n- **Grupa 26 – Imobilizări financiare**: 261 „Acțiuni deținute la entitățile afiliate\", 263 „Interese de participare\", 265 „Alte titluri imobilizate\", 267 „Creanțe imobilizate\" (ex. împrumuturi acordate pe termen lung).\n- **Grupa 28 – Amortizări privind imobilizările**: conturi de pasiv (rectificative de activ), care evidențiază amortizarea cumulată – 280 pentru necorporale, 281 pentru corporale.\n- **Grupa 29 – Ajustări pentru deprecierea sau pierderea de valoare a imobilizărilor**: 290, 291, 293, 296 – tot conturi rectificative, folosite pentru deprecieri constatate, nu pentru uzura normală.\n\nValoarea netă contabilă a unei imobilizări la un moment dat se calculează astfel: **Valoare netă contabilă = Valoare de intrare − Amortizare cumulată − Ajustări pentru depreciere cumulate**.\n\n## Amortizarea imobilizărilor\n\nAmortizarea reprezintă alocarea sistematică a valorii amortizabile a unei imobilizări pe durata sa de utilizare economică (DUE), reflectând consumul beneficiilor economice generate de activ. Se înregistrează în contabilitate indiferent de rezultatul exercițiului – este o cheltuială obligatorie, nu opțională.\n\n**Formula metodei liniare** (cea mai utilizată în practică):\n\nAmortizare anuală = Valoare de intrare ÷ Durata de utilizare economică (ani)\n\nAmortizare lunară = Amortizare anuală ÷ 12\n\nAlte metode admise de reglementările contabile și de Codul fiscal:\n\n- **Metoda degresivă** – cotă de amortizare liniară multiplicată cu un coeficient (de regulă între 1,5 și 2,5, în funcție de durata normată), aplicată la valoarea rămasă neamortizată; amortizarea este mai mare în primii ani.\n- **Metoda accelerată** – permite amortizarea a până la 50% din valoarea de intrare în primul an de utilizare, restul amortizându-se liniar pe durata rămasă; se aplică de regulă echipamentelor tehnologice și programelor informatice.\n\nÎnregistrarea contabilă lunară a amortizării:\n\n**6811 „Cheltuieli de exploatare privind amortizarea imobilizărilor\" = 280/281 „Amortizări privind imobilizările\"**\n\nTerenurile (contul 211) nu se amortizează, întrucât nu au o durată de utilizare limitată, cu excepția amenajărilor de terenuri, care se amortizează separat.\n\n## Deprecierea (ajustări pentru pierdere de valoare) vs. amortizarea\n\nAmortizarea reflectă **uzura normală, previzibilă** a unui activ pe durata lui de viață utilă. Deprecierea reflectă o **pierdere de valoare suplimentară, neprevăzută**, cauzată de factori precum: deteriorare fizică accidentală, uzură morală/tehnologică accelerată, scăderea cererii pentru produsele fabricate cu activul respectiv, modificări legislative sau de mediu economic.\n\nConform OMFP 1802/2014, la finalul fiecărui exercițiu financiar entitatea trebuie să evalueze dacă există indicii de depreciere. Dacă valoarea recuperabilă (cea mai mare dintre valoarea justă minus costurile de vânzare și valoarea de utilizare) este mai mică decât valoarea netă contabilă, se constituie o ajustare pentru depreciere:\n\n**6813 „Cheltuieli de exploatare privind ajustările pentru deprecierea imobilizărilor\" = 29 „Ajustări pentru deprecierea imobilizărilor\"**\n\nSpre deosebire de amortizare, ajustările pentru depreciere sunt **reversibile**: dacă la o evaluare ulterioară valoarea recuperabilă crește, ajustarea se diminuează sau se anulează prin înregistrarea inversă:\n\n**29 = 7813 „Venituri din ajustări pentru deprecierea imobilizărilor\"**\n\nAtenție: amortizarea continuă să se calculeze și după constituirea unei ajustări pentru depreciere, dar se recalculează pornind de la noua valoare netă contabilă (după depreciere), pe durata de utilizare economică rămasă.\n\n## Exemplu: Achiziție și amortizare liniară a unui mijloc fix\nSC EXEMPLU CONSULT SRL achiziționează, la 1 martie 2026, un echipament tehnologic (strung CNC) la prețul de 50.000 lei, plus TVA 21% (cota standard aplicabilă în 2026, conform Legii 141/2025). Durata de utilizare economică stabilită de entitate este de 5 ani (60 de luni), metoda de amortizare liniară.\n\n**1. Recepția utilajului (factură furnizor):**\n\n% = 404 „Furnizori de imobilizări\"  60.500 lei\n2131 „Echipamente tehnologice\"  50.000 lei\n4426 „TVA deductibilă\"  10.500 lei\n\n**2. Calculul amortizării lunare:**\n\nAmortizare lunară = 50.000 lei ÷ 5 ani ÷ 12 luni = **833,33 lei/lună**\n\n**3. Înregistrarea amortizării, începând cu luna următoare punerii în funcțiune (aprilie 2026):**\n\n6811 „Cheltuieli de exploatare privind amortizarea imobilizărilor\" = 2813 „Amortizarea instalațiilor și mijloacelor de transport\"  833,33 lei\n\nLa finalul primului an de utilizare (aprilie–decembrie 2026, 9 luni), amortizarea cumulată va fi 9 × 833,33 = 7.500 lei, iar valoarea netă contabilă la 31.12.2026 va fi 50.000 − 7.500 = **42.500 lei**.\n\n## Exemplu: Test de depreciere la finalul exercițiului financiar\nLa 31.12.2026, conducerea SC EXEMPLU CONSULT SRL constată că strungul CNC achiziționat anterior a devenit parțial obsolet din cauza apariției pe piață a unor echipamente mult mai performante, iar comenzile care necesitau acest utilaj au scăzut semnificativ. Se efectuează un test de depreciere:\n\n- Valoare netă contabilă la 31.12.2026: 42.500 lei\n- Valoare recuperabilă estimată (valoare justă minus costuri de vânzare): 30.000 lei\n\nDeoarece valoarea recuperabilă (30.000 lei) este mai mică decât valoarea netă contabilă (42.500 lei), se constituie o ajustare pentru depreciere de 12.500 lei:\n\n6813 „Cheltuieli de exploatare privind ajustările pentru deprecierea imobilizărilor\" = 2913 „Ajustări pentru deprecierea instalațiilor și mijloacelor de transport\"  12.500 lei\n\nÎncepând cu anul următor, amortizarea lunară se recalculează pe baza noii valori nete contabile (30.000 lei) și a duratei de utilizare economică rămase (48 de luni): 30.000 ÷ 48 = 625 lei/lună, în loc de 833,33 lei/lună.\n\n> Temei legal: OMFP 1802/2014 Secțiunea 4.7 – Imobilizări necorporale și corporale (pct. privind recunoașterea, evaluarea și amortizarea imobilizărilor) (în vigoare de la 2015-01-01)\nOMFP 1802/2014 pentru reglementările contabile privind situațiile financiare anuale individuale și consolidate stabilește criteriile de recunoaștere a imobilizărilor necorporale și corporale, componentele costului de achiziție/producție, precum și obligativitatea amortizării sistematice pe durata de utilizare economică estimată de entitate. Reglementările se aplică situațiilor financiare începând cu exercițiul financiar al anului 2015 și rămân actul de referință pentru contabilitatea imobilizărilor în România.\n\n⚠ Durata de utilizare economică (DUE) folosită în contabilitate este stabilită de entitate, pe baza politicilor contabile proprii, ținând cont de modul real de utilizare a activului. Aceasta poate fi diferită de duratele normate de utilizare din Catalogul privind clasificarea și duratele normale de funcționare a mijloacelor fixe, folosit în principal pentru determinarea amortizării fiscal deductibile. Diferența dintre amortizarea contabilă și cea fiscală generează, de regulă, diferențe temporare care trebuie urmărite separat. Verifică întotdeauna ediția în vigoare a catalogului la data înregistrării, deoarece duratele normate pot fi modificate prin acte normative ulterioare.\n\n## Exercițiu\nSC ATLAS PROD SRL achiziționează la 1 ianuarie 2026 o clădire de producție (fără teren) la costul de 600.000 lei, plus TVA 21%. Entitatea stabilește o durată de utilizare economică de 25 de ani, metoda de amortizare liniară.\n\nCerințe:\n1. Înregistrează recepția construcției (contul 212) și TVA deductibilă aferentă.\n2. Calculează amortizarea lunară și amortizarea aferentă anului 2026 (12 luni, presupunând punerea în funcțiune chiar la 1 ianuarie).\n3. Determină valoarea netă contabilă la 31.12.2026.\n4. La 31.12.2027, se constată indicii de depreciere: valoarea recuperabilă estimată este de 500.000 lei, iar valoarea netă contabilă înainte de test este de 552.000 lei. Înregistrează ajustarea necesară.\n\n**Soluție:** **1. Recepția construcției:**\n\n% = 404 „Furnizori de imobilizări\"  726.000 lei\n212 „Construcții\"  600.000 lei\n4426 „TVA deductibilă\"  126.000 lei\n\n**2. Amortizarea:**\n\nAmortizare anuală = 600.000 ÷ 25 = 24.000 lei/an\n\nAmortizare lunară = 24.000 ÷ 12 = 2.000 lei/lună\n\nÎnregistrare lunară (× 12 în 2026): 6811 = 2812 „Amortizarea construcțiilor\"  2.000 lei\n\nAmortizare cumulată la 31.12.2026 = 12 × 2.000 = 24.000 lei\n\n**3. Valoare netă contabilă la 31.12.2026:**\n\n600.000 − 24.000 = **576.000 lei**\n\nDupă amortizarea aferentă anului 2027 (încă 24.000 lei), valoarea netă contabilă înainte de test la 31.12.2027 este 576.000 − 24.000 = 552.000 lei (confirmă datele din enunț).\n\n**4. Testul de depreciere la 31.12.2027:**\n\nValoare netă contabilă (552.000 lei) > Valoare recuperabilă (500.000 lei) → se constituie ajustare pentru depreciere de 52.000 lei:\n\n6813 = 2912 „Ajustări pentru deprecierea construcțiilor\"  52.000 lei\n\nValoarea netă contabilă ajustată la 31.12.2027 devine 500.000 lei, bază de la care se recalculează amortizarea pentru anii următori.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "clasa-2-structura-conturi",
+    "md": "## Clasa 2 – Conturi de imobilizări\n\nÎn Planul de conturi general (OMFP 1802/2014), Clasa 2 grupează toate activele pe care o entitate le deține pe termen lung (peste un an), destinate utilizării continue în activitate, nu revânzării. Toate conturile din această clasă sunt **conturi de activ**: se debitează la intrarea imobilizării în patrimoniu și se creditează la ieșire (vânzare, casare, cedare).\n\nStructura principală:\n\n- **Grupa 20 – Imobilizări necorporale**: 201 „Cheltuieli de constituire\", 203 „Cheltuieli de dezvoltare\", 205 „Concesiuni, brevete, licențe, mărci comerciale, drepturi și active similare\", 207 „Fond comercial\", 208 „Alte imobilizări necorporale\" (ex. programe informatice cumpărate sau dezvoltate intern).\n- **Grupa 21 – Imobilizări corporale**: 211 „Terenuri și amenajări de terenuri\", 212 „Construcții\", 213 „Instalații tehnice și mijloace de transport\", 214 „Mobilier, aparatură birotică, echipamente de protecție\", 215 „Investiții imobiliare\", 216 „Active biologice productive\".\n- **Grupa 23 – Imobilizări în curs și avansuri**: 231 „Imobilizări corporale în curs de execuție\", 233 „Imobilizări necorporale în curs de execuție\", plus conturile de avansuri 232 și 234. Se folosesc cât timp activul nu este încă recepționat/pus în funcțiune.\n- **Grupa 26 – Imobilizări financiare**: 261 „Acțiuni deținute la entitățile afiliate\", 263 „Interese de participare\", 265 „Alte titluri imobilizate\", 267 „Creanțe imobilizate\" (ex. împrumuturi acordate pe termen lung).\n- **Grupa 28 – Amortizări privind imobilizările**: conturi de pasiv (rectificative de activ), care evidențiază amortizarea cumulată – 280 pentru necorporale, 281 pentru corporale.\n- **Grupa 29 – Ajustări pentru deprecierea sau pierderea de valoare a imobilizărilor**: 290, 291, 293, 296 – tot conturi rectificative, folosite pentru deprecieri constatate, nu pentru uzura normală.\n\nValoarea netă contabilă a unei imobilizări la un moment dat se calculează astfel: **Valoare netă contabilă = Valoare de intrare − Amortizare cumulată − Ajustări pentru depreciere cumulate**.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "amortizare-imobilizari-metode",
+    "md": "## Amortizarea imobilizărilor\n\nAmortizarea reprezintă alocarea sistematică a valorii amortizabile a unei imobilizări pe durata sa de utilizare economică (DUE), reflectând consumul beneficiilor economice generate de activ. Se înregistrează în contabilitate indiferent de rezultatul exercițiului – este o cheltuială obligatorie, nu opțională.\n\n**Formula metodei liniare** (cea mai utilizată în practică):\n\nAmortizare anuală = Valoare de intrare ÷ Durata de utilizare economică (ani)\n\nAmortizare lunară = Amortizare anuală ÷ 12\n\nAlte metode admise de reglementările contabile și de Codul fiscal:\n\n- **Metoda degresivă** – cotă de amortizare liniară multiplicată cu un coeficient (de regulă între 1,5 și 2,5, în funcție de durata normată), aplicată la valoarea rămasă neamortizată; amortizarea este mai mare în primii ani.\n- **Metoda accelerată** – permite amortizarea a până la 50% din valoarea de intrare în primul an de utilizare, restul amortizându-se liniar pe durata rămasă; se aplică de regulă echipamentelor tehnologice și programelor informatice.\n\nÎnregistrarea contabilă lunară a amortizării:\n\n**6811 „Cheltuieli de exploatare privind amortizarea imobilizărilor\" = 280/281 „Amortizări privind imobilizările\"**\n\nTerenurile (contul 211) nu se amortizează, întrucât nu au o durată de utilizare limitată, cu excepția amenajărilor de terenuri, care se amortizează separat.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "depreciere-vs-amortizare",
+    "md": "## Deprecierea (ajustări pentru pierdere de valoare) vs. amortizarea\n\nAmortizarea reflectă **uzura normală, previzibilă** a unui activ pe durata lui de viață utilă. Deprecierea reflectă o **pierdere de valoare suplimentară, neprevăzută**, cauzată de factori precum: deteriorare fizică accidentală, uzură morală/tehnologică accelerată, scăderea cererii pentru produsele fabricate cu activul respectiv, modificări legislative sau de mediu economic.\n\nConform OMFP 1802/2014, la finalul fiecărui exercițiu financiar entitatea trebuie să evalueze dacă există indicii de depreciere. Dacă valoarea recuperabilă (cea mai mare dintre valoarea justă minus costurile de vânzare și valoarea de utilizare) este mai mică decât valoarea netă contabilă, se constituie o ajustare pentru depreciere:\n\n**6813 „Cheltuieli de exploatare privind ajustările pentru deprecierea imobilizărilor\" = 29 „Ajustări pentru deprecierea imobilizărilor\"**\n\nSpre deosebire de amortizare, ajustările pentru depreciere sunt **reversibile**: dacă la o evaluare ulterioară valoarea recuperabilă crește, ajustarea se diminuează sau se anulează prin înregistrarea inversă:\n\n**29 = 7813 „Venituri din ajustări pentru deprecierea imobilizărilor\"**\n\nAtenție: amortizarea continuă să se calculeze și după constituirea unei ajustări pentru depreciere, dar se recalculează pornind de la noua valoare netă contabilă (după depreciere), pe durata de utilizare economică rămasă.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b3"
+   },
+   {
+    "type": "example",
+    "title": "Achiziție și amortizare liniară a unui mijloc fix",
+    "concept_key": "amortizare-imobilizari-metode",
+    "md": "SC EXEMPLU CONSULT SRL achiziționează, la 1 martie 2026, un echipament tehnologic (strung CNC) la prețul de 50.000 lei, plus TVA 21% (cota standard aplicabilă în 2026, conform Legii 141/2025). Durata de utilizare economică stabilită de entitate este de 5 ani (60 de luni), metoda de amortizare liniară.\n\n**1. Recepția utilajului (factură furnizor):**\n\n% = 404 „Furnizori de imobilizări\"  60.500 lei\n2131 „Echipamente tehnologice\"  50.000 lei\n4426 „TVA deductibilă\"  10.500 lei\n\n**2. Calculul amortizării lunare:**\n\nAmortizare lunară = 50.000 lei ÷ 5 ani ÷ 12 luni = **833,33 lei/lună**\n\n**3. Înregistrarea amortizării, începând cu luna următoare punerii în funcțiune (aprilie 2026):**\n\n6811 „Cheltuieli de exploatare privind amortizarea imobilizărilor\" = 2813 „Amortizarea instalațiilor și mijloacelor de transport\"  833,33 lei\n\nLa finalul primului an de utilizare (aprilie–decembrie 2026, 9 luni), amortizarea cumulată va fi 9 × 833,33 = 7.500 lei, iar valoarea netă contabilă la 31.12.2026 va fi 50.000 − 7.500 = **42.500 lei**.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b4"
+   },
+   {
+    "type": "example",
+    "title": "Test de depreciere la finalul exercițiului financiar",
+    "concept_key": "depreciere-vs-amortizare",
+    "md": "La 31.12.2026, conducerea SC EXEMPLU CONSULT SRL constată că strungul CNC achiziționat anterior a devenit parțial obsolet din cauza apariției pe piață a unor echipamente mult mai performante, iar comenzile care necesitau acest utilaj au scăzut semnificativ. Se efectuează un test de depreciere:\n\n- Valoare netă contabilă la 31.12.2026: 42.500 lei\n- Valoare recuperabilă estimată (valoare justă minus costuri de vânzare): 30.000 lei\n\nDeoarece valoarea recuperabilă (30.000 lei) este mai mică decât valoarea netă contabilă (42.500 lei), se constituie o ajustare pentru depreciere de 12.500 lei:\n\n6813 „Cheltuieli de exploatare privind ajustările pentru deprecierea imobilizărilor\" = 2913 „Ajustări pentru deprecierea instalațiilor și mijloacelor de transport\"  12.500 lei\n\nÎncepând cu anul următor, amortizarea lunară se recalculează pe baza noii valori nete contabile (30.000 lei) și a duratei de utilizare economică rămase (48 de luni): 30.000 ÷ 48 = 625 lei/lună, în loc de 833,33 lei/lună.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Secțiunea 4.7 – Imobilizări necorporale și corporale (pct. privind recunoașterea, evaluarea și amortizarea imobilizărilor)",
+    "effective": "2015-01-01",
+    "md": "OMFP 1802/2014 pentru reglementările contabile privind situațiile financiare anuale individuale și consolidate stabilește criteriile de recunoaștere a imobilizărilor necorporale și corporale, componentele costului de achiziție/producție, precum și obligativitatea amortizării sistematice pe durata de utilizare economică estimată de entitate. Reglementările se aplică situațiilor financiare începând cu exercițiul financiar al anului 2015 și rămân actul de referință pentru contabilitatea imobilizărilor în România.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Durata de utilizare economică (DUE) folosită în contabilitate este stabilită de entitate, pe baza politicilor contabile proprii, ținând cont de modul real de utilizare a activului. Aceasta poate fi diferită de duratele normate de utilizare din Catalogul privind clasificarea și duratele normale de funcționare a mijloacelor fixe, folosit în principal pentru determinarea amortizării fiscal deductibile. Diferența dintre amortizarea contabilă și cea fiscală generează, de regulă, diferențe temporare care trebuie urmărite separat. Verifică întotdeauna ediția în vigoare a catalogului la data înregistrării, deoarece duratele normate pot fi modificate prin acte normative ulterioare.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "SC ATLAS PROD SRL achiziționează la 1 ianuarie 2026 o clădire de producție (fără teren) la costul de 600.000 lei, plus TVA 21%. Entitatea stabilește o durată de utilizare economică de 25 de ani, metoda de amortizare liniară.\n\nCerințe:\n1. Înregistrează recepția construcției (contul 212) și TVA deductibilă aferentă.\n2. Calculează amortizarea lunară și amortizarea aferentă anului 2026 (12 luni, presupunând punerea în funcțiune chiar la 1 ianuarie).\n3. Determină valoarea netă contabilă la 31.12.2026.\n4. La 31.12.2027, se constată indicii de depreciere: valoarea recuperabilă estimată este de 500.000 lei, iar valoarea netă contabilă înainte de test este de 552.000 lei. Înregistrează ajustarea necesară.",
+    "solution_md": "**1. Recepția construcției:**\n\n% = 404 „Furnizori de imobilizări\"  726.000 lei\n212 „Construcții\"  600.000 lei\n4426 „TVA deductibilă\"  126.000 lei\n\n**2. Amortizarea:**\n\nAmortizare anuală = 600.000 ÷ 25 = 24.000 lei/an\n\nAmortizare lunară = 24.000 ÷ 12 = 2.000 lei/lună\n\nÎnregistrare lunară (× 12 în 2026): 6811 = 2812 „Amortizarea construcțiilor\"  2.000 lei\n\nAmortizare cumulată la 31.12.2026 = 12 × 2.000 = 24.000 lei\n\n**3. Valoare netă contabilă la 31.12.2026:**\n\n600.000 − 24.000 = **576.000 lei**\n\nDupă amortizarea aferentă anului 2027 (încă 24.000 lei), valoarea netă contabilă înainte de test la 31.12.2027 este 576.000 − 24.000 = 552.000 lei (confirmă datele din enunț).\n\n**4. Testul de depreciere la 31.12.2027:**\n\nValoare netă contabilă (552.000 lei) > Valoare recuperabilă (500.000 lei) → se constituie ajustare pentru depreciere de 52.000 lei:\n\n6813 = 2912 „Ajustări pentru deprecierea construcțiilor\"  52.000 lei\n\nValoarea netă contabilă ajustată la 31.12.2027 devine 500.000 lei, bază de la care se recalculează amortizarea pentru anii următori.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce cont se folosește pentru înregistrarea amortizării lunare a unui echipament tehnologic?",
+    "choices": [
+     "6811 = 2813",
+     "6813 = 2913",
+     "404 = 213",
+     "6811 = 401"
+    ],
+    "answer": 0,
+    "explain": "Amortizarea lunară a mijloacelor fixe se înregistrează prin debitarea contului de cheltuială 6811 „Cheltuieli de exploatare privind amortizarea imobilizărilor\" și creditarea contului rectificativ de amortizare corespunzător din grupa 28 (2813 pentru instalații și mijloace de transport).",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență dintre amortizare și ajustarea pentru depreciere a unei imobilizări?",
+    "choices": [
+     "Amortizarea este reversibilă, deprecierea nu",
+     "Amortizarea reflectă uzura normală și previzibilă, deprecierea reflectă o pierdere de valoare suplimentară și este reversibilă",
+     "Deprecierea se aplică doar terenurilor",
+     "Nu există nicio diferență, sunt sinonime"
+    ],
+    "answer": 1,
+    "explain": "Amortizarea alocă sistematic valoarea unui activ pe durata lui de utilizare economică și nu se reia niciodată. Ajustarea pentru depreciere corectează valoarea contabilă atunci când valoarea recuperabilă scade sub aceasta din motive neprevăzute și poate fi diminuată sau anulată ulterior dacă situația se ameliorează.",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula amortizării anuale prin metoda liniară?",
+    "back": "Amortizare anuală = Valoare de intrare ÷ Durata de utilizare economică (în ani).",
+    "concept_key": "amortizare-imobilizari-metode",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cont se creditează la constituirea unei ajustări pentru deprecierea imobilizărilor corporale?",
+    "back": "Contul din grupa 29 „Ajustări pentru deprecierea sau pierderea de valoare a imobilizărilor\" (ex. 2913 pentru instalații și mijloace de transport, 2912 pentru construcții), prin formula 6813 = 29.",
+    "concept_key": "depreciere-vs-amortizare",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Se amortizează terenurile?",
+    "back": "Nu. Terenurile (contul 211) nu au o durată de utilizare limitată și nu se amortizează; se amortizează doar amenajările de terenuri.",
+    "concept_key": "amortizare-imobilizari-metode",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează valoarea netă contabilă a unei imobilizări?",
+    "back": "Valoare netă contabilă = Valoare de intrare − Amortizare cumulată − Ajustări pentru depreciere cumulate.",
+    "concept_key": "clasa-2-structura-conturi",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În ce grupă de conturi se înregistrează imobilizările în curs de execuție?",
+    "back": "Grupa 23 „Imobilizări în curs și avansuri\" (ex. 231 pentru corporale în curs, 233 pentru necorporale în curs), folosită până la recepția/punerea în funcțiune a activului.",
+    "concept_key": "clasa-2-structura-conturi",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Poate fi reluată (anulată) o ajustare pentru depreciere a unei imobilizări dacă valoarea recuperabilă crește ulterior?",
+    "back": "Da. Spre deosebire de amortizare, ajustarea pentru depreciere este reversibilă și se diminuează prin formula 29 = 7813 „Venituri din ajustări pentru deprecierea imobilizărilor\".",
+    "concept_key": "depreciere-vs-amortizare",
+    "blockId": "cmjjuxw3d00cqumkp967d7k9l-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1380,
+   "flashcards": 6
+  }
+ }
+}

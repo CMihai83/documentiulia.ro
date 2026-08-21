@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwar00irumkp7f5bc6dx",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Concedii și Absențe",
+ "lesson": "Alte absențe",
+ "category": "HR_COMPLIANCE",
+ "content": "# Alte absențe\n\n## Alte tipuri de absențe de la locul de muncă\n\nPe lângă concediul de odihnă, concediul medical sau concediul pentru creșterea copilului, în activitatea curentă a oricărei firme apar frecvent și alte tipuri de absențe, cu regim juridic diferit:\n\n- **Învoirea** — plecare temporară aprobată de angajator, la cererea salariatului, pentru motive personale (control medical, probleme administrative, evenimente de familie);\n- **Recuperarea orelor** — compensarea ulterioară, prin program suplimentar, a orelor absentate în cadrul unei învoiri neplătite;\n- **Absența nemotivată** — neprezentarea la locul de muncă fără o cauză justificată și fără aprobarea angajatorului.\n\nFiecare dintre aceste situații influențează diferit statul de plată, evidența timpului de muncă (pontajul) și, în cazul absențelor nemotivate, poate atrage răspunderea disciplinară a salariatului. Corecta clasificare și documentare a acestor absențe este esențială atât pentru calculul corect al salariului, cât și pentru protejarea angajatorului în eventualele controale ITM sau litigii de muncă.\n\n## Învoirea și recuperarea orelor\n\n**Învoirea** este permisiunea acordată de angajator salariatului de a absenta pentru un interval orar sau pentru o zi întreagă. Codul Muncii nu stabilește, la nivel general, un număr fix de zile sau ore de învoire plătită — acest aspect este reglementat, de regulă, prin contractul colectiv de muncă aplicabil sau prin regulamentul intern al angajatorului. Regulamentul intern trebuie să precizeze cel puțin:\n\n- dacă învoirea este plătită sau neplătită;\n- procedura de solicitare și aprobare (cerere scrisă, avizul șefului ierarhic direct);\n- modalitatea de recuperare a orelor, dacă este cazul.\n\n**Recuperarea orelor** este mecanismul prin care salariatul compensează, printr-un program de lucru suplimentar ulterior, orele absentate în cadrul unei învoiri neplătite, evitând astfel diminuarea salariului. Recuperarea trebuie consemnată explicit în pontaj, cu aprobarea scrisă a angajatorului — altfel riscă să fie interpretată drept muncă suplimentară needeclarată, cu implicații în controalele ITM.\n\nDistinct de recuperarea unei învoiri, Codul Muncii reglementează separat compensarea **muncii suplimentare** propriu-zise (ore lucrate peste programul normal, la solicitarea angajatorului): aceasta se compensează cu ore libere plătite acordate în următoarele **90 de zile calendaristice** de la efectuare (art. 122 alin. 1, Legea 53/2003). Dacă această compensare nu este posibilă, orele suplimentare se plătesc cu un spor de minimum **75%** din salariul de bază (art. 123 din Codul Muncii).\n\n## Absența nemotivată și consecințele ei\n\nAbsența nemotivată este neprezentarea la locul de muncă fără o cauză justificată (boală dovedită prin certificat medical, concediu aprobat, caz de forță majoră etc.) și fără informarea sau aprobarea angajatorului.\n\n**Efect asupra salariului.** Ziua de absență nemotivată nu se plătește: salariul lunii respective se calculează proporțional cu numărul de zile efectiv lucrate, iar în pontaj ziua se marchează distinct (de regulă cod „NM” — absență nemotivată), diferit de concediul fără plată sau de concediul medical.\n\n**Efect disciplinar.** Absența nemotivată constituie o abatere disciplinară, în sensul art. 247 din Codul Muncii, și poate atrage una dintre sancțiunile prevăzute la art. 248 alin. 1:\n\n- avertisment scris;\n- retrogradare din funcție;\n- reducerea salariului de bază;\n- reducerea salariului de bază și, după caz, a indemnizației de conducere;\n- desfacerea disciplinară a contractului individual de muncă (concediere pentru abatere gravă sau repetată, conform art. 61 lit. a).\n\nSancțiunea trebuie să fie proporțională cu gravitatea faptei, ținând cont de recurență, de eventualele antecedente disciplinare și de circumstanțele concrete. Cu excepția avertismentului scris, aplicarea oricărei alte sancțiuni presupune parcurgerea obligatorie a unei **cercetări disciplinare prealabile** (art. 251), în cadrul căreia salariatul are dreptul să fie convocat în scris, să ia cunoștință de faptele imputate și să prezinte apărări.\n\n## Exemplu: Calculul salariului la absență nemotivată\nUn salariat cu normă întreagă are salariul de bază brut **4.325 lei** (salariul minim brut pe economie, valabil de la 1 iulie 2026). Luna are 21 de zile lucrătoare, iar salariatul absentează nemotivat **2 zile**.\n\n**Pas 1 — salariu/zi:** 4.325 / 21 = 205,95 lei\n\n**Pas 2 — deducere pentru absențe:** 205,95 × 2 = 411,90 lei\n\n**Pas 3 — salariu brut cuvenit:** 4.325 − 411,90 = **3.913,10 lei**\n\n**Pas 4 — rețineri:**\n- CAS (25%) = 3.913,10 × 0,25 = 978,28 lei\n- CASS (10%) = 3.913,10 × 0,10 = 391,31 lei\n- Bază impozabilă = 3.913,10 − 978,28 − 391,31 = 2.543,51 lei\n- Impozit (10%) = 254,35 lei\n\n**Pas 5 — salariu net:** 2.543,51 − 254,35 = **2.289,16 lei**\n\nNotă: calculul de mai sus nu include eventuale facilități fiscale legate de nivelul salariului minim, întrucât acestea se aplică, de regulă, doar atunci când salariul minim este plătit integral (fără absențe) — verificați aplicabilitatea cu un specialist în salarizare.\n\n## Exemplu: Calculul sporului pentru ore suplimentare necompensate\nUn salariat cu salariu de bază brut de 4.325 lei lucrează **6 ore suplimentare** într-o lună cu normă de 168 de ore (21 zile × 8 ore). Angajatorul nu reușește să acorde timp liber corespunzător în termenul de 90 de zile calendaristice prevăzut de art. 122 din Codul Muncii, astfel încât orele se plătesc cu spor.\n\n**Pas 1 — salariu orar:** 4.325 / 168 = 25,74 lei/oră\n\n**Pas 2 — spor minim 75%:** 25,74 × 0,75 = 19,31 lei/oră\n\n**Pas 3 — valoare plată oră suplimentară:** 25,74 + 19,31 = 45,05 lei/oră\n\n**Pas 4 — total brut pentru 6 ore suplimentare:** 6 × 45,05 = **270,30 lei**, sumă care se adaugă la salariul brut lunar și se supune acelorași rețineri (CAS, CASS, impozit) ca restul venitului salarial.\n\n> Temei legal: Legea nr. 53/2003 – Codul Muncii, republicată, cu modificările ulterioare art. 122-123 (compensarea muncii suplimentare) și art. 247-252 (răspunderea disciplinară) (în vigoare de la 2003-03-01)\nArt. 122 alin. 1 prevede compensarea muncii suplimentare cu ore libere plătite în următoarele 90 de zile calendaristice de la efectuarea acesteia; art. 123 stabilește un spor de minimum 75% din salariul de bază atunci când compensarea cu timp liber nu este posibilă. Art. 247 califică absența nemotivată drept abatere disciplinară, iar art. 248 enumeră sancțiunile disciplinare aplicabile, de la avertisment scris până la desfacerea disciplinară a contractului. Art. 251-252 impun cercetarea disciplinară prealabilă (cu excepția avertismentului scris) și un termen de aplicare a sancțiunii de 30 de zile calendaristice de la data luării la cunoștință despre abatere, dar nu mai târziu de 6 luni de la săvârșirea faptei.\n\n⚠ Informațiile din această lecție au caracter general și nu constituie consultanță juridică individuală. Sancționarea disciplinară a unui salariat pentru absențe nemotivate presupune respectarea strictă a procedurii legale (convocare scrisă, cercetare disciplinară, termene, formă scrisă a deciziei); orice abatere de procedură poate conduce la anularea sancțiunii în instanță. Pentru situații concrete, recomandăm consultarea unui specialist în legislația muncii sau a unui avocat. Totodată, informațiile despre motivele absențelor (medicale, familiale) fac parte din dosarul de personal și trebuie gestionate cu respectarea principiilor GDPR: acces restricționat doar la persoanele autorizate (HR, manager direct) și păstrarea strict a datelor minime necesare scopului.\n\n## Exercițiu\nUn salariat angajat cu normă întreagă are un salariu de bază brut de 4.325 lei (salariul minim brut pe economie, valabil de la 1 iulie 2026). În luna de referință sunt 22 de zile lucrătoare. Salariatul absentează nemotivat 3 zile.\n\nCalculați:\na) salariul brut cuvenit după deducerea absențelor nemotivate;\nb) CAS (25%), CASS (10%) și impozitul pe venit (10%) aferente;\nc) salariul net de plată.\n\n(Pentru simplificare, nu se aplică nicio deducere personală suplimentară și nu se ia în calcul facilitatea fiscală aferentă salariului minim, aplicabilă doar la nivelul salariului minim plătit integral.)\n\n**Soluție:** **Pas 1 — salariu/zi:** 4.325 / 22 = 196,59 lei\n\n**Pas 2 — deducere pentru 3 zile absență:** 196,59 × 3 = 589,77 lei\n\n**a) Salariu brut cuvenit:** 4.325 − 589,77 = **3.735,23 lei**\n\n**b) Rețineri:**\n- CAS (25%) = 3.735,23 × 0,25 = 933,81 lei\n- CASS (10%) = 3.735,23 × 0,10 = 373,52 lei\n- Bază impozabilă = 3.735,23 − 933,81 − 373,52 = 2.427,90 lei\n- Impozit (10%) = 242,79 lei\n\n**c) Salariu net:** 2.427,90 − 242,79 = **2.185,11 lei**",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "alte-absente-tipuri-generale",
+    "md": "## Alte tipuri de absențe de la locul de muncă\n\nPe lângă concediul de odihnă, concediul medical sau concediul pentru creșterea copilului, în activitatea curentă a oricărei firme apar frecvent și alte tipuri de absențe, cu regim juridic diferit:\n\n- **Învoirea** — plecare temporară aprobată de angajator, la cererea salariatului, pentru motive personale (control medical, probleme administrative, evenimente de familie);\n- **Recuperarea orelor** — compensarea ulterioară, prin program suplimentar, a orelor absentate în cadrul unei învoiri neplătite;\n- **Absența nemotivată** — neprezentarea la locul de muncă fără o cauză justificată și fără aprobarea angajatorului.\n\nFiecare dintre aceste situații influențează diferit statul de plată, evidența timpului de muncă (pontajul) și, în cazul absențelor nemotivate, poate atrage răspunderea disciplinară a salariatului. Corecta clasificare și documentare a acestor absențe este esențială atât pentru calculul corect al salariului, cât și pentru protejarea angajatorului în eventualele controale ITM sau litigii de muncă.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "invoire-plecare-din-timpul-programului",
+    "md": "## Învoirea și recuperarea orelor\n\n**Învoirea** este permisiunea acordată de angajator salariatului de a absenta pentru un interval orar sau pentru o zi întreagă. Codul Muncii nu stabilește, la nivel general, un număr fix de zile sau ore de învoire plătită — acest aspect este reglementat, de regulă, prin contractul colectiv de muncă aplicabil sau prin regulamentul intern al angajatorului. Regulamentul intern trebuie să precizeze cel puțin:\n\n- dacă învoirea este plătită sau neplătită;\n- procedura de solicitare și aprobare (cerere scrisă, avizul șefului ierarhic direct);\n- modalitatea de recuperare a orelor, dacă este cazul.\n\n**Recuperarea orelor** este mecanismul prin care salariatul compensează, printr-un program de lucru suplimentar ulterior, orele absentate în cadrul unei învoiri neplătite, evitând astfel diminuarea salariului. Recuperarea trebuie consemnată explicit în pontaj, cu aprobarea scrisă a angajatorului — altfel riscă să fie interpretată drept muncă suplimentară needeclarată, cu implicații în controalele ITM.\n\nDistinct de recuperarea unei învoiri, Codul Muncii reglementează separat compensarea **muncii suplimentare** propriu-zise (ore lucrate peste programul normal, la solicitarea angajatorului): aceasta se compensează cu ore libere plătite acordate în următoarele **90 de zile calendaristice** de la efectuare (art. 122 alin. 1, Legea 53/2003). Dacă această compensare nu este posibilă, orele suplimentare se plătesc cu un spor de minimum **75%** din salariul de bază (art. 123 din Codul Muncii).",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "absenta-nemotivata-consecinte",
+    "md": "## Absența nemotivată și consecințele ei\n\nAbsența nemotivată este neprezentarea la locul de muncă fără o cauză justificată (boală dovedită prin certificat medical, concediu aprobat, caz de forță majoră etc.) și fără informarea sau aprobarea angajatorului.\n\n**Efect asupra salariului.** Ziua de absență nemotivată nu se plătește: salariul lunii respective se calculează proporțional cu numărul de zile efectiv lucrate, iar în pontaj ziua se marchează distinct (de regulă cod „NM” — absență nemotivată), diferit de concediul fără plată sau de concediul medical.\n\n**Efect disciplinar.** Absența nemotivată constituie o abatere disciplinară, în sensul art. 247 din Codul Muncii, și poate atrage una dintre sancțiunile prevăzute la art. 248 alin. 1:\n\n- avertisment scris;\n- retrogradare din funcție;\n- reducerea salariului de bază;\n- reducerea salariului de bază și, după caz, a indemnizației de conducere;\n- desfacerea disciplinară a contractului individual de muncă (concediere pentru abatere gravă sau repetată, conform art. 61 lit. a).\n\nSancțiunea trebuie să fie proporțională cu gravitatea faptei, ținând cont de recurență, de eventualele antecedente disciplinare și de circumstanțele concrete. Cu excepția avertismentului scris, aplicarea oricărei alte sancțiuni presupune parcurgerea obligatorie a unei **cercetări disciplinare prealabile** (art. 251), în cadrul căreia salariatul are dreptul să fie convocat în scris, să ia cunoștință de faptele imputate și să prezinte apărări.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b3"
+   },
+   {
+    "type": "example",
+    "title": "Calculul salariului la absență nemotivată",
+    "concept_key": "absenta-nemotivata-consecinte",
+    "md": "Un salariat cu normă întreagă are salariul de bază brut **4.325 lei** (salariul minim brut pe economie, valabil de la 1 iulie 2026). Luna are 21 de zile lucrătoare, iar salariatul absentează nemotivat **2 zile**.\n\n**Pas 1 — salariu/zi:** 4.325 / 21 = 205,95 lei\n\n**Pas 2 — deducere pentru absențe:** 205,95 × 2 = 411,90 lei\n\n**Pas 3 — salariu brut cuvenit:** 4.325 − 411,90 = **3.913,10 lei**\n\n**Pas 4 — rețineri:**\n- CAS (25%) = 3.913,10 × 0,25 = 978,28 lei\n- CASS (10%) = 3.913,10 × 0,10 = 391,31 lei\n- Bază impozabilă = 3.913,10 − 978,28 − 391,31 = 2.543,51 lei\n- Impozit (10%) = 254,35 lei\n\n**Pas 5 — salariu net:** 2.543,51 − 254,35 = **2.289,16 lei**\n\nNotă: calculul de mai sus nu include eventuale facilități fiscale legate de nivelul salariului minim, întrucât acestea se aplică, de regulă, doar atunci când salariul minim este plătit integral (fără absențe) — verificați aplicabilitatea cu un specialist în salarizare.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b4"
+   },
+   {
+    "type": "example",
+    "title": "Calculul sporului pentru ore suplimentare necompensate",
+    "concept_key": "recuperare-ore-lucrate",
+    "md": "Un salariat cu salariu de bază brut de 4.325 lei lucrează **6 ore suplimentare** într-o lună cu normă de 168 de ore (21 zile × 8 ore). Angajatorul nu reușește să acorde timp liber corespunzător în termenul de 90 de zile calendaristice prevăzut de art. 122 din Codul Muncii, astfel încât orele se plătesc cu spor.\n\n**Pas 1 — salariu orar:** 4.325 / 168 = 25,74 lei/oră\n\n**Pas 2 — spor minim 75%:** 25,74 × 0,75 = 19,31 lei/oră\n\n**Pas 3 — valoare plată oră suplimentară:** 25,74 + 19,31 = 45,05 lei/oră\n\n**Pas 4 — total brut pentru 6 ore suplimentare:** 6 × 45,05 = **270,30 lei**, sumă care se adaugă la salariul brut lunar și se supune acelorași rețineri (CAS, CASS, impozit) ca restul venitului salarial.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 – Codul Muncii, republicată, cu modificările ulterioare",
+    "article": "art. 122-123 (compensarea muncii suplimentare) și art. 247-252 (răspunderea disciplinară)",
+    "effective": "2003-03-01",
+    "md": "Art. 122 alin. 1 prevede compensarea muncii suplimentare cu ore libere plătite în următoarele 90 de zile calendaristice de la efectuarea acesteia; art. 123 stabilește un spor de minimum 75% din salariul de bază atunci când compensarea cu timp liber nu este posibilă. Art. 247 califică absența nemotivată drept abatere disciplinară, iar art. 248 enumeră sancțiunile disciplinare aplicabile, de la avertisment scris până la desfacerea disciplinară a contractului. Art. 251-252 impun cercetarea disciplinară prealabilă (cu excepția avertismentului scris) și un termen de aplicare a sancțiunii de 30 de zile calendaristice de la data luării la cunoștință despre abatere, dar nu mai târziu de 6 luni de la săvârșirea faptei.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Informațiile din această lecție au caracter general și nu constituie consultanță juridică individuală. Sancționarea disciplinară a unui salariat pentru absențe nemotivate presupune respectarea strictă a procedurii legale (convocare scrisă, cercetare disciplinară, termene, formă scrisă a deciziei); orice abatere de procedură poate conduce la anularea sancțiunii în instanță. Pentru situații concrete, recomandăm consultarea unui specialist în legislația muncii sau a unui avocat. Totodată, informațiile despre motivele absențelor (medicale, familiale) fac parte din dosarul de personal și trebuie gestionate cu respectarea principiilor GDPR: acces restricționat doar la persoanele autorizate (HR, manager direct) și păstrarea strict a datelor minime necesare scopului.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Un salariat angajat cu normă întreagă are un salariu de bază brut de 4.325 lei (salariul minim brut pe economie, valabil de la 1 iulie 2026). În luna de referință sunt 22 de zile lucrătoare. Salariatul absentează nemotivat 3 zile.\n\nCalculați:\na) salariul brut cuvenit după deducerea absențelor nemotivate;\nb) CAS (25%), CASS (10%) și impozitul pe venit (10%) aferente;\nc) salariul net de plată.\n\n(Pentru simplificare, nu se aplică nicio deducere personală suplimentară și nu se ia în calcul facilitatea fiscală aferentă salariului minim, aplicabilă doar la nivelul salariului minim plătit integral.)",
+    "solution_md": "**Pas 1 — salariu/zi:** 4.325 / 22 = 196,59 lei\n\n**Pas 2 — deducere pentru 3 zile absență:** 196,59 × 3 = 589,77 lei\n\n**a) Salariu brut cuvenit:** 4.325 − 589,77 = **3.735,23 lei**\n\n**b) Rețineri:**\n- CAS (25%) = 3.735,23 × 0,25 = 933,81 lei\n- CASS (10%) = 3.735,23 × 0,10 = 373,52 lei\n- Bază impozabilă = 3.735,23 − 933,81 − 373,52 = 2.427,90 lei\n- Impozit (10%) = 242,79 lei\n\n**c) Salariu net:** 2.427,90 − 242,79 = **2.185,11 lei**",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Codului Muncii, în cât timp trebuie compensată munca suplimentară cu ore libere plătite?",
+    "choices": [
+     "30 de zile calendaristice",
+     "60 de zile calendaristice",
+     "90 de zile calendaristice",
+     "120 de zile calendaristice"
+    ],
+    "answer": 2,
+    "explain": "Art. 122 alin. 1 din Codul Muncii prevede compensarea muncii suplimentare cu ore libere plătite în următoarele 90 de zile calendaristice de la efectuarea acesteia.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul maxim în care angajatorul poate aplica o sancțiune disciplinară de la data la care a luat cunoștință despre absența nemotivată?",
+    "choices": [
+     "15 zile calendaristice",
+     "30 de zile calendaristice",
+     "60 de zile calendaristice",
+     "90 de zile calendaristice"
+    ],
+    "answer": 1,
+    "explain": "Art. 252 din Codul Muncii stabilește un termen de 30 de zile calendaristice de la data luării la cunoștință despre abatere, dar nu mai târziu de 6 luni de la săvârșirea faptei.",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În câte zile calendaristice trebuie compensată munca suplimentară cu timp liber, conform Codului Muncii?",
+    "back": "În maximum 90 de zile calendaristice de la efectuarea orelor suplimentare (art. 122 alin. 1, Legea 53/2003).",
+    "concept_key": "recuperare-ore-lucrate",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce spor minim se aplică orelor suplimentare care nu au fost compensate cu timp liber?",
+    "back": "Un spor de minimum 75% din salariul de bază, conform art. 123 din Codul Muncii.",
+    "concept_key": "recuperare-ore-lucrate",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Este absența nemotivată o abatere disciplinară?",
+    "back": "Da — absența nemotivată de la locul de muncă reprezintă o abatere disciplinară și poate atrage sancțiuni conform art. 247-248 din Codul Muncii, inclusiv desfacerea disciplinară a contractului.",
+    "concept_key": "absenta-nemotivata-consecinte",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "În câte zile trebuie aplicată o sancțiune disciplinară de la data la care angajatorul a luat cunoștință despre abatere?",
+    "back": "În cel mult 30 de zile calendaristice de la data luării la cunoștință, dar nu mai târziu de 6 luni de la săvârșirea faptei (art. 252 din Codul Muncii).",
+    "concept_key": "cercetare-disciplinara-prealabila",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine stabilește numărul de zile de învoire plătită pentru evenimente personale sau familiale?",
+    "back": "Contractul colectiv de muncă aplicabil sau regulamentul intern al angajatorului — Codul Muncii nu fixează un număr exact de zile la nivel general.",
+    "concept_key": "invoire-plecare-din-timpul-programului",
+    "blockId": "cmjjuxwar00irumkp7f5bc6dx-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1235,
+   "flashcards": 5
+  }
+ }
+}

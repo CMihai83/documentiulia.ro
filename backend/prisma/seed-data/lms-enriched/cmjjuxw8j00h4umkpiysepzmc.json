@@ -1,0 +1,141 @@
+{
+ "lessonId": "cmjjuxw8j00h4umkpiysepzmc",
+ "courseId": "cmjjuxw7400fmumkp9cm4a9vj",
+ "course": "HR Fundamentals - Managementul Resurselor Umane",
+ "module": "Managementul Performanței",
+ "lesson": "Sisteme de performance management",
+ "category": "HR_COMPLIANCE",
+ "content": "# Sisteme de performance management\n\n## Ce este performance management-ul?\n\nManagementul performanței este procesul continuu prin care organizația aliniază activitatea fiecărui angajat la obiectivele de business, evaluează rezultatele obținute și decide acțiuni de dezvoltare, recompensare sau, după caz, corectare.\n\nUn sistem de performance management matur parcurge patru etape într-un ciclu care se repetă, de regulă, anual sau trimestrial:\n\n1. **Planificare** – stabilirea obiectivelor individuale, aliniate la strategia companiei.\n2. **Monitorizare** – urmărirea progresului prin check-in-uri periodice (lunare/trimestriale).\n3. **Evaluare** – măsurarea rezultatelor față de obiective, la finalul perioadei.\n4. **Dezvoltare** – plan de acțiune: training, promovare, ajustare salarială sau, în cazuri repetate de neîndeplinire, măsuri disciplinare/încetarea contractului.\n\nAlegerea metodologiei (MBO, OKR, competency-based sau continuous feedback) influențează direct cât de rapid reacționează organizația la schimbări și cât de motivați se simt angajații.\n\n## MBO – Management by Objectives\n\nDezvoltat de Peter Drucker în anii '50, MBO rămâne cea mai răspândită metodă în companiile românești, mai ales în producție, retail și servicii tradiționale.\n\nPrincipiul de bază: managerul și angajatul stabilesc împreună, la începutul perioadei (de obicei anual), un set de obiective SMART (Specifice, Măsurabile, Realizabile, Relevante, încadrate în Timp). La final, rezultatele se compară cu obiectivele stabilite, iar scorul obținut influențează bonusul, promovarea sau planul de dezvoltare.\n\n**Caracteristici cheie:**\n- Ciclu lung (anual), evaluare formală, de regulă o singură dată pe an.\n- Obiective în cascadă: obiectivele companiei se descompun în obiective de departament, apoi individuale.\n- Legătură directă și explicită cu remunerația variabilă (bonus de performanță).\n\n**Avantaje:** claritate, ușor de administrat, familiar managerilor, se pretează la calcul de bonus.\n**Dezavantaje:** rigid în medii cu schimbări rapide, poate încuraja obiective sigure (nu ambițioase) pentru a garanta bonusul, feedback rar (o dată pe an).\n\n## OKR – Objectives and Key Results\n\nPopularizat de Google (preluat de la Intel), modelul OKR separă Obiectivul (calitativ, inspirațional – unde vrem să ajungem) de Key Results (2-4 rezultate cantitative, măsurabile – cum știm că am ajuns).\n\nExemplu de structură:\n- **Obiectiv:** Devenim angajatorul preferat din industrie.\n- **KR1:** Scorul eNPS crește de la 20 la 40.\n- **KR2:** Rata de retenție la 12 luni ajunge la 90%.\n- **KR3:** Timpul mediu de angajare scade sub 25 de zile.\n\n**Diferențe esențiale față de MBO:**\n- Ciclu scurt (trimestrial), cu check-in lunar sau bilunar.\n- OKR-urile sunt de regulă decuplate de salariu/bonus – scopul e ambiție și transparență, nu evaluare de compensare.\n- Se acceptă un grad de eșec asumat: un scor de 0,7 din 1,0 este considerat bun, pentru că obiectivele trebuie să fie ambițioase (stretch goals).\n- Transparență totală: OKR-urile tuturor (inclusiv ale CEO-ului) sunt vizibile în organizație.\n\n**Avantaje:** agilitate, aliniere rapidă, încurajează ambiția.\n**Dezavantaje:** necesită maturitate organizațională și disciplină de urmărire; poate genera confuzie dacă e introdus fără separare clară de evaluarea salarială.\n\n## Evaluarea pe bază de competențe și feedback-ul continuu\n\n**Competency-based management** evaluează modul în care angajatul își atinge rezultatele, nu doar ce rezultate obține. Se folosește o matrice de competențe (ex: leadership, orientare spre client, lucru în echipă, expertiză tehnică), fiecare notată pe o scală (1-5) și comparată cu nivelul cerut de rol. Este metoda preferată pentru roluri unde comportamentul contează la fel de mult ca rezultatul (management, vânzări, relații cu clienții) și stă adesea la baza planurilor de succesiune și dezvoltare de carieră.\n\n**Continuous feedback (feedback continuu)** renunță la evaluarea anuală/trimestrială formală în favoarea conversațiilor scurte și frecvente (săptămânale sau după fiecare proiect/livrabil), susținute adesea de aplicații dedicate (1:1-uri, check-in-uri, feedback 360°). Reduce efectul recency (evaluatorul își amintește doar ultimele luni) și crește viteza de corecție a comportamentelor.\n\n**Avantaje competency-based:** obiectivitate mai mare pe comportamente, bază solidă pentru promovare/succesiune.\n**Dezavantaje:** greu de standardizat, evaluare subiectivă a competențelor soft dacă lipsesc exemple concrete.\n\n**Avantaje continuous feedback:** corectare rapidă, angajați mai implicați, reduce anxietatea evaluării anuale.\n**Dezavantaje:** consum mare de timp managerial, necesită cultură organizațională matură și instrumente digitale; greu de folosit izolat pentru decizii de compensare fără un cadru anual de sinteză.\n\n## Exemplu: Ciclu MBO complet pentru un Specialist Vânzări\nAna este Specialist Vânzări la o companie de distribuție. La începutul anului, împreună cu managerul ei, stabilește 3 obiective SMART:\n\n| Obiectiv | Țintă | Pondere |\n|---|---|---|\n| Cifră de afaceri portofoliu | 1.200.000 lei (vs 1.000.000 lei anul trecut) | 50% |\n| Clienți noi activați | 15 clienți noi | 30% |\n| Rata de retenție clienți existenți | minim 95% | 20% |\n\nLa finalul anului, rezultatele reale sunt: 1.260.000 lei (105% din țintă), 12 clienți noi (80% din țintă), retenție 97% (peste țintă, scor 100%).\n\n**Calcul scor final MBO:**\n(105% × 50%) + (80% × 30%) + (100% × 20%) = 52,5 + 24 + 20 = **96,5%**\n\nDacă bonusul maxim anual este de 5.000 lei brut la scor 100%, Ana primește 5.000 × 96,5% = **4.825 lei brut** (înainte de reținerile CAS 25%, CASS 10%, impozit pe venit 10%).\n\n## Exemplu: OKR trimestrial pentru echipa de HR\nDepartamentul HR al unei companii de 200 de angajați își stabilește pentru trimestrul 3 un set de OKR-uri aliniate la obiectivul companiei de reducere a fluctuației de personal.\n\n**Obiectiv:** Construim o experiență a angajatului care reduce plecările nedorite.\n\n- **KR1:** Rata de fluctuație voluntară scade de la 18% la 12% (anualizat).\n- **KR2:** Timpul mediu de recrutare pentru posturi cheie scade de la 45 la 30 de zile.\n- **KR3:** Scorul de satisfacție la exit interview (angajați care recomandă compania) crește de la 60% la 80%.\n\nLa finalul trimestrului, echipa HR revizuiește: fluctuația a scăzut la 14% (scor 0,67 – aproape de țintă, dar neatins complet), timpul de recrutare a scăzut la 32 zile (scor 0,87), scorul de recomandare a ajuns la 75% (scor 0,75). Media OKR: aproximativ 0,76, considerată un rezultat bun în logica stretch goals, fără impact direct asupra bonusului individual al recrutorilor – se discută însă în ședința de retrospectivă pentru planul trimestrului următor.\n\n> Temei legal: Legea nr. 53/2003 – Codul Muncii, republicată Art. 242 lit. i) și Art. 63 alin. (2) (în vigoare de la 2011-05-18)\nOrice sistem de evaluare a performanței folosit ca temei pentru decizii de personal (bonus, promovare, dar mai ales concediere) trebuie să aibă bază legală solidă:\n\n- **Art. 242 lit. i) din Codul Muncii** obligă angajatorul să prevadă în regulamentul intern criteriile și procedurile de evaluare profesională a salariaților.\n- **Art. 61 lit. d)** permite concedierea pentru necorespundere profesională, dar doar în urma unei evaluări prealabile, conform procedurii stabilite prin regulamentul intern sau contractul colectiv de muncă (**Art. 63 alin. (2)**).\n\nÎn practică: dacă nu ai criterii de evaluare documentate și comunicate angajatului înainte de perioada evaluată, orice decizie de concediere pentru necorespundere profesională bazată pe acel sistem poate fi anulată în instanță pentru vicii de procedură. Documentează întotdeauna obiectivele/competențele la începutul ciclului, nu retroactiv. Aceasta nu constituie consultanță juridică individuală; pentru situații concrete de concediere, consultă un specialist în dreptul muncii.\n\n⚠ Evaluările de performanță conțin date cu caracter personal sensibile pentru cariera angajatului (scoruri, observații comportamentale, planuri disciplinare). Conform principiilor GDPR, acestea trebuie: (1) păstrate în dosarul de personal cu acces restricționat doar la HR și managerul direct, (2) comunicate angajatului – acesta are dreptul să vadă propria evaluare și să o conteste, (3) aplicate consecvent – tratarea diferită a criteriilor între angajați aflați în situații comparabile poate constitui discriminare (Legea nr. 202/2002 privind egalitatea de șanse). Un sistem de performance management prost documentat este unul dintre cele mai frecvente motive de pierdere a litigiilor de muncă în România.\n\n## Exercițiu\nO companie de servicii IT cu 60 de angajați folosește în prezent doar evaluarea anuală (MBO), iar managerii se plâng că feedback-ul ajunge la angajați prea târziu pentru a corecta comportamente problematice, în timp ce echipele de dezvoltare software cer mai multă agilitate în stabilirea obiectivelor.\n\n**Cerințe:**\n1. Recomandă o combinație de sisteme (nu doar unul singur) potrivită pentru această companie și motivează alegerea.\n2. Formulează 2 obiective SMART pentru rolul de Dezvoltator Software Senior pentru un trimestru.\n3. Calculează scorul final dacă obiectivul 1 (pondere 60%) este atins 90%, iar obiectivul 2 (pondere 40%) este atins 110%.\n\n**Soluție:** **1. Recomandare:** Combinație OKR (la nivel de echipă/produs, trimestrial, pentru agilitate) + continuous feedback (check-in-uri lunare 1:1, pentru corecție rapidă) + o sinteză anuală de tip competency-based pentru deciziile de promovare/compensare. MBO pur este prea rigid pentru un mediu de dezvoltare software cu schimbări frecvente de prioritate.\n\n**2. Exemple de obiective SMART (trimestru):**\n- Obiectiv 1: Reduce timpul mediu de rezolvare a bug-urilor critice de la 5 zile la 3 zile.\n- Obiectiv 2: Finalizează migrarea modulului de facturare pe noua arhitectură, cu code coverage minim 80%, până la finalul trimestrului.\n\n**3. Calcul scor final:**\n(90% × 60%) + (110% × 40%) = 54 + 44 = **98%**.\n\nDacă bonusul trimestrial maxim e 1.500 lei brut, angajatul primește 1.500 × 98% = **1.470 lei brut**, din care se rețin CAS 25%, CASS 10% și impozit pe venit 10% (aplicat după deducerea contribuțiilor), rezultând suma netă efectivă.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "performance-management-ciclu",
+    "md": "## Ce este performance management-ul?\n\nManagementul performanței este procesul continuu prin care organizația aliniază activitatea fiecărui angajat la obiectivele de business, evaluează rezultatele obținute și decide acțiuni de dezvoltare, recompensare sau, după caz, corectare.\n\nUn sistem de performance management matur parcurge patru etape într-un ciclu care se repetă, de regulă, anual sau trimestrial:\n\n1. **Planificare** – stabilirea obiectivelor individuale, aliniate la strategia companiei.\n2. **Monitorizare** – urmărirea progresului prin check-in-uri periodice (lunare/trimestriale).\n3. **Evaluare** – măsurarea rezultatelor față de obiective, la finalul perioadei.\n4. **Dezvoltare** – plan de acțiune: training, promovare, ajustare salarială sau, în cazuri repetate de neîndeplinire, măsuri disciplinare/încetarea contractului.\n\nAlegerea metodologiei (MBO, OKR, competency-based sau continuous feedback) influențează direct cât de rapid reacționează organizația la schimbări și cât de motivați se simt angajații.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "mbo-management-by-objectives",
+    "md": "## MBO – Management by Objectives\n\nDezvoltat de Peter Drucker în anii '50, MBO rămâne cea mai răspândită metodă în companiile românești, mai ales în producție, retail și servicii tradiționale.\n\nPrincipiul de bază: managerul și angajatul stabilesc împreună, la începutul perioadei (de obicei anual), un set de obiective SMART (Specifice, Măsurabile, Realizabile, Relevante, încadrate în Timp). La final, rezultatele se compară cu obiectivele stabilite, iar scorul obținut influențează bonusul, promovarea sau planul de dezvoltare.\n\n**Caracteristici cheie:**\n- Ciclu lung (anual), evaluare formală, de regulă o singură dată pe an.\n- Obiective în cascadă: obiectivele companiei se descompun în obiective de departament, apoi individuale.\n- Legătură directă și explicită cu remunerația variabilă (bonus de performanță).\n\n**Avantaje:** claritate, ușor de administrat, familiar managerilor, se pretează la calcul de bonus.\n**Dezavantaje:** rigid în medii cu schimbări rapide, poate încuraja obiective sigure (nu ambițioase) pentru a garanta bonusul, feedback rar (o dată pe an).",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "okr-objectives-key-results",
+    "md": "## OKR – Objectives and Key Results\n\nPopularizat de Google (preluat de la Intel), modelul OKR separă Obiectivul (calitativ, inspirațional – unde vrem să ajungem) de Key Results (2-4 rezultate cantitative, măsurabile – cum știm că am ajuns).\n\nExemplu de structură:\n- **Obiectiv:** Devenim angajatorul preferat din industrie.\n- **KR1:** Scorul eNPS crește de la 20 la 40.\n- **KR2:** Rata de retenție la 12 luni ajunge la 90%.\n- **KR3:** Timpul mediu de angajare scade sub 25 de zile.\n\n**Diferențe esențiale față de MBO:**\n- Ciclu scurt (trimestrial), cu check-in lunar sau bilunar.\n- OKR-urile sunt de regulă decuplate de salariu/bonus – scopul e ambiție și transparență, nu evaluare de compensare.\n- Se acceptă un grad de eșec asumat: un scor de 0,7 din 1,0 este considerat bun, pentru că obiectivele trebuie să fie ambițioase (stretch goals).\n- Transparență totală: OKR-urile tuturor (inclusiv ale CEO-ului) sunt vizibile în organizație.\n\n**Avantaje:** agilitate, aliniere rapidă, încurajează ambiția.\n**Dezavantaje:** necesită maturitate organizațională și disciplină de urmărire; poate genera confuzie dacă e introdus fără separare clară de evaluarea salarială.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "competency-based-vs-continuous-feedback",
+    "md": "## Evaluarea pe bază de competențe și feedback-ul continuu\n\n**Competency-based management** evaluează modul în care angajatul își atinge rezultatele, nu doar ce rezultate obține. Se folosește o matrice de competențe (ex: leadership, orientare spre client, lucru în echipă, expertiză tehnică), fiecare notată pe o scală (1-5) și comparată cu nivelul cerut de rol. Este metoda preferată pentru roluri unde comportamentul contează la fel de mult ca rezultatul (management, vânzări, relații cu clienții) și stă adesea la baza planurilor de succesiune și dezvoltare de carieră.\n\n**Continuous feedback (feedback continuu)** renunță la evaluarea anuală/trimestrială formală în favoarea conversațiilor scurte și frecvente (săptămânale sau după fiecare proiect/livrabil), susținute adesea de aplicații dedicate (1:1-uri, check-in-uri, feedback 360°). Reduce efectul recency (evaluatorul își amintește doar ultimele luni) și crește viteza de corecție a comportamentelor.\n\n**Avantaje competency-based:** obiectivitate mai mare pe comportamente, bază solidă pentru promovare/succesiune.\n**Dezavantaje:** greu de standardizat, evaluare subiectivă a competențelor soft dacă lipsesc exemple concrete.\n\n**Avantaje continuous feedback:** corectare rapidă, angajați mai implicați, reduce anxietatea evaluării anuale.\n**Dezavantaje:** consum mare de timp managerial, necesită cultură organizațională matură și instrumente digitale; greu de folosit izolat pentru decizii de compensare fără un cadru anual de sinteză.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b4"
+   },
+   {
+    "type": "example",
+    "title": "Ciclu MBO complet pentru un Specialist Vânzări",
+    "concept_key": "mbo-management-by-objectives",
+    "md": "Ana este Specialist Vânzări la o companie de distribuție. La începutul anului, împreună cu managerul ei, stabilește 3 obiective SMART:\n\n| Obiectiv | Țintă | Pondere |\n|---|---|---|\n| Cifră de afaceri portofoliu | 1.200.000 lei (vs 1.000.000 lei anul trecut) | 50% |\n| Clienți noi activați | 15 clienți noi | 30% |\n| Rata de retenție clienți existenți | minim 95% | 20% |\n\nLa finalul anului, rezultatele reale sunt: 1.260.000 lei (105% din țintă), 12 clienți noi (80% din țintă), retenție 97% (peste țintă, scor 100%).\n\n**Calcul scor final MBO:**\n(105% × 50%) + (80% × 30%) + (100% × 20%) = 52,5 + 24 + 20 = **96,5%**\n\nDacă bonusul maxim anual este de 5.000 lei brut la scor 100%, Ana primește 5.000 × 96,5% = **4.825 lei brut** (înainte de reținerile CAS 25%, CASS 10%, impozit pe venit 10%).",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b5"
+   },
+   {
+    "type": "example",
+    "title": "OKR trimestrial pentru echipa de HR",
+    "concept_key": "okr-objectives-key-results",
+    "md": "Departamentul HR al unei companii de 200 de angajați își stabilește pentru trimestrul 3 un set de OKR-uri aliniate la obiectivul companiei de reducere a fluctuației de personal.\n\n**Obiectiv:** Construim o experiență a angajatului care reduce plecările nedorite.\n\n- **KR1:** Rata de fluctuație voluntară scade de la 18% la 12% (anualizat).\n- **KR2:** Timpul mediu de recrutare pentru posturi cheie scade de la 45 la 30 de zile.\n- **KR3:** Scorul de satisfacție la exit interview (angajați care recomandă compania) crește de la 60% la 80%.\n\nLa finalul trimestrului, echipa HR revizuiește: fluctuația a scăzut la 14% (scor 0,67 – aproape de țintă, dar neatins complet), timpul de recrutare a scăzut la 32 zile (scor 0,87), scorul de recomandare a ajuns la 75% (scor 0,75). Media OKR: aproximativ 0,76, considerată un rezultat bun în logica stretch goals, fără impact direct asupra bonusului individual al recrutorilor – se discută însă în ședința de retrospectivă pentru planul trimestrului următor.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 53/2003 – Codul Muncii, republicată",
+    "article": "Art. 242 lit. i) și Art. 63 alin. (2)",
+    "effective": "2011-05-18",
+    "md": "Orice sistem de evaluare a performanței folosit ca temei pentru decizii de personal (bonus, promovare, dar mai ales concediere) trebuie să aibă bază legală solidă:\n\n- **Art. 242 lit. i) din Codul Muncii** obligă angajatorul să prevadă în regulamentul intern criteriile și procedurile de evaluare profesională a salariaților.\n- **Art. 61 lit. d)** permite concedierea pentru necorespundere profesională, dar doar în urma unei evaluări prealabile, conform procedurii stabilite prin regulamentul intern sau contractul colectiv de muncă (**Art. 63 alin. (2)**).\n\nÎn practică: dacă nu ai criterii de evaluare documentate și comunicate angajatului înainte de perioada evaluată, orice decizie de concediere pentru necorespundere profesională bazată pe acel sistem poate fi anulată în instanță pentru vicii de procedură. Documentează întotdeauna obiectivele/competențele la începutul ciclului, nu retroactiv. Aceasta nu constituie consultanță juridică individuală; pentru situații concrete de concediere, consultă un specialist în dreptul muncii.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Evaluările de performanță conțin date cu caracter personal sensibile pentru cariera angajatului (scoruri, observații comportamentale, planuri disciplinare). Conform principiilor GDPR, acestea trebuie: (1) păstrate în dosarul de personal cu acces restricționat doar la HR și managerul direct, (2) comunicate angajatului – acesta are dreptul să vadă propria evaluare și să o conteste, (3) aplicate consecvent – tratarea diferită a criteriilor între angajați aflați în situații comparabile poate constitui discriminare (Legea nr. 202/2002 privind egalitatea de șanse). Un sistem de performance management prost documentat este unul dintre cele mai frecvente motive de pierdere a litigiilor de muncă în România.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "O companie de servicii IT cu 60 de angajați folosește în prezent doar evaluarea anuală (MBO), iar managerii se plâng că feedback-ul ajunge la angajați prea târziu pentru a corecta comportamente problematice, în timp ce echipele de dezvoltare software cer mai multă agilitate în stabilirea obiectivelor.\n\n**Cerințe:**\n1. Recomandă o combinație de sisteme (nu doar unul singur) potrivită pentru această companie și motivează alegerea.\n2. Formulează 2 obiective SMART pentru rolul de Dezvoltator Software Senior pentru un trimestru.\n3. Calculează scorul final dacă obiectivul 1 (pondere 60%) este atins 90%, iar obiectivul 2 (pondere 40%) este atins 110%.",
+    "solution_md": "**1. Recomandare:** Combinație OKR (la nivel de echipă/produs, trimestrial, pentru agilitate) + continuous feedback (check-in-uri lunare 1:1, pentru corecție rapidă) + o sinteză anuală de tip competency-based pentru deciziile de promovare/compensare. MBO pur este prea rigid pentru un mediu de dezvoltare software cu schimbări frecvente de prioritate.\n\n**2. Exemple de obiective SMART (trimestru):**\n- Obiectiv 1: Reduce timpul mediu de rezolvare a bug-urilor critice de la 5 zile la 3 zile.\n- Obiectiv 2: Finalizează migrarea modulului de facturare pe noua arhitectură, cu code coverage minim 80%, până la finalul trimestrului.\n\n**3. Calcul scor final:**\n(90% × 60%) + (110% × 40%) = 54 + 44 = **98%**.\n\nDacă bonusul trimestrial maxim e 1.500 lei brut, angajatul primește 1.500 × 98% = **1.470 lei brut**, din care se rețin CAS 25%, CASS 10% și impozit pe venit 10% (aplicat după deducerea contribuțiilor), rezultând suma netă efectivă.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială dintre MBO și OKR în privința legăturii cu remunerația?",
+    "choices": [
+     "MBO este mereu legat de salariul fix, OKR de bonus",
+     "MBO leagă explicit scorul de bonus/compensare, OKR este de regulă decuplat de compensare și pune accent pe ambiție",
+     "Ambele sisteme interzic legarea de bonus",
+     "OKR se folosește doar pentru evaluarea disciplinară"
+    ],
+    "answer": 1,
+    "explain": "MBO este istoric folosit ca bază de calcul pentru bonusuri, în timp ce OKR promovează obiective ambițioase (stretch goals) tocmai pentru că nu sunt legate direct de compensație, ceea ce reduce tentația de a seta ținte sigure.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Codului Muncii, ce trebuie să conțină obligatoriu regulamentul intern pentru ca o concediere pentru necorespundere profesională să fie legală?",
+    "choices": [
+     "Doar semnătura managerului direct",
+     "Criteriile și procedura de evaluare profesională a salariaților, comunicate înainte de evaluare",
+     "Un raport financiar al departamentului",
+     "Acordul scris al tuturor colegilor angajatului"
+    ],
+    "answer": 1,
+    "explain": "Art. 242 lit. i) din Codul Muncii obligă angajatorul să prevadă în regulamentul intern criteriile și procedurile de evaluare; lipsa acestora face vulnerabilă orice decizie de concediere pentru necorespundere profesională.",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă MBO?",
+    "back": "Management by Objectives – sistem în care managerul și angajatul stabilesc împreună obiective SMART anuale, iar rezultatele finale determină scorul de performanță și, adesea, bonusul.",
+    "concept_key": "mbo-management-by-objectives",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din ce se compune un OKR?",
+    "back": "Dintr-un Obiectiv calitativ, inspirațional și 2-4 Key Results cantitative, măsurabile, care arată dacă obiectivul a fost atins.",
+    "concept_key": "okr-objectives-key-results",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este ciclul tipic al OKR-urilor?",
+    "back": "Trimestrial, cu check-in-uri lunare sau bilunare, spre deosebire de MBO care este de regulă anual.",
+    "concept_key": "okr-objectives-key-results",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce evaluează competency-based management?",
+    "back": "Modul (comportamentul, competențele) în care angajatul obține rezultatele, nu doar rezultatul în sine – ex: leadership, orientare spre client.",
+    "concept_key": "competency-based-vs-continuous-feedback",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce obligă Art. 242 lit. i) din Codul Muncii referitor la evaluare?",
+    "back": "Angajatorul trebuie să prevadă în regulamentul intern criteriile și procedurile de evaluare profesională a salariaților, comunicate înainte de perioada evaluată.",
+    "concept_key": "codul-muncii-criterii-evaluare",
+    "blockId": "cmjjuxw8j00h4umkpiysepzmc-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1412,
+   "flashcards": 5
+  }
+ }
+}

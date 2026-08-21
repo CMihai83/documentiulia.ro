@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwag00ihumkpxdx26x17",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Calculul Salariilor",
+ "lesson": "Quiz salarizare",
+ "category": "HR_COMPLIANCE",
+ "content": "Test de evaluare — Quiz salarizare (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este salariul minim brut pe economie (sectorul general, non-construcții) valabil începând cu 1 iulie 2026?",
+     "choices": [
+      "4.050 lei",
+      "4.582 lei",
+      "4.325 lei",
+      "4.500 lei"
+     ],
+     "answer": 2,
+     "explain": "Conform HG 146/2026, salariul minim brut pe economie crește de la 4.050 lei (valabil 1 ian–30 iun 2026) la 4.325 lei începând cu 1 iulie 2026 (net aproximativ 2.699 lei).",
+     "concept_key": "salariu_minim_national"
+    },
+    {
+     "q": "Salariul minim brut în sectorul construcții, în anul 2026, este:",
+     "choices": [
+      "Aliniat la 4.325 lei de la 1 iulie 2026",
+      "4.582 lei, neschimbat pe tot parcursul anului 2026",
+      "4.050 lei, ca și în restul economiei",
+      "Desființat, construcțiile aplicând salariul agro-alimentar"
+     ],
+     "answer": 1,
+     "explain": "Salariul minim din construcții rămâne 4.582 lei pe toată durata anului 2026, nemodificat de majorarea din 1 iulie; salariul separat pentru sectorul agro-alimentar a fost abrogat și aliniat la salariul minim național de la 1 iulie 2026.",
+     "concept_key": "salariu_minim_constructii"
+    },
+    {
+     "q": "Care este partea netaxabilă din salariul minim brut, aplicabilă începând cu 1 iulie 2026?",
+     "choices": [
+      "300 lei",
+      "250 lei",
+      "200 lei",
+      "0 lei, facilitatea a fost eliminată"
+     ],
+     "answer": 2,
+     "explain": "Conform OUG 89/2025, partea netaxabilă din salariul minim scade de la 300 lei (până la 30 iunie 2026) la 200 lei începând cu 1 iulie 2026.",
+     "concept_key": "parte_netaxabila_salariu_minim"
+    },
+    {
+     "q": "Care sunt contribuțiile reținute din salariul brut al angajatului, în 2026?",
+     "choices": [
+      "CAS 25%, CASS 10%, impozit pe venit 10% (după deduceri)",
+      "CAS 20%, CASS 10%, impozit pe venit 16%",
+      "CAS 25%, CASS 5,5%, impozit pe venit 10%",
+      "CAS 15%, CASS 10%, impozit pe venit 10%"
+     ],
+     "answer": 0,
+     "explain": "Din salariul brut al angajatului se rețin CAS 25%, CASS 10% și impozitul pe venit de 10%, aplicat bazei rămase după deducerea CAS, CASS și a eventualelor deduceri personale.",
+     "concept_key": "contributii_salariat"
+    },
+    {
+     "q": "Cât este contribuția asiguratorie pentru muncă (CAM), suportată de angajator?",
+     "choices": [
+      "2,25%",
+      "4%",
+      "1,5%",
+      "0%, a fost eliminată în 2026"
+     ],
+     "answer": 0,
+     "explain": "Angajatorul datorează CAM în cotă de 2,25%, aplicată la fondul de salarii brute; aceasta se adaugă contribuțiilor reținute de la angajat.",
+     "concept_key": "cam_angajator"
+    },
+    {
+     "q": "La calculul salariului net dintr-un salariu brut, care este ordinea corectă a operațiilor?",
+     "choices": [
+      "Se aplică impozitul de 10% direct pe brut, apoi se scad CAS și CASS",
+      "Se scad din brut CAS (25%) și CASS (10%) pentru a obține baza de calcul a impozitului; din aceasta se scad eventualele deduceri personale, iar impozitul de 10% se aplică pe suma rămasă",
+      "Se scade doar CAS din brut, iar impozitul de 10% se aplică pe rezultat, CASS reținându-se separat din net",
+      "Impozitul de 10% se aplică pe salariul net, după toate reținerile"
+     ],
+     "answer": 1,
+     "explain": "Calculul corect brut→net presupune: brut − CAS(25%) − CASS(10%) = bază impozabilă; din aceasta se scad deducerile personale, iar impozitul (10%) se aplică pe suma rezultată. Netul este brutul minus CAS, CASS și impozit.",
+     "concept_key": "calcul_brut_net"
+    },
+    {
+     "q": "Presiunea fiscală totală (contribuții angajat + angajator) aplicată unui salariu brut este de aproximativ:",
+     "choices": [
+      "35%",
+      "39%",
+      "43%",
+      "47%"
+     ],
+     "answer": 2,
+     "explain": "Cumulând CAS (25%), CASS (10%), impozitul pe venit (10% pe bază redusă) și CAM (2,25% angajator), presiunea fiscală totală asupra brutului este de aproximativ 43%.",
+     "concept_key": "presiune_fiscala_totala"
+    },
+    {
+     "q": "În fluxul lunar de salarizare, până la ce dată trebuie depusă declarația D112 și plătite contribuțiile pentru luna anterioară?",
+     "choices": [
+      "Până pe 15 ale lunii curente",
+      "Până pe 25 ale lunii următoare",
+      "Până pe ultima zi a lunii curente",
+      "Până pe 10 ale lunii următoare"
+     ],
+     "answer": 1,
+     "explain": "Fluxul lunar este pontaj → stat de plată → D112 → plata contribuțiilor; D112 se depune și contribuțiile se plătesc până pe data de 25 a lunii următoare celei pentru care se face plata.",
+     "concept_key": "flux_salarizare_d112"
+    },
+    {
+     "q": "Cum sunt impozitate tichetele de masă acordate salariatului?",
+     "choices": [
+      "Sunt complet scutite de impozit și contribuții",
+      "Se impozitează cu 10% impozit pe venit și CASS, valoarea maximă fiind de 40,04 lei/tichet (2025)",
+      "Se impozitează doar cu CAS, fără impozit pe venit",
+      "Intră în baza de calcul CAM, dar nu și a CASS"
+     ],
+     "answer": 1,
+     "explain": "Tichetele de masă au o valoare maximă reglementată (40,04 lei/tichet în 2025) și sunt supuse impozitului pe venit de 10% și CASS, spre deosebire de salariul de bază care este supus și CAS.",
+     "concept_key": "tichete_masa"
+    },
+    {
+     "q": "Pentru câți ani trebuie păstrate (arhivate) statele de plată, și ce principiu GDPR se aplică dosarului de personal?",
+     "choices": [
+      "25 de ani; acces liber al tuturor angajaților la dosarele colegilor",
+      "50 de ani; date minime necesare și acces restricționat la dosarul de personal",
+      "10 ani; datele pot fi păstrate nelimitat fără restricții",
+      "50 de ani; dosarul de personal nu intră sub incidența GDPR"
+     ],
+     "answer": 1,
+     "explain": "Statele de plată se arhivează 50 de ani. Conform GDPR, dosarul de personal trebuie să conțină date minime necesare, iar accesul la acestea trebuie restricționat la persoanele autorizate.",
+     "concept_key": "arhivare_gdpr"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "courseId": "cmjjuxw7400fmumkp9cm4a9vj",
+ "course": "HR Fundamentals - Managementul Resurselor Umane",
+ "category": "HR_COMPLIANCE",
+ "voice": "ro_RO-mihai-medium",
+ "forgeSession": 9,
+ "cards": [
+  {
+   "front": "Ce diferență face distincția dintre HR administrativ și HR strategic?",
+   "back": "HR administrativ răspunde la \"Este totul conform legii?\" (contracte, salarizare, conformitate); HR strategic răspunde la \"Cum ajută oamenii organizația să crească?\" (planificare, cultură, dezvoltare).",
+   "conceptKey": "hr-strategic-vs-administrativ",
+   "lessonId": "cmjjuxw7900fqumkpkoyxfzc3",
+   "lesson": "Rolul HR în organizație",
+   "module": "Introducere în HR",
+   "blockId": "cmjjuxw7900fqumkpkoyxfzc3-b11"
+  },
+  {
+   "front": "Care sunt cele 4 roluri ale HR în modelul Ulrich?",
+   "back": "Expert administrativ, campion al angajaților, agent al schimbării și partener strategic.",
+   "conceptKey": "model-ulrich-hr-business-partner",
+   "lessonId": "cmjjuxw7900fqumkpkoyxfzc3",
+   "lesson": "Rolul HR în organizație",
+   "module": "Introducere în HR",
+   "blockId": "cmjjuxw7900fqumkpkoyxfzc3-b12"
+  },
+  {
+   "front": "Ce este un HR Business Partner (HRBP)?",
+   "back": "Un specialist HR alocat unei divizii de business, care traduce obiectivele acelei unități în soluții concrete de resurse umane (recrutare, retenție, structură organizatorică).",
+   "conceptKey": "model-ulrich-hr-business-partner",
+   "lessonId": "cmjjuxw7900fqumkpkoyxfzc3",
+   "lesson": "Rolul HR în organizație",
+   "module": "Introducere în HR",
+   "blockId": "cmjjuxw7900fqumkpkoyxfzc3-b13"
+  },
+  {
+   "front": "Care sunt principalele funcții ale unui departament HR?",
+   "back": "Recrutare și selecție, onboarding, administrare de personal și salarizare, relații de muncă, învățare și dezvoltare, managementul performanței, compensații și beneficii, cultură organizațională.",
+   "conceptKey": "functiile-hr-departament",
+   "lessonId": "cmjjuxw7900fqumkpkoyxfzc3",
+   "lesson": "Rolul HR în organizație",
+   "module": "Introducere în HR",
+   "blockId": "cmjjuxw7900fqumkpkoyxfzc3-b14"
+  },
+  {
+   "front": "Ce este REVISAL și cine are obligația de a-l ține la zi?",
+   "back": "Registrul General de Evidență a Salariaților — obligatoriu pentru angajator, ținut de regulă de departamentul HR/payroll, conform HG 905/2017.",
+   "conceptKey": "revisal-inregistrare-cim",
+   "lessonId": "cmjjuxw7900fqumkpkoyxfzc3",
+   "lesson": "Rolul HR în organizație",
+   "module": "Introducere în HR",
+   "blockId": "cmjjuxw7900fqumkpkoyxfzc3-b15"
+  },
+  {
+   "front": "Până când trebuie înregistrat în REVISAL un contract individual de muncă nou încheiat?",
+   "back": "Cel târziu în ziua anterioară începerii activității de către salariat.",
+   "conceptKey": "revisal-inregistrare-cim",
+   "lessonId": "cmjjuxw7900fqumkpkoyxfzc3",
+   "lesson": "Rolul HR în organizație",
+   "module": "Introducere în HR",
+   "blockId": "cmjjuxw7900fqumkpkoyxfzc3-b16"
+  }
+ ]
+}

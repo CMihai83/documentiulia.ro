@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxw8g00h0umkp2m6n0h9w",
+ "courseId": "cmjjuxw7400fmumkp9cm4a9vj",
+ "course": "HR Fundamentals - Managementul Resurselor Umane",
+ "module": "Legislația Muncii în România",
+ "lesson": "Quiz legislație",
+ "category": "HR_COMPLIANCE",
+ "content": "Test de evaluare — Quiz legislație (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Care este salariul minim brut pe economie aplicabil începând cu 1 iulie 2026?",
+     "choices": [
+      "4.050 lei",
+      "4.325 lei",
+      "4.582 lei",
+      "2.699 lei"
+     ],
+     "answer": 1,
+     "explain": "De la 1 iulie 2026, conform HG 146/2026, salariul minim brut pe economie crește la 4.325 lei (față de 4.050 lei, valabil între 1 ianuarie și 30 iunie 2026). Suma de 2.699 lei reprezintă aproximativ salariul net corespunzător, iar 4.582 lei este salariul minim din construcții.",
+     "concept_key": "salariu_minim_2026"
+    },
+    {
+     "q": "Salariul minim brut din sectorul construcțiilor rămâne, pe tot parcursul anului 2026, la nivelul de:",
+     "choices": [
+      "4.325 lei, aliniat la salariul minim național",
+      "4.050 lei",
+      "4.582 lei, neschimbat tot anul",
+      "se abrogă și se aliniază automat la cel din agro-alimentar"
+     ],
+     "answer": 2,
+     "explain": "Salariul minim în construcții este 4.582 lei, neschimbat pe tot parcursul anului 2026 — spre deosebire de salariul minim din agro-alimentar, care a fost abrogat și aliniat la salariul minim național începând cu 1 iulie 2026.",
+     "concept_key": "salariu_minim_constructii"
+    },
+    {
+     "q": "Conform art. 16 din Codul Muncii (Legea nr. 53/2003), un contract individual de muncă (CIM) nou încheiat trebuie înregistrat în REVISAL:",
+     "choices": [
+      "în termen de 5 zile lucrătoare de la angajare",
+      "cel târziu în ziua anterioară începerii activității de către salariat",
+      "în termen de 20 de zile lucrătoare de la angajare",
+      "în aceeași zi cu începerea activității, dar oricând până la ora 24:00"
+     ],
+     "answer": 1,
+     "explain": "Art. 16 din Codul Muncii obligă angajatorul să înregistreze CIM în REVISAL cel târziu în ziua anterioară celei în care salariatul începe efectiv activitatea. Termenul de 20 de zile lucrătoare se aplică actelor adiționale privind modificarea salariului, nu contractului inițial.",
+     "concept_key": "revisal_termen_inregistrare"
+    },
+    {
+     "q": "Care este durata maximă legală a perioadei de probă pentru o funcție de conducere, conform art. 31 din Codul Muncii?",
+     "choices": [
+      "30 de zile calendaristice",
+      "90 de zile calendaristice",
+      "120 de zile calendaristice",
+      "6 luni calendaristice"
+     ],
+     "answer": 2,
+     "explain": "Art. 31 din Codul Muncii stabilește perioada de probă maximă la 90 de zile calendaristice pentru funcțiile de execuție și la 120 de zile calendaristice pentru funcțiile de conducere.",
+     "concept_key": "perioada_proba"
+    },
+    {
+     "q": "Din salariul brut al unui angajat cu contract individual de muncă se rețin lunar, conform legislației actuale:",
+     "choices": [
+      "CAS 25%, CASS 10% și impozit pe venit 10% (după aplicarea deducerilor)",
+      "doar impozitul pe venit de 10%",
+      "CAS 25% și CAM 2,25%",
+      "CASS 10% și CAM 2,25%"
+     ],
+     "answer": 0,
+     "explain": "Angajatul suportă trei rețineri din salariul brut: CAS 25%, CASS 10% și impozitul pe venit de 10%, calculat după aplicarea deducerilor (inclusiv partea netaxabilă din salariul minim). CAM 2,25% este o contribuție distinctă, datorată de angajator, nu reținută din salariul angajatului.",
+     "concept_key": "contributii_salariat"
+    },
+    {
+     "q": "Contribuția asiguratorie pentru muncă (CAM), de 2,25%, este datorată de:",
+     "choices": [
+      "angajat, în plus față de CAS și CASS",
+      "angajator, suplimentar față de salariul brut al angajatului",
+      "stat, din bugetul asigurărilor sociale",
+      "angajat, doar dacă salariul depășește salariul minim"
+     ],
+     "answer": 1,
+     "explain": "CAM 2,25% este o contribuție suportată integral de angajator, în plus față de salariul brut, spre deosebire de CAS, CASS și impozitul pe venit, care sunt reținute din salariul angajatului. Presiunea fiscală totală asupra costului muncii ajunge astfel la aproximativ 43% din valoarea brută.",
+     "concept_key": "cam_angajator"
+    },
+    {
+     "q": "Munca suplimentară prestată peste durata normală a timpului de muncă (40 h/săptămână) se compensează, conform Codului Muncii:",
+     "choices": [
+      "exclusiv prin plata unui spor de minimum 25%",
+      "cu timp liber corespunzător acordat în următoarele 90 de zile sau, dacă nu este posibil, printr-un spor de minimum 75% din salariul de bază",
+      "doar prin zile libere, fără posibilitatea unui spor bănesc",
+      "prin reportarea automată a orelor în concediul de odihnă anual"
+     ],
+     "answer": 1,
+     "explain": "Codul Muncii prevede compensarea orelor suplimentare fie prin ore libere plătite acordate în următoarele 90 de zile calendaristice, fie, atunci când acest lucru nu este posibil, printr-un spor la salariu de minimum 75% din salariul de bază corespunzător orelor suplimentare prestate.",
+     "concept_key": "ore_suplimentare"
+    },
+    {
+     "q": "Care este durata minimă legală a concediului de odihnă anual, conform Codului Muncii?",
+     "choices": [
+      "15 zile lucrătoare",
+      "18 zile lucrătoare",
+      "20 de zile lucrătoare",
+      "21 de zile calendaristice"
+     ],
+     "answer": 2,
+     "explain": "Codul Muncii stabilește un minim legal de 20 de zile lucrătoare de concediu de odihnă anual; contractul colectiv de muncă sau regulamentul intern pot prevedea zile suplimentare, dar nu mai puține.",
+     "concept_key": "concediu_odihna"
+    },
+    {
+     "q": "Declarația 112, care centralizează obligațiile privind contribuțiile sociale și impozitul pe venit din salarii, se depune lunar:",
+     "choices": [
+      "până pe 25 ale lunii curente",
+      "până pe 25 ale lunii următoare",
+      "până pe ultima zi a lunii curente",
+      "trimestrial, până pe 25 ale lunii următoare trimestrului"
+     ],
+     "answer": 1,
+     "explain": "Fluxul lunar de salarizare (pontaj → stat de plată → D112 → plata contribuțiilor) se finalizează cu depunerea Declarației 112 până pe data de 25 a lunii următoare celei pentru care se face declararea.",
+     "concept_key": "d112_termen"
+    },
+    {
+     "q": "Un specialist HR primește o întrebare punctuală de la un angajat privind o situație personală complexă de calcul al unor drepturi salariale restante. Care este abordarea corectă, conform bunelor practici de conformitate (compliance)?",
+     "choices": [
+      "Oferă un răspuns juridic definitiv pe loc, bazat pe experiența proprie",
+      "Explică regula generală aplicabilă din Codul Muncii și recomandă consultarea unui specialist (avocat/expert în legislația muncii) pentru situația individuală",
+      "Refuză orice discuție pe această temă",
+      "Trimite angajatul direct la ITM, fără nicio informare prealabilă"
+     ],
+     "answer": 1,
+     "explain": "Specialistul HR poate și trebuie să explice regulile generale aplicabile, cu trimitere la articolele relevante din Codul Muncii, dar nu oferă consultanță juridică individuală pentru cazuri complexe sau litigioase — abordarea corectă este explicarea regulii și îndrumarea către un specialist, în același spirit al minimizării riscurilor ca și principiul GDPR de acces restricționat și date minime la dosarul de personal.",
+     "concept_key": "compliance_recomandare_specialist"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

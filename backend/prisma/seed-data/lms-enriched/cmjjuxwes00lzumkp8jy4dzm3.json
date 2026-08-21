@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwes00lzumkp8jy4dzm3",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Planificare (Cl. 6)",
+ "lesson": "Obiective SSM și planificare",
+ "category": "HSE_SAFETY",
+ "content": "# Obiective SSM și planificare\n\nClauza 6.2 din ISO 45001:2018 obligă organizația să stabilească obiective de SSM (sănătate și securitate în muncă) la funcțiile și nivelurile relevante ale organizației. Aceste obiective nu sunt declarații generice de tipul „vrem un loc de muncă mai sigur\", ci ținte concrete, derivate din politica SSM, din rezultatele evaluării riscurilor (clauza 6.1) și din performanța anterioară a sistemului.\n\nStandardul cere ca obiectivele SSM să fie:\n- **consecvente cu politica SSM** și cu angajamentul de îmbunătățire continuă;\n- **măsurabile** (dacă este posibil practic) sau, cel puțin, evaluabile prin performanță;\n- stabilite ținând cont de **cerințele legale aplicabile**, de rezultatele evaluării riscurilor și oportunităților, precum și de consultarea lucrătorilor;\n- **monitorizate**, **comunicate** lucrătorilor și, unde este relevant, reprezentanților acestora;\n- **actualizate**, după caz, pe măsură ce se schimbă contextul organizației.\n\nÎn practică, majoritatea organizațiilor certificate ISO 45001 folosesc acronimul **SMART** pentru a construi obiective care trec proba auditului: Specific, Măsurabil, Abordabil (realizabil cu resursele disponibile), Relevant (aliniat cu riscurile prioritare identificate) și Timp-definit (cu termen clar de atingere). Un obiectiv SSM bine scris răspunde simultan la întrebările: ce vrem să schimbăm, cu cât, până când și cum știm că am reușit.\n\nPentru fiecare obiectiv SSM este nevoie de cel puțin un indicator de performanță (KPI) care să permită măsurarea progresului. În managementul SSM se folosesc două categorii complementare de indicatori:\n\n- **Indicatori reactivi (lagging)** – măsoară evenimente deja produse: rata de frecvență a accidentelor (număr accidente cu incapacitate temporară de muncă raportate / număr total ore lucrate × 1.000.000), rata de gravitate (zile de incapacitate pierdute / ore lucrate × 1.000), numărul de zile de concediu medical cauzate de boli profesionale.\n- **Indicatori proactivi (leading)** – măsoară acțiunile preventive înainte ca un eveniment să se producă: procentul de instruiri SSM finalizate la termen, numărul de inspecții interne realizate conform planului, numărul de „aproape-accidente\" (near-miss) raportate și analizate, procentul de neconformități închise în termen din auditurile interne.\n\nUn sistem de management matur combină ambele tipuri: indicatorii reactivi arată rezultatul, iar cei proactivi arată dacă organizația acționează suficient de devreme pentru a preveni evenimentul. O organizație care raportează „zero accidente\" dar nu are niciun indicator proactiv activ nu poate demonstra unui auditor că performanța este susținută de un proces, ci doar de întâmplare sau de sub-raportare.\n\nClauza 6.2.2 din ISO 45001 cere ca, pentru fiecare obiectiv SSM stabilit, organizația să planifice modul de atingere a acestuia, răspunzând la cinci întrebări obligatorii, similare logicii unui plan de acțiune de proiect:\n\n1. **Ce se va face?** – acțiunile concrete (tehnice, organizatorice, de instruire) necesare.\n2. **Ce resurse sunt necesare?** – buget, echipamente, timp de lucru alocat, competențe externe.\n3. **Cine este responsabil?** – o singură persoană cu nume și funcție, nu un departament generic.\n4. **Când va fi finalizat?** – termen calendaristic clar, eventual cu etape intermediare.\n5. **Cum vor fi evaluate rezultatele?** – prin ce indicatori măsurabili sau prin ce alte mijloace se va evalua atingerea obiectivului.\n\nUn element esențial, verificat sistematic de auditorii de certificare, este **integrarea planurilor de acțiune SSM în procesele generale de afaceri** ale organizației – bugetare, planificare a producției, evaluări de performanță ale managerilor – și nu tratarea lor ca documente separate, „de sertar\", relevante doar în preajma auditului. Planul de acțiune SSM trebuie revizuit cel puțin la fel de des ca ședința de analiză de management (de regulă anual), iar stadiul realizării lui trebuie să fie un punct fix pe ordinea de zi.\n\n## Exemplu: Obiectiv SMART pentru reducerea accidentelor de muncă\nO firmă de producție mobilă (120 de angajați, secție de tâmplărie și vopsitorie) a înregistrat în anul anterior 8 accidente de muncă cu incapacitate temporară de muncă, totalizând 240 de zile de concediu medical, la un volum de 220.000 de ore lucrate.\n\n**Rata de frecvență a anului de bază** = (8 accidente / 220.000 ore) × 1.000.000 = 36,4 accidente/milion ore lucrate.\n**Rata de gravitate a anului de bază** = (240 zile / 220.000 ore) × 1.000 = 1,09 zile pierdute/1.000 ore lucrate.\n\nObiectivul SSM formulat pentru anul următor: „Reducerea ratei de frecvență a accidentelor de muncă de la 36,4 la maximum 25 accidente/milion ore lucrate (o scădere de aproximativ 31%), până la 31 decembrie, prin: (1) înlocuirea a 4 mașini de debitat fără protecție integrală cu modele echipate cu senzori de oprire automată, (2) instruire suplimentară de 8 ore pentru toți operatorii din secția de vopsitorie privind manipularea solvenților, (3) introducerea unui program lunar de raportare a evenimentelor „aproape-accident\". Responsabil: șeful compartimentului SSM. Evaluare: recalcularea trimestrială a ratei de frecvență și raport prezentat la ședința de analiză de management.\"\n\nAcest obiectiv este SMART: Specific (reducerea accidentelor din cauze identificate), Măsurabil (rata de frecvență, cifră țintă), Abordabil (bazat pe acțiuni concrete și bugetate), Relevant (derivă direct din evaluarea riscurilor secției de producție) și Timp-definit (termen 31 decembrie, cu verificare trimestrială).\n\n## Exemplu: Plan de acțiune pentru atingerea unui obiectiv SSM\nContinuând exemplul firmei de tâmplărie, planul de acțiune asociat obiectivului de reducere a accidentelor arată astfel:\n\n| Acțiune | Resurse necesare | Responsabil | Termen | Indicator de evaluare |\n|---|---|---|---|---|\n| Achiziție și montaj senzori de oprire automată pe 4 mașini de debitat | 48.000 lei (buget de investiții) | Șef întreținere | 31 martie | Nr. mașini echipate / 4 |\n| Instruire de 8 ore privind manipularea solvenților | 16 ore-om formator intern + materiale | Responsabil SSM | 30 aprilie | % operatori instruiți (țintă 100%) |\n| Implementare formular de raportare „aproape-accident\" | Șablon digital, 4 ore configurare | Responsabil SSM | 15 februarie | Nr. rapoarte primite/lună (țintă ≥ 5) |\n| Analiză trimestrială a ratei de frecvență | Timp analiză date, 2 ore/trimestru | Responsabil SSM | Trimestrial | Rata de frecvență calculată vs. țintă 25 |\n\nFiecare linie a planului răspunde celor cinci întrebări din clauza 6.2.2: ce, cu ce resurse, cine, până când și cum se evaluează. La sfârșitul anului, dacă rata de frecvență calculată este, de exemplu, 22 accidente/milion ore, obiectivul este considerat atins (sub ținta de 25) și devine punct de plecare pentru un nou obiectiv, mai ambițios, pentru anul următor.\n\n> Temei legal: HG nr. 1425/2006 pentru aprobarea Normelor metodologice de aplicare a Legii securității și sănătății în muncă nr. 319/2006, cu modificările și completările ulterioare art. 15 (în vigoare de la 2006-10-30)\nNormele metodologice de aplicare a Legii nr. 319/2006 impun angajatorului obligația de a elabora, pentru fiecare loc de muncă, un **plan de prevenire și protecție**, care trebuie să cuprindă, printre altele: descrierea măsurilor tehnice, organizatorice și igienico-sanitare rezultate din evaluarea riscurilor; resursele necesare; persoana responsabilă de aplicarea fiecărei măsuri; termenul de realizare. Structura cerută de legislația română de SSM se suprapune aproape identic cu cerințele de planificare a acțiunilor din clauza 6.2.2 a ISO 45001, ceea ce înseamnă că un plan de prevenire și protecție bine întocmit poate fi folosit direct ca dovadă documentată în auditul de certificare, cu condiția să conțină și indicatorii de evaluare a rezultatelor ceruți de standard. Verifică forma actualizată a normelor metodologice, întrucât actul a suferit modificări ulterioare publicării inițiale.\n\n⚠ Cea mai frecventă neconformitate găsită de auditori la clauza 6.2 este existența unor „obiective de fațadă\": formulări generale precum „îmbunătățirea continuă a SSM\" sau „reducerea riscurilor\", fără nicio cifră țintă, fără termen și fără plan de acțiune asociat. Astfel de obiective nu pot fi verificate obiectiv și, de regulă, generează neconformitate minoră la primul audit de certificare sau de supraveghere. Evită și extrema opusă: obiective foarte ambițioase, nesusținute de resurse alocate real în buget – un auditor experimentat va cere dovada bugetului aprobat pentru fiecare acțiune planificată.\n\n## Exercițiu\nO companie de distribuție cu flotă proprie de 25 de camioane a înregistrat în anul curent 450.000 km parcurși, 6 accidente rutiere minore în timpul serviciului și 3 cazuri de tulburări musculo-scheletice raportate la manipularea coletelor grele. Cerințe:\n1. Formulează un obiectiv SSM SMART pentru anul viitor, pornind de la aceste date (poți alege să te concentrezi pe accidentele rutiere sau pe afecțiunile musculo-scheletice).\n2. Propune un indicator de evaluare (leading sau lagging) și o valoare țintă justificată.\n3. Enumeră minimum 3 acțiuni concrete de plan, fiecare cu resursă, responsabil și termen.\n\n**Soluție:** 1. Obiectiv SMART: „Reducerea numărului de tulburări musculo-scheletice raportate la manipularea coletelor de la 3 la maximum 1 caz, până la 31 decembrie, prin dotarea echipelor cu echipamente de manipulare mecanizată și instruire privind tehnicile corecte de ridicare a greutăților.\"\n\n2. Indicator lagging: numărul de cazuri de tulburări musculo-scheletice raportate anual (țintă: ≤ 1, față de 3 în anul de referință, o reducere de aproximativ 67%). Indicator leading complementar: procentul de șoferi/manipulanți instruiți în tehnici corecte de ridicare a greutăților (țintă: 100% până la 30 iunie).\n\n3. Plan de acțiune:\n- Achiziția a 10 cărucioare hidraulice pentru manipularea coletelor grele – buget estimat 15.000 lei – responsabil: șef logistică – termen: 31 martie.\n- Instruire practică de 4 ore privind tehnicile de ridicare și manipulare manuală a greutăților, pentru toți cei 25 de șoferi – responsabil: responsabil SSM – termen: 30 iunie.\n- Introducerea unei fișe de auto-evaluare lunară a confortului postural, completată de șoferi, analizată de responsabilul SSM – responsabil: responsabil SSM – termen: implementare până la 15 aprilie, apoi lunar.\n\nToate cele trei acțiuni răspund cerințelor clauzei 6.2.2: ce se face, cu ce resurse, cine răspunde și până când, iar rezultatul este verificabil prin cei doi indicatori propuși.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "obiective-ssm-clauza-6-2",
+    "md": "Clauza 6.2 din ISO 45001:2018 obligă organizația să stabilească obiective de SSM (sănătate și securitate în muncă) la funcțiile și nivelurile relevante ale organizației. Aceste obiective nu sunt declarații generice de tipul „vrem un loc de muncă mai sigur\", ci ținte concrete, derivate din politica SSM, din rezultatele evaluării riscurilor (clauza 6.1) și din performanța anterioară a sistemului.\n\nStandardul cere ca obiectivele SSM să fie:\n- **consecvente cu politica SSM** și cu angajamentul de îmbunătățire continuă;\n- **măsurabile** (dacă este posibil practic) sau, cel puțin, evaluabile prin performanță;\n- stabilite ținând cont de **cerințele legale aplicabile**, de rezultatele evaluării riscurilor și oportunităților, precum și de consultarea lucrătorilor;\n- **monitorizate**, **comunicate** lucrătorilor și, unde este relevant, reprezentanților acestora;\n- **actualizate**, după caz, pe măsură ce se schimbă contextul organizației.\n\nÎn practică, majoritatea organizațiilor certificate ISO 45001 folosesc acronimul **SMART** pentru a construi obiective care trec proba auditului: Specific, Măsurabil, Abordabil (realizabil cu resursele disponibile), Relevant (aliniat cu riscurile prioritare identificate) și Timp-definit (cu termen clar de atingere). Un obiectiv SSM bine scris răspunde simultan la întrebările: ce vrem să schimbăm, cu cât, până când și cum știm că am reușit.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "indicatori-performanta-ssm",
+    "md": "Pentru fiecare obiectiv SSM este nevoie de cel puțin un indicator de performanță (KPI) care să permită măsurarea progresului. În managementul SSM se folosesc două categorii complementare de indicatori:\n\n- **Indicatori reactivi (lagging)** – măsoară evenimente deja produse: rata de frecvență a accidentelor (număr accidente cu incapacitate temporară de muncă raportate / număr total ore lucrate × 1.000.000), rata de gravitate (zile de incapacitate pierdute / ore lucrate × 1.000), numărul de zile de concediu medical cauzate de boli profesionale.\n- **Indicatori proactivi (leading)** – măsoară acțiunile preventive înainte ca un eveniment să se producă: procentul de instruiri SSM finalizate la termen, numărul de inspecții interne realizate conform planului, numărul de „aproape-accidente\" (near-miss) raportate și analizate, procentul de neconformități închise în termen din auditurile interne.\n\nUn sistem de management matur combină ambele tipuri: indicatorii reactivi arată rezultatul, iar cei proactivi arată dacă organizația acționează suficient de devreme pentru a preveni evenimentul. O organizație care raportează „zero accidente\" dar nu are niciun indicator proactiv activ nu poate demonstra unui auditor că performanța este susținută de un proces, ci doar de întâmplare sau de sub-raportare.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "planificare-actiuni-obiective-ssm",
+    "md": "Clauza 6.2.2 din ISO 45001 cere ca, pentru fiecare obiectiv SSM stabilit, organizația să planifice modul de atingere a acestuia, răspunzând la cinci întrebări obligatorii, similare logicii unui plan de acțiune de proiect:\n\n1. **Ce se va face?** – acțiunile concrete (tehnice, organizatorice, de instruire) necesare.\n2. **Ce resurse sunt necesare?** – buget, echipamente, timp de lucru alocat, competențe externe.\n3. **Cine este responsabil?** – o singură persoană cu nume și funcție, nu un departament generic.\n4. **Când va fi finalizat?** – termen calendaristic clar, eventual cu etape intermediare.\n5. **Cum vor fi evaluate rezultatele?** – prin ce indicatori măsurabili sau prin ce alte mijloace se va evalua atingerea obiectivului.\n\nUn element esențial, verificat sistematic de auditorii de certificare, este **integrarea planurilor de acțiune SSM în procesele generale de afaceri** ale organizației – bugetare, planificare a producției, evaluări de performanță ale managerilor – și nu tratarea lor ca documente separate, „de sertar\", relevante doar în preajma auditului. Planul de acțiune SSM trebuie revizuit cel puțin la fel de des ca ședința de analiză de management (de regulă anual), iar stadiul realizării lui trebuie să fie un punct fix pe ordinea de zi.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b3"
+   },
+   {
+    "type": "example",
+    "title": "Obiectiv SMART pentru reducerea accidentelor de muncă",
+    "concept_key": "obiective-ssm-clauza-6-2",
+    "md": "O firmă de producție mobilă (120 de angajați, secție de tâmplărie și vopsitorie) a înregistrat în anul anterior 8 accidente de muncă cu incapacitate temporară de muncă, totalizând 240 de zile de concediu medical, la un volum de 220.000 de ore lucrate.\n\n**Rata de frecvență a anului de bază** = (8 accidente / 220.000 ore) × 1.000.000 = 36,4 accidente/milion ore lucrate.\n**Rata de gravitate a anului de bază** = (240 zile / 220.000 ore) × 1.000 = 1,09 zile pierdute/1.000 ore lucrate.\n\nObiectivul SSM formulat pentru anul următor: „Reducerea ratei de frecvență a accidentelor de muncă de la 36,4 la maximum 25 accidente/milion ore lucrate (o scădere de aproximativ 31%), până la 31 decembrie, prin: (1) înlocuirea a 4 mașini de debitat fără protecție integrală cu modele echipate cu senzori de oprire automată, (2) instruire suplimentară de 8 ore pentru toți operatorii din secția de vopsitorie privind manipularea solvenților, (3) introducerea unui program lunar de raportare a evenimentelor „aproape-accident\". Responsabil: șeful compartimentului SSM. Evaluare: recalcularea trimestrială a ratei de frecvență și raport prezentat la ședința de analiză de management.\"\n\nAcest obiectiv este SMART: Specific (reducerea accidentelor din cauze identificate), Măsurabil (rata de frecvență, cifră țintă), Abordabil (bazat pe acțiuni concrete și bugetate), Relevant (derivă direct din evaluarea riscurilor secției de producție) și Timp-definit (termen 31 decembrie, cu verificare trimestrială).",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b4"
+   },
+   {
+    "type": "example",
+    "title": "Plan de acțiune pentru atingerea unui obiectiv SSM",
+    "concept_key": "planificare-actiuni-obiective-ssm",
+    "md": "Continuând exemplul firmei de tâmplărie, planul de acțiune asociat obiectivului de reducere a accidentelor arată astfel:\n\n| Acțiune | Resurse necesare | Responsabil | Termen | Indicator de evaluare |\n|---|---|---|---|---|\n| Achiziție și montaj senzori de oprire automată pe 4 mașini de debitat | 48.000 lei (buget de investiții) | Șef întreținere | 31 martie | Nr. mașini echipate / 4 |\n| Instruire de 8 ore privind manipularea solvenților | 16 ore-om formator intern + materiale | Responsabil SSM | 30 aprilie | % operatori instruiți (țintă 100%) |\n| Implementare formular de raportare „aproape-accident\" | Șablon digital, 4 ore configurare | Responsabil SSM | 15 februarie | Nr. rapoarte primite/lună (țintă ≥ 5) |\n| Analiză trimestrială a ratei de frecvență | Timp analiză date, 2 ore/trimestru | Responsabil SSM | Trimestrial | Rata de frecvență calculată vs. țintă 25 |\n\nFiecare linie a planului răspunde celor cinci întrebări din clauza 6.2.2: ce, cu ce resurse, cine, până când și cum se evaluează. La sfârșitul anului, dacă rata de frecvență calculată este, de exemplu, 22 accidente/milion ore, obiectivul este considerat atins (sub ținta de 25) și devine punct de plecare pentru un nou obiectiv, mai ambițios, pentru anul următor.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG nr. 1425/2006 pentru aprobarea Normelor metodologice de aplicare a Legii securității și sănătății în muncă nr. 319/2006, cu modificările și completările ulterioare",
+    "article": "art. 15",
+    "effective": "2006-10-30",
+    "md": "Normele metodologice de aplicare a Legii nr. 319/2006 impun angajatorului obligația de a elabora, pentru fiecare loc de muncă, un **plan de prevenire și protecție**, care trebuie să cuprindă, printre altele: descrierea măsurilor tehnice, organizatorice și igienico-sanitare rezultate din evaluarea riscurilor; resursele necesare; persoana responsabilă de aplicarea fiecărei măsuri; termenul de realizare. Structura cerută de legislația română de SSM se suprapune aproape identic cu cerințele de planificare a acțiunilor din clauza 6.2.2 a ISO 45001, ceea ce înseamnă că un plan de prevenire și protecție bine întocmit poate fi folosit direct ca dovadă documentată în auditul de certificare, cu condiția să conțină și indicatorii de evaluare a rezultatelor ceruți de standard. Verifică forma actualizată a normelor metodologice, întrucât actul a suferit modificări ulterioare publicării inițiale.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă neconformitate găsită de auditori la clauza 6.2 este existența unor „obiective de fațadă\": formulări generale precum „îmbunătățirea continuă a SSM\" sau „reducerea riscurilor\", fără nicio cifră țintă, fără termen și fără plan de acțiune asociat. Astfel de obiective nu pot fi verificate obiectiv și, de regulă, generează neconformitate minoră la primul audit de certificare sau de supraveghere. Evită și extrema opusă: obiective foarte ambițioase, nesusținute de resurse alocate real în buget – un auditor experimentat va cere dovada bugetului aprobat pentru fiecare acțiune planificată.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "O companie de distribuție cu flotă proprie de 25 de camioane a înregistrat în anul curent 450.000 km parcurși, 6 accidente rutiere minore în timpul serviciului și 3 cazuri de tulburări musculo-scheletice raportate la manipularea coletelor grele. Cerințe:\n1. Formulează un obiectiv SSM SMART pentru anul viitor, pornind de la aceste date (poți alege să te concentrezi pe accidentele rutiere sau pe afecțiunile musculo-scheletice).\n2. Propune un indicator de evaluare (leading sau lagging) și o valoare țintă justificată.\n3. Enumeră minimum 3 acțiuni concrete de plan, fiecare cu resursă, responsabil și termen.",
+    "solution_md": "1. Obiectiv SMART: „Reducerea numărului de tulburări musculo-scheletice raportate la manipularea coletelor de la 3 la maximum 1 caz, până la 31 decembrie, prin dotarea echipelor cu echipamente de manipulare mecanizată și instruire privind tehnicile corecte de ridicare a greutăților.\"\n\n2. Indicator lagging: numărul de cazuri de tulburări musculo-scheletice raportate anual (țintă: ≤ 1, față de 3 în anul de referință, o reducere de aproximativ 67%). Indicator leading complementar: procentul de șoferi/manipulanți instruiți în tehnici corecte de ridicare a greutăților (țintă: 100% până la 30 iunie).\n\n3. Plan de acțiune:\n- Achiziția a 10 cărucioare hidraulice pentru manipularea coletelor grele – buget estimat 15.000 lei – responsabil: șef logistică – termen: 31 martie.\n- Instruire practică de 4 ore privind tehnicile de ridicare și manipulare manuală a greutăților, pentru toți cei 25 de șoferi – responsabil: responsabil SSM – termen: 30 iunie.\n- Introducerea unei fișe de auto-evaluare lunară a confortului postural, completată de șoferi, analizată de responsabilul SSM – responsabil: responsabil SSM – termen: implementare până la 15 aprilie, apoi lunar.\n\nToate cele trei acțiuni răspund cerințelor clauzei 6.2.2: ce se face, cu ce resurse, cine răspunde și până când, iar rezultatul este verificabil prin cei doi indicatori propuși.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform clauzei 6.2 din ISO 45001:2018, care dintre următoarele NU este o cerință obligatorie pentru obiectivele SSM?",
+    "choices": [
+     "Să fie consecvente cu politica SSM",
+     "Să fie măsurabile, dacă este posibil practic, sau evaluabile prin performanță",
+     "Să fie aprobate în prealabil de Inspectoratul Teritorial de Muncă",
+     "Să fie comunicate lucrătorilor"
+    ],
+    "answer": 2,
+    "explain": "ITM este autoritatea de control care verifică respectarea legislației SSM, dar nu aprobă obiectivele interne ale sistemului de management; acestea sunt stabilite și asumate de organizație, conform clauzei 6.2.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența esențială dintre un indicator „lagging\" și unul „leading\" în managementul SSM?",
+    "choices": [
+     "Lagging măsoară acțiuni preventive viitoare, leading măsoară accidente deja produse",
+     "Lagging măsoară evenimente deja produse, leading măsoară acțiuni preventive care preced evenimentul",
+     "Nu există nicio diferență, termenii sunt sinonimi",
+     "Leading se folosește doar pentru accidentele mortale"
+    ],
+    "answer": 1,
+    "explain": "Indicatorii lagging (reactivi) reflectă rezultate deja produse, precum rata de frecvență a accidentelor; indicatorii leading (proactivi) măsoară acțiuni preventive, precum procentul de instruiri finalizate la termen.",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul SMART aplicat obiectivelor SSM?",
+    "back": "Specific, Măsurabil, Abordabil (realizabil), Relevant, Timp-definit — cinci caracteristici pe care trebuie să le îndeplinească un obiectiv SSM bine formulat.",
+    "concept_key": "obiective-ssm-clauza-6-2",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce întrebări trebuie să răspundă planul de acțiune pentru un obiectiv SSM conform clauzei 6.2.2 ISO 45001?",
+    "back": "Ce se va face, ce resurse sunt necesare, cine este responsabil, când va fi finalizat și cum vor fi evaluate rezultatele.",
+    "concept_key": "planificare-actiuni-obiective-ssm",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează rata de frecvență a accidentelor de muncă?",
+    "back": "(Număr accidente cu incapacitate temporară raportate / Număr total ore lucrate) × 1.000.000.",
+    "concept_key": "indicatori-performanta-ssm",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un indicator „leading\" (proactiv) în SSM? Dă un exemplu.",
+    "back": "Un indicator care măsoară acțiuni preventive înainte de producerea unui eveniment, ex.: procentul de instruiri SSM finalizate la termen sau numărul de rapoarte „aproape-accident\".",
+    "concept_key": "indicatori-performanta-ssm",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce document impune HG nr. 1425/2006, art. 15, care se suprapune cu planul de acțiune SSM din ISO 45001?",
+    "back": "Planul de prevenire și protecție pentru fiecare loc de muncă, cu măsuri, resurse, responsabili și termene de realizare.",
+    "concept_key": "planificare-actiuni-obiective-ssm",
+    "blockId": "cmjjuxwes00lzumkp8jy4dzm3-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1465,
+   "flashcards": 5
+  }
+ }
+}

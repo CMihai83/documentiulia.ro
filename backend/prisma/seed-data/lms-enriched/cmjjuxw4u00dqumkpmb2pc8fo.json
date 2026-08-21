@@ -1,0 +1,141 @@
+{
+ "lessonId": "cmjjuxw4u00dqumkpmb2pc8fo",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "Raportare ANAF - SAF-T și e-Factura",
+ "lesson": "Audit trail și conformitate",
+ "category": "FINANCE_OPS",
+ "content": "# Audit trail și conformitate\n\n## Ce este audit trail-ul contabil\n\nAudit trail-ul (traseul de audit) reprezintă lanțul complet și verificabil de dovezi care leagă o operațiune economică, de la momentul inițierii ei (comandă, contract, notă de recepție), până la reflectarea finală în situațiile financiare și în declarațiile depuse la ANAF. Practic, orice sumă din bilanț sau din contul de profit și pierdere trebuie să poată fi \"urmărită înapoi\", pas cu pas: document justificativ → notă contabilă → jurnal/registru → balanță de verificare → situație financiară → declarație fiscală (D300, D406 etc.).\n\nPână acum câțiva ani, acest traseu era verificat de inspectorii ANAF manual, prin sondaj, în timpul controalelor la sediul firmei. Digitalizarea obligatorie a raportării (SAF-T D406, e-Factura, e-Transport) a transformat audit trail-ul dintr-o simplă bună practică internă într-o cerință tehnică pe care ANAF o poate verifica automat, prin comparare încrucișată a datelor primite direct din sistemele firmei, fără să mai fie nevoie de o inspecție fizică pentru a detecta o neconcordanță.\n\n## Arhivarea electronică a documentelor financiar-contabile\n\nLegea contabilității nr. 82/1991, republicată, impune păstrarea registrelor de contabilitate și a documentelor justificative care stau la baza înregistrărilor pe o perioadă de 10 ani de la data încheierii exercițiului financiar în cursul căruia au fost întocmite, cu o excepție notabilă: statele de salarii se păstrează 50 de ani, întrucât stau la baza reconstituirii vechimii în muncă și a drepturilor de pensie ale angajaților.\n\nFacturile transmise prin SPV (Spațiul Privat Virtual) beneficiază de arhivare automată în sistemul ANAF, însă responsabilitatea arhivării integrale a documentației justificative rămâne, în continuare, în sarcina firmei — inclusiv pentru documentele care nu circulă prin SPV (contracte, procese-verbale de recepție, rapoarte de lucru, corespondență comercială relevantă). Arhivarea electronică internă trebuie să garanteze lizibilitatea, integritatea și posibilitatea de reconstituire a documentului pe toată durata legală de păstrare, inclusiv în situația în care firma schimbă software-ul contabil, furnizorul de ERP sau serverul de stocare. O practică prudentă este păstrarea unei copii de siguranță (backup) în afara sistemului principal, actualizată periodic.\n\n## Corelarea SAF-T, e-Factura și registrele contabile\n\nDe la 1 ianuarie 2025, obligația de raportare SAF-T D406 s-a extins la toți contribuabilii, inclusiv la cei mici — ultima categorie rămasă, după marii contribuabili (din 2022) și contribuabilii mijlocii (din 2023). Perioadele de grație acordate inițial pentru primele raportări (de câteva luni, în funcție de categorie) s-au epuizat integral în cursul anului 2025, astfel încât din 2026 se aplică termenele standard, fără nicio derogare: ultima zi a lunii următoare perioadei de raportare (lunar, pentru contribuabilii mari/mijlocii și pentru plătitorii lunari de TVA; trimestrial, pentru ceilalți).\n\nAceastă schimbare are un efect direct asupra audit trail-ului: orice discrepanță între factura transmisă prin e-Factura (format RO_CIUS UBL 2.1, considerată exemplarul original al facturii), înregistrarea contabilă și fișierul SAF-T generat devine vizibilă aproape imediat pentru ANAF, care dispune de instrumente automate de comparare a celor trei surse de date. O practică esențială de conformitate este reconcilierea lunară (sau trimestrială, după caz) între registrul de vânzări/cumpărări, jurnalul de TVA, fișierul SAF-T pregătit pentru transmitere și facturile efectiv înregistrate în SPV, înainte de termenul legal de depunere.\n\n## Pregătirea pentru inspecția fiscală în era digitalizării\n\nDigitalizarea nu elimină inspecțiile fiscale clasice, ci le face mai țintite. ANAF poate selecta pentru control firmele la care algoritmii de analiză de risc — alimentați cu date din SAF-T, e-Factura și e-Transport — semnalează anomalii: de exemplu, solduri de stoc incompatibile cu volumul tranzacțiilor raportate, facturi transmise cu întârziere repetată sau diferențe între TVA colectată raportată și TVA rezultată din facturile din SPV.\n\nPregătirea unei firme pentru o eventuală inspecție presupune trei componente: (1) un dosar de audit trail actualizat permanent, în care fiecare operațiune are document justificativ, înregistrare contabilă corespunzătoare și corelare clară cu declarațiile depuse; (2) proceduri interne scrise, care descriu cine aprobă, cine înregistrează și cine arhivează fiecare tip de document — inspectorii verifică nu doar cifrele, ci și existența unui control intern coerent; (3) teste periodice de reconciliere între sistemul ERP, portalul SPV și rapoartele SAF-T transmise, astfel încât eventualele erori să fie identificate și corectate din timp, nu descoperite în timpul controlului.\n\n## Exemplu: Trasabilitatea completă a unei facturi de vânzare\nSC Alfa Consult SRL emite, în august 2026, o factură de servicii de consultanță către un client din România, în valoare de 10.000 lei, plus TVA 21% (cotă standard aplicabilă de la 1 august 2025, conform Legii 141/2025), adică 2.100 lei, total factură 12.100 lei.\n\nTraseul de audit al acestei operațiuni arată astfel:\n1. **Document justificativ**: contractul de prestări servicii și procesul-verbal de recepție a serviciilor.\n2. **Factura**: emisă și transmisă în SPV, în format RO_CIUS UBL 2.1 — acest exemplar din SPV devine factura originală din punct de vedere fiscal.\n3. **Înregistrare contabilă**: 4111 „Clienți” = % ; 707 „Venituri din vânzarea mărfurilor/servicii” = 10.000 lei; 4427 „TVA colectată” = 2.100 lei.\n4. **Registru**: operațiunea apare în jurnalul de vânzări al lunii august 2026.\n5. **Decontul de TVA (D300)**: suma de 2.100 lei intră în TVA colectată aferentă lunii/trimestrului.\n6. **SAF-T D406**: aceeași factură, cu același cod de TVA și aceeași sumă, apare în secțiunea de facturi emise, transmisă până în ultima zi a lunii următoare perioadei de raportare.\n7. **Arhivare**: contractul și procesul-verbal se păstrează 10 ani, conform Legii contabilității nr. 82/1991.\n\nOrice verigă lipsă din acest lanț (de exemplu, o sumă diferită în SAF-T față de SPV) devine un semnal de risc pentru ANAF.\n\n## Exemplu: Reconciliere lunară SAF-T vs. Registrul de vânzări — studiu de caz\nSC Beta Trading SRL (contribuabil mijlociu) efectuează, înainte de fiecare depunere SAF-T, o reconciliere între registrul de vânzări și fișierul D406 generat de ERP. În luna mai 2026, echipa financiară observă o diferență de 1.000 lei între totalul facturilor din registrul de vânzări și totalul din secțiunea de facturi a fișierului SAF-T.\n\nInvestigația arată că o factură de 1.000 lei (fără TVA), emisă către un partener extern registrului standard de facturare, a fost introdusă manual direct în contabilitate, fără să treacă și prin modulul de facturare conectat la SPV — deci nu a fost transmisă efectiv prin e-Factura și, implicit, lipsea din exportul automat către SAF-T.\n\nCorecția a constat în: (1) emiterea facturii corecte prin sistemul conectat la SPV, cu transmitere în termenul legal (5 zile lucrătoare de la 1 ianuarie 2026); (2) stornarea înregistrării manuale inițiale; (3) regenerarea fișierului SAF-T înainte de termenul de depunere. Acest tip de reconciliere lunară previne exact situațiile pe care algoritmii de risc ai ANAF sunt concepuți să le detecteze.\n\n> Temei legal: OMF 1783/2021 Ordinul privind natura informațiilor raportate prin SAF-T (D406) (în vigoare de la 2025-01-01)\nDe la 1 ianuarie 2025, obligația de raportare SAF-T D406 s-a extins la contribuabilii mici, ultima categorie inclusă (după contribuabilii mari, din 2022, și cei mijlocii, din 2023). Perioadele de grație acordate pentru primele raportări s-au epuizat integral în cursul anului 2025, astfel încât din 2026 se aplică termenul standard, fără nicio derogare: ultima zi a lunii următoare perioadei de raportare (lunar pentru plătitorii lunari de TVA și contribuabilii mari/mijlocii, trimestrial pentru ceilalți).\n\n⚠ Nedepunerea la termen a SAF-T D406, transmiterea cu întârziere a facturilor prin e-Factura sau lipsa reconcilierii între sistemele interne și rapoartele către ANAF pot atrage sancțiuni contravenționale. Cuantumurile amenzilor pentru transmiterea tardivă a e-Facturii se situează, conform reglementărilor în vigoare la data redactării (iulie 2026), în intervalele 5.000–10.000 lei (contribuabili mari), 2.500–5.000 lei (mijlocii) și 1.000–2.500 lei (mici/persoane fizice) — verifică întotdeauna nivelul actualizat pe site-ul ANAF sau cu un consultant fiscal, întrucât aceste praguri pot fi modificate legislativ. Un audit trail incomplet sau o arhivare deficitară cresc semnificativ riscul ca o simplă neconcordanță tehnică să se transforme într-o inspecție fiscală amplă.\n\n## Exercițiu\nSC Gamma Servicii SRL (contribuabil mijlociu, plătitor lunar de TVA) emite în martie 2026, prin SPV, o factură de servicii de 15.000 lei, la care se aplică TVA 21% (cotă standard), deci TVA colectată corectă = 3.150 lei, total factură = 18.150 lei.\n\nDin eroare, la înregistrarea în contabilitate, operatorul a aplicat cota de 11% (cotă redusă, aplicabilă doar categoriilor expres prevăzute de lege — nu și serviciilor de consultanță), înregistrând TVA colectată de doar 1.650 lei.\n\nCerințe:\na) Calculează diferența de TVA colectată nedeclarată corect.\nb) Explică ce risc apare la reconcilierea lunară SAF-T vs. factura din SPV.\nc) Descrie pașii de corecție înainte de termenul de depunere a SAF-T.\n\n**Soluție:** a) TVA corectă = 15.000 × 21% = 3.150 lei. TVA înregistrată eronat = 15.000 × 11% = 1.650 lei. Diferența nedeclarată = 3.150 − 1.650 = 1.500 lei.\n\nb) La reconciliere, factura din SPV (exemplarul original, cu TVA 21% = 3.150 lei) nu va coincide cu suma din jurnalul de TVA și din fișierul SAF-T generat din contabilitate (care ar reflecta eronat 1.650 lei). Această neconcordanță este exact tipul de anomalie pe care algoritmii de risc ai ANAF o pot semnala automat, prin comparare directă cu datele din SPV.\n\nc) Pași de corecție: (1) identificarea erorii prin reconcilierea lunară SAF-T vs. registrul de vânzări, înainte de termenul de depunere; (2) corectarea notei contabile, cu majorarea TVA colectată la 3.150 lei (4111 = 4427 cu diferența de 1.500 lei); (3) actualizarea decontului de TVA aferent lunii martie 2026, dacă eroarea este descoperită înainte de depunere, sau depunerea unui decont rectificativ, dacă este descoperită ulterior; (4) regenerarea fișierului SAF-T cu suma corectă înainte de transmiterea către ANAF.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "audit-trail-contabil-definitie",
+    "md": "## Ce este audit trail-ul contabil\n\nAudit trail-ul (traseul de audit) reprezintă lanțul complet și verificabil de dovezi care leagă o operațiune economică, de la momentul inițierii ei (comandă, contract, notă de recepție), până la reflectarea finală în situațiile financiare și în declarațiile depuse la ANAF. Practic, orice sumă din bilanț sau din contul de profit și pierdere trebuie să poată fi \"urmărită înapoi\", pas cu pas: document justificativ → notă contabilă → jurnal/registru → balanță de verificare → situație financiară → declarație fiscală (D300, D406 etc.).\n\nPână acum câțiva ani, acest traseu era verificat de inspectorii ANAF manual, prin sondaj, în timpul controalelor la sediul firmei. Digitalizarea obligatorie a raportării (SAF-T D406, e-Factura, e-Transport) a transformat audit trail-ul dintr-o simplă bună practică internă într-o cerință tehnică pe care ANAF o poate verifica automat, prin comparare încrucișată a datelor primite direct din sistemele firmei, fără să mai fie nevoie de o inspecție fizică pentru a detecta o neconcordanță.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "arhivare-electronica-documente-contabile",
+    "md": "## Arhivarea electronică a documentelor financiar-contabile\n\nLegea contabilității nr. 82/1991, republicată, impune păstrarea registrelor de contabilitate și a documentelor justificative care stau la baza înregistrărilor pe o perioadă de 10 ani de la data încheierii exercițiului financiar în cursul căruia au fost întocmite, cu o excepție notabilă: statele de salarii se păstrează 50 de ani, întrucât stau la baza reconstituirii vechimii în muncă și a drepturilor de pensie ale angajaților.\n\nFacturile transmise prin SPV (Spațiul Privat Virtual) beneficiază de arhivare automată în sistemul ANAF, însă responsabilitatea arhivării integrale a documentației justificative rămâne, în continuare, în sarcina firmei — inclusiv pentru documentele care nu circulă prin SPV (contracte, procese-verbale de recepție, rapoarte de lucru, corespondență comercială relevantă). Arhivarea electronică internă trebuie să garanteze lizibilitatea, integritatea și posibilitatea de reconstituire a documentului pe toată durata legală de păstrare, inclusiv în situația în care firma schimbă software-ul contabil, furnizorul de ERP sau serverul de stocare. O practică prudentă este păstrarea unei copii de siguranță (backup) în afara sistemului principal, actualizată periodic.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "trasabilitate-saf-t-e-factura",
+    "md": "## Corelarea SAF-T, e-Factura și registrele contabile\n\nDe la 1 ianuarie 2025, obligația de raportare SAF-T D406 s-a extins la toți contribuabilii, inclusiv la cei mici — ultima categorie rămasă, după marii contribuabili (din 2022) și contribuabilii mijlocii (din 2023). Perioadele de grație acordate inițial pentru primele raportări (de câteva luni, în funcție de categorie) s-au epuizat integral în cursul anului 2025, astfel încât din 2026 se aplică termenele standard, fără nicio derogare: ultima zi a lunii următoare perioadei de raportare (lunar, pentru contribuabilii mari/mijlocii și pentru plătitorii lunari de TVA; trimestrial, pentru ceilalți).\n\nAceastă schimbare are un efect direct asupra audit trail-ului: orice discrepanță între factura transmisă prin e-Factura (format RO_CIUS UBL 2.1, considerată exemplarul original al facturii), înregistrarea contabilă și fișierul SAF-T generat devine vizibilă aproape imediat pentru ANAF, care dispune de instrumente automate de comparare a celor trei surse de date. O practică esențială de conformitate este reconcilierea lunară (sau trimestrială, după caz) între registrul de vânzări/cumpărări, jurnalul de TVA, fișierul SAF-T pregătit pentru transmitere și facturile efectiv înregistrate în SPV, înainte de termenul legal de depunere.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "pregatire-inspectie-fiscala-digitala",
+    "md": "## Pregătirea pentru inspecția fiscală în era digitalizării\n\nDigitalizarea nu elimină inspecțiile fiscale clasice, ci le face mai țintite. ANAF poate selecta pentru control firmele la care algoritmii de analiză de risc — alimentați cu date din SAF-T, e-Factura și e-Transport — semnalează anomalii: de exemplu, solduri de stoc incompatibile cu volumul tranzacțiilor raportate, facturi transmise cu întârziere repetată sau diferențe între TVA colectată raportată și TVA rezultată din facturile din SPV.\n\nPregătirea unei firme pentru o eventuală inspecție presupune trei componente: (1) un dosar de audit trail actualizat permanent, în care fiecare operațiune are document justificativ, înregistrare contabilă corespunzătoare și corelare clară cu declarațiile depuse; (2) proceduri interne scrise, care descriu cine aprobă, cine înregistrează și cine arhivează fiecare tip de document — inspectorii verifică nu doar cifrele, ci și existența unui control intern coerent; (3) teste periodice de reconciliere între sistemul ERP, portalul SPV și rapoartele SAF-T transmise, astfel încât eventualele erori să fie identificate și corectate din timp, nu descoperite în timpul controlului.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b4"
+   },
+   {
+    "type": "example",
+    "title": "Trasabilitatea completă a unei facturi de vânzare",
+    "concept_key": "trasabilitate-saf-t-e-factura",
+    "md": "SC Alfa Consult SRL emite, în august 2026, o factură de servicii de consultanță către un client din România, în valoare de 10.000 lei, plus TVA 21% (cotă standard aplicabilă de la 1 august 2025, conform Legii 141/2025), adică 2.100 lei, total factură 12.100 lei.\n\nTraseul de audit al acestei operațiuni arată astfel:\n1. **Document justificativ**: contractul de prestări servicii și procesul-verbal de recepție a serviciilor.\n2. **Factura**: emisă și transmisă în SPV, în format RO_CIUS UBL 2.1 — acest exemplar din SPV devine factura originală din punct de vedere fiscal.\n3. **Înregistrare contabilă**: 4111 „Clienți” = % ; 707 „Venituri din vânzarea mărfurilor/servicii” = 10.000 lei; 4427 „TVA colectată” = 2.100 lei.\n4. **Registru**: operațiunea apare în jurnalul de vânzări al lunii august 2026.\n5. **Decontul de TVA (D300)**: suma de 2.100 lei intră în TVA colectată aferentă lunii/trimestrului.\n6. **SAF-T D406**: aceeași factură, cu același cod de TVA și aceeași sumă, apare în secțiunea de facturi emise, transmisă până în ultima zi a lunii următoare perioadei de raportare.\n7. **Arhivare**: contractul și procesul-verbal se păstrează 10 ani, conform Legii contabilității nr. 82/1991.\n\nOrice verigă lipsă din acest lanț (de exemplu, o sumă diferită în SAF-T față de SPV) devine un semnal de risc pentru ANAF.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b5"
+   },
+   {
+    "type": "example",
+    "title": "Reconciliere lunară SAF-T vs. Registrul de vânzări — studiu de caz",
+    "concept_key": "pregatire-inspectie-fiscala-digitala",
+    "md": "SC Beta Trading SRL (contribuabil mijlociu) efectuează, înainte de fiecare depunere SAF-T, o reconciliere între registrul de vânzări și fișierul D406 generat de ERP. În luna mai 2026, echipa financiară observă o diferență de 1.000 lei între totalul facturilor din registrul de vânzări și totalul din secțiunea de facturi a fișierului SAF-T.\n\nInvestigația arată că o factură de 1.000 lei (fără TVA), emisă către un partener extern registrului standard de facturare, a fost introdusă manual direct în contabilitate, fără să treacă și prin modulul de facturare conectat la SPV — deci nu a fost transmisă efectiv prin e-Factura și, implicit, lipsea din exportul automat către SAF-T.\n\nCorecția a constat în: (1) emiterea facturii corecte prin sistemul conectat la SPV, cu transmitere în termenul legal (5 zile lucrătoare de la 1 ianuarie 2026); (2) stornarea înregistrării manuale inițiale; (3) regenerarea fișierului SAF-T înainte de termenul de depunere. Acest tip de reconciliere lunară previne exact situațiile pe care algoritmii de risc ai ANAF sunt concepuți să le detecteze.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMF 1783/2021",
+    "article": "Ordinul privind natura informațiilor raportate prin SAF-T (D406)",
+    "effective": "2025-01-01",
+    "md": "De la 1 ianuarie 2025, obligația de raportare SAF-T D406 s-a extins la contribuabilii mici, ultima categorie inclusă (după contribuabilii mari, din 2022, și cei mijlocii, din 2023). Perioadele de grație acordate pentru primele raportări s-au epuizat integral în cursul anului 2025, astfel încât din 2026 se aplică termenul standard, fără nicio derogare: ultima zi a lunii următoare perioadei de raportare (lunar pentru plătitorii lunari de TVA și contribuabilii mari/mijlocii, trimestrial pentru ceilalți).",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nedepunerea la termen a SAF-T D406, transmiterea cu întârziere a facturilor prin e-Factura sau lipsa reconcilierii între sistemele interne și rapoartele către ANAF pot atrage sancțiuni contravenționale. Cuantumurile amenzilor pentru transmiterea tardivă a e-Facturii se situează, conform reglementărilor în vigoare la data redactării (iulie 2026), în intervalele 5.000–10.000 lei (contribuabili mari), 2.500–5.000 lei (mijlocii) și 1.000–2.500 lei (mici/persoane fizice) — verifică întotdeauna nivelul actualizat pe site-ul ANAF sau cu un consultant fiscal, întrucât aceste praguri pot fi modificate legislativ. Un audit trail incomplet sau o arhivare deficitară cresc semnificativ riscul ca o simplă neconcordanță tehnică să se transforme într-o inspecție fiscală amplă.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "SC Gamma Servicii SRL (contribuabil mijlociu, plătitor lunar de TVA) emite în martie 2026, prin SPV, o factură de servicii de 15.000 lei, la care se aplică TVA 21% (cotă standard), deci TVA colectată corectă = 3.150 lei, total factură = 18.150 lei.\n\nDin eroare, la înregistrarea în contabilitate, operatorul a aplicat cota de 11% (cotă redusă, aplicabilă doar categoriilor expres prevăzute de lege — nu și serviciilor de consultanță), înregistrând TVA colectată de doar 1.650 lei.\n\nCerințe:\na) Calculează diferența de TVA colectată nedeclarată corect.\nb) Explică ce risc apare la reconcilierea lunară SAF-T vs. factura din SPV.\nc) Descrie pașii de corecție înainte de termenul de depunere a SAF-T.",
+    "solution_md": "a) TVA corectă = 15.000 × 21% = 3.150 lei. TVA înregistrată eronat = 15.000 × 11% = 1.650 lei. Diferența nedeclarată = 3.150 − 1.650 = 1.500 lei.\n\nb) La reconciliere, factura din SPV (exemplarul original, cu TVA 21% = 3.150 lei) nu va coincide cu suma din jurnalul de TVA și din fișierul SAF-T generat din contabilitate (care ar reflecta eronat 1.650 lei). Această neconcordanță este exact tipul de anomalie pe care algoritmii de risc ai ANAF o pot semnala automat, prin comparare directă cu datele din SPV.\n\nc) Pași de corecție: (1) identificarea erorii prin reconcilierea lunară SAF-T vs. registrul de vânzări, înainte de termenul de depunere; (2) corectarea notei contabile, cu majorarea TVA colectată la 3.150 lei (4111 = 4427 cu diferența de 1.500 lei); (3) actualizarea decontului de TVA aferent lunii martie 2026, dacă eroarea este descoperită înainte de depunere, sau depunerea unui decont rectificativ, dacă este descoperită ulterior; (4) regenerarea fișierului SAF-T cu suma corectă înainte de transmiterea către ANAF.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Legii contabilității nr. 82/1991, care este termenul standard de păstrare a documentelor justificative și a registrelor de contabilitate?",
+    "choices": [
+     "5 ani",
+     "10 ani, cu excepția statelor de salarii care se păstrează 50 de ani",
+     "3 ani, indiferent de tipul documentului",
+     "Nelimitat, pentru toate documentele"
+    ],
+    "answer": 1,
+    "explain": "Termenul standard este de 10 ani de la data încheierii exercițiului financiar în care documentele au fost întocmite; statele de salarii fac excepție și se păstrează 50 de ani, fiind relevante pentru reconstituirea vechimii în muncă și a drepturilor de pensie.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De când se aplică, fără nicio perioadă de grație, obligația de raportare SAF-T D406 pentru toți contribuabilii, inclusiv cei mici?",
+    "choices": [
+     "De la 1 ianuarie 2022, odată cu marii contribuabili",
+     "De la 1 ianuarie 2023, odată cu contribuabilii mijlocii",
+     "De la 1 ianuarie 2025 obligația, iar din 2026 fără perioadă de grație",
+     "De la 1 ianuarie 2027"
+    ],
+    "answer": 2,
+    "explain": "Contribuabilii mici au intrat sub obligația SAF-T D406 de la 1 ianuarie 2025. Perioadele de grație acordate pentru primele raportări (diferite pe categorii de contribuabili) s-au epuizat integral în 2025, astfel încât în 2026 se aplică termenele standard, fără nicio derogare.",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă audit trail-ul contabil?",
+    "back": "Lanțul complet și verificabil de dovezi care leagă o operațiune economică, de la documentul justificativ inițial, prin înregistrarea contabilă și registre, până la situațiile financiare și declarațiile depuse la ANAF.",
+    "concept_key": "audit-trail-contabil-definitie",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât timp se păstrează documentele justificative și registrele contabile, conform Legii 82/1991?",
+    "back": "10 ani de la încheierea exercițiului financiar în care au fost întocmite; excepție — statele de salarii, păstrate 50 de ani.",
+    "concept_key": "arhivare-electronica-documente-contabile",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De când este obligatorie depunerea SAF-T D406 pentru contribuabilii mici, și ce s-a schimbat în 2026?",
+    "back": "Obligația a intrat în vigoare la 1 ianuarie 2025; perioadele de grație acordate pentru primele raportări s-au epuizat în 2025, deci din 2026 se aplică termenele standard, fără derogări.",
+    "concept_key": "saf-t-mici-contribuabili-2025",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă factura transmisă prin SPV, față de factura emisă de furnizor?",
+    "back": "Factura din SPV (format RO_CIUS UBL 2.1) reprezintă exemplarul original al facturii din punct de vedere fiscal.",
+    "concept_key": "e-factura-exemplar-original",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul legal de depunere a fișierului SAF-T D406?",
+    "back": "Ultima zi a lunii următoare perioadei de raportare — lunar pentru contribuabilii mari/mijlocii și plătitorii lunari de TVA, trimestrial pentru ceilalți.",
+    "concept_key": "saf-t-termen-depunere",
+    "blockId": "cmjjuxw4u00dqumkpmb2pc8fo-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1551,
+   "flashcards": 5
+  }
+ }
+}

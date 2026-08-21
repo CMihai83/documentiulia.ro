@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxwf100m7umkpu1vycr3z",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Suport și Operare (Cl. 7-8)",
+ "lesson": "Resurse și competență",
+ "category": "HSE_SAFETY",
+ "content": "# Resurse și competență\n\n## 7.1 Determinarea resurselor\n\nClauza 7.1 din ISO 45001:2018 cere organizației să determine și să pună la dispoziție resursele necesare pentru stabilirea, implementarea, menținerea și îmbunătățirea continuă a sistemului de management SSM (SMSSM). Aceasta este o responsabilitate directă a top managementului, derivată din angajamentul asumat la clauza 5.1 (Leadership).\n\nResursele nu se limitează la bani. Standardul are în vedere cinci categorii:\n\n- **Resurse umane** — personal suficient numeric și calificat pentru rolurile SSM (responsabil SSM, membri comitet SSM, auditori interni).\n- **Infrastructură** — clădiri, echipamente de protecție, sisteme de ventilație, semnalistică, echipamente de intervenție în caz de urgență.\n- **Mediu de lucru** — condiții fizice, sociale și psihologice (iluminat, zgomot, climat organizațional, presiune managerială).\n- **Resurse tehnologice** — software de management SSM, senzori, sisteme de monitorizare a expunerii la riscuri.\n- **Resurse financiare** — buget alocat pentru instruiri, echipamente individuale de protecție (EIP), consultanță, certificare.\n\nÎn practică, la audit se verifică nu doar existența resurselor, ci și dovada că alocarea lor este planificată (buget anual SSM) și corelată cu riscurile identificate în evaluarea de risc (clauza 6.1.2).\n\n## 7.2 Competență\n\nCompetența este capacitatea demonstrată de a aplica cunoștințe și abilități pentru a obține rezultatele dorite în materie de SSM. Clauza 7.2 impune un proces în patru pași, pe care organizația trebuie să îl poată dovedi la audit:\n\n1. **Determinarea competenței necesare** pentru fiecare rol care afectează sau este afectat de performanța SSM (nu doar operatorii, ci și management, achiziții, proiectanți de proces).\n2. **Evaluarea competenței actuale**, pe baza educației, instruirii sau experienței relevante a persoanei.\n3. **Acțiuni pentru acoperirea diferenței** (gap-ului) — instruire, mentorat, recalificare, redistribuire de sarcini sau angajare de personal nou — urmate de evaluarea eficacității acțiunilor întreprinse.\n4. **Păstrarea informațiilor documentate** ca dovadă a competenței: diplome, certificate de instruire, fișe de post, procese-verbale de instruire.\n\nO greșeală frecventă în organizațiile românești este confundarea instruirii SSM legale (obligatorie prin Legea 319/2006) cu competența cerută de ISO 45001, care poate fi mai amplă — de exemplu, competența de auditor intern, de evaluator de risc sau de operator pentru echipamente cu risc special necesită instruire suplimentară, dincolo de minimul legal.\n\n## 7.3 Conștientizare\n\nConștientizarea (awareness) se referă la ce trebuie să știe fiecare persoană care lucrează sub controlul organizației, indiferent dacă are sau nu competențe tehnice SSM. Conform clauzei 7.3, lucrătorii trebuie să fie conștienți de:\n\n- politica SSM a organizației;\n- contribuția proprie la eficacitatea SMSSM, inclusiv beneficiile unei performanțe SSM îmbunătățite;\n- implicațiile și consecințele potențiale ale nerespectării cerințelor SMSSM;\n- incidentele relevante și concluziile investigațiilor acestora;\n- pericolele, riscurile SSM și acțiunile determinate care sunt relevante pentru ei;\n- **capacitatea de a se retrage din situații de muncă pe care le consideră un pericol iminent și grav pentru viață sau sănătate**, precum și modul în care sunt protejați de consecințe nejustificate ale unei astfel de acțiuni.\n\nUltimul punct este specific ISO 45001 (nu apare la fel de explicit în versiunea anterioară OHSAS 18001) și reflectă filosofia standardului de implicare activă a lucrătorilor (clauza 5.4 — Consultare și participare). La audit intern, verificați prin interviuri dacă lucrătorii pot explica, în cuvinte proprii, aceste puncte — nu doar dacă au semnat o fișă de instruire.\n\n## 7.4 Comunicare\n\nOrganizația trebuie să stabilească, implementeze și mențină procesele necesare pentru comunicarea internă și externă relevantă pentru SMSSM, răspunzând la patru întrebări pentru fiecare informație:\n\n- **Ce** se comunică (politică, obiective, rezultate de audit, incidente, modificări legislative);\n- **Când** se comunică (periodic, la modificări, imediat după un eveniment);\n- **Cu cine** se comunică — intern (toate nivelurile și funcțiile, inclusiv contractori care lucrează în sediul organizației) și extern (ITM, furnizori, autorități, comunitate, clienți);\n- **Cum** se comunică (ședințe, afișaj, e-mail, aplicație internă, panou de informare SSM).\n\nStandardul cere ca procesul de comunicare să țină cont de aspecte de diversitate (limbă, gen, alfabetizare, dizabilitate) și să permită comunicare bidirecțională — adică lucrătorii pot transmite feedback, sesizări sau propuneri, nu doar primesc informații de sus în jos. Comunicarea externă trebuie documentată: cine decide ce se comunică către ITM sau presă în caz de accident, și pe ce canal.\n\n## Exemplu: Matrice de competențe – Metalex Prod SRL\n**Metalex Prod SRL**, producător de subansamble metalice cu 45 de angajați, a construit o matrice de competențe pentru trei roluri-cheie, ca dovadă pentru clauza 7.2:\n\n| Rol | Competență necesară | Nivel actual | Gap | Acțiune |\n|---|---|---|---|---|\n| Operator CNC | Instruire SSM locul de muncă + operare echipament cu risc de prindere | Instruire SSM făcută în urmă cu 8 luni; fără curs specific echipament nou | Da – echipament nou instalat | Curs intern 4 ore cu furnizorul echipamentului, până la 30.09.2026 |\n| Șef de linie | Evaluare de risc la nivel de post + prim ajutor | Curs evaluare risc absolvit; fără curs prim ajutor | Da – prim ajutor lipsă | Înscriere curs prim ajutor autorizat, termen 15.08.2026 |\n| Responsabil SSM | Curs de bază SSM 80 ore (legal) + auditor intern ISO 45001 | Curs de bază SSM valabil; fără curs auditor intern | Da – auditor intern | Curs auditor intern ISO 45001, 3 zile, până la 31.08.2026 |\n\nDovezile păstrate ca informații documentate sunt: fișele de post cu cerințe de competență, certificatele de absolvire, procesele-verbale de instruire și matricea în sine, revizuită anual sau la orice modificare de proces/echipament.\n\n## Exemplu: Plan de comunicare SSM\nO organizație de servicii de mentenanță industrială a definit următorul plan de comunicare, parte a documentației SMSSM:\n\n| Subiect | Audiență | Canal | Frecvență | Responsabil |\n|---|---|---|---|---|\n| Politica SSM actualizată | Toți angajații | Afișaj + ședință scurtă | La fiecare revizuire | Responsabil SSM |\n| Rezultate audit intern | Management + șefi de echipă | Raport scris + ședință de management | După fiecare audit (min. anual) | Auditor intern |\n| Incidente și aproape-accidente | Toți angajații din sectorul afectat | Buletin informativ + panou SSM | În 48h de la eveniment | Responsabil SSM |\n| Modificări legislative SSM | Management + responsabil SSM | E-mail + newsletter juridic | La apariția modificării | Departament juridic/HR |\n| Sesizări și propuneri lucrători | Responsabil SSM ← lucrători | Cutie de sugestii + formular intranet | Continuu | Toți angajații |\n\nUltima linie ilustrează comunicarea bidirecțională cerută de standard: lucrătorii nu doar primesc informații, ci au un canal formal prin care pot semnala riscuri sau propune îmbunătățiri, fără teamă de represalii.\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă, coroborată cu HG nr. 1425/2006 (Normele metodologice de aplicare) Legea 319/2006, art. 20; HG 1425/2006, art. 86-100 (în vigoare de la 2006-07-27)\nLegea 319/2006, art. 20, obligă angajatorul să asigure instruirea lucrătorilor în domeniul SSM, adaptată la specificul locului de muncă și postului. HG 1425/2006, la art. 86-100, detaliază cele trei tipuri obligatorii de instruire: **instruirea introductiv-generală** (la angajare, pentru toți lucrătorii), **instruirea la locul de muncă** (înainte de începerea efectivă a activității, specifică riscurilor postului) și **instruirea periodică** (cu frecvență stabilită intern, de regulă anual sau semestrial, în funcție de riscuri). Aceste instruiri sunt cerința legală minimă din România și trebuie considerate ca bază pentru competența cerută de clauza 7.2 din ISO 45001, dar nu o înlocuiesc integral — standardul poate impune competențe suplimentare specifice rolului. Data este cea a intrării în vigoare inițiale; verificați varianta consolidată aflată în vigoare la data auditului, întrucât actele au suferit modificări ulterioare.\n\n⚠ Nu confundați **instruirea SSM legală** (obligatorie prin Legea 319/2006, aceeași structură pentru toți angajatorii din România) cu **competența cerută de ISO 45001** (clauza 7.2), care este specifică fiecărui rol și poate depăși minimul legal — de exemplu, competența de auditor intern, de evaluator de risc sau de operator de echipamente cu risc special. La auditul de certificare, evaluatorul va cere dovezi pentru ambele niveluri, separat: fișele de instruire SSM legală ȘI matricea de competențe ISO 45001 cu acțiunile de acoperire a diferențelor.\n\n## Exercițiu\nCompania **Termo Instal SRL** a angajat un tehnician nou pentru montaj instalații de încălzire pe acoperișuri (lucru la înălțime). Tehnicianul are experiență de 3 ani în domeniu la un fost angajator, dar nu are certificat de lucru la înălțime și nu a fost încă instruit SSM la noul loc de muncă.\n\nAplicând procesul din clauza 7.2 (determinare → evaluare → acțiune → verificare eficacitate → dovezi documentate), elaborați:\n\n1. Competența necesară pentru acest rol (minim 3 elemente).\n2. Gap-ul identificat față de situația actuală.\n3. Acțiunile concrete de acoperire, cu termene.\n4. Ce dovezi documentate trebuie păstrate.\n\n**Soluție:** **1. Competența necesară:**\n- Instruire introductiv-generală SSM (legal, Legea 319/2006);\n- Instruire la locul de muncă, specifică riscurilor de lucru la înălțime și instalațiilor termice;\n- Certificat/atestat de lucru la înălțime (autorizare specifică activității cu risc de cădere);\n- Cunoașterea procedurii interne de utilizare a echipamentului individual de protecție împotriva căderilor (ham, linie de viață).\n\n**2. Gap identificat:**\nExperiența de 3 ani nu acoperă cerințele legale și interne ale noului loc de muncă — lipsesc instruirea introductiv-generală, instruirea la locul de muncă și certificatul de lucru la înălțime, care nu se transferă automat de la fostul angajator.\n\n**3. Acțiuni de acoperire, cu termene (exemplu):**\n- Instruire introductiv-generală SSM — înainte de prima zi de lucru efectivă (obligatoriu legal);\n- Instruire la locul de muncă, cu demonstrație practică a procedurii de lucru la înălțime — în prima săptămână, înainte de accesul pe acoperiș;\n- Înscriere la curs autorizat de lucru la înălțime, cu certificare — termen realist, de exemplu în 30 de zile de la angajare, cu interdicție de lucru la înălțime până la obținerea certificatului;\n- Verificare practică (evaluare la fața locului de către șeful de echipă) înainte de prima misiune fără supraveghere directă.\n\n**4. Dovezi documentate de păstrat:**\n- Fișa de instruire introductiv-generală și la locul de muncă, semnată;\n- Certificatul de absolvire curs lucru la înălțime;\n- Fișa de post actualizată cu cerințele de competență;\n- Nota de evaluare practică realizată de șeful de echipă, cu data și concluzia (competent/necesită supraveghere suplimentară).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "iso45001-resurse-7-1",
+    "md": "## 7.1 Determinarea resurselor\n\nClauza 7.1 din ISO 45001:2018 cere organizației să determine și să pună la dispoziție resursele necesare pentru stabilirea, implementarea, menținerea și îmbunătățirea continuă a sistemului de management SSM (SMSSM). Aceasta este o responsabilitate directă a top managementului, derivată din angajamentul asumat la clauza 5.1 (Leadership).\n\nResursele nu se limitează la bani. Standardul are în vedere cinci categorii:\n\n- **Resurse umane** — personal suficient numeric și calificat pentru rolurile SSM (responsabil SSM, membri comitet SSM, auditori interni).\n- **Infrastructură** — clădiri, echipamente de protecție, sisteme de ventilație, semnalistică, echipamente de intervenție în caz de urgență.\n- **Mediu de lucru** — condiții fizice, sociale și psihologice (iluminat, zgomot, climat organizațional, presiune managerială).\n- **Resurse tehnologice** — software de management SSM, senzori, sisteme de monitorizare a expunerii la riscuri.\n- **Resurse financiare** — buget alocat pentru instruiri, echipamente individuale de protecție (EIP), consultanță, certificare.\n\nÎn practică, la audit se verifică nu doar existența resurselor, ci și dovada că alocarea lor este planificată (buget anual SSM) și corelată cu riscurile identificate în evaluarea de risc (clauza 6.1.2).",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "iso45001-competenta-7-2",
+    "md": "## 7.2 Competență\n\nCompetența este capacitatea demonstrată de a aplica cunoștințe și abilități pentru a obține rezultatele dorite în materie de SSM. Clauza 7.2 impune un proces în patru pași, pe care organizația trebuie să îl poată dovedi la audit:\n\n1. **Determinarea competenței necesare** pentru fiecare rol care afectează sau este afectat de performanța SSM (nu doar operatorii, ci și management, achiziții, proiectanți de proces).\n2. **Evaluarea competenței actuale**, pe baza educației, instruirii sau experienței relevante a persoanei.\n3. **Acțiuni pentru acoperirea diferenței** (gap-ului) — instruire, mentorat, recalificare, redistribuire de sarcini sau angajare de personal nou — urmate de evaluarea eficacității acțiunilor întreprinse.\n4. **Păstrarea informațiilor documentate** ca dovadă a competenței: diplome, certificate de instruire, fișe de post, procese-verbale de instruire.\n\nO greșeală frecventă în organizațiile românești este confundarea instruirii SSM legale (obligatorie prin Legea 319/2006) cu competența cerută de ISO 45001, care poate fi mai amplă — de exemplu, competența de auditor intern, de evaluator de risc sau de operator pentru echipamente cu risc special necesită instruire suplimentară, dincolo de minimul legal.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "iso45001-constientizare-7-3",
+    "md": "## 7.3 Conștientizare\n\nConștientizarea (awareness) se referă la ce trebuie să știe fiecare persoană care lucrează sub controlul organizației, indiferent dacă are sau nu competențe tehnice SSM. Conform clauzei 7.3, lucrătorii trebuie să fie conștienți de:\n\n- politica SSM a organizației;\n- contribuția proprie la eficacitatea SMSSM, inclusiv beneficiile unei performanțe SSM îmbunătățite;\n- implicațiile și consecințele potențiale ale nerespectării cerințelor SMSSM;\n- incidentele relevante și concluziile investigațiilor acestora;\n- pericolele, riscurile SSM și acțiunile determinate care sunt relevante pentru ei;\n- **capacitatea de a se retrage din situații de muncă pe care le consideră un pericol iminent și grav pentru viață sau sănătate**, precum și modul în care sunt protejați de consecințe nejustificate ale unei astfel de acțiuni.\n\nUltimul punct este specific ISO 45001 (nu apare la fel de explicit în versiunea anterioară OHSAS 18001) și reflectă filosofia standardului de implicare activă a lucrătorilor (clauza 5.4 — Consultare și participare). La audit intern, verificați prin interviuri dacă lucrătorii pot explica, în cuvinte proprii, aceste puncte — nu doar dacă au semnat o fișă de instruire.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "iso45001-comunicare-7-4",
+    "md": "## 7.4 Comunicare\n\nOrganizația trebuie să stabilească, implementeze și mențină procesele necesare pentru comunicarea internă și externă relevantă pentru SMSSM, răspunzând la patru întrebări pentru fiecare informație:\n\n- **Ce** se comunică (politică, obiective, rezultate de audit, incidente, modificări legislative);\n- **Când** se comunică (periodic, la modificări, imediat după un eveniment);\n- **Cu cine** se comunică — intern (toate nivelurile și funcțiile, inclusiv contractori care lucrează în sediul organizației) și extern (ITM, furnizori, autorități, comunitate, clienți);\n- **Cum** se comunică (ședințe, afișaj, e-mail, aplicație internă, panou de informare SSM).\n\nStandardul cere ca procesul de comunicare să țină cont de aspecte de diversitate (limbă, gen, alfabetizare, dizabilitate) și să permită comunicare bidirecțională — adică lucrătorii pot transmite feedback, sesizări sau propuneri, nu doar primesc informații de sus în jos. Comunicarea externă trebuie documentată: cine decide ce se comunică către ITM sau presă în caz de accident, și pe ce canal.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b4"
+   },
+   {
+    "type": "example",
+    "title": "Matrice de competențe – Metalex Prod SRL",
+    "concept_key": "iso45001-competenta-7-2",
+    "md": "**Metalex Prod SRL**, producător de subansamble metalice cu 45 de angajați, a construit o matrice de competențe pentru trei roluri-cheie, ca dovadă pentru clauza 7.2:\n\n| Rol | Competență necesară | Nivel actual | Gap | Acțiune |\n|---|---|---|---|---|\n| Operator CNC | Instruire SSM locul de muncă + operare echipament cu risc de prindere | Instruire SSM făcută în urmă cu 8 luni; fără curs specific echipament nou | Da – echipament nou instalat | Curs intern 4 ore cu furnizorul echipamentului, până la 30.09.2026 |\n| Șef de linie | Evaluare de risc la nivel de post + prim ajutor | Curs evaluare risc absolvit; fără curs prim ajutor | Da – prim ajutor lipsă | Înscriere curs prim ajutor autorizat, termen 15.08.2026 |\n| Responsabil SSM | Curs de bază SSM 80 ore (legal) + auditor intern ISO 45001 | Curs de bază SSM valabil; fără curs auditor intern | Da – auditor intern | Curs auditor intern ISO 45001, 3 zile, până la 31.08.2026 |\n\nDovezile păstrate ca informații documentate sunt: fișele de post cu cerințe de competență, certificatele de absolvire, procesele-verbale de instruire și matricea în sine, revizuită anual sau la orice modificare de proces/echipament.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b5"
+   },
+   {
+    "type": "example",
+    "title": "Plan de comunicare SSM",
+    "concept_key": "iso45001-comunicare-7-4",
+    "md": "O organizație de servicii de mentenanță industrială a definit următorul plan de comunicare, parte a documentației SMSSM:\n\n| Subiect | Audiență | Canal | Frecvență | Responsabil |\n|---|---|---|---|---|\n| Politica SSM actualizată | Toți angajații | Afișaj + ședință scurtă | La fiecare revizuire | Responsabil SSM |\n| Rezultate audit intern | Management + șefi de echipă | Raport scris + ședință de management | După fiecare audit (min. anual) | Auditor intern |\n| Incidente și aproape-accidente | Toți angajații din sectorul afectat | Buletin informativ + panou SSM | În 48h de la eveniment | Responsabil SSM |\n| Modificări legislative SSM | Management + responsabil SSM | E-mail + newsletter juridic | La apariția modificării | Departament juridic/HR |\n| Sesizări și propuneri lucrători | Responsabil SSM ← lucrători | Cutie de sugestii + formular intranet | Continuu | Toți angajații |\n\nUltima linie ilustrează comunicarea bidirecțională cerută de standard: lucrătorii nu doar primesc informații, ci au un canal formal prin care pot semnala riscuri sau propune îmbunătățiri, fără teamă de represalii.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă, coroborată cu HG nr. 1425/2006 (Normele metodologice de aplicare)",
+    "article": "Legea 319/2006, art. 20; HG 1425/2006, art. 86-100",
+    "effective": "2006-07-27",
+    "md": "Legea 319/2006, art. 20, obligă angajatorul să asigure instruirea lucrătorilor în domeniul SSM, adaptată la specificul locului de muncă și postului. HG 1425/2006, la art. 86-100, detaliază cele trei tipuri obligatorii de instruire: **instruirea introductiv-generală** (la angajare, pentru toți lucrătorii), **instruirea la locul de muncă** (înainte de începerea efectivă a activității, specifică riscurilor postului) și **instruirea periodică** (cu frecvență stabilită intern, de regulă anual sau semestrial, în funcție de riscuri). Aceste instruiri sunt cerința legală minimă din România și trebuie considerate ca bază pentru competența cerută de clauza 7.2 din ISO 45001, dar nu o înlocuiesc integral — standardul poate impune competențe suplimentare specifice rolului. Data este cea a intrării în vigoare inițiale; verificați varianta consolidată aflată în vigoare la data auditului, întrucât actele au suferit modificări ulterioare.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confundați **instruirea SSM legală** (obligatorie prin Legea 319/2006, aceeași structură pentru toți angajatorii din România) cu **competența cerută de ISO 45001** (clauza 7.2), care este specifică fiecărui rol și poate depăși minimul legal — de exemplu, competența de auditor intern, de evaluator de risc sau de operator de echipamente cu risc special. La auditul de certificare, evaluatorul va cere dovezi pentru ambele niveluri, separat: fișele de instruire SSM legală ȘI matricea de competențe ISO 45001 cu acțiunile de acoperire a diferențelor.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Compania **Termo Instal SRL** a angajat un tehnician nou pentru montaj instalații de încălzire pe acoperișuri (lucru la înălțime). Tehnicianul are experiență de 3 ani în domeniu la un fost angajator, dar nu are certificat de lucru la înălțime și nu a fost încă instruit SSM la noul loc de muncă.\n\nAplicând procesul din clauza 7.2 (determinare → evaluare → acțiune → verificare eficacitate → dovezi documentate), elaborați:\n\n1. Competența necesară pentru acest rol (minim 3 elemente).\n2. Gap-ul identificat față de situația actuală.\n3. Acțiunile concrete de acoperire, cu termene.\n4. Ce dovezi documentate trebuie păstrate.",
+    "solution_md": "**1. Competența necesară:**\n- Instruire introductiv-generală SSM (legal, Legea 319/2006);\n- Instruire la locul de muncă, specifică riscurilor de lucru la înălțime și instalațiilor termice;\n- Certificat/atestat de lucru la înălțime (autorizare specifică activității cu risc de cădere);\n- Cunoașterea procedurii interne de utilizare a echipamentului individual de protecție împotriva căderilor (ham, linie de viață).\n\n**2. Gap identificat:**\nExperiența de 3 ani nu acoperă cerințele legale și interne ale noului loc de muncă — lipsesc instruirea introductiv-generală, instruirea la locul de muncă și certificatul de lucru la înălțime, care nu se transferă automat de la fostul angajator.\n\n**3. Acțiuni de acoperire, cu termene (exemplu):**\n- Instruire introductiv-generală SSM — înainte de prima zi de lucru efectivă (obligatoriu legal);\n- Instruire la locul de muncă, cu demonstrație practică a procedurii de lucru la înălțime — în prima săptămână, înainte de accesul pe acoperiș;\n- Înscriere la curs autorizat de lucru la înălțime, cu certificare — termen realist, de exemplu în 30 de zile de la angajare, cu interdicție de lucru la înălțime până la obținerea certificatului;\n- Verificare practică (evaluare la fața locului de către șeful de echipă) înainte de prima misiune fără supraveghere directă.\n\n**4. Dovezi documentate de păstrat:**\n- Fișa de instruire introductiv-generală și la locul de muncă, semnată;\n- Certificatul de absolvire curs lucru la înălțime;\n- Fișa de post actualizată cu cerințele de competență;\n- Nota de evaluare practică realizată de șeful de echipă, cu data și concluzia (competent/necesită supraveghere suplimentară).",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este succesiunea corectă a pașilor impuși de clauza 7.2 (Competență) din ISO 45001?",
+    "choices": [
+     "Instruire → certificare → angajare → arhivare",
+     "Determinare competență necesară → evaluare competență actuală → acțiuni de acoperire a diferenței → evaluare eficacitate → păstrare dovezi documentate",
+     "Recrutare → evaluare de performanță → concediere → recrutare nouă",
+     "Definirea politicii SSM → comunicare → audit intern → certificare"
+    ],
+    "answer": 1,
+    "explain": "Clauza 7.2 descrie un ciclu clar: se determină ce competență e necesară pentru fiecare rol, se evaluează situația actuală, se acționează pentru acoperirea diferenței, se verifică eficacitatea acțiunii, iar totul se documentează ca dovadă pentru audit.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform clauzei 7.3 (Conștientizare) din ISO 45001, de ce trebuie să fie conștient un lucrător în legătură cu dreptul său de retragere?",
+    "choices": [
+     "De faptul că poate refuza orice sarcină de serviciu care nu îi place",
+     "De capacitatea de a se retrage din situații de muncă percepute ca pericol iminent și grav, fără a suferi consecințe nejustificate",
+     "De dreptul de a primi o zi liberă suplimentară după fiecare instruire SSM",
+     "De obligația de a raporta orice retragere direct la ITM, nu la angajator"
+    ],
+    "answer": 1,
+    "explain": "Clauza 7.3 prevede explicit că lucrătorii trebuie să conștientizeze faptul că se pot retrage din situații pe care le consideră un pericol iminent și grav pentru viață sau sănătate, iar organizația trebuie să îi protejeze de consecințe nejustificate ale acestei acțiuni.",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce include clauza 7.1 (Resurse) din ISO 45001?",
+    "back": "Resurse umane, infrastructură, mediu de lucru, resurse tehnologice și resurse financiare necesare pentru stabilirea, implementarea, menținerea și îmbunătățirea continuă a SMSSM.",
+    "concept_key": "iso45001-resurse-7-1",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt etapele clauzei 7.2 (Competență)?",
+    "back": "Determinarea competenței necesare → evaluarea competenței actuale → acțiuni pentru acoperirea diferenței (instruire, mentorat, recrutare) → evaluarea eficacității acțiunilor → păstrarea informațiilor documentate ca dovadă.",
+    "concept_key": "iso45001-competenta-7-2",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce trebuie să conștientizeze un lucrător conform clauzei 7.3 din ISO 45001?",
+    "back": "Politica SSM, contribuția proprie la SMSSM, implicațiile nerespectării cerințelor, incidentele relevante, pericolele și riscurile aplicabile postului, și dreptul de a se retrage din situații de pericol iminent fără consecințe nejustificate.",
+    "concept_key": "iso45001-constientizare-7-3",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce tipuri de instruire SSM sunt obligatorii prin lege în România?",
+    "back": "Instruirea introductiv-generală, instruirea la locul de muncă și instruirea periodică, conform Legii 319/2006 și HG 1425/2006.",
+    "concept_key": "instruiri-ssm-obligatorii-ro",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce presupune clauza 7.4 (Comunicare) din ISO 45001?",
+    "back": "Stabilirea proceselor de comunicare internă și externă privind SMSSM — ce se comunică, când, cu cine, cum, ținând cont de diversitate și permițând comunicare bidirecțională cu lucrătorii.",
+    "concept_key": "iso45001-comunicare-7-4",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care e diferența dintre instruirea SSM legală și competența cerută de ISO 45001?",
+    "back": "Instruirea legală (Legea 319/2006) e nivelul minim obligatoriu pentru toți angajatorii; competența ISO 45001 (clauza 7.2) e specifică rolului și poate cere abilități suplimentare, precum auditor intern sau evaluator de risc.",
+    "concept_key": "instruire-vs-competenta",
+    "blockId": "cmjjuxwf100m7umkpu1vycr3z-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1518,
+   "flashcards": 6
+  }
+ }
+}

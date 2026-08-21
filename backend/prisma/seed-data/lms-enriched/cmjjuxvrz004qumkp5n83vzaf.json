@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvrz004qumkp5n83vzaf",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Introducere în Project Management",
+ "lesson": "Rolul Project Manager-ului",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Rolul Project Manager-ului\n\n## Ce face, de fapt, un Project Manager?\n\nProject Managerul (PM) este persoana responsabilă de planificarea, execuția și finalizarea cu succes a unui proiect, respectând constrângerile de scop, timp, cost și calitate stabilite la începutul acestuia. Spre deosebire de un manager funcțional, care coordonează o echipă permanentă cu activități recurente (contabilitate, vânzări, producție), PM-ul conduce o inițiativă temporară, cu un rezultat unic: o aplicație ERP implementată, un sediu nou amenajat, un produs lansat pe piață.\n\nConform PMBOK 7 (Project Management Body of Knowledge, ediția a 7-a, publicată de Project Management Institute), rolul PM-ului nu mai este definit strict prin procese și documente, ci prin 8 domenii de performanță și 12 principii de bază — printre care administrarea responsabilă a resurselor (stewardship), orientarea către valoare, adaptabilitatea și implicarea activă a echipei și a stakeholderilor (persoane sau grupuri afectate de proiect sau care îl pot influența).\n\nÎn practică, PM-ul răspunde simultan de trei paliere:\n\n1. **Planificare și control** — definirea scopului (ce livrăm exact), a bugetului, a termenelor și a resurselor necesare.\n2. **Coordonarea echipei** — alocarea sarcinilor, urmărirea progresului, eliminarea blocajelor zilnice.\n3. **Gestionarea stakeholderilor** — comunicare constantă cu sponsorul, clienții, departamentele conexe și conducerea.\n\nÎntr-o companie românească tipică — de exemplu, o firmă de distribuție care implementează un ERP nou — PM-ul este cel care ține laolaltă echipa internă de implementare, furnizorul de software, departamentul financiar și conducerea executivă, astfel încât proiectul să livreze la timp, în buget și cu funcționalitățile promise inițial.\n\n## Competențele-cheie ale unui Project Manager\n\nPMI definește competențele necesare unui PM printr-un model numit **Talent Triangle** (Triunghiul Talentului), structurat pe trei zone:\n\n- **Ways of Working** (managementul tehnic de proiect) — planificare, estimare, managementul riscurilor, urmărirea bugetului, alegerea abordării potrivite pentru context: predictivă (waterfall), Agile (Scrum, Kanban) sau hibridă.\n- **Power Skills** (abilități de leadership) — comunicare, negociere, motivare, gestionarea conflictelor, luarea deciziilor în condiții de incertitudine.\n- **Business Acumen** (perspectivă strategică) — înțelegerea modelului de afaceri, a industriei și a modului în care proiectul respectiv creează valoare pentru organizație.\n\nUn PM eficient nu este doar un bun „planificator”. Este cineva care înțelege de ce se face proiectul (contextul de business), cum se face (metodologia potrivită) și cine trebuie convins, informat sau sprijinit pe parcurs (oamenii implicați). De exemplu, într-un proiect de digitalizare a facturării, competența tehnică — cunoașterea instrumentelor și a fluxurilor — contează adesea mai puțin decât capacitatea PM-ului de a gestiona rezistența la schimbare din partea angajaților care lucrează de ani de zile cu facturi pe hârtie.\n\n## Leadership vs. management: două ipostaze ale aceluiași rol\n\nDistincția, popularizată de profesorul John Kotter (Harvard Business School), rămâne esențială pentru orice PM:\n\n- **Managementul** urmărește stabilitate și predictibilitate: planifică, organizează, alocă bugete, controlează abaterile față de plan. Răspunde la întrebarea „Facem lucrurile corect?”.\n- **Leadershipul** urmărește schimbare și mobilizare: stabilește o direcție, aliniază oamenii în jurul unei viziuni, îi motivează să depășească obstacole. Răspunde la întrebarea „Facem lucrurile corecte?”.\n\nUn PM bun exercită ambele roluri, în proporții diferite, în funcție de faza proiectului. La inițiere, leadershipul contează mai mult — trebuie construită o viziune clară și obținută susținerea sponsorului. În execuție, managementul devine dominant — urmărirea graficului Gantt, a bugetului și a riscurilor. Când apare o criză (întârziere majoră, plecarea unui membru-cheie din echipă), leadershipul revine în prim-plan: PM-ul trebuie să recalibreze echipa, să comunice transparent cu stakeholderii și să propună soluții, nu doar să raporteze problema.\n\nEroarea frecventă la PM-ii aflați la început de drum este să se concentreze exclusiv pe partea de management (liste de sarcini, rapoarte de status) și să neglijeze componenta de leadership — motiv pentru care echipele rămân demotivate chiar și atunci când planul „arată bine pe hârtie”.\n\n## Exemplu: Un PM la lucru: implementarea unui ERP într-o firmă de distribuție\nO firmă de distribuție de materiale de construcții din Cluj, cu 80 de angajați, decide implementarea unui sistem ERP nou pentru a înlocui evidența ținută în Excel și un software contabil separat. Proiectul are un buget de 45.000 EUR și un termen de 6 luni.\n\nPM-ul desemnat, Andrei, își organizează activitatea astfel:\n\n- **Săptămâna 1-2:** elaborează Project Charter-ul (documentul care autorizează formal proiectul) împreună cu sponsorul (directorul general) și clarifică scopul — ce module ERP se implementează (vânzări, stocuri, contabilitate) și ce rămâne în afara proiectului (de exemplu, integrarea cu magazinul online, planificată separat).\n- **Lunar:** organizează o ședință de status cu sponsorul și cu reprezentantul furnizorului de software, unde raportează progresul față de plan, bugetul consumat și riscurile identificate (de exemplu, întârzierea migrării datelor istorice din Excel).\n- **Săptămânal:** coordonează echipa internă (2 persoane din contabilitate, 1 din IT) și echipa furnizorului, rezolvă blocaje (acces la servere, testare module) și actualizează graficul de proiect.\n- **Continuu:** gestionează comunicarea cu utilizatorii finali (agenții de vânzări, gestionarii de depozit), care se tem că noul sistem le va îngreuna munca — aici Andrei aplică leadership, nu doar management: organizează sesiuni scurte de prezentare, ascultă obiecțiile și le transmite echipei de implementare.\n\nLa finalul celor 6 luni, proiectul se încheie cu o depășire de buget de doar 1.800 EUR (4% peste plan), acceptată de sponsor datorită unei cereri suplimentare de raportare, apărută pe parcurs. Succesul proiectului nu se datorează doar planificării corecte, ci și modului în care Andrei a gestionat activ oamenii afectați de schimbare.\n\n## Exemplu: Matricea putere-interes: cum prioritizează PM-ul stakeholderii\nRevenind la proiectul ERP de mai sus, Andrei își mapează stakeholderii într-o matrice putere-interes, un instrument standard recomandat de PMBOK pentru planificarea comunicării:\n\n- **Putere mare, interes mare** (a gestiona îndeaproape): directorul general (sponsor) și șeful departamentului financiar. Cu aceștia, Andrei comunică frecvent și în detaliu — rapoarte lunare, decizii-cheie discutate direct.\n- **Putere mare, interes scăzut** (a menține satisfăcut): directorul de vânzări, care nu e implicat zilnic, dar poate bloca proiectul dacă nu este de acord cu schimbarea fluxului de comenzi. Andrei îl informează punctual, la momentele-cheie, fără să-l încarce cu detalii tehnice.\n- **Putere mică, interes mare** (a ține informat): agenții de vânzări și gestionarii de depozit, utilizatorii finali ai sistemului. Nu pot opri proiectul, dar experiența lor de utilizare determină succesul adopției. Andrei le dedică sesiuni de instruire și un canal de feedback.\n- **Putere mică, interes scăzut** (monitorizare minimă): alte departamente neafectate direct (HR, marketing), informate doar prin newsletter-ul intern de proiect.\n\nClasificarea corectă a stakeholderilor evită două greșeli frecvente: să irosești timp comunicând excesiv cu cineva fără interes real, sau — mai grav — să ignori un grup cu interes mare doar pentru că nu are putere formală de decizie, riscând rezistență ascunsă la schimbare.\n\n⚠ Cea mai frecventă capcană pentru un PM aflat la început de carieră este să reducă rolul la administrare de sarcini (liste, statusuri, termene), ignorând componenta de leadership și pe cea de stakeholder management. Un plan tehnic perfect eșuează dacă echipa este demotivată sau dacă un stakeholder-cheie, neconsultat la timp, blochează proiectul în ultima fază.\n\n## Exercițiu\nO firmă de contabilitate în externalizare (outsourcing) din București decide să digitalizeze procesul de arhivare a documentelor fiscale, înlocuind dosarele fizice cu un sistem de gestiune electronică a documentelor (DMS). Proiectul implică: directorul general (sponsor), 5 contabili care vor folosi zilnic sistemul, IT-ul intern (1 persoană, responsabil de configurare), un furnizor extern de software DMS și departamentul de audit intern, care va verifica ulterior conformitatea arhivării.\n\n**Cerințe:**\n1. Plasează fiecare stakeholder în matricea putere-interes (putere mare/mică, interes mare/mic) și justifică pe scurt.\n2. Pentru activitatea „configurarea sistemului DMS”, construiește o alocare RACI (Responsible, Accountable, Consulted, Informed) pentru actorii implicați.\n\n**Soluție:** **1. Matricea putere-interes:**\n\n- **Director general** — putere mare, interes mic (nu folosește sistemul zilnic, dar aprobă bugetul și poate opri proiectul) → strategie: a menține satisfăcut.\n- **Cei 5 contabili** — putere mică, interes mare (utilizatori zilnici, afectați direct de schimbare) → strategie: a ține informați și instruiți.\n- **IT intern** — putere mare, interes mare (configurează și întreține sistemul, are cunoștințe tehnice critice) → strategie: a gestiona îndeaproape.\n- **Furnizor extern DMS** — putere mare, interes mare (livrează soluția; fără el proiectul nu poate avansa) → strategie: a gestiona îndeaproape.\n- **Audit intern** — putere mică, interes mic în faza de implementare (interesul crește abia după livrare, când verifică conformitatea) → strategie: monitorizare minimă, cu informare punctuală înainte de finalizare.\n\n**2. RACI pentru „configurarea sistemului DMS”:**\n\n- **Responsible** (execută efectiv): IT intern + furnizorul extern DMS.\n- **Accountable** (răspunde final de rezultat): Project Managerul (sau, dacă nu există PM dedicat, directorul general).\n- **Consulted** (consultat înainte de decizii): cei 5 contabili (pentru cerințe de utilizare) și auditul intern (pentru cerințe de conformitate).\n- **Informed** (informat despre progres, fără implicare directă): directorul general, prin rapoartele periodice de status.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "rol-project-manager-definitie",
+    "md": "## Ce face, de fapt, un Project Manager?\n\nProject Managerul (PM) este persoana responsabilă de planificarea, execuția și finalizarea cu succes a unui proiect, respectând constrângerile de scop, timp, cost și calitate stabilite la începutul acestuia. Spre deosebire de un manager funcțional, care coordonează o echipă permanentă cu activități recurente (contabilitate, vânzări, producție), PM-ul conduce o inițiativă temporară, cu un rezultat unic: o aplicație ERP implementată, un sediu nou amenajat, un produs lansat pe piață.\n\nConform PMBOK 7 (Project Management Body of Knowledge, ediția a 7-a, publicată de Project Management Institute), rolul PM-ului nu mai este definit strict prin procese și documente, ci prin 8 domenii de performanță și 12 principii de bază — printre care administrarea responsabilă a resurselor (stewardship), orientarea către valoare, adaptabilitatea și implicarea activă a echipei și a stakeholderilor (persoane sau grupuri afectate de proiect sau care îl pot influența).\n\nÎn practică, PM-ul răspunde simultan de trei paliere:\n\n1. **Planificare și control** — definirea scopului (ce livrăm exact), a bugetului, a termenelor și a resurselor necesare.\n2. **Coordonarea echipei** — alocarea sarcinilor, urmărirea progresului, eliminarea blocajelor zilnice.\n3. **Gestionarea stakeholderilor** — comunicare constantă cu sponsorul, clienții, departamentele conexe și conducerea.\n\nÎntr-o companie românească tipică — de exemplu, o firmă de distribuție care implementează un ERP nou — PM-ul este cel care ține laolaltă echipa internă de implementare, furnizorul de software, departamentul financiar și conducerea executivă, astfel încât proiectul să livreze la timp, în buget și cu funcționalitățile promise inițial.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "pmi-talent-triangle",
+    "md": "## Competențele-cheie ale unui Project Manager\n\nPMI definește competențele necesare unui PM printr-un model numit **Talent Triangle** (Triunghiul Talentului), structurat pe trei zone:\n\n- **Ways of Working** (managementul tehnic de proiect) — planificare, estimare, managementul riscurilor, urmărirea bugetului, alegerea abordării potrivite pentru context: predictivă (waterfall), Agile (Scrum, Kanban) sau hibridă.\n- **Power Skills** (abilități de leadership) — comunicare, negociere, motivare, gestionarea conflictelor, luarea deciziilor în condiții de incertitudine.\n- **Business Acumen** (perspectivă strategică) — înțelegerea modelului de afaceri, a industriei și a modului în care proiectul respectiv creează valoare pentru organizație.\n\nUn PM eficient nu este doar un bun „planificator”. Este cineva care înțelege de ce se face proiectul (contextul de business), cum se face (metodologia potrivită) și cine trebuie convins, informat sau sprijinit pe parcurs (oamenii implicați). De exemplu, într-un proiect de digitalizare a facturării, competența tehnică — cunoașterea instrumentelor și a fluxurilor — contează adesea mai puțin decât capacitatea PM-ului de a gestiona rezistența la schimbare din partea angajaților care lucrează de ani de zile cu facturi pe hârtie.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "leadership-vs-management",
+    "md": "## Leadership vs. management: două ipostaze ale aceluiași rol\n\nDistincția, popularizată de profesorul John Kotter (Harvard Business School), rămâne esențială pentru orice PM:\n\n- **Managementul** urmărește stabilitate și predictibilitate: planifică, organizează, alocă bugete, controlează abaterile față de plan. Răspunde la întrebarea „Facem lucrurile corect?”.\n- **Leadershipul** urmărește schimbare și mobilizare: stabilește o direcție, aliniază oamenii în jurul unei viziuni, îi motivează să depășească obstacole. Răspunde la întrebarea „Facem lucrurile corecte?”.\n\nUn PM bun exercită ambele roluri, în proporții diferite, în funcție de faza proiectului. La inițiere, leadershipul contează mai mult — trebuie construită o viziune clară și obținută susținerea sponsorului. În execuție, managementul devine dominant — urmărirea graficului Gantt, a bugetului și a riscurilor. Când apare o criză (întârziere majoră, plecarea unui membru-cheie din echipă), leadershipul revine în prim-plan: PM-ul trebuie să recalibreze echipa, să comunice transparent cu stakeholderii și să propună soluții, nu doar să raporteze problema.\n\nEroarea frecventă la PM-ii aflați la început de drum este să se concentreze exclusiv pe partea de management (liste de sarcini, rapoarte de status) și să neglijeze componenta de leadership — motiv pentru care echipele rămân demotivate chiar și atunci când planul „arată bine pe hârtie”.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b3"
+   },
+   {
+    "type": "example",
+    "title": "Un PM la lucru: implementarea unui ERP într-o firmă de distribuție",
+    "concept_key": "exemplu-pm-implementare-erp",
+    "md": "O firmă de distribuție de materiale de construcții din Cluj, cu 80 de angajați, decide implementarea unui sistem ERP nou pentru a înlocui evidența ținută în Excel și un software contabil separat. Proiectul are un buget de 45.000 EUR și un termen de 6 luni.\n\nPM-ul desemnat, Andrei, își organizează activitatea astfel:\n\n- **Săptămâna 1-2:** elaborează Project Charter-ul (documentul care autorizează formal proiectul) împreună cu sponsorul (directorul general) și clarifică scopul — ce module ERP se implementează (vânzări, stocuri, contabilitate) și ce rămâne în afara proiectului (de exemplu, integrarea cu magazinul online, planificată separat).\n- **Lunar:** organizează o ședință de status cu sponsorul și cu reprezentantul furnizorului de software, unde raportează progresul față de plan, bugetul consumat și riscurile identificate (de exemplu, întârzierea migrării datelor istorice din Excel).\n- **Săptămânal:** coordonează echipa internă (2 persoane din contabilitate, 1 din IT) și echipa furnizorului, rezolvă blocaje (acces la servere, testare module) și actualizează graficul de proiect.\n- **Continuu:** gestionează comunicarea cu utilizatorii finali (agenții de vânzări, gestionarii de depozit), care se tem că noul sistem le va îngreuna munca — aici Andrei aplică leadership, nu doar management: organizează sesiuni scurte de prezentare, ascultă obiecțiile și le transmite echipei de implementare.\n\nLa finalul celor 6 luni, proiectul se încheie cu o depășire de buget de doar 1.800 EUR (4% peste plan), acceptată de sponsor datorită unei cereri suplimentare de raportare, apărută pe parcurs. Succesul proiectului nu se datorează doar planificării corecte, ci și modului în care Andrei a gestionat activ oamenii afectați de schimbare.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b4"
+   },
+   {
+    "type": "example",
+    "title": "Matricea putere-interes: cum prioritizează PM-ul stakeholderii",
+    "concept_key": "matrice-putere-interes-stakeholderi",
+    "md": "Revenind la proiectul ERP de mai sus, Andrei își mapează stakeholderii într-o matrice putere-interes, un instrument standard recomandat de PMBOK pentru planificarea comunicării:\n\n- **Putere mare, interes mare** (a gestiona îndeaproape): directorul general (sponsor) și șeful departamentului financiar. Cu aceștia, Andrei comunică frecvent și în detaliu — rapoarte lunare, decizii-cheie discutate direct.\n- **Putere mare, interes scăzut** (a menține satisfăcut): directorul de vânzări, care nu e implicat zilnic, dar poate bloca proiectul dacă nu este de acord cu schimbarea fluxului de comenzi. Andrei îl informează punctual, la momentele-cheie, fără să-l încarce cu detalii tehnice.\n- **Putere mică, interes mare** (a ține informat): agenții de vânzări și gestionarii de depozit, utilizatorii finali ai sistemului. Nu pot opri proiectul, dar experiența lor de utilizare determină succesul adopției. Andrei le dedică sesiuni de instruire și un canal de feedback.\n- **Putere mică, interes scăzut** (monitorizare minimă): alte departamente neafectate direct (HR, marketing), informate doar prin newsletter-ul intern de proiect.\n\nClasificarea corectă a stakeholderilor evită două greșeli frecvente: să irosești timp comunicând excesiv cu cineva fără interes real, sau — mai grav — să ignori un grup cu interes mare doar pentru că nu are putere formală de decizie, riscând rezistență ascunsă la schimbare.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă capcană pentru un PM aflat la început de carieră este să reducă rolul la administrare de sarcini (liste, statusuri, termene), ignorând componenta de leadership și pe cea de stakeholder management. Un plan tehnic perfect eșuează dacă echipa este demotivată sau dacă un stakeholder-cheie, neconsultat la timp, blochează proiectul în ultima fază.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "O firmă de contabilitate în externalizare (outsourcing) din București decide să digitalizeze procesul de arhivare a documentelor fiscale, înlocuind dosarele fizice cu un sistem de gestiune electronică a documentelor (DMS). Proiectul implică: directorul general (sponsor), 5 contabili care vor folosi zilnic sistemul, IT-ul intern (1 persoană, responsabil de configurare), un furnizor extern de software DMS și departamentul de audit intern, care va verifica ulterior conformitatea arhivării.\n\n**Cerințe:**\n1. Plasează fiecare stakeholder în matricea putere-interes (putere mare/mică, interes mare/mic) și justifică pe scurt.\n2. Pentru activitatea „configurarea sistemului DMS”, construiește o alocare RACI (Responsible, Accountable, Consulted, Informed) pentru actorii implicați.",
+    "solution_md": "**1. Matricea putere-interes:**\n\n- **Director general** — putere mare, interes mic (nu folosește sistemul zilnic, dar aprobă bugetul și poate opri proiectul) → strategie: a menține satisfăcut.\n- **Cei 5 contabili** — putere mică, interes mare (utilizatori zilnici, afectați direct de schimbare) → strategie: a ține informați și instruiți.\n- **IT intern** — putere mare, interes mare (configurează și întreține sistemul, are cunoștințe tehnice critice) → strategie: a gestiona îndeaproape.\n- **Furnizor extern DMS** — putere mare, interes mare (livrează soluția; fără el proiectul nu poate avansa) → strategie: a gestiona îndeaproape.\n- **Audit intern** — putere mică, interes mic în faza de implementare (interesul crește abia după livrare, când verifică conformitatea) → strategie: monitorizare minimă, cu informare punctuală înainte de finalizare.\n\n**2. RACI pentru „configurarea sistemului DMS”:**\n\n- **Responsible** (execută efectiv): IT intern + furnizorul extern DMS.\n- **Accountable** (răspunde final de rezultat): Project Managerul (sau, dacă nu există PM dedicat, directorul general).\n- **Consulted** (consultat înainte de decizii): cei 5 contabili (pentru cerințe de utilizare) și auditul intern (pentru cerințe de conformitate).\n- **Informed** (informat despre progres, fără implicare directă): directorul general, prin rapoartele periodice de status.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform distincției lui Kotter, care dintre următoarele activități ține de leadership, nu de management?",
+    "choices": [
+     "Actualizarea graficului Gantt după o întârziere",
+     "Construirea unei viziuni clare și motivarea echipei să o urmeze",
+     "Alocarea bugetului pe fiecare activitate din WBS",
+     "Raportarea lunară a costurilor către sponsor"
+    ],
+    "answer": 1,
+    "explain": "Leadershipul stabilește direcția și mobilizează oamenii; managementul planifică, alocă și controlează resursele conform planului stabilit.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un stakeholder cu putere mare de decizie, dar interes scăzut în activitatea zilnică a proiectului, ar trebui tratat, conform matricei putere-interes, prin strategia:",
+    "choices": [
+     "A gestiona îndeaproape, cu rapoarte zilnice",
+     "A menține satisfăcut, cu informare punctuală la momentele-cheie",
+     "A ține informat, cu sesiuni de instruire frecvente",
+     "Monitorizare minimă, fără nicio comunicare"
+    ],
+    "answer": 1,
+    "explain": "Stakeholderii cu putere mare și interes scăzut se gestionează prin informare punctuală la deciziile-cheie, evitând implicarea excesivă în detalii operaționale.",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei zone ale PMI Talent Triangle?",
+    "back": "Ways of Working (managementul tehnic de proiect), Power Skills (leadership) și Business Acumen (perspectivă strategică).",
+    "concept_key": "pmi-talent-triangle",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența esențială între leadership și management, conform lui Kotter?",
+    "back": "Managementul urmărește stabilitate și control (facem lucrurile corect); leadershipul urmărește schimbare și mobilizarea oamenilor (facem lucrurile corecte).",
+    "concept_key": "leadership-vs-management",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un stakeholder, în contextul unui proiect?",
+    "back": "O persoană, un grup sau o organizație care poate afecta, este afectată sau se percepe afectată de deciziile, activitățile sau rezultatul unui proiect.",
+    "concept_key": "definitie-stakeholder",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce reprezintă matricea putere-interes?",
+    "back": "Un instrument care clasifică stakeholderii după nivelul de putere (influență asupra proiectului) și interes (implicare/afectare de proiect), pentru a stabili strategia de comunicare potrivită pentru fiecare.",
+    "concept_key": "matrice-putere-interes-stakeholderi",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul RACI?",
+    "back": "Responsible (execută), Accountable (răspunde final), Consulted (consultat înainte de decizie), Informed (informat despre progres) — un model de alocare a rolurilor pe activități.",
+    "concept_key": "matrice-raci",
+    "blockId": "cmjjuxvrz004qumkp5n83vzaf-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1378,
+   "flashcards": 5
+  }
+ }
+}

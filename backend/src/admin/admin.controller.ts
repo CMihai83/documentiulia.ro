@@ -20,13 +20,19 @@ import {
   ApiQuery,
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { RolesGuard } from '../auth/roles.guard';
+import { Roles } from '../auth/roles.decorator';
+import { UserRole } from '@prisma/client';
 import { SystemSettingsService, SettingCategory } from './system-settings.service';
 import { PlatformAnalyticsService } from './platform-analytics.service';
 import { UserImpersonationService, ImpersonationPermission } from './user-impersonation.service';
 
 @ApiTags('Admin')
+// REQ-049: was JwtAuthGuard only — any authenticated user could reach
+// impersonation, maintenance mode and system settings. ADMIN only.
 @Controller('admin')
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.ADMIN)
 @ApiBearerAuth()
 export class AdminController {
   constructor(

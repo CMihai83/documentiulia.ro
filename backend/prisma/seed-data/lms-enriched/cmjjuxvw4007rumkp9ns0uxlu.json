@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxvw4007rumkp9ns0uxlu",
+ "courseId": "cmjjuxvu30065umkpuexmczwb",
+ "course": "Agile & Scrum Mastery",
+ "module": "Scaling Agile și Pregătire Examen",
+ "lesson": "Scaling Frameworks",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Scaling Frameworks\n\n## De ce ai nevoie de scaling\n\nConform Scrum Guide 2020, un Scrum Team funcționează optim cu 10 sau mai puține persoane, suficient de mic pentru a rămâne agil și suficient de mare pentru a livra o creștere semnificativă în fiecare Sprint. Problema apare când produsul este prea complex pentru o singură echipă: o platformă ERP pentru un retailer național, o aplicație de banking digital sau un sistem de e-commerce cu module de plăți, logistică și CRM depășesc capacitatea a 10 oameni.\n\nAici intervin **framework-urile de scaling** — SAFe, LeSS și Nexus — care extind principiile Scrum la mai multe echipe ce lucrează concomitent la același produs. Scopul lor nu este să adauge birocrație, ci să rezolve trei probleme reale: dependențele dintre echipe, duplicarea muncii și integrarea frecventă a rezultatelor într-un singur produs livrabil.\n\nUn semnal clar că ai nevoie de scaling: dacă echipele tale petrec mai mult timp coordonând cine ce face decât construind produsul, sau dacă Sprint Review-urile separate nu mai arată un produs integrat, funcțional. Dacă o singură echipă poate încă acoperi tot Product Backlog-ul, scaling-ul este prematur — adaugă doar overhead fără beneficiu.\n\n## Principii comune ale framework-urilor de scaling\n\nDeși SAFe, LeSS și Nexus diferă mult ca structură, toate trei respectă câteva principii comune, derivate din valorile Agile Manifesto:\n\n- **Un singur Product Backlog, un singur Product Owner** pentru întregul produs, indiferent de câte echipe lucrează la el. Fiecare echipă poate avea reprezentanți sau Product Owner-i de arie, dar prioritizarea rămâne unificată.\n- **O singură Definiție de „Done” (Definition of Done)** valabilă pentru toate echipele, astfel încât incrementul rezultat la finalul Sprintului să fie cu adevărat integrat și potențial livrabil.\n- **Cadență comună** — toate echipele lucrează cu Sprinturi de aceeași durată și le încheie în aceeași zi, ceea ce permite un eveniment de integrare comun.\n- **Transparență prin evenimente de coordonare** — tip Scrum of Scrums, Nexus Daily Scrum sau sincronizări între Product Owneri — care expun dependențele înainte să devină blocaje.\n- **Descaling înainte de scaling** — principiu explicit în LeSS, dar implicit în toate: rezolvă mai întâi problemele organizaționale (structuri, silozuri, dependențe artificiale) și abia apoi adaugă proces suplimentar. Un framework de scaling nu repară o organizație disfuncțională, doar îi face vizibilă disfuncția mai rapid.\n\n## SAFe (Scaled Agile Framework)\n\nSAFe este cel mai structurat și mai folosit framework de scaling la nivel enterprise, potrivit pentru organizații cu zeci sau sute de echipe. Este organizat pe patru niveluri:\n\n1. **Team** — echipe Scrum sau Kanban clasice.\n2. **Program (Agile Release Train – ART)** — 5-12 echipe (aprox. 50-125 persoane) care livrează împreună, aliniate printr-un eveniment numit **PI Planning** (Program Increment Planning), organizat de obicei la fiecare 8-12 săptămâni (echivalentul a 4-6 Sprinturi de două săptămâni).\n3. **Large Solution** — coordonează mai multe ART-uri pentru soluții foarte mari (ex. un sistem bancar complet).\n4. **Portfolio** — aliniază investițiile și strategia organizației cu fluxurile de valoare (Value Streams).\n\nRoluri specifice SAFe: **Release Train Engineer (RTE)** — un fel de Scrum Master la nivel de ART, care facilitează PI Planning și rezolvă impedimente între echipe; **Product Management** — deține viziunea și roadmap-ul la nivel de Program; **System Architect** — asigură coerența tehnică între echipe.\n\nSAFe este ales de obicei de companii mari, cu structuri deja ierarhice, care au nevoie de aliniere top-down între strategie, buget și execuție. Dezavantajul principal: complexitate mare și risc de a deveni birocratic dacă e implementat rigid, „după carte”, fără adaptare la context.\n\n## LeSS (Large-Scale Scrum)\n\nLeSS pornește de la o filosofie opusă complexității: „mai mult prin mai puțin” (more with less). În loc să adauge roluri și procese noi, LeSS elimină structurile organizaționale care generează nevoia de coordonare suplimentară.\n\nExistă două variante:\n\n- **LeSS** — pentru până la 8 echipe (aprox. 50 de persoane), toate lucrând la același Product Backlog, cu un singur Product Owner.\n- **LeSS Huge** — pentru produse și mai mari, unde Product Backlog-ul se împarte pe **arii de cerințe (requirement areas)**, fiecare cu un **Area Product Owner**, dar viziunea și prioritizarea generală rămân unificate.\n\nStructura evenimentelor: **Sprint Planning 1** este comun, tuturor echipelor, pentru a alege ce elemente din Backlog abordează fiecare echipă; **Sprint Planning 2** se desfășoară pe echipe, pentru planificarea detaliată. **Sprint Review** este un singur eveniment comun, la care participă toate echipele și stakeholderii, pentru a vedea produsul integrat. Retrospectivele se fac pe echipă, plus o **Overall Retrospective** cu reprezentanți din fiecare echipă.\n\nLeSS este potrivit pentru organizații care vor să păstreze simplitatea Scrum-ului cât mai mult posibil, dar are nevoie de o cultură organizațională matură — funcționează prost dacă structurile de management rămân ierarhice și rezistente la eliminarea rolurilor intermediare.\n\n## Nexus\n\nNexus este framework-ul de scaling dezvoltat oficial de Scrum.org (Ken Schwaber), gândit explicit ca o **extensie minimă a Scrum-ului**, nu ca un sistem paralel. Se aplică pentru **3 până la 9 echipe Scrum** (aprox. 25-50 de persoane) care lucrează la un singur produs.\n\nElementul central este **Nexus Integration Team (NIT)** — format din Product Owner, un Scrum Master și membri cu abilități tehnice de integrare — responsabil să se asigure că incrementul combinat al tuturor echipelor este integrat, testat și potențial livrabil la finalul fiecărui Sprint.\n\nEvenimentele Scrum standard sunt extinse cu variante „Nexus”: **Nexus Sprint Planning** (reprezentanți din fiecare echipă coordonează dependențele înainte ca fiecare echipă să-și facă propriul Sprint Planning), **Nexus Daily Scrum** (identifică dependențe și blocaje inter-echipe, nu este un raport de status), **Nexus Sprint Review** și **Nexus Sprint Retrospective** (comune, urmate de retrospective pe echipă pentru detalii).\n\nNexus rămâne cel mai apropiat de Scrum-ul „pur” dintre cele trei framework-uri, cu cea mai mică suprastructură — de aceea este adesea alegerea potrivită pentru organizații de mărime medie care vor scaling fără complexitatea unui sistem enterprise ca SAFe.\n\n## Exemplu: Alegerea unui framework de scaling la un retailer românesc\nO companie de retail cu 250 de angajați decide să-și digitalizeze complet operațiunile: un nou ERP integrat cu magazinul online, gestiunea stocurilor și un modul de fidelizare a clienților. Proiectul implică 5 echipe Scrum (aprox. 40 de persoane): Echipa Catalog, Echipa Comenzi, Echipa Plăți, Echipa Stocuri și Echipa Fidelizare.\n\n**Analiza opțiunilor:**\n\n- **SAFe** ar fi prea greu — organizația nu are structura de portofoliu și buget pe Value Streams pe care SAFe o presupune, iar rolul de Release Train Engineer ar adăuga un nivel de management inexistent până acum.\n- **LeSS** este posibil, dar presupune un singur Product Owner pentru toate cele 5 echipe, ceea ce în acest caz e nerealist — modulele Plăți și Fidelizare au stakeholderi și priorități diferite (conformitate financiară versus marketing).\n- **Nexus** se potrivește cel mai bine: 5 echipe este exact în intervalul recomandat (3-9), iar un Nexus Integration Team format din Product Owner-ul principal, Scrum Master-ul senior și 2 arhitecți tehnici poate coordona integrarea zilnică fără să schimbe structura organizației.\n\nCompania alege Nexus, cu Sprinturi de 2 săptămâni și Nexus Sprint Review comun la finalul fiecărui Sprint, la care participă directorul de operațiuni și managerul de e-commerce.\n\n## Exemplu: PI Planning în SAFe — simulare numerică\nO bancă cu un Agile Release Train de 6 echipe (48 de persoane) organizează un **PI Planning** pentru următorul Program Increment.\n\n**Parametri:**\n- Durata unui Sprint: 2 săptămâni\n- Un Program Increment (PI) = 5 Sprinturi (10 săptămâni), din care ultimul este parțial rezervat pentru **Innovation & Planning (IP) Sprint** — timp dedicat inovației, învățării și pregătirii următorului PI.\n- PI Planning durează 2 zile și are loc înaintea fiecărui PI, deci de aproximativ 5 ori pe an (52 săptămâni / 10 săptămâni ≈ 5,2 PI-uri anual).\n\nÎn cadrul evenimentului, fiecare dintre cele 6 echipe estimează capacitatea disponibilă (de exemplu, 8 persoane × 5 Sprinturi × 2 zile productive medii/persoană/Sprint, minus concedii și training) și își planifică obiectivele de Sprint (**PI Objectives**) în raport cu Features-urile prioritizate de Product Management. La final, echipele votează încrederea în plan (**Confidence Vote**, scală 1-5); un scor mediu sub 3 declanșează re-planificare pe loc, înainte de încheierea evenimentului.\n\nAcest ritm cadențat — PI Planning la fiecare 10 săptămâni — este mecanismul prin care SAFe sincronizează 6 echipe fără să impună un Product Backlog unic gestionat de o singură persoană, așa cum cere LeSS.\n\n⚠ Cea mai frecventă greșeală în scaling nu este alegerea framework-ului greșit, ci **scalarea prematură**: introducerea SAFe, LeSS sau Nexus atunci când o singură echipă bine organizată ar fi suficientă. Un al doilea antipattern este implementarea „de manual”, fără adaptare — de exemplu, aplicarea rigidă a tuturor rolurilor și ceremoniilor SAFe într-o companie de 40 de oameni, unde Nexus sau chiar un simplu Scrum of Scrums ar fi suficiente. Framework-ul trebuie ales în funcție de numărul de echipe, maturitatea organizației și cultura existentă — nu invers.\n\n## Exercițiu\nO companie RO de dezvoltare software construiește o platformă de digital banking și are 7 echipe Scrum (aprox. 55 de persoane), toate lucrând la același produs, cu integrare zilnică necesară între module (autentificare, plăți, conturi, notificări). Organizația este relativ plată, fără structură de portofoliu sau management pe niveluri multiple, dar vrea o cadență comună de Sprint și un mecanism clar de integrare a incrementului.\n\nCe framework de scaling recomanzi — SAFe, LeSS sau Nexus — și de ce? Justifică ținând cont de numărul de echipe, structura organizației și nevoia de integrare.\n\n**Soluție:** **Recomandare: Nexus.**\n\nJustificare:\n- Numărul de echipe (7) se încadrează exact în intervalul recomandat de Nexus (3-9 echipe), fiind chiar la limita superioară recomandată pentru un singur Nexus Integration Team (NIT) — dacă ar crește peste 9, ar trebui luat în calcul un Nexus+ sau trecerea la un framework de tip enterprise.\n- Organizația este plată, fără structură de portofoliu sau niveluri multiple de management — exact contextul pentru care SAFe ar fi supradimensionat (SAFe presupune niveluri Program, Large Solution și Portfolio, inutile aici).\n- LeSS ar fi posibil ca alternativă, dar cere un singur Product Owner pentru toate cele 7 echipe și o cultură organizațională orientată spre eliminarea rolurilor intermediare; dacă firma nu e pregătită pentru acest nivel de descaling organizațional, Nexus oferă un pas mai puțin disruptiv, cu NIT ca mecanism dedicat de integrare zilnică.\n- Nevoia explicită de integrare zilnică între module (autentificare, plăți, conturi) este exact problema pe care Nexus Integration Team și Nexus Daily Scrum o rezolvă direct, prin coordonare zilnică a dependențelor tehnice.\n\nConcluzie: Nexus oferă cel mai bun echilibru între simplitate, potrivire cu numărul de echipe și mecanism clar de integrare, fără a impune o restructurare organizațională majoră.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "context-scaling-agile",
+    "md": "## De ce ai nevoie de scaling\n\nConform Scrum Guide 2020, un Scrum Team funcționează optim cu 10 sau mai puține persoane, suficient de mic pentru a rămâne agil și suficient de mare pentru a livra o creștere semnificativă în fiecare Sprint. Problema apare când produsul este prea complex pentru o singură echipă: o platformă ERP pentru un retailer național, o aplicație de banking digital sau un sistem de e-commerce cu module de plăți, logistică și CRM depășesc capacitatea a 10 oameni.\n\nAici intervin **framework-urile de scaling** — SAFe, LeSS și Nexus — care extind principiile Scrum la mai multe echipe ce lucrează concomitent la același produs. Scopul lor nu este să adauge birocrație, ci să rezolve trei probleme reale: dependențele dintre echipe, duplicarea muncii și integrarea frecventă a rezultatelor într-un singur produs livrabil.\n\nUn semnal clar că ai nevoie de scaling: dacă echipele tale petrec mai mult timp coordonând cine ce face decât construind produsul, sau dacă Sprint Review-urile separate nu mai arată un produs integrat, funcțional. Dacă o singură echipă poate încă acoperi tot Product Backlog-ul, scaling-ul este prematur — adaugă doar overhead fără beneficiu.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "principii-comune-scaling",
+    "md": "## Principii comune ale framework-urilor de scaling\n\nDeși SAFe, LeSS și Nexus diferă mult ca structură, toate trei respectă câteva principii comune, derivate din valorile Agile Manifesto:\n\n- **Un singur Product Backlog, un singur Product Owner** pentru întregul produs, indiferent de câte echipe lucrează la el. Fiecare echipă poate avea reprezentanți sau Product Owner-i de arie, dar prioritizarea rămâne unificată.\n- **O singură Definiție de „Done” (Definition of Done)** valabilă pentru toate echipele, astfel încât incrementul rezultat la finalul Sprintului să fie cu adevărat integrat și potențial livrabil.\n- **Cadență comună** — toate echipele lucrează cu Sprinturi de aceeași durată și le încheie în aceeași zi, ceea ce permite un eveniment de integrare comun.\n- **Transparență prin evenimente de coordonare** — tip Scrum of Scrums, Nexus Daily Scrum sau sincronizări între Product Owneri — care expun dependențele înainte să devină blocaje.\n- **Descaling înainte de scaling** — principiu explicit în LeSS, dar implicit în toate: rezolvă mai întâi problemele organizaționale (structuri, silozuri, dependențe artificiale) și abia apoi adaugă proces suplimentar. Un framework de scaling nu repară o organizație disfuncțională, doar îi face vizibilă disfuncția mai rapid.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "safe-framework",
+    "md": "## SAFe (Scaled Agile Framework)\n\nSAFe este cel mai structurat și mai folosit framework de scaling la nivel enterprise, potrivit pentru organizații cu zeci sau sute de echipe. Este organizat pe patru niveluri:\n\n1. **Team** — echipe Scrum sau Kanban clasice.\n2. **Program (Agile Release Train – ART)** — 5-12 echipe (aprox. 50-125 persoane) care livrează împreună, aliniate printr-un eveniment numit **PI Planning** (Program Increment Planning), organizat de obicei la fiecare 8-12 săptămâni (echivalentul a 4-6 Sprinturi de două săptămâni).\n3. **Large Solution** — coordonează mai multe ART-uri pentru soluții foarte mari (ex. un sistem bancar complet).\n4. **Portfolio** — aliniază investițiile și strategia organizației cu fluxurile de valoare (Value Streams).\n\nRoluri specifice SAFe: **Release Train Engineer (RTE)** — un fel de Scrum Master la nivel de ART, care facilitează PI Planning și rezolvă impedimente între echipe; **Product Management** — deține viziunea și roadmap-ul la nivel de Program; **System Architect** — asigură coerența tehnică între echipe.\n\nSAFe este ales de obicei de companii mari, cu structuri deja ierarhice, care au nevoie de aliniere top-down între strategie, buget și execuție. Dezavantajul principal: complexitate mare și risc de a deveni birocratic dacă e implementat rigid, „după carte”, fără adaptare la context.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "less-framework",
+    "md": "## LeSS (Large-Scale Scrum)\n\nLeSS pornește de la o filosofie opusă complexității: „mai mult prin mai puțin” (more with less). În loc să adauge roluri și procese noi, LeSS elimină structurile organizaționale care generează nevoia de coordonare suplimentară.\n\nExistă două variante:\n\n- **LeSS** — pentru până la 8 echipe (aprox. 50 de persoane), toate lucrând la același Product Backlog, cu un singur Product Owner.\n- **LeSS Huge** — pentru produse și mai mari, unde Product Backlog-ul se împarte pe **arii de cerințe (requirement areas)**, fiecare cu un **Area Product Owner**, dar viziunea și prioritizarea generală rămân unificate.\n\nStructura evenimentelor: **Sprint Planning 1** este comun, tuturor echipelor, pentru a alege ce elemente din Backlog abordează fiecare echipă; **Sprint Planning 2** se desfășoară pe echipe, pentru planificarea detaliată. **Sprint Review** este un singur eveniment comun, la care participă toate echipele și stakeholderii, pentru a vedea produsul integrat. Retrospectivele se fac pe echipă, plus o **Overall Retrospective** cu reprezentanți din fiecare echipă.\n\nLeSS este potrivit pentru organizații care vor să păstreze simplitatea Scrum-ului cât mai mult posibil, dar are nevoie de o cultură organizațională matură — funcționează prost dacă structurile de management rămân ierarhice și rezistente la eliminarea rolurilor intermediare.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "nexus-framework",
+    "md": "## Nexus\n\nNexus este framework-ul de scaling dezvoltat oficial de Scrum.org (Ken Schwaber), gândit explicit ca o **extensie minimă a Scrum-ului**, nu ca un sistem paralel. Se aplică pentru **3 până la 9 echipe Scrum** (aprox. 25-50 de persoane) care lucrează la un singur produs.\n\nElementul central este **Nexus Integration Team (NIT)** — format din Product Owner, un Scrum Master și membri cu abilități tehnice de integrare — responsabil să se asigure că incrementul combinat al tuturor echipelor este integrat, testat și potențial livrabil la finalul fiecărui Sprint.\n\nEvenimentele Scrum standard sunt extinse cu variante „Nexus”: **Nexus Sprint Planning** (reprezentanți din fiecare echipă coordonează dependențele înainte ca fiecare echipă să-și facă propriul Sprint Planning), **Nexus Daily Scrum** (identifică dependențe și blocaje inter-echipe, nu este un raport de status), **Nexus Sprint Review** și **Nexus Sprint Retrospective** (comune, urmate de retrospective pe echipă pentru detalii).\n\nNexus rămâne cel mai apropiat de Scrum-ul „pur” dintre cele trei framework-uri, cu cea mai mică suprastructură — de aceea este adesea alegerea potrivită pentru organizații de mărime medie care vor scaling fără complexitatea unui sistem enterprise ca SAFe.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b5"
+   },
+   {
+    "type": "example",
+    "title": "Alegerea unui framework de scaling la un retailer românesc",
+    "concept_key": "context-scaling-agile",
+    "md": "O companie de retail cu 250 de angajați decide să-și digitalizeze complet operațiunile: un nou ERP integrat cu magazinul online, gestiunea stocurilor și un modul de fidelizare a clienților. Proiectul implică 5 echipe Scrum (aprox. 40 de persoane): Echipa Catalog, Echipa Comenzi, Echipa Plăți, Echipa Stocuri și Echipa Fidelizare.\n\n**Analiza opțiunilor:**\n\n- **SAFe** ar fi prea greu — organizația nu are structura de portofoliu și buget pe Value Streams pe care SAFe o presupune, iar rolul de Release Train Engineer ar adăuga un nivel de management inexistent până acum.\n- **LeSS** este posibil, dar presupune un singur Product Owner pentru toate cele 5 echipe, ceea ce în acest caz e nerealist — modulele Plăți și Fidelizare au stakeholderi și priorități diferite (conformitate financiară versus marketing).\n- **Nexus** se potrivește cel mai bine: 5 echipe este exact în intervalul recomandat (3-9), iar un Nexus Integration Team format din Product Owner-ul principal, Scrum Master-ul senior și 2 arhitecți tehnici poate coordona integrarea zilnică fără să schimbe structura organizației.\n\nCompania alege Nexus, cu Sprinturi de 2 săptămâni și Nexus Sprint Review comun la finalul fiecărui Sprint, la care participă directorul de operațiuni și managerul de e-commerce.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b6"
+   },
+   {
+    "type": "example",
+    "title": "PI Planning în SAFe — simulare numerică",
+    "concept_key": "safe-framework",
+    "md": "O bancă cu un Agile Release Train de 6 echipe (48 de persoane) organizează un **PI Planning** pentru următorul Program Increment.\n\n**Parametri:**\n- Durata unui Sprint: 2 săptămâni\n- Un Program Increment (PI) = 5 Sprinturi (10 săptămâni), din care ultimul este parțial rezervat pentru **Innovation & Planning (IP) Sprint** — timp dedicat inovației, învățării și pregătirii următorului PI.\n- PI Planning durează 2 zile și are loc înaintea fiecărui PI, deci de aproximativ 5 ori pe an (52 săptămâni / 10 săptămâni ≈ 5,2 PI-uri anual).\n\nÎn cadrul evenimentului, fiecare dintre cele 6 echipe estimează capacitatea disponibilă (de exemplu, 8 persoane × 5 Sprinturi × 2 zile productive medii/persoană/Sprint, minus concedii și training) și își planifică obiectivele de Sprint (**PI Objectives**) în raport cu Features-urile prioritizate de Product Management. La final, echipele votează încrederea în plan (**Confidence Vote**, scală 1-5); un scor mediu sub 3 declanșează re-planificare pe loc, înainte de încheierea evenimentului.\n\nAcest ritm cadențat — PI Planning la fiecare 10 săptămâni — este mecanismul prin care SAFe sincronizează 6 echipe fără să impună un Product Backlog unic gestionat de o singură persoană, așa cum cere LeSS.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală în scaling nu este alegerea framework-ului greșit, ci **scalarea prematură**: introducerea SAFe, LeSS sau Nexus atunci când o singură echipă bine organizată ar fi suficientă. Un al doilea antipattern este implementarea „de manual”, fără adaptare — de exemplu, aplicarea rigidă a tuturor rolurilor și ceremoniilor SAFe într-o companie de 40 de oameni, unde Nexus sau chiar un simplu Scrum of Scrums ar fi suficiente. Framework-ul trebuie ales în funcție de numărul de echipe, maturitatea organizației și cultura existentă — nu invers.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "O companie RO de dezvoltare software construiește o platformă de digital banking și are 7 echipe Scrum (aprox. 55 de persoane), toate lucrând la același produs, cu integrare zilnică necesară între module (autentificare, plăți, conturi, notificări). Organizația este relativ plată, fără structură de portofoliu sau management pe niveluri multiple, dar vrea o cadență comună de Sprint și un mecanism clar de integrare a incrementului.\n\nCe framework de scaling recomanzi — SAFe, LeSS sau Nexus — și de ce? Justifică ținând cont de numărul de echipe, structura organizației și nevoia de integrare.",
+    "solution_md": "**Recomandare: Nexus.**\n\nJustificare:\n- Numărul de echipe (7) se încadrează exact în intervalul recomandat de Nexus (3-9 echipe), fiind chiar la limita superioară recomandată pentru un singur Nexus Integration Team (NIT) — dacă ar crește peste 9, ar trebui luat în calcul un Nexus+ sau trecerea la un framework de tip enterprise.\n- Organizația este plată, fără structură de portofoliu sau niveluri multiple de management — exact contextul pentru care SAFe ar fi supradimensionat (SAFe presupune niveluri Program, Large Solution și Portfolio, inutile aici).\n- LeSS ar fi posibil ca alternativă, dar cere un singur Product Owner pentru toate cele 7 echipe și o cultură organizațională orientată spre eliminarea rolurilor intermediare; dacă firma nu e pregătită pentru acest nivel de descaling organizațional, Nexus oferă un pas mai puțin disruptiv, cu NIT ca mecanism dedicat de integrare zilnică.\n- Nevoia explicită de integrare zilnică între module (autentificare, plăți, conturi) este exact problema pe care Nexus Integration Team și Nexus Daily Scrum o rezolvă direct, prin coordonare zilnică a dependențelor tehnice.\n\nConcluzie: Nexus oferă cel mai bun echilibru între simplitate, potrivire cu numărul de echipe și mecanism clar de integrare, fără a impune o restructurare organizațională majoră.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Câte echipe Scrum poate integra, conform Nexus Guide, un singur Nexus?",
+    "choices": [
+     "Până la 3 echipe",
+     "Până la 9 echipe",
+     "Până la 15 echipe",
+     "Un număr nelimitat de echipe"
+    ],
+    "answer": 1,
+    "explain": "Nexus este gândit pentru 3-9 echipe Scrum (aprox. 25-50 de persoane), coordonate printr-un Nexus Integration Team. Peste acest prag, sunt necesare alte structuri de scaling.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principiul central al framework-ului LeSS?",
+    "choices": [
+     "Adăugarea de roluri manageriale suplimentare pentru fiecare 2 echipe",
+     "„Mai mult prin mai puțin” — descaling organizațional înainte de a adăuga proces",
+     "Un Product Backlog separat pentru fiecare echipă, sincronizat săptămânal",
+     "Înlocuirea Sprintului cu cicluri de livrare continuă, fără cadență fixă"
+    ],
+    "answer": 1,
+    "explain": "LeSS pornește de la principiul „more with less”: elimină structurile organizaționale care generează nevoia de coordonare suplimentară, în loc să adauge roluri și procese noi, păstrând un singur Product Backlog și un singur Product Owner.",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este PI Planning în SAFe și cât durează un Program Increment (PI)?",
+    "back": "PI Planning este evenimentul de aliniere de 2 zile al unui Agile Release Train (ART). Un PI durează de obicei 8-12 săptămâni, echivalentul a 4-6 Sprinturi, ultimul incluzând un Innovation & Planning (IP) Sprint.",
+    "concept_key": "safe-framework",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte echipe Scrum poate coordona un Nexus, conform Nexus Guide?",
+    "back": "Între 3 și 9 echipe Scrum (aprox. 25-50 de persoane), coordonate printr-un Nexus Integration Team (NIT).",
+    "concept_key": "nexus-framework",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele 4 niveluri ale SAFe?",
+    "back": "Team, Program (Agile Release Train), Large Solution și Portfolio.",
+    "concept_key": "safe-framework",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este LeSS Huge și când se folosește?",
+    "back": "Varianta LeSS pentru produse foarte mari, unde Product Backlog-ul se împarte pe arii de cerințe (requirement areas), fiecare cu un Area Product Owner, dar viziunea generală rămâne unificată.",
+    "concept_key": "less-framework",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce principiu comun au SAFe, LeSS și Nexus privind Product Backlog-ul?",
+    "back": "Un singur Product Backlog și, în principiu, un singur Product Owner pentru întregul produs, indiferent de câte echipe lucrează la el.",
+    "concept_key": "principii-comune-scaling",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Nexus Integration Team (NIT)?",
+    "back": "Echipa responsabilă, în Nexus, să se asigure că incrementul combinat al tuturor echipelor este integrat, testat și potențial livrabil la finalul fiecărui Sprint; include Product Owner, un Scrum Master și membri cu competențe tehnice de integrare.",
+    "concept_key": "nexus-framework",
+    "blockId": "cmjjuxvw4007rumkp9ns0uxlu-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1687,
+   "flashcards": 6
+  }
+ }
+}

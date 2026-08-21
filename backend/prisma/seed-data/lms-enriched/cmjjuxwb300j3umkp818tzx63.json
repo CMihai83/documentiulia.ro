@@ -1,0 +1,145 @@
+{
+ "lessonId": "cmjjuxwb300j3umkp818tzx63",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "Declarații Fiscale HR",
+ "lesson": "Quiz declarații",
+ "category": "HR_COMPLIANCE",
+ "content": "Test de evaluare — Quiz declarații (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "De la 1 iulie 2026, salariul minim brut pe economie (conform HG 146/2026) este:",
+     "choices": [
+      "4.050 lei",
+      "4.325 lei",
+      "4.582 lei",
+      "4.500 lei"
+     ],
+     "answer": 1,
+     "explain": "HG 146/2026 majorează salariul minim brut de la 4.050 lei (valabil 1 ian–30 iun 2026) la 4.325 lei începând cu 1 iulie 2026. Valoarea de 4.582 lei este salariul minim distinct pentru sectorul construcții, neschimbat pe tot parcursul anului 2026.",
+     "concept_key": "salariu_minim_brut"
+    },
+    {
+     "q": "Ce cotă de contribuție de asigurări sociale (CAS) se reține din salariul brut al angajatului?",
+     "choices": [
+      "10%",
+      "25%",
+      "2,25%",
+      "35%"
+     ],
+     "answer": 1,
+     "explain": "Din salariul brut al salariatului se rețin CAS 25% și CASS 10%, plus impozitul pe venit de 10% aplicat după deducerile legale. Aceste cote nu s-au modificat în 2026.",
+     "concept_key": "contributii_salariat"
+    },
+    {
+     "q": "Contribuția asiguratorie pentru muncă (CAM), datorată de angajator, are cota de:",
+     "choices": [
+      "25%",
+      "10%",
+      "2,25%",
+      "15%"
+     ],
+     "answer": 2,
+     "explain": "CAM este o contribuție suportată exclusiv de angajator, în cotă de 2,25% din fondul de salarii, distinctă de CAS și CASS reținute salariatului. Presiunea fiscală totală asupra unui salariu ajunge astfel la aproximativ 43% din brut.",
+     "concept_key": "cam_angajator"
+    },
+    {
+     "q": "Conform art. 16 alin. (2) din Codul Muncii, un contract individual de muncă (CIM) nou trebuie transmis în REVISAL:",
+     "choices": [
+      "în termen de 20 de zile lucrătoare de la angajare",
+      "cel târziu în ziua anterioară începerii activității de către salariat",
+      "în ziua începerii activității, până la ora 18:00",
+      "în termen de 5 zile calendaristice de la angajare"
+     ],
+     "answer": 1,
+     "explain": "Elementele contractului individual de muncă trebuie înregistrate în Registrul general de evidență a salariaților (REVISAL) cel târziu în ziua anterioară începerii activității de către salariatul în cauză, conform art. 16 alin. (2) din Legea 53/2003.",
+     "concept_key": "revisal_inregistrare_cim"
+    },
+    {
+     "q": "Pentru care dintre următoarele forme de organizare a muncii, Codul Muncii impune clauze obligatorii specifice suplimentare, distincte de contractul standard, în CIM?",
+     "choices": [
+      "Contract cu normă întreagă, la sediul standard al angajatorului",
+      "Telemuncă",
+      "Contract pe perioadă nedeterminată, fără particularități",
+      "Contract standard aflat în perioada de probă"
+     ],
+     "answer": 1,
+     "explain": "Telemunca, munca la domiciliu și contractele part-time necesită clauze obligatorii specifice suplimentare față de contractul standard cu normă întreagă, referitoare la program, echipamente, condiții de desfășurare a activității etc.",
+     "concept_key": "clauze_telemunca"
+    },
+    {
+     "q": "Conform art. 31 din Codul Muncii, durata maximă a perioadei de probă pentru o funcție de conducere este:",
+     "choices": [
+      "90 de zile calendaristice",
+      "120 de zile calendaristice",
+      "60 de zile calendaristice",
+      "180 de zile calendaristice"
+     ],
+     "answer": 1,
+     "explain": "Art. 31 din Legea 53/2003 stabilește o perioadă de probă de maximum 90 de zile calendaristice pentru funcțiile de execuție și de maximum 120 de zile calendaristice pentru funcțiile de conducere.",
+     "concept_key": "perioada_proba"
+    },
+    {
+     "q": "Dacă nu se poate compensa prin ore libere plătite, în ce termen trebuie acordată compensarea orelor suplimentare, conform art. 122 din Codul Muncii, înainte de a se aplica sporul de minimum 75%?",
+     "choices": [
+      "30 de zile calendaristice",
+      "60 de zile calendaristice",
+      "90 de zile calendaristice",
+      "120 de zile calendaristice"
+     ],
+     "answer": 2,
+     "explain": "Munca suplimentară se compensează prin ore libere plătite în următoarele 90 de zile calendaristice după efectuarea acesteia (art. 122); dacă acest lucru nu este posibil, se aplică un spor la salariu de cel puțin 75% din salariul de bază (art. 123).",
+     "concept_key": "ore_suplimentare"
+    },
+    {
+     "q": "Conform art. 145 din Codul Muncii, durata minimă legală a concediului de odihnă anual este:",
+     "choices": [
+      "15 zile lucrătoare",
+      "18 zile lucrătoare",
+      "20 de zile lucrătoare",
+      "21 de zile lucrătoare"
+     ],
+     "answer": 2,
+     "explain": "Art. 145 alin. (1) din Legea 53/2003 prevede o durată minimă a concediului de odihnă anual de 20 de zile lucrătoare, distinctă de concediul medical (suportat din FNUASS) și de concediul pentru creșterea copilului.",
+     "concept_key": "concediu_odihna"
+    },
+    {
+     "q": "În fluxul lunar de salarizare (pontaj → stat de plată → D112 → plata contribuțiilor), Declarația 112 trebuie depusă lunar până la:",
+     "choices": [
+      "data de 15 a lunii curente",
+      "data de 20 a lunii următoare",
+      "data de 25 a lunii următoare",
+      "ultima zi a lunii curente"
+     ],
+     "answer": 2,
+     "explain": "D112, care centralizează obligațiile de plată a contribuțiilor sociale, a impozitului pe venit și evidența nominală a asiguraților, se depune lunar până pe data de 25 a lunii următoare celei pentru care se datorează, urmată de plata efectivă a contribuțiilor.",
+     "concept_key": "declaratia_112"
+    },
+    {
+     "q": "Un angajator dorește să elimine din arhivă statele de plată emise în urmă cu 40 de ani. Este acest lucru permis?",
+     "choices": [
+      "Nu, statele de plată trebuie păstrate/arhivate timp de 50 de ani",
+      "Da, termenul legal de păstrare este de 30 de ani",
+      "Da, termenul legal de păstrare este de 10 ani, ca la documentele financiar-contabile",
+      "Nu, statele de plată se păstrează permanent, fără niciun termen"
+     ],
+     "answer": 0,
+     "explain": "Statele de plată fac obiectul unei obligații de arhivare pe o perioadă de 50 de ani. La 40 de ani de la emitere, obligația de păstrare este încă activă, deci distrugerea lor ar fi neconformă; pentru situații specifice de arhivare/distrugere se recomandă consultarea unui specialist în arhivistică.",
+     "concept_key": "arhivare_state_plata"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

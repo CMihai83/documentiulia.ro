@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjvav2m000o10ia5im29rst",
+ "courseId": "cmjjvav1j000010iaawzrrca4",
+ "course": "Conformitate Fiscala Romania - e-Factura, SAF-T si ANAF Complet",
+ "module": "SAF-T D406 - Raportarea Fiscala Standardizata",
+ "lesson": "Exercitiu final si certificare",
+ "category": "FINANCE_OPS",
+ "content": "# Exercitiu final si certificare\n\n## Recapitulare: lanțul complet de conformitate fiscală\n\nAi parcurs modulele despre e-Factura, TVA și SAF-T D406. Această lecție este exercițiul final: pui cap la cap tot ce ai învățat într-un singur scenariu, exact cum s-ar întâmpla într-o firmă reală supusă unui control ANAF.\n\nUn dosar de conformitate fiscală solid înseamnă trei lucruri care se verifică reciproc:\n\n1. **e-Factura** transmisă corect și la timp în sistemul SPV (Spațiul Privat Virtual), în format RO_CIUS UBL 2.1.\n2. **SAF-T D406** generat lunar sau trimestrial, cu datele contabile mapate corect pe codurile standard și reconciliate cu facturile emise/primite.\n3. **TVA** calculată cu cotele corecte pentru perioada respectivă — de la 1 august 2025 (Legea 141/2025), cota standard este **21%**, iar cota redusă unică este **11%** (cotele istorice de 5% și 9% au fost eliminate, cu excepția unui regim tranzitoriu pentru anumite locuințe noi, valabil până la 31 iulie 2026).\n\nÎntr-un control fiscal, inspectorul ANAF va compara exact aceste trei surse: dacă factura din SPV nu se regăsește în SAF-T, sau dacă cota de TVA declarată nu corespunde cu cea din factură, discrepanța devine obiect de sancțiune. Exercițiul de mai jos simulează acest tip de verificare încrucișată.\n\n## Cum construiești corect o e-Factură completă\n\nÎnainte să emiți o factură electronică, parcurge mental acest checklist:\n\n- **Identifică cota de TVA pe fiecare linie.** Nu presupune că toată factura are aceeași cotă — o factură poate conține simultan produse la 21% (ex. servicii de consultanță) și produse la 11% (ex. alimente de bază, cărți, cazare hotelieră). Fiecare linie de factură trebuie să poarte codul de cotă corect.\n- **Completează toate câmpurile obligatorii RO_CIUS**: CUI/CIF emitent și beneficiar, serie și număr factură, data emiterii, data scadenței, codurile de monedă, defalcarea bazei și a TVA pe fiecare cotă folosită, totalul de plată.\n- **Validează fișierul XML** înainte de încărcare (structură UBL 2.1 conformă, altfel SPV respinge factura la validare).\n- **Respectă termenul de transmitere**: până la 31 decembrie 2025 termenul a fost de 5 zile calendaristice de la emitere; de la 1 ianuarie 2026 (OUG 89/2025), termenul de transmitere în SPV este de **5 zile lucrătoare** de la data emiterii facturii. Diferența dintre zile calendaristice și zile lucrătoare contează efectiv — o factură emisă vineri are termen limită diferit față de una emisă luni.\n- **Reține**: factura descărcată din SPV, cu antetul de validare ANAF, este exemplarul original din punct de vedere fiscal — nu factura emisă inițial din softul de facturare.\n\nB2B este obligatoriu din 1 iulie 2024, B2G din 2024, iar B2C (către persoane fizice) din 1 ianuarie 2025, cu excepția facturilor simplificate (bonuri fiscale cu valoare mică, de exemplu), care rămân exceptate.\n\n## Generarea și validarea fișierului SAF-T D406\n\nObligația de raportare SAF-T (OMF 1783/2021) s-a extins gradual: contribuabilii mari raportează din 2022, cei mijlocii din 2023, iar cei **mici din 1 ianuarie 2025**. Perioadele de grație (care variau între 2 și 6 luni pentru prima raportare lunară, respectiv 3 luni pentru prima trimestrială) s-au epuizat în cursul anului 2025 — practic, în 2026 nu mai există nicio perioadă de grație, iar termenele standard se aplică integral tuturor categoriilor.\n\nTermenul de depunere este **ultima zi a lunii următoare** perioadei raportate: raportare lunară pentru contribuabilii mari/mijlocii și pentru plătitorii lunari de TVA, respectiv trimestrială pentru ceilalți. Secțiunea „Active” se depune odată cu situațiile financiare anuale, iar secțiunea „Stocuri” doar la cererea explicită a ANAF (cu un termen de minimum 30 de zile pentru pregătire).\n\nÎnainte de depunere, fișierul (limitat la sub 500 MB) trebuie validat cu **DUKIntegrator**, aplicația pusă la dispoziție de ANAF. Cele mai frecvente erori depistate la validare sau, mai grav, la controlul ulterior, sunt:\n\n- **Mapare greșită a cotei de TVA** — de exemplu, o linie contabilă rămasă cu codul vechi de 19% sau 9% după 1 august 2025, când acestea au fost înlocuite cu 21%/11%.\n- **Neconcordanță între totalul facturilor din SPV și totalul rulajelor din balanță** transpuse în SAF-T.\n- **Coduri de cont sau de clasificare fiscală lipsă sau incorecte** pentru anumite tranzacții (ex. taxare inversă intracomunitară fără cod VIES valid atașat).\n- **Facturi emise dar netransmise în SPV** (sau invers), care apar în contabilitate dar nu au corespondent validat electronic.\n\n## Exemplu: Exemplu complet: factură mixtă cu două cote de TVA\nFirma **Verde Agro SRL** (contribuabil mijlociu) emite pe 3 iunie 2026 o factură către clientul **Distrib Nord SRL**, care conține:\n\n- Servicii de consultanță agricolă: bază 10.000 lei, cotă **21%** → TVA = 2.100 lei\n- Produse alimentare de bază (cereale, ambalate pentru consum): bază 5.000 lei, cotă **11%** → TVA = 550 lei\n\n**Total factură:**\n- Bază totală: 10.000 + 5.000 = 15.000 lei\n- TVA totală: 2.100 + 550 = 2.650 lei\n- **Total de plată: 17.650 lei**\n\nFactura conține două linii distincte de defalcare TVA (una pentru 21%, alta pentru 11%), fiecare cu baza și TVA proprii — SPV validează separat fiecare cotă, nu doar totalul general. Fiind emisă luni, 3 iunie 2026, termenul de transmitere în SPV (5 zile lucrătoare, conform OUG 89/2025) expiră luni, 10 iunie 2026 (se numără doar zilele lucrătoare: 4, 5, 8, 9, 10 iunie — weekendul 6–7 iunie nu se include).\n\n## Exemplu: Exemplu: identificarea unei erori în SAF-T prin reconciliere cu SPV\nLa generarea fișierului SAF-T pentru luna iunie 2026, contabilul Verde Agro SRL observă următoarea neconcordanță:\n\n- Total TVA colectată conform facturilor validate în SPV pentru iunie 2026: **12.400 lei**\n- Total TVA colectată conform rulajului din balanța de verificare, transpus în SAF-T: **11.850 lei**\n\nDiferența de **550 lei** corespunde exact cu TVA aferentă facturii din exemplul anterior (linia de 11%), care fusese înregistrată în contabilitate cu cota veche de 9% (eroare de mapare, rămasă dintr-un șablon contabil neactualizat după schimbarea cotelor din august 2025). Corecția presupune:\n\n1. Identificarea liniei contabile afectate în jurnalul de vânzări.\n2. Recalcularea TVA la cota corectă de 11% (nu 9%, cotă eliminată din 1 august 2025).\n3. Ajustarea rulajului contabil și regenerarea fișierului SAF-T înainte de termenul de depunere (31 iulie 2026, ultima zi a lunii următoare).\n4. Păstrarea unei note interne (jurnal de corecții) care documentează eroarea și rectificarea, utilă în cazul unui control ulterior.\n\n> Temei legal: OMF 1783/2021 Anexa - structura și termenele SAF-T D406 (în vigoare de la 2025-01-01)\nOrdinul 1783/2021 stabilește structura standard a fișierului SAF-T D406 și calendarul de aplicare gradual: contribuabili mari (2022), mijlocii (2023), mici (de la 1 ianuarie 2025). Termenul de depunere este ultima zi a lunii următoare perioadei raportate (lunar sau trimestrial, în funcție de categorie), iar fișierul trebuie validat cu aplicația DUKIntegrator înainte de transmitere.\n\n⚠ Cuantumurile amenzilor menționate în această lecție (pentru transmiterea tardivă a e-Facturii: 5.000–10.000 lei pentru contribuabilii mari, 2.500–5.000 lei pentru cei mijlocii, 1.000–2.500 lei pentru cei mici și persoane fizice) sunt cele **în vigoare la data redactării (iulie 2026)**. Verifică întotdeauna nivelul actualizat al sancțiunilor pe site-ul ANAF sau cu un consultant fiscal înainte de a lua decizii, deoarece plafoanele pot fi modificate prin acte normative ulterioare. Această lecție nu constituie consultanță fiscală personalizată.\n\n## Exercițiu\n**Scenariu complet de conformitate fiscală — Verde Agro SRL (contribuabil mijlociu), iunie 2026**\n\nEști contabilul firmei. Ai de rezolvat patru sarcini:\n\n**1) Creează o e-Factură** către clientul Panificatia Est SRL, emisă marți, 16 iunie 2026, cu următoarele linii:\n- Servicii de transport marfă: bază 8.000 lei, cotă standard\n- Pâine și produse de panificație: bază 3.000 lei, cotă redusă\n\nCalculează TVA pe fiecare linie, totalul facturii și data-limită de transmitere în SPV.\n\n**2) La generarea SAF-T pentru iunie 2026**, observi în draft trei probleme. Identifică ce este greșit la fiecare:\n a) O linie de vânzare are cota de TVA marcată „9%”.\n b) Totalul TVA colectată din SAF-T este cu 480 lei mai mare decât suma facturilor validate în SPV pentru aceeași lună.\n c) O factură emisă către un client din Germania, cu cod TVA valid, apare cu TVA colectată de 21%, deși ar trebui taxare inversă.\n\n**3) Care este termenul-limită de depunere a SAF-T pentru luna iunie 2026?**\n\n**4) Ce documente incluzi în dosarul de pregătire pentru o inspecție fiscală simulată?**\n\n**Soluție:** **1) Factura:**\n- Transport marfă: bază 8.000 lei, cotă **21%** → TVA = 1.680 lei\n- Pâine: bază 3.000 lei, cotă **11%** → TVA = 330 lei\n- Bază totală: 11.000 lei; TVA totală: 2.010 lei; **Total factură: 13.010 lei**\n- Emisă marți, 16 iunie 2026 → termen transmitere SPV = 5 zile lucrătoare → 17, 18, 19, 22, 23 iunie → termen-limită: **23 iunie 2026**.\n\n**2) Erorile identificate:**\n a) Cota de 9% nu mai există din 1 august 2025 — linia trebuie remapată la 11% (dacă produsul se încadrează la cota redusă) sau la 21%, în funcție de natura reală a bunului/serviciului. Eroare tipică de șablon contabil neactualizat.\n b) Diferența de 480 lei indică o factură înregistrată de două ori în contabilitate sau o factură anulată în SPV dar rămasă activă în balanță — necesită reconciliere linie cu linie între jurnalul de vânzări și lista facturilor validate în SPV.\n c) Pentru o livrare intracomunitară B2B către un client cu cod TVA valid (verificat în VIES), se aplică taxare inversă — TVA colectată ar trebui să fie 0, nu 21%. Trebuie verificat codul VIES al clientului și corectată tratarea fiscală a facturii.\n\n**3) Termenul de depunere SAF-T pentru iunie 2026**: fiind contribuabil mijlociu (raportare lunară), termenul este ultima zi a lunii următoare perioadei raportate, adică **31 iulie 2026**.\n\n**4) Dosarul de pregătire pentru inspecție ar trebui să conțină:**\n- Toate facturile emise/primite validate din SPV pentru perioada verificată, cu confirmările de validare ANAF.\n- Fișierul SAF-T D406 depus, împreună cu jurnalul intern de corecții (dacă au existat erori remediate ulterior).\n- Balanța de verificare și registrul jurnal pentru perioada respectivă.\n- Deconturile de TVA (formularul 300) și, dacă e cazul, corespondența privind decontul precompletat e-TVA.\n- Codurile VIES verificate pentru clienții/furnizorii intracomunitari cu taxare inversă.\n- Un memo intern care documentează orice discrepanță identificată și modul în care a fost corectată, cu date și responsabili.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "exercitiu-final-conformitate-fiscala",
+    "md": "## Recapitulare: lanțul complet de conformitate fiscală\n\nAi parcurs modulele despre e-Factura, TVA și SAF-T D406. Această lecție este exercițiul final: pui cap la cap tot ce ai învățat într-un singur scenariu, exact cum s-ar întâmpla într-o firmă reală supusă unui control ANAF.\n\nUn dosar de conformitate fiscală solid înseamnă trei lucruri care se verifică reciproc:\n\n1. **e-Factura** transmisă corect și la timp în sistemul SPV (Spațiul Privat Virtual), în format RO_CIUS UBL 2.1.\n2. **SAF-T D406** generat lunar sau trimestrial, cu datele contabile mapate corect pe codurile standard și reconciliate cu facturile emise/primite.\n3. **TVA** calculată cu cotele corecte pentru perioada respectivă — de la 1 august 2025 (Legea 141/2025), cota standard este **21%**, iar cota redusă unică este **11%** (cotele istorice de 5% și 9% au fost eliminate, cu excepția unui regim tranzitoriu pentru anumite locuințe noi, valabil până la 31 iulie 2026).\n\nÎntr-un control fiscal, inspectorul ANAF va compara exact aceste trei surse: dacă factura din SPV nu se regăsește în SAF-T, sau dacă cota de TVA declarată nu corespunde cu cea din factură, discrepanța devine obiect de sancțiune. Exercițiul de mai jos simulează acest tip de verificare încrucișată.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "efactura-creare-practica",
+    "md": "## Cum construiești corect o e-Factură completă\n\nÎnainte să emiți o factură electronică, parcurge mental acest checklist:\n\n- **Identifică cota de TVA pe fiecare linie.** Nu presupune că toată factura are aceeași cotă — o factură poate conține simultan produse la 21% (ex. servicii de consultanță) și produse la 11% (ex. alimente de bază, cărți, cazare hotelieră). Fiecare linie de factură trebuie să poarte codul de cotă corect.\n- **Completează toate câmpurile obligatorii RO_CIUS**: CUI/CIF emitent și beneficiar, serie și număr factură, data emiterii, data scadenței, codurile de monedă, defalcarea bazei și a TVA pe fiecare cotă folosită, totalul de plată.\n- **Validează fișierul XML** înainte de încărcare (structură UBL 2.1 conformă, altfel SPV respinge factura la validare).\n- **Respectă termenul de transmitere**: până la 31 decembrie 2025 termenul a fost de 5 zile calendaristice de la emitere; de la 1 ianuarie 2026 (OUG 89/2025), termenul de transmitere în SPV este de **5 zile lucrătoare** de la data emiterii facturii. Diferența dintre zile calendaristice și zile lucrătoare contează efectiv — o factură emisă vineri are termen limită diferit față de una emisă luni.\n- **Reține**: factura descărcată din SPV, cu antetul de validare ANAF, este exemplarul original din punct de vedere fiscal — nu factura emisă inițial din softul de facturare.\n\nB2B este obligatoriu din 1 iulie 2024, B2G din 2024, iar B2C (către persoane fizice) din 1 ianuarie 2025, cu excepția facturilor simplificate (bonuri fiscale cu valoare mică, de exemplu), care rămân exceptate.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "saft-generare-erori",
+    "md": "## Generarea și validarea fișierului SAF-T D406\n\nObligația de raportare SAF-T (OMF 1783/2021) s-a extins gradual: contribuabilii mari raportează din 2022, cei mijlocii din 2023, iar cei **mici din 1 ianuarie 2025**. Perioadele de grație (care variau între 2 și 6 luni pentru prima raportare lunară, respectiv 3 luni pentru prima trimestrială) s-au epuizat în cursul anului 2025 — practic, în 2026 nu mai există nicio perioadă de grație, iar termenele standard se aplică integral tuturor categoriilor.\n\nTermenul de depunere este **ultima zi a lunii următoare** perioadei raportate: raportare lunară pentru contribuabilii mari/mijlocii și pentru plătitorii lunari de TVA, respectiv trimestrială pentru ceilalți. Secțiunea „Active” se depune odată cu situațiile financiare anuale, iar secțiunea „Stocuri” doar la cererea explicită a ANAF (cu un termen de minimum 30 de zile pentru pregătire).\n\nÎnainte de depunere, fișierul (limitat la sub 500 MB) trebuie validat cu **DUKIntegrator**, aplicația pusă la dispoziție de ANAF. Cele mai frecvente erori depistate la validare sau, mai grav, la controlul ulterior, sunt:\n\n- **Mapare greșită a cotei de TVA** — de exemplu, o linie contabilă rămasă cu codul vechi de 19% sau 9% după 1 august 2025, când acestea au fost înlocuite cu 21%/11%.\n- **Neconcordanță între totalul facturilor din SPV și totalul rulajelor din balanță** transpuse în SAF-T.\n- **Coduri de cont sau de clasificare fiscală lipsă sau incorecte** pentru anumite tranzacții (ex. taxare inversă intracomunitară fără cod VIES valid atașat).\n- **Facturi emise dar netransmise în SPV** (sau invers), care apar în contabilitate dar nu au corespondent validat electronic.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b3"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu complet: factură mixtă cu două cote de TVA",
+    "concept_key": "efactura-exemplu-cote-mixte",
+    "md": "Firma **Verde Agro SRL** (contribuabil mijlociu) emite pe 3 iunie 2026 o factură către clientul **Distrib Nord SRL**, care conține:\n\n- Servicii de consultanță agricolă: bază 10.000 lei, cotă **21%** → TVA = 2.100 lei\n- Produse alimentare de bază (cereale, ambalate pentru consum): bază 5.000 lei, cotă **11%** → TVA = 550 lei\n\n**Total factură:**\n- Bază totală: 10.000 + 5.000 = 15.000 lei\n- TVA totală: 2.100 + 550 = 2.650 lei\n- **Total de plată: 17.650 lei**\n\nFactura conține două linii distincte de defalcare TVA (una pentru 21%, alta pentru 11%), fiecare cu baza și TVA proprii — SPV validează separat fiecare cotă, nu doar totalul general. Fiind emisă luni, 3 iunie 2026, termenul de transmitere în SPV (5 zile lucrătoare, conform OUG 89/2025) expiră luni, 10 iunie 2026 (se numără doar zilele lucrătoare: 4, 5, 8, 9, 10 iunie — weekendul 6–7 iunie nu se include).",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b4"
+   },
+   {
+    "type": "example",
+    "title": "Exemplu: identificarea unei erori în SAF-T prin reconciliere cu SPV",
+    "concept_key": "saft-eroare-reconciliere",
+    "md": "La generarea fișierului SAF-T pentru luna iunie 2026, contabilul Verde Agro SRL observă următoarea neconcordanță:\n\n- Total TVA colectată conform facturilor validate în SPV pentru iunie 2026: **12.400 lei**\n- Total TVA colectată conform rulajului din balanța de verificare, transpus în SAF-T: **11.850 lei**\n\nDiferența de **550 lei** corespunde exact cu TVA aferentă facturii din exemplul anterior (linia de 11%), care fusese înregistrată în contabilitate cu cota veche de 9% (eroare de mapare, rămasă dintr-un șablon contabil neactualizat după schimbarea cotelor din august 2025). Corecția presupune:\n\n1. Identificarea liniei contabile afectate în jurnalul de vânzări.\n2. Recalcularea TVA la cota corectă de 11% (nu 9%, cotă eliminată din 1 august 2025).\n3. Ajustarea rulajului contabil și regenerarea fișierului SAF-T înainte de termenul de depunere (31 iulie 2026, ultima zi a lunii următoare).\n4. Păstrarea unei note interne (jurnal de corecții) care documentează eroarea și rectificarea, utilă în cazul unui control ulterior.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMF 1783/2021",
+    "article": "Anexa - structura și termenele SAF-T D406",
+    "effective": "2025-01-01",
+    "md": "Ordinul 1783/2021 stabilește structura standard a fișierului SAF-T D406 și calendarul de aplicare gradual: contribuabili mari (2022), mijlocii (2023), mici (de la 1 ianuarie 2025). Termenul de depunere este ultima zi a lunii următoare perioadei raportate (lunar sau trimestrial, în funcție de categorie), iar fișierul trebuie validat cu aplicația DUKIntegrator înainte de transmitere.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cuantumurile amenzilor menționate în această lecție (pentru transmiterea tardivă a e-Facturii: 5.000–10.000 lei pentru contribuabilii mari, 2.500–5.000 lei pentru cei mijlocii, 1.000–2.500 lei pentru cei mici și persoane fizice) sunt cele **în vigoare la data redactării (iulie 2026)**. Verifică întotdeauna nivelul actualizat al sancțiunilor pe site-ul ANAF sau cu un consultant fiscal înainte de a lua decizii, deoarece plafoanele pot fi modificate prin acte normative ulterioare. Această lecție nu constituie consultanță fiscală personalizată.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Scenariu complet de conformitate fiscală — Verde Agro SRL (contribuabil mijlociu), iunie 2026**\n\nEști contabilul firmei. Ai de rezolvat patru sarcini:\n\n**1) Creează o e-Factură** către clientul Panificatia Est SRL, emisă marți, 16 iunie 2026, cu următoarele linii:\n- Servicii de transport marfă: bază 8.000 lei, cotă standard\n- Pâine și produse de panificație: bază 3.000 lei, cotă redusă\n\nCalculează TVA pe fiecare linie, totalul facturii și data-limită de transmitere în SPV.\n\n**2) La generarea SAF-T pentru iunie 2026**, observi în draft trei probleme. Identifică ce este greșit la fiecare:\n a) O linie de vânzare are cota de TVA marcată „9%”.\n b) Totalul TVA colectată din SAF-T este cu 480 lei mai mare decât suma facturilor validate în SPV pentru aceeași lună.\n c) O factură emisă către un client din Germania, cu cod TVA valid, apare cu TVA colectată de 21%, deși ar trebui taxare inversă.\n\n**3) Care este termenul-limită de depunere a SAF-T pentru luna iunie 2026?**\n\n**4) Ce documente incluzi în dosarul de pregătire pentru o inspecție fiscală simulată?**",
+    "solution_md": "**1) Factura:**\n- Transport marfă: bază 8.000 lei, cotă **21%** → TVA = 1.680 lei\n- Pâine: bază 3.000 lei, cotă **11%** → TVA = 330 lei\n- Bază totală: 11.000 lei; TVA totală: 2.010 lei; **Total factură: 13.010 lei**\n- Emisă marți, 16 iunie 2026 → termen transmitere SPV = 5 zile lucrătoare → 17, 18, 19, 22, 23 iunie → termen-limită: **23 iunie 2026**.\n\n**2) Erorile identificate:**\n a) Cota de 9% nu mai există din 1 august 2025 — linia trebuie remapată la 11% (dacă produsul se încadrează la cota redusă) sau la 21%, în funcție de natura reală a bunului/serviciului. Eroare tipică de șablon contabil neactualizat.\n b) Diferența de 480 lei indică o factură înregistrată de două ori în contabilitate sau o factură anulată în SPV dar rămasă activă în balanță — necesită reconciliere linie cu linie între jurnalul de vânzări și lista facturilor validate în SPV.\n c) Pentru o livrare intracomunitară B2B către un client cu cod TVA valid (verificat în VIES), se aplică taxare inversă — TVA colectată ar trebui să fie 0, nu 21%. Trebuie verificat codul VIES al clientului și corectată tratarea fiscală a facturii.\n\n**3) Termenul de depunere SAF-T pentru iunie 2026**: fiind contribuabil mijlociu (raportare lunară), termenul este ultima zi a lunii următoare perioadei raportate, adică **31 iulie 2026**.\n\n**4) Dosarul de pregătire pentru inspecție ar trebui să conțină:**\n- Toate facturile emise/primite validate din SPV pentru perioada verificată, cu confirmările de validare ANAF.\n- Fișierul SAF-T D406 depus, împreună cu jurnalul intern de corecții (dacă au existat erori remediate ulterior).\n- Balanța de verificare și registrul jurnal pentru perioada respectivă.\n- Deconturile de TVA (formularul 300) și, dacă e cazul, corespondența privind decontul precompletat e-TVA.\n- Codurile VIES verificate pentru clienții/furnizorii intracomunitari cu taxare inversă.\n- Un memo intern care documentează orice discrepanță identificată și modul în care a fost corectată, cu date și responsabili.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "De la 1 ianuarie 2026, care este termenul de transmitere a unei e-Facturi în SPV, de la data emiterii?",
+    "choices": [
+     "5 zile calendaristice",
+     "5 zile lucrătoare",
+     "10 zile calendaristice",
+     "3 zile lucrătoare"
+    ],
+    "answer": 1,
+    "explain": "Conform OUG 89/2025, de la 1 ianuarie 2026 termenul de transmitere este de 5 zile lucrătoare (înainte, până la 31 decembrie 2025, era de 5 zile calendaristice).",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O linie de factură emisă în iunie 2026 pentru produse de panificație (pâine) este marcată cu cota de TVA 9%. Ce este greșit?",
+    "choices": [
+     "Nimic, 9% este cota corectă pentru alimente",
+     "Cota de 9% a fost eliminată de la 1 august 2025; produsele alimentare de bază se încadrează acum la cota redusă unică de 11%",
+     "Cota corectă ar trebui să fie 5%",
+     "Pâinea nu se taxează cu TVA"
+    ],
+    "answer": 1,
+    "explain": "De la 1 august 2025 (Legea 141/2025), cotele reduse de 5% și 9% au fost eliminate și înlocuite cu o cotă redusă unică de 11%, care acoperă și alimentele de bază.",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cotele de TVA valabile în România de la 1 august 2025?",
+    "back": "Cotă standard 21% și cotă redusă unică 11% (Legea 141/2025); cotele istorice de 19%/9%/5% nu se mai aplică, cu excepția unui regim tranzitoriu de 9% pentru anumite locuințe noi, până la 31 iulie 2026.",
+    "concept_key": "tva-cote-2025",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de transmitere a e-Facturii în SPV de la 1 ianuarie 2026?",
+    "back": "5 zile lucrătoare de la data emiterii facturii (OUG 89/2025), față de 5 zile calendaristice cât era termenul până la 31 decembrie 2025.",
+    "concept_key": "efactura-termen-transmitere-2026",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De când sunt obligați contribuabilii mici să raporteze SAF-T D406?",
+    "back": "De la 1 ianuarie 2025. Contribuabilii mari raportează din 2022, cei mijlocii din 2023; perioadele de grație s-au epuizat în 2025, deci din 2026 se aplică termenele standard pentru toate categoriile.",
+    "concept_key": "saft-obligatie-contribuabili-mici",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul de depunere a SAF-T pentru raportarea lunară?",
+    "back": "Ultima zi a lunii următoare perioadei raportate (ex. SAF-T pentru iunie se depune până pe 31 iulie).",
+    "concept_key": "saft-termen-depunere-lunar",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce aplicație folosești pentru validarea fișierului SAF-T înainte de depunere?",
+    "back": "DUKIntegrator, aplicația pusă la dispoziție de ANAF pentru validarea structurii și conținutului fișierului SAF-T D406.",
+    "concept_key": "saft-validare-dukintegrator",
+    "blockId": "cmjjvav2m000o10ia5im29rst-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1618,
+   "flashcards": 5
+  }
+ }
+}

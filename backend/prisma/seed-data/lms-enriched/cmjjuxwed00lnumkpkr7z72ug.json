@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxwed00lnumkpkr7z72ug",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Contextul și Leadership (Cl. 4-5)",
+ "lesson": "Documentare context",
+ "category": "HSE_SAFETY",
+ "content": "# Documentare context\n\n## Ce înseamnă „contextul organizației” în ISO 45001\n\nClauza **4.1** din ISO 45001:2018 cere organizației să identifice problemele (issues) interne și externe relevante pentru scopul ei, care îi influențează capacitatea de a obține rezultatele preconizate ale sistemului de management SSM (securitate și sănătate în muncă): prevenirea vătămărilor și îmbolnăvirilor profesionale, îmbunătățirea continuă a performanței SSM.\n\nContextul se analizează pe două paliere:\n\n- **Probleme externe** – de regulă structurate cu ajutorul modelului **PESTEL** (Politic, Economic, Social, Tehnologic, Ecologic/de mediu, Legal): schimbări legislative SSM, condiții de piață a muncii, evoluții tehnologice ale echipamentelor, cerințe ale clienților sau ale autorităților (ITM), condiții climatice sau de mediu care afectează locul de muncă.\n- **Probleme interne**: cultura organizațională privind SSM, structura organizatorică, tipurile de contracte de muncă, orele de lucru, competențele și fluctuația personalului, complexitatea proceselor, echipamentele și tehnologiile folosite, capacitatea de a aloca resurse.\n\nAnaliza contextului nu este un exercițiu punctual, „de-o singură dată”. Standardul cere ca informațiile relevante despre aceste probleme să fie **monitorizate și revizuite** periodic (de exemplu cu ocazia analizei efectuate de management, clauza 9.3), pentru că schimbările de context (o lege nouă, un utilaj nou, o restructurare) pot genera riscuri sau oportunități noi pentru SSM. Rezultatul acestei analize alimentează direct planificarea (clauza 6): identificarea riscurilor și oportunităților sistemului de management.\n\n## Părțile interesate și nevoile lor (clauza 4.2)\n\nO **parte interesată** este orice persoană sau organizație care poate afecta, poate fi afectată de, sau se percepe a fi afectată de o decizie sau activitate legată de SSM. ISO 45001 cere organizației să determine:\n\n1. care sunt părțile interesate relevante pentru sistemul de management SSM;\n2. care sunt **nevoile și așteptările** relevante ale acestora;\n3. care dintre aceste nevoi și așteptări devin (sau pot deveni) **cerințe legale și alte cerințe** aplicabile (legătură directă cu clauza 6.1.3).\n\nÎn practica unei organizații din România, lista tipică include: lucrătorii și reprezentanții lor SSM (obligatoriu de consultat, conform clauzei 5.4), Inspectoratul Teritorial de Muncă (ITM) ca autoritate de control, sindicatul sau Comitetul de Securitate și Sănătate în Muncă (CSSM) acolo unde există, furnizorii și subcontractanții care lucrează pe amplasament, clienții (mai ales în domenii cu cerințe contractuale de SSM), asigurătorii, comunitatea locală și autoritățile de mediu.\n\nUn element specific ISO 45001 (față de ISO 9001 sau ISO 14001) este accentul pus pe **participarea și consultarea lucrătorilor non-manageriali** – ei nu sunt doar o „parte interesată” pasivă, ci trebuie implicați activ în identificarea pericolelor, evaluarea riscurilor și definirea măsurilor de control. Lipsa dovezilor de consultare a lucrătorilor este una dintre cele mai frecvente neconformități constatate la auditurile de certificare.\n\n## Domeniul de aplicare (4.3), sistemul de management (4.4) și legătura cu leadership-ul (5.1)\n\nPe baza problemelor de context (4.1) și a nevoilor părților interesate (4.2), organizația trebuie să stabilească **domeniul de aplicare (scope)** al sistemului de management SSM – clauza 4.3. Acesta trebuie:\n\n- să fie disponibil ca **informație documentată**;\n- să precizeze clar activitățile, produsele, serviciile și amplasamentele (locațiile fizice) incluse;\n- să acopere toate activitățile și **toți lucrătorii aflați sub controlul organizației**, indiferent de tipul de contract (angajați proprii, personal temporar, subcontractanți care lucrează pe teritoriul organizației);\n- să nu excludă activități, sarcini, condiții de lucru sau amplasamente doar pentru a evita anumite cerințe – excluderile trebuie justificate obiectiv.\n\nClauza 4.4 leagă apoi toate aceste elemente într-un sistem de management SSM documentat, cu procese care interacționează, aliniat structurii de tip Plan-Do-Check-Act (PDCA).\n\nContextul organizației nu este doar un exercițiu analitic – el fundamentează angajamentul conducerii de vârf (clauza **5.1 Leadership și angajament**). Managementul de vârf trebuie să își asume responsabilitatea finală pentru prevenirea vătămărilor și îmbolnăvirilor profesionale, să integreze cerințele SSM în procesele de business (nu ca sistem paralel), să aloce resursele necesare și să promoveze o cultură a raportării incidentelor fără represalii. Politica SSM (clauza 5.2) trebuie, la rândul ei, să fie **adecvată contextului** identificat la 4.1 – o politică generică, „descărcată de pe internet”, care nu reflectă riscurile reale ale organizației, este una dintre cele mai des semnalate neconformități la audit.\n\n## Exemplu: Analiza PESTEL/SWOT a contextului – atelier de producție mobilier\n**SC Atelier Mobexpert SRL** – producție mobilier la comandă, 45 de angajați, Sibiu.\n\n**Probleme externe (PESTEL):**\n\n- *Legal*: cerințe noi ale ITM privind expunerea la praf de lemn și zgomot; obligații de raportare a accidentelor conform Legii 319/2006.\n- *Economic*: creșterea prețului materiei prime (lemn masiv), presiune pe marje care poate duce la tentația de a amâna investiții SSM.\n- *Social*: îmbătrânirea forței de muncă calificate (tâmplari cu experiență), dificultăți de recrutare a personalului tânăr instruit.\n- *Tehnologic*: introducerea unui utilaj CNC nou pentru debitare – generează riscuri noi (prindere, proiectare de așchii) care nu existau anterior.\n- *Ecologic*: cerințe de gestionare a deșeurilor lemnoase și a solvenților din secția de finisaj.\n\n**Probleme interne:**\n\n- Cultura organizațională privind SSM este relativ tânără (funcția de responsabil SSM cu normă parțială a fost creată acum 3 ani).\n- Fluctuație mare de personal pe linia de finisaj (vopsire/lăcuire), ceea ce crește frecvența instruirilor la locul de muncă.\n- Bugetul alocat pentru echipamente individuale de protecție (EIP) a crescut cu 20% față de anul trecut.\n- O singură persoană are atribuții SSM formalizate – risc de discontinuitate dacă aceasta lipsește.\n\n**Concluzie pentru planificare (clauza 6):** introducerea utilajului CNC impune actualizarea imediată a evaluării de riscuri pentru postul de operator CNC și o instruire specifică suplimentară, înainte de punerea în funcțiune.\n\n## Exemplu: Registru al părților interesate (template completat)\n| Parte interesată | Nevoie / așteptare | Devine cerință aplicabilă? | Cum se monitorizează |\n|---|---|---|---|\n| Lucrători (producție) | Echipamente de protecție adecvate, instruire înțeleasă practic | Da – obligație legală (Legea 319/2006) | Fișe de instruire, sondaj intern anual |\n| ITM | Conformitate cu Legea 319/2006 și HG 1425/2006, raportare accidente | Da – cerință legală | Verificare acte la control, registru evidență |\n| Client (comandă mobilier pentru birouri) | Dovada unui sistem SSM funcțional (audit de furnizor) | Da – cerință contractuală | Chestionar de audit furnizor, certificat ISO 45001 |\n| Furnizor materie primă / transportator | Acces sigur pe amplasament, reguli de circulație | Parțial – bună practică internă | Instructaj vizitatori/terți la intrare |\n| Comunitate locală | Fără zgomot excesiv, fără poluare cu praf de lemn | Parțial – cerință de mediu conexă | Sesizări, monitorizare emisii |\n\nAcest registru se actualizează ori de câte ori apare o parte interesată nouă (de exemplu, un client nou cu cerințe contractuale specifice) sau se schimbă o cerință legală existentă.\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă Art. 7 alin. (1)-(4) (în vigoare de la 2006-07-27)\nLegea nr. 319/2006 (publicată în Monitorul Oficial nr. 646/27.07.2006) este actul-cadru care reglementează SSM în România și stă la baza multor cerințe legale identificate la clauza 4.2 din ISO 45001. Art. 7 stabilește obligațiile generale ale angajatorului: să asigure securitatea și sănătatea lucrătorilor în toate aspectele legate de muncă, să evalueze riscurile (inclusiv la alegerea echipamentelor și substanțelor), să ia măsuri de prevenire integrate în toate activitățile, și să adapteze măsurile pe măsură ce apar schimbări. Aceste obligații se completează cu normele metodologice din HG nr. 1425/2006. Verifică întotdeauna forma actualizată a legii, întrucât a suferit modificări succesive de-a lungul timpului.\n\n⚠ Cea mai frecventă greșeală la documentarea contextului este copierea unei analize generice (dintr-un model găsit online sau preluat de la un consultant) fără adaptare reală la organizație. O analiză de context care nu reflectă riscurile, utilajele, personalul și cerințele legale specifice firmei tale nu doar că nu trece de auditul de certificare, dar nici nu are valoare practică pentru prevenirea accidentelor. Actualizeaz-o de fiecare dată când apare o schimbare relevantă: utilaj nou, sediu nou, client cu cerințe contractuale noi, modificare legislativă.\n\n## Exercițiu\nPentru propria ta organizație (sau una ipotetică, dacă ești la început de drum), realizează documentarea contextului cerută de clauzele 4.1–4.3 din ISO 45001:\n\n1. Identifică minimum **4 probleme externe** (folosind structura PESTEL) și **4 probleme interne** relevante pentru SSM.\n2. Întocmește un mini-registru cu minimum **5 părți interesate**, nevoile/așteptările lor și dacă devin cerințe aplicabile.\n3. Redactează un enunț scurt (3-5 rânduri) al **domeniului de aplicare** al sistemului de management SSM, care să precizeze activitățile, locațiile și personalul acoperit.\n\n**Soluție:** Exemplu de rezolvare pentru un birou de proiectare și execuție lucrări de construcții (18 angajați, un singur sediu + șantiere temporare):\n\n**Probleme externe:** (1) Legal – modificări ale cerințelor privind lucrul la înălțime pe șantiere; (2) Economic – presiune de reducere a costurilor pe proiecte, risc de subdimensionare a bugetului SSM; (3) Social – dificultate de a găsi muncitori calificați instruiți SSM; (4) Tehnologic – utilizarea de drone pentru inspecții, generând nevoi noi de instruire.\n\n**Probleme interne:** (1) Personal predominant pe teren, greu de supravegheat direct; (2) Rotație frecventă a echipelor între șantiere; (3) Resurse SSM limitate – un singur responsabil pentru toate șantierele; (4) Cultură organizațională orientată spre termene, cu risc de a sacrifica pauzele de siguranță.\n\n**Registru părți interesate (extras):** lucrători șantier – nevoie de instruire practică la fiecare schimbare de amplasament (cerință legală); ITM – conformitate control (cerință legală); beneficiar lucrare – dovadă plan SSM pe șantier (cerință contractuală); vecini/comunitate – limitarea zgomotului și prafului (bună practică); asigurător – dovezi de management al riscului (condiție de poliță).\n\n**Domeniu de aplicare (exemplu):** „Sistemul de management SSM se aplică activităților de proiectare desfășurate la sediul din [oraș] și activităților de execuție lucrări de construcții desfășurate pe toate șantierele aflate sub controlul organizației, acoperind toți angajații proprii și personalul subcontractat care lucrează sub coordonarea directă a companiei.”",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "iso45001-context-organizatie",
+    "md": "## Ce înseamnă „contextul organizației” în ISO 45001\n\nClauza **4.1** din ISO 45001:2018 cere organizației să identifice problemele (issues) interne și externe relevante pentru scopul ei, care îi influențează capacitatea de a obține rezultatele preconizate ale sistemului de management SSM (securitate și sănătate în muncă): prevenirea vătămărilor și îmbolnăvirilor profesionale, îmbunătățirea continuă a performanței SSM.\n\nContextul se analizează pe două paliere:\n\n- **Probleme externe** – de regulă structurate cu ajutorul modelului **PESTEL** (Politic, Economic, Social, Tehnologic, Ecologic/de mediu, Legal): schimbări legislative SSM, condiții de piață a muncii, evoluții tehnologice ale echipamentelor, cerințe ale clienților sau ale autorităților (ITM), condiții climatice sau de mediu care afectează locul de muncă.\n- **Probleme interne**: cultura organizațională privind SSM, structura organizatorică, tipurile de contracte de muncă, orele de lucru, competențele și fluctuația personalului, complexitatea proceselor, echipamentele și tehnologiile folosite, capacitatea de a aloca resurse.\n\nAnaliza contextului nu este un exercițiu punctual, „de-o singură dată”. Standardul cere ca informațiile relevante despre aceste probleme să fie **monitorizate și revizuite** periodic (de exemplu cu ocazia analizei efectuate de management, clauza 9.3), pentru că schimbările de context (o lege nouă, un utilaj nou, o restructurare) pot genera riscuri sau oportunități noi pentru SSM. Rezultatul acestei analize alimentează direct planificarea (clauza 6): identificarea riscurilor și oportunităților sistemului de management.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "iso45001-parti-interesate",
+    "md": "## Părțile interesate și nevoile lor (clauza 4.2)\n\nO **parte interesată** este orice persoană sau organizație care poate afecta, poate fi afectată de, sau se percepe a fi afectată de o decizie sau activitate legată de SSM. ISO 45001 cere organizației să determine:\n\n1. care sunt părțile interesate relevante pentru sistemul de management SSM;\n2. care sunt **nevoile și așteptările** relevante ale acestora;\n3. care dintre aceste nevoi și așteptări devin (sau pot deveni) **cerințe legale și alte cerințe** aplicabile (legătură directă cu clauza 6.1.3).\n\nÎn practica unei organizații din România, lista tipică include: lucrătorii și reprezentanții lor SSM (obligatoriu de consultat, conform clauzei 5.4), Inspectoratul Teritorial de Muncă (ITM) ca autoritate de control, sindicatul sau Comitetul de Securitate și Sănătate în Muncă (CSSM) acolo unde există, furnizorii și subcontractanții care lucrează pe amplasament, clienții (mai ales în domenii cu cerințe contractuale de SSM), asigurătorii, comunitatea locală și autoritățile de mediu.\n\nUn element specific ISO 45001 (față de ISO 9001 sau ISO 14001) este accentul pus pe **participarea și consultarea lucrătorilor non-manageriali** – ei nu sunt doar o „parte interesată” pasivă, ci trebuie implicați activ în identificarea pericolelor, evaluarea riscurilor și definirea măsurilor de control. Lipsa dovezilor de consultare a lucrătorilor este una dintre cele mai frecvente neconformități constatate la auditurile de certificare.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "iso45001-domeniu-aplicare",
+    "md": "## Domeniul de aplicare (4.3), sistemul de management (4.4) și legătura cu leadership-ul (5.1)\n\nPe baza problemelor de context (4.1) și a nevoilor părților interesate (4.2), organizația trebuie să stabilească **domeniul de aplicare (scope)** al sistemului de management SSM – clauza 4.3. Acesta trebuie:\n\n- să fie disponibil ca **informație documentată**;\n- să precizeze clar activitățile, produsele, serviciile și amplasamentele (locațiile fizice) incluse;\n- să acopere toate activitățile și **toți lucrătorii aflați sub controlul organizației**, indiferent de tipul de contract (angajați proprii, personal temporar, subcontractanți care lucrează pe teritoriul organizației);\n- să nu excludă activități, sarcini, condiții de lucru sau amplasamente doar pentru a evita anumite cerințe – excluderile trebuie justificate obiectiv.\n\nClauza 4.4 leagă apoi toate aceste elemente într-un sistem de management SSM documentat, cu procese care interacționează, aliniat structurii de tip Plan-Do-Check-Act (PDCA).\n\nContextul organizației nu este doar un exercițiu analitic – el fundamentează angajamentul conducerii de vârf (clauza **5.1 Leadership și angajament**). Managementul de vârf trebuie să își asume responsabilitatea finală pentru prevenirea vătămărilor și îmbolnăvirilor profesionale, să integreze cerințele SSM în procesele de business (nu ca sistem paralel), să aloce resursele necesare și să promoveze o cultură a raportării incidentelor fără represalii. Politica SSM (clauza 5.2) trebuie, la rândul ei, să fie **adecvată contextului** identificat la 4.1 – o politică generică, „descărcată de pe internet”, care nu reflectă riscurile reale ale organizației, este una dintre cele mai des semnalate neconformități la audit.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b3"
+   },
+   {
+    "type": "example",
+    "title": "Analiza PESTEL/SWOT a contextului – atelier de producție mobilier",
+    "concept_key": "iso45001-context-organizatie",
+    "md": "**SC Atelier Mobexpert SRL** – producție mobilier la comandă, 45 de angajați, Sibiu.\n\n**Probleme externe (PESTEL):**\n\n- *Legal*: cerințe noi ale ITM privind expunerea la praf de lemn și zgomot; obligații de raportare a accidentelor conform Legii 319/2006.\n- *Economic*: creșterea prețului materiei prime (lemn masiv), presiune pe marje care poate duce la tentația de a amâna investiții SSM.\n- *Social*: îmbătrânirea forței de muncă calificate (tâmplari cu experiență), dificultăți de recrutare a personalului tânăr instruit.\n- *Tehnologic*: introducerea unui utilaj CNC nou pentru debitare – generează riscuri noi (prindere, proiectare de așchii) care nu existau anterior.\n- *Ecologic*: cerințe de gestionare a deșeurilor lemnoase și a solvenților din secția de finisaj.\n\n**Probleme interne:**\n\n- Cultura organizațională privind SSM este relativ tânără (funcția de responsabil SSM cu normă parțială a fost creată acum 3 ani).\n- Fluctuație mare de personal pe linia de finisaj (vopsire/lăcuire), ceea ce crește frecvența instruirilor la locul de muncă.\n- Bugetul alocat pentru echipamente individuale de protecție (EIP) a crescut cu 20% față de anul trecut.\n- O singură persoană are atribuții SSM formalizate – risc de discontinuitate dacă aceasta lipsește.\n\n**Concluzie pentru planificare (clauza 6):** introducerea utilajului CNC impune actualizarea imediată a evaluării de riscuri pentru postul de operator CNC și o instruire specifică suplimentară, înainte de punerea în funcțiune.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b4"
+   },
+   {
+    "type": "example",
+    "title": "Registru al părților interesate (template completat)",
+    "concept_key": "iso45001-parti-interesate",
+    "md": "| Parte interesată | Nevoie / așteptare | Devine cerință aplicabilă? | Cum se monitorizează |\n|---|---|---|---|\n| Lucrători (producție) | Echipamente de protecție adecvate, instruire înțeleasă practic | Da – obligație legală (Legea 319/2006) | Fișe de instruire, sondaj intern anual |\n| ITM | Conformitate cu Legea 319/2006 și HG 1425/2006, raportare accidente | Da – cerință legală | Verificare acte la control, registru evidență |\n| Client (comandă mobilier pentru birouri) | Dovada unui sistem SSM funcțional (audit de furnizor) | Da – cerință contractuală | Chestionar de audit furnizor, certificat ISO 45001 |\n| Furnizor materie primă / transportator | Acces sigur pe amplasament, reguli de circulație | Parțial – bună practică internă | Instructaj vizitatori/terți la intrare |\n| Comunitate locală | Fără zgomot excesiv, fără poluare cu praf de lemn | Parțial – cerință de mediu conexă | Sesizări, monitorizare emisii |\n\nAcest registru se actualizează ori de câte ori apare o parte interesată nouă (de exemplu, un client nou cu cerințe contractuale specifice) sau se schimbă o cerință legală existentă.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă",
+    "article": "Art. 7 alin. (1)-(4)",
+    "effective": "2006-07-27",
+    "md": "Legea nr. 319/2006 (publicată în Monitorul Oficial nr. 646/27.07.2006) este actul-cadru care reglementează SSM în România și stă la baza multor cerințe legale identificate la clauza 4.2 din ISO 45001. Art. 7 stabilește obligațiile generale ale angajatorului: să asigure securitatea și sănătatea lucrătorilor în toate aspectele legate de muncă, să evalueze riscurile (inclusiv la alegerea echipamentelor și substanțelor), să ia măsuri de prevenire integrate în toate activitățile, și să adapteze măsurile pe măsură ce apar schimbări. Aceste obligații se completează cu normele metodologice din HG nr. 1425/2006. Verifică întotdeauna forma actualizată a legii, întrucât a suferit modificări succesive de-a lungul timpului.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală la documentarea contextului este copierea unei analize generice (dintr-un model găsit online sau preluat de la un consultant) fără adaptare reală la organizație. O analiză de context care nu reflectă riscurile, utilajele, personalul și cerințele legale specifice firmei tale nu doar că nu trece de auditul de certificare, dar nici nu are valoare practică pentru prevenirea accidentelor. Actualizeaz-o de fiecare dată când apare o schimbare relevantă: utilaj nou, sediu nou, client cu cerințe contractuale noi, modificare legislativă.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Pentru propria ta organizație (sau una ipotetică, dacă ești la început de drum), realizează documentarea contextului cerută de clauzele 4.1–4.3 din ISO 45001:\n\n1. Identifică minimum **4 probleme externe** (folosind structura PESTEL) și **4 probleme interne** relevante pentru SSM.\n2. Întocmește un mini-registru cu minimum **5 părți interesate**, nevoile/așteptările lor și dacă devin cerințe aplicabile.\n3. Redactează un enunț scurt (3-5 rânduri) al **domeniului de aplicare** al sistemului de management SSM, care să precizeze activitățile, locațiile și personalul acoperit.",
+    "solution_md": "Exemplu de rezolvare pentru un birou de proiectare și execuție lucrări de construcții (18 angajați, un singur sediu + șantiere temporare):\n\n**Probleme externe:** (1) Legal – modificări ale cerințelor privind lucrul la înălțime pe șantiere; (2) Economic – presiune de reducere a costurilor pe proiecte, risc de subdimensionare a bugetului SSM; (3) Social – dificultate de a găsi muncitori calificați instruiți SSM; (4) Tehnologic – utilizarea de drone pentru inspecții, generând nevoi noi de instruire.\n\n**Probleme interne:** (1) Personal predominant pe teren, greu de supravegheat direct; (2) Rotație frecventă a echipelor între șantiere; (3) Resurse SSM limitate – un singur responsabil pentru toate șantierele; (4) Cultură organizațională orientată spre termene, cu risc de a sacrifica pauzele de siguranță.\n\n**Registru părți interesate (extras):** lucrători șantier – nevoie de instruire practică la fiecare schimbare de amplasament (cerință legală); ITM – conformitate control (cerință legală); beneficiar lucrare – dovadă plan SSM pe șantier (cerință contractuală); vecini/comunitate – limitarea zgomotului și prafului (bună practică); asigurător – dovezi de management al riscului (condiție de poliță).\n\n**Domeniu de aplicare (exemplu):** „Sistemul de management SSM se aplică activităților de proiectare desfășurate la sediul din [oraș] și activităților de execuție lucrări de construcții desfășurate pe toate șantierele aflate sub controlul organizației, acoperind toți angajații proprii și personalul subcontractat care lucrează sub coordonarea directă a companiei.”",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform clauzei 4.1 din ISO 45001:2018, ce trebuie să identifice organizația?",
+    "choices": [
+     "Doar riscurile fizice de la locul de muncă",
+     "Problemele interne și externe relevante care îi influențează capacitatea de a obține rezultatele preconizate ale sistemului SSM",
+     "Doar cerințele clienților referitoare la calitate",
+     "Bugetul anual alocat departamentului SSM"
+    ],
+    "answer": 1,
+    "explain": "Clauza 4.1 cere identificarea problemelor (issues) interne și externe relevante pentru scopul organizației și pentru capacitatea sa de a atinge rezultatele SSM preconizate; riscurile fizice se evaluează separat, la clauza 6.1.2.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele este o cerință specifică ISO 45001 legată de părțile interesate (clauza 4.2 și 5.4)?",
+    "choices": [
+     "Doar managementul de vârf poate participa la identificarea pericolelor",
+     "Consultarea și participarea activă a lucrătorilor non-manageriali este obligatorie",
+     "Furnizorii sunt singura parte interesată relevantă",
+     "Domeniul de aplicare exclude automat subcontractanții"
+    ],
+    "answer": 1,
+    "explain": "ISO 45001 pune accent explicit pe participarea și consultarea lucrătorilor (inclusiv a celor non-manageriali) în identificarea pericolelor și evaluarea riscurilor – element specific acestui standard, diferit de ISO 9001/14001.",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce cere clauza 4.1 din ISO 45001:2018?",
+    "back": "Identificarea problemelor interne și externe relevante care influențează capacitatea organizației de a obține rezultatele preconizate ale sistemului de management SSM.",
+    "concept_key": "iso45001-context-organizatie",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă acronimul PESTEL folosit pentru analiza problemelor externe?",
+    "back": "Politic, Economic, Social, Tehnologic, Ecologic (de mediu), Legal – categorii pentru structurarea analizei contextului extern.",
+    "concept_key": "iso45001-context-organizatie",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o „parte interesată” conform ISO 45001?",
+    "back": "Persoană sau organizație care poate afecta, poate fi afectată de, sau se percepe a fi afectată de o decizie sau activitate legată de SSM.",
+    "concept_key": "iso45001-parti-interesate",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce trebuie să precizeze obligatoriu domeniul de aplicare (scope) al SMSSM, conform clauzei 4.3?",
+    "back": "Activitățile, produsele, serviciile și amplasamentele incluse, plus toți lucrătorii aflați sub controlul organizației, indiferent de tipul de contract; excluderile trebuie justificate obiectiv.",
+    "concept_key": "iso45001-domeniu-aplicare",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este actul normativ-cadru pentru SSM în România și de când este în vigoare?",
+    "back": "Legea nr. 319/2006 a securității și sănătății în muncă, publicată în M. Of. nr. 646 din 27.07.2006 (verifică forma actualizată, întrucât a fost modificată succesiv).",
+    "concept_key": "iso45001-domeniu-aplicare",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "De ce nu este suficientă o analiză de context „generică”, copiată dintr-un model online?",
+    "back": "Pentru că nu reflectă riscurile, utilajele, personalul și cerințele legale reale ale organizației – nu trece la auditul de certificare și nu are valoare practică pentru prevenirea accidentelor.",
+    "concept_key": "iso45001-context-organizatie",
+    "blockId": "cmjjuxwed00lnumkpkr7z72ug-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1502,
+   "flashcards": 6
+  }
+ }
+}

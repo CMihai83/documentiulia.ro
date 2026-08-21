@@ -1,0 +1,134 @@
+{
+ "lessonId": "cmjjuxw5p00ejumkpn019k9of",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Metodologii Moderne de Bugetare",
+ "lesson": "Exercițiu comparativ",
+ "category": "FINANCE_OPS",
+ "content": "# Exercițiu comparativ\n\n## Tradițional vs Zero-Based Budgeting: recapitulare rapidă\n\nÎnainte de exercițiul practic, fixează diferența esențială dintre cele două metodologii:\n\n- **Bugetarea tradițională (incrementală)**: pornești de la bugetul aprobat în anul precedent și îl ajustezi cu un procent (inflație, creștere estimată a activității, decizie de management). Formula de bază: **Buget nou = Buget anul precedent × (1 + % ajustare)**. Fiecare linie de cheltuială e considerată „câștigată” prin simpla ei existență anterioară — nu se rejustifică.\n- **Zero-Based Budgeting (ZBB)**: fiecare cheltuială pornește de la zero (\"buget zero\") și trebuie rejustificată integral, indiferent dacă a existat sau nu în bugetul anterior. Justificarea se face prin **pachete de decizie** (decision packages) — documente scurte care descriu activitatea, costul, beneficiul așteptat și consecința dacă pachetul nu e aprobat.\n\nDiferența nu e doar tehnică, ci de filozofie: bugetarea tradițională întreabă \"cât creștem față de anul trecut?\", iar ZBB întreabă \"această cheltuială s-ar mai justifica dacă am porni de la zero, azi?\". Exercițiul comparativ din această lecție te ajută să vezi, cu cifre concrete, unde apar diferențele reale între cele două răspunsuri.\n\n## Ce compari, de fapt, într-un exercițiu tradițional vs ZBB\n\nUn exercițiu comparativ bine făcut nu se oprește la \"care buget e mai mic\". Analizează minimum patru criterii:\n\n1. **Valoarea totală și structura pe linii** — unde apar diferențe de sumă și de ce (eliminare, reducere, realocare sau chiar creștere justificată).\n2. **Transparența deciziei** — în bugetarea tradițională, motivul unei sume e adesea \"așa a fost și anul trecut\"; în ZBB, fiecare linie are un pachet de decizie cu justificare explicită, ceea ce facilitează auditul intern și discuția cu board-ul.\n3. **Timpul și efortul de elaborare** — ZBB necesită de regulă de 3-5 ori mai mult timp decât ajustarea incrementală, pentru că fiecare manager de departament trebuie să documenteze și să ranking-eze activitățile.\n4. **Riscul de a pierde activități valoroase** — dacă procesul ZBB e făcut superficial (sub presiune de timp), există riscul de a tăia activități cu impact real doar pentru că nu au fost documentate bine, în timp ce bugetarea tradițională le-ar fi păstrat automat.\n\nÎn practică, majoritatea companiilor din România care aplică ZBB o fac selectiv, pe departamentele cu cea mai mare pondere de cheltuieli discreționare (marketing, consultanță, deplasări), nu pe toată organizația deodată — tocmai din cauza efortului de la punctul 3.\n\n## Pașii unui exercițiu comparativ (metodologie de lucru)\n\nCa să compari corect cele două metode pentru același departament, urmează acești pași:\n\n1. **Alege departamentul și perioada de referință** — ai nevoie de execuția bugetară a anului precedent, defalcată pe linii de cheltuială.\n2. **Construiește varianta tradițională** — aplică procentul de ajustare convenit (ex. inflație estimată sau target de creștere a activității) pe fiecare linie sau pe total.\n3. **Descompune activitatea în pachete de decizie pentru ZBB** — separă cheltuielile în unități logice (ex. \"campanie Google Ads\", \"eveniment anual\", \"licențe software\"), nu doar pe conturi contabile.\n4. **Evaluează fiecare pachet**: cost estimat, beneficiu așteptat (cuantificat cât se poate: leaduri generate, ore economisite, risc redus), și ce se întâmplă dacă pachetul NU e aprobat.\n5. **Clasifică (rank) pachetele** după raportul beneficiu/cost și alocă bugetul disponibil de sus în jos, până se epuizează plafonul stabilit de management.\n6. **Compară rezultatul final cu varianta tradițională** — documentează diferențele pe fiecare linie și motivul lor (eliminare, reducere, menținere, creștere justificată).\n\nAcest proces transformă exercițiul dintr-o simplă scădere aritmetică într-un instrument real de decizie managerială, util mai ales când prezinți rezultatele board-ului.\n\n## Exemplu: Departamentul Marketing — comparație numerică completă\n**Context (cifre ipotetice, folosite doar ca exemplu didactic):** o companie SRL din București, departament Marketing, buget executat anul precedent = 500.000 lei.\n\n**Varianta tradițională (+5% față de anul precedent):**\n\n| Linie | Anul precedent | Tradițional (+5%) |\n|---|---|---|\n| Salarii echipă | 285.000 lei | 300.000 lei |\n| Publicitate online | 114.000 lei | 120.000 lei |\n| Evenimente | 48.000 lei | 50.000 lei |\n| Deplasări | 29.000 lei | 30.000 lei |\n| Abonamente/diverse | 24.000 lei | 25.000 lei |\n| **Total** | **500.000 lei** | **525.000 lei** |\n\n**Varianta ZBB (fiecare linie reconstruită și justificată prin decision package):**\n\n| Linie | ZBB | Justificare |\n|---|---|---|\n| Salarii echipă | 280.000 lei | Restructurare ușoară, un rol redistribuit |\n| Publicitate online | 150.000 lei | Crescut — ROI dovedit pe Google/Meta Ads |\n| Evenimente | 20.000 lei | Redus — un singur eveniment cu ROI clar, restul eliminate |\n| Deplasări | 15.000 lei | Redus — mai multe întâlniri online |\n| Abonamente/diverse | 30.000 lei | Crescut — tool nou de marketing automation |\n| **Total** | **495.000 lei** | |\n\n**Rezultatul comparației:** ZBB propune un buget cu 30.000 lei mai mic (495.000 vs 525.000 lei), adică o economie de aproximativ 5,7%. Important: economia nu vine dintr-o tăiere uniformă, ci dintr-o **realocare** — banii sunt mutați din activități cu ROI slab (evenimente, deplasări) spre activități cu ROI dovedit (publicitate online performantă, automatizare).\n\n## Exemplu: Departamentul Suport Vânzări — când ZBB propune un buget mai mare\nZBB nu înseamnă automat \"buget mai mic\" — uneori un pachet de decizie bine justificat propune o creștere, dacă beneficiul cuantificat o susține.\n\n**Context (cifre ipotetice):** subsidiară RO a unei multinaționale, departament Suport Vânzări, buget anul precedent = 300.000 lei.\n\n- **Varianta tradițională (+4%):** 300.000 lei × 1,04 = **312.000 lei**.\n- **Varianta ZBB:** echipa a construit un decision package pentru implementarea unui modul CRM avansat cu automatizare a răspunsurilor către clienți, cost suplimentar 28.000 lei/an. Beneficiul cuantificat în pachet: reducerea timpului mediu de răspuns de la 24h la 4h și o creștere estimată a retenției de clienți, care compensează investiția în mai puțin de un an. Restul liniilor rămân neschimbate față de anul precedent (300.000 lei). Total ZBB = 300.000 + 28.000 = **328.000 lei**.\n\n**Rezultatul comparației:** ZBB propune un buget cu 16.000 lei mai mare decât varianta tradițională (328.000 vs 312.000 lei). Diferența esențială: în varianta tradițională, investiția în CRM nu ar fi apărut deloc dacă nu exista deja anul trecut; în ZBB, ea intră în buget pentru că a fost justificată explicit, cu beneficiu cuantificat, indiferent de istoric. Acesta este motivul pentru care ZBB e util mai ales atunci când vrei să identifici atât risipa, cât și investițiile subfinanțate.\n\n⚠ Cifrele din exemplele de mai sus sunt **ipotetice**, folosite exclusiv pentru a ilustra mecanismul de calcul. Într-un exercițiu real, folosește execuția bugetară efectivă (din balanța de verificare și contul de profit și pierdere al companiei, întocmite conform OMFP 1802/2014) și implică managerii de departament în construirea pachetelor de decizie — un exercițiu ZBB făcut doar de departamentul financiar, fără input operațional, riscă să taie activități esențiale sau să păstreze cheltuieli ineficiente doar pentru că lipsește informația de context.\n\n## Exercițiu\n**Sarcina ta:** ai datele execuției bugetare din anul precedent pentru departamentul **Achiziții** al unei companii de distribuție:\n\n| Linie | Anul precedent |\n|---|---|\n| Salarii echipă achiziții | 400.000 lei |\n| Licențe software achiziții | 60.000 lei |\n| Deplasări la furnizori | 40.000 lei |\n| Consultanță externă (audit furnizori) | 35.000 lei |\n| Diverse (birotică, protocol) | 15.000 lei |\n| **Total** | **550.000 lei** |\n\nManagementul cere un buget de referință cu ajustare tradițională de **+4%**. Paralel, echipa de achiziții a analizat activitatea și a identificat: (a) posibilitatea implementării unui modul de e-procurement/automatizare care ar elimina nevoia de audit extern anual, cost suplimentar 15.000 lei; (b) o parte din deplasările la furnizori pot fi înlocuite cu negocieri online.\n\n**Cerințe:**\n1. Calculează bugetul tradițional (+4%).\n2. Construiește bugetul ZBB, linie cu linie, cu justificare pentru fiecare modificare.\n3. Calculează diferența în lei și în procente între cele două variante.\n4. Identifică cel puțin două linii unde ZBB recomandă o reducere sau eliminare și motivul.\n\n**Soluție:** **1. Bugetul tradițional (+4%):**\n\n550.000 lei × 1,04 = **572.000 lei**.\n\n**2. Bugetul ZBB (reconstruit și justificat):**\n\n| Linie | ZBB | Justificare |\n|---|---|---|\n| Salarii echipă achiziții | 400.000 lei | Neschimbat — necesar operațional confirmat |\n| Software achiziții + automatizare (nou modul e-procurement) | 75.000 lei (60.000 existent + 15.000 modul nou) | Investiție justificată — elimină nevoia de audit extern |\n| Deplasări la furnizori | 15.000 lei | Redus — o parte din negocieri se mută online |\n| Consultanță externă (audit furnizori) | 0 lei | Eliminată — funcția e preluată de modulul de automatizare |\n| Diverse | 10.000 lei | Redus ușor, fără justificare pentru menținerea nivelului anterior |\n| **Total** | **500.000 lei** | |\n\n**3. Diferența dintre variante:**\n\n572.000 lei (tradițional) − 500.000 lei (ZBB) = **72.000 lei economie**, adică 72.000 / 572.000 ≈ **12,6%**.\n\n**4. Linii cu reducere/eliminare și motivul:**\n\n- **Consultanță externă (audit furnizori)** — eliminată complet (economie 35.000 lei), pentru că funcția e preluată de modulul de automatizare intern, care oferă trasabilitate continuă, nu doar un audit anual punctual.\n- **Deplasări la furnizori** — redusă de la 40.000 la 15.000 lei (economie 25.000 lei), pentru că o parte relevantă din negocieri poate fi mutată în format online, fără impact semnificativ asupra relației cu furnizorii.\n\nObservă că economia totală (72.000 lei) e mai mare decât suma reducerilor brute de mai sus, pentru că din ea s-a scăzut și investiția nouă de 15.000 lei în modulul de automatizare — exact tipul de compensare pe care bugetarea tradițională, bazată doar pe procent aplicat global, nu îl poate surprinde.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "zbb-vs-traditional-comparatie",
+    "md": "## Tradițional vs Zero-Based Budgeting: recapitulare rapidă\n\nÎnainte de exercițiul practic, fixează diferența esențială dintre cele două metodologii:\n\n- **Bugetarea tradițională (incrementală)**: pornești de la bugetul aprobat în anul precedent și îl ajustezi cu un procent (inflație, creștere estimată a activității, decizie de management). Formula de bază: **Buget nou = Buget anul precedent × (1 + % ajustare)**. Fiecare linie de cheltuială e considerată „câștigată” prin simpla ei existență anterioară — nu se rejustifică.\n- **Zero-Based Budgeting (ZBB)**: fiecare cheltuială pornește de la zero (\"buget zero\") și trebuie rejustificată integral, indiferent dacă a existat sau nu în bugetul anterior. Justificarea se face prin **pachete de decizie** (decision packages) — documente scurte care descriu activitatea, costul, beneficiul așteptat și consecința dacă pachetul nu e aprobat.\n\nDiferența nu e doar tehnică, ci de filozofie: bugetarea tradițională întreabă \"cât creștem față de anul trecut?\", iar ZBB întreabă \"această cheltuială s-ar mai justifica dacă am porni de la zero, azi?\". Exercițiul comparativ din această lecție te ajută să vezi, cu cifre concrete, unde apar diferențele reale între cele două răspunsuri.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "criterii-comparatie-bugetara",
+    "md": "## Ce compari, de fapt, într-un exercițiu tradițional vs ZBB\n\nUn exercițiu comparativ bine făcut nu se oprește la \"care buget e mai mic\". Analizează minimum patru criterii:\n\n1. **Valoarea totală și structura pe linii** — unde apar diferențe de sumă și de ce (eliminare, reducere, realocare sau chiar creștere justificată).\n2. **Transparența deciziei** — în bugetarea tradițională, motivul unei sume e adesea \"așa a fost și anul trecut\"; în ZBB, fiecare linie are un pachet de decizie cu justificare explicită, ceea ce facilitează auditul intern și discuția cu board-ul.\n3. **Timpul și efortul de elaborare** — ZBB necesită de regulă de 3-5 ori mai mult timp decât ajustarea incrementală, pentru că fiecare manager de departament trebuie să documenteze și să ranking-eze activitățile.\n4. **Riscul de a pierde activități valoroase** — dacă procesul ZBB e făcut superficial (sub presiune de timp), există riscul de a tăia activități cu impact real doar pentru că nu au fost documentate bine, în timp ce bugetarea tradițională le-ar fi păstrat automat.\n\nÎn practică, majoritatea companiilor din România care aplică ZBB o fac selectiv, pe departamentele cu cea mai mare pondere de cheltuieli discreționare (marketing, consultanță, deplasări), nu pe toată organizația deodată — tocmai din cauza efortului de la punctul 3.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metodologie-exercitiu-comparativ",
+    "md": "## Pașii unui exercițiu comparativ (metodologie de lucru)\n\nCa să compari corect cele două metode pentru același departament, urmează acești pași:\n\n1. **Alege departamentul și perioada de referință** — ai nevoie de execuția bugetară a anului precedent, defalcată pe linii de cheltuială.\n2. **Construiește varianta tradițională** — aplică procentul de ajustare convenit (ex. inflație estimată sau target de creștere a activității) pe fiecare linie sau pe total.\n3. **Descompune activitatea în pachete de decizie pentru ZBB** — separă cheltuielile în unități logice (ex. \"campanie Google Ads\", \"eveniment anual\", \"licențe software\"), nu doar pe conturi contabile.\n4. **Evaluează fiecare pachet**: cost estimat, beneficiu așteptat (cuantificat cât se poate: leaduri generate, ore economisite, risc redus), și ce se întâmplă dacă pachetul NU e aprobat.\n5. **Clasifică (rank) pachetele** după raportul beneficiu/cost și alocă bugetul disponibil de sus în jos, până se epuizează plafonul stabilit de management.\n6. **Compară rezultatul final cu varianta tradițională** — documentează diferențele pe fiecare linie și motivul lor (eliminare, reducere, menținere, creștere justificată).\n\nAcest proces transformă exercițiul dintr-o simplă scădere aritmetică într-un instrument real de decizie managerială, util mai ales când prezinți rezultatele board-ului.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b3"
+   },
+   {
+    "type": "example",
+    "title": "Departamentul Marketing — comparație numerică completă",
+    "concept_key": "zbb-vs-traditional-comparatie",
+    "md": "**Context (cifre ipotetice, folosite doar ca exemplu didactic):** o companie SRL din București, departament Marketing, buget executat anul precedent = 500.000 lei.\n\n**Varianta tradițională (+5% față de anul precedent):**\n\n| Linie | Anul precedent | Tradițional (+5%) |\n|---|---|---|\n| Salarii echipă | 285.000 lei | 300.000 lei |\n| Publicitate online | 114.000 lei | 120.000 lei |\n| Evenimente | 48.000 lei | 50.000 lei |\n| Deplasări | 29.000 lei | 30.000 lei |\n| Abonamente/diverse | 24.000 lei | 25.000 lei |\n| **Total** | **500.000 lei** | **525.000 lei** |\n\n**Varianta ZBB (fiecare linie reconstruită și justificată prin decision package):**\n\n| Linie | ZBB | Justificare |\n|---|---|---|\n| Salarii echipă | 280.000 lei | Restructurare ușoară, un rol redistribuit |\n| Publicitate online | 150.000 lei | Crescut — ROI dovedit pe Google/Meta Ads |\n| Evenimente | 20.000 lei | Redus — un singur eveniment cu ROI clar, restul eliminate |\n| Deplasări | 15.000 lei | Redus — mai multe întâlniri online |\n| Abonamente/diverse | 30.000 lei | Crescut — tool nou de marketing automation |\n| **Total** | **495.000 lei** | |\n\n**Rezultatul comparației:** ZBB propune un buget cu 30.000 lei mai mic (495.000 vs 525.000 lei), adică o economie de aproximativ 5,7%. Important: economia nu vine dintr-o tăiere uniformă, ci dintr-o **realocare** — banii sunt mutați din activități cu ROI slab (evenimente, deplasări) spre activități cu ROI dovedit (publicitate online performantă, automatizare).",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b4"
+   },
+   {
+    "type": "example",
+    "title": "Departamentul Suport Vânzări — când ZBB propune un buget mai mare",
+    "concept_key": "zbb-vs-traditional-comparatie",
+    "md": "ZBB nu înseamnă automat \"buget mai mic\" — uneori un pachet de decizie bine justificat propune o creștere, dacă beneficiul cuantificat o susține.\n\n**Context (cifre ipotetice):** subsidiară RO a unei multinaționale, departament Suport Vânzări, buget anul precedent = 300.000 lei.\n\n- **Varianta tradițională (+4%):** 300.000 lei × 1,04 = **312.000 lei**.\n- **Varianta ZBB:** echipa a construit un decision package pentru implementarea unui modul CRM avansat cu automatizare a răspunsurilor către clienți, cost suplimentar 28.000 lei/an. Beneficiul cuantificat în pachet: reducerea timpului mediu de răspuns de la 24h la 4h și o creștere estimată a retenției de clienți, care compensează investiția în mai puțin de un an. Restul liniilor rămân neschimbate față de anul precedent (300.000 lei). Total ZBB = 300.000 + 28.000 = **328.000 lei**.\n\n**Rezultatul comparației:** ZBB propune un buget cu 16.000 lei mai mare decât varianta tradițională (328.000 vs 312.000 lei). Diferența esențială: în varianta tradițională, investiția în CRM nu ar fi apărut deloc dacă nu exista deja anul trecut; în ZBB, ea intră în buget pentru că a fost justificată explicit, cu beneficiu cuantificat, indiferent de istoric. Acesta este motivul pentru care ZBB e util mai ales atunci când vrei să identifici atât risipa, cât și investițiile subfinanțate.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cifrele din exemplele de mai sus sunt **ipotetice**, folosite exclusiv pentru a ilustra mecanismul de calcul. Într-un exercițiu real, folosește execuția bugetară efectivă (din balanța de verificare și contul de profit și pierdere al companiei, întocmite conform OMFP 1802/2014) și implică managerii de departament în construirea pachetelor de decizie — un exercițiu ZBB făcut doar de departamentul financiar, fără input operațional, riscă să taie activități esențiale sau să păstreze cheltuieli ineficiente doar pentru că lipsește informația de context.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "**Sarcina ta:** ai datele execuției bugetare din anul precedent pentru departamentul **Achiziții** al unei companii de distribuție:\n\n| Linie | Anul precedent |\n|---|---|\n| Salarii echipă achiziții | 400.000 lei |\n| Licențe software achiziții | 60.000 lei |\n| Deplasări la furnizori | 40.000 lei |\n| Consultanță externă (audit furnizori) | 35.000 lei |\n| Diverse (birotică, protocol) | 15.000 lei |\n| **Total** | **550.000 lei** |\n\nManagementul cere un buget de referință cu ajustare tradițională de **+4%**. Paralel, echipa de achiziții a analizat activitatea și a identificat: (a) posibilitatea implementării unui modul de e-procurement/automatizare care ar elimina nevoia de audit extern anual, cost suplimentar 15.000 lei; (b) o parte din deplasările la furnizori pot fi înlocuite cu negocieri online.\n\n**Cerințe:**\n1. Calculează bugetul tradițional (+4%).\n2. Construiește bugetul ZBB, linie cu linie, cu justificare pentru fiecare modificare.\n3. Calculează diferența în lei și în procente între cele două variante.\n4. Identifică cel puțin două linii unde ZBB recomandă o reducere sau eliminare și motivul.",
+    "solution_md": "**1. Bugetul tradițional (+4%):**\n\n550.000 lei × 1,04 = **572.000 lei**.\n\n**2. Bugetul ZBB (reconstruit și justificat):**\n\n| Linie | ZBB | Justificare |\n|---|---|---|\n| Salarii echipă achiziții | 400.000 lei | Neschimbat — necesar operațional confirmat |\n| Software achiziții + automatizare (nou modul e-procurement) | 75.000 lei (60.000 existent + 15.000 modul nou) | Investiție justificată — elimină nevoia de audit extern |\n| Deplasări la furnizori | 15.000 lei | Redus — o parte din negocieri se mută online |\n| Consultanță externă (audit furnizori) | 0 lei | Eliminată — funcția e preluată de modulul de automatizare |\n| Diverse | 10.000 lei | Redus ușor, fără justificare pentru menținerea nivelului anterior |\n| **Total** | **500.000 lei** | |\n\n**3. Diferența dintre variante:**\n\n572.000 lei (tradițional) − 500.000 lei (ZBB) = **72.000 lei economie**, adică 72.000 / 572.000 ≈ **12,6%**.\n\n**4. Linii cu reducere/eliminare și motivul:**\n\n- **Consultanță externă (audit furnizori)** — eliminată complet (economie 35.000 lei), pentru că funcția e preluată de modulul de automatizare intern, care oferă trasabilitate continuă, nu doar un audit anual punctual.\n- **Deplasări la furnizori** — redusă de la 40.000 la 15.000 lei (economie 25.000 lei), pentru că o parte relevantă din negocieri poate fi mutată în format online, fără impact semnificativ asupra relației cu furnizorii.\n\nObservă că economia totală (72.000 lei) e mai mare decât suma reducerilor brute de mai sus, pentru că din ea s-a scăzut și investiția nouă de 15.000 lei în modulul de automatizare — exact tipul de compensare pe care bugetarea tradițională, bazată doar pe procent aplicat global, nu îl poate surprinde.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În exemplul departamentului Marketing, bugetul tradițional a fost 525.000 lei, iar ZBB a rezultat în 495.000 lei. Cât reprezintă economia realizată prin ZBB, în procente (aproximativ)?",
+    "choices": [
+     "~5,7%",
+     "~12,6%",
+     "~15%",
+     "~2%"
+    ],
+    "answer": 0,
+    "explain": "30.000 lei economie / 525.000 lei buget tradițional ≈ 5,7%.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența metodologică esențială dintre bugetarea tradițională și Zero-Based Budgeting?",
+    "choices": [
+     "ZBB reconstruiește fiecare cheltuială de la zero și o justifică prin decision packages; bugetarea tradițională ajustează bugetul anului precedent cu un procent, fără rejustificare linie cu linie",
+     "ZBB se bazează exclusiv pe date istorice, iar bugetarea tradițională le ignoră complet",
+     "Cele două metode sunt echivalente, diferă doar denumirea folosită în raportare",
+     "ZBB se aplică numai veniturilor, iar bugetarea tradițională numai cheltuielilor"
+    ],
+    "answer": 0,
+    "explain": "ZBB pornește de la buget zero și cere justificare explicită pentru fiecare linie (prin pachete de decizie), spre deosebire de bugetarea tradițională, care extrapolează bugetul anterior cu un procent de ajustare.",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este bugetarea tradițională (incrementală)?",
+    "back": "Metodă care pornește de la bugetul executat anul precedent și îl ajustează cu un procent (ex. +4-5%), fără a rejustifica fiecare cheltuială în parte.",
+    "concept_key": "bugetare-traditionala-definitie",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Zero-Based Budgeting (ZBB)?",
+    "back": "Metodă în care fiecare cheltuială e reconstruită de la zero în fiecare ciclu bugetar și trebuie justificată printr-un pachet de decizie (decision package), indiferent de bugetul anului precedent.",
+    "concept_key": "zbb-definitie",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un \"decision package\" în ZBB?",
+    "back": "Un document care descrie o activitate sau cheltuială, costul, beneficiul așteptat și consecința neaprobării ei — folosit pentru a justifica și clasifica (rank) alocarea bugetară.",
+    "concept_key": "decision-package-definitie",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este principalul avantaj al ZBB față de bugetarea tradițională?",
+    "back": "Elimină cheltuielile ineficiente moștenite din trecut și realocă resursele spre activitățile cu ROI real, în loc să perpetueze automat bugetul anterior.",
+    "concept_key": "zbb-avantaj-principal",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este principalul dezavantaj al ZBB?",
+    "back": "Necesită mult mai mult timp și efort decât bugetarea incrementală, pentru că fiecare linie de buget trebuie complet rejustificată în fiecare ciclu.",
+    "concept_key": "zbb-dezavantaj-principal",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se calculează un buget tradițional de tip incremental?",
+    "back": "Buget nou = Buget anul precedent × (1 + procent de ajustare) — fără reanaliză linie cu linie a cheltuielilor.",
+    "concept_key": "formula-buget-incremental",
+    "blockId": "cmjjuxw5p00ejumkpn019k9of-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1456,
+   "flashcards": 6
+  }
+ }
+}

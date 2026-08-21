@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxwex00m3umkp9j1sim2c",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Planificare (Cl. 6)",
+ "lesson": "Quiz planificare",
+ "category": "HSE_SAFETY",
+ "content": "Test de evaluare — Quiz planificare (10 întrebări, prag 80%).",
+ "contentJson": {
+  "version": 1,
+  "kind": "quiz",
+  "quiz": {
+   "pass_pct": 80,
+   "questions": [
+    {
+     "q": "Conform ISO 45001, cap. 6.1.1, care este scopul principal al planificării acțiunilor de tratare a riscurilor și oportunităților în cadrul sistemului de management SSM?",
+     "choices": [
+      "Să elimine complet toate accidentele de muncă din organizație",
+      "Să asigure că sistemul de management SSM își poate atinge rezultatele intenționate, poate preveni sau reduce efectele nedorite și poate realiza îmbunătățirea continuă",
+      "Să înlocuiască evaluarea de riscuri impusă de Legea 319/2006",
+      "Să stabilească exclusiv bugetul anual pentru echipamente de protecție"
+     ],
+     "answer": 1,
+     "explain": "Clauza 6.1.1 cere organizației să determine riscurile și oportunitățile care trebuie tratate pentru a oferi asigurare că sistemul de management SSM poate atinge rezultatele dorite, poate preveni efectele nedorite și poate contribui la îmbunătățirea continuă — nu înlocuiește obligațiile legale, ci le integrează.",
+     "concept_key": "iso45001_6.1.1_scop_planificare"
+    },
+    {
+     "q": "La identificarea pericolelor conform 6.1.2.1, care dintre următoarele elemente TREBUIE luat în considerare de organizație?",
+     "choices": [
+      "Doar activitățile de rutină desfășurate în spațiile proprii ale organizației",
+      "Modul în care este organizată munca, factorii sociali (inclusiv volumul de muncă, orele de lucru, hărțuirea și victimizarea), conducerea și cultura organizației",
+      "Doar accidentele înregistrate la ITM în ultimii 12 luni",
+      "Doar echipamentele tehnice noi achiziționate în anul curent"
+     ],
+     "answer": 1,
+     "explain": "Standardul cere luarea în considerare a unui spectru larg de surse: activități de rutină și non-rutină, factori umani, situații de urgență, modul de organizare a muncii, factori sociali (volum de muncă, program, hărțuire), infrastructură, schimbări și incidente anterioare — nu doar activitățile proprii de rutină.",
+     "concept_key": "iso45001_6.1.2.1_identificare_pericole"
+    },
+    {
+     "q": "Când evaluează riscurile SSM asociate pericolelor identificate, organizația trebuie să țină cont de:",
+     "choices": [
+      "Doar probabilitatea teoretică de producere a evenimentului, fără a lua în calcul controalele existente",
+      "Eficacitatea controalelor existente și evaluarea riscurilor pe baza clasificării pericolelor conform metodologiei stabilite de organizație",
+      "Numai costul potențial al amenzilor aplicate de ITM",
+      "Exclusiv opinia lucrătorilor, fără o metodologie documentată"
+     ],
+     "answer": 1,
+     "explain": "Conform 6.1.2.2, evaluarea riscurilor SSM trebuie să aibă în vedere eficacitatea controalelor deja existente, folosind o metodologie și criterii definite de organizație (documentate și aplicate consecvent), nu doar impresii subiective sau considerente pur financiare.",
+     "concept_key": "iso45001_6.1.2.2_evaluare_riscuri"
+    },
+    {
+     "q": "O firmă RO (SRL) din construcții observă că un proces de sudură generează expuneri la fum toxic. Aplicând ierarhia controalelor din 6.1.4, care măsură ar trebui evaluată și prioritizată ÎNAINTEA echipamentului individual de protecție (mască de sudură)?",
+     "choices": [
+      "Afișarea unui panou de avertizare privind riscul de fum toxic",
+      "Instalarea unui sistem de ventilație/extracție localizată la sursă (control ingineresc)",
+      "Instruirea periodică suplimentară a sudorilor",
+      "Elaborarea unei proceduri administrative de rotație a personalului"
+     ],
+     "answer": 1,
+     "explore": null,
+     "explain": "Ierarhia controalelor prevede, în ordine descrescătoare a eficacității: eliminare, substituire, controale inginerești, semnalizare/avertizări/controale administrative, iar EIP este ultima linie de apărare. Ventilația localizată (control inginerește) reduce riscul la sursă și trebuie evaluată înaintea EIP, a semnalizării sau a măsurilor administrative.",
+     "concept_key": "iso45001_6.1.4_ierarhia_controalelor"
+    },
+    {
+     "q": "Referitor la cerințele legale și alte cerințe (6.1.3), ce obligație are organizația în contextul românesc, dincolo de simpla identificare a legislației aplicabile (ex. Legea 319/2006, HG 1425/2006)?",
+     "choices": [
+      "Să publice legislația identificată pe site-ul propriu, fără alte acțiuni",
+      "Să determine modul în care aceste cerințe se aplică organizației, să le mențină actualizate și să țină cont de ele la stabilirea, implementarea și menținerea SMSSM",
+      "Să transmită anual cerințele legale către ITM spre aprobare prealabilă",
+      "Să limiteze aplicarea acestor cerințe doar la sediul central"
+     ],
+     "answer": 1,
+     "explain": "Standardul cere nu doar identificarea cerințelor legale (precum Legea 319/2006 privind SSM și HG 1425/2006 pentru normele metodologice), ci și determinarea modului de aplicare, păstrarea informațiilor actualizate și integrarea lor efectivă în SMSSM — nu există o cerință de aprobare prealabilă de la ITM.",
+     "concept_key": "iso45001_6.1.3_cerinte_legale"
+    },
+    {
+     "q": "Care dintre următoarele seturi de caracteristici corespunde cerințelor pentru obiectivele SSM conform clauzei 6.2.1?",
+     "choices": [
+      "Să fie stabilite exclusiv de conducerea de vârf, fără comunicare către lucrători",
+      "Să fie coerente cu politica SSM, măsurabile (dacă este posibil) sau evaluabile în privința performanței, să țină cont de cerințele aplicabile, să fie monitorizate, comunicate și actualizate după caz",
+      "Să fie identice pentru toate departamentele organizației, indiferent de riscurile specifice",
+      "Să fie revizuite o singură dată, la certificarea inițială a sistemului"
+     ],
+     "answer": 1,
+     "explain": "6.2.1 impune ca obiectivele SSM să fie coerente cu politica, măsurabile sau evaluabile, să ia în calcul cerințele aplicabile și rezultatele evaluării riscurilor/oportunităților, să fie monitorizate, comunicate lucrătorilor relevanți și actualizate periodic — nu sunt statice și nici uniforme fără justificare pe baza riscurilor specifice fiecărei activități.",
+     "concept_key": "iso45001_6.2.1_caracteristici_obiective"
+    },
+    {
+     "q": "La planificarea acțiunilor pentru atingerea obiectivelor SSM (6.2.2), organizația trebuie să determine, pentru fiecare obiectiv, cel puțin:",
+     "choices": [
+      "Ce se va face, ce resurse sunt necesare, cine este responsabil, când va fi finalizat și cum vor fi evaluate rezultatele, inclusiv indicatorii de monitorizare",
+      "Doar termenul limită de finalizare, restul detaliilor fiind opționale",
+      "Numai persoana responsabilă, fără alocare de resurse sau termen",
+      "Doar bugetul alocat, fără alte elemente de planificare"
+     ],
+     "answer": 0,
+     "explain": "6.2.2 cere o planificare completă: ce se va face, resursele necesare, responsabilul, termenul de finalizare, modul de evaluare a rezultatelor (inclusiv indicatori) și modul de integrare a acțiunilor în procesele de business ale organizației — un singur element (ex. doar termenul) nu este suficient.",
+     "concept_key": "iso45001_6.2.2_planificare_obiective"
+    },
+    {
+     "q": "Prin ce se diferențiază evaluarea \"altor riscuri\" (other risks) de evaluarea riscurilor SSM propriu-zise, conform 6.1.2.2?",
+     "choices": [
+      "\"Alte riscuri\" nu trebuie evaluate niciodată în cadrul unui SMSSM certificat ISO 45001",
+      "\"Alte riscuri\" se referă la riscuri pentru eficacitatea și funcționarea sistemului de management SSM (de exemplu resurse insuficiente, schimbări organizaționale neplanificate), distincte de riscurile SSM legate direct de pericole pentru lucrători",
+      "\"Alte riscuri\" sunt sinonime cu riscurile SSM și se evaluează identic, fără nicio diferență de scop",
+      "\"Alte riscuri\" se referă exclusiv la riscurile financiare ale companiei, complet separate de SMSSM"
+     ],
+     "answer": 1,
+     "explain": "Standardul distinge riscurile SSM (asociate direct pericolelor pentru sănătatea și securitatea lucrătorilor) de \"alte riscuri\" pentru sistemul de management în sine, precum resurse insuficiente, lipsa de implicare a conducerii sau schimbări organizaționale care ar putea compromite eficacitatea SMSSM.",
+     "concept_key": "iso45001_6.1.2.2_alte_riscuri"
+    },
+    {
+     "q": "Conform 6.1.2.3, ce reprezintă o \"oportunitate SSM\" în contextul planificării, și cum trebuie tratată în raport cu riscurile identificate?",
+     "choices": [
+      "O oportunitate SSM înseamnă strict reducerea costurilor cu echipamentele de protecție, indiferent de impactul asupra riscurilor",
+      "O oportunitate SSM este o circumstanță sau un set de circumstanțe care poate conduce la îmbunătățirea performanței SSM (de exemplu adaptarea proceselor, a locului de muncă, a echipamentelor sau reorganizarea muncii), evaluată alături de alte oportunități de îmbunătățire a sistemului de management",
+      "O oportunitate SSM se referă exclusiv la extinderea numărului de angajați",
+      "Oportunitățile SSM nu au legătură cu procesul de planificare din cap. 6 și se tratează doar la cap. 10 (îmbunătățire)"
+     ],
+     "answer": 1,
+     "explain": "6.1.2.3 cere evaluarea oportunităților de îmbunătățire a performanței SSM (adaptarea muncii, proceselor sau echipamentelor, eliminarea pericolelor, îmbunătățirea condițiilor de lucru) alături de alte oportunități pentru sistemul de management — acestea sunt parte integrantă a planificării din cap. 6, nu doar a îmbunătățirii continue din cap. 10.",
+     "concept_key": "iso45001_6.1.2.3_oportunitati_ssm"
+    },
+    {
+     "q": "O organizație RO integrează ieșirile din procesul de planificare (cap. 6) în operare (cap. 8) și în programul de audit intern. Care este cea mai corectă interpretare a legăturii dintre 6.1.4 (planificarea acțiunilor) și restul sistemului de management SSM, la nivel avansat?",
+     "choices": [
+      "Acțiunile planificate conform 6.1 și obiectivele din 6.2 trebuie integrate în procesele de business ale organizației (operare, controlul schimbării, competențe, comunicare) și evaluate periodic pentru eficacitate, asigurând coerența cu abordarea PDCA a standardului",
+      "Planificarea din cap. 6 este un exercițiu independent, documentat separat, fără nicio legătură cu clauzele 7, 8, 9 și 10",
+      "Este suficient ca planificarea să fie realizată o singură dată, la implementarea inițială a sistemului, fără actualizări ulterioare",
+      "Planificarea acțiunilor se aplică doar activităților administrative, nu și proceselor operaționale de producție sau șantier"
+     ],
+     "answer": 0,
+     "explain": "La nivel avansat, ISO 45001 funcționează pe logica PDCA: rezultatele planificării (cap. 6) trebuie integrate activ în operare, managementul schimbării, resurse și competențe (cap. 7-8), monitorizate prin audit și evaluare a performanței (cap. 9) și revizuite pentru îmbunătățire continuă (cap. 10) — planificarea nu este un document static și izolat, ci un proces dinamic, integrat.",
+     "concept_key": "iso45001_6_integrare_pdca"
+    }
+   ]
+  },
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "questions": 10
+  }
+ }
+}

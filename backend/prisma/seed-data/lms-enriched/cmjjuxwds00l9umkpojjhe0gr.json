@@ -1,0 +1,148 @@
+{
+ "lessonId": "cmjjuxwds00l9umkpojjhe0gr",
+ "courseId": "cmjjuxwdm00l3umkpqg8lzqid",
+ "course": "ISO 45001 - Sistem de Management SSM",
+ "module": "Introducere ISO 45001",
+ "lesson": "Structura standardului",
+ "category": "HSE_SAFETY",
+ "content": "# Structura standardului\n\nISO 45001:2018 este primul standard internațional de sistem de management al securității și sănătății în muncă (SSM) construit pe High Level Structure (HLS), cunoscută și ca Anexa SL (Annex SL) — o schemă comună impusă de Organizația Internațională de Standardizare (ISO) tuturor standardelor noi de sisteme de management, precum ISO 9001 (calitate) și ISO 14001 (mediu).\n\nHLS înseamnă că toate standardele de sistem de management publicate după 2012 respectă aceeași ordine de 10 clauze, aceeași terminologie de bază și aceeași logică de cerințe. Practic, structura de bază a ISO 45001 este identică cu cea a ISO 9001:2015 și ISO 14001:2015 — diferă doar conținutul specific domeniului (SSM, calitate sau mediu).\n\nPentru tine, ca specialist SSM sau manager de sistem, HLS aduce un avantaj esențial: dacă organizația ta este deja certificată ISO 9001 sau ISO 14001, poți integra sistemul SSM folosind aceleași proceduri de context organizațional, leadership, planificare, documentație și audit intern, fără să dublezi eforturile. Se numesc sisteme de management integrate (SMI) și reduc semnificativ costurile de implementare și menținere.\n\nStandardul ISO 45001:2018 este organizat în 10 clauze. Primele trei sunt introductive și nu conțin cerințe de implementat ca atare, iar clauzele 4-10 conțin toate cerințele auditabile ale sistemului de management SSM:\n\n1. Domeniu de aplicare — definește limitele și aplicabilitatea standardului.\n2. Referințe normative — ISO 45001 nu are referințe normative obligatorii (clauză goală, menținută doar pentru consecvența HLS).\n3. Termeni și definiții — 37 de termeni și definiții specifice SSM.\n4. Contextul organizației — identificarea problemelor interne/externe, a părților interesate și determinarea domeniului de aplicare al sistemului.\n5. Leadership și participarea lucrătorilor — angajamentul managementului de vârf, politica SSM, roluri, responsabilități și, esențial pentru ISO 45001, consultarea și participarea activă a lucrătorilor.\n6. Planificare — identificarea pericolelor, evaluarea riscurilor și oportunităților, determinarea cerințelor legale, stabilirea obiectivelor SSM.\n7. Suport — resurse, competențe, conștientizare, comunicare, informații documentate.\n8. Operare — planificare și control operațional, pregătire și răspuns la situații de urgență.\n9. Evaluarea performanței — monitorizare, măsurare, analiză, audit intern, analiza efectuată de management.\n10. Îmbunătățire — tratarea incidentelor, neconformităților, acțiunilor corective, îmbunătățirea continuă.\n\nReține: clauzele 1-3 stabilesc cadrul, iar clauzele 4-10 sunt cele pe care le verifică auditorul de certificare, pas cu pas, în orice audit intern sau extern.\n\nClauzele 4-10 nu sunt doar o listă — ele urmează logica ciclului Plan-Do-Check-Act (PDCA), promovat de Deming, care stă la baza îmbunătățirii continue în toate standardele de management:\n\n- Plan (Planifică) — clauzele 4 (Context), 5 (Leadership) și 6 (Planificare). Aici organizația își definește contextul, obține angajamentul conducerii și planifică modul de identificare a pericolelor și de tratare a riscurilor.\n- Do (Execută) — clauzele 7 (Suport) și 8 (Operare). Aici se alocă resursele, se instruiesc lucrătorii și se implementează controalele operaționale.\n- Check (Verifică) — clauza 9 (Evaluarea performanței). Aici se monitorizează indicatorii SSM, se conduc audituri interne și se realizează analiza de management.\n- Act (Acționează) — clauza 10 (Îmbunătățire). Aici se tratează incidentele și neconformitățile constatate și se implementează acțiuni corective care alimentează un nou ciclu PDCA.\n\nAceastă buclă este continuă: rezultatele etapei Act devin input pentru o nouă etapă Plan, ceea ce garantează îmbunătățirea constantă a performanței SSM, nu doar o conformare punctuală la momentul certificării.\n\nClauza 3 a ISO 45001:2018 definește 37 de termeni, mulți diferiți față de vechiul OHSAS 18001. Cei mai importanți, pe care trebuie să-i cunoști exact pentru audit și implementare:\n\n- Organizație — persoană sau grup de persoane cu propriile funcții, responsabilități, autorități și relații pentru a-și atinge obiectivele.\n- Parte interesată (stakeholder) — persoană sau organizație care poate afecta, poate fi afectată de, sau se poate percepe afectată de o decizie sau activitate (ex.: lucrători, ITM, sindicat, comunitate).\n- Lucrător — persoană care desfășoară muncă sau activități legate de muncă aflate sub controlul organizației (angajați, dar și subcontractori, voluntari, personal temporar).\n- Loc de muncă — loc aflat sub controlul organizației unde o persoană trebuie să fie sau să meargă din motive de muncă.\n- Pericol (hazard) — sursă cu potențial de a cauza vătămare sau îmbolnăvire.\n- Risc pentru SSM — combinație a probabilității de apariție a unui eveniment periculos legat de muncă și a gravității vătămării sau îmbolnăvirii cauzate de eveniment.\n- Oportunitate pentru SSM — circumstanță care poate duce la îmbunătățirea performanței SSM.\n- Incident — eveniment care generează sau ar putea genera vătămare sau îmbolnăvire.\n- Neconformitate — neîndeplinire a unei cerințe.\n- Acțiune corectivă — acțiune de eliminare a cauzei unei neconformități, pentru a preveni reapariția.\n\nDiferența majoră față de standardele anterioare: definiția riscului SSM include explicit atât probabilitatea, cât și gravitatea, iar standardul introduce pentru prima dată conceptul de 'oportunitate' aplicat la SSM, nu doar la calitate.\n\n## Exemplu: Aplicarea PDCA într-o firmă de producție\nO firmă SRL cu 60 de angajați, producătoare de mobilier, implementează ISO 45001. Iată cum parcurge ciclul PDCA pentru un singur pericol identificat — lucrul la înălțime la montarea rafturilor de depozitare:\n\nPlan (clauza 6): Responsabilul SSM identifică pericolul 'cădere de la înălțime' în procesul de evaluare a riscurilor (clauza 6.1.2), stabilește nivelul de risc ca fiind ridicat și fixează un obiectiv SSM (clauza 6.2): 'zero căderi de la înălțime în anul curent'.\n\nDo (clauzele 7-8): Se alocă buget pentru echipament individual de protecție (EIP) — hamuri, linii de viață — și se instruiesc lucrătorii (clauza 7.2, coroborată cu instruirea SSM obligatorie conform Legii 319/2006). Se implementează o procedură operațională de lucru la înălțime (clauza 8.1).\n\nCheck (clauza 9): Lunar, responsabilul SSM verifică prin observații pe teren dacă lucrătorii poartă EIP corect și analizează indicatorul 'număr aproape-accidente raportate' în cadrul analizei de management.\n\nAct (clauza 10): Dacă se constată o neconformitate (ex.: un lucrător fără hamul prins corect), se deschide o acțiune corectivă, se investighează cauza rădăcină (poate fi lipsă de instruire sau EIP defect) și rezultatul alimentează următoarea revizuire a evaluării de risc.\n\n## Exemplu: Cum arată documentația pentru fiecare clauză\nUn audit intern sau de certificare va cere dovezi documentate pentru fiecare clauză. Iată o mapare orientativă, utilă pentru pregătirea unui dosar de certificare:\n\n- Clauza 4.3 (domeniul sistemului) → Document 'Domeniul sistemului de management SSM', cu limitele fizice și organizaționale.\n- Clauza 5.2 (leadership) → Politica SSM, semnată de directorul general, afișată la loc vizibil.\n- Clauza 6.1.2 → Registrul de identificare a pericolelor și evaluare a riscurilor (matrice probabilitate x gravitate).\n- Clauza 6.1.3 → Registrul cerințelor legale și al altor cerințe (inclusiv Legea 319/2006, HG 1425/2006 și normele specifice activității).\n- Clauza 7.5 → Procedura de control al informațiilor documentate.\n- Clauza 8.2 → Planul de răspuns la situații de urgență și dovezi ale exercițiilor de simulare.\n- Clauza 9.2 → Programul de audit intern și rapoartele de audit.\n- Clauza 10.2 → Registrul de incidente, neconformități și acțiuni corective.\n\nAceastă mapare te ajută să nu confunzi cerințele: fiecare document trebuie să răspundă exact clauzei căreia îi corespunde, nu doar să existe generic în arhiva firmei.\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă, cu Normele metodologice de aplicare aprobate prin HG nr. 1425/2006 art. 7 alin. (4) lit. a) și art. 20 (instruirea lucrătorilor) (în vigoare de la 2006-07-26)\nDeși ISO 45001 este un standard voluntar, clauza 6.1.3 ('Determinarea cerințelor legale și a altor cerințe') obligă organizația certificată să identifice și să respecte toate obligațiile legale aplicabile în materie de SSM. În România, actul de bază este Legea nr. 319/2006 a securității și sănătății în muncă, care stabilește obligațiile angajatorului privind evaluarea riscurilor, instruirea lucrătorilor (instruire introductiv-generală, instruire la locul de muncă, instruire periodică) și organizarea activității de prevenire. Normele metodologice de aplicare sunt aprobate prin HG 1425/2006. Autoritatea de control care verifică respectarea acestor obligații este Inspectoratul Teritorial de Muncă (ITM). Registrul cerințelor legale cerut de clauza 6.1.3 trebuie să facă trimitere explicită la aceste acte normative, actualizate la zi.\n\n⚠ Nu confunda certificarea ISO 45001 cu conformarea legală. ISO 45001 este un standard voluntar de sistem de management — certificarea de către un organism acreditat atestă că ai un sistem funcțional, dar nu te scutește de nicio obligație din Legea 319/2006 sau din legislația conexă. Un auditor de certificare ISO nu aplică amenzi ITM, dar o neconformare legală (de exemplu, lipsa instruirii periodice) va fi tratată ca neconformitate majoră la clauza 6.1.3 și poate bloca certificarea.\n\n## Exercițiu\nAi la dispoziție următoarele patru activități desfășurate într-o companie aflată în proces de implementare ISO 45001. Asociază fiecare activitate cu clauza corectă din standard (4-10):\n\na) Directorul general semnează și comunică politica SSM a companiei.\nb) Se realizează evaluarea riscurilor pentru toate posturile de lucru.\nc) Se efectuează auditul intern anual al sistemului de management SSM.\nd) Se investighează un accident de muncă și se stabilește o acțiune corectivă.\n\n**Soluție:** a) Clauza 5 — Leadership și participarea lucrătorilor (politica SSM este cerință explicită a clauzei 5.2).\nb) Clauza 6 — Planificare (identificarea pericolelor și evaluarea riscurilor, clauza 6.1.2).\nc) Clauza 9 — Evaluarea performanței (auditul intern, clauza 9.2).\nd) Clauza 10 — Îmbunătățire (investigarea incidentelor și acțiunea corectivă, clauza 10.2).\n\nObservă cum cele patru activități acoperă practic întregul ciclu PDCA: Plan (b), Do (implicit prin a, ca angajament de leadership), Check (c) și Act (d).",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "hls-anexa-sl",
+    "md": "ISO 45001:2018 este primul standard internațional de sistem de management al securității și sănătății în muncă (SSM) construit pe High Level Structure (HLS), cunoscută și ca Anexa SL (Annex SL) — o schemă comună impusă de Organizația Internațională de Standardizare (ISO) tuturor standardelor noi de sisteme de management, precum ISO 9001 (calitate) și ISO 14001 (mediu).\n\nHLS înseamnă că toate standardele de sistem de management publicate după 2012 respectă aceeași ordine de 10 clauze, aceeași terminologie de bază și aceeași logică de cerințe. Practic, structura de bază a ISO 45001 este identică cu cea a ISO 9001:2015 și ISO 14001:2015 — diferă doar conținutul specific domeniului (SSM, calitate sau mediu).\n\nPentru tine, ca specialist SSM sau manager de sistem, HLS aduce un avantaj esențial: dacă organizația ta este deja certificată ISO 9001 sau ISO 14001, poți integra sistemul SSM folosind aceleași proceduri de context organizațional, leadership, planificare, documentație și audit intern, fără să dublezi eforturile. Se numesc sisteme de management integrate (SMI) și reduc semnificativ costurile de implementare și menținere.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "cele-10-clauze-iso-45001",
+    "md": "Standardul ISO 45001:2018 este organizat în 10 clauze. Primele trei sunt introductive și nu conțin cerințe de implementat ca atare, iar clauzele 4-10 conțin toate cerințele auditabile ale sistemului de management SSM:\n\n1. Domeniu de aplicare — definește limitele și aplicabilitatea standardului.\n2. Referințe normative — ISO 45001 nu are referințe normative obligatorii (clauză goală, menținută doar pentru consecvența HLS).\n3. Termeni și definiții — 37 de termeni și definiții specifice SSM.\n4. Contextul organizației — identificarea problemelor interne/externe, a părților interesate și determinarea domeniului de aplicare al sistemului.\n5. Leadership și participarea lucrătorilor — angajamentul managementului de vârf, politica SSM, roluri, responsabilități și, esențial pentru ISO 45001, consultarea și participarea activă a lucrătorilor.\n6. Planificare — identificarea pericolelor, evaluarea riscurilor și oportunităților, determinarea cerințelor legale, stabilirea obiectivelor SSM.\n7. Suport — resurse, competențe, conștientizare, comunicare, informații documentate.\n8. Operare — planificare și control operațional, pregătire și răspuns la situații de urgență.\n9. Evaluarea performanței — monitorizare, măsurare, analiză, audit intern, analiza efectuată de management.\n10. Îmbunătățire — tratarea incidentelor, neconformităților, acțiunilor corective, îmbunătățirea continuă.\n\nReține: clauzele 1-3 stabilesc cadrul, iar clauzele 4-10 sunt cele pe care le verifică auditorul de certificare, pas cu pas, în orice audit intern sau extern.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "ciclul-pdca-iso-45001",
+    "md": "Clauzele 4-10 nu sunt doar o listă — ele urmează logica ciclului Plan-Do-Check-Act (PDCA), promovat de Deming, care stă la baza îmbunătățirii continue în toate standardele de management:\n\n- Plan (Planifică) — clauzele 4 (Context), 5 (Leadership) și 6 (Planificare). Aici organizația își definește contextul, obține angajamentul conducerii și planifică modul de identificare a pericolelor și de tratare a riscurilor.\n- Do (Execută) — clauzele 7 (Suport) și 8 (Operare). Aici se alocă resursele, se instruiesc lucrătorii și se implementează controalele operaționale.\n- Check (Verifică) — clauza 9 (Evaluarea performanței). Aici se monitorizează indicatorii SSM, se conduc audituri interne și se realizează analiza de management.\n- Act (Acționează) — clauza 10 (Îmbunătățire). Aici se tratează incidentele și neconformitățile constatate și se implementează acțiuni corective care alimentează un nou ciclu PDCA.\n\nAceastă buclă este continuă: rezultatele etapei Act devin input pentru o nouă etapă Plan, ceea ce garantează îmbunătățirea constantă a performanței SSM, nu doar o conformare punctuală la momentul certificării.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "termeni-definitii-clauza-3",
+    "md": "Clauza 3 a ISO 45001:2018 definește 37 de termeni, mulți diferiți față de vechiul OHSAS 18001. Cei mai importanți, pe care trebuie să-i cunoști exact pentru audit și implementare:\n\n- Organizație — persoană sau grup de persoane cu propriile funcții, responsabilități, autorități și relații pentru a-și atinge obiectivele.\n- Parte interesată (stakeholder) — persoană sau organizație care poate afecta, poate fi afectată de, sau se poate percepe afectată de o decizie sau activitate (ex.: lucrători, ITM, sindicat, comunitate).\n- Lucrător — persoană care desfășoară muncă sau activități legate de muncă aflate sub controlul organizației (angajați, dar și subcontractori, voluntari, personal temporar).\n- Loc de muncă — loc aflat sub controlul organizației unde o persoană trebuie să fie sau să meargă din motive de muncă.\n- Pericol (hazard) — sursă cu potențial de a cauza vătămare sau îmbolnăvire.\n- Risc pentru SSM — combinație a probabilității de apariție a unui eveniment periculos legat de muncă și a gravității vătămării sau îmbolnăvirii cauzate de eveniment.\n- Oportunitate pentru SSM — circumstanță care poate duce la îmbunătățirea performanței SSM.\n- Incident — eveniment care generează sau ar putea genera vătămare sau îmbolnăvire.\n- Neconformitate — neîndeplinire a unei cerințe.\n- Acțiune corectivă — acțiune de eliminare a cauzei unei neconformități, pentru a preveni reapariția.\n\nDiferența majoră față de standardele anterioare: definiția riscului SSM include explicit atât probabilitatea, cât și gravitatea, iar standardul introduce pentru prima dată conceptul de 'oportunitate' aplicat la SSM, nu doar la calitate.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b4"
+   },
+   {
+    "type": "example",
+    "title": "Aplicarea PDCA într-o firmă de producție",
+    "concept_key": "exemplu-pdca-productie",
+    "md": "O firmă SRL cu 60 de angajați, producătoare de mobilier, implementează ISO 45001. Iată cum parcurge ciclul PDCA pentru un singur pericol identificat — lucrul la înălțime la montarea rafturilor de depozitare:\n\nPlan (clauza 6): Responsabilul SSM identifică pericolul 'cădere de la înălțime' în procesul de evaluare a riscurilor (clauza 6.1.2), stabilește nivelul de risc ca fiind ridicat și fixează un obiectiv SSM (clauza 6.2): 'zero căderi de la înălțime în anul curent'.\n\nDo (clauzele 7-8): Se alocă buget pentru echipament individual de protecție (EIP) — hamuri, linii de viață — și se instruiesc lucrătorii (clauza 7.2, coroborată cu instruirea SSM obligatorie conform Legii 319/2006). Se implementează o procedură operațională de lucru la înălțime (clauza 8.1).\n\nCheck (clauza 9): Lunar, responsabilul SSM verifică prin observații pe teren dacă lucrătorii poartă EIP corect și analizează indicatorul 'număr aproape-accidente raportate' în cadrul analizei de management.\n\nAct (clauza 10): Dacă se constată o neconformitate (ex.: un lucrător fără hamul prins corect), se deschide o acțiune corectivă, se investighează cauza rădăcină (poate fi lipsă de instruire sau EIP defect) și rezultatul alimentează următoarea revizuire a evaluării de risc.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b5"
+   },
+   {
+    "type": "example",
+    "title": "Cum arată documentația pentru fiecare clauză",
+    "concept_key": "exemplu-mapare-documentatie-clauze",
+    "md": "Un audit intern sau de certificare va cere dovezi documentate pentru fiecare clauză. Iată o mapare orientativă, utilă pentru pregătirea unui dosar de certificare:\n\n- Clauza 4.3 (domeniul sistemului) → Document 'Domeniul sistemului de management SSM', cu limitele fizice și organizaționale.\n- Clauza 5.2 (leadership) → Politica SSM, semnată de directorul general, afișată la loc vizibil.\n- Clauza 6.1.2 → Registrul de identificare a pericolelor și evaluare a riscurilor (matrice probabilitate x gravitate).\n- Clauza 6.1.3 → Registrul cerințelor legale și al altor cerințe (inclusiv Legea 319/2006, HG 1425/2006 și normele specifice activității).\n- Clauza 7.5 → Procedura de control al informațiilor documentate.\n- Clauza 8.2 → Planul de răspuns la situații de urgență și dovezi ale exercițiilor de simulare.\n- Clauza 9.2 → Programul de audit intern și rapoartele de audit.\n- Clauza 10.2 → Registrul de incidente, neconformități și acțiuni corective.\n\nAceastă mapare te ajută să nu confunzi cerințele: fiecare document trebuie să răspundă exact clauzei căreia îi corespunde, nu doar să existe generic în arhiva firmei.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b6"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă, cu Normele metodologice de aplicare aprobate prin HG nr. 1425/2006",
+    "article": "art. 7 alin. (4) lit. a) și art. 20 (instruirea lucrătorilor)",
+    "effective": "2006-07-26",
+    "md": "Deși ISO 45001 este un standard voluntar, clauza 6.1.3 ('Determinarea cerințelor legale și a altor cerințe') obligă organizația certificată să identifice și să respecte toate obligațiile legale aplicabile în materie de SSM. În România, actul de bază este Legea nr. 319/2006 a securității și sănătății în muncă, care stabilește obligațiile angajatorului privind evaluarea riscurilor, instruirea lucrătorilor (instruire introductiv-generală, instruire la locul de muncă, instruire periodică) și organizarea activității de prevenire. Normele metodologice de aplicare sunt aprobate prin HG 1425/2006. Autoritatea de control care verifică respectarea acestor obligații este Inspectoratul Teritorial de Muncă (ITM). Registrul cerințelor legale cerut de clauza 6.1.3 trebuie să facă trimitere explicită la aceste acte normative, actualizate la zi.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu confunda certificarea ISO 45001 cu conformarea legală. ISO 45001 este un standard voluntar de sistem de management — certificarea de către un organism acreditat atestă că ai un sistem funcțional, dar nu te scutește de nicio obligație din Legea 319/2006 sau din legislația conexă. Un auditor de certificare ISO nu aplică amenzi ITM, dar o neconformare legală (de exemplu, lipsa instruirii periodice) va fi tratată ca neconformitate majoră la clauza 6.1.3 și poate bloca certificarea.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Ai la dispoziție următoarele patru activități desfășurate într-o companie aflată în proces de implementare ISO 45001. Asociază fiecare activitate cu clauza corectă din standard (4-10):\n\na) Directorul general semnează și comunică politica SSM a companiei.\nb) Se realizează evaluarea riscurilor pentru toate posturile de lucru.\nc) Se efectuează auditul intern anual al sistemului de management SSM.\nd) Se investighează un accident de muncă și se stabilește o acțiune corectivă.",
+    "solution_md": "a) Clauza 5 — Leadership și participarea lucrătorilor (politica SSM este cerință explicită a clauzei 5.2).\nb) Clauza 6 — Planificare (identificarea pericolelor și evaluarea riscurilor, clauza 6.1.2).\nc) Clauza 9 — Evaluarea performanței (auditul intern, clauza 9.2).\nd) Clauza 10 — Îmbunătățire (investigarea incidentelor și acțiunea corectivă, clauza 10.2).\n\nObservă cum cele patru activități acoperă practic întregul ciclu PDCA: Plan (b), Do (implicit prin a, ca angajament de leadership), Check (c) și Act (d).",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Câte clauze conține structura ISO 45001:2018, conform High Level Structure (HLS)?",
+    "choices": [
+     "7 clauze",
+     "10 clauze",
+     "12 clauze",
+     "5 clauze"
+    ],
+    "answer": 1,
+    "explain": "ISO 45001:2018 are 10 clauze, dintre care clauzele 1-3 sunt introductive (domeniu, referințe normative, termeni și definiții), iar clauzele 4-10 conțin cerințele auditabile ale sistemului de management SSM.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Cărei etape din ciclul PDCA îi corespunde clauza 9 (Evaluarea performanței)?",
+    "choices": [
+     "Plan",
+     "Do",
+     "Check",
+     "Act"
+    ],
+    "answer": 2,
+    "explain": "Clauza 9 (monitorizare, măsurare, audit intern, analiza de management) corespunde etapei Check din PDCA — verificarea rezultatelor obținute față de obiectivele planificate.",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte clauze are ISO 45001:2018 și care sunt introductive?",
+    "back": "10 clauze; clauzele 1-3 (domeniu de aplicare, referințe normative, termeni și definiții) sunt introductive, clauzele 4-10 conțin cerințele aplicabile.",
+    "concept_key": "cele-10-clauze-iso-45001",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este High Level Structure (HLS)?",
+    "back": "Structura comună de 10 clauze impusă de ISO tuturor standardelor de sistem de management (ex. ISO 9001, ISO 14001, ISO 45001), care facilitează integrarea sistemelor.",
+    "concept_key": "hls-anexa-sl",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce clauze ISO 45001 corespund etapei 'Plan' din PDCA?",
+    "back": "Clauzele 4 (Contextul organizației), 5 (Leadership și participarea lucrătorilor) și 6 (Planificare).",
+    "concept_key": "ciclul-pdca-iso-45001",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum definește ISO 45001 termenul 'pericol' (hazard)?",
+    "back": "Sursă cu potențial de a cauza vătămare sau îmbolnăvire.",
+    "concept_key": "termeni-definitii-clauza-3",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce clauză ISO 45001 obligă la identificarea cerințelor legale aplicabile?",
+    "back": "Clauza 6.1.3 — Determinarea cerințelor legale și a altor cerințe, care în România include Legea 319/2006 și HG 1425/2006.",
+    "concept_key": "termeni-definitii-clauza-3",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este autoritatea de control SSM în România?",
+    "back": "Inspectoratul Teritorial de Muncă (ITM), care verifică respectarea Legii 319/2006 și a Normelor metodologice HG 1425/2006.",
+    "concept_key": "hls-anexa-sl",
+    "blockId": "cmjjuxwds00l9umkpojjhe0gr-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1446,
+   "flashcards": 6
+  }
+ }
+}

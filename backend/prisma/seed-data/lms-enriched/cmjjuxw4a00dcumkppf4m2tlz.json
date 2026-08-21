@@ -1,0 +1,176 @@
+{
+ "lessonId": "cmjjuxw4a00dcumkppf4m2tlz",
+ "courseId": "cmjjuxw2i00c6umkp8o198vff",
+ "course": "Contabilitate Românească - RO GAAP Complet",
+ "module": "TVA în România",
+ "lesson": "Declarația 300 și D394",
+ "category": "FINANCE_OPS",
+ "content": "# Declarația 300 și D394\n\n## Decontul de TVA – Declarația 300\n\nDeclarația 300 (\"decontul de taxă pe valoarea adăugată\") este declarația periodică prin care orice persoană impozabilă înregistrată în scopuri de TVA în România își raportează către ANAF operațiunile taxabile dintr-o perioadă fiscală și determină TVA de plată sau TVA de rambursat.\n\nStructura decontului cuprinde, în esență:\n- **TVA colectată** – taxa aferentă livrărilor de bunuri și prestărilor de servicii efectuate (interne, cu cota standard **21%** sau cota redusă **11%**, valabile de la 1 august 2025 conform Legii 141/2025), inclusiv taxare inversă și achiziții intracomunitare unde furnizorul este cel care aplică taxarea inversă la beneficiar;\n- **TVA deductibilă** – taxa aferentă achizițiilor de bunuri și servicii utilizate în scop economic, cu respectarea condițiilor de deducere (factură conformă, scop economic, plafoane specifice pentru anumite categorii de cheltuieli);\n- **Regularizări** – ajustări de pro-rata, ajustări pentru bunuri de capital, corecții de erori din perioade anterioare;\n- **Soldul perioadei** – diferența dintre TVA colectată și TVA deductibilă (plus eventualul sold reportat din decontul precedent), care rezultă fie într-o sumă de plată, fie într-un sold de rambursat.\n\nDepunerea D300 este obligatorie pentru toate persoanele înregistrate în scopuri de TVA conform Codului fiscal, indiferent dacă în perioada respectivă au existat sau nu operațiuni taxabile – decontul se depune chiar și \"pe zero\".\n\n## Perioada fiscală și termenul de depunere\n\nPerioada fiscală pentru TVA poate fi **lunară** (regula generală) sau **trimestrială** (pentru persoanele impozabile care se încadrează în condițiile prevăzute de Codul fiscal – verifică plafonul actualizat, deoarece acesta poate fi modificat prin acte normative ulterioare).\n\nTermenul standard de depunere a Declarației 300, indiferent de tipul perioadei fiscale, este **data de 25 a lunii următoare** încheierii perioadei fiscale raportate (lună sau trimestru). Este o dată calendaristică fixă, nu un interval de \"zile lucrătoare\" – însă, dacă data de 25 cade într-o zi de sâmbătă, duminică sau sărbătoare legală, termenul se prorogă la următoarea zi lucrătoare. Aceeași dată este și termenul de plată a TVA de plată rezultate din decont.\n\nÎn cadrul sistemului **RO e-TVA** (introdus prin OUG 70/2024), ANAF emite un decont precompletat (\"P300\"), generat automat pe baza datelor din e-Factura, SAF-T și alte surse, până pe data de 5 a lunii următoare termenului decontului. Acesta este comparat cu decontul depus efectiv de contribuabil. Important: **de la 1 ianuarie 2026, obligația de a răspunde notificărilor de conformare aferente diferențelor semnalate, precum și sancțiunile pentru nerăspuns, au fost abrogate** – răspunsul la notificare rămâne, în prezent, voluntar și recomandat, nu obligatoriu.\n\n## Declarația 394 – declarația informativă de livrări/achiziții\n\nDeclarația 394 (\"Declarație informativă privind livrările/prestările și achizițiile efectuate pe teritoriul național\") este o declarație complementară decontului de TVA, depusă tot de persoanele înregistrate în scopuri de TVA în România. Spre deosebire de D300, care raportează sume agregate, D394 detaliază tranzacțiile **pe fiecare partener de afaceri** (identificat prin cod de identificare fiscală), separat pentru livrări și pentru achiziții.\n\nScopul principal al D394 este **cruce-verificarea automată** (matching) a datelor declarate de cei doi parteneri ai unei tranzacții: dacă furnizorul declară o livrare către un client, iar clientul nu declară achiziția corespunzătoare (sau declară o sumă diferită), sistemul informatic al ANAF semnalează discrepanța, ceea ce poate genera o notificare sau, în cazuri repetate, o inspecție fiscală.\n\nTermenul de depunere al D394 este, în principiu, **același cu termenul decontului de TVA** – data de 25 a lunii următoare perioadei fiscale (lună sau trimestru, în funcție de periodicitatea TVA a contribuabilului).\n\nPe măsură ce e-Factura (obligatorie B2B de la 1 iulie 2024) și SAF-T D406 (extins și la contribuabilii mici de la 1 ianuarie 2025) oferă ANAF acces tot mai direct la datele tranzacționale, o parte din rolul de cruce-verificare al D394 devine redundant cu informațiile deja disponibile din aceste sisteme. Recomandăm verificarea periodică a obligațiilor declarative în vigoare, întrucât autoritățile pot simplifica sau elimina treptat declarații care se suprapun.\n\n> Temei legal: Legea nr. 227/2015 privind Codul fiscal art. 322–323 (obligații declarative TVA) (în vigoare de la 2016-01-01)\nCodul fiscal stabilește obligația persoanelor înregistrate în scopuri de TVA de a depune decontul de taxă (formularul 300) pentru fiecare perioadă fiscală, precum și regulile de determinare a perioadei fiscale (lunară sau trimestrială).\n\n> Temei legal: OUG nr. 70/2024, modificată prin OUG nr. 89/2025 dispoziții privind sistemul RO e-TVA (în vigoare de la 2024-08-01)\nIntroduce sistemul RO e-TVA și decontul precompletat (P300), emis de ANAF pe baza datelor din e-Factura, SAF-T și alte surse. OUG 89/2025 abrogă, de la 1 ianuarie 2026, obligația de răspuns la notificările de conformare și sancțiunile aferente.\n\n> Temei legal: Legea nr. 141/2025 cote de TVA (în vigoare de la 2025-08-01)\nStabilește, de la 1 august 2025, cota standard de TVA de 21% și cota redusă unică de 11% (cotele anterioare de 5% și 9% au fost eliminate). Toate exemplele din această lecție folosesc aceste cote.\n\n## Exemplu: Completarea Declarației 300 – calcul TVA de plată\n**Alfa Trade SRL**, plătitoare de TVA cu perioadă fiscală **lunară**, înregistrează în iunie 2026 următoarele operațiuni (toate ulterioare datei de 1 august 2025, deci cu cotele 21%/11%):\n\n- Vânzări interne de bunuri cu cota standard: bază 150.000 lei → TVA colectată = 150.000 × 21% = **31.500 lei**\n- Vânzări de alimente de bază cu cota redusă: bază 40.000 lei → TVA colectată = 40.000 × 11% = **4.400 lei**\n- Achiziții de marfă cu cota standard: bază 90.000 lei → TVA deductibilă = 90.000 × 21% = **18.900 lei**\n- Achiziții cu cota redusă: bază 10.000 lei → TVA deductibilă = 10.000 × 11% = **1.100 lei**\n\n**Total TVA colectată** = 31.500 + 4.400 = 35.900 lei\n**Total TVA deductibilă** = 18.900 + 1.100 = 20.000 lei\n**TVA de plată** = 35.900 − 20.000 = **15.900 lei**\n\nAceastă sumă se raportează în rândurile corespunzătoare din D300 și se achită până la termenul de depunere al decontului (25 iulie 2026, pentru perioada iunie 2026).\n\n## Exemplu: Declarația 394 – raportarea unei livrări către un partener intern\nAlfa Trade SRL emite, în iunie 2026, o factură către **Beta Servicii SRL** pentru livrare de marfă: bază 50.000 lei + TVA 21% = 10.500 lei.\n\nÎn D394, Alfa Trade SRL raportează această operațiune la codul de tranzacție pentru **livrare (\"L\")**, cu CUI-ul partenerului (Beta Servicii SRL), baza impozabilă și TVA aferentă. În mod simetric, Beta Servicii SRL trebuie să raporteze aceeași sumă la codul de **achiziție (\"A\")**, cu CUI-ul Alfa Trade SRL.\n\nDacă Beta Servicii SRL omite să declare achiziția, o declară cu o sumă diferită, sau o raportează într-o perioadă fiscală diferită de cea în care Alfa Trade a raportat livrarea, sistemul de cruce-verificare al ANAF semnalează neconcordanța, iar unul sau ambii contribuabili pot primi o notificare de clarificare.\n\n⚠ O eroare descoperită după depunerea Declarației 300 sau a Declarației 394 nu se corectează prin modificarea decontului viitor, ci prin depunerea unei **declarații rectificative** pentru perioada fiscală în care a apărut eroarea. Declarația rectificativă înlocuiește integral declarația inițială pentru acea perioadă și poate fi depusă în cadrul termenului general de prescripție, cu condiția să nu fi început deja o inspecție fiscală asupra perioadei respective. Corectarea promptă reduce riscul ca discrepanțele să fie preluate automat de sistemul de cruce-verificare al ANAF (relevant mai ales pentru D394) sau de decontul precompletat P300.\n\n⚠ Nedepunerea sau depunerea cu întârziere a Declarației 300 și/sau a Declarației 394, precum și neplata la termen a TVA de plată, atrag dobânzi și penalități de întârziere stabilite de Codul de procedură fiscală, ale căror cuantumuri se actualizează periodic – verifică nivelul curent pe site-ul ANAF sau cu un consultant fiscal, întrucât cifrele exacte pot varia față de reglementările în vigoare la data redactării (iulie 2026). Această lecție nu constituie consultanță fiscală personalizată.\n\n## Exercițiu\n**Beta Servicii SRL** este plătitoare de TVA cu perioadă fiscală **trimestrială**. Pentru trimestrul II 2026 (aprilie–iunie), societatea înregistrează:\n\n- Prestări de servicii interne cu cota standard: bază 200.000 lei\n- Achiziții de bunuri cu TVA deductibilă, cota standard: bază 130.000 lei\n- Achiziție de cazare hotelieră pentru delegații (cota redusă): bază 8.000 lei\n- Sold de TVA de rambursat reportat din decontul trimestrului anterior: 3.000 lei\n\nCerințe:\n1. Calculați TVA colectată, TVA deductibilă și rezultatul final al decontului (TVA de plată sau de rambursat).\n2. Precizați data-limită de depunere a Declarației 300 pentru acest trimestru.\n\n**Soluție:** **1. Calcul TVA**\n\nTVA colectată = 200.000 × 21% = **42.000 lei**\n\nTVA deductibilă = (130.000 × 21%) + (8.000 × 11%) = 27.300 + 880 = **28.180 lei**\n\nSold din decontul precedent (de rambursat, se scade suplimentar) = 3.000 lei\n\nTVA de plată = 42.000 − 28.180 − 3.000 = **10.820 lei**\n\n**2. Termenul de depunere**\n\nRegula generală: data de 25 a lunii următoare încheierii trimestrului, deci **25 iulie 2026**. Însă 25 iulie 2026 cade sâmbătă (zi nelucrătoare), astfel încât termenul se prorogă la următoarea zi lucrătoare: **luni, 27 iulie 2026**. Această dată este și termenul de plată a celor 10.820 lei TVA de plată.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "d300-definitie",
+    "md": "## Decontul de TVA – Declarația 300\n\nDeclarația 300 (\"decontul de taxă pe valoarea adăugată\") este declarația periodică prin care orice persoană impozabilă înregistrată în scopuri de TVA în România își raportează către ANAF operațiunile taxabile dintr-o perioadă fiscală și determină TVA de plată sau TVA de rambursat.\n\nStructura decontului cuprinde, în esență:\n- **TVA colectată** – taxa aferentă livrărilor de bunuri și prestărilor de servicii efectuate (interne, cu cota standard **21%** sau cota redusă **11%**, valabile de la 1 august 2025 conform Legii 141/2025), inclusiv taxare inversă și achiziții intracomunitare unde furnizorul este cel care aplică taxarea inversă la beneficiar;\n- **TVA deductibilă** – taxa aferentă achizițiilor de bunuri și servicii utilizate în scop economic, cu respectarea condițiilor de deducere (factură conformă, scop economic, plafoane specifice pentru anumite categorii de cheltuieli);\n- **Regularizări** – ajustări de pro-rata, ajustări pentru bunuri de capital, corecții de erori din perioade anterioare;\n- **Soldul perioadei** – diferența dintre TVA colectată și TVA deductibilă (plus eventualul sold reportat din decontul precedent), care rezultă fie într-o sumă de plată, fie într-un sold de rambursat.\n\nDepunerea D300 este obligatorie pentru toate persoanele înregistrate în scopuri de TVA conform Codului fiscal, indiferent dacă în perioada respectivă au existat sau nu operațiuni taxabile – decontul se depune chiar și \"pe zero\".",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "d300-termen-depunere",
+    "md": "## Perioada fiscală și termenul de depunere\n\nPerioada fiscală pentru TVA poate fi **lunară** (regula generală) sau **trimestrială** (pentru persoanele impozabile care se încadrează în condițiile prevăzute de Codul fiscal – verifică plafonul actualizat, deoarece acesta poate fi modificat prin acte normative ulterioare).\n\nTermenul standard de depunere a Declarației 300, indiferent de tipul perioadei fiscale, este **data de 25 a lunii următoare** încheierii perioadei fiscale raportate (lună sau trimestru). Este o dată calendaristică fixă, nu un interval de \"zile lucrătoare\" – însă, dacă data de 25 cade într-o zi de sâmbătă, duminică sau sărbătoare legală, termenul se prorogă la următoarea zi lucrătoare. Aceeași dată este și termenul de plată a TVA de plată rezultate din decont.\n\nÎn cadrul sistemului **RO e-TVA** (introdus prin OUG 70/2024), ANAF emite un decont precompletat (\"P300\"), generat automat pe baza datelor din e-Factura, SAF-T și alte surse, până pe data de 5 a lunii următoare termenului decontului. Acesta este comparat cu decontul depus efectiv de contribuabil. Important: **de la 1 ianuarie 2026, obligația de a răspunde notificărilor de conformare aferente diferențelor semnalate, precum și sancțiunile pentru nerăspuns, au fost abrogate** – răspunsul la notificare rămâne, în prezent, voluntar și recomandat, nu obligatoriu.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "d394-definitie",
+    "md": "## Declarația 394 – declarația informativă de livrări/achiziții\n\nDeclarația 394 (\"Declarație informativă privind livrările/prestările și achizițiile efectuate pe teritoriul național\") este o declarație complementară decontului de TVA, depusă tot de persoanele înregistrate în scopuri de TVA în România. Spre deosebire de D300, care raportează sume agregate, D394 detaliază tranzacțiile **pe fiecare partener de afaceri** (identificat prin cod de identificare fiscală), separat pentru livrări și pentru achiziții.\n\nScopul principal al D394 este **cruce-verificarea automată** (matching) a datelor declarate de cei doi parteneri ai unei tranzacții: dacă furnizorul declară o livrare către un client, iar clientul nu declară achiziția corespunzătoare (sau declară o sumă diferită), sistemul informatic al ANAF semnalează discrepanța, ceea ce poate genera o notificare sau, în cazuri repetate, o inspecție fiscală.\n\nTermenul de depunere al D394 este, în principiu, **același cu termenul decontului de TVA** – data de 25 a lunii următoare perioadei fiscale (lună sau trimestru, în funcție de periodicitatea TVA a contribuabilului).\n\nPe măsură ce e-Factura (obligatorie B2B de la 1 iulie 2024) și SAF-T D406 (extins și la contribuabilii mici de la 1 ianuarie 2025) oferă ANAF acces tot mai direct la datele tranzacționale, o parte din rolul de cruce-verificare al D394 devine redundant cu informațiile deja disponibile din aceste sisteme. Recomandăm verificarea periodică a obligațiilor declarative în vigoare, întrucât autoritățile pot simplifica sau elimina treptat declarații care se suprapun.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 227/2015 privind Codul fiscal",
+    "article": "art. 322–323 (obligații declarative TVA)",
+    "effective": "2016-01-01",
+    "md": "Codul fiscal stabilește obligația persoanelor înregistrate în scopuri de TVA de a depune decontul de taxă (formularul 300) pentru fiecare perioadă fiscală, precum și regulile de determinare a perioadei fiscale (lunară sau trimestrială).",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b4"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OUG nr. 70/2024, modificată prin OUG nr. 89/2025",
+    "article": "dispoziții privind sistemul RO e-TVA",
+    "effective": "2024-08-01",
+    "md": "Introduce sistemul RO e-TVA și decontul precompletat (P300), emis de ANAF pe baza datelor din e-Factura, SAF-T și alte surse. OUG 89/2025 abrogă, de la 1 ianuarie 2026, obligația de răspuns la notificările de conformare și sancțiunile aferente.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 141/2025",
+    "article": "cote de TVA",
+    "effective": "2025-08-01",
+    "md": "Stabilește, de la 1 august 2025, cota standard de TVA de 21% și cota redusă unică de 11% (cotele anterioare de 5% și 9% au fost eliminate). Toate exemplele din această lecție folosesc aceste cote.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b6"
+   },
+   {
+    "type": "example",
+    "title": "Completarea Declarației 300 – calcul TVA de plată",
+    "concept_key": "d300-calcul-tva-plata",
+    "md": "**Alfa Trade SRL**, plătitoare de TVA cu perioadă fiscală **lunară**, înregistrează în iunie 2026 următoarele operațiuni (toate ulterioare datei de 1 august 2025, deci cu cotele 21%/11%):\n\n- Vânzări interne de bunuri cu cota standard: bază 150.000 lei → TVA colectată = 150.000 × 21% = **31.500 lei**\n- Vânzări de alimente de bază cu cota redusă: bază 40.000 lei → TVA colectată = 40.000 × 11% = **4.400 lei**\n- Achiziții de marfă cu cota standard: bază 90.000 lei → TVA deductibilă = 90.000 × 21% = **18.900 lei**\n- Achiziții cu cota redusă: bază 10.000 lei → TVA deductibilă = 10.000 × 11% = **1.100 lei**\n\n**Total TVA colectată** = 31.500 + 4.400 = 35.900 lei\n**Total TVA deductibilă** = 18.900 + 1.100 = 20.000 lei\n**TVA de plată** = 35.900 − 20.000 = **15.900 lei**\n\nAceastă sumă se raportează în rândurile corespunzătoare din D300 și se achită până la termenul de depunere al decontului (25 iulie 2026, pentru perioada iunie 2026).",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b7"
+   },
+   {
+    "type": "example",
+    "title": "Declarația 394 – raportarea unei livrări către un partener intern",
+    "concept_key": "d394-raportare-tranzactie",
+    "md": "Alfa Trade SRL emite, în iunie 2026, o factură către **Beta Servicii SRL** pentru livrare de marfă: bază 50.000 lei + TVA 21% = 10.500 lei.\n\nÎn D394, Alfa Trade SRL raportează această operațiune la codul de tranzacție pentru **livrare (\"L\")**, cu CUI-ul partenerului (Beta Servicii SRL), baza impozabilă și TVA aferentă. În mod simetric, Beta Servicii SRL trebuie să raporteze aceeași sumă la codul de **achiziție (\"A\")**, cu CUI-ul Alfa Trade SRL.\n\nDacă Beta Servicii SRL omite să declare achiziția, o declară cu o sumă diferită, sau o raportează într-o perioadă fiscală diferită de cea în care Alfa Trade a raportat livrarea, sistemul de cruce-verificare al ANAF semnalează neconcordanța, iar unul sau ambii contribuabili pot primi o notificare de clarificare.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b8"
+   },
+   {
+    "type": "warning",
+    "md": "O eroare descoperită după depunerea Declarației 300 sau a Declarației 394 nu se corectează prin modificarea decontului viitor, ci prin depunerea unei **declarații rectificative** pentru perioada fiscală în care a apărut eroarea. Declarația rectificativă înlocuiește integral declarația inițială pentru acea perioadă și poate fi depusă în cadrul termenului general de prescripție, cu condiția să nu fi început deja o inspecție fiscală asupra perioadei respective. Corectarea promptă reduce riscul ca discrepanțele să fie preluate automat de sistemul de cruce-verificare al ANAF (relevant mai ales pentru D394) sau de decontul precompletat P300.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b9"
+   },
+   {
+    "type": "warning",
+    "md": "Nedepunerea sau depunerea cu întârziere a Declarației 300 și/sau a Declarației 394, precum și neplata la termen a TVA de plată, atrag dobânzi și penalități de întârziere stabilite de Codul de procedură fiscală, ale căror cuantumuri se actualizează periodic – verifică nivelul curent pe site-ul ANAF sau cu un consultant fiscal, întrucât cifrele exacte pot varia față de reglementările în vigoare la data redactării (iulie 2026). Această lecție nu constituie consultanță fiscală personalizată.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b10"
+   },
+   {
+    "type": "exercise",
+    "md": "**Beta Servicii SRL** este plătitoare de TVA cu perioadă fiscală **trimestrială**. Pentru trimestrul II 2026 (aprilie–iunie), societatea înregistrează:\n\n- Prestări de servicii interne cu cota standard: bază 200.000 lei\n- Achiziții de bunuri cu TVA deductibilă, cota standard: bază 130.000 lei\n- Achiziție de cazare hotelieră pentru delegații (cota redusă): bază 8.000 lei\n- Sold de TVA de rambursat reportat din decontul trimestrului anterior: 3.000 lei\n\nCerințe:\n1. Calculați TVA colectată, TVA deductibilă și rezultatul final al decontului (TVA de plată sau de rambursat).\n2. Precizați data-limită de depunere a Declarației 300 pentru acest trimestru.",
+    "solution_md": "**1. Calcul TVA**\n\nTVA colectată = 200.000 × 21% = **42.000 lei**\n\nTVA deductibilă = (130.000 × 21%) + (8.000 × 11%) = 27.300 + 880 = **28.180 lei**\n\nSold din decontul precedent (de rambursat, se scade suplimentar) = 3.000 lei\n\nTVA de plată = 42.000 − 28.180 − 3.000 = **10.820 lei**\n\n**2. Termenul de depunere**\n\nRegula generală: data de 25 a lunii următoare încheierii trimestrului, deci **25 iulie 2026**. Însă 25 iulie 2026 cade sâmbătă (zi nelucrătoare), astfel încât termenul se prorogă la următoarea zi lucrătoare: **luni, 27 iulie 2026**. Această dată este și termenul de plată a celor 10.820 lei TVA de plată.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b11"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Un plătitor de TVA cu perioadă fiscală lunară trebuie să depună Declarația 300 pentru luna mai 2026 până la ce dată?",
+    "choices": [
+     "25 mai 2026",
+     "25 iunie 2026",
+     "5 iunie 2026",
+     "30 iunie 2026"
+    ],
+    "answer": 1,
+    "explain": "Termenul standard este data de 25 a lunii următoare încheierii perioadei fiscale raportate, deci pentru luna mai termenul este 25 iunie 2026 (dacă această dată nu cade într-o zi nelucrătoare).",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b12"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este scopul principal al Declarației 394?",
+    "choices": [
+     "Calculul impozitului pe profit datorat",
+     "Cruce-verificarea automată a livrărilor și achizițiilor declarate de partenerii de afaceri înregistrați în scopuri de TVA",
+     "Raportarea activelor imobilizate către ANAF",
+     "Declararea contribuțiilor salariale ale angajaților"
+    ],
+    "answer": 1,
+    "explain": "D394 detaliază tranzacțiile pe fiecare partener (livrări vs. achiziții), permițând sistemului ANAF să compare automat sumele declarate de furnizor și de client și să semnaleze eventualele neconcordanțe.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b13"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce s-a schimbat, începând cu 1 ianuarie 2026, referitor la notificările de conformare emise în cadrul sistemului RO e-TVA (decontul precompletat P300)?",
+    "choices": [
+     "Au devenit obligatorii pentru toți contribuabilii, sub sancțiuni mai mari",
+     "Obligația de răspuns la notificări și sancțiunile aferente au fost abrogate, răspunsul rămânând voluntar",
+     "Notificările au fost înlocuite integral de rapoartele SAF-T",
+     "Decontul precompletat P300 a fost eliminat complet"
+    ],
+    "answer": 1,
+    "explain": "Prin OUG 89/2025, de la 1 ianuarie 2026 a fost abrogată obligația de a răspunde notificărilor de conformare aferente diferențelor semnalate de sistemul RO e-TVA, precum și sancțiunile pentru nerăspuns; răspunsul rămâne recomandat, dar nu obligatoriu.",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este formularul 300?",
+    "back": "Decontul de taxă pe valoarea adăugată – declarația periodică prin care persoanele înregistrate în scopuri de TVA raportează TVA colectată, TVA deductibilă și TVA de plată/de rambursat.",
+    "concept_key": "d300-definitie",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este termenul standard de depunere a Declarației 300?",
+    "back": "Data de 25 a lunii următoare încheierii perioadei fiscale (lună sau trimestru); dacă 25 cade într-o zi nelucrătoare, termenul se prorogă la următoarea zi lucrătoare.",
+    "concept_key": "d300-termen-depunere",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Declarația 394?",
+    "back": "Declarație informativă privind livrările/prestările și achizițiile efectuate pe teritoriul național de persoanele înregistrate în scopuri de TVA, folosită de ANAF pentru cruce-verificarea tranzacțiilor între parteneri, pe baza CUI-ului fiecăruia.",
+    "concept_key": "d394-definitie",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b17"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cotele de TVA aplicabile în România de la 1 august 2025?",
+    "back": "Cota standard 21% și cota redusă unică 11% (cotele anterioare de 5% și 9% au fost eliminate), conform Legii 141/2025.",
+    "concept_key": "tva-cota-standard-2025",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b18"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum se corectează o eroare dintr-un decont de TVA deja depus?",
+    "back": "Prin depunerea unei declarații rectificative pentru perioada fiscală respectivă, în cadrul termenului de prescripție, cu condiția să nu fi început deja o inspecție fiscală pe acea perioadă.",
+    "concept_key": "d300-declaratie-rectificativa",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b19"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este decontul precompletat P300 (RO e-TVA)?",
+    "back": "Un decont de TVA generat automat de ANAF pe baza datelor din e-Factura, SAF-T și alte surse, emis până pe 5 a lunii următoare termenului decontului, folosit pentru comparare cu decontul depus efectiv de contribuabil.",
+    "concept_key": "ro-e-tva-p300",
+    "blockId": "cmjjuxw4a00dcumkppf4m2tlz-b20"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1389,
+   "flashcards": 6
+  }
+ }
+}

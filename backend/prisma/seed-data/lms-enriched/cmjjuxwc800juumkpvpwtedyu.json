@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxwc800juumkpvpwtedyu",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Evaluarea Riscurilor",
+ "lesson": "Documentarea evaluării",
+ "category": "HSE_SAFETY",
+ "content": "# Documentarea evaluării\n\n## De ce documentarea evaluării riscurilor este obligatorie\n\nEvaluarea riscurilor profesionale nu este completă dacă rămâne doar o discuție internă între angajator și lucrătorii de la un post de lucru. Legislația românească impune ca acest proces să fie **consemnat în scris**, astfel încât să poată fi verificat de inspectorii de muncă (ITM), consultat de lucrători și folosit ca bază pentru deciziile de prevenire.\n\nDin activitatea de evaluare a riscurilor rezultă, de regulă, trei categorii de documente:\n\n1. **Fișa de evaluare a riscurilor pe post (sau pe loc de muncă)** – documentul tehnic în care se identifică factorii de risc și se estimează nivelul acestora.\n2. **Planul de prevenire și protecție** – documentul managerial care transformă rezultatele evaluării în măsuri concrete, cu termene și responsabili.\n3. **Procesul-verbal / raportul de revizuire periodică** – dovada că evaluarea este actualizată și nu a rămas „literă moartă” de la înființarea firmei.\n\nAceste documente fac parte din dosarul SSM al angajatorului și trebuie păstrate la sediu (sau la punctul de lucru evaluat), disponibile pentru control. Lipsa lor, sau existența unei evaluări nedatate și neactualizate, este una dintre cele mai frecvente neconformități constatate de ITM.\n\n## Conținutul fișei de evaluare a riscurilor pe post\n\nFișa de evaluare este documentul de bază și trebuie să conțină, minimal:\n\n- **Datele de identificare**: denumirea postului/locului de muncă, secția sau departamentul, numărul de lucrători expuși, data întocmirii și numele evaluatorului (de regulă lucrătorul desemnat SSM, serviciul intern de prevenire și protecție sau serviciul extern abilitat).\n- **Descrierea activității**: sarcinile efective, echipamentele de muncă folosite, substanțele/preparatele chimice, mediul de lucru (zgomot, temperatură, iluminat, spații închise etc.).\n- **Identificarea factorilor de risc**: de regulă grupați pe categorii – mecanic, electric, termic, chimic, biologic, ergonomic (poziții de lucru, efort static/dinamic) și psihosocial (stres, agresiune, muncă în ture).\n- **Estimarea nivelului de risc**: pentru fiecare factor se apreciază gravitatea consecinței posibile și probabilitatea/frecvența de apariție, rezultând un nivel de risc (metoda cea mai răspândită în România este cea elaborată de INCDPM București, prezentată la exemplul următor).\n- **Măsurile de prevenire propuse**: tehnice, organizatorice, igienico-sanitare sau de instruire, corelate cu fiecare risc identificat.\n\nFișa se semnează de evaluator și, ideal, este adusă la cunoștința lucrătorilor de pe postul respectiv, pentru ca aceștia să înțeleagă de ce li se cer anumite echipamente individuale de protecție sau anumite reguli de lucru.\n\n## Planul de prevenire și protecție\n\nDacă fișa de evaluare răspunde la întrebarea „ce riscuri există?”, planul de prevenire și protecție răspunde la „ce facem în privința lor și până când?”. Este documentul care transformă evaluarea într-un plan de acțiune executabil și verificabil.\n\nUn plan de prevenire și protecție bine întocmit conține, pentru fiecare măsură:\n\n- **Riscul vizat** (legătura directă cu fișa de evaluare);\n- **Măsura concretă** (de exemplu: montare ecran de protecție, achiziție căști antifonice, instruire suplimentară, revizie tehnică a unui utilaj);\n- **Termenul de realizare**;\n- **Responsabilul** desemnat pentru implementare;\n- **Resursele necesare** (buget, materiale, timp);\n- **Modul de verificare** a finalizării (recepție, proces-verbal, buletin de măsurare etc.).\n\nPlanul este propus de serviciul intern sau extern de prevenire și protecție și **aprobat de angajator**, care răspunde legal de alocarea resurselor necesare implementării lui. Un plan aprobat dar nefinanțat sau nemonitorizat nu are valoare practică și poate fi considerat, la un control, o simplă formalitate – ceea ce nu exonerează angajatorul de răspundere în caz de accident.\n\n> Temei legal: Legea nr. 319/2006 privind securitatea și sănătatea în muncă art. 7 alin. (4) lit. a) (în vigoare de la 2006-07-26)\nLegea 319/2006, art. 7 alin. (4) lit. a), stabilește expres obligația angajatorului de „a evalua riscurile pentru securitatea și sănătatea lucrătorilor, inclusiv la alegerea echipamentelor de muncă, a substanțelor sau preparatelor chimice utilizate și la amenajarea locurilor de muncă”. Normele metodologice de aplicare (HG 1425/2006) detaliază modul de organizare a activității de prevenire și protecție, inclusiv rolul serviciului intern/extern și al comitetului de securitate și sănătate în muncă acolo unde este cazul. Pentru forma actualizată a articolelor (legea a suferit modificări succesive), verificați varianta consolidată în vigoare la data întocmirii documentației.\n\n## Exemplu: Fișă de evaluare – Operator CNC\nMetoda cea mai folosită în evaluările din România (dezvoltată de INCDPM București) apreciază fiecare factor de risc prin doi indicatori, notați pe o scară de la 1 la 7:\n\n- **G** – Gravitatea consecinței maxime previzibile (1 = neglijabilă, 7 = deces/invaliditate gravă);\n- **F** – Frecvența/probabilitatea de expunere (1 = foarte rară, 7 = permanentă).\n\nNivelul de risc parțial se calculează astfel: **Nr = G × F**. Convențional, un nivel de risc mediu peste **3,5** (pe o scală normalizată 1–7) este considerat prioritar pentru măsuri de prevenire.\n\n**Exemplu – post „Operator CNC”, factor de risc: zgomot ridicat de la utilaj**\n\n- Gravitate: G = 4 (posibilă hipoacuzie profesională în timp – afectare medie-mare);\n- Frecvență: F = 6 (expunere aproape pe toată durata schimbului);\n- Nivel de risc: Nr = 4 × 6 = 24, raportat pe scala extinsă corespunde unui nivel **mare**, peste pragul acceptabil.\n\nConcluzia din fișă: riscul necesită măsuri prioritare (protecție antifonică individuală obligatorie, măsurători periodice de zgomot, posibilă izolare fonică a utilajului) și se transferă direct ca linie de acțiune în planul de prevenire și protecție.\n\n## Exemplu: Extras din planul de prevenire și protecție\nPornind de la riscul identificat mai sus, un extras realist din planul de prevenire și protecție arată astfel:\n\n| Risc vizat | Măsură | Termen | Responsabil | Verificare |\n|---|---|---|---|---|\n| Zgomot ridicat – post Operator CNC | Distribuire căști antifonice cu atenuare ≥ 25 dB | 15 zile de la aprobare | Șef producție | Semnătură pe fișa de EIP (echipament individual de protecție) |\n| Zgomot ridicat – post Operator CNC | Măsurare de zgomot la locul de muncă de către laborator abilitat | 30 de zile | Responsabil SSM | Buletin de determinare |\n| Zgomot ridicat – post Operator CNC | Evaluare posibilitate izolare fonică a utilajului | 90 de zile | Departament tehnic | Notă internă cu concluzii și, dacă e cazul, ofertă furnizor |\n\nAstfel, fiecare rând din fișa de evaluare cu nivel de risc ridicat trebuie să aibă un corespondent clar în plan – altfel evaluarea rămâne un document static, fără efect practic asupra siguranței lucrătorilor.\n\n⚠ Evaluarea riscurilor **nu este un document făcut o singură dată**. Trebuie revizuită (parțial sau integral) ori de câte ori apare unul dintre următoarele evenimente: schimbarea tehnologiei, a echipamentelor de muncă sau a substanțelor utilizate; modificarea organizării muncii sau a amenajării locului de muncă; producerea unui accident de muncă sau a unui incident periculos (chiar fără vătămare); constatarea unei îmbolnăviri profesionale; recomandarea expresă a inspectorului de muncă în urma unui control. În lipsa unui astfel de eveniment, majoritatea firmelor stabilesc intern un ciclu de revizuire periodică (de exemplu anual), consemnat printr-un proces-verbal scurt care confirmă „evaluare menținută valabilă” sau înscrie modificările necesare. Absența oricărei date de revizuire pe fișă este un semnal clar, pentru orice control, că documentația nu este gestionată activ.\n\n## Exercițiu\nSunteți responsabil SSM la un magazin alimentar cu 8 angajați. Trebuie să întocmiți fișa de evaluare a riscurilor pentru postul „Casier”. Identificați cel puțin doi factori de risc relevanți pentru acest post, atribuiți-le note de Gravitate (G) și Frecvență (F) pe scara 1–7, calculați nivelul de risc (Nr = G × F) și propuneți câte o măsură de prevenire pentru fiecare. Precizați apoi ce document ar trebui completat imediat după fișa de evaluare, pentru ca măsurile propuse să devină executabile.\n\n**Soluție:** **Factor de risc 1 – poziție de lucru șezândă prelungită (afecțiuni musculo-scheletice)**\n- G = 3 (afectare medie, reversibilă cu tratament);\n- F = 6 (expunere pe toată durata programului);\n- Nr = 3 × 6 = 18 → nivel mediu-mare.\n- Măsură propusă: scaun ergonomic reglabil, pauze active la 2 ore, instruire privind postura corectă.\n\n**Factor de risc 2 – agresiune verbală/fizică din partea clienților**\n- G = 5 (posibilă vătămare fizică sau traumă psihică);\n- F = 3 (expunere ocazională);\n- Nr = 5 × 3 = 15 → nivel mediu.\n- Măsură propusă: buton de panică/alarmă la casă, procedură internă de gestionare a conflictelor, instruire specifică.\n\n**Document următor**: după completarea fișei de evaluare, ambele riscuri (și măsurile aferente) trebuie introduse în **planul de prevenire și protecție**, cu termene concrete (de exemplu 30 de zile pentru scaunul ergonomic, 15 zile pentru montarea butonului de alarmă) și responsabili nominalizați (administrator/responsabil SSM). Fără acest pas, fișa de evaluare rămâne doar un diagnostic, nu o acțiune de prevenire.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "documentarea-evaluarii-riscurilor",
+    "md": "## De ce documentarea evaluării riscurilor este obligatorie\n\nEvaluarea riscurilor profesionale nu este completă dacă rămâne doar o discuție internă între angajator și lucrătorii de la un post de lucru. Legislația românească impune ca acest proces să fie **consemnat în scris**, astfel încât să poată fi verificat de inspectorii de muncă (ITM), consultat de lucrători și folosit ca bază pentru deciziile de prevenire.\n\nDin activitatea de evaluare a riscurilor rezultă, de regulă, trei categorii de documente:\n\n1. **Fișa de evaluare a riscurilor pe post (sau pe loc de muncă)** – documentul tehnic în care se identifică factorii de risc și se estimează nivelul acestora.\n2. **Planul de prevenire și protecție** – documentul managerial care transformă rezultatele evaluării în măsuri concrete, cu termene și responsabili.\n3. **Procesul-verbal / raportul de revizuire periodică** – dovada că evaluarea este actualizată și nu a rămas „literă moartă” de la înființarea firmei.\n\nAceste documente fac parte din dosarul SSM al angajatorului și trebuie păstrate la sediu (sau la punctul de lucru evaluat), disponibile pentru control. Lipsa lor, sau existența unei evaluări nedatate și neactualizate, este una dintre cele mai frecvente neconformități constatate de ITM.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "fisa-evaluare-riscuri-post",
+    "md": "## Conținutul fișei de evaluare a riscurilor pe post\n\nFișa de evaluare este documentul de bază și trebuie să conțină, minimal:\n\n- **Datele de identificare**: denumirea postului/locului de muncă, secția sau departamentul, numărul de lucrători expuși, data întocmirii și numele evaluatorului (de regulă lucrătorul desemnat SSM, serviciul intern de prevenire și protecție sau serviciul extern abilitat).\n- **Descrierea activității**: sarcinile efective, echipamentele de muncă folosite, substanțele/preparatele chimice, mediul de lucru (zgomot, temperatură, iluminat, spații închise etc.).\n- **Identificarea factorilor de risc**: de regulă grupați pe categorii – mecanic, electric, termic, chimic, biologic, ergonomic (poziții de lucru, efort static/dinamic) și psihosocial (stres, agresiune, muncă în ture).\n- **Estimarea nivelului de risc**: pentru fiecare factor se apreciază gravitatea consecinței posibile și probabilitatea/frecvența de apariție, rezultând un nivel de risc (metoda cea mai răspândită în România este cea elaborată de INCDPM București, prezentată la exemplul următor).\n- **Măsurile de prevenire propuse**: tehnice, organizatorice, igienico-sanitare sau de instruire, corelate cu fiecare risc identificat.\n\nFișa se semnează de evaluator și, ideal, este adusă la cunoștința lucrătorilor de pe postul respectiv, pentru ca aceștia să înțeleagă de ce li se cer anumite echipamente individuale de protecție sau anumite reguli de lucru.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "plan-prevenire-protectie",
+    "md": "## Planul de prevenire și protecție\n\nDacă fișa de evaluare răspunde la întrebarea „ce riscuri există?”, planul de prevenire și protecție răspunde la „ce facem în privința lor și până când?”. Este documentul care transformă evaluarea într-un plan de acțiune executabil și verificabil.\n\nUn plan de prevenire și protecție bine întocmit conține, pentru fiecare măsură:\n\n- **Riscul vizat** (legătura directă cu fișa de evaluare);\n- **Măsura concretă** (de exemplu: montare ecran de protecție, achiziție căști antifonice, instruire suplimentară, revizie tehnică a unui utilaj);\n- **Termenul de realizare**;\n- **Responsabilul** desemnat pentru implementare;\n- **Resursele necesare** (buget, materiale, timp);\n- **Modul de verificare** a finalizării (recepție, proces-verbal, buletin de măsurare etc.).\n\nPlanul este propus de serviciul intern sau extern de prevenire și protecție și **aprobat de angajator**, care răspunde legal de alocarea resurselor necesare implementării lui. Un plan aprobat dar nefinanțat sau nemonitorizat nu are valoare practică și poate fi considerat, la un control, o simplă formalitate – ceea ce nu exonerează angajatorul de răspundere în caz de accident.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b3"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 privind securitatea și sănătatea în muncă",
+    "article": "art. 7 alin. (4) lit. a)",
+    "effective": "2006-07-26",
+    "md": "Legea 319/2006, art. 7 alin. (4) lit. a), stabilește expres obligația angajatorului de „a evalua riscurile pentru securitatea și sănătatea lucrătorilor, inclusiv la alegerea echipamentelor de muncă, a substanțelor sau preparatelor chimice utilizate și la amenajarea locurilor de muncă”. Normele metodologice de aplicare (HG 1425/2006) detaliază modul de organizare a activității de prevenire și protecție, inclusiv rolul serviciului intern/extern și al comitetului de securitate și sănătate în muncă acolo unde este cazul. Pentru forma actualizată a articolelor (legea a suferit modificări succesive), verificați varianta consolidată în vigoare la data întocmirii documentației.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b4"
+   },
+   {
+    "type": "example",
+    "title": "Fișă de evaluare – Operator CNC",
+    "concept_key": "metoda-incdpm-nivel-risc",
+    "md": "Metoda cea mai folosită în evaluările din România (dezvoltată de INCDPM București) apreciază fiecare factor de risc prin doi indicatori, notați pe o scară de la 1 la 7:\n\n- **G** – Gravitatea consecinței maxime previzibile (1 = neglijabilă, 7 = deces/invaliditate gravă);\n- **F** – Frecvența/probabilitatea de expunere (1 = foarte rară, 7 = permanentă).\n\nNivelul de risc parțial se calculează astfel: **Nr = G × F**. Convențional, un nivel de risc mediu peste **3,5** (pe o scală normalizată 1–7) este considerat prioritar pentru măsuri de prevenire.\n\n**Exemplu – post „Operator CNC”, factor de risc: zgomot ridicat de la utilaj**\n\n- Gravitate: G = 4 (posibilă hipoacuzie profesională în timp – afectare medie-mare);\n- Frecvență: F = 6 (expunere aproape pe toată durata schimbului);\n- Nivel de risc: Nr = 4 × 6 = 24, raportat pe scala extinsă corespunde unui nivel **mare**, peste pragul acceptabil.\n\nConcluzia din fișă: riscul necesită măsuri prioritare (protecție antifonică individuală obligatorie, măsurători periodice de zgomot, posibilă izolare fonică a utilajului) și se transferă direct ca linie de acțiune în planul de prevenire și protecție.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b5"
+   },
+   {
+    "type": "example",
+    "title": "Extras din planul de prevenire și protecție",
+    "concept_key": "plan-prevenire-protectie",
+    "md": "Pornind de la riscul identificat mai sus, un extras realist din planul de prevenire și protecție arată astfel:\n\n| Risc vizat | Măsură | Termen | Responsabil | Verificare |\n|---|---|---|---|---|\n| Zgomot ridicat – post Operator CNC | Distribuire căști antifonice cu atenuare ≥ 25 dB | 15 zile de la aprobare | Șef producție | Semnătură pe fișa de EIP (echipament individual de protecție) |\n| Zgomot ridicat – post Operator CNC | Măsurare de zgomot la locul de muncă de către laborator abilitat | 30 de zile | Responsabil SSM | Buletin de determinare |\n| Zgomot ridicat – post Operator CNC | Evaluare posibilitate izolare fonică a utilajului | 90 de zile | Departament tehnic | Notă internă cu concluzii și, dacă e cazul, ofertă furnizor |\n\nAstfel, fiecare rând din fișa de evaluare cu nivel de risc ridicat trebuie să aibă un corespondent clar în plan – altfel evaluarea rămâne un document static, fără efect practic asupra siguranței lucrătorilor.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Evaluarea riscurilor **nu este un document făcut o singură dată**. Trebuie revizuită (parțial sau integral) ori de câte ori apare unul dintre următoarele evenimente: schimbarea tehnologiei, a echipamentelor de muncă sau a substanțelor utilizate; modificarea organizării muncii sau a amenajării locului de muncă; producerea unui accident de muncă sau a unui incident periculos (chiar fără vătămare); constatarea unei îmbolnăviri profesionale; recomandarea expresă a inspectorului de muncă în urma unui control. În lipsa unui astfel de eveniment, majoritatea firmelor stabilesc intern un ciclu de revizuire periodică (de exemplu anual), consemnat printr-un proces-verbal scurt care confirmă „evaluare menținută valabilă” sau înscrie modificările necesare. Absența oricărei date de revizuire pe fișă este un semnal clar, pentru orice control, că documentația nu este gestionată activ.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Sunteți responsabil SSM la un magazin alimentar cu 8 angajați. Trebuie să întocmiți fișa de evaluare a riscurilor pentru postul „Casier”. Identificați cel puțin doi factori de risc relevanți pentru acest post, atribuiți-le note de Gravitate (G) și Frecvență (F) pe scara 1–7, calculați nivelul de risc (Nr = G × F) și propuneți câte o măsură de prevenire pentru fiecare. Precizați apoi ce document ar trebui completat imediat după fișa de evaluare, pentru ca măsurile propuse să devină executabile.",
+    "solution_md": "**Factor de risc 1 – poziție de lucru șezândă prelungită (afecțiuni musculo-scheletice)**\n- G = 3 (afectare medie, reversibilă cu tratament);\n- F = 6 (expunere pe toată durata programului);\n- Nr = 3 × 6 = 18 → nivel mediu-mare.\n- Măsură propusă: scaun ergonomic reglabil, pauze active la 2 ore, instruire privind postura corectă.\n\n**Factor de risc 2 – agresiune verbală/fizică din partea clienților**\n- G = 5 (posibilă vătămare fizică sau traumă psihică);\n- F = 3 (expunere ocazională);\n- Nr = 5 × 3 = 15 → nivel mediu.\n- Măsură propusă: buton de panică/alarmă la casă, procedură internă de gestionare a conflictelor, instruire specifică.\n\n**Document următor**: după completarea fișei de evaluare, ambele riscuri (și măsurile aferente) trebuie introduse în **planul de prevenire și protecție**, cu termene concrete (de exemplu 30 de zile pentru scaunul ergonomic, 15 zile pentru montarea butonului de alarmă) și responsabili nominalizați (administrator/responsabil SSM). Fără acest pas, fișa de evaluare rămâne doar un diagnostic, nu o acțiune de prevenire.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este pragul convențional peste care nivelul de risc (metoda INCDPM, scară 1–7 pentru G și F) este considerat prioritar pentru măsuri de prevenire?",
+    "choices": [
+     "1,5",
+     "3,5",
+     "5,5",
+     "7"
+    ],
+    "answer": 1,
+    "explain": "Convențional, un nivel de risc mediu peste 3,5 (pe scala normalizată 1–7) este considerat prioritar și impune măsuri de prevenire suplimentare.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce document stabilește măsurile concrete, termenele de realizare și responsabilii pentru reducerea riscurilor identificate în fișa de evaluare?",
+    "choices": [
+     "Fișa postului",
+     "Planul de prevenire și protecție",
+     "Regulamentul intern",
+     "Contractul individual de muncă"
+    ],
+    "answer": 1,
+    "explain": "Planul de prevenire și protecție transformă rezultatele evaluării riscurilor într-un plan de acțiune concret, cu termene, responsabili și mod de verificare.",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce trei documente rezultă, de regulă, din evaluarea riscurilor la un loc de muncă?",
+    "back": "Fișa de evaluare a riscurilor pe post, planul de prevenire și protecție și procesul-verbal de revizuire periodică.",
+    "concept_key": "documentarea-evaluarii-riscurilor",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula nivelului de risc în metoda INCDPM?",
+    "back": "Nr = G × F (Gravitate × Frecvență/Probabilitate, ambele notate pe o scară de la 1 la 7).",
+    "concept_key": "metoda-incdpm-nivel-risc",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine aprobă planul de prevenire și protecție dintr-o firmă?",
+    "back": "Angajatorul (reprezentantul legal), pe baza propunerilor serviciului intern sau extern de prevenire și protecție.",
+    "concept_key": "plan-prevenire-protectie",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Enumeră trei situații care obligă refacerea/revizuirea evaluării riscurilor.",
+    "back": "Schimbarea tehnologiei sau a echipamentelor de muncă, producerea unui accident de muncă sau a unui incident periculos, respectiv recomandarea expresă a inspectorului de muncă.",
+    "concept_key": "revizuire-periodica-evaluare",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce articol din Legea 319/2006 obligă angajatorul să evalueze riscurile pentru securitatea și sănătatea lucrătorilor?",
+    "back": "Art. 7 alin. (4) lit. a) din Legea nr. 319/2006.",
+    "concept_key": "documentarea-evaluarii-riscurilor",
+    "blockId": "cmjjuxwc800juumkpvpwtedyu-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1287,
+   "flashcards": 5
+  }
+ }
+}

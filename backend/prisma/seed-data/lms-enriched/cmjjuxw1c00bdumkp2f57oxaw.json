@@ -1,0 +1,142 @@
+{
+ "lessonId": "cmjjuxw1c00bdumkp2f57oxaw",
+ "courseId": "cmjjuxw0m00avumkpu446u0at",
+ "course": "Finanțe pentru Non-Financiari",
+ "module": "Indicatori Financiari Cheie",
+ "lesson": "Indicatori de solvabilitate",
+ "category": "FINANCE_OPS",
+ "content": "# Indicatori de solvabilitate\n\n## Ce este solvabilitatea și de ce contează\n\nCând analizezi sănătatea financiară a unei firme, două întrebări se pun aproape simultan, dar au răspunsuri diferite:\n\n- **Lichiditatea** răspunde la întrebarea: *\"Poate firma să-și plătească datoriile scadente în următoarele 12 luni?\"* (o discuți în lecția despre indicatorii de lichiditate).\n- **Solvabilitatea** răspunde la o întrebare mai profundă și pe termen lung: *\"Poate firma să-și onoreze TOATE obligațiile financiare — inclusiv creditele pe termen lung — folosind resursele proprii, fără să depindă excesiv de finanțare externă?\"*\n\nO firmă poate fi lichidă pe termen scurt (are cash să plătească facturile lunii) și totuși insolvabilă structural (are datorii atât de mari față de capitalul propriu încât orice șoc — o scădere de vânzări, o creștere a dobânzilor — o poate scoate din joc).\n\n**Indicatorii de solvabilitate** măsoară exact acest lucru: cât de mult se bazează firma pe capital împrumutat (datorii) versus capital propriu (al acționarilor/asociaților) pentru a-și finanța activitatea, și cât de confortabil poate acoperi costul acestei finanțări (dobânzile).\n\nÎn această lecție discutăm trei indicatori esențiali:\n\n1. **Grad de îndatorare (Debt-to-Equity, D/E)** — raportul datorii/capital propriu.\n2. **Rata de acoperire a dobânzilor (Interest Coverage Ratio, ICR)** — cât de ușor acoperă profitul operațional cheltuielile cu dobânzile.\n3. **Efectul de levier financiar (leverage)** — mecanismul prin care îndatorarea amplifică atât câștigurile, cât și pierderile pentru acționari.\n\nAcești indicatori se citesc din **bilanț** (pentru capitalurile proprii și datorii) și din **contul de profit și pierdere** (pentru EBIT și cheltuielile cu dobânzile), documente întocmite conform OMFP 1802/2014.\n\n## Gradul de îndatorare (Debt-to-Equity)\n\nEste cel mai cunoscut indicator de solvabilitate. Formula:\n\n**D/E = Datorii totale / Capital propriu**\n\n- **Datorii totale** = toate obligațiile firmei față de terți: credite bancare, leasing financiar, datorii către furnizori, datorii salariale, provizioane etc. (secțiunea \"Datorii\" din bilanț).\n- **Capital propriu** = capitalul social + rezervele + profitul reportat/nedistribuit (secțiunea \"Capitaluri proprii\" din bilanț) — practic, ce ar rămâne asociaților dacă firma și-ar vinde toate activele și și-ar plăti toate datoriile.\n\n**Cum se citește rezultatul:**\n\n| D/E | Interpretare orientativă |\n|---|---|\n| < 0,5 | Îndatorare redusă — firmă conservatoare, dependență mică de creditori |\n| 0,5 – 1,5 | Îndatorare moderată — nivel considerat sănătos în majoritatea sectoarelor |\n| 1,5 – 2 | Îndatorare ridicată — necesită analiză atentă a capacității de rambursare |\n| > 2 | Risc financiar ridicat — firma se bazează mult mai mult pe bani de la creditori decât pe capital propriu |\n\nAceste praguri sunt **orientative**, nu absolute: o companie de utilități (cu venituri predictibile) poate funcționa sănătos cu D/E de 2-3, în timp ce o firmă din construcții sau IT cu venituri volatile ar trebui să stea mult sub 1,5. Compară întotdeauna cu media sectorului, nu doar cu un prag universal.\n\nO variantă înrudită, folosită frecvent de bănci, este **rata datoriilor (Debt Ratio) = Datorii totale / Active totale**, care arată ce procent din active este finanțat prin datorii (restul fiind finanțat din capital propriu).\n\n## Rata de acoperire a dobânzilor (Interest Coverage Ratio) și efectul de levier\n\nGradul de îndatorare îți spune *cât* a împrumutat firma. Rata de acoperire a dobânzilor îți spune dacă firma **își permite** costul acelui împrumut, an de an, din activitatea curentă.\n\n**ICR = EBIT / Cheltuieli cu dobânzile**\n\nunde **EBIT** (Earnings Before Interest and Taxes) = profitul din exploatare, înainte de dobânzi și impozit pe profit — aproximativ echivalentul \"Rezultatului din exploatare\" din contul de profit și pierdere românesc.\n\n**Interpretare:**\n- ICR = 1 înseamnă că întregul profit operațional se duce pe plata dobânzilor — nu rămâne nimic pentru impozit, investiții sau dividende. Zonă de risc sever.\n- ICR < 1,5 este, în general, un semnal de alarmă pentru bănci și investitori.\n- ICR între 3 și 5 este considerat confortabil pentru majoritatea companiilor mature.\n- ICR foarte mare (>10) poate indica și o firmă prea conservatoare, care nu folosește suficient efectul de levier pentru a-și crește randamentul.\n\n### Efectul de levier financiar (leverage)\n\n\"Leverage\" (efect de levier) descrie modul în care folosirea datoriei **amplifică** rezultatul pentru asociați/acționari, în ambele sensuri:\n\n- Dacă firma obține un randament al activelor (ROA) **mai mare** decât costul datoriei (rata dobânzii), fiecare leu împrumutat și investit generează un profit suplimentar pentru asociați peste costul lui — levierul este **pozitiv**.\n- Dacă randamentul activelor este **mai mic** decât costul datoriei, fiecare leu împrumutat erodează profitul asociaților — levierul devine **negativ**, iar riscul financiar crește rapid.\n\nUn indicator simplu al gradului de levier este **multiplicatorul de capital = Active totale / Capital propriu**: cu cât e mai mare, cu atât mai mult din active sunt finanțate din datorii, deci cu atât mai amplificat este efectul (pozitiv sau negativ) asupra capitalului propriu.\n\n## Exemplu: Alfa Trading SRL — îndatorare moderată\nAlfa Trading SRL are, la 31.12.2025, următoarea structură simplificată a bilanțului:\n\n- Capital propriu: **800.000 lei**\n- Datorii totale: **1.200.000 lei** (din care datorii financiare purtătoare de dobândă: 600.000 lei; restul sunt datorii comerciale către furnizori și alte datorii curente)\n- Active totale: **2.000.000 lei**\n\n**Calcul:**\n\nD/E = 1.200.000 / 800.000 = **1,5**\n\nDebt Ratio = 1.200.000 / 2.000.000 = **0,6** → 60% din active sunt finanțate din datorii, 40% din capital propriu.\n\nMultiplicator de capital = 2.000.000 / 800.000 = **2,5**\n\n**Interpretare:** Un D/E de 1,5 plasează Alfa Trading la limita superioară a zonei \"moderate\". Nu e alarmant, dar merită monitorizat — mai ales dacă firma plănuiește un credit nou de investiții. Analistul ar trebui să compare acest 1,5 cu media firmelor din același sector de activitate (comerț en-gros) înainte de a trage o concluzie fermă.\n\n## Exemplu: Beta Construct SRL — semnal de risc la acoperirea dobânzilor\nBeta Construct SRL, o firmă din construcții, are:\n\n- Capital propriu: **200.000 lei**\n- Datorii totale: **1.800.000 lei**\n- EBIT (Rezultat din exploatare): **150.000 lei**\n- Cheltuieli cu dobânzile: **180.000 lei**\n\n**Calcul:**\n\nD/E = 1.800.000 / 200.000 = **9** (extrem de ridicat — firma este finanțată aproape în întregime din datorii)\n\nICR = 150.000 / 180.000 = **0,83**\n\n**Interpretare:** Un ICR sub 1 înseamnă că Beta Construct nu generează suficient profit operațional nici măcar pentru a acoperi dobânzile datorate anul respectiv — cu atât mai puțin pentru a rambursa principalul sau a plăti impozit. Combinat cu un D/E de 9, situația indică un risc financiar sever: orice scădere suplimentară a activității (întârziere la un proiect, creștere a ratei dobânzii ROBOR) poate declanșa incapacitate de plată. Un consultant financiar ar recomanda aici fie o majorare de capital, fie o restructurare urgentă a datoriilor.\n\n> Temei legal: OMFP 1802/2014 Structura bilanțului — secțiunile Capitaluri proprii și Datorii (în vigoare de la 2015-01-01)\nDatele necesare calculului indicatorilor de solvabilitate (capital propriu, datorii totale, defalcarea pe datorii curente/pe termen lung) se preiau direct din bilanțul întocmit conform OMFP 1802/2014 pentru aprobarea reglementărilor contabile privind situațiile financiare anuale individuale și consolidate, în vigoare de la 1 ianuarie 2015. Secțiunea \"Capitaluri proprii\" cuprinde capitalul social, rezervele și rezultatul reportat; secțiunea \"Datorii\" este împărțită în datorii ce trebuie plătite într-o perioadă de până la un an și datorii ce trebuie plătite într-o perioadă mai mare de un an — distincție utilă când calculezi separat gradul de îndatorare pe termen lung.\n\n⚠ Îndatorarea nu este automat un lucru rău — un D/E moderat, folosit inteligent (de exemplu pentru finanțarea unei investiții cu randament peste costul creditului), poate crește profitabilitatea capitalului propriu prin efectul de levier pozitiv. Problema apare când: (1) datoria crește peste capacitatea reală de rambursare, (2) ICR scade sub pragurile de siguranță impuse frecvent și prin clauze contractuale bancare (\"covenants\"), sau (3) firma nu diferențiază între datorii financiare (purtătoare de dobândă) și datorii comerciale curente (furnizori), care au natură și risc diferite. Nu trage concluzii dintr-un singur an — analizează trendul D/E și ICR pe 3-5 ani și compară-l cu media sectorului de activitate.\n\n## Exercițiu\nGamma Servicii SRL îți pune la dispoziție următoarele date din situațiile financiare pentru anul 2025:\n\n- Capital propriu: 500.000 lei\n- Datorii totale: 700.000 lei (din care datorii financiare purtătoare de dobândă: 300.000 lei)\n- Active totale: 1.200.000 lei\n- EBIT (Rezultat din exploatare): 120.000 lei\n- Cheltuieli cu dobânzile: 40.000 lei\n\nCalculează: (a) gradul de îndatorare (D/E), (b) rata datoriilor (Debt Ratio), (c) rata de acoperire a dobânzilor (ICR). Interpretează pe scurt situația financiară a firmei.\n\n**Soluție:** **(a) D/E** = Datorii totale / Capital propriu = 700.000 / 500.000 = **1,4**\n→ Îndatorare moderată, la limita superioară a intervalului sănătos (0,5–1,5).\n\n**(b) Debt Ratio** = Datorii totale / Active totale = 700.000 / 1.200.000 = **0,58** (58%)\n→ Puțin peste jumătate din active sunt finanțate din datorii; restul de 42% din capital propriu.\n\n**(c) ICR** = EBIT / Cheltuieli cu dobânzile = 120.000 / 40.000 = **3**\n→ Profitul operațional acoperă de 3 ori cheltuielile cu dobânzile — nivel confortabil, în zona considerată sănătoasă (3-5).\n\n**Interpretare generală:** Gamma Servicii SRL are o îndatorare moderată (D/E = 1,4) și o capacitate solidă de a-și acoperi costurile financiare (ICR = 3). Nu există semnale de risc financiar imediat, dar D/E aflat aproape de pragul de 1,5 merită monitorizat dacă firma intenționează să contracteze credite suplimentare — un nou împrumut ar putea împinge indicatorul în zona de risc ridicat.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "solvabilitate-vs-lichiditate",
+    "md": "## Ce este solvabilitatea și de ce contează\n\nCând analizezi sănătatea financiară a unei firme, două întrebări se pun aproape simultan, dar au răspunsuri diferite:\n\n- **Lichiditatea** răspunde la întrebarea: *\"Poate firma să-și plătească datoriile scadente în următoarele 12 luni?\"* (o discuți în lecția despre indicatorii de lichiditate).\n- **Solvabilitatea** răspunde la o întrebare mai profundă și pe termen lung: *\"Poate firma să-și onoreze TOATE obligațiile financiare — inclusiv creditele pe termen lung — folosind resursele proprii, fără să depindă excesiv de finanțare externă?\"*\n\nO firmă poate fi lichidă pe termen scurt (are cash să plătească facturile lunii) și totuși insolvabilă structural (are datorii atât de mari față de capitalul propriu încât orice șoc — o scădere de vânzări, o creștere a dobânzilor — o poate scoate din joc).\n\n**Indicatorii de solvabilitate** măsoară exact acest lucru: cât de mult se bazează firma pe capital împrumutat (datorii) versus capital propriu (al acționarilor/asociaților) pentru a-și finanța activitatea, și cât de confortabil poate acoperi costul acestei finanțări (dobânzile).\n\nÎn această lecție discutăm trei indicatori esențiali:\n\n1. **Grad de îndatorare (Debt-to-Equity, D/E)** — raportul datorii/capital propriu.\n2. **Rata de acoperire a dobânzilor (Interest Coverage Ratio, ICR)** — cât de ușor acoperă profitul operațional cheltuielile cu dobânzile.\n3. **Efectul de levier financiar (leverage)** — mecanismul prin care îndatorarea amplifică atât câștigurile, cât și pierderile pentru acționari.\n\nAcești indicatori se citesc din **bilanț** (pentru capitalurile proprii și datorii) și din **contul de profit și pierdere** (pentru EBIT și cheltuielile cu dobânzile), documente întocmite conform OMFP 1802/2014.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "grad-indatorare-debt-to-equity",
+    "md": "## Gradul de îndatorare (Debt-to-Equity)\n\nEste cel mai cunoscut indicator de solvabilitate. Formula:\n\n**D/E = Datorii totale / Capital propriu**\n\n- **Datorii totale** = toate obligațiile firmei față de terți: credite bancare, leasing financiar, datorii către furnizori, datorii salariale, provizioane etc. (secțiunea \"Datorii\" din bilanț).\n- **Capital propriu** = capitalul social + rezervele + profitul reportat/nedistribuit (secțiunea \"Capitaluri proprii\" din bilanț) — practic, ce ar rămâne asociaților dacă firma și-ar vinde toate activele și și-ar plăti toate datoriile.\n\n**Cum se citește rezultatul:**\n\n| D/E | Interpretare orientativă |\n|---|---|\n| < 0,5 | Îndatorare redusă — firmă conservatoare, dependență mică de creditori |\n| 0,5 – 1,5 | Îndatorare moderată — nivel considerat sănătos în majoritatea sectoarelor |\n| 1,5 – 2 | Îndatorare ridicată — necesită analiză atentă a capacității de rambursare |\n| > 2 | Risc financiar ridicat — firma se bazează mult mai mult pe bani de la creditori decât pe capital propriu |\n\nAceste praguri sunt **orientative**, nu absolute: o companie de utilități (cu venituri predictibile) poate funcționa sănătos cu D/E de 2-3, în timp ce o firmă din construcții sau IT cu venituri volatile ar trebui să stea mult sub 1,5. Compară întotdeauna cu media sectorului, nu doar cu un prag universal.\n\nO variantă înrudită, folosită frecvent de bănci, este **rata datoriilor (Debt Ratio) = Datorii totale / Active totale**, care arată ce procent din active este finanțat prin datorii (restul fiind finanțat din capital propriu).",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "rata-acoperire-dobanzi-leverage",
+    "md": "## Rata de acoperire a dobânzilor (Interest Coverage Ratio) și efectul de levier\n\nGradul de îndatorare îți spune *cât* a împrumutat firma. Rata de acoperire a dobânzilor îți spune dacă firma **își permite** costul acelui împrumut, an de an, din activitatea curentă.\n\n**ICR = EBIT / Cheltuieli cu dobânzile**\n\nunde **EBIT** (Earnings Before Interest and Taxes) = profitul din exploatare, înainte de dobânzi și impozit pe profit — aproximativ echivalentul \"Rezultatului din exploatare\" din contul de profit și pierdere românesc.\n\n**Interpretare:**\n- ICR = 1 înseamnă că întregul profit operațional se duce pe plata dobânzilor — nu rămâne nimic pentru impozit, investiții sau dividende. Zonă de risc sever.\n- ICR < 1,5 este, în general, un semnal de alarmă pentru bănci și investitori.\n- ICR între 3 și 5 este considerat confortabil pentru majoritatea companiilor mature.\n- ICR foarte mare (>10) poate indica și o firmă prea conservatoare, care nu folosește suficient efectul de levier pentru a-și crește randamentul.\n\n### Efectul de levier financiar (leverage)\n\n\"Leverage\" (efect de levier) descrie modul în care folosirea datoriei **amplifică** rezultatul pentru asociați/acționari, în ambele sensuri:\n\n- Dacă firma obține un randament al activelor (ROA) **mai mare** decât costul datoriei (rata dobânzii), fiecare leu împrumutat și investit generează un profit suplimentar pentru asociați peste costul lui — levierul este **pozitiv**.\n- Dacă randamentul activelor este **mai mic** decât costul datoriei, fiecare leu împrumutat erodează profitul asociaților — levierul devine **negativ**, iar riscul financiar crește rapid.\n\nUn indicator simplu al gradului de levier este **multiplicatorul de capital = Active totale / Capital propriu**: cu cât e mai mare, cu atât mai mult din active sunt finanțate din datorii, deci cu atât mai amplificat este efectul (pozitiv sau negativ) asupra capitalului propriu.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b3"
+   },
+   {
+    "type": "example",
+    "title": "Alfa Trading SRL — îndatorare moderată",
+    "concept_key": "grad-indatorare-debt-to-equity",
+    "md": "Alfa Trading SRL are, la 31.12.2025, următoarea structură simplificată a bilanțului:\n\n- Capital propriu: **800.000 lei**\n- Datorii totale: **1.200.000 lei** (din care datorii financiare purtătoare de dobândă: 600.000 lei; restul sunt datorii comerciale către furnizori și alte datorii curente)\n- Active totale: **2.000.000 lei**\n\n**Calcul:**\n\nD/E = 1.200.000 / 800.000 = **1,5**\n\nDebt Ratio = 1.200.000 / 2.000.000 = **0,6** → 60% din active sunt finanțate din datorii, 40% din capital propriu.\n\nMultiplicator de capital = 2.000.000 / 800.000 = **2,5**\n\n**Interpretare:** Un D/E de 1,5 plasează Alfa Trading la limita superioară a zonei \"moderate\". Nu e alarmant, dar merită monitorizat — mai ales dacă firma plănuiește un credit nou de investiții. Analistul ar trebui să compare acest 1,5 cu media firmelor din același sector de activitate (comerț en-gros) înainte de a trage o concluzie fermă.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b4"
+   },
+   {
+    "type": "example",
+    "title": "Beta Construct SRL — semnal de risc la acoperirea dobânzilor",
+    "concept_key": "rata-acoperire-dobanzi-leverage",
+    "md": "Beta Construct SRL, o firmă din construcții, are:\n\n- Capital propriu: **200.000 lei**\n- Datorii totale: **1.800.000 lei**\n- EBIT (Rezultat din exploatare): **150.000 lei**\n- Cheltuieli cu dobânzile: **180.000 lei**\n\n**Calcul:**\n\nD/E = 1.800.000 / 200.000 = **9** (extrem de ridicat — firma este finanțată aproape în întregime din datorii)\n\nICR = 150.000 / 180.000 = **0,83**\n\n**Interpretare:** Un ICR sub 1 înseamnă că Beta Construct nu generează suficient profit operațional nici măcar pentru a acoperi dobânzile datorate anul respectiv — cu atât mai puțin pentru a rambursa principalul sau a plăti impozit. Combinat cu un D/E de 9, situația indică un risc financiar sever: orice scădere suplimentară a activității (întârziere la un proiect, creștere a ratei dobânzii ROBOR) poate declanșa incapacitate de plată. Un consultant financiar ar recomanda aici fie o majorare de capital, fie o restructurare urgentă a datoriilor.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "OMFP 1802/2014",
+    "article": "Structura bilanțului — secțiunile Capitaluri proprii și Datorii",
+    "effective": "2015-01-01",
+    "md": "Datele necesare calculului indicatorilor de solvabilitate (capital propriu, datorii totale, defalcarea pe datorii curente/pe termen lung) se preiau direct din bilanțul întocmit conform OMFP 1802/2014 pentru aprobarea reglementărilor contabile privind situațiile financiare anuale individuale și consolidate, în vigoare de la 1 ianuarie 2015. Secțiunea \"Capitaluri proprii\" cuprinde capitalul social, rezervele și rezultatul reportat; secțiunea \"Datorii\" este împărțită în datorii ce trebuie plătite într-o perioadă de până la un an și datorii ce trebuie plătite într-o perioadă mai mare de un an — distincție utilă când calculezi separat gradul de îndatorare pe termen lung.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Îndatorarea nu este automat un lucru rău — un D/E moderat, folosit inteligent (de exemplu pentru finanțarea unei investiții cu randament peste costul creditului), poate crește profitabilitatea capitalului propriu prin efectul de levier pozitiv. Problema apare când: (1) datoria crește peste capacitatea reală de rambursare, (2) ICR scade sub pragurile de siguranță impuse frecvent și prin clauze contractuale bancare (\"covenants\"), sau (3) firma nu diferențiază între datorii financiare (purtătoare de dobândă) și datorii comerciale curente (furnizori), care au natură și risc diferite. Nu trage concluzii dintr-un singur an — analizează trendul D/E și ICR pe 3-5 ani și compară-l cu media sectorului de activitate.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Gamma Servicii SRL îți pune la dispoziție următoarele date din situațiile financiare pentru anul 2025:\n\n- Capital propriu: 500.000 lei\n- Datorii totale: 700.000 lei (din care datorii financiare purtătoare de dobândă: 300.000 lei)\n- Active totale: 1.200.000 lei\n- EBIT (Rezultat din exploatare): 120.000 lei\n- Cheltuieli cu dobânzile: 40.000 lei\n\nCalculează: (a) gradul de îndatorare (D/E), (b) rata datoriilor (Debt Ratio), (c) rata de acoperire a dobânzilor (ICR). Interpretează pe scurt situația financiară a firmei.",
+    "solution_md": "**(a) D/E** = Datorii totale / Capital propriu = 700.000 / 500.000 = **1,4**\n→ Îndatorare moderată, la limita superioară a intervalului sănătos (0,5–1,5).\n\n**(b) Debt Ratio** = Datorii totale / Active totale = 700.000 / 1.200.000 = **0,58** (58%)\n→ Puțin peste jumătate din active sunt finanțate din datorii; restul de 42% din capital propriu.\n\n**(c) ICR** = EBIT / Cheltuieli cu dobânzile = 120.000 / 40.000 = **3**\n→ Profitul operațional acoperă de 3 ori cheltuielile cu dobânzile — nivel confortabil, în zona considerată sănătoasă (3-5).\n\n**Interpretare generală:** Gamma Servicii SRL are o îndatorare moderată (D/E = 1,4) și o capacitate solidă de a-și acoperi costurile financiare (ICR = 3). Nu există semnale de risc financiar imediat, dar D/E aflat aproape de pragul de 1,5 merită monitorizat dacă firma intenționează să contracteze credite suplimentare — un nou împrumut ar putea împinge indicatorul în zona de risc ridicat.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are datorii totale de 900.000 lei și capital propriu de 300.000 lei. Care este gradul său de îndatorare (D/E) și cum se interpretează?",
+    "choices": [
+     "D/E = 0,33 — îndatorare foarte redusă",
+     "D/E = 3 — îndatorare foarte ridicată, risc financiar mare",
+     "D/E = 3 — indicator de lichiditate, nu de solvabilitate",
+     "D/E = 1,2 — îndatorare moderată"
+    ],
+    "answer": 1,
+    "explain": "D/E = Datorii totale / Capital propriu = 900.000 / 300.000 = 3. Un D/E de 3 depășește semnificativ pragul de 2 considerat orientativ pentru risc ridicat — firma se bazează de trei ori mai mult pe capital împrumutat decât pe capital propriu.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O firmă are ICR (Interest Coverage Ratio) egal cu 0,7. Ce înseamnă acest lucru?",
+    "choices": [
+     "Firma acoperă confortabil dobânzile din profitul operațional",
+     "Firma nu generează suficient profit operațional nici pentru a acoperi integral cheltuielile cu dobânzile — semnal de risc financiar sever",
+     "Firma nu are deloc datorii purtătoare de dobândă",
+     "Indicatorul nu are relevanță pentru solvabilitate"
+    ],
+    "answer": 1,
+    "explain": "Un ICR sub 1 arată că EBIT-ul (profitul din exploatare) este mai mic decât cheltuielile cu dobânzile — firma ar trebui să apeleze la alte resurse (rezerve de cash, credite noi, capital nou) doar pentru a plăti dobânda datorată, ceea ce este un semnal clar de risc financiar ridicat.",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula gradului de îndatorare (Debt-to-Equity)?",
+    "back": "D/E = Datorii totale / Capital propriu. Măsoară cât de mult se bazează firma pe capital împrumutat față de capitalul propriu al asociaților.",
+    "concept_key": "grad-indatorare-debt-to-equity",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula ratei de acoperire a dobânzilor (Interest Coverage Ratio)?",
+    "back": "ICR = EBIT / Cheltuieli cu dobânzile. Arată de câte ori profitul operațional acoperă costul dobânzilor datorate.",
+    "concept_key": "rata-acoperire-dobanzi-leverage",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce prag de D/E este considerat, orientativ, zonă de risc financiar ridicat?",
+    "back": "D/E peste 2 (peste 1,5-2 necesită deja analiză atentă), deși pragul variază pe sectoare — utilitățile tolerează D/E mai mare decât IT sau construcțiile.",
+    "concept_key": "grad-indatorare-debt-to-equity",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce ICR este considerat semnal de alarmă pentru bănci și investitori?",
+    "back": "Un ICR sub 1,5 este, în general, considerat semnal de alarmă; ICR sub 1 înseamnă că profitul operațional nu acoperă nici măcar dobânzile.",
+    "concept_key": "rata-acoperire-dobanzi-leverage",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este efectul de levier financiar (leverage)?",
+    "back": "Mecanismul prin care folosirea datoriei amplifică rezultatul pentru asociați: pozitiv dacă randamentul activelor (ROA) depășește costul datoriei, negativ dacă ROA este sub costul datoriei.",
+    "concept_key": "rata-acoperire-dobanzi-leverage",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența esențială dintre solvabilitate și lichiditate?",
+    "back": "Lichiditatea măsoară capacitatea de plată pe termen scurt (obligații sub 12 luni); solvabilitatea măsoară capacitatea firmei de a-și onora toate obligațiile, inclusiv pe termen lung, folosind resursele proprii.",
+    "concept_key": "solvabilitate-vs-lichiditate",
+    "blockId": "cmjjuxw1c00bdumkp2f57oxaw-b16"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1460,
+   "flashcards": 6
+  }
+ }
+}

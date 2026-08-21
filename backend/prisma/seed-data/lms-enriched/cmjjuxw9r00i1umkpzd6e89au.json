@@ -1,0 +1,135 @@
+{
+ "lessonId": "cmjjuxw9r00i1umkpzd6e89au",
+ "courseId": "cmjjuxw8u00hdumkpvymhu1qz",
+ "course": "Administrare Personal și Payroll România",
+ "module": "REVISAL și Raportări ITM",
+ "lesson": "Exercițiu REVISAL",
+ "category": "HR_COMPLIANCE",
+ "content": "# Exercițiu REVISAL\n\nREVISAL, prescurtare de la Registrul General de Evidență a Salariaților, este aplicația electronică prin care orice angajator din România își îndeplinește obligația de evidență a raporturilor de muncă. Registrul este gestionat de Inspecția Muncii, iar completarea lui este obligatorie pentru fiecare persoană juridică sau fizică ce are calitatea de angajator, indiferent de numărul de salariați.\n\nÎn REVISAL se înregistrează, pentru fiecare contract individual de muncă (CIM): datele de identificare ale salariatului (inclusiv CNP), funcția ocupată conform Clasificării Ocupațiilor din România (COR), tipul contractului (determinat/nedeterminat), tipul normei de muncă (întreagă/parțială), data începerii activității, salariul de bază brut, precum și orice modificare, suspendare sau încetare ulterioară a contractului.\n\nUn exercițiu REVISAL simulează exact acest flux: de la angajarea unei persoane noi, la operarea unei modificări (de exemplu, majorarea salariului), până la verificarea corectitudinii datelor introduse. Stăpânirea acestui flux este esențială pentru orice specialist de resurse umane, deoarece erorile sau întârzierile în REVISAL atrag răspunderea contravențională a angajatorului.\n\nTermenele de operare în REVISAL diferă în funcție de tipul evenimentului și trebuie respectate cu strictețe, indiferent de dimensiunea firmei:\n\n- **Angajare (CIM nou)**: înregistrarea se face cel târziu în ziua lucrătoare anterioară începerii efective a activității de către salariat. Aplicația REVISAL este disponibilă online, astfel încât transmiterea se poate face inclusiv în weekend sau în zile nelucrătoare, dacă activitatea începe imediat după acestea.\n- **Modificare a elementelor contractuale** (salariu, funcție, tip normă, durată): se realizează prin act adițional la CIM, semnat de ambele părți, urmat de operarea modificării în REVISAL. Termenul de operare pentru modificările de salariu poate diferi de regula generală aplicabilă altor modificări contractuale — recomandăm verificarea termenului legal exact în vigoare la data operării, în legislația și îndrumările ITM actualizate.\n- **Suspendare** (de exemplu, concediu de creștere a copilului, concediu fără plată): se înregistrează, de regulă, la data producerii evenimentului sau anterior acesteia.\n- **Încetare a contractului**: se înregistrează cel târziu la data încetării.\n\nNerespectarea acestor termene constituie contravenție și poate atrage amenzi aplicate de inspectorii de muncă, motiv pentru care fiecare operare trebuie documentată și arhivată.\n\nUn exercițiu de simulare REVISAL parcurge, în practică, șase pași:\n\n1. **Culegerea datelor angajatului** — CNP, nume, funcție, ocupație conform COR, act de studii dacă e relevant.\n2. **Verificarea documentului-sursă** — CIM semnat (la angajare) sau act adițional semnat (la modificare); niciun eveniment nu se operează în REVISAL fără documentul care îl susține.\n3. **Accesarea aplicației REVISAL** — prin programul software pus la dispoziție gratuit de Inspecția Muncii sau printr-un ERP conectat prin API la infrastructura ITM.\n4. **Completarea câmpurilor obligatorii** — tip eveniment (angajare, modificare, suspendare, încetare), datele contractuale, temeiul legal (articolul din Codul muncii aplicabil tipului de contract).\n5. **Transmiterea și obținerea confirmării** — sistemul generează un fișier de validare; angajatorul trebuie să păstreze dovada transmiterii.\n6. **Arhivarea** — dovada transmiterii și documentul-sursă se păstrează la dosarul de personal, alături de celelalte documente ale salariatului.\n\nAcești pași sunt aceiași atât pentru un exercițiu didactic, cât și pentru operarea reală în cadrul unei firme.\n\n## Exemplu: Simulare: înregistrarea unui angajat nou în REVISAL\nFirma Contoro SRL o angajează pe Elena Dumitrescu, cu contract individual de muncă pe durată nedeterminată, normă întreagă (40 ore/săptămână), începând cu data de 15.07.2026 (miercuri). Funcția: 'Asistent resurse umane', cod COR ilustrativ 333304 (verifică întotdeauna codul exact în nomenclatorul COR actualizat). Salariul de bază brut este stabilit la nivelul salariului minim pe economie aplicabil de la 1 iulie 2026, respectiv 4.325 lei. Perioada de probă este de 90 de zile calendaristice, conform Codului muncii.\n\n**Data-limită de operare în REVISAL:** cel târziu 14.07.2026 (ziua lucrătoare anterioară începerii activității).\n\n**Câmpuri de completat:**\n- CNP salariat: 2900101123456 (cod fictiv, exclusiv pentru exercițiu)\n- Nr. și data CIM: nr. 118/10.07.2026\n- Funcție/ocupație COR: 333304 – Asistent resurse umane\n- Tip contract: nedeterminat, temei legal art. 12 alin. (1) din Legea nr. 53/2003\n- Tip normă: întreagă, 8 ore/zi\n- Data începerii activității: 15.07.2026\n- Salariul de bază brut: 4.325 lei\n- Perioadă de probă: 90 de zile calendaristice\n\n**Reținerile aplicate salariatei** (calcul orientativ): CAS 25% = 1.081,25 lei; CASS 10% = 432,50 lei. Deoarece salariul este exact la nivelul minim pe economie, se aplică și partea netaxabilă de 200 lei (valabilă de la 1 iulie 2026), care reduce baza de calcul a impozitului. Rezultatul, conform grilelor actualizate pentru salariul minim, este un venit net de aproximativ 2.699 lei — valoarea exactă trebuie confirmată în softul de salarizare, întrucât mecanismul scutirii poate suferi ajustări legislative.\n\n## Exemplu: Simulare: act adițional pentru modificarea salariului\nDupă finalizarea perioadei de probă, Contoro SRL decide majorarea salariului Elenei Dumitrescu de la 4.325 lei la 4.800 lei brut, începând cu 01.11.2026. Operațiunea presupune:\n\n1. **Întocmirea actului adițional nr. 1/25.10.2026** la CIM, semnat de angajator și salariat, cu menționarea noului salariu de bază brut și a datei de la care se aplică.\n2. **Operarea modificării în REVISAL**, cu selectarea tipului de eveniment 'Modificare salariu de bază' și introducerea datei de aplicare (01.11.2026). Termenul legal de operare trebuie verificat la data efectuării modificării, întrucât regulile privind modificările salariale pot diferi de regula generală aplicabilă altor elemente contractuale.\n3. **Calculul salariului net rezultat**, întrucât 4.800 lei depășește salariul minim, iar partea netaxabilă de 200 lei nu se mai aplică:\n\n- Salariu brut: 4.800 lei\n- CAS (25%): 1.200 lei\n- CASS (10%): 480 lei\n- Bază de calcul impozit: 4.800 − 1.200 − 480 = 3.120 lei\n- Impozit pe venit (10%): 312 lei\n- **Salariu net: 4.800 − 1.200 − 480 − 312 = 2.808 lei**\n\nAcest calcul nu include eventuale deduceri personale suplimentare (de exemplu, pentru persoane în întreținere), care ar reduce suplimentar baza de impozitare.\n\n> Temei legal: HG nr. 905/2017 privind registrul general de evidență a salariaților art. 4 alin. (1) lit. a) (în vigoare de la 2018-01-01)\nRegistrul general de evidență a salariaților se completează și se transmite în format electronic. Angajatorul are obligația de a înregistra elementele raportului de muncă cel târziu în ziua lucrătoare anterioară începerii activității de către salariatul în cauză. Nerespectarea acestei obligații constituie contravenție și se sancționează conform prevederilor HG nr. 905/2017. Modificările ulterioare ale contractului (salariu, funcție, tip normă) se operează pe baza actului adițional semnat, cu respectarea termenelor legale în vigoare la data modificării.\n\n⚠ Datele operate în REVISAL, inclusiv CNP-ul, constituie date cu caracter personal. Accesul la aplicație trebuie restricționat exclusiv persoanelor autorizate din departamentul de resurse umane, iar exportul sau transmiterea acestor date către terți se face doar în condițiile prevăzute de legislația privind protecția datelor (GDPR). Nu folosi niciodată date reale ale unor persoane în exerciții didactice — folosește exclusiv coduri fictive, așa cum s-a procedat în exemplele de mai sus.\n\n## Exercițiu\nFirma Abilio Trade SRL o angajează pe Maria Ionescu, începând cu data de 20.07.2026 (luni), pe postul de 'Referent resurse umane', cu contract individual de muncă pe durată nedeterminată, normă întreagă, salariul de bază brut fiind stabilit la 4.500 lei. Perioada de probă este de 90 de zile calendaristice.\n\nRezolvă următoarele cerințe:\na) Care este data-limită până la care angajatorul trebuie să opereze angajarea în REVISAL?\nb) Enumeră minimum 6 câmpuri obligatorii ce trebuie completate în REVISAL pentru acest eveniment.\nc) Calculează salariul net al Mariei Ionescu, pornind de la salariul brut de 4.500 lei (CAS 25%, CASS 10%, impozit 10%, fără alte deduceri).\n\n**Soluție:** a) Deoarece activitatea începe luni, 20.07.2026, iar aplicația REVISAL este disponibilă online, înregistrarea trebuie operată cel târziu duminică, 19.07.2026 — adică în ziua calendaristică anterioară începerii activității.\n\nb) Câmpuri obligatorii: CNP salariat; numărul și data CIM; funcția/ocupația conform COR; tipul contractului (nedeterminat) și temeiul legal (art. 12 alin. (1) din Legea nr. 53/2003); tipul normei de muncă (întreagă) și numărul de ore/zi; data începerii activității; salariul de bază brut; perioada de probă.\n\nc) Calcul salariu net:\n- Salariu brut: 4.500 lei\n- CAS (25%): 1.125 lei\n- CASS (10%): 450 lei\n- Bază de calcul impozit: 4.500 − 1.125 − 450 = 2.925 lei\n- Impozit pe venit (10%): 292,50 lei\n- **Salariu net: 4.500 − 1.125 − 450 − 292,50 = 2.632,50 lei**",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "revisal-definitie-obligatie",
+    "md": "REVISAL, prescurtare de la Registrul General de Evidență a Salariaților, este aplicația electronică prin care orice angajator din România își îndeplinește obligația de evidență a raporturilor de muncă. Registrul este gestionat de Inspecția Muncii, iar completarea lui este obligatorie pentru fiecare persoană juridică sau fizică ce are calitatea de angajator, indiferent de numărul de salariați.\n\nÎn REVISAL se înregistrează, pentru fiecare contract individual de muncă (CIM): datele de identificare ale salariatului (inclusiv CNP), funcția ocupată conform Clasificării Ocupațiilor din România (COR), tipul contractului (determinat/nedeterminat), tipul normei de muncă (întreagă/parțială), data începerii activității, salariul de bază brut, precum și orice modificare, suspendare sau încetare ulterioară a contractului.\n\nUn exercițiu REVISAL simulează exact acest flux: de la angajarea unei persoane noi, la operarea unei modificări (de exemplu, majorarea salariului), până la verificarea corectitudinii datelor introduse. Stăpânirea acestui flux este esențială pentru orice specialist de resurse umane, deoarece erorile sau întârzierile în REVISAL atrag răspunderea contravențională a angajatorului.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-termene-cheie",
+    "md": "Termenele de operare în REVISAL diferă în funcție de tipul evenimentului și trebuie respectate cu strictețe, indiferent de dimensiunea firmei:\n\n- **Angajare (CIM nou)**: înregistrarea se face cel târziu în ziua lucrătoare anterioară începerii efective a activității de către salariat. Aplicația REVISAL este disponibilă online, astfel încât transmiterea se poate face inclusiv în weekend sau în zile nelucrătoare, dacă activitatea începe imediat după acestea.\n- **Modificare a elementelor contractuale** (salariu, funcție, tip normă, durată): se realizează prin act adițional la CIM, semnat de ambele părți, urmat de operarea modificării în REVISAL. Termenul de operare pentru modificările de salariu poate diferi de regula generală aplicabilă altor modificări contractuale — recomandăm verificarea termenului legal exact în vigoare la data operării, în legislația și îndrumările ITM actualizate.\n- **Suspendare** (de exemplu, concediu de creștere a copilului, concediu fără plată): se înregistrează, de regulă, la data producerii evenimentului sau anterior acesteia.\n- **Încetare a contractului**: se înregistrează cel târziu la data încetării.\n\nNerespectarea acestor termene constituie contravenție și poate atrage amenzi aplicate de inspectorii de muncă, motiv pentru care fiecare operare trebuie documentată și arhivată.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "revisal-exercitiu-pasi-practici",
+    "md": "Un exercițiu de simulare REVISAL parcurge, în practică, șase pași:\n\n1. **Culegerea datelor angajatului** — CNP, nume, funcție, ocupație conform COR, act de studii dacă e relevant.\n2. **Verificarea documentului-sursă** — CIM semnat (la angajare) sau act adițional semnat (la modificare); niciun eveniment nu se operează în REVISAL fără documentul care îl susține.\n3. **Accesarea aplicației REVISAL** — prin programul software pus la dispoziție gratuit de Inspecția Muncii sau printr-un ERP conectat prin API la infrastructura ITM.\n4. **Completarea câmpurilor obligatorii** — tip eveniment (angajare, modificare, suspendare, încetare), datele contractuale, temeiul legal (articolul din Codul muncii aplicabil tipului de contract).\n5. **Transmiterea și obținerea confirmării** — sistemul generează un fișier de validare; angajatorul trebuie să păstreze dovada transmiterii.\n6. **Arhivarea** — dovada transmiterii și documentul-sursă se păstrează la dosarul de personal, alături de celelalte documente ale salariatului.\n\nAcești pași sunt aceiași atât pentru un exercițiu didactic, cât și pentru operarea reală în cadrul unei firme.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b3"
+   },
+   {
+    "type": "example",
+    "title": "Simulare: înregistrarea unui angajat nou în REVISAL",
+    "concept_key": "revisal-exemplu-angajare-noua",
+    "md": "Firma Contoro SRL o angajează pe Elena Dumitrescu, cu contract individual de muncă pe durată nedeterminată, normă întreagă (40 ore/săptămână), începând cu data de 15.07.2026 (miercuri). Funcția: 'Asistent resurse umane', cod COR ilustrativ 333304 (verifică întotdeauna codul exact în nomenclatorul COR actualizat). Salariul de bază brut este stabilit la nivelul salariului minim pe economie aplicabil de la 1 iulie 2026, respectiv 4.325 lei. Perioada de probă este de 90 de zile calendaristice, conform Codului muncii.\n\n**Data-limită de operare în REVISAL:** cel târziu 14.07.2026 (ziua lucrătoare anterioară începerii activității).\n\n**Câmpuri de completat:**\n- CNP salariat: 2900101123456 (cod fictiv, exclusiv pentru exercițiu)\n- Nr. și data CIM: nr. 118/10.07.2026\n- Funcție/ocupație COR: 333304 – Asistent resurse umane\n- Tip contract: nedeterminat, temei legal art. 12 alin. (1) din Legea nr. 53/2003\n- Tip normă: întreagă, 8 ore/zi\n- Data începerii activității: 15.07.2026\n- Salariul de bază brut: 4.325 lei\n- Perioadă de probă: 90 de zile calendaristice\n\n**Reținerile aplicate salariatei** (calcul orientativ): CAS 25% = 1.081,25 lei; CASS 10% = 432,50 lei. Deoarece salariul este exact la nivelul minim pe economie, se aplică și partea netaxabilă de 200 lei (valabilă de la 1 iulie 2026), care reduce baza de calcul a impozitului. Rezultatul, conform grilelor actualizate pentru salariul minim, este un venit net de aproximativ 2.699 lei — valoarea exactă trebuie confirmată în softul de salarizare, întrucât mecanismul scutirii poate suferi ajustări legislative.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b4"
+   },
+   {
+    "type": "example",
+    "title": "Simulare: act adițional pentru modificarea salariului",
+    "concept_key": "revisal-exemplu-modificare-salariu",
+    "md": "După finalizarea perioadei de probă, Contoro SRL decide majorarea salariului Elenei Dumitrescu de la 4.325 lei la 4.800 lei brut, începând cu 01.11.2026. Operațiunea presupune:\n\n1. **Întocmirea actului adițional nr. 1/25.10.2026** la CIM, semnat de angajator și salariat, cu menționarea noului salariu de bază brut și a datei de la care se aplică.\n2. **Operarea modificării în REVISAL**, cu selectarea tipului de eveniment 'Modificare salariu de bază' și introducerea datei de aplicare (01.11.2026). Termenul legal de operare trebuie verificat la data efectuării modificării, întrucât regulile privind modificările salariale pot diferi de regula generală aplicabilă altor elemente contractuale.\n3. **Calculul salariului net rezultat**, întrucât 4.800 lei depășește salariul minim, iar partea netaxabilă de 200 lei nu se mai aplică:\n\n- Salariu brut: 4.800 lei\n- CAS (25%): 1.200 lei\n- CASS (10%): 480 lei\n- Bază de calcul impozit: 4.800 − 1.200 − 480 = 3.120 lei\n- Impozit pe venit (10%): 312 lei\n- **Salariu net: 4.800 − 1.200 − 480 − 312 = 2.808 lei**\n\nAcest calcul nu include eventuale deduceri personale suplimentare (de exemplu, pentru persoane în întreținere), care ar reduce suplimentar baza de impozitare.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "HG nr. 905/2017 privind registrul general de evidență a salariaților",
+    "article": "art. 4 alin. (1) lit. a)",
+    "effective": "2018-01-01",
+    "md": "Registrul general de evidență a salariaților se completează și se transmite în format electronic. Angajatorul are obligația de a înregistra elementele raportului de muncă cel târziu în ziua lucrătoare anterioară începerii activității de către salariatul în cauză. Nerespectarea acestei obligații constituie contravenție și se sancționează conform prevederilor HG nr. 905/2017. Modificările ulterioare ale contractului (salariu, funcție, tip normă) se operează pe baza actului adițional semnat, cu respectarea termenelor legale în vigoare la data modificării.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Datele operate în REVISAL, inclusiv CNP-ul, constituie date cu caracter personal. Accesul la aplicație trebuie restricționat exclusiv persoanelor autorizate din departamentul de resurse umane, iar exportul sau transmiterea acestor date către terți se face doar în condițiile prevăzute de legislația privind protecția datelor (GDPR). Nu folosi niciodată date reale ale unor persoane în exerciții didactice — folosește exclusiv coduri fictive, așa cum s-a procedat în exemplele de mai sus.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Firma Abilio Trade SRL o angajează pe Maria Ionescu, începând cu data de 20.07.2026 (luni), pe postul de 'Referent resurse umane', cu contract individual de muncă pe durată nedeterminată, normă întreagă, salariul de bază brut fiind stabilit la 4.500 lei. Perioada de probă este de 90 de zile calendaristice.\n\nRezolvă următoarele cerințe:\na) Care este data-limită până la care angajatorul trebuie să opereze angajarea în REVISAL?\nb) Enumeră minimum 6 câmpuri obligatorii ce trebuie completate în REVISAL pentru acest eveniment.\nc) Calculează salariul net al Mariei Ionescu, pornind de la salariul brut de 4.500 lei (CAS 25%, CASS 10%, impozit 10%, fără alte deduceri).",
+    "solution_md": "a) Deoarece activitatea începe luni, 20.07.2026, iar aplicația REVISAL este disponibilă online, înregistrarea trebuie operată cel târziu duminică, 19.07.2026 — adică în ziua calendaristică anterioară începerii activității.\n\nb) Câmpuri obligatorii: CNP salariat; numărul și data CIM; funcția/ocupația conform COR; tipul contractului (nedeterminat) și temeiul legal (art. 12 alin. (1) din Legea nr. 53/2003); tipul normei de muncă (întreagă) și numărul de ore/zi; data începerii activității; salariul de bază brut; perioada de probă.\n\nc) Calcul salariu net:\n- Salariu brut: 4.500 lei\n- CAS (25%): 1.125 lei\n- CASS (10%): 450 lei\n- Bază de calcul impozit: 4.500 − 1.125 − 450 = 2.925 lei\n- Impozit pe venit (10%): 292,50 lei\n- **Salariu net: 4.500 − 1.125 − 450 − 292,50 = 2.632,50 lei**",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este termenul de înregistrare în REVISAL a unui contract individual de muncă nou, conform HG nr. 905/2017?",
+    "choices": [
+     "În ziua începerii activității",
+     "Cel târziu în ziua lucrătoare anterioară începerii activității",
+     "În termen de 20 de zile de la angajare",
+     "În termen de 30 de zile de la angajare"
+    ],
+    "answer": 1,
+    "explain": "HG nr. 905/2017, art. 4 alin. (1) lit. a), impune înregistrarea CIM în REVISAL cel târziu în ziua lucrătoare anterioară începerii activității de către salariat.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce document trebuie întocmit pentru a modifica salariul unui angajat deja înregistrat în REVISAL?",
+    "choices": [
+     "Un nou CIM, care îl înlocuiește pe cel vechi",
+     "O decizie internă, fără notificare în REVISAL",
+     "Un act adițional la CIM, urmat de operarea modificării în REVISAL",
+     "Nu este necesară nicio formalitate"
+    ],
+    "answer": 2,
+    "explain": "Orice modificare a elementelor contractuale, inclusiv salariul, se face prin act adițional semnat de ambele părți, ulterior operat în REVISAL.",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este salariul minim brut pe economie de la 1 iulie 2026?",
+    "back": "4.325 lei (față de 4.050 lei în prima jumătate a anului), conform HG nr. 146/2026.",
+    "concept_key": "salariu-minim-2026-iulie",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce parte din salariul minim este netaxabilă de la 1 iulie 2026?",
+    "back": "200 lei (redusă de la 300 lei, conform OUG nr. 89/2025).",
+    "concept_key": "parte-netaxabila-salariu-minim",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Până când trebuie înregistrat în REVISAL un CIM nou?",
+    "back": "Cel târziu în ziua anterioară începerii efective a activității de către salariat (HG nr. 905/2017, art. 4).",
+    "concept_key": "revisal-termen-inregistrare-cim-nou",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce act se încheie pentru modificarea salariului unui angajat existent?",
+    "back": "Un act adițional la contractul individual de muncă, semnat de ambele părți, urmat de operarea în REVISAL.",
+    "concept_key": "act-aditional-modificare-salariu",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cotele reținute din salariul brut al angajatului?",
+    "back": "CAS 25%, CASS 10%, impozit pe venit 10% (aplicat după eventualele deduceri).",
+    "concept_key": "cote-contributii-salariat-2026",
+    "blockId": "cmjjuxw9r00i1umkpzd6e89au-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1298,
+   "flashcards": 5
+  }
+ }
+}

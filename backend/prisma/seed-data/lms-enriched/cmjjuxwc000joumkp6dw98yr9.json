@@ -1,0 +1,149 @@
+{
+ "lessonId": "cmjjuxwc000joumkp6dw98yr9",
+ "courseId": "cmjjuxwb700j4umkpwahnal8f",
+ "course": "SSM Complet - Securitate și Sănătate în Muncă",
+ "module": "Evaluarea Riscurilor",
+ "lesson": "Identificarea pericolelor",
+ "category": "HSE_SAFETY",
+ "content": "# Identificarea pericolelor\n\n## Ce este un pericol?\n\nÎn securitatea și sănătatea în muncă (SSM), primul pas al oricărei evaluări de risc este **identificarea pericolelor** — un proces sistematic prin care recunoști tot ce, la locul de muncă, are potențialul de a cauza vătămare unui lucrător, o îmbolnăvire profesională sau un incident.\n\nEste esențial să nu confunzi doi termeni pe care vorbirea curentă îi tratează adesea greșit ca sinonime:\n\n- **Pericolul (hazard)** este sursa, situația sau acțiunea cu potențial intrinsec de a produce o vătămare — de exemplu, un cablu electric neizolat, o suprafață umedă, zgomotul unui utilaj sau un termen-limită nerealist impus unui angajat.\n- **Riscul** este combinația dintre probabilitatea ca acel pericol să se materializeze și gravitatea consecinței dacă se întâmplă. Riscul se evaluează *după* ce pericolul a fost identificat, de regulă printr-o formulă de tipul Risc = Probabilitate × Gravitate.\n\nCu alte cuvinte: pericolul există independent de acțiunile tale (un utilaj tăietor este periculos prin natura lui), în timp ce riscul depinde de context — cine îl folosește, cât de des, cu ce protecții. Identificarea corectă și completă a pericolelor este condiția fără de care evaluarea riscurilor devine incompletă, iar măsurile de prevenire, ineficiente.\n\nAngajatorul are obligația legală de a identifica toate pericolele existente la fiecare loc de muncă din unitate, indiferent de numărul de angajați sau de domeniul de activitate, conform Legii nr. 319/2006.\n\n## Cele cinci categorii principale de pericole\n\nPentru a nu omite pericole în procesul de evaluare, este recomandat să parcurgi sistematic fiecare loc de muncă folosind o clasificare pe categorii. Cele mai utilizate cinci categorii sunt:\n\n1. **Pericole fizice** — zgomot, vibrații, temperaturi extreme, iluminat necorespunzător, radiații, curent electric, incendiu/explozie, suprafețe alunecoase sau denivelate, lucru la înălțime.\n2. **Pericole chimice** — substanțe toxice, corozive, inflamabile sau cancerigene (solvenți, acizi, vopsele, gaze), praf, fum, vapori degajați în procesul de producție.\n3. **Pericole biologice** — expunere la bacterii, viruși, fungi sau alte microorganisme, relevante mai ales în sănătate, agricultură, gestionarea deșeurilor sau laboratoare.\n4. **Pericole ergonomice** — poziții de lucru forțate, manipulare manuală a maselor, mișcări repetitive, mobilier sau echipamente neadaptate (birou, scaun, monitor prost poziționate).\n5. **Pericole psihosociale** — stres profesional, volum de muncă excesiv, hărțuire, program de lucru dezorganizat, lipsa autonomiei sau a suportului din partea colegilor/managementului.\n\nÎn practică, multe organizații adaugă și o a șasea categorie, **pericolele mecanice** (părți mobile ale utilajelor, proiectare de fragmente, prindere, strivire), tratate uneori separat de cele fizice datorită specificului lor industrial. Indiferent de gruparea aleasă, important este ca toate categoriile să fie parcurse pentru fiecare post de lucru — omiterea uneia (de regulă cea psihosocială, cel mai des ignorată) lasă un gol semnificativ în evaluarea riscurilor.\n\n## Cum identifici pericolele în mod sistematic\n\nIdentificarea pericolelor nu este un exercițiu teoretic făcut la birou, ci un proces care combină mai multe surse de informație:\n\n- **Observarea directă la locul de muncă** — parcurgi fizic fiecare zonă și post de lucru, urmărind fluxul real de activitate, nu doar procedura scrisă.\n- **Liste de verificare (checklist-uri)** structurate pe categorii de pericole, adaptate specificului activității (birou, atelier, șantier, depozit).\n- **Analiza posturilor de lucru** — pentru fiecare post, listezi echipamentele folosite, substanțele manipulate, mișcările repetate și mediul de lucru.\n- **Consultarea lucrătorilor** — cei care lucrează zilnic într-o zonă observă adesea pericole pe care un evaluator extern le-ar rata; Legea 319/2006 impune, de altfel, consultarea reprezentanților lucrătorilor pe probleme de SSM.\n- **Analiza istoricului de incidente, accidente și îmbolnăviri profesionale** din unitate — orice eveniment anterior, chiar minor („aproape-accident”/near miss), indică un pericol real care nu a fost încă eliminat.\n- **Fișele tehnice de securitate (FTS/SDS)** ale substanțelor chimice utilizate și instrucțiunile producătorilor de echipamente.\n\nRezultatul acestui proces trebuie documentat într-un registru sau formular de identificare a pericolelor, care devine ulterior baza fișei de evaluare a riscurilor pentru fiecare loc de muncă. Documentul se actualizează ori de câte ori apar schimbări — echipamente noi, procese noi, modificări ale spațiului de lucru — și, în orice caz, periodic, conform procedurii interne SSM.\n\n## Exemplu: Identificarea pericolelor într-un birou administrativ\nO firmă de contabilitate cu 12 angajați, organizată ca SRL, are un spațiu de birouri open-space cu calculatoare, imprimante și un mic depozit de arhivă. La prima vedere, un birou pare un mediu cu risc scăzut, dar o identificare corectă a pericolelor scoate la iveală mai multe surse:\n\n| Pericol identificat | Categorie | Vătămare posibilă |\n|---|---|---|\n| Poziție șezândă prelungită, monitor prost poziționat | Ergonomic | Dureri de spate, sindrom de tunel carpian |\n| Cabluri electrice neordonate pe podea | Fizic | Împiedicare, cădere |\n| Termene lunare de raportare fiscală foarte strânse | Psihosocial | Stres, epuizare (burnout) |\n| Rafturi supraîncărcate în arhivă | Fizic | Cădere de obiecte, strivire |\n| Aer condiționat prost reglat, iluminat slab lângă fereastră | Fizic | Oboseală vizuală, disconfort termic |\n| Praf din hârtie/toner imprimantă în încăperi neventilate | Chimic | Iritații respiratorii |\n\nChiar și un birou administrativ generează pericole din patru din cele cinci categorii. Persoana desemnată cu atribuții SSM documentează aceste pericole într-un registru, urmând ca fiecare să fie evaluat ulterior din perspectiva probabilității și gravității, pentru a stabili măsuri de prevenire (mobilier ergonomic, cablu-canale, reorganizarea sarcinilor, verificarea periodică a rafturilor).\n\n## Exemplu: Identificarea pericolelor într-un depozit cu activitate de producție ușoară\nO societate care produce mobilier la comandă operează un depozit-atelier cu 20 de angajați, dotat cu un utilaj de tăiere CNC, un stivuitor și o zonă de vopsire cu solvenți. Echipa SSM parcurge spațiul post cu post și identifică:\n\n- **Mecanice/fizice**: părți mobile neprotejate ale utilajului CNC, cu risc de prindere sau amputare; zgomot peste limita admisă în zona de tăiere; risc de cădere de la înălțime la stivuirea rafturilor de peste 2 metri.\n- **Chimice**: vapori de solvenți și lac în cabina de vopsire, cu risc de inhalare și de incendiu/explozie dacă ventilația se oprește.\n- **Ergonomice**: manipulare manuală repetată a panourilor de lemn grele, fără echipamente de ridicare.\n- **Fizice (electric)**: tablouri electrice fără protecție împotriva prafului de lemn, care este inflamabil.\n- **Psihosociale**: program de lucru în ture, cu presiune de livrare la termen, fără pauze clar organizate.\n\nSpre deosebire de exemplul biroului, aici pericolele mecanice și chimice au potențial de vătămare gravă și imediată — de aceea, la evaluarea ulterioară a riscurilor, aceste posturi vor primi, foarte probabil, un nivel de risc ridicat, ceea ce impune măsuri de prevenire prioritare: apărători pe utilaj, sistem de ventilație verificat periodic, echipament individual de protecție (EIP) adecvat și instruire specifică la locul de muncă pentru operatorii de CNC și pentru personalul din cabina de vopsire.\n\n> Temei legal: Legea nr. 319/2006 a securității și sănătății în muncă Art. 7 alin. (4) lit. a) și Art. 12 alin. (1) lit. a) (în vigoare de la 2006-07-26)\nLegea nr. 319/2006 (publicată în Monitorul Oficial nr. 646/26.07.2006, cu modificările și completările ulterioare) stabilește, la art. 7 alin. (4) lit. a), obligația angajatorului de a evalua riscurile pentru securitatea și sănătatea lucrătorilor — evaluare care nu se poate realiza fără o identificare prealabilă și completă a tuturor pericolelor existente la fiecare loc de muncă. Art. 12 alin. (1) lit. a) obligă angajatorul să organizeze activități de prevenire și protecție tocmai pe baza acestei identificări.\n\nModul concret de aplicare — inclusiv structura documentației, conținutul instruirilor obligatorii (instructaj introductiv-general, instructaj la locul de muncă și instructaj periodic) și cerințele privind evaluarea riscurilor — este detaliat prin **HG nr. 1425/2006** pentru aprobarea Normelor metodologice de aplicare a Legii nr. 319/2006, cu modificările ulterioare. Autoritatea de control pentru respectarea acestor obligații este **Inspectoratul Teritorial de Muncă (ITM)**, care poate sancționa lipsa sau caracterul incomplet al identificării pericolelor și al evaluării riscurilor.\n\n*Notă:* verifică întotdeauna forma consolidată, actualizată, a celor două acte normative înainte de a le folosi ca referință finală într-un document oficial, deoarece au suferit modificări succesive.\n\n⚠ O greșeală frecventă este limitarea identificării pericolelor la cele **fizice și mecanice**, ușor de observat, în timp ce pericolele **psihosociale** (stres, hărțuire, volum de muncă excesiv) și cele cu efect pe termen lung (ergonomice, expunere cronică la substanțe chimice) sunt omise sau minimalizate. Aceste categorii sunt la fel de reale din punct de vedere legal și pot genera îmbolnăviri profesionale sau accidente — de aceea, checklist-ul de identificare trebuie să acopere, obligatoriu, toate categoriile de pericole, nu doar pe cele vizibile la prima parcurgere a spațiului de lucru.\n\n## Exercițiu\n**Scenariu**: Ești desemnat responsabil SSM la o firmă SRL care operează o spălătorie auto cu 8 angajați. Activitatea include: spălare cu jet de apă la presiune înaltă, folosirea de detergenți și degresanți chimici, uscare cu aer comprimat, casa de marcat/recepție clienți, și un program de lucru de 10 ore/zi în weekend, cu vârfuri de activitate.\n\nIdentifică minimum 6 pericole, distribuite pe cel puțin 4 din cele 5 categorii (fizice, chimice, biologice, ergonomice, psihosociale), și pentru fiecare notează pe scurt vătămarea posibilă.\n\n**Soluție:** O soluție posibilă (lista nu este exhaustivă — pot exista și alte pericole valabile):\n\n1. **Fizic** — jet de apă la presiune înaltă: risc de rănire prin impact direct sau proiectare de particule.\n2. **Fizic** — pardoseală permanent umedă: risc de alunecare și cădere.\n3. **Chimic** — detergenți/degresanți auto: risc de iritație a pielii și a ochilor, posibile reacții alergice la contact.\n4. **Fizic (electric)** — echipamente electrice (aspiratoare, compresor) folosite în mediu umed: risc de electrocutare.\n5. **Ergonomic** — poziții forțate repetate la spălarea manuală a caroseriei/jantelor: dureri musculo-scheletice.\n6. **Psihosocial** — program de 10 ore/zi în weekend, cu vârfuri de activitate: risc de oboseală cronică și stres.\n7. **Fizic** — zgomot generat de compresorul de aer: expunere prelungită poate afecta auzul.\n\nDupă identificare, fiecare pericol se trece în registrul de identificare a pericolelor și devine punct de plecare pentru evaluarea riscurilor (probabilitate × gravitate) și stabilirea măsurilor de prevenire: încălțăminte antiderapantă, mănuși și ochelari de protecție pentru manipularea chimicelor, verificarea periodică a instalației electrice, protecție antifonică pentru compresor, și reorganizarea turelor pentru a limita orele suplimentare din weekend.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "pericol-vs-risc-definitie",
+    "md": "## Ce este un pericol?\n\nÎn securitatea și sănătatea în muncă (SSM), primul pas al oricărei evaluări de risc este **identificarea pericolelor** — un proces sistematic prin care recunoști tot ce, la locul de muncă, are potențialul de a cauza vătămare unui lucrător, o îmbolnăvire profesională sau un incident.\n\nEste esențial să nu confunzi doi termeni pe care vorbirea curentă îi tratează adesea greșit ca sinonime:\n\n- **Pericolul (hazard)** este sursa, situația sau acțiunea cu potențial intrinsec de a produce o vătămare — de exemplu, un cablu electric neizolat, o suprafață umedă, zgomotul unui utilaj sau un termen-limită nerealist impus unui angajat.\n- **Riscul** este combinația dintre probabilitatea ca acel pericol să se materializeze și gravitatea consecinței dacă se întâmplă. Riscul se evaluează *după* ce pericolul a fost identificat, de regulă printr-o formulă de tipul Risc = Probabilitate × Gravitate.\n\nCu alte cuvinte: pericolul există independent de acțiunile tale (un utilaj tăietor este periculos prin natura lui), în timp ce riscul depinde de context — cine îl folosește, cât de des, cu ce protecții. Identificarea corectă și completă a pericolelor este condiția fără de care evaluarea riscurilor devine incompletă, iar măsurile de prevenire, ineficiente.\n\nAngajatorul are obligația legală de a identifica toate pericolele existente la fiecare loc de muncă din unitate, indiferent de numărul de angajați sau de domeniul de activitate, conform Legii nr. 319/2006.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "categorii-pericole-ssm",
+    "md": "## Cele cinci categorii principale de pericole\n\nPentru a nu omite pericole în procesul de evaluare, este recomandat să parcurgi sistematic fiecare loc de muncă folosind o clasificare pe categorii. Cele mai utilizate cinci categorii sunt:\n\n1. **Pericole fizice** — zgomot, vibrații, temperaturi extreme, iluminat necorespunzător, radiații, curent electric, incendiu/explozie, suprafețe alunecoase sau denivelate, lucru la înălțime.\n2. **Pericole chimice** — substanțe toxice, corozive, inflamabile sau cancerigene (solvenți, acizi, vopsele, gaze), praf, fum, vapori degajați în procesul de producție.\n3. **Pericole biologice** — expunere la bacterii, viruși, fungi sau alte microorganisme, relevante mai ales în sănătate, agricultură, gestionarea deșeurilor sau laboratoare.\n4. **Pericole ergonomice** — poziții de lucru forțate, manipulare manuală a maselor, mișcări repetitive, mobilier sau echipamente neadaptate (birou, scaun, monitor prost poziționate).\n5. **Pericole psihosociale** — stres profesional, volum de muncă excesiv, hărțuire, program de lucru dezorganizat, lipsa autonomiei sau a suportului din partea colegilor/managementului.\n\nÎn practică, multe organizații adaugă și o a șasea categorie, **pericolele mecanice** (părți mobile ale utilajelor, proiectare de fragmente, prindere, strivire), tratate uneori separat de cele fizice datorită specificului lor industrial. Indiferent de gruparea aleasă, important este ca toate categoriile să fie parcurse pentru fiecare post de lucru — omiterea uneia (de regulă cea psihosocială, cel mai des ignorată) lasă un gol semnificativ în evaluarea riscurilor.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metode-identificare-pericole",
+    "md": "## Cum identifici pericolele în mod sistematic\n\nIdentificarea pericolelor nu este un exercițiu teoretic făcut la birou, ci un proces care combină mai multe surse de informație:\n\n- **Observarea directă la locul de muncă** — parcurgi fizic fiecare zonă și post de lucru, urmărind fluxul real de activitate, nu doar procedura scrisă.\n- **Liste de verificare (checklist-uri)** structurate pe categorii de pericole, adaptate specificului activității (birou, atelier, șantier, depozit).\n- **Analiza posturilor de lucru** — pentru fiecare post, listezi echipamentele folosite, substanțele manipulate, mișcările repetate și mediul de lucru.\n- **Consultarea lucrătorilor** — cei care lucrează zilnic într-o zonă observă adesea pericole pe care un evaluator extern le-ar rata; Legea 319/2006 impune, de altfel, consultarea reprezentanților lucrătorilor pe probleme de SSM.\n- **Analiza istoricului de incidente, accidente și îmbolnăviri profesionale** din unitate — orice eveniment anterior, chiar minor („aproape-accident”/near miss), indică un pericol real care nu a fost încă eliminat.\n- **Fișele tehnice de securitate (FTS/SDS)** ale substanțelor chimice utilizate și instrucțiunile producătorilor de echipamente.\n\nRezultatul acestui proces trebuie documentat într-un registru sau formular de identificare a pericolelor, care devine ulterior baza fișei de evaluare a riscurilor pentru fiecare loc de muncă. Documentul se actualizează ori de câte ori apar schimbări — echipamente noi, procese noi, modificări ale spațiului de lucru — și, în orice caz, periodic, conform procedurii interne SSM.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b3"
+   },
+   {
+    "type": "example",
+    "title": "Identificarea pericolelor într-un birou administrativ",
+    "concept_key": "identificare-pericole-birou",
+    "md": "O firmă de contabilitate cu 12 angajați, organizată ca SRL, are un spațiu de birouri open-space cu calculatoare, imprimante și un mic depozit de arhivă. La prima vedere, un birou pare un mediu cu risc scăzut, dar o identificare corectă a pericolelor scoate la iveală mai multe surse:\n\n| Pericol identificat | Categorie | Vătămare posibilă |\n|---|---|---|\n| Poziție șezândă prelungită, monitor prost poziționat | Ergonomic | Dureri de spate, sindrom de tunel carpian |\n| Cabluri electrice neordonate pe podea | Fizic | Împiedicare, cădere |\n| Termene lunare de raportare fiscală foarte strânse | Psihosocial | Stres, epuizare (burnout) |\n| Rafturi supraîncărcate în arhivă | Fizic | Cădere de obiecte, strivire |\n| Aer condiționat prost reglat, iluminat slab lângă fereastră | Fizic | Oboseală vizuală, disconfort termic |\n| Praf din hârtie/toner imprimantă în încăperi neventilate | Chimic | Iritații respiratorii |\n\nChiar și un birou administrativ generează pericole din patru din cele cinci categorii. Persoana desemnată cu atribuții SSM documentează aceste pericole într-un registru, urmând ca fiecare să fie evaluat ulterior din perspectiva probabilității și gravității, pentru a stabili măsuri de prevenire (mobilier ergonomic, cablu-canale, reorganizarea sarcinilor, verificarea periodică a rafturilor).",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b4"
+   },
+   {
+    "type": "example",
+    "title": "Identificarea pericolelor într-un depozit cu activitate de producție ușoară",
+    "concept_key": "identificare-pericole-depozit-productie",
+    "md": "O societate care produce mobilier la comandă operează un depozit-atelier cu 20 de angajați, dotat cu un utilaj de tăiere CNC, un stivuitor și o zonă de vopsire cu solvenți. Echipa SSM parcurge spațiul post cu post și identifică:\n\n- **Mecanice/fizice**: părți mobile neprotejate ale utilajului CNC, cu risc de prindere sau amputare; zgomot peste limita admisă în zona de tăiere; risc de cădere de la înălțime la stivuirea rafturilor de peste 2 metri.\n- **Chimice**: vapori de solvenți și lac în cabina de vopsire, cu risc de inhalare și de incendiu/explozie dacă ventilația se oprește.\n- **Ergonomice**: manipulare manuală repetată a panourilor de lemn grele, fără echipamente de ridicare.\n- **Fizice (electric)**: tablouri electrice fără protecție împotriva prafului de lemn, care este inflamabil.\n- **Psihosociale**: program de lucru în ture, cu presiune de livrare la termen, fără pauze clar organizate.\n\nSpre deosebire de exemplul biroului, aici pericolele mecanice și chimice au potențial de vătămare gravă și imediată — de aceea, la evaluarea ulterioară a riscurilor, aceste posturi vor primi, foarte probabil, un nivel de risc ridicat, ceea ce impune măsuri de prevenire prioritare: apărători pe utilaj, sistem de ventilație verificat periodic, echipament individual de protecție (EIP) adecvat și instruire specifică la locul de muncă pentru operatorii de CNC și pentru personalul din cabina de vopsire.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b5"
+   },
+   {
+    "type": "legal_ref",
+    "act": "Legea nr. 319/2006 a securității și sănătății în muncă",
+    "article": "Art. 7 alin. (4) lit. a) și Art. 12 alin. (1) lit. a)",
+    "effective": "2006-07-26",
+    "md": "Legea nr. 319/2006 (publicată în Monitorul Oficial nr. 646/26.07.2006, cu modificările și completările ulterioare) stabilește, la art. 7 alin. (4) lit. a), obligația angajatorului de a evalua riscurile pentru securitatea și sănătatea lucrătorilor — evaluare care nu se poate realiza fără o identificare prealabilă și completă a tuturor pericolelor existente la fiecare loc de muncă. Art. 12 alin. (1) lit. a) obligă angajatorul să organizeze activități de prevenire și protecție tocmai pe baza acestei identificări.\n\nModul concret de aplicare — inclusiv structura documentației, conținutul instruirilor obligatorii (instructaj introductiv-general, instructaj la locul de muncă și instructaj periodic) și cerințele privind evaluarea riscurilor — este detaliat prin **HG nr. 1425/2006** pentru aprobarea Normelor metodologice de aplicare a Legii nr. 319/2006, cu modificările ulterioare. Autoritatea de control pentru respectarea acestor obligații este **Inspectoratul Teritorial de Muncă (ITM)**, care poate sancționa lipsa sau caracterul incomplet al identificării pericolelor și al evaluării riscurilor.\n\n*Notă:* verifică întotdeauna forma consolidată, actualizată, a celor două acte normative înainte de a le folosi ca referință finală într-un document oficial, deoarece au suferit modificări succesive.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b6"
+   },
+   {
+    "type": "warning",
+    "md": "O greșeală frecventă este limitarea identificării pericolelor la cele **fizice și mecanice**, ușor de observat, în timp ce pericolele **psihosociale** (stres, hărțuire, volum de muncă excesiv) și cele cu efect pe termen lung (ergonomice, expunere cronică la substanțe chimice) sunt omise sau minimalizate. Aceste categorii sunt la fel de reale din punct de vedere legal și pot genera îmbolnăviri profesionale sau accidente — de aceea, checklist-ul de identificare trebuie să acopere, obligatoriu, toate categoriile de pericole, nu doar pe cele vizibile la prima parcurgere a spațiului de lucru.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Scenariu**: Ești desemnat responsabil SSM la o firmă SRL care operează o spălătorie auto cu 8 angajați. Activitatea include: spălare cu jet de apă la presiune înaltă, folosirea de detergenți și degresanți chimici, uscare cu aer comprimat, casa de marcat/recepție clienți, și un program de lucru de 10 ore/zi în weekend, cu vârfuri de activitate.\n\nIdentifică minimum 6 pericole, distribuite pe cel puțin 4 din cele 5 categorii (fizice, chimice, biologice, ergonomice, psihosociale), și pentru fiecare notează pe scurt vătămarea posibilă.",
+    "solution_md": "O soluție posibilă (lista nu este exhaustivă — pot exista și alte pericole valabile):\n\n1. **Fizic** — jet de apă la presiune înaltă: risc de rănire prin impact direct sau proiectare de particule.\n2. **Fizic** — pardoseală permanent umedă: risc de alunecare și cădere.\n3. **Chimic** — detergenți/degresanți auto: risc de iritație a pielii și a ochilor, posibile reacții alergice la contact.\n4. **Fizic (electric)** — echipamente electrice (aspiratoare, compresor) folosite în mediu umed: risc de electrocutare.\n5. **Ergonomic** — poziții forțate repetate la spălarea manuală a caroseriei/jantelor: dureri musculo-scheletice.\n6. **Psihosocial** — program de 10 ore/zi în weekend, cu vârfuri de activitate: risc de oboseală cronică și stres.\n7. **Fizic** — zgomot generat de compresorul de aer: expunere prelungită poate afecta auzul.\n\nDupă identificare, fiecare pericol se trece în registrul de identificare a pericolelor și devine punct de plecare pentru evaluarea riscurilor (probabilitate × gravitate) și stabilirea măsurilor de prevenire: încălțăminte antiderapantă, mănuși și ochelari de protecție pentru manipularea chimicelor, verificarea periodică a instalației electrice, protecție antifonică pentru compresor, și reorganizarea turelor pentru a limita orele suplimentare din weekend.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este diferența corectă dintre pericol și risc, în terminologia SSM?",
+    "choices": [
+     "Pericolul și riscul sunt sinonime și pot fi folosite interschimbabil",
+     "Pericolul este sursa cu potențial de vătămare, iar riscul este combinația dintre probabilitatea materializării pericolului și gravitatea consecinței",
+     "Riscul este sursa fizică (utilaj, substanță), iar pericolul este rezultatul evaluării acesteia",
+     "Pericolul se referă doar la accidente, iar riscul doar la îmbolnăviri profesionale"
+    ],
+    "answer": 1,
+    "explain": "Pericolul (hazard) este sursa, situația sau acțiunea cu potențial intrinsec de vătămare; riscul este evaluarea acelei surse din perspectiva probabilității și gravității. Identificarea pericolelor precede întotdeauna evaluarea riscurilor.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform legislației SSM din România, care este autoritatea de control responsabilă cu verificarea respectării obligațiilor privind identificarea pericolelor și evaluarea riscurilor?",
+    "choices": [
+     "Agenția Națională de Administrare Fiscală (ANAF)",
+     "Casa Națională de Pensii Publice",
+     "Inspectoratul Teritorial de Muncă (ITM)",
+     "Autoritatea Națională Sanitar-Veterinară"
+    ],
+    "answer": 2,
+    "explain": "ITM este autoritatea de control pentru respectarea Legii nr. 319/2006 și a HG nr. 1425/2006, inclusiv pentru obligația angajatorului de a identifica pericolele și de a evalua riscurile la fiecare loc de muncă.",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este un pericol (hazard) în SSM?",
+    "back": "Sursa, situația sau acțiunea cu potențial intrinsec de a produce o vătămare, o îmbolnăvire profesională sau un incident, indiferent de probabilitatea ca acesta să se producă.",
+    "concept_key": "pericol-vs-risc-definitie",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este diferența dintre pericol și risc?",
+    "back": "Pericolul este sursa cu potențial de vătămare; riscul este combinația dintre probabilitatea materializării pericolului și gravitatea consecinței (Risc = Probabilitate × Gravitate).",
+    "concept_key": "pericol-vs-risc-definitie",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele cinci categorii principale de pericole în SSM?",
+    "back": "Fizice, chimice, biologice, ergonomice și psihosociale (uneori se adaugă separat și categoria pericolelor mecanice).",
+    "concept_key": "categorii-pericole-ssm",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce acte normative reglementează SSM în România?",
+    "back": "Legea nr. 319/2006 a securității și sănătății în muncă și HG nr. 1425/2006 pentru aprobarea Normelor metodologice de aplicare a acesteia.",
+    "concept_key": "cadru-legal-ssm-romania",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este autoritatea de control pentru SSM în România?",
+    "back": "Inspectoratul Teritorial de Muncă (ITM).",
+    "concept_key": "itm-autoritate-control",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei tipuri de instructaj SSM obligatoriu conform HG 1425/2006?",
+    "back": "Instructaj introductiv-general, instructaj la locul de muncă și instructaj periodic.",
+    "concept_key": "instruire-ssm-tipuri",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce metode se folosesc pentru identificarea pericolelor la locul de muncă?",
+    "back": "Observare directă, checklist-uri pe categorii, analiza posturilor de lucru, consultarea lucrătorilor, analiza istoricului de incidente/accidente și fișele tehnice de securitate (FTS/SDS).",
+    "concept_key": "metode-identificare-pericole",
+    "blockId": "cmjjuxwc000joumkp6dw98yr9-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1555,
+   "flashcards": 7
+  }
+ }
+}

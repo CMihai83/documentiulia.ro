@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvz1009oumkpp4gxpza7",
+ "courseId": "cmjjuxvwj007yumkpzvsd5hgo",
+ "course": "PMP Exam Preparation - Complete Guide",
+ "module": "Process Domain - Agile & Hybrid",
+ "lesson": "Scrum în context PMP",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Scrum în context PMP\n\n### Cele trei responsabilități (accountabilities) din Scrum Team\n\nScrum Guide 2020 a renunțat la termenul de „roluri” în favoarea termenului „responsabilități” (accountabilities), pentru a sublinia că Scrum Team-ul este o echipă unică, coezivă, orientată spre un singur obiectiv - nu o colecție de roluri separate.\n\nCele trei responsabilități sunt:\n\n- **Product Owner** - maximizează valoarea produsului rezultat din activitatea echipei. Este singurul responsabil de conținutul și ordinea Product Backlog-ului. Într-un proiect de implementare ERP, Product Owner-ul este de regulă un manager de business (ex. directorul financiar) care decide ce funcționalități intră prioritar în livrare.\n- **Scrum Master** - responsabil de eficacitatea Scrum Team-ului; facilitează evenimentele, elimină blocajele (impediments) și susține adoptarea Scrum la nivel de organizație. Nu alocă sarcini și nu ia decizii tehnice.\n- **Developers** - persoanele din echipă care creează orice aspect al unui Increment utilizabil în fiecare Sprint (dezvoltatori, analiști, testeri, configuratori ERP etc.). Echipa e „self-managing” (auto-organizată intern), decide cine, cum și când lucrează la elementele din Sprint Backlog.\n\nPentru examenul PMP, reține: rolul clasic de „Project Manager” nu există formal în Scrum. La întrebările situaționale, responsabilitățile de facilitare, eliminare blocaje și coaching se mapează pe Scrum Master, iar deciziile de prioritizare a scope-ului pe Product Owner. ECO (Examination Content Outline) testează frecvent această distincție în domeniul People.\n\n### Evenimentele Scrum și timeboxing-ul lor exact\n\nToate evenimentele Scrum sunt timeboxed (au o durată maximă fixă), pentru a reduce nevoia de întâlniri neplanificate și a crea predictibilitate. Pentru un Sprint de o lună calendaristică (durata maximă admisă), limitele sunt:\n\n- **Sprint** - containerul pentru toate celelalte evenimente; durează maximum o lună calendaristică (4 săptămâni). În practica din România, echipele care implementează ERP sau soluții de digitalizare aleg frecvent Sprinturi de 2 săptămâni, pentru feedback mai rapid din partea beneficiarului.\n- **Sprint Planning** - maximum 8 ore pentru un Sprint de o lună (proporțional mai puțin pentru Sprinturi mai scurte, ex. 4 ore pentru un Sprint de 2 săptămâni). Stabilește Sprint Goal-ul și Sprint Backlog-ul.\n- **Daily Scrum** - maximum 15 minute, în fiecare zi lucrătoare a Sprintului, indiferent de durata acestuia. Scopul e inspectarea progresului către Sprint Goal, nu raportarea individuală către Scrum Master.\n- **Sprint Review** - maximum 4 ore pentru un Sprint de o lună. Echipa prezintă Increment-ul stakeholderilor și adaptează Product Backlog-ul pe baza feedback-ului.\n- **Sprint Retrospective** - maximum 3 ore pentru un Sprint de o lună; se desfășoară după Sprint Review și înainte de următorul Sprint Planning. Echipa identifică ce a mers bine și ce trebuie îmbunătățit.\n\nLa examen, întrebările verifică des dacă recunoști că aceste limite sunt maxime, nu durate fixe obligatorii - un eveniment poate dura mai puțin, niciodată mai mult decât timebox-ul specificat.\n\n### Artefactele Scrum și cele trei commitments\n\nFiecare artefact Scrum are asociat un „commitment” care oferă transparență și focus:\n\n- **Product Backlog** (listă ordonată, emergentă, a tot ce e necesar pentru produs) - commitment-ul asociat este **Product Goal**, obiectivul pe termen lung al produsului.\n- **Sprint Backlog** (elementele din Product Backlog selectate pentru Sprint, plus planul de livrare) - commitment-ul asociat este **Sprint Goal**, obiectivul unic al Sprintului curent, care oferă coerență echipei.\n- **Increment** (o treaptă concretă, funcțională, către Product Goal) - commitment-ul asociat este **Definition of Done (DoD)**, un set formal de criterii de calitate pe care Increment-ul trebuie să le îndeplinească pentru a fi considerat „gata”.\n\nUn Increment care nu respectă DoD nu poate fi prezentat ca livrat, indiferent de presiunea de termen. Această regulă apare frecvent în întrebările PMP legate de gestionarea calității în context agile, corelată cu domeniul de performanță „Livrare” din PMBOK 7.\n\n### Cum mapează examenul PMP conceptele Scrum pe ECO și abordările hibride\n\nPMBOK 7 nu mai prescrie procese, ci principii și domenii de performanță aplicabile indiferent de abordare (predictivă, agilă sau hibridă). ECO grupează întrebările în trei domenii: People, Process și Business Environment, iar Scrum apare transversal în toate trei.\n\nÎn proiecte hibride - foarte comune în România la implementările ERP, unde bugetul și contractul sunt gestionate predictiv, dar dezvoltarea și configurarea se fac în Sprinturi - persoana responsabilă de proiect trebuie să știe să adapteze (tailoring) cadența de raportare: rapoartele de progres pentru sponsor pot folosi burndown/burnup chart-uri din Sprinturi, în timp ce controlul bugetar rămâne pe jaloane (milestones) clasice.\n\nLa examen, o întrebare tipică prezintă un scenariu cu elemente hibride și cere identificarea acțiunii corecte a Scrum Master-ului sau Product Owner-ului - nu presupune că un singur cadru (pur predictiv sau pur agil) explică integral situația.\n\n## Exemplu: Sprint cu numere concrete: implementare ERP la o firmă de distribuție\nO firmă de distribuție (SRL cu 80 de angajați) implementează un modul de gestiune stocuri într-un ERP, folosind Scrum.\n\n**Datele proiectului:**\n- Product Backlog inițial: 40 de story points (estimare relativă a efortului, nu ore).\n- Durata Sprintului: 2 săptămâni.\n- Velocity (viteza medie de livrare a echipei) măsurată după primele 2 Sprinturi: 8 story points/Sprint.\n\n**Calcul simplu de planificare:**\n\nNumăr de Sprinturi necesare = Product Backlog total ÷ Velocity = 40 ÷ 8 = **5 Sprinturi**.\n\nDurată estimată = 5 Sprinturi × 2 săptămâni = **10 săptămâni** (aproximativ 2,5 luni calendaristice).\n\nLa Sprint Review-ul din Sprintul 3, Product Owner-ul află de la departamentul financiar că raportarea TVA trebuie integrată mai devreme decât era planificat. Product Owner-ul reordonează Product Backlog-ul, mutând elementele legate de raportare TVA în capul listei pentru Sprintul 4 - fără să renegocieze scope-ul deja livrat în Sprinturile 1-3 (Increment-urile anterioare rămân valabile, conform principiului de livrare incrementală).\n\nAcest exemplu ilustrează exact ce testează PMP: capacitatea de a replanifica pe baza priorităților de business, păstrând transparența prin Product Backlog și Sprint Review, fără a relua munca deja acceptată.\n\n## Exemplu: Scenariu tip examen: cine ia decizia?\n**Scenariu (stil întrebare PMP):**\n\nÎn timpul unui Sprint, un Developer descoperă că, pentru a respecta Sprint Goal-ul, ar fi util să scoată din Sprint Backlog un element mic, neesențial, și să adauge altul, mai relevant pentru obiectiv. Sponsorul proiectului cere Scrum Master-ului să aprobe schimbarea.\n\n**Ce ar trebui să facă Scrum Master-ul?**\n\nA) Aprobă personal schimbarea, pentru a evita blocarea echipei.\nB) Explică sponsorului că doar Developers, împreună cu Product Owner-ul, pot renegocia scope-ul Sprint Backlog-ului în timpul Sprintului; sponsorul poate influența doar Product Backlog-ul pentru Sprinturile viitoare.\nC) Oprește Sprintul curent și convoacă un Sprint Planning nou.\nD) Adaugă elementul cerut de sponsor fără să elimine nimic, pentru a mulțumi ambele părți.\n\n**Răspunsul corect este B.** Scrum Guide 2020 stipulează clar: doar Developers pot modifica Sprint Backlog-ul pe parcursul Sprintului, iar scope-ul poate fi clarificat cu Product Owner-ul dacă apar informații noi - dar fără implicare externă directă asupra planului intern al echipei. Sponsorul influențează prioritizarea prin Product Backlog, nu prin comenzi directe către echipă în mijlocul unui Sprint activ.\n\nAcest tip de întrebare testează dacă cunoști granița exactă a autorității fiecărei responsabilități din Scrum Team - o capcană frecventă la examen.\n\n⚠ Capcană frecventă la examen: nu confunda Scrum Master cu Project Manager-ul clasic. Scrum Master-ul nu alocă resurse, nu aprobă bugete și nu ia decizii de scope - facilitează, elimină impedimente și protejează procesul Scrum. De asemenea, reține că Scrum Guide 2020 a renunțat la termenii „Development Team” și „self-organizing” în favoarea „Developers” și „self-managing”; unele resurse mai vechi de pregătire PMP încă folosesc terminologia anterioară, dar examenul actual reflectă versiunea 2020 a ghidului.\n\n## Exercițiu\n**Aplică ce ai învățat:**\n\nO echipă Scrum lucrează la digitalizarea fluxului de aprobare a facturilor pentru o companie de servicii. Situație:\n\n1. Sprintul are durata de 2 săptămâni.\n2. La Daily Scrum din ziua 4, un Developer anunță că un impediment tehnic (acces lipsă la un API extern) blochează 2 din cele 6 elemente din Sprint Backlog.\n3. Scrum Master-ul notează impedimentul, dar nu intervine imediat.\n4. La finalul Sprintului, echipa a livrat doar 4 din cele 6 elemente planificate; Definition of Done a fost respectată pentru toate cele 4.\n\n**Întrebare:** Identifică (a) ce a făcut corect echipa și Scrum Master-ul, (b) ce ar fi putut face Scrum Master-ul mai bine, și (c) cum ar trebui tratate la Sprint Review cele 2 elemente nelivrate.\n\n**Soluție:** **(a) Ce a fost corect:**\n- Impedimentul a fost semnalat imediat la Daily Scrum - exact scopul evenimentului: inspecție zilnică a progresului și identificarea blocajelor.\n- Echipa nu a livrat elemente incomplete doar ca să „bifeze” 6 din 6 - cele 4 elemente predate respectă integral Definition of Done, ceea ce protejează calitatea Increment-ului.\n\n**(b) Ce ar fi putut face Scrum Master-ul mai bine:**\nRolul Scrum Master-ului este să elimine impedimentele activ, nu doar să le noteze. Odată identificat blocajul (acces API lipsă), Scrum Master-ul ar fi trebuit să escaladeze imediat către persoana sau departamentul care putea rezolva accesul (ex. IT sau furnizorul extern), pentru a recupera timpul rămas din Sprint, nu să aștepte pasiv până la final.\n\n**(c) Tratarea elementelor nelivrate la Sprint Review:**\nCele 2 elemente nelivrate nu se prezintă drept „terminate parțial” - rămân în Product Backlog, nefinalizate, și sunt reevaluate/reordonate de Product Owner pentru un Sprint viitor, în funcție de valoarea lor curentă de business. Sprint Review-ul este momentul de transparență: se discută deschis motivul (impedimentul tehnic), nu se ascunde sau minimizează, iar stakeholderii pot ajusta așteptările pe baza acestei informații reale.\n\nAceastă situație combină exact ce testează PMP la nivel avansat: recunoașterea limitei corecte între „notare pasivă” și „facilitare activă” a Scrum Master-ului, și tratarea transparentă a scope-ului nelivrat, fără a compromite Definition of Done.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "scrum-roluri-scrum-team",
+    "md": "### Cele trei responsabilități (accountabilities) din Scrum Team\n\nScrum Guide 2020 a renunțat la termenul de „roluri” în favoarea termenului „responsabilități” (accountabilities), pentru a sublinia că Scrum Team-ul este o echipă unică, coezivă, orientată spre un singur obiectiv - nu o colecție de roluri separate.\n\nCele trei responsabilități sunt:\n\n- **Product Owner** - maximizează valoarea produsului rezultat din activitatea echipei. Este singurul responsabil de conținutul și ordinea Product Backlog-ului. Într-un proiect de implementare ERP, Product Owner-ul este de regulă un manager de business (ex. directorul financiar) care decide ce funcționalități intră prioritar în livrare.\n- **Scrum Master** - responsabil de eficacitatea Scrum Team-ului; facilitează evenimentele, elimină blocajele (impediments) și susține adoptarea Scrum la nivel de organizație. Nu alocă sarcini și nu ia decizii tehnice.\n- **Developers** - persoanele din echipă care creează orice aspect al unui Increment utilizabil în fiecare Sprint (dezvoltatori, analiști, testeri, configuratori ERP etc.). Echipa e „self-managing” (auto-organizată intern), decide cine, cum și când lucrează la elementele din Sprint Backlog.\n\nPentru examenul PMP, reține: rolul clasic de „Project Manager” nu există formal în Scrum. La întrebările situaționale, responsabilitățile de facilitare, eliminare blocaje și coaching se mapează pe Scrum Master, iar deciziile de prioritizare a scope-ului pe Product Owner. ECO (Examination Content Outline) testează frecvent această distincție în domeniul People.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scrum-evenimente-timeboxing",
+    "md": "### Evenimentele Scrum și timeboxing-ul lor exact\n\nToate evenimentele Scrum sunt timeboxed (au o durată maximă fixă), pentru a reduce nevoia de întâlniri neplanificate și a crea predictibilitate. Pentru un Sprint de o lună calendaristică (durata maximă admisă), limitele sunt:\n\n- **Sprint** - containerul pentru toate celelalte evenimente; durează maximum o lună calendaristică (4 săptămâni). În practica din România, echipele care implementează ERP sau soluții de digitalizare aleg frecvent Sprinturi de 2 săptămâni, pentru feedback mai rapid din partea beneficiarului.\n- **Sprint Planning** - maximum 8 ore pentru un Sprint de o lună (proporțional mai puțin pentru Sprinturi mai scurte, ex. 4 ore pentru un Sprint de 2 săptămâni). Stabilește Sprint Goal-ul și Sprint Backlog-ul.\n- **Daily Scrum** - maximum 15 minute, în fiecare zi lucrătoare a Sprintului, indiferent de durata acestuia. Scopul e inspectarea progresului către Sprint Goal, nu raportarea individuală către Scrum Master.\n- **Sprint Review** - maximum 4 ore pentru un Sprint de o lună. Echipa prezintă Increment-ul stakeholderilor și adaptează Product Backlog-ul pe baza feedback-ului.\n- **Sprint Retrospective** - maximum 3 ore pentru un Sprint de o lună; se desfășoară după Sprint Review și înainte de următorul Sprint Planning. Echipa identifică ce a mers bine și ce trebuie îmbunătățit.\n\nLa examen, întrebările verifică des dacă recunoști că aceste limite sunt maxime, nu durate fixe obligatorii - un eveniment poate dura mai puțin, niciodată mai mult decât timebox-ul specificat.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scrum-artefacte-commitments",
+    "md": "### Artefactele Scrum și cele trei commitments\n\nFiecare artefact Scrum are asociat un „commitment” care oferă transparență și focus:\n\n- **Product Backlog** (listă ordonată, emergentă, a tot ce e necesar pentru produs) - commitment-ul asociat este **Product Goal**, obiectivul pe termen lung al produsului.\n- **Sprint Backlog** (elementele din Product Backlog selectate pentru Sprint, plus planul de livrare) - commitment-ul asociat este **Sprint Goal**, obiectivul unic al Sprintului curent, care oferă coerență echipei.\n- **Increment** (o treaptă concretă, funcțională, către Product Goal) - commitment-ul asociat este **Definition of Done (DoD)**, un set formal de criterii de calitate pe care Increment-ul trebuie să le îndeplinească pentru a fi considerat „gata”.\n\nUn Increment care nu respectă DoD nu poate fi prezentat ca livrat, indiferent de presiunea de termen. Această regulă apare frecvent în întrebările PMP legate de gestionarea calității în context agile, corelată cu domeniul de performanță „Livrare” din PMBOK 7.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "scrum-eco-hibrid",
+    "md": "### Cum mapează examenul PMP conceptele Scrum pe ECO și abordările hibride\n\nPMBOK 7 nu mai prescrie procese, ci principii și domenii de performanță aplicabile indiferent de abordare (predictivă, agilă sau hibridă). ECO grupează întrebările în trei domenii: People, Process și Business Environment, iar Scrum apare transversal în toate trei.\n\nÎn proiecte hibride - foarte comune în România la implementările ERP, unde bugetul și contractul sunt gestionate predictiv, dar dezvoltarea și configurarea se fac în Sprinturi - persoana responsabilă de proiect trebuie să știe să adapteze (tailoring) cadența de raportare: rapoartele de progres pentru sponsor pot folosi burndown/burnup chart-uri din Sprinturi, în timp ce controlul bugetar rămâne pe jaloane (milestones) clasice.\n\nLa examen, o întrebare tipică prezintă un scenariu cu elemente hibride și cere identificarea acțiunii corecte a Scrum Master-ului sau Product Owner-ului - nu presupune că un singur cadru (pur predictiv sau pur agil) explică integral situația.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b4"
+   },
+   {
+    "type": "example",
+    "title": "Sprint cu numere concrete: implementare ERP la o firmă de distribuție",
+    "concept_key": "scrum-exemplu-erp-implementare",
+    "md": "O firmă de distribuție (SRL cu 80 de angajați) implementează un modul de gestiune stocuri într-un ERP, folosind Scrum.\n\n**Datele proiectului:**\n- Product Backlog inițial: 40 de story points (estimare relativă a efortului, nu ore).\n- Durata Sprintului: 2 săptămâni.\n- Velocity (viteza medie de livrare a echipei) măsurată după primele 2 Sprinturi: 8 story points/Sprint.\n\n**Calcul simplu de planificare:**\n\nNumăr de Sprinturi necesare = Product Backlog total ÷ Velocity = 40 ÷ 8 = **5 Sprinturi**.\n\nDurată estimată = 5 Sprinturi × 2 săptămâni = **10 săptămâni** (aproximativ 2,5 luni calendaristice).\n\nLa Sprint Review-ul din Sprintul 3, Product Owner-ul află de la departamentul financiar că raportarea TVA trebuie integrată mai devreme decât era planificat. Product Owner-ul reordonează Product Backlog-ul, mutând elementele legate de raportare TVA în capul listei pentru Sprintul 4 - fără să renegocieze scope-ul deja livrat în Sprinturile 1-3 (Increment-urile anterioare rămân valabile, conform principiului de livrare incrementală).\n\nAcest exemplu ilustrează exact ce testează PMP: capacitatea de a replanifica pe baza priorităților de business, păstrând transparența prin Product Backlog și Sprint Review, fără a relua munca deja acceptată.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b5"
+   },
+   {
+    "type": "example",
+    "title": "Scenariu tip examen: cine ia decizia?",
+    "concept_key": "scrum-exemplu-scenariu-examen",
+    "md": "**Scenariu (stil întrebare PMP):**\n\nÎn timpul unui Sprint, un Developer descoperă că, pentru a respecta Sprint Goal-ul, ar fi util să scoată din Sprint Backlog un element mic, neesențial, și să adauge altul, mai relevant pentru obiectiv. Sponsorul proiectului cere Scrum Master-ului să aprobe schimbarea.\n\n**Ce ar trebui să facă Scrum Master-ul?**\n\nA) Aprobă personal schimbarea, pentru a evita blocarea echipei.\nB) Explică sponsorului că doar Developers, împreună cu Product Owner-ul, pot renegocia scope-ul Sprint Backlog-ului în timpul Sprintului; sponsorul poate influența doar Product Backlog-ul pentru Sprinturile viitoare.\nC) Oprește Sprintul curent și convoacă un Sprint Planning nou.\nD) Adaugă elementul cerut de sponsor fără să elimine nimic, pentru a mulțumi ambele părți.\n\n**Răspunsul corect este B.** Scrum Guide 2020 stipulează clar: doar Developers pot modifica Sprint Backlog-ul pe parcursul Sprintului, iar scope-ul poate fi clarificat cu Product Owner-ul dacă apar informații noi - dar fără implicare externă directă asupra planului intern al echipei. Sponsorul influențează prioritizarea prin Product Backlog, nu prin comenzi directe către echipă în mijlocul unui Sprint activ.\n\nAcest tip de întrebare testează dacă cunoști granița exactă a autorității fiecărei responsabilități din Scrum Team - o capcană frecventă la examen.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Capcană frecventă la examen: nu confunda Scrum Master cu Project Manager-ul clasic. Scrum Master-ul nu alocă resurse, nu aprobă bugete și nu ia decizii de scope - facilitează, elimină impedimente și protejează procesul Scrum. De asemenea, reține că Scrum Guide 2020 a renunțat la termenii „Development Team” și „self-organizing” în favoarea „Developers” și „self-managing”; unele resurse mai vechi de pregătire PMP încă folosesc terminologia anterioară, dar examenul actual reflectă versiunea 2020 a ghidului.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "**Aplică ce ai învățat:**\n\nO echipă Scrum lucrează la digitalizarea fluxului de aprobare a facturilor pentru o companie de servicii. Situație:\n\n1. Sprintul are durata de 2 săptămâni.\n2. La Daily Scrum din ziua 4, un Developer anunță că un impediment tehnic (acces lipsă la un API extern) blochează 2 din cele 6 elemente din Sprint Backlog.\n3. Scrum Master-ul notează impedimentul, dar nu intervine imediat.\n4. La finalul Sprintului, echipa a livrat doar 4 din cele 6 elemente planificate; Definition of Done a fost respectată pentru toate cele 4.\n\n**Întrebare:** Identifică (a) ce a făcut corect echipa și Scrum Master-ul, (b) ce ar fi putut face Scrum Master-ul mai bine, și (c) cum ar trebui tratate la Sprint Review cele 2 elemente nelivrate.",
+    "solution_md": "**(a) Ce a fost corect:**\n- Impedimentul a fost semnalat imediat la Daily Scrum - exact scopul evenimentului: inspecție zilnică a progresului și identificarea blocajelor.\n- Echipa nu a livrat elemente incomplete doar ca să „bifeze” 6 din 6 - cele 4 elemente predate respectă integral Definition of Done, ceea ce protejează calitatea Increment-ului.\n\n**(b) Ce ar fi putut face Scrum Master-ul mai bine:**\nRolul Scrum Master-ului este să elimine impedimentele activ, nu doar să le noteze. Odată identificat blocajul (acces API lipsă), Scrum Master-ul ar fi trebuit să escaladeze imediat către persoana sau departamentul care putea rezolva accesul (ex. IT sau furnizorul extern), pentru a recupera timpul rămas din Sprint, nu să aștepte pasiv până la final.\n\n**(c) Tratarea elementelor nelivrate la Sprint Review:**\nCele 2 elemente nelivrate nu se prezintă drept „terminate parțial” - rămân în Product Backlog, nefinalizate, și sunt reevaluate/reordonate de Product Owner pentru un Sprint viitor, în funcție de valoarea lor curentă de business. Sprint Review-ul este momentul de transparență: se discută deschis motivul (impedimentul tehnic), nu se ascunde sau minimizează, iar stakeholderii pot ajusta așteptările pe baza acestei informații reale.\n\nAceastă situație combină exact ce testează PMP la nivel avansat: recunoașterea limitei corecte între „notare pasivă” și „facilitare activă” a Scrum Master-ului, și tratarea transparentă a scope-ului nelivrat, fără a compromite Definition of Done.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Conform Scrum Guide 2020, cine poate modifica Sprint Backlog-ul în timpul Sprintului?",
+    "choices": [
+     "Doar Product Owner-ul, la cererea sponsorului",
+     "Doar Scrum Master-ul, pentru a proteja echipa",
+     "Developers, pe măsură ce află lucruri noi despre munca necesară",
+     "Sponsorul proiectului, direct, oricând"
+    ],
+    "answer": 2,
+    "explain": "Sprint Backlog-ul este proprietatea Developers; ei îl actualizează continuu pe parcursul Sprintului pentru a reflecta cea mai bună înțelegere a muncii necesare pentru a atinge Sprint Goal-ul. Product Owner-ul poate clarifica scope-ul, dar nu impune modificări unilaterale, iar sponsorul nu are autoritate directă asupra Sprint Backlog-ului.",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este durata maximă a evenimentului Sprint Review pentru un Sprint de o lună calendaristică?",
+    "choices": [
+     "15 minute",
+     "4 ore",
+     "8 ore",
+     "3 ore"
+    ],
+    "answer": 1,
+    "explain": "Sprint Review este limitat la maximum 4 ore pentru un Sprint de o lună; pentru Sprinturi mai scurte, timebox-ul se reduce proporțional (ex. 2 ore pentru un Sprint de 2 săptămâni).",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Câte responsabilități (accountabilities) definește Scrum Guide 2020 în Scrum Team?",
+    "back": "Trei: Product Owner, Scrum Master, Developers - împreună formează Scrum Team-ul, unic și self-managing.",
+    "concept_key": "scrum-roluri-scrum-team",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este durata maximă a unui Sprint?",
+    "back": "O lună calendaristică (4 săptămâni); în practică se folosesc frecvent Sprinturi de 2 săptămâni.",
+    "concept_key": "scrum-evenimente-timeboxing",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cine deține și prioritizează Product Backlog-ul?",
+    "back": "Product Owner-ul este singurul responsabil de conținutul și ordinea Product Backlog-ului.",
+    "concept_key": "scrum-artefacte-commitments",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Definition of Done (DoD)?",
+    "back": "Un commitment formal care descrie criteriile de calitate pe care trebuie să le îndeplinească un Increment pentru a fi considerat complet.",
+    "concept_key": "scrum-artefacte-commitments",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cât durează maximum Daily Scrum-ul?",
+    "back": "Maximum 15 minute, în fiecare zi lucrătoare a Sprintului, indiferent de durata acestuia.",
+    "concept_key": "scrum-evenimente-timeboxing",
+    "blockId": "cmjjuxvz1009oumkpp4gxpza7-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1539,
+   "flashcards": 5
+  }
+ }
+}

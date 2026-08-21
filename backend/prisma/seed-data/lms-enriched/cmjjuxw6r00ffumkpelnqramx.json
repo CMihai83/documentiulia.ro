@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxw6r00ffumkpelnqramx",
+ "courseId": "cmjjuxw5c00e5umkp5mxexbvw",
+ "course": "Budgeting & Financial Forecasting Masterclass",
+ "module": "Performance Management și Raportare",
+ "lesson": "Variance Analysis în profunzime",
+ "category": "FINANCE_OPS",
+ "content": "# Variance Analysis în profunzime\n\nAnaliza abaterilor (variance analysis) este instrumentul central prin care un controller sau CFO transformă diferența dintre buget și realizat într-un diagnostic acționabil. Nu este suficient să constați că veniturile din iunie au fost cu 18.700 lei sub buget — întrebarea care contează este: cât din această abatere se datorează faptului că ai vândut mai puțin (volum), cât faptului că ai vândut la alt preț decât cel planificat (preț), și cât se datorează schimbării structurii vânzărilor între produse (mix)?\n\nFormula de start este simplă: Abaterea totală (Total Variance) = Rezultat actual − Rezultat bugetat. Pentru venituri, o abatere pozitivă este favorabilă (F); pentru costuri, convenția se inversează — un cost actual mai mare decât cel bugetat este nefavorabil (U, de la unfavorable/adverse, termen consacrat în literatura de management accounting).\n\nLa nivel avansat, abaterea totală se descompune în componente independente, fiecare izolând un singur factor și ținând constanți ceilalți factori la nivelul bugetat. Această tehnică se numește descompunere prin substituție succesivă (variance decomposition) și este exact ce vei exersa în această lecție pentru trei componente: preț, volum și mix. Testul de consistență pe care orice model de variance analysis trebuie să îl treacă este simplu: suma componentelor trebuie să fie exact egală cu abaterea totală.\n\nPentru un singur produs, abaterea totală de venit se descompune clasic în două componente.\n\n**Price Variance (abaterea de preț)** = (Preț actual − Preț bugetat) × Volum actual. Izolează efectul modificării prețului de vânzare, calculat la volumul efectiv realizat, astfel încât să reflecte impactul real în lei asupra vânzărilor curente.\n\n**Volume Variance (abaterea de volum)** = (Volum actual − Volum bugetat) × Preț bugetat. Izolează efectul modificării cantității vândute, calculat la prețul bugetat — deci „ce s-ar fi întâmplat dacă prețul rămânea cel planificat, dar vindeai o altă cantitate\".\n\nSuma celor două trebuie să fie egală cu abaterea totală de venit: Price Variance + Volume Variance = Total Revenue Variance. Vezi exemplul numeric complet de mai jos, unde verifici exact această egalitate.\n\nAceeași logică, cu semnul citit invers pentru că sunt costuri, nu venituri, se aplică și pe partea de costuri directe: acolo componenta „preț\" se numește Rate Variance (abatere de rată/tarif) pentru manoperă și Price Variance pentru materiale directe, iar componenta „volum\" devine Efficiency/Usage Variance (abatere de eficiență/consum). Un Rate Variance nefavorabil la manoperă înseamnă că ai plătit un tarif orar mai mare decât cel standard (de exemplu ore suplimentare sau personal mai scump decât cel planificat), independent de câte ore ai consumat efectiv.\n\nModelul preț/volum de mai sus funcționează perfect când vinzi un singur produs sau o categorie omogenă. În realitate, majoritatea companiilor au un portofoliu cu prețuri și marje diferite, iar structura vânzărilor (mix-ul) se schimbă de la o lună la alta, chiar dacă volumul total rămâne aproape de buget. Aici intervine Mix Variance.\n\nPentru un portofoliu cu mai multe produse, Volume Variance se descompune, la rândul ei, în două componente.\n\n**Quantity/Volume Variance (abatere de cantitate)** = (Total volum actual − Total volum bugetat) × Preț mediu ponderat bugetat. Izolează efectul volumului total, presupunând că mix-ul de produse a rămas exact cel bugetat.\n\n**Mix Variance (abatere de mix)** = Venit la (mix actual, preț bugetat) − Venit la (mix bugetat, preț bugetat), ambele calculate la volumul total actual. Izolează exclusiv efectul schimbării structurii vânzărilor între produse, ținând volumul total și prețurile constante la nivel bugetat.\n\nO Mix Variance favorabilă apare când vânzările se deplasează spre produsele cu preț/marjă mai mare decât media bugetată a portofoliului; una nefavorabilă apare când clienții cumpără proporțional mai mult din produsele „ieftine\". Acest indicator este esențial pentru companiile cu portofolii diversificate (de exemplu un producător de băuturi cu sortimente premium și economice), unde volumul total poate arăta bine în timp ce marja reală scade din cauza unui mix nefavorabil — fenomen pe care doar Total Volume Variance nu îl poate arăta.\n\n## Exemplu: Price vs Volume Variance — exemplu numeric complet\nCompania Fabrica de Băuturi Carpați SRL a bugetat pentru un sortiment de suc vânzări de 10.000 unități la un preț de 25 lei/unitate, deci un venit bugetat de 250.000 lei. La final de lună, realizatul arată 9.200 unități vândute la un preț mediu de 27 lei/unitate, deci un venit actual de 248.400 lei.\n\nAbaterea totală de venit = 248.400 − 250.000 = **−1.600 lei** (nefavorabilă, deși mică).\n\nLa prima vedere pare o lună aproape pe buget. Descompunerea arată însă altă poveste:\n\nPrice Variance = (27 − 25) × 9.200 = 2 × 9.200 = **+18.400 lei (favorabilă)** — prețul mai mare a adus un plus semnificativ de venit.\n\nVolume Variance = (9.200 − 10.000) × 25 = (−800) × 25 = **−20.000 lei (nefavorabilă)** — volumul mai mic a costat companiei 20.000 lei.\n\nVerificare: 18.400 + (−20.000) = −1.600 lei = abaterea totală. ✓\n\nConcluzia pentru management: fără această descompunere, ai crede că luna a fost aproape neutră. De fapt, ai crescut prețul (posibil peste ce piața putea absorbi) și ai pierdut un volum important de vânzări — semnal de alertă despre elasticitatea cererii care merită investigat cu echipa de vânzări, nu ignorat pentru că abaterea totală „pare mică\".\n\n## Exemplu: Mix și Cantitate Variance — descompunere completă cu bridge chart\nAceeași fabrică vinde de fapt două sortimente: Suc Portocale (preț bugetat 30 lei) și Suc Mere (preț bugetat 18 lei). Bugetul lunar: 6.000 u Portocale + 4.000 u Mere = 10.000 u total, venit bugetat 6.000×30 + 4.000×18 = 180.000 + 72.000 = **252.000 lei**. Prețul mediu ponderat bugetat este 252.000 / 10.000 = 25,2 lei/unitate.\n\nRealizatul: 4.500 u Portocale la 32 lei și 4.700 u Mere la 19 lei, total 9.200 u. Venit actual = 4.500×32 + 4.700×19 = 144.000 + 89.300 = **233.300 lei**. Abaterea totală = 233.300 − 252.000 = **−18.700 lei**.\n\nDescompunere în trei pași (bridge chart, pornind de la buget):\n\n1. **Quantity Variance** = (9.200 − 10.000) × 25,2 = −800 × 25,2 = **−20.160 lei**. Buget 252.000 → 231.840 lei.\n2. **Mix Variance**: venit la mix actual/preț bugetat = 4.500×30 + 4.700×18 = 135.000 + 84.600 = 219.600 lei; venit la mix bugetat/preț bugetat, la volumul actual = 5.520×30 + 3.680×18 = 165.600 + 66.240 = 231.840 lei. Mix Variance = 219.600 − 231.840 = **−12.240 lei**. 231.840 → 219.600 lei.\n3. **Price Variance** = venit actual − venit la mix actual/preț bugetat = 233.300 − 219.600 = **+13.700 lei**. 219.600 → 233.300 lei (venitul actual).\n\nVerificare: −20.160 + (−12.240) + 13.700 = −18.700 lei = abaterea totală. ✓\n\nUn bridge chart (grafic în trepte, waterfall) plasează aceste puncte pe orizontală — Buget 252.000 → Quantity −20.160 → Mix −12.240 → Preț +13.700 → Actual 233.300 — formatul standard prin care controllerii prezintă board-ului o abatere complexă într-o singură imagine, fără să ascundă faptul că un preț bun (+13.700 lei) a fost erodat de un mix nefavorabil (−12.240 lei) către produsul mai ieftin (Suc Mere).\n\n⚠ Cea mai frecventă greșeală în variance analysis este să raportezi doar abaterea totală netă și să te oprești acolo — o abatere totală mică poate ascunde componente mari care se anulează reciproc (vezi exemplul de mai sus: −1.600 lei net ascunde +18.400 și −20.000 lei). A doua greșeală este să confunzi ordinea de calcul: dacă schimbi ordinea în care „îngheți\" variabilele (preț apoi volum, sau volum apoi preț), pot apărea diferențe reziduale din interacțiunea dintre variabile; alege o convenție (de regulă: volum la preț bugetat, apoi preț la volum actual) și păstreaz-o consecvent de la o lună la alta, altfel comparațiile în timp își pierd sensul. A treia greșeală este să tratezi Mix Variance ca pe o simplă curiozitate contabilă — pentru companii cu marje foarte diferite între produse, mix-ul poate fi cea mai mare sursă de abatere a profitului, mai importantă decât volumul total.\n\n## Exercițiu\nTehnoPlast SRL produce două repere: Reper A (preț bugetat 40 lei) și Reper B (preț bugetat 60 lei). Bugetul lunar: 2.000 u Reper A + 3.000 u Reper B. Realizatul: 1.800 u Reper A la 42 lei și 3.600 u Reper B la 58 lei.\n\nCalculează: (a) venitul bugetat și venitul actual; (b) Quantity Variance; (c) Mix Variance; (d) Price Variance; (e) verifică suma componentelor față de abaterea totală.\n\n**Soluție:** (a) Venit bugetat = 2.000×40 + 3.000×60 = 80.000 + 180.000 = 260.000 lei. Volum total bugetat = 5.000 u, preț mediu ponderat bugetat = 260.000/5.000 = 52 lei. Venit actual = 1.800×42 + 3.600×58 = 75.600 + 208.800 = 284.400 lei. Volum total actual = 5.400 u. Abaterea totală = 284.400 − 260.000 = +24.400 lei.\n\n(b) Mix bugetat: A = 40%, B = 60%. La volumul actual (5.400 u), cantitățile la mix bugetat ar fi: A = 2.160 u, B = 3.240 u. Venit la (mix bugetat, preț bugetat, volum actual) = 2.160×40 + 3.240×60 = 86.400 + 194.400 = 280.800 lei. Quantity Variance = 280.800 − 260.000 = **+20.800 lei (favorabilă)**.\n\n(c) Venit la (mix actual, preț bugetat) = 1.800×40 + 3.600×60 = 72.000 + 216.000 = 288.000 lei. Mix Variance = 288.000 − 280.800 = **+7.200 lei (favorabilă)** — mix-ul s-a deplasat spre Reper B (mai scump), deci favorabil.\n\n(d) Price Variance = Venit actual − Venit la (mix actual, preț bugetat) = 284.400 − 288.000 = **−3.600 lei (nefavorabilă)** — creșterea de preț la A (+2 lei) a fost depășită de scăderea de preț la B (−2 lei, pe un volum mai mare).\n\n(e) Verificare: 20.800 + 7.200 + (−3.600) = 24.400 lei = abaterea totală. ✓",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "variance-analysis-definitie",
+    "md": "Analiza abaterilor (variance analysis) este instrumentul central prin care un controller sau CFO transformă diferența dintre buget și realizat într-un diagnostic acționabil. Nu este suficient să constați că veniturile din iunie au fost cu 18.700 lei sub buget — întrebarea care contează este: cât din această abatere se datorează faptului că ai vândut mai puțin (volum), cât faptului că ai vândut la alt preț decât cel planificat (preț), și cât se datorează schimbării structurii vânzărilor între produse (mix)?\n\nFormula de start este simplă: Abaterea totală (Total Variance) = Rezultat actual − Rezultat bugetat. Pentru venituri, o abatere pozitivă este favorabilă (F); pentru costuri, convenția se inversează — un cost actual mai mare decât cel bugetat este nefavorabil (U, de la unfavorable/adverse, termen consacrat în literatura de management accounting).\n\nLa nivel avansat, abaterea totală se descompune în componente independente, fiecare izolând un singur factor și ținând constanți ceilalți factori la nivelul bugetat. Această tehnică se numește descompunere prin substituție succesivă (variance decomposition) și este exact ce vei exersa în această lecție pentru trei componente: preț, volum și mix. Testul de consistență pe care orice model de variance analysis trebuie să îl treacă este simplu: suma componentelor trebuie să fie exact egală cu abaterea totală.",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "price-volume-variance",
+    "md": "Pentru un singur produs, abaterea totală de venit se descompune clasic în două componente.\n\n**Price Variance (abaterea de preț)** = (Preț actual − Preț bugetat) × Volum actual. Izolează efectul modificării prețului de vânzare, calculat la volumul efectiv realizat, astfel încât să reflecte impactul real în lei asupra vânzărilor curente.\n\n**Volume Variance (abaterea de volum)** = (Volum actual − Volum bugetat) × Preț bugetat. Izolează efectul modificării cantității vândute, calculat la prețul bugetat — deci „ce s-ar fi întâmplat dacă prețul rămânea cel planificat, dar vindeai o altă cantitate\".\n\nSuma celor două trebuie să fie egală cu abaterea totală de venit: Price Variance + Volume Variance = Total Revenue Variance. Vezi exemplul numeric complet de mai jos, unde verifici exact această egalitate.\n\nAceeași logică, cu semnul citit invers pentru că sunt costuri, nu venituri, se aplică și pe partea de costuri directe: acolo componenta „preț\" se numește Rate Variance (abatere de rată/tarif) pentru manoperă și Price Variance pentru materiale directe, iar componenta „volum\" devine Efficiency/Usage Variance (abatere de eficiență/consum). Un Rate Variance nefavorabil la manoperă înseamnă că ai plătit un tarif orar mai mare decât cel standard (de exemplu ore suplimentare sau personal mai scump decât cel planificat), independent de câte ore ai consumat efectiv.",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "mix-rate-variance",
+    "md": "Modelul preț/volum de mai sus funcționează perfect când vinzi un singur produs sau o categorie omogenă. În realitate, majoritatea companiilor au un portofoliu cu prețuri și marje diferite, iar structura vânzărilor (mix-ul) se schimbă de la o lună la alta, chiar dacă volumul total rămâne aproape de buget. Aici intervine Mix Variance.\n\nPentru un portofoliu cu mai multe produse, Volume Variance se descompune, la rândul ei, în două componente.\n\n**Quantity/Volume Variance (abatere de cantitate)** = (Total volum actual − Total volum bugetat) × Preț mediu ponderat bugetat. Izolează efectul volumului total, presupunând că mix-ul de produse a rămas exact cel bugetat.\n\n**Mix Variance (abatere de mix)** = Venit la (mix actual, preț bugetat) − Venit la (mix bugetat, preț bugetat), ambele calculate la volumul total actual. Izolează exclusiv efectul schimbării structurii vânzărilor între produse, ținând volumul total și prețurile constante la nivel bugetat.\n\nO Mix Variance favorabilă apare când vânzările se deplasează spre produsele cu preț/marjă mai mare decât media bugetată a portofoliului; una nefavorabilă apare când clienții cumpără proporțional mai mult din produsele „ieftine\". Acest indicator este esențial pentru companiile cu portofolii diversificate (de exemplu un producător de băuturi cu sortimente premium și economice), unde volumul total poate arăta bine în timp ce marja reală scade din cauza unui mix nefavorabil — fenomen pe care doar Total Volume Variance nu îl poate arăta.",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b3"
+   },
+   {
+    "type": "example",
+    "title": "Price vs Volume Variance — exemplu numeric complet",
+    "concept_key": "price-volume-variance",
+    "md": "Compania Fabrica de Băuturi Carpați SRL a bugetat pentru un sortiment de suc vânzări de 10.000 unități la un preț de 25 lei/unitate, deci un venit bugetat de 250.000 lei. La final de lună, realizatul arată 9.200 unități vândute la un preț mediu de 27 lei/unitate, deci un venit actual de 248.400 lei.\n\nAbaterea totală de venit = 248.400 − 250.000 = **−1.600 lei** (nefavorabilă, deși mică).\n\nLa prima vedere pare o lună aproape pe buget. Descompunerea arată însă altă poveste:\n\nPrice Variance = (27 − 25) × 9.200 = 2 × 9.200 = **+18.400 lei (favorabilă)** — prețul mai mare a adus un plus semnificativ de venit.\n\nVolume Variance = (9.200 − 10.000) × 25 = (−800) × 25 = **−20.000 lei (nefavorabilă)** — volumul mai mic a costat companiei 20.000 lei.\n\nVerificare: 18.400 + (−20.000) = −1.600 lei = abaterea totală. ✓\n\nConcluzia pentru management: fără această descompunere, ai crede că luna a fost aproape neutră. De fapt, ai crescut prețul (posibil peste ce piața putea absorbi) și ai pierdut un volum important de vânzări — semnal de alertă despre elasticitatea cererii care merită investigat cu echipa de vânzări, nu ignorat pentru că abaterea totală „pare mică\".",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b4"
+   },
+   {
+    "type": "example",
+    "title": "Mix și Cantitate Variance — descompunere completă cu bridge chart",
+    "concept_key": "bridge-chart-variance",
+    "md": "Aceeași fabrică vinde de fapt două sortimente: Suc Portocale (preț bugetat 30 lei) și Suc Mere (preț bugetat 18 lei). Bugetul lunar: 6.000 u Portocale + 4.000 u Mere = 10.000 u total, venit bugetat 6.000×30 + 4.000×18 = 180.000 + 72.000 = **252.000 lei**. Prețul mediu ponderat bugetat este 252.000 / 10.000 = 25,2 lei/unitate.\n\nRealizatul: 4.500 u Portocale la 32 lei și 4.700 u Mere la 19 lei, total 9.200 u. Venit actual = 4.500×32 + 4.700×19 = 144.000 + 89.300 = **233.300 lei**. Abaterea totală = 233.300 − 252.000 = **−18.700 lei**.\n\nDescompunere în trei pași (bridge chart, pornind de la buget):\n\n1. **Quantity Variance** = (9.200 − 10.000) × 25,2 = −800 × 25,2 = **−20.160 lei**. Buget 252.000 → 231.840 lei.\n2. **Mix Variance**: venit la mix actual/preț bugetat = 4.500×30 + 4.700×18 = 135.000 + 84.600 = 219.600 lei; venit la mix bugetat/preț bugetat, la volumul actual = 5.520×30 + 3.680×18 = 165.600 + 66.240 = 231.840 lei. Mix Variance = 219.600 − 231.840 = **−12.240 lei**. 231.840 → 219.600 lei.\n3. **Price Variance** = venit actual − venit la mix actual/preț bugetat = 233.300 − 219.600 = **+13.700 lei**. 219.600 → 233.300 lei (venitul actual).\n\nVerificare: −20.160 + (−12.240) + 13.700 = −18.700 lei = abaterea totală. ✓\n\nUn bridge chart (grafic în trepte, waterfall) plasează aceste puncte pe orizontală — Buget 252.000 → Quantity −20.160 → Mix −12.240 → Preț +13.700 → Actual 233.300 — formatul standard prin care controllerii prezintă board-ului o abatere complexă într-o singură imagine, fără să ascundă faptul că un preț bun (+13.700 lei) a fost erodat de un mix nefavorabil (−12.240 lei) către produsul mai ieftin (Suc Mere).",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b5"
+   },
+   {
+    "type": "warning",
+    "md": "Cea mai frecventă greșeală în variance analysis este să raportezi doar abaterea totală netă și să te oprești acolo — o abatere totală mică poate ascunde componente mari care se anulează reciproc (vezi exemplul de mai sus: −1.600 lei net ascunde +18.400 și −20.000 lei). A doua greșeală este să confunzi ordinea de calcul: dacă schimbi ordinea în care „îngheți\" variabilele (preț apoi volum, sau volum apoi preț), pot apărea diferențe reziduale din interacțiunea dintre variabile; alege o convenție (de regulă: volum la preț bugetat, apoi preț la volum actual) și păstreaz-o consecvent de la o lună la alta, altfel comparațiile în timp își pierd sensul. A treia greșeală este să tratezi Mix Variance ca pe o simplă curiozitate contabilă — pentru companii cu marje foarte diferite între produse, mix-ul poate fi cea mai mare sursă de abatere a profitului, mai importantă decât volumul total.",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "TehnoPlast SRL produce două repere: Reper A (preț bugetat 40 lei) și Reper B (preț bugetat 60 lei). Bugetul lunar: 2.000 u Reper A + 3.000 u Reper B. Realizatul: 1.800 u Reper A la 42 lei și 3.600 u Reper B la 58 lei.\n\nCalculează: (a) venitul bugetat și venitul actual; (b) Quantity Variance; (c) Mix Variance; (d) Price Variance; (e) verifică suma componentelor față de abaterea totală.",
+    "solution_md": "(a) Venit bugetat = 2.000×40 + 3.000×60 = 80.000 + 180.000 = 260.000 lei. Volum total bugetat = 5.000 u, preț mediu ponderat bugetat = 260.000/5.000 = 52 lei. Venit actual = 1.800×42 + 3.600×58 = 75.600 + 208.800 = 284.400 lei. Volum total actual = 5.400 u. Abaterea totală = 284.400 − 260.000 = +24.400 lei.\n\n(b) Mix bugetat: A = 40%, B = 60%. La volumul actual (5.400 u), cantitățile la mix bugetat ar fi: A = 2.160 u, B = 3.240 u. Venit la (mix bugetat, preț bugetat, volum actual) = 2.160×40 + 3.240×60 = 86.400 + 194.400 = 280.800 lei. Quantity Variance = 280.800 − 260.000 = **+20.800 lei (favorabilă)**.\n\n(c) Venit la (mix actual, preț bugetat) = 1.800×40 + 3.600×60 = 72.000 + 216.000 = 288.000 lei. Mix Variance = 288.000 − 280.800 = **+7.200 lei (favorabilă)** — mix-ul s-a deplasat spre Reper B (mai scump), deci favorabil.\n\n(d) Price Variance = Venit actual − Venit la (mix actual, preț bugetat) = 284.400 − 288.000 = **−3.600 lei (nefavorabilă)** — creșterea de preț la A (+2 lei) a fost depășită de scăderea de preț la B (−2 lei, pe un volum mai mare).\n\n(e) Verificare: 20.800 + 7.200 + (−3.600) = 24.400 lei = abaterea totală. ✓",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "În modelul preț/volum pentru un singur produs, Price Variance se calculează ca:",
+    "choices": [
+     "(Preț actual − Preț bugetat) × Volum actual",
+     "(Preț actual − Preț bugetat) × Volum bugetat",
+     "(Volum actual − Volum bugetat) × Preț bugetat",
+     "(Volum actual − Volum bugetat) × Preț actual"
+    ],
+    "answer": 0,
+    "explain": "Price Variance izolează efectul prețului la volumul efectiv realizat, pentru a reflecta impactul real în lei asupra vânzărilor curente; Volume Variance folosește preț bugetat, nu actual, iar termenii cu Volum bugetat/Preț actual nu izolează un singur factor.",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O Mix Variance favorabilă apare atunci când:",
+    "choices": [
+     "Volumul total vândut depășește bugetul, indiferent de produs",
+     "Structura vânzărilor se deplasează spre produsele cu preț/marjă mai mare decât media bugetată",
+     "Prețul de vânzare crește la toate produsele deopotrivă",
+     "Costurile de producție scad sub nivelul bugetat"
+    ],
+    "answer": 1,
+    "explain": "Mix Variance izolează exclusiv efectul schimbării structurii portofoliului de vânzări, la volum total și preț bugetat constante; este favorabilă când mix-ul se deplasează spre produse mai scumpe/cu marjă mai mare, indiferent de volumul total.",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula pentru Price Variance?",
+    "back": "(Preț actual − Preț bugetat) × Volum actual.",
+    "concept_key": "price-volume-variance",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este formula pentru Volume (Quantity) Variance?",
+    "back": "(Volum actual − Volum bugetat) × Preț bugetat (mediu ponderat, la portofolii multi-produs).",
+    "concept_key": "price-volume-variance",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce izolează Mix Variance?",
+    "back": "Efectul schimbării ponderii produselor în total vânzări, la volum total și preț bugetat constante.",
+    "concept_key": "mix-rate-variance",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este Rate Variance în context de costuri?",
+    "back": "(Rată/tarif actual − Rată/tarif standard) × Cantitate/ore actuale — folosit pentru materiale directe și manoperă.",
+    "concept_key": "mix-rate-variance",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "La ce servește un bridge chart în variance analysis?",
+    "back": "Vizualizează pas cu pas, în trepte (waterfall), cum se ajunge de la bugetul inițial la rezultatul actual prin variațiile individuale (cantitate, mix, preț).",
+    "concept_key": "bridge-chart-variance",
+    "blockId": "cmjjuxw6r00ffumkpelnqramx-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1559,
+   "flashcards": 5
+  }
+ }
+}

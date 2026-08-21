@@ -1,0 +1,127 @@
+{
+ "lessonId": "cmjjuxvrw004oumkplq1cxw85",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Introducere în Project Management",
+ "lesson": "Ce este un proiect?",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Ce este un proiect?\n\n## Definiția unui proiect\n\nPotrivit Project Management Institute (PMI), organizația care publică ghidul PMBOK (Project Management Body of Knowledge), **un proiect este un efort temporar întreprins pentru a crea un produs, serviciu sau rezultat unic**.\n\nDin această definiție, scurtă dar densă, rezultă două caracteristici pe care orice project manager (PM) trebuie să le recunoască imediat:\n\n1. **Temporar** – proiectul are un început și un sfârșit clar definite. \"Temporar\" nu înseamnă \"scurt\": un proiect de construcție a unei autostrăzi poate dura 5 ani, dar tot temporar este, pentru că la un moment dat se încheie (fie prin livrarea rezultatului, fie prin anulare). Echipa de proiect este, de regulă, formată special pentru acest efort și se dizolvă sau se realocă la finalul lui.\n2. **Unic** – rezultatul proiectului diferă de tot ce a mai produs organizația până atunci, chiar dacă procesul aplicat seamănă cu al altor proiecte. O firmă de construcții poate ridica 50 de blocuri de locuințe cu planuri similare, dar fiecare bloc este amplasat pe un alt teren, cu alți furnizori, alte avize și alt calendar – deci fiecare este, din perspectiva echipei, un proiect distinct.\n\nO a treia trăsătură, mai puțin vizibilă la prima vedere, este **elaborarea progresivă**: la inițierea proiectului cunoști doar obiectivul general; pe măsură ce avansează analiza, planul se detaliază treptat, cu informații tot mai precise despre activități, resurse și riscuri.\n\n## Proiect versus operațiuni curente\n\nNu tot ce faci la job este proiect. Organizațiile funcționează prin combinarea a două tipuri de activitate: proiecte și **operațiuni** (numite adesea și \"business as usual\" – BAU).\n\n| Criteriu | Proiect | Operațiune |\n|---|---|---|\n| Durată | Definită, cu final | Continuă, fără dată de final |\n| Rezultat | Unic | Repetitiv, standardizat |\n| Echipă | Adesea temporară/cross-departamentală | Stabilă, dedicată funcției |\n| Scop | Livrarea unei schimbări | Susținerea activității curente |\n\nExemplu dintr-un departament financiar-contabil: **închiderea lunară a balanței contabile** este o operațiune – se repetă identic, lună de lună, respectând aceleași proceduri. În schimb, **implementarea unui nou modul ERP pentru gestiunea stocurilor** este un proiect – are un obiectiv unic, o dată de start și una de finalizare, un buget alocat și, la final, echipa revine la activitatea curentă sau trece la alt proiect.\n\nDistincția contează practic: operațiunile se gestionează prin proceduri standard de lucru (SOP) și indicatori de performanță (KPI) recurenți, în timp ce proiectele se gestionează prin planuri specifice, cu domenii de aplicare, termene și bugete proprii, definite o singură dată.\n\n## Constrângerea triplă (triple constraint)\n\nOrice proiect este limitat simultan de trei variabile interdependente, cunoscute drept **constrângerea triplă** sau \"triunghiul de fier\":\n\n- **Scope (domeniul de aplicare)** – ce anume trebuie livrat: funcționalități, cerințe, livrabile.\n- **Time (timp)** – termenul-limită și calendarul activităților.\n- **Cost** – bugetul alocat: oameni, materiale, furnizori.\n\nÎn centrul triunghiului stă **calitatea** rezultatului, influențată direct de echilibrul celorlalte trei. Regula practică pe care orice PM o folosește zilnic: **dacă modifici unul dintre cele trei elemente, cel puțin unul dintre celelalte două trebuie ajustat**, altfel calitatea are de suferit.\n\nExemplu simplu: dacă un client cere funcționalități suplimentare (scope crescut) și insistă ca termenul de livrare (time) să rămână neschimbat, singura variabilă de ajustare rămâne costul (adaugi resurse) – sau, dacă nici costul nu poate crește, rezultatul va avea o calitate mai slabă sau nu va fi livrat integral.\n\nGhidul PMBOK, ediția a 7-a (2021), a extins această perspectivă clasică: în loc de management axat strict pe procese și constrângeri, propune 8 domenii de performanță centrate pe livrarea de valoare pentru organizație și părțile interesate (stakeholderi). Constrângerea triplă rămâne însă instrumentul cel mai intuitiv pentru a înțelege, chiar din prima lecție, compromisurile (trade-off-urile) inevitabile din orice proiect.\n\n## Exemplu: Proiect real: implementarea unui sistem ERP\nO firmă de distribuție de materiale de construcții, SC Constructex SRL, cu 120 de angajați, decide să înlocuiască evidența ținută în Excel cu un sistem ERP integrat.\n\n**De ce este un proiect:**\n- **Temporar** – conducerea stabilește un interval clar: 1 martie – 31 august (6 luni). La final, sistemul intră în exploatare curentă, iar echipa de implementare se desființează.\n- **Unic** – configurația ERP este adaptată fluxurilor specifice ale firmei (gestiune stocuri pe loturi, facturare cu discount-uri pe volum, integrare cu depozitul din Ploiești). Nicio altă firmă nu va avea exact această configurație.\n- **Scope** – module de contabilitate, stocuri și facturare; excluse module de HR și producție.\n- **Time** – 6 luni, cu un termen intermediar (milestone) de testare la 4 luni.\n- **Cost** – buget aprobat de 180.000 lei (licențe, implementare, instruire).\n\nDupă cele 6 luni, folosirea zilnică a ERP-ului pentru emiterea facturilor sau înregistrarea recepțiilor de marfă devine **operațiune curentă**, nu mai este proiect.\n\n## Exemplu: Contrast: campanie de lansare vs. activitate de marketing curentă\nO companie de e-commerce, ShopModern SRL, lansează o linie nouă de produse.\n\n**Proiect:** \"Lansare linie Primăvară-Vară 2027\" – campanie cu obiectiv unic (poziționarea celor 40 de produse noi pe piață), termen fix (lansare pe 1 martie 2027), buget dedicat de 60.000 lei pentru materiale foto, publicitate online și evenimentul de lansare. Echipa include un project manager, un specialist marketing, un fotograf colaborator și un reprezentant vânzări – reuniți special pentru acest efort și dizolvați după lansare.\n\n**Operațiune:** gestionarea zilnică a paginii de Facebook/Instagram a firmei, răspunsul la mesajele clienților și postarea de conținut recurent – activitate continuă, fără dată de final, realizată de un angajat dedicat al departamentului de marketing, an de an, cu proceduri standard.\n\nDiferența practică: proiectul de lansare are un plan, un buget și un termen proprii, raportate separat conducerii; activitatea curentă de social media se bugetează anual, ca linie continuă de cheltuială, și se măsoară prin KPI recurenți (engagement, număr de urmăritori), nu prin \"finalizare\".\n\n⚠ **Atenție la scope creep!** Extinderea necontrolată a domeniului de aplicare – adăugarea de cerințe noi pe parcursul proiectului, fără a renegocia termenul, bugetul sau resursele – este una dintre cele mai frecvente cauze de eșec ale proiectelor. Exemplu: la proiectul ERP de mai sus, dacă în luna a patra departamentul de vânzări cere, \"în plus\", integrarea cu un magazin online, iar acest lucru se acceptă fără a muta termenul de finalizare sau a suplimenta bugetul, riști fie întârzieri, fie o implementare de calitate slabă. Orice cerere de schimbare trebuie evaluată formal, prin procesul de control al schimbărilor (change control), înainte de a fi acceptată.\n\n## Exercițiu\nPentru fiecare dintre situațiile de mai jos, stabilește dacă este vorba despre un **proiect** sau despre o **operațiune curentă**, justificând răspunsul prin criteriile \"temporar\" și \"rezultat unic\":\n\n1. O bancă dezvoltă și lansează o aplicație mobilă complet nouă pentru clienți persoane fizice.\n2. Departamentul de contabilitate emite facturile către clienți la finalul fiecărei luni.\n3. O firmă își mută sediul central într-un birou nou, incluzând renovare și achiziție de mobilier.\n4. Un call center oferă zilnic suport tehnic clienților existenți.\n5. Departamentul financiar implementează un nou modul de raportare BI, cerut o singură dată de conducere pentru un audit special.\n\n**Soluție:** 1. **Proiect** – are obiectiv unic (aplicație nouă), termen de lansare și buget dedicat; echipa de dezvoltare se poate disipa sau trece la mentenanță după lansare.\n2. **Operațiune** – se repetă identic în fiecare lună, fără dată de final, folosind aceeași procedură.\n3. **Proiect** – rezultat unic (biroul nou, cu specificații proprii), termen și buget clar definite, activitate ce nu se repetă.\n4. **Operațiune** – activitate continuă, fără rezultat unic, desfășurată după proceduri standard, an de an.\n5. **Proiect** – cerință punctuală, cu scop, termen și buget specifice; după livrarea modulului și validarea lui pentru audit, folosirea zilnică a raportului devine operațiune.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "proiect-definitie-pmi",
+    "md": "## Definiția unui proiect\n\nPotrivit Project Management Institute (PMI), organizația care publică ghidul PMBOK (Project Management Body of Knowledge), **un proiect este un efort temporar întreprins pentru a crea un produs, serviciu sau rezultat unic**.\n\nDin această definiție, scurtă dar densă, rezultă două caracteristici pe care orice project manager (PM) trebuie să le recunoască imediat:\n\n1. **Temporar** – proiectul are un început și un sfârșit clar definite. \"Temporar\" nu înseamnă \"scurt\": un proiect de construcție a unei autostrăzi poate dura 5 ani, dar tot temporar este, pentru că la un moment dat se încheie (fie prin livrarea rezultatului, fie prin anulare). Echipa de proiect este, de regulă, formată special pentru acest efort și se dizolvă sau se realocă la finalul lui.\n2. **Unic** – rezultatul proiectului diferă de tot ce a mai produs organizația până atunci, chiar dacă procesul aplicat seamănă cu al altor proiecte. O firmă de construcții poate ridica 50 de blocuri de locuințe cu planuri similare, dar fiecare bloc este amplasat pe un alt teren, cu alți furnizori, alte avize și alt calendar – deci fiecare este, din perspectiva echipei, un proiect distinct.\n\nO a treia trăsătură, mai puțin vizibilă la prima vedere, este **elaborarea progresivă**: la inițierea proiectului cunoști doar obiectivul general; pe măsură ce avansează analiza, planul se detaliază treptat, cu informații tot mai precise despre activități, resurse și riscuri.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "proiect-vs-operatiuni",
+    "md": "## Proiect versus operațiuni curente\n\nNu tot ce faci la job este proiect. Organizațiile funcționează prin combinarea a două tipuri de activitate: proiecte și **operațiuni** (numite adesea și \"business as usual\" – BAU).\n\n| Criteriu | Proiect | Operațiune |\n|---|---|---|\n| Durată | Definită, cu final | Continuă, fără dată de final |\n| Rezultat | Unic | Repetitiv, standardizat |\n| Echipă | Adesea temporară/cross-departamentală | Stabilă, dedicată funcției |\n| Scop | Livrarea unei schimbări | Susținerea activității curente |\n\nExemplu dintr-un departament financiar-contabil: **închiderea lunară a balanței contabile** este o operațiune – se repetă identic, lună de lună, respectând aceleași proceduri. În schimb, **implementarea unui nou modul ERP pentru gestiunea stocurilor** este un proiect – are un obiectiv unic, o dată de start și una de finalizare, un buget alocat și, la final, echipa revine la activitatea curentă sau trece la alt proiect.\n\nDistincția contează practic: operațiunile se gestionează prin proceduri standard de lucru (SOP) și indicatori de performanță (KPI) recurenți, în timp ce proiectele se gestionează prin planuri specifice, cu domenii de aplicare, termene și bugete proprii, definite o singură dată.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "constrangere-tripla",
+    "md": "## Constrângerea triplă (triple constraint)\n\nOrice proiect este limitat simultan de trei variabile interdependente, cunoscute drept **constrângerea triplă** sau \"triunghiul de fier\":\n\n- **Scope (domeniul de aplicare)** – ce anume trebuie livrat: funcționalități, cerințe, livrabile.\n- **Time (timp)** – termenul-limită și calendarul activităților.\n- **Cost** – bugetul alocat: oameni, materiale, furnizori.\n\nÎn centrul triunghiului stă **calitatea** rezultatului, influențată direct de echilibrul celorlalte trei. Regula practică pe care orice PM o folosește zilnic: **dacă modifici unul dintre cele trei elemente, cel puțin unul dintre celelalte două trebuie ajustat**, altfel calitatea are de suferit.\n\nExemplu simplu: dacă un client cere funcționalități suplimentare (scope crescut) și insistă ca termenul de livrare (time) să rămână neschimbat, singura variabilă de ajustare rămâne costul (adaugi resurse) – sau, dacă nici costul nu poate crește, rezultatul va avea o calitate mai slabă sau nu va fi livrat integral.\n\nGhidul PMBOK, ediția a 7-a (2021), a extins această perspectivă clasică: în loc de management axat strict pe procese și constrângeri, propune 8 domenii de performanță centrate pe livrarea de valoare pentru organizație și părțile interesate (stakeholderi). Constrângerea triplă rămâne însă instrumentul cel mai intuitiv pentru a înțelege, chiar din prima lecție, compromisurile (trade-off-urile) inevitabile din orice proiect.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b3"
+   },
+   {
+    "type": "example",
+    "title": "Proiect real: implementarea unui sistem ERP",
+    "concept_key": "proiect-definitie-pmi",
+    "md": "O firmă de distribuție de materiale de construcții, SC Constructex SRL, cu 120 de angajați, decide să înlocuiască evidența ținută în Excel cu un sistem ERP integrat.\n\n**De ce este un proiect:**\n- **Temporar** – conducerea stabilește un interval clar: 1 martie – 31 august (6 luni). La final, sistemul intră în exploatare curentă, iar echipa de implementare se desființează.\n- **Unic** – configurația ERP este adaptată fluxurilor specifice ale firmei (gestiune stocuri pe loturi, facturare cu discount-uri pe volum, integrare cu depozitul din Ploiești). Nicio altă firmă nu va avea exact această configurație.\n- **Scope** – module de contabilitate, stocuri și facturare; excluse module de HR și producție.\n- **Time** – 6 luni, cu un termen intermediar (milestone) de testare la 4 luni.\n- **Cost** – buget aprobat de 180.000 lei (licențe, implementare, instruire).\n\nDupă cele 6 luni, folosirea zilnică a ERP-ului pentru emiterea facturilor sau înregistrarea recepțiilor de marfă devine **operațiune curentă**, nu mai este proiect.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b4"
+   },
+   {
+    "type": "example",
+    "title": "Contrast: campanie de lansare vs. activitate de marketing curentă",
+    "concept_key": "proiect-vs-operatiuni",
+    "md": "O companie de e-commerce, ShopModern SRL, lansează o linie nouă de produse.\n\n**Proiect:** \"Lansare linie Primăvară-Vară 2027\" – campanie cu obiectiv unic (poziționarea celor 40 de produse noi pe piață), termen fix (lansare pe 1 martie 2027), buget dedicat de 60.000 lei pentru materiale foto, publicitate online și evenimentul de lansare. Echipa include un project manager, un specialist marketing, un fotograf colaborator și un reprezentant vânzări – reuniți special pentru acest efort și dizolvați după lansare.\n\n**Operațiune:** gestionarea zilnică a paginii de Facebook/Instagram a firmei, răspunsul la mesajele clienților și postarea de conținut recurent – activitate continuă, fără dată de final, realizată de un angajat dedicat al departamentului de marketing, an de an, cu proceduri standard.\n\nDiferența practică: proiectul de lansare are un plan, un buget și un termen proprii, raportate separat conducerii; activitatea curentă de social media se bugetează anual, ca linie continuă de cheltuială, și se măsoară prin KPI recurenți (engagement, număr de urmăritori), nu prin \"finalizare\".",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b5"
+   },
+   {
+    "type": "warning",
+    "md": "**Atenție la scope creep!** Extinderea necontrolată a domeniului de aplicare – adăugarea de cerințe noi pe parcursul proiectului, fără a renegocia termenul, bugetul sau resursele – este una dintre cele mai frecvente cauze de eșec ale proiectelor. Exemplu: la proiectul ERP de mai sus, dacă în luna a patra departamentul de vânzări cere, \"în plus\", integrarea cu un magazin online, iar acest lucru se acceptă fără a muta termenul de finalizare sau a suplimenta bugetul, riști fie întârzieri, fie o implementare de calitate slabă. Orice cerere de schimbare trebuie evaluată formal, prin procesul de control al schimbărilor (change control), înainte de a fi acceptată.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b6"
+   },
+   {
+    "type": "exercise",
+    "md": "Pentru fiecare dintre situațiile de mai jos, stabilește dacă este vorba despre un **proiect** sau despre o **operațiune curentă**, justificând răspunsul prin criteriile \"temporar\" și \"rezultat unic\":\n\n1. O bancă dezvoltă și lansează o aplicație mobilă complet nouă pentru clienți persoane fizice.\n2. Departamentul de contabilitate emite facturile către clienți la finalul fiecărei luni.\n3. O firmă își mută sediul central într-un birou nou, incluzând renovare și achiziție de mobilier.\n4. Un call center oferă zilnic suport tehnic clienților existenți.\n5. Departamentul financiar implementează un nou modul de raportare BI, cerut o singură dată de conducere pentru un audit special.",
+    "solution_md": "1. **Proiect** – are obiectiv unic (aplicație nouă), termen de lansare și buget dedicat; echipa de dezvoltare se poate disipa sau trece la mentenanță după lansare.\n2. **Operațiune** – se repetă identic în fiecare lună, fără dată de final, folosind aceeași procedură.\n3. **Proiect** – rezultat unic (biroul nou, cu specificații proprii), termen și buget clar definite, activitate ce nu se repetă.\n4. **Operațiune** – activitate continuă, fără rezultat unic, desfășurată după proceduri standard, an de an.\n5. **Proiect** – cerință punctuală, cu scop, termen și buget specifice; după livrarea modulului și validarea lui pentru audit, folosirea zilnică a raportului devine operațiune.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b7"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care dintre următoarele definește corect, conform PMI, un proiect?",
+    "choices": [
+     "Orice sarcină care durează mai mult de o lună",
+     "Un efort temporar întreprins pentru a crea un produs, serviciu sau rezultat unic",
+     "O activitate repetitivă realizată de un departament dedicat",
+     "Orice inițiativă care implică mai mult de doi angajați"
+    ],
+    "answer": 1,
+    "explain": "Definiția PMI pune accent pe caracterul temporar (are un început și un sfârșit) și pe unicitatea rezultatului, indiferent de durată sau de numărul de persoane implicate.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "O echipă de proiect primește cerințe noi de la client (scope crescut), dar termenul de livrare rămâne neschimbat și nu se alocă resurse suplimentare. Conform logicii constrângerii triple, care este cel mai probabil efect?",
+    "choices": [
+     "Calitatea rezultatului livrat va avea de suferit",
+     "Costul proiectului va scădea automat",
+     "Proiectul se va încadra fără probleme în buget și termen",
+     "Domeniul de aplicare se va reduce automat, fără intervenția echipei"
+    ],
+    "answer": 0,
+    "explain": "Dacă scope-ul crește iar time și cost rămân fixe, singura variabilă rămasă neajustată este calitatea, care tinde să scadă – de aceea orice cerere de schimbare trebuie evaluată formal (control al schimbărilor), nu acceptată tacit.",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b9"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este definiția PMI a unui proiect?",
+    "back": "Un efort temporar întreprins pentru a crea un produs, serviciu sau rezultat unic.",
+    "concept_key": "proiect-definitie-pmi",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce înseamnă caracteristica \"temporar\" a unui proiect?",
+    "back": "Proiectul are un început și un sfârșit clar definite; \"temporar\" nu înseamnă neapărat \"scurt\" ca durată.",
+    "concept_key": "proiect-caracteristica-temporar",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care sunt cele trei elemente ale constrângerii triple (triple constraint) în project management?",
+    "back": "Scope (domeniul de aplicare), Time (timp) și Cost (cost) – modificarea unuia le afectează pe celelalte două.",
+    "concept_key": "constrangere-tripla",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este scope creep?",
+    "back": "Extinderea necontrolată a domeniului de aplicare al unui proiect, fără ajustarea corespunzătoare a timpului, costului sau resurselor.",
+    "concept_key": "scope-creep-definitie",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Prin ce se diferențiază un proiect de o operațiune curentă (BAU)?",
+    "back": "Proiectul e temporar și produce un rezultat unic; operațiunea e repetitivă, continuă și susține activitatea curentă a organizației.",
+    "concept_key": "proiect-vs-operatiuni",
+    "blockId": "cmjjuxvrw004oumkplq1cxw85-b14"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1191,
+   "flashcards": 5
+  }
+ }
+}

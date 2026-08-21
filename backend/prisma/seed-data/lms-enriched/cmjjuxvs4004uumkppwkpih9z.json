@@ -1,0 +1,146 @@
+{
+ "lessonId": "cmjjuxvs4004uumkppwkpih9z",
+ "courseId": "cmjjuxvrq004kumkpm3h22xx6",
+ "course": "Fundamente Project Management",
+ "module": "Introducere în Project Management",
+ "lesson": "Metodologii overview",
+ "category": "PROJECT_MANAGEMENT",
+ "content": "# Metodologii overview\n\n## Ce este o metodologie de proiect?\n\nO metodologie de project management este un set coerent de principii, procese și practici care îți spune **cum** planifici, execuți, monitorizezi și închizi un proiect. Nu este o rețetă rigidă, ci un cadru de lucru pe care îl adaptezi la contextul concret al proiectului tău.\n\nStandardul PMBOK 7 (Project Management Body of Knowledge, Project Management Institute) recunoaște explicit trei mari familii de abordări:\n\n- **Predictivă (Waterfall / cascadă)** - planificare detaliată la început, execuție secvențială.\n- **Adaptivă (Agile)** - planificare iterativă, livrare incrementală, adaptare continuă.\n- **Hibridă** - combinație a celor două, în funcție de componentele proiectului.\n\nAlegerea metodologiei nu este o chestiune de modă („toată lumea face Agile”), ci o decizie tehnică bazată pe claritatea cerințelor, tipul de contract, reglementările aplicabile și cultura organizației.\n\n## Waterfall (abordarea în cascadă)\n\nWaterfall este o abordare **predictivă și secvențială**: proiectul trece prin faze bine delimitate - inițiere, planificare, execuție, monitorizare și control, închidere - iar fiecare fază se încheie cu un document aprobat (sign-off) înainte ca următoarea să înceapă. Cerințele sunt colectate și fixate în detaliu chiar de la început.\n\nEste potrivită atunci când:\n\n- Cerințele sunt clare, stabile și puțin probabil să se schimbe pe parcurs.\n- Proiectul are un contract de tip fixed-price sau este supus unor reglementări fixe (de exemplu, un modul de contabilitate care trebuie să respecte OMFP 1802/2014 pentru situațiile financiare).\n- Riscul asociat schimbărilor de scop este mai costisitor decât rigiditatea planificării.\n\nDezavantajul principal: dacă apar schimbări majore de cerințe pe parcurs, revenirea la o fază anterioară este costisitoare și lentă.\n\n## Agile și Scrum\n\nAgile este o familie de abordări **iterative și incrementale**, ghidată de principiile Manifestului Agile (2001) și implementată prin cadre concrete precum Scrum, Kanban sau XP (Extreme Programming). Cel mai răspândit cadru este **Scrum**, definit de Scrum Guide (ediția 2020):\n\n- **Sprinturi** - cicluri scurte, de regulă 2-4 săptămâni, la finalul cărora se livrează un increment funcțional.\n- **Roluri** - Product Owner (prioritizează valoarea), Scrum Master (facilitează procesul), Development Team (execută).\n- **Evenimente** - Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.\n- **Artefacte** - Product Backlog, Sprint Backlog, Increment.\n\nAgile este potrivit când cerințele nu sunt complet clare de la început, clientul vrea să vadă rezultate funcționale rapid și feedback-ul frecvent schimbă direcția proiectului - situație tipică în dezvoltare software și digitalizare de procese interne.\n\n## Abordarea hibridă\n\nÎn practică, multe proiecte complexe nu sunt „pur Waterfall” sau „pur Agile”, ci combină elemente din ambele - o abordare **hibridă**, recunoscută explicit de PMBOK 7 ca fiind normală pentru proiecte de anvergură.\n\nUn exemplu tipic în context românesc: un proiect de implementare ERP la o firmă mare poate avea:\n\n- Planificare generală, buget și milestone-uri fixate de tip Waterfall (aprobate de board, cu contract semnat).\n- Faza de analiză și design tot secvențială, cu documente de sign-off.\n- Faza de dezvoltare/configurare software executată în sprinturi Agile, cu revizuiri periodice și ajustări.\n- Testarea finală și go-live-ul revin la o structură secvențială, pentru control strict al riscurilor.\n\nAbordarea hibridă îți permite să păstrezi guvernanța și predictibilitatea acolo unde ai nevoie de ele (buget, termene contractuale, reglementări) și flexibilitatea acolo unde incertitudinea este mare (funcționalități software noi).\n\n## Certificări recunoscute în project management\n\nPe piața din România și la nivel internațional, cele mai recunoscute certificări sunt:\n\n- **PMP (Project Management Professional)** - oferită de PMI (Project Management Institute), bazată pe standardul PMBOK. Este o certificare generalistă, care acoperă atât abordări predictive cât și agile/hibride, și necesită experiență documentată în conducerea proiectelor plus promovarea unui examen.\n- **PRINCE2 (PRojects IN Controlled Environments)** - metodologie și certificare de origine britanică, dezvoltată inițial pentru proiecte guvernamentale, structurată pe procese, teme și principii clare. Este foarte răspândită în Europa, inclusiv în proiecte finanțate din fonduri UE, unde guvernanța strictă este esențială.\n- **Scrum (CSM - Certified ScrumMaster, oferită de Scrum Alliance; PSM - Professional Scrum Master, oferită de Scrum.org)** - certificări axate strict pe cadrul Scrum, orientate spre echipele Agile din IT și digitalizare.\n\nAlegerea certificării depinde de tipul de proiecte pe care vrei să le conduci: PMP pentru un profil generalist de PM, PRINCE2 pentru proiecte cu guvernanță strictă, Scrum pentru roluri operaționale în echipe Agile de dezvoltare.\n\n## Exemplu: Implementare ERP la o firmă de producție - abordare Waterfall\nO firmă de producție cu 200 de angajați implementează un ERP nou pentru contabilitate, stocuri și producție. Cerințele contabile sunt fixate de reglementările în vigoare (OMFP 1802/2014), iar contractul cu integratorul este de tip fixed-price, cu penalizări pentru depășirea termenelor.\n\nProiectul este structurat secvențial:\n\n1. Analiza cerințelor (6 săptămâni) - se finalizează cu un document de cerințe aprobat de client.\n2. Design-ul soluției (4 săptămâni) - arhitectura tehnică și mapările de proces, aprobate înainte de a trece mai departe.\n3. Configurare și dezvoltare (10 săptămâni).\n4. Testare (4 săptămâni) - testare funcțională și UAT (User Acceptance Testing).\n5. Go-live și stabilizare.\n\nFiecare etapă se încheie cu un sign-off oficial - fără acesta, echipa nu trece la etapa următoare. Această rigiditate este exact ce își doresc atât clientul, cât și integratorul, pentru a controla bugetul și riscurile juridice legate de conformitatea contabilă.\n\n## Exemplu: Digitalizarea aprobării facturilor - abordare Agile/Scrum\nO companie de servicii vrea o aplicație internă pentru aprobarea facturilor, care să înlocuiască fluxul actual pe e-mail. La momentul demarării proiectului, echipa financiară nu știe exact ce funcționalități va avea nevoie pe termen lung - vrea să testeze rapid idei și să vadă ce funcționează în practică.\n\nEchipa de dezvoltare lucrează în sprinturi de 2 săptămâni:\n\n- Sprint 1: flux de bază de aprobare pentru facturi sub o anumită valoare.\n- Sprint 2: adăugarea nivelurilor de aprobare pentru facturi mari, pe baza feedback-ului din Sprint Review 1.\n- Sprint 3: notificări automate și integrare cu sistemul de contabilitate.\n\nLa finalul fiecărui sprint, Product Owner-ul prezintă echipei financiare un increment funcțional în cadrul Sprint Review, colectează feedback și ajustează Product Backlog-ul pentru sprintul următor. Această abordare permite livrare rapidă de valoare și corectarea din mers a direcției, fără să existe un plan detaliat fixat de la început.\n\n⚠ Nu alege metodologia după modă („toată lumea face Agile acum”), ci după contextul real al proiectului: stabilitatea cerințelor, tipul de contract, reglementările aplicabile și cultura organizației. Un proiect cu cerințe legale fixe (de exemplu, conformitate contabilă) forțat într-un Agile pur poate genera haos și riscuri de neconformitate. Un proiect de inovație, cu cerințe incerte, forțat într-un Waterfall pur poate livra la final exact ce a fost planificat inițial - dar posibil irelevant pentru piață.\n\n## Exercițiu\nEști project manager la o companie de retail din România și ai de gestionat trei proiecte în paralel:\n\n1. Migrarea sistemului de contabilitate la un ERP nou, cu cerințe fixate de reglementările OMFP 1802/2014 și contract fixed-price cu integratorul.\n2. Dezvoltarea unei aplicații mobile de loializare a clienților, pentru care echipa de marketing vrea să testeze rapid idei și să ajusteze funcționalitățile pe baza reacției utilizatorilor.\n3. Un proiect mare de transformare digitală care include atât migrarea infrastructurii IT (buget și termene fixe, aprobate de board) cât și dezvoltarea de module software noi pentru echipele interne.\n\nPentru fiecare proiect, alege metodologia potrivită (Waterfall, Agile sau Hibridă) și justifică decizia în 1-2 propoziții.\n\n**Soluție:** 1. **Waterfall** - cerințele sunt fixate prin reglementare, contractul este fixed-price, iar riscul de schimbare a scopului este mic; ai nevoie de faze clare, cu sign-off la fiecare etapă, pentru a controla bugetul și conformitatea.\n\n2. **Agile/Scrum** - cerințele nu sunt clare de la început, e nevoie de livrare rapidă în incremente funcționale și de feedback frecvent de la utilizatori; sprinturile scurte permit pivotare rapidă a funcționalităților.\n\n3. **Hibridă** - partea de infrastructură (buget și termene fixe, aprobate de board) se pretează la o abordare predictivă pentru planificare și guvernanță, în timp ce dezvoltarea modulelor software noi se execută în sprinturi Agile în interiorul planului general aprobat.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "metodologii-pm-overview",
+    "md": "## Ce este o metodologie de proiect?\n\nO metodologie de project management este un set coerent de principii, procese și practici care îți spune **cum** planifici, execuți, monitorizezi și închizi un proiect. Nu este o rețetă rigidă, ci un cadru de lucru pe care îl adaptezi la contextul concret al proiectului tău.\n\nStandardul PMBOK 7 (Project Management Body of Knowledge, Project Management Institute) recunoaște explicit trei mari familii de abordări:\n\n- **Predictivă (Waterfall / cascadă)** - planificare detaliată la început, execuție secvențială.\n- **Adaptivă (Agile)** - planificare iterativă, livrare incrementală, adaptare continuă.\n- **Hibridă** - combinație a celor două, în funcție de componentele proiectului.\n\nAlegerea metodologiei nu este o chestiune de modă („toată lumea face Agile”), ci o decizie tehnică bazată pe claritatea cerințelor, tipul de contract, reglementările aplicabile și cultura organizației.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metodologia-waterfall",
+    "md": "## Waterfall (abordarea în cascadă)\n\nWaterfall este o abordare **predictivă și secvențială**: proiectul trece prin faze bine delimitate - inițiere, planificare, execuție, monitorizare și control, închidere - iar fiecare fază se încheie cu un document aprobat (sign-off) înainte ca următoarea să înceapă. Cerințele sunt colectate și fixate în detaliu chiar de la început.\n\nEste potrivită atunci când:\n\n- Cerințele sunt clare, stabile și puțin probabil să se schimbe pe parcurs.\n- Proiectul are un contract de tip fixed-price sau este supus unor reglementări fixe (de exemplu, un modul de contabilitate care trebuie să respecte OMFP 1802/2014 pentru situațiile financiare).\n- Riscul asociat schimbărilor de scop este mai costisitor decât rigiditatea planificării.\n\nDezavantajul principal: dacă apar schimbări majore de cerințe pe parcurs, revenirea la o fază anterioară este costisitoare și lentă.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "metodologia-agile-scrum",
+    "md": "## Agile și Scrum\n\nAgile este o familie de abordări **iterative și incrementale**, ghidată de principiile Manifestului Agile (2001) și implementată prin cadre concrete precum Scrum, Kanban sau XP (Extreme Programming). Cel mai răspândit cadru este **Scrum**, definit de Scrum Guide (ediția 2020):\n\n- **Sprinturi** - cicluri scurte, de regulă 2-4 săptămâni, la finalul cărora se livrează un increment funcțional.\n- **Roluri** - Product Owner (prioritizează valoarea), Scrum Master (facilitează procesul), Development Team (execută).\n- **Evenimente** - Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.\n- **Artefacte** - Product Backlog, Sprint Backlog, Increment.\n\nAgile este potrivit când cerințele nu sunt complet clare de la început, clientul vrea să vadă rezultate funcționale rapid și feedback-ul frecvent schimbă direcția proiectului - situație tipică în dezvoltare software și digitalizare de procese interne.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "abordare-hibrida-pm",
+    "md": "## Abordarea hibridă\n\nÎn practică, multe proiecte complexe nu sunt „pur Waterfall” sau „pur Agile”, ci combină elemente din ambele - o abordare **hibridă**, recunoscută explicit de PMBOK 7 ca fiind normală pentru proiecte de anvergură.\n\nUn exemplu tipic în context românesc: un proiect de implementare ERP la o firmă mare poate avea:\n\n- Planificare generală, buget și milestone-uri fixate de tip Waterfall (aprobate de board, cu contract semnat).\n- Faza de analiză și design tot secvențială, cu documente de sign-off.\n- Faza de dezvoltare/configurare software executată în sprinturi Agile, cu revizuiri periodice și ajustări.\n- Testarea finală și go-live-ul revin la o structură secvențială, pentru control strict al riscurilor.\n\nAbordarea hibridă îți permite să păstrezi guvernanța și predictibilitatea acolo unde ai nevoie de ele (buget, termene contractuale, reglementări) și flexibilitatea acolo unde incertitudinea este mare (funcționalități software noi).",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b4"
+   },
+   {
+    "type": "theory",
+    "concept_key": "certificari-pm",
+    "md": "## Certificări recunoscute în project management\n\nPe piața din România și la nivel internațional, cele mai recunoscute certificări sunt:\n\n- **PMP (Project Management Professional)** - oferită de PMI (Project Management Institute), bazată pe standardul PMBOK. Este o certificare generalistă, care acoperă atât abordări predictive cât și agile/hibride, și necesită experiență documentată în conducerea proiectelor plus promovarea unui examen.\n- **PRINCE2 (PRojects IN Controlled Environments)** - metodologie și certificare de origine britanică, dezvoltată inițial pentru proiecte guvernamentale, structurată pe procese, teme și principii clare. Este foarte răspândită în Europa, inclusiv în proiecte finanțate din fonduri UE, unde guvernanța strictă este esențială.\n- **Scrum (CSM - Certified ScrumMaster, oferită de Scrum Alliance; PSM - Professional Scrum Master, oferită de Scrum.org)** - certificări axate strict pe cadrul Scrum, orientate spre echipele Agile din IT și digitalizare.\n\nAlegerea certificării depinde de tipul de proiecte pe care vrei să le conduci: PMP pentru un profil generalist de PM, PRINCE2 pentru proiecte cu guvernanță strictă, Scrum pentru roluri operaționale în echipe Agile de dezvoltare.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b5"
+   },
+   {
+    "type": "example",
+    "title": "Implementare ERP la o firmă de producție - abordare Waterfall",
+    "concept_key": "metodologia-waterfall",
+    "md": "O firmă de producție cu 200 de angajați implementează un ERP nou pentru contabilitate, stocuri și producție. Cerințele contabile sunt fixate de reglementările în vigoare (OMFP 1802/2014), iar contractul cu integratorul este de tip fixed-price, cu penalizări pentru depășirea termenelor.\n\nProiectul este structurat secvențial:\n\n1. Analiza cerințelor (6 săptămâni) - se finalizează cu un document de cerințe aprobat de client.\n2. Design-ul soluției (4 săptămâni) - arhitectura tehnică și mapările de proces, aprobate înainte de a trece mai departe.\n3. Configurare și dezvoltare (10 săptămâni).\n4. Testare (4 săptămâni) - testare funcțională și UAT (User Acceptance Testing).\n5. Go-live și stabilizare.\n\nFiecare etapă se încheie cu un sign-off oficial - fără acesta, echipa nu trece la etapa următoare. Această rigiditate este exact ce își doresc atât clientul, cât și integratorul, pentru a controla bugetul și riscurile juridice legate de conformitatea contabilă.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b6"
+   },
+   {
+    "type": "example",
+    "title": "Digitalizarea aprobării facturilor - abordare Agile/Scrum",
+    "concept_key": "metodologia-agile-scrum",
+    "md": "O companie de servicii vrea o aplicație internă pentru aprobarea facturilor, care să înlocuiască fluxul actual pe e-mail. La momentul demarării proiectului, echipa financiară nu știe exact ce funcționalități va avea nevoie pe termen lung - vrea să testeze rapid idei și să vadă ce funcționează în practică.\n\nEchipa de dezvoltare lucrează în sprinturi de 2 săptămâni:\n\n- Sprint 1: flux de bază de aprobare pentru facturi sub o anumită valoare.\n- Sprint 2: adăugarea nivelurilor de aprobare pentru facturi mari, pe baza feedback-ului din Sprint Review 1.\n- Sprint 3: notificări automate și integrare cu sistemul de contabilitate.\n\nLa finalul fiecărui sprint, Product Owner-ul prezintă echipei financiare un increment funcțional în cadrul Sprint Review, colectează feedback și ajustează Product Backlog-ul pentru sprintul următor. Această abordare permite livrare rapidă de valoare și corectarea din mers a direcției, fără să existe un plan detaliat fixat de la început.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b7"
+   },
+   {
+    "type": "warning",
+    "md": "Nu alege metodologia după modă („toată lumea face Agile acum”), ci după contextul real al proiectului: stabilitatea cerințelor, tipul de contract, reglementările aplicabile și cultura organizației. Un proiect cu cerințe legale fixe (de exemplu, conformitate contabilă) forțat într-un Agile pur poate genera haos și riscuri de neconformitate. Un proiect de inovație, cu cerințe incerte, forțat într-un Waterfall pur poate livra la final exact ce a fost planificat inițial - dar posibil irelevant pentru piață.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b8"
+   },
+   {
+    "type": "exercise",
+    "md": "Ești project manager la o companie de retail din România și ai de gestionat trei proiecte în paralel:\n\n1. Migrarea sistemului de contabilitate la un ERP nou, cu cerințe fixate de reglementările OMFP 1802/2014 și contract fixed-price cu integratorul.\n2. Dezvoltarea unei aplicații mobile de loializare a clienților, pentru care echipa de marketing vrea să testeze rapid idei și să ajusteze funcționalitățile pe baza reacției utilizatorilor.\n3. Un proiect mare de transformare digitală care include atât migrarea infrastructurii IT (buget și termene fixe, aprobate de board) cât și dezvoltarea de module software noi pentru echipele interne.\n\nPentru fiecare proiect, alege metodologia potrivită (Waterfall, Agile sau Hibridă) și justifică decizia în 1-2 propoziții.",
+    "solution_md": "1. **Waterfall** - cerințele sunt fixate prin reglementare, contractul este fixed-price, iar riscul de schimbare a scopului este mic; ai nevoie de faze clare, cu sign-off la fiecare etapă, pentru a controla bugetul și conformitatea.\n\n2. **Agile/Scrum** - cerințele nu sunt clare de la început, e nevoie de livrare rapidă în incremente funcționale și de feedback frecvent de la utilizatori; sprinturile scurte permit pivotare rapidă a funcționalităților.\n\n3. **Hibridă** - partea de infrastructură (buget și termene fixe, aprobate de board) se pretează la o abordare predictivă pentru planificare și guvernanță, în timp ce dezvoltarea modulelor software noi se execută în sprinturi Agile în interiorul planului general aprobat.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este principala diferență între abordarea Waterfall și abordarea Agile într-un proiect?",
+    "choices": [
+     "Waterfall este întotdeauna mai ieftină, Agile este întotdeauna mai scumpă",
+     "Waterfall livrează secvențial, cu cerințe fixate de la început; Agile livrează iterativ-incremental, adaptându-se la cerințe care se schimbă",
+     "Agile se folosește doar pentru proiecte mici, Waterfall doar pentru proiecte mari",
+     "Nu există nicio diferență reală, sunt doar denumiri diferite pentru același proces"
+    ],
+    "answer": 1,
+    "explain": "Waterfall este o abordare predictivă și secvențială, cu faze care se închid înainte de a trece la următoarea. Agile este o abordare adaptivă și iterativă, care livrează incremente funcționale la fiecare sprint și integrează feedback continuu.",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b10"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce certificare de project management este orientată strict pe rolul de Scrum Master într-o echipă Agile?",
+    "choices": [
+     "PMP (PMI)",
+     "PRINCE2",
+     "CSM/PSM (Certified/Professional Scrum Master)",
+     "Niciuna dintre variante - Scrum nu are certificări dedicate"
+    ],
+    "answer": 2,
+    "explain": "CSM (oferită de Scrum Alliance) și PSM (oferită de Scrum.org) sunt certificările axate strict pe cadrul Scrum și pe rolul de Scrum Master, spre deosebire de PMP (PMI, profil generalist) sau PRINCE2 (guvernanță de proiect, origine britanică).",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este abordarea Waterfall (cascadă) în project management?",
+    "back": "O abordare predictivă și secvențială, în care fazele proiectului (inițiere, planificare, execuție, monitorizare, închidere) se derulează una după alta, fiecare încheindu-se cu un sign-off înainte de a începe următoarea.",
+    "concept_key": "metodologia-waterfall",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Din ce elemente principale este format cadrul Scrum?",
+    "back": "3 roluri (Product Owner, Scrum Master, Development Team), 5 evenimente (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective) și 3 artefacte (Product Backlog, Sprint Backlog, Increment), conform Scrum Guide 2020.",
+    "concept_key": "metodologia-agile-scrum",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este o abordare hibridă în managementul proiectelor?",
+    "back": "O combinație între elemente predictive (Waterfall - planificare, guvernanță, buget și termene fixe) și elemente adaptive (Agile - execuție în sprinturi pentru componentele cu incertitudine ridicată), recunoscută explicit de PMBOK 7 pentru proiecte complexe.",
+    "concept_key": "abordare-hibrida-pm",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este certificarea PMP și cine o oferă?",
+    "back": "PMP (Project Management Professional) este certificarea generalistă oferită de PMI (Project Management Institute), bazată pe standardul PMBOK, care acoperă atât abordări predictive cât și agile/hibride.",
+    "concept_key": "certificari-pm",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b15"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce este PRINCE2 și ce origine are?",
+    "back": "PRINCE2 (PRojects IN Controlled Environments) este o metodologie și certificare de origine britanică, dezvoltată inițial pentru proiecte guvernamentale, structurată pe procese, teme și principii, foarte răspândită în proiectele finanțate din fonduri UE.",
+    "concept_key": "certificari-pm",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b16"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Când este recomandată abordarea Waterfall în locul Agile?",
+    "back": "Când cerințele sunt clare și stabile de la început, riscul de schimbare este mic, iar contractul este de tip fixed-price sau supus unor reglementări fixe (de exemplu, cerințe contabile conform OMFP 1802/2014).",
+    "concept_key": "metodologia-waterfall",
+    "blockId": "cmjjuxvs4004uumkppwkpih9z-b17"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-07",
+   "words": 1257,
+   "flashcards": 6
+  }
+ }
+}

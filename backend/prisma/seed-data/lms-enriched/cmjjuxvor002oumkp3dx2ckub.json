@@ -1,0 +1,133 @@
+{
+ "lessonId": "cmjjuxvor002oumkp3dx2ckub",
+ "courseId": "cmjjuxvn3001sumkpdmdehrzn",
+ "course": "Excel Avansat - Power Query și Automatizare",
+ "module": "Funcții Array Dinamice (Excel 365)",
+ "lesson": "UNIQUE și combinații",
+ "category": "EXCEL_VBA",
+ "content": "# UNIQUE și combinații\n\nFuncția `UNIQUE` este una dintre funcțiile array dinamice introduse în Excel 365 și rezolvă o problemă veche: extragerea automată a valorilor distincte dintr-un interval, fără tabele pivot, fără formule matrice CSE (Ctrl+Shift+Enter) și fără copiere manuală de date.\n\nSintaxa completă este:\n\n`=UNIQUE(matrice; [dupa_col]; [o_singura_data])`\n\n- **matrice** — intervalul sau matricea din care extragi valorile (obligatoriu).\n- **dupa_col** — TRUE dacă compari coloane în loc de rânduri; FALSE (implicit) compară rânduri. Util rar, mai ales pentru matrice orizontale.\n- **o_singura_data** — FALSE (implicit) returnează fiecare valoare distinctă o singură dată, indiferent de câte ori apare în sursă. TRUE returnează doar valorile care apar exact o singură dată în interval, eliminând complet orice valoare duplicată.\n\nRezultatul lui UNIQUE este o matrice dinamică: introduci formula într-o singură celulă, iar Excel „varsă” (spill) automat rezultatele în celulele adiacente goale. Nu mai ai nevoie de Ctrl+Shift+Enter, iar dacă sursa se modifică, rezultatul se recalculează și se redimensionează automat.\n\nAdevărata putere a lui UNIQUE apare atunci când o combini cu alte funcții array. Cel mai frecvent tipar este imbricarea `FILTER` în interiorul lui `UNIQUE`, pentru a extrage valorile distincte doar dintr-un subset de date care respectă o condiție.\n\nSintaxă generală:\n\n`=UNIQUE(FILTER(coloana_de_extras; conditie))`\n\nExcel evaluează mai întâi FILTER (care returnează toate rândurile ce respectă condiția, cu duplicate incluse), iar apoi UNIQUE elimină duplicatele din acel rezultat intermediar. Ordinea contează: dacă inversezi imbricarea (FILTER în jurul lui UNIQUE), riști să filtrezi o listă deja restrânsă la valori unice și să obții rezultate incorecte, pentru că FILTER s-ar aplica pe pozițiile matricei UNIQUE, nu pe sursa originală.\n\nAcest tipar înlocuiește adesea combinația clasică de tabel pivot + slicer pentru rapoarte simple de tip „ce clienți/produse unice apar în condiția X”, cu avantajul că rezultatul este live și nu necesită refresh manual.\n\nPentru a obține o listă unică și sortată, adaugi `SORT` în jurul întregii combinații:\n\n`=SORT(UNIQUE(FILTER(matrice; conditie)))`\n\nSintaxa lui SORT este `=SORT(matrice; [index_sortare]; [ordine_sortare]; [dupa_col])`, unde index_sortare indică după ce coloană sortezi (implicit 1 = prima coloană a rezultatului), iar ordine_sortare este 1 pentru crescător (implicit) sau -1 pentru descrescător.\n\nOrdinea corectă de imbricare este dinspre interior spre exterior: FILTER reduce sursa la subsetul relevant, UNIQUE elimină duplicatele din acel subset, iar SORT ordonează rezultatul final. Fiecare funcție lucrează pe rezultatul celei anterioare — gândește formula ca pe o linie de asamblare: filtrezi, apoi deduplici, apoi sortezi. Lanțul poate fi extins oricât, de exemplu adăugând TEXTJOIN în jurul întregii formule pentru a concatena lista unică într-un singur text separat prin virgulă, util pentru rapoarte sau titluri dinamice.\n\nDeoarece UNIQUE, FILTER și SORT sunt funcții array dinamice, rezultatul lor „varsă” pe mai multe celule pornind din celula formulei. Pentru a referenția întreaga matrice rezultat în altă formulă (de exemplu într-un COUNTA sau într-o listă de validare a datelor), folosești operatorul spill: `#`.\n\nDacă formula UNIQUE este scrisă în celula F2, referința `F2#` cuprinde automat toate celulele în care s-a extins rezultatul, indiferent de câte rânduri are la un moment dat. Această tehnică este esențială pentru liste dinamice de validare (meniuri drop-down care se actualizează automat pe măsură ce apar clienți sau produse noi) și pentru grafice care trebuie să reflecte mereu lista curentă de valori unice, fără a redefini manual intervalul sursă de fiecare dată când se adaugă date noi.\n\n## Exemplu: Extragerea clienților unici dintr-un jurnal de vânzări\nCompania Comexim SRL ține un jurnal de vânzări în intervalul A2:D11, cu coloanele Client, Produs, Regiune și Valoare (lei):\n\n| Rând | Client | Produs | Regiune | Valoare |\n|---|---|---|---|---|\n| 2 | Alfa SRL | Laptop | Vest | 3500 |\n| 3 | Beta SRL | Monitor | Sud | 800 |\n| 4 | Alfa SRL | Mouse | Vest | 50 |\n| 5 | Gamma SRL | Laptop | Nord | 3200 |\n| 6 | Beta SRL | Tastatură | Sud | 120 |\n| 7 | Delta SRL | Monitor | Vest | 750 |\n| 8 | Alfa SRL | Laptop | Vest | 3500 |\n| 9 | Gamma SRL | Mouse | Nord | 45 |\n| 10 | Epsilon SRL | Tastatură | Est | 110 |\n| 11 | Delta SRL | Laptop | Vest | 3300 |\n\nFormula `=UNIQUE(A2:A11)` introdusă în celula F2 returnează lista celor 5 clienți distincți, chiar dacă în jurnal apar 10 înregistrări: Alfa SRL, Beta SRL, Gamma SRL, Delta SRL, Epsilon SRL.\n\nDacă vrei rândurile complet unice (nu doar clientul distinct, ci întreaga înregistrare care nu se repetă identic), folosești al treilea argument: `=UNIQUE(A2:D11; FALSE; TRUE)`. Rândul 2 (Alfa SRL, Laptop, Vest, 3500) și rândul 8 sunt identice ca înregistrare completă, deci formula le exclude pe amândouă din rezultat și returnează celelalte 8 rânduri, fiecare apărând exact o singură dată în jurnal.\n\n## Exemplu: Listă dinamică de produse unice, filtrate și sortate\nPornind de la același jurnal, vrei o listă unică și sortată alfabetic a produselor vândute în regiunea Vest.\n\nFormula: `=SORT(UNIQUE(FILTER(B2:B11; C2:C11=\"Vest\")))`\n\nPas cu pas: FILTER extrage produsele din rândurile unde regiunea este Vest — rândurile 2, 4, 7, 8 și 11 — rezultând lista intermediară Laptop, Mouse, Monitor, Laptop, Laptop. UNIQUE elimină duplicatele din această listă: Laptop, Mouse, Monitor. SORT ordonează alfabetic rezultatul final: Laptop, Monitor, Mouse.\n\nDacă regiunea căutată nu ar exista deloc în date, FILTER ar returna eroarea #CALCUL! (nu găsește niciun element). Poți preveni acest lucru adăugând al treilea argument al lui FILTER: `=SORT(UNIQUE(FILTER(B2:B11; C2:C11=\"Vest\"; \"Nicio vânzare\")))`, care afișează un text de rezervă în loc de eroare atunci când filtrul nu găsește nimic.\n\n⚠ Funcțiile UNIQUE, FILTER și SORT sunt disponibile doar în Excel 365 (abonament Microsoft 365) și în Excel 2021 sau mai nou; nu funcționează în Excel 2019 sau versiuni mai vechi, iar un fișier care le folosește va afișa eroarea #NAME? la deschiderea într-o versiune incompatibilă. De asemenea, dacă zona de sub sau din dreapta celulei formulei conține deja date, Excel nu poate „vărsa” rezultatul și afișează eroarea #SPILL! — soluția este să muți sau să ștergi conținutul care blochează calea de extindere a matricei.\n\n## Exercițiu\nFolosind același jurnal de vânzări (A2:D11, coloanele Client, Produs, Regiune, Valoare din exemplele de mai sus), construiește o singură formulă care returnează lista unică, sortată alfabetic crescător, a produselor vândute în orice regiune, cu EXCEPȚIA regiunii Nord.\n\n**Soluție:** `=SORT(UNIQUE(FILTER(B2:B11; C2:C11<>\"Nord\")))`\n\nExplicație: FILTER păstrează toate rândurile unde regiunea diferă de Nord, deci exclude rândurile 5 și 9 (ambele Gamma SRL, Nord). Rămân produsele: Laptop, Monitor, Mouse, Tastatură, Monitor, Laptop, Tastatură, Laptop. UNIQUE elimină duplicatele din această listă, obținând Laptop, Monitor, Mouse, Tastatură. SORT le ordonează alfabetic crescător, rezultatul final fiind: Laptop, Monitor, Mouse, Tastatură.",
+ "contentJson": {
+  "version": 1,
+  "kind": "lesson",
+  "blocks": [
+   {
+    "type": "theory",
+    "concept_key": "unique-functie-sintaxa",
+    "md": "Funcția `UNIQUE` este una dintre funcțiile array dinamice introduse în Excel 365 și rezolvă o problemă veche: extragerea automată a valorilor distincte dintr-un interval, fără tabele pivot, fără formule matrice CSE (Ctrl+Shift+Enter) și fără copiere manuală de date.\n\nSintaxa completă este:\n\n`=UNIQUE(matrice; [dupa_col]; [o_singura_data])`\n\n- **matrice** — intervalul sau matricea din care extragi valorile (obligatoriu).\n- **dupa_col** — TRUE dacă compari coloane în loc de rânduri; FALSE (implicit) compară rânduri. Util rar, mai ales pentru matrice orizontale.\n- **o_singura_data** — FALSE (implicit) returnează fiecare valoare distinctă o singură dată, indiferent de câte ori apare în sursă. TRUE returnează doar valorile care apar exact o singură dată în interval, eliminând complet orice valoare duplicată.\n\nRezultatul lui UNIQUE este o matrice dinamică: introduci formula într-o singură celulă, iar Excel „varsă” (spill) automat rezultatele în celulele adiacente goale. Nu mai ai nevoie de Ctrl+Shift+Enter, iar dacă sursa se modifică, rezultatul se recalculează și se redimensionează automat.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b1"
+   },
+   {
+    "type": "theory",
+    "concept_key": "unique-filter-combinatie",
+    "md": "Adevărata putere a lui UNIQUE apare atunci când o combini cu alte funcții array. Cel mai frecvent tipar este imbricarea `FILTER` în interiorul lui `UNIQUE`, pentru a extrage valorile distincte doar dintr-un subset de date care respectă o condiție.\n\nSintaxă generală:\n\n`=UNIQUE(FILTER(coloana_de_extras; conditie))`\n\nExcel evaluează mai întâi FILTER (care returnează toate rândurile ce respectă condiția, cu duplicate incluse), iar apoi UNIQUE elimină duplicatele din acel rezultat intermediar. Ordinea contează: dacă inversezi imbricarea (FILTER în jurul lui UNIQUE), riști să filtrezi o listă deja restrânsă la valori unice și să obții rezultate incorecte, pentru că FILTER s-ar aplica pe pozițiile matricei UNIQUE, nu pe sursa originală.\n\nAcest tipar înlocuiește adesea combinația clasică de tabel pivot + slicer pentru rapoarte simple de tip „ce clienți/produse unice apar în condiția X”, cu avantajul că rezultatul este live și nu necesită refresh manual.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b2"
+   },
+   {
+    "type": "theory",
+    "concept_key": "unique-sort-combinatie",
+    "md": "Pentru a obține o listă unică și sortată, adaugi `SORT` în jurul întregii combinații:\n\n`=SORT(UNIQUE(FILTER(matrice; conditie)))`\n\nSintaxa lui SORT este `=SORT(matrice; [index_sortare]; [ordine_sortare]; [dupa_col])`, unde index_sortare indică după ce coloană sortezi (implicit 1 = prima coloană a rezultatului), iar ordine_sortare este 1 pentru crescător (implicit) sau -1 pentru descrescător.\n\nOrdinea corectă de imbricare este dinspre interior spre exterior: FILTER reduce sursa la subsetul relevant, UNIQUE elimină duplicatele din acel subset, iar SORT ordonează rezultatul final. Fiecare funcție lucrează pe rezultatul celei anterioare — gândește formula ca pe o linie de asamblare: filtrezi, apoi deduplici, apoi sortezi. Lanțul poate fi extins oricât, de exemplu adăugând TEXTJOIN în jurul întregii formule pentru a concatena lista unică într-un singur text separat prin virgulă, util pentru rapoarte sau titluri dinamice.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b3"
+   },
+   {
+    "type": "theory",
+    "concept_key": "dynamic-array-spill-operator",
+    "md": "Deoarece UNIQUE, FILTER și SORT sunt funcții array dinamice, rezultatul lor „varsă” pe mai multe celule pornind din celula formulei. Pentru a referenția întreaga matrice rezultat în altă formulă (de exemplu într-un COUNTA sau într-o listă de validare a datelor), folosești operatorul spill: `#`.\n\nDacă formula UNIQUE este scrisă în celula F2, referința `F2#` cuprinde automat toate celulele în care s-a extins rezultatul, indiferent de câte rânduri are la un moment dat. Această tehnică este esențială pentru liste dinamice de validare (meniuri drop-down care se actualizează automat pe măsură ce apar clienți sau produse noi) și pentru grafice care trebuie să reflecte mereu lista curentă de valori unice, fără a redefini manual intervalul sursă de fiecare dată când se adaugă date noi.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b4"
+   },
+   {
+    "type": "example",
+    "title": "Extragerea clienților unici dintr-un jurnal de vânzări",
+    "concept_key": "unique-functie-sintaxa",
+    "md": "Compania Comexim SRL ține un jurnal de vânzări în intervalul A2:D11, cu coloanele Client, Produs, Regiune și Valoare (lei):\n\n| Rând | Client | Produs | Regiune | Valoare |\n|---|---|---|---|---|\n| 2 | Alfa SRL | Laptop | Vest | 3500 |\n| 3 | Beta SRL | Monitor | Sud | 800 |\n| 4 | Alfa SRL | Mouse | Vest | 50 |\n| 5 | Gamma SRL | Laptop | Nord | 3200 |\n| 6 | Beta SRL | Tastatură | Sud | 120 |\n| 7 | Delta SRL | Monitor | Vest | 750 |\n| 8 | Alfa SRL | Laptop | Vest | 3500 |\n| 9 | Gamma SRL | Mouse | Nord | 45 |\n| 10 | Epsilon SRL | Tastatură | Est | 110 |\n| 11 | Delta SRL | Laptop | Vest | 3300 |\n\nFormula `=UNIQUE(A2:A11)` introdusă în celula F2 returnează lista celor 5 clienți distincți, chiar dacă în jurnal apar 10 înregistrări: Alfa SRL, Beta SRL, Gamma SRL, Delta SRL, Epsilon SRL.\n\nDacă vrei rândurile complet unice (nu doar clientul distinct, ci întreaga înregistrare care nu se repetă identic), folosești al treilea argument: `=UNIQUE(A2:D11; FALSE; TRUE)`. Rândul 2 (Alfa SRL, Laptop, Vest, 3500) și rândul 8 sunt identice ca înregistrare completă, deci formula le exclude pe amândouă din rezultat și returnează celelalte 8 rânduri, fiecare apărând exact o singură dată în jurnal.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b5"
+   },
+   {
+    "type": "example",
+    "title": "Listă dinamică de produse unice, filtrate și sortate",
+    "concept_key": "unique-filter-sort-combinatie",
+    "md": "Pornind de la același jurnal, vrei o listă unică și sortată alfabetic a produselor vândute în regiunea Vest.\n\nFormula: `=SORT(UNIQUE(FILTER(B2:B11; C2:C11=\"Vest\")))`\n\nPas cu pas: FILTER extrage produsele din rândurile unde regiunea este Vest — rândurile 2, 4, 7, 8 și 11 — rezultând lista intermediară Laptop, Mouse, Monitor, Laptop, Laptop. UNIQUE elimină duplicatele din această listă: Laptop, Mouse, Monitor. SORT ordonează alfabetic rezultatul final: Laptop, Monitor, Mouse.\n\nDacă regiunea căutată nu ar exista deloc în date, FILTER ar returna eroarea #CALCUL! (nu găsește niciun element). Poți preveni acest lucru adăugând al treilea argument al lui FILTER: `=SORT(UNIQUE(FILTER(B2:B11; C2:C11=\"Vest\"; \"Nicio vânzare\")))`, care afișează un text de rezervă în loc de eroare atunci când filtrul nu găsește nimic.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b6"
+   },
+   {
+    "type": "warning",
+    "md": "Funcțiile UNIQUE, FILTER și SORT sunt disponibile doar în Excel 365 (abonament Microsoft 365) și în Excel 2021 sau mai nou; nu funcționează în Excel 2019 sau versiuni mai vechi, iar un fișier care le folosește va afișa eroarea #NAME? la deschiderea într-o versiune incompatibilă. De asemenea, dacă zona de sub sau din dreapta celulei formulei conține deja date, Excel nu poate „vărsa” rezultatul și afișează eroarea #SPILL! — soluția este să muți sau să ștergi conținutul care blochează calea de extindere a matricei.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b7"
+   },
+   {
+    "type": "exercise",
+    "md": "Folosind același jurnal de vânzări (A2:D11, coloanele Client, Produs, Regiune, Valoare din exemplele de mai sus), construiește o singură formulă care returnează lista unică, sortată alfabetic crescător, a produselor vândute în orice regiune, cu EXCEPȚIA regiunii Nord.",
+    "solution_md": "`=SORT(UNIQUE(FILTER(B2:B11; C2:C11<>\"Nord\")))`\n\nExplicație: FILTER păstrează toate rândurile unde regiunea diferă de Nord, deci exclude rândurile 5 și 9 (ambele Gamma SRL, Nord). Rămân produsele: Laptop, Monitor, Mouse, Tastatură, Monitor, Laptop, Tastatură, Laptop. UNIQUE elimină duplicatele din această listă, obținând Laptop, Monitor, Mouse, Tastatură. SORT le ordonează alfabetic crescător, rezultatul final fiind: Laptop, Monitor, Mouse, Tastatură.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b8"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Ce returnează formula =UNIQUE(A2:D11;FALSE;TRUE) dacă rândul 2 și rândul 8 dintr-un tabel sunt complet identice între ele?",
+    "choices": [
+     "Ambele rânduri, câte o singură dată fiecare, la fel ca restul rândurilor",
+     "Niciunul dintre cele două rânduri, pentru că apar de mai multe ori în sursă",
+     "Doar primul rând întâlnit (rândul 2), pe care UNIQUE îl consideră reprezentativ",
+     "O eroare #VALOARE!, deoarece parametrul o_singura_data nu acceptă rânduri identice"
+    ],
+    "answer": 1,
+    "explain": "Când parametrul o_singura_data este TRUE, UNIQUE elimină complet orice valoare sau rând care apare de mai mult de o dată în sursă — nu păstrează nicio instanță a duplicatelor. Comportamentul este diferit de setarea implicită (FALSE), care păstrează o singură apariție a fiecărei valori, inclusiv a celor duplicate.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b9"
+   },
+   {
+    "type": "quiz_inline",
+    "q": "Care este ordinea corectă de imbricare pentru a obține o listă unică, filtrată după o condiție și apoi sortată alfabetic?",
+    "choices": [
+     "FILTER(SORT(UNIQUE(matrice)); conditie)",
+     "SORT(UNIQUE(FILTER(matrice; conditie)))",
+     "UNIQUE(SORT(FILTER(matrice; conditie)))",
+     "SORT(FILTER(UNIQUE(matrice); conditie))"
+    ],
+    "answer": 1,
+    "explain": "Se lucrează dinspre interior spre exterior: FILTER reduce sursa la subsetul relevant care respectă condiția, UNIQUE elimină duplicatele din acel subset, iar SORT ordonează rezultatul final. Inversarea ordinii poate produce rezultate incorecte sau eronate din cauza modului în care fiecare funcție primește matricea rezultat a celei anterioare.",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b10"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Care este sintaxa completă a funcției UNIQUE?",
+    "back": "=UNIQUE(matrice; [dupa_col]; [o_singura_data]) — extrage valorile unice dintr-un interval sau matrice, cu spill automat pe mai multe celule.",
+    "concept_key": "unique-functie-sintaxa",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b11"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce face parametrul o_singura_data=TRUE în funcția UNIQUE?",
+    "back": "Returnează doar valorile sau rândurile care apar exact o singură dată în interval, eliminând complet toate duplicatele (nu doar reduce fiecare duplicat la o instanță).",
+    "concept_key": "unique-functie-sintaxa",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b12"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Cum extragi o listă unică, sortată, dintr-un interval filtrat după o condiție?",
+    "back": "Combini cele trei funcții imbricate, dinspre interior spre exterior: SORT(UNIQUE(FILTER(matrice; conditie))).",
+    "concept_key": "unique-filter-sort-combinatie",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b13"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce simbol referențiază întreaga matrice generată de o formulă array dinamică (spill)?",
+    "back": "Simbolul # (spill range operator); de exemplu F2# referă automat toate celulele generate de formula din F2, indiferent de câte rânduri are rezultatul la un moment dat.",
+    "concept_key": "dynamic-array-spill-operator",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b14"
+   },
+   {
+    "type": "flashcard_seed",
+    "front": "Ce eroare apare dacă rezultatul unei formule cu UNIQUE nu are loc să se extindă pentru că celulele din cale sunt ocupate?",
+    "back": "#SPILL! — Excel nu poate vărsa (extinde) matricea rezultat pentru că celulele din calea de extindere conțin deja date; se rezolvă mutând sau ștergând conținutul care blochează extinderea.",
+    "concept_key": "dynamic-array-spill-operator",
+    "blockId": "cmjjuxvor002oumkp3dx2ckub-b15"
+   }
+  ],
+  "meta": {
+   "generator": "lms-enrich/1.0",
+   "model": "sonnet",
+   "factsheet": "2026-07-07.v2",
+   "generated_at": "2026-07-08",
+   "words": 1038,
+   "flashcards": 5
+  }
+ }
+}
