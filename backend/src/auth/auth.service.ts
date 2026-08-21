@@ -436,6 +436,50 @@ export class AuthService {
     });
   }
 
+  async getFullProfile(userId: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true, email: true, name: true, company: true, cui: true, address: true, tier: true, role: true,
+        language: true, emailVerified: true, mfaEnabled: true, activeOrganizationId: true, createdAt: true,
+        organizationMemberships: {
+          where: { isActive: true }, take: 1,
+          select: { role: true, organization: { select: { id: true, name: true, cui: true, tier: true } } },
+        },
+      },
+    });
+    if (!user) throw new UnauthorizedException('User not found');
+    const { organizationMemberships, ...rest } = user;
+    return { ...rest, organization: organizationMemberships[0]?.organization ?? null, organizationRole: organizationMemberships[0]?.role ?? null };
+  }
+
+  /**
+   * REQ-049 B6. Company data lives on User (what D406/e-Factura read) AND on
+   * the active Organization; keep both in step so the two never disagree.
+   */
+  async updateProfile(userId: string, dto: { name?: string; company?: string; cui?: string; address?: string; language?: string }) {
+    const data: Record<string, string> = {};
+    for (const k of ['name', 'company', 'cui', 'address', 'language'] as const) {
+      if (typeof dto[k] === 'string') data[k] = k === 'cui' ? dto[k]!.trim().toUpperCase() : dto[k]!.trim();
+    }
+    if (data.cui && !/^(RO)?[0-9]{2,10}$/.test(data.cui)) {
+      throw new BadRequestException('CUI invalid. Format așteptat: RO12345678 sau 12345678.');
+    }
+    const user = await this.prisma.user.update({ where: { id: userId }, data, select: { id: true, activeOrganizationId: true } });
+    if (user.activeOrganizationId && (data.company || data.cui)) {
+      try {
+        await this.prisma.organization.update({
+          where: { id: user.activeOrganizationId },
+          data: { ...(data.company ? { name: data.company } : {}), ...(data.cui ? { cui: data.cui } : {}) },
+        });
+      } catch (e) {
+        this.logger.warn(`organization mirror skipped for ${userId}: ${(e as Error).message}`);
+      }
+    }
+    await this.prisma.auditLog.create({ data: { userId, action: 'PROFILE_UPDATED', entity: 'User', entityId: userId, details: data } }).catch(() => undefined);
+    return this.getFullProfile(userId);
+  }
+
   private async generateTokens(userId: string, email: string, metadata?: { userAgent?: string; ipAddress?: string }) {
     const tokenId = uuidv4();
 

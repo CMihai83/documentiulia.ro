@@ -92,7 +92,7 @@ export default function DeveloperPortalPage() {
       title: 'API Reference',
       description: 'Complete REST API documentation',
       icon: <FileCode className="w-5 h-5" />,
-      href: '/api/docs',
+      href: '/api-docs',
       external: true,
       color: 'bg-blue-500',
     },
@@ -155,7 +155,7 @@ const report = await response.json();`,
         </div>
         <div className="flex items-center gap-3">
           <Link
-            href="/api/docs"
+            href="/api-docs"
             target="_blank"
             className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium"
           >
@@ -404,7 +404,7 @@ const report = await response.json();`,
 
         <div className="p-5 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/30">
           <Link
-            href="/api/docs"
+            href="/api-docs"
             target="_blank"
             className="text-primary-600 hover:text-primary-700 text-sm font-medium flex items-center gap-1"
           >

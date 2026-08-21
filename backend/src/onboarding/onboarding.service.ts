@@ -167,10 +167,16 @@ export class OnboardingService {
         }
 
         // Set as active organization for the user
+        // REQ-049 B6: e-Factura / D406 read company data from User, while the
+        // wizard only wrote the Organization — a freshly onboarded company could
+        // not submit anything. Mirror the essentials onto the user as well.
         await tx.user.update({
           where: { id: userId },
           data: {
             activeOrganizationId: organization.id,
+            company: data.company.name,
+            cui: data.company.cui.toUpperCase(),
+            ...(data.company.address ? { address: data.company.address } : {}),
           },
         });
 

@@ -64,7 +64,7 @@ export default function JournalEntriesPage() {
       if (statusFilter !== 'all') params.append('status', statusFilter);
 
       const response = await fetch(
-        `/api/accounting/journal-entries?${params.toString()}`,
+        `/api/v1/accounting/journal-entries?${params.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

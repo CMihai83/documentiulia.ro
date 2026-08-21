@@ -10,6 +10,7 @@ import { WebSocketProvider, WebSocketStatusIndicator } from '@/contexts/WebSocke
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { localePrefixFromPath } from '@/lib/locale';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -22,8 +23,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   useEffect(() => {
     if (!authLoading && !user) {
-      const locale = pathname.split('/')[1];
-      router.replace(`/${locale}/login`);
+      router.replace(`${localePrefixFromPath(pathname)}/login`);
     }
   }, [authLoading, user, router, pathname]);
 

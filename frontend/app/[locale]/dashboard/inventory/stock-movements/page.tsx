@@ -63,7 +63,7 @@ export default function StockMovementsPage() {
       if (endDate) params.append('toDate', endDate);
 
       const response = await fetch(
-        `/api/logistics/inventory/stock/movements?${params.toString()}`,
+        `/api/v1/logistics/inventory/stock/movements?${params.toString()}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -88,7 +88,7 @@ export default function StockMovementsPage() {
       if (endDate) params.append('endDate', endDate);
 
       const response = await fetch(
-        `/api/inventory/export/movements?${params.toString()}`,
+        `/api/v1/inventory/export/movements?${params.toString()}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

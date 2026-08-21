@@ -81,7 +81,7 @@ export default function ClientPortalDashboard() {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const response = await fetch(`/api/client-portal/${clientId}/dashboard`);
+        const response = await fetch(`/api/v1/client-portal/me/dashboard`);
         if (!response.ok) {
           throw new Error('Failed to fetch dashboard');
         }

@@ -66,7 +66,7 @@ export function StockAdjustmentsWizard({ isOpen, onClose, onSuccess }: StockAdju
     setLoading(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/inventory/products', {
+      const response = await fetch('/api/v1/inventory/products', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -159,7 +159,7 @@ export function StockAdjustmentsWizard({ isOpen, onClose, onSuccess }: StockAdju
         adjustedQuantity = formData.quantity - formData.currentStock;
       }
 
-      const response = await fetch('/api/inventory/stock/adjust', {
+      const response = await fetch('/api/v1/inventory/stock/adjust', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

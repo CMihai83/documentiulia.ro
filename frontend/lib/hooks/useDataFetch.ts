@@ -84,7 +84,7 @@ export function useDocument(id: string | null) {
     createdAt: string;
     updatedAt: string;
     metadata: Record<string, any>;
-  }>(id ? `/api/documents/${id}` : null);
+  }>(id ? `/api/v1/documents/${id}` : null);
 }
 
 // Documents list hook with pagination
@@ -194,7 +194,7 @@ export function useAnafStatus() {
       saft: boolean;
       spv: boolean;
     };
-  }>('/api/anaf/status', {
+  }>('/api/v1/anaf/status', {
     refreshInterval: 60000, // Refresh every minute
     revalidateOnFocus: true,
   });
@@ -207,7 +207,7 @@ export function useVatRates() {
     reduced: number;
     special: number;
     effectiveDate: string;
-  }>('/api/config/vat-rates', {
+  }>('/api/v1/finance/vat-simulator/rates', {
     dedupingInterval: 3600000, // 1 hour
     revalidateOnFocus: false,
   });
@@ -225,7 +225,7 @@ export function useDashboardStats() {
       revenue: number; // percentage change
       invoices: number;
     };
-  }>('/api/dashboard/stats');
+  }>('/api/v1/dashboard/stats');
 }
 
 // Utility to invalidate cache on SSE events

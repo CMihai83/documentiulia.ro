@@ -104,8 +104,8 @@ export default function TaxCodesPage() {
       const headers = { Authorization: `Bearer ${token}` };
 
       const [countriesRes, euRes] = await Promise.all([
-        fetch('/api/finance/tax/countries', { headers }),
-        fetch('/api/finance/tax/countries/eu', { headers }),
+        fetch('/api/v1/finance/tax/countries', { headers }),
+        fetch('/api/v1/finance/tax/countries/eu', { headers }),
       ]);
 
       if (countriesRes.ok) {
@@ -113,7 +113,7 @@ export default function TaxCodesPage() {
         const countryConfigs = await Promise.all(
           data.countries.map(async (code: string) => {
             try {
-              const configRes = await fetch(`/api/finance/tax/countries/${code}`, { headers });
+              const configRes = await fetch(`/api/v1/finance/tax/countries/${code}`, { headers });
               if (configRes.ok) {
                 return await configRes.json();
               }
@@ -140,7 +140,7 @@ export default function TaxCodesPage() {
   async function fetchExemptions() {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/finance/tax/exemptions', {
+      const response = await fetch('/api/v1/finance/tax/exemptions', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -159,7 +159,7 @@ export default function TaxCodesPage() {
     setCalcLoading(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/finance/tax/calculate', {
+      const response = await fetch('/api/v1/finance/tax/calculate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -191,7 +191,7 @@ export default function TaxCodesPage() {
     setValidating(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/finance/tax/validate-tax-number', {
+      const response = await fetch('/api/v1/finance/tax/validate-tax-number', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -217,7 +217,7 @@ export default function TaxCodesPage() {
   async function deleteExemption(id: string) {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`/api/finance/tax/exemptions/${id}`, {
+      const response = await fetch(`/api/v1/finance/tax/exemptions/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });

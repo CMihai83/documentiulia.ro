@@ -73,7 +73,7 @@ export function StockTransfersWizard({ isOpen, onClose, onSuccess }: StockTransf
     setLoading(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/inventory/products', {
+      const response = await fetch('/api/v1/inventory/products', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -91,7 +91,7 @@ export function StockTransfersWizard({ isOpen, onClose, onSuccess }: StockTransf
   async function fetchLocations() {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch('/api/logistics/inventory/warehouses', {
+      const response = await fetch('/api/v1/logistics/inventory/warehouses', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -186,7 +186,7 @@ export function StockTransfersWizard({ isOpen, onClose, onSuccess }: StockTransf
     try {
       const token = localStorage.getItem('auth_token');
 
-      const response = await fetch('/api/logistics/inventory/stock/transfer', {
+      const response = await fetch('/api/v1/logistics/inventory/stock/transfer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

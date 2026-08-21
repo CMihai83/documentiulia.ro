@@ -125,7 +125,7 @@ export default function ForumPage() {
       const headers = { Authorization: `Bearer ${token}` };
 
       // Fetch categories
-      const categoriesRes = await fetch('/api/forum/categories', { headers });
+      const categoriesRes = await fetch('/api/v1/forum/categories', { headers });
       if (categoriesRes.ok) {
         setCategories(await categoriesRes.json());
       }
@@ -137,7 +137,7 @@ export default function ForumPage() {
       }
       params.append('limit', '20');
 
-      const threadsRes = await fetch(`/api/forum/threads?${params}`, { headers });
+      const threadsRes = await fetch(`/api/v1/forum/threads?${params}`, { headers });
       if (threadsRes.ok) {
         setThreads(await threadsRes.json());
       }

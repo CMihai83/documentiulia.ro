@@ -112,13 +112,13 @@ export function QuizPlayer({ assessmentId, userId, enrollmentId, onComplete }: Q
       };
 
       // Load assessment
-      const assessmentRes = await fetch(`/api/lms/assessments/${assessmentId}`, { headers });
+      const assessmentRes = await fetch(`/api/v1/lms/assessments/${assessmentId}`, { headers });
       if (!assessmentRes.ok) throw new Error('Failed to load assessment');
       const assessmentData = await assessmentRes.json();
       setAssessment(assessmentData);
 
       // Start new attempt
-      const attemptRes = await fetch(`/api/lms/assessments/${assessmentId}/attempts`, {
+      const attemptRes = await fetch(`/api/v1/lms/assessments/${assessmentId}/attempts`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ userId, enrollmentId }),
@@ -149,7 +149,7 @@ export function QuizPlayer({ assessmentId, userId, enrollmentId, onComplete }: Q
         answer: answers[q.id] || '',
       }));
 
-      const response = await fetch(`/api/lms/attempts/${attempt.id}/submit`, {
+      const response = await fetch(`/api/v1/lms/attempts/${attempt.id}/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

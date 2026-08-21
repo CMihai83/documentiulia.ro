@@ -28,7 +28,7 @@ export default function FileUpload({
   accept = '.pdf,.jpg,.jpeg,.png,.xml',
   maxFiles = 10,
   maxSize = 50,
-  uploadUrl = '/api/documents/upload',
+  uploadUrl = '/api/v1/documents/upload',
   className = '',
 }: FileUploadProps) {
   const [files, setFiles] = useState<UploadedFile[]>([]);
