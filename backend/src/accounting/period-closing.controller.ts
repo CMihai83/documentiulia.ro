@@ -19,6 +19,7 @@ import {
   ApiParam,
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CurrentUserId } from '../auth/current-user-id.decorator';
 import { RolesGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/roles.decorator';
 import { UserRole } from '@prisma/client';
@@ -31,6 +32,8 @@ import {
 
 @ApiTags('Period Closing / Inchidere Perioada')
 @ApiBearerAuth()
+// REQ-049 B3: userId came from the PATH (:userId) — any user could close,
+// lock or read another tenant's accounting periods. Now from the JWT only.
 @Controller('accounting/periods')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(UserRole.USER, UserRole.ADMIN, UserRole.ACCOUNTANT)
@@ -39,7 +42,7 @@ export class PeriodClosingController {
 
   // ===== Period Management =====
 
-  @Get(':userId')
+  @Get()
   @ApiOperation({
     summary: 'Get all accounting periods',
     description: 'Retrieve all accounting periods for a user',
@@ -48,13 +51,13 @@ export class PeriodClosingController {
   @ApiQuery({ name: 'year', required: false, type: Number, description: 'Filter by year' })
   @ApiResponse({ status: 200, description: 'List of periods' })
   async getPeriods(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Query('year') year?: number,
   ): Promise<AccountingPeriod[]> {
     return this.periodClosingService.getPeriods(userId, year);
   }
 
-  @Get(':userId/:period')
+  @Get(':period')
   @ApiOperation({
     summary: 'Get period status',
     description: 'Get detailed status of a specific accounting period',
@@ -63,20 +66,20 @@ export class PeriodClosingController {
   @ApiParam({ name: 'period', description: 'Period in YYYY-MM format', example: '2025-01' })
   @ApiResponse({ status: 200, description: 'Period status' })
   async getPeriodStatus(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Param('period') period: string,
   ): Promise<AccountingPeriod> {
     return this.periodClosingService.getPeriodStatus(userId, period);
   }
 
-  @Get(':userId/:period/summary')
+  @Get(':period/summary')
   @ApiOperation({
     summary: 'Get period summary',
     description: 'Get financial summary and validation status for a period',
   })
   @ApiResponse({ status: 200, description: 'Period summary' })
   async getPeriodSummary(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Param('period') period: string,
   ) {
     return this.periodClosingService.getPeriodSummary(userId, period);
@@ -84,27 +87,27 @@ export class PeriodClosingController {
 
   // ===== Validation =====
 
-  @Get(':userId/:period/validate')
+  @Get(':period/validate')
   @ApiOperation({
     summary: 'Validate period for closing',
     description: 'Run all validations before closing a period',
   })
   @ApiResponse({ status: 200, description: 'Validation result' })
   async validatePeriod(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Param('period') period: string,
   ): Promise<ValidationResult> {
     return this.periodClosingService.validatePeriodForClosing(userId, period);
   }
 
-  @Get(':userId/:period/checklist')
+  @Get(':period/checklist')
   @ApiOperation({
     summary: 'Get closing checklist',
     description: 'Get the pre-closing checklist with status for each item',
   })
   @ApiResponse({ status: 200, description: 'Closing checklist' })
   async getChecklist(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Param('period') period: string,
   ) {
     return this.periodClosingService.getClosingChecklist(userId, period);
@@ -112,7 +115,7 @@ export class PeriodClosingController {
 
   // ===== Closing Operations =====
 
-  @Post(':userId/:period/close')
+  @Post(':period/close')
   @ApiOperation({
     summary: 'Close accounting period',
     description: 'Close an accounting period after validation',
@@ -129,14 +132,14 @@ export class PeriodClosingController {
   @ApiResponse({ status: 400, description: 'Validation failed' })
   @HttpCode(HttpStatus.OK)
   async closePeriod(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Param('period') period: string,
     @Body() body: { closedBy?: string },
   ): Promise<PeriodClosingResult> {
     return this.periodClosingService.closePeriod(userId, period, body.closedBy || userId);
   }
 
-  @Post(':userId/:period/lock')
+  @Post(':period/lock')
   @ApiOperation({
     summary: 'Lock accounting period',
     description: 'Permanently lock a closed period (prevents reopening)',
@@ -145,13 +148,13 @@ export class PeriodClosingController {
   @ApiResponse({ status: 400, description: 'Period not closed' })
   @HttpCode(HttpStatus.OK)
   async lockPeriod(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Param('period') period: string,
   ): Promise<AccountingPeriod> {
     return this.periodClosingService.lockPeriod(userId, period);
   }
 
-  @Post(':userId/:period/reopen')
+  @Post(':period/reopen')
   @ApiOperation({
     summary: 'Reopen accounting period',
     description: 'Reopen a closed (not locked) period for corrections',
@@ -169,7 +172,7 @@ export class PeriodClosingController {
   @ApiResponse({ status: 400, description: 'Period is locked' })
   @HttpCode(HttpStatus.OK)
   async reopenPeriod(
-    @Param('userId') userId: string,
+    @CurrentUserId() userId: string,
     @Param('period') period: string,
     @Body() body: { reason: string },
   ): Promise<AccountingPeriod> {
@@ -178,12 +181,12 @@ export class PeriodClosingController {
 
   // ===== Dashboard =====
 
-  @Get(':userId/dashboard')
+  @Get('meta/dashboard') // REQ-049: avoid clashing with ':period'
   @ApiOperation({
     summary: 'Get period closing dashboard',
     description: 'Dashboard with current period status and upcoming closings',
   })
-  async getDashboard(@Param('userId') userId: string) {
+  async getDashboard(@CurrentUserId() userId: string) {
     const now = new Date();
     const currentPeriod = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
     const previousPeriod = now.getMonth() === 0

@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { InvoicesService } from './invoices.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { EfacturaService } from '../anaf/efactura.service';
+import { SpvService } from '../anaf/spv.service';
 import { NotificationsService } from '../notifications/notifications.service';
 import { SagaService } from '../saga/saga.service';
 import { MultiCurrencyService } from '../finance/multi-currency.service';
@@ -63,6 +64,7 @@ describe('InvoicesService', () => {
         InvoicesService,
         { provide: PrismaService, useValue: mockPrismaService },
         { provide: EfacturaService, useValue: mockEfacturaService },
+        { provide: SpvService, useValue: { getValidToken: jest.fn().mockResolvedValue('spv-token') } },
         { provide: NotificationsService, useValue: mockNotificationsService },
         { provide: SagaService, useValue: mockSagaService },
         { provide: MultiCurrencyService, useValue: mockMultiCurrencyService },

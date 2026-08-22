@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios, { AxiosInstance } from 'axios';
 import { EfacturaValidatorService, EfacturaInvoiceData, EfacturaValidationError } from './efactura-validator.service';
@@ -305,7 +305,23 @@ export class EfacturaService {
   }
 
   // Submit to ANAF SPV
-  async submitToSPV(xml: string, cui: string): Promise<{ uploadIndex: string; status: string }> {
+  /**
+   * REQ-049 B3: ANAF e-Factura requires the taxpayer's own OAuth token. These
+   * methods now take it from the caller (SpvService.getValidToken(userId));
+   * the old global ANAF_API_KEY (never set) remains only as a last-resort
+   * fallback for single-tenant setups.
+   */
+  private authHeader(token?: string): string {
+    const t = token || this.configService.get<string>('ANAF_API_KEY');
+    if (!t) {
+      throw new UnauthorizedException(
+        'SPV neconectat — conectați contul ANAF din Setări › Integrări înainte de a transmite facturi.',
+      );
+    }
+    return `Bearer ${t}`;
+  }
+
+  async submitToSPV(xml: string, cui: string, token?: string): Promise<{ uploadIndex: string; status: string }> {
     try {
       const response = await this.client.post(
         '/upload',
@@ -314,7 +330,7 @@ export class EfacturaService {
           params: { cif: cui },
           headers: {
             'Content-Type': 'application/xml',
-            Authorization: `Bearer ${this.configService.get('ANAF_API_KEY')}`,
+            Authorization: this.authHeader(token),
           },
         },
       );
@@ -331,11 +347,11 @@ export class EfacturaService {
   }
 
   // Check submission status
-  async checkStatus(uploadIndex: string): Promise<{ status: string; messages: string[] }> {
+  async checkStatus(uploadIndex: string, token?: string): Promise<{ status: string; messages: string[] }> {
     try {
       const response = await this.client.get(`/status/${uploadIndex}`, {
         headers: {
-          Authorization: `Bearer ${this.configService.get('ANAF_API_KEY')}`,
+          Authorization: this.authHeader(token),
         },
       });
 
@@ -350,12 +366,12 @@ export class EfacturaService {
   }
 
   // Download received invoices
-  async downloadReceived(cui: string, days: number = 60): Promise<any[]> {
+  async downloadReceived(cui: string, days: number = 60, token?: string): Promise<any[]> {
     try {
       const response = await this.client.get('/download', {
         params: { cif: cui, zile: days },
         headers: {
-          Authorization: `Bearer ${this.configService.get('ANAF_API_KEY')}`,
+          Authorization: this.authHeader(token),
         },
       });
 
@@ -893,7 +909,7 @@ export class EfacturaService {
           params: { cif: cui, standard: 'UBL' },
           headers: {
             'Content-Type': 'application/xml',
-            Authorization: `Bearer ${this.configService.get('ANAF_API_KEY')}`,
+            Authorization: this.authHeader(),
           },
         },
       );

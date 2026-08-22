@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toast';
-import { notifyNotAvailable } from '@/lib/toast-bus';
 import {
   Calendar,
   Lock,
@@ -75,7 +74,7 @@ export default function PeriodClosingPage() {
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const getUserId = () => localStorage.getItem('user_id') || 'demo-user';
+  const getUserId = () => ''; // REQ-049 B3: server derives the user from the JWT
 
   const fetchPeriods = useCallback(async () => {
     try {
@@ -83,7 +82,7 @@ export default function PeriodClosingPage() {
       const userId = getUserId();
       const year = new Date().getFullYear();
 
-      const response = await fetch(`${API_URL}/accounting/periods/${userId}?year=${year}`, {
+      const response = await fetch(`${API_URL}/accounting/periods?year=${year}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -116,7 +115,7 @@ export default function PeriodClosingPage() {
       const token = localStorage.getItem('auth_token');
       const userId = getUserId();
 
-      const response = await fetch(`${API_URL}/accounting/periods/${userId}/${period}/summary`, {
+      const response = await fetch(`${API_URL}/accounting/periods/${period}/summary`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -143,7 +142,8 @@ export default function PeriodClosingPage() {
   }, [selectedPeriod, fetchPeriodDetails]);
 
   const handleClosePeriod = async () => {
-    notifyNotAvailable();
+    if (!window.confirm('Închideți perioada selectată? Înregistrările ulterioare vor fi blocate până la redeschidere.')) return;
+    await handleClosePeriodConfirmed();
   };
 
   const handleClosePeriodConfirmed = async () => {
@@ -152,7 +152,7 @@ export default function PeriodClosingPage() {
       const token = localStorage.getItem('auth_token');
       const userId = getUserId();
 
-      const response = await fetch(`${API_URL}/accounting/periods/${userId}/${selectedPeriod}/close`, {
+      const response = await fetch(`${API_URL}/accounting/periods/${selectedPeriod}/close`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -179,7 +179,8 @@ export default function PeriodClosingPage() {
   };
 
   const handleLockPeriod = async () => {
-    notifyNotAvailable();
+    if (!window.confirm('Blocați definitiv perioada? Doar un administrator o mai poate redeschide.')) return;
+    await handleLockPeriodConfirmed();
   };
 
   const handleLockPeriodConfirmed = async () => {
@@ -188,7 +189,7 @@ export default function PeriodClosingPage() {
       const token = localStorage.getItem('auth_token');
       const userId = getUserId();
 
-      const response = await fetch(`${API_URL}/accounting/periods/${userId}/${selectedPeriod}/lock`, {
+      const response = await fetch(`${API_URL}/accounting/periods/${selectedPeriod}/lock`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -213,7 +214,9 @@ export default function PeriodClosingPage() {
   };
 
   const handleReopenPeriod = async () => {
-    notifyNotAvailable();
+    const reason = window.prompt('Motivul redeschiderii (se înregistrează în jurnalul de audit):');
+    if (!reason || !reason.trim()) return;
+    await handleReopenPeriodConfirmed(reason.trim());
   };
 
   const handleReopenPeriodConfirmed = async (reason: string) => {
@@ -222,7 +225,7 @@ export default function PeriodClosingPage() {
       const token = localStorage.getItem('auth_token');
       const userId = getUserId();
 
-      const response = await fetch(`${API_URL}/accounting/periods/${userId}/${selectedPeriod}/reopen`, {
+      const response = await fetch(`${API_URL}/accounting/periods/${selectedPeriod}/reopen`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

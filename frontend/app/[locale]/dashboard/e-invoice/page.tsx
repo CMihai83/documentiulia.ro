@@ -153,7 +153,7 @@ export default function EfacturaPage() {
     setSubmitting(record.id);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/anaf/efactura/submit/${record.id}`, {
+      const response = await fetch(`${API_URL}/invoices/${record.id}/submit-efactura`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -185,7 +185,7 @@ export default function EfacturaPage() {
     setChecking(record.id);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/anaf/efactura/status/${record.uploadIndex}`, {
+      const response = await fetch(`${API_URL}/invoices/${record.id}/efactura-status`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -240,7 +240,7 @@ export default function EfacturaPage() {
     setShowXmlModal(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/anaf/efactura/generate-xml/${record.id}`, {
+      const response = await fetch(`${API_URL}/invoices/${record.id}/efactura-xml`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -270,7 +270,7 @@ export default function EfacturaPage() {
   const handleDownloadXml = async (record: EfacturaRecord) => {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/anaf/efactura/generate-xml/${record.id}`, {
+      const response = await fetch(`${API_URL}/invoices/${record.id}/efactura-xml`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -315,7 +315,7 @@ export default function EfacturaPage() {
     setShowValidationModal(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/anaf/efactura/validate/${record.id}`, {
+      const response = await fetch(`${API_URL}/invoices/${record.id}/efactura-validate`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -382,7 +382,7 @@ export default function EfacturaPage() {
 
       try {
         const token = localStorage.getItem('auth_token');
-        const response = await fetch(`${API_URL}/anaf/efactura/submit/${id}`, {
+        const response = await fetch(`${API_URL}/invoices/${id}/submit-efactura`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,

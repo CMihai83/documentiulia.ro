@@ -64,7 +64,7 @@ function BulkSpvContent() {
     setSubmitting(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/anaf/efactura/bulk-submit`, {
+      const response = await fetch(`${API_URL}/invoices/bulk-submit-efactura`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

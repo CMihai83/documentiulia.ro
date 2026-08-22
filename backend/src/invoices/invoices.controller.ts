@@ -140,6 +140,12 @@ export class InvoicesController {
     return this.invoicesService.getOverdueInvoices(userId, limit ? parseInt(limit) : 10);
   }
 
+  @Get('next-number')
+  @ApiOperation({ summary: 'Next sequential invoice number (REQ-049 B3)' })
+  nextNumber(@Req() req: any) {
+    return this.invoicesService.getNextNumber(this.getUserId(req));
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Get invoice by ID' })
   @ApiResponse({ status: 200, description: 'Invoice found' })
@@ -178,16 +184,41 @@ export class InvoicesController {
     return this.invoicesService.delete(userId, id);
   }
 
+  // ---- REQ-049 B3: the real e-Factura path (per-user SPV token) ----
   @Post(':id/submit-efactura')
-  @ApiOperation({ summary: 'Submit invoice to e-Factura SPV' })
-  @ApiResponse({ status: 200, description: 'Invoice submitted to SPV' })
-  submitToEfactura(
-    @Req() req: any,
-    @Param('id') id: string,
-    @Body('efacturaId') efacturaId: string,
-  ) {
-    const userId = this.getUserId(req);
-    return this.invoicesService.markAsSubmitted(userId, id, efacturaId);
+  @ApiOperation({ summary: 'Generate CIUS-RO UBL and submit to ANAF SPV with the user\'s token' })
+  submitToEfactura(@Req() req: any, @Param('id') id: string) {
+    return this.invoicesService.finalizeAndSubmit(this.getUserId(req), id);
+  }
+
+  @Post('bulk-submit-efactura')
+  @ApiOperation({ summary: 'Submit several invoices to SPV; per-invoice results' })
+  bulkSubmitToEfactura(@Req() req: any, @Body() body: { ids: string[] }) {
+    return this.invoicesService.bulkFinalizeAndSubmit(this.getUserId(req), body?.ids || []);
+  }
+
+  @Get(':id/efactura-xml')
+  @ApiOperation({ summary: 'Preview the UBL XML that would be submitted' })
+  efacturaXml(@Req() req: any, @Param('id') id: string) {
+    return this.invoicesService.efacturaXml(this.getUserId(req), id);
+  }
+
+  @Post(':id/efactura-validate')
+  @ApiOperation({ summary: 'Validate the invoice against CIUS-RO rules before submission' })
+  efacturaValidate(@Req() req: any, @Param('id') id: string) {
+    return this.invoicesService.efacturaValidate(this.getUserId(req), id);
+  }
+
+  @Get(':id/efactura-status')
+  @ApiOperation({ summary: 'Ask ANAF for the status of a submitted invoice and store it' })
+  efacturaStatus(@Req() req: any, @Param('id') id: string) {
+    return this.invoicesService.checkEfacturaStatus(this.getUserId(req), id);
+  }
+
+  @Post(':id/duplicate')
+  @ApiOperation({ summary: 'Copy as a new draft with the next number' })
+  duplicate(@Req() req: any, @Param('id') id: string) {
+    return this.invoicesService.duplicate(this.getUserId(req), id);
   }
 
   @Get(':id/pdf')

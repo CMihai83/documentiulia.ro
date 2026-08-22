@@ -1,8 +1,9 @@
-import { Injectable, NotFoundException, Logger } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { UpdateInvoiceDto } from './dto/update-invoice.dto';
 import { InvoiceType, InvoiceStatus } from '@prisma/client';
+import { SpvService } from '../anaf/spv.service';
 import { EfacturaService } from '../anaf/efactura.service';
 import { NotificationsService, NotificationType } from '../notifications/notifications.service';
 import { SagaService } from '../saga/saga.service';
@@ -15,6 +16,7 @@ export class InvoicesService {
 
   constructor(
     private readonly prisma: PrismaService,
+    private readonly spvService: SpvService,
     private readonly efacturaService: EfacturaService,
     private readonly notificationsService: NotificationsService,
     private readonly sagaService: SagaService,
@@ -374,6 +376,145 @@ export class InvoicesService {
   }
 
   // Auto-submit issued invoices to ANAF e-Factura when finalized
+
+  /**
+   * REQ-049 B3 — supplier identity for e-Factura/D406: the active Organization
+   * is the source of truth (what onboarding and settings write), User fields
+   * are the fallback (legacy accounts). One place, used by every submit path.
+   */
+  async getSupplierForUser(userId: string): Promise<{ cui: string; name: string; address: string; regCom?: string; bankAccount?: string; bankName?: string }> {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { cui: true, company: true, address: true, activeOrganizationId: true },
+    });
+    const org = user?.activeOrganizationId
+      ? await this.prisma.organization.findUnique({
+          where: { id: user.activeOrganizationId },
+          select: { cui: true, name: true, address: true, city: true, county: true, regCom: true, bankAccount: true, bankName: true },
+        })
+      : null;
+    const cui = org?.cui || user?.cui || '';
+    if (!cui) {
+      throw new BadRequestException('Compania nu are CUI configurat. Completați datele firmei în Setări › Organizație.');
+    }
+    const address = org?.address ? [org.address, org.city, org.county].filter(Boolean).join(', ') : (user?.address || '');
+    return { cui, name: org?.name || user?.company || '', address, regCom: org?.regCom ?? undefined, bankAccount: org?.bankAccount ?? undefined, bankName: org?.bankName ?? undefined };
+  }
+
+  /** Per-user ANAF OAuth token, with an actionable Romanian error when missing. */
+  private async spvToken(userId: string): Promise<string> {
+    try {
+      return await this.spvService.getValidToken(userId);
+    } catch {
+      throw new BadRequestException('SPV neconectat — conectați contul ANAF din Setări › Integrări înainte de a transmite facturi.');
+    }
+  }
+
+  /** Build the CIUS-RO UBL for an issued invoice (shared by submit / xml / validate). */
+  private async buildEfacturaInvoice(userId: string, id: string) {
+    const invoice = await this.findOne(userId, id);
+    const supplier = await this.getSupplierForUser(userId);
+    const efacturaInvoice = {
+      invoiceNumber: invoice.invoiceNumber,
+      issueDate: invoice.invoiceDate.toISOString().split('T')[0],
+      dueDate: invoice.dueDate ? invoice.dueDate.toISOString().split('T')[0] : undefined,
+      currency: invoice.currency || 'RON',
+      supplier: { cui: supplier.cui.replace(/^RO/i, ''), name: supplier.name, address: supplier.address, country: 'RO' },
+      customer: {
+        cui: invoice.partnerCui?.replace(/^RO/i, '') || '',
+        name: invoice.partnerName || '',
+        address: invoice.partnerAddress || '',
+        country: 'RO',
+      },
+      lines: [
+        {
+          description: `Factura ${invoice.invoiceNumber}`,
+          quantity: 1,
+          unitPrice: Number(invoice.netAmount),
+          vatRate: Number(invoice.vatRate),
+          total: Number(invoice.netAmount),
+        },
+      ],
+      totals: { net: Number(invoice.netAmount), vat: Number(invoice.vatAmount), gross: Number(invoice.grossAmount) },
+    } as any;
+    return { invoice, efacturaInvoice, supplier };
+  }
+
+  async efacturaXml(userId: string, id: string): Promise<{ xml: string; invoiceNumber: string }> {
+    const { invoice, efacturaInvoice } = await this.buildEfacturaInvoice(userId, id);
+    return { xml: this.efacturaService.generateB2BUBL(efacturaInvoice), invoiceNumber: invoice.invoiceNumber };
+  }
+
+  async efacturaValidate(userId: string, id: string) {
+    const { efacturaInvoice } = await this.buildEfacturaInvoice(userId, id);
+    return this.efacturaService.validateInvoice(efacturaInvoice);
+  }
+
+  async bulkFinalizeAndSubmit(userId: string, ids: string[]) {
+    const results: Array<{ id: string; success: boolean; efacturaId?: string; error?: string }> = [];
+    for (const id of ids) {
+      try {
+        const r: any = await this.finalizeAndSubmit(userId, id);
+        results.push({ id, success: true, efacturaId: r?.efacturaId ?? r?.invoice?.efacturaId });
+      } catch (e) {
+        results.push({ id, success: false, error: (e as Error).message });
+      }
+    }
+    return { submitted: results.filter((r) => r.success).length, failed: results.filter((r) => !r.success).length, results };
+  }
+
+  /**
+   * REQ-049 B3 — next invoice number. Romanian invoices must be sequential.
+   * Uses Organization.invoicePrefix/invoiceCounter atomically when an active
+   * organization exists; otherwise the next free number in the user's series.
+   */
+  async getNextNumber(userId: string): Promise<{ invoiceNumber: string; nextNumber: string; series: string; sequence: number }> {
+    const user = await this.prisma.user.findUnique({ where: { id: userId }, select: { activeOrganizationId: true } });
+    const year = new Date().getFullYear();
+    if (user?.activeOrganizationId) {
+      const org = await this.prisma.organization.update({
+        where: { id: user.activeOrganizationId },
+        data: { invoiceCounter: { increment: 1 } },
+        select: { invoicePrefix: true, invoiceCounter: true },
+      });
+      const series = org.invoicePrefix || 'FV';
+      const invoiceNumber = `${series}-${year}-${String(org.invoiceCounter).padStart(4, '0')}`;
+      return { invoiceNumber, nextNumber: invoiceNumber, series, sequence: org.invoiceCounter };
+    }
+    const series = 'FV';
+    const last = await this.prisma.invoice.findFirst({
+      where: { userId, type: InvoiceType.ISSUED, invoiceNumber: { startsWith: `${series}-${year}-` } },
+      orderBy: { invoiceNumber: 'desc' },
+      select: { invoiceNumber: true },
+    });
+    const seq = last ? (parseInt(last.invoiceNumber.split('-').pop() || '0', 10) || 0) + 1 : 1;
+    const invoiceNumber = `${series}-${year}-${String(seq).padStart(4, '0')}`;
+    return { invoiceNumber, nextNumber: invoiceNumber, series, sequence: seq };
+  }
+
+  /** REQ-049 B3 — copy an invoice as a new DRAFT with the next number and today's date. */
+  async duplicate(userId: string, id: string) {
+    const src = await this.prisma.invoice.findFirst({ where: { id, userId }, include: { items: true } });
+    if (!src) throw new NotFoundException('Invoice not found');
+    const { invoiceNumber } = await this.getNextNumber(userId);
+    const today = new Date();
+    const due = new Date(today); due.setDate(due.getDate() + 30);
+    return this.prisma.invoice.create({
+      data: {
+        userId, invoiceNumber, type: src.type, invoiceDate: today, dueDate: due,
+        partnerName: src.partnerName, partnerCui: src.partnerCui, partnerAddress: src.partnerAddress,
+        netAmount: src.netAmount, vatRate: src.vatRate, vatAmount: src.vatAmount, grossAmount: src.grossAmount,
+        currency: src.currency, exchangeRate: src.exchangeRate,
+        baseNetAmount: src.baseNetAmount, baseVatAmount: src.baseVatAmount, baseGrossAmount: src.baseGrossAmount,
+        status: InvoiceStatus.DRAFT, organizationId: src.organizationId,
+        items: src.items.length
+          ? { create: src.items.map((it) => ({ lineNumber: it.lineNumber, description: it.description, code: it.code, quantity: it.quantity, unit: it.unit, unitPrice: it.unitPrice, vatRate: it.vatRate, discount: it.discount, netAmount: it.netAmount, vatAmount: it.vatAmount, grossAmount: it.grossAmount })) }
+          : undefined,
+      },
+      include: { items: true },
+    });
+  }
+
   async finalizeAndSubmit(userId: string, id: string) {
     const invoice = await this.findOne(userId, id);
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
@@ -424,7 +565,8 @@ export class InvoicesService {
 
     try {
       // Submit to ANAF SPV
-      const result = await this.efacturaService.submitToSPV(xml, user.cui);
+      const token = await this.spvToken(userId);
+      const result = await this.efacturaService.submitToSPV(xml, user.cui, token);
 
       // Update invoice status
       const updated = await this.prisma.invoice.update({
@@ -474,7 +616,8 @@ export class InvoicesService {
       throw new NotFoundException('Invoice not submitted to e-Factura');
     }
 
-    const status = await this.efacturaService.checkStatus(invoice.efacturaId);
+    const token = await this.spvToken(userId);
+    const status = await this.efacturaService.checkStatus(invoice.efacturaId, token);
 
     await this.prisma.invoice.update({
       where: { id },
