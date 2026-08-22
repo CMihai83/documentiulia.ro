@@ -106,6 +106,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     return {
       ...user,
       sub: user.id, // Required for controllers using req.user.sub
+      userId: user.id, // REQ-049 B3: ~99 call sites read req.user.userId — it was never set (SPV endpoints 500'd)
       organizations,
       organizationId, // Add organizationId for subscription/other services
     };

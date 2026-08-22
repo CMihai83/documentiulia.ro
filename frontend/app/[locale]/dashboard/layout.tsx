@@ -10,6 +10,7 @@ import { WebSocketProvider, WebSocketStatusIndicator } from '@/contexts/WebSocke
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { SetupBanner } from '@/components/dashboard/SetupBanner';
 import { localePrefixFromPath } from '@/lib/locale';
 
 interface DashboardLayoutProps {
@@ -44,6 +45,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900 w-full md:w-auto pb-16 md:pb-0">
           {/* Add padding-top on mobile to account for menu button */}
           <div className="pt-12 md:pt-0">
+            <SetupBanner />
             {children}
         <UpgradePrompt />
           </div>

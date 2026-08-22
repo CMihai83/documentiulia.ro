@@ -1,6 +1,8 @@
 'use client';
+import { api } from '@/lib/api';
+import { useRouter } from 'next/navigation';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -61,6 +63,7 @@ const onboardingSteps: OnboardingStep[] = [
   {
     id: 'step-2',
     title: 'Configurare companie',
+    link: '/dashboard/settings/organization',
     description: 'Date fiscale, CUI, adresă',
     icon: Settings,
     status: 'completed',
@@ -69,6 +72,7 @@ const onboardingSteps: OnboardingStep[] = [
   {
     id: 'step-3',
     title: 'Conectare ANAF',
+    link: '/dashboard/settings/integrations',
     description: 'Autorizare SPV pentru e-Factura',
     icon: Link2,
     status: 'completed',
@@ -86,6 +90,7 @@ const onboardingSteps: OnboardingStep[] = [
   {
     id: 'step-5',
     title: 'Adaugă clienți',
+    link: '/dashboard/partners',
     description: 'Import sau creare manuală clienți',
     icon: Users,
     status: 'pending',
@@ -182,8 +187,35 @@ const quickActions = [
 ];
 
 export default function OnboardingPage() {
-  const completedSteps = onboardingSteps.filter((s) => s.status === 'completed').length;
-  const totalSteps = onboardingSteps.length;
+  const router = useRouter();
+  // REQ-049 B3: the checklist used to mark company + ANAF as done for everyone
+  // (static data). Statuses now come from the account's real state.
+  const [steps, setSteps] = useState<OnboardingStep[]>(onboardingSteps);
+  useEffect(() => {
+    (async () => {
+      const [prof, spv, inv, partners] = await Promise.all([
+        api.get<any>('/auth/profile'),
+        api.get<any>('/spv/status'),
+        api.get<any>('/invoices', { params: { limit: 1 } }),
+        api.get<any>('/partners', { params: { limit: 1 } }),
+      ]);
+      const p = prof.data || {};
+      const hasCompany = Boolean((p.organization?.cui || p.cui) && (p.organization?.name || p.company));
+      const spvOk = spv.status === 200 && Boolean(spv.data?.connected);
+      const invData: any = inv.data; const partData: any = partners.data;
+      const hasInvoice = Array.isArray(invData) ? invData.length > 0 : (invData?.total ?? invData?.items?.length ?? invData?.data?.length ?? 0) > 0;
+      const hasPartner = Array.isArray(partData) ? partData.length > 0 : (partData?.total ?? partData?.items?.length ?? partData?.data?.length ?? 0) > 0;
+      const done: Record<string, boolean> = { 'step-1': true, 'step-2': hasCompany, 'step-3': spvOk, 'step-4': hasInvoice, 'step-5': hasPartner };
+      let currentSet = false;
+      setSteps(onboardingSteps.map((st) => {
+        if (done[st.id]) return { ...st, status: 'completed' as const };
+        if (!currentSet && st.id in done) { currentSet = true; return { ...st, status: 'current' as const }; }
+        return { ...st, status: 'pending' as const };
+      }));
+    })();
+  }, []);
+  const completedSteps = steps.filter((s) => s.status === 'completed').length;
+  const totalSteps = steps.length;
   const progressPercent = Math.round((completedSteps / totalSteps) * 100);
   const completedTutorials = tutorials.filter((t) => t.completed).length;
 
@@ -248,7 +280,7 @@ export default function OnboardingPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {onboardingSteps.map((step, index) => (
+                {steps.map((step, index) => (
                   <div
                     key={step.id}
                     className={`flex items-start gap-4 rounded-lg p-4 ${
@@ -279,7 +311,7 @@ export default function OnboardingPage() {
                             {step.time}
                           </Badge>
                           {step.status === 'current' && (
-                            <Button size="sm">
+                            <Button size="sm" onClick={() => step.link && router.push(step.link)}>
                               Începe
                               <ArrowRight className="ml-1 h-4 w-4" />
                             </Button>

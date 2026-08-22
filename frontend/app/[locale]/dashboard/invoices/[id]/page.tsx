@@ -55,6 +55,7 @@ interface Invoice {
   currency: string;
   spvSubmitted: boolean;
   spvIndexId: string | null;
+  efacturaStatus?: string | null;
   notes: string | null;
   items: InvoiceItem[];
   createdAt: string;
@@ -117,13 +118,30 @@ export default function InvoiceDetailPage() {
     downloadInvoicePdf(pdfData);
   };
 
+  const handleCheckSpvStatus = async () => {
+    if (!invoice) return;
+    try {
+      const token = localStorage.getItem('auth_token');
+      const response = await fetch(`${API_URL}/invoices/${invoice.id}/efactura-status`, { headers: { Authorization: `Bearer ${token}` } });
+      const data = await response.json().catch(() => ({}));
+      if (response.ok) {
+        toast.compliance('Status ANAF', `${data.status || 'necunoscut'}${Array.isArray(data.messages) && data.messages.length ? ' — ' + data.messages.join('; ') : ''}`);
+        fetchInvoice();
+      } else {
+        toast.error('Nu am putut verifica statusul', data.message || 'Încercați din nou.');
+      }
+    } catch {
+      toast.error('Nu am putut verifica statusul', 'Serverul nu a putut fi contactat.');
+    }
+  };
+
   const handleSubmitToSPV = async () => {
     if (!invoice) return;
 
     setSubmitting(true);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`/api/v1/anaf/efactura/submit/${invoice.id}`, {
+      const response = await fetch(`${API_URL}/invoices/${invoice.id}/submit-efactura`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -351,6 +369,8 @@ export default function InvoiceDetailPage() {
               {invoice.spvSubmitted && (
                 <span className="px-2 py-1 text-xs font-medium rounded bg-green-50 text-green-700">
                   SPV: {invoice.spvIndexId}
+                  {invoice.efacturaStatus ? ` · ${invoice.efacturaStatus}` : ''}
+                  <button type="button" onClick={handleCheckSpvStatus} className="ml-2 underline text-xs">Verifică statusul ANAF</button>
                 </span>
               )}
             </div>

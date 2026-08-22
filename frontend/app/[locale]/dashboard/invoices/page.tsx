@@ -238,7 +238,7 @@ export default function InvoicesPage() {
       const token = localStorage.getItem('auth_token');
       const ids = Array.from(selectedIds);
 
-      const response = await fetch(`${API_URL}/anaf/efactura/bulk-submit`, {
+      const response = await fetch(`${API_URL}/invoices/bulk-submit-efactura`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -362,7 +362,7 @@ export default function InvoicesPage() {
     setSubmittingInvoiceId(invoice.id);
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${API_URL}/anaf/efactura/submit/${invoice.id}`, {
+      const response = await fetch(`${API_URL}/invoices/${invoice.id}/submit-efactura`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

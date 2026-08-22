@@ -1,4 +1,6 @@
 'use client';
+import { toastFromAnywhere } from '@/lib/toast-bus';
+import { api } from '@/lib/api';
 
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -65,7 +67,13 @@ export default function IntegrationsPage() {
     // Simulate OAuth flow
     if (integrationId === 'anaf-spv') {
       // Redirect to ANAF OAuth
-      window.open('/api/v1/spv/oauth/init', '_blank');
+      // REQ-049 B3: '/spv/oauth/init' does not exist. Ask the API for the ANAF
+      // authorization URL (needs the user's token) and go there.
+      (async () => {
+        const r = await api.get<{ authUrl: string }>('/spv/oauth/authorize');
+        if (r.status === 200 && r.data?.authUrl) window.location.href = r.data.authUrl;
+        else toastFromAnywhere('error', 'Conectarea SPV nu a pornit', r.error || 'Verificați că firma are CUI completat în Setări › Organizație, apoi reîncercați.');
+      })();
     }
 
     setTimeout(() => setConnecting(null), 2000);

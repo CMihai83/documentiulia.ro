@@ -147,7 +147,8 @@ export default function EfacturaB2BDashboardPage() {
   const [previewXml, setPreviewXml] = useState<string>('');
 
   // Get current user ID (in real app, from auth context)
-  const getUserId = () => localStorage.getItem('user_id') || 'demo-user';
+  // REQ-049 B3: identity comes from the JWT on the server; no client-side user id.
+  const getUserId = () => '';
 
   // Fetch dashboard data
   const fetchDashboard = useCallback(async () => {
@@ -155,7 +156,7 @@ export default function EfacturaB2BDashboardPage() {
       const token = localStorage.getItem('auth_token');
       const userId = getUserId();
 
-      const response = await fetch(`${API_URL}/efactura-b2b/dashboard/${userId}`, {
+      const response = await fetch(`${API_URL}/efactura-b2b/dashboard`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -182,7 +183,7 @@ export default function EfacturaB2BDashboardPage() {
       if (periodFilter) params.append('period', periodFilter);
 
       const response = await fetch(
-        `${API_URL}/efactura-b2b/invoices/${userId}?${params}`,
+        `${API_URL}/efactura-b2b/invoices?${params}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
