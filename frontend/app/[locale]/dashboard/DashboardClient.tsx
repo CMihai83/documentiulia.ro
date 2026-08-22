@@ -3,6 +3,7 @@
 import { useState, memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useDropzone } from 'react-dropzone';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/components/ui/Toast';
@@ -12,7 +13,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell,
 } from 'recharts';
-import { Upload, FileText, TrendingUp, RefreshCw } from 'lucide-react';
+import { Upload, FileText, TrendingUp, RefreshCw, AlertTriangle, FilePlus2 } from 'lucide-react';
 import { SkeletonDashboard } from '@/components/ui/Skeleton';
 
 import { notifyNotAvailable } from '@/lib/toast-bus';
@@ -50,21 +51,86 @@ interface DashboardData {
   pendingInvoices: number;
 }
 
-// Fallback static data for when API is unavailable
-const fallbackCashFlow: CashFlowItem[] = [
-  { month: 'Ian', income: 45000, expenses: 32000 },
-  { month: 'Feb', income: 52000, expenses: 35000 },
-  { month: 'Mar', income: 48000, expenses: 30000 },
-  { month: 'Apr', income: 61000, expenses: 42000 },
-  { month: 'Mai', income: 55000, expenses: 38000 },
-  { month: 'Iun', income: 67000, expenses: 45000 },
-];
+// NOTE: no static fallback series here. Charts render ONLY real backend data;
+// when there is nothing to show (no invoices yet) or the request failed we render
+// an explicit empty / error state so the user can never mistake invented numbers
+// for real ones.
 
-const fallbackVatData: VatSummaryItem[] = [
-  { name: 'TVA Colectat', value: 12600, color: '#3b82f6' },
-  { name: 'TVA Deductibil', value: 8400, color: '#22c55e' },
-  { name: 'TVA de Plată', value: 4200, color: '#f59e0b' },
-];
+type ChartStateVariant = 'empty' | 'error';
+
+/**
+ * Placeholder card rendered where a chart would be, for the empty / error states.
+ * Keeps the same card chrome (title, size) as the real chart so the grid is stable.
+ */
+const ChartStateCard = memo(function ChartStateCard({
+  variant,
+  title,
+  icon,
+  className = '',
+  heightClassName,
+  onRetry,
+  isRetrying = false,
+}: {
+  variant: ChartStateVariant;
+  title: string;
+  icon?: React.ReactNode;
+  className?: string;
+  heightClassName: string;
+  onRetry?: () => void;
+  isRetrying?: boolean;
+}) {
+  return (
+    <div className={`bg-white dark:bg-gray-800 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-sm ${className}`}>
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 flex items-center gap-2 dark:text-white">
+        {icon}
+        {title}
+      </h2>
+      <div
+        className={`${heightClassName} flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-lg px-4`}
+        role="status"
+        aria-live="polite"
+      >
+        {variant === 'empty' ? (
+          <>
+            <FilePlus2 className="w-8 h-8 sm:w-10 sm:h-10 text-gray-300 dark:text-gray-600 mb-2 sm:mb-3" aria-hidden="true" />
+            <p className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-200">
+              Nu există date încă
+            </p>
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+              Graficul se va completa după ce emiți prima factură.
+            </p>
+            <Link
+              href="/dashboard/invoices/new"
+              className="mt-3 sm:mt-4 inline-flex items-center gap-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white text-xs sm:text-sm font-medium px-3 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+            >
+              <FilePlus2 className="w-4 h-4" aria-hidden="true" />
+              Emite prima factură
+            </Link>
+          </>
+        ) : (
+          <>
+            <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-amber-500 mb-2 sm:mb-3" aria-hidden="true" />
+            <p className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-200">
+              Nu am putut încărca datele
+            </p>
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+              Verifică conexiunea și încearcă din nou.
+            </p>
+            <button
+              type="button"
+              onClick={onRetry}
+              disabled={isRetrying}
+              className="mt-3 sm:mt-4 inline-flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 text-xs sm:text-sm font-medium px-3 py-2 transition-colors disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+            >
+              <RefreshCw className={`w-4 h-4 ${isRetrying ? 'animate-spin' : ''}`} aria-hidden="true" />
+              Reîncearcă
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+});
 
 // Memoized chart components for performance
 const CashFlowChart = memo(function CashFlowChart({
@@ -295,7 +361,7 @@ export function DashboardClient() {
   });
 
   // React Query hook for dashboard data with caching
-  const { data: dashboardData, isLoading, isFetching, refetch } = useDashboardSummary();
+  const { data: dashboardData, isLoading, isFetching, isError, refetch } = useDashboardSummary();
   const { invalidateSummary } = useInvalidateDashboard();
 
   // Show compliance deadline alerts on dashboard load
@@ -605,9 +671,14 @@ export function DashboardClient() {
     notifyNotAvailable();
   };
 
-  // Get data from React Query hook (with fallback placeholders)
-  const cashFlowData = dashboardData?.cashFlow || fallbackCashFlow;
-  const vatData = dashboardData?.vatSummary || fallbackVatData;
+  // Get data from React Query hook -- never substitute invented series.
+  const cashFlowData = dashboardData?.cashFlow ?? [];
+  const vatData = dashboardData?.vatSummary ?? [];
+  // Error: the query threw (unexpected) or the hook returned an `error` payload.
+  const hasDataError = isError || Boolean(dashboardData?.error);
+  // Empty: no real figures yet (hook flag), or the series are simply missing.
+  const isCashFlowEmpty = !hasDataError && ((dashboardData?.isEmpty ?? true) || cashFlowData.length === 0);
+  const isVatEmpty = !hasDataError && ((dashboardData?.isEmpty ?? true) || vatData.length === 0);
 
   // Show skeleton while loading initial data
   if (isLoading) {
@@ -626,18 +697,40 @@ export function DashboardClient() {
 
       {/* Main Charts Grid - Stack on mobile, side-by-side on larger screens */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
-        <CashFlowChart
-          data={cashFlowData}
-          title={t('cashFlow')}
-          onDataClick={handleCashFlowClick}
-          onTitleClick={() => handleCashFlowClick()}
-        />
-        <VatPieChart
-          data={vatData}
-          title={t('vatSummary')}
-          onSegmentClick={handleVatClick}
-          onTitleClick={() => handleVatClick()}
-        />
+        {hasDataError || isCashFlowEmpty ? (
+          <ChartStateCard
+            variant={hasDataError ? 'error' : 'empty'}
+            title={t('cashFlow')}
+            icon={<TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-primary-600" />}
+            className="lg:col-span-2"
+            heightClassName="h-48 sm:h-64 md:h-[300px]"
+            onRetry={handleRefreshCashFlow}
+            isRetrying={isFetching}
+          />
+        ) : (
+          <CashFlowChart
+            data={cashFlowData}
+            title={t('cashFlow')}
+            onDataClick={handleCashFlowClick}
+            onTitleClick={() => handleCashFlowClick()}
+          />
+        )}
+        {hasDataError || isVatEmpty ? (
+          <ChartStateCard
+            variant={hasDataError ? 'error' : 'empty'}
+            title={t('vatSummary')}
+            heightClassName="h-36 sm:h-48 md:h-[200px]"
+            onRetry={handleRefreshVat}
+            isRetrying={isFetching}
+          />
+        ) : (
+          <VatPieChart
+            data={vatData}
+            title={t('vatSummary')}
+            onSegmentClick={handleVatClick}
+            onTitleClick={() => handleVatClick()}
+          />
+        )}
       </div>
 
       {/* Document Upload */}

@@ -97,7 +97,7 @@ export class IntegrationsHubController {
     },
   ) {
     return this.integrationsService.createConnection({
-      tenantId: req.user.tenantId,
+      tenantId: (req.user.organizationId || req.user.id),
       connectedBy: req.user.id,
       ...body,
     });
@@ -107,7 +107,7 @@ export class IntegrationsHubController {
   @ApiOperation({ summary: 'Get my connections' })
   @ApiResponse({ status: 200, description: 'Integration connections' })
   async getConnections(@Request() req: any) {
-    const connections = await this.integrationsService.getConnections(req.user.tenantId);
+    const connections = await this.integrationsService.getConnections((req.user.organizationId || req.user.id));
     return { connections, total: connections.length };
   }
 
@@ -224,7 +224,7 @@ export class IntegrationsHubController {
   ) {
     return this.integrationsService.createDataFlow({
       connectionId: id,
-      tenantId: req.user.tenantId,
+      tenantId: (req.user.organizationId || req.user.id),
       ...body,
     });
   }
@@ -271,6 +271,6 @@ export class IntegrationsHubController {
   @ApiOperation({ summary: 'Get integration statistics' })
   @ApiResponse({ status: 200, description: 'Integration stats' })
   async getStats(@Request() req: any) {
-    return this.integrationsService.getStats(req.user.tenantId);
+    return this.integrationsService.getStats((req.user.organizationId || req.user.id));
   }
 }

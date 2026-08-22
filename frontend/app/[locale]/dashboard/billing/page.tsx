@@ -1,17 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Skeleton } from '@/components/ui/Skeleton';
+import { api } from '@/lib/api';
+import { toastFromAnywhere } from '@/lib/toast-bus';
 import {
-  CreditCard,
   Receipt,
-  Download,
-  Calendar,
   CheckCircle,
   AlertTriangle,
   Crown,
@@ -19,133 +22,266 @@ import {
   Users,
   HardDrive,
   FileText,
-  TrendingUp,
   Clock,
-  Star,
-  Shield,
-  Building,
-  ArrowUpRight,
+  RefreshCw,
+  Settings,
+  Info,
 } from 'lucide-react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-} from 'recharts';
 
-// Types
-interface Invoice {
-  id: string;
-  number: string;
-  date: string;
-  amount: number;
-  status: 'paid' | 'pending' | 'overdue';
-  downloadUrl: string;
+// ---------------------------------------------------------------------------
+// Types — mirror backend/src/subscription/subscription.service.ts and
+// backend/src/billing/billing.service.ts
+// ---------------------------------------------------------------------------
+
+type Tier = 'FREE' | 'PRO' | 'BUSINESS' | 'ENTERPRISE';
+
+interface PlanFeature {
+  key: string;
+  name: string;
+  nameRo: string;
+  included: boolean;
+  limit?: number | string;
 }
 
-interface UsageMetric {
+interface PlanLimits {
+  maxUsers: number;
+  maxInvoices: number;
+  maxDocuments: number;
+  maxOcrPages: number;
+  maxAiQueries: number;
+  maxSaftReports: number;
+  maxStorageGb: number;
+  apiAccess: boolean;
+  prioritySupport: boolean;
+  sagaIntegration: boolean;
+}
+
+interface PricingPlan {
+  tier: Tier;
   name: string;
+  nameRo: string;
+  description: string;
+  descriptionRo: string;
+  priceMonthly: number;
+  priceYearly: number;
+  currency: string;
+  features: PlanFeature[];
+  limits: PlanLimits;
+  recommended?: boolean;
+}
+
+interface UsageBucket {
   used: number;
   limit: number;
-  unit: string;
+  percentage: number;
 }
 
-// Sample data
-const currentPlan = {
-  name: 'Business',
-  price: 149,
-  currency: 'RON',
-  period: 'lună',
-  features: [
-    'Utilizatori nelimitați',
-    'Facturi nelimitate',
-    'Integrare SAGA/ANAF',
-    'AI Assistant avansat',
-    'Suport prioritar',
-    'API access',
-    'Export SAF-T',
-    'Backup zilnic',
-  ],
-  nextBillingDate: '2025-01-14',
-  status: 'active',
+interface UsageStats {
+  organizationId: string;
+  period: string;
+  currentTier: Tier;
+  usage: {
+    users: UsageBucket;
+    invoices: UsageBucket;
+    documents: UsageBucket;
+    ocrPages: UsageBucket;
+    aiQueries: UsageBucket;
+    saftReports: UsageBucket;
+    storageGb: UsageBucket;
+  };
+  warnings: string[];
+  upgradeRecommendation?: Tier;
+}
+
+interface SubscriptionStatus {
+  organizationId: string;
+  currentTier: Tier;
+  plan: PricingPlan;
+  usage: UsageStats;
+  billingCycle: 'monthly' | 'yearly';
+  nextBillingDate?: string;
+  trialEndsAt?: string;
+  isTrialActive: boolean;
+}
+
+type BillingInvoiceStatus = 'DRAFT' | 'SENT' | 'PAID' | 'OVERDUE' | 'CANCELLED' | 'REFUNDED';
+
+interface BillingInvoice {
+  id: string;
+  number: string;
+  status: BillingInvoiceStatus;
+  currency: string;
+  subtotal: number;
+  tax: number;
+  total: number;
+  dueDate: string;
+  paidAt?: string;
+  issuedAt: string;
+  periodStart?: string;
+  periodEnd?: string;
+}
+
+type LoadState = 'idle' | 'loading' | 'ready' | 'error';
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+const TIER_LABEL_RO: Record<Tier, string> = {
+  FREE: 'Gratuit',
+  PRO: 'Pro',
+  BUSINESS: 'Business',
+  ENTERPRISE: 'Enterprise',
 };
 
-const invoices: Invoice[] = [
-  { id: 'INV-2025-012', number: 'INV-2025-012', date: '2025-12-01', amount: 149, status: 'paid', downloadUrl: '#' },
-  { id: 'INV-2025-011', number: 'INV-2025-011', date: '2025-11-01', amount: 149, status: 'paid', downloadUrl: '#' },
-  { id: 'INV-2025-010', number: 'INV-2025-010', date: '2025-10-01', amount: 149, status: 'paid', downloadUrl: '#' },
-  { id: 'INV-2025-009', number: 'INV-2025-009', date: '2025-09-01', amount: 149, status: 'paid', downloadUrl: '#' },
-  { id: 'INV-2025-008', number: 'INV-2025-008', date: '2025-08-01', amount: 99, status: 'paid', downloadUrl: '#' },
-  { id: 'INV-2025-007', number: 'INV-2025-007', date: '2025-07-01', amount: 99, status: 'paid', downloadUrl: '#' },
-];
+const NO_ORG_MESSAGE = 'Abonamentul nu este încă configurat pentru acest cont';
 
-const usageMetrics: UsageMetric[] = [
-  { name: 'Facturi emise', used: 234, limit: -1, unit: 'facturi' },
-  { name: 'Utilizatori', used: 8, limit: -1, unit: 'utilizatori' },
-  { name: 'Stocare documente', used: 2.4, limit: 10, unit: 'GB' },
-  { name: 'Cereri API', used: 12450, limit: 50000, unit: 'cereri/lună' },
-  { name: 'Rapoarte AI', used: 45, limit: 100, unit: 'rapoarte/lună' },
-  { name: 'OCR procesări', used: 189, limit: 500, unit: 'documente/lună' },
-];
+function fmtDate(value?: string | null): string {
+  if (!value) return '—';
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return '—';
+  return d.toLocaleDateString('ro-RO');
+}
 
-const plans = [
-  {
-    name: 'Gratuit',
-    price: 0,
-    features: ['5 facturi/lună', '1 utilizator', 'TVA basic', '100MB stocare'],
-    recommended: false,
-  },
-  {
-    name: 'Pro',
-    price: 49,
-    features: ['100 facturi/lună', '3 utilizatori', 'ANAF e-Factura', '2GB stocare', 'Suport email'],
-    recommended: false,
-  },
-  {
-    name: 'Business',
-    price: 149,
-    features: ['Facturi nelimitate', 'Utilizatori nelimitați', 'SAGA + ANAF', '10GB stocare', 'Suport prioritar', 'API access'],
-    recommended: true,
-    current: true,
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    features: ['Tot din Business', 'Server dedicat', 'SLA garantat', 'Training personalizat', 'Account manager'],
-    recommended: false,
-  },
-];
+function fmtMoney(amount: number, currency = 'RON'): string {
+  return `${amount.toLocaleString('ro-RO', { maximumFractionDigits: 2 })} ${currency}`;
+}
 
-const billingHistory = [
-  { month: 'Ian', amount: 99 },
-  { month: 'Feb', amount: 99 },
-  { month: 'Mar', amount: 99 },
-  { month: 'Apr', amount: 99 },
-  { month: 'Mai', amount: 99 },
-  { month: 'Iun', amount: 99 },
-  { month: 'Iul', amount: 99 },
-  { month: 'Aug', amount: 149 },
-  { month: 'Sep', amount: 149 },
-  { month: 'Oct', amount: 149 },
-  { month: 'Nov', amount: 149 },
-  { month: 'Dec', amount: 149 },
-];
+function fmtNumber(n: number): string {
+  return n.toLocaleString('ro-RO', { maximumFractionDigits: 2 });
+}
+
+/** Backend uses large sentinel limits for "unlimited"; treat <=0 or >=999999 as unlimited. */
+function isUnlimited(limit: number): boolean {
+  return !Number.isFinite(limit) || limit <= 0 || limit >= 999999;
+}
+
+function clampPct(bucket: UsageBucket): number {
+  if (isUnlimited(bucket.limit)) return 0;
+  const pct = Number.isFinite(bucket.percentage) ? bucket.percentage : (bucket.used / bucket.limit) * 100;
+  return Math.max(0, Math.min(100, pct));
+}
+
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
 
 export default function BillingPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('overview');
 
-  const getInvoiceStatusBadge = (status: Invoice['status']) => {
-    const config = {
-      paid: { label: 'Plătită', variant: 'default' as const, icon: CheckCircle },
-      pending: { label: 'În așteptare', variant: 'secondary' as const, icon: Clock },
-      overdue: { label: 'Restantă', variant: 'destructive' as const, icon: AlertTriangle },
+  // Subscription status (tier, renewal) — /subscription/status
+  const [status, setStatus] = useState<SubscriptionStatus | null>(null);
+  const [statusState, setStatusState] = useState<LoadState>('idle');
+  const [statusError, setStatusError] = useState<string | null>(null);
+
+  // Usage vs limits — /subscription/usage (falls back to status.usage)
+  const [usage, setUsage] = useState<UsageStats | null>(null);
+  const [usageState, setUsageState] = useState<LoadState>('idle');
+
+  // Available plans — /subscription/plans (public)
+  const [plans, setPlans] = useState<PricingPlan[]>([]);
+  const [plansState, setPlansState] = useState<LoadState>('idle');
+  const [plansError, setPlansError] = useState<string | null>(null);
+
+  // Subscription invoice history — /billing/invoices
+  const [invoices, setInvoices] = useState<BillingInvoice[]>([]);
+  const [invoicesState, setInvoicesState] = useState<LoadState>('idle');
+  const [invoicesError, setInvoicesError] = useState<string | null>(null);
+
+  const loadStatusAndUsage = useCallback(async () => {
+    setStatusState('loading');
+    setUsageState('loading');
+    setStatusError(null);
+
+    // Known: both endpoints 500 for users without an organization. Do not
+    // spend 3 backoff retries on that — fail fast and show the honest state.
+    const [statusRes, usageRes] = await Promise.all([
+      api.get<SubscriptionStatus>('/subscription/status', { retry: { maxRetries: 0 } }),
+      api.get<UsageStats>('/subscription/usage', { retry: { maxRetries: 0 } }),
+    ]);
+
+    if (statusRes.status === 200 && statusRes.data && statusRes.data.plan) {
+      setStatus(statusRes.data);
+      setStatusState('ready');
+    } else {
+      setStatus(null);
+      setStatusState('error');
+      setStatusError(
+        statusRes.status === 0
+          ? 'Nu s-a putut contacta serverul. Verifică conexiunea și încearcă din nou.'
+          : NO_ORG_MESSAGE,
+      );
+    }
+
+    if (usageRes.status === 200 && usageRes.data && usageRes.data.usage) {
+      setUsage(usageRes.data);
+      setUsageState('ready');
+    } else if (statusRes.status === 200 && statusRes.data?.usage) {
+      setUsage(statusRes.data.usage);
+      setUsageState('ready');
+    } else {
+      setUsage(null);
+      setUsageState('error');
+    }
+  }, []);
+
+  const loadPlans = useCallback(async () => {
+    setPlansState('loading');
+    setPlansError(null);
+    const res = await api.get<PricingPlan[]>('/subscription/plans');
+    if (res.status === 200 && Array.isArray(res.data)) {
+      setPlans(res.data);
+      setPlansState('ready');
+    } else {
+      setPlans([]);
+      setPlansState('error');
+      setPlansError(res.error || 'Planurile nu au putut fi încărcate.');
+    }
+  }, []);
+
+  const loadInvoices = useCallback(async () => {
+    setInvoicesState('loading');
+    setInvoicesError(null);
+    const res = await api.get<BillingInvoice[]>('/billing/invoices', { params: { limit: 50 } });
+    if (res.status === 200 && Array.isArray(res.data)) {
+      setInvoices(res.data);
+      setInvoicesState('ready');
+    } else {
+      setInvoices([]);
+      setInvoicesState('error');
+      setInvoicesError(res.error || 'Istoricul facturilor nu a putut fi încărcat.');
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadStatusAndUsage();
+    void loadPlans();
+    void loadInvoices();
+  }, [loadStatusAndUsage, loadPlans, loadInvoices]);
+
+  const retryAll = useCallback(async () => {
+    await Promise.all([loadStatusAndUsage(), loadPlans(), loadInvoices()]);
+    toastFromAnywhere('info', 'Date reîncărcate', 'Starea abonamentului a fost reîmprospătată.');
+  }, [loadStatusAndUsage, loadPlans, loadInvoices]);
+
+  const currentTier: Tier | null = status?.currentTier ?? usage?.currentTier ?? null;
+  const anyLoading = statusState === 'loading' || plansState === 'loading' || invoicesState === 'loading';
+
+  // -------------------------------------------------------------------------
+  // Render helpers
+  // -------------------------------------------------------------------------
+
+  const getInvoiceStatusBadge = (st: BillingInvoiceStatus) => {
+    const config: Record<BillingInvoiceStatus, { label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline'; icon: typeof CheckCircle }> = {
+      PAID: { label: 'Plătită', variant: 'default', icon: CheckCircle },
+      SENT: { label: 'Emisă', variant: 'secondary', icon: Clock },
+      DRAFT: { label: 'Ciornă', variant: 'outline', icon: FileText },
+      OVERDUE: { label: 'Restantă', variant: 'destructive', icon: AlertTriangle },
+      CANCELLED: { label: 'Anulată', variant: 'outline', icon: AlertTriangle },
+      REFUNDED: { label: 'Rambursată', variant: 'secondary', icon: Receipt },
     };
-    const c = config[status];
+    const c = config[st] ?? { label: st, variant: 'outline' as const, icon: FileText };
     return (
       <Badge variant={c.variant} className="flex items-center gap-1">
         <c.icon className="h-3 w-3" />
@@ -154,58 +290,131 @@ export default function BillingPage() {
     );
   };
 
+  const usageRows: Array<{ key: keyof UsageStats['usage']; name: string; unit: string }> = [
+    { key: 'invoices', name: 'Facturi emise', unit: 'facturi/lună' },
+    { key: 'users', name: 'Utilizatori', unit: 'utilizatori' },
+    { key: 'documents', name: 'Documente încărcate', unit: 'documente/lună' },
+    { key: 'storageGb', name: 'Stocare documente', unit: 'GB' },
+    { key: 'ocrPages', name: 'Pagini OCR', unit: 'pagini/lună' },
+    { key: 'aiQueries', name: 'Interogări AI', unit: 'interogări/lună' },
+    { key: 'saftReports', name: 'Rapoarte SAF-T', unit: 'rapoarte/lună' },
+  ];
+
+  const renderUsageValue = (b: UsageBucket, unit: string) =>
+    isUnlimited(b.limit)
+      ? `${fmtNumber(b.used)} ${unit}`
+      : `${fmtNumber(b.used)} / ${fmtNumber(b.limit)} ${unit}`;
+
+  const NoSubscriptionNotice = ({ message }: { message: string }) => (
+    <Alert variant="info">
+      <Info className="h-4 w-4" />
+      <AlertTitle>{message}</AlertTitle>
+      <AlertDescription>
+        <p className="mt-1">
+          Nu afișăm un plan presupus. Configurează organizația și abonamentul din setări, apoi revino aici.
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Button size="sm" onClick={() => router.push('/dashboard/settings/subscription')}>
+            <Settings className="mr-2 h-4 w-4" />
+            Configurează abonamentul
+          </Button>
+          <Button size="sm" variant="outline" onClick={() => void loadStatusAndUsage()} disabled={statusState === 'loading'}>
+            <RefreshCw className={`mr-2 h-4 w-4 ${statusState === 'loading' ? 'animate-spin' : ''}`} />
+            Reîncearcă
+          </Button>
+        </div>
+      </AlertDescription>
+    </Alert>
+  );
+
+  // -------------------------------------------------------------------------
+  // JSX
+  // -------------------------------------------------------------------------
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Facturare & Abonament</h1>
-          <p className="text-muted-foreground">
-            Gestionare abonament și istoric plăți
-          </p>
+          <p className="text-muted-foreground">Gestionare abonament și istoric plăți</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => void retryAll()} disabled={anyLoading}>
+            <RefreshCw className={`mr-2 h-4 w-4 ${anyLoading ? 'animate-spin' : ''}`} />
+            Reîmprospătează
+          </Button>
+          <Button variant="outline" onClick={() => setActiveTab('invoices')}>
             <Receipt className="mr-2 h-4 w-4" />
             Istoric facturi
           </Button>
-          <Button>
+          <Button onClick={() => setActiveTab('plans')}>
             <Crown className="mr-2 h-4 w-4" />
-            Upgrade plan
+            Planuri
           </Button>
         </div>
       </div>
 
       {/* Current Plan Card */}
-      <Card className="bg-gradient-to-r from-primary/10 via-primary/5 to-background border-primary/20">
-        <CardContent className="pt-6">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      {statusState === 'loading' || statusState === 'idle' ? (
+        <Card>
+          <CardContent className="pt-6">
             <div className="flex items-center gap-4">
-              <div className="rounded-full bg-primary/20 p-4">
-                <Crown className="h-8 w-8 text-primary" />
+              <Skeleton className="h-16 w-16 rounded-full" />
+              <div className="flex-1 space-y-2">
+                <Skeleton className="h-7 w-48" />
+                <Skeleton className="h-4 w-32" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-2xl font-bold">Plan {currentPlan.name}</h2>
-                  <Badge variant="default">Activ</Badge>
+              <div className="space-y-2 text-right">
+                <Skeleton className="h-4 w-36" />
+                <Skeleton className="h-6 w-24" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      ) : statusState === 'ready' && status ? (
+        <Card className="bg-gradient-to-r from-primary/10 via-primary/5 to-background border-primary/20">
+          <CardContent className="pt-6">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-primary/20 p-4">
+                  <Crown className="h-8 w-8 text-primary" />
                 </div>
-                <p className="text-muted-foreground">
-                  {currentPlan.price} {currentPlan.currency}/{currentPlan.period}
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h2 className="text-2xl font-bold">
+                      Plan {status.plan.nameRo || TIER_LABEL_RO[status.currentTier] || status.currentTier}
+                    </h2>
+                    <Badge variant="default">Activ</Badge>
+                    {status.isTrialActive && <Badge variant="secondary">Perioadă de probă</Badge>}
+                  </div>
+                  <p className="text-muted-foreground">
+                    {status.billingCycle === 'yearly'
+                      ? `${fmtMoney(status.plan.priceYearly, status.plan.currency)}/an`
+                      : `${fmtMoney(status.plan.priceMonthly, status.plan.currency)}/lună`}
+                  </p>
+                  {status.plan.descriptionRo && (
+                    <p className="text-sm text-muted-foreground mt-1">{status.plan.descriptionRo}</p>
+                  )}
+                </div>
+              </div>
+              <div className="text-left md:text-right">
+                <p className="text-sm text-muted-foreground">
+                  {status.isTrialActive && status.trialEndsAt ? 'Perioada de probă expiră' : 'Următoarea reînnoire'}
+                </p>
+                <p className="text-lg font-medium">
+                  {status.isTrialActive && status.trialEndsAt ? fmtDate(status.trialEndsAt) : fmtDate(status.nextBillingDate)}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Ciclu: {status.billingCycle === 'yearly' ? 'anual' : 'lunar'}
                 </p>
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm text-muted-foreground">Următoarea facturare</p>
-              <p className="text-lg font-medium">
-                {new Date(currentPlan.nextBillingDate).toLocaleDateString('ro-RO')}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {currentPlan.price} {currentPlan.currency}
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      ) : (
+        <NoSubscriptionNotice message={statusError || NO_ORG_MESSAGE} />
+      )}
 
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid w-full grid-cols-4">
@@ -217,91 +426,133 @@ export default function BillingPage() {
 
         {/* Overview Tab */}
         <TabsContent value="overview" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Total plătit 2025</CardTitle>
-                <TrendingUp className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">1.438 RON</div>
-                <p className="text-xs text-muted-foreground">12 facturi</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Stocare folosită</CardTitle>
-                <HardDrive className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">2.4 GB</div>
-                <Progress value={24} className="mt-2" />
-                <p className="text-xs text-muted-foreground mt-1">din 10 GB</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Utilizatori activi</CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">8</div>
-                <p className="text-xs text-muted-foreground">Nelimitați în planul actual</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Cereri API</CardTitle>
-                <Zap className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">12.4K</div>
-                <Progress value={24.9} className="mt-2" />
-                <p className="text-xs text-muted-foreground mt-1">din 50K/lună</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Billing History Chart */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Istoric facturare</CardTitle>
-              <CardDescription>Costuri lunare 2025</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
-                <AreaChart data={billingHistory}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip formatter={(value) => `${value} RON`} />
-                  <Area type="monotone" dataKey="amount" stroke="#3B82F6" fill="#3B82F6" fillOpacity={0.2} />
-                </AreaChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          {/* Payment Method */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Metodă de plată</CardTitle>
-              <CardDescription>Card salvat pentru plăți automate</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-lg bg-muted p-3">
-                    <CreditCard className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="font-medium">•••• •••• •••• 4242</p>
-                    <p className="text-sm text-muted-foreground">Visa - Expiră 12/2026</p>
-                  </div>
-                </div>
-                <Button variant="outline">Schimbă cardul</Button>
+          {usageState === 'loading' || usageState === 'idle' ? (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[0, 1, 2, 3].map((i) => (
+                <Card key={i}>
+                  <CardHeader className="pb-2">
+                    <Skeleton className="h-4 w-28" />
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-8 w-20" />
+                    <Skeleton className="h-2 w-full mt-3" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : usageState === 'ready' && usage ? (
+            <>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between pb-2">
+                    <CardTitle className="text-sm font-medium">Facturi luna curentă</CardTitle>
+                    <FileText className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{fmtNumber(usage.usage.invoices.used)}</div>
+                    {isUnlimited(usage.usage.invoices.limit) ? (
+                      <p className="text-xs text-muted-foreground mt-1">Nelimitate în planul actual</p>
+                    ) : (
+                      <>
+                        <Progress value={clampPct(usage.usage.invoices)} className="mt-2" />
+                        <p className="text-xs text-muted-foreground mt-1">din {fmtNumber(usage.usage.invoices.limit)}/lună</p>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between pb-2">
+                    <CardTitle className="text-sm font-medium">Stocare folosită</CardTitle>
+                    <HardDrive className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{fmtNumber(usage.usage.storageGb.used)} GB</div>
+                    {isUnlimited(usage.usage.storageGb.limit) ? (
+                      <p className="text-xs text-muted-foreground mt-1">Nelimitată în planul actual</p>
+                    ) : (
+                      <>
+                        <Progress value={clampPct(usage.usage.storageGb)} className="mt-2" />
+                        <p className="text-xs text-muted-foreground mt-1">din {fmtNumber(usage.usage.storageGb.limit)} GB</p>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between pb-2">
+                    <CardTitle className="text-sm font-medium">Utilizatori</CardTitle>
+                    <Users className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{fmtNumber(usage.usage.users.used)}</div>
+                    {isUnlimited(usage.usage.users.limit) ? (
+                      <p className="text-xs text-muted-foreground mt-1">Nelimitați în planul actual</p>
+                    ) : (
+                      <>
+                        <Progress value={clampPct(usage.usage.users)} className="mt-2" />
+                        <p className="text-xs text-muted-foreground mt-1">din {fmtNumber(usage.usage.users.limit)}</p>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between pb-2">
+                    <CardTitle className="text-sm font-medium">Interogări AI</CardTitle>
+                    <Zap className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{fmtNumber(usage.usage.aiQueries.used)}</div>
+                    {isUnlimited(usage.usage.aiQueries.limit) ? (
+                      <p className="text-xs text-muted-foreground mt-1">Nelimitate în planul actual</p>
+                    ) : (
+                      <>
+                        <Progress value={clampPct(usage.usage.aiQueries)} className="mt-2" />
+                        <p className="text-xs text-muted-foreground mt-1">din {fmtNumber(usage.usage.aiQueries.limit)}/lună</p>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
               </div>
-            </CardContent>
-          </Card>
+
+              {(usage.warnings.length > 0 || usage.upgradeRecommendation) && (
+                <Alert variant="warning">
+                  <AlertTriangle className="h-4 w-4" />
+                  <AlertTitle>Atenționări privind limitele planului</AlertTitle>
+                  <AlertDescription>
+                    {usage.warnings.length > 0 && (
+                      <ul className="mt-1 list-disc pl-5 space-y-1">
+                        {usage.warnings.map((w, i) => (
+                          <li key={i}>{w}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {usage.upgradeRecommendation && (
+                      <p className="mt-2">
+                        Recomandare: treci la planul{' '}
+                        <strong>{TIER_LABEL_RO[usage.upgradeRecommendation] ?? usage.upgradeRecommendation}</strong>.
+                      </p>
+                    )}
+                  </AlertDescription>
+                </Alert>
+              )}
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Perioada curentă</CardTitle>
+                  <CardDescription>Consumul este calculat pentru perioada {usage.period}</CardDescription>
+                </CardHeader>
+                <CardContent className="text-sm text-muted-foreground">
+                  Metoda de plată și facturarea automată nu sunt încă disponibile în aplicație. Pentru schimbarea
+                  planului sau detalii de plată, folosește{' '}
+                  <Link href="/dashboard/settings/subscription" className="underline underline-offset-2">
+                    setările abonamentului
+                  </Link>
+                  .
+                </CardContent>
+              </Card>
+            </>
+          ) : (
+            <NoSubscriptionNotice message={statusError || NO_ORG_MESSAGE} />
+          )}
         </TabsContent>
 
         {/* Usage Tab */}
@@ -309,29 +560,55 @@ export default function BillingPage() {
           <Card>
             <CardHeader>
               <CardTitle>Utilizare resurse</CardTitle>
-              <CardDescription>Monitorizare consum luna curentă</CardDescription>
+              <CardDescription>
+                {usage ? `Monitorizare consum pentru perioada ${usage.period}` : 'Monitorizare consum luna curentă'}
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                {usageMetrics.map((metric, index) => (
-                  <div key={index}>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium">{metric.name}</span>
-                      <span className="text-sm text-muted-foreground">
-                        {metric.used.toLocaleString()} {metric.limit > 0 ? `/ ${metric.limit.toLocaleString()}` : ''} {metric.unit}
-                      </span>
-                    </div>
-                    {metric.limit > 0 ? (
-                      <Progress value={(metric.used / metric.limit) * 100} className="h-2" />
-                    ) : (
-                      <div className="flex items-center gap-2 text-sm text-green-600">
-                        <CheckCircle className="h-4 w-4" />
-                        Nelimitat în planul actual
+              {usageState === 'loading' || usageState === 'idle' ? (
+                <div className="space-y-6">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <div key={i} className="space-y-2">
+                      <div className="flex justify-between">
+                        <Skeleton className="h-4 w-40" />
+                        <Skeleton className="h-4 w-24" />
                       </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                      <Skeleton className="h-2 w-full" />
+                    </div>
+                  ))}
+                </div>
+              ) : usageState === 'ready' && usage ? (
+                <div className="space-y-6">
+                  {usageRows.map((row) => {
+                    const bucket = usage.usage[row.key];
+                    if (!bucket) return null;
+                    const pct = clampPct(bucket);
+                    return (
+                      <div key={row.key}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-medium">{row.name}</span>
+                          <span className="text-sm text-muted-foreground">{renderUsageValue(bucket, row.unit)}</span>
+                        </div>
+                        {isUnlimited(bucket.limit) ? (
+                          <div className="flex items-center gap-2 text-sm text-green-600">
+                            <CheckCircle className="h-4 w-4" />
+                            Nelimitat în planul actual
+                          </div>
+                        ) : (
+                          <>
+                            <Progress value={pct} className="h-2" />
+                            {pct >= 90 && (
+                              <p className="text-xs text-red-600 mt-1">Limita este aproape atinsă ({Math.round(pct)}%).</p>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <NoSubscriptionNotice message={statusError || NO_ORG_MESSAGE} />
+              )}
             </CardContent>
           </Card>
         </TabsContent>
@@ -340,76 +617,201 @@ export default function BillingPage() {
         <TabsContent value="invoices" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Istoric facturi</CardTitle>
-              <CardDescription>Toate facturile emise</CardDescription>
+              <CardTitle>Istoric facturi de abonament</CardTitle>
+              <CardDescription>Facturile emise pentru abonamentul DocumentIulia</CardDescription>
             </CardHeader>
             <CardContent>
-              <ScrollArea className="h-[400px]">
+              {invoicesState === 'loading' || invoicesState === 'idle' ? (
                 <div className="space-y-3">
-                  {invoices.map((invoice) => (
-                    <div key={invoice.id} className="flex items-center justify-between rounded-lg border p-4">
+                  {[0, 1, 2].map((i) => (
+                    <div key={i} className="flex items-center justify-between rounded-lg border p-4">
                       <div className="flex items-center gap-4">
-                        <div className="rounded-lg bg-muted p-2">
-                          <FileText className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <p className="font-medium">{invoice.number}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {new Date(invoice.date).toLocaleDateString('ro-RO')}
-                          </p>
+                        <Skeleton className="h-9 w-9 rounded-lg" />
+                        <div className="space-y-2">
+                          <Skeleton className="h-4 w-32" />
+                          <Skeleton className="h-3 w-24" />
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <span className="font-medium">{invoice.amount} RON</span>
-                        {getInvoiceStatusBadge(invoice.status)}
-                        <Button variant="outline" size="sm">
-                          <Download className="h-4 w-4" />
-                        </Button>
-                      </div>
+                      <Skeleton className="h-5 w-20" />
                     </div>
                   ))}
                 </div>
-              </ScrollArea>
+              ) : invoicesState === 'error' ? (
+                <Alert variant="destructive">
+                  <AlertTriangle className="h-4 w-4" />
+                  <AlertTitle>Istoricul nu a putut fi încărcat</AlertTitle>
+                  <AlertDescription>
+                    <p className="mt-1">{invoicesError}</p>
+                    <Button size="sm" variant="outline" className="mt-3" onClick={() => void loadInvoices()}>
+                      <RefreshCw className="mr-2 h-4 w-4" />
+                      Reîncearcă
+                    </Button>
+                  </AlertDescription>
+                </Alert>
+              ) : invoices.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <div className="rounded-full bg-muted p-4 mb-4">
+                    <Receipt className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <p className="font-medium">Nu există facturi de abonament</p>
+                  <p className="text-sm text-muted-foreground mt-1 max-w-md">
+                    Nu a fost emisă încă nicio factură pentru abonamentul acestui cont. Facturile vor apărea aici
+                    după prima plată.
+                  </p>
+                </div>
+              ) : (
+                <ScrollArea className="h-[400px]">
+                  <div className="space-y-3">
+                    {invoices.map((invoice) => (
+                      <div key={invoice.id} className="flex items-center justify-between rounded-lg border p-4">
+                        <div className="flex items-center gap-4">
+                          <div className="rounded-lg bg-muted p-2">
+                            <FileText className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <p className="font-medium">{invoice.number}</p>
+                            <p className="text-sm text-muted-foreground">
+                              Emisă {fmtDate(invoice.issuedAt)} · Scadentă {fmtDate(invoice.dueDate)}
+                              {invoice.paidAt ? ` · Plătită ${fmtDate(invoice.paidAt)}` : ''}
+                            </p>
+                            {invoice.periodStart && invoice.periodEnd && (
+                              <p className="text-xs text-muted-foreground">
+                                Perioada {fmtDate(invoice.periodStart)} – {fmtDate(invoice.periodEnd)}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="font-medium">{fmtMoney(invoice.total, invoice.currency)}</span>
+                          {getInvoiceStatusBadge(invoice.status)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
 
         {/* Plans Tab */}
         <TabsContent value="plans" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {plans.map((plan) => (
-              <Card key={plan.name} className={plan.current ? 'border-primary ring-2 ring-primary' : ''}>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle>{plan.name}</CardTitle>
-                    {plan.recommended && <Badge>Recomandat</Badge>}
-                    {plan.current && <Badge variant="secondary">Plan curent</Badge>}
-                  </div>
-                  <CardDescription>
-                    {typeof plan.price === 'number' ? (
-                      <span className="text-3xl font-bold">{plan.price} RON</span>
-                    ) : (
-                      <span className="text-3xl font-bold">{plan.price}</span>
-                    )}
-                    {typeof plan.price === 'number' && <span className="text-muted-foreground">/lună</span>}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="h-4 w-4 text-green-500" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full mt-4" variant={plan.current ? 'outline' : 'default'} disabled={plan.current}>
-                    {plan.current ? 'Plan curent' : 'Selectează'}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          {plansState === 'loading' || plansState === 'idle' ? (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[0, 1, 2, 3].map((i) => (
+                <Card key={i}>
+                  <CardHeader>
+                    <Skeleton className="h-6 w-24" />
+                    <Skeleton className="h-9 w-28 mt-2" />
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-5/6" />
+                    <Skeleton className="h-4 w-4/6" />
+                    <Skeleton className="h-9 w-full mt-4" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : plansState === 'error' ? (
+            <Alert variant="destructive">
+              <AlertTriangle className="h-4 w-4" />
+              <AlertTitle>Planurile nu au putut fi încărcate</AlertTitle>
+              <AlertDescription>
+                <p className="mt-1">{plansError}</p>
+                <Button size="sm" variant="outline" className="mt-3" onClick={() => void loadPlans()}>
+                  <RefreshCw className="mr-2 h-4 w-4" />
+                  Reîncearcă
+                </Button>
+              </AlertDescription>
+            </Alert>
+          ) : plans.length === 0 ? (
+            <Card>
+              <CardContent className="py-12 text-center text-muted-foreground">
+                Nu există planuri disponibile momentan.
+              </CardContent>
+            </Card>
+          ) : (
+            <>
+              {!currentTier && (
+                <p className="text-sm text-muted-foreground">
+                  Planul curent nu poate fi marcat deoarece abonamentul nu este configurat pentru acest cont.
+                </p>
+              )}
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {plans.map((plan) => {
+                  const isCurrent = currentTier === plan.tier;
+                  const includedFeatures = plan.features.filter((f) => f.included);
+                  return (
+                    <Card key={plan.tier} className={isCurrent ? 'border-primary ring-2 ring-primary' : ''}>
+                      <CardHeader>
+                        <div className="flex items-center justify-between gap-2">
+                          <CardTitle>{plan.nameRo || TIER_LABEL_RO[plan.tier] || plan.name}</CardTitle>
+                          <div className="flex gap-1">
+                            {plan.recommended && !isCurrent && <Badge>Recomandat</Badge>}
+                            {isCurrent && <Badge variant="secondary">Plan curent</Badge>}
+                          </div>
+                        </div>
+                        <CardDescription>
+                          <span className="text-3xl font-bold">{fmtMoney(plan.priceMonthly, plan.currency)}</span>
+                          <span className="text-muted-foreground">/lună</span>
+                          {plan.priceYearly > 0 && (
+                            <span className="block text-xs text-muted-foreground mt-1">
+                              sau {fmtMoney(plan.priceYearly, plan.currency)}/an
+                            </span>
+                          )}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        {plan.descriptionRo && (
+                          <p className="text-sm text-muted-foreground mb-3">{plan.descriptionRo}</p>
+                        )}
+                        <ul className="space-y-2">
+                          <li className="flex items-center gap-2 text-sm">
+                            <CheckCircle className="h-4 w-4 text-green-500 shrink-0" />
+                            {isUnlimited(plan.limits.maxInvoices)
+                              ? 'Facturi nelimitate'
+                              : `${fmtNumber(plan.limits.maxInvoices)} facturi/lună`}
+                          </li>
+                          <li className="flex items-center gap-2 text-sm">
+                            <CheckCircle className="h-4 w-4 text-green-500 shrink-0" />
+                            {isUnlimited(plan.limits.maxUsers)
+                              ? 'Utilizatori nelimitați'
+                              : `${fmtNumber(plan.limits.maxUsers)} ${plan.limits.maxUsers === 1 ? 'utilizator' : 'utilizatori'}`}
+                          </li>
+                          <li className="flex items-center gap-2 text-sm">
+                            <CheckCircle className="h-4 w-4 text-green-500 shrink-0" />
+                            {isUnlimited(plan.limits.maxStorageGb)
+                              ? 'Stocare nelimitată'
+                              : `${fmtNumber(plan.limits.maxStorageGb)} GB stocare`}
+                          </li>
+                          {includedFeatures.slice(0, 6).map((feature) => (
+                            <li key={feature.key} className="flex items-center gap-2 text-sm">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0" />
+                              {feature.nameRo || feature.name}
+                            </li>
+                          ))}
+                        </ul>
+                        {isCurrent ? (
+                          <Button className="w-full mt-4" variant="outline" disabled>
+                            Plan curent
+                          </Button>
+                        ) : (
+                          <Button
+                            className="w-full mt-4"
+                            variant="default"
+                            onClick={() => router.push('/dashboard/settings/subscription')}
+                          >
+                            Schimbă planul
+                          </Button>
+                        )}
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </TabsContent>
       </Tabs>
     </div>

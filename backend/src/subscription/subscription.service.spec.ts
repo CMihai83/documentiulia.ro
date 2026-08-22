@@ -68,7 +68,7 @@ describe('SubscriptionService', () => {
       it('should return all pricing plans', () => {
         const plans = service.getPricingPlans();
 
-        expect(plans.length).toBe(3);
+        expect(plans.length).toBe(4); // FREE, PRO, BUSINESS, ENTERPRISE
         expect(plans.map(p => p.tier)).toContain('FREE');
         expect(plans.map(p => p.tier)).toContain('PRO');
         expect(plans.map(p => p.tier)).toContain('BUSINESS');

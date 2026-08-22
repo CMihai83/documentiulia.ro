@@ -178,6 +178,10 @@ export class GdprService {
     return {
       id: request.id,
       userId: request.userId,
+      // REQ-049 B2: the data subject's identity was loaded but dropped here,
+      // so the GDPR console could only show a truncated user id.
+      userName: request.user?.name ?? null,
+      userEmail: request.user?.email ?? null,
       type: request.type,
       status: request.status,
       reason: request.reason,

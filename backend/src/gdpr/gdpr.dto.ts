@@ -67,6 +67,9 @@ export class UpdateConsentDto {
 }
 
 export class DsrRequestResponseDto {
+  /** REQ-049 B2: data subject identity for the GDPR console */
+  userName?: string | null;
+  userEmail?: string | null;
   @ApiProperty()
   id: string;
 

@@ -251,7 +251,8 @@ export class NotificationCenterController {
     description: 'Mark a notification as read / Marchează notificarea ca citită',
   })
   @ApiResponse({ status: 200, description: 'Notification marked as read' })
-  async markAsRead(@Param('notificationId') notificationId: string) {
+  async markAsRead(@Param('notificationId') notificationId: string, @Request() req: any) {
+    await this.centerService.assertOwner(req.user.sub, notificationId);
     const notification = await this.centerService.markAsRead(notificationId);
     return { success: true, data: notification };
   }
@@ -262,7 +263,8 @@ export class NotificationCenterController {
     description: 'Mark a notification as unread / Marchează notificarea ca necitită',
   })
   @ApiResponse({ status: 200, description: 'Notification marked as unread' })
-  async markAsUnread(@Param('notificationId') notificationId: string) {
+  async markAsUnread(@Param('notificationId') notificationId: string, @Request() req: any) {
+    await this.centerService.assertOwner(req.user.sub, notificationId);
     const notification = await this.centerService.markAsUnread(notificationId);
     return { success: true, data: notification };
   }
@@ -273,7 +275,8 @@ export class NotificationCenterController {
     description: 'Archive a notification / Arhivează notificarea',
   })
   @ApiResponse({ status: 200, description: 'Notification archived' })
-  async archiveNotification(@Param('notificationId') notificationId: string) {
+  async archiveNotification(@Param('notificationId') notificationId: string, @Request() req: any) {
+    await this.centerService.assertOwner(req.user.sub, notificationId);
     const notification = await this.centerService.archiveNotification(notificationId);
     return { success: true, data: notification };
   }
@@ -284,7 +287,8 @@ export class NotificationCenterController {
     description: 'Dismiss a notification / Respinge notificarea',
   })
   @ApiResponse({ status: 200, description: 'Notification dismissed' })
-  async dismissNotification(@Param('notificationId') notificationId: string) {
+  async dismissNotification(@Param('notificationId') notificationId: string, @Request() req: any) {
+    await this.centerService.assertOwner(req.user.sub, notificationId);
     const notification = await this.centerService.dismissNotification(notificationId);
     return { success: true, data: notification };
   }
@@ -295,7 +299,8 @@ export class NotificationCenterController {
     description: 'Permanently delete a notification / Șterge permanent notificarea',
   })
   @ApiResponse({ status: 200, description: 'Notification deleted' })
-  async deleteNotification(@Param('notificationId') notificationId: string) {
+  async deleteNotification(@Param('notificationId') notificationId: string, @Request() req: any) {
+    await this.centerService.assertOwner(req.user.sub, notificationId);
     const result = await this.centerService.deleteNotification(notificationId);
     return {
       success: result,

@@ -8,6 +8,11 @@ import * as cookieParser from 'cookie-parser';
 import * as compression from 'compression';
 import { AppModule } from './app.module';
 
+// REQ-049 B2: AuditLog.sequence is a BigInt; JSON.stringify throws on it, so
+// any endpoint returning raw audit rows 500'd for accounts with hash-chained
+// entries. Serialize BigInt as a string globally.
+(BigInt.prototype as any).toJSON = function () { return this.toString(); };
+
 async function bootstrap() {
   console.log('Starting DocumentIulia backend...');
   const app = await NestFactory.create(AppModule, {

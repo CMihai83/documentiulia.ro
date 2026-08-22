@@ -102,6 +102,7 @@ export class InvoicesController {
     @Query('endDate') endDate?: string,
     @Query('page') page?: string,
     @Query('limit') limit?: string,
+    @Query('partnerId') partnerId?: string,
   ) {
     const userId = this.getUserId(req);
     return this.invoicesService.findAll(userId, {
@@ -111,6 +112,7 @@ export class InvoicesController {
       endDate: endDate ? new Date(endDate) : undefined,
       page: page ? parseInt(page, 10) : undefined,
       limit: limit ? parseInt(limit, 10) : undefined,
+      partnerId: partnerId || undefined, // REQ-049 B2: partner detail filters server-side
     });
   }
 

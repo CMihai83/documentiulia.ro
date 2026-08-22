@@ -106,6 +106,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     return {
       ...user,
       sub: user.id, // Required for controllers using req.user.sub
+      // REQ-049 B2: CRM, integrations hub, multi-currency, data-pipeline… scope by
+      // req.user.tenantId, which was never set → every tenant shared one bucket.
+      tenantId: organizationId || user.id,
       userId: user.id, // REQ-049 B3: ~99 call sites read req.user.userId — it was never set (SPV endpoints 500'd)
       organizations,
       organizationId, // Add organizationId for subscription/other services

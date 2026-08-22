@@ -10,6 +10,7 @@ import {
   Request,
   HttpCode,
   HttpStatus,
+  NotFoundException,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import {
@@ -51,6 +52,21 @@ export class SubscriptionController {
   constructor(private readonly subscriptionService: SubscriptionService) {}
 
   /**
+   * REQ-049 B2: accounts created via /auth/register have no organization yet;
+   * every subscription route then called prisma with { id: undefined } and
+   * returned a raw 500. Fail with a clear, actionable message instead.
+   */
+  private requireOrg(req: any): string {
+    const organizationId = req.headers?.['x-organization-id'] || req.user?.organizationId;
+    if (!organizationId) {
+      throw new NotFoundException(
+        'Nu există o organizație configurată pentru acest cont. Completați datele firmei în Setări › Organizație.',
+      );
+    }
+    return organizationId;
+  }
+
+  /**
    * Get all pricing plans (public endpoint)
    */
   @Get('plans')
@@ -80,7 +96,7 @@ export class SubscriptionController {
   @Get('status')
   @UseGuards(JwtAuthGuard)
   async getSubscriptionStatus(@Request() req: any): Promise<SubscriptionStatus> {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.getSubscriptionStatus(organizationId);
   }
 
@@ -90,7 +106,7 @@ export class SubscriptionController {
   @Get('usage')
   @UseGuards(JwtAuthGuard)
   async getUsageStats(@Request() req: any): Promise<UsageStats> {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.getUsageStats(organizationId);
   }
 
@@ -100,7 +116,7 @@ export class SubscriptionController {
   @Post('check-limit')
   @UseGuards(JwtAuthGuard)
   async checkLimit(@Request() req: any, @Body() dto: CheckLimitDto) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.checkLimit(
       organizationId,
       dto.limitType as any,
@@ -117,7 +133,7 @@ export class SubscriptionController {
     @Request() req: any,
     @Param('featureKey') featureKey: string,
   ): Promise<{ hasFeature: boolean; featureKey: string }> {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     const hasFeature = await this.subscriptionService.hasFeature(organizationId, featureKey);
     return { hasFeature, featureKey };
   }
@@ -129,7 +145,7 @@ export class SubscriptionController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   async upgradeTier(@Request() req: any, @Body() dto: UpgradeDto) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.upgradeTier(
       organizationId,
       dto.tier,
@@ -144,7 +160,7 @@ export class SubscriptionController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   async downgradeTier(@Request() req: any, @Body() dto: UpgradeDto) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.downgradeTier(organizationId, dto.tier);
   }
 
@@ -195,7 +211,7 @@ export class SubscriptionController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   async subscribeToAiAddOn(@Request() req: any, @Body() dto: AiAddOnDto) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.subscribeToAiAddOn(
       organizationId,
       dto.packageId,
@@ -210,7 +226,7 @@ export class SubscriptionController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   async cancelAiAddOn(@Request() req: any) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.cancelAiAddOn(organizationId);
   }
 
@@ -220,7 +236,7 @@ export class SubscriptionController {
   @Get('ai-addon')
   @UseGuards(JwtAuthGuard)
   async getAiAddOnSubscription(@Request() req: any) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.getAiAddOnSubscription(organizationId);
   }
 
@@ -230,7 +246,7 @@ export class SubscriptionController {
   @Get('ai-usage')
   @UseGuards(JwtAuthGuard)
   async getAiUsageStats(@Request() req: any): Promise<AiUsageStats> {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.getAiUsageStats(organizationId);
   }
 
@@ -240,7 +256,7 @@ export class SubscriptionController {
   @Post('ai-feature/check')
   @UseGuards(JwtAuthGuard)
   async checkAiFeatureAccess(@Request() req: any, @Body() dto: CheckAiFeatureDto) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.checkAiFeatureAccess(
       organizationId,
       dto.featureKey,
@@ -253,7 +269,7 @@ export class SubscriptionController {
   @Get('summary')
   @UseGuards(JwtAuthGuard)
   async getFullSubscriptionSummary(@Request() req: any) {
-    const organizationId = req.headers['x-organization-id'] || req.user?.organizationId;
+    const organizationId = this.requireOrg(req);
     return this.subscriptionService.getFullSubscriptionSummary(organizationId);
   }
 }

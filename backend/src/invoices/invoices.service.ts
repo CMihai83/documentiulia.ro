@@ -167,6 +167,7 @@ export class InvoicesService {
     endDate?: Date;
     page?: number;
     limit?: number;
+    partnerId?: string;
   }) {
     const page = options?.page || 1;
     const limit = options?.limit || 20;
@@ -175,6 +176,7 @@ export class InvoicesService {
     // GI-DSR-1: records restricted under a GDPR erasure request (Art. 18 archive
     // tier) are retained for tax law but hidden from normal business listings.
     const where: any = { userId, restrictedAt: null };
+    if (options?.partnerId) where.partnerId = options.partnerId;
 
     if (options?.type) {
       where.type = options.type;
