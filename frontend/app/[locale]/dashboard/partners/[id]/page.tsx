@@ -17,8 +17,9 @@ import {
   FileText,
   Calendar,
   TrendingUp,
-  Clock,
   Loader2,
+  AlertTriangle,
+  RefreshCw,
   ToggleRight,
   ToggleLeft,
   ExternalLink,
@@ -47,23 +48,24 @@ interface Partner {
   updatedAt: string;
 }
 
-interface Activity {
-  id: string;
-  type: 'INVOICE' | 'PAYMENT' | 'NOTE' | 'STATUS_CHANGE';
-  description: string;
-  amount?: number;
-  date: string;
-  user?: string;
-}
-
 interface Invoice {
   id: string;
   invoiceNumber: string;
   invoiceDate: string;
-  dueDate: string;
-  grossAmount: number;
+  dueDate: string | null;
+  grossAmount: number | string;
   status: string;
+  partnerId?: string | null;
 }
+
+interface InvoiceListResponse {
+  data?: Invoice[];
+  meta?: { total?: number };
+}
+
+// GET /invoices does not (yet) filter by partnerId server-side, so we pull a
+// larger page and filter client-side to never show another partner's invoices.
+const INVOICE_FETCH_LIMIT = 100;
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
@@ -75,11 +77,12 @@ export default function PartnerDetailPage() {
   const partnerId = params.id as string;
 
   const [partner, setPartner] = useState<Partner | null>(null);
-  const [activities, setActivities] = useState<Activity[]>([]);
   const [invoices, setInvoices] = useState<Invoice[]>([]);
+  const [invoicesLoading, setInvoicesLoading] = useState(true);
+  const [invoicesLoadError, setInvoicesLoadError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'invoices' | 'activity'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'invoices'>('overview');
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem('auth_token');
@@ -91,7 +94,6 @@ export default function PartnerDetailPage() {
 
   useEffect(() => {
     fetchPartner();
-    fetchActivities();
     fetchInvoices();
   }, [partnerId]);
 
@@ -122,48 +124,30 @@ export default function PartnerDetailPage() {
     }
   };
 
-  const fetchActivities = async () => {
-    try {
-      const response = await fetch(`${API_URL}/partners/${partnerId}/activities`, {
-        headers: getAuthHeaders(),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setActivities(data);
-      } else {
-        // Mock activities
-        setActivities([
-          { id: '1', type: 'INVOICE', description: 'Factură #INV-2024-0156 emisă', amount: 5400, date: '2024-12-15', user: 'Maria' },
-          { id: '2', type: 'PAYMENT', description: 'Plată primită pentru #INV-2024-0145', amount: 3200, date: '2024-12-10', user: 'Sistem' },
-          { id: '3', type: 'NOTE', description: 'Contact telefonic - discuție despre contract', date: '2024-12-08', user: 'Ion' },
-          { id: '4', type: 'STATUS_CHANGE', description: 'Partener activat', date: '2024-01-15', user: 'Admin' },
-        ]);
-      }
-    } catch (err) {
-      setActivities([]);
-    }
-  };
-
   const fetchInvoices = async () => {
+    setInvoicesLoading(true);
+    setInvoicesLoadError(false);
     try {
-      const response = await fetch(`${API_URL}/invoices?partnerId=${partnerId}&limit=10`, {
-        headers: getAuthHeaders(),
+      const r = await api.get<InvoiceListResponse | Invoice[]>('/invoices', {
+        params: { partnerId, limit: INVOICE_FETCH_LIMIT },
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        setInvoices(data.data || data || []);
-      } else {
-        // Mock invoices
-        setInvoices([
-          { id: '1', invoiceNumber: 'INV-2024-0156', invoiceDate: '2024-12-15', dueDate: '2025-01-15', grossAmount: 5400, status: 'PENDING' },
-          { id: '2', invoiceNumber: 'INV-2024-0145', invoiceDate: '2024-11-20', dueDate: '2024-12-20', grossAmount: 3200, status: 'PAID' },
-          { id: '3', invoiceNumber: 'INV-2024-0130', invoiceDate: '2024-10-15', dueDate: '2024-11-15', grossAmount: 8900, status: 'PAID' },
-        ]);
+      if (r.status < 200 || r.status >= 300 || !r.data) {
+        // Never fabricate history: empty list + explicit error banner.
+        setInvoices([]);
+        setInvoicesLoadError(true);
+        return;
       }
+
+      const list: Invoice[] = Array.isArray(r.data) ? r.data : (r.data.data ?? []);
+      // Backend ignores partnerId today; keep only this partner's invoices.
+      setInvoices(list.filter((inv) => inv.partnerId === partnerId));
     } catch (err) {
+      console.error('Fetch invoices error:', err);
       setInvoices([]);
+      setInvoicesLoadError(true);
+    } finally {
+      setInvoicesLoading(false);
     }
   };
 
@@ -214,7 +198,8 @@ export default function PartnerDetailPage() {
   };
 
   const formatDate = (date: string) => new Date(date).toLocaleDateString('ro-RO');
-  const formatAmount = (amount: number) => `${amount.toLocaleString('ro-RO', { minimumFractionDigits: 2 })} RON`;
+  const formatAmount = (amount: number | string) =>
+    `${Number(amount).toLocaleString('ro-RO', { minimumFractionDigits: 2 })} RON`;
 
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -231,16 +216,6 @@ export default function PartnerDetailPage() {
       case 'SUPPLIER': return 'Furnizor';
       case 'BOTH': return 'Client & Furnizor';
       default: return type;
-    }
-  };
-
-  const getActivityIcon = (type: string) => {
-    switch (type) {
-      case 'INVOICE': return <FileText className="h-4 w-4 text-blue-600" />;
-      case 'PAYMENT': return <CreditCard className="h-4 w-4 text-green-600" />;
-      case 'NOTE': return <Edit className="h-4 w-4 text-yellow-600" />;
-      case 'STATUS_CHANGE': return <ToggleRight className="h-4 w-4 text-purple-600" />;
-      default: return <Clock className="h-4 w-4 text-gray-600" />;
     }
   };
 
@@ -369,7 +344,7 @@ export default function PartnerDetailPage() {
       {/* Tabs */}
       <div className="border-b border-gray-200">
         <nav className="flex gap-4">
-          {(['overview', 'invoices', 'activity'] as const).map((tab) => (
+          {(['overview', 'invoices'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -380,8 +355,7 @@ export default function PartnerDetailPage() {
               }`}
             >
               {tab === 'overview' && 'Detalii'}
-              {tab === 'invoices' && `Facturi (${invoices.length})`}
-              {tab === 'activity' && `Activitate (${activities.length})`}
+              {tab === 'invoices' && (invoicesLoadError ? 'Facturi' : `Facturi (${invoices.length})`)}
             </button>
           ))}
         </nav>
@@ -481,7 +455,35 @@ export default function PartnerDetailPage() {
               + Factură nouă
             </button>
           </div>
-          {invoices.length === 0 ? (
+          {invoicesLoading ? (
+            <div className="p-8 flex items-center justify-center text-gray-500" role="status">
+              <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
+              <span className="ml-2">Se încarcă facturile...</span>
+            </div>
+          ) : invoicesLoadError ? (
+            <div
+              className="m-4 rounded-lg border border-amber-300 bg-amber-50 p-4 flex items-start justify-between gap-4"
+              role="alert"
+            >
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5" />
+                <div>
+                  <p className="font-medium text-amber-900">Nu am putut încărca istoricul</p>
+                  <p className="text-sm text-amber-800">
+                    Facturile acestui partener nu au putut fi încărcate. Reîncearcă.
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={fetchInvoices}
+                className="px-3 py-1.5 text-sm rounded-md border border-amber-300 bg-white text-amber-900 hover:bg-amber-100 flex items-center gap-2 shrink-0"
+              >
+                <RefreshCw className="h-4 w-4" />
+                Reîncearcă
+              </button>
+            </div>
+          ) : invoices.length === 0 ? (
             <div className="p-8 text-center text-gray-500">
               Nu există facturi pentru acest partener.
             </div>
@@ -507,7 +509,7 @@ export default function PartnerDetailPage() {
                       {formatDate(invoice.invoiceDate)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {formatDate(invoice.dueDate)}
+                      {invoice.dueDate ? formatDate(invoice.dueDate) : '-'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-medium">
                       {formatAmount(invoice.grossAmount)}
@@ -529,39 +531,6 @@ export default function PartnerDetailPage() {
                 ))}
               </tbody>
             </table>
-          )}
-        </div>
-      )}
-
-      {activeTab === 'activity' && (
-        <div className="bg-white rounded-lg shadow">
-          <div className="p-4 border-b">
-            <h3 className="font-semibold text-gray-900">Istoric activitate</h3>
-          </div>
-          {activities.length === 0 ? (
-            <div className="p-8 text-center text-gray-500">
-              Nu există activitate pentru acest partener.
-            </div>
-          ) : (
-            <div className="divide-y divide-gray-200">
-              {activities.map((activity) => (
-                <div key={activity.id} className="p-4 flex items-start gap-4">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    {getActivityIcon(activity.type)}
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-900">{activity.description}</p>
-                    {activity.amount && (
-                      <p className="text-sm font-medium text-green-600">{formatAmount(activity.amount)}</p>
-                    )}
-                    <p className="text-xs text-gray-500 mt-1">
-                      {formatDate(activity.date)}
-                      {activity.user && ` • ${activity.user}`}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           )}
         </div>
       )}

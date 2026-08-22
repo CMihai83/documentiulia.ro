@@ -9,9 +9,15 @@ import {
   Request,
   BadRequestException,
   Header,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ComplianceCalendarService, ComplianceDeadline } from './compliance-calendar.service';
 
+// REQ-049 B2: was unguarded and keyed on req.user.tenantId (never set) → every
+// caller shared the 'tenant_demo' bucket. Now JWT-guarded and scoped to the
+// active organization (falling back to the user id).
+@UseGuards(JwtAuthGuard)
 @Controller('compliance/calendar')
 export class ComplianceCalendarController {
   constructor(private readonly calendarService: ComplianceCalendarService) {}
@@ -25,7 +31,7 @@ export class ComplianceCalendarController {
     @Query('from') from?: string,
     @Query('to') to?: string,
   ) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
 
     const deadlines = await this.calendarService.getDeadlines(tenantId, {
       status,
@@ -46,7 +52,7 @@ export class ComplianceCalendarController {
     @Request() req: any,
     @Body() body: Omit<ComplianceDeadline, 'id' | 'tenantId' | 'status' | 'createdAt' | 'updatedAt'>,
   ) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
 
     if (!body.title || !body.dueDate) {
       throw new BadRequestException('Title and due date are required');
@@ -85,7 +91,7 @@ export class ComplianceCalendarController {
     @Request() req: any,
     @Body() body: { notes?: string; documents?: string[] },
   ) {
-    const userId = req.user?.id || 'system';
+    const userId = req.user?.id;
 
     const deadline = await this.calendarService.completeDeadline(
       id,
@@ -110,7 +116,7 @@ export class ComplianceCalendarController {
     @Request() req: any,
     @Body() body: { reason: string },
   ) {
-    const userId = req.user?.id || 'system';
+    const userId = req.user?.id;
 
     if (!body.reason) {
       throw new BadRequestException('Waiver reason is required');
@@ -132,7 +138,7 @@ export class ComplianceCalendarController {
     @Request() req: any,
     @Query('days') days?: string,
   ) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
     const deadlines = await this.calendarService.getUpcomingDeadlines(
       tenantId,
       days ? parseInt(days) : 30,
@@ -146,7 +152,7 @@ export class ComplianceCalendarController {
 
   @Get('overdue')
   async getOverdueDeadlines(@Request() req: any) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
     const deadlines = await this.calendarService.getOverdueDeadlines(tenantId);
 
     return {
@@ -157,7 +163,7 @@ export class ComplianceCalendarController {
 
   @Get('stats')
   async getCalendarStats(@Request() req: any) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
     const stats = await this.calendarService.getCalendarStats(tenantId);
 
     return {
@@ -172,7 +178,7 @@ export class ComplianceCalendarController {
     @Param('year') year: string,
     @Param('month') month: string,
   ) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
     const calendarView = await this.calendarService.getCalendarView(
       tenantId,
       parseInt(year),
@@ -190,7 +196,7 @@ export class ComplianceCalendarController {
     @Request() req: any,
     @Body() body: { jurisdiction: string },
   ) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
 
     const imported = await this.calendarService.importTemplates(
       tenantId,
@@ -208,7 +214,7 @@ export class ComplianceCalendarController {
     @Request() req: any,
     @Query('format') format?: string,
   ) {
-    const tenantId = req.user?.tenantId || 'tenant_demo';
+    const tenantId = req.user?.organizationId || req.user?.id;
     const exportFormat = (format === 'ical' ? 'ical' : 'json') as 'ical' | 'json';
 
     const content = await this.calendarService.exportCalendar(tenantId, exportFormat);

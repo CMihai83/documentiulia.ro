@@ -101,7 +101,7 @@ export function useDocuments(params?: {
   if (params?.search) searchParams.set('search', params.search);
 
   const queryString = searchParams.toString();
-  const key = `/api/documents${queryString ? `?${queryString}` : ''}`;
+  const key = `/api/v1/documents${queryString ? `?${queryString}` : ''}`;
 
   return useData<{
     data: Array<{

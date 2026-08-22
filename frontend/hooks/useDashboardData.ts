@@ -38,10 +38,32 @@ interface ActivityItem {
   color: 'blue' | 'green' | 'yellow' | 'red' | 'purple';
 }
 
+interface ComplianceStatusItem {
+  name: string;
+  status: 'ok' | 'pending' | 'error';
+  date: string;
+}
+
+interface InvoiceStatusCount {
+  status: string;
+  count: number;
+  color: string;
+}
+
+/**
+ * Mirrors backend `DashboardSummaryDto` (GET /api/v1/dashboard/summary)
+ * plus two client-side flags:
+ * - `isEmpty`: true when the payload carries no real figures (no invoices yet,
+ *   unauthenticated, or missing body) -- charts must render an empty state.
+ * - `error`: set when the request failed -- charts must render an error state.
+ * Series are NEVER invented: on 401/empty/error they are `[]`.
+ */
 export interface DashboardData {
   cashFlow: CashFlowItem[];
   vatSummary: VatSummaryItem[];
+  complianceStatus: ComplianceStatusItem[];
   recentActivity: ActivityItem[];
+  invoiceStatusBreakdown: InvoiceStatusCount[];
   totalIncome: number;
   totalExpenses: number;
   vatCollected: number;
@@ -49,7 +71,12 @@ export interface DashboardData {
   vatPayable: number;
   invoiceCount: number;
   pendingInvoices: number;
+  isEmpty: boolean;
+  error?: string;
 }
+
+/** Raw server payload (no client flags). */
+type DashboardSummaryPayload = Omit<DashboardData, 'isEmpty' | 'error'>;
 
 interface DashboardStats {
   invoicesThisMonth: number;
@@ -112,21 +139,66 @@ export const queryKeys = {
   vatSummary: (period?: string) => ['vatSummary', period] as const,
 };
 
-// Fallback data for offline/error scenarios
-const fallbackCashFlow: CashFlowItem[] = [
-  { month: 'Ian', income: 45000, expenses: 32000 },
-  { month: 'Feb', income: 52000, expenses: 35000 },
-  { month: 'Mar', income: 48000, expenses: 30000 },
-  { month: 'Apr', income: 61000, expenses: 42000 },
-  { month: 'Mai', income: 55000, expenses: 38000 },
-  { month: 'Iun', income: 67000, expenses: 45000 },
-];
+// Empty dashboard (no fabricated series) -- used on 401 / missing body / error.
+// Exported so consumers can reuse the exact same zero shape.
+export const EMPTY_DASHBOARD_DATA: DashboardData = {
+  cashFlow: [],
+  vatSummary: [],
+  complianceStatus: [],
+  recentActivity: [],
+  invoiceStatusBreakdown: [],
+  totalIncome: 0,
+  totalExpenses: 0,
+  vatCollected: 0,
+  vatDeductible: 0,
+  vatPayable: 0,
+  invoiceCount: 0,
+  pendingInvoices: 0,
+  isEmpty: true,
+};
 
-const fallbackVatData: VatSummaryItem[] = [
-  { name: 'TVA Colectat', value: 12600, color: '#3b82f6' },
-  { name: 'TVA Deductibil', value: 8400, color: '#22c55e' },
-  { name: 'TVA de Plată', value: 4200, color: '#f59e0b' },
-];
+function emptyDashboardData(error?: string): DashboardData {
+  return error ? { ...EMPTY_DASHBOARD_DATA, error } : { ...EMPTY_DASHBOARD_DATA };
+}
+
+/**
+ * The backend always returns 6 month buckets and 3 VAT rows, zero-filled when
+ * the user has no invoices. Treat an all-zero payload as "empty" so the UI
+ * shows "Nu există date încă" instead of a flat-line chart.
+ */
+function normalizeDashboardPayload(payload: Partial<DashboardSummaryPayload> | null | undefined): DashboardData {
+  if (!payload || typeof payload !== 'object') {
+    return emptyDashboardData();
+  }
+
+  const cashFlow = Array.isArray(payload.cashFlow) ? payload.cashFlow : [];
+  const vatSummary = Array.isArray(payload.vatSummary) ? payload.vatSummary : [];
+  const invoiceCount = Number(payload.invoiceCount ?? 0);
+
+  const cashFlowHasValues = cashFlow.some(
+    (item) => Number(item?.income ?? 0) !== 0 || Number(item?.expenses ?? 0) !== 0,
+  );
+  const vatHasValues = vatSummary.some((item) => Number(item?.value ?? 0) !== 0);
+  const isEmpty = invoiceCount === 0 && !cashFlowHasValues && !vatHasValues;
+
+  return {
+    cashFlow,
+    vatSummary,
+    complianceStatus: Array.isArray(payload.complianceStatus) ? payload.complianceStatus : [],
+    recentActivity: Array.isArray(payload.recentActivity) ? payload.recentActivity : [],
+    invoiceStatusBreakdown: Array.isArray(payload.invoiceStatusBreakdown)
+      ? payload.invoiceStatusBreakdown
+      : [],
+    totalIncome: Number(payload.totalIncome ?? 0),
+    totalExpenses: Number(payload.totalExpenses ?? 0),
+    vatCollected: Number(payload.vatCollected ?? 0),
+    vatDeductible: Number(payload.vatDeductible ?? 0),
+    vatPayable: Number(payload.vatPayable ?? 0),
+    invoiceCount,
+    pendingInvoices: Number(payload.pendingInvoices ?? 0),
+    isEmpty,
+  };
+}
 
 /**
  * Dashboard summary data hook with React Query caching
@@ -141,56 +213,25 @@ export function useDashboardSummary() {
   return useQuery({
     queryKey: queryKeys.dashboardSummary,
     queryFn: async (): Promise<DashboardData> => {
-      const response = await api.get<DashboardData>('/dashboard/summary');
-      // Don't throw on 401 - redirect is already happening in api.ts
+      const response = await api.get<DashboardSummaryPayload>('/dashboard/summary');
+      // Don't throw on 401 - redirect is already happening in api.ts.
+      // Return an EMPTY payload (never invented series) while redirect is in progress.
       if (response.status === 401) {
-        // Return fallback data while redirect is in progress
-        return {
-          cashFlow: fallbackCashFlow,
-          vatSummary: fallbackVatData,
-          recentActivity: [],
-          totalIncome: 0,
-          totalExpenses: 0,
-          vatCollected: 0,
-          vatDeductible: 0,
-          vatPayable: 0,
-          invoiceCount: 0,
-          pendingInvoices: 0,
-        };
+        return emptyDashboardData();
       }
+      // Errors are surfaced as data with `error` set so the UI can render an
+      // explicit error state (with retry) in place of the charts.
       if (response.error) {
-        throw new Error(response.error);
+        return emptyDashboardData(response.error);
       }
-      return response.data || {
-        cashFlow: fallbackCashFlow,
-        vatSummary: fallbackVatData,
-        recentActivity: [],
-        totalIncome: 0,
-        totalExpenses: 0,
-        vatCollected: 0,
-        vatDeductible: 0,
-        vatPayable: 0,
-        invoiceCount: 0,
-        pendingInvoices: 0,
-      };
+      return normalizeDashboardPayload(response.data);
     },
     enabled: isMounted, // Only fetch after client-side mount
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 30 * 60 * 1000, // 30 minutes (was cacheTime in v4)
     refetchInterval: 30 * 1000, // 30 seconds background refresh
     refetchOnWindowFocus: true,
-    placeholderData: {
-      cashFlow: fallbackCashFlow,
-      vatSummary: fallbackVatData,
-      recentActivity: [],
-      totalIncome: 0,
-      totalExpenses: 0,
-      vatCollected: 0,
-      vatDeductible: 0,
-      vatPayable: 0,
-      invoiceCount: 0,
-      pendingInvoices: 0,
-    },
+    // No placeholderData: while loading, `data` is undefined and the page shows a skeleton.
   });
 }
 
@@ -374,11 +415,10 @@ export function useCashFlow(period?: string) {
       if (response.error) {
         throw new Error(response.error);
       }
-      return response.data?.data || fallbackCashFlow;
+      return response.data?.data ?? [];
     },
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    placeholderData: fallbackCashFlow,
   });
 }
 
@@ -394,11 +434,10 @@ export function useVatSummary(period?: string) {
       if (response.error) {
         throw new Error(response.error);
       }
-      return response.data?.data || fallbackVatData;
+      return response.data?.data ?? [];
     },
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    placeholderData: fallbackVatData,
   });
 }
 
@@ -436,9 +475,11 @@ export function usePrefetchDashboard() {
   return () => {
     queryClient.prefetchQuery({
       queryKey: queryKeys.dashboardSummary,
-      queryFn: async () => {
-        const response = await api.get<DashboardData>('/dashboard/summary');
-        return response.data;
+      queryFn: async (): Promise<DashboardData> => {
+        const response = await api.get<DashboardSummaryPayload>('/dashboard/summary');
+        if (response.status === 401) return emptyDashboardData();
+        if (response.error) return emptyDashboardData(response.error);
+        return normalizeDashboardPayload(response.data);
       },
       staleTime: 5 * 60 * 1000,
     });

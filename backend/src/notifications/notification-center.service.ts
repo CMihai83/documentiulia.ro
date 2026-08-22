@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 
 /**
@@ -260,6 +260,17 @@ export class NotificationCenterService {
     }
 
     return { notifications, total };
+  }
+
+  /**
+   * REQ-049 B2: item endpoints acted on any notification id — one user could
+   * read/archive/delete another user's notifications. Every item operation
+   * now goes through this check first.
+   */
+  async assertOwner(userId: string, notificationId: string): Promise<void> {
+    if (!this.userNotifications.get(userId)?.has(notificationId)) {
+      throw new NotFoundException('Notification not found');
+    }
   }
 
   async getNotificationPreview(userId: string): Promise<NotificationPreview> {

@@ -70,17 +70,6 @@ export class MarketingAutomationController {
     return { templates };
   }
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Get automation details' })
-  @ApiResponse({ status: 200, description: 'Automation details' })
-  async getAutomation(@Param('id') id: string) {
-    const automation = await this.automationService.getAutomation(id);
-    if (!automation) {
-      return { error: 'Automation not found' };
-    }
-    return automation;
-  }
-
   @Put(':id')
   @ApiOperation({ summary: 'Update automation' })
   @ApiResponse({ status: 200, description: 'Automation updated' })
@@ -268,5 +257,18 @@ export class MarketingAutomationController {
   @ApiResponse({ status: 200, description: 'Stats' })
   async getStats(@Request() req: any) {
     return this.automationService.getStats(req.user.tenantId);
+  }
+
+  // REQ-049 B2: moved below the static routes — it used to shadow GET segments / stats
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get automation details' })
+  @ApiResponse({ status: 200, description: 'Automation details' })
+  async getAutomation(@Param('id') id: string) {
+    const automation = await this.automationService.getAutomation(id);
+    if (!automation) {
+      return { error: 'Automation not found' };
+    }
+    return automation;
   }
 }

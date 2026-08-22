@@ -37,15 +37,41 @@ interface EfacturaRecord {
   xmlGenerated?: boolean;
 }
 
+// Shape returned by POST /invoices/:id/efactura-validate
+// (EfacturaService.validateInvoice -> { valid, errors: EfacturaValidationError[] })
+interface EfacturaValidationError {
+  field?: string;
+  message?: string;
+  code?: string;
+}
+
+interface ValidationResponse {
+  valid: boolean;
+  errors?: EfacturaValidationError[];
+}
+
 interface ValidationResult {
   valid: boolean;
   errors: string[];
   warnings: string[];
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+// ANAF "stare" values -> local record status
+const mapEfacturaStatus = (status: string | undefined): EfacturaRecord['status'] => {
+  const s = (status || '').toLowerCase();
+  if (s === 'ok' || s === 'accepted' || s === 'acceptata' || s === 'acceptată') return 'accepted';
+  if (s === 'nok' || s === 'rejected' || s === 'respinsa' || s === 'respinsă') return 'rejected';
+  return 'submitted';
+};
 
-// Mock data for demo mode
+const formatValidationError = (e: EfacturaValidationError): string => {
+  const msg = e.message || 'Eroare de validare';
+  const field = e.field ? `${e.field}: ` : '';
+  const code = e.code ? ` (${e.code})` : '';
+  return `${field}${msg}${code}`;
+};
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 export default function EfacturaPage() {
   const t = useTranslations('efactura');
@@ -70,6 +96,9 @@ export default function EfacturaPage() {
   const [showValidationModal, setShowValidationModal] = useState(false);
   const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
   const [validating, setValidating] = useState(false);
+  const [validationFailed, setValidationFailed] = useState(false);
+  // Invoice id for which the LAST real, successful validation passed — gates the submit button.
+  const [validatedRecordId, setValidatedRecordId] = useState<string | null>(null);
 
   // Fetch e-Factura eligible invoices from backend
   const fetchEfacturaRecords = async () => {
@@ -163,11 +192,15 @@ export default function EfacturaPage() {
 
       if (response.ok) {
         const result = await response.json();
+        // finalizeAndSubmit returns { invoice, efactura: { uploadIndex, status } }
+        const uploadIndex: string | undefined =
+          result?.efactura?.uploadIndex ?? result?.invoice?.efacturaId ?? result?.uploadIndex;
         setRecords(prev => prev.map(r =>
           r.id === record.id
-            ? { ...r, status: 'submitted', uploadIndex: result.uploadIndex, submittedAt: new Date().toISOString().split('T')[0] }
+            ? { ...r, status: 'submitted', uploadIndex, submittedAt: new Date().toISOString().split('T')[0] }
             : r
         ));
+        setValidatedRecordId(prev => (prev === record.id ? null : prev));
         toast.compliance('e-Factura SPV', `Factura ${record.invoiceNumber} a fost trimisă către ANAF.`);
       } else {
         const errorData = await response.json().catch(() => ({}));
@@ -193,13 +226,23 @@ export default function EfacturaPage() {
       });
 
       if (response.ok) {
-        const result = await response.json();
+        // GET /invoices/:id/efactura-status -> { status: string, messages: string[] }
+        const result: { status?: string; messages?: string[] } = await response.json();
+        const rawStatus = result?.status || '';
+        const messages = Array.isArray(result?.messages) ? result.messages.map(String) : [];
+        const mapped = mapEfacturaStatus(rawStatus);
         setRecords(prev => prev.map(r =>
-          r.id === record.id ? { ...r, status: result.status, messages: result.messages } : r
+          r.id === record.id ? { ...r, status: mapped, messages } : r
         ));
-        toast.success('Status actualizat', `Statusul facturii ${record.invoiceNumber}: ${result.status}`);
+        const statusLabel = rawStatus || 'necunoscut';
+        if (mapped === 'rejected') {
+          toast.error('Factură respinsă de ANAF', messages[0] || `Statusul facturii ${record.invoiceNumber}: ${statusLabel}`);
+        } else {
+          toast.success('Status actualizat', `Statusul facturii ${record.invoiceNumber}: ${statusLabel}`);
+        }
       } else {
-        toast.error('Eroare SPV', 'Nu s-a putut verifica statusul facturii.');
+        const errorData = await response.json().catch(() => ({}));
+        toast.error('Eroare SPV', errorData?.message || 'Nu s-a putut verifica statusul facturii.');
       }
     } catch (err) {
       console.error('Check status error:', err);
@@ -247,24 +290,33 @@ export default function EfacturaPage() {
         },
       });
 
+      // GET /invoices/:id/efactura-xml -> { xml: string, invoiceNumber: string }
       if (response.ok) {
-        const result = await response.json();
-        setXmlContent(result.xml || result.content || '');
+        const result: { xml?: string; invoiceNumber?: string } = await response.json();
+        const xml = typeof result?.xml === 'string' ? result.xml : '';
+        if (!xml) {
+          setXmlContent('');
+          setShowXmlModal(false);
+          toast.error('XML indisponibil', 'Serverul nu a returnat XML-ul facturii.');
+          return;
+        }
+        setXmlContent(xml);
       } else {
-        // Generate mock XML for demo
-        setError('XML-ul nu a putut fi încărcat de la server. / XML could not be loaded from the server.'); return;
-        toast.success('XML generat', 'XML UBL 2.1 generat pentru previzualizare.');
+        // Never fabricate UBL XML for a compliance view.
+        const errorData = await response.json().catch(() => ({}));
+        setXmlContent('');
+        setShowXmlModal(false);
+        toast.error('XML indisponibil', errorData?.message || 'XML-ul nu a putut fi încărcat de la server.');
       }
     } catch (err) {
-      // Generate mock XML for demo
-      setError('XML-ul nu a putut fi încărcat de la server. / XML could not be loaded from the server.'); return;
-      toast.success('XML generat', 'XML UBL 2.1 generat local pentru previzualizare.');
+      console.error('Preview XML error:', err);
+      setXmlContent('');
+      setShowXmlModal(false);
+      toast.error('Eroare conexiune', 'XML-ul nu a putut fi încărcat de la server.');
     } finally {
       setXmlLoading(false);
     }
   };
-
-  // Generate mock UBL 2.1 XML
 
   // Download XML Handler
   const handleDownloadXml = async (record: EfacturaRecord) => {
@@ -278,15 +330,20 @@ export default function EfacturaPage() {
       });
 
       // Never fabricate UBL XML — a user could submit invented data to ANAF.
-      let xmlData: string;
+      // GET /invoices/:id/efactura-xml -> { xml: string, invoiceNumber: string }
+      let xmlData = '';
+      let fileNumber = record.invoiceNumber;
       if (response.ok) {
-        const result = await response.json();
-        xmlData = result.xml || result.content || '';
+        const result: { xml?: string; invoiceNumber?: string } = await response.json();
+        xmlData = typeof result?.xml === 'string' ? result.xml : '';
+        if (result?.invoiceNumber) fileNumber = result.invoiceNumber;
       } else {
-        xmlData = '';
+        const errorData = await response.json().catch(() => ({}));
+        toast.error('Eroare descărcare', errorData?.message || 'XML-ul nu a putut fi obținut de la server. Descărcarea a fost anulată.');
+        return;
       }
       if (!xmlData) {
-        setError('XML-ul nu a putut fi obținut de la server. Descărcarea a fost anulată. / XML could not be retrieved; download cancelled.');
+        toast.error('Eroare descărcare', 'XML-ul nu a putut fi obținut de la server. Descărcarea a fost anulată.');
         return;
       }
 
@@ -295,7 +352,7 @@ export default function EfacturaPage() {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `efactura_${record.invoiceNumber}.xml`;
+      a.download = `efactura_${fileNumber}.xml`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -304,42 +361,62 @@ export default function EfacturaPage() {
       toast.success('XML descărcat', `Fișierul XML pentru factura ${record.invoiceNumber} a fost descărcat.`);
     } catch (err) {
       console.error('Download XML error:', err);
-      toast.error('Eroare descărcare', 'Nu s-a putut genera fișierul XML.');
+      toast.error('Eroare conexiune', 'Nu s-a putut descărca fișierul XML.');
     }
   };
 
   // Validation Handler
   const handleValidate = async (record: EfacturaRecord) => {
     setValidating(true);
+    setValidationFailed(false);
+    setValidationResult(null);
+    setValidatedRecordId(null);
     setCurrentXmlRecord(record);
     setShowValidationModal(true);
+
+    // Never synthesize a passing validation: if the endpoint fails or returns
+    // an unusable body, the result is "unknown" and submit stays disabled.
+    const failValidation = (detail?: string) => {
+      setValidationResult(null);
+      setValidationFailed(true);
+      toast.error('Validarea nu a putut fi efectuată', detail || 'Reîncercați. Factura nu a fost validată.');
+    };
+
     try {
       const token = localStorage.getItem('auth_token');
+      // POST /invoices/:id/efactura-validate -> { valid: boolean, errors: { field, message, code }[] }
       const response = await fetch(`${API_URL}/invoices/${record.id}/efactura-validate`, {
+        method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        setValidationResult(result);
-      } else {
-        // Mock validation for demo
-        setValidationResult({
-          valid: true,
-          errors: [],
-          warnings: record.partnerCui ? [] : ['CUI partener nu a fost validat cu ANAF'],
-        });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        const msg = Array.isArray(errorData?.message) ? errorData.message.join('; ') : errorData?.message;
+        failValidation(typeof msg === 'string' && msg ? msg : undefined);
+        return;
+      }
+
+      const result: ValidationResponse | null = await response.json().catch(() => null);
+      if (!result || typeof result.valid !== 'boolean') {
+        failValidation('Răspuns invalid de la server.');
+        return;
+      }
+
+      const errors = Array.isArray(result.errors) ? result.errors.map(formatValidationError) : [];
+      // valid:true with errors present is contradictory — treat as not valid.
+      const valid = result.valid === true && errors.length === 0;
+      setValidationResult({ valid, errors, warnings: [] });
+      setValidatedRecordId(valid ? record.id : null);
+      if (!valid) {
+        toast.error('Validare eșuată', `${errors.length} ${errors.length === 1 ? 'eroare găsită' : 'erori găsite'}. Corectați factura înainte de trimitere.`);
       }
     } catch (err) {
-      // Mock validation for demo
-      setValidationResult({
-        valid: true,
-        errors: [],
-        warnings: ['Validare locală - conexiune la ANAF indisponibilă'],
-      });
+      console.error('Validate error:', err);
+      failValidation('Nu s-a putut contacta serverul.');
     } finally {
       setValidating(false);
     }
@@ -392,9 +469,11 @@ export default function EfacturaPage() {
 
         if (response.ok) {
           const result = await response.json();
+          const uploadIndex: string | undefined =
+            result?.efactura?.uploadIndex ?? result?.invoice?.efacturaId ?? result?.uploadIndex;
           setRecords(prev => prev.map(r =>
             r.id === id
-              ? { ...r, status: 'submitted' as const, uploadIndex: result.uploadIndex, submittedAt: new Date().toISOString().split('T')[0] }
+              ? { ...r, status: 'submitted' as const, uploadIndex, submittedAt: new Date().toISOString().split('T')[0] }
               : r
           ));
           successCount++;
@@ -860,11 +939,30 @@ export default function EfacturaPage() {
                   )}
 
                   {/* No issues */}
-                  {validationResult.errors.length === 0 && validationResult.warnings.length === 0 && (
+                  {validationResult.valid && validationResult.errors.length === 0 && validationResult.warnings.length === 0 && (
                     <p className="text-sm text-gray-600 text-center py-4">
                       Nu au fost găsite probleme. Factura este gata pentru trimitere.
                     </p>
                   )}
+                </div>
+              ) : validationFailed ? (
+                <div className="p-4 rounded-lg flex items-start gap-3 bg-yellow-50 border border-yellow-200">
+                  <AlertCircle className="h-6 w-6 text-yellow-600 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-yellow-900">Validarea nu a putut fi efectuată</p>
+                    <p className="text-sm text-yellow-700">
+                      Serverul nu a returnat un rezultat de validare. Trimiterea către ANAF este dezactivată până la o validare reușită.
+                    </p>
+                    {currentXmlRecord && (
+                      <button
+                        onClick={() => handleValidate(currentXmlRecord)}
+                        className="mt-3 px-3 py-1.5 text-sm text-yellow-900 bg-yellow-100 rounded-md hover:bg-yellow-200 flex items-center gap-2"
+                      >
+                        <RefreshCw className="h-4 w-4" />
+                        Reîncearcă validarea
+                      </button>
+                    )}
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -875,13 +973,25 @@ export default function EfacturaPage() {
               >
                 Închide
               </button>
-              {validationResult?.valid && currentXmlRecord && (
+              {currentXmlRecord && currentXmlRecord.status === 'pending' && (
                 <button
                   onClick={() => {
                     handleSubmit(currentXmlRecord);
                     setShowValidationModal(false);
                   }}
-                  className="px-4 py-2 text-white bg-purple-600 rounded-md hover:bg-purple-700 flex items-center gap-2"
+                  disabled={
+                    validating ||
+                    !validationResult ||
+                    validationResult.valid !== true ||
+                    validatedRecordId !== currentXmlRecord.id ||
+                    submitting === currentXmlRecord.id
+                  }
+                  title={
+                    validationResult?.valid && validatedRecordId === currentXmlRecord.id
+                      ? 'Trimite la ANAF'
+                      : 'Disponibil doar după o validare reușită'
+                  }
+                  className="px-4 py-2 text-white bg-purple-600 rounded-md hover:bg-purple-700 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="h-4 w-4" />
                   Trimite la ANAF
