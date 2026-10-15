@@ -1,7 +1,7 @@
 # DocumentIulia — Requirements / Requests Log
 
 Append-only via `scripts/reqlog.py` (NEVER edit by hand — regenerated on every write).
-Total: 49 · logged: 3 · planned: 4 · in_progress: 4 · shipped: 36 · parked: 2 · rejected: 0
+Total: 50 · logged: 3 · planned: 4 · in_progress: 5 · shipped: 36 · parked: 2 · rejected: 0
 
 | ID | Date | Status | Request | Links |
 |---|---|---|---|---|
@@ -54,3 +54,4 @@ Total: 49 · logged: 3 · planned: 4 · in_progress: 4 · shipped: 36 · parked:
 | REQ-047 | 2026-07-24 | **shipped** | continue with the REGES-Online API integration | PR#44 |
 | REQ-048 | 2026-08-13 | **shipped** | do full review of entire platform and span multiple agents to close gaps and enhance functionality and accuracy and operability of the platf… | PR#48,PR#49,PR#50,docs/architecture/platform-review-req-048.md |
 | REQ-049 | 2026-08-19 | **in_progress** | full comprehensive review to make this fully usable; include an admin/staff section where CRM and various tools are in place to operate the … |  |
+| REQ-050 | 2026-10-15 | **in_progress** | i need you to build a small sample page on document iulia aboit kranj and sap consolidation projects |  |
